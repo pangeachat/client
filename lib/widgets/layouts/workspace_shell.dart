@@ -9,7 +9,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
@@ -18,11 +17,11 @@ import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
-import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/space_navigation_column.dart';
 
 /// One persistent world-map element for the whole app shell (world_v2 map
@@ -188,6 +187,8 @@ class WorkspaceShell extends StatelessWidget {
     final l = _ShellLayout.resolve(context, state: state, sideView: sideView);
     l.scheduleControllers();
 
+    final screenPadding = MediaQuery.viewPaddingOf(context);
+
     return ScaffoldMessenger(
       child: Scaffold(
         // At a section-root level the bottom nav shows — unless a map-pin preview
@@ -205,194 +206,157 @@ class WorkspaceShell extends StatelessWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            _mapLayer(l),
-            _canvasLayer(l),
-            if (l.mobileCourseIndex != null) _mobileCourseSheet(l),
-            if (l.isMobileActivity) _mobileActivitySheet(l),
-            _navRailLayer(l),
-            ..._leftPanelLayers(context, l),
-            ..._rightPanelLayers(context, l),
+            /// Persistent world map — the base layer everything overlays. Overlays pad the
+            /// camera so a course fit lands in the exposed area: left = rail + column +
+            /// detail; right = the panel zone.
+            WorldMap(
+              key: _persistentWorldMapKey,
+              leftOverlayWidth: l.mapLeftOverlay,
+              rightOverlayWidth: l.allocation.mapRightOverlay,
+              focus: mapFocusFor(state),
+            ),
+
+            /// The route canvas, as one stable child so the sideView Navigator never
+            /// remounts when the canvas mode changes:
+            ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
+            ///  • detail → capped, bounded by the right panel zone; map peeks (an activity
+            ///    plan on a wide screen; a course-wizard step).
+            Positioned(
+              left: l.leftInset,
+              top: 0,
+              bottom: 0,
+              right: l.canvas == CanvasMode.detail ? null : 0,
+              width: l.canvas == CanvasMode.detail ? l.detailWidth : null,
+              child: Offstage(
+                // A map hole shows the full map through; a narrow activity plan is
+                // offstaged here too because its content rides in the bottom sheet below.
+                // Otherwise the center detail (an activity plan on a wide screen, a
+                // course-wizard step, a public-course preview) gets the same floating-card
+                // chrome as the column panels via [PanelCard].
+                offstage: l.canvas == CanvasMode.mapHole || l.isMobileActivity,
+                child: l.canvas == CanvasMode.detail
+                    ? PanelCard(child: l.canvasChild)
+                    : l.canvasChild,
+              ),
+            ),
+
+            /// A narrow course rides in a draggable bottom sheet over the course-scoped
+            /// map (Google-Maps "map + sheet"). The course content is the same
+            /// WorkspaceLeftPanel surface, hosted [bare] (the sheet is the card). The
+            /// left-panel loop skips this index so it is not also drawn full-screen. See
+            /// `routing.instructions.md`.
+            if (l.mobileCourseIndex != null)
+              Positioned.fill(
+                child: MobileCourseSheet(
+                  child: WorkspaceLeftPanel(
+                    token: l.leftTokens[l.mobileCourseIndex!],
+                    currentUri: state.uri,
+                    bare: true,
+                  ),
+                ),
+              ),
+
+            /// A narrow activity plan rides in the same bottom sheet over the map (camera
+            /// on its pin); the center canvas is offstaged for it in [_canvasLayer].
+            if (l.isMobileActivity)
+              Positioned.fill(child: MobileCourseSheet(child: l.canvasChild)),
+
+            /// The nav rail must size to its content, NOT fill the Stack: this Stack is
+            /// StackFit.expand, which forces non-positioned children to full size — and the
+            /// rail's root (opaque-canvas) Material would then paint over the entire
+            /// persistent map below it (blank map; mobile was fine because the rail is
+            /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
+            /// stays full-bleed behind it.
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(_ShellLayout.chromeMargin),
+                child: SpaceNavigationColumn(
+                  state: state,
+                  showNavRail: l.navRail,
+                ),
+              ),
+            ),
+
+            /// Left-column panels (the chat list, a live room, a course, the
+            /// settings/profile menu) from `?left=`, each at its allocator slot. The
+            /// floating-card chrome AND margin live in [PanelCard] (inside
+            /// WorkspaceLeftPanel), shared with the right column and the center detail.
+            /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
+            /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
+            /// its ChatController repositions rather than remounts when the slot moves.
+            ...[
+              for (var i = 0; i < l.leftTokens.length; i++)
+                // Skip a narrow course card — it renders in the bottom sheet above, not as
+                // a full-screen left panel (no double-render).
+                if (i != l.mobileCourseIndex &&
+                    l.allocation.left[i].vis != PanelVis.hidden)
+                  Positioned(
+                    key: ValueKey(l.leftTokens[i].encode()),
+                    // Respect the top safe-area inset so the panel's close/back control
+                    // isn't cut off under the system top bar (#7143). PanelCard's own 12px
+                    // top margin equals the cluster's chromeMargin, so this aligns the
+                    // panel content with the safe-area-respecting top-right cluster. No-op
+                    // where there is no top inset (desktop/web).
+                    top: MediaQuery.viewPaddingOf(context).top,
+                    bottom: 0,
+                    left: l.allocation.left[i].left,
+                    width: l.allocation.left[i].width,
+                    child: LeftPanelLayer(
+                      token: l.leftTokens[i],
+                      state: state,
+                      foldedOver: l.allocation.left[i].foldedOver,
+                      getRoomKey: _roomKeyFor,
+                    ),
+                  ),
+            ],
+
+            /// Right-column panels (analytics summary, a vocab/grammar detail, a
+            /// completed-activity review) from `?right=`, each placed at its allocator
+            /// slot. The slots tile and never overlap by construction; a folded slot is
+            /// `hidden` (not drawn), its content one back-step away on the higher-priority
+            /// sibling that stayed.
+            ...[
+              for (var i = 0; i < l.rightTokens.length; i++)
+                if (l.allocation.right[i].vis != PanelVis.hidden)
+                  Positioned(
+                    // Keyed by token so a left-column open/close (which shifts sibling
+                    // indices in this Stack) reconciles the right panel by identity, not
+                    // position — otherwise its stateful content (analytics, a detail) would
+                    // remount and re-fetch.
+                    key: ValueKey(l.rightTokens[i].encode()),
+                    // Respect the top safe-area inset so the close/back control clears the
+                    // system top bar (#7143); aligns with the cluster (see _leftPanelLayers).
+                    top: MediaQuery.viewPaddingOf(context).top,
+                    bottom: 0,
+                    left: l.allocation.right[i].left,
+                    width: l.allocation.right[i].width,
+                    child: WorkspaceRightPanel(
+                      token: l.rightTokens[i],
+                      currentUri: state.uri,
+                      foldedOver: l.allocation.right[i].foldedOver,
+                    ),
+                  ),
+            ],
+
+            /// The persistent top-right user cluster — the right column's entry point. It
+            /// sits in the gutter the allocator reserves beside the panels; hidden behind a
+            /// narrow full-screen panel. Shown over a narrow course or activity sheet too
+            /// (the map is visible above the sheet, so the floating cluster reads as
+            /// Maps-style chrome and keeps analytics reachable). The caller gates
+            /// visibility; this only places it.
             if ((l.mapVisible && l.allocation.clusterVisible) ||
                 l.isMobileCourse ||
                 l.isMobileActivity)
-              _clusterLayer(context),
+              Positioned(
+                top: _ShellLayout.chromeMargin + screenPadding.top,
+                right: _ShellLayout.chromeMargin + screenPadding.right,
+                child: WorldUserCluster(key: _userClusterKey),
+              ),
           ],
         ),
       ),
     );
-  }
-
-  /// Persistent world map — the base layer everything overlays. Overlays pad the
-  /// camera so a course fit lands in the exposed area: left = rail + column +
-  /// detail; right = the panel zone.
-  Widget _mapLayer(_ShellLayout l) => Positioned.fill(
-    child: WorldMap(
-      key: _persistentWorldMapKey,
-      leftOverlayWidth: l.mapLeftOverlay,
-      rightOverlayWidth: l.allocation.mapRightOverlay,
-      focus: mapFocusFor(state),
-    ),
-  );
-
-  /// The route canvas, as one stable child so the sideView Navigator never
-  /// remounts when the canvas mode changes:
-  ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
-  ///  • detail → capped, bounded by the right panel zone; map peeks (an activity
-  ///    plan on a wide screen; a course-wizard step).
-  Widget _canvasLayer(_ShellLayout l) => Positioned(
-    left: l.leftInset,
-    top: 0,
-    bottom: 0,
-    right: l.canvas == CanvasMode.detail ? null : 0,
-    width: l.canvas == CanvasMode.detail ? l.detailWidth : null,
-    child: Offstage(
-      // A map hole shows the full map through; a narrow activity plan is
-      // offstaged here too because its content rides in the bottom sheet below.
-      // Otherwise the center detail (an activity plan on a wide screen, a
-      // course-wizard step, a public-course preview) gets the same floating-card
-      // chrome as the column panels via [PanelCard].
-      offstage: l.canvas == CanvasMode.mapHole || l.isMobileActivity,
-      child: l.canvas == CanvasMode.detail
-          ? PanelCard(child: l.canvasChild)
-          : l.canvasChild,
-    ),
-  );
-
-  /// A narrow course rides in a draggable bottom sheet over the course-scoped
-  /// map (Google-Maps "map + sheet"). The course content is the same
-  /// WorkspaceLeftPanel surface, hosted [bare] (the sheet is the card). The
-  /// left-panel loop skips this index so it is not also drawn full-screen. See
-  /// `routing.instructions.md`.
-  Widget _mobileCourseSheet(_ShellLayout l) => Positioned.fill(
-    child: MobileCourseSheet(
-      child: WorkspaceLeftPanel(
-        token: l.leftTokens[l.mobileCourseIndex!],
-        currentUri: state.uri,
-        bare: true,
-      ),
-    ),
-  );
-
-  /// A narrow activity plan rides in the same bottom sheet over the map (camera
-  /// on its pin); the center canvas is offstaged for it in [_canvasLayer].
-  Widget _mobileActivitySheet(_ShellLayout l) =>
-      Positioned.fill(child: MobileCourseSheet(child: l.canvasChild));
-
-  /// The nav rail must size to its content, NOT fill the Stack: this Stack is
-  /// StackFit.expand, which forces non-positioned children to full size — and the
-  /// rail's root (opaque-canvas) Material would then paint over the entire
-  /// persistent map below it (blank map; mobile was fine because the rail is
-  /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
-  /// stays full-bleed behind it.
-  Widget _navRailLayer(_ShellLayout l) => Align(
-    alignment: Alignment.topLeft,
-    child: Padding(
-      padding: const EdgeInsets.all(_ShellLayout.chromeMargin),
-      child: SpaceNavigationColumn(state: state, showNavRail: l.navRail),
-    ),
-  );
-
-  /// Left-column panels (the chat list, a live room, a course, the
-  /// settings/profile menu) from `?left=`, each at its allocator slot. The
-  /// floating-card chrome AND margin live in [PanelCard] (inside
-  /// WorkspaceLeftPanel), shared with the right column and the center detail.
-  /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
-  /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
-  /// its ChatController repositions rather than remounts when the slot moves.
-  List<Widget> _leftPanelLayers(BuildContext context, _ShellLayout l) => [
-    for (var i = 0; i < l.leftTokens.length; i++)
-      // Skip a narrow course card — it renders in the bottom sheet above, not as
-      // a full-screen left panel (no double-render).
-      if (i != l.mobileCourseIndex &&
-          l.allocation.left[i].vis != PanelVis.hidden)
-        Positioned(
-          key: ValueKey(l.leftTokens[i].encode()),
-          // Respect the top safe-area inset so the panel's close/back control
-          // isn't cut off under the system top bar (#7143). PanelCard's own 12px
-          // top margin equals the cluster's chromeMargin, so this aligns the
-          // panel content with the safe-area-respecting top-right cluster. No-op
-          // where there is no top inset (desktop/web).
-          top: MediaQuery.viewPaddingOf(context).top,
-          bottom: 0,
-          left: l.allocation.left[i].left,
-          width: l.allocation.left[i].width,
-          child: _leftPanel(
-            l.leftTokens[i],
-            state.uri,
-            l.allocation.left[i].foldedOver,
-          ),
-        ),
-  ];
-
-  /// Right-column panels (analytics summary, a vocab/grammar detail, a
-  /// completed-activity review) from `?right=`, each placed at its allocator
-  /// slot. The slots tile and never overlap by construction; a folded slot is
-  /// `hidden` (not drawn), its content one back-step away on the higher-priority
-  /// sibling that stayed.
-  List<Widget> _rightPanelLayers(BuildContext context, _ShellLayout l) => [
-    for (var i = 0; i < l.rightTokens.length; i++)
-      if (l.allocation.right[i].vis != PanelVis.hidden)
-        Positioned(
-          // Keyed by token so a left-column open/close (which shifts sibling
-          // indices in this Stack) reconciles the right panel by identity, not
-          // position — otherwise its stateful content (analytics, a detail) would
-          // remount and re-fetch.
-          key: ValueKey(l.rightTokens[i].encode()),
-          // Respect the top safe-area inset so the close/back control clears the
-          // system top bar (#7143); aligns with the cluster (see _leftPanelLayers).
-          top: MediaQuery.viewPaddingOf(context).top,
-          bottom: 0,
-          left: l.allocation.right[i].left,
-          width: l.allocation.right[i].width,
-          child: WorkspaceRightPanel(
-            token: l.rightTokens[i],
-            currentUri: state.uri,
-            foldedOver: l.allocation.right[i].foldedOver,
-          ),
-        ),
-  ];
-
-  /// The persistent top-right user cluster — the right column's entry point. It
-  /// sits in the gutter the allocator reserves beside the panels; hidden behind a
-  /// narrow full-screen panel. Shown over a narrow course or activity sheet too
-  /// (the map is visible above the sheet, so the floating cluster reads as
-  /// Maps-style chrome and keeps analytics reachable). The caller gates
-  /// visibility; this only places it.
-  Widget _clusterLayer(BuildContext context) => Positioned(
-    top: _ShellLayout.chromeMargin + MediaQuery.viewPaddingOf(context).top,
-    right: _ShellLayout.chromeMargin + MediaQuery.viewPaddingOf(context).right,
-    child: WorldUserCluster(key: _userClusterKey),
-  );
-
-  /// Builds one left-column panel for [token]. A `room` panel is wrapped in a
-  /// roomId-keyed [GlobalKey] so the same [ChatController] is reparented (not
-  /// remounted) when its slot moves; other left surfaces are cheap to rebuild
-  /// and key by position.
-  Widget _leftPanel(PanelToken token, Uri uri, bool foldedOver) {
-    // Forward any shared items (carried on the navigation `extra`, not the URL)
-    // to a `room` token — the share sheet opens its target as the sole live
-    // room, so the extra belongs to whichever room renders. See
-    // `routing.instructions.md`.
-    final shareItems = token.type == 'room' && state.extra is List<ShareItem>
-        ? state.extra as List<ShareItem>
-        : null;
-    final panel = WorkspaceLeftPanel(
-      token: token,
-      currentUri: uri,
-      foldedOver: foldedOver,
-      shareItems: shareItems,
-    );
-    if (token.type == 'room') {
-      // The room token's param is `<roomid>` or `<roomid>/<subpage>`; the
-      // GlobalKey is keyed by the bare room id only, so pushing a sub-page
-      // (search/details/…) repositions the same ChatController rather than
-      // remounting it. See `routing.instructions.md`.
-      final param = token.param ?? '';
-      final slash = param.indexOf('/');
-      final bareId = slash < 0 ? param : param.substring(0, slash);
-      return KeyedSubtree(key: _roomKeyFor(fullRoomId(bareId)), child: panel);
-    }
-    return panel;
   }
 }
 
