@@ -104,12 +104,13 @@ Run the local client against **staging** backends — a fast way to smoke-test a
 cp client/.env /tmp/client.env.bak     # restore with: cp /tmp/client.env.bak client/.env
 ```
 
-Only three keys differ (`CMS_API` stays `https://api.staging.pangea.chat` either way; `CHOREO_API_KEY` is identical in both):
+These routing keys differ (`CHOREO_API_KEY` is identical in both). **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the user's Matrix access token as the CMS bearer, and the CMS validates it against *its own* homeserver — so a mismatched pair (a local `@learner` token against staging CMS, or vice-versa) returns **403** and course/activity content silently fails to load. `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do *not* include `/cms` (that yields a `/cms/cms` double path). The local value below needs the **full local stack** (a seeded local CMS, via the `pangea-local-setup` skill); the older local-Synapse-only setup left `CMS_API` at staging and accepted that authed course content does not load.
 
 | Key | Local stack | Staging |
 |---|---|---|
 | `SYNAPSE_URL` | `http://localhost:8008` | `matrix.staging.pangea.chat` |
 | `CHOREO_API`  | `http://localhost:8002` | `https://api.staging.pangea.chat` |
+| `CMS_API`     | `http://localhost:13134` *(host root — the client adds `/cms/api`; needs the full local stack)* | `https://api.staging.pangea.chat` |
 | `HOME_SERVER` | `local.pangea.chat` | `staging.pangea.chat` *(or omit — it derives from `SYNAPSE_URL`: scheme stripped, leading `matrix.` dropped)* |
 
 Source of truth for the staging values is the deployed client itself: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, so the app drops to the onboarding/login screen — sign in with the matching account (see Login). **Never point a local build at production.**
