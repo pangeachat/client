@@ -1,0 +1,54 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/sync-copilot-to-claude.py\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/intent-gate.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/sync-copilot-on-edit.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if jq -r '.tool_input.command // empty' 2>/dev/null | grep -qE '\\bgh pr merge\\b'; then \"$HOME/PangeaChat/.github/scripts/sweep-worktrees.sh\" --emit-claude; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
