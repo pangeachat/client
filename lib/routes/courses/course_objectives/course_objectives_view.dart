@@ -264,7 +264,8 @@ class _ObjectiveSection extends StatelessWidget {
                       WorkspaceNav.openCourseActivity(
                         room!.id,
                         ref.activityId,
-                        autoplay: ref.plan.heroBlock?.isVideo == true ||
+                        autoplay:
+                            ref.plan.heroBlock?.isVideo == true ||
                             ref.plan.heroBlock?.isYoutube == true,
                       ),
                     );
