@@ -372,7 +372,7 @@ class _PowerupsPill extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 18),
+            SizedBox(height: 30),
           ],
         ),
         Positioned(
@@ -501,7 +501,7 @@ class _LevelMedal extends StatelessWidget {
                         fontSize: 17,
                         height: 1.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
