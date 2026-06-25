@@ -115,7 +115,9 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 
         final vocab = service.numConstructs(ConstructTypeEnum.vocab);
         final grammar = service.numConstructs(ConstructTypeEnum.morph);
-        final earnedActivityStars = client.totalStarsEarned;
+        final earnedActivityStars = l2 != null
+            ? client.totalStarsEarned(l2)
+            : 0;
 
         return FutureBuilder<DerivedAnalyticsDataModel>(
           future: l2 != null

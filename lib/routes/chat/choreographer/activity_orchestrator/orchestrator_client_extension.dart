@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 
 extension OrchestratorClientExtension on Client {
@@ -32,12 +33,18 @@ extension OrchestratorClientExtension on Client {
     return completed;
   }
 
-  int get totalStarsEarned {
+  int totalStarsEarned(LanguageModel lang) {
     final byActivity = <String, int>{};
     for (final room in rooms) {
       final activityId = room.activityId;
+      final activityLang = room.activityPlan?.req.targetLanguage;
       final roleId = room.ownRoleState?.id;
-      if (activityId == null || roleId == null) continue;
+      if (activityId == null || roleId == null || activityLang == null) {
+        continue;
+      }
+
+      if (lang.langCodeShort != activityLang.split('-').first) continue;
+
       final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
       if (earned > (byActivity[activityId] ?? 0)) {
         byActivity[activityId] = earned;
