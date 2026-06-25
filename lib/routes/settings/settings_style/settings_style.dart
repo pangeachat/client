@@ -141,8 +141,6 @@ class SettingsStyleController extends State<SettingsStyle> {
     Colors.teal,
     Colors.green,
     Colors.greenAccent,
-    Colors.yellow,
-    Colors.orange,
     Colors.pinkAccent,
     Colors.purpleAccent,
     Colors.blueGrey,

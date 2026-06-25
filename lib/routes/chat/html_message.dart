@@ -432,7 +432,7 @@ class HtmlMessage extends StatelessWidget {
     final renderer = TokenRenderingUtil();
 
     final underlineColor = pangeaMessageEvent!.ownMessage
-        ? ThemeData.dark().colorScheme.primaryContainer.withAlpha(200)
+        ? Theme.of(context).colorScheme.primaryContainer.withAlpha(200)
         : Theme.of(context).colorScheme.primary.withAlpha(200);
 
     final newTokens =

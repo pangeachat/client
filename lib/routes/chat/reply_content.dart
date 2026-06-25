@@ -34,12 +34,11 @@ class ReplyContent extends StatelessWidget {
         : replyEvent;
     final fontSize =
         AppConfig.messageFontSize * AppSettings.fontSizeFactor.value;
-    final color = theme.brightness == Brightness.dark
-        // #Pangea
-        ? ownMessage
-              ? theme.colorScheme.tertiaryContainer
-              : theme.colorScheme.onTertiaryContainer
+    // #Pangea
+    final color = ownMessage
+        ? theme.colorScheme.tertiaryContainer
         : theme.colorScheme.tertiary;
+    // final color = theme.brightness == Brightness.dark
     // ? theme.colorScheme.onTertiaryContainer
     // : ownMessage
     // ? theme.colorScheme.tertiaryContainer
@@ -79,12 +78,7 @@ class ReplyContent extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        // #Pangea
-                        // color: color,
-                        color: ownMessage && theme.brightness == Brightness.dark
-                            ? theme.colorScheme.tertiaryContainer
-                            : theme.colorScheme.onSurface,
-                        // Pangea#
+                        color: color,
                         fontSize: fontSize,
                       ),
                     );
@@ -110,7 +104,7 @@ class ReplyContent extends StatelessWidget {
                     //     ? theme.colorScheme.onTertiary
                     //     : theme.colorScheme.onSurface,
                     color: ownMessage
-                        ? ThemeData.dark().colorScheme.onPrimary
+                        ? theme.colorScheme.onPrimary
                         : theme.colorScheme.onSurface,
                     // Pangea#
                     fontSize: fontSize,
