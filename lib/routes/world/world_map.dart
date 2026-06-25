@@ -14,15 +14,16 @@ import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
-import 'package:fluffychat/routes/world/world_map_signals.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -267,7 +268,7 @@ class WorldMapController extends State<WorldMap>
     // user controller is available.
     if (!_filterDefaultsApplied) {
       _filterDefaultsApplied = true;
-      _defaultCefr = bandAtOrBelow(
+      _defaultCefr = LanguageLevelTypeEnum.bandAtOrBelow(
         MatrixState.pangeaController.userController.userCefrLevel,
       );
       _cefrFilter = {..._defaultCefr};
@@ -277,21 +278,23 @@ class WorldMapController extends State<WorldMap>
   void _recomputeProgress() {
     final client = _client;
     if (client == null) return;
-    final derived = deriveActivitySignals(
-      client,
+    final signals = client.deriveActivitySignals(
       pingedActivityIds: _pingedActivityIds,
     );
-    final completion = userCompletion(client);
+    final userStars = client.userStarsByActivity;
+    final completion = client.activityCompletionStatuses;
+
     if (!mounted) {
-      _signals = derived.signals;
-      _userStars = derived.stars;
+      _signals = signals;
+      _userStars = userStars;
       _completion = completion;
       _resolveProgression();
       return;
     }
+
     setState(() {
-      _signals = derived.signals;
-      _userStars = derived.stars;
+      _signals = signals;
+      _userStars = userStars;
       _completion = completion;
       _resolveProgression();
     });
@@ -405,11 +408,9 @@ class WorldMapController extends State<WorldMap>
       return;
     }
     _pingedActivityIds = pinged;
+
     setState(() {
-      _signals = deriveActivitySignals(
-        client,
-        pingedActivityIds: pinged,
-      ).signals;
+      _signals = client.deriveActivitySignals(pingedActivityIds: pinged);
     });
   }
 
@@ -853,6 +854,7 @@ class WorldMapController extends State<WorldMap>
       'activity',
       'autoplay',
     });
+
     parts.add('activity=${card.activityId}');
     context.go(WorkspaceQuery.location('/', parts));
     collapse();

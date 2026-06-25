@@ -134,4 +134,13 @@ enum LanguageLevelTypeEnum {
         return copy.languageLevelC2Desc;
     }
   }
+
+  static Set<LanguageLevelTypeEnum> bandAtOrBelow(
+    LanguageLevelTypeEnum? level,
+  ) {
+    if (level == null) return LanguageLevelTypeEnum.values.toSet();
+    return LanguageLevelTypeEnum.values
+        .where((l) => l.storageInt <= level.storageInt)
+        .toSet();
+  }
 }
