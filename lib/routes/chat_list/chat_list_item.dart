@@ -78,6 +78,34 @@ class ChatListItem extends StatelessWidget {
         : room.getState(EventTypes.RoomMember, lastEvent.senderId) == null;
     final space = this.space;
 
+    // #Pangea
+    final String messagePreview =
+        room.isSpace && room.membership == Membership.join
+        ? L10n.of(context).countChats(room.spaceChildCount)
+        : room.membership == Membership.invite
+        ? (room
+                  .getState(EventTypes.RoomMember, room.client.userID!)
+                  ?.content
+                  .tryGet<String>('reason') ??
+              (isDirectChat
+                  ? L10n.of(context).newChatRequest
+                  : L10n.of(context).inviteChat))
+        : lastEvent?.calcLocalizedBodyFallback(
+                MatrixLocals(L10n.of(context)),
+                hideReply: true,
+                hideEdit: true,
+                plaintextBody: true,
+                removeMarkdown: true,
+                withSenderNamePrefix:
+                    (!isDirectChat ||
+                    directChatMatrixId != room.lastEvent?.senderId),
+              ) ??
+              L10n.of(context).noMessagesYet;
+    final String chatSemanticsLabel = unread
+        ? '$displayname, $messagePreview, ${L10n.of(context).unread}'
+        : '$displayname, $messagePreview';
+    // Pangea#
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
       child: Material(
@@ -202,207 +230,227 @@ class ChatListItem extends StatelessWidget {
                   ),
                 ),
               ), // Pangea# end ExcludeSemantics
-              title: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      displayname,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: false,
-                      style: TextStyle(
-                        fontWeight: unread || room.hasNewMessages
-                            ? FontWeight.w500
-                            : null,
-                      ),
-                    ),
-                  ),
-                  if (isMuted)
-                    const Padding(
-                      padding: EdgeInsets.only(left: 4.0),
-                      child: Icon(Icons.notifications_off_outlined, size: 16),
-                    ),
-                  if (room.isFavourite)
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: hasNotifications ? 4.0 : 0.0,
-                      ),
-                      child: Icon(
-                        Icons.push_pin,
-                        size: 16,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                  if (!room.isSpace && room.membership != Membership.invite)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
-                      child: Text(
-                        room.latestEventReceivedTime.localizedTimeShort(
-                          context,
-                        ),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: theme.colorScheme.outline,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-              subtitle: Row(
-                crossAxisAlignment: .start,
-                mainAxisAlignment: .center,
-                children: <Widget>[
-                  if (typingText.isEmpty &&
-                      ownMessage &&
-                      room.lastEvent?.status.isSending == true) ...[
-                    const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                    ),
-                    const SizedBox(width: 4),
-                  ],
-                  AnimatedSize(
-                    clipBehavior: Clip.hardEdge,
-                    duration: FluffyThemes.animationDuration,
-                    curve: FluffyThemes.animationCurve,
-                    child: typingText.isNotEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.only(right: 4.0),
-                            child: Icon(
-                              Icons.edit_outlined,
-                              color: theme.colorScheme.secondary,
-                              size: 16,
-                            ),
-                          )
-                        : room.lastEvent?.relationshipType ==
-                              RelationshipTypes.thread
-                        ? Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: theme.colorScheme.outline,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                AppConfig.borderRadius,
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            margin: const EdgeInsets.only(right: 4.0),
-                            child: Row(
-                              mainAxisSize: .min,
-                              children: [
-                                Icon(
-                                  Icons.message_outlined,
-                                  size: 12,
-                                  color: theme.colorScheme.outline,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  L10n.of(context).thread,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: theme.colorScheme.outline,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
-                  Expanded(
-                    child: room.isSpace && room.membership == Membership.join
-                        ? Text(
-                            // #Pangea
-                            // L10n.of(
-                            //   context,
-                            // ).countChats(room.spaceChildren.length),
-                            L10n.of(context).countChats(room.spaceChildCount),
-                            // Pangea#
-                            style: TextStyle(color: theme.colorScheme.outline),
-                          )
-                        : typingText.isNotEmpty
-                        ? Text(
-                            typingText,
-                            style: TextStyle(color: theme.colorScheme.primary),
-                            maxLines: 1,
-                            softWrap: false,
-                          )
-                        // #Pangea
-                        : room.lastEvent != null
-                        ? ChatListItemSubtitle(
-                            room: room,
-                            style: TextStyle(
-                              fontWeight: unread || room.hasNewMessages
-                                  ? FontWeight.bold
-                                  : null,
-                              color: theme.colorScheme.onSurfaceVariant,
-                            ),
-                          )
-                        // Pangea#
-                        : FutureBuilder(
-                            key: ValueKey(
-                              '${lastEvent?.eventId}_${lastEvent?.type}_${lastEvent?.redacted}',
-                            ),
-                            future: needLastEventSender
-                                ? lastEvent.calcLocalizedBody(
-                                    MatrixLocals(L10n.of(context)),
-                                    hideReply: true,
-                                    hideEdit: true,
-                                    plaintextBody: true,
-                                    removeMarkdown: true,
-                                    withSenderNamePrefix:
-                                        (!isDirectChat ||
-                                        directChatMatrixId !=
-                                            room.lastEvent?.senderId),
-                                  )
+              // #Pangea
+              title: Semantics(
+                label: chatSemanticsLabel,
+                child: ExcludeSemantics(
+                  child: Row(
+                    // Pangea#
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          displayname,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: false,
+                          style: TextStyle(
+                            fontWeight: unread || room.hasNewMessages
+                                ? FontWeight.w500
                                 : null,
-                            initialData: lastEvent?.calcLocalizedBodyFallback(
-                              MatrixLocals(L10n.of(context)),
-                              hideReply: true,
-                              hideEdit: true,
-                              plaintextBody: true,
-                              removeMarkdown: true,
-                              withSenderNamePrefix:
-                                  (!isDirectChat ||
-                                  directChatMatrixId !=
-                                      room.lastEvent?.senderId),
+                          ),
+                        ),
+                      ),
+                      if (isMuted)
+                        const Padding(
+                          padding: EdgeInsets.only(left: 4.0),
+                          child: Icon(
+                            Icons.notifications_off_outlined,
+                            size: 16,
+                          ),
+                        ),
+                      if (room.isFavourite)
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: hasNotifications ? 4.0 : 0.0,
+                          ),
+                          child: Icon(
+                            Icons.push_pin,
+                            size: 16,
+                            color: theme.colorScheme.primary,
+                          ),
+                        ),
+                      if (!room.isSpace && room.membership != Membership.invite)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4.0),
+                          child: Text(
+                            room.latestEventReceivedTime.localizedTimeShort(
+                              context,
                             ),
-                            builder: (context, snapshot) => Text(
-                              room.membership == Membership.invite
-                                  ? room
-                                            .getState(
-                                              EventTypes.RoomMember,
-                                              room.client.userID!,
-                                            )
-                                            ?.content
-                                            .tryGet<String>('reason') ??
-                                        (isDirectChat
-                                            ? L10n.of(context).newChatRequest
-                                            // #Pangea
-                                            // : L10n.of(context).inviteGroupChat)
-                                            : L10n.of(context).inviteChat)
-                                  // Pangea#
-                                  : snapshot.data ??
-                                        L10n.of(context).noMessagesYet,
-                              softWrap: false,
-                              maxLines: room.notificationCount >= 1 ? 2 : 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: unread || room.hasNewMessages
-                                    ? theme.colorScheme.onSurface
-                                    : theme.colorScheme.outline,
-                                decoration: room.lastEvent?.redacted == true
-                                    ? TextDecoration.lineThrough
-                                    : null,
-                              ),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: theme.colorScheme.outline,
                             ),
                           ),
+                        ),
+                    ],
                   ),
-                  const SizedBox(width: 8),
-                  UnreadBubble(room: room),
-                ],
+                ),
+              ),
+              // #Pangea
+              subtitle: ExcludeSemantics(
+                child: Row(
+                  // Pangea#
+                  crossAxisAlignment: .start,
+                  mainAxisAlignment: .center,
+                  children: <Widget>[
+                    if (typingText.isEmpty &&
+                        ownMessage &&
+                        room.lastEvent?.status.isSending == true) ...[
+                      const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator.adaptive(
+                          strokeWidth: 2,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                    ],
+                    AnimatedSize(
+                      clipBehavior: Clip.hardEdge,
+                      duration: FluffyThemes.animationDuration,
+                      curve: FluffyThemes.animationCurve,
+                      child: typingText.isNotEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.only(right: 4.0),
+                              child: Icon(
+                                Icons.edit_outlined,
+                                color: theme.colorScheme.secondary,
+                                size: 16,
+                              ),
+                            )
+                          : room.lastEvent?.relationshipType ==
+                                RelationshipTypes.thread
+                          ? Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: theme.colorScheme.outline,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.borderRadius,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              margin: const EdgeInsets.only(right: 4.0),
+                              child: Row(
+                                mainAxisSize: .min,
+                                children: [
+                                  Icon(
+                                    Icons.message_outlined,
+                                    size: 12,
+                                    color: theme.colorScheme.outline,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    L10n.of(context).thread,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: theme.colorScheme.outline,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                    Expanded(
+                      child: room.isSpace && room.membership == Membership.join
+                          ? Text(
+                              // #Pangea
+                              // L10n.of(
+                              //   context,
+                              // ).countChats(room.spaceChildren.length),
+                              L10n.of(context).countChats(room.spaceChildCount),
+                              // Pangea#
+                              style: TextStyle(
+                                color: theme.colorScheme.outline,
+                              ),
+                            )
+                          : typingText.isNotEmpty
+                          ? Text(
+                              typingText,
+                              style: TextStyle(
+                                color: theme.colorScheme.primary,
+                              ),
+                              maxLines: 1,
+                              softWrap: false,
+                            )
+                          // #Pangea
+                          : room.lastEvent != null
+                          ? ChatListItemSubtitle(
+                              room: room,
+                              style: TextStyle(
+                                fontWeight: unread || room.hasNewMessages
+                                    ? FontWeight.bold
+                                    : null,
+                                color: theme.colorScheme.onSurfaceVariant,
+                              ),
+                            )
+                          // Pangea#
+                          : FutureBuilder(
+                              key: ValueKey(
+                                '${lastEvent?.eventId}_${lastEvent?.type}_${lastEvent?.redacted}',
+                              ),
+                              future: needLastEventSender
+                                  ? lastEvent.calcLocalizedBody(
+                                      MatrixLocals(L10n.of(context)),
+                                      hideReply: true,
+                                      hideEdit: true,
+                                      plaintextBody: true,
+                                      removeMarkdown: true,
+                                      withSenderNamePrefix:
+                                          (!isDirectChat ||
+                                          directChatMatrixId !=
+                                              room.lastEvent?.senderId),
+                                    )
+                                  : null,
+                              initialData: lastEvent?.calcLocalizedBodyFallback(
+                                MatrixLocals(L10n.of(context)),
+                                hideReply: true,
+                                hideEdit: true,
+                                plaintextBody: true,
+                                removeMarkdown: true,
+                                withSenderNamePrefix:
+                                    (!isDirectChat ||
+                                    directChatMatrixId !=
+                                        room.lastEvent?.senderId),
+                              ),
+                              builder: (context, snapshot) => Text(
+                                room.membership == Membership.invite
+                                    ? room
+                                              .getState(
+                                                EventTypes.RoomMember,
+                                                room.client.userID!,
+                                              )
+                                              ?.content
+                                              .tryGet<String>('reason') ??
+                                          (isDirectChat
+                                              ? L10n.of(context).newChatRequest
+                                              // #Pangea
+                                              // : L10n.of(context).inviteGroupChat)
+                                              : L10n.of(context).inviteChat)
+                                    // Pangea#
+                                    : snapshot.data ??
+                                          L10n.of(context).noMessagesYet,
+                                softWrap: false,
+                                maxLines: room.notificationCount >= 1 ? 2 : 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: unread || room.hasNewMessages
+                                      ? theme.colorScheme.onSurface
+                                      : theme.colorScheme.outline,
+                                  decoration: room.lastEvent?.redacted == true
+                                      ? TextDecoration.lineThrough
+                                      : null,
+                                ),
+                              ),
+                            ),
+                    ),
+                    const SizedBox(width: 8),
+                    UnreadBubble(room: room),
+                  ],
+                ),
               ),
               onTap: onTap,
               trailing: onForget == null

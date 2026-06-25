@@ -148,4 +148,22 @@ void main() {
       );
     });
   });
+
+  group('activeRoomIdFromPanels (#7208)', () {
+    String? active(String location) =>
+        activeRoomIdFromPanels(Uri.parse(location));
+
+    test('no open room token yields null', () {
+      expect(active('/?left=chats'), isNull);
+      expect(active('/'), isNull);
+    });
+
+    test('the open room: token (beside the chat list) is the active room', () {
+      expect(active('/?left=chats,room:!abc:server.org'), '!abc:server.org');
+    });
+
+    test('a foreign-homeserver room id is kept intact', () {
+      expect(active('/?left=chats,room:!abc:matrix.org'), '!abc:matrix.org');
+    });
+  });
 }

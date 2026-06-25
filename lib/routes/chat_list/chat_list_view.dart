@@ -53,7 +53,6 @@ class ChatListView extends StatelessWidget {
                     !controller.isSearchMode && controller.activeSpaceId == null
                     ? FloatingActionButton.extended(
                         onPressed: () => context.go('/rooms/newprivatechat'),
-                        tooltip: L10n.of(context).directMessage,
                         // #Pangea
                         icon: const Icon(Icons.chat_bubble_outline),
                         // icon: const Icon(Icons.add_outlined),

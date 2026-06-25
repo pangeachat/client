@@ -76,90 +76,96 @@ class WorldMapLargeCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: Material(
-        elevation: 6,
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.surface,
-        child: Container(
-          width: 260,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: state.accent, width: 2),
-          ),
-          child: Column(
-            spacing: 8.0,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _Header(
-                card: card,
-                plan: plan,
-                completed: completed,
-                pinged: pinged,
-                foregroundColor: state.accent,
-              ),
-              total == 0
-                  ? SizedBox(height: 16)
-                  : Row(
-                      children: List.generate(
-                        shown,
-                        (i) => Icon(
-                          i < earned ? Icons.star : Icons.star_border,
-                          size: 16,
-                          color: i < earned
-                              ? AppConfig.gold
-                              : AppConfig.grayText,
-                        ),
-                      ),
-                    ),
-              if (completed)
-                Row(
-                  children: [
-                    _ActionPill(
-                      icon: Icons.refresh,
-                      label: L10n.of(context).playAgain,
-                      foregroundColor: AppConfig.purple,
-                      borderColor: const Color(0xFFCECBF6),
-                    ),
-                    const SizedBox(width: 6),
-                    _ActionPill(
-                      icon: Icons.visibility_outlined,
-                      label: L10n.of(context).reviewActivity,
-                      foregroundColor: AppConfig.grayText,
-                      borderColor: const Color(0xFFD3D1C7),
-                    ),
-                  ],
+      // #Pangea: announce the card as a single "Activity: <title>" button so the
+      // screen reader gets context and the title is not double-read (#7185).
+      child: Semantics(
+        label: L10n.of(context).activityLabel(card.title),
+        button: true,
+        child: Material(
+          elevation: 6,
+          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.surface,
+          child: Container(
+            width: 260,
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: state.accent, width: 2),
+            ),
+            child: Column(
+              spacing: 8.0,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _Header(
+                  card: card,
+                  plan: plan,
+                  completed: completed,
+                  pinged: pinged,
+                  foregroundColor: state.accent,
                 ),
-              if (_showParticipants)
-                Row(
-                  children: [
-                    for (final p in participants.take(4)) ...[
-                      Avatar(mxContent: p.avatar, name: p.name, size: 28),
-                      const SizedBox(width: 4),
-                    ],
-                    for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
-                      Container(
-                        width: 28,
-                        height: 28,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.black12,
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          '?',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black45,
+                total == 0
+                    ? SizedBox(height: 16)
+                    : Row(
+                        children: List.generate(
+                          shown,
+                          (i) => Icon(
+                            i < earned ? Icons.star : Icons.star_border,
+                            size: 16,
+                            color: i < earned
+                                ? AppConfig.gold
+                                : AppConfig.grayText,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 4),
+                if (completed)
+                  Row(
+                    children: [
+                      _ActionPill(
+                        icon: Icons.refresh,
+                        label: L10n.of(context).playAgain,
+                        foregroundColor: AppConfig.purple,
+                        borderColor: const Color(0xFFCECBF6),
+                      ),
+                      const SizedBox(width: 6),
+                      _ActionPill(
+                        icon: Icons.visibility_outlined,
+                        label: L10n.of(context).reviewActivity,
+                        foregroundColor: AppConfig.grayText,
+                        borderColor: const Color(0xFFD3D1C7),
+                      ),
                     ],
-                  ],
-                ),
-            ],
+                  ),
+                if (_showParticipants)
+                  Row(
+                    children: [
+                      for (final p in participants.take(4)) ...[
+                        Avatar(mxContent: p.avatar, name: p.name, size: 28),
+                        const SizedBox(width: 4),
+                      ],
+                      for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
+                        Container(
+                          width: 28,
+                          height: 28,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black12,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            '?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                      ],
+                    ],
+                  ),
+              ],
+            ),
           ),
         ),
       ),
@@ -218,13 +224,17 @@ class _Header extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                card.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
+              // #Pangea: the title is already in the card's Semantics label, so
+              // exclude the visible text to avoid a double-read (#7185).
+              ExcludeSemantics(
+                child: Text(
+                  card.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
                 ),
               ),
               const SizedBox(height: 4),
