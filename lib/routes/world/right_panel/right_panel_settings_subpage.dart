@@ -20,12 +20,12 @@ import 'package:fluffychat/routes/settings/settings_subscription/settings_subscr
 /// sets the param) with the panel's back arrow popping it. The panel chrome
 /// (close on the menu, back on a sub-page) is supplied by [WorkspaceRightPanel].
 /// See `routing.instructions.md`.
-class SettingsPanel extends StatelessWidget {
+class RightPanelSettingsSubpage extends StatelessWidget {
   /// The settings sub-page id from the token param, e.g. `learning`,
   /// `security`, `security/password`, `profile/edit`. Null/empty is the menu.
   final String? subPath;
 
-  const SettingsPanel({super.key, this.subPath});
+  const RightPanelSettingsSubpage({super.key, this.subPath});
 
   @override
   Widget build(BuildContext context) {

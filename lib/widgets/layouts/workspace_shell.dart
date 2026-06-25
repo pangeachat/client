@@ -15,7 +15,7 @@ import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
-import 'package:fluffychat/routes/world/workspace_right_panel.dart';
+import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
