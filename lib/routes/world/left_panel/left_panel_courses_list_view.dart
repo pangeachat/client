@@ -17,8 +17,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// PanelCard. The panel host ([WorkspaceLeftPanel]) supplies the surrounding
 /// card chrome and the "Courses" header + close control, so this is just the
 /// scrollable content. See routing.instructions.md.
-class CoursesPanelView extends StatelessWidget {
-  const CoursesPanelView({super.key});
+class LeftPanelCoursesListView extends StatelessWidget {
+  const LeftPanelCoursesListView({super.key});
 
   @override
   Widget build(BuildContext context) {
