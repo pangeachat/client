@@ -150,10 +150,15 @@ class CourseChatsView extends StatelessWidget {
                             top: 20.0,
                             bottom: 4.0,
                           ),
-                          child: Text(
-                            L10n.of(context).myActivities,
-                            style: const TextStyle(fontSize: 12.0),
-                            textAlign: TextAlign.center,
+                          // Mark as a heading so screen-reader users can jump
+                          // between sections via the rotor. See issue #7185.
+                          child: Semantics(
+                            header: true,
+                            child: Text(
+                              L10n.of(context).myActivities,
+                              style: const TextStyle(fontSize: 12.0),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         );
                 }
@@ -187,10 +192,15 @@ class CourseChatsView extends StatelessWidget {
                             top: 20.0,
                             bottom: 4.0,
                           ),
-                          child: Text(
-                            L10n.of(context).openToJoin,
-                            style: const TextStyle(fontSize: 12.0),
-                            textAlign: TextAlign.center,
+                          // Mark as a heading so screen-reader users can jump
+                          // between sections via the rotor. See issue #7185.
+                          child: Semantics(
+                            header: true,
+                            child: Text(
+                              L10n.of(context).openToJoin,
+                              style: const TextStyle(fontSize: 12.0),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         );
                 }

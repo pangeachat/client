@@ -13,9 +13,13 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
+
+// #Pangea
+// Pangea#
 
 class SettingsView extends StatelessWidget {
   final SettingsController controller;
@@ -208,17 +212,21 @@ class SettingsView extends StatelessWidget {
                     //   ),
                     // Divider(color: theme.dividerColor),
                     // world_v2: the Avatar surface merges profile + settings;
-                    // the full profile editor lives at /profile/edit.
+                    // the profile editor is the single-segment `profile` page.
+                    // It is not a nested `profile/edit` leaf — `profile` and
+                    // `profile/edit` render the same editor, so the extra
+                    // segment only made the back arrow pop to an identical-
+                    // looking page first, needing a second click (#7147).
                     ListTile(
                       leading: const Icon(Icons.account_circle_outlined),
                       title: Text(L10n.of(context).editProfile),
-                      tileColor: activeRoute.startsWith('/profile/edit')
+                      tileColor: activeRoute.startsWith('/profile')
                           ? theme.colorScheme.surfaceContainerHigh
                           : null,
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'profile/edit',
+                          page: 'profile',
                         ),
                       ),
                     ),
@@ -342,7 +350,9 @@ class SettingsView extends StatelessWidget {
                                       "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
                                 ),
                               );
-                              ScaffoldMessenger.of(context).showSnackBar(
+                              ScaffoldMessenger.of(
+                                context,
+                              ).showSnackBarAnnounced(
                                 SnackBar(
                                   content: Text(
                                     L10n.of(context).copiedToClipboard,

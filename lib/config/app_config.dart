@@ -180,5 +180,11 @@ abstract class AppConfig {
     "image/gif",
     "image/png",
   };
+
+  static const Color green = Color(0xFF34A853);
+  static const Color purple = Color(0xFF7B61FF);
+  static const Color gray = Color(0xFFB4B2A9);
+  static const Color grayText = Color(0xFF5F5E5A);
+  static const Color completedGreen = Color(0xFF3B6D11);
   // Pangea#
 }

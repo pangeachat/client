@@ -30,12 +30,27 @@ jobs:
         run: dart run license_checker check-licenses -c licenses.yaml --problematic
       - run: flutter analyze
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
       - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
-      
+
+
+  # Source-level accessibility gate: every interactive control and image in lib/
+  # must carry an accessible name (tooltip / semanticLabel) or be explicitly
+  # marked decorative (excludeFromSemantics). Catches naming gaps anywhere in the
+  # codebase, not only on the surfaces axe-core renders. Pure Python, no Flutter.
+  accessibility_floor_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Accessible names floor-check
+        run: python3 scripts/a11y_floor_check.py
 
   build_debug_apk:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -51,10 +66,13 @@ jobs:
       - uses: ./.github/actions/free_up_space
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter build apk --debug --target-platform android-arm # Pangea change, only build arm to decrease size & time
 
   build_debug_web:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -72,6 +90,7 @@ jobs:
 
   # #Pangea
   # build_debug_linux:
+  #   environment: staging
   #   strategy:
   #     matrix:
   #       arch: [ x64, arm64 ]
@@ -91,6 +110,7 @@ jobs:
   # Pangea#
 
   build_debug_ios:
+    environment: staging
     runs-on: macos-15
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -104,6 +124,8 @@ jobs:
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter pub get
       - run: flutter build ios --no-codesign

@@ -107,47 +107,58 @@ class LoginLoadingDialogState extends State<LoginLoadingDialog> {
   Widget build(BuildContext context) {
     final exception = this.exception;
 
-    return AlertDialog.adaptive(
-      title: exception == null
-          ? null
-          : Icon(
-              Icons.error_outline_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: 48,
-            ),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256),
-        child: Column(
-          spacing: 12.0,
-          mainAxisSize: .min,
-          crossAxisAlignment: .center,
-          children: [
-            exception != null
-                ? Text(
-                    exception is MatrixException
-                        ? exception.errorMessage
-                        : exception.toLocalizedString(context),
-                  )
-                : ValueListenableBuilder<InitState?>(
-                    valueListenable: _initState,
-                    builder: (context, initState, child) =>
-                        Text(_initStateLabel),
-                  ),
-            if (exception == null) LinearProgressIndicator(),
-          ],
-        ),
-      ),
-      actions: exception == null
-          ? null
-          : [
-              AdaptiveDialogAction(
-                onPressed: () => Navigator.of(
-                  context,
-                ).pop(Result.error(exception, stackTrace)),
-                child: Text(L10n.of(context).close),
+    return Semantics(
+      label: _initStateLabel,
+      container: true,
+      child: AlertDialog.adaptive(
+        title: exception == null
+            ? null
+            : Icon(
+                Icons.error_outline_outlined,
+                color: Theme.of(context).colorScheme.error,
+                size: 48,
               ),
+        content: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 256),
+          child: Column(
+            spacing: 12.0,
+            mainAxisSize: .min,
+            crossAxisAlignment: .center,
+            children: [
+              exception != null
+                  // #Pangea: announce the login error to screen readers when it
+                  // replaces the spinner in the still-open dialog (WCAG 4.1.3,
+                  // #7203).
+                  ? Semantics(
+                      liveRegion: true,
+                      child: Text(
+                        exception is MatrixException
+                            ? exception.errorMessage
+                            : exception.toLocalizedString(context),
+                      ),
+                    )
+                  // Pangea#
+                  : ValueListenableBuilder<InitState?>(
+                      valueListenable: _initState,
+                      builder: (context, initState, child) =>
+                          Text(_initStateLabel),
+                    ),
+              if (exception == null) LinearProgressIndicator(),
             ],
-      // Pangea#
+          ),
+        ),
+        actions: exception == null
+            ? null
+            : [
+                AdaptiveDialogAction(
+                  onPressed: () => Navigator.of(
+                    context,
+                  ).pop(Result.error(exception, stackTrace)),
+                  child: Text(L10n.of(context).close),
+                ),
+              ],
+        // Pangea#
+      ),
     );
   }
 }

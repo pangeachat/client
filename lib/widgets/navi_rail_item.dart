@@ -68,38 +68,45 @@ class NaviRailItem extends StatelessWidget {
               height: height,
               child: Stack(
                 children: [
-                  AnimatedPositioned(
-                    duration: FluffyThemes.animationDuration,
-                    left: expanded ? 0.0 : -expandedSectionWidth,
-                    child: Container(
-                      height: height,
-                      width: naviRailWidth + expandedSectionWidth,
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Row(
-                        children: [
-                          SizedBox(width: naviRailWidth),
-                          Expanded(
-                            child: ListTile(
-                              title: Text(
-                                toolTip,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: theme.textTheme.bodyMedium,
-                              ),
-                              onTap: onTap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                                vertical: 0.0,
+                  // #Pangea
+                  // The expanded ListTile duplicates the label already carried
+                  // by the interactive icon button + its tooltip below, so
+                  // ExcludeSemantics prevents VoiceOver double-reading (#7185).
+                  ExcludeSemantics(
+                    child: AnimatedPositioned(
+                      duration: FluffyThemes.animationDuration,
+                      left: expanded ? 0.0 : -expandedSectionWidth,
+                      child: Container(
+                        height: height,
+                        width: naviRailWidth + expandedSectionWidth,
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: Row(
+                          children: [
+                            SizedBox(width: naviRailWidth),
+                            Expanded(
+                              child: ListTile(
+                                title: Text(
+                                  toolTip,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.bodyMedium,
+                                ),
+                                onTap: onTap,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                  vertical: 0.0,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
+                  // Pangea#
                   Container(
                     height: height,
                     width: naviRailWidth,

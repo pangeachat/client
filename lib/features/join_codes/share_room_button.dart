@@ -7,6 +7,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_code_util.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class ShareRoomButton extends StatelessWidget {
   final Widget child;
@@ -35,8 +36,9 @@ class ShareRoomButton extends StatelessWidget {
         },
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).oopsSomethingWentWrong)),
+        assertive: true,
       );
       return;
     }
@@ -45,7 +47,7 @@ class ShareRoomButton extends StatelessWidget {
 
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
-    messenger.showSnackBar(
+    messenger.showSnackBarAnnounced(
       SnackBar(
         content: Text(L10n.of(context).copiedToClipboard),
         showCloseIcon: true,

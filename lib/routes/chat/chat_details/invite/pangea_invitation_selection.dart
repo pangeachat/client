@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection_view.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -366,9 +367,10 @@ class PangeaInvitationSelectionController
     try {
       response = await matrix.client.searchUser(text, limit: 100);
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text((e).toLocalizedString(context))));
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text((e).toLocalizedString(context))),
+        assertive: true,
+      );
       return;
     } finally {
       setState(() {
@@ -437,7 +439,7 @@ class PangeaInvitationSelectionController
     );
     if (success.error == null) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           content: Text(
             room.isSpace
@@ -475,7 +477,7 @@ class PangeaInvitationSelectionController
       },
     ).then((result) {
       if (result.error == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
           SnackBar(
             content: Text(
               L10n.of(context).spaceParticipantsHaveBeenInvitedToTheChat,
@@ -483,9 +485,10 @@ class PangeaInvitationSelectionController
           ),
         );
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(result.error.toString())));
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
+          SnackBar(content: Text(result.error.toString())),
+          assertive: true,
+        );
       }
     });
   }

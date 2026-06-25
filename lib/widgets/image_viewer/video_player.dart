@@ -13,9 +13,13 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/blur_hash.dart';
 import '../../../utils/error_reporter.dart';
 import '../mxc_image.dart';
+
+// #Pangea
+// Pangea#
 
 class EventVideoPlayer extends StatefulWidget {
   final Event event;
@@ -115,9 +119,12 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
         );
       });
     } on IOException catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(e.toLocalizedString(context))),
+        assertive: true,
+      );
+      // Pangea#
       // #Pangea
       setState(() => _error = e);
       // Pangea#

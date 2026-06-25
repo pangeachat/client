@@ -14,16 +14,35 @@ extension OrchestratorClientExtension on Client {
     if (activityId == null) return {};
     final role = activity?.roles[roleId];
     if (role == null) return {};
-    final roleGoalIds = role.allGoals.map((g) => g.id).toSet();
     final completed = <String>{};
     for (final room in rooms) {
       if (room.activityId != activityId) continue;
       if (room.ownRoleState?.id != roleId) continue;
       final awarded = room.orchestratorAwardedGoals;
-      completed.addAll(
-        roleGoalIds.where((id) => awarded.isGoalCompletedForRole(roleId, id)),
-      );
+      for (final g in role.allGoals) {
+        if (awarded.isGoalCompletedForRole(
+          roleId,
+          g.id,
+          goalSlug: g.goalSlug,
+        )) {
+          completed.add(g.id);
+        }
+      }
     }
     return completed;
+  }
+
+  int get totalStarsEarned {
+    final byActivity = <String, int>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      final roleId = room.ownRoleState?.id;
+      if (activityId == null || roleId == null) continue;
+      final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
+      if (earned > (byActivity[activityId] ?? 0)) {
+        byActivity[activityId] = earned;
+      }
+    }
+    return byActivity.values.fold<int>(0, (a, b) => a + b);
   }
 }

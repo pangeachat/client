@@ -23,6 +23,10 @@ class ActivitySessionConstants {
   /// body is fetched live from CMS — see activities.instructions.md.
   static const String versionId = 'version_id';
   static const String sourceCourseId = 'source_course_id';
+  // Pin-resolution outcome carried alongside the plan for analytics: whether
+  // the pinned version was evicted (latest served instead) and why it degraded.
+  static const String usedFallbackVersion = 'used_fallback_version';
+  static const String fallbackCause = 'fallback_cause';
 
   static const String activityRequestTopic = 'topic';
   static const String activityRequestObjective = 'objective';

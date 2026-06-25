@@ -1,6 +1,9 @@
+# Disabled workflow, kept for future re-enablement. Every line must stay
+# commented: a bare uncommented `on:` with no jobs is an invalid workflow and
+# makes GitHub fail the run with "workflow file issue" on every event.
 # name: Check duplicates
 
-on:
+# on:
 #   issues:
 #     types: [opened]
 

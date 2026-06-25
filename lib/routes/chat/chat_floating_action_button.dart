@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 
 class ChatFloatingActionButton extends StatelessWidget {
@@ -22,6 +23,7 @@ class ChatFloatingActionButton extends StatelessWidget {
             controller.scrollController.position.pixels > 0) {
           return FloatingActionButton(
             onPressed: controller.scrollDown,
+            tooltip: L10n.of(context).scrollToBottom,
             heroTag: null,
             mini: true,
             child: const Icon(Icons.arrow_downward_outlined),

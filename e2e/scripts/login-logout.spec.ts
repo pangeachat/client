@@ -54,17 +54,16 @@ test.describe("Should be able to Login and logout", () => {
     await expect(loginButton).toBeEnabled();
     await loginButton.click();
 
-    // Wait for chat list to load (URL should contain /rooms)
-    // Login involves a Matrix server round-trip, so give it ample time
-    await expect(page).toHaveURL("#/rooms", { timeout: 120000 });
+    // On world_v2 a successful login leaves the login flow and lands on the
+    // world map (PRoutes.world = '/'), not the retired v1 '#/rooms'. Login is a
+    // Matrix round-trip, so allow ample time.
+    await expect(page).not.toHaveURL(/\/login/, { timeout: 120000 });
+    await page.waitForTimeout(3000);
 
-    // Open settings
-    await page.getByRole("button", { name: intl.settings, exact: true }).click();
-    await page.getByRole("button", { name: intl.settings, exact: true }).click();
-
-    // Log out
+    // Open the settings panel (world_v2: ?right=settings) and log out.
+    await page.goto("/#/?right=settings");
     await page.getByRole("button", { name: intl.logout }).click();
     await page.getByRole("button", { name: intl.logout }).click();
-    await expect(page.getByRole("button", {name: intl.loginToAccount })).toBeVisible();
+    await expect(page.getByRole("button", { name: intl.loginToAccount })).toBeVisible({ timeout: 30000 });
   });
 });

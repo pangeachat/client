@@ -33,6 +33,7 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dar
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
@@ -40,6 +41,9 @@ import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
+
+// #Pangea
+// Pangea#
 
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -453,12 +457,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
+        // #Pangea
         ScaffoldMessenger.of(
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
               context,
-        ).showSnackBar(
+        ).showSnackBarAnnounced(
           SnackBar(content: Text(L10n.of(context).oneClientLoggedOut)),
         );
+        // Pangea#
 
         if (state != LoginState.loggedIn) {
           FluffyChatApp.router.go(PRoutes.world);

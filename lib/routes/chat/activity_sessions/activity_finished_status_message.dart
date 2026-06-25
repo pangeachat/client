@@ -47,6 +47,8 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
       GoogleAnalytics.completeActivity(
         activityPlan.activityId,
         controller.room.id,
+        versionPinHonored: !activityPlan.usedFallbackVersion,
+        fallbackCause: activityPlan.fallbackCause,
       );
 
       final lang = activityPlan.req.targetLanguage.split("-").first;

@@ -44,13 +44,17 @@ class ActivitySessionButtons extends StatelessWidget {
                   spacing: 16.0,
                   children: [
                     if (description != null)
-                      Text(
-                        description,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                      Semantics(
+                        label: description,
+                        enabled: false,
+                        child: Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     _SessionCTAButtons(sessionController),
                   ],
@@ -156,22 +160,8 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final hasActiveSession = controller.canJoinExistingSession;
 
-    // Gated by course progression (same gate the world map applies to pins):
-    // Start is disabled and shows the unlock reason. Reuses the locked-card
-    // wording in world_map_large_card.dart.
-    if (controller.isLocked) {
-      return Column(
-        spacing: 16.0,
-        children: [
-          const Text(
-            'Finish the previous mission to unlock',
-            textAlign: TextAlign.center,
-          ),
-          _CTAButton(L10n.of(context).start, null),
-        ],
-      );
-    }
-
+    // Nothing is gated: every activity is always playable (#7186). Progression
+    // only ranks content on the world map, it never blocks Start here.
     return FutureBuilder(
       future: controller.neededCourseParticipants,
       builder: (context, snapshot) {

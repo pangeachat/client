@@ -12,9 +12,6 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/features/quests/user_stars.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -53,17 +50,10 @@ class NotStartedSessionController extends State<NotStartedSession>
     implements ActivitySessionStateController {
   final _goalsHandler = GoalsSubscriptionHandler();
 
-  /// Whether this activity is gated behind earlier-mission progression.
-  /// Resolved async in [didChangeDependencies]; fail-open (false) for standalone
-  /// activities and any resolution failure, matching the world-map gate.
-  bool _isLocked = false;
-  bool get isLocked => _isLocked;
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _goalsHandler.init(widget.course?.id, context, setState, () => mounted);
-    _resolveLock();
   }
 
   @override
@@ -160,46 +150,7 @@ class NotStartedSessionController extends State<NotStartedSession>
     NavigationUtil.goToSpaceRoute(joinedActivityRoomId!, [], context);
   }
 
-  /// Resolve whether this activity is locked by the launching course's
-  /// progression gate — the same gate the world map applies to pins
-  /// (quests.instructions.md). Fail-open: a standalone activity, an already-open
-  /// joinable session, a missing course plan, or any error reads unlocked.
-  Future<void> _resolveLock() async {
-    final course = widget.course;
-    if (course == null) return;
-    // An open joinable session means the activity is reachable regardless of the
-    // gate (mirrors the map: a joinable pin is never shown locked).
-    if (canJoinExistingSession) return;
-    final uuid = course.coursePlan?.uuid;
-    if (uuid == null) return;
-    final client = Matrix.of(context).client;
-    try {
-      final outline = await QuestRepo.outline(uuid);
-      final courseLo = outline.toCourseLoOutline(
-        starsToUnlock:
-            course.teacherMode.starsToUnlockObjective ??
-            kDefaultStarsToUnlockObjective,
-      );
-      final gate = buildLoGate(
-        outlines: [courseLo],
-        starsByActivity: userStarsByActivity(client),
-      );
-      final loRefs = courseLo.activityIdsByLo.entries
-          .where((e) => e.value.contains(widget.activityId))
-          .map((e) => e.key);
-      final locked = gate.isPinLocked(loRefs);
-      if (mounted && locked != _isLocked) {
-        setState(() => _isLocked = locked);
-      }
-    } catch (_) {
-      // Fail open on any error.
-    }
-  }
-
   void startNewActivity() {
-    // Gated by course progression — Start is disabled, but guard here too so a
-    // `?launch` deep link can't bypass the lock.
-    if (_isLocked) return;
     widget.scrollController.jumpTo(0);
     final course = widget.course;
     // With a course, launch scoped to it; otherwise launch the activity

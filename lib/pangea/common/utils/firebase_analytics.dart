@@ -32,6 +32,20 @@ class GoogleAnalytics {
           TargetPlatform.android,
           TargetPlatform.iOS,
         }.contains(defaultTargetPlatform);
+    // Web/desktop reads the Firebase analytics config from the env
+    // (GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64), which is only set in deploy
+    // builds. Local dev has none, so skip analytics init rather than crash
+    // startup on the null-assert in DefaultFirebaseOptions.currentPlatform.
+    // analytics stays null and every call site already uses analytics?.
+    final webFirebaseOptions = Environment.googleAnalyticsFirebaseOptionsBase64;
+    if (!isNativeMobile &&
+        (webFirebaseOptions == null || webFirebaseOptions.isEmpty)) {
+      debugPrint(
+        'Skipping Firebase analytics init: no '
+        'GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64 configured.',
+      );
+      return;
+    }
     final FirebaseApp app;
     if (isNativeMobile) {
       app = Firebase.apps.isNotEmpty
@@ -46,17 +60,6 @@ class GoogleAnalytics {
     analytics = FirebaseAnalytics.instanceFor(app: app);
     // Client is not automatically set on web
     await _setClientVersion();
-
-    if (Environment.analyticsDebugEnabled) {
-      // Note: Doesnt currently work on Web
-      try {
-        await analytics?.setDefaultEventParameters({
-          "traffic_type": "internal",
-        });
-      } catch (_) {
-        // i guess were on web and have it enabled anyway
-      }
-    }
 
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
@@ -107,17 +110,9 @@ class GoogleAnalytics {
   }
 
   static void logEvent(String name, {Map<String, Object>? parameters}) {
-    // Add params when possible, web doesnt automatically add as of mar/09/2026
-    final finalParameters = Environment.analyticsDebugEnabled && kIsWeb
-        ? {...?parameters, "traffic_type": "internal"}
-        : parameters;
-
     debugPrint("event: $name - parameters: $parameters");
 
-    // Only actually send to sentry if were not in debug mode or dev mode is on
-    if (!kDebugMode || Environment.analyticsDebugEnabled) {
-      analytics?.logEvent(name: name, parameters: finalParameters);
-    }
+    analytics?.logEvent(name: name, parameters: parameters);
   }
 
   static void prepareLogin(String method) {
@@ -220,17 +215,37 @@ class GoogleAnalytics {
     );
   }
 
-  static void startActivity(String activityId, String roomId) {
+  static void startActivity(
+    String activityId,
+    String roomId, {
+    bool? versionPinHonored,
+    String? fallbackCause,
+  }) {
     logEvent(
       'start_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
+      parameters: {
+        'activity_id': activityId,
+        'room_id': roomId,
+        'version_pin_honored': ?versionPinHonored,
+        'fallback_cause': ?fallbackCause,
+      },
     );
   }
 
-  static void completeActivity(String activityId, String roomId) {
+  static void completeActivity(
+    String activityId,
+    String roomId, {
+    bool? versionPinHonored,
+    String? fallbackCause,
+  }) {
     logEvent(
       'complete_activity',
-      parameters: {'activity_id': activityId, 'room_id': roomId},
+      parameters: {
+        'activity_id': activityId,
+        'room_id': roomId,
+        'version_pin_honored': ?versionPinHonored,
+        'fallback_cause': ?fallbackCause,
+      },
     );
   }
 
@@ -272,12 +287,16 @@ class GoogleAnalytics {
     );
   }
 
-  static FirebaseAnalyticsObserver getAnalyticsObserver() {
+  static FirebaseAnalyticsObserver? getAnalyticsObserver() {
+    // analytics is null when Firebase init was skipped (no env config, e.g.
+    // local dev). Return null so the router simply runs without the observer
+    // rather than failing to build. See initialize().
+    final analytics = GoogleAnalytics.analytics;
     if (analytics == null) {
-      throw Exception("Firebase Analytics not initialized");
+      return null;
     }
     return FirebaseAnalyticsObserver(
-      analytics: analytics!,
+      analytics: analytics,
       nameExtractor: (settings) {
         final name = settings.name?.trim();
         if (name == null || name.isEmpty) {

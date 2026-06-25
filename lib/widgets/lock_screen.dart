@@ -79,7 +79,13 @@ class _LockScreenState extends State<LockScreen> {
                 shrinkWrap: true,
                 children: [
                   Center(
-                    child: Image.asset('assets/info-logo.png', width: 256),
+                    child: Image.asset(
+                      'assets/info-logo.png',
+                      width: 256,
+                      // #Pangea
+                      excludeFromSemantics: true,
+                      // Pangea#
+                    ),
                   ),
                   TextField(
                     controller: _textEditingController,

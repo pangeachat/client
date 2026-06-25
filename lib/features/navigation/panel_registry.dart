@@ -246,7 +246,10 @@ abstract class PanelRegistry {
       parent: 'settings',
       minWidth: 360,
       reasonableMinWidth: 440,
-      idealWidth: 600,
+      // Match the `settings` menu width: a page replaces the folded menu in the
+      // same slot (foldsParentAlways), so an unequal ideal made the panel resize
+      // and the close/back icon jump when drilling in or out (#7146).
+      idealWidth: 520,
       priority: 55,
       siblingGroups: {'settingsdetail'},
       pushable: true,

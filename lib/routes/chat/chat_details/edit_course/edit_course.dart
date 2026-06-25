@@ -15,6 +15,7 @@ import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -105,7 +106,7 @@ class EditCourseController extends State<EditCourse> {
     );
 
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           content: Text(
             resp.isError
@@ -114,6 +115,7 @@ class EditCourseController extends State<EditCourse> {
             textAlign: TextAlign.center,
           ),
         ),
+        assertive: resp.isError,
       );
     }
 
@@ -225,6 +227,9 @@ class EditCourseController extends State<EditCourse> {
                                                 width: 200.0,
                                                 height: 200.0,
                                                 fit: BoxFit.cover,
+                                                semanticLabel: L10n.of(
+                                                  context,
+                                                ).courseImage,
                                               )
                                             : ImageByUrl(
                                                 imageUrl: _room?.avatar,
@@ -246,6 +251,9 @@ class EditCourseController extends State<EditCourse> {
                                         right: 0,
                                         child: FloatingActionButton.small(
                                           onPressed: _setAvatarAction,
+                                          tooltip: L10n.of(
+                                            context,
+                                          ).editRoomAvatar,
                                           child: const Icon(
                                             Icons.camera_alt_outlined,
                                           ),

@@ -44,7 +44,9 @@ class FluffyChatApp extends StatelessWidget {
   static final GoRouter router = GoRouter(
     routes: AppRoutes.routes,
     // #Pangea
-    observers: [GoogleAnalytics.getAnalyticsObserver()],
+    // Null-aware element: the analytics observer is absent when Firebase init
+    // was skipped (no env config, e.g. local dev).
+    observers: [?GoogleAnalytics.getAnalyticsObserver()],
     redirect: (context, state) {
       // Permanent shims from pre-world_v2 /rooms/... paths first (on a redirect
       // the re-run handles panels). Otherwise keep open `?right=`/`?left=`

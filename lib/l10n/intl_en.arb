@@ -4915,5 +4915,31 @@
     "sevenDaysFree": "7 DAYS FREE",
     "manageTrialInSettings": "Manage your trial anytime in\nSubscription Settings",
     "noCreditCardRequired": "No credit card required.",
-    "proFeatures": "PRO"
+    "proFeatures": "PRO",
+    "widenSearch": "Widen search",
+    "scrollToBottom": "Scroll to bottom",
+    "@scrollToBottom": {},
+    "courseImage": "Course image",
+    "@courseImage": {},
+    "avatarPreview": "Avatar preview",
+    "@avatarPreview": {},
+    "activityPhoto": "Activity photo",
+    "@activityPhoto": {},
+    "emotePreview": "Emote preview: {name}",
+    "@emotePreview": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "activityLabel": "Activity: {title}",
+    "@activityLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "resetMapView": "Reset map view"
 }

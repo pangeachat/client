@@ -24,6 +24,26 @@ void main() {
       expect(parseOpenPanels(u(loc)).right.single, token);
     });
 
+    test('a browser-normalized construct param (literal commas inside braces) '
+        'survives the cold-boot parse — selection not shattered (#7079)', () {
+      // On a refresh/cold boot the browser normalizes the fragment in
+      // window.location, decoding the encoded construct param's %2C back to
+      // literal commas inside literal braces (it keeps %22 for the quotes). A
+      // naive comma split would shatter the token mid-JSON, jsonDecode would
+      // fail, and the construct detail would fall back to the summary grid.
+      // Brace-aware splitting keeps the param whole.
+      final uri = u(
+        '/?right=vocab:{%22lemma%22:%22campus%22,%22type%22:%22vocab%22,'
+        '%22cat%22:%22noun%22},analytics:vocab',
+      );
+      final right = parseOpenPanels(uri).right;
+      expect(right.map((t) => t.type), ['vocab', 'analytics']);
+      expect(
+        right.first.param,
+        '{"lemma":"campus","type":"vocab","cat":"noun"}',
+      );
+    });
+
     test('atStart blooms a detail to the left of an existing summary', () {
       var loc = WorkspaceNav.openRight(
         u('/chats'),
@@ -463,6 +483,33 @@ void main() {
         parseOpenPanels(u(loc)).right.any((t) => t.type == 'settings'),
         isTrue,
       ); // menu still there
+    });
+
+    test('the profile editor is a single-segment leaf, so its back returns to '
+        'the menu in one step — not via a phantom profile parent (#7147)', () {
+      // The Settings menu opens the editor as `profile`, NOT `profile/edit`.
+      // Both render the same editor, so a nested `profile/edit` leaf made the
+      // back arrow popPage to an identical-looking `profile` page first,
+      // forcing a second click. A single-segment param has no `/`, so the
+      // panel treats its back as a plain close that reveals the menu in one
+      // step.
+      final opened = WorkspaceNav.openSettings(u('/'), page: 'profile');
+      final page = parseOpenPanels(
+        u(opened),
+      ).right.firstWhere((t) => t.type == 'settingspage');
+      expect(page.param, 'profile'); // single segment, not 'profile/edit'
+      expect(
+        page.param!.contains('/'),
+        isFalse,
+      ); // back is a close, not popPage
+      // One close drops the page and lands on the menu.
+      final back = WorkspaceNav.closeRight(
+        u(opened),
+        const PanelToken('settingspage', 'profile'),
+      );
+      final right = parseOpenPanels(u(back)).right;
+      expect(right.any((t) => t.type == 'settingspage'), isFalse); // page gone
+      expect(right.single.type, 'settings'); // menu remains, one step
     });
 
     test('settingsBack: a leaf pops to its parent page; a top-level page '

@@ -79,12 +79,19 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
     }
     // No course selected (e.g. opened from World): find a joined course that
     // includes this activity. Null L2 skips the language filter.
+    //
+    // Bounded: matchingCourseSpaces reads each joined course's quest outline
+    // from the CMS, and those reads are sequential within a course, so a slow
+    // or stalled backend could leave this resolve spinner up far longer than a
+    // user will wait (#7085, #7159). A miss just means the activity opens
+    // unscoped, so cap the whole resolve and fall through on timeout. Mirrors
+    // launch_activity_session's bound on the same call.
     try {
       final spaces = await ActivityCourseResolver.matchingCourseSpaces(
         Matrix.of(context).client,
         widget.activityId,
         null,
-      );
+      ).timeout(const Duration(seconds: 10));
       if (!mounted) return;
       setState(() {
         _parentId = spaces.firstOrNull?.id;

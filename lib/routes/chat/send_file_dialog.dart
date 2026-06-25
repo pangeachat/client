@@ -14,7 +14,11 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/size_string.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/dialog_text_field.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../../utils/resize_video.dart';
+
+// #Pangea
+// Pangea#
 
 class SendFileDialog extends StatefulWidget {
   final Room room;
@@ -123,13 +127,16 @@ class SendFileDialogState extends State<SendFileDialog> {
             milliseconds: retryAfterMs + 1000,
           );
 
-          scaffoldMessenger.showSnackBar(
+          // #Pangea
+          scaffoldMessenger.showSnackBarAnnounced(
             SnackBar(
               content: Text(
                 l10n.serverLimitReached(retryAfterDuration.inSeconds),
               ),
             ),
+            assertive: true,
           );
+          // Pangea#
           await Future.delayed(retryAfterDuration);
 
           scaffoldMessenger.showLoadingSnackBar(l10n.sendingAttachment);
@@ -146,7 +153,8 @@ class SendFileDialogState extends State<SendFileDialog> {
     } catch (e) {
       scaffoldMessenger.clearSnackBars();
       final theme = Theme.of(context);
-      scaffoldMessenger.showSnackBar(
+      // #Pangea
+      scaffoldMessenger.showSnackBarAnnounced(
         SnackBar(
           backgroundColor: theme.colorScheme.errorContainer,
           closeIconColor: theme.colorScheme.onErrorContainer,
@@ -157,7 +165,9 @@ class SendFileDialogState extends State<SendFileDialog> {
           duration: const Duration(seconds: 30),
           showCloseIcon: true,
         ),
+        assertive: true,
       );
+      // Pangea#
       rethrow;
     }
 
@@ -268,6 +278,9 @@ class SendFileDialogState extends State<SendFileDialog> {
                                     }
                                     return Image.memory(
                                       bytes,
+                                      semanticLabel: widget.files.length == 1
+                                          ? L10n.of(context).image
+                                          : '${L10n.of(context).image}: ${widget.files[i].name}',
                                       height: 256,
                                       width: widget.files.length == 1
                                           ? 256 - 36

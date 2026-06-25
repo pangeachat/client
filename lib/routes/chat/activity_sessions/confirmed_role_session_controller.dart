@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -180,7 +181,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
     if (mounted) {
       setState(() {});
-      ScaffoldMessenger.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(
           content: Text(L10n.of(context).pingSent, textAlign: TextAlign.center),
           duration: const Duration(milliseconds: 2000),

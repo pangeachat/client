@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 class AvatarPageHeader extends StatelessWidget {
   final Widget avatar;
@@ -40,6 +41,9 @@ class AvatarPageHeader extends StatelessWidget {
                       elevation: 2,
                       onPressed: onAvatarEdit,
                       heroTag: null,
+                      // #Pangea
+                      tooltip: L10n.of(context).changeYourAvatar,
+                      // Pangea#
                       child: const Icon(Icons.camera_alt_outlined),
                     ),
                   ),

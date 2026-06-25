@@ -8,42 +8,11 @@ import 'package:fluffychat/features/overlay/overlay_container.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/overlay/top_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
-import 'package:fluffychat/features/overlay/widget_boundaries_model.dart';
 import '../../config/themes.dart';
 import '../../pangea/common/utils/error_handler.dart';
 import '../../widgets/matrix.dart';
 
 class OverlayUtil {
-  static WidgetBoundaries? getBoundingBox(BuildContext context) {
-    try {
-      final renderBox = context.findRenderObject() as RenderBox?;
-      debugPrint(
-        "RENDERBOX: $renderBox. HAS SIZE: ${renderBox?.hasSize}, CONTEXT: $context",
-      );
-      if (renderBox == null || !renderBox.hasSize) return null;
-
-      final size = renderBox.size;
-      final offset = renderBox.localToGlobal(Offset.zero);
-      final screenSize = MediaQuery.sizeOf(context);
-      final top = offset.dy;
-      final left = offset.dx;
-      final bottom = screenSize.height - (top + size.height);
-      final right = screenSize.width - (left + size.width);
-
-      debugPrint("SIZE: $size, OFFSET: $offset");
-
-      return WidgetBoundaries(
-        left: left,
-        right: right,
-        top: top,
-        bottom: bottom,
-      );
-    } catch (e, s) {
-      debugPrint("ERROR GETTING BOUNDING BOX: $e\n$s");
-      return null;
-    }
-  }
-
   static bool showOverlay({
     required BuildContext context,
     required Widget child,
@@ -82,13 +51,9 @@ class OverlayUtil {
                   child: child,
                 ),
               CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                outerContext: context,
                 child: child,
               ),
-              TopOverlayDisplayDetails() => TopOverlayWidget(
-                outerContext: context,
-                child: child,
-              ),
+              TopOverlayDisplayDetails() => TopOverlayWidget(child: child),
             },
           ],
         ),

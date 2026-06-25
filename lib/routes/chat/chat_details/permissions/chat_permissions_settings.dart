@@ -10,9 +10,13 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions_settings_view.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
+
+// #Pangea
+// Pangea#
 
 class ChatPermissionsSettings extends StatefulWidget {
   // #Pangea
@@ -59,9 +63,12 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
   }) async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
     if (!room.canSendEvent(EventTypes.RoomPowerLevels)) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(L10n.of(context).noPermission)));
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(L10n.of(context).noPermission)),
+        assertive: true,
+      );
+      // Pangea#
       return;
     }
     newLevel ??= await showPermissionChooser(
