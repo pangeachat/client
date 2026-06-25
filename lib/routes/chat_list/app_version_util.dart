@@ -12,7 +12,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -31,7 +30,6 @@ class AppVersionUtil {
     final currentBuildNumber = packageInfo.buildNumber;
 
     final Requests request = Requests(
-      choreoApiKey: Environment.choreoApiKey,
       accessToken: accessToken,
     );
 

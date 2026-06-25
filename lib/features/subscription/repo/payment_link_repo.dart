@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/features/subscription/repo/payment_link_request.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -31,7 +30,6 @@ class PaymentLinkRepo {
   static Future<Result<String>> _fetch(PaymentLinkRequest request) async {
     try {
       final Requests req = Requests(
-        choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
       final String reqUrl = Uri.encodeFull(

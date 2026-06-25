@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/features/subscription/repo/payment_history_response.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -53,7 +52,6 @@ class PaymentHistoryRepo {
     try {
       final Requests req = Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
-        choreoApiKey: Environment.choreoApiKey,
       );
       final Response res = await req.get(url: PApiUrls.paymentHistory);
 
