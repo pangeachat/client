@@ -13,7 +13,6 @@ import 'package:fluffychat/features/activity_sessions/activity_session_constants
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -101,7 +100,6 @@ class ActivityStatsMenu extends StatelessWidget {
         : AppConfig.goldLight;
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final activity = room.activityPlan;
 
     return ValueListenableBuilder(
       valueListenable: activeGoalNotifier,
@@ -280,17 +278,6 @@ class ActivityStatsMenu extends StatelessWidget {
                                   ),
                                 )
                                 .toList(),
-                          ),
-                        if (activity != null)
-                          ActivityVocabWidget(
-                            key: ValueKey(
-                              "activity-stats-menu-${activity.activityId}",
-                            ),
-                            vocab: activity.vocab,
-                            langCode: activity.req.targetLanguage,
-                            targetId: "activity-stats-menu-vocab",
-                            usedVocab: usedVocab,
-                            activityLangCode: activity.req.targetLanguage,
                           ),
                         if (_showWaitNotDone)
                           ElevatedButton(
