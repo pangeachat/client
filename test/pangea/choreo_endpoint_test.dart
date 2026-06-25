@@ -50,7 +50,6 @@ void main() {
   String userID = "";
   // Resolved in setUpAll from the shared endpoint-test env (the .env layer), so
   // this test points at the same environment as the synapse/cms endpoint tests.
-  late String apiKey;
   late String choreoApi;
 
   setUpAll(() {
@@ -58,7 +57,6 @@ void main() {
       EndpointTestEnv.load();
       assert(EndpointTestEnv.testUsername != null);
       assert(EndpointTestEnv.testPassword != null);
-      apiKey = EndpointTestEnv.choreoApiKey;
       choreoApi = "${EndpointTestEnv.choreoApi}/choreo";
 
       // Send login request
@@ -97,7 +95,6 @@ void main() {
         mock: true,
       ).toJson();
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -120,7 +117,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -150,7 +146,6 @@ void main() {
         ).toJson();
 
         final Requests req = Requests(
-          choreoApiKey: apiKey,
           accessToken: authToken,
         );
         final Response res = await req.post(
@@ -178,7 +173,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -204,7 +198,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -231,7 +224,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -256,7 +248,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -282,7 +273,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -322,7 +312,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -356,7 +345,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -386,7 +374,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -409,7 +396,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(
@@ -435,7 +421,6 @@ void main() {
       ).toJson();
 
       final Requests req = Requests(
-        choreoApiKey: apiKey,
         accessToken: authToken,
       );
       final Response res = await req.post(

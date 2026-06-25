@@ -6,7 +6,6 @@ import 'package:http/http.dart';
 
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -75,7 +74,6 @@ class AllProductsRepo {
   static Future<Result<List<SubscriptionDetails>>> _fetch() async {
     try {
       final Requests req = Requests(
-        choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
       final Response res = await req.get(url: PApiUrls.rcProductsChoreo);
