@@ -1,6 +1,6 @@
 # Agent QA Checklist — Pangea Chat Web Client
 
-The single **living checklist** for agent-driven, exploratory browser QA of the Flutter web client. Each item is derived from a feature doc (the *oracle*), organized by end-to-end **user journey**, and falsifiable: a cited `Expect` turns "is this a bug?" into a clean yes/no. Regenerate as features ship; turn each found bug into a regression item.
+The single **living checklist** for agent-driven, exploratory browser QA of the Flutter web client. Each item is derived from a feature doc (the _oracle_), organized by end-to-end **user journey**, and falsifiable: a cited `Expect` turns "is this a bug?" into a clean yes/no. Regenerate as features ship; turn each found bug into a regression item.
 
 ## How to use this
 
@@ -12,13 +12,13 @@ The single **living checklist** for agent-driven, exploratory browser QA of the 
 
 ### Tag legend
 
-| Tag | Meaning |
-|-----|---------|
-| `[gated]` | Behind a subscription, progression lock, role/power-level, or other entitlement — confirm the gate, don't report it as missing. |
-| `[staging-only]` | Needs live Synapse / RevenueCat / choreographer / seeded data — not reproducible in mock or on a fresh account. |
-| `[recently-changed]` | Recently shipped or migrated; higher prior on regressions — test these first. |
-| `[flaky]` | Timing-, debounce-, cache-, or LLM-nondeterminism-sensitive — observe-then-settle, assert end state not transitions. |
-| `[manual]` | Beyond automated reach (keyboard-only, contrast/zoom, screen-reader announcement) — requires a human pass. |
+| Tag                  | Meaning                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `[gated]`            | Behind a subscription, progression lock, role/power-level, or other entitlement — confirm the gate, don't report it as missing. |
+| `[staging-only]`     | Needs live Synapse / RevenueCat / choreographer / seeded data — not reproducible in mock or on a fresh account.                 |
+| `[recently-changed]` | Recently shipped or migrated; higher prior on regressions — test these first.                                                   |
+| `[flaky]`            | Timing-, debounce-, cache-, or LLM-nondeterminism-sensitive — observe-then-settle, assert end state not transitions.            |
+| `[manual]`           | Beyond automated reach (keyboard-only, contrast/zoom, screen-reader announcement) — requires a human pass.                      |
 
 ---
 
@@ -30,7 +30,7 @@ Apply these to **every** panel, sheet, dialog, and detail you open. They are the
 - [ ] **Back & close work and don't orphan state** — back button and panel close (X / back-arrow) leave a coherent state; closing a panel never silently changes map scope; closing a child reveals its master. _(routing.instructions.md)_
 - [ ] **Loading / empty / error states render** — never an infinite spinner or unhandled raw error: loading shows shimmer/placeholder, empty offers a next step (e.g. map "widen" affordance, language fallback list), error shows a handled indicator. _(routing.instructions.md; world-map.instructions.md; language-list.instructions.md)_
 - [ ] **Semantic / a11y completeness** — every interactive control on the canvas exposes a name + tooltip; no `button [ref]` with no name, no unlabelled icons/images. The map is opaque to a screen reader until explicitly named. _(accessibility.instructions.md; routing.instructions.md)_
-- [ ] **Responsive (column vs single)** — above ~833px two-column (nav rail + up to two panels per column over the map); at/below ~833px single-column (rail → bottom nav, one panel shows). Layout adapts cleanly across the breakpoint with no orphaned/overlapping chrome. _(layout.instructions.md; routing.instructions.md)_
+- [ ] **Responsive (column vs single)** — above ~833px two-column (nav rail + up to two panels per column over the map); at/below ~833px single-column (rail → bottom nav, one panel shows). Layout adapts cleanly across the breakpoint with no orphaned/overlapping chrome. _(routing.instructions.md)_
 
 ---
 
@@ -43,7 +43,7 @@ End-to-end: logged-out chooser → sign-in/up → L2 setup gate → land on the 
 - [ ] Logged in but L2 NOT set, try to load `/`, `/home`, or `/onboarding` — **Expect:** redirected to `/registration` until an L2 is chosen; the world map is unreachable with no L2. _(p_vguard.dart; [gated] [staging-only])_
 - [ ] Reopen login screen after a prior sign-in (keychain hint persisted) — **Expect:** "Welcome back! You previously signed in with {method}" banner; the matching SSO button is emphasized, others de-emphasized but available. Logout does NOT clear the hint. _(returning-user-detection.instructions.md; [returning-user] [flaky] [staging-only])_
 - [ ] Open signup screen on a fresh device / cleared keychain — **Expect:** all three options (Google, Apple, email) shown equally, no "welcome back" hint. _(returning-user-detection.instructions.md; [staging-only])_
-- [ ] Web caveat: reopen login in same browser, then again after clearing site storage — **Expect:** the "previously signed in" hint is best-effort on web (rides flutter_secure_storage, not iOS Keychain) and may NOT survive a storage clear. _(returning-user-detection.instructions.md; [returning-user] [flaky])_
+- [ ] Web caveat: reopen login in same browser, then again after clearing site storage — **Expect:** the "previously signed in" hint is best-effort on web (rides flutter*secure_storage, not iOS Keychain) and may NOT survive a storage clear. *(returning-user-detection.instructions.md; [returning-user] [flaky])\_
 - [ ] Enter a course code at the onboarding code step — **Expect:** converges on the same `SpaceCodeController.joinSpaceWithCode()` flow as the in-app page and bottom sheet; auto-joins identically. _(joining-courses.instructions.md Route 2)_
 - [ ] Pick a target language where the CMS `/api/languages` request is blocked / cache empty — **Expect:** the list still populates from the hardcoded fallback (`LanguageConstants.languageList`); selection never dead-ends. _(language-list.instructions.md)_
 
@@ -89,10 +89,10 @@ The spine of the product. The expensive bugs live at these seams (the LO-lock ga
 
 ### 2e. Join the course
 
-- [ ] Open a class link `/#/join_with_link?classcode=XYZ` logged in, not a member — **Expect:** navigates to `/join_with_link`, saves code to `SpaceCodeRepo`, redirects to `/home`; `joinCachedSpaceCode()` fires knock_with_code + join → user ends a joined member with no further interaction. _(joining-courses.instructions.md Route 1; [gated])_
+- [ ] Open a class link `/#/join_with_link?classcode=XYZ` logged in, not a member — **Expect:** navigates to `/join_with_link`, saves code to `SpaceCodeRepo`, redirects to `/home`; `joinCachedSpaceCode()` fires knock*with_code + join → user ends a joined member with no further interaction. *(joining-courses.instructions.md Route 1; [gated])\_
 - [ ] Open the join link while logged OUT, then complete account creation — **Expect:** the class code persists on disk across login; after creation `joinCachedSpaceCode()` auto-joins. Do NOT clear browser storage mid-journey. _(joining-courses.instructions.md Route 1; [gated] [flaky])_
 - [ ] Open `/join?classcode=XYZ` (the alias route) — **Expect:** identical pageBuilder to `/join_with_link`; auto-joins the same way. _(routes.dart)_
-- [ ] Enter-code page: type a valid code, submit — **Expect:** saves `recentCode`, POSTs knock_with_code, response `{roomIds, alreadyJoined, rateLimited}` drives `joinRoomById`; after sync navigates into the joined space. _(joining-courses.instructions.md Route 2; [gated])_
+- [ ] Enter-code page: type a valid code, submit — **Expect:** saves `recentCode`, POSTs knock*with_code, response `{roomIds, alreadyJoined, rateLimited}` drives `joinRoomById`; after sync navigates into the joined space. *(joining-courses.instructions.md Route 2; [gated])\_
 - [ ] Enter an invalid/nonexistent code — **Expect:** server-side validation fails, no invite/join; the join must not silently succeed. _(joining-courses.instructions.md Route 2; [gated])_
 - [ ] Enter a code for a space already joined — **Expect:** `alreadyJoined=true` resolves to the existing membership (navigates there), no duplicate join. _(joining-courses.instructions.md Route 2; [gated])_
 - [ ] Submit valid codes rapidly until `rateLimited=true` — **Expect:** client surfaces the rate-limited state, not a successful join. _(joining-courses.instructions.md Route 2; [gated] [flaky])_
@@ -118,7 +118,7 @@ The spine of the product. The expensive bugs live at these seams (the LO-lock ga
 - [ ] Wide viewport, left panel + right companion open: select a different section (Chats/Courses) in the rail — **Expect:** the rail selection REPLACES open left-column panels with that section; right-column companions stay open. _(routing.instructions.md)_
 - [ ] Wide viewport, live chat open on left: open a course from a pin/tile (not a rail button) — **Expect:** keeps the open chat and swaps only the course (content nav, not a section switch). _(routing.instructions.md)_
 - [ ] Click the Courses icon in the nav rail (≥1 joined course) — **Expect:** a left-column master with a flat list of joined-course tiles (image, name, participants, level, modules) + add-course options (start-my-own / browse / enter-code) below; URL carries the left token over `/`, not a `/courses` path. _(routing.instructions.md; routes.dart)_
-- [ ] As admin, open Invite-by-Email from the course card More menu, enter emails, submit — **Expect:** calls the Synapse invite_by_email endpoint with `{room_id, emails, message?}` using the teacher's token; toast confirmation (fire-and-forget); response `{emailed, errors}`. _(invite-by-email.instructions.md; [gated] [staging-only])_
+- [ ] As admin, open Invite-by-Email from the course card More menu, enter emails, submit — **Expect:** calls the Synapse invite*by_email endpoint with `{room_id, emails, message?}` using the teacher's token; toast confirmation (fire-and-forget); response `{emailed, errors}`. *(invite-by-email.instructions.md; [gated] [staging-only])\_
 - [ ] As a non-admin (power < 100), attempt Invite-by-Email — **Expect:** the action is gated to admins (power 100); a non-admin cannot successfully invite. _(invite-by-email.instructions.md; [gated])_
 - [ ] As admin on a wide layout, open a course management page (invite/edit/access) from the card — **Expect:** opens as a coexisting detail BESIDE the card (a `coursepage` token; card is master), not replacing it; closing reveals the card. Under width pressure it folds to a push (back arrow reopens card). _(routing.instructions.md; [recently-changed])_
 - [ ] Open a course management page on a narrow screen — **Expect:** single-column shows one panel: management page is a push over the card with a back arrow that reopens the card (master one step away, never discarded). _(routing.instructions.md; [recently-changed])_
@@ -218,10 +218,10 @@ Toolbar overlays + word cards over the live chat; writing-assistance ring and sp
 
 ### 4b. Phonetic transcription
 
-- [ ] Read the transcription line on a word card (any L1/L2, incl. Latin-script) — **Expect:** a pronunciation tailored to the user's L1 (e.g. "lluvia" → "YOO-vee-ah" for English L1); computed from lang_code + user_l1 (user_l2 doesn't affect it). _(phonetic-transcription-v2-design.instructions.md; [staging-only])_
+- [ ] Read the transcription line on a word card (any L1/L2, incl. Latin-script) — **Expect:** a pronunciation tailored to the user's L1 (e.g. "lluvia" → "YOO-vee-ah" for English L1); computed from lang*code + user_l1 (user_l2 doesn't affect it). *(phonetic-transcription-v2-design.instructions.md; [staging-only])\_
 - [ ] Open a word card for a heteronym whose POS/morph context uniquely matches one `ud_conditions` entry — **Expect:** exactly ONE transcription displayed (the matching one); not all pronunciations shown. _(phonetic-transcription-v2-design.instructions.md; [staging-only])_
-- [ ] Open a word card for a heteronym whose context does NOT narrow to one match — **Expect:** all pronunciations displayed (e.g. "hái / huán"), each with its own play button speaking its specific tts_phoneme. _(phonetic-transcription-v2-design.instructions.md; [staging-only])_
-- [ ] Open a vocab construct detail (cluster → vocab tracker → tap a construct) — **Expect:** pronunciation is the lemma's dictionary pronunciation (surface=lemma, lang_code=userL2Code; ud_conditions matched against lemma+POS, case-insensitive); NO per-inflected-form audio buttons (form pronunciation lives in chat). _(phonetic-transcription-v2-design.instructions.md; [recently-changed] [staging-only])_
+- [ ] Open a word card for a heteronym whose context does NOT narrow to one match — **Expect:** all pronunciations displayed (e.g. "hái / huán"), each with its own play button speaking its specific tts*phoneme. *(phonetic-transcription-v2-design.instructions.md; [staging-only])\_
+- [ ] Open a vocab construct detail (cluster → vocab tracker → tap a construct) — **Expect:** pronunciation is the lemma's dictionary pronunciation (surface=lemma, lang*code=userL2Code; ud_conditions matched against lemma+POS, case-insensitive); NO per-inflected-form audio buttons (form pronunciation lives in chat). *(phonetic-transcription-v2-design.instructions.md; [recently-changed] [staging-only])\_
 
 ### 4c. Word-level TTS
 
@@ -281,8 +281,8 @@ Cluster live counts, the Stars-vs-streams source distinction, master/detail with
 - [ ] With a live room chat open, tap a vocab item, then a grammar item, then a completed-activity session — **Expect:** vocab detail, grammar detail, and session review SHARE ONE detail slot across both columns — opening one closes the other two; the independent left-column live chat stays open. _(routing.instructions.md; [staging-only])_
 - [ ] Tap the Stars tracker in the cluster — **Expect:** opens the sessions analytics panel (right column). _(routing.instructions.md; [staging-only])_
 - [ ] Tap the level medal overhanging the powerups pill — **Expect:** opens the Level analytics tab as a right-column panel. _(routing.instructions.md; [staging-only])_
-- [ ] Open the Grammar tab and expand a feature box (e.g. Tense) — **Expect:** only `display:true` (feature,value) pairs for the target_language appear, ordered by `sequence_position`; produced tags color-coded by proficiency, unencountered tags visible but DIMMED (intentional, not hidden). _(grammar-analytics.instructions.md; [gated] [staging-only])_
-- [ ] Open a grammar tag detail with user_l1 set to a language with grammar-construct-meanings rows (e.g. ko) — **Expect:** feature title + per-value title/description render in the user's L1 from `POST /choreo/grammar_constructs` (not hardcoded client copy); a low-score L1 translation falls back to source_l1 text. _(grammar-analytics.instructions.md; [gated] [recently-changed] [staging-only])_
+- [ ] Open the Grammar tab and expand a feature box (e.g. Tense) — **Expect:** only `display:true` (feature,value) pairs for the target*language appear, ordered by `sequence_position`; produced tags color-coded by proficiency, unencountered tags visible but DIMMED (intentional, not hidden). *(grammar-analytics.instructions.md; [gated] [staging-only])\_
+- [ ] Open a grammar tag detail with user*l1 set to a language with grammar-construct-meanings rows (e.g. ko) — **Expect:** feature title + per-value title/description render in the user's L1 from `POST /choreo/grammar_constructs` (not hardcoded client copy); a low-score L1 translation falls back to source_l1 text. *(grammar-analytics.instructions.md; [gated] [recently-changed] [staging-only])\_
 - [ ] Open the Grammar tab unauthenticated / offline — **Expect:** the client falls back to `defaultMorphMapping` — a usable inventory still renders, not a failure. _(grammar-analytics.instructions.md; [flaky])_
 - [ ] Brand-new L2 (no morph construct ≥ Green / 50 XP): inspect Grammar vs Vocabulary — **Expect:** grammar constructs "unlock" only at Green (50 XP); sub-threshold constructs not yet surfaced as unlocked (discovery moment). Fresh accounts show empty/dimmed states that are correct, not failures. _(analytics-system.instructions.md; [gated] [staging-only])_
 - [ ] Tap Practice on the vocab/grammar analytics panel (Pro, with a live left chat) — **Expect:** practice (`right=practice:<type>`) opens as a bounded right-column panel that TAKES OVER the analytics surface (master + any detail close, can't coexist while active); the left-column live chat stays open. _(routing.instructions.md; [staging-only])_
@@ -321,15 +321,15 @@ Cluster live counts, the Stars-vs-streams source distinction, master/detail with
 
 Expand each journey over these axes. Sample the branches carrying real logic first: **subscription, lock, joined/unjoined** before cosmetic variations.
 
-| Axis | Variations to sample |
-|------|----------------------|
-| **Auth** | logged out → chooser; logged in + L2 set → workspace; logged in, no L2 → `/registration`; returning user (keychain hint) vs fresh device |
+| Axis             | Variations to sample                                                                                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Auth**         | logged out → chooser; logged in + L2 set → workspace; logged in, no L2 → `/registration`; returning user (keychain hint) vs fresh device                                              |
 | **Subscription** | free + account >7 days (paywalls fire); new user <7 days (trial window — everything unlocked); active web/Stripe sub; cross-platform sub (management blocked); promotional / lifetime |
-| **Progression** | first Mission (always unlocked) vs later gated Mission (locked); below vs at/above star threshold (default 10 vs teacher override); cross-course unlock; fail-open cold link |
-| **Membership** | discovered (not joined) vs joined; knock-pending vs approved; previously-left space; admin (power 100) vs non-admin |
-| **Data** | empty (new joiner, 0 stars, no morph constructs, empty viewport) vs populated; offline / CMS-unreachable fallback; stale-cache (1-day TTLs) |
-| **Language** | L1 vs L2 vs unknown-language message; single-flag vs region-ambiguous L2; regional-variant vs base in pickers; L1 with vs without grammar-construct-meanings rows |
-| **Layout** | wide two-column (>~833px) vs single-column (≤~833px); panel master/detail fold/unfold; bottom-sheet (narrow map content); cold-link leaf fallback vs live recency |
+| **Progression**  | first Mission (always unlocked) vs later gated Mission (locked); below vs at/above star threshold (default 10 vs teacher override); cross-course unlock; fail-open cold link          |
+| **Membership**   | discovered (not joined) vs joined; knock-pending vs approved; previously-left space; admin (power 100) vs non-admin                                                                   |
+| **Data**         | empty (new joiner, 0 stars, no morph constructs, empty viewport) vs populated; offline / CMS-unreachable fallback; stale-cache (1-day TTLs)                                           |
+| **Language**     | L1 vs L2 vs unknown-language message; single-flag vs region-ambiguous L2; regional-variant vs base in pickers; L1 with vs without grammar-construct-meanings rows                     |
+| **Layout**       | wide two-column (>~833px) vs single-column (≤~833px); panel master/detail fold/unfold; bottom-sheet (narrow map content); cold-link leaf fallback vs live recency                     |
 
 ---
 
@@ -338,7 +338,7 @@ Expand each journey over these axes. Sample the branches carrying real logic fir
 Read before judging a finding — most are false-negative traps where correct behavior looks like a bug.
 
 - **World-map tile-render gates the semantics tree.** On the world map the entire semantics tree stays at **2 nodes** until map tiles render, and `flutter_map` defers rendering until it gets a pointer interaction on its canvas (flutter#175465). A fresh navigate + long wait is not enough. **Wake it with a scroll on the map canvas at center `[700,400]` (screenshot-space), not on the nav bar** (2 → 52 nodes). An empty / 2-node tree is the load race, NOT a missing feature — run the wake-and-poll recipe before asserting absence. _(agent-browser-qa SKILL)_
-- **Two model docs disagree.** `layout.instructions.md` still describes the legacy GoRouter `/rooms` tree + a hardcoded 833px breakpoint, while `routing.instructions.md` + `routes.dart` describe the live token (`?left/?right/?m`) workspace that collapses the path to `/`. When a test fails, check which model the running build implements — `routes.dart` confirms the token model is live and legacy paths redirect. The ~833px number is still operative.
+- **Some legacy routing** `The legacy GoRouter `/rooms` tree + a hardcoded 833px breakpoint is replaced by the live token (`?left/?right/?m`) workspace that collapses the path to `/`. When a test fails, check which model the running build implements — `routes.dart` confirms the token model is live and legacy paths redirect. The ~833px number is still operative.
 - **Camera re-framing is debounced (~2s settle, `_fitSettleDelay`).** A deliberate move (search result, tapped pin) glides immediately; layout-driven re-framing waits. Assert on the FINAL settled framing, not intermediate frames, or screenshots are timing-flaky.
 - **Large-card rotation is a 5s wall-clock timer that only ticks with >3 eligible.** Hold still ~10–15s with >3 joinable/unlocked items in view to observe rotation; with ≤3 it is intentionally static (looks like a no-op).
 - **Open-session discovery is limited to JOINED courses today.** The map-wide open-session backend endpoint is deferred — green/joinable pins for non-joined courses simply won't appear. That's expected, not a bug. "Pinged" (hand glyph) is best-effort (scans recent messages, no persistent state) and can be absent/stale even when a host pinged.
