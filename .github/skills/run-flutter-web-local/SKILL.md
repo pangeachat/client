@@ -64,11 +64,20 @@ The dev server reads stdin from a FIFO so we can send it `r`/`q` from other shel
 
 ```bash
 [ -p /tmp/f8090 ] || mkfifo /tmp/f8090
-( sleep 100000000 > /tmp/f8090 & )   # holder keeps the FIFO open for writing
+# Keep ONE writer holding the fifo open, or flutter's stdin hits EOF and it quits
+# right after serving (you'll see the banner, then nothing listening on 8090). Two rules:
+#   • open it READ-WRITE (`<>`), not write-only — a RW holder never EOFs and never blocks.
+#   • reuse the existing holder via a pidfile. Do NOT guard on `pgrep -f sleep` (stale
+#     holders from old sessions make that match and skip creation), and do NOT spawn a
+#     fresh holder every launch (they pile up as orphaned `sleep` processes).
+HPF=/tmp/f8090.holder
+if ! { [ -f "$HPF" ] && kill -0 "$(cat "$HPF" 2>/dev/null)" 2>/dev/null; }; then
+  ( exec 3<>/tmp/f8090; exec sleep 2147483647 ) & echo $! > "$HPF"
+fi
 # then launch flutter with `< /tmp/f8090`
 ```
 
-Send commands with `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only.
+Send commands with `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only — the pidfile guard above keeps it to one. Orphaned `sleep 100000000` holders from the old write-only pattern are harmless; clear them with `pkill -f 'sleep 100000000'` while no client is running.
 
 ## Recovery from a zombie pile / wedged build
 
