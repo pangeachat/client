@@ -46,6 +46,14 @@ SECRET_MAP=(
   "TEST_MATRIX_PASSWORD=/staging/test-user/matrix-credentials#password"
 )
 
+# Static, non-secret defaults written verbatim (no AWS call). The staging Firebase analytics
+# web config is public — it ships in the web bundle — and is the sensible default for local
+# builds (prod analytics is for prod builds only). Without it, local web analytics is off.
+# See pangeachat/client#7262.
+STATIC_MAP=(
+  "GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64=ewogICAiYXBpS2V5IjoiQUl6YVN5QWpjNmZJWU44UUFHZ1lzMHh2SWlaVUVQdVJLcUFZMi1zIiwKICAgImF1dGhEb21haW4iOiJwYW5nZWEtY2hhdC1zdGFnaW5nLWFuYWx5dGljcy5maXJlYmFzZWFwcC5jb20iLAogICAicHJvamVjdElkIjoicGFuZ2VhLWNoYXQtc3RhZ2luZy1hbmFseXRpY3MiLAogICAic3RvcmFnZUJ1Y2tldCI6InBhbmdlYS1jaGF0LXN0YWdpbmctYW5hbHl0aWNzLmZpcmViYXNlc3RvcmFnZS5hcHAiLAogICAibWVzc2FnaW5nU2VuZGVySWQiOiI1MDE3MDcyMzkwNjgiLAogICAiYXBwSWQiOiIxOjUwMTcwNzIzOTA2ODp3ZWI6ZWFlZWI3Nzk4YjI4NjkzZDkwNDc1OSIsCiAgICJtZWFzdXJlbWVudElkIjoiRy0yTjJHWkxSTVpWIgp9"
+)
+
 fetch_secret() {
   local secret_name="$1"
   local json_key="${2:-}"
@@ -60,7 +68,7 @@ fetch_secret() {
 
 # Track managed keys as space-delimited string (bash 3-compatible — no `declare -A`).
 MANAGED_VARS=""
-for entry in "${SECRET_MAP[@]}"; do
+for entry in "${SECRET_MAP[@]}" "${STATIC_MAP[@]}"; do
   MANAGED_VARS="$MANAGED_VARS ${entry%%=*}"
 done
 
@@ -89,6 +97,11 @@ if [[ -f "$OUT" ]]; then
 fi
 
 printf '# --- Synced by sync-dev-secrets.sh on %s ---\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$TMP_FILE"
+
+# Static values, written verbatim (no AWS call).
+for entry in "${STATIC_MAP[@]}"; do
+  printf '%s\n' "$entry" >> "$TMP_FILE"
+done
 
 for entry in "${SECRET_MAP[@]}"; do
   env_var="${entry%%=*}"
