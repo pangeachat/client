@@ -37,13 +37,6 @@ class SettingsNotificationsView extends StatelessWidget {
         (rules: pushRules?.underride ?? [], kind: PushRuleKind.underride),
     ];
     return Scaffold(
-      // #Pangea
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   centerTitle: FluffyThemes.isColumnMode(context),
-      //   title: Text(L10n.of(context).notifications),
-      // ),
-      // Pangea#
       body: MaxWidthBody(
         child: StreamBuilder(
           stream: Matrix.of(context).client.onSync.stream.where(

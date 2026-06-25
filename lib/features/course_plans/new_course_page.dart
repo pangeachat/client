@@ -285,6 +285,7 @@ class NewCoursePageState extends State<NewCoursePage> {
               ? L10n.of(context).addCoursePlan
               : L10n.of(context).startOwn,
         ),
+        centerTitle: false,
         actions: spaceId == null
             ? [
                 IconButton(

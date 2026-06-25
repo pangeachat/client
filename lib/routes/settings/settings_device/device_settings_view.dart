@@ -14,13 +14,6 @@ class DevicesSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // #Pangea
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   centerTitle: FluffyThemes.isColumnMode(context),
-      //   title: Text(L10n.of(context).devices),
-      // ),
-      // Pangea#
       body: MaxWidthBody(
         child: FutureBuilder<bool>(
           future: controller.loadUserDevices(context),

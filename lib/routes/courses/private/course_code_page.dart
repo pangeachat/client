@@ -81,6 +81,7 @@ class CourseCodePageState extends State<CourseCodePage> {
           onPressed: () => context.go('/courses'),
         ),
         title: Text(L10n.of(context).joinWithCode),
+        centerTitle: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.close),

@@ -329,21 +329,29 @@ class SpaceDetailsContent extends StatelessWidget {
         // matching the right column's leading close affordance. Dropping it
         // would leave the course card with no way to close. See
         // routing.instructions.md.
-        if (controller.widget.embeddedCloseButton != null)
-          Align(
-            alignment: AlignmentDirectional.centerStart,
-            child: controller.widget.embeddedCloseButton,
-          ),
         Row(
-          crossAxisAlignment: isColumnMode
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: .center,
           children: [
-            // #Pangea
+            if (controller.widget.embeddedCloseButton != null)
+              controller.widget.embeddedCloseButton!,
+            SizedBox(),
             if (room.joinCode != null)
-              SizedBox(width: 16 + (IconTheme.of(context).size ?? 24)),
-            // Pangea#
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ShareRoomButton(
+                  room: room,
+                  tooltip: L10n.of(context).shareCourse,
+                  child: const Icon(Icons.share_outlined),
+                ),
+              ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Flexible(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -371,16 +379,8 @@ class SpaceDetailsContent extends StatelessWidget {
                           displayname,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          // #Pangea
-                          // style: TextStyle(
-                          // fontSize: isColumnMode ? 32.0 : 16.0,
-                          // fontWeight: isColumnMode
-                          //     ? FontWeight.normal
-                          //     : FontWeight.bold,
-                          //   ),
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
-                        // Pangea#
                         if (room.coursePlan != null)
                           CourseInfoChips(
                             room.coursePlan!.uuid,
@@ -393,15 +393,6 @@ class SpaceDetailsContent extends StatelessWidget {
                 ],
               ),
             ),
-            if (room.joinCode != null)
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: ShareRoomButton(
-                  room: room,
-                  tooltip: L10n.of(context).shareCourse,
-                  child: const Icon(Icons.share_outlined),
-                ),
-              ),
           ],
         ),
         SizedBox(height: isColumnMode ? 24.0 : 12.0),

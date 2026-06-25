@@ -24,20 +24,6 @@ class SettingsLearningView extends StatelessWidget {
       builder: (context, _) {
         final dialogContent = SafeArea(
           child: Scaffold(
-            // #Pangea
-            // appBar: AppBar(
-            //   automaticallyImplyLeading: false,
-            //   centerTitle: true,
-            //   title: Text(L10n.of(context).learningSettings),
-            //   leading: controller.widget.isDialog
-            //       ? IconButton(
-            //           tooltip: L10n.of(context).close,
-            //           icon: const Icon(Icons.close),
-            //           onPressed: controller.onSettingsClose,
-            //         )
-            //       : null,
-            // ),
-            // Pangea#
             body: Column(
               children: [
                 Expanded(
