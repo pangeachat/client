@@ -157,7 +157,11 @@ class NotStartedSessionController extends State<NotStartedSession>
     // standalone via its first-class route.
     context.go(
       course != null
-          ? PRoutes.activity(course.id, widget.activityId, launch: true)
+          ? WorkspaceNav.openCourseActivity(
+              course.id,
+              widget.activityId,
+              launch: true,
+            )
           : PRoutes.activityStandalone(widget.activityId, launch: true),
     );
   }

@@ -7,7 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
@@ -256,34 +256,18 @@ class _ObjectiveSection extends StatelessWidget {
                       context.go('/${ref.activityId}');
                       return;
                     }
-                    final uri = GoRouter.of(
-                      context,
-                    ).routeInformationProvider.value.uri;
-                    // Rebuild the query from the RAW parts, not
-                    // uri.replace(queryParameters:) — the latter re-encodes the
-                    // already-encoded `m=course:!id` filter (`:`→`%3A`, `!`→`%21`),
-                    // which the raw-query parser then mis-reads, de-scoping the
-                    // map and blanking the course panel. Keep `m=` (course scope)
-                    // verbatim and add the activity. Drop the `left=course` card
-                    // AND the `right=` review surface: an activity is an
-                    // immersive task, so it REPLACES other panels rather than
-                    // stacking on them — backing out returns to the course map,
-                    // never a stale vocab/analytics page. See routing.instructions.md.
-                    final parts = WorkspaceQuery.parts(uri.query);
-                    WorkspaceQuery.removeKeys(parts, {
-                      'left',
-                      'right',
-                      'activity',
-                      'autoplay',
-                    });
-                    parts.add('activity=${ref.activityId}');
-                    // Tapping a video card opens the plan with that video
-                    // autostarting (muted) — see the carousel.
-                    if (ref.plan.heroBlock?.isVideo == true ||
-                        ref.plan.heroBlock?.isYoutube == true) {
-                      parts.add('autoplay=0');
-                    }
-                    context.go(WorkspaceQuery.location('/', parts));
+                    // Immersive in-course open: the token producer drops the
+                    // `left=course` card (and any right panel) and keeps the
+                    // `?m=course:` scope, so the plan takes the card's slot and
+                    // backs out to it. A video hero autostarts (muted).
+                    context.go(
+                      WorkspaceNav.openCourseActivity(
+                        room!.id,
+                        ref.activityId,
+                        autoplay: ref.plan.heroBlock?.isVideo == true ||
+                            ref.plan.heroBlock?.isYoutube == true,
+                      ),
+                    );
                   },
                   child: Stack(
                     children: [
