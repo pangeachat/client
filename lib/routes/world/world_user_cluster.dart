@@ -530,28 +530,20 @@ class _LanguageFlag extends StatelessWidget {
   static const double _w = 52.0;
   static const double _h = 36.0;
   static const double _radius = 6.0;
+  static const double _borderWidth = 2.0;
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    final codeWidget = Container(
-      width: _w,
-      height: _h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary,
-        borderRadius: BorderRadius.circular(_radius),
-      ),
-      child: Text(
-        language.langCodeShort.toUpperCase(),
-        style: TextStyle(
-          color: theme.colorScheme.onPrimary,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-          height: 1.0,
-        ),
+    final codeWidget = Text(
+      language.langCodeShort.toUpperCase(),
+      style: TextStyle(
+        color: theme.colorScheme.onPrimary,
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        height: 1.0,
       ),
     );
 
@@ -573,20 +565,30 @@ class _LanguageFlag extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
-            child: language.shouldShowFlag
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(_radius),
-                    child: SvgPicture.network(
-                      language.svgUrl.toString(),
-                      width: _w,
-                      height: _h,
-                      fit: BoxFit.cover,
-                      errorBuilder: (ctx, _, _) => codeWidget,
-                      placeholderBuilder: (_) =>
-                          const SizedBox(width: _w, height: _h),
-                    ),
-                  )
-                : codeWidget,
+            child: Container(
+              width: _w,
+              height: _h,
+              padding: .all(_borderWidth),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                borderRadius: BorderRadius.circular(_radius + _borderWidth),
+              ),
+              child: language.shouldShowFlag
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(_radius),
+                      child: SvgPicture.network(
+                        language.svgUrl.toString(),
+                        width: _w,
+                        height: _h,
+                        fit: BoxFit.cover,
+                        errorBuilder: (ctx, _, _) => codeWidget,
+                        placeholderBuilder: (_) =>
+                            const SizedBox(width: _w, height: _h),
+                      ),
+                    )
+                  : codeWidget,
+            ),
           ),
         ),
       ),
