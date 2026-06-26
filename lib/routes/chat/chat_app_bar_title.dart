@@ -51,15 +51,17 @@ class ChatAppBarTitle extends StatelessWidget {
         children: [
           Hero(
             tag: 'content_banner',
-            child: Avatar(
-              mxContent: room.avatar,
-              name: room.getLocalizedDisplayname(
-                MatrixLocals(L10n.of(context)),
+            child: ExcludeSemantics(
+              child: Avatar(
+                mxContent: room.avatar,
+                name: room.getLocalizedDisplayname(
+                  MatrixLocals(L10n.of(context)),
+                ),
+                // #Pangea
+                userId: room.directChatMatrixID,
+                // Pangea#
+                size: 32,
               ),
-              // #Pangea
-              userId: room.directChatMatrixID,
-              // Pangea#
-              size: 32,
             ),
           ),
           const SizedBox(width: 12),
