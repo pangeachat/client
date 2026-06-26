@@ -334,7 +334,7 @@ class WorldMapController extends State<WorldMap>
     if (mounted) setState(() => _loadingPins = true);
 
     try {
-      _pinsManager.loadWorldScopedPins(
+      await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
         l2: _filterState.filter.l2Only ? user.userL2Code : null,
         l1: user.userL1Code,

@@ -276,9 +276,7 @@ class WorldMapView extends StatelessWidget {
         // World pins are viewport-bounded: load once the camera is ready, then
         // re-load (debounced) as the user pans/zooms. Course pins are
         // context-bound and unaffected.
-        onMapReady: () {
-          if (controller.isWorld) controller.loadWorldPins();
-        },
+        onMapReady: controller.loadWorldPins,
         onPositionChanged: (_, _) => controller.onMapPositionChanged(),
       ),
       children: [
