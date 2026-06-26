@@ -14,13 +14,9 @@ class NaviRailItem extends StatelessWidget {
   final Widget icon;
   final Widget? selectedIcon;
   final bool Function(Room)? unreadBadgeFilter;
-  // #Pangea
   final Color? backgroundColor;
   final BorderRadius? borderRadius;
-  final bool expanded;
   final double naviRailWidth;
-  final double expandedSectionWidth;
-  // Pangea#
 
   const NaviRailItem({
     required this.toolTip,
@@ -29,166 +25,94 @@ class NaviRailItem extends StatelessWidget {
     required this.icon,
     this.selectedIcon,
     this.unreadBadgeFilter,
-    // #Pangea
     required this.naviRailWidth,
-    required this.expandedSectionWidth,
     this.backgroundColor,
     this.borderRadius,
-    this.expanded = false,
-    // Pangea#
     super.key,
   });
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    // #Pangea
-    // final borderRadius = BorderRadius.circular(AppConfig.borderRadius);
     final borderRadius = this.borderRadius ?? BorderRadius.circular(10.0);
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final height = naviRailWidth - (isColumnMode ? 16.0 : 12.0);
-    // Pangea#
+
     final icon = isSelected ? selectedIcon ?? this.icon : this.icon;
     final unreadBadgeFilter = this.unreadBadgeFilter;
-    // #Pangea
-    // return HoverBuilder(
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onTap,
         child: HoverBuilder(
-          // Pangea#
           builder: (context, hovered) {
-            // #Pangea
-            // return SizedBox(
-            //   height: 72,
-            //   width: FluffyThemes.navRailWidth,
-            return SizedBox(
+            return Container(
               height: height,
+              decoration: BoxDecoration(color: theme.colorScheme.surface),
               child: Stack(
                 children: [
-                  // #Pangea
-                  // The expanded ListTile duplicates the label already carried
-                  // by the interactive icon button + its tooltip below, so
-                  // ExcludeSemantics prevents VoiceOver double-reading (#7185).
-                  ExcludeSemantics(
-                    child: AnimatedPositioned(
+                  Positioned(
+                    top: 8,
+                    bottom: 8,
+                    left: 0,
+                    child: AnimatedContainer(
+                      width: isSelected
+                          ? FluffyThemes.isColumnMode(context)
+                                ? 8
+                                : 4
+                          : 0,
                       duration: FluffyThemes.animationDuration,
-                      left: expanded ? 0.0 : -expandedSectionWidth,
-                      child: Container(
-                        height: height,
-                        width: naviRailWidth + expandedSectionWidth,
-                        padding: const EdgeInsets.only(right: 16.0),
-                        child: Row(
-                          children: [
-                            SizedBox(width: naviRailWidth),
-                            Expanded(
-                              child: ListTile(
-                                title: Text(
-                                  toolTip,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodyMedium,
-                                ),
-                                onTap: onTap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 0.0,
-                                ),
-                              ),
-                            ),
-                          ],
+                      curve: FluffyThemes.animationCurve,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primary,
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(90),
+                          bottomRight: Radius.circular(90),
                         ),
                       ),
                     ),
                   ),
-                  // Pangea#
-                  Container(
-                    height: height,
-                    width: naviRailWidth,
-                    decoration: BoxDecoration(color: theme.colorScheme.surface),
-                    // Pangea#
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 8,
-                          bottom: 8,
-                          left: 0,
-                          child: AnimatedContainer(
-                            width: isSelected
-                                ? FluffyThemes.isColumnMode(context)
-                                      ? 8
-                                      : 4
-                                : 0,
-                            duration: FluffyThemes.animationDuration,
-                            curve: FluffyThemes.animationCurve,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.primary,
-                              borderRadius: const BorderRadius.only(
-                                topRight: Radius.circular(90),
-                                bottomRight: Radius.circular(90),
+                  Center(
+                    child: AnimatedScale(
+                      scale: hovered ? 1.1 : 1.0,
+                      duration: FluffyThemes.animationDuration,
+                      curve: FluffyThemes.animationCurve,
+                      child: UnreadRoomsBadge(
+                        filter: unreadBadgeFilter ?? (_) => false,
+                        badgePosition: BadgePosition.topEnd(
+                          top: 1,
+                          end: isColumnMode ? 8 : 4,
+                        ),
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: isColumnMode ? 16.0 : 12.0,
+                            vertical: isColumnMode ? 8.0 : 6.0,
+                          ),
+                          // Material + InkWell give the item real Material
+                          // interaction states — hover overlay, pressed
+                          // ripple, focus. The InkWell's own borderRadius
+                          // bounds the ripple; no Material clip, so angular
+                          // icons (e.g. the Pangea mark) aren't cut.
+                          child: Material(
+                            color:
+                                backgroundColor ??
+                                (isSelected
+                                    ? theme.colorScheme.primaryContainer
+                                    : theme.colorScheme.surfaceContainerHigh),
+                            borderRadius: borderRadius,
+                            child: Tooltip(
+                              message: toolTip,
+                              child: InkWell(
+                                borderRadius: borderRadius,
+                                onTap: onTap,
+                                child: icon,
                               ),
                             ),
                           ),
                         ),
-                        Center(
-                          child: AnimatedScale(
-                            scale: hovered ? 1.1 : 1.0,
-                            duration: FluffyThemes.animationDuration,
-                            curve: FluffyThemes.animationCurve,
-                            // #Pangea
-                            // child: Material(
-                            //   borderRadius: borderRadius,
-                            //   color: isSelected
-                            //       ? theme.colorScheme.primaryContainer
-                            //       : theme.colorScheme.surfaceContainerHigh,
-                            child: UnreadRoomsBadge(
-                              filter: unreadBadgeFilter ?? (_) => false,
-                              badgePosition: BadgePosition.topEnd(
-                                top: 1,
-                                end: isColumnMode ? 8 : 4,
-                              ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: isColumnMode ? 16.0 : 12.0,
-                                  vertical: isColumnMode ? 8.0 : 6.0,
-                                ),
-                                // Material + InkWell give the item real Material
-                                // interaction states — hover overlay, pressed
-                                // ripple, focus. The InkWell's own borderRadius
-                                // bounds the ripple; no Material clip, so angular
-                                // icons (e.g. the Pangea mark) aren't cut.
-                                child: Material(
-                                  color:
-                                      backgroundColor ??
-                                      (isSelected
-                                          ? theme.colorScheme.primaryContainer
-                                          : theme
-                                                .colorScheme
-                                                .surfaceContainerHigh),
-                                  borderRadius: borderRadius,
-                                  child: TooltipVisibility(
-                                    visible: !expanded,
-                                    child: Tooltip(
-                                      message: toolTip,
-                                      child: InkWell(
-                                        borderRadius: borderRadius,
-                                        onTap: onTap,
-                                        child: icon,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

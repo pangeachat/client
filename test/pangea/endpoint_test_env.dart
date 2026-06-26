@@ -49,7 +49,6 @@ class EndpointTestEnv {
   /// (works for staging/prod's shared domain; set `CMS_API` explicitly locally).
   static String get cmsApi => dotenv.env['CMS_API'] ?? choreoApi;
 
-
   static String? get testUsername => dotenv.env['TEST_MATRIX_USERNAME'];
   static String? get testPassword => dotenv.env['TEST_MATRIX_PASSWORD'];
 
