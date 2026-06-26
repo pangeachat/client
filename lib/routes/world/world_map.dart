@@ -115,6 +115,11 @@ class WorldMapController extends State<WorldMap>
   /// map, no preview popup.
   String? _promotedActivityId;
 
+  /// The highest camera zoom held since the current card was tap-promoted, so
+  /// zooming back out far enough collapses it to its dot (it stops covering
+  /// other pins when the view widens — #7245). Null when nothing is promoted.
+  double? _promotedPeakZoom;
+
   Client? _client;
   StreamSubscription<dynamic>? _syncSub;
 
@@ -143,12 +148,34 @@ class WorldMapController extends State<WorldMap>
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
   AnimationController? _camAnim;
-  CurvedAnimation? _camCurve;
   LatLng? _camStart;
   LatLng? _camTarget;
   double _camStartZoom = 0;
   double _camTargetZoom = 0;
+
+  /// The glide's initial duration; [_animateCameraTo] overrides it per-move,
+  /// scaling by the zoom delta — gentle for a big focus move, snappy for a
+  /// single zoom step (#7239).
   static const Duration _camGlideDuration = Duration(milliseconds: 600);
+  static const double _camGlideMinMs = 500;
+  static const double _camGlideMaxMs = 1400;
+  static const double _camGlideMsPerZoom = 110;
+
+  /// A glide times its pan and zoom on two overlapping intervals so the PAN runs
+  /// at the LOWER zoom of the endpoints (the lead half) and the ZOOM at the other
+  /// (the trail half) — keeping the on-screen sweep small and tile loading low,
+  /// while the overlap reads as one continuous move rather than two phases
+  /// (#7239).
+  static const Curve _camLeadCurve = Interval(
+    0.0,
+    0.7,
+    curve: Curves.easeInOut,
+  );
+  static const Curve _camTrailCurve = Interval(
+    0.3,
+    1.0,
+    curve: Curves.easeInOut,
+  );
 
   /// Cached per-activity live signals (state + fill + recency + pinged),
   /// completion, and the learner's star total per activity, recomputed on room
@@ -226,7 +253,6 @@ class WorldMapController extends State<WorldMap>
     // remounts it.
     _camAnim = AnimationController(vsync: this, duration: _camGlideDuration)
       ..addListener(_onCamGlideTick);
-    _camCurve = CurvedAnimation(parent: _camAnim!, curve: Curves.easeInOut);
     _loadForContext();
     MapContextController.notifier.addListener(_onContextChange);
     MapPinController.notifier.addListener(_onPinControllerChange);
@@ -437,7 +463,6 @@ class WorldMapController extends State<WorldMap>
     _syncSub?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
-    _camCurve?.dispose();
     _camAnim?.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapPinController.notifier.removeListener(_onPinControllerChange);
@@ -565,9 +590,43 @@ class WorldMapController extends State<WorldMap>
   /// Debounced viewport reload, called by the view as the camera pans/zooms.
   /// Course pins are context-bound, so this is World-only.
   void handleMapPositionChanged() {
+    _maybeCollapsePromotedOnZoomOut();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+  }
+
+  /// How many zoom levels the learner must zoom out, below the highest zoom held
+  /// since promoting, before a tap-promoted card collapses (#7245). Loose enough
+  /// that pans and small adjustments keep it.
+  static const double _promotedCollapseMargin = 2.0;
+
+  /// #7245: a tap-promoted large card is an explicit zoom-in detail; once the
+  /// learner zooms back out [_promotedCollapseMargin] levels below the highest
+  /// zoom held since it was promoted, collapse it to its dot so an open box stops
+  /// covering the more compact pins (the tier "attention budget scales with
+  /// visible map size", world-map.instructions.md). Tracked against the peak
+  /// rather than the promote-time zoom, so a promotion that also glides the
+  /// camera in still collapses on the way back out. Pans never collapse it.
+  void _maybeCollapsePromotedOnZoomOut() {
+    if (_promotedActivityId == null) return;
+    final zoom = _safeZoom();
+    if (zoom == null) return;
+    final peak = _promotedPeakZoom ?? zoom;
+    if (zoom > peak) {
+      _promotedPeakZoom = zoom;
+      return;
+    }
+    if (zoom < peak - _promotedCollapseMargin) collapse();
+  }
+
+  /// The live camera zoom, or null before the map is laid out.
+  double? _safeZoom() {
+    try {
+      return mapController.camera.zoom;
+    } catch (_) {
+      return null;
+    }
   }
 
   // ---- filtering ------------------------------------------------------------
@@ -680,12 +739,14 @@ class WorldMapController extends State<WorldMap>
   /// its activity id as its key, which is all promotion needs.
   void promoteToLargeById(String activityId) {
     setState(() => _promotedActivityId = activityId);
+    _promotedPeakZoom = _safeZoom();
     ActivityPlanRepo.instance.ensure(activityId);
   }
 
   void collapse() {
     if (_promotedActivityId == null) return;
     setState(() => _promotedActivityId = null);
+    _promotedPeakZoom = null;
   }
 
   /// Glide back to the whole-world view (the initial camera). Pins, clusters,
@@ -813,6 +874,14 @@ class WorldMapController extends State<WorldMap>
     _camStartZoom = mapController.camera.zoom;
     _camTarget = center;
     _camTargetZoom = zoom;
+    // #7239: scale the glide length by the zoom delta — a deep focus zoom glides
+    // gently, a single zoom step stays quick — rather than a fixed 600ms.
+    final zoomDelta = (zoom - _camStartZoom).abs();
+    anim.duration = Duration(
+      milliseconds: (_camGlideMinMs + zoomDelta * _camGlideMsPerZoom)
+          .clamp(_camGlideMinMs, _camGlideMaxMs)
+          .round(),
+    );
     anim
       ..reset()
       ..forward();
@@ -821,12 +890,21 @@ class WorldMapController extends State<WorldMap>
   void _onCamGlideTick() {
     final start = _camStart;
     final end = _camTarget;
-    final curve = _camCurve;
-    if (start == null || end == null || curve == null) return;
-    final t = curve.value;
-    final lat = start.latitude + (end.latitude - start.latitude) * t;
-    final lng = start.longitude + (end.longitude - start.longitude) * t;
-    final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * t;
+    final anim = _camAnim;
+    if (start == null || end == null || anim == null) return;
+    final t = anim.value;
+    // #7239: pan and zoom glide together as one gentle move, but the PAN is
+    // timed to the LOWER zoom of the two endpoints so the on-screen sweep is
+    // small and few tiles load — not the old linear tween that flung the map
+    // across at high zoom (the jarring "zoom in, then pan"). Zooming IN: pan
+    // leads, zoom trails; zooming OUT: zoom leads, pan trails. The overlapping
+    // intervals keep it continuous, not a hard two-phase snap.
+    final zoomingIn = _camTargetZoom >= _camStartZoom;
+    final tPan = (zoomingIn ? _camLeadCurve : _camTrailCurve).transform(t);
+    final tZoom = (zoomingIn ? _camTrailCurve : _camLeadCurve).transform(t);
+    final lat = start.latitude + (end.latitude - start.latitude) * tPan;
+    final lng = start.longitude + (end.longitude - start.longitude) * tPan;
+    final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * tZoom;
     try {
       mapController.move(LatLng(lat, lng), zoom);
     } catch (_) {
