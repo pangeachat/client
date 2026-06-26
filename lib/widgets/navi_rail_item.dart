@@ -146,40 +146,42 @@ class NaviRailItem extends StatelessWidget {
                             //   color: isSelected
                             //       ? theme.colorScheme.primaryContainer
                             //       : theme.colorScheme.surfaceContainerHigh,
-                            child: UnreadRoomsBadge(
-                              filter: unreadBadgeFilter ?? (_) => false,
-                              badgePosition: BadgePosition.topEnd(
-                                top: 1,
-                                end: isColumnMode ? 8 : 4,
-                              ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: isColumnMode ? 16.0 : 12.0,
-                                  vertical: isColumnMode ? 8.0 : 6.0,
+                            child: MergeSemantics(
+                              child: UnreadRoomsBadge(
+                                filter: unreadBadgeFilter ?? (_) => false,
+                                badgePosition: BadgePosition.topEnd(
+                                  top: 1,
+                                  end: isColumnMode ? 8 : 4,
                                 ),
-                                // Material + InkWell give the item real Material
-                                // interaction states — hover overlay, pressed
-                                // ripple, focus. The InkWell's own borderRadius
-                                // bounds the ripple; no Material clip, so angular
-                                // icons (e.g. the Pangea mark) aren't cut.
-                                child: Material(
-                                  color:
-                                      backgroundColor ??
-                                      (isSelected
-                                          ? theme.colorScheme.primaryContainer
-                                          : theme
-                                                .colorScheme
-                                                .surfaceContainerHigh),
-                                  borderRadius: borderRadius,
-                                  child: TooltipVisibility(
-                                    visible: !expanded,
-                                    child: Tooltip(
-                                      message: toolTip,
-                                      child: InkWell(
-                                        borderRadius: borderRadius,
-                                        onTap: onTap,
-                                        child: icon,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.symmetric(
+                                    horizontal: isColumnMode ? 16.0 : 12.0,
+                                    vertical: isColumnMode ? 8.0 : 6.0,
+                                  ),
+                                  // Material + InkWell give the item real Material
+                                  // interaction states — hover overlay, pressed
+                                  // ripple, focus. The InkWell's own borderRadius
+                                  // bounds the ripple; no Material clip, so angular
+                                  // icons (e.g. the Pangea mark) aren't cut.
+                                  child: Material(
+                                    color:
+                                        backgroundColor ??
+                                        (isSelected
+                                            ? theme.colorScheme.primaryContainer
+                                            : theme
+                                                  .colorScheme
+                                                  .surfaceContainerHigh),
+                                    borderRadius: borderRadius,
+                                    child: TooltipVisibility(
+                                      visible: !expanded,
+                                      child: Tooltip(
+                                        message: toolTip,
+                                        child: InkWell(
+                                          borderRadius: borderRadius,
+                                          onTap: onTap,
+                                          child: icon,
+                                        ),
                                       ),
                                     ),
                                   ),

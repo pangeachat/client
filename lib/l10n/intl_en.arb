@@ -4941,5 +4941,13 @@
             }
         }
     },
-    "resetMapView": "Reset map view"
+    "resetMapView": "Reset map view",
+    "unreadLabel": "Unread: {count}",
+    "@unreadLabel": {
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    }
 }

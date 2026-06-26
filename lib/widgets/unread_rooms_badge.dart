@@ -31,6 +31,9 @@ class UnreadRoomsBadge extends StatelessWidget {
         .where(filter)
         .where((r) => (r.isUnread || r.membership == Membership.invite))
         .length;
+    final unreadText = unreadCount < 100
+        ? unreadCount.toString()
+        : L10n.of(context).unreadPlus;
     return b.Badge(
       badgeStyle: b.BadgeStyle(
         // #Pangea
@@ -51,9 +54,8 @@ class UnreadRoomsBadge extends StatelessWidget {
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            unreadCount < 100
-                ? unreadCount.toString()
-                : L10n.of(context).unreadPlus,
+            unreadText,
+            semanticsLabel: L10n.of(context).unreadLabel(unreadText),
             style: TextStyle(color: theme.colorScheme.onPrimary, fontSize: 12),
           ),
         ),
