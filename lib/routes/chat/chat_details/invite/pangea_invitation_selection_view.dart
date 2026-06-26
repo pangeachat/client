@@ -6,12 +6,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
-import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/room_settings_constants.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -42,29 +40,6 @@ class PangeaInvitationSelectionView extends StatelessWidget {
     final theme = Theme.of(context);
     final contacts = controller.filteredContacts();
 
-    final doneButton = ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: theme.colorScheme.primaryContainer,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      ),
-      child: Row(
-        spacing: 12.0,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.check, color: theme.colorScheme.onPrimaryContainer),
-          Text(
-            L10n.of(context).done,
-            style: TextStyle(
-              color: theme.colorScheme.onPrimaryContainer,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-      onPressed: () => NavigationUtil.goToSpaceRoute(room.id, [], context),
-    );
-
-    final joinCode = room.joinCode;
     return Scaffold(
       appBar: AppBar(
         leading: Center(
@@ -73,6 +48,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
         titleSpacing: 0,
         title: Text(L10n.of(context).inviteContact),
         centerTitle: false,
+        actions: [
+          ShareRoomButton(room: room, child: const Icon(Icons.share_outlined)),
+        ],
       ),
       body: MaxWidthBody(
         maxWidth: 800.0,
@@ -293,48 +271,6 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                           );
                   },
                 ),
-              ),
-              Row(
-                spacing: 12.0,
-                children: [
-                  if (joinCode != null)
-                    Expanded(
-                      child: ShareRoomButton(
-                        room: room,
-                        child: IgnorePointer(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 16,
-                              ),
-                            ),
-                            child: Row(
-                              spacing: 12.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.share_outlined,
-                                  color: theme.colorScheme.onPrimaryContainer,
-                                ),
-                                Text(
-                                  L10n.of(context).share,
-                                  style: TextStyle(
-                                    color: theme.colorScheme.onPrimaryContainer,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
-                      ),
-                    ),
-                  joinCode != null ? doneButton : Expanded(child: doneButton),
-                ],
               ),
             ],
           ),
