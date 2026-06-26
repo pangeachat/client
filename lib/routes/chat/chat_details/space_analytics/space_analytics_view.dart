@@ -350,10 +350,13 @@ class _MenuButton extends StatelessWidget {
                 vertical: 4.0,
               ),
               child: hideLabel ?? mini
-                  ? Icon(
-                      icon,
-                      color: theme.colorScheme.onPrimaryContainer,
-                      size: !mini ? 24.0 : 14.0,
+                  ? Tooltip(
+                      message: text,
+                      child: Icon(
+                        icon,
+                        color: theme.colorScheme.onPrimaryContainer,
+                        size: !mini ? 24.0 : 14.0,
+                      ),
                     )
                   : Row(
                       spacing: 4.0,
