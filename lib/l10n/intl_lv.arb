@@ -3919,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-18 09:35:31.308871",
+    "@@last_modified": "2026-06-26 10:50:38.010880",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9870,6 +9870,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Pievienojieties kursam, kas ietver šo aktivitāti, lai to spēlētu.",
+    "resizeCoursePanel": "Mainīt kursa paneļa izmēru",
+    "undo": "Atcelt",
+    "unlock": "Atbloķēt",
+    "zoomIn": "Tuvojiet",
+    "zoomOut": "Attālināt",
+    "stars": "Zvaigznes",
+    "addNewCourse": "Pievienot jaunu kursu",
+    "world": "Pasaule",
+    "addCourseStartMyOwn": "Sākt savu",
+    "addCourseEnterCode": "Ievadiet koda privātajam kursam",
+    "addCourseBrowsePublic": "Pārlūkot publiskos kursus",
+    "browsePublicCourses": "Pārlūkot publiskos kursus",
+    "editProfile": "Rediģēt profilu",
+    "numObjectives": "{count} mērķi",
+    "mapSearchHint": "Meklēt aktivitātes",
+    "mapSearchNoResults": "Nav atbilžu skatā",
+    "mapFilterAllLanguages": "Visas valodas",
+    "mapFilterNotStarted": "Nav uzsākts",
+    "mapFilterInProgress": "Norisinās",
+    "mapFilterCompleted": "Pabeigts",
+    "mapFilterReset": "Atjaunot",
+    "activityTypeConversation": "Saruna",
+    "lockedMissionRequirement": "Pabeidziet iepriekšējo misiju, lai atbloķētu",
+    "playAgain": "Spēlēt vēlreiz",
+    "reviewActivity": "Pārskatīt",
+    "mapEmptyInView": "Šeit nav nekas jūsu līmenī vai valodā. Paplašiniet savus filtrus vai tālummaiņu.",
+    "welcomeToPangeaChat": "Laipni lūdzam Pangea Čatā",
+    "claimTrial": "Pieteikties izmēģinājumam",
+    "thanksForSigningUp": "Paldies, ka reģistrējāties! Šeit ir",
+    "sevenDaysFree": "7 DIENAS BEZ MAKSAS",
+    "manageTrialInSettings": "Pārvaldiet savu izmēģinājumu jebkurā laikā\nAbonēšanas iestatījumos",
+    "noCreditCardRequired": "Nav nepieciešama kredītkarte.",
+    "proFeatures": "PRO",
+    "widenSearch": "Paplašināt meklēšanu",
+    "scrollToBottom": "Ritināt uz leju",
+    "courseImage": "Kursa attēls",
+    "avatarPreview": "Apskata attēls",
+    "activityPhoto": "Aktivitātes foto",
+    "emotePreview": "Emocijas priekšskatījums: {name}",
+    "activityLabel": "Aktivitāte: {title}",
+    "resetMapView": "Atjaunot kartes skatu",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

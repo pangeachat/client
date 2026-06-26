@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-18 09:34:17.410181",
+    "@@last_modified": "2026-06-26 10:45:47.706824",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10986,6 +10986,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Pridajte sa k kurzu, ktorý obsahuje túto aktivitu, aby ste ju mohli hrať.",
+    "resizeCoursePanel": "Zmeniť veľkosť panelu kurzu",
+    "undo": "Zrušiť",
+    "unlock": "Odomknúť",
+    "zoomIn": "Priblížiť",
+    "zoomOut": "Oddialiť",
+    "stars": "Hvězdy",
+    "addNewCourse": "Pridať nový kurz",
+    "world": "Svet",
+    "addCourseStartMyOwn": "Začať svoj vlastný",
+    "addCourseEnterCode": "Zadajte kód pre súkromný kurz",
+    "addCourseBrowsePublic": "Prehľadávať verejné kurzy",
+    "browsePublicCourses": "Prehľadávať verejné kurzy",
+    "editProfile": "Upraviť profil",
+    "numObjectives": "{count} ciele",
+    "mapSearchHint": "Hľadať aktivity",
+    "mapSearchNoResults": "Žiadne zhodné výsledky",
+    "mapFilterAllLanguages": "Všetky jazyky",
+    "mapFilterNotStarted": "Nebol začatý",
+    "mapFilterInProgress": "Prebieha",
+    "mapFilterCompleted": "Dokončené",
+    "mapFilterReset": "Obnoviť",
+    "activityTypeConversation": "Konverzácia",
+    "lockedMissionRequirement": "Dokončite predchádzajúcu misiu, aby ste odomkli",
+    "playAgain": "Hraj znova",
+    "reviewActivity": "Prehľad",
+    "mapEmptyInView": "Tu nie je nič na vašej úrovni alebo jazyku. Rozšírte svoje filtre alebo priblížte.",
+    "welcomeToPangeaChat": "Vitajte v Pangea Chate",
+    "claimTrial": "Uplatnite svoju skúšobnú verziu",
+    "thanksForSigningUp": "Ďakujeme za registráciu! Tu je",
+    "sevenDaysFree": "7 DNÍ ZADARMO",
+    "manageTrialInSettings": "Spravujte svoju skúšobnú verziu kedykoľvek v\nNastaveniach predplatného",
+    "noCreditCardRequired": "Nie je potrebná kreditná karta.",
+    "proFeatures": "PRO",
+    "widenSearch": "Rozšíriť vyhľadávanie",
+    "scrollToBottom": "Posuňte sa na dno",
+    "courseImage": "Obrázok kurzu",
+    "avatarPreview": "Náhľad avatara",
+    "activityPhoto": "Fotografia aktivity",
+    "emotePreview": "Náhľad emócie: {name}",
+    "activityLabel": "Aktivita: {title}",
+    "resetMapView": "Obnoviť zobrazenie mapy",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }
