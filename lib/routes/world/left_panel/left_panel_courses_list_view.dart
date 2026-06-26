@@ -55,17 +55,10 @@ class LeftPanelCoursesListView extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 16.0),
           children: [
             for (final space in courses) CourseListTile(space),
-            if (courses.isEmpty)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Text(
-                  l10n.noCourseFound,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ),
+            // #7172: a user in no courses isn't a course-without-a-plan, so don't
+            // show the "this course needs a plan" message here — the "Add new
+            // course" section below is the empty state and invites them to join
+            // or create one.
             const SizedBox(height: 4.0),
             // "Add new course" section divider + the add options.
             Row(
