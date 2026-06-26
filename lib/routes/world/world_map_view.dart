@@ -347,6 +347,10 @@ class WorldMapView extends StatelessWidget {
         // on desktop plus any pin promoted by a tap.
         MarkerLayer(markers: _largeMarkers(render)),
         RichAttributionWidget(
+          // #7218: bottom-LEFT so the attribution and its expand popup don't sit
+          // under the bottom-right zoom/World controls (where it was covered and
+          // hard to read, especially in dark mode).
+          alignment: AttributionAlignment.bottomLeft,
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
             if (dark) TextSourceAttribution('CARTO', onTap: () {}),
