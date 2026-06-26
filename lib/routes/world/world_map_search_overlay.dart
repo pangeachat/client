@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/world/world_map_filter.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
 /// Public so the map and this overlay share one vocabulary.
@@ -14,53 +15,33 @@ enum MapCompletionFilter { notStarted, inProgress, completed }
 /// callbacks. World-only (the shell hides it elsewhere). See
 /// world-map.instructions.md.
 class WorldMapSearchOverlay extends StatefulWidget {
-  final String query;
-  final ValueChanged<String> onQueryChanged;
+  final WorldMapFilter filter;
 
-  /// L2 chip: when true the map is scoped to the user's language ([l2Label]);
-  /// toggling off widens to all languages (re-fetch).
-  final bool l2Only;
-  final String? l2Label;
-  final VoidCallback onToggleL2;
+  final VoidCallback onReset;
   final VoidCallback onWidenSearch;
 
-  /// CEFR band: [selectedCefr] is the active level set (default = at/below the
-  /// user's level); toggling a chip adds/removes a level.
-  final Set<LanguageLevelTypeEnum> selectedCefr;
-  final ValueChanged<LanguageLevelTypeEnum> onToggleCefr;
+  final VoidCallback onToggleL2;
+  final Function(String) updateQuery;
+  final Function(LanguageLevelTypeEnum) toggleCefr;
+  final Function(MapCompletionFilter) toggleCompletion;
 
-  final Set<MapCompletionFilter> selectedCompletion;
-  final ValueChanged<MapCompletionFilter> onToggleCompletion;
-
-  /// Live results for the current query (already filtered by the map). Shown as
-  /// a dropdown only while the query is non-empty. Selecting flies to the pin.
   final List<QuestActivityCard> results;
-  final ValueChanged<QuestActivityCard> onResultTap;
+  final Function(QuestActivityCard) onResultTap;
 
-  /// True when any filter differs from the personalized default; drives the
-  /// one-tap reset affordance.
-  final bool canReset;
-  final VoidCallback onReset;
-
-  /// True when the current filters leave no pins in view; drives the inline
-  /// widen affordance so personalization never dead-ends.
+  final String? l2Label;
   final bool emptyInView;
 
   const WorldMapSearchOverlay({
     super.key,
-    required this.query,
-    required this.onQueryChanged,
-    required this.l2Only,
+    required this.filter,
+    required this.updateQuery,
     required this.l2Label,
     required this.onToggleL2,
     required this.onWidenSearch,
-    required this.selectedCefr,
-    required this.onToggleCefr,
-    required this.selectedCompletion,
-    required this.onToggleCompletion,
+    required this.toggleCefr,
+    required this.toggleCompletion,
     required this.results,
     required this.onResultTap,
-    required this.canReset,
     required this.onReset,
     required this.emptyInView,
   });
@@ -71,7 +52,7 @@ class WorldMapSearchOverlay extends StatefulWidget {
 
 class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
   late final TextEditingController _controller = TextEditingController(
-    text: widget.query,
+    text: widget.filter.query,
   );
 
   static const _maxResults = 20;
@@ -81,8 +62,8 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
     super.didUpdateWidget(oldWidget);
     // Sync only external query changes (reset / clear) into the field; normal
     // typing flows out through onQueryChanged and must not re-seat the cursor.
-    if (widget.query != _controller.text) {
-      _controller.text = widget.query;
+    if (widget.filter.query != _controller.text) {
+      _controller.text = widget.filter.query;
     }
   }
 
@@ -107,7 +88,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
-    final searching = widget.query.trim().isNotEmpty;
+    final searching = widget.filter.query.trim().isNotEmpty;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +100,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
           color: theme.colorScheme.surface,
           child: TextField(
             controller: _controller,
-            onChanged: widget.onQueryChanged,
+            onChanged: widget.updateQuery,
             decoration: InputDecoration(
               isDense: true,
               filled: true,
@@ -130,7 +111,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   ? IconButton(
                       icon: const Icon(Icons.close),
                       tooltip: l10n.close,
-                      onPressed: () => widget.onQueryChanged(''),
+                      onPressed: () => widget.updateQuery(''),
                     )
                   : null,
               border: OutlineInputBorder(
@@ -147,9 +128,9 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
             children: [
               if (widget.l2Label != null) ...[
                 FilterChip(
-                  selected: widget.l2Only,
+                  selected: widget.filter.l2Only,
                   label: Text(
-                    widget.l2Only
+                    widget.filter.l2Only
                         ? widget.l2Label!
                         : l10n.mapFilterAllLanguages,
                   ),
@@ -161,21 +142,21 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
               for (final level in LanguageLevelTypeEnum.values)
                 if (level != LanguageLevelTypeEnum.preA1) ...[
                   FilterChip(
-                    selected: widget.selectedCefr.contains(level),
+                    selected: widget.filter.cefrFilter.contains(level),
                     label: Text(level.string),
-                    onSelected: (_) => widget.onToggleCefr(level),
+                    onSelected: (_) => widget.toggleCefr(level),
                   ),
                   const SizedBox(width: 6),
                 ],
               for (final c in MapCompletionFilter.values) ...[
                 FilterChip(
-                  selected: widget.selectedCompletion.contains(c),
+                  selected: widget.filter.completionFilter.contains(c),
                   label: Text(_completionLabel(l10n, c)),
-                  onSelected: (_) => widget.onToggleCompletion(c),
+                  onSelected: (_) => widget.toggleCompletion(c),
                 ),
                 const SizedBox(width: 6),
               ],
-              if (widget.canReset)
+              if (widget.filter.canReset)
                 ActionChip(
                   avatar: const Icon(Icons.restart_alt, size: 16),
                   label: Text(l10n.mapFilterReset),
@@ -243,7 +224,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                 children: [
                   Text(l10n.mapEmptyInView, style: theme.textTheme.bodyMedium),
                   const SizedBox(height: 8),
-                  if (widget.l2Only && widget.l2Label != null)
+                  if (widget.filter.l2Only && widget.l2Label != null)
                     FilledButton.tonalIcon(
                       icon: const Icon(Icons.translate, size: 16),
                       label: Text(l10n.widenSearch),

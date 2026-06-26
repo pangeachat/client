@@ -42,17 +42,3 @@ abstract class MapContextController {
     if (notifier.value != context) notifier.value = context;
   }
 }
-
-/// Whether a map-pin preview is open on a narrow screen — where the preview
-/// renders as a bottom sheet over the map rather than a glued-to-pin popup. The
-/// persistent map (which owns the pin selection) writes it; the shell reads it
-/// to hide the bottom nav while the sheet is up (a bottom sheet replaces the
-/// bottom nav). A simple bool: the map keeps the selected pin / its loading
-/// plan, this only signals "a pin sheet is showing." See `routing.instructions.md`.
-abstract class MapPinController {
-  static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
-
-  static void set(bool open) {
-    if (notifier.value != open) notifier.value = open;
-  }
-}
