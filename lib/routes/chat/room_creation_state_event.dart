@@ -72,12 +72,14 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
                 child: Column(
                   mainAxisSize: .min,
                   children: [
-                    Avatar(
-                      mxContent: event.room.avatar,
-                      name: roomName,
-                      size: Avatar.defaultSize * 2,
-                      userId: event.room.directChatMatrixID,
-                      useRive: true,
+                    ExcludeSemantics(
+                      child: Avatar(
+                        mxContent: event.room.avatar,
+                        name: roomName,
+                        size: Avatar.defaultSize * 2,
+                        userId: event.room.directChatMatrixID,
+                        useRive: true,
+                      ),
                     ),
                     Text(
                       roomName,
