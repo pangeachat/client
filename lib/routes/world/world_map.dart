@@ -339,9 +339,7 @@ class WorldMapController extends State<WorldMap>
         l2: _filterState.filter.l2Only ? user.userL2Code : null,
         l1: user.userL1Code,
       );
-      if (!mounted) return;
-      setState(() => _loadingPins = false);
-    } catch (_) {
+    } finally {
       if (mounted) setState(() => _loadingPins = false);
     }
   }

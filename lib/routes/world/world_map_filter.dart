@@ -12,7 +12,7 @@ class WorldMapFilter {
 
   const WorldMapFilter({
     this.query = '',
-    this.l2Only = false,
+    this.l2Only = true,
     this.cefrFilter = const {},
     this.defaultCefr = const {},
     this.completionFilter = const {},
@@ -41,6 +41,15 @@ class WorldMapFilter {
     completionFilter: completionFilter ?? this.completionFilter,
     filterDefaultsApplied: filterDefaultsApplied ?? this.filterDefaultsApplied,
   );
+
+  Map<String, dynamic> toJson() => {
+    "query": query,
+    "l2_only": l2Only,
+    "cefr_filter": cefrFilter.toList(),
+    "default_cefr": defaultCefr.toList(),
+    "completion_filters": completionFilter.toList(),
+    "filter_defaults_applied": filterDefaultsApplied,
+  };
 }
 
 class WorldMapFilterState {
@@ -62,10 +71,12 @@ class WorldMapFilterState {
   }
 
   bool _completionMatches(MapCompletionFilter status) {
-    return _filter.completionFilter.contains(status);
+    return _filter.completionFilter.isEmpty ||
+        _filter.completionFilter.contains(status);
   }
 
-  void applyDefaults({required LanguageLevelTypeEnum? cefrLevel}) {
+  bool applyDefaults({required LanguageLevelTypeEnum? cefrLevel}) {
+    if (_filter.filterDefaultsApplied) return false;
     final filterDefaultsApplied = true;
     final defaultCefr = LanguageLevelTypeEnum.bandAtOrBelow(cefrLevel);
     final cefrFilter = {...defaultCefr};
@@ -74,6 +85,7 @@ class WorldMapFilterState {
       defaultCefr: defaultCefr,
       cefrFilter: cefrFilter,
     );
+    return true;
   }
 
   void setQuery(String q) => _filter = _filter.copyWith(query: q);
