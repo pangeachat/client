@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-18 09:35:56.036456",
+    "@@last_modified": "2026-06-26 10:55:22.486434",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9881,6 +9881,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Bí i gcúrsa a chuimsíonn an gníomhaíocht seo chun é a imirt.",
+    "resizeCoursePanel": "Athraigh méid painéil an chúrsa",
+    "undo": "Athraigh",
+    "unlock": "Díghlas",
+    "zoomIn": "Méadú gníomh",
+    "zoomOut": "Laghdú gníomh",
+    "stars": "Réaltaí",
+    "addNewCourse": "Cuir cúrsa nua leis",
+    "world": "Domhan",
+    "addCourseStartMyOwn": "Tosaigh mo chuid féin",
+    "addCourseEnterCode": "Cuir isteach cód don chúrsa príobháideach",
+    "addCourseBrowsePublic": "Brabhsáil cúrsaí poiblí",
+    "browsePublicCourses": "Brabhsáil cúrsaí poiblí",
+    "editProfile": "Cuir in eagar próifíl",
+    "numObjectives": "{count} cuspóirí",
+    "mapSearchHint": "Cuardaigh gníomhaíochtaí",
+    "mapSearchNoResults": "Níl aon comhoiriúnachtaí le feiceáil",
+    "mapFilterAllLanguages": "Gach teanga",
+    "mapFilterNotStarted": "Níl tosaithe",
+    "mapFilterInProgress": "I gcion",
+    "mapFilterCompleted": "Críochnaithe",
+    "mapFilterReset": "Athshocraigh",
+    "activityTypeConversation": "Comhrá",
+    "lockedMissionRequirement": "Críochnaigh an misean roimhe seo chun é a dhíghlasáil",
+    "playAgain": "Imir arís",
+    "reviewActivity": "Athbhreithniú",
+    "mapEmptyInView": "Níl aon rud anseo ag do leibhéal nó do theanga. Leathnaigh do scagairí nó déan an radharc níos mó.",
+    "welcomeToPangeaChat": "Fáilte go Pangea Chat",
+    "claimTrial": "Éiligh do thriail",
+    "thanksForSigningUp": "Go raibh maith agat as clárú! Seo",
+    "sevenDaysFree": "7 LAETHANTA SAOR IN AISCE",
+    "manageTrialInSettings": "Bainistigh do thrialach aon uair sa\nSocruithe Suibscríofa",
+    "noCreditCardRequired": "Níl cárta creidmheasa ag teastáil.",
+    "proFeatures": "PRO",
+    "widenSearch": "Leathnaigh cuardach",
+    "scrollToBottom": "Scrollaigh go bun",
+    "courseImage": "Íomhá cúrsa",
+    "avatarPreview": "Réamhamharc ar avatar",
+    "activityPhoto": "Grianghraf gníomhaíochta",
+    "emotePreview": "Réamhamharc ar emote: {name}",
+    "activityLabel": "Gníomhaíocht: {title}",
+    "resetMapView": "Athshocraigh an léarscáil",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

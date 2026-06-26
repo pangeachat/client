@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-18 09:35:37.820513",
+    "@@last_modified": "2026-06-26 10:52:13.213148",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9870,6 +9870,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Sluit je aan bij een cursus die deze activiteit bevat om deze te spelen.",
+    "resizeCoursePanel": "Wijzig de grootte van het cursuspaneel",
+    "undo": "Ongedaan maken",
+    "unlock": "Ontgrendelen",
+    "zoomIn": "Inzoomen",
+    "zoomOut": "Uitzoomen",
+    "stars": "Sterren",
+    "addNewCourse": "Voeg nieuwe cursus toe",
+    "world": "Wereld",
+    "addCourseStartMyOwn": "Begin mijn eigen",
+    "addCourseEnterCode": "Voer code in voor privécursus",
+    "addCourseBrowsePublic": "Blader door openbare cursussen",
+    "browsePublicCourses": "Blader door openbare cursussen",
+    "editProfile": "Bewerk profiel",
+    "numObjectives": "{count} doelstellingen",
+    "mapSearchHint": "Zoek activiteiten",
+    "mapSearchNoResults": "Geen overeenkomsten in weergave",
+    "mapFilterAllLanguages": "Alle talen",
+    "mapFilterNotStarted": "Niet gestart",
+    "mapFilterInProgress": "Bezig",
+    "mapFilterCompleted": "Voltooid",
+    "mapFilterReset": "Resetten",
+    "activityTypeConversation": "Gesprek",
+    "lockedMissionRequirement": "Voltooi de vorige missie om te ontgrendelen",
+    "playAgain": "Speel opnieuw",
+    "reviewActivity": "Beoordelen",
+    "mapEmptyInView": "Niets hier op jouw niveau of taal. Verbreed je filters of zoom uit.",
+    "welcomeToPangeaChat": "Welkom bij Pangea Chat",
+    "claimTrial": "Claim je proefperiode",
+    "thanksForSigningUp": "Bedankt voor je aanmelding! Hier is",
+    "sevenDaysFree": "7 DAGEN GRATIS",
+    "manageTrialInSettings": "Beheer je proefperiode op elk moment in\nAbonnementsinstellingen",
+    "noCreditCardRequired": "Geen creditcard vereist.",
+    "proFeatures": "PRO",
+    "widenSearch": "Zoekopdracht verbreden",
+    "scrollToBottom": "Scroll naar beneden",
+    "courseImage": "Cursusafbeelding",
+    "avatarPreview": "Avatarvoorbeeld",
+    "activityPhoto": "Activiteitsfoto",
+    "emotePreview": "Emotevoorbeeld: {name}",
+    "activityLabel": "Activiteit: {title}",
+    "resetMapView": "Reset kaartweergave",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

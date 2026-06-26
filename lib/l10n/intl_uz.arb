@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-18 09:35:29.531145",
+    "@@last_modified": "2026-06-26 10:50:14.767864",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9874,6 +9874,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Bu faoliyatni o'ynash uchun ushbu kursga qo'shiling.",
+    "resizeCoursePanel": "Kurs panelini o'lchamini o'zgartirish",
+    "undo": "Qaytarish",
+    "unlock": "Kilitni ochish",
+    "zoomIn": "Kirishni kattalashtirish",
+    "zoomOut": "Kirishni kichraytirish",
+    "stars": "Yulduzlar",
+    "addNewCourse": "Yangi kurs qo'shish",
+    "world": "Dunyo",
+    "addCourseStartMyOwn": "O'z kursimni boshlash",
+    "addCourseEnterCode": "Maxfiy kurs uchun kodni kiriting",
+    "addCourseBrowsePublic": "Ommaviy kurslarni ko'ring",
+    "browsePublicCourses": "Ommaviy kurslarni ko'ring",
+    "editProfile": "Profilni tahrirlash",
+    "numObjectives": "{count} maqsadlar",
+    "mapSearchHint": "Faoliyatlarni qidiring",
+    "mapSearchNoResults": "Ko'rinishda hech qanday moslik yo'q",
+    "mapFilterAllLanguages": "Barcha tillar",
+    "mapFilterNotStarted": "Boshlanmagan",
+    "mapFilterInProgress": "Jarayonda",
+    "mapFilterCompleted": "Tamamlandi",
+    "mapFilterReset": "Qayta tiklash",
+    "activityTypeConversation": "Muloqot",
+    "lockedMissionRequirement": "Ochiq qilish uchun oldingi missiyani tugatish",
+    "playAgain": "Yana o'ynang",
+    "reviewActivity": "Ko'rib chiqish",
+    "mapEmptyInView": "Sizning darajangizda yoki tilingizda hech narsa yo'q. Filtrlaringizni kengaytiring yoki zoom qiling.",
+    "welcomeToPangeaChat": "Pangea Chat'ga xush kelibsiz",
+    "claimTrial": "Sinovni talab qiling",
+    "thanksForSigningUp": "Ro'yxatdan o'tganingiz uchun rahmat! Bu yerda",
+    "sevenDaysFree": "7 KUN BEPUL",
+    "manageTrialInSettings": "Obuna sozlamalarida sinovni istalgan vaqtda boshqaring",
+    "noCreditCardRequired": "Kredit karta talab qilinmaydi.",
+    "proFeatures": "PRO",
+    "widenSearch": "Qidiruvni kengaytiring",
+    "scrollToBottom": "Pastga aylantiring",
+    "courseImage": "Kurs rasmi",
+    "avatarPreview": "Avatar oldindan ko‘rish",
+    "activityPhoto": "Faoliyat rasmi",
+    "emotePreview": "Emote oldindan ko‘rish: {name}",
+    "activityLabel": "Faoliyat: {title}",
+    "resetMapView": "Xarita ko'rinishini tiklash",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }
