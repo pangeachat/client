@@ -17,25 +17,29 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extensi
 
 class ActiveSuggestionModel {
   final OrchestratorRoleSuggestions suggestion;
+  final List<OrchestratorSuggestion> shuffledChoices;
+
+  final OrchestratorSuggestion? selectedChoice;
   final OrchestratorSuggestion? acceptedChoice;
 
-  const ActiveSuggestionModel({required this.suggestion, this.acceptedChoice});
-
-  bool isChoiceSelected(OrchestratorSuggestion choice) =>
-      acceptedChoice == choice;
-
-  List<OrchestratorSuggestion> get shuffledChoices {
-    final choices = [...suggestion.suggestions];
-    choices.shuffle();
-    return choices;
-  }
+  ActiveSuggestionModel({
+    required this.suggestion,
+    this.selectedChoice,
+    this.acceptedChoice,
+    List<OrchestratorSuggestion>? shuffledChoices,
+  }) : shuffledChoices = shuffledChoices ?? List.from(suggestion.suggestions)
+         ..shuffle();
 
   ActiveSuggestionModel copyWith({
     OrchestratorRoleSuggestions? suggestion,
+    OrchestratorSuggestion? selectedChoice,
     OrchestratorSuggestion? acceptedChoice,
+    List<OrchestratorSuggestion>? shuffledChoices,
   }) => ActiveSuggestionModel(
     suggestion: suggestion ?? this.suggestion,
+    selectedChoice: selectedChoice ?? this.selectedChoice,
     acceptedChoice: acceptedChoice ?? this.acceptedChoice,
+    shuffledChoices: shuffledChoices ?? this.shuffledChoices,
   );
 }
 
@@ -234,6 +238,13 @@ class OrchestratorController {
       throw StateError("Invalid choice selection");
     }
 
-    _setActiveSuggestion(activeSuggestion.copyWith(acceptedChoice: choice));
+    final update = choice.type == OrchestratorSuggestionType.best
+        ? activeSuggestion.copyWith(
+            selectedChoice: choice,
+            acceptedChoice: choice,
+          )
+        : activeSuggestion.copyWith(selectedChoice: choice);
+
+    _setActiveSuggestion(update);
   }
 }

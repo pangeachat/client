@@ -28,24 +28,6 @@ class SuggestionCardState extends State<SuggestionCard> {
   ActiveSuggestionModel? get suggestionsModel =>
       widget.controller.activeSuggestion;
 
-  /// The learner's local selection, used to show correct/incorrect feedback.
-  OrchestratorSuggestion? _selected;
-
-  /// Stable shuffled order for the current suggestion. [shuffledChoices]
-  /// reshuffles on every call, which would scramble the choice order (and the
-  /// feedback) on each rebuild, so we shuffle once per suggestion.
-  Object? _orderedFor;
-  List<OrchestratorSuggestion> _orderedChoices = const [];
-
-  List<OrchestratorSuggestion> _choicesFor(ActiveSuggestionModel model) {
-    if (!identical(_orderedFor, model.suggestion)) {
-      _orderedFor = model.suggestion;
-      _orderedChoices = model.shuffledChoices;
-      _selected = null;
-    }
-    return _orderedChoices;
-  }
-
   void _close() {
     widget.popupManager.close();
   }
@@ -54,16 +36,9 @@ class SuggestionCardState extends State<SuggestionCard> {
   // void _showFeedbackDialog() {}
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
-    setState(() => _selected = choice);
-
-    // Only the recommended (best) option advances a goal. Accept it (which
-    // drops its text into the composer) and dismiss after a beat so the learner
-    // sees the green confirmation. A distractor is wrong: show it red, keep the
-    // card open so they can try again, and do NOT accept it.
-    if (choice.type != OrchestratorSuggestionType.best) return;
-
     try {
       widget.controller.selectChoice(choice);
+      setState(() {});
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -73,11 +48,9 @@ class SuggestionCardState extends State<SuggestionCard> {
           "suggestion": suggestionsModel?.suggestion.toJson(),
         },
       );
-      // Revert the optimistic selection: the choice was not accepted, so don't
-      // leave it showing the green "correct" state.
-      if (mounted) setState(() => _selected = null);
-      return;
     }
+
+    if (choice.type != OrchestratorSuggestionType.best) return;
     Future.delayed(const Duration(milliseconds: 700), () {
       if (mounted) _close();
     });
@@ -91,6 +64,7 @@ class SuggestionCardState extends State<SuggestionCard> {
       return SizedBox();
     }
 
+    final selected = suggestionsModel.selectedChoice;
     return WritingAssistancePopup(
       widget.popupManager,
       child: Container(
@@ -140,9 +114,9 @@ class SuggestionCardState extends State<SuggestionCard> {
                 horizontal: 24.0,
               ),
               child: ChoicesArray<OrchestratorSuggestion>(
-                choices: _choicesFor(suggestionsModel).map((e) {
+                choices: suggestionsModel.shuffledChoices.map((e) {
                   final isBest = e.type == OrchestratorSuggestionType.best;
-                  final isSelected = _selected == e;
+                  final isSelected = e == selected;
                   return Choice(
                     value: e,
                     // Match the IGC SpanCard scheme: green for the correct
@@ -154,9 +128,9 @@ class SuggestionCardState extends State<SuggestionCard> {
                   );
                 }).toList(),
                 onPressed: (value, index) => _onChoiceSelected(value),
-                selectedChoiceIndex: _selected == null
+                selectedChoiceIndex: selected == null
                     ? null
-                    : _choicesFor(suggestionsModel).indexOf(_selected!),
+                    : suggestionsModel.shuffledChoices.indexOf(selected),
                 getDisplayCopy: (value) => value.text,
               ),
             ),
