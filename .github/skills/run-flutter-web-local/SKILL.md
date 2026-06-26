@@ -132,3 +132,5 @@ The app renders to `<canvas>`, so the Chrome extension can only operate it by ro
 
 - **Local** (`local.pangea.chat`): `@learner` / `learnerpass`.
 - **Staging** (`staging.pangea.chat`): the shared `staging_automated_tests` account — credentials in `client/.env` (`TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD`) or AWS Secrets Manager. See [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md).
+
+**Skip the canvas login form: `?devlogin=1`.** The login form is canvas-rendered, so typing into it is the slowest part of a QA loop. In a debug build, open `http://localhost:8090/?devlogin=1` (the param also works inside a hash route, `…/#/world?devlogin=1`) to sign straight into the test account using the `.env` `TEST_MATRIX_*` creds — no typing. It is **opt-in per load** (a plain `localhost:8090` shows the real login flow, so that stays testable), uses the SDK's own login (always-valid session, unlike a stale `storageState`), and refuses production. No-op if already logged in — log out first to switch accounts. See [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md).
