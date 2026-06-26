@@ -21,6 +21,7 @@ class SpaceAnalyticsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = controller.filterLanguage;
     return LayoutBuilder(
       builder: (context, constraints) {
         final mini = constraints.maxWidth <= 550;
@@ -39,15 +40,18 @@ class SpaceAnalyticsView extends StatelessWidget {
                       _MenuButton(
                         text: L10n.of(context).requestAll,
                         icon: Symbols.approval_delegation,
-                        onPressed: controller.requestAllAnalytics,
+                        onPressed: lang != null
+                            ? () => controller.requestAllAnalytics(lang)
+                            : null,
                         mini: mini,
                         hideLabel: false,
                         //disable if only one person (self) in course
                         enabled: controller.sortedDownloads.length > 1,
                       ),
                       if (kIsWeb &&
+                          lang != null &&
                           controller.room != null &&
-                          controller.availableAnalyticsRooms.isNotEmpty)
+                          controller.availableAnalyticsRooms(lang).isNotEmpty)
                         _MenuButton(
                           text: L10n.of(context).download,
                           icon: Icons.download,
@@ -56,8 +60,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                               context: context,
                               builder: (context) => DownloadAnalyticsDialog(
                                 space: controller.room!,
-                                analyticsRooms:
-                                    controller.availableAnalyticsRooms,
+                                analyticsRooms: controller
+                                    .availableAnalyticsRooms(lang),
                               ),
                             );
                           },
@@ -85,67 +89,72 @@ class SpaceAnalyticsView extends StatelessWidget {
                         onPressed: controller.refresh,
                         mini: mini,
                       ),
-                      DropdownButtonHideUnderline(
-                        child: DropdownButton2<LanguageModel>(
-                          customButton: Container(
-                            height: !mini ? 36.0 : 26.0,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.primaryContainer,
-                              borderRadius: BorderRadius.circular(40),
+                      if (controller.canSelectLanguage)
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton2<LanguageModel>(
+                            customButton: Container(
+                              height: !mini ? 36.0 : 26.0,
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.primaryContainer,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: !mini ? 8.0 : 4.0,
+                                vertical: 4.0,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  if (lang != null)
+                                    Text(
+                                      mini
+                                          ? lang.langCode.toUpperCase()
+                                          : lang.getDisplayName(
+                                              L10n.of(context),
+                                            ),
+                                      style: TextStyle(
+                                        color: theme
+                                            .colorScheme
+                                            .onPrimaryContainer,
+                                        fontSize: !mini ? 16.0 : 12.0,
+                                      ),
+                                    ),
+                                  Icon(
+                                    Icons.arrow_drop_down,
+                                    color: theme.colorScheme.onPrimaryContainer,
+                                    size: !mini ? 24.0 : 14.0,
+                                  ),
+                                ],
+                              ),
                             ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: !mini ? 8.0 : 4.0,
-                              vertical: 4.0,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                if (controller.selectedLanguage != null)
-                                  Text(
-                                    mini
-                                        ? controller.selectedLanguage!.langCode
-                                              .toUpperCase()
-                                        : controller.selectedLanguage!
-                                              .getDisplayName(L10n.of(context)),
-                                    style: TextStyle(
-                                      color:
-                                          theme.colorScheme.onPrimaryContainer,
-                                      fontSize: !mini ? 16.0 : 12.0,
+                            value: lang,
+                            items: controller.availableLanguages
+                                .map(
+                                  (item) => DropdownMenuItem(
+                                    value: item,
+                                    child: DropdownTextButton(
+                                      text: item.getDisplayName(
+                                        L10n.of(context),
+                                      ),
+                                      isSelected: false,
                                     ),
                                   ),
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: theme.colorScheme.onPrimaryContainer,
-                                  size: !mini ? 24.0 : 14.0,
-                                ),
-                              ],
+                                )
+                                .toList(),
+                            onChanged: controller.setSelectedLanguage,
+                            buttonStyleData: ButtonStyleData(
+                              // This is necessary for the ink response to match our customButton radius.
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                              ),
                             ),
-                          ),
-                          value: controller.selectedLanguage,
-                          items: controller.availableLanguages
-                              .map(
-                                (item) => DropdownMenuItem(
-                                  value: item,
-                                  child: DropdownTextButton(
-                                    text: item.getDisplayName(L10n.of(context)),
-                                    isSelected: false,
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: controller.setSelectedLanguage,
-                          buttonStyleData: ButtonStyleData(
-                            // This is necessary for the ink response to match our customButton radius.
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
+                            dropdownStyleData: const DropdownStyleData(
+                              offset: Offset(-160, 0),
+                              width: 250,
                             ),
-                          ),
-                          dropdownStyleData: const DropdownStyleData(
-                            offset: Offset(-160, 0),
-                            width: 250,
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ],
@@ -236,10 +245,13 @@ class SpaceAnalyticsView extends StatelessWidget {
                                               ),
                                               _RequestButton(
                                                 status: download.requestStatus,
-                                                onPressed: () =>
-                                                    controller.requestAnalytics(
-                                                      entry.key,
-                                                    ),
+                                                onPressed: lang != null
+                                                    ? () => controller
+                                                          .requestAnalytics(
+                                                            entry.key,
+                                                            lang,
+                                                          )
+                                                    : null,
                                                 mini: mini,
                                               ),
                                               const SizedBox(height: 8.0),
@@ -294,7 +306,7 @@ class SpaceAnalyticsView extends StatelessWidget {
 class _MenuButton extends StatelessWidget {
   final String text;
   final IconData icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool enabled;
 
   final bool mini;
@@ -474,7 +486,7 @@ class _MissingContentCell extends StatelessWidget {
 
 class _RequestButton extends StatelessWidget {
   final RequestStatus status;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool mini;
 
   const _RequestButton({
