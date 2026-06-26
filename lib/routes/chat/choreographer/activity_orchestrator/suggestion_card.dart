@@ -28,6 +28,24 @@ class SuggestionCardState extends State<SuggestionCard> {
   ActiveSuggestionModel? get suggestionsModel =>
       widget.controller.activeSuggestion;
 
+  /// The learner's local selection, used to show correct/incorrect feedback.
+  OrchestratorSuggestion? _selected;
+
+  /// Stable shuffled order for the current suggestion. [shuffledChoices]
+  /// reshuffles on every call, which would scramble the choice order (and the
+  /// feedback) on each rebuild, so we shuffle once per suggestion.
+  Object? _orderedFor;
+  List<OrchestratorSuggestion> _orderedChoices = const [];
+
+  List<OrchestratorSuggestion> _choicesFor(ActiveSuggestionModel model) {
+    if (!identical(_orderedFor, model.suggestion)) {
+      _orderedFor = model.suggestion;
+      _orderedChoices = model.shuffledChoices;
+      _selected = null;
+    }
+    return _orderedChoices;
+  }
+
   void _close() {
     widget.popupManager.close();
   }
@@ -36,6 +54,14 @@ class SuggestionCardState extends State<SuggestionCard> {
   // void _showFeedbackDialog() {}
 
   void _onChoiceSelected(OrchestratorSuggestion choice) {
+    setState(() => _selected = choice);
+
+    // Only the recommended (best) option advances a goal. Accept it (which
+    // drops its text into the composer) and dismiss after a beat so the learner
+    // sees the green confirmation. A distractor is wrong: show it red, keep the
+    // card open so they can try again, and do NOT accept it.
+    if (choice.type != OrchestratorSuggestionType.best) return;
+
     try {
       widget.controller.selectChoice(choice);
     } catch (e, s) {
@@ -47,8 +73,11 @@ class SuggestionCardState extends State<SuggestionCard> {
           "suggestion": suggestionsModel?.suggestion.toJson(),
         },
       );
+      return;
     }
-    if (mounted) _close();
+    Future.delayed(const Duration(milliseconds: 700), () {
+      if (mounted) _close();
+    });
   }
 
   @override
@@ -108,11 +137,23 @@ class SuggestionCardState extends State<SuggestionCard> {
                 horizontal: 24.0,
               ),
               child: ChoicesArray<OrchestratorSuggestion>(
-                choices: suggestionsModel.shuffledChoices
-                    .map((e) => Choice(value: e))
-                    .toList(),
+                choices: _choicesFor(suggestionsModel).map((e) {
+                  final isBest = e.type == OrchestratorSuggestionType.best;
+                  final isSelected = _selected == e;
+                  return Choice(
+                    value: e,
+                    // Match the IGC SpanCard scheme: green for the correct
+                    // (best) option, red for a distractor.
+                    color: isSelected
+                        ? (isBest ? Colors.green : Colors.red)
+                        : null,
+                    isGold: isBest,
+                  );
+                }).toList(),
                 onPressed: (value, index) => _onChoiceSelected(value),
-                selectedChoiceIndex: null,
+                selectedChoiceIndex: _selected == null
+                    ? null
+                    : _choicesFor(suggestionsModel).indexOf(_selected!),
                 getDisplayCopy: (value) => value.text,
               ),
             ),
