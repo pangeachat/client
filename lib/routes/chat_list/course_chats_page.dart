@@ -13,7 +13,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -541,7 +540,13 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     );
     final roomId = chunk.chunk.roomId;
     if (!hasRole) {
-      context.go(PRoutes.activity(widget.roomId, activityId, roomId: roomId));
+      context.go(
+        WorkspaceNav.openCourseActivity(
+          widget.roomId,
+          activityId,
+          roomId: roomId,
+        ),
+      );
       return;
     }
 

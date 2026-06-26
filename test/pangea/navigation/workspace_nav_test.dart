@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 void main() {
   Uri u(String s) => Uri.parse(s);
@@ -808,5 +809,55 @@ void main() {
         expect(right.map((t) => t.type).toSet(), {'vocab', 'analytics'});
       },
     );
+  });
+
+  group('openCourseActivity (token-native in-course overlay, #7267)', () {
+    // Bare localpart ids (no `:domain`): shortRoomId only strips the home
+    // server_name, which is unavailable in a unit test (no MatrixState), so a
+    // `!x:server.com` would ride the URL whole. The existing course helpers test
+    // the same way — the id format is orthogonal to what this producer asserts.
+    test('sets the course scope + activity overlay on a clean workspace — no '
+        'left/right panels (the #7267 split)', () {
+      final loc = WorkspaceNav.openCourseActivity('!space', 'act-123');
+      final uri = u(loc);
+      expect(uri.path, '/'); // over the persistent world map
+      // The `m` filter is the course scope, encoded the same as everywhere else.
+      expect(
+        WorkspaceQuery.valueOf(uri.query, 'm'),
+        const PanelToken('course', '!space').encode(),
+      );
+      expect(uri.queryParameters['activity'], 'act-123');
+      // The whole point of the fix: an activity REPLACES the panels, so no
+      // `left=course` card (or any right panel) re-opens beside it.
+      expect(WorkspaceQuery.valueOf(uri.query, 'left'), isNull);
+      expect(WorkspaceQuery.valueOf(uri.query, 'right'), isNull);
+    });
+
+    test('launch:true adds the lobby-skip flag', () {
+      final loc = WorkspaceNav.openCourseActivity(
+        '!space',
+        'act-123',
+        launch: true,
+      );
+      expect(WorkspaceQuery.valueOf(u(loc).query, 'launch'), 'true');
+    });
+
+    test('roomId reopens a specific session room (shortRoomId localpart)', () {
+      final loc = WorkspaceNav.openCourseActivity(
+        '!space',
+        'act-123',
+        roomId: '!sess',
+      );
+      expect(WorkspaceQuery.valueOf(u(loc).query, 'roomid'), '!sess');
+    });
+
+    test('autoplay:true autostarts the hero media at block 0', () {
+      final loc = WorkspaceNav.openCourseActivity(
+        '!space',
+        'act-123',
+        autoplay: true,
+      );
+      expect(WorkspaceQuery.valueOf(u(loc).query, 'autoplay'), '0');
+    });
   });
 }

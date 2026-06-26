@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -131,7 +132,13 @@ class NotificationTapUtil {
         return;
       }
 
-      router.go(PRoutes.activity(roomId, activityId, roomId: sessionRoomId));
+      router.go(
+        WorkspaceNav.openCourseActivity(
+          roomId,
+          activityId,
+          roomId: sessionRoomId,
+        ),
+      );
       return;
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});
