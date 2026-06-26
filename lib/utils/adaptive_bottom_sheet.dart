@@ -22,13 +22,22 @@ Future<T?> showAdaptiveBottomSheet<T>({
         child: Container(
           margin: const EdgeInsets.all(16),
           constraints: const BoxConstraints(maxWidth: 480, maxHeight: 720),
-          child: Material(
-            elevation: Theme.of(context).dialogTheme.elevation ?? 4,
-            shadowColor: Theme.of(context).dialogTheme.shadowColor,
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-            color: Theme.of(context).scaffoldBackgroundColor,
-            clipBehavior: Clip.hardEdge,
-            child: builder(context),
+          // Absorb taps anywhere on the popup's rect — including the rounded
+          // corners the Material clips away to transparent — so an interior tap
+          // is a no-op instead of falling through to the dismiss barrier that
+          // sits behind the dialog content (#7261). The transparent surround
+          // outside this box still dismisses.
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {},
+            child: Material(
+              elevation: Theme.of(context).dialogTheme.elevation ?? 4,
+              shadowColor: Theme.of(context).dialogTheme.shadowColor,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              color: Theme.of(context).scaffoldBackgroundColor,
+              clipBehavior: Clip.hardEdge,
+              child: builder(context),
+            ),
           ),
         ),
       ),
