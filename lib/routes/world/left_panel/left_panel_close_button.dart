@@ -54,22 +54,39 @@ class LeftPanelCloseButton extends StatelessWidget {
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token)),
   );
 
+  /// The LIVE workspace URL at click time. The left panel does NOT rebuild when
+  /// only the RIGHT column changes (so the live chat/timeline is not torn down),
+  /// so the [currentUri] captured at this panel's last build can be STALE for the
+  /// right column. A token mutation (close / pop) preserves the rest of the query
+  /// verbatim, so running it on the stale uri would "restore" the right tab the
+  /// panel opened with and discard whatever the user switched to since — e.g.
+  /// closing a session review snapped the right column from `analytics:grammar`
+  /// back to the open-time `analytics:sessions` (#7268). Read the current url
+  /// instead, so the close drops only this token and leaves the right column as
+  /// the user left it.
+  Uri _liveUri(BuildContext context) =>
+      GoRouter.of(context).routeInformationProvider.value.uri;
+
   // A `room`/`session` is a token-only panel, so dropping its token closes it.
   // A section panel (a course) is also addressable by its map filter, so
   // closing it returns to the world map. See WorkspaceNav.closeSection.
-  void _close(BuildContext context) => context.go(
-    token.type == 'room' || token.type == 'session'
-        ? WorkspaceNav.closeLeft(currentUri, token)
-        : WorkspaceNav.closeSection(currentUri, token),
-  );
+  void _close(BuildContext context) {
+    final uri = _liveUri(context);
+    context.go(
+      token.type == 'room' || token.type == 'session'
+          ? WorkspaceNav.closeLeft(uri, token)
+          : WorkspaceNav.closeSection(uri, token),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final page = token.param;
     if (_isPushedSubPage && page != null) {
       return BackButton(
-        onPressed: () =>
-            context.go(WorkspaceNav.popPage(currentUri, token.type, page)),
+        onPressed: () => context.go(
+          WorkspaceNav.popPage(_liveUri(context), token.type, page),
+        ),
       );
     }
 
