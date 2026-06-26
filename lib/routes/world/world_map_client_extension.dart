@@ -8,6 +8,33 @@ import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 
 extension WorldMapClientExtension on Client {
+  /// The learner's OWN session room for [activityId] — a room they have *joined*
+  /// (membership join), whether or not they have confirmed a role. Prefers a
+  /// room where they hold a role, then the most recently active. This is the
+  /// inverse of [bestJoinableActivityInstance] (which finds a free seat in
+  /// *another* learner's open session): here we resolve "my started/joined
+  /// session" so a map-pin tap reopens it (binding the overlay via `roomid=`)
+  /// instead of spawning a fresh instance (#7257).
+  Room? myActivityInstance(String activityId) {
+    Room? best;
+    var bestHasRole = false;
+    for (final r in rooms) {
+      if (r.activityId != activityId) continue;
+      if (r.membership != Membership.join) continue;
+      final hasRole = r.ownRole != null;
+      final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      final bestMs =
+          best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      if (best == null ||
+          (hasRole && !bestHasRole) ||
+          (hasRole == bestHasRole && ms > bestMs)) {
+        best = r;
+        bestHasRole = hasRole;
+      }
+    }
+    return best;
+  }
+
   Room? bestJoinableActivityInstance(String activityId) {
     Room? best;
     for (final r in rooms) {
