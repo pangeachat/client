@@ -1,0 +1,98 @@
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/pangea/common/config/dev_login.dart';
+
+void main() {
+  group('shouldDevLogin — safety gates', () {
+    // Happy path: debug build, opted-in, logged out, creds present, local
+    // homeserver. Each test below flips exactly one input to assert the gate.
+    bool gate({
+      bool isDebug = true,
+      bool requested = true,
+      bool alreadyLoggedIn = false,
+      String? username = 'learner',
+      String? password = 'learnerpass',
+      String homeserver = 'local.pangea.chat',
+    }) => shouldDevLogin(
+      isDebug: isDebug,
+      requested: requested,
+      alreadyLoggedIn: alreadyLoggedIn,
+      username: username,
+      password: password,
+      homeserver: homeserver,
+    );
+
+    test('proceeds in the happy path', () {
+      expect(gate(), isTrue);
+    });
+
+    test('never runs in a release build', () {
+      expect(gate(isDebug: false), isFalse);
+    });
+
+    test('does nothing without the ?devlogin=1 opt-in', () {
+      expect(gate(requested: false), isFalse);
+    });
+
+    test('does not disturb an existing session', () {
+      expect(gate(alreadyLoggedIn: true), isFalse);
+    });
+
+    test('skips when credentials are missing', () {
+      expect(gate(username: null), isFalse);
+      expect(gate(username: ''), isFalse);
+      expect(gate(password: null), isFalse);
+      expect(gate(password: ''), isFalse);
+    });
+
+    test('refuses the production homeserver', () {
+      expect(gate(homeserver: 'pangea.chat'), isFalse);
+      expect(gate(homeserver: 'matrix.pangea.chat'), isFalse);
+      expect(gate(homeserver: 'PANGEA.CHAT'), isFalse);
+      expect(gate(homeserver: '  pangea.chat '), isFalse);
+    });
+
+    test('allows staging and local homeservers', () {
+      expect(gate(homeserver: 'staging.pangea.chat'), isTrue);
+      expect(gate(homeserver: 'local.pangea.chat'), isTrue);
+      expect(gate(homeserver: 'localhost:8008'), isTrue);
+    });
+  });
+
+  group('devLoginRequested — URL parsing', () {
+    test('true for a top-level ?devlogin=1', () {
+      expect(
+        devLoginRequested(Uri.parse('http://localhost:8090/?devlogin=1')),
+        isTrue,
+      );
+    });
+
+    test('true for the param inside a hash route', () {
+      expect(
+        devLoginRequested(Uri.parse('http://localhost:8090/#/?devlogin=1')),
+        isTrue,
+      );
+      expect(
+        devLoginRequested(
+          Uri.parse('http://localhost:8090/#/world?devlogin=1'),
+        ),
+        isTrue,
+      );
+    });
+
+    test('false without the param', () {
+      expect(devLoginRequested(Uri.parse('http://localhost:8090/')), isFalse);
+      expect(
+        devLoginRequested(Uri.parse('http://localhost:8090/#/world')),
+        isFalse,
+      );
+    });
+
+    test('false for a non-1 value', () {
+      expect(
+        devLoginRequested(Uri.parse('http://localhost:8090/?devlogin=0')),
+        isFalse,
+      );
+    });
+  });
+}

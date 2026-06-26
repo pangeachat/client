@@ -24,6 +24,7 @@ import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
@@ -313,6 +314,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       _setAppLanguage();
       _setLanguageListener();
       _showScreenSizeDialog();
+      // Debug-only: `?devlogin=1` signs the local build into the test account,
+      // bypassing the canvas login form. No-op without the param. See
+      // dev_login.dart / matrix-auth.instructions.md.
+      maybeDevLogin(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
