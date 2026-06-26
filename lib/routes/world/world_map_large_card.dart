@@ -73,7 +73,6 @@ class WorldMapLargeCard extends StatelessWidget {
     final total = _starsTotal;
 
     final earned = starsEarned.clamp(0, total);
-    final shown = total > 12 ? 12 : total;
 
     return GestureDetector(
       onTap: onTap,
@@ -106,9 +105,9 @@ class WorldMapLargeCard extends StatelessWidget {
                   foregroundColor: state.accent,
                 ),
                 ActivityStarRow(
-                  total: _starsTotal,
+                  total: total,
                   earned: earned,
-                  condensed: _starsTotal > 12,
+                  condensed: total > 12,
                 ),
                 if (completed)
                   Row(
