@@ -73,6 +73,9 @@ class SuggestionCardState extends State<SuggestionCard> {
           "suggestion": suggestionsModel?.suggestion.toJson(),
         },
       );
+      // Revert the optimistic selection: the choice was not accepted, so don't
+      // leave it showing the green "correct" state.
+      if (mounted) setState(() => _selected = null);
       return;
     }
     Future.delayed(const Duration(milliseconds: 700), () {
