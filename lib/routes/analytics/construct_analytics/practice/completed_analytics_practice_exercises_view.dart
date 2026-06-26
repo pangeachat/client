@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
@@ -141,7 +144,19 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    context.go('/rooms/analytics/vocab');
+                    // #7227: return to the analytics page the practice was
+                    // launched from (vocab or grammar) via the world_v2 token,
+                    // not the dead legacy `/rooms/analytics/...` path. Practice
+                    // is a right-column takeover, so swap it back for the
+                    // matching analytics summary tab.
+                    final tab = session.type == ConstructTypeEnum.morph
+                        ? 'grammar'
+                        : 'vocab';
+                    context.go(
+                      WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+                        PanelToken('analytics', tab),
+                      ]),
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
