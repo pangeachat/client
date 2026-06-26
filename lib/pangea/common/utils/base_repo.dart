@@ -7,7 +7,6 @@ import 'package:http/http.dart' hide BaseResponse, BaseRequest;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
@@ -119,7 +118,6 @@ abstract class BaseRepo<
     try {
       final Requests req = Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
-        choreoApiKey: Environment.choreoApiKey,
       );
 
       final Response res = await fetch(req, request).timeout(timeout);

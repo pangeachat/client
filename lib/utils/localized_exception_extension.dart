@@ -93,6 +93,8 @@ extension LocalizedExceptionExtension on Object {
           )) {
             return L10n.of(context).cannotJoinBannedRoom;
           }
+        case MatrixError.M_BAD_JSON:
+          return L10n.of(context).invalidInput;
         // Pangea#
         default:
           if (exceptionContext == ExceptionContext.joinRoom) {

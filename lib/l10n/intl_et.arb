@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-18 09:34:25.378080",
+    "@@last_modified": "2026-06-26 10:47:28.117472",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9867,6 +9867,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Liitu kursusega, mis sisaldab seda tegevust, et seda mängida.",
+    "resizeCoursePanel": "Kursuse paneeli suuruse muutmine",
+    "undo": "Tühista",
+    "unlock": "Avage",
+    "zoomIn": "Suurenda",
+    "zoomOut": "Vähenda",
+    "stars": "Tähte",
+    "addNewCourse": "Lisa uus kursus",
+    "world": "Maailm",
+    "addCourseStartMyOwn": "Alusta oma",
+    "addCourseEnterCode": "Sisestage privaatse kursuse kood",
+    "addCourseBrowsePublic": "Sirvi avalikke kursusi",
+    "browsePublicCourses": "Sirvi avalikke kursusi",
+    "editProfile": "Muuda profiili",
+    "numObjectives": "{count} eesmärki",
+    "mapSearchHint": "Otsi tegevusi",
+    "mapSearchNoResults": "Vaates ei ole vasteid",
+    "mapFilterAllLanguages": "Kõik keeled",
+    "mapFilterNotStarted": "Alustamata",
+    "mapFilterInProgress": "Käimas",
+    "mapFilterCompleted": "Lõpetatud",
+    "mapFilterReset": "Lähtesta",
+    "activityTypeConversation": "Vestlus",
+    "lockedMissionRequirement": "Eelmise missiooni lõpetamiseks, et avada",
+    "playAgain": "Mängi uuesti",
+    "reviewActivity": "Ülevaade",
+    "mapEmptyInView": "Sinu tasemel või keeles ei ole siin midagi. Laienda oma filtreid või suumi välja.",
+    "welcomeToPangeaChat": "Tere tulemast Pangea Chati",
+    "claimTrial": "Nõua oma prooviversioon",
+    "thanksForSigningUp": "Aitäh registreerumise eest! Siin on",
+    "sevenDaysFree": "7 PÄEVA TASUTA",
+    "manageTrialInSettings": "Halda oma prooviperioodi igal ajal\nTellimuse seadetes",
+    "noCreditCardRequired": "Krediitkaarti ei ole vaja.",
+    "proFeatures": "PRO",
+    "widenSearch": "Laienda otsingut",
+    "scrollToBottom": "Kerige alla",
+    "courseImage": "Kursuse pilt",
+    "avatarPreview": "Avatar eelvaade",
+    "activityPhoto": "Tegevuse foto",
+    "emotePreview": "Emote eelvaade: {name}",
+    "activityLabel": "Tegevus: {title}",
+    "resetMapView": "Lähtesta kaardi vaade",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

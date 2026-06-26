@@ -73,6 +73,8 @@ Don't free-style the flows. A checklist is **robust** (finds real bugs) and **re
 
 **First: attach to the right tab.** Run `list_connected_browsers`; if zero, ask the user to connect Claude-in-Chrome — do **not** fall back to computer-use pixel-driving the whole app. Then `tabs_context_mcp` to list tabs, pick the one whose URL matches the target (`app.staging.pangea.chat` or `localhost:8090`), select it, and bring it to the **foreground** before driving — a backgrounded tab throttles timers and is what hangs `Runtime.evaluate` (see the wake recipe). Pass the resolved tab id into the agent prompt.
 
+**Close before you open.** Every tab you create with `tabs_create_mcp`, close with `tabs_close_mcp` when done — never leave stale `localhost` tabs piling up across rounds.
+
 **Single-browser constraint.** There is normally **one** connected browser (`list_connected_browsers`) with one or few tabs. **Do not run parallel agents against one browser** — they stomp each other's navigation/clicks. Either one agent owns the browser for the whole round, or serialize (one at a time). If the main loop spawns a background QA agent, the main loop must then **stay off the browser** until it returns.
 
 **Target.** Decide deployed-staging vs local explicitly and tell the agent:
@@ -100,3 +102,4 @@ This skill is meant to accrue hard-won recipe over time. When a round teaches yo
 
 - **2026-06-21** — Initial. Root-caused the "deployed app isn't driveable" wall to the map-tile-gated, interaction-deferred semantics tree (#175465); established the wake-and-poll recipe; ruled out the renderer-accessibility flag, Chrome version, and build mode.
 - **2026-06-21** — Hardened via adversarial review: added tab-attach startup, the stuck-recipe escape hatch, deploy-lag + fix-verification, and round bounding; added the "Structuring what to test" checklist methodology; corrected the `/.env` state (no-cache fix now merged to `main`).
+- **2026-06-26** — Added the "close before you open" tab-hygiene rule (agents were leaving stale `localhost` tabs piling up across rounds).

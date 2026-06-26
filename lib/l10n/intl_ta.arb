@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-18 09:35:37.076778",
+    "@@last_modified": "2026-06-26 10:52:02.600230",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9986,6 +9986,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "இந்த செயல்பாட்டை விளையாட ஒரு பாடத்தை சேர்க்கவும்.",
+    "resizeCoursePanel": "பாடப் பானலின் அளவை மாற்றவும்",
+    "undo": "மீட்டெடுக்கவும்",
+    "unlock": "திறக்கவும்",
+    "zoomIn": "உள்ளே நுழையவும்",
+    "zoomOut": "வெளியே செல்லவும்",
+    "stars": "நட்சத்திரங்கள்",
+    "addNewCourse": "புதிய பாடத்தைச் சேர்க்கவும்",
+    "world": "உலகம்",
+    "addCourseStartMyOwn": "என் சொந்தத்தை தொடங்கவும்",
+    "addCourseEnterCode": "தனியார் பாடத்திற்கான குறியீட்டை உள்ளிடவும்",
+    "addCourseBrowsePublic": "பொது பாடங்களை உலாவவும்",
+    "browsePublicCourses": "பொது பாடங்களை உலாவவும்",
+    "editProfile": "சுயவிவரத்தை திருத்தவும்",
+    "numObjectives": "{count} குறிக்கோள்கள்",
+    "mapSearchHint": "செயல்பாடுகளை தேடவும்",
+    "mapSearchNoResults": "காண்பில் பொருத்தங்கள் இல்லை",
+    "mapFilterAllLanguages": "எல்லா மொழிகளும்",
+    "mapFilterNotStarted": "தொடங்கவில்லை",
+    "mapFilterInProgress": "நடந்து கொண்டிருக்கிறது",
+    "mapFilterCompleted": "முடிந்தது",
+    "mapFilterReset": "மீட்டமை",
+    "activityTypeConversation": "சரசரி",
+    "lockedMissionRequirement": "அன்லாக் செய்ய முந்தைய மிஷனை முடிக்கவும்",
+    "playAgain": "மீண்டும் விளையாடவும்",
+    "reviewActivity": "மதிப்பீடு",
+    "mapEmptyInView": "உங்கள் நிலை அல்லது மொழியில் இங்கு எதுவும் இல்லை. உங்கள் வடிகட்டிகளை விரிவாக்கவும் அல்லது வெளியே zoom செய்யவும்.",
+    "welcomeToPangeaChat": "பாஙேஆ சாட்டிற்கு வரவேற்கிறோம்",
+    "claimTrial": "உங்கள் சோதனையை கோருங்கள்",
+    "thanksForSigningUp": "பதிவு செய்ததற்கு நன்றி! இதோ",
+    "sevenDaysFree": "7 நாட்கள் இலவசம்",
+    "manageTrialInSettings": "உங்கள் சோதனைக்கு எப்போது வேண்டுமானாலும்\nசந்தா அமைப்புகளில் நிர்வகிக்கவும்",
+    "noCreditCardRequired": "கிரெடிட் கார்டு தேவையில்லை.",
+    "proFeatures": "PRO",
+    "widenSearch": "தேடலை விரிவாக்கவும்",
+    "scrollToBottom": "கீழே உருட்டவும்",
+    "courseImage": "பாடத்தின் படம்",
+    "avatarPreview": "அவதார் முன்னோட்டம்",
+    "activityPhoto": "செயல்பாட்டு படம்",
+    "emotePreview": "எமோட் முன்னோட்டம்: {name}",
+    "activityLabel": "செயல்: {title}",
+    "resetMapView": "மெப்பத்தை மீட்டமைக்கவும்",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

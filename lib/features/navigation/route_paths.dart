@@ -4,7 +4,9 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 ///
 /// world_v2 navigation is **token-driven**: internal navigation goes through the
 /// `WorkspaceNav` token helpers (and the token locations/builders here —
-/// [world], [chatsList], [course], [room], [worldObject], [activity]). The bare
+/// [world], [chatsList], [course], [room], [worldObject]). The in-course
+/// activity overlay is produced token-natively by
+/// `WorkspaceNav.openCourseActivity` (#7267), not by a path builder here. The bare
 /// **section-path** constants ([chats], [analytics], [courses], [settings],
 /// [profile], [rooms]) are NOT navigation targets — they are legacy redirect
 /// sources + `route_facts.sectionFor` identities that `LegacyRedirects` rewrites
@@ -65,24 +67,6 @@ abstract class PRoutes {
 
   /// First-class world object (activity for now) — `/<uuid>`.
   static String worldObject(String id) => '/$id';
-
-  /// Open an activity in its course — the canonical in-course overlay over the
-  /// persistent map (`/courses/:spaceid?activity=:id`). [tab] preserves the
-  /// underlying course tab, [roomId] joins an existing session room, [launch]
-  /// skips the lobby. This is the single producer of the in-course open shape.
-  static String activity(
-    String spaceId,
-    String activityId, {
-    String? roomId,
-    bool launch = false,
-    String? tab,
-  }) {
-    final params = <String>['activity=$activityId'];
-    if (tab != null) params.add('tab=$tab');
-    if (roomId != null) params.add('roomid=${shortRoomId(roomId)}');
-    if (launch) params.add('launch=true');
-    return '${course(spaceId)}?${params.join('&')}';
-  }
 
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.

@@ -99,12 +99,6 @@ class Environment {
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
 
-  static String get choreoApiKey {
-    return appConfigOverride?.choreoApiKey ??
-        dotenv.env['CHOREO_API_KEY'] ??
-        'e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873';
-  }
-
   static String get sentryDsn {
     return appConfigOverride?.sentryDsn ??
         dotenv.env["SENTRY_DSN"] ??
@@ -214,7 +208,6 @@ class AppConfigOverride {
   final String? synapseURL;
   final String? homeServer;
   final String? choreoApi;
-  final String? choreoApiKey;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
@@ -229,7 +222,6 @@ class AppConfigOverride {
     this.synapseURL,
     this.homeServer,
     this.choreoApi,
-    this.choreoApiKey,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
@@ -246,7 +238,6 @@ class AppConfigOverride {
       synapseURL: json['synapseURL'] as String?,
       homeServer: json['homeServer'] as String?,
       choreoApi: json['choreoApi'] as String?,
-      choreoApiKey: json['choreoApiKey'] as String?,
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
@@ -265,7 +256,6 @@ class AppConfigOverride {
       'synapseURL': synapseURL,
       'homeServer': homeServer,
       'choreoApi': choreoApi,
-      'choreoApiKey': choreoApiKey,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
@@ -284,7 +274,6 @@ class AppConfigOverride {
         synapseURL.hashCode ^
         homeServer.hashCode ^
         choreoApi.hashCode ^
-        choreoApiKey.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
@@ -303,7 +292,6 @@ class AppConfigOverride {
         synapseURL == other.synapseURL &&
         homeServer == other.homeServer &&
         choreoApi == other.choreoApi &&
-        choreoApiKey == other.choreoApiKey &&
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&

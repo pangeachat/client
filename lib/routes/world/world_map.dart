@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -853,9 +854,18 @@ class WorldMapController extends State<WorldMap>
       'm',
       'activity',
       'autoplay',
+      'roomid',
     });
 
     parts.add('activity=${card.activityId}');
+    // #7257: if the learner already holds a started/joined session for this
+    // activity, bind the overlay to that room (`roomid=`) so the start page
+    // resumes it (selectRole/confirmedRole) instead of offering a fresh
+    // instance. Pin entry stays unscoped — only the session room is added.
+    final myRoom = client?.myActivityInstance(card.activityId);
+    if (myRoom != null) {
+      parts.add('roomid=${shortRoomId(myRoom.id)}');
+    }
     context.go(WorkspaceQuery.location('/', parts));
     collapse();
   }

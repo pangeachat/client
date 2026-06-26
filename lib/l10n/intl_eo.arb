@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-18 09:35:51.806388",
+    "@@last_modified": "2026-06-26 10:54:31.498946",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10989,6 +10989,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "Aliĝu al kurso, kiu inkluzivas ĉi tiun aktivon por ludi ĝin.",
+    "resizeCoursePanel": "Redimensioni kurspanelon",
+    "undo": "Malfari",
+    "unlock": "Malŝlosi",
+    "zoomIn": "Proksimigi",
+    "zoomOut": "Malproksimigi",
+    "stars": "Steloj",
+    "addNewCourse": "Aldoni novan kurson",
+    "world": "Mondo",
+    "addCourseStartMyOwn": "Komenci mian propran",
+    "addCourseEnterCode": "Enigu kodon por privata kurso",
+    "addCourseBrowsePublic": "Serĉu publikajn kursojn",
+    "browsePublicCourses": "Serĉu publikajn kursojn",
+    "editProfile": "Redaktu profilon",
+    "numObjectives": "{count} celoj",
+    "mapSearchHint": "Serĉu aktivecojn",
+    "mapSearchNoResults": "Neniuj kongruoj en vido",
+    "mapFilterAllLanguages": "Ĉiuj lingvoj",
+    "mapFilterNotStarted": "Ne komencita",
+    "mapFilterInProgress": "En progreso",
+    "mapFilterCompleted": "Finita",
+    "mapFilterReset": "Reagordi",
+    "activityTypeConversation": "Konversacio",
+    "lockedMissionRequirement": "Fini la antaŭan misio por malŝlosi",
+    "playAgain": "Ludi denove",
+    "reviewActivity": "Revizii",
+    "mapEmptyInView": "Nenio ĉi tie ĉe via nivelo aŭ lingvo. Larĝigu viajn filtrilojn aŭ malproksimiĝu.",
+    "welcomeToPangeaChat": "Bonvenon al Pangea Ĉat",
+    "claimTrial": "Postuli vian provon",
+    "thanksForSigningUp": "Dankon pro aliĝi! Jen",
+    "sevenDaysFree": "7 TAGOJ SENKOSTA",
+    "manageTrialInSettings": "Administru vian provon iam en\nAbonaj Agordoj",
+    "noCreditCardRequired": "Neniu kreditkarto necesa.",
+    "proFeatures": "PRO",
+    "widenSearch": "Larĝigu serĉon",
+    "scrollToBottom": "Rulumu al fundo",
+    "courseImage": "Kursa bildo",
+    "avatarPreview": "Antaŭprezento de avataro",
+    "activityPhoto": "Aktiveca foto",
+    "emotePreview": "Emota antaŭprezento: {name}",
+    "activityLabel": "Aktiveco: {title}",
+    "resetMapView": "Reagordi mapan vidon",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }

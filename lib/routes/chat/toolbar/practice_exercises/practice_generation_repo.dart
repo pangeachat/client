@@ -9,7 +9,6 @@ import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -93,10 +92,7 @@ class PracticeRepo {
     required String accessToken,
     required MessagePracticeExerciseRequest requestModel,
   }) async {
-    final Requests request = Requests(
-      choreoApiKey: Environment.choreoApiKey,
-      accessToken: accessToken,
-    );
+    final Requests request = Requests(accessToken: accessToken);
     final Response res = await request.post(
       url: PApiUrls.messagePracticeExerciseGeneration,
       body: requestModel.toJson(),

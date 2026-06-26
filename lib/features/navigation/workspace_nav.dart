@@ -267,6 +267,38 @@ abstract class WorkspaceNav {
   static String openCoursePageFor(Uri current, String spaceId, String page) =>
       openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
 
+  /// Open an in-course activity as the immersive `?activity=` overlay over the
+  /// course-scoped map — the token-native producer for "open this activity in
+  /// its course". Sets the `?m=course:<spaceId>` scope and the `activity=<id>`
+  /// overlay on a CLEAN workspace (no `left`/`right` tokens): an activity is an
+  /// immersive task that REPLACES the open panels rather than stacking beside
+  /// them, and the surviving `?m=course:` scope makes the plan the card's child
+  /// (its close is a back-arrow that reopens the card). [launch] skips the lobby
+  /// straight to role selection; [roomId] reopens/rejoins a specific session
+  /// room; [autoplay] autostarts the plan's hero media (muted, block 0).
+  ///
+  /// Replaces the legacy `/courses/:id?activity=` path producer: `context.go`-ing
+  /// that path made `LegacyRedirects` rewrite it back to tokens INCLUDING
+  /// `left=course`, re-opening the course card beside the activity (#7267).
+  /// Inbound `/courses/:id?activity=` external links still map through
+  /// `legacy_redirects` unchanged. See `routing.instructions.md`.
+  static String openCourseActivity(
+    String spaceId,
+    String activityId, {
+    bool launch = false,
+    String? roomId,
+    bool autoplay = false,
+  }) {
+    final parts = <String>[
+      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
+      'activity=$activityId',
+      if (roomId != null) 'roomid=${shortRoomId(roomId)}',
+      if (launch) 'launch=true',
+      if (autoplay) 'autoplay=0',
+    ];
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
   /// Replace the whole `left` list (e.g. tapping a top-level section: Chats,
   /// the avatar/profile). The `right` list and other query params are preserved.
   static String setLeft(Uri current, List<PanelToken> tokens) =>

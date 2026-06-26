@@ -19,9 +19,8 @@ class ChoreoException implements Exception {
 
 class Requests {
   late String? accessToken;
-  late String? choreoApiKey;
 
-  Requests({this.accessToken, this.choreoApiKey});
+  Requests({this.accessToken});
 
   Future<http.Response> post({
     required String url,
@@ -97,9 +96,6 @@ class Requests {
     };
     if (accessToken != null) {
       headers["Authorization"] = 'Bearer ${accessToken!}';
-    }
-    if (choreoApiKey != null) {
-      headers['api_key'] = choreoApiKey!;
     }
     return headers;
   }

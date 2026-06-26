@@ -64,11 +64,20 @@ The dev server reads stdin from a FIFO so we can send it `r`/`q` from other shel
 
 ```bash
 [ -p /tmp/f8090 ] || mkfifo /tmp/f8090
-( sleep 100000000 > /tmp/f8090 & )   # holder keeps the FIFO open for writing
+# Keep ONE writer holding the fifo open, or flutter's stdin hits EOF and it quits
+# right after serving (you'll see the banner, then nothing listening on 8090). Two rules:
+#   • open it READ-WRITE (`<>`), not write-only — a RW holder never EOFs and never blocks.
+#   • reuse the existing holder via a pidfile. Do NOT guard on `pgrep -f sleep` (stale
+#     holders from old sessions make that match and skip creation), and do NOT spawn a
+#     fresh holder every launch (they pile up as orphaned `sleep` processes).
+HPF=/tmp/f8090.holder
+if ! { [ -f "$HPF" ] && kill -0 "$(cat "$HPF" 2>/dev/null)" 2>/dev/null; }; then
+  ( exec 3<>/tmp/f8090; exec sleep 2147483647 ) & echo $! > "$HPF"
+fi
 # then launch flutter with `< /tmp/f8090`
 ```
 
-Send commands with `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only.
+Send commands with `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only — the pidfile guard above keeps it to one. Orphaned `sleep 100000000` holders from the old write-only pattern are harmless; clear them with `pkill -f 'sleep 100000000'` while no client is running.
 
 ## Recovery from a zombie pile / wedged build
 
@@ -104,12 +113,13 @@ Run the local client against **staging** backends — a fast way to smoke-test a
 cp client/.env /tmp/client.env.bak     # restore with: cp /tmp/client.env.bak client/.env
 ```
 
-Only three keys differ (`CMS_API` stays `https://api.staging.pangea.chat` either way; `CHOREO_API_KEY` is identical in both):
+These routing keys differ (`CHOREO_API_KEY` is identical in both). **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the user's Matrix access token as the CMS bearer, and the CMS validates it against *its own* homeserver — so a mismatched pair (a local `@learner` token against staging CMS, or vice-versa) returns **403** and course/activity content silently fails to load. `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do *not* include `/cms` (that yields a `/cms/cms` double path). The local value below needs the **full local stack** (a seeded local CMS, via the `pangea-local-setup` skill); the older local-Synapse-only setup left `CMS_API` at staging and accepted that authed course content does not load.
 
 | Key | Local stack | Staging |
 |---|---|---|
 | `SYNAPSE_URL` | `http://localhost:8008` | `matrix.staging.pangea.chat` |
 | `CHOREO_API`  | `http://localhost:8002` | `https://api.staging.pangea.chat` |
+| `CMS_API`     | `http://localhost:13134` *(host root — the client adds `/cms/api`; needs the full local stack)* | `https://api.staging.pangea.chat` |
 | `HOME_SERVER` | `local.pangea.chat` | `staging.pangea.chat` *(or omit — it derives from `SYNAPSE_URL`: scheme stripped, leading `matrix.` dropped)* |
 
 Source of truth for the staging values is the deployed client itself: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, so the app drops to the onboarding/login screen — sign in with the matching account (see Login). **Never point a local build at production.**

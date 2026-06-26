@@ -7,7 +7,6 @@ import 'package:http/http.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -70,7 +69,6 @@ class ActivitySummaryRepo {
   ) async {
     try {
       final Requests req = Requests(
-        choreoApiKey: Environment.choreoApiKey,
         accessToken: MatrixState.pangeaController.userController.accessToken,
       );
 

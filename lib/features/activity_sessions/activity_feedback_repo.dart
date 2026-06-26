@@ -4,7 +4,6 @@ import 'package:http/http.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_feedback_response.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -19,7 +18,6 @@ class ActivityFeedbackRepo {
     ActivityFeedbackRequest request,
   ) async {
     final Requests req = Requests(
-      choreoApiKey: Environment.choreoApiKey,
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
 

@@ -13,7 +13,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -30,7 +29,7 @@ import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -384,66 +383,40 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
           exceptionContext: ExceptionContext.joinRoom,
         );
       } else {
-        final theme = Theme.of(context);
         final inviteEvent = room.getState(
           EventTypes.RoomMember,
           room.client.userID!,
         );
         final matrixLocals = MatrixLocals(L10n.of(context));
-        final action = await showAdaptiveDialog<InviteAction>(
-          barrierDismissible: true,
-          context: context,
-          builder: (context) => AlertDialog.adaptive(
-            title: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 256),
-              child: Center(
-                child: Text(
-                  room.getLocalizedDisplayname(matrixLocals),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+        final action = await showInviteDialog<InviteAction>(
+          context,
+          title: room.getLocalizedDisplayname(matrixLocals),
+          message: inviteEvent == null
+              ? L10n.of(context).inviteForMe
+              : inviteEvent.content.tryGet<String>('reason') ??
+                    L10n.of(context).youInvitedBy(
+                      room
+                          .unsafeGetUserFromMemoryOrFallback(
+                            inviteEvent.senderId,
+                          )
+                          .calcDisplayname(i18n: matrixLocals),
+                    ),
+          actions: [
+            InviteDialogAction(
+              label: L10n.of(context).accept,
+              value: InviteAction.accept,
             ),
-            content: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-              child: Text(
-                inviteEvent == null
-                    ? L10n.of(context).inviteForMe
-                    : inviteEvent.content.tryGet<String>('reason') ??
-                          L10n.of(context).youInvitedBy(
-                            room
-                                .unsafeGetUserFromMemoryOrFallback(
-                                  inviteEvent.senderId,
-                                )
-                                .calcDisplayname(i18n: matrixLocals),
-                          ),
-                textAlign: TextAlign.center,
-              ),
+            InviteDialogAction(
+              label: L10n.of(context).decline,
+              value: InviteAction.decline,
+              destructive: true,
             ),
-            actions: [
-              AdaptiveDialogAction(
-                onPressed: () => Navigator.of(context).pop(InviteAction.accept),
-                bigButtons: true,
-                child: Text(L10n.of(context).accept),
-              ),
-              AdaptiveDialogAction(
-                onPressed: () =>
-                    Navigator.of(context).pop(InviteAction.decline),
-                bigButtons: true,
-                child: Text(
-                  L10n.of(context).decline,
-                  style: TextStyle(color: theme.colorScheme.error),
-                ),
-              ),
-              AdaptiveDialogAction(
-                onPressed: () => Navigator.of(context).pop(InviteAction.block),
-                bigButtons: true,
-                child: Text(
-                  L10n.of(context).block,
-                  style: TextStyle(color: theme.colorScheme.error),
-                ),
-              ),
-            ],
-          ),
+            InviteDialogAction(
+              label: L10n.of(context).block,
+              value: InviteAction.block,
+              destructive: true,
+            ),
+          ],
         );
         switch (action) {
           case null:
@@ -541,7 +514,13 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     );
     final roomId = chunk.chunk.roomId;
     if (!hasRole) {
-      context.go(PRoutes.activity(widget.roomId, activityId, roomId: roomId));
+      context.go(
+        WorkspaceNav.openCourseActivity(
+          widget.roomId,
+          activityId,
+          roomId: roomId,
+        ),
+      );
       return;
     }
 

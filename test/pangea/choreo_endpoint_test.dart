@@ -50,7 +50,6 @@ void main() {
   String userID = "";
   // Resolved in setUpAll from the shared endpoint-test env (the .env layer), so
   // this test points at the same environment as the synapse/cms endpoint tests.
-  late String apiKey;
   late String choreoApi;
 
   setUpAll(() {
@@ -58,7 +57,6 @@ void main() {
       EndpointTestEnv.load();
       assert(EndpointTestEnv.testUsername != null);
       assert(EndpointTestEnv.testPassword != null);
-      apiKey = EndpointTestEnv.choreoApiKey;
       choreoApi = "${EndpointTestEnv.choreoApi}/choreo";
 
       // Send login request
@@ -96,10 +94,7 @@ void main() {
         senderL2: "es",
         mock: true,
       ).toJson();
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/tokenize",
         body: request,
@@ -119,10 +114,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/language_detection",
         body: request,
@@ -149,10 +141,7 @@ void main() {
           l2: 'es',
         ).toJson();
 
-        final Requests req = Requests(
-          choreoApiKey: apiKey,
-          accessToken: authToken,
-        );
+        final Requests req = Requests(accessToken: authToken);
         final Response res = await req.post(
           url: "$choreoApi/grammar_v2",
           body: request,
@@ -177,10 +166,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/translation/direct",
         body: request,
@@ -203,10 +189,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/text_to_speech",
         body: request,
@@ -230,10 +213,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/speech_to_text",
         body: request,
@@ -255,10 +235,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/phonetic_transcription_v2",
         body: request,
@@ -281,10 +258,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/lemma_definition",
         body: request,
@@ -321,10 +295,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/activity_summary",
         body: request,
@@ -355,10 +326,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/activity_plan/feedback",
         body: request,
@@ -385,10 +353,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/token/feedback_v2",
         body: request,
@@ -408,10 +373,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/grammar_constructs",
         body: request,
@@ -434,10 +396,7 @@ void main() {
         mock: true,
       ).toJson();
 
-      final Requests req = Requests(
-        choreoApiKey: apiKey,
-        accessToken: authToken,
-      );
+      final Requests req = Requests(accessToken: authToken);
       final Response res = await req.post(
         url: "$choreoApi/courses/request",
         body: request,

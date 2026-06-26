@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-18 09:35:31.891232",
+    "@@last_modified": "2026-06-26 10:50:47.740291",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10210,6 +10210,228 @@
         "placeholders": {}
     },
     "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "joinTheCourseToPlay": "انضم إلى دورة تتضمن هذا النشاط للعبه.",
+    "resizeCoursePanel": "تغيير حجم لوحة الدورة",
+    "undo": "تراجع",
+    "unlock": "فتح",
+    "zoomIn": "تكبير",
+    "zoomOut": "تصغير",
+    "stars": "نجوم",
+    "addNewCourse": "إضافة دورة جديدة",
+    "world": "عالم",
+    "addCourseStartMyOwn": "بدء دورتي الخاصة",
+    "addCourseEnterCode": "أدخل الرمز للدورة الخاصة",
+    "addCourseBrowsePublic": "تصفح الدورات العامة",
+    "browsePublicCourses": "تصفح الدورات العامة",
+    "editProfile": "تعديل الملف الشخصي",
+    "numObjectives": "{count} أهداف",
+    "mapSearchHint": "ابحث عن الأنشطة",
+    "mapSearchNoResults": "لا توجد تطابقات في العرض",
+    "mapFilterAllLanguages": "جميع اللغات",
+    "mapFilterNotStarted": "لم يبدأ بعد",
+    "mapFilterInProgress": "قيد التقدم",
+    "mapFilterCompleted": "مكتمل",
+    "mapFilterReset": "إعادة تعيين",
+    "activityTypeConversation": "محادثة",
+    "lockedMissionRequirement": "أكمل المهمة السابقة لفتحها",
+    "playAgain": "العب مرة أخرى",
+    "reviewActivity": "مراجعة",
+    "mapEmptyInView": "لا شيء هنا بمستواك أو لغتك. قم بتوسيع الفلاتر أو قم بالتكبير للخارج.",
+    "welcomeToPangeaChat": "مرحبًا بك في دردشة بانجيا",
+    "claimTrial": "احصل على تجربتك",
+    "thanksForSigningUp": "شكرًا لتسجيلك! إليك",
+    "sevenDaysFree": "7 أيام مجانية",
+    "manageTrialInSettings": "إدارة تجربتك في أي وقت في\nإعدادات الاشتراك",
+    "noCreditCardRequired": "لا حاجة لبطاقة ائتمان.",
+    "proFeatures": "مميزات احترافية",
+    "widenSearch": "توسيع البحث",
+    "scrollToBottom": "التمرير إلى الأسفل",
+    "courseImage": "صورة الدورة",
+    "avatarPreview": "معاينة الصورة الرمزية",
+    "activityPhoto": "صورة النشاط",
+    "emotePreview": "معاينة الإيموجي: {name}",
+    "activityLabel": "النشاط: {title}",
+    "resetMapView": "إعادة تعيين عرض الخريطة",
+    "@joinTheCourseToPlay": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@numObjectives": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchNoResults": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@lockedMissionRequirement": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapEmptyInView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityPhoto": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
         "type": "String",
         "placeholders": {}
     }
