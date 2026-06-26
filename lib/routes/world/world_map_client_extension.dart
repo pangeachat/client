@@ -2,12 +2,40 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 
 extension WorldMapClientExtension on Client {
+  /// The learner's OWN session room for [activityId] — a room they have *joined*
+  /// (membership join), whether or not they have confirmed a role. Prefers a
+  /// room where they hold a role, then the most recently active. This is the
+  /// inverse of [bestJoinableActivityInstance] (which finds a free seat in
+  /// *another* learner's open session): here we resolve "my started/joined
+  /// session" so a map-pin tap reopens it (binding the overlay via `roomid=`)
+  /// instead of spawning a fresh instance (#7257).
+  Room? myActivityInstance(String activityId) {
+    Room? best;
+    var bestHasRole = false;
+    for (final r in rooms) {
+      if (r.activityId != activityId) continue;
+      if (r.membership != Membership.join) continue;
+      final hasRole = r.ownRole != null;
+      final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      final bestMs =
+          best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
+      if (best == null ||
+          (hasRole && !bestHasRole) ||
+          (hasRole == bestHasRole && ms > bestMs)) {
+        best = r;
+        bestHasRole = hasRole;
+      }
+    }
+    return best;
+  }
+
   Room? bestJoinableActivityInstance(String activityId) {
     Room? best;
     for (final r in rooms) {
@@ -20,6 +48,17 @@ extension WorldMapClientExtension on Client {
     }
     return best;
   }
+
+  /// The learner's joined course spaces (a space they belong to that carries a
+  /// course plan) — the source set for the objective cache + relevance banding.
+  List<Room> get joinedCourseRooms => rooms
+      .where(
+        (r) =>
+            r.isSpace &&
+            r.membership == Membership.join &&
+            r.coursePlan != null,
+      )
+      .toList();
 
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];

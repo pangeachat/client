@@ -11,7 +11,7 @@ To improve the process please make sure that you read the following guidelines c
 4. Every Pull Request should change only one thing. For bigger changes it is often better to split them up in multiple Pull Requests.
 5. [Sign your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 6. Format the commit message as [Conventional Commits](https://www.conventionalcommits.org).
-7. Format (`flutter format lib`) and sort impots (`dart run import_sorter:main --no-comments`) in all code files.
+7. Format (`fvm dart format lib/ test/`) and sort impots (`dart run import_sorter:main --no-comments`) in all code files. See [Flutter version (FVM)](#flutter-version-fvm) for the pinned toolchain.
 8. For bigger or complex changes (more than a couple of code lines) write an issue or refer to an existing issue and ask for approval from the maintainers (@krille-chan) **before** starting to implement it. This way you reduce the risk that your Pull Request get's declined.
 9. Prefer simple and easy to maintain solutions over complexity and fancy ones.
 
@@ -28,6 +28,7 @@ FluffyChat tries to be as minimal as possible even in the code style. We try to 
 
 - [Directory Structure:](#directory-structure)
 - [Separation of Controllers and Views](#separation-of-controllers-and-views)
+- [Flutter version (FVM)](#flutter-version-fvm)
 - [Formatting](#formatting)
 - [Code Analyzis](#code-analyzis)
 
@@ -163,9 +164,36 @@ To run code after the widget was created first we use the WidgetBindings in the 
   }
 ```
 
+### Flutter version (FVM)
+
+The project pins a single Flutter version so that `dart format` produces identical
+output for every contributor and in CI. The pin lives in [`.fvmrc`](.fvmrc) and is
+mirrored by `FLUTTER_VERSION` in [`.github/workflows/versions.env`](.github/workflows/versions.env);
+CI fails if the two ever disagree.
+
+We use [FVM (Flutter Version Management)](https://fvm.app) to consume that pin:
+
+```sh
+# one-time: install FVM (see https://fvm.app/documentation/getting-started/installation)
+dart pub global activate fvm
+
+# from the repo root: install the pinned version recorded in .fvmrc
+fvm install
+
+# run flutter/dart through fvm so they use the pinned version
+fvm flutter pub get
+fvm dart format lib/ test/
+```
+
+Tip: point your IDE's Flutter SDK at `.fvm/flutter_sdk` (created by `fvm install`) so
+editor formatting matches CI. To bump the version, change it in **both** `.fvmrc` and
+`versions.env` in the same PR.
+
 ### Formatting
 
-We do not allow code with wrong formatting. Please run `flutter format lib` if your IDE doesn't do this automatically.
+We do not allow code with wrong formatting. Please run `fvm dart format lib/ test/`
+(or `dart format lib/ test/` if you already run the pinned Flutter) if your IDE
+doesn't do this automatically. CI runs `dart format lib/ test/ --set-exit-if-changed`.
 
 ### Code Analyzis
 

@@ -40,7 +40,7 @@ import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -154,65 +154,38 @@ class ChatListController extends State<ChatList>
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
       // #Pangea
-      final theme = Theme.of(context);
       final inviteEvent = room.getState(
         EventTypes.RoomMember,
         room.client.userID!,
       );
       final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showAdaptiveDialog<InviteAction>(
-        barrierDismissible: true,
-        context: context,
-        builder: (context) => AlertDialog.adaptive(
-          title: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 256),
-            child: Center(
-              child: Text(
-                room.getLocalizedDisplayname(matrixLocals),
-                textAlign: TextAlign.center,
-              ),
-            ),
+      final action = await showInviteDialog<InviteAction>(
+        context,
+        title: room.getLocalizedDisplayname(matrixLocals),
+        message: inviteEvent == null
+            ? L10n.of(context).inviteForMe
+            : inviteEvent.content.tryGet<String>('reason') ??
+                  L10n.of(context).youInvitedBy(
+                    room
+                        .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
+                        .calcDisplayname(i18n: matrixLocals),
+                  ),
+        actions: [
+          InviteDialogAction(
+            label: L10n.of(context).accept,
+            value: InviteAction.accept,
           ),
-          content: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-            child: Text(
-              inviteEvent == null
-                  ? L10n.of(context).inviteForMe
-                  : inviteEvent.content.tryGet<String>('reason') ??
-                        L10n.of(context).youInvitedBy(
-                          room
-                              .unsafeGetUserFromMemoryOrFallback(
-                                inviteEvent.senderId,
-                              )
-                              .calcDisplayname(i18n: matrixLocals),
-                        ),
-              textAlign: TextAlign.center,
-            ),
+          InviteDialogAction(
+            label: L10n.of(context).decline,
+            value: InviteAction.decline,
+            destructive: true,
           ),
-          actions: [
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.accept),
-              bigButtons: true,
-              child: Text(L10n.of(context).accept),
-            ),
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.decline),
-              bigButtons: true,
-              child: Text(
-                L10n.of(context).decline,
-                style: TextStyle(color: theme.colorScheme.error),
-              ),
-            ),
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.block),
-              bigButtons: true,
-              child: Text(
-                L10n.of(context).block,
-                style: TextStyle(color: theme.colorScheme.error),
-              ),
-            ),
-          ],
-        ),
+          InviteDialogAction(
+            label: L10n.of(context).block,
+            value: InviteAction.block,
+            destructive: true,
+          ),
+        ],
       );
       switch (action) {
         case null:

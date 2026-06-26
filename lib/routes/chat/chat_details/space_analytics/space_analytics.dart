@@ -9,6 +9,8 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -33,9 +35,10 @@ class SpaceAnalytics extends StatefulWidget {
   SpaceAnalyticsState createState() => SpaceAnalyticsState();
 }
 
-class SpaceAnalyticsState extends State<SpaceAnalytics> {
+class SpaceAnalyticsState extends State<SpaceAnalytics>
+    with CoursePlanProvider {
   bool initialized = false;
-  LanguageModel? selectedLanguage;
+  LanguageModel? _selectedLanguage;
   Map<User, AnalyticsDownload> downloads = {};
 
   DateTime? _lastUpdated;
@@ -43,6 +46,15 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   final Map<LanguageModel, List<User>> _langsToUsers = {};
 
   Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
+
+  LanguageModel? get filterLanguage {
+    final courseLang = course?.targetLanguageModel;
+    if (courseLang != null) return courseLang;
+    return _selectedLanguage;
+  }
+
+  bool get canSelectLanguage =>
+      !loadingCourse && course?.targetLanguageModel == null;
 
   LanguageModel? get _userL2 {
     final l2 = MatrixState.pangeaController.userController.userL2;
@@ -64,13 +76,14 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
           .toList() ??
       [];
 
-  List<User> get _availableUsersForLang =>
-      _langsToUsers[selectedLanguage] ?? [];
+  List<User> _availableUsersForLang(LanguageModel lang) =>
+      _langsToUsers[lang] ?? [];
 
-  List<Room> get availableAnalyticsRooms => _availableUsersForLang
-      .map((user) => _analyticsRoomOfUser(user))
-      .whereType<Room>()
-      .toList();
+  List<Room> availableAnalyticsRooms(LanguageModel lang) =>
+      _availableUsersForLang(lang)
+          .map((user) => _analyticsRoomOfUser(user, lang))
+          .whereType<Room>()
+          .toList();
 
   List<LanguageModel> get availableLanguages =>
       _langsToUsers.keys.toList()..sort(
@@ -141,7 +154,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
       initialized = false;
-      selectedLanguage = null;
+      _selectedLanguage = null;
       downloads = {};
       _lastUpdated = null;
       _profiles.clear();
@@ -151,6 +164,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> _initialize() async {
+    final courseId = room?.coursePlan?.uuid;
+    if (courseId != null) {
+      await loadCourse(courseId);
+    }
+    if (!mounted) return;
+
     await room?.requestParticipants(
       [Membership.join, Membership.invite, Membership.knock],
       false,
@@ -162,10 +181,11 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       GetStorage.init('analytics_request_storage'),
       _loadProfiles(),
     ];
+
     await Future.wait(futures);
     if (!mounted) return;
 
-    selectedLanguage =
+    _selectedLanguage =
         availableLanguages.contains(_userL2) || availableLanguages.isEmpty
         ? _userL2
         : availableLanguages.firstOrNull;
@@ -196,15 +216,17 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> refresh() async {
-    if (room == null || !room!.isSpace || selectedLanguage == null) return;
+    final lang = filterLanguage;
+
+    if (room == null || !room!.isSpace || lang == null) return;
     await AnalyticsRequestsRepo.clear();
     if (!mounted) return;
 
     setState(() {
       downloads = Map.fromEntries(
         _availableUsers.map((user) {
-          final room = _analyticsRoomOfUser(user);
-          final hasLangData = _availableUsersForLang.contains(user);
+          final room = _analyticsRoomOfUser(user, lang);
+          final hasLangData = _availableUsersForLang(lang).contains(user);
 
           RequestStatus? requestStatus;
           if (room != null) {
@@ -213,7 +235,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
             requestStatus = RequestStatus.unavailable;
           } else {
             requestStatus =
-                AnalyticsRequestsRepo.get(user.id, selectedLanguage!) ??
+                AnalyticsRequestsRepo.get(user.id, lang) ??
                 RequestStatus.unrequested;
           }
 
@@ -234,7 +256,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     });
 
     for (final user in _availableUsers) {
-      final analyticsRoom = _analyticsRoomOfUser(user);
+      final analyticsRoom = _analyticsRoomOfUser(user, lang);
       if (analyticsRoom == null) {
         continue;
       }
@@ -286,7 +308,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     if (mounted) setState(() {});
   }
 
-  Future<void> _requestAnalytics(User user) async {
+  Future<void> _requestAnalytics(User user, LanguageModel lang) async {
     RequestStatus? status = downloads[user]?.requestStatus;
     if (status == RequestStatus.unavailable ||
         status == RequestStatus.available) {
@@ -294,7 +316,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     }
 
     try {
-      final roomId = _analyticsRoomIdOfUser(user);
+      final roomId = _analyticsRoomIdOfUser(user, lang);
       if (roomId == null) return;
       await Matrix.of(context).client.knockAndRecordRoom(
         roomId,
@@ -318,7 +340,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       }
     } finally {
       if (status != null) {
-        await AnalyticsRequestsRepo.set(user.id, selectedLanguage!, status);
+        await AnalyticsRequestsRepo.set(user.id, lang, status);
 
         downloads[user]?.requestStatus = status;
       }
@@ -327,17 +349,17 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     }
   }
 
-  Future<void> requestAnalytics(User user) async {
+  Future<void> requestAnalytics(User user, LanguageModel lang) async {
     final status = downloads[user]?.requestStatus;
     if (status != RequestStatus.unrequested) return;
 
     await showFutureLoadingDialog(
       context: context,
-      future: () => _requestAnalytics(user),
+      future: () => _requestAnalytics(user, lang),
     );
   }
 
-  Future<void> requestAllAnalytics() async {
+  Future<void> requestAllAnalytics(LanguageModel lang) async {
     final resp = await showDialog(
       context: context,
       builder: (_) {
@@ -346,37 +368,35 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     );
 
     if (resp != true) return;
-    final users = _availableUsersForLang
+    final users = _availableUsersForLang(lang)
         .where(
           (user) => downloads[user]?.requestStatus == RequestStatus.unrequested,
         )
         .toList();
 
-    final futures = users.map((user) => _requestAnalytics(user));
+    final futures = users.map((user) => _requestAnalytics(user, lang));
     await showFutureLoadingDialog(
       context: context,
       future: () => Future.wait(futures),
     );
   }
 
-  String? _analyticsRoomIdOfUser(User user) {
+  String? _analyticsRoomIdOfUser(User user, LanguageModel lang) {
     final profile = _profiles[user];
     if (profile == null || profile.languageAnalytics == null) return null;
 
-    final entry = profile.languageAnalytics![selectedLanguage];
+    final entry = profile.languageAnalytics![lang];
     return entry?.analyticsRoomId;
   }
 
-  Room? _analyticsRoomOfUser(User user) {
-    final lang = selectedLanguage;
-    if (lang == null) return null;
+  Room? _analyticsRoomOfUser(User user, LanguageModel lang) {
     return Matrix.of(
       context,
     ).client.analyticsRoomLocal(lang: lang, userID: user.id);
   }
 
   void setSelectedLanguage(LanguageModel? lang) {
-    selectedLanguage = lang;
+    _selectedLanguage = lang;
     refresh();
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/routes/world/world_map_constants.dart';
 
 void main() {
   // The on-map +/- buttons must grey out at the camera's zoom limits so a tap
@@ -8,28 +8,25 @@ void main() {
   // FlutterMap's MapOptions, zoomBy's clamp, and the World reset.
   group('WorldMapController zoom limits (#7171)', () {
     test('zoom-in is enabled below max and disabled at max', () {
-      expect(WorldMapController.canZoomIn(WorldMapController.minZoom), isTrue);
+      expect(WorldMapConstants.canZoomIn(WorldMapConstants.minZoom), isTrue);
       expect(
-        WorldMapController.canZoomIn(WorldMapController.maxZoom - 0.5),
+        WorldMapConstants.canZoomIn(WorldMapConstants.maxZoom - 0.5),
         isTrue,
       );
-      expect(WorldMapController.canZoomIn(WorldMapController.maxZoom), isFalse);
+      expect(WorldMapConstants.canZoomIn(WorldMapConstants.maxZoom), isFalse);
     });
 
     test('zoom-out is enabled above min and disabled at min', () {
-      expect(WorldMapController.canZoomOut(WorldMapController.maxZoom), isTrue);
+      expect(WorldMapConstants.canZoomOut(WorldMapConstants.maxZoom), isTrue);
       expect(
-        WorldMapController.canZoomOut(WorldMapController.minZoom + 0.5),
+        WorldMapConstants.canZoomOut(WorldMapConstants.minZoom + 0.5),
         isTrue,
       );
-      expect(
-        WorldMapController.canZoomOut(WorldMapController.minZoom),
-        isFalse,
-      );
+      expect(WorldMapConstants.canZoomOut(WorldMapConstants.minZoom), isFalse);
     });
 
     test('the zoom range is non-empty (min below max)', () {
-      expect(WorldMapController.minZoom, lessThan(WorldMapController.maxZoom));
+      expect(WorldMapConstants.minZoom, lessThan(WorldMapConstants.maxZoom));
     });
   });
 }

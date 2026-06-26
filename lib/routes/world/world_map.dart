@@ -8,20 +8,18 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
-import 'package:fluffychat/features/quests/quests_client_extension.dart';
-import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
+import 'package:fluffychat/routes/world/world_map_constants.dart';
+import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
@@ -91,150 +89,70 @@ class WorldMapController extends State<WorldMap>
     with SingleTickerProviderStateMixin {
   final MapController _ownController = MapController();
 
-  /// The camera zoom range — the single source for FlutterMap's MapOptions, the
-  /// +/- step clamp in [zoomBy], the World reset in [resetToWorld], and the
-  /// on-map control disabled states (#7171). minZoom 3 is the whole world.
-  static const double minZoom = 3.0;
-  static const double maxZoom = 18.0;
-
-  /// Whether a zoom-in / zoom-out step would still change the camera, i.e. the
-  /// on-map + / - button should be enabled. At a limit the matching button is
-  /// disabled so it can't no-op (#7171).
-  static bool canZoomIn(double zoom) => zoom < maxZoom;
-  static bool canZoomOut(double zoom) => zoom > minZoom;
-
-  /// The activity pins currently shown — the active context's set (the whole
-  /// world, or a selected quest's activities). Thin: id, title, point.
-  List<QuestActivityCard> _pins = [];
-
-  /// The activity a learner tapped to expand to its large card in place: a
-  /// small/mid pin promotes to the large tier on tap, and the large card then
-  /// taps through to the plan page. Null when nothing is promoted; tapping the
-  /// empty map clears it. Stays on the persistent map — no navigation, no second
-  /// map, no preview popup.
-  String? _promotedActivityId;
-
-  Client? _client;
-  StreamSubscription<dynamic>? _syncSub;
-
-  // Search + filter state (World context only). The personalized default is the
-  // initial state — my L2 + at/below my CEFR — and search/filters refine it.
-  String _query = '';
-  bool _l2Only = true;
-  Set<LanguageLevelTypeEnum> _cefrFilter = {};
-  Set<LanguageLevelTypeEnum> _defaultCefr = {};
-  final Set<MapCompletionFilter> _completionFilter = {};
-  bool _filterDefaultsApplied = false;
-
-  bool _loadingPins = false;
-  Timer? _refetchDebounce;
-
   /// Debounce for context-driven camera fits: when you click through courses,
   /// the camera waits until you've settled (~2s) before gliding, rather than
   /// snapping on every hop. Re-armed on each request; only the last fires.
   Timer? _fitDebounce;
-  static const Duration _fitSettleDelay = Duration(seconds: 2);
-
-  /// The zoom the camera glides to when an activity is focused (opened) — close
-  /// enough to read it as "this specific spot" (neighborhood/building level).
-  static const double _focusZoom = 16.0;
 
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
-  AnimationController? _camAnim;
-  CurvedAnimation? _camCurve;
+  late final AnimationController _cameraAnimationController;
+  late final CurvedAnimation _cameraAnimation;
   LatLng? _camStart;
   LatLng? _camTarget;
   double _camStartZoom = 0;
   double _camTargetZoom = 0;
-  static const Duration _camGlideDuration = Duration(milliseconds: 600);
 
-  /// Cached per-activity live signals (state + fill + recency + pinged),
-  /// completion, and the learner's star total per activity, recomputed on room
-  /// sync (not per frame) so the O(rooms) scan doesn't run every build.
-  /// [_completion] backs the completion filter chip; [_userStars] feeds the
-  /// progression resolver's per-Mission star rollup ([_resolveProgression]).
-  Map<String, PinSignals> _signals = {};
-  Map<String, int> _userStars = {};
-  Map<String, MapCompletionFilter> _completion = {};
+  Client? _client;
 
-  /// Learning-objective ids across the learner's joined courses, for relevance
-  /// banding. Rebuilt async on course join/leave (see [_maybeRebuildObjectiveCache]).
-  final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
+  StreamSubscription<dynamic>? _syncSub;
+  StreamSubscription? _languageSubscription;
+  StreamSubscription? _cefrLevelSubscription;
 
-  /// The joined-course uuids [_objectiveCache] was last (re)built from. The
-  /// initial build happens on client-set, but the joined-course rooms (or their
-  /// outlines) may not be ready yet; tracking the set lets the sync listener
-  /// rebuild when it changes — or when a prior build resolved nothing — instead
-  /// of the banding + gate staying blank for the whole session.
-  Set<String> _objectiveCacheUuids = const {};
+  final WorldMapFilterState _filterState = WorldMapFilterState();
+  final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
 
-  /// Guards against overlapping objective-cache rebuilds (and stops a
-  /// persistently-failing course from rebuilding on every single sync).
-  bool _objectiveCacheRebuilding = false;
-
-  /// Activity ids with a recently-pinged open session (best-effort, scanned from
-  /// joined course-space messages). Folded into [_signals].
-  Set<String> _pingedActivityIds = {};
-
-  /// The shared next-Mission resolution the relevance band ranks toward, resolved
-  /// from the objective cache's outlines + [_userStars]. Recomputed where its
-  /// inputs change — the objective cache rebuilds (course join/leave) and user
-  /// stars change on room sync — NOT per frame. See world-map.instructions.md.
-  ProgressionResolution _progression = ProgressionResolution.empty;
-
-  /// The viewed course's outline when the map is scoped to a course the learner
-  /// has NOT joined: a course-scoped map ranks toward that course's next Mission
-  /// even before joining (Will's decision). Null on the world view or when the
-  /// scoped course is already a joined course (its outline is in the cache).
-  CourseLoOutline? _scopedCourseOutline;
-
-  /// The course-plan id [_scopedCourseOutline] was resolved for, so a re-scope to
-  /// the same course doesn't re-fetch and a re-scope away clears it.
-  String? _scopedCourseOutlineId;
-
-  // ---- View-facing accessors (read by WorldMapView) -------------------------
-
-  /// The flutter_map controller (a caller-provided override, or our own). The
-  /// view passes it to [FlutterMap] and reads its camera; the controller
-  /// animates it.
-  MapController get mapController => widget.controller ?? _ownController;
-
-  bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
-  String? get promotedActivityId => _promotedActivityId;
-  Client? get client => _client;
-  bool get loadingPins => _loadingPins;
-  Map<String, PinSignals> get signals => _signals;
-  Map<String, int> get userStars => _userStars;
-  Map<String, MapCompletionFilter> get completion => _completion;
-  JoinedObjectiveCache get objectiveCache => _objectiveCache;
-
-  /// The shared next-Mission resolution the relevance band ranks toward. Cached
-  /// (recomputed on its inputs changing, not per frame); the view reads it.
-  ProgressionResolution get progression => _progression;
-  String get query => _query;
-  bool get l2Only => _l2Only;
-  Set<LanguageLevelTypeEnum> get cefrFilter => _cefrFilter;
-  Set<MapCompletionFilter> get completionFilter => _completionFilter;
+  bool _loadingPins = false;
+  Timer? _refetchDebounce;
 
   @override
   void initState() {
     super.initState();
-    // Invariant: the shell owns a single persistent instance, so this runs
-    // once per app session — section navigation overlays the map, never
-    // remounts it.
-    _camAnim = AnimationController(vsync: this, duration: _camGlideDuration)
-      ..addListener(_onCamGlideTick);
-    _camCurve = CurvedAnimation(parent: _camAnim!, curve: Curves.easeInOut);
+    _cameraAnimationController = AnimationController(
+      vsync: this,
+      duration: WorldMapConstants.camGlideDuration,
+    )..addListener(_onCamGlideTick);
+
+    _cameraAnimation = CurvedAnimation(
+      parent: _cameraAnimationController,
+      curve: Curves.easeInOut,
+    );
+
     _loadForContext();
+
     MapContextController.notifier.addListener(_onContextChange);
-    MapPinController.notifier.addListener(_onPinControllerChange);
+    WorldMapPinsManager.notifier.addListener(_onPinControllerChange);
+
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
-  }
 
-  void _onPlanHydrate() {
-    if (mounted) setState(() {});
+    final user = MatrixState.pangeaController.userController;
+
+    _languageSubscription?.cancel();
+    _languageSubscription = user.languageStream.stream.listen((update) {
+      if (update.targetLang != _filterState.filter.l2) {
+        _setL2(update.targetLang);
+      }
+    });
+
+    _cefrLevelSubscription?.cancel();
+    _cefrLevelSubscription = user.settingsUpdateStream.stream.listen((update) {
+      if (!_filterState.filter.cefrFilter.contains(
+        update.userSettings.cefrLevel,
+      )) {
+        _setCefrLevel(update.userSettings.cefrLevel);
+      }
+    });
   }
 
   @override
@@ -264,154 +182,14 @@ class WorldMapController extends State<WorldMap>
             _maybeRebuildObjectiveCache(client);
           });
     }
+
     // Personalized default: my CEFR band (at/below my level). Applied once the
     // user controller is available.
-    if (!_filterDefaultsApplied) {
-      _filterDefaultsApplied = true;
-      _defaultCefr = LanguageLevelTypeEnum.bandAtOrBelow(
-        MatrixState.pangeaController.userController.userCefrLevel,
-      );
-      _cefrFilter = {..._defaultCefr};
+    if (!_filterState.filter.filterDefaultsApplied) {
+      final l2 = MatrixState.pangeaController.userController.userL2;
+      final cefr = MatrixState.pangeaController.userController.userCefrLevel;
+      _filterState.applyDefaults(l2: l2, cefrLevel: cefr);
     }
-  }
-
-  void _recomputeProgress() {
-    final client = _client;
-    if (client == null) return;
-    final signals = client.deriveActivitySignals(
-      pingedActivityIds: _pingedActivityIds,
-    );
-    final userStars = client.userStarsByActivity;
-    final completion = client.activityCompletionStatuses;
-
-    if (!mounted) {
-      _signals = signals;
-      _userStars = userStars;
-      _completion = completion;
-      _resolveProgression();
-      return;
-    }
-
-    setState(() {
-      _signals = signals;
-      _userStars = userStars;
-      _completion = completion;
-      _resolveProgression();
-    });
-  }
-
-  /// Re-resolve the cached [_progression] from the objective cache's outlines (+
-  /// any course-scoped outline) and the learner's current per-activity stars.
-  /// Called where the inputs change — stars on room sync, the objective cache on
-  /// course join/leave, and a course re-scope — never per frame.
-  void _resolveProgression() {
-    _progression = _objectiveCache.resolution(
-      _userStars,
-      extraOutlines: _scopedCourseOutline == null
-          ? const []
-          : [_scopedCourseOutline!],
-    );
-  }
-
-  /// The learner's joined course spaces (a space they belong to that carries a
-  /// course plan) — the source set for the objective cache + relevance banding.
-  List<Room> _joinedCourseRooms(Client client) => client.rooms
-      .where(
-        (r) =>
-            r.isSpace &&
-            r.membership == Membership.join &&
-            r.coursePlan != null,
-      )
-      .toList();
-
-  /// Rebuild the joined-course outlines (a few quest reads), reading each
-  /// course's teacher override for the stars-to-unlock threshold, then re-rank.
-  /// Guarded so overlapping syncs don't stack rebuilds. A course whose outline
-  /// fails to resolve is logged (not silently dropped): an empty cache means no
-  /// relevance banding and a fail-open gate, which is otherwise invisible.
-  Future<void> _rebuildObjectiveCache(Client client) async {
-    if (_objectiveCacheRebuilding) return;
-    _objectiveCacheRebuilding = true;
-    try {
-      final courseRooms = _joinedCourseRooms(client);
-      final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
-      final thresholds = <String, int>{
-        for (final r in courseRooms)
-          r.coursePlan!.uuid:
-              r.teacherMode.starsToUnlockObjective ??
-              kDefaultStarsToUnlockObjective,
-      };
-      await _objectiveCache.rebuild(
-        uuids,
-        starsToUnlockOf: (uuid) =>
-            thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
-        onError: (uuid, e, s) => ErrorHandler.logError(
-          e: e,
-          s: s,
-          m: 'JoinedObjectiveCache: course outline failed to resolve',
-          data: {'courseUuid': uuid},
-        ),
-      );
-      _objectiveCacheUuids = uuids.toSet();
-      _resolveProgression(); // re-resolve the band with the loaded outlines
-      if (mounted) setState(() {}); // re-rank
-    } finally {
-      _objectiveCacheRebuilding = false;
-    }
-  }
-
-  /// Rebuild the objective cache when the joined-course set has changed since the
-  /// last build, or when it resolved nothing while courses exist (the rooms or
-  /// their outlines weren't ready at the initial build, or a read transiently
-  /// failed). Idempotent for an unchanged, already-populated set, so it's safe on
-  /// every sync; the in-flight guard keeps a persistently-failing course from
-  /// rebuilding more than once at a time, and it self-heals once the data is fixed.
-  void _maybeRebuildObjectiveCache(Client client) {
-    if (_objectiveCacheRebuilding) return;
-    final uuids = _joinedCourseRooms(
-      client,
-    ).map((r) => r.coursePlan!.uuid).toSet();
-    final setChanged =
-        uuids.length != _objectiveCacheUuids.length ||
-        !uuids.containsAll(_objectiveCacheUuids);
-    final emptyButHasCourses = _objectiveCache.ids.isEmpty && uuids.isNotEmpty;
-    if (setChanged || emptyButHasCourses) _rebuildObjectiveCache(client);
-  }
-
-  /// Best-effort pinged detection: scan joined course spaces' recent messages
-  /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
-  /// A ping leaves no persistent room state, so this proxy is intentionally
-  /// approximate — its efficacy is worth watching (world-map.instructions.md).
-  Future<void> _recomputePinged(Client client) async {
-    final pinged = <String>{};
-    final cutoff = DateTime.now().subtract(const Duration(hours: 24));
-    final spaces = client.rooms.where(
-      (r) =>
-          r.isSpace && r.membership == Membership.join && r.coursePlan != null,
-    );
-    for (final space in spaces) {
-      try {
-        final timeline = await space.getTimeline();
-        for (final e in timeline.events) {
-          if (!e.originServerTs.isAfter(cutoff)) continue;
-          final id = e.content['pangea.activity.id'];
-          if (id is String && id.isNotEmpty) pinged.add(id);
-        }
-        timeline.cancelSubscriptions();
-      } catch (_) {
-        // A space whose timeline won't load just contributes no pings.
-      }
-    }
-    if (!mounted ||
-        (pinged.length == _pingedActivityIds.length &&
-            pinged.containsAll(_pingedActivityIds))) {
-      return;
-    }
-    _pingedActivityIds = pinged;
-
-    setState(() {
-      _signals = client.deriveActivitySignals(pingedActivityIds: pinged);
-    });
   }
 
   @override
@@ -434,18 +212,74 @@ class WorldMapController extends State<WorldMap>
   @override
   void dispose() {
     _syncSub?.cancel();
+    _languageSubscription?.cancel();
+    _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
-    _camCurve?.dispose();
-    _camAnim?.dispose();
+    _cameraAnimation.dispose();
+    _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
-    MapPinController.notifier.removeListener(_onPinControllerChange);
+    WorldMapPinsManager.notifier.removeListener(_onPinControllerChange);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
-    MapPinController.set(false);
+    WorldMapPinsManager.set(false);
     super.dispose();
+  }
+
+  MapController get mapController => widget.controller ?? _ownController;
+
+  bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
+  String? get promotedActivityId => _pinsManager.promotedActivityId;
+  Client? get client => _client;
+  bool get loadingPins => _loadingPins;
+
+  WorldMapFilter get filter => _filterState.filter;
+  Map<String, PinSignals> get signals => _pinsManager.signals;
+  ProgressionResolution get progression => _pinsManager.progression;
+
+  /// The pins actually shown: the loaded set narrowed by the active CEFR band,
+  /// completion filter, and free-text query. World only; a course shows its set.
+  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins((c) {
+    if (!isWorld) return true;
+
+    final status = _pinsManager.activityCompletionStatus(c.activityId);
+    return _filterState.include(c, status ?? MapCompletionFilter.notStarted);
+  });
+
+  int? activityStarsEarned(String activityId) =>
+      _pinsManager.activityStarsEarned(activityId);
+
+  void _onPlanHydrate() {
+    if (mounted) setState(() {});
+  }
+
+  void _recomputeProgress() {
+    final client = _client;
+    if (client == null) return;
+    _pinsManager.recomputeProgress(client);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _rebuildObjectiveCache(Client client) async {
+    await _pinsManager.rebuildObjectiveCache(client);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _maybeRebuildObjectiveCache(Client client) async {
+    if (_pinsManager.shouldRebuildObjectiveCache(client)) {
+      return _rebuildObjectiveCache(client);
+    }
+  }
+
+  /// Best-effort pinged detection: scan joined course spaces' recent messages
+  /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
+  /// A ping leaves no persistent room state, so this proxy is intentionally
+  /// approximate — its efficacy is worth watching (world-map.instructions.md).
+  Future<void> _recomputePinged(Client client) async {
+    await _pinsManager.recomputePinged(client);
+    if (mounted) setState(() {});
   }
 
   /// The shell sets [MapPinController] false when the map is covered by a
@@ -454,10 +288,8 @@ class WorldMapController extends State<WorldMap>
   /// that here — drop our own selection when the controller is cleared by anyone
   /// else. Guarded so our own clears (which also set it false) don't loop.
   void _onPinControllerChange() {
-    if (!MapPinController.notifier.value &&
-        _promotedActivityId != null &&
-        mounted) {
-      collapse();
+    if (!WorldMapPinsManager.notifier.value && mounted) {
+      demoteActivity();
     }
   }
 
@@ -467,8 +299,8 @@ class WorldMapController extends State<WorldMap>
     // so clicking through courses doesn't snap the camera on every hop — it
     // glides only after you've settled on one.
     if (mounted) {
-      setState(() => _promotedActivityId = null);
-      MapPinController.set(false);
+      demoteActivity();
+      WorldMapPinsManager.set(false);
     }
     _loadForContext(debounceFit: true);
   }
@@ -480,26 +312,25 @@ class WorldMapController extends State<WorldMap>
   /// and from onMapReady / onPositionChanged).
   Future<void> _loadForContext({bool debounceFit = false}) async {
     final mapContext = MapContextController.notifier.value;
-    if (mapContext is CourseMapContext) {
-      _ensureScopedCourseOutline(mapContext.coursePlanId);
-      try {
-        final pins = await QuestRepo.questPins(mapContext.coursePlanId);
-        if (!mounted) return;
-        setState(() => _pins = pins);
-        _fitToContext(debounce: debounceFit);
-      } catch (_) {
-        // Map stays usable without activity pins.
-      }
-      return;
+    switch (mapContext) {
+      case CourseMapContext():
+        _ensureScopedCourseOutline(mapContext.coursePlanId);
+        try {
+          await _pinsManager.loadCourseScopedPins(mapContext.coursePlanId);
+
+          if (!mounted) return;
+          setState(() {});
+
+          _fitToContext(debounce: debounceFit);
+        } catch (_) {
+          // Map stays usable without activity pins.
+        }
+        return;
+      case WorldMapContext():
+        _pinsManager.resetScopedCourseOutline();
+        loadWorldPins();
+        return;
     }
-    // World view: drop any course-scoped outline so the band ranks on the
-    // learner's joined quests only.
-    if (_scopedCourseOutline != null || _scopedCourseOutlineId != null) {
-      _scopedCourseOutline = null;
-      _scopedCourseOutlineId = null;
-      _resolveProgression();
-    }
-    loadWorldPins();
   }
 
   /// Resolve the viewed course's outline for a course-scoped map so the band
@@ -507,28 +338,8 @@ class WorldMapController extends State<WorldMap>
   /// (Will's decision). Skipped when the course is already a joined course (its
   /// outline is in the objective cache) or already resolved for this scope.
   Future<void> _ensureScopedCourseOutline(String coursePlanId) async {
-    if (_scopedCourseOutlineId == coursePlanId) return;
-    _scopedCourseOutlineId = coursePlanId;
-    _scopedCourseOutline = null;
-    if (_objectiveCacheUuids.contains(coursePlanId)) {
-      _resolveProgression(); // joined: the cache already carries it
-      return;
-    }
-    try {
-      final outline = (await QuestRepo.outline(
-        coursePlanId,
-      )).toCourseLoOutline();
-      // A re-scope may have raced ahead; only apply if still the active scope.
-      if (_scopedCourseOutlineId != coursePlanId) return;
-      _scopedCourseOutline = outline;
-    } catch (_) {
-      // Fail soft: the band falls back to the joined-quest resolution.
-    }
-    if (!mounted) {
-      _resolveProgression();
-      return;
-    }
-    setState(_resolveProgression);
+    await _pinsManager.ensureScopedCourseOutline(coursePlanId);
+    if (mounted) setState(() {});
   }
 
   /// World pins for the current viewport, personalized to the user's language
@@ -543,102 +354,69 @@ class WorldMapController extends State<WorldMap>
     } catch (_) {
       return; // camera not ready yet
     }
+
     final user = MatrixState.pangeaController.userController;
     if (mounted) setState(() => _loadingPins = true);
+
     try {
-      final pins = await ActivityMapRepo.bboxPins(
+      await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
-        l2: _l2Only ? user.userL2Code : null,
+        l2: _filterState.filter.l2Only
+            ? _filterState.filter.l2?.langCode
+            : null,
         l1: user.userL1Code,
       );
-      if (!mounted) return;
-      setState(() {
-        _pins = pins;
-        _loadingPins = false;
-      });
-    } catch (_) {
+    } finally {
       if (mounted) setState(() => _loadingPins = false);
     }
   }
 
-  /// Debounced viewport reload, called by the view as the camera pans/zooms.
-  /// Course pins are context-bound, so this is World-only.
-  void handleMapPositionChanged() {
-    if (!isWorld) return;
-    _refetchDebounce?.cancel();
-    _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+  void setQuery(String q) => setState(() => _filterState.setQuery(q));
+
+  void _setL2(LanguageModel? l2) {
+    setState(() => _filterState.setL2(l2));
+    loadWorldPins();
   }
 
-  // ---- filtering ------------------------------------------------------------
-
-  bool _cefrMatches(QuestActivityCard card) {
-    final cefr = card.cefr;
-    if (cefr == null || cefr.isEmpty) return true; // unknown level: keep
-    final norm = cefr.toUpperCase().replaceAll('_', '');
-    return _cefrFilter.any((l) => l.string == norm);
-  }
-
-  bool _completionMatches(QuestActivityCard card) {
-    if (_completionFilter.isEmpty) return true;
-    final status =
-        _completion[card.activityId] ?? MapCompletionFilter.notStarted;
-    return _completionFilter.contains(status);
-  }
-
-  /// The pins actually shown: the loaded set narrowed by the active CEFR band,
-  /// completion filter, and free-text query. World only; a course shows its set.
-  List<QuestActivityCard> get visiblePins {
-    if (!isWorld) return _pins;
-    return _pins
-        .where(
-          (c) =>
-              _cefrMatches(c) &&
-              _completionMatches(c) &&
-              c.matchesQuery(_query),
-        )
-        .toList();
-  }
-
-  bool get canReset =>
-      _query.isNotEmpty ||
-      !_l2Only ||
-      _completionFilter.isNotEmpty ||
-      _cefrFilter.length != _defaultCefr.length ||
-      !_cefrFilter.containsAll(_defaultCefr);
-
-  // ---- filter actions -------------------------------------------------------
-
-  void setQuery(String q) => setState(() => _query = q);
+  void _setCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
+      setState(() => _filterState.setCefrLevel(cefrLevel));
 
   void toggleL2() {
-    setState(() => _l2Only = !_l2Only);
+    setState(() => _filterState.toggleL2());
     loadWorldPins(); // L2 changes the working set → re-fetch
   }
 
-  void toggleCefr(LanguageLevelTypeEnum level) {
-    setState(() {
-      if (!_cefrFilter.remove(level)) _cefrFilter.add(level);
-    });
-  }
+  void toggleCefr(LanguageLevelTypeEnum level) =>
+      setState(() => _filterState.toggleCefr(level));
 
-  void toggleCompletion(MapCompletionFilter c) {
-    setState(() {
-      if (!_completionFilter.remove(c)) _completionFilter.add(c);
-    });
-  }
+  void toggleCompletion(MapCompletionFilter c) =>
+      setState(() => _filterState.toggleCompletion(c));
 
   void resetFilters({bool l2Only = true}) {
-    final toggleL2Only = _l2Only != l2Only;
+    final toggleL2Only = _filterState.filter.l2Only != l2Only;
     setState(() {
-      _query = '';
-      _completionFilter.clear();
-      _cefrFilter = {..._defaultCefr};
-      _l2Only = l2Only;
+      _filterState.resetFilters(l2Only: l2Only);
     });
 
     if (toggleL2Only) {
       loadWorldPins(); // L2 narrowed again → re-fetch
     }
+  }
+
+  /// As [promoteToLarge] but by id. The clustered small/mid markers route their
+  /// tap here via the cluster layer's `onMarkerTap`: the marker-cluster package
+  /// intercepts marker taps, so a marker's own `onTap` never fires for a pointer
+  /// (it only centered the camera, the #7072 symptom). The tapped marker carries
+  /// its activity id as its key, which is all promotion needs.
+  void promoteActivity(String activityId) {
+    final promoted = _pinsManager.promoteActivity(activityId);
+    if (promoted) setState(() {});
+    ActivityPlanRepo.instance.ensure(activityId);
+  }
+
+  void demoteActivity() {
+    final demoted = _pinsManager.demoteActivity();
+    if (demoted) setState(() {});
   }
 
   /// Fly to a search result and open its preview (the Maps-style result tap).
@@ -662,36 +440,15 @@ class WorldMapController extends State<WorldMap>
         );
       } catch (_) {}
     }
-    promoteToLarge(card);
-  }
-
-  /// Promote [card] to its large card in place: a small/mid pin expands to the
-  /// large tier on tap (the large card then taps through to the plan page). The
-  /// large marker hydrates the full plan itself (image + star total), so this
-  /// only flips the tier. No navigation, no preview popup.
-  void promoteToLarge(QuestActivityCard card) =>
-      promoteToLargeById(card.activityId);
-
-  /// As [promoteToLarge] but by id. The clustered small/mid markers route their
-  /// tap here via the cluster layer's `onMarkerTap`: the marker-cluster package
-  /// intercepts marker taps, so a marker's own `onTap` never fires for a pointer
-  /// (it only centered the camera, the #7072 symptom). The tapped marker carries
-  /// its activity id as its key, which is all promotion needs.
-  void promoteToLargeById(String activityId) {
-    setState(() => _promotedActivityId = activityId);
-    ActivityPlanRepo.instance.ensure(activityId);
-  }
-
-  void collapse() {
-    if (_promotedActivityId == null) return;
-    setState(() => _promotedActivityId = null);
+    promoteActivity(card.activityId);
   }
 
   /// Glide back to the whole-world view (the initial camera). Pins, clusters,
   /// and search only ever zoom the camera IN, so this is the one explicit
   /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
   /// and open panels are untouched.
-  void resetToWorld() => _animateCameraTo(const LatLng(20, 0), minZoom);
+  void resetToWorld() =>
+      _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
   /// map's range — backs the on-map +/- buttons, since a tap/search only ever
@@ -699,28 +456,16 @@ class WorldMapController extends State<WorldMap>
   /// mid-glide live zoom), so rapid clicks each advance a full level instead of
   /// under-shooting, and snaps to integer levels so the steps land crisply.
   void zoomBy(double delta) {
-    final base = (_camAnim?.isAnimating ?? false)
+    final base = _cameraAnimationController.isAnimating
         ? _camTargetZoom
         : mapController.camera.zoom;
+
     _animateCameraTo(
       mapController.camera.center,
-      (base + delta).clamp(minZoom, maxZoom).roundToDouble(),
+      (base + delta)
+          .clamp(WorldMapConstants.minZoom, WorldMapConstants.maxZoom)
+          .roundToDouble(),
     );
-  }
-
-  /// Resolve a [MapFocus] to a map coordinate, or null if not resolvable yet.
-  /// Exhaustive over the sealed [MapFocus]: adding a focus kind makes this a
-  /// compile error until its arm is added — that is the extension seam.
-  LatLng? _focusPoint(MapFocus? focus) {
-    switch (focus) {
-      case null:
-        return null;
-      case ActivityFocus(:final activityId):
-        for (final card in _pins) {
-          if (card.activityId == activityId) return card.point;
-        }
-        return null;
-    }
   }
 
   /// Centers the current selection within the *exposed* canvas — the map area
@@ -738,7 +483,7 @@ class WorldMapController extends State<WorldMap>
       _runFitToContext();
       return;
     }
-    _fitDebounce = Timer(_fitSettleDelay, _runFitToContext);
+    _fitDebounce = Timer(WorldMapConstants.fitSettleDelay, _runFitToContext);
   }
 
   void _runFitToContext() {
@@ -759,15 +504,15 @@ class WorldMapController extends State<WorldMap>
         // (neighborhood/building) zoom, never zooming out past where we already
         // are. Today that is an activity; new focus kinds resolve in
         // [_focusPoint].
-        final point = _focusPoint(widget.focus);
+        final point = _pinsManager.focusPoint(widget.focus);
         if (point != null) {
           _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
               padding: padding,
-              maxZoom: mapController.camera.zoom > _focusZoom
+              maxZoom: mapController.camera.zoom > WorldMapConstants.focusZoom
                   ? mapController.camera.zoom
-                  : _focusZoom,
+                  : WorldMapConstants.focusZoom,
             ),
           );
           return;
@@ -775,7 +520,8 @@ class WorldMapController extends State<WorldMap>
 
         // Otherwise a course context fits all of its activities.
         if (MapContextController.notifier.value is! CourseMapContext) return;
-        final points = _pins.map((c) => c.point).whereType<LatLng>().toList();
+
+        final points = _pinsManager.focusPoints;
         if (points.isEmpty) return;
         _animateFit(
           CameraFit.bounds(
@@ -801,8 +547,8 @@ class WorldMapController extends State<WorldMap>
   /// Tween the camera center + zoom over [_camGlideDuration]. Re-targets cleanly
   /// if called mid-flight (the glide restarts from the current position).
   void _animateCameraTo(LatLng center, double zoom) {
-    final anim = _camAnim;
-    if (anim == null || !mounted) {
+    final anim = _cameraAnimationController;
+    if (!mounted) {
       try {
         mapController.move(center, zoom);
       } catch (_) {}
@@ -820,8 +566,9 @@ class WorldMapController extends State<WorldMap>
   void _onCamGlideTick() {
     final start = _camStart;
     final end = _camTarget;
-    final curve = _camCurve;
-    if (start == null || end == null || curve == null) return;
+    final curve = _cameraAnimation;
+    if (start == null || end == null) return;
+
     final t = curve.value;
     final lat = start.latitude + (end.latitude - start.latitude) * t;
     final lng = start.longitude + (end.longitude - start.longitude) * t;
@@ -831,6 +578,14 @@ class WorldMapController extends State<WorldMap>
     } catch (_) {
       // Camera not ready / disposed mid-tick.
     }
+  }
+
+  /// Debounced viewport reload, called by the view as the camera pans/zooms.
+  /// Course pins are context-bound, so this is World-only.
+  void onMapPositionChanged() {
+    if (!isWorld) return;
+    _refetchDebounce?.cancel();
+    _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
   }
 
   /// Open the activity detail in-place, preserving the current route (course
@@ -853,11 +608,20 @@ class WorldMapController extends State<WorldMap>
       'm',
       'activity',
       'autoplay',
+      'roomid',
     });
 
     parts.add('activity=${card.activityId}');
+    // #7257: if the learner already holds a started/joined session for this
+    // activity, bind the overlay to that room (`roomid=`) so the start page
+    // resumes it (selectRole/confirmedRole) instead of offering a fresh
+    // instance. Pin entry stays unscoped — only the session room is added.
+    final myRoom = client?.myActivityInstance(card.activityId);
+    if (myRoom != null) {
+      parts.add('roomid=${shortRoomId(myRoom.id)}');
+    }
     context.go(WorkspaceQuery.location('/', parts));
-    collapse();
+    demoteActivity();
   }
 
   @override
