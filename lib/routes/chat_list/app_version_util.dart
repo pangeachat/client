@@ -29,9 +29,7 @@ class AppVersionUtil {
     final currentVersion = packageInfo.version;
     final currentBuildNumber = packageInfo.buildNumber;
 
-    final Requests request = Requests(
-      accessToken: accessToken,
-    );
+    final Requests request = Requests(accessToken: accessToken);
 
     Map<String, dynamic> json = {};
     final Response res = await request.post(

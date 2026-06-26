@@ -92,9 +92,7 @@ class PracticeRepo {
     required String accessToken,
     required MessagePracticeExerciseRequest requestModel,
   }) async {
-    final Requests request = Requests(
-      accessToken: accessToken,
-    );
+    final Requests request = Requests(accessToken: accessToken);
     final Response res = await request.post(
       url: PApiUrls.messagePracticeExerciseGeneration,
       body: requestModel.toJson(),

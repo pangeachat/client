@@ -22,7 +22,7 @@ import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mobile_bottom_nav.dart';
-import 'package:fluffychat/widgets/space_navigation_column.dart';
+import 'package:fluffychat/widgets/navigation_rail.dart';
 
 /// One persistent world-map element for the whole app shell (world_v2 map
 /// architecture). The GlobalKey preserves the map's State — tiles, camera,
@@ -271,9 +271,11 @@ class WorkspaceShell extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.all(_ShellLayout.chromeMargin),
-                child: SpaceNavigationColumn(
+                child: SpacesNavigationRail(
                   state: state,
                   showNavRail: l.navRail,
+                  naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                  activeSpaceId: activeSpaceIdFor(state.uri),
                 ),
               ),
             ),
