@@ -38,6 +38,7 @@ class SuggestionCardState extends State<SuggestionCard> {
   void _onChoiceSelected(OrchestratorSuggestion choice) {
     try {
       widget.controller.selectChoice(choice);
+      setState(() {});
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -48,7 +49,11 @@ class SuggestionCardState extends State<SuggestionCard> {
         },
       );
     }
-    if (mounted) _close();
+
+    if (choice.type != OrchestratorSuggestionType.best) return;
+    Future.delayed(const Duration(milliseconds: 700), () {
+      if (mounted) _close();
+    });
   }
 
   @override
@@ -59,6 +64,7 @@ class SuggestionCardState extends State<SuggestionCard> {
       return SizedBox();
     }
 
+    final selected = suggestionsModel.selectedChoice;
     return WritingAssistancePopup(
       widget.popupManager,
       child: Container(
@@ -108,11 +114,23 @@ class SuggestionCardState extends State<SuggestionCard> {
                 horizontal: 24.0,
               ),
               child: ChoicesArray<OrchestratorSuggestion>(
-                choices: suggestionsModel.shuffledChoices
-                    .map((e) => Choice(value: e))
-                    .toList(),
+                choices: suggestionsModel.shuffledChoices.map((e) {
+                  final isBest = e.type == OrchestratorSuggestionType.best;
+                  final isSelected = e == selected;
+                  return Choice(
+                    value: e,
+                    // Match the IGC SpanCard scheme: green for the correct
+                    // (best) option, red for a distractor.
+                    color: isSelected
+                        ? (isBest ? Colors.green : Colors.red)
+                        : null,
+                    isGold: isBest,
+                  );
+                }).toList(),
                 onPressed: (value, index) => _onChoiceSelected(value),
-                selectedChoiceIndex: null,
+                selectedChoiceIndex: selected == null
+                    ? null
+                    : suggestionsModel.shuffledChoices.indexOf(selected),
                 getDisplayCopy: (value) => value.text,
               ),
             ),
