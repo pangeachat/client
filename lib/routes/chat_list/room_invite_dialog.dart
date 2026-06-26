@@ -10,19 +10,30 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum CourseInviteAction { accept, decline }
 
-class RoomInviteDialog extends StatelessWidget {
-  final Room room;
-  const RoomInviteDialog({super.key, required this.room});
-
+class RoomInviteDialog {
   static Future<void> show(BuildContext context, Room room) async {
-    final resp = await showDialog<CourseInviteAction>(
-      context: context,
-      builder: (context) => RoomInviteDialog(room: room),
+    final resp = await showInviteDialog<CourseInviteAction>(
+      context,
+      title: L10n.of(context).youreInvited,
+      message: room.isSpace
+          ? L10n.of(context).invitedToSpace(room.name, room.creatorId ?? "???")
+          : L10n.of(context).invitedToChat(room.name, room.creatorId ?? "???"),
+      actions: [
+        InviteDialogAction(
+          label: L10n.of(context).decline,
+          value: CourseInviteAction.decline,
+          destructive: true,
+        ),
+        InviteDialogAction(
+          label: L10n.of(context).accept,
+          value: CourseInviteAction.accept,
+        ),
+      ],
     );
 
     switch (resp) {
@@ -55,49 +66,5 @@ class RoomInviteDialog extends StatelessWidget {
       case null:
         return;
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog.adaptive(
-      title: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256),
-        child: Center(
-          child: Text(
-            L10n.of(context).youreInvited,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-        child: Text(
-          room.isSpace
-              ? L10n.of(
-                  context,
-                ).invitedToSpace(room.name, room.creatorId ?? "???")
-              : L10n.of(
-                  context,
-                ).invitedToChat(room.name, room.creatorId ?? "???"),
-          textAlign: TextAlign.center,
-        ),
-      ),
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () =>
-              Navigator.of(context).pop(CourseInviteAction.decline),
-          bigButtons: true,
-          child: Text(
-            L10n.of(context).decline,
-            style: TextStyle(color: Theme.of(context).colorScheme.error),
-          ),
-        ),
-        AdaptiveDialogAction(
-          onPressed: () => Navigator.of(context).pop(CourseInviteAction.accept),
-          bigButtons: true,
-          child: Text(L10n.of(context).accept),
-        ),
-      ],
-    );
   }
 }
