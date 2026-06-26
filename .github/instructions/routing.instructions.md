@@ -105,9 +105,15 @@ course room is then an ordinary `room` token over the course-filtered map.
 `?m=` filter is *not* tied to any panel: opening, closing, and switching panels
 (including closing the course card itself, or moving to Chats/Settings) all leave
 it untouched — closing panels is precisely how you clear the view to see the
-scoped map. The scope changes only when you choose a new map **focus** (entering a
-different course sets/replaces `?m=`) or do the one explicit reset (the **World**
-control returns to world scope). So closing the course card leaves the map
+scoped map. **The map changes focus only on a deliberate focus-bearing selection
+— or the World control.** It changes *only* when you select something that carries
+its own map focus (today a **course**, which sets/replaces `?m=course:`, or an
+**activity**, which glides the camera to its pin), or when you hit the
+**World/home** control — the one focus that names no specific item and so resolves
+to the broadest possible, the whole world. Tapping a surface that carries no map
+focus (the **Courses** hub, **Chats**, **Settings**) never changes it; that
+surface just overlays the map you left (#7087). So closing the course card leaves
+the map
 course-scoped with the card gone, and the filter never depends on which panels
 happen to be open. New filter dimensions (region, language, activity kind) slot
 into the same `m` list without touching the panel model.
