@@ -23,7 +23,8 @@ Append `?devlogin=1` to the URL: `http://localhost:8090/?devlogin=1` (or inside 
 
 - **Intentional, per load.** A normal load (`http://localhost:8090/`) shows the real login flow untouched, so that flow stays testable in debug. The bypass fires only when the param is present.
 - **Uses `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from `.env`** via the SDK's own password login, so the session is always valid (no stale-token problem a saved Playwright `storageState` has).
-- **Never touches production.** Gated to debug builds (release builds — staging/prod — ignore it) and refuses a production homeserver.
+- **Never touches production.** Gated to debug builds (release builds — staging/prod — ignore it) and authenticates only against a localhost or staging host (the host `SYNAPSE_URL` points to — the same one the login actually connects to).
+- On a staging-pointed build it signs into the shared `staging_automated_tests` account; log out / prune the `dev-login` device when done so stray sessions don't accumulate.
 - No-op if a client is already logged in (log out first to switch accounts).
 
 Implementation: `lib/pangea/common/config/dev_login.dart`, invoked from `MatrixState.initState`.

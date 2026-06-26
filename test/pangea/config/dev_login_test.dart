@@ -12,14 +12,14 @@ void main() {
       bool alreadyLoggedIn = false,
       String? username = 'learner',
       String? password = 'learnerpass',
-      String homeserver = 'local.pangea.chat',
+      String loginHost = 'localhost',
     }) => shouldDevLogin(
       isDebug: isDebug,
       requested: requested,
       alreadyLoggedIn: alreadyLoggedIn,
       username: username,
       password: password,
-      homeserver: homeserver,
+      loginHost: loginHost,
     );
 
     test('proceeds in the happy path', () {
@@ -45,17 +45,30 @@ void main() {
       expect(gate(password: ''), isFalse);
     });
 
-    test('refuses the production homeserver', () {
-      expect(gate(homeserver: 'pangea.chat'), isFalse);
-      expect(gate(homeserver: 'matrix.pangea.chat'), isFalse);
-      expect(gate(homeserver: 'PANGEA.CHAT'), isFalse);
-      expect(gate(homeserver: '  pangea.chat '), isFalse);
+    test('refuses any non-localhost, non-staging login host', () {
+      for (final host in [
+        'pangea.chat', // production apex
+        'matrix.pangea.chat', // production
+        'app.pangea.chat', // production alias
+        'pangea.chat.', // trailing-dot FQDN form
+        'local.pangea.chat', // a server name, not the connection host
+        '10.0.0.5', // raw IP
+        '', // empty / unparseable host
+      ]) {
+        expect(gate(loginHost: host), isFalse, reason: host);
+      }
     });
 
-    test('allows staging and local homeservers', () {
-      expect(gate(homeserver: 'staging.pangea.chat'), isTrue);
-      expect(gate(homeserver: 'local.pangea.chat'), isTrue);
-      expect(gate(homeserver: 'localhost:8008'), isTrue);
+    test('allows only localhost and staging login hosts', () {
+      for (final host in [
+        'localhost',
+        '127.0.0.1',
+        'staging.pangea.chat',
+        'matrix.staging.pangea.chat',
+        'STAGING.PANGEA.CHAT', // case-insensitive
+      ]) {
+        expect(gate(loginHost: host), isTrue, reason: host);
+      }
     });
   });
 
