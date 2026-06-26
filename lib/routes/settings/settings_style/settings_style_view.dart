@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -122,7 +123,17 @@ class SettingsStyleView extends StatelessWidget {
                             child: SizedBox(
                               width: colorPickerSize,
                               height: colorPickerSize,
-                              child: controller.currentColor == color
+                              child:
+                                  (controller.currentColor == color ||
+                                      // #7176: on the default (null) colour the
+                                      // system swatch carries the selection, but
+                                      // where there is no system colour (web) that
+                                      // swatch is removed and the app falls back to
+                                      // its default colour — mark that swatch
+                                      // selected so a theme always reads as chosen.
+                                      (controller.currentColor == null &&
+                                          systemColor == null &&
+                                          color == AppConfig.chatColor))
                                   ? Center(
                                       child: Icon(
                                         Icons.check,
