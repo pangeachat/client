@@ -8,6 +8,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 /// One participant in a featured joinable session — just what the avatar stack
@@ -72,7 +73,6 @@ class WorldMapLargeCard extends StatelessWidget {
     final total = _starsTotal;
 
     final earned = starsEarned.clamp(0, total);
-    final shown = total > 12 ? 12 : total;
 
     return GestureDetector(
       onTap: onTap,
@@ -104,20 +104,11 @@ class WorldMapLargeCard extends StatelessWidget {
                   pinged: pinged,
                   foregroundColor: state.accent,
                 ),
-                total == 0
-                    ? SizedBox(height: 16)
-                    : Row(
-                        children: List.generate(
-                          shown,
-                          (i) => Icon(
-                            i < earned ? Icons.star : Icons.star_border,
-                            size: 16,
-                            color: i < earned
-                                ? AppConfig.gold
-                                : AppConfig.grayText,
-                          ),
-                        ),
-                      ),
+                ActivityStarRow(
+                  total: total,
+                  earned: earned,
+                  condensed: total > 12,
+                ),
                 if (completed)
                   Row(
                     children: [

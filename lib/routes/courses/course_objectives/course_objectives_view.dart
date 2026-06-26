@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
@@ -238,6 +239,8 @@ class _ObjectiveSection extends StatelessWidget {
               final complete =
                   userId != null &&
                   (hasCompletedActivity?.call(userId, ref.activityId) ?? false);
+              final starsEarned =
+                  room?.client.userStarsByActivity[ref.activityId] ?? 0;
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
@@ -276,9 +279,10 @@ class _ObjectiveSection extends StatelessWidget {
                         activity: ref.plan,
                         width: cardWidth,
                         height: cardHeight,
-                        fontSize: isColumnMode ? 20.0 : 12.0,
+                        fontSize: isColumnMode ? 16.0 : 12.0,
                         fontSizeSmall: isColumnMode ? 12.0 : 8.0,
                         iconSize: isColumnMode ? 12.0 : 8.0,
+                        starsEarned: starsEarned,
                       ),
                       if (complete)
                         Container(
