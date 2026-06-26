@@ -8,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
@@ -103,7 +104,10 @@ class WorldMapController extends State<WorldMap>
   double _camTargetZoom = 0;
 
   Client? _client;
+
   StreamSubscription<dynamic>? _syncSub;
+  StreamSubscription? _languageSubscription;
+  StreamSubscription? _cefrLevelSubscription;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
@@ -131,6 +135,24 @@ class WorldMapController extends State<WorldMap>
 
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+
+    final user = MatrixState.pangeaController.userController;
+
+    _languageSubscription?.cancel();
+    _languageSubscription = user.languageStream.stream.listen((update) {
+      if (update.targetLang != _filterState.filter.l2) {
+        _setL2(update.targetLang);
+      }
+    });
+
+    _cefrLevelSubscription?.cancel();
+    _cefrLevelSubscription = user.settingsUpdateStream.stream.listen((update) {
+      if (!_filterState.filter.cefrFilter.contains(
+        update.userSettings.cefrLevel,
+      )) {
+        _setCefrLevel(update.userSettings.cefrLevel);
+      }
+    });
   }
 
   @override
@@ -164,8 +186,9 @@ class WorldMapController extends State<WorldMap>
     // Personalized default: my CEFR band (at/below my level). Applied once the
     // user controller is available.
     if (!_filterState.filter.filterDefaultsApplied) {
+      final l2 = MatrixState.pangeaController.userController.userL2;
       final cefr = MatrixState.pangeaController.userController.userCefrLevel;
-      _filterState.applyDefaults(cefrLevel: cefr);
+      _filterState.applyDefaults(l2: l2, cefrLevel: cefr);
     }
   }
 
@@ -189,6 +212,8 @@ class WorldMapController extends State<WorldMap>
   @override
   void dispose() {
     _syncSub?.cancel();
+    _languageSubscription?.cancel();
+    _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _cameraAnimation.dispose();
@@ -336,7 +361,9 @@ class WorldMapController extends State<WorldMap>
     try {
       await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
-        l2: _filterState.filter.l2Only ? user.userL2Code : null,
+        l2: _filterState.filter.l2Only
+            ? _filterState.filter.l2?.langCode
+            : null,
         l1: user.userL1Code,
       );
     } finally {
@@ -345,6 +372,14 @@ class WorldMapController extends State<WorldMap>
   }
 
   void setQuery(String q) => setState(() => _filterState.setQuery(q));
+
+  void _setL2(LanguageModel? l2) {
+    setState(() => _filterState.setL2(l2));
+    loadWorldPins();
+  }
+
+  void _setCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
+      setState(() => _filterState.setCefrLevel(cefrLevel));
 
   void toggleL2() {
     setState(() => _filterState.toggleL2());
