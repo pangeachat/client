@@ -49,8 +49,9 @@ venv/
 
 # Gitlab runner locally
 /builds/
+# FVM: ignore the local SDK cache/symlinks but TRACK .fvmrc so the pinned
+# Flutter version is shared across all developers and CI.
 .fvm/
-.fvmrc
 
 
 # Web related

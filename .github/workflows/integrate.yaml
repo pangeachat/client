@@ -16,6 +16,17 @@ jobs:
       - run: ./scripts/generate-locale-config.sh
       - run: git diff --exit-code
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - name: Ensure .fvmrc and CI Flutter version agree
+        # The FVM pin (.fvmrc) is what developers' local toolchains use, and
+        # FLUTTER_VERSION (versions.env) is what CI uses. They must be the same
+        # version, otherwise the dart-format gate goes red on unrelated files.
+        run: |
+          FVMRC_VERSION=$(grep -oP '"flutter"\s*:\s*"\K[^"]+' .fvmrc)
+          if [ "$FVMRC_VERSION" != "$FLUTTER_VERSION" ]; then
+            echo "::error::.fvmrc pins Flutter '$FVMRC_VERSION' but versions.env pins '$FLUTTER_VERSION'. Update both to the same version."
+            exit 1
+          fi
+          echo "Flutter version pin is consistent across .fvmrc and CI: $FLUTTER_VERSION"
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
