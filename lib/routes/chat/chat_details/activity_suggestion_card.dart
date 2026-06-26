@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
@@ -16,6 +17,7 @@ class ActivitySuggestionCard extends StatelessWidget {
   final double? iconSize;
 
   final int? openSessions;
+  final int starsEarned;
 
   const ActivitySuggestionCard({
     super.key,
@@ -26,7 +28,12 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.fontSizeSmall,
     this.iconSize,
     this.openSessions,
+    this.starsEarned = 0,
   });
+
+  int get _starsTotal => activity.roles.values
+      .map((r) => r.allGoals.length)
+      .fold(0, (a, b) => b > a ? b : a);
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +84,13 @@ class ActivitySuggestionCard extends StatelessWidget {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      if (_starsTotal > 0)
+                        ActivityStarRow(
+                          total: _starsTotal,
+                          earned: starsEarned.clamp(0, _starsTotal),
+                          iconSize: 12,
+                          condensed: _starsTotal > 7,
+                        ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         spacing: 8.0,

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/utils/string_color.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
@@ -130,23 +130,16 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                               ),
-                              Wrap(
-                                alignment: WrapAlignment.center,
-                                spacing: 2.0,
-                                runSpacing: 4.0,
-                                children: goals!.map((g) {
-                                  final done =
-                                      completedGoalIds?.contains(g.id) ?? false;
-                                  return Icon(
-                                    done ? Icons.star : Icons.star_border,
-                                    size: 22.0,
-                                    color: done
-                                        ? (theme.brightness == Brightness.light
-                                              ? AppConfig.gold
-                                              : AppConfig.goldLight)
-                                        : null,
-                                  );
-                                }).toList(),
+                              ActivityStarRow(
+                                total: goals!.length,
+                                earned: goals!
+                                    .where(
+                                      (g) =>
+                                          completedGoalIds?.contains(g.id) ??
+                                          false,
+                                    )
+                                    .length,
+                                iconSize: 22.0,
                               ),
                             ],
                           )
