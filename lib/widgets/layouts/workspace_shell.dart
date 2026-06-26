@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
@@ -197,7 +198,7 @@ class WorkspaceShell extends StatelessWidget {
         // `routing.instructions.md`.
         bottomNavigationBar: l.showBottomNav
             ? ValueListenableBuilder<bool>(
-                valueListenable: MapPinController.notifier,
+                valueListenable: WorldMapPinsManager.notifier,
                 builder: (context, pinSheetOpen, child) =>
                     pinSheetOpen ? const SizedBox.shrink() : child!,
                 child: MobileBottomNav(state: state),
@@ -686,7 +687,7 @@ class _ShellLayout {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       MapContextController.set(mapContext);
       PanelFocusController.instance.set(focusedLeftToken);
-      if (mapCoveredByPanel) MapPinController.set(false);
+      if (mapCoveredByPanel) WorldMapPinsManager.set(false);
     });
   }
 }

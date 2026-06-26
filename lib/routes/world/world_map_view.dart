@@ -12,6 +12,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_cluster_bubble.dart';
+import 'package:fluffychat/routes/world/world_map_constants.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
@@ -185,7 +186,7 @@ class WorldMapView extends StatelessWidget {
             card: card,
             state: state,
             tier: tier,
-            onTap: () => controller.promoteToLarge(card),
+            onTap: () => controller.promoteActivity(card.activityId),
             pinged: render.pingedOf(card.activityId),
             fill: render.fillOf(card.activityId),
           ),
@@ -225,7 +226,7 @@ class WorldMapView extends StatelessWidget {
           state: state,
           pinged: render.pingedOf(card.activityId),
           plan: plan,
-          starsEarned: controller.userStars[card.activityId] ?? 0,
+          starsEarned: controller.activityStarsEarned(card.activityId) ?? 0,
           participants: joinableActivity?.largeCardParticipants ?? [],
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
           onTap: () => controller.openActivity(card),
@@ -258,8 +259,8 @@ class WorldMapView extends StatelessWidget {
         // ±90 band is only ~1024px tall at z2 — that would freeze *all*
         // panning on windows taller than ~1024px (common when maximized).
         // z3 gives a ~2048px band, clearing any realistic viewport.
-        minZoom: WorldMapController.minZoom,
-        maxZoom: WorldMapController.maxZoom,
+        minZoom: WorldMapConstants.minZoom,
+        maxZoom: WorldMapConstants.maxZoom,
         // Clamp latitude only — leaving longitude free so the user can pan
         // east-west and the world wraps seamlessly ("rotate the world
         // around"). Epsg3857 replicates longitude, so tiles and markers
@@ -271,16 +272,14 @@ class WorldMapView extends StatelessWidget {
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
         // Tap empty map → collapse a promoted large card back to its pin.
-        onTap: (_, _) {
-          if (controller.promotedActivityId != null) controller.collapse();
-        },
+        onTap: (_, _) => controller.demoteActivity(),
         // World pins are viewport-bounded: load once the camera is ready, then
         // re-load (debounced) as the user pans/zooms. Course pins are
         // context-bound and unaffected.
         onMapReady: () {
           if (controller.isWorld) controller.loadWorldPins();
         },
-        onPositionChanged: (_, _) => controller.handleMapPositionChanged(),
+        onPositionChanged: (_, _) => controller.onMapPositionChanged(),
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -319,7 +318,7 @@ class WorldMapView extends StatelessWidget {
             onMarkerTap: (marker) {
               final key = marker.key;
               if (key is ValueKey<String>) {
-                controller.promoteToLargeById(key.value);
+                controller.promoteActivity(key.value);
               }
             },
             markers: _clusterMarkers(render),
@@ -387,19 +386,15 @@ class WorldMapView extends StatelessWidget {
           left: controller.widget.leftOverlayWidth + 12,
           width: 360,
           child: WorldMapSearchOverlay(
-            query: controller.query,
-            onQueryChanged: controller.setQuery,
-            l2Only: controller.l2Only,
+            filter: controller.filter,
+            updateQuery: controller.setQuery,
             l2Label: l2?.toUpperCase(),
             onToggleL2: controller.toggleL2,
             onWidenSearch: () => controller.resetFilters(l2Only: false),
-            selectedCefr: controller.cefrFilter,
-            onToggleCefr: controller.toggleCefr,
-            selectedCompletion: controller.completionFilter,
-            onToggleCompletion: controller.toggleCompletion,
+            toggleCefr: controller.toggleCefr,
+            toggleCompletion: controller.toggleCompletion,
             results: render.visible,
             onResultTap: controller.flyTo,
-            canReset: controller.canReset,
             onReset: controller.resetFilters,
             emptyInView: !controller.loadingPins && render.visible.isEmpty,
           ),
@@ -445,9 +440,8 @@ class _MapZoomControls extends StatelessWidget {
         stream: controller.mapController.mapEventStream,
         builder: (context, _) {
           final zoom = _currentZoom();
-          final canZoomIn = zoom == null || WorldMapController.canZoomIn(zoom);
-          final canZoomOut =
-              zoom == null || WorldMapController.canZoomOut(zoom);
+          final canZoomIn = zoom == null || WorldMapConstants.canZoomIn(zoom);
+          final canZoomOut = zoom == null || WorldMapConstants.canZoomOut(zoom);
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
