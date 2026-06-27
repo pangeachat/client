@@ -337,29 +337,71 @@ class _WorldMapViewState extends State<WorldMapView> {
     );
   }
 
-  /// The clustered small/mid pins (large cards render unclustered above). Skips
-  /// pins with no point and any selected/featured large pin.
-  List<Marker> _clusterMarkers(_PinRenderer render) =>
-      render.nonLargeCards.map((card) {
-        final state = render.stateOf(card.activityId);
-        final tier = render.tierOf(card.activityId);
+  /// Memoized cluster-marker list and the signature of the pin data it was
+  /// built from. The cluster package reinitializes every cluster node — and so
+  /// tears down and re-pops every bubble's animation State — whenever the
+  /// markers list it receives is a *different reference* than last build
+  /// (`oldWidget.options.markers != widget.options.markers`, a reference check).
+  /// Our build re-runs on every controller notify (pin loads, zoom-control
+  /// stream), so a freshly-allocated list each time caused the constant
+  /// re-popping. Returning the same instance when the pin data is unchanged
+  /// keeps the package's nodes — and the bubbles' animations — stable.
+  List<Marker>? _cachedClusterMarkers;
+  String? _cachedClusterSig;
 
-        return Marker(
+  /// The clustered small/mid pins (large cards render unclustered above). Skips
+  /// pins with no point and any selected/featured large pin. Returns a cached
+  /// list instance when the underlying pin data hasn't changed (see above).
+  List<Marker> _clusterMarkers(_PinRenderer render) {
+    final cards = render.nonLargeCards;
+    final sig = StringBuffer();
+    for (final card in cards) {
+      final state = render.stateOf(card.activityId);
+      sig
+        ..write(card.activityId)
+        ..write('|')
+        ..write(card.point!.latitude)
+        ..write(',')
+        ..write(card.point!.longitude)
+        ..write('|')
+        ..write(render.tierOf(card.activityId).index)
+        ..write('|')
+        ..write(state.index)
+        ..write('|')
+        ..write(render.pingedOf(card.activityId) ? 1 : 0)
+        ..write('|')
+        ..write(render.fillOf(card.activityId))
+        ..write(';');
+    }
+    final signature = sig.toString();
+    final cached = _cachedClusterMarkers;
+    if (cached != null && _cachedClusterSig == signature) return cached;
+
+    final markers = cards.map((card) {
+      final state = render.stateOf(card.activityId);
+      final tier = render.tierOf(card.activityId);
+
+      return Marker(
+        key: ValueKey(card.activityId),
+        point: card.point!,
+        width: tier.dotWidth,
+        height: tier.dotHeight(state),
+        child: WorldMapDot(
           key: ValueKey(card.activityId),
-          point: card.point!,
-          width: tier.dotWidth,
-          height: tier.dotHeight(state),
-          child: WorldMapDot(
-            key: ValueKey(card.activityId),
-            card: card,
-            state: state,
-            tier: tier,
-            onTap: () => widget.controller.selectActivity(card.activityId),
-            pinged: render.pingedOf(card.activityId),
-            fill: render.fillOf(card.activityId),
-          ),
-        );
-      }).toList();
+          card: card,
+          state: state,
+          tier: tier,
+          onTap: () => widget.controller.selectActivity(card.activityId),
+          pinged: render.pingedOf(card.activityId),
+          fill: render.fillOf(card.activityId),
+        ),
+      );
+    }).toList();
+
+    _cachedClusterMarkers = markers;
+    _cachedClusterSig = signature;
+    return markers;
+  }
 
   /// Dying pins rendered in a separate unclustered layer so they don't inflate
   /// cluster counts or disturb the bubble colour while shrinking out.
