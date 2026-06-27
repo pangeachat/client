@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -114,6 +115,23 @@ void main() {
         selectedId: 's',
       );
       expect(r.largeIds, ['s']);
+    });
+
+    test('an unprojectable selection claims no large slot', () {
+      // s has no screen point (fell out of view); three featured cards all fit
+      // (centers 130/390/650 → touching, non-overlapping). A stale selection
+      // must not silently burn a slot and drop the third featured to its dot.
+      final r = place(
+        offsets: {
+          's': null,
+          'a': const Offset(130, 300),
+          'b': const Offset(390, 300),
+          'c': const Offset(650, 300),
+        },
+        ordered: ['a', 'b', 'c'],
+        selectedId: 's',
+      );
+      expect(r.largeIds, ['a', 'b', 'c']);
     });
   });
 

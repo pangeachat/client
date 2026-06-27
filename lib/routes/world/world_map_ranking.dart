@@ -239,14 +239,18 @@ PlacementResult placeLargeCards({
   final largeIds = <String>[];
   final placedRects = <Rect>[];
 
-  // Selected is reserved first and never yields — a deliberate peek always shows
-  // large, even spilling an edge (the camera-nudge that keeps it fully on-screen
-  // is a separate concern). Its footprint still blocks featured cards and
-  // suppresses the long tail beneath it.
+  // Selected is reserved first and never yields to a featured card — a deliberate
+  // peek, shown large whenever it projects to screen (even spilling an edge; the
+  // camera-nudge that keeps it fully on-screen is a separate concern). An
+  // unprojectable selection (off-screen / no point) can't render, so it claims no
+  // slot; when it does project, its footprint blocks featured cards and suppresses
+  // the long tail beneath it.
   if (selectedId != null) {
-    largeIds.add(selectedId);
     final o = screenOffsetOf(selectedId);
-    if (o != null) placedRects.add(cardRectAt(o));
+    if (o != null) {
+      largeIds.add(selectedId);
+      placedRects.add(cardRectAt(o));
+    }
   }
 
   // Featured candidates fill the remaining budget, highest score first, each
