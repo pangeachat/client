@@ -97,7 +97,6 @@ class WorldMapController extends State<WorldMap>
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
   late final AnimationController _cameraAnimationController;
-  late final CurvedAnimation _cameraAnimation;
   LatLng? _camStart;
   LatLng? _camTarget;
   double _camStartZoom = 0;
@@ -122,11 +121,6 @@ class WorldMapController extends State<WorldMap>
       vsync: this,
       duration: WorldMapConstants.camGlideDuration,
     )..addListener(_onCamGlideTick);
-
-    _cameraAnimation = CurvedAnimation(
-      parent: _cameraAnimationController,
-      curve: Curves.easeInOut,
-    );
 
     _loadForContext();
 
@@ -216,7 +210,6 @@ class WorldMapController extends State<WorldMap>
     _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
-    _cameraAnimation.dispose();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     WorldMapPinsManager.notifier.removeListener(_onPinControllerChange);
@@ -544,8 +537,10 @@ class WorldMapController extends State<WorldMap>
     _animateCameraTo(target.center, target.zoom);
   }
 
-  /// Tween the camera center + zoom over [_camGlideDuration]. Re-targets cleanly
-  /// if called mid-flight (the glide restarts from the current position).
+  /// Tween the camera center + zoom to the target. The glide length scales with
+  /// the zoom distance ([WorldMapConstants.glideDurationFor]) and pan/zoom are
+  /// staggered so the pan runs at the wider zoom (#7239). Re-targets cleanly if
+  /// called mid-flight (the glide restarts from the current position).
   void _animateCameraTo(LatLng center, double zoom) {
     final anim = _cameraAnimationController;
     if (!mounted) {
@@ -559,6 +554,7 @@ class WorldMapController extends State<WorldMap>
     _camTarget = center;
     _camTargetZoom = zoom;
     anim
+      ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
       ..reset()
       ..forward();
   }
@@ -566,13 +562,17 @@ class WorldMapController extends State<WorldMap>
   void _onCamGlideTick() {
     final start = _camStart;
     final end = _camTarget;
-    final curve = _cameraAnimation;
     if (start == null || end == null) return;
 
-    final t = curve.value;
-    final lat = start.latitude + (end.latitude - start.latitude) * t;
-    final lng = start.longitude + (end.longitude - start.longitude) * t;
-    final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * t;
+    // Stagger pan and zoom so the pan runs at the wider zoom (#7239).
+    final p = WorldMapConstants.glideProgress(
+      _cameraAnimationController.value,
+      _camStartZoom,
+      _camTargetZoom,
+    );
+    final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
+    final lng = start.longitude + (end.longitude - start.longitude) * p.pan;
+    final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * p.zoom;
     try {
       mapController.move(LatLng(lat, lng), zoom);
     } catch (_) {
