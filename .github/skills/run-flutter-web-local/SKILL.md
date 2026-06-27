@@ -1,62 +1,113 @@
 ---
 name: run-flutter-web-local
 description: >-
-  Running and RESTARTING the Flutter web client locally without the recurring hang.
-  Use before you kill/restart the local dev server, when a code change isn't showing
-  up in the browser, when port 8090 is dead, or when stray flutter/dart compilers
-  have piled up. Covers the fifo control channel, clean-restart procedure, zombie
-  recovery, and the local `.env`/Synapse-URL check.
+  Starting and restarting the Flutter web client locally without the recurring
+  startup hang. Use to bring :8090 up from scratch, when the app sits forever on
+  the loading spinner, when a code change isn't showing up, when port 8090 is
+  dead, or when stray flutter/dart compilers have piled up. Covers the clean
+  first-time startup procedure, the one-tab IndexedDB rule, the fifo control
+  channel, hot-reload vs clean-restart, and stuck-state recovery.
 ---
 
-# Local Flutter web dev — the restart procedure
+# Local Flutter web dev — startup & restart
 
-The client runs as `flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. That combination has three failure modes we hit repeatedly. This skill is the procedure that avoids all three. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this is specifically the Flutter-restart nuance the control plane does **not** solve.
+The client runs as `fvm flutter run -d web-server --web-port=8090` and is viewed in an **external** Chrome (the Claude-in-Chrome extension), not a Flutter-launched Chrome. The broader stack (Synapse, Choreographer, CMS, bot) is managed by the `pangea-local-setup` control plane (`local-dev/pangea`); this skill is the Flutter-specific nuance that control plane does not solve.
 
-## The traps (diagnosed empirically)
+> **Toolchain (do this first, every time).** The repo pins **Flutter 3.41.4** via `client/.fvmrc`, and CI hard-fails if `.fvmrc` disagrees with `.github/workflows/versions.env`. A bare `flutter` is whatever is global on the machine (often a *different* version → a build that doesn't match what ships, and subtle breakage). **Run everything through the pinned toolchain: `fvm flutter …` / `fvm dart …`.** fvm lives at `~/.pub-cache/bin` — if it's not on PATH, prefix `export PATH="$HOME/.pub-cache/bin:$PATH"`. If fvm is missing entirely: `dart pub global activate fvm && (cd <repo>/client && fvm install)`.
 
-**The root cause behind hot reload/restart pain: both `r` AND `R` over `-d web-server` need a live DWDS (Dart debug) websocket to the browser. With an *external* Chrome (the extension), that connection is frequently stale — it was attached to a previous/killed `flutter run`, or the tab slept — so both time out with `received 0/1 responses`. So in this setup, hot reload/restart is unreliable by default; the clean restart is the reliable path for ANY change.**
+## First-time startup (the clean path)
 
-1. **`r` (hot reload) fails two ways.** (a) It cannot apply **structural changes** — a new enum value (e.g. a new `AppSection`), a GoRouter route-tree change, a new top-level file, a `const`/generic — those silently no-op and the app keeps running OLD code (looks "stuck"/wrong). (b) Even for a perfectly valid non-structural change, it **times out on a stale DWDS connection** (`Hot reload failed: TimeoutException … received 0/1 responses`, ~10s) and the change simply doesn't land. `r`'s timeout is non-destructive — the server stays up — but you're left thinking "my change didn't apply."
-2. **`R` (hot restart) is a landmine — same DWDS dependency, worse outcome.** On a stale external-browser connection `R` gets the same `0/1 responses`, times out (~15s), **and the timeout KILLS the `flutter run` process** — port 8090 goes dead. This is the classic "I pressed restart and now nothing loads."
-3. **`kill -9` of the `flutter run` parent orphans its compiler.** `flutter run` spawns a `frontend_server`/`dartaot` child. `kill -9 <parent>` (or `kill` followed too quickly by `-9`) leaves that child running. Orphaned compilers pile up, hold the build lock under `.dart_tool/`, and starve CPU — so the NEXT `flutter run` hangs or goes cold. This is the "lots of background dart processes" pile.
+Do these in order. It gets you to a loaded, logged-in map without the flailing.
 
-Tell-tale for a stale-DWDS timeout (either `r` or `R`): `grep "received 0/1 responses" /tmp/flutter_run_8090.log`. When you see it, stop retrying `r`/`R` — do a clean restart.
+**1. Is something already on :8090? Don't trust it blindly — verify it's *your* checkout, branch, and SDK.** A stale serve from another git worktree (or the global Flutter version) is the #1 time-sink: it looks up, but it's the wrong code.
 
-## The procedure
+```bash
+curl -sf -o /dev/null -w "8090: %{http_code}\n" --max-time 2 http://localhost:8090/ || echo "8090 free"
+# If up, see which checkout + Flutter version it is actually serving. The running
+# compiler (frontend_server) carries both as its --packages path and a -D define,
+# so grep them straight out of the command lines:
+ps -eo command | grep -oE "[^ ]*/\.dart_tool/package_config\.json|FLUTTER_VERSION=[0-9.]+" | sort -u
+#   want: .../<your-checkout>/.dart_tool/...  AND  FLUTTER_VERSION=3.41.4
+git -C <repo>/client branch --show-current   # is the checkout on the branch you want?
+```
 
-### Reflecting a code change in the browser
+Matches your checkout + branch + 3.41.4 → reuse it. Anything off → clean-restart (step 2-3).
 
-**Default to the clean restart (below) for ANY change.** It's ~10–20s warm and always works. In the external-Chrome setup, `r`/`R` are unreliable (stale-DWDS `0/1` timeout) so they're not worth the gamble most of the time.
+**2. Ensure the single fifo holder** (so we can send `r`/`q` from other shells). See [The fifo control channel](#the-fifo-control-channel) for why; the snippet:
 
-`r` (hot reload) is only worth trying when **both** hold: the change is non-structural (widget body, style, string, method body — NOT an enum/route/new-file/`const`) **and** you have just reloaded the browser tab so its DWDS connection is fresh. Then `printf 'r' > /tmp/f8090`, reload the browser. If it stalls ~10s or the log shows `received 0/1 responses`, the change did NOT land — stop and do a clean restart. Never reach for `R` here (trap #2: its timeout kills the server).
+```bash
+[ -p /tmp/f8090 ] || mkfifo /tmp/f8090
+HPF=/tmp/f8090.holder
+if ! { [ -f "$HPF" ] && kill -0 "$(cat "$HPF" 2>/dev/null)" 2>/dev/null; }; then
+  ( exec 3<>/tmp/f8090; exec sleep 2147483647 ) & echo $! > "$HPF"
+fi
+```
+
+**3. Launch one clean run** and wait for the banner:
+
+```bash
+cd <repo>/client
+export PATH="$HOME/.pub-cache/bin:$PATH"
+: > /tmp/flutter_run_8090.log
+nohup sh -c 'export PATH="$HOME/.pub-cache/bin:$PATH"; fvm flutter run -d web-server --web-port=8090 --web-hostname=0.0.0.0 < /tmp/f8090 > /tmp/flutter_run_8090.log 2>&1' >/dev/null 2>&1 &
+# wait for it to serve:
+for i in $(seq 1 50); do curl -sf -o /dev/null --max-time 2 http://localhost:8090/ && { echo "serving ~$((i*3))s"; break; }; sleep 3; done
+```
+
+**4. Open EXACTLY ONE tab on `http://localhost:8090/`. This is an invariant, not hygiene.** The Matrix client store is **IndexedDB with no cross-tab coordination** (no `onblocked`/`versionchange` handling in the SDK, no BroadcastChannel/web-locks). A second tab — or a *zombie/frozen* tab still holding a connection — can make `client.init()`'s database open **block forever** during any version upgrade/migration: the app sits on the spinner with the renderer responsive but no first frame and no network. Before opening a fresh tab, close every other Pangea Chat tab.
+
+**5. Expect a ~30s loading spinner on first paint, and DO NOT reload during it.** A debug web build serves ~2792 individual DDC module scripts; the first paint legitimately takes ~30s. A full browser reload **restarts the whole 2792-module fetch from scratch** (the dev server doesn't honor conditional GETs, so nothing is cached across full reloads) — reloading an in-progress load is how a 30s startup becomes 10 minutes. Let it finish once.
+
+**6. Log in.**
+- **A session already exists** → just load `http://localhost:8090/` (plain); it restores and lands on the map.
+- **Logged out / fresh** → `http://localhost:8090/?devlogin=1` signs straight into the `.env` test account, skipping the canvas login form. Debug-only; see [Login](#login).
+
+**7. Confirm the env points where you intend** (see [Env](#env--which-stack-the-build-talks-to)).
+
+## "I just want to SEE it working" (no code edits) — the fastest path
+
+A debug run is for *editing code* (hot reload). If you only need to look at / click through the app, a **profile build served statically** paints in seconds (dart2js → one bundle + ~50 deferred chunks, not 2792 DDC modules) and caches correctly across reloads:
+
+```bash
+cd <repo>/client
+fvm flutter build web --profile --pwa-strategy=none --source-maps   # mirrors the deploy build
+cp .env build/web/.env            # REQUIRED: on web the app fetches /.env over HTTP; rebuild wipes it
+python3 -m http.server 8090 --directory build/web   # or: npx serve build/web -l 8090
+```
+
+Trade-off: **no hot reload**, and **`?devlogin=1` does NOT work** in a profile/release build (it's gated on `kDebugMode`). Log in once through the real canvas login form using the `.env` `TEST_MATRIX_*` creds against your `SYNAPSE_URL` (the session then persists across reloads).
+
+## Iterating on code — hot reload vs clean restart
+
+**Prefer hot reload `r` over refreshing the browser.** Hot reload keeps the loaded modules AND the logged-in session; only a full browser reload triggers the ~30s 2792-module re-fetch. `printf 'r' > /tmp/f8090`. This is the single biggest speedup for the edit loop.
+
+**But `r`/`R` are unreliable over external Chrome (the DWDS trap).** Both `r` (hot reload) and `R` (hot restart) need a live DWDS (Dart debug) websocket to the browser. With the *external* extension Chrome that connection is frequently stale (attached to a previous/killed run, or the tab slept), so both time out with `received 0/1 responses`. Tell-tale: `grep "received 0/1 responses" /tmp/flutter_run_8090.log`.
+
+- `r` on a stale connection fails **harmlessly** (server stays up) but your change didn't land. It also can't apply **structural** changes (new enum value, route-tree change, new top-level file, `const`/generic) — those silently no-op. When `r` doesn't take, do a clean restart.
+- **Never send `R`** in this setup: on a stale connection its timeout **kills the `flutter run` process** (port 8090 goes dead). Prefer a clean restart over `R` entirely.
 
 ### Clean restart (the reliable path, ~10–20s warm)
 
 ```bash
 cd <repo>/client
-# 1. Stop GRACEFULLY via the fifo — flutter shuts its child compiler down, no orphans.
-printf 'q' > /tmp/f8090
-# 2. Wait for teardown: port free AND no stray compilers.
-for i in $(seq 1 10); do curl -sf -o /dev/null --max-time 1 http://localhost:8090/ || break; sleep 1; done
-pgrep -f "web-server.*8090" | grep -v "$(pgrep -f 'sleep 1000')" >/dev/null && echo "still draining…"
-# 3. Start fresh — KEEP THE CACHE WARM (never `flutter clean` for code changes).
-nohup sh -c 'flutter run -d web-server --web-port=8090 --web-hostname=0.0.0.0 < /tmp/f8090 > /tmp/flutter_run_8090.log 2>&1' &
-# 4. Wait for the "Flutter run key commands" banner (≈10–20s warm), then reload the browser.
+export PATH="$HOME/.pub-cache/bin:$PATH"
+printf 'q' > /tmp/f8090                              # graceful stop — no orphaned compiler
+for i in $(seq 1 15); do curl -sf -o /dev/null --max-time 1 http://localhost:8090/ || break; sleep 1; done
+for pid in $(pgrep -f "web-server.*8090"); do kill -- -$(ps -o pgid= -p "$pid" | tr -d ' ') 2>/dev/null; done   # kill strays by GROUP
+: > /tmp/flutter_run_8090.log
+nohup sh -c 'export PATH="$HOME/.pub-cache/bin:$PATH"; fvm flutter run -d web-server --web-port=8090 --web-hostname=0.0.0.0 < /tmp/f8090 > /tmp/flutter_run_8090.log 2>&1' >/dev/null 2>&1 &
 ```
 
-A warm incremental build is ~10–20s. If it takes minutes, a zombie compiler is competing or `.dart_tool` went cold — see Recovery.
+Then open **one fresh** tab on `http://localhost:8090/` (a hard reload of the existing tab races the dev-server boot → old bundle or blank canvas; a CDP screenshot of a mid-boot tab can wedge the connection). List with `tabs_context_mcp`, `tabs_create_mcp`, `navigate` the new tab, then `tabs_close_mcp` the old ids **after** the new tab is driving (closing the old tab first drops the group's active-tab reference and the next `navigate` fails). Never `flutter clean` just to pick up a code change — that forces a cold build (minutes).
 
-### After a restart: reload via one fresh tab
+## Recovery triage — "it's stuck"
 
-Reflecting the new build in the **external** Chrome is its own trap. A hard reload of the existing tab races the dev-server boot (you get the old bundle or a blank canvas), and a CDP screenshot against a mid-boot tab can wedge the connection. The reliable move is to open a **fresh** MCP tab on `http://localhost:8090/` after the banner appears — a new tab always pulls the new bundle.
-
-Fresh tabs pile up fast, so **close the prior tab(s)** — keep exactly one working tab. List with `tabs_context_mcp`, open with `tabs_create_mcp`, then `navigate` the new tab, and only **after** that `tabs_close_mcp` the old ids. Order matters: do NOT close the old tab in the same `browser_batch` *before* the navigate — closing it drops the group's active-tab reference and the next `navigate` fails with "not in the same group". Close as a separate step after the fresh tab is driving. (Closing the group's last tab removes the group; that's fine — the next `tabs_context_mcp {createIfEmpty:true}` starts a fresh one.)
-
-### Never do
-
-- **Never `kill -9` the `flutter run` pid** to stop it — orphans the compiler. Use `q` via the fifo. If `q` won't take (wedged), kill the whole **process group**, not the pid: `kill -- -$(ps -o pgid= -p <pid> | tr -d ' ')`.
-- **Never send `R`** in the external-Chrome setup — on a stale DWDS connection its timeout kills the server. Prefer a clean restart over `R` entirely. (`r` on a stale connection just fails harmlessly, but it still didn't apply your change — clean restart.)
-- **Never `flutter clean`** just to pick up a code change — it forces a cold build (minutes).
+| Symptom | Cause | Fix |
+|---|---|---|
+| Spinner forever, renderer **responsive**, no network, no console errors | **Browser-side**: an extra/zombie tab holds the IndexedDB lock, or a stale session is wedged | Close **all** :8090 tabs → open exactly one. If still stuck, clear site data for localhost:8090 (DevTools → Application → Clear site data) and reload one tab. A dev-server restart does **NOT** help — the wedge is browser-side. |
+| Spinner forever after `?devlogin=1` specifically | (historical) devlogin racing session restore | Fixed in code (devlogin now waits for restore to settle and only signs in from logged-out). Recovery if seen on an old build: load plain `http://localhost:8090/`. |
+| Port 8090 dead / `received 0/1 responses` in the log | **Server-side**: killed run (often from `R`) or stale DWDS | Clean restart (above). |
+| `flutter run` takes minutes / goes cold | zombie compiler competing, or `.dart_tool` lock | Zombie recovery (below); `flutter clean` only as a last resort. |
 
 ## The fifo control channel
 
@@ -65,72 +116,71 @@ The dev server reads stdin from a FIFO so we can send it `r`/`q` from other shel
 ```bash
 [ -p /tmp/f8090 ] || mkfifo /tmp/f8090
 # Keep ONE writer holding the fifo open, or flutter's stdin hits EOF and it quits
-# right after serving (you'll see the banner, then nothing listening on 8090). Two rules:
+# right after serving (banner, then nothing on 8090). Two rules:
 #   • open it READ-WRITE (`<>`), not write-only — a RW holder never EOFs and never blocks.
-#   • reuse the existing holder via a pidfile. Do NOT guard on `pgrep -f sleep` (stale
-#     holders from old sessions make that match and skip creation), and do NOT spawn a
-#     fresh holder every launch (they pile up as orphaned `sleep` processes).
-HPF=/tmp/f8090.holder
-if ! { [ -f "$HPF" ] && kill -0 "$(cat "$HPF" 2>/dev/null)" 2>/dev/null; }; then
-  ( exec 3<>/tmp/f8090; exec sleep 2147483647 ) & echo $! > "$HPF"
-fi
-# then launch flutter with `< /tmp/f8090`
+#   • reuse the existing holder via a pidfile (the snippet in step 2). Do NOT guard on
+#     `pgrep -f sleep` (stale holders make that match and skip creation), and do NOT spawn
+#     a fresh holder every launch (they pile up as orphaned `sleep` processes).
 ```
 
-Send commands with `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only — the pidfile guard above keeps it to one. Orphaned `sleep 100000000` holders from the old write-only pattern are harmless; clear them with `pkill -f 'sleep 100000000'` while no client is running.
+Send `printf 'r' > /tmp/f8090` (hot reload) or `printf 'q' > /tmp/f8090` (quit). One holder + one `flutter run` only. Orphaned `sleep 100000000` holders from the old write-only pattern are harmless; clear them with `pkill -f 'sleep 100000000'` while no client is running.
 
-## Recovery from a zombie pile / wedged build
+## Zombie recovery (wedged build / compiler pile)
+
+`kill -9` of the `flutter run` parent orphans its `frontend_server`/`dartaot` child; orphaned compilers pile up, hold the `.dart_tool/` build lock, and starve CPU so the next run hangs. Always stop via `q`. To clear a pile:
 
 ```bash
-# See every flutter/dart compiler tied to the client (ignore the IDE language-server):
-ps -eo pid,ppid,etime,command | grep -iE "web-server|frontend_server|dartaot" | grep -v grep
-# Kill each real flutter-run tree by process GROUP (not -9 on the pid):
-for pid in $(pgrep -f "web-server.*8090"); do kill -- -$(ps -o pgid= -p "$pid" | tr -d ' ') 2>/dev/null; done
-# Confirm 8090 free and no stray compilers, THEN start one clean run.
+ps -eo pid,ppid,etime,command | grep -iE "web-server|frontend_server|dartaot" | grep -v grep   # see them
+for pid in $(pgrep -f "web-server.*8090"); do kill -- -$(ps -o pgid= -p "$pid" | tr -d ' ') 2>/dev/null; done   # kill trees by GROUP, not -9 the pid
 ```
 
 There should be exactly **one** real `flutter run` (a `dartvm … flutter_tools` process) plus its single `sh -c` wrapper. More than one ⇒ kill the extras before starting.
 
-## Env / synapse URL (compile-time — needs a rebuild, not a reload)
+## Env — which stack the build talks to
 
-The web app fetches its config from `GET /.env` at the dev-server root (served from the repo-root `client/.env`; there is no `assets/.env` since #6975). `.env` changes are compile-time — a hot reload won't pick them up; do a clean restart.
-
-Verify the client is pointed at the **local** stack (not staging) at any time:
+The web app fetches its config from `GET /.env` at the dev-server root (served from repo-root `client/.env`; no `assets/.env` since #6975). It is fetched once at app startup and the dev server caches it per process, so **neither a hot reload nor a browser reload picks up an edited `client/.env`** — clean-restart to serve the new values.
 
 ```bash
-curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API"
-# Expect: SYNAPSE_URL=http://localhost:8008 · HOME_SERVER=local.pangea.chat · CHOREO_API=http://localhost:8002
-# (CMS_API stays https://api.staging.pangea.chat by design — local CMS has no course content.)
+curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API|CMS_API"
+# Full local stack (pangea-local-setup): SYNAPSE_URL=http://localhost:8008 · HOME_SERVER=local.pangea.chat
+#   · CHOREO_API=http://localhost:8002 · CMS_API=http://localhost:13134  (local CMS IS seeded from staging,
+#     so it serves course/activity content — see the pangea-local-setup skill).
 ```
 
-`local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, rebuild Flutter (clean restart) so the new `.env` is served.
+> `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do not include `/cms`. Only the **legacy** Synapse-only local setup (no seeded local CMS) leaves `CMS_API` at staging — and there, authed course content does not load. The full local stack uses `http://localhost:13134`.
+
+`local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, clean-restart so the new `.env` is served.
 
 ### Switching environments (local ↔ staging)
 
-Run the local client against **staging** backends — a fast way to smoke-test a build against real staging data + the staging bot without bringing up the full local stack — by flipping the routing keys in `client/.env` and clean-restarting. Back up first (`.env` is gitignored, so there's no git safety net):
+Run the local client against **staging** backends — a fast smoke-test against real staging data + the staging bot without the full local stack — by flipping the routing keys in `client/.env` and clean-restarting. Back up first (`.env` is gitignored):
 
 ```bash
-cp client/.env /tmp/client.env.bak     # restore with: cp /tmp/client.env.bak client/.env
+cp client/.env /tmp/client.env.bak     # restore: cp /tmp/client.env.bak client/.env
 ```
 
-These routing keys differ (`CHOREO_API_KEY` is identical in both). **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the user's Matrix access token as the CMS bearer, and the CMS validates it against *its own* homeserver — so a mismatched pair (a local `@learner` token against staging CMS, or vice-versa) returns **403** and course/activity content silently fails to load. `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do *not* include `/cms` (that yields a `/cms/cms` double path). The local value below needs the **full local stack** (a seeded local CMS, via the `pangea-local-setup` skill); the older local-Synapse-only setup left `CMS_API` at staging and accepted that authed course content does not load.
+`CHOREO_API_KEY` is identical in both. **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the Matrix access token as the CMS bearer and the CMS validates it against *its own* homeserver — a mismatched pair (local `@learner` token against staging CMS, or vice-versa) returns **403** and content silently fails to load.
 
 | Key | Local stack | Staging |
 |---|---|---|
 | `SYNAPSE_URL` | `http://localhost:8008` | `matrix.staging.pangea.chat` |
 | `CHOREO_API`  | `http://localhost:8002` | `https://api.staging.pangea.chat` |
-| `CMS_API`     | `http://localhost:13134` *(host root — the client adds `/cms/api`; needs the full local stack)* | `https://api.staging.pangea.chat` |
+| `CMS_API`     | `http://localhost:13134` *(host root; needs the full local stack)* | `https://api.staging.pangea.chat` |
 | `HOME_SERVER` | `local.pangea.chat` | `staging.pangea.chat` *(or omit — it derives from `SYNAPSE_URL`: scheme stripped, leading `matrix.` dropped)* |
 
-Source of truth for the staging values is the deployed client itself: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, so the app drops to the onboarding/login screen — sign in with the matching account (see Login). **Never point a local build at production.**
+Source of truth for the staging values is the deployed client: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, dropping the app to onboarding/login — sign in with the matching account. **Never point a local build at production.**
 
 ### Driving the app by semantics (Chrome extension)
 
-The app renders to `<canvas>`, so the Chrome extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup. Off by default locally (semantics has a perf cost). **Staging** deploys force it on (`main_deploy.yaml` stamps `ENABLE_SEMANTICS=true` into the served `/.env`), so `app.staging.pangea.chat` is driveable by role+name too; **production** leaves it off (on-demand per assistive-tech user). See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md) for the full contract.
+The app renders to `<canvas>`, so the extension can only operate it by role+name once Flutter's accessibility semantics tree is on — otherwise it falls back to screenshots and positional clicks. Add `ENABLE_SEMANTICS=true` to `client/.env` and clean-restart to force the tree on from startup (off by default locally; it has a perf cost). **Staging** deploys force it on (`main_deploy.yaml`), so `app.staging.pangea.chat` is driveable by role+name too; **production** leaves it off. See [`playwright-testing.instructions.md`](../../instructions/playwright-testing.instructions.md). Note: a CDP screenshot or `read_page` against the **map** times out (`document_idle` never fires while map tiles keep loading) — use the macOS screenshot path, or wait for a non-map screen.
 
 ## Login
 
 - **Local** (`local.pangea.chat`): `@learner` / `learnerpass`.
 - **Staging** (`staging.pangea.chat`): the shared `staging_automated_tests` account — credentials in `client/.env` (`TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD`) or AWS Secrets Manager. See [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md).
 
-**Skip the canvas login form: `?devlogin=1`.** The login form is canvas-rendered, so typing into it is the slowest part of a QA loop. In a debug build, open `http://localhost:8090/?devlogin=1` (the param also works inside a hash route, `…/#/world?devlogin=1`) to sign straight into the test account using the `.env` `TEST_MATRIX_*` creds — no typing. It is **opt-in per load** (a plain `localhost:8090` shows the real login flow, so that stays testable), uses the SDK's own login (always-valid session, unlike a stale `storageState`), and refuses production. No-op if already logged in — log out first to switch accounts. See [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md).
+**Skip the canvas login form: `?devlogin=1`** (debug builds only). The login form is canvas-rendered, so typing into it is the slowest part of a QA loop. Open `http://localhost:8090/?devlogin=1` (also works inside a hash route, `…/#/world?devlogin=1`) to sign straight into the test account using the `.env` `TEST_MATRIX_*` creds. It is **opt-in per load** (plain `localhost:8090` shows the real login flow, so that stays testable), uses the SDK's own login (always-valid session, unlike a stale `storageState`), and refuses production.
+
+**It signs in only from a logged-out state.** `maybeDevLogin` waits for the stored session to finish restoring (it awaits the client's `roomsLoading`/`accountDataLoading`, the same futures `main()` awaits before `runApp`), then checks `isLogged()`: a restored session → no-op (load plain `/` to switch accounts, log out first); genuinely logged out → it signs in. Implementation: `lib/pangea/common/config/dev_login.dart`, invoked from `MatrixState.initState`.
+
+> Historical note: an earlier version gated only on `isLogged()`, which is transiently false *during* restore, so it called `login()` on a half-restored client and froze the app on the spinner before first frame. If you hit a spinner-freeze on an old build, load plain `http://localhost:8090/`.

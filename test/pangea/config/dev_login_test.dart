@@ -4,19 +4,19 @@ import 'package:fluffychat/pangea/common/config/dev_login.dart';
 
 void main() {
   group('shouldDevLogin — safety gates', () {
-    // Happy path: debug build, opted-in, logged out, creds present, local
-    // homeserver. Each test below flips exactly one input to assert the gate.
+    // Happy path: debug build, opted-in, creds present, local homeserver. Each
+    // test below flips exactly one input to assert the gate. The "already logged
+    // in" skip is NOT part of this pure gate — maybeDevLogin checks the live
+    // client's restored login state at runtime (after the session settles).
     bool gate({
       bool isDebug = true,
       bool requested = true,
-      bool alreadyLoggedIn = false,
       String? username = 'learner',
       String? password = 'learnerpass',
       String loginHost = 'localhost',
     }) => shouldDevLogin(
       isDebug: isDebug,
       requested: requested,
-      alreadyLoggedIn: alreadyLoggedIn,
       username: username,
       password: password,
       loginHost: loginHost,
@@ -34,10 +34,6 @@ void main() {
       expect(gate(requested: false), isFalse);
     });
 
-    test('does not disturb an existing session', () {
-      expect(gate(alreadyLoggedIn: true), isFalse);
-    });
-
     test('skips when credentials are missing', () {
       expect(gate(username: null), isFalse);
       expect(gate(username: ''), isFalse);
@@ -52,6 +48,8 @@ void main() {
         'app.pangea.chat', // production alias
         'pangea.chat.', // trailing-dot FQDN form
         'local.pangea.chat', // a server name, not the connection host
+        'evil-staging.pangea.chat', // suffix-looking, not a *.staging subdomain
+        'staging.pangea.chat.evil.test', // staging label under another domain
         '10.0.0.5', // raw IP
         '', // empty / unparseable host
       ]) {

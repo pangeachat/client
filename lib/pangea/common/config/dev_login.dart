@@ -42,7 +42,6 @@ Future<void> maybeDevLogin(MatrixState matrix) async {
   if (!shouldDevLogin(
     isDebug: kDebugMode,
     requested: devLoginRequested(),
-    alreadyLoggedIn: matrix.widget.clients.any((c) => c.isLogged()),
     username: username,
     password: password,
     loginHost: loginHost,
@@ -50,13 +49,33 @@ Future<void> maybeDevLogin(MatrixState matrix) async {
     return;
   }
 
+  // Only sign in from a genuinely logged-out state, and never while the stored
+  // session is still restoring. isLogged() is transiently false during restore,
+  // and calling login() in that window runs a second login against a
+  // half-restored client — which deadlocks the app on the loading spinner. Await
+  // the same restore futures main()'s startGui awaits before runApp so the login
+  // state is settled, then re-check. (widget.clients is never empty here —
+  // getClients seeds a default client — so presence can't distinguish logged-out
+  // from restoring; only the settled isLogged() can.)
+  final client = matrix.client;
+  // Observe BOTH restore futures to completion even if one rejects — a single
+  // try/await would skip accountDataLoading on a roomsLoading error and check
+  // isLogged() before restore settled, reintroducing the half-restore login.
+  await Future.wait<void>([
+    client.roomsLoading?.then<void>((_) {}, onError: (_) {}) ??
+        Future<void>.value(),
+    client.accountDataLoading?.then<void>((_) {}, onError: (_) {}) ??
+        Future<void>.value(),
+  ]);
+  if (client.isLogged()) return; // a session restored — nothing to bypass.
+
   try {
-    final client = await matrix.getLoginClient();
-    if (client.isLogged()) return;
+    final loginClient = await matrix.getLoginClient();
+    if (loginClient.isLogged()) return;
     Logs().i(
       '[dev-login] ?devlogin=1 → signing in as "$username" on $loginHost',
     );
-    await client.login(
+    await loginClient.login(
       LoginType.mLoginPassword,
       identifier: AuthenticationUserIdentifier(user: username!),
       password: password!,
@@ -91,21 +110,22 @@ bool devLoginRequested([Uri? url]) {
 /// paired with a non-prod `HOME_SERVER` would slip through.
 String devLoginHost() => AppConfig.defaultHomeserverUri.host.toLowerCase();
 
-/// Pure gate for [maybeDevLogin], split out so the safety conditions (never in
-/// release, never outside localhost/staging, opt-in only, creds required) are
-/// unit-testable without a live [MatrixState] or a network login.
+/// Pure safety gate for [maybeDevLogin], split out so the conditions that need
+/// no live client (never in release, opt-in only, creds required, never outside
+/// localhost/staging) are unit-testable without a [MatrixState] or a network
+/// login. The "already logged in" skip is NOT here — it depends on the live
+/// client's restored login state, which [maybeDevLogin] checks at runtime once
+/// the session has settled.
 @visibleForTesting
 bool shouldDevLogin({
   required bool isDebug,
   required bool requested,
-  required bool alreadyLoggedIn,
   required String? username,
   required String? password,
   required String loginHost,
 }) {
   if (!isDebug) return false; // release builds (staging/prod) — never.
   if (!requested) return false; // no ?devlogin=1 — leave the normal flow alone.
-  if (alreadyLoggedIn) return false; // don't disturb an existing session.
   if (username == null || username.isEmpty) return false;
   if (password == null || password.isEmpty) return false;
   // Allowlist the host the credentials are actually sent to: localhost or a
