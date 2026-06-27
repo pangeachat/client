@@ -58,13 +58,15 @@ Future<void> maybeDevLogin(MatrixState matrix) async {
   // getClients seeds a default client — so presence can't distinguish logged-out
   // from restoring; only the settled isLogged() can.)
   final client = matrix.client;
-  try {
-    await client.roomsLoading;
-    await client.accountDataLoading;
-  } catch (_) {
-    // A client with nothing to restore resolves (or rejects) these immediately;
-    // either way fall through to the settled logged-out check below.
-  }
+  // Observe BOTH restore futures to completion even if one rejects — a single
+  // try/await would skip accountDataLoading on a roomsLoading error and check
+  // isLogged() before restore settled, reintroducing the half-restore login.
+  await Future.wait<void>([
+    client.roomsLoading?.then<void>((_) {}, onError: (_) {}) ??
+        Future<void>.value(),
+    client.accountDataLoading?.then<void>((_) {}, onError: (_) {}) ??
+        Future<void>.value(),
+  ]);
   if (client.isLogged()) return; // a session restored — nothing to bypass.
 
   try {

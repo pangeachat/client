@@ -23,8 +23,10 @@ Do these in order. It gets you to a loaded, logged-in map without the flailing.
 
 ```bash
 curl -sf -o /dev/null -w "8090: %{http_code}\n" --max-time 2 http://localhost:8090/ || echo "8090 free"
-# If up, see which checkout + Flutter version it is actually serving:
-ps -eo command | tr ' ' '\n' | grep -E "dart_tool/package_config.json|FLUTTER_VERSION=" | grep -iE "dart_tool|FLUTTER_VERSION"
+# If up, see which checkout + Flutter version it is actually serving. The running
+# compiler (frontend_server) carries both as its --packages path and a -D define,
+# so grep them straight out of the command lines:
+ps -eo command | grep -oE "[^ ]*/\.dart_tool/package_config\.json|FLUTTER_VERSION=[0-9.]+" | sort -u
 #   want: .../<your-checkout>/.dart_tool/...  AND  FLUTTER_VERSION=3.41.4
 git -C <repo>/client branch --show-current   # is the checkout on the branch you want?
 ```
@@ -136,7 +138,7 @@ There should be exactly **one** real `flutter run` (a `dartvm … flutter_tools`
 
 ## Env — which stack the build talks to
 
-The web app fetches its config from `GET /.env` at the dev-server root (served from repo-root `client/.env`; no `assets/.env` since #6975). `.env` changes are **compile-time** — a hot reload won't pick them up; clean-restart.
+The web app fetches its config from `GET /.env` at the dev-server root (served from repo-root `client/.env`; no `assets/.env` since #6975). It is fetched once at app startup and the dev server caches it per process, so **neither a hot reload nor a browser reload picks up an edited `client/.env`** — clean-restart to serve the new values.
 
 ```bash
 curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API|CMS_API"

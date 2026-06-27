@@ -48,6 +48,8 @@ void main() {
         'app.pangea.chat', // production alias
         'pangea.chat.', // trailing-dot FQDN form
         'local.pangea.chat', // a server name, not the connection host
+        'evil-staging.pangea.chat', // suffix-looking, not a *.staging subdomain
+        'staging.pangea.chat.evil.test', // staging label under another domain
         '10.0.0.5', // raw IP
         '', // empty / unparseable host
       ]) {
