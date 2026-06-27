@@ -451,124 +451,124 @@ class _PublicCourseTile extends StatelessWidget {
 
     return FocusTraversalGroup(
       child: Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      child: Material(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(12.0),
-        child: InkWell(
-          // Tapping the card scopes the map to this course's activities
-          // (world_v2); the Knock/Join pill opens the join flow.
-          onTap: () => MapContextController.set(CourseMapContext(courseId)),
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: Material(
+          color: theme.colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(12.0),
-          child: Container(
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: theme.colorScheme.outlineVariant),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ImageByUrl(
-                  imageUrl: space.avatarUrl,
-                  width: 44.0,
-                  borderRadius: BorderRadius.circular(10.0),
-                  replacement: Avatar(
-                    name: displayname,
+          child: InkWell(
+            // Tapping the card scopes the map to this course's activities
+            // (world_v2); the Knock/Join pill opens the join flow.
+            onTap: () => MapContextController.set(CourseMapContext(courseId)),
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: theme.colorScheme.outlineVariant),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ImageByUrl(
+                    imageUrl: space.avatarUrl,
+                    width: 44.0,
                     borderRadius: BorderRadius.circular(10.0),
-                    size: 44.0,
+                    replacement: Avatar(
+                      name: displayname,
+                      borderRadius: BorderRadius.circular(10.0),
+                      size: 44.0,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 2.0),
-                              child: Text(
-                                displayname,
-                                style: theme.textTheme.titleSmall?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8.0),
-                          FilledButton.tonal(
-                            onPressed: () => _navigateToCoursePage(context),
-                            style: FilledButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onPrimaryContainer,
-                              visualDensity: VisualDensity.compact,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                              ),
-                              minimumSize: const Size(0, 32),
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                            ),
-                            child: Text(
-                              isKnock
-                                  ? L10n.of(context).knock
-                                  : L10n.of(context).join,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8.0),
-                      if (course != null)
-                        Wrap(
-                          spacing: 6.0,
-                          runSpacing: 6.0,
+                  const SizedBox(width: 10.0),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _chip(
-                              context,
-                              Icons.language,
-                              course.targetLanguage
-                                  .split('-')
-                                  .first
-                                  .toUpperCase(),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 2.0),
+                                child: Text(
+                                  displayname,
+                                  style: theme.textTheme.titleSmall?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
-                            _chip(
-                              context,
-                              Icons.group,
-                              '${space.numJoinedMembers}',
-                            ),
-                            _chip(
-                              context,
-                              Icons.location_on,
-                              '${course.topicIds.length}',
-                            ),
-                            _chip(
-                              context,
-                              Icons.school,
-                              course.cefrLevel.string.replaceFirst(
-                                'PREA1',
-                                'PRE-A1',
+                            const SizedBox(width: 8.0),
+                            FilledButton.tonal(
+                              onPressed: () => _navigateToCoursePage(context),
+                              style: FilledButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                                visualDensity: VisualDensity.compact,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                ),
+                                minimumSize: const Size(0, 32),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                              child: Text(
+                                isKnock
+                                    ? L10n.of(context).knock
+                                    : L10n.of(context).join,
                               ),
                             ),
                           ],
                         ),
-                    ],
+                        const SizedBox(height: 8.0),
+                        if (course != null)
+                          Wrap(
+                            spacing: 6.0,
+                            runSpacing: 6.0,
+                            children: [
+                              _chip(
+                                context,
+                                Icons.language,
+                                course.targetLanguage
+                                    .split('-')
+                                    .first
+                                    .toUpperCase(),
+                              ),
+                              _chip(
+                                context,
+                                Icons.group,
+                                '${space.numJoinedMembers}',
+                              ),
+                              _chip(
+                                context,
+                                Icons.location_on,
+                                '${course.topicIds.length}',
+                              ),
+                              _chip(
+                                context,
+                                Icons.school,
+                                course.cefrLevel.string.replaceFirst(
+                                  'PREA1',
+                                  'PRE-A1',
+                                ),
+                              ),
+                            ],
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-      ),
       ),
     );
   }

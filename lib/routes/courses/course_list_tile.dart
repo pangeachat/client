@@ -57,65 +57,65 @@ class CourseListTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
                 border: Border.all(color: theme.colorScheme.outlineVariant),
               ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ExcludeSemantics(
-                  child: Avatar(
-                    mxContent: space.avatar,
-                    name: displayname,
-                    size: 44.0,
-                    borderRadius: BorderRadius.circular(10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExcludeSemantics(
+                    child: Avatar(
+                      mxContent: space.avatar,
+                      name: displayname,
+                      size: 44.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ExcludeSemantics(
-                        child: Text(
-                          displayname,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
+                  const SizedBox(width: 10.0),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ExcludeSemantics(
+                          child: Text(
+                            displayname,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Wrap(
-                        spacing: 12.0,
-                        runSpacing: 6.0,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          CourseInfoChip(
-                            icon: Icons.group,
-                            text: '$members',
-                            fontSize: 12.0,
-                            iconSize: 14.0,
-                          ),
-                          // Language / level / modules hydrate once the course
-                          // plan loads (CourseInfoChips shows nothing until
-                          // ready).
-                          if (courseId != null)
-                            CourseInfoChips(
-                              courseId,
+                        const SizedBox(height: 8.0),
+                        Wrap(
+                          spacing: 12.0,
+                          runSpacing: 6.0,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            CourseInfoChip(
+                              icon: Icons.group,
+                              text: '$members',
                               fontSize: 12.0,
                               iconSize: 14.0,
                             ),
-                        ],
-                      ),
-                    ],
+                            // Language / level / modules hydrate once the course
+                            // plan loads (CourseInfoChips shows nothing until
+                            // ready).
+                            if (courseId != null)
+                              CourseInfoChips(
+                                courseId,
+                                fontSize: 12.0,
+                                iconSize: 14.0,
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
-    ),
     );
   }
 }
