@@ -127,11 +127,11 @@ class _WorldMapViewState extends State<WorldMapView> {
   Timer? _cameraStopTimer;
 
   void _onPositionChanged(bool hasGesture) {
-    if (!_cameraMoving) setState(() => _cameraMoving = true);
+    _cameraMoving = true;
     _cameraStopTimer?.cancel();
     _cameraStopTimer = Timer(
       const Duration(milliseconds: 300),
-      () { if (mounted) setState(() => _cameraMoving = false); },
+      () { _cameraMoving = false; },
     );
     widget.controller.onMapPositionChanged(hasGesture);
   }
