@@ -449,10 +449,12 @@ class _PublicCourseTile extends StatelessWidget {
         space.name ?? space.canonicalAlias ?? L10n.of(context).emptyChat;
     final isKnock = space.joinRule == JoinRules.knock.name;
 
-    return Padding(
+    return FocusTraversalGroup(
+      child: Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Material(
-        type: MaterialType.transparency,
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(12.0),
         child: InkWell(
           // Tapping the card scopes the map to this course's activities
           // (world_v2); the Knock/Join pill opens the join flow.
@@ -461,7 +463,6 @@ class _PublicCourseTile extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerLow,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(color: theme.colorScheme.outlineVariant),
             ),
@@ -567,6 +568,7 @@ class _PublicCourseTile extends StatelessWidget {
             ),
           ),
         ),
+      ),
       ),
     );
   }

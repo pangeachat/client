@@ -45,16 +45,18 @@ class CourseListTile extends StatelessWidget {
       child: Semantics(
         button: true,
         label: '$displayname, $members ${l10n.participants}',
-        child: InkWell(
-          onTap: () => _open(context),
+        child: Material(
+          color: theme.colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(12.0),
-          child: Container(
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerLow,
-              borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: theme.colorScheme.outlineVariant),
-            ),
+          child: InkWell(
+            onTap: () => _open(context),
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: theme.colorScheme.outlineVariant),
+              ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -113,6 +115,7 @@ class CourseListTile extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }
