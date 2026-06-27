@@ -31,12 +31,17 @@ class _PinRenderer {
   final Map<String, bool> activityIdToPingStatus;
   final Map<String, PinTier> activityIdToTier;
 
+  /// Long-tail pins to drop from the cluster layer because they sit under a
+  /// placed large card, so no count bubble ever forms beneath a card.
+  final Set<String> suppressedIds;
+
   const _PinRenderer({
     required this.visible,
     required this.activityIdToFill,
     required this.activityIdToState,
     required this.activityIdToPingStatus,
     required this.activityIdToTier,
+    required this.suppressedIds,
   });
 
   List<QuestActivityCard> get largeCards => visible
@@ -44,7 +49,12 @@ class _PinRenderer {
       .toList();
 
   List<QuestActivityCard> get nonLargeCards => visible
-      .where((c) => c.point != null && tierOf(c.activityId) != PinTier.large)
+      .where(
+        (c) =>
+            c.point != null &&
+            tierOf(c.activityId) != PinTier.large &&
+            !suppressedIds.contains(c.activityId),
+      )
       .toList();
 
   Map<LatLng, ActivityPinState> get clusterStateByPoint =>
@@ -91,18 +101,83 @@ class WorldMapView extends StatelessWidget {
     final signals = controller.signals;
     final ranking = _getRankings(visible: visible, signals: signals);
 
-    // The static large set (top of the score, no rotation) is auto-featured only
-    // where there is horizontal room (desktop / column mode); a tap-selected pin
-    // renders large at any width.
+    // Auto-featured large cards exist only where there's horizontal room
+    // (desktop / column mode); on a narrow screen only a tap-selected card goes
+    // large. The placement pass fits the candidates' footprints to the screen
+    // (no overlap, no edge spill, not under a panel) and reserves the selection
+    // first — see world-map.instructions.md (pipeline step 4).
     final desktop = FluffyThemes.isColumnMode(context);
-    final largeIds = desktop ? ranking.largeIds.toSet() : <String>{};
+    final placement = _placeLarge(
+      visible: visible,
+      candidates: desktop ? ranking.ordered : const <String>[],
+    );
+
+    // Mid is the next-ranked slice below whatever actually took a large slot, so
+    // a featured candidate that couldn't fit large drops to mid here.
+    final largeIds = placement.largeIds.toSet();
+    final mediumIds = ranking.ordered
+        .where((id) => !largeIds.contains(id))
+        .take(ranking.midBudget)
+        .toSet();
 
     return _createPinRenderer(
       visible: visible,
       signals: signals,
       largeIds: largeIds,
-      mediumIds: ranking.midIds,
+      mediumIds: mediumIds,
+      suppressedIds: placement.suppressedIds,
     );
+  }
+
+  /// Footprint-aware placement of the large cards (pipeline step 4): projects each
+  /// candidate to the screen via the live camera and keeps only those whose card
+  /// fits the visible safe area (viewport minus the left/right overlays) without
+  /// overlapping one already placed; the tap-selection is reserved first. Falls
+  /// back to the static top-N (+ selection) on the rare frame where the camera
+  /// isn't laid out yet. Also returns the long-tail pins to drop from clustering.
+  PlacementResult _placeLarge({
+    required List<QuestActivityCard> visible,
+    required List<String> candidates,
+  }) {
+    final selectedId = controller.selectedActivityId;
+    final pointById = <String, LatLng>{
+      for (final c in visible) c.activityId: ?c.point,
+    };
+    try {
+      final camera = controller.mapController.camera;
+      final size = camera.size;
+      const margin = 12.0;
+      final safeArea = Rect.fromLTRB(
+        controller.widget.leftOverlayWidth + margin,
+        margin,
+        size.width - controller.widget.rightOverlayWidth - margin,
+        size.height - margin,
+      );
+      return placeLargeCards(
+        orderedCandidates: candidates,
+        selectedId: selectedId,
+        visibleIds: pointById.keys,
+        screenOffsetOf: (id) {
+          final p = pointById[id];
+          return p == null ? null : camera.latLngToScreenOffset(p);
+        },
+        cardSize: Size(
+          PinTier.large.dotWidth,
+          PinTier.large.dotHeight(ActivityPinState.joinable),
+        ),
+        safeArea: safeArea,
+      );
+    } catch (_) {
+      // Camera not laid out yet: static top-N + selection, no fit/suppression.
+      // The next (camera-ready) frame does the real placement.
+      return PlacementResult(
+        largeIds: [
+          ?selectedId,
+          ...candidates.where((id) => id != selectedId).take(3),
+        ],
+        suppressedIds: const {},
+      );
+    }
   }
 
   RankingResult _getRankings({
@@ -136,6 +211,7 @@ class WorldMapView extends StatelessWidget {
     required Map<String, PinSignals> signals,
     required Set<String> largeIds,
     required Set<String> mediumIds,
+    required Set<String> suppressedIds,
   }) {
     final activityIds = visible.map((c) => c.activityId).toSet();
 
@@ -145,9 +221,10 @@ class WorldMapView extends StatelessWidget {
     final Map<String, double> fills = {};
 
     for (final id in activityIds) {
-      // A tap-selected pin is large at any width; otherwise the static large set
-      // (desktop only) is large, the mid set is mid, the rest are small.
-      tiers[id] = id == controller.selectedActivityId || largeIds.contains(id)
+      // Large = a selected peek or a featured card the placement pass fit on
+      // screen (both are already in largeIds); the next-ranked are mid, rest
+      // small.
+      tiers[id] = largeIds.contains(id)
           ? PinTier.large
           : mediumIds.contains(id)
           ? PinTier.mid
@@ -167,6 +244,7 @@ class WorldMapView extends StatelessWidget {
       activityIdToPingStatus: pings,
       activityIdToState: states,
       activityIdToTier: tiers,
+      suppressedIds: suppressedIds,
     );
   }
 
