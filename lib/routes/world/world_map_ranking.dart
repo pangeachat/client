@@ -71,13 +71,29 @@ class PinSignals {
   });
 }
 
-/// The ranking outcome for the pins currently in view: the [largeIds] featured
-/// at large weight (top of the score, capped at the large budget) and [midIds]
-/// at mid weight; everything else is small. No rotation — a static top-N.
+/// The ranking outcome for the pins currently in view: [ordered] is the
+/// score-ranked, diversity-capped candidate list (large + mid budget), highest
+/// first. The geometric placement pass ([placeLargeCards]) consumes [ordered] to
+/// decide which large cards actually fit on screen; where placement can't run
+/// (unit tests, or the non-column fallback) the [largeIds] / [midIds] getters
+/// give the static top-N split by the budgets. No rotation — a static ranking.
 class RankingResult {
-  final List<String> largeIds;
-  final Set<String> midIds;
-  const RankingResult({required this.largeIds, required this.midIds});
+  /// Candidate ids highest-score-first, after the per-objective diversity cap,
+  /// truncated to the combined large + mid budget.
+  final List<String> ordered;
+  final int largeBudget;
+  final int midBudget;
+  const RankingResult({
+    required this.ordered,
+    this.largeBudget = 3,
+    this.midBudget = 10,
+  });
+
+  /// The static top-[largeBudget] (used where geometric placement can't run).
+  List<String> get largeIds => ordered.take(largeBudget).toList();
+
+  /// The [midBudget] candidates just below the large slice.
+  Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
 }
 
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
@@ -122,12 +138,13 @@ class _Scored {
   const _Scored(this.pin, this.score);
 }
 
-/// Rank the in-view pins into a static large set (top by score, up to
-/// [largeBudget]) and a mid set (next, up to [midBudget]), with a per-objective
-/// diversity cap across both so one objective can't monopolise the featured set.
-/// Every pin competes — no state/lock gate; a finished pin is demoted by its
+/// Rank the in-view pins into a single score-ordered, diversity-capped candidate
+/// list ([RankingResult.ordered]), truncated to the large + mid budget, with a
+/// per-objective diversity cap so one objective can't monopolise the featured
+/// set. Every pin competes — no state/lock gate; a finished pin is demoted by its
 /// score, not excluded. The caller filters to the active viewport and re-runs on
-/// pan/zoom, so the budgets are per-view.
+/// pan/zoom, so the budgets are per-view. The large/mid split (and which large
+/// cards actually fit on screen) is decided downstream by [placeLargeCards].
 RankingResult rankPins({
   required List<QuestActivityCard> inViewPins,
   required String? userL2,
@@ -150,21 +167,125 @@ RankingResult rankPins({
     return _Scored(p, pinScore(band: band, s: sig(p.activityId)));
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
 
-  final largeIds = <String>[];
-  final midIds = <String>{};
+  // One score-ranked, diversity-capped candidate list. Splitting it into large
+  // vs mid — and, for large, which actually fit on screen — is the placement
+  // pass's job ([placeLargeCards]); ranking stays pure (no geometry).
+  final ordered = <String>[];
   final perKey = <String, int>{};
   for (final e in scored) {
-    if (largeIds.length >= largeBudget && midIds.length >= midBudget) break;
+    if (ordered.length >= largeBudget + midBudget) break;
     final refs = e.pin.learningObjectiveRefs;
     final key = refs.isNotEmpty ? refs.first : null;
     if (key != null && (perKey[key] ?? 0) >= maxPerDiversityKey) continue;
-    if (largeIds.length < largeBudget) {
-      largeIds.add(e.pin.activityId);
-    } else {
-      midIds.add(e.pin.activityId);
-    }
+    ordered.add(e.pin.activityId);
     if (key != null) perKey[key] = (perKey[key] ?? 0) + 1;
   }
 
-  return RankingResult(largeIds: largeIds, midIds: midIds);
+  return RankingResult(
+    ordered: ordered,
+    largeBudget: largeBudget,
+    midBudget: midBudget,
+  );
 }
+
+/// The outcome of the geometric placement pass: which pins render as large cards
+/// this view ([largeIds] — the tap-selected pin, always, plus the featured
+/// candidates whose card footprint fits), and the non-large pins to drop from the
+/// cluster layer because they sit under a placed card ([suppressedIds]), so no
+/// count bubble ever forms beneath a card. See world-map.instructions.md ("Place"
+/// step of the pipeline).
+class PlacementResult {
+  final List<String> largeIds;
+  final Set<String> suppressedIds;
+  const PlacementResult({required this.largeIds, required this.suppressedIds});
+}
+
+/// Lay the score-ordered large candidates onto real screen positions, since a
+/// large card is a *box*, not a point (world-map.instructions.md, pipeline step
+/// 4). Walks [orderedCandidates] top-down and admits one as large only if its
+/// card footprint fits the unclaimed [safeArea] (on-screen, not under a panel)
+/// and does not overlap a card already placed this pass. The tap-[selectedId] is
+/// reserved first and never yields — it is the deliberate peek — so the priority
+/// is Selected → Featured: featured cards yield around it. A featured candidate
+/// that cannot fit is skipped (it renders as its dot/mid), so the large count is
+/// emergent — `min(largeBudget, what fits)`. Long-tail pins whose point falls
+/// inside a placed card come back in [PlacementResult.suppressedIds].
+///
+/// [screenOffsetOf] projects an id to its screen offset (null if it has no point
+/// or is off the projection); injecting it keeps this geometry unit-testable
+/// without a live map camera. [cardSize] is the large card's footprint; it sits
+/// above the pin (the point is the card's bottom-center), matching how
+/// flutter_map places an `Alignment.topCenter` marker above its point.
+PlacementResult placeLargeCards({
+  required List<String> orderedCandidates,
+  required String? selectedId,
+  required Iterable<String> visibleIds,
+  required Offset? Function(String id) screenOffsetOf,
+  required Size cardSize,
+  required Rect safeArea,
+  int largeBudget = 3,
+}) {
+  // The card sits ABOVE its pin: flutter_map places an Alignment.topCenter
+  // marker so its box is above the point (the point is the box's bottom-center,
+  // a balloon pointing down to the location). So the footprint extends up from
+  // the point, centered horizontally.
+  Rect cardRectAt(Offset o) => Rect.fromLTWH(
+    o.dx - cardSize.width / 2,
+    o.dy - cardSize.height,
+    cardSize.width,
+    cardSize.height,
+  );
+
+  final largeIds = <String>[];
+  final placedRects = <Rect>[];
+
+  // Selected is reserved first and never yields to a featured card — a deliberate
+  // peek, shown large whenever it projects to screen (even spilling an edge; the
+  // camera-nudge that keeps it fully on-screen is a separate concern). An
+  // unprojectable selection (off-screen / no point) can't render, so it claims no
+  // slot; when it does project, its footprint blocks featured cards and suppresses
+  // the long tail beneath it.
+  if (selectedId != null) {
+    final o = screenOffsetOf(selectedId);
+    if (o != null) {
+      largeIds.add(selectedId);
+      placedRects.add(cardRectAt(o));
+    }
+  }
+
+  // Featured candidates fill the remaining budget, highest score first, each
+  // admitted only if it fits the safe area and clears every placed card.
+  for (final id in orderedCandidates) {
+    if (largeIds.length >= largeBudget) break;
+    if (id == selectedId) continue;
+    final o = screenOffsetOf(id);
+    if (o == null) continue;
+    final rect = cardRectAt(o);
+    if (!_fitsWithin(safeArea, rect)) continue;
+    if (placedRects.any(rect.overlaps)) continue;
+    largeIds.add(id);
+    placedRects.add(rect);
+  }
+
+  // Drop long-tail pins that sit under a placed card from the cluster layer, so
+  // a count bubble never forms beneath a card.
+  final suppressed = <String>{};
+  if (placedRects.isNotEmpty) {
+    final large = largeIds.toSet();
+    for (final id in visibleIds) {
+      if (large.contains(id)) continue;
+      final o = screenOffsetOf(id);
+      if (o == null) continue;
+      if (placedRects.any((r) => r.contains(o))) suppressed.add(id);
+    }
+  }
+
+  return PlacementResult(largeIds: largeIds, suppressedIds: suppressed);
+}
+
+/// Whether [inner] sits entirely inside [outer] (all four edges within).
+bool _fitsWithin(Rect outer, Rect inner) =>
+    inner.left >= outer.left &&
+    inner.top >= outer.top &&
+    inner.right <= outer.right &&
+    inner.bottom <= outer.bottom;

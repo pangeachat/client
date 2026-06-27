@@ -68,9 +68,9 @@ class WorldMapPinsManager {
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
 
-  String? _promotedActivityId;
+  String? _selectedActivityId;
 
-  String? get promotedActivityId => _promotedActivityId;
+  String? get selectedActivityId => _selectedActivityId;
 
   Map<String, PinSignals> get signals => _signals;
 
@@ -103,15 +103,18 @@ class WorldMapPinsManager {
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
-  bool promoteActivity(String activityId) {
-    if (_promotedActivityId == activityId) return false;
-    _promotedActivityId = activityId;
+  /// Select a pin (the tap-peek): drawn large regardless of its featured
+  /// standing, cleared on the next user pan/zoom. Returns false if already
+  /// selected. See world-map.instructions.md ("Featured, selected, and focused").
+  bool selectActivity(String activityId) {
+    if (_selectedActivityId == activityId) return false;
+    _selectedActivityId = activityId;
     return true;
   }
 
-  bool demoteActivity() {
-    if (_promotedActivityId == null) return false;
-    _promotedActivityId = null;
+  bool deselectActivity() {
+    if (_selectedActivityId == null) return false;
+    _selectedActivityId = null;
     return true;
   }
 

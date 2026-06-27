@@ -224,7 +224,7 @@ class WorldMapController extends State<WorldMap>
   MapController get mapController => widget.controller ?? _ownController;
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
-  String? get promotedActivityId => _pinsManager.promotedActivityId;
+  String? get selectedActivityId => _pinsManager.selectedActivityId;
   Client? get client => _client;
   bool get loadingPins => _loadingPins;
 
@@ -282,7 +282,7 @@ class WorldMapController extends State<WorldMap>
   /// else. Guarded so our own clears (which also set it false) don't loop.
   void _onPinControllerChange() {
     if (!WorldMapPinsManager.notifier.value && mounted) {
-      demoteActivity();
+      deselectActivity();
     }
   }
 
@@ -292,7 +292,7 @@ class WorldMapController extends State<WorldMap>
     // so clicking through courses doesn't snap the camera on every hop — it
     // glides only after you've settled on one.
     if (mounted) {
-      demoteActivity();
+      deselectActivity();
       WorldMapPinsManager.set(false);
     }
     _loadForContext(debounceFit: true);
@@ -396,20 +396,22 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
-  /// As [promoteToLarge] but by id. The clustered small/mid markers route their
-  /// tap here via the cluster layer's `onMarkerTap`: the marker-cluster package
-  /// intercepts marker taps, so a marker's own `onTap` never fires for a pointer
-  /// (it only centered the camera, the #7072 symptom). The tapped marker carries
-  /// its activity id as its key, which is all promotion needs.
-  void promoteActivity(String activityId) {
-    final promoted = _pinsManager.promoteActivity(activityId);
-    if (promoted) setState(() {});
+  /// Select the activity by id (the tap-peek → large card). The clustered
+  /// small/mid markers route their tap here via the cluster layer's
+  /// `onMarkerTap`: the marker-cluster package intercepts marker taps, so a
+  /// marker's own `onTap` never fires for a pointer (it only centered the
+  /// camera, the #7072 symptom). The tapped marker carries its activity id as
+  /// its key. The selection clears on the next user pan/zoom (see
+  /// [onMapPositionChanged]). See world-map.instructions.md.
+  void selectActivity(String activityId) {
+    final changed = _pinsManager.selectActivity(activityId);
+    if (changed) setState(() {});
     ActivityPlanRepo.instance.ensure(activityId);
   }
 
-  void demoteActivity() {
-    final demoted = _pinsManager.demoteActivity();
-    if (demoted) setState(() {});
+  void deselectActivity() {
+    final changed = _pinsManager.deselectActivity();
+    if (changed) setState(() {});
   }
 
   /// Fly to a search result and open its preview (the Maps-style result tap).
@@ -433,15 +435,17 @@ class WorldMapController extends State<WorldMap>
         );
       } catch (_) {}
     }
-    promoteActivity(card.activityId);
+    selectActivity(card.activityId);
   }
 
   /// Glide back to the whole-world view (the initial camera). Pins, clusters,
   /// and search only ever zoom the camera IN, so this is the one explicit
   /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
   /// and open panels are untouched.
-  void resetToWorld() =>
-      _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
+  void resetToWorld() {
+    deselectActivity();
+    _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
+  }
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
   /// map's range — backs the on-map +/- buttons, since a tap/search only ever
@@ -449,6 +453,7 @@ class WorldMapController extends State<WorldMap>
   /// mid-glide live zoom), so rapid clicks each advance a full level instead of
   /// under-shooting, and snaps to integer levels so the steps land crisply.
   void zoomBy(double delta) {
+    deselectActivity(); // an explicit zoom re-ranks the featured set; drop the peek
     final base = _cameraAnimationController.isAnimating
         ? _camTargetZoom
         : mapController.camera.zoom;
@@ -580,9 +585,14 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
-  /// Debounced viewport reload, called by the view as the camera pans/zooms.
-  /// Course pins are context-bound, so this is World-only.
-  void onMapPositionChanged() {
+  /// Called by the view as the camera moves. A user pan/zoom ([hasGesture])
+  /// clears any tap-selection — the peek is for the spot you were looking at, so
+  /// moving away drops it (world-map.instructions.md); programmatic glides (a
+  /// search fly-to, a focus fit) are not gestures, so they keep the selection
+  /// they just set. World pins also re-fetch for the new viewport (debounced);
+  /// course pins are context-bound.
+  void onMapPositionChanged(bool hasGesture) {
+    if (hasGesture) deselectActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
@@ -621,7 +631,7 @@ class WorldMapController extends State<WorldMap>
       parts.add('roomid=${shortRoomId(myRoom.id)}');
     }
     context.go(WorkspaceQuery.location('/', parts));
-    demoteActivity();
+    deselectActivity();
   }
 
   @override
