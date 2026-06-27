@@ -106,3 +106,8 @@ CLAUDE.md
 .mcp.json.generated_by_sync
 # E2E test artifacts
 test-results/
+
+# Claude Code team config (per-repo) — track the team hooks, ignore the rest of .claude/ and the generated org-guide copy
+.claude/*
+!.claude/settings.json
+.github/_org-copilot-instructions.md
