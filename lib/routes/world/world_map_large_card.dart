@@ -104,10 +104,15 @@ class WorldMapLargeCard extends StatelessWidget {
                   pinged: pinged,
                   foregroundColor: state.accent,
                 ),
-                ActivityStarRow(
-                  total: total,
-                  earned: earned,
-                  condensed: total > 12,
+                // Fixed height prevents the card from jumping when `plan`
+                // hydrates and total goes from 0 → actual goal count.
+                SizedBox(
+                  height: 16,
+                  child: ActivityStarRow(
+                    total: total,
+                    earned: earned,
+                    condensed: total > 12,
+                  ),
                 ),
                 if (completed)
                   Row(
