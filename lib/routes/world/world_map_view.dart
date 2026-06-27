@@ -71,7 +71,7 @@ class _PinRenderer {
 /// pick each pin's tier (small dot / mid pin / large featured card), and lays
 /// the pins, clusters, basemap tiles, and (World only) the search-filter overlay
 /// over the map. All interaction routes back to the controller (tap a pin →
-/// promote, tap a card → open the activity, filter → reload). No pin is ever
+/// select, tap a card → open the activity, filter → reload). No pin is ever
 /// locked (#7186). See world-map.instructions.md.
 class WorldMapView extends StatelessWidget {
   final WorldMapController controller;
@@ -92,7 +92,7 @@ class WorldMapView extends StatelessWidget {
     final ranking = _getRankings(visible: visible, signals: signals);
 
     // The static large set (top of the score, no rotation) is auto-featured only
-    // where there is horizontal room (desktop / column mode); a tap-promoted pin
+    // where there is horizontal room (desktop / column mode); a tap-selected pin
     // renders large at any width.
     final desktop = FluffyThemes.isColumnMode(context);
     final largeIds = desktop ? ranking.largeIds.toSet() : <String>{};
@@ -145,9 +145,9 @@ class WorldMapView extends StatelessWidget {
     final Map<String, double> fills = {};
 
     for (final id in activityIds) {
-      // A tap-promoted pin is large at any width; otherwise the static large set
+      // A tap-selected pin is large at any width; otherwise the static large set
       // (desktop only) is large, the mid set is mid, the rest are small.
-      tiers[id] = id == controller.promotedActivityId || largeIds.contains(id)
+      tiers[id] = id == controller.selectedActivityId || largeIds.contains(id)
           ? PinTier.large
           : mediumIds.contains(id)
           ? PinTier.mid
@@ -171,7 +171,7 @@ class WorldMapView extends StatelessWidget {
   }
 
   /// The clustered small/mid pins (large cards render unclustered above). Skips
-  /// pins with no point and any promoted-to-large pin.
+  /// pins with no point and any selected/featured large pin.
   List<Marker> _clusterMarkers(_PinRenderer render) =>
       render.nonLargeCards.map((card) {
         final state = render.stateOf(card.activityId);
@@ -186,14 +186,14 @@ class WorldMapView extends StatelessWidget {
             card: card,
             state: state,
             tier: tier,
-            onTap: () => controller.promoteActivity(card.activityId),
+            onTap: () => controller.selectActivity(card.activityId),
             pinged: render.pingedOf(card.activityId),
             fill: render.fillOf(card.activityId),
           ),
         );
       }).toList();
 
-  /// The 1–3 large featured cards (desktop) plus any tap-promoted card, rendered
+  /// The 1–3 large featured cards (desktop) plus any tap-selected card, rendered
   /// unclustered so they're always visible.
   List<Marker> _largeMarkers(_PinRenderer render) => render.largeCards.map((
     card,
@@ -271,13 +271,14 @@ class WorldMapView extends StatelessWidget {
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
-        // Tap empty map → collapse a promoted large card back to its pin.
-        onTap: (_, _) => controller.demoteActivity(),
+        // Tap empty map → collapse a selected large card back to its pin.
+        onTap: (_, _) => controller.deselectActivity(),
         // World pins are viewport-bounded: load once the camera is ready, then
         // re-load (debounced) as the user pans/zooms. Course pins are
         // context-bound and unaffected.
         onMapReady: controller.loadWorldPins,
-        onPositionChanged: (_, _) => controller.onMapPositionChanged(),
+        onPositionChanged: (_, hasGesture) =>
+            controller.onMapPositionChanged(hasGesture),
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -291,7 +292,7 @@ class WorldMapView extends StatelessWidget {
           userAgentPackageName: 'com.talktolearn.chat',
         ),
         // world_v2: activity pins by relevance tier + state. Small dots (the
-        // long tail) and mid pins (promoted matches) are clustered for
+        // long tail) and mid pins (featured matches) are clustered for
         // Google-Maps de-overlap; the 1–3 large featured cards render
         // unclustered in the layer above so they're always visible.
         MarkerClusterLayerWidget(
@@ -308,15 +309,15 @@ class WorldMapView extends StatelessWidget {
             // `onMarkerTap` — a marker's own child `onTap` never fires for a
             // pointer. Without this, a small/mid pin tap only ran
             // `centerMarkerOnClick`, so it recentered the camera and did nothing
-            // else (#7072). Per the world-map design ("tap promotes, tap again
-            // opens"), promote the tapped pin to its large card in place; a group
+            // else (#7072). Per the world-map design ("tap to select, tap again
+            // to focus"), select the tapped pin → its large card in place; a group
             // bubble still zooms to de-cluster (`zoomToBoundsOnClick`). The pin
-            // carries its activity id as its key. Promote in place, no recenter.
+            // carries its activity id as its key. Select in place, no recenter.
             centerMarkerOnClick: false,
             onMarkerTap: (marker) {
               final key = marker.key;
               if (key is ValueKey<String>) {
-                controller.promoteActivity(key.value);
+                controller.selectActivity(key.value);
               }
             },
             markers: _clusterMarkers(render),
