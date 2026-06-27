@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -118,29 +116,6 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// Last-known render snapshot of each active non-large pin, used to seed
   /// [_exiting] with the correct visual state when a pin leaves.
   Map<String, _PinSnapshot> _lastActive = {};
-
-  /// True while the camera is moving (gesture or programmatic). Cluster bubbles
-  /// that appear during movement skip their entry animation and start at full
-  /// scale, preventing the pop-in that occurs when zoom crosses a cluster
-  /// threshold and membership changes produce new widget instances.
-  bool _cameraMoving = false;
-  Timer? _cameraStopTimer;
-
-  void _onPositionChanged(bool hasGesture) {
-    _cameraMoving = true;
-    _cameraStopTimer?.cancel();
-    _cameraStopTimer = Timer(
-      const Duration(milliseconds: 300),
-      () { _cameraMoving = false; },
-    );
-    widget.controller.onMapPositionChanged(hasGesture);
-  }
-
-  @override
-  void dispose() {
-    _cameraStopTimer?.cancel();
-    super.dispose();
-  }
 
   /// Detects newly-gone non-large pins and adds them to [_exiting] using their
   /// last-known render state. Pins promoted to large are excluded (still
@@ -522,7 +497,7 @@ class _WorldMapViewState extends State<WorldMapView> {
         // context-bound and unaffected.
         onMapReady: widget.controller.loadWorldPins,
         onPositionChanged: (_, hasGesture) =>
-            _onPositionChanged(hasGesture),
+            widget.controller.onMapPositionChanged(hasGesture),
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -573,29 +548,13 @@ class _WorldMapViewState extends State<WorldMapView> {
                 final s = clusterStateByPoint[m.point];
                 if (s != null && s.index > dominant.index) dominant = s;
               }
-              // Stable key based on sorted constituent marker IDs: preserves
-              // the bubble's AnimationController state across camera rebuilds
-              // where membership hasn't changed, preventing spurious re-animation.
-              final key = ValueKey(
-                (markers
-                      .map(
-                        (m) => m.key is ValueKey<String>
-                            ? (m.key as ValueKey<String>).value
-                            : '',
-                      )
-                      .toList()
-                  ..sort())
-                    .join(','),
-              );
               return Semantics(
                 button: true,
                 label: '${markers.length} ${L10n.of(context).activities}',
                 excludeSemantics: true,
                 child: WorldMapClusterBubble(
-                  key: key,
                   count: markers.length,
                   dominant: dominant,
-                  animate: !_cameraMoving,
                 ),
               );
             },
