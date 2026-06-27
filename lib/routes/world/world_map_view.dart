@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -116,6 +118,29 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// Last-known render snapshot of each active non-large pin, used to seed
   /// [_exiting] with the correct visual state when a pin leaves.
   Map<String, _PinSnapshot> _lastActive = {};
+
+  /// True while the camera is moving (gesture or programmatic). Cluster bubbles
+  /// that appear during movement skip their entry animation and start at full
+  /// scale, preventing the pop-in that occurs when zoom crosses a cluster
+  /// threshold and membership changes produce new widget instances.
+  bool _cameraMoving = false;
+  Timer? _cameraStopTimer;
+
+  void _onPositionChanged(bool hasGesture) {
+    if (!_cameraMoving) setState(() => _cameraMoving = true);
+    _cameraStopTimer?.cancel();
+    _cameraStopTimer = Timer(
+      const Duration(milliseconds: 300),
+      () { if (mounted) setState(() => _cameraMoving = false); },
+    );
+    widget.controller.onMapPositionChanged(hasGesture);
+  }
+
+  @override
+  void dispose() {
+    _cameraStopTimer?.cancel();
+    super.dispose();
+  }
 
   /// Detects newly-gone non-large pins and adds them to [_exiting] using their
   /// last-known render state. Pins promoted to large are excluded (still
@@ -453,7 +478,7 @@ class _WorldMapViewState extends State<WorldMapView> {
         // context-bound and unaffected.
         onMapReady: widget.controller.loadWorldPins,
         onPositionChanged: (_, hasGesture) =>
-            widget.controller.onMapPositionChanged(hasGesture),
+            _onPositionChanged(hasGesture),
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -511,6 +536,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                 child: WorldMapClusterBubble(
                   count: markers.length,
                   dominant: dominant,
+                  animate: !_cameraMoving,
                 ),
               );
             },

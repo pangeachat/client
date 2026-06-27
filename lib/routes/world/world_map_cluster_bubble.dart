@@ -10,10 +10,16 @@ class WorldMapClusterBubble extends StatefulWidget {
   final int count;
   final ActivityPinState dominant;
 
+  /// When false the bubble starts fully visible (no scale-in). Set to false
+  /// while the camera is moving so cluster regroupings from zoom threshold
+  /// crossings don't pop-animate.
+  final bool animate;
+
   const WorldMapClusterBubble({
     super.key,
     required this.count,
     required this.dominant,
+    this.animate = true,
   });
 
   @override
@@ -33,7 +39,11 @@ class _WorldMapClusterBubbleState extends State<WorldMapClusterBubble>
       duration: const Duration(milliseconds: 200),
     );
     _curved = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
-    _ctrl.forward();
+    if (widget.animate) {
+      _ctrl.forward();
+    } else {
+      _ctrl.value = 1.0;
+    }
   }
 
   @override
