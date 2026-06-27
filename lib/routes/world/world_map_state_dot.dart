@@ -5,13 +5,18 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-class WorldMapDot extends StatelessWidget {
+class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
   final PinTier tier;
   final VoidCallback onTap;
   final bool pinged;
   final double fill;
+
+  /// When true, the pin plays its exit animation (scale → 0) then calls
+  /// [onExited]. The parent keeps the widget in the tree until [onExited] fires.
+  final bool dying;
+  final VoidCallback? onExited;
 
   const WorldMapDot({
     super.key,
@@ -21,24 +26,69 @@ class WorldMapDot extends StatelessWidget {
     required this.onTap,
     required this.pinged,
     this.fill = 0,
+    this.dying = false,
+    this.onExited,
   });
 
   @override
+  State<WorldMapDot> createState() => _WorldMapDotState();
+}
+
+class _WorldMapDotState extends State<WorldMapDot>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
+    if (!widget.dying) _ctrl.forward();
+  }
+
+  @override
+  void didUpdateWidget(WorldMapDot old) {
+    super.didUpdateWidget(old);
+    if (widget.dying && !old.dying) {
+      _ctrl.reverse().then((_) => widget.onExited?.call());
+    }
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: card.title,
-      // Semantics below names the pin; exclude the Tooltip so the title isn't
-      // announced twice ("<title> <title>").
-      excludeFromSemantics: true,
-      child: Semantics(
-        button: true,
-        label: L10n.of(context).activityLabel(card.title),
-        excludeSemantics: true,
-        child: GestureDetector(
-          onTap: onTap,
-          child: tier == PinTier.mid
-              ? _MediumDotContent(state: state, pinged: pinged, fill: fill)
-              : _SmallDotContent(state: state, fill: fill),
+    return ScaleTransition(
+      scale: CurvedAnimation(
+        parent: _ctrl,
+        curve: Curves.easeOut,
+        reverseCurve: Curves.easeIn,
+      ),
+      child: Tooltip(
+        message: widget.card.title,
+        // Semantics below names the pin; exclude the Tooltip so the title isn't
+        // announced twice ("<title> <title>").
+        excludeFromSemantics: true,
+        child: Semantics(
+          button: !widget.dying,
+          label: widget.dying ? '' : L10n.of(context).activityLabel(widget.card.title),
+          excludeSemantics: true,
+          child: GestureDetector(
+            onTap: widget.dying ? null : widget.onTap,
+            child: widget.tier == PinTier.mid
+                ? _MediumDotContent(
+                    state: widget.state,
+                    pinged: widget.pinged,
+                    fill: widget.fill,
+                  )
+                : _SmallDotContent(state: widget.state, fill: widget.fill),
+          ),
         ),
       ),
     );

@@ -20,7 +20,7 @@ import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The per-frame pin draw model resolved by [WorldMapView._resolvePinRender]:
+/// The per-frame pin draw model resolved by [_WorldMapViewState._resolvePinRender]:
 /// the visible set and, for each pin id, its tier / colour-state / pinged-badge /
 /// progress-fill, plus the cluster dominant-state lookup. Lets the build method
 /// read as composition (resolve the model, then lay out the marker layers).
@@ -75,18 +75,82 @@ class _PinRenderer {
   PinTier tierOf(String id) => activityIdToTier[id] ?? PinTier.small;
 }
 
-/// The stateless render of the persistent world map, driven by its
-/// [WorldMapController]. It reads the controller's cached signals / stars /
-/// pins / progression, applies the per-frame single-score relevance ranking to
-/// pick each pin's tier (small dot / mid pin / large featured card), and lays
-/// the pins, clusters, basemap tiles, and (World only) the search-filter overlay
-/// over the map. All interaction routes back to the controller (tap a pin →
-/// select, tap a card → open the activity, filter → reload). No pin is ever
-/// locked (#7186). See world-map.instructions.md.
-class WorldMapView extends StatelessWidget {
+/// Cached render snapshot for a pin that is animating out of the active set.
+class _PinSnapshot {
+  final QuestActivityCard card;
+  final ActivityPinState state;
+  final PinTier tier;
+  final bool pinged;
+  final double fill;
+
+  const _PinSnapshot({
+    required this.card,
+    required this.state,
+    required this.tier,
+    required this.pinged,
+    required this.fill,
+  });
+}
+
+/// The render of the persistent world map, driven by its [WorldMapController].
+/// It reads the controller's cached signals / stars / pins / progression,
+/// applies the per-frame single-score relevance ranking to pick each pin's tier
+/// (small dot / mid pin / large featured card), and lays the pins, clusters,
+/// basemap tiles, and (World only) the search-filter overlay over the map. All
+/// interaction routes back to the controller (tap a pin → select, tap a card →
+/// open the activity, filter → reload). No pin is ever locked (#7186). See
+/// world-map.instructions.md.
+class WorldMapView extends StatefulWidget {
   final WorldMapController controller;
 
   const WorldMapView(this.controller, {super.key});
+
+  @override
+  State<WorldMapView> createState() => _WorldMapViewState();
+}
+
+class _WorldMapViewState extends State<WorldMapView> {
+  /// Pins that have left the active set and are animating to scale 0.
+  final Map<String, _PinSnapshot> _exiting = {};
+
+  /// Last-known render snapshot of each active non-large pin, used to seed
+  /// [_exiting] with the correct visual state when a pin leaves.
+  Map<String, _PinSnapshot> _lastActive = {};
+
+  /// Detects newly-gone non-large pins and adds them to [_exiting] using their
+  /// last-known render state. Pins promoted to large are excluded (still
+  /// visible as a card). Called at the top of [build] before the marker layers
+  /// are constructed — mutates tracking maps without calling setState.
+  void _updateExiting(_PinRenderer render) {
+    final currentNonLargeIds = {
+      for (final c in render.nonLargeCards) c.activityId
+    };
+    final largeIds = {for (final c in render.largeCards) c.activityId};
+    final allCurrentIds = {...currentNonLargeIds, ...largeIds};
+
+    // Re-appeared in any tier: cancel any in-progress exit animation.
+    _exiting.removeWhere((id, _) => allCurrentIds.contains(id));
+
+    // Newly absent (not promoted to large): seed from last frame's snapshot.
+    for (final entry in _lastActive.entries) {
+      if (!allCurrentIds.contains(entry.key) &&
+          !_exiting.containsKey(entry.key)) {
+        _exiting[entry.key] = entry.value;
+      }
+    }
+
+    // Refresh the snapshot for the next frame.
+    _lastActive = {
+      for (final card in render.nonLargeCards)
+        card.activityId: _PinSnapshot(
+          card: card,
+          state: render.stateOf(card.activityId),
+          tier: render.tierOf(card.activityId),
+          pinged: render.pingedOf(card.activityId),
+          fill: render.fillOf(card.activityId),
+        ),
+    };
+  }
 
   /// Resolve the per-frame pin draw model: the visible set, and for each pin its
   /// tier / colour-state / pinged / fill, plus the cluster dominant-state lookup.
@@ -95,10 +159,10 @@ class WorldMapView extends StatelessWidget {
   /// cached signals + progression so a star award re-ranks next build. See
   /// world-map.instructions.md.
   _PinRenderer _resolvePinRender(BuildContext context) {
-    final visible = controller.visiblePins;
+    final visible = widget.controller.visiblePins;
     // No lock layering: the controller's signals pass through unchanged — nothing
     // is ever locked now, progression only ranks (#7186).
-    final signals = controller.signals;
+    final signals = widget.controller.signals;
     final ranking = _getRankings(visible: visible, signals: signals);
 
     // Auto-featured large cards exist only where there's horizontal room
@@ -139,18 +203,18 @@ class WorldMapView extends StatelessWidget {
     required List<QuestActivityCard> visible,
     required List<String> candidates,
   }) {
-    final selectedId = controller.selectedActivityId;
+    final selectedId = widget.controller.selectedActivityId;
     final pointById = <String, LatLng>{
       for (final c in visible) c.activityId: ?c.point,
     };
     try {
-      final camera = controller.mapController.camera;
+      final camera = widget.controller.mapController.camera;
       final size = camera.size;
       const margin = 12.0;
       final safeArea = Rect.fromLTRB(
-        controller.widget.leftOverlayWidth + margin,
+        widget.controller.widget.leftOverlayWidth + margin,
         margin,
-        size.width - controller.widget.rightOverlayWidth - margin,
+        size.width - widget.controller.widget.rightOverlayWidth - margin,
         size.height - margin,
       );
       return placeLargeCards(
@@ -188,7 +252,7 @@ class WorldMapView extends StatelessWidget {
     // reflects what the learner is looking at.
     List<QuestActivityCard> inView = visible;
     try {
-      final bounds = controller.mapController.camera.visibleBounds;
+      final bounds = widget.controller.mapController.camera.visibleBounds;
       inView = visible
           .where((c) => c.point != null && bounds.contains(c.point!))
           .toList();
@@ -201,7 +265,7 @@ class WorldMapView extends StatelessWidget {
       inViewPins: inView,
       userL2: user.userL2Code,
       userCefr: user.userCefrLevel,
-      progression: controller.progression,
+      progression: widget.controller.progression,
       signals: signals,
     );
   }
@@ -264,12 +328,38 @@ class WorldMapView extends StatelessWidget {
             card: card,
             state: state,
             tier: tier,
-            onTap: () => controller.selectActivity(card.activityId),
+            onTap: () => widget.controller.selectActivity(card.activityId),
             pinged: render.pingedOf(card.activityId),
             fill: render.fillOf(card.activityId),
           ),
         );
       }).toList();
+
+  /// Dying pins rendered in a separate unclustered layer so they don't inflate
+  /// cluster counts or disturb the bubble colour while shrinking out.
+  List<Marker> _exitingMarkers() => _exiting.values
+      .where((p) => p.card.point != null)
+      .map(
+        (p) => Marker(
+          key: ValueKey('exiting_${p.card.activityId}'),
+          point: p.card.point!,
+          width: p.tier.dotWidth,
+          height: p.tier.dotHeight(p.state),
+          child: WorldMapDot(
+            card: p.card,
+            state: p.state,
+            tier: p.tier,
+            onTap: () {},
+            pinged: p.pinged,
+            fill: p.fill,
+            dying: true,
+            onExited: () {
+              if (mounted) setState(() => _exiting.remove(p.card.activityId));
+            },
+          ),
+        ),
+      )
+      .toList();
 
   /// The 1–3 large featured cards (desktop) plus any tap-selected card, rendered
   /// unclustered so they're always visible.
@@ -281,7 +371,8 @@ class WorldMapView extends StatelessWidget {
     ActivityPlanRepo.instance.ensure(card.activityId);
     final plan = ActivityPlanRepo.instance.cachedPlan(card.activityId);
 
-    final joinableActivity = controller.client?.bestJoinableActivityInstance(
+    final joinableActivity =
+        widget.controller.client?.bestJoinableActivityInstance(
       card.activityId,
     );
 
@@ -304,10 +395,11 @@ class WorldMapView extends StatelessWidget {
           state: state,
           pinged: render.pingedOf(card.activityId),
           plan: plan,
-          starsEarned: controller.activityStarsEarned(card.activityId) ?? 0,
+          starsEarned:
+              widget.controller.activityStarsEarned(card.activityId) ?? 0,
           participants: joinableActivity?.largeCardParticipants ?? [],
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
-          onTap: () => controller.openActivity(card),
+          onTap: () => widget.controller.openActivity(card),
         ),
       ),
     );
@@ -323,15 +415,20 @@ class WorldMapView extends StatelessWidget {
     // Resolve which pins to draw and each one's tier/state/pinged/fill once per
     // frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
+
+    // Detect newly-gone pins before building the marker layers.
+    _updateExiting(render);
+
     final clusterStateByPoint = render.clusterStateByPoint;
 
     final map = FlutterMap(
-      mapController: controller.mapController,
+      mapController: widget.controller.mapController,
       options: MapOptions(
         // The persistent instance keeps its own camera across navigation,
         // so no external camera-state restore is needed.
-        initialCenter: controller.widget.initialCenter ?? const LatLng(20, 0),
-        initialZoom: controller.widget.initialZoom ?? 3,
+        initialCenter:
+            widget.controller.widget.initialCenter ?? const LatLng(20, 0),
+        initialZoom: widget.controller.widget.initialZoom ?? 3,
         // minZoom 3 (not 2): containLatitude rejects a move when the
         // constrained latitude band is shorter than the viewport, and the
         // ±90 band is only ~1024px tall at z2 — that would freeze *all*
@@ -350,13 +447,13 @@ class WorldMapView extends StatelessWidget {
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
         // Tap empty map → collapse a selected large card back to its pin.
-        onTap: (_, _) => controller.deselectActivity(),
+        onTap: (_, _) => widget.controller.deselectActivity(),
         // World pins are viewport-bounded: load once the camera is ready, then
         // re-load (debounced) as the user pans/zooms. Course pins are
         // context-bound and unaffected.
-        onMapReady: controller.loadWorldPins,
+        onMapReady: widget.controller.loadWorldPins,
         onPositionChanged: (_, hasGesture) =>
-            controller.onMapPositionChanged(hasGesture),
+            widget.controller.onMapPositionChanged(hasGesture),
       ),
       children: [
         // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
@@ -395,7 +492,7 @@ class WorldMapView extends StatelessWidget {
             onMarkerTap: (marker) {
               final key = marker.key;
               if (key is ValueKey<String>) {
-                controller.selectActivity(key.value);
+                widget.controller.selectActivity(key.value);
               }
             },
             markers: _clusterMarkers(render),
@@ -419,6 +516,9 @@ class WorldMapView extends StatelessWidget {
             },
           ),
         ),
+        // Dying pins (unclustered) rendered below the large cards but outside
+        // the cluster layer so they don't skew bubble counts while animating out.
+        MarkerLayer(markers: _exitingMarkers()),
         // Large cards (unclustered, always visible): the 1–3 auto-featured cards
         // on desktop plus any pin promoted by a tap.
         MarkerLayer(markers: _largeMarkers(render)),
@@ -445,12 +545,12 @@ class WorldMapView extends StatelessWidget {
     final controls = Positioned(
       right: 12,
       bottom: 28,
-      child: _MapZoomControls(controller: controller),
+      child: _MapZoomControls(controller: widget.controller),
     );
 
     // A course shows its plain map (plus the controls); the world map adds the
     // search + filter overlay.
-    if (!controller.isWorld) {
+    if (!widget.controller.isWorld) {
       return Stack(
         children: [
           Positioned.fill(child: map),
@@ -464,20 +564,21 @@ class WorldMapView extends StatelessWidget {
         Positioned.fill(child: map),
         Positioned(
           top: 12,
-          left: controller.widget.leftOverlayWidth + 12,
+          left: widget.controller.widget.leftOverlayWidth + 12,
           width: 360,
           child: WorldMapSearchOverlay(
-            filter: controller.filter,
-            updateQuery: controller.setQuery,
+            filter: widget.controller.filter,
+            updateQuery: widget.controller.setQuery,
             l2Label: l2?.toUpperCase(),
-            onToggleL2: controller.toggleL2,
-            onWidenSearch: () => controller.resetFilters(l2Only: false),
-            toggleCefr: controller.toggleCefr,
-            toggleCompletion: controller.toggleCompletion,
+            onToggleL2: widget.controller.toggleL2,
+            onWidenSearch: () => widget.controller.resetFilters(l2Only: false),
+            toggleCefr: widget.controller.toggleCefr,
+            toggleCompletion: widget.controller.toggleCompletion,
             results: render.visible,
-            onResultTap: controller.flyTo,
-            onReset: controller.resetFilters,
-            emptyInView: !controller.loadingPins && render.visible.isEmpty,
+            onResultTap: widget.controller.flyTo,
+            onReset: widget.controller.resetFilters,
+            emptyInView:
+                !widget.controller.loadingPins && render.visible.isEmpty,
           ),
         ),
         controls,
