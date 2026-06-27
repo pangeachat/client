@@ -350,6 +350,7 @@ class _WorldMapViewState extends State<WorldMapView> {
           width: tier.dotWidth,
           height: tier.dotHeight(state),
           child: WorldMapDot(
+            key: ValueKey(card.activityId),
             card: card,
             state: state,
             tier: tier,
@@ -371,6 +372,7 @@ class _WorldMapViewState extends State<WorldMapView> {
           width: p.tier.dotWidth,
           height: p.tier.dotHeight(p.state),
           child: WorldMapDot(
+            key: ValueKey('exiting_${p.card.activityId}'),
             card: p.card,
             state: p.state,
             tier: p.tier,
@@ -529,11 +531,26 @@ class _WorldMapViewState extends State<WorldMapView> {
                 final s = clusterStateByPoint[m.point];
                 if (s != null && s.index > dominant.index) dominant = s;
               }
+              // Stable key based on sorted constituent marker IDs: preserves
+              // the bubble's AnimationController state across camera rebuilds
+              // where membership hasn't changed, preventing spurious re-animation.
+              final key = ValueKey(
+                (markers
+                      .map(
+                        (m) => m.key is ValueKey<String>
+                            ? (m.key as ValueKey<String>).value
+                            : '',
+                      )
+                      .toList()
+                  ..sort())
+                    .join(','),
+              );
               return Semantics(
                 button: true,
                 label: '${markers.length} ${L10n.of(context).activities}',
                 excludeSemantics: true,
                 child: WorldMapClusterBubble(
+                  key: key,
                   count: markers.length,
                   dominant: dominant,
                   animate: !_cameraMoving,
