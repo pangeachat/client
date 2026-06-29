@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
@@ -128,6 +130,7 @@ class WorkspaceRightPanel extends StatelessWidget {
         icon: leadingIcon,
         onLeading: onLeading,
         tooltip: leadingTooltip,
+        trailing: kIsWeb ? DownloadAnalyticsButton() : null,
         child: ConstructAnalyticsView(
           view: token.type == 'vocab'
               ? ConstructTypeEnum.vocab

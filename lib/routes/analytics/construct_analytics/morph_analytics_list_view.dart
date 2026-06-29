@@ -31,11 +31,6 @@ class MorphAnalyticsListView extends StatelessWidget {
 
     return Column(
       children: [
-        if (kIsWeb)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [DownloadAnalyticsButton()],
-          ),
         Expanded(
           child: CustomScrollView(
             key: const PageStorageKey<String>('morph-analytics'),

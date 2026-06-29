@@ -179,10 +179,6 @@ class VocabAnalyticsListView extends StatelessWidget {
       ),
     );
 
-    if (kIsWeb) {
-      filters.add(const DownloadAnalyticsButton());
-    }
-
     return Column(
       children: [
         AnimatedContainer(

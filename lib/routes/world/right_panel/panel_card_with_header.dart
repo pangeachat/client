@@ -9,12 +9,14 @@ class PanelCardWithHeader extends StatelessWidget {
   final VoidCallback onLeading;
   final Widget child;
   final String tooltip;
+  final Widget? trailing;
 
   const PanelCardWithHeader({
     super.key,
     required this.icon,
     required this.title,
     required this.onLeading,
+    this.trailing,
     required this.child,
     required this.tooltip,
   });
@@ -31,6 +33,7 @@ class PanelCardWithHeader extends StatelessWidget {
               onPressed: onLeading,
             ),
             title: title,
+            trailing: trailing,
           ),
           Expanded(child: child),
         ],
