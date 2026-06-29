@@ -81,6 +81,21 @@ Trade-off: **no hot reload**, and **`?devlogin=1` does NOT work** in a profile/r
 
 **Prefer hot reload `r` over refreshing the browser.** Hot reload keeps the loaded modules AND the logged-in session; only a full browser reload triggers the ~30s 2792-module re-fetch. `printf 'r' > /tmp/f8090`. This is the single biggest speedup for the edit loop.
 
+### Watch on save
+
+A file watcher can automate the `r` trigger so every `.dart` save sends a hot reload without a manual step:
+
+```bash
+# Requires fswatch (brew install fswatch)
+cd <repo>/client
+fswatch -o lib | while read -r _; do
+  printf 'r' > /tmp/f8090
+  echo "hot reload triggered"
+done
+```
+
+Run this in a separate terminal while `flutter run` is up. It watches the whole `lib/` tree and fires `r` on any change. **Subject to the same DWDS reliability ceiling as manual `r`:** when the log shows `received 0/1 responses`, the watcher is running but the change didn't land — the DWDS connection is stale. Do a clean restart (see below) to refresh it; the watcher then works again for the next batch of saves.
+
 **But `r`/`R` are unreliable over external Chrome (the DWDS trap).** Both `r` (hot reload) and `R` (hot restart) need a live DWDS (Dart debug) websocket to the browser. With the *external* extension Chrome that connection is frequently stale (attached to a previous/killed run, or the tab slept), so both time out with `received 0/1 responses`. Tell-tale: `grep "received 0/1 responses" /tmp/flutter_run_8090.log`.
 
 - `r` on a stale connection fails **harmlessly** (server stays up) but your change didn't land. It also can't apply **structural** changes (new enum value, route-tree change, new top-level file, `const`/generic) — those silently no-op. When `r` doesn't take, do a clean restart.
