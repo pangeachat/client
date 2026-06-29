@@ -26,19 +26,15 @@ class MorphAnalyticsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const padding = EdgeInsets.symmetric(vertical: 10.0);
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return Column(
       children: [
         if (kIsWeb)
-          const Padding(
-            padding: padding,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [DownloadAnalyticsButton()],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [DownloadAnalyticsButton()],
           ),
         Expanded(
           child: CustomScrollView(
