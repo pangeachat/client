@@ -379,17 +379,13 @@ abstract class WorkspaceNav {
   /// ever a token, so it just drops its own token via [closeLeft].
   static String closeSection(Uri current, PanelToken token) {
     final lists = parseOpenPanels(current);
-    // A course's management page (`coursepage`) is the card's detail, so closing
-    // the card drops it too (it has no master to return to) — mirrors
-    // closeSettings dropping settingspage. See routing.instructions.md.
-    final dropDependentCoursePage = token.type == 'course';
-    final left = lists.left
-        .where(
-          (t) =>
-              t != token &&
-              !(dropDependentCoursePage && t.type == 'coursepage'),
-        )
-        .toList();
+    // Drop only this token, nothing else — "closing a panel drops its token and
+    // nothing else" (routing.instructions.md). A course card's management page
+    // (`coursepage`) therefore stays open when the card closes, exactly as the
+    // chat list's `room` child stays when the list closes; both read on from the
+    // surviving `?m=course:` filter / their own id. (A coursepage left with no
+    // course scoped at all is shed by route_facts, not here.)
+    final left = lists.left.where((t) => t != token).toList();
     // Preserve unrelated one-shot query the way closeLeft/_mutate already do —
     // recompute only m/left/right and carry the rest forward. Critically this
     // keeps `?activity=`/`?launch=`/`?roomid=` (a launching or running activity

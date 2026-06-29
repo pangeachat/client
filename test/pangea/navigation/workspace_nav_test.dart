@@ -369,6 +369,26 @@ void main() {
     );
 
     test(
+      'closing a course card keeps an open coursepage management page (#7317)',
+      () {
+        // Closing the master drops only its own token (like the chat list
+        // keeping its room); the coursepage child reads on from the surviving
+        // ?m= filter, so the edit page must NOT close with the card.
+        final loc = WorkspaceNav.closeSection(
+          u('/?m=course:!s&left=course,coursepage:edit'),
+          const PanelToken('course'),
+        );
+        expect(loc.contains('m=course'), isTrue); // scope survives
+        final lists = parseOpenPanels(u(loc));
+        expect(lists.left.any((t) => t.type == 'course'), isFalse); // card gone
+        expect(
+          lists.left.where((t) => t.type == 'coursepage').single,
+          const PanelToken('coursepage', 'edit'),
+        ); // edit page kept
+      },
+    );
+
+    test(
       'closing the course card alone keeps the scoped map, not bare world',
       () {
         final loc = WorkspaceNav.closeSection(
