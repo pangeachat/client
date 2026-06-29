@@ -59,7 +59,8 @@ void main() {
       expect(
         entry.value,
         isNot(l10n.close),
-        reason: '${entry.key} should carry a contextual close label, not "Close"',
+        reason:
+            '${entry.key} should carry a contextual close label, not "Close"',
       );
     }
 
@@ -76,7 +77,11 @@ void main() {
   ) async {
     await captureL10n(tester);
     expect(
-      closeButtonLabel(l10n, const PanelToken('settingspage'), named: 'Learning'),
+      closeButtonLabel(
+        l10n,
+        const PanelToken('settingspage'),
+        named: 'Learning',
+      ),
       l10n.closeNamed('Learning'),
     );
   });
