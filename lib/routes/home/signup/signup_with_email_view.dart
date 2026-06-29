@@ -23,7 +23,6 @@ class SignupWithEmailView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 BackButton(onPressed: Navigator.of(context).pop),
-                Text(L10n.of(context).signUpWithEmail),
                 const SizedBox(width: 40.0),
               ],
             ),
