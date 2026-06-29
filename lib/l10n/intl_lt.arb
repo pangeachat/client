@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-29 10:33:55.931918",
+    "@@last_modified": "2026-06-29 12:25:13.836979",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9867,21 +9867,11 @@
         "placeholders": {}
     },
     "getStarted": "Pradėti",
-    "writeAndSpeakWorryFree": "Rašykite ir kalbėkite be rūpesčių su Pangea Bot bet kada, bet kur!",
-    "joinLearningCommunities": "Prisijunkite prie tarptautinių mokymosi bendruomenių arba... pradėkite savo!",
     "playConversationGames": "Žaiskite pokalbių žaidimus su botu, klasės draugais ir naujais draugais!",
     "jumpIntoConversation": "Šokite į pokalbį nuo pirmos dienos su AI rašymo įrankiais!",
     "playPersonalizedGames": "Žaiskite praktikos žaidimus, pritaikytus jūsų žodynui ir gramatikos poreikiams!",
     "learnLanguageWhileTexting": "Išmokite kalbą, kol rašote žinutes savo draugams!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10994,5 +10984,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Rašykite ir kalbėkite be rūpesčių su Pangea Bot bet kada, bet kur!",
+    "joinLearningCommunities": "Prisijunkite prie tarptautinių mokymosi bendruomenių arba pradėkite savo!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

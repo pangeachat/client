@@ -3377,7 +3377,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-29 10:33:30.392861",
+    "@@last_modified": "2026-06-29 12:24:34.942439",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9700,21 +9700,11 @@
         "placeholders": {}
     },
     "getStarted": "Tòisich",
-    "writeAndSpeakWorryFree": "Sgrìobh agus bruidhinn gun dragh le Pangea Bot a h-uile uair, an àite sam bith!",
-    "joinLearningCommunities": "Thig a-steach do choimhearsnachdan ionnsachaidh eadar-nàiseanta no... tòisich do chuid fhèin!",
     "playConversationGames": "Cluich geamannan còmhraidh leis a' bhot, le do cho-aoisean, agus le caraidean ùra!",
     "jumpIntoConversation": "Dèan leum a-steach do chòmhradh bho Latha a' Chiad le innealan sgrìobhadh AI!",
     "playPersonalizedGames": "Cluich geamannan cleachdaidh a tha freagairteach do do fhaclan agus do fheumalachdan ghràmair!",
     "learnLanguageWhileTexting": "Ionnsachadh cànain fhad 's a tha thu a' teacsadh do charaidean!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10827,5 +10817,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Scríobh agus labhair gan imní le Pangea Bot am ar bith, áit ar bith!",
+    "joinLearningCommunities": "Bí páirteach i bpobail fhoghlama idirnáisiúnta, nó tús a chur le do chuid féin!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

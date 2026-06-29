@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-29 10:34:10.374418",
+    "@@last_modified": "2026-06-29 12:25:37.912093",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10005,21 +10005,11 @@
         "placeholders": {}
     },
     "getStarted": "Начать",
-    "writeAndSpeakWorryFree": "Пишите и говорите без забот с Pangea Bot в любое время и в любом месте!",
-    "joinLearningCommunities": "Присоединяйтесь к международным учебным сообществам или... создайте свое собственное!",
     "playConversationGames": "Играйте в разговорные игры с ботом, одноклассниками и новыми друзьями!",
     "jumpIntoConversation": "Погружайтесь в разговор с первого дня с помощью инструментов AI для написания!",
     "playPersonalizedGames": "Играйте в практические игры, персонализированные под ваши словарные и грамматические потребности!",
     "learnLanguageWhileTexting": "Изучайте язык, переписываясь с друзьями!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11122,5 +11112,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Пишите и говорите без забот с Pangea Bot в любое время и в любом месте!",
+    "joinLearningCommunities": "Присоединяйтесь к международным учебным сообществам или создайте свое собственное!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

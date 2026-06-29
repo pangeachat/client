@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-29 10:33:38.811463",
+    "@@last_modified": "2026-06-29 12:24:47.838494",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8960,21 +8960,11 @@
         "placeholders": {}
     },
     "getStarted": "Loslegen",
-    "writeAndSpeakWorryFree": "Schreiben und sprechen Sie sorgenfrei mit Pangea Bot jederzeit und überall!",
-    "joinLearningCommunities": "Treten Sie internationalen Lerncommunities bei oder... starten Sie Ihre eigene!",
     "playConversationGames": "Spielen Sie Gesprächsspiele mit dem Bot, Klassenkameraden und neuen Freunden!",
     "jumpIntoConversation": "Springen Sie ab dem ersten Tag mit KI-Schreibwerkzeugen in Gespräche!",
     "playPersonalizedGames": "Spielen Sie Übungsspiele, die auf Ihren Wortschatz und Ihre Grammatikbedürfnisse zugeschnitten sind!",
     "learnLanguageWhileTexting": "Lernen Sie eine Sprache, während Sie mit Ihren Freunden texten!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10087,5 +10077,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Schreiben und sprechen Sie sorgenfrei mit Pangea Bot jederzeit und überall!",
+    "joinLearningCommunities": "Treten Sie internationalen Lerncommunities bei oder gründen Sie Ihre eigene!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

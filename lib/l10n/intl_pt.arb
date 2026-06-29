@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 10:33:37.104092",
+    "@@last_modified": "2026-06-29 12:24:45.181466",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10099,21 +10099,11 @@
         "placeholders": {}
     },
     "getStarted": "Comece agora",
-    "writeAndSpeakWorryFree": "Escreva e fale sem preocupações com o Pangea Bot a qualquer hora, em qualquer lugar!",
-    "joinLearningCommunities": "Junte-se a comunidades de aprendizado internacionais ou... comece a sua própria!",
     "playConversationGames": "Jogue jogos de conversa com o bot, colegas de classe e novos amigos!",
     "jumpIntoConversation": "Entre na conversa desde o primeiro dia com ferramentas de escrita de IA!",
     "playPersonalizedGames": "Jogue jogos de prática personalizados para suas necessidades de vocabulário e gramática!",
     "learnLanguageWhileTexting": "Aprenda um idioma enquanto envia mensagens para seus amigos!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11226,5 +11216,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Escreva e fale sem preocupações com o Pangea Bot a qualquer hora, em qualquer lugar!",
+    "joinLearningCommunities": "Junte-se a comunidades de aprendizado internacionais ou comece a sua própria!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-29 10:34:11.293097",
+    "@@last_modified": "2026-06-29 12:25:39.126363",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10049,21 +10049,11 @@
         "placeholders": {}
     },
     "getStarted": "დაწყება",
-    "writeAndSpeakWorryFree": "წერეთ და ისაუბრეთ უსიამოვნებების გარეშე Pangea Bot-თან ნებისმიერ დროს, ნებისმიერ ადგილას!",
-    "joinLearningCommunities": "შეერთდით საერთაშორისო სასწავლო საზოგადოებებს ან... დაიწყეთ თქვენი საკუთარი!",
     "playConversationGames": "თამაშეთ საუბრის თამაშები ბოტთან, კლასელებთან და ახალ მეგობრებთან!",
     "jumpIntoConversation": "შეაბიჯეთ საუბარში პირველი დღიდან AI წერილის ხელსაწყოებით!",
     "playPersonalizedGames": "თამაშეთ პრაქტიკის თამაშები, რომლებიც მორგებულია თქვენს ლექსიკასა და გრამატიკის საჭიროებებს!",
     "learnLanguageWhileTexting": "სწავლეთ ენა მეგობრებთან ტექსტური შეტყობინებების გაგზავნისას!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11176,5 +11166,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "წერეთ და ილაპარაკეთ უსიამოვნო განცდების გარეშე Pangea Bot-თან ნებისმიერ დროს, ნებისმიერ ადგილას!",
+    "joinLearningCommunities": "შეერთდით საერთაშორისო სასწავლო საზოგადოებებს, ან დაიწყეთ თქვენი საკუთარი!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }
