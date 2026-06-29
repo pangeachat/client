@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:diacritic/diacritic.dart';
@@ -15,7 +14,6 @@ import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dar
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
