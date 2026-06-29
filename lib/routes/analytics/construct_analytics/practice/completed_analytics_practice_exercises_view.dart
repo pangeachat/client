@@ -7,11 +7,9 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/percent_marker_bar.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/stat_card.dart';
-import 'package:fluffychat/widgets/animated_progress_bar.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -70,29 +68,12 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                 );
               },
             ),
-            Column(
-              spacing: 16.0,
-              children: [
-                FutureBuilder(
-                  future: levelProgress,
-                  builder: (context, snapshot) => AnimatedProgressBar(
-                    height: 20.0,
-                    widthPercent: snapshot.data ?? 0.0,
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.surfaceContainerHighest,
-                    duration: const Duration(milliseconds: 500),
-                  ),
-                ),
-
-                Text(
-                  "+ ${session.state.allXPGained} XP",
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: AppConfig.goldLight,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            Text(
+              "+ ${session.state.allXPGained} XP",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: AppConfig.goldLight,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             StatCard(
               icon: Icons.my_location,
@@ -117,7 +98,6 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
               text: "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
               isAchievement: timeAchievement,
               achievementText: "+ ${session.state.timeBonusXP} XP",
-              child: TimeStarsWidget(elapsedSeconds: elapsedSeconds),
             ),
             Column(
               spacing: 16.0,
@@ -166,36 +146,6 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class TimeStarsWidget extends StatelessWidget {
-  final int elapsedSeconds;
-
-  const TimeStarsWidget({required this.elapsedSeconds, super.key});
-
-  int get starCount {
-    const timeForBonus = AnalyticsPracticeConstants.timeForBonus;
-    if (elapsedSeconds <= timeForBonus) return 5;
-    if (elapsedSeconds <= timeForBonus * 1.5) return 4;
-    if (elapsedSeconds <= timeForBonus * 2) return 3;
-    if (elapsedSeconds <= timeForBonus * 2.5) return 2;
-    return 1; // anything above 2.5x timeForBonus
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: List.generate(
-        5,
-        (index) => Icon(
-          index < starCount ? Icons.star : Icons.star_outline,
-          color: AppConfig.goldLight,
-          size: 36,
         ),
       ),
     );

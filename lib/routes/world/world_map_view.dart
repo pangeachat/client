@@ -123,7 +123,7 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// are constructed — mutates tracking maps without calling setState.
   void _updateExiting(_PinRenderer render) {
     final currentNonLargeIds = {
-      for (final c in render.nonLargeCards) c.activityId
+      for (final c in render.nonLargeCards) c.activityId,
     };
     final largeIds = {for (final c in render.largeCards) c.activityId};
     final allCurrentIds = {...currentNonLargeIds, ...largeIds};
@@ -415,10 +415,8 @@ class _WorldMapViewState extends State<WorldMapView> {
     ActivityPlanRepo.instance.ensure(card.activityId);
     final plan = ActivityPlanRepo.instance.cachedPlan(card.activityId);
 
-    final joinableActivity =
-        widget.controller.client?.bestJoinableActivityInstance(
-      card.activityId,
-    );
+    final joinableActivity = widget.controller.client
+        ?.bestJoinableActivityInstance(card.activityId);
 
     final state = render.stateOf(card.activityId);
     final tier = PinTier.large;

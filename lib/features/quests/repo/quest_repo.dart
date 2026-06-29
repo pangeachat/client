@@ -212,21 +212,23 @@ class QuestRepo {
   static Future<QuestOutline> outline(
     String questId, {
     bool forceRefresh = false,
-  }) {
+  }) async {
     if (!forceRefresh) {
       final cached = _outlineCache[questId];
       if (cached != null) return Future.value(cached);
       final inflight = _outlineInflight[questId];
       if (inflight != null) return inflight;
     }
-    final future = _buildOutline(questId)
-        .then((outline) {
-          _outlineCache[questId] = outline;
-          return outline;
-        })
-        .whenComplete(() => _outlineInflight.remove(questId));
+
+    final future = _buildOutline(questId);
     _outlineInflight[questId] = future;
-    return future;
+
+    final outline = await future;
+
+    _outlineCache[questId] = outline;
+    _outlineInflight.remove(questId);
+
+    return outline;
   }
 
   /// Drop the cached outline for [questId] (e.g. after a course edit).

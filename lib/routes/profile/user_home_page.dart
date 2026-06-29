@@ -10,7 +10,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
-import 'package:fluffychat/routes/settings/settings_learning/learning_settings_tiles.dart';
+import 'package:fluffychat/routes/settings/settings_learning/country_picker_tile.dart';
+import 'package:fluffychat/routes/settings/settings_learning/gender_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
@@ -216,6 +217,7 @@ class _UserHomePageState extends State<UserHomePage> {
     return Scaffold(
       body: MaxWidthBody(
         child: Column(
+          spacing: 16.0,
           children: [
             FutureBuilder<Profile>(
               future: _profileFutureGetter,
@@ -227,11 +229,7 @@ class _UserHomePageState extends State<UserHomePage> {
                 final displayname =
                     profile?.displayName ?? mxid.localpart ?? mxid;
                 return Padding(
-                  padding: EdgeInsetsGeometry.only(
-                    left: 16.0,
-                    right: 16.0,
-                    bottom: 16.0,
-                  ),
+                  padding: EdgeInsetsGeometry.all(16.0),
                   child: Row(
                     children: [
                       Stack(
@@ -306,10 +304,63 @@ class _UserHomePageState extends State<UserHomePage> {
               },
             ),
             Divider(color: theme.dividerColor, height: 1),
-            LearningSettingsTiles(
-              viewModel: _viewModel,
-              languageErrorNotifier: _languageMatchError,
-              aboutTextController: _aboutTextController,
+            ListenableBuilder(
+              listenable: _viewModel,
+              builder: (context, _) => Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
+                    ),
+                    child: CountryPickerDropdown(
+                      _viewModel.country,
+                      _viewModel.setCountry,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
+                    ),
+                    child: GenderDropdown(
+                      initialGender: _viewModel.gender,
+                      onChanged: _viewModel.setGender,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
+                    ),
+                    child: TextField(
+                      controller: _aboutTextController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).aboutMeHint,
+                        labelText: L10n.of(context).aboutMeHint,
+                      ),
+                      onChanged: (val) => _viewModel.setAbout(val),
+                      minLines: 1,
+                      maxLines: 3,
+                      maxLength: 100,
+                    ),
+                  ),
+                  SwitchListTile.adaptive(
+                    value: _viewModel.publicProfile,
+                    onChanged: _viewModel.setPublicProfile,
+                    title: Text(L10n.of(context).publicProfileTitle),
+                    subtitle: Text(L10n.of(context).publicProfileDesc),
+                    activeThumbColor: AppConfig.activeToggleColor,
+                  ),
+                  SwitchListTile.adaptive(
+                    value: _viewModel.showDeveloperOptions,
+                    title: Text(L10n.of(context).showDeveloperOptions),
+                    subtitle: Text(L10n.of(context).showDeveloperOptionsDesc),
+                    activeThumbColor: AppConfig.activeToggleColor,
+                    onChanged: _viewModel.setShowDeveloperOptions,
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-29 10:33:47.393744",
+    "@@last_modified": "2026-06-29 12:25:00.934106",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9700,21 +9700,11 @@
         "placeholders": {}
     },
     "getStarted": "เริ่มต้น",
-    "writeAndSpeakWorryFree": "เขียนและพูดอย่างไร้กังวลกับ Pangea Bot ได้ทุกที่ทุกเวลา!",
-    "joinLearningCommunities": "เข้าร่วมชุมชนการเรียนรู้ระดับนานาชาติหรือ... เริ่มชุมชนของคุณเอง!",
     "playConversationGames": "เล่นเกมสนทนากับบอท เพื่อนร่วมชั้น และเพื่อนใหม่!",
     "jumpIntoConversation": "กระโดดเข้าสู่การสนทนาตั้งแต่วันแรกด้วยเครื่องมือเขียน AI!",
     "playPersonalizedGames": "เล่นเกมฝึกฝนที่ปรับให้เหมาะกับคำศัพท์และความต้องการไวยากรณ์ของคุณ!",
     "learnLanguageWhileTexting": "เรียนรู้ภาษาในขณะที่ส่งข้อความหามิตรของคุณ!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10827,5 +10817,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "เขียนและพูดอย่างไร้กังวลกับ Pangea Bot ได้ทุกที่ทุกเวลา!",
+    "joinLearningCommunities": "เข้าร่วมชุมชนการเรียนรู้ระดับนานาชาติ หรือเริ่มชุมชนของคุณเอง!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

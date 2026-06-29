@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-29 10:33:38.062200",
+    "@@last_modified": "2026-06-29 12:24:46.709321",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8978,21 +8978,11 @@
         "placeholders": {}
     },
     "getStarted": "Alusta",
-    "writeAndSpeakWorryFree": "Kirjuta ja räägi murevabalt Pangea Boti abil igal ajal, igal pool!",
-    "joinLearningCommunities": "Liitu rahvusvaheliste õpikogukondadega või... alusta oma!",
     "playConversationGames": "Mängi vestlusmänge boti, klassikaaslaste ja uute sõpradega!",
     "jumpIntoConversation": "Sukeldu vestlusesse alates esimesest päevast AI kirjutamisvahenditega!",
     "playPersonalizedGames": "Mängi harjutusmänge, mis on kohandatud sinu sõnavara ja grammatika vajadustele!",
     "learnLanguageWhileTexting": "Õpi keelt, samal ajal kui saadad sõnumit oma sõpradele!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10105,5 +10095,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Kirjuta ja räägi murevabalt Pangea Boti abil igal ajal ja igas kohas!",
+    "joinLearningCommunities": "Liitu rahvusvaheliste õpikogukondadega või alusta oma!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

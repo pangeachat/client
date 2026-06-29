@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -85,9 +83,6 @@ class SelectRoleSessionController extends State<SelectRoleSession>
           ? L10n.of(context).chooseRole
           : L10n.of(context).chooseRoleToParticipate;
     }
-
-    // A role is selected: its goals render in the goals dropdown, so the
-    // description area is hidden to avoid duplicating the goal text.
     return null;
   }
 
@@ -143,20 +138,8 @@ class SelectRoleSessionController extends State<SelectRoleSession>
 
   @override
   bool canSelectRole(String id) {
-    final activity = widget.activity;
-    if (activity == null) return false;
-
-    final availableRoles = activity.roles;
-    final assignedRoles =
-        activityRoom?.assignedRoles ??
-        widget.summary?.joinedUsersWithRoles ??
-        {};
-
-    final unassignedIds = availableRoles.keys
-        .where((id) => !assignedRoles.containsKey(id))
-        .toList();
-
-    return unassignedIds.contains(id);
+    if (widget.activity == null) return false;
+    return !widget.controller.assignedRoles.containsKey(id);
   }
 
   @override

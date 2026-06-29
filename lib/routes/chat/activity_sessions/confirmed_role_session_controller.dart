@@ -16,7 +16,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -43,8 +42,6 @@ class ConfirmedRoleSession extends StatefulWidget {
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     implements ActivitySessionStateController {
-  ConfirmedRoleSessionController();
-
   Timer? _pingCooldown;
   final _goalsHandler = GoalsSubscriptionHandler();
 
@@ -145,9 +142,6 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   }
 
   void inviteFriends() {
-    // No marker is written here: the bot is auto-invited and stays idle, leaving
-    // the open seat for the friend. When they join (2 humans) the bot is a silent
-    // moderator. Only "play with bot" marks the bot as a participant (#7027).
     NavigationUtil.goToSpaceRoute(widget.room.id, ['invite'], context);
   }
 
@@ -181,7 +175,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
     if (mounted) {
       setState(() {});
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(L10n.of(context).pingSent, textAlign: TextAlign.center),
           duration: const Duration(milliseconds: 2000),

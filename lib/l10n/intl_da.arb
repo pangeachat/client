@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-29 10:33:26.110019",
+    "@@last_modified": "2026-06-29 12:24:27.501428",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10075,21 +10075,11 @@
         "placeholders": {}
     },
     "getStarted": "Kom i gang",
-    "writeAndSpeakWorryFree": "Skriv og tal bekymringsfrit med Pangea Bot når som helst, hvor som helst!",
-    "joinLearningCommunities": "Deltag i internationale læringsfællesskaber eller... start dit eget!",
     "playConversationGames": "Spil samtalespil med botten, klassekammerater og nye venner!",
     "jumpIntoConversation": "Spring ind i samtalen fra dag ét med AI skriveværktøjer!",
     "playPersonalizedGames": "Spil øvelsesspil tilpasset dit ordforråd og dine grammatikbehov!",
     "learnLanguageWhileTexting": "Lær et sprog mens du skriver til dine venner!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11202,5 +11192,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Skriv og tal bekymringsfrit med Pangea Bot når som helst, hvor som helst!",
+    "joinLearningCommunities": "Deltag i internationale læringsfællesskaber, eller start dit eget!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }
