@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
@@ -13,6 +14,8 @@ import 'package:fluffychat/features/analytics_data/analytics_init_error_indicato
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -110,7 +113,7 @@ class AnalyticsActivityItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final activity = room.activityPlan;
     final title = activity?.title ?? '';
-    final objective = activity?.learningObjective ?? '';
+    final goals = room.ownRole?.allGoals;
 
     final cefrLevel = room.activitySummaryByL1?.summary?.participants
         .firstWhereOrNull((p) => p.participantId == room.client.userID)
@@ -139,19 +142,15 @@ class AnalyticsActivityItem extends StatelessWidget {
             ),
           ),
           title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
-          subtitle: Row(
-            crossAxisAlignment: .start,
-            mainAxisAlignment: .center,
-            children: [
-              Expanded(
-                child: Text(
-                  objective,
-                  style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+          subtitle: ActivityStarRow(
+            total: goals!.length,
+            earned:
+                room
+                    .orchestratorAwardedGoals
+                    .awards[room.ownRoleState?.id]
+                    ?.length ??
+                0,
+            iconSize: 22.0,
           ),
           trailing: cefrLevel != null
               ? Padding(
