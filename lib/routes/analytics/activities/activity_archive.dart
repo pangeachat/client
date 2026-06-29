@@ -145,16 +145,18 @@ class AnalyticsActivityItem extends StatelessWidget {
             ),
           ),
           title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
-          subtitle: ActivityStarRow(
-            total: goals!.length,
-            earned:
-                room
-                    .orchestratorAwardedGoals
-                    .awards[room.ownRoleState?.id]
-                    ?.length ??
-                0,
-            iconSize: 22.0,
-          ),
+          subtitle: goals != null
+              ? ActivityStarRow(
+                  total: goals.length,
+                  earned:
+                      room
+                          .orchestratorAwardedGoals
+                          .awards[room.ownRoleState?.id]
+                          ?.length ??
+                      0,
+                  iconSize: 22.0,
+                )
+              : null,
           trailing: cefrLevel != null
               ? Semantics(
                   label: L10n.of(context).difficultyLabel(cefrLevel),
