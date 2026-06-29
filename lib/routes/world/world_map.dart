@@ -446,29 +446,36 @@ class WorldMapController extends State<WorldMap>
         size.height - margin,
       );
 
-      // Minimal screen shift to bring the card inside the safe area; if the card
-      // is larger than the safe area, align its top/left so the header stays
-      // visible rather than zooming out (cards never shrink).
-      double shift(double lo, double hi, double safeLo, double safeHi) {
-        if (lo < safeLo) return safeLo - lo;
-        if (hi > safeHi) return safeHi - hi;
-        return 0;
-      }
+      // Minimal screen shift to bring the card inside the safe area.
+      final shift = minimalShiftToFit(card, safe);
+      if (shift == Offset.zero) return; // already fully visible — don't move
 
-      final dx = shift(card.left, card.right, safe.left, safe.right);
-      final dy = shift(card.top, card.bottom, safe.top, safe.bottom);
-      if (dx == 0 && dy == 0) return; // already fully visible — don't move
-
-      // Pan so the content shifts by (dx, dy): the camera centre moves to the
+      // Pan so the content shifts by [shift]: the camera centre moves to the
       // LatLng currently shown at (screen-centre − shift). Zoom is unchanged.
       final screenCenter = Offset(size.width / 2, size.height / 2);
-      final newCenter = camera.screenOffsetToLatLng(
-        screenCenter - Offset(dx, dy),
-      );
+      final newCenter = camera.screenOffsetToLatLng(screenCenter - shift);
       _animateCameraTo(newCenter, camera.zoom);
     } catch (_) {
       // Camera not ready yet; a later interaction will reframe.
     }
+  }
+
+  /// The minimal screen translation that brings [card] fully inside [safe]: zero
+  /// on an axis where it already fits, otherwise just enough to clear the
+  /// overflowing edge. If [card] is larger than [safe] on an axis, aligns its low
+  /// edge (top/left) so the header stays visible rather than zooming (#7155).
+  @visibleForTesting
+  static Offset minimalShiftToFit(Rect card, Rect safe) {
+    double axis(double lo, double hi, double safeLo, double safeHi) {
+      if (lo < safeLo) return safeLo - lo;
+      if (hi > safeHi) return safeHi - hi;
+      return 0;
+    }
+
+    return Offset(
+      axis(card.left, card.right, safe.left, safe.right),
+      axis(card.top, card.bottom, safe.top, safe.bottom),
+    );
   }
 
   void deselectActivity() {
