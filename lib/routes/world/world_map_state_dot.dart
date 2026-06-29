@@ -77,7 +77,9 @@ class _WorldMapDotState extends State<WorldMapDot>
         excludeFromSemantics: true,
         child: Semantics(
           button: !widget.dying,
-          label: widget.dying ? '' : L10n.of(context).activityLabel(widget.card.title),
+          label: widget.dying
+              ? ''
+              : L10n.of(context).activityLabel(widget.card.title),
           excludeSemantics: true,
           child: GestureDetector(
             onTap: widget.dying ? null : widget.onTap,
