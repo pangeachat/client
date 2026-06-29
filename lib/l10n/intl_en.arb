@@ -4942,6 +4942,7 @@
         }
     },
     "resetMapView": "Reset map view",
+    "signUpWithEmail": "Sign up with email",
     "unreadLabel": "Unread: {count}",
     "@unreadLabel": {
         "placeholders": {
