@@ -13,6 +13,7 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
@@ -134,10 +135,12 @@ class AnalyticsActivityItem extends StatelessWidget {
               duration: FluffyThemes.animationDuration,
               curve: FluffyThemes.animationCurve,
               scale: hovered ? 1.1 : 1.0,
-              child: Avatar(
-                borderRadius: BorderRadius.circular(4.0),
-                mxContent: room.avatar,
-                name: room.getLocalizedDisplayname(),
+              child: ExcludeSemantics(
+                child: Avatar(
+                  borderRadius: BorderRadius.circular(4.0),
+                  mxContent: room.avatar,
+                  name: room.getLocalizedDisplayname(),
+                ),
               ),
             ),
           ),
@@ -153,14 +156,19 @@ class AnalyticsActivityItem extends StatelessWidget {
             iconSize: 22.0,
           ),
           trailing: cefrLevel != null
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  child: Text(
-                    cefrLevel.toUpperCase(),
-                    style: const TextStyle(fontSize: 14.0),
+              ? Semantics(
+                  label: L10n.of(context).difficultyLabel(cefrLevel),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    child: ExcludeSemantics(
+                      child: Text(
+                        cefrLevel.toUpperCase(),
+                        style: const TextStyle(fontSize: 14.0),
+                      ),
+                    ),
                   ),
                 )
               : null,

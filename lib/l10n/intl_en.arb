@@ -4950,5 +4950,24 @@
         }
     },
     "writeAndSpeakWorryFree": "Write and speak worry-free with Pangea Bot anytime, anywhere!",
+    "starRowLabel": "{filled} out of {total} stars have been completed",
+    "@starRowLabel": {
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "difficultyLabel": "Difficulty: {cefr}",
+    "@difficultyLabel": {
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
     "joinLearningCommunities": "Join international learning communities, or start your own!"
 }
