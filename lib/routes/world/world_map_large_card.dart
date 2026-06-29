@@ -23,6 +23,11 @@ typedef LargeCardParticipant = ({Uri? avatar, String name});
 /// The full [plan] carries the image and goal total - null while it hydrates
 /// Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
+  /// Height of the downward caret that tethers the card to its pin. The marker
+  /// reserves this beneath the card so the tail isn't clipped (#7153).
+  static const double tailHeight = 11.0;
+  static const double _tailWidth = 22.0;
+
   final QuestActivityCard card;
   final ActivityPinState state;
   final bool pinged;
@@ -175,7 +180,29 @@ class WorldMapLargeCard extends StatelessWidget {
       ),
     );
 
-    if (onClose == null) return cardButton;
+    // A downward caret tethers the card to its pin: the card floats just above
+    // the dot and the tail points back to it. Same surface fill as the card,
+    // with the accent border continued down its two edges and overlapping the
+    // card's bottom border so the two read as one speech-bubble shape (#7153,
+    // world-map Figma).
+    final cardWithTail = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        cardButton,
+        Transform.translate(
+          offset: const Offset(0, -1.5),
+          child: CustomPaint(
+            size: const Size(_tailWidth, tailHeight),
+            painter: _CaretPainter(
+              fill: Theme.of(context).colorScheme.surface,
+              edge: state.accent,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    if (onClose == null) return cardWithTail;
 
     // The dismiss sits at the card's top-right corner. The Stack keeps it out of
     // the card's own tap target so tapping the X clears the peek (onClose) rather
@@ -183,7 +210,7 @@ class WorldMapLargeCard extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        cardButton,
+        cardWithTail,
         Positioned(top: 2, right: 2, child: _DismissButton(onPressed: onClose!)),
       ],
     );
@@ -216,6 +243,45 @@ class _DismissButton extends StatelessWidget {
       ),
     );
   }
+}
+
+/// A downward speech-bubble tail: a [fill]-filled triangle whose two upper edges
+/// are stroked in [edge] (the card's accent border), with the top (base) left
+/// open so it merges into the card's bottom border above it.
+class _CaretPainter extends CustomPainter {
+  final Color fill;
+  final Color edge;
+
+  const _CaretPainter({required this.fill, required this.edge});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final triangle = Path()
+      ..moveTo(0, 0)
+      ..lineTo(w, 0)
+      ..lineTo(w / 2, h)
+      ..close();
+    canvas.drawPath(triangle, Paint()..color = fill);
+
+    // Stroke only the two diagonals; the base connects to the card border above.
+    canvas.drawPath(
+      Path()
+        ..moveTo(0, 0)
+        ..lineTo(w / 2, h)
+        ..moveTo(w, 0)
+        ..lineTo(w / 2, h),
+      Paint()
+        ..color = edge
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2
+        ..strokeJoin = StrokeJoin.round,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_CaretPainter old) => old.fill != fill || old.edge != edge;
 }
 
 class _Header extends StatelessWidget {
