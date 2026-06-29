@@ -266,6 +266,7 @@ class _LoginCarousel extends StatelessWidget {
             height: double.infinity,
             viewportFraction: 1.0,
             autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 8),
             onPageChanged: (index, _) => onPageChange(index),
           ),
         ),
@@ -311,6 +312,7 @@ class _LoginCarousel extends StatelessWidget {
         options: CarouselOptions(
           viewportFraction: 1.0,
           autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 8),
           onPageChanged: (index, _) {
             onPageChange(index);
           },
