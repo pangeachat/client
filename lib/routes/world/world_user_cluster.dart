@@ -183,7 +183,7 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final label = L10n.of(context).account;
+    final label = L10n.of(context).settings;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Tooltip(

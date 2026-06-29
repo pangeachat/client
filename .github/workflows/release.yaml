@@ -65,6 +65,11 @@ jobs:
       # bundled asset, so the build output needs an explicit copy.
       - name: Add env to web root
         run: cp .env build/web/.env
+      - name: Publish self-unregistering service worker
+        # Overwrites Flutter's empty (--pwa-strategy=none) flutter_service_worker.js
+        # so browsers still holding the old offline-first worker evict it. Inert for
+        # fresh visitors, who never register a service worker. See the script header.
+        run: cp scripts/self_destroying_service_worker.js build/web/flutter_service_worker.js
       - name: Create archive
         run: tar -czf pangeachat-web.tar.gz build/web/
       - name: Upload Web Build

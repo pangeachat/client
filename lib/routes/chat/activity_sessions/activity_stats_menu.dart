@@ -183,6 +183,7 @@ class ActivityStatsMenu extends StatelessWidget {
                                           ActivitySessionConstants.goalMenuStarTargetId(
                                             visibleGoal.id,
                                           ),
+                                      maxLines: showDropdown ? null : 2,
                                     ),
                                   ),
                                   if (_showDoneButtonHint && !showDropdown)
