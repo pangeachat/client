@@ -55,6 +55,12 @@ jobs:
           VERSION=${GITHUB_SHA::8}
           sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html
         
+      - name: Publish self-unregistering service worker
+        # Overwrites Flutter's empty (--pwa-strategy=none) flutter_service_worker.js
+        # so browsers still holding the old offline-first worker evict it. Inert for
+        # fresh visitors, who never register a service worker. See the script header.
+        run: cp scripts/self_destroying_service_worker.js build/web/flutter_service_worker.js
+
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

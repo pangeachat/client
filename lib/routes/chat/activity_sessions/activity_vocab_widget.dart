@@ -166,25 +166,27 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   void _showWordCard(Vocab vocab) {
     final target = _vocabKey(vocab);
-    OverlayUtil.showPositionedCard(
-      context: context,
-      cardToShow: _WordCardWrapper(
-        v: vocab,
-        langCode: widget.langCode,
-        target: target,
-        onClose: () {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted) setState(() => _selectedVocab = null);
-          });
-        },
-      ),
-      displayDetails: PositionedOverlayDisplayDetails(
-        overlayKey: target,
-        transformTargetId: target,
-        closePrevOverlay: false,
-        addBorder: false,
-        maxWidth: AppConfig.toolbarMinWidth,
-        maxHeight: AppConfig.toolbarMaxHeight,
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => OverlayUtil.showPositionedCard(
+        context: context,
+        cardToShow: _WordCardWrapper(
+          v: vocab,
+          langCode: widget.langCode,
+          target: target,
+          onClose: () {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted) setState(() => _selectedVocab = null);
+            });
+          },
+        ),
+        displayDetails: PositionedOverlayDisplayDetails(
+          overlayKey: target,
+          transformTargetId: target,
+          closePrevOverlay: false,
+          addBorder: false,
+          maxWidth: AppConfig.toolbarMinWidth,
+          maxHeight: AppConfig.toolbarMaxHeight,
+        ),
       ),
     );
   }
