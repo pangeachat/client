@@ -55,22 +55,32 @@ class FreeTrialStepView extends StatelessWidget {
                               Column(
                                 spacing: 16.0,
                                 children: [
-                                  Column(
-                                    spacing: 8.0,
-                                    children: [
-                                      Text(
-                                        L10n.of(context).thanksForSigningUp,
-                                        style: theme.textTheme.bodyLarge,
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
                                       ),
-                                      Text(
-                                        L10n.of(context).sevenDaysFree,
-                                        style: theme.textTheme.displayMedium
-                                            ?.copyWith(
-                                              color: gold,
-                                              fontWeight: FontWeight.w900,
-                                            ),
-                                      ),
-                                    ],
+                                    ),
+                                    child: Column(
+                                      spacing: 8.0,
+                                      children: [
+                                        Text(
+                                          L10n.of(context).thanksForSigningUp,
+                                          style: theme.textTheme.bodyLarge,
+                                        ),
+
+                                        Text(
+                                          L10n.of(context).sevenDaysFree,
+                                          style: theme.textTheme.displayMedium
+                                              ?.copyWith(
+                                                color: gold,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   ProFeaturesCard(
                                     padding: const EdgeInsets.all(12.0),
@@ -79,10 +89,19 @@ class FreeTrialStepView extends StatelessWidget {
                                     frameColor: gold,
                                     borderWidth: 2,
                                   ),
-                                  Text(
-                                    L10n.of(context).manageTrialInSettings,
-                                    textAlign: TextAlign.center,
-                                    style: theme.textTheme.bodyLarge,
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      L10n.of(context).manageTrialInSettings,
+                                      textAlign: TextAlign.center,
+                                      style: theme.textTheme.bodyLarge,
+                                    ),
                                   ),
                                 ],
                               ),
