@@ -94,6 +94,15 @@ class WorldMapPinsManager {
   List<LatLng> get focusPoints =>
       _pins.map((c) => c.point).whereType<LatLng>().toList();
 
+  /// The map coordinate of a specific activity pin, or null if it isn't in the
+  /// current set — used to reframe a tap-selected card on-screen (#7155).
+  LatLng? pointForActivity(String activityId) {
+    for (final card in _pins) {
+      if (card.activityId == activityId) return card.point;
+    }
+    return null;
+  }
+
   List<QuestActivityCard> filteredPins(
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();

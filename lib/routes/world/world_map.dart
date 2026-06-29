@@ -405,8 +405,70 @@ class WorldMapController extends State<WorldMap>
   /// [onMapPositionChanged]). See world-map.instructions.md.
   void selectActivity(String activityId) {
     final changed = _pinsManager.selectActivity(activityId);
-    if (changed) setState(() {});
+    if (changed) {
+      setState(() {});
+      _nudgeSelectionOnScreen(activityId);
+    }
     ActivityPlanRepo.instance.ensure(activityId);
+  }
+
+  /// A tap-selected pin promotes to a large card that floats up from it. If that
+  /// card would clip a viewport edge or sit under a side panel, glide the camera
+  /// the minimum needed to bring it into the uncovered canvas — keeping the zoom,
+  /// and not moving at all when it already fits (#7155; world-map.instructions.md
+  /// step 4 — selected cards never shrink, and a deliberate tap glides at once).
+  void _nudgeSelectionOnScreen(String activityId) {
+    final point = _pinsManager.pointForActivity(activityId);
+    if (point == null) return;
+    try {
+      final camera = mapController.camera;
+      final size = camera.size;
+      final pin = camera.latLngToScreenOffset(point);
+
+      // The card spans up from its pin (the pin is the card's bottom-centre).
+      // Use the tallest card height (+ tail) so a shorter card is never clipped.
+      const cardWidth = 260.0; // PinTier.large.dotWidth
+      final cardHeight =
+          PinTier.large.dotHeight(ActivityPinState.joinable) + 12.0;
+      final card = Rect.fromLTWH(
+        pin.dx - cardWidth / 2,
+        pin.dy - cardHeight,
+        cardWidth,
+        cardHeight,
+      );
+
+      // The uncovered canvas: the viewport minus the side panels, with a margin.
+      const margin = 12.0;
+      final safe = Rect.fromLTRB(
+        widget.leftOverlayWidth + margin,
+        margin,
+        size.width - widget.rightOverlayWidth - margin,
+        size.height - margin,
+      );
+
+      // Minimal screen shift to bring the card inside the safe area; if the card
+      // is larger than the safe area, align its top/left so the header stays
+      // visible rather than zooming out (cards never shrink).
+      double shift(double lo, double hi, double safeLo, double safeHi) {
+        if (lo < safeLo) return safeLo - lo;
+        if (hi > safeHi) return safeHi - hi;
+        return 0;
+      }
+
+      final dx = shift(card.left, card.right, safe.left, safe.right);
+      final dy = shift(card.top, card.bottom, safe.top, safe.bottom);
+      if (dx == 0 && dy == 0) return; // already fully visible — don't move
+
+      // Pan so the content shifts by (dx, dy): the camera centre moves to the
+      // LatLng currently shown at (screen-centre − shift). Zoom is unchanged.
+      final screenCenter = Offset(size.width / 2, size.height / 2);
+      final newCenter = camera.screenOffsetToLatLng(
+        screenCenter - Offset(dx, dy),
+      );
+      _animateCameraTo(newCenter, camera.zoom);
+    } catch (_) {
+      // Camera not ready yet; a later interaction will reframe.
+    }
   }
 
   void deselectActivity() {
