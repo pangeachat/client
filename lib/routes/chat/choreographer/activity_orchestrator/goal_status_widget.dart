@@ -8,11 +8,13 @@ class GoalStatusWidget extends StatelessWidget {
   final ActivityRoleGoal goal;
   final bool complete;
   final String? starTarget;
+  final int? maxLines;
 
   const GoalStatusWidget({
     required this.goal,
     required this.complete,
     this.starTarget,
+    this.maxLines,
     super.key,
   });
 
@@ -48,8 +50,8 @@ class GoalStatusWidget extends StatelessWidget {
         Flexible(
           child: Text(
             goal.description,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+            maxLines: maxLines,
+            overflow: maxLines != null ? TextOverflow.ellipsis : null,
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
         ),

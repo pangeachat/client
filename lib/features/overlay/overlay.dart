@@ -8,7 +8,6 @@ import 'package:fluffychat/features/overlay/overlay_container.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/overlay/top_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
-import '../../config/themes.dart';
 import '../../pangea/common/utils/error_handler.dart';
 import '../../widgets/matrix.dart';
 
@@ -80,23 +79,31 @@ class OverlayUtil {
     required PositionedOverlayDisplayDetails displayDetails,
   }) {
     try {
-      final renderBox = MatrixState.pAnyState.getRenderBox(
+      final targetRenderBox = MatrixState.pAnyState.getRenderBox(
         displayDetails.transformTargetId,
       );
 
-      if (renderBox == null) {
+      final parentRenderBox =
+          Overlay.of(context).context.findRenderObject() as RenderBox?;
+      if (parentRenderBox == null || !parentRenderBox.hasSize) {
+        debugPrint("Cannot get renderbox for parent overlay");
+        return;
+      }
+
+      if (targetRenderBox == null) {
         debugPrint("layerLinkAndKey.key.currentContext is null");
         return;
       }
 
       final offset = _getPositionedOffset(
         context,
-        renderBox,
+        targetRenderBox,
+        parentRenderBox,
         displayDetails.maxWidth,
       );
 
       final hasTopOverflow = _hasTopOverflow(
-        renderBox,
+        targetRenderBox,
         displayDetails.maxHeight,
       );
 
@@ -135,38 +142,33 @@ class OverlayUtil {
 
   static Offset _getPositionedOffset(
     BuildContext context,
-    RenderBox renderBox,
+    RenderBox targetRenderBox,
+    RenderBox parentRenderBox,
     double maxWidth,
   ) {
-    final targetOffset = (renderBox).localToGlobal(Offset.zero);
-    final targetSize = renderBox.size;
+    const horizontalPadding = 10.0;
 
-    final screenWidth = MediaQuery.widthOf(context);
-    final columnWidth = FluffyThemes.isColumnMode(context)
-        ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-        : 0;
+    final targetSize = targetRenderBox.size;
+    final targetOffset = parentRenderBox.globalToLocal(
+      targetRenderBox.localToGlobal(Offset.zero),
+    );
 
-    final horizontalMidpoint =
-        (targetOffset.dx - columnWidth) + (targetSize.width / 2);
-    final halfMaxWidth = maxWidth / 2;
+    final midpoint = targetOffset.dx + (targetSize.width / 2);
+    final leftEdge = midpoint - (maxWidth / 2);
+    final rightEdge = midpoint + (maxWidth / 2);
 
-    final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-    final hasRightOverflow =
-        (horizontalMidpoint + halfMaxWidth) > (screenWidth - columnWidth - 10);
+    final minLeft = horizontalPadding;
+    final maxRight = parentRenderBox.size.width - horizontalPadding;
 
-    if (hasLeftOverflow) {
-      final xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
-      return Offset(xOffset, 0);
+    double dx = 0;
+
+    if (leftEdge < minLeft) {
+      dx = minLeft - leftEdge;
+    } else if (rightEdge > maxRight) {
+      dx = maxRight - rightEdge;
     }
 
-    if (hasRightOverflow) {
-      final xOffset =
-          (screenWidth - columnWidth) -
-          (horizontalMidpoint + halfMaxWidth + 10);
-      return Offset(xOffset, 0);
-    }
-
-    return Offset(0, 0);
+    return Offset(dx, 0);
   }
 
   static bool _hasTopOverflow(RenderBox renderBox, double maxHeight) {

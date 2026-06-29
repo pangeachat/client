@@ -247,6 +247,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                     ),
                     IconButton(
                       icon: Icon(Icons.arrow_forward),
+                      tooltip: L10n.of(context).details,
                       onPressed: onTap,
                     ),
                   ],
