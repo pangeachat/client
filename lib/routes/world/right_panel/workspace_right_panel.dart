@@ -130,7 +130,9 @@ class WorkspaceRightPanel extends StatelessWidget {
         icon: leadingIcon,
         onLeading: onLeading,
         tooltip: leadingTooltip,
-        trailing: kIsWeb ? DownloadAnalyticsButton() : null,
+        trailing: kIsWeb && _construct == null
+            ? DownloadAnalyticsButton()
+            : null,
         child: ConstructAnalyticsView(
           view: token.type == 'vocab'
               ? ConstructTypeEnum.vocab
