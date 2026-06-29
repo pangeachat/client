@@ -9,12 +9,9 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
-import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
@@ -38,33 +35,29 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Existing sessions to join only live inside a course; a standalone
-    // activity has none to list.
-    final course = controller.course;
-    if (course == null) return const SizedBox.shrink();
+    if (controller.subPage.visibleStatuses.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: FluffyThemes.columnWidth * 1.5,
       ),
       child: Column(
         children: [
-          ...ActivitySummaryStatus.values
-              .where((s) => s.canView(course.isRoomAdmin))
-              .map((status) {
-                final roomSummaries = controller.activityStatuses
-                    .getSessionsByStatus(status);
+          ...controller.subPage.visibleStatuses.map((status) {
+            final roomSummaries = controller.activityStatuses
+                .getSessionsByStatus(status);
 
-                if (roomSummaries.isEmpty) {
-                  return const SizedBox.shrink();
-                }
+            if (roomSummaries.isEmpty) return const SizedBox.shrink();
 
-                return _ActivitySummaryStatusSection(
-                  status: status,
-                  roomSummaries: roomSummaries,
-                  course: course,
-                  onTap: controller.joinActivityByRoomId,
-                );
-              }),
+            return _ActivitySummaryStatusSection(
+              status: status,
+              roomSummaries: roomSummaries,
+              course: controller.course,
+              onTap: controller.joinActivityByRoomId,
+            );
+          }),
         ],
       ),
     );
@@ -75,7 +68,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
   final ActivitySummaryStatus status;
   final Map<String, RoomSummaryResponse> roomSummaries;
 
-  final Room course;
+  final Room? course;
   final Function(String) onTap;
 
   const _ActivitySummaryStatusSection({
@@ -94,7 +87,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
         vertical: 16.0,
       ),
       child: Column(
-        spacing: status == ActivitySummaryStatus.completed ? 12.0 : 0,
+        spacing: 12.0,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -106,23 +99,13 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
               ),
             ),
           ),
-          if (status == ActivitySummaryStatus.completed)
-            ...roomSummaries.entries.map((e) {
-              return _ActivitySessionDetailsTile(
-                roomSummary: e.value,
-                course: course,
-                onTap: () => onTap(e.key),
-              );
-            })
-          else
-            ...roomSummaries.entries.map((e) {
-              return _ActivitySessionListTile(
-                roomSummary: e.value,
-                status: status,
-                course: course,
-                onTap: () => onTap(e.key),
-              );
-            }),
+          ...roomSummaries.entries.map((e) {
+            return _ActivitySessionDetailsTile(
+              roomSummary: e.value,
+              course: course,
+              onTap: () => onTap(e.key),
+            );
+          }),
         ],
       ),
     );
@@ -131,7 +114,7 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
 
 class _ActivitySessionDetailsTile extends StatelessWidget {
   final RoomSummaryResponse roomSummary;
-  final Room course;
+  final Room? course;
   final VoidCallback onTap;
 
   const _ActivitySessionDetailsTile({
@@ -147,7 +130,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
     final textSummary = activitySummary?.summary?.summary;
     final analytics = activitySummary?.analytics;
     final participants = roomSummary.membershipSummary.keys;
-    final users = course.getParticipants();
+    final users = course?.getParticipants();
     final theme = Theme.of(context);
 
     return Padding(
@@ -263,7 +246,6 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      tooltip: L10n.of(context).next,
                       icon: Icon(Icons.arrow_forward),
                       onPressed: onTap,
                     ),
@@ -277,7 +259,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ...participants.map((userId) {
-                          final user = users.firstWhereOrNull(
+                          final user = users?.firstWhereOrNull(
                             (u) => u.id == userId,
                           );
 
@@ -295,7 +277,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                               userSummary?.superlatives.firstOrNull;
 
                           return ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 90.0),
+                            constraints: BoxConstraints(maxWidth: 90.0),
                             child: Opacity(
                               opacity: role == null ? 0.5 : 1,
                               child: Column(
@@ -343,49 +325,6 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ActivitySessionListTile extends StatelessWidget {
-  final RoomSummaryResponse roomSummary;
-  final ActivitySummaryStatus status;
-
-  final Room course;
-  final VoidCallback onTap;
-
-  const _ActivitySessionListTile({
-    required this.roomSummary,
-    required this.status,
-    required this.course,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final activityPlan = roomSummary.activityPlan;
-
-    // If activity is completed, show all roles, even for users who have left the
-    // room (like the bot). Otherwise, show only joined users with roles
-    final activityRoles = status == ActivitySummaryStatus.completed
-        ? (roomSummary.activityRoles?.roles ?? {})
-        : roomSummary.joinedUsersWithRoles;
-
-    return ListTile(
-      title: OpenRolesIndicator(
-        roles: (activityPlan?.roles.values ?? [])
-            .sorted((a, b) => a.id.compareTo(b.id))
-            .toList(),
-        assignedRoles: activityRoles.values.toList(),
-        size: 40.0,
-        spacing: 8.0,
-        space: course,
-        onUserTap: (user, context) {
-          showMemberActionsPopupMenu(context: context, user: user);
-        },
-      ),
-      trailing: course.isRoomAdmin ? const Icon(Icons.arrow_forward) : null,
-      onTap: onTap,
     );
   }
 }

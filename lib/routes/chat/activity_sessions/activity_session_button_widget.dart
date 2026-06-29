@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
@@ -23,6 +24,7 @@ class ActivitySessionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
+
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
       duration: FluffyThemes.animationDuration,
@@ -158,10 +160,11 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasActiveSession = controller.canJoinExistingSession;
+    // Sub-pages show a single Back button.
+    if (controller.subPage != NotStartedSubPage.main) {
+      return _CTAButton(L10n.of(context).back, controller.goToMainPage);
+    }
 
-    // Nothing is gated: every activity is always playable (#7186). Progression
-    // only ranks content on the world map, it never blocks Start here.
     return FutureBuilder(
       future: controller.neededCourseParticipants,
       builder: (context, snapshot) {
@@ -195,16 +198,17 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 controller.goToJoinedActivity,
               ),
             ] else ...[
-              _CTAButton(
-                hasActiveSession
-                    ? L10n.of(context).startNewSession
-                    : L10n.of(context).start,
-                controller.startNewActivity,
-              ),
-              if (hasActiveSession)
+              _CTAButton(L10n.of(context).start, controller.startNewActivity),
+              if (controller.openSessionCount > 0)
                 _CTAButton(
-                  L10n.of(context).joinOpenSession,
-                  controller.joinExistingSession,
+                  '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
+                  controller.goToJoinPage,
+                ),
+              if (controller.course?.isRoomAdmin == true &&
+                  controller.hasCurrentOrFinishedSessions)
+                _CTAButton(
+                  '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
+                  controller.goToViewPage,
                 ),
             ],
           ],
@@ -233,11 +237,6 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
           ),
           SizedBox(height: 16.0),
         ],
-        // The bot is now auto-invited and present from creation, so gating this
-        // on "bot not in room" would always hide it. This CTA block only renders
-        // on the start page (while !isActivityStarted, where the bot holds no
-        // role), so always offer the choice: "play with bot" writes the
-        // bot_participant marker and the bot claims the open role (#7027).
         if (controller.showInviteOptions)
           Padding(
             padding: EdgeInsetsGeometry.only(bottom: 16.0),
