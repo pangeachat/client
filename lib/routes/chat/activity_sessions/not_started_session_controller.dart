@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -13,6 +11,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
+import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -21,6 +20,26 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+enum NotStartedSubPage {
+  main,
+  join,
+  view;
+
+  List<ActivitySummaryStatus> get visibleStatuses {
+    switch (this) {
+      case NotStartedSubPage.join:
+        return [ActivitySummaryStatus.notStarted];
+      case NotStartedSubPage.view:
+        return [
+          ActivitySummaryStatus.inProgress,
+          ActivitySummaryStatus.completed,
+        ];
+      case NotStartedSubPage.main:
+        return [];
+    }
+  }
+}
 
 class NotStartedSession extends StatefulWidget {
   /// The course the activity is launched from, when there is one. Null for a
@@ -48,6 +67,7 @@ class NotStartedSession extends StatefulWidget {
 
 class NotStartedSessionController extends State<NotStartedSession>
     implements ActivitySessionStateController {
+  NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
 
   @override
@@ -61,6 +81,12 @@ class NotStartedSessionController extends State<NotStartedSession>
     _goalsHandler.cancel();
     super.dispose();
   }
+
+  NotStartedSubPage get subPage => _subPage;
+
+  void goToJoinPage() => setState(() => _subPage = NotStartedSubPage.join);
+  void goToViewPage() => setState(() => _subPage = NotStartedSubPage.view);
+  void goToMainPage() => setState(() => _subPage = NotStartedSubPage.main);
 
   String? get joinedActivityRoomId =>
       widget.course?.activeActivityRoomId(widget.activityId);
@@ -100,15 +126,11 @@ class NotStartedSessionController extends State<NotStartedSession>
     activity: widget.activity,
   );
 
-  // world_v2: the join/view subpage navigation (NotStartedSubPage) was dropped
-  // in favor of inline join/list controls (joinExistingSession /
-  // joinActivityByRoomId + ActivitySessionBottomContent). Role cards and the
-  // description are always shown on the single page.
   @override
-  bool get showRoleCards => true;
+  bool get showRoleCards => _subPage == NotStartedSubPage.main;
 
   @override
-  bool get showDescriptionSection => true;
+  bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
 
   @override
   List<ActivityRoleGoal>? get selectedRoleGoals => null;
@@ -116,10 +138,26 @@ class NotStartedSessionController extends State<NotStartedSession>
   @override
   Set<String> get selectedRoleCompletedGoalIds => {};
 
-  bool get canJoinExistingSession => widget.summaries.openSessions.isNotEmpty;
+  int get openSessionCount => widget.summaries.openSessions.length;
 
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
+
+  bool get hasCurrentOrFinishedSessions =>
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
+          .isNotEmpty ||
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.completed)
+          .isNotEmpty;
+
+  int get currentOrFinishedSessionCount =>
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
+          .length +
+      activityStatuses
+          .getSessionsByStatus(ActivitySummaryStatus.completed)
+          .length;
 
   Future<int> get neededCourseParticipants async {
     // No course: the session launches standalone (the bot fills in), so no
@@ -191,54 +229,6 @@ class NotStartedSessionController extends State<NotStartedSession>
         'invite',
       ),
     );
-  }
-
-  Future<void> joinExistingSession() async {
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: _joinExistingSession,
-    );
-
-    if (!resp.isError) {
-      NavigationUtil.goToSpaceRoute(resp.result, [], context);
-    }
-  }
-
-  Future<String> _joinExistingSession() async {
-    if (!canJoinExistingSession) {
-      throw Exception("No existing session to join");
-    }
-
-    final sessionIds = widget.summaries.openSessions;
-    String? joinedSessionId;
-    for (final sessionId in sessionIds) {
-      try {
-        await Matrix.of(context).client.joinRoom(
-          sessionId,
-          via: widget.course?.spaceChildren
-              .firstWhereOrNull((child) => child.roomId == sessionId)
-              ?.via,
-        );
-        joinedSessionId = sessionId;
-        break;
-      } catch (_) {
-        // try next session
-        continue;
-      }
-    }
-
-    if (joinedSessionId == null) {
-      throw Exception("Failed to join any existing session");
-    }
-
-    final room = Matrix.of(context).client.getRoomById(joinedSessionId);
-    if (room == null || room.membership != Membership.join) {
-      await Matrix.of(
-        context,
-      ).client.waitForRoomInSync(joinedSessionId, join: true);
-    }
-
-    return joinedSessionId;
   }
 
   Future<void> joinActivityByRoomId(String roomId) async {
