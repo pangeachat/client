@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-26 10:53:19.015923",
+    "@@last_modified": "2026-06-29 10:34:03.904079",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10203,5 +10203,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Zarejestruj się za pomocą e-maila",
+    "unreadLabel": "Nieprzeczytane: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

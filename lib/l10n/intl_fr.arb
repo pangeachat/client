@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-26 10:55:32.208815",
+    "@@last_modified": "2026-06-29 10:34:13.936566",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10491,5 +10491,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Inscrivez-vous avec un e-mail",
+    "unreadLabel": "Non lu : {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

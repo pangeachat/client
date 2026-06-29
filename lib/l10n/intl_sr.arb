@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:55:12.660606",
+    "@@last_modified": "2026-06-29 10:34:12.177711",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11217,5 +11217,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Prijavite se putem email-a",
+    "unreadLabel": "Nepročitano: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

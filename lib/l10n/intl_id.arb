@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:45:24.455054",
+    "@@last_modified": "2026-06-29 10:33:27.819761",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10191,5 +10191,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Daftar dengan email",
+    "unreadLabel": "Belum dibaca: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

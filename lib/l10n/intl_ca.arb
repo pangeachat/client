@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:49:25.003668",
+    "@@last_modified": "2026-06-29 10:33:45.990789",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10245,5 +10245,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Registra't amb correu electrònic",
+    "unreadLabel": "No llegit: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

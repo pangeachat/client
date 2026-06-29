@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:46:27.946162",
+    "@@last_modified": "2026-06-29 10:33:31.944470",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11173,5 +11173,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "הירשם עם דוא\"ל",
+    "unreadLabel": "לא נקרא: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

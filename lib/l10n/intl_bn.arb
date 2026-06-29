@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:52:56.565990",
+    "@@last_modified": "2026-06-29 10:34:02.148033",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10809,5 +10809,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "ইমেইল দিয়ে সাইন আপ করুন",
+    "unreadLabel": "অপঠিত: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }
