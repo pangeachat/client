@@ -200,6 +200,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _sessionController.clear();
     AnalyticsPractice.bypassExitConfirmation = true;
     _clearExerciseState();
+    setState(() {});
   }
 
   void _clearExerciseState({bool loadingExercise = false}) {
