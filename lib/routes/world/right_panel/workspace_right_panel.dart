@@ -124,7 +124,7 @@ class WorkspaceRightPanel extends StatelessWidget {
               );
       }(),
       'vocab' || 'grammar' => PanelCardWithHeader(
-        title: _construct?.lemma ?? '',
+        title: '',
         icon: leadingIcon,
         onLeading: onLeading,
         tooltip: leadingTooltip,
