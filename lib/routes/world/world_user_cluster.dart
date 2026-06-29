@@ -539,13 +539,35 @@ class _LanguageFlag extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    final codeWidget = Text(
+    final outlinedText = Text(
       language.langCodeShort.toUpperCase(),
       style: TextStyle(
-        color: theme.colorScheme.onPrimary,
+        color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w700,
         height: 1.0,
+        shadows: [
+          Shadow(
+            // bottomLeft
+            offset: Offset(-1.5, -1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // bottomRight
+            offset: Offset(1.5, -1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // topRight
+            offset: Offset(1.5, 1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // topLeft
+            offset: Offset(-1.5, 1.5),
+            color: Colors.white,
+          ),
+        ],
       ),
     );
 
@@ -579,17 +601,22 @@ class _LanguageFlag extends StatelessWidget {
               child: language.shouldShowFlag
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(_radius),
-                      child: SvgPicture.network(
-                        language.svgUrl.toString(),
-                        width: _w,
-                        height: _h,
-                        fit: BoxFit.cover,
-                        errorBuilder: (ctx, _, _) => codeWidget,
-                        placeholderBuilder: (_) =>
-                            const SizedBox(width: _w, height: _h),
+                      child: Stack(
+                        children: [
+                          SvgPicture.network(
+                            language.svgUrl.toString(),
+                            width: _w,
+                            height: _h,
+                            fit: BoxFit.cover,
+                            errorBuilder: (ctx, _, _) => outlinedText,
+                            placeholderBuilder: (_) =>
+                                const SizedBox(width: _w, height: _h),
+                          ),
+                          Positioned(child: Center(child: outlinedText)),
+                        ],
                       ),
                     )
-                  : codeWidget,
+                  : outlinedText,
             ),
           ),
         ),
