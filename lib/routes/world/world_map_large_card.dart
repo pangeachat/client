@@ -32,6 +32,13 @@ class WorldMapLargeCard extends StatelessWidget {
   final int openSlots;
   final VoidCallback onTap;
 
+  /// When non-null, the card shows an explicit dismiss (X) that returns it to a
+  /// pin without opening it. Set only on the **selected** (tap-peek) card — a
+  /// card stacked over another can otherwise only be cleared by tapping empty
+  /// map, which isn't discoverable (#7207). Auto-featured cards leave it null
+  /// (they re-rank and clear on pan/zoom).
+  final VoidCallback? onClose;
+
   const WorldMapLargeCard({
     super.key,
     required this.card,
@@ -40,6 +47,7 @@ class WorldMapLargeCard extends StatelessWidget {
     required this.plan,
     required this.starsEarned,
     required this.onTap,
+    this.onClose,
     this.participants = const [],
     this.openSlots = 0,
   });
@@ -74,7 +82,7 @@ class WorldMapLargeCard extends StatelessWidget {
 
     final earned = starsEarned.clamp(0, total);
 
-    return GestureDetector(
+    final cardButton = GestureDetector(
       onTap: onTap,
       // #Pangea: announce the card as a single "Activity: <title>" button so the
       // screen reader gets context and the title is not double-read (#7185).
@@ -162,6 +170,47 @@ class WorldMapLargeCard extends StatelessWidget {
                   ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+
+    if (onClose == null) return cardButton;
+
+    // The dismiss sits at the card's top-right corner. The Stack keeps it out of
+    // the card's own tap target so tapping the X clears the peek (onClose) rather
+    // than opening the activity (onTap).
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        cardButton,
+        Positioned(top: 2, right: 2, child: _DismissButton(onPressed: onClose!)),
+      ],
+    );
+  }
+}
+
+class _DismissButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _DismissButton({required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      button: true,
+      label: L10n.of(context).close,
+      child: Material(
+        color: theme.colorScheme.surface,
+        shape: const CircleBorder(),
+        elevation: 2,
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: onPressed,
+          child: const Padding(
+            padding: EdgeInsets.all(2.0),
+            child: Icon(Icons.close, size: 16),
           ),
         ),
       ),

@@ -442,6 +442,11 @@ class _WorldMapViewState extends State<WorldMapView> {
           participants: joinableActivity?.largeCardParticipants ?? [],
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
           onTap: () => widget.controller.openActivity(card),
+          // Only the tap-selected card gets the explicit dismiss; auto-featured
+          // cards re-rank and clear on pan/zoom (#7207).
+          onClose: card.activityId == widget.controller.selectedActivityId
+              ? () => widget.controller.deselectActivity()
+              : null,
         ),
       ),
     );
