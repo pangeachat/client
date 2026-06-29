@@ -195,6 +195,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       exercise is! VocabAudioPracticeExerciseModel;
 
   void _clearState() {
+    MatrixState.pAnyState.closeOverlay(StarRainWidget.practiceCompleteKey);
     _dataService.clear();
     _sessionController.clear();
     AnalyticsPractice.bypassExitConfirmation = true;
@@ -284,7 +285,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
 
     AnalyticsPractice.bypassExitConfirmation = true;
-    StarRainWidget.show(context, "completed-activity-star-rain");
+    StarRainWidget.show(context, StarRainWidget.practiceCompleteKey);
   }
 
   Future<void> _continueSession() async {
