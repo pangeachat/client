@@ -4941,5 +4941,6 @@
             }
         }
     },
+    "signUpWithEmail": "Sign up with email",
     "resetMapView": "Reset map view"
 }
