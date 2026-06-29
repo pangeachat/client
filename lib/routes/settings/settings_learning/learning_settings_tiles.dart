@@ -4,9 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
-import 'package:fluffychat/routes/settings/settings_learning/country_picker_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
-import 'package:fluffychat/routes/settings/settings_learning/gender_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
@@ -28,6 +26,14 @@ class LearningSettingsTiles extends StatelessWidget {
     this.languageTileController,
   });
 
+  Future<bool> onEnableAutocorrect(BuildContext context) async {
+    final resp = await showDialog(
+      context: context,
+      builder: (context) => EnableAutocorrectDialog(),
+    );
+    return resp == false ? false : true;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -36,252 +42,132 @@ class LearningSettingsTiles extends StatelessWidget {
       child: ListenableBuilder(
         listenable: viewModel,
         builder: (context, _) => Column(
+          spacing: 16.0,
           children: [
-            ValueListenableBuilder(
-              valueListenable: languageErrorNotifier,
-              builder: (context, error, _) => _LanguageSettingsExpansionTile(
-                viewModel: viewModel,
-                error: error,
-                tileController: languageTileController,
-              ),
+            Column(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: languageErrorNotifier,
+                  builder: (context, error, _) => Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 16.0,
+                        ),
+                        child: PLanguageDropdown(
+                          onChange: (lang) => viewModel.setSelectedLanguage(
+                            sourceLanguage: lang,
+                          ),
+                          initialLanguage:
+                              viewModel.selectedSourceLanguage ??
+                              LanguageModel.unknown,
+                          languages: MatrixState
+                              .pangeaController
+                              .pLanguageStore
+                              .baseOptions,
+                          isL2List: false,
+                          decorationText: L10n.of(context).myBaseLanguage,
+                          hasError: error != null,
+                          backgroundColor:
+                              theme.colorScheme.surfaceContainerHigh,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 16.0,
+                        ),
+                        child: PLanguageDropdown(
+                          onChange: (lang) => viewModel.setSelectedLanguage(
+                            targetLanguage: lang,
+                          ),
+                          initialLanguage: viewModel.selectedTargetLanguage,
+                          languages: MatrixState
+                              .pangeaController
+                              .pLanguageStore
+                              .targetOptions,
+                          isL2List: true,
+                          decorationText: L10n.of(context).iWantToLearn,
+                          error: error,
+                          backgroundColor:
+                              theme.colorScheme.surfaceContainerHigh,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
+                  child: LanguageLevelDropdown(
+                    initialLevel: viewModel.cefrLevel,
+                    onChanged: viewModel.setCefrLevel,
+                  ),
+                ),
+              ],
             ),
-            _UserProfileExpansionTile(
-              viewModel: viewModel,
-              aboutTextController: aboutTextController,
-            ),
-            _LearningSettingsExpansionTile(
-              viewModel: viewModel,
-              onEnableAutocorrect: () async {
-                final resp = await showDialog(
-                  context: context,
-                  builder: (context) => EnableAutocorrectDialog(),
-                );
-                return resp == false ? false : true;
-              },
+            Divider(height: 1),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
+                  child: VoiceDropdown(
+                    value: viewModel.selectedVoice,
+                    language: viewModel.selectedTargetLanguage,
+                    onChanged: viewModel.setVoice,
+                  ),
+                ),
+                ...ToolSetting.values
+                    .where((tool) => tool.isAvailableSetting)
+                    .map(
+                      (setting) => ProfileSettingsSwitchListTile.adaptive(
+                        defaultValue: viewModel.getToolSetting(setting),
+                        title: setting.toolName(context),
+                        subtitle: setting.toolDescription(context),
+                        onChange: (v) =>
+                            viewModel.updateToolSetting(setting, v),
+                      ),
+                    ),
+                SwitchListTile.adaptive(
+                  value: viewModel.getToolSetting(
+                    ToolSetting.enableAutocorrect,
+                  ),
+                  title: Text(ToolSetting.enableAutocorrect.toolName(context)),
+                  subtitle: Text(
+                    ToolSetting.enableAutocorrect.toolDescription(context),
+                  ),
+                  activeThumbColor: AppConfig.activeToggleColor,
+                  onChanged: (v) async {
+                    if (v) {
+                      final enabled = await onEnableAutocorrect(context);
+                      if (!enabled) return;
+                    }
+                    viewModel.updateToolSetting(
+                      ToolSetting.enableAutocorrect,
+                      v,
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.lightbulb),
+                  title: Text(L10n.of(context).resetInstructionTooltipsTitle),
+                  subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
+                  onTap: viewModel.resetInstructions
+                      ? null
+                      : viewModel.resetInstructionTooltips,
+                  selected: viewModel.resetInstructions,
+                ),
+              ],
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _LanguageSettingsExpansionTile extends StatelessWidget {
-  final LearningSettingsViewModel viewModel;
-  final String? error;
-  final ExpansibleController? tileController;
-
-  const _LanguageSettingsExpansionTile({
-    required this.viewModel,
-    this.tileController,
-    this.error,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return ExpansionTile(
-      controller: tileController,
-      initiallyExpanded: true,
-      shape: Border(top: BorderSide(width: 1, color: Colors.transparent)),
-      collapsedShape: Border(
-        top: BorderSide(width: 1, color: Colors.transparent),
-      ),
-      title: Text(
-        L10n.of(context).languages,
-        style: TextStyle(
-          color: theme.colorScheme.secondary,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      children: [
-        SizedBox(height: 8.0),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: PLanguageDropdown(
-            onChange: (lang) =>
-                viewModel.setSelectedLanguage(sourceLanguage: lang),
-            initialLanguage:
-                viewModel.selectedSourceLanguage ?? LanguageModel.unknown,
-            languages: MatrixState.pangeaController.pLanguageStore.baseOptions,
-            isL2List: false,
-            decorationText: L10n.of(context).myBaseLanguage,
-            hasError: error != null,
-            backgroundColor: theme.colorScheme.surfaceContainerHigh,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: PLanguageDropdown(
-            onChange: (lang) =>
-                viewModel.setSelectedLanguage(targetLanguage: lang),
-            initialLanguage: viewModel.selectedTargetLanguage,
-            languages:
-                MatrixState.pangeaController.pLanguageStore.targetOptions,
-            isL2List: true,
-            decorationText: L10n.of(context).iWantToLearn,
-            error: error,
-            backgroundColor: theme.colorScheme.surfaceContainerHigh,
-          ),
-        ),
-        SizedBox(height: 8.0),
-      ],
-    );
-  }
-}
-
-class _UserProfileExpansionTile extends StatelessWidget {
-  final LearningSettingsViewModel viewModel;
-  final TextEditingController aboutTextController;
-  const _UserProfileExpansionTile({
-    required this.viewModel,
-    required this.aboutTextController,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return ExpansionTile(
-      shape: Border(top: BorderSide(width: 1, color: theme.dividerColor)),
-      collapsedShape: Border(
-        top: BorderSide(width: 1, color: theme.dividerColor),
-      ),
-      title: Text(
-        L10n.of(context).profile,
-        style: TextStyle(
-          color: theme.colorScheme.secondary,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      children: [
-        SizedBox(height: 8.0),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: LanguageLevelDropdown(
-            initialLevel: viewModel.cefrLevel,
-            onChanged: viewModel.setCefrLevel,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: CountryPickerDropdown(viewModel.country, viewModel.setCountry),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: GenderDropdown(
-            initialGender: viewModel.gender,
-            onChanged: viewModel.setGender,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: TextField(
-            controller: aboutTextController,
-            decoration: InputDecoration(
-              hintText: L10n.of(context).aboutMeHint,
-              labelText: L10n.of(context).aboutMeHint,
-            ),
-            onChanged: (val) => viewModel.setAbout(val),
-            minLines: 1,
-            maxLines: 3,
-            maxLength: 100,
-          ),
-        ),
-        SwitchListTile.adaptive(
-          value: viewModel.publicProfile,
-          onChanged: viewModel.setPublicProfile,
-          title: Text(L10n.of(context).publicProfileTitle),
-          subtitle: Text(L10n.of(context).publicProfileDesc),
-          activeThumbColor: AppConfig.activeToggleColor,
-        ),
-        SizedBox(height: 8.0),
-      ],
-    );
-  }
-}
-
-class _LearningSettingsExpansionTile extends StatelessWidget {
-  final LearningSettingsViewModel viewModel;
-  final Future<bool> Function() onEnableAutocorrect;
-  const _LearningSettingsExpansionTile({
-    required this.viewModel,
-    required this.onEnableAutocorrect,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return ExpansionTile(
-      shape: Border(top: BorderSide(width: 1, color: theme.dividerColor)),
-      collapsedShape: Border(
-        top: BorderSide(width: 1, color: theme.dividerColor),
-      ),
-      title: Text(
-        L10n.of(context).learningSettings,
-        style: TextStyle(
-          color: theme.colorScheme.secondary,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      children: [
-        SizedBox(height: 8.0),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: VoiceDropdown(
-            value: viewModel.selectedVoice,
-            language: viewModel.selectedTargetLanguage,
-            onChanged: viewModel.setVoice,
-          ),
-        ),
-        ...ToolSetting.values
-            .where((tool) => tool.isAvailableSetting)
-            .map(
-              (setting) => ProfileSettingsSwitchListTile.adaptive(
-                defaultValue: viewModel.getToolSetting(setting),
-                title: setting.toolName(context),
-                subtitle: setting.toolDescription(context),
-                onChange: (v) async {
-                  if (v && setting == ToolSetting.enableAutocorrect) {
-                    final enabled = await onEnableAutocorrect();
-                    if (!enabled) return;
-                  }
-                  viewModel.updateToolSetting(setting, v);
-                },
-              ),
-            ),
-        SwitchListTile.adaptive(
-          value: viewModel.getToolSetting(ToolSetting.enableAutocorrect),
-          title: Text(ToolSetting.enableAutocorrect.toolName(context)),
-          subtitle: Text(
-            ToolSetting.enableAutocorrect.toolDescription(context),
-          ),
-          activeThumbColor: AppConfig.activeToggleColor,
-          onChanged: (v) async {
-            if (v) {
-              final enabled = await onEnableAutocorrect();
-              if (!enabled) return;
-            }
-            viewModel.updateToolSetting(ToolSetting.enableAutocorrect, v);
-          },
-        ),
-        SwitchListTile.adaptive(
-          value: viewModel.showDeveloperOptions,
-          title: Text(L10n.of(context).showDeveloperOptions),
-          subtitle: Text(L10n.of(context).showDeveloperOptionsDesc),
-          activeThumbColor: AppConfig.activeToggleColor,
-          onChanged: viewModel.setShowDeveloperOptions,
-        ),
-        ListTile(
-          leading: const Icon(Icons.lightbulb),
-          title: Text(L10n.of(context).resetInstructionTooltipsTitle),
-          subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
-          onTap: viewModel.resetInstructions
-              ? null
-              : viewModel.resetInstructionTooltips,
-          selected: viewModel.resetInstructions,
-        ),
-        SizedBox(height: 8.0),
-      ],
     );
   }
 }
