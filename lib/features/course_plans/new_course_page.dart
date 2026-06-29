@@ -56,6 +56,14 @@ class NewCoursePage extends StatefulWidget {
 }
 
 class NewCoursePageState extends State<NewCoursePage> {
+  /// Session-scoped memory of the last language the learner picked in this flow.
+  /// The back arrow returns to the add-course hub via `setSection`, which carries
+  /// only the panel/map state forward and drops the `?lang=` query — so without
+  /// this, returning to "Start my own" snapped back to the L2 default and lost
+  /// the choice (#7269). A `?lang=` deep link still wins; this only fills the
+  /// in-session default the hub round-trip would otherwise drop.
+  static LanguageModel? _lastChosenLanguage;
+
   final ValueNotifier<Result<List<CoursePlanModel>>?> _courses = ValueNotifier(
     null,
   );
@@ -84,6 +92,10 @@ class NewCoursePageState extends State<NewCoursePage> {
         );
       }
 
+      // A `?lang=` deep link wins; otherwise restore this session's last choice
+      // (the hub round-trip drops the URL param) before the L2 default (#7269).
+      _targetLanguageFilter.value ??= _lastChosenLanguage;
+
       if (_targetLanguageFilter.value == null) {
         _targetLanguageFilter.value =
             MatrixState.pangeaController.userController.userL2;
@@ -109,6 +121,7 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
+    _lastChosenLanguage = language; // remember for the rest of this session (#7269)
     _loadGeneration++;
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
