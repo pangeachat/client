@@ -45,7 +45,6 @@ class DMListTileState extends State<DMListTile> {
                   expression: BotExpression.idle,
                   width: Avatar.defaultSize,
                 ),
-                trailing: Icon(Icons.chat_bubble_outline),
                 title: Text(L10n.of(context).directMessageBotTitle),
                 subtitle: Text(L10n.of(context).directMessageBotDesc),
                 onTap: _loading
@@ -64,6 +63,9 @@ class DMListTileState extends State<DMListTile> {
                           if (mounted) setState(() => _loading = false);
                         }
                       },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                ),
               ),
             ),
           ),
@@ -71,60 +73,72 @@ class DMListTileState extends State<DMListTile> {
             !InstructionsEnum.dismissSupportChat.isToggledOff &&
             widget.visible &&
             !blockedUsers.contains(Environment.supportUserId))
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-            child: Material(
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              clipBehavior: Clip.hardEdge,
-              // The dismiss button sits beside the tappable tile, not inside it.
-              // A focusable control nested inside another focusable control is an
-              // axe `nested-interactive` violation and a screen-reader trap.
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      contentPadding: EdgeInsets.only(left: 16, right: 16),
-                      leading: Container(
-                        alignment: Alignment.center,
-                        height: Avatar.defaultSize,
-                        width: Avatar.defaultSize,
-                        child: const Icon(
-                          Symbols.chat_add_on,
-                          size: Avatar.defaultSize - 16,
-                        ),
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                child: Material(
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                  clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+                    contentPadding: EdgeInsets.only(left: 16, right: 16),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: Avatar.defaultSize,
+                      width: Avatar.defaultSize,
+                      child: const Icon(
+                        Symbols.chat_add_on,
+                        size: Avatar.defaultSize - 16,
                       ),
-                      title: Text(L10n.of(context).chatWithSupport),
-                      subtitle: Text(L10n.of(context).supportSubtitle),
-                      onTap: _loading
-                          ? null
-                          : () async {
-                              setState(() => _loading = true);
-                              try {
-                                final resp =
-                                    await showFutureLoadingDialog<String>(
-                                      context: context,
-                                      future: Matrix.of(
-                                        context,
-                                      ).client.startChatWithSupport,
-                                    );
-                                if (!mounted) return;
-                                if (resp.isError) return;
-                                context.go('/rooms/${resp.result}');
-                              } finally {
-                                if (mounted) setState(() => _loading = false);
-                              }
-                            },
+                    ),
+                    title: Text(L10n.of(context).chatWithSupport),
+                    subtitle: Text(L10n.of(context).supportSubtitle),
+                    onTap: _loading
+                        ? null
+                        : () async {
+                            setState(() => _loading = true);
+                            try {
+                              final resp =
+                                  await showFutureLoadingDialog<String>(
+                                    context: context,
+                                    future: Matrix.of(
+                                      context,
+                                    ).client.startChatWithSupport,
+                                  );
+                              if (!mounted) return;
+                              if (resp.isError) return;
+                              context.go('/rooms/${resp.result}');
+                            } finally {
+                              if (mounted) setState(() => _loading = false);
+                            }
+                          },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
                     ),
                   ),
-                  IconButton(
-                    tooltip: L10n.of(context).dismiss,
-                    icon: const Icon(Icons.close),
-                    onPressed: () =>
-                        InstructionsEnum.dismissSupportChat.setToggledOff(true),
-                  ),
-                ],
+                ),
               ),
-            ),
+              Positioned(
+                top: 6,
+                right: 14,
+                child: IconButton.filledTonal(
+                  constraints: const BoxConstraints.tightFor(
+                    width: 24,
+                    height: 24,
+                  ),
+                  padding: EdgeInsets.zero,
+                  visualDensity: VisualDensity.compact,
+                  tooltip: L10n.of(context).dismiss,
+                  icon: const Icon(Icons.close, size: 14),
+                  onPressed: () {
+                    InstructionsEnum.dismissSupportChat.setToggledOff(true);
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
           ),
       ],
     );
