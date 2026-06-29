@@ -211,7 +211,11 @@ class WorldMapLargeCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         cardWithTail,
-        Positioned(top: 2, right: 2, child: _DismissButton(onPressed: onClose!)),
+        Positioned(
+          top: 2,
+          right: 2,
+          child: _DismissButton(onPressed: onClose!),
+        ),
       ],
     );
   }
