@@ -348,7 +348,7 @@ class TutorialOverlayController {
     final previousStepIndex = _state.model.stepIndex;
 
     previousType?.saveProgress(previousStepIndex + 1);
-    GoogleAnalytics.completeTutorialStep(previousType!, previousStepIndex);
+    GoogleAnalytics.completeTutorialStep(previousType!.name, previousStepIndex);
 
     _state.dispatch(ForwardTutorialEvent());
     final updatedType = _state.tutorialType;

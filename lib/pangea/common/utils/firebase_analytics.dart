@@ -7,7 +7,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
-import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -280,10 +279,10 @@ class GoogleAnalytics {
     );
   }
 
-  static void completeTutorialStep(TutorialEnum type, int step) {
+  static void completeTutorialStep(String tutorialName, int step) {
     logEvent(
       'tutorial_progress',
-      parameters: {'tutorial_name': type.name, 'tutorial_step': step},
+      parameters: {'tutorial_name': tutorialName, 'tutorial_step': step},
     );
   }
 

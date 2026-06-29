@@ -14,6 +14,8 @@ class OnboardingNavigationController {
 
   int _currentStepIndex = 1;
 
+  int get currentStepIndex => _currentStepIndex;
+
   final Queue<OnboardingStep> _prevSteps = Queue();
 
   OnboardingStep get step => _currentStep;
