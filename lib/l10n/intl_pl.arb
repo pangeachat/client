@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-06-29 10:34:03.904079",
+    "@@last_modified": "2026-06-29 12:25:29.308885",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9090,21 +9090,11 @@
         "placeholders": {}
     },
     "getStarted": "Zacznij",
-    "writeAndSpeakWorryFree": "Pisanie i mówienie bez zmartwień z Pangea Bot w dowolnym czasie i miejscu!",
-    "joinLearningCommunities": "Dołącz do międzynarodowych społeczności uczących się lub... załóż własną!",
     "playConversationGames": "Graj w gry konwersacyjne z botem, kolegami z klasy i nowymi przyjaciółmi!",
     "jumpIntoConversation": "Zacznij rozmowę od pierwszego dnia z narzędziami do pisania AI!",
     "playPersonalizedGames": "Graj w gry praktyczne dostosowane do Twojego słownictwa i potrzeb gramatycznych!",
     "learnLanguageWhileTexting": "Ucz się języka, pisząc do swoich przyjaciół!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10217,5 +10207,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Pisz i mów bez obaw z Pangea Bot w dowolnym miejscu i czasie!",
+    "joinLearningCommunities": "Dołącz do międzynarodowych społeczności edukacyjnych lub załóż własną!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

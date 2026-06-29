@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-29 10:34:06.468472",
+    "@@last_modified": "2026-06-29 12:25:32.289202",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10030,21 +10030,11 @@
         "placeholders": {}
     },
     "getStarted": "Ξεκινήστε",
-    "writeAndSpeakWorryFree": "Γράψτε και μιλήστε χωρίς ανησυχίες με τον Pangea Bot οποιαδήποτε στιγμή, οπουδήποτε!",
-    "joinLearningCommunities": "Εγγραφείτε σε διεθνείς μαθησιακές κοινότητες ή... ξεκινήστε τη δική σας!",
     "playConversationGames": "Παίξτε παιχνίδια συνομιλίας με τον ρομπότ, τους συμμαθητές και νέους φίλους!",
     "jumpIntoConversation": "Βουτήξτε στη συνομιλία από την Πρώτη Ημέρα με εργαλεία γραφής AI!",
     "playPersonalizedGames": "Παίξτε παιχνίδια πρακτικής προσαρμοσμένα στο λεξιλόγιο και τις γραμματικές σας ανάγκες!",
     "learnLanguageWhileTexting": "Μάθετε μια γλώσσα ενώ στέλνετε μηνύματα στους φίλους σας!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11157,5 +11147,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Γράψτε και μιλήστε χωρίς ανησυχίες με τον Pangea Bot οποιαδήποτε στιγμή, οπουδήποτε!",
+    "joinLearningCommunities": "Εγγραφείτε σε διεθνείς μαθησιακές κοινότητες ή ξεκινήστε τη δική σας!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

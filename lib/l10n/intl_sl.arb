@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-29 10:33:39.816356",
+    "@@last_modified": "2026-06-29 12:24:49.687324",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10097,21 +10097,11 @@
         "placeholders": {}
     },
     "getStarted": "Začnite",
-    "writeAndSpeakWorryFree": "Brezskrbno pišite in govorite s Pangea Botom kadarkoli in kjerkoli!",
-    "joinLearningCommunities": "Pridružite se mednarodnim učnim skupnostim ali... začnite svojo!",
     "playConversationGames": "Igrajte pogovorne igre z botom, sošolci in novimi prijatelji!",
     "jumpIntoConversation": "Skočite v pogovor od prvega dne z AI orodji za pisanje!",
     "playPersonalizedGames": "Igrajte vaje, prilagojene vašemu besednemu zakladu in potrebam po slovnici!",
     "learnLanguageWhileTexting": "Učite se jezika med sporočanjem prijateljem!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11224,5 +11214,15 @@
                 "type": "String"
             }
         }
+    },
+    "writeAndSpeakWorryFree": "Brezskrbno pišite in govorite s Pangea Bot kadarkoli in kjerkoli!",
+    "joinLearningCommunities": "Pridružite se mednarodnim učnim skupnostim ali začnite svojo!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
     }
 }

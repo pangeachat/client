@@ -4640,8 +4640,6 @@
     "unlockLearningTools": "Unlock learning tools",
     "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
     "getStarted": "Get started",
-    "writeAndSpeakWorryFree": "Write and speak worry-free with Pangea Bot at anytime, anywhere!",
-    "joinLearningCommunities": "Join international learning communities or... start your own!",
     "playConversationGames": "Play conversation games with the bot, classmates, and new friends!",
     "jumpIntoConversation": "Jump into conversation from Day One with AI writing tools!",
     "playPersonalizedGames": "Play practice games personalized to your vocabulary and grammar needs!",
@@ -4950,5 +4948,7 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "writeAndSpeakWorryFree": "Write and speak worry-free with Pangea Bot anytime, anywhere!",
+    "joinLearningCommunities": "Join international learning communities, or start your own!"
 }
