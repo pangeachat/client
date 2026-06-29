@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:53:30.016514",
+    "@@last_modified": "2026-06-29 10:34:05.581501",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10681,5 +10681,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Registrera dig med e-post",
+    "unreadLabel": "Oläst: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

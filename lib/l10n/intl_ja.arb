@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-26 10:54:00.565831",
+    "@@last_modified": "2026-06-29 10:34:07.804266",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10962,5 +10962,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "メールでサインアップ",
+    "unreadLabel": "未読: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-26 10:54:47.262513",
+    "@@last_modified": "2026-06-29 10:34:10.374418",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11108,5 +11108,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Зарегистрироваться с электронной почтой",
+    "unreadLabel": "Непрочитанные: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

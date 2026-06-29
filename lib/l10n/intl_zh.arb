@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-26 10:52:42.545763",
+    "@@last_modified": "2026-06-29 10:34:00.589332",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10094,5 +10094,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "使用电子邮件注册",
+    "unreadLabel": "未读: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

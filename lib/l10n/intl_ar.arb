@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-06-26 10:50:47.740291",
+    "@@last_modified": "2026-06-29 10:33:52.751401",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10434,5 +10434,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "سجل باستخدام البريد الإلكتروني",
+    "unreadLabel": "غير مقروء: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

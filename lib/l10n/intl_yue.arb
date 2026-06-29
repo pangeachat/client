@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-26 10:48:06.043456",
+    "@@last_modified": "2026-06-29 10:33:40.569586",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11225,5 +11225,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "用電郵註冊",
+    "unreadLabel": "未讀: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }

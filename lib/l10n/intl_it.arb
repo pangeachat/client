@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-26 10:48:19.981294",
+    "@@last_modified": "2026-06-29 10:33:41.496121",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10185,5 +10185,19 @@
     "@resetMapView": {
         "type": "String",
         "placeholders": {}
+    },
+    "signUpWithEmail": "Registrati con email",
+    "unreadLabel": "Non letti: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
     }
 }
