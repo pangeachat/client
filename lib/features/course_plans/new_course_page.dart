@@ -121,7 +121,8 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
-    _lastChosenLanguage = language; // remember for the rest of this session (#7269)
+    _lastChosenLanguage =
+        language; // remember for the rest of this session (#7269)
     _loadGeneration++;
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
