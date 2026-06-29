@@ -27,19 +27,17 @@ class ActiveSuggestionModel {
     this.selectedChoice,
     this.acceptedChoice,
     List<OrchestratorSuggestion>? shuffledChoices,
-  }) : shuffledChoices = shuffledChoices ?? List.from(suggestion.suggestions)
-         ..shuffle();
+  }) : shuffledChoices =
+           shuffledChoices ?? (List.from(suggestion.suggestions)..shuffle());
 
   ActiveSuggestionModel copyWith({
-    OrchestratorRoleSuggestions? suggestion,
     OrchestratorSuggestion? selectedChoice,
     OrchestratorSuggestion? acceptedChoice,
-    List<OrchestratorSuggestion>? shuffledChoices,
   }) => ActiveSuggestionModel(
-    suggestion: suggestion ?? this.suggestion,
+    suggestion: suggestion,
     selectedChoice: selectedChoice ?? this.selectedChoice,
     acceptedChoice: acceptedChoice ?? this.acceptedChoice,
-    shuffledChoices: shuffledChoices ?? this.shuffledChoices,
+    shuffledChoices: shuffledChoices,
   );
 }
 
