@@ -350,8 +350,10 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   // the `?m=course:<id>` map filter, not the token, so without that filter they
   // have nothing to render — a blank, close-less card a hand-edited or stale URL
   // could strand the user on (especially on a narrow single pane). Drop them when
-  // no course is scoped, mirroring closeSection / openCourseFilter, which already
-  // shed a dependent coursepage. See `routing.instructions.md`.
+  // no course is scoped. This is the only place a coursepage is shed for lost
+  // scope: closeSection keeps it (the filter survives a card close), and
+  // openCourseFilter sheds the previous course's page only because it re-targets
+  // the scope to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
     tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
   }
