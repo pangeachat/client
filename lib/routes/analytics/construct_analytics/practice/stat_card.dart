@@ -7,15 +7,15 @@ class StatCard extends StatelessWidget {
   final IconData icon;
   final String text;
   final String achievementText;
-  final Widget child;
   final bool isAchievement;
+  final Widget? child;
 
   const StatCard({
     required this.icon,
     required this.text,
     required this.achievementText,
-    required this.child,
     this.isAchievement = false,
+    this.child,
     super.key,
   });
 
@@ -50,6 +50,7 @@ class StatCard extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        spacing: 8.0,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -64,8 +65,7 @@ class StatCard extends StatelessWidget {
               ],
             ],
           ),
-          const SizedBox(height: 8),
-          child,
+          ?child,
         ],
       ),
     );
