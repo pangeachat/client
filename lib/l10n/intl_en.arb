@@ -502,6 +502,40 @@
         "type": "String",
         "placeholders": {}
     },
+    "closeChats": "Close chat list",
+    "@closeChats": {},
+    "closeChat": "Close chat",
+    "@closeChat": {},
+    "closeSession": "Close activity review",
+    "@closeSession": {},
+    "closeCourse": "Close course",
+    "@closeCourse": {},
+    "closeCoursePage": "Close course page",
+    "@closeCoursePage": {},
+    "closeAddCourse": "Close add course",
+    "@closeAddCourse": {},
+    "closeAnalytics": "Close analytics",
+    "@closeAnalytics": {},
+    "closeVocabulary": "Close vocabulary",
+    "@closeVocabulary": {},
+    "closeGrammar": "Close grammar",
+    "@closeGrammar": {},
+    "closePractice": "Close practice",
+    "@closePractice": {},
+    "closeSettings": "Close settings",
+    "@closeSettings": {},
+    "closeActivity": "Close activity",
+    "@closeActivity": {},
+    "closeNamed": "Close {name}",
+    "@closeNamed": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "clearSearch": "Clear search",
+    "@clearSearch": {},
     "commandHint_markasdm": "Mark as direct message room for the giving Matrix ID",
     "@commandHint_markasdm": {},
     "commandHint_markasgroup": "Mark as group",
