@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
@@ -12,7 +13,6 @@ import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/widgets/animated_progress_bar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
