@@ -41,15 +41,17 @@ class PanelHeader extends StatelessWidget {
           leading,
           const SizedBox(width: 8),
           Expanded(
-            child: Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: FluffyThemes.isColumnMode(context)
-                  ? Theme.of(context).textTheme.titleLarge
-                  : Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+            child: ExcludeSemantics(
+              child: Text(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: FluffyThemes.isColumnMode(context)
+                    ? Theme.of(context).textTheme.titleLarge
+                    : Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+              ),
             ),
           ),
           ?trailing,

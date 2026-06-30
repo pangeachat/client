@@ -5003,5 +5003,15 @@
         }
     },
     "joinLearningCommunities": "Join international learning communities, or start your own!",
+    "pageLabel": "{title} page",
+    "@pageLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "closeHint": "Close hint",
+    "starListLabel": "Saved activities and stars", 
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
 }
