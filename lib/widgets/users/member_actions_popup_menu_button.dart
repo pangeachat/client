@@ -418,6 +418,7 @@ void showMemberActionsPopupMenu({
           displayName: user.displayName,
           avatarUrl: user.avatarUrl,
         ),
+        uri: GoRouterState.of(context).uri,
       );
       return;
     case _MemberActions.unban:

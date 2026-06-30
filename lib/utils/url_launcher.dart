@@ -251,6 +251,7 @@ class UrlLauncher {
         context: context,
         profile: profileResult.result!,
         noProfileWarning: noProfileWarning,
+        uri: GoRouterState.of(context).uri,
       );
     }
   }
