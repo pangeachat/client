@@ -35,6 +35,14 @@ class PublicCoursePreviewView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        // world_v2: explicit token-based back. The auto-implied back would pop
+        // to the route-driven parent's blank EmptyPage (#7400); controller.back
+        // returns to the browse-public list instead.
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: controller.back,
+        ),
         title: Text(
           L10n.of(context).joinWithClassCode,
           style: FluffyThemes.isColumnMode(context)

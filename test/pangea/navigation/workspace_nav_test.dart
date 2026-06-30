@@ -667,6 +667,26 @@ void main() {
       ]);
       expect(parseOpenPanels(u(planList)).right, isEmpty);
     });
+
+    test('back from the route-driven public course preview lands on the '
+        'browse-public list (#7400)', () {
+      // The public course preview is route-driven
+      // (`/courses/preview/:courseroomid`), so its parent segments render a
+      // blank EmptyPage. `PublicCoursePreviewController.back` navigates to the
+      // browse-public list token over the world map rather than popping to that
+      // blank parent — even though the current URL is the legacy preview path.
+      final browseList = WorkspaceNav.setSection(
+        u('/courses/preview/!abc:server'),
+        '/',
+        const PanelToken('addcourse', 'browse'),
+        keepRoom: false,
+      );
+      expect(u(browseList).path, '/');
+      expect(parseOpenPanels(u(browseList)).left, [
+        const PanelToken('addcourse', 'browse'),
+      ]);
+      expect(parseOpenPanels(u(browseList)).right, isEmpty);
+    });
   });
 
   group('openDetail (generic, registry-driven exclusive groups)', () {

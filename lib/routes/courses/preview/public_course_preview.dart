@@ -10,6 +10,8 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -48,6 +50,23 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     if (widget.roomID != oldWidget.roomID) {
       _loadSummary();
     }
+  }
+
+  /// world_v2: the public course preview is route-driven
+  /// (`/courses/preview/:courseroomid`) because its parent `/courses…` segments
+  /// render a blank `EmptyPage`. A plain auto-pop back surfaces that blank page
+  /// (#7400). The preview has a single entry mode — the browse-public list — so
+  /// back returns to that list (`addcourse:browse`) over the world map, mirroring
+  /// the route-driven course-detail fix (#7092).
+  void back() {
+    context.go(
+      WorkspaceNav.setSection(
+        GoRouterState.of(context).uri,
+        PRoutes.world,
+        const PanelToken('addcourse', 'browse'),
+        keepRoom: false,
+      ),
+    );
   }
 
   bool get loading => loadingCourse || loadingRoomSummary;
