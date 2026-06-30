@@ -498,6 +498,4 @@ class UserController {
       userL2Code!.isNotEmpty &&
       userL1Code != LanguageKeys.unknownLanguage &&
       userL2Code != LanguageKeys.unknownLanguage;
-
-  bool get showTranscription => true;
 }

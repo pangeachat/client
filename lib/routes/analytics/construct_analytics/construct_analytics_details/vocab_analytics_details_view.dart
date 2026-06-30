@@ -106,6 +106,8 @@ class VocabDetailsView extends StatelessWidget {
                       ),
                   reloadNotifier: controller.reloadNotifier,
                   maxWidth: double.infinity,
+                  enableEmojiSelection: true,
+                  enableEmojiReactions: false,
                 ),
               ),
               if (construct != null)

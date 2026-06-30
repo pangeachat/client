@@ -31,9 +31,9 @@ class LemmaReactionPicker extends StatefulWidget {
     super.key,
     required this.constructId,
     required this.langCode,
+    required this.enableSelection,
+    required this.enableReactions,
     this.event,
-    this.enableSelection = true,
-    this.enableReactions = true,
     this.form,
   });
 
@@ -188,6 +188,10 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     final globallyEnable = _matchesL2;
     final globallyEnableSelection = globallyEnable && widget.enableSelection;
     final globallyEnableReactions = globallyEnable && widget.enableReactions;
+
+    Logs().w(
+      "ENABLE REACTIONS: ${widget.enableReactions}. ENABLE SELECTION: ${widget.enableSelection}",
+    );
 
     final bool hasSentSelectedEmojiReaction =
         _selectedEmoji != null &&

@@ -7,7 +7,6 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -25,10 +24,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
   final ConstructIdentifier construct;
-
   final String langCode;
-  final VoidCallback? onClose;
 
+  final VoidCallback? onClose;
   final Event? event;
 
   /// POS tag for PT v2 disambiguation (e.g. "VERB").
@@ -51,11 +49,11 @@ class WordZoomWidget extends StatelessWidget {
     required this.construct,
     required this.langCode,
     required this.pos,
+    required this.enableEmojiSelection,
+    required this.enableEmojiReactions,
     this.onClose,
     this.event,
     this.morph,
-    this.enableEmojiSelection = true,
-    this.enableEmojiReactions = true,
     this.enableAnalyticsNavigation = false,
     this.onFlagTokenInfo,
     this.reloadNotifier,
@@ -79,135 +77,117 @@ class WordZoomWidget extends StatelessWidget {
       _showNewWordOverlay(context);
     });
 
-    final showTranscript =
-        MatrixState.pangeaController.userController.showTranscription;
-
     final Widget content =
         !MatrixState
             .pangeaController
             .subscriptionController
             .showSubscriptionGatedContent
         ? MessageUnsubscribedCard(token: token, onClose: onClose)
-        : Stack(
-            children: [
-              Container(
-                height: AppConfig.toolbarMaxHeight - 8,
-                padding: const EdgeInsets.all(12.0),
-                constraints: BoxConstraints(
-                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
-                ),
-                child: Column(
-                  spacing: 12.0,
-                  children: [
-                    SizedBox(
-                      height: 40.0,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          onClose != null
-                              ? IconButton(
-                                  tooltip: L10n.of(context).close,
-                                  color: Theme.of(context).iconTheme.color,
-                                  icon: const Icon(Icons.close),
-                                  onPressed: onClose,
-                                )
-                              : const SizedBox(width: 40.0, height: 40.0),
-                          Flexible(
-                            child: InkWell(
-                              onTap: enableAnalyticsNavigation
-                                  ? () =>
-                                        AnalyticsNavigationUtil.navigateToAnalytics(
-                                          context: context,
-                                          view: ProgressIndicatorEnum.wordsUsed,
-                                          construct: construct,
-                                        )
-                                  : null,
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Container(
-                                constraints: const BoxConstraints(
-                                  minHeight: 40.0,
-                                ),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  token.content,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2,
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.light
-                                        ? AppConfig.yellowDark
-                                        : AppConfig.yellowLight,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
+        : Container(
+            height: AppConfig.toolbarMaxHeight - 8,
+            padding: const EdgeInsets.all(12.0),
+            constraints: BoxConstraints(
+              maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
+            ),
+            child: Column(
+              spacing: 12.0,
+              children: [
+                SizedBox(
+                  height: 40.0,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      onClose != null
+                          ? IconButton(
+                              tooltip: L10n.of(context).close,
+                              color: Theme.of(context).iconTheme.color,
+                              icon: const Icon(Icons.close),
+                              onPressed: onClose,
+                            )
+                          : const SizedBox(width: 40.0, height: 40.0),
+                      Flexible(
+                        child: InkWell(
+                          onTap: enableAnalyticsNavigation
+                              ? () =>
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.wordsUsed,
+                                      construct: construct,
+                                    )
+                              : null,
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Container(
+                            constraints: const BoxConstraints(minHeight: 40.0),
+                            alignment: Alignment.center,
+                            child: Text(
+                              token.content,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.w600,
+                                height: 1.2,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.light
+                                    ? AppConfig.yellowDark
+                                    : AppConfig.yellowLight,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
-                          onFlagTokenInfo != null
-                              ? TokenFeedbackButton(
-                                  textLanguage:
-                                      PLanguageStore.byLangCode(langCode) ??
-                                      LanguageModel.unknown,
-                                  constructId: construct,
-                                  text: token.content,
-                                  onFlagTokenInfo: onFlagTokenInfo!,
-                                  messageInfo: event?.content ?? {},
-                                )
-                              : const SizedBox(width: 40.0, height: 40.0),
-                        ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        spacing: 4.0,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          showTranscript
-                              ? PhoneticTranscriptionWidget(
-                                  text: token.content,
-                                  textLanguage:
-                                      PLanguageStore.byLangCode(langCode) ??
-                                      LanguageModel.unknown,
-                                  pos: pos,
-                                  morph: morph,
-                                  style: const TextStyle(fontSize: 14.0),
-                                  iconSize: 24.0,
-                                  maxLines: 2,
-                                  reloadNotifier: reloadNotifier,
-                                )
-                              : WordAudioButton(
-                                  text: token.content,
-                                  pos: pos,
-                                  morph: morph,
-                                  uniqueID: "lemma-content-${token.content}",
-                                  langCode: langCode,
-                                  iconSize: 24.0,
-                                ),
-                          LemmaReactionPicker(
-                            constructId: construct,
-                            langCode: langCode,
-                            event: event,
-                            enableSelection: enableEmojiSelection,
-                            enableReactions: enableEmojiReactions,
-                            form: token.content,
-                          ),
-                          LemmaMeaningDisplay(
-                            langCode: langCode,
-                            constructId: construct,
-                            text: token.content,
-                            messageInfo: event?.content ?? {},
-                            reloadNotifier: reloadNotifier,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                      onFlagTokenInfo != null
+                          ? TokenFeedbackButton(
+                              textLanguage:
+                                  PLanguageStore.byLangCode(langCode) ??
+                                  LanguageModel.unknown,
+                              constructId: construct,
+                              text: token.content,
+                              onFlagTokenInfo: onFlagTokenInfo!,
+                              messageInfo: event?.content ?? {},
+                            )
+                          : const SizedBox(width: 40.0, height: 40.0),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Column(
+                    spacing: 4.0,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PhoneticTranscriptionWidget(
+                        text: token.content,
+                        textLanguage:
+                            PLanguageStore.byLangCode(langCode) ??
+                            LanguageModel.unknown,
+                        pos: pos,
+                        morph: morph,
+                        style: const TextStyle(fontSize: 14.0),
+                        iconSize: 24.0,
+                        maxLines: 2,
+                        reloadNotifier: reloadNotifier,
+                      ),
+                      LemmaReactionPicker(
+                        constructId: construct,
+                        langCode: langCode,
+                        event: event,
+                        enableSelection: enableEmojiSelection,
+                        enableReactions: enableEmojiReactions,
+                        form: token.content,
+                      ),
+                      LemmaMeaningDisplay(
+                        langCode: langCode,
+                        constructId: construct,
+                        text: token.content,
+                        messageInfo: event?.content ?? {},
+                        reloadNotifier: reloadNotifier,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
 
     return GestureDetector(
