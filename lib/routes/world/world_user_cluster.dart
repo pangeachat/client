@@ -519,10 +519,12 @@ class _LevelMedal extends StatelessWidget {
 
 /// The active L2 indicator below the powerups pill (Figma `Flags`). Shows the
 /// language's flag SVG ([LanguageModel.svgUrl]) when it has a usable locale
-/// (e.g. `es-ES` → Spanish flag); otherwise the uppercased language code (e.g.
-/// `es` → `ES`), since a bare code is ambiguous across regional variants and
-/// has no single flag. Gated on [LanguageModel.shouldShowFlag], the same rule
-/// the language pickers use. Tapping it opens the learning settings page.
+/// (e.g. `es-ES` → Spanish flag), with the uppercased language code (e.g. `ES`)
+/// overlaid on top for at-a-glance identification. When there is no usable
+/// locale, or the SVG fails to load, the code is shown on its own; a white
+/// outline keeps it legible over any flag. Gated on
+/// [LanguageModel.shouldShowFlag], the same rule the language pickers use.
+/// Tapping it opens the learning settings page.
 class _LanguageFlag extends StatelessWidget {
   final LanguageModel language;
   final VoidCallback onTap;
@@ -539,13 +541,35 @@ class _LanguageFlag extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    final codeWidget = Text(
+    final outlinedText = Text(
       language.langCodeShort.toUpperCase(),
       style: TextStyle(
-        color: theme.colorScheme.onPrimary,
+        color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w700,
         height: 1.0,
+        shadows: [
+          Shadow(
+            // bottomLeft
+            offset: Offset(-1.5, -1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // bottomRight
+            offset: Offset(1.5, -1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // topRight
+            offset: Offset(1.5, 1.5),
+            color: Colors.white,
+          ),
+          Shadow(
+            // topLeft
+            offset: Offset(-1.5, 1.5),
+            color: Colors.white,
+          ),
+        ],
       ),
     );
 
@@ -579,17 +603,22 @@ class _LanguageFlag extends StatelessWidget {
               child: language.shouldShowFlag
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(_radius),
-                      child: SvgPicture.network(
-                        language.svgUrl.toString(),
-                        width: _w,
-                        height: _h,
-                        fit: BoxFit.cover,
-                        errorBuilder: (ctx, _, _) => codeWidget,
-                        placeholderBuilder: (_) =>
-                            const SizedBox(width: _w, height: _h),
+                      child: Stack(
+                        children: [
+                          SvgPicture.network(
+                            language.svgUrl.toString(),
+                            width: _w,
+                            height: _h,
+                            fit: BoxFit.cover,
+                            errorBuilder: (ctx, _, _) => outlinedText,
+                            placeholderBuilder: (_) =>
+                                const SizedBox(width: _w, height: _h),
+                          ),
+                          Positioned(child: Center(child: outlinedText)),
+                        ],
                       ),
                     )
-                  : codeWidget,
+                  : outlinedText,
             ),
           ),
         ),
