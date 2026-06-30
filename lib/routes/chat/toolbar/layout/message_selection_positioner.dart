@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -176,16 +177,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     null,
   );
 
-  RenderBox? get _parentRenderBox => _runWithLogging<RenderBox?>(
-    () {
-      final overlay = Overlay.of(context);
-      final renderBox = overlay.context.findRenderObject() as RenderBox?;
-      if (renderBox == null || !renderBox.hasSize) return null;
-      return renderBox;
-    },
-    "Error getting message render box",
-    null,
-  );
+  RenderBox? get _parentRenderBox => OverlayUtil.overlayRenderBox(context);
 
   double? get parentWidth => _parentRenderBox?.size.width;
 
