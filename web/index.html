@@ -19,6 +19,43 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+  <!-- #Pangea: one-time eviction of any legacy service worker.
+       Current builds use --pwa-strategy=none and register no service worker.
+       Returning users from older offline-first builds still have one registered
+       that serves a stale app shell from Cache Storage. The old worker serves
+       index.html online-first, so this runs on their next load, before the
+       Flutter bootstrap: it unregisters all workers, clears all caches, and
+       reloads once. Inert for fresh users (no registration -> no-op). -->
+  <script>
+    (function () {
+      if (!('serviceWorker' in navigator)) return;
+      var KEY = 'pangea-sw-killswitch';
+      var reloadOnce = function () {
+        try {
+          if (sessionStorage.getItem(KEY)) return;
+          sessionStorage.setItem(KEY, '1');
+        } catch (e) {
+          return; // can't guard against a reload loop -> leave it to a manual reload
+        }
+        location.reload();
+      };
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        if (!regs.length) return;
+        Promise.all(regs.map(function (r) { return r.unregister().catch(function () {}); }))
+          .then(function () { return window.caches ? caches.keys() : []; })
+          .then(function (keys) {
+            return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+          })
+          .then(reloadOnce);
+      }).catch(function () {});
+      navigator.serviceWorker.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'SW_SELF_DESTRUCT_RELOAD') reloadOnce();
+      });
+    })();
+  </script>
+  <!-- Pangea# -->
+
   <!-- #Pangea -->
   <!-- <meta name="description" content="The cutest messenger in the Matrix network."> -->
   <meta name="description" content="Learn a language while texting your friends.">

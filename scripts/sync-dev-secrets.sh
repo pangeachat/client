@@ -44,6 +44,9 @@ fi
 SECRET_MAP=(
   "TEST_MATRIX_USERNAME=/staging/test-user/matrix-credentials#username"
   "TEST_MATRIX_PASSWORD=/staging/test-user/matrix-credentials#password"
+  "GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64=/staging/firebase/google-analytics#web"
+  "GOOGLE_SERVICES_JSON=/staging/firebase/google-analytics#android"
+  "GOOGLE_SERVICES_PLIST=/staging/firebase/google-analytics#ios"
 )
 
 fetch_secret() {

@@ -12,6 +12,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 class StarRainWidget extends StatefulWidget {
   final String overlayKey;
 
+  static const String practiceCompleteKey = "completed-activity-star-rain";
+
   const StarRainWidget({super.key, required this.overlayKey});
 
   static void show(BuildContext context, String overlayKey) {
@@ -20,7 +22,7 @@ class StarRainWidget extends StatefulWidget {
       child: StarRainWidget(overlayKey: overlayKey),
       displayDetails: CenteredOverlayDisplayDetails(
         closePrevOverlay: false,
-        canPop: false,
+        canPop: true,
         overlayKey: overlayKey,
         ignorePointer: true,
       ),
@@ -62,12 +64,11 @@ class _StarRainWidgetState extends State<StarRainWidget> {
 
     _fadeOpacity = 1.0;
     Future.delayed(rainDuration, () async {
-      if (!mounted) return;
-
-      setState(() => _fadeOpacity = 0.0);
-      await Future.delayed(opacityDuration);
+      if (mounted) {
+        setState(() => _fadeOpacity = 0.0);
+        await Future.delayed(opacityDuration);
+      }
       MatrixState.pAnyState.closeOverlay(widget.overlayKey);
-
       if (mounted) {
         _blastController.stop();
         _rainController.stop();

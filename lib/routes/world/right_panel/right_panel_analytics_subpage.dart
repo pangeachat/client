@@ -31,7 +31,7 @@ class RightPanelAnalyticsSubpage extends StatelessWidget {
     final tab = token.param;
     final title = switch (tab) {
       'grammar' => l10n.grammar,
-      'sessions' => l10n.activities,
+      'sessions' => l10n.stars,
       'level' => l10n.level,
       _ => l10n.vocab,
     };

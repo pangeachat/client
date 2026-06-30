@@ -7,6 +7,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/close_button_labels.dart';
 
 /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
 /// ONE level via popPage (a course management page → the card; a room sub-page
@@ -94,7 +95,7 @@ class LeftPanelCloseButton extends StatelessWidget {
         ? BackButton(onPressed: () => _close(context))
         : IconButton(
             icon: const Icon(Icons.close),
-            tooltip: L10n.of(context).close,
+            tooltip: closeButtonLabel(L10n.of(context), token),
             onPressed: () => _close(context),
           );
   }

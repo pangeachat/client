@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 class ActivityStarRow extends StatelessWidget {
   final int total;
@@ -30,15 +31,18 @@ class ActivityStarRow extends StatelessWidget {
         ],
       );
     }
-    return Wrap(
-      spacing: 2.0,
-      runSpacing: 2.0,
-      children: List.generate(
-        total,
-        (i) => Icon(
-          i < filled ? Icons.star : Icons.star_border,
-          size: iconSize,
-          color: i < filled ? AppConfig.gold : AppConfig.grayText,
+    return Semantics(
+      label: L10n.of(context).starRowLabel(filled, total),
+      child: Wrap(
+        spacing: 2.0,
+        runSpacing: 2.0,
+        children: List.generate(
+          total,
+          (i) => Icon(
+            i < filled ? Icons.star : Icons.star_border,
+            size: iconSize,
+            color: i < filled ? AppConfig.gold : AppConfig.grayText,
+          ),
         ),
       ),
     );

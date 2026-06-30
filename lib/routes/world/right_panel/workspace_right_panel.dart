@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
+import 'package:fluffychat/routes/world/close_button_labels.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
@@ -84,7 +85,13 @@ class WorkspaceRightPanel extends StatelessWidget {
 
     final leadingTooltip = aff.showBack
         ? MaterialLocalizations.of(context).backButtonTooltip
-        : l10n.close;
+        : closeButtonLabel(
+            l10n,
+            token,
+            named: token.type == 'settingspage'
+                ? SettingsPageEnum.fromString(page).title(l10n)
+                : null,
+          );
 
     final onLeading = aff.showBack && isPushed
         ? () => context.go(WorkspaceNav.popPage(currentUri, token.type, page))
@@ -126,7 +133,7 @@ class WorkspaceRightPanel extends StatelessWidget {
               );
       }(),
       'vocab' || 'grammar' => PanelCardWithHeader(
-        title: _construct?.lemma ?? '',
+        title: '',
         icon: leadingIcon,
         onLeading: onLeading,
         tooltip: leadingTooltip,

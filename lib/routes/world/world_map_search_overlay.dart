@@ -110,7 +110,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
               suffixIcon: searching
                   ? IconButton(
                       icon: const Icon(Icons.close),
-                      tooltip: l10n.close,
+                      tooltip: l10n.clearSearch,
                       onPressed: () => widget.updateQuery(''),
                     )
                   : null,
