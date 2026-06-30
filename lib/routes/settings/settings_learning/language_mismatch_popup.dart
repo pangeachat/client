@@ -4,6 +4,7 @@ import 'package:fluffychat/features/bot/utils/bot_style.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -48,6 +49,7 @@ class LanguageMismatchPopup extends StatelessWidget {
         transformTargetId: targetId,
         overlayKey: 'language_mismatch_popup',
       ),
+      overlayPosition: OverlayPosition.above,
     );
   }
 
