@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -47,7 +48,14 @@ class PangeaInvitationSelectionView extends StatelessWidget {
           child: controller.widget.embeddedCloseButton ?? const BackButton(),
         ),
         titleSpacing: 0,
-        title: Text(L10n.of(context).inviteContact),
+        title: Text(
+          L10n.of(context).inviteContact,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
         centerTitle: false,
         actions: [
           ShareRoomButton(room: room, child: const Icon(Icons.share_outlined)),

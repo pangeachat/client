@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -51,7 +52,16 @@ class SelectedCourseView extends StatelessWidget {
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: controller.back,
         ),
-        title: Text(controller.title),
+        title: Text(
+          controller.title,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
       ),
       body: SafeArea(
         child: Container(

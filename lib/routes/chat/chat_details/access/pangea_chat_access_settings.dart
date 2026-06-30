@@ -24,9 +24,18 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
           children: [
             const Icon(Icons.shield_outlined),
             const SizedBox(width: 8),
-            Text(L10n.of(context).access),
+            Text(
+              L10n.of(context).access,
+              style: FluffyThemes.isColumnMode(context)
+                  ? Theme.of(context).textTheme.titleLarge
+                  : Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+            ),
           ],
         ),
+        centerTitle: false,
+        titleSpacing: 0,
       ),
       body: MaxWidthBody(
         showBorder: false,

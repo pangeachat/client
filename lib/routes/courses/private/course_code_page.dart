@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -80,8 +81,16 @@ class CourseCodePageState extends State<CourseCodePage> {
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => context.go('/courses'),
         ),
-        title: Text(L10n.of(context).joinWithCode),
+        title: Text(
+          L10n.of(context).joinWithCode,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
         centerTitle: false,
+        titleSpacing: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.close),

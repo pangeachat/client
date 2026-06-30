@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -330,8 +331,16 @@ class FindCoursePageView extends StatelessWidget {
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => context.go('/courses'),
         ),
-        title: Text(L10n.of(context).browsePublicCourses),
+        title: Text(
+          L10n.of(context).browsePublicCourses,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
         centerTitle: false,
+        titleSpacing: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.close),

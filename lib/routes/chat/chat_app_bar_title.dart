@@ -73,6 +73,11 @@ class ChatAppBarTitle extends StatelessWidget {
                   room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: FluffyThemes.isColumnMode(context)
+                      ? Theme.of(context).textTheme.titleLarge
+                      : Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                 ),
                 StreamBuilder(
                   stream: room.client.onSyncStatus.stream,

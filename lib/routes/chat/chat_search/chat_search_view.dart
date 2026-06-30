@@ -36,11 +36,17 @@ class ChatSearchView extends StatelessWidget {
         leading: Center(
           child: controller.widget.embeddedCloseButton ?? const BackButton(),
         ),
+        centerTitle: false,
         titleSpacing: 0,
         title: Text(
           L10n.of(context).searchIn(
             room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
           ),
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
         ),
       ),
       body: MaxWidthBody(

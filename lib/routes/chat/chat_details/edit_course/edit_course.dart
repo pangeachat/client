@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -195,7 +196,16 @@ class EditCourseController extends State<EditCourse> {
         leading: Center(
           child: widget.embeddedCloseButton ?? const BackButton(),
         ),
-        title: Text(L10n.of(context).editing),
+        title: Text(
+          L10n.of(context).editing,
+          style: FluffyThemes.isColumnMode(context)
+              ? Theme.of(context).textTheme.titleLarge
+              : Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
       ),
       body: StreamBuilder(
         stream: Matrix.of(
