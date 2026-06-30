@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-06-29 12:25:10.690680",
+    "@@last_modified": "2026-06-30 09:35:39.623753",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9808,16 +9808,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Mesaj balonuna tıklayarak onu seçin",
-    "writingAssistanceTutorialInputBar": "Herhangi bir dilde yazabilirsiniz. Hatalar hakkında endişelenmeyin! Onları düzeltmenize yardımcı olacağız.",
     "writingAssistanceTutorialIGCButton": "Mesajınızı yazdıktan sonra, yazma yardımını başlatmak için bu düğmeye tıklayın",
     "selectModeTutorialTranslate": "Mesajı çevirmek için buraya tıklayın",
     "selectModeTutorialAudio": "Mesajı dinlemek için buraya tıklayın",
     "selectModeTutorialExit": "Sohbete geri dönmek için arka plana tıklayın",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10437,6 +10432,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Sohbet listesini kapat",
+    "closeChat": "Sohbeti kapat",
+    "closeSession": "Etkinlik incelemesini kapat",
+    "closeCourse": "Dersi kapat",
+    "closeCoursePage": "Ders sayfasını kapat",
+    "closeAddCourse": "Ders eklemeyi kapat",
+    "closeAnalytics": "Analitiği kapat",
+    "closeVocabulary": "Kelimeleri kapat",
+    "closeGrammar": "Grameri kapat",
+    "closePractice": "Pratiği kapat",
+    "closeSettings": "Ayarları kapat",
+    "closeActivity": "Etkinliği kapat",
+    "closeNamed": "{name} kapat",
+    "clearSearch": "Aramayı temizle",
+    "starRowLabel": "{filled} üzerinden {total} yıldız tamamlandı",
+    "difficultyLabel": "Zorluk: {cefr}",
+    "writingAssistanceTutorialInputBar": "Herhangi bir dilde yazabilirsiniz! Hatalarınızı düzeltmenize yardımcı olacağız.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

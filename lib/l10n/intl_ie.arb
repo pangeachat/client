@@ -3377,7 +3377,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-29 12:24:34.942439",
+    "@@last_modified": "2026-06-30 09:33:59.675955",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10196,16 +10196,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Clicca sulla bolla del messaggio per selezionarla",
-    "writingAssistanceTutorialInputBar": "Puoi scrivere in qualsiasi lingua. Non preoccuparti degli errori! Ti aiuteremo a correggerli.",
     "writingAssistanceTutorialIGCButton": "Dopo aver scritto il tuo messaggio, clicca questo pulsante per iniziare l'assistenza alla scrittura",
     "selectModeTutorialTranslate": "Clicca qui per tradurre il messaggio",
     "selectModeTutorialAudio": "Clicca qui per ascoltare il messaggio",
     "selectModeTutorialExit": "Clicca sullo sfondo per tornare a chattare",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10825,6 +10820,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Dún liosta comhoibrithe",
+    "closeChat": "Dún comhoibriú",
+    "closeSession": "Dún athbhreithniú gníomhaíochta",
+    "closeCourse": "Dún cúrsa",
+    "closeCoursePage": "Dún leathanach cúrsa",
+    "closeAddCourse": "Dún cur cúrsa leis",
+    "closeAnalytics": "Dún anailís",
+    "closeVocabulary": "Dún foclóir",
+    "closeGrammar": "Dún gramadach",
+    "closePractice": "Dún cleachtadh",
+    "closeSettings": "Dún socruithe",
+    "closeActivity": "Dún gníomhaíocht",
+    "closeNamed": "Dún {name}",
+    "clearSearch": "Glan cuardach",
+    "starRowLabel": "{filled} as {total} réaltaí atá críochnaithe",
+    "difficultyLabel": "Deacracht: {cefr}",
+    "writingAssistanceTutorialInputBar": "Is féidir leat scríobh i dteanga ar bith! Cuirfimid cabhair ar fáil chun botúin a cheartú.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

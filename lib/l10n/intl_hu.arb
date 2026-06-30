@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-29 12:24:29.128377",
+    "@@last_modified": "2026-06-30 09:33:41.863573",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9604,16 +9604,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Kattints az üzenetbuborékra a kiválasztáshoz",
-    "writingAssistanceTutorialInputBar": "Bármilyen nyelven írhat. Ne aggódjon a hibák miatt! Segítünk kijavítani őket.",
     "writingAssistanceTutorialIGCButton": "Üzenete megírása után kattintson erre a gombra az írási asszisztens elindításához",
     "selectModeTutorialTranslate": "Kattintson ide az üzenet lefordításához",
     "selectModeTutorialAudio": "Kattintson ide az üzenet meghallgatásához",
     "selectModeTutorialExit": "Kattintson a háttérre a csevegéshez való visszatéréshez",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10233,6 +10228,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Csevegőlista bezárása",
+    "closeChat": "Csevegés bezárása",
+    "closeSession": "Tevékenység-áttekintés bezárása",
+    "closeCourse": "Tanfolyam bezárása",
+    "closeCoursePage": "Tanfolyam oldal bezárása",
+    "closeAddCourse": "Tanfolyam hozzáadása bezárása",
+    "closeAnalytics": "Elemzés bezárása",
+    "closeVocabulary": "Szókincs bezárása",
+    "closeGrammar": "Nyelvtan bezárása",
+    "closePractice": "Gyakorlás bezárása",
+    "closeSettings": "Beállítások bezárása",
+    "closeActivity": "Tevékenység bezárása",
+    "closeNamed": "Bezárás: {name}",
+    "clearSearch": "Keresés törlése",
+    "starRowLabel": "{filled} a {total} csillagból teljesítve",
+    "difficultyLabel": "Nehézség: {cefr}",
+    "writingAssistanceTutorialInputBar": "Bármilyen nyelven írhat! Segítünk a hibák javításában.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

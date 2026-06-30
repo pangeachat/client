@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-06-29 12:25:06.885203",
+    "@@last_modified": "2026-06-30 09:35:25.776368",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10496,16 +10496,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "I-click ang mensahe na bula upang piliin ito",
-    "writingAssistanceTutorialInputBar": "Maaari kang sumulat sa anumang wika. Huwag mag-alala tungkol sa mga pagkakamali! Tutulungan ka naming ituwid ang mga ito.",
     "writingAssistanceTutorialIGCButton": "Matapos isulat ang iyong mensahe, i-click ang button na ito upang simulan ang tulong sa pagsusulat",
     "selectModeTutorialTranslate": "I-click dito upang isalin ang mensahe",
     "selectModeTutorialAudio": "I-click dito upang pakinggan ang mensahe",
     "selectModeTutorialExit": "I-click ang background upang bumalik sa pakikipag-chat",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11125,6 +11120,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Isara ang listahan ng chat",
+    "closeChat": "Isara ang chat",
+    "closeSession": "Isara ang pagsusuri ng aktibidad",
+    "closeCourse": "Isara ang kurso",
+    "closeCoursePage": "Isara ang pahina ng kurso",
+    "closeAddCourse": "Isara ang magdagdag ng kurso",
+    "closeAnalytics": "Isara ang analytics",
+    "closeVocabulary": "Isara ang bokabularyo",
+    "closeGrammar": "Isara ang gramatika",
+    "closePractice": "Isara ang pagsasanay",
+    "closeSettings": "Isara ang mga setting",
+    "closeActivity": "Isara ang aktibidad",
+    "closeNamed": "Isara ang {name}",
+    "clearSearch": "I-clear ang paghahanap",
+    "starRowLabel": "{filled} sa {total} na bituin ang natapos",
+    "difficultyLabel": "Kahirapan: {cefr}",
+    "writingAssistanceTutorialInputBar": "Maaari kang sumulat sa anumang wika! Tutulungan ka naming ituwid ang mga pagkakamali.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

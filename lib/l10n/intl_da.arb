@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-29 12:24:27.501428",
+    "@@last_modified": "2026-06-30 09:33:37.144253",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10571,16 +10571,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klik på beskedboblen for at vælge den",
-    "writingAssistanceTutorialInputBar": "Du kan skrive på ethvert sprog. Bekymr dig ikke om fejl! Vi hjælper dig med at rette dem.",
     "writingAssistanceTutorialIGCButton": "Efter at have skrevet din besked, klik på denne knap for at starte skriveassistance",
     "selectModeTutorialTranslate": "Klik her for at oversætte beskeden",
     "selectModeTutorialAudio": "Klik her for at lytte til beskeden",
     "selectModeTutorialExit": "Klik på baggrunden for at gå tilbage til chatten",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11200,6 +11195,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Luk chatliste",
+    "closeChat": "Luk chat",
+    "closeSession": "Luk aktivitetsgennemgang",
+    "closeCourse": "Luk kursus",
+    "closeCoursePage": "Luk kursusside",
+    "closeAddCourse": "Luk tilføj kursus",
+    "closeAnalytics": "Luk analyser",
+    "closeVocabulary": "Luk ordforråd",
+    "closeGrammar": "Luk grammatik",
+    "closePractice": "Luk øvelse",
+    "closeSettings": "Luk indstillinger",
+    "closeActivity": "Luk aktivitet",
+    "closeNamed": "Luk {name}",
+    "clearSearch": "Ryd søgning",
+    "starRowLabel": "{filled} ud af {total} stjerner er blevet fuldført",
+    "difficultyLabel": "Sværhedsgrad: {cefr}",
+    "writingAssistanceTutorialInputBar": "Du kan skrive på ethvert sprog! Vi hjælper dig med at rette fejl.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

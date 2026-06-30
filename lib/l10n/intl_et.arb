@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-29 12:24:46.709321",
+    "@@last_modified": "2026-06-30 09:34:26.914132",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9474,16 +9474,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klõpsake sõnumi mullile, et see valida",
-    "writingAssistanceTutorialInputBar": "Saate kirjutada igas keeles. Ärge muretsege vigade pärast! Me aitame teil neid parandada.",
     "writingAssistanceTutorialIGCButton": "Pärast sõnumi kirjutamist klõpsake seda nuppu, et alustada kirjutamisabi",
     "selectModeTutorialTranslate": "Klõpsake siin, et sõnumit tõlkida",
     "selectModeTutorialAudio": "Klõpsake siin, et sõnumit kuulata",
     "selectModeTutorialExit": "Klõpsake taustal, et naasta vestlusse",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10103,6 +10098,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Sulge vestlusloend",
+    "closeChat": "Sulge vestlus",
+    "closeSession": "Sulge tegevuse ülevaade",
+    "closeCourse": "Sulge kursus",
+    "closeCoursePage": "Sulge kursuse leht",
+    "closeAddCourse": "Sulge kursuse lisamine",
+    "closeAnalytics": "Sulge analüütika",
+    "closeVocabulary": "Sulge sõnavara",
+    "closeGrammar": "Sulge grammatika",
+    "closePractice": "Sulge harjutus",
+    "closeSettings": "Sulge seaded",
+    "closeActivity": "Sulge tegevus",
+    "closeNamed": "Sulge {name}",
+    "clearSearch": "Kustuta otsing",
+    "starRowLabel": "{filled} {total} tähest on täidetud",
+    "difficultyLabel": "Raskusaste: {cefr}",
+    "writingAssistanceTutorialInputBar": "Sa saad kirjutada igas keeles! Me aitame sul vigu parandada.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

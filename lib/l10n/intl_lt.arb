@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-06-29 12:25:13.836979",
+    "@@last_modified": "2026-06-30 09:35:51.299779",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10363,16 +10363,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Paspauskite ant pranešimo burbulo, kad jį pasirinktumėte",
-    "writingAssistanceTutorialInputBar": "Galite rašyti bet kuria kalba. Nesijaudinkite dėl klaidų! Mes jums padėsime jas ištaisyti.",
     "writingAssistanceTutorialIGCButton": "Parašę savo pranešimą, paspauskite šį mygtuką, kad pradėtumėte rašymo pagalbą",
     "selectModeTutorialTranslate": "Paspauskite čia, kad išverstumėte pranešimą",
     "selectModeTutorialAudio": "Paspauskite čia, kad išgirstumėte pranešimą",
     "selectModeTutorialExit": "Paspauskite fono sritį, kad grįžtumėte prie pokalbio",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10992,6 +10987,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Uždaryti pokalbių sąrašą",
+    "closeChat": "Uždaryti pokalbį",
+    "closeSession": "Uždaryti veiklos apžvalgą",
+    "closeCourse": "Uždaryti kursą",
+    "closeCoursePage": "Uždaryti kurso puslapį",
+    "closeAddCourse": "Uždaryti pridėti kursą",
+    "closeAnalytics": "Uždaryti analitiką",
+    "closeVocabulary": "Uždaryti žodyną",
+    "closeGrammar": "Uždaryti gramatiką",
+    "closePractice": "Uždaryti praktiką",
+    "closeSettings": "Uždaryti nustatymus",
+    "closeActivity": "Uždaryti veiklą",
+    "closeNamed": "Uždaryti {name}",
+    "clearSearch": "Išvalyti paiešką",
+    "starRowLabel": "{filled} iš {total} žvaigždžių buvo užpildytos",
+    "difficultyLabel": "Sunkumas: {cefr}",
+    "writingAssistanceTutorialInputBar": "Galite rašyti bet kuria kalba! Mes padėsime jums ištaisyti klaidas.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-29 12:25:37.912093",
+    "@@last_modified": "2026-06-30 09:36:52.110383",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10491,16 +10491,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Нажмите на пузырь сообщения, чтобы выбрать его",
-    "writingAssistanceTutorialInputBar": "Вы можете писать на любом языке. Не беспокойтесь о ошибках! Мы поможем вам их исправить.",
     "writingAssistanceTutorialIGCButton": "После написания вашего сообщения нажмите эту кнопку, чтобы начать помощь в написании",
     "selectModeTutorialTranslate": "Нажмите здесь, чтобы перевести сообщение",
     "selectModeTutorialAudio": "Нажмите здесь, чтобы прослушать сообщение",
     "selectModeTutorialExit": "Нажмите на фон, чтобы вернуться к чату",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11120,6 +11115,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Закрыть список чатов",
+    "closeChat": "Закрыть чат",
+    "closeSession": "Закрыть обзор активности",
+    "closeCourse": "Закрыть курс",
+    "closeCoursePage": "Закрыть страницу курса",
+    "closeAddCourse": "Закрыть добавление курса",
+    "closeAnalytics": "Закрыть аналитику",
+    "closeVocabulary": "Закрыть словарь",
+    "closeGrammar": "Закрыть грамматику",
+    "closePractice": "Закрыть практику",
+    "closeSettings": "Закрыть настройки",
+    "closeActivity": "Закрыть активность",
+    "closeNamed": "Закрыть {name}",
+    "clearSearch": "Очистить поиск",
+    "starRowLabel": "{filled} из {total} звезд завершены",
+    "difficultyLabel": "Сложность: {cefr}",
+    "writingAssistanceTutorialInputBar": "Вы можете писать на любом языке! Мы поможем вам исправить ошибки.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

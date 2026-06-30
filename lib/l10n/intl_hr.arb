@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-29 12:24:36.954454",
+    "@@last_modified": "2026-06-30 09:34:04.896532",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -9961,16 +9961,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Kliknite na balon s porukom da biste ga odabrali",
-    "writingAssistanceTutorialInputBar": "Možete pisati na bilo kojem jeziku. Ne brinite o greškama! Pomoći ćemo vam da ih ispravite.",
     "writingAssistanceTutorialIGCButton": "Nakon što napišete svoju poruku, kliknite na ovu tipku za početak pomoći pri pisanju",
     "selectModeTutorialTranslate": "Kliknite ovdje za prevođenje poruke",
     "selectModeTutorialAudio": "Kliknite ovdje da biste poslušali poruku",
     "selectModeTutorialExit": "Kliknite na pozadinu da se vratite razgovoru",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10590,6 +10585,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Zatvori popis razgovora",
+    "closeChat": "Zatvori razgovor",
+    "closeSession": "Zatvori pregled aktivnosti",
+    "closeCourse": "Zatvori tečaj",
+    "closeCoursePage": "Zatvori stranicu tečaja",
+    "closeAddCourse": "Zatvori dodavanje tečaja",
+    "closeAnalytics": "Zatvori analitiku",
+    "closeVocabulary": "Zatvori rječnik",
+    "closeGrammar": "Zatvori gramatiku",
+    "closePractice": "Zatvori vježbu",
+    "closeSettings": "Zatvori postavke",
+    "closeActivity": "Zatvori aktivnost",
+    "closeNamed": "Zatvori {name}",
+    "clearSearch": "Očisti pretraživanje",
+    "starRowLabel": "{filled} od {total} zvjezdica je dovršeno",
+    "difficultyLabel": "Težina: {cefr}",
+    "writingAssistanceTutorialInputBar": "Možete pisati na bilo kojem jeziku! Pomoći ćemo vam ispraviti greške.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

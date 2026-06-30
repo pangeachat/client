@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-29 12:24:53.372568",
+    "@@last_modified": "2026-06-30 09:34:47.333865",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9477,16 +9477,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Натисніть на повідомлення, щоб вибрати його",
-    "writingAssistanceTutorialInputBar": "Ви можете писати будь-якою мовою. Не хвилюйтеся про помилки! Ми допоможемо вам їх виправити.",
     "writingAssistanceTutorialIGCButton": "Після написання вашого повідомлення натисніть цю кнопку, щоб почати допомогу в написанні",
     "selectModeTutorialTranslate": "Натисніть тут, щоб перекласти повідомлення",
     "selectModeTutorialAudio": "Натисніть тут, щоб прослухати повідомлення",
     "selectModeTutorialExit": "Натисніть на фон, щоб повернутися до чату",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10106,6 +10101,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Закрити список чатів",
+    "closeChat": "Закрити чат",
+    "closeSession": "Закрити огляд активності",
+    "closeCourse": "Закрити курс",
+    "closeCoursePage": "Закрити сторінку курсу",
+    "closeAddCourse": "Закрити додавання курсу",
+    "closeAnalytics": "Закрити аналітику",
+    "closeVocabulary": "Закрити словник",
+    "closeGrammar": "Закрити граматику",
+    "closePractice": "Закрити практику",
+    "closeSettings": "Закрити налаштування",
+    "closeActivity": "Закрити активність",
+    "closeNamed": "Закрити {name}",
+    "clearSearch": "Очистити пошук",
+    "starRowLabel": "{filled} з {total} зірок було завершено",
+    "difficultyLabel": "Складність: {cefr}",
+    "writingAssistanceTutorialInputBar": "Ви можете писати будь-якою мовою! Ми допоможемо вам виправити помилки.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

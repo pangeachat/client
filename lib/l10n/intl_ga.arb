@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-29 12:25:41.798959",
+    "@@last_modified": "2026-06-30 09:37:06.706851",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9488,16 +9488,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Cliceáil ar an mbabhta teachtaireachta chun é a roghnú",
-    "writingAssistanceTutorialInputBar": "Is féidir leat scríobh i dteanga ar bith. Ná bíodh imní ort faoi earráidí! Cuirfimid cabhair ort chun iad a cheartú.",
     "writingAssistanceTutorialIGCButton": "Tar éis duit do theachtaireacht a scríobh, cliceáil ar an gcnaipe seo chun tús a chur le cabhair scríbhneoireachta",
     "selectModeTutorialTranslate": "Cliceáil anseo chun an teachtaireacht a aistriú",
     "selectModeTutorialAudio": "Cliceáil anseo chun an teachtaireacht a éisteacht",
     "selectModeTutorialExit": "Cliceáil ar an gcúlra chun dul ar ais chuig an gcomhrá",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10117,6 +10112,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Dún liosta comhoibrithe",
+    "closeChat": "Dún comhoibriú",
+    "closeSession": "Dún athbhreithniú gníomhaíochta",
+    "closeCourse": "Dún cúrsa",
+    "closeCoursePage": "Dún leathanach cúrsa",
+    "closeAddCourse": "Dún cuir cúrsa leis",
+    "closeAnalytics": "Dún anailís",
+    "closeVocabulary": "Dún foclóir",
+    "closeGrammar": "Dún gramadach",
+    "closePractice": "Dún cleachtadh",
+    "closeSettings": "Dún socruithe",
+    "closeActivity": "Dún gníomhaíocht",
+    "closeNamed": "Dún {name}",
+    "clearSearch": "Glan cuardach",
+    "starRowLabel": "{filled} as {total} réaltaí atá críochnaithe",
+    "difficultyLabel": "Deacracht: {cefr}",
+    "writingAssistanceTutorialInputBar": "Is féidir leat scríobh i dteanga ar bith! Cuirfimid cabhair ar fáil duit chun botúin a cheartú.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

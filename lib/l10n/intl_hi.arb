@@ -3377,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-06-29 12:25:35.142796",
+    "@@last_modified": "2026-06-30 09:36:43.764370",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10196,16 +10196,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "संदेश बबल पर क्लिक करें ताकि आप इसे चुन सकें",
-    "writingAssistanceTutorialInputBar": "आप किसी भी भाषा में लिख सकते हैं। गलतियों की चिंता न करें! हम आपकी मदद करेंगे उन्हें सुधारने में।",
     "writingAssistanceTutorialIGCButton": "अपने संदेश को लिखने के बाद, लेखन सहायता शुरू करने के लिए इस बटन पर क्लिक करें",
     "selectModeTutorialTranslate": "संदेश का अनुवाद करने के लिए यहां क्लिक करें",
     "selectModeTutorialAudio": "संदेश सुनने के लिए यहां क्लिक करें",
     "selectModeTutorialExit": "चैटिंग पर वापस जाने के लिए पृष्ठभूमि पर क्लिक करें",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10825,6 +10820,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "चैट सूची बंद करें",
+    "closeChat": "चैट बंद करें",
+    "closeSession": "गतिविधि समीक्षा बंद करें",
+    "closeCourse": "कोर्स बंद करें",
+    "closeCoursePage": "कोर्स पृष्ठ बंद करें",
+    "closeAddCourse": "कोर्स जोड़ें बंद करें",
+    "closeAnalytics": "विश्लेषण बंद करें",
+    "closeVocabulary": "शब्दावली बंद करें",
+    "closeGrammar": "व्याकरण बंद करें",
+    "closePractice": "अभ्यास बंद करें",
+    "closeSettings": "सेटिंग्स बंद करें",
+    "closeActivity": "गतिविधि बंद करें",
+    "closeNamed": "{name} बंद करें",
+    "clearSearch": "खोज साफ करें",
+    "starRowLabel": "{filled} में से {total} सितारे पूरे हो चुके हैं",
+    "difficultyLabel": "कठिनाई: {cefr}",
+    "writingAssistanceTutorialInputBar": "आप किसी भी भाषा में लिख सकते हैं! हम आपकी गलतियों को सुधारने में मदद करेंगे।",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

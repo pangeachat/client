@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-29 12:24:33.792738",
+    "@@last_modified": "2026-06-30 09:33:55.832351",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10593,16 +10593,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Kliknite na bublinu správy, aby ste ju vybrali",
-    "writingAssistanceTutorialInputBar": "Môžete písať v akomkoľvek jazyku. Nebojte sa chýb! Pomôžeme vám ich opraviť.",
     "writingAssistanceTutorialIGCButton": "Po napísaní správy kliknite na toto tlačidlo, aby ste spustili pomoc pri písaní",
     "selectModeTutorialTranslate": "Kliknite sem na preloženie správy",
     "selectModeTutorialAudio": "Kliknite sem na vypočutie správy",
     "selectModeTutorialExit": "Kliknite na pozadie, aby ste sa vrátili k chatovaniu",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11222,6 +11217,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Zavrieť zoznam chatov",
+    "closeChat": "Zavrieť chat",
+    "closeSession": "Zavrieť prehľad aktivity",
+    "closeCourse": "Zavrieť kurz",
+    "closeCoursePage": "Zavrieť stránku kurzu",
+    "closeAddCourse": "Zavrieť pridanie kurzu",
+    "closeAnalytics": "Zavrieť analytiku",
+    "closeVocabulary": "Zavrieť slovnú zásobu",
+    "closeGrammar": "Zavrieť gramatiku",
+    "closePractice": "Zavrieť cvičenie",
+    "closeSettings": "Zavrieť nastavenia",
+    "closeActivity": "Zavrieť aktivitu",
+    "closeNamed": "Zavrieť {name}",
+    "clearSearch": "Vymazať vyhľadávanie",
+    "starRowLabel": "{filled} z {total} hviezd bolo dokončených",
+    "difficultyLabel": "Obtiažnosť: {cefr}",
+    "writingAssistanceTutorialInputBar": "Môžete písať v akomkoľvek jazyku! Pomôžeme vám opraviť chyby.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }
