@@ -166,4 +166,34 @@ void main() {
       expect(active('/?left=chats,room:!abc:matrix.org'), '!abc:matrix.org');
     });
   });
+
+  // #7385: the activity plan is a first-class `left=activity:` panel token (no
+  // longer the `?activity=` canvas overlay). It is a left-column `liveView`
+  // sibling of `room`/`session`, so the parser keeps it like any registered panel
+  // and enforces one-live-view exclusivity. `activityFor` reads this same token.
+  group('activity left token (#7385)', () {
+    List<String> leftTypes(String location) => [
+      for (final t in parseOpenPanels(Uri.parse(location)).left) t.type,
+    ];
+    String? activityParam(String location) => parseOpenPanels(
+      Uri.parse(location),
+    ).left.firstWhere((t) => t.type == 'activity').param;
+
+    test('an `activity` left token parses with its id as the param', () {
+      expect(leftTypes('/?left=activity:abc'), ['activity']);
+      expect(activityParam('/?left=activity:abc'), 'abc');
+      expect(
+        activityParam(
+          '/?m=course:!s&left=activity:32ad3c08-e501-41c5-b544-0875026090ed',
+        ),
+        '32ad3c08-e501-41c5-b544-0875026090ed',
+      );
+    });
+
+    test('activity and room are liveView siblings — only the first survives', () {
+      // Opening an activity claims the single live view (a chat can\'t coexist).
+      expect(leftTypes('/?left=activity:a,room:!r'), ['activity']);
+      expect(leftTypes('/?left=room:!r,activity:a'), ['room']);
+    });
+  });
 }

@@ -64,19 +64,14 @@ enum AnalyticsPanelTab { sessions, grammar, vocab }
 /// matching anyway). The shell reads this via [canvasFor].
 bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 
-/// The effective canvas for the current route's sideView. An open activity
-/// (`?activity=` over the map, or the `/<uuid>` route) is the **plan/preview**
-/// page — **map content**, like a course: a bounded `detail` with the map peeking
-/// beside it (desktop) / a bottom sheet (narrow, handled by the shell), camera
-/// focused on the activity's pin. (Starting it launches the session, which runs
-/// as an ordinary chat room — there is no separate full-bleed activity surface.)
-/// The world root `/` is a map hole (sideView offstage, full map shows); the
-/// activity check comes first so an activity over the world map is still a detail,
-/// not a hole. Everything else reached by a real route — a course-wizard step, a
-/// public-course preview, a chat archive — is also a bounded `detail`. See
-/// `routing.instructions.md`.
+/// The effective canvas for the current route's sideView. The world root `/` is a
+/// map hole (sideView offstage, full map shows); everything reached by a real
+/// route — a course-wizard step, a public-course preview, a chat archive — is a
+/// bounded `detail` with the map peeking beside it. An open activity is **not** a
+/// canvas exception anymore (#7385): it rides as a first-class `left=activity:`
+/// panel over the map hole (sized by the allocator like a `room`, a bottom sheet
+/// on narrow), not a floorless center detail. See `routing.instructions.md`.
 CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
-  if (activityFor(state) != null) return CanvasMode.detail;
   if (isMapHole(state.fullPath)) return CanvasMode.mapHole;
   return CanvasMode.detail;
 }
@@ -218,19 +213,29 @@ String? activeRoomIdFor(GoRouterState state) {
   return activeRoomIdFromPanels(state.uri);
 }
 
-/// The activity an open route addresses: the in-course overlay (`?activity=`)
-/// or the standalone uuid route (`/:activityId`). Carries the optional session
-/// `roomid` and `launch` flag that the canonical open uses.
+/// The activity an open route addresses. world_v2 canonical: a `left=activity:`
+/// panel token whose param is the activity id. Legacy inbound forms — the
+/// in-course `?activity=` overlay and the standalone `/:activityId` path — are
+/// read as a fallback so an un-rewritten deep link still resolves until
+/// `LegacyRedirects` rewrites it to the token. Carries the optional session
+/// `roomid` and `launch` flag (one-shot query params the open carries) for
+/// re-entering a session.
 ({String id, String? roomId, bool launch})? activityFor(GoRouterState state) {
-  final id =
-      state.uri.queryParameters['activity'] ??
-      state.pathParameters['activityId'];
+  final uri = state.uri;
+  String? id;
+  for (final token in parseOpenPanels(uri).left) {
+    if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
+      id = token.param;
+      break;
+    }
+  }
+  id ??= uri.queryParameters['activity'] ?? state.pathParameters['activityId'];
   if (id == null || id.isEmpty) return null;
-  final roomId = state.uri.queryParameters['roomid'];
+  final roomId = uri.queryParameters['roomid'];
   return (
     id: id,
     roomId: roomId == null ? null : fullRoomId(roomId),
-    launch: state.uri.queryParameters['launch'] == 'true',
+    launch: uri.queryParameters['launch'] == 'true',
   );
 }
 

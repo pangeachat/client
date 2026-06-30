@@ -189,6 +189,25 @@ void main() {
       expect(left.any((t) => t.type == 'room'), isTrue);
       expect(left.any((t) => t.type == 'course'), isTrue);
     });
+
+    test('reopening the course card sheds an open immersive activity (#7385)', () {
+      // The in-course "Pick different activity" / "Return to course" exits route
+      // through openCourse/openCourseFilter: showing the card is leaving the
+      // activity, so the live-view activity token must NOT co-render beside it
+      // (it is not a sibling of `course`, so only an explicit drop clears it).
+      final fromActivity = u('/?m=course:!s&left=activity:abc');
+      final viaOpenCourse = parseOpenPanels(
+        u(WorkspaceNav.openCourse(fromActivity, const PanelToken('course'))),
+      ).left;
+      expect(viaOpenCourse.any((t) => t.type == 'activity'), isFalse);
+      expect(viaOpenCourse.any((t) => t.type == 'course'), isTrue);
+
+      final viaFilter = parseOpenPanels(
+        u(WorkspaceNav.openCourseFilter(fromActivity, '!s', tab: 'course')),
+      ).left;
+      expect(viaFilter.any((t) => t.type == 'activity'), isFalse);
+      expect(viaFilter.any((t) => t.type == 'course'), isTrue);
+    });
   });
 
   group('openConstructDetail (one detail at a time, across columns)', () {
@@ -831,13 +850,13 @@ void main() {
     );
   });
 
-  group('openCourseActivity (token-native in-course overlay, #7267)', () {
+  group('openCourseActivity (token-native activity panel, #7385/#7267)', () {
     // Bare localpart ids (no `:domain`): shortRoomId only strips the home
     // server_name, which is unavailable in a unit test (no MatrixState), so a
     // `!x:server.com` would ride the URL whole. The existing course helpers test
     // the same way — the id format is orthogonal to what this producer asserts.
-    test('sets the course scope + activity overlay on a clean workspace — no '
-        'left/right panels (the #7267 split)', () {
+    test('sets the course scope + a sole `left=activity:` token — no other '
+        'left/right panels (#7385 first-class panel, #7267 split)', () {
       final loc = WorkspaceNav.openCourseActivity('!space', 'act-123');
       final uri = u(loc);
       expect(uri.path, '/'); // over the persistent world map
@@ -846,10 +865,15 @@ void main() {
         WorkspaceQuery.valueOf(uri.query, 'm'),
         const PanelToken('course', '!space').encode(),
       );
-      expect(uri.queryParameters['activity'], 'act-123');
-      // The whole point of the fix: an activity REPLACES the panels, so no
-      // `left=course` card (or any right panel) re-opens beside it.
-      expect(WorkspaceQuery.valueOf(uri.query, 'left'), isNull);
+      // #7385: the activity is a first-class left panel token (claims the single
+      // live view), not the old `?activity=` canvas overlay.
+      expect(
+        WorkspaceQuery.valueOf(uri.query, 'left'),
+        const PanelToken('activity', 'act-123').encode(),
+      );
+      expect(uri.queryParameters['activity'], isNull);
+      // #7267: the activity REPLACES the panels, so no `left=course` card rides
+      // beside it and no right panel survives.
       expect(WorkspaceQuery.valueOf(uri.query, 'right'), isNull);
     });
 

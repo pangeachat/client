@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_course_details_subpage.dart';
@@ -83,6 +85,26 @@ class WorkspaceLeftPanel extends StatelessWidget {
         foldedOver: foldedOver,
         isColumnMode: isColumnMode,
       ),
+      // An activity plan/preview — the immersive live-view surface before the
+      // session room exists (#7385). Its identity is the token param (the activity
+      // id); the parent course rides the `?m=course:` scope, and the one-shot
+      // `?roomid=`/`?launch=` session params let it re-enter / auto-launch a
+      // session. It brings its own Scaffold + close affordance (a back-arrow toward
+      // the course, or an X to the map — see `activity_sessions_start_view.dart`),
+      // so PanelCard just supplies the floating chrome like every other panel.
+      'activity' => () {
+        final activityId = token.param;
+        if (activityId == null || activityId.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        final roomId = currentUri.queryParameters['roomid'];
+        return ActivityDetailPanel(
+          activityId: activityId,
+          parentSpaceId: activeSpaceIdFor(currentUri),
+          roomId: roomId == null ? null : fullRoomId(roomId),
+          launch: currentUri.queryParameters['launch'] == 'true',
+        );
+      }(),
       'coursepage' => () {
         final courseSpaceId = activeSpaceIdFor(currentUri);
         final page = token.param;

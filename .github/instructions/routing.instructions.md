@@ -70,7 +70,9 @@ deliberately-upstream `/rooms/:roomid` room shape (kept verbatim for push /
 `matrix.to`); the pre-login + utility routes (`/home`, `/onboarding`,
 `/registration`, `/logs`, `/configs`); the route-driven Completer flows that can't
 ride a token URL (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
-the public-course preview; and the first-class `/:activityId`. Everything else is a
+and the public-course preview. The standalone activity link `/<uuid>` is **not** a
+render route — like `/rooms/:roomid` it is an inbound shim `LegacyRedirects` rewrites
+to its `left=activity:<id>` token before anything renders. Everything else is a
 token. `PRoutes`'s `chats`/`analytics`/`settings`/`profile`/`rooms` constants are
 **legacy section paths** — redirect sources and `sectionFor` identities, never
 navigation targets.
@@ -313,7 +315,7 @@ the (scoped) map rather than a full-screen page — the Google-Maps "map + sheet
 pattern — so the map (a course's activity pins, or the activity's own pin) stays
 visible above it, with the cluster floating top-right. Dragging the sheet up
 reveals the full content. On a wide screen the same content is a bounded panel
-beside the map (a course as a left panel; an activity plan as a center detail, the
+beside the map (both a course and an activity plan as left-column panels, the
 map peeking). Starting an activity from its plan launches the session, which then
 runs as an ordinary chat room — a live left-column chat, not map content.
 
@@ -355,7 +357,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — a flat list of joined-course tiles (image, name, participants, level, modules), with the add-course options (start-my-own / browse / enter-code) below |
-| Activity plan | a course's activity list, a large pin card (tap) | map content | over the map (a left-column detail; a bottom sheet on mobile), camera on the activity's pin — like a course. Its close follows the **course scope** (`?m=course:`), its contextual parent: opened from the course's activity list the scope survives (the card dropped `left=course` but kept the filter), so the plan is the card's **child** and closes with a back-arrow that reopens the card; opened from a map pin the pin handler drops the scope, so the plan is parentless and closes with an **X** to the map. No entry flag is needed: surviving scope is the discriminator. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a large pin card (tap) | map content | a first-class **left-column panel** (`left=activity:<id>`) over the map (a bottom sheet on mobile), camera on the activity's pin — like a course, but it claims the single **live view**: a `liveView` sibling of `room`/`session`, so opening an activity drops any open chat and starting the session (a `room` token) drops the activity. It sizes by the registry like a `room` (min 360 / ideal 720), never the old floorless canvas-detail (#7385). Its close follows the **course scope** (`?m=course:`), its contextual parent: opened from the course's activity list the scope survives (the card dropped `left=course` but kept the filter), so the plan closes with a back-arrow that reopens the card; opened from a map pin the scope is absent, so it closes with an **X** to the map. Surviving scope is the discriminator. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 

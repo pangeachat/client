@@ -213,15 +213,18 @@ abstract class WorkspaceNav {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
       PanelToken('course', tab),
-      // Drop any prior course token, the Courses launcher (`addcourse`), and a
-      // stale management page (`coursepage`) — picking a specific course replaces
-      // the launcher rather than stacking beside it, and a coursepage left from
-      // the previous course would silently re-target the new one.
+      // Drop any prior course token, the Courses launcher (`addcourse`), a stale
+      // management page (`coursepage`), and an open immersive `activity` —
+      // picking/re-showing a course card is an exit FROM the activity (the
+      // in-course "Pick different activity" / "Return to course" buttons route
+      // here), so the live-view activity must not co-render beside the card
+      // (#7385). A live `room` is kept (a course can scope a chat).
       ...lists.left.where(
         (t) =>
             t.type != 'course' &&
             t.type != 'addcourse' &&
-            t.type != 'coursepage',
+            t.type != 'coursepage' &&
+            t.type != 'activity',
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
@@ -240,12 +243,20 @@ abstract class WorkspaceNav {
   /// active tab, so switching tabs is opening the course token with a new tab
   /// (the `m` filter is preserved by `_mutate`). A live room and the chat list
   /// are kept (a course can scope a room). See `routing.instructions.md`.
-  static String openCourse(Uri current, PanelToken token) =>
-      _mutate(current, 'left', (tokens) {
-        final next = tokens.where((t) => t.type != 'course').toList();
-        next.insert(0, token);
-        return next;
-      });
+  static String openCourse(Uri current, PanelToken token) => _mutate(
+    current,
+    'left',
+    (tokens) {
+      // Drop any prior course token AND an open immersive `activity` — showing
+      // the course card is an exit from the activity, so the live-view activity
+      // must not co-render beside it (#7385). A live `room` is kept.
+      final next = tokens
+          .where((t) => t.type != 'course' && t.type != 'activity')
+          .toList();
+      next.insert(0, token);
+      return next;
+    },
+  );
 
   /// Open a course-management page (invite / edit / access / permissions /
   /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
@@ -267,21 +278,23 @@ abstract class WorkspaceNav {
   static String openCoursePageFor(Uri current, String spaceId, String page) =>
       openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
 
-  /// Open an in-course activity as the immersive `?activity=` overlay over the
-  /// course-scoped map — the token-native producer for "open this activity in
-  /// its course". Sets the `?m=course:<spaceId>` scope and the `activity=<id>`
-  /// overlay on a CLEAN workspace (no `left`/`right` tokens): an activity is an
-  /// immersive task that REPLACES the open panels rather than stacking beside
-  /// them, and the surviving `?m=course:` scope makes the plan the card's child
-  /// (its close is a back-arrow that reopens the card). [launch] skips the lobby
-  /// straight to role selection; [roomId] reopens/rejoins a specific session
-  /// room; [autoplay] autostarts the plan's hero media (muted, block 0).
+  /// Open an in-course activity as the immersive `left=activity:<id>` panel over
+  /// the course-scoped map — the token-native producer for "open this activity in
+  /// its course". Sets the `?m=course:<spaceId>` scope and seats the activity as
+  /// the SOLE left token (no chat list / room / course card beside it): an
+  /// activity is an immersive task that claims the single live view — its registry
+  /// `liveView` sibling group drops any open `room`/`session`, and starting the
+  /// session (which opens a `room` token) drops the activity in turn. The
+  /// surviving `?m=course:` scope keeps the plan's close a back-arrow that reopens
+  /// the card. [launch] skips the lobby straight to role selection; [roomId]
+  /// reopens/rejoins a specific session room; [autoplay] autostarts the plan's
+  /// hero media (muted, block 0) — all three ride as one-shot query params the
+  /// panel reads.
   ///
-  /// Replaces the legacy `/courses/:id?activity=` path producer: `context.go`-ing
-  /// that path made `LegacyRedirects` rewrite it back to tokens INCLUDING
-  /// `left=course`, re-opening the course card beside the activity (#7267).
-  /// Inbound `/courses/:id?activity=` external links still map through
-  /// `legacy_redirects` unchanged. See `routing.instructions.md`.
+  /// Inbound `/courses/:id?activity=` external links and the standalone `/<uuid>`
+  /// link map to this same token form through `legacy_redirects`. The clean-left
+  /// seating also fixes #7267 (the legacy path producer re-opened `left=course`
+  /// beside the activity). See `routing.instructions.md`.
   static String openCourseActivity(
     String spaceId,
     String activityId, {
@@ -291,7 +304,7 @@ abstract class WorkspaceNav {
   }) {
     final parts = <String>[
       'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
-      'activity=$activityId',
+      'left=${PanelToken('activity', activityId).encode()}',
       if (roomId != null) 'roomid=${shortRoomId(roomId)}',
       if (launch) 'launch=true',
       if (autoplay) 'autoplay=0',

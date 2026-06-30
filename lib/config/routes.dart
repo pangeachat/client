@@ -20,7 +20,6 @@ import 'package:fluffychat/routes/join_with_link/join_with_link_page.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page.dart';
 import 'package:fluffychat/routes/registration/create_pangea_account_page.dart';
-import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
@@ -316,23 +315,11 @@ abstract class AppRoutes {
         // tokens (legacy_redirects).
         // Pangea#
         // #Pangea
-        // First-class activity URLs: /<activityId> (UUID). Declared after
-        // /rooms so literal routes always win; the inline regex prevents
-        // single-segment paths like /home from matching.
-        GoRoute(
-          path:
-              '/:activityId([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})',
-          redirect: loggedOutRedirect,
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            ActivityDetailPanel(
-              activityId: state.pathParameters['activityId']!,
-              roomId: state.uri.queryParameters['roomid'],
-              launch: state.uri.queryParameters['launch'] == 'true',
-            ),
-          ),
-        ),
+        // world_v2: the standalone activity link `/<uuid>` is NOT a render route.
+        // Like `/rooms/:roomid` it is an inbound shim `LegacyRedirects` rewrites to
+        // its `left=activity:<id>` token before anything renders (#7385), so the
+        // shell hosts the activity as a first-class left panel, not a canvas
+        // detail. See `routing.instructions.md`.
         // Pangea#
       ],
     ),

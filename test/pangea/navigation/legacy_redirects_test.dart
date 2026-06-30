@@ -81,6 +81,20 @@ void main() {
       );
     });
 
+    test('standalone activity link `/<uuid>` becomes a left=activity token '
+        '(#7385)', () {
+      // Like `/rooms/:roomid` → a room token, the parentless activity deep link
+      // (old map-pin bookmarks / push) opens the immersive activity panel as the
+      // sole left token over the world map.
+      const id = '32ad3c08-e501-41c5-b544-0875026090ed';
+      expect(resolve('/$id'), '/?left=activity:$id');
+      // One-shot session params (launch / an existing session room) ride along.
+      expect(resolve('/$id?launch=true'), '/?left=activity:$id&launch=true');
+      // Any prior left list / map filter is dropped — this navigation IS the
+      // activity (it claims the single live view).
+      expect(resolve('/$id?m=course:!s&left=chats'), '/?left=activity:$id');
+    });
+
     test('encoded segments survive the rewrite', () {
       // e.g. analytics constructs with encoded slashes.
       expect(
@@ -142,11 +156,13 @@ void main() {
         resolve('/courses/!s/!room'),
         '/?m=course:!s&left=course,room:!room',
       );
-      // The in-course activity overlay: the path collapses to the filter, the
-      // ?activity= (and any other) query is preserved.
+      // The in-course activity: the path collapses to the course filter and the
+      // inbound `?activity=` overlay becomes a first-class `left=activity:` panel
+      // token (the sole left token — it claims the live view, no course card
+      // beside it). #7385.
       expect(
         resolve('/courses/!s?activity=a'),
-        '/?m=course:!s&left=course&activity=a',
+        '/?m=course:!s&left=activity:a',
       );
       // An open right column carries through the rewrite untouched.
       expect(
