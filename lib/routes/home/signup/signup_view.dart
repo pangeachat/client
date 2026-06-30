@@ -4,10 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/home/login/tos_indicator.dart';
 import 'package:fluffychat/routes/home/p_sso_button.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/home/sso_provider_enum.dart';
@@ -110,34 +109,7 @@ class SignupPageView extends StatelessWidget {
 
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: RichText(
-                      textAlign: TextAlign.justify,
-                      text: TextSpan(
-                        text: L10n.of(context).byUsingPangeaChat,
-                        children: [
-                          TextSpan(
-                            text: L10n.of(context).termsAndConditions,
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: theme.colorScheme.primary,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                launchUrlString(AppConfig.termsOfServiceUrl);
-                              },
-                          ),
-                          TextSpan(
-                            text: L10n.of(
-                              context,
-                            ).andCertifyIAmAtLeast13YearsOfAge,
-                          ),
-                        ],
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                    ),
+                    child: TOSIndicator(),
                   ),
                 ],
               ),
