@@ -428,10 +428,13 @@ class _WorldMapViewState extends State<WorldMapView> {
       // different height: locked has no star row, completed adds an action row,
       // joinable adds the avatar row). Height here is only a ceiling so the
       // tallest variant isn't clipped; shorter cards don't stretch to fill it.
-      height: tier.dotHeight(state),
+      // The extra tailHeight reserves room beneath the card for the pin tail.
+      height: tier.dotHeight(state) + WorldMapLargeCard.tailHeight,
       alignment: Alignment.topCenter,
       child: Align(
-        alignment: Alignment.topCenter,
+        // Bottom-align so the card+tail hugs its pin (the tail tip lands on the
+        // dot) instead of floating with a gap above it (#7153).
+        alignment: Alignment.bottomCenter,
         child: WorldMapLargeCard(
           card: card,
           state: state,
@@ -442,6 +445,11 @@ class _WorldMapViewState extends State<WorldMapView> {
           participants: joinableActivity?.largeCardParticipants ?? [],
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
           onTap: () => widget.controller.openActivity(card),
+          // Only the tap-selected card gets the explicit dismiss; auto-featured
+          // cards re-rank and clear on pan/zoom (#7207).
+          onClose: card.activityId == widget.controller.selectedActivityId
+              ? () => widget.controller.deselectActivity()
+              : null,
         ),
       ),
     );

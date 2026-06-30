@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
+
+/// Covers #7207: the tap-selected card gets a dismiss X that returns it to a
+/// pin **without** opening the activity; auto-featured cards get none.
+void main() {
+  const card = QuestActivityCard(
+    activityId: 'a1',
+    title: 'Test Activity',
+    l2: 'es',
+    coordinates: [0, 0],
+    learningObjectiveRefs: [],
+  );
+
+  Future<void> pumpCard(
+    WidgetTester tester, {
+    VoidCallback? onClose,
+    VoidCallback? onTap,
+  }) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: Center(
+            child: WorldMapLargeCard(
+              card: card,
+              state: ActivityPinState.unlocked,
+              pinged: false,
+              plan: null,
+              starsEarned: 0,
+              onTap: onTap ?? () {},
+              onClose: onClose,
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets(
+    'a selected card shows a dismiss X that fires onClose, not onTap',
+    (tester) async {
+      var closed = false;
+      var opened = false;
+      await pumpCard(
+        tester,
+        onClose: () => closed = true,
+        onTap: () => opened = true,
+      );
+
+      final x = find.byIcon(Icons.close);
+      expect(x, findsOneWidget);
+
+      await tester.tap(x);
+      await tester.pumpAndSettle();
+      expect(closed, isTrue, reason: 'the X dismisses the card (onClose)');
+      expect(
+        opened,
+        isFalse,
+        reason: 'the X must not open the activity (onTap stays unfired)',
+      );
+    },
+  );
+
+  testWidgets('an auto-featured card (no onClose) shows no dismiss X', (
+    tester,
+  ) async {
+    await pumpCard(tester, onClose: null);
+    expect(find.byIcon(Icons.close), findsNothing);
+  });
+}

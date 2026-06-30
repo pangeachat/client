@@ -23,6 +23,11 @@ typedef LargeCardParticipant = ({Uri? avatar, String name});
 /// The full [plan] carries the image and goal total - null while it hydrates
 /// Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
+  /// Height of the downward caret that tethers the card to its pin. The marker
+  /// reserves this beneath the card so the tail isn't clipped (#7153).
+  static const double tailHeight = 11.0;
+  static const double _tailWidth = 22.0;
+
   final QuestActivityCard card;
   final ActivityPinState state;
   final bool pinged;
@@ -32,6 +37,13 @@ class WorldMapLargeCard extends StatelessWidget {
   final int openSlots;
   final VoidCallback onTap;
 
+  /// When non-null, the card shows an explicit dismiss (X) that returns it to a
+  /// pin without opening it. Set only on the **selected** (tap-peek) card — a
+  /// card stacked over another can otherwise only be cleared by tapping empty
+  /// map, which isn't discoverable (#7207). Auto-featured cards leave it null
+  /// (they re-rank and clear on pan/zoom).
+  final VoidCallback? onClose;
+
   const WorldMapLargeCard({
     super.key,
     required this.card,
@@ -40,6 +52,7 @@ class WorldMapLargeCard extends StatelessWidget {
     required this.plan,
     required this.starsEarned,
     required this.onTap,
+    this.onClose,
     this.participants = const [],
     this.openSlots = 0,
   });
@@ -74,7 +87,7 @@ class WorldMapLargeCard extends StatelessWidget {
 
     final earned = starsEarned.clamp(0, total);
 
-    return GestureDetector(
+    final cardButton = GestureDetector(
       onTap: onTap,
       // #Pangea: announce the card as a single "Activity: <title>" button so the
       // screen reader gets context and the title is not double-read (#7185).
@@ -166,7 +179,113 @@ class WorldMapLargeCard extends StatelessWidget {
         ),
       ),
     );
+
+    // A downward caret tethers the card to its pin: the card floats just above
+    // the dot and the tail points back to it. Same surface fill as the card,
+    // with the accent border continued down its two edges and overlapping the
+    // card's bottom border so the two read as one speech-bubble shape (#7153,
+    // world-map Figma).
+    final cardWithTail = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        cardButton,
+        Transform.translate(
+          offset: const Offset(0, -1.5),
+          child: CustomPaint(
+            size: const Size(_tailWidth, tailHeight),
+            painter: _CaretPainter(
+              fill: Theme.of(context).colorScheme.surface,
+              edge: state.accent,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    if (onClose == null) return cardWithTail;
+
+    // The dismiss sits at the card's top-right corner. The Stack keeps it out of
+    // the card's own tap target so tapping the X clears the peek (onClose) rather
+    // than opening the activity (onTap).
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        cardWithTail,
+        Positioned(
+          top: 2,
+          right: 2,
+          child: _DismissButton(onPressed: onClose!),
+        ),
+      ],
+    );
   }
+}
+
+class _DismissButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _DismissButton({required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      button: true,
+      label: L10n.of(context).close,
+      child: Material(
+        color: theme.colorScheme.surface,
+        shape: const CircleBorder(),
+        elevation: 2,
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: onPressed,
+          child: const Padding(
+            padding: EdgeInsets.all(2.0),
+            child: Icon(Icons.close, size: 16),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A downward speech-bubble tail: a [fill]-filled triangle whose two upper edges
+/// are stroked in [edge] (the card's accent border), with the top (base) left
+/// open so it merges into the card's bottom border above it.
+class _CaretPainter extends CustomPainter {
+  final Color fill;
+  final Color edge;
+
+  const _CaretPainter({required this.fill, required this.edge});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final triangle = Path()
+      ..moveTo(0, 0)
+      ..lineTo(w, 0)
+      ..lineTo(w / 2, h)
+      ..close();
+    canvas.drawPath(triangle, Paint()..color = fill);
+
+    // Stroke only the two diagonals; the base connects to the card border above.
+    canvas.drawPath(
+      Path()
+        ..moveTo(0, 0)
+        ..lineTo(w / 2, h)
+        ..moveTo(w, 0)
+        ..lineTo(w / 2, h),
+      Paint()
+        ..color = edge
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2
+        ..strokeJoin = StrokeJoin.round,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_CaretPainter old) => old.fill != fill || old.edge != edge;
 }
 
 class _Header extends StatelessWidget {
@@ -301,12 +420,17 @@ class _TypeChip extends StatelessWidget {
         children: [
           Icon(icon, size: 12, color: fg),
           const SizedBox(width: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 11,
-              color: fg,
-              fontWeight: FontWeight.w600,
+          // Ellipsize rather than overflow when the type label is wider than the
+          // card's chip slot (long-translation locales; #7153/#7207 card work).
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 11,
+                color: fg,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
