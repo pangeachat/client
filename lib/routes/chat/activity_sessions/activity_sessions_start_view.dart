@@ -200,7 +200,12 @@ class ActivitySessionStartView extends StatelessWidget {
                             children: [
                               Stack(
                                 children: [
-                                  SizedBox(
+                                  // Background image — now Positioned with explicit height instead of
+                                  // living inside a height-constrained Container
+                                  Positioned(
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
                                     height: 350.0,
                                     child: LayoutBuilder(
                                       builder: (context, constraints) =>
@@ -228,7 +233,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned.fill(
-                                    top: 275.0,
+                                    top: 225.0,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
@@ -245,13 +250,13 @@ class ActivitySessionStartView extends StatelessWidget {
                                     ),
                                   ),
                                   if (sessionController.showRoleCards)
-                                    Positioned(
-                                      bottom: 0,
-                                      left: 0,
-                                      right: 0,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 200.0,
+                                      ),
                                       child: Center(
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             horizontal: 16.0,
                                           ),
                                           constraints: const BoxConstraints(
