@@ -15,6 +15,17 @@ class CoursePlanFilter<T> extends StatefulWidget {
   final bool enableSearch;
   final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
 
+  /// Accessible name for each option. The visible [displayname] is a widget,
+  /// which the canvas/overlay does not reliably expose to assistive tech (or to
+  /// automated UI drivers), so each option carries an explicit label.
+  final String Function(T)? itemSemanticLabel;
+
+  /// Accessible name/hint for the in-menu search field.
+  final String? searchHint;
+
+  /// Accessible name for the dropdown trigger button.
+  final String? buttonSemanticLabel;
+
   const CoursePlanFilter({
     super.key,
     required this.value,
@@ -25,6 +36,9 @@ class CoursePlanFilter<T> extends StatefulWidget {
     this.selectedItemBuilder,
     this.enableSearch = false,
     this.searchMatchFn,
+    this.itemSemanticLabel,
+    this.searchHint,
+    this.buttonSemanticLabel,
   });
 
   @override
@@ -45,54 +59,69 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
     final theme = Theme.of(context);
     return DropdownButtonHideUnderline(
       child: DropdownButton2<T>(
-        customButton: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40.0),
-            color: theme.colorScheme.surfaceContainerHighest,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              widget.value != null
-                  ? (widget.selectedItemBuilder != null
-                        ? widget.selectedItemBuilder!(widget.value as T)
-                        : widget.displayname(widget.value as T))
-                  : Text(
-                      widget.defaultName,
-                      style: DefaultTextStyle.of(context).style,
-                    ),
-              const Icon(Icons.arrow_drop_down),
-            ],
+        customButton: Semantics(
+          button: true,
+          label: widget.buttonSemanticLabel,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40.0),
+              color: theme.colorScheme.surfaceContainerHighest,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 12.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                widget.value != null
+                    ? (widget.selectedItemBuilder != null
+                          ? widget.selectedItemBuilder!(widget.value as T)
+                          : widget.displayname(widget.value as T))
+                    : Text(
+                        widget.defaultName,
+                        style: DefaultTextStyle.of(context).style,
+                      ),
+                const Icon(Icons.arrow_drop_down),
+              ],
+            ),
           ),
         ),
         value: widget.value,
-        items: [null, ...widget.items]
-            .map(
-              (item) => DropdownMenuItem(
-                value: item,
-                child: Container(
-                  color: item == widget.value
-                      ? Theme.of(context).colorScheme.primary.withAlpha(20)
-                      : Colors.transparent,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 12,
+        items: [null, ...widget.items].map((item) {
+          final semanticLabel = item != null
+              ? widget.itemSemanticLabel?.call(item)
+              : widget.defaultName;
+          final content = Container(
+            color: item == widget.value
+                ? Theme.of(context).colorScheme.primary.withAlpha(20)
+                : Colors.transparent,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            child: item != null
+                ? widget.displayname(item)
+                : Row(
+                    children: [
+                      Text(
+                        widget.defaultName,
+                        style: DefaultTextStyle.of(context).style,
+                      ),
+                    ],
                   ),
-                  child: item != null
-                      ? widget.displayname(item)
-                      : Row(
-                          children: [
-                            Text(
-                              widget.defaultName,
-                              style: DefaultTextStyle.of(context).style,
-                            ),
-                          ],
-                        ),
-                ),
-              ),
-            )
-            .toList(),
+          );
+          return DropdownMenuItem(
+            value: item,
+            // Expose each option as a named button so assistive tech (and UI
+            // drivers) can identify and pick it; the visible label is excluded
+            // to avoid a double-read. Bare content when no label fn is supplied.
+            child: semanticLabel == null
+                ? content
+                : Semantics(
+                    button: true,
+                    label: semanticLabel,
+                    child: ExcludeSemantics(child: content),
+                  ),
+          );
+        }).toList(),
         onChanged: widget.onChanged,
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(40)),
@@ -124,8 +153,9 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                     child: TextField(
                       autofocus: true,
                       controller: _searchController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        hintText: widget.searchHint,
                       ),
                     ),
                   ),

@@ -56,6 +56,14 @@ class NewCoursePage extends StatefulWidget {
 }
 
 class NewCoursePageState extends State<NewCoursePage> {
+  /// Session-scoped memory of the last language the learner picked in this flow.
+  /// The back arrow returns to the add-course hub via `setSection`, which carries
+  /// only the panel/map state forward and drops the `?lang=` query — so without
+  /// this, returning to "Start my own" snapped back to the L2 default and lost
+  /// the choice (#7269). A `?lang=` deep link still wins; this only fills the
+  /// in-session default the hub round-trip would otherwise drop.
+  static LanguageModel? _lastChosenLanguage;
+
   final ValueNotifier<Result<List<CoursePlanModel>>?> _courses = ValueNotifier(
     null,
   );
@@ -78,20 +86,27 @@ class NewCoursePageState extends State<NewCoursePage> {
     super.initState();
 
     if (!widget.showAll) {
-      if (widget.initialLanguageCode != null) {
-        _targetLanguageFilter.value = PLanguageStore.byLangCode(
-          widget.initialLanguageCode!,
-        );
-      }
-
-      if (_targetLanguageFilter.value == null) {
-        _targetLanguageFilter.value =
-            MatrixState.pangeaController.userController.userL2;
-      }
+      _targetLanguageFilter.value = seedLanguage(
+        fromInitialCode: widget.initialLanguageCode != null
+            ? PLanguageStore.byLangCode(widget.initialLanguageCode!)
+            : null,
+        lastChosen: _lastChosenLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2,
+      );
     }
 
     _loadCourses();
   }
+
+  /// The language the picker opens on: a `?lang=` deep link
+  /// ([fromInitialCode]) wins, then this session's last pick ([lastChosen], so
+  /// the back-arrow round-trip keeps it), then the learner's L2 default (#7269).
+  @visibleForTesting
+  static LanguageModel? seedLanguage({
+    required LanguageModel? fromInitialCode,
+    required LanguageModel? lastChosen,
+    required LanguageModel? userL2,
+  }) => fromInitialCode ?? lastChosen ?? userL2;
 
   @override
   void dispose() {
@@ -109,6 +124,8 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
+    _lastChosenLanguage =
+        language; // remember for the rest of this session (#7269)
     _loadGeneration++;
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
