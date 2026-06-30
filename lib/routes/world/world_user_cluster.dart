@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:async/async.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -97,70 +97,37 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 
   @override
   Widget build(BuildContext context) {
-    final service = Matrix.of(context).analyticsDataService;
-    final client = Matrix.of(context).client;
-    final dispatcher = service.updateDispatcher;
-
     return StreamBuilder(
-      stream: StreamGroup.merge([
-        client.onRoomState.stream.where(
-          (e) => e.state.type == PangeaEventTypes.orchestratorAwardedGoals,
-        ),
-        MatrixState.pangeaController.userController.languageStream.stream,
-        dispatcher.constructUpdateStream.stream,
-        dispatcher.activityAnalyticsStream.stream,
-      ]),
+      stream: MatrixState.pangeaController.userController.languageStream.stream,
       builder: (context, _) {
         final l2 = MatrixState.pangeaController.userController.userL2;
-
-        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
-        final grammar = service.numConstructs(ConstructTypeEnum.morph);
-        final earnedActivityStars = l2 != null
-            ? client.totalStarsEarned(l2)
-            : 0;
-
-        return FutureBuilder<DerivedAnalyticsDataModel>(
-          future: l2 != null
-              ? service.derivedData(l2.langCodeShort)
-              : Future.value(DerivedAnalyticsDataModel()),
-          builder: (context, snapshot) {
-            final derived = snapshot.data ?? service.cachedDerivedData;
-            final level = derived?.level ?? 1;
-            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ListenableBuilder(
-                  listenable: Listenable.merge([_avatarUrl, _displayName]),
-                  builder: (context, _) => _Avatar(
-                    avatarUrl: _avatarUrl.value,
-                    name: _displayName.value,
-                    onTap: _openProfile,
-                  ),
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ListenableBuilder(
+              listenable: Listenable.merge([_avatarUrl, _displayName]),
+              builder: (context, _) => _Avatar(
+                avatarUrl: _avatarUrl.value,
+                name: _displayName.value,
+                onTap: _openProfile,
+              ),
+            ),
+            const SizedBox(height: 8),
+            _PowerupsPill(
+              onTap: _openAnalytics,
+              onLevelTap: _openLevel,
+              l2: l2,
+            ),
+            if (l2 != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: _LanguageFlag(
+                  language: l2,
+                  onTap: _openLearningSettings,
                 ),
-                const SizedBox(height: 8),
-                _PowerupsPill(
-                  level: level,
-                  progress: progress,
-                  stars: earnedActivityStars,
-                  grammar: grammar,
-                  vocab: vocab,
-                  onTap: _openAnalytics,
-                  onLevelTap: _openLevel,
-                  loading: service.isInitializing,
-                ),
-                if (l2 != null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: _LanguageFlag(
-                      language: l2,
-                      onTap: _openLearningSettings,
-                    ),
-                  ),
-              ],
-            );
-          },
+              ),
+          ],
         );
       },
     );
@@ -216,107 +183,17 @@ class _Avatar extends StatelessWidget {
   }
 }
 
-/// Paints the cluster's XP border: a gray rounded-rect track around the powerups
-/// pill, with a gold stroke that fills **clockwise from the bottom-center** (where
-/// the level medal sits) for [progress] (0–1) of the way to the next level,
-/// arriving back at the medal at 1.0. The path starts and ends at the bottom
-/// center so a sub-path extracted from its start grows out from under the badge.
-class _XpBorderPainter extends CustomPainter {
-  final double progress;
-  final Color trackColor;
-  final Color progressColor;
-  final double stroke;
-  final double radius;
-
-  _XpBorderPainter({
-    required this.progress,
-    required this.trackColor,
-    required this.progressColor,
-    required this.stroke,
-    required this.radius,
-  });
-
-  Path _border(Size size) {
-    final r = Rect.fromLTRB(
-      stroke / 2,
-      stroke / 2,
-      size.width - stroke / 2,
-      size.height - stroke / 2,
-    );
-    final rad = radius;
-    final cx = r.center.dx;
-    final arc = Radius.circular(rad);
-    return Path()
-      ..moveTo(cx, r.bottom)
-      ..lineTo(r.left + rad, r.bottom)
-      ..arcToPoint(Offset(r.left, r.bottom - rad), radius: arc, clockwise: true)
-      ..lineTo(r.left, r.top + rad)
-      ..arcToPoint(Offset(r.left + rad, r.top), radius: arc, clockwise: true)
-      ..lineTo(r.right - rad, r.top)
-      ..arcToPoint(Offset(r.right, r.top + rad), radius: arc, clockwise: true)
-      ..lineTo(r.right, r.bottom - rad)
-      ..arcToPoint(
-        Offset(r.right - rad, r.bottom),
-        radius: arc,
-        clockwise: true,
-      )
-      ..lineTo(cx, r.bottom);
-  }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final path = _border(size);
-    canvas.drawPath(
-      path,
-      Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = stroke
-        ..color = trackColor,
-    );
-
-    final p = progress.clamp(0.0, 1.0);
-    if (p <= 0) return;
-    final metric = path.computeMetrics().first;
-    canvas.drawPath(
-      metric.extractPath(0, metric.length * p),
-      Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = stroke
-        ..strokeCap = StrokeCap.round
-        ..color = progressColor,
-    );
-  }
-
-  @override
-  bool shouldRepaint(_XpBorderPainter old) =>
-      old.progress != progress ||
-      old.progressColor != progressColor ||
-      old.trackColor != trackColor ||
-      old.stroke != stroke ||
-      old.radius != radius;
-}
-
 /// The gold "powerups" pill: a white inner stack of the three trackers with the
 /// level medal overhanging its base. Follows Figma `AvatarLangFlags`.
 class _PowerupsPill extends StatelessWidget {
-  final int level;
-  final double progress;
-  final int stars;
-  final int grammar;
-  final int vocab;
   final void Function(AnalyticsPanelTab) onTap;
   final VoidCallback onLevelTap;
-  final bool loading;
+  final LanguageModel? l2;
 
   const _PowerupsPill({
-    required this.level,
-    required this.progress,
-    required this.stars,
-    required this.grammar,
-    required this.vocab,
     required this.onTap,
     required this.onLevelTap,
-    required this.loading,
+    required this.l2,
   });
 
   static const double _xpStroke = 5.0;
@@ -325,72 +202,112 @@ class _PowerupsPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final content = Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        // The pill's frame IS the XP ring: a gray track that fills gold clockwise
-        // from the bottom-center (where the level medal sits) toward the next
-        // level. The trackers sit on a white field inside it; there is no solid
-        // gold fill — the only gold is the XP progress.
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomPaint(
-              painter: _XpBorderPainter(
-                progress: progress,
-                trackColor: const Color(0xFFBCC2CC),
-                progressColor: AppConfig.gold,
-                stroke: _xpStroke,
-                radius: _innerRadius + _xpInset + _xpStroke / 2,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(_xpInset + _xpStroke),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(_innerRadius),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _TrackerButton(
-                        indicator: ProgressIndicatorEnum.stars,
-                        count: stars,
-                        onTap: () => onTap(AnalyticsPanelTab.sessions),
-                      ),
-                      _TrackerButton(
-                        indicator: ProgressIndicatorEnum.morphsUsed,
-                        count: grammar,
-                        onTap: () => onTap(AnalyticsPanelTab.grammar),
-                      ),
-                      _TrackerButton(
-                        indicator: ProgressIndicatorEnum.wordsUsed,
-                        count: vocab,
-                        onTap: () => onTap(AnalyticsPanelTab.vocab),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 30),
-          ],
-        ),
-        Positioned(
-          bottom: 0,
-          child: _LevelMedal(level: level, onTap: onLevelTap),
-        ),
-      ],
-    );
+    final matrix = Matrix.of(context);
+    final client = matrix.client;
+    final service = matrix.analyticsDataService;
+    final l2 = this.l2;
 
-    return loading
-        ? Shimmer.fromColors(
-            baseColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-            highlightColor: Theme.of(context).colorScheme.surface,
-            child: content,
-          )
-        : content;
+    return StreamBuilder(
+      stream: service.updateDispatcher.constructUpdateStream.stream,
+      builder: (context, _) {
+        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
+        final grammar = service.numConstructs(ConstructTypeEnum.morph);
+
+        final content = FutureBuilder<DerivedAnalyticsDataModel>(
+          future: l2 != null
+              ? service.derivedData(l2.langCodeShort)
+              : Future.value(DerivedAnalyticsDataModel()),
+          builder: (context, snapshot) {
+            final derived = snapshot.data ?? service.cachedDerivedData;
+            final level = derived?.level ?? 1;
+            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                // The pill's frame IS the XP ring: a gray track that fills gold clockwise
+                // from the bottom-center (where the level medal sits) toward the next
+                // level. The trackers sit on a white field inside it; there is no solid
+                // gold fill — the only gold is the XP progress.
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomPaint(
+                      painter: XpBorderPainter(
+                        progress: progress,
+                        trackColor: const Color(0xFFBCC2CC),
+                        progressColor: AppConfig.gold,
+                        stroke: _xpStroke,
+                        radius: _innerRadius + _xpInset + _xpStroke / 2,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(_xpInset + _xpStroke),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(_innerRadius),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              StreamBuilder(
+                                stream: client.onRoomState.stream.where(
+                                  (e) =>
+                                      e.state.type ==
+                                      PangeaEventTypes.orchestratorAwardedGoals,
+                                ),
+                                builder: (context, _) {
+                                  final stars = l2 != null
+                                      ? client.totalStarsEarned(l2)
+                                      : 0;
+
+                                  return _TrackerButton(
+                                    indicator: ProgressIndicatorEnum.stars,
+                                    count: stars,
+                                    onTap: () =>
+                                        onTap(AnalyticsPanelTab.sessions),
+                                  );
+                                },
+                              ),
+                              _TrackerButton(
+                                indicator: ProgressIndicatorEnum.morphsUsed,
+                                count: grammar,
+                                onTap: () => onTap(AnalyticsPanelTab.grammar),
+                              ),
+                              _TrackerButton(
+                                indicator: ProgressIndicatorEnum.wordsUsed,
+                                count: vocab,
+                                onTap: () => onTap(AnalyticsPanelTab.vocab),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: _LevelMedal(level: level, onTap: onLevelTap),
+                ),
+              ],
+            );
+          },
+        );
+
+        return service.isInitializing
+            ? Shimmer.fromColors(
+                baseColor: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHighest,
+                highlightColor: Theme.of(context).colorScheme.surface,
+                child: content,
+              )
+            : content;
+      },
+    );
   }
 }
 
