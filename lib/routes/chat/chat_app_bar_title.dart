@@ -9,6 +9,7 @@ import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
@@ -73,11 +74,7 @@ class ChatAppBarTitle extends StatelessWidget {
                   room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: FluffyThemes.isColumnMode(context)
-                      ? Theme.of(context).textTheme.titleLarge
-                      : Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
+                  style: PageTitleStyle.pageTitleStyle(context),
                 ),
                 StreamBuilder(
                   stream: room.client.onSyncStatus.stream,

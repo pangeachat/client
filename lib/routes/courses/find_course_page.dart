@@ -6,7 +6,6 @@ import 'package:async/async.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -18,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -333,11 +333,7 @@ class FindCoursePageView extends StatelessWidget {
         ),
         title: Text(
           L10n.of(context).browsePublicCourses,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+          style: PageTitleStyle.pageTitleStyle(context),
         ),
         centerTitle: false,
         titleSpacing: 0,

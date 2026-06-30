@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 
 /// The header row shared by both workspace panel columns: a [leading]
 /// close/back control at the start, a small gap, then the panel [title].
@@ -45,11 +46,7 @@ class PanelHeader extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: FluffyThemes.isColumnMode(context)
-                  ? Theme.of(context).textTheme.titleLarge
-                  : Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+              style: PageTitleStyle.pageTitleStyle(context),
             ),
           ),
           ?trailing,

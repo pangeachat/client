@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class PangeaChatAccessSettingsPageView extends StatelessWidget {
@@ -26,11 +27,7 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               L10n.of(context).access,
-              style: FluffyThemes.isColumnMode(context)
-                  ? Theme.of(context).textTheme.titleLarge
-                  : Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+              style: PageTitleStyle.pageTitleStyle(context),
             ),
           ],
         ),

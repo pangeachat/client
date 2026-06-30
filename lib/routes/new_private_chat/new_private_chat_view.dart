@@ -8,6 +8,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -37,11 +38,7 @@ class NewPrivateChatView extends StatelessWidget {
         // #Pangea
         title: Text(
           L10n.of(context).newDirectMessage,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+          style: PageTitleStyle.pageTitleStyle(context),
         ),
         centerTitle: false,
         titleSpacing: 0,

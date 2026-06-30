@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -18,6 +17,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
@@ -119,11 +119,7 @@ class ActivitySessionStartView extends StatelessWidget {
                     activity.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: FluffyThemes.isColumnMode(context)
-                        ? theme.textTheme.titleLarge
-                        : theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                    style: PageTitleStyle.pageTitleStyle(context),
                   ),
             centerTitle: false,
             titleSpacing: 4,

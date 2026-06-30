@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -14,6 +13,7 @@ import 'package:fluffychat/routes/courses/cefr_level_match.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
+import 'package:fluffychat/utils/page_title_style.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -37,11 +37,7 @@ class PublicCoursePreviewView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           L10n.of(context).joinWithClassCode,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+          style: PageTitleStyle.pageTitleStyle(context),
         ),
         centerTitle: false,
         titleSpacing: 0,
