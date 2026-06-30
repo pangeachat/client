@@ -41,6 +41,40 @@
     (function () {
       var sw = navigator.serviceWorker;
       if (!sw || !sw.controller) return; // fresh users: nothing to evict
+
+      // Report the degraded state to Sentry directly: the Flutter app and its
+      // Sentry SDK have not loaded yet, and we usually reload before they would.
+      // keepalive lets the POST outlive the eviction reload. The DSN mirrors the
+      // committed default in lib/pangea/common/config/environment.dart; the
+      // release token is injected by the deploy's __BUILD_VERSION__ sed.
+      var report = function (state, level) {
+        try {
+          var rk = 'pangea-sw-report-' + state;
+          try { if (sessionStorage.getItem(rk)) return; sessionStorage.setItem(rk, '1'); } catch (e) {}
+          var id = '';
+          try { if (self.crypto && crypto.randomUUID) id = crypto.randomUUID().replace(/-/g, ''); } catch (e) {}
+          while (id.length < 32) id += Math.floor(Math.random() * 16).toString(16);
+          var host = location.hostname;
+          var env = host.indexOf('staging') !== -1 ? 'staging'
+            : (host === 'app.pangea.chat' ? 'production' : 'development');
+          var ev = {
+            event_id: id, timestamp: Date.now() / 1000, platform: 'javascript',
+            logger: 'sw-killswitch', level: level, environment: env,
+            release: '__BUILD_VERSION__',
+            message: 'Legacy service worker degraded state (' + state + ')',
+            tags: { sw_state: state, sw_controller: (sw.controller && sw.controller.scriptURL) || 'unknown' },
+            request: { url: location.href, headers: { 'User-Agent': navigator.userAgent } }
+          };
+          var body = JSON.stringify({ event_id: id, sent_at: new Date().toISOString() })
+            + '\n{"type":"event"}\n' + JSON.stringify(ev);
+          fetch('https://o225078.ingest.sentry.io/api/1376295/envelope/'
+            + '?sentry_key=c2fd19ab2cdc4ebb939a32d01c0e9fa1&sentry_version=7',
+            { method: 'POST', body: body, keepalive: true,
+              headers: { 'Content-Type': 'application/x-sentry-envelope' } }).catch(function () {});
+        } catch (e) { /* never let reporting break eviction */ }
+      };
+      report('detected', 'warning');
+
       var KEY = 'pangea-sw-killswitch';
       var reloaded = false;
       var reloadOnce = function () {
@@ -72,6 +106,7 @@
       setTimeout(function () {
         if (reloaded || !navigator.serviceWorker.controller) return;
         try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+        report('wedged', 'error'); // eviction failed; this is the stuck tail
         var bar = document.createElement('div');
         bar.setAttribute('role', 'alert');
         bar.style.cssText =
