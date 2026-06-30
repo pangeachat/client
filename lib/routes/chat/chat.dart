@@ -612,7 +612,7 @@ class ChatController extends State<ChatPageWithRoom>
           backDropToDismiss: false,
           closePrevOverlay: false,
           canPop: false,
-          rootOverlay: true,
+          rootOverlay: kIsWeb,
         ),
       );
 
@@ -644,7 +644,7 @@ class ChatController extends State<ChatPageWithRoom>
             backDropToDismiss: false,
             closePrevOverlay: false,
             canPop: false,
-            rootOverlay: true,
+            rootOverlay: kIsWeb,
           ),
         );
 
