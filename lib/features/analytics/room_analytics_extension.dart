@@ -27,7 +27,7 @@ extension AnalyticsRoomExtension on Room {
     required String userId,
     DateTime? since,
   }) async {
-    final events = await getRoomAnalyticsEvents(userID: userId);
+    final events = await getRoomAnalyticsEvents(userID: userId, since: since);
     final List<ConstructAnalyticsEvent> analyticsEvents = [];
     for (final Event event in events) {
       analyticsEvents.add(ConstructAnalyticsEvent(event: event));
