@@ -22,11 +22,18 @@ void main() {
     WidgetTester tester, {
     VoidCallback? onClose,
     VoidCallback? onTap,
+    bool isFocused = false,
+    Color primary = const Color(0xFF112233),
   }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: primary,
+          ).copyWith(primary: primary),
+        ),
         home: Scaffold(
           body: Center(
             child: WorldMapLargeCard(
@@ -37,6 +44,7 @@ void main() {
               starsEarned: 0,
               onTap: onTap ?? () {},
               onClose: onClose,
+              isFocused: isFocused,
             ),
           ),
         ),
@@ -44,6 +52,16 @@ void main() {
     );
     await tester.pumpAndSettle();
   }
+
+  /// Whether any Container draws a border in [color] (the focus ring's primary
+  /// border) — the distinct focused marker (#7349).
+  bool hasBorderColored(WidgetTester tester, Color color) =>
+      tester.widgetList<Container>(find.byType(Container)).any((c) {
+        final d = c.decoration;
+        return d is BoxDecoration &&
+            d.border is Border &&
+            (d.border as Border).top.color == color;
+      });
 
   testWidgets(
     'a selected card shows a dismiss X that fires onClose, not onTap',
@@ -75,5 +93,29 @@ void main() {
   ) async {
     await pumpCard(tester, onClose: null);
     expect(find.byIcon(Icons.close), findsNothing);
+  });
+
+  group('focus ring (#7349)', () {
+    const primary = Color(0xFF112233);
+
+    testWidgets('a focused card draws a primary-coloured focus ring', (
+      tester,
+    ) async {
+      await pumpCard(tester, isFocused: true, primary: primary);
+      expect(
+        hasBorderColored(tester, primary),
+        isTrue,
+        reason: 'the focused card wraps in a primary-coloured ring',
+      );
+    });
+
+    testWidgets('an unfocused card has no primary focus ring', (tester) async {
+      await pumpCard(tester, isFocused: false, primary: primary);
+      expect(
+        hasBorderColored(tester, primary),
+        isFalse,
+        reason: 'only the focused state adds the primary ring',
+      );
+    });
   });
 }

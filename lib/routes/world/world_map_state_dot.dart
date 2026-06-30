@@ -13,6 +13,13 @@ class WorldMapDot extends StatefulWidget {
   final bool pinged;
   final double fill;
 
+  /// When true, the activity is focused (its detail panel is open): the dot
+  /// draws a distinct focus ring (primary-coloured halo with a gap) around its
+  /// state-coloured body, persistent through zoom/pan and cleared when the
+  /// panel closes or another activity is focused (#7349). Decoupled from the
+  /// colour state and progress fill. See world-map.instructions.md.
+  final bool isFocused;
+
   /// When true, the pin plays its exit animation (scale → 0) then calls
   /// [onExited]. The parent keeps the widget in the tree until [onExited] fires.
   final bool dying;
@@ -26,6 +33,7 @@ class WorldMapDot extends StatefulWidget {
     required this.onTap,
     required this.pinged,
     this.fill = 0,
+    this.isFocused = false,
     this.dying = false,
     this.onExited,
   });
@@ -88,8 +96,13 @@ class _WorldMapDotState extends State<WorldMapDot>
                     state: widget.state,
                     pinged: widget.pinged,
                     fill: widget.fill,
+                    isFocused: widget.isFocused,
                   )
-                : _SmallDotContent(state: widget.state, fill: widget.fill),
+                : _SmallDotContent(
+                    state: widget.state,
+                    fill: widget.fill,
+                    isFocused: widget.isFocused,
+                  ),
           ),
         ),
       ),
@@ -100,8 +113,13 @@ class _WorldMapDotState extends State<WorldMapDot>
 class _SmallDotContent extends StatelessWidget {
   final ActivityPinState state;
   final double fill;
+  final bool isFocused;
 
-  const _SmallDotContent({required this.state, this.fill = 0});
+  const _SmallDotContent({
+    required this.state,
+    this.fill = 0,
+    this.isFocused = false,
+  });
 
   @override
   Widget build(BuildContext context) => _WorldMapStateDot(
@@ -109,6 +127,7 @@ class _SmallDotContent extends StatelessWidget {
     diameter: 18,
     borderWidth: 1.5,
     fill: fill,
+    isFocused: isFocused,
   );
 }
 
@@ -116,11 +135,13 @@ class _MediumDotContent extends StatelessWidget {
   final ActivityPinState state;
   final bool pinged;
   final double fill;
+  final bool isFocused;
 
   const _MediumDotContent({
     required this.state,
     required this.pinged,
     this.fill = 0,
+    this.isFocused = false,
   });
 
   @override
@@ -133,6 +154,7 @@ class _MediumDotContent extends StatelessWidget {
         diameter: 36,
         borderWidth: 2,
         fill: fill,
+        isFocused: isFocused,
         glyph: const Icon(
           Icons.chat_bubble_outline,
           size: 18,
@@ -164,12 +186,15 @@ class _MediumDotContent extends StatelessWidget {
 /// disc, an inner gold disc whose radius scales with [fill] (0..1 — stars earned
 /// toward the activity's total), and an optional [glyph] on top. The fill is
 /// linear in radius (`r = innerRadius·fill`), so a full activity reads as a solid
-/// gold centre while a fresh one shows none. Design: world-map.instructions.md.
+/// gold centre while a fresh one shows none. When [isFocused], a primary-coloured
+/// focus ring (a halo with a gap) wraps the disc, distinct from the white
+/// state-border (#7349). Design: world-map.instructions.md.
 class _WorldMapStateDot extends StatelessWidget {
   final ActivityPinState state;
   final double diameter;
   final double borderWidth;
   final double fill;
+  final bool isFocused;
   final Widget? glyph;
 
   const _WorldMapStateDot({
@@ -177,13 +202,14 @@ class _WorldMapStateDot extends StatelessWidget {
     required this.diameter,
     required this.borderWidth,
     this.fill = 0,
+    this.isFocused = false,
     this.glyph,
   });
 
   @override
   Widget build(BuildContext context) {
     final inner = (diameter - 2 * borderWidth) * fill.clamp(0.0, 1.0);
-    return Container(
+    final dot = Container(
       width: diameter,
       height: diameter,
       decoration: BoxDecoration(
@@ -207,6 +233,41 @@ class _WorldMapStateDot extends StatelessWidget {
           ?glyph,
         ],
       ),
+    );
+
+    if (!isFocused) return dot;
+
+    // The focus ring: a primary-coloured halo concentric with the disc, sitting
+    // OUTSIDE the white state-border with a small transparent gap so the two
+    // never blend — clearly the "I'm working with this one" marker, distinct
+    // from the colour-state border at every tier. Drawn with a Stack +
+    // Clip.none so it can overflow the fixed marker bounds without being
+    // clipped, and a soft outer glow so it reads at the small-dot size (#7349).
+    final primary = Theme.of(context).colorScheme.primary;
+    const ringWidth = 2.5;
+    const gap = 2.0;
+    final ringDiameter = diameter + 2 * (gap + ringWidth);
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: ringDiameter,
+          height: ringDiameter,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: primary, width: ringWidth),
+            boxShadow: [
+              BoxShadow(
+                color: primary.withValues(alpha: 0.45),
+                blurRadius: 5,
+                spreadRadius: 0.5,
+              ),
+            ],
+          ),
+        ),
+        dot,
+      ],
     );
   }
 }

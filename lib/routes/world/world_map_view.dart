@@ -35,6 +35,12 @@ class _PinRenderer {
   /// placed large card, so no count bubble ever forms beneath a card.
   final Set<String> suppressedIds;
 
+  /// The id of the focused activity (its detail panel is open), or null. The
+  /// pin/card carrying this id draws a distinct focus ring at whatever tier it
+  /// sits — persistent through zoom/pan, cleared when the panel closes or
+  /// another activity is focused (#7349). See world-map.instructions.md.
+  final String? focusedId;
+
   const _PinRenderer({
     required this.visible,
     required this.activityIdToFill,
@@ -42,6 +48,7 @@ class _PinRenderer {
     required this.activityIdToPingStatus,
     required this.activityIdToTier,
     required this.suppressedIds,
+    required this.focusedId,
   });
 
   List<QuestActivityCard> get largeCards => visible
@@ -190,6 +197,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       largeIds: largeIds,
       mediumIds: mediumIds,
       suppressedIds: placement.suppressedIds,
+      focusedId: widget.controller.focusedActivityId,
     );
   }
 
@@ -276,6 +284,7 @@ class _WorldMapViewState extends State<WorldMapView> {
     required Set<String> largeIds,
     required Set<String> mediumIds,
     required Set<String> suppressedIds,
+    required String? focusedId,
   }) {
     final activityIds = visible.map((c) => c.activityId).toSet();
 
@@ -309,6 +318,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       activityIdToState: states,
       activityIdToTier: tiers,
       suppressedIds: suppressedIds,
+      focusedId: focusedId,
     );
   }
 
@@ -346,6 +356,11 @@ class _WorldMapViewState extends State<WorldMapView> {
         ..write(render.pingedOf(card.activityId) ? 1 : 0)
         ..write('|')
         ..write(render.fillOf(card.activityId))
+        ..write('|')
+        // Focus is part of the marker's appearance, so a focus change must bust
+        // the cached marker list (it's a reference-identity check) — otherwise
+        // the focus ring wouldn't appear/clear on a small/mid pin (#7349).
+        ..write(card.activityId == render.focusedId ? 1 : 0)
         ..write(';');
     }
     final signature = sig.toString();
@@ -369,6 +384,7 @@ class _WorldMapViewState extends State<WorldMapView> {
           onTap: () => widget.controller.selectActivity(card.activityId),
           pinged: render.pingedOf(card.activityId),
           fill: render.fillOf(card.activityId),
+          isFocused: card.activityId == render.focusedId,
         ),
       );
     }).toList();
@@ -444,6 +460,7 @@ class _WorldMapViewState extends State<WorldMapView> {
               widget.controller.activityStarsEarned(card.activityId) ?? 0,
           participants: joinableActivity?.largeCardParticipants ?? [],
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
+          isFocused: card.activityId == render.focusedId,
           onTap: () => widget.controller.openActivity(card),
           // Only the tap-selected card gets the explicit dismiss; auto-featured
           // cards re-rank and clear on pan/zoom (#7207).
