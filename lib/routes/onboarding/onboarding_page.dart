@@ -79,7 +79,10 @@ class OnboardingController extends State<Onboarding> {
       );
 
   Future<void> _forward() async {
-    GoogleAnalytics.completeTutorialStep('onboarding', _navigation.currentStepIndex);
+    GoogleAnalytics.completeTutorialStep(
+      'onboarding',
+      _navigation.currentStepIndex,
+    );
     _loading.value = true;
     _dispatchNavigationResult(await _navigation.forward());
   }
