@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
@@ -12,7 +13,10 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -110,7 +114,7 @@ class AnalyticsActivityItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final activity = room.activityPlan;
     final title = activity?.title ?? '';
-    final objective = activity?.learningObjective ?? '';
+    final goals = room.ownRole?.allGoals;
 
     final cefrLevel = room.activitySummaryByL1?.summary?.participants
         .firstWhereOrNull((p) => p.participantId == room.client.userID)
@@ -131,37 +135,42 @@ class AnalyticsActivityItem extends StatelessWidget {
               duration: FluffyThemes.animationDuration,
               curve: FluffyThemes.animationCurve,
               scale: hovered ? 1.1 : 1.0,
-              child: Avatar(
-                borderRadius: BorderRadius.circular(4.0),
-                mxContent: room.avatar,
-                name: room.getLocalizedDisplayname(),
+              child: ExcludeSemantics(
+                child: Avatar(
+                  borderRadius: BorderRadius.circular(4.0),
+                  mxContent: room.avatar,
+                  name: room.getLocalizedDisplayname(),
+                ),
               ),
             ),
           ),
           title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
-          subtitle: Row(
-            crossAxisAlignment: .start,
-            mainAxisAlignment: .center,
-            children: [
-              Expanded(
-                child: Text(
-                  objective,
-                  style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
+          subtitle: goals != null
+              ? ActivityStarRow(
+                  total: goals.length,
+                  earned:
+                      room
+                          .orchestratorAwardedGoals
+                          .awards[room.ownRoleState?.id]
+                          ?.length ??
+                      0,
+                  iconSize: 22.0,
+                )
+              : null,
           trailing: cefrLevel != null
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  child: Text(
-                    cefrLevel.toUpperCase(),
-                    style: const TextStyle(fontSize: 14.0),
+              ? Semantics(
+                  label: L10n.of(context).difficultyLabel(cefrLevel),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    child: ExcludeSemantics(
+                      child: Text(
+                        cefrLevel.toUpperCase(),
+                        style: const TextStyle(fontSize: 14.0),
+                      ),
+                    ),
                   ),
                 )
               : null,
