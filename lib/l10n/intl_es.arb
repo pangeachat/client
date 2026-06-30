@@ -3590,7 +3590,7 @@
     "chatCapacityHasBeenChanged": "Capacidad de chat modificada",
     "chatCapacityExplanation": "La capacidad del chat limita el número de usuarios no administradores permitidos en un chat.",
     "tooManyRequest": "Demasiadas solicitudes, por favor inténtelo más tarde.",
-    "playAudio": "Jugar",
+    "playAudio": "Reproducir",
     "stop": "Stop",
     "other": "Otros",
     "noCapacityLimit": "Sin límite de capacidad",
