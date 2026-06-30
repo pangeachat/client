@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-29 12:24:44.251229",
+    "@@last_modified": "2026-06-30 09:34:19.850202",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9477,16 +9477,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Egin klik mezulari burbuila hautatzeko",
-    "writingAssistanceTutorialInputBar": "Egin dezakezu edozein hizkuntzatan idazteko. Ez kezkatu akatsetaz! Lagunduko dizugu zuzentzen.",
     "writingAssistanceTutorialIGCButton": "Zure mezua idatzi ondoren, egin klik botoi honetan idazteko laguntza hasteko",
     "selectModeTutorialTranslate": "Egin klik hemen mezua itzultzeko",
     "selectModeTutorialAudio": "Egin klik hemen mezua entzuteko",
     "selectModeTutorialExit": "Egin klik atzeko planoan txatera itzultzeko",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10106,6 +10101,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Itxi txat zerrenda",
+    "closeChat": "Itxi txata",
+    "closeSession": "Itxi jarduera irizpena",
+    "closeCourse": "Itxi ikastaroa",
+    "closeCoursePage": "Itxi ikastaro orria",
+    "closeAddCourse": "Itxi ikastaro gehitu",
+    "closeAnalytics": "Itxi analitika",
+    "closeVocabulary": "Itxi hiztegia",
+    "closeGrammar": "Itxi gramatika",
+    "closePractice": "Itxi praktika",
+    "closeSettings": "Itxi ezarpenak",
+    "closeActivity": "Itxi jarduera",
+    "closeNamed": "Itxi {name}",
+    "clearSearch": "Garbitu bilaketa",
+    "starRowLabel": "{filled} {total} izarretatik bete dira",
+    "difficultyLabel": "Zailtasuna: {cefr}",
+    "writingAssistanceTutorialInputBar": "Edozein hizkuntzatan idatzi dezakezu! Akatsak zuzentzen lagunduko dizugu.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

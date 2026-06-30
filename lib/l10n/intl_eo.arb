@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:36.475781",
+    "@@last_modified": "2026-06-30 09:36:47.721639",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10596,16 +10596,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klaku sur la mesaĝbublo por elekti ĝin",
-    "writingAssistanceTutorialInputBar": "Vi povas skribi en ajna lingvo. Ne zorgu pri eraroj! Ni helpos vin korekti ilin.",
     "writingAssistanceTutorialIGCButton": "Post skribado de via mesaĝo, klaku ĉi tiun butonon por komenci skriban asistadon",
     "selectModeTutorialTranslate": "Klaku ĉi tie por traduki la mesaĝon",
     "selectModeTutorialAudio": "Klaku ĉi tie por aŭdi la mesaĝon",
     "selectModeTutorialExit": "Klaku la fonon por reveni al babado",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11225,6 +11220,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Fermi ĉatliston",
+    "closeChat": "Fermi ĉaton",
+    "closeSession": "Fermi aktivan revizion",
+    "closeCourse": "Fermi kurson",
+    "closeCoursePage": "Fermi kurspagon",
+    "closeAddCourse": "Fermi aldoni kurson",
+    "closeAnalytics": "Fermi analitiko",
+    "closeVocabulary": "Fermi vortaron",
+    "closeGrammar": "Fermi gramatikon",
+    "closePractice": "Fermi praktikon",
+    "closeSettings": "Fermi agordojn",
+    "closeActivity": "Fermi aktivecon",
+    "closeNamed": "Fermi {name}",
+    "clearSearch": "Malplenigi serĉon",
+    "starRowLabel": "{filled} el {total} steloj estas kompletigitaj",
+    "difficultyLabel": "Malfacileco: {cefr}",
+    "writingAssistanceTutorialInputBar": "Vi povas skribi en ajna lingvo! Ni helpos vin korekti erarojn.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

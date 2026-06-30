@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -330,7 +331,11 @@ class _InviteContactListTile extends StatelessWidget {
         mxContent: profile.avatarUrl,
         name: profile.displayName,
         presenceUserId: profile.userId,
-        onTap: () => UserDialog.show(context: context, profile: profile),
+        onTap: () => UserDialog.show(
+          context: context,
+          profile: profile,
+          uri: GoRouterState.of(context).uri,
+        ),
       ),
       title: Text(
         profile.displayName ?? profile.userId.localpart ?? l10n.user,

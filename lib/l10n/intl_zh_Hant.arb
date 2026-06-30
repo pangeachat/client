@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:04.019623",
+    "@@last_modified": "2026-06-30 09:35:16.047341",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9607,16 +9607,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "點擊消息氣泡以選擇它",
-    "writingAssistanceTutorialInputBar": "您可以使用任何語言書寫。不要擔心錯誤！我們會幫助您更正它們。",
     "writingAssistanceTutorialIGCButton": "在撰寫消息後，點擊此按鈕以開始寫作輔助",
     "selectModeTutorialTranslate": "點擊這裡以翻譯消息",
     "selectModeTutorialAudio": "點擊這裡以聆聽消息",
     "selectModeTutorialExit": "點擊背景以返回聊天",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10236,6 +10231,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "關閉聊天列表",
+    "closeChat": "關閉聊天",
+    "closeSession": "關閉活動回顧",
+    "closeCourse": "關閉課程",
+    "closeCoursePage": "關閉課程頁面",
+    "closeAddCourse": "關閉新增課程",
+    "closeAnalytics": "關閉分析",
+    "closeVocabulary": "關閉詞彙",
+    "closeGrammar": "關閉文法",
+    "closePractice": "關閉練習",
+    "closeSettings": "關閉設定",
+    "closeActivity": "關閉活動",
+    "closeNamed": "關閉 {name}",
+    "clearSearch": "清除搜尋",
+    "starRowLabel": "已完成 {filled} 顆星中的 {total} 顆星",
+    "difficultyLabel": "難度: {cefr}",
+    "writingAssistanceTutorialInputBar": "您可以使用任何語言寫作！我們將幫助您糾正錯誤。",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

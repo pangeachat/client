@@ -1467,7 +1467,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-06-29 12:25:12.313681",
+    "@@last_modified": "2026-06-30 09:35:45.435753",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10601,16 +10601,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "సందేశ బబుల్‌ను ఎంచుకోవడానికి క్లిక్ చేయండి",
-    "writingAssistanceTutorialInputBar": "మీరు ఏ భాషలోనైనా రాయవచ్చు. తప్పుల గురించి ఆందోళన చెందవద్దు! మేము వాటిని సరిదిద్దడంలో మీకు సహాయపడుతాము.",
     "writingAssistanceTutorialIGCButton": "మీ సందేశాన్ని రాసిన తర్వాత, రాయడం సహాయాన్ని ప్రారంభించడానికి ఈ బటన్‌పై క్లిక్ చేయండి",
     "selectModeTutorialTranslate": "సందేశాన్ని అనువదించడానికి ఇక్కడ క్లిక్ చేయండి",
     "selectModeTutorialAudio": "సందేశాన్ని వినడానికి ఇక్కడ క్లిక్ చేయండి",
     "selectModeTutorialExit": "చాటింగ్‌కు తిరిగి వెళ్లడానికి నేపథ్యంపై క్లిక్ చేయండి",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11230,6 +11225,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "చాట్ జాబితాను మూసివేయండి",
+    "closeChat": "చాట్‌ను మూసివేయండి",
+    "closeSession": "చర్య సమీక్షను మూసివేయండి",
+    "closeCourse": "కోర్సును మూసివేయండి",
+    "closeCoursePage": "కోర్సు పేజీని మూసివేయండి",
+    "closeAddCourse": "కోర్సు జోడించడాన్ని మూసివేయండి",
+    "closeAnalytics": "విశ్లేషణను మూసివేయండి",
+    "closeVocabulary": "పదకోశాన్ని మూసివేయండి",
+    "closeGrammar": "వ్యాకరణాన్ని మూసివేయండి",
+    "closePractice": "అభ్యాసాన్ని మూసివేయండి",
+    "closeSettings": "సెట్టింగ్స్‌ను మూసివేయండి",
+    "closeActivity": "చర్యను మూసివేయండి",
+    "closeNamed": "{name}ను మూసివేయండి",
+    "clearSearch": "శోధనను క్లియర్ చేయండి",
+    "starRowLabel": "{filled} లో {total} నక్షత్రాలు పూర్తయ్యాయి",
+    "difficultyLabel": "కష్టత: {cefr}",
+    "writingAssistanceTutorialInputBar": "మీరు ఏ భాషలోనైనా రాయవచ్చు! మేము మీ తప్పులను సరిదిద్దడంలో మీకు సహాయపడతాము.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

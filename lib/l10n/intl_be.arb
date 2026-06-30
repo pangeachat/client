@@ -3933,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-06-29 12:24:57.933766",
+    "@@last_modified": "2026-06-30 09:34:59.500393",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9491,16 +9491,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Націсніце на паветранае паведамленне, каб выбраць яго",
-    "writingAssistanceTutorialInputBar": "Вы можаце пісаць на любой мове. Не хвалюйцеся пра памылкі! Мы дапаможам вам іх выправіць.",
     "writingAssistanceTutorialIGCButton": "Пасля таго, як вы напішаце сваё паведамленне, націсніце гэтую кнопку, каб пачаць дапамогу ў пісьме",
     "selectModeTutorialTranslate": "Націсніце тут, каб перакласці паведамленне",
     "selectModeTutorialAudio": "Націсніце тут, каб паслухаць паведамленне",
     "selectModeTutorialExit": "Націсніце на фон, каб вярнуцца да размовы",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10120,6 +10115,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Зачыніць спіс чатаў",
+    "closeChat": "Зачыніць чат",
+    "closeSession": "Зачыніць агляд дзейнасці",
+    "closeCourse": "Зачыніць курс",
+    "closeCoursePage": "Зачыніць старонку курса",
+    "closeAddCourse": "Зачыніць дадаць курс",
+    "closeAnalytics": "Зачыніць аналітыку",
+    "closeVocabulary": "Зачыніць слоўнік",
+    "closeGrammar": "Зачыніць граматыку",
+    "closePractice": "Зачыніць практыку",
+    "closeSettings": "Закрыць налады",
+    "closeActivity": "Закрыць актыўнасць",
+    "closeNamed": "Закрыць {name}",
+    "clearSearch": "Ачысціць пошук",
+    "starRowLabel": "{filled} з {total} зорак былі завершаны",
+    "difficultyLabel": "Складанасць: {cefr}",
+    "writingAssistanceTutorialInputBar": "Вы можаце пісаць на любой мове! Мы дапаможам вам выправіць памылкі.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

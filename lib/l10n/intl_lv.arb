@@ -3919,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-29 12:25:07.984629",
+    "@@last_modified": "2026-06-30 09:35:30.810304",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9477,16 +9477,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Noklikšķiniet uz ziņojuma burbuļa, lai to izvēlētos",
-    "writingAssistanceTutorialInputBar": "Jūs varat rakstīt jebkurā valodā. Neuztraucieties par kļūdām! Mēs jums palīdzēsim tās labot.",
     "writingAssistanceTutorialIGCButton": "Pēc ziņojuma uzrakstīšanas noklikšķiniet uz šīs pogas, lai sāktu rakstīšanas palīdzību",
     "selectModeTutorialTranslate": "Noklikšķiniet šeit, lai tulkotu ziņojumu",
     "selectModeTutorialAudio": "Noklikšķiniet šeit, lai klausītos ziņojumu",
     "selectModeTutorialExit": "Noklikšķiniet uz fona, lai atgrieztos sarunā",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10106,6 +10101,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Aizvērt čatu sarakstu",
+    "closeChat": "Aizvērt čatu",
+    "closeSession": "Aizvērt aktivitātes pārskatu",
+    "closeCourse": "Aizvērt kursu",
+    "closeCoursePage": "Aizvērt kursa lapu",
+    "closeAddCourse": "Aizvērt pievienot kursu",
+    "closeAnalytics": "Aizvērt analītiku",
+    "closeVocabulary": "Aizvērt vārdu krājumu",
+    "closeGrammar": "Aizvērt gramatiku",
+    "closePractice": "Aizvērt praksi",
+    "closeSettings": "Aizvērt iestatījumus",
+    "closeActivity": "Aizvērt aktivitāti",
+    "closeNamed": "Aizvērt {name}",
+    "clearSearch": "Notīrīt meklēšanu",
+    "starRowLabel": "{filled} no {total} zvaigznēm ir pabeigtas",
+    "difficultyLabel": "Grūtības pakāpe: {cefr}",
+    "writingAssistanceTutorialInputBar": "Jūs varat rakstīt jebkurā valodā! Mēs palīdzēsim jums labot kļūdas.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

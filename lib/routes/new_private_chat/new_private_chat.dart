@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/user/user_search_extension.dart';
@@ -112,8 +113,11 @@ class NewPrivateChatController extends State<NewPrivateChat> {
     // Pangea#
   }
 
-  void openUserModal(Profile profile) =>
-      UserDialog.show(context: context, profile: profile);
+  void openUserModal(Profile profile) => UserDialog.show(
+    context: context,
+    profile: profile,
+    uri: GoRouterState.of(context).uri,
+  );
 
   @override
   Widget build(BuildContext context) => NewPrivateChatView(this);

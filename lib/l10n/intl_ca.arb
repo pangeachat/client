@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:24:59.505117",
+    "@@last_modified": "2026-06-30 09:35:03.468240",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9628,16 +9628,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Feu clic a la bombolla de missatge per seleccionar-la",
-    "writingAssistanceTutorialInputBar": "Podeu escriure en qualsevol idioma. No us preocupeu pels errors! Us ajudarem a corregir-los.",
     "writingAssistanceTutorialIGCButton": "Després d'escriure el vostre missatge, feu clic a aquest botó per començar l'assistència d'escriptura",
     "selectModeTutorialTranslate": "Feu clic aquí per traduir el missatge",
     "selectModeTutorialAudio": "Feu clic aquí per escoltar el missatge",
     "selectModeTutorialExit": "Feu clic al fons per tornar a xatejar",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10257,6 +10252,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Tancar la llista de xats",
+    "closeChat": "Tancar xat",
+    "closeSession": "Tancar la revisió d'activitat",
+    "closeCourse": "Tancar curs",
+    "closeCoursePage": "Tancar la pàgina del curs",
+    "closeAddCourse": "Tancar afegir curs",
+    "closeAnalytics": "Tancar analítiques",
+    "closeVocabulary": "Tancar vocabulari",
+    "closeGrammar": "Tancar gramàtica",
+    "closePractice": "Tancar pràctica",
+    "closeSettings": "Tanca la configuració",
+    "closeActivity": "Tanca l'activitat",
+    "closeNamed": "Tanca {name}",
+    "clearSearch": "Neteja la cerca",
+    "starRowLabel": "{filled} de {total} estrelles s'han completat",
+    "difficultyLabel": "Dificultat: {cefr}",
+    "writingAssistanceTutorialInputBar": "Pots escriure en qualsevol idioma! T'ajudarem a corregir errors.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

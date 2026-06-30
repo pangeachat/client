@@ -1505,7 +1505,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-06-29 12:24:41.808226",
+    "@@last_modified": "2026-06-30 09:34:12.383020",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10587,16 +10587,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Clicca sulla bolla del messaggio per selezionarlo",
-    "writingAssistanceTutorialInputBar": "Puoi scrivere in qualsiasi lingua. Non preoccuparti degli errori! Ti aiuteremo a correggerli.",
     "writingAssistanceTutorialIGCButton": "Dopo aver scritto il tuo messaggio, clicca questo pulsante per iniziare l'assistenza alla scrittura",
     "selectModeTutorialTranslate": "Clicca qui per tradurre il messaggio",
     "selectModeTutorialAudio": "Clicca qui per ascoltare il messaggio",
     "selectModeTutorialExit": "Clicca sullo sfondo per tornare a chattare",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11216,6 +11211,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Fermar lista de chats",
+    "closeChat": "Fermar chat",
+    "closeSession": "Fermar revisión de actividad",
+    "closeCourse": "Fermar curso",
+    "closeCoursePage": "Fermar página de curso",
+    "closeAddCourse": "Fermar añadir curso",
+    "closeAnalytics": "Fermar analíticas",
+    "closeVocabulary": "Fermar vocabulario",
+    "closeGrammar": "Fermar gramática",
+    "closePractice": "Fermar práctica",
+    "closeSettings": "Chèchè réglages",
+    "closeActivity": "Chèchè activité",
+    "closeNamed": "Chèchè {name}",
+    "clearSearch": "Vider recherche",
+    "starRowLabel": "{filled} sur {total} étoiles ont été complétées",
+    "difficultyLabel": "Difficulté : {cefr}",
+    "writingAssistanceTutorialInputBar": "Vous pouvez écrire dans n'importe quelle langue ! Nous vous aiderons à corriger les erreurs.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

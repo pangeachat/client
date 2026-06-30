@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-29 12:24:23.564627",
+    "@@last_modified": "2026-06-30 09:33:20.956127",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7571,16 +7571,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Haz clic en la burbuja de mensaje para seleccionarla",
-    "writingAssistanceTutorialInputBar": "Puedes escribir en cualquier idioma. ¡No te preocupes por los errores! Te ayudaremos a corregirlos.",
     "writingAssistanceTutorialIGCButton": "Después de escribir tu mensaje, haz clic en este botón para comenzar la asistencia de escritura",
     "selectModeTutorialTranslate": "Haz clic aquí para traducir el mensaje",
     "selectModeTutorialAudio": "Haz clic aquí para escuchar el mensaje",
     "selectModeTutorialExit": "Haz clic en el fondo para volver a chatear",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -8200,6 +8195,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Cerrar lista de chats",
+    "closeChat": "Cerrar chat",
+    "closeSession": "Cerrar revisión de actividad",
+    "closeCourse": "Cerrar curso",
+    "closeCoursePage": "Cerrar página del curso",
+    "closeAddCourse": "Cerrar agregar curso",
+    "closeAnalytics": "Cerrar análisis",
+    "closeVocabulary": "Cerrar vocabulario",
+    "closeGrammar": "Cerrar gramática",
+    "closePractice": "Cerrar práctica",
+    "closeSettings": "Cerrar configuraciones",
+    "closeActivity": "Cerrar actividad",
+    "closeNamed": "Cerrar {name}",
+    "clearSearch": "Borrar búsqueda",
+    "starRowLabel": "{filled} de {total} estrellas han sido completadas",
+    "difficultyLabel": "Dificultad: {cefr}",
+    "writingAssistanceTutorialInputBar": "¡Puedes escribir en cualquier idioma! Te ayudaremos a corregir errores.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

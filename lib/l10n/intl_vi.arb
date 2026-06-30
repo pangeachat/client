@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:14.871346",
+    "@@last_modified": "2026-06-30 09:35:55.800318",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6560,16 +6560,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Nhấp vào bong bóng tin nhắn để chọn nó",
-    "writingAssistanceTutorialInputBar": "Bạn có thể viết bằng bất kỳ ngôn ngữ nào. Đừng lo lắng về lỗi! Chúng tôi sẽ giúp bạn sửa chúng.",
     "writingAssistanceTutorialIGCButton": "Sau khi viết tin nhắn của bạn, nhấp vào nút này để bắt đầu hỗ trợ viết",
     "selectModeTutorialTranslate": "Nhấp vào đây để dịch tin nhắn",
     "selectModeTutorialAudio": "Nhấp vào đây để nghe tin nhắn",
     "selectModeTutorialExit": "Nhấp vào nền để quay lại trò chuyện",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -7189,6 +7184,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Đóng danh sách trò chuyện",
+    "closeChat": "Đóng trò chuyện",
+    "closeSession": "Đóng đánh giá hoạt động",
+    "closeCourse": "Đóng khóa học",
+    "closeCoursePage": "Đóng trang khóa học",
+    "closeAddCourse": "Đóng thêm khóa học",
+    "closeAnalytics": "Đóng phân tích",
+    "closeVocabulary": "Đóng từ vựng",
+    "closeGrammar": "Đóng ngữ pháp",
+    "closePractice": "Đóng thực hành",
+    "closeSettings": "Đóng cài đặt",
+    "closeActivity": "Đóng hoạt động",
+    "closeNamed": "Đóng {name}",
+    "clearSearch": "Xóa tìm kiếm",
+    "starRowLabel": "{filled} trong số {total} sao đã được hoàn thành",
+    "difficultyLabel": "Độ khó: {cefr}",
+    "writingAssistanceTutorialInputBar": "Bạn có thể viết bằng bất kỳ ngôn ngữ nào! Chúng tôi sẽ giúp bạn sửa lỗi.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

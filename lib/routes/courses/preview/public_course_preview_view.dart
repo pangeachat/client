@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -308,7 +309,11 @@ class _CourseAdminDisplay extends StatelessWidget {
                   profile?.displayName ?? adminId.localpart ?? adminId;
               return InkWell(
                 onTap: profile != null
-                    ? () => UserDialog.show(context: context, profile: profile)
+                    ? () => UserDialog.show(
+                        context: context,
+                        profile: profile,
+                        uri: GoRouterState.of(context).uri,
+                      )
                     : null,
                 child: Container(
                   decoration: BoxDecoration(

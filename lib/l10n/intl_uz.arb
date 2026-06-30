@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-06-29 12:25:05.377418",
+    "@@last_modified": "2026-06-30 09:35:21.396168",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9481,16 +9481,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Xabar pufakchasini tanlash uchun bosing",
-    "writingAssistanceTutorialInputBar": "Siz har qanday tilni yozishingiz mumkin. Xatolar haqida xavotir olmang! Biz sizga ularni to'g'rilashda yordam beramiz.",
     "writingAssistanceTutorialIGCButton": "Xabaringizni yozgandan so'ng, yozish yordamiga kirish uchun ushbu tugmani bosing",
     "selectModeTutorialTranslate": "Xabarni tarjima qilish uchun bu yerga bosing",
     "selectModeTutorialAudio": "Xabarni tinglash uchun bu yerga bosing",
     "selectModeTutorialExit": "Suhbatga qaytish uchun fonni bosing",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10110,6 +10105,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Suhbatlar ro'yxatini yopish",
+    "closeChat": "Suhbatni yopish",
+    "closeSession": "Faoliyatni ko'rishni yopish",
+    "closeCourse": "Kursni yopish",
+    "closeCoursePage": "Kurs sahifasini yopish",
+    "closeAddCourse": "Kurs qo'shishni yopish",
+    "closeAnalytics": "Tahlilni yopish",
+    "closeVocabulary": "Lug'atni yopish",
+    "closeGrammar": "Grammatika ni yopish",
+    "closePractice": "Amaliyotni yopish",
+    "closeSettings": "Sozlamalarni yopish",
+    "closeActivity": "Faoliyatni yopish",
+    "closeNamed": "{name} ni yopish",
+    "clearSearch": "Qidiruvni tozalash",
+    "starRowLabel": "{filled} ta {total} yulduzdan bajarildi",
+    "difficultyLabel": "Qiyinchilik: {cefr}",
+    "writingAssistanceTutorialInputBar": "Siz har qanday tilni yozishingiz mumkin! Biz sizga xatolarni tuzatishda yordam beramiz.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

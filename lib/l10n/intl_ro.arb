@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:24:32.381329",
+    "@@last_modified": "2026-06-30 09:33:51.995992",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10302,16 +10302,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Faceți clic pe bula de mesaj pentru a o selecta",
-    "writingAssistanceTutorialInputBar": "Puteți scrie în orice limbă. Nu vă faceți griji cu privire la greșeli! Vă vom ajuta să le corectați.",
     "writingAssistanceTutorialIGCButton": "După ce ați scris mesajul, faceți clic pe acest buton pentru a începe asistența la scriere",
     "selectModeTutorialTranslate": "Faceți clic aici pentru a traduce mesajul",
     "selectModeTutorialAudio": "Faceți clic aici pentru a asculta mesajul",
     "selectModeTutorialExit": "Faceți clic pe fundal pentru a reveni la chat",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10931,6 +10926,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Închide lista de chat-uri",
+    "closeChat": "Închide chat-ul",
+    "closeSession": "Închide revizuirea activității",
+    "closeCourse": "Închide cursul",
+    "closeCoursePage": "Închide pagina cursului",
+    "closeAddCourse": "Închide adăugarea cursului",
+    "closeAnalytics": "Închide analitica",
+    "closeVocabulary": "Închide vocabularul",
+    "closeGrammar": "Închide gramatica",
+    "closePractice": "Închide practica",
+    "closeSettings": "Închide setările",
+    "closeActivity": "Închide activitatea",
+    "closeNamed": "Închide {name}",
+    "clearSearch": "Șterge căutarea",
+    "starRowLabel": "{filled} din {total} stele au fost completate",
+    "difficultyLabel": "Dificultate: {cefr}",
+    "writingAssistanceTutorialInputBar": "Poți scrie în orice limbă! Te vom ajuta să corectezi greșelile.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

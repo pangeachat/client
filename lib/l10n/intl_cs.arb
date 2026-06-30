@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-06-29 12:24:55.006635",
+    "@@last_modified": "2026-06-30 09:34:51.691542",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10031,16 +10031,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klikněte na bublinu zprávy, abyste ji vybrali",
-    "writingAssistanceTutorialInputBar": "Můžete psát v jakémkoli jazyce. Nebojte se chyb! Pomůžeme vám je opravit.",
     "writingAssistanceTutorialIGCButton": "Po napsání zprávy klikněte na toto tlačítko pro zahájení asistence při psaní",
     "selectModeTutorialTranslate": "Klikněte sem pro překlad zprávy",
     "selectModeTutorialAudio": "Klikněte sem pro poslech zprávy",
     "selectModeTutorialExit": "Klikněte na pozadí, abyste se vrátili k chatování",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10660,6 +10655,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Zavřít seznam chatů",
+    "closeChat": "Zavřít chat",
+    "closeSession": "Zavřít přehled aktivity",
+    "closeCourse": "Zavřít kurz",
+    "closeCoursePage": "Zavřít stránku kurzu",
+    "closeAddCourse": "Zavřít přidání kurzu",
+    "closeAnalytics": "Zavřít analytiku",
+    "closeVocabulary": "Zavřít slovní zásobu",
+    "closeGrammar": "Zavřít gramatiku",
+    "closePractice": "Zavřít cvičení",
+    "closeSettings": "Zavřít nastavení",
+    "closeActivity": "Zavřít aktivitu",
+    "closeNamed": "Zavřít {name}",
+    "clearSearch": "Vymazat hledání",
+    "starRowLabel": "{filled} z {total} hvězd bylo dokončeno",
+    "difficultyLabel": "Obtížnost: {cefr}",
+    "writingAssistanceTutorialInputBar": "Můžete psát v jakémkoli jazyce! Pomůžeme vám opravit chyby.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

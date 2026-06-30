@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-06-29 12:24:47.838494",
+    "@@last_modified": "2026-06-30 09:34:30.799561",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9456,16 +9456,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klicken Sie auf die Nachrichtenblase, um sie auszuwählen",
-    "writingAssistanceTutorialInputBar": "Sie können in jeder Sprache schreiben. Machen Sie sich keine Sorgen über Fehler! Wir helfen Ihnen, sie zu korrigieren.",
     "writingAssistanceTutorialIGCButton": "Nachdem Sie Ihre Nachricht geschrieben haben, klicken Sie auf diese Schaltfläche, um die Schreibassistenz zu starten",
     "selectModeTutorialTranslate": "Klicken Sie hier, um die Nachricht zu übersetzen",
     "selectModeTutorialAudio": "Klicken Sie hier, um die Nachricht anzuhören",
     "selectModeTutorialExit": "Klicken Sie auf den Hintergrund, um zum Chat zurückzukehren",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10085,6 +10080,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Chatliste schließen",
+    "closeChat": "Chat schließen",
+    "closeSession": "Aktivitätsüberprüfung schließen",
+    "closeCourse": "Kurs schließen",
+    "closeCoursePage": "Kursseite schließen",
+    "closeAddCourse": "Kurs hinzufügen schließen",
+    "closeAnalytics": "Analytik schließen",
+    "closeVocabulary": "Wortschatz schließen",
+    "closeGrammar": "Grammatik schließen",
+    "closePractice": "Übung schließen",
+    "closeSettings": "Einstellungen schließen",
+    "closeActivity": "Aktivität schließen",
+    "closeNamed": "{name} schließen",
+    "clearSearch": "Suche löschen",
+    "starRowLabel": "{filled} von {total} Sternen wurden abgeschlossen",
+    "difficultyLabel": "Schwierigkeit: {cefr}",
+    "writingAssistanceTutorialInputBar": "Sie können in jeder Sprache schreiben! Wir helfen Ihnen, Fehler zu korrigieren.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }
