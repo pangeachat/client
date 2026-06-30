@@ -213,7 +213,7 @@ class ActivityLoadingHeader extends StatelessWidget {
               onPressed: onBack,
             )
           : IconButton(
-              tooltip: L10n.of(context).close,
+              tooltip: L10n.of(context).closeActivity,
               icon: const Icon(Icons.close),
               onPressed: onClose,
             ),
