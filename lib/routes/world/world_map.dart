@@ -226,6 +226,27 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
   String? get selectedActivityId => _pinsManager.selectedActivityId;
+
+  /// The id of the activity the detail panel is focused on, or null. Focus is
+  /// the persistent "I'm working with this one" state (its panel is open and the
+  /// camera settled on it); it drives a distinct focus marker on the pin at
+  /// whatever tier it sits, and survives zoom/pan, clearing only when the panel
+  /// closes or another activity is focused. Derived purely from [widget.focus]
+  /// (the `?activity=` token via `mapFocusFor`), so no extra state is needed and
+  /// it auto-clears when the focus signal changes. See world-map.instructions.md
+  /// ("Featured, selected, and focused").
+  String? get focusedActivityId => focusedActivityIdOf(widget.focus);
+
+  /// The activity id a [MapFocus] focuses, or null for a non-activity / absent
+  /// focus. Pure so the focus-marker resolution is unit-testable without pumping
+  /// the map (#7349). Exhaustive over the sealed [MapFocus]: a new focus kind
+  /// that isn't an activity simply yields null here.
+  @visibleForTesting
+  static String? focusedActivityIdOf(MapFocus? focus) => switch (focus) {
+    ActivityFocus(:final activityId) => activityId,
+    _ => null,
+  };
+
   Client? get client => _client;
   bool get loadingPins => _loadingPins;
 
