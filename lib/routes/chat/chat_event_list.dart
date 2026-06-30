@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_user_summaries_widget.dart';
@@ -116,7 +117,9 @@ class ChatEventList extends StatelessWidget {
               // Request history button or progress indicator:
               // #Pangea
               if (i == events.length + 3) {
-                return SizedBox(height: 50);
+                return controller.room.ownRole?.allGoals.isNotEmpty == true
+                    ? SizedBox(height: 50)
+                    : SizedBox.shrink();
               }
 
               // if (i == events.length + 1) {
