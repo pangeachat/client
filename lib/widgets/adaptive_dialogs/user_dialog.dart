@@ -23,21 +23,28 @@ import '../matrix.dart';
 import '../mxc_image_viewer.dart';
 
 class UserDialog extends StatelessWidget {
+  final Profile profile;
+  final bool noProfileWarning;
+  final Uri uri;
+
+  const UserDialog(
+    this.profile, {
+    required this.uri,
+    this.noProfileWarning = false,
+    super.key,
+  });
+
   static Future<void> show({
     required BuildContext context,
     required Profile profile,
+    required Uri uri,
     bool noProfileWarning = false,
   }) => showAdaptiveDialog(
     context: context,
     barrierDismissible: true,
     builder: (context) =>
-        UserDialog(profile, noProfileWarning: noProfileWarning),
+        UserDialog(profile, noProfileWarning: noProfileWarning, uri: uri),
   );
-
-  final Profile profile;
-  final bool noProfileWarning;
-
-  const UserDialog(this.profile, {this.noProfileWarning = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +54,11 @@ class UserDialog extends StatelessWidget {
         profile.displayName ??
         profile.userId.localpart ??
         L10n.of(context).user;
+
     var copied = false;
     final theme = Theme.of(context);
     final avatar = profile.avatarUrl;
+
     return AlertDialog.adaptive(
       title: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
@@ -62,9 +71,6 @@ class UserDialog extends StatelessWidget {
           client: Matrix.of(context).client,
           builder: (context, presence) {
             if (presence == null) return const SizedBox.shrink();
-            // #Pangea
-            // final statusMsg = presence.statusMsg;
-            // Pangea#
             final lastActiveTimestamp = presence.lastActiveTimestamp;
             final presenceText = presence.currentlyActive == true
                 ? L10n.of(context).currentlyActive
@@ -73,13 +79,13 @@ class UserDialog extends StatelessWidget {
                     lastActiveTimestamp.localizedTimeShort(context),
                   )
                 : null;
+
             return SingleChildScrollView(
               child: Column(
                 spacing: 8,
                 mainAxisSize: .min,
                 crossAxisAlignment: .stretch,
                 children: [
-                  // #Pangea
                   HoverBuilder(
                     builder: (context, hovered) => StatefulBuilder(
                       builder: (context, setState) => MouseRegion(
@@ -129,7 +135,6 @@ class UserDialog extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Pangea#
                   Center(
                     child: Avatar(
                       mxContent: avatar,
@@ -141,85 +146,15 @@ class UserDialog extends StatelessWidget {
                               builder: (_) => MxcImageViewer(avatar),
                             )
                           : null,
-                      // #Pangea
                       userId: profile.userId,
-                      // Pangea#
                     ),
                   ),
-                  // #Pangea
-                  // HoverBuilder(
-                  //   builder: (context, hovered) => StatefulBuilder(
-                  //     builder: (context, setState) => MouseRegion(
-                  //       cursor: SystemMouseCursors.click,
-                  //       child: GestureDetector(
-                  //         onTap: () {
-                  //           Clipboard.setData(
-                  //             ClipboardData(text: profile.userId),
-                  //           );
-                  //           setState(() {
-                  //             copied = true;
-                  //           });
-                  //         },
-                  //         child: RichText(
-                  //           text: TextSpan(
-                  //             children: [
-                  //               WidgetSpan(
-                  //                 child: Padding(
-                  //                   padding: const EdgeInsets.only(right: 4.0),
-                  //                   child: AnimatedScale(
-                  //                     duration: FluffyThemes.animationDuration,
-                  //                     curve: FluffyThemes.animationCurve,
-                  //                     scale: hovered
-                  //                         ? 1.33
-                  //                         : copied
-                  //                         ? 1.25
-                  //                         : 1.0,
-                  //                     child: Icon(
-                  //                       copied
-                  //                           ? Icons.check_circle
-                  //                           : Icons.copy,
-                  //                       size: 12,
-                  //                       color: copied ? Colors.green : null,
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //               TextSpan(text: profile.userId),
-                  //             ],
-                  //             style: theme.textTheme.bodyMedium?.copyWith(
-                  //               fontSize: 10,
-                  //             ),
-                  //           ),
-                  //           textAlign: TextAlign.center,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  // Pangea#
                   if (presenceText != null)
                     Text(
                       presenceText,
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
-                  // #Pangea
-                  // if (statusMsg != null)
-                  //   SelectableLinkify(
-                  //     text: statusMsg,
-                  //     textScaleFactor: MediaQuery.textScalerOf(
-                  //       context,
-                  //     ).scale(1),
-                  //     textAlign: TextAlign.center,
-                  //     options: const LinkifyOptions(humanize: false),
-                  //     linkStyle: TextStyle(
-                  //       color: theme.colorScheme.primary,
-                  //       decoration: TextDecoration.underline,
-                  //       decorationColor: theme.colorScheme.primary,
-                  //     ),
-                  //     onOpen: (url) =>
-                  //         UrlLauncher(context, url.url).launchUrl(),
-                  //   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Column(
@@ -230,7 +165,6 @@ class UserDialog extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Pangea#
                 ],
               ),
             );
@@ -246,10 +180,7 @@ class UserDialog extends StatelessWidget {
               final router = GoRouter.of(context);
               final roomIdResult = await showFutureLoadingDialog(
                 context: context,
-                // #Pangea
-                // future: () => client.startDirectChat(profile.userId),
                 future: () => client.createPangeaDirectChat(profile.userId),
-                // Pangea#
               );
               final roomId = roomIdResult.result;
               if (roomId == null) return;
@@ -262,16 +193,13 @@ class UserDialog extends StatelessWidget {
                   : L10n.of(context).sendAMessage,
             ),
           ),
-          // #Pangea
           if (profile.userId != BotName.byEnvironment &&
               profile.userId != Environment.supportUserId)
-            // Pangea#
             AdaptiveDialogAction(
               bigButtons: true,
               borderRadius: AdaptiveDialogAction.centerRadius,
               onPressed: () {
                 final router = GoRouter.of(context);
-                final uri = GoRouterState.of(context).uri;
                 Navigator.of(context).pop();
                 router.go(
                   WorkspaceNav.openSettings(
@@ -281,10 +209,7 @@ class UserDialog extends StatelessWidget {
                 );
               },
               child: Text(
-                // #Pangea
-                // L10n.of(context).ignoreUser,
                 L10n.of(context).block,
-                // Pangea#
                 style: TextStyle(color: theme.colorScheme.error),
               ),
             ),
