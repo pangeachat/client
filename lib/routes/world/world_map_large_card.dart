@@ -420,12 +420,17 @@ class _TypeChip extends StatelessWidget {
         children: [
           Icon(icon, size: 12, color: fg),
           const SizedBox(width: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 11,
-              color: fg,
-              fontWeight: FontWeight.w600,
+          // Ellipsize rather than overflow when the type label is wider than the
+          // card's chip slot (long-translation locales; #7153/#7207 card work).
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 11,
+                color: fg,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
