@@ -10,7 +10,6 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
@@ -220,8 +219,9 @@ class WorkspaceShell extends StatelessWidget {
             /// The route canvas, as one stable child so the sideView Navigator never
             /// remounts when the canvas mode changes:
             ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
-            ///  • detail → capped, bounded by the right panel zone; map peeks (an activity
-            ///    plan on a wide screen; a course-wizard step).
+            ///  • detail → capped, bounded by the right panel zone; map peeks (a
+            ///    route-driven page — a course-wizard step, a public-course preview, a
+            ///    chat archive; the activity plan is a left panel now, not here).
             Positioned(
               left: l.leftInset,
               top: 0,
@@ -229,38 +229,34 @@ class WorkspaceShell extends StatelessWidget {
               right: l.canvas == CanvasMode.detail ? null : 0,
               width: l.canvas == CanvasMode.detail ? l.detailWidth : null,
               child: Offstage(
-                // A map hole shows the full map through; a narrow activity plan is
-                // offstaged here too because its content rides in the bottom sheet below.
-                // Otherwise the center detail (an activity plan on a wide screen, a
-                // course-wizard step, a public-course preview) gets the same floating-card
+                // A map hole shows the full map through (the world root, or an
+                // activity / room / course riding over it as a left panel).
+                // Otherwise the center detail (a course-wizard step, a
+                // public-course preview, a chat archive) gets the same floating-card
                 // chrome as the column panels via [PanelCard].
-                offstage: l.canvas == CanvasMode.mapHole || l.isMobileActivity,
+                offstage: l.canvas == CanvasMode.mapHole,
                 child: l.canvas == CanvasMode.detail
                     ? PanelCard(child: l.canvasChild)
                     : l.canvasChild,
               ),
             ),
 
-            /// A narrow course rides in a draggable bottom sheet over the course-scoped
-            /// map (Google-Maps "map + sheet"). The course content is the same
-            /// WorkspaceLeftPanel surface, hosted [bare] (the sheet is the card). The
-            /// left-panel loop skips this index so it is not also drawn full-screen. See
-            /// `routing.instructions.md`.
-            if (l.mobileCourseIndex != null)
+            /// Narrow **map content** (a course card or an activity plan) rides in a
+            /// draggable bottom sheet over the (scoped) map (Google-Maps "map + sheet")
+            /// instead of a full-screen panel — both are `mapContent` panels. The content
+            /// is the same WorkspaceLeftPanel surface, hosted [bare] (the sheet is the
+            /// card). The left-panel loop skips this index so it is not also drawn
+            /// full-screen. See `routing.instructions.md`.
+            if (l.mobileSheetIndex != null)
               Positioned.fill(
                 child: MobileCourseSheet(
                   child: WorkspaceLeftPanel(
-                    token: l.leftTokens[l.mobileCourseIndex!],
+                    token: l.leftTokens[l.mobileSheetIndex!],
                     currentUri: state.uri,
                     bare: true,
                   ),
                 ),
               ),
-
-            /// A narrow activity plan rides in the same bottom sheet over the map (camera
-            /// on its pin); the center canvas is offstaged for it in [_canvasLayer].
-            if (l.isMobileActivity)
-              Positioned.fill(child: MobileCourseSheet(child: l.canvasChild)),
 
             /// The nav rail must size to its content, NOT fill the Stack: this Stack is
             /// StackFit.expand, which forces non-positioned children to full size — and the
@@ -290,9 +286,10 @@ class WorkspaceShell extends StatelessWidget {
             /// its ChatController repositions rather than remounts when the slot moves.
             ...[
               for (var i = 0; i < l.leftTokens.length; i++)
-                // Skip a narrow course card — it renders in the bottom sheet above, not as
-                // a full-screen left panel (no double-render).
-                if (i != l.mobileCourseIndex &&
+                // Skip narrow map content (a course card or activity plan) — it renders
+                // in the bottom sheet above, not as a full-screen left panel (no
+                // double-render).
+                if (i != l.mobileSheetIndex &&
                     l.allocation.left[i].vis != PanelVis.hidden)
                   Positioned(
                     key: ValueKey(l.leftTokens[i].encode()),
@@ -344,13 +341,12 @@ class WorkspaceShell extends StatelessWidget {
 
             /// The persistent top-right user cluster — the right column's entry point. It
             /// sits in the gutter the allocator reserves beside the panels; hidden behind a
-            /// narrow full-screen panel. Shown over a narrow course or activity sheet too
-            /// (the map is visible above the sheet, so the floating cluster reads as
-            /// Maps-style chrome and keeps analytics reachable). The caller gates
-            /// visibility; this only places it.
+            /// narrow full-screen panel. Shown over a narrow map-content sheet too (a
+            /// course or an activity — the map is visible above the sheet, so the floating
+            /// cluster reads as Maps-style chrome and keeps analytics reachable). The
+            /// caller gates visibility; this only places it.
             if ((l.mapVisible && l.allocation.clusterVisible) ||
-                l.isMobileCourse ||
-                l.isMobileActivity)
+                l.isMobileSheet)
               Positioned(
                 top: _ShellLayout.chromeMargin + screenPadding.top,
                 right: _ShellLayout.chromeMargin + screenPadding.right,
@@ -390,21 +386,22 @@ class _ShellLayout {
   /// padding) from [PanelAllocator].
   final WorkspaceLayout allocation;
 
-  /// The effective center canvas (an open activity overlay already resolved to a
-  /// detail panel inside [canvasFor]).
+  /// The effective center canvas. An open activity is NOT a canvas mode anymore
+  /// (#7385) — it rides as a left panel; this is `detail` only for route-driven
+  /// pages (a course-wizard step, a public-course preview, a chat archive), else
+  /// `mapHole`.
   final CanvasMode canvas;
 
-  /// `?activity=<id>` opens the activity detail in-place over the map; this is
-  /// the resolved canvas child (the activity panel, else the route [sideView]).
+  /// The route-driven center detail child (a course-wizard step, a public-course
+  /// preview, a chat archive), else the route [sideView]. The activity plan is no
+  /// longer rendered here — it is a left panel hosted by [WorkspaceLeftPanel].
   final Widget canvasChild;
 
-  /// Index into [leftTokens] of a narrow joined-course card that rides in the
-  /// bottom sheet (null otherwise); [isMobileCourse] is its presence.
-  final int? mobileCourseIndex;
-  final bool isMobileCourse;
-
-  /// A narrow activity plan rides in the bottom sheet over the map.
-  final bool isMobileActivity;
+  /// Index into [leftTokens] of narrow **map content** (a joined-course card or an
+  /// activity plan) that rides in the bottom sheet (null otherwise);
+  /// [isMobileSheet] is its presence.
+  final int? mobileSheetIndex;
+  final bool isMobileSheet;
 
   /// The narrow bottom nav (section switcher) shows only at a section-root level.
   final bool showBottomNav;
@@ -436,9 +433,8 @@ class _ShellLayout {
     required this.allocation,
     required this.canvas,
     required this.canvasChild,
-    required this.mobileCourseIndex,
-    required this.isMobileCourse,
-    required this.isMobileActivity,
+    required this.mobileSheetIndex,
+    required this.isMobileSheet,
     required this.showBottomNav,
     required this.mapVisible,
     required this.leftInset,
@@ -493,10 +489,10 @@ class _ShellLayout {
     // it.
     final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
 
-    // The effective canvas (an open activity overlay already resolves to a
-    // detail panel inside [canvasFor]).
+    // The effective canvas: `detail` only for route-driven pages (a course-wizard
+    // step, a public-course preview, a chat archive); `mapHole` otherwise. An open
+    // activity rides as a left panel, not a canvas (#7385).
     final canvas = canvasFor(state, isColumnMode);
-    final activity = activityFor(state);
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
     final viewport = MediaQuery.sizeOf(context).width;
@@ -538,33 +534,25 @@ class _ShellLayout {
       focusHint: focusHint,
     );
 
-    // world_v2 mobile: a joined COURSE on a narrow screen rides in a draggable
-    // bottom sheet over the (course-scoped) map — the Google-Maps "map + sheet"
-    // pattern — instead of a full-screen panel. Active when the focused narrow
-    // panel is the `course` card (an in-course `room` or an activity shows itself
-    // instead; switching course tabs still focuses the card). The course content
-    // is hosted bare in the sheet, and the normal left-panel loop skips this index
-    // so the course is not also drawn full-screen behind the sheet — the
-    // double-render the old `canvas == detail` predicate (always false for a
-    // course on `/`) never guarded. See `routing.instructions.md`.
-    int? mobileCourseIndex;
-    if (!isColumnMode && activity == null && activeSpaceId != null) {
+    // world_v2 mobile: **map content** on a narrow screen — a joined COURSE card or
+    // an ACTIVITY plan — rides in a draggable bottom sheet over the (scoped) map
+    // (the Google-Maps "map + sheet" pattern) instead of a full-screen panel. Both
+    // are `mapContent` panels; the focused full-vis one rides the sheet (an
+    // in-course `room` shows itself instead). The content is hosted bare in the
+    // sheet, and the normal left-panel loop skips this index so it is not also drawn
+    // full-screen behind it. See `routing.instructions.md`.
+    int? mobileSheetIndex;
+    if (!isColumnMode) {
       for (var i = 0; i < leftTokens.length; i++) {
-        if (leftTokens[i].type == 'course' &&
+        final type = leftTokens[i].type;
+        if ((type == 'course' || type == 'activity') &&
             layout.left[i].vis == PanelVis.full) {
-          mobileCourseIndex = i;
+          mobileSheetIndex = i;
           break;
         }
       }
     }
-    final isMobileCourse = mobileCourseIndex != null;
-
-    // An activity's plan/preview is map content too: on a narrow screen it rides
-    // in the same bottom sheet over the map (camera on the activity's pin), not a
-    // full-screen page — the `?activity=` center canvas is offstaged and the sheet
-    // hosts it. On a wide screen it stays a bounded center detail with the map
-    // peeking beside it. See `routing.instructions.md`.
-    final isMobileActivity = !isColumnMode && activity != null;
+    final isMobileSheet = mobileSheetIndex != null;
 
     // The narrow bottom nav is only the section switcher (World / Chats /
     // Courses), so it shows only at a "section-root" level: the bare map (no
@@ -611,21 +599,20 @@ class _ShellLayout {
     // bottom sheet over the FULL map, not a left panel, so the camera uses the
     // whole width (the sheet covers the bottom, which the left/right overlays
     // don't model). See `routing.instructions.md`.
-    final leftInset = (isMobileCourse || isMobileActivity)
+    final leftInset = isMobileSheet
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    // Bound the route-driven center detail by the left inset and the right-
-    // covered width so it can never slide under a panel (the non-overlap
-    // guarantee). A narrow activity plan is a bottom sheet, not a center detail,
-    // so it claims no center width here (the sheet hosts it below).
-    final detailWidth = canvas == CanvasMode.detail && !isMobileActivity
+    // Bound the route-driven center detail by the left inset and the right-covered
+    // width so it can never slide under a panel (the non-overlap guarantee). Only
+    // route-driven pages use the center detail now — the activity is a left panel.
+    final detailWidth = canvas == CanvasMode.detail
         ? math.min(
             PanelAllocator.detailMax,
             math.max(0.0, viewport - leftInset - layout.mapRightOverlay),
           )
         : null;
-    final mapLeftOverlay = (isMobileCourse || isMobileActivity)
+    final mapLeftOverlay = isMobileSheet
         ? 0.0
         : leftInset +
               (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
@@ -646,17 +633,12 @@ class _ShellLayout {
     // SHEET leaves the map visible above it, so it does not clear the pin. The
     // map clears its own selection in response. See `routing.instructions.md`.
     final mapCoveredByPanel =
-        !isColumnMode && focusedNarrowType != null && !isMobileCourse;
+        !isColumnMode && focusedNarrowType != null && !isMobileSheet;
 
-    // `?activity=<id>` opens the activity detail in-place over the map.
-    final canvasChild = activity != null
-        ? ActivityDetailPanel(
-            activityId: activity.id,
-            parentSpaceId: activeSpaceId,
-            roomId: activity.roomId,
-            launch: activity.launch,
-          )
-        : sideView;
+    // Route-driven center detail only (a course-wizard step, a public-course
+    // preview, a chat archive). The activity plan is a left panel now, not a canvas
+    // child (#7385).
+    final canvasChild = sideView;
 
     return _ShellLayout(
       navRail: navRail,
@@ -665,9 +647,8 @@ class _ShellLayout {
       allocation: layout,
       canvas: canvas,
       canvasChild: canvasChild,
-      mobileCourseIndex: mobileCourseIndex,
-      isMobileCourse: isMobileCourse,
-      isMobileActivity: isMobileActivity,
+      mobileSheetIndex: mobileSheetIndex,
+      isMobileSheet: isMobileSheet,
       showBottomNav: showBottomNav,
       mapVisible: mapVisible,
       leftInset: leftInset,

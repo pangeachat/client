@@ -76,29 +76,37 @@ class ActivitySessionStartView extends StatelessWidget {
         // is needed: surviving scope IS the discriminator. See
         // `routing.instructions.md`.
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-        final embedded = uri.queryParameters['activity'] != null;
+        final embedded = parseOpenPanels(
+          uri,
+        ).left.any((t) => t.type == 'activity');
         final courseScoped =
             uri.queryParameters['m']?.startsWith('course:') ?? false;
 
-        // Drop the activity overlay, keeping `?m=` and the rest of the query
-        // verbatim — rebuilt from the RAW query so the `?m=course:` filter isn't
-        // re-encoded (`uri.replace(queryParameters:)` turns `:`→`%3A`, which the
-        // raw-query parser can't read, de-scoping the map and orphan-dropping any
-        // reopened card). [reopenCard] additionally restores `left=course` over the
-        // surviving scope (the parent card, reconstructed from the scope).
+        // Drop the `left=activity:` token + its one-shot session params, keeping
+        // `?m=` and the rest of the query verbatim — rebuilt from the RAW query so
+        // the `?m=course:` filter isn't re-encoded (`uri.replace(queryParameters:)`
+        // turns `:`→`%3A`, which the raw-query parser can't read, de-scoping the
+        // map and orphan-dropping any reopened card). [reopenCard] additionally
+        // restores `left=course` over the surviving scope (the parent card,
+        // reconstructed from the scope).
         String overlayDropped({required bool reopenCard}) {
           final parts = WorkspaceQuery.parts(uri.query);
           WorkspaceQuery.removeKeys(parts, {
-            'activity',
             'roomid',
             'launch',
             'autoplay',
+            'left',
           });
           final scoped = parts.any((p) => p.startsWith('m=course:'));
-          final hasLeft = parts.any(
-            (p) => p == 'left' || p.startsWith('left='),
-          );
-          if (reopenCard && scoped && !hasLeft) parts.add('left=course');
+          final left = parseOpenPanels(
+            uri,
+          ).left.where((t) => t.type != 'activity').toList();
+          if (reopenCard && scoped && left.every((t) => t.type != 'course')) {
+            left.insert(0, const PanelToken('course'));
+          }
+          if (left.isNotEmpty) {
+            parts.add('left=${left.map((t) => t.encode()).join(',')}');
+          }
           return WorkspaceQuery.location('/', parts);
         }
 

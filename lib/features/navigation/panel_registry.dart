@@ -88,11 +88,12 @@ class PanelDef {
   final bool pushable;
 
   /// Whether this panel is **map content** — a selection on the world map (a
-  /// course, the add-course flow). On a narrow screen map content is meant to
-  /// render as a Google-Maps bottom sheet over the (scoped) map rather than a
-  /// full-screen panel; today the shell wires the **course** to that sheet
-  /// (`MobileCourseSheet`), and the add-course flow still renders as a normal
-  /// panel (same pattern to follow). See `routing.instructions.md`.
+  /// course, an activity plan, the add-course flow). On a narrow screen map
+  /// content renders as a Google-Maps bottom sheet over the (scoped) map rather
+  /// than a full-screen panel; the shell wires the **course** and the **activity**
+  /// to that sheet (`MobileCourseSheet`, via `mobileSheetIndex`), and the
+  /// add-course flow still renders as a normal panel (same pattern to follow). See
+  /// `routing.instructions.md`.
   final bool mapContent;
 
   /// When this panel opens as a DETAIL, its same-column master always folds
@@ -176,6 +177,27 @@ abstract class PanelRegistry {
       // A session is BOTH a live timeline (one at a time with `room`) AND a
       // "zoom" detail (one at a time with vocab/grammar, across columns).
       siblingGroups: {'liveView', 'detail'},
+    ),
+    // An activity plan/preview — a root master opened from a map pin or a
+    // course's activity list (`?m=course:<id>` scopes the map; the plan rides
+    // over it). It is **map content** like a `course` (narrow → bottom sheet),
+    // but unlike a course it claims the single live view: it is a `liveView`
+    // sibling of `room`/`session`, so opening an activity drops any open chat and
+    // starting the session (which opens a `room` token) drops the activity. Same
+    // widths/priority as `room` — it IS the live work surface before the chat
+    // exists — so it never shrinks past the chat's floor (the bug #7385 fixed by
+    // pulling it out of the canvas-detail exception into the allocator budget). No
+    // sub-pages in its param (the plan never drills in; starting opens a room), so
+    // not pushable. See `routing.instructions.md`.
+    'activity': PanelDef(
+      type: 'activity',
+      column: PanelColumn.left,
+      minWidth: 360,
+      reasonableMinWidth: 480,
+      idealWidth: 720,
+      priority: 80,
+      siblingGroups: {'liveView'},
+      mapContent: true,
     ),
     // A course card — a root master (opened from a map pin / the Courses
     // launcher). Its detail is a `coursepage` management page.

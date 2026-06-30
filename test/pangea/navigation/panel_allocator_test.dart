@@ -412,6 +412,25 @@ void main() {
         }
       }
     });
+
+    test('the activity panel is a left-column liveView map-content root (#7385)', () {
+      final activity = PanelRegistry.defs['activity']!;
+      // A root master like `course` (opens from the map/course, no parent) — so it
+      // never folds behind anything and is the narrow-focus leaf when open.
+      expect(activity.column, PanelColumn.left);
+      expect(activity.parent, isNull);
+      // Claims the single live view: a `liveView` sibling of room/session, so
+      // opening an activity drops any open chat and vice versa.
+      expect(activity.siblingGroups, contains('liveView'));
+      // Map content → a bottom sheet on a narrow screen, like a course.
+      expect(activity.mapContent, isTrue);
+      // Sized like a `room` (the live work surface) so it never shrinks past the
+      // chat's floor — the bug #7385 fixed by pulling it into the allocator budget.
+      final room = PanelRegistry.defs['room']!;
+      expect(activity.minWidth, room.minWidth);
+      expect(activity.reasonableMin, room.reasonableMin);
+      expect(activity.idealWidth, room.idealWidth);
+    });
   });
 
   group('exclusive panel holds the screen', () {

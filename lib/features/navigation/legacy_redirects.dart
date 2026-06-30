@@ -124,16 +124,34 @@ abstract class LegacyRedirects {
           : '/?right=${PanelToken('analytics', tab).encode()}';
     }
 
+    // world_v2: a standalone activity deep link `/<uuid>` (old map-pin bookmarks /
+    // push, and the in-app `PRoutes.activityStandalone`) opens the immersive
+    // activity panel as a `left=activity:<id>` token over the world map — mirroring
+    // how `/rooms/:roomid` → a `room` token. roomid/launch ride alongside as
+    // one-shot params the panel reads; any prior `left=`/`m=` is dropped (this IS
+    // the activity). Idempotent: the result has no UUID path segment, so it never
+    // re-fires. See `routing.instructions.md`.
+    if (segments.length == 1 && PRoutes.isWorldObjectId(segments.first)) {
+      final kept = WorkspaceQuery.parts(uri.query);
+      WorkspaceQuery.removeKeys(kept, {'left', 'm'});
+      final parts = [
+        'left=${PanelToken('activity', segments.first).encode()}',
+        ...kept,
+      ];
+      return '${PRoutes.world}?${parts.join('&')}';
+    }
+
     if (segments.isEmpty || segments.first != 'rooms') return null;
 
     final rest = segments.sublist(1);
 
     // The retired nested activity route `/rooms/spaces/:spaceid/activity/:id`
-    // (old push notifications, bookmarks) → the canonical in-course overlay
-    // `/courses/:spaceid?activity=:id`, preserving roomid/launch/tab. The space
-    // id is kept so the activity opens in its course even for a user who has
-    // not yet joined it. Must precede the generic `spaces` arm below, which
-    // would otherwise rebuild the deleted nested path.
+    // (old push notifications, bookmarks) → `/courses/:spaceid?activity=:id`,
+    // preserving roomid/launch/tab; that re-resolves through `_toCourseWorkspace`
+    // to the canonical `left=activity:<id>` token. The space id is kept so the
+    // activity opens in its course even for a user who has not yet joined it. Must
+    // precede the generic `spaces` arm below, which would otherwise rebuild the
+    // deleted nested path.
     if (rest.length >= 4 && rest[0] == 'spaces' && rest[2] == 'activity') {
       final query = <String, String>{
         'activity': rest[3],
@@ -225,6 +243,22 @@ abstract class LegacyRedirects {
   /// has no `courses` path segment, so the course arms never re-fire.
   static String _toCourseWorkspace(Uri uri, String space, String? room) {
     final parts = WorkspaceQuery.parts(uri.query);
+
+    // An inbound activity overlay (`?activity=` — legacy external links and the
+    // retired nested route) is the immersive activity panel: seat it as the sole
+    // live-view left token (`left=activity:<id>`) over the course scope, NOT beside
+    // a course card. roomid/launch/autoplay ride alongside as one-shot params the
+    // panel reads. Mirrors `WorkspaceNav.openCourseActivity`.
+    final activityId = WorkspaceQuery.valueOf(uri.query, 'activity');
+    if (activityId != null && activityId.isNotEmpty) {
+      WorkspaceQuery.removeKeys(parts, {'left', 'm', 'activity'});
+      final query = <String>[
+        'm=${PanelToken('course', space).encode()}',
+        'left=${PanelToken('activity', activityId).encode()}',
+        ...parts,
+      ];
+      return '/?${query.join('&')}';
+    }
 
     // Lift out any existing left list (keep tokens already there) and drop the
     // prior `left=`/`m=` so the course filter + left can be rebuilt cleanly.

@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
@@ -667,19 +668,19 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
   }
 
-  /// Open the activity detail in-place, preserving the current route (course
-  /// stays selected, map stays put) via the `?activity=<id>` param. The detail
-  /// panel fetches the full plan on open. Reached from the preview's "Details".
+  /// Open the activity detail in-place, preserving the current route (map stays
+  /// put) as a `left=activity:<id>` panel token. The panel fetches the full plan
+  /// on open. Reached from the preview's "Details".
   void openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Open the activity plan as map content. Pin entry is UNSCOPED: drop the
-    // `?m=course:` filter along with the left/right panels (the plan replaces the
-    // left-primary surface) and add `activity=`. The absence of course scope is
-    // what makes this a parentless overlay — its close is an X to the map, not a
-    // back-arrow to a course card (a course-list tap keeps the scope and so gets
-    // the back-arrow). The map still focuses the activity's pin via the
-    // `activity=` param (`mapFocusFor` → `ActivityFocus`), independent of scope.
-    // See `routing.instructions.md`.
+    // `?m=course:` filter along with the other panels and seat the activity as the
+    // sole `left=activity:<id>` token (its `liveView` sibling group drops any open
+    // chat). The absence of course scope is what makes this a parentless overlay —
+    // its close is an X to the map, not a back-arrow to a course card (a
+    // course-list tap keeps the scope and so gets the back-arrow). The map still
+    // focuses the activity's pin via the token (`mapFocusFor` → `ActivityFocus`),
+    // independent of scope. See `routing.instructions.md`.
     final parts = WorkspaceQuery.parts(uri.query);
     WorkspaceQuery.removeKeys(parts, {
       'left',
@@ -690,7 +691,7 @@ class WorldMapController extends State<WorldMap>
       'roomid',
     });
 
-    parts.add('activity=${card.activityId}');
+    parts.add('left=${PanelToken('activity', card.activityId).encode()}');
     // #7257: if the learner already holds a started/joined session for this
     // activity, bind the overlay to that room (`roomid=`) so the start page
     // resumes it (selectRole/confirmedRole) instead of offering a fresh

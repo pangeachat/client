@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Activity detail, rendered as a capped detail panel over the persistent map
-/// (world_v2). Two entry points share it: in-place via the `?activity=<id>`
-/// query param over another route (e.g. a course), and the first-class
-/// `/<activityId>` route. Either way it renders the activity session start
-/// flow — it never remounts a second map. Closing drops the `?activity` param
-/// (returning to the underlying route) or, on the standalone route, returns to
-/// the world map.
+/// Activity detail, rendered as a first-class `left=activity:<id>` panel over the
+/// persistent map (world_v2) — hosted by `WorkspaceLeftPanel` like any other left
+/// panel, sized by the allocator (#7385), a bottom sheet on narrow. The token
+/// param is the activity id; the in-course/standalone/legacy entry points all
+/// resolve to that token (see `WorkspaceNav.openCourseActivity` /
+/// `LegacyRedirects`). It renders the activity session start flow — it never
+/// remounts a second map. Closing drops the activity token, returning to the
+/// course-scoped map (or the bare map).
 ///
 /// The parent course is the active course space when one is selected;
 /// otherwise the first joined course whose plan includes the activity (or none
@@ -109,27 +112,28 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
   void _close() {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // In-place (`?activity=`): drop the overlay params (activity/roomid/launch)
-    // to return to the underlying route, preserving everything else (e.g.
-    // `tab`). Standalone (`/<activityId>`): no overlay param, so go to World.
-    if (!uri.queryParameters.containsKey('activity')) {
+    final left = parseOpenPanels(uri).left;
+    // Drop the `left=activity:` token (and its one-shot session params) to return
+    // to the underlying workspace — the course-scoped map (`?m=course:` kept) or
+    // the bare map. Rebuilt from the RAW query so the PanelToken-encoded `m=`
+    // filter isn't re-encoded (`uri.replace(queryParameters:)` turns `:`→`%3A`,
+    // de-scoping the map). No activity token (an un-rewritten legacy URL) → World.
+    if (!left.any((t) => t.type == 'activity')) {
       context.go('/');
       return;
     }
-    final params = Map<String, String>.from(uri.queryParameters)
-      ..remove('activity')
-      ..remove('roomid')
-      ..remove('launch');
-    context.go(
-      params.isEmpty
-          ? uri.path
-          : uri.replace(queryParameters: params).toString(),
-    );
+    final parts = WorkspaceQuery.parts(uri.query);
+    WorkspaceQuery.removeKeys(parts, {'left', 'roomid', 'launch', 'autoplay'});
+    final kept = left.where((t) => t.type != 'activity').toList();
+    if (kept.isNotEmpty) {
+      parts.add('left=${kept.map((t) => t.encode()).join(',')}');
+    }
+    context.go(WorkspaceQuery.location('/', parts));
   }
 
   /// Back returns toward the course: pop history if there's something to pop,
-  /// otherwise just drop the `?activity` param. Either way the course context
-  /// stays — this never leaves for the standalone activity page.
+  /// otherwise just drop the activity token. Either way the course context stays
+  /// (the `?m=course:` scope survives) — this never leaves for a standalone open.
   void _back() {
     if (context.canPop()) {
       context.pop();
@@ -160,7 +164,7 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
     // standalone), so it dismisses to the map. Rendering both ← and X here was a
     // redundant pair that did the same thing in the pin case (#7115).
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    final embedded = uri.queryParameters['activity'] != null;
+    final embedded = parseOpenPanels(uri).left.any((t) => t.type == 'activity');
     final courseScoped =
         uri.queryParameters['m']?.startsWith('course:') ?? false;
     final showBack = embedded && courseScoped;
