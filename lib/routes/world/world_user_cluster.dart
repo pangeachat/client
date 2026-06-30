@@ -519,10 +519,12 @@ class _LevelMedal extends StatelessWidget {
 
 /// The active L2 indicator below the powerups pill (Figma `Flags`). Shows the
 /// language's flag SVG ([LanguageModel.svgUrl]) when it has a usable locale
-/// (e.g. `es-ES` → Spanish flag); otherwise the uppercased language code (e.g.
-/// `es` → `ES`), since a bare code is ambiguous across regional variants and
-/// has no single flag. Gated on [LanguageModel.shouldShowFlag], the same rule
-/// the language pickers use. Tapping it opens the learning settings page.
+/// (e.g. `es-ES` → Spanish flag), with the uppercased language code (e.g. `ES`)
+/// overlaid on top for at-a-glance identification. When there is no usable
+/// locale, or the SVG fails to load, the code is shown on its own; a white
+/// outline keeps it legible over any flag. Gated on
+/// [LanguageModel.shouldShowFlag], the same rule the language pickers use.
+/// Tapping it opens the learning settings page.
 class _LanguageFlag extends StatelessWidget {
   final LanguageModel language;
   final VoidCallback onTap;
