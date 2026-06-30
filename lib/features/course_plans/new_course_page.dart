@@ -86,24 +86,27 @@ class NewCoursePageState extends State<NewCoursePage> {
     super.initState();
 
     if (!widget.showAll) {
-      if (widget.initialLanguageCode != null) {
-        _targetLanguageFilter.value = PLanguageStore.byLangCode(
-          widget.initialLanguageCode!,
-        );
-      }
-
-      // A `?lang=` deep link wins; otherwise restore this session's last choice
-      // (the hub round-trip drops the URL param) before the L2 default (#7269).
-      _targetLanguageFilter.value ??= _lastChosenLanguage;
-
-      if (_targetLanguageFilter.value == null) {
-        _targetLanguageFilter.value =
-            MatrixState.pangeaController.userController.userL2;
-      }
+      _targetLanguageFilter.value = seedLanguage(
+        fromInitialCode: widget.initialLanguageCode != null
+            ? PLanguageStore.byLangCode(widget.initialLanguageCode!)
+            : null,
+        lastChosen: _lastChosenLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2,
+      );
     }
 
     _loadCourses();
   }
+
+  /// The language the picker opens on: a `?lang=` deep link
+  /// ([fromInitialCode]) wins, then this session's last pick ([lastChosen], so
+  /// the back-arrow round-trip keeps it), then the learner's L2 default (#7269).
+  @visibleForTesting
+  static LanguageModel? seedLanguage({
+    required LanguageModel? fromInitialCode,
+    required LanguageModel? lastChosen,
+    required LanguageModel? userL2,
+  }) => fromInitialCode ?? lastChosen ?? userL2;
 
   @override
   void dispose() {
