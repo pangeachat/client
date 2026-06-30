@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/permissions/chat_permissions_settings.dart';
 import 'package:fluffychat/routes/chat/chat_details/permissions/permission_list_tile.dart';
@@ -23,10 +24,16 @@ class ChatPermissionsSettingsView extends StatelessWidget {
         leading: Center(
           child: controller.widget.embeddedCloseButton ?? const BackButton(),
         ),
-        // #Pangea
-        // title: Text(L10n.of(context).chatPermissions),
-        title: Text(L10n.of(context).permissions),
-        // Pangea#
+        title: Text(
+          L10n.of(context).permissions,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
       ),
       body: MaxWidthBody(
         child: StreamBuilder(

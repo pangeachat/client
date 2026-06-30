@@ -35,7 +35,16 @@ class NewPrivateChatView extends StatelessWidget {
           child: BackButton(onPressed: () => context.go(PRoutes.chatsList)),
         ),
         // #Pangea
-        title: Text(L10n.of(context).newDirectMessage),
+        title: Text(
+          L10n.of(context).newDirectMessage,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
         // title: Text(L10n.of(context).newChat),
         // Pangea#
         backgroundColor: theme.scaffoldBackgroundColor,

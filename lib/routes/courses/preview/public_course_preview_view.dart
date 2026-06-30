@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -32,7 +33,18 @@ class PublicCoursePreviewView extends StatelessWidget {
     const double smallIconSize = 12.0;
 
     return Scaffold(
-      appBar: AppBar(title: Text(L10n.of(context).joinWithClassCode)),
+      appBar: AppBar(
+        title: Text(
+          L10n.of(context).joinWithClassCode,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
+      ),
       body: SafeArea(
         child: Container(
           alignment: Alignment.topCenter,

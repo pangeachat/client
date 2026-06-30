@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
@@ -301,8 +302,14 @@ class NewCoursePageState extends State<NewCoursePage> {
           spaceId != null
               ? L10n.of(context).addCoursePlan
               : L10n.of(context).startOwn,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
         ),
         centerTitle: false,
+        titleSpacing: 0,
         actions: spaceId == null
             ? [
                 IconButton(

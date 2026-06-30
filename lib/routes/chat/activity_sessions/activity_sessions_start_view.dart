@@ -115,19 +115,20 @@ class ActivitySessionStartView extends StatelessWidget {
             leadingWidth: 52.0,
             title: activity == null
                 ? null
-                : Center(
-                    child: Text(
-                      activity.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: !FluffyThemes.isColumnMode(context)
-                          ? const TextStyle(fontSize: 16)
-                          : null,
-                    ),
+                : Text(
+                    activity.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: FluffyThemes.isColumnMode(context)
+                        ? theme.textTheme.titleLarge
+                        : theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                   ),
+            centerTitle: false,
+            titleSpacing: 4,
             leading: Padding(
-              padding: const EdgeInsets.only(left: 12.0),
+              padding: const EdgeInsets.only(left: 4.0),
               child: Center(
                 child: (embedded && courseScoped)
                     // Course still scoped → back-arrow reopens the course card.
