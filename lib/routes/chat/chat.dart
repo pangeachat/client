@@ -44,6 +44,7 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
@@ -2837,9 +2838,8 @@ class ChatController extends State<ChatPageWithRoom>
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
             isScrollable: false,
-            targetAnchor: Alignment.topCenter,
-            followerAnchor: Alignment.bottomCenter,
           ),
+          overlayPosition: OverlayPosition.above,
         ),
       );
     }
@@ -3058,6 +3058,7 @@ class ChatController extends State<ChatPageWithRoom>
         transformTargetId: ChoreoConstants.inputTransformTargetKey,
         overlayKey: 'disable_language_tools_popup',
       ),
+      overlayPosition: OverlayPosition.above,
     );
   }
 

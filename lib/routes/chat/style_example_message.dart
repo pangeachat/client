@@ -47,6 +47,8 @@ class _StyleExampleWordCard extends StatelessWidget {
         type: ConstructTypeEnum.vocab,
       ),
       pos: 'INTJ',
+      enableEmojiReactions: false,
+      enableEmojiSelection: false,
     );
   }
 }

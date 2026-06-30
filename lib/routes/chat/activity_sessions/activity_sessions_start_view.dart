@@ -206,7 +206,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                     top: 0,
                                     left: 0,
                                     right: 0,
-                                    height: 350.0,
+                                    height: 375.0,
                                     child: LayoutBuilder(
                                       builder: (context, constraints) =>
                                           ImageByUrl(
@@ -233,7 +233,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned.fill(
-                                    top: 225.0,
+                                    top: 250.0,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
@@ -252,7 +252,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                   if (sessionController.showRoleCards)
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                        top: 200.0,
+                                        top: 250.0,
                                       ),
                                       child: Center(
                                         child: Container(

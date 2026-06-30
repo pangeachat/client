@@ -144,6 +144,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
         morph: selectedToken.morph.map((k, v) => MapEntry(k.name, v)),
         langCode: langCode,
         enableEmojiSelection: false,
+        enableEmojiReactions: false,
       ),
     );
   }

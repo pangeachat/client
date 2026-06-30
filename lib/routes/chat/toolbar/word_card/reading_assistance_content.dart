@@ -56,6 +56,7 @@ class ReadingAssistanceContent extends StatelessWidget {
         event: overlayController.event,
         onClose: () => overlayController.updateSelectedSpan(null),
         langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
+        enableEmojiSelection: true,
         enableEmojiReactions:
             !overlayController.pangeaMessageEvent.room.isActivityFinished,
         enableAnalyticsNavigation: true,

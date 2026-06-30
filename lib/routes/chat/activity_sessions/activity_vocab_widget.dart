@@ -320,6 +320,8 @@ class _WordCardWrapperState extends State<_WordCardWrapper> {
         widget.onClose();
       },
       enableAnalyticsNavigation: true,
+      enableEmojiSelection: true,
+      enableEmojiReactions: false,
     );
   }
 }

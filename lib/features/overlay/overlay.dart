@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/overlay/centered_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/overlay_container.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/features/overlay/overlay_position.dart';
 import 'package:fluffychat/features/overlay/top_overlay_widget.dart';
 import 'package:fluffychat/features/overlay/transparent_backdrop.dart';
 import '../../pangea/common/utils/error_handler.dart';
@@ -77,36 +78,43 @@ class OverlayUtil {
     required BuildContext context,
     required Widget cardToShow,
     required PositionedOverlayDisplayDetails displayDetails,
+    OverlayPosition? overlayPosition,
   }) {
     try {
       final targetRenderBox = MatrixState.pAnyState.getRenderBox(
         displayDetails.transformTargetId,
       );
 
-      final parentRenderBox =
-          Overlay.of(context).context.findRenderObject() as RenderBox?;
-      if (parentRenderBox == null || !parentRenderBox.hasSize) {
-        debugPrint("Cannot get renderbox for parent overlay");
+      final parentRenderBox = overlayRenderBox(context);
+
+      if (parentRenderBox == null || targetRenderBox == null) {
+        debugPrint("Cannot get renderbox for parent overlay or target");
         return;
       }
 
-      if (targetRenderBox == null) {
-        debugPrint("layerLinkAndKey.key.currentContext is null");
-        return;
+      const horizontalPadding = 10.0;
+
+      final targetSize = targetRenderBox.size;
+      final targetOffset = parentRenderBox.globalToLocal(
+        targetRenderBox.localToGlobal(Offset.zero),
+      );
+
+      final midpoint = targetOffset.dx + (targetSize.width / 2);
+      final leftEdge = midpoint - (displayDetails.maxWidth / 2);
+      final rightEdge = midpoint + (displayDetails.maxWidth / 2);
+
+      final minLeft = horizontalPadding;
+      final maxRight = parentRenderBox.size.width - horizontalPadding;
+
+      double dx = 0;
+
+      if (leftEdge < minLeft) {
+        dx = minLeft - leftEdge;
+      } else if (rightEdge > maxRight) {
+        dx = maxRight - rightEdge;
       }
 
-      final offset = _getPositionedOffset(
-        context,
-        targetRenderBox,
-        parentRenderBox,
-        displayDetails.maxWidth,
-      );
-
-      final hasTopOverflow = _hasTopOverflow(
-        targetRenderBox,
-        displayDetails.maxHeight,
-      );
-
+      final offset = Offset(dx, 0);
       final Widget child = displayDetails.addBorder
           ? Material(
               borderOnForeground: false,
@@ -121,17 +129,24 @@ class OverlayUtil {
             )
           : cardToShow;
 
+      final hasTopOverflow =
+          (displayDetails.maxHeight + kToolbarHeight) > targetOffset.dy;
+
+      final targetAnchor =
+          overlayPosition?.targetAnchor ??
+          (hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter);
+
+      final followerAnchor =
+          overlayPosition?.followerAnchor ??
+          (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter);
+
       showOverlay(
         context: context,
         child: child,
         displayDetails: displayDetails.copyWith(
           offset: offset,
-          targetAnchor: hasTopOverflow
-              ? Alignment.bottomCenter
-              : Alignment.topCenter,
-          followerAnchor: hasTopOverflow
-              ? Alignment.topCenter
-              : Alignment.bottomCenter,
+          targetAnchor: targetAnchor,
+          followerAnchor: followerAnchor,
         ),
       );
     } catch (err, stack) {
@@ -140,39 +155,11 @@ class OverlayUtil {
     }
   }
 
-  static Offset _getPositionedOffset(
-    BuildContext context,
-    RenderBox targetRenderBox,
-    RenderBox parentRenderBox,
-    double maxWidth,
-  ) {
-    const horizontalPadding = 10.0;
+  static RenderBox? overlayRenderBox(BuildContext context) {
+    final renderBox =
+        Overlay.of(context).context.findRenderObject() as RenderBox?;
 
-    final targetSize = targetRenderBox.size;
-    final targetOffset = parentRenderBox.globalToLocal(
-      targetRenderBox.localToGlobal(Offset.zero),
-    );
-
-    final midpoint = targetOffset.dx + (targetSize.width / 2);
-    final leftEdge = midpoint - (maxWidth / 2);
-    final rightEdge = midpoint + (maxWidth / 2);
-
-    final minLeft = horizontalPadding;
-    final maxRight = parentRenderBox.size.width - horizontalPadding;
-
-    double dx = 0;
-
-    if (leftEdge < minLeft) {
-      dx = minLeft - leftEdge;
-    } else if (rightEdge > maxRight) {
-      dx = maxRight - rightEdge;
-    }
-
-    return Offset(dx, 0);
-  }
-
-  static bool _hasTopOverflow(RenderBox renderBox, double maxHeight) {
-    final targetOffset = (renderBox).localToGlobal(Offset.zero);
-    return maxHeight + kToolbarHeight > targetOffset.dy;
+    if (renderBox == null || !renderBox.hasSize) return null;
+    return renderBox;
   }
 }
