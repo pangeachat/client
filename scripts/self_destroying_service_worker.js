@@ -11,8 +11,10 @@
 // Do NOT call clients.navigate() from inside activate: reloading the controlling
 // document mid-activation aborts the activation and wedges the worker in
 // "installing" (the bug the first version of this file hit). Reloads are
-// page-driven instead — via the postMessage below and the eviction script in
-// index.html.
+// page-driven instead — via controllerchange and the postMessage below, handled
+// by the eviction script in index.html. The page triggers this worker's install
+// by calling registration.update() (the only lever that works in WebKit/Safari,
+// where a page cannot unregister its own controller).
 
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());
@@ -21,6 +23,9 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
+      // Claim first so the controllerchange the page waits on fires even if
+      // unregister() throws on a wedged registration.
+      await self.clients.claim();
       const cacheKeys = await caches.keys();
       await Promise.all(cacheKeys.map((key) => caches.delete(key)));
       try {
@@ -28,7 +33,6 @@ self.addEventListener('activate', (event) => {
       } catch (e) {
         /* best effort */
       }
-      await self.clients.claim();
       const windowClients = await self.clients.matchAll({ type: 'window' });
       for (const client of windowClients) {
         client.postMessage({ type: 'SW_SELF_DESTRUCT_RELOAD' });

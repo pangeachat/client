@@ -22,46 +22,69 @@
 
   <!-- #Pangea: one-time eviction of any legacy service worker.
        Current builds use --pwa-strategy=none and register no service worker.
-       Returning users from older offline-first builds still have one registered
-       that serves a stale app shell from Cache Storage. The old worker serves
-       index.html online-first, so this fresh copy reaches them on their next
-       load, before the Flutter bootstrap, and unregisters the worker, clears all
-       caches, and reloads once onto the current build.
+       Returning users from older offline-first builds still hold a registration
+       whose worker serves a stale app shell from Cache Storage.
 
-       Trigger on navigator.serviceWorker.controller (set synchronously for a
-       controlled document) rather than getRegistrations(), which can resolve
-       empty during early head-parse and silently no-op. Unregister via
-       serviceWorker.ready (reliably resolves with the active registration).
+       A controlled page CANNOT evict its own controller in WebKit/Safari:
+       unregister() only marks-for-removal, and location.reload() is re-claimed by
+       the old worker, so a page-side unregister+reload loops forever there. The
+       one WebKit-legal lever is registration.update(): it force-fetches the
+       self-destroying worker at /flutter_service_worker.js, whose activate
+       handler claims the page, clears caches, and unregisters. We then reload
+       exactly once on the resulting controllerchange (or the worker's message).
+       If the old worker still controls the tab after a grace period (a genuinely
+       wedged registration, mostly iOS), we show a banner asking the user to fully
+       close the tab -- the only remaining fix without clearing site data.
+
        Inert for fresh users: no controller -> immediate return. -->
   <script>
     (function () {
       var sw = navigator.serviceWorker;
-      if (!sw || !sw.controller) return;
+      if (!sw || !sw.controller) return; // fresh users: nothing to evict
       var KEY = 'pangea-sw-killswitch';
+      var reloaded = false;
       var reloadOnce = function () {
+        if (reloaded) return;
         try {
-          if (sessionStorage.getItem(KEY)) return;
+          if (sessionStorage.getItem(KEY)) return; // already reloaded this session
           sessionStorage.setItem(KEY, '1');
         } catch (e) {
-          return; // can't guard against a reload loop -> leave it to a manual reload
+          return; // no sessionStorage -> don't risk a reload loop
         }
+        reloaded = true;
         location.reload();
       };
-      Promise.all([
-        sw.ready.then(function (reg) { return reg.unregister(); }).catch(function () {}),
-        sw.getRegistrations().then(function (regs) {
-          return Promise.all(regs.map(function (r) { return r.unregister().catch(function () {}); }));
-        }).catch(function () {}),
-      ])
-        .then(function () { return window.caches ? caches.keys() : []; })
-        .then(function (keys) {
-          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
-        })
-        .then(reloadOnce)
-        .catch(function () {});
+      // The only WebKit-legal lever: force a byte-fetch of the self-destroying
+      // worker so ITS activate handler does the eviction. A page-side
+      // unregister() cannot release a controlling worker in Safari.
+      sw.getRegistrations().then(function (regs) {
+        regs.forEach(function (reg) { try { reg.update(); } catch (e) {} });
+      }).catch(function () {});
+      // The self-destroying worker took control (it has no fetch handler, so the
+      // next load comes straight from the network). Reload once.
+      sw.addEventListener('controllerchange', reloadOnce);
       sw.addEventListener('message', function (e) {
         if (e.data && e.data.type === 'SW_SELF_DESTRUCT_RELOAD') reloadOnce();
       });
+      // Wedged-registration fallback (mostly iOS Safari): if the old worker is
+      // still in control after a grace period, update() could not promote a new
+      // worker, and destroying the controlled client is the only fix left.
+      setTimeout(function () {
+        if (reloaded || !navigator.serviceWorker.controller) return;
+        try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+        var bar = document.createElement('div');
+        bar.setAttribute('role', 'alert');
+        bar.style.cssText =
+          'position:fixed;top:0;left:0;right:0;z-index:2147483647;background:#1f1147;' +
+          'color:#fff;font:14px/1.4 -apple-system,system-ui,sans-serif;padding:12px 16px;' +
+          'text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.3)';
+        bar.textContent =
+          'Pangea Chat needs to finish updating. Please fully close this tab ' +
+          '(and any other Pangea Chat tabs), then reopen the app.';
+        var add = function () { if (document.body) document.body.appendChild(bar); };
+        if (document.body) add();
+        else document.addEventListener('DOMContentLoaded', add);
+      }, 8000);
     })();
   </script>
   <!-- Pangea# -->
@@ -93,10 +116,14 @@
   <script src="Imaging.js"></script>
 
   <script>
-    window.__BUILD_VERSION__ = "__BUILD_VERSION__";
+    // The deploy runs sed s/__BUILD_VERSION__/<sha>/g over this file, so the
+    // token must only ever appear inside a string literal. Using it as an
+    // identifier (window.__BUILD_VERSION__) becomes window.<sha>, which is a
+    // SyntaxError whenever the sha starts with a digit (~62% of deploys).
+    window.__pangeaBuild = "__BUILD_VERSION__";
 
     (function () {
-      const BUILD = window.__BUILD_VERSION__ || "dev";
+      const BUILD = window.__pangeaBuild || "dev";
 
       const shouldVersion = (url) => {
         return (
