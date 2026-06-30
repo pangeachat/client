@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-29 12:25:33.528601",
+    "@@last_modified": "2026-06-30 09:36:40.342115",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10345,16 +10345,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "メッセージバブルをクリックして選択します",
-    "writingAssistanceTutorialInputBar": "どの言語でも書くことができます。間違いを心配しないでください！私たちが修正を手伝います。",
     "writingAssistanceTutorialIGCButton": "メッセージを書いた後、このボタンをクリックしてライティングアシスタンスを開始します",
     "selectModeTutorialTranslate": "ここをクリックしてメッセージを翻訳します",
     "selectModeTutorialAudio": "ここをクリックしてメッセージを聞きます",
     "selectModeTutorialExit": "背景をクリックしてチャットに戻ります",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10974,6 +10969,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "チャットリストを閉じる",
+    "closeChat": "チャットを閉じる",
+    "closeSession": "アクティビティレビューを閉じる",
+    "closeCourse": "コースを閉じる",
+    "closeCoursePage": "コースページを閉じる",
+    "closeAddCourse": "コース追加を閉じる",
+    "closeAnalytics": "分析を閉じる",
+    "closeVocabulary": "語彙を閉じる",
+    "closeGrammar": "文法を閉じる",
+    "closePractice": "練習を閉じる",
+    "closeSettings": "設定を閉じる",
+    "closeActivity": "アクティビティを閉じる",
+    "closeNamed": "{name}を閉じる",
+    "clearSearch": "検索をクリア",
+    "starRowLabel": "{filled} / {total} の星が完了しました",
+    "difficultyLabel": "難易度: {cefr}",
+    "writingAssistanceTutorialInputBar": "どの言語でも書けます！私たちが間違いを修正するのを手伝います。",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

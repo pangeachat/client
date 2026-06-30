@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-29 12:25:43.046793",
+    "@@last_modified": "2026-06-30 09:37:11.762721",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9874,16 +9874,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Cliquez sur la bulle de message pour la sélectionner",
-    "writingAssistanceTutorialInputBar": "Vous pouvez écrire dans n'importe quelle langue. Ne vous inquiétez pas pour les erreurs ! Nous vous aiderons à les corriger.",
     "writingAssistanceTutorialIGCButton": "Après avoir écrit votre message, cliquez sur ce bouton pour commencer l'assistance à l'écriture",
     "selectModeTutorialTranslate": "Cliquez ici pour traduire le message",
     "selectModeTutorialAudio": "Cliquez ici pour écouter le message",
     "selectModeTutorialExit": "Cliquez sur l'arrière-plan pour revenir à la discussion",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10503,6 +10498,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Fermer la liste des discussions",
+    "closeChat": "Fermer la discussion",
+    "closeSession": "Fermer l'examen d'activité",
+    "closeCourse": "Fermer le cours",
+    "closeCoursePage": "Fermer la page du cours",
+    "closeAddCourse": "Fermer l'ajout de cours",
+    "closeAnalytics": "Fermer les analyses",
+    "closeVocabulary": "Fermer le vocabulaire",
+    "closeGrammar": "Fermer la grammaire",
+    "closePractice": "Fermer la pratique",
+    "closeSettings": "Fermer les paramètres",
+    "closeActivity": "Fermer l'activité",
+    "closeNamed": "Fermer {name}",
+    "clearSearch": "Effacer la recherche",
+    "starRowLabel": "{filled} sur {total} étoiles ont été complétées",
+    "difficultyLabel": "Difficulté : {cefr}",
+    "writingAssistanceTutorialInputBar": "Vous pouvez écrire dans n'importe quelle langue ! Nous vous aiderons à corriger les erreurs.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

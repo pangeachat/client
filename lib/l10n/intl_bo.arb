@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-29 12:25:18.557461",
+    "@@last_modified": "2026-06-30 09:36:10.750767",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9149,16 +9149,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klik di gelembung pesan untuk memilihnya",
-    "writingAssistanceTutorialInputBar": "Anda dapat menulis dalam bahasa apa pun. Jangan khawatir tentang kesalahan! Kami akan membantu Anda memperbaikinya.",
     "writingAssistanceTutorialIGCButton": "Setelah menulis pesan Anda, klik tombol ini untuk memulai bantuan penulisan",
     "selectModeTutorialTranslate": "Klik di sini untuk menerjemahkan pesan",
     "selectModeTutorialAudio": "Klik di sini untuk mendengarkan pesan",
     "selectModeTutorialExit": "Klik latar belakang untuk kembali ke obrolan",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -9778,6 +9773,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Bok chat list",
+    "closeChat": "Bok chat",
+    "closeSession": "Bok activity review",
+    "closeCourse": "Bok course",
+    "closeCoursePage": "Bok course page",
+    "closeAddCourse": "Bok add course",
+    "closeAnalytics": "Bok analytics",
+    "closeVocabulary": "Bok vocabulary",
+    "closeGrammar": "Bok grammar",
+    "closePractice": "Bok practice",
+    "closeSettings": "Tutup pengaturan",
+    "closeActivity": "Tutup aktivitas",
+    "closeNamed": "Tutup {name}",
+    "clearSearch": "Bersihkan pencarian",
+    "starRowLabel": "{filled} dari {total} bintang telah diselesaikan",
+    "difficultyLabel": "Kesulitan: {cefr}",
+    "writingAssistanceTutorialInputBar": "Anda dapat menulis dalam bahasa apa pun! Kami akan membantu Anda memperbaiki kesalahan.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

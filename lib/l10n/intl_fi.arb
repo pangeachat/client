@@ -3913,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-29 12:24:26.245302",
+    "@@last_modified": "2026-06-30 09:33:33.750891",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9526,16 +9526,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Napsauta viestikuplaa valitaksesi sen",
-    "writingAssistanceTutorialInputBar": "Voit kirjoittaa millä tahansa kielellä. Älä huoli virheistä! Autamme sinua korjaamaan ne.",
     "writingAssistanceTutorialIGCButton": "Kirjoitettuasi viestisi, napsauta tätä painiketta aloittaaksesi kirjoitusavun",
     "selectModeTutorialTranslate": "Napsauta täällä kääntääksesi viestin",
     "selectModeTutorialAudio": "Napsauta täällä kuunnellaksesi viestiä",
     "selectModeTutorialExit": "Napsauta taustaa palataksesi keskusteluun",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10155,6 +10150,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Sulje keskustelulista",
+    "closeChat": "Sulje keskustelu",
+    "closeSession": "Sulje aktiviteettikatsaus",
+    "closeCourse": "Sulje kurssi",
+    "closeCoursePage": "Sulje kurssisivu",
+    "closeAddCourse": "Sulje lisää kurssi",
+    "closeAnalytics": "Sulje analytiikka",
+    "closeVocabulary": "Sulje sanasto",
+    "closeGrammar": "Sulje kielioppi",
+    "closePractice": "Sulje harjoittelu",
+    "closeSettings": "Sulje asetukset",
+    "closeActivity": "Sulje toiminta",
+    "closeNamed": "Sulje {name}",
+    "clearSearch": "Tyhjennä haku",
+    "starRowLabel": "{filled} {total} tähdestä on suoritettu",
+    "difficultyLabel": "Vaikeusaste: {cefr}",
+    "writingAssistanceTutorialInputBar": "Voit kirjoittaa millä kielellä tahansa! Autamme sinua korjaamaan virheitä.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

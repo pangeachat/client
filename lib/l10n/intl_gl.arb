@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-06-29 12:24:24.900721",
+    "@@last_modified": "2026-06-30 09:33:24.656243",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9477,16 +9477,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Fai clic na burbulla de mensaxe para seleccionala",
-    "writingAssistanceTutorialInputBar": "Podes escribir en calquera idioma. Non te preocupes polas faltas! Axudarémosche a corrixilas.",
     "writingAssistanceTutorialIGCButton": "Despois de escribir a túa mensaxe, fai clic neste botón para comezar a asistencia de escritura",
     "selectModeTutorialTranslate": "Fai clic aquí para traducir a mensaxe",
     "selectModeTutorialAudio": "Fai clic aquí para escoitar a mensaxe",
     "selectModeTutorialExit": "Fai clic no fondo para volver a chatear",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10106,6 +10101,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Pechar lista de chats",
+    "closeChat": "Pechar chat",
+    "closeSession": "Pechar revisión de actividades",
+    "closeCourse": "Pechar curso",
+    "closeCoursePage": "Pechar páxina do curso",
+    "closeAddCourse": "Pechar engadir curso",
+    "closeAnalytics": "Pechar analíticas",
+    "closeVocabulary": "Pechar vocabulario",
+    "closeGrammar": "Pechar gramática",
+    "closePractice": "Pechar práctica",
+    "closeSettings": "Pechar configuracións",
+    "closeActivity": "Pechar actividade",
+    "closeNamed": "Pechar {name}",
+    "clearSearch": "Limpar busca",
+    "starRowLabel": "{filled} de {total} estrelas foron completadas",
+    "difficultyLabel": "Dificultade: {cefr}",
+    "writingAssistanceTutorialInputBar": "Podes escribir en calquera idioma! Axudarémosche a corrixir erros.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

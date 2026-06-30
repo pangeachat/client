@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-06-29 12:24:49.687324",
+    "@@last_modified": "2026-06-30 09:34:34.695218",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10593,16 +10593,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Kliknite na mehurček sporočila, da ga izberete",
-    "writingAssistanceTutorialInputBar": "Lahko pišete v katerem koli jeziku. Ne skrbite zaradi napak! Pomagali vam bomo, da jih popravite.",
     "writingAssistanceTutorialIGCButton": "Po tem, ko napišete svoje sporočilo, kliknite to gumb, da začnete pomoč pri pisanju",
     "selectModeTutorialTranslate": "Kliknite tukaj, da prevedete sporočilo",
     "selectModeTutorialAudio": "Kliknite tukaj, da poslušate sporočilo",
     "selectModeTutorialExit": "Kliknite na ozadje, da se vrnete k klepetu",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11222,6 +11217,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Zapri seznam klepetov",
+    "closeChat": "Zapri klepet",
+    "closeSession": "Zapri pregled aktivnosti",
+    "closeCourse": "Zapri tečaj",
+    "closeCoursePage": "Zapri stran tečaja",
+    "closeAddCourse": "Zapri dodaj tečaj",
+    "closeAnalytics": "Zapri analitiko",
+    "closeVocabulary": "Zapri besedišče",
+    "closeGrammar": "Zapri slovnico",
+    "closePractice": "Zapri prakso",
+    "closeSettings": "Zapri nastavitve",
+    "closeActivity": "Zapri dejavnost",
+    "closeNamed": "Zapri {name}",
+    "clearSearch": "Počisti iskanje",
+    "starRowLabel": "{filled} od {total} zvezdic je bilo dokončanih",
+    "difficultyLabel": "Težavnost: {cefr}",
+    "writingAssistanceTutorialInputBar": "Lahko pišete v katerem koli jeziku! Pomagali vam bomo popraviti napake.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

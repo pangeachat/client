@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:30.910355",
+    "@@last_modified": "2026-06-30 09:36:30.741780",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10064,16 +10064,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klicka på meddelandebubblan för att välja den",
-    "writingAssistanceTutorialInputBar": "Du kan skriva på vilket språk som helst. Oroa dig inte för misstag! Vi hjälper dig att rätta dem.",
     "writingAssistanceTutorialIGCButton": "Efter att du har skrivit ditt meddelande, klicka på den här knappen för att börja skrivhjälpen",
     "selectModeTutorialTranslate": "Klicka här för att översätta meddelandet",
     "selectModeTutorialAudio": "Klicka här för att lyssna på meddelandet",
     "selectModeTutorialExit": "Klicka på bakgrunden för att gå tillbaka till chattandet",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10693,6 +10688,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Stäng chattlista",
+    "closeChat": "Stäng chatt",
+    "closeSession": "Stäng aktivitetsgranskning",
+    "closeCourse": "Stäng kurs",
+    "closeCoursePage": "Stäng kursida",
+    "closeAddCourse": "Stäng lägg till kurs",
+    "closeAnalytics": "Stäng analys",
+    "closeVocabulary": "Stäng ordförråd",
+    "closeGrammar": "Stäng grammatik",
+    "closePractice": "Stäng övning",
+    "closeSettings": "Stäng inställningar",
+    "closeActivity": "Stäng aktivitet",
+    "closeNamed": "Stäng {name}",
+    "clearSearch": "Rensa sökning",
+    "starRowLabel": "{filled} av {total} stjärnor har slutförts",
+    "difficultyLabel": "Svårighetsgrad: {cefr}",
+    "writingAssistanceTutorialInputBar": "Du kan skriva på vilket språk som helst! Vi hjälper dig att rätta till misstag.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

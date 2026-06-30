@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:21.512557",
+    "@@last_modified": "2026-06-30 09:36:19.055994",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10192,16 +10192,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "বার্তাটি নির্বাচন করতে বার্তা বুদবুদে ক্লিক করুন",
-    "writingAssistanceTutorialInputBar": "আপনি যেকোনো ভাষায় লিখতে পারেন। ভুল নিয়ে চিন্তা করবেন না! আমরা আপনাকে সেগুলি সংশোধন করতে সাহায্য করব।",
     "writingAssistanceTutorialIGCButton": "আপনার বার্তা লেখার পর, লেখার সহায়তা শুরু করতে এই বোতামে ক্লিক করুন",
     "selectModeTutorialTranslate": "বার্তাটি অনুবাদ করতে এখানে ক্লিক করুন",
     "selectModeTutorialAudio": "বার্তাটি শোনার জন্য এখানে ক্লিক করুন",
     "selectModeTutorialExit": "চ্যাটিংয়ে ফিরে যেতে পটভূমিতে ক্লিক করুন",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10821,6 +10816,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "চ্যাট তালিকা বন্ধ করুন",
+    "closeChat": "চ্যাট বন্ধ করুন",
+    "closeSession": "কার্যকলাপ পর্যালোচনা বন্ধ করুন",
+    "closeCourse": "কোর্স বন্ধ করুন",
+    "closeCoursePage": "কোর্স পৃষ্ঠা বন্ধ করুন",
+    "closeAddCourse": "কোর্স যোগ করা বন্ধ করুন",
+    "closeAnalytics": "বিশ্লেষণ বন্ধ করুন",
+    "closeVocabulary": "শব্দভাণ্ডার বন্ধ করুন",
+    "closeGrammar": "ব্যাকরণ বন্ধ করুন",
+    "closePractice": "অভ্যাস বন্ধ করুন",
+    "closeSettings": "সেটিংস বন্ধ করুন",
+    "closeActivity": "কার্যকলাপ বন্ধ করুন",
+    "closeNamed": "বন্ধ করুন {name}",
+    "clearSearch": "অনুসন্ধান পরিষ্কার করুন",
+    "starRowLabel": "{filled} এর মধ্যে {total} টি তারকা সম্পন্ন হয়েছে",
+    "difficultyLabel": "কঠিনতা: {cefr}",
+    "writingAssistanceTutorialInputBar": "আপনি যেকোনো ভাষায় লিখতে পারেন! আমরা আপনাকে ভুলগুলি সংশোধন করতে সাহায্য করব।",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

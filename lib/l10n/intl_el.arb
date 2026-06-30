@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-06-29 12:25:32.289202",
+    "@@last_modified": "2026-06-30 09:36:34.944245",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10526,16 +10526,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Κάντε κλικ στη φούσκα μηνύματος για να την επιλέξετε",
-    "writingAssistanceTutorialInputBar": "Μπορείτε να γράψετε σε οποιαδήποτε γλώσσα. Μην ανησυχείτε για τα λάθη! Θα σας βοηθήσουμε να τα διορθώσετε.",
     "writingAssistanceTutorialIGCButton": "Αφού γράψετε το μήνυμά σας, κάντε κλικ σε αυτό το κουμπί για να ξεκινήσετε τη βοήθεια γραφής",
     "selectModeTutorialTranslate": "Κάντε κλικ εδώ για να μεταφράσετε το μήνυμα",
     "selectModeTutorialAudio": "Κάντε κλικ εδώ για να ακούσετε το μήνυμα",
     "selectModeTutorialExit": "Κάντε κλικ στο φόντο για να επιστρέψετε στη συνομιλία",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11155,6 +11150,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Κλείσιμο λίστας συνομιλιών",
+    "closeChat": "Κλείσιμο συνομιλίας",
+    "closeSession": "Κλείσιμο ανασκόπησης δραστηριότητας",
+    "closeCourse": "Κλείσιμο μαθήματος",
+    "closeCoursePage": "Κλείσιμο σελίδας μαθήματος",
+    "closeAddCourse": "Κλείσιμο προσθήκης μαθήματος",
+    "closeAnalytics": "Κλείσιμο αναλύσεων",
+    "closeVocabulary": "Κλείσιμο λεξιλογίου",
+    "closeGrammar": "Κλείσιμο γραμματικής",
+    "closePractice": "Κλείσιμο πρακτικής",
+    "closeSettings": "Κλείσιμο ρυθμίσεων",
+    "closeActivity": "Κλείσιμο δραστηριότητας",
+    "closeNamed": "Κλείσιμο {name}",
+    "clearSearch": "Καθαρισμός αναζήτησης",
+    "starRowLabel": "{filled} από {total} αστέρια έχουν ολοκληρωθεί",
+    "difficultyLabel": "Δυσκολία: {cefr}",
+    "writingAssistanceTutorialInputBar": "Μπορείτε να γράψετε σε οποιαδήποτε γλώσσα! Θα σας βοηθήσουμε να διορθώσετε τα λάθη.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

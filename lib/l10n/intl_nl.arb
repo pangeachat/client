@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-29 12:25:17.417604",
+    "@@last_modified": "2026-06-30 09:36:04.578478",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9477,16 +9477,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "Klik op de berichtbubble om deze te selecteren",
-    "writingAssistanceTutorialInputBar": "Je kunt in elke taal schrijven. Maak je geen zorgen over fouten! We helpen je ze te corrigeren.",
     "writingAssistanceTutorialIGCButton": "Klik op deze knop om na het schrijven van je bericht met de schrijfassistentie te beginnen",
     "selectModeTutorialTranslate": "Klik hier om het bericht te vertalen",
     "selectModeTutorialAudio": "Klik hier om naar het bericht te luisteren",
     "selectModeTutorialExit": "Klik op de achtergrond om terug te gaan naar het chatten",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -10106,6 +10101,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Sluit chatlijst",
+    "closeChat": "Sluit chat",
+    "closeSession": "Sluit activiteitsoverzicht",
+    "closeCourse": "Sluit cursus",
+    "closeCoursePage": "Sluit cursuspagina",
+    "closeAddCourse": "Sluit cursus toevoegen",
+    "closeAnalytics": "Sluit analytics",
+    "closeVocabulary": "Sluit vocabulaire",
+    "closeGrammar": "Sluit grammatica",
+    "closePractice": "Sluit oefening",
+    "closeSettings": "Sluit instellingen",
+    "closeActivity": "Sluit activiteit",
+    "closeNamed": "Sluit {name}",
+    "clearSearch": "Wis zoekopdracht",
+    "starRowLabel": "{filled} van de {total} sterren zijn voltooid",
+    "difficultyLabel": "Moeilijkheidsgraad: {cefr}",
+    "writingAssistanceTutorialInputBar": "Je kunt in elke taal schrijven! We helpen je om fouten te corrigeren.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }

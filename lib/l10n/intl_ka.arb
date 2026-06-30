@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-06-29 12:25:39.126363",
+    "@@last_modified": "2026-06-30 09:36:57.140034",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10545,16 +10545,11 @@
         "placeholders": {}
     },
     "readingAssistanceTutorialClickMessage": "დააჭირეთ შეტყობინების ბუშტს, რომ აირჩიოთ იგი",
-    "writingAssistanceTutorialInputBar": "თქვენ შეგიძლიათ დაწეროთ ნებისმიერ ენაზე. ნუ ინერვიულებთ შეცდომებზე! ჩვენ დაგეხმარებით მათი გამოსწორებაში.",
     "writingAssistanceTutorialIGCButton": "შეტყობინების დაწერის შემდეგ, დააჭირეთ ამ ღილაკს, რომ დაიწყოთ წერის დახმარება",
     "selectModeTutorialTranslate": "დააჭირეთ აქ, რომ თარგმნოთ შეტყობინება",
     "selectModeTutorialAudio": "დააჭირეთ აქ, რომ მოისმინოთ შეტყობინება",
     "selectModeTutorialExit": "დააჭირეთ ფონზე, რომ დაბრუნდეთ ჩატში",
     "@readingAssistanceTutorialClickMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     },
@@ -11174,6 +11169,106 @@
         "placeholders": {}
     },
     "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "დახურეთ ჩეთის სია",
+    "closeChat": "დახურეთ ჩეთი",
+    "closeSession": "დახურეთ აქტივობის მიმოხილვა",
+    "closeCourse": "დახურეთ კურსი",
+    "closeCoursePage": "დახურეთ კურსის გვერდი",
+    "closeAddCourse": "დახურეთ კურსის დამატება",
+    "closeAnalytics": "დახურეთ ანალიტიკა",
+    "closeVocabulary": "დახურეთ ლექსიკა",
+    "closeGrammar": "დახურეთ გრამატიკა",
+    "closePractice": "დახურეთ პრაქტიკა",
+    "closeSettings": "დახურეთ პარამეტრები",
+    "closeActivity": "დახურეთ აქტივობა",
+    "closeNamed": "დახურეთ {name}",
+    "clearSearch": "წაშალეთ ძიება",
+    "starRowLabel": "{filled} מתוך {total} ვარსკვლავი დასრულებულია",
+    "difficultyLabel": "სირთულე: {cefr}",
+    "writingAssistanceTutorialInputBar": "თქვენ შეგიძლიათ დაწეროთ ნებისმიერ ენაზე! ჩვენ დაგეხმარებით შეცდომების გამოსწორებაში.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
         "type": "String",
         "placeholders": {}
     }
