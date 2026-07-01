@@ -42,13 +42,21 @@ class ActivitySessionFacts {
     return (collectedGoals / totalGoals).clamp(0.0, 1.0);
   }
 
+  /// Whether the learner has finished all their own goals in this session (its
+  /// star row is full). Such a session is "done" — not a live "jump back in".
+  bool get completedOwnGoals => totalGoals > 0 && collectedGoals >= totalGoals;
+
   /// The live-session colour state: a free role the user can take → `joinable`;
-  /// else a role the user already holds in an open session → `joined`. The
-  /// `inProgress` / `available` states are not live-session facts, so they are
-  /// layered on downstream from the learner's stars (see world_map_view).
+  /// else a role the user holds in a session they have **not yet finished** →
+  /// `joined` (resume it). A session whose own goals are already complete is not
+  /// a live state, so it returns null and the view layers `inProgress` (the gold
+  /// trail star) from the learner's stars — otherwise a completed activity the
+  /// learner still belongs to would read `joined` forever and never show its
+  /// progress. The `inProgress` / `available` states are not live-session facts.
+  /// See world-map.instructions.md ("Pin state").
   ActivityPinState? get state => joinable
       ? ActivityPinState.joinable
-      : holdsRole
+      : (holdsRole && !completedOwnGoals)
       ? ActivityPinState.joined
       : null;
 }

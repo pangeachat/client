@@ -136,12 +136,16 @@ bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
       userCefr.storageInt;
 }
 
-/// score = 3*joinable + relevance_band + 0.6*pinged + 0.3*recency - 0.5*finished.
-/// Joinable is the heaviest term (joining a live session is the map's goal); a
-/// finished activity (full star row) demotes but stays visible (the trail
-/// reservation keeps it on the map).
+/// score = 3*joinable + 2*joined + relevance_band + 0.6*pinged + 0.3*recency
+/// - 0.5*finished. A live session is the heaviest signal: +3 if the learner can
+/// join it (open, someone else's), +2 if they are already in it. `joinable` and
+/// `joined` are mutually exclusive per pin (the state precedence picks one), so at
+/// most one of the two fires. A finished activity (full star row) demotes but
+/// stays visible (the trail reservation keeps it on the map). See
+/// world-map.instructions.md ("Priority matrix").
 double pinScore({required double band, required PinSignals s}) =>
     3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
+    2 * (s.state == ActivityPinState.joined ? 1 : 0) +
     band +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -

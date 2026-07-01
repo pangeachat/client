@@ -323,16 +323,24 @@ class _WorldMapViewState extends State<WorldMapView> {
       if (!tiers.containsKey(id)) continue; // beyond the cap N — not drawn
 
       final signal = signals[id];
-      // A live-session state (joinable/joined) wins the colour; otherwise the
-      // learner's stars decide inProgress (≥1 star) vs available — the precedence
-      // ladder in world-map.instructions.md ("Pin state").
-      states[id] =
-          signal?.state ??
-          ((widget.controller.activityStarsEarned(id) ?? 0) > 0
-              ? ActivityPinState.inProgress
-              : ActivityPinState.available);
       pings[id] = signal?.pinged ?? false;
-      fills[id] = signal?.completionFraction ?? 0;
+
+      final sessionState = signal?.state;
+      if (sessionState != null) {
+        // A live-session state (joinable/joined) wins the colour.
+        states[id] = sessionState;
+        fills[id] = signal!.completionFraction;
+      } else if ((widget.controller.activityStarsEarned(id) ?? 0) > 0) {
+        // No live session, but the learner has stars → inProgress (the gold
+        // trail star). No live signal carries the fraction here, so size the
+        // star by completion: full when done, mid when partially progressed
+        // (world-map.instructions.md, "Goal Progress").
+        states[id] = ActivityPinState.inProgress;
+        fills[id] = widget.controller.isActivityCompleted(id) ? 1.0 : 0.5;
+      } else {
+        states[id] = ActivityPinState.available;
+        fills[id] = 0;
+      }
     }
 
     return _PinRenderer(

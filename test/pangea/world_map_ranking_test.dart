@@ -119,6 +119,26 @@ void main() {
       expect(score, 3);
     });
 
+    test('joined contributes 2 (a strong resurface bump, below joinable)', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joined),
+      );
+      expect(score, 2);
+    });
+
+    test('joinable outranks joined (join others over resume your own)', () {
+      final joinable = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+      );
+      final joined = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joined),
+      );
+      expect(joinable, greaterThan(joined));
+    });
+
     test('the band is added verbatim', () {
       final score = pinScore(band: 1.5, s: const PinSignals());
       expect(score, 1.5);

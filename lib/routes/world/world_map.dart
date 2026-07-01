@@ -274,6 +274,13 @@ class WorldMapController extends State<WorldMap>
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
+  /// Whether the learner has fully completed [activityId] (a full star row). The
+  /// inProgress gold star renders at full size when done, smaller when partially
+  /// progressed (world-map.instructions.md, "Goal Progress").
+  bool isActivityCompleted(String activityId) =>
+      _pinsManager.activityCompletionStatus(activityId) ==
+      MapCompletionFilter.completed;
+
   void _onPlanHydrate() {
     if (mounted) setState(() {});
   }

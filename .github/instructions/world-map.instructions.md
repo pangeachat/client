@@ -47,7 +47,7 @@ A pin's **state** ([`ActivityPinState`](../../lib/routes/world/world_map_ranking
 
 A learner's progress in an activity is the stars earned toward its total (a star is one awarded activity goal — [activities.instructions.md](activities.instructions.md)); star totals are read from Matrix room state by [`QuestsClientExtension`](../../lib/features/quests/quests_client_extension.dart). Progress shows two ways, by tier:
 
-- **On the small / mid dot, progress _is_ a state.** Having earned any stars puts the pin in the **`In progress`** state (gold — the [state table](#pin-state) below), whose dot rendering is a **tiny gold star** in place of the light-brand available dot, optionally sized by the fraction of stars earned within bounds (`progressStarMin` / `progressStarMax` in [`world_map_pin_budget.dart`](../../lib/routes/world/world_map_pin_budget.dart)). Because it is a state, it follows state precedence: a progressed pin that is **also** joinable or joined shows the live color, not the gold star — the dot is too small to layer both.
+- **On the small / mid dot, progress _is_ a state.** Earning stars in an activity you are **not** still working puts the pin in the **`In progress`** state (gold — the [state table](#pin-state) below), whose dot rendering is a **tiny gold star** in place of the light-brand available dot, sized by the learner's completion within bounds (`progressStarMin` / `progressStarMax` in [`world_map_pin_budget.dart`](../../lib/routes/world/world_map_pin_budget.dart)) — full when done, smaller when partially progressed. Because it is a state, it follows state precedence: a progressed pin that also has a **live** session — a joinable seat, or a held role you have not finished (`joined`) — shows the live color, not the gold star, since the dot is too small to layer both.
 - **On the large card, the star row always shows**, whatever the pin's state, so progress is never hidden where there is room for it.
 
 Empty means untouched; a full star total means done (the `In progress` state at 100% — see the table).
@@ -60,12 +60,12 @@ A pin's **state** ([`ActivityPinState`](../../lib/routes/world/world_map_ranking
 
 | State           | Reads as      | Meaning                                                                                                  |
 | --------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
-| **Joined**      | vibrant brand | the learner is already **in** a live session for this activity — jump back in                            |
-| **Joinable**    | green         | an open session is live that the learner can **join** (someone else's) — the map's preferred unit        |
-| **In progress** | gold          | the learner has earned ≥1 star; **degree = star count**, "done" at a full total — renders as a gold star |
-| **Available**   | light brand   | playable, nothing live and no stars yet — the default                                                    |
+| **Joined**      | vibrant brand | the learner holds a role in a session they have **not finished** — resume it                                          |
+| **Joinable**    | green         | an open session is live that the learner can **join** (someone else's) — the map's preferred unit                     |
+| **In progress** | gold          | the learner has earned ≥1 star and is **not** in an unfinished session — their trail; degree = stars, "done" at full (renders as a gold star) |
+| **Available**   | light brand   | playable, nothing live and no stars yet — the default                                                                 |
 
-Precedence is **Joined → Joinable → In progress → Available**: a live session always wins the color over progress, and progress always wins over the plain default. So an activity you have put stars into that now has a live session reads as joinable/joined (the live color), pulling you back to it — its star **degree still shows on the large card's star row** if it earns a card. At a full star total `In progress` is "done": the detail panel offers **Play again / Review**, with no separate state for it.
+Precedence is **Joined → Joinable → In progress → Available**: a live session always wins the color over progress, and progress always wins over the plain default. So a session you are **still working** (a held role with goals left) reads `joined` — resume it — while one you have **finished** falls through to `inProgress`, the gold trail star, rather than reading `joined` forever. A live **joinable** session (someone else's open seat) still wins the color when one exists; the star **degree shows on the large card's star row** regardless. At a full star total `In progress` is "done": the detail panel offers **Play again / Review**, with no separate state for it.
 
 A **pinged** modifier (a hand glyph) marks an open session whose host has pinged the course to gather players (mechanics in [activities.instructions.md](activities.instructions.md)). A ping leaves no persistent room state, so **pinged** is detected **best-effort** by scanning recent course-space messages for the host's ping — a proxy whose efficacy we watch before investing in a persistent signal. Which items earn the scarce mid and large slots is the [Priority matrix](#priority-matrix) below.
 
@@ -89,13 +89,14 @@ The reverse holds for large cards. Because a large card occupies a box, it **res
 
 ## Priority matrix
 
-Every item is ranked by **one weighted score** — there is no eligibility gate. Nothing is locked, and joinable is not a separate stage but the heaviest term, so the whole "what's allowed, then what ranks" split collapses into a single number that fills the tiers. Starting score:
+Every item is ranked by **one weighted score** — there is no eligibility gate. Nothing is locked, and a **live session** (joinable or joined) is not a separate stage but the heaviest term, so the whole "what's allowed, then what ranks" split collapses into a single number that fills the tiers. Starting score:
 
-`score = 3·joinable + relevance_band + 0.6·pinged + 0.3·recency − 0.5·finished`
+`score = 3·joinable + 2·joined + relevance_band + 0.6·pinged + 0.3·recency − 0.5·finished`
 
 Signal inputs are [`PinSignals`](../../lib/routes/world/world_map_ranking.dart), derived by [`WorldMapSignalUtils`](../../lib/routes/world/world_map_signals.dart); the ranked outcome per item is [`RankingResult`](../../lib/routes/world/world_map_ranking.dart).
 
-- **joinable** `0/1` — an open, live session the learner can join right now. Weighted heaviest because joining someone's live session is the map's whole point (see [What the map is for](#what-the-map-is-for)); a live session normally takes the large card, but a strong next-Mission item still wins it when nothing is live, which is why joinable is a weight and not a gate.
+- **joinable** `0/1` — an **open** live session the learner can join right now (someone else's). Weighted heaviest because joining someone's live session is the map's whole point (see [What the map is for](#what-the-map-is-for)); a live session normally takes the large card, but a strong next-Mission item still wins it when nothing is live, which is why joinable is a weight and not a gate.
+- **joined** `0/1` — a live session the learner is **already in** (holds a role). A strong bump so a session you are part of resurfaces for you to jump back into, but set **below** `joinable` so the map's core bias — surfacing open sessions to join _others_ — stays the top driver. `joinable` and `joined` are **mutually exclusive** per pin (the [state](#pin-state) precedence picks one), so at most one of the two ever fires: a live session scores **+3 if you can join it, +2 if you are already in it**. Both are tunable levers (below).
 - **relevance_band** `0–2` — the next-Mission gradient, below.
 - **pinged** `0/1` — the open session's host is recruiting ([activities.instructions.md](activities.instructions.md)).
 - **recency** `0–1` — newest first, a linear falloff over the last day (for a session, time since it opened).
@@ -116,7 +117,7 @@ Signal inputs are [`PinSignals`](../../lib/routes/world/world_map_ranking.dart),
 
 Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is), and tier assignment is kept stable enough between nearby frames that a small pan does not reshuffle the cards. This runs client-side over the loaded set even while server-side viewport narrowing is deferred (see [Scale boundary](#scale-boundary)).
 
-**Weights are levers, learned later.** The weights are hand-set starting points, tuned by observation: at our scale there isn't the engagement data to learn them from, and hand-set weights stay predictable and editable here — raising `joinable` or `pinged` pushes the map harder toward live, social practice; deepening the band's decay sharpens the pull toward the next Mission. A learned value-model — predicting join / complete / return — is the upgrade once the data exists. **Interests** become a term once captured (not tracked today).
+**Weights are levers, learned later.** The weights are hand-set starting points, tuned by observation: at our scale there isn't the engagement data to learn them from, and hand-set weights stay predictable and editable here — raising `joinable` / `joined` or `pinged` pushes the map harder toward live, social practice (and the `joinable` − `joined` gap sets how much the map favours joining _others_ over resuming your own session); deepening the band's decay sharpens the pull toward the next Mission. A learned value-model — predicting join / complete / return — is the upgrade once the data exists. **Interests** become a term once captured (not tracked today).
 
 ## Search
 

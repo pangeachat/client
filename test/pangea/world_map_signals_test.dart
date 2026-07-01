@@ -45,6 +45,18 @@ void main() {
       expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
     });
 
+    test('a completed held role emits no colour state (falls to stars)', () {
+      // All own goals collected → not a live "resume" session, so the reducer
+      // emits no state for it; the view layers inProgress (the gold trail star)
+      // from the learner's stars instead of reading joined forever.
+      final s = WorldMapSignalUtils.reduceActivitySignals(
+        [_session('a', holdsRole: true, collectedGoals: 4, totalGoals: 4)],
+        pingedActivityIds: const {},
+        nowMs: 0,
+      );
+      expect(s.containsKey('a'), isFalse);
+    });
+
     test('keeps the BEST fraction across sessions of the same activity', () {
       final s = WorldMapSignalUtils.reduceActivitySignals(
         [
