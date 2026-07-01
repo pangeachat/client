@@ -57,12 +57,30 @@ class PinBudgetBreakpoint {
 ///  - below `360` px (mobile / many panels open) it is dots only (no mid either);
 ///  - each row's caps sum to its `N` (shown in the trailing comment).
 const List<PinBudgetBreakpoint> kPinBudgetBreakpoints = [
-  PinBudgetBreakpoint(1500, PinBudget(large: 3, mid: 10, small: 17, trail: 20)), // N=30
-  PinBudgetBreakpoint(1100, PinBudget(large: 3, mid: 8, small: 14, trail: 16)), //  N=25
-  PinBudgetBreakpoint(800, PinBudget(large: 3, mid: 6, small: 11, trail: 12)), //   N=20
-  PinBudgetBreakpoint(600, PinBudget(large: 1, mid: 5, small: 11, trail: 10)), //   N=17 (large appears)
-  PinBudgetBreakpoint(360, PinBudget(large: 0, mid: 4, small: 10, trail: 8)), //    N=14 (no large)
-  PinBudgetBreakpoint(0, PinBudget(large: 0, mid: 0, small: 8, trail: 5)), //       N=8  (dots only)
+  PinBudgetBreakpoint(
+    1500,
+    PinBudget(large: 3, mid: 10, small: 17, trail: 20),
+  ), // N=30
+  PinBudgetBreakpoint(
+    1100,
+    PinBudget(large: 3, mid: 8, small: 14, trail: 16),
+  ), //  N=25
+  PinBudgetBreakpoint(
+    800,
+    PinBudget(large: 3, mid: 6, small: 11, trail: 12),
+  ), //   N=20
+  PinBudgetBreakpoint(
+    600,
+    PinBudget(large: 1, mid: 5, small: 11, trail: 10),
+  ), //   N=17 (large appears)
+  PinBudgetBreakpoint(
+    360,
+    PinBudget(large: 0, mid: 4, small: 10, trail: 8),
+  ), //    N=14 (no large)
+  PinBudgetBreakpoint(
+    0,
+    PinBudget(large: 0, mid: 0, small: 8, trail: 5),
+  ), //       N=8  (dots only)
 ];
 
 /// The pin budget for the given available visible-map [width] (logical px — the

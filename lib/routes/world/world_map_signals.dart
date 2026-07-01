@@ -42,10 +42,14 @@ class ActivitySessionFacts {
     return (collectedGoals / totalGoals).clamp(0.0, 1.0);
   }
 
+  /// The live-session colour state: a free role the user can take → `joinable`;
+  /// else a role the user already holds in an open session → `joined`. The
+  /// `inProgress` / `available` states are not live-session facts, so they are
+  /// layered on downstream from the learner's stars (see world_map_view).
   ActivityPinState? get state => joinable
       ? ActivityPinState.joinable
       : holdsRole
-      ? ActivityPinState.unlocked
+      ? ActivityPinState.joined
       : null;
 }
 
@@ -61,9 +65,11 @@ class WorldMapSignalUtils {
   static const int _recencyWindowMs = 24 * 60 * 60 * 1000;
 
   /// The pure pin-signal rule over per-room [facts]: for each activity keep the
-  /// best completion fraction (a role the user holds), the highest colour state on
-  /// the `unlocked < joinable` ladder, and the recency of its newest open session
-  /// (decaying linearly to 0 over [_recencyWindowMs] from [nowMs]).
+  /// best completion fraction (a role the user holds), the highest live-session
+  /// colour state on the `joinable < joined` ladder (the `inProgress` /
+  /// `available` states are layered on downstream from stars), and the recency of
+  /// its newest open session (decaying linearly to 0 over [_recencyWindowMs] from
+  /// [nowMs]).
   static Map<String, PinSignals> reduceActivitySignals(
     Iterable<ActivitySessionFacts> facts, {
     required Set<String> pingedActivityIds,
@@ -87,8 +93,8 @@ class WorldMapSignalUtils {
         newestOpenMs[activityId] = f.lastEventMs;
       }
 
-      // Colour state: a free role the user hasn't taken → joinable; else holding a
-      // role → unlocked (completion shows as the fill, not a separate state).
+      // Live-session colour state: a free role the user hasn't taken → joinable;
+      // else holding a role in an open session → joined.
       final state = f.state;
       if (state == null) continue;
 

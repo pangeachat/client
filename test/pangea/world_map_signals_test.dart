@@ -35,13 +35,13 @@ ActivityCompletionFacts _completion(
 
 void main() {
   group('reduceActivitySignals', () {
-    test('a held role reads unlocked with the collected/total fraction', () {
+    test('a held role in an open session reads joined, with the fraction', () {
       final s = WorldMapSignalUtils.reduceActivitySignals(
         [_session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4)],
         pingedActivityIds: const {},
         nowMs: 0,
       );
-      expect(s['a']!.state, ActivityPinState.unlocked);
+      expect(s['a']!.state, ActivityPinState.joined);
       expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
     });
 
@@ -66,23 +66,21 @@ void main() {
       expect(s['a']!.completionFraction, 0);
     });
 
-    test(
-      'joinable beats unlocked on the colour ladder, fraction preserved',
-      () {
-        final s = WorldMapSignalUtils.reduceActivitySignals(
-          [
-            // one session where the user holds a role (unlocked, half done)…
-            _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 2),
-            // …and another, open, session of the same activity (joinable)
-            _session('a', joinable: true, lastEventMs: _dayMs),
-          ],
-          pingedActivityIds: const {},
-          nowMs: _dayMs,
-        );
-        expect(s['a']!.state, ActivityPinState.joinable);
-        expect(s['a']!.completionFraction, closeTo(0.5, 1e-9));
-      },
-    );
+    test('joined beats joinable on the colour ladder, fraction preserved', () {
+      final s = WorldMapSignalUtils.reduceActivitySignals(
+        [
+          // one session where the user holds a role (joined, half done)…
+          _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 2),
+          // …and another, open, session of the same activity (joinable). The
+          // learner's own live session wins the colour (joined > joinable).
+          _session('a', joinable: true, lastEventMs: _dayMs),
+        ],
+        pingedActivityIds: const {},
+        nowMs: _dayMs,
+      );
+      expect(s['a']!.state, ActivityPinState.joined);
+      expect(s['a']!.completionFraction, closeTo(0.5, 1e-9));
+    });
 
     test('recency decays linearly from the newest open session over 24h', () {
       final fresh = WorldMapSignalUtils.reduceActivitySignals(

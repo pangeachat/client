@@ -60,6 +60,12 @@ class WorldMap extends StatefulWidget {
   /// the uncovered area to the left of the panel. 0 when nothing docks right.
   final double rightOverlayWidth;
 
+  /// Logical-pixel width of the map actually visible between the open side panels
+  /// (viewport − left overlay − right overlay). Drives the pin-density budget
+  /// ([budgetForWidth]) — how many pins show and how many are large cards — so as
+  /// panels open the map thins toward dots. See world-map.instructions.md.
+  final double availableVisibleMapWidth;
+
   /// When set, the map brings this target into the exposed canvas (the area the
   /// left column and detail panel don't cover) instead of fitting the whole
   /// course — e.g. while an activity's `?activity=` detail panel is open. The
@@ -74,6 +80,7 @@ class WorldMap extends StatefulWidget {
     this.controller,
     this.leftOverlayWidth = 0.0,
     this.rightOverlayWidth = 0.0,
+    this.availableVisibleMapWidth = 0.0,
     this.focus,
   });
 
@@ -126,7 +133,6 @@ class WorldMapController extends State<WorldMap>
     _loadForContext();
 
     MapContextController.notifier.addListener(_onContextChange);
-    WorldMapPinsManager.notifier.addListener(_onPinControllerChange);
 
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
@@ -213,7 +219,6 @@ class WorldMapController extends State<WorldMap>
     _fitDebounce?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
-    WorldMapPinsManager.notifier.removeListener(_onPinControllerChange);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
@@ -225,7 +230,6 @@ class WorldMapController extends State<WorldMap>
   MapController get mapController => widget.controller ?? _ownController;
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
-  String? get selectedActivityId => _pinsManager.selectedActivityId;
 
   /// The id of the activity the detail panel is focused on, or null. Focus is
   /// the persistent "I'm working with this one" state (its panel is open and the
@@ -234,7 +238,7 @@ class WorldMapController extends State<WorldMap>
   /// closes or another activity is focused. Derived purely from [widget.focus]
   /// (the `?activity=` token via `mapFocusFor`), so no extra state is needed and
   /// it auto-clears when the focus signal changes. See world-map.instructions.md
-  /// ("Featured, selected, and focused").
+  /// ("Focus").
   String? get focusedActivityId => focusedActivityIdOf(widget.focus);
 
   /// The activity id a [MapFocus] focuses, or null for a non-activity / absent
@@ -265,6 +269,10 @@ class WorldMapController extends State<WorldMap>
 
   int? activityStarsEarned(String activityId) =>
       _pinsManager.activityStarsEarned(activityId);
+
+  /// Activity ids the learner has earned at least one star in — the trail the
+  /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
+  Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
   void _onPlanHydrate() {
     if (mounted) setState(() {});
@@ -297,24 +305,12 @@ class WorldMapController extends State<WorldMap>
     if (mounted) setState(() {});
   }
 
-  /// The shell sets [MapPinController] false when the map is covered by a
-  /// full-screen panel on a narrow screen (navigating to a section/detail), so a
-  /// tapped-pin preview doesn't linger and keep the bottom nav hidden. Mirror
-  /// that here — drop our own selection when the controller is cleared by anyone
-  /// else. Guarded so our own clears (which also set it false) don't loop.
-  void _onPinControllerChange() {
-    if (!WorldMapPinsManager.notifier.value && mounted) {
-      deselectActivity();
-    }
-  }
-
   void _onContextChange() {
-    // Close any open preview when the map re-scopes (e.g. entering a course),
-    // then reload pins for the new scope and refit. The camera fit is debounced
-    // so clicking through courses doesn't snap the camera on every hop — it
-    // glides only after you've settled on one.
+    // Reset the map-pin global and reload pins when the map re-scopes (e.g.
+    // entering a course), then refit. The camera fit is debounced so clicking
+    // through courses doesn't snap the camera on every hop — it glides only after
+    // you've settled on one.
     if (mounted) {
-      deselectActivity();
       WorldMapPinsManager.set(false);
     }
     _loadForContext(debounceFit: true);
@@ -418,74 +414,15 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
-  /// Select the activity by id (the tap-peek → large card). The clustered
-  /// small/mid markers route their tap here via the cluster layer's
-  /// `onMarkerTap`: the marker-cluster package intercepts marker taps, so a
-  /// marker's own `onTap` never fires for a pointer (it only centered the
-  /// camera, the #7072 symptom). The tapped marker carries its activity id as
-  /// its key. The selection clears on the next user pan/zoom (see
-  /// [onMapPositionChanged]). See world-map.instructions.md.
-  void selectActivity(String activityId) {
-    final changed = _pinsManager.selectActivity(activityId);
-    if (changed) {
-      setState(() {});
-      _nudgeSelectionOnScreen(activityId);
-    }
-    ActivityPlanRepo.instance.ensure(activityId);
-  }
-
-  /// A tap-selected pin promotes to a large card that floats up from it. If that
-  /// card would clip a viewport edge or sit under a side panel, glide the camera
-  /// the minimum needed to bring it into the uncovered canvas — keeping the zoom,
-  /// and not moving at all when it already fits (#7155; world-map.instructions.md
-  /// step 4 — selected cards never shrink, and a deliberate tap glides at once).
-  void _nudgeSelectionOnScreen(String activityId) {
-    final point = _pinsManager.pointForActivity(activityId);
-    if (point == null) return;
-    try {
-      final camera = mapController.camera;
-      final size = camera.size;
-      final pin = camera.latLngToScreenOffset(point);
-
-      // The card spans up from its pin (the pin is the card's bottom-centre).
-      // Use the tallest card height (+ tail) so a shorter card is never clipped.
-      const cardWidth = 260.0; // PinTier.large.dotWidth
-      final cardHeight =
-          PinTier.large.dotHeight(ActivityPinState.joinable) + 12.0;
-      final card = Rect.fromLTWH(
-        pin.dx - cardWidth / 2,
-        pin.dy - cardHeight,
-        cardWidth,
-        cardHeight,
-      );
-
-      // The uncovered canvas: the viewport minus the side panels, with a margin.
-      const margin = 12.0;
-      final safe = Rect.fromLTRB(
-        widget.leftOverlayWidth + margin,
-        margin,
-        size.width - widget.rightOverlayWidth - margin,
-        size.height - margin,
-      );
-
-      // Minimal screen shift to bring the card inside the safe area.
-      final shift = minimalShiftToFit(card, safe);
-      if (shift == Offset.zero) return; // already fully visible — don't move
-
-      // Pan so the content shifts by [shift]: the camera centre moves to the
-      // LatLng currently shown at (screen-centre − shift). Zoom is unchanged.
-      final screenCenter = Offset(size.width / 2, size.height / 2);
-      final newCenter = camera.screenOffsetToLatLng(screenCenter - shift);
-      _animateCameraTo(newCenter, camera.zoom);
-    } catch (_) {
-      // Camera not ready yet; a later interaction will reframe.
-    }
-  }
-
   /// The minimal screen translation that brings [card] fully inside [safe]: zero
   /// on an axis where it already fits, otherwise just enough to clear the
   /// overflowing edge. If [card] is larger than [safe] on an axis, aligns its low
   /// edge (top/left) so the header stays visible rather than zooming (#7155).
+  ///
+  /// Retained as the vestigial edge-nudge geometry: the maps-like redesign routes
+  /// a tap straight to focus (which glides the camera onto the pin via
+  /// [_fitToContext]), so nothing calls this in-app today. Kept per design (the
+  /// edge-nudge is retained but seldom needed — world-map.instructions.md).
   @visibleForTesting
   static Offset minimalShiftToFit(Rect card, Rect safe) {
     double axis(double lo, double hi, double safeLo, double safeHi) {
@@ -500,41 +437,16 @@ class WorldMapController extends State<WorldMap>
     );
   }
 
-  void deselectActivity() {
-    final changed = _pinsManager.deselectActivity();
-    if (changed) setState(() {});
-  }
+  /// Fly to a search result and focus it (the Maps-style result tap): open its
+  /// detail panel, which glides the camera onto its pin via the focus fit. One
+  /// step — a deliberate tap goes straight to focus, no peek.
+  void flyTo(QuestActivityCard card) => openActivity(card);
 
-  /// Fly to a search result and open its preview (the Maps-style result tap).
-  /// A deliberate tap glides immediately and wins over any pending context fit.
-  void flyTo(QuestActivityCard card) {
-    final point = card.point;
-    if (point != null) {
-      _fitDebounce?.cancel();
-      try {
-        _animateFit(
-          CameraFit.coordinates(
-            coordinates: [point],
-            padding: EdgeInsets.fromLTRB(
-              widget.leftOverlayWidth + 64,
-              64,
-              widget.rightOverlayWidth + 64,
-              64,
-            ),
-            maxZoom: 13,
-          ),
-        );
-      } catch (_) {}
-    }
-    selectActivity(card.activityId);
-  }
-
-  /// Glide back to the whole-world view (the initial camera). Pins, clusters,
-  /// and search only ever zoom the camera IN, so this is the one explicit
-  /// "zoom out to everything" affordance (#7086). Camera-only: the course scope
-  /// and open panels are untouched.
+  /// Glide back to the whole-world view (the initial camera). Pins and search
+  /// only ever zoom the camera IN, so this is the one explicit "zoom out to
+  /// everything" affordance (#7086). Camera-only: the course scope, focus, and
+  /// open panels are untouched.
   void resetToWorld() {
-    deselectActivity();
     _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
   }
 
@@ -544,7 +456,6 @@ class WorldMapController extends State<WorldMap>
   /// mid-glide live zoom), so rapid clicks each advance a full level instead of
   /// under-shooting, and snaps to integer levels so the steps land crisply.
   void zoomBy(double delta) {
-    deselectActivity(); // an explicit zoom re-ranks the featured set; drop the peek
     final base = _cameraAnimationController.isAnimating
         ? _camTargetZoom
         : mapController.camera.zoom;
@@ -676,22 +587,19 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
-  /// Called by the view as the camera moves. A user pan/zoom ([hasGesture])
-  /// clears any tap-selection — the peek is for the spot you were looking at, so
-  /// moving away drops it (world-map.instructions.md); programmatic glides (a
-  /// search fly-to, a focus fit) are not gestures, so they keep the selection
-  /// they just set. World pins also re-fetch for the new viewport (debounced);
-  /// course pins are context-bound.
+  /// Called by the view as the camera moves. World pins re-fetch for the new
+  /// viewport (debounced); course pins are context-bound. Focus is unaffected by
+  /// pan/zoom — it persists until the panel closes (world-map.instructions.md).
   void onMapPositionChanged(bool hasGesture) {
-    if (hasGesture) deselectActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
-  /// put) as a `left=activity:<id>` panel token. The panel fetches the full plan
-  /// on open. Reached from the preview's "Details".
+  /// put) as a `left=activity:<id>` panel token, which also focuses the pin. The
+  /// panel fetches the full plan on open. This is the one-step tap target: any
+  /// pin tap (dot / card) and a search-result tap route here (no peek).
   void openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Open the activity plan as map content. Pin entry is UNSCOPED: drop the
@@ -722,7 +630,6 @@ class WorldMapController extends State<WorldMap>
       parts.add('roomid=${shortRoomId(myRoom.id)}');
     }
     context.go(WorkspaceQuery.location('/', parts));
-    deselectActivity();
   }
 
   @override
