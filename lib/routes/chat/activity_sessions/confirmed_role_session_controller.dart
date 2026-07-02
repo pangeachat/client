@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -61,6 +62,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   bool get showPingCourse => widget.course != null;
 
   bool get showInviteOptions => widget.room.isRoomAdmin;
+
+  bool get enablePlayWithBot =>
+      showInviteOptions && !widget.room.botAddedToActivity;
 
   @override
   String get descriptionText =>

@@ -148,6 +148,7 @@ abstract class ClientManager {
         PangeaEventTypes.analyticsSettings,
         PangeaEventTypes.courseSettings,
         PangeaEventTypes.orchestratorAwardedGoals,
+        PangeaEventTypes.botParticipant,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,
