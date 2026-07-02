@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-02 09:47:15.364169",
+    "@@last_modified": "2026-07-02 16:44:51.605242",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10329,6 +10329,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Dostosuj ankietę",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -5013,5 +5013,6 @@
     },
     "closeHint": "Close hint",
     "starListLabel": "Saved activities and stars", 
+    "customizePollLabel": "Customize poll", 
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
 }

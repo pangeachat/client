@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-02 09:46:29.217674",
+    "@@last_modified": "2026-07-02 16:44:32.870230",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11351,6 +11351,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "自訂投票",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

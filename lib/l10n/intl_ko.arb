@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:45:59.798063",
+    "@@last_modified": "2026-07-02 16:44:11.448597",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10437,6 +10437,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "설문조사 사용자 정의",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

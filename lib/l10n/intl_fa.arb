@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:47:08.800389",
+    "@@last_modified": "2026-07-02 16:44:50.895553",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10332,6 +10332,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "سفارشی‌سازی نظرسنجی",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

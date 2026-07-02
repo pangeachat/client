@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:46:07.336727",
+    "@@last_modified": "2026-07-02 16:44:16.727473",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10317,6 +10317,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Sesuaikan jajak pendapat",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

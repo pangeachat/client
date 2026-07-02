@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-02 09:47:04.989704",
+    "@@last_modified": "2026-07-02 16:44:48.641735",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9892,6 +9892,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Customize poll",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }
