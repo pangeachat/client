@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-02 09:46:47.470628",
+    "@@last_modified": "2026-07-02 16:44:39.118778",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11296,6 +11296,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Personalizar pesquisa",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

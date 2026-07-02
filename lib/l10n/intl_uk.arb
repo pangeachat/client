@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-02 09:46:31.886126",
+    "@@last_modified": "2026-07-02 16:44:34.297074",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10220,6 +10220,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Налаштувати опитування",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

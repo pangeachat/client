@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-02 09:46:56.747154",
+    "@@last_modified": "2026-07-02 16:44:44.038012",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10551,6 +10551,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Anketi özelleştir",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

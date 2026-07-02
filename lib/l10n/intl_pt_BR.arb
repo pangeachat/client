@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:46:20.562104",
+    "@@last_modified": "2026-07-02 16:44:28.153372",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10220,6 +10220,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Personalizar enquete",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-02 09:46:16.834621",
+    "@@last_modified": "2026-07-02 16:44:20.078037",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10704,6 +10704,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Prilagodi anketu",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-02 09:46:55.555748",
+    "@@last_modified": "2026-07-02 16:44:43.327485",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10560,6 +10560,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "تخصيص الاستطلاع",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

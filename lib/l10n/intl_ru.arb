@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-02 09:47:22.806073",
+    "@@last_modified": "2026-07-02 16:44:55.813941",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11234,6 +11234,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Настроить опрос",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

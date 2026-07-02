@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-02 09:46:46.307325",
+    "@@last_modified": "2026-07-02 16:44:38.190616",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10939,6 +10939,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "ปรับแต่งโพล",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }
