@@ -42,7 +42,7 @@ void main() {
           body: Center(
             child: WorldMapDot(
               card: card,
-              state: ActivityPinState.unlocked,
+              state: ActivityPinState.available,
               tier: tier,
               onTap: () {},
               pinged: false,

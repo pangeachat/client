@@ -42,10 +42,22 @@ class ActivitySessionFacts {
     return (collectedGoals / totalGoals).clamp(0.0, 1.0);
   }
 
+  /// Whether the learner has finished all their own goals in this session (its
+  /// star row is full). Such a session is "done" — not a live "jump back in".
+  bool get completedOwnGoals => totalGoals > 0 && collectedGoals >= totalGoals;
+
+  /// The live-session colour state: a free role the user can take → `joinable`;
+  /// else a role the user holds in a session they have **not yet finished** →
+  /// `joined` (resume it). A session whose own goals are already complete is not
+  /// a live state, so it returns null and the view layers `inProgress` (the gold
+  /// trail star) from the learner's stars — otherwise a completed activity the
+  /// learner still belongs to would read `joined` forever and never show its
+  /// progress. The `inProgress` / `available` states are not live-session facts.
+  /// See world-map.instructions.md ("Pin state").
   ActivityPinState? get state => joinable
       ? ActivityPinState.joinable
-      : holdsRole
-      ? ActivityPinState.unlocked
+      : (holdsRole && !completedOwnGoals)
+      ? ActivityPinState.joined
       : null;
 }
 
@@ -61,9 +73,11 @@ class WorldMapSignalUtils {
   static const int _recencyWindowMs = 24 * 60 * 60 * 1000;
 
   /// The pure pin-signal rule over per-room [facts]: for each activity keep the
-  /// best completion fraction (a role the user holds), the highest colour state on
-  /// the `unlocked < joinable` ladder, and the recency of its newest open session
-  /// (decaying linearly to 0 over [_recencyWindowMs] from [nowMs]).
+  /// best completion fraction (a role the user holds), the highest live-session
+  /// colour state on the `joinable < joined` ladder (the `inProgress` /
+  /// `available` states are layered on downstream from stars), and the recency of
+  /// its newest open session (decaying linearly to 0 over [_recencyWindowMs] from
+  /// [nowMs]).
   static Map<String, PinSignals> reduceActivitySignals(
     Iterable<ActivitySessionFacts> facts, {
     required Set<String> pingedActivityIds,
@@ -87,8 +101,8 @@ class WorldMapSignalUtils {
         newestOpenMs[activityId] = f.lastEventMs;
       }
 
-      // Colour state: a free role the user hasn't taken → joinable; else holding a
-      // role → unlocked (completion shows as the fill, not a separate state).
+      // Live-session colour state: a free role the user hasn't taken → joinable;
+      // else holding a role in an open session → joined.
       final state = f.state;
       if (state == null) continue;
 

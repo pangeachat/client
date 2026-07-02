@@ -181,7 +181,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   double? get parentWidth => _parentRenderBox?.size.width;
 
-  double? get parentHeight => _parentRenderBox?.size.height;
+  double? get _adjustedParentHeight {
+    final parentHeight = _parentRenderBox?.size.height;
+    if (parentHeight == null) return null;
+    final screenPadding = _screenPadding;
+    return parentHeight - (screenPadding.top + screenPadding.bottom);
+  }
 
   Size? get _overlayMessageSize => _overlayMessageRenderBox?.size;
 
@@ -193,9 +198,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (parentRenderBox == null) return null;
 
     return _runWithLogging(
-      () => parentRenderBox.globalToLocal(
-        overlayMessageRenderBox.localToGlobal(Offset.zero),
-      ),
+      () => OverlayUtil.localOffset(overlayMessageRenderBox, parentRenderBox),
       "Error getting overlay message offset",
       null,
     );
@@ -209,9 +212,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (parentRenderBox == null) return null;
 
     return _runWithLogging(
-      () => parentRenderBox.globalToLocal(
-        messageRenderBox.localToGlobal(Offset.zero),
-      ),
+      () => OverlayUtil.localOffset(messageRenderBox, parentRenderBox),
       "Error getting message offset",
       null,
     );
@@ -230,6 +231,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       _defaultMessageSize,
     );
   }
+
+  EdgeInsets get _screenPadding => MediaQuery.paddingOf(context);
 
   double? get messageLeftOffset {
     if (ownMessage) return null;
@@ -281,13 +284,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   bool get shouldScroll {
-    final parentHeight = this.parentHeight;
+    final parentHeight = _adjustedParentHeight;
     if (parentHeight == null) return false;
     return _fullContentHeight > parentHeight;
   }
 
   bool get _hasFooterOverflow {
-    final parentHeight = this.parentHeight;
+    final parentHeight = _parentRenderBox?.size.height;
     if (parentHeight == null) return false;
 
     final offset = _originalMessageOffset;
@@ -309,19 +312,23 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final offset = _originalMessageOffset;
     if (offset == null) return 300;
 
-    final messageHeight = originalMessageSize.height;
-    final originalContentHeight =
-        messageHeight + _reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
-
-    final parentHeight = this.parentHeight;
+    final parentHeight = _adjustedParentHeight;
     if (parentHeight == null) return 300;
 
-    double boxHeight = parentHeight - offset.dy - originalContentHeight;
+    final contentHeight =
+        _reactionsHeight +
+        originalMessageSize.height +
+        8.0 +
+        AppConfig.toolbarMenuHeight;
+
+    final adjustedTopOffset = offset.dy - _screenPadding.top;
+
+    final boxHeight = parentHeight - (contentHeight + adjustedTopOffset);
 
     final neededSpace = boxHeight + _fullContentHeight + 4.0;
 
     if (neededSpace > parentHeight) {
-      boxHeight = parentHeight - _fullContentHeight - 4.0;
+      return parentHeight - _fullContentHeight - 4.0;
     }
 
     return boxHeight;
@@ -361,7 +368,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         children: [
           SizedBox(
             width: parentRendexBox.size.width,
-            height: parentRendexBox.size.height,
+            height: _adjustedParentHeight,
             child: Stack(
               alignment: ownMessage
                   ? Alignment.centerRight

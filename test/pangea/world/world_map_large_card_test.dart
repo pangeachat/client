@@ -38,7 +38,7 @@ void main() {
           body: Center(
             child: WorldMapLargeCard(
               card: card,
-              state: ActivityPinState.unlocked,
+              state: ActivityPinState.available,
               pinged: false,
               plan: null,
               starsEarned: 0,

@@ -213,6 +213,7 @@ class WorkspaceShell extends StatelessWidget {
               key: _persistentWorldMapKey,
               leftOverlayWidth: l.mapLeftOverlay,
               rightOverlayWidth: l.allocation.mapRightOverlay,
+              availableVisibleMapWidth: l.availableVisibleMapWidth,
               focus: mapFocusFor(state),
             ),
 
@@ -421,6 +422,11 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// The map actually visible between the open side panels (viewport − left
+  /// overlay − right overlay) — drives the pin-density budget
+  /// ([budgetForWidth] in world_map_pin_budget.dart).
+  final double availableVisibleMapWidth;
+
   // Side-effect inputs, published post-frame by [scheduleControllers].
   final MapContext mapContext;
   final String? focusedLeftToken;
@@ -440,6 +446,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.detailWidth,
     required this.mapLeftOverlay,
+    required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
     required this.mapCoveredByPanel,
@@ -617,6 +624,14 @@ class _ShellLayout {
         : leftInset +
               (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
 
+    // The map actually visible between the open side panels — drives the pin
+    // density budget (world_map_pin_budget). A mobile sheet leaves the map
+    // full-width (both overlays are 0). Clamped ≥ 0 for tiny viewports.
+    final availableVisibleMapWidth = math.max(
+      0.0,
+      viewport - mapLeftOverlay - layout.mapRightOverlay,
+    );
+
     // Scope the persistent map to the active course (world_v2 context). Set
     // post-frame — the map listens and calls setState, which can't run now.
     final coursePlanId = activeSpaceId == null
@@ -654,6 +669,7 @@ class _ShellLayout {
       leftInset: leftInset,
       detailWidth: detailWidth,
       mapLeftOverlay: mapLeftOverlay,
+      availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,
       mapCoveredByPanel: mapCoveredByPanel,

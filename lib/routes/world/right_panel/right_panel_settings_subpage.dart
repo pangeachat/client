@@ -49,7 +49,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         // own, so the panel card header is its only chrome.
         return const Settings();
       case 'learning':
-        return const SettingsLearning(isDialog: false);
+        return const SettingsLearning();
       case 'style':
         return const SettingsStyle();
       case 'notifications':

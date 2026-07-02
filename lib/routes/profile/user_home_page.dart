@@ -34,7 +34,6 @@ class UserHomePage extends StatefulWidget {
 
 class _UserHomePageState extends State<UserHomePage> {
   final TextEditingController _aboutTextController = TextEditingController();
-  final ValueNotifier<String?> _languageMatchError = ValueNotifier(null);
   late final LearningSettingsViewModel _viewModel;
 
   Future<Profile>? _profileFuture;
@@ -57,7 +56,6 @@ class _UserHomePageState extends State<UserHomePage> {
   @override
   void dispose() {
     _aboutTextController.dispose();
-    _languageMatchError.dispose();
     _viewModel.dispose();
     super.dispose();
   }
@@ -177,13 +175,6 @@ class _UserHomePageState extends State<UserHomePage> {
   }
 
   Future<void> _updateProfile() async {
-    if (_viewModel.hasIdenticalLanguages) {
-      _languageMatchError.value = L10n.of(context).noIdenticalLanguages;
-      return;
-    }
-
-    _languageMatchError.value = null;
-
     try {
       await MatrixState.pangeaController.userController
           .updateProfile(

@@ -57,6 +57,8 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
@@ -93,12 +95,12 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
+import 'package:fluffychat/routes/chat/growth_animation.dart';
 import 'package:fluffychat/routes/chat/level_up_banner.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
-import 'package:fluffychat/routes/chat/unlocked_morph_banner.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
@@ -623,36 +625,22 @@ class ChatController extends State<ChatPageWithRoom>
     }, overlayKey: overlayKey);
   }
 
-  void _onUnlockConstructs(Set<ConstructIdentifier> constructs) {
-    if (constructs.isEmpty) return;
+  void _onUnlockConstructs(UnlockedConstructsUpdate update) {
+    final constructs = update.constructs;
+    final targetId = update.targetId;
+
+    if (constructs.isEmpty || targetId == null) return;
     for (final construct in constructs) {
-      if (_bannerController.queueLength >= 3) {
-        // If there are already 3 or more banners in the queue, don't add more to prevent overwhelming the user
-        return;
-      }
-
-      final overlayKey = "${construct.string}_snackbar";
-      _bannerController.addBanner((Completer<void> completer) {
-        final success = OverlayUtil.showOverlay(
-          context: context,
-          child: UnlockedMorphBanner(
-            construct: construct,
-            closeCompleter: completer,
-            overlayKey: overlayKey,
-          ),
-          displayDetails: TopOverlayDisplayDetails(
-            overlayKey: overlayKey,
-            backDropToDismiss: false,
-            closePrevOverlay: false,
-            canPop: false,
-            rootOverlay: kIsWeb,
-          ),
-        );
-
-        if (!success) {
-          completer.complete();
-        }
-      }, overlayKey: overlayKey);
+      GrowthAnimation.show(
+        context,
+        targetId,
+        "${targetId}_unlocked_${construct.string}",
+        MorphIcon(
+          feature: MorphFeaturesEnum.fromString(construct.category),
+          tag: construct.lemma,
+          size: Size(24.0, 24.0),
+        ),
+      );
     }
   }
 
@@ -2656,9 +2644,7 @@ class ChatController extends State<ChatPageWithRoom>
       depressMessageButton.value = true;
     }
 
-    if (keyboardOpen) {
-      inputFocus.unfocus();
-    }
+    inputFocus.unfocus();
 
     if (delay != null) {
       OverlayUtil.showOverlay(

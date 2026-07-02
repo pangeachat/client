@@ -5,7 +5,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
@@ -562,7 +561,7 @@ class AnalyticsDataService {
     }).toSet();
 
     if (newUnlockedMorphs.isNotEmpty) {
-      events.add(MorphUnlockedEvent(newUnlockedMorphs));
+      events.add(MorphUnlockedEvent(newUnlockedMorphs, update.targetID));
     }
 
     for (final entry in newConstructs.entries) {

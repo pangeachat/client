@@ -15,10 +15,12 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// needs, decoupled from the Matrix SDK type.
 typedef LargeCardParticipant = ({Uri? avatar, String name});
 
-/// The large featured map card.
-/// **unlocked** (purple, star progress)
-/// **joinable** (green, + participant avatars and open slots)
-/// **completed** (full star row + a Completed marker and Play-again / Review).
+/// The large featured map card, coloured by [state] (world-map.instructions.md,
+/// "Pin state"):
+/// **available** (light brand) / **inProgress** (gold; at a full star total it
+/// adds a Completed marker + Play-again / Review) / **joinable** (green, +
+/// participant avatars and open slots) / **joined** (vibrant brand). The star row
+/// shows at every state.
 ///
 /// The full [plan] carries the image and goal total - null while it hydrates
 /// Tapping the card opens the activity's plan page.
@@ -44,11 +46,10 @@ class WorldMapLargeCard extends StatelessWidget {
   /// featuring. See world-map.instructions.md.
   final bool isFocused;
 
-  /// When non-null, the card shows an explicit dismiss (X) that returns it to a
-  /// pin without opening it. Set only on the **selected** (tap-peek) card — a
-  /// card stacked over another can otherwise only be cleared by tapping empty
-  /// map, which isn't discoverable (#7207). Auto-featured cards leave it null
-  /// (they re-rank and clear on pan/zoom).
+  /// When non-null, the card shows an explicit dismiss (X). The maps-like
+  /// redesign removed the tap-peek card (one tap goes straight to focus), so map
+  /// cards leave this null — auto-featured cards re-rank on pan/zoom and a focused
+  /// card clears with its panel. Kept optional for reuse and widget tests.
   final VoidCallback? onClose;
 
   const WorldMapLargeCard({
@@ -75,11 +76,11 @@ class WorldMapLargeCard extends StatelessWidget {
         .fold(0, (a, b) => b > a ? b : a);
   }
 
-  /// Completion is a full star row on an unlocked pin (not a separate state). A
-  /// pin with a live session reads joinable, not completed, so the learner is
-  /// pulled back to play.
+  /// "Done": a full star total on an inProgress pin — the inProgress state at
+  /// 100% (world-map.instructions.md, "Pin state"). A pin with a live session
+  /// reads joinable/joined, not done, so the learner is pulled back to play.
   bool get _completed {
-    if (state != ActivityPinState.unlocked) return false;
+    if (state != ActivityPinState.inProgress) return false;
     final starsTotal = _starsTotal;
     return starsTotal > 0 && starsEarned >= starsTotal;
   }

@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -46,12 +47,7 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
       // creation but stays idle until this marker lands; writing it makes the bot
       // claim the open role and start playing. Re-invite defensively in case the
       // auto-invite never landed (harmless if the bot is already joined).
-      await widget.room.client.setRoomStateWithKey(
-        widget.room.id,
-        PangeaEventTypes.botParticipant,
-        "",
-        {},
-      );
+      await widget.room.addBotToActivity();
       // The bot is invited at room creation, so it is normally already present
       // here. Only re-invite if it is genuinely absent (it left, or the
       // create-time invite failed). Look up membership from the authoritative

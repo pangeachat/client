@@ -22,7 +22,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
     _updatedProfile = profile;
   }
 
-  bool _resetInstructions = false;
   Timer? _textDebounce;
 
   @override
@@ -40,7 +39,16 @@ class LearningSettingsViewModel extends ChangeNotifier {
       selectedSourceLanguage?.langCodeShort ==
       selectedTargetLanguage?.langCodeShort;
 
-  bool get resetInstructions => _resetInstructions;
+  Profile get _validProfile {
+    if (!hasIdenticalLanguages) return _updatedProfile;
+    final originalProfile = MatrixState.pangeaController.userController.profile;
+    return _updatedProfile.copyWith(
+      userSettings: _updatedProfile.userSettings.copyWith(
+        targetLanguage: originalProfile.userSettings.targetLanguage,
+        sourceLanguage: originalProfile.userSettings.sourceLanguage,
+      ),
+    );
+  }
 
   LanguageModel? get selectedSourceLanguage {
     return _selectedBaseLanguage ?? LanguageService.systemLanguage;
@@ -72,7 +80,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   String? get about => _updatedProfile.userSettings.about;
 
-  Profile get updatedProfile => _updatedProfile;
+  Profile get updatedProfile => _validProfile;
 
   GenderEnum get gender => _updatedProfile.userSettings.gender;
 
@@ -149,7 +157,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
     final updated = _updatedProfile.copyWith(
       instructionSettings: InstructionSettings(),
     );
-    _resetInstructions = true;
     _updateProfile(updated);
   }
 

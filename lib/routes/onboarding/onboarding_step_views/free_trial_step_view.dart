@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -18,6 +19,16 @@ class FreeTrialStepView extends StatelessWidget {
       Theme.of(context).colorScheme.surface.withAlpha(70),
       AppConfig.gold,
     );
+
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final mediumTextStyle = isColumnMode
+        ? theme.textTheme.bodyMedium
+        : theme.textTheme.bodySmall;
+
+    final largeTextStyle = isColumnMode
+        ? theme.textTheme.displayMedium
+        : theme.textTheme.headlineMedium;
 
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +55,7 @@ class FreeTrialStepView extends StatelessWidget {
             child: Center(
               child: Container(
                 width: 350,
-                padding: const EdgeInsets.symmetric(vertical: 48),
+                padding: const EdgeInsets.only(bottom: 20.0),
                 child: Column(
                   children: [
                     Expanded(
@@ -68,16 +79,17 @@ class FreeTrialStepView extends StatelessWidget {
                                       children: [
                                         Text(
                                           L10n.of(context).thanksForSigningUp,
-                                          style: theme.textTheme.bodyLarge,
+                                          style: mediumTextStyle,
+                                          textAlign: TextAlign.center,
                                         ),
 
                                         Text(
                                           L10n.of(context).sevenDaysFree,
-                                          style: theme.textTheme.displayMedium
-                                              ?.copyWith(
-                                                color: gold,
-                                                fontWeight: FontWeight.w900,
-                                              ),
+                                          style: largeTextStyle?.copyWith(
+                                            color: gold,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ],
                                     ),
@@ -100,7 +112,7 @@ class FreeTrialStepView extends StatelessWidget {
                                     child: Text(
                                       L10n.of(context).manageTrialInSettings,
                                       textAlign: TextAlign.center,
-                                      style: theme.textTheme.bodyLarge,
+                                      style: mediumTextStyle,
                                     ),
                                   ),
                                 ],
@@ -122,7 +134,7 @@ class FreeTrialStepView extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       L10n.of(context).noCreditCardRequired,
-                      style: theme.textTheme.bodyMedium,
+                      style: mediumTextStyle,
                     ),
                   ],
                 ),

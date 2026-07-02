@@ -15,15 +15,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LearningSettingsTiles extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
   final ValueNotifier<String?> languageErrorNotifier;
-  final TextEditingController aboutTextController;
-  final ExpansibleController? languageTileController;
 
   const LearningSettingsTiles({
     super.key,
     required this.viewModel,
     required this.languageErrorNotifier,
-    required this.aboutTextController,
-    this.languageTileController,
   });
 
   Future<bool> onEnableAutocorrect(BuildContext context) async {
@@ -158,10 +154,7 @@ class LearningSettingsTiles extends StatelessWidget {
                   leading: const Icon(Icons.lightbulb),
                   title: Text(L10n.of(context).resetInstructionTooltipsTitle),
                   subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
-                  onTap: viewModel.resetInstructions
-                      ? null
-                      : viewModel.resetInstructionTooltips,
-                  selected: viewModel.resetInstructions,
+                  onTap: viewModel.resetInstructionTooltips,
                 ),
               ],
             ),
