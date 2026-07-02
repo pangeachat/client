@@ -193,9 +193,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (parentRenderBox == null) return null;
 
     return _runWithLogging(
-      () => parentRenderBox.globalToLocal(
-        overlayMessageRenderBox.localToGlobal(Offset.zero),
-      ),
+      () => OverlayUtil.localOffset(overlayMessageRenderBox, parentRenderBox),
       "Error getting overlay message offset",
       null,
     );
@@ -209,9 +207,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (parentRenderBox == null) return null;
 
     return _runWithLogging(
-      () => parentRenderBox.globalToLocal(
-        messageRenderBox.localToGlobal(Offset.zero),
-      ),
+      () => OverlayUtil.localOffset(messageRenderBox, parentRenderBox),
       "Error getting message offset",
       null,
     );
