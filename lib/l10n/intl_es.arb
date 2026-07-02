@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-02 09:46:01.387772",
+    "@@last_modified": "2026-07-02 16:44:12.235661",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8314,6 +8314,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Personalizar encuesta",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

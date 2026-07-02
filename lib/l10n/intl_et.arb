@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-02 09:46:24.929865",
+    "@@last_modified": "2026-07-02 16:44:30.615689",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10217,6 +10217,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Kohanda küsitlust",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }
