@@ -367,50 +367,55 @@ class SendFileDialogState extends State<SendFileDialog> {
                     Row(
                       crossAxisAlignment: .center,
                       children: [
-                        if ({
-                          TargetPlatform.iOS,
-                          TargetPlatform.macOS,
-                        }.contains(theme.platform))
-                          CupertinoSwitch(
-                            value: compressionSupported && compress,
-                            onChanged: compressionSupported
-                                ? (v) => setState(() => compress = v)
-                                : null,
-                          )
-                        else
-                          Switch.adaptive(
-                            value: compressionSupported && compress,
-                            onChanged: compressionSupported
-                                ? (v) => setState(() => compress = v)
-                                : null,
-                          ),
+                        Semantics(
+                          label: L10n.of(context).compress,
+                          child:
+                              {
+                                TargetPlatform.iOS,
+                                TargetPlatform.macOS,
+                              }.contains(theme.platform)
+                              ? CupertinoSwitch(
+                                  value: compressionSupported && compress,
+                                  onChanged: compressionSupported
+                                      ? (v) => setState(() => compress = v)
+                                      : null,
+                                )
+                              : Switch.adaptive(
+                                  value: compressionSupported && compress,
+                                  onChanged: compressionSupported
+                                      ? (v) => setState(() => compress = v)
+                                      : null,
+                                ),
+                        ),
                         const SizedBox(width: 16),
                         Expanded(
-                          child: Column(
-                            mainAxisSize: .min,
-                            crossAxisAlignment: .start,
-                            children: [
-                              Row(
-                                mainAxisSize: .min,
-                                children: [
+                          child: ExcludeSemantics(
+                            child: Column(
+                              mainAxisSize: .min,
+                              crossAxisAlignment: .start,
+                              children: [
+                                Row(
+                                  mainAxisSize: .min,
+                                  children: [
+                                    Text(
+                                      L10n.of(context).compress,
+                                      style: theme.textTheme.titleMedium,
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ],
+                                ),
+                                if (!compress)
                                   Text(
-                                    L10n.of(context).compress,
-                                    style: theme.textTheme.titleMedium,
-                                    textAlign: TextAlign.left,
+                                    ' ($sizeString)',
+                                    style: theme.textTheme.labelSmall,
                                   ),
-                                ],
-                              ),
-                              if (!compress)
-                                Text(
-                                  ' ($sizeString)',
-                                  style: theme.textTheme.labelSmall,
-                                ),
-                              if (!compressionSupported)
-                                Text(
-                                  L10n.of(context).notSupportedOnThisDevice,
-                                  style: theme.textTheme.labelSmall,
-                                ),
-                            ],
+                                if (!compressionSupported)
+                                  Text(
+                                    L10n.of(context).notSupportedOnThisDevice,
+                                    style: theme.textTheme.labelSmall,
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
