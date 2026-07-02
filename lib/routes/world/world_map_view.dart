@@ -466,7 +466,7 @@ class _WorldMapViewState extends State<WorldMapView> {
     _updateExiting(render);
 
     final map = Semantics(
-      label: L10n.of(context).activityMapLabel,
+      label: L10n.of(context).activities,
       container: true,
       child: FlutterMap(
         mapController: widget.controller.mapController,
@@ -553,38 +553,47 @@ class _WorldMapViewState extends State<WorldMapView> {
     // A course shows its plain map (plus the controls); the world map adds the
     // search + filter overlay.
     if (!widget.controller.isWorld) {
-      return Stack(
-        children: [
-          Positioned.fill(child: map),
-          controls,
-        ],
+      return Semantics(
+        label: L10n.of(context).activityMapLabel,
+        container: true,
+        child: Stack(
+          children: [
+            Positioned.fill(child: map),
+            controls,
+          ],
+        ),
       );
     }
     final l2 = MatrixState.pangeaController.userController.userL2Code;
-    return Stack(
-      children: [
-        Positioned.fill(child: map),
-        Positioned(
-          top: 12,
-          left: widget.controller.widget.leftOverlayWidth + 12,
-          width: 360,
-          child: WorldMapSearchOverlay(
-            filter: widget.controller.filter,
-            updateQuery: widget.controller.setQuery,
-            l2Label: l2?.toUpperCase(),
-            onToggleL2: widget.controller.toggleL2,
-            onWidenSearch: () => widget.controller.resetFilters(l2Only: false),
-            toggleCefr: widget.controller.toggleCefr,
-            toggleCompletion: widget.controller.toggleCompletion,
-            results: render.visible,
-            onResultTap: widget.controller.flyTo,
-            onReset: widget.controller.resetFilters,
-            emptyInView:
-                !widget.controller.loadingPins && render.visible.isEmpty,
+    return Semantics(
+      label: L10n.of(context).activityMapLabel,
+      container: true,
+      child: Stack(
+        children: [
+          Positioned.fill(child: map),
+          Positioned(
+            top: 12,
+            left: widget.controller.widget.leftOverlayWidth + 12,
+            width: 360,
+            child: WorldMapSearchOverlay(
+              filter: widget.controller.filter,
+              updateQuery: widget.controller.setQuery,
+              l2Label: l2?.toUpperCase(),
+              onToggleL2: widget.controller.toggleL2,
+              onWidenSearch: () =>
+                  widget.controller.resetFilters(l2Only: false),
+              toggleCefr: widget.controller.toggleCefr,
+              toggleCompletion: widget.controller.toggleCompletion,
+              results: render.visible,
+              onResultTap: widget.controller.flyTo,
+              onReset: widget.controller.resetFilters,
+              emptyInView:
+                  !widget.controller.loadingPins && render.visible.isEmpty,
+            ),
           ),
-        ),
-        controls,
-      ],
+          controls,
+        ],
+      ),
     );
   }
 }

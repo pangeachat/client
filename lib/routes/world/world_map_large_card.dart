@@ -365,7 +365,6 @@ class _Header extends StatelessWidget {
                   ? Image.network(
                       imageUrl.toString(),
                       fit: BoxFit.cover,
-                      semanticLabel: L10n.of(context).activityPhoto,
                       errorBuilder: (context, _, _) =>
                           Container(color: Colors.black12),
                     )

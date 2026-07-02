@@ -92,6 +92,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
 
     return Semantics(
       label: l10n.searchActivitiesLabel,
+      container: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
