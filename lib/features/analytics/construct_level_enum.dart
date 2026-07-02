@@ -4,9 +4,11 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
-enum ConstructLevelEnum { flowers, greens, seeds }
+enum ConstructLevelEnum {
+  flowers,
+  greens,
+  seeds;
 
-extension ConstructLevelEnumExt on ConstructLevelEnum {
   Color color(BuildContext context) {
     switch (this) {
       case ConstructLevelEnum.flowers:
