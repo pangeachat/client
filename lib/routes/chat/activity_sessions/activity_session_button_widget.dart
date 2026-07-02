@@ -242,7 +242,7 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
             padding: EdgeInsetsGeometry.only(bottom: 16.0),
             child: _CTAButton(
               L10n.of(context).playWithBot,
-              controller.playWithBot,
+              controller.enablePlayWithBot ? controller.playWithBot : null,
             ),
           ),
         if (controller.showInviteOptions)
