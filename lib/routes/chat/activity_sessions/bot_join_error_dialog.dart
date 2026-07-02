@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -53,11 +54,14 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
       );
       // The bot is invited at room creation, so it is normally already present
       // here. Only re-invite if it is genuinely absent (it left, or the
-      // create-time invite failed). A failed re-invite is logged rather than
-      // silently swallowed; the 5s timeout below still surfaces a stuck bot.
-      final botMembership = widget.room
-          .unsafeGetUserFromMemoryOrFallback(BotName.byEnvironment)
-          .membership;
+      // create-time invite failed). Look up membership from the authoritative
+      // participant list rather than possibly-stale in-memory state. A failed
+      // re-invite is logged rather than silently swallowed; the 5s timeout below
+      // still surfaces a stuck bot.
+      final participants = await widget.room.requestParticipants();
+      final botMembership = participants
+          .firstWhereOrNull((u) => u.id == BotName.byEnvironment)
+          ?.membership;
       if (botMembership != Membership.join &&
           botMembership != Membership.invite) {
         try {
