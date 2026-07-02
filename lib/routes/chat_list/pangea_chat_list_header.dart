@@ -23,14 +23,14 @@ class PangeaChatListHeader extends StatelessWidget
 
     return SliverList(
       delegate: SliverChildListDelegate([
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              AnimatedSize(
-                duration: FluffyThemes.animationDuration,
-                child: showSearch
-                    ? TextField(
+        showSearch
+            ? Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    AnimatedSize(
+                      duration: FluffyThemes.animationDuration,
+                      child: TextField(
                         controller: controller.searchController,
                         focusNode: controller.searchFocusNode,
                         textInputAction: TextInputAction.search,
@@ -68,12 +68,12 @@ class PangeaChatListHeader extends StatelessWidget
                                   ),
                                 ),
                         ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-            ],
-          ),
-        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : const SizedBox.shrink(),
       ]),
     );
   }
