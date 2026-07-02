@@ -117,35 +117,19 @@ extension LaunchActivitySession on Client {
       }
     }
 
+    // Invite the bot so it is present in every session from the start — idle (no
+    // role, no messages) until the room admin chooses "play with bot", which
+    // writes pangea.bot_participant (the bot's gate to claim a role). On the
+    // "invite a friend" path no marker is written, so the seat stays open and the
+    // bot moderates silently once the friend joins (#2595, #7027).
+    //
+    // Best-effort AND by room id (not the local Room object): inviteUser targets
+    // the homeserver directly, so it neither fails session creation on a transient
+    // invite error nor races the fresh room syncing into the local store — the old
+    // getRoomById(roomID) == null path silently skipped the invite, leaving the
+    // marker written but no bot in the room.
     try {
-      await waitForRoomInSync(roomID).timeout(const Duration(seconds: 10));
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomID},
-        level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
-      );
-      if (e is! TimeoutException) rethrow;
-    }
-
-    // Auto-invite the bot so it is present in every session from the start, but
-    // it stays idle (no role, no messages) until the room admin chooses "play
-    // with bot", which writes pangea.bot_participant. That marker is the bot's
-    // gate to claim a role. On the "invite a friend" path no marker is written,
-    // so the seat stays open for the friend and the bot is a silent moderator
-    // once they join (#2595, #7027). Best-effort: must not fail session creation.
-    try {
-      final botRoom = getRoomById(roomID);
-      if (botRoom == null) {
-        ErrorHandler.logError(
-          m: 'Auto-invite skipped: activity room not found after sync',
-          data: {'roomId': roomID},
-          level: SentryLevel.warning,
-        );
-      } else {
-        await botRoom.invite(BotName.byEnvironment);
-      }
+      await inviteUser(roomID, BotName.byEnvironment);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
