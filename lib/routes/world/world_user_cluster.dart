@@ -458,36 +458,23 @@ class _LanguageFlag extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    final outlinedText = Text(
-      language.langCodeShort.toUpperCase(),
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        height: 1.0,
-        shadows: [
-          Shadow(
-            // bottomLeft
-            offset: Offset(-1.5, -1.5),
-            color: Colors.white,
+    final outlinedText = Stack(
+      children: <Widget>[
+        Text(
+          language.langCodeShort.toUpperCase(),
+          style: TextStyle(
+            fontSize: 18,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 4
+              ..color = Colors.white,
           ),
-          Shadow(
-            // bottomRight
-            offset: Offset(1.5, -1.5),
-            color: Colors.white,
-          ),
-          Shadow(
-            // topRight
-            offset: Offset(1.5, 1.5),
-            color: Colors.white,
-          ),
-          Shadow(
-            // topLeft
-            offset: Offset(-1.5, 1.5),
-            color: Colors.white,
-          ),
-        ],
-      ),
+        ),
+        Text(
+          language.langCodeShort.toUpperCase(),
+          style: TextStyle(fontSize: 18, color: Colors.black),
+        ),
+      ],
     );
 
     return MouseRegion(
