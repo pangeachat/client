@@ -189,10 +189,6 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     final globallyEnableSelection = globallyEnable && widget.enableSelection;
     final globallyEnableReactions = globallyEnable && widget.enableReactions;
 
-    Logs().w(
-      "ENABLE REACTIONS: ${widget.enableReactions}. ENABLE SELECTION: ${widget.enableSelection}",
-    );
-
     final bool hasSentSelectedEmojiReaction =
         _selectedEmoji != null &&
         _userReactionEvents.containsKey(_selectedEmoji!);
