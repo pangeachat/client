@@ -76,24 +76,19 @@ class ProFeaturesCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ..._ProFeatureInfo.entries(L10n.of(context)).map(
-            (e) => RichText(
-              text: TextSpan(
-                children: [
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: Icon(e.icon, color: gold, size: 20.0),
-                    ),
-                  ),
-                  TextSpan(
-                    text: e.text,
+            (e) => Row(
+              spacing: 8.0,
+              children: [
+                Icon(e.icon, color: gold, size: 20.0),
+                Expanded(
+                  child: Text(
+                    e.text,
                     style: theme.textTheme.titleMedium?.copyWith(
                       color: theme.colorScheme.onSurface,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
