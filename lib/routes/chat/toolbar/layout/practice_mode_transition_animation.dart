@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/overlay_center_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -37,10 +38,12 @@ class PracticeModeTransitionAnimationState
 
   Offset? get _centerMessageOffset {
     final renderBox = _centerMessageRenderBox;
-    if (renderBox == null) {
-      return null;
-    }
-    return renderBox.localToGlobal(Offset.zero);
+    if (renderBox == null) return null;
+
+    final parentRenderBox = OverlayUtil.overlayRenderBox(context);
+    if (parentRenderBox == null) return null;
+
+    return OverlayUtil.localOffset(renderBox, parentRenderBox);
   }
 
   Size? get _centerMessageSize {

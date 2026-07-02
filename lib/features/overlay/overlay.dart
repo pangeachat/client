@@ -95,9 +95,7 @@ class OverlayUtil {
       const horizontalPadding = 10.0;
 
       final targetSize = targetRenderBox.size;
-      final targetOffset = parentRenderBox.globalToLocal(
-        targetRenderBox.localToGlobal(Offset.zero),
-      );
+      final targetOffset = localOffset(targetRenderBox, parentRenderBox);
 
       final midpoint = targetOffset.dx + (targetSize.width / 2);
       final leftEdge = midpoint - (displayDetails.maxWidth / 2);
@@ -162,4 +160,10 @@ class OverlayUtil {
     if (renderBox == null || !renderBox.hasSize) return null;
     return renderBox;
   }
+
+  static Offset localOffset(
+    RenderBox targetRenderBox,
+    RenderBox parentRenderBox,
+  ) =>
+      parentRenderBox.globalToLocal(targetRenderBox.localToGlobal(Offset.zero));
 }
