@@ -107,7 +107,6 @@ CLAUDE.md
 # E2E test artifacts
 test-results/
 
-# Claude Code team config (per-repo) — track the team hooks, ignore the rest of .claude/ and the generated org-guide copy
+# Claude Code team config (per-repo) — track the team hooks, ignore the rest of .claude/
 .claude/*
 !.claude/settings.json
-.github/_org-copilot-instructions.md
