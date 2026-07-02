@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-06-30 09:36:10.750767",
+    "@@last_modified": "2026-07-02 09:47:04.989704",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9873,6 +9873,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} peji",
+    "closeHint": "Zavri namig",
+    "starListLabel": "Shranjene dejavnosti in zvezde",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

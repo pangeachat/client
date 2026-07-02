@@ -3919,7 +3919,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-06-30 09:35:30.810304",
+    "@@last_modified": "2026-07-02 09:46:54.122556",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10201,6 +10201,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} lapa",
+    "closeHint": "Aizvērt norādi",
+    "starListLabel": "Saglabātās aktivitātes un zvaigznes",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

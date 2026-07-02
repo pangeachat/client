@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-06-30 09:33:37.144253",
+    "@@last_modified": "2026-07-02 09:46:04.705265",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11295,6 +11295,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} side",
+    "closeHint": "Luk hint",
+    "starListLabel": "Gemte aktiviteter og stjerner",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

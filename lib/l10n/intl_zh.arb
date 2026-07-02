@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-06-30 09:36:14.104667",
+    "@@last_modified": "2026-07-02 09:47:06.203562",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10201,6 +10201,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} 页面",
+    "closeHint": "关闭提示",
+    "starListLabel": "保存的活动和星标",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

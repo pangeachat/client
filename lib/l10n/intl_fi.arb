@@ -3913,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-06-30 09:33:33.750891",
+    "@@last_modified": "2026-07-02 09:46:03.843564",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10250,6 +10250,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} sivu",
+    "closeHint": "Sulje vihje",
+    "starListLabel": "Tallennetut aktiviteetit ja tähdet",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:35:16.047341",
+    "@@last_modified": "2026-07-02 09:46:48.286249",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10331,6 +10331,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} 頁面",
+    "closeHint": "關閉提示",
+    "starListLabel": "已儲存的活動和星星",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

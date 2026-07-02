@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-06-30 09:34:47.333865",
+    "@@last_modified": "2026-07-02 09:46:31.886126",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10201,6 +10201,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} сторінка",
+    "closeHint": "Закрити підказку",
+    "starListLabel": "Збережені активності та зірки",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

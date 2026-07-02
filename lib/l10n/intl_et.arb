@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-06-30 09:34:26.914132",
+    "@@last_modified": "2026-07-02 09:46:24.929865",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10198,6 +10198,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} leht",
+    "closeHint": "Sulge vihje",
+    "starListLabel": "Salvestatud tegevused ja tähed",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

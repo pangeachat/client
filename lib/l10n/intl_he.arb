@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:34:09.052899",
+    "@@last_modified": "2026-07-02 09:46:18.389382",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11280,6 +11280,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} עמוד",
+    "closeHint": "סגור רמז",
+    "starListLabel": "פעילויות ושמות כוכבים שנשמרו",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

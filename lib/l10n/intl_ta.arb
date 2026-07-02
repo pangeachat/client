@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:36:00.213407",
+    "@@last_modified": "2026-07-02 09:47:02.587194",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10317,6 +10317,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} பக்கம்",
+    "closeHint": "மூடு குறிப்பு",
+    "starListLabel": "சேமிக்கப்பட்ட செயல்கள் மற்றும் நட்சத்திரங்கள்",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

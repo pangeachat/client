@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-06-30 09:36:40.342115",
+    "@@last_modified": "2026-07-02 09:47:18.837894",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11069,6 +11069,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} ページ",
+    "closeHint": "ヒントを閉じる",
+    "starListLabel": "保存されたアクティビティとスター",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

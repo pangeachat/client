@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-06-30 09:33:41.863573",
+    "@@last_modified": "2026-07-02 09:46:05.835868",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10328,6 +10328,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} oldal",
+    "closeHint": "Bezárás",
+    "starListLabel": "Mentett tevékenységek és csillagok",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

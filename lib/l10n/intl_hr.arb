@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-06-30 09:34:04.896532",
+    "@@last_modified": "2026-07-02 09:46:16.834621",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10685,6 +10685,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} stranica",
+    "closeHint": "Zatvori savjet",
+    "starListLabel": "Spremne aktivnosti i zvjezdice",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

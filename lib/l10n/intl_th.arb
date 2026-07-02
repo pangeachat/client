@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-06-30 09:35:07.570686",
+    "@@last_modified": "2026-07-02 09:46:46.307325",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10920,6 +10920,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} หน้า",
+    "closeHint": "ปิดคำแนะนำ",
+    "starListLabel": "กิจกรรมที่บันทึกและดาว",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

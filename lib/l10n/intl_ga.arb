@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-06-30 09:37:06.706851",
+    "@@last_modified": "2026-07-02 09:47:27.484486",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10212,6 +10212,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} leathanach",
+    "closeHint": "Dún an leideanna",
+    "starListLabel": "Gníomhaíochtaí agus réaltaí a shábháil",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

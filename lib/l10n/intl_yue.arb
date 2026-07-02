@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-06-30 09:34:40.434154",
+    "@@last_modified": "2026-07-02 09:46:29.217674",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11332,6 +11332,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} 頁面",
+    "closeHint": "關閉提示",
+    "starListLabel": "已保存的活動和星星",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

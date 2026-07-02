@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:34:23.399324",
+    "@@last_modified": "2026-07-02 09:46:23.098419",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11319,6 +11319,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "página {title}",
+    "closeHint": "Dica de fechamento",
+    "starListLabel": "Atividades salvas e estrelas",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }
