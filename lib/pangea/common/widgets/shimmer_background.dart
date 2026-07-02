@@ -4,7 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 
 class ShimmerBackground extends StatefulWidget {
   final Widget child;
-  final Color shimmerColor;
+  final Color? shimmerColor;
   final bool enabled;
   final BorderRadius? borderRadius;
   final Duration delayBetweenPulses;
@@ -13,7 +13,7 @@ class ShimmerBackground extends StatefulWidget {
   const ShimmerBackground({
     super.key,
     required this.child,
-    this.shimmerColor = AppConfig.goldLight,
+    this.shimmerColor,
     this.enabled = true,
     this.borderRadius,
     this.delayBetweenPulses = Duration.zero,
@@ -118,8 +118,16 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
       return widget.child;
     }
 
+    final theme = Theme.of(context);
+
     final borderRadius =
         widget.borderRadius ?? BorderRadius.circular(AppConfig.borderRadius);
+
+    final color =
+        widget.shimmerColor ??
+        (theme.brightness == Brightness.light
+            ? AppConfig.gold
+            : AppConfig.goldLight);
 
     return AnimatedBuilder(
       animation: _animation,
@@ -133,9 +141,7 @@ class _ShimmerBackgroundState extends State<ShimmerBackground>
                   borderRadius: borderRadius,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: widget.shimmerColor.withValues(
-                        alpha: _animation.value,
-                      ),
+                      color: color.withValues(alpha: _animation.value),
                       borderRadius: borderRadius,
                     ),
                   ),
