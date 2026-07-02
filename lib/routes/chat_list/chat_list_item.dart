@@ -79,28 +79,6 @@ class ChatListItem extends StatelessWidget {
     final space = this.space;
 
     // #Pangea
-    final String messagePreview =
-        room.isSpace && room.membership == Membership.join
-        ? L10n.of(context).countChats(room.spaceChildCount)
-        : room.membership == Membership.invite
-        ? (room
-                  .getState(EventTypes.RoomMember, room.client.userID!)
-                  ?.content
-                  .tryGet<String>('reason') ??
-              (isDirectChat
-                  ? L10n.of(context).newChatRequest
-                  : L10n.of(context).inviteChat))
-        : lastEvent?.calcLocalizedBodyFallback(
-                MatrixLocals(L10n.of(context)),
-                hideReply: true,
-                hideEdit: true,
-                plaintextBody: true,
-                removeMarkdown: true,
-                withSenderNamePrefix:
-                    (!isDirectChat ||
-                    directChatMatrixId != room.lastEvent?.senderId),
-              ) ??
-              L10n.of(context).noMessagesYet;
     final String chatSemanticsLabel = unread
         ? '$displayname, ${L10n.of(context).unread}, '
         : '$displayname, ';

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/user/user_constants.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_tiles.dart';
 import 'package:fluffychat/routes/settings/settings_learning/settings_learning.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -22,48 +20,16 @@ class SettingsLearningView extends StatelessWidget {
             );
       }),
       builder: (context, _) {
-        final dialogContent = SafeArea(
+        return SafeArea(
           child: Scaffold(
-            body: Column(
-              children: [
-                Expanded(
-                  child: MaxWidthBody(
-                    scrollController: controller.scrollController,
-                    showBorder: !controller.widget.isDialog,
-                    child: LearningSettingsTiles(
-                      viewModel: controller.viewModel,
-                      languageErrorNotifier: controller.languageMatchError,
-                      aboutTextController: controller.aboutTextController,
-                      languageTileController: controller.languageTileController,
-                    ),
-                  ),
-                ),
-                ListenableBuilder(
-                  listenable: controller.viewModel,
-                  builder: (context, _) => Container(
-                    padding: const EdgeInsets.all(16.0),
-                    constraints: BoxConstraints(maxWidth: 600),
-                    child: ElevatedButton(
-                      onPressed: controller.viewModel.haveSettingsChanged
-                          ? controller.submit
-                          : null,
-                      child: Row(
-                        mainAxisAlignment: .center,
-                        children: [Text(L10n.of(context).saveChanges)],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            body: MaxWidthBody(
+              scrollController: controller.scrollController,
+              child: LearningSettingsTiles(
+                viewModel: controller.viewModel,
+                languageErrorNotifier: controller.languageMatchError,
+              ),
             ),
           ),
-        );
-
-        if (!controller.widget.isDialog) return dialogContent;
-        return FullWidthDialog(
-          dialogContent: dialogContent,
-          maxWidth: 600,
-          maxHeight: 800,
         );
       },
     );
