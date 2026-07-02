@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:33:16.875242",
+    "@@last_modified": "2026-07-02 09:45:59.798063",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10418,6 +10418,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} 페이지",
+    "closeHint": "힌트 닫기",
+    "starListLabel": "저장된 활동 및 별",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

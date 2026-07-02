@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 
@@ -23,20 +24,24 @@ class PanelCardWithHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PanelCard(
-      child: Column(
-        children: [
-          PanelHeader(
-            leading: IconButton(
-              tooltip: tooltip,
-              icon: Icon(icon),
-              onPressed: onLeading,
+    return Semantics(
+      label: L10n.of(context).pageLabel(title),
+      container: true,
+      child: PanelCard(
+        child: Column(
+          children: [
+            PanelHeader(
+              leading: IconButton(
+                tooltip: tooltip,
+                icon: Icon(icon),
+                onPressed: onLeading,
+              ),
+              title: title,
+              trailing: trailing,
             ),
-            title: title,
-            trailing: trailing,
-          ),
-          Expanded(child: child),
-        ],
+            Expanded(child: child),
+          ],
+        ),
       ),
     );
   }

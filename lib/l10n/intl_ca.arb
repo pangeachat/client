@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:35:03.468240",
+    "@@last_modified": "2026-07-02 09:46:44.803553",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10352,6 +10352,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} pàgina",
+    "closeHint": "Tanca la pista",
+    "starListLabel": "Activitats i estrelles desades",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

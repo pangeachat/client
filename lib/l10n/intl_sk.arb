@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-06-30 09:33:55.832351",
+    "@@last_modified": "2026-07-02 09:46:10.356871",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11317,6 +11317,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} stránka",
+    "closeHint": "Zavrieť nápovedu",
+    "starListLabel": "Uložené aktivity a hviezdy",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

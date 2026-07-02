@@ -58,6 +58,19 @@ class ActivityArchive extends StatelessWidget {
                     const LearningProgressIndicators(
                       selected: ProgressIndicatorEnum.activities,
                     ),
+                  if (!analyticsService.hasInitError)
+                    MaxWidthBody(
+                      showBorder: false,
+                      withScrolling: false,
+                      padding: .only(top: 48),
+                      addVerticalPadding: false,
+                      child: InstructionsInlineTooltip(
+                        instructionsEnum: archive.isEmpty
+                            ? InstructionsEnum.noSavedActivitiesYet
+                            : InstructionsEnum.activityAnalyticsList,
+                        padding: const EdgeInsets.all(8.0),
+                      ),
+                    ),
                   Expanded(
                     child: analyticsService.hasInitError
                         ? AnalyticsInitErrorIndicator(
@@ -66,28 +79,24 @@ class ActivityArchive extends StatelessWidget {
                         : MaxWidthBody(
                             showBorder: false,
                             withScrolling: false,
-                            child: ListView.builder(
-                              key: const PageStorageKey<String>(
-                                'activity-archive',
-                              ),
-                              physics: const ClampingScrollPhysics(),
-                              itemCount: archive.length + 1,
-                              itemBuilder: (BuildContext context, int i) {
-                                if (i == 0) {
-                                  return InstructionsInlineTooltip(
-                                    instructionsEnum: archive.isEmpty
-                                        ? InstructionsEnum.noSavedActivitiesYet
-                                        : InstructionsEnum
-                                              .activityAnalyticsList,
-                                    padding: const EdgeInsets.all(8.0),
+                            padding: .fromLTRB(32, 0, 32, 48),
+                            addVerticalPadding: false,
+                            child: Semantics(
+                              label: L10n.of(context).starListLabel,
+                              container: true,
+                              child: ListView.builder(
+                                key: const PageStorageKey<String>(
+                                  'activity-archive',
+                                ),
+                                physics: const ClampingScrollPhysics(),
+                                itemCount: archive.length,
+                                itemBuilder: (BuildContext context, int i) {
+                                  return AnalyticsActivityItem(
+                                    room: archive[i],
+                                    selected: archive[i].id == selectedRoomId,
                                   );
-                                }
-                                i--;
-                                return AnalyticsActivityItem(
-                                  room: archive[i],
-                                  selected: archive[i].id == selectedRoomId,
-                                );
-                              },
+                                },
+                              ),
                             ),
                           ),
                   ),
@@ -121,66 +130,69 @@ class AnalyticsActivityItem extends StatelessWidget {
         ?.cefrLevel;
 
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-      child: Material(
-        color: selected ? theme.colorScheme.secondaryContainer : null,
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        clipBehavior: Clip.hardEdge,
-        child: ListTile(
-          visualDensity: const VisualDensity(vertical: -0.5),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-          leading: HoverBuilder(
-            builder: (context, hovered) => AnimatedScale(
-              duration: FluffyThemes.animationDuration,
-              curve: FluffyThemes.animationCurve,
-              scale: hovered ? 1.1 : 1.0,
-              child: ExcludeSemantics(
-                child: Avatar(
-                  borderRadius: BorderRadius.circular(4.0),
-                  mxContent: room.avatar,
-                  name: room.getLocalizedDisplayname(),
+    return Semantics(
+      container: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+        child: Material(
+          color: selected ? theme.colorScheme.secondaryContainer : null,
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+          clipBehavior: Clip.hardEdge,
+          child: ListTile(
+            visualDensity: const VisualDensity(vertical: -0.5),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+            leading: HoverBuilder(
+              builder: (context, hovered) => AnimatedScale(
+                duration: FluffyThemes.animationDuration,
+                curve: FluffyThemes.animationCurve,
+                scale: hovered ? 1.1 : 1.0,
+                child: ExcludeSemantics(
+                  child: Avatar(
+                    borderRadius: BorderRadius.circular(4.0),
+                    mxContent: room.avatar,
+                    name: room.getLocalizedDisplayname(),
+                  ),
                 ),
               ),
             ),
-          ),
-          title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
-          subtitle: goals != null
-              ? ActivityStarRow(
-                  total: goals.length,
-                  earned:
-                      room
-                          .orchestratorAwardedGoals
-                          .awards[room.ownRoleState?.id]
-                          ?.length ??
-                      0,
-                  iconSize: 22.0,
-                )
-              : null,
-          trailing: cefrLevel != null
-              ? Semantics(
-                  label: L10n.of(context).difficultyLabel(cefrLevel),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: ExcludeSemantics(
-                      child: Text(
-                        cefrLevel.toUpperCase(),
-                        style: const TextStyle(fontSize: 14.0),
+            title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+            subtitle: goals != null
+                ? ActivityStarRow(
+                    total: goals.length,
+                    earned:
+                        room
+                            .orchestratorAwardedGoals
+                            .awards[room.ownRoleState?.id]
+                            ?.length ??
+                        0,
+                    iconSize: 22.0,
+                  )
+                : null,
+            trailing: cefrLevel != null
+                ? Semantics(
+                    label: L10n.of(context).difficultyLabel(cefrLevel),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      child: ExcludeSemantics(
+                        child: Text(
+                          cefrLevel.toUpperCase(),
+                          style: const TextStyle(fontSize: 14.0),
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : null,
-          onTap: () {
-            AnalyticsNavigationUtil.navigateToAnalytics(
-              context: context,
-              view: ProgressIndicatorEnum.activities,
-              activityRoomId: room.id,
-            );
-          },
+                  )
+                : null,
+            onTap: () {
+              AnalyticsNavigationUtil.navigateToAnalytics(
+                context: context,
+                view: ProgressIndicatorEnum.activities,
+                activityRoomId: room.id,
+              );
+            },
+          ),
         ),
       ),
     );

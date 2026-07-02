@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:33:46.036856",
+    "@@last_modified": "2026-07-02 09:46:07.336727",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10298,6 +10298,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "halaman {title}",
+    "closeHint": "Tutup petunjuk",
+    "starListLabel": "Aktivitas dan bintang yang disimpan",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

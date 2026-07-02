@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:35:55.800318",
+    "@@last_modified": "2026-07-02 09:47:00.985483",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7284,6 +7284,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "Trang {title}",
+    "closeHint": "Đóng gợi ý",
+    "starListLabel": "Các hoạt động và sao đã lưu",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

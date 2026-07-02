@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-06-30 09:34:19.850202",
+    "@@last_modified": "2026-07-02 09:46:21.665970",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10201,6 +10201,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} orria",
+    "closeHint": "Itxi iradokizuna",
+    "starListLabel": "Gordetako jarduerak eta izarrak",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

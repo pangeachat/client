@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:37:02.357546",
+    "@@last_modified": "2026-07-02 09:47:25.495784",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11324,6 +11324,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} страница",
+    "closeHint": "Затвори савет",
+    "starListLabel": "Сачуване активности и звезде",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

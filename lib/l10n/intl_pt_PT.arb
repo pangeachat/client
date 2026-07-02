@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-06-30 09:35:11.966357",
+    "@@last_modified": "2026-07-02 09:46:47.470628",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11277,6 +11277,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "página {title}",
+    "closeHint": "Dica de fechamento",
+    "starListLabel": "Atividades salvas e estrelas",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

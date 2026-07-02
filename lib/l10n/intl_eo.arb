@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:36:47.721639",
+    "@@last_modified": "2026-07-02 09:47:21.685399",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11320,6 +11320,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} paĝo",
+    "closeHint": "Fermi konsilon",
+    "starListLabel": "Konservitaj aktivecoj kaj steloj",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

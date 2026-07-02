@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-06-30 09:37:11.762721",
+    "@@last_modified": "2026-07-02 09:47:29.028988",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10598,6 +10598,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "page {title}",
+    "closeHint": "Fermer l'indice",
+    "starListLabel": "Activités enregistrées et étoiles",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

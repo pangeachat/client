@@ -13,7 +13,12 @@ class AnalyticsInitErrorIndicator extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ErrorIndicator(message: L10n.of(context).oopsSomethingWentWrong),
+          Semantics(
+            container: true,
+            child: ErrorIndicator(
+              message: L10n.of(context).oopsSomethingWentWrong,
+            ),
+          ),
           SizedBox(height: 8.0),
           TextButton(
             onPressed: reinitialize,

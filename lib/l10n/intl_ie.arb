@@ -3377,7 +3377,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-06-30 09:33:59.675955",
+    "@@last_modified": "2026-07-02 09:46:13.036387",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10920,6 +10920,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} leathanach",
+    "closeHint": "Dún comhoibriú",
+    "starListLabel": "Gníomhaíochtaí agus réaltaí a shábháil",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

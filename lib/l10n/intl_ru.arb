@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-06-30 09:36:52.110383",
+    "@@last_modified": "2026-07-02 09:47:22.806073",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11215,6 +11215,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} страница",
+    "closeHint": "Закрыть подсказку",
+    "starListLabel": "Сохраненные активности и звезды",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

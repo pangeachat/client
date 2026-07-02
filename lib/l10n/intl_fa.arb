@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:36:22.729933",
+    "@@last_modified": "2026-07-02 09:47:08.800389",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10313,6 +10313,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} صفحه",
+    "closeHint": "نکته را ببندید",
+    "starListLabel": "فعالیت‌ها و ستاره‌های ذخیره شده",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

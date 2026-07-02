@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-06-30 09:36:19.055994",
+    "@@last_modified": "2026-07-02 09:47:07.570290",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10916,6 +10916,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} পৃষ্ঠা",
+    "closeHint": "বন্ধ করার ইঙ্গিত",
+    "starListLabel": "সংরক্ষিত কার্যক্রম এবং তারা",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }

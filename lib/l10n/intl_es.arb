@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-06-30 09:33:20.956127",
+    "@@last_modified": "2026-07-02 09:46:01.387772",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8295,6 +8295,25 @@
         }
     },
     "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} página",
+    "closeHint": "Cerrar pista",
+    "starListLabel": "Actividades guardadas y estrellas",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     }
