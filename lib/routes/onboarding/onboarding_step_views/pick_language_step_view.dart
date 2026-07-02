@@ -68,6 +68,8 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
     final baseLanguage =
         _step.state.baseLanguage ?? userL1 ?? systemLanguage ?? defaultLanguage;
 
+    _selectedBaseLanguage.addListener(_onBaseLanguageChanged);
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setBaseLanguage(baseLanguage);
       _setTargetLanguage(targetLanguage);
@@ -76,6 +78,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
   @override
   void dispose() {
+    _selectedBaseLanguage.removeListener(_onBaseLanguageChanged);
     _searchController.dispose();
     _selectedBaseLanguage.dispose();
     _selectedTargetLanguage.dispose();
@@ -99,10 +102,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectBaseLanguage(lang);
     _selectedBaseLanguage.value = lang;
-
-    if (lang != null) {
-      _setAppLanguage(lang);
-    }
   }
 
   void _setTargetLanguage(LanguageModel? lang) {
@@ -113,6 +112,13 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectTargetLanguage(lang);
     _selectedTargetLanguage.value = lang;
+  }
+
+  void _onBaseLanguageChanged() {
+    final lang = _selectedBaseLanguage.value;
+    if (lang != null) {
+      Future.delayed(Duration(milliseconds: 500), () => _setAppLanguage(lang));
+    }
   }
 
   void _setAppLanguage(LanguageModel language) {
