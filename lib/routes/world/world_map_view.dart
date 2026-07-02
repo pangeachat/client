@@ -465,72 +465,76 @@ class _WorldMapViewState extends State<WorldMapView> {
     // Detect newly-gone pins before building the marker layers.
     _updateExiting(render);
 
-    final map = FlutterMap(
-      mapController: widget.controller.mapController,
-      options: MapOptions(
-        // The persistent instance keeps its own camera across navigation,
-        // so no external camera-state restore is needed.
-        initialCenter:
-            widget.controller.widget.initialCenter ?? const LatLng(20, 0),
-        initialZoom: widget.controller.widget.initialZoom ?? 3,
-        // minZoom 3 (not 2): containLatitude rejects a move when the
-        // constrained latitude band is shorter than the viewport, and the
-        // ±90 band is only ~1024px tall at z2 — that would freeze *all*
-        // panning on windows taller than ~1024px (common when maximized).
-        // z3 gives a ~2048px band, clearing any realistic viewport.
-        minZoom: WorldMapConstants.minZoom,
-        maxZoom: WorldMapConstants.maxZoom,
-        // Clamp latitude only — leaving longitude free so the user can pan
-        // east-west and the world wraps seamlessly ("rotate the world
-        // around"). Epsg3857 replicates longitude, so tiles and markers
-        // repeat across world copies automatically. A longitude-bounded
-        // `contain`/`containCenter` pins the camera when zoomed out and hides
-        // content behind the left column with no way to pan it out.
-        cameraConstraint: const CameraConstraint.containLatitude(90, -90),
-        interactionOptions: const InteractionOptions(
-          flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+    final map = Semantics(
+      label: L10n.of(context).activityMapLabel,
+      container: true,
+      child: FlutterMap(
+        mapController: widget.controller.mapController,
+        options: MapOptions(
+          // The persistent instance keeps its own camera across navigation,
+          // so no external camera-state restore is needed.
+          initialCenter:
+              widget.controller.widget.initialCenter ?? const LatLng(20, 0),
+          initialZoom: widget.controller.widget.initialZoom ?? 3,
+          // minZoom 3 (not 2): containLatitude rejects a move when the
+          // constrained latitude band is shorter than the viewport, and the
+          // ±90 band is only ~1024px tall at z2 — that would freeze *all*
+          // panning on windows taller than ~1024px (common when maximized).
+          // z3 gives a ~2048px band, clearing any realistic viewport.
+          minZoom: WorldMapConstants.minZoom,
+          maxZoom: WorldMapConstants.maxZoom,
+          // Clamp latitude only — leaving longitude free so the user can pan
+          // east-west and the world wraps seamlessly ("rotate the world
+          // around"). Epsg3857 replicates longitude, so tiles and markers
+          // repeat across world copies automatically. A longitude-bounded
+          // `contain`/`containCenter` pins the camera when zoomed out and hides
+          // content behind the left column with no way to pan it out.
+          cameraConstraint: const CameraConstraint.containLatitude(90, -90),
+          interactionOptions: const InteractionOptions(
+            flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+          ),
+          // Tapping empty map does not clear focus — a focus is cleared only by
+          // closing its panel or focusing another (world-map.instructions.md).
+          // World pins are viewport-bounded: load once the camera is ready, then
+          // re-load (debounced) as the user pans/zooms. Course pins are
+          // context-bound and unaffected.
+          onMapReady: widget.controller.loadWorldPins,
+          onPositionChanged: (_, hasGesture) =>
+              widget.controller.onMapPositionChanged(hasGesture),
         ),
-        // Tapping empty map does not clear focus — a focus is cleared only by
-        // closing its panel or focusing another (world-map.instructions.md).
-        // World pins are viewport-bounded: load once the camera is ready, then
-        // re-load (debounced) as the user pans/zooms. Course pins are
-        // context-bound and unaffected.
-        onMapReady: widget.controller.loadWorldPins,
-        onPositionChanged: (_, hasGesture) =>
-            widget.controller.onMapPositionChanged(hasGesture),
+        children: [
+          // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
+          // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
+          // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
+          TileLayer(
+            urlTemplate: dark
+                ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            retinaMode: retina,
+            userAgentPackageName: 'com.talktolearn.chat',
+          ),
+          // world_v2: activity pins by relevance tier + state, capped by the
+          // width-driven budget. Small/mid dots render individually (no
+          // clustering); the large featured cards render unclustered above so
+          // they're always visible.
+          MarkerLayer(markers: _dotMarkers(render)),
+          // Dying pins (a separate layer) so they don't disturb the live pins
+          // while animating out.
+          MarkerLayer(markers: _exitingMarkers()),
+          // Large cards (always visible): the featured cards the width affords.
+          MarkerLayer(markers: _largeMarkers(render)),
+          RichAttributionWidget(
+            // #7218: bottom-LEFT so the attribution and its expand popup don't sit
+            // under the bottom-right zoom/World controls (where it was covered and
+            // hard to read, especially in dark mode).
+            alignment: AttributionAlignment.bottomLeft,
+            attributions: [
+              TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
+              if (dark) TextSourceAttribution('CARTO', onTap: () {}),
+            ],
+          ),
+        ],
       ),
-      children: [
-        // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-        // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
-        // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
-        TileLayer(
-          urlTemplate: dark
-              ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-              : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          retinaMode: retina,
-          userAgentPackageName: 'com.talktolearn.chat',
-        ),
-        // world_v2: activity pins by relevance tier + state, capped by the
-        // width-driven budget. Small/mid dots render individually (no
-        // clustering); the large featured cards render unclustered above so
-        // they're always visible.
-        MarkerLayer(markers: _dotMarkers(render)),
-        // Dying pins (a separate layer) so they don't disturb the live pins
-        // while animating out.
-        MarkerLayer(markers: _exitingMarkers()),
-        // Large cards (always visible): the featured cards the width affords.
-        MarkerLayer(markers: _largeMarkers(render)),
-        RichAttributionWidget(
-          // #7218: bottom-LEFT so the attribution and its expand popup don't sit
-          // under the bottom-right zoom/World controls (where it was covered and
-          // hard to read, especially in dark mode).
-          alignment: AttributionAlignment.bottomLeft,
-          attributions: [
-            TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
-            if (dark) TextSourceAttribution('CARTO', onTap: () {}),
-          ],
-        ),
-      ],
     );
 
     // The on-map zoom-out / World control (#7086): pins and search only zoom the
@@ -622,26 +626,30 @@ class _MapZoomControls extends StatelessWidget {
           final zoom = _currentZoom();
           final canZoomIn = zoom == null || WorldMapConstants.canZoomIn(zoom);
           final canZoomOut = zoom == null || WorldMapConstants.canZoomOut(zoom);
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.public),
-                tooltip: l10n.resetMapView,
-                onPressed: controller.resetToWorld,
-              ),
-              Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
-              IconButton(
-                icon: const Icon(Icons.add),
-                tooltip: l10n.zoomIn,
-                onPressed: canZoomIn ? () => controller.zoomBy(1) : null,
-              ),
-              IconButton(
-                icon: const Icon(Icons.remove),
-                tooltip: l10n.zoomOut,
-                onPressed: canZoomOut ? () => controller.zoomBy(-1) : null,
-              ),
-            ],
+          return Semantics(
+            label: l10n.mapZoomLabel,
+            container: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.public),
+                  tooltip: l10n.resetMapView,
+                  onPressed: controller.resetToWorld,
+                ),
+                Divider(height: 1.0, color: theme.colorScheme.outlineVariant),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  tooltip: l10n.zoomIn,
+                  onPressed: canZoomIn ? () => controller.zoomBy(1) : null,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.remove),
+                  tooltip: l10n.zoomOut,
+                  onPressed: canZoomOut ? () => controller.zoomBy(-1) : null,
+                ),
+              ],
+            ),
           );
         },
       ),

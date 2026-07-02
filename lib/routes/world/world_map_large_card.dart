@@ -121,6 +121,7 @@ class WorldMapLargeCard extends StatelessWidget {
       // screen reader gets context and the title is not double-read (#7185).
       child: Semantics(
         label: L10n.of(context).activityLabel(card.title),
+        container: true,
         button: true,
         // The focus ring sits OUTSIDE the card with a small gap (the padding)
         // so the primary halo and the state-accent border never blend (#7349).
@@ -356,18 +357,20 @@ class _Header extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: SizedBox(
-            width: 48,
-            height: 48,
-            child: imageUrl != null
-                ? Image.network(
-                    imageUrl.toString(),
-                    fit: BoxFit.cover,
-                    semanticLabel: L10n.of(context).activityPhoto,
-                    errorBuilder: (context, _, _) =>
-                        Container(color: Colors.black12),
-                  )
-                : Container(color: Colors.black12),
+          child: ExcludeSemantics(
+            child: SizedBox(
+              width: 48,
+              height: 48,
+              child: imageUrl != null
+                  ? Image.network(
+                      imageUrl.toString(),
+                      fit: BoxFit.cover,
+                      semanticLabel: L10n.of(context).activityPhoto,
+                      errorBuilder: (context, _, _) =>
+                          Container(color: Colors.black12),
+                    )
+                  : Container(color: Colors.black12),
+            ),
           ),
         ),
         const SizedBox(width: 8),

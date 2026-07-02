@@ -35,38 +35,41 @@ class MobileBottomNav extends StatelessWidget {
       color: theme.colorScheme.surface,
       child: SafeArea(
         top: false,
-        child: SizedBox(
-          height: 56,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              PangeaIconButton(
-                selected: section == AppSection.world,
-                tooltip: L10n.of(context).world,
-                // World is home: clear every panel and reveal the full map.
-                onPressed: () => context.go(WorkspaceNav.clearAll()),
-              ),
-              _NavButton(
-                icon: Icons.forum_outlined,
-                selectedIcon: Icons.forum,
-                selected: section == AppSection.chats,
-                tooltip: L10n.of(context).allChats,
-                onTap: () => context.go(
-                  WorkspaceNav.setSection(
-                    state.uri,
-                    PRoutes.world,
-                    const PanelToken('chats'),
-                    // A nav click replaces the open panels rather than stacking.
-                    keepRoom: false,
+        child: Semantics(
+          label: L10n.of(context).navOptionsLabel,
+          child: SizedBox(
+            height: 56,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                PangeaIconButton(
+                  selected: section == AppSection.world,
+                  tooltip: L10n.of(context).world,
+                  // World is home: clear every panel and reveal the full map.
+                  onPressed: () => context.go(WorkspaceNav.clearAll()),
+                ),
+                _NavButton(
+                  icon: Icons.forum_outlined,
+                  selectedIcon: Icons.forum,
+                  selected: section == AppSection.chats,
+                  tooltip: L10n.of(context).allChats,
+                  onTap: () => context.go(
+                    WorkspaceNav.setSection(
+                      state.uri,
+                      PRoutes.world,
+                      const PanelToken('chats'),
+                      // A nav click replaces the open panels rather than stacking.
+                      keepRoom: false,
+                    ),
                   ),
                 ),
-              ),
-              // Analytics and Profile are reached from the top-right cluster (its
-              // trackers / avatar), not the bottom nav — the bar is only the
-              // section switcher (World / Chats / Courses). See
-              // routing.instructions.md.
-              _SpaceSwitcherButton(activeSpaceId: activeSpaceId),
-            ],
+                // Analytics and Profile are reached from the top-right cluster (its
+                // trackers / avatar), not the bottom nav — the bar is only the
+                // section switcher (World / Chats / Courses). See
+                // routing.instructions.md.
+                _SpaceSwitcherButton(activeSpaceId: activeSpaceId),
+              ],
+            ),
           ),
         ),
       ),

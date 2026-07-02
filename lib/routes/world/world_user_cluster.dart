@@ -101,33 +101,36 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
       stream: MatrixState.pangeaController.userController.languageStream.stream,
       builder: (context, _) {
         final l2 = MatrixState.pangeaController.userController.userL2;
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ListenableBuilder(
-              listenable: Listenable.merge([_avatarUrl, _displayName]),
-              builder: (context, _) => _Avatar(
-                avatarUrl: _avatarUrl.value,
-                name: _displayName.value,
-                onTap: _openProfile,
-              ),
-            ),
-            const SizedBox(height: 8),
-            _PowerupsPill(
-              onTap: _openAnalytics,
-              onLevelTap: _openLevel,
-              l2: l2,
-            ),
-            if (l2 != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: _LanguageFlag(
-                  language: l2,
-                  onTap: _openLearningSettings,
+        return Semantics(
+          label: L10n.of(context).analyticsAndSettingsLabel,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ListenableBuilder(
+                listenable: Listenable.merge([_avatarUrl, _displayName]),
+                builder: (context, _) => _Avatar(
+                  avatarUrl: _avatarUrl.value,
+                  name: _displayName.value,
+                  onTap: _openProfile,
                 ),
               ),
-          ],
+              const SizedBox(height: 8),
+              _PowerupsPill(
+                onTap: _openAnalytics,
+                onLevelTap: _openLevel,
+                l2: l2,
+              ),
+              if (l2 != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: _LanguageFlag(
+                    language: l2,
+                    onTap: _openLearningSettings,
+                  ),
+                ),
+            ],
+          ),
         );
       },
     );

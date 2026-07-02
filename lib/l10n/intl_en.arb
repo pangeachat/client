@@ -5013,5 +5013,13 @@
     },
     "closeHint": "Close hint",
     "starListLabel": "Saved activities and stars", 
+    "navOptionsLabel": "Navigation options",
+    "joinedCourseListLabel": "Joined course list",
+    "analyticsAndSettingsLabel": "Analytics and Settings options",
+    "searchActivitiesLabel": "Search for activities on map",
+    "filteredActivitiesLabel": "Filtered activity list", 
+    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
+    "mapZoomLabel": "Map zoom controls", 
+    "activityMapLabel": "Activity map", 
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
 }
