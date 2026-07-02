@@ -13,14 +13,14 @@ class LevelUpdate {
   final int prevLevel;
   final int newLevel;
 
-  LevelUpdate({required this.prevLevel, required this.newLevel});
+  const LevelUpdate({required this.prevLevel, required this.newLevel});
 }
 
 class AnalyticsUpdate {
   final List<OneConstructUse> addedConstructs;
   final String? targetID;
 
-  AnalyticsUpdate(this.addedConstructs, {this.targetID});
+  const AnalyticsUpdate(this.addedConstructs, {this.targetID});
 }
 
 class ConstructLevelUpdate {
@@ -28,11 +28,18 @@ class ConstructLevelUpdate {
   final ConstructLevelEnum level;
   final String? targetID;
 
-  ConstructLevelUpdate({
+  const ConstructLevelUpdate({
     required this.constructId,
     required this.level,
     this.targetID,
   });
+}
+
+class UnlockedConstructsUpdate {
+  final Set<ConstructIdentifier> constructs;
+  final String? targetId;
+
+  const UnlockedConstructsUpdate({required this.constructs, this.targetId});
 }
 
 class AnalyticsUpdateDispatcher {
@@ -44,8 +51,8 @@ class AnalyticsUpdateDispatcher {
   final StreamController<String?> activityAnalyticsStream =
       StreamController<String?>.broadcast();
 
-  final StreamController<Set<ConstructIdentifier>> unlockedConstructsStream =
-      StreamController<Set<ConstructIdentifier>>.broadcast();
+  final StreamController<UnlockedConstructsUpdate> unlockedConstructsStream =
+      StreamController<UnlockedConstructsUpdate>.broadcast();
 
   final StreamController<LevelUpdate> levelUpdateStream =
       StreamController<LevelUpdate>.broadcast();
@@ -143,7 +150,7 @@ class AnalyticsUpdateDispatcher {
         _onLevelUp(e.from, e.to);
         break;
       case final MorphUnlockedEvent e:
-        _onUnlockMorphLemmas(e.unlocked);
+        _onUnlockMorphLemmas(e.unlocked, e.targetId);
         break;
       case final XPGainedEvent e:
         _onXPGained(e.points, e.targetID);
@@ -163,7 +170,10 @@ class AnalyticsUpdateDispatcher {
     );
   }
 
-  void _onUnlockMorphLemmas(Set<ConstructIdentifier> unlocked) {
+  void _onUnlockMorphLemmas(
+    Set<ConstructIdentifier> unlocked,
+    String? targetId,
+  ) {
     const excludedLemmas = {'not_proper'};
 
     final filtered = {
@@ -172,7 +182,11 @@ class AnalyticsUpdateDispatcher {
     };
 
     if (filtered.isNotEmpty) {
-      unlockedConstructsStream.add(filtered);
+      final update = UnlockedConstructsUpdate(
+        constructs: filtered,
+        targetId: targetId,
+      );
+      unlockedConstructsStream.add(update);
     }
   }
 

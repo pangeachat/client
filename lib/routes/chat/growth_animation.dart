@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -11,8 +9,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Tracks active growth animations for offset calculation
 class GrowthAnimationTracker {
   static int _activeCount = 0;
-
-  static int get activeCount => _activeCount;
 
   static double? startAnimation() {
     if (_activeCount >= 5) return null;
@@ -30,35 +26,32 @@ class GrowthAnimationTracker {
 
 class GrowthAnimation extends StatefulWidget {
   final String targetID;
-  final ConstructLevelEnum level;
+  final Widget icon;
 
   const GrowthAnimation({
     super.key,
     required this.targetID,
-    required this.level,
+    required this.icon,
   });
 
   static void show(
     BuildContext context,
     String targetId,
-    ConstructLevelEnum level,
-    ConstructIdentifier constructId,
-  ) {
-    final overlayKey = "${targetId}_growth_${constructId.string}";
-    OverlayUtil.showOverlay(
-      context: context,
-      child: GrowthAnimation(targetID: overlayKey, level: level),
-      displayDetails: TransformOverlayDisplayDetails(
-        overlayKey: overlayKey,
-        followerAnchor: Alignment.topCenter,
-        targetAnchor: Alignment.topCenter,
-        transformTargetId: targetId,
-        closePrevOverlay: false,
-        backDropToDismiss: false,
-        ignorePointer: true,
-      ),
-    );
-  }
+    String overlayKey,
+    Widget icon,
+  ) => OverlayUtil.showOverlay(
+    context: context,
+    child: GrowthAnimation(targetID: overlayKey, icon: icon),
+    displayDetails: TransformOverlayDisplayDetails(
+      overlayKey: overlayKey,
+      followerAnchor: Alignment.topCenter,
+      targetAnchor: Alignment.topCenter,
+      transformTargetId: targetId,
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
+    ),
+  );
 
   @override
   State<GrowthAnimation> createState() => _GrowthAnimationState();
@@ -113,10 +106,7 @@ class _GrowthAnimationState extends State<GrowthAnimation>
         final wiggle = sin(t * pi * _wiggleFrequency) * _wiggleAmplitude;
         return Transform.translate(
           offset: Offset(_horizontalOffset + wiggle, dy),
-          child: Opacity(
-            opacity: opacity.clamp(0.0, 1.0),
-            child: widget.level.icon(24),
-          ),
+          child: Opacity(opacity: opacity.clamp(0.0, 1.0), child: widget.icon),
         );
       },
     );

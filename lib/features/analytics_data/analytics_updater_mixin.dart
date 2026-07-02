@@ -48,12 +48,13 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
   }
 
   void _onConstructLevelUp(ConstructLevelUpdate update) {
-    if (update.targetID != null) {
+    final targetId = update.targetID;
+    if (targetId != null) {
       GrowthAnimation.show(
         context,
-        update.targetID!,
-        update.level,
-        update.constructId,
+        targetId,
+        "${targetId}_growth_${update.constructId.string}",
+        update.level.icon(24),
       );
     }
   }
