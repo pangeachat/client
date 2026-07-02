@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 class WorldMapDot extends StatefulWidget {
@@ -124,8 +125,8 @@ class _SmallDotContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _WorldMapStateDot(
     state: state,
-    diameter: 18,
-    borderWidth: 1.5,
+    diameter: PinSize.smallDiameter,
+    borderWidth: 1.0,
     fill: fill,
     isFocused: isFocused,
   );
@@ -182,13 +183,20 @@ class _MediumDotContent extends StatelessWidget {
   );
 }
 
-/// The state-coloured pin body with the progress fill: an outer [state]-coloured
-/// disc, an inner gold disc whose radius scales with [fill] (0..1 — stars earned
-/// toward the activity's total), and an optional [glyph] on top. The fill is
-/// linear in radius (`r = innerRadius·fill`), so a full activity reads as a solid
-/// gold centre while a fresh one shows none. When [isFocused], a primary-coloured
-/// focus ring (a halo with a gap) wraps the disc, distinct from the white
-/// state-border (#7349). Design: world-map.instructions.md.
+/// The pin body, keyed off the colour [state]:
+///
+///  - **inProgress** renders as a **gold star** (the state _is_ the progress),
+///    sized by [fill] (0..1 — stars earned toward the total) between
+///    [PinSize.progressStarMin] and [PinSize.progressStarMax], in place of the
+///    coloured disc — never a disc + fill, so a progressed pin reads as a star;
+///  - every other state renders as a [state]-coloured disc with a white border
+///    and an optional [glyph] on top.
+///
+/// When [isFocused], a primary-coloured focus ring (a halo with a gap) wraps the
+/// body, distinct from the white state-border (#7349). Progress is shown on the
+/// dot only via the inProgress state; a joinable/joined pin that also has stars
+/// shows the live colour here and its star row on the large card. Design:
+/// world-map.instructions.md ("Goal Progress").
 class _WorldMapStateDot extends StatelessWidget {
   final ActivityPinState state;
   final double diameter;
@@ -208,32 +216,35 @@ class _WorldMapStateDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inner = (diameter - 2 * borderWidth) * fill.clamp(0.0, 1.0);
-    final dot = Container(
-      width: diameter,
-      height: diameter,
-      decoration: BoxDecoration(
-        color: state.color,
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.white, width: borderWidth),
-        boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          if (inner > 0)
-            Container(
-              width: inner,
-              height: inner,
-              decoration: const BoxDecoration(
-                color: AppConfig.gold,
-                shape: BoxShape.circle,
-              ),
-            ),
-          ?glyph,
-        ],
-      ),
-    );
+    final Widget dot;
+    final double bodyDiameter;
+    if (state == ActivityPinState.inProgress) {
+      // Progress is the state: a gold star replaces the dot, growing with the
+      // fraction of stars earned within the tuning bounds.
+      bodyDiameter =
+          PinSize.progressStarMin +
+          (PinSize.progressStarMax - PinSize.progressStarMin) *
+              fill.clamp(0.0, 1.0);
+      dot = Icon(
+        Icons.star,
+        size: bodyDiameter,
+        color: AppConfig.gold,
+        shadows: const [Shadow(blurRadius: 3, color: Colors.black38)],
+      );
+    } else {
+      bodyDiameter = diameter;
+      dot = Container(
+        width: diameter,
+        height: diameter,
+        decoration: BoxDecoration(
+          color: state.color,
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: borderWidth),
+          boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
+        ),
+        child: glyph == null ? null : Center(child: glyph),
+      );
+    }
 
     if (!isFocused) return dot;
 
@@ -246,7 +257,7 @@ class _WorldMapStateDot extends StatelessWidget {
     final primary = Theme.of(context).colorScheme.primary;
     const ringWidth = 2.5;
     const gap = 2.0;
-    final ringDiameter = diameter + 2 * (gap + ringWidth);
+    final ringDiameter = bodyDiameter + 2 * (gap + ringWidth);
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,

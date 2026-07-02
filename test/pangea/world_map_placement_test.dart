@@ -15,14 +15,12 @@ void main() {
   PlacementResult place({
     required Map<String, Offset?> offsets,
     List<String>? ordered,
-    String? selectedId,
-    Iterable<String>? visibleIds,
+    String? focusedId,
     Rect safeArea = viewport,
     int largeBudget = 3,
   }) => placeLargeCards(
     orderedCandidates: ordered ?? offsets.keys.toList(),
-    selectedId: selectedId,
-    visibleIds: visibleIds ?? offsets.keys,
+    focusedId: focusedId,
     screenOffsetOf: (id) => offsets[id],
     cardSize: card,
     safeArea: safeArea,
@@ -35,7 +33,6 @@ void main() {
         offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
       );
       expect(r.largeIds, ['a', 'b']);
-      expect(r.suppressedIds, isEmpty);
     });
 
     test('overlapping cards: the lower-scored yields its large slot', () {
@@ -89,75 +86,55 @@ void main() {
       final r = place(offsets: {'a': null, 'b': const Offset(600, 300)});
       expect(r.largeIds, ['b']);
     });
+
+    test('a zero large budget places nothing', () {
+      final r = place(
+        offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
+        largeBudget: 0,
+      );
+      expect(r.largeIds, isEmpty);
+    });
   });
 
-  group('placeLargeCards — selected priority', () {
-    test('selected is always large and featured yields around it', () {
+  group('placeLargeCards — focused priority', () {
+    test('a focused candidate is placed first; featured yields around it', () {
       // s spans x[70,330]; f overlaps it (x[170,430]); g is clear (x[470,730]).
+      // Even though f outranks s in the ordered list, s (focused) claims its
+      // footprint first, so f yields and g still fits.
       final r = place(
         offsets: {
           's': const Offset(200, 300),
           'f': const Offset(300, 300),
           'g': const Offset(600, 300),
         },
-        ordered: ['f', 'g'],
-        selectedId: 's',
+        ordered: ['f', 's', 'g'],
+        focusedId: 's',
       );
       expect(r.largeIds, contains('s'));
       expect(r.largeIds, contains('g'));
       expect(r.largeIds, isNot(contains('f')));
     });
 
-    test('selected never yields even spilling an edge', () {
+    test('a focused pin that is not a candidate is not forced large', () {
+      // s projects on-screen but isn't in the ranked candidates this view, so it
+      // stays a dot (with its focus ring) — focus does not force a card.
       final r = place(
-        offsets: {'s': const Offset(780, 300)}, // x[650,910] off the right edge
-        ordered: const [],
-        selectedId: 's',
-      );
-      expect(r.largeIds, ['s']);
-    });
-
-    test('an unprojectable selection claims no large slot', () {
-      // s has no screen point (fell out of view); three featured cards all fit
-      // (centers 130/390/650 → touching, non-overlapping). A stale selection
-      // must not silently burn a slot and drop the third featured to its dot.
-      final r = place(
-        offsets: {
-          's': null,
-          'a': const Offset(130, 300),
-          'b': const Offset(390, 300),
-          'c': const Offset(650, 300),
-        },
-        ordered: ['a', 'b', 'c'],
-        selectedId: 's',
-      );
-      expect(r.largeIds, ['a', 'b', 'c']);
-    });
-  });
-
-  group('placeLargeCards — cluster suppression', () {
-    test('long-tail pins under a placed card are suppressed', () {
-      final r = place(
-        offsets: {
-          'a': const Offset(400, 300), // placed: rect x[270,530], y[116,300]
-          'under': const Offset(400, 200), // inside the card
-          'outside': const Offset(400, 500), // below the pin, outside the card
-        },
+        offsets: {'s': const Offset(200, 300), 'a': const Offset(600, 300)},
         ordered: ['a'],
+        focusedId: 's',
       );
       expect(r.largeIds, ['a']);
-      expect(r.suppressedIds, contains('under'));
-      expect(r.suppressedIds, isNot(contains('outside')));
     });
 
-    test('a selected card also suppresses the long tail beneath it', () {
+    test('a focused card that does not fit yields to its dot', () {
+      // x[650,910] spills past the 800 right edge — focus no longer overrides
+      // the fit test (there is no peek to keep on screen).
       final r = place(
-        offsets: {'s': const Offset(400, 300), 'under': const Offset(400, 200)},
-        ordered: const [],
-        selectedId: 's',
-        visibleIds: ['s', 'under'],
+        offsets: {'s': const Offset(780, 300)},
+        ordered: ['s'],
+        focusedId: 's',
       );
-      expect(r.suppressedIds, contains('under'));
+      expect(r.largeIds, isEmpty);
     });
   });
 }

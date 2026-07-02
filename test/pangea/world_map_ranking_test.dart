@@ -119,6 +119,26 @@ void main() {
       expect(score, 3);
     });
 
+    test('joined contributes 2 (a strong resurface bump, below joinable)', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joined),
+      );
+      expect(score, 2);
+    });
+
+    test('joinable outranks joined (join others over resume your own)', () {
+      final joinable = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+      );
+      final joined = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joined),
+      );
+      expect(joinable, greaterThan(joined));
+    });
+
     test('the band is added verbatim', () {
       final score = pinScore(band: 1.5, s: const PinSignals());
       expect(score, 1.5);
@@ -175,6 +195,9 @@ void main() {
     ProgressionResolution progression = ProgressionResolution.empty,
     int largeBudget = 3,
     int midBudget = 10,
+    int smallBudget = 0,
+    int trailBudget = 0,
+    Set<String> progressedIds = const {},
     int maxPerDiversityKey = 2,
   }) => rankPins(
     inViewPins: pins,
@@ -184,6 +207,9 @@ void main() {
     signals: signals,
     largeBudget: largeBudget,
     midBudget: midBudget,
+    smallBudget: smallBudget,
+    trailBudget: trailBudget,
+    progressedIds: progressedIds,
     maxPerDiversityKey: maxPerDiversityKey,
   );
 
@@ -295,6 +321,53 @@ void main() {
       );
       // No gate excludes it — it earns the slot when it is all there is.
       expect(result.largeIds, ['done']);
+    });
+  });
+
+  group('rankPins — total cap N and the trail reservation', () {
+    test('the on-screen cap N is large + mid + small', () {
+      final pins = [_card('a'), _card('b'), _card('c'), _card('d')];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 1,
+        midBudget: 1,
+        smallBudget: 1,
+      );
+      expect(result.ordered.length, 3); // one of four drops past N = 3
+    });
+
+    test('the trail reserves a slot for a low-ranked progressed activity', () {
+      final pins = [
+        _card('live'), // joinable → 3.5
+        _card('recent'), // recency 1.0 → 0.8
+        _card('other'), // recency 0.2 → 0.56
+        _card('prog'), // plain → 0.5, but progressed
+      ];
+      final signals = {
+        'live': const PinSignals(state: ActivityPinState.joinable),
+        'recent': const PinSignals(recency: 1.0),
+        'other': const PinSignals(recency: 0.2),
+        'prog': const PinSignals(),
+      };
+
+      // N = 2, no trail: the top two by score.
+      final noTrail = rank(pins, signals, largeBudget: 0, midBudget: 2);
+      expect(noTrail.ordered, ['live', 'recent']);
+
+      // N = 2, trail = 1 for the progressed 'prog': it is guaranteed a slot,
+      // displacing the lowest-ranked non-progressed chosen ('recent'), so the
+      // count stays at N.
+      final withTrail = rank(
+        pins,
+        signals,
+        largeBudget: 0,
+        midBudget: 2,
+        trailBudget: 1,
+        progressedIds: {'prog'},
+      );
+      expect(withTrail.ordered.toSet(), {'live', 'prog'});
+      expect(withTrail.ordered.length, 2);
     });
   });
 }
