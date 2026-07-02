@@ -5013,6 +5013,7 @@
     },
     "closeHint": "Close hint",
     "starListLabel": "Saved activities and stars", 
+    "customizePollLabel": "Customize poll", 
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
     "analyticsAndSettingsLabel": "Analytics and Settings options",

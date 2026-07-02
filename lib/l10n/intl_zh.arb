@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-02 09:47:06.203562",
+    "@@last_modified": "2026-07-02 16:44:49.455276",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10220,6 +10220,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "自定义投票",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

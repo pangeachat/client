@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-02 09:46:05.835868",
+    "@@last_modified": "2026-07-02 16:44:15.863315",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10347,6 +10347,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Testreszabás szavazás",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

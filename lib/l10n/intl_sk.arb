@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-02 09:46:10.356871",
+    "@@last_modified": "2026-07-02 16:44:18.515178",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11336,6 +11336,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Prispôsobiť anketu",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

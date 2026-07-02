@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-02 09:46:26.356427",
+    "@@last_modified": "2026-07-02 16:44:31.538779",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10199,6 +10199,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Umfrage anpassen",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

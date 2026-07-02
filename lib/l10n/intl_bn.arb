@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:47:07.570290",
+    "@@last_modified": "2026-07-02 16:44:50.172667",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10935,6 +10935,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "পোল কাস্টমাইজ করুন",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

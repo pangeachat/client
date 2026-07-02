@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:47:02.587194",
+    "@@last_modified": "2026-07-02 16:44:47.312783",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10336,6 +10336,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "கோலத்தை தனிப்பயனாக்கவும்",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -200,7 +200,6 @@ class _PowerupsPill extends StatelessWidget {
   });
 
   static const double _xpStroke = 5.0;
-  static const double _xpInset = 3.0;
   static const double _innerRadius = 20.0;
 
   @override
@@ -238,16 +237,18 @@ class _PowerupsPill extends StatelessWidget {
                     CustomPaint(
                       painter: XpBorderPainter(
                         progress: progress,
-                        trackColor: const Color(0xFFBCC2CC),
+                        trackColor: const Color.fromARGB(130, 135, 135, 135),
                         progressColor: AppConfig.gold,
                         stroke: _xpStroke,
-                        radius: _innerRadius + _xpInset + _xpStroke / 2,
+                        radius: _innerRadius + _xpStroke / 2,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(_xpInset + _xpStroke),
+                        padding: const EdgeInsets.all(_xpStroke),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainer,
                             borderRadius: BorderRadius.circular(_innerRadius),
                           ),
                           clipBehavior: Clip.antiAlias,
@@ -327,10 +328,6 @@ class _TrackerButton extends StatelessWidget {
     required this.onTap,
   });
 
-  // The white inner field is a fixed colour (not theme-driven), so its content
-  // is a fixed dark — matches Figma `--text`/icon-default on white.
-  static const Color _ink = Color(0xFF1E1E1E);
-
   @override
   Widget build(BuildContext context) {
     return Tooltip(
@@ -350,7 +347,7 @@ class _TrackerButton extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(indicator.icon, size: 24, color: _ink),
+                Icon(indicator.icon, size: 24),
                 const SizedBox(height: 3),
                 Text(
                   '$count',
@@ -358,7 +355,6 @@ class _TrackerButton extends StatelessWidget {
                     fontSize: 16,
                     height: 1.1,
                     fontWeight: FontWeight.w600,
-                    color: _ink,
                   ),
                 ),
               ],
@@ -383,7 +379,7 @@ class _LevelMedal extends StatelessWidget {
       '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'
       '<path d="M4.33333 28.875V17.5656L0 10.3125L6.16667 0H18.5L24.6667 '
       '10.3125L20.3333 17.5656V28.875L12.3333 26.125L4.33333 28.875Z" '
-      'fill="#F3C141"/></svg>';
+      'fill="#FDBF01"/></svg>';
 
   @override
   Widget build(BuildContext context) {

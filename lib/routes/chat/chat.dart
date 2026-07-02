@@ -2644,9 +2644,7 @@ class ChatController extends State<ChatPageWithRoom>
       depressMessageButton.value = true;
     }
 
-    if (keyboardOpen) {
-      inputFocus.unfocus();
-    }
+    inputFocus.unfocus();
 
     if (delay != null) {
       OverlayUtil.showOverlay(

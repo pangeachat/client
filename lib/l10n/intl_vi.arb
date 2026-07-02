@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:47:00.985483",
+    "@@last_modified": "2026-07-02 16:44:46.586843",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7303,6 +7303,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Tùy chỉnh cuộc thăm dò",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

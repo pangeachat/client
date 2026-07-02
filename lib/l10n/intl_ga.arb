@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-02 09:47:27.484486",
+    "@@last_modified": "2026-07-02 16:44:57.959492",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10231,6 +10231,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Saincheap an pobal",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }

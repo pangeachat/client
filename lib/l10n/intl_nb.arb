@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 09:46:35.691377",
+    "@@last_modified": "2026-07-02 16:44:35.843107",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10280,6 +10280,11 @@
         "placeholders": {}
     },
     "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Tilpass avstemning",
+    "@customizePollLabel": {
         "type": "String",
         "placeholders": {}
     }
