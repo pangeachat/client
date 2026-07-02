@@ -60,15 +60,6 @@ extension LaunchActivitySession on Client {
           'type': "${PangeaRoomTypes.activitySession}:${activity.activityId}",
         },
         visibility: sdk.Visibility.private,
-        // Invite the bot atomically at creation so it is present in every session
-        // from the start. It stays idle (no role, no messages) until the room
-        // admin chooses "play with bot", which writes pangea.bot_participant —
-        // the bot's gate to claim a role. On the "invite a friend" path no marker
-        // is written, so the seat stays open for the friend and the bot moderates
-        // silently once they join (#2595, #7027). Inviting here rather than in a
-        // post-create call avoids a sync race where the fresh room is not yet in
-        // the local store and the invite is silently skipped.
-        invite: [BotName.byEnvironment],
         name: activity.title,
         topic: activity.description,
         initialState: [
@@ -126,9 +117,28 @@ extension LaunchActivitySession on Client {
       }
     }
 
-    // The bot was invited as part of createRoom above (atomic), so there is no
-    // post-create invite step to race against room sync. createPangeaRoom already
-    // waited for the creator to be joined before returning.
+    // Invite the bot so it is present in every session from the start — idle (no
+    // role, no messages) until the room admin chooses "play with bot", which
+    // writes pangea.bot_participant (the bot's gate to claim a role). On the
+    // "invite a friend" path no marker is written, so the seat stays open and the
+    // bot moderates silently once the friend joins (#2595, #7027).
+    //
+    // Best-effort AND by room id (not the local Room object): inviteUser targets
+    // the homeserver directly, so it neither fails session creation on a transient
+    // invite error nor races the fresh room syncing into the local store — the old
+    // getRoomById(roomID) == null path silently skipped the invite, leaving the
+    // marker written but no bot in the room.
+    try {
+      await inviteUser(roomID, BotName.byEnvironment);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomID},
+        level: SentryLevel.warning,
+      );
+    }
+
     return roomID;
   }
 }
