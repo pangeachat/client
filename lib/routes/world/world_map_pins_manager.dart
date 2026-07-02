@@ -68,10 +68,6 @@ class WorldMapPinsManager {
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
 
-  String? _selectedActivityId;
-
-  String? get selectedActivityId => _selectedActivityId;
-
   Map<String, PinSignals> get signals => _signals;
 
   ProgressionResolution get progression => _progression;
@@ -94,15 +90,6 @@ class WorldMapPinsManager {
   List<LatLng> get focusPoints =>
       _pins.map((c) => c.point).whereType<LatLng>().toList();
 
-  /// The map coordinate of a specific activity pin, or null if it isn't in the
-  /// current set — used to reframe a tap-selected card on-screen (#7155).
-  LatLng? pointForActivity(String activityId) {
-    for (final card in _pins) {
-      if (card.activityId == activityId) return card.point;
-    }
-    return null;
-  }
-
   List<QuestActivityCard> filteredPins(
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
@@ -112,20 +99,12 @@ class WorldMapPinsManager {
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
-  /// Select a pin (the tap-peek): drawn large regardless of its featured
-  /// standing, cleared on the next user pan/zoom. Returns false if already
-  /// selected. See world-map.instructions.md ("Featured, selected, and focused").
-  bool selectActivity(String activityId) {
-    if (_selectedActivityId == activityId) return false;
-    _selectedActivityId = activityId;
-    return true;
-  }
-
-  bool deselectActivity() {
-    if (_selectedActivityId == null) return false;
-    _selectedActivityId = null;
-    return true;
-  }
+  /// Activity ids the learner has earned at least one star in — the trail the
+  /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
+  Set<String> get progressedActivityIds => {
+    for (final e in _userStars.entries)
+      if (e.value > 0) e.key,
+  };
 
   void resetScopedCourseOutline() {
     if (_scopedCourseOutline != null || _scopedCourseOutlineId != null) {
