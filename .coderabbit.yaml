@@ -8,3 +8,7 @@ reviews:
         Always read and apply the conventions in
         .github/instructions/testing.instructions.md and
         .github/instructions/code-style.instructions.md before reviewing.
+        Also search for and read any *.instructions.md file that governs the
+        design/logic of the affected code. If no such doc exists, or it is
+        ambiguous, or it contradicts the implementation, flag this for
+        review.
