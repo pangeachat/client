@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
@@ -55,6 +56,12 @@ class RoomParticipantsSection extends StatelessWidget {
 
           return rankOf(a).compareTo(rankOf(b));
         });
+
+        if (room.showActivityChatUI) {
+          filteredParticipants.removeWhere(
+            (u) => u.id == BotName.byEnvironment,
+          );
+        }
 
         return Wrap(
           spacing: 8.0,
