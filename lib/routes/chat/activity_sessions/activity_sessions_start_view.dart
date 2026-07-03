@@ -117,7 +117,7 @@ class ActivitySessionStartView extends StatelessWidget {
                 ? null
                 : Text(
                     activity.title,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: FluffyThemes.isColumnMode(context)
                         ? theme.textTheme.titleLarge

@@ -7,14 +7,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 class GoalStatusWidget extends StatelessWidget {
   final ActivityRoleGoal goal;
   final bool complete;
+  final TextStyle textStyle;
   final String? starTarget;
-  final int? maxLines;
 
   const GoalStatusWidget({
     required this.goal,
     required this.complete,
+    this.textStyle = const TextStyle(fontSize: 15),
     this.starTarget,
-    this.maxLines,
     super.key,
   });
 
@@ -47,14 +47,7 @@ class GoalStatusWidget extends StatelessWidget {
       spacing: 12.0,
       children: [
         icon,
-        Flexible(
-          child: Text(
-            goal.description,
-            maxLines: maxLines,
-            overflow: maxLines != null ? TextOverflow.ellipsis : null,
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-          ),
-        ),
+        Flexible(child: Text(goal.description, style: textStyle)),
       ],
     );
   }
