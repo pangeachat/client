@@ -235,7 +235,7 @@ class _PowerupsPill extends StatelessWidget {
                       painter: XpBorderPainter(
                         progress: progress,
                         trackColor: const Color.fromARGB(130, 135, 135, 135),
-                        progressColor: AppConfig.gold,
+                        progressColor: AppConfig.goldByTheme(context),
                         stroke: _xpStroke,
                         radius: _innerRadius + _xpStroke / 2,
                       ),
@@ -249,39 +249,44 @@ class _PowerupsPill extends StatelessWidget {
                             borderRadius: BorderRadius.circular(_innerRadius),
                           ),
                           clipBehavior: Clip.antiAlias,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              StreamBuilder(
-                                stream: client.onRoomState.stream.where(
-                                  (e) =>
-                                      e.state.type ==
-                                      PangeaEventTypes.orchestratorAwardedGoals,
-                                ),
-                                builder: (context, _) {
-                                  final stars = l2 != null
-                                      ? client.totalStarsEarned(l2)
-                                      : 0;
+                          padding: EdgeInsets.all(4.0),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                StreamBuilder(
+                                  stream: client.onRoomState.stream.where(
+                                    (e) =>
+                                        e.state.type ==
+                                        PangeaEventTypes
+                                            .orchestratorAwardedGoals,
+                                  ),
+                                  builder: (context, _) {
+                                    final stars = l2 != null
+                                        ? client.totalStarsEarned(l2)
+                                        : 0;
 
-                                  return _TrackerButton(
-                                    indicator: ProgressIndicatorEnum.stars,
-                                    count: stars,
-                                    onTap: () =>
-                                        onTap(AnalyticsPanelTab.sessions),
-                                  );
-                                },
-                              ),
-                              _TrackerButton(
-                                indicator: ProgressIndicatorEnum.morphsUsed,
-                                count: grammar,
-                                onTap: () => onTap(AnalyticsPanelTab.grammar),
-                              ),
-                              _TrackerButton(
-                                indicator: ProgressIndicatorEnum.wordsUsed,
-                                count: vocab,
-                                onTap: () => onTap(AnalyticsPanelTab.vocab),
-                              ),
-                            ],
+                                    return _TrackerButton(
+                                      indicator: ProgressIndicatorEnum.stars,
+                                      count: stars,
+                                      onTap: () =>
+                                          onTap(AnalyticsPanelTab.sessions),
+                                    );
+                                  },
+                                ),
+                                _TrackerButton(
+                                  indicator: ProgressIndicatorEnum.morphsUsed,
+                                  count: grammar,
+                                  onTap: () => onTap(AnalyticsPanelTab.grammar),
+                                ),
+                                _TrackerButton(
+                                  indicator: ProgressIndicatorEnum.wordsUsed,
+                                  count: vocab,
+                                  onTap: () => onTap(AnalyticsPanelTab.vocab),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -291,7 +296,10 @@ class _PowerupsPill extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 0,
-                  child: _LevelMedal(level: level, onTap: onLevelTap),
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: _LevelMedal(level: level, onTap: onLevelTap),
+                  ),
                 ),
               ],
             );
@@ -334,7 +342,8 @@ class _TrackerButton extends StatelessWidget {
       excludeFromSemantics: true,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
+        hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
+        borderRadius: BorderRadius.circular(100),
         child: Semantics(
           button: true,
           label: '${indicator.tooltip(context)}: $count',
@@ -372,11 +381,12 @@ class _LevelMedal extends StatelessWidget {
 
   // The outer shield shape from Figma (icon/warning-secondary fill #F3C141 ==
   // AppConfig.goldMedal); the level number is overlaid.
-  static const String _shieldSvg =
+
+  String _shieldSvg(String hexcode) =>
       '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'
       '<path d="M4.33333 28.875V17.5656L0 10.3125L6.16667 0H18.5L24.6667 '
       '10.3125L20.3333 17.5656V28.875L12.3333 26.125L4.33333 28.875Z" '
-      'fill="#FDBF01"/></svg>';
+      'fill="$hexcode"/></svg>';
 
   @override
   Widget build(BuildContext context) {
@@ -385,17 +395,18 @@ class _LevelMedal extends StatelessWidget {
       message: label,
       // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+      child: InkWell(
         onTap: onTap,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: Semantics(
-            button: true,
-            label: label,
-            excludeSemantics: true,
-            // Expose the tap on the announced node for assistive tech (#7185).
-            onTap: onTap,
+        hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
+        borderRadius: BorderRadius.circular(100.0),
+        child: Semantics(
+          button: true,
+          label: label,
+          excludeSemantics: true,
+          // Expose the tap on the announced node for assistive tech (#7185).
+          onTap: onTap,
+          child: Padding(
+            padding: EdgeInsets.all(4.0),
             child: SizedBox(
               width: 38,
               height: 44,
@@ -403,7 +414,7 @@ class _LevelMedal extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   SvgPicture.string(
-                    _shieldSvg,
+                    _shieldSvg(AppConfig.goldHexByTheme(context)),
                     width: 38,
                     height: 44,
                     fit: BoxFit.contain,
