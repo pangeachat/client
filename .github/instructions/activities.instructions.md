@@ -5,15 +5,15 @@ description: "Client design for activities: thin cards, the start page's room-dr
 
 # Activity System
 
-Conversation activities are structured, game-like conversations. What an activity *is* — its schema, goals, session lifecycle, and the Matrix-room contract behind it — is owned by the org-wide [activities doc](../../../.github/.github/instructions/activities.instructions.md); backend generation and the read endpoints by the [choreographer doc](../../../2-step-choreographer/.github/instructions/activities.instructions.md); and the video-first way activities get their media by [media-first generation](../../../.github/.github/instructions/media-first-activity-generation.instructions.md). This doc covers only how the **client** discovers, opens, runs, and shows an activity.
+Conversation activities are structured, game-like conversations. What an activity _is_ — its schema, goals, session lifecycle, and the Matrix-room contract behind it — is owned by the org-wide [activities doc](../../../.github/.github/instructions/activities.instructions.md); backend generation and the read endpoints by the [choreographer doc](../../../2-step-choreographer/.github/instructions/activities.instructions.md). This doc covers only how the **client** discovers, opens, runs, and shows an activity.
 
 ## Cards are thin; the plan is full
 
-The cards a learner browses — in lists, on map pins, under a learning objective — are deliberately lightweight: a title, a level, a place, the searchable basics, and nothing more. The full activity, including its media, loads only when the learner opens it. So media is always a property of the *opened* activity, never of the card list, and a card can show at most one thumbnail — and only once the activity behind it has loaded. [`QuestActivityCard`](../../lib/features/quests/models/quest_activity_card.dart) is the thin card; [`ActivityPlanModel`](../../lib/features/activity_sessions/activity_plan_model.dart) is the full thing.
+The cards a learner browses — in lists, on map pins, under a learning objective — are deliberately lightweight: a title, a level, a place, the searchable basics, and nothing more. The full activity, including its media, loads only when the learner opens it. So media is always a property of the _opened_ activity, never of the card list, and a card can show at most one thumbnail — and only once the activity behind it has loaded. [`QuestActivityCard`](../../lib/features/quests/models/quest_activity_card.dart) is the thin card; [`ActivityPlanModel`](../../lib/features/activity_sessions/activity_plan_model.dart) is the full thing.
 
 ## A running activity is a chat room
 
-When a learner starts an activity, it becomes a Matrix room. That is the central design choice: a live session reuses the whole chat stack — timeline, sync, membership, roles — instead of a parallel "sessions" system. The room *is* the session. The shapes of the room and its state events are the org doc's contract; the client only reads them.
+When a learner starts an activity, it becomes a Matrix room. That is the central design choice: a live session reuses the whole chat stack — timeline, sync, membership, roles — instead of a parallel "sessions" system. The room _is_ the session. The shapes of the room and its state events are the org doc's contract; the client only reads them.
 
 Course context is borrowed, not owned. An activity belongs to learning objectives, not to a course, so the client works out which course (if any) an activity sits under at the moment it opens — from the room's place in the space hierarchy, or by matching when an activity is opened on its own. A session with no course behind it is perfectly valid.
 
@@ -42,14 +42,15 @@ Video is where the two surfaces differ most:
 - **On a focused surface — the plan page, the live session — each block plays in place.** Images show, uploaded videos use the app's player, and YouTube always plays as an embed, never downloaded or re-hosted (YouTube's terms forbid it). The carousel stays calm: the learner swipes through blocks, a video plays only when they tap it, and nothing starts on its own.
 - **On a compact surface — a card, a map pin — the first block stands in for the carousel, carrying a play badge when it's a video.** That is what makes a card carousel-aware: a video-first activity leads with its video, not an unrelated image. Tapping it doesn't play it there; it opens the activity with that video starting.
 
-That tap is the *only* time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
+That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
 
-***
+---
 
 Do not add ActivityVocabWidget to ActivityStatsMenu.
 
 ## Future Work
-*Last updated: 2026-02-15*
+
+_Last updated: 2026-02-15_
 
 **Lifecycle & Session Management**
 
