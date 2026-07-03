@@ -326,12 +326,117 @@ auto-featured or just promoted, opens the activity's **plan page**. Tapping the
 empty map collapses a promoted card. The large-card design, including its locked
 and completed states, lives in [world-map.instructions.md](world-map.instructions.md).
 
-**The narrow bottom nav is only the section switcher** — World, Chats, and the
-course switcher (Analytics and Profile are reached from the cluster, not here). It
-shows only at a section root: the bare map, the chat list, or the courses list. A
-focused detail (a chat, a settings/analytics/construct page, a session) hides it,
-and a bottom sheet (a course, an activity plan) replaces it. So the bar is present
-only when you are choosing *where* to go, never while you are *in* something.
+**The mobile chrome is substantially different from web.** The side rail becomes a
+**floating bottom nav widget** (the expandable rounded container described under
+*Mobile bottom nav* in The chrome), and the cluster becomes a **horizontal
+analytics bar** pinned to the top of the safe area (*Mobile analytics bar*). A
+**search bar** floats above the nav widget with map filters above it (*Mobile
+search bar*). Analytics and Profile are reached from the top bar, not the bottom
+nav. Further-nested surfaces (a live chat, an activity start/join) that have no
+corresponding nav rail button open **full-screen**, covering the bottom widget —
+with a small sliver of map behind them and rounded corners — matching current
+behavior. All chrome respects the device safe area and does not intrude into the
+system status bar.
+
+### Single-column bottom nav
+[Mobile_UI_component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-42905&t=NJSsG23tsR9Kdwlz-0)
+
+In single-column mode the side rail is replaced by a **floating rounded-corner nav
+widget** pinned to the bottom of the safe area. The entire structure — rail and
+expandable content — lives inside one rounded-corner box (styled similarly to the
+web rail, but horizontal and contained; think Instagram's bottom bar but with an
+expandable cavity above it).
+
+**Collapsed state (rail only).** The widget shows only the 4-item nav rail. Items
+are, left to right: **World**, **Chats**, **Courses**, and a **course shortcut**.
+The course shortcut resolves contextually: the `+` add-course button when no
+courses are joined, the single course avatar when exactly one course is joined, or
+the most-recently-opened/tapped course otherwise. This mirrors the web rail's
+order and function.
+
+**Expanded to half-height.** Tapping a rail item expands the widget upward to
+roughly half the screen, filling the upper portion of the rounded box with that
+section's content (the chat list when Chats is tapped, the courses list when
+Courses is tapped, and so on). The 4 rail icons remain anchored at the bottom of
+the widget at all heights. Content inside the expanded area is **scrollable**.
+
+**Expanded to full height.** A **drag handle** at the top of the expanded content
+lets the user pull the widget to full height. "Full height" means the widget grows
+until it is immediately below the analytics bar — both the bottom nav icons and the
+analytics bar remain visible and accessible at maximum extent. The widget does not
+grow past that bound regardless of how much content it contains.
+
+**Collapsing.** Tapping outside the widget, tapping the already-active rail item,
+or navigating into a further-nested full-screen surface all collapse it back to
+the rail-only state.
+
+**Full-screen surfaces.** Surfaces that are further nested and have no nav rail
+button of their own (a live chat room, an activity start/join flow) open
+full-screen, covering the nav widget — a small sliver of map is visible behind
+them with rounded corners, matching current behavior. The nav widget is not
+accessible while one of these surfaces is focused.
+
+**4 main rail items opened:**
+- [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
+
+- [Chat_list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61038&t=NJSsG23tsR9Kdwlz-0)
+
+- [Courses_list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61048&t=NJSsG23tsR9Kdwlz-0)
+
+- [Active_course](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61069&t=NJSsG23tsR9Kdwlz-0)
+
+
+### Single-column analytics bar
+
+
+In single-column mode the cluster's vertical powerups column becomes a
+**horizontal analytics bar** pinned to the top of the safe area. Layout
+differences from the web cluster:
+[Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-94063&t=NJSsG23tsR9Kdwlz-0)
+- **Level badge** moves to the left end of the bar.
+- **Avatar** sits to the right of the bar, in the same spot as web.
+- **Flag** sits below the avatar, slightly smaller than on web and with less spacing
+- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in the
+  bar.
+
+**Collapsed state.** In full screens (like chat or activity start/join), the analytics bar collapses into a single Avatar circle, which displays the level badge and current XP amount around it. A click on the collapsed avatar temporarily expands the full bar for approximately 3 seconds, allowing the user to tap a tracker or open settings, then auto-collapses if no further interaction occurs. 
+[Component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)
+
+**Expanded state.** Tapping any element on the analytics bar expands the
+analytics or settings panel to fill nearly the full screen, with a **max width of
+300** (so on tablets the panel stays centered and bounded). An **X** button
+appears at the very top-left of the expanded panel. The panel content expands
+upward from the bottom, covering the bottom nav widget completely — the nav rail
+is not accessible while an analytics or settings panel is open, even when there is
+not enough content to physically reach the nav widget. The analytics bar itself
+remains visible at the top throughout. This is the key behavioral distinction from
+the bottom nav's own expanded state, in which the rail icons always remain visible.
+[Analytics section](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13485-90933&t=NJSsG23tsR9Kdwlz-0)
+[Wider tablet analytics](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13377-63983&t=NJSsG23tsR9Kdwlz-0)
+
+
+### Single-column search bar
+
+In single-column mode the search bar moves from its top-left web position to a
+**floating bar pinned above the bottom nav widget**, approximately 8px above the
+rounded nav container. It sits outside the rounded nav box and **rides upward as
+the widget expands**, maintaining that gap and stopping well short of the analytics
+bar — it never overlaps the avatar or analytics bar. **Map filters**, when active,
+appear above the search bar (rather than below) and ride and minimize with it.
+
+**Default (visible).** The search bar is visible above the nav widget at all
+section roots while the map is not being actively scrolled.
+[Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560&t=NJSsG23tsR9Kdwlz-0)
+
+**Scroll / course-mode minimized.** When the user begins scrolling the map with
+the nav widget collapsed, or while in course mode, the search bar and its active
+filters **minimize to a compact search icon button** pinned to the left side just
+above the nav rail. Tapping it restores the full bar.
+[Minimized component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562&t=NJSsG23tsR9Kdwlz-0)
+
+**Keyboard behavior.** When the search bar is active and the software keyboard
+would push the bar out of view, the bar slides up to sit immediately above the
+keyboard rather than being obscured.
 
 ## The surfaces
 
@@ -406,7 +511,7 @@ cluster does not prompt (that path just replaces the right column).
 
 ### The navigation rail
 
-Pinned to the top-left of the map on web and a bottom nav on mobile. Top to bottom (or left to right): **World** (home), **Chats**, **Courses**, then one avatar per joined course. Selecting a section from it *replaces* the open left-column panels (see *Panels are independent*); on a narrow screen the rail becomes the bottom nav (see *Single-column mode*).
+Pinned to the top-left of the map on web. Top to bottom: **World** (home), **Chats**, **Courses**, then one avatar per joined course. Selecting a section from it *replaces* the open left-column panels (see *Panels are independent*). On a narrow screen the rail is replaced by the *Mobile bottom nav* widget described below.
 
 ### The cluster is the right column's entry point
 
