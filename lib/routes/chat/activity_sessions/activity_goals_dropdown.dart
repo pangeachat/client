@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content_container.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 
 class ActivityGoalsDropdown extends StatefulWidget {
   final List<ActivityRoleGoal>? goals;
@@ -22,7 +24,7 @@ class ActivityGoalsDropdown extends StatefulWidget {
 
 class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
   bool _visible = false;
-  bool _innerExpanded = true;
+  bool showDropdown = true;
   List<ActivityRoleGoal>? _displayGoals;
 
   @override
@@ -30,7 +32,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
     super.initState();
     _displayGoals = widget.goals;
     _visible = widget.goals != null && widget.goals!.isNotEmpty;
-    _innerExpanded = !widget.startCollapsed;
+    showDropdown = !widget.startCollapsed;
   }
 
   @override
@@ -42,7 +44,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
         setState(() {
           _displayGoals = widget.goals;
           _visible = true;
-          _innerExpanded = true;
+          showDropdown = true;
         });
       } else {
         setState(() => _visible = false);
@@ -53,13 +55,17 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
     }
   }
 
-  void _toggleVisiblity() => setState(() => _innerExpanded = !_innerExpanded);
+  void _toggleShowDropdown() => setState(() => showDropdown = !showDropdown);
+
+  void setShowDropdown(bool value) => setState(() => showDropdown = value);
+
+  bool _isGoalCompleted(ActivityRoleGoal goal) =>
+      widget.completedGoalIds.contains(goal.id);
 
   @override
   Widget build(BuildContext context) {
     final goals = _displayGoals ?? [];
-    final theme = Theme.of(context);
-    final visible = goals.isNotEmpty ? goals.first : null;
+    final visibleGoal = goals.isNotEmpty ? goals.first : null;
     final remainingGoals = goals.length > 1
         ? goals.skip(1).toList()
         : <ActivityRoleGoal>[];
@@ -73,85 +79,22 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (visible != null)
-              InkWell(
-                onTap: _toggleVisiblity,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  height: 55.0,
-                  decoration: BoxDecoration(
-                    border: Border(top: BorderSide(color: theme.dividerColor)),
-                    color: theme.colorScheme.surface,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: GoalStatusWidget(
-                          goal: visible,
-                          complete: widget.completedGoalIds.contains(
-                            visible.id,
-                          ),
-                          maxLines: _innerExpanded ? null : 2,
-                        ),
-                      ),
-                      if (remainingGoals.isNotEmpty)
-                        Icon(
-                          _innerExpanded
-                              ? Icons.expand_less
-                              : Icons.expand_more,
-                        ),
-                    ],
-                  ),
-                ),
+            if (visibleGoal != null)
+              ActivityDropdownHeader(
+                goal: visibleGoal,
+                isGoalCompleted: _isGoalCompleted(visibleGoal),
+                toggleShowDropdown: _toggleShowDropdown,
+                trailing: remainingGoals.isNotEmpty
+                    ? Icon(showDropdown ? Icons.expand_less : Icons.expand_more)
+                    : null,
               ),
             if (remainingGoals.isNotEmpty)
-              ClipRect(
-                child: AnimatedAlign(
-                  duration: FluffyThemes.animationDuration,
-                  curve: Curves.easeInOut,
-                  heightFactor: _innerExpanded ? 1.0 : 0.0,
-                  alignment: Alignment.topCenter,
-                  child: GestureDetector(
-                    onPanUpdate: (d) {
-                      if (d.delta.dy < -2) {
-                        setState(() => _innerExpanded = false);
-                      }
-                    },
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        final maxHeight =
-                            MediaQuery.of(context).size.height * 0.7;
-                        return ConstrainedBox(
-                          constraints: BoxConstraints(maxHeight: maxHeight),
-                          child: SingleChildScrollView(
-                            child: Container(
-                              width: double.infinity,
-                              color: theme.colorScheme.surface,
-                              padding: const EdgeInsets.fromLTRB(
-                                12.0,
-                                12.0,
-                                12.0,
-                                24.0,
-                              ),
-                              child: Column(
-                                spacing: 16.0,
-                                mainAxisSize: MainAxisSize.min,
-                                children: remainingGoals
-                                    .map(
-                                      (g) => GoalStatusWidget(
-                                        goal: g,
-                                        complete: widget.completedGoalIds
-                                            .contains(g.id),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+              ActivityDropdownContentContainer(
+                showDropdown: showDropdown,
+                setShowDropdown: setShowDropdown,
+                child: ActivityDropdownContent(
+                  goals: remainingGoals,
+                  isGoalCompleted: _isGoalCompleted,
                 ),
               ),
           ],
