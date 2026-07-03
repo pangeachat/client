@@ -143,7 +143,7 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                 if (level != LanguageLevelTypeEnum.preA1) ...[
                   FilterChip(
                     selected: widget.filter.cefrFilter.contains(level),
-                    label: Text(level.string),
+                    label: Text(level.title(context)),
                     onSelected: (_) => widget.toggleCefr(level),
                   ),
                   const SizedBox(width: 6),
