@@ -2,3 +2,9 @@ reviews:
   auto_review:
     ignore_usernames:
       - ggurdin
+  path_instructions:
+    - path: "**/*"
+      instructions: >
+        Always read and apply the conventions in
+        .github/instructions/testing.instructions.md and
+        .github/instructions/code-style.instructions.md before reviewing.
