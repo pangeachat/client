@@ -1,0 +1,2 @@
+<!-- consumed by: .github/scripts/pretooluse-flutter-guard.sh -->
+`flutter clean` forces a cold build from scratch (minutes), and run-flutter-web-local treats it as a last resort — not the first move when a code change isn't landing. Try a clean restart first: `printf 'q' > /tmp/f8090`, then relaunch (see the skill's Clean restart section). Reach for `flutter clean` only if that doesn't resolve it — e.g. genuine build-tool corruption, not a routine edit.
