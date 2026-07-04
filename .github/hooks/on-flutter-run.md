@@ -1,0 +1,2 @@
+<!-- consumed by: .github/scripts/pretooluse-flutter-skill.sh -->
+Before spinning up the Flutter client: if the run-flutter-web-local skill isn't already in context, read .github/skills/run-flutter-web-local/SKILL.md first. It is the clean-restart procedure that avoids the recurring local hang — stale-DWDS r/R timeouts that kill port 8090, and orphaned compilers from kill -9. Use it for the start AND every restart.
