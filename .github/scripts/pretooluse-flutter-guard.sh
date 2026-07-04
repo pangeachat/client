@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # PreToolUse(Bash) safety checks — client only, for the Flutter dev-server workflow. Distinct
 # from pretooluse-flutter-skill.sh (which points to the skill once per session, on `flutter run`):
-# these are per-command nudges for two specific traps the skill documents, since each occurrence
+# these are per-command nudges for specific traps the skill documents, since each occurrence
 # is an independent moment where the same mistake can recur. Advisory only; never blocks.
 #
-# Message wording lives in ../hooks/on-flutter-kill.md and ../hooks/on-flutter-bare-toolchain.md
-# (harness-sync.instructions.md § Hook message files, repo-specific hooks).
+# Message wording lives in ../hooks/on-flutter-*.md (harness-sync.instructions.md § Hook
+# message files, repo-specific hooks).
 HOOKS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../hooks" && pwd)"
 payload=$(cat)
 cmd=$(printf '%s' "$payload" | jq -r '.tool_input.command // empty' 2>/dev/null)
@@ -41,6 +41,18 @@ if m '\b(flutter|dart)\s+(run|build|test|analyze|pub|clean|doctor|create|devices
     : > "$flag"
     add "$(text on-flutter-bare-toolchain.md)"
   fi
+fi
+
+# --- hot-restart (capital R) guard: fires every time, no suppression. Sending R even once can
+# kill the dev server on a stale DWDS connection — a recurring risk, not a one-time fact. ---
+if m "['\"]R['\"]" && m '/tmp/f8090'; then
+  add "$(text on-flutter-hot-restart.md)"
+fi
+
+# --- flutter clean guard: fires every time. Cheap to warn every time since the command itself
+# is rare, and each occurrence is an independent "is this really necessary" moment. ---
+if m '\bflutter\s+clean\b'; then
+  add "$(text on-flutter-clean.md)"
 fi
 
 [ -n "$msg" ] && printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","additionalContext":%s}}' "$(printf '%s' "$msg" | jq -Rs .)"
