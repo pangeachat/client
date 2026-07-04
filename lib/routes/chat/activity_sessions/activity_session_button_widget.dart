@@ -186,7 +186,10 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
     return FutureBuilder(
       future: controller.neededCourseParticipants,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        // Wait on the participant count AND the open-session summaries, so the
+        // join/start choice never flashes "Start" before the sessions land.
+        if (snapshot.connectionState == ConnectionState.waiting ||
+            controller.summariesLoading) {
           return const LinearProgressIndicator();
         }
 

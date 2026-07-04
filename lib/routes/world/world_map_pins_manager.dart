@@ -5,6 +5,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -212,10 +213,16 @@ class WorldMapPinsManager {
         candidateIds.toList(),
         l1Code: null,
       );
+      // Group every previewed session by activity id so the activity start page
+      // can reuse this fetch instead of round-tripping again (it applies its own
+      // open-to-join filter). See DiscoveredSessionsCache.
+      final byActivity = <String, Map<String, RoomSummaryResponse>>{};
       final facts = <ActivitySessionFacts>[];
-      for (final summary in summaries.values) {
+      for (final entry in summaries.entries) {
+        final summary = entry.value;
         final activityId = summary.activityId;
         if (activityId == null) continue; // not an activity session
+        (byActivity[activityId] ??= {})[entry.key] = summary;
         if (summary.isFinished) continue; // completed — not joinable
         // "Live" means someone is actually present — filters stale rooms that
         // were never marked finished but everyone has since left.
@@ -238,6 +245,7 @@ class WorldMapPinsManager {
           ),
         );
       }
+      DiscoveredSessionsCache.instance.replaceAll(byActivity);
       _discoveredSessionFacts = facts;
     } catch (e, s) {
       ErrorHandler.logError(

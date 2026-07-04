@@ -48,6 +48,10 @@ class NotStartedSession extends StatefulWidget {
   final String activityId;
   final ActivityPlanModel? activity;
   final ActivitySessionSummariesModel summaries;
+
+  /// The open-session summaries are still being fetched (a cache miss), so the
+  /// CTA should show a loading indicator rather than the join/start choice.
+  final bool summariesLoading;
   final ScrollController scrollController;
   final ActivitySessionStartState controller;
 
@@ -57,6 +61,7 @@ class NotStartedSession extends StatefulWidget {
     required this.activityId,
     required this.activity,
     required this.summaries,
+    required this.summariesLoading,
     required this.scrollController,
     required this.controller,
   });
@@ -139,6 +144,8 @@ class NotStartedSessionController extends State<NotStartedSession>
   Set<String> get selectedRoleCompletedGoalIds => {};
 
   int get openSessionCount => widget.summaries.openSessions.length;
+
+  bool get summariesLoading => widget.summariesLoading;
 
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
