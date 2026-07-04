@@ -179,6 +179,7 @@ class WorldMapController extends State<WorldMap>
       // persistent map). The pinged scan does one-shot timeline work.
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
+      _discoverCoursemateSessions(client);
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -187,6 +188,7 @@ class WorldMapController extends State<WorldMap>
             if (!mounted) return;
             _recomputeProgress();
             _maybeRebuildObjectiveCache(client);
+            _discoverCoursemateSessions(client);
           });
     }
 
@@ -324,6 +326,13 @@ class WorldMapController extends State<WorldMap>
   Future<void> _recomputePinged(Client client) async {
     await _pinsManager.recomputePinged(client);
     if (mounted) setState(() {});
+  }
+
+  Future<void> _discoverCoursemateSessions(Client client) async {
+    await _pinsManager.discoverCoursemateSessions(client);
+    // Discovery refreshes the extra joinable facts; re-derive signals so a
+    // newly found coursemate session colours its pin.
+    if (mounted) _recomputeProgress();
   }
 
   void _onContextChange() {

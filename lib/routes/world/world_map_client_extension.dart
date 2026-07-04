@@ -110,10 +110,18 @@ extension WorldMapClientExtension on Client {
   /// `client.rooms`, so map-wide open-session discovery needs a backend endpoint
   /// (see world-map.instructions.md). Nothing is ever locked — progression only
   /// ranks, never gates (#7186, quests.instructions.md).
+  ///
+  /// [extraFacts] are sessions the client can see only by discovery, not from
+  /// its own rooms — a coursemate's open session in a joined course, previewed
+  /// via `room_preview` (world-map.instructions.md, "Discovering joinable
+  /// sessions"). They run through the same reducer as owned rooms, so a session
+  /// the learner is genuinely in (`joined`) still wins state over a discovered
+  /// `joinable` for the same activity.
   Map<String, PinSignals> deriveActivitySignals({
     required Set<String> pingedActivityIds,
+    List<ActivitySessionFacts> extraFacts = const [],
   }) => WorldMapSignalUtils.reduceActivitySignals(
-    _activitySessionFacts,
+    [..._activitySessionFacts, ...extraFacts],
     pingedActivityIds: pingedActivityIds,
     nowMs: DateTime.now().millisecondsSinceEpoch,
   );

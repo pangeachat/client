@@ -4,7 +4,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -17,6 +20,7 @@ import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
+import 'package:fluffychat/routes/world/world_map_signals.dart';
 
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
@@ -67,6 +71,26 @@ class WorldMapPinsManager {
   /// Activity ids with a recently-pinged open session (best-effort, scanned from
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
+
+  /// Guards against overlapping coursemate-session discovery runs (each does
+  /// networked room_preview reads).
+  bool _discovering = false;
+
+  /// The joined-course child session ids the last discovery previewed, so an
+  /// unchanged set skips the network — a new or removed session changes it via
+  /// the space-child sync.
+  Set<String> _lastDiscoveryCandidateIds = const {};
+
+  /// True when a previous run deferred a session because its activity plan wasn't
+  /// cached yet — forces the next run to retry rather than skip on an unchanged
+  /// candidate set.
+  bool _discoveryDeferred = false;
+
+  /// Joinable facts for open sessions others started in the learner's joined
+  /// courses — discovered via room_preview because they are NOT in `client.rooms`
+  /// (the learner is not a member). Folded into [Client.deriveActivitySignals] as
+  /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
+  List<ActivitySessionFacts> _discoveredSessionFacts = const [];
 
   Map<String, PinSignals> get signals => _signals;
 
@@ -145,12 +169,112 @@ class WorldMapPinsManager {
       return;
     }
     _pingedActivityIds = pinged;
-    _signals = client.deriveActivitySignals(pingedActivityIds: pinged);
+    _signals = client.deriveActivitySignals(
+      pingedActivityIds: pinged,
+      extraFacts: _discoveredSessionFacts,
+    );
+  }
+
+  /// Discover coursemate sessions: for each joined course space, room_preview the
+  /// activity-session children the learner is **not** a member of and emit a
+  /// joinable fact for each live session with an open seat. These sessions are
+  /// not in `client.rooms`, so this is the only way the map sees them
+  /// (world-map.instructions.md, "Discovering joinable sessions"). Best-effort
+  /// and networked, so it runs off the sync cadence and skips the reads when the
+  /// child set is unchanged. Total seats come from the activity's CMS plan; the
+  /// preview supplies only the filled roles.
+  Future<void> discoverCoursemateSessions(Client client) async {
+    if (_discovering) return;
+    _discovering = true;
+    try {
+      final candidateIds = <String>{};
+      for (final space in client.joinedCourseRooms) {
+        for (final child in space.spaceChildren) {
+          final id = child.roomId;
+          if (id == null) continue;
+          final existing = client.getRoomById(id);
+          // Rooms the learner is already in flow through the client.rooms path.
+          if (existing != null && existing.membership == Membership.join) {
+            continue;
+          }
+          candidateIds.add(id);
+        }
+      }
+
+      if (candidateIds.isEmpty) {
+        _lastDiscoveryCandidateIds = const {};
+        _discoveryDeferred = false;
+        if (_discoveredSessionFacts.isNotEmpty) {
+          _discoveredSessionFacts = const [];
+        }
+        return;
+      }
+
+      // Skip the networked previews when nothing changed since the last run and
+      // nothing was left pending on a plan that hadn't cached yet.
+      if (!_discoveryDeferred &&
+          candidateIds.length == _lastDiscoveryCandidateIds.length &&
+          candidateIds.containsAll(_lastDiscoveryCandidateIds)) {
+        return;
+      }
+      _lastDiscoveryCandidateIds = candidateIds;
+      _discoveryDeferred = false;
+
+      final summaries = await client.loadRoomSummaries(
+        candidateIds.toList(),
+        l1Code: null,
+      );
+
+      final nowMs = DateTime.now().millisecondsSinceEpoch;
+      final facts = <ActivitySessionFacts>[];
+      for (final summary in summaries.values) {
+        final activityId = summary.activityId;
+        if (activityId == null) continue; // not an activity session
+        if (summary.isFinished) continue;
+
+        // Total seats live on the CMS plan (the preview carries only the filled
+        // roles). If it isn't cached yet, request it and defer — the next run
+        // builds the fact once it lands.
+        final plan = ActivityPlanRepo.instance.cachedPlan(activityId);
+        if (plan == null) {
+          ActivityPlanRepo.instance.ensure(activityId);
+          _discoveryDeferred = true;
+          continue;
+        }
+        final filled = summary.activityRoles?.roles.values
+                .where((r) => r.userId != BotName.byEnvironment)
+                .length ??
+            0;
+        if (plan.roles.length - filled <= 0) continue; // no open seat
+
+        facts.add(
+          ActivitySessionFacts(
+            activityId: activityId,
+            holdsRole: false,
+            collectedGoals: 0,
+            totalGoals: 0,
+            joinable: true,
+            lastEventMs: nowMs,
+          ),
+        );
+      }
+      _discoveredSessionFacts = facts;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        m: 'coursemate-session discovery failed',
+        data: const {},
+      );
+    } finally {
+      _discovering = false;
+    }
   }
 
   void recomputeProgress(Client client) {
     final signals = client.deriveActivitySignals(
       pingedActivityIds: _pingedActivityIds,
+      extraFacts: _discoveredSessionFacts,
     );
     final userStars = client.userStarsByActivity;
     final completion = client.activityCompletionStatuses;
