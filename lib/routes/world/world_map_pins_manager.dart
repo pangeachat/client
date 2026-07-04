@@ -8,7 +8,6 @@ import 'package:fluffychat/features/activity_sessions/activity_session_discovery
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';

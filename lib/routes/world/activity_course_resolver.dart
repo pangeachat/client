@@ -32,8 +32,9 @@ class ActivityCourseResolver {
         .toList();
     if (spaces.isEmpty) return [];
 
-    final activityRefs =
-        (await QuestRepo.activityLearningObjectiveRefs(activityId)).toSet();
+    final activityRefs = (await QuestRepo.activityLearningObjectiveRefs(
+      activityId,
+    )).toSet();
     if (activityRefs.isEmpty) return [];
 
     String short(String code) => code.split('-').first.toLowerCase();

@@ -35,15 +35,17 @@ void main() {
       expect(summary.isActivityOpenToJoin, isTrue);
     });
 
-    test('a session with no members is not open to join (joining would error)',
-        () {
-      final summary = RoomSummaryResponse(
-        membershipSummary: {},
-        activityId: 'act-1',
-      );
+    test(
+      'a session with no members is not open to join (joining would error)',
+      () {
+        final summary = RoomSummaryResponse(
+          membershipSummary: {},
+          activityId: 'act-1',
+        );
 
-      expect(summary.isActivityOpenToJoin, isFalse);
-    });
+        expect(summary.isActivityOpenToJoin, isFalse);
+      },
+    );
 
     test('a room without an activity id is not an open activity session', () {
       final summary = RoomSummaryResponse(

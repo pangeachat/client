@@ -397,7 +397,10 @@ void main() {
     });
 
     test('a joined session also activates the gate', () {
-      final pins = [_card('mine', refs: ['a']), _card('lvl', refs: ['b'])];
+      final pins = [
+        _card('mine', refs: ['a']),
+        _card('lvl', refs: ['b']),
+      ];
       final result = rank(
         pins,
         {
@@ -413,7 +416,10 @@ void main() {
     });
 
     test('with nothing live in view the gate is inert (null); all compete', () {
-      final pins = [_card('a', refs: ['k1']), _card('b', refs: ['k2'])];
+      final pins = [
+        _card('a', refs: ['k1']),
+        _card('b', refs: ['k2']),
+      ];
       final result = rank(
         pins,
         {for (final p in pins) p.activityId: const PinSignals()},
