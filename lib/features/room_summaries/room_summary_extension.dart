@@ -166,11 +166,12 @@ class RoomSummaryResponse {
     });
   }
 
-  bool isActivityInstance(String activityId) =>
-      activityPlan?.activityId == activityId;
+  bool isActivityInstance(String activityId) => this.activityId == activityId;
 
   bool get isActivityOpenToJoin {
-    if (activityPlan?.activityId == null) return false;
+    // v3 sessions carry a thin activity_plan ref, so key off [activityId] (set
+    // even when the plan body is not embedded) rather than the parsed plan.
+    if (activityId == null) return false;
 
     // if room has no members, attempting to join will cause error, so we consider it not open
     if (membershipSummary.isEmpty) return false;

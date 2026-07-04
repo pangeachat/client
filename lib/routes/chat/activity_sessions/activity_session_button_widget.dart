@@ -74,25 +74,43 @@ class _CTAButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  const _CTAButton(this.text, this.onPressed);
+  /// A de-emphasized (outlined) variant for a secondary action shown beside a
+  /// stronger one — e.g. "start my own" when joining an open session is the
+  /// encouraged choice.
+  final bool secondary;
+
+  const _CTAButton(this.text, this.onPressed, {this.secondary = false});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20.0),
+    );
+    final child = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
+    );
+    if (secondary) {
+      return OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: theme.colorScheme.onPrimaryContainer,
+          padding: const EdgeInsets.all(8.0),
+          shape: shape,
+        ),
+        onPressed: onPressed,
+        child: child,
+      );
+    }
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.primaryContainer,
         foregroundColor: theme.colorScheme.onPrimaryContainer,
         padding: const EdgeInsets.all(8.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
+        shape: shape,
       ),
       onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
-      ),
+      child: child,
     );
   }
 }
@@ -198,12 +216,21 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 controller.goToJoinedActivity,
               ),
             ] else ...[
-              _CTAButton(L10n.of(context).start, controller.startNewActivity),
-              if (controller.openSessionCount > 0)
+              // An open session to join is the encouraged choice, so it leads
+              // and "start my own" drops to a de-emphasized option; with none to
+              // join, starting is the single primary action.
+              if (controller.openSessionCount > 0) ...[
                 _CTAButton(
                   '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
                   controller.goToJoinPage,
                 ),
+                _CTAButton(
+                  L10n.of(context).startOwn,
+                  controller.startNewActivity,
+                  secondary: true,
+                ),
+              ] else
+                _CTAButton(L10n.of(context).start, controller.startNewActivity),
               if (controller.course?.isRoomAdmin == true &&
                   controller.hasCurrentOrFinishedSessions)
                 _CTAButton(

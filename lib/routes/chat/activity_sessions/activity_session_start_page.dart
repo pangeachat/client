@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -164,9 +165,29 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
     final course = courseParent;
     if (course != null) {
-      roomIds.addAll(
-        course.spaceChildren.map((c) => c.roomId).whereType<String>(),
-      );
+      // Read this activity's session children from the server hierarchy: the
+      // m.space.child a coursemate wrote is not reliably in local room state, so
+      // `course.spaceChildren` can miss an open session the learner isn't in.
+      // Falls back to local state if the hierarchy read fails. See
+      // world-map.instructions.md ("Discovering joinable sessions").
+      try {
+        final hierarchy = await Matrix.of(context).client.getSpaceHierarchy(
+          course.id,
+          maxDepth: 1,
+          limit: 100,
+        );
+        final sessionType =
+            '${PangeaRoomTypes.activitySession}:${widget.activityId}';
+        roomIds.addAll(
+          hierarchy.rooms
+              .where((r) => r.roomType == sessionType)
+              .map((r) => r.roomId),
+        );
+      } catch (_) {
+        roomIds.addAll(
+          course.spaceChildren.map((c) => c.roomId).whereType<String>(),
+        );
+      }
     }
 
     if (roomIds.isEmpty) return;
