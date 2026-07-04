@@ -223,7 +223,13 @@ class WorldMapPinsManager {
         final activityId = summary.activityId;
         if (activityId == null) continue; // not an activity session
         (byActivity[activityId] ??= {})[entry.key] = summary;
-        if (summary.isFinished) continue; // completed — not joinable
+        // Not joinable if finished OR full (all roles taken): the same
+        // `isStarted` the start page's open-to-join gate uses, so a pin the map
+        // shows joinable is one the start page will actually offer a Join for,
+        // never a green pin that dead-ends at "Start". `isStarted` is finished ||
+        // (plan-carries-roles && no free seat); a thin-ref preview (no role plan)
+        // leaves it false, so seat-unknown sessions stay permissive as before.
+        if (summary.isStarted) continue;
         // "Live" means someone is actually present — filters stale rooms that
         // were never marked finished but everyone has since left.
         final presentNonBot = summary.membershipSummary.entries
