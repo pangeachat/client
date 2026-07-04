@@ -7,9 +7,16 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 /// to. Used to share new activity sessions into matching course spaces
 /// and to scope completion lookups for the world-map popup.
 class ActivityCourseResolver {
-  /// Joined course spaces whose v3 quest outline includes [activityId] and
-  /// whose target language matches [activityL2] (region-insensitive,
-  /// e.g. `es` matches `es-MX`). Null [activityL2] skips the L2 check.
+  /// Joined course spaces the activity is **eligible** for: those whose quest
+  /// Learning Objectives intersect the activity's own LO refs, at a matching
+  /// target language ([activityL2], region-insensitive, e.g. `es` matches
+  /// `es-MX`; null skips the L2 check).
+  ///
+  /// A direct LO intersection: one thin read for the activity's LO refs, then
+  /// one light quest read per joined course — not the full quest outline (which
+  /// also fetches every LO-matching activity plan + media and caps at 200).
+  /// Same eligibility the map's per-course ranking assumes. See
+  /// activities.instructions.md.
   static Future<List<Room>> matchingCourseSpaces(
     Client client,
     String activityId,
@@ -25,21 +32,24 @@ class ActivityCourseResolver {
         .toList();
     if (spaces.isEmpty) return [];
 
+    final activityRefs =
+        (await QuestRepo.activityLearningObjectiveRefs(activityId)).toSet();
+    if (activityRefs.isEmpty) return [];
+
     String short(String code) => code.split('-').first.toLowerCase();
 
     final matching = <Room>[];
     await Future.wait(
       spaces.map((space) async {
         try {
-          final outline = await QuestRepo.outline(space.coursePlan!.uuid);
+          final quest = await QuestRepo.quest(space.coursePlan!.uuid);
           if (activityL2 != null &&
-              short(outline.quest.targetLanguage) != short(activityL2)) {
+              short(quest.targetLanguage) != short(activityL2)) {
             return;
           }
-          final contains = outline.groups.any(
-            (g) => g.activities.any((a) => a.activityId == activityId),
-          );
-          if (contains) matching.add(space);
+          if (quest.learningObjectiveIds.any(activityRefs.contains)) {
+            matching.add(space);
+          }
         } catch (_) {
           // A course whose quest can't be resolved simply doesn't match.
         }
