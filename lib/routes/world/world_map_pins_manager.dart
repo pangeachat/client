@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -15,7 +16,6 @@ import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -186,38 +186,16 @@ class WorldMapPinsManager {
     _discovering = true;
     _lastDiscoveryMs = nowMs;
     try {
-      // The m.space.child a coursemate wrote is not reliably in the learner's
-      // local room state, so `space.spaceChildren` can miss it — read the
-      // hierarchy from the server, the same way the course page discovers rooms.
+      // Session rooms across the learner's joined courses, from the server
+      // hierarchy (shared with the activity start page's join list). Rooms the
+      // learner is already in flow through the client.rooms path, so drop those.
       final candidateIds = <String>{};
-      for (final space in courseSpaces) {
-        try {
-          final hierarchy = await client.getSpaceHierarchy(
-            space.id,
-            maxDepth: 1,
-            limit: 100,
-          );
-          for (final child in hierarchy.rooms) {
-            if (child.roomId == space.id) continue; // the space root itself
-            if (child.roomType?.startsWith(PangeaRoomTypes.activitySession) !=
-                true) {
-              continue; // only activity-session rooms
-            }
-            final existing = client.getRoomById(child.roomId);
-            // Rooms the learner is already in flow through the client.rooms path.
-            if (existing != null && existing.membership == Membership.join) {
-              continue;
-            }
-            candidateIds.add(child.roomId);
-          }
-        } catch (e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            m: 'course space hierarchy fetch failed',
-            data: {'spaceId': space.id},
-          );
+      for (final id in await client.courseActivitySessionRoomIds()) {
+        final existing = client.getRoomById(id);
+        if (existing != null && existing.membership == Membership.join) {
+          continue;
         }
+        candidateIds.add(id);
       }
 
       if (candidateIds.isEmpty) {

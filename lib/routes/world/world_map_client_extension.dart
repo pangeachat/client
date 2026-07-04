@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
@@ -51,14 +51,9 @@ extension WorldMapClientExtension on Client {
 
   /// The learner's joined course spaces (a space they belong to that carries a
   /// course plan) — the source set for the objective cache + relevance banding.
-  List<Room> get joinedCourseRooms => rooms
-      .where(
-        (r) =>
-            r.isSpace &&
-            r.membership == Membership.join &&
-            r.coursePlan != null,
-      )
-      .toList();
+  /// Aliases the shared [ActivitySessionDiscovery.joinedCourseSpaces] so the map
+  /// and the activity start page share one definition.
+  List<Room> get joinedCourseRooms => joinedCourseSpaces;
 
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];
