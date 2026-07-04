@@ -102,6 +102,12 @@ class WorldMapController extends State<WorldMap>
   /// snapping on every hop. Re-armed on each request; only the last fires.
   Timer? _fitDebounce;
 
+  /// Coalesces a burst of activity-plan hydrations (many pins resolve their
+  /// plans at once) into a single signal recompute, so a session flips to its
+  /// joinable/joined colour once its seats are known — notably an invited
+  /// session, whose role count is unknown until its plan lands from CMS.
+  Timer? _planHydrateDebounce;
+
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
   late final AnimationController _cameraAnimationController;
@@ -217,6 +223,7 @@ class WorldMapController extends State<WorldMap>
     _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
+    _planHydrateDebounce?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
@@ -282,7 +289,14 @@ class WorldMapController extends State<WorldMap>
       MapCompletionFilter.completed;
 
   void _onPlanHydrate() {
-    if (mounted) setState(() {});
+    // A plan landing from CMS fires no room sync, so the sync-driven recompute
+    // never re-derives seats for it — why an invited session (its role count
+    // known only once the plan hydrates) never flips to joinable. Recompute the
+    // signals, debounced so a burst of hydrations coalesces into one pass.
+    _planHydrateDebounce?.cancel();
+    _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
+      if (mounted) _recomputeProgress();
+    });
   }
 
   void _recomputeProgress() {
