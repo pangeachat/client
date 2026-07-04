@@ -21,10 +21,20 @@ The map is the canvas the whole app sits on; every other surface is a panel over
 - **A course scope narrows the candidate set.** The map scope is a [`MapContext`](../../lib/routes/world/map_context.dart) — [`WorldMapContext`](../../lib/routes/world/map_context.dart) for the whole world, [`CourseMapContext`](../../lib/routes/world/map_context.dart) for a single course. Under the `?m=course:` map-scope token (see [routing.instructions.md](routing.instructions.md)) the map shows just that course's activities; the unscoped world view is the personalized default below. The content, ranking, and display pipeline is identical either way — the scope only changes which items compete.
 - **The map changes focus only on a deliberate, focus-bearing selection.** A map focus is what the map is scoped or pointed at; it changes _only_ when you select something that carries one — a **course** (scopes to its activities) or an **activity** (camera glides to its pin) — or via the **World/home** control, the one focus that names no item and so opens to the broadest possible, the whole world. Tapping a surface that carries no map focus (the Courses hub, Chats, Settings) overlays the map you left without changing it (#7087). The scope/focus token model lives in [routing.instructions.md](routing.instructions.md).
 
+## Discovering joinable sessions
+
+A pin's `joinable` state (and the +3 that dominates ranking) is derived from the learner's own Matrix rooms **plus** two lightweight discovery reads, so a live session the learner has not personally joined still surfaces:
+
+- **Invited sessions** — a session the learner was invited to is already in their room list, but the invite's stripped state does not carry `pangea.activity_roles` (only defaults + the room type), so accurate seats come from a `room_preview` read ([`getRoomSummaries`](../../lib/features/room_summaries/room_summary_extension.dart)), not local state.
+- **Coursemate sessions in a joined course** — a session another member started is an `m.space.child` of the course space but is **not** in the learner's room list until they join it; the client discovers it by walking each joined course space's children and `room_preview`-ing the activity-session rooms the learner is not already in.
+
+Both feed the same pure [signal reducer](../../lib/routes/world/world_map_signals.dart) as owned rooms, keyed by `activity_id`. Total seats come from the activity's CMS plan (as they already do for owned rooms); the preview supplies the filled roles. Strangers' sessions **outside** the learner's joined courses stay out of reach until the choreographer exposes cross-course discovery ([Future Work](#future-work)).
+
 ## The personalized default
 
-Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by state with my progress shown** — derived from signals the app already holds about the learner, with no new data capture. This is not a separate code path: it is just the [filters](#filters) pre-seeded (L2, CEFR, joined quests), the _initial_ state and not a gate:
+Before any search or filter, the map shows **my L2, at or below my CEFR, in the current viewport, colored by state with my progress shown** — derived from signals the app already holds about the learner, with no new data capture. This is not a separate code path: it is just the [filters](#filters) pre-seeded (L2, CEFR, joinable, joined quests), the _initial_ state and not a gate:
 
+- Preferences joinable sessions across the learner's languages — their L1 and L2. (Support for multiple L1s and L2s is future work.)
 - Changing or clearing those filters and searching refine it; a one-tap **reset** returns to it.
 - When the view is empty, offer a **widen** affordance (all languages, or zoom out) so personalization never dead-ends.
 
@@ -138,4 +148,4 @@ Map content is fetched through a **stable server contract** (the choreographer),
 
 ## Future Work
 
-File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: a backend endpoint for **map-wide open-session discovery**, since the client can only see open sessions in the learner's joined courses — surfacing strangers' joinable sessions across the map (the core preference-open-sessions goal) needs the choreographer to expose them; evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
+File GitHub issues for these and link them here (use the `update-future-work` skill). Deferred design threads: a backend endpoint for **cross-course open-session discovery** — the client now surfaces joinable sessions in the learner's **joined** courses and ones they've been **invited** to (see [Discovering joinable sessions](#discovering-joinable-sessions)), but strangers' sessions in courses the learner has _not_ joined still need the choreographer to expose them (the core preference-open-sessions goal at full map-wide reach); evaluating the **best-effort pinged detection** (recent course-space message scan) before adding a persistent ping signal; a generalized map-item pipeline for non-activity content; users-as-content (opt-in location); world-feed social items as a content source; server-side viewport narrowing and CEFR banding.
