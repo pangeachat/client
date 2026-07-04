@@ -149,6 +149,29 @@ class QuestRepo {
     (json) => QuestPlan.fromJson(json),
   );
 
+  /// The activity's own Learning Objective ids — a thin, select-projected read
+  /// (no plan body, no media) used to decide which joined courses a new session
+  /// is shared into: its LOs intersected with each course's quest objectives.
+  /// See [ActivityCourseResolver] and activities.instructions.md.
+  static Future<List<String>> activityLearningObjectiveRefs(
+    String activityId,
+  ) async {
+    final resp = await _client().find<Map<String, dynamic>>(
+      _activities,
+      (json) => json,
+      where: {
+        'id': {'equals': activityId},
+      },
+      select: {'learningObjectiveRefs': true},
+      limit: 1,
+      depth: 0,
+    );
+    if (resp.docs.isEmpty) return const [];
+    return ((resp.docs.first['learningObjectiveRefs'] as List? ?? const [])
+        .map((e) => e is Map ? e['id'] as String : e as String)
+        .toList());
+  }
+
   /// The full Learning Objectives for [ids], resolved in one batched read.
   static Future<Map<String, LearningObjective>> learningObjectives(
     List<String> ids,

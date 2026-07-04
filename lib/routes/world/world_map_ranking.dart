@@ -96,18 +96,33 @@ class RankingResult {
   final int largeBudget;
   final int midBudget;
   final int smallBudget;
+
+  /// The **live-session gate**: when the shown set holds any `joined`/`joinable`
+  /// session, the ids eligible for the heavy (`large`/`mid`) tiers — those live
+  /// sessions — while every other pin renders `small`, however high it scores.
+  /// Null when nothing live is in view (the gate is inert; all pins compete for
+  /// the heavy tiers by score). See world-map.instructions.md ("Priority matrix").
+  final Set<String>? heavyEligibleIds;
+
   const RankingResult({
     required this.ordered,
     this.largeBudget = 3,
     this.midBudget = 10,
     this.smallBudget = 0,
+    this.heavyEligibleIds,
   });
 
-  /// The static top-[largeBudget] (used where geometric placement can't run).
-  List<String> get largeIds => ordered.take(largeBudget).toList();
+  bool _heavyEligible(String id) =>
+      heavyEligibleIds == null || heavyEligibleIds!.contains(id);
 
-  /// The [midBudget] candidates just below the large slice.
-  Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
+  /// The static top-[largeBudget] eligible for the heavy tier (used where
+  /// geometric placement can't run).
+  List<String> get largeIds =>
+      ordered.where(_heavyEligible).take(largeBudget).toList();
+
+  /// The [midBudget] heavy-eligible candidates just below the large slice.
+  Set<String> get midIds =>
+      ordered.where(_heavyEligible).skip(largeBudget).take(midBudget).toSet();
 }
 
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
@@ -213,11 +228,23 @@ RankingResult rankPins({
     progressedIds: progressedIds,
   );
 
+  // The live-session gate: when the shown set holds any joined/joinable session,
+  // only those are eligible for the heavy (large/mid) tiers; every other pin is
+  // small, however high it scores. Inert (null) when nothing live is in view.
+  final liveIds = ordered
+      .where(
+        (id) =>
+            sig(id).state == ActivityPinState.joined ||
+            sig(id).state == ActivityPinState.joinable,
+      )
+      .toSet();
+
   return RankingResult(
     ordered: ordered,
     largeBudget: largeBudget,
     midBudget: midBudget,
     smallBudget: smallBudget,
+    heavyEligibleIds: liveIds.isEmpty ? null : liveIds,
   );
 }
 
@@ -294,6 +321,7 @@ PlacementResult placeLargeCards({
   required Size cardSize,
   required Rect safeArea,
   int largeBudget = 3,
+  Set<String>? heavyEligibleIds,
 }) {
   // The card sits ABOVE its pin: flutter_map places an Alignment.topCenter
   // marker so its box is above the point (the point is the box's bottom-center,
@@ -306,12 +334,19 @@ PlacementResult placeLargeCards({
     cardSize.height,
   );
 
+  // Under the live-session gate only live sessions are eligible for a large card,
+  // so a non-live pin — even the focused one — stays a dot
+  // (world-map.instructions.md, the heavy-tier gate).
+  final candidates = heavyEligibleIds == null
+      ? orderedCandidates
+      : orderedCandidates.where(heavyEligibleIds.contains).toList();
+
   // Focused pin goes first when it is a candidate this view, so it claims its
   // footprint and the featured set yields around it. It is not force-added: a
   // focused pin that isn't a candidate never becomes a card here.
   final ordered = <String>[
-    if (focusedId != null && orderedCandidates.contains(focusedId)) focusedId,
-    ...orderedCandidates.where((id) => id != focusedId),
+    if (focusedId != null && candidates.contains(focusedId)) focusedId,
+    ...candidates.where((id) => id != focusedId),
   ];
 
   final largeIds = <String>[];

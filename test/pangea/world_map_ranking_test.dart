@@ -215,23 +215,24 @@ void main() {
 
   group('rankPins — large/mid fill by score', () {
     test('the highest-scoring pins fill large, the next fill mid', () {
+      // No live session in view, so the gate is inert and tiers fill by score.
       final pins = [
-        _card('live', refs: ['a']), // joinable → top
-        _card('lvl', refs: ['b']), // band 1.0
-        _card('floor', refs: const []), // band 0.5
+        _card('lvl', refs: ['b']), // band 1.0 → top
+        _card('floorA', refs: const []), // band 0.5
+        _card('floorB', refs: const []), // band 0.5
       ];
       final result = rank(
         pins,
         {
-          'live': const PinSignals(state: ActivityPinState.joinable),
           'lvl': const PinSignals(),
-          'floor': const PinSignals(),
+          'floorA': const PinSignals(),
+          'floorB': const PinSignals(),
         },
         largeBudget: 1,
         midBudget: 10,
       );
-      expect(result.largeIds, ['live']); // top of the score
-      expect(result.midIds, {'lvl', 'floor'}); // the rest, by score
+      expect(result.largeIds, ['lvl']); // top of the score
+      expect(result.midIds, {'floorA', 'floorB'}); // the rest, by score
     });
 
     test('the large budget caps the large set; overflow drops to mid', () {
@@ -368,6 +369,67 @@ void main() {
       );
       expect(withTrail.ordered.toSet(), {'live', 'prog'});
       expect(withTrail.ordered.length, 2);
+    });
+  });
+
+  group('rankPins — live-session gate on the heavy tiers', () {
+    test('with a live session in view, only it is heavy-eligible', () {
+      final pins = [
+        _card('live', refs: ['a']), // joinable
+        _card('lvl', refs: ['b']), // band 1.0 — a high-relevance non-live pin
+        _card('floor', refs: const []), // band 0.5
+      ];
+      final result = rank(
+        pins,
+        {
+          'live': const PinSignals(state: ActivityPinState.joinable),
+          'lvl': const PinSignals(),
+          'floor': const PinSignals(),
+        },
+        largeBudget: 3,
+        midBudget: 10,
+      );
+      // The gate is active; only the live session earns large/mid, and the
+      // high-relevance non-live pins get neither (they render small).
+      expect(result.heavyEligibleIds, {'live'});
+      expect(result.largeIds, ['live']);
+      expect(result.midIds, isEmpty);
+    });
+
+    test('a joined session also activates the gate', () {
+      final pins = [
+        _card('mine', refs: ['a']),
+        _card('lvl', refs: ['b']),
+      ];
+      final result = rank(
+        pins,
+        {
+          'mine': const PinSignals(state: ActivityPinState.joined),
+          'lvl': const PinSignals(),
+        },
+        largeBudget: 3,
+        midBudget: 10,
+      );
+      expect(result.heavyEligibleIds, {'mine'});
+      expect(result.largeIds, ['mine']);
+      expect(result.midIds, isEmpty);
+    });
+
+    test('with nothing live in view the gate is inert (null); all compete', () {
+      final pins = [
+        _card('a', refs: ['k1']),
+        _card('b', refs: ['k2']),
+      ];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 1,
+        midBudget: 10,
+      );
+      expect(result.heavyEligibleIds, isNull);
+      expect(result.largeIds.length, 1);
+      // Non-live still fills mid when nothing live gates the tier.
+      expect(result.midIds.length, 1);
     });
   });
 }
