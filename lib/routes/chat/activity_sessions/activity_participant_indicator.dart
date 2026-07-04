@@ -70,12 +70,16 @@ class ActivityParticipantIndicator extends StatelessWidget {
           absorbing: !selectable,
           child: HoverBuilder(
             builder: (context, hovered) {
+              // Prefer the member's display name over the raw @localpart so a
+              // role reads as a human name, not a username (#7366). Falls back
+              // to the localpart when the occupant isn't a resolved member.
+              final displayName = user?.calcDisplayname() ?? userId?.localpart;
               final avatar = userId != null
                   ? Avatar(
                       mxContent: user?.avatarUrl != null
                           ? user!.avatarUrl!
                           : null,
-                      name: userId!.localpart,
+                      name: displayName ?? userId!.localpart,
                       size: 60.0,
                       userId: userId,
                       miniIcon:
@@ -155,16 +159,15 @@ class ActivityParticipantIndicator extends StatelessWidget {
                               ),
                               avatar,
                               Text(
-                                userId?.localpart ??
-                                    L10n.of(context).openRoleLabel,
+                                displayName ?? L10n.of(context).openRoleLabel,
                                 style: TextStyle(
                                   fontSize: 12.0,
                                   color:
                                       (Theme.of(context).brightness ==
                                           Brightness.light
-                                      ? (userId?.localpart?.darkColor ??
+                                      ? (displayName?.darkColor ??
                                             theme.colorScheme.primary)
-                                      : (userId?.localpart?.lightColorText ??
+                                      : (displayName?.lightColorText ??
                                             theme.colorScheme.primary)),
                                 ),
                                 textAlign: TextAlign.center,
