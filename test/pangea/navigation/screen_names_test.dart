@@ -73,10 +73,7 @@ void main() {
       expect(name('/?left=chats'), 'chats');
       expect(name('/?left=chats,room:!abc'), 'room');
       expect(name('/?right=analytics:vocab'), 'analytics:vocab');
-      expect(
-        name('/?right=vocab:abrigadoro.adj,analytics:vocab'),
-        'vocab',
-      );
+      expect(name('/?right=vocab:abrigadoro.adj,analytics:vocab'), 'vocab');
       expect(
         name('/?right=settingspage:security/3pid,settings'),
         'settingspage:security/3pid',
@@ -90,10 +87,7 @@ void main() {
     test('independent panels tie-break by registry priority', () {
       // A live room (80) out-ranks an analytics summary (40) when both are
       // leaves — matching the narrow-mode cold-start focus rule.
-      expect(
-        name('/?left=chats,room:!abc&right=analytics:vocab'),
-        'room',
-      );
+      expect(name('/?left=chats,room:!abc&right=analytics:vocab'), 'room');
     });
 
     test('the activity plan reads as activity whatever its bindings', () {

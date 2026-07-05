@@ -19,8 +19,9 @@ void main() {
       ]);
     });
 
-    test('an encoded construct survives the add → URL → parse round-trip', () {
-      const token = PanelToken('vocab', '{"lemma":"a,b","type":"verb"}');
+    test('an encoded construct param survives the add → URL → parse '
+        'round-trip', () {
+      const token = PanelToken('vocab', 'a%2Cb.verb');
       final loc = WorkspaceNav.openRight(u('/chats'), token);
       expect(parseOpenPanels(u(loc)).right.single, token);
     });
@@ -811,17 +812,21 @@ void main() {
   });
 
   group('openPractice (takes over the analytics surface)', () {
-    test('clears the analytics master + vocab/grammar details + a left session, '
-        'then seats practice', () {
-      const base = '/?left=room:!r,session:!s&right=vocab:a.adj,analytics:vocab';
-      final loc = WorkspaceNav.openPractice(u(base), 'vocab');
-      final lists = parseOpenPanels(u(loc));
-      // The right column is just the practice panel — analytics + vocab gone.
-      expect(lists.right.single, const PanelToken('practice', 'vocab'));
-      // The left session (shares the detail slot) is dropped; the live room
-      // (independent) stays.
-      expect(lists.left.map((t) => t.type), ['room']);
-    });
+    test(
+      'clears the analytics master + vocab/grammar details + a left session, '
+      'then seats practice',
+      () {
+        const base =
+            '/?left=room:!r,session:!s&right=vocab:a.adj,analytics:vocab';
+        final loc = WorkspaceNav.openPractice(u(base), 'vocab');
+        final lists = parseOpenPanels(u(loc));
+        // The right column is just the practice panel — analytics + vocab gone.
+        expect(lists.right.single, const PanelToken('practice', 'vocab'));
+        // The left session (shares the detail slot) is dropped; the live room
+        // (independent) stays.
+        expect(lists.left.map((t) => t.type), ['room']);
+      },
+    );
 
     test(
       'opening a construct detail closes practice (one detail across columns)',
@@ -890,15 +895,18 @@ void main() {
       expect(uri.queryParameters['roomid'], isNull);
     });
 
-    test('autoplay:true autostarts the hero media at block 0 (token field)', () {
-      final loc = WorkspaceNav.openCourseActivity(
-        '!space',
-        'act-123',
-        autoplay: true,
-      );
-      final uri = u(loc);
-      expect(activityInfoFor(uri)?.autoplay, 0);
-      expect(uri.queryParameters['autoplay'], isNull);
-    });
+    test(
+      'autoplay:true autostarts the hero media at block 0 (token field)',
+      () {
+        final loc = WorkspaceNav.openCourseActivity(
+          '!space',
+          'act-123',
+          autoplay: true,
+        );
+        final uri = u(loc);
+        expect(activityInfoFor(uri)?.autoplay, 0);
+        expect(uri.queryParameters['autoplay'], isNull);
+      },
+    );
   });
 }

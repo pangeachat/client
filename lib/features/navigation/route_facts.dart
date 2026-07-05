@@ -82,83 +82,32 @@ CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
-  // world_v2: a course is a map filter (`?m=course:<id>`), not a path, so an
-  // active course filter selects the Courses section regardless of the (always
-  // `/`) path. See `routing.instructions.md`.
+  // An active `?c=` course context selects the Courses section regardless of
+  // the (always `/`) path; otherwise section identity rides in the left
+  // tokens. See `routing.instructions.md`.
   if (activeSpaceIdFor(uri) != null) return AppSection.courses;
-  // world_v2: section identity rides in the left tokens, not the path (which
-  // collapses to `/`). The chat list / a live room → Chats; the add-course
-  // hub/wizard token → Courses. This keeps the rail highlight correct with a
-  // bare `/` path. See `routing.instructions.md`.
   final left = parseOpenPanels(uri).left;
   if (left.any((t) => t.type == 'chats' || t.type == 'room')) {
     return AppSection.chats;
   }
   if (left.any((t) => t.type == 'addcourse')) return AppSection.courses;
-  // Legacy inbound paths (pre-collapse bookmarks / deep links) still resolve
-  // here until the router redirect rewrites them to tokens.
-  final segments = uri.pathSegments;
-  if (segments.isEmpty) return AppSection.world;
-  final first = segments.first;
+  // The few real route-driven paths (fork `/rooms/...` pages, the course
+  // Completer flows and public preview) highlight by first segment.
+  final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;
   if (first == 'rooms') return AppSection.chats;
-  if (PRoutes.isWorldObjectId(first)) return AppSection.world;
-  for (final section in AppSection.values) {
-    final segment = section.rootPath == '/'
-        ? ''
-        : section.rootPath.substring(1);
-    if (segment == first) return section;
-  }
+  if (first == 'courses') return AppSection.courses;
   return AppSection.world;
 }
 
-/// Split a URL token list on its commas. Param content can never contain a
-/// literal comma: [TokenFields.encode] escapes one to `%2C` inside a field and
-/// [PanelToken.encode] percent-encodes the param again (`%252C`), so even the
-/// browser's fragment normalization — which decodes `%2C` back to a literal
-/// comma (the #7079 shatter) — cannot reintroduce a delimiter. The old
-/// brace-depth tracking existed only for the retired JSON construct params.
-List<String> splitTopLevelTokens(String list) => list.split(',');
-
-/// The map-filter values from `?m=` — a comma list of typed tokens (today only
-/// `course:<spaceid>`) that scope the persistent world map. Read raw (not the
-/// percent-decoded `queryParameters`) and PanelToken-parsed, mirroring
-/// [parseOpenPanels]: a course is a *map filter*, independent of which panels
-/// are open and of the path (always `/`). See `routing.instructions.md`.
-List<PanelToken> mapFiltersFor(Uri uri) {
-  final query = uri.query;
-  if (query.isEmpty) return const [];
-  String? encoded;
-  for (final part in query.split('&')) {
-    if (part.startsWith('m=')) {
-      encoded = part.substring(2);
-      break;
-    }
-  }
-  if (encoded == null || encoded.isEmpty) return const [];
-  final tokens = <PanelToken>[];
-  for (final element in splitTopLevelTokens(encoded)) {
-    final token = PanelToken.parse(element);
-    if (token != null) tokens.add(token);
-  }
-  return tokens;
-}
-
-/// The active course space id — the workspace's course context — else null.
-/// Canonical form is the `?c=<spaceid>` param (a bare localpart), one value
-/// read by the map (scope) and the course-family panels (identity) alike,
-/// independent of the panel tokens. The legacy `?m=course:<id>` map-filter
-/// spelling is accepted inbound (`LegacyRedirects` normalizes it to `c=`
-/// before render). Re-attaches the home server_name for callers that hit the
-/// Matrix client. See `routing.instructions.md`.
+/// The active course space id — the workspace's `?c=<spaceid>` course context
+/// (a bare localpart) — else null. One value read by the map (scope) and the
+/// course-family panels (identity) alike, independent of the panel tokens.
+/// Re-attaches the home server_name for callers that hit the Matrix client.
+/// See `routing.instructions.md`.
 String? activeSpaceIdFor(Uri uri) {
   for (final part in uri.query.split('&')) {
     if (part.startsWith('c=') && part.length > 2) {
       return fullRoomId(Uri.decodeComponent(part.substring(2)));
-    }
-  }
-  for (final filter in mapFiltersFor(uri)) {
-    if (filter.type == 'course' && (filter.param?.isNotEmpty ?? false)) {
-      return fullRoomId(filter.param!);
     }
   }
   return null;
@@ -185,57 +134,24 @@ String? activeRoomIdFor(GoRouterState state) {
   return activeRoomIdFromPanels(state.uri);
 }
 
-/// The activity an open URI addresses. world_v2 canonical: a `left=activity:`
-/// panel token whose structured param carries the id plus optional session
-/// bindings — the bound room, launch, autoplay ([ActivityToken]). Legacy
-/// inbound forms — the loose `?activity=`/`?roomid=`/`?launch=`/`?autoplay=`
-/// params — are read as a fallback so an un-normalized deep link still
-/// resolves until `LegacyRedirects` folds it into the token.
+/// The activity an open URI addresses: the `left=activity:` panel token,
+/// whose structured param carries the id plus optional session bindings — the
+/// bound room, launch, autoplay ([ActivityToken]).
 ({String id, String? roomId, bool launch, int? autoplay})? activityInfoFor(
   Uri uri,
 ) {
-  final loose = uri.queryParameters;
-  final looseRoom = loose['roomid'];
   for (final token in parseOpenPanels(uri).left) {
     if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
-      final parsed = ActivityToken.parse(token.param!);
-      return (
-        id: parsed.id,
-        roomId:
-            parsed.roomId ?? (looseRoom == null ? null : fullRoomId(looseRoom)),
-        launch: parsed.launch || loose['launch'] == 'true',
-        autoplay: parsed.autoplay ?? int.tryParse(loose['autoplay'] ?? ''),
-      );
+      return ActivityToken.parse(token.param!);
     }
   }
-  final id = loose['activity'];
-  if (id == null || id.isEmpty) return null;
-  return (
-    id: id,
-    roomId: looseRoom == null ? null : fullRoomId(looseRoom),
-    launch: loose['launch'] == 'true',
-    autoplay: int.tryParse(loose['autoplay'] ?? ''),
-  );
+  return null;
 }
 
-/// [activityInfoFor] plus the standalone `/:activityId` legacy path fallback,
-/// which only a [GoRouterState] can resolve.
+/// [activityInfoFor] over a [GoRouterState]'s URI.
 ({String id, String? roomId, bool launch, int? autoplay})? activityFor(
   GoRouterState state,
-) {
-  final fromUri = activityInfoFor(state.uri);
-  if (fromUri != null) return fromUri;
-  final id = state.pathParameters['activityId'];
-  if (id == null || id.isEmpty) return null;
-  final loose = state.uri.queryParameters;
-  final roomId = loose['roomid'];
-  return (
-    id: id,
-    roomId: roomId == null ? null : fullRoomId(roomId),
-    launch: loose['launch'] == 'true',
-    autoplay: int.tryParse(loose['autoplay'] ?? ''),
-  );
-}
+) => activityInfoFor(state.uri);
 
 /// What the map should focus. Today: the open activity. Extend by adding a
 /// [MapFocus] subclass and returning it here.
@@ -320,7 +236,9 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   final seen = <String>{};
   final usedGroups = <String>{};
   final tokens = <PanelToken>[];
-  for (final element in splitTopLevelTokens(encodedList)) {
+  // A plain comma split is safe: param content is field-encoded, so a literal
+  // comma can never survive into the list (token_fields.dart).
+  for (final element in encodedList.split(',')) {
     final token = PanelToken.parse(element);
     if (token == null) continue;
     final def = PanelRegistry.defFor(token.type);

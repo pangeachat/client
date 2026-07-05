@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/activity_token.dart';
-import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
@@ -80,13 +79,18 @@ void main() {
       }
     });
 
-    test('the token type supplies the construct type — grammar means morph', () {
-      final construct = ConstructIdentifier.fromTokenParam('grammar', 'ser.aux');
-      expect(construct?.type, ConstructTypeEnum.morph);
-      expect(construct?.lemma, 'ser');
-      expect(construct?.category, 'aux');
-    });
-
+    test(
+      'the token type supplies the construct type — grammar means morph',
+      () {
+        final construct = ConstructIdentifier.fromTokenParam(
+          'grammar',
+          'ser.aux',
+        );
+        expect(construct?.type, ConstructTypeEnum.morph);
+        expect(construct?.lemma, 'ser');
+        expect(construct?.category, 'aux');
+      },
+    );
   });
 
   group('ActivityToken (session bindings ride the fields)', () {
@@ -121,25 +125,14 @@ void main() {
   });
 
   group('the ?c= course context', () {
-    test('c= is canonical; the legacy m=course: spelling still reads', () {
+    test('c= carries the bare space id and decodes', () {
       expect(activeSpaceIdFor(u('/?c=!s&left=course')), '!s');
-      expect(activeSpaceIdFor(u('/?m=course:!s&left=course')), '!s');
-      // c= wins when both are present.
-      expect(activeSpaceIdFor(u('/?c=!a&m=course:!b')), '!a');
-      // An encoded value decodes.
       expect(activeSpaceIdFor(u('/?c=%21abc')), '!abc');
-    });
-
-    test('section switches carry a legacy context verbatim (tolerance)', () {
-      final loc = WorkspaceNav.setSection(
-        u('/?m=course:!s&left=chats'),
-        const PanelToken('chats'),
-      );
-      expect(loc.contains('m=course:!s'), isTrue);
+      expect(activeSpaceIdFor(u('/?left=chats')), isNull);
     });
   });
 
-  group('activityInfoFor (token fields win, loose params read inbound)', () {
+  group('activityInfoFor (session bindings ride the token fields)', () {
     test('reads the token fields', () {
       final info = activityInfoFor(u('/?c=!s&left=activity:act-1.r!sess.l'));
       expect(info?.id, 'act-1');
@@ -147,68 +140,28 @@ void main() {
       expect(info?.launch, isTrue);
     });
 
-    test('legacy loose params fill gaps but never override fields', () {
-      final merged = activityInfoFor(
-        u('/?left=activity:act-1.r!fields&roomid=!loose&autoplay=3'),
-      );
-      expect(merged?.roomId, '!fields');
-      expect(merged?.autoplay, 3);
-      final looseOnly = activityInfoFor(u('/?activity=act-2&launch=true'));
-      expect(looseOnly?.id, 'act-2');
-      expect(looseOnly?.launch, isTrue);
-    });
-  });
-
-  group('LegacyRedirects normalizes legacy query spellings at /', () {
-    String? resolve(String location) => LegacyRedirects.resolve(u(location));
-
-    test('m=course: becomes c=', () {
-      expect(resolve('/?m=course:!s&left=course'), '/?c=!s&left=course');
-    });
-
-    test('loose activity params fold into the token fields', () {
-      final out = resolve('/?c=!s&left=activity:act-1&roomid=!r&launch=true');
-      expect(out, isNotNull);
-      final outUri = u(out!);
-      expect(outUri.queryParameters['roomid'], isNull);
-      expect(outUri.queryParameters['launch'], isNull);
-      final info = activityInfoFor(outUri);
-      expect(info?.id, 'act-1');
-      expect(info?.roomId, '!r');
-      expect(info?.launch, isTrue);
-      expect(activeSpaceIdFor(outUri), '!s');
-    });
-
-    test('both legacy spellings normalize in one pass, idempotently', () {
-      final out = resolve('/?m=course:!s&activity=act-1&launch=true');
-      expect(out, isNotNull);
-      final outUri = u(out!);
-      expect(activeSpaceIdFor(outUri), '!s');
-      expect(activityInfoFor(outUri)?.launch, isTrue);
-      // Idempotent: the canonical result resolves to nothing.
-      expect(resolve(out), isNull);
-    });
-
-    test('a canonical token URL is left alone', () {
-      expect(resolve('/?c=!s&left=course,room:!a&right=analytics:vocab'), isNull);
-      expect(resolve('/?left=chats'), isNull);
+    test('no activity token means no activity', () {
+      expect(activityInfoFor(u('/?left=chats')), isNull);
     });
   });
 
   group('WorkspaceNav.openActivity / dropActivityOverlay', () {
-    test('openActivity keeps the context by default and seats a sole token', () {
-      final loc = WorkspaceNav.openActivity(
-        u('/?c=!s&left=course&right=analytics:vocab'),
-        'act-1',
-        roomId: '!sess',
-      );
-      final uri = u(loc);
-      expect(activeSpaceIdFor(uri), '!s');
-      expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
-      expect(parseOpenPanels(uri).right.map((t) => t.type), ['analytics']);
-      expect(activityInfoFor(uri)?.roomId, '!sess');
-      expect(uri.queryParameters['roomid'], isNull);
-    });
+    test(
+      'openActivity keeps the context by default and seats a sole token',
+      () {
+        final loc = WorkspaceNav.openActivity(
+          u('/?c=!s&left=course&right=analytics:vocab'),
+          'act-1',
+          roomId: '!sess',
+        );
+        final uri = u(loc);
+        expect(activeSpaceIdFor(uri), '!s');
+        expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
+        expect(parseOpenPanels(uri).right.map((t) => t.type), ['analytics']);
+        expect(activityInfoFor(uri)?.roomId, '!sess');
+        expect(uri.queryParameters['roomid'], isNull);
+      },
+    );
 
     test('clearContext/clearRight give the pin-tap full-attention open', () {
       final loc = WorkspaceNav.openActivity(

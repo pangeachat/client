@@ -80,7 +80,6 @@ class ActivitySessionStartView extends StatelessWidget {
         ).left.any((t) => t.type == 'activity');
         final courseScoped = activeSpaceIdFor(uri) != null;
 
-
         return Scaffold(
           appBar: AppBar(
             leadingWidth: 52.0,

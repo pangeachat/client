@@ -258,7 +258,7 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'm', 'left'});
+    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
@@ -288,7 +288,7 @@ abstract class WorkspaceNav {
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'm', 'left'});
+    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
@@ -378,17 +378,6 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
-  /// The loose activity params legacy inbound links may carry. Internal
-  /// navigation never emits them (they ride the activity token's fields — see
-  /// [ActivityToken]), so the helpers strip them wherever the token is
-  /// (re)seated or dropped.
-  static const Set<String> _legacyActivityParams = {
-    'activity',
-    'roomid',
-    'launch',
-    'autoplay',
-  };
-
   /// Seat [activityId] as the SOLE left `activity:` token over the map — the
   /// token-native "open this activity from here" (a map pin tap, a start-page
   /// reopen). Session binding, launch, and autoplay ride the token's fields.
@@ -408,8 +397,7 @@ abstract class WorkspaceNav {
     WorkspaceQuery.removeKeys(parts, {
       'left',
       if (clearRight) 'right',
-      if (clearContext) ...const {'c', 'm'},
-      ..._legacyActivityParams,
+      if (clearContext) 'c',
     });
     final token = PanelToken(
       'activity',
@@ -424,18 +412,17 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
-  /// Drop the open `activity` token (and any legacy loose activity params),
-  /// keeping the rest of the workspace — notably the course context, which a
-  /// close never consumes (routing.instructions.md). [reopenCourseCard]
-  /// additionally reseats the `course` card over a surviving context (the
-  /// plan's back-arrow target). Emits the world path: activity overlays only
-  /// ever ride over the map.
+  /// Drop the open `activity` token, keeping the rest of the workspace —
+  /// notably the course context, which a close never consumes
+  /// (routing.instructions.md). [reopenCourseCard] additionally reseats the
+  /// `course` card over a surviving context (the plan's back-arrow target).
+  /// Emits the world path: activity overlays only ever ride over the map.
   static String dropActivityOverlay(
     Uri current, {
     bool reopenCourseCard = false,
   }) {
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'left', ..._legacyActivityParams});
+    WorkspaceQuery.removeKeys(parts, {'left'});
     final left = parseOpenPanels(
       current,
     ).left.where((t) => t.type != 'activity').toList();
@@ -488,18 +475,15 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
-  /// The raw course-context segment of [current]'s query — the canonical
-  /// `c=<spaceid>` param, or the legacy `m=…` spelling an un-normalized URL may
-  /// still carry — or null. Context is scope state, independent of which panels
-  /// are open, so the section/close helpers carry it forward verbatim. See
+  /// The raw `c=<spaceid>` course-context segment of [current]'s query, or
+  /// null. Context is scope state, independent of which panels are open, so
+  /// the section/close helpers carry it forward verbatim. See
   /// `routing.instructions.md`.
   static String? _courseContext(Uri current) {
-    String? legacy;
     for (final p in current.query.split('&')) {
       if (p.startsWith('c=')) return p;
-      if (p == 'm' || p.startsWith('m=')) legacy ??= p;
     }
-    return legacy;
+    return null;
   }
 
   /// Drop the whole `left` list (e.g. navigating to the world map, which has no
@@ -548,7 +532,7 @@ abstract class WorkspaceNav {
     // the course no longer unmounts/aborts the activity (#7111). The map filter
     // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
     final rest = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(rest, {'c', 'm', 'left', 'right'});
+    WorkspaceQuery.removeKeys(rest, {'c', 'left', 'right'});
     final parts = <String>[
       ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',

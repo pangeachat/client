@@ -9,22 +9,24 @@ void main() {
   String? space(String location) => activeSpaceIdFor(Uri.parse(location));
 
   group('sectionFor', () {
-    test('root selects world; matrix rooms select chats', () {
+    test('root selects world; the real /rooms routes select chats', () {
       expect(section('/'), AppSection.world);
-      expect(section('/chats'), AppSection.chats);
-      expect(section('/rooms/!abc:server.org'), AppSection.chats);
+      expect(section('/rooms/archive/!abc'), AppSection.chats);
     });
 
-    test('section roots select themselves; a course room stays in courses', () {
-      expect(section('/analytics'), AppSection.analytics);
-      expect(section('/analytics/vocab/abc'), AppSection.analytics);
-      expect(section('/courses'), AppSection.courses);
-      // The nested course chat room is still the courses section, not chats —
-      // the split this rebuild fixes.
-      expect(section('/courses/!s:x/!room:x'), AppSection.courses);
-      expect(section('/settings/security'), AppSection.settings);
-      expect(section('/profile'), AppSection.profile);
-    });
+    test(
+      'the real /courses routes select courses; retired paths are world',
+      () {
+        expect(section('/courses/own/plan-1'), AppSection.courses);
+        expect(section('/courses/preview/!abc'), AppSection.courses);
+        // Retired section paths have no redirects and no section identity: they
+        // are dead links by design (routing.instructions.md).
+        expect(section('/analytics'), AppSection.world);
+        expect(section('/settings/security'), AppSection.world);
+        expect(section('/profile'), AppSection.world);
+        expect(section('/chats'), AppSection.world);
+      },
+    );
 
     test('first-class world objects (uuid) select world', () {
       expect(
@@ -37,11 +39,11 @@ void main() {
       expect(section('/courses/analytics-course-name'), AppSection.courses);
     });
 
-    test('an active ?m=course filter selects courses (path is /)', () {
-      // world_v2: a course is a map filter, so it selects the Courses section
-      // even though the path is the world map and panels are independent.
-      expect(section('/?m=course:!s:x'), AppSection.courses);
-      expect(section('/?left=room:!r&m=course:!s:x'), AppSection.courses);
+    test('an active ?c= course context selects courses (path is /)', () {
+      // The course context selects the Courses section even though the path is
+      // the world map and panels are independent.
+      expect(section('/?c=!s:x'), AppSection.courses);
+      expect(section('/?left=room:!r&c=!s:x'), AppSection.courses);
     });
 
     test('section identity rides in the left token at the world path /', () {
@@ -54,23 +56,20 @@ void main() {
     });
   });
 
-  group('activeSpaceIdFor (course is the ?m= map filter, not the path)', () {
-    test('reads the course filter from ?m=, anywhere in the query', () {
-      expect(space('/?m=course:!s:x'), '!s:x');
-      expect(space('/?m=course:%21abc'), '!abc'); // an encoded param decodes
+  group('activeSpaceIdFor (course is the ?c= context, not the path)', () {
+    test('reads the course context from ?c=, anywhere in the query', () {
+      expect(space('/?c=!s:x'), '!s:x');
+      expect(space('/?c=%21abc'), '!abc'); // an encoded value decodes
       // independent of the path and of which panels happen to be open
-      expect(
-        space('/?left=room:!r&m=course:!s:x&right=analytics:vocab'),
-        '!s:x',
-      );
+      expect(space('/?left=room:!r&c=!s:x&right=analytics:vocab'), '!s:x');
     });
 
-    test('no course filter → null (world map)', () {
+    test('no course context → null (world map)', () {
       expect(space('/'), isNull);
       expect(space('/?left=room:!r'), isNull); // a room token is not a course
-      expect(space('/?m=region:europe'), isNull); // a non-course filter
-      // the legacy path no longer carries the space id (it redirects to ?m=).
-      expect(space('/courses/!s:x'), isNull);
+      // The retired m=course: spelling is dead by design — no legacy reads.
+      expect(space('/?m=course:!s'), isNull);
+      expect(space('/courses/!s:x'), isNull); // paths never carry the context
     });
   });
 
