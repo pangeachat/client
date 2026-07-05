@@ -179,16 +179,21 @@ class UrlLauncher {
         // Pangea#
         if (room.isSpace) {
           // TODO: Implement navigate to space
+          if (!context.mounted) return;
           context.go(
-            WorkspaceNav.openRoomById(GoRouterState.of(context).uri, room.id),
+            WorkspaceNav.openRoomById(
+              GoRouter.of(context).routeInformationProvider.value.uri,
+              room.id,
+            ),
           );
 
           return;
         }
         // we have the room, so....just open it
+        if (!context.mounted) return;
         context.go(
           WorkspaceNav.openRoomById(
-            GoRouterState.of(context).uri,
+            GoRouter.of(context).routeInformationProvider.value.uri,
             room.id,
             event: event,
           ),

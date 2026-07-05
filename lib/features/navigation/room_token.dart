@@ -32,7 +32,11 @@ abstract class RoomToken {
       return '$id/e/${TokenFields.encode(eventId)}';
     }
     if (subPage == null || subPage.isEmpty) return id;
-    final withFilter = filter != null && filter.isNotEmpty
+    // A filter only round-trips under `invite` / `details/invite` (see [parse]);
+    // appending it to any other sub-page would build a token parse can't read
+    // back. Ignore it elsewhere rather than emit a lossy token.
+    final allowsFilter = subPage == 'invite' || subPage == 'details/invite';
+    final withFilter = allowsFilter && filter != null && filter.isNotEmpty
         ? '$subPage/${TokenFields.encode(filter)}'
         : subPage;
     return '$id/$withFilter';

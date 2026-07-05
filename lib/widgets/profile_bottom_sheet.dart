@@ -30,6 +30,7 @@ class ProfileBottomSheet extends StatelessWidget {
       //Pangea#
     );
     if (result.error == null) {
+      if (!context.mounted) return;
       context.go(
         WorkspaceNav.openRoomById(
           GoRouterState.of(context).uri,

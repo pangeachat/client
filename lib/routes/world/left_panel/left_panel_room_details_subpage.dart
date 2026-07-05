@@ -52,9 +52,7 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
       case 'invite':
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter: filter != null
-              ? InvitationFilter.fromString(filter!)
-              : null,
+          initialFilter: InvitationFilter.fromNullableString(filter),
           embeddedCloseButton: back,
         );
       case 'access':

@@ -231,7 +231,7 @@ abstract class WorkspaceNav {
     },
   );
 
-  /// Switch the workspace to course [spaceId]: set the `?m=course:<id>` map
+  /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),
   /// replacing any prior course filter/token. Keeps the chat list, the right
   /// column, and every other query. This is the token-native "open this course
@@ -297,10 +297,10 @@ abstract class WorkspaceNav {
   }
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
-  /// course token. The course's identity is the `?m=course:<id>` map filter
+  /// course token. The course's identity is the `?c=<id>` scope
   /// (read via activeSpaceIdFor), not the token — the token's param is just the
   /// active tab, so switching tabs is opening the course token with a new tab
-  /// (the `m` filter is preserved by `_mutate`). A live room and the chat list
+  /// (the `c` context is preserved by `_mutate`). A live room and the chat list
   /// are kept (a course can scope a room). See `routing.instructions.md`.
   static String openCourse(Uri current, PanelToken token) => _mutate(
     current,
@@ -321,7 +321,7 @@ abstract class WorkspaceNav {
   /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
   /// beside the `course` master that coexists when width allows and folds to a
   /// push when not, mirroring settings menu→page ([openSettings]). The card's
-  /// space rides in the `?m=course:<id>` filter (preserved here), so the page
+  /// space rides in the `?c=<id>` scope (preserved here), so the page
   /// param is just the page id, with an optional trailing `/<filter>` — the
   /// invite page's initial contact filter, folded into the token instead of a
   /// loose `?filter=` query (routing.instructions.md). One management page at a
@@ -338,7 +338,7 @@ abstract class WorkspaceNav {
       );
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
-  /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
+  /// ANYWHERE: set the `?c=<id>` scope + `course` card, then the
   /// `coursepage:<page>` detail beside it. Same shape as [openCoursePage] on the
   /// already-scoped course — use this when the target course may not be the
   /// current filter (e.g. inviting knocking users from a space tile, or from an
@@ -524,7 +524,7 @@ abstract class WorkspaceNav {
 
   /// Close a *section* left panel (a course, the chat list, the add-course
   /// wizard), dropping its token while **keeping the map filter** and the rest of
-  /// the workspace. Closing a course card therefore leaves `?m=course:<id>` in
+  /// the workspace. Closing a course card therefore leaves `?c=<id>` in
   /// place — the map stays course-scoped (its pins visible) with the card gone;
   /// scope is reset only by the World control or by choosing a different course,
   /// never by closing a panel (see `routing.instructions.md`). A `room` is only
@@ -535,15 +535,15 @@ abstract class WorkspaceNav {
     // nothing else" (routing.instructions.md). A course card's management page
     // (`coursepage`) therefore stays open when the card closes, exactly as the
     // chat list's `room` child stays when the list closes; both read on from the
-    // surviving `?m=course:` filter / their own id. (A coursepage left with no
+    // surviving `?c=` scope / their own id. (A coursepage left with no
     // course scoped at all is shed by route_facts, not here.)
     final left = lists.left.where((t) => t != token).toList();
     // Preserve unrelated one-shot query the way closeLeft/_mutate already do —
-    // recompute only m/left/right and carry the rest forward. Critically this
+    // recompute only c/left/right and carry the rest forward. Critically this
     // keeps `?activity=`/`?launch=`/`?roomid=` (a launching or running activity
     // renders as the center canvas, independent of the course card), so closing
-    // the course no longer unmounts/aborts the activity (#7111). The map filter
-    // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
+    // the course no longer unmounts/aborts the activity (#7111). The scope
+    // (`?c=`) is re-added below, so drop it from the carried set to avoid a dupe.
     final rest = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(rest, {'c', 'left', 'right'});
     final parts = <String>[

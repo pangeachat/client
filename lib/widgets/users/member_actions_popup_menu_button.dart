@@ -409,13 +409,14 @@ void showMemberActionsPopupMenu({
     //   return;
     case _MemberActions.chat:
       final router = GoRouter.of(context);
-      final uri = GoRouterState.of(context).uri;
       final roomIdResult = await showFutureLoadingDialog(
         context: context,
         future: () => user.room.client.createPangeaDirectChat(user.id),
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;
+      if (!context.mounted) return;
+      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
       router.go(WorkspaceNav.openRoomById(uri, roomId));
     // Pangea#
     case _MemberActions.info:

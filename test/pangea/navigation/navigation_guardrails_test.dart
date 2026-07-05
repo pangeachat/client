@@ -35,8 +35,12 @@ void main() {
       '/addcourse/',
       '/preview/',
     ];
+    // Catch every navigation entry point (go/push/pushNamed/pushReplacement)
+    // and either quote style, so a retired path literal can't slip past under a
+    // call shape the guard didn't anticipate.
     final retired = RegExp(
-      r"go\('(/rooms/|/courses|/chats|/settings|/analytics|/profile)",
+      r'''\.(?:go|push|pushNamed|pushReplacement)\(\s*['"]'''
+      r'(/rooms/|/courses|/chats|/settings|/analytics|/profile)',
     );
     final offenders = [
       for (final l in codeLines())

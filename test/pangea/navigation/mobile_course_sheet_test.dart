@@ -17,7 +17,14 @@ import 'package:fluffychat/widgets/layouts/mobile_course_sheet.dart';
 ///
 /// The handle's y is the sheet's top edge: a bigger sheet means a lower y.
 void main() {
-  Future<void> pumpSheet(WidgetTester tester) async {
+  // Each test starts from a clean expand-memory so a prior test's expanded
+  // course doesn't leak into the next sheet's initial size (#7332).
+  setUp(MobileCourseSheet.resetExpandedMemoryForTest);
+
+  Future<void> pumpSheet(
+    WidgetTester tester, {
+    String sheetId = 'course-a',
+  }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
@@ -25,7 +32,26 @@ void main() {
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: const Scaffold(body: MobileCourseSheet(child: SizedBox.expand())),
+        home: Scaffold(
+          body: MobileCourseSheet(
+            sheetId: sheetId,
+            child: const SizedBox.expand(),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+  }
+
+  // Drop the sheet from the tree (as opening a chat over it does), disposing its
+  // State, so the next pumpSheet is a genuinely fresh mount. Keep the same L10n
+  // delegates so swapping the body doesn't force Localizations to re-resolve.
+  Future<void> unmountSheet(WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: const Scaffold(body: SizedBox.expand()),
       ),
     );
     await tester.pumpAndSettle();
@@ -78,6 +104,46 @@ void main() {
       tester.getTopLeft(handle).dy,
       greaterThan(fullY),
       reason: 'tapping again collapses back to peek',
+    );
+  });
+
+  // #7332: opening a chat over the sheet disposes it; on close the sheet is a
+  // fresh mount. It must reopen at the size the learner left THIS course at,
+  // and a different course must still open at peek (the "Per course" decision).
+  testWidgets('the same course reopens at the size it was left at (#7332)', (
+    tester,
+  ) async {
+    await pumpSheet(tester, sheetId: 'course-a');
+    final peekY = tester.getTopLeft(find.byType(GestureDetector)).dy;
+    await tester.tap(find.byType(GestureDetector)); // expand
+    await tester.pumpAndSettle();
+    expect(tester.getTopLeft(find.byType(GestureDetector)).dy, lessThan(peekY));
+
+    await unmountSheet(tester); // a chat opens over it → State disposed
+    await pumpSheet(tester, sheetId: 'course-a'); // chat closed → fresh mount
+
+    expect(
+      tester.getTopLeft(find.byType(GestureDetector)).dy,
+      lessThan(peekY),
+      reason: 'the same course reopens expanded, not snapped back to peek',
+    );
+  });
+
+  testWidgets('a different course opens at peek, not the last one\'s size', (
+    tester,
+  ) async {
+    await pumpSheet(tester, sheetId: 'course-a');
+    final peekY = tester.getTopLeft(find.byType(GestureDetector)).dy;
+    await tester.tap(find.byType(GestureDetector)); // expand course-a
+    await tester.pumpAndSettle();
+
+    await unmountSheet(tester);
+    await pumpSheet(tester, sheetId: 'course-b'); // a DIFFERENT course
+
+    expect(
+      tester.getTopLeft(find.byType(GestureDetector)).dy,
+      peekY,
+      reason: 'expand memory is per-course; a fresh course starts at peek',
     );
   });
 }
