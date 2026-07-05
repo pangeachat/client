@@ -18,7 +18,7 @@ See [codebase-organization.instructions.md](instructions/codebase-organization.i
 - `lib/pangea/` — shared Pangea infra and common widgets
 - `lib/widgets/`, `lib/utils/`, `lib/config/` — FluffyChat base code (edited in place)
 - `pangea_packages/` — Shared isolate packages
-- Pangea modifications in FluffyChat base files marked with `// #Pangea` ... `// Pangea#`
+- Legacy `// #Pangea` ... `// Pangea#` fences mark historic edits to FluffyChat base files (kept until reviewed; not required for new edits)
 
 ### Key Files
 - **Entry point**: `lib/main.dart`

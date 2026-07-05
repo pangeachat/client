@@ -27,7 +27,7 @@ The rule is real but imperfectly enforced. A few feature dirs hold UI today (`fe
 ## Imports and the `// #Pangea` Marker
 
 - **Package prefix is `fluffychat`, not `client`** (inherited from the fork). All intra-app imports use `package:fluffychat/...`, e.g. `package:fluffychat/routes/...`, `package:fluffychat/features/...`, `package:fluffychat/pangea/common/config/environment.dart`.
-- **Edits to base FluffyChat files are fenced in `// #Pangea` ... `// Pangea#`** so Pangea changes stay greppable against the FluffyChat base — provenance and readability only, not merge preparation (we do not merge upstream; ~100 files carry the fence). Use it when modifying a base file in `lib/widgets/`, `lib/utils/`, `lib/config/`, etc. Net-new Pangea code lives in its own file under `pangea/`, `features/`, or `routes/` and does not need the fence.
+- **The `// #Pangea` ... `// Pangea#` fence is legacy provenance, not a requirement.** New edits to base FluffyChat files do NOT need the fence — we do not merge upstream, so there is nothing to keep mergeable. The ~100 files that already carry fences keep them until that code is reviewed and either refactored or deemed fine as-is; don't strip fences in passing. Net-new Pangea code lives in its own file under `pangea/`, `features/`, or `routes/`.
 
 ## Placement Decision Tree
 

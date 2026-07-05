@@ -222,10 +222,9 @@ this:
   stays mounted; routing through a non-shell top-level page (login, onboarding,
   logs) tears it down. Auth and error flows are the only legitimate exits.
 - **Resolve scope and focus once, then update idempotently.** A scope read from
-  two places, or resolved asynchronously in two steps, makes the map flip
-  between world and course or glide twice. Carry enough identity in the URL to
-  resolve scope without a round-trip, publish content changes after the frame,
-  and no-op an unchanged value so an identical re-publish never re-fits the
+  two places, or resolved in two asynchronous steps, makes the map flip between
+  world and course or glide twice. The URL carries enough identity to resolve
+  scope in one read, and re-publishing an unchanged value never re-fits the
   camera.
 - **Floating chrome sizes to its own content.** The map is the base layer
   everything overlays; an overlay that stretches to the full shell paints over
@@ -242,7 +241,7 @@ A panel's side is decided by its **role**, not its content:
   course. Justified to the left edge.
 - **Right** — personal review and account surfaces: analytics, a vocab or
   grammar detail, and the whole profile + settings tree. Justified to the right
-  edge: the master rests at the edge and its detail blooms inward.
+  edge.
 
 Because role decides the side, a live chat can stay open on the left while the
 learner opens analytics or settings on the right at the same time.
@@ -309,7 +308,7 @@ of priority.
 
 ### Opening, pushing, and folding
 
-One vocabulary covers how content opens (the noun is **panel**):
+One vocabulary covers how content opens:
 
 - **Open a panel** — add a coexisting panel. Each column holds **up to two
   panels** (a master and its detail), left and right independently, so the
@@ -361,10 +360,10 @@ widths** so the allocator can place and degrade it predictably:
 
 When the open panels want more than fits, they compress from max toward
 reasonable min and the map absorbs the slack. Past that point the one degrade
-move is **fold**: the detail keeps the column and its master folds behind it, so
-the pair costs one panel's width. Folding never discards a panel — both stay in
-the URL, so widening unfolds back to two — and the surviving panel is never torn
-down, so a folded live chat keeps its session.
+move is **fold** (defined in the panel model above), which drops the pair's cost
+to one panel's width. Folding never discards a panel — both stay in the URL, so
+widening unfolds back to two — and the surviving panel is never torn down, so a
+folded live chat keeps its session.
 
 Each column folds independently, so the widest the workspace ever needs is one
 folded panel per column; the **two-column breakpoint** is defined by exactly
