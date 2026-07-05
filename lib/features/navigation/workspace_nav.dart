@@ -129,6 +129,35 @@ abstract class WorkspaceNav {
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
       openDetail(current, token);
 
+  /// Open a live chat by ROOM ID from anywhere — the token-native replacement
+  /// for every `context.go('/rooms/<id>')` path literal. [subPage] pushes a
+  /// sub-page onto the room's own stack (`details`, `search`, …). The
+  /// fork-inherited one-shot extras ([event] jump-to-message, [body]
+  /// share-text) still ride loose for now; folding them into the room token is
+  /// tracked on #7467. Ensures the world path (a room token renders over `/`).
+  static String openRoomById(
+    Uri current,
+    String roomId, {
+    String? subPage,
+    String? event,
+    String? body,
+  }) {
+    final id = shortRoomId(roomId);
+    final param = subPage == null || subPage.isEmpty ? id : '$id/$subPage';
+    final base = Uri.parse(
+      openExclusiveLeftRoom(current, PanelToken('room', param)),
+    );
+    final parts = WorkspaceQuery.parts(base.query);
+    WorkspaceQuery.removeKeys(parts, {'event', 'body'});
+    if (event != null && event.isNotEmpty) {
+      parts.add('event=${Uri.encodeQueryComponent(event)}');
+    }
+    if (body != null && body.isNotEmpty) {
+      parts.add('body=${Uri.encodeQueryComponent(body)}');
+    }
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
   /// A completed-activity `session` review (opened from the Stars archive) is a
   /// left detail in BOTH `liveView` and `detail`, so opening it drops any other
   /// room/session AND any vocab/grammar detail (one detail across columns). It
