@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -49,11 +47,7 @@ class WorkspaceRightPanel extends StatelessWidget {
   ConstructIdentifier? get _construct {
     final param = token.param;
     if (param == null) return null;
-    try {
-      return ConstructIdentifier.fromJson(jsonDecode(param));
-    } catch (_) {
-      return null;
-    }
+    return ConstructIdentifier.fromTokenParam(token.type, param);
   }
 
   void _close(BuildContext context) =>

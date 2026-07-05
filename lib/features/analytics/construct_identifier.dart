@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -10,6 +11,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
@@ -76,6 +78,41 @@ class ConstructIdentifier {
 
   Map<String, dynamic> toJson() {
     return {'lemma': lemma, 'type': type.string, 'cat': category};
+  }
+
+  /// This construct as a `vocab:`/`grammar:` panel-token param —
+  /// `<lemma>.<category>`, each field [TokenFields]-encoded. The construct
+  /// TYPE is the token type itself, never repeated inside the param. Replaces
+  /// the legacy JSON param (still parsed by [fromTokenParam]). See
+  /// routing.instructions.md.
+  String toTokenParam() => TokenFields.join([
+    TokenFields.encode(lemma),
+    TokenFields.encode(category),
+  ]);
+
+  /// Parse a construct panel-token param: the compact `<lemma>.<category>`
+  /// form, or the legacy JSON object an old shared link may still carry.
+  /// [tokenType] is the panel type (`vocab` / `grammar`) and supplies the
+  /// construct type.
+  static ConstructIdentifier? fromTokenParam(String tokenType, String param) {
+    if (param.startsWith('{')) {
+      try {
+        return ConstructIdentifier.fromJson(
+          jsonDecode(param) as Map<String, dynamic>,
+        );
+      } catch (_) {
+        return null;
+      }
+    }
+    final fields = TokenFields.split(param);
+    if (fields.isEmpty || fields.first.isEmpty) return null;
+    return ConstructIdentifier(
+      lemma: TokenFields.decode(fields.first),
+      type: tokenType == 'grammar'
+          ? ConstructTypeEnum.morph
+          : ConstructTypeEnum.vocab,
+      category: fields.length > 1 ? TokenFields.decode(fields[1]) : '',
+    );
   }
 
   // override operator == and hashCode
