@@ -577,7 +577,6 @@ void main() {
     test('moving to the world keeps the live room and the right column', () {
       final world = WorkspaceNav.setSection(
         u('/chats?left=chats,room:!a&right=analytics:vocab'),
-        '/',
         null,
       );
       expect(u(world).path, '/');
@@ -589,12 +588,13 @@ void main() {
     });
 
     test('sets the new section in front of the kept room', () {
+      // setSection always emits the world path `/` — section identity rides
+      // in the token, never a path segment.
       final chats = WorkspaceNav.setSection(
         u('/?left=room:!a&right=analytics:vocab'),
-        '/chats',
         const PanelToken('chats'),
       );
-      expect(u(chats).path, '/chats');
+      expect(u(chats).path, '/');
       expect(parseOpenPanels(u(chats)).left, [
         const PanelToken('chats'),
         const PanelToken('room', '!a'),
@@ -604,7 +604,6 @@ void main() {
     test('keepRoom:false drops the room (focused full-bleed flow)', () {
       final hub = WorkspaceNav.setSection(
         u('/chats?left=chats,room:!a&right=analytics:vocab'),
-        '/courses',
         null,
         keepRoom: false,
       );
@@ -619,7 +618,6 @@ void main() {
       // new focus (a course) or the World control changes `?m=`.
       final chats = WorkspaceNav.setSection(
         u('/?c=!s&left=course&right=analytics:vocab'),
-        '/',
         const PanelToken('chats'),
         keepRoom: false,
       );
@@ -637,7 +635,6 @@ void main() {
       // that blank parent — even though the current URL is the legacy path.
       final planList = WorkspaceNav.setSection(
         u('/courses/own/abc-123'),
-        '/',
         const PanelToken('addcourse', 'own'),
         keepRoom: false,
       );
@@ -657,7 +654,6 @@ void main() {
       // blank parent — even though the current URL is the legacy preview path.
       final browseList = WorkspaceNav.setSection(
         u('/courses/preview/!abc:server'),
-        '/',
         const PanelToken('addcourse', 'browse'),
         keepRoom: false,
       );

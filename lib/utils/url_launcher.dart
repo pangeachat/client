@@ -7,6 +7,7 @@ import 'package:punycode/punycode.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
@@ -178,18 +179,20 @@ class UrlLauncher {
         // Pangea#
         if (room.isSpace) {
           // TODO: Implement navigate to space
-          context.go('/rooms/${room.id}');
+          context.go(
+            WorkspaceNav.openRoomById(GoRouterState.of(context).uri, room.id),
+          );
 
           return;
         }
         // we have the room, so....just open it
-        if (event != null) {
-          context.go(
-            '/${Uri(pathSegments: ['rooms', room.id], queryParameters: {'event': event})}',
-          );
-        } else {
-          context.go('/rooms/${room.id}');
-        }
+        context.go(
+          WorkspaceNav.openRoomById(
+            GoRouterState.of(context).uri,
+            room.id,
+            event: event,
+          ),
+        );
         return;
       } else {
         // #Pangea
@@ -224,16 +227,13 @@ class UrlLauncher {
             context: context,
             future: () => Future.delayed(const Duration(seconds: 2)),
           );
-          if (event != null) {
-            context.go(
-              Uri(
-                pathSegments: ['rooms', response.result!],
-                queryParameters: {'event': event},
-              ).toString(),
-            );
-          } else {
-            context.go('/rooms/${response.result!}');
-          }
+          context.go(
+            WorkspaceNav.openRoomById(
+              GoRouterState.of(context).uri,
+              response.result!,
+              event: event,
+            ),
+          );
         }
       }
     } else if (identityParts.primaryIdentifier.sigil == '@') {

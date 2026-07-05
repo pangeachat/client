@@ -318,9 +318,9 @@ class FindCoursePageState extends State<FindCoursePage> {
     // world_v2: open the start-my-own list as an `addcourse:own` left panel over
     // the map. setSection already emits a `?left=…` query, so the lang/showAll
     // filter rides alongside with `&`.
+    // TODO(#7467): fold lang/showAll into addcourse token fields.
     String route = WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      PRoutes.world,
       const PanelToken('addcourse', 'own'),
       keepRoom: false,
     );
@@ -353,7 +353,13 @@ class FindCoursePageView extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => context.go('/courses'),
+          onPressed: () => context.go(
+            WorkspaceNav.setSection(
+              GoRouterState.of(context).uri,
+              const PanelToken('addcourse'),
+              keepRoom: false,
+            ),
+          ),
         ),
         title: Text(
           L10n.of(context).browsePublicCourses,
@@ -469,7 +475,11 @@ class _PublicCourseTile extends StatelessWidget {
   const _PublicCourseTile({required this.chunk, this.course});
 
   void _navigateToCoursePage(BuildContext context) {
-    context.go('/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}');
+    // The live public-preview route (route-driven; the Completer/preview flow
+    // isn't token-native yet). See routing.instructions.md.
+    context.go(
+      '${PRoutes.courses}/preview/${Uri.encodeComponent(chunk.room.roomId)}',
+    );
   }
 
   @override

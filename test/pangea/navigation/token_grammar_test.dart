@@ -133,7 +133,6 @@ void main() {
     test('section switches carry a legacy context verbatim (tolerance)', () {
       final loc = WorkspaceNav.setSection(
         u('/?m=course:!s&left=chats'),
-        '/',
         const PanelToken('chats'),
       );
       expect(loc.contains('m=course:!s'), isTrue);

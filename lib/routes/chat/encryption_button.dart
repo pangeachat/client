@@ -4,6 +4,7 @@ import 'package:badges/badges.dart' as b;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import '../../widgets/matrix.dart';
 
@@ -54,7 +55,13 @@ class EncryptionButton extends StatelessWidget {
                     : theme.colorScheme.onSurface,
               ),
             ),
-            onPressed: () => context.go('/rooms/${room.id}/encryption'),
+            onPressed: () => context.go(
+              WorkspaceNav.openRoomById(
+                GoRouterState.of(context).uri,
+                room.id,
+                subPage: 'encryption',
+              ),
+            ),
           ),
         );
       },

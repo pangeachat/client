@@ -134,6 +134,7 @@ class SpaceDetailsContent extends StatelessWidget {
           }
           // world_v2: opens beside the card as a `coursepage` detail, carrying
           // the initial contact filter as a query the panel reads once.
+          // TODO(#7467): fold filter into the coursepage token param.
           final loc = WorkspaceNav.openCoursePage(
             GoRouterState.of(context).uri,
             'invite',

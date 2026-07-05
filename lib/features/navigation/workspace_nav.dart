@@ -455,17 +455,19 @@ abstract class WorkspaceNav {
   static String setLeft(Uri current, List<PanelToken> tokens) =>
       _mutate(current, 'left', (_) => tokens);
 
-  /// Navigate to a section (`/chats`, `/courses/:id`, `/profile`, or the world
-  /// map `/`), setting [section] as the sole section panel while **keeping the
+  /// Navigate to a section — Chats, Courses/the add-course hub, or the world
+  /// map — setting [section] as the sole section panel while **keeping the
   /// live room and the right column** — so navigating between sections changes
   /// which panel is focused instead of tearing the open chat down ("move to the
   /// world and keep the chat"; see `routing.instructions.md`). Pass `null` for
   /// the world map (no section panel). The section sits to the left of the room
   /// so a list/detail reads left-to-right. Set [keepRoom] false for a focused
   /// full-bleed flow (the add-course hub) that should not float a chat over it.
+  /// Always emits the world path `/` — section identity rides entirely in the
+  /// token, never a path segment (a joined course is `openCourseSection`, which
+  /// also sets the `?c=` context this helper does not touch).
   static String setSection(
     Uri current,
-    String path,
     PanelToken? section, {
     bool keepRoom = true,
   }) {
@@ -476,16 +478,14 @@ abstract class WorkspaceNav {
     ];
     // Carry the course context forward: context (`?c=`) is independent of
     // panels and changes only when a new course is chosen or the World control
-    // resets it — never by switching sections (see routing.instructions.md). A
-    // course-path destination resets it cleanly in the redirect, which drops
-    // any carried context before setting the new course's.
+    // resets it — never by switching sections (see routing.instructions.md).
     final parts = <String>[
       ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
-    return WorkspaceQuery.location(path, parts);
+    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   /// The raw course-context segment of [current]'s query — the canonical

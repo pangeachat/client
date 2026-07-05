@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/support/support_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -40,7 +41,12 @@ class SupportChatListTileState extends State<SupportChatListTile> {
                 );
                 if (!mounted) return;
                 if (resp.isError) return;
-                context.go('/rooms/${resp.result}');
+                context.go(
+                  WorkspaceNav.openRoomById(
+                    GoRouterState.of(context).uri,
+                    resp.result!,
+                  ),
+                );
               } finally {
                 if (mounted) setState(() => _loading = false);
               }

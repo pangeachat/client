@@ -21,6 +21,16 @@ abstract class OnboardingStep {
 
   String get stepDestination => PRoutes.chatsList;
 
+  /// The joined-course space id this step should land on, or null for every
+  /// step whose destination is a plain path ([stepDestination]). The token
+  /// destination needs the current workspace URI to build (a course opens via
+  /// `WorkspaceNav.openCourseSection`, not a path literal), which only the
+  /// call site (`OnboardingController`, with a `BuildContext`) has — so the
+  /// step exposes the space id and the caller builds the location, rather
+  /// than pushing a `Uri` parameter through every step. See
+  /// `routing.instructions.md`.
+  String? get joinedCourseSpaceId => null;
+
   String nextStepText(L10n l10n) => l10n.next;
 
   String lastStepText(L10n l10n) => l10n.letsGo;

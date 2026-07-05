@@ -9,7 +9,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
@@ -63,7 +62,6 @@ class SelectedCourseController extends State<SelectedCourse>
         context.go(
           WorkspaceNav.setSection(
             uri,
-            PRoutes.world,
             const PanelToken('addcourse', 'own'),
             keepRoom: false,
           ),

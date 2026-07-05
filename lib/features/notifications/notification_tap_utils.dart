@@ -128,7 +128,12 @@ class NotificationTapUtil {
     try {
       final session = client.getRoomById(sessionRoomId);
       if (session?.membership == Membership.join) {
-        router.go('/rooms/$sessionRoomId');
+        router.go(
+          WorkspaceNav.openRoomById(
+            router.routeInformationProvider.value.uri,
+            sessionRoomId,
+          ),
+        );
         return;
       }
 
@@ -195,7 +200,12 @@ class NotificationTapUtil {
           ?.id;
 
       if (parentCourseId != null) {
-        router.go(PRoutes.course(parentCourseId));
+        router.go(
+          WorkspaceNav.openCourseFilter(
+            router.routeInformationProvider.value.uri,
+            parentCourseId,
+          ),
+        );
         return;
       }
     }
@@ -203,9 +213,19 @@ class NotificationTapUtil {
     if (room.membership == Membership.invite) {
       router.go(PRoutes.world);
     } else if (room.isSpace == true) {
-      router.go(PRoutes.course(roomId));
+      router.go(
+        WorkspaceNav.openCourseFilter(
+          router.routeInformationProvider.value.uri,
+          roomId,
+        ),
+      );
     } else {
-      router.go('/rooms/$roomId');
+      router.go(
+        WorkspaceNav.openRoomById(
+          router.routeInformationProvider.value.uri,
+          roomId,
+        ),
+      );
     }
   }
 }

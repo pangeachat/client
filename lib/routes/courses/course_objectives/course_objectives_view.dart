@@ -256,7 +256,17 @@ class _ObjectiveSection extends StatelessWidget {
                   // routing.instructions.md.
                   onTap: () {
                     if (room == null) {
-                      context.go('/${ref.activityId}');
+                      // The legacy standalone `/<uuid>` path is an inbound shim
+                      // only; this is behavior-neutral (the legacy path also
+                      // dropped context) but now token-native. See
+                      // routing.instructions.md.
+                      context.go(
+                        WorkspaceNav.openActivity(
+                          GoRouterState.of(context).uri,
+                          ref.activityId,
+                          clearContext: true,
+                        ),
+                      );
                       return;
                     }
                     // Immersive in-course open: the token producer drops the

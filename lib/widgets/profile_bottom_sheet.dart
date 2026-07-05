@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -29,7 +30,12 @@ class ProfileBottomSheet extends StatelessWidget {
       //Pangea#
     );
     if (result.error == null) {
-      context.go('/rooms/${result.result!}');
+      context.go(
+        WorkspaceNav.openRoomById(
+          GoRouterState.of(context).uri,
+          result.result!,
+        ),
+      );
       Navigator.of(context, rootNavigator: false).pop();
       return;
     }
