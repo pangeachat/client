@@ -82,20 +82,29 @@ CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
-  // The rail highlight shows what you're looking at: the OPEN LEFT PANELS win,
-  // the course context is only the empty-left backdrop fallback
-  // (routing.instructions.md decision 5). So a live chat over a course-scoped
-  // map reads as Chats even though `?c=` persists — switching to Chats
-  // un-highlights the course (the #7467 "quest stays selected" oddity).
+  // The rail highlight shows what you're looking at (routing.instructions.md
+  // decision 5). Precedence:
+  //  1. The global chat LIST wins — even with a live room beside it, and even
+  //     under a lingering `?c=` context: switching to Chats un-highlights the
+  //     course (the #7467 "quest stays selected" oddity).
+  //  2. Any course surface → Courses: a course card / management page / the
+  //     add-course hub, OR a `?c=` context in any form — a course room beside
+  //     its card (`left=course,room`), a lone course room (card closed), an
+  //     in-course activity, or the empty scoped-map backdrop. A course room
+  //     reads as its course, not as the global chat list.
+  //  3. Only a lone room with no course context is a direct chat → Chats.
   final left = parseOpenPanels(uri).left;
-  if (left.any((t) => t.type == 'chats' || t.type == 'room')) {
-    return AppSection.chats;
+  if (left.any((t) => t.type == 'chats')) return AppSection.chats;
+  if (left.any(
+        (t) =>
+            t.type == 'course' ||
+            t.type == 'coursepage' ||
+            t.type == 'addcourse',
+      ) ||
+      activeSpaceIdFor(uri) != null) {
+    return AppSection.courses;
   }
-  if (left.any((t) => t.type == 'addcourse')) return AppSection.courses;
-  // A course context — the card, a management page, an in-course activity, or
-  // an empty left column over the scoped map — is the Courses section (the
-  // chat/room check above already took precedence).
-  if (activeSpaceIdFor(uri) != null) return AppSection.courses;
+  if (left.any((t) => t.type == 'room')) return AppSection.chats;
   // The few real route-driven paths (fork `/rooms/...` pages, the course
   // Completer flows and public preview) highlight by first segment.
   final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;

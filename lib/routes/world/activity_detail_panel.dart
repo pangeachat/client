@@ -145,14 +145,13 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
     // While resolving, a minimal close row over a spinner. ONE control only,
     // matching the loaded start view's rule (activity_sessions_start_view.dart):
-    // a back-arrow when the activity is still course-scoped (`?m=course:` over
-    // `?activity=`), so it returns toward the course; an X otherwise (a map pin /
-    // standalone), so it dismisses to the map. Rendering both ← and X here was a
-    // redundant pair that did the same thing in the pin case (#7115).
+    // a back-arrow when the activity is still course-scoped (the `?c=` context),
+    // so it returns toward the course; an X otherwise (a map pin / standalone),
+    // so it dismisses to the map. Rendering both ← and X here was a redundant
+    // pair that did the same thing in the pin case (#7115).
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     final embedded = parseOpenPanels(uri).left.any((t) => t.type == 'activity');
-    final courseScoped =
-        uri.queryParameters['m']?.startsWith('course:') ?? false;
+    final courseScoped = activeSpaceIdFor(uri) != null;
     final showBack = embedded && courseScoped;
     return Scaffold(
       body: SafeArea(

@@ -50,8 +50,18 @@ class WorkspaceRightPanel extends StatelessWidget {
     return ConstructIdentifier.fromTokenParam(token.type, param);
   }
 
-  void _close(BuildContext context) =>
-      context.go(WorkspaceNav.closeRight(currentUri, token));
+  /// Close reads the LIVE router URI, never the constructor-captured
+  /// [currentUri]: a close action can fire after an async gap (e.g. the practice
+  /// exit-confirmation dialog) or a stream-driven rebuild, by which point a
+  /// captured URI is stale and closeRight would compute off the wrong state —
+  /// the intermittent "X stops working" (#7247). [currentUri] stays the
+  /// build-time input for rendering the icon (the widget rebuilds on URL change).
+  void _close(BuildContext context) => context.go(
+    WorkspaceNav.closeRight(
+      GoRouter.of(context).routeInformationProvider.value.uri,
+      token,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +98,13 @@ class WorkspaceRightPanel extends StatelessWidget {
           );
 
     final onLeading = aff.showBack && isPushed
-        ? () => context.go(WorkspaceNav.popPage(currentUri, token.type, page))
+        ? () => context.go(
+            WorkspaceNav.popPage(
+              GoRouter.of(context).routeInformationProvider.value.uri,
+              token.type,
+              page,
+            ),
+          )
         : () => _close(context);
 
     return switch (token.type) {
@@ -101,7 +117,11 @@ class WorkspaceRightPanel extends StatelessWidget {
       'settings' => PanelCardWithHeader(
         title: l10n.settings,
         icon: leadingIcon,
-        onLeading: () => context.go(WorkspaceNav.closeSettings(currentUri)),
+        onLeading: () => context.go(
+          WorkspaceNav.closeSettings(
+            GoRouter.of(context).routeInformationProvider.value.uri,
+          ),
+        ),
         tooltip: leadingTooltip,
         child: RightPanelSettingsSubpage(),
       ),

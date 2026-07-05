@@ -46,13 +46,25 @@ void main() {
       expect(section('/?c=!s:x&left=course'), AppSection.courses);
     });
 
-    test('open left panels win over the course context (decision 5, #7467)', () {
+    test('the global chat list wins over the course context (decision 5, '
+        '#7467)', () {
       // The "click a quest then click chats, but the quest stays selected" bug:
-      // a chat/room over a course-scoped map reads as Chats, not Courses, even
-      // though `?c=` persists.
+      // the global chat LIST over a course-scoped map reads as Chats, not
+      // Courses, even though `?c=` persists.
       expect(section('/?c=!s:x&left=chats'), AppSection.chats);
       expect(section('/?c=!s:x&left=chats,room:!r'), AppSection.chats);
-      expect(section('/?left=room:!r&c=!s:x'), AppSection.chats);
+    });
+
+    test('a course room reads as its course, not the global chat list', () {
+      // A room opened inside a course keeps the `?c=` context; the rail
+      // highlights the COURSE whether its card is still beside the room
+      // (left=course,room) or was closed (a lone room over `?c=`). Only a room
+      // with NO course context is a direct chat. (The bug: the "chats OR room"
+      // clause highlighted Chats while a course card was visibly open, #7467.)
+      expect(section('/?c=!s:x&left=course,room:!r'), AppSection.courses);
+      expect(section('/?c=!s:x&left=course:chat,room:!r'), AppSection.courses);
+      expect(section('/?left=room:!r&c=!s:x'), AppSection.courses);
+      expect(section('/?left=room:!r'), AppSection.chats); // no course context
     });
 
     test('section identity rides in the left token at the world path /', () {
