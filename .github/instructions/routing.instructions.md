@@ -84,15 +84,17 @@ The rules that keep the grammar legible:
   id in `?c=`; an activity's id (and, when resuming, its bound session room) ride
   in the activity token's own param.
 
-**Compatibility.** The parser is tolerant — it normalizes a registry
-master/detail pair to master-first whatever order an old link carries (the
+**Compatibility.** The parser normalizes a registry master/detail pair to
+master-first whatever order a link carries (the
 [panel registry](../../lib/features/navigation/panel_registry.dart) knows which
-type is whose master), keeps the given order for pairs the registry does not
-relate, and accepts older token spellings — and
-[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) rewrites
-old shapes (path forms, `?m=course:<id>`, loose params like `activity=` and
-`launch=`) before anything renders. Old bookmarks and shared links keep working forever;
-internal navigation emits only the canonical form above.
+type is whose master) and keeps the given order for pairs the registry does not
+relate. That is the whole compatibility story: **the client is the only
+producer of its URLs, so retired shapes and spellings are simply deleted, not
+redirected** — old bookmarks and stale tabs from earlier releases are not
+maintained (a deliberate call at current scale, #7467). The one inbound URL
+contract is the shareable standalone activity link (`/<uuid>`), which
+[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
+into its `activity` token before render.
 
 ## The core model
 
@@ -104,10 +106,14 @@ chrome (rail, bottom nav, cluster) all derive from the same tokens, so they
 cannot disagree about what is open. Closing a panel is just dropping its token:
 there is no second, path-driven copy to leave standing.
 
-Paths survive only as an **inbound shape**, never a render source: external,
-push, and `matrix.to` links — including the `/rooms/:roomid` shape they carry —
-are rewritten to canonical token URLs at the router redirect *before* anything
-renders, so there is exactly one representation by the time the shell builds.
+External pointers never carry workspace paths either: a push notification
+resolves through its structured content keys and a `matrix.to` link through the
+in-app link handler — both emit token URLs in code
+([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
+The one URL that arrives from outside is the shareable standalone activity link
+(`/<uuid>`), rewritten to its `activity` token at the router redirect before
+anything renders — so there is exactly one representation by the time the shell
+builds.
 
 ### The course context
 
@@ -135,8 +141,7 @@ restores both. Surfaces that carry no context of their own (the Courses hub,
 Chats, Settings) overlay the map you left without changing it.
 
 Pure **map filters** (region, language, activity kind) are a future, separate
-`?m=` list — display refinement, not workspace context. Nothing uses it today;
-legacy `?m=course:` links rewrite to `?c=`.
+`?m=` list — display refinement, not workspace context. Nothing uses it today.
 
 ### Navigate by token
 
@@ -146,13 +151,13 @@ Internal navigation MUST go through the
 `openCoursePage[For]`, `openConstructDetail`, `closeLeft`, and friends. Two
 smells, both forbidden in feature code:
 
-- **A path literal in a `.go(...)`** (`/chats`, `/rooms/settings/...`,
-  `/courses/:id/...`). Section, room, and course paths exist only as legacy
-  redirect shims for inbound links we don't control; an internal path navigation
-  just bounces through the redirect — a wasted hop, and exactly how the
-  dead-`/chats` bug (#7067) happened. This includes the standalone activity link
-  `/<uuid>`: it too is an inbound shim, so in-app code opens activities through
-  the token helpers, never by emitting the path.
+- **A path literal in a `.go(...)`** (`/chats`, `/rooms/<id>`,
+  `/courses/<id>/...`). The retired section, room, and course paths have no
+  redirects behind them anymore — an internal path navigation is simply a dead
+  link (the redirect-bounce era is how the dead-`/chats` bug #7067 happened).
+  This includes the standalone activity link `/<uuid>`: it is the shareable
+  artifact for the outside world, so in-app code opens activities through the
+  token helpers, never by emitting the path.
 - **Hand-editing the query string.** Panels never assemble or sweep query params
   themselves; the query-editing utilities are internal to the navigation layer.
   If a surface needs a navigation the helpers can't express, add a helper — that
@@ -163,19 +168,15 @@ fork-inherited `/rooms/...` utility pages (archive, new-chat flows, …) that ha
 not yet joined the token model; the pre-login and utility routes (`/home`,
 `/onboarding`, `/registration`, `/logs`, `/configs`); the route-driven Completer
 flows (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
-and the public-course preview. `/rooms/:roomid` itself is an inbound shape (the
-contract push and `matrix.to` links arrive on), rewritten to a `room` token
-before render. `PRoutes`'s `chats`/`analytics`/`settings`/`profile`/`rooms`
-constants are legacy section paths — redirect sources and `sectionFor`
-identities, never navigation targets.
+and the public-course preview. Nothing else path-shaped exists: the retired
+section paths and their redirect shims are deleted, and `LegacyRedirects`
+handles exactly one shape — the shareable `/<uuid>` activity link.
 
-**Inbound loose params fold into tokens at the boundary.** Links from outside
-the client may arrive with loose query params — `activity=`, `roomid=`,
-`launch=`, `autoplay=` (the accepted shapes live in
-[deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-`LegacyRedirects` folds every one of them — identity and behavioral flags
-alike — into the target panel's token param before anything renders. Past the
-redirect there are no loose params: a panel reads everything it needs from its
+**Everything a panel needs rides in its token's fields — there are no loose
+params.** The one external URL producer, the shareable `/<uuid>` activity link,
+may carry `launch=`/`roomid=`/`autoplay=`; its single redirect arm folds them
+into the `activity` token's fields before anything renders. Internal navigation
+never emits or strips a loose param: a panel reads everything it needs from its
 token, the same place a tab or a pushed page rides. There is no second channel
 to sweep; a param-sweeping call in feature code means some state is missing its
 token home.
