@@ -66,13 +66,11 @@ void main() {
         final token = PanelToken('vocab', construct.toTokenParam());
         // Through the list grammar and back — a comma inside a lemma can never
         // shatter the token list.
-        final uri = u('/?right=${token.encode()},analytics:vocab');
+        final uri = u('/?right=analytics:vocab,${token.encode()}');
         final parsed = parseOpenPanels(uri).right;
         expect(parsed.length, 2, reason: 'list shattered for "$lemma"');
-        final back = ConstructIdentifier.fromTokenParam(
-          'vocab',
-          parsed.first.param!,
-        );
+        final vocab = parsed.firstWhere((t) => t.type == 'vocab');
+        final back = ConstructIdentifier.fromTokenParam('vocab', vocab.param!);
         expect(back?.lemma, lemma);
         expect(back?.category, 'adj');
         expect(back?.type, ConstructTypeEnum.vocab);
@@ -163,16 +161,13 @@ void main() {
       },
     );
 
-    test('clearContext/clearRight give the pin-tap full-attention open', () {
-      final loc = WorkspaceNav.openActivity(
-        u('/?c=!s&left=course&right=analytics:vocab'),
-        'act-1',
-        clearContext: true,
-        clearRight: true,
-      );
+    test('a world-map pin (no context) opens with none, so it closes to the '
+        'map', () {
+      // openActivity never sets or clears context; a world-map pin simply has
+      // none, so the plan closes with an X to the map (no back-arrow target).
+      final loc = WorkspaceNav.openActivity(u('/?left=chats'), 'act-1');
       final uri = u(loc);
       expect(activeSpaceIdFor(uri), isNull);
-      expect(parseOpenPanels(uri).right, isEmpty);
       expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
     });
 

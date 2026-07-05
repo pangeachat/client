@@ -211,7 +211,6 @@ class NotStartedSessionController extends State<NotStartedSession>
               GoRouterState.of(context).uri,
               widget.activityId,
               launch: true,
-              clearContext: true,
             ),
     );
   }

@@ -26,7 +26,10 @@ void main() {
       expect(parseOpenPanels(u(loc)).right.single, token);
     });
 
-    test('atStart blooms a detail to the left of an existing summary', () {
+    test('the parser yields master-first regardless of raw insertion order', () {
+      // atStart is a raw list insert, but the parser normalizes a registry
+      // master/detail pair to master-first, so the summary always precedes its
+      // detail in the URL; the renderer blooms the detail left of the edge.
       var loc = WorkspaceNav.openRight(
         u('/chats'),
         const PanelToken('analytics', 'vocab'),
@@ -37,8 +40,8 @@ void main() {
         atStart: true,
       );
       expect(parseOpenPanels(u(loc)).right.map((t) => t.type), [
-        'vocab',
         'analytics',
+        'vocab',
       ]);
     });
 
@@ -216,10 +219,10 @@ void main() {
           1,
         );
         expect(
-          right.first,
+          right.last,
           const PanelToken('grammar', 'verb'),
-        ); // detail at the edge-left
-        expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
+        ); // detail after its master (master-first; renderer blooms it left)
+        expect(right.first.type, 'analytics'); // summary master, kept + first
       },
     );
 
@@ -230,8 +233,8 @@ void main() {
         'vocab',
       );
       final right = parseOpenPanels(u(loc)).right;
-      expect(right.map((t) => t.type), ['vocab', 'analytics']);
-      expect(right.last.param, 'vocab'); // the seated summary's tab
+      expect(right.map((t) => t.type), ['analytics', 'vocab']); // master-first
+      expect(right.first.param, 'vocab'); // the seated summary's tab
     });
 
     test('opening a construct detail closes an open activity session', () {
@@ -251,7 +254,7 @@ void main() {
         lists.left.any((t) => t.type == 'session'),
         isFalse,
       ); // session gone
-      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+      expect(lists.right.last, const PanelToken('vocab', 'hablar'));
     });
 
     test('a live room chat is NOT closed by opening a construct detail', () {
@@ -266,7 +269,7 @@ void main() {
       );
       final lists = parseOpenPanels(u(loc));
       expect(lists.left.any((t) => t.type == 'room'), isTrue); // chat survives
-      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+      expect(lists.right.last, const PanelToken('vocab', 'hablar'));
     });
   });
 
@@ -480,16 +483,17 @@ void main() {
       );
       final right = parseOpenPanels(u(loc)).right;
       // Only the settings page + its menu master remain; the analytics family
-      // is gone.
-      expect(right.map((t) => t.type), ['settingspage', 'settings']);
+      // is gone. Master-first: the menu precedes its page.
+      expect(right.map((t) => t.type), ['settings', 'settingspage']);
     });
 
     test('opening a page seats it as a detail BESIDE the menu master', () {
       final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
       final right = parseOpenPanels(u(loc)).right;
-      // page detail blooms at the front; the menu master is kept behind it.
-      expect(right.map((t) => t.type), ['settingspage', 'settings']);
-      expect(right.first.param, 'learning');
+      // Master-first: the menu comes first, the page detail after it (the
+      // renderer blooms the page left of the edge-justified menu).
+      expect(right.map((t) => t.type), ['settings', 'settingspage']);
+      expect(right.last.param, 'learning');
     });
 
     test('opening another page replaces the page detail (one at a time)', () {

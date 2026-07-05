@@ -634,22 +634,14 @@ class WorldMapController extends State<WorldMap>
   void openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Seat the activity as the sole left token via the nav helper — no raw
-    // query surgery in feature code (routing.instructions.md). Pin entry is
-    // UNSCOPED today: the course context and right column are cleared, which
-    // makes the plan a parentless overlay whose close is an X to the map
-    // (scope retention on pin taps is tracked on #7467). A held session
-    // resumes via the token's session-binding field (#7257) instead of a
-    // loose `roomid=` param. The map still focuses the activity's pin via the
-    // token (`mapFocusFor` → `ActivityFocus`).
+    // query surgery in feature code (routing.instructions.md). The course
+    // context is kept: a pin on a course-scoped map closes back to the course,
+    // a pin on the world map has none and closes with an X. A held session
+    // resumes via the token's session-binding field (#7257). The map focuses
+    // the activity's pin via the token (`mapFocusFor` → `ActivityFocus`).
     final myRoom = client?.myActivityInstance(card.activityId);
     context.go(
-      WorkspaceNav.openActivity(
-        uri,
-        card.activityId,
-        roomId: myRoom?.id,
-        clearContext: true,
-        clearRight: true,
-      ),
+      WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
     );
   }
 

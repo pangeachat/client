@@ -99,8 +99,10 @@ abstract class WorkspaceNav {
   }
 
   /// Drop siblings (and the token itself, for dedup) from one column's list,
-  /// then seat [token] only if it belongs to [thisCol] (front for right, end for
-  /// left). The other column just sheds siblings.
+  /// then append [token] when it belongs to [thisCol]. Canonical order is
+  /// master-first in both columns (routing.instructions.md), so a detail
+  /// appends after its master; edge-justification of the right column is the
+  /// renderer's job, not the URL's. The other column just sheds siblings.
   static List<PanelToken> _placeDetail(
     List<PanelToken> tokens,
     PanelToken token,
@@ -110,9 +112,7 @@ abstract class WorkspaceNav {
     final next = tokens
         .where((t) => t != token && !_areSiblings(token, t))
         .toList();
-    if (thisCol == tokenCol) {
-      thisCol == PanelColumn.right ? next.insert(0, token) : next.add(token);
-    }
+    if (thisCol == tokenCol) next.add(token);
     return next;
   }
 
@@ -182,10 +182,12 @@ abstract class WorkspaceNav {
         return next;
       }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
 
-  /// Open a vocab/grammar construct detail (the `detail` group): drops the other
-  /// construct detail and any `session`, seats the detail at the front of the
-  /// right group, and ensures its pinned `analytics` summary master exists
-  /// (seated at [summaryTab] from a cold start). See `routing.instructions.md`.
+  /// Open a vocab/grammar construct detail (the `detail` group): drops the
+  /// other construct detail and any `session`, ensures its pinned `analytics`
+  /// summary master exists (seated at [summaryTab] from a cold start), and
+  /// appends the detail after it — master-first canonical order, with the
+  /// renderer blooming the detail to the left of the edge-justified master. See
+  /// `routing.instructions.md`.
   static String openConstructDetail(
     Uri current,
     PanelToken detail,
@@ -197,10 +199,10 @@ abstract class WorkspaceNav {
       final next = right
           .where((t) => t != detail && !_areSiblings(detail, t))
           .toList();
-      next.insert(0, detail);
       if (!next.any((t) => t.type == 'analytics')) {
-        next.add(PanelToken('analytics', summaryTab));
+        next.insert(0, PanelToken('analytics', summaryTab));
       }
+      next.add(detail);
       return next;
     },
   );
@@ -378,27 +380,24 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
-  /// Seat [activityId] as the SOLE left `activity:` token over the map — the
-  /// token-native "open this activity from here" (a map pin tap, a start-page
-  /// reopen). Session binding, launch, and autoplay ride the token's fields.
-  /// [clearContext] drops the course context (today's pin-tap behavior; the
-  /// scope-retention change is tracked on #7467) and [clearRight] clears the
-  /// right column (the pin's full-attention open).
+  /// Seat [activityId] as the SOLE left `activity:` token over the current
+  /// map — the token-native "open this activity from here" (a map pin tap, a
+  /// start-page reopen). Session binding, launch, and autoplay ride the
+  /// token's fields. **The course context is never consumed**
+  /// (routing.instructions.md): a pin on a course-scoped map keeps `?c=` (so
+  /// the plan closes with a back-arrow to the course), a pin on the world map
+  /// has none (so it closes with an X). The right column is left untouched —
+  /// an activity is a left-column live view, independent of an open analytics
+  /// panel.
   static String openActivity(
     Uri current,
     String activityId, {
     String? roomId,
     bool launch = false,
     int? autoplay,
-    bool clearContext = false,
-    bool clearRight = false,
   }) {
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {
-      'left',
-      if (clearRight) 'right',
-      if (clearContext) 'c',
-    });
+    WorkspaceQuery.removeKeys(parts, {'left'});
     final token = PanelToken(
       'activity',
       ActivityToken.build(
@@ -593,12 +592,13 @@ abstract class WorkspaceNav {
   };
 
   /// Open the settings/profile MENU as the right-column master (page null/empty),
-  /// or a settings PAGE as its detail beside the menu. A page blooms at the front
-  /// of the right group with the `settings` menu master kept (or seated) behind
-  /// it — so they coexist when width allows and fold to a push when not. A
-  /// `/`-path page is a leaf (its own back pops it). Opening Settings also drops
-  /// any open analytics-family panel so the two don't clutter the right column
-  /// together (#7109). See `routing.instructions.md`.
+  /// or a settings PAGE as its detail beside the menu. The `settings` menu master
+  /// is kept (or seated) first and the page appended after it — master-first
+  /// canonical order — so they coexist when width allows (the renderer blooms
+  /// the page left of the edge menu) and fold to a push when not. A `/`-path
+  /// page is a leaf (its own back pops it). Opening Settings also drops any open
+  /// analytics-family panel so the two don't clutter the right column together
+  /// (#7109). See `routing.instructions.md`.
   static String openSettings(Uri current, {String? page}) {
     if (page == null || page.isEmpty) {
       return _mutate(current, 'right', (tokens) {
@@ -623,10 +623,10 @@ abstract class WorkspaceNav {
                 !_analyticsRightPanels.contains(t.type),
           )
           .toList();
-      next.insert(0, detail);
       if (!next.any((t) => t.type == 'settings')) {
-        next.add(const PanelToken('settings'));
+        next.insert(0, const PanelToken('settings'));
       }
+      next.add(detail);
       return next;
     });
   }

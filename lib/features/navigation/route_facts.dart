@@ -268,15 +268,36 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
     tokens.removeWhere((t) => t.type == 'analytics');
   }
   // A `course` card and a `coursepage` management page read their space id from
-  // the `?m=course:<id>` map filter, not the token, so without that filter they
-  // have nothing to render — a blank, close-less card a hand-edited or stale URL
-  // could strand the user on (especially on a narrow single pane). Drop them when
-  // no course is scoped. This is the only place a coursepage is shed for lost
-  // scope: closeSection keeps it (the filter survives a card close), and
+  // the `?c=<id>` course context, not the token, so without it they have nothing
+  // to render — a blank, close-less card a hand-edited or stale URL could strand
+  // the user on (especially on a narrow single pane). Drop them when no course is
+  // scoped. This is the only place a coursepage is shed for lost context:
+  // closeSection keeps it (the context survives a card close), and
   // openCourseFilter sheds the previous course's page only because it re-targets
-  // the scope to a different course. See `routing.instructions.md`.
+  // the context to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
     tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
   }
-  return tokens;
+  return _masterFirst(tokens);
+}
+
+/// Reorder a column's tokens so a registry master precedes its detail — the
+/// canonical master-first order (routing.instructions.md). A shared link
+/// written detail-first (an older spelling) normalizes here; a pair the
+/// registry does not relate (a `course` card beside a live `room`, whose
+/// parent is `chats`) keeps its given order. Lists are at most a few tokens.
+List<PanelToken> _masterFirst(List<PanelToken> tokens) {
+  final result = List<PanelToken>.from(tokens);
+  for (var i = 0; i < result.length; i++) {
+    final parentType = PanelRegistry.defFor(result[i].type)?.parent;
+    if (parentType == null) continue;
+    final parentIdx = result.indexWhere((t) => t.type == parentType);
+    if (parentIdx > i) {
+      // A detail precedes its master — move it to just after the master.
+      final detail = result.removeAt(i);
+      result.insert(result.indexWhere((t) => t.type == parentType) + 1, detail);
+      i = -1; // restart; the list is tiny
+    }
+  }
+  return result;
 }

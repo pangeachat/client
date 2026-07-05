@@ -159,13 +159,13 @@ void main() {
     });
 
     test(
-      'within-panel navigation never changes focusHint (settings family)',
+      'within-panel navigation keeps focus in the settings family, never the '
+      'other popup',
       () {
-        int? fhOf(Uri u) {
-          final ls = parseOpenPanels(u);
-          return focusHintFor([...ls.left, ...ls.right]);
-        }
-
+        // The real #7104 invariant, stated order-independently: navigating
+        // the settings panel (menu → page → page) never steals focus to the
+        // open room popup. (The menu→page step legitimately moves focus to
+        // the page; page→page is stable.)
         var u = Uri.parse(
           WorkspaceNav.openLeft(
             Uri.parse('/'),
@@ -173,13 +173,11 @@ void main() {
           ),
         );
         u = Uri.parse(WorkspaceNav.openSettings(u));
-        final fhSettings = fhOf(u);
+        expect(focusType(u), 'settings'); // the menu, not the room
         u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
-        final fhSubscription = fhOf(u);
+        expect(focusType(u), 'settingspage'); // the page, still settings family
         u = Uri.parse(WorkspaceNav.openSettings(u, page: 'learning'));
-        final fhLearning = fhOf(u);
-        expect(fhSubscription, fhSettings);
-        expect(fhLearning, fhSettings);
+        expect(focusType(u), 'settingspage'); // stable, never the room
       },
     );
 
