@@ -39,11 +39,20 @@ void main() {
       expect(section('/courses/analytics-course-name'), AppSection.courses);
     });
 
-    test('an active ?c= course context selects courses (path is /)', () {
-      // The course context selects the Courses section even though the path is
-      // the world map and panels are independent.
+    test('an empty left column under a ?c= context selects courses', () {
+      // The scoped-map backdrop: no left panel, so the course context is what
+      // the rail highlights.
       expect(section('/?c=!s:x'), AppSection.courses);
-      expect(section('/?left=room:!r&c=!s:x'), AppSection.courses);
+      expect(section('/?c=!s:x&left=course'), AppSection.courses);
+    });
+
+    test('open left panels win over the course context (decision 5, #7467)', () {
+      // The "click a quest then click chats, but the quest stays selected" bug:
+      // a chat/room over a course-scoped map reads as Chats, not Courses, even
+      // though `?c=` persists.
+      expect(section('/?c=!s:x&left=chats'), AppSection.chats);
+      expect(section('/?c=!s:x&left=chats,room:!r'), AppSection.chats);
+      expect(section('/?left=room:!r&c=!s:x'), AppSection.chats);
     });
 
     test('section identity rides in the left token at the world path /', () {

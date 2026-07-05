@@ -213,7 +213,12 @@ class SpacesNavigationRail extends StatelessWidget {
                             space: space,
                             iconWidth: largeIconWidth,
                             naviRailWidth: naviRailWidth,
-                            selected: activeSpaceId == space.id,
+                            // Highlight the course avatar only while the course
+                            // IS the open section — not merely because `?c=`
+                            // persists under a chat/room (routing decision 5).
+                            selected:
+                                section == AppSection.courses &&
+                                activeSpaceId == space.id,
                             onTap: () => _onTapSpace(context, space.id),
                           ),
                       ],
