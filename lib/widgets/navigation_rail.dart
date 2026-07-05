@@ -10,7 +10,6 @@ import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -45,14 +44,9 @@ class SpacesNavigationRail extends StatelessWidget {
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
       context.go(
-        WorkspaceNav.setSection(
-          uri,
-          PRoutes.course(roomId),
-          const PanelToken('course'),
-          // A left-nav click replaces the open left panels rather than stacking
-          // beside them (drop any open room/section). See routing.instructions.md.
-          keepRoom: false,
-        ),
+        // A left-nav click replaces the open left panels rather than stacking
+        // beside them (drop any open room/section). See routing.instructions.md.
+        WorkspaceNav.openCourseSection(uri, roomId, keepRoom: false),
       );
       return;
     }
@@ -70,12 +64,7 @@ class SpacesNavigationRail extends StatelessWidget {
     if (joinedRoomId == null) return;
 
     context.go(
-      WorkspaceNav.setSection(
-        uri,
-        PRoutes.course(joinedRoomId),
-        const PanelToken('course'),
-        keepRoom: false,
-      ),
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
     );
     return;
   }
@@ -183,7 +172,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             context.go(
                               WorkspaceNav.setSection(
                                 state.uri,
-                                PRoutes.world,
                                 const PanelToken('chats'),
                                 // Replace open left panels rather than stack.
                                 keepRoom: false,
@@ -210,7 +198,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             context.go(
                               WorkspaceNav.setSection(
                                 state.uri,
-                                PRoutes.world,
                                 const PanelToken('addcourse'),
                                 keepRoom: false,
                               ),
@@ -226,7 +213,12 @@ class SpacesNavigationRail extends StatelessWidget {
                             space: space,
                             iconWidth: largeIconWidth,
                             naviRailWidth: naviRailWidth,
-                            selected: activeSpaceId == space.id,
+                            // Highlight the course avatar only while the course
+                            // IS the open section — not merely because `?c=`
+                            // persists under a chat/room (routing decision 5).
+                            selected:
+                                section == AppSection.courses &&
+                                activeSpaceId == space.id,
                             onTap: () => _onTapSpace(context, space.id),
                           ),
                       ],

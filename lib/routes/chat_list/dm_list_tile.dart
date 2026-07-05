@@ -8,6 +8,7 @@ import 'package:fluffychat/features/bot/bot_client_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/support/support_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -58,7 +59,12 @@ class DMListTileState extends State<DMListTile> {
                           );
                           if (!mounted) return;
                           if (resp.isError) return;
-                          context.go('/rooms/${resp.result}');
+                          context.go(
+                            WorkspaceNav.openRoomById(
+                              GoRouterState.of(context).uri,
+                              resp.result!,
+                            ),
+                          );
                         } finally {
                           if (mounted) setState(() => _loading = false);
                         }
@@ -107,7 +113,12 @@ class DMListTileState extends State<DMListTile> {
                                   );
                               if (!mounted) return;
                               if (resp.isError) return;
-                              context.go('/rooms/${resp.result}');
+                              context.go(
+                                WorkspaceNav.openRoomById(
+                                  GoRouterState.of(context).uri,
+                                  resp.result!,
+                                ),
+                              );
                             } finally {
                               if (mounted) setState(() => _loading = false);
                             }

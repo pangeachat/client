@@ -41,6 +41,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
@@ -2321,7 +2322,9 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (result.error != null) return;
     if (!mounted) return;
-    context.go('/rooms/${result.result!}');
+    context.go(
+      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, result.result!),
+    );
 
     await showFutureLoadingDialog(context: context, future: room.leave);
   }

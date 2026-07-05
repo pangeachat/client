@@ -132,13 +132,15 @@ class SpaceDetailsContent extends StatelessWidget {
           if (room.getParticipants([Membership.knock]).isEmpty) {
             filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
-          // world_v2: opens beside the card as a `coursepage` detail, carrying
-          // the initial contact filter as a query the panel reads once.
-          final loc = WorkspaceNav.openCoursePage(
-            GoRouterState.of(context).uri,
-            'invite',
+          // world_v2: opens beside the card as a `coursepage` detail, with the
+          // initial contact filter riding in the token param.
+          context.go(
+            WorkspaceNav.openCoursePage(
+              GoRouterState.of(context).uri,
+              'invite',
+              filter: filter,
+            ),
           );
-          context.go('$loc${loc.contains('?') ? '&' : '?'}filter=$filter');
         },
         enabled: room.canInvite,
         showInMainView: false,

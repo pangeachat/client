@@ -9,10 +9,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -630,39 +628,21 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
-  /// put) as a `left=activity:<id>` panel token, which also focuses the pin. The
+  /// put) as a `left=activity:` panel token, which also focuses the pin. The
   /// panel fetches the full plan on open. This is the one-step tap target: any
   /// pin tap (dot / card) and a search-result tap route here (no peek).
   void openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // Open the activity plan as map content. Pin entry is UNSCOPED: drop the
-    // `?m=course:` filter along with the other panels and seat the activity as the
-    // sole `left=activity:<id>` token (its `liveView` sibling group drops any open
-    // chat). The absence of course scope is what makes this a parentless overlay —
-    // its close is an X to the map, not a back-arrow to a course card (a
-    // course-list tap keeps the scope and so gets the back-arrow). The map still
-    // focuses the activity's pin via the token (`mapFocusFor` → `ActivityFocus`),
-    // independent of scope. See `routing.instructions.md`.
-    final parts = WorkspaceQuery.parts(uri.query);
-    WorkspaceQuery.removeKeys(parts, {
-      'left',
-      'right',
-      'm',
-      'activity',
-      'autoplay',
-      'roomid',
-    });
-
-    parts.add('left=${PanelToken('activity', card.activityId).encode()}');
-    // #7257: if the learner already holds a started/joined session for this
-    // activity, bind the overlay to that room (`roomid=`) so the start page
-    // resumes it (selectRole/confirmedRole) instead of offering a fresh
-    // instance. Pin entry stays unscoped — only the session room is added.
+    // Seat the activity as the sole left token via the nav helper — no raw
+    // query surgery in feature code (routing.instructions.md). The course
+    // context is kept: a pin on a course-scoped map closes back to the course,
+    // a pin on the world map has none and closes with an X. A held session
+    // resumes via the token's session-binding field (#7257). The map focuses
+    // the activity's pin via the token (`mapFocusFor` → `ActivityFocus`).
     final myRoom = client?.myActivityInstance(card.activityId);
-    if (myRoom != null) {
-      parts.add('roomid=${shortRoomId(myRoom.id)}');
-    }
-    context.go(WorkspaceQuery.location('/', parts));
+    context.go(
+      WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
+    );
   }
 
   @override

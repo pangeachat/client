@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
@@ -101,7 +102,20 @@ class OnboardingController extends State<Onboarding> {
         _error.value = error;
       case ReachedBeginningNavigationResult():
       case ReachedEndNavigationResult():
-        context.go(_step.value.stepDestination);
+        // world_v2: a joined course opens as a token-native `course` panel,
+        // which needs the current workspace URI to build — the step only
+        // exposes the space id ([joinedCourseSpaceId]); every other step
+        // still returns a plain [stepDestination] path. See
+        // routing.instructions.md.
+        final spaceId = _step.value.joinedCourseSpaceId;
+        context.go(
+          spaceId != null
+              ? WorkspaceNav.openCourseSection(
+                  GoRouterState.of(context).uri,
+                  spaceId,
+                )
+              : _step.value.stepDestination,
+        );
     }
 
     if (mounted) {

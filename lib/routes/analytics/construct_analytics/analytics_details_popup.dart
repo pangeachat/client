@@ -349,7 +349,9 @@ class _PracticeButton extends StatelessWidget {
           ? () => context.go(
               WorkspaceNav.openPractice(
                 GoRouterState.of(context).uri,
-                view.string,
+                // Canonical token vocabulary: `grammar`/`vocab`, never the
+                // legacy `morph` (ConstructTypeEnum is the one source of truth).
+                view.canonicalTokenParam,
               ),
             )
           : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),

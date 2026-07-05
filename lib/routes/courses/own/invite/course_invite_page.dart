@@ -12,7 +12,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -58,7 +57,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
         context.go(
           WorkspaceNav.setSection(
             GoRouterState.of(context).uri,
-            PRoutes.world,
             const PanelToken('addcourse', 'own'),
             keepRoom: false,
           ),

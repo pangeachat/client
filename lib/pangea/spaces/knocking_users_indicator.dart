@@ -112,14 +112,15 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                   ),
                   onTap: () {
                     // world_v2: token nav to the course's invite page scoped to
-                    // this space, carrying the knock filter the panel reads once.
-                    final loc = WorkspaceNav.openCoursePageFor(
-                      GoRouterState.of(context).uri,
-                      widget.room.id,
-                      'invite',
-                    );
+                    // this space, with the knock filter riding in the
+                    // `coursepage:invite/knock` token param.
                     context.go(
-                      '$loc${loc.contains('?') ? '&' : '?'}filter=knock',
+                      WorkspaceNav.openCoursePageFor(
+                        GoRouterState.of(context).uri,
+                        widget.room.id,
+                        'invite',
+                        filter: 'knock',
+                      ),
                     );
                   },
                 ),

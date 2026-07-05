@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import '../../config/themes.dart';
@@ -60,13 +61,13 @@ class PublicRoomDialog extends StatelessWidget {
     if (result.error != null) return;
     if (!context.mounted) return;
     Navigator.of(context).pop<bool>(true);
-    // don't open the room if the joined room is a space
-    if (chunk?.roomType != 'm.space' &&
-        !client.getRoomById(result.result!)!.isSpace) {
-      context.go('/rooms/$roomId');
-    } else {
-      context.go('/rooms?spaceId=$roomId');
-    }
+    // A joined space opens as an ordinary `room` token over the map, same as
+    // any other room — the old `?spaceId=` shape (a dead pre-world_v2 param)
+    // and the plain-room path both collapse to the one token helper. See
+    // routing.instructions.md.
+    context.go(
+      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, roomId),
+    );
     return;
   }
 

@@ -8,7 +8,6 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
@@ -198,8 +197,9 @@ class NotStartedSessionController extends State<NotStartedSession>
   void startNewActivity() {
     widget.scrollController.jumpTo(0);
     final course = widget.course;
-    // With a course, launch scoped to it; otherwise launch the activity
-    // standalone via its first-class route.
+    // With a course, launch scoped to it; otherwise launch the activity as a
+    // standalone immersive panel over the map (no course context to clear —
+    // this session already has none). See routing.instructions.md.
     context.go(
       course != null
           ? WorkspaceNav.openCourseActivity(
@@ -207,7 +207,11 @@ class NotStartedSessionController extends State<NotStartedSession>
               widget.activityId,
               launch: true,
             )
-          : PRoutes.activityStandalone(widget.activityId, launch: true),
+          : WorkspaceNav.openActivity(
+              GoRouterState.of(context).uri,
+              widget.activityId,
+              launch: true,
+            ),
     );
   }
 

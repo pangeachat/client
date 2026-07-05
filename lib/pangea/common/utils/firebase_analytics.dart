@@ -114,6 +114,13 @@ class GoogleAnalytics {
     analytics?.logEvent(name: name, parameters: parameters);
   }
 
+  /// A GA4 screen view for a workspace screen. [screenName] is the token-derived
+  /// name from `ScreenNames` (identity stripped), wired by
+  /// `WorkspaceScreenTracker`. See `google-analytics.instructions.md`.
+  static void logScreenView(String screenName) {
+    analytics?.logScreenView(screenName: screenName);
+  }
+
   static void prepareLogin(String method) {
     _pendingLoginMethod = method;
   }

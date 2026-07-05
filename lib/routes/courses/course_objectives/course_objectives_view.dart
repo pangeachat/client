@@ -256,7 +256,14 @@ class _ObjectiveSection extends StatelessWidget {
                   // routing.instructions.md.
                   onTap: () {
                     if (room == null) {
-                      context.go('/${ref.activityId}');
+                      // Token-native open; the course context (if any) is kept,
+                      // so the plan closes back to it. See routing.instructions.md.
+                      context.go(
+                        WorkspaceNav.openActivity(
+                          GoRouterState.of(context).uri,
+                          ref.activityId,
+                        ),
+                      );
                       return;
                     }
                     // Immersive in-course open: the token producer drops the

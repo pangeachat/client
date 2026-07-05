@@ -400,6 +400,13 @@ pattern), so the map stays visible above it. Dragging the sheet up reveals the
 full content. On a wide screen the same content is a bounded panel beside the
 map.
 
+The sheet remembers its expanded/peek position **per course** (or per standalone
+activity): opening a chat over the sheet tears it down, and closing that chat
+reopens it at the size the learner left *that* course at, while a different
+course still opens at peek. The memory is scoped to the content, not global, so
+one course's expanded sheet never dictates the next course's opening size
+(#7332).
+
 **Tapping a map pin promotes it; there is no preview popup.** Tapping a small or
 mid pin expands it to its **large card in place** (over the map, the bottom nav
 still showing); tapping a large card opens the activity's **plan page**. Tapping
