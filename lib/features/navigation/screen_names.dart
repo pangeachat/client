@@ -1,5 +1,6 @@
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 
 /// GA screen names derived from the workspace tokens
@@ -20,15 +21,27 @@ abstract class ScreenNames {
       case 'grammar':
       case 'activity':
         return token.type;
-      // A room/session param is `<id>[/<sub-page>]`: the id is identity, the
-      // pushed sub-page is navigational and stays.
+      // A room/session param is `<id>[/<sub-page>]` (RoomToken): the id AND a
+      // jump-to-message eventId are identity and drop; a pushed sub-page and
+      // its invite filter (a small fixed tab, not personal content) are
+      // navigational and stay.
       case 'room':
       case 'session':
-        final slash = param.indexOf('/');
-        if (slash < 0) return token.type;
-        return '${token.type}:${param.substring(slash + 1)}';
-      // Everything else (settings pages, course tabs, coursepages, practice
-      // modes, analytics tabs, addcourse steps) is a navigational param.
+        final parsed = RoomToken.parse(param);
+        if (parsed.subPage == null || parsed.subPage!.isEmpty) {
+          return token.type;
+        }
+        final filter = parsed.filter;
+        final sub = filter == null
+            ? parsed.subPage!
+            : '${parsed.subPage}/$filter';
+        return '${token.type}:$sub';
+      // A coursepage param is the bare page, no leading room id (the card's
+      // space rides the separate `?c=` context) — an `invite` page may carry a
+      // trailing `/<filter>` (WorkspaceNav.openCoursePage), which stays: still
+      // just a small fixed tab, not identity.
+      // Everything else (settings pages, course tabs, practice modes,
+      // analytics tabs, addcourse steps) is a navigational param.
       default:
         return '${token.type}:$param';
     }

@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
@@ -111,6 +112,34 @@ void main() {
       expect(parseOpenPanels(u(loc)).right, [
         const PanelToken('analytics', 'grammar'),
       ]);
+    });
+  });
+
+  group('openRoomById (event folds into the room token; no loose params)', () {
+    test('a bare call opens the room with no event/body query at all', () {
+      final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc');
+      final uri = u(loc);
+      expect(parseOpenPanels(uri).left, [const PanelToken('room', '!abc')]);
+      expect(uri.queryParameters['event'], isNull);
+      expect(uri.queryParameters['body'], isNull);
+    });
+
+    test('event rides the room token param, not a loose ?event= query', () {
+      final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc', event: r'$e1');
+      final uri = u(loc);
+      expect(uri.queryParameters['event'], isNull);
+      final room = parseOpenPanels(uri).left.single;
+      expect(RoomToken.parse(room.param!).eventId, r'$e1');
+    });
+
+    test('subPage still pushes normally alongside a room open', () {
+      final loc = WorkspaceNav.openRoomById(
+        u('/chats'),
+        '!abc',
+        subPage: 'details',
+      );
+      final room = parseOpenPanels(u(loc)).left.single;
+      expect(room.param, '!abc/details');
     });
   });
 
@@ -781,6 +810,21 @@ void main() {
       );
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
+    });
+
+    test('openCoursePage(filter:) folds the invite contact filter into the '
+        'coursepage token param instead of a loose ?filter= query', () {
+      final loc = WorkspaceNav.openCoursePage(
+        u('/?c=!s&left=course'),
+        'invite',
+        filter: 'knock',
+      );
+      final uri = u(loc);
+      expect(uri.queryParameters['filter'], isNull);
+      expect(
+        parseOpenPanels(uri).left.where((t) => t.type == 'coursepage').single,
+        const PanelToken('coursepage', 'invite/knock'),
+      );
     });
 
     test(

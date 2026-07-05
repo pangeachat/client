@@ -4,6 +4,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -91,6 +92,44 @@ void main() {
     );
   });
 
+  group('malformed percent-encoding degrades, never throws', () {
+    // `Uri.parse` normalizes a stray `%` in the URL (`%2` → `%252`), so the
+    // crash risk is the SECOND decode layer: a hand-crafted `%252` becomes the
+    // field `%2`, which `Uri.decodeComponent` then rejects. Every field
+    // decoder must swallow that rather than abort the route.
+    test('a token-list parse survives a malformed second-level field', () {
+      // vocab:%252 → PanelToken param `%2` → the construct field decode throws
+      // internally but is caught; the list still parses both tokens.
+      final right = parseOpenPanels(
+        u('/?right=analytics:vocab,vocab:%252'),
+      ).right;
+      expect(right.any((t) => t.type == 'analytics'), isTrue);
+    });
+
+    test('fromTokenParam degrades a malformed field without throwing; an '
+        'empty param is null', () {
+      // A malformed field decodes to its raw form (harmless), never a crash.
+      expect(
+        () => ConstructIdentifier.fromTokenParam('vocab', '%2'),
+        returnsNormally,
+      );
+      expect(ConstructIdentifier.fromTokenParam('vocab', ''), isNull);
+    });
+
+    test('TokenFields.decode degrades a malformed field to its raw form', () {
+      expect(TokenFields.decode('%2'), '%2');
+      expect(TokenFields.decode('ab%zz'), 'ab%zz');
+    });
+
+    test(
+      'ActivityToken/RoomToken parse a malformed field without throwing',
+      () {
+        expect(() => ActivityToken.parse('act-1.r%2'), returnsNormally);
+        expect(() => RoomToken.parse('!abc/e/%2'), returnsNormally);
+      },
+    );
+  });
+
   group('ActivityToken (session bindings ride the fields)', () {
     test('id-only builds a bare param', () {
       expect(ActivityToken.build('act-1'), 'act-1');
@@ -121,6 +160,121 @@ void main() {
       expect(parsed.launch, isTrue);
     });
   });
+
+  group(
+    'RoomToken (event/filter fold into the room param, not loose query)',
+    () {
+      test('a bare id has no sub-page, filter, or eventId', () {
+        expect(RoomToken.build('!abc'), '!abc');
+        final parsed = RoomToken.parse('!abc');
+        expect(parsed.id, '!abc');
+        expect(parsed.subPage, isNull);
+        expect(parsed.filter, isNull);
+        expect(parsed.eventId, isNull);
+      });
+
+      test('a plain sub-page (search, edit, …) round-trips with no filter', () {
+        final param = RoomToken.build('!abc', subPage: 'search');
+        expect(param, '!abc/search');
+        final parsed = RoomToken.parse(param);
+        expect(parsed.id, '!abc');
+        expect(parsed.subPage, 'search');
+        expect(parsed.filter, isNull);
+        expect(parsed.eventId, isNull);
+      });
+
+      test('an invite filter appends after the sub-page and round-trips', () {
+        final param = RoomToken.build(
+          '!abc',
+          subPage: 'invite',
+          filter: 'knocking',
+        );
+        expect(param, '!abc/invite/knocking');
+        final parsed = RoomToken.parse(param);
+        expect(parsed.id, '!abc');
+        expect(parsed.subPage, 'invite');
+        expect(parsed.filter, 'knocking');
+        expect(parsed.eventId, isNull);
+      });
+
+      test('a details page with no filter round-trips (edit/access/…)', () {
+        final param = RoomToken.build('!abc', subPage: 'details/edit');
+        expect(param, '!abc/details/edit');
+        final parsed = RoomToken.parse(param);
+        expect(parsed.id, '!abc');
+        expect(parsed.subPage, 'details/edit');
+        expect(parsed.filter, isNull);
+      });
+
+      test(
+        'a details/invite filter round-trips, keeping the details prefix',
+        () {
+          final param = RoomToken.build(
+            '!abc',
+            subPage: 'details/invite',
+            filter: 'participants',
+          );
+          expect(param, '!abc/details/invite/participants');
+          final parsed = RoomToken.parse(param);
+          expect(parsed.id, '!abc');
+          expect(parsed.subPage, 'details/invite');
+          expect(parsed.filter, 'participants');
+        },
+      );
+
+      test('a jump-to-message eventId round-trips despite its hostile '
+          r'characters ($, :, /)', () {
+        const eventId = r'$abc123:matrix.org/weird';
+        final param = RoomToken.build('!abc', eventId: eventId);
+        expect(param, '!abc/e/${TokenFields.encode(eventId)}');
+        final parsed = RoomToken.parse(param);
+        expect(parsed.id, '!abc');
+        expect(parsed.subPage, isNull);
+        expect(parsed.filter, isNull);
+        expect(parsed.eventId, eventId);
+      });
+
+      test('eventId takes precedence over a subPage when both are passed', () {
+        final param = RoomToken.build(
+          '!abc',
+          subPage: 'search',
+          eventId: r'$xyz',
+        );
+        final parsed = RoomToken.parse(param);
+        expect(parsed.subPage, isNull);
+        expect(parsed.eventId, r'$xyz');
+      });
+
+      test('a hostile filter value round-trips (comma, colon, dot, space)', () {
+        const hostileFilters = ['a,b:c/d', 'a.b.c', 'ir de compras'];
+        for (final filter in hostileFilters) {
+          final param = RoomToken.build(
+            '!abc',
+            subPage: 'invite',
+            filter: filter,
+          );
+          final parsed = RoomToken.parse(param);
+          expect(
+            parsed.filter,
+            filter,
+            reason: 'filter round-trip failed for "$filter"',
+          );
+        }
+      });
+
+      test(
+        'an id with a colon (foreign-homeserver form) is preserved whole',
+        () {
+          // Room ids never contain `/`, so the leading segment up to the first
+          // `/` is always the whole id — including a foreign `!id:server` form.
+          final param = RoomToken.build('!abc:example.org', subPage: 'search');
+          final parsed = RoomToken.parse(param);
+          expect(parsed.id, '!abc:example.org');
+          expect(parsed.subPage, 'search');
+        },
+      );
+    },
+  );
 
   group('the ?c= course context', () {
     test('c= carries the bare space id and decodes', () {

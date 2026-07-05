@@ -10,8 +10,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -91,16 +91,20 @@ class ConstructIdentifier {
 
   /// Parse a construct panel-token param (`<lemma>.<category>`). [tokenType]
   /// is the panel type (`vocab` / `grammar`) and supplies the construct type.
+  /// Returns null on any parse failure (an empty or hand-edited/malformed
+  /// param), so a tampered token can never crash the panel builder.
   static ConstructIdentifier? fromTokenParam(String tokenType, String param) {
-    final fields = TokenFields.split(param);
-    if (fields.isEmpty || fields.first.isEmpty) return null;
-    return ConstructIdentifier(
-      lemma: TokenFields.decode(fields.first),
-      type: tokenType == 'grammar'
-          ? ConstructTypeEnum.morph
-          : ConstructTypeEnum.vocab,
-      category: fields.length > 1 ? TokenFields.decode(fields[1]) : '',
-    );
+    try {
+      final fields = TokenFields.split(param);
+      if (fields.isEmpty || fields.first.isEmpty) return null;
+      return ConstructIdentifier(
+        lemma: TokenFields.decode(fields.first),
+        type: ConstructTypeEnum.fromTokenParam(tokenType),
+        category: fields.length > 1 ? TokenFields.decode(fields[1]) : '',
+      );
+    } catch (_) {
+      return null;
+    }
   }
 
   // override operator == and hashCode

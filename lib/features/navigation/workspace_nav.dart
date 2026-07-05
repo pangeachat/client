@@ -2,8 +2,10 @@ import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Builds workspace location strings by adding or removing panel tokens on the
@@ -131,31 +133,26 @@ abstract class WorkspaceNav {
 
   /// Open a live chat by ROOM ID from anywhere — the token-native replacement
   /// for every `context.go('/rooms/<id>')` path literal. [subPage] pushes a
-  /// sub-page onto the room's own stack (`details`, `search`, …). The
-  /// fork-inherited one-shot extras ([event] jump-to-message, [body]
-  /// share-text) still ride loose for now; folding them into the room token is
-  /// tracked on #7467. Ensures the world path (a room token renders over `/`).
+  /// sub-page onto the room's own stack (`details`, `search`, …); [event] rides
+  /// as the room token's `e/<eventId>` field (jump-to-message on the main
+  /// timeline) instead of a loose `?event=` query — everything the panel needs
+  /// rides in its token (routing.instructions.md).
   static String openRoomById(
     Uri current,
     String roomId, {
     String? subPage,
     String? event,
-    String? body,
   }) {
     final id = shortRoomId(roomId);
-    final param = subPage == null || subPage.isEmpty ? id : '$id/$subPage';
-    final base = Uri.parse(
-      openExclusiveLeftRoom(current, PanelToken('room', param)),
+    final param = RoomToken.build(id, subPage: subPage, eventId: event);
+    return WorkspaceQuery.location(
+      PRoutes.world,
+      WorkspaceQuery.parts(
+        Uri.parse(
+          openExclusiveLeftRoom(current, PanelToken('room', param)),
+        ).query,
+      ),
     );
-    final parts = WorkspaceQuery.parts(base.query);
-    WorkspaceQuery.removeKeys(parts, {'event', 'body'});
-    if (event != null && event.isNotEmpty) {
-      parts.add('event=${Uri.encodeQueryComponent(event)}');
-    }
-    if (body != null && body.isNotEmpty) {
-      parts.add('body=${Uri.encodeQueryComponent(body)}');
-    }
-    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   /// A completed-activity `session` review (opened from the Stars archive) is a
@@ -325,11 +322,20 @@ abstract class WorkspaceNav {
   /// beside the `course` master that coexists when width allows and folds to a
   /// push when not, mirroring settings menu→page ([openSettings]). The card's
   /// space rides in the `?m=course:<id>` filter (preserved here), so the page
-  /// param is just the page id. One management page at a time (the registry
-  /// `coursepage` exclusive group drops any prior one). See
-  /// `routing.instructions.md`.
-  static String openCoursePage(Uri current, String page) =>
-      openDetail(current, PanelToken('coursepage', page));
+  /// param is just the page id, with an optional trailing `/<filter>` — the
+  /// invite page's initial contact filter, folded into the token instead of a
+  /// loose `?filter=` query (routing.instructions.md). One management page at a
+  /// time (the registry `coursepage` exclusive group drops any prior one).
+  static String openCoursePage(Uri current, String page, {String? filter}) =>
+      openDetail(
+        current,
+        PanelToken(
+          'coursepage',
+          filter == null || filter.isEmpty
+              ? page
+              : '$page/${TokenFields.encode(filter)}',
+        ),
+      );
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
   /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
@@ -337,8 +343,16 @@ abstract class WorkspaceNav {
   /// already-scoped course — use this when the target course may not be the
   /// current filter (e.g. inviting knocking users from a space tile, or from an
   /// activity session). See `routing.instructions.md`.
-  static String openCoursePageFor(Uri current, String spaceId, String page) =>
-      openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
+  static String openCoursePageFor(
+    Uri current,
+    String spaceId,
+    String page, {
+    String? filter,
+  }) => openCoursePage(
+    Uri.parse(openCourseFilter(current, spaceId)),
+    page,
+    filter: filter,
+  );
 
   /// Open an in-course activity as the immersive `left=activity:` panel over
   /// the course-scoped map — the token-native producer for "open this activity

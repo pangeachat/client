@@ -18,8 +18,17 @@ abstract class TokenFields {
   static String encode(String value) =>
       Uri.encodeComponent(value).replaceAll('.', '%2E');
 
-  /// Decode one field back to its original content.
-  static String decode(String field) => Uri.decodeComponent(field);
+  /// Decode one field back to its original content. A hand-edited or truncated
+  /// `%` escape makes `Uri.decodeComponent` throw (an `ArgumentError`, or a
+  /// `FormatException` on some inputs); a tampered URL must not crash route
+  /// parsing, so degrade to the raw field either way.
+  static String decode(String field) {
+    try {
+      return Uri.decodeComponent(field);
+    } catch (_) {
+      return field;
+    }
+  }
 
   /// Join already-[encode]d fields into a param.
   static String join(Iterable<String> encodedFields) => encodedFields.join('.');

@@ -4,6 +4,7 @@ import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -32,11 +33,9 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final param = token.param ?? '';
-    final slash = param.indexOf('/');
-    final bareId = slash < 0 ? param : param.substring(0, slash);
-    final sub = slash < 0 ? '' : param.substring(slash + 1);
-    final roomId = fullRoomId(bareId);
+    final parsed = RoomToken.parse(token.param ?? '');
+    final sub = parsed.subPage ?? '';
+    final roomId = fullRoomId(parsed.id);
     final room = Matrix.of(context).client.getRoomById(roomId);
 
     // A space has no timeline, so it must never render as a chat — drop to a
@@ -59,16 +58,17 @@ class LeftPanelRoomSubpage extends StatelessWidget {
       isColumnMode: isColumnMode,
     );
 
+    // A jump-to-message (`e/<eventId>`) parses with no subPage, so it falls
+    // through to the plain chat below with parsed.eventId set.
     if (sub.isNotEmpty) {
       switch (sub.split('/').first) {
         case 'search':
           return ChatSearchPage(roomId: roomId, embeddedCloseButton: back);
         case 'invite':
-          final filter = currentUri.queryParameters['filter'];
           return PangeaInvitationSelection(
             roomId: roomId,
-            initialFilter: filter != null
-                ? InvitationFilter.fromString(filter)
+            initialFilter: parsed.filter != null
+                ? InvitationFilter.fromString(parsed.filter!)
                 : null,
             embeddedCloseButton: back,
           );
@@ -88,12 +88,14 @@ class LeftPanelRoomSubpage extends StatelessWidget {
             isColumnMode: isColumnMode,
             roomId: roomId,
             name: rest.split('/').first,
+            filter: parsed.filter,
           );
       }
     }
 
-    // The chat: thread the jump-to-message `?event=` (rides the URL) and any
-    // shared items (ride the navigation `extra`) the retired route used to read.
+    // The chat: thread the jump-to-message `e/<eventId>` field (RoomToken) and
+    // any shared items (ride the navigation `extra`) the retired route used to
+    // read. A bare room and a jump-to-message both render here (no sub-page).
     return Navigator(
       key: MatrixState.pAnyState
           .layerLinkAndKey("chat_page_with_room_$roomId")
@@ -101,7 +103,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
       onGenerateRoute: (_) => MaterialPageRoute(
         builder: (_) => ChatPage(
           roomId: roomId,
-          eventId: currentUri.queryParameters['event'],
+          eventId: parsed.eventId,
           shareItems: shareItems,
           backButton: back,
         ),

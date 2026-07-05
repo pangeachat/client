@@ -48,13 +48,10 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
     // confirms before abandoning an in-progress session (unsaved progress);
     // the confirm is skipped once the session completes/errors (the widget
     // flips `bypassExitConfirmation`). See routing.instructions.md.
-    // Canonical param is `grammar`; the legacy `morph` spelling is accepted
-    // as an inbound form only (one vocabulary across the token grammar).
-    final constructType =
-        token.param == 'grammar' ||
-            token.param == ConstructTypeEnum.morph.string
-        ? ConstructTypeEnum.morph
-        : ConstructTypeEnum.vocab;
+    // Canonical param is `grammar`/`vocab`; the legacy `morph` spelling is
+    // accepted as an inbound alias (ConstructTypeEnum is the one source of
+    // truth for the token vocabulary).
+    final constructType = ConstructTypeEnum.fromTokenParam(token.param);
 
     return PanelCardWithHeader(
       title: l10n.practice,

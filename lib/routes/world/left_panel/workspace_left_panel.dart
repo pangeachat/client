@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
@@ -107,13 +108,22 @@ class WorkspaceLeftPanel extends StatelessWidget {
         if (courseSpaceId == null || page == null) {
           return const SizedBox.shrink();
         }
+        // A `coursepage` param has no leading id (the space rides `?c=`): just
+        // the page, with an optional trailing `/<filter>` — the invite page's
+        // initial contact filter (WorkspaceNav.openCoursePage). See
+        // `routing.instructions.md`.
+        final segments = page.split('/');
+        final filter = segments.length > 1
+            ? TokenFields.decode(segments[1])
+            : null;
         return LeftPanelRoomDetailsSubpage(
           token: token,
           currentUri: currentUri,
           foldedOver: foldedOver,
           isColumnMode: isColumnMode,
           roomId: courseSpaceId,
-          name: page.split('/').first,
+          name: segments.first,
+          filter: filter,
         );
       }(),
       _ => const SizedBox.shrink(),

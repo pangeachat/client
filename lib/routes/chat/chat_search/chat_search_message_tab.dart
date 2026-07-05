@@ -165,7 +165,7 @@ class _MessageSearchResultListTile extends StatelessWidget {
           room.id,
           [],
           context,
-          queryParams: {'event': event.eventId},
+          event: event.eventId,
         ),
         // Pangea#
       ),
