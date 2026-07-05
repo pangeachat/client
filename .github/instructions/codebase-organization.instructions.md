@@ -5,7 +5,7 @@ applyTo: "lib/routes/**,lib/features/**,lib/pangea/**,lib/main.dart,lib/config/r
 
 # Codebase Organization
 
-This client began as a fork of [krille-chan/fluffychat](https://github.com/krille-chan/fluffychat), but has diverged far enough that we no longer routinely merge upstream — treat the FluffyChat base as our own code, not a vendored dependency we have to keep mergeable. Pangea code was reorganized on top of that base into three trees: **`lib/routes/`** (on-screen UI, by nav section), **`lib/features/`** (per-domain data and logic), and **`lib/pangea/`** (shared infra and common widgets). FluffyChat base layers (`lib/widgets/`, `lib/utils/`, `lib/config/`) remain underneath, edited in place. This doc is the map: read it, then use the Placement Decision Tree to decide where new code goes.
+This client began as a fork of [krille-chan/fluffychat](https://github.com/krille-chan/fluffychat), but it is now a **hard fork**: we do not merge upstream, and upstream mergeability is not a goal. Treat the FluffyChat base as our own code and change it freely — consistency with Pangea architecture and conventions always outranks staying close to upstream. Pangea code was reorganized on top of that base into three trees: **`lib/routes/`** (on-screen UI, by nav section), **`lib/features/`** (per-domain data and logic), and **`lib/pangea/`** (shared infra and common widgets). FluffyChat base layers (`lib/widgets/`, `lib/utils/`, `lib/config/`) remain underneath, edited in place. This doc is the map: read it, then use the Placement Decision Tree to decide where new code goes.
 
 ## Top-Level Directories
 
@@ -27,7 +27,7 @@ The rule is real but imperfectly enforced. A few feature dirs hold UI today (`fe
 ## Imports and the `// #Pangea` Marker
 
 - **Package prefix is `fluffychat`, not `client`** (inherited from the fork). All intra-app imports use `package:fluffychat/...`, e.g. `package:fluffychat/routes/...`, `package:fluffychat/features/...`, `package:fluffychat/pangea/common/config/environment.dart`.
-- **Edits to base FluffyChat files are fenced in `// #Pangea` ... `// Pangea#`** so Pangea changes stay greppable against the FluffyChat base — provenance, since we rarely merge upstream now (~100 files carry the fence). Use it when modifying a base file in `lib/widgets/`, `lib/utils/`, `lib/config/`, etc. Net-new Pangea code lives in its own file under `pangea/`, `features/`, or `routes/` and does not need the fence.
+- **Edits to base FluffyChat files are fenced in `// #Pangea` ... `// Pangea#`** so Pangea changes stay greppable against the FluffyChat base — provenance and readability only, not merge preparation (we do not merge upstream; ~100 files carry the fence). Use it when modifying a base file in `lib/widgets/`, `lib/utils/`, `lib/config/`, etc. Net-new Pangea code lives in its own file under `pangea/`, `features/`, or `routes/` and does not need the fence.
 
 ## Placement Decision Tree
 
