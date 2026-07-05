@@ -80,12 +80,6 @@ class ActivitySessionStartView extends StatelessWidget {
         ).left.any((t) => t.type == 'activity');
         final courseScoped = activeSpaceIdFor(uri) != null;
 
-        // Drop the `left=activity:` token (and any legacy loose activity
-        // params) via the one shared sweeper, keeping the course context and
-        // the rest of the query. [reopenCard] additionally restores
-        // `left=course` over the surviving context (the parent card).
-        String overlayDropped({required bool reopenCard}) =>
-            WorkspaceNav.dropActivityOverlay(uri, reopenCourseCard: reopenCard);
 
         return Scaffold(
           appBar: AppBar(
@@ -114,9 +108,12 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () => GoRouter.of(
-                          context,
-                        ).go(overlayDropped(reopenCard: true)),
+                        onPressed: () => GoRouter.of(context).go(
+                          WorkspaceNav.dropActivityOverlay(
+                            uri,
+                            reopenCourseCard: true,
+                          ),
+                        ),
                       )
                     : embedded
                     // Unscoped (pin entry) → X dismisses to the map.
@@ -125,7 +122,7 @@ class ActivitySessionStartView extends StatelessWidget {
                         icon: const Icon(Icons.close),
                         onPressed: () => GoRouter.of(
                           context,
-                        ).go(overlayDropped(reopenCard: false)),
+                        ).go(WorkspaceNav.dropActivityOverlay(uri)),
                       )
                     // Opened as a room/session token (the chat list / a left
                     // panel): drop ONLY that token so the rest of the workspace

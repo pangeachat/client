@@ -87,13 +87,6 @@ void main() {
       expect(construct?.category, 'aux');
     });
 
-    test('the legacy JSON param is still accepted inbound', () {
-      const legacy = '{"lemma":"abrigadoro","type":"vocab","cat":"adj"}';
-      final construct = ConstructIdentifier.fromTokenParam('vocab', legacy);
-      expect(construct?.lemma, 'abrigadoro');
-      expect(construct?.category, 'adj');
-      expect(construct?.type, ConstructTypeEnum.vocab);
-    });
   });
 
   group('ActivityToken (session bindings ride the fields)', () {

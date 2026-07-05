@@ -111,49 +111,13 @@ AppSection sectionFor(Uri uri) {
   return AppSection.world;
 }
 
-/// Split a URL token list on its *top-level* commas only — commas inside a
-/// `{...}` JSON param (an encoded construct) are NOT list delimiters.
-///
-/// A construct param is wrapped in braces and its commas are percent-encoded
-/// (`%2C`) by [PanelToken.encode], so the in-app form has no literal commas
-/// inside a param. But on a cold boot / refresh the browser normalizes the URL
-/// fragment in `window.location`, decoding the param's `%2C` back to literal
-/// commas (it keeps `%22` for the quotes). Re-parsing that through `Uri` then
-/// re-encodes the brace chars — which are not query-legal — to `%7B`/`%7D`,
-/// while the commas (valid sub-delims) stay literal. A naive `split(',')` would
-/// shatter the construct token mid-JSON, the param would fail to `jsonDecode`,
-/// and the selected construct would be lost, the detail panel falling back to
-/// the summary grid (#7079). Tracking brace depth keeps the param whole.
-///
-/// Braces appear as `%7B`/`%7D` in `uri.query` on both paths (and the literal
-/// `{`/`}` forms are matched too, for safety), so this parses both identically.
-List<String> splitTopLevelTokens(String list) {
-  final out = <String>[];
-  var depth = 0;
-  var start = 0;
-  for (var i = 0; i < list.length; i++) {
-    final c = list[i];
-    if (c == '{') {
-      depth++;
-    } else if (c == '}') {
-      if (depth > 0) depth--;
-    } else if (c == '%' && i + 3 <= list.length) {
-      final hex = list.substring(i + 1, i + 3).toUpperCase();
-      if (hex == '7B') {
-        depth++;
-        i += 2;
-      } else if (hex == '7D') {
-        if (depth > 0) depth--;
-        i += 2;
-      }
-    } else if (c == ',' && depth == 0) {
-      out.add(list.substring(start, i));
-      start = i + 1;
-    }
-  }
-  out.add(list.substring(start));
-  return out;
-}
+/// Split a URL token list on its commas. Param content can never contain a
+/// literal comma: [TokenFields.encode] escapes one to `%2C` inside a field and
+/// [PanelToken.encode] percent-encodes the param again (`%252C`), so even the
+/// browser's fragment normalization — which decodes `%2C` back to a literal
+/// comma (the #7079 shatter) — cannot reintroduce a delimiter. The old
+/// brace-depth tracking existed only for the retired JSON construct params.
+List<String> splitTopLevelTokens(String list) => list.split(',');
 
 /// The map-filter values from `?m=` — a comma list of typed tokens (today only
 /// `course:<spaceid>`) that scope the persistent world map. Read raw (not the
