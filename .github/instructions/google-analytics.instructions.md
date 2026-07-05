@@ -55,11 +55,15 @@ measurement mirror must stay joinable by name with those first-party facts.
   establishes it (the bot-notification contract's cardinality rule applies).
   Navigational params — a tab, a settings page, a push leaf — are the
   low-cardinality part that stays in the screen name.
-- **Emit on history steps only.** A navigation that adds a history entry (open,
-  push) or steps back (close, pop) emits a screen view; a history *replace*
-  (width-driven fold/unfold, refocus, a `launch` flag's automatic transition)
-  is silent. This mirrors routing's history semantics, so resizing a window
-  never pollutes a funnel.
+- **Emit on a change of screen name, deduped.** The tracker
+  (`WorkspaceScreenTracker`, listening on the router) derives the name on every
+  navigation and emits only when it differs from the last. This makes the
+  "replaces are silent" intent fall out for free: a width-driven fold/unfold or
+  a refocus does not change the tokens, so the derived name is unchanged and
+  nothing fires — resizing a window never pollutes a funnel. A genuine screen
+  change (open, push, close, pop) mints a new name and emits; a `launch`
+  transition into the session does too, because arriving at the session screen
+  is a real screen view even though it replaces the history entry.
 - **Event vocabulary matches the token grammar**: `vocab` / `grammar`, never
   `morph`.
 
