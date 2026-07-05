@@ -267,6 +267,36 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, query);
   }
 
+  /// Switch the LEFT SECTION to course [spaceId] — a rail / bottom-nav section
+  /// tap. Sets the `?c=` context and REPLACES the open left panels with the
+  /// course card ([tab] in its param), keeping a live room only when
+  /// [keepRoom]; the right column and other query survive. Unlike
+  /// [openCourseFilter] (an in-content course open, which keeps the chat
+  /// list), a section switch replaces the left column
+  /// (routing.instructions.md). This is the token-native replacement for the
+  /// old `setSection(uri, PRoutes.course(id), …)` hybrid that bounced through
+  /// the legacy redirect.
+  static String openCourseSection(
+    Uri current,
+    String spaceId, {
+    String? tab,
+    bool keepRoom = true,
+  }) {
+    final lists = parseOpenPanels(current);
+    final left = <PanelToken>[
+      PanelToken('course', tab),
+      if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
+    ];
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'c', 'm', 'left'});
+    final query = <String>[
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
+      'left=${left.map((t) => t.encode()).join(',')}',
+      ...parts,
+    ];
+    return WorkspaceQuery.location(PRoutes.world, query);
+  }
+
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
   /// course token. The course's identity is the `?m=course:<id>` map filter
   /// (read via activeSpaceIdFor), not the token — the token's param is just the
