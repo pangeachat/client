@@ -176,7 +176,9 @@ class WorldMapController extends State<WorldMap>
       // below rebuilds it when the joined-course set changes (or a prior build
       // resolved nothing), so banding + the gate recover within the session
       // instead of staying blank until a remount (which never happens for this
-      // persistent map). The pinged scan does one-shot timeline work.
+      // persistent map). The pinged scan runs here and on sync (below) — it
+      // surfaces recruit pings on the map and clears each course space's stuck
+      // ping badge once consumed (#7366).
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
       _discoverCoursemateSessions(client);
@@ -188,6 +190,7 @@ class WorldMapController extends State<WorldMap>
             if (!mounted) return;
             _recomputeProgress();
             _maybeRebuildObjectiveCache(client);
+            _recomputePinged(client);
             _discoverCoursemateSessions(client);
           });
     }
