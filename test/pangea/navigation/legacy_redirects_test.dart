@@ -88,8 +88,8 @@ void main() {
       // sole left token over the world map.
       const id = '32ad3c08-e501-41c5-b544-0875026090ed';
       expect(resolve('/$id'), '/?left=activity:$id');
-      // One-shot session params (launch / an existing session room) ride along.
-      expect(resolve('/$id?launch=true'), '/?left=activity:$id&launch=true');
+      // Session params (launch / an existing session room) fold into token fields.
+      expect(resolve('/$id?launch=true'), '/?left=activity:$id.l');
       // Any prior left list / map filter is dropped — this navigation IS the
       // activity (it claims the single live view).
       expect(resolve('/$id?m=course:!s&left=chats'), '/?left=activity:$id');
@@ -130,8 +130,8 @@ void main() {
       // world_v2: a course is a ?m= map filter + a left course panel, NOT a
       // path. The bare course path (with or without an existing course token)
       // maps off the path to the filter + panel form.
-      expect(resolve('/courses/!s'), '/?m=course:!s&left=course');
-      expect(resolve('/courses/!s?left=course'), '/?m=course:!s&left=course');
+      expect(resolve('/courses/!s'), '/?c=!s&left=course');
+      expect(resolve('/courses/!s?left=course'), '/?c=!s&left=course');
       // the add-course wizard's first step becomes the addcourse token,
       // preserving the flow's query; deeper steps stay route-driven.
       expect(resolve('/courses/own'), '/?left=addcourse:own');
@@ -149,12 +149,12 @@ void main() {
       expect(resolve('/analytics/level'), '/?right=analytics:level');
     });
 
-    test('a course is a ?m= map filter + panels, not a path', () {
+    test('a course is a ?c= course context + panels, not a path', () {
       // A room inside a course rides as a left `room` token beside the course
       // panel; the course stays the map filter.
       expect(
         resolve('/courses/!s/!room'),
-        '/?m=course:!s&left=course,room:!room',
+        '/?c=!s&left=course,room:!room',
       );
       // The in-course activity: the path collapses to the course filter and the
       // inbound `?activity=` overlay becomes a first-class `left=activity:` panel
@@ -162,33 +162,33 @@ void main() {
       // beside it). #7385.
       expect(
         resolve('/courses/!s?activity=a'),
-        '/?m=course:!s&left=activity:a',
+        '/?c=!s&left=activity:a',
       );
       // An open right column carries through the rewrite untouched.
       expect(
         resolve('/courses/!s?right=analytics:vocab'),
-        '/?m=course:!s&left=course&right=analytics:vocab',
+        '/?c=!s&left=course&right=analytics:vocab',
       );
       // Deep course-management pages open beside the card as a `coursepage`
       // detail (card master kept); the legacy /details shim is stripped (bare →
       // the card, /details/<page> → the page). The Completer-carrying add-a-plan
       // flow stays route-driven.
-      expect(resolve('/courses/!s/details'), '/?m=course:!s&left=course');
+      expect(resolve('/courses/!s/details'), '/?c=!s&left=course');
       expect(
         resolve('/courses/!s/edit'),
-        '/?m=course:!s&left=course,coursepage:edit',
+        '/?c=!s&left=course,coursepage:edit',
       );
       expect(
         resolve('/courses/!s/invite'),
-        '/?m=course:!s&left=course,coursepage:invite',
+        '/?c=!s&left=course,coursepage:invite',
       );
       expect(
         resolve('/courses/!s/details/edit'),
-        '/?m=course:!s&left=course,coursepage:edit',
+        '/?c=!s&left=course,coursepage:edit',
       );
       expect(
         resolve('/courses/!s/addcourse'),
-        '/?m=course:!s&left=course,coursepage:addcourse',
+        '/?c=!s&left=course,coursepage:addcourse',
       );
       expect(resolve('/courses/!s/addcourse/plan-1'), isNull); // route-driven
       // The /rooms/spaces chain reaches the same form in two hops (router
@@ -196,7 +196,7 @@ void main() {
       expect(resolve('/rooms/spaces/!s/!room'), '/courses/!s/!room');
       expect(
         resolve(resolve('/rooms/spaces/!s/!room')!),
-        '/?m=course:!s&left=course,room:!room',
+        '/?c=!s&left=course,room:!room',
       );
     });
 
@@ -227,11 +227,11 @@ void main() {
     test('a room inside a course rides as a room push beside the course', () {
       expect(
         resolve('/courses/!s/!room/search'),
-        '/?m=course:!s&left=course,room:!room%2Fsearch',
+        '/?c=!s&left=course,room:!room%2Fsearch',
       );
       expect(
         resolve('/courses/!s/!room/details/permissions'),
-        '/?m=course:!s&left=course,room:!room%2Fdetails%2Fpermissions',
+        '/?c=!s&left=course,room:!room%2Fdetails%2Fpermissions',
       );
     });
 
