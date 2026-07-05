@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
@@ -86,23 +85,20 @@ class WorkspaceLeftPanel extends StatelessWidget {
         isColumnMode: isColumnMode,
       ),
       // An activity plan/preview — the immersive live-view surface before the
-      // session room exists (#7385). Its identity is the token param (the activity
-      // id); the parent course rides the `?m=course:` scope, and the one-shot
-      // `?roomid=`/`?launch=` session params let it re-enter / auto-launch a
-      // session. It brings its own Scaffold + close affordance (a back-arrow toward
-      // the course, or an X to the map — see `activity_sessions_start_view.dart`),
+      // session room exists (#7385). Its identity AND session bindings (bound
+      // room, launch) ride the token's structured param (ActivityToken, read
+      // via activityInfoFor); the parent course rides the `?c=` context. It
+      // brings its own Scaffold + close affordance (a back-arrow toward the
+      // course, or an X to the map — see `activity_sessions_start_view.dart`),
       // so PanelCard just supplies the floating chrome like every other panel.
       'activity' => () {
-        final activityId = token.param;
-        if (activityId == null || activityId.isEmpty) {
-          return const SizedBox.shrink();
-        }
-        final roomId = currentUri.queryParameters['roomid'];
+        final info = activityInfoFor(currentUri);
+        if (info == null) return const SizedBox.shrink();
         return ActivityDetailPanel(
-          activityId: activityId,
+          activityId: info.id,
           parentSpaceId: activeSpaceIdFor(currentUri),
-          roomId: roomId == null ? null : fullRoomId(roomId),
-          launch: currentUri.queryParameters['launch'] == 'true',
+          roomId: info.roomId,
+          launch: info.launch,
         );
       }(),
       'coursepage' => () {

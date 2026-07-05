@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
@@ -228,9 +229,9 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'m', 'left'});
+    WorkspaceQuery.removeKeys(parts, {'c', 'm', 'left'});
     final query = <String>[
-      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
       ...parts,
     ];
@@ -278,23 +279,23 @@ abstract class WorkspaceNav {
   static String openCoursePageFor(Uri current, String spaceId, String page) =>
       openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
 
-  /// Open an in-course activity as the immersive `left=activity:<id>` panel over
-  /// the course-scoped map — the token-native producer for "open this activity in
-  /// its course". Sets the `?m=course:<spaceId>` scope and seats the activity as
-  /// the SOLE left token (no chat list / room / course card beside it): an
-  /// activity is an immersive task that claims the single live view — its registry
-  /// `liveView` sibling group drops any open `room`/`session`, and starting the
-  /// session (which opens a `room` token) drops the activity in turn. The
-  /// surviving `?m=course:` scope keeps the plan's close a back-arrow that reopens
-  /// the card. [launch] skips the lobby straight to role selection; [roomId]
-  /// reopens/rejoins a specific session room; [autoplay] autostarts the plan's
-  /// hero media (muted, block 0) — all three ride as one-shot query params the
-  /// panel reads.
+  /// Open an in-course activity as the immersive `left=activity:` panel over
+  /// the course-scoped map — the token-native producer for "open this activity
+  /// in its course". Sets the `?c=<spaceId>` course context and seats the
+  /// activity as the SOLE left token (no chat list / room / course card beside
+  /// it): an activity is an immersive task that claims the single live view —
+  /// its registry `liveView` sibling group drops any open `room`/`session`, and
+  /// starting the session (which opens a `room` token) drops the activity in
+  /// turn. The surviving context keeps the plan's close a back-arrow that
+  /// reopens the card. [launch] skips the lobby straight to role selection;
+  /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
+  /// the plan's hero media (muted, block 0) — all three ride as fields of the
+  /// activity token's param ([ActivityToken]), never as loose query params.
   ///
-  /// Inbound `/courses/:id?activity=` external links and the standalone `/<uuid>`
-  /// link map to this same token form through `legacy_redirects`. The clean-left
-  /// seating also fixes #7267 (the legacy path producer re-opened `left=course`
-  /// beside the activity). See `routing.instructions.md`.
+  /// Inbound `/courses/:id?activity=` external links and the standalone
+  /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
+  /// clean-left seating also fixes #7267 (the legacy path producer re-opened
+  /// `left=course` beside the activity). See `routing.instructions.md`.
   static String openCourseActivity(
     String spaceId,
     String activityId, {
@@ -302,13 +303,91 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
   }) {
+    final token = PanelToken(
+      'activity',
+      ActivityToken.build(
+        activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay ? 0 : null,
+      ),
+    );
     final parts = <String>[
-      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
-      'left=${PanelToken('activity', activityId).encode()}',
-      if (roomId != null) 'roomid=${shortRoomId(roomId)}',
-      if (launch) 'launch=true',
-      if (autoplay) 'autoplay=0',
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
+      'left=${token.encode()}',
     ];
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// The loose activity params legacy inbound links may carry. Internal
+  /// navigation never emits them (they ride the activity token's fields — see
+  /// [ActivityToken]), so the helpers strip them wherever the token is
+  /// (re)seated or dropped.
+  static const Set<String> _legacyActivityParams = {
+    'activity',
+    'roomid',
+    'launch',
+    'autoplay',
+  };
+
+  /// Seat [activityId] as the SOLE left `activity:` token over the map — the
+  /// token-native "open this activity from here" (a map pin tap, a start-page
+  /// reopen). Session binding, launch, and autoplay ride the token's fields.
+  /// [clearContext] drops the course context (today's pin-tap behavior; the
+  /// scope-retention change is tracked on #7467) and [clearRight] clears the
+  /// right column (the pin's full-attention open).
+  static String openActivity(
+    Uri current,
+    String activityId, {
+    String? roomId,
+    bool launch = false,
+    int? autoplay,
+    bool clearContext = false,
+    bool clearRight = false,
+  }) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {
+      'left',
+      if (clearRight) 'right',
+      if (clearContext) ...const {'c', 'm'},
+      ..._legacyActivityParams,
+    });
+    final token = PanelToken(
+      'activity',
+      ActivityToken.build(
+        activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay,
+      ),
+    );
+    parts.add('left=${token.encode()}');
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// Drop the open `activity` token (and any legacy loose activity params),
+  /// keeping the rest of the workspace — notably the course context, which a
+  /// close never consumes (routing.instructions.md). [reopenCourseCard]
+  /// additionally reseats the `course` card over a surviving context (the
+  /// plan's back-arrow target). Emits the world path: activity overlays only
+  /// ever ride over the map.
+  static String dropActivityOverlay(
+    Uri current, {
+    bool reopenCourseCard = false,
+  }) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'left', ..._legacyActivityParams});
+    final left = parseOpenPanels(
+      current,
+    ).left.where((t) => t.type != 'activity').toList();
+    if (reopenCourseCard &&
+        activeSpaceIdFor(current) != null &&
+        left.every((t) => t.type != 'course')) {
+      left.insert(0, const PanelToken('course'));
+    }
+    if (left.isNotEmpty) {
+      parts.add('left=${left.map((t) => t.encode()).join(',')}');
+    }
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
@@ -336,13 +415,13 @@ abstract class WorkspaceNav {
       ?section,
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
-    // Carry the map filter forward: scope (`?m=`) is independent of panels and
-    // changes only when a new focus is chosen (a course) or reset by the World
-    // control — never by switching sections (see routing.instructions.md). A
-    // course-path destination resets it cleanly in the redirect, which drops any
-    // carried `m=` before setting the new course's.
+    // Carry the course context forward: context (`?c=`) is independent of
+    // panels and changes only when a new course is chosen or the World control
+    // resets it — never by switching sections (see routing.instructions.md). A
+    // course-path destination resets it cleanly in the redirect, which drops
+    // any carried context before setting the new course's.
     final parts = <String>[
-      ?_mapFilter(current),
+      ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
@@ -350,14 +429,18 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(path, parts);
   }
 
-  /// The raw `m=…` map-filter segment of [current]'s query, or null. The filter
-  /// is scope state, independent of which panels are open, so the section/close
-  /// helpers carry it forward verbatim. See `routing.instructions.md`.
-  static String? _mapFilter(Uri current) {
+  /// The raw course-context segment of [current]'s query — the canonical
+  /// `c=<spaceid>` param, or the legacy `m=…` spelling an un-normalized URL may
+  /// still carry — or null. Context is scope state, independent of which panels
+  /// are open, so the section/close helpers carry it forward verbatim. See
+  /// `routing.instructions.md`.
+  static String? _courseContext(Uri current) {
+    String? legacy;
     for (final p in current.query.split('&')) {
-      if (p == 'm' || p.startsWith('m=')) return p;
+      if (p.startsWith('c=')) return p;
+      if (p == 'm' || p.startsWith('m=')) legacy ??= p;
     }
-    return null;
+    return legacy;
   }
 
   /// Drop the whole `left` list (e.g. navigating to the world map, which has no
@@ -406,9 +489,9 @@ abstract class WorkspaceNav {
     // the course no longer unmounts/aborts the activity (#7111). The map filter
     // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
     final rest = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(rest, {'m', 'left', 'right'});
+    WorkspaceQuery.removeKeys(rest, {'c', 'm', 'left', 'right'});
     final parts = <String>[
-      ?_mapFilter(current),
+      ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',

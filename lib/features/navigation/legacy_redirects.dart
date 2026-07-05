@@ -1,5 +1,7 @@
+import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
@@ -14,6 +16,17 @@ abstract class LegacyRedirects {
   /// Map an incoming location to its world_v2 equivalent, or null.
   static String? resolve(Uri uri) {
     final segments = uri.pathSegments;
+
+    // Canonical-query normalization for token URLs: an inbound `/` URL may
+    // still carry the legacy `?m=course:` context spelling or the loose
+    // activity params (`activity=`/`roomid=`/`launch=`/`autoplay=`) from old
+    // links and browser history. Fold them into the canonical `?c=` context
+    // and the activity token's fields before anything renders — past this
+    // redirect no loose params exist. See `routing.instructions.md`.
+    if (segments.isEmpty) {
+      final normalized = _normalizeWorkspaceQuery(uri);
+      if (normalized != null) return normalized;
+    }
 
     // world_v2: the profile + settings tree is a right-column panel, not a
     // route. Rewrite any /settings or /profile location to the canonical
@@ -124,20 +137,37 @@ abstract class LegacyRedirects {
           : '/?right=${PanelToken('analytics', tab).encode()}';
     }
 
-    // world_v2: a standalone activity deep link `/<uuid>` (old map-pin bookmarks /
-    // push, and the in-app `PRoutes.activityStandalone`) opens the immersive
-    // activity panel as a `left=activity:<id>` token over the world map — mirroring
-    // how `/rooms/:roomid` → a `room` token. roomid/launch ride alongside as
-    // one-shot params the panel reads; any prior `left=`/`m=` is dropped (this IS
-    // the activity). Idempotent: the result has no UUID path segment, so it never
-    // re-fires. See `routing.instructions.md`.
+    // world_v2: a standalone activity deep link `/<uuid>` (old map-pin
+    // bookmarks / push, and the shareable standalone link) opens the immersive
+    // activity panel as a `left=activity:` token over the world map —
+    // mirroring how `/rooms/:roomid` → a `room` token. Loose roomid/launch/
+    // autoplay params fold into the token's fields ([ActivityToken]); any
+    // prior `left=`/context is dropped (this IS the activity). Idempotent: the
+    // result has no UUID path segment, so it never re-fires. See
+    // `routing.instructions.md`.
     if (segments.length == 1 && PRoutes.isWorldObjectId(segments.first)) {
       final kept = WorkspaceQuery.parts(uri.query);
-      WorkspaceQuery.removeKeys(kept, {'left', 'm'});
-      final parts = [
-        'left=${PanelToken('activity', segments.first).encode()}',
-        ...kept,
-      ];
+      final token = PanelToken(
+        'activity',
+        ActivityToken.build(
+          segments.first,
+          roomId: WorkspaceQuery.valueOf(uri.query, 'roomid'),
+          launch: WorkspaceQuery.valueOf(uri.query, 'launch') == 'true',
+          autoplay: int.tryParse(
+            WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
+          ),
+        ),
+      );
+      WorkspaceQuery.removeKeys(kept, {
+        'left',
+        'm',
+        'c',
+        'activity',
+        'roomid',
+        'launch',
+        'autoplay',
+      });
+      final parts = ['left=${token.encode()}', ...kept];
       return '${PRoutes.world}?${parts.join('&')}';
     }
 
@@ -227,10 +257,10 @@ abstract class LegacyRedirects {
   /// result has no `/rooms` path segment, so it never re-fires.
   static String _toRoomToken(Uri uri, String roomId, List<String> tail) {
     final param = tail.isEmpty ? roomId : '$roomId/${tail.join('/')}';
-    // Keep every prior query EXCEPT a previous left list / course filter (this
+    // Keep every prior query EXCEPT a previous left list / course context (this
     // navigation IS the room), and seat the new room token first.
     final kept = WorkspaceQuery.parts(uri.query);
-    WorkspaceQuery.removeKeys(kept, {'left', 'm'});
+    WorkspaceQuery.removeKeys(kept, {'left', 'm', 'c'});
     final parts = ['left=${PanelToken('room', param).encode()}', ...kept];
     return '${PRoutes.world}?${parts.join('&')}';
   }
@@ -245,25 +275,44 @@ abstract class LegacyRedirects {
     final parts = WorkspaceQuery.parts(uri.query);
 
     // An inbound activity overlay (`?activity=` — legacy external links and the
-    // retired nested route) is the immersive activity panel: seat it as the sole
-    // live-view left token (`left=activity:<id>`) over the course scope, NOT beside
-    // a course card. roomid/launch/autoplay ride alongside as one-shot params the
-    // panel reads. Mirrors `WorkspaceNav.openCourseActivity`.
+    // retired nested route) is the immersive activity panel: seat it as the
+    // sole live-view left token over the course context, NOT beside a course
+    // card, with the loose roomid/launch/autoplay params folded into the
+    // token's fields ([ActivityToken]). Mirrors `WorkspaceNav.openCourseActivity`.
     final activityId = WorkspaceQuery.valueOf(uri.query, 'activity');
     if (activityId != null && activityId.isNotEmpty) {
-      WorkspaceQuery.removeKeys(parts, {'left', 'm', 'activity'});
+      final token = PanelToken(
+        'activity',
+        ActivityToken.build(
+          activityId,
+          roomId: WorkspaceQuery.valueOf(uri.query, 'roomid'),
+          launch: WorkspaceQuery.valueOf(uri.query, 'launch') == 'true',
+          autoplay: int.tryParse(
+            WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
+          ),
+        ),
+      );
+      WorkspaceQuery.removeKeys(parts, {
+        'left',
+        'm',
+        'c',
+        'activity',
+        'roomid',
+        'launch',
+        'autoplay',
+      });
       final query = <String>[
-        'm=${PanelToken('course', space).encode()}',
-        'left=${PanelToken('activity', activityId).encode()}',
+        'c=${Uri.encodeComponent(space)}',
+        'left=${token.encode()}',
         ...parts,
       ];
       return '/?${query.join('&')}';
     }
 
     // Lift out any existing left list (keep tokens already there) and drop the
-    // prior `left=`/`m=` so the course filter + left can be rebuilt cleanly.
+    // prior `left=`/context so the course context + left can be rebuilt cleanly.
     final leftValue = WorkspaceQuery.valueOf(uri.query, 'left') ?? '';
-    WorkspaceQuery.removeKeys(parts, {'left', 'm'});
+    WorkspaceQuery.removeKeys(parts, {'left', 'm', 'c'});
 
     final left = leftValue.split(',').where((e) => e.isNotEmpty).toList();
     if (!left.any((e) => e == 'course' || e.startsWith('course:'))) {
@@ -276,7 +325,7 @@ abstract class LegacyRedirects {
     }
 
     final query = <String>[
-      'm=${PanelToken('course', space).encode()}',
+      'c=${Uri.encodeComponent(space)}',
       'left=${left.join(',')}',
       ...parts,
     ];
@@ -286,13 +335,13 @@ abstract class LegacyRedirects {
   /// Like [_toCourseWorkspace] but for a deep course-management PAGE: the course
   /// card stays the `course` master and the page opens beside it as a
   /// `coursepage` detail (`left=course,coursepage:<page>`), over the
-  /// `?m=course:<space>` filter — the same master/detail the in-app buttons
+  /// `?c=<space>` course context — the same master/detail the in-app buttons
   /// produce, so a deep link lands identically. Any prior `coursepage` token is
   /// replaced; other left tokens and query are kept. See `routing.instructions.md`.
   static String _toCourseWorkspaceWithPage(Uri uri, String space, String page) {
     final parts = WorkspaceQuery.parts(uri.query);
     final leftValue = WorkspaceQuery.valueOf(uri.query, 'left') ?? '';
-    WorkspaceQuery.removeKeys(parts, {'left', 'm'});
+    WorkspaceQuery.removeKeys(parts, {'left', 'm', 'c'});
 
     final left = leftValue
         .split(',')
@@ -307,11 +356,117 @@ abstract class LegacyRedirects {
     left.add(PanelToken('coursepage', page).encode());
 
     final query = <String>[
-      'm=${PanelToken('course', space).encode()}',
+      'c=${Uri.encodeComponent(space)}',
       'left=${left.join(',')}',
       ...parts,
     ];
     return '/?${query.join('&')}';
+  }
+
+  /// Fold a token URL's legacy query spellings into canonical form: the
+  /// `?m=course:<id>` context becomes `?c=<id>` (non-course `m=` filters, none
+  /// today, stay put), and loose activity params merge into the `activity:`
+  /// token's fields — token fields win where both are present. Returns null
+  /// when the query is already canonical, so this never loops.
+  static String? _normalizeWorkspaceQuery(Uri uri) {
+    if (uri.query.isEmpty) return null;
+    final parts = WorkspaceQuery.parts(uri.query);
+    var changed = false;
+
+    if (WorkspaceQuery.valueOf(uri.query, 'c') == null) {
+      final m = WorkspaceQuery.valueOf(uri.query, 'm');
+      if (m != null && m.isNotEmpty) {
+        String? course;
+        final rest = <String>[];
+        for (final element in splitTopLevelTokens(m)) {
+          final token = PanelToken.parse(element);
+          if (course == null &&
+              token != null &&
+              token.type == 'course' &&
+              (token.param?.isNotEmpty ?? false)) {
+            course = token.param;
+          } else if (element.isNotEmpty) {
+            rest.add(element);
+          }
+        }
+        if (course != null) {
+          WorkspaceQuery.removeKeys(parts, {'m'});
+          parts.insert(0, 'c=${Uri.encodeComponent(course)}');
+          if (rest.isNotEmpty) parts.add('m=${rest.join(',')}');
+          changed = true;
+        }
+      }
+    }
+
+    final query = parts.join('&');
+    final looseActivity = WorkspaceQuery.valueOf(query, 'activity');
+    final looseRoom = WorkspaceQuery.valueOf(query, 'roomid');
+    final looseLaunch = WorkspaceQuery.valueOf(query, 'launch');
+    final looseAutoplay = WorkspaceQuery.valueOf(query, 'autoplay');
+    if (looseActivity != null ||
+        looseRoom != null ||
+        looseLaunch != null ||
+        looseAutoplay != null) {
+      final left = parseOpenPanels(Uri(path: PRoutes.world, query: query)).left;
+      String? id;
+      String? roomId;
+      var launch = false;
+      int? autoplay;
+      for (final t in left) {
+        if (t.type == 'activity' && (t.param?.isNotEmpty ?? false)) {
+          final parsed = ActivityToken.parse(t.param!);
+          id = parsed.id;
+          roomId = parsed.roomId;
+          launch = parsed.launch;
+          autoplay = parsed.autoplay;
+          break;
+        }
+      }
+      id ??= (looseActivity?.isNotEmpty ?? false) ? looseActivity : null;
+      if (roomId == null && (looseRoom?.isNotEmpty ?? false)) {
+        roomId = looseRoom;
+      }
+      launch = launch || looseLaunch == 'true';
+      autoplay ??= int.tryParse(looseAutoplay ?? '');
+      WorkspaceQuery.removeKeys(parts, {
+        'left',
+        'activity',
+        'roomid',
+        'launch',
+        'autoplay',
+      });
+      if (id != null) {
+        final merged = PanelToken(
+          'activity',
+          ActivityToken.build(
+            id,
+            roomId: roomId,
+            launch: launch,
+            autoplay: autoplay,
+          ),
+        );
+        final leftOut = <PanelToken>[];
+        var seated = false;
+        for (final t in left) {
+          if (t.type == 'activity') {
+            if (!seated) {
+              leftOut.add(merged);
+              seated = true;
+            }
+          } else {
+            leftOut.add(t);
+          }
+        }
+        if (!seated) leftOut.insert(0, merged);
+        parts.add('left=${leftOut.map((t) => t.encode()).join(',')}');
+      } else if (left.isNotEmpty) {
+        parts.add('left=${left.map((t) => t.encode()).join(',')}');
+      }
+      changed = true;
+    }
+
+    if (!changed) return null;
+    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   /// Rewrite a legacy section root to the world path `/` with a `left=<type>`

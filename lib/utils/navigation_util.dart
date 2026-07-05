@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 
 /// world_v2: everything is a token over the world map (`/`). This is the single
@@ -119,33 +118,16 @@ class NavigationUtil {
     );
   }
 
-  /// Drop the activity-plan addressing from [uri] so a started/continued session
-  /// REPLACES the plan rather than opening beside it. The plan is addressed two
-  /// ways (see `route_facts.activityFor`): the in-course `?activity=` query
-  /// overlay AND the parentless standalone `/<uuid>` path (opened from a map
-  /// pin). So drop the overlay query params (`activity`/`roomid`/`launch`/
-  /// `autoplay`) AND collapse a standalone-activity path to the world path —
-  /// panels are tokens over `/`, so a `left=room` left on a `/<uuid>` path would
-  /// leave the plan (which renders from that path) standing beside the room. The
-  /// session room is the plan's sibling: they share the activity id, so one
-  /// replaces the other. Every other query part is kept **raw** so the
-  /// PanelToken-encoded `m=`/`left=` values aren't re-encoded. See
+  /// Drop the activity-plan addressing from [uri] so a started/continued
+  /// session REPLACES the plan rather than opening beside it: the `activity`
+  /// token (whose fields carry the session bindings) and any legacy loose
+  /// activity params are dropped, a standalone `/<uuid>` path collapses to the
+  /// world path, and the course context survives. Delegates to
+  /// [WorkspaceNav.dropActivityOverlay], the one activity-overlay sweeper. See
   /// `routing.instructions.md`.
   @visibleForTesting
-  static Uri stripActivityOverlay(Uri uri) {
-    const drop = {'activity', 'roomid', 'launch', 'autoplay'};
-    final segments = uri.pathSegments;
-    final standaloneActivity =
-        segments.length == 1 && PRoutes.isWorldObjectId(segments.first);
-    final path = standaloneActivity ? PRoutes.world : uri.path;
-    final kept = uri.query.isEmpty
-        ? const <String>[]
-        : uri.query
-              .split('&')
-              .where((p) => !drop.contains(p.split('=').first))
-              .toList();
-    return uri.replace(path: path, query: kept.isEmpty ? '' : kept.join('&'));
-  }
+  static Uri stripActivityOverlay(Uri uri) =>
+      Uri.parse(WorkspaceNav.dropActivityOverlay(uri));
 
   /// Append [queryParams] to an already-built token location (which may already
   /// carry a `?left=`/`?m=` query), choosing `?` or `&` as needed.

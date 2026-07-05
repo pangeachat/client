@@ -8,7 +8,6 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
@@ -79,36 +78,14 @@ class ActivitySessionStartView extends StatelessWidget {
         final embedded = parseOpenPanels(
           uri,
         ).left.any((t) => t.type == 'activity');
-        final courseScoped =
-            uri.queryParameters['m']?.startsWith('course:') ?? false;
+        final courseScoped = activeSpaceIdFor(uri) != null;
 
-        // Drop the `left=activity:` token + its one-shot session params, keeping
-        // `?m=` and the rest of the query verbatim — rebuilt from the RAW query so
-        // the `?m=course:` filter isn't re-encoded (`uri.replace(queryParameters:)`
-        // turns `:`→`%3A`, which the raw-query parser can't read, de-scoping the
-        // map and orphan-dropping any reopened card). [reopenCard] additionally
-        // restores `left=course` over the surviving scope (the parent card,
-        // reconstructed from the scope).
-        String overlayDropped({required bool reopenCard}) {
-          final parts = WorkspaceQuery.parts(uri.query);
-          WorkspaceQuery.removeKeys(parts, {
-            'roomid',
-            'launch',
-            'autoplay',
-            'left',
-          });
-          final scoped = parts.any((p) => p.startsWith('m=course:'));
-          final left = parseOpenPanels(
-            uri,
-          ).left.where((t) => t.type != 'activity').toList();
-          if (reopenCard && scoped && left.every((t) => t.type != 'course')) {
-            left.insert(0, const PanelToken('course'));
-          }
-          if (left.isNotEmpty) {
-            parts.add('left=${left.map((t) => t.encode()).join(',')}');
-          }
-          return WorkspaceQuery.location('/', parts);
-        }
+        // Drop the `left=activity:` token (and any legacy loose activity
+        // params) via the one shared sweeper, keeping the course context and
+        // the rest of the query. [reopenCard] additionally restores
+        // `left=course` over the surviving context (the parent card).
+        String overlayDropped({required bool reopenCard}) =>
+            WorkspaceNav.dropActivityOverlay(uri, reopenCourseCard: reopenCard);
 
         return Scaffold(
           appBar: AppBar(

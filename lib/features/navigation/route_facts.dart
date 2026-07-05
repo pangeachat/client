@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -178,12 +179,19 @@ List<PanelToken> mapFiltersFor(Uri uri) {
   return tokens;
 }
 
-/// The active course space id (the `course:<spaceid>` map filter), else null.
-/// world_v2: a course is a map filter (`?m=course:<id>`) over the persistent
-/// map, independent of the panel tokens — *not* a `/courses/:spaceid` route.
-/// URLs carry a bare localpart; re-attach the home server_name for callers that
-/// hit the Matrix client. See `routing.instructions.md`.
+/// The active course space id — the workspace's course context — else null.
+/// Canonical form is the `?c=<spaceid>` param (a bare localpart), one value
+/// read by the map (scope) and the course-family panels (identity) alike,
+/// independent of the panel tokens. The legacy `?m=course:<id>` map-filter
+/// spelling is accepted inbound (`LegacyRedirects` normalizes it to `c=`
+/// before render). Re-attaches the home server_name for callers that hit the
+/// Matrix client. See `routing.instructions.md`.
 String? activeSpaceIdFor(Uri uri) {
+  for (final part in uri.query.split('&')) {
+    if (part.startsWith('c=') && part.length > 2) {
+      return fullRoomId(Uri.decodeComponent(part.substring(2)));
+    }
+  }
   for (final filter in mapFiltersFor(uri)) {
     if (filter.type == 'course' && (filter.param?.isNotEmpty ?? false)) {
       return fullRoomId(filter.param!);
@@ -213,29 +221,55 @@ String? activeRoomIdFor(GoRouterState state) {
   return activeRoomIdFromPanels(state.uri);
 }
 
-/// The activity an open route addresses. world_v2 canonical: a `left=activity:`
-/// panel token whose param is the activity id. Legacy inbound forms — the
-/// in-course `?activity=` overlay and the standalone `/:activityId` path — are
-/// read as a fallback so an un-rewritten deep link still resolves until
-/// `LegacyRedirects` rewrites it to the token. Carries the optional session
-/// `roomid` and `launch` flag (one-shot query params the open carries) for
-/// re-entering a session.
-({String id, String? roomId, bool launch})? activityFor(GoRouterState state) {
-  final uri = state.uri;
-  String? id;
+/// The activity an open URI addresses. world_v2 canonical: a `left=activity:`
+/// panel token whose structured param carries the id plus optional session
+/// bindings — the bound room, launch, autoplay ([ActivityToken]). Legacy
+/// inbound forms — the loose `?activity=`/`?roomid=`/`?launch=`/`?autoplay=`
+/// params — are read as a fallback so an un-normalized deep link still
+/// resolves until `LegacyRedirects` folds it into the token.
+({String id, String? roomId, bool launch, int? autoplay})? activityInfoFor(
+  Uri uri,
+) {
+  final loose = uri.queryParameters;
+  final looseRoom = loose['roomid'];
   for (final token in parseOpenPanels(uri).left) {
     if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
-      id = token.param;
-      break;
+      final parsed = ActivityToken.parse(token.param!);
+      return (
+        id: parsed.id,
+        roomId:
+            parsed.roomId ?? (looseRoom == null ? null : fullRoomId(looseRoom)),
+        launch: parsed.launch || loose['launch'] == 'true',
+        autoplay: parsed.autoplay ?? int.tryParse(loose['autoplay'] ?? ''),
+      );
     }
   }
-  id ??= uri.queryParameters['activity'] ?? state.pathParameters['activityId'];
+  final id = loose['activity'];
   if (id == null || id.isEmpty) return null;
-  final roomId = uri.queryParameters['roomid'];
+  return (
+    id: id,
+    roomId: looseRoom == null ? null : fullRoomId(looseRoom),
+    launch: loose['launch'] == 'true',
+    autoplay: int.tryParse(loose['autoplay'] ?? ''),
+  );
+}
+
+/// [activityInfoFor] plus the standalone `/:activityId` legacy path fallback,
+/// which only a [GoRouterState] can resolve.
+({String id, String? roomId, bool launch, int? autoplay})? activityFor(
+  GoRouterState state,
+) {
+  final fromUri = activityInfoFor(state.uri);
+  if (fromUri != null) return fromUri;
+  final id = state.pathParameters['activityId'];
+  if (id == null || id.isEmpty) return null;
+  final loose = state.uri.queryParameters;
+  final roomId = loose['roomid'];
   return (
     id: id,
     roomId: roomId == null ? null : fullRoomId(roomId),
-    launch: uri.queryParameters['launch'] == 'true',
+    launch: loose['launch'] == 'true',
+    autoplay: int.tryParse(loose['autoplay'] ?? ''),
   );
 }
 
