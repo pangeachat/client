@@ -103,10 +103,15 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
         // Background: the inline player while playing, else the poster (with a
         // play badge when the lead block is a video/YouTube clip). The player
         // carries its own close control, so nothing is stacked above it here.
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
+        //
+        // Non-positioned, so it anchors the Stack's height at [_bgHeight] in
+        // every state. The hero sits in a scroll view (unbounded height), so the
+        // Stack sizes to its non-positioned children. While playing the overlays
+        // are removed and the role cards were the only other non-positioned
+        // child; without this anchor the Stack would collapse to zero, unsizing
+        // the player and leaving an empty scroll gap below the video (#7490).
+        SizedBox(
+          width: double.infinity,
           height: _bgHeight,
           child: LayoutBuilder(
             builder: (context, constraints) =>
