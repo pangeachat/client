@@ -27,7 +27,7 @@ When a session counts as "ended" is the org doc's call. The client's part is fir
 
 ## Two ways in
 
-An activity opens one of two ways: as an overlay over the world map (when the learner is inside its course) or from its own shareable link (when they reach it directly). Both open the same activity surface — a side panel on desktop, a bottom sheet on mobile. A link can also ask to skip the lobby straight to role selection, or to reopen a specific in-progress session. The exact URL shapes are the cross-repo [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md) contract; this doc only relies on them.
+An activity opens one of two ways: as an overlay over the world map (when the learner is inside its course) or from its own shareable link (when they reach it directly). Both open the same activity surface — a side panel beside the map on a wide screen, a half-open bottom sheet on narrow with the camera settled on its map location (the Google Maps target UX), swipe-expandable to the full plan; see [routing.instructions.md](routing.instructions.md). A link can also ask to skip the lobby straight to role selection, or to reopen a specific in-progress session. The exact URL shapes are the cross-repo [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md) contract; this doc only relies on them.
 
 ## Media is a carousel
 

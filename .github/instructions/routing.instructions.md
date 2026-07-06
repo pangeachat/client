@@ -381,8 +381,8 @@ others — though no surface needs that today.
 ### Single-column (narrow and mobile) mode
 
 **Single-column mode is the floor**, not a separate layout: below the two-column
-breakpoint (narrow windows; phones always) the chrome swaps — the side rail
-becomes bottom navigation — and only one panel shows: the
+breakpoint (narrow windows; phones always) the chrome swaps — see the mobile
+chrome below — and only one panel shows: the
 **most-recently-opened** one, so opening a panel always brings it forward.
 Recency is ephemeral view state, not part of the shareable URL; on a cold link
 or a refresh the shown panel falls back to the active **leaf** of the tree (a
@@ -392,20 +392,40 @@ or analytics panel. The other panels stay in the URL, reopened from the chrome,
 so nothing is lost — just not drawn at once. Every master/detail flow is already
 folded here: one panel, navigated with a back arrow.
 
-**Map content folds to a bottom sheet on a narrow screen.** A surface that is
-*map content* — a course, an activity plan, or the add-course flow — renders,
-when it is the focused narrow surface, as a draggable bottom sheet over the
-scoped map rather than a full-screen page (the Google Maps "map + sheet"
-pattern), so the map stays visible above it. Dragging the sheet up reveals the
-full content. On a wide screen the same content is a bounded panel beside the
-map.
+**The mobile chrome is substantially different from web.** The side rail becomes
+a **floating bottom nav widget** (the expandable rounded container in
+[Single-column bottom nav](#single-column-bottom-nav) below), and the cluster
+becomes a **horizontal analytics bar** pinned to the top of the safe area
+([Single-column analytics bar](#single-column-analytics-bar)). A **search bar**
+floats above the nav widget with map filters above it
+([Single-column search bar](#single-column-search-bar)). Analytics and Profile
+are reached from the top bar, not the bottom nav. Further-nested surfaces — a
+live chat, including a launched activity session — open **full-screen**,
+covering the bottom widget: a rounded-corner card with a small inset of map
+visible behind it, so the world never fully disappears. All chrome respects the
+device safe area and does not intrude into the system status bar.
 
-The sheet remembers its expanded/peek position **per course** (or per standalone
-activity): opening a chat over the sheet tears it down, and closing that chat
-reopens it at the size the learner left *that* course at, while a different
-course still opens at peek. The memory is scoped to the content, not global, so
-one course's expanded sheet never dictates the next course's opening size
-(#7332).
+The mobile chrome changes how the workspace is *drawn*, never what it *is*: the
+URL grammar, the tokens, and the navigation helpers are identical across form
+factors. Each mobile surface below states which of its states live in the URL
+and which are ephemeral view state.
+
+**A course or an activity plan rides inside the nav widget on a narrow
+screen.** Both render in the widget's expandable cavity over the scoped map
+(the Google Maps "map + sheet" pattern, with the rail icons anchored beneath),
+not as a separate sheet or a full-screen page — dragging the widget up reveals
+the full content. A **course card** opens at the collapsed peek, the scoped map
+leading; an **activity plan** opens at **half height with the camera settled on
+its pin**, so the learner sees where the activity lives while reading it —
+swipe up for the full plan. On a wide screen the same content is a bounded
+panel beside the map. Only the *launched session* — a live chat — is a
+full-screen surface (see *Full-screen surfaces* below).
+
+The widget remembers its height **per course** (and per activity): opening a
+chat over it tears it down, and closing that chat reopens it at the size the
+learner left *that* course at, while a different course still opens at the
+collapsed peek. The memory is scoped to the content, not global, so one
+course's expanded widget never dictates the next course's opening size (#7332).
 
 **Tapping a map pin promotes it; there is no preview popup.** Tapping a small or
 mid pin expands it to its **large card in place** (over the map, the bottom nav
@@ -413,12 +433,157 @@ still showing); tapping a large card opens the activity's **plan page**. Tapping
 the empty map collapses a promoted card. The large-card design lives in
 [world-map.instructions.md](world-map.instructions.md).
 
-**The narrow bottom nav is only the section switcher** — World, Chats, and the
-course switcher (Analytics and Profile are reached from the cluster, not here).
-It shows only at a section root: the bare map, the chat list, or the courses
-list. A focused detail hides it, and a bottom sheet (a course, an activity plan)
-replaces it. The bar is present only when you are choosing *where* to go, never
-while you are *in* something.
+### Single-column bottom nav
+[Mobile_UI_component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-42905&t=NJSsG23tsR9Kdwlz-0)
+
+In single-column mode the side rail is replaced by a **floating rounded-corner nav
+widget** pinned to the bottom of the safe area. The entire structure — rail and
+expandable content — lives inside one rounded-corner box (styled similarly to the
+web rail, but horizontal and contained; think Instagram's bottom bar but with an
+expandable cavity above it).
+
+**Collapsed state (rail only).** The widget shows only the 4-item nav rail. Items
+are, left to right: **World**, **Chats**, **Courses**, and a **course shortcut**.
+The course shortcut resolves contextually: the `+` add-course button when no
+courses are joined, the single course avatar when exactly one course is joined, or
+the most-recently-opened/tapped course otherwise. This mirrors the web rail's
+order and function. The most-recent choice is device-local view state, never part
+of the URL; the other joined courses are reached through the Courses list.
+
+**Expanded to half-height.** Tapping a rail item is the same navigation as the
+web rail — it replaces the open left panels with that section's token
+(`left=chats`, the Courses hub, the course card under `?c=`) — and expands the
+widget upward to roughly half the screen, filling the upper portion of the
+rounded box with that section's content. The 4 rail icons remain anchored at the
+bottom of the widget at all heights. Content inside the expanded area is
+**scrollable**.
+
+**The URL carries the panel, not the geometry.** The widget's height — collapsed,
+half, full — is ephemeral view state, exactly like fold recency above: a cold
+link or a refresh with an open **section** token (the chat list, the Courses
+hub) or an **activity plan** draws it expanded at half height (the leaf rule);
+a **course card** draws at its remembered height — the collapsed peek by
+default (see the per-course memory above), so the scoped map leads. The
+collapsed rail over the bare map is just `/`. A shared URL never encodes how
+far someone had dragged a sheet.
+
+**Expanded to full height.** A **drag handle** at the top of the expanded content
+lets the user pull the widget to full height: it grows until the search bar
+riding above it sits immediately below the analytics bar — the rail icons, the
+search bar, and the analytics bar all stay visible and tappable at maximum
+extent. The widget does not grow past that bound regardless of how much content
+it contains. The handle is also a labeled button — a tap toggles half ↔ full —
+so the resize is reachable without a drag gesture (keyboard / switch access;
+the #7128 pattern).
+
+**Collapsing is not closing.** Tapping outside the widget or tapping the
+already-active rail item collapses it back to the rail-only state — ephemeral:
+the panel tokens stay in the URL, the rail highlight stays put, and tapping the
+item again re-expands what was open (the single-column rule above — panels stay
+in the URL, just not drawn). The **X** in the expanded cavity's header is the
+panel's real close: it drops the token, exactly like the same panel's X on web.
+Navigating into a full-screen surface also collapses the widget.
+
+**System back follows the workspace history.** The Android / browser back button
+undoes the last token navigation — closing what was opened, restoring what was
+closed (see [History follows the workspace](#history-follows-the-workspace)).
+The ephemeral expand/collapse of the widget is never a history entry.
+
+**Full-screen surfaces.** A live chat room — including a launched activity
+session — opens full-screen, covering the nav widget: a rounded-corner card
+with a small inset of map visible behind it. The nav widget is not accessible
+while one of these surfaces is focused. (The activity *plan* is not one of
+these — it rides the cavity at half height, its pin visible above.)
+
+**The 4 rail items, opened (Figma):**
+- [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
+- [Chat list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61038&t=NJSsG23tsR9Kdwlz-0)
+- [Courses list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61048&t=NJSsG23tsR9Kdwlz-0)
+- [Active course](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61069&t=NJSsG23tsR9Kdwlz-0)
+
+### Single-column analytics bar
+[Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-94063&t=NJSsG23tsR9Kdwlz-0)
+
+In single-column mode the cluster's vertical powerups column becomes a
+**horizontal analytics bar** pinned to the top of the safe area. Layout
+differences from the web cluster:
+
+- **Level badge** moves to the left end of the bar.
+- **Avatar** sits to the right of the bar, in the same spot as web.
+- **Flag** sits below the avatar, slightly smaller than on web and with less
+  spacing.
+- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in the
+  bar.
+
+**Collapsed state.** In full screens (a chat, an activity start/join), the
+analytics bar collapses into a single avatar circle wearing the XP ring, the
+level badge, and the L2 flag. A tap on the collapsed avatar temporarily expands
+the full bar for approximately 3 seconds — long enough to tap a tracker or open
+settings — then auto-collapses if nothing further is tapped. The timer never
+fires while the bar holds keyboard or assistive-technology focus: screen-reader
+and switch users collapse it by tapping outside (or the avatar again), not by
+timeout (WCAG 2.2.1 — see
+[accessibility.instructions.md](accessibility.instructions.md)).
+[Collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)
+
+**Expanded state.** Tapping a bar element opens the same right-column tokens as
+the web cluster (`right=analytics:vocab`, `right=settings`, the level tab, the
+flag's learning-settings shortcut) — the mobile panel is the single-column
+rendering of the right column, so a shared or refreshed URL restores it like any
+other panel. It fills the width (minus the floating-chrome margins) on every
+single-column screen, per the Figma frames — no fixed width cap; if a large
+tablet stretches it awkwardly, bound it then. Its leading control follows the
+[close-affordance rule](#closing-a-panel-x-or-back-arrow) and sits at the top of
+the screen **in line with the analytics bar** (chrome, not panel content): an
+**X** on a summary (dropping the token), a back arrow once a page is pushed
+(Security → a leaf). Each expanded panel carries its **own search bar** directly
+below the analytics bar, scoped to its content — Search Vocab / Grammar /
+Activities / Settings, per the Figma states. The panel content expands upward
+from the bottom, covering the bottom nav widget completely — the nav rail is
+not accessible while an analytics or settings panel is open, even when there is
+not enough content to physically reach the nav widget. The analytics bar itself
+remains visible at the top throughout. This is the key behavioral distinction
+from the bottom nav's own expanded state, in which the rail icons always remain
+visible. The settings panel renders the **existing settings surface** in this
+chrome; the reorganized settings content some frames show (inline language /
+CEFR pickers) is a separate design effort, not part of the chrome.
+[Analytics section](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13485-90933&t=NJSsG23tsR9Kdwlz-0)
+[Wider tablet analytics](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13377-63983&t=NJSsG23tsR9Kdwlz-0)
+
+
+### Single-column search bar
+
+In single-column mode the search bar moves from its top-left web position to a
+**floating bar pinned above the bottom nav widget**, approximately 8px above the
+rounded nav container. It sits outside the rounded nav box and **rides upward as
+the widget expands**, maintaining that gap; at the widget's full height it sits
+immediately below the analytics bar (the widget's growth bound is defined so the
+bar never overlaps the avatar or analytics bar). **Map filters**, when active,
+appear above the search bar (rather than below) and ride and minimize with it.
+
+**The bar searches what is open.** Over the bare map it is the activity search
+("Search Pangea"); with a section expanded in the widget it re-targets to that
+section's content — the chat list ("Search All chats"), the courses list
+("Search Courses") — per the Figma states. One persistent bar, contextual
+scope: on narrow the bar **subsumes** a section's own search field (the chat
+list's inline search hides; the floating bar drives it), so two search fields
+never show at once. An expanded section always wins over the course-scoped
+minimize below — the bar minimizes only over the bare scoped map.
+
+**Default (visible).** The search bar is visible above the nav widget at all
+section roots while the map is not being actively scrolled.
+[Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560&t=NJSsG23tsR9Kdwlz-0)
+
+**Scroll / course-scoped minimized.** When the user begins scrolling the map with
+the nav widget collapsed, or while the workspace is course-scoped (`?c=` set),
+the search bar and its active filters **minimize to a compact search icon
+button** pinned to the left side just above the nav rail. Tapping it restores
+the full bar.
+[Minimized component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562&t=NJSsG23tsR9Kdwlz-0)
+
+**Keyboard behavior.** When the search bar is active and the software keyboard
+would push the bar out of view, the bar slides up to sit immediately above the
+keyboard rather than being obscured.
 
 ## The surfaces
 
@@ -444,7 +609,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code) |
-| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (a bottom sheet on mobile), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 
@@ -490,22 +655,27 @@ column.
 
 ### The navigation rail
 
-Pinned to the top-left of the map on web; the bottom nav on mobile. Top to
-bottom (or left to right): **World** (home), **Chats**, **Courses**, then one
-avatar per joined course. Selecting a section from it *replaces* the open
-left-column panels (see [Panels are independent](#panels-are-independent)).
+Pinned to the top-left of the map on web. Top to bottom: **World** (home),
+**Chats**, **Courses**, then one avatar per joined course. Selecting a section
+from it *replaces* the open left-column panels (see
+[Panels are independent](#panels-are-independent)). On a narrow screen the rail
+is replaced by the
+[single-column bottom nav](#single-column-bottom-nav) widget.
 
-**The selection highlight shows what you are looking at.** Open left panels
-win: the highlight is the section or course those panels belong to
-(`sectionFor`), so switching to Chats moves the highlight to Chats even while
-`?c=` persists. When the left column is empty, the highlight falls back to the
-backdrop — the course avatar under a course context (you are looking at that
-course's map), World otherwise. The context alone never out-highlights an open
-section.
+**The selection highlight shows what you are looking at** — on the web rail and
+the mobile widget's rail alike. Open left panels win: the highlight is the
+section or course those panels belong to (`sectionFor`), so switching to Chats
+moves the highlight to Chats even while `?c=` persists. When the left column is
+empty, the highlight falls back to the backdrop — the course avatar under a
+course context (you are looking at that course's map), World otherwise. The
+context alone never out-highlights an open section.
 
 ### The cluster is the right column's entry point
 
 A persistent cluster pinned to the top-right of the map opens the right column.
+On a narrow screen the cluster becomes the
+[single-column analytics bar](#single-column-analytics-bar) — same elements,
+same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
 **avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward
 the next level, resetting on level-up); a gold **powerups pill** of three

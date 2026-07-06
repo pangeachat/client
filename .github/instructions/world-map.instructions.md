@@ -88,11 +88,11 @@ We want to emphasize the learner's progress, so progressed activities (any stars
 
 ### Tap any pin to Focus
 
-**Tapping any pin** — dot, mid, or card — **focuses** the activity: its detail panel opens (a bottom sheet on a narrow screen) and the camera settles on it. There is **no tap-to-peek step**; one tap goes straight to focus on every width. A focus **survives zoom and pan**, cleared only by closing the panel, tapping the map, or tapping another pin (which focuses on the new item). How this rides the workspace and folds on a narrow screen is in [routing.instructions.md](routing.instructions.md).
+**Tapping any pin focuses the activity**: a dot or mid pin **promotes to its large card in place** (the focused state; the camera settles on it), and a tap on the large card opens the activity's **plan page** (a left panel beside the map on a wide screen; on narrow a half-open bottom sheet with the pin still visible above — the Google Maps UX). There is **no hover/preview popup** between those states on any width. A focus **survives zoom and pan**, cleared only by tapping the empty map, closing the plan, or tapping another pin (which focuses the new item). How this rides the workspace and folds on a narrow screen is in [routing.instructions.md](routing.instructions.md).
 
 It carries a distinct **focused marker** at whatever size it currently sits — the "which one is open" indicator, and the only one in the dots-only state.
 
-Two axes, kept separate: the **width-driven caps** (the breakpoint table's `N` and its large/mid/small split — [Priority matrix](#priority-matrix)) decide _how many_ of each tier show and the **relevance score** decides _which_ pins fill them, while **focus** is the lone deliberate user act on top. There is deliberately **no "selected"/peek state** — one tap goes straight to the focused panel — so the same mechanism (ranking + width caps + focus) covers a wide desktop and a panel-crowded or mobile layout alike.
+Two axes, kept separate: the **width-driven caps** (the breakpoint table's `N` and its large/mid/small split — [Priority matrix](#priority-matrix)) decide _how many_ of each tier show and the **relevance score** decides _which_ pins fill them, while **focus** is the lone deliberate user act on top. There is deliberately **no separate "selected"/peek state** — a tap promotes straight to the focused large card — so the same mechanism (ranking + width caps + focus) covers a wide desktop and a panel-crowded or mobile layout alike.
 
 ## Priority matrix
 
