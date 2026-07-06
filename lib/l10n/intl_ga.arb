@@ -3948,7 +3948,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-02 16:44:57.959492",
+    "@@last_modified": "2026-07-06 10:23:09.622036",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10236,6 +10236,46 @@
     },
     "customizePollLabel": "Saincheap an pobal",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Roghaí nascleanúna",
+    "joinedCourseListLabel": "Liosta cúrsaí a chuaigh isteach",
+    "analyticsAndSettingsLabel": "Roghaí anailíse agus socruithe",
+    "searchActivitiesLabel": "Cuardaigh gníomhaíochtaí ar an mapa",
+    "filteredActivitiesLabel": "Liosta gníomhaíochtaí scagtha",
+    "activityFilterButtonsLabel": "Cnaipí scagtha teanga, deacrachta, agus dul chun cinn",
+    "mapZoomLabel": "Rialuithe greamaithe ar an mapa",
+    "activityMapLabel": "Mapa gníomhaíochta",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

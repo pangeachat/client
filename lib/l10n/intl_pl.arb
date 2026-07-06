@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-02 16:44:51.605242",
+    "@@last_modified": "2026-07-06 10:22:43.705743",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10334,6 +10334,46 @@
     },
     "customizePollLabel": "Dostosuj ankietę",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opcje nawigacji",
+    "joinedCourseListLabel": "Lista dołączonych kursów",
+    "analyticsAndSettingsLabel": "Opcje analityki i ustawień",
+    "searchActivitiesLabel": "Szukaj aktywności na mapie",
+    "filteredActivitiesLabel": "Lista filtrowanych aktywności",
+    "activityFilterButtonsLabel": "Przyciski filtrów: język, trudność i postęp",
+    "mapZoomLabel": "Kontrole powiększenia mapy",
+    "activityMapLabel": "Mapa aktywności",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

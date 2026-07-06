@@ -3771,7 +3771,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-02 16:44:53.034033",
+    "@@last_modified": "2026-07-06 10:22:48.645312",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11274,6 +11274,46 @@
     },
     "customizePollLabel": "Προσαρμόστε την ψηφοφορία",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Επιλογές πλοήγησης",
+    "joinedCourseListLabel": "Λίστα συμμετοχής σε μαθήματα",
+    "analyticsAndSettingsLabel": "Επιλογές ανάλυσης και ρυθμίσεων",
+    "searchActivitiesLabel": "Αναζήτηση δραστηριοτήτων στον χάρτη",
+    "filteredActivitiesLabel": "Λίστα φιλτραρισμένων δραστηριοτήτων",
+    "activityFilterButtonsLabel": "Κουμπιά φίλτρου γλώσσας, δυσκολίας και προόδου",
+    "mapZoomLabel": "Έλεγχοι ζουμ χάρτη",
+    "activityMapLabel": "Χάρτης δραστηριοτήτων",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

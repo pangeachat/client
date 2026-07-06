@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-02 16:44:34.297074",
+    "@@last_modified": "2026-07-06 10:21:45.969410",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10225,6 +10225,46 @@
     },
     "customizePollLabel": "Налаштувати опитування",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Параметри навігації",
+    "joinedCourseListLabel": "Список приєднаних курсів",
+    "analyticsAndSettingsLabel": "Параметри аналітики та налаштувань",
+    "searchActivitiesLabel": "Пошук активностей на карті",
+    "filteredActivitiesLabel": "Список відфільтрованих активностей",
+    "activityFilterButtonsLabel": "Кнопки фільтрації за мовою, складністю та прогресом",
+    "mapZoomLabel": "Елементи керування масштабом карти",
+    "activityMapLabel": "Карта активностей",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

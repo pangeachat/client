@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:47.312783",
+    "@@last_modified": "2026-07-06 10:22:30.396902",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10341,6 +10341,46 @@
     },
     "customizePollLabel": "கோலத்தை தனிப்பயனாக்கவும்",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "வழிமுறை விருப்பங்கள்",
+    "joinedCourseListLabel": "சேர்ந்த பாடத்திட்ட பட்டியல்",
+    "analyticsAndSettingsLabel": "அணுகுமுறை மற்றும் அமைப்புகள் விருப்பங்கள்",
+    "searchActivitiesLabel": "வரைபடத்தில் செயல்பாடுகளை தேடு",
+    "filteredActivitiesLabel": "வடிகட்டப்பட்ட செயல்பாடு பட்டியல்",
+    "activityFilterButtonsLabel": "மொழி, சிரமம், மற்றும் முன்னேற்றம் வடிகட்டும் பொத்தான்கள்",
+    "mapZoomLabel": "வரைபட zoom கட்டுப்பாடுகள்",
+    "activityMapLabel": "செயல்பாடு வரைபடம்",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

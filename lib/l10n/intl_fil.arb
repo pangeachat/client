@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-02 16:44:41.472002",
+    "@@last_modified": "2026-07-06 10:22:12.877083",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11244,6 +11244,46 @@
     },
     "customizePollLabel": "I-customize ang poll",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Mga pagpipilian sa nabigasyon",
+    "joinedCourseListLabel": "Listahan ng mga nakasamang kurso",
+    "analyticsAndSettingsLabel": "Mga pagpipilian sa Analytics at Mga Setting",
+    "searchActivitiesLabel": "Maghanap ng mga aktibidad sa mapa",
+    "filteredActivitiesLabel": "Listahan ng mga na-filter na aktibidad",
+    "activityFilterButtonsLabel": "Mga pindutan ng filter para sa wika, kahirapan, at progreso",
+    "mapZoomLabel": "Mga kontrol sa pag-zoom ng mapa",
+    "activityMapLabel": "Mapa ng aktibidad",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

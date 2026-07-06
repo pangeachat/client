@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:21.008910",
+    "@@last_modified": "2026-07-06 10:21:16.989190",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11304,6 +11304,46 @@
     },
     "customizePollLabel": "התאם את הסקר",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "אפשרויות ניווט",
+    "joinedCourseListLabel": "רשימת קורסים מצורפים",
+    "analyticsAndSettingsLabel": "אפשרויות ניתוח והגדרות",
+    "searchActivitiesLabel": "חפש פעילויות על המפה",
+    "filteredActivitiesLabel": "רשימת פעילויות מסוננות",
+    "activityFilterButtonsLabel": "כפתורי סינון שפה, קושי והתקדמות",
+    "mapZoomLabel": "בקרות זום במפה",
+    "activityMapLabel": "מפת פעילויות",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

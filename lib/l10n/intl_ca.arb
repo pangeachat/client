@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:37.417086",
+    "@@last_modified": "2026-07-06 10:21:56.239100",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10376,6 +10376,46 @@
     },
     "customizePollLabel": "Personalitza l'enquesta",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opcions de navegació",
+    "joinedCourseListLabel": "Llista de cursos units",
+    "analyticsAndSettingsLabel": "Opcions d'analítica i configuració",
+    "searchActivitiesLabel": "Cerca d'activitats al mapa",
+    "filteredActivitiesLabel": "Llista d'activitats filtrades",
+    "activityFilterButtonsLabel": "Botons de filtre de llengua, dificultat i progrés",
+    "mapZoomLabel": "Controls de zoom del mapa",
+    "activityMapLabel": "Mapa d'activitats",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

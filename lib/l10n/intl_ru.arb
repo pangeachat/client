@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-02 16:44:55.813941",
+    "@@last_modified": "2026-07-06 10:22:58.341130",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11239,6 +11239,46 @@
     },
     "customizePollLabel": "Настроить опрос",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Опции навигации",
+    "joinedCourseListLabel": "Список присоединенных курсов",
+    "analyticsAndSettingsLabel": "Опции аналитики и настроек",
+    "searchActivitiesLabel": "Поиск активностей на карте",
+    "filteredActivitiesLabel": "Список отфильтрованных активностей",
+    "activityFilterButtonsLabel": "Кнопки фильтрации по языку, сложности и прогрессу",
+    "mapZoomLabel": "Элементы управления масштабом карты",
+    "activityMapLabel": "Карта активностей",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

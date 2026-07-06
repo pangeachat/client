@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-02 16:44:30.615689",
+    "@@last_modified": "2026-07-06 10:21:33.221459",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10222,6 +10222,46 @@
     },
     "customizePollLabel": "Kohanda küsitlust",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigeerimisvalikud",
+    "joinedCourseListLabel": "Liitunud kursuste loetelu",
+    "analyticsAndSettingsLabel": "Analüütika ja seadevalikute valikud",
+    "searchActivitiesLabel": "Otsi tegevusi kaardilt",
+    "filteredActivitiesLabel": "Filtreeritud tegevuste loetelu",
+    "activityFilterButtonsLabel": "Keele, raskuse ja edusamme filtreerimise nupud",
+    "mapZoomLabel": "Kaardi suumimise juhtnupud",
+    "activityMapLabel": "Tegevuste kaart",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

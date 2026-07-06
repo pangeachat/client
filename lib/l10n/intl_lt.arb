@@ -3245,7 +3245,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-02 16:44:45.676937",
+    "@@last_modified": "2026-07-06 10:22:24.618759",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11111,6 +11111,46 @@
     },
     "customizePollLabel": "Pritaikyti apklausą",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigacijos parinktys",
+    "joinedCourseListLabel": "Prisijungusių kursų sąrašas",
+    "analyticsAndSettingsLabel": "Analizės ir nustatymų parinktys",
+    "searchActivitiesLabel": "Ieškoti veiklų žemėlapyje",
+    "filteredActivitiesLabel": "Filtruotų veiklų sąrašas",
+    "activityFilterButtonsLabel": "Kalbos, sunkumo ir progreso filtravimo mygtukai",
+    "mapZoomLabel": "Žemėlapio priartinimo valdikliai",
+    "activityMapLabel": "Veiklų žemėlapis",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-02 16:44:31.538779",
+    "@@last_modified": "2026-07-06 10:21:36.052356",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10204,6 +10204,46 @@
     },
     "customizePollLabel": "Umfrage anpassen",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigationsoptionen",
+    "joinedCourseListLabel": "Beigetretene Kursliste",
+    "analyticsAndSettingsLabel": "Analytik- und Einstellungen-Optionen",
+    "searchActivitiesLabel": "Aktivitäten auf der Karte suchen",
+    "filteredActivitiesLabel": "Gefilterte Aktivitätenliste",
+    "activityFilterButtonsLabel": "Filtertasten für Sprache, Schwierigkeit und Fortschritt",
+    "mapZoomLabel": "Kartenzoom-Steuerelemente",
+    "activityMapLabel": "Aktivitätskarte",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

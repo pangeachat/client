@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-02 16:44:38.190616",
+    "@@last_modified": "2026-07-06 10:22:03.063747",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10944,6 +10944,46 @@
     },
     "customizePollLabel": "ปรับแต่งโพล",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "ตัวเลือกการนำทาง",
+    "joinedCourseListLabel": "รายการหลักสูตรที่เข้าร่วม",
+    "analyticsAndSettingsLabel": "ตัวเลือกการวิเคราะห์และการตั้งค่า",
+    "searchActivitiesLabel": "ค้นหากิจกรรมบนแผนที่",
+    "filteredActivitiesLabel": "รายการกิจกรรมที่กรอง",
+    "activityFilterButtonsLabel": "ปุ่มกรองภาษา ความยาก และความก้าวหน้า",
+    "mapZoomLabel": "การควบคุมการซูมแผนที่",
+    "activityMapLabel": "แผนที่กิจกรรม",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1477,7 +1477,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-02 16:44:15.052185",
+    "@@last_modified": "2026-07-06 10:20:54.804799",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11319,6 +11319,46 @@
     },
     "customizePollLabel": "Tilpas afstemning",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigationsmuligheder",
+    "joinedCourseListLabel": "Deltagede kursusliste",
+    "analyticsAndSettingsLabel": "Analyse- og indstillingsmuligheder",
+    "searchActivitiesLabel": "Søg efter aktiviteter på kortet",
+    "filteredActivitiesLabel": "Filtreret aktivitetsliste",
+    "activityFilterButtonsLabel": "Sprog-, sværhedsgrad- og fremskridtsfilterknapper",
+    "mapZoomLabel": "Kort zoomkontroller",
+    "activityMapLabel": "Aktivitetskort",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

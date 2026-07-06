@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:52.331653",
+    "@@last_modified": "2026-07-06 10:22:45.964072",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10812,6 +10812,46 @@
     },
     "customizePollLabel": "Anpassa omröstning",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigeringsalternativ",
+    "joinedCourseListLabel": "Lista över anslutna kurser",
+    "analyticsAndSettingsLabel": "Analys- och inställningsalternativ",
+    "searchActivitiesLabel": "Sök efter aktiviteter på kartan",
+    "filteredActivitiesLabel": "Filtrerad aktivitetslista",
+    "activityFilterButtonsLabel": "Språk-, svårighetsgrad- och progressionsfilterknappar",
+    "mapZoomLabel": "Kartzoomkontroller",
+    "activityMapLabel": "Aktivitetskarta",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

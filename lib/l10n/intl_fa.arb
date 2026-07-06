@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:50.895553",
+    "@@last_modified": "2026-07-06 10:22:41.664297",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10337,6 +10337,46 @@
     },
     "customizePollLabel": "سفارشی‌سازی نظرسنجی",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "گزینه‌های ناوبری",
+    "joinedCourseListLabel": "لیست دوره‌های پیوسته",
+    "analyticsAndSettingsLabel": "گزینه‌های تجزیه و تحلیل و تنظیمات",
+    "searchActivitiesLabel": "جستجوی فعالیت‌ها در نقشه",
+    "filteredActivitiesLabel": "لیست فعالیت‌های فیلتر شده",
+    "activityFilterButtonsLabel": "دکمه‌های فیلتر زبان، سختی و پیشرفت",
+    "mapZoomLabel": "کنترل‌های زوم نقشه",
+    "activityMapLabel": "نقشه فعالیت",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }
