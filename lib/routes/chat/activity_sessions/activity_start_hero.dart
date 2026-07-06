@@ -24,6 +24,13 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 ///
 /// A non-playable (image) lead, or an activity with no media, renders as before:
 /// the poster/placeholder with the cards over it and no play affordance.
+///
+/// Web note: the YouTube/video player is a platform view (a real DOM
+/// `<iframe>`/`<video>`). A Flutter layer composited above it still swallows
+/// native mouse events even when [IgnorePointer] excludes it from Flutter's own
+/// hit-test — so once faded, the overlays are removed from the tree entirely,
+/// and the close control is laid out in its own strip beside (never over) the
+/// player. Both keep the embed's own controls clickable. See #7477 follow-up.
 class ActivityStartHero extends StatefulWidget {
   final ActivitySessionStartState controller;
   final ActivitySessionStateController sessionController;
@@ -45,6 +52,12 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
   /// overlays fade out. The close control resets it back to the poster.
   bool _playing = false;
 
+  /// Whether the fading overlays (gradient, role cards, goals) are still in the
+  /// widget tree. They stay mounted through the fade-out, then leave entirely so
+  /// no Flutter layer is left composited over the player's iframe swallowing its
+  /// controls (see the class doc). Restored the moment playback is closed.
+  bool _overlaysMounted = true;
+
   static const _fadeDuration = Duration(milliseconds: 250);
   static const _bgHeight = 375.0;
 
@@ -53,14 +66,32 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
   ActivityPlanModel get _activity => widget.activity;
   ActivityMediaBlock? get _hero => _activity.visibleHeroBlock;
 
-  void _play() => setState(() => _playing = true);
-  void _stop() => setState(() => _playing = false);
+  void _play() => setState(() {
+    _playing = true;
+    _overlaysMounted = true; // kept for the fade-out, dropped by _onFadedOut
+  });
+
+  void _stop() => setState(() {
+    _playing = false;
+    _overlaysMounted = true; // bring the overlays back
+  });
+
+  /// Once the overlays have faded to nothing, unmount them. [IgnorePointer]
+  /// keeps them out of Flutter's hit-test, but on web an opacity-0 Flutter layer
+  /// left over the player's `<iframe>` still eats the browser's clicks — so the
+  /// video's own controls only become usable after this removes the layers.
+  void _onFadedOut() {
+    if (_playing && _overlaysMounted) {
+      setState(() => _overlaysMounted = false);
+    }
+  }
 
   /// Fades [child] out (and back) as [_playing] toggles, and stops it capturing
   /// taps while faded so the player underneath stays interactive.
   Widget _overlay(Widget child) => AnimatedOpacity(
     opacity: _playing ? 0.0 : 1.0,
     duration: _fadeDuration,
+    onEnd: _onFadedOut,
     child: IgnorePointer(ignoring: _playing, child: child),
   );
 
@@ -70,7 +101,8 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
     return Stack(
       children: [
         // Background: the inline player while playing, else the poster (with a
-        // play badge when the lead block is a video/YouTube clip).
+        // play badge when the lead block is a video/YouTube clip). The player
+        // carries its own close control, so nothing is stacked above it here.
         Positioned(
           top: 0,
           left: 0,
@@ -81,79 +113,69 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
                 _background(theme, constraints.maxWidth),
           ),
         ),
-        // Gradient bridge from the image into the page — an overlay, so it fades
-        // with the cards and doesn't tint the video or hide its controls.
-        Positioned.fill(
-          top: 250.0,
-          child: _overlay(
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.center,
-                  colors: [
-                    theme.colorScheme.surface.withAlpha(0),
-                    theme.colorScheme.surface,
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        if (_session.showRoleCards)
-          Padding(
-            padding: const EdgeInsets.only(top: 250.0),
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                constraints: const BoxConstraints(maxWidth: 600.0),
-                child: _overlay(
-                  Opacity(
-                    opacity: _session.roleCardOpacity,
-                    child: ActivityParticipantList(
-                      activity: _activity,
-                      room: _controller.activityRoom,
-                      assignedRoles: _controller.assignedRoles,
-                      course: _controller.courseParent,
-                      onTap: _session.selectRole,
-                      canSelect: _session.canSelectRole,
-                      isSelected: _session.isRoleSelected,
-                      isShimmering: _session.isRoleShimmering,
-                      showStarsCard: _session.showStarsCard,
-                      completedGoalsForRole: _session.completedGoalIdsForRole,
-                    ),
+        // The overlays float over the poster and fade out for playback. They are
+        // omitted (not merely transparent) while the player owns the hero.
+        if (_overlaysMounted) ...[
+          // Gradient bridge from the image into the page — an overlay, so it
+          // fades with the cards and doesn't tint the video or hide its
+          // controls.
+          Positioned.fill(
+            top: 250.0,
+            child: _overlay(
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.center,
+                    colors: [
+                      theme.colorScheme.surface.withAlpha(0),
+                      theme.colorScheme.surface,
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: _overlay(
-            ActivityGoalsDropdown(
-              goals: _session.selectedRoleGoals,
-              completedGoalIds: _session.selectedRoleCompletedGoalIds,
-              startCollapsed: _session.goalsStartCollapsed,
+          if (_session.showRoleCards)
+            Padding(
+              padding: const EdgeInsets.only(top: 250.0),
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  constraints: const BoxConstraints(maxWidth: 600.0),
+                  child: _overlay(
+                    Opacity(
+                      opacity: _session.roleCardOpacity,
+                      child: ActivityParticipantList(
+                        activity: _activity,
+                        room: _controller.activityRoom,
+                        assignedRoles: _controller.assignedRoles,
+                        course: _controller.courseParent,
+                        onTap: _session.selectRole,
+                        canSelect: _session.canSelectRole,
+                        isSelected: _session.isRoleSelected,
+                        isShimmering: _session.isRoleShimmering,
+                        showStarsCard: _session.showStarsCard,
+                        completedGoalsForRole: _session.completedGoalIdsForRole,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-        if (_playing)
           Positioned(
-            top: 8.0,
-            right: 8.0,
-            child: Material(
-              color: Colors.black54,
-              shape: const CircleBorder(),
-              clipBehavior: Clip.hardEdge,
-              child: IconButton(
-                tooltip: L10n.of(context).close,
-                icon: const Icon(Icons.close, color: Colors.white),
-                onPressed: _stop,
+            top: 0,
+            left: 0,
+            right: 0,
+            child: _overlay(
+              ActivityGoalsDropdown(
+                goals: _session.selectedRoleGoals,
+                completedGoalIds: _session.selectedRoleCompletedGoalIds,
+                startCollapsed: _session.goalsStartCollapsed,
               ),
             ),
           ),
+        ],
       ],
     );
   }
@@ -166,8 +188,25 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
           : ActivityVideoPlayer(url: hero.resolvedUrl ?? '', autoPlay: true);
       return ColoredBox(
         color: Colors.black,
-        child: Center(
-          child: AspectRatio(aspectRatio: 16 / 9, child: player),
+        child: Column(
+          children: [
+            // The close control sits in its own strip above the player, never
+            // over the iframe, so it stays clickable on web (a Flutter widget
+            // composited over a platform view doesn't receive DOM clicks).
+            Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: IconButton(
+                tooltip: L10n.of(context).close,
+                icon: const Icon(Icons.close, color: Colors.white),
+                onPressed: _stop,
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: AspectRatio(aspectRatio: 16 / 9, child: player),
+              ),
+            ),
+          ],
         ),
       );
     }
