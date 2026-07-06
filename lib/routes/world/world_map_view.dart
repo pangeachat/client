@@ -112,6 +112,11 @@ class WorldMapView extends StatefulWidget {
 }
 
 class _WorldMapViewState extends State<WorldMapView> {
+  /// Height of the narrow-mode bottom chrome (the floating nav rail + the
+  /// search bar riding above it, with their gaps) that on-map overlays must
+  /// clear (#7218). Update alongside the chrome if its heights change.
+  static const double _narrowBottomChromeInset = 150.0;
+
   /// Pins that have left the active set and are animating to scale 0.
   final Map<String, _PinSnapshot> _exiting = {};
 
@@ -544,7 +549,9 @@ class _WorldMapViewState extends State<WorldMapView> {
             // above it — otherwise it sits unreadable UNDER the floating rail
             // (#7218 on narrow).
             padding: EdgeInsets.only(
-              bottom: FluffyThemes.isColumnMode(context) ? 0.0 : 150.0,
+              bottom: FluffyThemes.isColumnMode(context)
+                  ? 0.0
+                  : _narrowBottomChromeInset,
             ),
             child: RichAttributionWidget(
               // #7218: bottom-LEFT so the attribution and its expand popup don't

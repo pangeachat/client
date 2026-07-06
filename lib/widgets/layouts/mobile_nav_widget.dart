@@ -447,22 +447,26 @@ class _CourseShortcutButton extends StatelessWidget {
     final theme = Theme.of(context);
     return Tooltip(
       message: label,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(99),
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.all(6.0),
-          decoration: selected
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(
-                    color: theme.colorScheme.primary,
-                    width: 2,
-                  ),
-                )
-              : null,
-          margin: const EdgeInsets.all(2.0),
-          child: icon ?? const Icon(Icons.add),
+      child: Semantics(
+        // Announce the active-course state — the border alone is visual-only.
+        selected: selected,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(99),
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(6.0),
+            decoration: selected
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(
+                      color: theme.colorScheme.primary,
+                      width: 2,
+                    ),
+                  )
+                : null,
+            margin: const EdgeInsets.all(2.0),
+            child: icon ?? const Icon(Icons.add),
+          ),
         ),
       ),
     );
