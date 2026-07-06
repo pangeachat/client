@@ -10168,7 +10168,6 @@
     "enableNotificationsTitle": "Ná bíodh caillte ar comhrá!",
     "enableNotificationsDesc": "Cuir cead do rabhadh do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
     "enableNotifications": "Cuir cead do rabhadh",
-    "noActivitiesFound": "Níl aon gníomhaíochtaí ar fáil don ábhar seo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10177,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

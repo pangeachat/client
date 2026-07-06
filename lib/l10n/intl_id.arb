@@ -9546,7 +9546,6 @@
     "enableNotificationsTitle": "Jangan lewatkan obrolan!",
     "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
     "enableNotifications": "Izinkan notifikasi",
-    "noActivitiesFound": "Tidak ada aktivitas yang tersedia untuk topik ini.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9556,10 +9555,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

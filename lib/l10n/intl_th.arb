@@ -10168,7 +10168,6 @@
     "enableNotificationsTitle": "ไม่พลาดการสนทนา!",
     "enableNotificationsDesc": "อนุญาตการแจ้งเตือนสำหรับ Pangea Chat และเชื่อมต่อกับเพื่อนที่พูดภาษาของคุณ!",
     "enableNotifications": "อนุญาตการแจ้งเตือน",
-    "noActivitiesFound": "ไม่มีกิจกรรมสำหรับหัวข้อนี้.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10177,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

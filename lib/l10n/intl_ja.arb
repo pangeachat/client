@@ -10317,7 +10317,6 @@
     "enableNotificationsTitle": "チャットを見逃さないで！",
     "enableNotificationsDesc": "Pangea Chatの通知を許可して、言語仲間とつながりましょう！",
     "enableNotifications": "通知を許可する",
-    "noActivitiesFound": "このトピックに利用可能なアクティビティはありません。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10327,10 +10326,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

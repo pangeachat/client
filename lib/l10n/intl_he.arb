@@ -10528,7 +10528,6 @@
     "enableNotificationsTitle": "אל תפספס שיחה לעולם!",
     "enableNotificationsDesc": "אפשר התראות עבור Pangea Chat והישאר מחובר עם חברי השפה שלך!",
     "enableNotifications": "אפשר התראות",
-    "noActivitiesFound": "אין פעילויות זמינות לנושא זה.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10538,10 +10537,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

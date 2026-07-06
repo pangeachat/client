@@ -10036,7 +10036,6 @@
     "enableNotificationsTitle": "Missa aldrig en chatt!",
     "enableNotificationsDesc": "Tillåt aviseringar för Pangea Chat och håll kontakten med dina språkkompisar!",
     "enableNotifications": "Tillåt aviseringar",
-    "noActivitiesFound": "Inga aktiviteter tillgängliga för detta ämne.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10046,10 +10045,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -10568,7 +10568,6 @@
     "enableNotificationsTitle": "Neniam maltrafu chaton!",
     "enableNotificationsDesc": "Permesu notifikojn por Pangea Chat kaj restu konektita kun viaj lingvaj amikoj!",
     "enableNotifications": "Permesu notifikojn",
-    "noActivitiesFound": "Neniuj aktivadoj disponeblas por ĉi tiu temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10578,10 +10577,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

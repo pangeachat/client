@@ -4827,7 +4827,6 @@
     "enableNotificationsTitle": "Never miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
-    "noActivitiesFound": "No activities available for this topic.",
     "numObjectives": "{count} objectives",
     "@numObjectives": {
         "type": "String",
@@ -5012,15 +5011,16 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Saved activities and stars", 
-    "customizePollLabel": "Customize poll", 
+    "starListLabel": "Saved activities and stars",
+    "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
     "analyticsAndSettingsLabel": "Analytics and Settings options",
     "searchActivitiesLabel": "Search for activities on map",
-    "filteredActivitiesLabel": "Filtered activity list", 
-    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
-    "mapZoomLabel": "Map zoom controls", 
-    "activityMapLabel": "Activity map", 
-    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
+    "filteredActivitiesLabel": "Filtered activity list",
+    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
+    "mapZoomLabel": "Map zoom controls",
+    "activityMapLabel": "Activity map",
+    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
+    "missingCourseOutline": "This course is no longer available, pick a new course for this space"
 }

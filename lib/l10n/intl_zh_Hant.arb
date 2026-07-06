@@ -9579,7 +9579,6 @@
     "enableNotificationsTitle": "永遠不會錯過聊天！",
     "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
     "enableNotifications": "允許通知",
-    "noActivitiesFound": "此主題沒有可用的活動。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9589,10 +9588,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -10543,7 +10543,6 @@
     "enableNotificationsTitle": "Gå ikke glip af en chat!",
     "enableNotificationsDesc": "Tillad notifikationer for Pangea Chat og forbliv forbundet med dine sprogvenner!",
     "enableNotifications": "Tillad notifikationer",
-    "noActivitiesFound": "Ingen aktiviteter tilgængelige for dette emne.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10553,10 +10552,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

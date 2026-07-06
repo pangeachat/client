@@ -9121,7 +9121,6 @@
     "enableNotificationsTitle": "Nek se miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
-    "noActivitiesFound": "No activities available for this topic.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9131,10 +9130,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

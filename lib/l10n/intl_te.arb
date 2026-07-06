@@ -10573,7 +10573,6 @@
     "enableNotificationsTitle": "చాట్‌ను ఎప్పుడూ మిస్ కాకండి!",
     "enableNotificationsDesc": "పాంజియా చాట్‌కు నోటిఫికేషన్లు అనుమతించండి మరియు మీ భాషా స్నేహితులతో కనెక్ట్‌లో ఉండండి!",
     "enableNotifications": "నోటిఫికేషన్లు అనుమతించండి",
-    "noActivitiesFound": "ఈ అంశానికి అందుబాటులో ఉన్న కార్యకలాపాలు లేవు.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10583,10 +10582,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

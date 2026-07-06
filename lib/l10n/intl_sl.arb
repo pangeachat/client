@@ -10565,7 +10565,6 @@
     "enableNotificationsTitle": "Nikoli ne zamudite pogovora!",
     "enableNotificationsDesc": "Dovolite obvestila za Pangea Chat in ostanite povezani s svojimi jezikovnimi prijatelji!",
     "enableNotifications": "Dovolite obvestila",
-    "noActivitiesFound": "Ni aktivnosti na voljo za to temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10575,10 +10574,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

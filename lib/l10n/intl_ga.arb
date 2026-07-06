@@ -9460,7 +9460,6 @@
     "enableNotificationsTitle": "Ná caill comhrá ar bith!",
     "enableNotificationsDesc": "Cuir cead do rabhadhanna do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
     "enableNotifications": "Cuir cead do rabhadhanna",
-    "noActivitiesFound": "Níl aon gníomhaíochtaí ar fáil don ábhar seo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9470,10 +9469,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

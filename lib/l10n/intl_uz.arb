@@ -9453,7 +9453,6 @@
     "enableNotificationsTitle": "Hech qachon suhbatni o'tkazib yubormang!",
     "enableNotificationsDesc": "Pangea Chat uchun bildirishnomalarni ruxsat bering va til do'stlaringiz bilan bog'laning!",
     "enableNotifications": "Bildirishnomalarni ruxsat berish",
-    "noActivitiesFound": "Ushbu mavzu uchun hech qanday faoliyat mavjud emas.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9463,10 +9462,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

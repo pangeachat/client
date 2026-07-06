@@ -9449,7 +9449,6 @@
     "enableNotificationsTitle": "Nekad nepalaid garām sarunu!",
     "enableNotificationsDesc": "Atļaut paziņojumus par Pangea Chat un palikt saistītam ar saviem valodas draugiem!",
     "enableNotifications": "Atļaut paziņojumus",
-    "noActivitiesFound": "Nav pieejamu aktivitāšu šai tēmai.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9458,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

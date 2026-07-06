@@ -9509,7 +9509,6 @@
     "enableNotificationsTitle": "Ikke gå glipp av en chat!",
     "enableNotificationsDesc": "Tillat varsler for Pangea Chat og hold kontakten med språkvennene dine!",
     "enableNotifications": "Tillat varsler",
-    "noActivitiesFound": "Ingen aktiviteter tilgjengelig for dette emnet.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9519,10 +9518,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

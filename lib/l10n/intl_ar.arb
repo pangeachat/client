@@ -9789,7 +9789,6 @@
     "enableNotificationsTitle": "لا تفوت أي محادثة!",
     "enableNotificationsDesc": "اسمح بالإشعارات لتطبيق Pangea Chat وابقَ على اتصال مع أصدقائك في اللغة!",
     "enableNotifications": "اسمح بالإشعارات",
-    "noActivitiesFound": "لا توجد أنشطة متاحة لهذا الموضوع.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9799,10 +9798,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

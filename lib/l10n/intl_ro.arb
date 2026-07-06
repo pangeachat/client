@@ -10274,7 +10274,6 @@
     "enableNotificationsTitle": "Nu rata niciun chat!",
     "enableNotificationsDesc": "Permite notificările pentru Pangea Chat și rămâi conectat cu prietenii tăi de limbă!",
     "enableNotifications": "Permite notificările",
-    "noActivitiesFound": "Nu sunt disponibile activități pentru acest subiect.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10284,10 +10283,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

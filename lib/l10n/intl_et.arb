@@ -9446,7 +9446,6 @@
     "enableNotificationsTitle": "Ära jäta vestlust vahele!",
     "enableNotificationsDesc": "Luba teavitused Pangea Chati jaoks ja püsige ühenduses oma keelekaaslastega!",
     "enableNotifications": "Luba teavitused",
-    "noActivitiesFound": "Selle teema jaoks pole tegevusi saadaval.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9456,10 +9455,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

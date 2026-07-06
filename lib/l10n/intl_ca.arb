@@ -9600,7 +9600,6 @@
     "enableNotificationsTitle": "No et perdis cap xat!",
     "enableNotificationsDesc": "Permet notificacions per a Pangea Chat i mantingues't connectat amb els teus companys d'idioma!",
     "enableNotifications": "Permet notificacions",
-    "noActivitiesFound": "No hi ha activitats disponibles per a aquest tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9610,10 +9609,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

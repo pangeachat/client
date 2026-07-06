@@ -10468,7 +10468,6 @@
     "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
     "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
     "enableNotifications": "Payagan ang mga notification",
-    "noActivitiesFound": "Walang mga aktibidad na available para sa paksang ito.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10478,10 +10477,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

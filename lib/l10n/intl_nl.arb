@@ -9449,7 +9449,6 @@
     "enableNotificationsTitle": "Mis nooit een chat!",
     "enableNotificationsDesc": "Sta meldingen toe voor Pangea Chat en blijf verbonden met je taalkameraadjes!",
     "enableNotifications": "Sta meldingen toe",
-    "noActivitiesFound": "Geen activiteiten beschikbaar voor dit onderwerp.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9458,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -10335,7 +10335,6 @@
     "enableNotificationsTitle": "Niekuomet nepraleiskite pokalbio!",
     "enableNotificationsDesc": "Leiskite pranešimus Pangea Chat ir likite susijungę su savo kalbos draugais!",
     "enableNotifications": "Leiskite pranešimus",
-    "noActivitiesFound": "Šiam temai nėra prieinamų veiklų.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10345,10 +10344,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -10168,7 +10168,6 @@
     "enableNotificationsTitle": "कभी भी चैट न चूकें!",
     "enableNotificationsDesc": "Pangea चैट के लिए सूचनाएँ अनुमति दें और अपने भाषा मित्रों के साथ जुड़े रहें!",
     "enableNotifications": "सूचनाएँ अनुमति दें",
-    "noActivitiesFound": "इस विषय के लिए कोई गतिविधियाँ उपलब्ध नहीं हैं।",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10177,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

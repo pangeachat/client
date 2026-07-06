@@ -10559,7 +10559,6 @@
     "enableNotificationsTitle": "Nekas neperduokite pokalbio!",
     "enableNotificationsDesc": "Leiskite pranešimus Pangea pokalbiui ir likite susijungę su savo kalbos draugais!",
     "enableNotifications": "Leiskite pranešimus",
-    "noActivitiesFound": "Nėra veiklų, susijusių su šia tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10569,10 +10568,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

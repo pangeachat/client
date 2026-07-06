@@ -9498,7 +9498,6 @@
     "enableNotificationsTitle": "Älä koskaan jää ilman keskustelua!",
     "enableNotificationsDesc": "Salli ilmoitukset Pangea Chatista ja pysy yhteydessä kielikavereihisi!",
     "enableNotifications": "Salli ilmoitukset",
-    "noActivitiesFound": "Tälle aiheelle ei ole saatavilla aktiviteetteja.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9508,10 +9507,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

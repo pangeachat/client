@@ -9780,7 +9780,6 @@
     "enableNotificationsTitle": "Sohbeti asla kaçırmayın!",
     "enableNotificationsDesc": "Pangea Sohbeti için bildirimlere izin verin ve dil arkadaşlarınızla bağlantıda kalın!",
     "enableNotifications": "Bildirimlere izin ver",
-    "noActivitiesFound": "Bu konu için mevcut etkinlik yok.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9790,10 +9789,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

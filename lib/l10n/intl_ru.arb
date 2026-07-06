@@ -10463,7 +10463,6 @@
     "enableNotificationsTitle": "Никогда не пропустите чат!",
     "enableNotificationsDesc": "Разрешите уведомления для Pangea Chat и оставайтесь на связи с вашими языковыми друзьями!",
     "enableNotifications": "Разрешить уведомления",
-    "noActivitiesFound": "Нет доступных мероприятий по этой теме.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10473,10 +10472,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

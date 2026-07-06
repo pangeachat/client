@@ -9540,7 +9540,6 @@
     "enableNotificationsTitle": "Non perdere mai una chat!",
     "enableNotificationsDesc": "Consenti le notifiche per Pangea Chat e rimani connesso con i tuoi amici linguistici!",
     "enableNotifications": "Consenti le notifiche",
-    "noActivitiesFound": "Nessuna attività disponibile per questo argomento.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9550,10 +9549,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -9449,7 +9449,6 @@
     "enableNotificationsTitle": "¡Nunca perdas unha charla!",
     "enableNotificationsDesc": "Permite notificacións para Pangea Chat e mantente conectado cos teus compañeiros de idioma!",
     "enableNotifications": "Permitir notificacións",
-    "noActivitiesFound": "Non hai actividades dispoñibles para este tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9458,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

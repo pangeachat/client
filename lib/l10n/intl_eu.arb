@@ -9449,7 +9449,6 @@
     "enableNotificationsTitle": "Ez galdu txat bat ere!",
     "enableNotificationsDesc": "Baieztatu Pangea Chat-eko jakinarazpenak eta mantendu harremanetan zure hizkuntza lagunekin!",
     "enableNotifications": "Baieztatu jakinarazpenak",
-    "noActivitiesFound": "Ez dago jarduerarik gaia honetarako.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9458,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },

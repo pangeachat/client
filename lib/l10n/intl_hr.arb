@@ -9933,7 +9933,6 @@
     "enableNotificationsTitle": "Nikada ne propustite razgovor!",
     "enableNotificationsDesc": "Dopustite obavijesti za Pangea Chat i ostanite povezani sa svojim jezičnim prijateljima!",
     "enableNotifications": "Dopustite obavijesti",
-    "noActivitiesFound": "Nema dostupnih aktivnosti za ovu temu.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9943,10 +9942,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
