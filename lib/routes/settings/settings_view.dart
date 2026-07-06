@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -12,11 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
-import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 
 // #Pangea
 // Pangea#
@@ -74,143 +69,7 @@ class SettingsView extends StatelessWidget {
                 // Pangea#
                 child: ListView(
                   key: const Key('SettingsListViewContent'),
-                  children: <Widget>[
-                    FutureBuilder<Profile>(
-                      future: controller.profileFuture,
-                      builder: (context, snapshot) {
-                        final profile = snapshot.data;
-                        final avatar = profile?.avatarUrl;
-                        final mxid =
-                            Matrix.of(context).client.userID ??
-                            L10n.of(context).user;
-                        final displayname =
-                            profile?.displayName ?? mxid.localpart ?? mxid;
-                        return Row(
-                          children: [
-                            Padding(
-                              // #Pangea
-                              // padding: const EdgeInsets.all(32.0),
-                              padding: const EdgeInsets.only(
-                                top: 32.0,
-                                bottom: 32.0,
-                                left: 12.0,
-                              ),
-                              // Pangea#
-                              child: Stack(
-                                children: [
-                                  Avatar(
-                                    mxContent: avatar,
-                                    name: displayname,
-                                    // #Pangea
-                                    userId: profile?.userId,
-                                    // Pangea#
-                                    size: Avatar.defaultSize * 2.5,
-                                    onTap: avatar != null
-                                        ? () => showDialog(
-                                            context: context,
-                                            builder: (_) =>
-                                                MxcImageViewer(avatar),
-                                          )
-                                        : null,
-                                  ),
-                                  if (profile != null)
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: FloatingActionButton.small(
-                                        elevation: 2,
-                                        // Names the icon-only button for assistive
-                                        // tech (otherwise an unnamed control / axe
-                                        // `aria-command-name`).
-                                        tooltip: L10n.of(
-                                          context,
-                                        ).changeYourAvatar,
-                                        onPressed: controller.setAvatarAction,
-                                        heroTag: null,
-                                        child: const Icon(
-                                          Icons.camera_alt_outlined,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: .center,
-                                crossAxisAlignment: .start,
-                                children: [
-                                  TextButton.icon(
-                                    onPressed: controller.setDisplaynameAction,
-                                    icon: const Icon(
-                                      Icons.edit_outlined,
-                                      size: 16,
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      foregroundColor:
-                                          theme.colorScheme.onSurface,
-                                      iconColor: theme.colorScheme.onSurface,
-                                    ),
-                                    label: Text(
-                                      displayname,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 18),
-                                    ),
-                                  ),
-                                  TextButton.icon(
-                                    onPressed: () =>
-                                        FluffyShare.share(mxid, context),
-                                    icon: const Icon(
-                                      Icons.copy_outlined,
-                                      size: 14,
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      foregroundColor:
-                                          theme.colorScheme.secondary,
-                                      iconColor: theme.colorScheme.secondary,
-                                    ),
-                                    label: Text(
-                                      mxid,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      //    style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    // #Pangea
-                    // if (accountManageUrl != null)
-                    //   ListTile(
-                    //     leading: const Icon(Icons.account_circle_outlined),
-                    //     title: Text(L10n.of(context).manageAccount),
-                    //     trailing: const Icon(Icons.open_in_new_outlined),
-                    //     onTap: () => launchUrlString(
-                    //       accountManageUrl,
-                    //       mode: LaunchMode.inAppBrowserView,
-                    //     ),
-                    //   ),
-                    // Divider(color: theme.dividerColor),
-                    // if (showChatBackupBanner == null)
-                    //   ListTile(
-                    //     leading: const Icon(Icons.backup_outlined),
-                    //     title: Text(L10n.of(context).chatBackup),
-                    //     trailing: const CircularProgressIndicator.adaptive(),
-                    //   )
-                    // else
-                    //   SwitchListTile.adaptive(
-                    //     controlAffinity: ListTileControlAffinity.trailing,
-                    //     value: controller.showChatBackupBanner == false,
-                    //     secondary: const Icon(Icons.backup_outlined),
-                    //     title: Text(L10n.of(context).chatBackup),
-                    //     onChanged: controller.firstRunBootstrapAction,
-                    //   ),
-                    // Divider(color: theme.dividerColor),
+                  children: [
                     // world_v2: the Avatar surface merges profile + settings;
                     // the profile editor is the single-segment `profile` page.
                     // It is not a nested `profile/edit` leaf — `profile` and
