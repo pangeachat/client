@@ -151,20 +151,55 @@ bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
       userCefr.storageInt;
 }
 
+/// Weight of the `multi_person_first_map` penalty (#7435). Large but finite —
+/// enough to sink a 3+ role activity below the band ceiling (2) so it recedes to
+/// the small-dot tail on a new learner's first map, but a deprioritize, not a
+/// gate. A hand-set lever like the rest of the weights (world-map.instructions.md).
+const double kMultiPersonFirstMapPenalty = 2.0;
+
+/// True when this pin should take the `multi_person_first_map` penalty: the
+/// learner has no prior activity ([isNewLearner]), the activity needs **3+ roles**
+/// (unstartable solo — the bot fills exactly one), and it is **not** itself a live
+/// session (a joinable/joined 3+ session has humans present, so the rationale does
+/// not apply). See world-map.instructions.md (#7435).
+bool isMultiPersonFirstMap({
+  required int? roleCount,
+  required bool isNewLearner,
+  required PinSignals s,
+}) =>
+    isNewLearner &&
+    (roleCount ?? 0) >= 3 &&
+    s.state != ActivityPinState.joinable &&
+    s.state != ActivityPinState.joined;
+
 /// score = 3*joinable + 2*joined + relevance_band + 0.6*pinged + 0.3*recency
-/// - 0.5*finished. A live session is the heaviest signal: +3 if the learner can
-/// join it (open, someone else's), +2 if they are already in it. `joinable` and
-/// `joined` are mutually exclusive per pin (the state precedence picks one), so at
-/// most one of the two fires. A finished activity (full star row) demotes but
-/// stays visible (the trail reservation keeps it on the map). See
-/// world-map.instructions.md ("Priority matrix").
-double pinScore({required double band, required PinSignals s}) =>
+/// - 0.5*finished - 2*multi_person_first_map. A live session is the heaviest
+/// signal: +3 if the learner can join it (open, someone else's), +2 if they are
+/// already in it. `joinable` and `joined` are mutually exclusive per pin (the
+/// state precedence picks one), so at most one of the two fires. A finished
+/// activity (full star row) demotes but stays visible (the trail reservation
+/// keeps it on the map). The multi-person term deprioritizes a 3+ role activity
+/// on a new learner's first map (#7435). See world-map.instructions.md.
+double pinScore({
+  required double band,
+  required PinSignals s,
+  int? roleCount,
+  bool isNewLearner = false,
+}) =>
     3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
     2 * (s.state == ActivityPinState.joined ? 1 : 0) +
     band +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
-    0.5 * (s.completionFraction >= 1.0 ? 1 : 0);
+    0.5 * (s.completionFraction >= 1.0 ? 1 : 0) -
+    kMultiPersonFirstMapPenalty *
+        (isMultiPersonFirstMap(
+              roleCount: roleCount,
+              isNewLearner: isNewLearner,
+              s: s,
+            )
+            ? 1
+            : 0);
 
 class _Scored {
   final QuestActivityCard pin;
@@ -194,6 +229,7 @@ RankingResult rankPins({
   int trailBudget = 0,
   Set<String> progressedIds = const {},
   int maxPerDiversityKey = 2,
+  bool isNewLearner = false,
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
@@ -204,7 +240,15 @@ RankingResult rankPins({
       userCefr: userCefr,
       progression: progression,
     );
-    return _Scored(p, pinScore(band: band, s: sig(p.activityId)));
+    return _Scored(
+      p,
+      pinScore(
+        band: band,
+        s: sig(p.activityId),
+        roleCount: p.roleCount,
+        isNewLearner: isNewLearner,
+      ),
+    );
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
 
   // The full score-ranked list with the per-objective diversity cap applied (not

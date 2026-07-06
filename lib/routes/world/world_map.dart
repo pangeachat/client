@@ -284,6 +284,12 @@ class WorldMapController extends State<WorldMap>
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
+  /// The learner has **no first activity yet** (never started, joined, or
+  /// finished one) — the condition under which the ranking deprioritizes 3+ role
+  /// activities (#7435). Cheap read over `client.rooms`, once per (debounced)
+  /// re-rank. Null client → false (no penalty).
+  bool get isNewLearner => _client?.hasAnyActivitySession == false;
+
   /// Whether the learner has fully completed [activityId] (a full star row). The
   /// inProgress gold star renders at full size when done, smaller when partially
   /// progressed (world-map.instructions.md, "Goal Progress").

@@ -42,5 +42,58 @@ void main() {
       });
       expect(c.learningObjectiveRefs, isEmpty);
     });
+
+    test('parses thin roles → roleCount / roleIds', () {
+      final c = QuestActivityCard.fromBboxCard({
+        ...card(),
+        'roles': [
+          {'role_id': 'vendor'},
+          {'role_id': 'customer'},
+          {'role_id': 'friend'},
+        ],
+      });
+      expect(c.roleCount, 3);
+      expect(c.roleIds, ['vendor', 'customer', 'friend']);
+    });
+
+    test('parses thin goals with slug, role mapping, and phase', () {
+      final c = QuestActivityCard.fromBboxCard({
+        ...card(),
+        'goals': [
+          {
+            'id': 'g1',
+            'goal_slug': 'greet-slug',
+            'role_ids': ['vendor', 'customer'],
+            'phase': 'opener',
+          },
+        ],
+      });
+      expect(c.goals.length, 1);
+      expect(c.goals.first.id, 'g1');
+      expect(c.goals.first.goalSlug, 'greet-slug');
+      expect(c.goals.first.roleIds, ['vendor', 'customer']);
+      expect(c.goals.first.phase, 'opener');
+    });
+
+    test('parses the non-localized mode / rating / original_l1', () {
+      final c = QuestActivityCard.fromBboxCard({
+        ...card(),
+        'mode': 'Roleplay',
+        'rating_average': 4.5,
+        'rating_count': 12,
+        'original_l1': 'en',
+      });
+      expect(c.mode, 'Roleplay');
+      expect(c.ratingAverage, 4.5);
+      expect(c.ratingCount, 12);
+      expect(c.originalL1, 'en');
+    });
+
+    test('role_count stays null when an older choreo omits roles (inert)', () {
+      final c = QuestActivityCard.fromBboxCard(card());
+      expect(c.roleCount, isNull);
+      expect(c.roleIds, isEmpty);
+      expect(c.goals, isEmpty);
+    });
   });
 }

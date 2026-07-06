@@ -305,6 +305,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       smallBudget: budget.small,
       trailBudget: budget.trail,
       progressedIds: widget.controller.progressedActivityIds,
+      isNewLearner: widget.controller.isNewLearner,
     );
   }
 

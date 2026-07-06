@@ -11,6 +11,7 @@ QuestActivityCard _card(
   String l2 = 'es',
   String cefr = 'A2',
   List<String> refs = const [],
+  int? roleCount,
 }) => QuestActivityCard(
   activityId: id,
   title: id,
@@ -18,6 +19,7 @@ QuestActivityCard _card(
   coordinates: null,
   learningObjectiveRefs: refs,
   cefr: cefr,
+  roleCount: roleCount,
 );
 
 /// A one-quest progression whose anchor (next) Mission is [anchor], built so the
@@ -171,6 +173,58 @@ void main() {
     });
   });
 
+  group('pinScore — multi-person first-map deprioritize (#7435)', () {
+    test('a new learner\'s 3+ role available activity takes the penalty', () {
+      final score = pinScore(
+        band: 2,
+        s: const PinSignals(),
+        roleCount: 3,
+        isNewLearner: true,
+      );
+      expect(score, closeTo(2 - kMultiPersonFirstMapPenalty, 1e-9));
+    });
+
+    test('a 2-role activity is not penalized (solo-viable with the bot)', () {
+      final score = pinScore(
+        band: 2,
+        s: const PinSignals(),
+        roleCount: 2,
+        isNewLearner: true,
+      );
+      expect(score, closeTo(2, 1e-9));
+    });
+
+    test('a returning learner (has a prior activity) is not penalized', () {
+      final score = pinScore(
+        band: 2,
+        s: const PinSignals(),
+        roleCount: 3,
+        isNewLearner: false,
+      );
+      expect(score, closeTo(2, 1e-9));
+    });
+
+    test('a live joinable 3+ session is never penalized (humans present)', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+        roleCount: 3,
+        isNewLearner: true,
+      );
+      expect(score, 3);
+    });
+
+    test('unknown role count (older choreo pin) is not penalized', () {
+      final score = pinScore(
+        band: 2,
+        s: const PinSignals(),
+        roleCount: null,
+        isNewLearner: true,
+      );
+      expect(score, closeTo(2, 1e-9));
+    });
+  });
+
   group('pinScore — joinable dominates', () {
     test(
       'a joinable band-0 pin outscores a saturated, pinged, recent non-joinable',
@@ -199,6 +253,7 @@ void main() {
     int trailBudget = 0,
     Set<String> progressedIds = const {},
     int maxPerDiversityKey = 2,
+    bool isNewLearner = false,
   }) => rankPins(
     inViewPins: pins,
     userL2: userL2,
@@ -211,7 +266,48 @@ void main() {
     trailBudget: trailBudget,
     progressedIds: progressedIds,
     maxPerDiversityKey: maxPerDiversityKey,
+    isNewLearner: isNewLearner,
   );
+
+  group('rankPins — multi-person deprioritize for a new learner (#7435)', () {
+    test('a 3+ role activity drops below a 2-role one of equal band', () {
+      // Both score band 1.0 (in-L2, level-ok, objective-bearing); role count is
+      // the only differentiator. For a new learner the 3-role pin is penalized
+      // into the tail while the solo-viable 2-role pin takes the large card.
+      final pins = [
+        _card('multi', refs: ['a'], roleCount: 3),
+        _card('duo', refs: ['b'], roleCount: 2),
+      ];
+      final result = rank(
+        pins,
+        {'multi': const PinSignals(), 'duo': const PinSignals()},
+        largeBudget: 1,
+        midBudget: 10,
+        isNewLearner: true,
+      );
+      expect(result.largeIds, ['duo']);
+      expect(result.ordered.last, 'multi');
+    });
+
+    test(
+      'the same 3+ role activity is not demoted once the learner is not new',
+      () {
+        final pins = [
+          _card('multi', refs: ['a'], roleCount: 3),
+          _card('duo', refs: ['b'], roleCount: 2),
+        ];
+        final result = rank(
+          pins,
+          {'multi': const PinSignals(), 'duo': const PinSignals()},
+          largeBudget: 1,
+          midBudget: 10,
+          // isNewLearner defaults to false — no penalty; equal band, both compete.
+        );
+        expect(result.ordered.toSet(), {'multi', 'duo'});
+        expect(result.midIds.length + result.largeIds.length, 2);
+      },
+    );
+  });
 
   group('rankPins — large/mid fill by score', () {
     test('the highest-scoring pins fill large, the next fill mid', () {
