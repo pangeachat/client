@@ -18,19 +18,17 @@ void main() {
     numberOfParticipants: 2,
   );
 
-  ActivityPlanModel plan(
-    List<ActivityMediaBlock> media, {
-    String? imageURL,
-  }) => ActivityPlanModel(
-    req: req(),
-    title: 'Speed-Dating Interview',
-    learningObjective: 'lo',
-    instructions: 'i',
-    vocab: const [],
-    activityId: 'act-1',
-    imageURL: imageURL,
-    media: media,
-  );
+  ActivityPlanModel plan(List<ActivityMediaBlock> media, {String? imageURL}) =>
+      ActivityPlanModel(
+        req: req(),
+        title: 'Speed-Dating Interview',
+        learningObjective: 'lo',
+        instructions: 'i',
+        vocab: const [],
+        activityId: 'act-1',
+        imageURL: imageURL,
+        media: media,
+      );
 
   ActivityMediaBlock youtube(String url) =>
       ActivityMediaBlock(blockType: 'youtube', url: url);
@@ -82,12 +80,15 @@ void main() {
       expect(p.heroDisplayUrl.toString(), contains('legacy.png'));
     });
 
-    test('no media and no image url yields a deterministic placeholder, never null', () {
-      final p = plan(const []);
-      expect(p.heroIsPlayable, isFalse);
-      expect(p.heroDisplayUrl, isNotNull);
-      // A real placeholder asset, not a broken/absent poster.
-      expect(p.heroDisplayUrl.toString(), contains('Space%20template'));
-    });
+    test(
+      'no media and no image url yields a deterministic placeholder, never null',
+      () {
+        final p = plan(const []);
+        expect(p.heroIsPlayable, isFalse);
+        expect(p.heroDisplayUrl, isNotNull);
+        // A real placeholder asset, not a broken/absent poster.
+        expect(p.heroDisplayUrl.toString(), contains('Space%20template'));
+      },
+    );
   });
 }
