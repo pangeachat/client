@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -12,11 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
-import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 
 // #Pangea
 // Pangea#
@@ -72,354 +67,230 @@ class SettingsView extends StatelessWidget {
               // #Pangea
               child: SafeArea(
                 // Pangea#
-                child: ListView(
-                  key: const Key('SettingsListViewContent'),
-                  children: <Widget>[
-                    FutureBuilder<Profile>(
-                      future: controller.profileFuture,
-                      builder: (context, snapshot) {
-                        final profile = snapshot.data;
-                        final avatar = profile?.avatarUrl;
-                        final mxid =
-                            Matrix.of(context).client.userID ??
-                            L10n.of(context).user;
-                        final displayname =
-                            profile?.displayName ?? mxid.localpart ?? mxid;
-                        return Row(
-                          children: [
-                            Padding(
-                              // #Pangea
-                              // padding: const EdgeInsets.all(32.0),
-                              padding: const EdgeInsets.only(
-                                top: 32.0,
-                                bottom: 32.0,
-                                left: 12.0,
-                              ),
-                              // Pangea#
-                              child: Stack(
-                                children: [
-                                  Avatar(
-                                    mxContent: avatar,
-                                    name: displayname,
-                                    // #Pangea
-                                    userId: profile?.userId,
-                                    // Pangea#
-                                    size: Avatar.defaultSize * 2.5,
-                                    onTap: avatar != null
-                                        ? () => showDialog(
-                                            context: context,
-                                            builder: (_) =>
-                                                MxcImageViewer(avatar),
-                                          )
-                                        : null,
-                                  ),
-                                  if (profile != null)
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: FloatingActionButton.small(
-                                        elevation: 2,
-                                        // Names the icon-only button for assistive
-                                        // tech (otherwise an unnamed control / axe
-                                        // `aria-command-name`).
-                                        tooltip: L10n.of(
-                                          context,
-                                        ).changeYourAvatar,
-                                        onPressed: controller.setAvatarAction,
-                                        heroTag: null,
-                                        child: const Icon(
-                                          Icons.camera_alt_outlined,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: .center,
-                                crossAxisAlignment: .start,
-                                children: [
-                                  TextButton.icon(
-                                    onPressed: controller.setDisplaynameAction,
-                                    icon: const Icon(
-                                      Icons.edit_outlined,
-                                      size: 16,
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      foregroundColor:
-                                          theme.colorScheme.onSurface,
-                                      iconColor: theme.colorScheme.onSurface,
-                                    ),
-                                    label: Text(
-                                      displayname,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 18),
-                                    ),
-                                  ),
-                                  TextButton.icon(
-                                    onPressed: () =>
-                                        FluffyShare.share(mxid, context),
-                                    icon: const Icon(
-                                      Icons.copy_outlined,
-                                      size: 14,
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      foregroundColor:
-                                          theme.colorScheme.secondary,
-                                      iconColor: theme.colorScheme.secondary,
-                                    ),
-                                    label: Text(
-                                      mxid,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      //    style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    // #Pangea
-                    // if (accountManageUrl != null)
-                    //   ListTile(
-                    //     leading: const Icon(Icons.account_circle_outlined),
-                    //     title: Text(L10n.of(context).manageAccount),
-                    //     trailing: const Icon(Icons.open_in_new_outlined),
-                    //     onTap: () => launchUrlString(
-                    //       accountManageUrl,
-                    //       mode: LaunchMode.inAppBrowserView,
-                    //     ),
-                    //   ),
-                    // Divider(color: theme.dividerColor),
-                    // if (showChatBackupBanner == null)
-                    //   ListTile(
-                    //     leading: const Icon(Icons.backup_outlined),
-                    //     title: Text(L10n.of(context).chatBackup),
-                    //     trailing: const CircularProgressIndicator.adaptive(),
-                    //   )
-                    // else
-                    //   SwitchListTile.adaptive(
-                    //     controlAffinity: ListTileControlAffinity.trailing,
-                    //     value: controller.showChatBackupBanner == false,
-                    //     secondary: const Icon(Icons.backup_outlined),
-                    //     title: Text(L10n.of(context).chatBackup),
-                    //     onChanged: controller.firstRunBootstrapAction,
-                    //   ),
-                    // Divider(color: theme.dividerColor),
-                    // world_v2: the Avatar surface merges profile + settings;
-                    // the profile editor is the single-segment `profile` page.
-                    // It is not a nested `profile/edit` leaf — `profile` and
-                    // `profile/edit` render the same editor, so the extra
-                    // segment only made the back arrow pop to an identical-
-                    // looking page first, needing a second click (#7147).
-                    ListTile(
-                      leading: const Icon(Icons.account_circle_outlined),
-                      title: Text(L10n.of(context).editProfile),
-                      tileColor: activeRoute.startsWith('/profile')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'profile',
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.language_outlined),
-                      title: Text(L10n.of(context).learningSettings),
-                      tileColor: activeRoute.startsWith('/settings/learning')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'learning',
-                        ),
-                      ),
-                    ),
-                    // Pangea#
-                    ListTile(
-                      leading: const Icon(Icons.format_paint_outlined),
-                      title: Text(L10n.of(context).changeTheme),
-                      tileColor: activeRoute.startsWith('/settings/style')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'style',
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.notifications_outlined),
-                      title: Text(L10n.of(context).notifications),
-                      tileColor:
-                          activeRoute.startsWith('/settings/notifications')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'notifications',
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.devices_outlined),
-                      title: Text(L10n.of(context).devices),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'devices',
-                        ),
-                      ),
-                      tileColor: activeRoute.startsWith('/settings/devices')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.forum_outlined),
-                      title: Text(L10n.of(context).chat),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'chat',
-                        ),
-                      ),
-                      tileColor: activeRoute.startsWith('/settings/chat')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                    ),
-                    // #Pangea
-                    ListTile(
-                      leading: const Icon(Icons.account_circle_outlined),
-                      title: Text(L10n.of(context).subscriptionManagement),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'subscription',
-                        ),
-                      ),
-                      tileColor:
-                          activeRoute.startsWith('/settings/subscription')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                    ),
-                    // Pangea#
-                    ListTile(
-                      leading: const Icon(Icons.shield_outlined),
-                      title: Text(L10n.of(context).security),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'security',
-                        ),
-                      ),
-                      tileColor: activeRoute.startsWith('/settings/security')
-                          ? theme.colorScheme.surfaceContainerHigh
-                          : null,
-                    ),
-                    Divider(color: theme.dividerColor),
-                    // #Pangea
-                    SupportChatListTile(),
-                    ListTile(
-                      leading: const Icon(Icons.shield_outlined),
-                      title: Text(L10n.of(context).termsAndConditions),
-                      onTap: () => launchUrlString(AppConfig.termsOfServiceUrl),
-                      trailing: const Icon(Icons.open_in_new_outlined),
-                    ),
-                    FutureBuilder<PackageInfo>(
-                      future: PackageInfo.fromPlatform(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          return ListTile(
-                            leading: const Icon(Icons.info_outline),
-                            trailing: const Icon(Icons.copy_outlined),
-                            onTap: () async {
-                              if (snapshot.data == null) return;
-                              await Clipboard.setData(
-                                ClipboardData(
-                                  text:
-                                      "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
-                                ),
-                              );
-                              ScaffoldMessenger.of(
-                                context,
-                              ).showSnackBarAnnounced(
-                                SnackBar(
-                                  content: Text(
-                                    L10n.of(context).copiedToClipboard,
-                                  ),
-                                ),
-                              );
-                            },
-                            title: Text(
-                              snapshot.data != null
-                                  ? L10n.of(context).versionText(
-                                      snapshot.data!.version,
-                                      snapshot.data!.buildNumber,
-                                    )
-                                  : L10n.of(context).versionNotFound,
-                            ),
-                          );
-                        } else if (snapshot.hasError) {
-                          return ListTile(
-                            leading: const Icon(Icons.error_outline),
-                            title: Text(L10n.of(context).versionFetchError),
-                          );
-                        } else {
-                          return ListTile(
-                            leading: const CircularProgressIndicator(),
-                            title: Text(L10n.of(context).fetchingVersion),
-                          );
-                        }
-                      },
-                    ),
-                    // Conditional ListTile based on the environment (staging or not)
-                    if (Environment.isStagingEnvironment)
+                child: Semantics(
+                  label: L10n.of(context).bodyLabel(L10n.of(context).settings),
+                  container: true,
+                  child: ListView(
+                    key: const Key('SettingsListViewContent'),
+                    children: <Widget>[
+                      // world_v2: the Avatar surface merges profile + settings;
+                      // the profile editor is the single-segment `profile` page.
+                      // It is not a nested `profile/edit` leaf — `profile` and
+                      // `profile/edit` render the same editor, so the extra
+                      // segment only made the back arrow pop to an identical-
+                      // looking page first, needing a second click (#7147).
                       ListTile(
-                        leading: const Icon(Icons.bug_report_outlined),
-                        title: Text(L10n.of(context).connectedToStaging),
+                        leading: const Icon(Icons.account_circle_outlined),
+                        title: Text(L10n.of(context).editProfile),
+                        tileColor: activeRoute.startsWith('/profile')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'profile',
+                          ),
+                        ),
                       ),
-                    // ListTile(
-                    //   leading: const Icon(Icons.dns_outlined),
-                    //   title: Text(
-                    //     L10n.of(context).aboutHomeserver(
-                    //       Matrix.of(context).client.userID?.domain ??
-                    //           'homeserver',
-                    //     ),
-                    //   ),
-                    //   onTap: () => context.go('/settings/homeserver'),
-                    //   tileColor:
-                    //       activeRoute.startsWith('/settings/homeserver')
-                    //       ? theme.colorScheme.surfaceContainerHigh
-                    //       : null,
-                    // ),
-                    // ListTile(
-                    //   leading: const Icon(Icons.privacy_tip_outlined),
-                    //   title: Text(L10n.of(context).privacy),
-                    //   onTap: () => launchUrl(AppConfig.privacyUrl),
-                    // ),
-                    // ListTile(
-                    //   leading: const Icon(Icons.info_outline_rounded),
-                    //   title: Text(L10n.of(context).about),
-                    //   onTap: () => PlatformInfos.showDialog(context),
-                    // ),
-                    // Pangea#
-                    Divider(color: theme.dividerColor),
-                    ListTile(
-                      leading: const Icon(Icons.logout_outlined),
-                      title: Text(L10n.of(context).logout),
-                      onTap: controller.logoutAction,
-                    ),
-                  ],
+                      ListTile(
+                        leading: const Icon(Icons.language_outlined),
+                        title: Text(L10n.of(context).learningSettings),
+                        tileColor: activeRoute.startsWith('/settings/learning')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'learning',
+                          ),
+                        ),
+                      ),
+                      // Pangea#
+                      ListTile(
+                        leading: const Icon(Icons.format_paint_outlined),
+                        title: Text(L10n.of(context).changeTheme),
+                        tileColor: activeRoute.startsWith('/settings/style')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'style',
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.notifications_outlined),
+                        title: Text(L10n.of(context).notifications),
+                        tileColor:
+                            activeRoute.startsWith('/settings/notifications')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'notifications',
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.devices_outlined),
+                        title: Text(L10n.of(context).devices),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'devices',
+                          ),
+                        ),
+                        tileColor: activeRoute.startsWith('/settings/devices')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.forum_outlined),
+                        title: Text(L10n.of(context).chat),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'chat',
+                          ),
+                        ),
+                        tileColor: activeRoute.startsWith('/settings/chat')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                      ),
+                      // #Pangea
+                      ListTile(
+                        leading: const Icon(Icons.account_circle_outlined),
+                        title: Text(L10n.of(context).subscriptionManagement),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'subscription',
+                          ),
+                        ),
+                        tileColor:
+                            activeRoute.startsWith('/settings/subscription')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                      ),
+                      // Pangea#
+                      ListTile(
+                        leading: const Icon(Icons.shield_outlined),
+                        title: Text(L10n.of(context).security),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'security',
+                          ),
+                        ),
+                        tileColor: activeRoute.startsWith('/settings/security')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                      ),
+                      Divider(color: theme.dividerColor),
+                      // #Pangea
+                      SupportChatListTile(),
+                      ListTile(
+                        leading: const Icon(Icons.shield_outlined),
+                        title: Text(L10n.of(context).termsAndConditions),
+                        onTap: () =>
+                            launchUrlString(AppConfig.termsOfServiceUrl),
+                        trailing: Semantics(
+                          label: L10n.of(context).openNewTab,
+                          child: const Icon(Icons.open_in_new_outlined),
+                        ),
+                      ),
+                      FutureBuilder<PackageInfo>(
+                        future: PackageInfo.fromPlatform(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return ListTile(
+                              leading: const Icon(Icons.info_outline),
+                              trailing: Semantics(
+                                label: L10n.of(context).copy,
+                                child: const Icon(Icons.copy_outlined),
+                              ),
+                              onTap: () async {
+                                if (snapshot.data == null) return;
+                                await Clipboard.setData(
+                                  ClipboardData(
+                                    text:
+                                        "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
+                                  ),
+                                );
+                                ScaffoldMessenger.of(
+                                  context,
+                                ).showSnackBarAnnounced(
+                                  SnackBar(
+                                    content: Text(
+                                      L10n.of(context).copiedToClipboard,
+                                    ),
+                                  ),
+                                );
+                              },
+                              title: Text(
+                                snapshot.data != null
+                                    ? L10n.of(context).versionText(
+                                        snapshot.data!.version,
+                                        snapshot.data!.buildNumber,
+                                      )
+                                    : L10n.of(context).versionNotFound,
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            return ListTile(
+                              leading: const Icon(Icons.error_outline),
+                              title: Text(L10n.of(context).versionFetchError),
+                            );
+                          } else {
+                            return ListTile(
+                              leading: const CircularProgressIndicator(),
+                              title: Text(L10n.of(context).fetchingVersion),
+                            );
+                          }
+                        },
+                      ),
+                      // Conditional ListTile based on the environment (staging or not)
+                      if (Environment.isStagingEnvironment)
+                        ListTile(
+                          leading: const Icon(Icons.bug_report_outlined),
+                          title: Text(L10n.of(context).connectedToStaging),
+                        ),
+                      // ListTile(
+                      //   leading: const Icon(Icons.dns_outlined),
+                      //   title: Text(
+                      //     L10n.of(context).aboutHomeserver(
+                      //       Matrix.of(context).client.userID?.domain ??
+                      //           'homeserver',
+                      //     ),
+                      //   ),
+                      //   onTap: () => context.go('/settings/homeserver'),
+                      //   tileColor:
+                      //       activeRoute.startsWith('/settings/homeserver')
+                      //       ? theme.colorScheme.surfaceContainerHigh
+                      //       : null,
+                      // ),
+                      // ListTile(
+                      //   leading: const Icon(Icons.privacy_tip_outlined),
+                      //   title: Text(L10n.of(context).privacy),
+                      //   onTap: () => launchUrl(AppConfig.privacyUrl),
+                      // ),
+                      // ListTile(
+                      //   leading: const Icon(Icons.info_outline_rounded),
+                      //   title: Text(L10n.of(context).about),
+                      //   onTap: () => PlatformInfos.showDialog(context),
+                      // ),
+                      // Pangea#
+                      Divider(color: theme.dividerColor),
+                      ListTile(
+                        leading: const Icon(Icons.logout_outlined),
+                        title: Text(L10n.of(context).logout),
+                        onTap: controller.logoutAction,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
