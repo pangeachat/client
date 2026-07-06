@@ -59,6 +59,7 @@ class GoogleAnalytics {
     analytics = FirebaseAnalytics.instanceFor(app: app);
     // Client is not automatically set on web
     await _setClientVersion();
+    await _setEnvironment();
 
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
@@ -79,6 +80,13 @@ class GoogleAnalytics {
     } catch (error) {
       debugPrint('Unable to set analytics client version: $error');
     }
+  }
+
+  static Future<void> _setEnvironment() async {
+    await analytics?.setUserProperty(
+      name: 'environment',
+      value: Environment.isStagingEnvironment ? 'staging' : 'prod',
+    );
   }
 
   static Future<void> analyticsUserUpdate(String? userID) async {
