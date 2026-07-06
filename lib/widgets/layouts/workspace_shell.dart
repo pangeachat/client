@@ -425,20 +425,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           );
 
     // The cavity: the focused section surface hosted bare (the widget is the
-    // card). A course keys its height memory by the space id (#7332), an
-    // activity by its own id; the sections key by name so their memory is
-    // their own. An ACTIVITY opens at half with no cavity header — the plan
-    // page carries its own close/back affordance (#7115), so the cavity adds
-    // only the handle.
+    // card; the surface brings its own header/close). A course keys its height
+    // memory by the space id (#7332), an activity by its own id; the sections
+    // key by name so their memory is their own.
     final cavityToken = layout.cavityIndex == null
         ? null
         : layout.leftTokens[layout.cavityIndex!];
     final isCourseCavity =
         cavityToken?.type == 'course' || cavityToken?.type == 'coursepage';
     final isActivityCavity = cavityToken?.type == 'activity';
-    final cavityCourse = isCourseCavity && activeSpaceId != null
-        ? client.getRoomById(activeSpaceId)
-        : null;
 
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. This PR wires the MAP
@@ -477,10 +472,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   screenHeight)
               .clamp(0.3, 0.95);
 
-    return Positioned(
-      left: _ShellLayout.chromeMargin + screenPadding.left,
-      right: _ShellLayout.chromeMargin + screenPadding.right,
-      bottom: _ShellLayout.chromeMargin,
+    // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
+    // its own box, and its tap-outside barrier must span the whole screen so a
+    // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
+    // the barrier to the widget's own bounds).
+    return Positioned.fill(
       child: MobileNavWidget(
         activeSection: sectionFor(uri),
         courseShortcutIcon: shortcutCourse != null
@@ -496,6 +492,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         courseShortcutLabel: shortcutCourse != null
             ? shortcutCourse.getLocalizedDisplayname(MatrixLocals(l10n))
             : l10n.addCourse,
+        courseShortcutSelected:
+            shortcutCourse != null && shortcutCourse.id == activeSpaceId,
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
               ? WorkspaceNav.openCourseSection(
@@ -544,23 +542,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
-        // The activity plan carries its own header and close/back affordance
-        // (#7115), so its cavity adds only the drag handle.
-        cavityTitle: cavityToken == null || isActivityCavity
-            ? null
-            : isCourseCavity
-            ? cavityCourse?.getLocalizedDisplayname(MatrixLocals(l10n))
-            : cavityToken.type == 'chats'
-            ? l10n.allChats
-            : l10n.courses,
-        onCavityClose: cavityToken == null || isActivityCavity
-            ? null
-            : () => context.go(
-                WorkspaceNav.closeLeft(
-                  GoRouter.of(context).routeInformationProvider.value.uri,
-                  cavityToken,
-                ),
-              ),
         maxHeightFraction: maxHeightFraction,
         topAttachment: searchBar,
       ),

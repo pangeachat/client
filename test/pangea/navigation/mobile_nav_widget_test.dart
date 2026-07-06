@@ -23,8 +23,6 @@ void main() {
     Widget? cavityChild,
     String? cavityKey,
     bool cavityDefaultsToPeek = false,
-    String? cavityTitle,
-    VoidCallback? onCavityClose,
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
     double maxHeightFraction = 0.75,
@@ -46,8 +44,6 @@ void main() {
             cavityChild: cavityChild,
             cavityKey: cavityKey,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
-            cavityTitle: cavityTitle,
-            onCavityClose: onCavityClose,
             maxHeightFraction: maxHeightFraction,
           ),
         ),
@@ -242,16 +238,14 @@ void main() {
 
   group('tap-outside collapse', () {
     testWidgets(
-      'tapping outside collapses WITHOUT calling onCavityClose, and the rail '
+      'tapping outside collapses (ephemeral — no navigation), and the rail '
       'item re-expands to the remembered height',
       (tester) async {
-        var closeCalls = 0;
         await pumpNav(
           tester,
           activeSection: AppSection.chats,
           cavityChild: const Text('Chat list'),
           cavityKey: 'chats',
-          onCavityClose: () => closeCalls++,
           maxHeightFraction: 0.75,
         );
 
@@ -261,15 +255,16 @@ void main() {
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
 
-        // Tap far above the floating widget — outside its bounds.
+        // Tap far above the floating widget — outside its bounds. The widget
+        // mounts Positioned.fill so its barrier spans the whole screen.
         await tester.tapAt(const Offset(200, 20));
         await tester.pumpAndSettle();
 
         expect(cavityHeightOf(tester), 0.0);
         expect(
-          closeCalls,
-          0,
-          reason: 'tap-outside is ephemeral, not the real close',
+          find.text('Chat list'),
+          findsNothing,
+          reason: 'collapsed hides the cavity content but closes nothing',
         );
 
         // Tapping the still-active rail item re-expands to the remembered
@@ -300,22 +295,22 @@ void main() {
     });
   });
 
-  group('close button', () {
-    testWidgets('the X calls onCavityClose exactly once', (tester) async {
-      var closeCalls = 0;
+  group('no cavity chrome of its own', () {
+    testWidgets('the cavity renders only the handle — no header or X', (
+      tester,
+    ) async {
+      // Every hosted surface brings its own header and close/back affordance
+      // (the chat list's panel header, the course card, the activity plan's
+      // contextual controls) — a cavity-level X would double them (live QA).
       await pumpNav(
         tester,
         cavityChild: const Text('Chat list'),
         cavityKey: 'chats',
-        cavityTitle: 'Chats',
-        onCavityClose: () => closeCalls++,
         maxHeightFraction: 0.75,
       );
 
-      await tester.tap(find.byIcon(Icons.close));
-      await tester.pumpAndSettle();
-
-      expect(closeCalls, 1);
+      expect(find.byIcon(Icons.close), findsNothing);
+      expect(find.text('Chat list'), findsOneWidget);
     });
   });
 

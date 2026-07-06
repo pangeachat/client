@@ -356,14 +356,22 @@ class _AnalyticsBarTemporaryExpansionState
             },
             flagBuilder: widget.flagBuilder,
           )
-        : _CollapsedAnalyticsAvatar(
-            avatarUrl: widget.avatarUrl,
-            displayName: widget.displayName,
-            l2: widget.l2,
-            level: widget.level,
-            xpProgress: widget.xpProgress,
-            onTap: _expandTemporarily,
-            flagBuilder: widget.flagBuilder,
+        // Right-aligned and shrink-wrapped: the shell mounts the bar
+        // full-width, and an unconstrained collapsed circle would stretch —
+        // scattering its Positioned level medal to the far screen edge and
+        // centering the avatar over the surface below (live QA). The circle
+        // belongs at the top-right, where the cluster lives on web.
+        : Align(
+            alignment: Alignment.centerRight,
+            child: _CollapsedAnalyticsAvatar(
+              avatarUrl: widget.avatarUrl,
+              displayName: widget.displayName,
+              l2: widget.l2,
+              level: widget.level,
+              xpProgress: widget.xpProgress,
+              onTap: _expandTemporarily,
+              flagBuilder: widget.flagBuilder,
+            ),
           );
 
     return Focus(
@@ -621,6 +629,11 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
         child: Semantics(
           button: true,
           label: label,
+          // A bounded node of its own: without `container` the annotation
+          // merges into the stretched ancestor, so assistive tech (and the
+          // widget tests' semantics taps) target the full-width bar area
+          // instead of the circle.
+          container: true,
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,

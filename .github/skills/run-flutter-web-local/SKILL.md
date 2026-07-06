@@ -77,6 +77,34 @@ python3 -m http.server 8090 --directory build/web   # or: npx serve build/web -l
 
 Trade-off: **no hot reload**, and **`?devlogin=1` does NOT work** in a profile/release build (it's gated on `kDebugMode`). Log in once through the real canvas login form using the `.env` `TEST_MATRIX_*` creds against your `SYNAPSE_URL` (the session then persists across reloads).
 
+## Narrow / mobile (single-column) mode in the extension browser
+
+The Claude-in-Chrome extension cannot put the app below the 840px single-column
+breakpoint on the usual path: `resize_window` shrinks the OS window but Chrome's
+**per-host page zoom** keeps `window.innerWidth` large, and zoom shortcuts sent
+via CDP never reach the browser chrome. Two pieces, both required:
+
+1. **A fresh host origin resets zoom to 100%.** Serve (or just open) the app on
+   `127.0.0.1` instead of `localhost` — zoom is keyed on the host, so the new
+   host starts at 100% and `resize_window` then maps 1:1 to logical pixels
+   (`resize_window(500, …)` → `innerWidth == 500` → single-column).
+2. **Use a profile build served statically, not the debug server.** On the new
+   origin the debug (DWDS) bootstrap tends to fail its websocket handshake — all
+   ~2.8k modules load and `main()` never runs (spinner forever, no network, no
+   errors). The profile build has no DWDS and paints in seconds:
+
+```bash
+fvm flutter build web --profile --pwa-strategy=none
+cp .env build/web/.env      # REQUIRED — see the profile-build section above
+python3 -m http.server 8091 --directory build/web
+# → navigate the extension tab to http://127.0.0.1:8091/ and resize_window to phone size
+```
+
+The new origin has its own IndexedDB (no session): log in once through the real
+form (`?devlogin=1` is debug-only). The session then persists across rebuilds —
+`build` replaces `build/web` so re-`cp` the `.env`, but the origin's storage
+survives.
+
 ## Iterating on code — hot reload vs clean restart
 
 **Prefer hot reload `r` over refreshing the browser.** Hot reload keeps the loaded modules AND the logged-in session; only a full browser reload triggers the ~30s 2792-module re-fetch. `printf 'r' > /tmp/f8090`. This is the single biggest speedup for the edit loop.

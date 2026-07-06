@@ -538,15 +538,27 @@ class _WorldMapViewState extends State<WorldMapView> {
           MarkerLayer(markers: _exitingMarkers()),
           // Large cards (always visible): the featured cards the width affords.
           MarkerLayer(markers: _largeMarkers(render)),
-          RichAttributionWidget(
-            // #7218: bottom-LEFT so the attribution and its expand popup don't sit
-            // under the bottom-right zoom/World controls (where it was covered and
-            // hard to read, especially in dark mode).
-            alignment: AttributionAlignment.bottomLeft,
-            attributions: [
-              TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
-              if (dark) TextSourceAttribution('CARTO', onTap: () {}),
-            ],
+          Padding(
+            // On a narrow screen the bottom chrome (nav widget + the search bar
+            // riding above it) owns the bottom edge, so lift the attribution
+            // above it — otherwise it sits unreadable UNDER the floating rail
+            // (#7218 on narrow).
+            padding: EdgeInsets.only(
+              bottom: FluffyThemes.isColumnMode(context) ? 0.0 : 150.0,
+            ),
+            child: RichAttributionWidget(
+              // #7218: bottom-LEFT so the attribution and its expand popup don't
+              // sit under the bottom-right zoom/World controls (where it was
+              // covered and hard to read, especially in dark mode).
+              alignment: AttributionAlignment.bottomLeft,
+              attributions: [
+                TextSourceAttribution(
+                  'OpenStreetMap contributors',
+                  onTap: () {},
+                ),
+                if (dark) TextSourceAttribution('CARTO', onTap: () {}),
+              ],
+            ),
           ),
         ],
       ),
@@ -559,11 +571,16 @@ class _WorldMapViewState extends State<WorldMapView> {
     // slide left with the panel. (rightOverlayWidth still pads the camera fit in
     // world_map.dart so focal content lands in the uncovered area; only this
     // on-map chrome stays fixed.) Shown on world and course maps.
-    final controls = Positioned(
-      right: 12,
-      bottom: 28,
-      child: _MapZoomControls(controller: widget.controller),
-    );
+    // Column mode only: on a narrow screen the bottom chrome (the nav widget +
+    // search bar) owns this corner, pinch handles zoom, and the rail's World
+    // item is the reset — the Google Maps mobile pattern (no on-map +/- there).
+    final Widget controls = FluffyThemes.isColumnMode(context)
+        ? Positioned(
+            right: 12,
+            bottom: 28,
+            child: _MapZoomControls(controller: widget.controller),
+          )
+        : const SizedBox.shrink();
 
     // A course shows its plain map (plus the controls); the world map adds the
     // search + filter overlay.

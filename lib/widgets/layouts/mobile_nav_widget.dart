@@ -17,9 +17,12 @@ enum NavCavityHeight { collapsed, half, full }
 /// design calls for. See "Single-column bottom nav" in `routing.instructions.md`.
 ///
 /// This widget is purely presentational: it reports taps and drag-driven
-/// height changes upward, and the shell (via [onSectionTap] / [onCavityClose])
-/// is the one that actually navigates. The rail row stays visible and
-/// tappable at every cavity height.
+/// height changes upward, and the shell (via [onSectionTap]) is the one that
+/// actually navigates. The cavity adds only the drag handle — every hosted
+/// surface brings its own header and close/back affordance. The rail row
+/// stays visible and tappable at every cavity height. Mount it
+/// `Positioned.fill`: the widget bottom-aligns its own box, and its
+/// tap-outside barrier needs the whole screen to collapse on a map tap.
 class MobileNavWidget extends StatefulWidget {
   /// Which rail item is highlighted — computed by the shell (`sectionFor`).
   final AppSection activeSection;
@@ -30,6 +33,11 @@ class MobileNavWidget extends StatefulWidget {
 
   /// Semantic label / tooltip for the course shortcut.
   final String courseShortcutLabel;
+
+  /// The shortcut's course is the active workspace context: the shortcut gets
+  /// the highlight and the Courses item stays unlit (mirrors the web rail
+  /// highlighting the specific course avatar over the section icon).
+  final bool courseShortcutSelected;
 
   final VoidCallback onCourseShortcutTap;
 
@@ -50,13 +58,6 @@ class MobileNavWidget extends StatefulWidget {
   /// section (opens at half by default).
   final bool cavityDefaultsToPeek;
 
-  /// Header title shown centered above the cavity content.
-  final String? cavityTitle;
-
-  /// The header's X — the panel's real close (drops the shell's token). Null
-  /// hides the X (nothing to close).
-  final VoidCallback? onCavityClose;
-
   /// Upper growth bound for the cavity, as a fraction of the screen height,
   /// computed by the shell (so the search bar + analytics bar stay visible
   /// above it at full height).
@@ -72,13 +73,12 @@ class MobileNavWidget extends StatefulWidget {
     required this.activeSection,
     this.courseShortcutIcon,
     required this.courseShortcutLabel,
+    this.courseShortcutSelected = false,
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.cavityChild,
     this.cavityKey,
     this.cavityDefaultsToPeek = false,
-    this.cavityTitle,
-    this.onCavityClose,
     required this.maxHeightFraction,
     this.topAttachment,
     super.key,
@@ -280,7 +280,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
           child: SafeArea(
             top: false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -320,8 +320,6 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   ? null
                                   : ClipRect(
                                       child: _NavCavity(
-                                        title: widget.cavityTitle,
-                                        onClose: widget.onCavityClose,
                                         onHandleTap: _toggleHandle,
                                         onDragStart: _onDragStart,
                                         onDragUpdate: _onDragUpdate,
@@ -359,9 +357,12 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   _RailButton(
                                     icon: Icons.map_outlined,
                                     selectedIcon: Icons.map,
+                                    // The specific course's highlight (the
+                                    // shortcut) outranks the section icon.
                                     selected:
                                         widget.activeSection ==
-                                        AppSection.courses,
+                                            AppSection.courses &&
+                                        !widget.courseShortcutSelected,
                                     tooltip: l10n.courses,
                                     onTap: () =>
                                         _onRailItemTap(AppSection.courses),
@@ -369,6 +370,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   _CourseShortcutButton(
                                     icon: widget.courseShortcutIcon,
                                     label: widget.courseShortcutLabel,
+                                    selected: widget.courseShortcutSelected,
                                     onTap: widget.onCourseShortcutTap,
                                   ),
                                 ],
@@ -429,21 +431,37 @@ class _CourseShortcutButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
+  /// The shortcut's own course is the active workspace context — the mobile
+  /// counterpart of the web rail highlighting the specific course avatar.
+  final bool selected;
+
   const _CourseShortcutButton({
     required this.icon,
     required this.label,
     required this.onTap,
+    required this.selected,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Tooltip(
       message: label,
       child: InkWell(
         borderRadius: BorderRadius.circular(99),
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: const EdgeInsets.all(6.0),
+          decoration: selected
+              ? BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(
+                    color: theme.colorScheme.primary,
+                    width: 2,
+                  ),
+                )
+              : null,
+          margin: const EdgeInsets.all(2.0),
           child: icon ?? const Icon(Icons.add),
         ),
       ),
@@ -452,11 +470,9 @@ class _CourseShortcutButton extends StatelessWidget {
 }
 
 /// The expandable cavity: a drag handle (also a labeled toggle button, the
-/// #7128 pattern) then a header row ([X close] [centered title]), then the
-/// hosted section/course content, scrollable.
+/// #7128 pattern) above the hosted section/course content, scrollable. The
+/// content brings its own header/close.
 class _NavCavity extends StatelessWidget {
-  final String? title;
-  final VoidCallback? onClose;
   final VoidCallback onHandleTap;
   final GestureDragStartCallback onDragStart;
   final GestureDragUpdateCallback onDragUpdate;
@@ -464,8 +480,6 @@ class _NavCavity extends StatelessWidget {
   final Widget child;
 
   const _NavCavity({
-    required this.title,
-    required this.onClose,
     required this.onHandleTap,
     required this.onDragStart,
     required this.onDragUpdate,
@@ -512,36 +526,11 @@ class _NavCavity extends StatelessWidget {
             ),
           ),
         ),
-        // Header: [X close] [centered title]. The X is the panel's real
-        // close — it calls back to the shell, which drops the token.
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 40.0,
-                child: onClose == null
-                    ? null
-                    : IconButton(
-                        tooltip: title != null && title!.isNotEmpty
-                            ? l10n.closeNamed(title!)
-                            : l10n.close,
-                        icon: const Icon(Icons.close),
-                        onPressed: onClose,
-                      ),
-              ),
-              Expanded(
-                child: Text(
-                  title ?? '',
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.titleMedium,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              const SizedBox(width: 40.0),
-            ],
-          ),
-        ),
+        // No header of its own: every cavity surface brings its own title and
+        // close/back affordance (the chat list's and course card's panel
+        // headers, the activity plan's contextual back/X — #7115), so the
+        // cavity adds ONLY the handle. A second header here double-labelled
+        // and double-X'd every surface (live QA).
         Expanded(child: SingleChildScrollView(child: child)),
       ],
     );
