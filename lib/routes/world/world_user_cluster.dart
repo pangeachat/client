@@ -109,7 +109,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
             children: [
               ListenableBuilder(
                 listenable: Listenable.merge([_avatarUrl, _displayName]),
-                builder: (context, _) => _Avatar(
+                builder: (context, _) => ClusterAvatar(
                   avatarUrl: _avatarUrl.value,
                   name: _displayName.value,
                   onTap: _openProfile,
@@ -124,7 +124,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
               if (l2 != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: _LanguageFlag(
+                  child: ClusterLanguageFlag(
                     language: l2,
                     onTap: _openLearningSettings,
                   ),
@@ -138,18 +138,29 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 }
 
 /// The circular user avatar at the top of the cluster. Opens profile/settings.
-class _Avatar extends StatelessWidget {
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
+/// the mobile single-column rendering of this same cluster
+/// (routing.instructions.md, "Single-column analytics bar") — can reuse it
+/// verbatim (including at the collapsed bar's smaller size) rather than
+/// duplicating the avatar + tooltip + semantics wiring. This is the one
+/// mechanical visibility change made to this file for that reuse; no behavior
+/// changed for the cluster's own usage (the default matches the old fixed
+/// `_size`).
+class ClusterAvatar extends StatelessWidget {
   final Uri? avatarUrl;
   final String? name;
   final VoidCallback onTap;
+  final double size;
 
-  const _Avatar({
+  const ClusterAvatar({
     required this.avatarUrl,
     required this.name,
     required this.onTap,
+    this.size = _defaultSize,
+    super.key,
   });
 
-  static const double _size = 56.0;
+  static const double _defaultSize = 56.0;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +187,7 @@ class _Avatar extends StatelessWidget {
             child: Avatar(
               mxContent: avatarUrl,
               name: name,
-              size: _size,
+              size: size,
               showPresence: false,
             ),
           ),
@@ -270,7 +281,7 @@ class _PowerupsPill extends StatelessWidget {
                                         ? client.totalStarsEarned(l2)
                                         : 0;
 
-                                    return _TrackerButton(
+                                    return ClusterTrackerButton(
                                       indicator: ProgressIndicatorEnum.stars,
                                       count: stars,
                                       onTap: () =>
@@ -278,12 +289,12 @@ class _PowerupsPill extends StatelessWidget {
                                     );
                                   },
                                 ),
-                                _TrackerButton(
+                                ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.morphsUsed,
                                   count: grammar,
                                   onTap: () => onTap(AnalyticsPanelTab.grammar),
                                 ),
-                                _TrackerButton(
+                                ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
                                   count: vocab,
                                   onTap: () => onTap(AnalyticsPanelTab.vocab),
@@ -301,7 +312,7 @@ class _PowerupsPill extends StatelessWidget {
                   bottom: 0,
                   child: Material(
                     type: MaterialType.transparency,
-                    child: _LevelMedal(level: level, onTap: onLevelTap),
+                    child: ClusterLevelMedal(level: level, onTap: onLevelTap),
                   ),
                 ),
               ],
@@ -324,16 +335,18 @@ class _PowerupsPill extends StatelessWidget {
 }
 
 /// One tracker in the powerups pill: a dark icon over its count, on the white
-/// inner field. Tapping opens that metric's analytics tab.
-class _TrackerButton extends StatelessWidget {
+/// inner field. Tapping opens that metric's analytics tab. Public so
+/// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
+class ClusterTrackerButton extends StatelessWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
   final VoidCallback onTap;
 
-  const _TrackerButton({
+  const ClusterTrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
+    super.key,
   });
 
   @override
@@ -376,11 +389,16 @@ class _TrackerButton extends StatelessWidget {
 }
 
 /// The gold level shield overhanging the powerups pill (opens the level tab).
-class _LevelMedal extends StatelessWidget {
+/// Public so [WorldAnalyticsBar] can place it at the bar's left end.
+class ClusterLevelMedal extends StatelessWidget {
   final int level;
   final VoidCallback onTap;
 
-  const _LevelMedal({required this.level, required this.onTap});
+  const ClusterLevelMedal({
+    required this.level,
+    required this.onTap,
+    super.key,
+  });
 
   // The outer shield shape from Figma (icon/warning-secondary fill #F3C141 ==
   // AppConfig.goldMedal); the level number is overlaid.
@@ -452,14 +470,30 @@ class _LevelMedal extends StatelessWidget {
 /// outline keeps it legible over any flag. Gated on
 /// [LanguageModel.shouldShowFlag], the same rule the language pickers use.
 /// Tapping it opens the learning settings page.
-class _LanguageFlag extends StatelessWidget {
+///
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
+/// can reuse it at the "slightly smaller than web" size the mobile chrome
+/// calls for (routing.instructions.md, "Single-column analytics bar") without
+/// duplicating the flag/outline/tooltip logic.
+class ClusterLanguageFlag extends StatelessWidget {
   final LanguageModel language;
   final VoidCallback onTap;
+  final double width;
+  final double height;
+  final double fontSize;
 
-  const _LanguageFlag({required this.language, required this.onTap});
+  const ClusterLanguageFlag({
+    required this.language,
+    required this.onTap,
+    this.width = _defaultWidth,
+    this.height = _defaultHeight,
+    this.fontSize = _defaultFontSize,
+    super.key,
+  });
 
-  static const double _w = 52.0;
-  static const double _h = 36.0;
+  static const double _defaultWidth = 52.0;
+  static const double _defaultHeight = 36.0;
+  static const double _defaultFontSize = 18.0;
   static const double _radius = 6.0;
   static const double _borderWidth = 2.0;
 
@@ -473,7 +507,7 @@ class _LanguageFlag extends StatelessWidget {
         Text(
           language.langCodeShort.toUpperCase(),
           style: TextStyle(
-            fontSize: 18,
+            fontSize: fontSize,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 4
@@ -482,7 +516,7 @@ class _LanguageFlag extends StatelessWidget {
         ),
         Text(
           language.langCodeShort.toUpperCase(),
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: fontSize, color: Colors.black),
         ),
       ],
     );
@@ -506,8 +540,8 @@ class _LanguageFlag extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              width: _w,
-              height: _h,
+              width: width,
+              height: height,
               padding: .all(_borderWidth),
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -521,12 +555,12 @@ class _LanguageFlag extends StatelessWidget {
                         children: [
                           SvgPicture.network(
                             language.svgUrl.toString(),
-                            width: _w,
-                            height: _h,
+                            width: width,
+                            height: height,
                             fit: BoxFit.cover,
                             errorBuilder: (ctx, _, _) => outlinedText,
                             placeholderBuilder: (_) =>
-                                const SizedBox(width: _w, height: _h),
+                                SizedBox(width: width, height: height),
                           ),
                           Positioned(child: Center(child: outlinedText)),
                         ],

@@ -42,8 +42,8 @@ class WorkspaceLeftPanel extends StatelessWidget {
 
   /// Render the panel's surface WITHOUT the floating [PanelCard] chrome — used
   /// when this panel is hosted inside another card-like container that already
-  /// supplies the surface (the narrow [MobileCourseSheet], which wraps a course
-  /// in a draggable bottom sheet). Avoids a card-inside-a-card. See
+  /// supplies the surface (the narrow nav widget's cavity, which hosts the
+  /// focused section surface). Avoids a card-inside-a-card. See
   /// `routing.instructions.md`.
   final bool bare;
 
