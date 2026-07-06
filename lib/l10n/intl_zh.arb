@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-02 16:44:49.455276",
+    "@@last_modified": "2026-07-06 10:22:37.363814",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10225,6 +10225,46 @@
     },
     "customizePollLabel": "自定义投票",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "导航选项",
+    "joinedCourseListLabel": "已加入课程列表",
+    "analyticsAndSettingsLabel": "分析和设置选项",
+    "searchActivitiesLabel": "在地图上搜索活动",
+    "filteredActivitiesLabel": "过滤后的活动列表",
+    "activityFilterButtonsLabel": "语言、难度和进度过滤按钮",
+    "mapZoomLabel": "地图缩放控件",
+    "activityMapLabel": "活动地图",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

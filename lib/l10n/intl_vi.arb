@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:46.586843",
+    "@@last_modified": "2026-07-06 10:22:27.237694",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7308,6 +7308,46 @@
     },
     "customizePollLabel": "Tùy chỉnh cuộc thăm dò",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Tùy chọn điều hướng",
+    "joinedCourseListLabel": "Danh sách khóa học đã tham gia",
+    "analyticsAndSettingsLabel": "Tùy chọn phân tích và cài đặt",
+    "searchActivitiesLabel": "Tìm kiếm hoạt động trên bản đồ",
+    "filteredActivitiesLabel": "Danh sách hoạt động đã lọc",
+    "activityFilterButtonsLabel": "Nút lọc ngôn ngữ, độ khó và tiến độ",
+    "mapZoomLabel": "Điều khiển phóng to bản đồ",
+    "activityMapLabel": "Bản đồ hoạt động",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

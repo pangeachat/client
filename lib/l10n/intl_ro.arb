@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:17.641916",
+    "@@last_modified": "2026-07-06 10:21:01.927647",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11050,6 +11050,46 @@
     },
     "customizePollLabel": "Personalizează sondajul",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opțiuni de navigare",
+    "joinedCourseListLabel": "Lista cursurilor alăturate",
+    "analyticsAndSettingsLabel": "Opțiuni de analiză și setări",
+    "searchActivitiesLabel": "Caută activități pe hartă",
+    "filteredActivitiesLabel": "Lista activităților filtrate",
+    "activityFilterButtonsLabel": "Butonul de filtrare a limbii, dificultății și progresului",
+    "mapZoomLabel": "Controale de zoom pentru hartă",
+    "activityMapLabel": "Harta activităților",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

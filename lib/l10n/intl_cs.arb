@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-02 16:44:35.123583",
+    "@@last_modified": "2026-07-06 10:21:48.804642",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10779,6 +10779,46 @@
     },
     "customizePollLabel": "Přizpůsobit anketu",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Možnosti navigace",
+    "joinedCourseListLabel": "Seznam připojených kurzů",
+    "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
+    "searchActivitiesLabel": "Hledat aktivity na mapě",
+    "filteredActivitiesLabel": "Seznam filtrovaných aktivit",
+    "activityFilterButtonsLabel": "Tlačítka filtru jazyka, obtížnosti a pokroku",
+    "mapZoomLabel": "Ovládání přiblížení mapy",
+    "activityMapLabel": "Mapa aktivit",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

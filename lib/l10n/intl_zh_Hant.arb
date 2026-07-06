@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:40.046336",
+    "@@last_modified": "2026-07-06 10:22:07.031645",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10355,6 +10355,46 @@
     },
     "customizePollLabel": "自訂投票",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "導航選項",
+    "joinedCourseListLabel": "已加入課程列表",
+    "analyticsAndSettingsLabel": "分析和設置選項",
+    "searchActivitiesLabel": "在地圖上搜索活動",
+    "filteredActivitiesLabel": "過濾後的活動列表",
+    "activityFilterButtonsLabel": "語言、難度和進度過濾按鈕",
+    "mapZoomLabel": "地圖縮放控制",
+    "activityMapLabel": "活動地圖",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

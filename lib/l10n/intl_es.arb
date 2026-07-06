@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-02 16:44:12.235661",
+    "@@last_modified": "2026-07-06 10:20:46.766968",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8319,6 +8319,46 @@
     },
     "customizePollLabel": "Personalizar encuesta",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opciones de navegación",
+    "joinedCourseListLabel": "Lista de cursos unidos",
+    "analyticsAndSettingsLabel": "Opciones de análisis y configuración",
+    "searchActivitiesLabel": "Buscar actividades en el mapa",
+    "filteredActivitiesLabel": "Lista de actividades filtradas",
+    "activityFilterButtonsLabel": "Botones de filtro de idioma, dificultad y progreso",
+    "mapZoomLabel": "Controles de zoom del mapa",
+    "activityMapLabel": "Mapa de actividades",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

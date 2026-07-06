@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-02 16:44:44.038012",
+    "@@last_modified": "2026-07-06 10:22:19.311191",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10556,6 +10556,46 @@
     },
     "customizePollLabel": "Anketi özelleştir",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigasyon seçenekleri",
+    "joinedCourseListLabel": "Katıldığınız kurs listesi",
+    "analyticsAndSettingsLabel": "Analitik ve Ayarlar seçenekleri",
+    "searchActivitiesLabel": "Haritada etkinlikleri ara",
+    "filteredActivitiesLabel": "Filtrelenmiş etkinlik listesi",
+    "activityFilterButtonsLabel": "Dil, zorluk ve ilerleme filtre butonları",
+    "mapZoomLabel": "Harita yakınlaştırma kontrolleri",
+    "activityMapLabel": "Etkinlik haritası",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

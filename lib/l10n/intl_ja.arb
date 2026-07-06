@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-02 16:44:53.865633",
+    "@@last_modified": "2026-07-06 10:22:50.878516",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11093,6 +11093,46 @@
     },
     "customizePollLabel": "投票をカスタマイズ",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "ナビゲーションオプション",
+    "joinedCourseListLabel": "参加したコースリスト",
+    "analyticsAndSettingsLabel": "分析と設定オプション",
+    "searchActivitiesLabel": "マップ上のアクティビティを検索",
+    "filteredActivitiesLabel": "フィルタリングされたアクティビティリスト",
+    "activityFilterButtonsLabel": "言語、難易度、進捗のフィルターボタン",
+    "mapZoomLabel": "マップズームコントロール",
+    "activityMapLabel": "アクティビティマップ",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

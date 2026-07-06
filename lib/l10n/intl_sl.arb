@@ -1962,7 +1962,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-02 16:44:32.159206",
+    "@@last_modified": "2026-07-06 10:21:38.960495",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11341,6 +11341,46 @@
     },
     "customizePollLabel": "Prilagodi anketo",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Možnosti navigacije",
+    "joinedCourseListLabel": "Seznam pridruženih tečajev",
+    "analyticsAndSettingsLabel": "Možnosti analitike in nastavitev",
+    "searchActivitiesLabel": "Išči aktivnosti na zemljevidu",
+    "filteredActivitiesLabel": "Seznam filtriranih aktivnosti",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje po jeziku, težavnosti in napredku",
+    "mapZoomLabel": "Nadzor povečave zemljevida",
+    "activityMapLabel": "Zemljevid aktivnosti",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }
