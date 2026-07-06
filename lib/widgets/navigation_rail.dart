@@ -10,7 +10,6 @@ import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -45,14 +44,9 @@ class SpacesNavigationRail extends StatelessWidget {
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
       context.go(
-        WorkspaceNav.setSection(
-          uri,
-          PRoutes.course(roomId),
-          const PanelToken('course'),
-          // A left-nav click replaces the open left panels rather than stacking
-          // beside them (drop any open room/section). See routing.instructions.md.
-          keepRoom: false,
-        ),
+        // A left-nav click replaces the open left panels rather than stacking
+        // beside them (drop any open room/section). See routing.instructions.md.
+        WorkspaceNav.openCourseSection(uri, roomId, keepRoom: false),
       );
       return;
     }
@@ -70,12 +64,7 @@ class SpacesNavigationRail extends StatelessWidget {
     if (joinedRoomId == null) return;
 
     context.go(
-      WorkspaceNav.setSection(
-        uri,
-        PRoutes.course(joinedRoomId),
-        const PanelToken('course'),
-        keepRoom: false,
-      ),
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
     );
     return;
   }
@@ -106,136 +95,159 @@ class SpacesNavigationRail extends StatelessWidget {
     // top-right cluster, one source of truth. See workspace_dock.dart.
     return WorkspaceDock(
       child: SafeArea(
-        child: StreamBuilder(
-          key: ValueKey(client.userID.toString()),
-          stream: client.onSync.stream
-              .where((s) => s.hasRoomUpdate)
-              .rateLimit(const Duration(seconds: 1)),
-          builder: (context, _) {
-            final allSpaces = client.rooms
-                .where((room) => room.isSpace)
-                .toList();
+        child: Semantics(
+          label: L10n.of(context).navOptionsLabel,
+          child: StreamBuilder(
+            key: ValueKey(client.userID.toString()),
+            stream: client.onSync.stream
+                .where((s) => s.hasRoomUpdate)
+                .rateLimit(const Duration(seconds: 1)),
+            builder: (context, _) {
+              final allSpaces = client.rooms
+                  .where((room) => room.isSpace)
+                  .toList();
 
-            return AnimatedContainer(
-              width: naviRailWidth,
-              duration: FluffyThemes.animationDuration,
-              // world_v2 rail order (top→bottom): World · Chats · Courses ·
-              // joined spaces. (Profile/settings is no longer a rail slot;
-              // analytics opens from the top-right cluster.)
-              child: Column(
-                // Size the rail to its items — a floating bar over the map, not
-                // the full screen height; it still scrolls if the joined-spaces
-                // list overflows the viewport.
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: ListView(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        // 1. World map home — the Pangea brand mark, at the top
-                        // of the rail. Chromeless and avatar-sized; the left
-                        // indicator bar conveys selection. Brand purple when
-                        // active, muted when not.
-                        NaviRailItem(
-                          isSelected: isWorld,
-                          backgroundColor: Colors.transparent,
-                          // Exclude the logo's semanticsLabel so VoiceOver reads
-                          // only the button tooltip ("world"), not the logo name.
-                          icon: ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: largeIconWidth,
-                              forceColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurfaceVariant,
-                            ),
-                          ),
-                          selectedIcon: ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: largeIconWidth,
-                              forceColor: Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                          onTap: () {
-                            // World is home: clear every panel (both columns)
-                            // and reveal the full map. See routing.instructions.md.
-                            context.go(WorkspaceNav.clearAll());
-                          },
-                          toolTip: L10n.of(context).world,
-                          naviRailWidth: naviRailWidth,
-                        ),
-                        // 2. Chats — the chat list. Chromeless (no box fill) and
-                        // icon-sized to match the brand mark / course avatars
-                        // (it used to render tiny on the default surface fill);
-                        // the left indicator bar conveys selection.
-                        NaviRailItem(
-                          isSelected: isChats,
-                          backgroundColor: Colors.transparent,
-                          icon: Icon(
-                            Icons.forum_outlined,
-                            size: smallIconWidth,
-                          ),
-                          selectedIcon: Icon(Icons.forum, size: smallIconWidth),
-                          onTap: () {
-                            // Token-only: the chats list is a left `chats` token
-                            // over the world path `/` (no legacy `/chats` path).
-                            context.go(
-                              WorkspaceNav.setSection(
-                                state.uri,
-                                PRoutes.world,
-                                const PanelToken('chats'),
-                                // Replace open left panels rather than stack.
-                                keepRoom: false,
+              return AnimatedContainer(
+                width: naviRailWidth,
+                duration: FluffyThemes.animationDuration,
+                // world_v2 rail order (top→bottom): World · Chats · Courses ·
+                // joined spaces. (Profile/settings is no longer a rail slot;
+                // analytics opens from the top-right cluster.)
+                child: Column(
+                  // Size the rail to its items — a floating bar over the map, not
+                  // the full screen height; it still scrolls if the joined-spaces
+                  // list overflows the viewport.
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: ListView(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: [
+                          // 1. World map home — the Pangea brand mark, at the top
+                          // of the rail. Chromeless and avatar-sized; the left
+                          // indicator bar conveys selection. Brand purple when
+                          // active, muted when not.
+                          NaviRailItem(
+                            isSelected: isWorld,
+                            backgroundColor: Colors.transparent,
+                            // Exclude the logo's semanticsLabel so VoiceOver reads
+                            // only the button tooltip ("world"), not the logo name.
+                            icon: ExcludeSemantics(
+                              child: PangeaLogoSvg(
+                                width: largeIconWidth,
+                                forceColor: Theme.of(
+                                  context,
+                                ).colorScheme.onSurfaceVariant,
                               ),
-                            );
-                          },
-                          toolTip: L10n.of(context).allChats,
-                          unreadBadgeFilter: (room) =>
-                              room.firstSpaceParent == null,
-                          naviRailWidth: naviRailWidth,
-                        ),
-                        // 3. Courses — opens the Courses panel (the courses
-                        // you're in + add-course options) as a bare `addcourse`
-                        // left token. The Material map icon; chromeless, the bar
-                        // conveys selection. keepRoom:false keeps it a focused
-                        // flow with no chat floating over it. (Analytics is not a
-                        // rail section — it opens from the top-right cluster.)
-                        NaviRailItem(
-                          isSelected: isCourseFind,
-                          backgroundColor: Colors.transparent,
-                          icon: Icon(Icons.map_outlined, size: smallIconWidth),
-                          selectedIcon: Icon(Icons.map, size: smallIconWidth),
-                          onTap: () {
-                            context.go(
-                              WorkspaceNav.setSection(
-                                state.uri,
-                                PRoutes.world,
-                                const PanelToken('addcourse'),
-                                keepRoom: false,
+                            ),
+                            selectedIcon: ExcludeSemantics(
+                              child: PangeaLogoSvg(
+                                width: largeIconWidth,
+                                forceColor: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
                               ),
-                            );
-                          },
-                          toolTip: L10n.of(context).courses,
-                          naviRailWidth: naviRailWidth,
-                        ),
-                        // 4. The course spaces you're in.
-                        for (final space in allSpaces)
-                          // _spaceItem(context, space),
-                          _SpaceItem(
-                            space: space,
-                            iconWidth: largeIconWidth,
+                            ),
+                            onTap: () {
+                              // World is home: clear every panel (both columns)
+                              // and reveal the full map. See routing.instructions.md.
+                              context.go(WorkspaceNav.clearAll());
+                            },
+                            toolTip: L10n.of(context).world,
                             naviRailWidth: naviRailWidth,
-                            selected: activeSpaceId == space.id,
-                            onTap: () => _onTapSpace(context, space.id),
                           ),
-                      ],
+                          // 2. Chats — the chat list. Chromeless (no box fill) and
+                          // icon-sized to match the brand mark / course avatars
+                          // (it used to render tiny on the default surface fill);
+                          // the left indicator bar conveys selection.
+                          NaviRailItem(
+                            isSelected: isChats,
+                            backgroundColor: Colors.transparent,
+                            icon: Icon(
+                              Icons.forum_outlined,
+                              size: smallIconWidth,
+                            ),
+                            selectedIcon: Icon(
+                              Icons.forum,
+                              size: smallIconWidth,
+                            ),
+                            onTap: () {
+                              // Token-only: the chats list is a left `chats` token
+                              // over the world path `/` (no legacy `/chats` path).
+                              context.go(
+                                WorkspaceNav.setSection(
+                                  state.uri,
+                                  const PanelToken('chats'),
+                                  // Replace open left panels rather than stack.
+                                  keepRoom: false,
+                                ),
+                              );
+                            },
+                            toolTip: L10n.of(context).allChats,
+                            unreadBadgeFilter: (room) =>
+                                room.firstSpaceParent == null,
+                            naviRailWidth: naviRailWidth,
+                          ),
+                          // 3. Courses — opens the Courses panel (the courses
+                          // you're in + add-course options) as a bare `addcourse`
+                          // left token. The Material map icon; chromeless, the bar
+                          // conveys selection. keepRoom:false keeps it a focused
+                          // flow with no chat floating over it. (Analytics is not a
+                          // rail section — it opens from the top-right cluster.)
+                          NaviRailItem(
+                            isSelected: isCourseFind,
+                            backgroundColor: Colors.transparent,
+                            icon: Icon(
+                              Icons.map_outlined,
+                              size: smallIconWidth,
+                            ),
+                            selectedIcon: Icon(Icons.map, size: smallIconWidth),
+                            onTap: () {
+                              context.go(
+                                WorkspaceNav.setSection(
+                                  state.uri,
+                                  const PanelToken('addcourse'),
+                                  keepRoom: false,
+                                ),
+                              );
+                            },
+                            toolTip: L10n.of(context).courses,
+                            naviRailWidth: naviRailWidth,
+                          ),
+                          Semantics(
+                            label: L10n.of(context).joinedCourseListLabel,
+                            child: ListView(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                // 4. The course spaces you're in.
+                                for (final space in allSpaces)
+                                  // _spaceItem(context, space),
+                                  _SpaceItem(
+                                    space: space,
+                                    iconWidth: largeIconWidth,
+                                    naviRailWidth: naviRailWidth,
+                                    // Highlight the course avatar only while the course
+                                    // IS the open section — not merely because `?c=`
+                                    // persists under a chat/room (routing decision 5).
+                                    selected:
+                                        section == AppSection.courses &&
+                                        activeSpaceId == space.id,
+                                    onTap: () => _onTapSpace(context, space.id),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          },
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

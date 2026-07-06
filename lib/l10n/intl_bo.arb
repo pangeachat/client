@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-02 16:44:48.641735",
+    "@@last_modified": "2026-07-06 10:22:35.449235",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9897,6 +9897,46 @@
     },
     "customizePollLabel": "Customize poll",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigasi opsi",
+    "joinedCourseListLabel": "Daftar kursus yang diikuti",
+    "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
+    "searchActivitiesLabel": "Cari aktivitas di peta",
+    "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
+    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
+    "mapZoomLabel": "Kontrol zoom peta",
+    "activityMapLabel": "Peta aktivitas",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

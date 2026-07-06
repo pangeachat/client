@@ -154,14 +154,17 @@ abstract class AppRoutes {
               defaultPageBuilder(context, state, const EmptyPage()),
         ),
         // world_v2: there is no `/chats` render route — the chat list is the
-        // `left=chats` token over `/`, rendered by the shell. The legacy
-        // `/chats` / `/rooms` paths redirect to that token (legacy_redirects).
+        // `left=chats` token over `/`, rendered by the shell. The retired
+        // `/chats` / `/rooms` paths are dead by design — internal nav emits the
+        // token, not these paths, so nothing redirects them; only the
+        // `/rooms/archive` + `/rooms/newprivatechat` fork utility pages remain.
         // Pangea#
         GoRoute(
           path: '/rooms',
           redirect: loggedOutRedirect,
-          // Bare `/rooms` redirects to the `left=chats` token before it renders;
-          // this parent survives only to host archive / newprivatechat.
+          // Bare `/rooms` is a retired path (dead by design — it renders empty);
+          // this parent survives only to host the archive / newprivatechat fork
+          // utility pages below.
           pageBuilder: (context, state) =>
               defaultPageBuilder(context, state, const EmptyPage()),
           routes: [
@@ -195,8 +198,9 @@ abstract class AppRoutes {
         ),
         // #Pangea
         // world_v2 section roots — see .github/vision/world_v2.md and
-        // lib/pangea/navigation/. Legacy /rooms/... paths reach these
-        // through LegacyRedirects (router-level shim).
+        // lib/pangea/navigation/. These render only their bounded children
+        // (course-wizard steps, previews); retired bare section paths are dead
+        // by design and are not redirected.
         GoRoute(
           path: '/courses',
           redirect: loggedOutRedirect,
@@ -305,19 +309,19 @@ abstract class AppRoutes {
         // `right=settingspage:<page>` detail (rendered by the shell, via
         // WorkspaceNav.openSettings). The learning unsaved-changes guard lives
         // in the page; the security leaves (password/ignorelist/3pid) and
-        // chat/emotes are token sub-pages. Legacy `/settings[/...]` deep links
-        // redirect to those tokens (legacy_redirects).
+        // chat/emotes are token sub-pages. Retired `/settings[/...]` deep links
+        // are dead by design — nothing redirects them.
         // Pangea#
         // world_v2: there is no `/profile` render route — the avatar surface
         // (profile + settings merged) is the `right=settings` token, and the
         // profile editor is the `settingspage:profile/edit` detail, both
-        // rendered by the shell. Legacy `/profile[/edit]` redirects to those
-        // tokens (legacy_redirects).
+        // rendered by the shell. Retired `/profile[/edit]` paths are dead by
+        // design — nothing redirects them.
         // Pangea#
         // #Pangea
         // world_v2: the standalone activity link `/<uuid>` is NOT a render route.
-        // Like `/rooms/:roomid` it is an inbound shim `LegacyRedirects` rewrites to
-        // its `left=activity:<id>` token before anything renders (#7385), so the
+        // It is the ONE inbound URL `LegacyRedirects` rewrites — to its
+        // `left=activity:<id>` token before anything renders (#7385), so the
         // shell hosts the activity as a first-class left panel, not a canvas
         // detail. See `routing.instructions.md`.
         // Pangea#

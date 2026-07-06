@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:55.044891",
+    "@@last_modified": "2026-07-06 10:22:55.796897",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11344,6 +11344,46 @@
     },
     "customizePollLabel": "Personigi enketon",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigaj opcioj",
+    "joinedCourseListLabel": "Aliĝintaj kursoj",
+    "analyticsAndSettingsLabel": "Analitiko kaj Agordoj opcioj",
+    "searchActivitiesLabel": "Serĉi aktivadojn sur mapo",
+    "filteredActivitiesLabel": "Filtrita aktivado-listo",
+    "activityFilterButtonsLabel": "Lingvo, malfacileco, kaj progreso filtraj butonoj",
+    "mapZoomLabel": "Mapo zoom-kontroloj",
+    "activityMapLabel": "Aktivado-mapo",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

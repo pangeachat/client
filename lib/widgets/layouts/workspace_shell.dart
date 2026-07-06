@@ -251,6 +251,13 @@ class WorkspaceShell extends StatelessWidget {
             if (l.mobileSheetIndex != null)
               Positioned.fill(
                 child: MobileCourseSheet(
+                  // Key the sheet's remembered size by the course space (stable
+                  // across tab switches and a chat round-trip), or the activity
+                  // id for a standalone activity sheet (#7332).
+                  sheetId:
+                      activeSpaceIdFor(state.uri) ??
+                      l.leftTokens[l.mobileSheetIndex!].param ??
+                      l.leftTokens[l.mobileSheetIndex!].type,
                   child: WorkspaceLeftPanel(
                     token: l.leftTokens[l.mobileSheetIndex!],
                     currentUri: state.uri,

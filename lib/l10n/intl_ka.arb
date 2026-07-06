@@ -2098,7 +2098,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-02 16:44:56.529577",
+    "@@last_modified": "2026-07-06 10:23:04.942153",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11293,6 +11293,46 @@
     },
     "customizePollLabel": "პოლების მორგება",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "ნავიგაციის პარამეტრები",
+    "joinedCourseListLabel": "შეერთებული კურსების სია",
+    "analyticsAndSettingsLabel": "ანალიტიკა და პარამეტრები",
+    "searchActivitiesLabel": "ძებნა აქტივობების რუკაზე",
+    "filteredActivitiesLabel": "ფილტრირებული აქტივობების სია",
+    "activityFilterButtonsLabel": "ენას, სირთულეს და პროგრესს ფილტრების ღილაკები",
+    "mapZoomLabel": "რუკის ზუმის კონტროლი",
+    "activityMapLabel": "აქტივობის რუკა",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

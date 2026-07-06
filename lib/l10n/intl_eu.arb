@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-02 16:44:28.985231",
+    "@@last_modified": "2026-07-06 10:21:28.326183",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10225,6 +10225,46 @@
     },
     "customizePollLabel": "Pertsonaiztu inkesta",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Nabigazio aukerak",
+    "joinedCourseListLabel": "Batutako ikastaroen zerrenda",
+    "analyticsAndSettingsLabel": "Analitika eta Ezarpenen aukerak",
+    "searchActivitiesLabel": "Bilatu jarduerak mapan",
+    "filteredActivitiesLabel": "Iragazitako jardueren zerrenda",
+    "activityFilterButtonsLabel": "Hizkuntza, zailtasuna eta aurrerapen iragazki botoiak",
+    "mapZoomLabel": "Maparen zoom kontrolak",
+    "activityMapLabel": "Jarduera mapa",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

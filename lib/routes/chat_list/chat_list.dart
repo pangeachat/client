@@ -21,7 +21,6 @@ import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -138,16 +137,11 @@ class ChatListController extends State<ChatList>
   void clearActiveSpace() => context.go(
     WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      PRoutes.world,
       const PanelToken('chats'),
     ),
   );
   void setActiveSpace(String spaceId) => context.go(
-    WorkspaceNav.setSection(
-      GoRouterState.of(context).uri,
-      PRoutes.course(spaceId),
-      const PanelToken('course'),
-    ),
+    WorkspaceNav.openCourseSection(GoRouterState.of(context).uri, spaceId),
   );
   // Pangea#
 
@@ -444,7 +438,9 @@ class ChatListController extends State<ChatList>
 
   Stream<Client> get clientStream => _clientStream.stream;
 
-  void addAccountAction() => context.go('/rooms/settings/account');
+  void addAccountAction() => context.go(
+    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'account'),
+  );
 
   void _onScroll() {
     final newScrolledToTop = scrollController.position.pixels <= 0;

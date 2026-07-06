@@ -3377,7 +3377,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-02 16:44:54.459535",
+    "@@last_modified": "2026-07-06 10:22:53.545892",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10944,6 +10944,46 @@
     },
     "customizePollLabel": "मतदान को अनुकूलित करें",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "नेविगेशन विकल्प",
+    "joinedCourseListLabel": "शामिल पाठ्यक्रम सूची",
+    "analyticsAndSettingsLabel": "विश्लेषण और सेटिंग्स विकल्प",
+    "searchActivitiesLabel": "मानचित्र पर गतिविधियों के लिए खोजें",
+    "filteredActivitiesLabel": "फिल्टर की गई गतिविधियों की सूची",
+    "activityFilterButtonsLabel": "भाषा, कठिनाई, और प्रगति फ़िल्टर बटन",
+    "mapZoomLabel": "मानचित्र ज़ूम नियंत्रण",
+    "activityMapLabel": "गतिविधि मानचित्र",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

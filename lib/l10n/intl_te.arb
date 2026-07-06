@@ -1467,7 +1467,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-02 16:44:44.853781",
+    "@@last_modified": "2026-07-06 10:22:22.007538",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11349,6 +11349,46 @@
     },
     "customizePollLabel": "పోల్‌ను అనుకూలీకరించండి",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "నావిగేషన్ ఎంపికలు",
+    "joinedCourseListLabel": "చేరిన కోర్సుల జాబితా",
+    "analyticsAndSettingsLabel": "విశ్లేషణ మరియు సెట్టింగ్స్ ఎంపికలు",
+    "searchActivitiesLabel": "నకశా పై కార్యకలాపాలను శోధించండి",
+    "filteredActivitiesLabel": "ఫిల్టర్ చేసిన కార్యకలాపాల జాబితా",
+    "activityFilterButtonsLabel": "భాష, కష్టత, మరియు పురోగతి ఫిల్టర్ బటన్లు",
+    "mapZoomLabel": "నకశా జూమ్ నియంత్రణలు",
+    "activityMapLabel": "కార్యకలాపాల నకశా",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -30,6 +30,9 @@ enum InvitationFilter {
 
   static InvitationFilter? fromString(String value) =>
       InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
+
+  static InvitationFilter? fromNullableString(String? value) =>
+      value == null ? null : fromString(value);
 }
 
 class PangeaInvitationSelection extends StatefulWidget {

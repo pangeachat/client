@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-02 16:44:43.327485",
+    "@@last_modified": "2026-07-06 10:22:17.189135",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10565,6 +10565,46 @@
     },
     "customizePollLabel": "تخصيص الاستطلاع",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "خيارات التنقل",
+    "joinedCourseListLabel": "قائمة الدورات المنضمة",
+    "analyticsAndSettingsLabel": "خيارات التحليلات والإعدادات",
+    "searchActivitiesLabel": "البحث عن الأنشطة على الخريطة",
+    "filteredActivitiesLabel": "قائمة الأنشطة المفلترة",
+    "activityFilterButtonsLabel": "أزرار تصفية اللغة والصعوبة والتقدم",
+    "mapZoomLabel": "تحكمات تكبير الخريطة",
+    "activityMapLabel": "خريطة الأنشطة",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

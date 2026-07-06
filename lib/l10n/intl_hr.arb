@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-02 16:44:20.078037",
+    "@@last_modified": "2026-07-06 10:21:12.986037",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10709,6 +10709,46 @@
     },
     "customizePollLabel": "Prilagodi anketu",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opcije navigacije",
+    "joinedCourseListLabel": "Popis pridruženih tečajeva",
+    "analyticsAndSettingsLabel": "Opcije analitike i postavki",
+    "searchActivitiesLabel": "Pretraži aktivnosti na karti",
+    "filteredActivitiesLabel": "Popis filtriranih aktivnosti",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje jezika, težine i napretka",
+    "mapZoomLabel": "Kontrole zumiranja karte",
+    "activityMapLabel": "Karta aktivnosti",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:11.448597",
+    "@@last_modified": "2026-07-06 10:20:44.858557",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10442,6 +10442,46 @@
     },
     "customizePollLabel": "설문조사 사용자 정의",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "탐색 옵션",
+    "joinedCourseListLabel": "참여한 과정 목록",
+    "analyticsAndSettingsLabel": "분석 및 설정 옵션",
+    "searchActivitiesLabel": "지도에서 활동 검색",
+    "filteredActivitiesLabel": "필터링된 활동 목록",
+    "activityFilterButtonsLabel": "언어, 난이도 및 진행 필터 버튼",
+    "mapZoomLabel": "지도 확대/축소 제어",
+    "activityMapLabel": "활동 지도",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

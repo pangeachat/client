@@ -3933,7 +3933,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-02 16:44:36.720393",
+    "@@last_modified": "2026-07-06 10:21:54.149922",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10239,6 +10239,46 @@
     },
     "customizePollLabel": "Наладзіць апытанне",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Варыянты навігацыі",
+    "joinedCourseListLabel": "Спіс далучаных курсаў",
+    "analyticsAndSettingsLabel": "Аналітыка і параметры налад",
+    "searchActivitiesLabel": "Пошук дзейнасцяў на карце",
+    "filteredActivitiesLabel": "Фільтраваны спіс дзейнасцяў",
+    "activityFilterButtonsLabel": "Кнопкі фільтрацыі па мове, складанасці і прагрэсу",
+    "mapZoomLabel": "Кіраванне маштабам карты",
+    "activityMapLabel": "Карта дзейнасцяў",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

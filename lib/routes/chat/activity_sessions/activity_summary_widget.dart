@@ -9,6 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_carousel.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
@@ -78,14 +79,13 @@ class ActivitySummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    // Deep-link autostart: a video card opens the plan with `?autoplay=<index>`.
-    // Only the plan page (not the in-session render) honors it.
-    final autoplayParam = GoRouterState.of(
-      context,
-    ).uri.queryParameters['autoplay'];
-    final autoplayIndex = (inChat || autoplayParam == null)
+    // Deep-link autostart: the autoplay index rides the activity token's
+    // fields (route_facts.activityFor; the legacy `?autoplay=` param is
+    // accepted inbound). Only the plan page (not the in-session render)
+    // honors it.
+    final autoplayIndex = inChat
         ? null
-        : int.tryParse(autoplayParam);
+        : activityFor(GoRouterState.of(context))?.autoplay;
     return Center(
       child: Container(
         padding: const EdgeInsets.all(12.0),

@@ -10,6 +10,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -57,6 +59,12 @@ class ActivitySessionStartPage extends StatefulWidget {
 
 class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   bool loading = true;
+
+  /// Whether the open-session summaries are still being fetched (a cache miss —
+  /// no data from the map's discovery). Drives the CTA's loading indicator so the
+  /// join/start choice never flashes "Start" before the sessions land.
+  bool _summariesLoading = true;
+
   Object? error;
 
   ActivityPlanModel? activity;
@@ -69,13 +77,23 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   @override
   void initState() {
     super.initState();
+    _initSummariesFromCache();
+    _load();
+  }
 
+  /// Seed the summaries from the world map's discovery cache when we arrived from
+  /// a pin it already knows is joinable — an instant join list, no fetch. On a
+  /// miss the model starts empty and [_summariesLoading] stays true, so
+  /// [_loadSummary] fetches and the CTA shows a spinner meanwhile.
+  void _initSummariesFromCache() {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      widget.activityId,
+    );
     _roomSummariesModel = ActivitySessionSummariesModel(
-      {},
+      cached ?? {},
       activityId: widget.activityId,
     );
-
-    _load();
+    _summariesLoading = cached == null;
   }
 
   @override
@@ -83,7 +101,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId ||
         oldWidget.activityId != widget.activityId) {
-      setState(() => showInstructions = false);
+      setState(() {
+        showInstructions = false;
+        _initSummariesFromCache();
+      });
       _load();
     }
   }
@@ -157,19 +178,28 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
   Future<void> _loadSummary() async {
     if (!mounted) return;
+    // Already satisfied from the map's discovery cache — no server round-trip.
+    if (!_summariesLoading) return;
     final Set<String> roomIds = {};
     if (widget.roomId != null) {
       roomIds.add(widget.roomId!);
     }
 
-    final course = courseParent;
-    if (course != null) {
-      roomIds.addAll(
-        course.spaceChildren.map((c) => c.roomId).whereType<String>(),
-      );
-    }
+    // This activity's session rooms across ALL the learner's joined courses —
+    // not just a course in scope, since a bare map pin carries no course
+    // context. Shared with the world-map pin discovery so both surface the same
+    // sessions. See world-map.instructions.md ("Discovering joinable sessions").
+    roomIds.addAll(
+      await Matrix.of(
+        context,
+      ).client.courseActivitySessionRoomIds(activityId: widget.activityId),
+    );
+    if (!mounted) return;
 
-    if (roomIds.isEmpty) return;
+    if (roomIds.isEmpty) {
+      if (mounted) setState(() => _summariesLoading = false);
+      return;
+    }
     try {
       final roomSummariesResponse = await Matrix.of(context).client
           .loadRoomSummaries(
@@ -183,6 +213,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
           roomSummariesResponse,
           activityId: widget.activityId,
         );
+        _summariesLoading = false;
       });
     } catch (e, s) {
       // Summaries are non-essential (member counts / role availability); a slow
@@ -193,6 +224,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         s: s,
         data: {"activityId": widget.activityId},
       );
+      if (mounted) setState(() => _summariesLoading = false);
     }
   }
 
@@ -320,6 +352,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
           activity: activity,
           activityId: widget.activityId,
           summaries: _roomSummariesModel,
+          summariesLoading: _summariesLoading,
           scrollController: scrollController,
           controller: this,
         );

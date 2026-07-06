@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:47.966808",
+    "@@last_modified": "2026-07-06 10:22:32.750928",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10225,6 +10225,46 @@
     },
     "customizePollLabel": "Pas peiling aan",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigatie-opties",
+    "joinedCourseListLabel": "Lijst van ingeschreven cursussen",
+    "analyticsAndSettingsLabel": "Analytics- en instellingenopties",
+    "searchActivitiesLabel": "Zoek naar activiteiten op de kaart",
+    "filteredActivitiesLabel": "Gefilterde activiteitenlijst",
+    "activityFilterButtonsLabel": "Taal-, moeilijkheidsgraad- en voortgangsfilterknoppen",
+    "mapZoomLabel": "Kaartzoombediening",
+    "activityMapLabel": "Activiteitenkaart",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

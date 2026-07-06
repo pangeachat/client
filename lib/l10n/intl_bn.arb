@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:50.172667",
+    "@@last_modified": "2026-07-06 10:22:39.621152",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10940,6 +10940,46 @@
     },
     "customizePollLabel": "পোল কাস্টমাইজ করুন",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "নেভিগেশন বিকল্পগুলি",
+    "joinedCourseListLabel": "যোগদানকৃত কোর্সের তালিকা",
+    "analyticsAndSettingsLabel": "বিশ্লেষণ এবং সেটিংস বিকল্পগুলি",
+    "searchActivitiesLabel": "মানচিত্রে কার্যকলাপ অনুসন্ধান করুন",
+    "filteredActivitiesLabel": "ছাঁটাই করা কার্যকলাপের তালিকা",
+    "activityFilterButtonsLabel": "ভাষা, কঠিনতা, এবং অগ্রগতি ফিল্টার বোতামগুলি",
+    "mapZoomLabel": "মানচিত্র জুম নিয়ন্ত্রণ",
+    "activityMapLabel": "কার্যকলাপের মানচিত্র",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

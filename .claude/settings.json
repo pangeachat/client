@@ -21,6 +21,10 @@
           {
             "type": "command",
             "command": "python3 \"$HOME/PangeaChat/.github/scripts/branch-guard.py\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-env-guard.sh\""
           }
         ]
       },
@@ -34,6 +38,10 @@
           {
             "type": "command",
             "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-skill.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-guard.sh\""
           }
         ]
       }

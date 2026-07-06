@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-02 16:44:16.727473",
+    "@@last_modified": "2026-07-06 10:20:59.663913",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10322,6 +10322,46 @@
     },
     "customizePollLabel": "Sesuaikan jajak pendapat",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opsi navigasi",
+    "joinedCourseListLabel": "Daftar kursus yang diikuti",
+    "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
+    "searchActivitiesLabel": "Cari aktivitas di peta",
+    "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
+    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
+    "mapZoomLabel": "Kontrol zoom peta",
+    "activityMapLabel": "Peta aktivitas",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

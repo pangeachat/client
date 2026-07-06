@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -81,112 +82,46 @@ CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
-  // world_v2: a course is a map filter (`?m=course:<id>`), not a path, so an
-  // active course filter selects the Courses section regardless of the (always
-  // `/`) path. See `routing.instructions.md`.
-  if (activeSpaceIdFor(uri) != null) return AppSection.courses;
-  // world_v2: section identity rides in the left tokens, not the path (which
-  // collapses to `/`). The chat list / a live room → Chats; the add-course
-  // hub/wizard token → Courses. This keeps the rail highlight correct with a
-  // bare `/` path. See `routing.instructions.md`.
+  // The rail highlight shows what you're looking at (routing.instructions.md
+  // decision 5). Precedence:
+  //  1. The global chat LIST wins — even with a live room beside it, and even
+  //     under a lingering `?c=` context: switching to Chats un-highlights the
+  //     course (the #7467 "quest stays selected" oddity).
+  //  2. Any course surface → Courses: a course card / management page / the
+  //     add-course hub, OR a `?c=` context in any form — a course room beside
+  //     its card (`left=course,room`), a lone course room (card closed), an
+  //     in-course activity, or the empty scoped-map backdrop. A course room
+  //     reads as its course, not as the global chat list.
+  //  3. Only a lone room with no course context is a direct chat → Chats.
   final left = parseOpenPanels(uri).left;
-  if (left.any((t) => t.type == 'chats' || t.type == 'room')) {
-    return AppSection.chats;
+  if (left.any((t) => t.type == 'chats')) return AppSection.chats;
+  if (left.any(
+        (t) =>
+            t.type == 'course' ||
+            t.type == 'coursepage' ||
+            t.type == 'addcourse',
+      ) ||
+      activeSpaceIdFor(uri) != null) {
+    return AppSection.courses;
   }
-  if (left.any((t) => t.type == 'addcourse')) return AppSection.courses;
-  // Legacy inbound paths (pre-collapse bookmarks / deep links) still resolve
-  // here until the router redirect rewrites them to tokens.
-  final segments = uri.pathSegments;
-  if (segments.isEmpty) return AppSection.world;
-  final first = segments.first;
+  if (left.any((t) => t.type == 'room')) return AppSection.chats;
+  // The few real route-driven paths (fork `/rooms/...` pages, the course
+  // Completer flows and public preview) highlight by first segment.
+  final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;
   if (first == 'rooms') return AppSection.chats;
-  if (PRoutes.isWorldObjectId(first)) return AppSection.world;
-  for (final section in AppSection.values) {
-    final segment = section.rootPath == '/'
-        ? ''
-        : section.rootPath.substring(1);
-    if (segment == first) return section;
-  }
+  if (first == 'courses') return AppSection.courses;
   return AppSection.world;
 }
 
-/// Split a URL token list on its *top-level* commas only — commas inside a
-/// `{...}` JSON param (an encoded construct) are NOT list delimiters.
-///
-/// A construct param is wrapped in braces and its commas are percent-encoded
-/// (`%2C`) by [PanelToken.encode], so the in-app form has no literal commas
-/// inside a param. But on a cold boot / refresh the browser normalizes the URL
-/// fragment in `window.location`, decoding the param's `%2C` back to literal
-/// commas (it keeps `%22` for the quotes). Re-parsing that through `Uri` then
-/// re-encodes the brace chars — which are not query-legal — to `%7B`/`%7D`,
-/// while the commas (valid sub-delims) stay literal. A naive `split(',')` would
-/// shatter the construct token mid-JSON, the param would fail to `jsonDecode`,
-/// and the selected construct would be lost, the detail panel falling back to
-/// the summary grid (#7079). Tracking brace depth keeps the param whole.
-///
-/// Braces appear as `%7B`/`%7D` in `uri.query` on both paths (and the literal
-/// `{`/`}` forms are matched too, for safety), so this parses both identically.
-List<String> splitTopLevelTokens(String list) {
-  final out = <String>[];
-  var depth = 0;
-  var start = 0;
-  for (var i = 0; i < list.length; i++) {
-    final c = list[i];
-    if (c == '{') {
-      depth++;
-    } else if (c == '}') {
-      if (depth > 0) depth--;
-    } else if (c == '%' && i + 3 <= list.length) {
-      final hex = list.substring(i + 1, i + 3).toUpperCase();
-      if (hex == '7B') {
-        depth++;
-        i += 2;
-      } else if (hex == '7D') {
-        if (depth > 0) depth--;
-        i += 2;
-      }
-    } else if (c == ',' && depth == 0) {
-      out.add(list.substring(start, i));
-      start = i + 1;
-    }
-  }
-  out.add(list.substring(start));
-  return out;
-}
-
-/// The map-filter values from `?m=` — a comma list of typed tokens (today only
-/// `course:<spaceid>`) that scope the persistent world map. Read raw (not the
-/// percent-decoded `queryParameters`) and PanelToken-parsed, mirroring
-/// [parseOpenPanels]: a course is a *map filter*, independent of which panels
-/// are open and of the path (always `/`). See `routing.instructions.md`.
-List<PanelToken> mapFiltersFor(Uri uri) {
-  final query = uri.query;
-  if (query.isEmpty) return const [];
-  String? encoded;
-  for (final part in query.split('&')) {
-    if (part.startsWith('m=')) {
-      encoded = part.substring(2);
-      break;
-    }
-  }
-  if (encoded == null || encoded.isEmpty) return const [];
-  final tokens = <PanelToken>[];
-  for (final element in splitTopLevelTokens(encoded)) {
-    final token = PanelToken.parse(element);
-    if (token != null) tokens.add(token);
-  }
-  return tokens;
-}
-
-/// The active course space id (the `course:<spaceid>` map filter), else null.
-/// world_v2: a course is a map filter (`?m=course:<id>`) over the persistent
-/// map, independent of the panel tokens — *not* a `/courses/:spaceid` route.
-/// URLs carry a bare localpart; re-attach the home server_name for callers that
-/// hit the Matrix client. See `routing.instructions.md`.
+/// The active course space id — the workspace's `?c=<spaceid>` course context
+/// (a bare localpart) — else null. One value read by the map (scope) and the
+/// course-family panels (identity) alike, independent of the panel tokens.
+/// Re-attaches the home server_name for callers that hit the Matrix client.
+/// See `routing.instructions.md`.
 String? activeSpaceIdFor(Uri uri) {
-  for (final filter in mapFiltersFor(uri)) {
-    if (filter.type == 'course' && (filter.param?.isNotEmpty ?? false)) {
-      return fullRoomId(filter.param!);
+  for (final part in uri.query.split('&')) {
+    if (part.startsWith('c=') && part.length > 2) {
+      return fullRoomId(Uri.decodeComponent(part.substring(2)));
     }
   }
   return null;
@@ -213,31 +148,24 @@ String? activeRoomIdFor(GoRouterState state) {
   return activeRoomIdFromPanels(state.uri);
 }
 
-/// The activity an open route addresses. world_v2 canonical: a `left=activity:`
-/// panel token whose param is the activity id. Legacy inbound forms — the
-/// in-course `?activity=` overlay and the standalone `/:activityId` path — are
-/// read as a fallback so an un-rewritten deep link still resolves until
-/// `LegacyRedirects` rewrites it to the token. Carries the optional session
-/// `roomid` and `launch` flag (one-shot query params the open carries) for
-/// re-entering a session.
-({String id, String? roomId, bool launch})? activityFor(GoRouterState state) {
-  final uri = state.uri;
-  String? id;
+/// The activity an open URI addresses: the `left=activity:` panel token,
+/// whose structured param carries the id plus optional session bindings — the
+/// bound room, launch, autoplay ([ActivityToken]).
+({String id, String? roomId, bool launch, int? autoplay})? activityInfoFor(
+  Uri uri,
+) {
   for (final token in parseOpenPanels(uri).left) {
     if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
-      id = token.param;
-      break;
+      return ActivityToken.parse(token.param!);
     }
   }
-  id ??= uri.queryParameters['activity'] ?? state.pathParameters['activityId'];
-  if (id == null || id.isEmpty) return null;
-  final roomId = uri.queryParameters['roomid'];
-  return (
-    id: id,
-    roomId: roomId == null ? null : fullRoomId(roomId),
-    launch: uri.queryParameters['launch'] == 'true',
-  );
+  return null;
 }
+
+/// [activityInfoFor] over a [GoRouterState]'s URI.
+({String id, String? roomId, bool launch, int? autoplay})? activityFor(
+  GoRouterState state,
+) => activityInfoFor(state.uri);
 
 /// What the map should focus. Today: the open activity. Extend by adding a
 /// [MapFocus] subclass and returning it here.
@@ -322,7 +250,9 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   final seen = <String>{};
   final usedGroups = <String>{};
   final tokens = <PanelToken>[];
-  for (final element in splitTopLevelTokens(encodedList)) {
+  // A plain comma split is safe: param content is field-encoded, so a literal
+  // comma can never survive into the list (token_fields.dart).
+  for (final element in encodedList.split(',')) {
     final token = PanelToken.parse(element);
     if (token == null) continue;
     final def = PanelRegistry.defFor(token.type);
@@ -352,15 +282,36 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
     tokens.removeWhere((t) => t.type == 'analytics');
   }
   // A `course` card and a `coursepage` management page read their space id from
-  // the `?m=course:<id>` map filter, not the token, so without that filter they
-  // have nothing to render — a blank, close-less card a hand-edited or stale URL
-  // could strand the user on (especially on a narrow single pane). Drop them when
-  // no course is scoped. This is the only place a coursepage is shed for lost
-  // scope: closeSection keeps it (the filter survives a card close), and
+  // the `?c=<id>` course context, not the token, so without it they have nothing
+  // to render — a blank, close-less card a hand-edited or stale URL could strand
+  // the user on (especially on a narrow single pane). Drop them when no course is
+  // scoped. This is the only place a coursepage is shed for lost context:
+  // closeSection keeps it (the context survives a card close), and
   // openCourseFilter sheds the previous course's page only because it re-targets
-  // the scope to a different course. See `routing.instructions.md`.
+  // the context to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
     tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
   }
-  return tokens;
+  return _masterFirst(tokens);
+}
+
+/// Reorder a column's tokens so a registry master precedes its detail — the
+/// canonical master-first order (routing.instructions.md). A shared link
+/// written detail-first (an older spelling) normalizes here; a pair the
+/// registry does not relate (a `course` card beside a live `room`, whose
+/// parent is `chats`) keeps its given order. Lists are at most a few tokens.
+List<PanelToken> _masterFirst(List<PanelToken> tokens) {
+  final result = List<PanelToken>.from(tokens);
+  for (var i = 0; i < result.length; i++) {
+    final parentType = PanelRegistry.defFor(result[i].type)?.parent;
+    if (parentType == null) continue;
+    final parentIdx = result.indexWhere((t) => t.type == parentType);
+    if (parentIdx > i) {
+      // A detail precedes its master — move it to just after the master.
+      final detail = result.removeAt(i);
+      result.insert(result.indexWhere((t) => t.type == parentType) + 1, detail);
+      i = -1; // restart; the list is tiny
+    }
+  }
+  return result;
 }

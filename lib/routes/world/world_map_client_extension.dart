@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
@@ -51,14 +51,16 @@ extension WorldMapClientExtension on Client {
 
   /// The learner's joined course spaces (a space they belong to that carries a
   /// course plan) — the source set for the objective cache + relevance banding.
-  List<Room> get joinedCourseRooms => rooms
-      .where(
-        (r) =>
-            r.isSpace &&
-            r.membership == Membership.join &&
-            r.coursePlan != null,
-      )
-      .toList();
+  /// Aliases the shared [ActivitySessionDiscovery.joinedCourseSpaces] so the map
+  /// and the activity start page share one definition.
+  List<Room> get joinedCourseRooms => joinedCourseSpaces;
+
+  /// True once the learner is in **any** activity-session room — i.e. they have
+  /// started, joined, or finished at least one activity (every such path leaves
+  /// them a member of a `p.activity.session:<id>` room). Its negation, "no first
+  /// activity yet," is the new-learner condition for the multi-person
+  /// deprioritize (#7435). Cheap: one pass over `client.rooms`.
+  bool get hasAnyActivitySession => rooms.any((r) => r.activityId != null);
 
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];
@@ -110,10 +112,18 @@ extension WorldMapClientExtension on Client {
   /// `client.rooms`, so map-wide open-session discovery needs a backend endpoint
   /// (see world-map.instructions.md). Nothing is ever locked — progression only
   /// ranks, never gates (#7186, quests.instructions.md).
+  ///
+  /// [extraFacts] are sessions the client can see only by discovery, not from
+  /// its own rooms — a coursemate's open session in a joined course, previewed
+  /// via `room_preview` (world-map.instructions.md, "Discovering joinable
+  /// sessions"). They run through the same reducer as owned rooms, so a session
+  /// the learner is genuinely in (`joined`) still wins state over a discovered
+  /// `joinable` for the same activity.
   Map<String, PinSignals> deriveActivitySignals({
     required Set<String> pingedActivityIds,
+    List<ActivitySessionFacts> extraFacts = const [],
   }) => WorldMapSignalUtils.reduceActivitySignals(
-    _activitySessionFacts,
+    [..._activitySessionFacts, ...extraFacts],
     pingedActivityIds: pingedActivityIds,
     nowMs: DateTime.now().millisecondsSinceEpoch,
   );

@@ -7,6 +7,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -414,7 +415,9 @@ void showMemberActionsPopupMenu({
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;
-      router.go('/rooms/$roomId');
+      if (!context.mounted) return;
+      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+      router.go(WorkspaceNav.openRoomById(uri, roomId));
     // Pangea#
     case _MemberActions.info:
       await UserDialog.show(

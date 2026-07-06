@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -112,23 +112,9 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
   void _close() {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    final left = parseOpenPanels(uri).left;
-    // Drop the `left=activity:` token (and its one-shot session params) to return
-    // to the underlying workspace — the course-scoped map (`?m=course:` kept) or
-    // the bare map. Rebuilt from the RAW query so the PanelToken-encoded `m=`
-    // filter isn't re-encoded (`uri.replace(queryParameters:)` turns `:`→`%3A`,
-    // de-scoping the map). No activity token (an un-rewritten legacy URL) → World.
-    if (!left.any((t) => t.type == 'activity')) {
-      context.go('/');
-      return;
-    }
-    final parts = WorkspaceQuery.parts(uri.query);
-    WorkspaceQuery.removeKeys(parts, {'left', 'roomid', 'launch', 'autoplay'});
-    final kept = left.where((t) => t.type != 'activity').toList();
-    if (kept.isNotEmpty) {
-      parts.add('left=${kept.map((t) => t.encode()).join(',')}');
-    }
-    context.go(WorkspaceQuery.location('/', parts));
+    // Drop the activity token (and any legacy loose activity params) via the
+    // one shared sweeper — the course context survives a close.
+    context.go(WorkspaceNav.dropActivityOverlay(uri));
   }
 
   /// Back returns toward the course: pop history if there's something to pop,
@@ -159,14 +145,13 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
 
     // While resolving, a minimal close row over a spinner. ONE control only,
     // matching the loaded start view's rule (activity_sessions_start_view.dart):
-    // a back-arrow when the activity is still course-scoped (`?m=course:` over
-    // `?activity=`), so it returns toward the course; an X otherwise (a map pin /
-    // standalone), so it dismisses to the map. Rendering both ← and X here was a
-    // redundant pair that did the same thing in the pin case (#7115).
+    // a back-arrow when the activity is still course-scoped (the `?c=` context),
+    // so it returns toward the course; an X otherwise (a map pin / standalone),
+    // so it dismisses to the map. Rendering both ← and X here was a redundant
+    // pair that did the same thing in the pin case (#7115).
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     final embedded = parseOpenPanels(uri).left.any((t) => t.type == 'activity');
-    final courseScoped =
-        uri.queryParameters['m']?.startsWith('course:') ?? false;
+    final courseScoped = activeSpaceIdFor(uri) != null;
     final showBack = embedded && courseScoped;
     return Scaffold(
       body: SafeArea(

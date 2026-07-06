@@ -64,4 +64,17 @@ enum ConstructTypeEnum {
         return ConstructTypeEnum.vocab;
     }
   }
+
+  /// The canonical panel-token spelling: `vocab` / `grammar` (never the legacy
+  /// `morph`). One vocabulary across the token grammar — see
+  /// routing.instructions.md and google-analytics.instructions.md.
+  String get canonicalTokenParam =>
+      this == ConstructTypeEnum.morph ? 'grammar' : 'vocab';
+
+  /// Parse a panel-token construct spelling: the canonical `grammar`/`vocab`,
+  /// tolerating the legacy `morph` as an inbound-only alias.
+  static ConstructTypeEnum fromTokenParam(String? param) =>
+      (param == 'grammar' || param == 'morph')
+      ? ConstructTypeEnum.morph
+      : ConstructTypeEnum.vocab;
 }

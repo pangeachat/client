@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
@@ -35,38 +34,40 @@ class MobileBottomNav extends StatelessWidget {
       color: theme.colorScheme.surface,
       child: SafeArea(
         top: false,
-        child: SizedBox(
-          height: 56,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              PangeaIconButton(
-                selected: section == AppSection.world,
-                tooltip: L10n.of(context).world,
-                // World is home: clear every panel and reveal the full map.
-                onPressed: () => context.go(WorkspaceNav.clearAll()),
-              ),
-              _NavButton(
-                icon: Icons.forum_outlined,
-                selectedIcon: Icons.forum,
-                selected: section == AppSection.chats,
-                tooltip: L10n.of(context).allChats,
-                onTap: () => context.go(
-                  WorkspaceNav.setSection(
-                    state.uri,
-                    PRoutes.world,
-                    const PanelToken('chats'),
-                    // A nav click replaces the open panels rather than stacking.
-                    keepRoom: false,
+        child: Semantics(
+          label: L10n.of(context).navOptionsLabel,
+          child: SizedBox(
+            height: 56,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                PangeaIconButton(
+                  selected: section == AppSection.world,
+                  tooltip: L10n.of(context).world,
+                  // World is home: clear every panel and reveal the full map.
+                  onPressed: () => context.go(WorkspaceNav.clearAll()),
+                ),
+                _NavButton(
+                  icon: Icons.forum_outlined,
+                  selectedIcon: Icons.forum,
+                  selected: section == AppSection.chats,
+                  tooltip: L10n.of(context).allChats,
+                  onTap: () => context.go(
+                    WorkspaceNav.setSection(
+                      state.uri,
+                      const PanelToken('chats'),
+                      // A nav click replaces the open panels rather than stacking.
+                      keepRoom: false,
+                    ),
                   ),
                 ),
-              ),
-              // Analytics and Profile are reached from the top-right cluster (its
-              // trackers / avatar), not the bottom nav — the bar is only the
-              // section switcher (World / Chats / Courses). See
-              // routing.instructions.md.
-              _SpaceSwitcherButton(activeSpaceId: activeSpaceId),
-            ],
+                // Analytics and Profile are reached from the top-right cluster (its
+                // trackers / avatar), not the bottom nav — the bar is only the
+                // section switcher (World / Chats / Courses). See
+                // routing.instructions.md.
+                _SpaceSwitcherButton(activeSpaceId: activeSpaceId),
+              ],
+            ),
           ),
         ),
       ),
@@ -174,10 +175,9 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
               onTap: () {
                 Navigator.of(sheetContext).pop();
                 sheetContext.go(
-                  WorkspaceNav.setSection(
+                  WorkspaceNav.openCourseSection(
                     uri,
-                    PRoutes.course(space.id),
-                    const PanelToken('course'),
+                    space.id,
                     keepRoom: false,
                   ),
                 );
@@ -191,7 +191,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseStartMyOwn),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/own');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'own'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
           ListTile(
@@ -199,7 +205,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseEnterCode),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/private');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'private'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
           ListTile(
@@ -207,7 +219,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseBrowsePublic),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/browse');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'browse'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
         ],

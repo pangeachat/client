@@ -80,6 +80,11 @@ class RoomSummariesResponse {
 }
 
 class RoomSummaryResponse {
+  /// The session's activity id — read from the `pangea.activity_plan` ref even
+  /// when it is a thin `{activity_id, version_id}` reference. So it survives for
+  /// v3 rooms, whose plan body is not embedded and leaves [activityPlan] null;
+  /// coursemate-session discovery on the world map keys off it.
+  final String? activityId;
   final ActivityPlanModel? activityPlan;
   final ActivityRolesModel? activityRoles;
   final ActivitySummaryModel? activitySummary;
@@ -93,6 +98,7 @@ class RoomSummaryResponse {
 
   RoomSummaryResponse({
     required this.membershipSummary,
+    this.activityId,
     this.activityPlan,
     this.activityRoles,
     this.activitySummary,
@@ -160,11 +166,12 @@ class RoomSummaryResponse {
     });
   }
 
-  bool isActivityInstance(String activityId) =>
-      activityPlan?.activityId == activityId;
+  bool isActivityInstance(String activityId) => this.activityId == activityId;
 
   bool get isActivityOpenToJoin {
-    if (activityPlan?.activityId == null) return false;
+    // v3 sessions carry a thin activity_plan ref, so key off [activityId] (set
+    // even when the plan body is not embedded) rather than the parsed plan.
+    if (activityId == null) return false;
 
     // if room has no members, attempting to join will cause error, so we consider it not open
     if (membershipSummary.isEmpty) return false;
@@ -249,6 +256,9 @@ class RoomSummaryResponse {
     }
 
     return RoomSummaryResponse(
+      activityId: planEntry is Map<String, dynamic>
+          ? planEntry[ActivitySessionConstants.activityId] as String?
+          : null,
       activityPlan: plan,
       activityRoles: roles,
       activitySummary: summary,

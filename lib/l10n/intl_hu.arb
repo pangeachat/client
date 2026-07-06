@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-02 16:44:15.863315",
+    "@@last_modified": "2026-07-06 10:20:56.972471",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10352,6 +10352,46 @@
     },
     "customizePollLabel": "Testreszabás szavazás",
     "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigációs lehetőségek",
+    "joinedCourseListLabel": "Csatlakozott kurzusok listája",
+    "analyticsAndSettingsLabel": "Elemzési és beállítási lehetőségek",
+    "searchActivitiesLabel": "Tevékenységek keresése a térképen",
+    "filteredActivitiesLabel": "Szűrt tevékenységek listája",
+    "activityFilterButtonsLabel": "Nyelv, nehézség és előrehaladás szűrőgombok",
+    "mapZoomLabel": "Térkép nagyító vezérlők",
+    "activityMapLabel": "Tevékenység térkép",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityFilterButtonsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
     }

@@ -96,18 +96,33 @@ class RankingResult {
   final int largeBudget;
   final int midBudget;
   final int smallBudget;
+
+  /// The **live-session gate**: when the shown set holds any `joined`/`joinable`
+  /// session, the ids eligible for the heavy (`large`/`mid`) tiers — those live
+  /// sessions — while every other pin renders `small`, however high it scores.
+  /// Null when nothing live is in view (the gate is inert; all pins compete for
+  /// the heavy tiers by score). See world-map.instructions.md ("Priority matrix").
+  final Set<String>? heavyEligibleIds;
+
   const RankingResult({
     required this.ordered,
     this.largeBudget = 3,
     this.midBudget = 10,
     this.smallBudget = 0,
+    this.heavyEligibleIds,
   });
 
-  /// The static top-[largeBudget] (used where geometric placement can't run).
-  List<String> get largeIds => ordered.take(largeBudget).toList();
+  bool _heavyEligible(String id) =>
+      heavyEligibleIds == null || heavyEligibleIds!.contains(id);
 
-  /// The [midBudget] candidates just below the large slice.
-  Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
+  /// The static top-[largeBudget] eligible for the heavy tier (used where
+  /// geometric placement can't run).
+  List<String> get largeIds =>
+      ordered.where(_heavyEligible).take(largeBudget).toList();
+
+  /// The [midBudget] heavy-eligible candidates just below the large slice.
+  Set<String> get midIds =>
+      ordered.where(_heavyEligible).skip(largeBudget).take(midBudget).toSet();
 }
 
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
@@ -136,20 +151,55 @@ bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
       userCefr.storageInt;
 }
 
+/// Weight of the `multi_person_first_map` penalty (#7435). Large but finite —
+/// enough to sink a 3+ role activity below the band ceiling (2) so it recedes to
+/// the small-dot tail on a new learner's first map, but a deprioritize, not a
+/// gate. A hand-set lever like the rest of the weights (world-map.instructions.md).
+const double kMultiPersonFirstMapPenalty = 2.0;
+
+/// True when this pin should take the `multi_person_first_map` penalty: the
+/// learner has no prior activity ([isNewLearner]), the activity needs **3+ roles**
+/// (unstartable solo — the bot fills exactly one), and it is **not** itself a live
+/// session (a joinable/joined 3+ session has humans present, so the rationale does
+/// not apply). See world-map.instructions.md (#7435).
+bool isMultiPersonFirstMap({
+  required int? roleCount,
+  required bool isNewLearner,
+  required PinSignals s,
+}) =>
+    isNewLearner &&
+    (roleCount ?? 0) >= 3 &&
+    s.state != ActivityPinState.joinable &&
+    s.state != ActivityPinState.joined;
+
 /// score = 3*joinable + 2*joined + relevance_band + 0.6*pinged + 0.3*recency
-/// - 0.5*finished. A live session is the heaviest signal: +3 if the learner can
-/// join it (open, someone else's), +2 if they are already in it. `joinable` and
-/// `joined` are mutually exclusive per pin (the state precedence picks one), so at
-/// most one of the two fires. A finished activity (full star row) demotes but
-/// stays visible (the trail reservation keeps it on the map). See
-/// world-map.instructions.md ("Priority matrix").
-double pinScore({required double band, required PinSignals s}) =>
+/// - 0.5*finished - 2*multi_person_first_map. A live session is the heaviest
+/// signal: +3 if the learner can join it (open, someone else's), +2 if they are
+/// already in it. `joinable` and `joined` are mutually exclusive per pin (the
+/// state precedence picks one), so at most one of the two fires. A finished
+/// activity (full star row) demotes but stays visible (the trail reservation
+/// keeps it on the map). The multi-person term deprioritizes a 3+ role activity
+/// on a new learner's first map (#7435). See world-map.instructions.md.
+double pinScore({
+  required double band,
+  required PinSignals s,
+  int? roleCount,
+  bool isNewLearner = false,
+}) =>
     3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
     2 * (s.state == ActivityPinState.joined ? 1 : 0) +
     band +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
-    0.5 * (s.completionFraction >= 1.0 ? 1 : 0);
+    0.5 * (s.completionFraction >= 1.0 ? 1 : 0) -
+    kMultiPersonFirstMapPenalty *
+        (isMultiPersonFirstMap(
+              roleCount: roleCount,
+              isNewLearner: isNewLearner,
+              s: s,
+            )
+            ? 1
+            : 0);
 
 class _Scored {
   final QuestActivityCard pin;
@@ -179,6 +229,7 @@ RankingResult rankPins({
   int trailBudget = 0,
   Set<String> progressedIds = const {},
   int maxPerDiversityKey = 2,
+  bool isNewLearner = false,
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
@@ -189,7 +240,15 @@ RankingResult rankPins({
       userCefr: userCefr,
       progression: progression,
     );
-    return _Scored(p, pinScore(band: band, s: sig(p.activityId)));
+    return _Scored(
+      p,
+      pinScore(
+        band: band,
+        s: sig(p.activityId),
+        roleCount: p.roleCount,
+        isNewLearner: isNewLearner,
+      ),
+    );
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
 
   // The full score-ranked list with the per-objective diversity cap applied (not
@@ -213,11 +272,23 @@ RankingResult rankPins({
     progressedIds: progressedIds,
   );
 
+  // The live-session gate: when the shown set holds any joined/joinable session,
+  // only those are eligible for the heavy (large/mid) tiers; every other pin is
+  // small, however high it scores. Inert (null) when nothing live is in view.
+  final liveIds = ordered
+      .where(
+        (id) =>
+            sig(id).state == ActivityPinState.joined ||
+            sig(id).state == ActivityPinState.joinable,
+      )
+      .toSet();
+
   return RankingResult(
     ordered: ordered,
     largeBudget: largeBudget,
     midBudget: midBudget,
     smallBudget: smallBudget,
+    heavyEligibleIds: liveIds.isEmpty ? null : liveIds,
   );
 }
 
@@ -294,6 +365,7 @@ PlacementResult placeLargeCards({
   required Size cardSize,
   required Rect safeArea,
   int largeBudget = 3,
+  Set<String>? heavyEligibleIds,
 }) {
   // The card sits ABOVE its pin: flutter_map places an Alignment.topCenter
   // marker so its box is above the point (the point is the box's bottom-center,
@@ -306,12 +378,19 @@ PlacementResult placeLargeCards({
     cardSize.height,
   );
 
+  // Under the live-session gate only live sessions are eligible for a large card,
+  // so a non-live pin — even the focused one — stays a dot
+  // (world-map.instructions.md, the heavy-tier gate).
+  final candidates = heavyEligibleIds == null
+      ? orderedCandidates
+      : orderedCandidates.where(heavyEligibleIds.contains).toList();
+
   // Focused pin goes first when it is a candidate this view, so it claims its
   // footprint and the featured set yields around it. It is not force-added: a
   // focused pin that isn't a candidate never becomes a card here.
   final ordered = <String>[
-    if (focusedId != null && orderedCandidates.contains(focusedId)) focusedId,
-    ...orderedCandidates.where((id) => id != focusedId),
+    if (focusedId != null && candidates.contains(focusedId)) focusedId,
+    ...candidates.where((id) => id != focusedId),
   ];
 
   final largeIds = <String>[];

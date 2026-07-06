@@ -64,25 +64,25 @@ void main() {
   });
 
   // The whole reason this helper exists: the raw query carries already-encoded
-  // token params (a `m=course:!id` filter's `%21`, a construct detail's
-  // `%7B…%7D`) that a second Uri encode would corrupt. The split/drop/rejoin must
-  // leave those bytes untouched.
+  // token params (a `c=%21id` context, a construct param's field encoding)
+  // that a second Uri encode would corrupt. The split/drop/rejoin must leave
+  // those bytes untouched.
   group('encode-safety', () {
-    test('an already-encoded course filter survives parts → location', () {
-      const q = 'm=course:%21id&left=course';
+    test('an already-encoded course context survives parts → location', () {
+      const q = 'c=%21id&left=course';
       final parts = WorkspaceQuery.parts(q);
       expect(WorkspaceQuery.location('/', parts), '/?$q');
     });
 
-    test('a construct detail with %7B...%7D round-trips unchanged', () {
-      const q = 'right=vocab:%7B%22l%22%3A%22x%22%7D';
+    test('a field-encoded construct param round-trips unchanged', () {
+      const q = 'right=vocab:ir%2520de%2520compras.adj';
       final parts = WorkspaceQuery.parts(q);
       WorkspaceQuery.removeKeys(parts, {'left'}); // unrelated drop, no-op here
       expect(WorkspaceQuery.location('/', parts), '/?$q');
     });
 
     test('valueOf returns the value still percent-encoded', () {
-      expect(WorkspaceQuery.valueOf('m=course:%21id', 'm'), 'course:%21id');
+      expect(WorkspaceQuery.valueOf('c=%21id', 'c'), '%21id');
     });
   });
 }

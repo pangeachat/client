@@ -205,7 +205,11 @@ class NewCoursePageState extends State<NewCoursePage> {
       context.go(
         widget.spaceId != null
             ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
-            : '/${widget.route}/course/own/${course.uuid}',
+            // world_v2: the standalone-create path is the Completer-carrying
+            // `/courses/own/:id` flow, not `widget.route` (always 'rooms', which
+            // produced the broken `/rooms/course/own/...`). See
+            // routing.instructions.md.
+            : '/courses/own/${course.uuid}',
       );
       return;
     }
@@ -246,11 +250,10 @@ class NewCoursePageState extends State<NewCoursePage> {
     );
 
     if (action == 0) {
-      context.go(
-        widget.spaceId != null
-            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
-            : '/${widget.route}/course/own/${course.uuid}',
-      );
+      // world_v2: this branch is only reached when existingRoom != null AND
+      // widget.spaceId == null (see the guard above), so it's always the
+      // Completer-carrying own-course path, never the addcourse push.
+      context.go('/courses/own/${course.uuid}');
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
@@ -266,7 +269,12 @@ class NewCoursePageState extends State<NewCoursePage> {
           e: "Existing course room is not a space",
           data: {'roomId': existingRoom.id, 'courseId': course.uuid},
         );
-        context.go('/rooms/${existingRoom.id}');
+        context.go(
+          WorkspaceNav.openRoomById(
+            GoRouterState.of(context).uri,
+            existingRoom.id,
+          ),
+        );
       }
     }
   }
@@ -291,7 +299,6 @@ class NewCoursePageState extends State<NewCoursePage> {
                 onPressed: () => context.go(
                   WorkspaceNav.setSection(
                     GoRouterState.of(context).uri,
-                    PRoutes.world,
                     const PanelToken('addcourse'),
                     keepRoom: false,
                   ),

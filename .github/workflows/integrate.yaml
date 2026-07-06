@@ -3,6 +3,18 @@ name: Pull Request Workflow
 on:
   pull_request:
   merge_group:
+  # Native builds (APK, iOS) run here on merge, not on every PR push. This also
+  # warms the default-branch cache scope that PR web builds restore the Rust
+  # target/debug from. See ci-caching.instructions.md.
+  push:
+    branches:
+      - main
+
+# Cancel superseded runs when a PR is pushed to repeatedly; let merge_group and
+# main-push runs finish (they gate merges and warm caches).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -63,6 +75,10 @@ jobs:
   build_debug_apk:
     environment: staging
     runs-on: ubuntu-latest
+    # Native build: runs on merge to main, not on every PR push. See
+    # ci-caching.instructions.md. If this is a required status check, drop it
+    # from branch protection first, or PRs will wait on a check that never runs.
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -70,6 +86,7 @@ jobs:
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: "zulu"
+          cache: gradle
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
@@ -123,6 +140,10 @@ jobs:
   build_debug_ios:
     environment: staging
     runs-on: macos-15
+    # Native build: runs on merge to main, not on every PR push. See
+    # ci-caching.instructions.md. If this is a required status check, drop it
+    # from branch protection first, or PRs will wait on a check that never runs.
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
