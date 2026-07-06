@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/access/pangea_chat_access_settings.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -269,7 +270,9 @@ class ChatAccessSettingsController extends State<ChatAccessSettings> {
     );
     if (result.error != null) return;
     if (!mounted) return;
-    context.go('/rooms/${room.id}');
+    context.go(
+      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, room.id),
+    );
   }
 
   Future<void> addAlias() async {

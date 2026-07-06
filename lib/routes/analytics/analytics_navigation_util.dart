@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -65,7 +63,7 @@ class AnalyticsNavigationUtil {
         }.contains(view)) {
       final detail = PanelToken(
         view == ProgressIndicatorEnum.wordsUsed ? 'vocab' : 'grammar',
-        jsonEncode(construct.toJson()),
+        construct.toTokenParam(),
       );
       context.go(WorkspaceNav.openConstructDetail(uri, detail, tab));
       return;

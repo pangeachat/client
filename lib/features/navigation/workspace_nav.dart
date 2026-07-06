@@ -1,8 +1,11 @@
+import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Builds workspace location strings by adding or removing panel tokens on the
@@ -98,8 +101,10 @@ abstract class WorkspaceNav {
   }
 
   /// Drop siblings (and the token itself, for dedup) from one column's list,
-  /// then seat [token] only if it belongs to [thisCol] (front for right, end for
-  /// left). The other column just sheds siblings.
+  /// then append [token] when it belongs to [thisCol]. Canonical order is
+  /// master-first in both columns (routing.instructions.md), so a detail
+  /// appends after its master; edge-justification of the right column is the
+  /// renderer's job, not the URL's. The other column just sheds siblings.
   static List<PanelToken> _placeDetail(
     List<PanelToken> tokens,
     PanelToken token,
@@ -109,9 +114,7 @@ abstract class WorkspaceNav {
     final next = tokens
         .where((t) => t != token && !_areSiblings(token, t))
         .toList();
-    if (thisCol == tokenCol) {
-      thisCol == PanelColumn.right ? next.insert(0, token) : next.add(token);
-    }
+    if (thisCol == tokenCol) next.add(token);
     return next;
   }
 
@@ -127,6 +130,30 @@ abstract class WorkspaceNav {
   /// drops any other room/session and leaves the right column untouched.
   static String openExclusiveLeftRoom(Uri current, PanelToken token) =>
       openDetail(current, token);
+
+  /// Open a live chat by ROOM ID from anywhere — the token-native replacement
+  /// for every `context.go('/rooms/<id>')` path literal. [subPage] pushes a
+  /// sub-page onto the room's own stack (`details`, `search`, …); [event] rides
+  /// as the room token's `e/<eventId>` field (jump-to-message on the main
+  /// timeline) instead of a loose `?event=` query — everything the panel needs
+  /// rides in its token (routing.instructions.md).
+  static String openRoomById(
+    Uri current,
+    String roomId, {
+    String? subPage,
+    String? event,
+  }) {
+    final id = shortRoomId(roomId);
+    final param = RoomToken.build(id, subPage: subPage, eventId: event);
+    return WorkspaceQuery.location(
+      PRoutes.world,
+      WorkspaceQuery.parts(
+        Uri.parse(
+          openExclusiveLeftRoom(current, PanelToken('room', param)),
+        ).query,
+      ),
+    );
+  }
 
   /// A completed-activity `session` review (opened from the Stars archive) is a
   /// left detail in BOTH `liveView` and `detail`, so opening it drops any other
@@ -152,10 +179,12 @@ abstract class WorkspaceNav {
         return next;
       }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
 
-  /// Open a vocab/grammar construct detail (the `detail` group): drops the other
-  /// construct detail and any `session`, seats the detail at the front of the
-  /// right group, and ensures its pinned `analytics` summary master exists
-  /// (seated at [summaryTab] from a cold start). See `routing.instructions.md`.
+  /// Open a vocab/grammar construct detail (the `detail` group): drops the
+  /// other construct detail and any `session`, ensures its pinned `analytics`
+  /// summary master exists (seated at [summaryTab] from a cold start), and
+  /// appends the detail after it — master-first canonical order, with the
+  /// renderer blooming the detail to the left of the edge-justified master. See
+  /// `routing.instructions.md`.
   static String openConstructDetail(
     Uri current,
     PanelToken detail,
@@ -167,10 +196,10 @@ abstract class WorkspaceNav {
       final next = right
           .where((t) => t != detail && !_areSiblings(detail, t))
           .toList();
-      next.insert(0, detail);
       if (!next.any((t) => t.type == 'analytics')) {
-        next.add(PanelToken('analytics', summaryTab));
+        next.insert(0, PanelToken('analytics', summaryTab));
       }
+      next.add(detail);
       return next;
     },
   );
@@ -202,7 +231,7 @@ abstract class WorkspaceNav {
     },
   );
 
-  /// Switch the workspace to course [spaceId]: set the `?m=course:<id>` map
+  /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),
   /// replacing any prior course filter/token. Keeps the chat list, the right
   /// column, and every other query. This is the token-native "open this course
@@ -228,9 +257,39 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'m', 'left'});
+    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
     final query = <String>[
-      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
+      'left=${left.map((t) => t.encode()).join(',')}',
+      ...parts,
+    ];
+    return WorkspaceQuery.location(PRoutes.world, query);
+  }
+
+  /// Switch the LEFT SECTION to course [spaceId] — a rail / bottom-nav section
+  /// tap. Sets the `?c=` context and REPLACES the open left panels with the
+  /// course card ([tab] in its param), keeping a live room only when
+  /// [keepRoom]; the right column and other query survive. Unlike
+  /// [openCourseFilter] (an in-content course open, which keeps the chat
+  /// list), a section switch replaces the left column
+  /// (routing.instructions.md). This is the token-native replacement for the
+  /// old `setSection(uri, PRoutes.course(id), …)` hybrid that bounced through
+  /// the legacy redirect.
+  static String openCourseSection(
+    Uri current,
+    String spaceId, {
+    String? tab,
+    bool keepRoom = true,
+  }) {
+    final lists = parseOpenPanels(current);
+    final left = <PanelToken>[
+      PanelToken('course', tab),
+      if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
+    ];
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    final query = <String>[
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
       ...parts,
     ];
@@ -238,10 +297,10 @@ abstract class WorkspaceNav {
   }
 
   /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
-  /// course token. The course's identity is the `?m=course:<id>` map filter
+  /// course token. The course's identity is the `?c=<id>` scope
   /// (read via activeSpaceIdFor), not the token — the token's param is just the
   /// active tab, so switching tabs is opening the course token with a new tab
-  /// (the `m` filter is preserved by `_mutate`). A live room and the chat list
+  /// (the `c` context is preserved by `_mutate`). A live room and the chat list
   /// are kept (a course can scope a room). See `routing.instructions.md`.
   static String openCourse(Uri current, PanelToken token) => _mutate(
     current,
@@ -262,39 +321,56 @@ abstract class WorkspaceNav {
   /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
   /// beside the `course` master that coexists when width allows and folds to a
   /// push when not, mirroring settings menu→page ([openSettings]). The card's
-  /// space rides in the `?m=course:<id>` filter (preserved here), so the page
-  /// param is just the page id. One management page at a time (the registry
-  /// `coursepage` exclusive group drops any prior one). See
-  /// `routing.instructions.md`.
-  static String openCoursePage(Uri current, String page) =>
-      openDetail(current, PanelToken('coursepage', page));
+  /// space rides in the `?c=<id>` scope (preserved here), so the page
+  /// param is just the page id, with an optional trailing `/<filter>` — the
+  /// invite page's initial contact filter, folded into the token instead of a
+  /// loose `?filter=` query (routing.instructions.md). One management page at a
+  /// time (the registry `coursepage` exclusive group drops any prior one).
+  static String openCoursePage(Uri current, String page, {String? filter}) =>
+      openDetail(
+        current,
+        PanelToken(
+          'coursepage',
+          filter == null || filter.isEmpty
+              ? page
+              : '$page/${TokenFields.encode(filter)}',
+        ),
+      );
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
-  /// ANYWHERE: set the `?m=course:<id>` scope + `course` card, then the
+  /// ANYWHERE: set the `?c=<id>` scope + `course` card, then the
   /// `coursepage:<page>` detail beside it. Same shape as [openCoursePage] on the
   /// already-scoped course — use this when the target course may not be the
   /// current filter (e.g. inviting knocking users from a space tile, or from an
   /// activity session). See `routing.instructions.md`.
-  static String openCoursePageFor(Uri current, String spaceId, String page) =>
-      openCoursePage(Uri.parse(openCourseFilter(current, spaceId)), page);
+  static String openCoursePageFor(
+    Uri current,
+    String spaceId,
+    String page, {
+    String? filter,
+  }) => openCoursePage(
+    Uri.parse(openCourseFilter(current, spaceId)),
+    page,
+    filter: filter,
+  );
 
-  /// Open an in-course activity as the immersive `left=activity:<id>` panel over
-  /// the course-scoped map — the token-native producer for "open this activity in
-  /// its course". Sets the `?m=course:<spaceId>` scope and seats the activity as
-  /// the SOLE left token (no chat list / room / course card beside it): an
-  /// activity is an immersive task that claims the single live view — its registry
-  /// `liveView` sibling group drops any open `room`/`session`, and starting the
-  /// session (which opens a `room` token) drops the activity in turn. The
-  /// surviving `?m=course:` scope keeps the plan's close a back-arrow that reopens
-  /// the card. [launch] skips the lobby straight to role selection; [roomId]
-  /// reopens/rejoins a specific session room; [autoplay] autostarts the plan's
-  /// hero media (muted, block 0) — all three ride as one-shot query params the
-  /// panel reads.
+  /// Open an in-course activity as the immersive `left=activity:` panel over
+  /// the course-scoped map — the token-native producer for "open this activity
+  /// in its course". Sets the `?c=<spaceId>` course context and seats the
+  /// activity as the SOLE left token (no chat list / room / course card beside
+  /// it): an activity is an immersive task that claims the single live view —
+  /// its registry `liveView` sibling group drops any open `room`/`session`, and
+  /// starting the session (which opens a `room` token) drops the activity in
+  /// turn. The surviving context keeps the plan's close a back-arrow that
+  /// reopens the card. [launch] skips the lobby straight to role selection;
+  /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
+  /// the plan's hero media (muted, block 0) — all three ride as fields of the
+  /// activity token's param ([ActivityToken]), never as loose query params.
   ///
-  /// Inbound `/courses/:id?activity=` external links and the standalone `/<uuid>`
-  /// link map to this same token form through `legacy_redirects`. The clean-left
-  /// seating also fixes #7267 (the legacy path producer re-opened `left=course`
-  /// beside the activity). See `routing.instructions.md`.
+  /// Inbound `/courses/:id?activity=` external links and the standalone
+  /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
+  /// clean-left seating also fixes #7267 (the legacy path producer re-opened
+  /// `left=course` beside the activity). See `routing.instructions.md`.
   static String openCourseActivity(
     String spaceId,
     String activityId, {
@@ -302,13 +378,75 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
   }) {
+    final token = PanelToken(
+      'activity',
+      ActivityToken.build(
+        activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay ? 0 : null,
+      ),
+    );
     final parts = <String>[
-      'm=${PanelToken('course', shortRoomId(spaceId)).encode()}',
-      'left=${PanelToken('activity', activityId).encode()}',
-      if (roomId != null) 'roomid=${shortRoomId(roomId)}',
-      if (launch) 'launch=true',
-      if (autoplay) 'autoplay=0',
+      'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
+      'left=${token.encode()}',
     ];
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// Seat [activityId] as the SOLE left `activity:` token over the current
+  /// map — the token-native "open this activity from here" (a map pin tap, a
+  /// start-page reopen). Session binding, launch, and autoplay ride the
+  /// token's fields. **The course context is never consumed**
+  /// (routing.instructions.md): a pin on a course-scoped map keeps `?c=` (so
+  /// the plan closes with a back-arrow to the course), a pin on the world map
+  /// has none (so it closes with an X). The right column is left untouched —
+  /// an activity is a left-column live view, independent of an open analytics
+  /// panel.
+  static String openActivity(
+    Uri current,
+    String activityId, {
+    String? roomId,
+    bool launch = false,
+    int? autoplay,
+  }) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'left'});
+    final token = PanelToken(
+      'activity',
+      ActivityToken.build(
+        activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay,
+      ),
+    );
+    parts.add('left=${token.encode()}');
+    return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// Drop the open `activity` token, keeping the rest of the workspace —
+  /// notably the course context, which a close never consumes
+  /// (routing.instructions.md). [reopenCourseCard] additionally reseats the
+  /// `course` card over a surviving context (the plan's back-arrow target).
+  /// Emits the world path: activity overlays only ever ride over the map.
+  static String dropActivityOverlay(
+    Uri current, {
+    bool reopenCourseCard = false,
+  }) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'left'});
+    final left = parseOpenPanels(
+      current,
+    ).left.where((t) => t.type != 'activity').toList();
+    if (reopenCourseCard &&
+        activeSpaceIdFor(current) != null &&
+        left.every((t) => t.type != 'course')) {
+      left.insert(0, const PanelToken('course'));
+    }
+    if (left.isNotEmpty) {
+      parts.add('left=${left.map((t) => t.encode()).join(',')}');
+    }
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
@@ -317,17 +455,19 @@ abstract class WorkspaceNav {
   static String setLeft(Uri current, List<PanelToken> tokens) =>
       _mutate(current, 'left', (_) => tokens);
 
-  /// Navigate to a section (`/chats`, `/courses/:id`, `/profile`, or the world
-  /// map `/`), setting [section] as the sole section panel while **keeping the
+  /// Navigate to a section — Chats, Courses/the add-course hub, or the world
+  /// map — setting [section] as the sole section panel while **keeping the
   /// live room and the right column** — so navigating between sections changes
   /// which panel is focused instead of tearing the open chat down ("move to the
   /// world and keep the chat"; see `routing.instructions.md`). Pass `null` for
   /// the world map (no section panel). The section sits to the left of the room
   /// so a list/detail reads left-to-right. Set [keepRoom] false for a focused
   /// full-bleed flow (the add-course hub) that should not float a chat over it.
+  /// Always emits the world path `/` — section identity rides entirely in the
+  /// token, never a path segment (a joined course is `openCourseSection`, which
+  /// also sets the `?c=` context this helper does not touch).
   static String setSection(
     Uri current,
-    String path,
     PanelToken? section, {
     bool keepRoom = true,
   }) {
@@ -336,26 +476,25 @@ abstract class WorkspaceNav {
       ?section,
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
-    // Carry the map filter forward: scope (`?m=`) is independent of panels and
-    // changes only when a new focus is chosen (a course) or reset by the World
-    // control — never by switching sections (see routing.instructions.md). A
-    // course-path destination resets it cleanly in the redirect, which drops any
-    // carried `m=` before setting the new course's.
+    // Carry the course context forward: context (`?c=`) is independent of
+    // panels and changes only when a new course is chosen or the World control
+    // resets it — never by switching sections (see routing.instructions.md).
     final parts = <String>[
-      ?_mapFilter(current),
+      ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
-    return WorkspaceQuery.location(path, parts);
+    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
-  /// The raw `m=…` map-filter segment of [current]'s query, or null. The filter
-  /// is scope state, independent of which panels are open, so the section/close
-  /// helpers carry it forward verbatim. See `routing.instructions.md`.
-  static String? _mapFilter(Uri current) {
+  /// The raw `c=<spaceid>` course-context segment of [current]'s query, or
+  /// null. Context is scope state, independent of which panels are open, so
+  /// the section/close helpers carry it forward verbatim. See
+  /// `routing.instructions.md`.
+  static String? _courseContext(Uri current) {
     for (final p in current.query.split('&')) {
-      if (p == 'm' || p.startsWith('m=')) return p;
+      if (p.startsWith('c=')) return p;
     }
     return null;
   }
@@ -385,7 +524,7 @@ abstract class WorkspaceNav {
 
   /// Close a *section* left panel (a course, the chat list, the add-course
   /// wizard), dropping its token while **keeping the map filter** and the rest of
-  /// the workspace. Closing a course card therefore leaves `?m=course:<id>` in
+  /// the workspace. Closing a course card therefore leaves `?c=<id>` in
   /// place — the map stays course-scoped (its pins visible) with the card gone;
   /// scope is reset only by the World control or by choosing a different course,
   /// never by closing a panel (see `routing.instructions.md`). A `room` is only
@@ -396,19 +535,19 @@ abstract class WorkspaceNav {
     // nothing else" (routing.instructions.md). A course card's management page
     // (`coursepage`) therefore stays open when the card closes, exactly as the
     // chat list's `room` child stays when the list closes; both read on from the
-    // surviving `?m=course:` filter / their own id. (A coursepage left with no
+    // surviving `?c=` scope / their own id. (A coursepage left with no
     // course scoped at all is shed by route_facts, not here.)
     final left = lists.left.where((t) => t != token).toList();
     // Preserve unrelated one-shot query the way closeLeft/_mutate already do —
-    // recompute only m/left/right and carry the rest forward. Critically this
+    // recompute only c/left/right and carry the rest forward. Critically this
     // keeps `?activity=`/`?launch=`/`?roomid=` (a launching or running activity
     // renders as the center canvas, independent of the course card), so closing
-    // the course no longer unmounts/aborts the activity (#7111). The map filter
-    // (`?m=`) is re-added below, so drop it from the carried set to avoid a dupe.
+    // the course no longer unmounts/aborts the activity (#7111). The scope
+    // (`?c=`) is re-added below, so drop it from the carried set to avoid a dupe.
     final rest = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(rest, {'m', 'left', 'right'});
+    WorkspaceQuery.removeKeys(rest, {'c', 'left', 'right'});
     final parts = <String>[
-      ?_mapFilter(current),
+      ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
       if (lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
@@ -467,12 +606,13 @@ abstract class WorkspaceNav {
   };
 
   /// Open the settings/profile MENU as the right-column master (page null/empty),
-  /// or a settings PAGE as its detail beside the menu. A page blooms at the front
-  /// of the right group with the `settings` menu master kept (or seated) behind
-  /// it — so they coexist when width allows and fold to a push when not. A
-  /// `/`-path page is a leaf (its own back pops it). Opening Settings also drops
-  /// any open analytics-family panel so the two don't clutter the right column
-  /// together (#7109). See `routing.instructions.md`.
+  /// or a settings PAGE as its detail beside the menu. The `settings` menu master
+  /// is kept (or seated) first and the page appended after it — master-first
+  /// canonical order — so they coexist when width allows (the renderer blooms
+  /// the page left of the edge menu) and fold to a push when not. A `/`-path
+  /// page is a leaf (its own back pops it). Opening Settings also drops any open
+  /// analytics-family panel so the two don't clutter the right column together
+  /// (#7109). See `routing.instructions.md`.
   static String openSettings(Uri current, {String? page}) {
     if (page == null || page.isEmpty) {
       return _mutate(current, 'right', (tokens) {
@@ -497,10 +637,10 @@ abstract class WorkspaceNav {
                 !_analyticsRightPanels.contains(t.type),
           )
           .toList();
-      next.insert(0, detail);
       if (!next.any((t) => t.type == 'settings')) {
-        next.add(const PanelToken('settings'));
+        next.insert(0, const PanelToken('settings'));
       }
+      next.add(detail);
       return next;
     });
   }

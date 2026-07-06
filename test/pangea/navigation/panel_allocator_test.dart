@@ -57,10 +57,13 @@ void main() {
     });
 
     test('summary + detail tile as two right cards, detail to the left', () {
-      final l = run(right: ['vocab', 'analytics']); // [detail, summary]
+      final l = run(
+        right: ['analytics', 'vocab'],
+      ); // master-first [summary, detail]
       expect(l.right[0].width, 488);
       expect(l.right[1].width, 488);
-      expect(l.right[1].left, 1600 - 88 - 488); // summary at the edge
+      expect(l.right[0].left, 1600 - 88 - 488); // summary (master) at the edge
+      expect(l.right[1].left, 1600 - 88 - 488 - 16 - 488); // detail to its left
       expectNoOverlap(l);
       expect(l.mapRightOverlay, 488 * 2 + 16 + 88); // both cards + gap + gutter
     });
@@ -86,15 +89,15 @@ void main() {
       // Three right panels can't all honor their reasonable-min in this budget.
       // vocab's parent is analytics, so under pressure analytics (the master)
       // folds behind vocab (its detail); review is an unrelated root and stays.
-      final l = run(viewport: 1161, right: ['review', 'vocab', 'analytics']);
+      final l = run(viewport: 1161, right: ['review', 'analytics', 'vocab']);
       final folded = l.right.where((s) => s.vis == PanelVis.hidden).toList();
       expect(folded.length, 1);
       expect(
-        l.right[2].vis,
+        l.right[1].vis,
         PanelVis.hidden,
       ); // analytics (vocab's parent) folds
       expect(l.right[0].vis, PanelVis.full); // review
-      expect(l.right[1].vis, PanelVis.full); // vocab keeps the column
+      expect(l.right[2].vis, PanelVis.full); // vocab keeps the column
       expect(folded.single.width, 0); // folded slots carry no width
       expectNoOverlap(l);
     });
@@ -125,46 +128,34 @@ void main() {
     );
   });
 
-  group('always-single-window details fold their master unconditionally '
-      '(#7145)', () {
-    test('the settings page always folds the menu behind it — one window, '
-        'even when both would fit', () {
-      // openSettings seats the page in front of the menu: [settingspage,
-      // settings]. The page is flagged foldsParentAlways, so the menu folds
-      // behind it BEFORE any width pressure — even on a wide viewport where
-      // both reasonable-mins fit. The result reads as one window (the page)
-      // with a back that reveals the menu, like the narrow layout, never a
-      // redundant second side tab.
-      final l = run(viewport: 1920, right: ['settingspage', 'settings']);
-      expect(l.right[0].vis, PanelVis.full); // settingspage holds the column
-      expect(l.right[1].vis, PanelVis.hidden); // settings menu folds behind it
-      expect(l.right[1].width, 0); // folded slots carry no width
-      // The surviving page is folded-over its master → its close is a `←` back.
-      expect(l.right[0].foldedOver, isTrue);
+  group('a detail opens beside its master when width allows (#7467, no '
+      'always-fold)', () {
+    test('the settings page tiles beside its menu on a wide viewport — folds '
+        'only under width pressure, like any master/detail pair', () {
+      // Master-first [settings, settingspage]. With room for both
+      // reasonable-mins, the menu (master) holds the edge and the page blooms
+      // to its left; neither folds, so each closes to the map — the same fit
+      // test as a course page (was the #7145 always-fold, removed).
+      final l = run(viewport: 1920, right: ['settings', 'settingspage']);
+      expect(l.right[0].vis, PanelVis.full); // settings menu (master), at edge
+      expect(l.right[1].vis, PanelVis.full); // settingspage, to its left
+      expect(l.right.every((s) => !s.foldedOver), isTrue);
+      expect(l.right[0].left, greaterThan(l.right[1].left)); // master at edge
       expectNoOverlap(l);
     });
 
-    test('the page holds the column at the same width the menu had — no '
-        'resize or close/back jump when drilling in (#7146)', () {
-      // The page replaces the folded menu in the same slot, so the two must be
-      // the same width. An unequal ideal (520 menu vs 600 page) resized the
-      // panel and shifted the leading close/back icon when opening a sub-page.
+    test('the menu + page are the same width so nothing resizes or jumps the '
+        'close/back icon when they fold under pressure (#7146)', () {
       final menuOnly = run(viewport: 1920, right: ['settings']);
-      final withPage = run(viewport: 1920, right: ['settingspage', 'settings']);
-      expect(withPage.right[0].width, menuOnly.right.single.width);
-      // Guard the defs directly so they can't silently drift apart again.
       expect(def('settingspage').idealWidth, def('settings').idealWidth);
+      expect(def('settings').idealWidth, menuOnly.right.single.width);
     });
 
-    test('an ordinary master/detail pair (analytics + vocab) still coexists '
-        'when width allows — the fold is scoped to flagged details', () {
-      // Same wide viewport: vocab is analytics's detail but NOT
-      // foldsParentAlways, so with room for both reasonable-mins they tile
-      // side by side and neither is folded-over (closing either reveals the
-      // map, not a master).
-      final l = run(viewport: 1920, right: ['vocab', 'analytics']);
-      expect(l.right[0].vis, PanelVis.full); // vocab
-      expect(l.right[1].vis, PanelVis.full); // analytics
+    test('an ordinary master/detail pair (analytics + vocab) also coexists '
+        'when width allows', () {
+      final l = run(viewport: 1920, right: ['analytics', 'vocab']);
+      expect(l.right[0].vis, PanelVis.full); // analytics (master), at edge
+      expect(l.right[1].vis, PanelVis.full); // vocab, to its left
       expect(l.right.every((s) => !s.foldedOver), isTrue);
       expectNoOverlap(l);
     });

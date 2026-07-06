@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -51,8 +52,11 @@ class ActivityParticipantList extends StatelessWidget {
         );
 
         final remainingMembers = participants.participants.where(
-          (p) => !assignedRoles.values.any((r) => r.userId == p.id),
+          (p) =>
+              !assignedRoles.values.any((r) => r.userId == p.id) &&
+              p.id != BotName.byEnvironment,
         );
+
         return Column(
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,

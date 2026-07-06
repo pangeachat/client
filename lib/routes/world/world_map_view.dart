@@ -192,6 +192,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       visible: visible,
       candidates: ranking.ordered,
       largeBudget: budget.large,
+      heavyEligibleIds: ranking.heavyEligibleIds,
     );
 
     // Split the ordered list by the caps: large = what placement fit, then mid,
@@ -199,8 +200,14 @@ class _WorldMapViewState extends State<WorldMapView> {
     // slot flows down to lighter tiers rather than crowding).
     final largeIds = placement.largeIds.toSet();
     final rest = ranking.ordered.where((id) => !largeIds.contains(id)).toList();
-    final mediumIds = rest.take(budget.mid).toSet();
-    final smallIds = rest.skip(budget.mid).toSet();
+    // Under the live-session gate, only live sessions are eligible for mid; every
+    // other pin drops to small (world-map.instructions.md, the heavy-tier gate).
+    final heavy = ranking.heavyEligibleIds;
+    final mediumIds = rest
+        .where((id) => heavy == null || heavy.contains(id))
+        .take(budget.mid)
+        .toSet();
+    final smallIds = rest.where((id) => !mediumIds.contains(id)).toSet();
 
     return _createPinRenderer(
       visible: visible,
@@ -222,6 +229,7 @@ class _WorldMapViewState extends State<WorldMapView> {
     required List<QuestActivityCard> visible,
     required List<String> candidates,
     required int largeBudget,
+    required Set<String>? heavyEligibleIds,
   }) {
     final focusedId = widget.controller.focusedActivityId;
     final pointById = <String, LatLng>{
@@ -250,14 +258,19 @@ class _WorldMapViewState extends State<WorldMapView> {
         ),
         safeArea: safeArea,
         largeBudget: largeBudget,
+        heavyEligibleIds: heavyEligibleIds,
       );
     } catch (_) {
       // Camera not laid out yet: static top-N (focused first), no fit test.
-      // The next (camera-ready) frame does the real placement.
+      // The next (camera-ready) frame does the real placement. Still honours the
+      // live-session gate — only live sessions are large-eligible.
+      final eligible = heavyEligibleIds == null
+          ? candidates
+          : candidates.where(heavyEligibleIds.contains).toList();
       return PlacementResult(
         largeIds: <String>[
-          if (focusedId != null && candidates.contains(focusedId)) focusedId,
-          ...candidates.where((id) => id != focusedId),
+          if (focusedId != null && eligible.contains(focusedId)) focusedId,
+          ...eligible.where((id) => id != focusedId),
         ].take(largeBudget).toList(),
       );
     }

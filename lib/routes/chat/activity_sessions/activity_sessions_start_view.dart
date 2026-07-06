@@ -8,19 +8,16 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The location that closes a non-embedded activity plan opened as a room/
 /// session token (the chat list / a left panel): it drops ONLY that token, so
@@ -79,36 +76,7 @@ class ActivitySessionStartView extends StatelessWidget {
         final embedded = parseOpenPanels(
           uri,
         ).left.any((t) => t.type == 'activity');
-        final courseScoped =
-            uri.queryParameters['m']?.startsWith('course:') ?? false;
-
-        // Drop the `left=activity:` token + its one-shot session params, keeping
-        // `?m=` and the rest of the query verbatim — rebuilt from the RAW query so
-        // the `?m=course:` filter isn't re-encoded (`uri.replace(queryParameters:)`
-        // turns `:`→`%3A`, which the raw-query parser can't read, de-scoping the
-        // map and orphan-dropping any reopened card). [reopenCard] additionally
-        // restores `left=course` over the surviving scope (the parent card,
-        // reconstructed from the scope).
-        String overlayDropped({required bool reopenCard}) {
-          final parts = WorkspaceQuery.parts(uri.query);
-          WorkspaceQuery.removeKeys(parts, {
-            'roomid',
-            'launch',
-            'autoplay',
-            'left',
-          });
-          final scoped = parts.any((p) => p.startsWith('m=course:'));
-          final left = parseOpenPanels(
-            uri,
-          ).left.where((t) => t.type != 'activity').toList();
-          if (reopenCard && scoped && left.every((t) => t.type != 'course')) {
-            left.insert(0, const PanelToken('course'));
-          }
-          if (left.isNotEmpty) {
-            parts.add('left=${left.map((t) => t.encode()).join(',')}');
-          }
-          return WorkspaceQuery.location('/', parts);
-        }
+        final courseScoped = activeSpaceIdFor(uri) != null;
 
         return Scaffold(
           appBar: AppBar(
@@ -117,7 +85,7 @@ class ActivitySessionStartView extends StatelessWidget {
                 ? null
                 : Text(
                     activity.title,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: FluffyThemes.isColumnMode(context)
                         ? theme.textTheme.titleLarge
@@ -137,9 +105,12 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () => GoRouter.of(
-                          context,
-                        ).go(overlayDropped(reopenCard: true)),
+                        onPressed: () => GoRouter.of(context).go(
+                          WorkspaceNav.dropActivityOverlay(
+                            uri,
+                            reopenCourseCard: true,
+                          ),
+                        ),
                       )
                     : embedded
                     // Unscoped (pin entry) → X dismisses to the map.
@@ -148,7 +119,7 @@ class ActivitySessionStartView extends StatelessWidget {
                         icon: const Icon(Icons.close),
                         onPressed: () => GoRouter.of(
                           context,
-                        ).go(overlayDropped(reopenCard: false)),
+                        ).go(WorkspaceNav.dropActivityOverlay(uri)),
                       )
                     // Opened as a room/session token (the chat list / a left
                     // panel): drop ONLY that token so the rest of the workspace
@@ -198,111 +169,10 @@ class ActivitySessionStartView extends StatelessWidget {
                           controller: controller.scrollController,
                           child: Column(
                             children: [
-                              Stack(
-                                children: [
-                                  // Background image — now Positioned with explicit height instead of
-                                  // living inside a height-constrained Container
-                                  Positioned(
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    height: 375.0,
-                                    child: LayoutBuilder(
-                                      builder: (context, constraints) =>
-                                          ImageByUrl(
-                                            imageUrl: activity.imageURL,
-                                            borderRadius: BorderRadius.zero,
-                                            width: constraints.maxWidth,
-                                            replacement: Container(
-                                              width: constraints.maxWidth,
-                                              height: 350.0,
-                                              decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    theme
-                                                        .colorScheme
-                                                        .primaryContainer,
-                                                    theme.colorScheme.surface,
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                    ),
-                                  ),
-                                  Positioned.fill(
-                                    top: 250.0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.center,
-                                          colors: [
-                                            theme.colorScheme.surface.withAlpha(
-                                              0,
-                                            ),
-                                            theme.colorScheme.surface,
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  if (sessionController.showRoleCards)
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 250.0,
-                                      ),
-                                      child: Center(
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 16.0,
-                                          ),
-                                          constraints: const BoxConstraints(
-                                            maxWidth: 600.0,
-                                          ),
-                                          child: Opacity(
-                                            opacity: sessionController
-                                                .roleCardOpacity,
-                                            child: ActivityParticipantList(
-                                              activity: activity,
-                                              room: controller.activityRoom,
-                                              assignedRoles:
-                                                  controller.assignedRoles,
-                                              course: controller.courseParent,
-                                              onTap:
-                                                  sessionController.selectRole,
-                                              canSelect: sessionController
-                                                  .canSelectRole,
-                                              isSelected: sessionController
-                                                  .isRoleSelected,
-                                              isShimmering: sessionController
-                                                  .isRoleShimmering,
-                                              showStarsCard: sessionController
-                                                  .showStarsCard,
-                                              completedGoalsForRole:
-                                                  sessionController
-                                                      .completedGoalIdsForRole,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  Positioned(
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    child: ActivityGoalsDropdown(
-                                      goals:
-                                          sessionController.selectedRoleGoals,
-                                      completedGoalIds: sessionController
-                                          .selectedRoleCompletedGoalIds,
-                                      startCollapsed:
-                                          sessionController.goalsStartCollapsed,
-                                    ),
-                                  ),
-                                ],
+                              ActivityStartHero(
+                                controller: controller,
+                                sessionController: sessionController,
+                                activity: activity,
                               ),
                               if (sessionController.showDescriptionSection)
                                 Center(

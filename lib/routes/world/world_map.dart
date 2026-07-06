@@ -9,10 +9,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -102,6 +100,12 @@ class WorldMapController extends State<WorldMap>
   /// snapping on every hop. Re-armed on each request; only the last fires.
   Timer? _fitDebounce;
 
+  /// Coalesces a burst of activity-plan hydrations (many pins resolve their
+  /// plans at once) into a single signal recompute, so a session flips to its
+  /// joinable/joined colour once its seats are known — notably an invited
+  /// session, whose role count is unknown until its plan lands from CMS.
+  Timer? _planHydrateDebounce;
+
   /// Drives the smooth camera glide (center + zoom tween) instead of an instant
   /// `fitCamera` snap. Retargets cleanly if a new fit lands mid-flight.
   late final AnimationController _cameraAnimationController;
@@ -170,9 +174,12 @@ class WorldMapController extends State<WorldMap>
       // below rebuilds it when the joined-course set changes (or a prior build
       // resolved nothing), so banding + the gate recover within the session
       // instead of staying blank until a remount (which never happens for this
-      // persistent map). The pinged scan does one-shot timeline work.
+      // persistent map). The pinged scan runs here and on sync (below) — it
+      // surfaces recruit pings on the map and clears each course space's stuck
+      // ping badge once consumed (#7366).
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
+      _discoverCoursemateSessions(client);
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -181,6 +188,8 @@ class WorldMapController extends State<WorldMap>
             if (!mounted) return;
             _recomputeProgress();
             _maybeRebuildObjectiveCache(client);
+            _recomputePinged(client);
+            _discoverCoursemateSessions(client);
           });
     }
 
@@ -217,6 +226,7 @@ class WorldMapController extends State<WorldMap>
     _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
+    _planHydrateDebounce?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
@@ -282,7 +292,14 @@ class WorldMapController extends State<WorldMap>
       MapCompletionFilter.completed;
 
   void _onPlanHydrate() {
-    if (mounted) setState(() {});
+    // A plan landing from CMS fires no room sync, so the sync-driven recompute
+    // never re-derives seats for it — why an invited session (its role count
+    // known only once the plan hydrates) never flips to joinable. Recompute the
+    // signals, debounced so a burst of hydrations coalesces into one pass.
+    _planHydrateDebounce?.cancel();
+    _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
+      if (mounted) _recomputeProgress();
+    });
   }
 
   void _recomputeProgress() {
@@ -310,6 +327,13 @@ class WorldMapController extends State<WorldMap>
   Future<void> _recomputePinged(Client client) async {
     await _pinsManager.recomputePinged(client);
     if (mounted) setState(() {});
+  }
+
+  Future<void> _discoverCoursemateSessions(Client client) async {
+    await _pinsManager.discoverCoursemateSessions(client);
+    // Discovery refreshes the extra joinable facts; re-derive signals so a
+    // newly found coursemate session colours its pin.
+    if (mounted) _recomputeProgress();
   }
 
   void _onContextChange() {
@@ -604,39 +628,21 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
-  /// put) as a `left=activity:<id>` panel token, which also focuses the pin. The
+  /// put) as a `left=activity:` panel token, which also focuses the pin. The
   /// panel fetches the full plan on open. This is the one-step tap target: any
   /// pin tap (dot / card) and a search-result tap route here (no peek).
   void openActivity(QuestActivityCard card) {
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // Open the activity plan as map content. Pin entry is UNSCOPED: drop the
-    // `?m=course:` filter along with the other panels and seat the activity as the
-    // sole `left=activity:<id>` token (its `liveView` sibling group drops any open
-    // chat). The absence of course scope is what makes this a parentless overlay —
-    // its close is an X to the map, not a back-arrow to a course card (a
-    // course-list tap keeps the scope and so gets the back-arrow). The map still
-    // focuses the activity's pin via the token (`mapFocusFor` → `ActivityFocus`),
-    // independent of scope. See `routing.instructions.md`.
-    final parts = WorkspaceQuery.parts(uri.query);
-    WorkspaceQuery.removeKeys(parts, {
-      'left',
-      'right',
-      'm',
-      'activity',
-      'autoplay',
-      'roomid',
-    });
-
-    parts.add('left=${PanelToken('activity', card.activityId).encode()}');
-    // #7257: if the learner already holds a started/joined session for this
-    // activity, bind the overlay to that room (`roomid=`) so the start page
-    // resumes it (selectRole/confirmedRole) instead of offering a fresh
-    // instance. Pin entry stays unscoped — only the session room is added.
+    // Seat the activity as the sole left token via the nav helper — no raw
+    // query surgery in feature code (routing.instructions.md). The course
+    // context is kept: a pin on a course-scoped map closes back to the course,
+    // a pin on the world map has none and closes with an X. A held session
+    // resumes via the token's session-binding field (#7257). The map focuses
+    // the activity's pin via the token (`mapFocusFor` → `ActivityFocus`).
     final myRoom = client?.myActivityInstance(card.activityId);
-    if (myRoom != null) {
-      parts.add('roomid=${shortRoomId(myRoom.id)}');
-    }
-    context.go(WorkspaceQuery.location('/', parts));
+    context.go(
+      WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
+    );
   }
 
   @override

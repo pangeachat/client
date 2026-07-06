@@ -234,22 +234,6 @@ abstract class PanelAllocator {
         ? all[focusHint]
         : null;
     final folded = <_Entry>{};
-    // Always-single-window details (the settings page) fold their same-column
-    // master UNCONDITIONALLY — before any width-driven folding — so the menu +
-    // page read as one window (the page with a back that reveals the menu), like
-    // the narrow layout, instead of opening a redundant second side panel when
-    // there's room (#7145). Width-driven folding below then proceeds over the
-    // remainder. Scoped per def flag, so analytics/course master+detail pairs
-    // still coexist when width allows.
-    for (final detail in all) {
-      if (!detail.def.foldsParentAlways) continue;
-      for (final parent in all) {
-        if (parent.column == detail.column &&
-            parent.def.type == detail.def.parent) {
-          folded.add(parent);
-        }
-      }
-    }
     while (true) {
       final vis = all.where((e) => !folded.contains(e)).toList();
       if (vis.length <= 1) break;
@@ -334,20 +318,25 @@ abstract class PanelAllocator {
     final hasLeft = fulls.any((e) => e.column == PanelColumn.left);
     final leftCovered = hasLeft ? x - panelGap : railWidth;
 
+    // The right column is master-first in the list (routing.instructions.md)
+    // and right-justified, so the FIRST token (the master) sits at the edge and
+    // each following detail blooms to its left. Place from the edge leftward,
+    // keeping the slots index-parallel to the input list.
     final rights = fulls.where((e) => e.column == PanelColumn.right).toList();
     final rightTotal =
         rights.fold(0.0, (s, e) => s + widthOf(e)) +
         math.max(0, rights.length - 1) * panelGap;
-    var rx = viewport - gutter - rightTotal;
-    final rightStart = rx;
+    final rightStart = viewport - gutter - rightTotal;
+    var rEdge = viewport - gutter;
     for (final e in rights) {
+      final w = widthOf(e);
       placement[e] = PanelSlot(
-        left: rx,
-        width: widthOf(e),
+        left: rEdge - w,
+        width: w,
         vis: PanelVis.full,
         foldedOver: isFoldedOver(e),
       );
-      rx += widthOf(e) + panelGap;
+      rEdge -= w + panelGap;
     }
 
     return _build(

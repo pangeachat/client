@@ -119,7 +119,7 @@ class ChatDetailsContent extends StatelessWidget {
                                   controller.roomId,
                                   ['details', 'invite'],
                                   context,
-                                  queryParams: {'filter': 'participants'},
+                                  filter: 'participants',
                                 ),
                           icon: const Icon(Icons.group_outlined, size: 14),
                           style: TextButton.styleFrom(

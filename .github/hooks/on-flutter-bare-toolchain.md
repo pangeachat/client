@@ -1,0 +1,2 @@
+<!-- consumed by: .github/scripts/pretooluse-flutter-guard.sh -->
+This looks like a bare `flutter`/`dart` invocation, not `fvm flutter`/`fvm dart`. The repo pins a specific Flutter version via `client/.fvmrc`, and CI hard-fails if it disagrees with `.github/workflows/versions.env`. A bare `flutter` is whatever is global on the machine — often a different version, which can build something that doesn't match what ships. Run everything through the pinned toolchain: `fvm flutter …` / `fvm dart …`.

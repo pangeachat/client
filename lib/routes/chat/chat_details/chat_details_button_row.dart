@@ -105,7 +105,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             room.id,
             ['details', 'invite'],
             context,
-            queryParams: {'filter': filter},
+            filter: filter,
           );
         },
         enabled: room.canInvite,

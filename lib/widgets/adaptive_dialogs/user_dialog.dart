@@ -185,7 +185,7 @@ class UserDialog extends StatelessWidget {
               final roomId = roomIdResult.result;
               if (roomId == null) return;
               if (context.mounted) Navigator.of(context).pop();
-              router.go('/rooms/$roomId');
+              router.go(WorkspaceNav.openRoomById(uri, roomId));
             },
             child: Text(
               dmRoomId == null

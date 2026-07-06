@@ -11,7 +11,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -62,7 +61,6 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     context.go(
       WorkspaceNav.setSection(
         GoRouterState.of(context).uri,
-        PRoutes.world,
         const PanelToken('addcourse', 'browse'),
         keepRoom: false,
       ),

@@ -106,21 +106,22 @@ void main() {
     );
   });
 
-  group('orphan course/coursepage tokens (no map filter)', () {
-    test('a course token with no ?m= is dropped (would render blank)', () {
-      // course/coursepage read their space from ?m=course:<id>; without it they
-      // have nothing to render, so a hand-edited / stale URL degrades to the map.
+  group('orphan course/coursepage tokens (no course context)', () {
+    test('a course token with no ?c= is dropped (would render blank)', () {
+      // course/coursepage read their space from the ?c= context; without it
+      // they have nothing to render, so a hand-edited / stale URL degrades to
+      // the map.
       expect(left('/?left=course'), isEmpty);
       expect(left('/?left=coursepage:invite'), isEmpty);
     });
 
-    test('a course token WITH its ?m= filter survives', () {
-      final l = left('/?m=course:!s&left=course');
+    test('a course token WITH its ?c= context survives', () {
+      final l = left('/?c=!s&left=course');
       expect(l.map((t) => t.type).toList(), ['course']);
     });
 
-    test('a coursepage survives when its course filter is present', () {
-      final l = left('/?m=course:!s&left=course,coursepage:invite');
+    test('a coursepage survives when its course context is present', () {
+      final l = left('/?c=!s&left=course,coursepage:invite');
       expect(l.map((t) => t.type).toList(), ['course', 'coursepage']);
     });
   });

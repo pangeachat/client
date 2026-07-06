@@ -7,52 +7,39 @@ import 'package:fluffychat/utils/navigation_util.dart';
 
 /// Guards the activity-plan → session "sibling replace" rule: starting or
 /// continuing a session must REPLACE the activity plan, never open beside it.
-/// The plan is addressed two ways (route_facts.activityFor): the in-course
-/// `?activity=` query overlay AND the parentless standalone `/<uuid>` path
-/// (opened from a map pin). [NavigationUtil.stripActivityOverlay] must clear
-/// BOTH so the room token seats on the world path with no plan left standing.
+/// The plan is a `left=activity:` token whose fields carry its session
+/// bindings (route_facts.activityInfoFor); [NavigationUtil.stripActivityOverlay]
+/// drops it (and collapses a shareable `/<uuid>` path that has not hit the
+/// redirect yet) so the room token seats on the world path with no plan left
+/// standing.
 void main() {
   Uri u(String s) => Uri.parse(s);
   const activityId = 'af10c236-e094-4af3-9c0c-2226c5eb615b';
 
   group('stripActivityOverlay', () {
-    test('collapses a standalone-activity path (map pin) to the world path', () {
-      // The bug: `/<uuid>?launch=true` kept the `/<uuid>` path, so a `left=room`
-      // opened beside the plan (which renders from that path).
-      final stripped = NavigationUtil.stripActivityOverlay(
-        u('/$activityId?launch=true'),
-      );
-      expect(stripped.path, '/');
-      expect(stripped.pathSegments, isEmpty);
-      expect(stripped.query, '');
-    });
-
-    test('collapses a standalone-activity path with no query', () {
+    test('collapses a standalone-activity path (share link) to the world '
+        'path', () {
       final stripped = NavigationUtil.stripActivityOverlay(u('/$activityId'));
       expect(stripped.path, '/');
       expect(stripped.pathSegments, isEmpty);
     });
 
-    test(
-      'drops the in-course `?activity=` overlay params, keeps m=/left= raw',
-      () {
-        final stripped = NavigationUtil.stripActivityOverlay(
-          u('/?m=course:!s&left=course&activity=$activityId&launch=true'),
-        );
-        expect(stripped.path, '/');
-        // m= and left= survive verbatim (raw, not re-encoded); activity/launch go.
-        expect(stripped.query, 'm=course:!s&left=course');
-      },
-    );
-
-    test('drops a continue roomid param', () {
+    test('drops the activity token, keeps the context and other panels', () {
       final stripped = NavigationUtil.stripActivityOverlay(
-        u('/?activity=$activityId&roomid=!r'),
+        u('/?c=!s&left=course,activity:$activityId.l'),
+      );
+      expect(stripped.path, '/');
+      expect(stripped.query, 'c=!s&left=course');
+    });
+
+    test('drops an activity token with a bound session room', () {
+      final stripped = NavigationUtil.stripActivityOverlay(
+        u('/?left=activity:$activityId.r!r'),
       );
       expect(stripped.query, '');
     });
 
-    test('is a no-op for a plain workspace url (no activity addressing)', () {
+    test('is a no-op for a plain workspace url (no activity open)', () {
       final stripped = NavigationUtil.stripActivityOverlay(u('/?left=chats'));
       expect(stripped.path, '/');
       expect(stripped.query, 'left=chats');
@@ -61,10 +48,10 @@ void main() {
 
   group('session replaces plan (end to end through the room funnel)', () {
     test(
-      'from a map pin: room seats on `/` with no plan path left standing',
+      'from a share link: room seats on `/` with no plan path left standing',
       () {
         final loc = WorkspaceNav.openExclusiveLeftRoom(
-          NavigationUtil.stripActivityOverlay(u('/$activityId?launch=true')),
+          NavigationUtil.stripActivityOverlay(u('/$activityId')),
           const PanelToken('room', '!abc'),
         );
         final result = u(loc);
@@ -75,17 +62,17 @@ void main() {
       },
     );
 
-    test('from a course: room replaces the plan, course filter survives', () {
+    test('from a course: room replaces the plan, course context survives', () {
       final loc = WorkspaceNav.openExclusiveLeftRoom(
         NavigationUtil.stripActivityOverlay(
-          u('/?m=course:!s&left=course&activity=$activityId&launch=true'),
+          u('/?c=!s&left=course,activity:$activityId.l'),
         ),
         const PanelToken('room', '!abc'),
       );
       final result = u(loc);
       expect(result.path, '/');
-      expect(result.query.contains('activity='), isFalse);
-      expect(result.query.contains('m=course:!s'), isTrue);
+      expect(result.query.contains('activity'), isFalse);
+      expect(result.query.contains('c=!s'), isTrue);
       expect(parseOpenPanels(result).left, [
         const PanelToken('course'),
         const PanelToken('room', '!abc'),
@@ -125,7 +112,7 @@ void main() {
         // The participants tab calls goToSpaceRoute(space, ['details','invite']);
         // through the course-space branch that is openCoursePage(.., 'invite').
         final loc = WorkspaceNav.openCoursePage(
-          u('/?m=course:!s&left=course'),
+          u('/?c=!s&left=course'),
           NavigationUtil.coursePageFor('details/invite'),
         );
         final coursepage = parseOpenPanels(

@@ -14,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -156,6 +157,10 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
   // Pangea#
 
   // #Pangea
+  // Emit a GA4 screen view on every real workspace screen change (token-derived,
+  // deduped) — the observer only sees top-level page routes. See
+  // google-analytics.instructions.md.
+  WorkspaceScreenTracker.attach(FluffyChatApp.router);
   // runApp(FluffyChatApp(clients: clients, pincode: pin, store: store));
   runApp(
     ChangeNotifierProvider(

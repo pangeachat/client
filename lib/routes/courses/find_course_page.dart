@@ -12,6 +12,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -315,22 +316,21 @@ class FindCoursePageState extends State<FindCoursePage> {
   }
 
   void startNewCourse() {
-    // world_v2: open the start-my-own list as an `addcourse:own` left panel over
-    // the map. setSection already emits a `?left=…` query, so the lang/showAll
-    // filter rides alongside with `&`.
-    String route = WorkspaceNav.setSection(
-      GoRouterState.of(context).uri,
-      PRoutes.world,
-      const PanelToken('addcourse', 'own'),
-      keepRoom: false,
-    );
+    // world_v2: open the start-my-own list as an `addcourse:own/<lang>` (or
+    // `addcourse:own/all` with no language filter) left panel over the map —
+    // the language/showAll choice folded into the token param instead of a
+    // loose `?lang=`/`?showAll=` query (routing.instructions.md).
     final targetLanguage = targetLanguageFilter.value?.langCode;
-    if (targetLanguage != null) {
-      route += "&lang=${Uri.encodeComponent(targetLanguage)}";
-    } else {
-      route += "&showAll=true";
-    }
-    context.go(route);
+    context.go(
+      WorkspaceNav.setSection(
+        GoRouterState.of(context).uri,
+        PanelToken(
+          'addcourse',
+          'own/${targetLanguage != null ? TokenFields.encode(targetLanguage) : 'all'}',
+        ),
+        keepRoom: false,
+      ),
+    );
   }
 
   @override
@@ -353,7 +353,13 @@ class FindCoursePageView extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => context.go('/courses'),
+          onPressed: () => context.go(
+            WorkspaceNav.setSection(
+              GoRouterState.of(context).uri,
+              const PanelToken('addcourse'),
+              keepRoom: false,
+            ),
+          ),
         ),
         title: Text(
           L10n.of(context).browsePublicCourses,
@@ -469,7 +475,11 @@ class _PublicCourseTile extends StatelessWidget {
   const _PublicCourseTile({required this.chunk, this.course});
 
   void _navigateToCoursePage(BuildContext context) {
-    context.go('/rooms/course/${Uri.encodeComponent(chunk.room.roomId)}');
+    // The live public-preview route (route-driven; the Completer/preview flow
+    // isn't token-native yet). See routing.instructions.md.
+    context.go(
+      '${PRoutes.courses}/preview/${Uri.encodeComponent(chunk.room.roomId)}',
+    );
   }
 
   @override

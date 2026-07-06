@@ -17,7 +17,28 @@ class MobileCourseSheet extends StatefulWidget {
   /// The course detail (the route's course view) shown inside the sheet.
   final Widget child;
 
-  const MobileCourseSheet({required this.child, super.key});
+  /// Stable identity of the content in the sheet (the course space id, or an
+  /// activity id when the sheet hosts a standalone activity). The expand/peek
+  /// state is remembered PER [sheetId] so that opening a chat over the sheet —
+  /// which disposes it — and then closing the chat restores the size the learner
+  /// left this course at, while a *different* course still opens at peek (#7332).
+  final String sheetId;
+
+  const MobileCourseSheet({
+    required this.child,
+    required this.sheetId,
+    super.key,
+  });
+
+  /// Last settled expand state per [sheetId], surviving the sheet's disposal
+  /// when a chat opens over it (#7332). Only one mobile sheet exists at a time
+  /// (single column), and entries are keyed by course/activity so switching
+  /// courses doesn't inherit another's size. Defaults to peek (absent key →
+  /// collapsed).
+  static final Map<String, bool> _expandedBySheet = {};
+
+  @visibleForTesting
+  static void resetExpandedMemoryForTest() => _expandedBySheet.clear();
 
   @override
   State<MobileCourseSheet> createState() => _MobileCourseSheetState();
@@ -26,6 +47,9 @@ class MobileCourseSheet extends StatefulWidget {
 class _MobileCourseSheetState extends State<MobileCourseSheet> {
   final DraggableScrollableController _controller =
       DraggableScrollableController();
+
+  void _rememberExpanded(bool expanded) =>
+      MobileCourseSheet._expandedBySheet[widget.sheetId] = expanded;
 
   /// Collapsed height: enough for the handle + the course header (title, the
   /// language/level/modules metadata row, and the tab row beneath it). Sized to
@@ -50,6 +74,7 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
     final peek = _peekFraction(context);
     final expanded = _controller.isAttached && _controller.size > peek + 0.05;
     _animateTo(expanded ? peek : 1.0);
+    _rememberExpanded(!expanded);
   }
 
   void _onDrag(DragUpdateDetails details) {
@@ -70,7 +95,9 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
     if (!_controller.isAttached) return;
     final peek = _peekFraction(context);
     final midpoint = (peek + 1.0) / 2;
-    _animateTo(_controller.size >= midpoint ? 1.0 : peek);
+    final expand = _controller.size >= midpoint;
+    _animateTo(expand ? 1.0 : peek);
+    _rememberExpanded(expand);
   }
 
   @override
@@ -83,9 +110,14 @@ class _MobileCourseSheetState extends State<MobileCourseSheet> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final peek = _peekFraction(context);
+    // Restore the size this course/activity was left at (#7332): a fresh mount
+    // after a chat closed over the sheet reopens expanded if that's how the
+    // learner left it, otherwise at peek.
+    final restoreExpanded =
+        MobileCourseSheet._expandedBySheet[widget.sheetId] ?? false;
     return DraggableScrollableSheet(
       controller: _controller,
-      initialChildSize: peek,
+      initialChildSize: restoreExpanded ? 1.0 : peek,
       minChildSize: peek,
       maxChildSize: 1.0,
       // Snapping is driven by the handle gestures below, not content scroll, so

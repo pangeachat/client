@@ -116,6 +116,17 @@ abstract class AppConfig {
   static const int overlayAnimationDuration = 250;
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
+  static const String goldHexCode = "#fdbf01";
+  static const String goldLightHexCode = "#fedf49";
+
+  static Color goldByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? gold : goldLight;
+
+  static String goldHexByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light
+      ? goldHexCode
+      : goldLightHexCode;
+
   // The "powerups" gold palette for the right-nav cluster (Figma
   // AvatarLangFlags). See the cluster section of routing.instructions.md.
   static const Color goldPill = Color(0xFFFDCE47); // powerups pill background

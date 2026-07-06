@@ -68,8 +68,15 @@ class ActivityMediaBlock {
   /// YouTube's own poster image for [youtubeId], or null when the id can't be
   /// parsed — so a thumbnail-less `youtube` block still shows a real poster
   /// instead of falling back to the (non-image) watch URL.
+  ///
+  /// Uses the `mqdefault` variant (320×180) because it is the smallest poster
+  /// that matches a 16:9 video with **no baked-in letterbox bars**. The 4:3
+  /// variants (`default`, `hqdefault`, `sddefault`) pad widescreen videos with
+  /// black top/bottom bars that survive our square `BoxFit.cover` crop; do not
+  /// switch back to them for resolution. `maxresdefault` is 16:9 too but 404s
+  /// for videos without an HD source, so it isn't a safe unconditional choice.
   String? get youtubeThumbnailUrl => youtubeId != null
-      ? 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg'
+      ? 'https://img.youtube.com/vi/$youtubeId/mqdefault.jpg'
       : null;
 
   /// The best displayable image URL for a render at [width] px, or null when

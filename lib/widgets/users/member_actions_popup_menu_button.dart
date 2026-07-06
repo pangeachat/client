@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -51,6 +53,9 @@ void showMemberActionsPopupMenu({
     ),
     Offset.zero & overlay.size,
   );
+
+  final bool isBotInActivity =
+      user.id == BotName.byEnvironment && room?.showActivityChatUI == true;
 
   final action = await showMenu<_MemberActions>(
     // #Pangea
@@ -210,7 +215,9 @@ void showMemberActionsPopupMenu({
         ),
       // #Pangea
       // if (user.canKick)
-      if (user.canKick && user.membership != Membership.knock)
+      if (user.canKick &&
+          user.membership != Membership.knock &&
+          !isBotInActivity)
         // Pangea#
         PopupMenuItem(
           value: _MemberActions.kick,
@@ -228,7 +235,7 @@ void showMemberActionsPopupMenu({
             ],
           ),
         ),
-      if (user.canBan && user.membership != Membership.ban)
+      if (user.canBan && user.membership != Membership.ban && !isBotInActivity)
         PopupMenuItem(
           value: _MemberActions.ban,
           child: Row(
@@ -408,7 +415,9 @@ void showMemberActionsPopupMenu({
       );
       final roomId = roomIdResult.result;
       if (roomId == null) return;
-      router.go('/rooms/$roomId');
+      if (!context.mounted) return;
+      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+      router.go(WorkspaceNav.openRoomById(uri, roomId));
     // Pangea#
     case _MemberActions.info:
       await UserDialog.show(
@@ -438,16 +447,4 @@ void showMemberActionsPopupMenu({
   }
 }
 
-enum _MemberActions {
-  info,
-  mention,
-  setRole,
-  kick,
-  ban,
-  approve,
-  unban,
-  // #Pangea
-  // report,
-  chat,
-  // Pangea#
-}
+enum _MemberActions { info, mention, setRole, kick, ban, approve, unban, chat }

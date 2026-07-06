@@ -30,6 +30,9 @@ enum InvitationFilter {
 
   static InvitationFilter? fromString(String value) =>
       InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
+
+  static InvitationFilter? fromNullableString(String? value) =>
+      value == null ? null : fromString(value);
 }
 
 class PangeaInvitationSelection extends StatefulWidget {
@@ -258,37 +261,24 @@ class PangeaInvitationSelectionController
   }
 
   List<User> filteredContacts() {
-    List<User> contacts = [];
-    switch (filter) {
-      case InvitationFilter.space:
-        contacts = spaceParent?.getParticipants() ?? [];
-      case InvitationFilter.contacts:
-        contacts = getContacts(context);
-      case InvitationFilter.invited:
-        contacts =
-            participants
+    List<User> contacts = switch (filter) {
+      InvitationFilter.space => spaceParent?.getParticipants() ?? [],
+      InvitationFilter.contacts => getContacts(context),
+      InvitationFilter.invited =>
+        participants
                 ?.where((u) => u.membership == Membership.invite)
                 .toList() ??
-            [];
-      case InvitationFilter.knocking:
-        contacts =
-            participants
-                ?.where((u) => u.membership == Membership.knock)
-                .toList() ??
-            [];
-      case InvitationFilter.banned:
-        contacts =
-            participants
-                ?.where((u) => u.membership == Membership.ban)
-                .toList() ??
-            [];
-      default:
-        contacts =
-            participants
-                ?.where((p) => p.membership != Membership.ban)
-                .toList() ??
-            [];
-    }
+            [],
+      InvitationFilter.knocking =>
+        participants?.where((u) => u.membership == Membership.knock).toList() ??
+            [],
+      InvitationFilter.banned =>
+        participants?.where((u) => u.membership == Membership.ban).toList() ??
+            [],
+      InvitationFilter.participants || InvitationFilter.public =>
+        participants?.where((u) => u.membership != Membership.ban).toList() ??
+            [],
+    };
 
     final search = controller.text.toLowerCase();
     contacts = contacts
@@ -299,9 +289,11 @@ class PangeaInvitationSelectionController
         )
         .toList();
 
-    if (_room?.isSpace ?? false) {
+    final room = _room;
+    if (room != null && (room.isSpace || room.showActivityChatUI)) {
       contacts.removeWhere((u) => u.id == BotName.byEnvironment);
     }
+
     contacts.sort(_sortUsers);
     return contacts;
   }

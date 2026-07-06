@@ -2,18 +2,27 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The three add-course options — Start my own / Enter code for a private
 /// course / Browse public courses — as a standalone, chromeless block. Lives at
 /// the bottom of the Courses panel (below the joined-course list) and is also
-/// the body of the legacy add-course hub. Each option is a plain
-/// `context.go(...)` to a `/courses/<step>` URL, which `LegacyRedirects`
-/// rewrites into the `addcourse` token panel's step — so it works from anywhere.
-/// See routing.instructions.md.
+/// the body of the legacy add-course hub. Each option is a token-native
+/// `setSection` to the `addcourse` left panel at its step, replacing the open
+/// left panels (a focused flow, no chat floating over it). See
+/// routing.instructions.md.
 class AddCourseOptions extends StatelessWidget {
   const AddCourseOptions({super.key});
+
+  void _goToStep(BuildContext context, String step) => context.go(
+    WorkspaceNav.setSection(
+      GoRouterState.of(context).uri,
+      PanelToken('addcourse', step),
+      keepRoom: false,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +36,19 @@ class AddCourseOptions extends StatelessWidget {
           // No showAll: the plan list defaults to the user's target language
           // (the filter still lets them widen to all). showAll=true here would
           // suppress that default and list every language (#7081).
-          onTap: () => context.go('${PRoutes.courses}/own'),
+          onTap: () => _goToStep(context, 'own'),
         ),
         const SizedBox(height: 8.0),
         _HubButton(
           icon: Icons.vpn_key_outlined,
           label: l10n.addCourseEnterCode,
-          onTap: () => context.go('${PRoutes.courses}/private'),
+          onTap: () => _goToStep(context, 'private'),
         ),
         const SizedBox(height: 8.0),
         _HubButton(
           icon: Icons.travel_explore_outlined,
           label: l10n.addCourseBrowsePublic,
-          onTap: () => context.go('${PRoutes.courses}/browse'),
+          onTap: () => _goToStep(context, 'browse'),
         ),
       ],
     );

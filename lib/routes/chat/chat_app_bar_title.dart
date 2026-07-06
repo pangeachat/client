@@ -6,10 +6,12 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
 
@@ -20,16 +22,9 @@ class ChatAppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    // #Pangea
-    // if (controller.selectedEvents.isNotEmpty) {
-    //   return Text(
-    //     controller.selectedEvents.length.toString(),
-    //     style: TextStyle(
-    //       color: Theme.of(context).colorScheme.onTertiaryContainer,
-    //     ),
-    //   );
-    // }
-    // Pangea#
+    final goals = room.ownRole?.allGoals ?? [];
+    final starsEarned = room.ownCompletedGoals.length;
+
     return InkWell(
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
@@ -152,6 +147,13 @@ class ChatAppBarTitle extends StatelessWidget {
                     );
                   },
                 ),
+                if (goals.isNotEmpty)
+                  ActivityStarRow(
+                    total: goals.length,
+                    earned: starsEarned.clamp(0, goals.length),
+                    iconSize: 16.0,
+                    condensed: goals.length > 7,
+                  ),
               ],
             ),
           ),

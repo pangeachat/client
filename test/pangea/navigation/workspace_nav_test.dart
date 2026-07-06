@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
@@ -19,33 +20,17 @@ void main() {
       ]);
     });
 
-    test('an encoded construct survives the add → URL → parse round-trip', () {
-      const token = PanelToken('vocab', '{"lemma":"a,b","type":"verb"}');
+    test('an encoded construct param survives the add → URL → parse '
+        'round-trip', () {
+      const token = PanelToken('vocab', 'a%2Cb.verb');
       final loc = WorkspaceNav.openRight(u('/chats'), token);
       expect(parseOpenPanels(u(loc)).right.single, token);
     });
 
-    test('a browser-normalized construct param (literal commas inside braces) '
-        'survives the cold-boot parse — selection not shattered (#7079)', () {
-      // On a refresh/cold boot the browser normalizes the fragment in
-      // window.location, decoding the encoded construct param's %2C back to
-      // literal commas inside literal braces (it keeps %22 for the quotes). A
-      // naive comma split would shatter the token mid-JSON, jsonDecode would
-      // fail, and the construct detail would fall back to the summary grid.
-      // Brace-aware splitting keeps the param whole.
-      final uri = u(
-        '/?right=vocab:{%22lemma%22:%22campus%22,%22type%22:%22vocab%22,'
-        '%22cat%22:%22noun%22},analytics:vocab',
-      );
-      final right = parseOpenPanels(uri).right;
-      expect(right.map((t) => t.type), ['vocab', 'analytics']);
-      expect(
-        right.first.param,
-        '{"lemma":"campus","type":"vocab","cat":"noun"}',
-      );
-    });
-
-    test('atStart blooms a detail to the left of an existing summary', () {
+    test('the parser yields master-first regardless of raw insertion order', () {
+      // atStart is a raw list insert, but the parser normalizes a registry
+      // master/detail pair to master-first, so the summary always precedes its
+      // detail in the URL; the renderer blooms the detail left of the edge.
       var loc = WorkspaceNav.openRight(
         u('/chats'),
         const PanelToken('analytics', 'vocab'),
@@ -56,8 +41,8 @@ void main() {
         atStart: true,
       );
       expect(parseOpenPanels(u(loc)).right.map((t) => t.type), [
-        'vocab',
         'analytics',
+        'vocab',
       ]);
     });
 
@@ -130,6 +115,34 @@ void main() {
     });
   });
 
+  group('openRoomById (event folds into the room token; no loose params)', () {
+    test('a bare call opens the room with no event/body query at all', () {
+      final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc');
+      final uri = u(loc);
+      expect(parseOpenPanels(uri).left, [const PanelToken('room', '!abc')]);
+      expect(uri.queryParameters['event'], isNull);
+      expect(uri.queryParameters['body'], isNull);
+    });
+
+    test('event rides the room token param, not a loose ?event= query', () {
+      final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc', event: r'$e1');
+      final uri = u(loc);
+      expect(uri.queryParameters['event'], isNull);
+      final room = parseOpenPanels(uri).left.single;
+      expect(RoomToken.parse(room.param!).eventId, r'$e1');
+    });
+
+    test('subPage still pushes normally alongside a room open', () {
+      final loc = WorkspaceNav.openRoomById(
+        u('/chats'),
+        '!abc',
+        subPage: 'details',
+      );
+      final room = parseOpenPanels(u(loc)).left.single;
+      expect(room.param, '!abc/details');
+    });
+  });
+
   group('openExclusiveLeftRoom (one live session)', () {
     test('opening a room drops any other room but keeps chats/course', () {
       var loc = WorkspaceNav.setLeft(u('/chats'), const [
@@ -163,7 +176,7 @@ void main() {
       // The course id lives in the `?m=course:` map filter; the token param is
       // just the tab (a bare course token with no filter is dropped at parse).
       var loc = WorkspaceNav.openCourse(
-        u('/?m=course:!s'),
+        u('/?c=!s'),
         const PanelToken('course', 'chat'),
       );
       loc = WorkspaceNav.openCourse(
@@ -181,7 +194,7 @@ void main() {
       // A course-scoped room: the `?m=course:` filter is set, the room is live,
       // and opening the course card keeps the room beside it.
       var loc = WorkspaceNav.openExclusiveLeftRoom(
-        u('/?m=course:!s'),
+        u('/?c=!s'),
         const PanelToken('room', '!a'),
       );
       loc = WorkspaceNav.openCourse(u(loc), const PanelToken('course'));
@@ -195,7 +208,7 @@ void main() {
       // through openCourse/openCourseFilter: showing the card is leaving the
       // activity, so the live-view activity token must NOT co-render beside it
       // (it is not a sibling of `course`, so only an explicit drop clears it).
-      final fromActivity = u('/?m=course:!s&left=activity:abc');
+      final fromActivity = u('/?c=!s&left=activity:abc');
       final viaOpenCourse = parseOpenPanels(
         u(WorkspaceNav.openCourse(fromActivity, const PanelToken('course'))),
       ).left;
@@ -235,10 +248,10 @@ void main() {
           1,
         );
         expect(
-          right.first,
+          right.last,
           const PanelToken('grammar', 'verb'),
-        ); // detail at the edge-left
-        expect(right.any((t) => t.type == 'analytics'), isTrue); // summary kept
+        ); // detail after its master (master-first; renderer blooms it left)
+        expect(right.first.type, 'analytics'); // summary master, kept + first
       },
     );
 
@@ -249,8 +262,8 @@ void main() {
         'vocab',
       );
       final right = parseOpenPanels(u(loc)).right;
-      expect(right.map((t) => t.type), ['vocab', 'analytics']);
-      expect(right.last.param, 'vocab'); // the seated summary's tab
+      expect(right.map((t) => t.type), ['analytics', 'vocab']); // master-first
+      expect(right.first.param, 'vocab'); // the seated summary's tab
     });
 
     test('opening a construct detail closes an open activity session', () {
@@ -270,7 +283,7 @@ void main() {
         lists.left.any((t) => t.type == 'session'),
         isFalse,
       ); // session gone
-      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+      expect(lists.right.last, const PanelToken('vocab', 'hablar'));
     });
 
     test('a live room chat is NOT closed by opening a construct detail', () {
@@ -285,7 +298,7 @@ void main() {
       );
       final lists = parseOpenPanels(u(loc));
       expect(lists.left.any((t) => t.type == 'room'), isTrue); // chat survives
-      expect(lists.right.first, const PanelToken('vocab', 'hablar'));
+      expect(lists.right.last, const PanelToken('vocab', 'hablar'));
     });
   });
 
@@ -330,13 +343,13 @@ void main() {
       // column: the open course card closes (so the review isn't rendered behind
       // it) while the map scope is kept.
       final loc = WorkspaceNav.openExclusiveSession(
-        u('/?m=course:!s&left=course'),
+        u('/?c=!s&left=course'),
         const PanelToken('session', '!a'),
       );
       final left = parseOpenPanels(u(loc)).left;
       expect(left.any((t) => t.type == 'course'), isFalse); // card closed
       expect(left.singleWhere((t) => t.type == 'session').param, '!a');
-      expect(loc.contains('m=course'), isTrue); // map scope preserved
+      expect(loc.contains('c='), isTrue); // map scope preserved
     });
   });
 
@@ -371,12 +384,12 @@ void main() {
       'closing a course card keeps its ?m= filter, the room, and the right',
       () {
         final loc = WorkspaceNav.closeSection(
-          u('/?m=course:!s&left=course,room:!a&right=analytics:vocab'),
+          u('/?c=!s&left=course,room:!a&right=analytics:vocab'),
           const PanelToken('course'),
         );
         // Scope is independent of panels: the map stays course-scoped (filter
         // survives), the card is gone, the room and right column are kept.
-        expect(loc.contains('m=course'), isTrue);
+        expect(loc.contains('c='), isTrue);
         final lists = parseOpenPanels(u(loc));
         expect(
           lists.left.any((t) => t.type == 'course'),
@@ -394,10 +407,10 @@ void main() {
         // keeping its room); the coursepage child reads on from the surviving
         // ?m= filter, so the edit page must NOT close with the card.
         final loc = WorkspaceNav.closeSection(
-          u('/?m=course:!s&left=course,coursepage:edit'),
+          u('/?c=!s&left=course,coursepage:edit'),
           const PanelToken('course'),
         );
-        expect(loc.contains('m=course'), isTrue); // scope survives
+        expect(loc.contains('c='), isTrue); // scope survives
         final lists = parseOpenPanels(u(loc));
         expect(lists.left.any((t) => t.type == 'course'), isFalse); // card gone
         expect(
@@ -411,10 +424,10 @@ void main() {
       'closing the course card alone keeps the scoped map, not bare world',
       () {
         final loc = WorkspaceNav.closeSection(
-          u('/?m=course:!s&left=course'),
+          u('/?c=!s&left=course'),
           const PanelToken('course'),
         );
-        expect(loc.contains('m=course'), isTrue); // scope survives the close
+        expect(loc.contains('c='), isTrue); // scope survives the close
         expect(
           parseOpenPanels(u(loc)).left,
           isEmpty,
@@ -435,12 +448,12 @@ void main() {
       // canvas, independent of the course card); closing the course must not
       // drop it.
       final loc = WorkspaceNav.closeSection(
-        u('/?m=course:!s&left=course&activity=act-1&launch=true'),
+        u('/?c=!s&left=course&activity=act-1&launch=true'),
         const PanelToken('course'),
       );
       expect(loc.contains('activity=act-1'), isTrue); // overlay preserved
       expect(loc.contains('launch=true'), isTrue);
-      expect(loc.contains('m=course'), isTrue); // scope kept
+      expect(loc.contains('c='), isTrue); // scope kept
       expect(
         parseOpenPanels(u(loc)).left.any((t) => t.type == 'course'),
         isFalse,
@@ -499,16 +512,17 @@ void main() {
       );
       final right = parseOpenPanels(u(loc)).right;
       // Only the settings page + its menu master remain; the analytics family
-      // is gone.
-      expect(right.map((t) => t.type), ['settingspage', 'settings']);
+      // is gone. Master-first: the menu precedes its page.
+      expect(right.map((t) => t.type), ['settings', 'settingspage']);
     });
 
     test('opening a page seats it as a detail BESIDE the menu master', () {
       final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
       final right = parseOpenPanels(u(loc)).right;
-      // page detail blooms at the front; the menu master is kept behind it.
-      expect(right.map((t) => t.type), ['settingspage', 'settings']);
-      expect(right.first.param, 'learning');
+      // Master-first: the menu comes first, the page detail after it (the
+      // renderer blooms the page left of the edge-justified menu).
+      expect(right.map((t) => t.type), ['settings', 'settingspage']);
+      expect(right.last.param, 'learning');
     });
 
     test('opening another page replaces the page detail (one at a time)', () {
@@ -597,7 +611,6 @@ void main() {
     test('moving to the world keeps the live room and the right column', () {
       final world = WorkspaceNav.setSection(
         u('/chats?left=chats,room:!a&right=analytics:vocab'),
-        '/',
         null,
       );
       expect(u(world).path, '/');
@@ -609,12 +622,13 @@ void main() {
     });
 
     test('sets the new section in front of the kept room', () {
+      // setSection always emits the world path `/` — section identity rides
+      // in the token, never a path segment.
       final chats = WorkspaceNav.setSection(
         u('/?left=room:!a&right=analytics:vocab'),
-        '/chats',
         const PanelToken('chats'),
       );
-      expect(u(chats).path, '/chats');
+      expect(u(chats).path, '/');
       expect(parseOpenPanels(u(chats)).left, [
         const PanelToken('chats'),
         const PanelToken('room', '!a'),
@@ -624,7 +638,6 @@ void main() {
     test('keepRoom:false drops the room (focused full-bleed flow)', () {
       final hub = WorkspaceNav.setSection(
         u('/chats?left=chats,room:!a&right=analytics:vocab'),
-        '/courses',
         null,
         keepRoom: false,
       );
@@ -638,12 +651,11 @@ void main() {
       // Switching to a non-map section (chats) keeps the course scope — only a
       // new focus (a course) or the World control changes `?m=`.
       final chats = WorkspaceNav.setSection(
-        u('/?m=course:!s&left=course&right=analytics:vocab'),
-        '/',
+        u('/?c=!s&left=course&right=analytics:vocab'),
         const PanelToken('chats'),
         keepRoom: false,
       );
-      expect(chats.contains('m=course'), isTrue);
+      expect(chats.contains('c='), isTrue);
       final lists = parseOpenPanels(u(chats));
       expect(lists.left, [const PanelToken('chats')]); // section replaced left
       expect(lists.right, [const PanelToken('analytics', 'vocab')]); // kept
@@ -657,7 +669,6 @@ void main() {
       // that blank parent — even though the current URL is the legacy path.
       final planList = WorkspaceNav.setSection(
         u('/courses/own/abc-123'),
-        '/',
         const PanelToken('addcourse', 'own'),
         keepRoom: false,
       );
@@ -677,7 +688,6 @@ void main() {
       // blank parent — even though the current URL is the legacy preview path.
       final browseList = WorkspaceNav.setSection(
         u('/courses/preview/!abc:server'),
-        '/',
         const PanelToken('addcourse', 'browse'),
         keepRoom: false,
       );
@@ -778,7 +788,7 @@ void main() {
         'card', () {
       // The course workspace: a `?m=course:<id>` map filter + a left course
       // panel. A management button (Edit, Invite, …) opens beside the card.
-      const base = '/?m=course:!s&left=course';
+      const base = '/?c=!s&left=course';
       var loc = WorkspaceNav.openCoursePage(u(base), 'edit');
       final left = parseOpenPanels(u(loc)).left;
       expect(left.map((t) => t.type).toList(), ['course', 'coursepage']);
@@ -802,6 +812,21 @@ void main() {
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
 
+    test('openCoursePage(filter:) folds the invite contact filter into the '
+        'coursepage token param instead of a loose ?filter= query', () {
+      final loc = WorkspaceNav.openCoursePage(
+        u('/?c=!s&left=course'),
+        'invite',
+        filter: 'knock',
+      );
+      final uri = u(loc);
+      expect(uri.queryParameters['filter'], isNull);
+      expect(
+        parseOpenPanels(uri).left.where((t) => t.type == 'coursepage').single,
+        const PanelToken('coursepage', 'invite/knock'),
+      );
+    });
+
     test(
       'openCoursePageFor opens a management page from ANYWHERE — setting the '
       'target space scope even from the bare map or a different course',
@@ -819,7 +844,7 @@ void main() {
         );
         // From a DIFFERENT course — the scope is replaced with the target's.
         loc = WorkspaceNav.openCoursePageFor(
-          u('/?m=course:!other&left=course'),
+          u('/?c=!other&left=course'),
           '!target',
           'edit',
         );
@@ -835,18 +860,21 @@ void main() {
   });
 
   group('openPractice (takes over the analytics surface)', () {
-    test('clears the analytics master + vocab/grammar details + a left session, '
-        'then seats practice', () {
-      const base =
-          '/?left=room:!r,session:!s&right=vocab:%7B%22l%22%3A%22a%22%7D,analytics:vocab';
-      final loc = WorkspaceNav.openPractice(u(base), 'vocab');
-      final lists = parseOpenPanels(u(loc));
-      // The right column is just the practice panel — analytics + vocab gone.
-      expect(lists.right.single, const PanelToken('practice', 'vocab'));
-      // The left session (shares the detail slot) is dropped; the live room
-      // (independent) stays.
-      expect(lists.left.map((t) => t.type), ['room']);
-    });
+    test(
+      'clears the analytics master + vocab/grammar details + a left session, '
+      'then seats practice',
+      () {
+        const base =
+            '/?left=room:!r,session:!s&right=vocab:a.adj,analytics:vocab';
+        final loc = WorkspaceNav.openPractice(u(base), 'vocab');
+        final lists = parseOpenPanels(u(loc));
+        // The right column is just the practice panel — analytics + vocab gone.
+        expect(lists.right.single, const PanelToken('practice', 'vocab'));
+        // The left session (shares the detail slot) is dropped; the live room
+        // (independent) stays.
+        expect(lists.left.map((t) => t.type), ['room']);
+      },
+    );
 
     test(
       'opening a construct detail closes practice (one detail across columns)',
@@ -875,53 +903,58 @@ void main() {
     // server_name, which is unavailable in a unit test (no MatrixState), so a
     // `!x:server.com` would ride the URL whole. The existing course helpers test
     // the same way — the id format is orthogonal to what this producer asserts.
-    test('sets the course scope + a sole `left=activity:` token — no other '
+    test('sets the course context + a sole `left=activity:` token — no other '
         'left/right panels (#7385 first-class panel, #7267 split)', () {
       final loc = WorkspaceNav.openCourseActivity('!space', 'act-123');
       final uri = u(loc);
       expect(uri.path, '/'); // over the persistent world map
-      // The `m` filter is the course scope, encoded the same as everywhere else.
-      expect(
-        WorkspaceQuery.valueOf(uri.query, 'm'),
-        const PanelToken('course', '!space').encode(),
-      );
-      // #7385: the activity is a first-class left panel token (claims the single
-      // live view), not the old `?activity=` canvas overlay.
-      expect(
-        WorkspaceQuery.valueOf(uri.query, 'left'),
-        const PanelToken('activity', 'act-123').encode(),
-      );
+      // The `c=` param is the course context, read by map and panels alike.
+      expect(activeSpaceIdFor(uri), '!space');
+      // #7385: the activity is a first-class left panel token (claims the
+      // single live view), not the old `?activity=` canvas overlay; its id
+      // rides the token's fields.
+      expect(activityInfoFor(uri)?.id, 'act-123');
       expect(uri.queryParameters['activity'], isNull);
       // #7267: the activity REPLACES the panels, so no `left=course` card rides
       // beside it and no right panel survives.
       expect(WorkspaceQuery.valueOf(uri.query, 'right'), isNull);
+      expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
     });
 
-    test('launch:true adds the lobby-skip flag', () {
+    test('launch:true rides the token fields, never a loose param', () {
       final loc = WorkspaceNav.openCourseActivity(
         '!space',
         'act-123',
         launch: true,
       );
-      expect(WorkspaceQuery.valueOf(u(loc).query, 'launch'), 'true');
+      final uri = u(loc);
+      expect(activityInfoFor(uri)?.launch, isTrue);
+      expect(uri.queryParameters['launch'], isNull);
     });
 
-    test('roomId reopens a specific session room (shortRoomId localpart)', () {
+    test('roomId binds the session room in the token fields', () {
       final loc = WorkspaceNav.openCourseActivity(
         '!space',
         'act-123',
         roomId: '!sess',
       );
-      expect(WorkspaceQuery.valueOf(u(loc).query, 'roomid'), '!sess');
+      final uri = u(loc);
+      expect(activityInfoFor(uri)?.roomId, '!sess');
+      expect(uri.queryParameters['roomid'], isNull);
     });
 
-    test('autoplay:true autostarts the hero media at block 0', () {
-      final loc = WorkspaceNav.openCourseActivity(
-        '!space',
-        'act-123',
-        autoplay: true,
-      );
-      expect(WorkspaceQuery.valueOf(u(loc).query, 'autoplay'), '0');
-    });
+    test(
+      'autoplay:true autostarts the hero media at block 0 (token field)',
+      () {
+        final loc = WorkspaceNav.openCourseActivity(
+          '!space',
+          'act-123',
+          autoplay: true,
+        );
+        final uri = u(loc);
+        expect(activityInfoFor(uri)?.autoplay, 0);
+        expect(uri.queryParameters['autoplay'], isNull);
+      },
+    );
   });
 }

@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
@@ -56,7 +55,6 @@ class MobileBottomNav extends StatelessWidget {
                   onTap: () => context.go(
                     WorkspaceNav.setSection(
                       state.uri,
-                      PRoutes.world,
                       const PanelToken('chats'),
                       // A nav click replaces the open panels rather than stacking.
                       keepRoom: false,
@@ -177,10 +175,9 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
               onTap: () {
                 Navigator.of(sheetContext).pop();
                 sheetContext.go(
-                  WorkspaceNav.setSection(
+                  WorkspaceNav.openCourseSection(
                     uri,
-                    PRoutes.course(space.id),
-                    const PanelToken('course'),
+                    space.id,
                     keepRoom: false,
                   ),
                 );
@@ -194,7 +191,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseStartMyOwn),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/own');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'own'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
           ListTile(
@@ -202,7 +205,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseEnterCode),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/private');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'private'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
           ListTile(
@@ -210,7 +219,13 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseBrowsePublic),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go('${PRoutes.courses}/browse');
+              sheetContext.go(
+                WorkspaceNav.setSection(
+                  uri,
+                  const PanelToken('addcourse', 'browse'),
+                  keepRoom: false,
+                ),
+              );
             },
           ),
         ],
