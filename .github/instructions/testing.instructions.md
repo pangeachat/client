@@ -8,6 +8,8 @@ Follows the [cross-repo testing strategy](../../../.github/instructions/testing.
 
 ## Stack
 
+> **Run tests via `fvm flutter test`, not bare `flutter test`.** The repo pins the Flutter SDK in `.fvmrc`; a different `flutter` on your `PATH` can churn `pubspec.lock`. If that lockfile shows up in your diff, you used the wrong SDK — revert it and re-run under `fvm`.
+
 - **Framework**: `flutter test` (Dart test runner), Playwright Test (web E2E + axe-core a11y)
 - **Language**: Dart, TypeScript (Playwright specs)
 - **Unit/widget tests**: `test/` directory
