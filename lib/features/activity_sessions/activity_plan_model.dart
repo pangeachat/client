@@ -120,6 +120,30 @@ class ActivityPlanModel {
   /// avatar).
   ActivityMediaBlock? get heroBlock => media.firstOrNull;
 
+  /// First *visible* media block (image / video / youtube) — the lead the
+  /// focused start-page hero renders. Skips non-visual (audio) blocks so an
+  /// audio-first activity doesn't try to paint an audio URL as an image.
+  ActivityMediaBlock? get visibleHeroBlock =>
+      media.firstWhereOrNull((b) => b.isImage || b.isVideo || b.isYoutube);
+
+  /// The poster the start-page hero shows: the visible lead block's image (a
+  /// video/YouTube block resolves to its poster frame, so a video-first
+  /// activity leads with its own frame instead of the generic placeholder),
+  /// falling back to [imageURL] (legacy single image → deterministic
+  /// placeholder) when there is no visible block.
+  Uri? get heroDisplayUrl {
+    final url = visibleHeroBlock?.displayUrl();
+    return url != null ? Uri.tryParse(url) : imageURL;
+  }
+
+  /// Whether the start-page hero's lead block plays — a video or YouTube clip.
+  /// Drives the hero's play badge and inline player. An image (or no media)
+  /// lead is not playable and renders as a still.
+  bool get heroIsPlayable {
+    final b = visibleHeroBlock;
+    return b != null && (b.isVideo || b.isYoutube);
+  }
+
   /// Whether the activity has any video or YouTube block — media that plays.
   /// The live session shows the inline carousel (so it can be played) only for
   /// these, and suppresses the blurred background image in that case;
