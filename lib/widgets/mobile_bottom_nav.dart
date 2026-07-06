@@ -36,6 +36,7 @@ class MobileBottomNav extends StatelessWidget {
         top: false,
         child: Semantics(
           label: L10n.of(context).navOptionsLabel,
+          container: true,
           child: SizedBox(
             height: 56,
             child: Row(

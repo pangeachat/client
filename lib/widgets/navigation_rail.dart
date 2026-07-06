@@ -97,6 +97,7 @@ class SpacesNavigationRail extends StatelessWidget {
       child: SafeArea(
         child: Semantics(
           label: L10n.of(context).navOptionsLabel,
+          container: true,
           child: StreamBuilder(
             key: ValueKey(client.userID.toString()),
             stream: client.onSync.stream

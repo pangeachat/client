@@ -103,6 +103,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
         final l2 = MatrixState.pangeaController.userController.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
+          container: true,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
