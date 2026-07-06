@@ -399,30 +399,33 @@ becomes a **horizontal analytics bar** pinned to the top of the safe area
 ([Single-column analytics bar](#single-column-analytics-bar)). A **search bar**
 floats above the nav widget with map filters above it
 ([Single-column search bar](#single-column-search-bar)). Analytics and Profile
-are reached from the top bar, not the bottom nav. Further-nested surfaces (a
-live chat, an activity start/join) that have no rail item of their own open
-**full-screen**, covering the bottom widget — a rounded-corner card with a small
-inset of map visible behind it, so the world never fully disappears. All chrome
-respects the device safe area and does not intrude into the system status bar.
+are reached from the top bar, not the bottom nav. Further-nested surfaces — a
+live chat, including a launched activity session — open **full-screen**,
+covering the bottom widget: a rounded-corner card with a small inset of map
+visible behind it, so the world never fully disappears. All chrome respects the
+device safe area and does not intrude into the system status bar.
 
 The mobile chrome changes how the workspace is *drawn*, never what it *is*: the
 URL grammar, the tokens, and the navigation helpers are identical across form
 factors. Each mobile surface below states which of its states live in the URL
 and which are ephemeral view state.
 
-**A course rides inside the nav widget on a narrow screen.** The course card
-renders in the widget's expandable cavity over the course-scoped map (the
-Google Maps "map + sheet" pattern, with the rail icons anchored beneath), not
-as a separate sheet or a full-screen page — dragging the widget up reveals the
-full card. On a wide screen the same card is a bounded panel beside the map.
-The activity plan, by contrast, is a start/join flow and opens **full-screen**
-on narrow (see *Full-screen surfaces* below).
+**A course or an activity plan rides inside the nav widget on a narrow
+screen.** Both render in the widget's expandable cavity over the scoped map
+(the Google Maps "map + sheet" pattern, with the rail icons anchored beneath),
+not as a separate sheet or a full-screen page — dragging the widget up reveals
+the full content. A **course card** opens at the collapsed peek, the scoped map
+leading; an **activity plan** opens at **half height with the camera settled on
+its pin**, so the learner sees where the activity lives while reading it —
+swipe up for the full plan. On a wide screen the same content is a bounded
+panel beside the map. Only the *launched session* — a live chat — is a
+full-screen surface (see *Full-screen surfaces* below).
 
-The widget remembers its height **per course**: opening a chat over it tears it
-down, and closing that chat reopens it at the size the learner left *that*
-course at, while a different course still opens at the collapsed peek. The
-memory is scoped to the course, not global, so one course's expanded widget
-never dictates the next course's opening size (#7332).
+The widget remembers its height **per course** (and per activity): opening a
+chat over it tears it down, and closing that chat reopens it at the size the
+learner left *that* course at, while a different course still opens at the
+collapsed peek. The memory is scoped to the content, not global, so one
+course's expanded widget never dictates the next course's opening size (#7332).
 
 **Tapping a map pin promotes it; there is no preview popup.** Tapping a small or
 mid pin expands it to its **large card in place** (over the map, the bottom nav
@@ -458,10 +461,11 @@ bottom of the widget at all heights. Content inside the expanded area is
 **The URL carries the panel, not the geometry.** The widget's height — collapsed,
 half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
-hub) draws it expanded at half height (the leaf rule); a **course card** draws
-at its remembered height — the collapsed peek by default (see the per-course
-memory above), so the scoped map leads. The collapsed rail over the bare map is
-just `/`. A shared URL never encodes how far someone had dragged a sheet.
+hub) or an **activity plan** draws it expanded at half height (the leaf rule);
+a **course card** draws at its remembered height — the collapsed peek by
+default (see the per-course memory above), so the scoped map leads. The
+collapsed rail over the bare map is just `/`. A shared URL never encodes how
+far someone had dragged a sheet.
 
 **Expanded to full height.** A **drag handle** at the top of the expanded content
 lets the user pull the widget to full height: it grows until the search bar
@@ -485,11 +489,11 @@ undoes the last token navigation — closing what was opened, restoring what was
 closed (see [History follows the workspace](#history-follows-the-workspace)).
 The ephemeral expand/collapse of the widget is never a history entry.
 
-**Full-screen surfaces.** Surfaces that are further nested and have no nav rail
-button of their own (a live chat room, an activity start/join flow) open
-full-screen, covering the nav widget — a rounded-corner card with a small inset
-of map visible behind it. The nav widget is not accessible while one of these
-surfaces is focused.
+**Full-screen surfaces.** A live chat room — including a launched activity
+session — opens full-screen, covering the nav widget: a rounded-corner card
+with a small inset of map visible behind it. The nav widget is not accessible
+while one of these surfaces is focused. (The activity *plan* is not one of
+these — it rides the cavity at half height, its pin visible above.)
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -605,7 +609,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code) |
-| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (full-screen on narrow — it is a start/join flow), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
 
