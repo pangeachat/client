@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -585,26 +586,31 @@ class _WorldMapViewState extends State<WorldMapView> {
       child: Stack(
         children: [
           Positioned.fill(child: map),
-          Positioned(
-            top: 12,
-            left: widget.controller.widget.leftOverlayWidth + 12,
-            width: 360,
-            child: WorldMapSearchOverlay(
-              filter: widget.controller.filter,
-              updateQuery: widget.controller.setQuery,
-              l2Label: l2?.toUpperCase(),
-              onToggleL2: widget.controller.toggleL2,
-              onWidenSearch: () =>
-                  widget.controller.resetFilters(l2Only: false),
-              toggleCefr: widget.controller.toggleCefr,
-              toggleCompletion: widget.controller.toggleCompletion,
-              results: render.visible,
-              onResultTap: widget.controller.flyTo,
-              onReset: widget.controller.resetFilters,
-              emptyInView:
-                  !widget.controller.loadingPins && render.visible.isEmpty,
+          // Column mode only: on a narrow screen the search rides the floating
+          // bar above the nav widget instead (the shell mounts it — see
+          // routing.instructions.md → Single-column search bar), and this
+          // top-left spot belongs to the analytics bar.
+          if (FluffyThemes.isColumnMode(context))
+            Positioned(
+              top: 12,
+              left: widget.controller.widget.leftOverlayWidth + 12,
+              width: 360,
+              child: WorldMapSearchOverlay(
+                filter: widget.controller.filter,
+                updateQuery: widget.controller.setQuery,
+                l2Label: l2?.toUpperCase(),
+                onToggleL2: widget.controller.toggleL2,
+                onWidenSearch: () =>
+                    widget.controller.resetFilters(l2Only: false),
+                toggleCefr: widget.controller.toggleCefr,
+                toggleCompletion: widget.controller.toggleCompletion,
+                results: render.visible,
+                onResultTap: widget.controller.flyTo,
+                onReset: widget.controller.resetFilters,
+                emptyInView:
+                    !widget.controller.loadingPins && render.visible.isEmpty,
+              ),
             ),
-          ),
           controls,
         ],
       ),
