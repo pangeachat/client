@@ -365,6 +365,9 @@ class _Header extends StatelessWidget {
                   ? Image.network(
                       imageUrl.toString(),
                       fit: BoxFit.cover,
+                      // Decorative: the ancestor ExcludeSemantics already hides
+                      // it; stated here too for the a11y floor check.
+                      excludeFromSemantics: true,
                       errorBuilder: (context, _, _) =>
                           Container(color: Colors.black12),
                     )
