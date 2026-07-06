@@ -401,9 +401,9 @@ floats above the nav widget with map filters above it
 ([Single-column search bar](#single-column-search-bar)). Analytics and Profile
 are reached from the top bar, not the bottom nav. Further-nested surfaces (a
 live chat, an activity start/join) that have no rail item of their own open
-**full-screen**, covering the bottom widget — with a small sliver of map behind
-them and rounded corners — matching current behavior. All chrome respects the
-device safe area and does not intrude into the system status bar.
+**full-screen**, covering the bottom widget — a rounded-corner card with a small
+inset of map visible behind it, so the world never fully disappears. All chrome
+respects the device safe area and does not intrude into the system status bar.
 
 The mobile chrome changes how the workspace is *drawn*, never what it *is*: the
 URL grammar, the tokens, and the navigation helpers are identical across form
@@ -457,16 +457,20 @@ bottom of the widget at all heights. Content inside the expanded area is
 
 **The URL carries the panel, not the geometry.** The widget's height — collapsed,
 half, full — is ephemeral view state, exactly like fold recency above: a cold
-link or a refresh with an open left token draws that section expanded at half
-height (the leaf rule), and the collapsed rail over the bare map is just `/`. A
-shared URL never encodes how far someone had dragged a sheet.
+link or a refresh with an open **section** token (the chat list, the Courses
+hub) draws it expanded at half height (the leaf rule); a **course card** draws
+at its remembered height — the collapsed peek by default (see the per-course
+memory above), so the scoped map leads. The collapsed rail over the bare map is
+just `/`. A shared URL never encodes how far someone had dragged a sheet.
 
 **Expanded to full height.** A **drag handle** at the top of the expanded content
 lets the user pull the widget to full height: it grows until the search bar
 riding above it sits immediately below the analytics bar — the rail icons, the
 search bar, and the analytics bar all stay visible and tappable at maximum
 extent. The widget does not grow past that bound regardless of how much content
-it contains.
+it contains. The handle is also a labeled button — a tap toggles half ↔ full —
+so the resize is reachable without a drag gesture (keyboard / switch access;
+the #7128 pattern).
 
 **Collapsing is not closing.** Tapping outside the widget or tapping the
 already-active rail item collapses it back to the rail-only state — ephemeral:
@@ -483,9 +487,9 @@ The ephemeral expand/collapse of the widget is never a history entry.
 
 **Full-screen surfaces.** Surfaces that are further nested and have no nav rail
 button of their own (a live chat room, an activity start/join flow) open
-full-screen, covering the nav widget — a small sliver of map is visible behind
-them with rounded corners, matching current behavior. The nav widget is not
-accessible while one of these surfaces is focused.
+full-screen, covering the nav widget — a rounded-corner card with a small inset
+of map visible behind it. The nav widget is not accessible while one of these
+surfaces is focused.
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -508,27 +512,37 @@ differences from the web cluster:
   bar.
 
 **Collapsed state.** In full screens (a chat, an activity start/join), the
-analytics bar collapses into a single avatar circle, which displays the level
-badge and current XP amount around it. A tap on the collapsed avatar temporarily
-expands the full bar for approximately 3 seconds — long enough to tap a tracker
-or open settings — then auto-collapses if nothing further is tapped.
+analytics bar collapses into a single avatar circle wearing the XP ring, the
+level badge, and the L2 flag. A tap on the collapsed avatar temporarily expands
+the full bar for approximately 3 seconds — long enough to tap a tracker or open
+settings — then auto-collapses if nothing further is tapped. The timer never
+fires while the bar holds keyboard or assistive-technology focus: screen-reader
+and switch users collapse it by tapping outside (or the avatar again), not by
+timeout (WCAG 2.2.1 — see
+[accessibility.instructions.md](accessibility.instructions.md)).
 [Collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)
 
 **Expanded state.** Tapping a bar element opens the same right-column tokens as
 the web cluster (`right=analytics:vocab`, `right=settings`, the level tab, the
 flag's learning-settings shortcut) — the mobile panel is the single-column
 rendering of the right column, so a shared or refreshed URL restores it like any
-other panel. It fills nearly the full screen, with a **max width of 300 logical
-pixels** (so on tablets the panel stays centered and bounded). Its leading
-control follows the
-[close-affordance rule](#closing-a-panel-x-or-back-arrow): an **X** at the very
-top-left of a summary (dropping the token), a back arrow once a page is pushed
-(Security → a leaf). The panel content expands upward from the bottom, covering
-the bottom nav widget completely — the nav rail is not accessible while an
-analytics or settings panel is open, even when there is not enough content to
-physically reach the nav widget. The analytics bar itself remains visible at the
-top throughout. This is the key behavioral distinction from the bottom nav's own
-expanded state, in which the rail icons always remain visible.
+other panel. It fills the width (minus the floating-chrome margins) on every
+single-column screen, per the Figma frames — no fixed width cap; if a large
+tablet stretches it awkwardly, bound it then. Its leading control follows the
+[close-affordance rule](#closing-a-panel-x-or-back-arrow) and sits at the top of
+the screen **in line with the analytics bar** (chrome, not panel content): an
+**X** on a summary (dropping the token), a back arrow once a page is pushed
+(Security → a leaf). Each expanded panel carries its **own search bar** directly
+below the analytics bar, scoped to its content — Search Vocab / Grammar /
+Activities / Settings, per the Figma states. The panel content expands upward
+from the bottom, covering the bottom nav widget completely — the nav rail is
+not accessible while an analytics or settings panel is open, even when there is
+not enough content to physically reach the nav widget. The analytics bar itself
+remains visible at the top throughout. This is the key behavioral distinction
+from the bottom nav's own expanded state, in which the rail icons always remain
+visible. The settings panel renders the **existing settings surface** in this
+chrome; the reorganized settings content some frames show (inline language /
+CEFR pickers) is a separate design effort, not part of the chrome.
 [Analytics section](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13485-90933&t=NJSsG23tsR9Kdwlz-0)
 [Wider tablet analytics](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13377-63983&t=NJSsG23tsR9Kdwlz-0)
 
@@ -546,7 +560,11 @@ appear above the search bar (rather than below) and ride and minimize with it.
 **The bar searches what is open.** Over the bare map it is the activity search
 ("Search Pangea"); with a section expanded in the widget it re-targets to that
 section's content — the chat list ("Search All chats"), the courses list
-("Search Courses") — per the Figma states. One persistent bar, contextual scope.
+("Search Courses") — per the Figma states. One persistent bar, contextual
+scope: on narrow the bar **subsumes** a section's own search field (the chat
+list's inline search hides; the floating bar drives it), so two search fields
+never show at once. An expanded section always wins over the course-scoped
+minimize below — the bar minimizes only over the bare scoped map.
 
 **Default (visible).** The search bar is visible above the nav widget at all
 section roots while the map is not being actively scrolled.
@@ -651,6 +669,9 @@ context alone never out-highlights an open section.
 ### The cluster is the right column's entry point
 
 A persistent cluster pinned to the top-right of the map opens the right column.
+On a narrow screen the cluster becomes the
+[single-column analytics bar](#single-column-analytics-bar) — same elements,
+same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
 **avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward
 the next level, resetting on level-up); a gold **powerups pill** of three
