@@ -5022,5 +5022,15 @@
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
     "mapZoomLabel": "Map zoom controls", 
     "activityMapLabel": "Activity map", 
+    "bodyLabel": "{page} options",
+    "@bodyLabel": {
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
+    "openDM": "Open direct message", 
+    "openNewTab": "Open in new tab", 
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
 }

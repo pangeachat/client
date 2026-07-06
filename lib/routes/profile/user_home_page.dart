@@ -205,155 +205,176 @@ class _UserHomePageState extends State<UserHomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      body: MaxWidthBody(
-        child: Column(
-          spacing: 16.0,
-          children: [
-            FutureBuilder<Profile>(
-              future: _profileFutureGetter,
-              builder: (context, snapshot) {
-                final profile = snapshot.data;
-                final avatar = profile?.avatarUrl;
-                final mxid =
-                    Matrix.of(context).client.userID ?? L10n.of(context).user;
-                final displayname =
-                    profile?.displayName ?? mxid.localpart ?? mxid;
-                return Padding(
-                  padding: EdgeInsetsGeometry.all(16.0),
-                  child: Row(
-                    children: [
-                      Stack(
-                        children: [
-                          Avatar(
-                            mxContent: avatar,
-                            name: displayname,
-                            userId: profile?.userId,
-                            size: Avatar.defaultSize * 2.5,
-                            onTap: avatar != null
-                                ? () => showDialog(
-                                    context: context,
-                                    builder: (_) => MxcImageViewer(avatar),
-                                  )
-                                : null,
-                          ),
-                          if (profile != null)
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: FloatingActionButton.small(
-                                elevation: 2,
-                                // Names the icon-only button for assistive tech
-                                // (otherwise axe `aria-command-name`).
-                                tooltip: L10n.of(context).changeYourAvatar,
-                                onPressed: _setAvatarAction,
-                                heroTag: null,
-                                child: const Icon(Icons.camera_alt_outlined),
-                              ),
-                            ),
-                        ],
-                      ),
-                      SizedBox(width: 12.0),
-                      Flexible(
-                        child: Column(
-                          mainAxisAlignment: .center,
-                          crossAxisAlignment: .start,
+    return Semantics(
+      label: L10n.of(context).bodyLabel(L10n.of(context).profile),
+      container: true,
+      child: Scaffold(
+        body: MaxWidthBody(
+          child: Column(
+            spacing: 16.0,
+            children: [
+              FutureBuilder<Profile>(
+                future: _profileFutureGetter,
+                builder: (context, snapshot) {
+                  final profile = snapshot.data;
+                  final avatar = profile?.avatarUrl;
+                  final mxid =
+                      Matrix.of(context).client.userID ?? L10n.of(context).user;
+                  final displayname =
+                      profile?.displayName ?? mxid.localpart ?? mxid;
+                  return Padding(
+                    padding: EdgeInsetsGeometry.all(16.0),
+                    child: Row(
+                      children: [
+                        Stack(
                           children: [
-                            TextButton.icon(
-                              onPressed: _setDisplaynameAction,
-                              icon: const Icon(Icons.edit_outlined, size: 14),
-                              style: TextButton.styleFrom(
-                                foregroundColor: theme.colorScheme.onSurface,
-                                iconColor: theme.colorScheme.onSurface,
-                              ),
-                              label: Text(
-                                displayname,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => FluffyShare.share(mxid, context),
-                              icon: const Icon(Icons.copy_outlined, size: 14),
-                              style: TextButton.styleFrom(
-                                foregroundColor: theme.colorScheme.secondary,
-                                iconColor: theme.colorScheme.secondary,
-                              ),
-                              label: Text(
-                                mxid,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                            ExcludeSemantics(
+                              child: Avatar(
+                                mxContent: avatar,
+                                name: displayname,
+                                userId: profile?.userId,
+                                size: Avatar.defaultSize * 2.5,
+                                onTap: avatar != null
+                                    ? () => showDialog(
+                                        context: context,
+                                        builder: (_) => MxcImageViewer(avatar),
+                                      )
+                                    : null,
                               ),
                             ),
+                            if (profile != null)
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: FloatingActionButton.small(
+                                  elevation: 2,
+                                  // Names the icon-only button for assistive tech
+                                  // (otherwise axe `aria-command-name`).
+                                  tooltip: L10n.of(context).changeYourAvatar,
+                                  onPressed: _setAvatarAction,
+                                  heroTag: null,
+                                  child: const Icon(Icons.camera_alt_outlined),
+                                ),
+                              ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-            Divider(color: theme.dividerColor, height: 1),
-            ListenableBuilder(
-              listenable: _viewModel,
-              builder: (context, _) => Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.0,
-                      horizontal: 16.0,
+                        SizedBox(width: 12.0),
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: .center,
+                            crossAxisAlignment: .start,
+                            children: [
+                              Semantics(
+                                onTapHint: L10n.of(context).editDisplayname,
+                                child: TextButton.icon(
+                                  onPressed: _setDisplaynameAction,
+                                  icon: const Icon(
+                                    Icons.edit_outlined,
+                                    size: 14,
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor:
+                                        theme.colorScheme.onSurface,
+                                    iconColor: theme.colorScheme.onSurface,
+                                  ),
+                                  label: Text(
+                                    displayname,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                              Semantics(
+                                onTapHint: L10n.of(context).copy,
+                                child: TextButton.icon(
+                                  onPressed: () =>
+                                      FluffyShare.share(mxid, context),
+                                  icon: const Icon(
+                                    Icons.copy_outlined,
+                                    size: 14,
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor:
+                                        theme.colorScheme.secondary,
+                                    iconColor: theme.colorScheme.secondary,
+                                  ),
+                                  label: Text(
+                                    mxid,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    child: CountryPickerDropdown(
-                      _viewModel.country,
-                      _viewModel.setCountry,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.0,
-                      horizontal: 16.0,
-                    ),
-                    child: GenderDropdown(
-                      initialGender: _viewModel.gender,
-                      onChanged: _viewModel.setGender,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.0,
-                      horizontal: 16.0,
-                    ),
-                    child: TextField(
-                      controller: _aboutTextController,
-                      decoration: InputDecoration(
-                        hintText: L10n.of(context).aboutMeHint,
-                        labelText: L10n.of(context).aboutMeHint,
-                      ),
-                      onChanged: (val) => _viewModel.setAbout(val),
-                      minLines: 1,
-                      maxLines: 3,
-                      maxLength: 100,
-                    ),
-                  ),
-                  SwitchListTile.adaptive(
-                    value: _viewModel.publicProfile,
-                    onChanged: _viewModel.setPublicProfile,
-                    title: Text(L10n.of(context).publicProfileTitle),
-                    subtitle: Text(L10n.of(context).publicProfileDesc),
-                    activeThumbColor: AppConfig.activeToggleColor,
-                  ),
-                  SwitchListTile.adaptive(
-                    value: _viewModel.showDeveloperOptions,
-                    title: Text(L10n.of(context).showDeveloperOptions),
-                    subtitle: Text(L10n.of(context).showDeveloperOptionsDesc),
-                    activeThumbColor: AppConfig.activeToggleColor,
-                    onChanged: _viewModel.setShowDeveloperOptions,
-                  ),
-                ],
+                  );
+                },
               ),
-            ),
-          ],
+              Divider(color: theme.dividerColor, height: 1),
+              ListenableBuilder(
+                listenable: _viewModel,
+                builder: (context, _) => Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 16.0,
+                      ),
+                      child: CountryPickerDropdown(
+                        _viewModel.country,
+                        _viewModel.setCountry,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 16.0,
+                      ),
+                      child: GenderDropdown(
+                        initialGender: _viewModel.gender,
+                        onChanged: _viewModel.setGender,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 16.0,
+                      ),
+                      child: TextField(
+                        controller: _aboutTextController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).aboutMeHint,
+                          labelText: L10n.of(context).aboutMeHint,
+                        ),
+                        onChanged: (val) => _viewModel.setAbout(val),
+                        minLines: 1,
+                        maxLines: 3,
+                        maxLength: 100,
+                      ),
+                    ),
+                    SwitchListTile.adaptive(
+                      value: _viewModel.publicProfile,
+                      onChanged: _viewModel.setPublicProfile,
+                      title: Text(L10n.of(context).publicProfileTitle),
+                      subtitle: Text(L10n.of(context).publicProfileDesc),
+                      activeThumbColor: AppConfig.activeToggleColor,
+                    ),
+                    SwitchListTile.adaptive(
+                      value: _viewModel.showDeveloperOptions,
+                      title: Text(L10n.of(context).showDeveloperOptions),
+                      subtitle: Text(L10n.of(context).showDeveloperOptionsDesc),
+                      activeThumbColor: AppConfig.activeToggleColor,
+                      onChanged: _viewModel.setShowDeveloperOptions,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
