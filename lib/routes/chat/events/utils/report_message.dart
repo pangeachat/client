@@ -42,7 +42,15 @@ void reportEvent(
     cancelLabel: L10n.of(context).cancel,
     hintText: L10n.of(context).reason,
     autoSubmit: true,
+    validator: (text) {
+      if (text.isEmpty) {
+        return L10n.of(context).pleaseFillOut;
+      }
+      return null;
+    },
   );
+
+  if (reason == null) return;
 
   if (score == 1) {
     await reportOffensiveMessage(
