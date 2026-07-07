@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 
 /// Coverage for the world_v2 single-column analytics NAV BAR
@@ -76,6 +80,7 @@ void main() {
     VoidCallback? onAvatarTap,
     VoidCallback? onLevelTap,
     VoidCallback? onFlagTap,
+    Stream<LevelUpdate>? levelUpdates,
   }) => pumpShellMounted(
     tester,
     AnalyticsBarView(
@@ -88,6 +93,7 @@ void main() {
       level: 1,
       xpProgress: 0.0,
       isInitializing: false,
+      levelUpdates: levelUpdates,
       onTrackerTap: onTrackerTap ?? (_) {},
       onAvatarTap: onAvatarTap ?? () {},
       onLevelTap: onLevelTap ?? () {},
@@ -182,6 +188,33 @@ void main() {
 
       semantics.dispose();
     });
+
+    testWidgets('a level-up event pops the celebration chip at the hex badge', (
+      tester,
+    ) async {
+      // The bar view threads the level-change signal (the one the old
+      // top-down snackbar consumed, #7432) into the badge's
+      // LevelUpBadgeCelebration.
+      final controller = StreamController<LevelUpdate>.broadcast();
+      await pumpBar(tester, levelUpdates: controller.stream);
+      final chipText = l10nOf(tester).levelUpChip(2);
+
+      expect(find.text(chipText), findsNothing);
+      controller.add(const LevelUpdate(prevLevel: 1, newLevel: 2));
+      await tester.pump();
+      await tester.pump();
+      expect(find.text(chipText), findsOneWidget);
+
+      // Run out the celebration's default timings before the test ends.
+      await tester.pump(LevelUpBadgeCelebration.defaultPulseDuration);
+      await tester.pump(
+        LevelUpBadgeCelebration.defaultChipDuration +
+            const Duration(milliseconds: 300),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text(chipText), findsNothing);
+      await controller.close();
+    });
   });
 
   group('chat-header avatar (CollapsedAvatarView)', () {
@@ -189,6 +222,7 @@ void main() {
       WidgetTester tester, {
       required VoidCallback onTap,
       double scale = 1.0,
+      Stream<LevelUpdate>? levelUpdates,
     }) => pumpShellMounted(
       tester,
       Align(
@@ -201,6 +235,7 @@ void main() {
           xpProgress: 0.0,
           scale: scale,
           onTap: onTap,
+          levelUpdates: levelUpdates,
           flagBuilder: flagStandIn,
         ),
       ),
@@ -243,6 +278,35 @@ void main() {
 
       semantics.dispose();
     });
+
+    testWidgets(
+      'a level-up event pops the celebration chip at the mini badge',
+      (tester) async {
+        final controller = StreamController<LevelUpdate>.broadcast();
+        await pumpAvatar(
+          tester,
+          onTap: () {},
+          scale: 0.75,
+          levelUpdates: controller.stream,
+        );
+        final chipText = l10nOf(tester).levelUpChip(2);
+
+        expect(find.text(chipText), findsNothing);
+        controller.add(const LevelUpdate(prevLevel: 1, newLevel: 2));
+        await tester.pump();
+        await tester.pump();
+        expect(find.text(chipText), findsOneWidget);
+
+        await tester.pump(LevelUpBadgeCelebration.defaultPulseDuration);
+        await tester.pump(
+          LevelUpBadgeCelebration.defaultChipDuration +
+              const Duration(milliseconds: 300),
+        );
+        await tester.pumpAndSettle();
+        expect(find.text(chipText), findsNothing);
+        await controller.close();
+      },
+    );
 
     testWidgets('the app-bar scale keeps the cluster within toolbar height', (
       tester,
