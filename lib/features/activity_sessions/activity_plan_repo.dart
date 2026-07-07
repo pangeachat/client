@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:http/http.dart' show Response;
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
@@ -11,8 +12,30 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// How a plan [ActivityPlanRepo.lookup] resolved.
+enum ActivityPlanLookupStatus {
+  /// The plan was fetched, or served from the cache.
+  found,
+
+  /// The backend confirmed the activity no longer exists (HTTP 404).
+  /// Consumers fall back per the removed-activity ladder in the activities
+  /// instructions doc (embedded state plan → archived view).
+  removed,
+
+  /// Transient failure (network, timeout, 5xx); retrying may succeed. Never
+  /// treated as "removed", so an outage can't mislabel healthy activities.
+  failed,
+}
+
+class ActivityPlanLookup {
+  final ActivityPlanLookupStatus status;
+  final ActivityPlanModel? plan;
+
+  const ActivityPlanLookup(this.status, [this.plan]);
+}
 
 /// The single cached read path for activity plans.
 ///
@@ -49,6 +72,10 @@ class ActivityPlanRepo
   final Set<String> _hydrating = {};
   final Set<String> _revalidated = {};
 
+  /// Activity ids the backend confirmed removed (404) this app session, so
+  /// [ensure] stops re-fetching a known-missing id on every widget rebuild.
+  final Set<String> _confirmedRemoved = {};
+
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
     final uri = Uri.parse(PApiUrls.activityById(request.activityId)).replace(
@@ -78,8 +105,27 @@ class ActivityPlanRepo
   /// The plan for [activityId], localized to [l1] (viewer L1 by default), with
   /// media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
   /// [forceRefresh] re-fetches past the TTL (the cache survives until the fresh
-  /// plan lands).
+  /// plan lands). Callers that need to tell a removed activity apart from a
+  /// transient failure use [lookup].
   Future<ActivityPlanModel?> getPlan(
+    String activityId, {
+    String? l1,
+    String? version,
+    bool forceRefresh = false,
+  }) async {
+    final result = await lookup(
+      activityId,
+      l1: l1,
+      version: version,
+      forceRefresh: forceRefresh,
+    );
+    return result.plan;
+  }
+
+  /// [getPlan] with the failure kind surfaced: [ActivityPlanLookupStatus
+  /// .removed] on a confirmed 404 vs [ActivityPlanLookupStatus.failed] on a
+  /// transient error.
+  Future<ActivityPlanLookup> lookup(
     String activityId, {
     String? l1,
     String? version,
@@ -87,14 +133,26 @@ class ActivityPlanRepo
   }) async {
     final request = _request(activityId, l1, version: version);
     final result = await get(request, forceRefresh: forceRefresh);
-    final response = result.result;
-    if (response == null) return null;
+    if (result.isError) {
+      final status = classifyLookupError(result.asError!.error);
+      if (status == ActivityPlanLookupStatus.removed) {
+        _confirmedRemoved.add(activityId);
+      }
+      return ActivityPlanLookup(status);
+    }
 
-    final resolved = await _withResolvedMedia(response.plan);
+    _confirmedRemoved.remove(activityId);
+    final resolved = await resolveMedia(result.asValue!.value.plan);
     _resolved[request.storageKey] = resolved;
     notifyListeners();
-    return resolved;
+    return ActivityPlanLookup(ActivityPlanLookupStatus.found, resolved);
   }
+
+  @visibleForTesting
+  static ActivityPlanLookupStatus classifyLookupError(Object error) =>
+      error is Response && error.statusCode == 404
+      ? ActivityPlanLookupStatus.removed
+      : ActivityPlanLookupStatus.failed;
 
   /// Synchronous lookup for `room.activityPlan`: the media-resolved plan if
   /// [getPlan] has run, else the raw (TTL-checked) cached plan, else null — in
@@ -132,6 +190,9 @@ class ActivityPlanRepo
     String? version,
     bool revalidate = false,
   }) {
+    // A confirmed-removed id can't hydrate; re-fetching on every rebuild of
+    // the sync getter would loop 404s.
+    if (_confirmedRemoved.contains(activityId)) return;
     final key = _request(activityId, l1, version: version).storageKey;
     if (_hydrating.contains(key)) return;
     final doRevalidate = revalidate && _revalidated.add(key);
@@ -145,14 +206,34 @@ class ActivityPlanRepo
     ).whenComplete(() => _hydrating.remove(key));
   }
 
-  Future<ActivityPlanModel> _withResolvedMedia(ActivityPlanModel plan) async {
+  /// Resolves upload-referenced media blocks to CDN urls. Applied to every
+  /// fetched plan, and by fallback consumers to legacy plans read from room
+  /// state (which carry the same unresolved `upload_id` references).
+  ///
+  /// Fail-soft: a resolution failure (e.g. the CMS media read erroring)
+  /// returns the plan with its blocks unresolved, and they degrade to the
+  /// placeholder render. Media must never take down the plan itself — before
+  /// this guard a CMS 403 surfaced as "Activity not found" on a perfectly
+  /// healthy activity.
+  Future<ActivityPlanModel> resolveMedia(ActivityPlanModel plan) async {
     final ids = plan.media
         .map((b) => b.uploadId)
         .whereType<String>()
         .toSet()
         .toList();
     if (ids.isEmpty) return plan;
-    final resolved = await ActivityMediaRepo.resolve(ids);
+    final Map<String, ResolvedMedia> resolved;
+    try {
+      resolved = await ActivityMediaRepo.resolve(ids);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activityId": plan.activityId},
+        level: SentryLevel.warning,
+      );
+      return plan;
+    }
     return plan.withMedia(
       plan.media.map((block) {
         final r = block.uploadId == null ? null : resolved[block.uploadId];

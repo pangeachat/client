@@ -25,6 +25,16 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
 
+## When the activity can't be fetched
+
+Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:
+
+- **Legacy room with the plan embedded in state** — old rooms stored the whole plan in the `pangea.activity_plan` event, and [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) falls back to it when the fetch confirms the activity is gone. The session page looks normal — hero media, role cards, goals with labels, description and vocab — but is **view-only**: no picking a role, no scoring, no suggestions. The session presents as ended without writing anything to the room. The summary section works: a cached summary shows, and a new one can still be generated.
+- **No plan anywhere** — instead of an error, the page shows an **archived session**: room name as the title, participants with their roles and finished status, star counts without goal labels, the conversation timeline, and the cached summary if one exists. A banner explains the activity ran on an older version of activities and is no longer supported.
+- **Transient fetch failure** (network, backend down) — a retryable error state, never the archived view or the "no longer supported" banner. Only a confirmed "this activity is gone" response walks down the ladder.
+
+The page never gates its whole render on the plan fetch — the timeline, roles, and progress always display from room state.
+
 ## Two ways in
 
 An activity opens one of two ways: as an overlay over the world map (when the learner is inside its course) or from its own shareable link (when they reach it directly). Both open the same activity surface — a side panel beside the map on a wide screen, a half-open bottom sheet on narrow with the camera settled on its map location (the Google Maps target UX), swipe-expandable to the full plan; see [routing.instructions.md](routing.instructions.md). A link can also ask to skip the lobby straight to role selection, or to reopen a specific in-progress session. The exact URL shapes are the cross-repo [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md) contract; this doc only relies on them.
