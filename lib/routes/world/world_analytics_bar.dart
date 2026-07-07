@@ -444,6 +444,21 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
   /// left edge (the Figma overhang).
   static const double _hexBadgeOverhang = 21.0;
 
+  // Pill interior: extra left inset so the trackers clear the hex badge's
+  // inner half, tight vertical padding for the compact bar-height pill.
+  static const double _pillTrackerClearance = 10.0;
+  static const double _pillVerticalPadding = 2.0;
+  static const double _pillRightPadding = 14.0;
+
+  /// Gap between the pill+badge unit and the avatar column.
+  static const double _pillAvatarGap = 12.0;
+
+  // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
+  // defaults, per the Figma bar frame.
+  static const double _badgeWidth = 42.0;
+  static const double _badgeHeight = 36.0;
+  static const double _badgeFontSize = 16.0;
+
   // The mobile flag is smaller than web's 52x36, per the Figma bar frame.
   static const double _flagWidth = 40.0;
   static const double _flagHeight = 28.0;
@@ -495,13 +510,11 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
                             ),
                           ),
                           clipBehavior: Clip.antiAlias,
-                          // Extra left inset so the trackers clear the hex
-                          // badge's inner half.
                           padding: const EdgeInsets.fromLTRB(
-                            _hexBadgeOverhang + 10.0,
-                            2.0,
-                            14.0,
-                            2.0,
+                            _hexBadgeOverhang + _pillTrackerClearance,
+                            _pillVerticalPadding,
+                            _pillRightPadding,
+                            _pillVerticalPadding,
                           ),
                           child: _PowerupsRow(
                             starsCount: starsCount,
@@ -525,9 +538,9 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
                       child: _HexLevelBadge(
                         level: level,
                         onTap: onLevelTap,
-                        width: 42.0,
-                        height: 36.0,
-                        fontSize: 16.0,
+                        width: _badgeWidth,
+                        height: _badgeHeight,
+                        fontSize: _badgeFontSize,
                       ),
                     ),
                   ),
@@ -535,7 +548,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: _pillAvatarGap),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -773,6 +786,15 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
   static const double _flagHeight = 20.0;
   static const double _flagFontSize = 11.0;
 
+  // Miniature hex badge pinned over the avatar's top-left, and the flag
+  // hanging under its bottom edge — the collapsed echo of the bar cluster.
+  static const double _badgeTopOffset = -6.0;
+  static const double _badgeLeftOffset = -10.0;
+  static const double _badgeWidth = 30.0;
+  static const double _badgeHeight = 26.0;
+  static const double _badgeFontSize = 13.0;
+  static const double _flagBottomOffset = -10.0;
+
   @override
   Widget build(BuildContext context) {
     final l2 = this.l2;
@@ -822,24 +844,24 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: -6,
-                  left: -10,
+                  top: _badgeTopOffset,
+                  left: _badgeLeftOffset,
                   child: IgnorePointer(
                     child: Material(
                       type: MaterialType.transparency,
                       child: _HexLevelBadge(
                         level: level,
                         onTap: onTap,
-                        width: 30.0,
-                        height: 26.0,
-                        fontSize: 13.0,
+                        width: _badgeWidth,
+                        height: _badgeHeight,
+                        fontSize: _badgeFontSize,
                       ),
                     ),
                   ),
                 ),
                 if (l2 != null)
                   Positioned(
-                    bottom: -10,
+                    bottom: _flagBottomOffset,
                     child: IgnorePointer(
                       child:
                           flagBuilder?.call(

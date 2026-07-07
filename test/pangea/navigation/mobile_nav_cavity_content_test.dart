@@ -13,7 +13,16 @@ import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
 /// the cavity showing only the header with the body's nodes present in
 /// semantics but never painted — this pins the structural contract.
 void main() {
-  setUp(MobileNavWidget.resetHeightMemoryForTest);
+  setUp(() {
+    MobileNavWidget.resetHeightMemoryForTest();
+    // The final tap IS the paint == hit-test assertion — a missed hit must
+    // fail, not warn (an overlay swallowing the tap is exactly the bug).
+    WidgetController.hitTestWarningShouldBeFatal = true;
+  });
+
+  tearDown(() {
+    WidgetController.hitTestWarningShouldBeFatal = false;
+  });
 
   /// Mimics LeftPanelChatListSubpage: header + Expanded(nested Scaffold with
   /// its own scrolling body and a FAB) — the shape that failed to paint.
