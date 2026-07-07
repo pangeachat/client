@@ -508,12 +508,16 @@ In single-column mode the cluster's vertical powerups column becomes a
 **horizontal analytics bar** pinned to the top of the safe area. Layout
 differences from the web cluster:
 
-- **Level badge** moves to the left end of the bar.
-- **Avatar** sits to the right of the bar, in the same spot as web.
+- The **level badge and the powerups pill are one unit** — the web cluster's
+  pill turned horizontal: the badge overhangs the pill's LEFT end, and the
+  pill's frame **is the XP ring**, gold progress growing clockwise from the
+  top of the badge around the pill and meeting back at the badge's bottom.
+- **Avatar** sits to the right of the bar, in the same spot as web (no ring of
+  its own while the pill carries the XP).
 - **Flag** sits below the avatar, slightly smaller than on web and with less
   spacing.
-- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in the
-  bar.
+- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in
+  the pill.
 
 **Collapsed state.** In full screens (a chat, an activity start/join), the
 analytics bar collapses into a single avatar circle wearing the XP ring, the

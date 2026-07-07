@@ -17,6 +17,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -437,6 +438,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
 
   static const double _avatarSize = 56.0;
   static const double _xpStroke = 4.0;
+  static const double _pillInnerRadius = 20.0;
 
   // The mobile flag is smaller than web's 52x36, per the Figma bar frame.
   static const double _flagWidth = 40.0;
@@ -452,19 +454,53 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Material(
-            type: MaterialType.transparency,
-            child: ClusterLevelMedal(level: level, onTap: onLevelTap),
-          ),
-          const SizedBox(width: 12),
           Expanded(
             child: Center(
-              child: _PowerupsRow(
-                starsCount: starsCount,
-                grammarCount: grammarCount,
-                vocabCount: vocabCount,
-                isInitializing: isInitializing,
-                onTap: onTrackerTap,
+              // The medal + XP-bordered pill are ONE unit, exactly like the web
+              // cluster rotated horizontal: the pill's frame IS the XP ring
+              // (gold growing from the badge's top, clockwise, meeting at its
+              // bottom) and the level medal overhangs the pill's LEFT end —
+              // the mirror of web's bottom-center overhang.
+              child: Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.centerLeft,
+                children: [
+                  CustomPaint(
+                    painter: XpBorderPainter(
+                      progress: xpProgress,
+                      trackColor: const Color.fromARGB(130, 135, 135, 135),
+                      progressColor: AppConfig.goldByTheme(context),
+                      stroke: _xpStroke,
+                      radius: _pillInnerRadius + _xpStroke / 2,
+                      anchor: XpBorderAnchor.leftCenter,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(_xpStroke),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surfaceContainer,
+                          borderRadius: BorderRadius.circular(_pillInnerRadius),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 4.0,
+                        ),
+                        child: _PowerupsRow(
+                          starsCount: starsCount,
+                          grammarCount: grammarCount,
+                          vocabCount: vocabCount,
+                          isInitializing: isInitializing,
+                          onTap: onTrackerTap,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Material(
+                    type: MaterialType.transparency,
+                    child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                  ),
+                ],
               ),
             ),
           ),
@@ -472,22 +508,11 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CustomPaint(
-                painter: CircularXpRingPainter(
-                  progress: xpProgress,
-                  trackColor: const Color.fromARGB(130, 135, 135, 135),
-                  progressColor: AppConfig.goldByTheme(context),
-                  stroke: _xpStroke,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(_xpStroke),
-                  child: ClusterAvatar(
-                    avatarUrl: avatarUrl,
-                    name: displayName,
-                    onTap: onAvatarTap,
-                    size: _avatarSize,
-                  ),
-                ),
+              ClusterAvatar(
+                avatarUrl: avatarUrl,
+                name: displayName,
+                onTap: onAvatarTap,
+                size: _avatarSize,
               ),
               if (l2 != null)
                 Padding(
@@ -537,34 +562,30 @@ class _PowerupsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final content = Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(100),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Material(
-        type: MaterialType.transparency,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.stars,
-              count: starsCount,
-              onTap: () => onTap(AnalyticsPanelTab.sessions),
-            ),
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.morphsUsed,
-              count: grammarCount,
-              onTap: () => onTap(AnalyticsPanelTab.grammar),
-            ),
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.wordsUsed,
-              count: vocabCount,
-              onTap: () => onTap(AnalyticsPanelTab.vocab),
-            ),
-          ],
-        ),
+    // No decoration of its own: the XP-bordered pill Container in
+    // [_ExpandedAnalyticsBar] is the field these trackers sit on (mirroring
+    // the web pill's structure).
+    final content = Material(
+      type: MaterialType.transparency,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClusterTrackerButton(
+            indicator: ProgressIndicatorEnum.stars,
+            count: starsCount,
+            onTap: () => onTap(AnalyticsPanelTab.sessions),
+          ),
+          ClusterTrackerButton(
+            indicator: ProgressIndicatorEnum.morphsUsed,
+            count: grammarCount,
+            onTap: () => onTap(AnalyticsPanelTab.grammar),
+          ),
+          ClusterTrackerButton(
+            indicator: ProgressIndicatorEnum.wordsUsed,
+            count: vocabCount,
+            onTap: () => onTap(AnalyticsPanelTab.vocab),
+          ),
+        ],
       ),
     );
 
