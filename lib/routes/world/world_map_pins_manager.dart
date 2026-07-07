@@ -321,18 +321,11 @@ class WorldMapPinsManager {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
     try {
-      final courseRooms = client.joinedCourseRooms;
-      final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
-      final thresholds = <String, int>{
-        for (final r in courseRooms)
-          r.coursePlan!.uuid:
-              r.teacherMode.starsToUnlockObjective ??
-              kDefaultStarsToUnlockObjective,
-      };
-      await _objectiveCache.rebuild(
-        uuids,
-        starsToUnlockOf: (uuid) =>
-            thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+      final uuids = client.joinedCourseRooms
+          .map((r) => r.coursePlan!.uuid)
+          .toList();
+      await _objectiveCache.rebuildFromJoinedCourses(
+        client,
         onError: (uuid, e, s) => ErrorHandler.logError(
           e: e,
           s: s,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -5,13 +7,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
 /// The objective groups that should render: those with at least one activity.
 /// An activity-less objective would otherwise show a header over a fixed-height
@@ -67,6 +73,17 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   late Future<List<QuestObjectiveGroup>> _groupsFuture;
   final ScrollController _scrollController = ScrollController();
 
+  /// The shared progression rollup behind the star display — same inputs and
+  /// resolver as the world map, so the numbers can never disagree
+  /// (quests.instructions.md, "Star display on the course panel"). Empty in a
+  /// preview (no room → no learner progress to show) and until the first
+  /// resolve completes.
+  final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
+  ProgressionResolution _progression = ProgressionResolution.empty;
+
+  /// This quest's ordered Mission ids, for the header's quest-star summary.
+  List<String> _orderedMissionIds = const [];
+
   String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
   @override
@@ -109,6 +126,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.questId != widget.questId ||
         oldWidget.room?.id != widget.room?.id) {
+      _progression = ProgressionResolution.empty;
       _groupsFuture = _load();
     }
   }
@@ -121,7 +139,30 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     final questId = _questId;
     if (questId == null) return [];
     final outline = await QuestRepo.outline(questId);
+    _orderedMissionIds = outline.quest.learningObjectiveIds;
+    unawaited(_loadProgression());
     return outline.groups;
+  }
+
+  /// Resolve the star-display rollup. Joined courses only — a preview has no
+  /// learner progress to show. Fire-and-forget from [_load]: the outline
+  /// renders immediately and the star chips fill in when the resolve lands.
+  Future<void> _loadProgression() async {
+    final client = widget.room?.client;
+    if (client == null) return;
+    await _objectiveCache.rebuildFromJoinedCourses(
+      client,
+      onError: (uuid, e, s) => ErrorHandler.logError(
+        e: e,
+        s: s,
+        m: 'CourseObjectivesList: course outline failed to resolve',
+        data: {'courseUuid': uuid},
+      ),
+    );
+    if (!mounted) return;
+    setState(() {
+      _progression = _objectiveCache.resolution(client.userStarsByActivity);
+    });
   }
 
   @override
@@ -148,6 +189,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             ),
           );
         }
+        // The quest-star header shows only for a joined course once the shared
+        // rollup has resolved; a preview has no learner progress to show.
+        final showStars = widget.room != null && _progression.rollup.isNotEmpty;
         final list = ListView.separated(
           controller: widget.shrinkWrap ? null : _scrollController,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -155,14 +199,25 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
           physics: widget.shrinkWrap
               ? const NeverScrollableScrollPhysics()
               : null,
-          itemCount: groups.length,
+          itemCount: groups.length + (showStars ? 1 : 0),
           separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-          itemBuilder: (context, i) => _ObjectiveSection(
-            index: i,
-            group: groups[i],
-            room: widget.room,
-            hasCompletedActivity: widget.hasCompletedActivity,
-          ),
+          itemBuilder: (context, i) {
+            if (showStars && i == 0) {
+              return _QuestStarsHeader(
+                summary: _progression.questStars(_orderedMissionIds),
+              );
+            }
+            final group = groups[showStars ? i - 1 : i];
+            return _ObjectiveSection(
+              index: showStars ? i - 1 : i,
+              group: group,
+              room: widget.room,
+              hasCompletedActivity: widget.hasCompletedActivity,
+              progress: showStars
+                  ? _progression.rollup[group.objective.id]
+                  : null,
+            );
+          },
         );
         // In a preview the list is embedded in an outer scroll view (shrinkWrap)
         // with no map behind it, so a wheel can't leak — return it bare. The
@@ -181,6 +236,45 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   }
 }
 
+/// The quest-level star summary at the top of a joined course's objective
+/// list: total earned (each Mission capped at its threshold) over a bar that
+/// fills toward the sum of thresholds. See quests.instructions.md.
+class _QuestStarsHeader extends StatelessWidget {
+  final QuestStarSummary summary;
+
+  const _QuestStarsHeader({required this.summary});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      label: L10n.of(context).starsEarnedOfTotal(summary.earned, summary.total),
+      child: Row(
+        children: [
+          Icon(Icons.star, size: 22.0, color: AppConfig.goldByTheme(context)),
+          const SizedBox(width: 6.0),
+          Text(
+            '${summary.earned}',
+            style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(width: 12.0),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: LinearProgressIndicator(
+                value: summary.fraction,
+                minHeight: 10.0,
+                color: AppConfig.goldByTheme(context),
+                backgroundColor: theme.colorScheme.surfaceContainerHighest,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _ObjectiveSection extends StatelessWidget {
   final int index;
   final QuestObjectiveGroup group;
@@ -191,11 +285,16 @@ class _ObjectiveSection extends StatelessWidget {
   final Room? room;
   final bool Function(String userId, String activityId)? hasCompletedActivity;
 
+  /// The Mission's rollup from the shared resolver, or null when there is
+  /// nothing to show (preview, or the rollup hasn't resolved yet).
+  final MissionProgress? progress;
+
   const _ObjectiveSection({
     required this.index,
     required this.group,
     required this.room,
     required this.hasCompletedActivity,
+    required this.progress,
   });
 
   @override
@@ -209,7 +308,8 @@ class _ObjectiveSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Objective header: placeholder icon + the can-do statement.
+        // Objective header: placeholder icon + the can-do statement, with the
+        // Mission's earned/threshold stars when the shared rollup is in.
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -224,8 +324,50 @@ class _ObjectiveSection extends StatelessWidget {
                 ),
               ),
             ),
+            if (progress != null) ...[
+              const SizedBox(width: 8.0),
+              Semantics(
+                label: L10n.of(
+                  context,
+                ).starsEarnedOfTotal(progress!.stars, progress!.threshold),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      size: 18.0,
+                      color: AppConfig.goldByTheme(context),
+                    ),
+                    const SizedBox(width: 4.0),
+                    Text(
+                      // Raw stars over the satisfaction threshold — surplus
+                      // shows (12/7); only the quest header caps.
+                      '${progress!.stars}/${progress!.threshold}',
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
         ),
+        if (progress != null) ...[
+          const SizedBox(height: 8.0),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6.0),
+            child: LinearProgressIndicator(
+              value: progress!.threshold <= 0
+                  ? 0
+                  : (progress!.stars / progress!.threshold).clamp(0.0, 1.0),
+              minHeight: 6.0,
+              color: AppConfig.goldByTheme(context),
+              backgroundColor: theme.colorScheme.surfaceContainerHighest,
+            ),
+          ),
+        ],
         const SizedBox(height: 12.0),
         // The activities that satisfy this objective.
         SizedBox(
