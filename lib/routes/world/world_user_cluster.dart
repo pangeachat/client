@@ -342,10 +342,19 @@ class ClusterTrackerButton extends StatelessWidget {
   final int count;
   final VoidCallback onTap;
 
+  /// Sizing knobs so the narrow analytics bar can render the compact variant
+  /// (the Figma mobile pill); web keeps these defaults.
+  final double horizontalPadding;
+  final double iconSize;
+  final double fontSize;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
+    this.horizontalPadding = 16,
+    this.iconSize = 24,
+    this.fontSize = 16,
     super.key,
   });
 
@@ -365,16 +374,19 @@ class ClusterTrackerButton extends StatelessWidget {
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+              vertical: 9,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(indicator.icon, size: 24),
+                Icon(indicator.icon, size: iconSize),
                 const SizedBox(height: 3),
                 Text(
                   '$count',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: fontSize,
                     height: 1.1,
                     fontWeight: FontWeight.w600,
                   ),

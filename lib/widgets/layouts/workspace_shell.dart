@@ -448,7 +448,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     }
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    final searchBar = cavityToken == null && mapController != null
+    // The bar shows over the bare map AND over map-content cavities (the
+    // course card, the activity plan — the map is still the ground behind
+    // them, per the Figma course frame's minimized icon); section cavities
+    // (chats, the hub) re-target it in the follow-up and mount nothing yet.
+    final mapIsGround =
+        cavityToken == null || isCourseCavity || isActivityCavity;
+    final searchBar = mapIsGround && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,

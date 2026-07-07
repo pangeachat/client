@@ -442,7 +442,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
 
   /// Half the hex badge's width — how far it sticks out past the pill's
   /// left edge (the Figma overhang).
-  static const double _hexBadgeOverhang = 24.0;
+  static const double _hexBadgeOverhang = 21.0;
 
   // The mobile flag is smaller than web's 52x36, per the Figma bar frame.
   static const double _flagWidth = 40.0;
@@ -470,52 +470,65 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
               // bottom) and the level medal overhangs the pill's LEFT end —
               // the mirror of web's bottom-center overhang.
               child: Stack(
-                clipBehavior: Clip.none,
                 alignment: Alignment.centerLeft,
                 children: [
-                  CustomPaint(
-                    painter: XpBorderPainter(
-                      progress: xpProgress,
-                      trackColor: const Color.fromARGB(130, 135, 135, 135),
-                      progressColor: AppConfig.goldByTheme(context),
-                      stroke: _xpStroke,
-                      radius: _pillInnerRadius + _xpStroke / 2,
-                      anchor: XpBorderAnchor.leftCenter,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(_xpStroke),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.surfaceContainer,
-                          borderRadius: BorderRadius.circular(_pillInnerRadius),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        // Extra left inset so the trackers clear the hex
-                        // badge's inner half.
-                        padding: const EdgeInsets.fromLTRB(
-                          _hexBadgeOverhang + 12.0,
-                          4.0,
-                          20.0,
-                          4.0,
-                        ),
-                        child: _PowerupsRow(
-                          starsCount: starsCount,
-                          grammarCount: grammarCount,
-                          vocabCount: vocabCount,
-                          isInitializing: isInitializing,
-                          onTap: onTrackerTap,
+                  Padding(
+                    padding: const EdgeInsets.only(left: _hexBadgeOverhang),
+                    child: CustomPaint(
+                      painter: XpBorderPainter(
+                        progress: xpProgress,
+                        trackColor: const Color.fromARGB(130, 135, 135, 135),
+                        progressColor: AppConfig.goldByTheme(context),
+                        stroke: _xpStroke,
+                        radius: _pillInnerRadius + _xpStroke / 2,
+                        anchor: XpBorderAnchor.leftCenter,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(_xpStroke),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainer,
+                            borderRadius: BorderRadius.circular(
+                              _pillInnerRadius,
+                            ),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          // Extra left inset so the trackers clear the hex
+                          // badge's inner half.
+                          padding: const EdgeInsets.fromLTRB(
+                            _hexBadgeOverhang + 10.0,
+                            2.0,
+                            14.0,
+                            2.0,
+                          ),
+                          child: _PowerupsRow(
+                            starsCount: starsCount,
+                            grammarCount: grammarCount,
+                            vocabCount: vocabCount,
+                            isInitializing: isInitializing,
+                            onTap: onTrackerTap,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  // Half-overhanging the pill's left end, vertically centered
-                  // (the Figma hexagon; the web shield medal hangs its tail
-                  // low and belongs to the vertical cluster).
+                  // Half-overlapping the pill's left end, vertically centered
+                  // (the Figma hexagon). Kept INSIDE the Stack's bounds — a
+                  // negative Positioned paints but does not hit-test, which
+                  // silently killed the badge's tap (test-caught).
                   Positioned(
-                    left: -_hexBadgeOverhang,
+                    left: 0,
                     child: Material(
                       type: MaterialType.transparency,
-                      child: _HexLevelBadge(level: level, onTap: onLevelTap),
+                      child: _HexLevelBadge(
+                        level: level,
+                        onTap: onLevelTap,
+                        width: 42.0,
+                        height: 36.0,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ],
