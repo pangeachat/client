@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:http/http.dart' show Response;
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// How a plan [ActivityPlanRepo.lookup] resolved.
@@ -207,6 +209,12 @@ class ActivityPlanRepo
   /// Resolves upload-referenced media blocks to CDN urls. Applied to every
   /// fetched plan, and by fallback consumers to legacy plans read from room
   /// state (which carry the same unresolved `upload_id` references).
+  ///
+  /// Fail-soft: a resolution failure (e.g. the CMS media read erroring)
+  /// returns the plan with its blocks unresolved, and they degrade to the
+  /// placeholder render. Media must never take down the plan itself — before
+  /// this guard a CMS 403 surfaced as "Activity not found" on a perfectly
+  /// healthy activity.
   Future<ActivityPlanModel> resolveMedia(ActivityPlanModel plan) async {
     final ids = plan.media
         .map((b) => b.uploadId)
@@ -214,7 +222,18 @@ class ActivityPlanRepo
         .toSet()
         .toList();
     if (ids.isEmpty) return plan;
-    final resolved = await ActivityMediaRepo.resolve(ids);
+    final Map<String, ResolvedMedia> resolved;
+    try {
+      resolved = await ActivityMediaRepo.resolve(ids);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activityId": plan.activityId},
+        level: SentryLevel.warning,
+      );
+      return plan;
+    }
     return plan.withMedia(
       plan.media.map((block) {
         final r = block.uploadId == null ? null : resolved[block.uploadId];
