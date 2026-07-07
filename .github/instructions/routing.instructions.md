@@ -96,6 +96,15 @@ contract is the shareable standalone activity link (`/<uuid>`), which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
 into its `activity` token before render.
 
+**Known carve-out (#7519).** Five legacy path-route trees still render as
+route-driven center details and are navigated to by live flows: the chat
+archive, the new-DM form, the course-creation wizard (blocked on its
+`Completer`-via-`state.extra` result handoff, which cannot ride a URL), the
+add-plan-to-space flow, and the public-course preview. Until #7519 migrates
+them to tokens, "the path is always `/`" holds for everything except these;
+they are the only reason `CanvasMode.detail` and the shell's center-detail
+machinery still exist.
+
 ## The core model
 
 ### The URL is the workspace
