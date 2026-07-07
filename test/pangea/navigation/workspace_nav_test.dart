@@ -651,23 +651,53 @@ void main() {
       expect(right.single.type, 'settings'); // menu remains
     });
 
-    test('closeSettings drops the menu AND its page, keeps the rest', () {
-      // Analytics can no longer coexist with settings (opening settings drops
-      // it, #7109), so "the rest" is a left panel. closeSettings clears the
-      // right settings panel and leaves the left column intact.
+    test('closeSettings drops only the menu, keeping an open settingspage '
+        'detail (#7493)', () {
+      // Closing the settings MENU drops only its own token — the same rule
+      // closeSection documents for the course family (a coursepage survives
+      // its course card closing, #7317). A settingspage reads its own
+      // identity from its token param, so it keeps rendering without its
+      // master beside it.
       var loc = WorkspaceNav.openSettings(
         u('/?left=room:!a'),
         page: 'learning',
       );
       loc = WorkspaceNav.closeSettings(u(loc));
       final panels = parseOpenPanels(u(loc));
+      expect(panels.right.any((t) => t.type == 'settings'), isFalse);
       expect(
-        panels.right.any(
-          (t) => t.type == 'settings' || t.type == 'settingspage',
-        ),
-        isFalse,
-      );
+        panels.right.single,
+        const PanelToken('settingspage', 'learning'),
+      ); // page survives
       expect(panels.left.single, const PanelToken('room', '!a'));
+    });
+
+    test(
+      'closeSettings on a bare menu (no open page) clears the right column',
+      () {
+        // Analytics can no longer coexist with settings (opening settings
+        // drops it, #7109), so with no settingspage open, closing the menu
+        // leaves the right column empty.
+        var loc = WorkspaceNav.openSettings(u('/?left=room:!a'));
+        loc = WorkspaceNav.closeSettings(u(loc));
+        final panels = parseOpenPanels(u(loc));
+        expect(panels.right, isEmpty);
+        expect(panels.left.single, const PanelToken('room', '!a'));
+      },
+    );
+
+    test('closing the settingspage detail keeps the settings menu master', () {
+      // The reverse case: closing the page (via closeRight, the page's own
+      // close) must not touch the menu — mirrored to the course family's
+      // coursepage close.
+      final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
+      final closed = WorkspaceNav.closeRight(
+        u(loc),
+        const PanelToken('settingspage', 'learning'),
+      );
+      final panels = parseOpenPanels(u(closed));
+      expect(panels.right.any((t) => t.type == 'settingspage'), isFalse);
+      expect(panels.right.single.type, 'settings'); // menu remains
     });
   });
 
