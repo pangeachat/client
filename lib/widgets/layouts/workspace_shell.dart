@@ -816,8 +816,18 @@ class _ShellLayout {
       'coursepage',
       'activity',
     };
+    // A route-driven center-detail page on a narrow screen (a course-wizard
+    // step, a public-course preview, a chat archive, the new-private-chat
+    // form) is a FULL-SCREEN surface (routing.instructions.md → Full-screen
+    // surfaces): it carries its own app-bar navigation, so the nav widget
+    // hides, no cavity seats over it, and the analytics bar collapses —
+    // instead of the chrome painting over the page's controls.
+    final narrowDetail = !isColumnMode && canvas == CanvasMode.detail;
     int? cavityIndex;
-    if (!isColumnMode && focusedNarrowType != null && !focusedIsRight) {
+    if (!isColumnMode &&
+        !narrowDetail &&
+        focusedNarrowType != null &&
+        !focusedIsRight) {
       for (var i = 0; i < leftTokens.length; i++) {
         if (cavityTypes.contains(leftTokens[i].type) &&
             layout.left[i].vis == PanelVis.full) {
@@ -830,18 +840,22 @@ class _ShellLayout {
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
     // map or a cavity surface — and is covered by a focused full-screen surface
-    // (a room/activity, or a right panel expanding over it).
+    // (a room/activity, a center-detail page, or a right panel expanding over
+    // it).
     final navWidgetVisible =
-        !isColumnMode && navRail && (focusedNarrowType == null || hasCavity);
+        !isColumnMode &&
+        navRail &&
+        !narrowDetail &&
+        (focusedNarrowType == null || hasCavity);
 
     // The analytics bar collapses to the avatar circle only under a full-screen
-    // LEFT surface (a chat, an activity start/join); it stays expanded over the
-    // map, a cavity, and an open right panel (which it heads).
+    // surface (a chat, an activity start/join, a center-detail page); it stays
+    // expanded over the map, a cavity, and an open right panel (which it
+    // heads).
     final analyticsBarCollapsed =
         !isColumnMode &&
-        focusedNarrowType != null &&
-        !hasCavity &&
-        !focusedIsRight;
+        !focusedIsRight &&
+        ((focusedNarrowType != null && !hasCavity) || narrowDetail);
 
     // The map shows behind as a map hole (full) or — in column mode — alongside
     // a detail; this gates the cluster.
@@ -907,13 +921,15 @@ class _ShellLayout {
     final MapContext mapContext = coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
-    // A full-screen panel on a narrow screen covers the map, so dismiss any
-    // lingering map-pin preview — otherwise its [MapPinController] flag would
-    // keep the nav widget hidden after backing out. A CAVITY surface leaves the
-    // map visible above it, so it does not clear the pin. The map clears its own
-    // selection in response. See `routing.instructions.md`.
+    // A full-screen surface on a narrow screen (a focused panel or a
+    // center-detail page) covers the map, so dismiss any lingering map-pin
+    // preview — otherwise its [MapPinController] flag would keep the nav
+    // widget hidden after backing out. A CAVITY surface leaves the map visible
+    // above it, so it does not clear the pin. The map clears its own selection
+    // in response. See `routing.instructions.md`.
     final mapCoveredByPanel =
-        !isColumnMode && focusedNarrowType != null && !hasCavity;
+        !isColumnMode &&
+        ((focusedNarrowType != null && !hasCavity) || narrowDetail);
 
     // Route-driven center detail only (a course-wizard step, a public-course
     // preview, a chat archive). The activity plan is a left panel now, not a canvas

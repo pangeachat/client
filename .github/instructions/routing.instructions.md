@@ -494,6 +494,12 @@ session — opens full-screen, covering the nav widget: a rounded-corner card
 with a small inset of map visible behind it. The nav widget is not accessible
 while one of these surfaces is focused. (The activity *plan* is not one of
 these — it rides the cavity at half height, its pin visible above.)
+**Route-driven center-detail pages** — a course-wizard step, a public-course
+preview, a chat archive, the new-private-chat form — are full-screen surfaces
+too: they are task flows carrying their own app-bar navigation, so the nav
+widget hides and the analytics bar collapses to the avatar while one is open
+(they neither inset below the expanded bar the way right panels do, nor share
+the screen with the floating chrome).
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -519,8 +525,9 @@ differences from the web cluster:
 - **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in
   the pill.
 
-**Collapsed state.** In full screens (a chat, an activity start/join), the
-analytics bar collapses into a single avatar circle wearing the XP ring, the
+**Collapsed state.** In full screens (a chat, an activity start/join, a
+route-driven detail page such as a course-wizard step or public-course
+preview), the analytics bar collapses into a single avatar circle wearing the XP ring, the
 level badge, and the L2 flag. A tap on the collapsed avatar temporarily expands
 the full bar for approximately 3 seconds — long enough to tap a tracker or open
 settings — then auto-collapses if nothing further is tapped. The timer never
