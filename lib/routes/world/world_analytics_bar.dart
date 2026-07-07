@@ -459,7 +459,11 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Center(
+            // Right-justified, up against the avatar — the pill and avatar
+            // read as one cluster at the bar's right end, like the web
+            // cluster's tight column.
+            child: Align(
+              alignment: Alignment.centerRight,
               // The medal + XP-bordered pill are ONE unit, exactly like the web
               // cluster rotated horizontal: the pill's frame IS the XP ring
               // (gold growing from the badge's top, clockwise, meeting at its
