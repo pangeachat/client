@@ -17,7 +17,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
-  const CourseCodePage({super.key});
+  /// A code delivered by an inbound join link (the `addcourse` token's
+  /// `private/<code>` leaf — see LegacyRedirects, #7524). Prefilled and
+  /// submitted once on mount, running the exact join a manual entry performs;
+  /// on failure the page stays up with the code in the field.
+  final String? initialCode;
+
+  const CourseCodePage({super.key, this.initialCode});
 
   @override
   State<CourseCodePage> createState() => CourseCodePageState();
@@ -30,6 +36,13 @@ class CourseCodePageState extends State<CourseCodePage> {
   void initState() {
     super.initState();
     _codeController.addListener(() => setState(() {}));
+    final initialCode = widget.initialCode?.trim();
+    if (initialCode != null && initialCode.isNotEmpty) {
+      _codeController.text = initialCode;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _submit();
+      });
+    }
   }
 
   @override
