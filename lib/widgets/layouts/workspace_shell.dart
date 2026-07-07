@@ -527,17 +527,24 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             : l10n.addCourse,
         courseShortcutSelected:
             shortcutCourse != null && shortcutCourse.id == activeSpaceId,
+        // Rail navigations clear the right list: on one column a section and
+        // a right panel are peers in the same slot, so opening a section must
+        // close an open analytics/settings panel instead of leaving it stale
+        // behind the sheet (routing.instructions.md → Single-column bottom
+        // nav; the mirror of the analytics bar's closeSections).
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
               ? WorkspaceNav.openCourseSection(
                   uri,
                   shortcutCourse.id,
                   keepRoom: false,
+                  clearRight: true,
                 )
               : WorkspaceNav.setSection(
                   uri,
                   const PanelToken('addcourse'),
                   keepRoom: false,
+                  clearRight: true,
                 ),
         ),
         onSectionTap: (section) => context.go(switch (section) {
@@ -547,11 +554,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             uri,
             const PanelToken('chats'),
             keepRoom: false,
+            clearRight: true,
           ),
           AppSection.courses => WorkspaceNav.setSection(
             uri,
             const PanelToken('addcourse'),
             keepRoom: false,
+            clearRight: true,
           ),
           // The rail only emits the three sections above; any other AppSection
           // value falls back to home.

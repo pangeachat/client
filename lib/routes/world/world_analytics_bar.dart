@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -95,12 +96,20 @@ class AnalyticsHeaderAvatar extends StatelessWidget {
   );
 }
 
+/// Single-column: a right panel takes the section's slot, so opening one
+/// closes an open section sheet (chats list, Courses hub, course card) —
+/// otherwise X-ing the panel reveals a stale sheet instead of the map. A live
+/// room persists (the header-avatar loop returns to it). The bar renders on
+/// narrow only, but gate on the breakpoint so a mid-resize tap stays correct.
+bool _closeSections(BuildContext context) =>
+    !FluffyThemes.isColumnMode(context);
+
 /// Open the right-docked analytics panel on [tab]'s summary — identical to
 /// the web cluster's tracker taps.
 void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
   WorkspaceNav.setRight(GoRouterState.of(context).uri, [
     PanelToken('analytics', tab.name),
-  ]),
+  ], closeSections: _closeSections(context)),
 );
 
 /// The header avatar opens the analytics summary — the panel whose header is
@@ -108,24 +117,32 @@ void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
 void _openAnalyticsSummary(BuildContext context) => context.go(
   WorkspaceNav.setRight(GoRouterState.of(context).uri, [
     const PanelToken('analytics'),
-  ]),
+  ], closeSections: _closeSections(context)),
 );
 
 /// The bar's avatar opens the profile + settings panel, same as the cluster.
-void _openProfile(BuildContext context) =>
-    context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
+void _openProfile(BuildContext context) => context.go(
+  WorkspaceNav.openSettings(
+    GoRouterState.of(context).uri,
+    closeSections: _closeSections(context),
+  ),
+);
 
 /// The level badge opens the level analytics tab, same as the cluster.
 void _openLevel(BuildContext context) => context.go(
   WorkspaceNav.setRight(GoRouterState.of(context).uri, [
     const PanelToken('analytics', 'level'),
-  ]),
+  ], closeSections: _closeSections(context)),
 );
 
 /// The L2 flag opens the learning settings page directly, same as the
 /// cluster.
 void _openLearningSettings(BuildContext context) => context.go(
-  WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
+  WorkspaceNav.openSettings(
+    GoRouterState.of(context).uri,
+    page: 'learning',
+    closeSections: _closeSections(context),
+  ),
 );
 
 /// The resolved display values every analytics-nav rendering consumes.

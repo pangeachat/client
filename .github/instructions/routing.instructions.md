@@ -564,6 +564,16 @@ button that opens the analytics summary panel — whose header is the full bar).
 | Live chat room / launched activity session / session review | Avatar, in the chat's app bar |
 | Route-driven detail pages (course wizard, public-course preview, chat archive, new DM form) | None — they carry their own app-bar navigation |
 
+**Single-column mutual close.** Sibling-closing is per-column on web, but on
+one column a SECTION sheet (the chat list, the Courses hub, a course card, an
+activity plan) and a right panel (analytics, settings) are peers in the same
+visual slot — so opening one closes the other at navigation time: a bar tap
+drops the open section tokens, and a rail tap drops the right list. Without
+this, X-ing the panel revealed a stale sheet instead of the map. A live
+`room`/`session` is NOT a section and persists under a right panel — the
+header-avatar loop (chat → analytics → X → back to the conversation) depends
+on it. Column mode is untouched: both columns coexist there.
+
 **Expanded state.** Tapping a bar element opens the same right-column tokens as
 the web cluster (`right=analytics:vocab`, `right=settings`, the level tab, the
 flag's learning-settings shortcut) — the mobile panel is the single-column
