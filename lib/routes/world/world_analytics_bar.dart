@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -16,6 +18,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -59,6 +62,7 @@ class WorldAnalyticsBar extends StatelessWidget {
       level: s.level,
       xpProgress: s.xpProgress,
       isInitializing: s.isInitializing,
+      levelUpdates: s.levelUpdates,
       onTrackerTap: (tab) => _openAnalytics(context, tab),
       onAvatarTap: () => _openProfile(context),
       onLevelTap: () => _openLevel(context),
@@ -87,6 +91,7 @@ class AnalyticsHeaderAvatar extends StatelessWidget {
         l2: s.l2,
         level: s.level,
         xpProgress: s.xpProgress,
+        levelUpdates: s.levelUpdates,
         // App-bar sized: the full-size circle is built for open floating
         // space; at 0.75 the ring + badge + flag fit the toolbar's height.
         scale: 0.75,
@@ -157,6 +162,12 @@ class AnalyticsSnapshot {
   final double xpProgress;
   final bool isInitializing;
 
+  /// Level-change signal for the badge's celebration — the same
+  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
+  /// already subscription-gated. A plain stream value so the renderings below
+  /// stay Matrix-free; see [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
+
   const AnalyticsSnapshot({
     required this.avatarUrl,
     required this.displayName,
@@ -167,6 +178,7 @@ class AnalyticsSnapshot {
     required this.level,
     required this.xpProgress,
     required this.isInitializing,
+    required this.levelUpdates,
   });
 }
 
@@ -190,9 +202,25 @@ class _AnalyticsScopeState extends State<_AnalyticsScope> {
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
+  /// See [AnalyticsSnapshot.levelUpdates]. Created once so consumer rebuilds
+  /// don't churn the celebration's subscription; the subscription gate (the
+  /// old snackbar's) is applied per event.
+  Stream<LevelUpdate>? _levelUpdates;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _levelUpdates ??= Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .levelUpdateStream
+        .stream
+        .where(
+          (_) => MatrixState
+              .pangeaController
+              .subscriptionController
+              .showSubscriptionGatedContent,
+        );
     if (_profileLoaded) return;
     _profileLoaded = true;
     _loadProfile();
@@ -264,6 +292,7 @@ class _AnalyticsScopeState extends State<_AnalyticsScope> {
                             1.0,
                           ),
                           isInitializing: service.isInitializing,
+                          levelUpdates: _levelUpdates,
                         ),
                       ),
                     );
@@ -302,6 +331,10 @@ class AnalyticsBarView extends StatelessWidget {
   /// True while analytics are still loading; the trackers shimmer.
   final bool isInitializing;
 
+  /// Level-change signal for the badge's celebration (a plain stream value;
+  /// see [AnalyticsSnapshot.levelUpdates]). Null renders no celebration.
+  final Stream<LevelUpdate>? levelUpdates;
+
   final void Function(AnalyticsPanelTab) onTrackerTap;
   final VoidCallback onAvatarTap;
   final VoidCallback onLevelTap;
@@ -333,6 +366,7 @@ class AnalyticsBarView extends StatelessWidget {
     required this.onAvatarTap,
     required this.onLevelTap,
     required this.onFlagTap,
+    this.levelUpdates,
     this.flagBuilder,
     super.key,
   });
@@ -348,6 +382,7 @@ class AnalyticsBarView extends StatelessWidget {
     level: level,
     xpProgress: xpProgress,
     isInitializing: isInitializing,
+    levelUpdates: levelUpdates,
     onTrackerTap: onTrackerTap,
     onAvatarTap: onAvatarTap,
     onLevelTap: onLevelTap,
@@ -374,6 +409,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
   final int level;
   final double xpProgress;
   final bool isInitializing;
+  final Stream<LevelUpdate>? levelUpdates;
   final void Function(AnalyticsPanelTab) onTrackerTap;
   final VoidCallback onAvatarTap;
   final VoidCallback onLevelTap;
@@ -397,6 +433,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
     required this.level,
     required this.xpProgress,
     required this.isInitializing,
+    required this.levelUpdates,
     required this.onTrackerTap,
     required this.onAvatarTap,
     required this.onLevelTap,
@@ -454,6 +491,11 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
               // the mirror of web's bottom-center overhang.
               child: Stack(
                 alignment: Alignment.centerLeft,
+                // The badge's level-up celebration paints just outside the
+                // pill unit's bounds (pulse + chip); don't clip it. The
+                // celebration is decoration-only (IgnorePointer), so the
+                // hit-test caveat below still only concerns the badge itself.
+                clipBehavior: Clip.none,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: _hexBadgeOverhang),
@@ -503,12 +545,15 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
                     left: 0,
                     child: Material(
                       type: MaterialType.transparency,
-                      child: _HexLevelBadge(
-                        level: level,
-                        onTap: onLevelTap,
-                        width: _badgeWidth,
-                        height: _badgeHeight,
-                        fontSize: _badgeFontSize,
+                      child: LevelUpBadgeCelebration(
+                        levelUpdates: levelUpdates,
+                        child: _HexLevelBadge(
+                          level: level,
+                          onTap: onLevelTap,
+                          width: _badgeWidth,
+                          height: _badgeHeight,
+                          fontSize: _badgeFontSize,
+                        ),
                       ),
                     ),
                   ),
@@ -733,6 +778,11 @@ class CollapsedAvatarView extends StatelessWidget {
   final VoidCallback onTap;
   final double scale;
 
+  /// Level-change signal for the mini badge's celebration (a plain stream
+  /// value; see [AnalyticsSnapshot.levelUpdates]). Null renders no
+  /// celebration.
+  final Stream<LevelUpdate>? levelUpdates;
+
   const CollapsedAvatarView({
     required this.avatarUrl,
     required this.displayName,
@@ -741,6 +791,7 @@ class CollapsedAvatarView extends StatelessWidget {
     required this.xpProgress,
     required this.onTap,
     this.scale = 1.0,
+    this.levelUpdates,
     this.flagBuilder,
     super.key,
   });
@@ -838,12 +889,15 @@ class CollapsedAvatarView extends StatelessWidget {
                   child: IgnorePointer(
                     child: Material(
                       type: MaterialType.transparency,
-                      child: _HexLevelBadge(
-                        level: level,
-                        onTap: onTap,
-                        width: _badgeWidth,
-                        height: _badgeHeight,
-                        fontSize: _badgeFontSize,
+                      child: LevelUpBadgeCelebration(
+                        levelUpdates: levelUpdates,
+                        child: _HexLevelBadge(
+                          level: level,
+                          onTap: onTap,
+                          width: _badgeWidth,
+                          height: _badgeHeight,
+                          fontSize: _badgeFontSize,
+                        ),
                       ),
                     ),
                   ),

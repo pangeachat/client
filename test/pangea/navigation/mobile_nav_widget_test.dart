@@ -269,6 +269,36 @@ void main() {
         reason: 'dragging the handle down must shrink the cavity',
       );
     });
+
+    testWidgets(
+      'a section sheet dragged fully down reopens at a real height (#7510)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.chats,
+          cavityChild: const Text('Chat list'),
+          cavityKey: 'chats',
+          maxHeightFraction: 0.75,
+        );
+        expect(cavityHeightOf(tester), greaterThan(0.0));
+
+        // Drag the handle all the way down: the sheet dismisses to 0px (no
+        // handle left to grab) — a dismissal, not a height preference.
+        await tester.drag(handleFinder(), const Offset(0, 700));
+        await tester.pumpAndSettle();
+        expect(cavityHeightOf(tester), 0.0);
+
+        // The rail item must reopen it at a usable height, NOT the
+        // remembered zero (the #7510 stuck state).
+        await tester.tap(find.byTooltip('All chats'));
+        await tester.pumpAndSettle();
+        expect(
+          cavityHeightOf(tester),
+          greaterThan(100.0),
+          reason: 'reopening after a drag-to-zero must restore a real height',
+        );
+      },
+    );
   });
 
   group('tap-outside collapse', () {

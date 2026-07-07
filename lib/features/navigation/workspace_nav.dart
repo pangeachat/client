@@ -703,15 +703,18 @@ abstract class WorkspaceNav {
     );
   }
 
-  /// Close the whole settings/profile panel — the menu master AND its open page
-  /// detail — keeping the rest of the right column. Closing the master drops its
-  /// detail (it has no meaning without the menu).
+  /// Close the settings/profile MENU master, dropping only the `settings`
+  /// token — "closing a panel drops its token and nothing else"
+  /// (routing.instructions.md), the same rule [closeSection] documents for the
+  /// course family. An open `settingspage` detail therefore survives a menu
+  /// close exactly as a `coursepage` survives its `course` card closing: the
+  /// page keeps rendering (it reads its own identity from its token param, not
+  /// from the menu), just without its master beside it. The page's own close
+  /// still drops it via [closeRight]/[settingsBack] (#7493).
   static String closeSettings(Uri current) => _mutate(
     current,
     'right',
-    (tokens) => tokens
-        .where((t) => t.type != 'settings' && t.type != 'settingspage')
-        .toList(),
+    (tokens) => _remove(tokens, const PanelToken('settings')),
   );
 
   /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
