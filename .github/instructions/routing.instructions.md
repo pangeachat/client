@@ -396,7 +396,7 @@ folded here: one panel, navigated with a back arrow.
 a **floating bottom nav widget** (the expandable rounded container in
 [Single-column bottom nav](#single-column-bottom-nav) below), and the cluster
 becomes a **horizontal analytics bar** pinned to the top of the safe area
-([Single-column analytics bar](#single-column-analytics-bar)). A **search bar**
+([Single-column analytics nav bar](#single-column-analytics-nav-bar)). A **search bar**
 floats above the nav widget with map filters above it
 ([Single-column search bar](#single-column-search-bar)). Analytics and Profile
 are reached from the top bar, not the bottom nav. Further-nested surfaces — a
@@ -497,9 +497,10 @@ these — it rides the cavity at half height, its pin visible above.)
 **Route-driven center-detail pages** — a course-wizard step, a public-course
 preview, a chat archive, the new-private-chat form — are full-screen surfaces
 too: they are task flows carrying their own app-bar navigation, so the nav
-widget hides and the analytics bar collapses to the avatar while one is open
-(they neither inset below the expanded bar the way right panels do, nor share
-the screen with the floating chrome).
+widget hides and no analytics chrome shows at all (they neither inset below
+the bar the way right panels do, nor share the screen with floating chrome —
+see the surface table under
+[Single-column analytics nav bar](#single-column-analytics-nav-bar)).
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -507,7 +508,7 @@ the screen with the floating chrome).
 - [Courses list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61048&t=NJSsG23tsR9Kdwlz-0)
 - [Active course](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61069&t=NJSsG23tsR9Kdwlz-0)
 
-### Single-column analytics bar
+### Single-column analytics nav bar
 [Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-94063&t=NJSsG23tsR9Kdwlz-0)
 
 In single-column mode the cluster's vertical powerups column becomes a
@@ -525,17 +526,25 @@ differences from the web cluster:
 - **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in
   the pill.
 
-**Collapsed state.** In full screens (a chat, an activity start/join, a
-route-driven detail page such as a course-wizard step or public-course
-preview), the analytics bar collapses into a single avatar circle wearing the XP ring, the
-level badge, and the L2 flag. A tap on the collapsed avatar temporarily expands
-the full bar for approximately 3 seconds — long enough to tap a tracker or open
-settings — then auto-collapses if nothing further is tapped. The timer never
-fires while the bar holds keyboard or assistive-technology focus: screen-reader
-and switch users collapse it by tapping outside (or the avatar again), not by
-timeout (WCAG 2.2.1 — see
-[accessibility.instructions.md](accessibility.instructions.md)).
-[Collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)
+**Where the bar shows, per surface.** The bar is *analytics navigation*, so it
+appears where it navigates and never floats over a page that has its own
+navigation. It has exactly two renderings — the **full bar** and the
+**avatar** (the circle wearing the XP ring, level badge, and L2 flag — the
+Figma
+[collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)) —
+and the avatar is **hosted inside the chat's own app bar** as a trailing
+action, never floated over content (stacked chrome proved error-prone; a
+floating timed expansion was also a WCAG liability, so the avatar is a plain
+button that opens the analytics summary panel — whose header is the full bar).
+
+| Surface | Bar |
+| --- | --- |
+| Bare world map | Full |
+| Cavity surfaces (chat list, Courses hub, course card, activity plan) | Full |
+| Map pin preview sheet | Full |
+| Right panels (analytics summary/tabs, word/grammar details, settings) | Full — the bar IS their navigation and heads them |
+| Live chat room / launched activity session / session review | Avatar, in the chat's app bar |
+| Route-driven detail pages (course wizard, public-course preview, chat archive, new DM form) | None — they carry their own app-bar navigation |
 
 **Expanded state.** Tapping a bar element opens the same right-column tokens as
 the web cluster (`right=analytics:vocab`, `right=settings`, the level tab, the
@@ -685,7 +694,7 @@ context alone never out-highlights an open section.
 
 A persistent cluster pinned to the top-right of the map opens the right column.
 On a narrow screen the cluster becomes the
-[single-column analytics bar](#single-column-analytics-bar) — same elements,
+[single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
 same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
 **avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward

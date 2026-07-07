@@ -140,7 +140,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 /// The circular user avatar at the top of the cluster. Opens profile/settings.
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
 /// the mobile single-column rendering of this same cluster
-/// (routing.instructions.md, "Single-column analytics bar") — can reuse it
+/// (routing.instructions.md, "Single-column analytics nav bar") — can reuse it
 /// verbatim (including at the collapsed bar's smaller size) rather than
 /// duplicating the avatar + tooltip + semantics wiring. This is the one
 /// mechanical visibility change made to this file for that reuse; no behavior
@@ -485,7 +485,7 @@ class ClusterLevelMedal extends StatelessWidget {
 ///
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
 /// can reuse it at the "slightly smaller than web" size the mobile chrome
-/// calls for (routing.instructions.md, "Single-column analytics bar") without
+/// calls for (routing.instructions.md, "Single-column analytics nav bar") without
 /// duplicating the flag/outline/tooltip logic.
 class ClusterLanguageFlag extends StatelessWidget {
   final LanguageModel language;

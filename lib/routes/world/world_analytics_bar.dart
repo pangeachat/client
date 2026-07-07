@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -24,47 +23,151 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// The single-column (mobile/narrow) rendering of [WorldUserCluster] — the
 /// right column's entry point, pinned to the top of the safe area as a
 /// horizontal bar instead of the web cluster's vertical column
-/// (routing.instructions.md, "Single-column analytics bar"). Same data, same
-/// tokens, same tap destinations as the cluster; only the layout and the
-/// collapsed-on-full-screen behavior are mobile-specific.
+/// (routing.instructions.md, "Single-column analytics nav bar"). Same data,
+/// same tokens, same tap destinations as the cluster.
 ///
-/// This widget is the bar's ONLY Matrix-aware layer: it subscribes to the
-/// same streams the cluster does (language, construct updates, awarded-goal
-/// room state, derived analytics) and hands the resolved display values to
-/// [AnalyticsBarTemporaryExpansion] as plain fields, so everything below it
-/// is testable without a live Client.
+/// Always the FULL bar: the shell mounts it only on surfaces where it is
+/// navigation — the map/cavity ground and the right-column panels it heads.
+/// A full-screen chat hosts [AnalyticsHeaderAvatar] in its own app bar
+/// instead (no floating chrome stacked over page content), and route-driven
+/// detail pages show nothing.
 ///
 /// Content only — the caller (the workspace shell) is responsible for
-/// [Positioned] placement, width bounds (the expanded layout is a [Row] with
-/// an [Expanded] middle, so it must be given a bounded width), and safe-area
+/// [Positioned] placement, width bounds (the layout is a [Row] with an
+/// [Expanded] middle, so it must be given a bounded width), and safe-area
 /// padding.
-class WorldAnalyticsBar extends StatefulWidget {
-  /// True on full-screen surfaces (a live chat, an activity start/join): the
-  /// bar renders as the single avatar circle until tapped, per the Figma
-  /// collapsed component.
-  final bool collapsed;
+class WorldAnalyticsBar extends StatelessWidget {
+  const WorldAnalyticsBar({super.key});
 
-  const WorldAnalyticsBar({required this.collapsed, super.key});
-
-  /// The expanded bar's rendered height: the avatar column governs the Row —
+  /// The bar's rendered height: the avatar column governs the Row —
   /// avatar (56) + flag gap (6) + flag (28). The shell's
   /// `analyticsBarAllowance` derives from this so content placed "below the
   /// bar" actually clears it (a widget test pins the rendered height to this
   /// constant).
   static const double expandedHeight = 90.0;
 
-  /// How long a tap on the collapsed avatar keeps the bar temporarily
-  /// expanded before it auto-collapses, absent further interaction or focus
-  /// (routing.instructions.md, "Single-column analytics bar"). Overridable
-  /// only for tests, so they don't have to wait out the real duration.
-  @visibleForTesting
-  static Duration temporaryExpansionDuration = const Duration(seconds: 3);
-
   @override
-  State<WorldAnalyticsBar> createState() => _WorldAnalyticsBarState();
+  Widget build(BuildContext context) => _AnalyticsScope(
+    builder: (context, s) => AnalyticsBarView(
+      avatarUrl: s.avatarUrl,
+      displayName: s.displayName,
+      l2: s.l2,
+      starsCount: s.starsCount,
+      grammarCount: s.grammarCount,
+      vocabCount: s.vocabCount,
+      level: s.level,
+      xpProgress: s.xpProgress,
+      isInitializing: s.isInitializing,
+      onTrackerTap: (tab) => _openAnalytics(context, tab),
+      onAvatarTap: () => _openProfile(context),
+      onLevelTap: () => _openLevel(context),
+      onFlagTap: () => _openLearningSettings(context),
+    ),
+  );
 }
 
-class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
+/// The analytics avatar as a CHAT HEADER action: the circle wearing the XP
+/// ring, level badge, and L2 flag, rendered inside the full-screen chat /
+/// session app bar (routing.instructions.md, "Single-column analytics nav
+/// bar"). A plain button — tapping it opens the analytics summary panel,
+/// whose header IS the full bar. This replaced the floating collapsed avatar
+/// (and its temporary-expansion timer): chrome stacked over page content was
+/// error-prone, and a timed control was a WCAG liability.
+class AnalyticsHeaderAvatar extends StatelessWidget {
+  const AnalyticsHeaderAvatar({super.key});
+
+  @override
+  Widget build(BuildContext context) => _AnalyticsScope(
+    builder: (context, s) => Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: CollapsedAvatarView(
+        avatarUrl: s.avatarUrl,
+        displayName: s.displayName,
+        l2: s.l2,
+        level: s.level,
+        xpProgress: s.xpProgress,
+        // App-bar sized: the full-size circle is built for open floating
+        // space; at 0.75 the ring + badge + flag fit the toolbar's height.
+        scale: 0.75,
+        onTap: () => _openAnalyticsSummary(context),
+      ),
+    ),
+  );
+}
+
+/// Open the right-docked analytics panel on [tab]'s summary — identical to
+/// the web cluster's tracker taps.
+void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
+  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+    PanelToken('analytics', tab.name),
+  ]),
+);
+
+/// The header avatar opens the analytics summary — the panel whose header is
+/// the full bar, so every bar destination is one more tap away.
+void _openAnalyticsSummary(BuildContext context) => context.go(
+  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+    const PanelToken('analytics'),
+  ]),
+);
+
+/// The bar's avatar opens the profile + settings panel, same as the cluster.
+void _openProfile(BuildContext context) =>
+    context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
+
+/// The level badge opens the level analytics tab, same as the cluster.
+void _openLevel(BuildContext context) => context.go(
+  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+    const PanelToken('analytics', 'level'),
+  ]),
+);
+
+/// The L2 flag opens the learning settings page directly, same as the
+/// cluster.
+void _openLearningSettings(BuildContext context) => context.go(
+  WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
+);
+
+/// The resolved display values every analytics-nav rendering consumes.
+class AnalyticsSnapshot {
+  final Uri? avatarUrl;
+  final String? displayName;
+  final LanguageModel? l2;
+  final int starsCount;
+  final int grammarCount;
+  final int vocabCount;
+  final int level;
+  final double xpProgress;
+  final bool isInitializing;
+
+  const AnalyticsSnapshot({
+    required this.avatarUrl,
+    required this.displayName,
+    required this.l2,
+    required this.starsCount,
+    required this.grammarCount,
+    required this.vocabCount,
+    required this.level,
+    required this.xpProgress,
+    required this.isInitializing,
+  });
+}
+
+/// The ONLY Matrix-aware layer of the analytics nav: subscribes to the same
+/// streams the cluster does (language, construct updates, awarded-goal room
+/// state, derived analytics, own profile) and hands the resolved
+/// [AnalyticsSnapshot] to [builder]. Everything below it renders plain values
+/// and is testable without a live Client.
+class _AnalyticsScope extends StatefulWidget {
+  final Widget Function(BuildContext, AnalyticsSnapshot) builder;
+
+  const _AnalyticsScope({required this.builder});
+
+  @override
+  State<_AnalyticsScope> createState() => _AnalyticsScopeState();
+}
+
+class _AnalyticsScopeState extends State<_AnalyticsScope> {
   bool _profileLoaded = false;
 
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
@@ -96,31 +199,6 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
     }
   }
 
-  /// Open the right-docked analytics panel on [tab]'s summary — identical to
-  /// the web cluster's tracker taps.
-  void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      PanelToken('analytics', tab.name),
-    ]),
-  );
-
-  /// The avatar opens the profile + settings panel, same as the cluster.
-  void _openProfile() =>
-      context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
-
-  /// The level badge opens the level analytics tab, same as the cluster.
-  void _openLevel() => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      const PanelToken('analytics', 'level'),
-    ]),
-  );
-
-  /// The L2 flag opens the learning settings page directly, same as the
-  /// cluster.
-  void _openLearningSettings() => context.go(
-    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
-  );
-
   @override
   Widget build(BuildContext context) {
     final matrix = Matrix.of(context);
@@ -129,7 +207,7 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
 
     // The same data wiring as the cluster's pill, nested so every update
     // (language switch, construct counts, awarded stars, level/XP) rebuilds
-    // the expansion below with fresh plain values.
+    // the consumer below with fresh plain values.
     return StreamBuilder(
       stream: MatrixState.pangeaController.userController.languageStream.stream,
       builder: (context, _) {
@@ -154,24 +232,22 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
                     final derived = snapshot.data ?? service.cachedDerivedData;
                     return ListenableBuilder(
                       listenable: Listenable.merge([_avatarUrl, _displayName]),
-                      builder: (context, _) => AnalyticsBarTemporaryExpansion(
-                        collapsed: widget.collapsed,
-                        avatarUrl: _avatarUrl.value,
-                        displayName: _displayName.value,
-                        l2: l2,
-                        starsCount: stars,
-                        grammarCount: grammar,
-                        vocabCount: vocab,
-                        level: derived?.level ?? 1,
-                        xpProgress: (derived?.levelProgress ?? 0.0).clamp(
-                          0.0,
-                          1.0,
+                      builder: (context, _) => widget.builder(
+                        context,
+                        AnalyticsSnapshot(
+                          avatarUrl: _avatarUrl.value,
+                          displayName: _displayName.value,
+                          l2: l2,
+                          starsCount: stars,
+                          grammarCount: grammar,
+                          vocabCount: vocab,
+                          level: derived?.level ?? 1,
+                          xpProgress: (derived?.levelProgress ?? 0.0).clamp(
+                            0.0,
+                            1.0,
+                          ),
+                          isInitializing: service.isInitializing,
                         ),
-                        isInitializing: service.isInitializing,
-                        onTrackerTap: _openAnalytics,
-                        onAvatarTap: _openProfile,
-                        onLevelTap: _openLevel,
-                        onFlagTap: _openLearningSettings,
                       ),
                     );
                   },
@@ -185,22 +261,16 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
   }
 }
 
-/// The collapse/expand/timer state machine, isolated from the Matrix/analytics
+/// The full bar's plain-values rendering, isolated from the Matrix/analytics
 /// data plumbing above so it is unit-testable without a live Client: every
 /// value it renders (avatar, name, language, tracker counts, level, XP
 /// progress) is a plain field, and every tap is a plain callback. Nothing at
 /// or below this widget may call `Matrix.of`, `GoRouterState.of`, or
-/// `context.go` — values and callbacks only. Owns:
-///  - resetting to the base [collapsed] state whenever that flips (the
-///    surface went full-screen or stopped being full-screen);
-///  - the ~3s temporary-expansion timer a tap on the collapsed avatar starts;
-///  - suspending/restarting that timer while a descendant holds focus, so
-///    keyboard/switch/screen-reader users are never raced by a timeout
-///    (WCAG 2.2.1 — routing.instructions.md, "Single-column analytics bar");
-///  - restarting the timer on any tap inside the bar.
-@visibleForTesting
-class AnalyticsBarTemporaryExpansion extends StatefulWidget {
-  final bool collapsed;
+/// `context.go` — values and callbacks only. (The old temporary-expansion
+/// state machine — collapsed rendering, ~3s timer, focus suspension — is
+/// gone: full-screen surfaces host [AnalyticsHeaderAvatar] in their own app
+/// bar instead of a floating collapsed bar.)
+class AnalyticsBarView extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
   final LanguageModel? l2;
@@ -232,8 +302,7 @@ class AnalyticsBarTemporaryExpansion extends StatefulWidget {
   )?
   flagBuilder;
 
-  const AnalyticsBarTemporaryExpansion({
-    required this.collapsed,
+  const AnalyticsBarView({
     required this.avatarUrl,
     required this.displayName,
     required this.l2,
@@ -252,157 +321,32 @@ class AnalyticsBarTemporaryExpansion extends StatefulWidget {
   });
 
   @override
-  State<AnalyticsBarTemporaryExpansion> createState() =>
-      _AnalyticsBarTemporaryExpansionState();
-}
-
-class _AnalyticsBarTemporaryExpansionState
-    extends State<AnalyticsBarTemporaryExpansion> {
-  final FocusNode _focusScopeNode = FocusNode(
-    debugLabel: 'WorldAnalyticsBar temporary expansion',
+  Widget build(BuildContext context) => _ExpandedAnalyticsBar(
+    avatarUrl: avatarUrl,
+    displayName: displayName,
+    l2: l2,
+    starsCount: starsCount,
+    grammarCount: grammarCount,
+    vocabCount: vocabCount,
+    level: level,
+    xpProgress: xpProgress,
+    isInitializing: isInitializing,
+    onTrackerTap: onTrackerTap,
+    onAvatarTap: onAvatarTap,
+    onLevelTap: onLevelTap,
+    onFlagTap: onFlagTap,
+    flagBuilder: flagBuilder,
   );
-
-  bool _temporarilyExpanded = false;
-  Timer? _collapseTimer;
-  bool _focusWithin = false;
-
-  bool get _expanded => !widget.collapsed || _temporarilyExpanded;
-
-  @override
-  void didUpdateWidget(covariant AnalyticsBarTemporaryExpansion oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Base state changed from full-screen to non-full-screen (or vice versa):
-    // the temporary expansion no longer means anything, so reset it and drop
-    // any pending auto-collapse.
-    if (oldWidget.collapsed != widget.collapsed) {
-      _temporarilyExpanded = false;
-      _cancelTimer();
-    }
-  }
-
-  @override
-  void dispose() {
-    _cancelTimer();
-    _focusScopeNode.dispose();
-    super.dispose();
-  }
-
-  void _cancelTimer() {
-    _collapseTimer?.cancel();
-    _collapseTimer = null;
-  }
-
-  /// (Re)starts the auto-collapse countdown, unless a descendant currently
-  /// holds focus — in which case the timer stays suspended until focus
-  /// leaves (see [_onFocusChange]).
-  void _restartTimer() {
-    _cancelTimer();
-    if (_focusWithin) return;
-    _collapseTimer = Timer(
-      WorldAnalyticsBar.temporaryExpansionDuration,
-      _autoCollapse,
-    );
-  }
-
-  void _autoCollapse() {
-    if (!mounted) return;
-    setState(() => _temporarilyExpanded = false);
-  }
-
-  void _onFocusChange(bool hasFocus) {
-    _focusWithin = hasFocus;
-    if (hasFocus) {
-      // A focused descendant must never be raced by the timeout (WCAG 2.2.1).
-      _cancelTimer();
-    } else if (_temporarilyExpanded) {
-      // Focus left the bar while it was only temporarily expanded: resume the
-      // countdown from a fresh window rather than collapsing immediately.
-      _restartTimer();
-    }
-  }
-
-  void _expandTemporarily() {
-    setState(() => _temporarilyExpanded = true);
-    _restartTimer();
-  }
-
-  /// Any tap inside an already-expanded bar restarts the countdown so an
-  /// active user (tapping a tracker, opening settings) is never collapsed out
-  /// from under them mid-interaction.
-  void _onInteraction() {
-    if (widget.collapsed && _temporarilyExpanded) _restartTimer();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final content = _expanded
-        ? _ExpandedAnalyticsBar(
-            avatarUrl: widget.avatarUrl,
-            displayName: widget.displayName,
-            l2: widget.l2,
-            starsCount: widget.starsCount,
-            grammarCount: widget.grammarCount,
-            vocabCount: widget.vocabCount,
-            level: widget.level,
-            xpProgress: widget.xpProgress,
-            isInitializing: widget.isInitializing,
-            onTrackerTap: (tab) {
-              _onInteraction();
-              widget.onTrackerTap(tab);
-            },
-            onAvatarTap: () {
-              _onInteraction();
-              widget.onAvatarTap();
-            },
-            onLevelTap: () {
-              _onInteraction();
-              widget.onLevelTap();
-            },
-            onFlagTap: () {
-              _onInteraction();
-              widget.onFlagTap();
-            },
-            flagBuilder: widget.flagBuilder,
-          )
-        // Right-aligned and shrink-wrapped: the shell mounts the bar
-        // full-width, and an unconstrained collapsed circle would stretch —
-        // scattering its Positioned level medal to the far screen edge and
-        // centering the avatar over the surface below (live QA). The circle
-        // belongs at the top-right, where the cluster lives on web.
-        : Align(
-            alignment: Alignment.centerRight,
-            child: _CollapsedAnalyticsAvatar(
-              avatarUrl: widget.avatarUrl,
-              displayName: widget.displayName,
-              l2: widget.l2,
-              level: widget.level,
-              xpProgress: widget.xpProgress,
-              onTap: _expandTemporarily,
-              flagBuilder: widget.flagBuilder,
-            ),
-          );
-
-    return Focus(
-      focusNode: _focusScopeNode,
-      onFocusChange: _onFocusChange,
-      // A parent Focus that only tracks descendant focus, not a stop of its
-      // own — descendants (trackers, avatar, flag) keep their own
-      // focusability; this just observes whether any of them is focused.
-      skipTraversal: true,
-      canRequestFocus: false,
-      child: content,
-    );
-  }
 }
 
 /// The full horizontal bar: level badge at the left end, the gold powerups
 /// pill (Stars / Grammar / Vocabulary) in the middle, the avatar with its XP
 /// ring at the right, and the L2 flag below the avatar
-/// (routing.instructions.md, "Single-column analytics bar"). Reuses the
+/// (routing.instructions.md, "Single-column analytics nav bar"). Reuses the
 /// cluster's visual atoms ([ClusterAvatar], [ClusterTrackerButton],
 /// [ClusterLevelMedal], [ClusterLanguageFlag]) so the look and the
 /// tooltip/semantics labels stay identical to web. Plain values only — no
-/// Matrix or router reads (see [AnalyticsBarTemporaryExpansion]).
+/// Matrix or router reads (see [AnalyticsBarView]).
 class _ExpandedAnalyticsBar extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
@@ -757,25 +701,31 @@ class _HexBadgePainter extends CustomPainter {
       old.fill != fill || old.border != border;
 }
 
-/// The collapsed state: a single avatar circle wearing the XP ring, the level
-/// badge, and the small flag (Figma collapsed component). Tapping it is the
-/// only affordance; it temporarily expands the full bar. Plain values only.
-class _CollapsedAnalyticsAvatar extends StatelessWidget {
+/// The avatar circle wearing the XP ring, the level badge, and the small
+/// flag (Figma collapsed component) — one tap target, announced as a single
+/// button. Plain values only; [AnalyticsHeaderAvatar] is its Matrix-aware
+/// host, mounting it in a full-screen chat's app bar (routing.instructions.md
+/// → "Single-column analytics nav bar"). [scale] shrinks the whole cluster
+/// proportionally so it fits a toolbar.
+class CollapsedAvatarView extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
   final LanguageModel? l2;
   final int level;
   final double xpProgress;
   final VoidCallback onTap;
+  final double scale;
 
-  const _CollapsedAnalyticsAvatar({
+  const CollapsedAvatarView({
     required this.avatarUrl,
     required this.displayName,
     required this.l2,
     required this.level,
     required this.xpProgress,
     required this.onTap,
-    required this.flagBuilder,
+    this.scale = 1.0,
+    this.flagBuilder,
+    super.key,
   });
 
   final Widget Function(
@@ -787,20 +737,35 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
   )?
   flagBuilder;
 
-  static const double _xpStroke = 4.0;
-  static const double _avatarSize = 44.0;
-  static const double _flagWidth = 28.0;
-  static const double _flagHeight = 20.0;
-  static const double _flagFontSize = 11.0;
+  // Base (scale 1.0) geometry — the floating-space size the cluster was
+  // designed at; every dimension multiplies by [scale] so the proportions
+  // hold at toolbar sizes.
+  static const double _xpStrokeBase = 4.0;
+  static const double _avatarSizeBase = 44.0;
+  static const double _flagWidthBase = 28.0;
+  static const double _flagHeightBase = 20.0;
+  static const double _flagFontSizeBase = 11.0;
 
   // Miniature hex badge pinned over the avatar's top-left, and the flag
   // hanging under its bottom edge — the collapsed echo of the bar cluster.
-  static const double _badgeTopOffset = -6.0;
-  static const double _badgeLeftOffset = -10.0;
-  static const double _badgeWidth = 30.0;
-  static const double _badgeHeight = 26.0;
-  static const double _badgeFontSize = 13.0;
-  static const double _flagBottomOffset = -10.0;
+  static const double _badgeTopOffsetBase = -6.0;
+  static const double _badgeLeftOffsetBase = -10.0;
+  static const double _badgeWidthBase = 30.0;
+  static const double _badgeHeightBase = 26.0;
+  static const double _badgeFontSizeBase = 13.0;
+  static const double _flagBottomOffsetBase = -10.0;
+
+  double get _xpStroke => _xpStrokeBase * scale;
+  double get _avatarSize => _avatarSizeBase * scale;
+  double get _flagWidth => _flagWidthBase * scale;
+  double get _flagHeight => _flagHeightBase * scale;
+  double get _flagFontSize => _flagFontSizeBase * scale;
+  double get _badgeTopOffset => _badgeTopOffsetBase * scale;
+  double get _badgeLeftOffset => _badgeLeftOffsetBase * scale;
+  double get _badgeWidth => _badgeWidthBase * scale;
+  double get _badgeHeight => _badgeHeightBase * scale;
+  double get _badgeFontSize => _badgeFontSizeBase * scale;
+  double get _flagBottomOffset => _flagBottomOffsetBase * scale;
 
   @override
   Widget build(BuildContext context) {
@@ -833,7 +798,7 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 CustomPaint(
-                  size: const Size.square(_avatarSize + 2 * _xpStroke),
+                  size: Size.square(_avatarSize + 2 * _xpStroke),
                   painter: CircularXpRingPainter(
                     progress: xpProgress,
                     trackColor: const Color.fromARGB(130, 135, 135, 135),
@@ -841,7 +806,7 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
                     stroke: _xpStroke,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(_xpStroke),
+                    padding: EdgeInsets.all(_xpStroke),
                     child: ClusterAvatar(
                       avatarUrl: avatarUrl,
                       name: displayName,

@@ -345,25 +345,24 @@ class WorkspaceShell extends StatelessWidget {
 
             /// The right column's entry point. In column mode: the persistent
             /// top-right vertical cluster, in the gutter the allocator reserves.
-            /// On narrow: the horizontal ANALYTICS BAR pinned to the top safe
-            /// area — persistent (never gated away), collapsing to the avatar
-            /// circle under a focused full-screen left surface. See
-            /// `routing.instructions.md` → Single-column analytics bar.
+            /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
+            /// safe area — full form only, on the surfaces where it IS
+            /// navigation (the map/cavity ground and the right panels it
+            /// heads). A full-screen chat hosts the avatar in its own app bar
+            /// instead, and a route-driven detail page shows nothing. See
+            /// `routing.instructions.md` → Single-column analytics nav bar.
             if (l.isColumnMode && l.mapVisible && l.allocation.clusterVisible)
               Positioned(
                 top: _ShellLayout.chromeMargin + screenPadding.top,
                 right: _ShellLayout.chromeMargin + screenPadding.right,
                 child: WorldUserCluster(key: _userClusterKey),
               )
-            else if (!l.isColumnMode && l.navRail)
+            else if (l.analyticsBarVisible)
               Positioned(
                 top: _ShellLayout.chromeMargin + screenPadding.top,
                 left: _ShellLayout.chromeMargin + screenPadding.left,
                 right: _ShellLayout.chromeMargin + screenPadding.right,
-                child: WorldAnalyticsBar(
-                  key: _userClusterKey,
-                  collapsed: l.analyticsBarCollapsed,
-                ),
+                child: WorldAnalyticsBar(key: _userClusterKey),
               ),
           ],
         ),
@@ -633,10 +632,13 @@ class _ShellLayout {
   /// present (collapsed at minimum) wherever the map or a cavity is the ground.
   final bool navWidgetVisible;
 
-  /// Narrow analytics bar state: collapsed to the avatar circle on a focused
-  /// full-screen LEFT surface (a chat, an activity); stays expanded over the
-  /// map, a cavity, and an open right panel (the bar heads the panel).
-  final bool analyticsBarCollapsed;
+  /// Whether the narrow analytics NAV BAR mounts (always in full form): over
+  /// the map, a cavity, and an open right panel (the bar heads the panel).
+  /// Absent on full-screen chats (the chat's app bar hosts
+  /// [AnalyticsHeaderAvatar] instead) and on route-driven detail pages
+  /// (nothing — they carry their own navigation). See
+  /// `routing.instructions.md` → Single-column analytics nav bar.
+  final bool analyticsBarVisible;
 
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
@@ -677,7 +679,7 @@ class _ShellLayout {
     required this.cavityIndex,
     required this.hasCavity,
     required this.navWidgetVisible,
-    required this.analyticsBarCollapsed,
+    required this.analyticsBarVisible,
     required this.isColumnMode,
     required this.mapVisible,
     required this.leftInset,
@@ -848,14 +850,16 @@ class _ShellLayout {
         !narrowDetail &&
         (focusedNarrowType == null || hasCavity);
 
-    // The analytics bar collapses to the avatar circle only under a full-screen
-    // surface (a chat, an activity start/join, a center-detail page); it stays
-    // expanded over the map, a cavity, and an open right panel (which it
-    // heads).
-    final analyticsBarCollapsed =
+    // The analytics NAV BAR mounts only where it is navigation: over the map,
+    // a cavity, and an open right panel (which it heads). A full-screen LEFT
+    // surface (a chat, an activity) hosts the header avatar in its own app
+    // bar instead, and a center-detail page shows nothing — no floating
+    // chrome stacked over page content.
+    final analyticsBarVisible =
         !isColumnMode &&
-        !focusedIsRight &&
-        ((focusedNarrowType != null && !hasCavity) || narrowDetail);
+        navRail &&
+        !narrowDetail &&
+        (focusedNarrowType == null || hasCavity || focusedIsRight);
 
     // The map shows behind as a map hole (full) or — in column mode — alongside
     // a detail; this gates the cluster.
@@ -946,7 +950,7 @@ class _ShellLayout {
       cavityIndex: cavityIndex,
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
-      analyticsBarCollapsed: analyticsBarCollapsed,
+      analyticsBarVisible: analyticsBarVisible,
       isColumnMode: isColumnMode,
       mapVisible: mapVisible,
       leftInset: leftInset,
