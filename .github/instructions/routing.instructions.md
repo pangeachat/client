@@ -459,13 +459,22 @@ the most-recently-opened/tapped course otherwise. This mirrors the web rail's
 order and function. The most-recent choice is device-local view state, never part
 of the URL; the other joined courses are reached through the Courses list.
 
-**Expanded to half-height.** Tapping a rail item is the same navigation as the
+**Expanded height.** Tapping a rail item is the same navigation as the
 web rail — it replaces the open left panels with that section's token
 (`left=chats`, the Courses hub, the course card under `?c=`) — and expands the
-widget upward to roughly half the screen, filling the upper portion of the
-rounded box with that section's content. The 4 rail icons remain anchored at the
-bottom of the widget at all heights. Content inside the expanded area is
-**scrollable**.
+widget upward, filling the upper portion of the rounded box with that
+section's content. The **chats sheet opens content-fit**: just tall enough to
+show all its chats, capped by the height available below the analytics bar (a
+short list yields a short sheet; a long one fills to the cap and scrolls).
+Other sections open at roughly half the screen. The 4 rail icons remain
+anchored at the bottom of the widget at all heights. Content inside the
+expanded area is **scrollable**.
+
+**The chats sheet header carries its actions**: an expanding **search
+toggle** (an icon; tapping it reveals the filter field, autofocused — the
+field is not always-on because vertical space is the sheet's scarce resource)
+and the **new-chat action** (formerly a floating Direct Message FAB, which
+covered the bottom list rows).
 
 **The URL carries the panel, not the geometry.** The widget's height — collapsed,
 half, full — is ephemeral view state, exactly like fold recency above: a cold

@@ -26,6 +26,7 @@ void main() {
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
     double maxHeightFraction = 0.75,
+    double? preferredCavityHeightPx,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -45,6 +46,7 @@ void main() {
             cavityKey: cavityKey,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
             maxHeightFraction: maxHeightFraction,
+            preferredCavityHeightPx: preferredCavityHeightPx,
           ),
         ),
       ),
@@ -164,6 +166,36 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5, 1.0));
     });
 
+    testWidgets('a content-fit preferred height replaces half as the '
+        'default open height', (tester) async {
+      // The chats sheet opens showing all its chats: the shell passes the
+      // content height and the cavity opens exactly there, not at 0.5.
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        preferredCavityHeightPx: 240.0,
+      );
+      expect(cavityHeightOf(tester), closeTo(240.0, 1.0));
+    });
+
+    testWidgets('a preferred height beyond the cap clamps to the cap', (
+      tester,
+    ) async {
+      // Long chat list: the fit height exceeds the space below the analytics
+      // bar, so the sheet opens at the cap and scrolls.
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        preferredCavityHeightPx: 5000.0,
+      );
+      final maxHeightPx = 800.0 * 0.75;
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
+    });
+
     testWidgets('a course cavity opens at a small peek by default', (
       tester,
     ) async {
@@ -178,9 +210,12 @@ void main() {
 
       final maxHeightPx = 800.0 * 0.75;
       final height = cavityHeightOf(tester);
-      // A small peek: clearly above 0 (rail-only) but well short of half.
-      expect(height, greaterThan(0.0));
-      expect(height, lessThan(maxHeightPx * 0.4));
+      // The designed 240px peek (the MobileCourseSheet-style inset): above 0
+      // (rail-only) and clearly short of half. Before the rest state was
+      // derived per-build, a cold mount resolved against a zero max height
+      // and rendered the 0.2 fallback (120px) instead.
+      expect(height, closeTo(240.0, 1.0));
+      expect(height, lessThan(maxHeightPx * 0.5));
     });
   });
 
@@ -367,9 +402,10 @@ void main() {
       final height = cavityHeightOf(tester);
       expect(
         height,
-        lessThan(maxHeightPx * 0.4),
+        closeTo(240.0, 1.0), // the course peek, NOT the chats key's full
         reason: 'a different key must not inherit the previous key\'s height',
       );
+      expect(height, lessThan(maxHeightPx));
     });
   });
 }

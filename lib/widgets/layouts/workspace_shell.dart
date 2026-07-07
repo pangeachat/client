@@ -14,6 +14,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -386,6 +387,11 @@ class _MobileNavLayer extends StatefulWidget {
 }
 
 class _MobileNavLayerState extends State<_MobileNavLayer> {
+  /// Fit-height estimate inputs for the chats sheet: the cavity handle + the
+  /// panel header row, and one two-line ChatListItem per visible chat.
+  static const double _chatsSheetHeaderAllowance = 96.0;
+  static const double _chatsSheetRowEstimate = 76.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -463,25 +469,41 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           )
         : null;
 
-    // Full height: the widget grows until the search bar riding above it sits
+    // Full height: the widget grows until whatever rides above it sits
     // immediately below the analytics bar (routing.instructions.md).
     // [MobileNavWidget.maxHeightFraction] caps the CAVITY only — the rail row
-    // and the search bar stack around it inside the same box — so the
+    // and any search bar stack around it inside the same box — so the
     // reservation must count everything else in the vertical chain explicitly:
-    // top safe area + analytics bar (margin + real height) + search-bar
-    // allowance + rail row + bottom margin + bottom safe area + one margin of
-    // breathing room below the bar. Omitting the rail row here previously let
-    // a fully-expanded widget push the search bar under the analytics bar.
+    // top safe area + analytics bar (margin + real height) + the search-bar
+    // allowance ONLY when a search bar actually rides the widget + rail row +
+    // bottom margin + bottom safe area + one margin of breathing room below
+    // the bar. Omitting the rail row here previously let a fully-expanded
+    // widget push the search bar under the analytics bar.
     final reserved =
         screenPadding.top +
         _ShellLayout.analyticsBarAllowance +
-        _ShellLayout.searchBarAllowance +
+        (searchBar != null ? _ShellLayout.searchBarAllowance : 0.0) +
         MobileNavWidget.railRowHeight +
         screenPadding.bottom +
         _ShellLayout.chromeMargin * 2;
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
         : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
+
+    // The chats sheet opens showing ALL its chats when they fit: header +
+    // one row per visible chat, capped by maxHeightFraction (the height below
+    // the analytics bar). Row height is an estimate (a two-line ChatListItem);
+    // a slight overshoot only adds breathing room, and the cap absorbs long
+    // lists. Uses the same visibility predicate as the list's all-chats
+    // filter so the estimate counts what actually renders.
+    double? preferredCavityHeight;
+    if (cavityToken?.type == 'chats') {
+      final visibleChats = Matrix.of(context).client.rooms
+          .where((room) => !room.isHiddenRoom && !room.isSpace)
+          .length;
+      preferredCavityHeight =
+          _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
+    }
 
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
@@ -554,6 +576,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
         maxHeightFraction: maxHeightFraction,
+        preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
       ),
     );

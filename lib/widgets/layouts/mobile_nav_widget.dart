@@ -63,6 +63,13 @@ class MobileNavWidget extends StatefulWidget {
   /// above it at full height).
   final double maxHeightFraction;
 
+  /// Content-fit height for the DEFAULT (half) rest state, in pixels: the
+  /// cavity opens just tall enough to show all of its content, capped by
+  /// [maxHeightFraction] (routing.instructions.md — the chats sheet shows all
+  /// its chats by default). Null keeps the plain half-of-max default. The
+  /// full state is unaffected — dragging up still grows to the cap.
+  final double? preferredCavityHeightPx;
+
   /// Rendered directly above the rounded box (outside it, small gap), riding
   /// the widget's expansion for free — the floating search bar's slot
   /// (routing.instructions.md → Single-column search bar). Null renders
@@ -80,6 +87,7 @@ class MobileNavWidget extends StatefulWidget {
     this.cavityKey,
     this.cavityDefaultsToPeek = false,
     required this.maxHeightFraction,
+    this.preferredCavityHeightPx,
     this.topAttachment,
     super.key,
   });
@@ -108,15 +116,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _peekHeight = 240.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
-  /// Current fraction of [MobileNavWidget.maxHeightFraction] the cavity is
-  /// drawn at, animated toward whenever the target height changes.
+  /// The rest stop the cavity currently sits at. Non-null means the drawn
+  /// fraction is DERIVED from this each build ([_currentFraction]), so it
+  /// tracks the live max height and content-fit hint — a cold mount, a
+  /// viewport change, or a chat arriving while the sheet rests all resolve
+  /// against fresh numbers. Null while the fraction is ad hoc (mid-drag, or
+  /// an ephemeral tap-outside collapse), where [_fraction] holds the value.
+  NavCavityHeight? _restState;
+
+  /// Ad-hoc fraction, meaningful only while [_restState] is null.
   double _fraction = 0.0;
   double? _dragStartFraction;
 
   @override
   void initState() {
     super.initState();
-    _fraction = _fractionFor(_restoreHeight());
+    _restState = _restoreHeight();
   }
 
   @override
@@ -131,11 +146,23 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
     if (closedNow) {
-      setState(() => _fraction = 0.0);
+      setState(() {
+        _restState = null;
+        _fraction = 0.0;
+      });
     } else if (openedNow || keyChanged) {
-      setState(() => _fraction = _fractionFor(_restoreHeight()));
+      setState(() => _restState = _restoreHeight());
     }
+    // A preferredCavityHeightPx change needs no handling: a resting sheet
+    // derives its fraction from the current hint every build.
   }
+
+  /// The fraction actually drawn this frame: derived from the rest state
+  /// against the last-known max height, or the ad-hoc [_fraction] mid-drag.
+  double get _currentFraction => switch (_restState) {
+    null => _fraction,
+    final rest => _fractionForState(rest, _lastMaxHeightPx),
+  };
 
   NavCavityHeight _restoreHeight() {
     final key = widget.cavityKey;
@@ -166,6 +193,14 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       case NavCavityHeight.collapsed:
         return widget.cavityDefaultsToPeek ? _peekFraction(maxHeightPx) : 0.0;
       case NavCavityHeight.half:
+        // Content-fit when the shell provided one: just tall enough to show
+        // everything (a short chat list yields a short sheet), capped at the
+        // max. The state keeps its name — it is still the default rest stop
+        // between collapsed and full.
+        final preferred = widget.preferredCavityHeightPx;
+        if (preferred != null && maxHeightPx > 0) {
+          return (preferred / maxHeightPx).clamp(0.1, 1.0);
+        }
         return 0.5;
       case NavCavityHeight.full:
         return 1.0;
@@ -177,26 +212,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   // value between frames.
   double _lastMaxHeightPx = 0.0;
 
-  double _fractionFor(NavCavityHeight height) =>
-      _fractionForState(height, _lastMaxHeightPx);
-
-  void _animateToFraction(double fraction) {
-    setState(() => _fraction = fraction.clamp(0.0, 1.0));
-  }
-
   void _openAt(NavCavityHeight height) {
     _remember(height);
-    _animateToFraction(_fractionForState(height, _lastMaxHeightPx));
+    setState(() => _restState = height);
   }
 
   /// Handle tap: toggles half <-> full (the #7128 pattern) — reachable without
   /// a drag gesture for keyboard / switch access.
   void _toggleHandle() {
-    final expanded = _fraction > 0.75;
+    final expanded = _currentFraction > 0.75;
     _openAt(expanded ? NavCavityHeight.half : NavCavityHeight.full);
   }
 
   void _onDragStart(DragStartDetails details) {
+    // Leave the rest state: from here the fraction is the finger's.
+    _fraction = _currentFraction;
+    _restState = null;
     _dragStartFraction = _fraction;
   }
 
@@ -211,13 +242,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   }
 
   void _onDragEnd(DragEndDetails details) {
-    // Settle to the nearest of the three rest fractions.
+    // Settle to the nearest of the three rest fractions (half is the
+    // content-fit height when the shell provided one).
     final peek = widget.cavityDefaultsToPeek
         ? _peekFraction(_lastMaxHeightPx)
         : 0.0;
     final candidates = <NavCavityHeight, double>{
       NavCavityHeight.collapsed: peek,
-      NavCavityHeight.half: 0.5,
+      NavCavityHeight.half: _fractionForState(
+        NavCavityHeight.half,
+        _lastMaxHeightPx,
+      ),
       NavCavityHeight.full: 1.0,
     };
     NavCavityHeight nearest = NavCavityHeight.half;
@@ -235,7 +270,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// Tapping outside the cavity — an ephemeral collapse, NOT a close: the
   /// shell's tokens stay, so re-expanding restores the same height.
   void _collapseEphemeral() {
-    setState(() => _fraction = 0.0);
+    setState(() {
+      _restState = null;
+      _fraction = 0.0;
+    });
   }
 
   void _onRailItemTap(AppSection section) {
@@ -243,8 +281,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       // Tapping the already-active rail item while expanded collapses it;
       // while collapsed (with content available) re-expands to the
       // remembered height.
-      if (_fraction > 0.01) {
-        setState(() => _fraction = 0.0);
+      if (_currentFraction > 0.01) {
+        _collapseEphemeral();
       } else {
         _openAt(_restoreHeight());
       }
@@ -265,9 +303,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
 
     final cavityHeightPx = widget.cavityChild == null
         ? 0.0
-        : (maxHeightPx * _fraction).clamp(0.0, maxHeightPx);
+        : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
 
-    final isExpanded = widget.cavityChild != null && _fraction > 0.01;
+    final isExpanded = widget.cavityChild != null && _currentFraction > 0.01;
 
     return Stack(
       children: [
