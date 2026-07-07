@@ -3,6 +3,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 /// The client's inbound URL rewrites. The client is the only producer of
 /// its URLs (routing.instructions.md): retired shapes from earlier releases
@@ -69,7 +70,7 @@ abstract class LegacyRedirects {
   static String _resolveJoinLink(Uri uri) {
     String? code;
     try {
-      code = uri.queryParameters['classcode']?.trim();
+      code = uri.queryParameters[SpaceConstants.classCode]?.trim();
     } catch (_) {
       // A hand-edited/truncated `%` escape must not crash route resolution;
       // degrade to the manual entry page.

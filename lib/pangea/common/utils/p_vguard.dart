@@ -59,9 +59,12 @@ class PAuthGaurd {
 
   /// Bounce a logged-out user to /home. The bounce drops the destination URL,
   /// so an inbound join link's code (the `addcourse:private/<code>` token —
-  /// LegacyRedirects, #7524) is cached across it first: onboarding consumes it
-  /// for a new user, and the post-login redirect re-enters the join token flow
-  /// for an existing one (see matrix.dart's login-state listener).
+  /// LegacyRedirects, #7524) is cached across it first: a new user's
+  /// onboarding joins with it and clears it at completion, and the post-login
+  /// redirect re-enters the join token flow for an existing one (see
+  /// matrix.dart's login-state listener). The cache is time-stamped and
+  /// expires (SpaceCodeRepo.cacheTTL) so a visitor who never logs in can't
+  /// leave a code that surprise-joins a much later login.
   static Future<String> _loginBounce(GoRouterState state) async {
     final joinCode = joinCodeFor(state.uri);
     if (joinCode != null) {

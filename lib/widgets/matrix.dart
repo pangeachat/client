@@ -229,14 +229,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
                 if (!isL2Set) {
-                  // Onboarding consumes any join code cached across the login
-                  // bounce (course_provider.getCachedJoinCode).
+                  // A new user's onboarding joins with any code cached across
+                  // the login bounce and clears it at completion
+                  // (user_type_onboarding_step.dart).
                   FluffyChatApp.router.go('/registration');
                 } else {
                   // A join code cached across the login bounce
                   // (PAuthGaurd.roomsRedirect, #7524) re-enters the same
                   // addcourse:private/<code> token flow a logged-in join link
-                  // takes.
+                  // takes. The read is TTL-guarded (SpaceCodeRepo) and the
+                  // cache cleared here, so a stale code never surprise-joins
+                  // a later login.
                   final joinCode = SpaceCodeRepo.spaceCode;
                   if (joinCode != null) await SpaceCodeRepo.clearSpaceCode();
                   FluffyChatApp.router.go(
