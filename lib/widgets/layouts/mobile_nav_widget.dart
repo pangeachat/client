@@ -177,6 +177,15 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   void _remember(NavCavityHeight height) {
     final key = widget.cavityKey;
     if (key == null) return;
+    // Dragging a SECTION sheet fully down is a dismissal, not a height
+    // preference: collapsed renders 0px there (no handle left to grab), so
+    // persisting it would make every reopen arrive already-dismissed and
+    // stuck (#7510). The sheet still collapses now; the memory just keeps
+    // the last real height for the reopen. A peek cavity's collapsed is a
+    // visible, draggable rest height and is remembered as before.
+    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
+      return;
+    }
     MobileNavWidget._heightByKey[key] = height;
   }
 
