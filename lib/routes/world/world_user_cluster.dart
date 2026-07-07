@@ -140,7 +140,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 /// The circular user avatar at the top of the cluster. Opens profile/settings.
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
 /// the mobile single-column rendering of this same cluster
-/// (routing.instructions.md, "Single-column analytics bar") — can reuse it
+/// (routing.instructions.md, "Single-column analytics nav bar") — can reuse it
 /// verbatim (including at the collapsed bar's smaller size) rather than
 /// duplicating the avatar + tooltip + semantics wiring. This is the one
 /// mechanical visibility change made to this file for that reuse; no behavior
@@ -342,10 +342,19 @@ class ClusterTrackerButton extends StatelessWidget {
   final int count;
   final VoidCallback onTap;
 
+  /// Sizing knobs so the narrow analytics bar can render the compact variant
+  /// (the Figma mobile pill); web keeps these defaults.
+  final double horizontalPadding;
+  final double iconSize;
+  final double fontSize;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
+    this.horizontalPadding = 16,
+    this.iconSize = 24,
+    this.fontSize = 16,
     super.key,
   });
 
@@ -365,16 +374,19 @@ class ClusterTrackerButton extends StatelessWidget {
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+              vertical: 9,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(indicator.icon, size: 24),
+                Icon(indicator.icon, size: iconSize),
                 const SizedBox(height: 3),
                 Text(
                   '$count',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: fontSize,
                     height: 1.1,
                     fontWeight: FontWeight.w600,
                   ),
@@ -473,7 +485,7 @@ class ClusterLevelMedal extends StatelessWidget {
 ///
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
 /// can reuse it at the "slightly smaller than web" size the mobile chrome
-/// calls for (routing.instructions.md, "Single-column analytics bar") without
+/// calls for (routing.instructions.md, "Single-column analytics nav bar") without
 /// duplicating the flag/outline/tooltip logic.
 class ClusterLanguageFlag extends StatelessWidget {
   final LanguageModel language;

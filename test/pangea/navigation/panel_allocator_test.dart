@@ -53,7 +53,9 @@ void main() {
       expect(l.left.single.width, 720); // capped at ideal, not the whole screen
       expect(l.left.single.left, 73);
       expect(l.mapLeftOverlay, 793); // rail + 720
-      expect(l.mapRightOverlay, 0); // no right panels, no gutter
+      // The camera overlay models PANEL coverage only — the cluster floats
+      // over the bare map, so its (always-reserved) gutter is not part of it.
+      expect(l.mapRightOverlay, 0);
     });
 
     test('summary + detail tile as two right cards, detail to the left', () {
@@ -253,6 +255,78 @@ void main() {
       for (final viewport in [900.0, 1100.0, 1334.0, 1600.0, 1920.0]) {
         expectNoOverlap(
           run(viewport: viewport, left: ['room'], right: ['analytics']),
+        );
+      }
+    });
+  });
+
+  group('the cluster gutter is reserved on every column layout', () {
+    // The cluster is persistent chrome on every non-exclusive column layout,
+    // so its gutter must come out of the budget even with an EMPTY right
+    // column — the regression here was a left panel growing to its ideal and
+    // sliding under the cluster at just-past-breakpoint viewports.
+    test('a lone left panel compresses at the gutter instead of sliding '
+        'under the cluster', () {
+      final l = run(viewport: 860, left: ['course']);
+      expect(l.clusterVisible, isTrue);
+      expect(l.left.single.left, 73);
+      expect(l.left.single.width, 860 - 73 - 88); // 699, not ideal 720
+      expect(
+        l.left.single.left + l.left.single.width,
+        860 - PanelAllocator.clusterGutter,
+      );
+      expect(l.mapRightOverlay, 0); // camera overlay stays panel-only
+    });
+
+    test('no full left slot ever crosses viewport - clusterGutter', () {
+      const combos = [
+        ['course'],
+        ['chats', 'room'],
+        ['room', 'course'],
+      ];
+      for (final viewport in [
+        841.0,
+        860.0,
+        902.0,
+        950.0,
+        1100.0,
+        1298.0,
+        1600.0,
+      ]) {
+        for (final left in combos) {
+          final l = run(viewport: viewport, left: left);
+          for (final s in l.left.where((s) => s.vis == PanelVis.full)) {
+            expect(
+              s.left + s.width,
+              lessThanOrEqualTo(viewport - PanelAllocator.clusterGutter + 0.01),
+              reason: '$left at $viewport crosses the cluster gutter',
+            );
+          }
+        }
+      }
+    });
+
+    test('the fold band includes the gutter: chats+room folds where the pair '
+        'would otherwise reach under the cluster', () {
+      // 950 - 73 - 88 = 789 of content < the pair's reasonable need (836),
+      // so the master folds — without the reservation they would coexist
+      // with the room flush against the viewport edge, burying the cluster.
+      final l = run(viewport: 950, left: ['chats', 'room']);
+      expect(l.left[0].vis, PanelVis.hidden); // chats folds
+      expect(l.left[1].vis, PanelVis.full);
+      expect(l.left[1].width, 720); // room takes its ideal in the freed span
+      expect(l.left[1].foldedOver, isTrue);
+    });
+
+    test('every registry def keeps compression headroom (ideal > min)', () {
+      // The allocator's compression branch divides by total headroom; a def
+      // with ideal == min across the board would skip compression entirely
+      // and let columns overlap. Data invariant, guarded here.
+      for (final d in PanelRegistry.defs.values) {
+        expect(
+          d.idealWidth,
+          greaterThan(d.minWidth),
+          reason: '${d.type} has no compression headroom',
         );
       }
     });

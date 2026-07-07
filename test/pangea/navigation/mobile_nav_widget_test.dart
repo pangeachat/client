@@ -23,11 +23,10 @@ void main() {
     Widget? cavityChild,
     String? cavityKey,
     bool cavityDefaultsToPeek = false,
-    String? cavityTitle,
-    VoidCallback? onCavityClose,
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
     double maxHeightFraction = 0.75,
+    double? preferredCavityHeightPx,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -46,9 +45,8 @@ void main() {
             cavityChild: cavityChild,
             cavityKey: cavityKey,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
-            cavityTitle: cavityTitle,
-            onCavityClose: onCavityClose,
             maxHeightFraction: maxHeightFraction,
+            preferredCavityHeightPx: preferredCavityHeightPx,
           ),
         ),
       ),
@@ -168,6 +166,36 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5, 1.0));
     });
 
+    testWidgets('a content-fit preferred height replaces half as the '
+        'default open height', (tester) async {
+      // The chats sheet opens showing all its chats: the shell passes the
+      // content height and the cavity opens exactly there, not at 0.5.
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        preferredCavityHeightPx: 240.0,
+      );
+      expect(cavityHeightOf(tester), closeTo(240.0, 1.0));
+    });
+
+    testWidgets('a preferred height beyond the cap clamps to the cap', (
+      tester,
+    ) async {
+      // Long chat list: the fit height exceeds the space below the analytics
+      // bar, so the sheet opens at the cap and scrolls.
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        preferredCavityHeightPx: 5000.0,
+      );
+      final maxHeightPx = 800.0 * 0.75;
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
+    });
+
     testWidgets('a course cavity opens at a small peek by default', (
       tester,
     ) async {
@@ -182,9 +210,12 @@ void main() {
 
       final maxHeightPx = 800.0 * 0.75;
       final height = cavityHeightOf(tester);
-      // A small peek: clearly above 0 (rail-only) but well short of half.
-      expect(height, greaterThan(0.0));
-      expect(height, lessThan(maxHeightPx * 0.4));
+      // The designed 240px peek (the MobileCourseSheet-style inset): above 0
+      // (rail-only) and clearly short of half. Before the rest state was
+      // derived per-build, a cold mount resolved against a zero max height
+      // and rendered the 0.2 fallback (120px) instead.
+      expect(height, closeTo(240.0, 1.0));
+      expect(height, lessThan(maxHeightPx * 0.5));
     });
   });
 
@@ -242,16 +273,14 @@ void main() {
 
   group('tap-outside collapse', () {
     testWidgets(
-      'tapping outside collapses WITHOUT calling onCavityClose, and the rail '
+      'tapping outside collapses (ephemeral — no navigation), and the rail '
       'item re-expands to the remembered height',
       (tester) async {
-        var closeCalls = 0;
         await pumpNav(
           tester,
           activeSection: AppSection.chats,
           cavityChild: const Text('Chat list'),
           cavityKey: 'chats',
-          onCavityClose: () => closeCalls++,
           maxHeightFraction: 0.75,
         );
 
@@ -261,15 +290,16 @@ void main() {
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
 
-        // Tap far above the floating widget — outside its bounds.
+        // Tap far above the floating widget — outside its bounds. The widget
+        // mounts Positioned.fill so its barrier spans the whole screen.
         await tester.tapAt(const Offset(200, 20));
         await tester.pumpAndSettle();
 
         expect(cavityHeightOf(tester), 0.0);
         expect(
-          closeCalls,
-          0,
-          reason: 'tap-outside is ephemeral, not the real close',
+          find.text('Chat list'),
+          findsNothing,
+          reason: 'collapsed hides the cavity content but closes nothing',
         );
 
         // Tapping the still-active rail item re-expands to the remembered
@@ -300,22 +330,22 @@ void main() {
     });
   });
 
-  group('close button', () {
-    testWidgets('the X calls onCavityClose exactly once', (tester) async {
-      var closeCalls = 0;
+  group('no cavity chrome of its own', () {
+    testWidgets('the cavity renders only the handle — no header or X', (
+      tester,
+    ) async {
+      // Every hosted surface brings its own header and close/back affordance
+      // (the chat list's panel header, the course card, the activity plan's
+      // contextual controls) — a cavity-level X would double them (live QA).
       await pumpNav(
         tester,
         cavityChild: const Text('Chat list'),
         cavityKey: 'chats',
-        cavityTitle: 'Chats',
-        onCavityClose: () => closeCalls++,
         maxHeightFraction: 0.75,
       );
 
-      await tester.tap(find.byIcon(Icons.close));
-      await tester.pumpAndSettle();
-
-      expect(closeCalls, 1);
+      expect(find.byIcon(Icons.close), findsNothing);
+      expect(find.text('Chat list'), findsOneWidget);
     });
   });
 
@@ -372,9 +402,10 @@ void main() {
       final height = cavityHeightOf(tester);
       expect(
         height,
-        lessThan(maxHeightPx * 0.4),
+        closeTo(240.0, 1.0), // the course peek, NOT the chats key's full
         reason: 'a different key must not inherit the previous key\'s height',
       );
+      expect(height, lessThan(maxHeightPx));
     });
   });
 }

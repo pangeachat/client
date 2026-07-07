@@ -280,6 +280,7 @@ abstract class WorkspaceNav {
     String spaceId, {
     String? tab,
     bool keepRoom = true,
+    bool clearRight = false,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
@@ -287,7 +288,13 @@ abstract class WorkspaceNav {
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    WorkspaceQuery.removeKeys(parts, {
+      'c',
+      'left',
+      // Single-column: a rail section closes an open right panel (peers in
+      // the same slot — see setSection's clearRight).
+      if (clearRight) 'right',
+    });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
@@ -466,10 +473,16 @@ abstract class WorkspaceNav {
   /// Always emits the world path `/` — section identity rides entirely in the
   /// token, never a path segment (a joined course is `openCourseSection`, which
   /// also sets the `?c=` context this helper does not touch).
+  /// [clearRight] (single-column callers): drop the right list too — on one
+  /// column a rail section and a right panel are peers in the same slot, so
+  /// navigating to a section closes an open analytics/settings panel instead
+  /// of leaving it stale behind the sheet (the mirror of [setRight]'s
+  /// `closeSections`).
   static String setSection(
     Uri current,
     PanelToken? section, {
     bool keepRoom = true,
+    bool clearRight = false,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
@@ -482,7 +495,7 @@ abstract class WorkspaceNav {
     final parts = <String>[
       ?_courseContext(current),
       if (left.isNotEmpty) 'left=${left.map((t) => t.encode()).join(',')}',
-      if (lists.right.isNotEmpty)
+      if (!clearRight && lists.right.isNotEmpty)
         'right=${lists.right.map((t) => t.encode()).join(',')}',
     ];
     return WorkspaceQuery.location(PRoutes.world, parts);
@@ -559,10 +572,42 @@ abstract class WorkspaceNav {
   static String closeRight(Uri current, PanelToken token) =>
       _mutate(current, 'right', (tokens) => _remove(tokens, token));
 
+  /// The left-column SECTION surfaces — rail destinations (the chat list, the
+  /// Courses hub, the course family, the activity plan), as opposed to live
+  /// CONTENT (a `room`/`session` conversation). On a single column, a section
+  /// and a right panel are peers in the same visual slot, so opening one
+  /// closes the other ([setRight]'s / [setSection]'s narrow flags) — while a
+  /// live room persists under a right panel (the chat-header avatar loop:
+  /// chat → analytics → X → back to the conversation). See
+  /// `routing.instructions.md` → Single-column bottom nav.
+  static const Set<String> _leftSections = {
+    'chats',
+    'addcourse',
+    'course',
+    'coursepage',
+    'activity',
+  };
+
   /// Replace the whole `right` list. Used when switching the analytics metric:
   /// the cluster drops the other analytics/detail tokens and seats one summary.
-  static String setRight(Uri current, List<PanelToken> tokens) =>
-      _mutate(current, 'right', (_) => tokens);
+  ///
+  /// [closeSections] (single-column callers): also drop the left SECTION
+  /// tokens — on one column the right panel takes the section's slot, so
+  /// closing the panel must reveal the map, not a stale sheet. A live
+  /// `room`/`session` is kept (see [_leftSections]).
+  static String setRight(
+    Uri current,
+    List<PanelToken> tokens, {
+    bool closeSections = false,
+  }) {
+    final next = _mutate(current, 'right', (_) => tokens);
+    if (!closeSections) return next;
+    return _mutate(
+      Uri.parse(next),
+      'left',
+      (left) => left.where((t) => !_leftSections.contains(t.type)).toList(),
+    );
+  }
 
   /// Push a deeper page into a `pushable` panel's own token param (the panel's
   /// param IS its page path): settings menu→page→leaf, a course card→details/
@@ -613,10 +658,16 @@ abstract class WorkspaceNav {
   /// page is a leaf (its own back pops it). Opening Settings also drops any open
   /// analytics-family panel so the two don't clutter the right column together
   /// (#7109). See `routing.instructions.md`.
-  static String openSettings(Uri current, {String? page}) {
+  /// [closeSections] mirrors [setRight]'s flag for single-column callers.
+  static String openSettings(
+    Uri current, {
+    String? page,
+    bool closeSections = false,
+  }) {
+    final String next;
     if (page == null || page.isEmpty) {
-      return _mutate(current, 'right', (tokens) {
-        final next = tokens
+      next = _mutate(current, 'right', (tokens) {
+        final result = tokens
             .where(
               (t) =>
                   t.type != 'settings' &&
@@ -624,25 +675,32 @@ abstract class WorkspaceNav {
                   !_analyticsRightPanels.contains(t.type),
             )
             .toList();
-        next.add(const PanelToken('settings'));
-        return next;
+        result.add(const PanelToken('settings'));
+        return result;
+      });
+    } else {
+      final detail = PanelToken('settingspage', page);
+      next = _mutate(current, 'right', (tokens) {
+        final result = tokens
+            .where(
+              (t) =>
+                  t.type != 'settingspage' &&
+                  !_analyticsRightPanels.contains(t.type),
+            )
+            .toList();
+        if (!result.any((t) => t.type == 'settings')) {
+          result.insert(0, const PanelToken('settings'));
+        }
+        result.add(detail);
+        return result;
       });
     }
-    final detail = PanelToken('settingspage', page);
-    return _mutate(current, 'right', (tokens) {
-      final next = tokens
-          .where(
-            (t) =>
-                t.type != 'settingspage' &&
-                !_analyticsRightPanels.contains(t.type),
-          )
-          .toList();
-      if (!next.any((t) => t.type == 'settings')) {
-        next.insert(0, const PanelToken('settings'));
-      }
-      next.add(detail);
-      return next;
-    });
+    if (!closeSections) return next;
+    return _mutate(
+      Uri.parse(next),
+      'left',
+      (left) => left.where((t) => !_leftSections.contains(t.type)).toList(),
+    );
   }
 
   /// Close the whole settings/profile panel — the menu master AND its open page

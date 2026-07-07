@@ -17,9 +17,12 @@ enum NavCavityHeight { collapsed, half, full }
 /// design calls for. See "Single-column bottom nav" in `routing.instructions.md`.
 ///
 /// This widget is purely presentational: it reports taps and drag-driven
-/// height changes upward, and the shell (via [onSectionTap] / [onCavityClose])
-/// is the one that actually navigates. The rail row stays visible and
-/// tappable at every cavity height.
+/// height changes upward, and the shell (via [onSectionTap]) is the one that
+/// actually navigates. The cavity adds only the drag handle — every hosted
+/// surface brings its own header and close/back affordance. The rail row
+/// stays visible and tappable at every cavity height. Mount it
+/// `Positioned.fill`: the widget bottom-aligns its own box, and its
+/// tap-outside barrier needs the whole screen to collapse on a map tap.
 class MobileNavWidget extends StatefulWidget {
   /// Which rail item is highlighted — computed by the shell (`sectionFor`).
   final AppSection activeSection;
@@ -30,6 +33,11 @@ class MobileNavWidget extends StatefulWidget {
 
   /// Semantic label / tooltip for the course shortcut.
   final String courseShortcutLabel;
+
+  /// The shortcut's course is the active workspace context: the shortcut gets
+  /// the highlight and the Courses item stays unlit (mirrors the web rail
+  /// highlighting the specific course avatar over the section icon).
+  final bool courseShortcutSelected;
 
   final VoidCallback onCourseShortcutTap;
 
@@ -50,17 +58,17 @@ class MobileNavWidget extends StatefulWidget {
   /// section (opens at half by default).
   final bool cavityDefaultsToPeek;
 
-  /// Header title shown centered above the cavity content.
-  final String? cavityTitle;
-
-  /// The header's X — the panel's real close (drops the shell's token). Null
-  /// hides the X (nothing to close).
-  final VoidCallback? onCavityClose;
-
   /// Upper growth bound for the cavity, as a fraction of the screen height,
   /// computed by the shell (so the search bar + analytics bar stay visible
   /// above it at full height).
   final double maxHeightFraction;
+
+  /// Content-fit height for the DEFAULT (half) rest state, in pixels: the
+  /// cavity opens just tall enough to show all of its content, capped by
+  /// [maxHeightFraction] (routing.instructions.md — the chats sheet shows all
+  /// its chats by default). Null keeps the plain half-of-max default. The
+  /// full state is unaffected — dragging up still grows to the cap.
+  final double? preferredCavityHeightPx;
 
   /// Rendered directly above the rounded box (outside it, small gap), riding
   /// the widget's expansion for free — the floating search bar's slot
@@ -72,17 +80,23 @@ class MobileNavWidget extends StatefulWidget {
     required this.activeSection,
     this.courseShortcutIcon,
     required this.courseShortcutLabel,
+    this.courseShortcutSelected = false,
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.cavityChild,
     this.cavityKey,
     this.cavityDefaultsToPeek = false,
-    this.cavityTitle,
-    this.onCavityClose,
     required this.maxHeightFraction,
+    this.preferredCavityHeightPx,
     this.topAttachment,
     super.key,
   });
+
+  /// The rail row's fixed height — the box below the cavity. Public because
+  /// [maxHeightFraction] caps the CAVITY only; the shell must add this (plus
+  /// its own margins) when reserving vertical space, or a fully-expanded
+  /// widget overshoots the reservation by exactly this much.
+  static const double railRowHeight = 64.0;
 
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
@@ -98,19 +112,26 @@ class MobileNavWidget extends StatefulWidget {
 }
 
 class _MobileNavWidgetState extends State<MobileNavWidget> {
-  static const double _railHeight = 64.0;
+  static const double _railHeight = MobileNavWidget.railRowHeight;
   static const double _peekHeight = 240.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
-  /// Current fraction of [MobileNavWidget.maxHeightFraction] the cavity is
-  /// drawn at, animated toward whenever the target height changes.
+  /// The rest stop the cavity currently sits at. Non-null means the drawn
+  /// fraction is DERIVED from this each build ([_currentFraction]), so it
+  /// tracks the live max height and content-fit hint — a cold mount, a
+  /// viewport change, or a chat arriving while the sheet rests all resolve
+  /// against fresh numbers. Null while the fraction is ad hoc (mid-drag, or
+  /// an ephemeral tap-outside collapse), where [_fraction] holds the value.
+  NavCavityHeight? _restState;
+
+  /// Ad-hoc fraction, meaningful only while [_restState] is null.
   double _fraction = 0.0;
   double? _dragStartFraction;
 
   @override
   void initState() {
     super.initState();
-    _fraction = _fractionFor(_restoreHeight());
+    _restState = _restoreHeight();
   }
 
   @override
@@ -125,11 +146,23 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
     if (closedNow) {
-      setState(() => _fraction = 0.0);
+      setState(() {
+        _restState = null;
+        _fraction = 0.0;
+      });
     } else if (openedNow || keyChanged) {
-      setState(() => _fraction = _fractionFor(_restoreHeight()));
+      setState(() => _restState = _restoreHeight());
     }
+    // A preferredCavityHeightPx change needs no handling: a resting sheet
+    // derives its fraction from the current hint every build.
   }
+
+  /// The fraction actually drawn this frame: derived from the rest state
+  /// against the last-known max height, or the ad-hoc [_fraction] mid-drag.
+  double get _currentFraction => switch (_restState) {
+    null => _fraction,
+    final rest => _fractionForState(rest, _lastMaxHeightPx),
+  };
 
   NavCavityHeight _restoreHeight() {
     final key = widget.cavityKey;
@@ -160,6 +193,14 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       case NavCavityHeight.collapsed:
         return widget.cavityDefaultsToPeek ? _peekFraction(maxHeightPx) : 0.0;
       case NavCavityHeight.half:
+        // Content-fit when the shell provided one: just tall enough to show
+        // everything (a short chat list yields a short sheet), capped at the
+        // max. The state keeps its name — it is still the default rest stop
+        // between collapsed and full.
+        final preferred = widget.preferredCavityHeightPx;
+        if (preferred != null && maxHeightPx > 0) {
+          return (preferred / maxHeightPx).clamp(0.1, 1.0);
+        }
         return 0.5;
       case NavCavityHeight.full:
         return 1.0;
@@ -171,26 +212,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   // value between frames.
   double _lastMaxHeightPx = 0.0;
 
-  double _fractionFor(NavCavityHeight height) =>
-      _fractionForState(height, _lastMaxHeightPx);
-
-  void _animateToFraction(double fraction) {
-    setState(() => _fraction = fraction.clamp(0.0, 1.0));
-  }
-
   void _openAt(NavCavityHeight height) {
     _remember(height);
-    _animateToFraction(_fractionForState(height, _lastMaxHeightPx));
+    setState(() => _restState = height);
   }
 
   /// Handle tap: toggles half <-> full (the #7128 pattern) — reachable without
   /// a drag gesture for keyboard / switch access.
   void _toggleHandle() {
-    final expanded = _fraction > 0.75;
+    final expanded = _currentFraction > 0.75;
     _openAt(expanded ? NavCavityHeight.half : NavCavityHeight.full);
   }
 
   void _onDragStart(DragStartDetails details) {
+    // Leave the rest state: from here the fraction is the finger's.
+    _fraction = _currentFraction;
+    _restState = null;
     _dragStartFraction = _fraction;
   }
 
@@ -205,13 +242,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   }
 
   void _onDragEnd(DragEndDetails details) {
-    // Settle to the nearest of the three rest fractions.
+    // Settle to the nearest of the three rest fractions (half is the
+    // content-fit height when the shell provided one).
     final peek = widget.cavityDefaultsToPeek
         ? _peekFraction(_lastMaxHeightPx)
         : 0.0;
     final candidates = <NavCavityHeight, double>{
       NavCavityHeight.collapsed: peek,
-      NavCavityHeight.half: 0.5,
+      NavCavityHeight.half: _fractionForState(
+        NavCavityHeight.half,
+        _lastMaxHeightPx,
+      ),
       NavCavityHeight.full: 1.0,
     };
     NavCavityHeight nearest = NavCavityHeight.half;
@@ -229,7 +270,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// Tapping outside the cavity — an ephemeral collapse, NOT a close: the
   /// shell's tokens stay, so re-expanding restores the same height.
   void _collapseEphemeral() {
-    setState(() => _fraction = 0.0);
+    setState(() {
+      _restState = null;
+      _fraction = 0.0;
+    });
   }
 
   void _onRailItemTap(AppSection section) {
@@ -237,8 +281,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       // Tapping the already-active rail item while expanded collapses it;
       // while collapsed (with content available) re-expands to the
       // remembered height.
-      if (_fraction > 0.01) {
-        setState(() => _fraction = 0.0);
+      if (_currentFraction > 0.01) {
+        _collapseEphemeral();
       } else {
         _openAt(_restoreHeight());
       }
@@ -259,9 +303,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
 
     final cavityHeightPx = widget.cavityChild == null
         ? 0.0
-        : (maxHeightPx * _fraction).clamp(0.0, maxHeightPx);
+        : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
 
-    final isExpanded = widget.cavityChild != null && _fraction > 0.01;
+    final isExpanded = widget.cavityChild != null && _currentFraction > 0.01;
 
     return Stack(
       children: [
@@ -280,7 +324,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
           child: SafeArea(
             top: false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -320,8 +364,6 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   ? null
                                   : ClipRect(
                                       child: _NavCavity(
-                                        title: widget.cavityTitle,
-                                        onClose: widget.onCavityClose,
                                         onHandleTap: _toggleHandle,
                                         onDragStart: _onDragStart,
                                         onDragUpdate: _onDragUpdate,
@@ -359,9 +401,12 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   _RailButton(
                                     icon: Icons.map_outlined,
                                     selectedIcon: Icons.map,
+                                    // The specific course's highlight (the
+                                    // shortcut) outranks the section icon.
                                     selected:
                                         widget.activeSection ==
-                                        AppSection.courses,
+                                            AppSection.courses &&
+                                        !widget.courseShortcutSelected,
                                     tooltip: l10n.courses,
                                     onTap: () =>
                                         _onRailItemTap(AppSection.courses),
@@ -369,6 +414,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   _CourseShortcutButton(
                                     icon: widget.courseShortcutIcon,
                                     label: widget.courseShortcutLabel,
+                                    selected: widget.courseShortcutSelected,
                                     onTap: widget.onCourseShortcutTap,
                                   ),
                                 ],
@@ -429,22 +475,42 @@ class _CourseShortcutButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
+  /// The shortcut's own course is the active workspace context — the mobile
+  /// counterpart of the web rail highlighting the specific course avatar.
+  final bool selected;
+
   const _CourseShortcutButton({
     required this.icon,
     required this.label,
     required this.onTap,
+    required this.selected,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Tooltip(
       message: label,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(99),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: icon ?? const Icon(Icons.add),
+      child: Semantics(
+        // Announce the active-course state — the border alone is visual-only.
+        selected: selected,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(99),
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(6.0),
+            decoration: selected
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(
+                      color: theme.colorScheme.primary,
+                      width: 2,
+                    ),
+                  )
+                : null,
+            margin: const EdgeInsets.all(2.0),
+            child: icon ?? const Icon(Icons.add),
+          ),
         ),
       ),
     );
@@ -452,11 +518,9 @@ class _CourseShortcutButton extends StatelessWidget {
 }
 
 /// The expandable cavity: a drag handle (also a labeled toggle button, the
-/// #7128 pattern) then a header row ([X close] [centered title]), then the
-/// hosted section/course content, scrollable.
+/// #7128 pattern) above the hosted section/course content, scrollable. The
+/// content brings its own header/close.
 class _NavCavity extends StatelessWidget {
-  final String? title;
-  final VoidCallback? onClose;
   final VoidCallback onHandleTap;
   final GestureDragStartCallback onDragStart;
   final GestureDragUpdateCallback onDragUpdate;
@@ -464,8 +528,6 @@ class _NavCavity extends StatelessWidget {
   final Widget child;
 
   const _NavCavity({
-    required this.title,
-    required this.onClose,
     required this.onHandleTap,
     required this.onDragStart,
     required this.onDragUpdate,
@@ -512,37 +574,19 @@ class _NavCavity extends StatelessWidget {
             ),
           ),
         ),
-        // Header: [X close] [centered title]. The X is the panel's real
-        // close — it calls back to the shell, which drops the token.
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 40.0,
-                child: onClose == null
-                    ? null
-                    : IconButton(
-                        tooltip: title != null && title!.isNotEmpty
-                            ? l10n.closeNamed(title!)
-                            : l10n.close,
-                        icon: const Icon(Icons.close),
-                        onPressed: onClose,
-                      ),
-              ),
-              Expanded(
-                child: Text(
-                  title ?? '',
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.titleMedium,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              const SizedBox(width: 40.0),
-            ],
-          ),
-        ),
-        Expanded(child: SingleChildScrollView(child: child)),
+        // No header of its own: every cavity surface brings its own title and
+        // close/back affordance (the chat list's and course card's panel
+        // headers, the activity plan's contextual back/X — #7115), so the
+        // cavity adds ONLY the handle. A second header here double-labelled
+        // and double-X'd every surface (live QA).
+        //
+        // The child gets the BOUNDED cavity box directly — these are the same
+        // WorkspaceLeftPanel surfaces the wide layout renders, and they own
+        // their scrolling (the chat list's ListView, the hub's list, the
+        // course card's per-tab scroll views). Wrapping them in an outer
+        // scroll view hands them unbounded height and their internals
+        // silently collapse to nothing (live QA: header-only empty panels).
+        Expanded(child: child),
       ],
     );
   }

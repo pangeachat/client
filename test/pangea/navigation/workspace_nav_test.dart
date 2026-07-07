@@ -115,6 +115,70 @@ void main() {
     });
   });
 
+  group('single-column mutual close (sections <-> right panels)', () {
+    test('setRight closeSections drops the section sheet but keeps a room', () {
+      final loc = WorkspaceNav.setRight(u('/?left=chats,room:!abc'), [
+        const PanelToken('analytics'),
+      ], closeSections: true);
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right, [const PanelToken('analytics')]);
+      // The chats SECTION is gone (X-ing analytics reveals the map), but the
+      // live conversation persists — the chat-header avatar loop returns to it.
+      expect(lists.left, [const PanelToken('room', '!abc')]);
+    });
+
+    test('setRight closeSections drops a course card, keeping the scope', () {
+      final loc = WorkspaceNav.setRight(u('/?c=!s&left=course'), [
+        const PanelToken('analytics', 'vocab'),
+      ], closeSections: true);
+      final uri = u(loc);
+      expect(parseOpenPanels(uri).left, isEmpty);
+      // `?c=` is scope, not a panel — closing panels never resets it.
+      expect(uri.queryParameters['c'], '!s');
+    });
+
+    test('setRight without the flag keeps sections (column mode)', () {
+      final loc = WorkspaceNav.setRight(u('/?left=chats'), [
+        const PanelToken('analytics'),
+      ]);
+      expect(parseOpenPanels(u(loc)).left, [const PanelToken('chats')]);
+    });
+
+    test('openSettings closeSections drops the section sheet', () {
+      final loc = WorkspaceNav.openSettings(
+        u('/?left=addcourse'),
+        closeSections: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right, [const PanelToken('settings')]);
+      expect(lists.left, isEmpty);
+    });
+
+    test('setSection clearRight drops an open right panel', () {
+      final loc = WorkspaceNav.setSection(
+        u('/?right=analytics'),
+        const PanelToken('chats'),
+        keepRoom: false,
+        clearRight: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left, [const PanelToken('chats')]);
+      expect(lists.right, isEmpty);
+    });
+
+    test('openCourseSection clearRight drops an open right panel', () {
+      final loc = WorkspaceNav.openCourseSection(
+        u('/?right=settings'),
+        '!course',
+        keepRoom: false,
+        clearRight: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left, [const PanelToken('course')]);
+      expect(lists.right, isEmpty);
+    });
+  });
+
   group('openRoomById (event folds into the room token; no loose params)', () {
     test('a bare call opens the room with no event/body query at all', () {
       final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc');
