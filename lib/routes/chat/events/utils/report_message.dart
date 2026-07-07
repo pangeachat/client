@@ -30,8 +30,7 @@ void reportEvent(
     cancelLabel: L10n.of(context).cancel,
     actions: [
       AdaptiveModalAction(value: 1, label: L10n.of(context).offensive),
-      AdaptiveModalAction(value: 2, label: L10n.of(context).translationProblem),
-      AdaptiveModalAction(value: 3, label: L10n.of(context).other),
+      AdaptiveModalAction(value: 2, label: L10n.of(context).other),
     ],
   );
   if (score == null) return;
