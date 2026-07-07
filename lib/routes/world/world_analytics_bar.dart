@@ -46,6 +46,13 @@ class WorldAnalyticsBar extends StatefulWidget {
 
   const WorldAnalyticsBar({required this.collapsed, super.key});
 
+  /// The expanded bar's rendered height: the avatar column governs the Row —
+  /// avatar (56) + flag gap (6) + flag (28). The shell's
+  /// `analyticsBarAllowance` derives from this so content placed "below the
+  /// bar" actually clears it (a widget test pins the rendered height to this
+  /// constant).
+  static const double expandedHeight = 90.0;
+
   /// How long a tap on the collapsed avatar keeps the bar temporarily
   /// expanded before it auto-collapses, absent further interaction or focus
   /// (routing.instructions.md, "Single-column analytics bar"). Overridable

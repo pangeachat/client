@@ -33,43 +33,58 @@ void main() {
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
+        // Mount like the shell does: Positioned(top/left/right) inside a
+        // Stack hands the bar UNBOUNDED height, so its internal Aligns
+        // shrink-wrap to content. A plain bounded `body:` mount stretches
+        // those Aligns to fill the screen — a constraint regime production
+        // never uses (and one that voids any height measurement).
         home: Scaffold(
-          body: AnalyticsBarTemporaryExpansion(
-            collapsed: collapsed,
-            avatarUrl: null,
-            displayName: 'Ada',
-            l2: es,
-            starsCount: 0,
-            grammarCount: 0,
-            vocabCount: 0,
-            level: 1,
-            xpProgress: 0.0,
-            isInitializing: false,
-            onTrackerTap: onTrackerTap ?? (_) {},
-            onAvatarTap: onAvatarTap ?? () {},
-            onLevelTap: onLevelTap ?? () {},
-            onFlagTap: onFlagTap ?? () {},
-            // The real flag chip fetches a network SVG whose async parse
-            // throws into the test zone — inject an offline stand-in carrying
-            // the same semantics contract (label + tap) the real chip has.
-            flagBuilder: (language, onTap, width, height, fontSize) => Builder(
-              builder: (context) => Semantics(
-                button: true,
-                label:
-                    '${language.getDisplayName(L10n.of(context))}, '
-                    '${L10n.of(context).learningSettings}',
-                excludeSemantics: true,
-                onTap: onTap,
-                child: GestureDetector(
-                  onTap: onTap,
-                  child: SizedBox(
-                    width: width,
-                    height: height,
-                    child: Text(language.langCodeShort.toUpperCase()),
-                  ),
+          body: Stack(
+            children: [
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: AnalyticsBarTemporaryExpansion(
+                  collapsed: collapsed,
+                  avatarUrl: null,
+                  displayName: 'Ada',
+                  l2: es,
+                  starsCount: 0,
+                  grammarCount: 0,
+                  vocabCount: 0,
+                  level: 1,
+                  xpProgress: 0.0,
+                  isInitializing: false,
+                  onTrackerTap: onTrackerTap ?? (_) {},
+                  onAvatarTap: onAvatarTap ?? () {},
+                  onLevelTap: onLevelTap ?? () {},
+                  onFlagTap: onFlagTap ?? () {},
+                  // The real flag chip fetches a network SVG whose async parse
+                  // throws into the test zone — inject an offline stand-in carrying
+                  // the same semantics contract (label + tap) the real chip has.
+                  flagBuilder: (language, onTap, width, height, fontSize) =>
+                      Builder(
+                        builder: (context) => Semantics(
+                          button: true,
+                          label:
+                              '${language.getDisplayName(L10n.of(context))}, '
+                              '${L10n.of(context).learningSettings}',
+                          excludeSemantics: true,
+                          onTap: onTap,
+                          child: GestureDetector(
+                            onTap: onTap,
+                            child: SizedBox(
+                              width: width,
+                              height: height,
+                              child: Text(language.langCodeShort.toUpperCase()),
+                            ),
+                          ),
+                        ),
+                      ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -298,6 +313,24 @@ void main() {
 
       semantics.dispose();
     });
+
+    testWidgets(
+      'the rendered height matches the declared expandedHeight contract',
+      (tester) async {
+        // The shell's analyticsBarAllowance derives from expandedHeight to
+        // place right panels and the search bar BELOW the bar — if the bar's
+        // implicit layout grows past the declared constant, that content
+        // slides back underneath it.
+        await pumpBar(tester, collapsed: false);
+        final size = tester.getSize(
+          find.byType(AnalyticsBarTemporaryExpansion),
+        );
+        expect(
+          size.height,
+          lessThanOrEqualTo(WorldAnalyticsBar.expandedHeight),
+        );
+      },
+    );
 
     testWidgets('tapping controls fires the expected callbacks', (
       tester,

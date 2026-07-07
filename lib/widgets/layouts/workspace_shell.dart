@@ -465,18 +465,24 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         : null;
 
     // Full height: the widget grows until the search bar riding above it sits
-    // immediately below the analytics bar (routing.instructions.md). Reserve the
-    // top safe area, the analytics bar, the search-bar allowance, and margins.
-    final reservedTop =
+    // immediately below the analytics bar (routing.instructions.md).
+    // [MobileNavWidget.maxHeightFraction] caps the CAVITY only — the rail row
+    // and the search bar stack around it inside the same box — so the
+    // reservation must count everything else in the vertical chain explicitly:
+    // top safe area + analytics bar (margin + real height) + search-bar
+    // allowance + rail row + bottom margin + bottom safe area + one margin of
+    // breathing room below the bar. Omitting the rail row here previously let
+    // a fully-expanded widget push the search bar under the analytics bar.
+    final reserved =
         screenPadding.top +
         _ShellLayout.analyticsBarAllowance +
         _ShellLayout.searchBarAllowance +
+        MobileNavWidget.railRowHeight +
+        screenPadding.bottom +
         _ShellLayout.chromeMargin * 2;
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
-        : ((screenHeight - reservedTop - _ShellLayout.chromeMargin) /
-                  screenHeight)
-              .clamp(0.3, 0.95);
+        : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
 
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
@@ -576,9 +582,13 @@ class _ShellLayout {
   /// top-right cluster), so they inset from the viewport identically.
   static const double chromeMargin = 12.0;
 
-  /// Height reserved for the narrow analytics bar when placing panels below it
-  /// (the bar content plus breathing room).
-  static const double analyticsBarAllowance = 64.0;
+  /// Height reserved for the narrow analytics bar when placing content below
+  /// it: the bar's top margin ([chromeMargin]) plus its real rendered height
+  /// ([WorldAnalyticsBar.expandedHeight]). Derived, not guessed — an earlier
+  /// hand-picked 64 under-measured the 90px bar, so right panels' close
+  /// controls rendered under the avatar column.
+  static const double analyticsBarAllowance =
+      chromeMargin + WorldAnalyticsBar.expandedHeight;
 
   /// Height reserved for the floating search bar riding above the nav widget —
   /// the widget's full-height bound stops the SEARCH BAR just below the
@@ -854,10 +864,24 @@ class _ShellLayout {
     // Bound the route-driven center detail by the left inset and the right-covered
     // width so it can never slide under a panel (the non-overlap guarantee). Only
     // route-driven pages use the center detail now — the activity is a left panel.
+    //
+    // The right reservation is the larger of the right column's coverage (which
+    // already contains the cluster gutter when right panels are open) and the
+    // bare gutter when the column is empty but the cluster still shows — the
+    // allocator's empty-panel early return never computes the gutter, so a
+    // detail route with no panels open (a course-wizard step, a public-course
+    // preview, a chat archive) must reserve it here. Narrow mode draws no
+    // cluster, so it reserves nothing.
+    final detailRightReserved = math.max(
+      layout.mapRightOverlay,
+      isColumnMode && layout.clusterVisible
+          ? PanelAllocator.clusterGutter
+          : 0.0,
+    );
     final detailWidth = canvas == CanvasMode.detail
         ? math.min(
             PanelAllocator.detailMax,
-            math.max(0.0, viewport - leftInset - layout.mapRightOverlay),
+            math.max(0.0, viewport - leftInset - detailRightReserved),
           )
         : null;
     final mapLeftOverlay = hasCavity

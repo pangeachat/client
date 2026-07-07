@@ -85,7 +85,11 @@ class WorkspaceLayout {
 /// is no recency (a cold deep link). Pure + unit-tested. See
 /// `routing.instructions.md`.
 abstract class PanelAllocator {
-  /// Right margin reserved for the cluster beside the right column.
+  /// Right margin reserved for the top-right cluster on EVERY column-mode
+  /// layout. The cluster is persistent chrome drawn whenever the column
+  /// workspace shows (only an exclusive panel hides it), so the budget must
+  /// clear it even when the right column is empty — otherwise a left panel
+  /// compressing toward the viewport's right edge slides under it.
   static const double clusterGutter = 88.0;
 
   /// Gap between two adjacent panels in the same column.
@@ -197,7 +201,12 @@ abstract class PanelAllocator {
       );
     }
 
-    final gutter = right.isNotEmpty ? clusterGutter : 0.0;
+    // Reserved unconditionally: the cluster shows on every layout this branch
+    // returns (clusterVisible is true below), not just when right panels are
+    // open — a left-only layout must compress/fold at the gutter instead of
+    // sliding under the cluster. The map camera overlay stays panel-only (the
+    // cluster has always floated over the bare map without padding the camera).
+    const gutter = clusterGutter;
     final content = math.max(0.0, viewport - railWidth - gutter);
 
     // One gap between adjacent panels within each column, for whatever set is

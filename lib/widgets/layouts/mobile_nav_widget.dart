@@ -84,6 +84,12 @@ class MobileNavWidget extends StatefulWidget {
     super.key,
   });
 
+  /// The rail row's fixed height — the box below the cavity. Public because
+  /// [maxHeightFraction] caps the CAVITY only; the shell must add this (plus
+  /// its own margins) when reserving vertical space, or a fully-expanded
+  /// widget overshoots the reservation by exactly this much.
+  static const double railRowHeight = 64.0;
+
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
   /// `MobileCourseSheet._expandedBySheet` (#7332), generalized to any section
@@ -98,7 +104,7 @@ class MobileNavWidget extends StatefulWidget {
 }
 
 class _MobileNavWidgetState extends State<MobileNavWidget> {
-  static const double _railHeight = 64.0;
+  static const double _railHeight = MobileNavWidget.railRowHeight;
   static const double _peekHeight = 240.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
