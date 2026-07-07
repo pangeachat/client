@@ -535,7 +535,14 @@ class _NavCavity extends StatelessWidget {
         // headers, the activity plan's contextual back/X — #7115), so the
         // cavity adds ONLY the handle. A second header here double-labelled
         // and double-X'd every surface (live QA).
-        Expanded(child: SingleChildScrollView(child: child)),
+        //
+        // The child gets the BOUNDED cavity box directly — these are the same
+        // WorkspaceLeftPanel surfaces the wide layout renders, and they own
+        // their scrolling (the chat list's ListView, the hub's list, the
+        // course card's per-tab scroll views). Wrapping them in an outer
+        // scroll view hands them unbounded height and their internals
+        // silently collapse to nothing (live QA: header-only empty panels).
+        Expanded(child: child),
       ],
     );
   }
