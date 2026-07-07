@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' hide BaseResponse, BaseRequest;
@@ -114,6 +116,15 @@ abstract class BaseRepo<
 
   Future<Response> fetch(Requests req, TRequest request);
 
+  /// Sentry level for a fetch failure. Timeouts and confirmed 404s are
+  /// warnings — a 404 means the resource is gone (expected for e.g. removed
+  /// activities referenced by old rooms), not that code broke.
+  @visibleForTesting
+  static SentryLevel errorLevel(Object e) =>
+      e is TimeoutException || (e is Response && e.statusCode == 404)
+      ? SentryLevel.warning
+      : SentryLevel.error;
+
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
       final Requests req = Requests(
@@ -137,9 +148,7 @@ abstract class BaseRepo<
           e: e,
           s: s,
           data: request.toJson(),
-          level: e is TimeoutException
-              ? SentryLevel.warning
-              : SentryLevel.error,
+          level: errorLevel(e),
         );
       }
       return Result.error(e);

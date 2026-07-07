@@ -4247,6 +4247,8 @@
     "startNewSession": "Start new session",
     "joinOpenSession": "Join open session",
     "activityNotFound": "Activity not found",
+    "activityNoLongerSupported": "This activity ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
+    "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
     "levelUp": "Level up",
     "myActivities": "My activities",
     "openToJoin": "Open to join",

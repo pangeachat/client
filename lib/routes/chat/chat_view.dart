@@ -241,6 +241,7 @@ class ChatView extends StatelessWidget {
           builder: (BuildContext context, snapshot) {
             // #Pangea
             if (controller.room.isActivitySession &&
+                controller.room.activityId != null &&
                 !controller.room.isActivityStarted) {
               return ActivitySessionStartPage(
                 activityId: controller.room.activityId!,
