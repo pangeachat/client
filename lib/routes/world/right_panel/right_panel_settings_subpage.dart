@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/routes/profile/user_home_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/settings_chat/settings_chat.dart';
@@ -23,10 +24,10 @@ import 'package:fluffychat/routes/settings/settings_subscription/settings_subscr
 class RightPanelSettingsSubpage extends StatelessWidget {
   /// The settings sub-page id from the token param, e.g. `learning`,
   /// `security`, `security/password`, `profile/edit`. Null/empty is the menu.
-  final String? subPath;
+  final SettingsTokenParam? param;
   final Widget? closeButton;
 
-  const RightPanelSettingsSubpage({super.key, this.subPath, this.closeButton});
+  const RightPanelSettingsSubpage({super.key, this.param, this.closeButton});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
     // context menu or a profile dialog). The seed rides the token param as a
     // 3rd segment — `security/ignorelist/<userid>` — restoring the seed the old
     // route dropped (a redirect can't carry `extra:`). See routing.instructions.md.
-    final sub = subPath;
+    final sub = param?.subpage;
     if (sub != null && sub.startsWith('security/ignorelist')) {
       final parts = sub.split('/');
       return SettingsIgnoreList(
@@ -42,7 +43,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
       );
     }
 
-    switch (subPath) {
+    switch (sub) {
       case null:
       case '':
         // The menu (profile header + settings list). It has no app bar of its

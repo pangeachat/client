@@ -20,7 +20,7 @@ void main() {
       final out = resolve('/$id?launch=true&roomid=!r&autoplay=1');
       final outUri = Uri.parse(out!);
       final info = activityInfoFor(outUri);
-      expect(info?.id, id);
+      expect(info?.activityId, id);
       expect(info?.launch, isTrue);
       expect(info?.roomId, '!r');
       expect(info?.autoplay, 1);

@@ -8,7 +8,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -63,7 +62,7 @@ class CourseCodePageState extends State<CourseCodePage> {
 
     room.isSpace
         ? context.go(
-            WorkspaceNav.openCourseFilter(
+            WorkspaceNav.openCourse(
               GoRouterState.of(context).uri,
               joinedRoomId,
             ),
@@ -81,11 +80,7 @@ class CourseCodePageState extends State<CourseCodePage> {
           icon: const Icon(Icons.arrow_back),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => context.go(
-            WorkspaceNav.setSection(
-              GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
-              keepRoom: false,
-            ),
+            WorkspaceNav.openAddCourse(GoRouterState.of(context).uri),
           ),
         ),
         title: Text(

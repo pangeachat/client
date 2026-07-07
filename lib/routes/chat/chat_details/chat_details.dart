@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/utils/chat_download_provider.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -41,7 +42,7 @@ class ChatDetails extends StatefulWidget {
   final String roomId;
   final Widget? embeddedCloseButton;
   // #Pangea
-  final String? activeTab;
+  final SpaceSettingsTabs? activeTab;
   // Pangea#
 
   const ChatDetails({
@@ -110,7 +111,8 @@ class ChatDetailsController extends State<ChatDetails>
       _loadSummaries();
     }
 
-    if (widget.activeTab == 'course' && oldWidget.activeTab != 'course') {
+    if (widget.activeTab == SpaceSettingsTabs.course &&
+        oldWidget.activeTab != SpaceSettingsTabs.course) {
       _loadSummaries();
     }
   }

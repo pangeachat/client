@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 
 class FullSession extends StatefulWidget {
@@ -73,10 +74,10 @@ class FullSessionController extends State<FullSession>
       // world_v2: switch the workspace to this course's card on the course-plan
       // tab (a token nav, not a stacked route push). See routing.instructions.md.
       context.go(
-        WorkspaceNav.openCourseFilter(
+        WorkspaceNav.openCourse(
           GoRouterState.of(context).uri,
           course.id,
-          tab: 'course',
+          tab: SpaceSettingsTabs.course,
         ),
       );
     } else {

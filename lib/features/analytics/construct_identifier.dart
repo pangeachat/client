@@ -93,13 +93,16 @@ class ConstructIdentifier {
   /// is the panel type (`vocab` / `grammar`) and supplies the construct type.
   /// Returns null on any parse failure (an empty or hand-edited/malformed
   /// param), so a tampered token can never crash the panel builder.
-  static ConstructIdentifier? fromTokenParam(String tokenType, String param) {
+  static ConstructIdentifier? fromTokenParam(
+    ConstructTypeEnum type,
+    String param,
+  ) {
     try {
       final fields = TokenFields.split(param);
       if (fields.isEmpty || fields.first.isEmpty) return null;
       return ConstructIdentifier(
         lemma: TokenFields.decode(fields.first),
-        type: ConstructTypeEnum.fromTokenParam(tokenType),
+        type: type,
         category: fields.length > 1 ? TokenFields.decode(fields[1]) : '',
       );
     } catch (_) {

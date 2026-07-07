@@ -10,9 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -322,13 +320,10 @@ class FindCoursePageState extends State<FindCoursePage> {
     // loose `?lang=`/`?showAll=` query (routing.instructions.md).
     final targetLanguage = targetLanguageFilter.value?.langCode;
     context.go(
-      WorkspaceNav.setSection(
+      WorkspaceNav.openAddCourse(
         GoRouterState.of(context).uri,
-        PanelToken(
-          'addcourse',
-          'own/${targetLanguage != null ? TokenFields.encode(targetLanguage) : 'all'}',
-        ),
-        keepRoom: false,
+        subpage: 'own',
+        targetLanguage: targetLanguage,
       ),
     );
   }
@@ -354,11 +349,7 @@ class FindCoursePageView extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => context.go(
-            WorkspaceNav.setSection(
-              GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
-              keepRoom: false,
-            ),
+            WorkspaceNav.openAddCourse(GoRouterState.of(context).uri),
           ),
         ),
         title: Text(

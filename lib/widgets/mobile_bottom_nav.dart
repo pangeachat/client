@@ -191,13 +191,7 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             title: Text(L10n.of(sheetContext).addCourseStartMyOwn),
             onTap: () {
               Navigator.of(sheetContext).pop();
-              sheetContext.go(
-                WorkspaceNav.setSection(
-                  uri,
-                  const PanelToken('addcourse', 'own'),
-                  keepRoom: false,
-                ),
-              );
+              sheetContext.go(WorkspaceNav.openAddCourse(uri, subpage: 'own'));
             },
           ),
           ListTile(
@@ -206,11 +200,7 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             onTap: () {
               Navigator.of(sheetContext).pop();
               sheetContext.go(
-                WorkspaceNav.setSection(
-                  uri,
-                  const PanelToken('addcourse', 'private'),
-                  keepRoom: false,
-                ),
+                WorkspaceNav.openAddCourse(uri, subpage: 'private'),
               );
             },
           ),
@@ -220,11 +210,7 @@ Future<void> _showSpaceSwitcherSheet(BuildContext context) {
             onTap: () {
               Navigator.of(sheetContext).pop();
               sheetContext.go(
-                WorkspaceNav.setSection(
-                  uri,
-                  const PanelToken('addcourse', 'browse'),
-                  keepRoom: false,
-                ),
+                WorkspaceNav.openAddCourse(uri, subpage: 'browse'),
               );
             },
           ),

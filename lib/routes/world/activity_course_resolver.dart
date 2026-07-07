@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// Resolves which of the user's joined course spaces an activity belongs
 /// to. Used to share new activity sessions into matching course spaces
@@ -32,10 +33,14 @@ class ActivityCourseResolver {
         .toList();
     if (spaces.isEmpty) return [];
 
-    final activityRefs = (await QuestRepo.activityLearningObjectiveRefs(
+    final activityRefsResult = await QuestRepo.activityLearningObjectiveRefs(
       activityId,
-    )).toSet();
-    if (activityRefs.isEmpty) return [];
+    );
+
+    final activityRefs = activityRefsResult.result?.toSet();
+    if (activityRefs == null || activityRefs.isEmpty) {
+      return [];
+    }
 
     String short(String code) => code.split('-').first.toLowerCase();
 
@@ -43,7 +48,10 @@ class ActivityCourseResolver {
     await Future.wait(
       spaces.map((space) async {
         try {
-          final quest = await QuestRepo.quest(space.coursePlan!.uuid);
+          final questResult = await QuestRepo.quest(space.coursePlan!.uuid);
+          final quest = questResult.result;
+          if (quest == null) return;
+
           if (activityL2 != null &&
               short(quest.targetLanguage) != short(activityL2)) {
             return;

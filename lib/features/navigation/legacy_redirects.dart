@@ -1,7 +1,6 @@
-import 'package:fluffychat/features/navigation/activity_token.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// The client's ONE inbound URL rewrite. The client is the only producer of
@@ -15,7 +14,7 @@ import 'package:fluffychat/features/navigation/workspace_query.dart';
 abstract class LegacyRedirects {
   /// The `/<uuid>` shareable activity link → its `activity` token over the
   /// world map, the link's optional `launch=`/`roomid=`/`autoplay=` params
-  /// riding the token's fields ([ActivityToken]). Any prior panels/context
+  /// riding the token's fields ([ActivityTokenParam]). Any prior panels/context
   /// are dropped — this link IS the activity. Idempotent: the result has no
   /// UUID path segment, so it never re-fires. Returns null for every other
   /// location.
@@ -25,17 +24,19 @@ abstract class LegacyRedirects {
       return null;
     }
     final kept = WorkspaceQuery.parts(uri.query);
-    final token = PanelToken(
-      'activity',
-      ActivityToken.build(
-        segments.first,
-        roomId: WorkspaceQuery.valueOf(uri.query, 'roomid'),
-        launch: WorkspaceQuery.valueOf(uri.query, 'launch') == 'true',
-        autoplay: int.tryParse(
-          WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
-        ),
-      ),
+    final activityId = segments.first;
+    final roomId = WorkspaceQuery.valueOf(uri.query, 'roomid');
+    final launch = WorkspaceQuery.valueOf(uri.query, 'launch') == 'true';
+    final autoplay = int.tryParse(
+      WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
     );
+    final activityTokenParam = ActivityTokenParam(
+      activityId: activityId,
+      roomId: roomId,
+      launch: launch,
+      autoplay: autoplay,
+    );
+
     WorkspaceQuery.removeKeys(kept, {
       'left',
       'c',
@@ -44,7 +45,7 @@ abstract class LegacyRedirects {
       'launch',
       'autoplay',
     });
-    final parts = ['left=${token.encode()}', ...kept];
+    final parts = ['left=${activityTokenParam.token.encode()}', ...kept];
     return '${PRoutes.world}?${parts.join('&')}';
   }
 

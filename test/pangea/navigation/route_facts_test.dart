@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 void main() {
   AppSection section(String location) => sectionFor(Uri.parse(location));
@@ -195,17 +197,22 @@ void main() {
     List<String> leftTypes(String location) => [
       for (final t in parseOpenPanels(Uri.parse(location)).left) t.type,
     ];
-    String? activityParam(String location) => parseOpenPanels(
+    TokenParam? activityParam(String location) => parseOpenPanels(
       Uri.parse(location),
     ).left.firstWhere((t) => t.type == 'activity').param;
 
     test('an `activity` left token parses with its id as the param', () {
       expect(leftTypes('/?left=activity:abc'), ['activity']);
-      expect(activityParam('/?left=activity:abc'), 'abc');
+      final param1 = activityParam('/?left=activity:abc');
+      expect(param1, isA<ActivityTokenParam>());
+      expect((param1 as ActivityTokenParam).activityId, 'abc');
+
+      final param2 = activityParam(
+        '/?m=course:!s&left=activity:32ad3c08-e501-41c5-b544-0875026090ed',
+      );
+      expect(param2, isA<ActivityTokenParam>());
       expect(
-        activityParam(
-          '/?m=course:!s&left=activity:32ad3c08-e501-41c5-b544-0875026090ed',
-        ),
+        (param2 as ActivityTokenParam).activityId,
         '32ad3c08-e501-41c5-b544-0875026090ed',
       );
     });

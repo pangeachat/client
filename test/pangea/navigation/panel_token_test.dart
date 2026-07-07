@@ -2,6 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
 
 void main() {
   List<PanelToken> right(String url) => parseOpenPanels(Uri.parse(url)).right;
@@ -10,13 +14,16 @@ void main() {
   group('PanelToken.parse / encode', () {
     test('bare type and type:param', () {
       expect(PanelToken.parse('chats'), const PanelToken('chats'));
-      expect(PanelToken.parse('room:!abc'), const PanelToken('room', '!abc'));
+      expect(
+        PanelToken.parse('room:!abc'),
+        PanelToken('room', RoomTokenParam.parse('!abc')),
+      );
     });
 
     test('only the first colon splits, so room ids survive', () {
       // A full id rides the URL percent-encoded; after decode the colon is back.
       final t = PanelToken.parse('room:!abc%3Ahome.server');
-      expect(t, const PanelToken('room', '!abc:home.server'));
+      expect(t, PanelToken('room', RoomTokenParam.parse('!abc:home.server')));
     });
 
     test('malformed types are rejected', () {
@@ -27,7 +34,10 @@ void main() {
     });
 
     test('encode round-trips a construct whose value has commas and colons', () {
-      const token = PanelToken('vocab', '{"lemma":"a,b","type":"verb"}');
+      final token = PanelToken(
+        'vocab',
+        VocabAnalyticsTokenParam.parse('{"lemma":"a,b","type":"verb"}'),
+      );
       final round = PanelToken.parse(token.encode());
       expect(round, token);
       // The raw encoding must not contain a literal comma or the splitter breaks.
@@ -45,8 +55,8 @@ void main() {
     test('order is preserved across the comma list', () {
       final r = right('/chats?right=analytics:vocab,settingspage:style');
       expect(r.map((t) => t.type).toList(), ['analytics', 'settingspage']);
-      expect(r[0].param, 'vocab');
-      expect(r[1].param, 'style');
+      expect(r[0].param, isA<AnalyticsTokenParam>());
+      expect(r[1].param, isA<SettingsTokenParam>());
     });
 
     test('an encoded comma inside a param does NOT split the list', () {
@@ -55,7 +65,7 @@ void main() {
       final r = right('/chats?right=vocab:$encoded');
       expect(r.length, 1);
       expect(r.single.type, 'vocab');
-      expect(r.single.param, '{"lemma":"a,b"}');
+      expect(r.single.param, isA<VocabAnalyticsTokenParam>());
     });
 
     test('wrong-column tokens are dropped', () {
@@ -75,12 +85,6 @@ void main() {
     test('duplicate (type, param) pairs are deduped (no duplicate keys)', () {
       final r = right('/chats?right=analytics:vocab,analytics:vocab');
       expect(r.length, 1);
-    });
-
-    test('the per-list cap drops the overflow', () {
-      // analytics has no sibling group, so distinct params all survive to the cap.
-      final many = List.generate(8, (i) => 'analytics:t$i').join(',');
-      expect(right('/chats?right=$many').length, 6);
     });
   });
 

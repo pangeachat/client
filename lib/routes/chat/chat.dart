@@ -39,8 +39,8 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
@@ -873,9 +873,8 @@ class ChatController extends State<ChatPageWithRoom>
   bool get isFocused {
     final focused = PanelFocusController.instance.focusedLeftToken;
     if (focused != null) {
-      final focusedRoomId = PanelToken.parse(focused)?.param?.split('/').first;
-      return focusedRoomId != null &&
-          shortRoomId(focusedRoomId) == shortRoomId(room.id);
+      final focusedRoomId = RoomTokenParam.parse(focused).id;
+      return shortRoomId(focusedRoomId) == shortRoomId(room.id);
     }
     return _router.state.path == ':roomid';
   }

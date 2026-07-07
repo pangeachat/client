@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
@@ -100,9 +101,10 @@ String _recencyKey(PanelToken token) {
   // A room/session instance is its bare room id; the rest is a pushed sub-page.
   // A `room` keeps its OWN type as the root (its parent `chats` is the list, a
   // separate panel), so this branch is reached with the original type.
-  if (token.type == 'room' || token.type == 'session') {
-    final bareId = (token.param ?? '').split('/').first;
-    return '${token.type}:$bareId';
+  final type = token.type;
+  final param = token.param;
+  if ((type == 'room' || type == 'session') && param is RoomTokenParam) {
+    return '$type:${param.id}';
   }
   // Every other family (settings/analytics/course/chats/addcourse/practice/
   // review) is a singleton per column: key on the root type, so paging or
@@ -256,7 +258,7 @@ class WorkspaceShell extends StatelessWidget {
                   // id for a standalone activity sheet (#7332).
                   sheetId:
                       activeSpaceIdFor(state.uri) ??
-                      l.leftTokens[l.mobileSheetIndex!].param ??
+                      l.leftTokens[l.mobileSheetIndex!].param?.build() ??
                       l.leftTokens[l.mobileSheetIndex!].type,
                   child: WorkspaceLeftPanel(
                     token: l.leftTokens[l.mobileSheetIndex!],

@@ -1,7 +1,7 @@
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 
 /// GA screen names derived from the workspace tokens
 /// (google-analytics.instructions.md): a screen name IS the focused panel's
@@ -13,7 +13,7 @@ abstract class ScreenNames {
   /// The screen name for one panel token.
   static String forToken(PanelToken token) {
     final param = token.param;
-    if (param == null || param.isEmpty) return token.type;
+    if (param == null || param.build().isEmpty) return token.type;
     switch (token.type) {
       // Identity-only params: a construct's lemma/category, an activity's id
       // and session bindings. The whole param drops.
@@ -27,14 +27,14 @@ abstract class ScreenNames {
       // navigational and stay.
       case 'room':
       case 'session':
-        final parsed = RoomToken.parse(param);
-        if (parsed.subPage == null || parsed.subPage!.isEmpty) {
+        if (param is! RoomTokenParam) return token.type;
+        if (param.subPage == null || param.subPage!.isEmpty) {
           return token.type;
         }
-        final filter = parsed.filter;
+        final filter = param.filter;
         final sub = filter == null
-            ? parsed.subPage!
-            : '${parsed.subPage}/$filter';
+            ? param.subPage!
+            : '${param.subPage}/$filter';
         return '${token.type}:$sub';
       // A coursepage param is the bare page, no leading room id (the card's
       // space rides the separate `?c=` context) — an `invite` page may carry a
@@ -43,7 +43,7 @@ abstract class ScreenNames {
       // Everything else (settings pages, course tabs, practice modes,
       // analytics tabs, addcourse steps) is a navigational param.
       default:
-        return '${token.type}:$param';
+        return '${token.type}:${param.build()}';
     }
   }
 

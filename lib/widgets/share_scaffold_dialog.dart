@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -69,7 +70,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         GoRouterState.of(context).uri,
-        PanelToken('room', shortRoomId(roomId)),
+        PanelToken('room', RoomTokenParam(id: shortRoomId(roomId))),
       ),
       extra: widget.items,
     );

@@ -230,10 +230,7 @@ void chatContextMenuAction(
       // world_v2: token nav to the course card (sets ?m=course:<id>&left=course),
       // not the legacy /rooms/spaces path.
       outerContext.go(
-        WorkspaceNav.openCourseFilter(
-          GoRouterState.of(outerContext).uri,
-          space!.id,
-        ),
+        WorkspaceNav.openCourse(GoRouterState.of(outerContext).uri, space!.id),
       );
       return;
     case ChatContextAction.favorite:
@@ -267,7 +264,7 @@ void chatContextMenuAction(
       context.go(
         WorkspaceNav.openSettings(
           GoRouterState.of(context).uri,
-          page: blockUser == null
+          subpage: blockUser == null
               ? 'security/ignorelist'
               : 'security/ignorelist/$blockUser',
         ),

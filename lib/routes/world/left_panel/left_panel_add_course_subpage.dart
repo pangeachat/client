@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
+import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
+import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
+import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
 import 'package:fluffychat/routes/courses/private/course_code_page.dart';
-import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 
@@ -21,49 +24,51 @@ import 'package:fluffychat/routes/world/panel_header.dart';
 /// hosted page carries its own header/close; the deeper steps
 /// (`/courses/own/:courseid` …) stay route-driven detail.
 class LeftPanelAddCourseSubpage extends StatelessWidget {
-  final PanelToken token;
-  final Uri currentUri;
-  final bool foldedOver;
-  final bool isColumnMode;
+  final AddCourseTokenParam? param;
+  final Widget closeButton;
+  final Completer<String>? courseCreationCompleter;
 
   const LeftPanelAddCourseSubpage({
     super.key,
-    required this.token,
-    required this.currentUri,
-    required this.foldedOver,
-    required this.isColumnMode,
+    required this.param,
+    required this.closeButton,
+    this.courseCreationCompleter,
   });
 
   @override
   Widget build(BuildContext context) {
-    final param = token.param ?? '';
-    if (param == 'browse') return const FindCoursePage();
-    if (param == 'private') return const CourseCodePage();
-    if (param == 'own' || param.startsWith('own/')) {
-      final field = param.startsWith('own/')
-          ? param.substring('own/'.length)
-          : null;
-      return NewCoursePage(
-        route: 'rooms',
-        initialLanguageCode: field == null || field == 'all'
-            ? null
-            : TokenFields.decode(field),
-        showAll: field == 'all',
-      );
+    switch (param?.subpage) {
+      case 'browse':
+        final roomId = param?.roomId;
+        if (roomId != null) {
+          return PublicCoursePreview(roomID: roomId);
+        }
+        return const FindCoursePage();
+      case 'private':
+        return const CourseCodePage();
+      case 'own':
+        final courseId = param?.courseId;
+        if (courseId != null) {
+          if (param?.invite == true) {
+            return CourseInvitePage(
+              courseId,
+              courseCreationCompleter: courseCreationCompleter,
+            );
+          }
+          return SelectedCourse(courseId, SelectedCourseMode.launch);
+        }
+        return NewCoursePage(
+          route: 'rooms',
+          initialLanguageCode: param?.targetLanguage,
+          showAll: param?.targetLanguage == 'all',
+        );
+      default:
+        return Column(
+          children: [
+            PanelHeader(leading: closeButton, title: L10n.of(context).courses),
+            Expanded(child: LeftPanelCoursesListView()),
+          ],
+        );
     }
-    return Column(
-      children: [
-        PanelHeader(
-          leading: LeftPanelCloseButton(
-            token: token,
-            currentUri: currentUri,
-            foldedOver: foldedOver,
-            isColumnMode: isColumnMode,
-          ),
-          title: L10n.of(context).courses,
-        ),
-        Expanded(child: LeftPanelCoursesListView()),
-      ],
-    );
   }
 }

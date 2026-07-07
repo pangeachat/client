@@ -226,7 +226,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'profile',
+                          subpage: 'profile',
                         ),
                       ),
                     ),
@@ -239,7 +239,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'learning',
+                          subpage: 'learning',
                         ),
                       ),
                     ),
@@ -253,7 +253,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'style',
+                          subpage: 'style',
                         ),
                       ),
                     ),
@@ -267,7 +267,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'notifications',
+                          subpage: 'notifications',
                         ),
                       ),
                     ),
@@ -277,7 +277,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'devices',
+                          subpage: 'devices',
                         ),
                       ),
                       tileColor: activeRoute.startsWith('/settings/devices')
@@ -290,7 +290,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'chat',
+                          subpage: 'chat',
                         ),
                       ),
                       tileColor: activeRoute.startsWith('/settings/chat')
@@ -304,7 +304,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'subscription',
+                          subpage: 'subscription',
                         ),
                       ),
                       tileColor:
@@ -319,7 +319,7 @@ class SettingsView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'security',
+                          subpage: 'security',
                         ),
                       ),
                       tileColor: activeRoute.startsWith('/settings/security')

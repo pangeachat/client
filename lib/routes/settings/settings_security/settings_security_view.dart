@@ -76,7 +76,7 @@ class SettingsSecurityView extends StatelessWidget {
                     onTap: () => context.go(
                       WorkspaceNav.openSettings(
                         GoRouterState.of(context).uri,
-                        page: 'security/ignorelist',
+                        subpage: 'security/ignorelist',
                       ),
                     ),
                   ),
@@ -154,7 +154,7 @@ class SettingsSecurityView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'security/3pid',
+                          subpage: 'security/3pid',
                         ),
                       ),
                     ),
@@ -168,7 +168,7 @@ class SettingsSecurityView extends StatelessWidget {
                       onTap: () => context.go(
                         WorkspaceNav.openSettings(
                           GoRouterState.of(context).uri,
-                          page: 'security/password',
+                          subpage: 'security/password',
                         ),
                       ),
                     ),

@@ -1,6 +1,7 @@
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// Holds the learner's joined-course quest outlines: each course's ordered
 /// learning-objective sequence and the activities that satisfy each objective.
@@ -81,6 +82,12 @@ class JoinedObjectiveCache {
     _ids = {for (final o in next) ...o.orderedLoIds};
   }
 
-  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async =>
-      (await QuestRepo.outline(uuid)).toCourseLoOutline();
+  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async {
+    final outlineResult = await QuestRepo.outline(uuid);
+    final outline = outlineResult.result;
+    if (outline == null) {
+      throw (outlineResult.error ?? MissingQuestException());
+    }
+    return outline.toCourseLoOutline();
+  }
 }

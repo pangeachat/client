@@ -201,15 +201,21 @@ class NewCoursePageState extends State<NewCoursePage> {
       context,
     ).client.getRoomByCourseId(course.uuid);
 
-    if (existingRoom == null || widget.spaceId != null) {
+    final spaceId = widget.spaceId;
+    if (spaceId != null) {
       context.go(
-        widget.spaceId != null
-            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
-            // world_v2: the standalone-create path is the Completer-carrying
-            // `/courses/own/:id` flow, not `widget.route` (always 'rooms', which
-            // produced the broken `/rooms/course/own/...`). See
-            // routing.instructions.md.
-            : '/courses/own/${course.uuid}',
+        '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}',
+      );
+      return;
+    }
+
+    if (existingRoom == null) {
+      context.go(
+        WorkspaceNav.openAddCourse(
+          GoRouterState.of(context).uri,
+          subpage: 'own',
+          courseId: course.uuid,
+        ),
       );
       return;
     }
@@ -250,16 +256,19 @@ class NewCoursePageState extends State<NewCoursePage> {
     );
 
     if (action == 0) {
-      // world_v2: this branch is only reached when existingRoom != null AND
-      // widget.spaceId == null (see the guard above), so it's always the
-      // Completer-carrying own-course path, never the addcourse push.
-      context.go('/courses/own/${course.uuid}');
+      context.go(
+        WorkspaceNav.openAddCourse(
+          GoRouterState.of(context).uri,
+          subpage: 'own',
+          courseId: course.uuid,
+        ),
+      );
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
         // course panel), not the legacy /rooms/spaces path.
         context.go(
-          WorkspaceNav.openCourseFilter(
+          WorkspaceNav.openCourse(
             GoRouterState.of(context).uri,
             existingRoom.id,
           ),

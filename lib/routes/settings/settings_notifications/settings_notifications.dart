@@ -271,7 +271,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
                     context.go(
                       WorkspaceNav.openSettings(
                         GoRouterState.of(context).uri,
-                        page: 'security/3pid',
+                        subpage: 'security/3pid',
                       ),
                     );
                   },

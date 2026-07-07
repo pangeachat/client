@@ -11,7 +11,15 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+typedef _ObjectivesLoader =
+    ValueNotifier<AsyncState<List<QuestObjectiveGroup>>>;
 
 /// The objective groups that should render: those with at least one activity.
 /// An activity-less objective would otherwise show a header over a fixed-height
@@ -64,22 +72,32 @@ class CourseObjectivesList extends StatefulWidget {
 }
 
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
-  late Future<List<QuestObjectiveGroup>> _groupsFuture;
+  final _ObjectivesLoader _objectivesLoader = _ObjectivesLoader(AsyncLoading());
   final ScrollController _scrollController = ScrollController();
-
-  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
   @override
   void initState() {
     super.initState();
-    _groupsFuture = _load();
+    _load();
+  }
+
+  @override
+  void didUpdateWidget(covariant CourseObjectivesList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.questId != widget.questId ||
+        oldWidget.room?.id != widget.room?.id) {
+      _load();
+    }
   }
 
   @override
   void dispose() {
+    _objectivesLoader.dispose();
     _scrollController.dispose();
     super.dispose();
   }
+
+  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
   /// Scroll this list from a vertical mouse wheel anywhere over the panel —
   /// including the gaps between cards and the objective headers. Those areas are
@@ -104,78 +122,161 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     });
   }
 
-  @override
-  void didUpdateWidget(covariant CourseObjectivesList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.questId != widget.questId ||
-        oldWidget.room?.id != widget.room?.id) {
-      _groupsFuture = _load();
+  void _onActivityTap(QuestActivity activity) {
+    // In a preview (no room), open the activity as a standalone
+    // world object (`/<activityId>`). In a joined course, open it
+    // as the focused detail over the map: DROP the `left=course`
+    // card (so it isn't left blank beside the activity) but KEEP
+    // the `?m=course:` filter. That surviving course scope is what
+    // marks this plan as the card's child: its close is a back-arrow
+    // that reopens the card (a pin-opened plan drops the scope and so
+    // closes with an X). The map stays course-scoped and zooms to
+    // this activity (`mapFocusFor` → `ActivityFocus`). See
+    // routing.instructions.md.
+    final room = widget.room;
+    if (room == null) {
+      // Token-native open; the course context (if any) is kept,
+      // so the plan closes back to it. See routing.instructions.md.
+      context.go(
+        WorkspaceNav.openActivity(
+          GoRouterState.of(context).uri,
+          activity.activityId,
+        ),
+      );
+      return;
     }
+    // Immersive in-course open: the token producer drops the
+    // `left=course` card (and any right panel) and keeps the
+    // `?m=course:` scope, so the plan takes the card's slot and
+    // backs out to it. A video hero autostarts (muted).
+    context.go(
+      WorkspaceNav.openCourseActivity(
+        room.id,
+        activity.activityId,
+        autoplay:
+            activity.plan.heroBlock?.isVideo == true ||
+            activity.plan.heroBlock?.isYoutube == true,
+      ),
+    );
   }
 
-  Future<List<QuestObjectiveGroup>> _load() async {
+  Future<void> _load() async {
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
     // activities) comes from the v3 quest read layer; the v1
     // course-plans/topics fan-out is retired.
     final questId = _questId;
-    if (questId == null) return [];
-    final outline = await QuestRepo.outline(questId);
-    return outline.groups;
+    if (questId == null) {
+      _objectivesLoader.value = AsyncError(MissingQuestException());
+      return;
+    }
+
+    _objectivesLoader.value = AsyncLoading();
+    final outlineResult = await QuestRepo.outline(questId);
+    final outline = outlineResult.result;
+
+    if (outline == null) {
+      _objectivesLoader.value = AsyncError(
+        outlineResult.error ?? MissingQuestException(),
+      );
+      return;
+    }
+
+    final filtered = objectiveGroupsWithActivities(outline.groups);
+    if (filtered.isEmpty) {
+      _objectivesLoader.value = AsyncError(MissingQuestException());
+      return;
+    }
+    _objectivesLoader.value = AsyncLoaded(filtered);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<QuestObjectiveGroup>>(
-      future: _groupsFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(child: CircularProgressIndicator.adaptive());
-        }
-        // Activity-less objectives are dropped (see [objectiveGroupsWithActivities],
-        // #7114). Filtering before the empty check means an outline that is ALL
-        // activity-less still falls through to the "no activities" message.
-        final groups = objectiveGroupsWithActivities(snapshot.data);
-        if (groups.isEmpty) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                L10n.of(context).noActivitiesFound,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Theme.of(context).colorScheme.outline),
+    return ValueListenableBuilder(
+      valueListenable: _objectivesLoader,
+      builder: (context, state, _) {
+        switch (state) {
+          case AsyncLoading():
+          case AsyncIdle():
+            return const Center(child: CircularProgressIndicator.adaptive());
+          case AsyncError(error: final error):
+            if (error is MissingQuestException) {
+              return Center(
+                child: Container(
+                  constraints: BoxConstraints(maxWidth: 400.0),
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      Text(
+                        L10n.of(context).missingCourseOutline,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      if (widget.room?.canChangeStateEvent(
+                            PangeaEventTypes.coursePlan,
+                          ) ==
+                          true)
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primaryContainer,
+                            foregroundColor: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
+                          ),
+                          onPressed: () {},
+                          child: Row(
+                            spacing: 8.0,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.map_outlined),
+                              Text(L10n.of(context).addCoursePlan),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              );
+            }
+
+            return Center(
+              child: ErrorIndicator(message: error.toLocalizedString(context)),
+            );
+          case AsyncLoaded(value: final groups):
+            final list = ListView.separated(
+              controller: widget.shrinkWrap ? null : _scrollController,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              shrinkWrap: widget.shrinkWrap,
+              physics: widget.shrinkWrap
+                  ? const NeverScrollableScrollPhysics()
+                  : null,
+              itemCount: groups.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 24.0),
+              itemBuilder: (context, i) => _ObjectiveSection(
+                index: i,
+                group: groups[i],
+                room: widget.room,
+                hasCompletedActivity: widget.hasCompletedActivity,
+                onTapActivity: _onActivityTap,
               ),
-            ),
-          );
+            );
+
+            // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+            // with no map behind it, so a wheel can't leak — return it bare. The
+            // standalone course-card panel floats over the map, so capture the wheel
+            // OPAQUELY across the whole panel: the gaps between cards and the
+            // objective headers are hit-transparent, and a wheel there would zoom the
+            // map instead of scrolling the list. See [_claimVerticalScroll].
+            if (widget.shrinkWrap) return list;
+            return Listener(
+              behavior: HitTestBehavior.opaque,
+              onPointerSignal: _claimVerticalScroll,
+              child: list,
+            );
         }
-        final list = ListView.separated(
-          controller: widget.shrinkWrap ? null : _scrollController,
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          shrinkWrap: widget.shrinkWrap,
-          physics: widget.shrinkWrap
-              ? const NeverScrollableScrollPhysics()
-              : null,
-          itemCount: groups.length,
-          separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-          itemBuilder: (context, i) => _ObjectiveSection(
-            index: i,
-            group: groups[i],
-            room: widget.room,
-            hasCompletedActivity: widget.hasCompletedActivity,
-          ),
-        );
-        // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-        // with no map behind it, so a wheel can't leak — return it bare. The
-        // standalone course-card panel floats over the map, so capture the wheel
-        // OPAQUELY across the whole panel: the gaps between cards and the
-        // objective headers are hit-transparent, and a wheel there would zoom the
-        // map instead of scrolling the list. See [_claimVerticalScroll].
-        if (widget.shrinkWrap) return list;
-        return Listener(
-          behavior: HitTestBehavior.opaque,
-          onPointerSignal: _claimVerticalScroll,
-          child: list,
-        );
       },
     );
   }
@@ -189,12 +290,14 @@ class _ObjectiveSection extends StatelessWidget {
   /// activity opens it standalone rather than as an in-course `?activity=`
   /// overlay.
   final Room? room;
+  final Function(QuestActivity) onTapActivity;
   final bool Function(String userId, String activityId)? hasCompletedActivity;
 
   const _ObjectiveSection({
     required this.index,
     required this.group,
     required this.room,
+    required this.onTapActivity,
     required this.hasCompletedActivity,
   });
 
@@ -244,42 +347,7 @@ class _ObjectiveSection extends StatelessWidget {
               return MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                  // In a preview (no room), open the activity as a standalone
-                  // world object (`/<activityId>`). In a joined course, open it
-                  // as the focused detail over the map: DROP the `left=course`
-                  // card (so it isn't left blank beside the activity) but KEEP
-                  // the `?m=course:` filter. That surviving course scope is what
-                  // marks this plan as the card's child: its close is a back-arrow
-                  // that reopens the card (a pin-opened plan drops the scope and so
-                  // closes with an X). The map stays course-scoped and zooms to
-                  // this activity (`mapFocusFor` → `ActivityFocus`). See
-                  // routing.instructions.md.
-                  onTap: () {
-                    if (room == null) {
-                      // Token-native open; the course context (if any) is kept,
-                      // so the plan closes back to it. See routing.instructions.md.
-                      context.go(
-                        WorkspaceNav.openActivity(
-                          GoRouterState.of(context).uri,
-                          ref.activityId,
-                        ),
-                      );
-                      return;
-                    }
-                    // Immersive in-course open: the token producer drops the
-                    // `left=course` card (and any right panel) and keeps the
-                    // `?m=course:` scope, so the plan takes the card's slot and
-                    // backs out to it. A video hero autostarts (muted).
-                    context.go(
-                      WorkspaceNav.openCourseActivity(
-                        room!.id,
-                        ref.activityId,
-                        autoplay:
-                            ref.plan.heroBlock?.isVideo == true ||
-                            ref.plan.heroBlock?.isYoutube == true,
-                      ),
-                    );
-                  },
+                  onTap: () => onTapActivity(ref),
                   child: Stack(
                     children: [
                       ActivitySuggestionCard(

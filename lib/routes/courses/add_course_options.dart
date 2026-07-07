@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -17,11 +16,7 @@ class AddCourseOptions extends StatelessWidget {
   const AddCourseOptions({super.key});
 
   void _goToStep(BuildContext context, String step) => context.go(
-    WorkspaceNav.setSection(
-      GoRouterState.of(context).uri,
-      PanelToken('addcourse', step),
-      keepRoom: false,
-    ),
+    WorkspaceNav.openAddCourse(GoRouterState.of(context).uri, subpage: step),
   );
 
   @override

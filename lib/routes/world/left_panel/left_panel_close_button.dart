@@ -34,11 +34,11 @@ class LeftPanelCloseButton extends StatelessWidget {
   /// course-management page is its own `coursepage` detail with its own close,
   /// not a push on the room/course token.) See `close_affordance`.
   bool get _isPushedSubPage {
-    final page = token.param;
-    if (page == null) return false;
+    final param = token.param;
+    if (param == null) return false;
     if (token.type == 'room' || token.type == 'session') {
       // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
-      return page.contains('/');
+      return param.isPushed;
     }
     return false;
   }

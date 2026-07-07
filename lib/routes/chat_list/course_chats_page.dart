@@ -434,7 +434,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
             context.go(
               WorkspaceNav.openSettings(
                 GoRouterState.of(context).uri,
-                page: userId == null
+                subpage: userId == null
                     ? 'security/ignorelist'
                     : 'security/ignorelist/$userId',
               ),
@@ -473,7 +473,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
     if (room.isSpace) {
       context.go(
-        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, room.id),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, room.id),
       );
       return;
     }

@@ -72,7 +72,7 @@ class SettingsPasswordController extends State<SettingsPassword> {
       if (mounted) {
         NavigationUtil.popOrGo(
           context,
-          WorkspaceNav.settingsBack(
+          WorkspaceNav.closeSettingsSubpage(
             GoRouterState.of(context).uri,
             'security/password',
           ),

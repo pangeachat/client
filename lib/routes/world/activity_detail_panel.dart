@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -23,33 +24,23 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// The parent course is the active course space when one is selected;
 /// otherwise the first joined course whose plan includes the activity (or none
 /// — you no longer need a course to play).
-class ActivityDetailPanel extends StatefulWidget {
-  final String activityId;
-
-  /// The selected course space, if the detail was opened from within a course.
+class LeftPanelActivityDetailsSubpage extends StatefulWidget {
+  final ActivityTokenParam param;
   final String? parentSpaceId;
 
-  /// An existing session room to join (the `?roomid=` of the canonical open),
-  /// when re-entering an in-progress session rather than starting fresh.
-  final String? roomId;
-
-  /// Begin launching a session immediately (the first-class `?launch=true`
-  /// flow) instead of showing the not-started start screen.
-  final bool launch;
-
-  const ActivityDetailPanel({
+  const LeftPanelActivityDetailsSubpage({
     super.key,
-    required this.activityId,
+    required this.param,
     this.parentSpaceId,
-    this.roomId,
-    this.launch = false,
   });
 
   @override
-  State<ActivityDetailPanel> createState() => _ActivityDetailPanelState();
+  State<LeftPanelActivityDetailsSubpage> createState() =>
+      _LeftPanelActivityDetailsSubpageState();
 }
 
-class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
+class _LeftPanelActivityDetailsSubpageState
+    extends State<LeftPanelActivityDetailsSubpage> {
   String? _parentId;
   bool _loading = true;
 
@@ -60,9 +51,9 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
   }
 
   @override
-  void didUpdateWidget(covariant ActivityDetailPanel oldWidget) {
+  void didUpdateWidget(covariant LeftPanelActivityDetailsSubpage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.activityId != widget.activityId ||
+    if (oldWidget.param.activityId != widget.param.activityId ||
         oldWidget.parentSpaceId != widget.parentSpaceId) {
       setState(() {
         _loading = true;
@@ -92,7 +83,7 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
     try {
       final spaces = await ActivityCourseResolver.matchingCourseSpaces(
         Matrix.of(context).client,
-        widget.activityId,
+        widget.param.activityId,
         null,
       ).timeout(const Duration(seconds: 10));
       if (!mounted) return;
@@ -104,7 +95,7 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {'activityId': widget.activityId},
+        data: {'activityId': widget.param.activityId},
       );
       if (mounted) setState(() => _loading = false);
     }
@@ -136,10 +127,10 @@ class _ActivityDetailPanelState extends State<ActivityDetailPanel> {
     // own AppBar (the back/X nav row when embedded), so it renders directly.
     if (!_loading) {
       return ActivitySessionStartPage(
-        activityId: widget.activityId,
+        activityId: widget.param.activityId,
         parentId: _parentId,
-        roomId: widget.roomId,
-        launch: widget.launch,
+        roomId: widget.param.roomId,
+        launch: widget.param.launch,
       );
     }
 

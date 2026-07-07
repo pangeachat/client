@@ -2,11 +2,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 
 /// The token-grammar encoding contract (routing.instructions.md): params carry
@@ -64,14 +65,20 @@ void main() {
           type: ConstructTypeEnum.vocab,
           category: 'adj',
         );
-        final token = PanelToken('vocab', construct.toTokenParam());
+        final token = PanelToken(
+          'vocab',
+          VocabAnalyticsTokenParam.parse(construct.toTokenParam()),
+        );
         // Through the list grammar and back — a comma inside a lemma can never
         // shatter the token list.
         final uri = u('/?right=analytics:vocab,${token.encode()}');
         final parsed = parseOpenPanels(uri).right;
         expect(parsed.length, 2, reason: 'list shattered for "$lemma"');
         final vocab = parsed.firstWhere((t) => t.type == 'vocab');
-        final back = ConstructIdentifier.fromTokenParam('vocab', vocab.param!);
+        final back = ConstructIdentifier.fromTokenParam(
+          ConstructTypeEnum.vocab,
+          vocab.param!.build(),
+        );
         expect(back?.lemma, lemma);
         expect(back?.category, 'adj');
         expect(back?.type, ConstructTypeEnum.vocab);
@@ -82,7 +89,7 @@ void main() {
       'the token type supplies the construct type — grammar means morph',
       () {
         final construct = ConstructIdentifier.fromTokenParam(
-          'grammar',
+          ConstructTypeEnum.morph,
           'ser.aux',
         );
         expect(construct?.type, ConstructTypeEnum.morph);
@@ -110,10 +117,13 @@ void main() {
         'empty param is null', () {
       // A malformed field decodes to its raw form (harmless), never a crash.
       expect(
-        () => ConstructIdentifier.fromTokenParam('vocab', '%2'),
+        () => ConstructIdentifier.fromTokenParam(ConstructTypeEnum.vocab, '%2'),
         returnsNormally,
       );
-      expect(ConstructIdentifier.fromTokenParam('vocab', ''), isNull);
+      expect(
+        ConstructIdentifier.fromTokenParam(ConstructTypeEnum.vocab, ''),
+        isNull,
+      );
     });
 
     test('TokenFields.decode degrades a malformed field to its raw form', () {
@@ -124,39 +134,39 @@ void main() {
     test(
       'ActivityToken/RoomToken parse a malformed field without throwing',
       () {
-        expect(() => ActivityToken.parse('act-1.r%2'), returnsNormally);
-        expect(() => RoomToken.parse('!abc/e/%2'), returnsNormally);
+        expect(() => ActivityTokenParam.parse('act-1.r%2'), returnsNormally);
+        expect(() => RoomTokenParam.parse('!abc/e/%2'), returnsNormally);
       },
     );
   });
 
   group('ActivityToken (session bindings ride the fields)', () {
     test('id-only builds a bare param', () {
-      expect(ActivityToken.build('act-1'), 'act-1');
-      final parsed = ActivityToken.parse('act-1');
-      expect(parsed.id, 'act-1');
+      expect(ActivityTokenParam(activityId: 'act-1').build(), 'act-1');
+      final parsed = ActivityTokenParam.parse('act-1');
+      expect(parsed.activityId, 'act-1');
       expect(parsed.roomId, isNull);
       expect(parsed.launch, isFalse);
       expect(parsed.autoplay, isNull);
     });
 
     test('all fields round-trip', () {
-      final param = ActivityToken.build(
-        'act-1',
+      final param = ActivityTokenParam(
+        activityId: 'act-1',
         roomId: '!sess',
         launch: true,
         autoplay: 2,
-      );
-      final parsed = ActivityToken.parse(param);
-      expect(parsed.id, 'act-1');
+      ).build();
+      final parsed = ActivityTokenParam.parse(param);
+      expect(parsed.activityId, 'act-1');
       expect(parsed.roomId, '!sess');
       expect(parsed.launch, isTrue);
       expect(parsed.autoplay, 2);
     });
 
     test('unknown fields are ignored (newer URL, older client)', () {
-      final parsed = ActivityToken.parse('act-1.zfuture.l');
-      expect(parsed.id, 'act-1');
+      final parsed = ActivityTokenParam.parse('act-1.zfuture.l');
+      expect(parsed.activityId, 'act-1');
       expect(parsed.launch, isTrue);
     });
   });
@@ -165,8 +175,8 @@ void main() {
     'RoomToken (event/filter fold into the room param, not loose query)',
     () {
       test('a bare id has no sub-page, filter, or eventId', () {
-        expect(RoomToken.build('!abc'), '!abc');
-        final parsed = RoomToken.parse('!abc');
+        expect(RoomTokenParam(id: '!abc').build(), '!abc');
+        final parsed = RoomTokenParam.parse('!abc');
         expect(parsed.id, '!abc');
         expect(parsed.subPage, isNull);
         expect(parsed.filter, isNull);
@@ -174,9 +184,9 @@ void main() {
       });
 
       test('a plain sub-page (search, edit, …) round-trips with no filter', () {
-        final param = RoomToken.build('!abc', subPage: 'search');
+        final param = RoomTokenParam(id: '!abc', subPage: 'search').build();
         expect(param, '!abc/search');
-        final parsed = RoomToken.parse(param);
+        final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subPage, 'search');
         expect(parsed.filter, isNull);
@@ -184,13 +194,13 @@ void main() {
       });
 
       test('an invite filter appends after the sub-page and round-trips', () {
-        final param = RoomToken.build(
-          '!abc',
+        final param = RoomTokenParam(
+          id: '!abc',
           subPage: 'invite',
           filter: 'knocking',
-        );
+        ).build();
         expect(param, '!abc/invite/knocking');
-        final parsed = RoomToken.parse(param);
+        final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subPage, 'invite');
         expect(parsed.filter, 'knocking');
@@ -198,9 +208,12 @@ void main() {
       });
 
       test('a details page with no filter round-trips (edit/access/…)', () {
-        final param = RoomToken.build('!abc', subPage: 'details/edit');
+        final param = RoomTokenParam(
+          id: '!abc',
+          subPage: 'details/edit',
+        ).build();
         expect(param, '!abc/details/edit');
-        final parsed = RoomToken.parse(param);
+        final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subPage, 'details/edit');
         expect(parsed.filter, isNull);
@@ -209,13 +222,13 @@ void main() {
       test(
         'a details/invite filter round-trips, keeping the details prefix',
         () {
-          final param = RoomToken.build(
-            '!abc',
+          final param = RoomTokenParam(
+            id: '!abc',
             subPage: 'details/invite',
             filter: 'participants',
-          );
+          ).build();
           expect(param, '!abc/details/invite/participants');
-          final parsed = RoomToken.parse(param);
+          final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc');
           expect(parsed.subPage, 'details/invite');
           expect(parsed.filter, 'participants');
@@ -225,9 +238,9 @@ void main() {
       test('a jump-to-message eventId round-trips despite its hostile '
           r'characters ($, :, /)', () {
         const eventId = r'$abc123:matrix.org/weird';
-        final param = RoomToken.build('!abc', eventId: eventId);
+        final param = RoomTokenParam(id: '!abc', eventId: eventId).build();
         expect(param, '!abc/e/${TokenFields.encode(eventId)}');
-        final parsed = RoomToken.parse(param);
+        final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subPage, isNull);
         expect(parsed.filter, isNull);
@@ -235,12 +248,12 @@ void main() {
       });
 
       test('eventId takes precedence over a subPage when both are passed', () {
-        final param = RoomToken.build(
-          '!abc',
+        final param = RoomTokenParam(
+          id: '!abc',
           subPage: 'search',
           eventId: r'$xyz',
-        );
-        final parsed = RoomToken.parse(param);
+        ).build();
+        final parsed = RoomTokenParam.parse(param);
         expect(parsed.subPage, isNull);
         expect(parsed.eventId, r'$xyz');
       });
@@ -248,12 +261,12 @@ void main() {
       test('a hostile filter value round-trips (comma, colon, dot, space)', () {
         const hostileFilters = ['a,b:c/d', 'a.b.c', 'ir de compras'];
         for (final filter in hostileFilters) {
-          final param = RoomToken.build(
-            '!abc',
+          final param = RoomTokenParam(
+            id: '!abc',
             subPage: 'invite',
             filter: filter,
-          );
-          final parsed = RoomToken.parse(param);
+          ).build();
+          final parsed = RoomTokenParam.parse(param);
           expect(
             parsed.filter,
             filter,
@@ -267,8 +280,11 @@ void main() {
         () {
           // Room ids never contain `/`, so the leading segment up to the first
           // `/` is always the whole id — including a foreign `!id:server` form.
-          final param = RoomToken.build('!abc:example.org', subPage: 'search');
-          final parsed = RoomToken.parse(param);
+          final param = RoomTokenParam(
+            id: '!abc:example.org',
+            subPage: 'search',
+          ).build();
+          final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc:example.org');
           expect(parsed.subPage, 'search');
         },
@@ -287,7 +303,7 @@ void main() {
   group('activityInfoFor (session bindings ride the token fields)', () {
     test('reads the token fields', () {
       final info = activityInfoFor(u('/?c=!s&left=activity:act-1.r!sess.l'));
-      expect(info?.id, 'act-1');
+      expect(info?.activityId, 'act-1');
       expect(info?.roomId, '!sess');
       expect(info?.launch, isTrue);
     });
