@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -14,6 +17,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -42,9 +46,26 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
+  /// The level-up celebration signal for the medal — the same
+  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
+  /// with the snackbar's subscription gate applied at event time. Created
+  /// once so rebuilds don't churn the celebration's subscription.
+  Stream<LevelUpdate>? _levelUpdates;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _levelUpdates ??= Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .levelUpdateStream
+        .stream
+        .where(
+          (_) => MatrixState
+              .pangeaController
+              .subscriptionController
+              .showSubscriptionGatedContent,
+        );
     if (_profileLoaded) return;
     _profileLoaded = true;
     _loadProfile();
@@ -120,6 +141,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
                 onTap: _openAnalytics,
                 onLevelTap: _openLevel,
                 l2: l2,
+                levelUpdates: _levelUpdates,
               ),
               if (l2 != null)
                 Padding(
@@ -204,10 +226,15 @@ class _PowerupsPill extends StatelessWidget {
   final VoidCallback onLevelTap;
   final LanguageModel? l2;
 
+  /// Level-change signal for the medal's celebration; see
+  /// [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
+
   const _PowerupsPill({
     required this.onTap,
     required this.onLevelTap,
     required this.l2,
+    required this.levelUpdates,
   });
 
   static const double _xpStroke = 5.0;
@@ -237,6 +264,9 @@ class _PowerupsPill extends StatelessWidget {
 
             return Stack(
               alignment: Alignment.bottomCenter,
+              // The medal's level-up celebration paints just outside the
+              // pill's bounds (badge pulse + chip); don't clip it.
+              clipBehavior: Clip.none,
               children: [
                 // The pill's frame IS the XP ring: a gray track that fills gold clockwise
                 // from the bottom-center (where the level medal sits) toward the next
@@ -312,7 +342,10 @@ class _PowerupsPill extends StatelessWidget {
                   bottom: 0,
                   child: Material(
                     type: MaterialType.transparency,
-                    child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: levelUpdates,
+                      child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                    ),
                   ),
                 ),
               ],
