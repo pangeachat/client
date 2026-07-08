@@ -843,6 +843,34 @@ void main() {
     );
   });
 
+  group('inbound join-code consumption (#7524)', () {
+    // The auto-submit's history REPLACE target: the coded `private/<code>`
+    // leaf reduced to the manual `private` page, so browser back / refresh
+    // never re-fires the join (course_code_page.dart).
+    test('replacing the coded leaf with the manual page strips the code', () {
+      final coded = u('/?left=addcourse:private%2Fvj3pc8b');
+      expect(joinCodeFor(coded), 'vj3pc8b');
+      final consumed = WorkspaceNav.pushPage(coded, 'addcourse', 'private');
+      expect(consumed, '/?left=addcourse:private');
+      expect(joinCodeFor(u(consumed)), isNull);
+    });
+
+    test('consumption preserves the rest of the workspace URL', () {
+      final coded = u(
+        '/?c=!s&left=addcourse:private%2Fvj3pc8b&right=analytics:vocab',
+      );
+      final consumed = u(WorkspaceNav.pushPage(coded, 'addcourse', 'private'));
+      expect(joinCodeFor(consumed), isNull);
+      expect(activeSpaceIdFor(consumed), isNotNull);
+      expect(parseOpenPanels(consumed).right, [
+        const PanelToken('analytics', 'vocab'),
+      ]);
+      expect(parseOpenPanels(consumed).left, [
+        const PanelToken('addcourse', 'private'),
+      ]);
+    });
+  });
+
   group('pushPage / popPage (generic param push on a pushable panel)', () {
     test('push deepens the param; pop returns one level then to the root', () {
       var loc = WorkspaceNav.pushPage(u('/'), 'settingspage', 'security');

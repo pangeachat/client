@@ -91,10 +91,12 @@ type is whose master) and keeps the given order for pairs the registry does not
 relate. That is the whole compatibility story: **the client is the only
 producer of its URLs, so retired shapes and spellings are simply deleted, not
 redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). The one inbound URL
-contract is the shareable standalone activity link (`/<uuid>`), which
+maintained (a deliberate call at current scale, #7467). The inbound URL
+contracts are the shareable standalone activity link (`/<uuid>`) and the course
+join link (`/join_with_link?classcode=<code>`, the CloudFront short-code 302
+target, plus its native `/join` spelling — #7524), which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into its `activity` token before render.
+into their `activity` / `addcourse:private/<code>` tokens before render.
 
 **Known carve-out (#7519).** Five legacy path-route trees still render as
 route-driven center details and are navigated to by live flows: the chat
@@ -119,10 +121,10 @@ External pointers never carry workspace paths either: a push notification
 resolves through its structured content keys and a `matrix.to` link through the
 in-app link handler — both emit token URLs in code
 ([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-The one URL that arrives from outside is the shareable standalone activity link
-(`/<uuid>`), rewritten to its `activity` token at the router redirect before
-anything renders — so there is exactly one representation by the time the shell
-builds.
+The URLs that arrive from outside — the shareable standalone activity link
+(`/<uuid>`) and the course join link (`/join_with_link?classcode=<code>`) — are
+rewritten to their tokens at the router redirect before anything renders — so
+there is exactly one representation by the time the shell builds.
 
 ### The course context
 
@@ -179,7 +181,8 @@ not yet joined the token model; the pre-login and utility routes (`/home`,
 flows (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
 and the public-course preview. Nothing else path-shaped exists: the retired
 section paths and their redirect shims are deleted, and `LegacyRedirects`
-handles exactly one shape — the shareable `/<uuid>` activity link.
+handles exactly two shapes — the shareable `/<uuid>` activity link and the
+course join link (`/join_with_link` / `/join` with `?classcode=`, #7524).
 
 **Everything a panel needs rides in its token's fields — there are no loose
 params.** The one external URL producer, the shareable `/<uuid>` activity link,

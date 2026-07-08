@@ -20,6 +20,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
@@ -227,9 +228,26 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(
-                  isL2Set ? PRoutes.world : '/registration',
-                );
+                if (!isL2Set) {
+                  // A new user's onboarding joins with any code cached across
+                  // the login bounce and clears it at completion
+                  // (user_type_onboarding_step.dart).
+                  FluffyChatApp.router.go('/registration');
+                } else {
+                  // A join code cached across the login bounce
+                  // (PAuthGaurd.roomsRedirect, #7524) re-enters the same
+                  // addcourse:private/<code> token flow a logged-in join link
+                  // takes. The read is TTL-guarded (SpaceCodeRepo) and the
+                  // cache cleared here, so a stale code never surprise-joins
+                  // a later login.
+                  final joinCode = SpaceCodeRepo.spaceCode;
+                  if (joinCode != null) await SpaceCodeRepo.clearSpaceCode();
+                  FluffyChatApp.router.go(
+                    joinCode != null
+                        ? PRoutes.joinWithCode(joinCode)
+                        : PRoutes.world,
+                  );
+                }
                 // Pangea#
               });
     // #Pangea

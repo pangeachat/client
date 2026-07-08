@@ -6,6 +6,7 @@ import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_fields.dart';
 
 /// World_v2 routing facts — the single place navigation/layout decisions are
 /// derived from a [GoRouterState]. Every consumer (the shell layout, the
@@ -166,6 +167,21 @@ String? activeRoomIdFor(GoRouterState state) {
 ({String id, String? roomId, bool launch, int? autoplay})? activityFor(
   GoRouterState state,
 ) => activityInfoFor(state.uri);
+
+/// The course join code an open URI carries — the `addcourse` token's
+/// `private/<code>` leaf (the `LegacyRedirects` join-link rewrite target),
+/// decoded, or null. The auth guard reads this to ferry an inbound join code
+/// across the login bounce (PAuthGaurd.roomsRedirect, #7524).
+String? joinCodeFor(Uri uri) {
+  for (final token in parseOpenPanels(uri).left) {
+    if (token.type != 'addcourse') continue;
+    final param = token.param ?? '';
+    if (!param.startsWith('private/')) continue;
+    final field = param.substring('private/'.length);
+    if (field.isNotEmpty) return TokenFields.decode(field);
+  }
+  return null;
+}
 
 /// What the map should focus. Today: the open activity. Extend by adding a
 /// [MapFocus] subclass and returning it here.

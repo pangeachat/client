@@ -14,7 +14,8 @@ import 'package:fluffychat/routes/world/panel_header.dart';
 /// wizard, hosted as a URL-token panel instead of the retired route-driven
 /// `_MainView` card. The step is the `addcourse` token's param — a **bare**
 /// token (no param) is the hub chooser (the entry the rail "+" opens), `browse`
-/// (public courses), `private` (enter a code), or `own[/<lang>|/all]` (start my
+/// (public courses), `private[/<code>]` (enter a code; an inbound join link's
+/// code rides the leaf and submits itself), or `own[/<lang>|/all]` (start my
 /// own / plan list): a trailing language code seeds the picker's language
 /// filter, `all` means no filter (showAll) — folded into the token instead of
 /// loose `?lang=`/`?showAll=` query params (routing.instructions.md). Each
@@ -38,7 +39,19 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
   Widget build(BuildContext context) {
     final param = token.param ?? '';
     if (param == 'browse') return const FindCoursePage();
-    if (param == 'private') return const CourseCodePage();
+    if (param == 'private' || param.startsWith('private/')) {
+      // An inbound join link's code rides as a `private/<code>` leaf
+      // (LegacyRedirects, #7524): the join-with-code page prefills it and
+      // submits the same join a manual entry performs.
+      final field = param.startsWith('private/')
+          ? param.substring('private/'.length)
+          : null;
+      return CourseCodePage(
+        initialCode: field == null || field.isEmpty
+            ? null
+            : TokenFields.decode(field),
+      );
+    }
     if (param == 'own' || param.startsWith('own/')) {
       final field = param.startsWith('own/')
           ? param.substring('own/'.length)
