@@ -4,7 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -60,7 +60,14 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (heroIsVideo) const ActivityMediaPlayBadge(size: 16.0),
+                  // Video tag, not a play badge — tapping opens the activity
+                  // (where it plays), so a play glyph here would mislead (#7543).
+                  if (heroIsVideo)
+                    const Positioned(
+                      right: 2.0,
+                      bottom: 2.0,
+                      child: ActivityMediaVideoTag(size: 11.0),
+                    ),
                 ],
               ),
               title: Row(
