@@ -335,55 +335,64 @@ class SettingsView extends StatelessWidget {
                       onTap: () => launchUrlString(AppConfig.termsOfServiceUrl),
                       trailing: const Icon(Icons.open_in_new_outlined),
                     ),
-                    FutureBuilder<PackageInfo>(
-                      future: PackageInfo.fromPlatform(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          return ListTile(
-                            leading: const Icon(Icons.info_outline),
-                            trailing: const Icon(Icons.copy_outlined),
-                            onTap: () async {
-                              if (snapshot.data == null) return;
-                              await Clipboard.setData(
-                                ClipboardData(
-                                  text:
-                                      "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
-                                ),
-                              );
-                              ScaffoldMessenger.of(
-                                context,
-                              ).showSnackBarAnnounced(
-                                SnackBar(
-                                  content: Text(
-                                    L10n.of(context).copiedToClipboard,
+                    if (MatrixState
+                        .pangeaController
+                        .userController
+                        .showDeveloperOptions)
+                      FutureBuilder<PackageInfo>(
+                        future: PackageInfo.fromPlatform(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return ListTile(
+                              leading: const Icon(Icons.info_outline),
+                              trailing: const Icon(Icons.copy_outlined),
+                              onTap: () async {
+                                if (snapshot.data == null) return;
+                                await Clipboard.setData(
+                                  ClipboardData(
+                                    text:
+                                        "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
                                   ),
-                                ),
-                              );
-                            },
-                            title: Text(
-                              snapshot.data != null
-                                  ? L10n.of(context).versionText(
-                                      snapshot.data!.version,
-                                      snapshot.data!.buildNumber,
-                                    )
-                                  : L10n.of(context).versionNotFound,
-                            ),
-                          );
-                        } else if (snapshot.hasError) {
-                          return ListTile(
-                            leading: const Icon(Icons.error_outline),
-                            title: Text(L10n.of(context).versionFetchError),
-                          );
-                        } else {
-                          return ListTile(
-                            leading: const CircularProgressIndicator(),
-                            title: Text(L10n.of(context).fetchingVersion),
-                          );
-                        }
-                      },
-                    ),
+                                );
+                                ScaffoldMessenger.of(
+                                  context,
+                                ).showSnackBarAnnounced(
+                                  SnackBar(
+                                    content: Text(
+                                      L10n.of(context).copiedToClipboard,
+                                    ),
+                                  ),
+                                );
+                              },
+                              title: Text(
+                                snapshot.data != null
+                                    ? L10n.of(context).versionText(
+                                        snapshot.data!.version,
+                                        snapshot.data!.buildNumber,
+                                      )
+                                    : L10n.of(context).versionNotFound,
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            return ListTile(
+                              leading: const Icon(Icons.error_outline),
+                              title: Text(L10n.of(context).versionFetchError),
+                            );
+                          } else {
+                            return ListTile(
+                              leading: const CircularProgressIndicator(),
+                              title: Text(L10n.of(context).fetchingVersion),
+                            );
+                          }
+                        },
+                      ),
                     // Conditional ListTile based on the environment (staging or not)
-                    if (Environment.isStagingEnvironment)
+                    if (Environment.isStagingEnvironment &&
+                        MatrixState
+                            .pangeaController
+                            .userController
+                            .showDeveloperOptions)
                       ListTile(
                         leading: const Icon(Icons.bug_report_outlined),
                         title: Text(L10n.of(context).connectedToStaging),
