@@ -20,8 +20,9 @@ class RoomSubpageTokenParam extends TokenParam {
     final courseId = this.courseId;
     return TokenFields.join([
       TokenFields.encode(subpage),
-      if (filter != null) 'f${TokenFields.encode(filter)}',
-      if (courseId != null) 'c${TokenFields.encode(courseId)}',
+      if (filter != null && filter.isNotEmpty) 'f${TokenFields.encode(filter)}',
+      if (courseId != null && courseId.isNotEmpty)
+        'c${TokenFields.encode(courseId)}',
     ]);
   }
 

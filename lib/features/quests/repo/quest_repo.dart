@@ -124,10 +124,11 @@ class QuestRepo {
       );
       return Result.value(quest);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
       if (e is Response && e.statusCode == 404) {
         return Result.error(MissingQuestException());
       }
+
+      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
       return Result.error(e);
     }
   }

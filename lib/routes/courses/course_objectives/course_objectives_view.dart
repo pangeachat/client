@@ -155,6 +155,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     final outlineResult = await QuestRepo.outline(questId);
     final outline = outlineResult.result;
 
+    if (!mounted) return;
+
     if (outline == null) {
       _objectivesLoader.value = AsyncError(
         outlineResult.error ?? MissingQuestException(),

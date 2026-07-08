@@ -860,9 +860,15 @@ abstract class WorkspaceNav {
         ),
       ]);
 
-  static String closeCoursePage(Uri current, String page) => closeLeft(
+  static String closeCoursePage(Uri current, String page) => _mutate(
     current,
-    PanelToken('coursepage', RoomSubpageTokenParam(subpage: page)),
+    'left',
+    (tokens) => tokens.where((t) {
+      if (t.type != 'coursepage') return true;
+      final param = t.param;
+      if (param is! RoomSubpageTokenParam) return true;
+      return param.subpage != page;
+    }).toList(),
   );
 
   static String openAddCourse(

@@ -40,7 +40,8 @@ class AddCourseTokenParam extends TokenParam {
 
   factory AddCourseTokenParam.parse(String param) {
     final parts = TokenFields.split(param);
-    final subpage = parts.first;
+    final subpage = TokenFields.decode(parts.first);
+
     if (parts.length <= 1) {
       return AddCourseTokenParam(subpage: subpage);
     }
