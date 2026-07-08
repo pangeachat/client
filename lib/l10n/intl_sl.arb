@@ -1961,7 +1961,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-06 10:21:38.960495",
+    "@@last_modified": "2026-07-08 15:20:23.557514",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11375,6 +11375,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} od {total} zvezd zasluženih",
+    "activityNoLongerSupported": "Ta dejavnost je potekala na starejši različici dejavnosti in ni več podprta. Še vedno lahko pregledate, kaj se je zgodilo v tej seji.",
+    "activityLoadFailed": "Dejavnosti ni bilo mogoče naložiti. Preverite svojo povezavo in poskusite znova.",
+    "levelUpChip": "Raven {level}!",
+    "missingCourseOutline": "Ta tečaj ni več na voljo",
+    "missingCourseOutlineCta": "Ta tečaj ni več na voljo. Izberite nov načrt tečaja.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

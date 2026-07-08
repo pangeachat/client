@@ -1504,7 +1504,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-06 10:21:23.230139",
+    "@@last_modified": "2026-07-08 15:20:09.878531",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11369,6 +11369,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} di {total} stelle guadagnate",
+    "activityNoLongerSupported": "Questa attività è stata eseguita su una versione precedente delle attività e non è più supportata. Puoi comunque rivedere cosa è successo in questa sessione.",
+    "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
+    "levelUpChip": "Livello {level}!",
+    "missingCourseOutline": "Questo corso non è più disponibile",
+    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

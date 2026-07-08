@@ -2256,7 +2256,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-06 10:22:12.877083",
+    "@@last_modified": "2026-07-08 15:20:55.416093",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11278,6 +11278,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} ng {total} na mga bituin na nakuha",
+    "activityNoLongerSupported": "Ang aktibidad na ito ay tumakbo sa isang mas lumang bersyon ng mga aktibidad at hindi na sinusuportahan. Maaari mo pa ring suriin kung ano ang nangyari sa sesyon na ito.",
+    "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",
+    "levelUpChip": "Antas {level}!",
+    "missingCourseOutline": "Ang kursong ito ay hindi na available",
+    "missingCourseOutlineCta": "Ang kursong ito ay hindi na available. Pumili ng bagong plano ng kurso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

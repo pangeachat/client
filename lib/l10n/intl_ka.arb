@@ -2097,7 +2097,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-06 10:23:04.942153",
+    "@@last_modified": "2026-07-08 15:21:49.813591",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11327,6 +11327,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} ვარსკვლავი {total} ვარსკვლავიდან",
+    "activityNoLongerSupported": "ეს აქტივობა მიმდინარეობდა აქტივობების ძველ ვერსიაზე და აღარ არის მხარდაჭერილი. თქვენ შეგიძლიათ კვლავ შეისწავლოთ, რა მოხდა ამ სესიაში.",
+    "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
+    "levelUpChip": "დონის {level}!",
+    "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
+    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

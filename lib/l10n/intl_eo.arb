@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:55.796897",
+    "@@last_modified": "2026-07-08 15:21:45.657737",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11378,6 +11378,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} el {total} steloj gajnitaj",
+    "activityNoLongerSupported": "Ĉi tiu aktiveco funkciis sur pli malnova versio de aktivadoj kaj ne plu estas subtenata. Vi ankoraŭ povas revizii kio okazis en ĉi tiu sesio.",
+    "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
+    "levelUpChip": "Nivelo {level}!",
+    "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
+    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

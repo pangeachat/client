@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-06 10:21:36.052356",
+    "@@last_modified": "2026-07-08 15:20:21.125175",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10238,6 +10238,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} von {total} verdienten Sternen",
+    "activityNoLongerSupported": "Diese Aktivität lief auf einer älteren Version der Aktivitäten und wird nicht mehr unterstützt. Sie können jedoch überprüfen, was in dieser Sitzung passiert ist.",
+    "activityLoadFailed": "Die Aktivität konnte nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "levelUpChip": "Level {level}!",
+    "missingCourseOutline": "Dieser Kurs ist nicht mehr verfügbar",
+    "missingCourseOutlineCta": "Dieser Kurs ist nicht mehr verfügbar. Wählen Sie einen neuen Kursplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

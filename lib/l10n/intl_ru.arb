@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-06 10:22:58.341130",
+    "@@last_modified": "2026-07-08 15:21:47.657674",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11273,6 +11273,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} из {total} звезд заработано",
+    "activityNoLongerSupported": "Это действие выполнялось в более старой версии действий и больше не поддерживается. Вы все еще можете просмотреть, что произошло в этой сессии.",
+    "activityLoadFailed": "Не удалось загрузить действие. Проверьте ваше соединение и попробуйте снова.",
+    "levelUpChip": "Уровень {level}!",
+    "missingCourseOutline": "Этот курс больше недоступен",
+    "missingCourseOutlineCta": "Этот курс больше недоступен. Выберите новый план курса.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

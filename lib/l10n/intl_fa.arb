@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:41.664297",
+    "@@last_modified": "2026-07-08 15:21:26.868069",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10371,6 +10371,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} از {total} ستاره کسب شده",
+    "activityNoLongerSupported": "این فعالیت در نسخه قدیمی‌تری از فعالیت‌ها اجرا شده و دیگر پشتیبانی نمی‌شود. شما هنوز می‌توانید آنچه در این جلسه اتفاق افتاده را مرور کنید.",
+    "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
+    "levelUpChip": "سطح {level}!",
+    "missingCourseOutline": "این دوره دیگر در دسترس نیست",
+    "missingCourseOutlineCta": "این دوره دیگر در دسترس نیست. یک برنامه دوره جدید انتخاب کنید.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

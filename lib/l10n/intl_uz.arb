@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-06 10:22:10.022001",
+    "@@last_modified": "2026-07-08 15:20:52.049983",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10263,6 +10263,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} dan {total} yulduz to'plandi",
+    "activityNoLongerSupported": "Ushbu faoliyat eski versiyada o'tkazilgan va endi qo'llab-quvvatlanmaydi. Siz hali ham ushbu sessiyada nima bo'lganini ko'rishingiz mumkin.",
+    "activityLoadFailed": "Faoliyatni yuklab bo'lmadi. Ulanishingizni tekshiring va qaytadan urinib ko'ring.",
+    "levelUpChip": "Daraja {level}!",
+    "missingCourseOutline": "Ushbu kurs endi mavjud emas",
+    "missingCourseOutlineCta": "Ushbu kurs endi mavjud emas. Yangi kurs rejasini tanlang.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

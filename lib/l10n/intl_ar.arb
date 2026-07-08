@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-06 10:22:17.189135",
+    "@@last_modified": "2026-07-08 15:21:02.158737",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10599,6 +10599,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} من {total} نجوم مكتسبة",
+    "activityNoLongerSupported": "لم تعد هذه النشاط مدعومة. لقد تم تشغيلها على إصدار أقدم من الأنشطة. يمكنك مراجعة ما حدث في هذه الجلسة.",
+    "activityLoadFailed": "تعذر تحميل النشاط. تحقق من اتصالك وحاول مرة أخرى.",
+    "levelUpChip": "المستوى {level}!",
+    "missingCourseOutline": "لم يعد هذا المقرر متاحًا",
+    "missingCourseOutlineCta": "لم يعد هذا المقرر متاحًا. اختر خطة مقرر جديدة.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-06 10:21:12.986037",
+    "@@last_modified": "2026-07-08 15:20:05.338193",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10743,6 +10743,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} od {total} zvezda zarađenih",
+    "activityNoLongerSupported": "Ova aktivnost se izvodila na starijoj verziji aktivnosti i više nije podržana. I dalje možete pregledati šta se dogodilo u ovoj sesiji.",
+    "activityLoadFailed": "Nije moguće učitati aktivnost. Provjerite svoju vezu i pokušajte ponovo.",
+    "levelUpChip": "Nivo {level}!",
+    "missingCourseOutline": "Ovaj kurs više nije dostupan",
+    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

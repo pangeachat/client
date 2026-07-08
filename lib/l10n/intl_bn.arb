@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:39.621152",
+    "@@last_modified": "2026-07-08 15:21:24.404660",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10974,6 +10974,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} এর {total} তারকা অর্জিত",
+    "activityNoLongerSupported": "এই কার্যকলাপ পুরানো সংস্করণের উপর চলছিল এবং আর সমর্থিত নয়। আপনি এখনও এই সেশনে কি ঘটেছিল তা পর্যালোচনা করতে পারেন।",
+    "activityLoadFailed": "কার্যকলাপ লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
+    "levelUpChip": "স্তর {level}!",
+    "missingCourseOutline": "এই কোর্স আর উপলব্ধ নেই",
+    "missingCourseOutlineCta": "এই কোর্স আর উপলব্ধ নেই। একটি নতুন কোর্স পরিকল্পনা বেছে নিন।",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

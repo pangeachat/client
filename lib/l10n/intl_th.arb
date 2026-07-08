@@ -3376,7 +3376,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-06 10:22:03.063747",
+    "@@last_modified": "2026-07-08 15:20:44.044568",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10978,6 +10978,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} จาก {total} ดาวที่ได้รับ",
+    "activityNoLongerSupported": "กิจกรรมนี้ทำงานบนเวอร์ชันเก่าของกิจกรรมและไม่รองรับอีกต่อไป คุณยังสามารถตรวจสอบสิ่งที่เกิดขึ้นในเซสชันนี้ได้",
+    "activityLoadFailed": "ไม่สามารถโหลดกิจกรรมได้ ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง",
+    "levelUpChip": "เลเวล {level}!",
+    "missingCourseOutline": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป",
+    "missingCourseOutlineCta": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป กรุณาเลือกแผนหลักสูตรใหม่",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-06 10:21:33.221459",
+    "@@last_modified": "2026-07-08 15:20:19.129558",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10256,6 +10256,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} {total} tähte teenitud",
+    "activityNoLongerSupported": "See tegevus toimus vanema versiooni tegevustest ja ei ole enam toetatud. Saate siiski vaadata, mis selles seansis juhtus.",
+    "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",
+    "levelUpChip": "Tase {level}!",
+    "missingCourseOutline": "See kursus ei ole enam saadaval",
+    "missingCourseOutlineCta": "See kursus ei ole enam saadaval. Valige uus kursuse plaan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

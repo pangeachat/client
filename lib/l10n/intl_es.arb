@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-06 10:20:46.766968",
+    "@@last_modified": "2026-07-08 15:19:44.675942",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8353,6 +8353,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} de {total} estrellas ganadas",
+    "activityNoLongerSupported": "Esta actividad se realizó en una versión anterior de actividades y ya no es compatible. Aún puedes revisar lo que sucedió en esta sesión.",
+    "activityLoadFailed": "No se pudo cargar la actividad. Verifica tu conexión y vuelve a intentarlo.",
+    "levelUpChip": "¡Nivel {level}!",
+    "missingCourseOutline": "Este curso ya no está disponible",
+    "missingCourseOutlineCta": "Este curso ya no está disponible. Elige un nuevo plan de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

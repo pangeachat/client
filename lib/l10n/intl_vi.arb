@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:27.237694",
+    "@@last_modified": "2026-07-08 15:21:12.608843",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7342,6 +7342,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} trong số {total} sao đã kiếm được",
+    "activityNoLongerSupported": "Hoạt động này đã chạy trên phiên bản cũ hơn của các hoạt động và không còn được hỗ trợ. Bạn vẫn có thể xem lại những gì đã xảy ra trong phiên này.",
+    "activityLoadFailed": "Không thể tải hoạt động. Kiểm tra kết nối của bạn và thử lại.",
+    "levelUpChip": "Cấp độ {level}!",
+    "missingCourseOutline": "Khóa học này không còn khả dụng",
+    "missingCourseOutlineCta": "Khóa học này không còn khả dụng. Chọn một kế hoạch khóa học mới.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

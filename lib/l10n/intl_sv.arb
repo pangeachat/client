@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:45.964072",
+    "@@last_modified": "2026-07-08 15:21:34.841578",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10846,6 +10846,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} av {total} stjärnor tjänade",
+    "activityNoLongerSupported": "Denna aktivitet kördes på en äldre version av aktiviteter och stöds inte längre. Du kan fortfarande granska vad som hände under denna session.",
+    "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",
+    "levelUpChip": "Nivå {level}!",
+    "missingCourseOutline": "Denna kurs är inte längre tillgänglig",
+    "missingCourseOutlineCta": "Denna kurs är inte längre tillgänglig. Välj en ny kursplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:30.396902",
+    "@@last_modified": "2026-07-08 15:21:14.685214",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10375,6 +10375,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} இல் {total} நட்சத்திரங்கள் சம்பாதிக்கப்பட்டன",
+    "activityNoLongerSupported": "இந்த செயல்பாடு பழைய பதிப்பில் செயல்பட்டது மற்றும் இனி ஆதரிக்கப்படவில்லை. நீங்கள் இந்த அமர்வில் என்ன நடந்தது என்பதை இன்னும் மதிப்பீடு செய்யலாம்.",
+    "activityLoadFailed": "செயல்பாட்டை ஏற்ற முடியவில்லை. உங்கள் இணைப்பை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",
+    "levelUpChip": "அடுக்கு {level}!",
+    "missingCourseOutline": "இந்த பாடம் இனி கிடைக்கவில்லை",
+    "missingCourseOutlineCta": "இந்த பாடம் இனி கிடைக்கவில்லை. புதிய பாட திட்டத்தை தேர்ந்தெடுக்கவும்.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

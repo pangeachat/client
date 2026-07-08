@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-06 10:22:50.878516",
+    "@@last_modified": "2026-07-08 15:21:40.392115",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11127,6 +11127,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} の {total} スターを獲得しました",
+    "activityNoLongerSupported": "このアクティビティは古いバージョンのアクティビティで実行されており、もはやサポートされていません。このセッションで何が起こったかを確認することはできます。",
+    "activityLoadFailed": "アクティビティを読み込めませんでした。接続を確認して再試行してください。",
+    "levelUpChip": "レベル {level}!",
+    "missingCourseOutline": "このコースはもはや利用できません",
+    "missingCourseOutlineCta": "このコースはもはや利用できません。新しいコースプランを選択してください。",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

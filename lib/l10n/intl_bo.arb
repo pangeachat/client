@@ -3192,7 +3192,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-06 10:22:35.449235",
+    "@@last_modified": "2026-07-08 15:21:19.480361",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9931,6 +9931,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} of {total} stars earned",
+    "activityNoLongerSupported": "Ita actividada ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
+    "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
+    "levelUpChip": "Level {level}!",
+    "missingCourseOutline": "Ita course is no longer available",
+    "missingCourseOutlineCta": "Ita course is no longer available. Pick a new course plan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

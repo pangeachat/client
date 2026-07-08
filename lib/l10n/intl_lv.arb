@@ -3918,7 +3918,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-06 10:22:15.266367",
+    "@@last_modified": "2026-07-08 15:20:58.199409",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10259,6 +10259,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} no {total} iegūtajām zvaigznēm",
+    "activityNoLongerSupported": "Šī aktivitāte tika veikta vecākā aktivitāšu versijā un vairs netiek atbalstīta. Jūs joprojām varat pārskatīt, kas notika šajā sesijā.",
+    "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
+    "levelUpChip": "Līmenis {level}!",
+    "missingCourseOutline": "Šis kurss vairs nav pieejams",
+    "missingCourseOutlineCta": "Šis kurss vairs nav pieejams. Izvēlieties jaunu kursa plānu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

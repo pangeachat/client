@@ -3244,7 +3244,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-06 10:22:24.618759",
+    "@@last_modified": "2026-07-08 15:21:10.717989",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11145,6 +11145,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} iš {total} uždirbtų žvaigždžių",
+    "activityNoLongerSupported": "Ši veikla vyko senesnėje veiklų versijoje ir nebėra palaikoma. Vis dar galite peržiūrėti, kas įvyko šioje sesijoje.",
+    "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",
+    "levelUpChip": "Lygis {level}!",
+    "missingCourseOutline": "Šis kursas nebėra prieinamas",
+    "missingCourseOutlineCta": "Šis kursas nebėra prieinamas. Pasirinkite naują kurso planą.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

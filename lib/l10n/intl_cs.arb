@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-06 10:21:48.804642",
+    "@@last_modified": "2026-07-08 15:20:33.733652",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10813,6 +10813,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} z {total} získaných hvězd",
+    "activityNoLongerSupported": "Tato aktivita běžela na starší verzi aktivit a již není podporována. Můžete si však stále prohlédnout, co se v této relaci stalo.",
+    "activityLoadFailed": "Nepodařilo se načíst aktivitu. Zkontrolujte své připojení a zkuste to znovu.",
+    "levelUpChip": "Úroveň {level}!",
+    "missingCourseOutline": "Tento kurz již není k dispozici",
+    "missingCourseOutlineCta": "Tento kurz již není k dispozici. Vyberte nový plán kurzu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

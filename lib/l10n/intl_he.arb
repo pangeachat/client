@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:16.989190",
+    "@@last_modified": "2026-07-08 15:20:07.801740",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11338,6 +11338,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} מתוך {total} כוכבים שהושגו",
+    "activityNoLongerSupported": "פעילות זו רצה על גרסה ישנה יותר של פעילויות ואינה נתמכת עוד. אתה עדיין יכול לעיין במה שקרה במפגש זה.",
+    "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
+    "levelUpChip": "רמה {level}!",
+    "missingCourseOutline": "הקורס הזה אינו זמין יותר",
+    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }
