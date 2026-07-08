@@ -53,6 +53,10 @@ class _ActivityVideoPlayerState extends State<ActivityVideoPlayer> {
           autoPlay: widget.autoPlay,
           looping: false,
           showControlsOnInitialize: false,
+          // Inline only, matching the YouTube player: activity video is an
+          // in-place stimulus, and fullscreen has no in-app exit here, so it
+          // would trap the learner on a landscape tablet (#7500).
+          allowFullScreen: false,
           aspectRatio: widget.aspectRatio ?? controller.value.aspectRatio,
         );
       });
