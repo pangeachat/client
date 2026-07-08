@@ -1175,7 +1175,10 @@ void main() {
       expect(uri.queryParameters['filter'], isNull);
       expect(
         parseOpenPanels(uri).left.where((t) => t.type == 'coursepage').single,
-        PanelToken('coursepage', RoomSubpageTokenParam.parse('invite.knock')),
+        PanelToken(
+          'coursepage',
+          RoomSubpageTokenParam(subpage: 'invite', filter: 'knock'),
+        ),
       );
     });
 

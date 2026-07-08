@@ -12,6 +12,7 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -517,6 +518,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
     }
 
+    String? cavityKey;
+    if (cavityToken != null) {
+      final param = cavityToken.param;
+      if (isCourseCavity) {
+        cavityKey = activeSpaceId ?? cavityToken.type;
+      } else if (isActivityCavity) {
+        cavityKey = param is ActivityTokenParam
+            ? param.activityId
+            : cavityToken.type;
+      } else {
+        cavityKey = cavityToken.type;
+      }
+    }
+
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
     // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
@@ -592,13 +607,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 currentUri: uri,
                 bare: true,
               ),
-        cavityKey: cavityToken == null
-            ? null
-            : isCourseCavity
-            ? (activeSpaceId ?? cavityToken.param?.build() ?? cavityToken.type)
-            : isActivityCavity
-            ? (cavityToken.param?.build() ?? cavityToken.type)
-            : cavityToken.type,
+        cavityKey: cavityKey,
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).

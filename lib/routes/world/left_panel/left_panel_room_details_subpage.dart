@@ -30,13 +30,21 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    switch (param?.subpage.split('/').first) {
+    final param = this.param;
+    if (param == null) return SizedBox();
+
+    final parts = param.subpage.split('/');
+    final page = parts.first == 'details' && parts.length > 1
+        ? parts[1]
+        : parts[0];
+
+    switch (page) {
       case 'edit':
         return EditCourse(roomId: roomId, embeddedCloseButton: closeButton);
       case 'invite':
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter: InvitationFilter.fromNullableString(param?.filter),
+          initialFilter: InvitationFilter.fromNullableString(param.filter),
           embeddedCloseButton: closeButton,
         );
       case 'access':
@@ -52,7 +60,7 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
       case 'emotes':
         return EmotesSettings(roomId: roomId, embeddedCloseButton: closeButton);
       case 'addcourse':
-        final courseId = param?.courseId;
+        final courseId = param.courseId;
         if (courseId != null) {
           return SelectedCourse(
             courseId,
