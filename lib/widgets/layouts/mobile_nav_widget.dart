@@ -49,6 +49,19 @@ class MobileNavWidget extends StatefulWidget {
   /// is cavity-hosted (rail-only, no matter the last height).
   final Widget? cavityChild;
 
+  /// Which rail item's OWN surface the cavity hosts — [AppSection.chats] for
+  /// the chat list, [AppSection.courses] for the add-course hub, null for
+  /// anything else (a course sheet, an activity plan). Drives the
+  /// tap-the-active-item toggle: [activeSection] alone can't, because the
+  /// highlight resolves a whole course context to Courses while the cavity
+  /// hosts a specific course, and the Courses tap must then NAVIGATE to the
+  /// hub, not toggle the course sheet (#7537).
+  final AppSection? cavitySection;
+
+  /// True when the cavity hosts the shortcut's own course sheet: the shortcut
+  /// tap then toggles collapse/re-expand instead of a same-URL no-op (#7537).
+  final bool courseShortcutHostsCavity;
+
   /// Height-memory identity for the current [cavityChild]: a course space id,
   /// or a fixed key like `'chats'` / `'courses'`. A different key opens at its
   /// own default rather than inheriting the previous key's height.
@@ -84,6 +97,8 @@ class MobileNavWidget extends StatefulWidget {
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.cavityChild,
+    this.cavitySection,
+    this.courseShortcutHostsCavity = false,
     this.cavityKey,
     this.cavityDefaultsToPeek = false,
     required this.maxHeightFraction,
@@ -285,21 +300,41 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     });
   }
 
+  /// Collapse an expanded cavity, or re-expand a collapsed one to its
+  /// remembered height — the tap-the-active-item gesture.
+  void _toggleCavity() {
+    if (_currentFraction > 0.01) {
+      _collapseEphemeral();
+    } else {
+      _openAt(_restoreHeight());
+    }
+  }
+
   void _onRailItemTap(AppSection section) {
-    if (widget.cavityChild != null && section == widget.activeSection) {
-      // Tapping the already-active rail item while expanded collapses it;
-      // while collapsed (with content available) re-expands to the
-      // remembered height.
-      if (_currentFraction > 0.01) {
-        _collapseEphemeral();
-      } else {
-        _openAt(_restoreHeight());
-      }
+    // Toggle only when the cavity is hosting THIS rail item's own surface
+    // (the chat list for Chats, the hub for Courses) — NOT merely when the
+    // item is highlighted. The highlight ([activeSection]) resolves a whole
+    // course context to Courses, so with a course sheet hosted the Courses
+    // icon looked active and this shortcut swallowed the tap that should
+    // navigate to the hub (#7537).
+    if (widget.cavityChild != null && section == widget.cavitySection) {
+      _toggleCavity();
       return;
     }
-    // A different rail item: the shell handles token navigation and the next
+    // Any other rail item: the shell handles token navigation and the next
     // build's didUpdateWidget resolves the resulting height.
     widget.onSectionTap(section);
+  }
+
+  void _onCourseShortcutTap() {
+    // The shortcut's own toggle: when its course IS the hosted sheet, the tap
+    // collapses/re-expands like any active rail item — a same-URL navigation
+    // would be a visible no-op (#7537). Anything else navigates.
+    if (widget.cavityChild != null && widget.courseShortcutHostsCavity) {
+      _toggleCavity();
+      return;
+    }
+    widget.onCourseShortcutTap();
   }
 
   @override
@@ -424,7 +459,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                     icon: widget.courseShortcutIcon,
                                     label: widget.courseShortcutLabel,
                                     selected: widget.courseShortcutSelected,
-                                    onTap: widget.onCourseShortcutTap,
+                                    onTap: _onCourseShortcutTap,
                                   ),
                                 ],
                               ),

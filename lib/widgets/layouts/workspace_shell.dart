@@ -440,6 +440,16 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         cavityToken?.type == 'course' || cavityToken?.type == 'coursepage';
     final isActivityCavity = cavityToken?.type == 'activity';
 
+    // Which rail item's OWN surface the cavity hosts, for the widget's
+    // tap-the-active-item toggle. A course sheet / activity plan is neither
+    // rail section's surface — the Courses tap must then navigate to the hub
+    // instead of toggling (#7537).
+    final cavitySection = switch (cavityToken?.type) {
+      'chats' => AppSection.chats,
+      'addcourse' => AppSection.courses,
+      _ => null,
+    };
+
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. This PR wires the MAP
     // scope: over the bare/scoped map it drives the world map's own filter
@@ -566,6 +576,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           // value falls back to home.
           _ => WorkspaceNav.clearAll(),
         }),
+        cavitySection: cavitySection,
+        // The shortcut hosts the cavity when the hosted course sheet IS the
+        // shortcut's course (course cavities key by their space id).
+        courseShortcutHostsCavity:
+            isCourseCavity &&
+            shortcutCourse != null &&
+            shortcutCourse.id == activeSpaceId,
         cavityChild: cavityToken == null
             ? null
             : WorkspaceLeftPanel(
