@@ -38,8 +38,14 @@ class PanelToken {
       return null;
     }
 
-    final parsed = TokenParam.byType(type, param);
-    return PanelToken(type, parsed);
+    try {
+      final parsed = TokenParam.byType(type, param);
+      return PanelToken(type, parsed);
+    } catch (e) {
+      // A parse method (TokenFields.decode, enum fromRoute, etc.) threw on
+      // malformed input — skip this token rather than aborting route parse.
+      return null;
+    }
   }
 
   /// Encode for a URL list. The param is percent-encoded so its own commas and
