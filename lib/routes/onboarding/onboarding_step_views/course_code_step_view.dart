@@ -172,52 +172,51 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
             ),
           ),
         ),
-        //     Column(
-        Column(
-          children: [
-            ValueListenableBuilder(
-              valueListenable: _showCodeInput,
-              builder: (context, showInput, _) {
-                if (!showInput) return SizedBox();
-                return Padding(
+        ValueListenableBuilder(
+          valueListenable: _showCodeInput,
+          builder: (context, showInput, _) {
+            if (!showInput) return SizedBox(height: 60.0);
+            return Column(
+              children: [
+                Padding(
                   padding: EdgeInsetsGeometry.only(bottom: 12.0),
                   child: TextButton(
                     onPressed: widget.skip,
                     child: Text(L10n.of(context).courseCodeStepSkip),
                   ),
-                );
-              },
-            ),
-            ElevatedButton(
-              onPressed: _step.enableGoForward ? widget.forward : null,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primaryContainer,
-                foregroundColor: theme.colorScheme.onPrimaryContainer,
-                minimumSize: const Size.fromHeight(48),
-              ),
-              child: SizedBox(
-                height: 24,
-                child: Center(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: widget.loading
-                        ? SizedBox(
-                            key: const ValueKey('loading'),
-                            width: double.infinity,
-                            child: const LinearProgressIndicator(),
-                          )
-                        : Text(
-                            widget.hasNextStep
-                                ? _step.nextStepText(L10n.of(context))
-                                : _step.lastStepText(L10n.of(context)),
-                            key: const ValueKey('text'),
-                            textAlign: TextAlign.center,
-                          ),
+                ),
+                ElevatedButton(
+                  onPressed: _step.enableGoForward ? widget.forward : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primaryContainer,
+                    foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                  child: SizedBox(
+                    height: 24,
+                    child: Center(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        child: widget.loading
+                            ? SizedBox(
+                                key: const ValueKey('loading'),
+                                width: double.infinity,
+                                child: const LinearProgressIndicator(),
+                              )
+                            : Text(
+                                widget.hasNextStep
+                                    ? _step.nextStepText(L10n.of(context))
+                                    : _step.lastStepText(L10n.of(context)),
+                                key: const ValueKey('text'),
+                                textAlign: TextAlign.center,
+                              ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         ),
       ],
     );
