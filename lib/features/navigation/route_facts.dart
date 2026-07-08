@@ -6,6 +6,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
@@ -177,6 +178,20 @@ ActivityTokenParam? activityInfoFor(Uri uri) {
 /// [activityInfoFor] over a [GoRouterState]'s URI.
 ActivityTokenParam? activityFor(GoRouterState state) =>
     activityInfoFor(state.uri);
+
+/// The course join code an open URI carries — the `addcourse` token's
+/// `private/<code>` leaf (the `LegacyRedirects` join-link rewrite target),
+/// decoded, or null. The auth guard reads this to ferry an inbound join code
+/// across the login bounce (PAuthGaurd.roomsRedirect, #7524).
+String? joinCodeFor(Uri uri) {
+  for (final token in parseOpenPanels(uri).left) {
+    final param = token.param;
+    if (param is! AddCourseTokenParam) continue;
+    if (param.subpage != 'private') continue;
+    return param.joinCode;
+  }
+  return null;
+}
 
 /// What the map should focus. Today: the open activity. Extend by adding a
 /// [MapFocus] subclass and returning it here.

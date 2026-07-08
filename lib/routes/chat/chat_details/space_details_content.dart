@@ -328,13 +328,29 @@ class SpaceDetailsContent extends StatelessWidget {
         // matching the right column's leading close affordance. Dropping it
         // would leave the course card with no way to close. See
         // routing.instructions.md.
+        //
+        // NARROW: one row — [X | title | share] — so the nav widget's peek
+        // shows the course identity immediately (the Figma MOBILE-Course
+        // frame); the title block below then renders without repeating the
+        // name. Column mode keeps the two-row header with the large avatar.
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: .center,
           children: [
             if (controller.widget.embeddedCloseButton != null)
               controller.widget.embeddedCloseButton!,
-            SizedBox(),
+            if (isColumnMode)
+              const SizedBox()
+            else
+              Expanded(
+                child: Text(
+                  displayname,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
             if (room.joinCode != null)
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -374,12 +390,15 @@ class SpaceDetailsContent extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          displayname,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
+                        // Narrow shows the name in the header row above (the
+                        // Figma peek) — repeating it here would double it.
+                        if (isColumnMode)
+                          Text(
+                            displayname,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
                         if (room.coursePlan != null)
                           CourseInfoChips(
                             room.coursePlan!.uuid,

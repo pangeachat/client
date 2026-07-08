@@ -24,6 +24,7 @@ import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
+import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -159,9 +160,18 @@ class ChatView extends StatelessWidget {
       return [];
     }
 
+    // On a narrow screen the chat is a full-screen surface, so the floating
+    // analytics nav bar is not mounted — the chat's own app bar hosts the
+    // analytics avatar instead (routing.instructions.md → Single-column
+    // analytics nav bar). Column mode has the top-right cluster; no avatar.
+    final analyticsAvatar = FluffyThemes.isColumnMode(context)
+        ? null
+        : const AnalyticsHeaderAvatar();
+
     if (controller.room.showActivityChatUI) {
       return [
         ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
+        ?analyticsAvatar,
       ];
     }
 
@@ -188,6 +198,7 @@ class ChatView extends StatelessWidget {
           }
         },
       ),
+      ?analyticsAvatar,
     ];
     // Pangea#
   }
@@ -241,6 +252,7 @@ class ChatView extends StatelessWidget {
           builder: (BuildContext context, snapshot) {
             // #Pangea
             if (controller.room.isActivitySession &&
+                controller.room.activityId != null &&
                 !controller.room.isActivityStarted) {
               return ActivitySessionStartPage(
                 activityId: controller.room.activityId!,

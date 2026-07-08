@@ -16,6 +16,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 abstract class CourseProvider {
   String? getCachedJoinCode();
 
+  /// Drop the cached inbound join code once onboarding is finished with it
+  /// (joined on success, handed off to manual entry on failure). A leftover
+  /// would surprise-join a later login (#7524).
+  Future<void> clearCachedJoinCode();
+
   Future<String> joinSpaceWithCode(String code);
 
   Future<CoursePlanModel> getCourseByRoomId(String roomId);
@@ -31,6 +36,9 @@ class ClientCourseProvider implements CourseProvider {
 
   @override
   String? getCachedJoinCode() => SpaceCodeRepo.spaceCode;
+
+  @override
+  Future<void> clearCachedJoinCode() => SpaceCodeRepo.clearSpaceCode();
 
   @override
   Future<String> joinSpaceWithCode(String code) async {
@@ -68,6 +76,9 @@ class ClientCourseProvider implements CourseProvider {
 class MockCourseProvider implements CourseProvider {
   @override
   String? getCachedJoinCode() => null;
+
+  @override
+  Future<void> clearCachedJoinCode() async {}
 
   @override
   Future<String> joinSpaceWithCode(String code) async =>

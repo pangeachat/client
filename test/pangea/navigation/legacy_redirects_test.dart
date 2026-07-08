@@ -3,9 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 
-/// The ONE inbound URL rewrite (routing.instructions.md): the shareable
-/// standalone activity link. Every other legacy shape is deleted, not
-/// redirected — the client is the only producer of its URLs.
+/// The inbound URL rewrites (routing.instructions.md): the shareable
+/// standalone activity link and the course join link. Every other legacy
+/// shape is deleted, not redirected — the client is the only producer of its
+/// URLs.
 void main() {
   String? resolve(String location) =>
       LegacyRedirects.resolve(Uri.parse(location));
@@ -41,6 +42,47 @@ void main() {
     });
   });
 
+  group('the inbound course join link (#7524)', () {
+    test('rewrites to the join-with-code leaf of the addcourse token', () {
+      expect(
+        resolve('/join_with_link?classcode=vj3pc8b'),
+        '/?left=addcourse:private%2Fvj3pc8b',
+      );
+    });
+
+    test('the native /join spelling folds to the same target', () {
+      expect(
+        resolve('/join?classcode=vj3pc8b'),
+        '/?left=addcourse:private%2Fvj3pc8b',
+      );
+    });
+
+    test('a code with unusual-but-valid characters round-trips losslessly', () {
+      const code = 'AB.1-ç 8';
+      final out = resolve(
+        '/join_with_link?classcode=${Uri.encodeComponent(code)}',
+      );
+      expect(joinCodeFor(Uri.parse(out!)), code);
+    });
+
+    test('a missing or empty code degrades to the manual join page', () {
+      expect(resolve('/join_with_link'), '/?left=addcourse:private');
+      expect(resolve('/join_with_link?classcode='), '/?left=addcourse:private');
+    });
+
+    test('prior panels and context are dropped — this link IS the join', () {
+      expect(
+        resolve('/join_with_link?classcode=vj3pc8b&c=!s&left=chats'),
+        '/?left=addcourse:private%2Fvj3pc8b',
+      );
+    });
+
+    test('idempotent: the token form never re-fires', () {
+      expect(resolve(resolve('/join_with_link?classcode=vj3pc8b')!), isNull);
+      expect(resolve(resolve('/join_with_link')!), isNull);
+    });
+  });
+
   group('everything else is left alone (no legacy support)', () {
     test('retired shapes resolve to nothing — dead links by design', () {
       for (final dead in [
@@ -70,6 +112,14 @@ void main() {
     test('never redirects to the current location', () {
       expect(LegacyRedirects.handle(Uri.parse('/?left=chats')), isNull);
       expect(LegacyRedirects.handle(Uri.parse('/')), isNull);
+      expect(
+        LegacyRedirects.handle(Uri.parse('/?left=addcourse:private%2Fvj3pc8b')),
+        isNull,
+      );
+      expect(
+        LegacyRedirects.handle(Uri.parse('/?left=addcourse:private')),
+        isNull,
+      );
     });
   });
 }

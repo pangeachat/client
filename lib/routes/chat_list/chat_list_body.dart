@@ -81,10 +81,27 @@ class ChatListViewBody extends StatelessWidget {
             slivers: [
               // #Pangea
               // ChatListHeader(controller: controller),
-              PangeaChatListHeader(
-                controller: controller,
-                showSearch: rooms.length >= 7,
-              ),
+              // The panel header's search toggle drives the field when given
+              // (it expands on demand and autofocuses); otherwise fall back
+              // to the legacy show-when-long heuristic.
+              if (controller.widget.searchFieldVisibility case final toggle?)
+                SliverToBoxAdapter(
+                  child: ValueListenableBuilder<bool>(
+                    valueListenable: toggle,
+                    builder: (context, visible, _) => visible
+                        ? PangeaChatListSearchField(
+                            controller: controller,
+                            autofocus: true,
+                            onClose: () => toggle.value = false,
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                )
+              else
+                PangeaChatListHeader(
+                  controller: controller,
+                  showSearch: rooms.length >= 7,
+                ),
               // Pangea#
               SliverList(
                 delegate: SliverChildListDelegate([

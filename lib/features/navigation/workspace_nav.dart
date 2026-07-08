@@ -317,6 +317,7 @@ abstract class WorkspaceNav {
     Uri current,
     String spaceId, {
     bool keepRoom = true,
+    bool clearRight = false,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
@@ -324,7 +325,13 @@ abstract class WorkspaceNav {
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    WorkspaceQuery.removeKeys(parts, {
+      'c',
+      'left',
+      // Single-column: a rail section closes an open right panel (peers in
+      // the same slot — see setSection's clearRight).
+      if (clearRight) 'right',
+    });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
@@ -798,12 +805,15 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(current.path, parts);
   }
 
-  static String openAnalytics(Uri current, {ProgressIndicatorEnum? subpage}) =>
-      setRight(current, [
-        AnalyticsTokenParam(
-          subpage: subpage ?? ProgressIndicatorEnum.wordsUsed,
-        ).token,
-      ]);
+  static String openAnalytics(
+    Uri current, {
+    ProgressIndicatorEnum? subpage,
+    bool closeSections = false,
+  }) => setRight(current, [
+    AnalyticsTokenParam(
+      subpage: subpage ?? ProgressIndicatorEnum.wordsUsed,
+    ).token,
+  ], closeSections: closeSections);
 
   static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
       setRight(current, [

@@ -172,6 +172,75 @@ void main() {
     });
   });
 
+  group('single-column mutual close (sections <-> right panels)', () {
+    test('setRight closeSections drops the section sheet but keeps a room', () {
+      final loc = WorkspaceNav.setRight(u('/?left=chats,room:!abc'), [
+        const PanelToken('analytics'),
+      ], closeSections: true);
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right, [const PanelToken('analytics')]);
+      // The chats SECTION is gone (X-ing analytics reveals the map), but the
+      // live conversation persists — the chat-header avatar loop returns to it.
+      expect(lists.left, [
+        const PanelToken('room', RoomTokenParam(id: '!abc')),
+      ]);
+    });
+
+    test('setRight closeSections drops a course card, keeping the scope', () {
+      final loc = WorkspaceNav.setRight(u('/?c=!s&left=course'), [
+        const PanelToken(
+          'analytics',
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
+      ], closeSections: true);
+      final uri = u(loc);
+      expect(parseOpenPanels(uri).left, isEmpty);
+      // `?c=` is scope, not a panel — closing panels never resets it.
+      expect(uri.queryParameters['c'], '!s');
+    });
+
+    test('setRight without the flag keeps sections (column mode)', () {
+      final loc = WorkspaceNav.setRight(u('/?left=chats'), [
+        const PanelToken('analytics'),
+      ]);
+      expect(parseOpenPanels(u(loc)).left, [const PanelToken('chats')]);
+    });
+
+    test('openSettings closeSections drops the section sheet', () {
+      final loc = WorkspaceNav.openSettings(
+        u('/?left=addcourse'),
+        closeSections: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right, [const PanelToken('settings')]);
+      expect(lists.left, isEmpty);
+    });
+
+    test('setSection clearRight drops an open right panel', () {
+      final loc = WorkspaceNav.setSection(
+        u('/?right=analytics'),
+        const PanelToken('chats'),
+        keepRoom: false,
+        clearRight: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left, [const PanelToken('chats')]);
+      expect(lists.right, isEmpty);
+    });
+
+    test('openCourseSection clearRight drops an open right panel', () {
+      final loc = WorkspaceNav.openCourseSection(
+        u('/?right=settings'),
+        '!course',
+        keepRoom: false,
+        clearRight: true,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.left, [const PanelToken('course')]);
+      expect(lists.right, isEmpty);
+    });
+  });
+
   group('openRoomById (event folds into the room token; no loose params)', () {
     test('a bare call opens the room with no event/body query at all', () {
       final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc');
@@ -730,16 +799,20 @@ void main() {
       expect(right.single.type, 'settings'); // menu remains
     });
 
-    test('closeSettings drops the menu AND its page, keeps the rest', () {
-      // Analytics can no longer coexist with settings (opening settings drops
-      // it, #7109), so "the rest" is a left panel. closeSettings clears the
-      // right settings panel and leaves the left column intact.
+    test('closeSettings drops only the menu, keeping an open settingspage '
+        'detail (#7493)', () {
+      // Closing the settings MENU drops only its own token — the same rule
+      // closeSection documents for the course family (a coursepage survives
+      // its course card closing, #7317). A settingspage reads its own
+      // identity from its token param, so it keeps rendering without its
+      // master beside it.
       var loc = WorkspaceNav.openSettings(
         u('/?left=room:!a'),
         page: 'learning',
       );
       loc = WorkspaceNav.closeSettings(u(loc));
       final panels = parseOpenPanels(u(loc));
+      expect(panels.right.any((t) => t.type == 'settings'), isFalse);
       expect(
         panels.right.any(
           (t) => t.type == 'settings' || t.type == 'settingspage',
@@ -750,6 +823,40 @@ void main() {
         panels.left.single,
         PanelToken('room', RoomTokenParam.parse('!a')),
       );
+    });
+
+    test(
+      'closeSettings on a bare menu (no open page) clears the right column',
+      () {
+        // Analytics can no longer coexist with settings (opening settings
+        // drops it, #7109), so with no settingspage open, closing the menu
+        // leaves the right column empty.
+        var loc = WorkspaceNav.openSettings(u('/?left=room:!a'));
+        loc = WorkspaceNav.closeSettings(u(loc));
+        final panels = parseOpenPanels(u(loc));
+        expect(panels.right, isEmpty);
+        expect(
+          panels.left.single,
+          const PanelToken('room', RoomTokenParam(id: '!a')),
+        );
+      },
+    );
+
+    test('closing the settingspage detail keeps the settings menu master', () {
+      // The reverse case: closing the page (via closeRight, the page's own
+      // close) must not touch the menu — mirrored to the course family's
+      // coursepage close.
+      final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
+      final closed = WorkspaceNav.closeRight(
+        u(loc),
+        const PanelToken(
+          'settingspage',
+          SettingsTokenParam(subpage: 'learning'),
+        ),
+      );
+      final panels = parseOpenPanels(u(closed));
+      expect(panels.right.any((t) => t.type == 'settingspage'), isFalse);
+      expect(panels.right.single.type, 'settings'); // menu remains
     });
   });
 
@@ -926,6 +1033,47 @@ void main() {
         );
       },
     );
+  });
+
+  group('inbound join-code consumption (#7524)', () {
+    // The auto-submit's history REPLACE target: the coded `private/<code>`
+    // leaf reduced to the manual `private` page, so browser back / refresh
+    // never re-fires the join (course_code_page.dart).
+    test('replacing the coded leaf with the manual page strips the code', () {
+      final coded = u('/?left=addcourse:private%2Fvj3pc8b');
+      expect(joinCodeFor(coded), 'vj3pc8b');
+      final consumed = WorkspaceNav.pushPage(
+        coded,
+        'addcourse',
+        AddCourseTokenParam(subpage: 'private'),
+      );
+      expect(consumed, '/?left=addcourse:private');
+      expect(joinCodeFor(u(consumed)), isNull);
+    });
+
+    test('consumption preserves the rest of the workspace URL', () {
+      final coded = u(
+        '/?c=!s&left=addcourse:private%2Fvj3pc8b&right=analytics:vocab',
+      );
+      final consumed = u(
+        WorkspaceNav.pushPage(
+          coded,
+          'addcourse',
+          AddCourseTokenParam(subpage: 'private'),
+        ),
+      );
+      expect(joinCodeFor(consumed), isNull);
+      expect(activeSpaceIdFor(consumed), isNotNull);
+      expect(parseOpenPanels(consumed).right, [
+        const PanelToken(
+          'analytics',
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
+      ]);
+      expect(parseOpenPanels(consumed).left, [
+        const PanelToken('addcourse', AddCourseTokenParam(subpage: 'private')),
+      ]);
+    });
   });
 
   group('pushPage / popPage (generic param push on a pushable panel)', () {

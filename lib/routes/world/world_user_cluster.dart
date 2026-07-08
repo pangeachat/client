@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -13,6 +16,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -41,9 +45,26 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
+  /// The level-up celebration signal for the medal — the same
+  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
+  /// with the snackbar's subscription gate applied at event time. Created
+  /// once so rebuilds don't churn the celebration's subscription.
+  Stream<LevelUpdate>? _levelUpdates;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _levelUpdates ??= Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .levelUpdateStream
+        .stream
+        .where(
+          (_) => MatrixState
+              .pangeaController
+              .subscriptionController
+              .showSubscriptionGatedContent,
+        );
     if (_profileLoaded) return;
     _profileLoaded = true;
     _loadProfile();
@@ -110,7 +131,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
             children: [
               ListenableBuilder(
                 listenable: Listenable.merge([_avatarUrl, _displayName]),
-                builder: (context, _) => _Avatar(
+                builder: (context, _) => ClusterAvatar(
                   avatarUrl: _avatarUrl.value,
                   name: _displayName.value,
                   onTap: _openProfile,
@@ -121,11 +142,12 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
                 onTap: _openAnalytics,
                 onLevelTap: _openLevel,
                 l2: l2,
+                levelUpdates: _levelUpdates,
               ),
               if (l2 != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: _LanguageFlag(
+                  child: ClusterLanguageFlag(
                     language: l2,
                     onTap: _openLearningSettings,
                   ),
@@ -139,18 +161,29 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 }
 
 /// The circular user avatar at the top of the cluster. Opens profile/settings.
-class _Avatar extends StatelessWidget {
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
+/// the mobile single-column rendering of this same cluster
+/// (routing.instructions.md, "Single-column analytics nav bar") — can reuse it
+/// verbatim (including at the collapsed bar's smaller size) rather than
+/// duplicating the avatar + tooltip + semantics wiring. This is the one
+/// mechanical visibility change made to this file for that reuse; no behavior
+/// changed for the cluster's own usage (the default matches the old fixed
+/// `_size`).
+class ClusterAvatar extends StatelessWidget {
   final Uri? avatarUrl;
   final String? name;
   final VoidCallback onTap;
+  final double size;
 
-  const _Avatar({
+  const ClusterAvatar({
     required this.avatarUrl,
     required this.name,
     required this.onTap,
+    this.size = _defaultSize,
+    super.key,
   });
 
-  static const double _size = 56.0;
+  static const double _defaultSize = 56.0;
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +210,7 @@ class _Avatar extends StatelessWidget {
             child: Avatar(
               mxContent: avatarUrl,
               name: name,
-              size: _size,
+              size: size,
               showPresence: false,
             ),
           ),
@@ -194,10 +227,15 @@ class _PowerupsPill extends StatelessWidget {
   final VoidCallback onLevelTap;
   final LanguageModel? l2;
 
+  /// Level-change signal for the medal's celebration; see
+  /// [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
+
   const _PowerupsPill({
     required this.onTap,
     required this.onLevelTap,
     required this.l2,
+    required this.levelUpdates,
   });
 
   static const double _xpStroke = 5.0;
@@ -227,6 +265,9 @@ class _PowerupsPill extends StatelessWidget {
 
             return Stack(
               alignment: Alignment.bottomCenter,
+              // The medal's level-up celebration paints just outside the
+              // pill's bounds (badge pulse + chip); don't clip it.
+              clipBehavior: Clip.none,
               children: [
                 // The pill's frame IS the XP ring: a gray track that fills gold clockwise
                 // from the bottom-center (where the level medal sits) toward the next
@@ -271,7 +312,7 @@ class _PowerupsPill extends StatelessWidget {
                                         ? client.totalStarsEarned(l2)
                                         : 0;
 
-                                    return _TrackerButton(
+                                    return ClusterTrackerButton(
                                       indicator: ProgressIndicatorEnum.stars,
                                       count: stars,
                                       onTap: () =>
@@ -279,12 +320,12 @@ class _PowerupsPill extends StatelessWidget {
                                     );
                                   },
                                 ),
-                                _TrackerButton(
+                                ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.morphsUsed,
                                   count: grammar,
                                   onTap: () => onTap(AnalyticsPanelTab.grammar),
                                 ),
-                                _TrackerButton(
+                                ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
                                   count: vocab,
                                   onTap: () => onTap(AnalyticsPanelTab.vocab),
@@ -302,7 +343,10 @@ class _PowerupsPill extends StatelessWidget {
                   bottom: 0,
                   child: Material(
                     type: MaterialType.transparency,
-                    child: _LevelMedal(level: level, onTap: onLevelTap),
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: levelUpdates,
+                      child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                    ),
                   ),
                 ),
               ],
@@ -325,16 +369,27 @@ class _PowerupsPill extends StatelessWidget {
 }
 
 /// One tracker in the powerups pill: a dark icon over its count, on the white
-/// inner field. Tapping opens that metric's analytics tab.
-class _TrackerButton extends StatelessWidget {
+/// inner field. Tapping opens that metric's analytics tab. Public so
+/// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
+class ClusterTrackerButton extends StatelessWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
   final VoidCallback onTap;
 
-  const _TrackerButton({
+  /// Sizing knobs so the narrow analytics bar can render the compact variant
+  /// (the Figma mobile pill); web keeps these defaults.
+  final double horizontalPadding;
+  final double iconSize;
+  final double fontSize;
+
+  const ClusterTrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
+    this.horizontalPadding = 16,
+    this.iconSize = 24,
+    this.fontSize = 16,
+    super.key,
   });
 
   @override
@@ -353,16 +408,19 @@ class _TrackerButton extends StatelessWidget {
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+              vertical: 9,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(indicator.icon, size: 24),
+                Icon(indicator.icon, size: iconSize),
                 const SizedBox(height: 3),
                 Text(
                   '$count',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: fontSize,
                     height: 1.1,
                     fontWeight: FontWeight.w600,
                   ),
@@ -377,11 +435,16 @@ class _TrackerButton extends StatelessWidget {
 }
 
 /// The gold level shield overhanging the powerups pill (opens the level tab).
-class _LevelMedal extends StatelessWidget {
+/// Public so [WorldAnalyticsBar] can place it at the bar's left end.
+class ClusterLevelMedal extends StatelessWidget {
   final int level;
   final VoidCallback onTap;
 
-  const _LevelMedal({required this.level, required this.onTap});
+  const ClusterLevelMedal({
+    required this.level,
+    required this.onTap,
+    super.key,
+  });
 
   // The outer shield shape from Figma (icon/warning-secondary fill #F3C141 ==
   // AppConfig.goldMedal); the level number is overlaid.
@@ -453,14 +516,30 @@ class _LevelMedal extends StatelessWidget {
 /// outline keeps it legible over any flag. Gated on
 /// [LanguageModel.shouldShowFlag], the same rule the language pickers use.
 /// Tapping it opens the learning settings page.
-class _LanguageFlag extends StatelessWidget {
+///
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
+/// can reuse it at the "slightly smaller than web" size the mobile chrome
+/// calls for (routing.instructions.md, "Single-column analytics nav bar") without
+/// duplicating the flag/outline/tooltip logic.
+class ClusterLanguageFlag extends StatelessWidget {
   final LanguageModel language;
   final VoidCallback onTap;
+  final double width;
+  final double height;
+  final double fontSize;
 
-  const _LanguageFlag({required this.language, required this.onTap});
+  const ClusterLanguageFlag({
+    required this.language,
+    required this.onTap,
+    this.width = _defaultWidth,
+    this.height = _defaultHeight,
+    this.fontSize = _defaultFontSize,
+    super.key,
+  });
 
-  static const double _w = 52.0;
-  static const double _h = 36.0;
+  static const double _defaultWidth = 52.0;
+  static const double _defaultHeight = 36.0;
+  static const double _defaultFontSize = 18.0;
   static const double _radius = 6.0;
   static const double _borderWidth = 2.0;
 
@@ -474,7 +553,7 @@ class _LanguageFlag extends StatelessWidget {
         Text(
           language.langCodeShort.toUpperCase(),
           style: TextStyle(
-            fontSize: 18,
+            fontSize: fontSize,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 4
@@ -483,7 +562,7 @@ class _LanguageFlag extends StatelessWidget {
         ),
         Text(
           language.langCodeShort.toUpperCase(),
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: fontSize, color: Colors.black),
         ),
       ],
     );
@@ -507,8 +586,8 @@ class _LanguageFlag extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              width: _w,
-              height: _h,
+              width: width,
+              height: height,
               padding: .all(_borderWidth),
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -522,12 +601,12 @@ class _LanguageFlag extends StatelessWidget {
                         children: [
                           SvgPicture.network(
                             language.svgUrl.toString(),
-                            width: _w,
-                            height: _h,
+                            width: width,
+                            height: height,
                             fit: BoxFit.cover,
                             errorBuilder: (ctx, _, _) => outlinedText,
                             placeholderBuilder: (_) =>
-                                const SizedBox(width: _w, height: _h),
+                                SizedBox(width: width, height: height),
                           ),
                           Positioned(child: Center(child: outlinedText)),
                         ],

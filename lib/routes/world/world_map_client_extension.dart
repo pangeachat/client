@@ -55,6 +55,13 @@ extension WorldMapClientExtension on Client {
   /// and the activity start page share one definition.
   List<Room> get joinedCourseRooms => joinedCourseSpaces;
 
+  /// True once the learner is in **any** activity-session room — i.e. they have
+  /// started, joined, or finished at least one activity (every such path leaves
+  /// them a member of a `p.activity.session:<id>` room). Its negation, "no first
+  /// activity yet," is the new-learner condition for the multi-person
+  /// deprioritize (#7435). Cheap: one pass over `client.rooms`.
+  bool get hasAnyActivitySession => rooms.any((r) => r.activityId != null);
+
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];
     for (final room in rooms) {

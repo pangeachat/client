@@ -17,7 +17,8 @@ import 'package:fluffychat/routes/world/panel_header.dart';
 /// wizard, hosted as a URL-token panel instead of the retired route-driven
 /// `_MainView` card. The step is the `addcourse` token's param — a **bare**
 /// token (no param) is the hub chooser (the entry the rail "+" opens), `browse`
-/// (public courses), `private` (enter a code), or `own[/<lang>|/all]` (start my
+/// (public courses), `private[/<code>]` (enter a code; an inbound join link's
+/// code rides the leaf and submits itself), or `own[/<lang>|/all]` (start my
 /// own / plan list): a trailing language code seeds the picker's language
 /// filter, `all` means no filter (showAll) — folded into the token instead of
 /// loose `?lang=`/`?showAll=` query params (routing.instructions.md). Each

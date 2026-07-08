@@ -92,11 +92,23 @@ class ChatList extends StatefulWidget {
   final String? activeSpace;
   final bool displayNavigationRail;
 
+  // #Pangea
+  /// When non-null, the panel header's search toggle drives whether the
+  /// in-list search field row renders (expanding on demand; the field
+  /// autofocuses when it appears, and its close control flips this back).
+  /// Null keeps the legacy always-on-when-long behavior. See
+  /// routing.instructions.md → Single-column bottom nav.
+  final ValueNotifier<bool>? searchFieldVisibility;
+  // Pangea#
+
   const ChatList({
     super.key,
     required this.activeChat,
     this.activeSpace,
     this.displayNavigationRail = false,
+    // #Pangea
+    this.searchFieldVisibility,
+    // Pangea#
   });
 
   @override

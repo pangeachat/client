@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view_body_wrapper.dart';
 
@@ -48,24 +45,10 @@ class ChatListView extends StatelessWidget {
                 // #Pangea
                 // body: ChatListViewBody(controller),
                 body: ChatListViewBodyWrapper(controller: controller),
+                // The Direct Message FAB moved into the panel header as the
+                // new-chat action (LeftPanelChatListSubpage) — floating over
+                // the list covered its bottom rows in the narrow sheet.
                 // Pangea#
-                floatingActionButton:
-                    !controller.isSearchMode && controller.activeSpaceId == null
-                    ? FloatingActionButton.extended(
-                        onPressed: () => context.go('/rooms/newprivatechat'),
-                        // #Pangea
-                        icon: const Icon(Icons.chat_bubble_outline),
-                        // icon: const Icon(Icons.add_outlined),
-                        // Pangea#
-                        label: Text(
-                          // #Pangea
-                          L10n.of(context).directMessage,
-                          // L10n.of(context).chat,
-                          // Pangea#
-                          overflow: TextOverflow.fade,
-                        ),
-                      )
-                    : const SizedBox.shrink(),
               ),
             ),
           ),

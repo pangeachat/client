@@ -135,6 +135,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.questId != widget.questId ||
         oldWidget.room?.id != widget.room?.id) {
+      _progression = ProgressionResolution.empty;
       _load();
     }
   }

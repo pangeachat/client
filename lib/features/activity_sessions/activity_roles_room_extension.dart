@@ -14,6 +14,24 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
+/// Whether the session counts as started: finished sessions always are;
+/// otherwise every role in the plan is filled. With no plan (not yet hydrated,
+/// or the activity was removed from the backend), the seat math would read
+/// `0 - assigned <= 0` and misclassify every room as started — routing empty
+/// orphan rooms into the chat timeline instead of the start page. Instead, a
+/// plan-less room counts as started only when it has assigned roles (real
+/// progress worth showing in the timeline).
+@visibleForTesting
+bool activityStartedGate({
+  required bool finished,
+  required int? planRoleCount,
+  required int assignedRoleCount,
+}) {
+  if (finished) return true;
+  if (planRoleCount == null) return assignedRoleCount > 0;
+  return planRoleCount - assignedRoleCount <= 0;
+}
+
 class RoleException implements Exception {
   final String message;
   RoleException(this.message);
@@ -55,9 +73,11 @@ extension ActivityRolesRoomExtension on Room {
     return max(0, (availableRoles?.length ?? 0) - (assignedRoles?.length ?? 0));
   }
 
-  bool get isActivityStarted =>
-      isActivityFinished ||
-      (activityPlan?.roles.length ?? 0) - (assignedRoles?.length ?? 0) <= 0;
+  bool get isActivityStarted => activityStartedGate(
+    finished: isActivityFinished,
+    planRoleCount: activityPlan?.roles.length,
+    assignedRoleCount: assignedRoles?.length ?? 0,
+  );
 
   bool get isActivityFinished {
     final roles = activityRoles?.roles.values.where(
