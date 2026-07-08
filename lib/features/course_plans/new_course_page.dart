@@ -14,7 +14,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
@@ -201,15 +200,25 @@ class NewCoursePageState extends State<NewCoursePage> {
       context,
     ).client.getRoomByCourseId(course.uuid);
 
-    if (existingRoom == null || widget.spaceId != null) {
+    final spaceId = widget.spaceId;
+    if (spaceId != null) {
       context.go(
-        widget.spaceId != null
-            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
-            // world_v2: the standalone-create path is the Completer-carrying
-            // `/courses/own/:id` flow, not `widget.route` (always 'rooms', which
-            // produced the broken `/rooms/course/own/...`). See
-            // routing.instructions.md.
-            : '/courses/own/${course.uuid}',
+        WorkspaceNav.openCoursePage(
+          GoRouterState.of(context).uri,
+          'addcourse',
+          courseId: course.uuid,
+        ),
+      );
+      return;
+    }
+
+    if (existingRoom == null) {
+      context.go(
+        WorkspaceNav.openAddCourse(
+          GoRouterState.of(context).uri,
+          subpage: 'own',
+          courseId: course.uuid,
+        ),
       );
       return;
     }
@@ -250,16 +259,19 @@ class NewCoursePageState extends State<NewCoursePage> {
     );
 
     if (action == 0) {
-      // world_v2: this branch is only reached when existingRoom != null AND
-      // widget.spaceId == null (see the guard above), so it's always the
-      // Completer-carrying own-course path, never the addcourse push.
-      context.go('/courses/own/${course.uuid}');
+      context.go(
+        WorkspaceNav.openAddCourse(
+          GoRouterState.of(context).uri,
+          subpage: 'own',
+          courseId: course.uuid,
+        ),
+      );
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
         // course panel), not the legacy /rooms/spaces path.
         context.go(
-          WorkspaceNav.openCourseFilter(
+          WorkspaceNav.openCourse(
             GoRouterState.of(context).uri,
             existingRoom.id,
           ),

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:23:07.519785",
+    "@@last_modified": "2026-07-08 15:21:55.953398",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10571,7 +10571,6 @@
     "enableNotificationsTitle": "Nikada ne propustite razgovor!",
     "enableNotificationsDesc": "Dozvolite obaveštenja za Pangea Chat i ostanite povezani sa svojim jezičkim prijateljima!",
     "enableNotifications": "Dozvolite obaveštenja",
-    "noActivitiesFound": "Nema dostupnih aktivnosti za ovu temu.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10581,10 +10580,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11387,6 +11382,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} od {total} zvezda zarađeno",
+    "activityNoLongerSupported": "Ova aktivnost je radila na starijoj verziji aktivnosti i više nije podržana. I dalje možete pregledati šta se desilo u ovoj sesiji.",
+    "activityLoadFailed": "Nije moguće učitati aktivnost. Proverite svoju vezu i pokušajte ponovo.",
+    "levelUpChip": "Nivo {level}!",
+    "missingCourseOutline": "Ovaj kurs više nije dostupan",
+    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Izaberite novi plan kursa.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

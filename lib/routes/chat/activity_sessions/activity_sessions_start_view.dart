@@ -9,6 +9,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -33,17 +34,27 @@ import 'package:fluffychat/widgets/matrix.dart';
 @visibleForTesting
 String? activityRoomCloseLocation(Uri uri, String? roomId) {
   if (roomId == null || roomId.isEmpty) return null;
-  final localpart = shortRoomId(roomId);
-  bool matches(PanelToken t) =>
-      (t.type == 'room' || t.type == 'session') &&
-      (t.param ?? '').split('/').first == localpart;
+
+  bool matches(PanelToken t) {
+    if (t.type != 'room' && t.type != 'session') {
+      return false;
+    }
+
+    final param = t.param;
+    if (param == null || param is! RoomTokenParam) return false;
+    return shortRoomId(param.id) == shortRoomId(roomId);
+  }
+
   final panels = parseOpenPanels(uri);
+
   for (final t in panels.left) {
     if (matches(t)) return WorkspaceNav.closeLeft(uri, t);
   }
+
   for (final t in panels.right) {
     if (matches(t)) return WorkspaceNav.closeRight(uri, t);
   }
+
   return null;
 }
 

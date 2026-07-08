@@ -473,7 +473,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
     if (room.isSpace) {
       context.go(
-        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, room.id),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, room.id),
       );
       return;
     }

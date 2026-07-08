@@ -1,7 +1,8 @@
-import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
@@ -36,16 +37,17 @@ abstract class LegacyRedirects {
   /// UUID path segment, so it never re-fires.
   static String _resolveActivityLink(Uri uri) {
     final kept = WorkspaceQuery.parts(uri.query);
-    final token = PanelToken(
-      'activity',
-      ActivityToken.build(
-        uri.pathSegments.first,
-        roomId: WorkspaceQuery.valueOf(uri.query, 'roomid'),
-        launch: WorkspaceQuery.valueOf(uri.query, 'launch') == 'true',
-        autoplay: int.tryParse(
-          WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
-        ),
-      ),
+    final activityId = uri.pathSegments.first;
+    final roomId = WorkspaceQuery.valueOf(uri.query, 'roomid');
+    final launch = WorkspaceQuery.valueOf(uri.query, 'launch') == 'true';
+    final autoplay = int.tryParse(
+      WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
+    );
+    final activityTokenParam = ActivityTokenParam(
+      activityId: activityId,
+      roomId: roomId,
+      launch: launch,
+      autoplay: autoplay,
     );
     WorkspaceQuery.removeKeys(kept, {
       'left',
@@ -55,7 +57,10 @@ abstract class LegacyRedirects {
       'launch',
       'autoplay',
     });
-    final parts = ['left=${token.encode()}', ...kept];
+    final parts = [
+      'left=${PanelToken('activity', activityTokenParam).encode()}',
+      ...kept,
+    ];
     return '${PRoutes.world}?${parts.join('&')}';
   }
 
@@ -77,7 +82,7 @@ abstract class LegacyRedirects {
       code = null;
     }
     if (code == null || code.isEmpty) {
-      return '${PRoutes.world}?left=${const PanelToken('addcourse', 'private').encode()}';
+      return '${PRoutes.world}?left=${const PanelToken('addcourse', AddCourseTokenParam(subpage: 'private')).encode()}';
     }
     return PRoutes.joinWithCode(code);
   }

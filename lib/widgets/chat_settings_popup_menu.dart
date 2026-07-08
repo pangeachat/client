@@ -186,7 +186,7 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     final onDetails = left.any(
       (t) =>
           (t.type == 'room' || t.type == 'session') &&
-          (t.param ?? '').split('/').contains('details'),
+          (t.param?.build() ?? '').split('/').contains('details'),
     );
     NavigationUtil.goToSpaceRoute(
       widget.room.id,

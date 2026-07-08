@@ -15,9 +15,17 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+typedef _ObjectivesLoader =
+    ValueNotifier<AsyncState<List<QuestObjectiveGroup>>>;
 
 /// The objective groups that should render: those with at least one activity.
 /// An activity-less objective would otherwise show a header over a fixed-height
@@ -70,7 +78,7 @@ class CourseObjectivesList extends StatefulWidget {
 }
 
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
-  late Future<List<QuestObjectiveGroup>> _groupsFuture;
+  final _ObjectivesLoader _objectivesLoader = _ObjectivesLoader(AsyncLoading());
   final ScrollController _scrollController = ScrollController();
 
   /// The shared progression rollup behind the star display — same inputs and
@@ -84,19 +92,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// This quest's ordered Mission ids, for the header's quest-star summary.
   List<String> _orderedMissionIds = const [];
 
-  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
-
   @override
   void initState() {
     super.initState();
-    _groupsFuture = _load();
+    _load();
   }
 
   @override
   void dispose() {
+    _objectivesLoader.dispose();
     _scrollController.dispose();
     super.dispose();
   }
+
+  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
   /// Scroll this list from a vertical mouse wheel anywhere over the panel —
   /// including the gaps between cards and the objective headers. Those areas are
@@ -127,21 +136,43 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     if (oldWidget.questId != widget.questId ||
         oldWidget.room?.id != widget.room?.id) {
       _progression = ProgressionResolution.empty;
-      _groupsFuture = _load();
+      _load();
     }
   }
 
-  Future<List<QuestObjectiveGroup>> _load() async {
+  Future<void> _load() async {
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
     // activities) comes from the v3 quest read layer; the v1
     // course-plans/topics fan-out is retired.
     final questId = _questId;
-    if (questId == null) return [];
-    final outline = await QuestRepo.outline(questId);
+    if (questId == null) {
+      _objectivesLoader.value = AsyncError(MissingQuestException());
+      return;
+    }
+
+    _objectivesLoader.value = AsyncLoading();
+    final outlineResult = await QuestRepo.outline(questId);
+    final outline = outlineResult.result;
+
+    if (!mounted) return;
+
+    if (outline == null) {
+      _objectivesLoader.value = AsyncError(
+        outlineResult.error ?? MissingQuestException(),
+      );
+      return;
+    }
+
     _orderedMissionIds = outline.quest.learningObjectiveIds;
     unawaited(_loadProgression());
-    return outline.groups;
+
+    final filtered = objectiveGroupsWithActivities(outline.groups);
+    if (filtered.isEmpty) {
+      _objectivesLoader.value = AsyncError(MissingQuestException());
+      return;
+    }
+    _objectivesLoader.value = AsyncLoaded(filtered);
   }
 
   /// Resolve the star-display rollup. Joined courses only — a preview has no
@@ -167,70 +198,113 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<QuestObjectiveGroup>>(
-      future: _groupsFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(child: CircularProgressIndicator.adaptive());
-        }
-        // Activity-less objectives are dropped (see [objectiveGroupsWithActivities],
-        // #7114). Filtering before the empty check means an outline that is ALL
-        // activity-less still falls through to the "no activities" message.
-        final groups = objectiveGroupsWithActivities(snapshot.data);
-        if (groups.isEmpty) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                L10n.of(context).noActivitiesFound,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Theme.of(context).colorScheme.outline),
-              ),
-            ),
-          );
-        }
-        // The quest-star header shows only for a joined course once the shared
-        // rollup has resolved; a preview has no learner progress to show.
-        final showStars = widget.room != null && _progression.rollup.isNotEmpty;
-        final list = ListView.separated(
-          controller: widget.shrinkWrap ? null : _scrollController,
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          shrinkWrap: widget.shrinkWrap,
-          physics: widget.shrinkWrap
-              ? const NeverScrollableScrollPhysics()
-              : null,
-          itemCount: groups.length + (showStars ? 1 : 0),
-          separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-          itemBuilder: (context, i) {
-            if (showStars && i == 0) {
-              return _QuestStarsHeader(
-                summary: _progression.questStars(_orderedMissionIds),
+    return ValueListenableBuilder(
+      valueListenable: _objectivesLoader,
+      builder: (context, state, _) {
+        switch (state) {
+          case AsyncLoading():
+          case AsyncIdle():
+            return const Center(child: CircularProgressIndicator.adaptive());
+          case AsyncError(error: final error):
+            if (error is MissingQuestException) {
+              final showAddCourse = widget.room?.isRoomAdmin == true;
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      Text(
+                        showAddCourse
+                            ? L10n.of(context).missingCourseOutlineCta
+                            : L10n.of(context).missingCourseOutline,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                      ),
+                      if (showAddCourse)
+                        SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.tonalIcon(
+                            onPressed: () => context.go(
+                              WorkspaceNav.openCoursePage(
+                                GoRouterState.of(context).uri,
+                                'addcourse',
+                              ),
+                            ),
+                            icon: Icon(Icons.map_outlined, size: 20.0),
+                            label: Text(L10n.of(context).addCoursePlan),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 14.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               );
             }
-            final group = groups[showStars ? i - 1 : i];
-            return _ObjectiveSection(
-              index: showStars ? i - 1 : i,
-              group: group,
-              room: widget.room,
-              hasCompletedActivity: widget.hasCompletedActivity,
-              progress: showStars
-                  ? _progression.rollup[group.objective.id]
-                  : null,
+
+            return Center(
+              child: ErrorIndicator(message: error.toLocalizedString(context)),
             );
-          },
-        );
-        // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-        // with no map behind it, so a wheel can't leak — return it bare. The
-        // standalone course-card panel floats over the map, so capture the wheel
-        // OPAQUELY across the whole panel: the gaps between cards and the
-        // objective headers are hit-transparent, and a wheel there would zoom the
-        // map instead of scrolling the list. See [_claimVerticalScroll].
-        if (widget.shrinkWrap) return list;
-        return Listener(
-          behavior: HitTestBehavior.opaque,
-          onPointerSignal: _claimVerticalScroll,
-          child: list,
-        );
+          case AsyncLoaded(value: final groups):
+            // The quest-star header shows only for a joined course once the shared
+            // rollup has resolved; a preview has no learner progress to show.
+            final showStars =
+                widget.room != null && _progression.rollup.isNotEmpty;
+            final list = ListView.separated(
+              controller: widget.shrinkWrap ? null : _scrollController,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              shrinkWrap: widget.shrinkWrap,
+              physics: widget.shrinkWrap
+                  ? const NeverScrollableScrollPhysics()
+                  : null,
+              itemCount: groups.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 24.0),
+              itemBuilder: (context, i) {
+                if (showStars && i == 0) {
+                  return _QuestStarsHeader(
+                    summary: _progression.questStars(_orderedMissionIds),
+                  );
+                }
+                final group = groups[showStars ? i - 1 : i];
+                return _ObjectiveSection(
+                  index: showStars ? i - 1 : i,
+                  group: group,
+                  room: widget.room,
+                  hasCompletedActivity: widget.hasCompletedActivity,
+                  progress: showStars
+                      ? _progression.rollup[group.objective.id]
+                      : null,
+                );
+              },
+            );
+            // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+            // with no map behind it, so a wheel can't leak — return it bare. The
+            // standalone course-card panel floats over the map, so capture the wheel
+            // OPAQUELY across the whole panel: the gaps between cards and the
+            // objective headers are hit-transparent, and a wheel there would zoom the
+            // map instead of scrolling the list. See [_claimVerticalScroll].
+            if (widget.shrinkWrap) return list;
+            return Listener(
+              behavior: HitTestBehavior.opaque,
+              onPointerSignal: _claimVerticalScroll,
+              child: list,
+            );
+        }
       },
     );
   }

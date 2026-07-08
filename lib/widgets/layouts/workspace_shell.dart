@@ -12,6 +12,8 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -108,9 +110,10 @@ String _recencyKey(PanelToken token) {
   // A room/session instance is its bare room id; the rest is a pushed sub-page.
   // A `room` keeps its OWN type as the root (its parent `chats` is the list, a
   // separate panel), so this branch is reached with the original type.
-  if (token.type == 'room' || token.type == 'session') {
-    final bareId = (token.param ?? '').split('/').first;
-    return '${token.type}:$bareId';
+  final type = token.type;
+  final param = token.param;
+  if ((type == 'room' || type == 'session') && param is RoomTokenParam) {
+    return '$type:${param.id}';
   }
   // Every other family (settings/analytics/course/chats/addcourse/practice/
   // review) is a singleton per column: key on the root type, so paging or
@@ -515,6 +518,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
     }
 
+    String? cavityKey;
+    if (cavityToken != null) {
+      final param = cavityToken.param;
+      if (isCourseCavity) {
+        cavityKey = activeSpaceId ?? cavityToken.type;
+      } else if (isActivityCavity) {
+        cavityKey = param is ActivityTokenParam
+            ? param.activityId
+            : cavityToken.type;
+      } else {
+        cavityKey = cavityToken.type;
+      }
+    }
+
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
     // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
@@ -590,13 +607,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 currentUri: uri,
                 bare: true,
               ),
-        cavityKey: cavityToken == null
-            ? null
-            : isCourseCavity
-            ? (activeSpaceId ?? cavityToken.param ?? cavityToken.type)
-            : isActivityCavity
-            ? (cavityToken.param ?? cavityToken.type)
-            : cavityToken.type,
+        cavityKey: cavityKey,
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).

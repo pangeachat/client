@@ -1,3 +1,5 @@
+import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+
 /// One open-panel token from a workspace URL list (`left=` / `right=`).
 ///
 /// [type] selects a `PanelDef` in `panel_registry.dart`; [param] is its
@@ -5,9 +7,13 @@
 /// construct). See `routing.instructions.md`.
 class PanelToken {
   final String type;
-  final String? param;
+  final TokenParam? param;
 
   const PanelToken(this.type, [this.param]);
+
+  static final RegExp _typePattern = RegExp(r'^[a-z][a-z-]*$');
+
+  static bool _validType(String s) => _typePattern.hasMatch(s);
 
   /// Parse one URL list element. It arrives still percent-encoded and already
   /// split out of the comma list. The first `:` splits type from param, so a
@@ -31,17 +37,21 @@ class PanelToken {
       // this token rather than aborting the whole route parse.
       return null;
     }
-    return PanelToken(type, param.isEmpty ? null : param);
+
+    try {
+      final parsed = TokenParam.byType(type, param);
+      return PanelToken(type, parsed);
+    } catch (e) {
+      // A parse method (TokenFields.decode, enum fromRoute, etc.) threw on
+      // malformed input — skip this token rather than aborting route parse.
+      return null;
+    }
   }
 
   /// Encode for a URL list. The param is percent-encoded so its own commas and
   /// colons can't be mistaken for list or field delimiters.
   String encode() =>
-      param == null ? type : '$type:${Uri.encodeComponent(param!)}';
-
-  static final RegExp _typePattern = RegExp(r'^[a-z][a-z-]*$');
-
-  static bool _validType(String s) => _typePattern.hasMatch(s);
+      param == null ? type : '$type:${Uri.encodeComponent(param!.build())}';
 
   @override
   bool operator ==(Object other) =>

@@ -44,7 +44,7 @@ class PublicRoomBottomSheet extends StatefulWidget {
 
     if (room != null && room.membership == Membership.join) {
       context.go(
-        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, room.id),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, room.id),
       );
       return null;
     }

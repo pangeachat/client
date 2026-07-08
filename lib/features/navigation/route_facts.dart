@@ -1,12 +1,14 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 /// World_v2 routing facts — the single place navigation/layout decisions are
 /// derived from a [GoRouterState]. Every consumer (the shell layout, the
@@ -57,7 +59,17 @@ class ActivityFocus extends MapFocus {
 /// The learning-analytics metric the top-right cluster opens as a right-column
 /// panel. Each maps to a `?right=analytics:<name>` token in the workspace URL
 /// (the single source of truth for open panels). See `routing.instructions.md`.
-enum AnalyticsPanelTab { sessions, grammar, vocab }
+enum AnalyticsPanelTab {
+  sessions,
+  grammar,
+  vocab;
+
+  ProgressIndicatorEnum get indicator => switch (this) {
+    AnalyticsPanelTab.sessions => ProgressIndicatorEnum.activities,
+    AnalyticsPanelTab.grammar => ProgressIndicatorEnum.morphsUsed,
+    AnalyticsPanelTab.vocab => ProgressIndicatorEnum.wordsUsed,
+  };
+}
 
 /// Whether [fullPath] renders as the map hole — the persistent world map shows
 /// through with nothing drawn over it. world_v2: only the world root `/` is a
@@ -134,8 +146,9 @@ String? activeSpaceIdFor(Uri uri) {
 String? activeRoomIdFromPanels(Uri uri) {
   final panels = parseOpenPanels(uri);
   for (final token in [...panels.left, ...panels.right]) {
-    if (token.type == 'room' && token.param != null) {
-      return fullRoomId(token.param!);
+    final param = token.param;
+    if (param is RoomTokenParam) {
+      return fullRoomId(param.id);
     }
   }
   return null;
@@ -151,22 +164,20 @@ String? activeRoomIdFor(GoRouterState state) {
 
 /// The activity an open URI addresses: the `left=activity:` panel token,
 /// whose structured param carries the id plus optional session bindings — the
-/// bound room, launch, autoplay ([ActivityToken]).
-({String id, String? roomId, bool launch, int? autoplay})? activityInfoFor(
-  Uri uri,
-) {
+/// bound room, launch, autoplay ([ActivityTokenParam]).
+ActivityTokenParam? activityInfoFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
-    if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
-      return ActivityToken.parse(token.param!);
+    final param = token.param;
+    if (param is ActivityTokenParam) {
+      return param;
     }
   }
   return null;
 }
 
 /// [activityInfoFor] over a [GoRouterState]'s URI.
-({String id, String? roomId, bool launch, int? autoplay})? activityFor(
-  GoRouterState state,
-) => activityInfoFor(state.uri);
+ActivityTokenParam? activityFor(GoRouterState state) =>
+    activityInfoFor(state.uri);
 
 /// The course join code an open URI carries — the `addcourse` token's
 /// `private/<code>` leaf (the `LegacyRedirects` join-link rewrite target),
@@ -174,11 +185,10 @@ String? activeRoomIdFor(GoRouterState state) {
 /// across the login bounce (PAuthGaurd.roomsRedirect, #7524).
 String? joinCodeFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
-    if (token.type != 'addcourse') continue;
-    final param = token.param ?? '';
-    if (!param.startsWith('private/')) continue;
-    final field = param.substring('private/'.length);
-    if (field.isNotEmpty) return TokenFields.decode(field);
+    final param = token.param;
+    if (param is! AddCourseTokenParam) continue;
+    if (param.subpage != 'private') continue;
+    return param.joinCode;
   }
   return null;
 }
@@ -187,7 +197,7 @@ String? joinCodeFor(Uri uri) {
 /// [MapFocus] subclass and returning it here.
 MapFocus? mapFocusFor(GoRouterState state) {
   final activity = activityFor(state);
-  if (activity != null) return ActivityFocus(activity.id);
+  if (activity != null) return ActivityFocus(activity.activityId);
   return null;
 }
 
@@ -279,8 +289,8 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
     // to one panel rather than colliding on the room's GlobalKey. Other panels
     // dedup on the whole (type, param). See `routing.instructions.md`.
     final identity = (token.type == 'room' || token.type == 'session')
-        ? '${token.type}:${(token.param ?? '').split('/').first}'
-        : '${token.type}:${token.param ?? ''}';
+        ? '${token.type}:${(token.param?.build() ?? '').split('/').first}'
+        : '${token.type}:${token.param?.build() ?? ''}';
     if (!seen.add(identity)) continue;
     // Siblings can't coexist: at most one token per sibling group survives in a
     // column (first wins). Without this a hand-edited / deep-link URL could

@@ -3770,7 +3770,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-06 10:22:48.645312",
+    "@@last_modified": "2026-07-08 15:21:37.529201",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10497,7 +10497,6 @@
     "enableNotificationsTitle": "Ποτέ μην χάσετε μια συνομιλία!",
     "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις για το Pangea Chat και μείνετε συνδεδεμένοι με τους φίλους σας στη γλώσσα!",
     "enableNotifications": "Επιτρέψτε τις ειδοποιήσεις",
-    "noActivitiesFound": "Δεν υπάρχουν διαθέσιμες δραστηριότητες για αυτό το θέμα.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10507,10 +10506,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11313,6 +11308,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} από {total} αστέρια κερδισμένα",
+    "activityNoLongerSupported": "Αυτή η δραστηριότητα εκτελούνταν σε παλαιότερη έκδοση δραστηριοτήτων και δεν υποστηρίζεται πλέον. Μπορείτε να αναθεωρήσετε τι συνέβη σε αυτή τη συνεδρία.",
+    "activityLoadFailed": "Δεν ήταν δυνατή η φόρτωση της δραστηριότητας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+    "levelUpChip": "Επίπεδο {level}!",
+    "missingCourseOutline": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο",
+    "missingCourseOutlineCta": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο. Επιλέξτε ένα νέο σχέδιο μαθήματος.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

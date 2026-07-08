@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:20:59.663913",
+    "@@last_modified": "2026-07-08 15:19:55.939733",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9545,7 +9545,6 @@
     "enableNotificationsTitle": "Jangan lewatkan obrolan!",
     "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
     "enableNotifications": "Izinkan notifikasi",
-    "noActivitiesFound": "Tidak ada aktivitas yang tersedia untuk topik ini.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9555,10 +9554,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10361,6 +10356,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} dari {total} bintang yang diperoleh",
+    "activityNoLongerSupported": "Aktivitas ini dijalankan pada versi lama dari aktivitas dan tidak lagi didukung. Anda masih dapat meninjau apa yang terjadi dalam sesi ini.",
+    "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",
+    "levelUpChip": "Tingkat {level}!",
+    "missingCourseOutline": "Kursus ini tidak lagi tersedia",
+    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih rencana kursus baru.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

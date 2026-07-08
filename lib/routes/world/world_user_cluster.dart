@@ -11,7 +11,6 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -94,9 +93,10 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   /// panels). `setRight` replaces the whole right list, so switching trackers
   /// lands on the new tab's summary and drops any open construct detail.
   void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      PanelToken('analytics', tab.name),
-    ]),
+    WorkspaceNav.openAnalytics(
+      GoRouterState.of(context).uri,
+      subpage: tab.indicator,
+    ),
   );
 
   /// Open the profile + settings panel on the right (its menu), keeping any
@@ -106,9 +106,10 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 
   /// The level medal opens the level analytics tab on the right.
   void _openLevel() => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      const PanelToken('analytics', 'level'),
-    ]),
+    WorkspaceNav.openAnalytics(
+      GoRouterState.of(context).uri,
+      subpage: ProgressIndicatorEnum.level,
+    ),
   );
 
   /// The L2 flag opens the learning settings page on the right directly.

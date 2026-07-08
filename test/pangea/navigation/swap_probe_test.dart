@@ -1,8 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
@@ -79,14 +83,21 @@ void main() {
       // visible "swap". This case fails on the pre-fix (token-string) keying and
       // passes on the stable-identity keying.
       var u = Uri.parse(
-        WorkspaceNav.openLeft(Uri.parse('/'), const PanelToken('room', '!abc')),
+        WorkspaceNav.openLeft(
+          Uri.parse('/'),
+          PanelToken('room', RoomTokenParam.parse('!abc')),
+        ),
       );
       expect(focusType(u), 'room');
       u = Uri.parse(
-        WorkspaceNav.setRight(u, [const PanelToken('analytics', 'vocab')]),
+        WorkspaceNav.setRight(u, [
+          PanelToken('analytics', AnalyticsTokenParam.parse('vocab')),
+        ]),
       );
       expect(focusType(u), 'analytics');
-      u = Uri.parse(WorkspaceNav.pushPage(u, 'room', '!abc/members'));
+      u = Uri.parse(
+        WorkspaceNav.pushPage(u, 'room', RoomTokenParam.parse('!abc/members')),
+      );
       expect(
         focusType(u),
         'analytics',
@@ -104,7 +115,7 @@ void main() {
       const vp = 900.0;
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
       layoutOf(u, vp, columnMode: true); // build 1: settings (right)
-      u = Uri.parse(WorkspaceNav.openCourseFilter(u, '!space:server'));
+      u = Uri.parse(WorkspaceNav.openCourse(u, '!space:server'));
       final before = layoutOf(u, vp, columnMode: true); // build 2: course focus
       expect(
         visOf(before, u, 'course'),
@@ -139,7 +150,10 @@ void main() {
     test('wide column mode: left room stays at the same x across the nav', () {
       const vp = 1600.0;
       var u = Uri.parse(
-        WorkspaceNav.openLeft(Uri.parse('/'), const PanelToken('room', '!abc')),
+        WorkspaceNav.openLeft(
+          Uri.parse('/'),
+          const PanelToken('room', RoomTokenParam(id: '!abc')),
+        ),
       );
       u = Uri.parse(WorkspaceNav.openSettings(u)); // open settings (right)
       final before = layoutOf(u, vp, columnMode: true);
@@ -169,7 +183,7 @@ void main() {
         var u = Uri.parse(
           WorkspaceNav.openLeft(
             Uri.parse('/'),
-            const PanelToken('room', '!abc'),
+            const PanelToken('room', RoomTokenParam(id: '!abc')),
           ),
         );
         u = Uri.parse(WorkspaceNav.openSettings(u));
@@ -188,9 +202,16 @@ void main() {
       }
 
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
-      u = Uri.parse(WorkspaceNav.openLeft(u, const PanelToken('room', '!abc')));
+      u = Uri.parse(
+        WorkspaceNav.openLeft(
+          u,
+          const PanelToken('room', RoomTokenParam(id: '!abc')),
+        ),
+      );
       final fhRoom = fhOf(u);
-      u = Uri.parse(WorkspaceNav.pushPage(u, 'room', '!abc/members'));
+      u = Uri.parse(
+        WorkspaceNav.pushPage(u, 'room', RoomTokenParam(id: '!abc/members')),
+      );
       final fhMembers = fhOf(u);
       expect(fhMembers, fhRoom);
     });
@@ -208,15 +229,15 @@ void main() {
     test('opening a construct detail shows it over the summary (narrow)', () {
       var u = Uri.parse(
         WorkspaceNav.setRight(Uri.parse('/'), [
-          const PanelToken('analytics', 'vocab'),
+          PanelToken('analytics', AnalyticsTokenParam.parse('vocab')),
         ]),
       );
+
+      final type = ConstructTypeEnum.vocab;
+      final constructId = ConstructIdentifier.fromTokenParam(type, 'hablar');
+
       u = Uri.parse(
-        WorkspaceNav.openConstructDetail(
-          u,
-          const PanelToken('vocab', 'hablar'),
-          'vocab',
-        ),
+        WorkspaceNav.openConstructDetail(u, type, constructId: constructId),
       );
       final l = layoutOf(u, 400, columnMode: false);
       expect(visOf(l, u, 'vocab'), PanelVis.full);
@@ -230,7 +251,7 @@ void main() {
         // A course needs its `?m=course:<id>` filter for the parser to keep the
         // `course`/`coursepage` tokens (the card's identity rides the filter).
         var u = Uri.parse(
-          WorkspaceNav.openCourseFilter(Uri.parse('/'), '!space:server'),
+          WorkspaceNav.openCourse(Uri.parse('/'), '!space:server'),
         );
         u = Uri.parse(WorkspaceNav.openCoursePage(u, 'invite'));
         final l = layoutOf(u, 400, columnMode: false);
@@ -245,7 +266,10 @@ void main() {
       // Replay every URL transition so recency builds as it does per-build in the
       // real shell (each build syncs once).
       var u = Uri.parse(
-        WorkspaceNav.openLeft(Uri.parse('/'), const PanelToken('room', '!abc')),
+        WorkspaceNav.openLeft(
+          Uri.parse('/'),
+          const PanelToken('room', RoomTokenParam(id: '!abc')),
+        ),
       );
       layoutOf(u, 400, columnMode: false); // build 1: room
       u = Uri.parse(WorkspaceNav.openSettings(u));
@@ -257,10 +281,18 @@ void main() {
     test('switching to a different room is promoted (distinct identity)', () {
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
       layoutOf(u, 400, columnMode: false); // build 1: settings
-      u = Uri.parse(WorkspaceNav.openLeft(u, const PanelToken('room', '!abc')));
+      u = Uri.parse(
+        WorkspaceNav.openLeft(
+          u,
+          const PanelToken('room', RoomTokenParam(id: '!abc')),
+        ),
+      );
       layoutOf(u, 400, columnMode: false); // build 2: + room abc
       u = Uri.parse(
-        WorkspaceNav.openExclusiveLeftRoom(u, const PanelToken('room', '!xyz')),
+        WorkspaceNav.openExclusiveLeftRoom(
+          u,
+          const PanelToken('room', RoomTokenParam(id: '!xyz')),
+        ),
       );
       final l = layoutOf(u, 400, columnMode: false); // build 3: swap to xyz
       expect(visOf(l, u, 'room'), PanelVis.full); // the !xyz room

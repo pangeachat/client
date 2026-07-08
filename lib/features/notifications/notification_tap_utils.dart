@@ -202,7 +202,7 @@ class NotificationTapUtil {
           ?.id;
 
       if (parentCourseId != null) {
-        router.go(WorkspaceNav.openCourseFilter(uri, parentCourseId));
+        router.go(WorkspaceNav.openCourse(uri, parentCourseId));
         return;
       }
     }
@@ -210,7 +210,7 @@ class NotificationTapUtil {
     if (room.membership == Membership.invite) {
       router.go(PRoutes.world);
     } else if (room.isSpace == true) {
-      router.go(WorkspaceNav.openCourseFilter(uri, roomId));
+      router.go(WorkspaceNav.openCourse(uri, roomId));
     } else {
       router.go(WorkspaceNav.openRoomById(uri, roomId));
     }

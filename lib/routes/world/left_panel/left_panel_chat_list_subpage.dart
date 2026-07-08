@@ -2,26 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 
 class LeftPanelChatListSubpage extends StatefulWidget {
-  final PanelToken token;
-  final Uri currentUri;
-  final bool foldedOver;
-  final bool isColumnMode;
+  final Widget closeButton;
 
-  const LeftPanelChatListSubpage({
-    super.key,
-    required this.token,
-    required this.currentUri,
-    required this.foldedOver,
-    required this.isColumnMode,
-  });
+  const LeftPanelChatListSubpage({super.key, required this.closeButton});
 
   @override
   State<LeftPanelChatListSubpage> createState() =>
@@ -53,12 +42,7 @@ class _LeftPanelChatListSubpageState extends State<LeftPanelChatListSubpage> {
     return Column(
       children: [
         PanelHeader(
-          leading: LeftPanelCloseButton(
-            token: widget.token,
-            currentUri: widget.currentUri,
-            foldedOver: widget.foldedOver,
-            isColumnMode: widget.isColumnMode,
-          ),
+          leading: widget.closeButton,
           title: l10n.chats,
           trailing: Row(
             mainAxisSize: MainAxisSize.min,

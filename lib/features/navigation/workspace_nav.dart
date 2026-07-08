@@ -1,12 +1,24 @@
-import 'package:fluffychat/features/navigation/activity_token.dart';
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
-import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 /// Builds workspace location strings by adding or removing panel tokens on the
 /// current URL, preserving the path and every other query param. The URL is the
@@ -144,7 +156,7 @@ abstract class WorkspaceNav {
     String? event,
   }) {
     final id = shortRoomId(roomId);
-    final param = RoomToken.build(id, subPage: subPage, eventId: event);
+    final param = RoomTokenParam(id: id, subpage: subPage, eventId: event);
     return WorkspaceQuery.location(
       PRoutes.world,
       WorkspaceQuery.parts(
@@ -161,23 +173,29 @@ abstract class WorkspaceNav {
   /// ALSO drops the open `course` card and its `coursepage` so the review isn't
   /// rendered behind a still-open course window (#7106) — the Stars archive is
   /// this helper's only caller, and a live in-course session opens via
-  /// [openExclusiveLeftRoom] (+ [openCourseFilter]) instead, so the course is
+  /// [openExclusiveLeftRoom] (+ [openCourse]) instead, so the course is
   /// only dropped on the Stars path. (Not a shared sibling group: that would
   /// evict the course on every room/vocab/grammar/practice open too.)
-  static String openExclusiveSession(Uri current, PanelToken token) =>
-      _mutateBoth(current, (left) {
-        final next = left
-            .where(
-              (t) =>
-                  t != token &&
-                  !_areSiblings(token, t) &&
-                  t.type != 'course' &&
-                  t.type != 'coursepage',
-            )
-            .toList();
-        next.add(token);
-        return next;
-      }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
+  static String openExclusiveSession(Uri current, String roomId) {
+    final token = PanelToken(
+      'session',
+      RoomTokenParam(id: shortRoomId(roomId)),
+    );
+
+    return _mutateBoth(current, (left) {
+      final next = left
+          .where(
+            (t) =>
+                t != token &&
+                !_areSiblings(token, t) &&
+                t.type != 'course' &&
+                t.type != 'coursepage',
+          )
+          .toList();
+      next.add(token);
+      return next;
+    }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
+  }
 
   /// Open a vocab/grammar construct detail (the `detail` group): drops the
   /// other construct detail and any `session`, ensures its pinned `analytics`
@@ -187,22 +205,41 @@ abstract class WorkspaceNav {
   /// `routing.instructions.md`.
   static String openConstructDetail(
     Uri current,
-    PanelToken detail,
-    String summaryTab,
-  ) => _mutateBoth(
-    current,
-    (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-    (right) {
-      final next = right
-          .where((t) => t != detail && !_areSiblings(detail, t))
-          .toList();
-      if (!next.any((t) => t.type == 'analytics')) {
-        next.insert(0, PanelToken('analytics', summaryTab));
-      }
-      next.add(detail);
-      return next;
-    },
-  );
+    ConstructTypeEnum view, {
+    ConstructIdentifier? constructId,
+  }) {
+    final param = view == ConstructTypeEnum.vocab
+        ? VocabAnalyticsTokenParam(constructId: constructId)
+        : GrammarAnalyticsTokenParam(constructId: constructId);
+
+    final detail = PanelToken(
+      view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+      param,
+    );
+
+    return _mutateBoth(
+      current,
+      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+      (right) {
+        final next = right
+            .where((t) => t != detail && !_areSiblings(detail, t))
+            .toList();
+
+        if (!next.any((t) => t.type == 'analytics')) {
+          next.insert(
+            0,
+            PanelToken(
+              'analytics',
+              AnalyticsTokenParam(subpage: view.indicator),
+            ),
+          );
+        }
+
+        next.add(detail);
+        return next;
+      },
+    );
+  }
 
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
@@ -213,23 +250,32 @@ abstract class WorkspaceNav {
   /// cluster's analytics replaces the whole right column. Practice is a normal
   /// bounded panel, not a route or a fullscreen surface. See
   /// `routing.instructions.md`.
-  static String openPractice(Uri current, String type) => _mutateBoth(
-    current,
-    (left) => left.where((t) => t.type != 'session').toList(),
-    (right) {
-      final next = right
-          .where(
-            (t) =>
-                t.type != 'analytics' &&
-                t.type != 'vocab' &&
-                t.type != 'grammar' &&
-                t.type != 'practice',
-          )
-          .toList();
-      next.insert(0, PanelToken('practice', type));
-      return next;
-    },
-  );
+  static String openPractice(Uri current, ConstructTypeEnum type) =>
+      _mutateBoth(
+        current,
+        (left) => left.where((t) => t.type != 'session').toList(),
+        (right) {
+          final next = right
+              .where(
+                (t) =>
+                    t.type != 'analytics' &&
+                    t.type != 'vocab' &&
+                    t.type != 'grammar' &&
+                    t.type != 'practice',
+              )
+              .toList();
+
+          next.insert(
+            0,
+            PanelToken(
+              'practice',
+              AnalyticsPracticeTokenParam(constructType: type),
+            ),
+          );
+
+          return next;
+        },
+      );
 
   /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),
@@ -238,10 +284,17 @@ abstract class WorkspaceNav {
   /// from anywhere" used when navigating to a course outside its current filter
   /// (joins, activity-session returns) — the tab must ride the token param, so a
   /// bare `?tab=` query cannot express it. See `routing.instructions.md`.
-  static String openCourseFilter(Uri current, String spaceId, {String? tab}) {
+  static String openCourse(
+    Uri current,
+    String spaceId, {
+    SpaceSettingsTabs? tab,
+  }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      PanelToken('course', tab),
+      PanelToken(
+        'course',
+        tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
+      ),
       // Drop any prior course token, the Courses launcher (`addcourse`), a stale
       // management page (`coursepage`), and an open immersive `activity` —
       // picking/re-showing a course card is an exit FROM the activity (the
@@ -270,7 +323,7 @@ abstract class WorkspaceNav {
   /// tap. Sets the `?c=` context and REPLACES the open left panels with the
   /// course card ([tab] in its param), keeping a live room only when
   /// [keepRoom]; the right column and other query survive. Unlike
-  /// [openCourseFilter] (an in-content course open, which keeps the chat
+  /// [openCourse] (an in-content course open, which keeps the chat
   /// list), a section switch replaces the left column
   /// (routing.instructions.md). This is the token-native replacement for the
   /// old `setSection(uri, PRoutes.course(id), …)` hybrid that bounced through
@@ -278,13 +331,12 @@ abstract class WorkspaceNav {
   static String openCourseSection(
     Uri current,
     String spaceId, {
-    String? tab,
     bool keepRoom = true,
     bool clearRight = false,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      PanelToken('course', tab),
+      PanelToken('course'),
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
     final parts = WorkspaceQuery.parts(current.query);
@@ -303,13 +355,8 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, query);
   }
 
-  /// Open (or re-tab) a `course` panel at the left edge, replacing any existing
-  /// course token. The course's identity is the `?c=<id>` scope
-  /// (read via activeSpaceIdFor), not the token — the token's param is just the
-  /// active tab, so switching tabs is opening the course token with a new tab
-  /// (the `c` context is preserved by `_mutate`). A live room and the chat list
-  /// are kept (a course can scope a room). See `routing.instructions.md`.
-  static String openCourse(Uri current, PanelToken token) => _mutate(
+  /// Open a tab in the detail page for the currently focused course
+  static String openCourseTab(Uri current, {SpaceSettingsTabs? tab}) => _mutate(
     current,
     'left',
     (tokens) {
@@ -319,7 +366,10 @@ abstract class WorkspaceNav {
       final next = tokens
           .where((t) => t.type != 'course' && t.type != 'activity')
           .toList();
-      next.insert(0, token);
+      next.insert(
+        0,
+        PanelToken('course', CourseDetailsTokenParam(activeTab: tab)),
+      );
       return next;
     },
   );
@@ -333,16 +383,18 @@ abstract class WorkspaceNav {
   /// invite page's initial contact filter, folded into the token instead of a
   /// loose `?filter=` query (routing.instructions.md). One management page at a
   /// time (the registry `coursepage` exclusive group drops any prior one).
-  static String openCoursePage(Uri current, String page, {String? filter}) =>
-      openDetail(
-        current,
-        PanelToken(
-          'coursepage',
-          filter == null || filter.isEmpty
-              ? page
-              : '$page/${TokenFields.encode(filter)}',
-        ),
-      );
+  static String openCoursePage(
+    Uri current,
+    String page, {
+    String? filter,
+    String? courseId,
+  }) => openDetail(
+    current,
+    PanelToken(
+      'coursepage',
+      RoomSubpageTokenParam(subpage: page, filter: filter, courseId: courseId),
+    ),
+  );
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
   /// ANYWHERE: set the `?c=<id>` scope + `course` card, then the
@@ -356,7 +408,7 @@ abstract class WorkspaceNav {
     String page, {
     String? filter,
   }) => openCoursePage(
-    Uri.parse(openCourseFilter(current, spaceId)),
+    Uri.parse(openCourse(current, spaceId)),
     page,
     filter: filter,
   );
@@ -372,7 +424,7 @@ abstract class WorkspaceNav {
   /// reopens the card. [launch] skips the lobby straight to role selection;
   /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
   /// the plan's hero media (muted, block 0) — all three ride as fields of the
-  /// activity token's param ([ActivityToken]), never as loose query params.
+  /// activity token's param ([ActivityTokenParam]), never as loose query params.
   ///
   /// Inbound `/courses/:id?activity=` external links and the standalone
   /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
@@ -387,17 +439,19 @@ abstract class WorkspaceNav {
   }) {
     final token = PanelToken(
       'activity',
-      ActivityToken.build(
-        activityId,
+      ActivityTokenParam(
+        activityId: activityId,
         roomId: roomId,
         launch: launch,
         autoplay: autoplay ? 0 : null,
       ),
     );
+
     final parts = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${token.encode()}',
     ];
+
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
@@ -419,15 +473,17 @@ abstract class WorkspaceNav {
   }) {
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'left'});
+
     final token = PanelToken(
       'activity',
-      ActivityToken.build(
-        activityId,
+      ActivityTokenParam(
+        activityId: activityId,
         roomId: roomId,
         launch: launch,
         autoplay: autoplay,
       ),
     );
+
     parts.add('left=${token.encode()}');
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
@@ -511,11 +567,6 @@ abstract class WorkspaceNav {
     }
     return null;
   }
-
-  /// Drop the whole `left` list (e.g. navigating to the world map, which has no
-  /// left column). The `right` list and other query params are preserved.
-  static String clearLeft(Uri current) =>
-      _mutate(current, 'left', (_) => const []);
 
   /// Clear the entire workspace — every panel in both columns — and return to
   /// the world map (home). The World control is the one deliberate "reveal the
@@ -614,16 +665,16 @@ abstract class WorkspaceNav {
   /// invite, a room→members/search. Replaces that panel's token with the
   /// deeper-page token, keeping every other panel. A null/empty [page] is the
   /// panel's root. See `routing.instructions.md`.
-  static String pushPage(Uri current, String type, String? page) {
+  static String pushPage(Uri current, String type, TokenParam? param) {
     final col = PanelRegistry.defFor(type)?.column == PanelColumn.right
         ? 'right'
         : 'left';
     return _mutate(current, col, (tokens) {
       final next = tokens.where((t) => t.type != type).toList();
       next.add(
-        page == null || page.isEmpty
+        param == null || param.build().isEmpty
             ? PanelToken(type)
-            : PanelToken(type, page),
+            : PanelToken(type, param),
       );
       return next;
     });
@@ -631,11 +682,8 @@ abstract class WorkspaceNav {
 
   /// Pop one page level off a pushable panel (its back arrow): a `a/b` page
   /// returns to `a`; a top-level page returns to the panel's root.
-  static String popPage(Uri current, String type, String page) {
-    final parent = page.contains('/')
-        ? page.substring(0, page.lastIndexOf('/'))
-        : '';
-    return pushPage(current, type, parent.isEmpty ? null : parent);
+  static String popPage(Uri current, String type, TokenParam param) {
+    return pushPage(current, type, param.poppedParam);
   }
 
   /// The analytics-family right panels: the analytics summary, its vocab/grammar
@@ -679,7 +727,10 @@ abstract class WorkspaceNav {
         return result;
       });
     } else {
-      final detail = PanelToken('settingspage', page);
+      final detail = PanelToken(
+        'settingspage',
+        SettingsTokenParam(subpage: page),
+      );
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
             .where(
@@ -720,13 +771,14 @@ abstract class WorkspaceNav {
   /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
   /// top-level page returns to the menu (drops the page detail, menu remains).
   static String settingsBack(Uri current, String page) {
-    if (page.contains('/')) {
-      return openSettings(
-        current,
-        page: page.substring(0, page.lastIndexOf('/')),
-      );
+    final param = SettingsTokenParam(subpage: page);
+    if (param.isPushed) {
+      final popped = param.poppedParam;
+      if (popped is SettingsTokenParam) {
+        return openSettings(current, page: popped.subpage);
+      }
     }
-    return closeRight(current, PanelToken('settingspage', page));
+    return closeRight(current, PanelToken('settingspage', param));
   }
 
   static List<PanelToken> _add(
@@ -786,4 +838,60 @@ abstract class WorkspaceNav {
     }
     return WorkspaceQuery.location(current.path, parts);
   }
+
+  static String openAnalytics(
+    Uri current, {
+    ProgressIndicatorEnum? subpage,
+    bool closeSections = false,
+  }) => setRight(current, [
+    PanelToken(
+      'analytics',
+      AnalyticsTokenParam(subpage: subpage ?? ProgressIndicatorEnum.wordsUsed),
+    ),
+  ], closeSections: closeSections);
+
+  static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
+      setRight(current, [
+        PanelToken(
+          'analytics',
+          AnalyticsTokenParam.parse(
+            view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+          ),
+        ),
+      ]);
+
+  static String closeCoursePage(Uri current, String page) => _mutate(
+    current,
+    'left',
+    (tokens) => tokens.where((t) {
+      if (t.type != 'coursepage') return true;
+      final param = t.param;
+      if (param is! RoomSubpageTokenParam) return true;
+      return param.subpage != page;
+    }).toList(),
+  );
+
+  static String openAddCourse(
+    Uri current, {
+    String? subpage,
+    String? roomId,
+    String? courseId,
+    String? targetLanguage,
+    bool invite = false,
+  }) => setSection(
+    current,
+    PanelToken(
+      'addcourse',
+      subpage != null
+          ? AddCourseTokenParam(
+              subpage: subpage,
+              roomId: roomId,
+              courseId: courseId,
+              targetLanguage: targetLanguage,
+              invite: invite,
+            )
+          : null,
+    ),
+    keepRoom: false,
+  );
 }

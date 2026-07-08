@@ -1,12 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_course_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
@@ -40,6 +47,8 @@ class WorkspaceLeftPanel extends StatelessWidget {
   /// `/rooms/:roomid` route that read `state.extra`. See `routing.instructions.md`.
   final List<ShareItem>? shareItems;
 
+  final Completer<String>? courseCreationCompleter;
+
   /// Render the panel's surface WITHOUT the floating [PanelCard] chrome — used
   /// when this panel is hosted inside another card-like container that already
   /// supplies the surface (the narrow nav widget's cavity, which hosts the
@@ -53,38 +62,46 @@ class WorkspaceLeftPanel extends StatelessWidget {
     required this.currentUri,
     this.foldedOver = false,
     this.shareItems,
+    this.courseCreationCompleter,
     this.bare = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final Widget surface = switch (token.type) {
-      'chats' => LeftPanelChatListSubpage(
-        token: token,
-        currentUri: currentUri,
-        isColumnMode: isColumnMode,
-        foldedOver: foldedOver,
-      ),
-      'room' || 'session' => LeftPanelRoomSubpage(
-        token: token,
-        currentUri: currentUri,
-        isColumnMode: isColumnMode,
-        foldedOver: foldedOver,
-        shareItems: shareItems,
-      ),
-      'addcourse' => LeftPanelAddCourseSubpage(
-        token: token,
-        currentUri: currentUri,
-        foldedOver: foldedOver,
-        isColumnMode: isColumnMode,
-      ),
-      'course' => LeftPanelCourseDetailsSubpage(
-        token: token,
-        currentUri: currentUri,
-        foldedOver: foldedOver,
-        isColumnMode: isColumnMode,
-      ),
+    final closeButton = LeftPanelCloseButton(
+      token: token,
+      currentUri: currentUri,
+      foldedOver: foldedOver,
+      isColumnMode: isColumnMode,
+    );
+
+    final type = token.type;
+    final param = token.param;
+
+    final Widget surface = switch (type) {
+      'chats' => LeftPanelChatListSubpage(closeButton: closeButton),
+      'room' || 'session' => () {
+        return LeftPanelRoomSubpage(
+          param: param is RoomTokenParam ? param : null,
+          shareItems: shareItems,
+          closeButton: closeButton,
+        );
+      }(),
+      'addcourse' => () {
+        return LeftPanelAddCourseSubpage(
+          param: param is AddCourseTokenParam ? param : null,
+          closeButton: closeButton,
+          courseCreationCompleter: courseCreationCompleter,
+        );
+      }(),
+      'course' => () {
+        return LeftPanelCourseDetailsSubpage(
+          param: param is CourseDetailsTokenParam ? param : null,
+          spaceId: activeSpaceIdFor(currentUri),
+          closeButton: closeButton,
+        );
+      }(),
       // An activity plan/preview — the immersive live-view surface before the
       // session room exists (#7385). Its identity AND session bindings (bound
       // room, launch) ride the token's structured param (ActivityToken, read
@@ -93,37 +110,23 @@ class WorkspaceLeftPanel extends StatelessWidget {
       // course, or an X to the map — see `activity_sessions_start_view.dart`),
       // so PanelCard just supplies the floating chrome like every other panel.
       'activity' => () {
-        final info = activityInfoFor(currentUri);
-        if (info == null) return const SizedBox.shrink();
-        return ActivityDetailPanel(
-          activityId: info.id,
+        if (param is! ActivityTokenParam) return const SizedBox.shrink();
+        return LeftPanelActivityDetailsSubpage(
+          param: param,
           parentSpaceId: activeSpaceIdFor(currentUri),
-          roomId: info.roomId,
-          launch: info.launch,
         );
       }(),
       'coursepage' => () {
+        final parsed = param is RoomSubpageTokenParam ? param : null;
         final courseSpaceId = activeSpaceIdFor(currentUri);
-        final page = token.param;
-        if (courseSpaceId == null || page == null) {
+        if (courseSpaceId == null) {
           return const SizedBox.shrink();
         }
-        // A `coursepage` param has no leading id (the space rides `?c=`): just
-        // the page, with an optional trailing `/<filter>` — the invite page's
-        // initial contact filter (WorkspaceNav.openCoursePage). See
-        // `routing.instructions.md`.
-        final segments = page.split('/');
-        final filter = segments.length > 1
-            ? TokenFields.decode(segments[1])
-            : null;
+
         return LeftPanelRoomDetailsSubpage(
-          token: token,
-          currentUri: currentUri,
-          foldedOver: foldedOver,
-          isColumnMode: isColumnMode,
           roomId: courseSpaceId,
-          name: segments.first,
-          filter: filter,
+          param: parsed,
+          closeButton: closeButton,
         );
       }(),
       _ => const SizedBox.shrink(),

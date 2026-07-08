@@ -2775,7 +2775,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-06 10:22:05.208233",
+    "@@last_modified": "2026-07-08 15:20:46.005914",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10524,7 +10524,6 @@
     "enableNotificationsTitle": "Nunca perca um chat!",
     "enableNotificationsDesc": "Permita notificações para o Pangea Chat e mantenha-se conectado com seus amigos de idioma!",
     "enableNotifications": "Permitir notificações",
-    "noActivitiesFound": "Nenhuma atividade disponível para este tópico.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10534,10 +10533,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11340,6 +11335,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
+    "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
+    "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
+    "levelUpChip": "Nível {level}!",
+    "missingCourseOutline": "Este curso não está mais disponível",
+    "missingCourseOutlineCta": "Este curso não está mais disponível. Escolha um novo plano de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

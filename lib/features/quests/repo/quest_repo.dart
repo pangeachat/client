@@ -1,3 +1,6 @@
+import 'package:async/async.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -8,7 +11,11 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class MissingQuestException implements Exception {}
 
 /// An activity in a quest outline: its id plus the full plan, so the card
 /// renders and a session can open without a refetch.
@@ -66,9 +73,9 @@ class QuestOutline {
 ///  - map pins are **one** thin read off the activities' own coordinates (no
 ///    topic/location join, no ring-offset hack).
 class QuestRepo {
-  static const String _questPlans = 'quest-plans';
-  static const String _learningObjectives = 'learning-objectives';
-  static const String _activities = 'activities-v2';
+  static const String _questPlansKey = 'quest-plans';
+  static const String _learningObjectivesKey = 'learning-objectives';
+  static const String _activitiesKey = 'activities-v2';
 
   /// Thin projection for map pins — card fields only, no plan body.
   static const Map<String, dynamic> _pinSelect = {
@@ -83,10 +90,177 @@ class QuestRepo {
     'learningObjectiveRefs': true,
   };
 
+  /// `where` matching any activity that satisfies one of [loIds] at [l2].
+  static Map<String, dynamic> _loAtL2Where(List<String> loIds, String l2) => {
+    'and': [
+      {
+        'or': [
+          for (final id in loIds)
+            {
+              'learningObjectiveRefs': {'contains': id},
+            },
+        ],
+      },
+      {
+        'res.plan.l2': {'equals': l2},
+      },
+    ],
+  };
+
   static PayloadClient _client() => PayloadClient(
     baseUrl: Environment.cmsApi,
     accessToken: MatrixState.pangeaController.userController.accessToken,
   );
+
+  /// The quest with its ordered Learning Objective ids (one read). LO text is
+  /// NOT populated by depth (Payload leaves the relationship-in-array a bare
+  /// id), so [_learningObjectives] resolves it in a separate batch read.
+  static Future<Result<QuestPlan>> quest(String questId) async {
+    try {
+      final quest = await _client().findById(
+        _questPlansKey,
+        questId,
+        (json) => QuestPlan.fromJson(json),
+      );
+      return Result.value(quest);
+    } catch (e, s) {
+      if (e is Response && e.statusCode == 404) {
+        return Result.error(MissingQuestException());
+      }
+
+      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
+      return Result.error(e);
+    }
+  }
+
+  /// The full Learning Objectives for [ids], resolved in one batched read.
+  static Future<Result<Map<String, LearningObjective>>> _learningObjectives(
+    List<String> ids,
+  ) async {
+    try {
+      if (ids.isEmpty) return Result.value(const {});
+      final resp = await _client().find(
+        _learningObjectivesKey,
+        (json) => LearningObjective.fromJson(json),
+        where: {
+          'id': {'in': ids},
+        },
+        limit: ids.length,
+        depth: 0,
+      );
+      return Result.value({for (final lo in resp.docs) lo.id: lo});
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"lo_ids": ids});
+      return Result.error(e);
+    }
+  }
+
+  /// The activity's own Learning Objective ids — a thin, select-projected read
+  /// (no plan body, no media) used to decide which joined courses a new session
+  /// is shared into: its LOs intersected with each course's quest objectives.
+  /// See [ActivityCourseResolver] and activities.instructions.md.
+  static Future<Result<List<String>>> activityLearningObjectiveRefs(
+    String activityId,
+  ) async {
+    try {
+      final resp = await _client().find<Map<String, dynamic>>(
+        _activitiesKey,
+        (json) => json,
+        where: {
+          'id': {'equals': activityId},
+        },
+        select: {'learningObjectiveRefs': true},
+        limit: 1,
+        depth: 0,
+      );
+      if (resp.docs.isEmpty) return Result.value(const []);
+
+      final entry = resp.docs.first['learningObjectiveRefs'] as List?;
+      if (entry == null) return Result.value(const []);
+
+      final response = entry
+          .map((e) => e is Map ? e['id'] as String : e as String)
+          .toList();
+
+      return Result.value(response);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"activity_id": activityId});
+      return Result.error(e);
+    }
+  }
+
+  // The single-activity read moved to ActivityPlanRepo (choreo GET /v2/activity,
+  // cached via BaseRepo) — see activity_plan_repo.dart.
+  /// Thin map pins for a single quest — its LOs' activities at its L2, with
+  /// coordinates (one read after resolving the quest's LO ids).
+  static Future<Result<List<QuestActivityCard>>> questActivityCards(
+    List<String> learningObjectiveIds,
+    String targetLanguage,
+  ) async {
+    if (learningObjectiveIds.isEmpty) return Result.value(const []);
+    try {
+      final resp = await _client().find(
+        _activitiesKey,
+        (json) => QuestActivityCard.fromJson(json),
+        where: _loAtL2Where(learningObjectiveIds, targetLanguage),
+        select: _pinSelect,
+        limit: 200,
+        depth: 0,
+      );
+      final filtered = resp.docs.where((card) => card.point != null).toList();
+      return Result.value(filtered);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "learning_objective_ids": learningObjectiveIds,
+          "target_language": targetLanguage,
+        },
+      );
+      return Result.error(e);
+    }
+  }
+
+  /// Full activity plans for all the quest's LOs at its target language (one
+  /// read), each paired with the LO ids it satisfies (for grouping).
+  static Future<Result<List<({ActivityPlanModel plan, List<String> refs})>>>
+  _questActivityPlans(QuestPlan quest) async {
+    try {
+      final loIds = quest.learningObjectiveIds;
+      if (loIds.isEmpty) return Result.value(const []);
+      final resp = await _client().find<Map<String, dynamic>>(
+        _activitiesKey,
+        (json) => json,
+        where: _loAtL2Where(loIds, quest.targetLanguage),
+        limit: 200,
+        depth: 0,
+      );
+      final entries = resp.docs
+          .map(
+            (doc) => (
+              plan: activityPlanFromV2(doc),
+              refs: ((doc['learningObjectiveRefs'] as List? ?? const [])
+                  .map((e) => e is Map ? e['id'] as String : e as String)
+                  .toList()),
+            ),
+          )
+          .toList();
+
+      // Resolve all plans' media upload_ids → CDN URLs in one batched read.
+      final resolved = await _withResolvedMedia(
+        entries.map((e) => e.plan).toList(),
+      );
+
+      return Result.value([
+        for (var i = 0; i < entries.length; i++)
+          (plan: resolved[i], refs: entries[i].refs),
+      ]);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+      return Result.error(e);
+    }
+  }
 
   /// Resolve every plan's media `upload_id`s to CDN URLs in ONE batched read,
   /// returning the plans with resolved media. `upload_id` is plain text on
@@ -123,116 +297,17 @@ class QuestRepo {
           );
   }).toList();
 
-  /// `where` matching any activity that satisfies one of [loIds] at [l2].
-  static Map<String, dynamic> _loAtL2Where(List<String> loIds, String l2) => {
-    'and': [
-      {
-        'or': [
-          for (final id in loIds)
-            {
-              'learningObjectiveRefs': {'contains': id},
-            },
-        ],
-      },
-      {
-        'res.plan.l2': {'equals': l2},
-      },
-    ],
-  };
-
-  /// The quest with its ordered Learning Objective ids (one read). LO text is
-  /// NOT populated by depth (Payload leaves the relationship-in-array a bare
-  /// id), so [learningObjectives] resolves it in a separate batch read.
-  static Future<QuestPlan> quest(String questId) => _client().findById(
-    _questPlans,
-    questId,
-    (json) => QuestPlan.fromJson(json),
-  );
-
-  /// The activity's own Learning Objective ids — a thin, select-projected read
-  /// (no plan body, no media) used to decide which joined courses a new session
-  /// is shared into: its LOs intersected with each course's quest objectives.
-  /// See [ActivityCourseResolver] and activities.instructions.md.
-  static Future<List<String>> activityLearningObjectiveRefs(
-    String activityId,
-  ) async {
-    final resp = await _client().find<Map<String, dynamic>>(
-      _activities,
-      (json) => json,
-      where: {
-        'id': {'equals': activityId},
-      },
-      select: {'learningObjectiveRefs': true},
-      limit: 1,
-      depth: 0,
-    );
-    if (resp.docs.isEmpty) return const [];
-    return ((resp.docs.first['learningObjectiveRefs'] as List? ?? const [])
-        .map((e) => e is Map ? e['id'] as String : e as String)
-        .toList());
-  }
-
-  /// The full Learning Objectives for [ids], resolved in one batched read.
-  static Future<Map<String, LearningObjective>> learningObjectives(
-    List<String> ids,
-  ) async {
-    if (ids.isEmpty) return const {};
-    final resp = await _client().find(
-      _learningObjectives,
-      (json) => LearningObjective.fromJson(json),
-      where: {
-        'id': {'in': ids},
-      },
-      limit: ids.length,
-      depth: 0,
-    );
-    return {for (final lo in resp.docs) lo.id: lo};
-  }
-
-  /// Full activity plans for all the quest's LOs at its target language (one
-  /// read), each paired with the LO ids it satisfies (for grouping).
-  static Future<List<({ActivityPlanModel plan, List<String> refs})>>
-  _questActivityPlans(QuestPlan quest) async {
-    final loIds = quest.learningObjectiveIds;
-    if (loIds.isEmpty) return const [];
-    final resp = await _client().find<Map<String, dynamic>>(
-      _activities,
-      (json) => json,
-      where: _loAtL2Where(loIds, quest.targetLanguage),
-      limit: 200,
-      depth: 0,
-    );
-    final entries = resp.docs
-        .map(
-          (doc) => (
-            plan: activityPlanFromV2(doc),
-            refs: ((doc['learningObjectiveRefs'] as List? ?? const [])
-                .map((e) => e is Map ? e['id'] as String : e as String)
-                .toList()),
-          ),
-        )
-        .toList();
-    // Resolve all plans' media upload_ids → CDN URLs in one batched read.
-    final resolved = await _withResolvedMedia(
-      entries.map((e) => e.plan).toList(),
-    );
-    return [
-      for (var i = 0; i < entries.length; i++)
-        (plan: resolved[i], refs: entries[i].refs),
-    ];
-  }
-
   /// Process-lifetime cache of resolved outlines, keyed by quest id, so
   /// switching back to a course's plan doesn't re-spin. In-memory (not
   /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
   /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
-  static final Map<String, QuestOutline> _outlineCache = {};
-  static final Map<String, Future<QuestOutline>> _outlineInflight = {};
+  static final Map<String, Result<QuestOutline>> _outlineCache = {};
+  static final Map<String, Future<Result<QuestOutline>>> _outlineInflight = {};
 
   /// The full outline: quest + objective groups (LOs in order, each with its
   /// matching activities). Cached per quest id; concurrent calls for the same
   /// quest share one in-flight read. Pass [forceRefresh] to bypass the cache.
-  static Future<QuestOutline> outline(
+  static Future<Result<QuestOutline>> outline(
     String questId, {
     bool forceRefresh = false,
   }) async {
@@ -254,89 +329,59 @@ class QuestRepo {
     return outline;
   }
 
-  /// Drop the cached outline for [questId] (e.g. after a course edit).
-  static void invalidateOutline(String questId) {
-    _outlineCache.remove(questId);
-    _outlineInflight.remove(questId);
-  }
-
-  /// Drop all cached outlines (e.g. on logout / account switch).
-  static void clearOutlineCache() {
-    _outlineCache.clear();
-    _outlineInflight.clear();
-  }
-
   /// Build a fresh outline — three reads (the quest, then the LO-text batch and
   /// the activities query in parallel). Uncached; callers use [outline].
-  static Future<QuestOutline> _buildOutline(String questId) async {
-    final quest = await QuestRepo.quest(questId);
-
-    // LO text and activities both depend only on the quest — run in parallel.
-    final losFuture = QuestRepo.learningObjectives(quest.learningObjectiveIds);
-    final actsFuture = QuestRepo._questActivityPlans(quest);
-    final los = await losFuture;
-    final acts = await actsFuture;
-
-    final byLo = <String, List<QuestActivity>>{};
-    for (final a in acts) {
-      final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
-      for (final ref in a.refs) {
-        (byLo[ref] ??= []).add(qa);
+  static Future<Result<QuestOutline>> _buildOutline(String questId) async {
+    try {
+      final result = await QuestRepo.quest(questId);
+      final quest = result.result;
+      if (quest == null) {
+        return Result.error(result.error ?? MissingQuestException());
       }
+
+      // LO text and activities both depend only on the quest — run in parallel.
+      final losFuture = _learningObjectives(quest.learningObjectiveIds);
+      final actsFuture = _questActivityPlans(quest);
+
+      final learningObjectivesResult = await losFuture;
+      final learningObjectives = learningObjectivesResult.result;
+      if (learningObjectives == null) {
+        return Result.error(
+          learningObjectivesResult.error ??
+              "Failed to fetch learning objectives",
+        );
+      }
+
+      final activitiesResult = await actsFuture;
+      final activities = activitiesResult.result;
+      if (activities == null) {
+        return Result.error(
+          activitiesResult.error ?? "Failed to fetch activities",
+        );
+      }
+
+      final byLo = <String, List<QuestActivity>>{};
+      for (final a in activities) {
+        final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
+        for (final ref in a.refs) {
+          (byLo[ref] ??= []).add(qa);
+        }
+      }
+
+      final groups = quest.sequence
+          .map(
+            (step) => QuestObjectiveGroup(
+              objective:
+                  learningObjectives[step.objective.id] ?? step.objective,
+              activities: byLo[step.objective.id] ?? const [],
+            ),
+          )
+          .toList();
+
+      return Result.value(QuestOutline(quest: quest, groups: groups));
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
+      return Result.error(e);
     }
-
-    final groups = quest.sequence
-        .map(
-          (step) => QuestObjectiveGroup(
-            objective: los[step.objective.id] ?? step.objective,
-            activities: byLo[step.objective.id] ?? const [],
-          ),
-        )
-        .toList();
-    return QuestOutline(quest: quest, groups: groups);
-  }
-
-  // The single-activity read moved to ActivityPlanRepo (choreo GET /v2/activity,
-  // cached via BaseRepo) — see activity_plan_repo.dart.
-
-  /// Thin map pins for a single quest — its LOs' activities at its L2, with
-  /// coordinates (one read after resolving the quest's LO ids).
-  static Future<List<QuestActivityCard>> questPins(String questId) async {
-    final q = await quest(questId);
-    final loIds = q.learningObjectiveIds;
-    if (loIds.isEmpty) return const [];
-    final resp = await _client().find(
-      _activities,
-      (json) => QuestActivityCard.fromJson(json),
-      where: _loAtL2Where(loIds, q.targetLanguage),
-      select: _pinSelect,
-      limit: 200,
-      depth: 0,
-    );
-    return resp.docs.where((card) => card.point != null).toList();
-  }
-
-  /// Thin map pins built from activities' own coordinates (one read). Optional
-  /// [l2] scopes to a single target language.
-  static Future<List<QuestActivityCard>> mapActivities({String? l2}) async {
-    final resp = await _client().find(
-      _activities,
-      (json) => QuestActivityCard.fromJson(json),
-      where: {
-        'and': [
-          {
-            'res.plan.coordinates': {'exists': true},
-          },
-          if (l2 != null)
-            {
-              'res.plan.l2': {'equals': l2},
-            },
-        ],
-      },
-      select: _pinSelect,
-      limit: 500,
-      depth: 0,
-    );
-    return resp.docs.where((card) => card.point != null).toList();
   }
 }

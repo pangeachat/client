@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 
@@ -52,12 +54,12 @@ void main() {
       () {
         final loc = WorkspaceNav.openExclusiveLeftRoom(
           NavigationUtil.stripActivityOverlay(u('/$activityId')),
-          const PanelToken('room', '!abc'),
+          PanelToken('room', RoomTokenParam.parse('!abc')),
         );
         final result = u(loc);
         expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
         expect(parseOpenPanels(result).left, [
-          const PanelToken('room', '!abc'),
+          PanelToken('room', RoomTokenParam.parse('!abc')),
         ]);
       },
     );
@@ -67,7 +69,7 @@ void main() {
         NavigationUtil.stripActivityOverlay(
           u('/?c=!s&left=course,activity:$activityId.l'),
         ),
-        const PanelToken('room', '!abc'),
+        PanelToken('room', RoomTokenParam.parse('!abc')),
       );
       final result = u(loc);
       expect(result.path, '/');
@@ -75,7 +77,7 @@ void main() {
       expect(result.query.contains('c=!s'), isTrue);
       expect(parseOpenPanels(result).left, [
         const PanelToken('course'),
-        const PanelToken('room', '!abc'),
+        PanelToken('room', RoomTokenParam.parse('!abc')),
       ]);
     });
   });
@@ -119,7 +121,10 @@ void main() {
           u(loc),
         ).left.where((t) => t.type == 'coursepage').single;
         // The renderable token — NOT the blank `coursepage:details/invite`.
-        expect(coursepage, const PanelToken('coursepage', 'invite'));
+        expect(
+          coursepage,
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
+        );
       },
     );
   });

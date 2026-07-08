@@ -205,13 +205,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             ),
                             selectedIcon: Icon(Icons.map, size: smallIconWidth),
                             onTap: () {
-                              context.go(
-                                WorkspaceNav.setSection(
-                                  state.uri,
-                                  const PanelToken('addcourse'),
-                                  keepRoom: false,
-                                ),
-                              );
+                              context.go(WorkspaceNav.openAddCourse(state.uri));
                             },
                             toolTip: L10n.of(context).courses,
                             naviRailWidth: naviRailWidth,

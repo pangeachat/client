@@ -3947,7 +3947,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-06 10:23:09.622036",
+    "@@last_modified": "2026-07-08 15:21:58.516686",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9459,7 +9459,6 @@
     "enableNotificationsTitle": "Ná caill comhrá ar bith!",
     "enableNotificationsDesc": "Cuir cead do rabhadhanna do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
     "enableNotifications": "Cuir cead do rabhadhanna",
-    "noActivitiesFound": "Níl aon gníomhaíochtaí ar fáil don ábhar seo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9469,10 +9468,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10275,6 +10270,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} de {total} réaltaí a ghnóthú",
+    "activityNoLongerSupported": "Níl an gníomhaíocht seo tacaíocht níos mó. Rith sé ar leagan níos sine de na gníomhaíochtaí. Is féidir leat fós athbhreithniú a dhéanamh ar cad a tharla sa seisiún seo.",
+    "activityLoadFailed": "Níor éirigh le gníomhaíocht a luchtú. Seiceáil do cheangal agus déan iarracht arís.",
+    "levelUpChip": "Leibhéal {level}!",
+    "missingCourseOutline": "Níl an cúrsa seo ar fáil a thuilleadh",
+    "missingCourseOutlineCta": "Níl an cúrsa seo ar fáil a thuilleadh. Roghnaigh plean cúrsa nua.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

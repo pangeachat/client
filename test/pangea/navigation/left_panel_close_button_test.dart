@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 
@@ -27,7 +28,7 @@ void main() {
             path: '/',
             builder: (context, state) => Scaffold(
               body: LeftPanelCloseButton(
-                token: const PanelToken('session', '!x'),
+                token: PanelToken('session', RoomTokenParam.parse('!x')),
                 currentUri: staleUri, // STALE on purpose
                 foldedOver: false,
                 isColumnMode: true,
@@ -61,7 +62,9 @@ void main() {
       // ...and the right column stays on the LIVE tab (grammar), NOT reverting to
       // the stale open-time tab (sessions). Pre-fix this was analytics:sessions.
       expect(
-        panels.right.any((t) => t.type == 'analytics' && t.param == 'grammar'),
+        panels.right.any(
+          (t) => t.type == 'analytics' && t.param?.build() == 'grammar',
+        ),
         isTrue,
         reason:
             'close must preserve the live right column (analytics:grammar), not '

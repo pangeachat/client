@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-06 10:22:19.311191",
+    "@@last_modified": "2026-07-08 15:21:04.365886",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9779,7 +9779,6 @@
     "enableNotificationsTitle": "Sohbeti asla kaçırmayın!",
     "enableNotificationsDesc": "Pangea Sohbeti için bildirimlere izin verin ve dil arkadaşlarınızla bağlantıda kalın!",
     "enableNotifications": "Bildirimlere izin ver",
-    "noActivitiesFound": "Bu konu için mevcut etkinlik yok.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9789,10 +9788,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10595,6 +10590,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} toplam {total} yıldız kazanıldı",
+    "activityNoLongerSupported": "Bu etkinlik, daha eski bir etkinlik sürümünde çalışıyordu ve artık desteklenmiyor. Bu oturumda neler olduğunu yine de gözden geçirebilirsiniz.",
+    "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
+    "levelUpChip": "Seviye {level}!",
+    "missingCourseOutline": "Bu kurs artık mevcut değil",
+    "missingCourseOutlineCta": "Bu kurs artık mevcut değil. Yeni bir kurs planı seçin.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

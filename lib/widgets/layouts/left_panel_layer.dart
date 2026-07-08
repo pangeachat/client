@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -34,21 +37,29 @@ class LeftPanelLayer extends StatelessWidget {
     final shareItems = token.type == 'room' && state.extra is List<ShareItem>
         ? state.extra as List<ShareItem>
         : null;
+
+    final courseCreationCompleter =
+        token.type == 'addcourse' && state.extra is Completer<String>
+        ? state.extra as Completer<String>
+        : null;
+
     final panel = WorkspaceLeftPanel(
       token: token,
       currentUri: state.uri,
       foldedOver: foldedOver,
       shareItems: shareItems,
+      courseCreationCompleter: courseCreationCompleter,
     );
-    if (token.type == 'room') {
+
+    final type = token.type;
+    final param = token.param;
+
+    if (type == 'room' && param is RoomTokenParam) {
       // The room token's param is `<roomid>` or `<roomid>/<subpage>`; the
       // GlobalKey is keyed by the bare room id only, so pushing a sub-page
       // (search/details/…) repositions the same ChatController rather than
       // remounting it. See `routing.instructions.md`.
-      final param = token.param ?? '';
-      final slash = param.indexOf('/');
-      final bareId = slash < 0 ? param : param.substring(0, slash);
-      return KeyedSubtree(key: getRoomKey(fullRoomId(bareId)), child: panel);
+      return KeyedSubtree(key: getRoomKey(fullRoomId(param.id)), child: panel);
     }
     return panel;
   }

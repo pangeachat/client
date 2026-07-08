@@ -14,7 +14,6 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -60,8 +59,7 @@ class SpaceDetailsContent extends StatelessWidget {
 
     final activeTab = controller.widget.activeTab;
     if (activeTab != null) {
-      final selectedTab = SpaceSettingsTabs.fromString(activeTab);
-      return selectedTab ?? defaultTab;
+      return activeTab;
     }
 
     return defaultTab;
@@ -74,10 +72,7 @@ class SpaceDetailsContent extends StatelessWidget {
     // dropped it. The course panel decodes the tab back out. See
     // routing.instructions.md.
     context.go(
-      WorkspaceNav.openCourse(
-        GoRouterState.of(context).uri,
-        PanelToken('course', tab.name),
-      ),
+      WorkspaceNav.openCourseTab(GoRouterState.of(context).uri, tab: tab),
     );
   }
 
@@ -189,7 +184,9 @@ class SpaceDetailsContent extends StatelessWidget {
               context: context,
               future: () async {
                 final outline = await QuestRepo.outline(room.coursePlan!.uuid);
-                return outline.groups.map((g) => g.activities.length).min;
+                return outline.result?.groups
+                    .map((g) => g.activities.length)
+                    .min;
               },
               showError: (e) => false,
             );

@@ -3912,7 +3912,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-06 10:20:52.661691",
+    "@@last_modified": "2026-07-08 15:19:49.243878",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9497,7 +9497,6 @@
     "enableNotificationsTitle": "Älä koskaan jää ilman keskustelua!",
     "enableNotificationsDesc": "Salli ilmoitukset Pangea Chatista ja pysy yhteydessä kielikavereihisi!",
     "enableNotifications": "Salli ilmoitukset",
-    "noActivitiesFound": "Tälle aiheelle ei ole saatavilla aktiviteetteja.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9507,10 +9506,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10313,6 +10308,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} {total} tähteä ansaittu",
+    "activityNoLongerSupported": "Tätä toimintoa ei enää tueta, koska se toimi vanhemmassa versiossa. Voit silti tarkastella, mitä tässä istunnossa tapahtui.",
+    "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
+    "levelUpChip": "Taso {level}!",
+    "missingCourseOutline": "Tämä kurssi ei ole enää saatavilla",
+    "missingCourseOutlineCta": "Tämä kurssi ei ole enää saatavilla. Valitse uusi kurssisuunnitelma.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

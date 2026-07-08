@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -75,18 +76,14 @@ enum ProgressIndicatorEnum {
     }
   }
 
-  String get route {
-    switch (this) {
-      case level:
-        return 'level';
-      case wordsUsed:
-        return ConstructTypeEnum.vocab.name;
-      case morphsUsed:
-        return ConstructTypeEnum.morph.name;
-      case activities:
-        return 'activities';
-      case stars:
-        return 'stars';
-    }
-  }
+  String get route => switch (this) {
+    ProgressIndicatorEnum.activities => 'sessions',
+    ProgressIndicatorEnum.morphsUsed => 'grammar',
+    ProgressIndicatorEnum.level => 'level',
+    _ => 'vocab',
+  };
+
+  static ProgressIndicatorEnum fromRoute(String route) =>
+      ProgressIndicatorEnum.values.firstWhereOrNull((p) => p.route == route) ??
+      ProgressIndicatorEnum.wordsUsed;
 }

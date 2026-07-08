@@ -21,6 +21,7 @@ import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -271,7 +272,7 @@ class ChatListController extends State<ChatList>
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         uri,
-        PanelToken('room', shortRoomId(room.id)),
+        PanelToken('room', RoomTokenParam(id: shortRoomId(room.id))),
       ),
     );
     // Pangea#
@@ -465,7 +466,7 @@ class ChatListController extends State<ChatList>
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
     if (mounted) {
       context.go(
-        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, spaceId),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, spaceId),
       );
     }
   }
@@ -688,10 +689,7 @@ class ChatListController extends State<ChatList>
       if (joinedRoomId == null) continue;
 
       context.go(
-        WorkspaceNav.openCourseFilter(
-          GoRouterState.of(context).uri,
-          joinedRoomId,
-        ),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
       );
     }
   }
@@ -744,10 +742,7 @@ class ChatListController extends State<ChatList>
         if (joinedRoomId == null) continue;
 
         context.go(
-          WorkspaceNav.openCourseFilter(
-            GoRouterState.of(context).uri,
-            joinedRoomId,
-          ),
+          WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
         );
       }
     }
@@ -1171,7 +1166,7 @@ class ChatListController extends State<ChatList>
 
     room.isSpace
         ? context.go(
-            WorkspaceNav.openCourseFilter(
+            WorkspaceNav.openCourse(
               GoRouterState.of(context).uri,
               joinedRoomId,
             ),

@@ -1405,7 +1405,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-06 10:21:41.360172",
+    "@@last_modified": "2026-07-08 15:20:26.351724",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10579,7 +10579,6 @@
     "enableNotificationsTitle": "永遠不會錯過聊天！",
     "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
     "enableNotifications": "允許通知",
-    "noActivitiesFound": "此主題沒有可用的活動。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10589,10 +10588,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11395,6 +11390,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} 的 {total} 顆星已獲得",
+    "activityNoLongerSupported": "此活動運行於舊版本的活動，現已不再支持。您仍然可以查看此會話中發生的事情。",
+    "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",
+    "levelUpChip": "升級到 {level} 級！",
+    "missingCourseOutline": "此課程不再可用",
+    "missingCourseOutlineCta": "此課程不再可用。請選擇一個新的課程計劃。",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }

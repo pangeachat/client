@@ -112,9 +112,11 @@ bool _closeSections(BuildContext context) =>
 /// Open the right-docked analytics panel on [tab]'s summary — identical to
 /// the web cluster's tracker taps.
 void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
-  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-    PanelToken('analytics', tab.name),
-  ], closeSections: _closeSections(context)),
+  WorkspaceNav.openAnalytics(
+    GoRouterState.of(context).uri,
+    subpage: tab.indicator,
+    closeSections: _closeSections(context),
+  ),
 );
 
 /// The header avatar opens the analytics summary — the panel whose header is
@@ -135,9 +137,11 @@ void _openProfile(BuildContext context) => context.go(
 
 /// The level badge opens the level analytics tab, same as the cluster.
 void _openLevel(BuildContext context) => context.go(
-  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-    const PanelToken('analytics', 'level'),
-  ], closeSections: _closeSections(context)),
+  WorkspaceNav.openAnalytics(
+    GoRouterState.of(context).uri,
+    subpage: ProgressIndicatorEnum.level,
+    closeSections: _closeSections(context),
+  ),
 );
 
 /// The L2 flag opens the learning settings page directly, same as the

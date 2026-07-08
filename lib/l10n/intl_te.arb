@@ -1466,7 +1466,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-06 10:22:22.007538",
+    "@@last_modified": "2026-07-08 15:21:07.317896",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10572,7 +10572,6 @@
     "enableNotificationsTitle": "చాట్‌ను ఎప్పుడూ మిస్ కాకండి!",
     "enableNotificationsDesc": "పాంజియా చాట్‌కు నోటిఫికేషన్లు అనుమతించండి మరియు మీ భాషా స్నేహితులతో కనెక్ట్‌లో ఉండండి!",
     "enableNotifications": "నోటిఫికేషన్లు అనుమతించండి",
-    "noActivitiesFound": "ఈ అంశానికి అందుబాటులో ఉన్న కార్యకలాపాలు లేవు.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10582,10 +10581,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11388,6 +11383,43 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} లో {total} నక్షత్రాలు సంపాదించబడ్డాయి",
+    "activityNoLongerSupported": "ఈ కార్యకలాపం పాత సంస్కరణలో నడిచింది మరియు ఇకపై మద్దతు ఇవ్వబడదు. మీరు ఈ సెషన్‌లో ఏమి జరిగిందో ఇంకా సమీక్షించవచ్చు.",
+    "activityLoadFailed": "కార్యకలాపాన్ని లోడ్ చేయలేకపోయారు. మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
+    "levelUpChip": "స్థాయి {level}!",
+    "missingCourseOutline": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు",
+    "missingCourseOutlineCta": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు. కొత్త కోర్సు ప్రణాళికను ఎంచుకోండి.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     }
