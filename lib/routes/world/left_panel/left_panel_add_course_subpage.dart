@@ -45,7 +45,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
         }
         return const FindCoursePage();
       case 'private':
-        return const CourseCodePage();
+        return CourseCodePage(initialCode: param?.joinCode);
       case 'own':
         final courseId = param?.courseId;
         if (courseId != null) {

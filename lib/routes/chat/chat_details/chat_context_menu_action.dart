@@ -264,7 +264,7 @@ void chatContextMenuAction(
       context.go(
         WorkspaceNav.openSettings(
           GoRouterState.of(context).uri,
-          subpage: blockUser == null
+          page: blockUser == null
               ? 'security/ignorelist'
               : 'security/ignorelist/$blockUser',
         ),

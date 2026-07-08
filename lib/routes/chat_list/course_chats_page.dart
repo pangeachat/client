@@ -434,7 +434,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
             context.go(
               WorkspaceNav.openSettings(
                 GoRouterState.of(context).uri,
-                subpage: userId == null
+                page: userId == null
                     ? 'security/ignorelist'
                     : 'security/ignorelist/$userId',
               ),

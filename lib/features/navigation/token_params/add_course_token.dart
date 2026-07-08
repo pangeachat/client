@@ -9,6 +9,7 @@ class AddCourseTokenParam extends TokenParam {
   final String? roomId;
   final String? courseId;
   final String? targetLanguage;
+  final String? joinCode;
   final bool invite;
 
   const AddCourseTokenParam({
@@ -16,6 +17,7 @@ class AddCourseTokenParam extends TokenParam {
     this.roomId,
     this.courseId,
     this.targetLanguage,
+    this.joinCode,
     this.invite = false,
   }) : super('addcourse');
 
@@ -24,12 +26,14 @@ class AddCourseTokenParam extends TokenParam {
     final roomId = this.roomId;
     final courseId = this.courseId;
     final targetLanguage = this.targetLanguage;
+    final joinCode = this.joinCode;
 
     return TokenFields.join([
       TokenFields.encode(subpage),
       if (roomId != null) 'r${TokenFields.encode(shortRoomId(roomId))}',
       if (courseId != null) 'c${TokenFields.encode(courseId)}',
       if (targetLanguage != null) 'l${TokenFields.encode(targetLanguage)}',
+      if (joinCode != null) 'j${TokenFields.encode(joinCode)}',
       if (invite) 'i',
     ]);
   }
@@ -55,6 +59,10 @@ class AddCourseTokenParam extends TokenParam {
         .firstWhereOrNull((f) => f.startsWith('l'))
         ?.substring(1);
 
+    final joinCodeEntry = filters
+        .firstWhereOrNull((f) => f.startsWith('j'))
+        ?.substring(1);
+
     final inviteEntry = filters.firstWhereOrNull((f) => f == 'i');
 
     return AddCourseTokenParam(
@@ -69,6 +77,9 @@ class AddCourseTokenParam extends TokenParam {
           targetLanguageEntry != null && targetLanguageEntry.isNotEmpty
           ? TokenFields.decode(targetLanguageEntry)
           : null,
+      joinCode: joinCodeEntry != null && joinCodeEntry.isNotEmpty
+          ? TokenFields.decode(joinCodeEntry)
+          : null,
       invite: inviteEntry != null,
     );
   }
@@ -78,8 +89,20 @@ class AddCourseTokenParam extends TokenParam {
       other is AddCourseTokenParam &&
       other.type == type &&
       other.subpage == subpage &&
-      other.targetLanguage == targetLanguage;
+      other.roomId == roomId &&
+      other.courseId == courseId &&
+      other.targetLanguage == targetLanguage &&
+      other.joinCode == joinCode &&
+      other.invite == invite;
 
   @override
-  int get hashCode => Object.hash(type, subpage, targetLanguage);
+  int get hashCode => Object.hash(
+    type,
+    subpage,
+    roomId,
+    courseId,
+    targetLanguage,
+    joinCode,
+    invite,
+  );
 }

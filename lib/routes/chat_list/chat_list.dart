@@ -198,7 +198,7 @@ class ChatListController extends State<ChatList>
           context.go(
             WorkspaceNav.openSettings(
               GoRouterState.of(context).uri,
-              subpage: userId == null
+              page: userId == null
                   ? 'security/ignorelist'
                   : 'security/ignorelist/$userId',
             ),
@@ -440,10 +440,7 @@ class ChatListController extends State<ChatList>
   Stream<Client> get clientStream => _clientStream.stream;
 
   void addAccountAction() => context.go(
-    WorkspaceNav.openSettings(
-      GoRouterState.of(context).uri,
-      subpage: 'account',
-    ),
+    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'account'),
   );
 
   void _onScroll() {

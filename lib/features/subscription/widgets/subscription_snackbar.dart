@@ -27,7 +27,7 @@ void showSubscribedSnackbar(BuildContext context) {
             ..onTap = () => context.go(
               WorkspaceNav.openSettings(
                 GoRouterState.of(context).uri,
-                subpage: 'subscription',
+                page: 'subscription',
               ),
             ),
         ),

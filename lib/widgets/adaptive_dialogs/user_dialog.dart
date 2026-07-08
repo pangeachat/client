@@ -204,7 +204,7 @@ class UserDialog extends StatelessWidget {
                 router.go(
                   WorkspaceNav.openSettings(
                     uri,
-                    subpage: 'security/ignorelist/${profile.userId}',
+                    page: 'security/ignorelist/${profile.userId}',
                   ),
                 );
               },

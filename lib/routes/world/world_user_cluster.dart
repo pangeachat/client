@@ -93,10 +93,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 
   /// The L2 flag opens the learning settings page on the right directly.
   void _openLearningSettings() => context.go(
-    WorkspaceNav.openSettings(
-      GoRouterState.of(context).uri,
-      subpage: 'learning',
-    ),
+    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
   );
 
   @override

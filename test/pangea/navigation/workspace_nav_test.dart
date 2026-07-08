@@ -635,7 +635,7 @@ void main() {
         'details (#7109)', () {
       final loc = WorkspaceNav.openSettings(
         u('/?right=vocab:abc,grammar:def,analytics:vocab'),
-        subpage: 'learning',
+        page: 'learning',
       );
       final right = parseOpenPanels(u(loc)).right;
       // Only the settings page + its menu master remain; the analytics family
@@ -644,7 +644,7 @@ void main() {
     });
 
     test('opening a page seats it as a detail BESIDE the menu master', () {
-      final loc = WorkspaceNav.openSettings(u('/'), subpage: 'learning');
+      final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
       final right = parseOpenPanels(u(loc)).right;
       // Master-first: the menu comes first, the page detail after it (the
       // renderer blooms the page left of the edge-justified menu).
@@ -656,8 +656,8 @@ void main() {
     });
 
     test('opening another page replaces the page detail (one at a time)', () {
-      var loc = WorkspaceNav.openSettings(u('/'), subpage: 'security');
-      loc = WorkspaceNav.openSettings(u(loc), subpage: 'security/password');
+      var loc = WorkspaceNav.openSettings(u('/'), page: 'security');
+      loc = WorkspaceNav.openSettings(u(loc), page: 'security/password');
       final pages = parseOpenPanels(
         u(loc),
       ).right.where((t) => t.type == 'settingspage').toList();
@@ -683,7 +683,7 @@ void main() {
       // forcing a second click. A single-segment param has no `/`, so the
       // panel treats its back as a plain close that reveals the menu in one
       // step.
-      final opened = WorkspaceNav.openSettings(u('/'), subpage: 'profile');
+      final opened = WorkspaceNav.openSettings(u('/'), page: 'profile');
       final page = parseOpenPanels(
         u(opened),
       ).right.firstWhere((t) => t.type == 'settingspage');
@@ -710,8 +710,8 @@ void main() {
 
     test('settingsBack: a leaf pops to its parent page; a top-level page '
         'returns to the menu (drops the page detail)', () {
-      final toSecurity = WorkspaceNav.closeSettingsSubpage(
-        u(WorkspaceNav.openSettings(u('/'), subpage: 'security/password')),
+      final toSecurity = WorkspaceNav.settingsBack(
+        u(WorkspaceNav.openSettings(u('/'), page: 'security/password')),
         'security/password',
       );
 
@@ -721,8 +721,8 @@ void main() {
       expect(param, isA<SettingsTokenParam>());
       expect((param as SettingsTokenParam).subpage, 'security');
 
-      final toMenu = WorkspaceNav.closeSettingsSubpage(
-        u(WorkspaceNav.openSettings(u('/'), subpage: 'learning')),
+      final toMenu = WorkspaceNav.settingsBack(
+        u(WorkspaceNav.openSettings(u('/'), page: 'learning')),
         'learning',
       );
       final right = parseOpenPanels(u(toMenu)).right;
@@ -736,7 +736,7 @@ void main() {
       // right settings panel and leaves the left column intact.
       var loc = WorkspaceNav.openSettings(
         u('/?left=room:!a'),
-        subpage: 'learning',
+        page: 'learning',
       );
       loc = WorkspaceNav.closeSettings(u(loc));
       final panels = parseOpenPanels(u(loc));

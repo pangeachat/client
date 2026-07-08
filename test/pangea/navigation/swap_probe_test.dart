@@ -136,7 +136,7 @@ void main() {
       // Navigate WITHIN settings (the NON-focused popup) → subscription. Before
       // the fix this stole focus to settings and the collapse evicted course
       // (course flipped full→hidden — the "swap"). The focused popup must stay.
-      u = Uri.parse(WorkspaceNav.openSettings(u, subpage: 'subscription'));
+      u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final after = layoutOf(u, vp, columnMode: true);
       expect(
         visOf(after, u, 'course'),
@@ -161,7 +161,7 @@ void main() {
       expect(visOf(before, u, 'room'), PanelVis.full);
 
       // Navigate WITHIN settings → subscription (the other popup must not move).
-      u = Uri.parse(WorkspaceNav.openSettings(u, subpage: 'subscription'));
+      u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final after = layoutOf(u, vp, columnMode: true);
       expect(visOf(after, u, 'room'), PanelVis.full, reason: 'room must stay');
       expect(
@@ -188,9 +188,9 @@ void main() {
         );
         u = Uri.parse(WorkspaceNav.openSettings(u));
         expect(focusType(u), 'settings'); // the menu, not the room
-        u = Uri.parse(WorkspaceNav.openSettings(u, subpage: 'subscription'));
+        u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
         expect(focusType(u), 'settingspage'); // the page, still settings family
-        u = Uri.parse(WorkspaceNav.openSettings(u, subpage: 'learning'));
+        u = Uri.parse(WorkspaceNav.openSettings(u, page: 'learning'));
         expect(focusType(u), 'settingspage'); // stable, never the room
       },
     );
@@ -220,7 +220,7 @@ void main() {
   group('#7104 fix must not regress narrow-mode detail-show', () {
     test('opening a settings page shows the page over the menu (narrow)', () {
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
-      u = Uri.parse(WorkspaceNav.openSettings(u, subpage: 'subscription'));
+      u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final l = layoutOf(u, 400, columnMode: false);
       expect(visOf(l, u, 'settingspage'), PanelVis.full);
       expect(visOf(l, u, 'settings'), PanelVis.hidden);
