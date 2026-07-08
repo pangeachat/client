@@ -27,6 +27,8 @@ void main() {
     VoidCallback? onCourseShortcutTap,
     double maxHeightFraction = 0.75,
     double? preferredCavityHeightPx,
+    AppSection? cavitySection,
+    bool courseShortcutHostsCavity = false,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -47,6 +49,8 @@ void main() {
             cavityDefaultsToPeek: cavityDefaultsToPeek,
             maxHeightFraction: maxHeightFraction,
             preferredCavityHeightPx: preferredCavityHeightPx,
+            cavitySection: cavitySection,
+            courseShortcutHostsCavity: courseShortcutHostsCavity,
           ),
         ),
       ),
@@ -276,6 +280,7 @@ void main() {
         await pumpNav(
           tester,
           activeSection: AppSection.chats,
+          cavitySection: AppSection.chats,
           cavityChild: const Text('Chat list'),
           cavityKey: 'chats',
           maxHeightFraction: 0.75,
@@ -301,6 +306,107 @@ void main() {
     );
   });
 
+  group('the toggle keys on what the cavity hosts (#7537)', () {
+    testWidgets(
+      'Courses tap NAVIGATES to the hub while a course sheet is hosted, '
+      'even though the highlight resolves to Courses',
+      (tester) async {
+        AppSection? tapped;
+        await pumpNav(
+          tester,
+          // A selected course: highlight says Courses, but the cavity hosts
+          // the COURSE sheet (cavitySection null), not the hub.
+          activeSection: AppSection.courses,
+          cavitySection: null,
+          cavityChild: const Text('Course sheet'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+          onSectionTap: (s) => tapped = s,
+        );
+        final before = cavityHeightOf(tester);
+
+        await tester.tap(find.byTooltip('Courses'));
+        await tester.pumpAndSettle();
+
+        expect(
+          tapped,
+          AppSection.courses,
+          reason: 'the tap must navigate to the hub, not toggle the sheet',
+        );
+        expect(cavityHeightOf(tester), closeTo(before, 1.0));
+      },
+    );
+
+    testWidgets('Courses tap toggles when the cavity hosts the hub itself', (
+      tester,
+    ) async {
+      AppSection? tapped;
+      await pumpNav(
+        tester,
+        activeSection: AppSection.courses,
+        cavitySection: AppSection.courses,
+        cavityChild: const Text('Courses hub'),
+        cavityKey: 'addcourse',
+        onSectionTap: (s) => tapped = s,
+      );
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+
+      await tester.tap(find.byTooltip('Courses'));
+      await tester.pumpAndSettle();
+
+      expect(tapped, isNull, reason: 'the active hub tap is a toggle');
+      expect(cavityHeightOf(tester), 0.0);
+    });
+
+    testWidgets('the course shortcut toggles its own hosted sheet instead of a '
+        'same-URL no-op', (tester) async {
+      var shortcutTaps = 0;
+      await pumpNav(
+        tester,
+        activeSection: AppSection.courses,
+        cavitySection: null,
+        courseShortcutHostsCavity: true,
+        cavityChild: const Text('Course sheet'),
+        cavityKey: 'course-a',
+        cavityDefaultsToPeek: true,
+        onCourseShortcutTap: () => shortcutTaps++,
+      );
+      final peek = cavityHeightOf(tester);
+      expect(peek, greaterThan(0.0));
+
+      // Expanded -> tap collapses (ephemeral), no navigation.
+      await tester.tap(find.byTooltip('Add a course'));
+      await tester.pumpAndSettle();
+      expect(shortcutTaps, 0);
+      expect(cavityHeightOf(tester), 0.0);
+
+      // Collapsed -> tap re-expands to the remembered height.
+      await tester.tap(find.byTooltip('Add a course'));
+      await tester.pumpAndSettle();
+      expect(shortcutTaps, 0);
+      expect(cavityHeightOf(tester), closeTo(peek, 1.0));
+    });
+
+    testWidgets(
+      'the course shortcut navigates when its course is NOT the hosted sheet',
+      (tester) async {
+        var shortcutTaps = 0;
+        await pumpNav(
+          tester,
+          activeSection: AppSection.chats,
+          cavitySection: AppSection.chats,
+          cavityChild: const Text('Chat list'),
+          cavityKey: 'chats',
+          onCourseShortcutTap: () => shortcutTaps++,
+        );
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 1);
+      },
+    );
+  });
+
   group('tap-outside collapse', () {
     testWidgets(
       'tapping outside collapses (ephemeral — no navigation), and the rail '
@@ -309,6 +415,7 @@ void main() {
         await pumpNav(
           tester,
           activeSection: AppSection.chats,
+          cavitySection: AppSection.chats,
           cavityChild: const Text('Chat list'),
           cavityKey: 'chats',
           maxHeightFraction: 0.75,
@@ -346,6 +453,7 @@ void main() {
       await pumpNav(
         tester,
         activeSection: AppSection.chats,
+        cavitySection: AppSection.chats,
         cavityChild: const Text('Chat list'),
         cavityKey: 'chats',
         maxHeightFraction: 0.75,
