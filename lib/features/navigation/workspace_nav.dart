@@ -321,7 +321,7 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      CourseDetailsTokenParam(activeTab: null).token,
+      PanelToken('course'),
       if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
     ];
     final parts = WorkspaceQuery.parts(current.query);

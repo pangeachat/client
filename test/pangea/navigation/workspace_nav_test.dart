@@ -236,8 +236,9 @@ void main() {
         clearRight: true,
       );
       final lists = parseOpenPanels(u(loc));
-      expect(lists.left, [const PanelToken('course')]);
+      expect(lists.left.length, 1);
       expect(lists.right, isEmpty);
+      expect(lists.left.single, const PanelToken('course'));
     });
   });
 
@@ -814,14 +815,15 @@ void main() {
       final panels = parseOpenPanels(u(loc));
       expect(panels.right.any((t) => t.type == 'settings'), isFalse);
       expect(
-        panels.right.any(
-          (t) => t.type == 'settings' || t.type == 'settingspage',
+        panels.right.single,
+        const PanelToken(
+          'settingspage',
+          SettingsTokenParam(subpage: 'learning'),
         ),
-        isFalse,
-      );
+      ); // page survives
       expect(
         panels.left.single,
-        PanelToken('room', RoomTokenParam.parse('!a')),
+        const PanelToken('room', RoomTokenParam(id: '!a')),
       );
     });
 
@@ -1040,7 +1042,7 @@ void main() {
     // leaf reduced to the manual `private` page, so browser back / refresh
     // never re-fires the join (course_code_page.dart).
     test('replacing the coded leaf with the manual page strips the code', () {
-      final coded = u('/?left=addcourse:private%2Fvj3pc8b');
+      final coded = u('/?left=addcourse:private.jvj3pc8b');
       expect(joinCodeFor(coded), 'vj3pc8b');
       final consumed = WorkspaceNav.pushPage(
         coded,
@@ -1184,7 +1186,7 @@ void main() {
         parseOpenPanels(uri).left.where((t) => t.type == 'coursepage').single,
         PanelToken(
           'coursepage',
-          CourseDetailsSubpageTokenParam.parse('invite/knock'),
+          CourseDetailsSubpageTokenParam.parse('invite.knock'),
         ),
       );
     });

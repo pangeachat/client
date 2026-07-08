@@ -46,14 +46,14 @@ void main() {
     test('rewrites to the join-with-code leaf of the addcourse token', () {
       expect(
         resolve('/join_with_link?classcode=vj3pc8b'),
-        '/?left=addcourse:private%2Fvj3pc8b',
+        '/?left=addcourse:private.jvj3pc8b',
       );
     });
 
     test('the native /join spelling folds to the same target', () {
       expect(
         resolve('/join?classcode=vj3pc8b'),
-        '/?left=addcourse:private%2Fvj3pc8b',
+        '/?left=addcourse:private.jvj3pc8b',
       );
     });
 
@@ -73,7 +73,7 @@ void main() {
     test('prior panels and context are dropped — this link IS the join', () {
       expect(
         resolve('/join_with_link?classcode=vj3pc8b&c=!s&left=chats'),
-        '/?left=addcourse:private%2Fvj3pc8b',
+        '/?left=addcourse:private.jvj3pc8b',
       );
     });
 
