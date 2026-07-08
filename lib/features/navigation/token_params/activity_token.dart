@@ -22,7 +22,7 @@ class ActivityTokenParam extends TokenParam {
     this.roomId,
     this.launch = false,
     this.autoplay,
-  }) : super('activity');
+  });
 
   @override
   String build() => TokenFields.join([
@@ -59,12 +59,11 @@ class ActivityTokenParam extends TokenParam {
   @override
   bool operator ==(Object other) =>
       other is ActivityTokenParam &&
-      other.type == type &&
       other.activityId == activityId &&
       other.roomId == roomId &&
       other.launch == launch &&
       other.autoplay == autoplay;
 
   @override
-  int get hashCode => Object.hash(type, activityId, roomId, launch, autoplay);
+  int get hashCode => Object.hash(activityId, roomId, launch, autoplay);
 }

@@ -5,7 +5,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 
 void main() {
   List<PanelToken> right(String url) => parseOpenPanels(Uri.parse(url)).right;

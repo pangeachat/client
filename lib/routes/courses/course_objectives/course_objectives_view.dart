@@ -18,8 +18,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -205,39 +205,48 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             return const Center(child: CircularProgressIndicator.adaptive());
           case AsyncError(error: final error):
             if (error is MissingQuestException) {
+              final showAddCourse = widget.room?.isRoomAdmin == true;
               return Center(
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 400.0),
+                child: Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: Column(
                     spacing: 12.0,
                     children: [
                       Text(
-                        L10n.of(context).missingCourseOutline,
+                        showAddCourse
+                            ? L10n.of(context).missingCourseOutlineCta
+                            : L10n.of(context).missingCourseOutline,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
                       ),
-                      if (widget.room?.canChangeStateEvent(
-                            PangeaEventTypes.coursePlan,
-                          ) ==
-                          true)
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(
-                              context,
-                            ).colorScheme.primaryContainer,
-                            foregroundColor: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.map_outlined),
-                              Text(L10n.of(context).addCoursePlan),
-                            ],
+                      if (showAddCourse)
+                        SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.tonalIcon(
+                            onPressed: () => context.go(
+                              WorkspaceNav.openCoursePage(
+                                GoRouterState.of(context).uri,
+                                'addcourse',
+                              ),
+                            ),
+                            icon: Icon(Icons.map_outlined, size: 20.0),
+                            label: Text(L10n.of(context).addCoursePlan),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 14.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
                           ),
                         ),
                     ],

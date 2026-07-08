@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 /// The `room:` (and `session:`) panel token's structured param.
@@ -20,24 +21,31 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 /// can't collide with the `/` sub-path separator.
 class RoomTokenParam extends TokenParam {
   final String id;
-  final String? subPage;
+  final String? subpage;
   final String? filter;
   final String? eventId;
 
   const RoomTokenParam({
     required this.id,
-    this.subPage,
+    this.subpage,
     this.filter,
     this.eventId,
-  }) : super('room');
+  });
 
   @override
-  bool get isPushed => subPage != null;
+  bool get isPushed => subpage != null;
 
   @override
   TokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
 
-  /// Build a `room:`/`session:` param. At most one of [subPage] / [eventId] is
+  RoomSubpageTokenParam? toSubpageToken() {
+    final subpage = this.subpage;
+    return subpage != null
+        ? RoomSubpageTokenParam(subpage: subpage, filter: filter)
+        : null;
+  }
+
+  /// Build a `room:`/`session:` param. At most one of [subpage] / [eventId] is
   /// meaningful at a time — a jump-to-message has no sub-page of its own, so
   /// [eventId] takes precedence when both are passed. [filter] only ever trails
   /// an `invite` sub-page (bare or under `details/`); it is ignored otherwise.
@@ -48,7 +56,7 @@ class RoomTokenParam extends TokenParam {
       return '$id/e/${TokenFields.encode(eventId)}';
     }
 
-    final subPage = this.subPage;
+    final subPage = subpage;
     if (subPage == null || subPage.isEmpty) return id;
 
     // A filter only round-trips under `invite` / `details/invite` (see [parse]);
@@ -64,14 +72,14 @@ class RoomTokenParam extends TokenParam {
   }
 
   /// Parse a `room:`/`session:` param. Unknown/malformed sub-paths degrade to a
-  /// bare [subPage] rather than throwing, so a hand-edited or older URL still
+  /// bare [subpage] rather than throwing, so a hand-edited or older URL still
   /// opens the room.
   factory RoomTokenParam.parse(String param) {
     final slash = param.indexOf('/');
     if (slash < 0) {
       return RoomTokenParam(
         id: param,
-        subPage: null,
+        subpage: null,
         filter: null,
         eventId: null,
       );
@@ -83,7 +91,7 @@ class RoomTokenParam extends TokenParam {
     if (parts.first == 'e' && parts.length > 1) {
       return RoomTokenParam(
         id: id,
-        subPage: null,
+        subpage: null,
         filter: null,
         eventId: TokenFields.decode(parts[1]),
       );
@@ -93,7 +101,7 @@ class RoomTokenParam extends TokenParam {
     if (parts.first == 'invite' && parts.length > 1) {
       return RoomTokenParam(
         id: id,
-        subPage: 'invite',
+        subpage: 'invite',
         filter: TokenFields.decode(parts[1]),
         eventId: null,
       );
@@ -101,24 +109,23 @@ class RoomTokenParam extends TokenParam {
     if (parts.first == 'details' && parts.length > 2 && parts[1] == 'invite') {
       return RoomTokenParam(
         id: id,
-        subPage: 'details/invite',
+        subpage: 'details/invite',
         filter: TokenFields.decode(parts[2]),
         eventId: null,
       );
     }
 
-    return RoomTokenParam(id: id, subPage: sub, filter: null, eventId: null);
+    return RoomTokenParam(id: id, subpage: sub, filter: null, eventId: null);
   }
 
   @override
   bool operator ==(Object other) =>
       other is RoomTokenParam &&
-      other.type == type &&
       other.id == id &&
-      other.subPage == subPage &&
+      other.subpage == subpage &&
       other.filter == filter &&
       other.eventId == eventId;
 
   @override
-  int get hashCode => Object.hash(type, id, subPage, filter, eventId);
+  int get hashCode => Object.hash(id, subpage, filter, eventId);
 }

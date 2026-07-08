@@ -2,7 +2,7 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 class SettingsTokenParam extends TokenParam {
   final String subpage;
-  const SettingsTokenParam({required this.subpage}) : super('settingspage');
+  const SettingsTokenParam({required this.subpage});
 
   @override
   bool get isPushed => subpage.contains('/');
@@ -22,10 +22,8 @@ class SettingsTokenParam extends TokenParam {
 
   @override
   bool operator ==(Object other) =>
-      other is SettingsTokenParam &&
-      other.type == type &&
-      other.subpage == subpage;
+      other is SettingsTokenParam && other.subpage == subpage;
 
   @override
-  int get hashCode => Object.hash(type, subpage);
+  int get hashCode => Object.hashAll([subpage]);
 }

@@ -3,7 +3,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
 class CourseDetailsTokenParam extends TokenParam {
   final SpaceSettingsTabs? activeTab;
-  const CourseDetailsTokenParam({required this.activeTab}) : super('course');
+  const CourseDetailsTokenParam({required this.activeTab});
 
   @override
   String build() => activeTab?.name ?? '';
@@ -17,10 +17,8 @@ class CourseDetailsTokenParam extends TokenParam {
 
   @override
   bool operator ==(Object other) =>
-      other is CourseDetailsTokenParam &&
-      other.type == type &&
-      other.activeTab == activeTab;
+      other is CourseDetailsTokenParam && other.activeTab == activeTab;
 
   @override
-  int get hashCode => Object.hash(type, activeTab);
+  int get hashCode => Object.hashAll([activeTab]);
 }

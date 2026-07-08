@@ -57,7 +57,10 @@ abstract class LegacyRedirects {
       'launch',
       'autoplay',
     });
-    final parts = ['left=${activityTokenParam.token.encode()}', ...kept];
+    final parts = [
+      'left=${PanelToken('activity', activityTokenParam).encode()}',
+      ...kept,
+    ];
     return '${PRoutes.world}?${parts.join('&')}';
   }
 

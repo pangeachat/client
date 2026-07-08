@@ -13,7 +13,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';

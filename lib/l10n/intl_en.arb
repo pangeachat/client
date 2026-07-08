@@ -5038,5 +5038,6 @@
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
-    "missingCourseOutline": "This course is no longer available, pick a new course for this space"
+    "missingCourseOutline": "This course is no longer available",
+    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan."
 }

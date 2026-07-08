@@ -42,7 +42,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
     final roomId = fullRoomId(id);
     final room = Matrix.of(context).client.getRoomById(roomId);
-    final sub = param?.subPage ?? '';
+    final sub = param?.subpage ?? '';
 
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
@@ -79,8 +79,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
           return LeftPanelRoomDetailsSubpage(
             roomId: roomId,
-            name: rest.split('/').first,
-            filter: param?.filter,
+            param: param?.toSubpageToken(),
             closeButton: closeButton,
           );
       }

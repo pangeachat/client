@@ -7,12 +7,12 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
-import 'package:fluffychat/features/navigation/token_params/course_details_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -274,7 +274,7 @@ void main() {
       final param = room.param;
       expect(param, isA<RoomTokenParam>());
       expect((param as RoomTokenParam).id, '!abc');
-      expect((param).subPage, 'details');
+      expect((param).subpage, 'details');
     });
   });
 
@@ -606,10 +606,7 @@ void main() {
         expect(lists.left.any((t) => t.type == 'course'), isFalse); // card gone
         expect(
           lists.left.where((t) => t.type == 'coursepage').single,
-          PanelToken(
-            'coursepage',
-            CourseDetailsSubpageTokenParam.parse('edit'),
-          ),
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('edit')),
         ); // edit page kept
       },
     );
@@ -1146,7 +1143,7 @@ void main() {
       expect(left.map((t) => t.type).toList(), ['course', 'coursepage']);
       expect(
         left.last,
-        PanelToken('coursepage', CourseDetailsSubpageTokenParam.parse('edit')),
+        PanelToken('coursepage', RoomSubpageTokenParam.parse('edit')),
       );
       // The course identity (the map filter) survives.
       expect(activeSpaceIdFor(u(loc)), '!s');
@@ -1156,18 +1153,12 @@ void main() {
         parseOpenPanels(
           u(loc),
         ).left.where((t) => t.type == 'coursepage').single,
-        PanelToken(
-          'coursepage',
-          CourseDetailsSubpageTokenParam.parse('invite'),
-        ),
+        PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
       );
       // Closing the management detail drops it, leaving the card and filter.
       loc = WorkspaceNav.closeLeft(
         u(loc),
-        PanelToken(
-          'coursepage',
-          CourseDetailsSubpageTokenParam.parse('invite'),
-        ),
+        PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
       );
       expect(parseOpenPanels(u(loc)).left.single, const PanelToken('course'));
       expect(activeSpaceIdFor(u(loc)), '!s');
@@ -1184,10 +1175,7 @@ void main() {
       expect(uri.queryParameters['filter'], isNull);
       expect(
         parseOpenPanels(uri).left.where((t) => t.type == 'coursepage').single,
-        PanelToken(
-          'coursepage',
-          CourseDetailsSubpageTokenParam.parse('invite.knock'),
-        ),
+        PanelToken('coursepage', RoomSubpageTokenParam.parse('invite.knock')),
       );
     });
 
@@ -1204,10 +1192,7 @@ void main() {
         ]);
         expect(
           parseOpenPanels(u(loc)).left.last,
-          PanelToken(
-            'coursepage',
-            CourseDetailsSubpageTokenParam.parse('invite'),
-          ),
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
         );
         // From a DIFFERENT course — the scope is replaced with the target's.
         loc = WorkspaceNav.openCoursePageFor(
@@ -1220,10 +1205,7 @@ void main() {
           parseOpenPanels(
             u(loc),
           ).left.where((t) => t.type == 'coursepage').single,
-          PanelToken(
-            'coursepage',
-            CourseDetailsSubpageTokenParam.parse('edit'),
-          ),
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('edit')),
         );
       },
     );

@@ -4,7 +4,7 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 class VocabAnalyticsTokenParam extends TokenParam {
   final ConstructIdentifier? constructId;
-  const VocabAnalyticsTokenParam({required this.constructId}) : super('vocab');
+  const VocabAnalyticsTokenParam({required this.constructId});
 
   @override
   String build() => constructId?.toTokenParam() ?? '';
@@ -20,9 +20,8 @@ class VocabAnalyticsTokenParam extends TokenParam {
   @override
   bool operator ==(Object other) =>
       other is VocabAnalyticsTokenParam &&
-      other.type == type &&
       other.constructId?.toTokenParam() == constructId?.toTokenParam();
 
   @override
-  int get hashCode => Object.hash(type, constructId?.toTokenParam());
+  int get hashCode => Object.hashAll([constructId?.toTokenParam()]);
 }

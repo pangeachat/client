@@ -110,7 +110,7 @@ class NavigationUtil {
       WorkspaceNav.pushPage(
         uri,
         'room',
-        RoomTokenParam(id: shortId, subPage: sub, filter: filter),
+        RoomTokenParam(id: shortId, subpage: sub, filter: filter),
       ),
       extra: extra,
     );

@@ -19,7 +19,7 @@ class AddCourseTokenParam extends TokenParam {
     this.targetLanguage,
     this.joinCode,
     this.invite = false,
-  }) : super('addcourse');
+  });
 
   @override
   String build() {
@@ -87,7 +87,6 @@ class AddCourseTokenParam extends TokenParam {
   @override
   bool operator ==(Object other) =>
       other is AddCourseTokenParam &&
-      other.type == type &&
       other.subpage == subpage &&
       other.roomId == roomId &&
       other.courseId == courseId &&
@@ -96,13 +95,6 @@ class AddCourseTokenParam extends TokenParam {
       other.invite == invite;
 
   @override
-  int get hashCode => Object.hash(
-    type,
-    subpage,
-    roomId,
-    courseId,
-    targetLanguage,
-    joinCode,
-    invite,
-  );
+  int get hashCode =>
+      Object.hash(subpage, roomId, courseId, targetLanguage, joinCode, invite);
 }

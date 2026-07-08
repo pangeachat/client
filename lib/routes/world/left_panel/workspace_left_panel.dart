@@ -7,8 +7,8 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
-import 'package:fluffychat/features/navigation/token_params/course_details_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
@@ -117,7 +117,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
         );
       }(),
       'coursepage' => () {
-        final parsed = param is CourseDetailsSubpageTokenParam ? param : null;
+        final parsed = param is RoomSubpageTokenParam ? param : null;
         final courseSpaceId = activeSpaceIdFor(currentUri);
         if (courseSpaceId == null) {
           return const SizedBox.shrink();
@@ -125,8 +125,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
 
         return LeftPanelRoomDetailsSubpage(
           roomId: courseSpaceId,
-          name: parsed?.page,
-          filter: parsed?.filter,
+          param: parsed,
           closeButton: closeButton,
         );
       }(),

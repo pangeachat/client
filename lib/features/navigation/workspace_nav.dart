@@ -9,13 +9,13 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
-import 'package:fluffychat/features/navigation/token_params/course_details_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -156,11 +156,13 @@ abstract class WorkspaceNav {
     String? event,
   }) {
     final id = shortRoomId(roomId);
-    final param = RoomTokenParam(id: id, subPage: subPage, eventId: event);
+    final param = RoomTokenParam(id: id, subpage: subPage, eventId: event);
     return WorkspaceQuery.location(
       PRoutes.world,
       WorkspaceQuery.parts(
-        Uri.parse(openExclusiveLeftRoom(current, param.token)).query,
+        Uri.parse(
+          openExclusiveLeftRoom(current, PanelToken('room', param)),
+        ).query,
       ),
     );
   }
@@ -209,7 +211,11 @@ abstract class WorkspaceNav {
     final param = view == ConstructTypeEnum.vocab
         ? VocabAnalyticsTokenParam(constructId: constructId)
         : GrammarAnalyticsTokenParam(constructId: constructId);
-    final detail = param.token;
+
+    final detail = PanelToken(
+      view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+      param,
+    );
 
     return _mutateBoth(
       current,
@@ -220,7 +226,13 @@ abstract class WorkspaceNav {
             .toList();
 
         if (!next.any((t) => t.type == 'analytics')) {
-          next.insert(0, AnalyticsTokenParam(subpage: view.indicator).token);
+          next.insert(
+            0,
+            PanelToken(
+              'analytics',
+              AnalyticsTokenParam(subpage: view.indicator),
+            ),
+          );
         }
 
         next.add(detail);
@@ -255,7 +267,10 @@ abstract class WorkspaceNav {
 
           next.insert(
             0,
-            AnalyticsPracticeTokenParam(constructType: type).token,
+            PanelToken(
+              'practice',
+              AnalyticsPracticeTokenParam(constructType: type),
+            ),
           );
 
           return next;
@@ -351,7 +366,10 @@ abstract class WorkspaceNav {
       final next = tokens
           .where((t) => t.type != 'course' && t.type != 'activity')
           .toList();
-      next.insert(0, CourseDetailsTokenParam(activeTab: tab).token);
+      next.insert(
+        0,
+        PanelToken('course', CourseDetailsTokenParam(activeTab: tab)),
+      );
       return next;
     },
   );
@@ -365,11 +383,18 @@ abstract class WorkspaceNav {
   /// invite page's initial contact filter, folded into the token instead of a
   /// loose `?filter=` query (routing.instructions.md). One management page at a
   /// time (the registry `coursepage` exclusive group drops any prior one).
-  static String openCoursePage(Uri current, String page, {String? filter}) =>
-      openDetail(
-        current,
-        CourseDetailsSubpageTokenParam(page: page, filter: filter).token,
-      );
+  static String openCoursePage(
+    Uri current,
+    String page, {
+    String? filter,
+    String? courseId,
+  }) => openDetail(
+    current,
+    PanelToken(
+      'coursepage',
+      RoomSubpageTokenParam(subpage: page, filter: filter, courseId: courseId),
+    ),
+  );
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
   /// ANYWHERE: set the `?c=<id>` scope + `course` card, then the
@@ -412,12 +437,15 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
   }) {
-    final token = ActivityTokenParam(
-      activityId: activityId,
-      roomId: roomId,
-      launch: launch,
-      autoplay: autoplay ? 0 : null,
-    ).token;
+    final token = PanelToken(
+      'activity',
+      ActivityTokenParam(
+        activityId: activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay ? 0 : null,
+      ),
+    );
 
     final parts = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
@@ -446,12 +474,15 @@ abstract class WorkspaceNav {
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'left'});
 
-    final token = ActivityTokenParam(
-      activityId: activityId,
-      roomId: roomId,
-      launch: launch,
-      autoplay: autoplay,
-    ).token;
+    final token = PanelToken(
+      'activity',
+      ActivityTokenParam(
+        activityId: activityId,
+        roomId: roomId,
+        launch: launch,
+        autoplay: autoplay,
+      ),
+    );
 
     parts.add('left=${token.encode()}');
     return WorkspaceQuery.location(PRoutes.world, parts);
@@ -696,7 +727,10 @@ abstract class WorkspaceNav {
         return result;
       });
     } else {
-      final detail = SettingsTokenParam(subpage: page).token;
+      final detail = PanelToken(
+        'settingspage',
+        SettingsTokenParam(subpage: page),
+      );
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
             .where(
@@ -744,7 +778,7 @@ abstract class WorkspaceNav {
         return openSettings(current, page: popped.subpage);
       }
     }
-    return closeRight(current, param.token);
+    return closeRight(current, PanelToken('settingspage', param));
   }
 
   static List<PanelToken> _add(
@@ -810,20 +844,26 @@ abstract class WorkspaceNav {
     ProgressIndicatorEnum? subpage,
     bool closeSections = false,
   }) => setRight(current, [
-    AnalyticsTokenParam(
-      subpage: subpage ?? ProgressIndicatorEnum.wordsUsed,
-    ).token,
+    PanelToken(
+      'analytics',
+      AnalyticsTokenParam(subpage: subpage ?? ProgressIndicatorEnum.wordsUsed),
+    ),
   ], closeSections: closeSections);
 
   static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
       setRight(current, [
-        AnalyticsTokenParam.parse(
-          view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
-        ).token,
+        PanelToken(
+          'analytics',
+          AnalyticsTokenParam.parse(
+            view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+          ),
+        ),
       ]);
 
-  static String closeCoursePage(Uri current, String page) =>
-      closeLeft(current, CourseDetailsSubpageTokenParam(page: page).token);
+  static String closeCoursePage(Uri current, String page) => closeLeft(
+    current,
+    PanelToken('coursepage', RoomSubpageTokenParam(subpage: page)),
+  );
 
   static String openAddCourse(
     Uri current, {

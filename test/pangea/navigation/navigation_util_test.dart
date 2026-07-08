@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/token_params/course_details_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -123,10 +123,7 @@ void main() {
         // The renderable token — NOT the blank `coursepage:details/invite`.
         expect(
           coursepage,
-          PanelToken(
-            'coursepage',
-            CourseDetailsSubpageTokenParam.parse('invite'),
-          ),
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
         );
       },
     );

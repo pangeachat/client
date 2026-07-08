@@ -3,8 +3,7 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 class AnalyticsPracticeTokenParam extends TokenParam {
   final ConstructTypeEnum constructType;
-  const AnalyticsPracticeTokenParam({required this.constructType})
-    : super('practice');
+  const AnalyticsPracticeTokenParam({required this.constructType});
 
   @override
   String build() => constructType.canonicalTokenParam;
@@ -17,9 +16,8 @@ class AnalyticsPracticeTokenParam extends TokenParam {
   @override
   bool operator ==(Object other) =>
       other is AnalyticsPracticeTokenParam &&
-      other.type == type &&
       other.constructType == constructType;
 
   @override
-  int get hashCode => Object.hash(type, constructType);
+  int get hashCode => Object.hashAll([constructType]);
 }

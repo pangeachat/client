@@ -7,7 +7,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 
 /// The token-grammar encoding contract (routing.instructions.md): params carry
@@ -178,17 +178,17 @@ void main() {
         expect(RoomTokenParam(id: '!abc').build(), '!abc');
         final parsed = RoomTokenParam.parse('!abc');
         expect(parsed.id, '!abc');
-        expect(parsed.subPage, isNull);
+        expect(parsed.subpage, isNull);
         expect(parsed.filter, isNull);
         expect(parsed.eventId, isNull);
       });
 
       test('a plain sub-page (search, edit, …) round-trips with no filter', () {
-        final param = RoomTokenParam(id: '!abc', subPage: 'search').build();
+        final param = RoomTokenParam(id: '!abc', subpage: 'search').build();
         expect(param, '!abc/search');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
-        expect(parsed.subPage, 'search');
+        expect(parsed.subpage, 'search');
         expect(parsed.filter, isNull);
         expect(parsed.eventId, isNull);
       });
@@ -196,13 +196,13 @@ void main() {
       test('an invite filter appends after the sub-page and round-trips', () {
         final param = RoomTokenParam(
           id: '!abc',
-          subPage: 'invite',
+          subpage: 'invite',
           filter: 'knocking',
         ).build();
         expect(param, '!abc/invite/knocking');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
-        expect(parsed.subPage, 'invite');
+        expect(parsed.subpage, 'invite');
         expect(parsed.filter, 'knocking');
         expect(parsed.eventId, isNull);
       });
@@ -210,12 +210,12 @@ void main() {
       test('a details page with no filter round-trips (edit/access/…)', () {
         final param = RoomTokenParam(
           id: '!abc',
-          subPage: 'details/edit',
+          subpage: 'details/edit',
         ).build();
         expect(param, '!abc/details/edit');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
-        expect(parsed.subPage, 'details/edit');
+        expect(parsed.subpage, 'details/edit');
         expect(parsed.filter, isNull);
       });
 
@@ -224,13 +224,13 @@ void main() {
         () {
           final param = RoomTokenParam(
             id: '!abc',
-            subPage: 'details/invite',
+            subpage: 'details/invite',
             filter: 'participants',
           ).build();
           expect(param, '!abc/details/invite/participants');
           final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc');
-          expect(parsed.subPage, 'details/invite');
+          expect(parsed.subpage, 'details/invite');
           expect(parsed.filter, 'participants');
         },
       );
@@ -242,7 +242,7 @@ void main() {
         expect(param, '!abc/e/${TokenFields.encode(eventId)}');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
-        expect(parsed.subPage, isNull);
+        expect(parsed.subpage, isNull);
         expect(parsed.filter, isNull);
         expect(parsed.eventId, eventId);
       });
@@ -250,11 +250,11 @@ void main() {
       test('eventId takes precedence over a subPage when both are passed', () {
         final param = RoomTokenParam(
           id: '!abc',
-          subPage: 'search',
+          subpage: 'search',
           eventId: r'$xyz',
         ).build();
         final parsed = RoomTokenParam.parse(param);
-        expect(parsed.subPage, isNull);
+        expect(parsed.subpage, isNull);
         expect(parsed.eventId, r'$xyz');
       });
 
@@ -263,7 +263,7 @@ void main() {
         for (final filter in hostileFilters) {
           final param = RoomTokenParam(
             id: '!abc',
-            subPage: 'invite',
+            subpage: 'invite',
             filter: filter,
           ).build();
           final parsed = RoomTokenParam.parse(param);
@@ -282,11 +282,11 @@ void main() {
           // `/` is always the whole id — including a foreign `!id:server` form.
           final param = RoomTokenParam(
             id: '!abc:example.org',
-            subPage: 'search',
+            subpage: 'search',
           ).build();
           final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc:example.org');
-          expect(parsed.subPage, 'search');
+          expect(parsed.subpage, 'search');
         },
       );
     },

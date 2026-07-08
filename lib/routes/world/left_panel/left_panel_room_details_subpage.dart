@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
 import 'package:fluffychat/routes/chat/chat_details/edit_course/edit_course.dart';
 import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
@@ -17,29 +18,25 @@ import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
 /// `routing.instructions.md`.
 class LeftPanelRoomDetailsSubpage extends StatelessWidget {
   final String roomId;
-  final String? name;
-  final String? filter;
-  final String? courseId;
+  final RoomSubpageTokenParam? param;
   final Widget closeButton;
 
   const LeftPanelRoomDetailsSubpage({
     super.key,
     required this.roomId,
-    required this.name,
+    required this.param,
     required this.closeButton,
-    this.filter,
-    this.courseId,
   });
 
   @override
   Widget build(BuildContext context) {
-    switch (name?.split('/').first) {
+    switch (param?.subpage.split('/').first) {
       case 'edit':
         return EditCourse(roomId: roomId, embeddedCloseButton: closeButton);
       case 'invite':
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter: InvitationFilter.fromNullableString(filter),
+          initialFilter: InvitationFilter.fromNullableString(param?.filter),
           embeddedCloseButton: closeButton,
         );
       case 'access':
@@ -55,7 +52,7 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
       case 'emotes':
         return EmotesSettings(roomId: roomId, embeddedCloseButton: closeButton);
       case 'addcourse':
-        final courseId = this.courseId;
+        final courseId = param?.courseId;
         if (courseId != null) {
           return SelectedCourse(
             courseId,

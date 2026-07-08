@@ -28,13 +28,13 @@ abstract class ScreenNames {
       case 'room':
       case 'session':
         if (param is! RoomTokenParam) return token.type;
-        if (param.subPage == null || param.subPage!.isEmpty) {
+        if (param.subpage == null || param.subpage!.isEmpty) {
           return token.type;
         }
         final filter = param.filter;
         final sub = filter == null
-            ? param.subPage!
-            : '${param.subPage}/$filter';
+            ? param.subpage!
+            : '${param.subpage}/$filter';
         return '${token.type}:$sub';
       // A coursepage param is the bare page, no leading room id (the card's
       // space rides the separate `?c=` context) — an `invite` page may carry a

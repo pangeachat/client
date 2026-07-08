@@ -5,12 +5,12 @@ import 'package:fluffychat/features/navigation/screen_names.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
-import 'package:fluffychat/features/navigation/token_params/course_details_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 
 /// The GA screen-name derivation (google-analytics.instructions.md): token
 /// syntax, identity stripped, navigational params kept — including folded and
@@ -39,10 +39,7 @@ void main() {
       );
       expect(
         ScreenNames.forToken(
-          PanelToken(
-            'coursepage',
-            CourseDetailsSubpageTokenParam.parse('invite'),
-          ),
+          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
         ),
         'coursepage:invite',
       );

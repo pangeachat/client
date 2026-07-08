@@ -3,7 +3,7 @@ import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.da
 
 class AnalyticsTokenParam extends TokenParam {
   final ProgressIndicatorEnum subpage;
-  const AnalyticsTokenParam({required this.subpage}) : super('analytics');
+  const AnalyticsTokenParam({required this.subpage});
 
   @override
   String build() => subpage.route;
@@ -13,10 +13,8 @@ class AnalyticsTokenParam extends TokenParam {
 
   @override
   bool operator ==(Object other) =>
-      other is AnalyticsTokenParam &&
-      other.type == type &&
-      other.subpage.route == subpage.route;
+      other is AnalyticsTokenParam && other.subpage.route == subpage.route;
 
   @override
-  int get hashCode => Object.hash(type, subpage.route);
+  int get hashCode => Object.hashAll([subpage.route]);
 }
