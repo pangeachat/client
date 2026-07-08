@@ -19,14 +19,13 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class NewCoursePage extends StatefulWidget {
   final String route;
@@ -456,70 +455,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                           // Tapping the card scopes the map to this plan's
                           // activities (world_v2); the Create button starts
                           // the course.
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4.0,
-                              ),
-                              child: InkWell(
-                                onTap: () => _onSelect(course),
-                                borderRadius: BorderRadius.circular(12.0),
-                                child: Container(
-                                  padding: const EdgeInsets.all(12.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    border: Border.all(
-                                      color: theme.colorScheme.primary,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    spacing: 12.0,
-                                    children: [
-                                      SizedBox(
-                                        width: 48.0,
-                                        height: 48.0,
-                                        child: ImageByUrl(
-                                          imageUrl: course.imageUrl,
-                                          width: 48.0,
-                                          borderRadius: BorderRadius.circular(
-                                            10.0,
-                                          ),
-                                          replacement: Avatar(
-                                            name: course.title,
-                                            borderRadius: BorderRadius.circular(
-                                              10.0,
-                                            ),
-                                            size: 48.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          spacing: 6.0,
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              course.title,
-                                              style: theme.textTheme.bodyLarge,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            CourseInfoChips(
-                                              course.uuid,
-                                              iconSize: 12.0,
-                                              fontSize: 12.0,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                          return AddCourseTile(
+                            coursePlan: course,
+                            onTap: () => _onSelect(course),
                           );
                         },
                       ),
