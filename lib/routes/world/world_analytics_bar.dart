@@ -449,27 +449,9 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
   });
 
   static const double _avatarSize = 56.0;
-  static const double _xpStroke = 4.0;
-  static const double _pillInnerRadius = 20.0;
-
-  /// Half the hex badge's width — how far it sticks out past the pill's
-  /// left edge (the Figma overhang).
-  static const double _hexBadgeOverhang = 21.0;
-
-  // Pill interior: extra left inset so the trackers clear the hex badge's
-  // inner half, tight vertical padding for the compact bar-height pill.
-  static const double _pillTrackerClearance = 10.0;
-  static const double _pillVerticalPadding = 2.0;
-  static const double _pillRightPadding = 14.0;
 
   /// Gap between the pill+badge unit and the avatar column.
   static const double _pillAvatarGap = 12.0;
-
-  // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
-  // defaults, per the Figma bar frame.
-  static const double _badgeWidth = 42.0;
-  static const double _badgeHeight = 36.0;
-  static const double _badgeFontSize = 16.0;
 
   // The mobile flag is smaller than web's 52x36, per the Figma bar frame.
   static const double _flagWidth = 40.0;
@@ -496,75 +478,11 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
               // (gold growing from the badge's top, clockwise, meeting at its
               // bottom) and the level medal overhangs the pill's LEFT end —
               // the mirror of web's bottom-center overhang.
-              child: Stack(
-                alignment: Alignment.centerLeft,
-                // The badge's level-up celebration paints just outside the
-                // pill unit's bounds (pulse + chip); don't clip it. The
-                // celebration is decoration-only (IgnorePointer), so the
-                // hit-test caveat below still only concerns the badge itself.
-                clipBehavior: Clip.none,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: _hexBadgeOverhang),
-                    child: CustomPaint(
-                      painter: XpBorderPainter(
-                        progress: xpProgress,
-                        trackColor: const Color.fromARGB(130, 135, 135, 135),
-                        progressColor: AppConfig.goldByTheme(context),
-                        stroke: _xpStroke,
-                        radius: _pillInnerRadius + _xpStroke / 2,
-                        anchor: XpBorderAnchor.leftCenter,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(_xpStroke),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.surfaceContainer,
-                            borderRadius: BorderRadius.circular(
-                              _pillInnerRadius,
-                            ),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          padding: const EdgeInsets.fromLTRB(
-                            _hexBadgeOverhang + _pillTrackerClearance,
-                            _pillVerticalPadding,
-                            _pillRightPadding,
-                            _pillVerticalPadding,
-                          ),
-                          child: _PowerupsRow(
-                            starsCount: starsCount,
-                            grammarCount: grammarCount,
-                            vocabCount: vocabCount,
-                            isInitializing: isInitializing,
-                            onTap: onTrackerTap,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Half-overlapping the pill's left end, vertically centered
-                  // (the Figma hexagon). Kept INSIDE the Stack's bounds — a
-                  // negative Positioned paints but does not hit-test, which
-                  // silently killed the badge's tap (test-caught).
-                  Positioned(
-                    left: 0,
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: LevelUpBadgeCelebration(
-                        levelUpdates: levelUpdates,
-                        child: _HexLevelBadge(
-                          level: level,
-                          onTap: onLevelTap,
-                          width: _badgeWidth,
-                          height: _badgeHeight,
-                          fontSize: _badgeFontSize,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              child: _PowerupsRow(
+                onTap: onTrackerTap,
+                onLevelTap: () => onLevelTap(),
+                l2: l2,
+                levelUpdates: levelUpdates,
               ),
             ),
           ),
@@ -610,56 +528,171 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
 /// labels, same shimmer-while-initializing as the cluster's pill, so the two
 /// surfaces never disagree — but all values arrive as plain fields.
 class _PowerupsRow extends StatelessWidget {
-  final int starsCount;
-  final int grammarCount;
-  final int vocabCount;
-  final bool isInitializing;
   final void Function(AnalyticsPanelTab) onTap;
+  final VoidCallback onLevelTap;
+  final LanguageModel? l2;
+
+  /// Level-change signal for the medal's celebration; see
+  /// [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
 
   const _PowerupsRow({
-    required this.starsCount,
-    required this.grammarCount,
-    required this.vocabCount,
-    required this.isInitializing,
     required this.onTap,
+    required this.onLevelTap,
+    required this.l2,
+    required this.levelUpdates,
   });
+
+  static const double _xpStroke = 5.0;
+  static const double _innerRadius = 20.0;
+
+  // Pill interior: extra left inset so the trackers clear the hex badge's
+  // inner half, tight vertical padding for the compact bar-height pill.
+  static const double _pillTrackerClearance = 10.0;
+  static const double _pillVerticalPadding = 2.0;
+  static const double _pillRightPadding = 14.0;
+
+  /// Half the hex badge's width — how far it sticks out past the pill's
+  /// left edge (the Figma overhang).
+  static final double _hexBadgeOverhang = _badgeWidth / 2;
+
+  // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
+  // defaults, per the Figma bar frame.
+  static const double _badgeWidth = 42.0;
+  static const double _badgeHeight = 36.0;
+  static const double _badgeFontSize = 16.0;
 
   @override
   Widget build(BuildContext context) {
-    // No decoration of its own: the XP-bordered pill Container in
-    // [_ExpandedAnalyticsBar] is the field these trackers sit on (mirroring
-    // the web pill's structure).
-    final content = Material(
-      type: MaterialType.transparency,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClusterTrackerButton(
-            indicator: ProgressIndicatorEnum.stars,
-            count: starsCount,
-            onTap: () => onTap(AnalyticsPanelTab.sessions),
-          ),
-          ClusterTrackerButton(
-            indicator: ProgressIndicatorEnum.morphsUsed,
-            count: grammarCount,
-            onTap: () => onTap(AnalyticsPanelTab.grammar),
-          ),
-          ClusterTrackerButton(
-            indicator: ProgressIndicatorEnum.wordsUsed,
-            count: vocabCount,
-            onTap: () => onTap(AnalyticsPanelTab.vocab),
-          ),
-        ],
-      ),
-    );
+    final matrix = Matrix.of(context);
+    final client = matrix.client;
+    final service = matrix.analyticsDataService;
+    final l2 = this.l2;
 
-    return isInitializing
-        ? Shimmer.fromColors(
-            baseColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-            highlightColor: Theme.of(context).colorScheme.surface,
-            child: content,
-          )
-        : content;
+    return StreamBuilder(
+      stream: service.updateDispatcher.constructUpdateStream.stream,
+      builder: (context, _) {
+        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
+        final grammar = service.numConstructs(ConstructTypeEnum.morph);
+
+        final content = FutureBuilder<DerivedAnalyticsDataModel>(
+          future: l2 != null
+              ? service.derivedData(l2.langCodeShort)
+              : Future.value(DerivedAnalyticsDataModel()),
+          builder: (context, snapshot) {
+            final derived = snapshot.data ?? service.cachedDerivedData;
+            final level = derived?.level ?? 1;
+            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+
+            return Stack(
+              alignment: Alignment.centerLeft,
+              // The badge's level-up celebration paints just outside the
+              // pill unit's bounds (pulse + chip); don't clip it. The
+              // celebration is decoration-only (IgnorePointer), so the
+              // hit-test caveat below still only concerns the badge itself.
+              clipBehavior: Clip.none,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _hexBadgeOverhang),
+                  child: CustomPaint(
+                    painter: XpBorderPainter(
+                      progress: progress,
+                      trackColor: const Color.fromARGB(130, 135, 135, 135),
+                      progressColor: AppConfig.goldByTheme(context),
+                      stroke: _xpStroke,
+                      radius: _innerRadius + _xpStroke / 2,
+                      anchor: XpBorderAnchor.leftCenter,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(_xpStroke),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surfaceContainer,
+                          borderRadius: BorderRadius.circular(_innerRadius),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        padding: EdgeInsets.fromLTRB(
+                          _hexBadgeOverhang + _pillTrackerClearance,
+                          _pillVerticalPadding,
+                          _pillRightPadding,
+                          _pillVerticalPadding,
+                        ),
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              StreamBuilder(
+                                stream: client.onRoomState.stream.where(
+                                  (e) =>
+                                      e.state.type ==
+                                      PangeaEventTypes.orchestratorAwardedGoals,
+                                ),
+                                builder: (context, _) {
+                                  final stars = l2 != null
+                                      ? client.totalStarsEarned(l2)
+                                      : 0;
+
+                                  return ClusterTrackerButton(
+                                    indicator: ProgressIndicatorEnum.stars,
+                                    count: stars,
+                                    onTap: () =>
+                                        onTap(AnalyticsPanelTab.sessions),
+                                  );
+                                },
+                              ),
+                              ClusterTrackerButton(
+                                indicator: ProgressIndicatorEnum.morphsUsed,
+                                count: grammar,
+                                onTap: () => onTap(AnalyticsPanelTab.grammar),
+                              ),
+                              ClusterTrackerButton(
+                                indicator: ProgressIndicatorEnum.wordsUsed,
+                                count: vocab,
+                                onTap: () => onTap(AnalyticsPanelTab.vocab),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Half-overlapping the pill's left end, vertically centered
+                // (the Figma hexagon). Kept INSIDE the Stack's bounds — a
+                // negative Positioned paints but does not hit-test, which
+                // silently killed the badge's tap (test-caught).
+                Positioned(
+                  left: 0,
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: levelUpdates,
+                      child: _HexLevelBadge(
+                        level: level,
+                        onTap: onLevelTap,
+                        width: _badgeWidth,
+                        height: _badgeHeight,
+                        fontSize: _badgeFontSize,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+        return service.isInitializing
+            ? Shimmer.fromColors(
+                baseColor: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHighest,
+                highlightColor: Theme.of(context).colorScheme.surface,
+                child: content,
+              )
+            : content;
+      },
+    );
   }
 }
 
