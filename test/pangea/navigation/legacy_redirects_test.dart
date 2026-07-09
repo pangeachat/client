@@ -116,11 +116,13 @@ void main() {
       expect(LegacyRedirects.handle(Uri.parse('/?left=chats')), isNull);
       expect(LegacyRedirects.handle(Uri.parse('/')), isNull);
       expect(
-        LegacyRedirects.handle(Uri.parse('/?left=addcourse:private%2Fvj3pc8b')),
+        LegacyRedirects.handle(
+          Uri.parse('/?left=addcoursepage:private%2Fvj3pc8b'),
+        ),
         isNull,
       );
       expect(
-        LegacyRedirects.handle(Uri.parse('/?left=addcourse:private')),
+        LegacyRedirects.handle(Uri.parse('/?left=addcoursepage:private')),
         isNull,
       );
     });

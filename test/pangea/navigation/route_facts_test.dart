@@ -76,7 +76,7 @@ void main() {
       expect(section('/?left=chats,room:!a'), AppSection.chats);
       expect(section('/?left=room:!a'), AppSection.chats); // a lone live chat
       expect(section('/?left=addcourse'), AppSection.courses); // the hub
-      expect(section('/?left=addcourse:own'), AppSection.courses); // a step
+      expect(section('/?left=addcoursepage:own'), AppSection.courses); // a step
     });
   });
 
