@@ -2,6 +2,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/screen_names.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 
 /// The GA screen-name derivation (google-analytics.instructions.md): token
 /// syntax, identity stripped, navigational params kept — including folded and
@@ -11,53 +20,65 @@ void main() {
 
   group('forToken (identity stripped, navigational kept)', () {
     test('the doc examples hold', () {
-      expect(ScreenNames.forToken(const PanelToken('chats')), 'chats');
-      expect(ScreenNames.forToken(const PanelToken('room', '!abc')), 'room');
+      expect(ChatsPanelToken().screenName, 'chats');
+      expect(RoomPanelToken(RoomTokenParam.parse('!abc')).screenName, 'room');
       expect(
-        ScreenNames.forToken(const PanelToken('room', '!abc/search')),
+        RoomPanelToken(RoomTokenParam.parse('!abc/search')).screenName,
         'room:search',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('course', 'more')),
+        CoursePanelToken(CourseDetailsTokenParam.parse('more')).screenName,
         'course:more',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('coursepage', 'invite')),
+        CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')).screenName,
         'coursepage:invite',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('settingspage', 'security/3pid')),
+        SettingsPagePanelToken(
+          SettingsTokenParam.parse('security/3pid'),
+        ).screenName,
         'settingspage:security/3pid',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('settingspage', 'subscription')),
+        SettingsPagePanelToken(
+          SettingsTokenParam.parse('subscription'),
+        ).screenName,
         'settingspage:subscription',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('analytics', 'vocab')),
+        AnalyticsPanelToken(AnalyticsTokenParam.parse('vocab')).screenName,
         'analytics:vocab',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('practice', 'grammar')),
+        AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam.parse('grammar'),
+        ).screenName,
         'practice:grammar',
       );
     });
 
     test('identity params never leak into a name', () {
       expect(
-        ScreenNames.forToken(const PanelToken('vocab', 'abrigadoro.adj')),
+        VocabAnalyticsPanelToken(
+          VocabAnalyticsTokenParam.parse('abrigadoro.adj'),
+        ).screenName,
         'vocab',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('grammar', 'ser.aux')),
+        GrammarAnalyticsPanelToken(
+          GrammarAnalyticsTokenParam.parse('ser.aux'),
+        ).screenName,
         'grammar',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('activity', 'act-1.r!sess.l')),
+        ActivityPanelToken(
+          ActivityTokenParam.parse('act-1.r!sess.l'),
+        ).screenName,
         'activity',
       );
       expect(
-        ScreenNames.forToken(const PanelToken('session', '!room')),
+        SessionPanelToken(RoomTokenParam.parse('!room')).screenName,
         'session',
       );
     });

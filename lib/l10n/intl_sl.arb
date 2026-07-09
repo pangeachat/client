@@ -1920,7 +1920,6 @@
     "startNewSession": "Začni novo sejo",
     "joinOpenSession": "Pridruži se odprti seji",
     "activityNotFound": "Aktivnosti ni bilo mogoče najti",
-    "levelUp": "Nadgradi raven",
     "myActivities": "Moje dejavnosti",
     "openToJoin": "Odprto za pridružitev",
     "results": "Rezultati",
@@ -10565,7 +10564,6 @@
     "enableNotificationsTitle": "Nikoli ne zamudite pogovora!",
     "enableNotificationsDesc": "Dovolite obvestila za Pangea Chat in ostanite povezani s svojimi jezikovnimi prijatelji!",
     "enableNotifications": "Dovolite obvestila",
-    "noActivitiesFound": "Ni aktivnosti na voljo za to temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10575,10 +10573,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11395,7 +11389,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} od {total} zvezd zasluženih",
+    "activityNoLongerSupported": "Ta dejavnost je potekala na starejši različici dejavnosti in ni več podprta. Še vedno lahko pregledate, kaj se je zgodilo v tej seji.",
+    "activityLoadFailed": "Dejavnosti ni bilo mogoče naložiti. Preverite svojo povezavo in poskusite znova.",
+    "levelUpChip": "Raven {level}!",
+    "missingCourseOutline": "Ta tečaj ni več na voljo",
+    "missingCourseOutlineCta": "Ta tečaj ni več na voljo. Izberite nov načrt tečaja.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zapri stran za dodajanje tečaja",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

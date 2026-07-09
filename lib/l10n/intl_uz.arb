@@ -3906,7 +3906,6 @@
     "startNewSession": "Yangi sessiya boshlash",
     "joinOpenSession": "Ochiq sessiyaga qo'shiling",
     "activityNotFound": "Faoliyat topilmadi",
-    "levelUp": "Darajani oshirish",
     "myActivities": "Mening faoliyatlarim",
     "openToJoin": "Qo'shilishga ochiq",
     "results": "Natijalar",
@@ -9453,7 +9452,6 @@
     "enableNotificationsTitle": "Hech qachon suhbatni o'tkazib yubormang!",
     "enableNotificationsDesc": "Pangea Chat uchun bildirishnomalarni ruxsat bering va til do'stlaringiz bilan bog'laning!",
     "enableNotifications": "Bildirishnomalarni ruxsat berish",
-    "noActivitiesFound": "Ushbu mavzu uchun hech qanday faoliyat mavjud emas.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9463,10 +9461,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10283,7 +10277,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} dan {total} yulduz to'plandi",
+    "activityNoLongerSupported": "Ushbu faoliyat eski versiyada o'tkazilgan va endi qo'llab-quvvatlanmaydi. Siz hali ham ushbu sessiyada nima bo'lganini ko'rishingiz mumkin.",
+    "activityLoadFailed": "Faoliyatni yuklab bo'lmadi. Ulanishingizni tekshiring va qaytadan urinib ko'ring.",
+    "levelUpChip": "Daraja {level}!",
+    "missingCourseOutline": "Ushbu kurs endi mavjud emas",
+    "missingCourseOutlineCta": "Ushbu kurs endi mavjud emas. Yangi kurs rejasini tanlang.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Kurs qo'shish sahifasini yopish",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

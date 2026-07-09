@@ -3656,7 +3656,6 @@
     "startNewSession": "ابدأ جلسة جديدة",
     "joinOpenSession": "انضم إلى جلسة مفتوحة",
     "activityNotFound": "النشاط غير موجود",
-    "levelUp": "ارتقِ للمستوى التالي",
     "myActivities": "أنشطتي",
     "openToJoin": "مفتوح للانضمام",
     "results": "النتائج",
@@ -9789,7 +9788,6 @@
     "enableNotificationsTitle": "لا تفوت أي محادثة!",
     "enableNotificationsDesc": "اسمح بالإشعارات لتطبيق Pangea Chat وابقَ على اتصال مع أصدقائك في اللغة!",
     "enableNotifications": "اسمح بالإشعارات",
-    "noActivitiesFound": "لا توجد أنشطة متاحة لهذا الموضوع.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9799,10 +9797,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10608,7 +10602,45 @@
         "type": "String",
         "placeholders": {}
     },
-    "etDisplayName": "إستوني",
+    "starsEarnedOfTotal": "{earned} من {total} نجوم مكتسبة",
+    "activityNoLongerSupported": "لم تعد هذه النشاط مدعومة. لقد تم تشغيلها على إصدار أقدم من الأنشطة. يمكنك مراجعة ما حدث في هذه الجلسة.",
+    "activityLoadFailed": "تعذر تحميل النشاط. تحقق من اتصالك وحاول مرة أخرى.",
+    "levelUpChip": "المستوى {level}!",
+    "missingCourseOutline": "لم يعد هذا المقرر متاحًا",
+    "missingCourseOutlineCta": "لم يعد هذا المقرر متاحًا. اختر خطة مقرر جديدة.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "إغلاق صفحة إضافة دورة",
+        "etDisplayName": "إستوني",
     "abDisplayName": "أبخازية",
     "elDisplayName": "يوناني",
     "@etDisplayName": {
@@ -10619,8 +10651,5 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    }
+    "@elDisplayName": {}
 }

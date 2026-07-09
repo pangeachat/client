@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityFinishedStatusMessage extends StatelessWidget {
@@ -28,10 +29,10 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final course = controller.room.courseParent;
     context.go(
       course != null
-          ? WorkspaceNav.openCourseFilter(
+          ? WorkspaceNav.openCourse(
               GoRouterState.of(context).uri,
               course.id,
-              tab: 'course',
+              tab: SpaceSettingsTabs.course,
             )
           : "/",
     );

@@ -3756,7 +3756,6 @@
     "startNewSession": "開始新會話",
     "joinOpenSession": "加入公開會話",
     "activityNotFound": "未找到活動",
-    "levelUp": "升級",
     "myActivities": "我的活動",
     "openToJoin": "開放加入",
     "results": "結果",
@@ -9579,7 +9578,6 @@
     "enableNotificationsTitle": "永遠不會錯過聊天！",
     "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
     "enableNotifications": "允許通知",
-    "noActivitiesFound": "此主題沒有可用的活動。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9589,10 +9587,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10409,7 +10403,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} 的 {total} 顆星",
+    "activityNoLongerSupported": "此活動運行於舊版本的活動，已不再支援。您仍然可以查看此會議中發生的事情。",
+    "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",
+    "levelUpChip": "升級到 {level} 級！",
+    "missingCourseOutline": "此課程不再可用",
+    "missingCourseOutlineCta": "此課程不再可用。請選擇一個新的課程計劃。",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "關閉新增課程頁面",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

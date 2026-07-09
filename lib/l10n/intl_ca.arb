@@ -3742,7 +3742,6 @@
     "startNewSession": "Inicia una nova sessió",
     "joinOpenSession": "Uneix-te a una sessió oberta",
     "activityNotFound": "Activitat no trobada",
-    "levelUp": "Puja de nivell",
     "myActivities": "Les meves activitats",
     "openToJoin": "Obert per unir-se",
     "results": "Resultats",
@@ -9600,7 +9599,6 @@
     "enableNotificationsTitle": "No et perdis cap xat!",
     "enableNotificationsDesc": "Permet notificacions per a Pangea Chat i mantingues't connectat amb els teus companys d'idioma!",
     "enableNotifications": "Permet notificacions",
-    "noActivitiesFound": "No hi ha activitats disponibles per a aquest tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9610,10 +9608,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10430,7 +10424,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} de {total} estrelles guanyades",
+    "activityNoLongerSupported": "Aquesta activitat es va realitzar en una versió anterior d'activitats i ja no es dóna suport. Encara pots revisar el que va passar en aquesta sessió.",
+    "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",
+    "levelUpChip": "Nivell {level}!",
+    "missingCourseOutline": "Aquest curs ja no està disponible",
+    "missingCourseOutlineCta": "Aquest curs ja no està disponible. Tria un nou pla de curs.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Tanca la pàgina d'afegir curs",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

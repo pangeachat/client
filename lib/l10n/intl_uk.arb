@@ -3901,7 +3901,6 @@
     "startNewSession": "Почати нову сесію",
     "joinOpenSession": "Приєднатися до відкритої сесії",
     "activityNotFound": "Активність не знайдено",
-    "levelUp": "Підвищити рівень",
     "myActivities": "Мої активності",
     "openToJoin": "Відкрити для приєднання",
     "results": "Результати",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "Ніколи не пропустіть чат!",
     "enableNotificationsDesc": "Дозвольте сповіщення для Pangea Chat і залишайтеся на зв'язку зі своїми мовними друзями!",
     "enableNotifications": "Дозволити сповіщення",
-    "noActivitiesFound": "Немає доступних активностей для цієї теми.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10279,7 +10273,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} з {total} зірок зароблено",
+    "activityNoLongerSupported": "Ця активність виконувалася на старішій версії активностей і більше не підтримується. Ви все ще можете переглянути, що сталося в цій сесії.",
+    "activityLoadFailed": "Не вдалося завантажити активність. Перевірте своє з'єднання та спробуйте ще раз.",
+    "levelUpChip": "Рівень {level}!",
+    "missingCourseOutline": "Цей курс більше недоступний",
+    "missingCourseOutlineCta": "Цей курс більше недоступний. Виберіть новий план курсу.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Закрити сторінку додавання курсу",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

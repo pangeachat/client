@@ -3775,7 +3775,6 @@
     "startNewSession": "شروع جلسه جدید",
     "joinOpenSession": "پیوستن به جلسه باز",
     "activityNotFound": "فعالیت یافت نشد",
-    "levelUp": "سطح بالا",
     "myActivities": "فعالیت‌های من",
     "openToJoin": "باز برای پیوستن",
     "results": "نتایج",
@@ -9561,7 +9560,6 @@
     "enableNotificationsTitle": "هرگز یک چت را از دست ندهید!",
     "enableNotificationsDesc": "اجازه دهید اعلان‌ها برای چت Pangea فعال شوند و با دوستان زبان خود در ارتباط باشید!",
     "enableNotifications": "اجازه دهید اعلان‌ها فعال شوند",
-    "noActivitiesFound": "هیچ فعالیتی برای این موضوع موجود نیست.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9571,10 +9569,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10391,7 +10385,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} از {total} ستاره کسب شده",
+    "activityNoLongerSupported": "این فعالیت در نسخه قدیمی‌تری از فعالیت‌ها اجرا شده و دیگر پشتیبانی نمی‌شود. شما هنوز می‌توانید آنچه در این جلسه اتفاق افتاده را مرور کنید.",
+    "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
+    "levelUpChip": "سطح {level}!",
+    "missingCourseOutline": "این دوره دیگر در دسترس نیست",
+    "missingCourseOutlineCta": "این دوره دیگر در دسترس نیست. یک برنامه دوره جدید انتخاب کنید.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "بستن صفحه افزودن دوره",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

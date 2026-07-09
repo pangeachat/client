@@ -3018,7 +3018,6 @@
     "startNewSession": "Komenci novan sesion",
     "joinOpenSession": "Aliĝi al malfermita sesio",
     "activityNotFound": "Aktiveco ne trovita",
-    "levelUp": "Niveligi",
     "myActivities": "Miaj aktivecoj",
     "openToJoin": "Malferma por aliĝi",
     "results": "Rezultoj",
@@ -10568,7 +10567,6 @@
     "enableNotificationsTitle": "Neniam maltrafu chaton!",
     "enableNotificationsDesc": "Permesu notifikojn por Pangea Chat kaj restu konektita kun viaj lingvaj amikoj!",
     "enableNotifications": "Permesu notifikojn",
-    "noActivitiesFound": "Neniuj aktivadoj disponeblas por ĉi tiu temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10578,10 +10576,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11398,7 +11392,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} el {total} steloj gajnitaj",
+    "activityNoLongerSupported": "Ĉi tiu aktiveco funkciis sur pli malnova versio de aktivadoj kaj ne plu estas subtenata. Vi ankoraŭ povas revizii kio okazis en ĉi tiu sesio.",
+    "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
+    "levelUpChip": "Nivelo {level}!",
+    "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
+    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fermi aldoni kurson paĝon",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

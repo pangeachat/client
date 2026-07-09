@@ -2056,7 +2056,6 @@
     "startNewSession": "ახალი სესიის დაწყება",
     "joinOpenSession": "შეერთება ღია სესიაში",
     "activityNotFound": "აქტივობა ვერ მოიძებნა",
-    "levelUp": "ჩამოწევა დონეზე",
     "myActivities": "ჩემი აქტივობები",
     "openToJoin": "ღია შეუერთებისთვის",
     "results": "შედეგები",
@@ -10517,7 +10516,6 @@
     "enableNotificationsTitle": "არასდროს გამოტოვოთ საუბარი!",
     "enableNotificationsDesc": "გთხოვთ, დაუშვათ შეტყობინებები Pangea Chat-ისთვის და დარჩეთ დაკავშირებული თქვენს ენასთან მეგობრებთან!",
     "enableNotifications": "დაუშვით შეტყობინებები",
-    "noActivitiesFound": "ამ თემისთვის არ არის ხელმისაწვდომი აქტივობები.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10527,10 +10525,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11347,7 +11341,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} ვარსკვლავი {total} ვარსკვლავიდან",
+    "activityNoLongerSupported": "ეს აქტივობა მიმდინარეობდა აქტივობების ძველ ვერსიაზე და აღარ არის მხარდაჭერილი. თქვენ შეგიძლიათ კვლავ შეისწავლოთ, რა მოხდა ამ სესიაში.",
+    "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
+    "levelUpChip": "დონის {level}!",
+    "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
+    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "დახურეთ კურსის დამატების გვერდი",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

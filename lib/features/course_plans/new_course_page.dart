@@ -14,20 +14,19 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class NewCoursePage extends StatefulWidget {
   final String route;
@@ -201,15 +200,25 @@ class NewCoursePageState extends State<NewCoursePage> {
       context,
     ).client.getRoomByCourseId(course.uuid);
 
-    if (existingRoom == null || widget.spaceId != null) {
+    final spaceId = widget.spaceId;
+    if (spaceId != null) {
       context.go(
-        widget.spaceId != null
-            ? '/courses/${shortRoomId(widget.spaceId!)}/addcourse/${course.uuid}'
-            // world_v2: the standalone-create path is the Completer-carrying
-            // `/courses/own/:id` flow, not `widget.route` (always 'rooms', which
-            // produced the broken `/rooms/course/own/...`). See
-            // routing.instructions.md.
-            : '/courses/own/${course.uuid}',
+        WorkspaceNav.openCoursePage(
+          GoRouterState.of(context).uri,
+          'addcourse',
+          courseId: course.uuid,
+        ),
+      );
+      return;
+    }
+
+    if (existingRoom == null) {
+      context.go(
+        WorkspaceNav.openAddCoursePage(
+          GoRouterState.of(context).uri,
+          AddCourseSubpageEnum.own,
+          courseId: course.uuid,
+        ),
       );
       return;
     }
@@ -250,16 +259,19 @@ class NewCoursePageState extends State<NewCoursePage> {
     );
 
     if (action == 0) {
-      // world_v2: this branch is only reached when existingRoom != null AND
-      // widget.spaceId == null (see the guard above), so it's always the
-      // Completer-carrying own-course path, never the addcourse push.
-      context.go('/courses/own/${course.uuid}');
+      context.go(
+        WorkspaceNav.openAddCoursePage(
+          GoRouterState.of(context).uri,
+          AddCourseSubpageEnum.own,
+          courseId: course.uuid,
+        ),
+      );
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
         // course panel), not the legacy /rooms/spaces path.
         context.go(
-          WorkspaceNav.openCourseFilter(
+          WorkspaceNav.openCourse(
             GoRouterState.of(context).uri,
             existingRoom.id,
           ),
@@ -299,7 +311,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                 onPressed: () => context.go(
                   WorkspaceNav.setSection(
                     GoRouterState.of(context).uri,
-                    const PanelToken('addcourse'),
+                    const AddCoursePanelToken(),
                     keepRoom: false,
                   ),
                 ),
@@ -444,70 +456,9 @@ class NewCoursePageState extends State<NewCoursePage> {
                           // Tapping the card scopes the map to this plan's
                           // activities (world_v2); the Create button starts
                           // the course.
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4.0,
-                              ),
-                              child: InkWell(
-                                onTap: () => _onSelect(course),
-                                borderRadius: BorderRadius.circular(12.0),
-                                child: Container(
-                                  padding: const EdgeInsets.all(12.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    border: Border.all(
-                                      color: theme.colorScheme.primary,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    spacing: 12.0,
-                                    children: [
-                                      SizedBox(
-                                        width: 48.0,
-                                        height: 48.0,
-                                        child: ImageByUrl(
-                                          imageUrl: course.imageUrl,
-                                          width: 48.0,
-                                          borderRadius: BorderRadius.circular(
-                                            10.0,
-                                          ),
-                                          replacement: Avatar(
-                                            name: course.title,
-                                            borderRadius: BorderRadius.circular(
-                                              10.0,
-                                            ),
-                                            size: 48.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          spacing: 6.0,
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              course.title,
-                                              style: theme.textTheme.bodyLarge,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            CourseInfoChips(
-                                              course.uuid,
-                                              iconSize: 12.0,
-                                              fontSize: 12.0,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                          return AddCourseTile(
+                            coursePlan: course,
+                            onTap: () => _onSelect(course),
                           );
                         },
                       ),

@@ -41,6 +41,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
@@ -63,7 +64,6 @@ import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
-import 'package:fluffychat/routes/chat/chat_banner_controller.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_star_animation.dart';
@@ -97,7 +97,6 @@ import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_fee
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/growth_animation.dart';
-import 'package:fluffychat/routes/chat/level_up_banner.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -235,7 +234,6 @@ class ChatController extends State<ChatPageWithRoom>
   late Choreographer choreographer;
   late GoRouter _router;
 
-  StreamSubscription? _levelSubscription;
   StreamSubscription? _constructsSubscription;
   StreamSubscription? _tokensSubscription;
 
@@ -258,7 +256,6 @@ class ChatController extends State<ChatPageWithRoom>
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
   late final TutorialOverlayController tutorialOverlayController;
-  late final ChatBannerController _bannerController;
   late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
@@ -596,36 +593,10 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   // #Pangea
-  void _onLevelUp(LevelUpdate update) {
-    if (!pangeaController.subscriptionController.showSubscriptionGatedContent) {
-      return;
-    }
-
-    final overlayKey = "level_up_notification";
-    _bannerController.addBanner((Completer<void> completer) {
-      final success = OverlayUtil.showOverlay(
-        context: context,
-        child: LevelUpBanner(
-          level: update.newLevel,
-          prevLevel: update.prevLevel,
-          closeCompleter: completer,
-          overlayKey: overlayKey,
-        ),
-        displayDetails: TopOverlayDisplayDetails(
-          overlayKey: overlayKey,
-          backDropToDismiss: false,
-          closePrevOverlay: false,
-          canPop: false,
-          rootOverlay: kIsWeb,
-        ),
-      );
-
-      if (!success) {
-        completer.complete();
-      }
-    }, overlayKey: overlayKey);
-  }
-
+  // The level-up top-down snackbar is gone (#7432): level-ups now celebrate
+  // at the level badge itself via [LevelUpBadgeCelebration], which the badge
+  // surfaces (world cluster, analytics bar, chat app-bar avatar) subscribe to
+  // the same `levelUpdateStream` this page used to consume.
   void _onUnlockConstructs(UnlockedConstructsUpdate update) {
     final constructs = update.constructs;
     final targetId = update.targetId;
@@ -872,12 +843,19 @@ class ChatController extends State<ChatPageWithRoom>
   /// retire once that migration completes. See `panel_focus.dart`.
   bool get isFocused {
     final focused = PanelFocusController.instance.focusedLeftToken;
-    if (focused != null) {
-      final focusedRoomId = PanelToken.parse(focused)?.param?.split('/').first;
-      return focusedRoomId != null &&
-          shortRoomId(focusedRoomId) == shortRoomId(room.id);
+    final fallback = _router.state.path == ':roomid';
+    if (focused == null) {
+      return fallback;
     }
-    return _router.state.path == ':roomid';
+
+    try {
+      final panel = PanelToken.parse(focused);
+      final param = panel?.param;
+      if (param is! RoomTokenParam) return false;
+      return shortRoomId(param.id) == shortRoomId(room.id);
+    } catch (e) {
+      return fallback;
+    }
   }
 
   bool get _canLaunchTutorialSequence {
@@ -910,11 +888,6 @@ class ChatController extends State<ChatPageWithRoom>
       choreographer: choreographer,
       onFeedbackSubmitted: onWritingAssistanceFeedback,
     );
-
-    _bannerController = ChatBannerController();
-
-    _levelSubscription?.cancel();
-    _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
 
     _constructsSubscription?.cancel();
     _constructsSubscription = updater.unlockedConstructsStream.stream.listen(
@@ -1289,12 +1262,10 @@ class ChatController extends State<ChatPageWithRoom>
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
-    _levelSubscription?.cancel();
     _constructsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
-    _bannerController.dispose();
     PanelFocusController.instance.removeListener(_onFocusChanged);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();

@@ -3263,7 +3263,6 @@
     "startNewSession": "Începe o sesiune nouă",
     "joinOpenSession": "Participă la sesiune deschisă",
     "activityNotFound": "Activitate negăsită",
-    "levelUp": "Nivel superior",
     "myActivities": "Activitățile mele",
     "openToJoin": "Deschis pentru participare",
     "results": "Rezultate",
@@ -10274,7 +10273,6 @@
     "enableNotificationsTitle": "Nu rata niciun chat!",
     "enableNotificationsDesc": "Permite notificările pentru Pangea Chat și rămâi conectat cu prietenii tăi de limbă!",
     "enableNotifications": "Permite notificările",
-    "noActivitiesFound": "Nu sunt disponibile activități pentru acest subiect.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10284,10 +10282,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11104,7 +11098,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} din {total} stele câștigate",
+    "activityNoLongerSupported": "Această activitate a rulat pe o versiune mai veche a activităților și nu mai este suportată. Poți să revizuiești ce s-a întâmplat în această sesiune.",
+    "activityLoadFailed": "Nu s-a putut încărca activitatea. Verifică-ți conexiunea și încearcă din nou.",
+    "levelUpChip": "Nivel {level}!",
+    "missingCourseOutline": "Acest curs nu mai este disponibil",
+    "missingCourseOutlineCta": "Acest curs nu mai este disponibil. Alege un nou plan de curs.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Închide pagina de adăugare a cursului",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

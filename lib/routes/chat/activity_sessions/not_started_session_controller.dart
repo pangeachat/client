@@ -16,6 +16,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -221,10 +222,10 @@ class NotStartedSessionController extends State<NotStartedSession>
     // world_v2: token nav to the course card's course-plan tab (no stacked
     // route push). See routing.instructions.md.
     context.go(
-      WorkspaceNav.openCourseFilter(
+      WorkspaceNav.openCourse(
         GoRouterState.of(context).uri,
         course.id,
-        tab: 'course',
+        tab: SpaceSettingsTabs.course,
       ),
     );
   }

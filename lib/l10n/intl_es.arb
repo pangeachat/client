@@ -4441,7 +4441,6 @@
     "startNewSession": "Iniciar nueva sesión",
     "joinOpenSession": "Unirse a sesión abierta",
     "activityNotFound": "Actividad no encontrada",
-    "levelUp": "Subir de nivel",
     "myActivities": "Mis actividades",
     "openToJoin": "Abierto para unirse",
     "results": "Resultados",
@@ -7543,7 +7542,6 @@
     "enableNotificationsTitle": "¡Nunca te pierdas un chat!",
     "enableNotificationsDesc": "¡Permite las notificaciones para Pangea Chat y mantente conectado con tus amigos de idiomas!",
     "enableNotifications": "Permitir notificaciones",
-    "noActivitiesFound": "No hay actividades disponibles para este tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -7553,10 +7551,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8373,7 +8367,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} de {total} estrellas ganadas",
+    "activityNoLongerSupported": "Esta actividad se realizó en una versión anterior de actividades y ya no es compatible. Aún puedes revisar lo que sucedió en esta sesión.",
+    "activityLoadFailed": "No se pudo cargar la actividad. Verifica tu conexión y vuelve a intentarlo.",
+    "levelUpChip": "¡Nivel {level}!",
+    "missingCourseOutline": "Este curso ya no está disponible",
+    "missingCourseOutlineCta": "Este curso ya no está disponible. Elige un nuevo plan de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Cerrar la página de agregar curso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

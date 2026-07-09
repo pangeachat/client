@@ -3871,7 +3871,6 @@
     "startNewSession": "Aloita uusi istunto",
     "joinOpenSession": "Liity avoimeen istuntoon",
     "activityNotFound": "Toimintoa ei löytynyt",
-    "levelUp": "Taso nousee",
     "myActivities": "Omat aktiviteetit",
     "openToJoin": "Avoin liittyä",
     "results": "Tulokset",
@@ -9498,7 +9497,6 @@
     "enableNotificationsTitle": "Älä koskaan jää ilman keskustelua!",
     "enableNotificationsDesc": "Salli ilmoitukset Pangea Chatista ja pysy yhteydessä kielikavereihisi!",
     "enableNotifications": "Salli ilmoitukset",
-    "noActivitiesFound": "Tälle aiheelle ei ole saatavilla aktiviteetteja.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9508,10 +9506,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10328,7 +10322,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} {total} tähteä ansaittu",
+    "activityNoLongerSupported": "Tätä toimintoa ei enää tueta, koska se toimi vanhemmassa versiossa. Voit silti tarkastella, mitä tässä istunnossa tapahtui.",
+    "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
+    "levelUpChip": "Taso {level}!",
+    "missingCourseOutline": "Tämä kurssi ei ole enää saatavilla",
+    "missingCourseOutlineCta": "Tämä kurssi ei ole enää saatavilla. Valitse uusi kurssisuunnitelma.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sulje kurssin lisäämis sivu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

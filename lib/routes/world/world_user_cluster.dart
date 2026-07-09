@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,14 +8,15 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -42,9 +45,26 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
+  /// The level-up celebration signal for the medal — the same
+  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
+  /// with the snackbar's subscription gate applied at event time. Created
+  /// once so rebuilds don't churn the celebration's subscription.
+  Stream<LevelUpdate>? _levelUpdates;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _levelUpdates ??= Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .levelUpdateStream
+        .stream
+        .where(
+          (_) => MatrixState
+              .pangeaController
+              .subscriptionController
+              .showSubscriptionGatedContent,
+        );
     if (_profileLoaded) return;
     _profileLoaded = true;
     _loadProfile();
@@ -73,9 +93,10 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
   /// panels). `setRight` replaces the whole right list, so switching trackers
   /// lands on the new tab's summary and drops any open construct detail.
   void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      PanelToken('analytics', tab.name),
-    ]),
+    WorkspaceNav.openAnalytics(
+      GoRouterState.of(context).uri,
+      subpage: tab.indicator,
+    ),
   );
 
   /// Open the profile + settings panel on the right (its menu), keeping any
@@ -85,9 +106,10 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 
   /// The level medal opens the level analytics tab on the right.
   void _openLevel() => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      const PanelToken('analytics', 'level'),
-    ]),
+    WorkspaceNav.openAnalytics(
+      GoRouterState.of(context).uri,
+      subpage: ProgressIndicatorEnum.level,
+    ),
   );
 
   /// The L2 flag opens the learning settings page on the right directly.
@@ -120,6 +142,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
                 onTap: _openAnalytics,
                 onLevelTap: _openLevel,
                 l2: l2,
+                levelUpdates: _levelUpdates,
               ),
               if (l2 != null)
                 Padding(
@@ -140,7 +163,7 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
 /// The circular user avatar at the top of the cluster. Opens profile/settings.
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
 /// the mobile single-column rendering of this same cluster
-/// (routing.instructions.md, "Single-column analytics bar") — can reuse it
+/// (routing.instructions.md, "Single-column analytics nav bar") — can reuse it
 /// verbatim (including at the collapsed bar's smaller size) rather than
 /// duplicating the avatar + tooltip + semantics wiring. This is the one
 /// mechanical visibility change made to this file for that reuse; no behavior
@@ -204,10 +227,15 @@ class _PowerupsPill extends StatelessWidget {
   final VoidCallback onLevelTap;
   final LanguageModel? l2;
 
+  /// Level-change signal for the medal's celebration; see
+  /// [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
+
   const _PowerupsPill({
     required this.onTap,
     required this.onLevelTap,
     required this.l2,
+    required this.levelUpdates,
   });
 
   static const double _xpStroke = 5.0;
@@ -237,6 +265,9 @@ class _PowerupsPill extends StatelessWidget {
 
             return Stack(
               alignment: Alignment.bottomCenter,
+              // The medal's level-up celebration paints just outside the
+              // pill's bounds (badge pulse + chip); don't clip it.
+              clipBehavior: Clip.none,
               children: [
                 // The pill's frame IS the XP ring: a gray track that fills gold clockwise
                 // from the bottom-center (where the level medal sits) toward the next
@@ -312,7 +343,10 @@ class _PowerupsPill extends StatelessWidget {
                   bottom: 0,
                   child: Material(
                     type: MaterialType.transparency,
-                    child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: levelUpdates,
+                      child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                    ),
                   ),
                 ),
               ],
@@ -342,10 +376,19 @@ class ClusterTrackerButton extends StatelessWidget {
   final int count;
   final VoidCallback onTap;
 
+  /// Sizing knobs so the narrow analytics bar can render the compact variant
+  /// (the Figma mobile pill); web keeps these defaults.
+  final double horizontalPadding;
+  final double iconSize;
+  final double fontSize;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
     required this.onTap,
+    this.horizontalPadding = 16,
+    this.iconSize = 24,
+    this.fontSize = 16,
     super.key,
   });
 
@@ -365,16 +408,19 @@ class ClusterTrackerButton extends StatelessWidget {
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+              vertical: 9,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(indicator.icon, size: 24),
+                Icon(indicator.icon, size: iconSize),
                 const SizedBox(height: 3),
                 Text(
                   '$count',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: fontSize,
                     height: 1.1,
                     fontWeight: FontWeight.w600,
                   ),
@@ -473,7 +519,7 @@ class ClusterLevelMedal extends StatelessWidget {
 ///
 /// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
 /// can reuse it at the "slightly smaller than web" size the mobile chrome
-/// calls for (routing.instructions.md, "Single-column analytics bar") without
+/// calls for (routing.instructions.md, "Single-column analytics nav bar") without
 /// duplicating the flag/outline/tooltip logic.
 class ClusterLanguageFlag extends StatelessWidget {
   final LanguageModel language;

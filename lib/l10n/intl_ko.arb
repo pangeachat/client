@@ -3720,7 +3720,6 @@
     "startNewSession": "새 세션 시작",
     "joinOpenSession": "열린 세션에 참여하기",
     "activityNotFound": "활동을 찾을 수 없습니다",
-    "levelUp": "레벨 업",
     "myActivities": "내 활동",
     "openToJoin": "참여 가능",
     "results": "결과",
@@ -9666,7 +9665,6 @@
     "enableNotificationsTitle": "채팅을 놓치지 마세요!",
     "enableNotificationsDesc": "Pangea Chat의 알림을 허용하고 언어 친구들과 연결 상태를 유지하세요!",
     "enableNotifications": "알림 허용",
-    "noActivitiesFound": "이 주제에 대한 활동이 없습니다.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9676,10 +9674,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10496,7 +10490,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} 중 {total}개의 별을 획득했습니다",
+    "activityNoLongerSupported": "이 활동은 이전 버전의 활동에서 실행되었으며 더 이상 지원되지 않습니다. 이 세션에서 발생한 내용을 여전히 검토할 수 있습니다.",
+    "activityLoadFailed": "활동을 로드할 수 없습니다. 연결을 확인하고 다시 시도하세요.",
+    "levelUpChip": "레벨 {level}!",
+    "missingCourseOutline": "이 과정은 더 이상 제공되지 않습니다",
+    "missingCourseOutlineCta": "이 과정은 더 이상 제공되지 않습니다. 새로운 과정 계획을 선택하세요.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "강좌 추가 페이지 닫기",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

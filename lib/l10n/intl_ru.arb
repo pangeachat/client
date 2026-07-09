@@ -4549,7 +4549,6 @@
     "joinOpenSession": "Присоединиться к открытому сеансу",
     "less": "меньше",
     "activityNotFound": "Активность не найдена",
-    "levelUp": "Повысить уровень",
     "myActivities": "Мои активности",
     "openToJoin": "Открыто для присоединения",
     "results": "Результаты",
@@ -10463,7 +10462,6 @@
     "enableNotificationsTitle": "Никогда не пропустите чат!",
     "enableNotificationsDesc": "Разрешите уведомления для Pangea Chat и оставайтесь на связи с вашими языковыми друзьями!",
     "enableNotifications": "Разрешить уведомления",
-    "noActivitiesFound": "Нет доступных мероприятий по этой теме.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10473,10 +10471,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11293,7 +11287,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} из {total} звезд заработано",
+    "activityNoLongerSupported": "Это действие выполнялось в более старой версии действий и больше не поддерживается. Вы все еще можете просмотреть, что произошло в этой сессии.",
+    "activityLoadFailed": "Не удалось загрузить действие. Проверьте ваше соединение и попробуйте снова.",
+    "levelUpChip": "Уровень {level}!",
+    "missingCourseOutline": "Этот курс больше недоступен",
+    "missingCourseOutlineCta": "Этот курс больше недоступен. Выберите новый план курса.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Закрыть страницу добавления курса",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

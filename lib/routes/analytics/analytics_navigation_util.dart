@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -24,7 +23,11 @@ class AnalyticsNavigationUtil {
     // routing.instructions.md.
     final uri = GoRouterState.of(context).uri;
     final panelOpen = parseOpenPanels(uri).right.any(
-      (t) => const {'analytics', 'vocab', 'grammar'}.contains(t.type),
+      (t) => const {
+        PanelTypesEnum.analytics,
+        PanelTypesEnum.vocab,
+        PanelTypesEnum.grammar,
+      }.contains(t.type),
     );
 
     // A completed activity session is a real (locked) chat whose summary is
@@ -34,22 +37,9 @@ class AnalyticsNavigationUtil {
     // construct detail (one detail at a time across columns). See
     // routing.instructions.md.
     if (view == ProgressIndicatorEnum.activities && activityRoomId != null) {
-      context.go(
-        WorkspaceNav.openExclusiveSession(
-          uri,
-          PanelToken('session', shortRoomId(activityRoomId)),
-        ),
-      );
+      context.go(WorkspaceNav.openExclusiveSession(uri, activityRoomId));
       return;
     }
-
-    // The summary tab this metric belongs to.
-    final tab = switch (view) {
-      ProgressIndicatorEnum.activities => 'sessions',
-      ProgressIndicatorEnum.morphsUsed => 'grammar',
-      ProgressIndicatorEnum.level => 'level',
-      _ => 'vocab',
-    };
 
     // A vocab/grammar construct blooms a detail card to the LEFT of its summary.
     // `openConstructDetail` is the single detail slot: it replaces any open
@@ -61,17 +51,19 @@ class AnalyticsNavigationUtil {
           ProgressIndicatorEnum.wordsUsed,
           ProgressIndicatorEnum.morphsUsed,
         }.contains(view)) {
-      final detail = PanelToken(
-        view == ProgressIndicatorEnum.wordsUsed ? 'vocab' : 'grammar',
-        construct.toTokenParam(),
+      context.go(
+        WorkspaceNav.openConstructDetail(
+          uri,
+          view!.constructType,
+          constructId: construct,
+        ),
       );
-      context.go(WorkspaceNav.openConstructDetail(uri, detail, tab));
       return;
     }
 
     // A metric tap with no construct opens its summary from a cold start; when a
     // panel is already docked it is a no-op (the cross-metric header is hidden).
     if (panelOpen) return;
-    context.go(WorkspaceNav.setRight(uri, [PanelToken('analytics', tab)]));
+    context.go(WorkspaceNav.openAnalytics(uri, subpage: view));
   }
 }

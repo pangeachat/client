@@ -3778,7 +3778,6 @@
     "startNewSession": "Rozpocznij nową sesję",
     "joinOpenSession": "Dołącz do otwartej sesji",
     "activityNotFound": "Nie znaleziono aktywności",
-    "levelUp": "Awansuj poziom",
     "myActivities": "Moje aktywności",
     "openToJoin": "Otwarte do dołączenia",
     "results": "Wyniki",
@@ -9558,7 +9557,6 @@
     "enableNotificationsTitle": "Nigdy nie przegap czatu!",
     "enableNotificationsDesc": "Zezwól na powiadomienia dla Pangea Chat i pozostań w kontakcie ze swoimi językowymi przyjaciółmi!",
     "enableNotifications": "Zezwól na powiadomienia",
-    "noActivitiesFound": "Brak dostępnych aktywności dla tego tematu.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9568,10 +9566,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10388,7 +10382,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} z {total} zdobytych gwiazdek",
+    "activityNoLongerSupported": "Ta aktywność działała na starszej wersji aktywności i nie jest już wspierana. Możesz nadal przeglądać, co się wydarzyło w tej sesji.",
+    "activityLoadFailed": "Nie można załadować aktywności. Sprawdź swoje połączenie i spróbuj ponownie.",
+    "levelUpChip": "Poziom {level}!",
+    "missingCourseOutline": "Ten kurs nie jest już dostępny",
+    "missingCourseOutlineCta": "Ten kurs nie jest już dostępny. Wybierz nowy plan kursu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zamknij stronę dodawania kursu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

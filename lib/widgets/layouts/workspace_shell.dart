@@ -11,9 +11,13 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -95,26 +99,27 @@ final List<String> _paneRecency = <String>[];
 /// navigation from stealing focus and evicting the other column's popup.
 String _recencyKey(PanelToken token) {
   // Walk to the navigation-tree root so a detail inherits its master's slot.
-  var def = PanelRegistry.defFor(token.type);
+  var def = token.type.def;
   var rootType = token.type;
   // Bounded by the registry depth (two generations today); guard against a
   // malformed cyclic/self parent just in case.
-  final seen = <String>{rootType};
-  while (def?.parent != null && seen.add(def!.parent!)) {
+  final seen = <PanelTypesEnum>{rootType};
+  while (def.parent != null && seen.add(def.parent!)) {
     rootType = def.parent!;
-    def = PanelRegistry.defFor(rootType);
+    def = rootType.def;
   }
   // A room/session instance is its bare room id; the rest is a pushed sub-page.
   // A `room` keeps its OWN type as the root (its parent `chats` is the list, a
   // separate panel), so this branch is reached with the original type.
-  if (token.type == 'room' || token.type == 'session') {
-    final bareId = (token.param ?? '').split('/').first;
-    return '${token.type}:$bareId';
+  final type = token.type;
+  final param = token.param;
+  if (type.isRoomPanel && param is RoomTokenParam) {
+    return '${type.name}:${param.id}';
   }
   // Every other family (settings/analytics/course/chats/addcourse/practice/
   // review) is a singleton per column: key on the root type, so paging or
   // tab-switching within it reuses the one slot.
-  return rootType;
+  return rootType.name;
 }
 
 /// Sync the back-stack [recency] against the currently open [allTokens] (merged
@@ -153,9 +158,7 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
   ];
   if (matches.isEmpty) return null;
   return matches.firstWhere(
-    (i) => !allTokens.any(
-      (t) => PanelRegistry.defFor(t.type)?.parent == allTokens[i].type,
-    ),
+    (i) => !allTokens.any((t) => t.type.def.parent == allTokens[i].type),
     orElse: () => matches.last,
   );
 }
@@ -345,25 +348,24 @@ class WorkspaceShell extends StatelessWidget {
 
             /// The right column's entry point. In column mode: the persistent
             /// top-right vertical cluster, in the gutter the allocator reserves.
-            /// On narrow: the horizontal ANALYTICS BAR pinned to the top safe
-            /// area — persistent (never gated away), collapsing to the avatar
-            /// circle under a focused full-screen left surface. See
-            /// `routing.instructions.md` → Single-column analytics bar.
+            /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
+            /// safe area — full form only, on the surfaces where it IS
+            /// navigation (the map/cavity ground and the right panels it
+            /// heads). A full-screen chat hosts the avatar in its own app bar
+            /// instead, and a route-driven detail page shows nothing. See
+            /// `routing.instructions.md` → Single-column analytics nav bar.
             if (l.isColumnMode && l.mapVisible && l.allocation.clusterVisible)
               Positioned(
                 top: _ShellLayout.chromeMargin + screenPadding.top,
                 right: _ShellLayout.chromeMargin + screenPadding.right,
                 child: WorldUserCluster(key: _userClusterKey),
               )
-            else if (!l.isColumnMode && l.navRail)
+            else if (l.analyticsBarVisible)
               Positioned(
                 top: _ShellLayout.chromeMargin + screenPadding.top,
                 left: _ShellLayout.chromeMargin + screenPadding.left,
                 right: _ShellLayout.chromeMargin + screenPadding.right,
-                child: WorldAnalyticsBar(
-                  key: _userClusterKey,
-                  collapsed: l.analyticsBarCollapsed,
-                ),
+                child: WorldAnalyticsBar(key: _userClusterKey),
               ),
           ],
         ),
@@ -387,6 +389,11 @@ class _MobileNavLayer extends StatefulWidget {
 }
 
 class _MobileNavLayerState extends State<_MobileNavLayer> {
+  /// Fit-height estimate inputs for the chats sheet: the cavity handle + the
+  /// panel header row, and one two-line ChatListItem per visible chat.
+  static const double _chatsSheetHeaderAllowance = 96.0;
+  static const double _chatsSheetRowEstimate = 76.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -425,20 +432,17 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           );
 
     // The cavity: the focused section surface hosted bare (the widget is the
-    // card). A course keys its height memory by the space id (#7332), an
-    // activity by its own id; the sections key by name so their memory is
-    // their own. An ACTIVITY opens at half with no cavity header — the plan
-    // page carries its own close/back affordance (#7115), so the cavity adds
-    // only the handle.
+    // card; the surface brings its own header/close). A course keys its height
+    // memory by the space id (#7332), an activity by its own id; the sections
+    // key by name so their memory is their own.
     final cavityToken = layout.cavityIndex == null
         ? null
         : layout.leftTokens[layout.cavityIndex!];
     final isCourseCavity =
-        cavityToken?.type == 'course' || cavityToken?.type == 'coursepage';
-    final isActivityCavity = cavityToken?.type == 'activity';
-    final cavityCourse = isCourseCavity && activeSpaceId != null
-        ? client.getRoomById(activeSpaceId)
-        : null;
+        cavityToken?.type == PanelTypesEnum.course ||
+        cavityToken?.type == PanelTypesEnum.coursepage;
+    final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
+    final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. This PR wires the MAP
@@ -453,7 +457,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     }
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    final searchBar = cavityToken == null && mapController != null
+    // The bar shows over the bare map AND over map-content cavities (the
+    // course card, the activity plan — the map is still the ground behind
+    // them, per the Figma course frame's minimized icon); section cavities
+    // (chats, the hub) re-target it in the follow-up and mount nothing yet.
+    final mapIsGround =
+        cavityToken == null || isCourseCavity || isActivityCavity;
+    final searchBar = mapIsGround && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
@@ -463,24 +473,61 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           )
         : null;
 
-    // Full height: the widget grows until the search bar riding above it sits
-    // immediately below the analytics bar (routing.instructions.md). Reserve the
-    // top safe area, the analytics bar, the search-bar allowance, and margins.
-    final reservedTop =
+    // Full height: the widget grows until whatever rides above it sits
+    // immediately below the analytics bar (routing.instructions.md).
+    // [MobileNavWidget.maxHeightFraction] caps the CAVITY only — the rail row
+    // and any search bar stack around it inside the same box — so the
+    // reservation must count everything else in the vertical chain explicitly:
+    // top safe area + analytics bar (margin + real height) + the search-bar
+    // allowance ONLY when a search bar actually rides the widget + rail row +
+    // bottom margin + bottom safe area + one margin of breathing room below
+    // the bar. Omitting the rail row here previously let a fully-expanded
+    // widget push the search bar under the analytics bar.
+    final reserved =
         screenPadding.top +
         _ShellLayout.analyticsBarAllowance +
-        _ShellLayout.searchBarAllowance +
+        (searchBar != null ? _ShellLayout.searchBarAllowance : 0.0) +
+        MobileNavWidget.railRowHeight +
+        screenPadding.bottom +
         _ShellLayout.chromeMargin * 2;
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
-        : ((screenHeight - reservedTop - _ShellLayout.chromeMargin) /
-                  screenHeight)
-              .clamp(0.3, 0.95);
+        : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
 
-    return Positioned(
-      left: _ShellLayout.chromeMargin + screenPadding.left,
-      right: _ShellLayout.chromeMargin + screenPadding.right,
-      bottom: _ShellLayout.chromeMargin,
+    // The chats sheet opens showing ALL its chats when they fit: header +
+    // one row per visible chat, capped by maxHeightFraction (the height below
+    // the analytics bar). Row height is an estimate (a two-line ChatListItem);
+    // a slight overshoot only adds breathing room, and the cap absorbs long
+    // lists. Uses the same visibility predicate as the list's all-chats
+    // filter so the estimate counts what actually renders.
+    double? preferredCavityHeight;
+    if (cavityToken?.type == PanelTypesEnum.chats) {
+      final visibleChats = Matrix.of(context).client.rooms
+          .where((room) => !room.isHiddenRoom && !room.isSpace)
+          .length;
+      preferredCavityHeight =
+          _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
+    }
+
+    String? cavityKey;
+    if (cavityToken != null) {
+      final param = cavityToken.param;
+      if (isCourseCavity) {
+        cavityKey = activeSpaceId ?? cavityToken.type.name;
+      } else if (isActivityCavity) {
+        cavityKey = param is ActivityTokenParam
+            ? param.activityId
+            : cavityToken.type.name;
+      } else {
+        cavityKey = cavityToken.type.name;
+      }
+    }
+
+    // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
+    // its own box, and its tap-outside barrier must span the whole screen so a
+    // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
+    // the barrier to the widget's own bounds).
+    return Positioned.fill(
       child: MobileNavWidget(
         activeSection: sectionFor(uri),
         courseShortcutIcon: shortcutCourse != null
@@ -496,17 +543,26 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         courseShortcutLabel: shortcutCourse != null
             ? shortcutCourse.getLocalizedDisplayname(MatrixLocals(l10n))
             : l10n.addCourse,
+        courseShortcutSelected:
+            shortcutCourse != null && shortcutCourse.id == activeSpaceId,
+        // Rail navigations clear the right list: on one column a section and
+        // a right panel are peers in the same slot, so opening a section must
+        // close an open analytics/settings panel instead of leaving it stale
+        // behind the sheet (routing.instructions.md → Single-column bottom
+        // nav; the mirror of the analytics bar's closeSections).
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
               ? WorkspaceNav.openCourseSection(
                   uri,
                   shortcutCourse.id,
                   keepRoom: false,
+                  clearRight: true,
                 )
               : WorkspaceNav.setSection(
                   uri,
-                  const PanelToken('addcourse'),
+                  const AddCoursePanelToken(),
                   keepRoom: false,
+                  clearRight: true,
                 ),
         ),
         onSectionTap: (section) => context.go(switch (section) {
@@ -514,18 +570,27 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           AppSection.world => WorkspaceNav.clearAll(),
           AppSection.chats => WorkspaceNav.setSection(
             uri,
-            const PanelToken('chats'),
+            const ChatsPanelToken(),
             keepRoom: false,
+            clearRight: true,
           ),
           AppSection.courses => WorkspaceNav.setSection(
             uri,
-            const PanelToken('addcourse'),
+            const AddCoursePanelToken(),
             keepRoom: false,
+            clearRight: true,
           ),
           // The rail only emits the three sections above; any other AppSection
           // value falls back to home.
           _ => WorkspaceNav.clearAll(),
         }),
+        cavitySection: cavitySection,
+        // The shortcut hosts the cavity when the hosted course sheet IS the
+        // shortcut's course (course cavities key by their space id).
+        courseShortcutHostsCavity:
+            isCourseCavity &&
+            shortcutCourse != null &&
+            shortcutCourse.id == activeSpaceId,
         cavityChild: cavityToken == null
             ? null
             : WorkspaceLeftPanel(
@@ -533,35 +598,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 currentUri: uri,
                 bare: true,
               ),
-        cavityKey: cavityToken == null
-            ? null
-            : isCourseCavity
-            ? (activeSpaceId ?? cavityToken.param ?? cavityToken.type)
-            : isActivityCavity
-            ? (cavityToken.param ?? cavityToken.type)
-            : cavityToken.type,
+        cavityKey: cavityKey,
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
-        // The activity plan carries its own header and close/back affordance
-        // (#7115), so its cavity adds only the drag handle.
-        cavityTitle: cavityToken == null || isActivityCavity
-            ? null
-            : isCourseCavity
-            ? cavityCourse?.getLocalizedDisplayname(MatrixLocals(l10n))
-            : cavityToken.type == 'chats'
-            ? l10n.allChats
-            : l10n.courses,
-        onCavityClose: cavityToken == null || isActivityCavity
-            ? null
-            : () => context.go(
-                WorkspaceNav.closeLeft(
-                  GoRouter.of(context).routeInformationProvider.value.uri,
-                  cavityToken,
-                ),
-              ),
         maxHeightFraction: maxHeightFraction,
+        preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
       ),
     );
@@ -589,9 +632,13 @@ class _ShellLayout {
   /// top-right cluster), so they inset from the viewport identically.
   static const double chromeMargin = 12.0;
 
-  /// Height reserved for the narrow analytics bar when placing panels below it
-  /// (the bar content plus breathing room).
-  static const double analyticsBarAllowance = 64.0;
+  /// Height reserved for the narrow analytics bar when placing content below
+  /// it: the bar's top margin ([chromeMargin]) plus its real rendered height
+  /// ([WorldAnalyticsBar.expandedHeight]). Derived, not guessed — an earlier
+  /// hand-picked 64 under-measured the 90px bar, so right panels' close
+  /// controls rendered under the avatar column.
+  static const double analyticsBarAllowance =
+      chromeMargin + WorldAnalyticsBar.expandedHeight;
 
   /// Height reserved for the floating search bar riding above the nav widget —
   /// the widget's full-height bound stops the SEARCH BAR just below the
@@ -636,10 +683,13 @@ class _ShellLayout {
   /// present (collapsed at minimum) wherever the map or a cavity is the ground.
   final bool navWidgetVisible;
 
-  /// Narrow analytics bar state: collapsed to the avatar circle on a focused
-  /// full-screen LEFT surface (a chat, an activity); stays expanded over the
-  /// map, a cavity, and an open right panel (the bar heads the panel).
-  final bool analyticsBarCollapsed;
+  /// Whether the narrow analytics NAV BAR mounts (always in full form): over
+  /// the map, a cavity, and an open right panel (the bar heads the panel).
+  /// Absent on full-screen chats (the chat's app bar hosts
+  /// [AnalyticsHeaderAvatar] instead) and on route-driven detail pages
+  /// (nothing — they carry their own navigation). See
+  /// `routing.instructions.md` → Single-column analytics nav bar.
+  final bool analyticsBarVisible;
 
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
@@ -680,7 +730,7 @@ class _ShellLayout {
     required this.cavityIndex,
     required this.hasCavity,
     required this.navWidgetVisible,
-    required this.analyticsBarCollapsed,
+    required this.analyticsBarVisible,
     required this.isColumnMode,
     required this.mapVisible,
     required this.leftInset,
@@ -705,9 +755,7 @@ class _ShellLayout {
     // route-driven `_MainView` left card was retired), so the left column is
     // entirely the allocator's; the only fixed left inset is the nav rail.
     final leftTokens = parseOpenPanels(state.uri).left;
-    final leftDefs = [
-      for (final token in leftTokens) PanelRegistry.defFor(token.type)!,
-    ];
+    final leftDefs = [for (final token in leftTokens) token.type.def];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
     // The single live left chat panel, if any — the focus signal a chat's
@@ -719,7 +767,7 @@ class _ShellLayout {
     // post-frame in [scheduleControllers].
     String? focusedLeftToken;
     for (final token in leftTokens) {
-      if (token.type == 'room' || token.type == 'session') {
+      if (token.type.isRoomPanel) {
         focusedLeftToken = token.encode();
         break;
       }
@@ -748,9 +796,7 @@ class _ShellLayout {
     // open. Every token parsed here has a valid right-column def (the parser
     // dropped unknown/wrong-column tokens), so the lookup is non-null.
     final rightTokens = parseOpenPanels(state.uri).right;
-    final rightDefs = [
-      for (final token in rightTokens) PanelRegistry.defFor(token.type)!,
-    ];
+    final rightDefs = [for (final token in rightTokens) token.type.def];
 
     // Narrow focus = the most-recently-opened panel (back-stack top). Sync the
     // recency list against the open panels: append newly-opened keys (in list
@@ -784,7 +830,7 @@ class _ShellLayout {
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
     // analytics bar) from a left full-screen surface (collapses the bar).
-    String? focusedNarrowType;
+    PanelTypesEnum? focusedNarrowType;
     var focusedIsRight = false;
     if (!isColumnMode) {
       for (var i = 0; i < leftTokens.length; i++) {
@@ -804,25 +850,20 @@ class _ShellLayout {
       }
     }
 
-    // Narrow chrome (routing.instructions.md → Single-column bottom nav): the
-    // section surfaces — the chat list, the Courses/add-course hub, the course
-    // family (card + coursepage detail), and the ACTIVITY PLAN (a half-open
-    // sheet with the camera on its pin — the Google Maps UX) — ride the nav
-    // widget's expandable CAVITY over the map. Only a live chat (a room or a
-    // launched session) and the right panels render full-screen over the
-    // chrome. The left-panel loop skips the cavity index so it is not also
-    // drawn full-screen.
-    const cavityTypes = {
-      'chats',
-      'addcourse',
-      'course',
-      'coursepage',
-      'activity',
-    };
+    // A route-driven center-detail page on a narrow screen (a course-wizard
+    // step, a public-course preview, a chat archive, the new-private-chat
+    // form) is a FULL-SCREEN surface (routing.instructions.md → Full-screen
+    // surfaces): it carries its own app-bar navigation, so the nav widget
+    // hides, no cavity seats over it, and the analytics bar collapses —
+    // instead of the chrome painting over the page's controls.
+    final narrowDetail = !isColumnMode && canvas == CanvasMode.detail;
     int? cavityIndex;
-    if (!isColumnMode && focusedNarrowType != null && !focusedIsRight) {
+    if (!isColumnMode &&
+        !narrowDetail &&
+        focusedNarrowType != null &&
+        !focusedIsRight) {
       for (var i = 0; i < leftTokens.length; i++) {
-        if (cavityTypes.contains(leftTokens[i].type) &&
+        if (leftTokens[i].type.isCavity &&
             layout.left[i].vis == PanelVis.full) {
           cavityIndex = i;
           break;
@@ -833,18 +874,24 @@ class _ShellLayout {
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
     // map or a cavity surface — and is covered by a focused full-screen surface
-    // (a room/activity, or a right panel expanding over it).
+    // (a room/activity, a center-detail page, or a right panel expanding over
+    // it).
     final navWidgetVisible =
-        !isColumnMode && navRail && (focusedNarrowType == null || hasCavity);
-
-    // The analytics bar collapses to the avatar circle only under a full-screen
-    // LEFT surface (a chat, an activity start/join); it stays expanded over the
-    // map, a cavity, and an open right panel (which it heads).
-    final analyticsBarCollapsed =
         !isColumnMode &&
-        focusedNarrowType != null &&
-        !hasCavity &&
-        !focusedIsRight;
+        navRail &&
+        !narrowDetail &&
+        (focusedNarrowType == null || hasCavity);
+
+    // The analytics NAV BAR mounts only where it is navigation: over the map,
+    // a cavity, and an open right panel (which it heads). A full-screen LEFT
+    // surface (a chat, an activity) hosts the header avatar in its own app
+    // bar instead, and a center-detail page shows nothing — no floating
+    // chrome stacked over page content.
+    final analyticsBarVisible =
+        !isColumnMode &&
+        navRail &&
+        !narrowDetail &&
+        (focusedNarrowType == null || hasCavity || focusedIsRight);
 
     // The map shows behind as a map hole (full) or — in column mode — alongside
     // a detail; this gates the cluster.
@@ -867,10 +914,24 @@ class _ShellLayout {
     // Bound the route-driven center detail by the left inset and the right-covered
     // width so it can never slide under a panel (the non-overlap guarantee). Only
     // route-driven pages use the center detail now — the activity is a left panel.
+    //
+    // The right reservation is the larger of the right column's coverage (which
+    // already contains the cluster gutter when right panels are open) and the
+    // bare gutter when the column is empty but the cluster still shows — the
+    // allocator's empty-panel early return never computes the gutter, so a
+    // detail route with no panels open (a course-wizard step, a public-course
+    // preview, a chat archive) must reserve it here. Narrow mode draws no
+    // cluster, so it reserves nothing.
+    final detailRightReserved = math.max(
+      layout.mapRightOverlay,
+      isColumnMode && layout.clusterVisible
+          ? PanelAllocator.clusterGutter
+          : 0.0,
+    );
     final detailWidth = canvas == CanvasMode.detail
         ? math.min(
             PanelAllocator.detailMax,
-            math.max(0.0, viewport - leftInset - layout.mapRightOverlay),
+            math.max(0.0, viewport - leftInset - detailRightReserved),
           )
         : null;
     final mapLeftOverlay = hasCavity
@@ -896,13 +957,15 @@ class _ShellLayout {
     final MapContext mapContext = coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
-    // A full-screen panel on a narrow screen covers the map, so dismiss any
-    // lingering map-pin preview — otherwise its [MapPinController] flag would
-    // keep the nav widget hidden after backing out. A CAVITY surface leaves the
-    // map visible above it, so it does not clear the pin. The map clears its own
-    // selection in response. See `routing.instructions.md`.
+    // A full-screen surface on a narrow screen (a focused panel or a
+    // center-detail page) covers the map, so dismiss any lingering map-pin
+    // preview — otherwise its [MapPinController] flag would keep the nav
+    // widget hidden after backing out. A CAVITY surface leaves the map visible
+    // above it, so it does not clear the pin. The map clears its own selection
+    // in response. See `routing.instructions.md`.
     final mapCoveredByPanel =
-        !isColumnMode && focusedNarrowType != null && !hasCavity;
+        !isColumnMode &&
+        ((focusedNarrowType != null && !hasCavity) || narrowDetail);
 
     // Route-driven center detail only (a course-wizard step, a public-course
     // preview, a chat archive). The activity plan is a left panel now, not a canvas
@@ -919,7 +982,7 @@ class _ShellLayout {
       cavityIndex: cavityIndex,
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
-      analyticsBarCollapsed: analyticsBarCollapsed,
+      analyticsBarVisible: analyticsBarVisible,
       isColumnMode: isColumnMode,
       mapVisible: mapVisible,
       leftInset: leftInset,

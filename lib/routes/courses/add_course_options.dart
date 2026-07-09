@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -16,12 +16,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 class AddCourseOptions extends StatelessWidget {
   const AddCourseOptions({super.key});
 
-  void _goToStep(BuildContext context, String step) => context.go(
-    WorkspaceNav.setSection(
-      GoRouterState.of(context).uri,
-      PanelToken('addcourse', step),
-      keepRoom: false,
-    ),
+  void _goToStep(BuildContext context, AddCourseSubpageEnum step) => context.go(
+    WorkspaceNav.openAddCoursePage(GoRouterState.of(context).uri, step),
   );
 
   @override
@@ -36,19 +32,19 @@ class AddCourseOptions extends StatelessWidget {
           // No showAll: the plan list defaults to the user's target language
           // (the filter still lets them widen to all). showAll=true here would
           // suppress that default and list every language (#7081).
-          onTap: () => _goToStep(context, 'own'),
+          onTap: () => _goToStep(context, AddCourseSubpageEnum.own),
         ),
         const SizedBox(height: 8.0),
         _HubButton(
           icon: Icons.vpn_key_outlined,
           label: l10n.addCourseEnterCode,
-          onTap: () => _goToStep(context, 'private'),
+          onTap: () => _goToStep(context, AddCourseSubpageEnum.private),
         ),
         const SizedBox(height: 8.0),
         _HubButton(
           icon: Icons.travel_explore_outlined,
           label: l10n.addCourseBrowsePublic,
-          onTap: () => _goToStep(context, 'browse'),
+          onTap: () => _goToStep(context, AddCourseSubpageEnum.browse),
         ),
       ],
     );

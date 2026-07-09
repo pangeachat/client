@@ -3900,7 +3900,6 @@
     "startNewSession": "Nieuwe sessie starten",
     "joinOpenSession": "Deelname aan open sessie",
     "activityNotFound": "Activiteit niet gevonden",
-    "levelUp": "Niveau omhoog",
     "myActivities": "Mijn activiteiten",
     "openToJoin": "Open voor deelname",
     "results": "Resultaten",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "Mis nooit een chat!",
     "enableNotificationsDesc": "Sta meldingen toe voor Pangea Chat en blijf verbonden met je taalkameraadjes!",
     "enableNotifications": "Sta meldingen toe",
-    "noActivitiesFound": "Geen activiteiten beschikbaar voor dit onderwerp.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10279,7 +10273,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} van {total} sterren verdiend",
+    "activityNoLongerSupported": "Deze activiteit draaide op een oudere versie van activiteiten en wordt niet langer ondersteund. Je kunt nog steeds bekijken wat er in deze sessie is gebeurd.",
+    "activityLoadFailed": "Kon de activiteit niet laden. Controleer je verbinding en probeer het opnieuw.",
+    "levelUpChip": "Niveau {level}!",
+    "missingCourseOutline": "Deze cursus is niet langer beschikbaar",
+    "missingCourseOutlineCta": "Deze cursus is niet langer beschikbaar. Kies een nieuw cursusplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sluit de pagina cursus toevoegen",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

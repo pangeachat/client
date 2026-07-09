@@ -2202,7 +2202,6 @@
     "startNewSession": "Simulan ang bagong sesyon",
     "joinOpenSession": "Sumali sa bukas na sesyon",
     "activityNotFound": "Hindi nahanap ang aktibidad",
-    "levelUp": "Umangat ang antas",
     "myActivities": "Aking mga aktibidad",
     "openToJoin": "Bukas para sumali",
     "results": "Mga resulta",
@@ -10468,7 +10467,6 @@
     "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
     "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
     "enableNotifications": "Payagan ang mga notification",
-    "noActivitiesFound": "Walang mga aktibidad na available para sa paksang ito.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10478,10 +10476,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11298,7 +11292,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} ng {total} na mga bituin na nakuha",
+    "activityNoLongerSupported": "Ang aktibidad na ito ay tumakbo sa isang mas lumang bersyon ng mga aktibidad at hindi na sinusuportahan. Maaari mo pa ring suriin kung ano ang nangyari sa sesyon na ito.",
+    "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",
+    "levelUpChip": "Antas {level}!",
+    "missingCourseOutline": "Ang kursong ito ay hindi na available",
+    "missingCourseOutlineCta": "Ang kursong ito ay hindi na available. Pumili ng bagong plano ng kurso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Isara ang pahina ng pagdaragdag ng kurso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -3776,7 +3776,6 @@
     "startNewSession": "புதிய அமர்வை தொடங்கவும்",
     "joinOpenSession": "திறந்த அமர்வில் சேரவும்",
     "activityNotFound": "செயல்பாடு காணப்படவில்லை",
-    "levelUp": "படிநிலை உயர்வு",
     "myActivities": "எனது செயல்பாடுகள்",
     "openToJoin": "சேர்வதற்கு திறந்தது",
     "results": "விளைவுகள்",
@@ -9565,7 +9564,6 @@
     "enableNotificationsTitle": "ஒரு உரையாடலை தவறவிடாதீர்கள்!",
     "enableNotificationsDesc": "Pangea Chat க்கான அறிவிப்புகளை அனுமதிக்கவும் மற்றும் உங்கள் மொழி நண்பர்களுடன் இணைந்திருங்கள்!",
     "enableNotifications": "அறிவிப்புகளை அனுமதிக்கவும்",
-    "noActivitiesFound": "இந்த தலைப்பிற்கான செயல்பாடுகள் கிடையாது.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9575,10 +9573,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10395,7 +10389,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} இல் {total} நட்சத்திரங்கள் சம்பாதிக்கப்பட்டன",
+    "activityNoLongerSupported": "இந்த செயல்பாடு பழைய பதிப்பில் செயல்பட்டது மற்றும் இனி ஆதரிக்கப்படவில்லை. நீங்கள் இந்த அமர்வில் என்ன நடந்தது என்பதை இன்னும் மதிப்பீடு செய்யலாம்.",
+    "activityLoadFailed": "செயல்பாட்டை ஏற்ற முடியவில்லை. உங்கள் இணைப்பை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",
+    "levelUpChip": "அடுக்கு {level}!",
+    "missingCourseOutline": "இந்த பாடம் இனி கிடைக்கவில்லை",
+    "missingCourseOutlineCta": "இந்த பாடம் இனி கிடைக்கவில்லை. புதிய பாட திட்டத்தை தேர்ந்தெடுக்கவும்.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "கோर्स் சேர்க்கும் பக்கம் மூடு",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

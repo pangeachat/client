@@ -3335,7 +3335,6 @@
     "startNewSession": "Comenciar nove session",
     "joinOpenSession": "Joinar session aperta",
     "activityNotFound": "Activitate non trovada",
-    "levelUp": "Nivelar",
     "myActivities": "Mie activitâts",
     "openToJoin": "Aperta a joinar",
     "results": "Resultâts",
@@ -10168,7 +10167,6 @@
     "enableNotificationsTitle": "Ná bíodh caillte ar comhrá!",
     "enableNotificationsDesc": "Cuir cead do rabhadh do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
     "enableNotifications": "Cuir cead do rabhadh",
-    "noActivitiesFound": "Níl aon gníomhaíochtaí ar fáil don ábhar seo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10176,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10998,7 +10992,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
+    "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
+    "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
+    "levelUpChip": "Nível {level}!",
+    "missingCourseOutline": "Este curso não está mais disponível",
+    "missingCourseOutlineCta": "Este curso não está mais disponível. Escolha um novo plano de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Dún an leathanach a chur cúrsa leis",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

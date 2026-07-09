@@ -6571,7 +6571,6 @@
     "startNewSession": "Alusta uut sessiooni",
     "joinOpenSession": "Liitu avatud sessiooniga",
     "activityNotFound": "Tegevust ei leitud",
-    "levelUp": "Tase tõusnud",
     "myActivities": "Minu tegevused",
     "openToJoin": "Avatud liitumiseks",
     "results": "Tulemused",
@@ -9446,7 +9445,6 @@
     "enableNotificationsTitle": "Ära jäta vestlust vahele!",
     "enableNotificationsDesc": "Luba teavitused Pangea Chati jaoks ja püsige ühenduses oma keelekaaslastega!",
     "enableNotifications": "Luba teavitused",
-    "noActivitiesFound": "Selle teema jaoks pole tegevusi saadaval.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9456,10 +9454,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10276,7 +10270,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} {total} tähte teenitud",
+    "activityNoLongerSupported": "See tegevus toimus vanema versiooni tegevustest ja ei ole enam toetatud. Saate siiski vaadata, mis selles seansis juhtus.",
+    "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",
+    "levelUpChip": "Tase {level}!",
+    "missingCourseOutline": "See kursus ei ole enam saadaval",
+    "missingCourseOutlineCta": "See kursus ei ole enam saadaval. Valige uus kursuse plaan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sulge kursuse lisamise leht",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

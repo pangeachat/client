@@ -2565,7 +2565,6 @@
     "startNewSession": "Začať novú reláciu",
     "joinOpenSession": "Pripojiť sa k otvorenej relácii",
     "activityNotFound": "Aktivita nenájdená",
-    "levelUp": "Zvýšiť úroveň",
     "myActivities": "Moje aktivity",
     "openToJoin": "Otvorené na pripojenie",
     "results": "Výsledky",
@@ -10565,7 +10564,6 @@
     "enableNotificationsTitle": "Nikdy nepremeškajte chat!",
     "enableNotificationsDesc": "Povoľte notifikácie pre Pangea Chat a zostaňte v kontakte so svojimi jazykovými kamarátmi!",
     "enableNotifications": "Povoľte notifikácie",
-    "noActivitiesFound": "Pre toto téma nie sú k dispozícii žiadne aktivity.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10575,10 +10573,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11395,7 +11389,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} z {total} získaných hviezd",
+    "activityNoLongerSupported": "Táto aktivita bežala na staršej verzii aktivít a už nie je podporovaná. Môžete si však prezrieť, čo sa v tejto relácii stalo.",
+    "activityLoadFailed": "Nepodarilo sa načítať aktivitu. Skontrolujte svoje pripojenie a skúste to znova.",
+    "levelUpChip": "Úroveň {level}!",
+    "missingCourseOutline": "Tento kurz už nie je k dispozícii",
+    "missingCourseOutlineCta": "Tento kurz už nie je k dispozícii. Vyberte si nový plán kurzu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zavrieť stránku na pridanie kurzu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,11 +1,15 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/activity_token.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 /// World_v2 routing facts — the single place navigation/layout decisions are
 /// derived from a [GoRouterState]. Every consumer (the shell layout, the
@@ -56,7 +60,17 @@ class ActivityFocus extends MapFocus {
 /// The learning-analytics metric the top-right cluster opens as a right-column
 /// panel. Each maps to a `?right=analytics:<name>` token in the workspace URL
 /// (the single source of truth for open panels). See `routing.instructions.md`.
-enum AnalyticsPanelTab { sessions, grammar, vocab }
+enum AnalyticsPanelTab {
+  sessions,
+  grammar,
+  vocab;
+
+  ProgressIndicatorEnum get indicator => switch (this) {
+    AnalyticsPanelTab.sessions => ProgressIndicatorEnum.activities,
+    AnalyticsPanelTab.grammar => ProgressIndicatorEnum.morphsUsed,
+    AnalyticsPanelTab.vocab => ProgressIndicatorEnum.wordsUsed,
+  };
+}
 
 /// Whether [fullPath] renders as the map hole — the persistent world map shows
 /// through with nothing drawn over it. world_v2: only the world root `/` is a
@@ -94,17 +108,18 @@ AppSection sectionFor(Uri uri) {
   //     reads as its course, not as the global chat list.
   //  3. Only a lone room with no course context is a direct chat → Chats.
   final left = parseOpenPanels(uri).left;
-  if (left.any((t) => t.type == 'chats')) return AppSection.chats;
+  if (left.any((t) => t.type == PanelTypesEnum.chats)) return AppSection.chats;
   if (left.any(
         (t) =>
-            t.type == 'course' ||
-            t.type == 'coursepage' ||
-            t.type == 'addcourse',
+            t.type == PanelTypesEnum.course ||
+            t.type == PanelTypesEnum.coursepage ||
+            t.type == PanelTypesEnum.addcourse ||
+            t.type == PanelTypesEnum.addcoursepage,
       ) ||
       activeSpaceIdFor(uri) != null) {
     return AppSection.courses;
   }
-  if (left.any((t) => t.type == 'room')) return AppSection.chats;
+  if (left.any((t) => t.type == PanelTypesEnum.room)) return AppSection.chats;
   // The few real route-driven paths (fork `/rooms/...` pages, the course
   // Completer flows and public preview) highlight by first segment.
   final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;
@@ -133,8 +148,9 @@ String? activeSpaceIdFor(Uri uri) {
 String? activeRoomIdFromPanels(Uri uri) {
   final panels = parseOpenPanels(uri);
   for (final token in [...panels.left, ...panels.right]) {
-    if (token.type == 'room' && token.param != null) {
-      return fullRoomId(token.param!);
+    final param = token.param;
+    if (param is RoomTokenParam) {
+      return fullRoomId(param.id);
     }
   }
   return null;
@@ -150,28 +166,40 @@ String? activeRoomIdFor(GoRouterState state) {
 
 /// The activity an open URI addresses: the `left=activity:` panel token,
 /// whose structured param carries the id plus optional session bindings — the
-/// bound room, launch, autoplay ([ActivityToken]).
-({String id, String? roomId, bool launch, int? autoplay})? activityInfoFor(
-  Uri uri,
-) {
+/// bound room, launch, autoplay ([ActivityTokenParam]).
+ActivityTokenParam? activityInfoFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
-    if (token.type == 'activity' && (token.param?.isNotEmpty ?? false)) {
-      return ActivityToken.parse(token.param!);
+    final param = token.param;
+    if (param is ActivityTokenParam) {
+      return param;
     }
   }
   return null;
 }
 
 /// [activityInfoFor] over a [GoRouterState]'s URI.
-({String id, String? roomId, bool launch, int? autoplay})? activityFor(
-  GoRouterState state,
-) => activityInfoFor(state.uri);
+ActivityTokenParam? activityFor(GoRouterState state) =>
+    activityInfoFor(state.uri);
+
+/// The course join code an open URI carries — the `addcourse` token's
+/// `private/<code>` leaf (the `LegacyRedirects` join-link rewrite target),
+/// decoded, or null. The auth guard reads this to ferry an inbound join code
+/// across the login bounce (PAuthGaurd.roomsRedirect, #7524).
+String? joinCodeFor(Uri uri) {
+  for (final token in parseOpenPanels(uri).left) {
+    final param = token.param;
+    if (param is! AddCoursePageTokenParam) continue;
+    if (param.subpage != AddCourseSubpageEnum.private) continue;
+    return param.joinCode;
+  }
+  return null;
+}
 
 /// What the map should focus. Today: the open activity. Extend by adding a
 /// [MapFocus] subclass and returning it here.
 MapFocus? mapFocusFor(GoRouterState state) {
   final activity = activityFor(state);
-  if (activity != null) return ActivityFocus(activity.id);
+  if (activity != null) return ActivityFocus(activity.activityId);
   return null;
 }
 
@@ -222,7 +250,7 @@ const int _maxPanelsPerList = 6;
 /// parent may be in the other column (a left `session` over the right `analytics`
 /// list). See `close_affordance.dart` / `panel_registry.dart`.
 bool parentIsOpen(Uri uri, PanelToken token) {
-  final parentType = PanelRegistry.defFor(token.type)?.parent;
+  final parentType = token.type.def.parent;
   if (parentType == null) return false;
   final lists = parseOpenPanels(uri);
   return lists.left.any((t) => t.type == parentType) ||
@@ -255,16 +283,16 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   for (final element in encodedList.split(',')) {
     final token = PanelToken.parse(element);
     if (token == null) continue;
-    final def = PanelRegistry.defFor(token.type);
-    if (def == null || def.column != column) continue;
+    final def = token.type.def;
+    if (def.column != column) continue;
     // A `room`/`session` token's IDENTITY is its bare room id; the rest of the
     // param is a pushed sub-page (`<id>/search`, `<id>/details/…`). Dedup on the
     // bare id so a hand-edited URL with two sub-pages of the same room degrades
     // to one panel rather than colliding on the room's GlobalKey. Other panels
     // dedup on the whole (type, param). See `routing.instructions.md`.
-    final identity = (token.type == 'room' || token.type == 'session')
-        ? '${token.type}:${(token.param ?? '').split('/').first}'
-        : '${token.type}:${token.param ?? ''}';
+    final identity = token.type.isRoomPanel
+        ? '${token.type}:${(token.param?.build() ?? '').split('/').first}'
+        : '${token.type}:${token.param?.build() ?? ''}';
     if (!seen.add(identity)) continue;
     // Siblings can't coexist: at most one token per sibling group survives in a
     // column (first wins). Without this a hand-edited / deep-link URL could
@@ -278,8 +306,9 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   }
   // Practice takes over the analytics surface, so it never coexists with the
   // analytics master (the `detail` group already excludes vocab/grammar details).
-  if (column == PanelColumn.right && tokens.any((t) => t.type == 'practice')) {
-    tokens.removeWhere((t) => t.type == 'analytics');
+  if (column == PanelColumn.right &&
+      tokens.any((t) => t.type == PanelTypesEnum.practice)) {
+    tokens.removeWhere((t) => t.type == PanelTypesEnum.analytics);
   }
   // A `course` card and a `coursepage` management page read their space id from
   // the `?c=<id>` course context, not the token, so without it they have nothing
@@ -290,7 +319,11 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   // openCourseFilter sheds the previous course's page only because it re-targets
   // the context to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
-    tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
+    tokens.removeWhere(
+      (t) =>
+          t.type == PanelTypesEnum.course ||
+          t.type == PanelTypesEnum.coursepage,
+    );
   }
   return _masterFirst(tokens);
 }
@@ -303,7 +336,7 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
 List<PanelToken> _masterFirst(List<PanelToken> tokens) {
   final result = List<PanelToken>.from(tokens);
   for (var i = 0; i < result.length; i++) {
-    final parentType = PanelRegistry.defFor(result[i].type)?.parent;
+    final parentType = result[i].type.def.parent;
     if (parentType == null) continue;
     final parentIdx = result.indexWhere((t) => t.type == parentType);
     if (parentIdx > i) {

@@ -10,7 +10,8 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -59,10 +60,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   /// the route-driven course-detail fix (#7092).
   void back() {
     context.go(
-      WorkspaceNav.setSection(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        const PanelToken('addcourse', 'browse'),
-        keepRoom: false,
+        AddCourseSubpageEnum.browse,
       ),
     );
   }
@@ -85,14 +85,14 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
         roomSummaryError = null;
       });
 
-      final roomIds = [roomID];
+      final roomIds = [fullRoomId(roomID)];
       final roomSummariesResponse = await Matrix.of(context).client
           .loadRoomSummaries(
             roomIds,
             l1Code: MatrixState.pangeaController.userController.userL1Code,
           );
 
-      final roomSummary = roomSummariesResponse[roomID];
+      final roomSummary = roomSummariesResponse[fullRoomId(roomID)];
       if (roomSummary == null) {
         throw Exception("Room summary not found");
       }
@@ -154,7 +154,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
 
     room.isSpace
         ? context.go(
-            WorkspaceNav.openCourseFilter(
+            WorkspaceNav.openCourse(
               GoRouterState.of(context).uri,
               joinedRoomId,
             ),
@@ -174,7 +174,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     if (r != null && r.membership == Membership.join) {
       if (mounted) {
         context.go(
-          WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, r.id),
+          WorkspaceNav.openCourse(GoRouterState.of(context).uri, r.id),
         );
       }
       return;
@@ -222,10 +222,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     context.go(
-      WorkspaceNav.openCourseFilter(
-        GoRouterState.of(context).uri,
-        joinedRoomId,
-      ),
+      WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
     );
   }
 

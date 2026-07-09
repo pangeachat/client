@@ -3877,7 +3877,6 @@
     "startNewSession": "Sākt jaunu sesiju",
     "joinOpenSession": "Pievienoties atvērtai sesijai",
     "activityNotFound": "Aktivitate nav atrasta",
-    "levelUp": "Līmeņa paaugstināšana",
     "myActivities": "Manas aktivitātes",
     "openToJoin": "Atvērts pievienošanai",
     "results": "Rezultāti",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "Nekad nepalaid garām sarunu!",
     "enableNotificationsDesc": "Atļaut paziņojumus par Pangea Chat un palikt saistītam ar saviem valodas draugiem!",
     "enableNotifications": "Atļaut paziņojumus",
-    "noActivitiesFound": "Nav pieejamu aktivitāšu šai tēmai.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10279,7 +10273,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} no {total} iegūtajām zvaigznēm",
+    "activityNoLongerSupported": "Šī aktivitāte tika veikta vecākā aktivitāšu versijā un vairs netiek atbalstīta. Jūs joprojām varat pārskatīt, kas notika šajā sesijā.",
+    "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
+    "levelUpChip": "Līmenis {level}!",
+    "missingCourseOutline": "Šis kurss vairs nav pieejams",
+    "missingCourseOutlineCta": "Šis kurss vairs nav pieejams. Izvēlieties jaunu kursa plānu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Aizvērt kursa pievienošanas lapu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

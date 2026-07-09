@@ -64,6 +64,11 @@ class UserTypeOnboardingStep extends OnboardingStep {
           s: s,
           data: {'cached_course_id': courseCode},
         );
+      } finally {
+        // Onboarding is finished with the cached inbound code either way:
+        // joined on success, handed off to manual entry on failure. A
+        // leftover would surprise-join a later login (#7524).
+        await state.courseProvider.clearCachedJoinCode();
       }
     }
 

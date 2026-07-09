@@ -3462,7 +3462,6 @@
     "startNewSession": "Starta ny session",
     "joinOpenSession": "Gå med i öppen session",
     "activityNotFound": "Aktivitet inte hittad",
-    "levelUp": "Nivå upp",
     "myActivities": "Mina aktiviteter",
     "openToJoin": "Öppen för att delta",
     "results": "Resultat",
@@ -10036,7 +10035,6 @@
     "enableNotificationsTitle": "Missa aldrig en chatt!",
     "enableNotificationsDesc": "Tillåt aviseringar för Pangea Chat och håll kontakten med dina språkkompisar!",
     "enableNotifications": "Tillåt aviseringar",
-    "noActivitiesFound": "Inga aktiviteter tillgängliga för detta ämne.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10046,10 +10044,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10866,7 +10860,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} av {total} stjärnor tjänade",
+    "activityNoLongerSupported": "Denna aktivitet kördes på en äldre version av aktiviteter och stöds inte längre. Du kan fortfarande granska vad som hände under denna session.",
+    "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",
+    "levelUpChip": "Nivå {level}!",
+    "missingCourseOutline": "Denna kurs är inte längre tillgänglig",
+    "missingCourseOutlineCta": "Denna kurs är inte längre tillgänglig. Välj en ny kursplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Stäng lägg till kurs-sidan",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

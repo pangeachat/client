@@ -12,6 +12,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat_list/activity_template_chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
@@ -131,10 +132,10 @@ class CourseChatsView extends StatelessWidget {
                           subtitle: Text(L10n.of(context).chooseNextActivity),
                           trailing: const Icon(Icons.arrow_forward),
                           onTap: () => context.go(
-                            WorkspaceNav.openCourseFilter(
+                            WorkspaceNav.openCourse(
                               GoRouterState.of(context).uri,
                               room.id,
-                              tab: 'course',
+                              tab: SpaceSettingsTabs.course,
                             ),
                           ),
                         )

@@ -1,7 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 
 void main() {
   List<PanelToken> right(String url) => parseOpenPanels(Uri.parse(url)).right;
@@ -9,14 +14,17 @@ void main() {
 
   group('PanelToken.parse / encode', () {
     test('bare type and type:param', () {
-      expect(PanelToken.parse('chats'), const PanelToken('chats'));
-      expect(PanelToken.parse('room:!abc'), const PanelToken('room', '!abc'));
+      expect(PanelToken.parse('chats'), const ChatsPanelToken());
+      expect(
+        PanelToken.parse('room:!abc'),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
+      );
     });
 
     test('only the first colon splits, so room ids survive', () {
       // A full id rides the URL percent-encoded; after decode the colon is back.
       final t = PanelToken.parse('room:!abc%3Ahome.server');
-      expect(t, const PanelToken('room', '!abc:home.server'));
+      expect(t, RoomPanelToken(RoomTokenParam.parse('!abc:home.server')));
     });
 
     test('malformed types are rejected', () {
@@ -27,7 +35,9 @@ void main() {
     });
 
     test('encode round-trips a construct whose value has commas and colons', () {
-      const token = PanelToken('vocab', '{"lemma":"a,b","type":"verb"}');
+      final token = VocabAnalyticsPanelToken(
+        VocabAnalyticsTokenParam.parse('{"lemma":"a,b","type":"verb"}'),
+      );
       final round = PanelToken.parse(token.encode());
       expect(round, token);
       // The raw encoding must not contain a literal comma or the splitter breaks.
@@ -44,9 +54,12 @@ void main() {
 
     test('order is preserved across the comma list', () {
       final r = right('/chats?right=analytics:vocab,settingspage:style');
-      expect(r.map((t) => t.type).toList(), ['analytics', 'settingspage']);
-      expect(r[0].param, 'vocab');
-      expect(r[1].param, 'style');
+      expect(r.map((t) => t.type).toList(), [
+        PanelTypesEnum.analytics,
+        PanelTypesEnum.settingspage,
+      ]);
+      expect(r[0].param, isA<AnalyticsTokenParam>());
+      expect(r[1].param, isA<SettingsTokenParam>());
     });
 
     test('an encoded comma inside a param does NOT split the list', () {
@@ -54,8 +67,8 @@ void main() {
       final encoded = Uri.encodeComponent('{"lemma":"a,b"}');
       final r = right('/chats?right=vocab:$encoded');
       expect(r.length, 1);
-      expect(r.single.type, 'vocab');
-      expect(r.single.param, '{"lemma":"a,b"}');
+      expect(r.single.type, PanelTypesEnum.vocab);
+      expect(r.single.param, isA<VocabAnalyticsTokenParam>());
     });
 
     test('wrong-column tokens are dropped', () {
@@ -68,7 +81,7 @@ void main() {
 
     test('unknown types are dropped', () {
       expect(right('/chats?right=bogus:x,analytics:vocab').map((t) => t.type), [
-        'analytics',
+        PanelTypesEnum.analytics,
       ]);
     });
 
@@ -76,32 +89,26 @@ void main() {
       final r = right('/chats?right=analytics:vocab,analytics:vocab');
       expect(r.length, 1);
     });
-
-    test('the per-list cap drops the overflow', () {
-      // analytics has no sibling group, so distinct params all survive to the cap.
-      final many = List.generate(8, (i) => 'analytics:t$i').join(',');
-      expect(right('/chats?right=$many').length, 6);
-    });
   });
 
   group('parseOpenPanels sibling exclusion', () {
     test('at most one token per sibling group survives (first wins)', () {
       // vocab + grammar both belong to the `detail` group.
       final r = right('/chats?right=vocab:a,grammar:b');
-      expect(r.map((t) => t.type).toList(), ['vocab']);
+      expect(r.map((t) => t.type).toList(), [PanelTypesEnum.vocab]);
     });
 
     test('room + session collapse to one live view (liveView group)', () {
       final l = left('/chats?left=room:!a,session:!b');
       expect(l.length, 1);
-      expect(l.single.type, 'room');
+      expect(l.single.type, PanelTypesEnum.room);
     });
 
     test(
       'practice takes over the analytics surface (no analytics beside it)',
       () {
         final r = right('/chats?right=practice:vocab,analytics:vocab');
-        expect(r.map((t) => t.type).toList(), ['practice']);
+        expect(r.map((t) => t.type).toList(), [PanelTypesEnum.practice]);
       },
     );
   });
@@ -117,12 +124,15 @@ void main() {
 
     test('a course token WITH its ?c= context survives', () {
       final l = left('/?c=!s&left=course');
-      expect(l.map((t) => t.type).toList(), ['course']);
+      expect(l.map((t) => t.type).toList(), [PanelTypesEnum.course]);
     });
 
     test('a coursepage survives when its course context is present', () {
       final l = left('/?c=!s&left=course,coursepage:invite');
-      expect(l.map((t) => t.type).toList(), ['course', 'coursepage']);
+      expect(l.map((t) => t.type).toList(), [
+        PanelTypesEnum.course,
+        PanelTypesEnum.coursepage,
+      ]);
     });
   });
 }

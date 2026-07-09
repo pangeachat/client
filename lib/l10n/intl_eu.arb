@@ -3901,7 +3901,6 @@
     "startNewSession": "Hasi saio berria",
     "joinOpenSession": "Batu irekita dagoen saiora",
     "activityNotFound": "Ez da ekintzarik aurkitu",
-    "levelUp": "Maila igo",
     "myActivities": "Nire ekintzak",
     "openToJoin": "Batzeko aukera",
     "results": "Emaitzak",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "Ez galdu txat bat ere!",
     "enableNotificationsDesc": "Baieztatu Pangea Chat-eko jakinarazpenak eta mantendu harremanetan zure hizkuntza lagunekin!",
     "enableNotifications": "Baieztatu jakinarazpenak",
-    "noActivitiesFound": "Ez dago jarduerarik gaia honetarako.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10279,7 +10273,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} {total} izarretatik irabazi direnak",
+    "activityNoLongerSupported": "Jarduera honek jardueren bertsio zahar batean funtzionatu zuen eta ez da gehiago babesten. Oraindik saio honetan zer gertatu zen berrikusi dezakezu.",
+    "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",
+    "levelUpChip": "Maila {level}!",
+    "missingCourseOutline": "Ikastaro hau ez dago eskuragarri",
+    "missingCourseOutlineCta": "Ikastaro hau ez dago eskuragarri. Aukeratu ikastaro berri bat.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Itxi ikastaroa gehitzeko orria",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

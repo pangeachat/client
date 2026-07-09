@@ -91,10 +91,21 @@ type is whose master) and keeps the given order for pairs the registry does not
 relate. That is the whole compatibility story: **the client is the only
 producer of its URLs, so retired shapes and spellings are simply deleted, not
 redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). The one inbound URL
-contract is the shareable standalone activity link (`/<uuid>`), which
+maintained (a deliberate call at current scale, #7467). The inbound URL
+contracts are the shareable standalone activity link (`/<uuid>`) and the course
+join link (`/join_with_link?classcode=<code>`, the CloudFront short-code 302
+target, plus its native `/join` spelling — #7524), which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into its `activity` token before render.
+into their `activity` / `addcourse:private/<code>` tokens before render.
+
+**Known carve-out (#7519).** Five legacy path-route trees still render as
+route-driven center details and are navigated to by live flows: the chat
+archive, the new-DM form, the course-creation wizard (blocked on its
+`Completer`-via-`state.extra` result handoff, which cannot ride a URL), the
+add-plan-to-space flow, and the public-course preview. Until #7519 migrates
+them to tokens, "the path is always `/`" holds for everything except these;
+they are the only reason `CanvasMode.detail` and the shell's center-detail
+machinery still exist.
 
 ## The core model
 
@@ -110,10 +121,10 @@ External pointers never carry workspace paths either: a push notification
 resolves through its structured content keys and a `matrix.to` link through the
 in-app link handler — both emit token URLs in code
 ([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-The one URL that arrives from outside is the shareable standalone activity link
-(`/<uuid>`), rewritten to its `activity` token at the router redirect before
-anything renders — so there is exactly one representation by the time the shell
-builds.
+The URLs that arrive from outside — the shareable standalone activity link
+(`/<uuid>`) and the course join link (`/join_with_link?classcode=<code>`) — are
+rewritten to their tokens at the router redirect before anything renders — so
+there is exactly one representation by the time the shell builds.
 
 ### The course context
 
@@ -170,7 +181,8 @@ not yet joined the token model; the pre-login and utility routes (`/home`,
 flows (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
 and the public-course preview. Nothing else path-shaped exists: the retired
 section paths and their redirect shims are deleted, and `LegacyRedirects`
-handles exactly one shape — the shareable `/<uuid>` activity link.
+handles exactly two shapes — the shareable `/<uuid>` activity link and the
+course join link (`/join_with_link` / `/join` with `?classcode=`, #7524).
 
 **Everything a panel needs rides in its token's fields — there are no loose
 params.** The one external URL producer, the shareable `/<uuid>` activity link,
@@ -396,7 +408,7 @@ folded here: one panel, navigated with a back arrow.
 a **floating bottom nav widget** (the expandable rounded container in
 [Single-column bottom nav](#single-column-bottom-nav) below), and the cluster
 becomes a **horizontal analytics bar** pinned to the top of the safe area
-([Single-column analytics bar](#single-column-analytics-bar)). A **search bar**
+([Single-column analytics nav bar](#single-column-analytics-nav-bar)). A **search bar**
 floats above the nav widget with map filters above it
 ([Single-column search bar](#single-column-search-bar)). Analytics and Profile
 are reached from the top bar, not the bottom nav. Further-nested surfaces — a
@@ -450,13 +462,22 @@ the most-recently-opened/tapped course otherwise. This mirrors the web rail's
 order and function. The most-recent choice is device-local view state, never part
 of the URL; the other joined courses are reached through the Courses list.
 
-**Expanded to half-height.** Tapping a rail item is the same navigation as the
+**Expanded height.** Tapping a rail item is the same navigation as the
 web rail — it replaces the open left panels with that section's token
 (`left=chats`, the Courses hub, the course card under `?c=`) — and expands the
-widget upward to roughly half the screen, filling the upper portion of the
-rounded box with that section's content. The 4 rail icons remain anchored at the
-bottom of the widget at all heights. Content inside the expanded area is
-**scrollable**.
+widget upward, filling the upper portion of the rounded box with that
+section's content. The **chats sheet opens content-fit**: just tall enough to
+show all its chats, capped by the height available below the analytics bar (a
+short list yields a short sheet; a long one fills to the cap and scrolls).
+Other sections open at roughly half the screen. The 4 rail icons remain
+anchored at the bottom of the widget at all heights. Content inside the
+expanded area is **scrollable**.
+
+**The chats sheet header carries its actions**: an expanding **search
+toggle** (an icon; tapping it reveals the filter field, autofocused — the
+field is not always-on because vertical space is the sheet's scarce resource)
+and the **new-chat action** (formerly a floating Direct Message FAB, which
+covered the bottom list rows).
 
 **The URL carries the panel, not the geometry.** The widget's height — collapsed,
 half, full — is ephemeral view state, exactly like fold recency above: a cold
@@ -494,6 +515,13 @@ session — opens full-screen, covering the nav widget: a rounded-corner card
 with a small inset of map visible behind it. The nav widget is not accessible
 while one of these surfaces is focused. (The activity *plan* is not one of
 these — it rides the cavity at half height, its pin visible above.)
+**Route-driven center-detail pages** — a course-wizard step, a public-course
+preview, a chat archive, the new-private-chat form — are full-screen surfaces
+too: they are task flows carrying their own app-bar navigation, so the nav
+widget hides and no analytics chrome shows at all (they neither inset below
+the bar the way right panels do, nor share the screen with floating chrome —
+see the surface table under
+[Single-column analytics nav bar](#single-column-analytics-nav-bar)).
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -501,30 +529,53 @@ these — it rides the cavity at half height, its pin visible above.)
 - [Courses list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61048&t=NJSsG23tsR9Kdwlz-0)
 - [Active course](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61069&t=NJSsG23tsR9Kdwlz-0)
 
-### Single-column analytics bar
+### Single-column analytics nav bar
 [Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-94063&t=NJSsG23tsR9Kdwlz-0)
 
 In single-column mode the cluster's vertical powerups column becomes a
 **horizontal analytics bar** pinned to the top of the safe area. Layout
 differences from the web cluster:
 
-- **Level badge** moves to the left end of the bar.
-- **Avatar** sits to the right of the bar, in the same spot as web.
+- The **level badge and the powerups pill are one unit** — the web cluster's
+  pill turned horizontal: the badge overhangs the pill's LEFT end, and the
+  pill's frame **is the XP ring**, gold progress growing clockwise from the
+  top of the badge around the pill and meeting back at the badge's bottom.
+- **Avatar** sits to the right of the bar, in the same spot as web (no ring of
+  its own while the pill carries the XP).
 - **Flag** sits below the avatar, slightly smaller than on web and with less
   spacing.
-- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in the
-  bar.
+- **Stars, Grammar, and Vocabulary trackers** remain as tappable controls in
+  the pill.
 
-**Collapsed state.** In full screens (a chat, an activity start/join), the
-analytics bar collapses into a single avatar circle wearing the XP ring, the
-level badge, and the L2 flag. A tap on the collapsed avatar temporarily expands
-the full bar for approximately 3 seconds — long enough to tap a tracker or open
-settings — then auto-collapses if nothing further is tapped. The timer never
-fires while the bar holds keyboard or assistive-technology focus: screen-reader
-and switch users collapse it by tapping outside (or the avatar again), not by
-timeout (WCAG 2.2.1 — see
-[accessibility.instructions.md](accessibility.instructions.md)).
-[Collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)
+**Where the bar shows, per surface.** The bar is *analytics navigation*, so it
+appears where it navigates and never floats over a page that has its own
+navigation. It has exactly two renderings — the **full bar** and the
+**avatar** (the circle wearing the XP ring, level badge, and L2 flag — the
+Figma
+[collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160&t=NJSsG23tsR9Kdwlz-0)) —
+and the avatar is **hosted inside the chat's own app bar** as a trailing
+action, never floated over content (stacked chrome proved error-prone; a
+floating timed expansion was also a WCAG liability, so the avatar is a plain
+button that opens the analytics summary panel — whose header is the full bar).
+
+| Surface | Bar |
+| --- | --- |
+| Bare world map | Full |
+| Cavity surfaces (chat list, Courses hub, course card, activity plan) | Full |
+| Map pin preview sheet | Full |
+| Right panels (analytics summary/tabs, word/grammar details, settings) | Full — the bar IS their navigation and heads them |
+| Live chat room / launched activity session / session review | Avatar, in the chat's app bar |
+| Route-driven detail pages (course wizard, public-course preview, chat archive, new DM form) | None — they carry their own app-bar navigation |
+
+**Single-column mutual close.** Sibling-closing is per-column on web, but on
+one column a SECTION sheet (the chat list, the Courses hub, a course card, an
+activity plan) and a right panel (analytics, settings) are peers in the same
+visual slot — so opening one closes the other at navigation time: a bar tap
+drops the open section tokens, and a rail tap drops the right list. Without
+this, X-ing the panel revealed a stale sheet instead of the map. A live
+`room`/`session` is NOT a section and persists under a right panel — the
+header-avatar loop (chat → analytics → X → back to the conversation) depends
+on it. Column mode is untouched: both columns coexist there.
 
 **Expanded state.** Tapping a bar element opens the same right-column tokens as
 the web cluster (`right=analytics:vocab`, `right=settings`, the level tab, the
@@ -674,7 +725,7 @@ context alone never out-highlights an open section.
 
 A persistent cluster pinned to the top-right of the map opens the right column.
 On a narrow screen the cluster becomes the
-[single-column analytics bar](#single-column-analytics-bar) — same elements,
+[single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
 same tokens, horizontal at the top.
 It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
 **avatar** wrapped in an XP ring (a gray track that fills gold clockwise toward

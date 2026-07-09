@@ -3901,7 +3901,6 @@
     "startNewSession": "Comezar nova sesión",
     "joinOpenSession": "Unirse á sesión aberta",
     "activityNotFound": "Actividade non atopada",
-    "levelUp": "Subir de nivel",
     "myActivities": "As miñas actividades",
     "openToJoin": "Aberto para unirse",
     "results": "Resultados",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "¡Nunca perdas unha charla!",
     "enableNotificationsDesc": "Permite notificacións para Pangea Chat e mantente conectado cos teus compañeiros de idioma!",
     "enableNotifications": "Permitir notificacións",
-    "noActivitiesFound": "Non hai actividades dispoñibles para este tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10279,7 +10273,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} de {total} estrelas gañadas",
+    "activityNoLongerSupported": "Esta actividade executouse nunha versión anterior das actividades e xa non se admite. Aínda podes revisar o que aconteceu nesta sesión.",
+    "activityLoadFailed": "Non se puido cargar a actividade. Comproba a túa conexión e intenta de novo.",
+    "levelUpChip": "Nivel {level}!",
+    "missingCourseOutline": "Este curso xa non está dispoñible",
+    "missingCourseOutlineCta": "Este curso xa non está dispoñible. Escolle un novo plan de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Pechar a páxina de engadir curso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

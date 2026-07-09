@@ -3203,7 +3203,6 @@
     "startNewSession": "Pradėti naują sesiją",
     "joinOpenSession": "Prisijungti prie atviros sesijos",
     "activityNotFound": "Veikla nerasta",
-    "levelUp": "Pakilti lygį",
     "myActivities": "Mano veiklos",
     "openToJoin": "Atvira prisijungimui",
     "results": "Rezultatai",
@@ -10335,7 +10334,6 @@
     "enableNotificationsTitle": "Niekuomet nepraleiskite pokalbio!",
     "enableNotificationsDesc": "Leiskite pranešimus Pangea Chat ir likite susijungę su savo kalbos draugais!",
     "enableNotifications": "Leiskite pranešimus",
-    "noActivitiesFound": "Šiam temai nėra prieinamų veiklų.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10345,10 +10343,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11165,7 +11159,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} iš {total} uždirbtų žvaigždžių",
+    "activityNoLongerSupported": "Ši veikla vyko senesnėje veiklų versijoje ir nebėra palaikoma. Vis dar galite peržiūrėti, kas įvyko šioje sesijoje.",
+    "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",
+    "levelUpChip": "Lygis {level}!",
+    "missingCourseOutline": "Šis kursas nebėra prieinamas",
+    "missingCourseOutlineCta": "Šis kursas nebėra prieinamas. Pasirinkite naują kurso planą.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Uždaryti kurso pridėjimo puslapį",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

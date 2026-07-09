@@ -3335,7 +3335,6 @@
     "startNewSession": "เริ่มเซสชันใหม่",
     "joinOpenSession": "เข้าร่วมเซสชันเปิด",
     "activityNotFound": "ไม่พบกิจกรรม",
-    "levelUp": "เลื่อนระดับ",
     "myActivities": "กิจกรรมของฉัน",
     "openToJoin": "เปิดให้เข้าร่วม",
     "results": "ผลลัพธ์",
@@ -10168,7 +10167,6 @@
     "enableNotificationsTitle": "ไม่พลาดการสนทนา!",
     "enableNotificationsDesc": "อนุญาตการแจ้งเตือนสำหรับ Pangea Chat และเชื่อมต่อกับเพื่อนที่พูดภาษาของคุณ!",
     "enableNotifications": "อนุญาตการแจ้งเตือน",
-    "noActivitiesFound": "ไม่มีกิจกรรมสำหรับหัวข้อนี้.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10176,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10998,7 +10992,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} จาก {total} ดาวที่ได้รับ",
+    "activityNoLongerSupported": "กิจกรรมนี้ทำงานบนเวอร์ชันเก่าของกิจกรรมและไม่รองรับอีกต่อไป คุณยังสามารถตรวจสอบสิ่งที่เกิดขึ้นในเซสชันนี้ได้",
+    "activityLoadFailed": "ไม่สามารถโหลดกิจกรรมได้ ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง",
+    "levelUpChip": "เลเวล {level}!",
+    "missingCourseOutline": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป",
+    "missingCourseOutlineCta": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป กรุณาเลือกแผนหลักสูตรใหม่",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "ปิดหน้าการเพิ่มหลักสูตร",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

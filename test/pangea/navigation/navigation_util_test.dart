@@ -1,7 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 
@@ -52,12 +55,12 @@ void main() {
       () {
         final loc = WorkspaceNav.openExclusiveLeftRoom(
           NavigationUtil.stripActivityOverlay(u('/$activityId')),
-          const PanelToken('room', '!abc'),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         );
         final result = u(loc);
         expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
         expect(parseOpenPanels(result).left, [
-          const PanelToken('room', '!abc'),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         ]);
       },
     );
@@ -67,15 +70,15 @@ void main() {
         NavigationUtil.stripActivityOverlay(
           u('/?c=!s&left=course,activity:$activityId.l'),
         ),
-        const PanelToken('room', '!abc'),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       );
       final result = u(loc);
       expect(result.path, '/');
       expect(result.query.contains('activity'), isFalse);
       expect(result.query.contains('c=!s'), isTrue);
       expect(parseOpenPanels(result).left, [
-        const PanelToken('course'),
-        const PanelToken('room', '!abc'),
+        const CoursePanelToken(),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       ]);
     });
   });
@@ -117,9 +120,12 @@ void main() {
         );
         final coursepage = parseOpenPanels(
           u(loc),
-        ).left.where((t) => t.type == 'coursepage').single;
+        ).left.where((t) => t.type == PanelTypesEnum.coursepage).single;
         // The renderable token — NOT the blank `coursepage:details/invite`.
-        expect(coursepage, const PanelToken('coursepage', 'invite'));
+        expect(
+          coursepage,
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
+        );
       },
     );
   });

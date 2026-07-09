@@ -1,6 +1,11 @@
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// Holds the learner's joined-course quest outlines: each course's ordered
 /// learning-objective sequence and the activities that satisfy each objective.
@@ -81,6 +86,34 @@ class JoinedObjectiveCache {
     _ids = {for (final o in next) ...o.orderedLoIds};
   }
 
-  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async =>
-      (await QuestRepo.outline(uuid)).toCourseLoOutline();
+  /// [rebuild] from the client's joined courses — each course's quest uuid with
+  /// its teacher stars-to-unlock override. The single home for that mapping:
+  /// the world map's pins manager and the course panel's star display both
+  /// rebuild through here, so every surface resolves identical outlines.
+  Future<void> rebuildFromJoinedCourses(
+    Client client, {
+    void Function(String uuid, Object error, StackTrace stack)? onError,
+  }) {
+    final thresholds = <String, int>{
+      for (final room in client.joinedCourseRooms)
+        room.coursePlan!.uuid:
+            room.teacherMode.starsToUnlockObjective ??
+            kDefaultStarsToUnlockObjective,
+    };
+    return rebuild(
+      thresholds.keys.toList(),
+      starsToUnlockOf: (uuid) =>
+          thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+      onError: onError,
+    );
+  }
+
+  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async {
+    final outlineResult = await QuestRepo.outline(uuid);
+    final outline = outlineResult.result;
+    if (outline == null) {
+      throw (outlineResult.error ?? MissingQuestException());
+    }
+    return outline.toCourseLoOutline();
+  }
 }

@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -16,7 +20,10 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The location that closes a non-embedded activity plan opened as a room/
@@ -28,17 +35,25 @@ import 'package:fluffychat/widgets/matrix.dart';
 @visibleForTesting
 String? activityRoomCloseLocation(Uri uri, String? roomId) {
   if (roomId == null || roomId.isEmpty) return null;
-  final localpart = shortRoomId(roomId);
-  bool matches(PanelToken t) =>
-      (t.type == 'room' || t.type == 'session') &&
-      (t.param ?? '').split('/').first == localpart;
+
+  bool matches(PanelToken t) {
+    if (!t.type.isRoomPanel) return false;
+
+    final param = t.param;
+    if (param == null || param is! RoomTokenParam) return false;
+    return shortRoomId(param.id) == shortRoomId(roomId);
+  }
+
   final panels = parseOpenPanels(uri);
+
   for (final t in panels.left) {
     if (matches(t)) return WorkspaceNav.closeLeft(uri, t);
   }
+
   for (final t in panels.right) {
     if (matches(t)) return WorkspaceNav.closeRight(uri, t);
   }
+
   return null;
 }
 
@@ -51,6 +66,13 @@ class ActivitySessionStartView extends StatelessWidget {
     super.key,
     required this.sessionController,
   });
+
+  String? _archivedRoomName(BuildContext context) {
+    if (!controller.activityRemoved) return null;
+    return controller.activityRoom?.getLocalizedDisplayname(
+      MatrixLocals(L10n.of(context)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +97,18 @@ class ActivitySessionStartView extends StatelessWidget {
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
         final embedded = parseOpenPanels(
           uri,
-        ).left.any((t) => t.type == 'activity');
+        ).left.any((t) => t.type == PanelTypesEnum.activity);
         final courseScoped = activeSpaceIdFor(uri) != null;
 
         return Scaffold(
           appBar: AppBar(
             leadingWidth: 52.0,
-            title: activity == null
+            // With no plan, an archived session falls back to the room name —
+            // it was set from the plan's title at room creation.
+            title: (activity?.title ?? _archivedRoomName(context)) == null
                 ? null
                 : Text(
-                    activity.title,
+                    activity?.title ?? _archivedRoomName(context)!,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: FluffyThemes.isColumnMode(context)
@@ -156,7 +180,23 @@ class ActivitySessionStartView extends StatelessWidget {
           body: SafeArea(
             child: controller.loading
                 ? const Center(child: CircularProgressIndicator.adaptive())
-                : controller.error != null || activity == null
+                // Transient fetch failure — retryable, never the archived view
+                // or the "no longer supported" notice (the fallback ladder in
+                // activities.instructions.md engages only on a confirmed 404).
+                : controller.error != null
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: ErrorIndicator(
+                        message: L10n.of(context).activityLoadFailed,
+                      ),
+                    ),
+                  )
+                // Confirmed removed with no plan recoverable from room state:
+                // archived body from role/goal state alone.
+                : activity == null && controller.activityRemoved
+                ? _ArchivedSessionFallbackBody(controller)
+                : activity == null
                 ? Center(
                     child: ErrorIndicator(
                       message: L10n.of(context).activityNotFound,
@@ -234,6 +274,83 @@ class ActivitySessionStartView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// Archived body for a removed activity with no plan recoverable from room
+/// state (the last rung of the fallback ladder in activities.instructions.md):
+/// the "no longer supported" notice, plus whatever the room itself holds —
+/// each recorded role's occupant, role name, earned star count, and finished
+/// status — so past progress stays reviewable.
+class _ArchivedSessionFallbackBody extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _ArchivedSessionFallbackBody(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final room = controller.activityRoom;
+    // All recorded roles — not just currently-joined members — so a learner
+    // who left the room still shows in the review.
+    final roles = room?.activityRoles?.roles.values.toList() ?? [];
+    final awards = room?.orchestratorAwardedGoals;
+
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 600.0),
+        child: ListView(
+          padding: const EdgeInsets.all(24.0),
+          shrinkWrap: true,
+          children: [
+            Icon(
+              Icons.inventory_2_outlined,
+              size: 48.0,
+              color: theme.colorScheme.secondary,
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              L10n.of(context).activityNoLongerSupported,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 16.0),
+            ...roles.map((role) {
+              final user = room!.unsafeGetUserFromMemoryOrFallback(role.userId);
+              final stars = awards?.awards[role.id]?.length ?? 0;
+              return ListTile(
+                leading: Avatar(
+                  mxContent: user.avatarUrl,
+                  name: user.calcDisplayname(),
+                  userId: role.userId,
+                ),
+                title: Text(user.calcDisplayname()),
+                subtitle: role.role == null ? null : Text(role.role!),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 4.0,
+                  children: [
+                    if (stars > 0) ...[
+                      const Icon(
+                        Icons.star,
+                        size: 18.0,
+                        color: AppConfig.goldLight,
+                      ),
+                      Text('$stars'),
+                    ],
+                    if (role.isFinished)
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Icon(Icons.check_circle_outline, size: 18.0),
+                      ),
+                  ],
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
     );
   }
 }

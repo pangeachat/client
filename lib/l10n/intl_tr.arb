@@ -3675,7 +3675,6 @@
     "startNewSession": "Yeni oturum başlat",
     "joinOpenSession": "Açık oturuma katıl",
     "activityNotFound": "Etkinlik bulunamadı",
-    "levelUp": "Seviyeyi yükselt",
     "myActivities": "Benim etkinliklerim",
     "openToJoin": "Katılmak açık",
     "results": "Sonuçlar",
@@ -9780,7 +9779,6 @@
     "enableNotificationsTitle": "Sohbeti asla kaçırmayın!",
     "enableNotificationsDesc": "Pangea Sohbeti için bildirimlere izin verin ve dil arkadaşlarınızla bağlantıda kalın!",
     "enableNotifications": "Bildirimlere izin ver",
-    "noActivitiesFound": "Bu konu için mevcut etkinlik yok.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9790,10 +9788,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10610,7 +10604,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} toplam {total} yıldız kazanıldı",
+    "activityNoLongerSupported": "Bu etkinlik, daha eski bir etkinlik sürümünde çalışıyordu ve artık desteklenmiyor. Bu oturumda neler olduğunu yine de gözden geçirebilirsiniz.",
+    "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
+    "levelUpChip": "Seviye {level}!",
+    "missingCourseOutline": "Bu kurs artık mevcut değil",
+    "missingCourseOutlineCta": "Bu kurs artık mevcut değil. Yeni bir kurs planı seçin.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Kurs ekleme sayfasını kapat",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

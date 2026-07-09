@@ -3891,7 +3891,6 @@
     "startNewSession": "Пачаць новую сесію",
     "joinOpenSession": "Далучыцца да адкрытай сесіі",
     "activityNotFound": "Дзея не знойдзена",
-    "levelUp": "Павышэнне ўзроўню",
     "myActivities": "Мае дзейнасці",
     "openToJoin": "Адкрыта для далучэння",
     "results": "Вынікі",
@@ -9463,7 +9462,6 @@
     "enableNotificationsTitle": "Ніколі не прапусціце размову!",
     "enableNotificationsDesc": "Дазвольце апавяшчэнні для Pangea Chat і заставайцеся на сувязі з вашымі мовнымі сябрамі!",
     "enableNotifications": "Дазвольце апавяшчэнні",
-    "noActivitiesFound": "Няма даступных актыўнасцяў для гэтай тэмы.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9473,10 +9471,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10282,6 +10276,48 @@
         "type": "String",
         "placeholders": {}
     },
+    "starsEarnedOfTotal": "{earned} з {total} зарабленых зорак",
+    "activityNoLongerSupported": "Гэтая дзейнасць працавала на старой версіі дзейнасцяў і больш не падтрымліваецца. Вы ўсё яшчэ можаце праглядзець, што адбылося ў гэтай сесіі.",
+    "activityLoadFailed": "Не ўдалося загрузіць дзейнасць. Праверце сваё злучэнне і паспрабуйце яшчэ раз.",
+    "levelUpChip": "Узровень {level}!",
+    "missingCourseOutline": "Гэты курс больш недаступны",
+    "missingCourseOutlineCta": "Гэты курс больш недаступны. Выберыце новы план курса.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Зачыніць старонку дадавання курса",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
     "etDisplayName": "Эстонская",
     "abDisplayName": "Абхазская",
     "elDisplayName": "Грэчаская",
@@ -10293,8 +10329,5 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
-        "type": "String",
-        "placeholders": {}
-    }
+    "@elDisplayName": {}
 }

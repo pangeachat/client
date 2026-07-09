@@ -4247,7 +4247,23 @@
     "startNewSession": "Start new session",
     "joinOpenSession": "Join open session",
     "activityNotFound": "Activity not found",
-    "levelUp": "Level up",
+    "starsEarnedOfTotal": "{earned} of {total} stars earned",
+    "@starsEarnedOfTotal": {
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "activityNoLongerSupported": "This activity ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
+    "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
+    "levelUpChip": "Level {level}!",
+    "@levelUpChip": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
     "myActivities": "My activities",
     "openToJoin": "Open to join",
     "results": "Results",
@@ -4828,7 +4844,6 @@
     "enableNotificationsTitle": "Never miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
-    "noActivitiesFound": "No activities available for this topic.",
     "numObjectives": "{count} objectives",
     "@numObjectives": {
         "type": "String",
@@ -5013,8 +5028,8 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Saved activities and stars", 
-    "customizePollLabel": "Customize poll", 
+    "starListLabel": "Saved activities and stars",
+    "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
     "analyticsAndSettingsLabel": "Analytics and Settings options",
@@ -5026,5 +5041,13 @@
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian", 
     "elDisplayName": "Greek",
-    "etDisplayName": "Estonian"
+    "etDisplayName": "Estonian",
+    "filteredActivitiesLabel": "Filtered activity list",
+    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
+    "mapZoomLabel": "Map zoom controls",
+    "activityMapLabel": "Activity map",
+    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
+    "missingCourseOutline": "This course is no longer available",
+    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan.",
+    "closeAddCoursePage": "Close add course page"
 }

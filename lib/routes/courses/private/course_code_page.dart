@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
@@ -17,7 +18,27 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
-  const CourseCodePage({super.key});
+  /// A code delivered by an inbound join link (the `addcourse` token's
+  /// `private/<code>` leaf — see LegacyRedirects, #7524). Prefilled and
+  /// submitted once, running the exact join a manual entry performs; on
+  /// failure the page stays up with the code in the field. The trigger is
+  /// consumed before the submit: the coded URL is history-REPLACED with the
+  /// manual `private` page, so browser back or a refresh never re-fires the
+  /// join.
+  final String? initialCode;
+
+  const CourseCodePage({super.key, this.initialCode});
+
+  /// Whether a change of [initialCode] (from [previous] to [next] — null for
+  /// a fresh mount) should trigger the one-shot prefill + submit. Fires only
+  /// for a NEW non-empty code: the null the URL-consuming replace delivers,
+  /// and a rebuild carrying the same code, must not re-fire. Pure —
+  /// unit-tested (course_code_auto_submit_test.dart).
+  static bool shouldAutoSubmit(String? previous, String? next) {
+    final code = next?.trim();
+    if (code == null || code.isEmpty) return false;
+    return previous?.trim() != code;
+  }
 
   @override
   State<CourseCodePage> createState() => CourseCodePageState();
@@ -30,6 +51,41 @@ class CourseCodePageState extends State<CourseCodePage> {
   void initState() {
     super.initState();
     _codeController.addListener(() => setState(() {}));
+    if (CourseCodePage.shouldAutoSubmit(null, widget.initialCode)) {
+      _autoSubmit();
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant CourseCodePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // A new code arriving while the page is already mounted (an in-app deep
+    // link changing only the token param) must prefill and submit too —
+    // initState won't re-run for a param-only change.
+    if (CourseCodePage.shouldAutoSubmit(
+      oldWidget.initialCode,
+      widget.initialCode,
+    )) {
+      _autoSubmit();
+    }
+  }
+
+  /// One-shot inbound-code submit. Consumes its trigger first: the coded URL
+  /// is history-REPLACED with the manual `private` page, so back after a
+  /// successful join and refresh after a failed one both land on the manual
+  /// page without resubmitting.
+  void _autoSubmit() {
+    _codeController.text = widget.initialCode!.trim();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      context.replace(
+        WorkspaceNav.openAddCoursePage(
+          GoRouterState.of(context).uri,
+          AddCourseSubpageEnum.private,
+        ),
+      );
+      _submit();
+    });
   }
 
   @override
@@ -51,6 +107,8 @@ class CourseCodePageState extends State<CourseCodePage> {
       context: context,
       client: client,
     );
+    if (!mounted) return;
+
     final joinResp = result.result;
     if (joinResp == null) return;
 
@@ -59,11 +117,11 @@ class CourseCodePageState extends State<CourseCodePage> {
 
     final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
     final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
+    if (!mounted || joinedRoomId == null) return;
 
     room.isSpace
         ? context.go(
-            WorkspaceNav.openCourseFilter(
+            WorkspaceNav.openCourse(
               GoRouterState.of(context).uri,
               joinedRoomId,
             ),
@@ -83,7 +141,7 @@ class CourseCodePageState extends State<CourseCodePage> {
           onPressed: () => context.go(
             WorkspaceNav.setSection(
               GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
+              const AddCoursePanelToken(),
               keepRoom: false,
             ),
           ),

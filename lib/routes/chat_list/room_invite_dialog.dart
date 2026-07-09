@@ -53,7 +53,7 @@ class RoomInviteDialog {
 
         room.isSpace
             ? context.go(
-                WorkspaceNav.openCourseFilter(
+                WorkspaceNav.openCourse(
                   GoRouterState.of(context).uri,
                   joinedRoomId,
                 ),

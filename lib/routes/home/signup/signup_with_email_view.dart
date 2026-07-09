@@ -19,6 +19,7 @@ class SignupWithEmailView extends StatelessWidget {
         key: controller.formKey,
         child: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 450),
               child: Row(

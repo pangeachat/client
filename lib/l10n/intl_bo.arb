@@ -3171,7 +3171,6 @@
     "startNewSession": "གསར་འཛུལ་སྤྱོད་ལས་སྤྱོད་འགྱོ",
     "joinOpenSession": "གསར་འཛུལ་སྤྱོད་ལས་སྤྱོད་འགྱོ",
     "activityNotFound": "ལས་ཀ་མེད",
-    "levelUp": "ལོ་བསྒྱབ་",
     "myActivities": "ངའི་ལས་ཀ",
     "openToJoin": "གནང་བའི་སྤྱོད་ལས",
     "results": "ལོག",
@@ -9121,7 +9120,6 @@
     "enableNotificationsTitle": "Nek se miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
-    "noActivitiesFound": "No activities available for this topic.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9131,10 +9129,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9951,7 +9945,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} of {total} stars earned",
+    "activityNoLongerSupported": "Ita actividada ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
+    "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
+    "levelUpChip": "Level {level}!",
+    "missingCourseOutline": "Ita course is no longer available",
+    "missingCourseOutlineCta": "Ita course is no longer available. Pick a new course plan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zavři stránku pro přidání kurzu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

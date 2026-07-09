@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
@@ -321,18 +322,11 @@ class WorldMapPinsManager {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
     try {
-      final courseRooms = client.joinedCourseRooms;
-      final uuids = courseRooms.map((r) => r.coursePlan!.uuid).toList();
-      final thresholds = <String, int>{
-        for (final r in courseRooms)
-          r.coursePlan!.uuid:
-              r.teacherMode.starsToUnlockObjective ??
-              kDefaultStarsToUnlockObjective,
-      };
-      await _objectiveCache.rebuild(
-        uuids,
-        starsToUnlockOf: (uuid) =>
-            thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+      final uuids = client.joinedCourseRooms
+          .map((r) => r.coursePlan!.uuid)
+          .toList();
+      await _objectiveCache.rebuildFromJoinedCourses(
+        client,
         onError: (uuid, e, s) => ErrorHandler.logError(
           e: e,
           s: s,
@@ -382,7 +376,7 @@ class WorldMapPinsManager {
     try {
       final outline = (await QuestRepo.outline(
         coursePlanId,
-      )).toCourseLoOutline();
+      )).result?.toCourseLoOutline();
       // A re-scope may have raced ahead; only apply if still the active scope.
       if (_scopedCourseOutlineId != coursePlanId) return;
       _scopedCourseOutline = outline;
@@ -393,7 +387,24 @@ class WorldMapPinsManager {
   }
 
   Future<void> loadCourseScopedPins(String courseId) async {
-    _pins = await QuestRepo.questPins(courseId);
+    final questResult = await QuestRepo.quest(courseId);
+    final quest = questResult.result;
+    if (quest == null) {
+      _pins = [];
+      return;
+    }
+
+    final activityCardsResult = await QuestRepo.questActivityCards(
+      quest.learningObjectiveIds,
+      quest.targetLanguage,
+    );
+    final activityCards = activityCardsResult.result;
+    if (activityCards == null) {
+      _pins = [];
+      return;
+    }
+
+    _pins = activityCards;
   }
 
   Future<void> loadWorldScopedPins({

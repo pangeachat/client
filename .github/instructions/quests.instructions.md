@@ -24,9 +24,19 @@ Every surface that preferences by progression reads the *same* shared resolver, 
 
 - the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; per-activity star progress renders as a fill (see its pin-display section);
 - the **activity start page** — opens directly into play for every activity (nothing is gated), showing star progress and, where relevant, that this is a next-Mission activity;
+- the **course panel's star display** (below);
 - the course/quest list and the powerups cluster, as they are built for v3.
 
 The teacher-overridable star threshold is part of the cross-repo rule (org doc); this doc only resolves it from local state.
+
+## Star display on the course panel
+
+The course panel tells the learner how far along they are, at two grains, computed from the same resolver inputs (joined-course outlines + per-activity stars from session rooms) so the numbers can never disagree with the map:
+
+- **Per Mission**: earned stars over the satisfaction threshold (the teacher-overridable stars-to-unlock), with a progress bar. Stars past the threshold display raw (e.g. 12/7 — surplus effort shows); the bar clamps at full.
+- **Per quest (the panel header)**: a total star count summing each Mission's stars **capped at its threshold** — one over-practiced Mission can't inflate quest progress — over a bar that fills toward the sum of the quest's thresholds.
+
+A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
 
 ## Future Work
 

@@ -7,64 +7,227 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The single-column (mobile/narrow) rendering of [WorldUserCluster] — the
 /// right column's entry point, pinned to the top of the safe area as a
 /// horizontal bar instead of the web cluster's vertical column
-/// (routing.instructions.md, "Single-column analytics bar"). Same data, same
-/// tokens, same tap destinations as the cluster; only the layout and the
-/// collapsed-on-full-screen behavior are mobile-specific.
+/// (routing.instructions.md, "Single-column analytics nav bar"). Same data,
+/// same tokens, same tap destinations as the cluster.
 ///
-/// This widget is the bar's ONLY Matrix-aware layer: it subscribes to the
-/// same streams the cluster does (language, construct updates, awarded-goal
-/// room state, derived analytics) and hands the resolved display values to
-/// [AnalyticsBarTemporaryExpansion] as plain fields, so everything below it
-/// is testable without a live Client.
+/// Always the FULL bar: the shell mounts it only on surfaces where it is
+/// navigation — the map/cavity ground and the right-column panels it heads.
+/// A full-screen chat hosts [AnalyticsHeaderAvatar] in its own app bar
+/// instead (no floating chrome stacked over page content), and route-driven
+/// detail pages show nothing.
 ///
 /// Content only — the caller (the workspace shell) is responsible for
-/// [Positioned] placement, width bounds (the expanded layout is a [Row] with
-/// an [Expanded] middle, so it must be given a bounded width), and safe-area
+/// [Positioned] placement, width bounds (the layout is a [Row] with an
+/// [Expanded] middle, so it must be given a bounded width), and safe-area
 /// padding.
-class WorldAnalyticsBar extends StatefulWidget {
-  /// True on full-screen surfaces (a live chat, an activity start/join): the
-  /// bar renders as the single avatar circle until tapped, per the Figma
-  /// collapsed component.
-  final bool collapsed;
+class WorldAnalyticsBar extends StatelessWidget {
+  const WorldAnalyticsBar({super.key});
 
-  const WorldAnalyticsBar({required this.collapsed, super.key});
-
-  /// How long a tap on the collapsed avatar keeps the bar temporarily
-  /// expanded before it auto-collapses, absent further interaction or focus
-  /// (routing.instructions.md, "Single-column analytics bar"). Overridable
-  /// only for tests, so they don't have to wait out the real duration.
-  @visibleForTesting
-  static Duration temporaryExpansionDuration = const Duration(seconds: 3);
+  /// The bar's rendered height: the avatar column governs the Row —
+  /// avatar (56) + flag gap (6) + flag (28). The shell's
+  /// `analyticsBarAllowance` derives from this so content placed "below the
+  /// bar" actually clears it (a widget test pins the rendered height to this
+  /// constant).
+  static const double expandedHeight = 90.0;
 
   @override
-  State<WorldAnalyticsBar> createState() => _WorldAnalyticsBarState();
+  Widget build(BuildContext context) => _AnalyticsScope(
+    builder: (context, s) => AnalyticsBarView(
+      avatarUrl: s.avatarUrl,
+      displayName: s.displayName,
+      l2: s.l2,
+      starsCount: s.starsCount,
+      grammarCount: s.grammarCount,
+      vocabCount: s.vocabCount,
+      level: s.level,
+      xpProgress: s.xpProgress,
+      isInitializing: s.isInitializing,
+      levelUpdates: s.levelUpdates,
+      onTrackerTap: (tab) => _openAnalytics(context, tab),
+      onAvatarTap: () => _openProfile(context),
+      onLevelTap: () => _openLevel(context),
+      onFlagTap: () => _openLearningSettings(context),
+    ),
+  );
 }
 
-class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
+/// The analytics avatar as a CHAT HEADER action: the circle wearing the XP
+/// ring, level badge, and L2 flag, rendered inside the full-screen chat /
+/// session app bar (routing.instructions.md, "Single-column analytics nav
+/// bar"). A plain button — tapping it opens the analytics summary panel,
+/// whose header IS the full bar. This replaced the floating collapsed avatar
+/// (and its temporary-expansion timer): chrome stacked over page content was
+/// error-prone, and a timed control was a WCAG liability.
+class AnalyticsHeaderAvatar extends StatelessWidget {
+  const AnalyticsHeaderAvatar({super.key});
+
+  @override
+  Widget build(BuildContext context) => _AnalyticsScope(
+    builder: (context, s) => Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: CollapsedAvatarView(
+        avatarUrl: s.avatarUrl,
+        displayName: s.displayName,
+        l2: s.l2,
+        level: s.level,
+        xpProgress: s.xpProgress,
+        levelUpdates: s.levelUpdates,
+        // App-bar sized: the full-size circle is built for open floating
+        // space; at 0.75 the ring + badge + flag fit the toolbar's height.
+        scale: 0.75,
+        onTap: () => _openAnalyticsSummary(context),
+      ),
+    ),
+  );
+}
+
+/// Single-column: a right panel takes the section's slot, so opening one
+/// closes an open section sheet (chats list, Courses hub, course card) —
+/// otherwise X-ing the panel reveals a stale sheet instead of the map. A live
+/// room persists (the header-avatar loop returns to it). The bar renders on
+/// narrow only, but gate on the breakpoint so a mid-resize tap stays correct.
+bool _closeSections(BuildContext context) =>
+    !FluffyThemes.isColumnMode(context);
+
+/// Open the right-docked analytics panel on [tab]'s summary — identical to
+/// the web cluster's tracker taps.
+void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
+  WorkspaceNav.openAnalytics(
+    GoRouterState.of(context).uri,
+    subpage: tab.indicator,
+    closeSections: _closeSections(context),
+  ),
+);
+
+/// The header avatar opens the analytics summary — the panel whose header is
+/// the full bar, so every bar destination is one more tap away.
+void _openAnalyticsSummary(BuildContext context) => context.go(
+  WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+    AnalyticsPanelToken(
+      AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+    ),
+  ], closeSections: _closeSections(context)),
+);
+
+/// The bar's avatar opens the profile + settings panel, same as the cluster.
+void _openProfile(BuildContext context) => context.go(
+  WorkspaceNav.openSettings(
+    GoRouterState.of(context).uri,
+    closeSections: _closeSections(context),
+  ),
+);
+
+/// The level badge opens the level analytics tab, same as the cluster.
+void _openLevel(BuildContext context) => context.go(
+  WorkspaceNav.openAnalytics(
+    GoRouterState.of(context).uri,
+    subpage: ProgressIndicatorEnum.level,
+    closeSections: _closeSections(context),
+  ),
+);
+
+/// The L2 flag opens the learning settings page directly, same as the
+/// cluster.
+void _openLearningSettings(BuildContext context) => context.go(
+  WorkspaceNav.openSettings(
+    GoRouterState.of(context).uri,
+    page: 'learning',
+    closeSections: _closeSections(context),
+  ),
+);
+
+/// The resolved display values every analytics-nav rendering consumes.
+class AnalyticsSnapshot {
+  final Uri? avatarUrl;
+  final String? displayName;
+  final LanguageModel? l2;
+  final int starsCount;
+  final int grammarCount;
+  final int vocabCount;
+  final int level;
+  final double xpProgress;
+  final bool isInitializing;
+
+  /// Level-change signal for the badge's celebration — the same
+  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
+  /// already subscription-gated. A plain stream value so the renderings below
+  /// stay Matrix-free; see [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
+
+  const AnalyticsSnapshot({
+    required this.avatarUrl,
+    required this.displayName,
+    required this.l2,
+    required this.starsCount,
+    required this.grammarCount,
+    required this.vocabCount,
+    required this.level,
+    required this.xpProgress,
+    required this.isInitializing,
+    required this.levelUpdates,
+  });
+}
+
+/// The ONLY Matrix-aware layer of the analytics nav: subscribes to the same
+/// streams the cluster does (language, construct updates, awarded-goal room
+/// state, derived analytics, own profile) and hands the resolved
+/// [AnalyticsSnapshot] to [builder]. Everything below it renders plain values
+/// and is testable without a live Client.
+class _AnalyticsScope extends StatefulWidget {
+  final Widget Function(BuildContext, AnalyticsSnapshot) builder;
+
+  const _AnalyticsScope({required this.builder});
+
+  @override
+  State<_AnalyticsScope> createState() => _AnalyticsScopeState();
+}
+
+class _AnalyticsScopeState extends State<_AnalyticsScope> {
   bool _profileLoaded = false;
 
   final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
+  /// See [AnalyticsSnapshot.levelUpdates]. Created once so consumer rebuilds
+  /// don't churn the celebration's subscription; the subscription gate (the
+  /// old snackbar's) is applied per event.
+  Stream<LevelUpdate>? _levelUpdates;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _levelUpdates ??= Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .levelUpdateStream
+        .stream
+        .where(
+          (_) => MatrixState
+              .pangeaController
+              .subscriptionController
+              .showSubscriptionGatedContent,
+        );
     if (_profileLoaded) return;
     _profileLoaded = true;
     _loadProfile();
@@ -88,31 +251,6 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
     }
   }
 
-  /// Open the right-docked analytics panel on [tab]'s summary — identical to
-  /// the web cluster's tracker taps.
-  void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      PanelToken('analytics', tab.name),
-    ]),
-  );
-
-  /// The avatar opens the profile + settings panel, same as the cluster.
-  void _openProfile() =>
-      context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
-
-  /// The level badge opens the level analytics tab, same as the cluster.
-  void _openLevel() => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      const PanelToken('analytics', 'level'),
-    ]),
-  );
-
-  /// The L2 flag opens the learning settings page directly, same as the
-  /// cluster.
-  void _openLearningSettings() => context.go(
-    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
-  );
-
   @override
   Widget build(BuildContext context) {
     final matrix = Matrix.of(context);
@@ -121,7 +259,7 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
 
     // The same data wiring as the cluster's pill, nested so every update
     // (language switch, construct counts, awarded stars, level/XP) rebuilds
-    // the expansion below with fresh plain values.
+    // the consumer below with fresh plain values.
     return StreamBuilder(
       stream: MatrixState.pangeaController.userController.languageStream.stream,
       builder: (context, _) {
@@ -146,24 +284,23 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
                     final derived = snapshot.data ?? service.cachedDerivedData;
                     return ListenableBuilder(
                       listenable: Listenable.merge([_avatarUrl, _displayName]),
-                      builder: (context, _) => AnalyticsBarTemporaryExpansion(
-                        collapsed: widget.collapsed,
-                        avatarUrl: _avatarUrl.value,
-                        displayName: _displayName.value,
-                        l2: l2,
-                        starsCount: stars,
-                        grammarCount: grammar,
-                        vocabCount: vocab,
-                        level: derived?.level ?? 1,
-                        xpProgress: (derived?.levelProgress ?? 0.0).clamp(
-                          0.0,
-                          1.0,
+                      builder: (context, _) => widget.builder(
+                        context,
+                        AnalyticsSnapshot(
+                          avatarUrl: _avatarUrl.value,
+                          displayName: _displayName.value,
+                          l2: l2,
+                          starsCount: stars,
+                          grammarCount: grammar,
+                          vocabCount: vocab,
+                          level: derived?.level ?? 1,
+                          xpProgress: (derived?.levelProgress ?? 0.0).clamp(
+                            0.0,
+                            1.0,
+                          ),
+                          isInitializing: service.isInitializing,
+                          levelUpdates: _levelUpdates,
                         ),
-                        isInitializing: service.isInitializing,
-                        onTrackerTap: _openAnalytics,
-                        onAvatarTap: _openProfile,
-                        onLevelTap: _openLevel,
-                        onFlagTap: _openLearningSettings,
                       ),
                     );
                   },
@@ -177,22 +314,16 @@ class _WorldAnalyticsBarState extends State<WorldAnalyticsBar> {
   }
 }
 
-/// The collapse/expand/timer state machine, isolated from the Matrix/analytics
+/// The full bar's plain-values rendering, isolated from the Matrix/analytics
 /// data plumbing above so it is unit-testable without a live Client: every
 /// value it renders (avatar, name, language, tracker counts, level, XP
 /// progress) is a plain field, and every tap is a plain callback. Nothing at
 /// or below this widget may call `Matrix.of`, `GoRouterState.of`, or
-/// `context.go` — values and callbacks only. Owns:
-///  - resetting to the base [collapsed] state whenever that flips (the
-///    surface went full-screen or stopped being full-screen);
-///  - the ~3s temporary-expansion timer a tap on the collapsed avatar starts;
-///  - suspending/restarting that timer while a descendant holds focus, so
-///    keyboard/switch/screen-reader users are never raced by a timeout
-///    (WCAG 2.2.1 — routing.instructions.md, "Single-column analytics bar");
-///  - restarting the timer on any tap inside the bar.
-@visibleForTesting
-class AnalyticsBarTemporaryExpansion extends StatefulWidget {
-  final bool collapsed;
+/// `context.go` — values and callbacks only. (The old temporary-expansion
+/// state machine — collapsed rendering, ~3s timer, focus suspension — is
+/// gone: full-screen surfaces host [AnalyticsHeaderAvatar] in their own app
+/// bar instead of a floating collapsed bar.)
+class AnalyticsBarView extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
   final LanguageModel? l2;
@@ -206,6 +337,10 @@ class AnalyticsBarTemporaryExpansion extends StatefulWidget {
 
   /// True while analytics are still loading; the trackers shimmer.
   final bool isInitializing;
+
+  /// Level-change signal for the badge's celebration (a plain stream value;
+  /// see [AnalyticsSnapshot.levelUpdates]). Null renders no celebration.
+  final Stream<LevelUpdate>? levelUpdates;
 
   final void Function(AnalyticsPanelTab) onTrackerTap;
   final VoidCallback onAvatarTap;
@@ -224,8 +359,7 @@ class AnalyticsBarTemporaryExpansion extends StatefulWidget {
   )?
   flagBuilder;
 
-  const AnalyticsBarTemporaryExpansion({
-    required this.collapsed,
+  const AnalyticsBarView({
     required this.avatarUrl,
     required this.displayName,
     required this.l2,
@@ -239,154 +373,39 @@ class AnalyticsBarTemporaryExpansion extends StatefulWidget {
     required this.onAvatarTap,
     required this.onLevelTap,
     required this.onFlagTap,
+    this.levelUpdates,
     this.flagBuilder,
     super.key,
   });
 
   @override
-  State<AnalyticsBarTemporaryExpansion> createState() =>
-      _AnalyticsBarTemporaryExpansionState();
-}
-
-class _AnalyticsBarTemporaryExpansionState
-    extends State<AnalyticsBarTemporaryExpansion> {
-  final FocusNode _focusScopeNode = FocusNode(
-    debugLabel: 'WorldAnalyticsBar temporary expansion',
+  Widget build(BuildContext context) => _ExpandedAnalyticsBar(
+    avatarUrl: avatarUrl,
+    displayName: displayName,
+    l2: l2,
+    starsCount: starsCount,
+    grammarCount: grammarCount,
+    vocabCount: vocabCount,
+    level: level,
+    xpProgress: xpProgress,
+    isInitializing: isInitializing,
+    levelUpdates: levelUpdates,
+    onTrackerTap: onTrackerTap,
+    onAvatarTap: onAvatarTap,
+    onLevelTap: onLevelTap,
+    onFlagTap: onFlagTap,
+    flagBuilder: flagBuilder,
   );
-
-  bool _temporarilyExpanded = false;
-  Timer? _collapseTimer;
-  bool _focusWithin = false;
-
-  bool get _expanded => !widget.collapsed || _temporarilyExpanded;
-
-  @override
-  void didUpdateWidget(covariant AnalyticsBarTemporaryExpansion oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Base state changed from full-screen to non-full-screen (or vice versa):
-    // the temporary expansion no longer means anything, so reset it and drop
-    // any pending auto-collapse.
-    if (oldWidget.collapsed != widget.collapsed) {
-      _temporarilyExpanded = false;
-      _cancelTimer();
-    }
-  }
-
-  @override
-  void dispose() {
-    _cancelTimer();
-    _focusScopeNode.dispose();
-    super.dispose();
-  }
-
-  void _cancelTimer() {
-    _collapseTimer?.cancel();
-    _collapseTimer = null;
-  }
-
-  /// (Re)starts the auto-collapse countdown, unless a descendant currently
-  /// holds focus — in which case the timer stays suspended until focus
-  /// leaves (see [_onFocusChange]).
-  void _restartTimer() {
-    _cancelTimer();
-    if (_focusWithin) return;
-    _collapseTimer = Timer(
-      WorldAnalyticsBar.temporaryExpansionDuration,
-      _autoCollapse,
-    );
-  }
-
-  void _autoCollapse() {
-    if (!mounted) return;
-    setState(() => _temporarilyExpanded = false);
-  }
-
-  void _onFocusChange(bool hasFocus) {
-    _focusWithin = hasFocus;
-    if (hasFocus) {
-      // A focused descendant must never be raced by the timeout (WCAG 2.2.1).
-      _cancelTimer();
-    } else if (_temporarilyExpanded) {
-      // Focus left the bar while it was only temporarily expanded: resume the
-      // countdown from a fresh window rather than collapsing immediately.
-      _restartTimer();
-    }
-  }
-
-  void _expandTemporarily() {
-    setState(() => _temporarilyExpanded = true);
-    _restartTimer();
-  }
-
-  /// Any tap inside an already-expanded bar restarts the countdown so an
-  /// active user (tapping a tracker, opening settings) is never collapsed out
-  /// from under them mid-interaction.
-  void _onInteraction() {
-    if (widget.collapsed && _temporarilyExpanded) _restartTimer();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final content = _expanded
-        ? _ExpandedAnalyticsBar(
-            avatarUrl: widget.avatarUrl,
-            displayName: widget.displayName,
-            l2: widget.l2,
-            starsCount: widget.starsCount,
-            grammarCount: widget.grammarCount,
-            vocabCount: widget.vocabCount,
-            level: widget.level,
-            xpProgress: widget.xpProgress,
-            isInitializing: widget.isInitializing,
-            onTrackerTap: (tab) {
-              _onInteraction();
-              widget.onTrackerTap(tab);
-            },
-            onAvatarTap: () {
-              _onInteraction();
-              widget.onAvatarTap();
-            },
-            onLevelTap: () {
-              _onInteraction();
-              widget.onLevelTap();
-            },
-            onFlagTap: () {
-              _onInteraction();
-              widget.onFlagTap();
-            },
-            flagBuilder: widget.flagBuilder,
-          )
-        : _CollapsedAnalyticsAvatar(
-            avatarUrl: widget.avatarUrl,
-            displayName: widget.displayName,
-            l2: widget.l2,
-            level: widget.level,
-            xpProgress: widget.xpProgress,
-            onTap: _expandTemporarily,
-            flagBuilder: widget.flagBuilder,
-          );
-
-    return Focus(
-      focusNode: _focusScopeNode,
-      onFocusChange: _onFocusChange,
-      // A parent Focus that only tracks descendant focus, not a stop of its
-      // own — descendants (trackers, avatar, flag) keep their own
-      // focusability; this just observes whether any of them is focused.
-      skipTraversal: true,
-      canRequestFocus: false,
-      child: content,
-    );
-  }
 }
 
 /// The full horizontal bar: level badge at the left end, the gold powerups
 /// pill (Stars / Grammar / Vocabulary) in the middle, the avatar with its XP
 /// ring at the right, and the L2 flag below the avatar
-/// (routing.instructions.md, "Single-column analytics bar"). Reuses the
+/// (routing.instructions.md, "Single-column analytics nav bar"). Reuses the
 /// cluster's visual atoms ([ClusterAvatar], [ClusterTrackerButton],
 /// [ClusterLevelMedal], [ClusterLanguageFlag]) so the look and the
 /// tooltip/semantics labels stay identical to web. Plain values only — no
-/// Matrix or router reads (see [AnalyticsBarTemporaryExpansion]).
+/// Matrix or router reads (see [AnalyticsBarView]).
 class _ExpandedAnalyticsBar extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
@@ -397,6 +416,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
   final int level;
   final double xpProgress;
   final bool isInitializing;
+  final Stream<LevelUpdate>? levelUpdates;
   final void Function(AnalyticsPanelTab) onTrackerTap;
   final VoidCallback onAvatarTap;
   final VoidCallback onLevelTap;
@@ -420,6 +440,7 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
     required this.level,
     required this.xpProgress,
     required this.isInitializing,
+    required this.levelUpdates,
     required this.onTrackerTap,
     required this.onAvatarTap,
     required this.onLevelTap,
@@ -428,7 +449,9 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
   });
 
   static const double _avatarSize = 56.0;
-  static const double _xpStroke = 4.0;
+
+  /// Gap between the pill+badge unit and the avatar column.
+  static const double _pillAvatarGap = 12.0;
 
   // The mobile flag is smaller than web's 52x36, per the Figma bar frame.
   static const double _flagWidth = 40.0;
@@ -444,42 +467,34 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Material(
-            type: MaterialType.transparency,
-            child: ClusterLevelMedal(level: level, onTap: onLevelTap),
-          ),
-          const SizedBox(width: 12),
           Expanded(
-            child: Center(
+            // Right-justified, up against the avatar — the pill and avatar
+            // read as one cluster at the bar's right end, like the web
+            // cluster's tight column.
+            child: Align(
+              alignment: Alignment.centerRight,
+              // The medal + XP-bordered pill are ONE unit, exactly like the web
+              // cluster rotated horizontal: the pill's frame IS the XP ring
+              // (gold growing from the badge's top, clockwise, meeting at its
+              // bottom) and the level medal overhangs the pill's LEFT end —
+              // the mirror of web's bottom-center overhang.
               child: _PowerupsRow(
-                starsCount: starsCount,
-                grammarCount: grammarCount,
-                vocabCount: vocabCount,
-                isInitializing: isInitializing,
                 onTap: onTrackerTap,
+                onLevelTap: () => onLevelTap(),
+                l2: l2,
+                levelUpdates: levelUpdates,
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: _pillAvatarGap),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CustomPaint(
-                painter: CircularXpRingPainter(
-                  progress: xpProgress,
-                  trackColor: const Color.fromARGB(130, 135, 135, 135),
-                  progressColor: AppConfig.goldByTheme(context),
-                  stroke: _xpStroke,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(_xpStroke),
-                  child: ClusterAvatar(
-                    avatarUrl: avatarUrl,
-                    name: displayName,
-                    onTap: onAvatarTap,
-                    size: _avatarSize,
-                  ),
-                ),
+              ClusterAvatar(
+                avatarUrl: avatarUrl,
+                name: displayName,
+                onTap: onAvatarTap,
+                size: _avatarSize,
               ),
               if (l2 != null)
                 Padding(
@@ -513,82 +528,312 @@ class _ExpandedAnalyticsBar extends StatelessWidget {
 /// labels, same shimmer-while-initializing as the cluster's pill, so the two
 /// surfaces never disagree — but all values arrive as plain fields.
 class _PowerupsRow extends StatelessWidget {
-  final int starsCount;
-  final int grammarCount;
-  final int vocabCount;
-  final bool isInitializing;
   final void Function(AnalyticsPanelTab) onTap;
+  final VoidCallback onLevelTap;
+  final LanguageModel? l2;
+
+  /// Level-change signal for the medal's celebration; see
+  /// [LevelUpBadgeCelebration].
+  final Stream<LevelUpdate>? levelUpdates;
 
   const _PowerupsRow({
-    required this.starsCount,
-    required this.grammarCount,
-    required this.vocabCount,
-    required this.isInitializing,
     required this.onTap,
+    required this.onLevelTap,
+    required this.l2,
+    required this.levelUpdates,
+  });
+
+  static const double _xpStroke = 5.0;
+  static const double _innerRadius = 20.0;
+
+  // Pill interior: extra left inset so the trackers clear the hex badge's
+  // inner half, tight vertical padding for the compact bar-height pill.
+  static const double _pillTrackerClearance = 10.0;
+  static const double _pillVerticalPadding = 2.0;
+  static const double _pillRightPadding = 14.0;
+
+  /// Half the hex badge's width — how far it sticks out past the pill's
+  /// left edge (the Figma overhang).
+  static final double _hexBadgeOverhang = _badgeWidth / 2;
+
+  // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
+  // defaults, per the Figma bar frame.
+  static const double _badgeWidth = 42.0;
+  static const double _badgeHeight = 36.0;
+  static const double _badgeFontSize = 16.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final matrix = Matrix.of(context);
+    final client = matrix.client;
+    final service = matrix.analyticsDataService;
+    final l2 = this.l2;
+
+    return StreamBuilder(
+      stream: service.updateDispatcher.constructUpdateStream.stream,
+      builder: (context, _) {
+        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
+        final grammar = service.numConstructs(ConstructTypeEnum.morph);
+
+        final content = FutureBuilder<DerivedAnalyticsDataModel>(
+          future: l2 != null
+              ? service.derivedData(l2.langCodeShort)
+              : Future.value(DerivedAnalyticsDataModel()),
+          builder: (context, snapshot) {
+            final derived = snapshot.data ?? service.cachedDerivedData;
+            final level = derived?.level ?? 1;
+            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+
+            return Stack(
+              alignment: Alignment.centerLeft,
+              // The badge's level-up celebration paints just outside the
+              // pill unit's bounds (pulse + chip); don't clip it. The
+              // celebration is decoration-only (IgnorePointer), so the
+              // hit-test caveat below still only concerns the badge itself.
+              clipBehavior: Clip.none,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _hexBadgeOverhang),
+                  child: CustomPaint(
+                    painter: XpBorderPainter(
+                      progress: progress,
+                      trackColor: const Color.fromARGB(130, 135, 135, 135),
+                      progressColor: AppConfig.goldByTheme(context),
+                      stroke: _xpStroke,
+                      radius: _innerRadius + _xpStroke / 2,
+                      anchor: XpBorderAnchor.leftCenter,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(_xpStroke),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surfaceContainer,
+                          borderRadius: BorderRadius.circular(_innerRadius),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        padding: EdgeInsets.fromLTRB(
+                          _hexBadgeOverhang + _pillTrackerClearance,
+                          _pillVerticalPadding,
+                          _pillRightPadding,
+                          _pillVerticalPadding,
+                        ),
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              StreamBuilder(
+                                stream: client.onRoomState.stream.where(
+                                  (e) =>
+                                      e.state.type ==
+                                      PangeaEventTypes.orchestratorAwardedGoals,
+                                ),
+                                builder: (context, _) {
+                                  final stars = l2 != null
+                                      ? client.totalStarsEarned(l2)
+                                      : 0;
+
+                                  return ClusterTrackerButton(
+                                    indicator: ProgressIndicatorEnum.stars,
+                                    count: stars,
+                                    onTap: () =>
+                                        onTap(AnalyticsPanelTab.sessions),
+                                  );
+                                },
+                              ),
+                              ClusterTrackerButton(
+                                indicator: ProgressIndicatorEnum.morphsUsed,
+                                count: grammar,
+                                onTap: () => onTap(AnalyticsPanelTab.grammar),
+                              ),
+                              ClusterTrackerButton(
+                                indicator: ProgressIndicatorEnum.wordsUsed,
+                                count: vocab,
+                                onTap: () => onTap(AnalyticsPanelTab.vocab),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Half-overlapping the pill's left end, vertically centered
+                // (the Figma hexagon). Kept INSIDE the Stack's bounds — a
+                // negative Positioned paints but does not hit-test, which
+                // silently killed the badge's tap (test-caught).
+                Positioned(
+                  left: 0,
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: levelUpdates,
+                      child: _HexLevelBadge(
+                        level: level,
+                        onTap: onLevelTap,
+                        width: _badgeWidth,
+                        height: _badgeHeight,
+                        fontSize: _badgeFontSize,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+        return service.isInitializing
+            ? Shimmer.fromColors(
+                baseColor: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHighest,
+                highlightColor: Theme.of(context).colorScheme.surface,
+                child: content,
+              )
+            : content;
+      },
+    );
+  }
+}
+
+/// The narrow bar's level badge: the Figma hexagon (pointy left/right, flat
+/// top/bottom) with a darker gold border and the level number centered —
+/// unlike the web cluster's tailed shield medal, which hangs its number low
+/// and carries the notched ribbon bottom the mobile design drops. Same
+/// semantics contract as [ClusterLevelMedal] (named button, tap opens Level).
+class _HexLevelBadge extends StatelessWidget {
+  final int level;
+  final VoidCallback onTap;
+  final double width;
+  final double height;
+  final double fontSize;
+
+  const _HexLevelBadge({
+    required this.level,
+    required this.onTap,
+    this.width = 48.0,
+    this.height = 42.0,
+    this.fontSize = 18.0,
   });
 
   @override
   Widget build(BuildContext context) {
-    final content = Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(100),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Material(
-        type: MaterialType.transparency,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.stars,
-              count: starsCount,
-              onTap: () => onTap(AnalyticsPanelTab.sessions),
+    final label = '${L10n.of(context).level} $level';
+    final fill = AppConfig.goldByTheme(context);
+    final hsl = HSLColor.fromColor(fill);
+    final border = hsl
+        .withLightness((hsl.lightness * 0.72).clamp(0.0, 1.0))
+        .toColor();
+    return Tooltip(
+      message: label,
+      // Semantics below names this; exclude the Tooltip so the label isn't
+      // announced twice.
+      excludeFromSemantics: true,
+      child: Semantics(
+        button: true,
+        label: label,
+        container: true,
+        excludeSemantics: true,
+        // Expose the tap on the announced node for assistive tech (#7185).
+        onTap: onTap,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onTap,
+          child: CustomPaint(
+            size: Size(width, height),
+            painter: _HexBadgePainter(fill: fill, border: border),
+            child: SizedBox(
+              width: width,
+              height: height,
+              child: Center(
+                child: Text(
+                  '$level',
+                  style: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ),
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.morphsUsed,
-              count: grammarCount,
-              onTap: () => onTap(AnalyticsPanelTab.grammar),
-            ),
-            ClusterTrackerButton(
-              indicator: ProgressIndicatorEnum.wordsUsed,
-              count: vocabCount,
-              onTap: () => onTap(AnalyticsPanelTab.vocab),
-            ),
-          ],
+          ),
         ),
       ),
     );
-
-    return isInitializing
-        ? Shimmer.fromColors(
-            baseColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-            highlightColor: Theme.of(context).colorScheme.surface,
-            child: content,
-          )
-        : content;
   }
 }
 
-/// The collapsed state: a single avatar circle wearing the XP ring, the level
-/// badge, and the small flag (Figma collapsed component). Tapping it is the
-/// only affordance; it temporarily expands the full bar. Plain values only.
-class _CollapsedAnalyticsAvatar extends StatelessWidget {
+/// Paints the badge hexagon: vertices at the horizontal extremes, flat top and
+/// bottom edges, gold fill with a darker gold outline (the Figma component).
+class _HexBadgePainter extends CustomPainter {
+  final Color fill;
+  final Color border;
+
+  const _HexBadgePainter({required this.fill, required this.border});
+
+  Path _hex(Size size) {
+    final w = size.width;
+    final h = size.height;
+    return Path()
+      ..moveTo(0, h / 2)
+      ..lineTo(w * 0.25, 0)
+      ..lineTo(w * 0.75, 0)
+      ..lineTo(w, h / 2)
+      ..lineTo(w * 0.75, h)
+      ..lineTo(w * 0.25, h)
+      ..close();
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final path = _hex(size);
+    canvas.drawPath(path, Paint()..color = fill);
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2.5
+        ..strokeJoin = StrokeJoin.round
+        ..color = border,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_HexBadgePainter old) =>
+      old.fill != fill || old.border != border;
+}
+
+/// The avatar circle wearing the XP ring, the level badge, and the small
+/// flag (Figma collapsed component) — one tap target, announced as a single
+/// button. Plain values only; [AnalyticsHeaderAvatar] is its Matrix-aware
+/// host, mounting it in a full-screen chat's app bar (routing.instructions.md
+/// → "Single-column analytics nav bar"). [scale] shrinks the whole cluster
+/// proportionally so it fits a toolbar.
+class CollapsedAvatarView extends StatelessWidget {
   final Uri? avatarUrl;
   final String? displayName;
   final LanguageModel? l2;
   final int level;
   final double xpProgress;
   final VoidCallback onTap;
+  final double scale;
 
-  const _CollapsedAnalyticsAvatar({
+  /// Level-change signal for the mini badge's celebration (a plain stream
+  /// value; see [AnalyticsSnapshot.levelUpdates]). Null renders no
+  /// celebration.
+  final Stream<LevelUpdate>? levelUpdates;
+
+  const CollapsedAvatarView({
     required this.avatarUrl,
     required this.displayName,
     required this.l2,
     required this.level,
     required this.xpProgress,
     required this.onTap,
-    required this.flagBuilder,
+    this.scale = 1.0,
+    this.levelUpdates,
+    this.flagBuilder,
+    super.key,
   });
 
   final Widget Function(
@@ -600,11 +845,35 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
   )?
   flagBuilder;
 
-  static const double _xpStroke = 4.0;
-  static const double _avatarSize = 44.0;
-  static const double _flagWidth = 28.0;
-  static const double _flagHeight = 20.0;
-  static const double _flagFontSize = 11.0;
+  // Base (scale 1.0) geometry — the floating-space size the cluster was
+  // designed at; every dimension multiplies by [scale] so the proportions
+  // hold at toolbar sizes.
+  static const double _xpStrokeBase = 4.0;
+  static const double _avatarSizeBase = 44.0;
+  static const double _flagWidthBase = 28.0;
+  static const double _flagHeightBase = 20.0;
+  static const double _flagFontSizeBase = 11.0;
+
+  // Miniature hex badge pinned over the avatar's top-left, and the flag
+  // hanging under its bottom edge — the collapsed echo of the bar cluster.
+  static const double _badgeTopOffsetBase = -6.0;
+  static const double _badgeLeftOffsetBase = -10.0;
+  static const double _badgeWidthBase = 30.0;
+  static const double _badgeHeightBase = 26.0;
+  static const double _badgeFontSizeBase = 13.0;
+  static const double _flagBottomOffsetBase = -10.0;
+
+  double get _xpStroke => _xpStrokeBase * scale;
+  double get _avatarSize => _avatarSizeBase * scale;
+  double get _flagWidth => _flagWidthBase * scale;
+  double get _flagHeight => _flagHeightBase * scale;
+  double get _flagFontSize => _flagFontSizeBase * scale;
+  double get _badgeTopOffset => _badgeTopOffsetBase * scale;
+  double get _badgeLeftOffset => _badgeLeftOffsetBase * scale;
+  double get _badgeWidth => _badgeWidthBase * scale;
+  double get _badgeHeight => _badgeHeightBase * scale;
+  double get _badgeFontSize => _badgeFontSizeBase * scale;
+  double get _flagBottomOffset => _flagBottomOffsetBase * scale;
 
   @override
   Widget build(BuildContext context) {
@@ -621,6 +890,11 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
         child: Semantics(
           button: true,
           label: label,
+          // A bounded node of its own: without `container` the annotation
+          // merges into the stretched ancestor, so assistive tech (and the
+          // widget tests' semantics taps) target the full-width bar area
+          // instead of the circle.
+          container: true,
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,
@@ -632,7 +906,7 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 CustomPaint(
-                  size: const Size.square(_avatarSize + 2 * _xpStroke),
+                  size: Size.square(_avatarSize + 2 * _xpStroke),
                   painter: CircularXpRingPainter(
                     progress: xpProgress,
                     trackColor: const Color.fromARGB(130, 135, 135, 135),
@@ -640,7 +914,7 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
                     stroke: _xpStroke,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(_xpStroke),
+                    padding: EdgeInsets.all(_xpStroke),
                     child: ClusterAvatar(
                       avatarUrl: avatarUrl,
                       name: displayName,
@@ -650,18 +924,27 @@ class _CollapsedAnalyticsAvatar extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: -6,
-                  left: -6,
+                  top: _badgeTopOffset,
+                  left: _badgeLeftOffset,
                   child: IgnorePointer(
                     child: Material(
                       type: MaterialType.transparency,
-                      child: ClusterLevelMedal(level: level, onTap: onTap),
+                      child: LevelUpBadgeCelebration(
+                        levelUpdates: levelUpdates,
+                        child: _HexLevelBadge(
+                          level: level,
+                          onTap: onTap,
+                          width: _badgeWidth,
+                          height: _badgeHeight,
+                          fontSize: _badgeFontSize,
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 if (l2 != null)
                   Positioned(
-                    bottom: -10,
+                    bottom: _flagBottomOffset,
                     child: IgnorePointer(
                       child:
                           flagBuilder?.call(

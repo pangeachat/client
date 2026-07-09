@@ -133,9 +133,7 @@ class PayloadClient {
     final endpoint = '$basePath/$collection/$id$query';
     final response = await _get(endpoint);
     if (response.statusCode >= 400) {
-      throw Exception(
-        'Failed to load document: ${response.statusCode} ${response.body}',
-      );
+      throw response;
     }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);

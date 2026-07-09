@@ -3187,7 +3187,6 @@
     "startNewSession": "新しいセッションを開始",
     "joinOpenSession": "オープンセッションに参加",
     "activityNotFound": "アクティビティが見つかりません",
-    "levelUp": "レベルアップ",
     "myActivities": "私のアクティビティ",
     "openToJoin": "参加可能",
     "results": "結果",
@@ -10317,7 +10316,6 @@
     "enableNotificationsTitle": "チャットを見逃さないで！",
     "enableNotificationsDesc": "Pangea Chatの通知を許可して、言語仲間とつながりましょう！",
     "enableNotifications": "通知を許可する",
-    "noActivitiesFound": "このトピックに利用可能なアクティビティはありません。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10327,10 +10325,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11147,7 +11141,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} の {total} スターを獲得しました",
+    "activityNoLongerSupported": "このアクティビティは古いバージョンのアクティビティで実行されており、もはやサポートされていません。このセッションで何が起こったかを確認することはできます。",
+    "activityLoadFailed": "アクティビティを読み込めませんでした。接続を確認して再試行してください。",
+    "levelUpChip": "レベル {level}!",
+    "missingCourseOutline": "このコースはもはや利用できません",
+    "missingCourseOutlineCta": "このコースはもはや利用できません。新しいコースプランを選択してください。",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "コース追加ページを閉じる",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

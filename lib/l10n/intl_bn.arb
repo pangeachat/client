@@ -3339,7 +3339,6 @@
     "startNewSession": "নতুন সেশন শুরু করুন",
     "joinOpenSession": "খোলা সেশনে যোগ দিন",
     "activityNotFound": "ক্রিয়াকলাপ পাওয়া যায়নি",
-    "levelUp": "স্তর উন্নত করুন",
     "myActivities": "আমার কার্যক্রম",
     "openToJoin": "যোগ দেওয়ার জন্য খোলা",
     "results": "ফলাফল",
@@ -10164,7 +10163,6 @@
     "enableNotificationsTitle": "কখনো একটি চ্যাট মিস করবেন না!",
     "enableNotificationsDesc": "Pangea চ্যাটের জন্য নোটিফিকেশন অনুমোদন করুন এবং আপনার ভাষার বন্ধুদের সাথে সংযুক্ত থাকুন!",
     "enableNotifications": "নোটিফিকেশন অনুমোদন করুন",
-    "noActivitiesFound": "এই বিষয়ে কোন কার্যকলাপ পাওয়া যায়নি।",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10174,10 +10172,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10994,7 +10988,46 @@
         "type": "String",
         "placeholders": {}
     },
-    "@elDisplayName": {
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} এর {total} তারকা অর্জিত",
+    "activityNoLongerSupported": "এই কার্যকলাপ পুরানো সংস্করণের উপর চলছিল এবং আর সমর্থিত নয়। আপনি এখনও এই সেশনে কি ঘটেছিল তা পর্যালোচনা করতে পারেন।",
+    "activityLoadFailed": "কার্যকলাপ লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
+    "levelUpChip": "স্তর {level}!",
+    "missingCourseOutline": "এই কোর্স আর উপলব্ধ নেই",
+    "missingCourseOutlineCta": "এই কোর্স আর উপলব্ধ নেই। একটি নতুন কোর্স পরিকল্পনা বেছে নিন।",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "কোর্স যোগ করার পৃষ্ঠা বন্ধ করুন",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -8,10 +8,11 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -60,15 +61,15 @@ class SelectedCourseController extends State<SelectedCourse>
     switch (widget.mode) {
       case SelectedCourseMode.launch:
         context.go(
-          WorkspaceNav.setSection(
-            uri,
-            const PanelToken('addcourse', 'own'),
-            keepRoom: false,
-          ),
+          WorkspaceNav.openAddCoursePage(uri, AddCourseSubpageEnum.own),
         );
       case SelectedCourseMode.addToSpace:
         context.go(
-          WorkspaceNav.openCourseFilter(uri, widget.spaceId!, tab: 'course'),
+          WorkspaceNav.openCourse(
+            uri,
+            widget.spaceId!,
+            tab: SpaceSettingsTabs.course,
+          ),
         );
     }
   }
@@ -121,7 +122,15 @@ class SelectedCourseController extends State<SelectedCourse>
         .then((spaceId) => completer.complete(spaceId))
         .catchError((error) => completer.completeError(error));
 
-    context.go("/courses/own/${widget.courseId}/invite", extra: completer);
+    context.go(
+      WorkspaceNav.openAddCoursePage(
+        GoRouterState.of(context).uri,
+        AddCourseSubpageEnum.own,
+        courseId: widget.courseId,
+        invite: true,
+      ),
+      extra: completer,
+    );
   }
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {
@@ -147,10 +156,10 @@ class SelectedCourseController extends State<SelectedCourse>
 
     if (!mounted) return;
     context.go(
-      WorkspaceNav.openCourseFilter(
+      WorkspaceNav.openCourse(
         GoRouterState.of(context).uri,
         space.id,
-        tab: 'course',
+        tab: SpaceSettingsTabs.course,
       ),
     );
   }
