@@ -3192,7 +3192,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-09 15:53:51.969724",
+    "@@last_modified": "2026-07-09 16:14:21.782620",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9934,6 +9934,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Bo",
+    "abDisplayName": "Abkhazian",
+    "elDisplayName": "Greek",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "activityNoLongerSupported": "Ita actividada ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
     "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",

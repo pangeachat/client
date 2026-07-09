@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:50.928620",
+    "@@last_modified": "2026-07-09 16:14:20.656245",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estisch",
+    "abDisplayName": "Abchazisch",
+    "elDisplayName": "Grieks",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} van {total} sterren verdiend",
     "activityNoLongerSupported": "Deze activiteit draaide op een oudere versie van activiteiten en wordt niet langer ondersteund. Je kunt nog steeds bekijken wat er in deze sessie is gebeurd.",
     "activityLoadFailed": "Kon de activiteit niet laden. Controleer je verbinding en probeer het opnieuw.",

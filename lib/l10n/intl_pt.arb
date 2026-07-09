@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:29.833716",
+    "@@last_modified": "2026-07-09 16:13:51.572759",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11380,6 +11380,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoniano",
+    "abDisplayName": "Abecásio",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
     "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",

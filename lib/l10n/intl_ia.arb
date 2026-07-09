@@ -1504,7 +1504,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-09 15:53:27.478273",
+    "@@last_modified": "2026-07-09 16:13:46.822799",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11372,6 +11372,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Istońa",
+    "abDisplayName": "Abxazian",
+    "elDisplayName": "Greka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} di {total} stelle guadagnate",
     "activityNoLongerSupported": "Questa attività è stata eseguita su una versione precedente delle attività e non è più supportata. Puoi comunque rivedere cosa è successo in questa sessione.",
     "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",

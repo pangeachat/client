@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:38.845516",
+    "@@last_modified": "2026-07-09 16:14:04.169217",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10413,6 +10413,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonià",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelles guanyades",
     "activityNoLongerSupported": "Aquesta activitat es va realitzar en una versió anterior d'activitats i ja no es dóna suport. Encara pots revisar el que va passar en aquesta sessió.",
     "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",

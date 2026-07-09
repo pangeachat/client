@@ -3376,7 +3376,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-09 15:53:59.425494",
+    "@@last_modified": "2026-07-09 16:14:30.100313",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10981,6 +10981,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "एस्टोनियाई",
+    "abDisplayName": "अभखाज़ियन",
+    "elDisplayName": "ग्रीक",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} में से {total} सितारे अर्जित किए गए",
     "activityNoLongerSupported": "यह गतिविधि गतिविधियों के पुराने संस्करण पर चल रही थी और अब समर्थित नहीं है। आप अभी भी इस सत्र में क्या हुआ, इसकी समीक्षा कर सकते हैं।",
     "activityLoadFailed": "गतिविधि लोड नहीं हो सकी। अपने कनेक्शन की जांच करें और फिर से प्रयास करें।",

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-09 15:53:35.975482",
+    "@@last_modified": "2026-07-09 16:14:01.303161",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10816,6 +10816,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonština",
+    "abDisplayName": "Abcházština",
+    "elDisplayName": "Řečtina",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} z {total} získaných hvězd",
     "activityNoLongerSupported": "Tato aktivita běžela na starší verzi aktivit a již není podporována. Můžete si však stále prohlédnout, co se v této relaci stalo.",
     "activityLoadFailed": "Nepodařilo se načíst aktivitu. Zkontrolujte své připojení a zkuste to znovu.",

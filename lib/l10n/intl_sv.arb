@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:56.761460",
+    "@@last_modified": "2026-07-09 16:14:27.110458",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10849,6 +10849,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasiska",
+    "elDisplayName": "Grekiska",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} av {total} stjärnor tjänade",
     "activityNoLongerSupported": "Denna aktivitet kördes på en äldre version av aktiviteter och stöds inte längre. Du kan fortfarande granska vad som hände under denna session.",
     "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",

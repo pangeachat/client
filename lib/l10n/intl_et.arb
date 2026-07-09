@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-09 15:53:30.439104",
+    "@@last_modified": "2026-07-09 16:13:52.595825",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10259,6 +10259,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Eesti",
+    "abDisplayName": "Abhaasia",
+    "elDisplayName": "Kreeka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} {total} tähte teenitud",
     "activityNoLongerSupported": "See tegevus toimus vanema versiooni tegevustest ja ei ole enam toetatud. Saate siiski vaadata, mis selles seansis juhtus.",
     "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",

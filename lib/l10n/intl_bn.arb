@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:53.808712",
+    "@@last_modified": "2026-07-09 16:14:23.729076",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10977,6 +10977,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "এস্তোনিয়ান",
+    "abDisplayName": "আবখাজিয়ান",
+    "elDisplayName": "গ্রীক",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} এর {total} তারকা অর্জিত",
     "activityNoLongerSupported": "এই কার্যকলাপ পুরানো সংস্করণের উপর চলছিল এবং আর সমর্থিত নয়। আপনি এখনও এই সেশনে কি ঘটেছিল তা পর্যালোচনা করতে পারেন।",
     "activityLoadFailed": "কার্যকলাপ লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",

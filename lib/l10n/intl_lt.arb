@@ -3244,7 +3244,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-09 15:53:47.634560",
+    "@@last_modified": "2026-07-09 16:14:17.178783",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11148,6 +11148,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estų",
+    "abDisplayName": "Abchazų",
+    "elDisplayName": "Graikų",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} iš {total} uždirbtų žvaigždžių",
     "activityNoLongerSupported": "Ši veikla vyko senesnėje veiklų versijoje ir nebėra palaikoma. Vis dar galite peržiūrėti, kas įvyko šioje sesijoje.",
     "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",

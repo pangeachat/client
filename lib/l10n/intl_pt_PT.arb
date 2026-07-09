@@ -2775,7 +2775,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-09 15:53:40.996578",
+    "@@last_modified": "2026-07-09 16:14:06.413821",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11338,6 +11338,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoniano",
+    "abDisplayName": "Abecásio",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
     "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",

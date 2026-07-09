@@ -3770,7 +3770,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-09 15:53:57.584295",
+    "@@last_modified": "2026-07-09 16:14:28.028774",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -11311,6 +11311,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Εσθονικά",
+    "abDisplayName": "Αμπχαζικά",
+    "elDisplayName": "Ελληνικά",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} από {total} αστέρια κερδισμένα",
     "activityNoLongerSupported": "Αυτή η δραστηριότητα εκτελούνταν σε παλαιότερη έκδοση δραστηριοτήτων και δεν υποστηρίζεται πλέον. Μπορείτε να αναθεωρήσετε τι συνέβη σε αυτή τη συνεδρία.",
     "activityLoadFailed": "Δεν ήταν δυνατή η φόρτωση της δραστηριότητας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",

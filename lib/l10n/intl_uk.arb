@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-09 15:53:34.789372",
+    "@@last_modified": "2026-07-09 16:13:59.971053",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Естонська",
+    "abDisplayName": "Абхазька",
+    "elDisplayName": "Грецька",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} з {total} зірок зароблено",
     "activityNoLongerSupported": "Ця активність виконувалася на старішій версії активностей і більше не підтримується. Ви все ще можете переглянути, що сталося в цій сесії.",
     "activityLoadFailed": "Не вдалося завантажити активність. Перевірте своє з'єднання та спробуйте ще раз.",

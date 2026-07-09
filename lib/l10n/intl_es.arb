@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-09 15:53:18.052573",
+    "@@last_modified": "2026-07-09 16:13:35.086043",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8356,6 +8356,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonio",
+    "abDisplayName": "Abjasio",
+    "elDisplayName": "Griego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrellas ganadas",
     "activityNoLongerSupported": "Esta actividad se realizó en una versión anterior de actividades y ya no es compatible. Aún puedes revisar lo que sucedió en esta sesión.",
     "activityLoadFailed": "No se pudo cargar la actividad. Verifica tu conexión y vuelve a intentarlo.",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:54.715093",
+    "@@last_modified": "2026-07-09 16:14:24.544849",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10374,6 +10374,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "استونیایی",
+    "abDisplayName": "آبخازian",
+    "elDisplayName": "یونانی",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} از {total} ستاره کسب شده",
     "activityNoLongerSupported": "این فعالیت در نسخه قدیمی‌تری از فعالیت‌ها اجرا شده و دیگر پشتیبانی نمی‌شود. شما هنوز می‌توانید آنچه در این جلسه اتفاق افتاده را مرور کنید.",
     "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:36.721013",
+    "@@last_modified": "2026-07-09 16:14:02.120735",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10322,6 +10322,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasisk",
+    "elDisplayName": "Gresk",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} av {total} stjerner opptjent",
     "activityNoLongerSupported": "Denne aktiviteten kjørte på en eldre versjon av aktiviteter og støttes ikke lenger. Du kan fortsatt se hva som skjedde i denne økten.",
     "activityLoadFailed": "Kunne ikke laste aktiviteten. Sjekk tilkoblingen din og prøv igjen.",

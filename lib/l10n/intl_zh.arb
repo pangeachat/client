@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-09 15:53:52.749477",
+    "@@last_modified": "2026-07-09 16:14:22.913986",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "爱沙尼亚语",
+    "abDisplayName": "阿布哈兹语",
+    "elDisplayName": "希腊语",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} 的 {total} 星星已获得",
     "activityNoLongerSupported": "此活动运行在旧版本的活动上，现已不再支持。您仍然可以查看此会话中发生的事情。",
     "activityLoadFailed": "无法加载活动。请检查您的连接并重试。",

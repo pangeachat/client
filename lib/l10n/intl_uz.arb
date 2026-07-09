@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-09 15:53:42.423900",
+    "@@last_modified": "2026-07-09 16:14:08.777797",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10266,6 +10266,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoncha",
+    "abDisplayName": "Abxazcha",
+    "elDisplayName": "Grechcha",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} dan {total} yulduz to'plandi",
     "activityNoLongerSupported": "Ushbu faoliyat eski versiyada o'tkazilgan va endi qo'llab-quvvatlanmaydi. Siz hali ham ushbu sessiyada nima bo'lganini ko'rishingiz mumkin.",
     "activityLoadFailed": "Faoliyatni yuklab bo'lmadi. Ulanishingizni tekshiring va qaytadan urinib ko'ring.",

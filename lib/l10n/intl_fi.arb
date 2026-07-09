@@ -3912,7 +3912,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-09 15:53:19.870649",
+    "@@last_modified": "2026-07-09 16:13:37.002382",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10311,6 +10311,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Viron",
+    "abDisplayName": "Abhaasian",
+    "elDisplayName": "Kreikka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} {total} tähteä ansaittu",
     "activityNoLongerSupported": "Tätä toimintoa ei enää tueta, koska se toimi vanhemmassa versiossa. Voit silti tarkastella, mitä tässä istunnossa tapahtui.",
     "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",

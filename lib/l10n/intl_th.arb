@@ -3376,7 +3376,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-09 15:53:39.457668",
+    "@@last_modified": "2026-07-09 16:14:05.202616",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10981,6 +10981,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "เอสโทเนีย",
+    "abDisplayName": "อับคาเซียน",
+    "elDisplayName": "กรีก",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} จาก {total} ดาวที่ได้รับ",
     "activityNoLongerSupported": "กิจกรรมนี้ทำงานบนเวอร์ชันเก่าของกิจกรรมและไม่รองรับอีกต่อไป คุณยังสามารถตรวจสอบสิ่งที่เกิดขึ้นในเซสชันนี้ได้",
     "activityLoadFailed": "ไม่สามารถโหลดกิจกรรมได้ ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง",

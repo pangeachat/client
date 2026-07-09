@@ -3947,7 +3947,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-09 15:54:05.979101",
+    "@@last_modified": "2026-07-09 16:14:34.998660",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10273,6 +10273,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Eastóinise",
+    "abDisplayName": "Abcáise",
+    "elDisplayName": "Gréigis",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} réaltaí a ghnóthú",
     "activityNoLongerSupported": "Níl an gníomhaíocht seo tacaíocht níos mó. Rith sé ar leagan níos sine de na gníomhaíochtaí. Is féidir leat fós athbhreithniú a dhéanamh ar cad a tharla sa seisiún seo.",
     "activityLoadFailed": "Níor éirigh le gníomhaíocht a luchtú. Seiceáil do cheangal agus déan iarracht arís.",

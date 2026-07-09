@@ -3918,7 +3918,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-09 15:53:44.369714",
+    "@@last_modified": "2026-07-09 16:14:10.911403",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Igauņu",
+    "abDisplayName": "Abhāzu",
+    "elDisplayName": "Grieķu",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} no {total} iegūtajām zvaigznēm",
     "activityNoLongerSupported": "Šī aktivitāte tika veikta vecākā aktivitāšu versijā un vairs netiek atbalstīta. Jūs joprojām varat pārskatīt, kas notika šajā sesijā.",
     "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",

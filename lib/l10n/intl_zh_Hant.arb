@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:41.647701",
+    "@@last_modified": "2026-07-09 16:14:07.343824",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10392,6 +10392,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "愛沙尼亞語",
+    "abDisplayName": "阿布哈茲語",
+    "elDisplayName": "希臘語",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} 的 {total} 顆星",
     "activityNoLongerSupported": "此活動運行於舊版本的活動，已不再支援。您仍然可以查看此會議中發生的事情。",
     "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",

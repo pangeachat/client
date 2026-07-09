@@ -1476,7 +1476,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-09 15:53:20.716582",
+    "@@last_modified": "2026-07-09 16:13:39.389356",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -11356,6 +11356,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasisk",
+    "elDisplayName": "Græsk",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} af {total} stjerner optjent",
     "activityNoLongerSupported": "Denne aktivitet kørte på en ældre version af aktiviteter og understøttes ikke længere. Du kan stadig gennemgå, hvad der skete i denne session.",
     "activityLoadFailed": "Kunne ikke indlæse aktiviteten. Tjek din forbindelse og prøv igen.",

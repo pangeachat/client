@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:54:00.550740",
+    "@@last_modified": "2026-07-09 16:14:31.104612",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11381,6 +11381,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estona",
+    "abDisplayName": "Abĥazia",
+    "elDisplayName": "Greka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} el {total} steloj gajnitaj",
     "activityNoLongerSupported": "Ĉi tiu aktiveco funkciis sur pli malnova versio de aktivadoj kaj ne plu estas subtenata. Vi ankoraŭ povas revizii kio okazis en ĉi tiu sesio.",
     "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",

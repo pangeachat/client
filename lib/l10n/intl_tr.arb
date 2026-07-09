@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-09 15:53:45.909880",
+    "@@last_modified": "2026-07-09 16:14:12.975347",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10593,6 +10593,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonca",
+    "abDisplayName": "Abhazca",
+    "elDisplayName": "Yunanca",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} toplam {total} yıldız kazanıldı",
     "activityNoLongerSupported": "Bu etkinlik, daha eski bir etkinlik sürümünde çalışıyordu ve artık desteklenmiyor. Bu oturumda neler olduğunu yine de gözden geçirebilirsiniz.",
     "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:49.801290",
+    "@@last_modified": "2026-07-09 16:14:19.632514",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10378,6 +10378,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "எஸ்டோனியன்",
+    "abDisplayName": "அப்கேசியன்",
+    "elDisplayName": "கிரேக்கம்",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} இல் {total} நட்சத்திரங்கள் சம்பாதிக்கப்பட்டன",
     "activityNoLongerSupported": "இந்த செயல்பாடு பழைய பதிப்பில் செயல்பட்டது மற்றும் இனி ஆதரிக்கப்படவில்லை. நீங்கள் இந்த அமர்வில் என்ன நடந்தது என்பதை இன்னும் மதிப்பீடு செய்யலாம்.",
     "activityLoadFailed": "செயல்பாட்டை ஏற்ற முடியவில்லை. உங்கள் இணைப்பை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",

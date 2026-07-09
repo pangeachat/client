@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-09 15:53:23.991447",
+    "@@last_modified": "2026-07-09 16:13:43.080064",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11378,6 +11378,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estónsky",
+    "abDisplayName": "Abcházsky",
+    "elDisplayName": "Grécky",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} z {total} získaných hviezd",
     "activityNoLongerSupported": "Táto aktivita bežala na staršej verzii aktivít a už nie je podporovaná. Môžete si však prezrieť, čo sa v tejto relácii stalo.",
     "activityLoadFailed": "Nepodarilo sa načítať aktivitu. Skontrolujte svoje pripojenie a skúste to znova.",

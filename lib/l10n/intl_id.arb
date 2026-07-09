@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:22.350422",
+    "@@last_modified": "2026-07-09 16:13:41.027630",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10359,6 +10359,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonia",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Yunani",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} dari {total} bintang yang diperoleh",
     "activityNoLongerSupported": "Aktivitas ini dijalankan pada versi lama dari aktivitas dan tidak lagi didukung. Anda masih dapat meninjau apa yang terjadi dalam sesi ini.",
     "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",

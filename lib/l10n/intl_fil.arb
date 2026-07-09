@@ -2256,7 +2256,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-09 15:53:43.552590",
+    "@@last_modified": "2026-07-09 16:14:09.701334",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11281,6 +11281,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonyano",
+    "abDisplayName": "Abkhazian",
+    "elDisplayName": "Griyego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} ng {total} na mga bituin na nakuha",
     "activityNoLongerSupported": "Ang aktibidad na ito ay tumakbo sa isang mas lumang bersyon ng mga aktibidad at hindi na sinusuportahan. Maaari mo pa ring suriin kung ano ang nangyari sa sesyon na ito.",
     "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",

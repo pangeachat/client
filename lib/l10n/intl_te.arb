@@ -1466,7 +1466,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-09 15:53:46.812964",
+    "@@last_modified": "2026-07-09 16:14:13.900212",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11386,6 +11386,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "ఎస్టోనియన్",
+    "abDisplayName": "అబ్ఖాజియన్",
+    "elDisplayName": "గ్రీక్",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} లో {total} నక్షత్రాలు సంపాదించబడ్డాయి",
     "activityNoLongerSupported": "ఈ కార్యకలాపం పాత సంస్కరణలో నడిచింది మరియు ఇకపై మద్దతు ఇవ్వబడదు. మీరు ఈ సెషన్‌లో ఏమి జరిగిందో ఇంకా సమీక్షించవచ్చు.",
     "activityLoadFailed": "కార్యకలాపాన్ని లోడ్ చేయలేకపోయారు. మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",

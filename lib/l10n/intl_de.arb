@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-09 15:53:31.263388",
+    "@@last_modified": "2026-07-09 16:13:53.651554",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10241,6 +10241,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estnisch",
+    "abDisplayName": "Abchasisch",
+    "elDisplayName": "Griechisch",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} von {total} verdienten Sternen",
     "activityNoLongerSupported": "Diese Aktivität lief auf einer älteren Version der Aktivitäten und wird nicht mehr unterstützt. Sie können jedoch überprüfen, was in dieser Sitzung passiert ist.",
     "activityLoadFailed": "Die Aktivität konnte nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",

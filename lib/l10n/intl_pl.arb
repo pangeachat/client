@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-09 15:53:56.043120",
+    "@@last_modified": "2026-07-09 16:14:25.980546",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10371,6 +10371,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoński",
+    "abDisplayName": "Abchazki",
+    "elDisplayName": "Grecki",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} z {total} zdobytych gwiazdek",
     "activityNoLongerSupported": "Ta aktywność działała na starszej wersji aktywności i nie jest już wspierana. Możesz nadal przeglądać, co się wydarzyło w tej sesji.",
     "activityLoadFailed": "Nie można załadować aktywności. Sprawdź swoje połączenie i spróbuj ponownie.",

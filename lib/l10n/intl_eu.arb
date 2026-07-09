@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-09 15:53:29.110622",
+    "@@last_modified": "2026-07-09 16:13:50.644485",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoniera",
+    "abDisplayName": "Abkhasiera",
+    "elDisplayName": "Greziar",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} {total} izarretatik irabazi direnak",
     "activityNoLongerSupported": "Jarduera honek jardueren bertsio zahar batean funtzionatu zuen eta ez da gehiago babesten. Oraindik saio honetan zer gertatu zen berrikusi dezakezu.",
     "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",

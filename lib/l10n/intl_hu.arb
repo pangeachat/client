@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-09 15:53:21.434950",
+    "@@last_modified": "2026-07-09 16:13:40.295019",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10389,6 +10389,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "észt",
+    "abDisplayName": "abkház",
+    "elDisplayName": "görög",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} a {total} csillag megszerezve",
     "activityNoLongerSupported": "Ez a tevékenység egy régebbi verziójú tevékenységen futott, és már nem támogatott. Még mindig áttekintheti, mi történt ebben az ülésben.",
     "activityLoadFailed": "Nem sikerült betölteni a tevékenységet. Ellenőrizze a kapcsolatát, és próbálja újra.",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 15:53:23.277622",
+    "@@last_modified": "2026-07-09 16:13:41.954103",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11087,6 +11087,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonian",
+    "abDisplayName": "Abhazian",
+    "elDisplayName": "Greacă",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} din {total} stele câștigate",
     "activityNoLongerSupported": "Această activitate a rulat pe o versiune mai veche a activităților și nu mai este suportată. Poți să revizuiești ce s-a întâmplat în această sesiune.",
     "activityLoadFailed": "Nu s-a putut încărca activitatea. Verifică-ți conexiunea și încearcă din nou.",
