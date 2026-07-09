@@ -2256,7 +2256,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-08 15:20:55.416093",
+    "@@last_modified": "2026-07-09 15:53:43.552590",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11315,6 +11315,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Isara ang pahina ng pagdaragdag ng kurso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

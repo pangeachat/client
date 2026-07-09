@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:34.841578",
+    "@@last_modified": "2026-07-09 15:53:56.761460",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10883,6 +10883,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Stäng lägg till kurs-sidan",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

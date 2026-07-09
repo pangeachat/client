@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:19:42.283445",
+    "@@last_modified": "2026-07-09 15:53:17.281847",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10513,6 +10513,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "강좌 추가 페이지 닫기",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

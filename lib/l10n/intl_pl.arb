@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-08 15:21:29.050088",
+    "@@last_modified": "2026-07-09 15:53:56.043120",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10405,6 +10405,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zamknij stronę dodawania kursu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

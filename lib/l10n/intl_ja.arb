@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-08 15:21:40.392115",
+    "@@last_modified": "2026-07-09 15:53:58.460535",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11164,6 +11164,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "コース追加ページを閉じる",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

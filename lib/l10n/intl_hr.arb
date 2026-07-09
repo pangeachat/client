@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-08 15:20:05.338193",
+    "@@last_modified": "2026-07-09 15:53:25.733185",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10780,6 +10780,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zatvori stranicu za dodavanje tečaja",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

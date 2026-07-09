@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:20:07.801740",
+    "@@last_modified": "2026-07-09 15:53:26.739605",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -11375,6 +11375,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "סגור את עמוד הוספת הקורס",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

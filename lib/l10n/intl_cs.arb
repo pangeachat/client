@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-08 15:20:33.733652",
+    "@@last_modified": "2026-07-09 15:53:35.975482",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10850,6 +10850,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zavřít stránku pro přidání kurzu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

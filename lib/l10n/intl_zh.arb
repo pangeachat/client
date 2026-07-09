@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-08 15:21:21.932006",
+    "@@last_modified": "2026-07-09 15:53:52.749477",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10296,6 +10296,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "关闭添加课程页面",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }
