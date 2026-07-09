@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-06 10:23:12.286115",
+    "@@last_modified": "2026-07-09 16:14:35.928461",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10662,6 +10662,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonien",
+    "abDisplayName": "Abkhaze",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

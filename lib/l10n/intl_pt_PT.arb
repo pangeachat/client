@@ -2776,7 +2776,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-06 10:22:05.208233",
+    "@@last_modified": "2026-07-09 16:14:06.413821",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11341,6 +11341,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estoniano",
+    "abDisplayName": "Abecásio",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

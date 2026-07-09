@@ -1406,7 +1406,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-06 10:21:41.360172",
+    "@@last_modified": "2026-07-09 16:13:57.822992",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11396,6 +11396,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "愛沙尼亞語",
+    "abDisplayName": "阿布哈茲語",
+    "elDisplayName": "希臘語",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -4344,7 +4344,6 @@
     "subscriptionRenewsOn": "Subscription Renews On",
     "waitForSubscriptionChanges": "Changes to your subscription may take a moment to reflect in the app.",
     "subscribeReadingAssistance": "Subscribe to unlock message tools",
-    "abDisplayName": "Abkhazian", 
     "aceDisplayName": "Achinese",
     "achDisplayName": "Acoli",
     "afDisplayName": "Afrikaans",
@@ -4393,7 +4392,6 @@
     "dovDisplayName": "Dombe",
     "dzDisplayName": "Dzongkha",
     "eeDisplayName": "Ewe",
-    "elDisplayName": "Greek",
     "enDisplayName": "English",
     "enAUDisplayName": "English (Australia)",
     "enGBDisplayName": "English (UK)",
@@ -5025,5 +5023,8 @@
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
     "mapZoomLabel": "Map zoom controls", 
     "activityMapLabel": "Activity map", 
-    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
+    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
+    "abDisplayName": "Abkhazian", 
+    "elDisplayName": "Greek",
+    "etDisplayName": "Estonian"
 }

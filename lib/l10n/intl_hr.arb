@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-06 10:21:12.986037",
+    "@@last_modified": "2026-07-09 16:13:44.714689",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10749,6 +10749,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonski",
+    "abDisplayName": "Abhazijski",
+    "elDisplayName": "Grčki",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

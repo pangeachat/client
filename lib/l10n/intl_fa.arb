@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:41.664297",
+    "@@last_modified": "2026-07-09 16:14:24.544849",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10377,6 +10377,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "استونیایی",
+    "abDisplayName": "آبخازian",
+    "elDisplayName": "یونانی",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

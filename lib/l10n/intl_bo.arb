@@ -3193,7 +3193,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-06 10:22:35.449235",
+    "@@last_modified": "2026-07-09 16:14:21.782620",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9937,6 +9937,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Bo",
+    "abDisplayName": "Abkhazian",
+    "elDisplayName": "Greek",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

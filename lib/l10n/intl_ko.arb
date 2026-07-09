@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:20:44.858557",
+    "@@last_modified": "2026-07-09 16:13:33.964126",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10482,6 +10482,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "에스토니아어",
+    "abDisplayName": "압하즈어",
+    "elDisplayName": "그리스어",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

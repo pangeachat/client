@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-06 10:22:37.363814",
+    "@@last_modified": "2026-07-09 16:14:22.913986",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10265,6 +10265,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "爱沙尼亚语",
+    "abDisplayName": "阿布哈兹语",
+    "elDisplayName": "希腊语",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

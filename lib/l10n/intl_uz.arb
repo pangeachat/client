@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-06 10:22:10.022001",
+    "@@last_modified": "2026-07-09 16:14:08.777797",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10269,6 +10269,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estoncha",
+    "abDisplayName": "Abxazcha",
+    "elDisplayName": "Grechcha",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -2257,7 +2257,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-06 10:22:12.877083",
+    "@@last_modified": "2026-07-09 16:14:09.701334",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11284,6 +11284,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonyano",
+    "abDisplayName": "Abkhazian",
+    "elDisplayName": "Griyego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

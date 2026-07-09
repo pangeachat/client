@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:30.396902",
+    "@@last_modified": "2026-07-09 16:14:19.632514",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10381,6 +10381,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "எஸ்டோனியன்",
+    "abDisplayName": "அப்கேசியன்",
+    "elDisplayName": "கிரேக்கம்",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

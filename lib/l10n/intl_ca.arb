@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:56.239100",
+    "@@last_modified": "2026-07-09 16:14:04.169217",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10416,6 +10416,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonià",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

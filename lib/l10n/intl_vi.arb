@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:27.237694",
+    "@@last_modified": "2026-07-09 16:14:18.609131",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7348,6 +7348,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Tiếng Estonia",
+    "abDisplayName": "Tiếng Abkhaz",
+    "elDisplayName": "Tiếng Hy Lạp",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

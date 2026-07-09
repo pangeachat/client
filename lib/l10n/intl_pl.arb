@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-06 10:22:43.705743",
+    "@@last_modified": "2026-07-09 16:14:25.980546",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10374,6 +10374,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estoński",
+    "abDisplayName": "Abchazki",
+    "elDisplayName": "Grecki",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:01.927647",
+    "@@last_modified": "2026-07-09 16:13:41.954103",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11090,6 +11090,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonian",
+    "abDisplayName": "Abhazian",
+    "elDisplayName": "Greacă",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

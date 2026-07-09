@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-06 10:20:56.972471",
+    "@@last_modified": "2026-07-09 16:13:40.295019",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10392,6 +10392,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "észt",
+    "abDisplayName": "abkház",
+    "elDisplayName": "görög",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

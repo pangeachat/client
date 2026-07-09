@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-06 10:21:33.221459",
+    "@@last_modified": "2026-07-09 16:13:52.595825",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Eesti",
+    "abDisplayName": "Abhaasia",
+    "elDisplayName": "Kreeka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

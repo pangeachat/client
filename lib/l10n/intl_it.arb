@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:43.432575",
+    "@@last_modified": "2026-07-09 16:13:58.639625",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10356,6 +10356,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estone",
+    "abDisplayName": "Abcaso",
+    "elDisplayName": "Greco",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

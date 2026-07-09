@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:45.964072",
+    "@@last_modified": "2026-07-09 16:14:27.110458",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10852,6 +10852,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasiska",
+    "elDisplayName": "Grekiska",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

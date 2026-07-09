@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-06 10:22:17.189135",
+    "@@last_modified": "2026-07-09 16:14:12.058482",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10605,6 +10605,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "إستوني",
+    "abDisplayName": "أبخازية",
+    "elDisplayName": "يوناني",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

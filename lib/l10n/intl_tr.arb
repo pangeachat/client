@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-06 10:22:19.311191",
+    "@@last_modified": "2026-07-09 16:14:12.975347",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10596,6 +10596,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonca",
+    "abDisplayName": "Abhazca",
+    "elDisplayName": "Yunanca",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

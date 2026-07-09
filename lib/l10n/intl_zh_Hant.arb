@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:07.031645",
+    "@@last_modified": "2026-07-09 16:14:07.343824",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10395,6 +10395,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "愛沙尼亞語",
+    "abDisplayName": "阿布哈茲語",
+    "elDisplayName": "希臘語",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

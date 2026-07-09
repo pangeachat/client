@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:30.965960",
+    "@@last_modified": "2026-07-09 16:13:51.572759",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11383,6 +11383,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estoniano",
+    "abDisplayName": "Abecásio",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

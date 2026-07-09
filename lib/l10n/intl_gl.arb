@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-06 10:20:49.828608",
+    "@@last_modified": "2026-07-09 16:13:36.111957",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10265,6 +10265,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonio",
+    "abDisplayName": "Abxaziano",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

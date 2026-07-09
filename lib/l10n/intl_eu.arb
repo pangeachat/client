@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-06 10:21:28.326183",
+    "@@last_modified": "2026-07-09 16:13:50.644485",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10265,6 +10265,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estoniera",
+    "abDisplayName": "Abkhasiera",
+    "elDisplayName": "Greziar",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

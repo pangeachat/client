@@ -3377,7 +3377,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-06 10:22:03.063747",
+    "@@last_modified": "2026-07-09 16:14:05.202616",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10984,6 +10984,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "เอสโทเนีย",
+    "abDisplayName": "อับคาเซียน",
+    "elDisplayName": "กรีก",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

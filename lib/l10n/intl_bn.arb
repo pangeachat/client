@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:39.621152",
+    "@@last_modified": "2026-07-09 16:14:23.729076",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10980,6 +10980,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "এস্তোনিয়ান",
+    "abDisplayName": "আবখাজিয়ান",
+    "elDisplayName": "গ্রীক",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

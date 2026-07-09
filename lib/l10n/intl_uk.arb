@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-06 10:21:45.969410",
+    "@@last_modified": "2026-07-09 16:13:59.971053",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10265,6 +10265,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Естонська",
+    "abDisplayName": "Абхазька",
+    "elDisplayName": "Грецька",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

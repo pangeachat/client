@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-06 10:21:08.136137",
+    "@@last_modified": "2026-07-09 16:13:43.080064",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11381,6 +11381,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estónsky",
+    "abDisplayName": "Abcházsky",
+    "elDisplayName": "Grécky",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

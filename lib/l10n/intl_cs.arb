@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-06 10:21:48.804642",
+    "@@last_modified": "2026-07-09 16:14:01.303161",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10819,6 +10819,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonština",
+    "abDisplayName": "Abcházština",
+    "elDisplayName": "Řečtina",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }

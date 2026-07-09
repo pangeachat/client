@@ -3913,7 +3913,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-06 10:20:52.661691",
+    "@@last_modified": "2026-07-09 16:13:37.002382",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10314,6 +10314,21 @@
         "placeholders": {}
     },
     "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Viron",
+    "abDisplayName": "Abhaasian",
+    "elDisplayName": "Kreikka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {
         "type": "String",
         "placeholders": {}
     }
