@@ -289,9 +289,7 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
     // bare id so a hand-edited URL with two sub-pages of the same room degrades
     // to one panel rather than colliding on the room's GlobalKey. Other panels
     // dedup on the whole (type, param). See `routing.instructions.md`.
-    final identity =
-        (token.type == PanelTypesEnum.room ||
-            token.type == PanelTypesEnum.session)
+    final identity = token.type.isRoomPanel
         ? '${token.type}:${(token.param?.build() ?? '').split('/').first}'
         : '${token.type}:${token.param?.build() ?? ''}';
     if (!seen.add(identity)) continue;

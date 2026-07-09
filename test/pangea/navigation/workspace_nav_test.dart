@@ -26,14 +26,12 @@ void main() {
     test('adds a token and round-trips back through the parser', () {
       final loc = WorkspaceNav.openRight(
         u('/chats'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
       expect(parseOpenPanels(u(loc)).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
@@ -41,8 +39,7 @@ void main() {
 
     test('an encoded construct param survives the add → URL → parse '
         'round-trip', () {
-      final token = PanelToken(
-        PanelTypesEnum.vocab,
+      final token = VocabAnalyticsPanelToken(
         VocabAnalyticsTokenParam.parse('a%2Cb.verb'),
       );
       final loc = WorkspaceNav.openRight(u('/chats'), token);
@@ -55,17 +52,13 @@ void main() {
       // detail in the URL; the renderer blooms the detail left of the edge.
       var loc = WorkspaceNav.openRight(
         u('/chats'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
       loc = WorkspaceNav.openRight(
         u(loc),
-        PanelToken(
-          PanelTypesEnum.vocab,
-          VocabAnalyticsTokenParam.parse('hablar'),
-        ),
+        VocabAnalyticsPanelToken(VocabAnalyticsTokenParam.parse('hablar')),
         atStart: true,
       );
       expect(parseOpenPanels(u(loc)).right.map((t) => t.type), [
@@ -77,15 +70,13 @@ void main() {
     test('adding an existing token is idempotent (deduped)', () {
       var loc = WorkspaceNav.openRight(
         u('/chats'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
       loc = WorkspaceNav.openRight(
         u(loc),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
@@ -97,15 +88,13 @@ void main() {
       () {
         final opened = WorkspaceNav.openRight(
           u('/chats'),
-          const PanelToken(
-            PanelTypesEnum.analytics,
+          const AnalyticsPanelToken(
             AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
           ),
         );
         final closed = WorkspaceNav.closeRight(
           u(opened),
-          const PanelToken(
-            PanelTypesEnum.analytics,
+          const AnalyticsPanelToken(
             AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
           ),
         );
@@ -119,16 +108,14 @@ void main() {
     test('an unrelated query param is kept verbatim', () {
       final loc = WorkspaceNav.openRight(
         u('/courses/!s?activity=abc'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
         ),
       );
       final parsed = u(loc);
       expect(parsed.queryParameters['activity'], 'abc');
       expect(parseOpenPanels(parsed).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
         ),
       ]);
@@ -138,8 +125,7 @@ void main() {
     test('the path is preserved', () {
       final loc = WorkspaceNav.openRight(
         u('/rooms/!abc'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
@@ -151,28 +137,22 @@ void main() {
     test('drops the old analytics/detail tokens and seats one summary', () {
       var loc = WorkspaceNav.openRight(
         u('/chats'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
       loc = WorkspaceNav.openRight(
         u(loc),
-        PanelToken(
-          PanelTypesEnum.vocab,
-          VocabAnalyticsTokenParam.parse('hablar'),
-        ),
+        VocabAnalyticsPanelToken(VocabAnalyticsTokenParam.parse('hablar')),
         atStart: true,
       );
       loc = WorkspaceNav.setRight(u(loc), [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.morphsUsed),
         ),
       ]);
       expect(parseOpenPanels(u(loc)).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.morphsUsed),
         ),
       ]);
@@ -182,21 +162,24 @@ void main() {
   group('single-column mutual close (sections <-> right panels)', () {
     test('setRight closeSections drops the section sheet but keeps a room', () {
       final loc = WorkspaceNav.setRight(u('/?left=chats,room:!abc'), [
-        const PanelToken(PanelTypesEnum.analytics),
+        const AnalyticsPanelToken(
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
       ], closeSections: true);
       final lists = parseOpenPanels(u(loc));
-      expect(lists.right, [const PanelToken(PanelTypesEnum.analytics)]);
+      expect(lists.right, [
+        const AnalyticsPanelToken(
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
+      ]);
       // The chats SECTION is gone (X-ing analytics reveals the map), but the
       // live conversation persists — the chat-header avatar loop returns to it.
-      expect(lists.left, [
-        const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
-      ]);
+      expect(lists.left, [const RoomPanelToken(RoomTokenParam(id: '!abc'))]);
     });
 
     test('setRight closeSections drops a course card, keeping the scope', () {
       final loc = WorkspaceNav.setRight(u('/?c=!s&left=course'), [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ], closeSections: true);
@@ -208,11 +191,11 @@ void main() {
 
     test('setRight without the flag keeps sections (column mode)', () {
       final loc = WorkspaceNav.setRight(u('/?left=chats'), [
-        const PanelToken(PanelTypesEnum.analytics),
+        const AnalyticsPanelToken(
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
       ]);
-      expect(parseOpenPanels(u(loc)).left, [
-        const PanelToken(PanelTypesEnum.chats),
-      ]);
+      expect(parseOpenPanels(u(loc)).left, [const ChatsPanelToken()]);
     });
 
     test('openSettings closeSections drops the section sheet', () {
@@ -221,19 +204,19 @@ void main() {
         closeSections: true,
       );
       final lists = parseOpenPanels(u(loc));
-      expect(lists.right, [const PanelToken(PanelTypesEnum.settings)]);
+      expect(lists.right, [const SettingsPanelToken()]);
       expect(lists.left, isEmpty);
     });
 
     test('setSection clearRight drops an open right panel', () {
       final loc = WorkspaceNav.setSection(
         u('/?right=analytics'),
-        const PanelToken(PanelTypesEnum.chats),
+        const ChatsPanelToken(),
         keepRoom: false,
         clearRight: true,
       );
       final lists = parseOpenPanels(u(loc));
-      expect(lists.left, [const PanelToken(PanelTypesEnum.chats)]);
+      expect(lists.left, [const ChatsPanelToken()]);
       expect(lists.right, isEmpty);
     });
 
@@ -247,7 +230,7 @@ void main() {
       final lists = parseOpenPanels(u(loc));
       expect(lists.left.length, 1);
       expect(lists.right, isEmpty);
-      expect(lists.left.single, const PanelToken(PanelTypesEnum.course));
+      expect(lists.left.single, const CoursePanelToken());
     });
   });
 
@@ -256,7 +239,7 @@ void main() {
       final loc = WorkspaceNav.openRoomById(u('/chats'), '!abc');
       final uri = u(loc);
       expect(parseOpenPanels(uri).left, [
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       ]);
       expect(uri.queryParameters['event'], isNull);
       expect(uri.queryParameters['body'], isNull);
@@ -290,12 +273,12 @@ void main() {
   group('openExclusiveLeftRoom (one live session)', () {
     test('opening a room drops any other room but keeps chats/course', () {
       var loc = WorkspaceNav.setLeft(u('/chats'), [
-        PanelToken(PanelTypesEnum.chats),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+        ChatsPanelToken(),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
       ]);
       loc = WorkspaceNav.openExclusiveLeftRoom(
         u(loc),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!b')),
+        RoomPanelToken(RoomTokenParam.parse('!b')),
       );
       final left = parseOpenPanels(u(loc)).left;
       expect(
@@ -313,11 +296,10 @@ void main() {
     test('preserves an open right panel by construction', () {
       final loc = WorkspaceNav.openExclusiveLeftRoom(
         u('/chats?right=analytics:vocab'),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
       );
       expect(parseOpenPanels(u(loc)).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
@@ -354,7 +336,7 @@ void main() {
       // and opening the course card keeps the room beside it.
       var loc = WorkspaceNav.openExclusiveLeftRoom(
         u('/?c=!s'),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
       );
       loc = WorkspaceNav.openCourseTab(u(loc));
       final left = parseOpenPanels(u(loc)).left;
@@ -397,8 +379,7 @@ void main() {
       () {
         var loc = WorkspaceNav.openRight(
           u('/'),
-          const PanelToken(
-            PanelTypesEnum.analytics,
+          const AnalyticsPanelToken(
             AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
           ),
         );
@@ -437,10 +418,7 @@ void main() {
         );
         expect(
           right.last,
-          PanelToken(
-            PanelTypesEnum.grammar,
-            GrammarAnalyticsTokenParam.parse('verb'),
-          ),
+          GrammarAnalyticsPanelToken(GrammarAnalyticsTokenParam.parse('verb')),
         ); // detail after its master (master-first; renderer blooms it left)
         expect(
           right.first.type,
@@ -494,10 +472,7 @@ void main() {
       ); // session gone
       expect(
         lists.right.last,
-        PanelToken(
-          PanelTypesEnum.vocab,
-          VocabAnalyticsTokenParam.parse('hablar'),
-        ),
+        VocabAnalyticsPanelToken(VocabAnalyticsTokenParam.parse('hablar')),
       );
     });
 
@@ -508,7 +483,7 @@ void main() {
       );
       var loc = WorkspaceNav.openExclusiveLeftRoom(
         u('/'),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!live')),
+        RoomPanelToken(RoomTokenParam.parse('!live')),
       );
       loc = WorkspaceNav.openConstructDetail(
         u(loc),
@@ -522,10 +497,7 @@ void main() {
       ); // chat survives
       expect(
         lists.right.last,
-        PanelToken(
-          PanelTypesEnum.vocab,
-          VocabAnalyticsTokenParam.parse('hablar'),
-        ),
+        VocabAnalyticsPanelToken(VocabAnalyticsTokenParam.parse('hablar')),
       );
     });
   });
@@ -557,7 +529,7 @@ void main() {
     test('a session drops another room/session (one live view)', () {
       var loc = WorkspaceNav.openExclusiveLeftRoom(
         u('/'),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!live')),
+        RoomPanelToken(RoomTokenParam.parse('!live')),
       );
       loc = WorkspaceNav.openExclusiveSession(u(loc), '!s');
       final left = parseOpenPanels(u(loc)).left;
@@ -571,10 +543,7 @@ void main() {
             .length,
         1,
       );
-      expect(
-        left.single,
-        PanelToken(PanelTypesEnum.session, RoomTokenParam.parse('!s')),
-      );
+      expect(left.single, SessionPanelToken(RoomTokenParam.parse('!s')));
     });
 
     test('opening a session from Stars closes the open course card (#7106)', () {
@@ -603,20 +572,15 @@ void main() {
   group('setLeft / clearLeft', () {
     test('setLeft replaces the whole left list, preserving right', () {
       var loc = WorkspaceNav.setLeft(u('/chats?right=analytics:vocab'), [
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
-        PanelToken(PanelTypesEnum.chats),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
+        ChatsPanelToken(),
       ]);
       // Replace with a filter-independent left root (a bare course would be
       // dropped at parse for lacking its `?m=course:` filter).
-      loc = WorkspaceNav.setLeft(u(loc), const [
-        PanelToken(PanelTypesEnum.addcourse),
-      ]);
-      expect(parseOpenPanels(u(loc)).left, [
-        const PanelToken(PanelTypesEnum.addcourse),
-      ]);
+      loc = WorkspaceNav.setLeft(u(loc), const [AddCoursePanelToken()]);
+      expect(parseOpenPanels(u(loc)).left, [const AddCoursePanelToken()]);
       expect(parseOpenPanels(u(loc)).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
@@ -629,7 +593,7 @@ void main() {
       () {
         final loc = WorkspaceNav.closeSection(
           u('/?c=!s&left=course,room:!a&right=analytics:vocab'),
-          const PanelToken(PanelTypesEnum.course),
+          const CoursePanelToken(),
         );
         // Scope is independent of panels: the map stays course-scoped (filter
         // survives), the card is gone, the room and right column are kept.
@@ -644,8 +608,7 @@ void main() {
           isTrue,
         ); // room kept
         expect(lists.right, [
-          const PanelToken(
-            PanelTypesEnum.analytics,
+          const AnalyticsPanelToken(
             AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
           ),
         ]); // kept
@@ -660,7 +623,7 @@ void main() {
         // ?m= filter, so the edit page must NOT close with the card.
         final loc = WorkspaceNav.closeSection(
           u('/?c=!s&left=course,coursepage:edit'),
-          const PanelToken(PanelTypesEnum.course),
+          const CoursePanelToken(),
         );
         expect(loc.contains('c='), isTrue); // scope survives
         final lists = parseOpenPanels(u(loc));
@@ -670,10 +633,7 @@ void main() {
         ); // card gone
         expect(
           lists.left.where((t) => t.type == PanelTypesEnum.coursepage).single,
-          PanelToken(
-            PanelTypesEnum.coursepage,
-            RoomSubpageTokenParam.parse('edit'),
-          ),
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('edit')),
         ); // edit page kept
       },
     );
@@ -683,7 +643,7 @@ void main() {
       () {
         final loc = WorkspaceNav.closeSection(
           u('/?c=!s&left=course'),
-          const PanelToken(PanelTypesEnum.course),
+          const CoursePanelToken(),
         );
         expect(loc.contains('c='), isTrue); // scope survives the close
         expect(
@@ -696,7 +656,7 @@ void main() {
     test('closing a section with no filter lands on a bare world path', () {
       final loc = WorkspaceNav.closeSection(
         u('/?left=chats'),
-        const PanelToken(PanelTypesEnum.chats),
+        const ChatsPanelToken(),
       );
       expect(loc, '/');
     });
@@ -707,7 +667,7 @@ void main() {
       // drop it.
       final loc = WorkspaceNav.closeSection(
         u('/?c=!s&left=course&activity=act-1&launch=true'),
-        const PanelToken(PanelTypesEnum.course),
+        const CoursePanelToken(),
       );
       expect(loc.contains('activity=act-1'), isTrue); // overlay preserved
       expect(loc.contains('launch=true'), isTrue);
@@ -733,8 +693,7 @@ void main() {
       final parsed = u(result!);
       expect(parsed.path, '/profile');
       expect(parseOpenPanels(parsed).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
@@ -848,10 +807,7 @@ void main() {
       // One close drops the page and lands on the menu.
       final back = WorkspaceNav.closeRight(
         u(opened),
-        PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam.parse('profile'),
-        ),
+        SettingsPagePanelToken(SettingsTokenParam.parse('profile')),
       );
       final right = parseOpenPanels(u(back)).right;
       expect(
@@ -908,14 +864,11 @@ void main() {
       );
       expect(
         panels.right.single,
-        const PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam(subpage: 'learning'),
-        ),
+        const SettingsPagePanelToken(SettingsTokenParam(subpage: 'learning')),
       ); // page survives
       expect(
         panels.left.single,
-        const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!a')),
+        const RoomPanelToken(RoomTokenParam(id: '!a')),
       );
     });
 
@@ -931,7 +884,7 @@ void main() {
         expect(panels.right, isEmpty);
         expect(
           panels.left.single,
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!a')),
+          const RoomPanelToken(RoomTokenParam(id: '!a')),
         );
       },
     );
@@ -943,10 +896,7 @@ void main() {
       final loc = WorkspaceNav.openSettings(u('/'), page: 'learning');
       final closed = WorkspaceNav.closeRight(
         u(loc),
-        const PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam(subpage: 'learning'),
-        ),
+        const SettingsPagePanelToken(SettingsTokenParam(subpage: 'learning')),
       );
       final panels = parseOpenPanels(u(closed));
       expect(
@@ -966,11 +916,10 @@ void main() {
       expect(u(world).path, '/');
       final lists = parseOpenPanels(u(world));
       expect(lists.left, [
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
       ]); // room kept, no section
       expect(lists.right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]); // kept
@@ -981,12 +930,12 @@ void main() {
       // in the token, never a path segment.
       final chats = WorkspaceNav.setSection(
         u('/?left=room:!a&right=analytics:vocab'),
-        const PanelToken(PanelTypesEnum.chats),
+        const ChatsPanelToken(),
       );
       expect(u(chats).path, '/');
       expect(parseOpenPanels(u(chats)).left, [
-        const PanelToken(PanelTypesEnum.chats),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+        const ChatsPanelToken(),
+        RoomPanelToken(RoomTokenParam.parse('!a')),
       ]);
     });
 
@@ -998,8 +947,7 @@ void main() {
       );
       expect(parseOpenPanels(u(hub)).left, isEmpty);
       expect(parseOpenPanels(u(hub)).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
@@ -1010,17 +958,14 @@ void main() {
       // new focus (a course) or the World control changes `?m=`.
       final chats = WorkspaceNav.setSection(
         u('/?c=!s&left=course&right=analytics:vocab'),
-        const PanelToken(PanelTypesEnum.chats),
+        const ChatsPanelToken(),
         keepRoom: false,
       );
       expect(chats.contains('c='), isTrue);
       final lists = parseOpenPanels(u(chats));
-      expect(lists.left, [
-        const PanelToken(PanelTypesEnum.chats),
-      ]); // section replaced left
+      expect(lists.left, [const ChatsPanelToken()]); // section replaced left
       expect(lists.right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]); // kept
@@ -1034,12 +979,12 @@ void main() {
       // that blank parent — even though the current URL is the legacy path.
       final planList = WorkspaceNav.setSection(
         u('/courses/own/abc-123'),
-        PanelToken(PanelTypesEnum.addcourse, AddCourseTokenParam.parse('own')),
+        AddCoursePanelToken(AddCourseTokenParam.parse('own')),
         keepRoom: false,
       );
       expect(u(planList).path, '/');
       expect(parseOpenPanels(u(planList)).left, [
-        PanelToken(PanelTypesEnum.addcourse, AddCourseTokenParam.parse('own')),
+        AddCoursePanelToken(AddCourseTokenParam.parse('own')),
       ]);
       expect(parseOpenPanels(u(planList)).right, isEmpty);
     });
@@ -1053,18 +998,12 @@ void main() {
       // blank parent — even though the current URL is the legacy preview path.
       final browseList = WorkspaceNav.setSection(
         u('/courses/preview/!abc:server'),
-        PanelToken(
-          PanelTypesEnum.addcourse,
-          AddCourseTokenParam.parse('browse'),
-        ),
+        AddCoursePanelToken(AddCourseTokenParam.parse('browse')),
         keepRoom: false,
       );
       expect(u(browseList).path, '/');
       expect(parseOpenPanels(u(browseList)).left, [
-        PanelToken(
-          PanelTypesEnum.addcourse,
-          AddCourseTokenParam.parse('browse'),
-        ),
+        AddCoursePanelToken(AddCourseTokenParam.parse('browse')),
       ]);
       expect(parseOpenPanels(u(browseList)).right, isEmpty);
     });
@@ -1085,11 +1024,11 @@ void main() {
         );
         loc = WorkspaceNav.openExclusiveLeftRoom(
           u(loc),
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+          RoomPanelToken(RoomTokenParam.parse('!a')),
         );
         loc = WorkspaceNav.openDetail(
           u(loc),
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!b')),
+          RoomPanelToken(RoomTokenParam.parse('!b')),
         );
         final lists = parseOpenPanels(u(loc));
         expect(
@@ -1120,17 +1059,17 @@ void main() {
         );
         loc = WorkspaceNav.openExclusiveLeftRoom(
           u(loc),
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!a')),
+          RoomPanelToken(RoomTokenParam.parse('!a')),
         );
         loc = WorkspaceNav.openDetail(
           u(loc),
-          PanelToken(PanelTypesEnum.session, RoomTokenParam.parse('!s')),
+          SessionPanelToken(RoomTokenParam.parse('!s')),
         );
         final lists = parseOpenPanels(u(loc));
         expect(lists.left.where((t) => t.type == PanelTypesEnum.room), isEmpty);
         expect(
           lists.left.single,
-          PanelToken(PanelTypesEnum.session, RoomTokenParam.parse('!s')),
+          SessionPanelToken(RoomTokenParam.parse('!s')),
         );
         expect(
           lists.right.any(
@@ -1153,8 +1092,7 @@ void main() {
       expect(joinCodeFor(coded), 'vj3pc8b');
       final consumed = WorkspaceNav.pushPage(
         coded,
-        PanelTypesEnum.addcourse,
-        AddCourseTokenParam(subpage: 'private'),
+        AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
       );
       expect(consumed, '/?left=addcourse:private');
       expect(joinCodeFor(u(consumed)), isNull);
@@ -1167,23 +1105,18 @@ void main() {
       final consumed = u(
         WorkspaceNav.pushPage(
           coded,
-          PanelTypesEnum.addcourse,
-          AddCourseTokenParam(subpage: 'private'),
+          AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
         ),
       );
       expect(joinCodeFor(consumed), isNull);
       expect(activeSpaceIdFor(consumed), isNotNull);
       expect(parseOpenPanels(consumed).right, [
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       ]);
       expect(parseOpenPanels(consumed).left, [
-        const PanelToken(
-          PanelTypesEnum.addcourse,
-          AddCourseTokenParam(subpage: 'private'),
-        ),
+        const AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
       ]);
     });
   });
@@ -1192,63 +1125,45 @@ void main() {
     test('push deepens the param; pop returns one level then to the root', () {
       var loc = WorkspaceNav.pushPage(
         u('/'),
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam.parse('security'),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security')),
       );
       expect(
         parseOpenPanels(u(loc)).right.single,
-        PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam.parse('security'),
-        ),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security')),
       );
       loc = WorkspaceNav.pushPage(
         u(loc),
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam.parse('security/password'),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security/password')),
       );
       expect(
         parseOpenPanels(u(loc)).right.single,
-        PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam.parse('security/password'),
-        ),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security/password')),
       );
       loc = WorkspaceNav.popPage(
         u(loc),
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam.parse('security/password'),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security/password')),
       );
       expect(
         parseOpenPanels(u(loc)).right.single,
-        PanelToken(
-          PanelTypesEnum.settingspage,
-          SettingsTokenParam.parse('security'),
-        ),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security')),
       );
       loc = WorkspaceNav.popPage(
         u(loc),
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam.parse('security'),
+        SettingsPagePanelToken(SettingsTokenParam.parse('security')),
       );
-      expect(
-        parseOpenPanels(u(loc)).right.single,
-        PanelToken(PanelTypesEnum.settingspage),
-      );
+      expect(parseOpenPanels(u(loc)).right.length, 0);
     });
 
     test('pushing keeps other panels in the column', () {
       var loc = WorkspaceNav.openRight(
         u('/'),
-        const PanelToken(
-          PanelTypesEnum.analytics,
+        const AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
         ),
       );
       loc = WorkspaceNav.pushPage(
         u(loc),
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam.parse('learning'),
+        SettingsPagePanelToken(SettingsTokenParam.parse('learning')),
       );
       final right = parseOpenPanels(u(loc)).right.map((t) => t.type).toSet();
       expect(
@@ -1274,10 +1189,7 @@ void main() {
       ]);
       expect(
         left.last,
-        PanelToken(
-          PanelTypesEnum.coursepage,
-          RoomSubpageTokenParam.parse('edit'),
-        ),
+        CoursePagePanelToken(RoomSubpageTokenParam.parse('edit')),
       );
       // The course identity (the map filter) survives.
       expect(activeSpaceIdFor(u(loc)), '!s');
@@ -1287,23 +1199,14 @@ void main() {
         parseOpenPanels(
           u(loc),
         ).left.where((t) => t.type == PanelTypesEnum.coursepage).single,
-        PanelToken(
-          PanelTypesEnum.coursepage,
-          RoomSubpageTokenParam.parse('invite'),
-        ),
+        CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
       );
       // Closing the management detail drops it, leaving the card and filter.
       loc = WorkspaceNav.closeLeft(
         u(loc),
-        PanelToken(
-          PanelTypesEnum.coursepage,
-          RoomSubpageTokenParam.parse('invite'),
-        ),
+        CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
       );
-      expect(
-        parseOpenPanels(u(loc)).left.single,
-        const PanelToken(PanelTypesEnum.course),
-      );
+      expect(parseOpenPanels(u(loc)).left.single, const CoursePanelToken());
       expect(activeSpaceIdFor(u(loc)), '!s');
     });
 
@@ -1320,8 +1223,7 @@ void main() {
         parseOpenPanels(
           uri,
         ).left.where((t) => t.type == PanelTypesEnum.coursepage).single,
-        PanelToken(
-          PanelTypesEnum.coursepage,
+        CoursePagePanelToken(
           RoomSubpageTokenParam(subpage: 'invite', filter: 'knock'),
         ),
       );
@@ -1340,10 +1242,7 @@ void main() {
         ]);
         expect(
           parseOpenPanels(u(loc)).left.last,
-          PanelToken(
-            PanelTypesEnum.coursepage,
-            RoomSubpageTokenParam.parse('invite'),
-          ),
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
         );
         // From a DIFFERENT course — the scope is replaced with the target's.
         loc = WorkspaceNav.openCoursePageFor(
@@ -1356,10 +1255,7 @@ void main() {
           parseOpenPanels(
             u(loc),
           ).left.where((t) => t.type == PanelTypesEnum.coursepage).single,
-          PanelToken(
-            PanelTypesEnum.coursepage,
-            RoomSubpageTokenParam.parse('edit'),
-          ),
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('edit')),
         );
       },
     );
@@ -1377,8 +1273,7 @@ void main() {
         // The right column is just the practice panel — analytics + vocab gone.
         expect(
           lists.right.single,
-          PanelToken(
-            PanelTypesEnum.practice,
+          AnalyticsPracticePanelToken(
             AnalyticsPracticeTokenParam.parse('vocab'),
           ),
         );
@@ -1397,8 +1292,7 @@ void main() {
         );
         expect(
           parseOpenPanels(u(practice)).right.single,
-          PanelToken(
-            PanelTypesEnum.practice,
+          AnalyticsPracticePanelToken(
             AnalyticsPracticeTokenParam.parse('vocab'),
           ),
         );

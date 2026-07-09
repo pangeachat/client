@@ -66,8 +66,7 @@ void main() {
           type: ConstructTypeEnum.vocab,
           category: 'adj',
         );
-        final token = PanelToken(
-          PanelTypesEnum.vocab,
+        final token = VocabAnalyticsPanelToken(
           VocabAnalyticsTokenParam.parse(construct.toTokenParam()),
         );
         // Through the list grammar and back — a comma inside a lemma can never

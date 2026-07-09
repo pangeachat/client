@@ -37,9 +37,7 @@ String? activityRoomCloseLocation(Uri uri, String? roomId) {
   if (roomId == null || roomId.isEmpty) return null;
 
   bool matches(PanelToken t) {
-    if (t.type != PanelTypesEnum.room && t.type != PanelTypesEnum.session) {
-      return false;
-    }
+    if (!t.type.isRoomPanel) return false;
 
     final param = t.param;
     if (param == null || param is! RoomTokenParam) return false;

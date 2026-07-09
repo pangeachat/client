@@ -14,23 +14,17 @@ void main() {
 
   group('PanelToken.parse / encode', () {
     test('bare type and type:param', () {
-      expect(PanelToken.parse('chats'), const PanelToken(PanelTypesEnum.chats));
+      expect(PanelToken.parse('chats'), const ChatsPanelToken());
       expect(
         PanelToken.parse('room:!abc'),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       );
     });
 
     test('only the first colon splits, so room ids survive', () {
       // A full id rides the URL percent-encoded; after decode the colon is back.
       final t = PanelToken.parse('room:!abc%3Ahome.server');
-      expect(
-        t,
-        PanelToken(
-          PanelTypesEnum.room,
-          RoomTokenParam.parse('!abc:home.server'),
-        ),
-      );
+      expect(t, RoomPanelToken(RoomTokenParam.parse('!abc:home.server')));
     });
 
     test('malformed types are rejected', () {
@@ -41,8 +35,7 @@ void main() {
     });
 
     test('encode round-trips a construct whose value has commas and colons', () {
-      final token = PanelToken(
-        PanelTypesEnum.vocab,
+      final token = VocabAnalyticsPanelToken(
         VocabAnalyticsTokenParam.parse('{"lemma":"a,b","type":"verb"}'),
       );
       final round = PanelToken.parse(token.encode());

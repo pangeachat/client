@@ -151,7 +151,7 @@ class ChatListController extends State<ChatList>
   void clearActiveSpace() => context.go(
     WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      const PanelToken(PanelTypesEnum.chats),
+      const ChatsPanelToken(),
     ),
   );
   void setActiveSpace(String spaceId) => context.go(
@@ -267,20 +267,13 @@ class ChatListController extends State<ChatList>
     );
     if (!hasSection) {
       uri = Uri.parse(
-        WorkspaceNav.openLeft(
-          uri,
-          const PanelToken(PanelTypesEnum.chats),
-          atStart: true,
-        ),
+        WorkspaceNav.openLeft(uri, const ChatsPanelToken(), atStart: true),
       );
     }
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         uri,
-        PanelToken(
-          PanelTypesEnum.room,
-          RoomTokenParam(id: shortRoomId(room.id)),
-        ),
+        RoomPanelToken(RoomTokenParam(id: shortRoomId(room.id))),
       ),
     );
     // Pangea#

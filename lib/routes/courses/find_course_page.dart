@@ -10,7 +10,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -466,10 +465,12 @@ class _PublicCourseTile extends StatelessWidget {
   const _PublicCourseTile({required this.chunk, this.course});
 
   void _navigateToCoursePage(BuildContext context) {
-    // The live public-preview route (route-driven; the Completer/preview flow
-    // isn't token-native yet). See routing.instructions.md.
     context.go(
-      '${PRoutes.courses}/preview/${Uri.encodeComponent(chunk.room.roomId)}',
+      WorkspaceNav.openAddCourse(
+        GoRouterState.of(context).uri,
+        subpage: 'browse',
+        roomId: chunk.room.roomId,
+      ),
     );
   }
 

@@ -293,3 +293,15 @@ class PracticePanelDef extends PanelDef {
     super.siblingGroups = const {'detail'},
   });
 }
+
+class NewPrivateChatPanelDef extends PanelDef {
+  const NewPrivateChatPanelDef({
+    super.type = PanelTypesEnum.newprivatechat,
+    super.column = PanelColumn.left,
+    super.parent = PanelTypesEnum.chats,
+    super.minWidth = 400,
+    super.reasonableMinWidth = 400,
+    super.idealWidth = 400,
+    super.priority = 10,
+  });
+}

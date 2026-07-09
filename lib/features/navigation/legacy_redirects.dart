@@ -1,5 +1,4 @@
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
@@ -59,7 +58,7 @@ abstract class LegacyRedirects {
       'autoplay',
     });
     final parts = [
-      'left=${PanelToken(PanelTypesEnum.activity, activityTokenParam).encode()}',
+      'left=${ActivityPanelToken(activityTokenParam).encode()}',
       ...kept,
     ];
     return '${PRoutes.world}?${parts.join('&')}';
@@ -83,7 +82,7 @@ abstract class LegacyRedirects {
       code = null;
     }
     if (code == null || code.isEmpty) {
-      return '${PRoutes.world}?left=${const PanelToken(PanelTypesEnum.addcourse, AddCourseTokenParam(subpage: 'private')).encode()}';
+      return '${PRoutes.world}?left=${const AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')).encode()}';
     }
     return PRoutes.joinWithCode(code);
   }

@@ -1,5 +1,4 @@
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 
@@ -76,7 +75,7 @@ abstract class PRoutes {
   /// join-with-code page and submits the join. The `LegacyRedirects` join-link
   /// rewrite target, also re-entered after the login bounce (matrix.dart).
   static String joinWithCode(String code) =>
-      '$world?left=${PanelToken(PanelTypesEnum.addcourse, AddCourseTokenParam(subpage: 'private', joinCode: code)).encode()}';
+      '$world?left=${AddCoursePanelToken(AddCourseTokenParam(subpage: 'private', joinCode: code)).encode()}';
 
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.

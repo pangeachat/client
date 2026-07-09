@@ -1,14 +1,24 @@
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 
 /// One open-panel token from a workspace URL list (`left=` / `right=`).
 ///
 /// [type] selects a `PanelDef` in `panel_registry.dart`; [param] is its
 /// already-decoded argument (a room localpart, an analytics tab, an encoded
 /// construct). See `routing.instructions.md`.
-class PanelToken {
+sealed class PanelToken<T extends TokenParam> {
   final PanelTypesEnum type;
-  final TokenParam? param;
+  final T? param;
 
   const PanelToken(this.type, [this.param]);
 
@@ -27,9 +37,7 @@ class PanelToken {
     final i = encodedElement.indexOf(':');
     if (i < 0) {
       final type = PanelTypesEnum.fromString(encodedElement);
-      return _validType(encodedElement) && type != null
-          ? PanelToken(type)
-          : null;
+      return _validType(encodedElement) && type != null ? _byType(type) : null;
     }
     final type = encodedElement.substring(0, i);
     final parsedType = PanelTypesEnum.fromString(type);
@@ -44,11 +52,63 @@ class PanelToken {
     }
 
     try {
-      final parsed = TokenParam.byType(type, param);
-      return PanelToken(parsedType, parsed);
+      return _byType(parsedType, param);
     } catch (e) {
       // A parse method (TokenFields.decode, enum fromRoute, etc.) threw on
       // malformed input — skip this token rather than aborting route parse.
+      return null;
+    }
+  }
+
+  PanelToken? get popped => null;
+
+  String get screenName {
+    final param = this.param;
+    if (param == null || param.build().isEmpty) return type.name;
+    return '${type.name}:${param.build()}';
+  }
+
+  static PanelToken? _byType(PanelTypesEnum type, [String? param]) {
+    try {
+      final PanelToken? token = switch (type) {
+        PanelTypesEnum.chats => ChatsPanelToken(),
+        PanelTypesEnum.room => RoomPanelToken(RoomTokenParam.parse(param!)),
+        PanelTypesEnum.session => SessionPanelToken(
+          RoomTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.activity => ActivityPanelToken(
+          ActivityTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.course => CoursePanelToken(
+          param != null ? CourseDetailsTokenParam.parse(param) : null,
+        ),
+        PanelTypesEnum.coursepage => CoursePagePanelToken(
+          RoomSubpageTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.addcourse => AddCoursePanelToken(
+          param != null ? AddCourseTokenParam.parse(param) : null,
+        ),
+        PanelTypesEnum.settings => SettingsPanelToken(),
+        PanelTypesEnum.settingspage => SettingsPagePanelToken(
+          SettingsTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.analytics => AnalyticsPanelToken(
+          AnalyticsTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.vocab => VocabAnalyticsPanelToken(
+          VocabAnalyticsTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.grammar => GrammarAnalyticsPanelToken(
+          GrammarAnalyticsTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.review => ReviewPanelToken(),
+        PanelTypesEnum.practice => AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.newprivatechat => NewPrivateChatPanelToken(),
+      };
+      return token;
+    } catch (e) {
       return null;
     }
   }
@@ -68,4 +128,135 @@ class PanelToken {
 
   @override
   String toString() => encode();
+}
+
+class ChatsPanelToken extends PanelToken {
+  const ChatsPanelToken() : super(PanelTypesEnum.chats);
+}
+
+class RoomPanelToken extends PanelToken<RoomTokenParam> {
+  const RoomPanelToken(RoomTokenParam param)
+    : super(PanelTypesEnum.room, param);
+
+  @override
+  RoomPanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return RoomPanelToken(poppedParam);
+  }
+
+  @override
+  String get screenName {
+    final param = this.param;
+    if (param is! RoomTokenParam) return type.name;
+    if (param.subpage == null || param.subpage!.isEmpty) return type.name;
+
+    final filter = param.filter;
+    final sub = filter == null ? param.subpage! : '${param.subpage}/$filter';
+    return '${type.name}:$sub';
+  }
+}
+
+class SessionPanelToken extends PanelToken<RoomTokenParam> {
+  const SessionPanelToken(RoomTokenParam param)
+    : super(PanelTypesEnum.session, param);
+
+  @override
+  SessionPanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return SessionPanelToken(poppedParam);
+  }
+
+  @override
+  String get screenName {
+    final param = this.param;
+    if (param is! RoomTokenParam) return type.name;
+    if (param.subpage == null || param.subpage!.isEmpty) return type.name;
+
+    final filter = param.filter;
+    final sub = filter == null ? param.subpage! : '${param.subpage}/$filter';
+    return '${type.name}:$sub';
+  }
+}
+
+class ActivityPanelToken extends PanelToken<ActivityTokenParam> {
+  const ActivityPanelToken(ActivityTokenParam param)
+    : super(PanelTypesEnum.activity, param);
+
+  @override
+  String get screenName => type.name;
+}
+
+class CoursePanelToken extends PanelToken<CourseDetailsTokenParam> {
+  const CoursePanelToken([CourseDetailsTokenParam? param])
+    : super(PanelTypesEnum.course, param);
+}
+
+class CoursePagePanelToken extends PanelToken<RoomSubpageTokenParam> {
+  const CoursePagePanelToken(RoomSubpageTokenParam param)
+    : super(PanelTypesEnum.coursepage, param);
+}
+
+class AddCoursePanelToken extends PanelToken<AddCourseTokenParam> {
+  const AddCoursePanelToken([AddCourseTokenParam? param])
+    : super(PanelTypesEnum.addcourse, param);
+}
+
+class SettingsPanelToken extends PanelToken {
+  const SettingsPanelToken() : super(PanelTypesEnum.settings);
+}
+
+class SettingsPagePanelToken extends PanelToken<SettingsTokenParam> {
+  const SettingsPagePanelToken(SettingsTokenParam param)
+    : super(PanelTypesEnum.settingspage, param);
+
+  @override
+  SettingsPagePanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return SettingsPagePanelToken(poppedParam);
+  }
+}
+
+class AnalyticsPanelToken extends PanelToken<AnalyticsTokenParam> {
+  const AnalyticsPanelToken(AnalyticsTokenParam param)
+    : super(PanelTypesEnum.analytics, param);
+}
+
+class VocabAnalyticsPanelToken extends PanelToken<VocabAnalyticsTokenParam> {
+  const VocabAnalyticsPanelToken(VocabAnalyticsTokenParam param)
+    : super(PanelTypesEnum.vocab, param);
+
+  @override
+  String get screenName => type.name;
+}
+
+class GrammarAnalyticsPanelToken
+    extends PanelToken<GrammarAnalyticsTokenParam> {
+  const GrammarAnalyticsPanelToken(GrammarAnalyticsTokenParam param)
+    : super(PanelTypesEnum.grammar, param);
+
+  @override
+  String get screenName => type.name;
+}
+
+class ReviewPanelToken extends PanelToken {
+  const ReviewPanelToken() : super(PanelTypesEnum.review);
+}
+
+class AnalyticsPracticePanelToken
+    extends PanelToken<AnalyticsPracticeTokenParam> {
+  const AnalyticsPracticePanelToken(AnalyticsPracticeTokenParam param)
+    : super(PanelTypesEnum.practice, param);
+}
+
+class NewPrivateChatPanelToken extends PanelToken {
+  const NewPrivateChatPanelToken() : super(PanelTypesEnum.newprivatechat);
 }

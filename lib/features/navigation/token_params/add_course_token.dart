@@ -5,7 +5,7 @@ import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 class AddCourseTokenParam extends TokenParam {
-  final String subpage;
+  final String? subpage;
   final String? roomId;
   final String? courseId;
   final String? targetLanguage;
@@ -13,7 +13,7 @@ class AddCourseTokenParam extends TokenParam {
   final bool invite;
 
   const AddCourseTokenParam({
-    required this.subpage,
+    this.subpage,
     this.roomId,
     this.courseId,
     this.targetLanguage,
@@ -23,13 +23,14 @@ class AddCourseTokenParam extends TokenParam {
 
   @override
   String build() {
+    final subpage = this.subpage;
     final roomId = this.roomId;
     final courseId = this.courseId;
     final targetLanguage = this.targetLanguage;
     final joinCode = this.joinCode;
 
     return TokenFields.join([
-      TokenFields.encode(subpage),
+      if (subpage != null) TokenFields.encode(subpage),
       if (roomId != null) 'r${TokenFields.encode(shortRoomId(roomId))}',
       if (courseId != null) 'c${TokenFields.encode(courseId)}',
       if (targetLanguage != null) 'l${TokenFields.encode(targetLanguage)}',

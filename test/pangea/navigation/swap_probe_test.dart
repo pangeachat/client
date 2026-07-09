@@ -83,24 +83,20 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         ),
       );
       expect(focusType(u), PanelTypesEnum.room);
       u = Uri.parse(
         WorkspaceNav.setRight(u, [
-          PanelToken(
-            PanelTypesEnum.analytics,
-            AnalyticsTokenParam.parse('vocab'),
-          ),
+          AnalyticsPanelToken(AnalyticsTokenParam.parse('vocab')),
         ]),
       );
       expect(focusType(u), PanelTypesEnum.analytics);
       u = Uri.parse(
         WorkspaceNav.pushPage(
           u,
-          PanelTypesEnum.room,
-          RoomTokenParam.parse('!abc/members'),
+          RoomPanelToken(RoomTokenParam.parse('!abc/members')),
         ),
       );
       expect(
@@ -157,7 +153,7 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
+          const RoomPanelToken(RoomTokenParam(id: '!abc')),
         ),
       );
       u = Uri.parse(WorkspaceNav.openSettings(u)); // open settings (right)
@@ -192,7 +188,7 @@ void main() {
         var u = Uri.parse(
           WorkspaceNav.openLeft(
             Uri.parse('/'),
-            const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
+            const RoomPanelToken(RoomTokenParam(id: '!abc')),
           ),
         );
         u = Uri.parse(WorkspaceNav.openSettings(u));
@@ -220,15 +216,14 @@ void main() {
       u = Uri.parse(
         WorkspaceNav.openLeft(
           u,
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
+          const RoomPanelToken(RoomTokenParam(id: '!abc')),
         ),
       );
       final fhRoom = fhOf(u);
       u = Uri.parse(
         WorkspaceNav.pushPage(
           u,
-          PanelTypesEnum.room,
-          RoomTokenParam(id: '!abc/members'),
+          RoomPanelToken(RoomTokenParam(id: '!abc/members')),
         ),
       );
       final fhMembers = fhOf(u);
@@ -248,10 +243,7 @@ void main() {
     test('opening a construct detail shows it over the summary (narrow)', () {
       var u = Uri.parse(
         WorkspaceNav.setRight(Uri.parse('/'), [
-          PanelToken(
-            PanelTypesEnum.analytics,
-            AnalyticsTokenParam.parse('vocab'),
-          ),
+          AnalyticsPanelToken(AnalyticsTokenParam.parse('vocab')),
         ]),
       );
 
@@ -290,7 +282,7 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
+          const RoomPanelToken(RoomTokenParam(id: '!abc')),
         ),
       );
       layoutOf(u, 400, columnMode: false); // build 1: room
@@ -306,14 +298,14 @@ void main() {
       u = Uri.parse(
         WorkspaceNav.openLeft(
           u,
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
+          const RoomPanelToken(RoomTokenParam(id: '!abc')),
         ),
       );
       layoutOf(u, 400, columnMode: false); // build 2: + room abc
       u = Uri.parse(
         WorkspaceNav.openExclusiveLeftRoom(
           u,
-          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!xyz')),
+          const RoomPanelToken(RoomTokenParam(id: '!xyz')),
         ),
       );
       final l = layoutOf(u, 400, columnMode: false); // build 3: swap to xyz

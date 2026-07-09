@@ -15,7 +15,6 @@ import 'package:fluffychat/features/navigation/token_params/grammar_analytics_to
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -161,12 +160,7 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(
       PRoutes.world,
       WorkspaceQuery.parts(
-        Uri.parse(
-          openExclusiveLeftRoom(
-            current,
-            PanelToken(PanelTypesEnum.room, param),
-          ),
-        ).query,
+        Uri.parse(openExclusiveLeftRoom(current, RoomPanelToken(param))).query,
       ),
     );
   }
@@ -181,10 +175,7 @@ abstract class WorkspaceNav {
   /// only dropped on the Stars path. (Not a shared sibling group: that would
   /// evict the course on every room/vocab/grammar/practice open too.)
   static String openExclusiveSession(Uri current, String roomId) {
-    final token = PanelToken(
-      PanelTypesEnum.session,
-      RoomTokenParam(id: shortRoomId(roomId)),
-    );
+    final token = SessionPanelToken(RoomTokenParam(id: shortRoomId(roomId)));
 
     return _mutateBoth(current, (left) {
       final next = left
@@ -212,16 +203,13 @@ abstract class WorkspaceNav {
     ConstructTypeEnum view, {
     ConstructIdentifier? constructId,
   }) {
-    final param = view == ConstructTypeEnum.vocab
-        ? VocabAnalyticsTokenParam(constructId: constructId)
-        : GrammarAnalyticsTokenParam(constructId: constructId);
-
-    final detail = PanelToken(
-      view == ConstructTypeEnum.vocab
-          ? PanelTypesEnum.vocab
-          : PanelTypesEnum.grammar,
-      param,
-    );
+    final PanelToken detail = view == ConstructTypeEnum.vocab
+        ? VocabAnalyticsPanelToken(
+            VocabAnalyticsTokenParam(constructId: constructId),
+          )
+        : GrammarAnalyticsPanelToken(
+            GrammarAnalyticsTokenParam(constructId: constructId),
+          );
 
     return _mutateBoth(
       current,
@@ -234,10 +222,7 @@ abstract class WorkspaceNav {
         if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
           next.insert(
             0,
-            PanelToken(
-              PanelTypesEnum.analytics,
-              AnalyticsTokenParam(subpage: view.indicator),
-            ),
+            AnalyticsPanelToken(AnalyticsTokenParam(subpage: view.indicator)),
           );
         }
 
@@ -261,24 +246,13 @@ abstract class WorkspaceNav {
         current,
         (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
         (right) {
-          final next = right
-              .where(
-                (t) =>
-                    t.type != PanelTypesEnum.analytics &&
-                    t.type != PanelTypesEnum.vocab &&
-                    t.type != PanelTypesEnum.grammar &&
-                    t.type != PanelTypesEnum.practice,
-              )
-              .toList();
-
+          final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
           next.insert(
             0,
-            PanelToken(
-              PanelTypesEnum.practice,
+            AnalyticsPracticePanelToken(
               AnalyticsPracticeTokenParam(constructType: type),
             ),
           );
-
           return next;
         },
       );
@@ -297,8 +271,7 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      PanelToken(
-        PanelTypesEnum.course,
+      CoursePanelToken(
         tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
       ),
       // Drop any prior course token, the Courses launcher (`addcourse`), a stale
@@ -307,13 +280,7 @@ abstract class WorkspaceNav {
       // in-course "Pick different activity" / "Return to course" buttons route
       // here), so the live-view activity must not co-render beside the card
       // (#7385). A live `room` is kept (a course can scope a chat).
-      ...lists.left.where(
-        (t) =>
-            t.type != PanelTypesEnum.course &&
-            t.type != PanelTypesEnum.addcourse &&
-            t.type != PanelTypesEnum.coursepage &&
-            t.type != PanelTypesEnum.activity,
-      ),
+      ...lists.left.where((t) => !t.type.isCoursePanel),
     ];
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'c', 'left'});
@@ -342,7 +309,7 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      PanelToken(PanelTypesEnum.course),
+      CoursePanelToken(),
       if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     final parts = WorkspaceQuery.parts(current.query);
@@ -376,13 +343,7 @@ abstract class WorkspaceNav {
                 t.type != PanelTypesEnum.activity,
           )
           .toList();
-      next.insert(
-        0,
-        PanelToken(
-          PanelTypesEnum.course,
-          CourseDetailsTokenParam(activeTab: tab),
-        ),
-      );
+      next.insert(0, CoursePanelToken(CourseDetailsTokenParam(activeTab: tab)));
       return next;
     },
   );
@@ -403,8 +364,7 @@ abstract class WorkspaceNav {
     String? courseId,
   }) => openDetail(
     current,
-    PanelToken(
-      PanelTypesEnum.coursepage,
+    CoursePagePanelToken(
       RoomSubpageTokenParam(subpage: page, filter: filter, courseId: courseId),
     ),
   );
@@ -450,8 +410,7 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
   }) {
-    final token = PanelToken(
-      PanelTypesEnum.activity,
+    final token = ActivityPanelToken(
       ActivityTokenParam(
         activityId: activityId,
         roomId: roomId,
@@ -487,8 +446,7 @@ abstract class WorkspaceNav {
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'left'});
 
-    final token = PanelToken(
-      PanelTypesEnum.activity,
+    final token = ActivityPanelToken(
       ActivityTokenParam(
         activityId: activityId,
         roomId: roomId,
@@ -518,7 +476,7 @@ abstract class WorkspaceNav {
     if (reopenCourseCard &&
         activeSpaceIdFor(current) != null &&
         left.every((t) => t.type != PanelTypesEnum.course)) {
-      left.insert(0, const PanelToken(PanelTypesEnum.course));
+      left.insert(0, const CoursePanelToken());
     }
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');
@@ -636,22 +594,6 @@ abstract class WorkspaceNav {
   static String closeRight(Uri current, PanelToken token) =>
       _mutate(current, 'right', (tokens) => _remove(tokens, token));
 
-  /// The left-column SECTION surfaces — rail destinations (the chat list, the
-  /// Courses hub, the course family, the activity plan), as opposed to live
-  /// CONTENT (a `room`/`session` conversation). On a single column, a section
-  /// and a right panel are peers in the same visual slot, so opening one
-  /// closes the other ([setRight]'s / [setSection]'s narrow flags) — while a
-  /// live room persists under a right panel (the chat-header avatar loop:
-  /// chat → analytics → X → back to the conversation). See
-  /// `routing.instructions.md` → Single-column bottom nav.
-  static const Set<PanelTypesEnum> _leftSections = {
-    PanelTypesEnum.chats,
-    PanelTypesEnum.addcourse,
-    PanelTypesEnum.course,
-    PanelTypesEnum.coursepage,
-    PanelTypesEnum.activity,
-  };
-
   /// Replace the whole `right` list. Used when switching the analytics metric:
   /// the cluster drops the other analytics/detail tokens and seats one summary.
   ///
@@ -669,7 +611,7 @@ abstract class WorkspaceNav {
     return _mutate(
       Uri.parse(next),
       'left',
-      (left) => left.where((t) => !_leftSections.contains(t.type)).toList(),
+      (left) => left.where((t) => !t.type.isLeftSection).toList(),
     );
   }
 
@@ -678,14 +620,10 @@ abstract class WorkspaceNav {
   /// invite, a room→members/search. Replaces that panel's token with the
   /// deeper-page token, keeping every other panel. A null/empty [page] is the
   /// panel's root. See `routing.instructions.md`.
-  static String pushPage(Uri current, PanelTypesEnum type, TokenParam? param) {
-    final token = param == null || param.build().isEmpty
-        ? PanelToken(type)
-        : PanelToken(type, param);
-
-    final col = type.def.column == PanelColumn.right ? 'right' : 'left';
+  static String pushPage(Uri current, PanelToken token) {
+    final col = token.type.def.column == PanelColumn.right ? 'right' : 'left';
     return _mutate(current, col, (tokens) {
-      final next = tokens.where((t) => t.type != type).toList();
+      final next = tokens.where((t) => t.type != token.type).toList();
       next.add(token);
       return next;
     });
@@ -693,21 +631,15 @@ abstract class WorkspaceNav {
 
   /// Pop one page level off a pushable panel (its back arrow): a `a/b` page
   /// returns to `a`; a top-level page returns to the panel's root.
-  static String popPage(Uri current, PanelTypesEnum type, TokenParam param) {
-    return pushPage(current, type, param.poppedParam);
-  }
+  static String popPage(Uri current, PanelToken token) {
+    final popped = token.popped;
+    if (popped != null) {
+      return pushPage(current, popped);
+    }
 
-  /// The analytics-family right panels: the analytics summary, its vocab/grammar
-  /// details, and the practice/activity-review surfaces. Opening Settings drops
-  /// these so the right column shows one feature at a time — mirroring how
-  /// opening analytics replaces the right column and drops Settings (#7109).
-  static const Set<PanelTypesEnum> _analyticsRightPanels = {
-    PanelTypesEnum.analytics,
-    PanelTypesEnum.vocab,
-    PanelTypesEnum.grammar,
-    PanelTypesEnum.practice,
-    PanelTypesEnum.review,
-  };
+    final col = token.type.def.column == PanelColumn.right ? 'right' : 'left';
+    return _mutate(current, col, (tokens) => _remove(tokens, token));
+  }
 
   /// Open the settings/profile MENU as the right-column master (page null/empty),
   /// or a settings PAGE as its detail beside the menu. The `settings` menu master
@@ -731,27 +663,24 @@ abstract class WorkspaceNav {
               (t) =>
                   t.type != PanelTypesEnum.settings &&
                   t.type != PanelTypesEnum.settingspage &&
-                  !_analyticsRightPanels.contains(t.type),
+                  !t.type.isAnalyticsPanel,
             )
             .toList();
-        result.add(const PanelToken(PanelTypesEnum.settings));
+        result.add(const SettingsPanelToken());
         return result;
       });
     } else {
-      final detail = PanelToken(
-        PanelTypesEnum.settingspage,
-        SettingsTokenParam(subpage: page),
-      );
+      final detail = SettingsPagePanelToken(SettingsTokenParam(subpage: page));
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
             .where(
               (t) =>
                   t.type != PanelTypesEnum.settingspage &&
-                  !_analyticsRightPanels.contains(t.type),
+                  !t.type.isAnalyticsPanel,
             )
             .toList();
         if (!result.any((t) => t.type == PanelTypesEnum.settings)) {
-          result.insert(0, const PanelToken(PanelTypesEnum.settings));
+          result.insert(0, const SettingsPanelToken());
         }
         result.add(detail);
         return result;
@@ -761,7 +690,7 @@ abstract class WorkspaceNav {
     return _mutate(
       Uri.parse(next),
       'left',
-      (left) => left.where((t) => !_leftSections.contains(t.type)).toList(),
+      (left) => left.where((t) => !t.type.isLeftSection).toList(),
     );
   }
 
@@ -776,7 +705,7 @@ abstract class WorkspaceNav {
   static String closeSettings(Uri current) => _mutate(
     current,
     'right',
-    (tokens) => _remove(tokens, const PanelToken(PanelTypesEnum.settings)),
+    (tokens) => _remove(tokens, const SettingsPanelToken()),
   );
 
   /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
@@ -789,7 +718,7 @@ abstract class WorkspaceNav {
         return openSettings(current, page: popped.subpage);
       }
     }
-    return closeRight(current, PanelToken(PanelTypesEnum.settingspage, param));
+    return closeRight(current, SettingsPagePanelToken(param));
   }
 
   static List<PanelToken> _add(
@@ -855,16 +784,14 @@ abstract class WorkspaceNav {
     ProgressIndicatorEnum? subpage,
     bool closeSections = false,
   }) => setRight(current, [
-    PanelToken(
-      PanelTypesEnum.analytics,
+    AnalyticsPanelToken(
       AnalyticsTokenParam(subpage: subpage ?? ProgressIndicatorEnum.wordsUsed),
     ),
   ], closeSections: closeSections);
 
   static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
       setRight(current, [
-        PanelToken(
-          PanelTypesEnum.analytics,
+        AnalyticsPanelToken(
           AnalyticsTokenParam.parse(
             view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
           ),
@@ -891,8 +818,7 @@ abstract class WorkspaceNav {
     bool invite = false,
   }) => setSection(
     current,
-    PanelToken(
-      PanelTypesEnum.addcourse,
+    AddCoursePanelToken(
       subpage != null
           ? AddCourseTokenParam(
               subpage: subpage,

@@ -55,12 +55,12 @@ void main() {
       () {
         final loc = WorkspaceNav.openExclusiveLeftRoom(
           NavigationUtil.stripActivityOverlay(u('/$activityId')),
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         );
         final result = u(loc);
         expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
         expect(parseOpenPanels(result).left, [
-          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         ]);
       },
     );
@@ -70,15 +70,15 @@ void main() {
         NavigationUtil.stripActivityOverlay(
           u('/?c=!s&left=course,activity:$activityId.l'),
         ),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       );
       final result = u(loc);
       expect(result.path, '/');
       expect(result.query.contains('activity'), isFalse);
       expect(result.query.contains('c=!s'), isTrue);
       expect(parseOpenPanels(result).left, [
-        const PanelToken(PanelTypesEnum.course),
-        PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+        const CoursePanelToken(),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       ]);
     });
   });
@@ -124,10 +124,7 @@ void main() {
         // The renderable token — NOT the blank `coursepage:details/invite`.
         expect(
           coursepage,
-          PanelToken(
-            PanelTypesEnum.coursepage,
-            RoomSubpageTokenParam.parse('invite'),
-          ),
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
         );
       },
     );

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/close_button_labels.dart';
 
 /// Regression coverage for #7274 ("[SR] duplicate close button confusion"):
 /// several panels can be open at once, each with its own close (X). A bare
@@ -51,8 +49,7 @@ void main() {
     await captureL10n(tester);
 
     final labels = {
-      for (final type in closeableTypes)
-        type: closeButtonLabel(l10n, PanelToken(type)),
+      for (final type in closeableTypes) type: type.closeButtonLabel(l10n),
     };
 
     // None degrades to the bare "Close" the issue is about.
@@ -78,11 +75,7 @@ void main() {
   ) async {
     await captureL10n(tester);
     expect(
-      closeButtonLabel(
-        l10n,
-        const PanelToken(PanelTypesEnum.settingspage),
-        named: 'Learning',
-      ),
+      PanelTypesEnum.settingspage.closeButtonLabel(l10n, named: 'Learning'),
       l10n.closeNamed('Learning'),
     );
   });

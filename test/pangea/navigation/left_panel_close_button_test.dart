@@ -29,10 +29,7 @@ void main() {
             path: '/',
             builder: (context, state) => Scaffold(
               body: LeftPanelCloseButton(
-                token: PanelToken(
-                  PanelTypesEnum.session,
-                  RoomTokenParam.parse('!x'),
-                ),
+                token: SessionPanelToken(RoomTokenParam.parse('!x')),
                 currentUri: staleUri, // STALE on purpose
                 foldedOver: false,
                 isColumnMode: true,

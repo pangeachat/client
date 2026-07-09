@@ -113,8 +113,7 @@ String _recencyKey(PanelToken token) {
   // separate panel), so this branch is reached with the original type.
   final type = token.type;
   final param = token.param;
-  if ((type == PanelTypesEnum.room || type == PanelTypesEnum.session) &&
-      param is RoomTokenParam) {
+  if (type.isRoomPanel && param is RoomTokenParam) {
     return '${type.name}:${param.id}';
   }
   // Every other family (settings/analytics/course/chats/addcourse/practice/
@@ -443,16 +442,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         cavityToken?.type == PanelTypesEnum.course ||
         cavityToken?.type == PanelTypesEnum.coursepage;
     final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
-
-    // Which rail item's OWN surface the cavity hosts, for the widget's
-    // tap-the-active-item toggle. A course sheet / activity plan is neither
-    // rail section's surface — the Courses tap must then navigate to the hub
-    // instead of toggling (#7537).
-    final cavitySection = switch (cavityToken?.type) {
-      PanelTypesEnum.chats => AppSection.chats,
-      PanelTypesEnum.addcourse => AppSection.courses,
-      _ => null,
-    };
+    final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. This PR wires the MAP
@@ -570,7 +560,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 )
               : WorkspaceNav.setSection(
                   uri,
-                  const PanelToken(PanelTypesEnum.addcourse),
+                  const AddCoursePanelToken(),
                   keepRoom: false,
                   clearRight: true,
                 ),
@@ -580,13 +570,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           AppSection.world => WorkspaceNav.clearAll(),
           AppSection.chats => WorkspaceNav.setSection(
             uri,
-            const PanelToken(PanelTypesEnum.chats),
+            const ChatsPanelToken(),
             keepRoom: false,
             clearRight: true,
           ),
           AppSection.courses => WorkspaceNav.setSection(
             uri,
-            const PanelToken(PanelTypesEnum.addcourse),
+            const AddCoursePanelToken(),
             keepRoom: false,
             clearRight: true,
           ),
@@ -777,8 +767,7 @@ class _ShellLayout {
     // post-frame in [scheduleControllers].
     String? focusedLeftToken;
     for (final token in leftTokens) {
-      if (token.type == PanelTypesEnum.room ||
-          token.type == PanelTypesEnum.session) {
+      if (token.type.isRoomPanel) {
         focusedLeftToken = token.encode();
         break;
       }
@@ -861,21 +850,6 @@ class _ShellLayout {
       }
     }
 
-    // Narrow chrome (routing.instructions.md → Single-column bottom nav): the
-    // section surfaces — the chat list, the Courses/add-course hub, the course
-    // family (card + coursepage detail), and the ACTIVITY PLAN (a half-open
-    // sheet with the camera on its pin — the Google Maps UX) — ride the nav
-    // widget's expandable CAVITY over the map. Only a live chat (a room or a
-    // launched session) and the right panels render full-screen over the
-    // chrome. The left-panel loop skips the cavity index so it is not also
-    // drawn full-screen.
-    const cavityTypes = {
-      PanelTypesEnum.chats,
-      PanelTypesEnum.addcourse,
-      PanelTypesEnum.course,
-      PanelTypesEnum.coursepage,
-      PanelTypesEnum.activity,
-    };
     // A route-driven center-detail page on a narrow screen (a course-wizard
     // step, a public-course preview, a chat archive, the new-private-chat
     // form) is a FULL-SCREEN surface (routing.instructions.md → Full-screen
@@ -889,7 +863,7 @@ class _ShellLayout {
         focusedNarrowType != null &&
         !focusedIsRight) {
       for (var i = 0; i < leftTokens.length; i++) {
-        if (cavityTypes.contains(leftTokens[i].type) &&
+        if (leftTokens[i].type.isCavity &&
             layout.left[i].vis == PanelVis.full) {
           cavityIndex = i;
           break;
