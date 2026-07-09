@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-08 15:21:47.657674",
+    "@@last_modified": "2026-07-09 15:54:01.986413",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11310,6 +11310,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Закрыть страницу добавления курса",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -36,7 +36,7 @@ class RoomTokenParam extends TokenParam {
   bool get isPushed => subpage != null;
 
   @override
-  TokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
+  RoomTokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
 
   RoomSubpageTokenParam? toSubpageToken() {
     final subpage = this.subpage;

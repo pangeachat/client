@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-08 15:20:19.129558",
+    "@@last_modified": "2026-07-09 15:53:30.439104",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10293,6 +10293,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sulge kursuse lisamise leht",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

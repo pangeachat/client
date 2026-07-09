@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:14.685214",
+    "@@last_modified": "2026-07-09 15:53:49.801290",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10412,6 +10412,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "கோर्स் சேர்க்கும் பக்கம் மூடு",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -79,10 +79,9 @@ class CourseCodePageState extends State<CourseCodePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       context.replace(
-        WorkspaceNav.pushPage(
+        WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
-          'addcourse',
-          AddCourseTokenParam(subpage: 'private'),
+          AddCourseSubpageEnum.private,
         ),
       );
       _submit();
@@ -142,7 +141,7 @@ class CourseCodePageState extends State<CourseCodePage> {
           onPressed: () => context.go(
             WorkspaceNav.setSection(
               GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
+              const AddCoursePanelToken(),
               keepRoom: false,
             ),
           ),

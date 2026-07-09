@@ -70,7 +70,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         GoRouterState.of(context).uri,
-        PanelToken('room', RoomTokenParam(id: shortRoomId(roomId))),
+        RoomPanelToken(RoomTokenParam(id: shortRoomId(roomId))),
       ),
       extra: widget.items,
     );

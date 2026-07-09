@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -36,9 +37,7 @@ String? activityRoomCloseLocation(Uri uri, String? roomId) {
   if (roomId == null || roomId.isEmpty) return null;
 
   bool matches(PanelToken t) {
-    if (t.type != 'room' && t.type != 'session') {
-      return false;
-    }
+    if (!t.type.isRoomPanel) return false;
 
     final param = t.param;
     if (param == null || param is! RoomTokenParam) return false;
@@ -98,7 +97,7 @@ class ActivitySessionStartView extends StatelessWidget {
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
         final embedded = parseOpenPanels(
           uri,
-        ).left.any((t) => t.type == 'activity');
+        ).left.any((t) => t.type == PanelTypesEnum.activity);
         final courseScoped = activeSpaceIdFor(uri) != null;
 
         return Scaffold(
@@ -186,8 +185,11 @@ class ActivitySessionStartView extends StatelessWidget {
                 // activities.instructions.md engages only on a confirmed 404).
                 : controller.error != null
                 ? Center(
-                    child: ErrorIndicator(
-                      message: L10n.of(context).activityLoadFailed,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: ErrorIndicator(
+                        message: L10n.of(context).activityLoadFailed,
+                      ),
                     ),
                   )
                 // Confirmed removed with no plan recoverable from room state:

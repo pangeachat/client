@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-08 15:20:31.267745",
+    "@@last_modified": "2026-07-09 15:53:34.789372",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10296,6 +10296,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Закрити сторінку додавання курсу",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

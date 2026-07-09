@@ -2775,7 +2775,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-08 15:20:46.005914",
+    "@@last_modified": "2026-07-09 15:53:40.996578",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11372,6 +11372,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fechar página de adicionar curso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

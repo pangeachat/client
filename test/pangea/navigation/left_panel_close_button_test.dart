@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -28,7 +29,7 @@ void main() {
             path: '/',
             builder: (context, state) => Scaffold(
               body: LeftPanelCloseButton(
-                token: PanelToken('session', RoomTokenParam.parse('!x')),
+                token: SessionPanelToken(RoomTokenParam.parse('!x')),
                 currentUri: staleUri, // STALE on purpose
                 foldedOver: false,
                 isColumnMode: true,
@@ -55,7 +56,7 @@ void main() {
 
       // The session token is dropped...
       expect(
-        panels.left.any((t) => t.type == 'session'),
+        panels.left.any((t) => t.type == PanelTypesEnum.session),
         isFalse,
         reason: 'the session token should be dropped on close',
       );
@@ -63,7 +64,9 @@ void main() {
       // the stale open-time tab (sessions). Pre-fix this was analytics:sessions.
       expect(
         panels.right.any(
-          (t) => t.type == 'analytics' && t.param?.build() == 'grammar',
+          (t) =>
+              t.type == PanelTypesEnum.analytics &&
+              t.param?.build() == 'grammar',
         ),
         isTrue,
         reason:

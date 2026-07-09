@@ -10,7 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -318,9 +318,9 @@ class FindCoursePageState extends State<FindCoursePage> {
     // loose `?lang=`/`?showAll=` query (routing.instructions.md).
     final targetLanguage = targetLanguageFilter.value?.langCode;
     context.go(
-      WorkspaceNav.openAddCourse(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        subpage: 'own',
+        AddCourseSubpageEnum.own,
         targetLanguage: targetLanguage,
       ),
     );
@@ -444,7 +444,11 @@ class FindCoursePageView extends StatelessWidget {
                               coursePlan:
                                   controller.coursePlans[space.courseId]!,
                               onTap: () => context.go(
-                                '${PRoutes.courses}/preview/${Uri.encodeComponent(space.room.roomId)}',
+                                WorkspaceNav.openAddCoursePage(
+                                  GoRouterState.of(context).uri,
+                                  AddCourseSubpageEnum.browse,
+                                  roomId: space.room.roomId,
+                                ),
                               ),
                               isKnock:
                                   space.room.joinRule == JoinRules.knock.name,
