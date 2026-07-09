@@ -13,6 +13,7 @@ enum PanelTypesEnum {
   course,
   coursepage,
   addcourse,
+  addcoursepage,
   settings,
   settingspage,
   analytics,
@@ -35,6 +36,7 @@ enum PanelTypesEnum {
   bool get isCoursePanel => {
     PanelTypesEnum.course,
     PanelTypesEnum.addcourse,
+    PanelTypesEnum.addcoursepage,
     PanelTypesEnum.coursepage,
     PanelTypesEnum.activity,
   }.contains(this);
@@ -49,6 +51,7 @@ enum PanelTypesEnum {
   bool get isLeftSection => {
     PanelTypesEnum.chats,
     PanelTypesEnum.addcourse,
+    PanelTypesEnum.addcoursepage,
     PanelTypesEnum.course,
     PanelTypesEnum.coursepage,
     PanelTypesEnum.activity,
@@ -65,9 +68,23 @@ enum PanelTypesEnum {
   bool get isCavity => {
     PanelTypesEnum.chats,
     PanelTypesEnum.addcourse,
+    PanelTypesEnum.addcoursepage,
     PanelTypesEnum.course,
     PanelTypesEnum.coursepage,
     PanelTypesEnum.activity,
+  }.contains(this);
+
+  bool get requireParam => {
+    PanelTypesEnum.room,
+    PanelTypesEnum.session,
+    PanelTypesEnum.activity,
+    PanelTypesEnum.coursepage,
+    PanelTypesEnum.settingspage,
+    PanelTypesEnum.analytics,
+    PanelTypesEnum.vocab,
+    PanelTypesEnum.grammar,
+    PanelTypesEnum.practice,
+    PanelTypesEnum.addcoursepage,
   }.contains(this);
 
   // Which rail item's OWN surface the cavity hosts, for the widget's
@@ -77,6 +94,7 @@ enum PanelTypesEnum {
   AppSection? get cavitySection => switch (this) {
     PanelTypesEnum.chats => AppSection.chats,
     PanelTypesEnum.addcourse => AppSection.courses,
+    PanelTypesEnum.addcoursepage => AppSection.courses,
     _ => null,
   };
 
@@ -88,6 +106,7 @@ enum PanelTypesEnum {
     PanelTypesEnum.course => CoursePanelDef(),
     PanelTypesEnum.coursepage => CoursePagePanelDef(),
     PanelTypesEnum.addcourse => AddCoursePanelDef(),
+    PanelTypesEnum.addcoursepage => AddCoursePagePanelDef(),
     PanelTypesEnum.settings => SettingsPanelDef(),
     PanelTypesEnum.settingspage => SettingsPagePanelDef(),
     PanelTypesEnum.analytics => AnalyticsPanelDef(),
@@ -113,6 +132,8 @@ enum PanelTypesEnum {
         return l10n.closeCoursePage;
       case PanelTypesEnum.addcourse:
         return l10n.closeAddCourse;
+      case PanelTypesEnum.addcoursepage:
+        return l10n.closeAddCoursePage;
       case PanelTypesEnum.analytics:
         return l10n.closeAnalytics;
       case PanelTypesEnum.vocab:

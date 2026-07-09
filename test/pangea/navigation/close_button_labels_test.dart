@@ -36,6 +36,7 @@ void main() {
     PanelTypesEnum.course,
     PanelTypesEnum.coursepage,
     PanelTypesEnum.addcourse,
+    PanelTypesEnum.addcoursepage,
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,

@@ -25,7 +25,7 @@ import 'package:fluffychat/routes/world/panel_header.dart';
 /// hosted page carries its own header/close; the deeper steps
 /// (`/courses/own/:courseid` …) stay route-driven detail.
 class LeftPanelAddCourseSubpage extends StatelessWidget {
-  final AddCourseTokenParam? param;
+  final AddCoursePageTokenParam? param;
   final Widget closeButton;
   final Completer<String>? courseCreationCompleter;
 
@@ -39,15 +39,15 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (param?.subpage) {
-      case 'browse':
+      case AddCourseSubpageEnum.browse:
         final roomId = param?.roomId;
         if (roomId != null) {
           return PublicCoursePreview(roomID: roomId);
         }
         return const FindCoursePage();
-      case 'private':
+      case AddCourseSubpageEnum.private:
         return CourseCodePage(initialCode: param?.joinCode);
-      case 'own':
+      case AddCourseSubpageEnum.own:
         final courseId = param?.courseId;
         if (courseId != null) {
           if (param?.invite == true) {
@@ -63,7 +63,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
           initialLanguageCode: param?.targetLanguage,
           showAll: param?.targetLanguage == 'all',
         );
-      default:
+      case null:
         return Column(
           children: [
             PanelHeader(leading: closeButton, title: L10n.of(context).courses),

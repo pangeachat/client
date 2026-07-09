@@ -721,6 +721,31 @@ abstract class WorkspaceNav {
     return closeRight(current, SettingsPagePanelToken(param));
   }
 
+  static String openAddCourse(Uri current) =>
+      setSection(current, AddCoursePanelToken());
+
+  static String openAddCoursePage(
+    Uri current,
+    AddCourseSubpageEnum page, {
+    String? roomId,
+    String? courseId,
+    String? targetLanguage,
+    String? joinCode,
+    bool invite = false,
+  }) => setSection(
+    current,
+    AddCoursePagePanelToken(
+      AddCoursePageTokenParam(
+        subpage: page,
+        roomId: roomId,
+        courseId: courseId,
+        targetLanguage: targetLanguage,
+        joinCode: joinCode,
+        invite: invite,
+      ),
+    ),
+  );
+
   static List<PanelToken> _add(
     List<PanelToken> tokens,
     PanelToken token,
@@ -807,28 +832,5 @@ abstract class WorkspaceNav {
       if (param is! RoomSubpageTokenParam) return true;
       return param.subpage != page;
     }).toList(),
-  );
-
-  static String openAddCourse(
-    Uri current, {
-    String? subpage,
-    String? roomId,
-    String? courseId,
-    String? targetLanguage,
-    bool invite = false,
-  }) => setSection(
-    current,
-    AddCoursePanelToken(
-      subpage != null
-          ? AddCourseTokenParam(
-              subpage: subpage,
-              roomId: roomId,
-              courseId: courseId,
-              targetLanguage: targetLanguage,
-              invite: invite,
-            )
-          : null,
-    ),
-    keepRoom: false,
   );
 }

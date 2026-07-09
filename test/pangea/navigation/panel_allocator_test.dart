@@ -214,20 +214,10 @@ void main() {
 
     test('the collapse is symmetric across columns (parity)', () {
       // lowest priority panel
-      const lo = ChatsPanelDef(
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 20,
-      );
+      const lo = ChatsPanelDef(minWidth: 360, idealWidth: 720);
 
       // highest priority panel
-      const hi = RoomPanelDef(
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 80,
-      );
+      const hi = RoomPanelDef(minWidth: 360, idealWidth: 720);
 
       // Two independent panels, one per column, on a budget too tight for both
       // hard mins: the LOWER-priority one collapses regardless of its column.
@@ -254,20 +244,10 @@ void main() {
 
     test('the just-opened (focus) panel is never the one collapsed', () {
       // lowest priority panel
-      const lo = ChatsPanelDef(
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 20,
-      );
+      const lo = ChatsPanelDef(minWidth: 360, idealWidth: 720);
 
       // highest priority panel
-      const hi = RoomPanelDef(
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 80,
-      );
+      const hi = RoomPanelDef(minWidth: 360, idealWidth: 720);
 
       // all = [hi(left,0), lo(right,1)]; the user just opened lo (focusHint=1).
       // Even though lo is the lower priority, it must survive — the higher-
@@ -433,8 +413,12 @@ void main() {
     test('a child wins focus over a higher-priority open parent', () {
       // A synthetic parent with HIGHER priority than its child: the leaf rule
       // still seats the child, proving focus is the tree (leaf), not priority.
-      const parent = ChatsPanelDef();
-      const child = RoomPanelDef();
+      const parent = ChatsPanelDef(
+        minWidth: 360,
+        idealWidth: 720,
+        priority: 99,
+      );
+      const child = RoomPanelDef(minWidth: 360, idealWidth: 720, priority: 10);
       final l = PanelAllocator.allocate(
         viewport: 400,
         isColumnMode: false,

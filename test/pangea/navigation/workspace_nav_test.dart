@@ -979,12 +979,12 @@ void main() {
       // that blank parent — even though the current URL is the legacy path.
       final planList = WorkspaceNav.setSection(
         u('/courses/own/abc-123'),
-        AddCoursePanelToken(AddCourseTokenParam.parse('own')),
+        AddCoursePagePanelToken(AddCoursePageTokenParam.parse('own')),
         keepRoom: false,
       );
       expect(u(planList).path, '/');
       expect(parseOpenPanels(u(planList)).left, [
-        AddCoursePanelToken(AddCourseTokenParam.parse('own')),
+        AddCoursePagePanelToken(AddCoursePageTokenParam.parse('own')),
       ]);
       expect(parseOpenPanels(u(planList)).right, isEmpty);
     });
@@ -998,12 +998,12 @@ void main() {
       // blank parent — even though the current URL is the legacy preview path.
       final browseList = WorkspaceNav.setSection(
         u('/courses/preview/!abc:server'),
-        AddCoursePanelToken(AddCourseTokenParam.parse('browse')),
+        AddCoursePagePanelToken(AddCoursePageTokenParam.parse('browse')),
         keepRoom: false,
       );
       expect(u(browseList).path, '/');
       expect(parseOpenPanels(u(browseList)).left, [
-        AddCoursePanelToken(AddCourseTokenParam.parse('browse')),
+        AddCoursePagePanelToken(AddCoursePageTokenParam.parse('browse')),
       ]);
       expect(parseOpenPanels(u(browseList)).right, isEmpty);
     });
@@ -1088,24 +1088,28 @@ void main() {
     // leaf reduced to the manual `private` page, so browser back / refresh
     // never re-fires the join (course_code_page.dart).
     test('replacing the coded leaf with the manual page strips the code', () {
-      final coded = u('/?left=addcourse:private.jvj3pc8b');
+      final coded = u('/?left=addcoursepage:private.jvj3pc8b');
       expect(joinCodeFor(coded), 'vj3pc8b');
       final consumed = WorkspaceNav.pushPage(
         coded,
-        AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private),
+        ),
       );
-      expect(consumed, '/?left=addcourse:private');
+      expect(consumed, '/?left=addcoursepage:private');
       expect(joinCodeFor(u(consumed)), isNull);
     });
 
     test('consumption preserves the rest of the workspace URL', () {
       final coded = u(
-        '/?c=!s&left=addcourse:private%2Fvj3pc8b&right=analytics:vocab',
+        '/?c=!s&left=addcoursepage:private%2Fvj3pc8b&right=analytics:vocab',
       );
       final consumed = u(
         WorkspaceNav.pushPage(
           coded,
-          AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
+          AddCoursePagePanelToken(
+            AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private),
+          ),
         ),
       );
       expect(joinCodeFor(consumed), isNull);
@@ -1116,7 +1120,9 @@ void main() {
         ),
       ]);
       expect(parseOpenPanels(consumed).left, [
-        const AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
+        const AddCoursePagePanelToken(
+          AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private),
+        ),
       ]);
     });
   });

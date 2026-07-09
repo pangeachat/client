@@ -113,7 +113,8 @@ AppSection sectionFor(Uri uri) {
         (t) =>
             t.type == PanelTypesEnum.course ||
             t.type == PanelTypesEnum.coursepage ||
-            t.type == PanelTypesEnum.addcourse,
+            t.type == PanelTypesEnum.addcourse ||
+            t.type == PanelTypesEnum.addcoursepage,
       ) ||
       activeSpaceIdFor(uri) != null) {
     return AppSection.courses;
@@ -187,8 +188,8 @@ ActivityTokenParam? activityFor(GoRouterState state) =>
 String? joinCodeFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
     final param = token.param;
-    if (param is! AddCourseTokenParam) continue;
-    if (param.subpage != 'private') continue;
+    if (param is! AddCoursePageTokenParam) continue;
+    if (param.subpage != AddCourseSubpageEnum.private) continue;
     return param.joinCode;
   }
   return null;

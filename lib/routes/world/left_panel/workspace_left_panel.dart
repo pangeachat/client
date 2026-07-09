@@ -82,7 +82,12 @@ class WorkspaceLeftPanel extends StatelessWidget {
         shareItems: shareItems,
         closeButton: closeButton,
       ),
-      AddCoursePanelToken(param: final param) => LeftPanelAddCourseSubpage(
+      AddCoursePanelToken() => LeftPanelAddCourseSubpage(
+        param: null,
+        closeButton: closeButton,
+        courseCreationCompleter: courseCreationCompleter,
+      ),
+      AddCoursePagePanelToken(param: final param) => LeftPanelAddCourseSubpage(
         param: param,
         closeButton: closeButton,
         courseCreationCompleter: courseCreationCompleter,

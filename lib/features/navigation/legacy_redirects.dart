@@ -82,7 +82,7 @@ abstract class LegacyRedirects {
       code = null;
     }
     if (code == null || code.isEmpty) {
-      return '${PRoutes.world}?left=${const AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')).encode()}';
+      return '${PRoutes.world}?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private)).encode()}';
     }
     return PRoutes.joinWithCode(code);
   }

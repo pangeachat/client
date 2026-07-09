@@ -11,6 +11,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dar
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -59,9 +60,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   /// the route-driven course-detail fix (#7092).
   void back() {
     context.go(
-      WorkspaceNav.openAddCourse(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        subpage: 'browse',
+        AddCourseSubpageEnum.browse,
       ),
     );
   }

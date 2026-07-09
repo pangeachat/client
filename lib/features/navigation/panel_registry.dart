@@ -114,194 +114,219 @@ sealed class PanelDef {
 
 class ChatsPanelDef extends PanelDef {
   const ChatsPanelDef({
-    super.type = PanelTypesEnum.chats,
-    super.column = PanelColumn.left,
     super.minWidth = 300,
     super.reasonableMinWidth = 340,
     super.idealWidth = 380,
     super.priority = 30,
-  });
+  }) : super(type: PanelTypesEnum.chats, column: PanelColumn.left);
 }
 
 class RoomPanelDef extends PanelDef {
   const RoomPanelDef({
-    super.type = PanelTypesEnum.room,
-    super.column = PanelColumn.left,
-    super.parent = PanelTypesEnum.chats,
     super.minWidth = 360,
     super.reasonableMinWidth = 480,
     super.idealWidth = 720,
     super.priority = 80,
-    super.siblingGroups = const {'liveView'},
-    super.pushable = true, // chat → members / search / invite
-  });
+  }) : super(
+         type: PanelTypesEnum.room,
+         column: PanelColumn.left,
+         parent: PanelTypesEnum.chats,
+         siblingGroups: const {'liveView'},
+         pushable: true, // chat → members / search / invite
+       );
 }
 
 class SessionPanelDef extends PanelDef {
   const SessionPanelDef({
-    super.type = PanelTypesEnum.session,
-    super.column = PanelColumn.left,
-    super.parent = PanelTypesEnum.analytics,
     super.minWidth = 360,
     super.reasonableMinWidth = 480,
     super.idealWidth = 720,
-    super.priority = 80,
-    // A session is BOTH a live timeline (one at a time with `room`) AND a
-    // "zoom" detail (one at a time with vocab/grammar, across columns).
-    super.siblingGroups = const {'liveView', 'detail'},
-  });
+  }) : super(
+         type: PanelTypesEnum.session,
+         column: PanelColumn.left,
+         parent: PanelTypesEnum.analytics,
+         priority: 80,
+         // A session is BOTH a live timeline (one at a time with `room`) AND a
+         // "zoom" detail (one at a time with vocab/grammar, across columns).
+         siblingGroups: const {'liveView', 'detail'},
+       );
 }
 
 class ActivityPanelDef extends PanelDef {
   const ActivityPanelDef({
-    super.type = PanelTypesEnum.activity,
-    super.column = PanelColumn.left,
     super.minWidth = 360,
     super.reasonableMinWidth = 480,
     super.idealWidth = 720,
-    super.priority = 80,
-    super.siblingGroups = const {'liveView'},
-    super.mapContent = true,
-  });
+  }) : super(
+         type: PanelTypesEnum.activity,
+         column: PanelColumn.left,
+         priority: 80,
+         siblingGroups: const {'liveView'},
+         mapContent: true,
+       );
 }
 
 class CoursePanelDef extends PanelDef {
-  const CoursePanelDef({
-    super.type = PanelTypesEnum.course,
-    super.column = PanelColumn.left,
-    super.minWidth = 360,
-    super.reasonableMinWidth = 480,
-    super.idealWidth = 720,
-    super.priority = 60,
-    super.mapContent =
-        true, // selecting a course scopes the map (mobile: bottom sheet)
-  });
+  const CoursePanelDef({super.minWidth = 360, super.reasonableMinWidth = 480})
+    : super(
+        idealWidth: 720,
+        type: PanelTypesEnum.course,
+        column: PanelColumn.left,
+        priority: 60,
+        mapContent:
+            true, // selecting a course scopes the map (mobile: bottom sheet)
+      );
 }
 
 class CoursePagePanelDef extends PanelDef {
   const CoursePagePanelDef({
-    super.type = PanelTypesEnum.coursepage,
-    super.column = PanelColumn.left,
-    super.parent = PanelTypesEnum.course,
     super.minWidth = 360,
     super.reasonableMinWidth = 440,
     super.idealWidth = 600,
-    super.priority = 65,
-    super.siblingGroups = const {'coursepage'},
-    super.pushable = true,
-  });
+  }) : super(
+         type: PanelTypesEnum.coursepage,
+         column: PanelColumn.left,
+         parent: PanelTypesEnum.course,
+         priority: 65,
+         siblingGroups: const {'coursepage'},
+         pushable: true,
+       );
 }
 
 class AddCoursePanelDef extends PanelDef {
   const AddCoursePanelDef({
-    super.type = PanelTypesEnum.addcourse,
-    super.column = PanelColumn.left,
     super.minWidth = 360,
     super.reasonableMinWidth = 440,
     super.idealWidth = 600,
-    super.priority = 45,
-    super.pushable = true, // hub → own / browse / private steps
-    super.mapContent =
-        true, // the add-course flow is a map bottom sheet on mobile
-  });
+  }) : super(
+         type: PanelTypesEnum.addcourse,
+         column: PanelColumn.left,
+         priority: 45,
+         mapContent:
+             true, // the add-course flow is a map bottom sheet on mobile
+       );
+}
+
+class AddCoursePagePanelDef extends PanelDef {
+  const AddCoursePagePanelDef({
+    super.minWidth = 360,
+    super.reasonableMinWidth = 440,
+    super.idealWidth = 600,
+  }) : super(
+         type: PanelTypesEnum.addcoursepage,
+         column: PanelColumn.left,
+         priority: 45,
+         pushable: true, // hub → own / browse / private steps
+         parent: PanelTypesEnum.addcourse,
+         mapContent:
+             true, // the add-course flow is a map bottom sheet on mobile
+       );
 }
 
 class SettingsPanelDef extends PanelDef {
   const SettingsPanelDef({
-    super.type = PanelTypesEnum.settings,
-    super.column = PanelColumn.right,
     super.minWidth = 360,
     super.reasonableMinWidth = 440,
     super.idealWidth = 520,
-    super.priority = 40,
-  });
+  }) : super(
+         type: PanelTypesEnum.settings,
+         column: PanelColumn.right,
+         priority: 40,
+       );
 }
 
 class SettingsPagePanelDef extends PanelDef {
   const SettingsPagePanelDef({
-    super.type = PanelTypesEnum.settingspage,
-    super.column = PanelColumn.right,
-    super.parent = PanelTypesEnum.settings,
     super.minWidth = 360,
     super.reasonableMinWidth = 440,
     // Match the `settings` menu width so a page folded into the menu's slot
     // (under width pressure) doesn't resize and jump the close/back icon
     // when drilling in or out (#7146).
     super.idealWidth = 520,
-    super.priority = 55,
-    super.siblingGroups = const {'settingsdetail'},
-    super.pushable = true,
-  });
+  }) : super(
+         type: PanelTypesEnum.settingspage,
+         column: PanelColumn.right,
+         parent: PanelTypesEnum.settings,
+         priority: 55,
+         siblingGroups: const {'settingsdetail'},
+         pushable: true,
+       );
 }
 
 class AnalyticsPanelDef extends PanelDef {
   const AnalyticsPanelDef({
-    super.type = PanelTypesEnum.analytics,
-    super.column = PanelColumn.right,
     super.minWidth = 360,
     super.reasonableMinWidth = 420,
     super.idealWidth = 488,
-    super.priority = 40,
-  });
+  }) : super(
+         type: PanelTypesEnum.analytics,
+         column: PanelColumn.right,
+         priority: 40,
+       );
 }
 
 class VocabPanelDef extends PanelDef {
   const VocabPanelDef({
-    super.type = PanelTypesEnum.vocab,
-    super.column = PanelColumn.right,
-    super.parent = PanelTypesEnum.analytics,
     super.minWidth = 360,
     super.reasonableMinWidth = 420,
     super.idealWidth = 488,
-    super.priority = 50,
-    super.siblingGroups = const {'detail'},
-  });
+  }) : super(
+         type: PanelTypesEnum.vocab,
+         column: PanelColumn.right,
+         parent: PanelTypesEnum.analytics,
+         priority: 50,
+         siblingGroups: const {'detail'},
+       );
 }
 
 class GrammarPanelDef extends PanelDef {
   const GrammarPanelDef({
-    super.type = PanelTypesEnum.grammar,
-    super.column = PanelColumn.right,
-    super.parent = PanelTypesEnum.analytics,
     super.minWidth = 360,
     super.reasonableMinWidth = 420,
     super.idealWidth = 488,
-    super.priority = 50,
-    super.siblingGroups = const {'detail'},
-  });
+  }) : super(
+         type: PanelTypesEnum.grammar,
+         column: PanelColumn.right,
+         parent: PanelTypesEnum.analytics,
+         priority: 50,
+         siblingGroups: const {'detail'},
+       );
 }
 
 class ReviewPanelDef extends PanelDef {
   const ReviewPanelDef({
-    super.type = PanelTypesEnum.review,
-    super.column = PanelColumn.right,
     super.minWidth = 360,
     super.reasonableMinWidth = 420,
     super.idealWidth = 488,
-    super.priority = 70,
-  });
+  }) : super(
+         type: PanelTypesEnum.review,
+         column: PanelColumn.right,
+         priority: 70,
+       );
 }
 
 class PracticePanelDef extends PanelDef {
   const PracticePanelDef({
-    super.type = PanelTypesEnum.practice,
-    super.column = PanelColumn.right,
     super.minWidth = 360,
     super.reasonableMinWidth = 420,
     super.idealWidth = 520,
-    super.priority = 55,
-    super.siblingGroups = const {'detail'},
-  });
+  }) : super(
+         type: PanelTypesEnum.practice,
+         column: PanelColumn.right,
+         priority: 55,
+         siblingGroups: const {'detail'},
+       );
 }
 
 class NewPrivateChatPanelDef extends PanelDef {
   const NewPrivateChatPanelDef({
-    super.type = PanelTypesEnum.newprivatechat,
-    super.column = PanelColumn.left,
-    super.parent = PanelTypesEnum.chats,
     super.minWidth = 300,
     super.reasonableMinWidth = 380,
     super.idealWidth = 400,
-    super.priority = 10,
-  });
+  }) : super(
+         type: PanelTypesEnum.newprivatechat,
+         column: PanelColumn.left,
+         parent: PanelTypesEnum.chats,
+         priority: 10,
+       );
 }

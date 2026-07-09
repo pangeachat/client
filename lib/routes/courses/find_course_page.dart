@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -319,9 +320,9 @@ class FindCoursePageState extends State<FindCoursePage> {
     // loose `?lang=`/`?showAll=` query (routing.instructions.md).
     final targetLanguage = targetLanguageFilter.value?.langCode;
     context.go(
-      WorkspaceNav.openAddCourse(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        subpage: 'own',
+        AddCourseSubpageEnum.own,
         targetLanguage: targetLanguage,
       ),
     );
@@ -466,9 +467,9 @@ class _PublicCourseTile extends StatelessWidget {
 
   void _navigateToCoursePage(BuildContext context) {
     context.go(
-      WorkspaceNav.openAddCourse(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        subpage: 'browse',
+        AddCourseSubpageEnum.browse,
         roomId: chunk.room.roomId,
       ),
     );

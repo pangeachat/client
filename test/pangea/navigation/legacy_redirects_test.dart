@@ -46,14 +46,14 @@ void main() {
     test('rewrites to the join-with-code leaf of the addcourse token', () {
       expect(
         resolve('/join_with_link?classcode=vj3pc8b'),
-        '/?left=addcourse:private.jvj3pc8b',
+        '/?left=addcoursepage:private.jvj3pc8b',
       );
     });
 
     test('the native /join spelling folds to the same target', () {
       expect(
         resolve('/join?classcode=vj3pc8b'),
-        '/?left=addcourse:private.jvj3pc8b',
+        '/?left=addcoursepage:private.jvj3pc8b',
       );
     });
 
@@ -66,14 +66,17 @@ void main() {
     });
 
     test('a missing or empty code degrades to the manual join page', () {
-      expect(resolve('/join_with_link'), '/?left=addcourse:private');
-      expect(resolve('/join_with_link?classcode='), '/?left=addcourse:private');
+      expect(resolve('/join_with_link'), '/?left=addcoursepage:private');
+      expect(
+        resolve('/join_with_link?classcode='),
+        '/?left=addcoursepage:private',
+      );
     });
 
     test('prior panels and context are dropped — this link IS the join', () {
       expect(
         resolve('/join_with_link?classcode=vj3pc8b&c=!s&left=chats'),
-        '/?left=addcourse:private.jvj3pc8b',
+        '/?left=addcoursepage:private.jvj3pc8b',
       );
     });
 

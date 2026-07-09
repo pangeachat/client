@@ -41,7 +41,7 @@ class LeftPanelLayer extends StatelessWidget {
         : null;
 
     final courseCreationCompleter =
-        token.type == PanelTypesEnum.addcourse &&
+        token.type == PanelTypesEnum.addcoursepage &&
             state.extra is Completer<String>
         ? state.extra as Completer<String>
         : null;

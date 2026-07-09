@@ -69,6 +69,10 @@ sealed class PanelToken<T extends TokenParam> {
   }
 
   static PanelToken? _byType(PanelTypesEnum type, [String? param]) {
+    if (type.requireParam && (param == null || param.isEmpty)) {
+      return null;
+    }
+
     try {
       final PanelToken? token = switch (type) {
         PanelTypesEnum.chats => ChatsPanelToken(),
@@ -85,8 +89,9 @@ sealed class PanelToken<T extends TokenParam> {
         PanelTypesEnum.coursepage => CoursePagePanelToken(
           RoomSubpageTokenParam.parse(param!),
         ),
-        PanelTypesEnum.addcourse => AddCoursePanelToken(
-          param != null ? AddCourseTokenParam.parse(param) : null,
+        PanelTypesEnum.addcourse => AddCoursePanelToken(),
+        PanelTypesEnum.addcoursepage => AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse(param!),
         ),
         PanelTypesEnum.settings => SettingsPanelToken(),
         PanelTypesEnum.settingspage => SettingsPagePanelToken(
@@ -202,9 +207,13 @@ class CoursePagePanelToken extends PanelToken<RoomSubpageTokenParam> {
     : super(PanelTypesEnum.coursepage, param);
 }
 
-class AddCoursePanelToken extends PanelToken<AddCourseTokenParam> {
-  const AddCoursePanelToken([AddCourseTokenParam? param])
-    : super(PanelTypesEnum.addcourse, param);
+class AddCoursePanelToken extends PanelToken {
+  const AddCoursePanelToken() : super(PanelTypesEnum.addcourse);
+}
+
+class AddCoursePagePanelToken extends PanelToken<AddCoursePageTokenParam> {
+  const AddCoursePagePanelToken(AddCoursePageTokenParam param)
+    : super(PanelTypesEnum.addcoursepage, param);
 }
 
 class SettingsPanelToken extends PanelToken {

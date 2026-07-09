@@ -79,9 +79,9 @@ class CourseCodePageState extends State<CourseCodePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       context.replace(
-        WorkspaceNav.pushPage(
+        WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
-          AddCoursePanelToken(AddCourseTokenParam(subpage: 'private')),
+          AddCourseSubpageEnum.private,
         ),
       );
       _submit();
