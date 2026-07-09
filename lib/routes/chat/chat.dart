@@ -2807,7 +2807,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void showSuggestion() {
     final suggestion = choreographer.orchestratorController.activeSuggestion;
-    if (suggestion == null) {
+    if (suggestion == null || suggestion.shuffledChoices.isEmpty) {
       Logs().w("Show suggestion called without active suggestion");
       return;
     }
