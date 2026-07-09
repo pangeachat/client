@@ -19,6 +19,7 @@ import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -150,7 +151,7 @@ class ChatListController extends State<ChatList>
   void clearActiveSpace() => context.go(
     WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      const PanelToken('chats'),
+      const PanelToken(PanelTypesEnum.chats),
     ),
   );
   void setActiveSpace(String spaceId) => context.go(
@@ -261,18 +262,25 @@ class ChatListController extends State<ChatList>
     // token yet), seed a `chats` token first so tapping a chat doesn't tear the
     // list down. See routing.instructions.md ("panels are independent").
     var uri = GoRouterState.of(context).uri;
-    final hasSection = parseOpenPanels(
-      uri,
-    ).left.any((t) => t.type == 'chats' || t.type == 'course');
+    final hasSection = parseOpenPanels(uri).left.any(
+      (t) => t.type == PanelTypesEnum.chats || t.type == PanelTypesEnum.course,
+    );
     if (!hasSection) {
       uri = Uri.parse(
-        WorkspaceNav.openLeft(uri, const PanelToken('chats'), atStart: true),
+        WorkspaceNav.openLeft(
+          uri,
+          const PanelToken(PanelTypesEnum.chats),
+          atStart: true,
+        ),
       );
     }
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         uri,
-        PanelToken('room', RoomTokenParam(id: shortRoomId(room.id))),
+        PanelToken(
+          PanelTypesEnum.room,
+          RoomTokenParam(id: shortRoomId(room.id)),
+        ),
       ),
     );
     // Pangea#

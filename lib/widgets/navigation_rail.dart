@@ -9,6 +9,7 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -179,7 +180,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               context.go(
                                 WorkspaceNav.setSection(
                                   state.uri,
-                                  const PanelToken('chats'),
+                                  const PanelToken(PanelTypesEnum.chats),
                                   // Replace open left panels rather than stack.
                                   keepRoom: false,
                                 ),

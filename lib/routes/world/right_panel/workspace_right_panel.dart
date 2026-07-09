@@ -6,8 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/close_affordance.dart';
-import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
@@ -75,7 +75,7 @@ class WorkspaceRightPanel extends StatelessWidget {
     final type = token.type;
     final param = token.param;
 
-    final pushable = PanelRegistry.defFor(type)?.pushable ?? false;
+    final pushable = token.type.def.pushable;
     final isPushed = pushable && param != null && param.isPushed;
     final revealsMaster =
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token));
@@ -108,14 +108,14 @@ class WorkspaceRightPanel extends StatelessWidget {
         : () => _close(context);
 
     switch (type) {
-      case 'analytics':
+      case PanelTypesEnum.analytics:
         return RightPanelAnalyticsSubpage(
           param: param is AnalyticsTokenParam ? param : null,
           icon: leadingIcon,
           onLeading: onLeading,
           tooltip: leadingTooltip,
         );
-      case 'settings':
+      case PanelTypesEnum.settings:
         return PanelCardWithHeader(
           title: l10n.settings,
           icon: leadingIcon,
@@ -127,7 +127,7 @@ class WorkspaceRightPanel extends StatelessWidget {
           tooltip: leadingTooltip,
           child: RightPanelSettingsSubpage(),
         );
-      case 'settingspage':
+      case PanelTypesEnum.settingspage:
         final parsed = param is SettingsTokenParam ? param : null;
         final settingsPage = parsed != null
             ? SettingsPageEnum.fromString(parsed.subpage)
@@ -150,7 +150,7 @@ class WorkspaceRightPanel extends StatelessWidget {
                   ),
                 ),
               );
-      case 'vocab':
+      case PanelTypesEnum.vocab:
         final parsed = param is VocabAnalyticsTokenParam ? param : null;
         return PanelCardWithHeader(
           title: '',
@@ -165,7 +165,7 @@ class WorkspaceRightPanel extends StatelessWidget {
             construct: parsed?.constructId,
           ),
         );
-      case 'grammar':
+      case PanelTypesEnum.grammar:
         final parsed = param is GrammarAnalyticsTokenParam ? param : null;
         return PanelCardWithHeader(
           title: '',
@@ -180,7 +180,7 @@ class WorkspaceRightPanel extends StatelessWidget {
             construct: parsed?.constructId,
           ),
         );
-      case 'practice':
+      case PanelTypesEnum.practice:
         if (param is! AnalyticsPracticeTokenParam) {
           return SizedBox.shrink();
         }

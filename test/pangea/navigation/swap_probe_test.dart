@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -26,8 +26,6 @@ import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 /// `workspace_shell.dart`) over real nav-helper URLs → parser → allocator, so
 /// there is no mirrored logic to drift out of lock-step.
 void main() {
-  PanelDef d(String t) => PanelRegistry.defFor(t)!;
-
   // The production back-stack the shell mutates per build; reset per test.
   final paneRecency = <String>[];
   int? focusHintFor(List<PanelToken> all) => recencyFocusHint(all, paneRecency);
@@ -39,13 +37,13 @@ void main() {
       viewport: vp,
       isColumnMode: columnMode,
       railWidth: columnMode ? 105.0 : PanelAllocator.defaultRailWidth,
-      left: [for (final t in lists.left) d(t.type)],
-      right: [for (final t in lists.right) d(t.type)],
+      left: [for (final t in lists.left) t.type.def],
+      right: [for (final t in lists.right) t.type.def],
       focusHint: fh,
     );
   }
 
-  PanelVis visOf(WorkspaceLayout l, Uri u, String type) {
+  PanelVis visOf(WorkspaceLayout l, Uri u, PanelTypesEnum type) {
     final lists = parseOpenPanels(u);
     final li = lists.left.indexWhere((t) => t.type == type);
     if (li >= 0) return l.left[li].vis;
@@ -54,7 +52,7 @@ void main() {
     return PanelVis.hidden;
   }
 
-  double? leftOf(WorkspaceLayout l, Uri u, String type) {
+  double? leftOf(WorkspaceLayout l, Uri u, PanelTypesEnum type) {
     final lists = parseOpenPanels(u);
     final li = lists.left.indexWhere((t) => t.type == type);
     if (li >= 0) return l.left[li].left;
@@ -67,7 +65,7 @@ void main() {
 
   // The type of the pane the recency rule currently focuses, replaying each
   // build in order (recency accumulates per build, like the live shell).
-  String focusType(Uri u) {
+  PanelTypesEnum focusType(Uri u) {
     final all = [...parseOpenPanels(u).left, ...parseOpenPanels(u).right];
     return all[focusHintFor(all)!].type;
   }
@@ -85,22 +83,29 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          PanelToken('room', RoomTokenParam.parse('!abc')),
+          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
         ),
       );
-      expect(focusType(u), 'room');
+      expect(focusType(u), PanelTypesEnum.room);
       u = Uri.parse(
         WorkspaceNav.setRight(u, [
-          PanelToken('analytics', AnalyticsTokenParam.parse('vocab')),
+          PanelToken(
+            PanelTypesEnum.analytics,
+            AnalyticsTokenParam.parse('vocab'),
+          ),
         ]),
       );
-      expect(focusType(u), 'analytics');
+      expect(focusType(u), PanelTypesEnum.analytics);
       u = Uri.parse(
-        WorkspaceNav.pushPage(u, 'room', RoomTokenParam.parse('!abc/members')),
+        WorkspaceNav.pushPage(
+          u,
+          PanelTypesEnum.room,
+          RoomTokenParam.parse('!abc/members'),
+        ),
       );
       expect(
         focusType(u),
-        'analytics',
+        PanelTypesEnum.analytics,
         reason:
             'a push inside the non-focused room must not steal focus (#7104)',
       );
@@ -118,7 +123,7 @@ void main() {
       u = Uri.parse(WorkspaceNav.openCourse(u, '!space:server'));
       final before = layoutOf(u, vp, columnMode: true); // build 2: course focus
       expect(
-        visOf(before, u, 'course'),
+        visOf(before, u, PanelTypesEnum.course),
         PanelVis.full,
         reason: 'the most-recent (course) popup holds focus and stays full',
       );
@@ -128,7 +133,7 @@ void main() {
       // ONLY be evicted by focus protecting the other popup — exactly the
       // pre-fix focus-steal this test pins.
       expect(
-        visOf(before, u, 'settings'),
+        visOf(before, u, PanelTypesEnum.settings),
         PanelVis.hidden,
         reason: 'the band must force a collapse for this test to discriminate',
       );
@@ -139,12 +144,12 @@ void main() {
       u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final after = layoutOf(u, vp, columnMode: true);
       expect(
-        visOf(after, u, 'course'),
+        visOf(after, u, PanelTypesEnum.course),
         PanelVis.full,
         reason:
             'a nav inside the other popup must not evict the focused course (#7104)',
       );
-      expect(visOf(after, u, 'settingspage'), PanelVis.hidden);
+      expect(visOf(after, u, PanelTypesEnum.settingspage), PanelVis.hidden);
     });
 
     test('wide column mode: left room stays at the same x across the nav', () {
@@ -152,24 +157,28 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          const PanelToken('room', RoomTokenParam(id: '!abc')),
+          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
         ),
       );
       u = Uri.parse(WorkspaceNav.openSettings(u)); // open settings (right)
       final before = layoutOf(u, vp, columnMode: true);
-      final roomXBefore = leftOf(before, u, 'room');
-      expect(visOf(before, u, 'room'), PanelVis.full);
+      final roomXBefore = leftOf(before, u, PanelTypesEnum.room);
+      expect(visOf(before, u, PanelTypesEnum.room), PanelVis.full);
 
       // Navigate WITHIN settings → subscription (the other popup must not move).
       u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final after = layoutOf(u, vp, columnMode: true);
-      expect(visOf(after, u, 'room'), PanelVis.full, reason: 'room must stay');
       expect(
-        leftOf(after, u, 'room'),
+        visOf(after, u, PanelTypesEnum.room),
+        PanelVis.full,
+        reason: 'room must stay',
+      );
+      expect(
+        leftOf(after, u, PanelTypesEnum.room),
         roomXBefore,
         reason: 'room must not shift columns/position (#7104)',
       );
-      expect(visOf(after, u, 'settingspage'), PanelVis.full);
+      expect(visOf(after, u, PanelTypesEnum.settingspage), PanelVis.full);
     });
 
     test(
@@ -183,15 +192,21 @@ void main() {
         var u = Uri.parse(
           WorkspaceNav.openLeft(
             Uri.parse('/'),
-            const PanelToken('room', RoomTokenParam(id: '!abc')),
+            const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
           ),
         );
         u = Uri.parse(WorkspaceNav.openSettings(u));
-        expect(focusType(u), 'settings'); // the menu, not the room
+        expect(focusType(u), PanelTypesEnum.settings); // the menu, not the room
         u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
-        expect(focusType(u), 'settingspage'); // the page, still settings family
+        expect(
+          focusType(u),
+          PanelTypesEnum.settingspage,
+        ); // the page, still settings family
         u = Uri.parse(WorkspaceNav.openSettings(u, page: 'learning'));
-        expect(focusType(u), 'settingspage'); // stable, never the room
+        expect(
+          focusType(u),
+          PanelTypesEnum.settingspage,
+        ); // stable, never the room
       },
     );
 
@@ -205,12 +220,16 @@ void main() {
       u = Uri.parse(
         WorkspaceNav.openLeft(
           u,
-          const PanelToken('room', RoomTokenParam(id: '!abc')),
+          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
         ),
       );
       final fhRoom = fhOf(u);
       u = Uri.parse(
-        WorkspaceNav.pushPage(u, 'room', RoomTokenParam(id: '!abc/members')),
+        WorkspaceNav.pushPage(
+          u,
+          PanelTypesEnum.room,
+          RoomTokenParam(id: '!abc/members'),
+        ),
       );
       final fhMembers = fhOf(u);
       expect(fhMembers, fhRoom);
@@ -222,14 +241,17 @@ void main() {
       var u = Uri.parse(WorkspaceNav.openSettings(Uri.parse('/')));
       u = Uri.parse(WorkspaceNav.openSettings(u, page: 'subscription'));
       final l = layoutOf(u, 400, columnMode: false);
-      expect(visOf(l, u, 'settingspage'), PanelVis.full);
-      expect(visOf(l, u, 'settings'), PanelVis.hidden);
+      expect(visOf(l, u, PanelTypesEnum.settingspage), PanelVis.full);
+      expect(visOf(l, u, PanelTypesEnum.settings), PanelVis.hidden);
     });
 
     test('opening a construct detail shows it over the summary (narrow)', () {
       var u = Uri.parse(
         WorkspaceNav.setRight(Uri.parse('/'), [
-          PanelToken('analytics', AnalyticsTokenParam.parse('vocab')),
+          PanelToken(
+            PanelTypesEnum.analytics,
+            AnalyticsTokenParam.parse('vocab'),
+          ),
         ]),
       );
 
@@ -240,8 +262,8 @@ void main() {
         WorkspaceNav.openConstructDetail(u, type, constructId: constructId),
       );
       final l = layoutOf(u, 400, columnMode: false);
-      expect(visOf(l, u, 'vocab'), PanelVis.full);
-      expect(visOf(l, u, 'analytics'), PanelVis.hidden);
+      expect(visOf(l, u, PanelTypesEnum.vocab), PanelVis.full);
+      expect(visOf(l, u, PanelTypesEnum.analytics), PanelVis.hidden);
     });
 
     test(
@@ -257,8 +279,8 @@ void main() {
         final l = layoutOf(u, 400, columnMode: false);
         // coursepage is appended AFTER course in the left list; the leaf rule
         // must still seat the page, not the card.
-        expect(visOf(l, u, 'coursepage'), PanelVis.full);
-        expect(visOf(l, u, 'course'), PanelVis.hidden);
+        expect(visOf(l, u, PanelTypesEnum.coursepage), PanelVis.full);
+        expect(visOf(l, u, PanelTypesEnum.course), PanelVis.hidden);
       },
     );
 
@@ -268,14 +290,14 @@ void main() {
       var u = Uri.parse(
         WorkspaceNav.openLeft(
           Uri.parse('/'),
-          const PanelToken('room', RoomTokenParam(id: '!abc')),
+          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
         ),
       );
       layoutOf(u, 400, columnMode: false); // build 1: room
       u = Uri.parse(WorkspaceNav.openSettings(u));
       final l = layoutOf(u, 400, columnMode: false); // build 2: + settings
-      expect(visOf(l, u, 'settings'), PanelVis.full);
-      expect(visOf(l, u, 'room'), PanelVis.hidden);
+      expect(visOf(l, u, PanelTypesEnum.settings), PanelVis.full);
+      expect(visOf(l, u, PanelTypesEnum.room), PanelVis.hidden);
     });
 
     test('switching to a different room is promoted (distinct identity)', () {
@@ -284,19 +306,19 @@ void main() {
       u = Uri.parse(
         WorkspaceNav.openLeft(
           u,
-          const PanelToken('room', RoomTokenParam(id: '!abc')),
+          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!abc')),
         ),
       );
       layoutOf(u, 400, columnMode: false); // build 2: + room abc
       u = Uri.parse(
         WorkspaceNav.openExclusiveLeftRoom(
           u,
-          const PanelToken('room', RoomTokenParam(id: '!xyz')),
+          const PanelToken(PanelTypesEnum.room, RoomTokenParam(id: '!xyz')),
         ),
       );
       final l = layoutOf(u, 400, columnMode: false); // build 3: swap to xyz
-      expect(visOf(l, u, 'room'), PanelVis.full); // the !xyz room
-      expect(visOf(l, u, 'settings'), PanelVis.hidden);
+      expect(visOf(l, u, PanelTypesEnum.room), PanelVis.full); // the !xyz room
+      expect(visOf(l, u, PanelTypesEnum.settings), PanelVis.hidden);
     });
   });
 }

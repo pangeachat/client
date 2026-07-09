@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The accessible name (screen-reader label + tooltip) for a panel's close (X)
@@ -10,27 +11,27 @@ import 'package:fluffychat/l10n/l10n.dart';
 String closeButtonLabel(L10n l10n, PanelToken token, {String? named}) {
   if (named != null && named.isNotEmpty) return l10n.closeNamed(named);
   switch (token.type) {
-    case 'chats':
+    case PanelTypesEnum.chats:
       return l10n.closeChats;
-    case 'room':
+    case PanelTypesEnum.room:
       return l10n.closeChat;
-    case 'session':
+    case PanelTypesEnum.session:
       return l10n.closeSession;
-    case 'course':
+    case PanelTypesEnum.course:
       return l10n.closeCourse;
-    case 'coursepage':
+    case PanelTypesEnum.coursepage:
       return l10n.closeCoursePage;
-    case 'addcourse':
+    case PanelTypesEnum.addcourse:
       return l10n.closeAddCourse;
-    case 'analytics':
+    case PanelTypesEnum.analytics:
       return l10n.closeAnalytics;
-    case 'vocab':
+    case PanelTypesEnum.vocab:
       return l10n.closeVocabulary;
-    case 'grammar':
+    case PanelTypesEnum.grammar:
       return l10n.closeGrammar;
-    case 'practice':
+    case PanelTypesEnum.practice:
       return l10n.closePractice;
-    case 'settings':
+    case PanelTypesEnum.settings:
       return l10n.closeSettings;
     default:
       return l10n.close;

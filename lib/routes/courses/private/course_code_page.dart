@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -81,7 +82,7 @@ class CourseCodePageState extends State<CourseCodePage> {
       context.replace(
         WorkspaceNav.pushPage(
           GoRouterState.of(context).uri,
-          'addcourse',
+          PanelTypesEnum.addcourse,
           AddCourseTokenParam(subpage: 'private'),
         ),
       );
@@ -142,7 +143,7 @@ class CourseCodePageState extends State<CourseCodePage> {
           onPressed: () => context.go(
             WorkspaceNav.setSection(
               GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
+              const PanelToken(PanelTypesEnum.addcourse),
               keepRoom: false,
             ),
           ),

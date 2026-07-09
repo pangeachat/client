@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/close_affordance.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -36,7 +37,8 @@ class LeftPanelCloseButton extends StatelessWidget {
   bool get _isPushedSubPage {
     final param = token.param;
     if (param == null) return false;
-    if (token.type == 'room' || token.type == 'session') {
+    if (token.type == PanelTypesEnum.room ||
+        token.type == PanelTypesEnum.session) {
       // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
       return param.isPushed;
     }
@@ -74,7 +76,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   void _close(BuildContext context) {
     final uri = _liveUri(context);
     context.go(
-      token.type == 'room' || token.type == 'session'
+      token.type == PanelTypesEnum.room || token.type == PanelTypesEnum.session
           ? WorkspaceNav.closeLeft(uri, token)
           : WorkspaceNav.closeSection(uri, token),
     );

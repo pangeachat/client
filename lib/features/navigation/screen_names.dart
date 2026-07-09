@@ -1,5 +1,5 @@
-import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 
@@ -13,29 +13,29 @@ abstract class ScreenNames {
   /// The screen name for one panel token.
   static String forToken(PanelToken token) {
     final param = token.param;
-    if (param == null || param.build().isEmpty) return token.type;
+    if (param == null || param.build().isEmpty) return token.type.name;
     switch (token.type) {
       // Identity-only params: a construct's lemma/category, an activity's id
       // and session bindings. The whole param drops.
-      case 'vocab':
-      case 'grammar':
-      case 'activity':
-        return token.type;
+      case PanelTypesEnum.vocab:
+      case PanelTypesEnum.grammar:
+      case PanelTypesEnum.activity:
+        return token.type.name;
       // A room/session param is `<id>[/<sub-page>]` (RoomToken): the id AND a
       // jump-to-message eventId are identity and drop; a pushed sub-page and
       // its invite filter (a small fixed tab, not personal content) are
       // navigational and stay.
-      case 'room':
-      case 'session':
-        if (param is! RoomTokenParam) return token.type;
+      case PanelTypesEnum.room:
+      case PanelTypesEnum.session:
+        if (param is! RoomTokenParam) return token.type.name;
         if (param.subpage == null || param.subpage!.isEmpty) {
-          return token.type;
+          return token.type.name;
         }
         final filter = param.filter;
         final sub = filter == null
             ? param.subpage!
             : '${param.subpage}/$filter';
-        return '${token.type}:$sub';
+        return '${token.type.name}:$sub';
       // A coursepage param is the bare page, no leading room id (the card's
       // space rides the separate `?c=` context) — an `invite` page may carry a
       // trailing `/<filter>` (WorkspaceNav.openCoursePage), which stays: still
@@ -43,7 +43,7 @@ abstract class ScreenNames {
       // Everything else (settings pages, course tabs, practice modes,
       // analytics tabs, addcourse steps) is a navigational param.
       default:
-        return '${token.type}:${param.build()}';
+        return '${token.type.name}:${param.build()}';
     }
   }
 
@@ -59,11 +59,9 @@ abstract class ScreenNames {
     PanelToken? best;
     var bestScore = -1;
     for (final token in open) {
-      final isParentOfOther = open.any(
-        (t) => PanelRegistry.defFor(t.type)?.parent == token.type,
-      );
+      final isParentOfOther = open.any((t) => t.type.def.parent == token.type);
       if (isParentOfOther) continue;
-      final score = PanelRegistry.defFor(token.type)?.priority ?? 0;
+      final score = token.type.def.priority;
       if (score > bestScore) {
         best = token;
         bestScore = score;

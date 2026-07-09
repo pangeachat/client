@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -22,7 +23,11 @@ class AnalyticsNavigationUtil {
     // routing.instructions.md.
     final uri = GoRouterState.of(context).uri;
     final panelOpen = parseOpenPanels(uri).right.any(
-      (t) => const {'analytics', 'vocab', 'grammar'}.contains(t.type),
+      (t) => const {
+        PanelTypesEnum.analytics,
+        PanelTypesEnum.vocab,
+        PanelTypesEnum.grammar,
+      }.contains(t.type),
     );
 
     // A completed activity session is a real (locked) chat whose summary is

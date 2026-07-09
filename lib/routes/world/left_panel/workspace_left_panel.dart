@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
@@ -80,22 +81,24 @@ class WorkspaceLeftPanel extends StatelessWidget {
     final param = token.param;
 
     final Widget surface = switch (type) {
-      'chats' => LeftPanelChatListSubpage(closeButton: closeButton),
-      'room' || 'session' => () {
+      PanelTypesEnum.chats => LeftPanelChatListSubpage(
+        closeButton: closeButton,
+      ),
+      PanelTypesEnum.room || PanelTypesEnum.session => () {
         return LeftPanelRoomSubpage(
           param: param is RoomTokenParam ? param : null,
           shareItems: shareItems,
           closeButton: closeButton,
         );
       }(),
-      'addcourse' => () {
+      PanelTypesEnum.addcourse => () {
         return LeftPanelAddCourseSubpage(
           param: param is AddCourseTokenParam ? param : null,
           closeButton: closeButton,
           courseCreationCompleter: courseCreationCompleter,
         );
       }(),
-      'course' => () {
+      PanelTypesEnum.course => () {
         return LeftPanelCourseDetailsSubpage(
           param: param is CourseDetailsTokenParam ? param : null,
           spaceId: activeSpaceIdFor(currentUri),
@@ -109,14 +112,14 @@ class WorkspaceLeftPanel extends StatelessWidget {
       // brings its own Scaffold + close affordance (a back-arrow toward the
       // course, or an X to the map — see `activity_sessions_start_view.dart`),
       // so PanelCard just supplies the floating chrome like every other panel.
-      'activity' => () {
+      PanelTypesEnum.activity => () {
         if (param is! ActivityTokenParam) return const SizedBox.shrink();
         return LeftPanelActivityDetailsSubpage(
           param: param,
           parentSpaceId: activeSpaceIdFor(currentUri),
         );
       }(),
-      'coursepage' => () {
+      PanelTypesEnum.coursepage => () {
         final parsed = param is RoomSubpageTokenParam ? param : null;
         final courseSpaceId = activeSpaceIdFor(currentUri);
         if (courseSpaceId == null) {

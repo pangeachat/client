@@ -2,6 +2,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -104,7 +105,7 @@ abstract class WorkspaceNav {
   /// generalized detail open; the named helpers below delegate to it. See
   /// `routing.instructions.md`.
   static String openDetail(Uri current, PanelToken token) {
-    final col = PanelRegistry.defFor(token.type)?.column ?? PanelColumn.left;
+    final col = token.type.def.column;
     return _mutateBoth(
       current,
       (left) => _placeDetail(left, token, PanelColumn.left, col),
@@ -133,8 +134,8 @@ abstract class WorkspaceNav {
   /// True when [a] and [b] are **siblings** — they share any sibling group (per
   /// the registry), so they can't coexist and one replaces the other.
   static bool _areSiblings(PanelToken a, PanelToken b) {
-    final ga = PanelRegistry.defFor(a.type)?.siblingGroups ?? const <String>{};
-    final gb = PanelRegistry.defFor(b.type)?.siblingGroups ?? const <String>{};
+    final ga = a.type.def.siblingGroups;
+    final gb = b.type.def.siblingGroups;
     return ga.any(gb.contains);
   }
 
@@ -161,7 +162,10 @@ abstract class WorkspaceNav {
       PRoutes.world,
       WorkspaceQuery.parts(
         Uri.parse(
-          openExclusiveLeftRoom(current, PanelToken('room', param)),
+          openExclusiveLeftRoom(
+            current,
+            PanelToken(PanelTypesEnum.room, param),
+          ),
         ).query,
       ),
     );
@@ -178,7 +182,7 @@ abstract class WorkspaceNav {
   /// evict the course on every room/vocab/grammar/practice open too.)
   static String openExclusiveSession(Uri current, String roomId) {
     final token = PanelToken(
-      'session',
+      PanelTypesEnum.session,
       RoomTokenParam(id: shortRoomId(roomId)),
     );
 
@@ -188,8 +192,8 @@ abstract class WorkspaceNav {
             (t) =>
                 t != token &&
                 !_areSiblings(token, t) &&
-                t.type != 'course' &&
-                t.type != 'coursepage',
+                t.type != PanelTypesEnum.course &&
+                t.type != PanelTypesEnum.coursepage,
           )
           .toList();
       next.add(token);
@@ -213,7 +217,9 @@ abstract class WorkspaceNav {
         : GrammarAnalyticsTokenParam(constructId: constructId);
 
     final detail = PanelToken(
-      view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
+      view == ConstructTypeEnum.vocab
+          ? PanelTypesEnum.vocab
+          : PanelTypesEnum.grammar,
       param,
     );
 
@@ -225,11 +231,11 @@ abstract class WorkspaceNav {
             .where((t) => t != detail && !_areSiblings(detail, t))
             .toList();
 
-        if (!next.any((t) => t.type == 'analytics')) {
+        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
           next.insert(
             0,
             PanelToken(
-              'analytics',
+              PanelTypesEnum.analytics,
               AnalyticsTokenParam(subpage: view.indicator),
             ),
           );
@@ -253,22 +259,22 @@ abstract class WorkspaceNav {
   static String openPractice(Uri current, ConstructTypeEnum type) =>
       _mutateBoth(
         current,
-        (left) => left.where((t) => t.type != 'session').toList(),
+        (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
         (right) {
           final next = right
               .where(
                 (t) =>
-                    t.type != 'analytics' &&
-                    t.type != 'vocab' &&
-                    t.type != 'grammar' &&
-                    t.type != 'practice',
+                    t.type != PanelTypesEnum.analytics &&
+                    t.type != PanelTypesEnum.vocab &&
+                    t.type != PanelTypesEnum.grammar &&
+                    t.type != PanelTypesEnum.practice,
               )
               .toList();
 
           next.insert(
             0,
             PanelToken(
-              'practice',
+              PanelTypesEnum.practice,
               AnalyticsPracticeTokenParam(constructType: type),
             ),
           );
@@ -292,7 +298,7 @@ abstract class WorkspaceNav {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
       PanelToken(
-        'course',
+        PanelTypesEnum.course,
         tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
       ),
       // Drop any prior course token, the Courses launcher (`addcourse`), a stale
@@ -303,10 +309,10 @@ abstract class WorkspaceNav {
       // (#7385). A live `room` is kept (a course can scope a chat).
       ...lists.left.where(
         (t) =>
-            t.type != 'course' &&
-            t.type != 'addcourse' &&
-            t.type != 'coursepage' &&
-            t.type != 'activity',
+            t.type != PanelTypesEnum.course &&
+            t.type != PanelTypesEnum.addcourse &&
+            t.type != PanelTypesEnum.coursepage &&
+            t.type != PanelTypesEnum.activity,
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
@@ -336,8 +342,8 @@ abstract class WorkspaceNav {
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      PanelToken('course'),
-      if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
+      PanelToken(PanelTypesEnum.course),
+      if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {
@@ -364,11 +370,18 @@ abstract class WorkspaceNav {
       // the course card is an exit from the activity, so the live-view activity
       // must not co-render beside it (#7385). A live `room` is kept.
       final next = tokens
-          .where((t) => t.type != 'course' && t.type != 'activity')
+          .where(
+            (t) =>
+                t.type != PanelTypesEnum.course &&
+                t.type != PanelTypesEnum.activity,
+          )
           .toList();
       next.insert(
         0,
-        PanelToken('course', CourseDetailsTokenParam(activeTab: tab)),
+        PanelToken(
+          PanelTypesEnum.course,
+          CourseDetailsTokenParam(activeTab: tab),
+        ),
       );
       return next;
     },
@@ -391,7 +404,7 @@ abstract class WorkspaceNav {
   }) => openDetail(
     current,
     PanelToken(
-      'coursepage',
+      PanelTypesEnum.coursepage,
       RoomSubpageTokenParam(subpage: page, filter: filter, courseId: courseId),
     ),
   );
@@ -438,7 +451,7 @@ abstract class WorkspaceNav {
     bool autoplay = false,
   }) {
     final token = PanelToken(
-      'activity',
+      PanelTypesEnum.activity,
       ActivityTokenParam(
         activityId: activityId,
         roomId: roomId,
@@ -475,7 +488,7 @@ abstract class WorkspaceNav {
     WorkspaceQuery.removeKeys(parts, {'left'});
 
     final token = PanelToken(
-      'activity',
+      PanelTypesEnum.activity,
       ActivityTokenParam(
         activityId: activityId,
         roomId: roomId,
@@ -501,11 +514,11 @@ abstract class WorkspaceNav {
     WorkspaceQuery.removeKeys(parts, {'left'});
     final left = parseOpenPanels(
       current,
-    ).left.where((t) => t.type != 'activity').toList();
+    ).left.where((t) => t.type != PanelTypesEnum.activity).toList();
     if (reopenCourseCard &&
         activeSpaceIdFor(current) != null &&
-        left.every((t) => t.type != 'course')) {
-      left.insert(0, const PanelToken('course'));
+        left.every((t) => t.type != PanelTypesEnum.course)) {
+      left.insert(0, const PanelToken(PanelTypesEnum.course));
     }
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');
@@ -543,7 +556,7 @@ abstract class WorkspaceNav {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
       ?section,
-      if (keepRoom) ...lists.left.where((t) => t.type == 'room'),
+      if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     // Carry the course context forward: context (`?c=`) is independent of
     // panels and changes only when a new course is chosen or the World control
@@ -631,12 +644,12 @@ abstract class WorkspaceNav {
   /// live room persists under a right panel (the chat-header avatar loop:
   /// chat → analytics → X → back to the conversation). See
   /// `routing.instructions.md` → Single-column bottom nav.
-  static const Set<String> _leftSections = {
-    'chats',
-    'addcourse',
-    'course',
-    'coursepage',
-    'activity',
+  static const Set<PanelTypesEnum> _leftSections = {
+    PanelTypesEnum.chats,
+    PanelTypesEnum.addcourse,
+    PanelTypesEnum.course,
+    PanelTypesEnum.coursepage,
+    PanelTypesEnum.activity,
   };
 
   /// Replace the whole `right` list. Used when switching the analytics metric:
@@ -665,24 +678,22 @@ abstract class WorkspaceNav {
   /// invite, a room→members/search. Replaces that panel's token with the
   /// deeper-page token, keeping every other panel. A null/empty [page] is the
   /// panel's root. See `routing.instructions.md`.
-  static String pushPage(Uri current, String type, TokenParam? param) {
-    final col = PanelRegistry.defFor(type)?.column == PanelColumn.right
-        ? 'right'
-        : 'left';
+  static String pushPage(Uri current, PanelTypesEnum type, TokenParam? param) {
+    final token = param == null || param.build().isEmpty
+        ? PanelToken(type)
+        : PanelToken(type, param);
+
+    final col = type.def.column == PanelColumn.right ? 'right' : 'left';
     return _mutate(current, col, (tokens) {
       final next = tokens.where((t) => t.type != type).toList();
-      next.add(
-        param == null || param.build().isEmpty
-            ? PanelToken(type)
-            : PanelToken(type, param),
-      );
+      next.add(token);
       return next;
     });
   }
 
   /// Pop one page level off a pushable panel (its back arrow): a `a/b` page
   /// returns to `a`; a top-level page returns to the panel's root.
-  static String popPage(Uri current, String type, TokenParam param) {
+  static String popPage(Uri current, PanelTypesEnum type, TokenParam param) {
     return pushPage(current, type, param.poppedParam);
   }
 
@@ -690,12 +701,12 @@ abstract class WorkspaceNav {
   /// details, and the practice/activity-review surfaces. Opening Settings drops
   /// these so the right column shows one feature at a time — mirroring how
   /// opening analytics replaces the right column and drops Settings (#7109).
-  static const Set<String> _analyticsRightPanels = {
-    'analytics',
-    'vocab',
-    'grammar',
-    'practice',
-    'review',
+  static const Set<PanelTypesEnum> _analyticsRightPanels = {
+    PanelTypesEnum.analytics,
+    PanelTypesEnum.vocab,
+    PanelTypesEnum.grammar,
+    PanelTypesEnum.practice,
+    PanelTypesEnum.review,
   };
 
   /// Open the settings/profile MENU as the right-column master (page null/empty),
@@ -718,29 +729,29 @@ abstract class WorkspaceNav {
         final result = tokens
             .where(
               (t) =>
-                  t.type != 'settings' &&
-                  t.type != 'settingspage' &&
+                  t.type != PanelTypesEnum.settings &&
+                  t.type != PanelTypesEnum.settingspage &&
                   !_analyticsRightPanels.contains(t.type),
             )
             .toList();
-        result.add(const PanelToken('settings'));
+        result.add(const PanelToken(PanelTypesEnum.settings));
         return result;
       });
     } else {
       final detail = PanelToken(
-        'settingspage',
+        PanelTypesEnum.settingspage,
         SettingsTokenParam(subpage: page),
       );
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
             .where(
               (t) =>
-                  t.type != 'settingspage' &&
+                  t.type != PanelTypesEnum.settingspage &&
                   !_analyticsRightPanels.contains(t.type),
             )
             .toList();
-        if (!result.any((t) => t.type == 'settings')) {
-          result.insert(0, const PanelToken('settings'));
+        if (!result.any((t) => t.type == PanelTypesEnum.settings)) {
+          result.insert(0, const PanelToken(PanelTypesEnum.settings));
         }
         result.add(detail);
         return result;
@@ -765,7 +776,7 @@ abstract class WorkspaceNav {
   static String closeSettings(Uri current) => _mutate(
     current,
     'right',
-    (tokens) => _remove(tokens, const PanelToken('settings')),
+    (tokens) => _remove(tokens, const PanelToken(PanelTypesEnum.settings)),
   );
 
   /// The settings panel's back: a leaf (`a/b`) pops to its parent page; a
@@ -778,7 +789,7 @@ abstract class WorkspaceNav {
         return openSettings(current, page: popped.subpage);
       }
     }
-    return closeRight(current, PanelToken('settingspage', param));
+    return closeRight(current, PanelToken(PanelTypesEnum.settingspage, param));
   }
 
   static List<PanelToken> _add(
@@ -845,7 +856,7 @@ abstract class WorkspaceNav {
     bool closeSections = false,
   }) => setRight(current, [
     PanelToken(
-      'analytics',
+      PanelTypesEnum.analytics,
       AnalyticsTokenParam(subpage: subpage ?? ProgressIndicatorEnum.wordsUsed),
     ),
   ], closeSections: closeSections);
@@ -853,7 +864,7 @@ abstract class WorkspaceNav {
   static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
       setRight(current, [
         PanelToken(
-          'analytics',
+          PanelTypesEnum.analytics,
           AnalyticsTokenParam.parse(
             view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
           ),
@@ -864,7 +875,7 @@ abstract class WorkspaceNav {
     current,
     'left',
     (tokens) => tokens.where((t) {
-      if (t.type != 'coursepage') return true;
+      if (t.type != PanelTypesEnum.coursepage) return true;
       final param = t.param;
       if (param is! RoomSubpageTokenParam) return true;
       return param.subpage != page;
@@ -881,7 +892,7 @@ abstract class WorkspaceNav {
   }) => setSection(
     current,
     PanelToken(
-      'addcourse',
+      PanelTypesEnum.addcourse,
       subpage != null
           ? AddCourseTokenParam(
               subpage: subpage,

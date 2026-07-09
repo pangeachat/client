@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 /// One open-panel token from a workspace URL list (`left=` / `right=`).
@@ -6,7 +7,7 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 /// already-decoded argument (a room localpart, an analytics tab, an encoded
 /// construct). See `routing.instructions.md`.
 class PanelToken {
-  final String type;
+  final PanelTypesEnum type;
   final TokenParam? param;
 
   const PanelToken(this.type, [this.param]);
@@ -25,10 +26,14 @@ class PanelToken {
     if (encodedElement.isEmpty) return null;
     final i = encodedElement.indexOf(':');
     if (i < 0) {
-      return _validType(encodedElement) ? PanelToken(encodedElement) : null;
+      final type = PanelTypesEnum.fromString(encodedElement);
+      return _validType(encodedElement) && type != null
+          ? PanelToken(type)
+          : null;
     }
     final type = encodedElement.substring(0, i);
-    if (!_validType(type)) return null;
+    final parsedType = PanelTypesEnum.fromString(type);
+    if (!_validType(type) || parsedType == null) return null;
     final String param;
     try {
       param = Uri.decodeComponent(encodedElement.substring(i + 1));
@@ -40,7 +45,7 @@ class PanelToken {
 
     try {
       final parsed = TokenParam.byType(type, param);
-      return PanelToken(type, parsed);
+      return PanelToken(parsedType, parsed);
     } catch (e) {
       // A parse method (TokenFields.decode, enum fromRoute, etc.) threw on
       // malformed input — skip this token rather than aborting route parse.
@@ -50,8 +55,9 @@ class PanelToken {
 
   /// Encode for a URL list. The param is percent-encoded so its own commas and
   /// colons can't be mistaken for list or field delimiters.
-  String encode() =>
-      param == null ? type : '$type:${Uri.encodeComponent(param!.build())}';
+  String encode() => param == null
+      ? type.name
+      : '${type.name}:${Uri.encodeComponent(param!.build())}';
 
   @override
   bool operator ==(Object other) =>

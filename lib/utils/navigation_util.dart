@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -99,7 +100,10 @@ class NavigationUtil {
       context.go(
         WorkspaceNav.openExclusiveLeftRoom(
           stripActivityOverlay(uri),
-          PanelToken('room', RoomTokenParam(id: shortId, eventId: event)),
+          PanelToken(
+            PanelTypesEnum.room,
+            RoomTokenParam(id: shortId, eventId: event),
+          ),
         ),
         extra: extra,
       );
@@ -109,7 +113,7 @@ class NavigationUtil {
     context.go(
       WorkspaceNav.pushPage(
         uri,
-        'room',
+        PanelTypesEnum.room,
         RoomTokenParam(id: shortId, subpage: sub, filter: filter),
       ),
       extra: extra,

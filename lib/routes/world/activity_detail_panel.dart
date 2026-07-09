@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -141,7 +142,9 @@ class _LeftPanelActivityDetailsSubpageState
     // so it dismisses to the map. Rendering both ← and X here was a redundant
     // pair that did the same thing in the pin case (#7115).
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    final embedded = parseOpenPanels(uri).left.any((t) => t.type == 'activity');
+    final embedded = parseOpenPanels(
+      uri,
+    ).left.any((t) => t.type == PanelTypesEnum.activity);
     final courseScoped = activeSpaceIdFor(uri) != null;
     final showBack = embedded && courseScoped;
     return Scaffold(

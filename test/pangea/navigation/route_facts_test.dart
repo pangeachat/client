@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
@@ -194,15 +195,15 @@ void main() {
   // sibling of `room`/`session`, so the parser keeps it like any registered panel
   // and enforces one-live-view exclusivity. `activityFor` reads this same token.
   group('activity left token (#7385)', () {
-    List<String> leftTypes(String location) => [
+    List<PanelTypesEnum> leftTypes(String location) => [
       for (final t in parseOpenPanels(Uri.parse(location)).left) t.type,
     ];
     TokenParam? activityParam(String location) => parseOpenPanels(
       Uri.parse(location),
-    ).left.firstWhere((t) => t.type == 'activity').param;
+    ).left.firstWhere((t) => t.type == PanelTypesEnum.activity).param;
 
     test('an `activity` left token parses with its id as the param', () {
-      expect(leftTypes('/?left=activity:abc'), ['activity']);
+      expect(leftTypes('/?left=activity:abc'), [PanelTypesEnum.activity]);
       final param1 = activityParam('/?left=activity:abc');
       expect(param1, isA<ActivityTokenParam>());
       expect((param1 as ActivityTokenParam).activityId, 'abc');
@@ -219,8 +220,8 @@ void main() {
 
     test('activity and room are liveView siblings — only the first survives', () {
       // Opening an activity claims the single live view (a chat can\'t coexist).
-      expect(leftTypes('/?left=activity:a,room:!r'), ['activity']);
-      expect(leftTypes('/?left=room:!r,activity:a'), ['room']);
+      expect(leftTypes('/?left=activity:a,room:!r'), [PanelTypesEnum.activity]);
+      expect(leftTypes('/?left=room:!r,activity:a'), [PanelTypesEnum.room]);
     });
   });
 }

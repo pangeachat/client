@@ -13,6 +13,7 @@ import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.d
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -123,7 +124,7 @@ void _openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
 /// the full bar, so every bar destination is one more tap away.
 void _openAnalyticsSummary(BuildContext context) => context.go(
   WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-    const PanelToken('analytics'),
+    const PanelToken(PanelTypesEnum.analytics),
   ], closeSections: _closeSections(context)),
 );
 

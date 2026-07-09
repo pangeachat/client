@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -185,7 +186,7 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     final left = parseOpenPanels(GoRouterState.of(context).uri).left;
     final onDetails = left.any(
       (t) =>
-          (t.type == 'room' || t.type == 'session') &&
+          (t.type == PanelTypesEnum.room || t.type == PanelTypesEnum.session) &&
           (t.param?.build() ?? '').split('/').contains('details'),
     );
     NavigationUtil.goToSpaceRoute(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/close_button_labels.dart';
 
@@ -31,17 +32,17 @@ void main() {
 
   // Every panel type whose close control routes through [closeButtonLabel].
   const closeableTypes = [
-    'chats',
-    'room',
-    'session',
-    'course',
-    'coursepage',
-    'addcourse',
-    'analytics',
-    'vocab',
-    'grammar',
-    'practice',
-    'settings',
+    PanelTypesEnum.chats,
+    PanelTypesEnum.room,
+    PanelTypesEnum.session,
+    PanelTypesEnum.course,
+    PanelTypesEnum.coursepage,
+    PanelTypesEnum.addcourse,
+    PanelTypesEnum.analytics,
+    PanelTypesEnum.vocab,
+    PanelTypesEnum.grammar,
+    PanelTypesEnum.practice,
+    PanelTypesEnum.settings,
   ];
 
   testWidgets('every panel type gets a distinct, contextual close label', (
@@ -79,17 +80,10 @@ void main() {
     expect(
       closeButtonLabel(
         l10n,
-        const PanelToken('settingspage'),
+        const PanelToken(PanelTypesEnum.settingspage),
         named: 'Learning',
       ),
       l10n.closeNamed('Learning'),
     );
-  });
-
-  testWidgets('an unknown panel type falls back to the generic close', (
-    tester,
-  ) async {
-    await captureL10n(tester);
-    expect(closeButtonLabel(l10n, const PanelToken('mysterymeat')), l10n.close);
   });
 }

@@ -14,6 +14,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
@@ -311,7 +312,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                 onPressed: () => context.go(
                   WorkspaceNav.setSection(
                     GoRouterState.of(context).uri,
-                    const PanelToken('addcourse'),
+                    const PanelToken(PanelTypesEnum.addcourse),
                     keepRoom: false,
                   ),
                 ),

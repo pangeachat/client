@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/screen_names.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
@@ -20,50 +21,73 @@ void main() {
 
   group('forToken (identity stripped, navigational kept)', () {
     test('the doc examples hold', () {
-      expect(ScreenNames.forToken(const PanelToken('chats')), 'chats');
       expect(
-        ScreenNames.forToken(PanelToken('room', RoomTokenParam.parse('!abc'))),
+        ScreenNames.forToken(const PanelToken(PanelTypesEnum.chats)),
+        'chats',
+      );
+      expect(
+        ScreenNames.forToken(
+          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc')),
+        ),
         'room',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('room', RoomTokenParam.parse('!abc/search')),
+          PanelToken(PanelTypesEnum.room, RoomTokenParam.parse('!abc/search')),
         ),
         'room:search',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('course', CourseDetailsTokenParam.parse('more')),
+          PanelToken(
+            PanelTypesEnum.course,
+            CourseDetailsTokenParam.parse('more'),
+          ),
         ),
         'course:more',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
+          PanelToken(
+            PanelTypesEnum.coursepage,
+            RoomSubpageTokenParam.parse('invite'),
+          ),
         ),
         'coursepage:invite',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('settingspage', SettingsTokenParam.parse('security/3pid')),
+          PanelToken(
+            PanelTypesEnum.settingspage,
+            SettingsTokenParam.parse('security/3pid'),
+          ),
         ),
         'settingspage:security/3pid',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('settingspage', SettingsTokenParam.parse('subscription')),
+          PanelToken(
+            PanelTypesEnum.settingspage,
+            SettingsTokenParam.parse('subscription'),
+          ),
         ),
         'settingspage:subscription',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('analytics', AnalyticsTokenParam.parse('vocab')),
+          PanelToken(
+            PanelTypesEnum.analytics,
+            AnalyticsTokenParam.parse('vocab'),
+          ),
         ),
         'analytics:vocab',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('practice', AnalyticsPracticeTokenParam.parse('grammar')),
+          PanelToken(
+            PanelTypesEnum.practice,
+            AnalyticsPracticeTokenParam.parse('grammar'),
+          ),
         ),
         'practice:grammar',
       );
@@ -72,25 +96,34 @@ void main() {
     test('identity params never leak into a name', () {
       expect(
         ScreenNames.forToken(
-          PanelToken('vocab', VocabAnalyticsTokenParam.parse('abrigadoro.adj')),
+          PanelToken(
+            PanelTypesEnum.vocab,
+            VocabAnalyticsTokenParam.parse('abrigadoro.adj'),
+          ),
         ),
         'vocab',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('grammar', GrammarAnalyticsTokenParam.parse('ser.aux')),
+          PanelToken(
+            PanelTypesEnum.grammar,
+            GrammarAnalyticsTokenParam.parse('ser.aux'),
+          ),
         ),
         'grammar',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('activity', ActivityTokenParam.parse('act-1.r!sess.l')),
+          PanelToken(
+            PanelTypesEnum.activity,
+            ActivityTokenParam.parse('act-1.r!sess.l'),
+          ),
         ),
         'activity',
       );
       expect(
         ScreenNames.forToken(
-          PanelToken('session', RoomTokenParam.parse('!room')),
+          PanelToken(PanelTypesEnum.session, RoomTokenParam.parse('!room')),
         ),
         'session',
       );
