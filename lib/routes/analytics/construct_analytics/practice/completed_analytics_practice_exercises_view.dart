@@ -69,7 +69,7 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
             Text(
               "+ ${session.state.allXPGained} XP",
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppConfig.goldLight,
+                color: AppConfig.goldByTheme(context),
                 fontWeight: FontWeight.bold,
               ),
             ),
