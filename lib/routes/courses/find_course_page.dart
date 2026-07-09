@@ -450,7 +450,7 @@ class FindCoursePageView extends StatelessWidget {
                                   space.room.joinRule == JoinRules.knock.name,
                             );
                           }
-                          return null;
+                          return SizedBox();
                         },
                       ),
                     );
