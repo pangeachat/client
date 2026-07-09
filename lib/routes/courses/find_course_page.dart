@@ -16,12 +16,10 @@ import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class FindCoursePage extends StatefulWidget {
   const FindCoursePage({super.key});
@@ -370,265 +368,102 @@ class FindCoursePageView extends StatelessWidget {
           ),
         ],
       ),
-      body: MaxWidthBody(
-        showBorder: false,
-        withScrolling: false,
-        maxWidth: 600.0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            spacing: 16.0,
-            children: [
-              ListenableBuilder(
-                listenable: Listenable.merge([
-                  controller.visibleCourses,
-                  controller.loading,
-                  controller.searchController,
-                ]),
-                builder: (context, _) {
-                  final courses = controller.visibleCourses.value;
-                  final loading = controller.loading.value;
-                  if (courses.isEmpty &&
-                      !loading &&
-                      controller.nextBatch == null) {
-                    return Padding(
-                      padding: const EdgeInsets.all(32.0),
-                      child: Column(
-                        spacing: 12.0,
-                        children: [
-                          const BotFace(
-                            expression: BotExpression.addled,
-                            width: Avatar.defaultSize * 1.5,
-                          ),
-                          Text(
-                            L10n.of(context).noPublicCoursesFound,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                          ElevatedButton(
-                            onPressed: controller.startNewCourse,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onPrimaryContainer,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text(L10n.of(context).startOwn)],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  return Expanded(
-                    child: ListView.builder(
-                      controller: controller.scrollController,
-                      itemCount: courses.length + 1,
-                      itemBuilder: (context, index) {
-                        if (index == courses.length) {
-                          return Center(
-                            child: loading
-                                ? CircularProgressIndicator.adaptive()
-                                : !controller.fullyLoaded
-                                ? TextButton(
-                                    onPressed: () =>
-                                        controller.loadMore(loadMore: true),
-                                    child: Text(L10n.of(context).loadMore),
-                                  )
-                                : SizedBox(),
-                          );
-                        }
-                        final space = courses[index];
-                        return _PublicCourseTile(
-                          chunk: space,
-                          course: controller.coursePlans[space.courseId],
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PublicCourseTile extends StatelessWidget {
-  final PublicCoursesChunk chunk;
-  final CoursePlanModel? course;
-
-  const _PublicCourseTile({required this.chunk, this.course});
-
-  void _navigateToCoursePage(BuildContext context) {
-    context.go(
-      WorkspaceNav.openAddCoursePage(
-        GoRouterState.of(context).uri,
-        AddCourseSubpageEnum.browse,
-        roomId: chunk.room.roomId,
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final space = chunk.room;
-    final courseId = chunk.courseId;
-    final course = this.course;
-    final displayname =
-        space.name ?? space.canonicalAlias ?? L10n.of(context).emptyChat;
-    final isKnock = space.joinRule == JoinRules.knock.name;
-
-    return FocusTraversalGroup(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 10.0),
-        child: Material(
-          color: theme.colorScheme.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(12.0),
-          child: InkWell(
-            // Tapping the card scopes the map to this course's activities
-            // (world_v2); the Knock/Join pill opens the join flow.
-            onTap: () => MapContextController.set(CourseMapContext(courseId)),
-            borderRadius: BorderRadius.circular(12.0),
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                border: Border.all(color: theme.colorScheme.outlineVariant),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ImageByUrl(
-                    imageUrl: space.avatarUrl,
-                    width: 44.0,
-                    borderRadius: BorderRadius.circular(10.0),
-                    replacement: Avatar(
-                      name: displayname,
-                      borderRadius: BorderRadius.circular(10.0),
-                      size: 44.0,
-                    ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            constraints: const BoxConstraints(maxWidth: 450),
+            child: Column(
+              children: [
+                ListenableBuilder(
+                  listenable: Listenable.merge([
+                    controller.visibleCourses,
+                    controller.loading,
+                    controller.searchController,
+                  ]),
+                  builder: (context, _) {
+                    final courses = controller.visibleCourses.value;
+                    final loading = controller.loading.value;
+                    if (courses.isEmpty &&
+                        !loading &&
+                        controller.nextBatch == null) {
+                      return Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Column(
+                          spacing: 12.0,
                           children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  displayname,
-                                  style: theme.textTheme.titleSmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
+                            const BotFace(
+                              expression: BotExpression.addled,
+                              width: Avatar.defaultSize * 1.5,
                             ),
-                            const SizedBox(width: 8.0),
-                            FilledButton.tonal(
-                              onPressed: () => _navigateToCoursePage(context),
-                              style: FilledButton.styleFrom(
+                            Text(
+                              L10n.of(context).noPublicCoursesFound,
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyLarge,
+                            ),
+                            ElevatedButton(
+                              onPressed: controller.startNewCourse,
+                              style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     theme.colorScheme.primaryContainer,
                                 foregroundColor:
                                     theme.colorScheme.onPrimaryContainer,
-                                visualDensity: VisualDensity.compact,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                ),
-                                minimumSize: const Size(0, 32),
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
                               ),
-                              child: Text(
-                                isKnock
-                                    ? L10n.of(context).knock
-                                    : L10n.of(context).join,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Text(L10n.of(context).startOwn)],
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8.0),
-                        if (course != null)
-                          Wrap(
-                            spacing: 6.0,
-                            runSpacing: 6.0,
-                            children: [
-                              _chip(
-                                context,
-                                Icons.language,
-                                course.targetLanguage
-                                    .split('-')
-                                    .first
-                                    .toUpperCase(),
-                              ),
-                              _chip(
-                                context,
-                                Icons.group,
-                                '${space.numJoinedMembers}',
-                              ),
-                              _chip(
-                                context,
-                                Icons.location_on,
-                                '${course.topicIds.length}',
-                              ),
-                              _chip(
-                                context,
-                                Icons.school,
-                                course.cefrLevel.string.replaceFirst(
-                                  'PREA1',
-                                  'PRE-A1',
+                      );
+                    }
+
+                    return Expanded(
+                      child: ListView.builder(
+                        controller: controller.scrollController,
+                        itemCount: courses.length + 1,
+                        itemBuilder: (context, index) {
+                          if (index == courses.length) {
+                            return Center(
+                              child: loading
+                                  ? CircularProgressIndicator.adaptive()
+                                  : !controller.fullyLoaded
+                                  ? TextButton(
+                                      onPressed: () =>
+                                          controller.loadMore(loadMore: true),
+                                      child: Text(L10n.of(context).loadMore),
+                                    )
+                                  : SizedBox(),
+                            );
+                          }
+                          final space = courses[index];
+                          if (controller.coursePlans[space.courseId] != null) {
+                            return AddCourseTile(
+                              chunk: space,
+                              coursePlan:
+                                  controller.coursePlans[space.courseId]!,
+                              onTap: () => context.go(
+                                WorkspaceNav.openAddCoursePage(
+                                  GoRouterState.of(context).uri,
+                                  AddCourseSubpageEnum.browse,
+                                  roomId: space.room.roomId,
                                 ),
                               ),
-                            ],
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                              isKnock:
+                                  space.room.joinRule == JoinRules.knock.name,
+                            );
+                          }
+                          return SizedBox();
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _chip(BuildContext context, IconData icon, String text) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 13.0, color: theme.colorScheme.onSurfaceVariant),
-          const SizedBox(width: 4.0),
-          Text(
-            text,
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
       ),
     );
   }
