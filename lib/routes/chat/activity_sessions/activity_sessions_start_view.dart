@@ -186,8 +186,11 @@ class ActivitySessionStartView extends StatelessWidget {
                 // activities.instructions.md engages only on a confirmed 404).
                 : controller.error != null
                 ? Center(
-                    child: ErrorIndicator(
-                      message: L10n.of(context).activityLoadFailed,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: ErrorIndicator(
+                        message: L10n.of(context).activityLoadFailed,
+                      ),
                     ),
                   )
                 // Confirmed removed with no plan recoverable from room state:
