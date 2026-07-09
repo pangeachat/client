@@ -299,8 +299,8 @@ class NewPrivateChatPanelDef extends PanelDef {
     super.type = PanelTypesEnum.newprivatechat,
     super.column = PanelColumn.left,
     super.parent = PanelTypesEnum.chats,
-    super.minWidth = 400,
-    super.reasonableMinWidth = 400,
+    super.minWidth = 300,
+    super.reasonableMinWidth = 380,
     super.idealWidth = 400,
     super.priority = 10,
   });
