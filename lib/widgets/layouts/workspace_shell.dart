@@ -11,6 +11,7 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -98,27 +99,27 @@ final List<String> _paneRecency = <String>[];
 /// navigation from stealing focus and evicting the other column's popup.
 String _recencyKey(PanelToken token) {
   // Walk to the navigation-tree root so a detail inherits its master's slot.
-  var def = PanelRegistry.defFor(token.type);
+  var def = token.type.def;
   var rootType = token.type;
   // Bounded by the registry depth (two generations today); guard against a
   // malformed cyclic/self parent just in case.
-  final seen = <String>{rootType};
-  while (def?.parent != null && seen.add(def!.parent!)) {
+  final seen = <PanelTypesEnum>{rootType};
+  while (def.parent != null && seen.add(def.parent!)) {
     rootType = def.parent!;
-    def = PanelRegistry.defFor(rootType);
+    def = rootType.def;
   }
   // A room/session instance is its bare room id; the rest is a pushed sub-page.
   // A `room` keeps its OWN type as the root (its parent `chats` is the list, a
   // separate panel), so this branch is reached with the original type.
   final type = token.type;
   final param = token.param;
-  if ((type == 'room' || type == 'session') && param is RoomTokenParam) {
-    return '$type:${param.id}';
+  if (type.isRoomPanel && param is RoomTokenParam) {
+    return '${type.name}:${param.id}';
   }
   // Every other family (settings/analytics/course/chats/addcourse/practice/
   // review) is a singleton per column: key on the root type, so paging or
   // tab-switching within it reuses the one slot.
-  return rootType;
+  return rootType.name;
 }
 
 /// Sync the back-stack [recency] against the currently open [allTokens] (merged
@@ -157,9 +158,7 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
   ];
   if (matches.isEmpty) return null;
   return matches.firstWhere(
-    (i) => !allTokens.any(
-      (t) => PanelRegistry.defFor(t.type)?.parent == allTokens[i].type,
-    ),
+    (i) => !allTokens.any((t) => t.type.def.parent == allTokens[i].type),
     orElse: () => matches.last,
   );
 }
@@ -440,18 +439,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         ? null
         : layout.leftTokens[layout.cavityIndex!];
     final isCourseCavity =
-        cavityToken?.type == 'course' || cavityToken?.type == 'coursepage';
-    final isActivityCavity = cavityToken?.type == 'activity';
-
-    // Which rail item's OWN surface the cavity hosts, for the widget's
-    // tap-the-active-item toggle. A course sheet / activity plan is neither
-    // rail section's surface — the Courses tap must then navigate to the hub
-    // instead of toggling (#7537).
-    final cavitySection = switch (cavityToken?.type) {
-      'chats' => AppSection.chats,
-      'addcourse' => AppSection.courses,
-      _ => null,
-    };
+        cavityToken?.type == PanelTypesEnum.course ||
+        cavityToken?.type == PanelTypesEnum.coursepage;
+    final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
+    final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. This PR wires the MAP
@@ -510,7 +501,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // lists. Uses the same visibility predicate as the list's all-chats
     // filter so the estimate counts what actually renders.
     double? preferredCavityHeight;
-    if (cavityToken?.type == 'chats') {
+    if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = Matrix.of(context).client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
@@ -522,13 +513,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     if (cavityToken != null) {
       final param = cavityToken.param;
       if (isCourseCavity) {
-        cavityKey = activeSpaceId ?? cavityToken.type;
+        cavityKey = activeSpaceId ?? cavityToken.type.name;
       } else if (isActivityCavity) {
         cavityKey = param is ActivityTokenParam
             ? param.activityId
-            : cavityToken.type;
+            : cavityToken.type.name;
       } else {
-        cavityKey = cavityToken.type;
+        cavityKey = cavityToken.type.name;
       }
     }
 
@@ -569,7 +560,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 )
               : WorkspaceNav.setSection(
                   uri,
-                  const PanelToken('addcourse'),
+                  const AddCoursePanelToken(),
                   keepRoom: false,
                   clearRight: true,
                 ),
@@ -579,13 +570,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           AppSection.world => WorkspaceNav.clearAll(),
           AppSection.chats => WorkspaceNav.setSection(
             uri,
-            const PanelToken('chats'),
+            const ChatsPanelToken(),
             keepRoom: false,
             clearRight: true,
           ),
           AppSection.courses => WorkspaceNav.setSection(
             uri,
-            const PanelToken('addcourse'),
+            const AddCoursePanelToken(),
             keepRoom: false,
             clearRight: true,
           ),
@@ -764,9 +755,7 @@ class _ShellLayout {
     // route-driven `_MainView` left card was retired), so the left column is
     // entirely the allocator's; the only fixed left inset is the nav rail.
     final leftTokens = parseOpenPanels(state.uri).left;
-    final leftDefs = [
-      for (final token in leftTokens) PanelRegistry.defFor(token.type)!,
-    ];
+    final leftDefs = [for (final token in leftTokens) token.type.def];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
     // The single live left chat panel, if any — the focus signal a chat's
@@ -778,7 +767,7 @@ class _ShellLayout {
     // post-frame in [scheduleControllers].
     String? focusedLeftToken;
     for (final token in leftTokens) {
-      if (token.type == 'room' || token.type == 'session') {
+      if (token.type.isRoomPanel) {
         focusedLeftToken = token.encode();
         break;
       }
@@ -807,9 +796,7 @@ class _ShellLayout {
     // open. Every token parsed here has a valid right-column def (the parser
     // dropped unknown/wrong-column tokens), so the lookup is non-null.
     final rightTokens = parseOpenPanels(state.uri).right;
-    final rightDefs = [
-      for (final token in rightTokens) PanelRegistry.defFor(token.type)!,
-    ];
+    final rightDefs = [for (final token in rightTokens) token.type.def];
 
     // Narrow focus = the most-recently-opened panel (back-stack top). Sync the
     // recency list against the open panels: append newly-opened keys (in list
@@ -843,7 +830,7 @@ class _ShellLayout {
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
     // analytics bar) from a left full-screen surface (collapses the bar).
-    String? focusedNarrowType;
+    PanelTypesEnum? focusedNarrowType;
     var focusedIsRight = false;
     if (!isColumnMode) {
       for (var i = 0; i < leftTokens.length; i++) {
@@ -863,21 +850,6 @@ class _ShellLayout {
       }
     }
 
-    // Narrow chrome (routing.instructions.md → Single-column bottom nav): the
-    // section surfaces — the chat list, the Courses/add-course hub, the course
-    // family (card + coursepage detail), and the ACTIVITY PLAN (a half-open
-    // sheet with the camera on its pin — the Google Maps UX) — ride the nav
-    // widget's expandable CAVITY over the map. Only a live chat (a room or a
-    // launched session) and the right panels render full-screen over the
-    // chrome. The left-panel loop skips the cavity index so it is not also
-    // drawn full-screen.
-    const cavityTypes = {
-      'chats',
-      'addcourse',
-      'course',
-      'coursepage',
-      'activity',
-    };
     // A route-driven center-detail page on a narrow screen (a course-wizard
     // step, a public-course preview, a chat archive, the new-private-chat
     // form) is a FULL-SCREEN surface (routing.instructions.md → Full-screen
@@ -891,7 +863,7 @@ class _ShellLayout {
         focusedNarrowType != null &&
         !focusedIsRight) {
       for (var i = 0; i < leftTokens.length; i++) {
-        if (cavityTypes.contains(leftTokens[i].type) &&
+        if (leftTokens[i].type.isCavity &&
             layout.left[i].vis == PanelVis.full) {
           cavityIndex = i;
           break;

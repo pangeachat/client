@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:26.868069",
+    "@@last_modified": "2026-07-09 15:53:54.715093",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10408,6 +10408,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "بستن صفحه افزودن دوره",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

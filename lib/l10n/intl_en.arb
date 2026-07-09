@@ -5039,5 +5039,6 @@
     "activityMapLabel": "Activity map",
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "missingCourseOutline": "This course is no longer available",
-    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan."
+    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan.",
+    "closeAddCoursePage": "Close add course page"
 }

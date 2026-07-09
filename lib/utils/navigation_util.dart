@@ -99,7 +99,7 @@ class NavigationUtil {
       context.go(
         WorkspaceNav.openExclusiveLeftRoom(
           stripActivityOverlay(uri),
-          PanelToken('room', RoomTokenParam(id: shortId, eventId: event)),
+          RoomPanelToken(RoomTokenParam(id: shortId, eventId: event)),
         ),
         extra: extra,
       );
@@ -109,8 +109,9 @@ class NavigationUtil {
     context.go(
       WorkspaceNav.pushPage(
         uri,
-        'room',
-        RoomTokenParam(id: shortId, subpage: sub, filter: filter),
+        RoomPanelToken(
+          RoomTokenParam(id: shortId, subpage: sub, filter: filter),
+        ),
       ),
       extra: extra,
     );

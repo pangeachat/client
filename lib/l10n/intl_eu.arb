@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-08 15:20:14.450759",
+    "@@last_modified": "2026-07-09 15:53:29.110622",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10296,6 +10296,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Itxi ikastaroa gehitzeko orria",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

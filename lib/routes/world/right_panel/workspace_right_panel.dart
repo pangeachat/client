@@ -6,19 +6,12 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/close_affordance.dart';
-import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
-import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
-import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
-import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
-import 'package:fluffychat/routes/world/close_button_labels.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
@@ -72,11 +65,9 @@ class WorkspaceRightPanel extends StatelessWidget {
     // a width-folded detail OR — on a narrow single pane, where only the focused
     // leaf is drawn — when this leaf's navigation-tree parent is open behind it;
     // an independent panel (no open parent) dismisses to the map (`X`).
-    final type = token.type;
-    final param = token.param;
 
-    final pushable = PanelRegistry.defFor(type)?.pushable ?? false;
-    final isPushed = pushable && param != null && param.isPushed;
+    final pushable = token.type.def.pushable;
+    final isPushed = pushable && token.param?.isPushed == true;
     final revealsMaster =
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token));
 
@@ -87,35 +78,36 @@ class WorkspaceRightPanel extends StatelessWidget {
 
     final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;
 
+    String? closeButtonLabel;
+    if (token is SettingsPagePanelToken) {
+      final settingsToken = token as SettingsPagePanelToken;
+      closeButtonLabel = SettingsPageEnum.fromString(
+        settingsToken.param?.subpage,
+      ).title(l10n);
+    }
+
     final leadingTooltip = aff.showBack
         ? MaterialLocalizations.of(context).backButtonTooltip
-        : closeButtonLabel(
-            l10n,
-            token,
-            named: param is SettingsTokenParam
-                ? SettingsPageEnum.fromString(param.subpage).title(l10n)
-                : null,
-          );
+        : token.type.closeButtonLabel(l10n, named: closeButtonLabel);
 
     final onLeading = aff.showBack && isPushed
         ? () => context.go(
             WorkspaceNav.popPage(
               GoRouter.of(context).routeInformationProvider.value.uri,
-              type,
-              param,
+              token,
             ),
           )
         : () => _close(context);
 
-    switch (type) {
-      case 'analytics':
+    switch (token) {
+      case AnalyticsPanelToken(param: final param):
         return RightPanelAnalyticsSubpage(
-          param: param is AnalyticsTokenParam ? param : null,
+          param: param,
           icon: leadingIcon,
           onLeading: onLeading,
           tooltip: leadingTooltip,
         );
-      case 'settings':
+      case SettingsPanelToken():
         return PanelCardWithHeader(
           title: l10n.settings,
           icon: leadingIcon,
@@ -127,22 +119,22 @@ class WorkspaceRightPanel extends StatelessWidget {
           tooltip: leadingTooltip,
           child: RightPanelSettingsSubpage(),
         );
-      case 'settingspage':
-        final parsed = param is SettingsTokenParam ? param : null;
-        final settingsPage = parsed != null
-            ? SettingsPageEnum.fromString(parsed.subpage)
+      case SettingsPagePanelToken(param: final param):
+        final settingsPage = param != null
+            ? SettingsPageEnum.fromString(param.subpage)
             : null;
+
         return settingsPage != null && settingsPage.addHeader
             ? PanelCardWithHeader(
                 title: settingsPage.title(l10n),
                 icon: leadingIcon,
                 onLeading: onLeading,
                 tooltip: leadingTooltip,
-                child: RightPanelSettingsSubpage(param: parsed),
+                child: RightPanelSettingsSubpage(param: param),
               )
             : PanelCard(
                 child: RightPanelSettingsSubpage(
-                  param: parsed,
+                  param: param,
                   closeButton: IconButton(
                     tooltip: leadingTooltip,
                     icon: Icon(leadingIcon),
@@ -150,38 +142,36 @@ class WorkspaceRightPanel extends StatelessWidget {
                   ),
                 ),
               );
-      case 'vocab':
-        final parsed = param is VocabAnalyticsTokenParam ? param : null;
+      case VocabAnalyticsPanelToken(param: final param):
         return PanelCardWithHeader(
           title: '',
           icon: leadingIcon,
           onLeading: onLeading,
           tooltip: leadingTooltip,
-          trailing: kIsWeb && parsed?.constructId == null
+          trailing: kIsWeb && param?.constructId == null
               ? DownloadAnalyticsButton()
               : null,
           child: ConstructAnalyticsView(
             view: ConstructTypeEnum.vocab,
-            construct: parsed?.constructId,
+            construct: param?.constructId,
           ),
         );
-      case 'grammar':
-        final parsed = param is GrammarAnalyticsTokenParam ? param : null;
+      case GrammarAnalyticsPanelToken(param: final param):
         return PanelCardWithHeader(
           title: '',
           icon: leadingIcon,
           onLeading: onLeading,
           tooltip: leadingTooltip,
-          trailing: kIsWeb && parsed?.constructId == null
+          trailing: kIsWeb && param?.constructId == null
               ? DownloadAnalyticsButton()
               : null,
           child: ConstructAnalyticsView(
             view: ConstructTypeEnum.morph,
-            construct: parsed?.constructId,
+            construct: param?.constructId,
           ),
         );
-      case 'practice':
-        if (param is! AnalyticsPracticeTokenParam) {
+      case AnalyticsPracticePanelToken(param: final param):
+        if (param == null) {
           return SizedBox.shrink();
         }
 

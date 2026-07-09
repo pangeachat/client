@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:20:16.783377",
+    "@@last_modified": "2026-07-09 15:53:29.833716",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11414,6 +11414,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fechar página de adicionar curso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

@@ -58,7 +58,7 @@ abstract class LegacyRedirects {
       'autoplay',
     });
     final parts = [
-      'left=${PanelToken('activity', activityTokenParam).encode()}',
+      'left=${ActivityPanelToken(activityTokenParam).encode()}',
       ...kept,
     ];
     return '${PRoutes.world}?${parts.join('&')}';
@@ -82,7 +82,7 @@ abstract class LegacyRedirects {
       code = null;
     }
     if (code == null || code.isEmpty) {
-      return '${PRoutes.world}?left=${const PanelToken('addcourse', AddCourseTokenParam(subpage: 'private')).encode()}';
+      return '${PRoutes.world}?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private)).encode()}';
     }
     return PRoutes.joinWithCode(code);
   }

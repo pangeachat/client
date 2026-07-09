@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-08 15:19:44.675942",
+    "@@last_modified": "2026-07-09 15:53:18.052573",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8390,6 +8390,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Cerrar la página de agregar curso",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

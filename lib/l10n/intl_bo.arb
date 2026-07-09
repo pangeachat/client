@@ -3192,7 +3192,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-08 15:21:19.480361",
+    "@@last_modified": "2026-07-09 15:53:51.969724",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9968,6 +9968,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zavři stránku pro přidání kurzu",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

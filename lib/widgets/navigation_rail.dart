@@ -179,7 +179,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               context.go(
                                 WorkspaceNav.setSection(
                                   state.uri,
-                                  const PanelToken('chats'),
+                                  const ChatsPanelToken(),
                                   // Replace open left panels rather than stack.
                                   keepRoom: false,
                                 ),

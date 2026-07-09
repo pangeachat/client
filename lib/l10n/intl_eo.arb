@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:45.657737",
+    "@@last_modified": "2026-07-09 15:54:00.550740",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11415,6 +11415,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fermi aldoni kurson paĝon",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

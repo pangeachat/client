@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:20:48.869119",
+    "@@last_modified": "2026-07-09 15:53:41.647701",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10426,6 +10426,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "關閉新增課程頁面",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

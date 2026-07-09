@@ -1504,7 +1504,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-08 15:20:09.878531",
+    "@@last_modified": "2026-07-09 15:53:27.478273",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11406,6 +11406,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Chècè add course page",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

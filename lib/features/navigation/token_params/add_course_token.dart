@@ -4,15 +4,25 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
-class AddCourseTokenParam extends TokenParam {
-  final String subpage;
+enum AddCourseSubpageEnum {
+  own,
+  browse,
+  private;
+
+  static AddCourseSubpageEnum fromString(String value) =>
+      AddCourseSubpageEnum.values.firstWhereOrNull((v) => v.name == value) ??
+      AddCourseSubpageEnum.browse;
+}
+
+class AddCoursePageTokenParam extends TokenParam {
+  final AddCourseSubpageEnum subpage;
   final String? roomId;
   final String? courseId;
   final String? targetLanguage;
   final String? joinCode;
   final bool invite;
 
-  const AddCourseTokenParam({
+  const AddCoursePageTokenParam({
     required this.subpage,
     this.roomId,
     this.courseId,
@@ -23,13 +33,14 @@ class AddCourseTokenParam extends TokenParam {
 
   @override
   String build() {
+    final subpage = this.subpage;
     final roomId = this.roomId;
     final courseId = this.courseId;
     final targetLanguage = this.targetLanguage;
     final joinCode = this.joinCode;
 
     return TokenFields.join([
-      TokenFields.encode(subpage),
+      TokenFields.encode(subpage.name),
       if (roomId != null) 'r${TokenFields.encode(shortRoomId(roomId))}',
       if (courseId != null) 'c${TokenFields.encode(courseId)}',
       if (targetLanguage != null) 'l${TokenFields.encode(targetLanguage)}',
@@ -38,12 +49,14 @@ class AddCourseTokenParam extends TokenParam {
     ]);
   }
 
-  factory AddCourseTokenParam.parse(String param) {
+  factory AddCoursePageTokenParam.parse(String param) {
     final parts = TokenFields.split(param);
-    final subpage = TokenFields.decode(parts.first);
+    final subpage = AddCourseSubpageEnum.fromString(
+      TokenFields.decode(parts.first),
+    );
 
     if (parts.length <= 1) {
-      return AddCourseTokenParam(subpage: subpage);
+      return AddCoursePageTokenParam(subpage: subpage);
     }
 
     final filters = parts.skip(1);
@@ -66,7 +79,7 @@ class AddCourseTokenParam extends TokenParam {
 
     final inviteEntry = filters.firstWhereOrNull((f) => f == 'i');
 
-    return AddCourseTokenParam(
+    return AddCoursePageTokenParam(
       subpage: subpage,
       roomId: roomIdEntry != null && roomIdEntry.isNotEmpty
           ? TokenFields.decode(roomIdEntry)
@@ -87,7 +100,7 @@ class AddCourseTokenParam extends TokenParam {
 
   @override
   bool operator ==(Object other) =>
-      other is AddCourseTokenParam &&
+      other is AddCoursePageTokenParam &&
       other.subpage == subpage &&
       other.roomId == roomId &&
       other.courseId == courseId &&

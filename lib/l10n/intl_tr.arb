@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-08 15:21:04.365886",
+    "@@last_modified": "2026-07-09 15:53:45.909880",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10627,6 +10627,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Kurs ekleme sayfasını kapat",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }

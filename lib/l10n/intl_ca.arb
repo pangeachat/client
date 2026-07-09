@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:20:41.540177",
+    "@@last_modified": "2026-07-09 15:53:38.845516",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10447,6 +10447,11 @@
         "placeholders": {}
     },
     "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Tanca la pàgina d'afegir curs",
+    "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
     }
