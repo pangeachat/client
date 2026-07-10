@@ -134,7 +134,7 @@ class RoomSubpageTokenParam extends TokenParam {
           courseId: courseId,
           initialLanguageFilter:
               languageEntry != null && languageEntry.isNotEmpty
-              ? languageEntry
+              ? TokenFields.decode(languageEntry)
               : null,
         );
     }

@@ -131,15 +131,6 @@ class NavigationUtil {
       Uri.parse(WorkspaceNav.dropActivityOverlay(uri));
 
   /// Normalizes a room-style chat-details subroute to its course `coursepage`.
-  ///
-  /// The chat-details UI is shared between rooms and the course space and
-  /// addresses management screens with a room-style `details/<page>` path (e.g.
-  /// the participants tab invites via `['details', 'invite']`). A course has no
-  /// `details` coursepage — that role is the card itself — so `details` maps to
-  /// `''` (show the card) and `details/<page>` to the bare `<page>` coursepage.
-  /// Any other subroute is already a bare coursepage and passes through.
-  /// Without this, `details/invite` became the unhandled token
-  /// `coursepage:details/invite`, rendering an empty, un-closable panel (#7099).
   @visibleForTesting
   static RoomSubpageEnum? coursePageFor(String sub) {
     if (sub == 'details') return null;
