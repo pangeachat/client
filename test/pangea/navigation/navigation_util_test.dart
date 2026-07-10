@@ -92,21 +92,24 @@ void main() {
   /// is one the renderer actually handles.
   group('coursePageFor (room-style subroute → course page)', () {
     test('details/<page> drops the room-only `details` segment', () {
-      expect(NavigationUtil.coursePageFor('details/invite'), 'invite');
+      expect(
+        NavigationUtil.coursePageFor('details/invite'),
+        RoomSubpageEnum.invite,
+      );
       expect(
         NavigationUtil.coursePageFor('details/permissions'),
-        'permissions',
+        RoomSubpageEnum.permissions,
       );
     });
 
-    test('bare `details` maps to the card (empty page)', () {
-      expect(NavigationUtil.coursePageFor('details'), '');
+    test('bare `details` maps to null room subpage', () {
+      expect(NavigationUtil.coursePageFor('details'), null);
     });
 
     test('an already-bare course page passes through unchanged', () {
-      expect(NavigationUtil.coursePageFor('invite'), 'invite');
-      expect(NavigationUtil.coursePageFor('edit'), 'edit');
-      expect(NavigationUtil.coursePageFor(''), '');
+      expect(NavigationUtil.coursePageFor('invite'), RoomSubpageEnum.invite);
+      expect(NavigationUtil.coursePageFor('edit'), RoomSubpageEnum.edit);
+      expect(NavigationUtil.coursePageFor(''), null);
     });
 
     test(

@@ -28,7 +28,15 @@ class SelectedCourse extends StatefulWidget {
   /// In join mode, the ID of the space to join that already has this course.
   final String? spaceId;
 
-  const SelectedCourse(this.courseId, this.mode, {super.key, this.spaceId});
+  final Widget? closeButton;
+
+  const SelectedCourse(
+    this.courseId,
+    this.mode, {
+    super.key,
+    this.spaceId,
+    this.closeButton,
+  });
 
   @override
   SelectedCourseController createState() => SelectedCourseController();
@@ -47,31 +55,6 @@ class SelectedCourseController extends State<SelectedCourse>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
       loadCourse(widget.courseId);
-    }
-  }
-
-  /// world_v2: the course detail is route-driven (`/courses/own/:courseid` and
-  /// `/courses/:spaceid/addcourse/:courseId`) because the launch/add Completer
-  /// can't ride a token URL, so the parent `/courses…` segments render a blank
-  /// `EmptyPage`. A plain `Navigator.pop()` surfaces that blank page (#7090).
-  /// Navigate back to where the detail was opened from instead: the start-my-own
-  /// plan list (`addcourse:own` over the world map) for launch, or the target
-  /// course card for add-to-space.
-  void back() {
-    final uri = GoRouterState.of(context).uri;
-    switch (widget.mode) {
-      case SelectedCourseMode.launch:
-        context.go(
-          WorkspaceNav.openAddCoursePage(uri, AddCourseSubpageEnum.own),
-        );
-      case SelectedCourseMode.addToSpace:
-        context.go(
-          WorkspaceNav.openCourse(
-            uri,
-            widget.spaceId!,
-            tab: SpaceSettingsTabs.course,
-          ),
-        );
     }
   }
 
@@ -133,8 +116,8 @@ class SelectedCourseController extends State<SelectedCourse>
       WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
-        courseId: widget.courseId,
-        invite: true,
+        createCourseId: widget.courseId,
+        showNewCourseInvitePage: true,
       ),
       extra: completer,
     );

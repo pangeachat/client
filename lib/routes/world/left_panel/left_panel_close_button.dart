@@ -35,11 +35,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   bool get _isPushedSubPage {
     final param = token.param;
     if (param == null) return false;
-    if (token.type.isRoomPanel) {
-      // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
-      return param.isPushed;
-    }
-    return false;
+    return param.isPushed;
   }
 
   // Centralized affordance (close_affordance.dart): `←` when closing returns to

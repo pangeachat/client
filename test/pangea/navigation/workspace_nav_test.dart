@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/token_params/settings_token.dart'
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
@@ -1187,7 +1188,7 @@ void main() {
       // The course workspace: a `?m=course:<id>` map filter + a left course
       // panel. A management button (Edit, Invite, …) opens beside the card.
       const base = '/?c=!s&left=course';
-      var loc = WorkspaceNav.openCoursePage(u(base), 'edit');
+      var loc = WorkspaceNav.openCoursePage(u(base), RoomSubpageEnum.edit);
       final left = parseOpenPanels(u(loc)).left;
       expect(left.map((t) => t.type).toList(), [
         PanelTypesEnum.course,
@@ -1200,7 +1201,7 @@ void main() {
       // The course identity (the map filter) survives.
       expect(activeSpaceIdFor(u(loc)), '!s');
       // Opening a different management page replaces the first (one at a time).
-      loc = WorkspaceNav.openCoursePage(u(loc), 'invite');
+      loc = WorkspaceNav.openCoursePage(u(loc), RoomSubpageEnum.invite);
       expect(
         parseOpenPanels(
           u(loc),
@@ -1220,8 +1221,8 @@ void main() {
         'coursepage token param instead of a loose ?filter= query', () {
       final loc = WorkspaceNav.openCoursePage(
         u('/?c=!s&left=course'),
-        'invite',
-        filter: 'knock',
+        RoomSubpageEnum.invite,
+        filter: InvitationFilter.knocking,
       );
       final uri = u(loc);
       expect(uri.queryParameters['filter'], isNull);
@@ -1230,7 +1231,10 @@ void main() {
           uri,
         ).left.where((t) => t.type == PanelTypesEnum.coursepage).single,
         CoursePagePanelToken(
-          RoomSubpageTokenParam(subpage: 'invite', filter: 'knock'),
+          RoomSubpageTokenParam(
+            subpage: RoomSubpageEnum.invite,
+            inviteFilter: InvitationFilter.knocking,
+          ),
         ),
       );
     });
@@ -1240,7 +1244,11 @@ void main() {
       'target space scope even from the bare map or a different course',
       () {
         // From the bare world map (no course scope at all).
-        var loc = WorkspaceNav.openCoursePageFor(u('/'), '!target', 'invite');
+        var loc = WorkspaceNav.openCoursePageFor(
+          u('/'),
+          '!target',
+          RoomSubpageEnum.invite,
+        );
         expect(activeSpaceIdFor(u(loc)), '!target');
         expect(parseOpenPanels(u(loc)).left.map((t) => t.type).toList(), [
           PanelTypesEnum.course,
@@ -1254,7 +1262,7 @@ void main() {
         loc = WorkspaceNav.openCoursePageFor(
           u('/?c=!other&left=course'),
           '!target',
-          'edit',
+          RoomSubpageEnum.edit,
         );
         expect(activeSpaceIdFor(u(loc)), '!target');
         expect(

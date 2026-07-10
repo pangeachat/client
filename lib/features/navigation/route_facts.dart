@@ -190,7 +190,7 @@ String? joinCodeFor(Uri uri) {
     final param = token.param;
     if (param is! AddCoursePageTokenParam) continue;
     if (param.subpage != AddCourseSubpageEnum.private) continue;
-    return param.joinCode;
+    return param.privateCourseJoinCode;
   }
   return null;
 }

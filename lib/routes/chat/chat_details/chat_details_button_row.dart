@@ -10,6 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -97,9 +98,11 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.invite,
         icon: const Icon(Icons.person_add_outlined, size: 30.0),
         onPressed: () {
-          String filter = 'knocking';
+          InvitationFilter filter = InvitationFilter.knocking;
           if (room.getParticipants([Membership.knock]).isEmpty) {
-            filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
+            filter = room.pangeaSpaceParents.isNotEmpty
+                ? InvitationFilter.space
+                : InvitationFilter.contacts;
           }
           NavigationUtil.goToSpaceRoute(
             room.id,

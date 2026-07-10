@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -211,6 +213,18 @@ abstract class AppRoutes {
                       SelectedCourse(
                         state.pathParameters['courseid']!,
                         SelectedCourseMode.launch,
+                        closeButton: IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          tooltip: MaterialLocalizations.of(
+                            context,
+                          ).backButtonTooltip,
+                          onPressed: () => context.go(
+                            WorkspaceNav.openAddCoursePage(
+                              state.uri,
+                              AddCourseSubpageEnum.own,
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   },

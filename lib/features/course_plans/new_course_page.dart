@@ -13,9 +13,9 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_client_exte
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -39,7 +39,7 @@ class NewCoursePage extends StatefulWidget {
   /// existing course panel (a `course:addcourse` push, `spaceId != null`), the
   /// panel supplies its leading `←` back to the card — the route-driven
   /// add-to-space context otherwise has no back. See `routing.instructions.md`.
-  final Widget? embeddedCloseButton;
+  final Widget closeButton;
 
   const NewCoursePage({
     super.key,
@@ -48,7 +48,7 @@ class NewCoursePage extends StatefulWidget {
     this.showFilters = true,
     this.initialLanguageCode,
     this.showAll = false,
-    this.embeddedCloseButton,
+    required this.closeButton,
   });
 
   @override
@@ -56,14 +56,6 @@ class NewCoursePage extends StatefulWidget {
 }
 
 class NewCoursePageState extends State<NewCoursePage> {
-  /// Session-scoped memory of the last language the learner picked in this flow.
-  /// The back arrow returns to the add-course hub via `setSection`, which carries
-  /// only the panel/map state forward and drops the `?lang=` query — so without
-  /// this, returning to "Start my own" snapped back to the L2 default and lost
-  /// the choice (#7269). A `?lang=` deep link still wins; this only fills the
-  /// in-session default the hub round-trip would otherwise drop.
-  static LanguageModel? _lastChosenLanguage;
-
   final ValueNotifier<Result<List<CoursePlanModel>>?> _courses = ValueNotifier(
     null,
   );
@@ -86,27 +78,15 @@ class NewCoursePageState extends State<NewCoursePage> {
     super.initState();
 
     if (!widget.showAll) {
-      _targetLanguageFilter.value = seedLanguage(
-        fromInitialCode: widget.initialLanguageCode != null
-            ? PLanguageStore.byLangCode(widget.initialLanguageCode!)
-            : null,
-        lastChosen: _lastChosenLanguage,
-        userL2: MatrixState.pangeaController.userController.userL2,
-      );
+      final fromInitialCode = widget.initialLanguageCode != null
+          ? PLanguageStore.byLangCode(widget.initialLanguageCode!)
+          : null;
+      final userL2 = MatrixState.pangeaController.userController.userL2;
+      _targetLanguageFilter.value = fromInitialCode ?? userL2;
     }
 
     _loadCourses();
   }
-
-  /// The language the picker opens on: a `?lang=` deep link
-  /// ([fromInitialCode]) wins, then this session's last pick ([lastChosen], so
-  /// the back-arrow round-trip keeps it), then the learner's L2 default (#7269).
-  @visibleForTesting
-  static LanguageModel? seedLanguage({
-    required LanguageModel? fromInitialCode,
-    required LanguageModel? lastChosen,
-    required LanguageModel? userL2,
-  }) => fromInitialCode ?? lastChosen ?? userL2;
 
   @override
   void dispose() {
@@ -124,8 +104,6 @@ class NewCoursePageState extends State<NewCoursePage> {
   void _setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
-    _lastChosenLanguage =
-        language; // remember for the rest of this session (#7269)
     _loadGeneration++;
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
@@ -205,8 +183,9 @@ class NewCoursePageState extends State<NewCoursePage> {
       context.go(
         WorkspaceNav.openCoursePage(
           GoRouterState.of(context).uri,
-          'addcourse',
+          RoomSubpageEnum.addcourse,
           courseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
       return;
@@ -217,7 +196,8 @@ class NewCoursePageState extends State<NewCoursePage> {
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
-          courseId: course.uuid,
+          createCourseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
       return;
@@ -263,7 +243,8 @@ class NewCoursePageState extends State<NewCoursePage> {
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
-          courseId: course.uuid,
+          createCourseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
     } else if (action == 1) {
@@ -300,23 +281,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         // In the world_v2 left column the back/close lead back to browse and
         // out to the map; the add-to-space context (a `course:addcourse` push)
         // takes its `←` back-to-card from the host panel.
-        leading: spaceId == null
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                // Accessible name (world_v2 testability contract: every
-                // IconButton needs a tooltip → semantics label).
-                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-                // world_v2: the add-course hub is the `addcourse` left token over
-                // the world map, not a `/courses` route.
-                onPressed: () => context.go(
-                  WorkspaceNav.setSection(
-                    GoRouterState.of(context).uri,
-                    const AddCoursePanelToken(),
-                    keepRoom: false,
-                  ),
-                ),
-              )
-            : widget.embeddedCloseButton,
+        leading: widget.closeButton,
         title: Text(
           spaceId != null
               ? L10n.of(context).addCoursePlan

@@ -15,12 +15,14 @@ import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dar
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics.dart';
@@ -80,9 +82,8 @@ class SpaceDetailsContent extends StatelessWidget {
   /// as the card's DETAIL — a `coursepage` panel beside the card that coexists
   /// when width allows and folds to a push when not, keeping the `?m=` filter
   /// and the rest of the workspace. See `routing.instructions.md`.
-  void _openCoursePage(BuildContext context, String page) => context.go(
-    WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
-  );
+  void _openCoursePage(BuildContext context, RoomSubpageEnum page) => context
+      .go(WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page));
 
   List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
@@ -123,16 +124,18 @@ class SpaceDetailsContent extends StatelessWidget {
         description: l10n.inviteDesc,
         icon: const Icon(Icons.person_add_outlined, size: 30.0),
         onPressed: () {
-          String filter = 'knocking';
+          InvitationFilter filter = InvitationFilter.knocking;
           if (room.getParticipants([Membership.knock]).isEmpty) {
-            filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
+            filter = room.pangeaSpaceParents.isNotEmpty
+                ? InvitationFilter.space
+                : InvitationFilter.contacts;
           }
           // world_v2: opens beside the card as a `coursepage` detail, with the
           // initial contact filter riding in the token param.
           context.go(
             WorkspaceNav.openCoursePage(
               GoRouterState.of(context).uri,
-              'invite',
+              RoomSubpageEnum.invite,
               filter: filter,
             ),
           );
@@ -144,7 +147,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'edit'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.edit),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -152,7 +155,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: L10n.of(context).changeCourse,
         description: L10n.of(context).changeCourseDesc,
         icon: const Icon(Icons.assignment_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'addcourse'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.addcourse),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -256,7 +259,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'permissions'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.permissions),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -264,7 +267,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'access'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.access),
         enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
         showInMainView: false,
       ),

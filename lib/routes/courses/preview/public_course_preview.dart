@@ -24,8 +24,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreview extends StatefulWidget {
   final String? roomID;
+  final Widget? closeButton;
 
-  const PublicCoursePreview({super.key, required this.roomID});
+  const PublicCoursePreview({
+    super.key,
+    required this.roomID,
+    this.closeButton,
+  });
 
   @override
   PublicCoursePreviewController createState() =>

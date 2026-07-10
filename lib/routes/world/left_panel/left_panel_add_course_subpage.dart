@@ -38,37 +38,51 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    switch (param?.subpage) {
+    final param = this.param;
+    if (param == null) {
+      return Column(
+        children: [
+          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
+          Expanded(child: LeftPanelCoursesListView()),
+        ],
+      );
+    }
+
+    switch (param.subpage) {
       case AddCourseSubpageEnum.browse:
-        final roomId = param?.roomId;
+        final roomId = param.previewRoomId;
         if (roomId != null) {
-          return PublicCoursePreview(roomID: roomId);
+          return PublicCoursePreview(roomID: roomId, closeButton: closeButton);
         }
-        return const FindCoursePage();
+        return FindCoursePage(
+          closeButton: closeButton,
+          initialLanguageCode: param.initialLanguageFilter,
+        );
       case AddCourseSubpageEnum.private:
-        return CourseCodePage(initialCode: param?.joinCode);
+        return CourseCodePage(
+          initialCode: param.privateCourseJoinCode,
+          closeButton: closeButton,
+        );
       case AddCourseSubpageEnum.own:
-        final courseId = param?.courseId;
+        final courseId = param.createCourseId;
         if (courseId != null) {
-          if (param?.invite == true) {
+          if (param.showNewCourseInvitePage == true) {
             return CourseInvitePage(
               courseId,
               courseCreationCompleter: courseCreationCompleter,
             );
           }
-          return SelectedCourse(courseId, SelectedCourseMode.launch);
+          return SelectedCourse(
+            courseId,
+            SelectedCourseMode.launch,
+            closeButton: closeButton,
+          );
         }
         return NewCoursePage(
           route: 'rooms',
-          initialLanguageCode: param?.targetLanguage,
-          showAll: param?.targetLanguage == 'all',
-        );
-      case null:
-        return Column(
-          children: [
-            PanelHeader(leading: closeButton, title: L10n.of(context).courses),
-            Expanded(child: LeftPanelCoursesListView()),
-          ],
+          initialLanguageCode: param.initialLanguageFilter,
+          showAll: param.initialLanguageFilter == 'all',
+          closeButton: closeButton,
         );
     }
   }
