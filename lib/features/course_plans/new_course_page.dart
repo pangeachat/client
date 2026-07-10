@@ -185,6 +185,7 @@ class NewCoursePageState extends State<NewCoursePage> {
           GoRouterState.of(context).uri,
           RoomSubpageEnum.addcourse,
           courseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
       return;
@@ -196,6 +197,7 @@ class NewCoursePageState extends State<NewCoursePage> {
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
           createCourseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
       return;
@@ -242,6 +244,7 @@ class NewCoursePageState extends State<NewCoursePage> {
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
           createCourseId: course.uuid,
+          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
         ),
       );
     } else if (action == 1) {

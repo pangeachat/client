@@ -363,6 +363,7 @@ abstract class WorkspaceNav {
     RoomSubpageEnum? page, {
     InvitationFilter? filter,
     String? courseId,
+    String? initialLanguageFilter,
   }) {
     return openDetail(
       current,
@@ -371,6 +372,7 @@ abstract class WorkspaceNav {
           subpage: page,
           inviteFilter: filter,
           courseId: courseId,
+          initialLanguageFilter: initialLanguageFilter,
         ),
       ),
     );
@@ -739,23 +741,33 @@ abstract class WorkspaceNav {
     String? createCourseId,
     bool showNewCourseInvitePage = false,
     String? privateCourseJoinCode,
-  }) => _mutate(
-    current,
-    'left',
-    (_) => [
-      AddCoursePanelToken(),
-      AddCoursePagePanelToken(
-        AddCoursePageTokenParam(
-          subpage: page,
-          initialLanguageFilter: initialLanguageFilter,
-          previewRoomId: previewRoomId,
-          createCourseId: createCourseId,
-          showNewCourseInvitePage: showNewCourseInvitePage,
-          privateCourseJoinCode: privateCourseJoinCode,
+  }) {
+    final matchingTypePanel = parseOpenPanels(current).left
+        .where((t) => t is AddCoursePagePanelToken && t.param?.subpage == page)
+        .whereType<AddCoursePagePanelToken>();
+
+    final carriedLanguageFilter =
+        matchingTypePanel.firstOrNull?.param?.initialLanguageFilter;
+
+    return _mutate(
+      current,
+      'left',
+      (_) => [
+        AddCoursePanelToken(),
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam(
+            subpage: page,
+            initialLanguageFilter:
+                initialLanguageFilter ?? carriedLanguageFilter,
+            previewRoomId: previewRoomId,
+            createCourseId: createCourseId,
+            showNewCourseInvitePage: showNewCourseInvitePage,
+            privateCourseJoinCode: privateCourseJoinCode,
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
 
   static List<PanelToken> _add(
     List<PanelToken> tokens,

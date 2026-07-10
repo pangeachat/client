@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
@@ -17,36 +18,25 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class FindCoursePage extends StatefulWidget {
   final Widget closeButton;
-  const FindCoursePage({super.key, required this.closeButton});
+  final String? initialLanguageCode;
+  const FindCoursePage({
+    super.key,
+    required this.closeButton,
+    this.initialLanguageCode,
+  });
 
   @override
   State<FindCoursePage> createState() => FindCoursePageState();
 }
 
 class FindCoursePageState extends State<FindCoursePage> {
-  /// Session-scoped memory of the last language filter the learner picked while
-  /// browsing public courses. Tapping a course opens the route-driven preview
-  /// (`/courses/preview/:courseroomid`); backing out of it **remounts** this
-  /// page, so without this the filter reset to the L2 default and lost the
-  /// choice (#7230). Mirrors `NewCoursePageState._lastChosenLanguage` (#7269) —
-  /// it survives the remount with no URL churn.
-  static LanguageModel? _lastChosenLanguage;
-
-  /// The language filter the browse list opens on: this session's last pick
-  /// ([lastChosen], so the preview round-trip keeps it), else the learner's L2
-  /// default (#7230).
-  @visibleForTesting
-  static LanguageModel? seedLanguage({
-    required LanguageModel? lastChosen,
-    required LanguageModel? l2Default,
-  }) => lastChosen ?? l2Default;
-
   final TextEditingController searchController = TextEditingController();
   final ScrollController scrollController = ScrollController();
   Timer? _coolDown;
@@ -69,19 +59,26 @@ class FindCoursePageState extends State<FindCoursePage> {
   @override
   void initState() {
     super.initState();
-    LanguageModel? l2Default;
+    final availableLanguages =
+        MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
+
     final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 != null) {
-      final availableLanguages =
-          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
-      l2Default = availableLanguages.contains(l2) ? l2 : l2.unlocalized;
-    }
-    // Keep the language picked this session across the preview round-trip
-    // (#7230); fall back to the learner's L2 default.
-    targetLanguageFilter.value = seedLanguage(
-      lastChosen: _lastChosenLanguage,
-      l2Default: l2Default,
-    );
+    final initialLangCode = widget.initialLanguageCode;
+    final initialLang = initialLangCode != null
+        ? PLanguageStore.byLangCode(initialLangCode)
+        : null;
+
+    final targetLang = availableLanguages.contains(initialLang)
+        ? initialLang
+        : availableLanguages.contains(initialLang?.unlocalized)
+        ? initialLang?.unlocalized
+        : availableLanguages.contains(l2)
+        ? l2
+        : availableLanguages.contains(l2?.unlocalized)
+        ? l2?.unlocalized
+        : null;
+
+    targetLanguageFilter.value = targetLang;
     loadMore();
   }
 
@@ -99,8 +96,6 @@ class FindCoursePageState extends State<FindCoursePage> {
   void setTargetLanguageFilter(LanguageModel? language) {
     if (targetLanguageFilter.value == language) return;
     targetLanguageFilter.value = language;
-    _lastChosenLanguage =
-        language; // remember for the rest of this session (#7230)
     visibleCourses.value = [];
     loading.value = false;
     _loadGeneration++;
@@ -369,7 +364,17 @@ class FindCoursePageView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
+              spacing: 20.0,
               children: [
+                ValueListenableBuilder(
+                  valueListenable: controller.targetLanguageFilter,
+                  builder: (context, value, _) {
+                    return CourseLanguageFilter(
+                      value: controller.targetLanguageFilter.value,
+                      onChanged: controller.setTargetLanguageFilter,
+                    );
+                  },
+                ),
                 ListenableBuilder(
                   listenable: Listenable.merge([
                     controller.visibleCourses,
@@ -443,6 +448,10 @@ class FindCoursePageView extends StatelessWidget {
                                   GoRouterState.of(context).uri,
                                   AddCourseSubpageEnum.browse,
                                   previewRoomId: space.room.roomId,
+                                  initialLanguageFilter: controller
+                                      .targetLanguageFilter
+                                      .value
+                                      ?.langCode,
                                 ),
                               ),
                               isKnock:

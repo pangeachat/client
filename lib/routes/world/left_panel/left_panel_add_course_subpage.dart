@@ -54,7 +54,10 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
         if (roomId != null) {
           return PublicCoursePreview(roomID: roomId, closeButton: closeButton);
         }
-        return FindCoursePage(closeButton: closeButton);
+        return FindCoursePage(
+          closeButton: closeButton,
+          initialLanguageCode: param.initialLanguageFilter,
+        );
       case AddCourseSubpageEnum.private:
         return CourseCodePage(
           initialCode: param.privateCourseJoinCode,

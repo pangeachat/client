@@ -21,19 +21,25 @@ class RoomSubpageTokenParam extends TokenParam {
   final RoomSubpageEnum? subpage;
   final InvitationFilter? inviteFilter;
   final String? courseId;
+  final String? initialLanguageFilter;
 
   const RoomSubpageTokenParam({
     required this.subpage,
     this.inviteFilter,
     this.courseId,
+    this.initialLanguageFilter,
   });
 
   @override
   bool get isPushed => subpage == RoomSubpageEnum.addcourse && courseId != null;
 
   @override
-  RoomSubpageTokenParam? get poppedParam =>
-      isPushed ? RoomSubpageTokenParam(subpage: subpage) : null;
+  RoomSubpageTokenParam? get poppedParam => isPushed
+      ? RoomSubpageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter: initialLanguageFilter,
+        )
+      : null;
 
   @override
   String build() {
@@ -55,8 +61,19 @@ class RoomSubpageTokenParam extends TokenParam {
         ]);
       case RoomSubpageEnum.addcourse:
         final courseId = this.courseId;
-        if (courseId == null) return encodedSubpage;
-        return '$encodedSubpage/${TokenFields.encode(courseId)}';
+        final languageFilter = initialLanguageFilter;
+        if (courseId == null) {
+          return TokenFields.join([
+            encodedSubpage,
+            if (languageFilter != null && languageFilter.isNotEmpty)
+              'l${TokenFields.encode(languageFilter)}',
+          ]);
+        }
+        return TokenFields.join([
+          '$encodedSubpage/${TokenFields.encode(courseId)}',
+          if (languageFilter != null && languageFilter.isNotEmpty)
+            'l${TokenFields.encode(languageFilter)}',
+        ]);
     }
   }
 
@@ -91,9 +108,34 @@ class RoomSubpageTokenParam extends TokenParam {
               : null,
         );
       case RoomSubpageEnum.addcourse:
+        if (parts.length < 2) {
+          final languageEntry = chunks
+              .skip(1)
+              .firstWhereOrNull((c) => c.startsWith('l'))
+              ?.substring(1);
+          return RoomSubpageTokenParam(
+            subpage: subpage,
+            initialLanguageFilter:
+                languageEntry != null && languageEntry.isNotEmpty
+                ? TokenFields.decode(languageEntry)
+                : null,
+          );
+        }
+
+        final courseChunks = TokenFields.split(parts[1]);
+        final courseId = TokenFields.decode(courseChunks[0]);
+        final languageEntry = courseChunks
+            .skip(1)
+            .firstWhereOrNull((c) => c.startsWith('l'))
+            ?.substring(1);
+
         return RoomSubpageTokenParam(
           subpage: subpage,
-          courseId: parts.length > 1 ? TokenFields.decode(parts[1]) : null,
+          courseId: courseId,
+          initialLanguageFilter:
+              languageEntry != null && languageEntry.isNotEmpty
+              ? languageEntry
+              : null,
         );
     }
   }
@@ -125,8 +167,10 @@ class RoomSubpageTokenParam extends TokenParam {
       other is RoomSubpageTokenParam &&
       other.subpage == subpage &&
       other.inviteFilter == inviteFilter &&
-      other.courseId == courseId;
+      other.courseId == courseId &&
+      other.initialLanguageFilter == initialLanguageFilter;
 
   @override
-  int get hashCode => Object.hash(subpage, inviteFilter, courseId);
+  int get hashCode =>
+      Object.hash(subpage, inviteFilter, courseId, initialLanguageFilter);
 }

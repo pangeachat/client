@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
@@ -56,7 +57,10 @@ class AddCoursePageTokenParam extends TokenParam {
     switch (subpage) {
       case AddCourseSubpageEnum.browse:
         if (previewRoomId == null) return null;
-        return AddCoursePageTokenParam(subpage: subpage);
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter: initialLanguageFilter,
+        );
       case AddCourseSubpageEnum.private:
         return null;
       case AddCourseSubpageEnum.own:
@@ -65,9 +69,13 @@ class AddCoursePageTokenParam extends TokenParam {
           return AddCoursePageTokenParam(
             subpage: subpage,
             createCourseId: createCourseId,
+            initialLanguageFilter: initialLanguageFilter,
           );
         }
-        return AddCoursePageTokenParam(subpage: subpage);
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter: initialLanguageFilter,
+        );
     }
   }
 
@@ -80,11 +88,23 @@ class AddCoursePageTokenParam extends TokenParam {
     final privateCourseJoinCode = this.privateCourseJoinCode;
 
     final encodedSubpage = TokenFields.encode(subpage.name);
+    final encodedLanguage =
+        initialLanguageFilter != null && initialLanguageFilter.isNotEmpty
+        ? 'l${TokenFields.encode(initialLanguageFilter)}'
+        : null;
+
     switch (subpage) {
       case AddCourseSubpageEnum.browse:
-        return previewRoomId != null && previewRoomId.isNotEmpty
-            ? '$encodedSubpage/${TokenFields.encode(previewRoomId)}'
-            : encodedSubpage;
+        final encodedRoomId = previewRoomId != null && previewRoomId.isNotEmpty
+            ? TokenFields.encode(shortRoomId(previewRoomId))
+            : null;
+
+        return TokenFields.join([
+          encodedRoomId != null
+              ? '$encodedSubpage/$encodedRoomId'
+              : encodedSubpage,
+          ?encodedLanguage,
+        ]);
       case AddCourseSubpageEnum.private:
         return TokenFields.join([
           encodedSubpage,
@@ -97,13 +117,12 @@ class AddCoursePageTokenParam extends TokenParam {
           if (showNewCourseInvitePage) {
             return '$encodedSubpage/$encodedCourseId/invite';
           }
-          return '$encodedSubpage/$encodedCourseId';
+          return TokenFields.join([
+            '$encodedSubpage/$encodedCourseId',
+            ?encodedLanguage,
+          ]);
         }
-        return TokenFields.join([
-          encodedSubpage,
-          if (initialLanguageFilter != null && initialLanguageFilter.isNotEmpty)
-            'l${TokenFields.encode(initialLanguageFilter)}',
-        ]);
+        return TokenFields.join([encodedSubpage, ?encodedLanguage]);
     }
   }
 
@@ -117,13 +136,36 @@ class AddCoursePageTokenParam extends TokenParam {
     switch (subpage) {
       case AddCourseSubpageEnum.browse:
         if (parts.length > 1) {
-          final previewRoomId = TokenFields.decode(parts[1]);
+          final roomIdChunks = TokenFields.split(parts[1]);
+          final previewRoomId = TokenFields.decode(roomIdChunks.first);
+
+          final languageEntry = roomIdChunks
+              .skip(1)
+              .firstWhereOrNull((c) => c.startsWith('l'))
+              ?.substring(1);
+
           return AddCoursePageTokenParam(
             subpage: subpage,
             previewRoomId: previewRoomId,
+            initialLanguageFilter:
+                languageEntry != null && languageEntry.isNotEmpty
+                ? TokenFields.decode(languageEntry)
+                : null,
           );
         }
-        return AddCoursePageTokenParam(subpage: subpage);
+
+        final languageEntry = chunks
+            .skip(1)
+            .firstWhereOrNull((c) => c.startsWith('l'))
+            ?.substring(1);
+
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter:
+              languageEntry != null && languageEntry.isNotEmpty
+              ? TokenFields.decode(languageEntry)
+              : null,
+        );
       case AddCourseSubpageEnum.private:
         final privateCourseJoinCode = chunks
             .skip(1)
@@ -148,14 +190,25 @@ class AddCoursePageTokenParam extends TokenParam {
         }
 
         if (parts.length > 1) {
-          final createCourseId = TokenFields.decode(parts[1]);
+          final courseIdChunks = TokenFields.split(parts[1]);
+          final createCourseId = TokenFields.decode(courseIdChunks.first);
+
+          final languageEntry = courseIdChunks
+              .skip(1)
+              .firstWhereOrNull((c) => c.startsWith('l'))
+              ?.substring(1);
+
           return AddCoursePageTokenParam(
             subpage: subpage,
             createCourseId: createCourseId,
+            initialLanguageFilter:
+                languageEntry != null && languageEntry.isNotEmpty
+                ? TokenFields.decode(languageEntry)
+                : null,
           );
         }
 
-        final initialLanguageFilter = chunks
+        final languageEntry = chunks
             .skip(1)
             .firstWhereOrNull((c) => c.startsWith('l'))
             ?.substring(1);
@@ -163,8 +216,8 @@ class AddCoursePageTokenParam extends TokenParam {
         return AddCoursePageTokenParam(
           subpage: subpage,
           initialLanguageFilter:
-              initialLanguageFilter != null && initialLanguageFilter.isNotEmpty
-              ? TokenFields.decode(initialLanguageFilter)
+              languageEntry != null && languageEntry.isNotEmpty
+              ? TokenFields.decode(languageEntry)
               : null,
         );
     }
