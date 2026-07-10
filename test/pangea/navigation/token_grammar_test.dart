@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// The token-grammar encoding contract (routing.instructions.md): params carry
 /// open-ended, all-language content; every value round-trips the URL
@@ -197,13 +198,13 @@ void main() {
         final param = RoomTokenParam(
           id: '!abc',
           subpage: 'invite',
-          filter: 'knocking',
+          filter: InvitationFilter.knocking,
         ).build();
         expect(param, '!abc/invite/knocking');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subpage, 'invite');
-        expect(parsed.filter, 'knocking');
+        expect(parsed.filter, InvitationFilter.knocking);
         expect(parsed.eventId, isNull);
       });
 
@@ -225,13 +226,13 @@ void main() {
           final param = RoomTokenParam(
             id: '!abc',
             subpage: 'details/invite',
-            filter: 'participants',
+            filter: InvitationFilter.participants,
           ).build();
           expect(param, '!abc/details/invite/participants');
           final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc');
           expect(parsed.subpage, 'details/invite');
-          expect(parsed.filter, 'participants');
+          expect(parsed.filter, InvitationFilter.participants);
         },
       );
 
@@ -256,23 +257,6 @@ void main() {
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.subpage, isNull);
         expect(parsed.eventId, r'$xyz');
-      });
-
-      test('a hostile filter value round-trips (comma, colon, dot, space)', () {
-        const hostileFilters = ['a,b:c/d', 'a.b.c', 'ir de compras'];
-        for (final filter in hostileFilters) {
-          final param = RoomTokenParam(
-            id: '!abc',
-            subpage: 'invite',
-            filter: filter,
-          ).build();
-          final parsed = RoomTokenParam.parse(param);
-          expect(
-            parsed.filter,
-            filter,
-            reason: 'filter round-trip failed for "$filter"',
-          );
-        }
       });
 
       test(

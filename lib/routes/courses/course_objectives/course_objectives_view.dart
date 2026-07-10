@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -230,7 +231,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             onPressed: () => context.go(
                               WorkspaceNav.openCoursePage(
                                 GoRouterState.of(context).uri,
-                                'addcourse',
+                                RoomSubpageEnum.addcourse,
                               ),
                             ),
                             icon: Icon(Icons.map_outlined, size: 20.0),

@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// world_v2: everything is a token over the world map (`/`). This is the single
 /// funnel the app uses to focus a room, a room sub-page, a course, or a course
@@ -39,7 +41,7 @@ class NavigationUtil {
     List<String> goalSubroute,
     BuildContext context, {
     Object? extra,
-    String? filter,
+    InvitationFilter? filter,
     String? event,
   }) {
     final uri = GoRouterState.of(context).uri;
@@ -54,7 +56,7 @@ class NavigationUtil {
       if (activeSpaceId != null) {
         final coursePage = coursePageFor(sub);
         context.go(
-          coursePage.isEmpty
+          coursePage == null
               ? WorkspaceNav.openCourseTab(uri)
               : WorkspaceNav.openCoursePage(uri, coursePage, filter: filter),
           extra: extra,
@@ -72,7 +74,7 @@ class NavigationUtil {
     if (activeSpaceId != null && goalRoomID == activeSpaceId) {
       final coursePage = coursePageFor(sub);
       context.go(
-        coursePage.isEmpty
+        coursePage == null
             ? WorkspaceNav.openCourseTab(uri)
             : WorkspaceNav.openCoursePage(uri, coursePage, filter: filter),
         extra: extra,
@@ -139,9 +141,11 @@ class NavigationUtil {
   /// Without this, `details/invite` became the unhandled token
   /// `coursepage:details/invite`, rendering an empty, un-closable panel (#7099).
   @visibleForTesting
-  static String coursePageFor(String sub) {
-    if (sub == 'details') return '';
-    if (sub.startsWith('details/')) return sub.substring('details/'.length);
-    return sub;
+  static RoomSubpageEnum? coursePageFor(String sub) {
+    if (sub == 'details') return null;
+    if (sub.startsWith('details/')) {
+      return RoomSubpageEnum.fromString(sub.substring('details/'.length));
+    }
+    return RoomSubpageEnum.fromString(sub);
   }
 }

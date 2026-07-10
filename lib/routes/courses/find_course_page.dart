@@ -22,7 +22,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class FindCoursePage extends StatefulWidget {
-  const FindCoursePage({super.key});
+  final Widget closeButton;
+  const FindCoursePage({super.key, required this.closeButton});
 
   @override
   State<FindCoursePage> createState() => FindCoursePageState();
@@ -343,13 +344,7 @@ class FindCoursePageView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => context.go(
-            WorkspaceNav.openAddCourse(GoRouterState.of(context).uri),
-          ),
-        ),
+        leading: controller.widget.closeButton,
         title: Text(
           L10n.of(context).browsePublicCourses,
           style: FluffyThemes.isColumnMode(context)

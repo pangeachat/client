@@ -205,6 +205,15 @@ class CoursePanelToken extends PanelToken<CourseDetailsTokenParam> {
 class CoursePagePanelToken extends PanelToken<RoomSubpageTokenParam> {
   const CoursePagePanelToken(RoomSubpageTokenParam param)
     : super(PanelTypesEnum.coursepage, param);
+
+  @override
+  CoursePagePanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return CoursePagePanelToken(poppedParam);
+  }
 }
 
 class AddCoursePanelToken extends PanelToken {
@@ -214,6 +223,15 @@ class AddCoursePanelToken extends PanelToken {
 class AddCoursePagePanelToken extends PanelToken<AddCoursePageTokenParam> {
   const AddCoursePagePanelToken(AddCoursePageTokenParam param)
     : super(PanelTypesEnum.addcoursepage, param);
+
+  @override
+  AddCoursePagePanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return AddCoursePagePanelToken(poppedParam);
+  }
 }
 
 class SettingsPanelToken extends PanelToken {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/edit_course/edit_course.dart';
 import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
@@ -33,48 +34,47 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
     final param = this.param;
     if (param == null) return SizedBox();
 
-    final parts = param.subpage.split('/');
-    final page = parts.first == 'details' && parts.length > 1
-        ? parts[1]
-        : parts[0];
+    final subpage = param.subpage;
+    if (subpage == null) {
+      return ChatDetails(roomId: roomId, embeddedCloseButton: closeButton);
+    }
 
-    switch (page) {
-      case 'edit':
+    switch (subpage) {
+      case RoomSubpageEnum.edit:
         return EditCourse(roomId: roomId, embeddedCloseButton: closeButton);
-      case 'invite':
+      case RoomSubpageEnum.invite:
         return PangeaInvitationSelection(
           roomId: roomId,
-          initialFilter: InvitationFilter.fromNullableString(param.filter),
+          initialFilter: param.inviteFilter,
           embeddedCloseButton: closeButton,
         );
-      case 'access':
+      case RoomSubpageEnum.access:
         return ChatAccessSettings(
           roomId: roomId,
           embeddedCloseButton: closeButton,
         );
-      case 'permissions':
+      case RoomSubpageEnum.permissions:
         return ChatPermissionsSettings(
           roomId: roomId,
           embeddedCloseButton: closeButton,
         );
-      case 'emotes':
+      case RoomSubpageEnum.emotes:
         return EmotesSettings(roomId: roomId, embeddedCloseButton: closeButton);
-      case 'addcourse':
+      case RoomSubpageEnum.addcourse:
         final courseId = param.courseId;
         if (courseId != null) {
           return SelectedCourse(
             courseId,
             SelectedCourseMode.addToSpace,
             spaceId: roomId,
+            closeButton: closeButton,
           );
         }
         return NewCoursePage(
           route: 'rooms',
           spaceId: roomId,
-          embeddedCloseButton: closeButton,
+          closeButton: closeButton,
         );
     }
-
-    return SizedBox.shrink();
   }
 }

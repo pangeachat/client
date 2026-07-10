@@ -40,6 +40,38 @@ class AddCoursePageTokenParam extends TokenParam {
   });
 
   @override
+  bool get isPushed {
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        return previewRoomId != null;
+      case AddCourseSubpageEnum.private:
+        return false;
+      case AddCourseSubpageEnum.own:
+        return createCourseId != null;
+    }
+  }
+
+  @override
+  AddCoursePageTokenParam? get poppedParam {
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        if (previewRoomId == null) return null;
+        return AddCoursePageTokenParam(subpage: subpage);
+      case AddCourseSubpageEnum.private:
+        return null;
+      case AddCourseSubpageEnum.own:
+        if (createCourseId == null) return null;
+        if (showNewCourseInvitePage) {
+          return AddCoursePageTokenParam(
+            subpage: subpage,
+            createCourseId: createCourseId,
+          );
+        }
+        return AddCoursePageTokenParam(subpage: subpage);
+    }
+  }
+
+  @override
   String build() {
     final subpage = this.subpage;
     final previewRoomId = this.previewRoomId;

@@ -8,7 +8,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -26,8 +25,13 @@ class CourseCodePage extends StatefulWidget {
   /// manual `private` page, so browser back or a refresh never re-fires the
   /// join.
   final String? initialCode;
+  final Widget closeButton;
 
-  const CourseCodePage({super.key, this.initialCode});
+  const CourseCodePage({
+    super.key,
+    this.initialCode,
+    required this.closeButton,
+  });
 
   /// Whether a change of [initialCode] (from [previous] to [next] — null for
   /// a fresh mount) should trigger the one-shot prefill + submit. Fires only
@@ -135,17 +139,7 @@ class CourseCodePageState extends State<CourseCodePage> {
     return Scaffold(
       appBar: AppBar(
         // world_v2: back returns to the Add-course hub, close to the map.
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => context.go(
-            WorkspaceNav.setSection(
-              GoRouterState.of(context).uri,
-              const AddCoursePanelToken(),
-              keepRoom: false,
-            ),
-          ),
-        ),
+        leading: widget.closeButton,
         title: Text(
           L10n.of(context).joinWithCode,
           style: FluffyThemes.isColumnMode(context)

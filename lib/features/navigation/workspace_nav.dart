@@ -17,6 +17,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
@@ -359,15 +360,21 @@ abstract class WorkspaceNav {
   /// time (the registry `coursepage` exclusive group drops any prior one).
   static String openCoursePage(
     Uri current,
-    String page, {
-    String? filter,
+    RoomSubpageEnum? page, {
+    InvitationFilter? filter,
     String? courseId,
-  }) => openDetail(
-    current,
-    CoursePagePanelToken(
-      RoomSubpageTokenParam(subpage: page, filter: filter, courseId: courseId),
-    ),
-  );
+  }) {
+    return openDetail(
+      current,
+      CoursePagePanelToken(
+        RoomSubpageTokenParam(
+          subpage: page,
+          inviteFilter: filter,
+          courseId: courseId,
+        ),
+      ),
+    );
+  }
 
   /// Open course [spaceId]'s management [page] (invite / edit / …) from
   /// ANYWHERE: set the `?c=<id>` scope + `course` card, then the
@@ -378,8 +385,8 @@ abstract class WorkspaceNav {
   static String openCoursePageFor(
     Uri current,
     String spaceId,
-    String page, {
-    String? filter,
+    RoomSubpageEnum page, {
+    InvitationFilter? filter,
   }) => openCoursePage(
     Uri.parse(openCourse(current, spaceId)),
     page,
@@ -732,18 +739,22 @@ abstract class WorkspaceNav {
     String? createCourseId,
     bool showNewCourseInvitePage = false,
     String? privateCourseJoinCode,
-  }) => setSection(
+  }) => _mutate(
     current,
-    AddCoursePagePanelToken(
-      AddCoursePageTokenParam(
-        subpage: page,
-        initialLanguageFilter: initialLanguageFilter,
-        previewRoomId: previewRoomId,
-        createCourseId: createCourseId,
-        showNewCourseInvitePage: showNewCourseInvitePage,
-        privateCourseJoinCode: privateCourseJoinCode,
+    'left',
+    (_) => [
+      AddCoursePanelToken(),
+      AddCoursePagePanelToken(
+        AddCoursePageTokenParam(
+          subpage: page,
+          initialLanguageFilter: initialLanguageFilter,
+          previewRoomId: previewRoomId,
+          createCourseId: createCourseId,
+          showNewCourseInvitePage: showNewCourseInvitePage,
+          privateCourseJoinCode: privateCourseJoinCode,
+        ),
       ),
-    ),
+    ],
   );
 
   static List<PanelToken> _add(
@@ -823,7 +834,7 @@ abstract class WorkspaceNav {
         ),
       ]);
 
-  static String closeCoursePage(Uri current, String page) => _mutate(
+  static String closeCoursePage(Uri current, RoomSubpageEnum page) => _mutate(
     current,
     'left',
     (tokens) => tokens.where((t) {

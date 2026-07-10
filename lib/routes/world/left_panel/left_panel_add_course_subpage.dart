@@ -52,11 +52,14 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
       case AddCourseSubpageEnum.browse:
         final roomId = param.previewRoomId;
         if (roomId != null) {
-          return PublicCoursePreview(roomID: roomId);
+          return PublicCoursePreview(roomID: roomId, closeButton: closeButton);
         }
-        return const FindCoursePage();
+        return FindCoursePage(closeButton: closeButton);
       case AddCourseSubpageEnum.private:
-        return CourseCodePage(initialCode: param.privateCourseJoinCode);
+        return CourseCodePage(
+          initialCode: param.privateCourseJoinCode,
+          closeButton: closeButton,
+        );
       case AddCourseSubpageEnum.own:
         final courseId = param.createCourseId;
         if (courseId != null) {
@@ -66,12 +69,17 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
               courseCreationCompleter: courseCreationCompleter,
             );
           }
-          return SelectedCourse(courseId, SelectedCourseMode.launch);
+          return SelectedCourse(
+            courseId,
+            SelectedCourseMode.launch,
+            closeButton: closeButton,
+          );
         }
         return NewCoursePage(
           route: 'rooms',
           initialLanguageCode: param.initialLanguageFilter,
           showAll: param.initialLanguageFilter == 'all',
+          closeButton: closeButton,
         );
     }
   }

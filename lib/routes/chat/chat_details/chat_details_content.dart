@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details_button_row.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -119,7 +120,7 @@ class ChatDetailsContent extends StatelessWidget {
                                   controller.roomId,
                                   ['details', 'invite'],
                                   context,
-                                  filter: 'participants',
+                                  filter: InvitationFilter.participants,
                                 ),
                           icon: const Icon(Icons.group_outlined, size: 14),
                           style: TextButton.styleFrom(
