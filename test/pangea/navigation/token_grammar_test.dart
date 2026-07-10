@@ -298,26 +298,22 @@ void main() {
   });
 
   group('WorkspaceNav.openActivity / dropActivityOverlay', () {
-    test(
-      'openActivity keeps the context by default and seats a sole token',
-      () {
-        final loc = WorkspaceNav.openActivity(
-          u('/?c=!s&left=course&right=analytics:vocab'),
-          'act-1',
-          roomId: '!sess',
-        );
-        final uri = u(loc);
-        expect(activeSpaceIdFor(uri), '!s');
-        expect(parseOpenPanels(uri).left.map((t) => t.type), [
-          PanelTypesEnum.activity,
-        ]);
-        expect(parseOpenPanels(uri).right.map((t) => t.type), [
-          PanelTypesEnum.analytics,
-        ]);
-        expect(activityInfoFor(uri)?.roomId, '!sess');
-        expect(uri.queryParameters['roomid'], isNull);
-      },
-    );
+    test('openActivity opens a room panel when roomId is provided', () {
+      final loc = WorkspaceNav.openActivity(
+        u('/?c=!s&left=course&right=analytics:vocab'),
+        'act-1',
+        roomId: '!sess',
+      );
+      final uri = u(loc);
+      expect(activeSpaceIdFor(uri), '!s');
+      expect(parseOpenPanels(uri).left, [
+        RoomPanelToken(RoomTokenParam(id: '!sess')),
+      ]);
+      expect(parseOpenPanels(uri).right.map((t) => t.type), [
+        PanelTypesEnum.analytics,
+      ]);
+      expect(uri.queryParameters['roomid'], isNull);
+    });
 
     test('a world-map pin (no context) opens with none, so it closes to the '
         'map', () {

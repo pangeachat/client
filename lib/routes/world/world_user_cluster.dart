@@ -1,26 +1,19 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
+import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
+import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 /// The persistent top-right cluster over the world map (world_v2): the user's
 /// avatar wrapped in a clockwise XP ring (gray track that fills gold toward the
@@ -32,97 +25,26 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// analytics-system.instructions.md); the cluster listens to the analytics
 /// update streams so counts/level/XP stay live. Look follows Figma
 /// `AvatarLangFlags` (12935:46894). See routing.instructions.md.
-class WorldUserCluster extends StatefulWidget {
+class WorldUserCluster extends StatelessWidget {
   const WorldUserCluster({super.key});
 
   @override
-  State<WorldUserCluster> createState() => _WorldUserClusterState();
+  Widget build(BuildContext context) => UserClusterViewModelBuilder(
+    builder: (context, viewModel) =>
+        WorldUserClusterInternal(viewModel: viewModel),
+  );
 }
 
-class _WorldUserClusterState extends State<WorldUserCluster> {
-  bool _profileLoaded = false;
-
-  final ValueNotifier<Uri?> _avatarUrl = ValueNotifier(null);
-  final ValueNotifier<String?> _displayName = ValueNotifier(null);
-
-  /// The level-up celebration signal for the medal — the same
-  /// `levelUpdateStream` the old top-down chat snackbar listened to (#7432),
-  /// with the snackbar's subscription gate applied at event time. Created
-  /// once so rebuilds don't churn the celebration's subscription.
-  Stream<LevelUpdate>? _levelUpdates;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _levelUpdates ??= Matrix.of(context)
-        .analyticsDataService
-        .updateDispatcher
-        .levelUpdateStream
-        .stream
-        .where(
-          (_) => MatrixState
-              .pangeaController
-              .subscriptionController
-              .showSubscriptionGatedContent,
-        );
-    if (_profileLoaded) return;
-    _profileLoaded = true;
-    _loadProfile();
-  }
-
-  @override
-  void dispose() {
-    _avatarUrl.dispose();
-    _displayName.dispose();
-    super.dispose();
-  }
-
-  Future<void> _loadProfile() async {
-    try {
-      final profile = await Matrix.of(context).client.fetchOwnProfile();
-      if (!mounted) return;
-      _avatarUrl.value = profile.avatarUrl;
-      _displayName.value = profile.displayName;
-    } catch (_) {
-      // Avatar falls back to the initial; not worth surfacing.
-    }
-  }
-
-  /// Open the right-docked analytics panel on [tab]'s summary by writing the
-  /// `?right=analytics:<tab>` token (the URL is the source of truth for open
-  /// panels). `setRight` replaces the whole right list, so switching trackers
-  /// lands on the new tab's summary and drops any open construct detail.
-  void _openAnalytics(AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.openAnalytics(
-      GoRouterState.of(context).uri,
-      subpage: tab.indicator,
-    ),
-  );
-
-  /// Open the profile + settings panel on the right (its menu), keeping any
-  /// other open panels — world_v2 moved settings/profile to the right column.
-  void _openProfile() =>
-      context.go(WorkspaceNav.openSettings(GoRouterState.of(context).uri));
-
-  /// The level medal opens the level analytics tab on the right.
-  void _openLevel() => context.go(
-    WorkspaceNav.openAnalytics(
-      GoRouterState.of(context).uri,
-      subpage: ProgressIndicatorEnum.level,
-    ),
-  );
-
-  /// The L2 flag opens the learning settings page on the right directly.
-  void _openLearningSettings() => context.go(
-    WorkspaceNav.openSettings(GoRouterState.of(context).uri, page: 'learning'),
-  );
+class WorldUserClusterInternal extends StatelessWidget {
+  final UserClusterViewModel viewModel;
+  const WorldUserClusterInternal({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: MatrixState.pangeaController.userController.languageStream.stream,
+      stream: viewModel.languageStream,
       builder: (context, _) {
-        final l2 = MatrixState.pangeaController.userController.userL2;
+        final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
           child: Column(
@@ -130,26 +52,24 @@ class _WorldUserClusterState extends State<WorldUserCluster> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ListenableBuilder(
-                listenable: Listenable.merge([_avatarUrl, _displayName]),
+                listenable: Listenable.merge([
+                  viewModel.avatarUrl,
+                  viewModel.displayName,
+                ]),
                 builder: (context, _) => ClusterAvatar(
-                  avatarUrl: _avatarUrl.value,
-                  name: _displayName.value,
-                  onTap: _openProfile,
+                  avatarUrl: viewModel.avatarUrl.value,
+                  name: viewModel.displayName.value,
+                  onTap: () => viewModel.openProfile(context),
                 ),
               ),
               const SizedBox(height: 8),
-              _PowerupsPill(
-                onTap: _openAnalytics,
-                onLevelTap: _openLevel,
-                l2: l2,
-                levelUpdates: _levelUpdates,
-              ),
+              _PowerupsPill(viewModel: viewModel),
               if (l2 != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: ClusterLanguageFlag(
                     language: l2,
-                    onTap: _openLearningSettings,
+                    onTap: () => viewModel.openLearningSettings(context),
                   ),
                 ),
             ],
@@ -223,43 +143,25 @@ class ClusterAvatar extends StatelessWidget {
 /// The gold "powerups" pill: a white inner stack of the three trackers with the
 /// level medal overhanging its base. Follows Figma `AvatarLangFlags`.
 class _PowerupsPill extends StatelessWidget {
-  final void Function(AnalyticsPanelTab) onTap;
-  final VoidCallback onLevelTap;
-  final LanguageModel? l2;
-
-  /// Level-change signal for the medal's celebration; see
-  /// [LevelUpBadgeCelebration].
-  final Stream<LevelUpdate>? levelUpdates;
-
-  const _PowerupsPill({
-    required this.onTap,
-    required this.onLevelTap,
-    required this.l2,
-    required this.levelUpdates,
-  });
+  final UserClusterViewModel viewModel;
+  const _PowerupsPill({required this.viewModel});
 
   static const double _xpStroke = 5.0;
   static const double _innerRadius = 20.0;
 
   @override
   Widget build(BuildContext context) {
-    final matrix = Matrix.of(context);
-    final client = matrix.client;
-    final service = matrix.analyticsDataService;
-    final l2 = this.l2;
-
     return StreamBuilder(
-      stream: service.updateDispatcher.constructUpdateStream.stream,
+      stream: viewModel.constructUpdateStream,
       builder: (context, _) {
-        final vocab = service.numConstructs(ConstructTypeEnum.vocab);
-        final grammar = service.numConstructs(ConstructTypeEnum.morph);
+        final vocab = viewModel.numVocabConstructs;
+        final grammar = viewModel.numGrammarConstruct;
 
         final content = FutureBuilder<DerivedAnalyticsDataModel>(
-          future: l2 != null
-              ? service.derivedData(l2.langCodeShort)
-              : Future.value(DerivedAnalyticsDataModel()),
+          future: viewModel.derivedAnalyticsData,
           builder: (context, snapshot) {
-            final derived = snapshot.data ?? service.cachedDerivedData;
+            final derived =
+                snapshot.data ?? viewModel.cachedDerivedAnalyticsData;
             final level = derived?.level ?? 1;
             final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
 
@@ -301,34 +203,34 @@ class _PowerupsPill extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 StreamBuilder(
-                                  stream: client.onRoomState.stream.where(
-                                    (e) =>
-                                        e.state.type ==
-                                        PangeaEventTypes
-                                            .orchestratorAwardedGoals,
-                                  ),
+                                  stream: viewModel.starsUpdateStream,
                                   builder: (context, _) {
-                                    final stars = l2 != null
-                                        ? client.totalStarsEarned(l2)
-                                        : 0;
-
+                                    final stars = viewModel.starsEarned;
                                     return ClusterTrackerButton(
                                       indicator: ProgressIndicatorEnum.stars,
                                       count: stars,
-                                      onTap: () =>
-                                          onTap(AnalyticsPanelTab.sessions),
+                                      onTap: () => viewModel.openAnalytics(
+                                        context,
+                                        AnalyticsPanelTab.sessions,
+                                      ),
                                     );
                                   },
                                 ),
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.morphsUsed,
                                   count: grammar,
-                                  onTap: () => onTap(AnalyticsPanelTab.grammar),
+                                  onTap: () => viewModel.openAnalytics(
+                                    context,
+                                    AnalyticsPanelTab.grammar,
+                                  ),
                                 ),
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
                                   count: vocab,
-                                  onTap: () => onTap(AnalyticsPanelTab.vocab),
+                                  onTap: () => viewModel.openAnalytics(
+                                    context,
+                                    AnalyticsPanelTab.vocab,
+                                  ),
                                 ),
                               ],
                             ),
@@ -344,8 +246,11 @@ class _PowerupsPill extends StatelessWidget {
                   child: Material(
                     type: MaterialType.transparency,
                     child: LevelUpBadgeCelebration(
-                      levelUpdates: levelUpdates,
-                      child: ClusterLevelMedal(level: level, onTap: onLevelTap),
+                      levelUpdates: viewModel.levelUpdates,
+                      child: ClusterLevelMedal(
+                        level: level,
+                        onTap: () => viewModel.openLevel(context),
+                      ),
                     ),
                   ),
                 ),
@@ -354,7 +259,7 @@ class _PowerupsPill extends StatelessWidget {
           },
         );
 
-        return service.isInitializing
+        return viewModel.isAnalyticsInitializing
             ? Shimmer.fromColors(
                 baseColor: Theme.of(
                   context,

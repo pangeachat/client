@@ -24,7 +24,7 @@ import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
-import 'package:fluffychat/routes/world/world_analytics_bar.dart';
+import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
