@@ -19,4 +19,14 @@ class CourseSettingsModel {
           requireAnalyticsAccess ?? this.requireAnalyticsAccess,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CourseSettingsModel &&
+          runtimeType == other.runtimeType &&
+          requireAnalyticsAccess == other.requireAnalyticsAccess;
+
+  @override
+  int get hashCode => Object.hashAll([requireAnalyticsAccess]);
 }
