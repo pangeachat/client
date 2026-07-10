@@ -452,20 +452,22 @@ abstract class WorkspaceNav {
     bool launch = false,
     int? autoplay,
   }) {
-    final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'left'});
-
-    final token = ActivityPanelToken(
-      ActivityTokenParam(
-        activityId: activityId,
-        roomId: roomId,
-        launch: launch,
-        autoplay: autoplay,
-      ),
+    return _mutate(
+      current,
+      'left',
+      (_) => roomId != null
+          ? [RoomPanelToken(RoomTokenParam(id: roomId))]
+          : [
+              ActivityPanelToken(
+                ActivityTokenParam(
+                  activityId: activityId,
+                  roomId: roomId,
+                  launch: launch,
+                  autoplay: autoplay,
+                ),
+              ),
+            ],
     );
-
-    parts.add('left=${token.encode()}');
-    return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
   /// Drop the open `activity` token, keeping the rest of the workspace —
