@@ -14,6 +14,12 @@ extension CourseSettingsExtension on Room {
     return CourseSettingsModel();
   }
 
+  Future<void> setRequireAnalyticsAccess(bool value) async {
+    final current = _courseSettings;
+    if (current.requireAnalyticsAccess == value) return;
+    await _setCourseSettings(current.copyWith(requireAnalyticsAccess: value));
+  }
+
   Future<void> toggleRequireAnalyticsAccess() async {
     final current = _courseSettings;
     await _setCourseSettings(
@@ -22,11 +28,14 @@ extension CourseSettingsExtension on Room {
   }
 
   Future<void> _setCourseSettings(CourseSettingsModel model) async {
+    if (model == _courseSettings) return;
+    final syncFuture = client.waitForRoomInSync(id);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.courseSettings,
       '',
       model.toJson(),
     );
+    await syncFuture;
   }
 }

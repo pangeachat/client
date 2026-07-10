@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 
+import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -114,6 +115,12 @@ class SelectedCourseController extends State<SelectedCourse>
             sdk.StateEvent(
               type: PangeaEventTypes.coursePlan,
               content: {"uuid": courseId},
+            ),
+            sdk.StateEvent(
+              type: PangeaEventTypes.courseSettings,
+              content: CourseSettingsModel(
+                requireAnalyticsAccess: true,
+              ).toJson(),
             ),
           ],
           avatarUrl: course.imageUrl.toString(),
