@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
@@ -92,6 +93,27 @@ class OnboardingController extends State<Onboarding> {
 
   void _back() => _dispatchNavigationResult(_navigation.back());
 
+  String labelByStepIndex(int i) {
+    switch (i) {
+      case 1:
+        return L10n.of(context).editProfile;
+      case 2:
+        return L10n.of(context).useType;
+      case 3:
+        return L10n.of(context).joinWithClassCode;
+      case 4:
+        return L10n.of(context).languages;
+      case 5:
+        return L10n.of(context).level;
+      case 6:
+        return L10n.of(context).courseRequest;
+      case 7:
+        return L10n.of(context).freeTrial;
+      default:
+        return L10n.of(context).onboarding;
+    }
+  }
+
   void _dispatchNavigationResult(NavigationResult result) {
     if (mounted) _error.value = null;
 
@@ -148,7 +170,11 @@ class OnboardingController extends State<Onboarding> {
           return content;
         }
 
-        return Scaffold(
+        return Semantics(
+          label: L10n.of(
+            context,
+          ).pageLabel(labelByStepIndex(_navigation.currentStepIndex)),
+          child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
             title: ConstrainedBox(
@@ -176,6 +202,7 @@ class OnboardingController extends State<Onboarding> {
                 width: 350.0,
                 padding: EdgeInsets.symmetric(vertical: 48.0),
                 child: content,
+                ),
               ),
             ),
           ),
