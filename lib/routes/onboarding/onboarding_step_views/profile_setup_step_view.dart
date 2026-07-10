@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:collection/collection.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:matrix/matrix.dart';
 import 'package:mime/mime.dart';
@@ -65,6 +66,23 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
 
   String _avatarUrlString(int index) =>
       "${AppConfig.assetsBaseURL}/avatar_$index.png";
+
+  String _avatarDescription(int index) {
+    switch (index) {
+      case 0:
+        return L10n.of(context).dinoAvatarLabel;
+      case 1:
+        return L10n.of(context).bearAvatarLabel;
+      case 2:
+        return L10n.of(context).squidAvatarLabel;
+      case 3:
+        return L10n.of(context).cartoonAvatarLabel;
+      case 4:
+        return L10n.of(context).robotAvatarLabel;
+      default:
+        return L10n.of(context).defaultOption;
+    }
+  }
 
   void _setDisplayName() {
     _debounce?.cancel();
@@ -143,116 +161,147 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ValueListenableBuilder(
-                    valueListenable: _avatarNotifier,
-                    builder: (context, _, _) {
-                      final avatarInfo = _step.state.avatarInfo;
-                      final avatarBytes = avatarInfo?.avatarBytes;
-                      final avatarUrl = avatarInfo?.avatarUrl;
+            child: Semantics(
+              label: L10n.of(context).profile,
+              container: true,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Semantics(
+                      label: L10n.of(context).changeYourAvatar,
+                      container: true,
+                      child: ValueListenableBuilder(
+                        valueListenable: _avatarNotifier,
+                        builder: (context, _, _) {
+                          final avatarInfo = _step.state.avatarInfo;
+                          final avatarBytes = avatarInfo?.avatarBytes;
+                          final avatarUrl = avatarInfo?.avatarUrl;
 
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            height: 110.0,
-                            width: 110.0,
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                height: 110.0,
+                                width: 110.0,
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    ClipRRect(
                                       borderRadius: BorderRadius.circular(
                                         100.0,
                                       ),
-                                      color: theme.disabledColor,
-                                    ),
-                                    child: avatarUrl != null
-                                        ? ImageByUrl(
-                                            width: 100.0,
-                                            imageUrl: avatarUrl,
-                                          )
-                                        : avatarBytes != null
-                                        ? Image.memory(
-                                            avatarBytes,
-                                            fit: BoxFit.cover,
-                                            semanticLabel: L10n.of(
-                                              context,
-                                            ).avatarPreview,
-                                          )
-                                        : SizedBox(),
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  bottom: 0,
-                                  child: IconButton.filled(
-                                    tooltip: L10n.of(context).changeYourAvatar,
-                                    icon: Icon(Icons.file_upload_outlined),
-                                    onPressed: _uploadAvatarImage,
-                                    style: IconButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          12.0,
+                                      child: ExcludeSemantics(
+                                        child: Container(
+                                          width: 100.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              100.0,
+                                            ),
+                                            color: theme.disabledColor,
+                                          ),
+                                          child: avatarUrl != null
+                                              ? ImageByUrl(
+                                                  width: 100.0,
+                                                  imageUrl: avatarUrl,
+                                                )
+                                              : avatarBytes != null
+                                              ? Image.memory(
+                                                  avatarBytes,
+                                                  fit: BoxFit.cover,
+                                                  semanticLabel: L10n.of(
+                                                    context,
+                                                  ).avatarPreview,
+                                                )
+                                              : SizedBox(),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 20.0),
-                          Row(
-                            spacing: 6.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: _avatarOptions
-                                .map(
-                                  (avatarUrl) => InkWell(
-                                    borderRadius: BorderRadius.circular(100.0),
-                                    onTap: () => _setAvatarUrl(avatarUrl),
-                                    child: SizedBox(
-                                      height: 32.0,
-                                      width: 32.0,
-                                      child: ImageByUrl(
-                                        width: 32.0,
-                                        imageUrl: avatarUrl,
-                                        borderRadius: BorderRadius.circular(
-                                          100.0,
+                                    Positioned(
+                                      right: 0,
+                                      bottom: 0,
+                                      child: Semantics(
+                                        label: L10n.of(
+                                          context,
+                                        ).selectImageFromDevice,
+                                        container: true,
+                                        child: IconButton.filled(
+                                          tooltip: L10n.of(
+                                            context,
+                                          ).changeYourAvatar,
+                                          icon: Icon(
+                                            Icons.file_upload_outlined,
+                                          ),
+                                          onPressed: _uploadAvatarImage,
+                                          style: IconButton.styleFrom(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                  SizedBox(height: 12.0),
-                  Text(
-                    L10n.of(context).displayName,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 20.0),
+                              Row(
+                                spacing: 6.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: _avatarOptions
+                                    .mapIndexed(
+                                      (index, avatarUrl) => Semantics(
+                                        label: _avatarDescription(index),
+                                        child: InkWell(
+                                          borderRadius: BorderRadius.circular(
+                                            100.0,
+                                          ),
+                                          onTap: () => _setAvatarUrl(avatarUrl),
+                                          child: SizedBox(
+                                            height: 32.0,
+                                            width: 32.0,
+                                            child: ImageByUrl(
+                                              width: 32.0,
+                                              imageUrl: avatarUrl,
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 8.0),
-                  ValueListenableBuilder(
-                    valueListenable: _displayNameController,
-                    builder: (context, text, _) => TextField(
-                      controller: _displayNameController,
-                      maxLength: 50,
+                    SizedBox(height: 12.0),
+                    ExcludeSemantics(
+                      child: Text(
+                        L10n.of(context).displayName,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 8.0),
+                    Semantics(
+                      label: L10n.of(context).displayName,
+                      container: true,
+                      child: ValueListenableBuilder(
+                        valueListenable: _displayNameController,
+                        builder: (context, text, _) => TextField(
+                          controller: _displayNameController,
+                          maxLength: 50,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

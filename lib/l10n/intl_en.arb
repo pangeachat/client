@@ -5052,5 +5052,11 @@
     "welcome": "Welcome",
     "courseRequest": "Course request", 
     "onboarding": "Onboarding",
+    "selectImageFromDevice": "Select image from device",
+    "dinoAvatarLabel": "A dinosaur with sunglasses",
+    "bearAvatarLabel": "A friendly bear",
+    "squidAvatarLabel": "A squid wearing headphones",
+    "cartoonAvatarLabel": "A happy cartoon character waving",
+    "robotAvatarLabel": "A robot with stars for eyes",
     "closeAddCoursePage": "Close add course page"
 }
