@@ -47,12 +47,14 @@ class FrameContainer extends StatelessWidget {
               width: double.infinity,
               color: frameColor,
               padding: titlePadding,
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: foregroundColor,
+              child: ExcludeSemantics(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: foregroundColor,
+                  ),
                 ),
               ),
             ),

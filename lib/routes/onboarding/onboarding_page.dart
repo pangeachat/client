@@ -107,8 +107,6 @@ class OnboardingController extends State<Onboarding> {
         return L10n.of(context).level;
       case 6:
         return L10n.of(context).courseRequest;
-      case 7:
-        return L10n.of(context).freeTrial;
       default:
         return L10n.of(context).onboarding;
     }
@@ -175,33 +173,33 @@ class OnboardingController extends State<Onboarding> {
             context,
           ).pageLabel(labelByStepIndex(_navigation.currentStepIndex)),
           child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 450),
-              child: Row(
-                children: [
-                  _navigation.hasPrevStep
-                      ? BackButton(onPressed: _back)
-                      : const SizedBox(width: 40.0),
-                  Expanded(
-                    child: AnimatedProgressBar(
-                      height: 25.0,
-                      widthPercent: _navigation.progress,
+            appBar: AppBar(
+              centerTitle: true,
+              title: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 450),
+                child: Row(
+                  children: [
+                    _navigation.hasPrevStep
+                        ? BackButton(onPressed: _back)
+                        : const SizedBox(width: 40.0),
+                    Expanded(
+                      child: AnimatedProgressBar(
+                        height: 25.0,
+                        widthPercent: _navigation.progress,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 40.0),
-                ],
+                    const SizedBox(width: 40.0),
+                  ],
+                ),
               ),
+              automaticallyImplyLeading: false,
             ),
-            automaticallyImplyLeading: false,
-          ),
-          body: SafeArea(
-            child: Center(
-              child: Container(
-                width: 350.0,
-                padding: EdgeInsets.symmetric(vertical: 48.0),
-                child: content,
+            body: SafeArea(
+              child: Center(
+                child: Container(
+                  width: 350.0,
+                  padding: EdgeInsets.symmetric(vertical: 48.0),
+                  child: content,
                 ),
               ),
             ),

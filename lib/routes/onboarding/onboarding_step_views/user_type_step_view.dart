@@ -65,10 +65,13 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                   useRive: true,
                   width: 140.0,
                 ),
-                Text(
-                  L10n.of(context).userTypeTitle,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Semantics(
+                  container: true,
+                  child: Text(
+                    L10n.of(context).userTypeTitle,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 ValueListenableBuilder(

@@ -102,39 +102,58 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                spacing: 8.0,
-                children: [
-                  Text(
-                    L10n.of(context).customCourseStepTitle,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+            child: Semantics(
+              label: L10n.of(context).customCourseStepTitle,
+              container: true,
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 8.0,
+                  children: [
+                    ExcludeSemantics(
+                      child: Text(
+                        L10n.of(context).customCourseStepTitle,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                  TextField(
-                    controller: _nameController,
-                    decoration: InputDecoration(
-                      hintText: L10n.of(context).name,
+                    Semantics(
+                      container: true,
+                      child: TextField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).name,
+                        ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(254),
+                        ],
+                      ),
                     ),
-                    inputFormatters: [LengthLimitingTextInputFormatter(254)],
-                  ),
-                  TextField(
-                    controller: _institutionController,
-                    decoration: InputDecoration(
-                      hintText: L10n.of(context).institution,
+                    Semantics(
+                      container: true,
+                      child: TextField(
+                        controller: _institutionController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).institution,
+                        ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(254),
+                        ],
+                      ),
                     ),
-                    inputFormatters: [LengthLimitingTextInputFormatter(254)],
-                  ),
-                  TextField(
-                    controller: _goalsController,
-                    decoration: InputDecoration(
-                      hintText: L10n.of(context).courseGoals,
+                    Semantics(
+                      container: true,
+                      child: TextField(
+                        controller: _goalsController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).courseGoals,
+                        ),
+                        minLines: 10,
+                        maxLines: 10,
+                      ),
                     ),
-                    minLines: 10,
-                    maxLines: 10,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

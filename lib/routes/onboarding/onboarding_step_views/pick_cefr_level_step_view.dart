@@ -71,55 +71,64 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
             child: Column(
               spacing: 12.0,
               children: [
-                Text(
-                  title,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Semantics(
+                  container: true,
+                  child: Text(
+                    title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ValueListenableBuilder(
                     valueListenable: _selectedLevel,
-                    builder: (context, selectedLevel, _) => ListView.separated(
-                      separatorBuilder: (context, i) => SizedBox(height: 4.0),
-                      itemCount: levels.length,
-                      itemBuilder: (context, i) {
-                        final level = levels[i];
-                        final selected = selectedLevel == level;
-                        return ElevatedButton(
-                          onPressed: () => _setLevel(selected ? null : level),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: selected
-                                ? theme.colorScheme.primaryContainer
-                                : theme.colorScheme.surfaceContainer,
-                            foregroundColor: selected
-                                ? theme.colorScheme.onPrimaryContainer
-                                : theme.colorScheme.onSurface,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                    builder: (context, selectedLevel, _) => Semantics(
+                      label: L10n.of(context).difficultyListLabel,
+                      container: true,
+                      child: ListView.separated(
+                        separatorBuilder: (context, i) => SizedBox(height: 4.0),
+                        itemCount: levels.length,
+                        itemBuilder: (context, i) {
+                          final level = levels[i];
+                          final selected = selectedLevel == level;
+                          return ElevatedButton(
+                            onPressed: () => _setLevel(selected ? null : level),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: selected
+                                  ? theme.colorScheme.primaryContainer
+                                  : theme.colorScheme.surfaceContainer,
+                              foregroundColor: selected
+                                  ? theme.colorScheme.onPrimaryContainer
+                                  : theme.colorScheme.onSurface,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
                             ),
-                          ),
-                          child: Column(
-                            spacing: 8.0,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    level.title(context),
-                                    style: theme.textTheme.titleMedium
-                                        ?.copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                level.description(context),
-                                style: theme.textTheme.labelLarge,
-                              ),
-                            ],
-                          ),
-                        );
-                      },
+                            child: Column(
+                              spacing: 8.0,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      level.title(context),
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  level.description(context),
+                                  style: theme.textTheme.labelLarge,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

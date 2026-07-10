@@ -5042,7 +5042,6 @@
     "abDisplayName": "Abkhazian", 
     "elDisplayName": "Greek",
     "etDisplayName": "Estonian",
-    "filteredActivitiesLabel": "Filtered activity list",
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
@@ -5058,5 +5057,16 @@
     "squidAvatarLabel": "A squid wearing headphones",
     "cartoonAvatarLabel": "A happy cartoon character waving",
     "robotAvatarLabel": "A robot with stars for eyes",
+    "featuresIncludeLabel": "Features include",
+    "difficultyListLabel": "Difficulty list",
+    "languageListLabel": "Language list",
+    "searchedResultsLabel": "Search results for '{search}'",
+    "@searchedLanguageListLabel": {
+        "placeholders": {
+            "search": {
+                "type": "String"
+            }
+        }
+    },
     "closeAddCoursePage": "Close add course page"
 }
