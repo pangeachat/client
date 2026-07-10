@@ -727,21 +727,21 @@ abstract class WorkspaceNav {
   static String openAddCoursePage(
     Uri current,
     AddCourseSubpageEnum page, {
-    String? roomId,
-    String? courseId,
-    String? targetLanguage,
-    String? joinCode,
-    bool invite = false,
+    String? initialLanguageFilter,
+    String? previewRoomId,
+    String? createCourseId,
+    bool showNewCourseInvitePage = false,
+    String? privateCourseJoinCode,
   }) => setSection(
     current,
     AddCoursePagePanelToken(
       AddCoursePageTokenParam(
         subpage: page,
-        roomId: roomId,
-        courseId: courseId,
-        targetLanguage: targetLanguage,
-        joinCode: joinCode,
-        invite: invite,
+        initialLanguageFilter: initialLanguageFilter,
+        previewRoomId: previewRoomId,
+        createCourseId: createCourseId,
+        showNewCourseInvitePage: showNewCourseInvitePage,
+        privateCourseJoinCode: privateCourseJoinCode,
       ),
     ),
   );

@@ -321,7 +321,7 @@ class FindCoursePageState extends State<FindCoursePage> {
       WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
-        targetLanguage: targetLanguage,
+        initialLanguageFilter: targetLanguage,
       ),
     );
   }
@@ -447,7 +447,7 @@ class FindCoursePageView extends StatelessWidget {
                                 WorkspaceNav.openAddCoursePage(
                                   GoRouterState.of(context).uri,
                                   AddCourseSubpageEnum.browse,
-                                  roomId: space.room.roomId,
+                                  previewRoomId: space.room.roomId,
                                 ),
                               ),
                               isKnock:

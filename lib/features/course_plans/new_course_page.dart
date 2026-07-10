@@ -195,7 +195,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
-          courseId: course.uuid,
+          createCourseId: course.uuid,
         ),
       );
       return;
@@ -241,7 +241,7 @@ class NewCoursePageState extends State<NewCoursePage> {
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
-          courseId: course.uuid,
+          createCourseId: course.uuid,
         ),
       );
     } else if (action == 1) {

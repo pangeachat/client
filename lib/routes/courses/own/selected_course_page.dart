@@ -126,8 +126,8 @@ class SelectedCourseController extends State<SelectedCourse>
       WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
-        courseId: widget.courseId,
-        invite: true,
+        createCourseId: widget.courseId,
+        showNewCourseInvitePage: true,
       ),
       extra: completer,
     );

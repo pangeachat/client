@@ -38,19 +38,29 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    switch (param?.subpage) {
+    final param = this.param;
+    if (param == null) {
+      return Column(
+        children: [
+          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
+          Expanded(child: LeftPanelCoursesListView()),
+        ],
+      );
+    }
+
+    switch (param.subpage) {
       case AddCourseSubpageEnum.browse:
-        final roomId = param?.roomId;
+        final roomId = param.previewRoomId;
         if (roomId != null) {
           return PublicCoursePreview(roomID: roomId);
         }
         return const FindCoursePage();
       case AddCourseSubpageEnum.private:
-        return CourseCodePage(initialCode: param?.joinCode);
+        return CourseCodePage(initialCode: param.privateCourseJoinCode);
       case AddCourseSubpageEnum.own:
-        final courseId = param?.courseId;
+        final courseId = param.createCourseId;
         if (courseId != null) {
-          if (param?.invite == true) {
+          if (param.showNewCourseInvitePage == true) {
             return CourseInvitePage(
               courseId,
               courseCreationCompleter: courseCreationCompleter,
@@ -60,15 +70,8 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
         }
         return NewCoursePage(
           route: 'rooms',
-          initialLanguageCode: param?.targetLanguage,
-          showAll: param?.targetLanguage == 'all',
-        );
-      case null:
-        return Column(
-          children: [
-            PanelHeader(leading: closeButton, title: L10n.of(context).courses),
-            Expanded(child: LeftPanelCoursesListView()),
-          ],
+          initialLanguageCode: param.initialLanguageFilter,
+          showAll: param.initialLanguageFilter == 'all',
         );
     }
   }
