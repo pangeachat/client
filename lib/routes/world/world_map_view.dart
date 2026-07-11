@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/world/world_map_constants.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
@@ -448,6 +449,11 @@ class _WorldMapViewState extends State<WorldMapView> {
 
     final joinableActivity = widget.controller.client
         ?.bestJoinableActivityInstance(card.activityId);
+    // No joined local room — a discovered/invited session's accurate seats and
+    // participants come from its room_preview summary (#7488).
+    final discoveredSummary = joinableActivity == null
+        ? DiscoveredSessionsCache.instance.bestOpenSummary(card.activityId)
+        : null;
 
     final state = render.stateOf(card.activityId);
     final tier = PinTier.large;
@@ -473,8 +479,14 @@ class _WorldMapViewState extends State<WorldMapView> {
           plan: plan,
           starsEarned:
               widget.controller.activityStarsEarned(card.activityId) ?? 0,
-          participants: joinableActivity?.largeCardParticipants ?? [],
-          openSlots: joinableActivity?.numRemainingRoles ?? 0,
+          participants:
+              joinableActivity?.largeCardParticipants ??
+              discoveredSummary?.largeCardParticipants() ??
+              [],
+          openSlots:
+              joinableActivity?.numRemainingRoles ??
+              discoveredSummary?.openSlots ??
+              0,
           isFocused: card.activityId == render.focusedId,
           onTap: () => widget.controller.openActivity(card),
           onClose: () => widget.controller.dismissLargeCard(card),
