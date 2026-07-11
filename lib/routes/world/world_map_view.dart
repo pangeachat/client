@@ -194,10 +194,14 @@ class _WorldMapViewState extends State<WorldMapView> {
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
     // (pipeline step 4). When the large cap is zero the pass yields nothing.
+    // While the camera's zoom is actively changing the large tier is emptied —
+    // cards would slide around mid-gesture and block the zoom target — and the
+    // settle rebuild re-derives whatever tops the matrix at the new camera
+    // (#7245).
     final placement = _placeLarge(
       visible: visible,
       candidates: ranking.ordered,
-      largeBudget: budget.large,
+      largeBudget: widget.controller.isActivelyZooming ? 0 : budget.large,
       heavyEligibleIds: ranking.heavyEligibleIds,
     );
 
@@ -318,6 +322,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       trailBudget: budget.trail,
       progressedIds: widget.controller.progressedActivityIds,
       isNewLearner: widget.controller.isNewLearner,
+      dismissedIds: widget.controller.dismissedLargeIds,
     );
   }
 

@@ -17,6 +17,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
+import 'package:fluffychat/routes/world/world_map_dismissals.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -126,12 +127,26 @@ class WorldMapController extends State<WorldMap>
   /// Activities the learner explicitly dismissed from the large-card tier (the
   /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
   /// X demotes, it never removes — and without this memory the very next
-  /// re-rank would just re-promote the card. Scoped to this map instance (the
-  /// workspace map persists across panel opens; a reload starts fresh).
-  final Set<String> _dismissedLargeIds = {};
+  /// re-rank would just re-promote the card. Dismissals lapse after
+  /// [WorldMapDismissals.ttl] so an X is never a permanent burial (#7245).
+  final WorldMapDismissals _dismissals = WorldMapDismissals();
 
-  /// Read by the view's tier pass: these ids never render large this session.
-  Set<String> get dismissedLargeIds => _dismissedLargeIds;
+  /// Re-ranks the pins the moment the earliest dismissal lapses, so a card can
+  /// return on an otherwise idle map (no pan/zoom/sync to trigger a rebuild).
+  Timer? _dismissalExpiryTimer;
+
+  /// Read by the view's tier pass and ranking: these ids never render large
+  /// and carry the `dismissed` score penalty while their TTL runs.
+  Set<String> get dismissedLargeIds => _dismissals.activeIds(DateTime.now());
+
+  /// True while the camera's zoom is actively changing (a pinch, scroll-wheel,
+  /// double-tap, or programmatic glide). The view empties the large tier for
+  /// the duration so cards never slide around mid-gesture or block the target
+  /// of a zoom; at settle the re-rank re-derives whatever tops the priority
+  /// matrix at the new camera (#7245). Pure pans don't trip this — only zoom.
+  bool get isActivelyZooming => _zoomSettleTimer?.isActive ?? false;
+  Timer? _zoomSettleTimer;
+  double? _lastSeenZoom;
 
   bool _loadingPins = false;
   Timer? _refetchDebounce;
@@ -237,6 +252,8 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
+    _dismissalExpiryTimer?.cancel();
+    _zoomSettleTimer?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
@@ -638,9 +655,36 @@ class WorldMapController extends State<WorldMap>
   /// viewport (debounced); course pins are context-bound. Focus is unaffected by
   /// pan/zoom — it persists until the panel closes (world-map.instructions.md).
   void onMapPositionChanged(bool hasGesture) {
+    _trackZoomActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+  }
+
+  /// Flags [isActivelyZooming] while the camera's zoom is changing, clearing it
+  /// one settle interval after the last change — at which point the rebuild
+  /// re-derives the large tier for the new camera (#7245). Compares zoom
+  /// values, so pure pans never hide the cards. Applies in every map context
+  /// (world and course), unlike the world-only re-fetch above.
+  void _trackZoomActivity() {
+    final double zoom;
+    try {
+      zoom = mapController.camera.zoom;
+    } catch (_) {
+      return; // Camera not laid out yet.
+    }
+    final last = _lastSeenZoom;
+    _lastSeenZoom = zoom;
+    if (last == null ||
+        (zoom - last).abs() < WorldMapConstants.zoomChangeEpsilon) {
+      return;
+    }
+    final wasZooming = isActivelyZooming;
+    _zoomSettleTimer?.cancel();
+    _zoomSettleTimer = Timer(WorldMapConstants.zoomSettle, () {
+      if (mounted) setState(() {});
+    });
+    if (!wasZooming && mounted) setState(() {});
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
@@ -661,18 +705,32 @@ class WorldMapController extends State<WorldMap>
     );
   }
 
-  /// The large card's X (#7207): demote this activity out of the large tier for
-  /// the rest of the session — it re-renders at whatever lighter tier it earns
-  /// (mid where eligible, else a dot), never disappearing from the map. If the
+  /// The large card's X (#7207): demote this activity out of the large tier
+  /// for [WorldMapDismissals.ttl] — it re-renders at whatever lighter tier it
+  /// earns (mid where eligible, else a dot), never disappearing from the map,
+  /// and returns to large contention when the TTL lapses (#7245). If the
   /// dismissed card is the focused one, the X also clears focus (drops the
   /// activity panel token, same as the panel's own close) so an open panel never
   /// points at a non-large pin.
   void dismissLargeCard(QuestActivityCard card) {
-    setState(() => _dismissedLargeIds.add(card.activityId));
+    setState(() => _dismissals.dismiss(card.activityId, DateTime.now()));
+    _armDismissalExpiryTimer();
     if (focusedActivityId == card.activityId) {
       final uri = GoRouter.of(context).routeInformationProvider.value.uri;
       context.go(WorkspaceNav.dropActivityOverlay(uri));
     }
+  }
+
+  /// Re-rank when the earliest dismissal lapses; re-armed then for the next
+  /// one, so each expiry surfaces its card even on an idle map.
+  void _armDismissalExpiryTimer() {
+    _dismissalExpiryTimer?.cancel();
+    final expiry = _dismissals.nextExpiry(DateTime.now());
+    if (expiry == null) return;
+    _dismissalExpiryTimer = Timer(expiry.difference(DateTime.now()), () {
+      if (mounted) setState(() {});
+      _armDismissalExpiryTimer();
+    });
   }
 
   @override
