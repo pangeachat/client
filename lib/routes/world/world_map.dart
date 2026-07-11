@@ -123,6 +123,16 @@ class WorldMapController extends State<WorldMap>
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
 
+  /// Activities the learner explicitly dismissed from the large-card tier (the
+  /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
+  /// X demotes, it never removes — and without this memory the very next
+  /// re-rank would just re-promote the card. Scoped to this map instance (the
+  /// workspace map persists across panel opens; a reload starts fresh).
+  final Set<String> _dismissedLargeIds = {};
+
+  /// Read by the view's tier pass: these ids never render large this session.
+  Set<String> get dismissedLargeIds => _dismissedLargeIds;
+
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
@@ -649,6 +659,20 @@ class WorldMapController extends State<WorldMap>
     context.go(
       WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
     );
+  }
+
+  /// The large card's X (#7207): demote this activity out of the large tier for
+  /// the rest of the session — it re-renders at whatever lighter tier it earns
+  /// (mid where eligible, else a dot), never disappearing from the map. If the
+  /// dismissed card is the focused one, the X also clears focus (drops the
+  /// activity panel token, same as the panel's own close) so an open panel never
+  /// points at a non-large pin.
+  void dismissLargeCard(QuestActivityCard card) {
+    setState(() => _dismissedLargeIds.add(card.activityId));
+    if (focusedActivityId == card.activityId) {
+      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+      context.go(WorkspaceNav.dropActivityOverlay(uri));
+    }
   }
 
   @override

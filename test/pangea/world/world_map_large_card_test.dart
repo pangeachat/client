@@ -7,8 +7,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// Covers #7207: the tap-selected card gets a dismiss X that returns it to a
-/// pin **without** opening the activity; auto-featured cards get none.
+/// Covers #7207: every map large card gets a dismiss X (wired to the
+/// controller's demote-to-mid dismissal) that fires **without** opening the
+/// activity; a null onClose hides the X (the widget's reuse/test knob).
 void main() {
   const card = QuestActivityCard(
     activityId: 'a1',
@@ -88,7 +89,7 @@ void main() {
     },
   );
 
-  testWidgets('an auto-featured card (no onClose) shows no dismiss X', (
+  testWidgets('a card with no onClose (widget reuse knob) shows no dismiss X', (
     tester,
   ) async {
     await pumpCard(tester, onClose: null);
