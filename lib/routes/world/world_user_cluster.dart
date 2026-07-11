@@ -8,6 +8,7 @@ import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/compact_count.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
@@ -276,6 +277,9 @@ class _PowerupsPill extends StatelessWidget {
 /// One tracker in the powerups pill: a dark icon over its count, on the white
 /// inner field. Tapping opens that metric's analytics tab. Public so
 /// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
+/// The displayed count abbreviates above 999 ([compactCount]) so the pill
+/// never outgrows the allocator's fixed cluster gutter; the semantics label
+/// carries the exact count.
 class ClusterTrackerButton extends StatelessWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
@@ -310,6 +314,7 @@ class ClusterTrackerButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         child: Semantics(
           button: true,
+          // The exact count — assistive tech is never given the abbreviation.
           label: '${indicator.tooltip(context)}: $count',
           excludeSemantics: true,
           child: Padding(
@@ -323,7 +328,7 @@ class ClusterTrackerButton extends StatelessWidget {
                 Icon(indicator.icon, size: iconSize),
                 const SizedBox(height: 3),
                 Text(
-                  '$count',
+                  compactCount(count),
                   style: TextStyle(
                     fontSize: fontSize,
                     height: 1.1,
