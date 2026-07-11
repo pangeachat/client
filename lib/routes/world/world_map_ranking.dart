@@ -366,6 +366,7 @@ PlacementResult placeLargeCards({
   required Rect safeArea,
   int largeBudget = 3,
   Set<String>? heavyEligibleIds,
+  Set<String> dismissedIds = const {},
 }) {
   // The card sits ABOVE its pin: flutter_map places an Alignment.topCenter
   // marker so its box is above the point (the point is the box's bottom-center,
@@ -380,10 +381,13 @@ PlacementResult placeLargeCards({
 
   // Under the live-session gate only live sessions are eligible for a large card,
   // so a non-live pin — even the focused one — stays a dot
-  // (world-map.instructions.md, the heavy-tier gate).
-  final candidates = heavyEligibleIds == null
-      ? orderedCandidates
-      : orderedCandidates.where(heavyEligibleIds.contains).toList();
+  // (world-map.instructions.md, the heavy-tier gate). An X-dismissed pin (#7207)
+  // is likewise never large — it falls through to the mid/small pass, so the
+  // dismissal demotes rather than removes.
+  final candidates = orderedCandidates
+      .where((id) => !dismissedIds.contains(id))
+      .where((id) => heavyEligibleIds == null || heavyEligibleIds.contains(id))
+      .toList();
 
   // Focused pin goes first when it is a candidate this view, so it claims its
   // footprint and the featured set yields around it. It is not force-added: a

@@ -265,14 +265,20 @@ class _WorldMapViewState extends State<WorldMapView> {
         safeArea: safeArea,
         largeBudget: largeBudget,
         heavyEligibleIds: heavyEligibleIds,
+        dismissedIds: widget.controller.dismissedLargeIds,
       );
     } catch (_) {
       // Camera not laid out yet: static top-N (focused first), no fit test.
       // The next (camera-ready) frame does the real placement. Still honours the
-      // live-session gate — only live sessions are large-eligible.
-      final eligible = heavyEligibleIds == null
-          ? candidates
-          : candidates.where(heavyEligibleIds.contains).toList();
+      // live-session gate — only live sessions are large-eligible — and the
+      // X-dismissals (#7207), so a dismissed card cannot flash back for a frame.
+      final dismissed = widget.controller.dismissedLargeIds;
+      final eligible = candidates
+          .where((id) => !dismissed.contains(id))
+          .where(
+            (id) => heavyEligibleIds == null || heavyEligibleIds.contains(id),
+          )
+          .toList();
       return PlacementResult(
         largeIds: <String>[
           if (focusedId != null && eligible.contains(focusedId)) focusedId,
@@ -466,6 +472,7 @@ class _WorldMapViewState extends State<WorldMapView> {
           openSlots: joinableActivity?.numRemainingRoles ?? 0,
           isFocused: card.activityId == render.focusedId,
           onTap: () => widget.controller.openActivity(card),
+          onClose: () => widget.controller.dismissLargeCard(card),
         ),
       ),
     );

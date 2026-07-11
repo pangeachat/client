@@ -46,10 +46,10 @@ class WorldMapLargeCard extends StatelessWidget {
   /// featuring. See world-map.instructions.md.
   final bool isFocused;
 
-  /// When non-null, the card shows an explicit dismiss (X). The maps-like
-  /// redesign removed the tap-peek card (one tap goes straight to focus), so map
-  /// cards leave this null — auto-featured cards re-rank on pan/zoom and a focused
-  /// card clears with its panel. Kept optional for reuse and widget tests.
+  /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
+  /// activity out of the large tier for the session — it re-renders as a mid pin
+  /// or dot, never leaving the map (#7207). On a focused card the X also clears
+  /// focus (closing the detail panel). Null hides the X (widget-test/reuse knob).
   final VoidCallback? onClose;
 
   const WorldMapLargeCard({
@@ -242,8 +242,8 @@ class WorldMapLargeCard extends StatelessWidget {
     if (onClose == null) return cardWithTail;
 
     // The dismiss sits at the card's top-right corner. The Stack keeps it out of
-    // the card's own tap target so tapping the X clears the peek (onClose) rather
-    // than opening the activity (onTap).
+    // the card's own tap target so tapping the X demotes the card (onClose)
+    // rather than opening the activity (onTap).
     return Stack(
       clipBehavior: Clip.none,
       children: [
