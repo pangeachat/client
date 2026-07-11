@@ -670,10 +670,11 @@ class _ShellLayout {
 
   /// Index into [leftTokens] of the panel hosted in the nav widget's expandable
   /// **cavity** on a narrow screen — the chat list, the Courses/add-course hub,
-  /// or the course family (card + coursepage detail). Null when nothing
-  /// cavity-hosted is the narrow focus; [hasCavity] is its presence. Full-screen
-  /// surfaces (a room, an activity, a session, any right panel) never ride the
-  /// cavity. See `routing.instructions.md` → Single-column bottom nav.
+  /// the course family (card + coursepage detail), or the activity plan (a
+  /// half-open sheet with the camera on its pin — the Google Maps UX). Null
+  /// when nothing cavity-hosted is the narrow focus; [hasCavity] is its
+  /// presence. Full-screen surfaces (a room, a session, any right panel) never
+  /// ride the cavity. See `routing.instructions.md` → Single-column bottom nav.
   final int? cavityIndex;
   final bool hasCavity;
 
@@ -873,9 +874,9 @@ class _ShellLayout {
     final hasCavity = cavityIndex != null;
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
-    // map or a cavity surface — and is covered by a focused full-screen surface
-    // (a room/activity, a center-detail page, or a right panel expanding over
-    // it).
+    // map or a cavity surface (which includes the activity plan's half-open
+    // sheet, #7530) — and is covered by a focused full-screen surface (a
+    // room/session, a center-detail page, or a right panel expanding over it).
     final navWidgetVisible =
         !isColumnMode &&
         navRail &&
@@ -883,10 +884,11 @@ class _ShellLayout {
         (focusedNarrowType == null || hasCavity);
 
     // The analytics NAV BAR mounts only where it is navigation: over the map,
-    // a cavity, and an open right panel (which it heads). A full-screen LEFT
-    // surface (a chat, an activity) hosts the header avatar in its own app
-    // bar instead, and a center-detail page shows nothing — no floating
-    // chrome stacked over page content.
+    // a cavity (including the activity plan's sheet), and an open right panel
+    // (which it heads). A full-screen LEFT surface (a chat, a launched
+    // session) hosts the header avatar in its own app bar instead, and a
+    // center-detail page shows nothing — no floating chrome stacked over page
+    // content.
     final analyticsBarVisible =
         !isColumnMode &&
         navRail &&
