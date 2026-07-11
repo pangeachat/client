@@ -180,9 +180,12 @@ class _WorldMapViewState extends State<WorldMapView> {
 
     // The available visible-map width (viewport minus open panels) picks the
     // budget row: a total cap `N` split into large/mid/small caps + a trail
-    // reservation (world-map.instructions.md, "Pin display").
-    final budget = budgetForWidth(
+    // reservation (world-map.instructions.md, "Pin display"); the zoom gate then
+    // empties the large tier when zoomed out past city level (#7245, parked
+    // spike — see budgetForView).
+    final budget = budgetForView(
       widget.controller.widget.availableVisibleMapWidth,
+      widget.controller.liveZoom,
     );
     final ranking = _getRankings(
       visible: visible,

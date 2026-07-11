@@ -239,6 +239,18 @@ class WorldMapController extends State<WorldMap>
 
   MapController get mapController => widget.controller ?? _ownController;
 
+  /// The live camera zoom, or null before the map is laid out (reading the
+  /// camera throws until the first frame). The single reader of the raw zoom so
+  /// the pin-budget zoom gate ([budgetForView]) and the on-map +/- controls
+  /// share one null-safe access.
+  double? get liveZoom {
+    try {
+      return mapController.camera.zoom;
+    } catch (_) {
+      return null;
+    }
+  }
+
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
   /// The id of the activity the detail panel is focused on, or null. Focus is

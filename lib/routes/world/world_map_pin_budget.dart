@@ -93,6 +93,36 @@ PinBudget budgetForWidth(double width) {
   return kPinBudgetBreakpoints.last.budget;
 }
 
+/// PARKED SPIKE (#7245, draft): below this camera zoom the map frames a region /
+/// country / continent rather than a city, so a full-size large card reads as
+/// clutter splayed across the map. The proposal: at that zoom the large tier
+/// collapses back to compact dots. Zoom `3` is the whole world, `~10` roughly
+/// city level, `18` a street.
+const double kLargeCardMinZoom = 10.0;
+
+/// PARKED SPIKE (#7245, draft): the width-driven [budgetForWidth] with a **zoom
+/// gate** applied. Below [kLargeCardMinZoom] the large tier is emptied and its
+/// slots roll into `small`, so zooming out returns those activities to dots
+/// without dropping them or shrinking the on-screen count `N`. Mid pins are
+/// unaffected — only the large tier is zoom-gated, and a focused card degrades
+/// with the rest. A null [zoom] (camera not laid out yet) leaves the width
+/// budget untouched so a first frame never spuriously collapses.
+///
+/// NOT wired into world-map.instructions.md yet — the doc still says caps are
+/// width-driven only. If this ships, the doc revision lands with it.
+PinBudget budgetForView(double width, double? zoom) {
+  final base = budgetForWidth(width);
+  if (zoom == null || zoom >= kLargeCardMinZoom || base.large == 0) {
+    return base;
+  }
+  return PinBudget(
+    large: 0,
+    mid: base.mid,
+    small: base.small + base.large,
+    trail: base.trail,
+  );
+}
+
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
 abstract class PinSize {
   /// Small dot — intentionally tiny, Google-Maps style (was 18px before the
