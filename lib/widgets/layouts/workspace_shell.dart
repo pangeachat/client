@@ -670,10 +670,11 @@ class _ShellLayout {
 
   /// Index into [leftTokens] of the panel hosted in the nav widget's expandable
   /// **cavity** on a narrow screen — the chat list, the Courses/add-course hub,
-  /// or the course family (card + coursepage detail). Null when nothing
-  /// cavity-hosted is the narrow focus; [hasCavity] is its presence. Full-screen
-  /// surfaces (a room, an activity, a session, any right panel) never ride the
-  /// cavity. See `routing.instructions.md` → Single-column bottom nav.
+  /// the course family (card + coursepage detail), or the activity plan (a
+  /// half-open sheet with the camera on its pin — the Google Maps UX). Null
+  /// when nothing cavity-hosted is the narrow focus; [hasCavity] is its
+  /// presence. Full-screen surfaces (a room, a session, any right panel) never
+  /// ride the cavity. See `routing.instructions.md` → Single-column bottom nav.
   final int? cavityIndex;
   final bool hasCavity;
 

@@ -208,11 +208,14 @@ MapFocus? mapFocusFor(GoRouterState state) {
 /// deep detail views (a room/space leaf, a construct drilldown).
 bool showNavRail(GoRouterState state, bool isColumnMode) {
   if (isColumnMode) return true;
-  // An in-progress activity is immersive: on a narrow screen the bottom nav is
-  // suppressed so a stray tap (World/Chats/Avatar) can't abandon the activity
-  // mid-task — the design marks an activity the exclusive surface, and it carries
-  // its own exit. See `routing.instructions.md`.
-  if (activityFor(state) != null) return false;
+  // NOTE: an open `activity` token must NOT suppress the nav widget. The plan
+  // stage rides the widget's expandable cavity on narrow (a half-open sheet,
+  // pin visible — routing.instructions.md), so hiding the widget here left the
+  // activity with no host at all: a bare map with every control gone (#7530).
+  // The immersive case — a LAUNCHED session — is a `room`/`session` token,
+  // which hides the chrome through the focused-full-screen path instead; the
+  // liveView sibling rule drops the plan token at launch, so the two never
+  // coexist. (The suppression predated the panel/cavity model, #7385.)
   final roomId = state.pathParameters['roomid'];
   final spaceId = state.pathParameters['spaceid'];
   if (roomId == null && spaceId == null) {
