@@ -222,6 +222,37 @@ void main() {
       expect(height, closeTo(128.0, 1.0));
       expect(height, lessThan(maxHeightPx * 0.5));
     });
+
+    testWidgets(
+      'a course cavity reopens at peek, not the height it was left at (#7609)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        // Expand to full via the handle's tap toggle, then leave.
+        await tester.tap(handleFinder());
+        await tester.pumpAndSettle();
+        expect(cavityHeightOf(tester), greaterThan(peek));
+        await unmountNav(tester);
+
+        // Reopening the same course arrives at the default peek — a
+        // deterministic entry state; the height memory is section sheets'.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(peek, 1.0));
+      },
+    );
   });
 
   group('handle', () {

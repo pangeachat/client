@@ -188,6 +188,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   };
 
   NavCavityHeight _restoreHeight() {
+    // A peek cavity (course card) always opens at its default peek — a
+    // deterministic entry state, not the height it was left at (#7609). The
+    // height memory exists for SECTION sheets (#7510) and stays theirs.
+    if (widget.cavityDefaultsToPeek) return _defaultHeight();
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -198,17 +202,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
+    // A peek cavity never reads the memory ([_restoreHeight]) — it always
+    // reopens at peek (#7609) — so don't write it either.
+    if (widget.cavityDefaultsToPeek) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
     // preference: collapsed renders 0px there (no handle left to grab), so
     // persisting it would make every reopen arrive already-dismissed and
     // stuck (#7510). The sheet still collapses now; the memory just keeps
-    // the last real height for the reopen. A peek cavity's collapsed is a
-    // visible, draggable rest height and is remembered as before.
-    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
-      return;
-    }
+    // the last real height for the reopen.
+    if (height == NavCavityHeight.collapsed) return;
     MobileNavWidget._heightByKey[key] = height;
   }
 
