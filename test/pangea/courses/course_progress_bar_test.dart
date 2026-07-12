@@ -27,9 +27,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         wrap(
-          const ProgressBarRow(
-            summary: QuestStarSummary(earned: 3, total: 40),
-          ),
+          const ProgressBarRow(summary: QuestStarSummary(earned: 3, total: 40)),
         ),
       );
       // The async L10n delegate load gates MaterialApp's first real frame.
