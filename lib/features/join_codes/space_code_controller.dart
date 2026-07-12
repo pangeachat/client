@@ -72,7 +72,17 @@ class SpaceCodeController {
     final room = client.getRoomById(joinResp.roomId);
     if (room == null) return (roomId: joinResp.roomId, isSpace: true);
 
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    // Recompute the notice from the room as it stands NOW: when the join-time
+    // sync-wait timed out, [joinResp.shouldShowNotice] is a false fallback,
+    // and running the handler with it would record consent that was never
+    // asked for. The room may have landed in the meantime.
+    final handler = JoinRoomAnalyticsConsentHandler(
+      JoinResponse(
+        roomId: joinResp.roomId,
+        shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+      ),
+      room,
+    );
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return null;
     return (roomId: joinedRoomId, isSpace: room.isSpace);
@@ -230,8 +240,10 @@ class SpaceCodeController {
       // A room the server says we're already in can be absent from the LOCAL
       // list on a cold boot (initial sync still running); joining it again is
       // idempotent server-side, so fall through to a join rather than a
-      // not-found (#7579 — re-clicking a link for a class you're in).
-      roomIdToJoin ??= resp.roomIds.firstOrNull ?? alreadyJoined.firstOrNull;
+      // not-found (#7579 — re-clicking a link for a class you're in). The
+      // server's already-joined room is authoritative, so it outranks any
+      // other joinable candidate for the same code.
+      roomIdToJoin ??= alreadyJoined.firstOrNull ?? resp.roomIds.firstOrNull;
       if (roomIdToJoin == null) {
         throw NotFoundException();
       }
