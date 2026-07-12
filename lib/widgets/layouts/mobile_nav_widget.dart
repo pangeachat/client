@@ -128,7 +128,15 @@ class MobileNavWidget extends StatefulWidget {
 
 class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _railHeight = MobileNavWidget.railRowHeight;
-  static const double _peekHeight = 240.0;
+
+  /// The collapsed peek height for a course sheet (the only cavity that peeks).
+  /// Sized to the course card's compact header — the drag handle plus the
+  /// [X · title · share] row and the overall progress bar — so the collapsed
+  /// default shows exactly the course identity + progress. The card itself
+  /// drops its tabs/content below `_kCompactCardMaxHeight` (168px) so this short
+  /// box never overflows; the tabs slide in as the learner drags up (#7597, the
+  /// Figma mobile-default frame). Kept a touch under that threshold.
+  static const double _peekHeight = 128.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
   /// The rest stop the cavity currently sits at. Non-null means the drawn

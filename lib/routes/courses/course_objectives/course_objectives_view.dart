@@ -87,11 +87,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// (quests.instructions.md, "Star display on the course panel"). Empty in a
   /// preview (no room → no learner progress to show) and until the first
   /// resolve completes.
-  final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
   ProgressionResolution _progression = ProgressionResolution.empty;
-
-  /// This quest's ordered Mission ids, for the header's quest-star summary.
-  List<String> _orderedMissionIds = const [];
 
   @override
   void initState() {
@@ -165,7 +161,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       return;
     }
 
-    _orderedMissionIds = outline.quest.learningObjectiveIds;
     unawaited(_loadProgression());
 
     final filtered = objectiveGroupsWithActivities(outline.groups);
@@ -182,19 +177,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _loadProgression() async {
     final client = widget.room?.client;
     if (client == null) return;
-    await _objectiveCache.rebuildFromJoinedCourses(
-      client,
-      onError: (uuid, e, s) => ErrorHandler.logError(
-        e: e,
-        s: s,
-        m: 'CourseObjectivesList: course outline failed to resolve',
-        data: {'courseUuid': uuid},
-      ),
-    );
+    final resolved = await resolveJoinedProgression(client);
     if (!mounted) return;
-    setState(() {
-      _progression = _objectiveCache.resolution(client.userStarsByActivity);
-    });
+    setState(() => _progression = resolved);
   }
 
   @override
@@ -262,9 +247,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               child: ErrorIndicator(message: error.toLocalizedString(context)),
             );
           case AsyncLoaded(value: final groups):
-            // The quest-star header shows only for a joined course once the shared
-            // rollup has resolved; a preview has no learner progress to show.
-            final showStars =
+            // The overall quest-star bar now lives in the course card header
+            // (above the tabs — [CourseProgressBar]), so it shows on every tab
+            // and in the collapsed mobile peek; the list is just the Missions.
+            // Per-Mission stars still show once the shared rollup resolves; a
+            // preview has no learner progress.
+            final hasProgress =
                 widget.room != null && _progression.rollup.isNotEmpty;
             final list = ListView.separated(
               controller: widget.shrinkWrap ? null : _scrollController,
@@ -276,18 +264,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               itemCount: groups.length,
               separatorBuilder: (_, _) => const SizedBox(height: 24.0),
               itemBuilder: (context, i) {
-                if (showStars && i == 0) {
-                  return _QuestStarsHeader(
-                    summary: _progression.questStars(_orderedMissionIds),
-                  );
-                }
-                final group = groups[showStars ? i - 1 : i];
+                final group = groups[i];
                 return _ObjectiveSection(
-                  index: showStars ? i - 1 : i,
+                  index: i,
                   group: group,
                   room: widget.room,
                   hasCompletedActivity: widget.hasCompletedActivity,
-                  progress: showStars
+                  progress: hasProgress
                       ? _progression.rollup[group.objective.id]
                       : null,
                 );
@@ -311,42 +294,156 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   }
 }
 
-/// The quest-level star summary at the top of a joined course's objective
-/// list: total earned (each Mission capped at its threshold) over a bar that
-/// fills toward the sum of thresholds. See quests.instructions.md.
-class _QuestStarsHeader extends StatelessWidget {
-  final QuestStarSummary summary;
+/// Resolve the learner's shared joined-course progression — the SAME inputs and
+/// resolver as the world map, so the star numbers can never disagree
+/// (quests.instructions.md). Called by both the header's [CourseProgressBar] and
+/// the objective list's per-Mission chips; identical cached inputs (the quest
+/// outline cache + `client.userStarsByActivity`) mean the two can't drift, so a
+/// second resolve is safe rather than a re-derivation risk.
+Future<ProgressionResolution> resolveJoinedProgression(Client client) async {
+  final cache = JoinedObjectiveCache();
+  await cache.rebuildFromJoinedCourses(
+    client,
+    onError: (uuid, e, s) => ErrorHandler.logError(
+      e: e,
+      s: s,
+      m: 'course progression failed to resolve',
+      data: {'courseUuid': uuid},
+    ),
+  );
+  return cache.resolution(client.userStarsByActivity);
+}
 
-  const _QuestStarsHeader({required this.summary});
+/// The overall course progress bar for the course-card HEADER (above the tabs,
+/// #7597): the quest's earned-over-threshold stars and a bar. Lives in the
+/// header so it shows on every tab and in the collapsed mobile peek — where the
+/// objective list (and its old in-list header) isn't even mounted, since the
+/// card opens on the chat tab on narrow. Self-resolves the shared progression
+/// ([resolveJoinedProgression]); renders a muted empty bar until it lands so the
+/// header height (and the peek) stays stable.
+class CourseProgressBar extends StatefulWidget {
+  final Room room;
+
+  const CourseProgressBar({required this.room, super.key});
+
+  @override
+  State<CourseProgressBar> createState() => _CourseProgressBarState();
+}
+
+class _CourseProgressBarState extends State<CourseProgressBar> {
+  QuestStarSummary? _summary;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  void didUpdateWidget(covariant CourseProgressBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.room.id != widget.room.id) {
+      setState(() => _summary = null);
+      _load();
+    }
+  }
+
+  Future<void> _load() async {
+    final questId = widget.room.coursePlan?.uuid;
+    if (questId == null) return;
+    final outlineResult = await QuestRepo.outline(questId);
+    final orderedMissionIds =
+        outlineResult.result?.quest.learningObjectiveIds ?? const [];
+    final progression = await resolveJoinedProgression(widget.room.client);
+    if (!mounted) return;
+    setState(() => _summary = progression.questStars(orderedMissionIds));
+  }
+
+  @override
+  Widget build(BuildContext context) => _ProgressBarRow(summary: _summary);
+}
+
+/// The overall course progress bar: a rounded gold fill over a gray track with
+/// a star sitting INSIDE the bar at the goal (right) end — no number. Learners
+/// read progress from the fill and tap/hover the bar for the exact
+/// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
+/// renders the muted empty state (pre-resolve), keeping the header height
+/// stable.
+class _ProgressBarRow extends StatelessWidget {
+  final QuestStarSummary? summary;
+
+  static const double _barHeight = 20.0;
+
+  const _ProgressBarRow({required this.summary});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Semantics(
-      label: L10n.of(context).starsEarnedOfTotal(summary.earned, summary.total),
-      child: Row(
+    final summary = this.summary;
+    final gold = AppConfig.goldByTheme(context);
+    final fraction = (summary?.fraction ?? 0.0).clamp(0.0, 1.0);
+    final label = summary == null
+        ? null
+        : L10n.of(context).starsEarnedOfTotal(summary.earned, summary.total);
+
+    final bar = SizedBox(
+      height: _barHeight,
+      child: Stack(
+        alignment: Alignment.centerLeft,
         children: [
-          Icon(Icons.star, size: 22.0, color: AppConfig.goldByTheme(context)),
-          const SizedBox(width: 6.0),
-          Text(
-            '${summary.earned}',
-            style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700),
+          // Gray track.
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(_barHeight / 2),
+            ),
+            child: const SizedBox.expand(),
           ),
-          const SizedBox(width: 12.0),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: LinearProgressIndicator(
-                value: summary.fraction,
-                minHeight: 10.0,
-                color: AppConfig.goldByTheme(context),
-                backgroundColor: theme.colorScheme.surfaceContainerHighest,
+          // Gold fill — the learner's progress toward the goal.
+          FractionallySizedBox(
+            widthFactor: fraction,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: gold,
+                borderRadius: BorderRadius.circular(_barHeight / 2),
+              ),
+            ),
+          ),
+          // The goal star, inside the bar at the right end. A surface-coloured
+          // outline star sits behind it so it reads on both the gold fill (full
+          // progress) and the gray track.
+          Positioned(
+            right: 5.0,
+            child: SizedBox(
+              width: _barHeight - 4,
+              height: _barHeight - 4,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(
+                    Icons.star,
+                    size: _barHeight - 3,
+                    color: theme.colorScheme.surface,
+                  ),
+                  Icon(Icons.star, size: _barHeight - 6, color: gold),
+                ],
               ),
             ),
           ),
         ],
       ),
     );
+
+    final result = Semantics(label: label, value: label, child: bar);
+
+    // Tap (mobile) and hover (desktop) both surface the exact count.
+    return label == null
+        ? result
+        : Tooltip(
+            message: label,
+            triggerMode: TooltipTriggerMode.tap,
+            child: result,
+          );
   }
 }
 
@@ -429,20 +526,8 @@ class _ObjectiveSection extends StatelessWidget {
             ],
           ],
         ),
-        if (progress != null) ...[
-          const SizedBox(height: 8.0),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6.0),
-            child: LinearProgressIndicator(
-              value: progress!.threshold <= 0
-                  ? 0
-                  : (progress!.stars / progress!.threshold).clamp(0.0, 1.0),
-              minHeight: 6.0,
-              color: AppConfig.goldByTheme(context),
-              backgroundColor: theme.colorScheme.surfaceContainerHighest,
-            ),
-          ),
-        ],
+        // No per-Mission progress bar — only the overall course has a bar (in
+        // the header). A Mission shows just its star count above (#7597).
         const SizedBox(height: 12.0),
         // The activities that satisfy this objective.
         SizedBox(
