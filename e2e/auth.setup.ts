@@ -22,7 +22,10 @@ test("authenticate", async ({ page }) => {
   test.setTimeout(120000); 
 
   // If button can't be found, requirements of test may not be met.
-  await expect(page.getByRole("button", { name: intl.loginToAccount }), { message: 'Ensure the system language is english, and the account is not already authenticated.' }).toBeEnabled();
+  // A debug-mode cold boot can take well over a minute (thousands of DDC
+  // module loads on a cache-less Playwright context), so give the landing
+  // page a boot-scale window rather than the 5s expect default.
+  await expect(page.getByRole("button", { name: intl.loginToAccount }), { message: 'Ensure the system language is english, and the account is not already authenticated.' }).toBeEnabled({ timeout: 120000 });
 
   await page.getByRole("button", { name: intl.loginToAccount }).click();
 

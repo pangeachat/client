@@ -6,24 +6,25 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
   /// A code delivered by an inbound join link (the `addcourse` token's
   /// `private/<code>` leaf — see LegacyRedirects, #7524). Prefilled and
-  /// submitted once, running the exact join a manual entry performs; on
-  /// failure the page stays up with the code in the field. The trigger is
-  /// consumed before the submit: the coded URL is history-REPLACED with the
-  /// manual `private` page, so browser back or a refresh never re-fires the
-  /// join.
+  /// submitted once, running the exact join a manual entry performs. The
+  /// trigger is consumed when the submit COMPLETES (the coded URL is
+  /// history-REPLACED with the manual `private` page), so back or refresh
+  /// after the flow never re-fires it. Consuming it up front looked safer but
+  /// remounted this page mid-join — the URL rewrite changes the panel's
+  /// identity key — orphaning the post-join navigation and stranding the user
+  /// on the join page as a secret member of the course (#7579). A refresh
+  /// MID-join re-fires harmlessly: the knock+join are idempotent server-side.
   final String? initialCode;
   final Widget closeButton;
 
@@ -74,22 +75,27 @@ class CourseCodePageState extends State<CourseCodePage> {
     }
   }
 
-  /// One-shot inbound-code submit. Consumes its trigger first: the coded URL
-  /// is history-REPLACED with the manual `private` page, so back after a
-  /// successful join and refresh after a failed one both land on the manual
-  /// page without resubmitting.
+  /// One-shot inbound-code submit; the trigger is consumed at completion
+  /// (see [CourseCodePage.initialCode]).
   void _autoSubmit() {
     _codeController.text = widget.initialCode!.trim();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      context.replace(
-        WorkspaceNav.openAddCoursePage(
-          GoRouterState.of(context).uri,
-          AddCourseSubpageEnum.private,
-        ),
-      );
-      _submit();
+      _submit(consumeInboundCode: true);
     });
+  }
+
+  /// History-replace the inbound-coded URL with the manual `private` page so
+  /// back/refresh never re-fire the join. Rewriting this panel's own URL
+  /// changes its identity key and remounts it, so any follow-up navigation
+  /// must happen in the SAME tick (#7579).
+  void _consumeInboundCode() {
+    context.replace(
+      WorkspaceNav.openAddCoursePage(
+        GoRouterState.of(context).uri,
+        AddCourseSubpageEnum.private,
+      ),
+    );
   }
 
   @override
@@ -100,7 +106,7 @@ class CourseCodePageState extends State<CourseCodePage> {
 
   String get _code => _codeController.text.trim();
 
-  Future<void> _submit() async {
+  Future<void> _submit({bool consumeInboundCode = false}) async {
     if (_code.isEmpty) {
       return;
     }
@@ -114,23 +120,25 @@ class CourseCodePageState extends State<CourseCodePage> {
     if (!mounted) return;
 
     final joinResp = result.result;
-    if (joinResp == null) return;
+    if (joinResp == null) {
+      // Failed join (error already surfaced by the loading dialog): consume
+      // the trigger so a refresh lands on the manual page, not a re-fire.
+      if (consumeInboundCode) _consumeInboundCode();
+      return;
+    }
 
-    final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
-    if (!mounted || joinedRoomId == null) return;
-
-    room.isSpace
-        ? context.go(
-            WorkspaceNav.openCourse(
-              GoRouterState.of(context).uri,
-              joinedRoomId,
-            ),
-          )
-        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
+    final target = await SpaceCodeController.resolveJoinedTarget(
+      context,
+      client,
+      joinResp,
+    );
+    if (!mounted) return;
+    // Consume, then hop, in one tick: the consume's rebuild remounts this
+    // page, so a navigation scheduled any later would be orphaned (#7579).
+    if (consumeInboundCode) _consumeInboundCode();
+    if (target != null) {
+      SpaceCodeController.goToJoinedTarget(context, target);
+    }
   }
 
   @override
