@@ -13,6 +13,15 @@ class WorldMapConstants {
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom) => zoom > minZoom;
 
+  /// The zoom the DELIBERATE focus button glides to for an activity (#7616) —
+  /// close enough to read it as "this specific spot" (neighborhood/building
+  /// level). Selection itself never zooms; only the button uses this.
+  static const double focusZoom = 16.0;
+
+  /// The zoom cap for the focus button's course fit (#7616): fitting a
+  /// one-location course never dives below city level.
+  static const double courseFitMaxZoom = 12.0;
+
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
 

@@ -42,3 +42,15 @@ abstract class MapContextController {
     if (notifier.value != context) notifier.value = context;
   }
 }
+
+/// The deliberate "bring the camera to my selection" request — the focus
+/// button on the activity plan page and the course card header (#7616).
+/// Selecting an activity or course only PANS the camera (the automatic zoom
+/// was jarring — #7496, #7616); this button is the one path that zooms: in on
+/// a focused activity's pin, or to fit a course's activities. A one-shot tick
+/// the persistent map listens to; fired with no map alive it does nothing.
+abstract class MapCameraFocusRequests {
+  static final ValueNotifier<int> notifier = ValueNotifier<int>(0);
+
+  static void request() => notifier.value++;
+}
