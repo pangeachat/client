@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
@@ -26,7 +27,11 @@ class MorphCategoryPracticeExerciseGenerator {
     );
     final allTags = tags.map((t) => t.value);
     final List<String> possibleDistractors = allTags
-        .where((tag) => tag.toLowerCase() != morphTag.toLowerCase())
+        .where(
+          (tag) =>
+              tag.toLowerCase() != morphTag.toLowerCase() &&
+              PartOfSpeechEnum.isEligibleLemmaTag(tag),
+        )
         .toList();
 
     if (possibleDistractors.isEmpty) {
