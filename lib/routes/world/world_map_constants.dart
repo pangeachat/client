@@ -13,10 +13,6 @@ class WorldMapConstants {
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom) => zoom > minZoom;
 
-  /// The zoom the camera glides to when an activity is focused (opened) — close
-  /// enough to read it as "this specific spot" (neighborhood/building level).
-  static const double focusZoom = 16.0;
-
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
 

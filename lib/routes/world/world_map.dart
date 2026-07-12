@@ -563,20 +563,19 @@ class WorldMapController extends State<WorldMap>
           64.0,
         );
 
-        // A specific focus target is zoomed IN on within the exposed canvas:
-        // opening an activity glides the camera down to its pin at a close
-        // (neighborhood/building) zoom, never zooming out past where we already
-        // are. Today that is an activity; new focus kinds resolve in
-        // [_focusPoint].
+        // A specific focus target PANS into the exposed canvas at the current
+        // zoom — a pure glide, no zoom change in either direction (#7496: the
+        // zoom-to-16 jump was disorienting). The single-point fit resolves the
+        // center within the padded area; capping maxZoom at the current zoom
+        // pins the zoom in place. Today that is an activity; new focus kinds
+        // resolve in [_focusPoint].
         final point = _pinsManager.focusPoint(widget.focus);
         if (point != null) {
           _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
               padding: padding,
-              maxZoom: mapController.camera.zoom > WorldMapConstants.focusZoom
-                  ? mapController.camera.zoom
-                  : WorldMapConstants.focusZoom,
+              maxZoom: mapController.camera.zoom,
             ),
           );
           return;
