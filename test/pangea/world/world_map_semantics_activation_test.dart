@@ -39,7 +39,11 @@ void main() {
   /// Send the screen-reader activation to the node found by [label].
   void performSemanticsTap(WidgetTester tester, String label) {
     final node = tester.getSemantics(find.bySemanticsLabel(label));
-    tester.binding.rootPipelineOwner.semanticsOwner!.performAction(
+    // The deprecated owner is the one that actually holds the test view's
+    // semantics tree; rootPipelineOwner carries no SemanticsOwner in the test
+    // binding, so actions sent there go nowhere.
+    // ignore: deprecated_member_use
+    tester.binding.pipelineOwner.semanticsOwner!.performAction(
       node.id,
       SemanticsAction.tap,
     );
