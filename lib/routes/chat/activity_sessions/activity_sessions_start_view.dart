@@ -18,10 +18,10 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
