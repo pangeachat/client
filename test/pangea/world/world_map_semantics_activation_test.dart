@@ -39,7 +39,7 @@ void main() {
   /// Send the screen-reader activation to the node found by [label].
   void performSemanticsTap(WidgetTester tester, String label) {
     final node = tester.getSemantics(find.bySemanticsLabel(label));
-    tester.binding.pipelineOwner.semanticsOwner!.performAction(
+    tester.binding.rootPipelineOwner.semanticsOwner!.performAction(
       node.id,
       SemanticsAction.tap,
     );
