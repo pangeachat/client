@@ -29,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_button_row.dar
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -364,6 +365,14 @@ class SpaceDetailsContent extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
+                // The one camera path that zooms (#7616): course selection
+                // only pans, so this button zoom+pan-fits the map to all of
+                // the course's activities.
+                IconButton(
+                  tooltip: L10n.of(context).focusOnMap,
+                  icon: const Icon(Icons.filter_center_focus),
+                  onPressed: MapCameraFocusRequests.request,
                 ),
                 if (room.joinCode != null)
                   Padding(

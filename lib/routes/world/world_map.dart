@@ -162,6 +162,7 @@ class WorldMapController extends State<WorldMap>
     _loadForContext();
 
     MapContextController.notifier.addListener(_onContextChange);
+    MapCameraFocusRequests.notifier.addListener(_onCameraFocusRequest);
 
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
@@ -256,6 +257,7 @@ class WorldMapController extends State<WorldMap>
     _zoomSettleTimer?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
+    MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
@@ -554,15 +556,6 @@ class WorldMapController extends State<WorldMap>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       try {
-        // Inset the left edge by the overlay so content lands in the uncovered
-        // area to the right of the column/panel, not behind it.
-        final padding = EdgeInsets.fromLTRB(
-          widget.leftOverlayWidth + 64.0,
-          64.0,
-          widget.rightOverlayWidth + 64.0,
-          64.0,
-        );
-
         // A specific focus target PANS into the exposed canvas at the current
         // zoom — a pure glide, no zoom change in either direction (#7496: the
         // zoom-to-16 jump was disorienting). The single-point fit resolves the
@@ -574,29 +567,79 @@ class WorldMapController extends State<WorldMap>
           _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
-              padding: padding,
+              padding: _exposedCanvasPadding,
               maxZoom: mapController.camera.zoom,
             ),
           );
           return;
         }
 
-        // Otherwise a course context fits all of its activities.
+        // A course context likewise PANS — to the center of its activities'
+        // bounds — at the current zoom. The automatic bounds fit zoomed on
+        // every course selection, which fired too often to feel deliberate
+        // (#7616); the zoomful fit moved to the explicit focus button
+        // ([_onCameraFocusRequest]).
         if (MapContextController.notifier.value is! CourseMapContext) return;
 
         final points = _pinsManager.focusPoints;
         if (points.isEmpty) return;
         _animateFit(
-          CameraFit.bounds(
-            bounds: LatLngBounds.fromPoints(points),
-            padding: padding,
-            maxZoom: 12.0,
+          CameraFit.coordinates(
+            coordinates: [LatLngBounds.fromPoints(points).center],
+            padding: _exposedCanvasPadding,
+            maxZoom: mapController.camera.zoom,
           ),
         );
       } catch (_) {
         // Controller/camera not ready yet; the next change will refit.
       }
     });
+  }
+
+  /// Inset the left/right edges by the overlays so camera targets land in the
+  /// uncovered map area beside the column/panel, not behind it.
+  EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
+    widget.leftOverlayWidth + 64.0,
+    64.0,
+    widget.rightOverlayWidth + 64.0,
+    64.0,
+  );
+
+  /// The focus button (#7616) — the ONE camera path that zooms. A focused
+  /// activity glides in to [WorldMapConstants.focusZoom] (never zooming out
+  /// past the current view); a course context zoom+pan-fits all its
+  /// activities' bounds. Fired via [MapCameraFocusRequests] from the activity
+  /// plan page and the course card header.
+  void _onCameraFocusRequest() {
+    if (!mounted) return;
+    try {
+      final point = _pinsManager.focusPoint(widget.focus);
+      if (point != null) {
+        _animateFit(
+          CameraFit.coordinates(
+            coordinates: [point],
+            padding: _exposedCanvasPadding,
+            maxZoom: mapController.camera.zoom > WorldMapConstants.focusZoom
+                ? mapController.camera.zoom
+                : WorldMapConstants.focusZoom,
+          ),
+        );
+        return;
+      }
+
+      if (MapContextController.notifier.value is! CourseMapContext) return;
+      final points = _pinsManager.focusPoints;
+      if (points.isEmpty) return;
+      _animateFit(
+        CameraFit.bounds(
+          bounds: LatLngBounds.fromPoints(points),
+          padding: _exposedCanvasPadding,
+          maxZoom: WorldMapConstants.courseFitMaxZoom,
+        ),
+      );
+    } catch (_) {
+      // Controller/camera not ready yet; the button can simply be pressed again.
+    }
   }
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
