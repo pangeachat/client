@@ -9,7 +9,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
@@ -33,7 +32,6 @@ import 'package:fluffychat/routes/courses/course_objectives/course_objectives_vi
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum SpaceSettingsTabs {
@@ -316,216 +314,205 @@ class SpaceDetailsContent extends StatelessWidget {
     ];
   }
 
+  /// Below this incoming height the course card renders only its header and
+  /// progress bar — the collapsed mobile peek (the nav cavity clips there). The
+  /// wide/web panel and the expanded sheet are always well above it. See
+  /// [build].
+  static const double _kCompactCardMaxHeight = 168.0;
+
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null for
-        // spaces), so the left-panel close control — an X on desktop, a back
-        // arrow on mobile — rides at the leading edge of the card header,
-        // matching the right column's leading close affordance. Dropping it
-        // would leave the course card with no way to close. See
-        // routing.instructions.md.
-        //
-        // NARROW: one row — [X | title | share] — so the nav widget's peek
-        // shows the course identity immediately (the Figma MOBILE-Course
-        // frame); the title block below then renders without repeating the
-        // name. Column mode keeps the two-row header with the large avatar.
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: .center,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // The collapsed mobile peek gives the card just enough height for the
+        // header + progress bar and the nav cavity clips there. The Expanded
+        // tab body can't shrink into that short box (it overflows), so below
+        // the threshold we render ONLY the header + bar; the tabs and content
+        // slide in when the learner drags the sheet up (#7597, the Figma
+        // mobile-default frame).
+        final compact =
+            constraints.maxHeight.isFinite &&
+            constraints.maxHeight < _kCompactCardMaxHeight;
+        return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            if (controller.widget.embeddedCloseButton != null)
-              controller.widget.embeddedCloseButton!,
-            if (isColumnMode)
-              const SizedBox()
-            else
-              Expanded(
-                child: Text(
-                  displayname,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-            if (room.joinCode != null)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ShareRoomButton(
-                  room: room,
-                  tooltip: L10n.of(context).shareCourse,
-                  child: const Icon(Icons.share_outlined),
-                ),
-              ),
-          ],
-        ),
-        SizedBox(height: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (isColumnMode) ...[
-                    ClipPath(
-                      clipper: MapClipper(),
-                      child: Avatar(
-                        mxContent: room.avatar,
-                        name: displayname,
-                        userId: room.directChatMatrixID,
-                        size: 80.0,
-                        borderRadius: BorderRadius.circular(0.0),
-                      ),
-                    ),
-                    const SizedBox(width: 16.0),
-                  ],
-                  Flexible(
-                    child: Column(
-                      spacing: isColumnMode ? 12.0 : 6.0,
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Narrow shows the name in the header row above (the
-                        // Figma peek) — repeating it here would double it.
-                        if (isColumnMode)
-                          Text(
-                            displayname,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        if (room.coursePlan != null)
-                          CourseInfoChips(
-                            room.coursePlan!.uuid,
-                            fontSize: 12.0,
-                            iconSize: 12.0,
-                          ),
-                      ],
+            // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null
+            // for spaces), so the left-panel close control — an X on desktop, a
+            // back arrow on mobile — rides at the leading edge of the card
+            // header. Dropping it would leave the course card with no way to
+            // close. See routing.instructions.md.
+            //
+            // Shared header (web + mobile, #7597): [X · title · share]. The one
+            // web/mobile difference is the tab labels below — RoomDetailsButton's
+            // width-driven `mini`. No large course avatar (removed), and the
+            // language/level/module chips moved to the top of the More tab.
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (controller.widget.embeddedCloseButton != null)
+                  controller.widget.embeddedCloseButton!,
+                Expanded(
+                  child: Text(
+                    displayname,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ],
-              ),
+                ),
+                if (room.joinCode != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShareRoomButton(
+                      room: room,
+                      tooltip: L10n.of(context).shareCourse,
+                      child: const Icon(Icons.share_outlined),
+                    ),
+                  ),
+              ],
             ),
-          ],
-        ),
-        SizedBox(height: isColumnMode ? 24.0 : 12.0),
-        SpaceDetailsButtonRow(
-          controller: controller,
-          room: room,
-          selectedTab: tab(context),
-          onTabSelected: (tab) => setSelectedTab(tab, context),
-          buttons: _buttons(context),
-        ),
-        SizedBox(height: isColumnMode ? 30.0 : 14.0),
-        Expanded(
-          child: Builder(
-            builder: (context) {
-              switch (tab(context)) {
-                case SpaceSettingsTabs.chat:
-                  return CourseChats(
-                    room.id,
-                    activeChat: null,
-                    client: room.client,
-                  );
-                case SpaceSettingsTabs.course:
-                  // world_v2: the course plan is a sequence of learning
-                  // objectives, each satisfied by interchangeable activities
-                  // (no longer grouped by city).
-                  return CourseObjectivesList(
-                    room: room,
-                    hasCompletedActivity:
-                        controller.roomSummariesModel.hasCompletedActivity,
-                  );
-                case SpaceSettingsTabs.participants:
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const InstructionsInlineTooltip(
-                          instructionsEnum:
-                              InstructionsEnum.courseParticipantTooltip,
-                          padding: EdgeInsets.only(
-                            bottom: 16.0,
-                            left: 16.0,
-                            right: 16.0,
+            const SizedBox(height: 12.0),
+            // The overall course progress bar rides ABOVE the tabs so it shows on
+            // every tab and survives the collapsed mobile peek (the objective list,
+            // where it used to live, isn't mounted then). Only the course has a
+            // bar; per-Mission rows show just their stars (#7597).
+            CourseProgressBar(room: room),
+            if (!compact) ...[
+              SizedBox(height: isColumnMode ? 24.0 : 12.0),
+              SpaceDetailsButtonRow(
+                controller: controller,
+                room: room,
+                selectedTab: tab(context),
+                onTabSelected: (tab) => setSelectedTab(tab, context),
+                buttons: _buttons(context),
+              ),
+              SizedBox(height: isColumnMode ? 30.0 : 14.0),
+              Expanded(
+                child: Builder(
+                  builder: (context) {
+                    switch (tab(context)) {
+                      case SpaceSettingsTabs.chat:
+                        return CourseChats(
+                          room.id,
+                          activeChat: null,
+                          client: room.client,
+                        );
+                      case SpaceSettingsTabs.course:
+                        // world_v2: the course plan is a sequence of learning
+                        // objectives, each satisfied by interchangeable activities
+                        // (no longer grouped by city).
+                        return CourseObjectivesList(
+                          room: room,
+                          hasCompletedActivity: controller
+                              .roomSummariesModel
+                              .hasCompletedActivity,
+                        );
+                      case SpaceSettingsTabs.participants:
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const InstructionsInlineTooltip(
+                                instructionsEnum:
+                                    InstructionsEnum.courseParticipantTooltip,
+                                padding: EdgeInsets.only(
+                                  bottom: 16.0,
+                                  left: 16.0,
+                                  right: 16.0,
+                                ),
+                              ),
+                              RoomParticipantsSection(room: room),
+                            ],
                           ),
-                        ),
-                        RoomParticipantsSection(room: room),
-                      ],
-                    ),
-                  );
-                case SpaceSettingsTabs.analytics:
-                  return SingleChildScrollView(
-                    child: Center(child: SpaceAnalytics(roomId: room.id)),
-                  );
-                case SpaceSettingsTabs.more:
-                  final buttons = _buttons(
-                    context,
-                  ).where((b) => !b.showInMainView && b.visible).toList();
+                        );
+                      case SpaceSettingsTabs.analytics:
+                        return SingleChildScrollView(
+                          child: Center(child: SpaceAnalytics(roomId: room.id)),
+                        );
+                      case SpaceSettingsTabs.more:
+                        final buttons = _buttons(
+                          context,
+                        ).where((b) => !b.showInMainView && b.visible).toList();
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        if (room.topic.isNotEmpty) ...[
-                          Text(
-                            room.topic,
-                            style: TextStyle(
-                              fontSize: isColumnMode ? 16.0 : 12.0,
-                            ),
-                          ),
-                          SizedBox(height: isColumnMode ? 30.0 : 14.0),
-                        ],
-                        Column(
-                          spacing: 10.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: buttons.map((b) {
-                            return Opacity(
-                              opacity: b.enabled ? 1.0 : 0.5,
-                              child: b.isToggle
-                                  ? SwitchListTile(
-                                      title: Text(b.title),
-                                      subtitle: b.description != null
-                                          ? Text(b.description!)
-                                          : null,
-                                      secondary: b.icon,
-                                      value: b.value,
-                                      onChanged: b.enabled
-                                          ? (value) {
-                                              b.onPressed?.call();
-                                            }
-                                          : null,
-                                      activeThumbColor:
-                                          AppConfig.activeToggleColor,
-                                    )
-                                  : ListTile(
-                                      title: Text(b.title),
-                                      subtitle: b.description != null
-                                          ? Text(b.description!)
-                                          : null,
-                                      leading: b.icon,
-                                      onTap: b.enabled
-                                          ? () => b.onPressed?.call()
-                                          : null,
-                                      trailing: b.trailing,
+                        return SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Course meta at the top of More: the description, then
+                              // the language/level/module chips in a row beneath it
+                              // (moved out of the header, #7597).
+                              if (room.topic.isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 12.0),
+                                  child: Text(
+                                    room.topic,
+                                    style: TextStyle(
+                                      fontSize: isColumnMode ? 16.0 : 12.0,
                                     ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
-                    ),
-                  );
-              }
-            },
-          ),
-        ),
-      ],
+                                  ),
+                                ),
+                              if (room.coursePlan != null)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    bottom: isColumnMode ? 30.0 : 14.0,
+                                  ),
+                                  child: CourseInfoChips(
+                                    room.coursePlan!.uuid,
+                                    fontSize: 12.0,
+                                    iconSize: 12.0,
+                                  ),
+                                ),
+                              Column(
+                                spacing: 10.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: buttons.map((b) {
+                                  return Opacity(
+                                    opacity: b.enabled ? 1.0 : 0.5,
+                                    child: b.isToggle
+                                        ? SwitchListTile(
+                                            title: Text(b.title),
+                                            subtitle: b.description != null
+                                                ? Text(b.description!)
+                                                : null,
+                                            secondary: b.icon,
+                                            value: b.value,
+                                            onChanged: b.enabled
+                                                ? (value) {
+                                                    b.onPressed?.call();
+                                                  }
+                                                : null,
+                                            activeThumbColor:
+                                                AppConfig.activeToggleColor,
+                                          )
+                                        : ListTile(
+                                            title: Text(b.title),
+                                            subtitle: b.description != null
+                                                ? Text(b.description!)
+                                                : null,
+                                            leading: b.icon,
+                                            onTap: b.enabled
+                                                ? () => b.onPressed?.call()
+                                                : null,
+                                            trailing: b.trailing,
+                                          ),
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          ),
+                        );
+                    }
+                  },
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 }

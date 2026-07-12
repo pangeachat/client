@@ -214,11 +214,12 @@ void main() {
 
       final maxHeightPx = 800.0 * 0.75;
       final height = cavityHeightOf(tester);
-      // The designed 240px peek (the MobileCourseSheet-style inset): above 0
-      // (rail-only) and clearly short of half. Before the rest state was
-      // derived per-build, a cold mount resolved against a zero max height
-      // and rendered the 0.2 fallback (120px) instead.
-      expect(height, closeTo(240.0, 1.0));
+      // The designed 128px peek — the compact course header (title + progress
+      // bar), tabs below the fold (#7597): above 0 (rail-only) and clearly
+      // short of half. Before the rest state was derived per-build, a cold
+      // mount resolved against a zero max height and rendered the 0.2 fallback
+      // (120px) instead.
+      expect(height, closeTo(128.0, 1.0));
       expect(height, lessThan(maxHeightPx * 0.5));
     });
   });
@@ -540,7 +541,7 @@ void main() {
       final height = cavityHeightOf(tester);
       expect(
         height,
-        closeTo(240.0, 1.0), // the course peek, NOT the chats key's full
+        closeTo(128.0, 1.0), // the course peek, NOT the chats key's full
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));
