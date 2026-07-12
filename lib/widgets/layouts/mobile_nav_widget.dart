@@ -89,6 +89,15 @@ class MobileNavWidget extends StatefulWidget {
   /// nothing.
   final Widget? topAttachment;
 
+  /// When non-null, a dismissal gesture — dragging the sheet fully down, or
+  /// tapping outside it — CLOSES the hosted surface (the shell navigates its
+  /// token away) instead of the ephemeral collapse. Wired for the activity
+  /// plan sheet, where dismissing must also clear the map's activity focus
+  /// (#7614; world-map.instructions.md — focus is cleared by "closing the
+  /// plan" and "tapping the empty map"). Null keeps collapse-not-close, the
+  /// design for section sheets and the course card.
+  final VoidCallback? onDismissed;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -104,6 +113,7 @@ class MobileNavWidget extends StatefulWidget {
     required this.maxHeightFraction,
     this.preferredCavityHeightPx,
     this.topAttachment,
+    this.onDismissed,
     super.key,
   });
 
@@ -300,12 +310,31 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
         nearest = entry.key;
       }
     }
+    // Dragging a dismiss-on-close sheet (the activity plan) fully down is a
+    // CLOSE, not a collapse: the shell drops the token, which also clears the
+    // map's activity focus (#7614). Peek cavities never take this branch —
+    // their collapsed is a visible rest height, and the shell doesn't wire
+    // [onDismissed] for them.
+    if (nearest == NavCavityHeight.collapsed &&
+        !widget.cavityDefaultsToPeek &&
+        widget.onDismissed != null) {
+      widget.onDismissed!();
+      return;
+    }
     _openAt(nearest);
   }
 
   /// Tapping outside the cavity — an ephemeral collapse, NOT a close: the
-  /// shell's tokens stay, so re-expanding restores the same height.
+  /// shell's tokens stay, so re-expanding restores the same height. A
+  /// dismiss-on-close sheet (the activity plan) instead closes outright: on
+  /// narrow, tapping outside the sheet IS tapping the map, which clears the
+  /// activity focus (#7614; world-map.instructions.md).
   void _collapseEphemeral() {
+    final onDismissed = widget.onDismissed;
+    if (onDismissed != null) {
+      onDismissed();
+      return;
+    }
     setState(() {
       _restState = null;
       _fraction = 0.0;

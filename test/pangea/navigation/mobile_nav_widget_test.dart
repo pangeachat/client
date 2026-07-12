@@ -29,6 +29,7 @@ void main() {
     double? preferredCavityHeightPx,
     AppSection? cavitySection,
     bool courseShortcutHostsCavity = false,
+    VoidCallback? onDismissed,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -51,6 +52,7 @@ void main() {
             preferredCavityHeightPx: preferredCavityHeightPx,
             cavitySection: cavitySection,
             courseShortcutHostsCavity: courseShortcutHostsCavity,
+            onDismissed: onDismissed,
           ),
         ),
       ),
@@ -556,6 +558,55 @@ void main() {
       await tester.tap(find.byTooltip('All chats'));
       await tester.pumpAndSettle();
 
+      expect(cavityHeightOf(tester), 0.0);
+    });
+  });
+
+  group('dismiss-on-close sheets (#7614)', () {
+    testWidgets('tapping outside a dismiss-on-close sheet calls onDismissed '
+        'instead of collapsing', (tester) async {
+      var dismissed = 0;
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity-a',
+        onDismissed: () => dismissed++,
+      );
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+
+      // Outside the floating widget — on narrow this is the map.
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
+
+      expect(dismissed, 1);
+    });
+
+    testWidgets('dragging a dismiss-on-close sheet fully down calls '
+        'onDismissed', (tester) async {
+      var dismissed = 0;
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity-a',
+        onDismissed: () => dismissed++,
+      );
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+
+      await tester.drag(handleFinder(), const Offset(0, 700));
+      await tester.pumpAndSettle();
+
+      expect(dismissed, 1);
+    });
+
+    testWidgets('without onDismissed the same gestures stay ephemeral '
+        'collapses', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+      );
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
       expect(cavityHeightOf(tester), 0.0);
     });
   });

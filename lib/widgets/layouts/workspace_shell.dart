@@ -603,6 +603,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
+        // Dismissing the activity plan sheet (drag down / tap the map outside
+        // it) CLOSES the plan — dropping its token clears the map's activity
+        // focus (#7614; world-map.instructions.md: focus is cleared by
+        // "closing the plan" and "tapping the empty map"). Same navigation as
+        // the panel's own back/X. Sections and the course card keep
+        // collapse-not-close.
+        onDismissed: isActivityCavity && cavityToken != null
+            ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
+            : null,
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
