@@ -5,8 +5,19 @@ import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 void main() {
   group('PartOfSpeechEnum.isEligibleLemmaTag', () {
     test('excludes non-lemma UD categories regardless of case', () {
-      for (final tag in ['punct', 'PUNCT', 'sym', 'SYM', 'space', 'SPACE',
-          'affix', 'AFFIX', 'x', 'X']) {
+      const nonLemmaTags = [
+        'punct',
+        'PUNCT',
+        'sym',
+        'SYM',
+        'space',
+        'SPACE',
+        'affix',
+        'AFFIX',
+        'x',
+        'X',
+      ];
+      for (final tag in nonLemmaTags) {
         expect(
           PartOfSpeechEnum.isEligibleLemmaTag(tag),
           isFalse,
