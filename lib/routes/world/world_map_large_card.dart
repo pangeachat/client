@@ -22,7 +22,9 @@ typedef LargeCardParticipant = ({Uri? avatar, String name});
 /// participant avatars and open slots) / **joined** (vibrant brand). The star row
 /// shows at every state.
 ///
-/// The full [plan] carries the image and goal total - null while it hydrates
+/// The full [plan] carries the image, goal total, and the learner-L1 title
+/// (the hydration fetch localizes; choreo #2736) - null while it hydrates,
+/// during which [card]'s canonical title is the placeholder.
 /// Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   /// Height of the downward caret that tethers the card to its pin. The marker
@@ -120,7 +122,7 @@ class WorldMapLargeCard extends StatelessWidget {
       // #Pangea: announce the card as a single "Activity: <title>" button so the
       // screen reader gets context and the title is not double-read (#7185).
       child: Semantics(
-        label: L10n.of(context).activityLabel(card.title),
+        label: L10n.of(context).activityLabel((plan?.title ?? card.title)),
         container: true,
         button: true,
         // The focus ring sits OUTSIDE the card with a small gap (the padding)
@@ -384,7 +386,7 @@ class _Header extends StatelessWidget {
               // exclude the visible text to avoid a double-read (#7185).
               ExcludeSemantics(
                 child: Text(
-                  card.title,
+                  (plan?.title ?? card.title),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
