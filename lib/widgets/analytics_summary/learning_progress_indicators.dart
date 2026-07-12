@@ -15,6 +15,7 @@ import 'package:fluffychat/widgets/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 /// A summary of "My Analytics" shown at the top of the chat list
 /// It shows a variety of progress indicators such as
@@ -241,17 +242,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                             ),
                                           ),
                                           if (data != null)
-                                            Text(
-                                              "⭐ ${data.level}",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Theme.of(
-                                                      context,
-                                                    ).colorScheme.primary,
-                                                  ),
+                                            LevelRibbon(
+                                              level: data.level,
+                                              height: 28.0,
                                             ),
                                         ],
                                       );

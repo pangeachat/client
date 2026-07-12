@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 /// The persistent top-right cluster over the world map (world_v2): the user's
 /// avatar wrapped in a clockwise XP ring (gray track that fills gold toward the
@@ -356,15 +357,6 @@ class ClusterLevelMedal extends StatelessWidget {
     super.key,
   });
 
-  // The outer shield shape from Figma (icon/warning-secondary fill #F3C141 ==
-  // AppConfig.goldMedal); the level number is overlaid.
-
-  String _shieldSvg(String hexcode) =>
-      '<svg viewBox="0 0 24.6667 28.875" xmlns="http://www.w3.org/2000/svg">'
-      '<path d="M4.33333 28.875V17.5656L0 10.3125L6.16667 0H18.5L24.6667 '
-      '10.3125L20.3333 17.5656V28.875L12.3333 26.125L4.33333 28.875Z" '
-      'fill="$hexcode"/></svg>';
-
   @override
   Widget build(BuildContext context) {
     final label = '${L10n.of(context).level} $level';
@@ -383,34 +375,8 @@ class ClusterLevelMedal extends StatelessWidget {
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,
           child: Padding(
-            padding: EdgeInsets.all(4.0),
-            child: SizedBox(
-              width: 38,
-              height: 44,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  SvgPicture.string(
-                    _shieldSvg(AppConfig.goldHexByTheme(context)),
-                    width: 38,
-                    height: 44,
-                    fit: BoxFit.contain,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Text(
-                      '$level',
-                      style: const TextStyle(
-                        fontSize: 17,
-                        height: 1.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            padding: const EdgeInsets.all(4.0),
+            child: LevelRibbon(height: 44, level: level),
           ),
         ),
       ),
