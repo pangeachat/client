@@ -574,18 +574,18 @@ class WorldMapController extends State<WorldMap>
           return;
         }
 
-        // A course context likewise PANS — to the center of its activities'
-        // bounds — at the current zoom. The automatic bounds fit zoomed on
-        // every course selection, which fired too often to feel deliberate
-        // (#7616); the zoomful fit moved to the explicit focus button
-        // ([_onCameraFocusRequest]).
+        // A course context likewise PANS at the current zoom — to the course's
+        // HIGHEST-PRIORITY pin, not its bounds center: the centroid of
+        // scattered activities usually has no pin on it, so centering it read
+        // as panning to nowhere (#7616). The zoomful whole-course fit lives on
+        // the explicit focus button ([_onCameraFocusRequest]).
         if (MapContextController.notifier.value is! CourseMapContext) return;
 
-        final points = _pinsManager.focusPoints;
-        if (points.isEmpty) return;
+        final target = _topRankedCoursePoint();
+        if (target == null) return;
         _animateFit(
           CameraFit.coordinates(
-            coordinates: [LatLngBounds.fromPoints(points).center],
+            coordinates: [target],
             padding: _exposedCanvasPadding,
             maxZoom: mapController.camera.zoom,
           ),
@@ -604,6 +604,37 @@ class WorldMapController extends State<WorldMap>
     widget.rightOverlayWidth + 64.0,
     64.0,
   );
+
+  /// The coordinate of the course scope's highest-priority pin — scored by the
+  /// SAME priority matrix the tier pass uses ([rankPins]), but over ALL the
+  /// course's placed pins rather than the viewport (the point is to bring the
+  /// top of the matrix INTO view). Null while the course's pins haven't
+  /// loaded. See world-map.instructions.md ("Priority matrix").
+  LatLng? _topRankedCoursePoint() {
+    final pins = _pinsManager.filteredPins((c) => c.point != null);
+    if (pins.isEmpty) return null;
+    final user = MatrixState.pangeaController.userController;
+    final ranking = rankPins(
+      inViewPins: pins,
+      userL2: user.userL2Code,
+      userCefr: user.userCefrLevel,
+      progression: progression,
+      signals: signals,
+      // Ordered only — budgets sized so truncation can't drop candidates.
+      largeBudget: pins.length,
+      midBudget: 0,
+      smallBudget: 0,
+      progressedIds: progressedActivityIds,
+      isNewLearner: isNewLearner,
+      dismissedIds: dismissedLargeIds,
+    );
+    final topId = ranking.ordered.firstOrNull;
+    if (topId == null) return null;
+    for (final pin in pins) {
+      if (pin.activityId == topId) return pin.point;
+    }
+    return null;
+  }
 
   /// The focus button (#7616) — the ONE camera path that zooms. A focused
   /// activity glides in to [WorldMapConstants.focusZoom] (never zooming out
