@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
@@ -90,8 +92,17 @@ class QuestRepo {
     'learningObjectiveRefs': true,
   };
 
-  /// `where` matching any activity that satisfies one of [loIds] at [l2].
-  static Map<String, dynamic> _loAtL2Where(List<String> loIds, String l2) => {
+  /// `where` matching any CANONICAL activity that satisfies one of [loIds] at
+  /// [l2]. `activities-v2` is a shared canonical+translation collection — a
+  /// row is a translation iff `req.source_request_hash` is set, and
+  /// translation rows share the canonical's `activity_id` — so without the
+  /// canonical-only clause every translation row matches too and each renders
+  /// as its own card/pin (#7604). The contract requires selecting canonicals
+  /// via `exists: false` — an equals-null test matches nothing (choreo
+  /// llm-base-handler-localization.instructions.md; same clause as the choreo
+  /// bbox read).
+  @visibleForTesting
+  static Map<String, dynamic> loAtL2Where(List<String> loIds, String l2) => {
     'and': [
       {
         'or': [
@@ -104,8 +115,28 @@ class QuestRepo {
       {
         'res.plan.l2': {'equals': l2},
       },
+      {
+        'req.source_request_hash': {'exists': false},
+      },
     ],
   };
+
+  /// Keep the first row per `activity_id`. Degraded data (a duplicate
+  /// canonical, or an orphaned translation slipping past a filter) must never
+  /// surface the same activity twice: duplicate ids render duplicate cards
+  /// and, worse, duplicate `ValueKey`s in the world-map marker Stack — a hard
+  /// crash (#7604). Last line of defense; [loAtL2Where] is the primary filter.
+  @visibleForTesting
+  static List<T> dedupeByActivityId<T>(
+    List<T> rows,
+    String Function(T) idOf,
+  ) {
+    final seen = <String>{};
+    return [
+      for (final row in rows)
+        if (seen.add(idOf(row))) row,
+    ];
+  }
 
   static PayloadClient _client() => PayloadClient(
     baseUrl: Environment.cmsApi,
@@ -202,13 +233,13 @@ class QuestRepo {
       final resp = await _client().find(
         _activitiesKey,
         (json) => QuestActivityCard.fromJson(json),
-        where: _loAtL2Where(learningObjectiveIds, targetLanguage),
+        where: loAtL2Where(learningObjectiveIds, targetLanguage),
         select: _pinSelect,
         limit: 200,
         depth: 0,
       );
       final filtered = resp.docs.where((card) => card.point != null).toList();
-      return Result.value(filtered);
+      return Result.value(dedupeByActivityId(filtered, (c) => c.activityId));
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -232,20 +263,23 @@ class QuestRepo {
       final resp = await _client().find<Map<String, dynamic>>(
         _activitiesKey,
         (json) => json,
-        where: _loAtL2Where(loIds, quest.targetLanguage),
+        where: loAtL2Where(loIds, quest.targetLanguage),
         limit: 200,
         depth: 0,
       );
-      final entries = resp.docs
-          .map(
-            (doc) => (
-              plan: activityPlanFromV2(doc),
-              refs: ((doc['learningObjectiveRefs'] as List? ?? const [])
-                  .map((e) => e is Map ? e['id'] as String : e as String)
-                  .toList()),
-            ),
-          )
-          .toList();
+      final entries = dedupeByActivityId(
+        resp.docs
+            .map(
+              (doc) => (
+                plan: activityPlanFromV2(doc),
+                refs: ((doc['learningObjectiveRefs'] as List? ?? const [])
+                    .map((e) => e is Map ? e['id'] as String : e as String)
+                    .toList()),
+              ),
+            )
+            .toList(),
+        (e) => e.plan.activityId,
+      );
 
       // Resolve all plans' media upload_ids → CDN URLs in one batched read.
       final resolved = await _withResolvedMedia(
