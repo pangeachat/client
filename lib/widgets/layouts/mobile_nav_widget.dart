@@ -421,6 +421,18 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   : ClipRect(
                                       child: _NavCavity(
                                         onHandleTap: _toggleHandle,
+                                        // At peek, a tap anywhere on the sheet
+                                        // (not claimed by an inner button)
+                                        // expands to full — the peek is an
+                                        // entry point, not a surface to
+                                        // interact with (#7609).
+                                        onBodyTap:
+                                            widget.cavityDefaultsToPeek &&
+                                                _restState ==
+                                                    NavCavityHeight.collapsed
+                                            ? () =>
+                                                  _openAt(NavCavityHeight.full)
+                                            : null,
                                         onDragStart: _onDragStart,
                                         onDragUpdate: _onDragUpdate,
                                         onDragEnd: _onDragEnd,
@@ -578,6 +590,13 @@ class _CourseShortcutButton extends StatelessWidget {
 /// content brings its own header/close.
 class _NavCavity extends StatelessWidget {
   final VoidCallback onHandleTap;
+
+  /// Non-null while the sheet rests at peek: a tap anywhere on the cavity not
+  /// claimed by a deeper hitbox (the X, share, the progress-bar tooltip)
+  /// expands the sheet. Null once expanded — the detector then only absorbs
+  /// stray taps so they can't fall through to the map behind and deselect the
+  /// course (#7609).
+  final VoidCallback? onBodyTap;
   final GestureDragStartCallback onDragStart;
   final GestureDragUpdateCallback onDragUpdate;
   final GestureDragEndCallback onDragEnd;
@@ -585,6 +604,7 @@ class _NavCavity extends StatelessWidget {
 
   const _NavCavity({
     required this.onHandleTap,
+    required this.onBodyTap,
     required this.onDragStart,
     required this.onDragUpdate,
     required this.onDragEnd,
@@ -596,6 +616,23 @@ class _NavCavity extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
 
+    // The whole cavity resizes by drag, not just the 36px handle — deeper
+    // scrollables (an expanded tab's list) still win their own drags in the
+    // gesture arena, so this only claims drags the content doesn't. Opaque so
+    // the cavity is always a hit target: without it, taps on the sheet's dead
+    // space fell through to the world map behind and deselected the course
+    // (#7609).
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onBodyTap,
+      onVerticalDragStart: onDragStart,
+      onVerticalDragUpdate: onDragUpdate,
+      onVerticalDragEnd: onDragEnd,
+      child: _cavityColumn(theme, l10n),
+    );
+  }
+
+  Widget _cavityColumn(ThemeData theme, L10n l10n) {
     return Column(
       children: [
         // Grab handle: drag to resize, tap to toggle half/full. Exposed to
