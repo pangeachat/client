@@ -360,7 +360,7 @@ class _CourseProgressBarState extends State<CourseProgressBar> {
   }
 
   @override
-  Widget build(BuildContext context) => _ProgressBarRow(summary: _summary);
+  Widget build(BuildContext context) => ProgressBarRow(summary: _summary);
 }
 
 /// The overall course progress bar: a rounded gold fill over a gray track with
@@ -369,12 +369,12 @@ class _CourseProgressBarState extends State<CourseProgressBar> {
 /// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
 /// renders the muted empty state (pre-resolve), keeping the header height
 /// stable.
-class _ProgressBarRow extends StatelessWidget {
+class ProgressBarRow extends StatelessWidget {
   final QuestStarSummary? summary;
 
   static const double _barHeight = 20.0;
 
-  const _ProgressBarRow({required this.summary});
+  const ProgressBarRow({required this.summary, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -399,7 +399,10 @@ class _ProgressBarRow extends StatelessWidget {
             ),
             child: const SizedBox.expand(),
           ),
-          // Gold fill — the learner's progress toward the goal.
+          // Gold fill — the learner's progress toward the goal. The
+          // SizedBox.expand child is load-bearing: a childless DecoratedBox in
+          // a loose Stack sizes to constraints.smallest (zero height) and
+          // paints nothing (#7603).
           FractionallySizedBox(
             widthFactor: fraction,
             child: DecoratedBox(
@@ -407,6 +410,7 @@ class _ProgressBarRow extends StatelessWidget {
                 color: gold,
                 borderRadius: BorderRadius.circular(_barHeight / 2),
               ),
+              child: const SizedBox.expand(),
             ),
           ),
           // The goal star, inside the bar at the right end. A surface-coloured
