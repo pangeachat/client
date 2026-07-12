@@ -127,10 +127,7 @@ class QuestRepo {
   /// and, worse, duplicate `ValueKey`s in the world-map marker Stack — a hard
   /// crash (#7604). Last line of defense; [loAtL2Where] is the primary filter.
   @visibleForTesting
-  static List<T> dedupeByActivityId<T>(
-    List<T> rows,
-    String Function(T) idOf,
-  ) {
+  static List<T> dedupeByActivityId<T>(List<T> rows, String Function(T) idOf) {
     final seen = <String>{};
     return [
       for (final row in rows)
