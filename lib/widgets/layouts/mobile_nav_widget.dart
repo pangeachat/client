@@ -188,6 +188,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   };
 
   NavCavityHeight _restoreHeight() {
+    // A peek cavity (course card) always opens at its default peek — a
+    // deterministic entry state, not the height it was left at (#7609). The
+    // height memory exists for SECTION sheets (#7510) and stays theirs.
+    if (widget.cavityDefaultsToPeek) return _defaultHeight();
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -198,17 +202,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
+    // A peek cavity never reads the memory ([_restoreHeight]) — it always
+    // reopens at peek (#7609) — so don't write it either.
+    if (widget.cavityDefaultsToPeek) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
     // preference: collapsed renders 0px there (no handle left to grab), so
     // persisting it would make every reopen arrive already-dismissed and
     // stuck (#7510). The sheet still collapses now; the memory just keeps
-    // the last real height for the reopen. A peek cavity's collapsed is a
-    // visible, draggable rest height and is remembered as before.
-    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
-      return;
-    }
+    // the last real height for the reopen.
+    if (height == NavCavityHeight.collapsed) return;
     MobileNavWidget._heightByKey[key] = height;
   }
 
@@ -417,6 +421,18 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   : ClipRect(
                                       child: _NavCavity(
                                         onHandleTap: _toggleHandle,
+                                        // At peek, a tap anywhere on the sheet
+                                        // (not claimed by an inner button)
+                                        // expands to full — the peek is an
+                                        // entry point, not a surface to
+                                        // interact with (#7609).
+                                        onBodyTap:
+                                            widget.cavityDefaultsToPeek &&
+                                                _restState ==
+                                                    NavCavityHeight.collapsed
+                                            ? () =>
+                                                  _openAt(NavCavityHeight.full)
+                                            : null,
                                         onDragStart: _onDragStart,
                                         onDragUpdate: _onDragUpdate,
                                         onDragEnd: _onDragEnd,
@@ -574,6 +590,13 @@ class _CourseShortcutButton extends StatelessWidget {
 /// content brings its own header/close.
 class _NavCavity extends StatelessWidget {
   final VoidCallback onHandleTap;
+
+  /// Non-null while the sheet rests at peek: a tap anywhere on the cavity not
+  /// claimed by a deeper hitbox (the X, share, the progress-bar tooltip)
+  /// expands the sheet. Null once expanded — the detector then only absorbs
+  /// stray taps so they can't fall through to the map behind and deselect the
+  /// course (#7609).
+  final VoidCallback? onBodyTap;
   final GestureDragStartCallback onDragStart;
   final GestureDragUpdateCallback onDragUpdate;
   final GestureDragEndCallback onDragEnd;
@@ -581,6 +604,7 @@ class _NavCavity extends StatelessWidget {
 
   const _NavCavity({
     required this.onHandleTap,
+    required this.onBodyTap,
     required this.onDragStart,
     required this.onDragUpdate,
     required this.onDragEnd,
@@ -592,6 +616,23 @@ class _NavCavity extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
 
+    // The whole cavity resizes by drag, not just the 36px handle — deeper
+    // scrollables (an expanded tab's list) still win their own drags in the
+    // gesture arena, so this only claims drags the content doesn't. Opaque so
+    // the cavity is always a hit target: without it, taps on the sheet's dead
+    // space fell through to the world map behind and deselected the course
+    // (#7609).
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onBodyTap,
+      onVerticalDragStart: onDragStart,
+      onVerticalDragUpdate: onDragUpdate,
+      onVerticalDragEnd: onDragEnd,
+      child: _cavityColumn(theme, l10n),
+    );
+  }
+
+  Widget _cavityColumn(ThemeData theme, L10n l10n) {
     return Column(
       children: [
         // Grab handle: drag to resize, tap to toggle half/full. Exposed to
