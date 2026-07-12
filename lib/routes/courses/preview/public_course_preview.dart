@@ -17,7 +17,6 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview_view.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -150,21 +149,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     final joinResp = result.result;
     if (joinResp == null) return;
 
-    final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    room.isSpace
-        ? context.go(
-            WorkspaceNav.openCourse(
-              GoRouterState.of(context).uri,
-              joinedRoomId,
-            ),
-          )
-        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
+    await SpaceCodeController.navigateAfterJoin(context, client, joinResp);
   }
 
   Future<void> joinCourse() async {

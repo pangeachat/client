@@ -1158,21 +1158,7 @@ class ChatListController extends State<ChatList>
     final joinResp = result.result;
     if (joinResp == null) return;
 
-    final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    room.isSpace
-        ? context.go(
-            WorkspaceNav.openCourse(
-              GoRouterState.of(context).uri,
-              joinedRoomId,
-            ),
-          )
-        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
+    await SpaceCodeController.navigateAfterJoin(context, client, joinResp);
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {
