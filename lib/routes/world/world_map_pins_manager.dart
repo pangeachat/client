@@ -420,6 +420,6 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2, l1: l1);
+    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
   }
 }
