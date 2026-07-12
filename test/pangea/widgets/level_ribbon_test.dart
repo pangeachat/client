@@ -11,7 +11,9 @@ import 'package:fluffychat/widgets/users/level_ribbon.dart';
 /// beside it).
 void main() {
   Future<void> pump(WidgetTester tester, Widget child) => tester.pumpWidget(
-    MaterialApp(home: Scaffold(body: Center(child: child))),
+    MaterialApp(
+      home: Scaffold(body: Center(child: child)),
+    ),
   );
 
   testWidgets('renders the ribbon SVG with the level number overlaid', (
