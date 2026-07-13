@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-09 16:13:52.595825",
+    "@@last_modified": "2026-07-13 10:05:25.179208",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10312,5 +10312,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Teata grammatikainfoga seotud probleemist",
+    "grammarFeedbackDialogTitle": "Grammatikainformatsiooni tagasiside",
+    "grammarFeedbackSubmittedDesc": "Aitäh! Selgitus on teie tagasiside põhjal uuendatud.",
+    "focusOnMap": "Keskendu kaardile",
+    "welcome": "Tere tulemast",
+    "courseRequest": "Kursuse taotlus",
+    "onboarding": "Sissejuhatus",
+    "selectImageFromDevice": "Vali seadmest pilt",
+    "dinoAvatarLabel": "Dinosaurusega, kellel on prillid",
+    "bearAvatarLabel": "Sõbralik karu",
+    "squidAvatarLabel": "Kalamari, kes kannab kõrvaklappe",
+    "cartoonAvatarLabel": "Õnnelik joonisfilmitegelane, kes lehvitab",
+    "robotAvatarLabel": "Robot, kelle silmad on tähed",
+    "featuresIncludeLabel": "Omadused sisaldavad",
+    "difficultyListLabel": "Raskusaste nimekiri",
+    "languageListLabel": "Keele nimekiri",
+    "searchedResultsLabel": "Otsingu tulemused '{search}' jaoks",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

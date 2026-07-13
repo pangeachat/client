@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 16:13:41.954103",
+    "@@last_modified": "2026-07-13 10:04:40.326066",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -11140,5 +11140,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Raportați problema informațiilor gramaticale",
+    "grammarFeedbackDialogTitle": "Feedback despre informațiile gramaticale",
+    "grammarFeedbackSubmittedDesc": "Mulțumim! Explicația a fost actualizată pe baza feedback-ului dumneavoastră.",
+    "focusOnMap": "Concentrează-te pe hartă",
+    "welcome": "Bine ai venit",
+    "courseRequest": "Cerere de curs",
+    "onboarding": "Integrare",
+    "selectImageFromDevice": "Selectați imaginea de pe dispozitiv",
+    "dinoAvatarLabel": "Un dinosaur cu ochelari de soare",
+    "bearAvatarLabel": "Un urs prietenos",
+    "squidAvatarLabel": "Un calmar care poartă căști",
+    "cartoonAvatarLabel": "Un personaj de desene animate fericit care salută",
+    "robotAvatarLabel": "Un robot cu stele în loc de ochi",
+    "featuresIncludeLabel": "Funcțiile includ",
+    "difficultyListLabel": "Lista de dificultăți",
+    "languageListLabel": "Lista de limbi",
+    "searchedResultsLabel": "Rezultatele căutării pentru '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

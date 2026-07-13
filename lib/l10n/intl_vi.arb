@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-09 16:14:18.609131",
+    "@@last_modified": "2026-07-13 10:07:07.381687",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7398,5 +7398,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Báo cáo vấn đề thông tin ngữ pháp",
+    "grammarFeedbackDialogTitle": "Phản hồi thông tin ngữ pháp",
+    "grammarFeedbackSubmittedDesc": "Cảm ơn! Giải thích đã được cập nhật dựa trên phản hồi của bạn.",
+    "focusOnMap": "Tập trung vào bản đồ",
+    "welcome": "Chào mừng",
+    "courseRequest": "Yêu cầu khóa học",
+    "onboarding": "Hướng dẫn sử dụng",
+    "selectImageFromDevice": "Chọn hình ảnh từ thiết bị",
+    "dinoAvatarLabel": "Một con khủng long đeo kính râm",
+    "bearAvatarLabel": "Một con gấu thân thiện",
+    "squidAvatarLabel": "Một con mực đeo tai nghe",
+    "cartoonAvatarLabel": "Một nhân vật hoạt hình vui vẻ vẫy tay",
+    "robotAvatarLabel": "Một con robot với những ngôi sao làm mắt",
+    "featuresIncludeLabel": "Các tính năng bao gồm",
+    "difficultyListLabel": "Danh sách độ khó",
+    "languageListLabel": "Danh sách ngôn ngữ",
+    "searchedResultsLabel": "Kết quả tìm kiếm cho '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }
