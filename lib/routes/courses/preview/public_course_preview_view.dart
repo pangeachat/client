@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/courses/cefr_level_match.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -55,8 +56,9 @@ class PublicCoursePreviewView extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 500.0),
-            child: Builder(
-              builder: (context) {
+            child: ValueListenableBuilder(
+              valueListenable: controller.objectivesProvider.questLoader,
+              builder: (context, state, _) {
                 if (controller.loading) {
                   return const Center(
                     child: CircularProgressIndicator.adaptive(),
@@ -74,22 +76,30 @@ class PublicCoursePreviewView extends StatelessWidget {
                 final course = controller.course!;
                 final summary = controller.roomSummary!;
 
-                Uri? avatarUrl = course.imageUrl;
-                if (summary.avatarUrl != null) {
-                  avatarUrl = Uri.tryParse(summary.avatarUrl!);
-                }
+                final roomAvatar = summary.avatarUrl;
+                final avatarUrl = roomAvatar != null
+                    ? Uri.tryParse(roomAvatar)
+                    : null;
 
-                final displayname = summary.displayName ?? course.title;
+                final displayname = summary.displayName ?? course.name;
 
                 final userController =
                     MatrixState.pangeaController.userController;
-                final cefrMatch = computeCefrMatch(
-                  context: context,
-                  userLevel: userController.userCefrLevel,
-                  courseLevel: course.cefrLevel,
-                  courseLanguage: course.targetLanguage,
-                  userLanguage: userController.userL2Code,
-                );
+
+                final cefrEntry = course.targetCefr;
+                final courseCefr = cefrEntry != null
+                    ? LanguageLevelTypeEnum.fromString(cefrEntry)
+                    : null;
+
+                final cefrMatch = courseCefr == null
+                    ? CefrMatchResult.none
+                    : computeCefrMatch(
+                        context: context,
+                        userLevel: userController.userCefrLevel,
+                        courseLevel: courseCefr,
+                        courseLanguage: course.targetLanguage,
+                        userLanguage: userController.userL2Code,
+                      );
 
                 return Column(
                   children: [
@@ -145,22 +155,24 @@ class PublicCoursePreviewView extends StatelessWidget {
                                     children: [
                                       CourseInfoChip(
                                         icon: Icons.language,
-                                        text: course.targetLanguageDisplay,
+                                        text: course.targetLanguage
+                                            .toUpperCase(),
                                         fontSize: descFontSize,
                                         iconSize: smallIconSize,
                                       ),
-                                      CourseInfoChip(
-                                        icon: Icons.school,
-                                        text: course.cefrLevel.title(context),
-                                        fontSize: descFontSize,
-                                        iconSize: smallIconSize,
-                                        highlightColor: cefrMatch.chipColor,
-                                      ),
+                                      if (courseCefr != null)
+                                        CourseInfoChip(
+                                          icon: Icons.school,
+                                          text: courseCefr.title(context),
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                          highlightColor: cefrMatch.chipColor,
+                                        ),
                                       CourseInfoChip(
                                         icon: Icons.location_on,
                                         text: L10n.of(
                                           context,
-                                        ).numModules(course.topicIds.length),
+                                        ).numModules(course.sequence.length),
                                         fontSize: descFontSize,
                                         iconSize: smallIconSize,
                                       ),
@@ -204,8 +216,9 @@ class PublicCoursePreviewView extends StatelessWidget {
                             // outline (read-only preview, no room). shrinkWrap:
                             // embedded in the page's outer scroll view.
                             return CourseObjectivesList(
-                              questId: course.uuid,
+                              questId: course.id,
                               shrinkWrap: true,
+                              objectivesProvider: controller.objectivesProvider,
                             );
                           },
                         ),

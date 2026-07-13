@@ -8,9 +8,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -61,18 +61,20 @@ class ChatDetails extends StatefulWidget {
 // #Pangea
 // class ChatDetailsController extends State<ChatDetails> {
 class ChatDetailsController extends State<ChatDetails>
-    with CoursePlanProvider, ChatDownloadProvider {
+    with ChatDownloadProvider {
   bool loadingCourseInfo = true;
   bool loadingCourseSummary = true;
 
-  // listen to language updates to refresh course info
-  StreamSubscription? _languageSubscription;
-
   late CourseInfoSummariesModel roomSummariesModel;
+  late final QuestObjectivesLoader _objectivesProvider;
 
   @override
   void initState() {
     super.initState();
+
+    _objectivesProvider = QuestObjectivesLoader(
+      client: Matrix.of(context).client,
+    );
 
     final room = Matrix.of(context).client.getRoomById(widget.roomId);
     roomSummariesModel = CourseInfoSummariesModel(
@@ -80,19 +82,8 @@ class ChatDetailsController extends State<ChatDetails>
       activitiesToCompleteOverride: room?.teacherMode.activitiesToUnlockTopic,
     );
 
-    _loadCourseInfo();
+    _objectivesProvider.loadOutline(_questId);
     _loadSummaries();
-
-    _languageSubscription = MatrixState
-        .pangeaController
-        .userController
-        .languageStream
-        .stream
-        .listen((update) {
-          if (update.prevBaseLang != update.baseLang) {
-            _loadCourseInfo();
-          }
-        });
 
     if (room?.isSpace == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -104,10 +95,8 @@ class ChatDetailsController extends State<ChatDetails>
   @override
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
-    if (oldWidget.roomId != widget.roomId ||
-        course?.uuid != room?.coursePlan?.uuid) {
-      _loadCourseInfo();
+    if (oldWidget.roomId != widget.roomId) {
+      _objectivesProvider.loadOutline(_questId);
       _loadSummaries();
     }
 
@@ -119,17 +108,21 @@ class ChatDetailsController extends State<ChatDetails>
 
   @override
   void dispose() {
-    _languageSubscription?.cancel();
+    _objectivesProvider.dispose();
     super.dispose();
   }
 
-  // Pangea#
   bool displaySettings = false;
 
   void toggleDisplaySettings() =>
       setState(() => displaySettings = !displaySettings);
 
   String? get roomId => widget.roomId;
+
+  String? get _questId =>
+      Matrix.of(context).client.getRoomById(widget.roomId)?.coursePlan?.uuid;
+
+  QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 
   void setDisplaynameAction() async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
@@ -370,22 +363,6 @@ class ChatDetailsController extends State<ChatDetails>
 
     if (resp.isError || resp.result == null || !mounted) return;
     NavigationUtil.goToSpaceRoute(resp.result, ['invite'], context);
-  }
-
-  Future<void> _loadCourseInfo() async {
-    final room = Matrix.of(context).client.getRoomById(roomId!);
-    if (room == null || !room.isSpace || room.coursePlan == null) {
-      setState(() {
-        course = null;
-        loadingCourse = false;
-        loadingCourseInfo = false;
-      });
-      return;
-    }
-
-    if (mounted) setState(() => loadingCourseInfo = true);
-    await loadCourse(room.coursePlan!.uuid);
-    if (mounted) setState(() => loadingCourseInfo = false);
   }
 
   Future<void> _loadSummaries() async {
