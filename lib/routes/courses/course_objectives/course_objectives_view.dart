@@ -20,17 +20,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 
-/// The objective groups that should render: those with at least one activity.
-/// An activity-less objective would otherwise show a header over a fixed-height
-/// activity-card row that is all empty space, so it is dropped (#7114). Null
-/// (still loading / no data) maps to an empty list.
-@visibleForTesting
-List<QuestObjectiveGroup> objectiveGroupsWithActivities(
-  List<QuestObjectiveGroup>? groups,
-) => (groups ?? const <QuestObjectiveGroup>[])
-    .where((g) => g.activities.isNotEmpty)
-    .toList();
-
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
 /// Objectives are the unlockable unit; activities are interchangeable
@@ -119,13 +108,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               error,
               showAddCourse: widget.room?.isRoomAdmin == true,
             );
-          case AsyncLoaded(value: final outline):
+          case AsyncLoaded():
             // The overall quest-star bar now lives in the course card header
             // (above the tabs — [CourseProgressBar]), so it shows on every tab
             // and in the collapsed mobile peek; the list is just the Missions.
             // Per-Mission stars still show once the shared rollup resolves; a
             // preview has no learner progress.
-            final groups = objectiveGroupsWithActivities(outline.groups);
+            final groups = widget.objectivesProvider.filteredObjectiveGroups;
             if (groups.isEmpty) {
               return _QuestLoadErrorView(
                 MissingQuestException(),

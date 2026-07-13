@@ -11,6 +11,17 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 
+/// The objective groups that should render: those with at least one activity.
+/// An activity-less objective would otherwise show a header over a fixed-height
+/// activity-card row that is all empty space, so it is dropped (#7114). Null
+/// (still loading / no data) maps to an empty list.
+@visibleForTesting
+List<QuestObjectiveGroup> objectiveGroupsWithActivities(
+  List<QuestObjectiveGroup>? groups,
+) => (groups ?? const <QuestObjectiveGroup>[])
+    .where((g) => g.activities.isNotEmpty)
+    .toList();
+
 class QuestObjectivesLoader {
   final Client client;
   QuestObjectivesLoader({required this.client});
@@ -35,6 +46,14 @@ class QuestObjectivesLoader {
     };
     return progression.value.questStars(objectiveIds);
   }
+
+  List<QuestObjectiveGroup> get filteredObjectiveGroups =>
+      switch (_questLoader.value) {
+        AsyncLoaded(value: final outline) => objectiveGroupsWithActivities(
+          outline.groups,
+        ),
+        _ => const [],
+      };
 
   Future<void> loadOutline(String? questId) async {
     _progression.value = ProgressionResolution.empty;
