@@ -1,15 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
-import 'package:desktop_notifications/desktop_notifications.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:matrix/encryption/utils/key_verification.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -178,49 +173,6 @@ abstract class ClientManager {
         EventTypes.RoomMember,
       },
       // Pangea#
-    );
-  }
-
-  static void sendInitNotification(String title, String body) async {
-    if (kIsWeb) {
-      html.Notification(title, body: body);
-      return;
-    }
-    if (Platform.isLinux) {
-      await NotificationsClient().notify(
-        title,
-        body: body,
-        appName: AppSettings.applicationName.value,
-        hints: [NotificationHint.soundName('message-new-instant')],
-      );
-      return;
-    }
-
-    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-    await flutterLocalNotificationsPlugin.initialize(
-      const InitializationSettings(
-        // #Pangea
-        // android: AndroidInitializationSettings('notifications_icon'),
-        android: AndroidInitializationSettings('@mipmap/notification_icon'),
-        // Pangea#
-        iOS: DarwinInitializationSettings(),
-      ),
-    );
-
-    flutterLocalNotificationsPlugin.show(
-      0,
-      title,
-      body,
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'error_message',
-          'Error Messages',
-          importance: Importance.high,
-          priority: Priority.max,
-        ),
-        iOS: DarwinNotificationDetails(sound: 'notification.caf'),
-      ),
     );
   }
 }
