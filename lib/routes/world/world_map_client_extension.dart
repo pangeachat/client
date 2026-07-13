@@ -40,6 +40,10 @@ extension WorldMapClientExtension on Client {
     Room? best;
     for (final r in rooms) {
       if (r.activityId != activityId) continue;
+      // Joined rooms only: an invited room's stripped state carries no role
+      // assignments, so its seat data is phantoms — invited sessions are
+      // previewed by discovery instead (#7488).
+      if (r.membership != Membership.join) continue;
       if (!(r.numRemainingRoles > 0 && r.ownRoleState == null)) continue;
       final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
       final bestMs =
@@ -60,7 +64,9 @@ extension WorldMapClientExtension on Client {
   /// them a member of a `p.activity.session:<id>` room). Its negation, "no first
   /// activity yet," is the new-learner condition for the multi-person
   /// deprioritize (#7435). Cheap: one pass over `client.rooms`.
-  bool get hasAnyActivitySession => rooms.any((r) => r.activityId != null);
+  /// Membership join, not invite: an unaccepted invite is not a prior activity.
+  bool get hasAnyActivitySession =>
+      rooms.any((r) => r.activityId != null && r.membership == Membership.join);
 
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];
@@ -84,6 +90,12 @@ extension WorldMapClientExtension on Client {
       .map((r) {
         final activityId = r.activityId;
         if (activityId == null) return null;
+        // Joined rooms only. An invited room's stripped state carries no
+        // pangea.activity_roles, so a locally-derived fact would report every
+        // seat free — a phantom joinable that skips the finished/full/presence
+        // gates. Invited sessions flow through the discovery preview instead
+        // (world-map.instructions.md, "Discovering joinable sessions"; #7488).
+        if (r.membership != Membership.join) return null;
 
         final role = r.ownRole;
         return ActivitySessionFacts(

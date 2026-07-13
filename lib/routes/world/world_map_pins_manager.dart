@@ -191,18 +191,26 @@ class WorldMapPinsManager {
     );
   }
 
-  /// Discover coursemate sessions: for each joined course space, enumerate its
-  /// activity-session children from the **server-side** space hierarchy and, for
-  /// each one the learner is **not** a member of, room_preview it and emit a
-  /// joinable fact while it is live and unfinished. These sessions are not in
-  /// `client.rooms`, so this is the only way the map sees them
-  /// (world-map.instructions.md, "Discovering joinable sessions"). Best-effort,
-  /// networked, and throttled off the sync cadence.
+  /// Discover open sessions the learner is not yet in — BOTH reads of
+  /// world-map.instructions.md ("Discovering joinable sessions"):
+  ///
+  ///  * **coursemate sessions** — for each joined course space, enumerate its
+  ///    activity-session children from the **server-side** space hierarchy;
+  ///    these are not in `client.rooms`, so the hierarchy is the only way the
+  ///    map sees them;
+  ///  * **invited sessions** — session rooms the learner was invited to
+  ///    (any course, or none): they ARE in `client.rooms`, but the invite's
+  ///    stripped state carries no `pangea.activity_roles`, so seats read from
+  ///    local state are phantoms (#7488) — only a preview is accurate.
+  ///
+  /// Each candidate is room_preview'd and emits a joinable fact while it is
+  /// live, unfinished, and has a free seat. Best-effort, networked, and
+  /// throttled off the sync cadence.
   Future<void> discoverCoursemateSessions(Client client) async {
     if (_discovering) return;
-    final courseSpaces = client.joinedCourseRooms;
+    final invitedSessionIds = client.invitedActivitySessionRoomIds;
     // Not synced yet — retry on the next trigger without spending the throttle.
-    if (courseSpaces.isEmpty) return;
+    if (client.joinedCourseRooms.isEmpty && invitedSessionIds.isEmpty) return;
     final nowMs = DateTime.now().millisecondsSinceEpoch;
     if (nowMs - _lastDiscoveryMs < 8000) return;
     _discovering = true;
@@ -211,7 +219,7 @@ class WorldMapPinsManager {
       // Session rooms across the learner's joined courses, from the server
       // hierarchy (shared with the activity start page's join list). Rooms the
       // learner is already in flow through the client.rooms path, so drop those.
-      final candidateIds = <String>{};
+      final candidateIds = <String>{...invitedSessionIds};
       for (final id in await client.courseActivitySessionRoomIds()) {
         final existing = client.getRoomById(id);
         if (existing != null && existing.membership == Membership.join) {
@@ -412,6 +420,6 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2, l1: l1);
+    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
   }
 }

@@ -89,6 +89,11 @@ class _WorldMapDotState extends State<WorldMapDot>
           label: widget.dying
               ? ''
               : L10n.of(context).activityLabel(widget.card.title),
+          // excludeSemantics drops the DESCENDANT tree — including the
+          // GestureDetector's implicit tap action — so this node must carry
+          // its own onTap, or assistive tech can name the pin but never
+          // activate it (#7591).
+          onTap: widget.dying ? null : widget.onTap,
           excludeSemantics: true,
           child: GestureDetector(
             onTap: widget.dying ? null : widget.onTap,

@@ -9,15 +9,18 @@ import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.d
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
+import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
+import 'mock_user_cluster_view_model.dart';
 
 /// Coverage for the world_v2 single-column analytics NAV BAR
 /// (routing.instructions.md, "Single-column analytics nav bar").
 /// [WorldAnalyticsBar] / [AnalyticsHeaderAvatar] read live Matrix/analytics
 /// streams (mirroring `WorldUserCluster`'s data sourcing), which have no
 /// lightweight test double here, so this file drives their plain-values
-/// renderings — [AnalyticsBarView] (the full bar) and [CollapsedAvatarView]
+/// renderings — [WorldAnalyticsBar] (the full bar) and [AnalyticsHeaderAvatarInternal]
 /// (the chat-header avatar) — directly. The old temporary-expansion state
 /// machine (collapsed rendering, ~3s timer, WCAG focus suspension) is gone:
 /// full-screen chats host the avatar in their own app bar as a plain button.
@@ -76,30 +79,10 @@ void main() {
 
   Future<void> pumpBar(
     WidgetTester tester, {
-    void Function(AnalyticsPanelTab)? onTrackerTap,
-    VoidCallback? onAvatarTap,
-    VoidCallback? onLevelTap,
-    VoidCallback? onFlagTap,
-    Stream<LevelUpdate>? levelUpdates,
+    required UserClusterViewModel viewModel,
   }) => pumpShellMounted(
     tester,
-    AnalyticsBarView(
-      avatarUrl: null,
-      displayName: 'Ada',
-      l2: es,
-      starsCount: 0,
-      grammarCount: 0,
-      vocabCount: 0,
-      level: 1,
-      xpProgress: 0.0,
-      isInitializing: false,
-      levelUpdates: levelUpdates,
-      onTrackerTap: onTrackerTap ?? (_) {},
-      onAvatarTap: onAvatarTap ?? () {},
-      onLevelTap: onLevelTap ?? () {},
-      onFlagTap: onFlagTap ?? () {},
-      flagBuilder: flagStandIn,
-    ),
+    WorldAnalyticsBarInternal(flagBuilder: flagStandIn, viewModel: viewModel),
   );
 
   setUpAll(() {
@@ -115,7 +98,7 @@ void main() {
   group('full bar (AnalyticsBarView)', () {
     testWidgets('renders the full bar with all named controls', (tester) async {
       final semantics = tester.ensureSemantics();
-      await pumpBar(tester);
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
       final l10n = l10nOf(tester);
 
       expect(find.bySemanticsLabel(l10n.settings), findsOneWidget);
@@ -143,8 +126,8 @@ void main() {
         // place right panels and the search bar BELOW the bar — if the bar's
         // implicit layout grows past the declared constant, that content
         // slides back underneath it.
-        await pumpBar(tester);
-        final size = tester.getSize(find.byType(AnalyticsBarView));
+        await pumpBar(tester, viewModel: MockUserClusterViewModel());
+        final size = tester.getSize(find.byType(WorldAnalyticsBarInternal));
         expect(
           size.height,
           lessThanOrEqualTo(WorldAnalyticsBar.expandedHeight),
@@ -156,35 +139,26 @@ void main() {
       tester,
     ) async {
       final semantics = tester.ensureSemantics();
-      AnalyticsPanelTab? tappedTab;
-      var avatarTaps = 0;
-      var levelTaps = 0;
-      var flagTaps = 0;
+      final viewModel = MockUserClusterViewModel();
 
-      await pumpBar(
-        tester,
-        onTrackerTap: (tab) => tappedTab = tab,
-        onAvatarTap: () => avatarTaps++,
-        onLevelTap: () => levelTaps++,
-        onFlagTap: () => flagTaps++,
-      );
+      await pumpBar(tester, viewModel: viewModel);
       final l10n = l10nOf(tester);
 
       await tester.tap(find.bySemanticsLabel('${l10n.vocab}: 0'));
-      expect(tappedTab, AnalyticsPanelTab.vocab);
+      expect(viewModel.tappedTab, AnalyticsPanelTab.vocab);
 
       await tester.tap(find.bySemanticsLabel(l10n.settings));
-      expect(avatarTaps, 1);
+      expect(viewModel.avatarTaps, 1);
 
       await tester.tap(find.bySemanticsLabel('${l10n.level} 1'));
-      expect(levelTaps, 1);
+      expect(viewModel.levelTaps, 1);
 
       await tester.tap(
         find.bySemanticsLabel(
           '${es.getDisplayName(l10n)}, ${l10n.learningSettings}',
         ),
       );
-      expect(flagTaps, 1);
+      expect(viewModel.flagTaps, 1);
 
       semantics.dispose();
     });
@@ -196,7 +170,10 @@ void main() {
       // top-down snackbar consumed, #7432) into the badge's
       // LevelUpBadgeCelebration.
       final controller = StreamController<LevelUpdate>.broadcast();
-      await pumpBar(tester, levelUpdates: controller.stream);
+      final viewModel = MockUserClusterViewModel(
+        levelUpdates: controller.stream,
+      );
+      await pumpBar(tester, viewModel: viewModel);
       final chipText = l10nOf(tester).levelUpChip(2);
 
       expect(find.text(chipText), findsNothing);
@@ -220,22 +197,15 @@ void main() {
   group('chat-header avatar (CollapsedAvatarView)', () {
     Future<void> pumpAvatar(
       WidgetTester tester, {
-      required VoidCallback onTap,
+      required UserClusterViewModel viewModel,
       double scale = 1.0,
-      Stream<LevelUpdate>? levelUpdates,
     }) => pumpShellMounted(
       tester,
       Align(
         alignment: Alignment.centerRight,
-        child: CollapsedAvatarView(
-          avatarUrl: null,
-          displayName: 'Ada',
-          l2: es,
-          level: 1,
-          xpProgress: 0.0,
+        child: AnalyticsHeaderAvatarInternal(
+          viewModel: viewModel,
           scale: scale,
-          onTap: onTap,
-          levelUpdates: levelUpdates,
           flagBuilder: flagStandIn,
         ),
       ),
@@ -245,7 +215,7 @@ void main() {
       tester,
     ) async {
       final semantics = tester.ensureSemantics();
-      await pumpAvatar(tester, onTap: () {});
+      await pumpAvatar(tester, viewModel: MockUserClusterViewModel());
       final l10n = l10nOf(tester);
 
       expect(
@@ -265,13 +235,13 @@ void main() {
       tester,
     ) async {
       final semantics = tester.ensureSemantics();
-      var taps = 0;
-      await pumpAvatar(tester, onTap: () => taps++);
+      final viewModel = MockUserClusterViewModel();
+      await pumpAvatar(tester, viewModel: viewModel);
 
       await tester.tap(
         find.bySemanticsLabel(l10nOf(tester).analyticsAndSettingsLabel),
       );
-      expect(taps, 1);
+      expect(viewModel.taps, 1);
       // A plain button: nothing expands, nothing is pending.
       await tester.pump(const Duration(seconds: 5));
       expect(find.bySemanticsLabel(l10nOf(tester).settings), findsNothing);
@@ -283,12 +253,10 @@ void main() {
       'a level-up event pops the celebration chip at the mini badge',
       (tester) async {
         final controller = StreamController<LevelUpdate>.broadcast();
-        await pumpAvatar(
-          tester,
-          onTap: () {},
-          scale: 0.75,
+        final viewModel = MockUserClusterViewModel(
           levelUpdates: controller.stream,
         );
+        await pumpAvatar(tester, scale: 0.75, viewModel: viewModel);
         final chipText = l10nOf(tester).levelUpChip(2);
 
         expect(find.text(chipText), findsNothing);
@@ -314,8 +282,12 @@ void main() {
       // AnalyticsHeaderAvatar mounts it at 0.75 inside a kToolbarHeight (56)
       // app bar: ring box (44+8)*0.75 = 39, badge overhang 4.5, flag hang
       // 7.5 — the whole cluster must stay comfortably inside the toolbar.
-      await pumpAvatar(tester, onTap: () {}, scale: 0.75);
-      final box = tester.getSize(find.byType(CollapsedAvatarView));
+      await pumpAvatar(
+        tester,
+        scale: 0.75,
+        viewModel: MockUserClusterViewModel(),
+      );
+      final box = tester.getSize(find.byType(AnalyticsHeaderAvatarInternal));
       expect(box.height, lessThanOrEqualTo(kToolbarHeight));
     });
   });

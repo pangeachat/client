@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -62,7 +63,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
         case 'invite':
           return PangeaInvitationSelection(
             roomId: roomId,
-            initialFilter: InvitationFilter.fromNullableString(param?.filter),
+            initialFilter: param?.filter,
             embeddedCloseButton: closeButton,
           );
         case 'details':
@@ -77,9 +78,12 @@ class LeftPanelRoomSubpage extends StatelessWidget {
             );
           }
 
+          final param = this.param;
           return LeftPanelRoomDetailsSubpage(
             roomId: roomId,
-            param: param?.toSubpageToken(),
+            param: param != null
+                ? RoomSubpageTokenParam.fromRoomParam(param)
+                : null,
             closeButton: closeButton,
           );
       }

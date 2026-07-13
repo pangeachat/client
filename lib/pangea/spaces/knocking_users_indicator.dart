@@ -7,9 +7,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 
 class KnockingUsersIndicator extends StatefulWidget {
@@ -118,8 +120,8 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
                       WorkspaceNav.openCoursePageFor(
                         GoRouterState.of(context).uri,
                         widget.room.id,
-                        'invite',
-                        filter: 'knock',
+                        RoomSubpageEnum.invite,
+                        filter: InvitationFilter.knocking,
                       ),
                     );
                   },

@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 // #Pangea
 // Pangea#

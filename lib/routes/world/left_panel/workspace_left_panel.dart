@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage
 import 'package:fluffychat/routes/world/left_panel/left_panel_chat_list_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_course_details_subpage.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
@@ -82,10 +83,11 @@ class WorkspaceLeftPanel extends StatelessWidget {
         shareItems: shareItems,
         closeButton: closeButton,
       ),
-      AddCoursePanelToken() => LeftPanelAddCourseSubpage(
-        param: null,
-        closeButton: closeButton,
-        courseCreationCompleter: courseCreationCompleter,
+      AddCoursePanelToken() => Column(
+        children: [
+          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
+          Expanded(child: LeftPanelCoursesListView()),
+        ],
       ),
       AddCoursePagePanelToken(param: final param) => LeftPanelAddCourseSubpage(
         param: param,

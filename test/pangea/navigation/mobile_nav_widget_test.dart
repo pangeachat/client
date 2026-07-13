@@ -29,6 +29,7 @@ void main() {
     double? preferredCavityHeightPx,
     AppSection? cavitySection,
     bool courseShortcutHostsCavity = false,
+    VoidCallback? onDismissed,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -51,6 +52,7 @@ void main() {
             preferredCavityHeightPx: preferredCavityHeightPx,
             cavitySection: cavitySection,
             courseShortcutHostsCavity: courseShortcutHostsCavity,
+            onDismissed: onDismissed,
           ),
         ),
       ),
@@ -214,12 +216,104 @@ void main() {
 
       final maxHeightPx = 800.0 * 0.75;
       final height = cavityHeightOf(tester);
-      // The designed 240px peek (the MobileCourseSheet-style inset): above 0
-      // (rail-only) and clearly short of half. Before the rest state was
-      // derived per-build, a cold mount resolved against a zero max height
-      // and rendered the 0.2 fallback (120px) instead.
-      expect(height, closeTo(240.0, 1.0));
+      // The designed 128px peek — the compact course header (title + progress
+      // bar), tabs below the fold (#7597): above 0 (rail-only) and clearly
+      // short of half. Before the rest state was derived per-build, a cold
+      // mount resolved against a zero max height and rendered the 0.2 fallback
+      // (120px) instead.
+      expect(height, closeTo(128.0, 1.0));
       expect(height, lessThan(maxHeightPx * 0.5));
+    });
+
+    testWidgets(
+      'a course cavity reopens at peek, not the height it was left at (#7609)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        // Expand to full (tap-the-body, #7609), then leave.
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        expect(cavityHeightOf(tester), greaterThan(peek));
+        await unmountNav(tester);
+
+        // Reopening the same course arrives at the default peek — a
+        // deterministic entry state; the height memory is section sheets'.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(peek, 1.0));
+      },
+    );
+
+    testWidgets('tapping the sheet body at peek expands to full (#7609)', (
+      tester,
+    ) async {
+      await pumpNav(
+        tester,
+        activeSection: AppSection.courses,
+        cavityChild: const Text('Course card'),
+        cavityKey: 'course-a',
+        cavityDefaultsToPeek: true,
+      );
+      final peek = cavityHeightOf(tester);
+
+      // The tap lands on the card content, not the handle or a button —
+      // the cavity-wide detector claims it.
+      await tester.tap(find.text('Course card'));
+      await tester.pumpAndSettle();
+
+      expect(cavityHeightOf(tester), closeTo(800.0 * 0.75, 1.0));
+      expect(cavityHeightOf(tester), greaterThan(peek));
+    });
+
+    testWidgets(
+      'tapping the sheet body while expanded does NOT collapse or fall '
+      'through (#7609)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        final full = cavityHeightOf(tester);
+
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+
+        expect(cavityHeightOf(tester), closeTo(full, 1.0));
+      },
+    );
+
+    testWidgets('dragging the sheet body resizes, not just the handle '
+        '(#7609)', (tester) async {
+      await pumpNav(
+        tester,
+        activeSection: AppSection.courses,
+        cavityChild: const Text('Course card'),
+        cavityKey: 'course-a',
+        cavityDefaultsToPeek: true,
+      );
+      final peek = cavityHeightOf(tester);
+
+      await tester.drag(find.text('Course card'), const Offset(0, -400));
+      await tester.pumpAndSettle();
+
+      expect(cavityHeightOf(tester), greaterThan(peek));
     });
   });
 
@@ -468,6 +562,55 @@ void main() {
     });
   });
 
+  group('dismiss-on-close sheets (#7614)', () {
+    testWidgets('tapping outside a dismiss-on-close sheet calls onDismissed '
+        'instead of collapsing', (tester) async {
+      var dismissed = 0;
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity-a',
+        onDismissed: () => dismissed++,
+      );
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+
+      // Outside the floating widget — on narrow this is the map.
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
+
+      expect(dismissed, 1);
+    });
+
+    testWidgets('dragging a dismiss-on-close sheet fully down calls '
+        'onDismissed', (tester) async {
+      var dismissed = 0;
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity-a',
+        onDismissed: () => dismissed++,
+      );
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+
+      await tester.drag(handleFinder(), const Offset(0, 700));
+      await tester.pumpAndSettle();
+
+      expect(dismissed, 1);
+    });
+
+    testWidgets('without onDismissed the same gestures stay ephemeral '
+        'collapses', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+      );
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
+      expect(cavityHeightOf(tester), 0.0);
+    });
+  });
+
   group('no cavity chrome of its own', () {
     testWidgets('the cavity renders only the handle — no header or X', (
       tester,
@@ -540,7 +683,7 @@ void main() {
       final height = cavityHeightOf(tester);
       expect(
         height,
-        closeTo(240.0, 1.0), // the course peek, NOT the chats key's full
+        closeTo(128.0, 1.0), // the course peek, NOT the chats key's full
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));

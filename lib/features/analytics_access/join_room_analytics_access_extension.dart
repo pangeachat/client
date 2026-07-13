@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
@@ -36,7 +38,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     final room = await _loadRoom(resp);
     final joinResp = JoinResponse(
       roomId: resp,
-      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
     );
     return joinResp;
   }
@@ -54,26 +56,31 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     final room = await _loadRoom(resp);
     final joinResp = JoinResponse(
       roomId: roomId,
-      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
     );
     return joinResp;
   }
 
-  Future<Room> _loadRoom(String roomId) async {
-    Room? room = getRoomById(roomId);
+  /// The joined room from local state, waiting briefly for sync to surface it.
+  /// Null when sync is still lagging — NOT a failure: every caller runs after
+  /// a join API call that already succeeded, so the membership is real and the
+  /// local room list just hasn't caught up. A freshly-booted client (a class
+  /// join link IS a fresh page load) routinely takes longer than this to chew
+  /// through its initial sync; failing the flow here stranded the user on the
+  /// join page as a secret member of the course (#7579).
+  Future<Room?> _loadRoom(String roomId) async {
+    final room = getRoomById(roomId);
     if (room == null || room.membership != Membership.join) {
-      await waitForRoomInSync(
-        roomId,
-        join: true,
-      ).timeout(Duration(seconds: 10));
+      try {
+        await waitForRoomInSync(
+          roomId,
+          join: true,
+        ).timeout(const Duration(seconds: 10));
+      } on TimeoutException {
+        // Sync lag, not a failed join — proceed without the local room.
+      }
     }
-
-    room = getRoomById(roomId);
-    if (room == null) {
-      throw "Room not found after joining";
-    }
-
-    return room;
+    return getRoomById(roomId);
   }
 
   Future<LanguageModel?> _getCourseLanguage(String courseId) async {
@@ -183,7 +190,7 @@ extension JoinRoomAnalyticsAccessRoomExtension on Room {
     final room = await client._loadRoom(id);
     final joinResp = JoinResponse(
       roomId: id,
-      shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
+      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
     );
     return joinResp;
   }

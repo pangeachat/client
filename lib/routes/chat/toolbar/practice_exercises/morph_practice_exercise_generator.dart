@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_morph_choice.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
@@ -33,7 +34,9 @@ class MorphPracticeExerciseGenerator {
     final allTags = tags.map((t) => t.value);
     final List<String> possibleDistractors = allTags
         .where(
-          (tag) => tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
+          (tag) =>
+              tag.toLowerCase() != morphTag.toLowerCase() &&
+              PartOfSpeechEnum.isEligibleLemmaTag(tag),
         )
         .toList();
 

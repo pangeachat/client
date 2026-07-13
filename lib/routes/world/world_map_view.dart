@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -194,10 +195,14 @@ class _WorldMapViewState extends State<WorldMapView> {
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
     // (pipeline step 4). When the large cap is zero the pass yields nothing.
+    // While the camera's zoom is actively changing the large tier is emptied —
+    // cards would slide around mid-gesture and block the zoom target — and the
+    // settle rebuild re-derives whatever tops the matrix at the new camera
+    // (#7245).
     final placement = _placeLarge(
       visible: visible,
       candidates: ranking.ordered,
-      largeBudget: budget.large,
+      largeBudget: widget.controller.isActivelyZooming ? 0 : budget.large,
       heavyEligibleIds: ranking.heavyEligibleIds,
     );
 
@@ -265,14 +270,20 @@ class _WorldMapViewState extends State<WorldMapView> {
         safeArea: safeArea,
         largeBudget: largeBudget,
         heavyEligibleIds: heavyEligibleIds,
+        dismissedIds: widget.controller.dismissedLargeIds,
       );
     } catch (_) {
       // Camera not laid out yet: static top-N (focused first), no fit test.
       // The next (camera-ready) frame does the real placement. Still honours the
-      // live-session gate — only live sessions are large-eligible.
-      final eligible = heavyEligibleIds == null
-          ? candidates
-          : candidates.where(heavyEligibleIds.contains).toList();
+      // live-session gate — only live sessions are large-eligible — and the
+      // X-dismissals (#7207), so a dismissed card cannot flash back for a frame.
+      final dismissed = widget.controller.dismissedLargeIds;
+      final eligible = candidates
+          .where((id) => !dismissed.contains(id))
+          .where(
+            (id) => heavyEligibleIds == null || heavyEligibleIds.contains(id),
+          )
+          .toList();
       return PlacementResult(
         largeIds: <String>[
           if (focusedId != null && eligible.contains(focusedId)) focusedId,
@@ -312,6 +323,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       trailBudget: budget.trail,
       progressedIds: widget.controller.progressedActivityIds,
       isNewLearner: widget.controller.isNewLearner,
+      dismissedIds: widget.controller.dismissedLargeIds,
     );
   }
 
@@ -437,6 +449,11 @@ class _WorldMapViewState extends State<WorldMapView> {
 
     final joinableActivity = widget.controller.client
         ?.bestJoinableActivityInstance(card.activityId);
+    // No joined local room — a discovered/invited session's accurate seats and
+    // participants come from its room_preview summary (#7488).
+    final discoveredSummary = joinableActivity == null
+        ? DiscoveredSessionsCache.instance.bestOpenSummary(card.activityId)
+        : null;
 
     final state = render.stateOf(card.activityId);
     final tier = PinTier.large;
@@ -462,10 +479,17 @@ class _WorldMapViewState extends State<WorldMapView> {
           plan: plan,
           starsEarned:
               widget.controller.activityStarsEarned(card.activityId) ?? 0,
-          participants: joinableActivity?.largeCardParticipants ?? [],
-          openSlots: joinableActivity?.numRemainingRoles ?? 0,
+          participants:
+              joinableActivity?.largeCardParticipants ??
+              discoveredSummary?.largeCardParticipants() ??
+              [],
+          openSlots:
+              joinableActivity?.numRemainingRoles ??
+              discoveredSummary?.openSlots ??
+              0,
           isFocused: card.activityId == render.focusedId,
           onTap: () => widget.controller.openActivity(card),
+          onClose: () => widget.controller.dismissLargeCard(card),
         ),
       ),
     );

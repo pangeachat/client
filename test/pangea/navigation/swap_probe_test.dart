@@ -6,6 +6,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
@@ -267,7 +268,7 @@ void main() {
         var u = Uri.parse(
           WorkspaceNav.openCourse(Uri.parse('/'), '!space:server'),
         );
-        u = Uri.parse(WorkspaceNav.openCoursePage(u, 'invite'));
+        u = Uri.parse(WorkspaceNav.openCoursePage(u, RoomSubpageEnum.invite));
         final l = layoutOf(u, 400, columnMode: false);
         // coursepage is appended AFTER course in the left list; the leaf rule
         // must still seat the page, not the card.

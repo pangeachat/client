@@ -7,11 +7,13 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -125,16 +127,52 @@ class CourseInvitePageController extends State<CourseInvitePage>
     }
   }
 
+  Future<bool> get _requireAnalyticsAccess async {
+    String spaceId;
+    try {
+      spaceId = await getSpaceId();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"created_course_id": widget.courseId},
+      );
+      return true;
+    }
+
+    final room = Matrix.of(context).client.getRoomById(spaceId);
+    if (room == null) return true;
+    return room.requireAnalyticsAccess;
+  }
+
   Future<void> _setVisibility(bool value) async {
     try {
-      debugPrint(
-        "Setting course visibility to ${value ? "public" : "private"}",
-      );
       final spaceId = await getSpaceId();
       await Matrix.of(context).client.setRoomVisibilityOnDirectory(
         spaceId,
         visibility: value ? Visibility.public : Visibility.private,
       );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"created_course_id": widget.courseId, "visibility": value},
+      );
+      rethrow;
+    } finally {
+      if (mounted) setState(() {});
+    }
+  }
+
+  Future<void> _setRequireAnalyticsAccess(bool value) async {
+    try {
+      final spaceId = await getSpaceId();
+      final room = Matrix.of(context).client.getRoomById(spaceId);
+      if (room == null) {
+        throw Exception('Room not found');
+      }
+
+      await room.setRequireAnalyticsAccess(value);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -263,32 +301,69 @@ class CourseInvitePageController extends State<CourseInvitePage>
                   spacing: 24.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      spacing: 8.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            L10n.of(context).visibilityToggleTitle,
-                            style: theme.textTheme.bodyMedium,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        FutureBuilder(
-                          future: _isPublic,
-                          builder: (context, snapshot) {
-                            final value = snapshot.data ?? true;
-                            return Switch(
-                              value: value,
-                              onChanged: (v) => showFutureLoadingDialog(
-                                context: context,
-                                future: () => _setVisibility(v),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      constraints: BoxConstraints(maxWidth: 400.0),
+                      child: Column(
+                        spacing: 8.0,
+                        children: [
+                          Row(
+                            spacing: 8.0,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  L10n.of(context).visibilityToggleTitle,
+                                  style: theme.textTheme.bodyMedium,
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                              activeThumbColor: AppConfig.success,
-                            );
-                          },
-                        ),
-                      ],
+                              FutureBuilder(
+                                future: _isPublic,
+                                builder: (context, snapshot) {
+                                  final value = snapshot.data ?? true;
+                                  return Switch(
+                                    value: value,
+                                    onChanged: (v) => showFutureLoadingDialog(
+                                      context: context,
+                                      future: () => _setVisibility(v),
+                                    ),
+                                    activeThumbColor: AppConfig.success,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          Row(
+                            spacing: 8.0,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  L10n.of(context).requireAnalyticsAccessTitle,
+                                  style: theme.textTheme.bodyMedium,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              FutureBuilder(
+                                future: _requireAnalyticsAccess,
+                                builder: (context, snapshot) {
+                                  final value = snapshot.data ?? true;
+                                  return Switch(
+                                    value: value,
+                                    onChanged: (v) => showFutureLoadingDialog(
+                                      context: context,
+                                      future: () =>
+                                          _setRequireAnalyticsAccess(v),
+                                    ),
+                                    activeThumbColor: AppConfig.success,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () async {
@@ -305,7 +380,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
                             WorkspaceNav.openCoursePageFor(
                               GoRouterState.of(context).uri,
                               resp.result!,
-                              'invite',
+                              RoomSubpageEnum.invite,
                             ),
                           );
                         }

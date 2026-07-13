@@ -187,6 +187,8 @@ There should be exactly **one** real `flutter run` (a `dartvm … flutter_tools`
 
 ## Env — which stack the build talks to
 
+**Which Synapse / CMS / choreo the build points at is a per-service choice, not a package deal** — `client/.env` routes each independently, and mixing is normal (e.g. local Synapse + local CMS + staging choreo to smoke-test a deployed language tool). One hard rule constrains the mix: **`SYNAPSE_URL` and `CMS_API` must be the same environment** — the client authenticates to the CMS with the Matrix bearer token, and a cross-homeserver token gets **403** with course/activity content silently missing. `CHOREO_API` mixes freely. The full wiring, base-path shapes, and the other cross-service contracts that bite live in [local-stack.instructions.md](../../../../.github/.github/instructions/local-stack.instructions.md) — read it before debugging any "content not loading" symptom.
+
 The web app fetches its config from `GET /.env` at the dev-server root (served from repo-root `client/.env`; no `assets/.env` since #6975). It is fetched once at app startup and the dev server caches it per process, so **neither a hot reload nor a browser reload picks up an edited `client/.env`** — clean-restart to serve the new values.
 
 ```bash

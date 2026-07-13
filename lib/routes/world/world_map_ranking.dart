@@ -157,6 +157,15 @@ bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
 /// gate. A hand-set lever like the rest of the weights (world-map.instructions.md).
 const double kMultiPersonFirstMapPenalty = 2.0;
 
+/// Weight of the `dismissed` penalty (#7207/#7245): the learner X'd this
+/// activity's large card within the dismissal TTL. Deliberately the same
+/// magnitude as `finished` — both mean "demote, keep on the map" — and small
+/// enough that it can't push a pin below the render cap `N`. The penalty alone
+/// cannot keep a competition-free top scorer out of the large tier, so
+/// dismissal is *also* a large-tier eligibility rule in the placement pass
+/// ([placeLargeCards]'s `dismissedIds`), like the live-session heavy-tier gate.
+const double kDismissedPenalty = 0.5;
+
 /// True when this pin should take the `multi_person_first_map` penalty: the
 /// learner has no prior activity ([isNewLearner]), the activity needs **3+ roles**
 /// (unstartable solo — the bot fills exactly one), and it is **not** itself a live
@@ -173,18 +182,21 @@ bool isMultiPersonFirstMap({
     s.state != ActivityPinState.joined;
 
 /// score = 3*joinable + 2*joined + relevance_band + 0.6*pinged + 0.3*recency
-/// - 0.5*finished - 2*multi_person_first_map. A live session is the heaviest
-/// signal: +3 if the learner can join it (open, someone else's), +2 if they are
-/// already in it. `joinable` and `joined` are mutually exclusive per pin (the
-/// state precedence picks one), so at most one of the two fires. A finished
-/// activity (full star row) demotes but stays visible (the trail reservation
-/// keeps it on the map). The multi-person term deprioritizes a 3+ role activity
-/// on a new learner's first map (#7435). See world-map.instructions.md.
+/// - 0.5*finished - 0.5*dismissed - 2*multi_person_first_map. A live session is
+/// the heaviest signal: +3 if the learner can join it (open, someone else's),
+/// +2 if they are already in it. `joinable` and `joined` are mutually exclusive
+/// per pin (the state precedence picks one), so at most one of the two fires. A
+/// finished activity (full star row) demotes but stays visible (the trail
+/// reservation keeps it on the map), and an X-dismissed one demotes the same
+/// way while its TTL runs (#7207/#7245). The multi-person term deprioritizes a
+/// 3+ role activity on a new learner's first map (#7435). See
+/// world-map.instructions.md.
 double pinScore({
   required double band,
   required PinSignals s,
   int? roleCount,
   bool isNewLearner = false,
+  bool isDismissed = false,
 }) =>
     3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
     2 * (s.state == ActivityPinState.joined ? 1 : 0) +
@@ -192,6 +204,7 @@ double pinScore({
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
     0.5 * (s.completionFraction >= 1.0 ? 1 : 0) -
+    kDismissedPenalty * (isDismissed ? 1 : 0) -
     kMultiPersonFirstMapPenalty *
         (isMultiPersonFirstMap(
               roleCount: roleCount,
@@ -230,6 +243,7 @@ RankingResult rankPins({
   Set<String> progressedIds = const {},
   int maxPerDiversityKey = 2,
   bool isNewLearner = false,
+  Set<String> dismissedIds = const {},
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
@@ -247,6 +261,7 @@ RankingResult rankPins({
         s: sig(p.activityId),
         roleCount: p.roleCount,
         isNewLearner: isNewLearner,
+        isDismissed: dismissedIds.contains(p.activityId),
       ),
     );
   }).toList()..sort((a, b) => b.score.compareTo(a.score));
@@ -366,6 +381,7 @@ PlacementResult placeLargeCards({
   required Rect safeArea,
   int largeBudget = 3,
   Set<String>? heavyEligibleIds,
+  Set<String> dismissedIds = const {},
 }) {
   // The card sits ABOVE its pin: flutter_map places an Alignment.topCenter
   // marker so its box is above the point (the point is the box's bottom-center,
@@ -380,10 +396,13 @@ PlacementResult placeLargeCards({
 
   // Under the live-session gate only live sessions are eligible for a large card,
   // so a non-live pin — even the focused one — stays a dot
-  // (world-map.instructions.md, the heavy-tier gate).
-  final candidates = heavyEligibleIds == null
-      ? orderedCandidates
-      : orderedCandidates.where(heavyEligibleIds.contains).toList();
+  // (world-map.instructions.md, the heavy-tier gate). An X-dismissed pin (#7207)
+  // is likewise never large — it falls through to the mid/small pass, so the
+  // dismissal demotes rather than removes.
+  final candidates = orderedCandidates
+      .where((id) => !dismissedIds.contains(id))
+      .where((id) => heavyEligibleIds == null || heavyEligibleIds.contains(id))
+      .toList();
 
   // Focused pin goes first when it is a candidate this view, so it claims its
   // footprint and the featured set yields around it. It is not force-added: a
