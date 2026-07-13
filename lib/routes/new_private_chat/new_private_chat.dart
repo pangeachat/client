@@ -3,18 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/user/user_search_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat_view.dart';
-import 'package:fluffychat/routes/new_private_chat/qr_scanner_modal.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../widgets/adaptive_dialogs/user_dialog.dart';
@@ -78,29 +73,6 @@ class NewPrivateChatController extends State<NewPrivateChat> {
   }
 
   void inviteAction() => FluffyShare.shareInviteLink(context);
-
-  void openScannerAction() async {
-    if (PlatformInfos.isAndroid) {
-      final info = await DeviceInfoPlugin().androidInfo;
-      if (info.version.sdkInt < 21) {
-        // #Pangea
-        ScaffoldMessenger.of(context).showSnackBarAnnounced(
-          SnackBar(
-            content: Text(L10n.of(context).unsupportedAndroidVersionLong),
-          ),
-          assertive: true,
-        );
-        // Pangea#
-        return;
-      }
-    }
-    await showAdaptiveBottomSheet(
-      context: context,
-      builder: (_) => QrScannerModal(
-        onScan: (link) => UrlLauncher(context, link).openMatrixToUrl(),
-      ),
-    );
-  }
 
   void copyUserId() async {
     await Clipboard.setData(

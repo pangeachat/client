@@ -1,16 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import '../config/app_config.dart';
 
 abstract class PlatformInfos {
   static bool get isWeb => kIsWeb;
@@ -55,58 +50,6 @@ abstract class PlatformInfos {
       version = (await PackageInfo.fromPlatform()).version;
     } catch (_) {}
     return version;
-  }
-
-  static void showDialog(BuildContext context) async {
-    final version = await PlatformInfos.getVersion();
-    showAboutDialog(
-      context: context,
-      // #Pangea
-      useRootNavigator: false,
-      // Pangea#
-      children: [
-        Text(L10n.of(context).versionWithNumber(version)),
-        TextButton.icon(
-          onPressed: () => launchUrlString(AppConfig.sourceCodeUrl),
-          icon: const Icon(Icons.source_outlined),
-          label: Text(L10n.of(context).sourceCode),
-        ),
-        Builder(
-          builder: (innerContext) {
-            return TextButton.icon(
-              onPressed: () {
-                context.go('/logs');
-                Navigator.of(innerContext).pop();
-              },
-              icon: const Icon(Icons.list_outlined),
-              label: Text(L10n.of(context).logs),
-            );
-          },
-        ),
-        Builder(
-          builder: (innerContext) {
-            return TextButton.icon(
-              onPressed: () {
-                context.go('/configs');
-                Navigator.of(innerContext).pop();
-              },
-              icon: const Icon(Icons.settings_applications_outlined),
-              label: Text(L10n.of(context).advancedConfigs),
-            );
-          },
-        ),
-      ],
-      applicationIcon: Image.asset(
-        'assets/logo.png',
-        width: 64,
-        height: 64,
-        filterQuality: FilterQuality.medium,
-        // #Pangea
-        excludeFromSemantics: true,
-        // Pangea#
-      ),
-      applicationName: AppSettings.applicationName.value,
-    );
   }
 
   // #Pangea
