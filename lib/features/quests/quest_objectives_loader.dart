@@ -31,9 +31,13 @@ class QuestObjectivesLoader {
     ProgressionResolution.empty,
   );
 
+  int _loadGeneration = 0;
+  bool _disposed = false;
+
   void dispose() {
     _questLoader.dispose();
     _progression.dispose();
+    _disposed = true;
   }
 
   QuestLoader get questLoader => _questLoader;
@@ -55,33 +59,54 @@ class QuestObjectivesLoader {
         _ => const [],
       };
 
+  void _updateProgression(ProgressionResolution value, int loadGen) {
+    if (!_disposed && loadGen == _loadGeneration) {
+      _progression.value = value;
+    }
+  }
+
+  void _updateQuest(AsyncState<QuestOutline> value, int loadGen) {
+    if (!_disposed && loadGen == _loadGeneration) {
+      _questLoader.value = value;
+    }
+  }
+
   Future<void> loadOutline(String? questId) async {
-    _progression.value = ProgressionResolution.empty;
+    if (_disposed) return;
+
+    _loadGeneration++;
+    final loadGen = _loadGeneration;
+    _updateProgression(ProgressionResolution.empty, loadGen);
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
     // plan's uuid) points at a quest-plans id. The outline (Missions + their
     // activities) comes from the v3 quest read layer; the v1
     // course-plans/topics fan-out is retired.
     if (questId == null) {
-      _questLoader.value = AsyncError(MissingQuestException());
+      if (!_disposed && loadGen == _loadGeneration) {
+        _updateQuest(AsyncError(MissingQuestException()), loadGen);
+      }
       return;
     }
 
-    _questLoader.value = AsyncLoading();
+    _updateQuest(AsyncLoading(), loadGen);
     final outlineResult = await QuestRepo.outline(questId);
     final outline = outlineResult.result;
 
+    if (_disposed) return;
+
     if (outline == null) {
-      _questLoader.value = AsyncError(
-        outlineResult.error ?? MissingQuestException(),
+      _updateQuest(
+        AsyncError(outlineResult.error ?? MissingQuestException()),
+        loadGen,
       );
       return;
     }
 
-    _questLoader.value = AsyncLoaded(outline);
+    _updateQuest(AsyncLoaded(outline), loadGen);
 
     ProgressionResolution.resolveJoinedProgression(
       client,
-    ).then((p) => _progression.value = p);
+    ).then((p) => _updateProgression(p, loadGen));
   }
 }

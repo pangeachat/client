@@ -370,15 +370,22 @@ class SpaceDetailsContent extends StatelessWidget {
                 // The one camera path that zooms (#7616): course selection
                 // only pans, so this button zoom+pan-fits the map to all of
                 // the course's activities.
-                if (controller
-                    .objectivesProvider
-                    .filteredObjectiveGroups
-                    .isNotEmpty)
-                  IconButton(
-                    tooltip: L10n.of(context).focusOnMap,
-                    icon: const Icon(Icons.filter_center_focus),
-                    onPressed: MapCameraFocusRequests.request,
-                  ),
+                ValueListenableBuilder(
+                  valueListenable: controller.objectivesProvider.questLoader,
+                  builder: (context, _, _) {
+                    if (controller
+                        .objectivesProvider
+                        .filteredObjectiveGroups
+                        .isNotEmpty) {
+                      return IconButton(
+                        tooltip: L10n.of(context).focusOnMap,
+                        icon: const Icon(Icons.filter_center_focus),
+                        onPressed: MapCameraFocusRequests.request,
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
                 if (room.joinCode != null)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
