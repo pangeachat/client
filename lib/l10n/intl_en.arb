@@ -5046,14 +5046,12 @@
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
     "mapZoomLabel": "Map zoom controls", 
     "activityMapLabel": "Activity map", 
-    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian", 
     "elDisplayName": "Greek",
     "etDisplayName": "Estonian",
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
-    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "missingCourseOutline": "This course is no longer available",
     "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan.",
     "welcome": "Welcome",
@@ -5076,7 +5074,7 @@
             }
         }
     },
-    "closeAddCoursePage": "Close add course page"
+    "closeAddCoursePage": "Close add course page",
     "bodyLabel": "{page} options",
     "@bodyLabel": {
         "placeholders": {

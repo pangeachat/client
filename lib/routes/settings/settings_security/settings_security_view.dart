@@ -23,177 +23,183 @@ class SettingsSecurityView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      body: ListTileTheme(
-        iconColor: theme.colorScheme.onSurface,
-        child: MaxWidthBody(
-          child: FutureBuilder(
-            future: Matrix.of(
-              context,
-            ).client.getCapabilities().timeout(const Duration(seconds: 10)),
-            builder: (context, snapshot) {
-              final capabilities = snapshot.data;
-              final error = snapshot.error;
-              if (error == null && capabilities == null) {
-                return const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                  ),
-                );
-              }
-              return Column(
-                children: [
-                  ListTile(
-                    title: Text(
-                      L10n.of(context).privacy,
-                      style: TextStyle(
-                        color: theme.colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
+    return Semantics(
+      label: L10n.of(context).bodyLabel(L10n.of(context).security),
+      container: true,
+      child: Scaffold(
+        body: ListTileTheme(
+          iconColor: theme.colorScheme.onSurface,
+          child: MaxWidthBody(
+            child: FutureBuilder(
+              future: Matrix.of(
+                context,
+              ).client.getCapabilities().timeout(const Duration(seconds: 10)),
+              builder: (context, snapshot) {
+                final capabilities = snapshot.data;
+                final error = snapshot.error;
+                if (error == null && capabilities == null) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                    ),
+                  );
+                }
+                return Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        L10n.of(context).privacy,
+                        style: TextStyle(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  SettingsSwitchListTile.adaptive(
-                    title: L10n.of(context).sendTypingNotifications,
-                    subtitle: L10n.of(
-                      context,
-                    ).sendTypingNotificationsDescription,
-                    setting: AppSettings.sendTypingNotifications,
-                  ),
-                  SettingsSwitchListTile.adaptive(
-                    title: L10n.of(context).sendReadReceipts,
-                    subtitle: L10n.of(context).sendReadReceiptsDescription,
-                    setting: AppSettings.sendPublicReadReceipts,
-                  ),
-                  ListTile(
-                    trailing: const Icon(Icons.chevron_right_outlined),
-                    title: Text(L10n.of(context).blockedUsers),
-                    subtitle: Text(
-                      L10n.of(context).thereAreCountUsersBlocked(
-                        Matrix.of(context).client.ignoredUsers.length,
+                    SettingsSwitchListTile.adaptive(
+                      title: L10n.of(context).sendTypingNotifications,
+                      subtitle: L10n.of(
+                        context,
+                      ).sendTypingNotificationsDescription,
+                      setting: AppSettings.sendTypingNotifications,
+                    ),
+                    SettingsSwitchListTile.adaptive(
+                      title: L10n.of(context).sendReadReceipts,
+                      subtitle: L10n.of(context).sendReadReceiptsDescription,
+                      setting: AppSettings.sendPublicReadReceipts,
+                    ),
+                    ListTile(
+                      trailing: const Icon(Icons.chevron_right_outlined),
+                      title: Text(L10n.of(context).blockedUsers),
+                      subtitle: Text(
+                        L10n.of(context).thereAreCountUsersBlocked(
+                          Matrix.of(context).client.ignoredUsers.length,
+                        ),
+                      ),
+                      onTap: () => context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'security/ignorelist',
+                        ),
                       ),
                     ),
-                    onTap: () => context.go(
-                      WorkspaceNav.openSettings(
-                        GoRouterState.of(context).uri,
-                        page: 'security/ignorelist',
+                    if (Matrix.of(context).client.encryption != null) ...{
+                      if (PlatformInfos.isMobile)
+                        ListTile(
+                          trailing: const Icon(Icons.chevron_right_outlined),
+                          title: Text(L10n.of(context).appLock),
+                          subtitle: Text(L10n.of(context).appLockDescription),
+                          onTap: controller.setAppLockAction,
+                        ),
+                    },
+                    Divider(color: theme.dividerColor),
+                    ListTile(
+                      title: Text(
+                        L10n.of(context).shareKeysWith,
+                        style: TextStyle(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      subtitle: Text(L10n.of(context).shareKeysWithDescription),
                     ),
-                  ),
-                  if (Matrix.of(context).client.encryption != null) ...{
-                    if (PlatformInfos.isMobile)
-                      ListTile(
-                        trailing: const Icon(Icons.chevron_right_outlined),
-                        title: Text(L10n.of(context).appLock),
-                        subtitle: Text(L10n.of(context).appLockDescription),
-                        onTap: controller.setAppLockAction,
-                      ),
-                  },
-                  Divider(color: theme.dividerColor),
-                  ListTile(
-                    title: Text(
-                      L10n.of(context).shareKeysWith,
-                      style: TextStyle(
-                        color: theme.colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(L10n.of(context).shareKeysWithDescription),
-                  ),
-                  ListTile(
-                    title: Material(
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius / 2,
-                      ),
-                      color: theme.colorScheme.onInverseSurface,
-                      child: DropdownButton<ShareKeysWith>(
-                        isExpanded: true,
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    ListTile(
+                      title: Material(
                         borderRadius: BorderRadius.circular(
                           AppConfig.borderRadius / 2,
                         ),
-                        underline: const SizedBox.shrink(),
-                        value: Matrix.of(context).client.shareKeysWith,
-                        items: ShareKeysWith.values
-                            .map(
-                              (share) => DropdownMenuItem(
-                                value: share,
-                                child: Text(share.localized(L10n.of(context))),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: controller.changeShareKeysWith,
-                      ),
-                    ),
-                  ),
-                  Divider(color: theme.dividerColor),
-                  ListTile(
-                    title: Text(
-                      L10n.of(context).account,
-                      style: TextStyle(
-                        color: theme.colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text(L10n.of(context).yourPublicKey),
-                    leading: const Icon(Icons.vpn_key_outlined),
-                    subtitle: SelectableText(
-                      Matrix.of(context).client.fingerprintKey.beautified,
-                      style: const TextStyle(fontFamily: 'RobotoMono'),
-                    ),
-                  ),
-                  // #Pangea
-                  if (capabilities?.m3pidChanges?.enabled != false ||
-                      error != null)
-                    ListTile(
-                      leading: const Icon(Icons.mail_outline_rounded),
-                      trailing: const Icon(Icons.chevron_right_outlined),
-                      title: Text(L10n.of(context).changeEmail),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'security/3pid',
+                        color: theme.colorScheme.onInverseSurface,
+                        child: DropdownButton<ShareKeysWith>(
+                          isExpanded: true,
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.borderRadius / 2,
+                          ),
+                          underline: const SizedBox.shrink(),
+                          value: Matrix.of(context).client.shareKeysWith,
+                          items: ShareKeysWith.values
+                              .map(
+                                (share) => DropdownMenuItem(
+                                  value: share,
+                                  child: Text(
+                                    share.localized(L10n.of(context)),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: controller.changeShareKeysWith,
                         ),
                       ),
                     ),
-                  // Pangea#
-                  if (capabilities?.mChangePassword?.enabled != false ||
-                      error != null)
+                    Divider(color: theme.dividerColor),
                     ListTile(
-                      leading: const Icon(Icons.password_outlined),
-                      trailing: const Icon(Icons.chevron_right_outlined),
-                      title: Text(L10n.of(context).changePassword),
-                      onTap: () => context.go(
-                        WorkspaceNav.openSettings(
-                          GoRouterState.of(context).uri,
-                          page: 'security/password',
+                      title: Text(
+                        L10n.of(context).account,
+                        style: TextStyle(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ListTile(
-                    iconColor: Colors.orange,
-                    leading: const Icon(Icons.delete_sweep_outlined),
-                    title: Text(
-                      L10n.of(context).dehydrate,
-                      style: const TextStyle(color: Colors.orange),
+                    ListTile(
+                      title: Text(L10n.of(context).yourPublicKey),
+                      leading: const Icon(Icons.vpn_key_outlined),
+                      subtitle: SelectableText(
+                        Matrix.of(context).client.fingerprintKey.beautified,
+                        style: const TextStyle(fontFamily: 'RobotoMono'),
+                      ),
                     ),
-                    onTap: controller.dehydrateAction,
-                  ),
-                  Divider(color: theme.dividerColor),
-                  ListTile(
-                    iconColor: Colors.red,
-                    leading: const Icon(Icons.delete_outlined),
-                    title: Text(
-                      L10n.of(context).deleteAccount,
-                      style: const TextStyle(color: Colors.red),
+                    // #Pangea
+                    if (capabilities?.m3pidChanges?.enabled != false ||
+                        error != null)
+                      ListTile(
+                        leading: const Icon(Icons.mail_outline_rounded),
+                        trailing: const Icon(Icons.chevron_right_outlined),
+                        title: Text(L10n.of(context).changeEmail),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'security/3pid',
+                          ),
+                        ),
+                      ),
+                    // Pangea#
+                    if (capabilities?.mChangePassword?.enabled != false ||
+                        error != null)
+                      ListTile(
+                        leading: const Icon(Icons.password_outlined),
+                        trailing: const Icon(Icons.chevron_right_outlined),
+                        title: Text(L10n.of(context).changePassword),
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'security/password',
+                          ),
+                        ),
+                      ),
+                    ListTile(
+                      iconColor: Colors.orange,
+                      leading: const Icon(Icons.delete_sweep_outlined),
+                      title: Text(
+                        L10n.of(context).dehydrate,
+                        style: const TextStyle(color: Colors.orange),
+                      ),
+                      onTap: controller.dehydrateAction,
                     ),
-                    onTap: controller.deleteAccountAction,
-                  ),
-                ],
-              );
-            },
+                    Divider(color: theme.dividerColor),
+                    ListTile(
+                      iconColor: Colors.red,
+                      leading: const Icon(Icons.delete_outlined),
+                      title: Text(
+                        L10n.of(context).deleteAccount,
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                      onTap: controller.deleteAccountAction,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
