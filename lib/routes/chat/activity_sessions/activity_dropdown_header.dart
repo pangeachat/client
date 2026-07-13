@@ -10,6 +10,7 @@ class ActivityDropdownHeader extends StatelessWidget {
   final bool isGoalCompleted;
   final VoidCallback toggleShowDropdown;
   final Widget? trailing;
+  final bool animateGoalTransitions;
 
   const ActivityDropdownHeader({
     super.key,
@@ -17,11 +18,30 @@ class ActivityDropdownHeader extends StatelessWidget {
     required this.isGoalCompleted,
     required this.toggleShowDropdown,
     this.trailing,
+    this.animateGoalTransitions = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final goalIndicator = Row(
+      key: ValueKey(goal.id),
+      children: [
+        Expanded(
+          child: GoalStatusWidget(
+            goal: goal,
+            complete: isGoalCompleted,
+            starTarget: ActivitySessionConstants.goalMenuStarTargetId(goal.id),
+            textStyle: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        ?trailing,
+      ],
+    );
+
     return InkWell(
       onTap: toggleShowDropdown,
       child: Container(
@@ -30,56 +50,40 @@ class ActivityDropdownHeader extends StatelessWidget {
           border: Border(top: BorderSide(color: theme.dividerColor)),
           color: theme.colorScheme.surface,
         ),
-        child: AnimatedSwitcher(
-          duration: FluffyThemes.animationDuration,
-          transitionBuilder: (child, animation) {
-            final isCurrent = child.key == ValueKey(goal.id);
+        child: animateGoalTransitions
+            ? AnimatedSwitcher(
+                duration: FluffyThemes.animationDuration,
+                transitionBuilder: (child, animation) {
+                  final isCurrent = child.key == ValueKey(goal.id);
 
-            return ClipRect(
-              child: AnimatedBuilder(
-                animation: animation,
-                child: child,
-                builder: (context, child) {
-                  final offset = isCurrent
-                      // New item: 1 -> 0
-                      ? Offset(0, 1 - animation.value)
-                      // Old item: 0 -> -1
-                      : Offset(0, animation.value - 1);
+                  return ClipRect(
+                    child: AnimatedBuilder(
+                      animation: animation,
+                      child: child,
+                      builder: (context, child) {
+                        final offset = isCurrent
+                            // New item: 1 -> 0
+                            ? Offset(0, 1 - animation.value)
+                            // Old item: 0 -> -1
+                            : Offset(0, animation.value - 1);
 
-                  return FractionalTranslation(
-                    translation: offset,
-                    child: child,
+                        return FractionalTranslation(
+                          translation: offset,
+                          child: child,
+                        );
+                      },
+                    ),
                   );
                 },
-              ),
-            );
-          },
-          layoutBuilder: (currentChild, previousChildren) {
-            return Stack(
-              alignment: Alignment.centerLeft,
-              children: [...previousChildren, ?currentChild],
-            );
-          },
-          child: Row(
-            key: ValueKey(goal.id),
-            children: [
-              Expanded(
-                child: GoalStatusWidget(
-                  goal: goal,
-                  complete: isGoalCompleted,
-                  starTarget: ActivitySessionConstants.goalMenuStarTargetId(
-                    goal.id,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              ?trailing,
-            ],
-          ),
-        ),
+                layoutBuilder: (currentChild, previousChildren) {
+                  return Stack(
+                    alignment: Alignment.centerLeft,
+                    children: [...previousChildren, ?currentChild],
+                  );
+                },
+                child: goalIndicator,
+              )
+            : goalIndicator,
       ),
     );
   }

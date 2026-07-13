@@ -87,6 +87,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
                 trailing: remainingGoals.isNotEmpty
                     ? Icon(showDropdown ? Icons.expand_less : Icons.expand_more)
                     : null,
+                animateGoalTransitions: false,
               ),
             if (remainingGoals.isNotEmpty)
               ActivityDropdownContentContainer(
