@@ -3335,7 +3335,6 @@
     "startNewSession": "नई सत्र शुरू करें",
     "joinOpenSession": "खुले सत्र में शामिल हों",
     "activityNotFound": "गतिविधि नहीं मिली",
-    "levelUp": "स्तर बढ़ाएँ",
     "myActivities": "मेरी गतिविधियाँ",
     "openToJoin": "शामिल होने के लिए खुला",
     "results": "परिणाम",
@@ -3377,7 +3376,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-06 10:22:53.545892",
+    "@@last_modified": "2026-07-13 10:08:10.346832",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10168,7 +10167,6 @@
     "enableNotificationsTitle": "कभी भी चैट न चूकें!",
     "enableNotificationsDesc": "Pangea चैट के लिए सूचनाएँ अनुमति दें और अपने भाषा मित्रों के साथ जुड़े रहें!",
     "enableNotifications": "सूचनाएँ अनुमति दें",
-    "noActivitiesFound": "इस विषय के लिए कोई गतिविधियाँ उपलब्ध नहीं हैं।",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10178,10 +10176,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10986,5 +10980,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "एस्टोनियाई",
+    "abDisplayName": "अभखाज़ियन",
+    "elDisplayName": "ग्रीक",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} में से {total} सितारे अर्जित किए गए",
+    "activityNoLongerSupported": "यह गतिविधि गतिविधियों के पुराने संस्करण पर चल रही थी और अब समर्थित नहीं है। आप अभी भी इस सत्र में क्या हुआ, इसकी समीक्षा कर सकते हैं।",
+    "activityLoadFailed": "गतिविधि लोड नहीं हो सकी। अपने कनेक्शन की जांच करें और फिर से प्रयास करें।",
+    "levelUpChip": "स्तर {level}!",
+    "missingCourseOutline": "यह पाठ्यक्रम अब उपलब्ध नहीं है",
+    "missingCourseOutlineCta": "यह पाठ्यक्रम अब उपलब्ध नहीं है। एक नया पाठ्यक्रम योजना चुनें।",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "कोर्स जोड़ने का पृष्ठ बंद करें",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "व्याकरण जानकारी समस्या की रिपोर्ट करें",
+    "grammarFeedbackDialogTitle": "व्याकरण जानकारी फीडबैक",
+    "grammarFeedbackSubmittedDesc": "धन्यवाद! आपकी फीडबैक के आधार पर व्याख्या अपडेट की गई है।",
+    "focusOnMap": "मानचित्र पर ध्यान केंद्रित करें",
+    "welcome": "स्वागत है",
+    "courseRequest": "कोर्स अनुरोध",
+    "onboarding": "ऑनबोर्डिंग",
+    "selectImageFromDevice": "डिवाइस से छवि चुनें",
+    "dinoAvatarLabel": "सूरज के चश्मे वाला एक डायनासोर",
+    "bearAvatarLabel": "एक दोस्ताना भालू",
+    "squidAvatarLabel": "हेडफ़ोन पहने एक ऑक्टोपस",
+    "cartoonAvatarLabel": "एक खुश कार्टून पात्र जो लहराता है",
+    "robotAvatarLabel": "आंखों के लिए सितारे वाला एक रोबोट",
+    "featuresIncludeLabel": "विशेषताएँ शामिल हैं",
+    "difficultyListLabel": "कठिनाई सूची",
+    "languageListLabel": "भाषा सूची",
+    "searchedResultsLabel": "'{search}' के लिए खोज परिणाम",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
@@ -16,7 +17,6 @@ import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
 import 'package:fluffychat/routes/home/signup/signup.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_page.dart';
-import 'package:fluffychat/routes/join_with_link/join_with_link_page.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page.dart';
 import 'package:fluffychat/routes/registration/create_pangea_account_page.dart';
@@ -105,32 +105,18 @@ abstract class AppRoutes {
           defaultPageBuilder(context, state, const CreatePangeaAccountPage()),
       redirect: PAuthGaurd.onboardingRedirect,
     ),
-    GoRoute(
-      path: '/join_with_link',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        JoinClassWithLink(
-          classCode: state.uri.queryParameters[SpaceConstants.classCode],
-        ),
-      ),
-    ),
+    // world_v2: the inbound course join links `/join_with_link?classcode=` (the
+    // CloudFront short-code 302 target) and `/join?classcode=` (native app
+    // links) are NOT render routes. `LegacyRedirects` folds both into the
+    // `left=addcourse:private/<code>` token before anything renders (#7524), so
+    // the join-with-code page performs the join. Logged out, the code is
+    // cached across the login bounce (PAuthGaurd.roomsRedirect).
     GoRoute(
       path: '/invite_user/:userID',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
         UserInviteLink(userID: state.pathParameters['userID']!),
-      ),
-    ),
-    GoRoute(
-      path: '/join',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        JoinClassWithLink(
-          classCode: state.uri.queryParameters[SpaceConstants.classCode],
-        ),
       ),
     ),
     // Pangea#
@@ -227,6 +213,18 @@ abstract class AppRoutes {
                       SelectedCourse(
                         state.pathParameters['courseid']!,
                         SelectedCourseMode.launch,
+                        closeButton: IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          tooltip: MaterialLocalizations.of(
+                            context,
+                          ).backButtonTooltip,
+                          onPressed: () => context.go(
+                            WorkspaceNav.openAddCoursePage(
+                              state.uri,
+                              AddCourseSubpageEnum.own,
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   },

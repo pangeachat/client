@@ -13,12 +13,29 @@ class WorldMapConstants {
   static bool canZoomIn(double zoom) => zoom < maxZoom;
   static bool canZoomOut(double zoom) => zoom > minZoom;
 
-  /// The zoom the camera glides to when an activity is focused (opened) — close
-  /// enough to read it as "this specific spot" (neighborhood/building level).
+  /// The zoom the DELIBERATE focus button glides to for an activity (#7616) —
+  /// close enough to read it as "this specific spot" (neighborhood/building
+  /// level). Selection itself never zooms; only the button uses this.
   static const double focusZoom = 16.0;
+
+  /// The zoom cap for the focus button's course fit (#7616): fitting a
+  /// one-location course never dives below city level.
+  static const double courseFitMaxZoom = 12.0;
 
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
+
+  // #7245 — the large tier hides while the camera's zoom is actively changing
+  // and re-derives at settle.
+
+  /// How long after the last zoom change the camera counts as settled. Short
+  /// enough that cards return promptly after a pinch or scroll stops; long
+  /// enough that discrete scroll-wheel ticks chain into one continuous hide.
+  static const Duration zoomSettle = Duration(milliseconds: 300);
+
+  /// The smallest camera-zoom delta treated as "zooming" — filters projection
+  /// jitter during pure pans so panning never hides the large cards.
+  static const double zoomChangeEpsilon = 0.01;
 
   // #7239 — gentler combined pan/zoom glide.
 

@@ -19,8 +19,10 @@ import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -91,11 +93,23 @@ class ChatList extends StatefulWidget {
   final String? activeSpace;
   final bool displayNavigationRail;
 
+  // #Pangea
+  /// When non-null, the panel header's search toggle drives whether the
+  /// in-list search field row renders (expanding on demand; the field
+  /// autofocuses when it appears, and its close control flips this back).
+  /// Null keeps the legacy always-on-when-long behavior. See
+  /// routing.instructions.md → Single-column bottom nav.
+  final ValueNotifier<bool>? searchFieldVisibility;
+  // Pangea#
+
   const ChatList({
     super.key,
     required this.activeChat,
     this.activeSpace,
     this.displayNavigationRail = false,
+    // #Pangea
+    this.searchFieldVisibility,
+    // Pangea#
   });
 
   @override
@@ -137,7 +151,7 @@ class ChatListController extends State<ChatList>
   void clearActiveSpace() => context.go(
     WorkspaceNav.setSection(
       GoRouterState.of(context).uri,
-      const PanelToken('chats'),
+      const ChatsPanelToken(),
     ),
   );
   void setActiveSpace(String spaceId) => context.go(
@@ -248,18 +262,18 @@ class ChatListController extends State<ChatList>
     // token yet), seed a `chats` token first so tapping a chat doesn't tear the
     // list down. See routing.instructions.md ("panels are independent").
     var uri = GoRouterState.of(context).uri;
-    final hasSection = parseOpenPanels(
-      uri,
-    ).left.any((t) => t.type == 'chats' || t.type == 'course');
+    final hasSection = parseOpenPanels(uri).left.any(
+      (t) => t.type == PanelTypesEnum.chats || t.type == PanelTypesEnum.course,
+    );
     if (!hasSection) {
       uri = Uri.parse(
-        WorkspaceNav.openLeft(uri, const PanelToken('chats'), atStart: true),
+        WorkspaceNav.openLeft(uri, const ChatsPanelToken(), atStart: true),
       );
     }
     context.go(
       WorkspaceNav.openExclusiveLeftRoom(
         uri,
-        PanelToken('room', shortRoomId(room.id)),
+        RoomPanelToken(RoomTokenParam(id: shortRoomId(room.id))),
       ),
     );
     // Pangea#
@@ -453,7 +467,7 @@ class ChatListController extends State<ChatList>
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
     if (mounted) {
       context.go(
-        WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, spaceId),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, spaceId),
       );
     }
   }
@@ -676,10 +690,7 @@ class ChatListController extends State<ChatList>
       if (joinedRoomId == null) continue;
 
       context.go(
-        WorkspaceNav.openCourseFilter(
-          GoRouterState.of(context).uri,
-          joinedRoomId,
-        ),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
       );
     }
   }
@@ -732,10 +743,7 @@ class ChatListController extends State<ChatList>
         if (joinedRoomId == null) continue;
 
         context.go(
-          WorkspaceNav.openCourseFilter(
-            GoRouterState.of(context).uri,
-            joinedRoomId,
-          ),
+          WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
         );
       }
     }
@@ -1150,21 +1158,7 @@ class ChatListController extends State<ChatList>
     final joinResp = result.result;
     if (joinResp == null) return;
 
-    final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    room.isSpace
-        ? context.go(
-            WorkspaceNav.openCourseFilter(
-              GoRouterState.of(context).uri,
-              joinedRoomId,
-            ),
-          )
-        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
+    await SpaceCodeController.navigateAfterJoin(context, client, joinResp);
   }
 
   Future<void> _startDMWithCachedUserId(Client client) async {

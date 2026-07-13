@@ -1920,7 +1920,6 @@
     "startNewSession": "Začni novo sejo",
     "joinOpenSession": "Pridruži se odprti seji",
     "activityNotFound": "Aktivnosti ni bilo mogoče najti",
-    "levelUp": "Nadgradi raven",
     "myActivities": "Moje dejavnosti",
     "openToJoin": "Odprto za pridružitev",
     "results": "Rezultati",
@@ -1962,7 +1961,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-06 10:21:38.960495",
+    "@@last_modified": "2026-07-13 10:05:34.610980",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10565,7 +10564,6 @@
     "enableNotificationsTitle": "Nikoli ne zamudite pogovora!",
     "enableNotificationsDesc": "Dovolite obvestila za Pangea Chat in ostanite povezani s svojimi jezikovnimi prijatelji!",
     "enableNotifications": "Dovolite obvestila",
-    "noActivitiesFound": "Ni aktivnosti na voljo za to temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10575,10 +10573,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11383,5 +11377,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonščina",
+    "abDisplayName": "Abhažijan",
+    "elDisplayName": "Grščina",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} od {total} zvezd zasluženih",
+    "activityNoLongerSupported": "Ta dejavnost je potekala na starejši različici dejavnosti in ni več podprta. Še vedno lahko pregledate, kaj se je zgodilo v tej seji.",
+    "activityLoadFailed": "Dejavnosti ni bilo mogoče naložiti. Preverite svojo povezavo in poskusite znova.",
+    "levelUpChip": "Raven {level}!",
+    "missingCourseOutline": "Ta tečaj ni več na voljo",
+    "missingCourseOutlineCta": "Ta tečaj ni več na voljo. Izberite nov načrt tečaja.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zapri stran za dodajanje tečaja",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Poročite o težavi z informacijami o slovnici",
+    "grammarFeedbackDialogTitle": "Povratne informacije o informacijah o slovnici",
+    "grammarFeedbackSubmittedDesc": "Hvala! Razlaga je bila posodobljena na podlagi vaših povratnih informacij.",
+    "focusOnMap": "Osredotočite se na zemljevid",
+    "welcome": "Dobrodošli",
+    "courseRequest": "Zahteva za tečaj",
+    "onboarding": "Uvod",
+    "selectImageFromDevice": "Izberite sliko iz naprave",
+    "dinoAvatarLabel": "Dinozaver s sončnimi očali",
+    "bearAvatarLabel": "Prijazen medved",
+    "squidAvatarLabel": "Hobotnica z slušalkami",
+    "cartoonAvatarLabel": "Vesel risani lik, ki maha",
+    "robotAvatarLabel": "Robot z zvezdami namesto oči",
+    "featuresIncludeLabel": "Vključene funkcije",
+    "difficultyListLabel": "Seznam težavnosti",
+    "languageListLabel": "Seznam jezikov",
+    "searchedResultsLabel": "Rezultati iskanja za '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

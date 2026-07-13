@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/close_affordance.dart';
-import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
-import 'package:fluffychat/routes/world/close_button_labels.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practice_subpage.dart';
@@ -44,12 +41,6 @@ class WorkspaceRightPanel extends StatelessWidget {
     this.foldedOver = false,
   });
 
-  ConstructIdentifier? get _construct {
-    final param = token.param;
-    if (param == null) return null;
-    return ConstructIdentifier.fromTokenParam(token.type, param);
-  }
-
   /// Close reads the LIVE router URI, never the constructor-captured
   /// [currentUri]: a close action can fire after an async gap (e.g. the practice
   /// exit-confirmation dialog) or a stream-driven rebuild, by which point a
@@ -74,9 +65,9 @@ class WorkspaceRightPanel extends StatelessWidget {
     // a width-folded detail OR — on a narrow single pane, where only the focused
     // leaf is drawn — when this leaf's navigation-tree parent is open behind it;
     // an independent panel (no open parent) dismisses to the map (`X`).
-    final page = token.param;
-    final pushable = PanelRegistry.defFor(token.type)?.pushable ?? false;
-    final isPushed = pushable && page != null && page.contains('/');
+
+    final pushable = token.type.def.pushable;
+    final isPushed = pushable && token.param?.isPushed == true;
     final revealsMaster =
         foldedOver || (!isColumnMode && parentIsOpen(currentUri, token));
 
@@ -87,57 +78,63 @@ class WorkspaceRightPanel extends StatelessWidget {
 
     final leadingIcon = aff.showBack ? Icons.arrow_back : Icons.close;
 
+    String? closeButtonLabel;
+    if (token is SettingsPagePanelToken) {
+      final settingsToken = token as SettingsPagePanelToken;
+      closeButtonLabel = SettingsPageEnum.fromString(
+        settingsToken.param?.subpage,
+      ).title(l10n);
+    }
+
     final leadingTooltip = aff.showBack
         ? MaterialLocalizations.of(context).backButtonTooltip
-        : closeButtonLabel(
-            l10n,
-            token,
-            named: token.type == 'settingspage'
-                ? SettingsPageEnum.fromString(page).title(l10n)
-                : null,
-          );
+        : token.type.closeButtonLabel(l10n, named: closeButtonLabel);
 
     final onLeading = aff.showBack && isPushed
         ? () => context.go(
             WorkspaceNav.popPage(
               GoRouter.of(context).routeInformationProvider.value.uri,
-              token.type,
-              page,
+              token,
             ),
           )
         : () => _close(context);
 
-    return switch (token.type) {
-      'analytics' => RightPanelAnalyticsSubpage(
-        token: token,
-        icon: leadingIcon,
-        onLeading: onLeading,
-        tooltip: leadingTooltip,
-      ),
-      'settings' => PanelCardWithHeader(
-        title: l10n.settings,
-        icon: leadingIcon,
-        onLeading: () => context.go(
-          WorkspaceNav.closeSettings(
-            GoRouter.of(context).routeInformationProvider.value.uri,
+    switch (token) {
+      case AnalyticsPanelToken(param: final param):
+        return RightPanelAnalyticsSubpage(
+          param: param,
+          icon: leadingIcon,
+          onLeading: onLeading,
+          tooltip: leadingTooltip,
+        );
+      case SettingsPanelToken():
+        return PanelCardWithHeader(
+          title: l10n.settings,
+          icon: leadingIcon,
+          onLeading: () => context.go(
+            WorkspaceNav.closeSettings(
+              GoRouter.of(context).routeInformationProvider.value.uri,
+            ),
           ),
-        ),
-        tooltip: leadingTooltip,
-        child: RightPanelSettingsSubpage(),
-      ),
-      'settingspage' => () {
-        final settingsPage = SettingsPageEnum.fromString(page);
-        return settingsPage.addHeader
+          tooltip: leadingTooltip,
+          child: RightPanelSettingsSubpage(),
+        );
+      case SettingsPagePanelToken(param: final param):
+        final settingsPage = param != null
+            ? SettingsPageEnum.fromString(param.subpage)
+            : null;
+
+        return settingsPage != null && settingsPage.addHeader
             ? PanelCardWithHeader(
                 title: settingsPage.title(l10n),
                 icon: leadingIcon,
                 onLeading: onLeading,
                 tooltip: leadingTooltip,
-                child: RightPanelSettingsSubpage(subPath: page),
+                child: RightPanelSettingsSubpage(param: param),
               )
             : PanelCard(
                 child: RightPanelSettingsSubpage(
-                  subPath: page,
+                  param: param,
                   closeButton: IconButton(
                     tooltip: leadingTooltip,
                     icon: Icon(leadingIcon),
@@ -145,35 +142,53 @@ class WorkspaceRightPanel extends StatelessWidget {
                   ),
                 ),
               );
-      }(),
-      'vocab' || 'grammar' => PanelCardWithHeader(
-        title: '',
-        icon: leadingIcon,
-        onLeading: onLeading,
-        tooltip: leadingTooltip,
-        trailing: kIsWeb && _construct == null
-            ? DownloadAnalyticsButton()
-            : null,
-        child: ConstructAnalyticsView(
-          view: token.type == 'vocab'
-              ? ConstructTypeEnum.vocab
-              : ConstructTypeEnum.morph,
-          construct: _construct,
-        ),
-      ),
-      'practice' => RightPanelAnalyticsPracticeSubpage(
-        token: token,
-        icon: leadingIcon,
-        tooltip: leadingTooltip,
-        close: () => _close(context),
-      ),
-      _ => PanelCardWithHeader(
-        title: l10n.oopsSomethingWentWrong,
-        icon: leadingIcon,
-        onLeading: onLeading,
-        tooltip: leadingTooltip,
-        child: const SizedBox.shrink(),
-      ),
-    };
+      case VocabAnalyticsPanelToken(param: final param):
+        return PanelCardWithHeader(
+          title: '',
+          icon: leadingIcon,
+          onLeading: onLeading,
+          tooltip: leadingTooltip,
+          trailing: kIsWeb && param?.constructId == null
+              ? DownloadAnalyticsButton()
+              : null,
+          child: ConstructAnalyticsView(
+            view: ConstructTypeEnum.vocab,
+            construct: param?.constructId,
+          ),
+        );
+      case GrammarAnalyticsPanelToken(param: final param):
+        return PanelCardWithHeader(
+          title: '',
+          icon: leadingIcon,
+          onLeading: onLeading,
+          tooltip: leadingTooltip,
+          trailing: kIsWeb && param?.constructId == null
+              ? DownloadAnalyticsButton()
+              : null,
+          child: ConstructAnalyticsView(
+            view: ConstructTypeEnum.morph,
+            construct: param?.constructId,
+          ),
+        );
+      case AnalyticsPracticePanelToken(param: final param):
+        if (param == null) {
+          return SizedBox.shrink();
+        }
+
+        return RightPanelAnalyticsPracticeSubpage(
+          param: param,
+          icon: leadingIcon,
+          tooltip: leadingTooltip,
+          close: () => _close(context),
+        );
+      default:
+        return PanelCardWithHeader(
+          title: l10n.oopsSomethingWentWrong,
+          icon: leadingIcon,
+          onLeading: onLeading,
+          tooltip: leadingTooltip,
+          child: const SizedBox.shrink(),
+        );
+    }
   }
 }

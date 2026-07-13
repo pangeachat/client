@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
-import 'package:fluffychat/features/navigation/room_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// world_v2: everything is a token over the world map (`/`). This is the single
 /// funnel the app uses to focus a room, a room sub-page, a course, or a course
@@ -39,7 +41,7 @@ class NavigationUtil {
     List<String> goalSubroute,
     BuildContext context, {
     Object? extra,
-    String? filter,
+    InvitationFilter? filter,
     String? event,
   }) {
     final uri = GoRouterState.of(context).uri;
@@ -54,8 +56,8 @@ class NavigationUtil {
       if (activeSpaceId != null) {
         final coursePage = coursePageFor(sub);
         context.go(
-          coursePage.isEmpty
-              ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
+          coursePage == null
+              ? WorkspaceNav.openCourseTab(uri)
               : WorkspaceNav.openCoursePage(uri, coursePage, filter: filter),
           extra: extra,
         );
@@ -72,8 +74,8 @@ class NavigationUtil {
     if (activeSpaceId != null && goalRoomID == activeSpaceId) {
       final coursePage = coursePageFor(sub);
       context.go(
-        coursePage.isEmpty
-            ? WorkspaceNav.openCourse(uri, const PanelToken('course'))
+        coursePage == null
+            ? WorkspaceNav.openCourseTab(uri)
             : WorkspaceNav.openCoursePage(uri, coursePage, filter: filter),
         extra: extra,
       );
@@ -99,17 +101,19 @@ class NavigationUtil {
       context.go(
         WorkspaceNav.openExclusiveLeftRoom(
           stripActivityOverlay(uri),
-          PanelToken('room', RoomToken.build(shortId, eventId: event)),
+          RoomPanelToken(RoomTokenParam(id: shortId, eventId: event)),
         ),
         extra: extra,
       );
       return;
     }
+
     context.go(
       WorkspaceNav.pushPage(
         uri,
-        'room',
-        RoomToken.build(shortId, subPage: sub, filter: filter),
+        RoomPanelToken(
+          RoomTokenParam(id: shortId, subpage: sub, filter: filter),
+        ),
       ),
       extra: extra,
     );
@@ -127,19 +131,12 @@ class NavigationUtil {
       Uri.parse(WorkspaceNav.dropActivityOverlay(uri));
 
   /// Normalizes a room-style chat-details subroute to its course `coursepage`.
-  ///
-  /// The chat-details UI is shared between rooms and the course space and
-  /// addresses management screens with a room-style `details/<page>` path (e.g.
-  /// the participants tab invites via `['details', 'invite']`). A course has no
-  /// `details` coursepage — that role is the card itself — so `details` maps to
-  /// `''` (show the card) and `details/<page>` to the bare `<page>` coursepage.
-  /// Any other subroute is already a bare coursepage and passes through.
-  /// Without this, `details/invite` became the unhandled token
-  /// `coursepage:details/invite`, rendering an empty, un-closable panel (#7099).
   @visibleForTesting
-  static String coursePageFor(String sub) {
-    if (sub == 'details') return '';
-    if (sub.startsWith('details/')) return sub.substring('details/'.length);
-    return sub;
+  static RoomSubpageEnum? coursePageFor(String sub) {
+    if (sub == 'details') return null;
+    if (sub.startsWith('details/')) {
+      return RoomSubpageEnum.fromString(sub.substring('details/'.length));
+    }
+    return RoomSubpageEnum.fromString(sub);
   }
 }

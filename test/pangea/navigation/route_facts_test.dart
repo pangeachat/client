@@ -1,8 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 void main() {
   AppSection section(String location) => sectionFor(Uri.parse(location));
@@ -73,7 +76,7 @@ void main() {
       expect(section('/?left=chats,room:!a'), AppSection.chats);
       expect(section('/?left=room:!a'), AppSection.chats); // a lone live chat
       expect(section('/?left=addcourse'), AppSection.courses); // the hub
-      expect(section('/?left=addcourse:own'), AppSection.courses); // a step
+      expect(section('/?left=addcoursepage:own'), AppSection.courses); // a step
     });
   });
 
@@ -192,28 +195,33 @@ void main() {
   // sibling of `room`/`session`, so the parser keeps it like any registered panel
   // and enforces one-live-view exclusivity. `activityFor` reads this same token.
   group('activity left token (#7385)', () {
-    List<String> leftTypes(String location) => [
+    List<PanelTypesEnum> leftTypes(String location) => [
       for (final t in parseOpenPanels(Uri.parse(location)).left) t.type,
     ];
-    String? activityParam(String location) => parseOpenPanels(
+    TokenParam? activityParam(String location) => parseOpenPanels(
       Uri.parse(location),
-    ).left.firstWhere((t) => t.type == 'activity').param;
+    ).left.firstWhere((t) => t.type == PanelTypesEnum.activity).param;
 
     test('an `activity` left token parses with its id as the param', () {
-      expect(leftTypes('/?left=activity:abc'), ['activity']);
-      expect(activityParam('/?left=activity:abc'), 'abc');
+      expect(leftTypes('/?left=activity:abc'), [PanelTypesEnum.activity]);
+      final param1 = activityParam('/?left=activity:abc');
+      expect(param1, isA<ActivityTokenParam>());
+      expect((param1 as ActivityTokenParam).activityId, 'abc');
+
+      final param2 = activityParam(
+        '/?m=course:!s&left=activity:32ad3c08-e501-41c5-b544-0875026090ed',
+      );
+      expect(param2, isA<ActivityTokenParam>());
       expect(
-        activityParam(
-          '/?m=course:!s&left=activity:32ad3c08-e501-41c5-b544-0875026090ed',
-        ),
+        (param2 as ActivityTokenParam).activityId,
         '32ad3c08-e501-41c5-b544-0875026090ed',
       );
     });
 
     test('activity and room are liveView siblings — only the first survives', () {
       // Opening an activity claims the single live view (a chat can\'t coexist).
-      expect(leftTypes('/?left=activity:a,room:!r'), ['activity']);
-      expect(leftTypes('/?left=room:!r,activity:a'), ['room']);
+      expect(leftTypes('/?left=activity:a,room:!r'), [PanelTypesEnum.activity]);
+      expect(leftTypes('/?left=room:!r,activity:a'), [PanelTypesEnum.room]);
     });
   });
 }

@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
@@ -18,6 +19,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
@@ -37,6 +39,11 @@ enum SessionState {
 
   /// The user has confirmed their role.
   confirmedRole,
+
+  /// The backend confirmed the activity no longer exists (404). The page is
+  /// read-only: it renders the plan recovered from legacy room state when one
+  /// exists, else the archived fallback body — never role selection.
+  archived,
 }
 
 class ActivitySessionStartPage extends StatefulWidget {
@@ -66,6 +73,13 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   bool _summariesLoading = true;
 
   Object? error;
+
+  /// The backend confirmed this activity no longer exists (404). [activity]
+  /// may still be populated from the plan embedded in legacy room state; when
+  /// it stays null the view renders the archived fallback from room state
+  /// alone. Distinct from [error], which is a transient failure worth
+  /// retrying.
+  bool activityRemoved = false;
 
   ActivityPlanModel? activity;
   late ActivitySessionSummariesModel _roomSummariesModel;
@@ -147,6 +161,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
       setState(() {
         loading = true;
         error = null;
+        activityRemoved = false;
       });
       // Gate `loading` on the bounded activity fetch ALONE, so the page always
       // resolves to the activity or the not-found error. The room summaries are
@@ -189,10 +204,21 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     // not just a course in scope, since a bare map pin carries no course
     // context. Shared with the world-map pin discovery so both surface the same
     // sessions. See world-map.instructions.md ("Discovering joinable sessions").
+    final client = Matrix.of(context).client;
+    // Sessions the learner is invited to (possibly outside any shared course):
+    // in the room list, but only a preview carries accurate seats, and without
+    // this a green invited pin dead-ends at a joinless start page (#7488).
     roomIds.addAll(
-      await Matrix.of(
-        context,
-      ).client.courseActivitySessionRoomIds(activityId: widget.activityId),
+      client.rooms
+          .where(
+            (r) =>
+                r.membership == Membership.invite &&
+                r.activityId == widget.activityId,
+          )
+          .map((r) => r.id),
+    );
+    roomIds.addAll(
+      await client.courseActivitySessionRoomIds(activityId: widget.activityId),
     );
     if (!mounted) return;
 
@@ -232,11 +258,24 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     // v3: read the canonical activities-v2 plan directly (fetched on open, per
     // the thin-list/full-on-open contract). Localization is choreo's concern,
     // consumed later when this read swaps to a choreo endpoint.
-    final plan = await ActivityPlanRepo.instance.getPlan(widget.activityId);
-    if (plan == null) {
-      throw Exception("Activity not found");
+    final lookup = await ActivityPlanRepo.instance.lookup(widget.activityId);
+    switch (lookup.status) {
+      case ActivityPlanLookupStatus.found:
+        activity = lookup.plan;
+      case ActivityPlanLookupStatus.removed:
+        // Removed-activity fallback ladder (activities.instructions.md):
+        // legacy rooms embed the full plan in room state — render it
+        // view-only; with no plan anywhere the view shows the archived body
+        // built from role/goal state.
+        if (!mounted) return;
+        final statePlan = activityRoom?.activityPlan;
+        activity = statePlan == null
+            ? null
+            : await ActivityPlanRepo.instance.resolveMedia(statePlan);
+        activityRemoved = true;
+      case ActivityPlanLookupStatus.failed:
+        throw Exception("Activity plan fetch failed");
     }
-    activity = plan;
   }
 
   Future<void> submitActivityFeedback() async {
@@ -286,6 +325,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   }
 
   SessionState get _sessionState {
+    if (activityRemoved) return SessionState.archived;
+
     final roomExists = widget.roomId != null;
     final userIsCreatingRoom = widget.launch;
 
@@ -354,6 +395,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
           summaries: _roomSummariesModel,
           summariesLoading: _summariesLoading,
           scrollController: scrollController,
+          controller: this,
+        );
+      case SessionState.archived:
+        return ArchivedSession(
+          room: activityRoom,
+          activity: activity,
           controller: this,
         );
     }

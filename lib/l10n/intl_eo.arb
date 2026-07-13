@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:55.796897",
+    "@@last_modified": "2026-07-13 10:08:14.568442",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -3018,7 +3018,6 @@
     "startNewSession": "Komenci novan sesion",
     "joinOpenSession": "Aliĝi al malfermita sesio",
     "activityNotFound": "Aktiveco ne trovita",
-    "levelUp": "Niveligi",
     "myActivities": "Miaj aktivecoj",
     "openToJoin": "Malferma por aliĝi",
     "results": "Rezultoj",
@@ -10568,7 +10567,6 @@
     "enableNotificationsTitle": "Neniam maltrafu chaton!",
     "enableNotificationsDesc": "Permesu notifikojn por Pangea Chat kaj restu konektita kun viaj lingvaj amikoj!",
     "enableNotifications": "Permesu notifikojn",
-    "noActivitiesFound": "Neniuj aktivadoj disponeblas por ĉi tiu temo.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10578,10 +10576,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11386,5 +11380,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estona",
+    "abDisplayName": "Abĥazia",
+    "elDisplayName": "Greka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} el {total} steloj gajnitaj",
+    "activityNoLongerSupported": "Ĉi tiu aktiveco funkciis sur pli malnova versio de aktivadoj kaj ne plu estas subtenata. Vi ankoraŭ povas revizii kio okazis en ĉi tiu sesio.",
+    "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
+    "levelUpChip": "Nivelo {level}!",
+    "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
+    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fermi aldoni kurson paĝon",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Raporti gramatikan informan problemon",
+    "grammarFeedbackDialogTitle": "Gramatika Informo Gvidilo",
+    "grammarFeedbackSubmittedDesc": "Dankon! La klarigo estis ĝisdatigita surbaze de via gvidilo.",
+    "focusOnMap": "Fokusigi sur la mapo",
+    "welcome": "Bonvenon",
+    "courseRequest": "Kurso peto",
+    "onboarding": "Ensalutado",
+    "selectImageFromDevice": "Elekti bildon el la aparato",
+    "dinoAvatarLabel": "Dinozaŭro kun sunokulvitroj",
+    "bearAvatarLabel": "Amika urso",
+    "squidAvatarLabel": "Kalmar kun aŭdiloj",
+    "cartoonAvatarLabel": "Feliĉa desegnaĵo karaktero ondiĝanta",
+    "robotAvatarLabel": "Roboto kun steloj por okuloj",
+    "featuresIncludeLabel": "Karakterizaĵoj inkluzivas",
+    "difficultyListLabel": "Malfacileco listo",
+    "languageListLabel": "Lingvo listo",
+    "searchedResultsLabel": "Serĉrezultoj por '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

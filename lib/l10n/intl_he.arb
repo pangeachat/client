@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:16.989190",
+    "@@last_modified": "2026-07-13 10:05:01.449402",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2526,7 +2526,6 @@
     "startNewSession": "התחל מפגש חדש",
     "joinOpenSession": "הצטרף למפגש פתוח",
     "activityNotFound": "הפעילות לא נמצאה",
-    "levelUp": "רמה עליונה",
     "myActivities": "הפעילויות שלי",
     "openToJoin": "פתוח להצטרפות",
     "results": "תוצאות",
@@ -10528,7 +10527,6 @@
     "enableNotificationsTitle": "אל תפספס שיחה לעולם!",
     "enableNotificationsDesc": "אפשר התראות עבור Pangea Chat והישאר מחובר עם חברי השפה שלך!",
     "enableNotifications": "אפשר התראות",
-    "noActivitiesFound": "אין פעילויות זמינות לנושא זה.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10538,10 +10536,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11346,5 +11340,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "אסטונית",
+    "abDisplayName": "אבחזית",
+    "elDisplayName": "יוונית",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} מתוך {total} כוכבים שהושגו",
+    "activityNoLongerSupported": "פעילות זו רצה על גרסה ישנה יותר של פעילויות ואינה נתמכת עוד. אתה עדיין יכול לעיין במה שקרה במפגש זה.",
+    "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
+    "levelUpChip": "רמה {level}!",
+    "missingCourseOutline": "הקורס הזה אינו זמין יותר",
+    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "סגור את עמוד הוספת הקורס",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "דווח על בעיית מידע דקדוק",
+    "grammarFeedbackDialogTitle": "משוב על מידע דקדוק",
+    "grammarFeedbackSubmittedDesc": "תודה! ההסבר עודכן בהתאם למשוב שלך.",
+    "focusOnMap": "מקד על המפה",
+    "welcome": "ברוך הבא",
+    "courseRequest": "בקשת קורס",
+    "onboarding": "הדרכה",
+    "selectImageFromDevice": "בחר תמונה מהמכשיר",
+    "dinoAvatarLabel": "דינוזואר עם משקפי שמש",
+    "bearAvatarLabel": "דוב ידידותי",
+    "squidAvatarLabel": "דיונון עם אוזניות",
+    "cartoonAvatarLabel": "דמות מצוירת שמחה מנפנפת",
+    "robotAvatarLabel": "רובוט עם כוכבים במקום עיניים",
+    "featuresIncludeLabel": "תכונות כוללות",
+    "difficultyListLabel": "רשימת קושי",
+    "languageListLabel": "רשימת שפות",
+    "searchedResultsLabel": "תוצאות חיפוש עבור '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -27,7 +27,7 @@ class CourseListTile extends StatelessWidget {
     // No tab param — open the course card on its default tab, same as tapping the
     // course in the rail (a tab arg would emit a redundant `course:course` token).
     context.go(
-      WorkspaceNav.openCourseFilter(GoRouterState.of(context).uri, space.id),
+      WorkspaceNav.openCourse(GoRouterState.of(context).uri, space.id),
     );
   }
 

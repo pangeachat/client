@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 class LevelDisplayName extends StatelessWidget {
   final String userId;
@@ -104,18 +105,11 @@ class LevelDisplayName extends StatelessWidget {
                       ),
                     ],
                     const SizedBox(width: 4.0),
-                    if (level != null) ...[
-                      Text("⭐", style: textStyle),
-                      Text(
-                        "$level",
-                        style:
-                            textStyle ??
-                            TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                    if (level != null)
+                      LevelRibbon(
+                        level: level,
+                        height: (iconSize ?? 16.0) + 2.0,
                       ),
-                    ],
                   ],
                 ),
             ],

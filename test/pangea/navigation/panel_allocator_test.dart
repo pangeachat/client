@@ -1,22 +1,21 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_registry.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 
 void main() {
-  PanelDef def(String type) => PanelRegistry.defs[type]!;
-
   WorkspaceLayout run({
     double viewport = 1600,
     bool isColumnMode = true,
-    List<String> left = const [],
-    List<String> right = const [],
+    List<PanelTypesEnum> left = const [],
+    List<PanelTypesEnum> right = const [],
     int? focusHint,
   }) => PanelAllocator.allocate(
     viewport: viewport,
     isColumnMode: isColumnMode,
-    left: left.map(def).toList(),
-    right: right.map(def).toList(),
+    left: left.map((t) => t.def).toList(),
+    right: right.map((t) => t.def).toList(),
     focusHint: focusHint,
   );
 
@@ -38,7 +37,7 @@ void main() {
     test(
       'a single right summary docks at the right edge behind the gutter',
       () {
-        final l = run(right: ['analytics']);
+        final l = run(right: [PanelTypesEnum.analytics]);
         expect(l.right.single.width, 488);
         expect(l.right.single.left, 1600 - 88 - 488); // 1024
         expect(l.mapRightOverlay, 576); // 488 + gutter 88
@@ -48,17 +47,19 @@ void main() {
     );
 
     test('a single left chat caps at 720 and the map shows beyond it', () {
-      final l = run(left: ['room']);
+      final l = run(left: [PanelTypesEnum.room]);
       expect(l.right, isEmpty);
       expect(l.left.single.width, 720); // capped at ideal, not the whole screen
       expect(l.left.single.left, 73);
       expect(l.mapLeftOverlay, 793); // rail + 720
-      expect(l.mapRightOverlay, 0); // no right panels, no gutter
+      // The camera overlay models PANEL coverage only — the cluster floats
+      // over the bare map, so its (always-reserved) gutter is not part of it.
+      expect(l.mapRightOverlay, 0);
     });
 
     test('summary + detail tile as two right cards, detail to the left', () {
       final l = run(
-        right: ['analytics', 'vocab'],
+        right: [PanelTypesEnum.analytics, PanelTypesEnum.vocab],
       ); // master-first [summary, detail]
       expect(l.right[0].width, 488);
       expect(l.right[1].width, 488);
@@ -73,7 +74,11 @@ void main() {
     test(
       'a chat + a summary on a tight viewport both stay open, compressed',
       () {
-        final l = run(viewport: 1100, left: ['room'], right: ['analytics']);
+        final l = run(
+          viewport: 1100,
+          left: [PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
+        );
         expect(l.left.single.vis, PanelVis.full);
         expect(l.right.single.vis, PanelVis.full);
         // neither drops below its floor...
@@ -89,7 +94,14 @@ void main() {
       // Three right panels can't all honor their reasonable-min in this budget.
       // vocab's parent is analytics, so under pressure analytics (the master)
       // folds behind vocab (its detail); review is an unrelated root and stays.
-      final l = run(viewport: 1161, right: ['review', 'analytics', 'vocab']);
+      final l = run(
+        viewport: 1161,
+        right: [
+          PanelTypesEnum.review,
+          PanelTypesEnum.analytics,
+          PanelTypesEnum.vocab,
+        ],
+      );
       final folded = l.right.where((s) => s.vis == PanelVis.hidden).toList();
       expect(folded.length, 1);
       expect(
@@ -107,7 +119,10 @@ void main() {
       // honor both reasonable-mins (480 + 340 + chrome): room's parent is chats,
       // so the chat list (master) folds away and the room (its detail) keeps the
       // column and its session. Closing the room reveals the list (back-to-master).
-      final l = run(viewport: 900, left: ['chats', 'room']);
+      final l = run(
+        viewport: 900,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
       expect(l.left[1].vis, PanelVis.full); // room (chats's detail) stays
       expect(l.left[0].vis, PanelVis.hidden); // chats (room's parent) folds
       // The surviving room is "folded over" its master → its close is a `←`.
@@ -120,7 +135,10 @@ void main() {
       () {
         // Wide enough for chat list + room to both stay full: neither folds, so
         // neither is folded-over (closing either reveals the map, not a master).
-        final l = run(viewport: 1920, left: ['chats', 'room']);
+        final l = run(
+          viewport: 1920,
+          left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+        );
         expect(l.left[0].vis, PanelVis.full);
         expect(l.left[1].vis, PanelVis.full);
         expect(l.left.every((s) => !s.foldedOver), isTrue);
@@ -136,7 +154,10 @@ void main() {
       // reasonable-mins, the menu (master) holds the edge and the page blooms
       // to its left; neither folds, so each closes to the map — the same fit
       // test as a course page (was the #7145 always-fold, removed).
-      final l = run(viewport: 1920, right: ['settings', 'settingspage']);
+      final l = run(
+        viewport: 1920,
+        right: [PanelTypesEnum.settings, PanelTypesEnum.settingspage],
+      );
       expect(l.right[0].vis, PanelVis.full); // settings menu (master), at edge
       expect(l.right[1].vis, PanelVis.full); // settingspage, to its left
       expect(l.right.every((s) => !s.foldedOver), isTrue);
@@ -146,14 +167,23 @@ void main() {
 
     test('the menu + page are the same width so nothing resizes or jumps the '
         'close/back icon when they fold under pressure (#7146)', () {
-      final menuOnly = run(viewport: 1920, right: ['settings']);
-      expect(def('settingspage').idealWidth, def('settings').idealWidth);
-      expect(def('settings').idealWidth, menuOnly.right.single.width);
+      final menuOnly = run(viewport: 1920, right: [PanelTypesEnum.settings]);
+      expect(
+        PanelTypesEnum.settingspage.def.idealWidth,
+        PanelTypesEnum.settings.def.idealWidth,
+      );
+      expect(
+        PanelTypesEnum.settings.def.idealWidth,
+        menuOnly.right.single.width,
+      );
     });
 
     test('an ordinary master/detail pair (analytics + vocab) also coexists '
         'when width allows', () {
-      final l = run(viewport: 1920, right: ['analytics', 'vocab']);
+      final l = run(
+        viewport: 1920,
+        right: [PanelTypesEnum.analytics, PanelTypesEnum.vocab],
+      );
       expect(l.right[0].vis, PanelVis.full); // analytics (master), at edge
       expect(l.right[1].vis, PanelVis.full); // vocab, to its left
       expect(l.right.every((s) => !s.foldedOver), isTrue);
@@ -172,8 +202,8 @@ void main() {
         // rather than being overlapped by the left column.
         final l = run(
           viewport: 1200,
-          left: ['course', 'room'],
-          right: ['analytics'],
+          left: [PanelTypesEnum.course, PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
         );
         expect(l.right.single.vis, PanelVis.hidden); // analytics yields
         expect(l.left[0].vis, PanelVis.full); // course
@@ -183,20 +213,12 @@ void main() {
     );
 
     test('the collapse is symmetric across columns (parity)', () {
-      const lo = PanelDef(
-        type: 'lo',
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 20,
-      );
-      const hi = PanelDef(
-        type: 'hi',
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 80,
-      );
+      // lowest priority panel
+      const lo = ChatsPanelDef(minWidth: 360, idealWidth: 720);
+
+      // highest priority panel
+      const hi = RoomPanelDef(minWidth: 360, idealWidth: 720);
+
       // Two independent panels, one per column, on a budget too tight for both
       // hard mins: the LOWER-priority one collapses regardless of its column.
       final rightLo = PanelAllocator.allocate(
@@ -205,6 +227,7 @@ void main() {
         left: [hi],
         right: [lo],
       );
+
       expect(rightLo.right.single.vis, PanelVis.hidden); // lo (right) yields
       expect(rightLo.left.single.vis, PanelVis.full); // hi (left) stays
 
@@ -214,25 +237,18 @@ void main() {
         left: [lo],
         right: [hi],
       );
+
       expect(leftLo.left.single.vis, PanelVis.hidden); // lo (left) yields
       expect(leftLo.right.single.vis, PanelVis.full); // hi (right) stays
     });
 
     test('the just-opened (focus) panel is never the one collapsed', () {
-      const lo = PanelDef(
-        type: 'lo',
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 20,
-      );
-      const hi = PanelDef(
-        type: 'hi',
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 80,
-      );
+      // lowest priority panel
+      const lo = ChatsPanelDef(minWidth: 360, idealWidth: 720);
+
+      // highest priority panel
+      const hi = RoomPanelDef(minWidth: 360, idealWidth: 720);
+
       // all = [hi(left,0), lo(right,1)]; the user just opened lo (focusHint=1).
       // Even though lo is the lower priority, it must survive — the higher-
       // priority hi yields, so opening lo is not a visible no-op.
@@ -252,7 +268,87 @@ void main() {
     test('chat + summary never overlap from tight to wide', () {
       for (final viewport in [900.0, 1100.0, 1334.0, 1600.0, 1920.0]) {
         expectNoOverlap(
-          run(viewport: viewport, left: ['room'], right: ['analytics']),
+          run(
+            viewport: viewport,
+            left: [PanelTypesEnum.room],
+            right: [PanelTypesEnum.analytics],
+          ),
+        );
+      }
+    });
+  });
+
+  group('the cluster gutter is reserved on every column layout', () {
+    // The cluster is persistent chrome on every non-exclusive column layout,
+    // so its gutter must come out of the budget even with an EMPTY right
+    // column — the regression here was a left panel growing to its ideal and
+    // sliding under the cluster at just-past-breakpoint viewports.
+    test('a lone left panel compresses at the gutter instead of sliding '
+        'under the cluster', () {
+      final l = run(viewport: 860, left: [PanelTypesEnum.course]);
+      expect(l.clusterVisible, isTrue);
+      expect(l.left.single.left, 73);
+      expect(l.left.single.width, 860 - 73 - 88); // 699, not ideal 720
+      expect(
+        l.left.single.left + l.left.single.width,
+        860 - PanelAllocator.clusterGutter,
+      );
+      expect(l.mapRightOverlay, 0); // camera overlay stays panel-only
+    });
+
+    test('no full left slot ever crosses viewport - clusterGutter', () {
+      const combos = [
+        [PanelTypesEnum.course],
+        [PanelTypesEnum.chats, PanelTypesEnum.room],
+        [PanelTypesEnum.room, PanelTypesEnum.course],
+      ];
+      for (final viewport in [
+        841.0,
+        860.0,
+        902.0,
+        950.0,
+        1100.0,
+        1298.0,
+        1600.0,
+      ]) {
+        for (final left in combos) {
+          final l = run(viewport: viewport, left: left);
+          for (final s in l.left.where((s) => s.vis == PanelVis.full)) {
+            expect(
+              s.left + s.width,
+              lessThanOrEqualTo(viewport - PanelAllocator.clusterGutter + 0.01),
+              reason: '$left at $viewport crosses the cluster gutter',
+            );
+          }
+        }
+      }
+    });
+
+    test('the fold band includes the gutter: chats+room folds where the pair '
+        'would otherwise reach under the cluster', () {
+      // 950 - 73 - 88 = 789 of content < the pair's reasonable need (836),
+      // so the master folds — without the reservation they would coexist
+      // with the room flush against the viewport edge, burying the cluster.
+      final l = run(
+        viewport: 950,
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
+      );
+      expect(l.left[0].vis, PanelVis.hidden); // chats folds
+      expect(l.left[1].vis, PanelVis.full);
+      expect(l.left[1].width, 720); // room takes its ideal in the freed span
+      expect(l.left[1].foldedOver, isTrue);
+    });
+
+    test('every registry def keeps compression headroom (ideal > min)', () {
+      // The allocator's compression branch divides by total headroom; a def
+      // with ideal == min across the board would skip compression entirely
+      // and let columns overlap. Data invariant, guarded here.
+      for (final t in PanelTypesEnum.values) {
+        final d = t.def;
+        expect(
+          d.idealWidth,
+          greaterThan(d.minWidth),
+          reason: '${d.type} has no compression headroom',
         );
       }
     });
@@ -265,8 +361,8 @@ void main() {
         final l = run(
           viewport: 400,
           isColumnMode: false,
-          left: ['chats'],
-          right: ['analytics'],
+          left: [PanelTypesEnum.chats],
+          right: [PanelTypesEnum.analytics],
         );
         expect(l.railWidth, 0);
         expect(
@@ -292,7 +388,7 @@ void main() {
       final l = run(
         viewport: 400,
         isColumnMode: false,
-        left: ['chats', 'room'],
+        left: [PanelTypesEnum.chats, PanelTypesEnum.room],
       );
       expect(l.left[1].vis, PanelVis.full); // room (leaf)
       expect(l.left[0].vis, PanelVis.hidden); // chats (room's parent)
@@ -304,8 +400,8 @@ void main() {
       final l = run(
         viewport: 400,
         isColumnMode: false,
-        left: ['session'],
-        right: ['analytics'],
+        left: [PanelTypesEnum.session],
+        right: [PanelTypesEnum.analytics],
       );
       expect(l.left.single.vis, PanelVis.full); // session (leaf)
       expect(
@@ -317,21 +413,12 @@ void main() {
     test('a child wins focus over a higher-priority open parent', () {
       // A synthetic parent with HIGHER priority than its child: the leaf rule
       // still seats the child, proving focus is the tree (leaf), not priority.
-      const parent = PanelDef(
-        type: 'p',
-        column: PanelColumn.left,
+      const parent = ChatsPanelDef(
         minWidth: 360,
         idealWidth: 720,
         priority: 99,
       );
-      const child = PanelDef(
-        type: 'c',
-        column: PanelColumn.left,
-        parent: 'p',
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 10,
-      );
+      const child = RoomPanelDef(minWidth: 360, idealWidth: 720, priority: 10);
       final l = PanelAllocator.allocate(
         viewport: 400,
         isColumnMode: false,
@@ -349,8 +436,8 @@ void main() {
       final l = run(
         viewport: 400,
         isColumnMode: false,
-        left: ['room'],
-        right: ['analytics'],
+        left: [PanelTypesEnum.room],
+        right: [PanelTypesEnum.analytics],
       );
       expect(l.left.single.vis, PanelVis.full); // room
       expect(l.right.single.vis, PanelVis.hidden); // analytics
@@ -366,8 +453,8 @@ void main() {
         final l = run(
           viewport: 400,
           isColumnMode: false,
-          left: ['room'],
-          right: ['analytics'],
+          left: [PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
           focusHint: 1,
         );
         expect(l.right.single.vis, PanelVis.full); // analytics (just opened)
@@ -377,8 +464,8 @@ void main() {
         final l2 = run(
           viewport: 400,
           isColumnMode: false,
-          left: ['room'],
-          right: ['analytics'],
+          left: [PanelTypesEnum.room],
+          right: [PanelTypesEnum.analytics],
           focusHint: 0,
         );
         expect(l2.left.single.vis, PanelVis.full);
@@ -388,15 +475,12 @@ void main() {
   });
 
   group('registry integrity', () {
-    test('every def.type matches its map key', () {
-      PanelRegistry.defs.forEach((key, d) => expect(d.type, key));
-    });
-
     test('every parent names a known type', () {
-      for (final d in PanelRegistry.defs.values) {
+      for (final t in PanelTypesEnum.values) {
+        final d = t.def;
         if (d.parent != null) {
           expect(
-            PanelRegistry.defs.containsKey(d.parent),
+            PanelTypesEnum.values.contains(d.parent),
             isTrue,
             reason: '${d.type} → unknown parent ${d.parent}',
           );
@@ -405,7 +489,7 @@ void main() {
     });
 
     test('the activity panel is a left-column liveView map-content root (#7385)', () {
-      final activity = PanelRegistry.defs['activity']!;
+      final activity = PanelTypesEnum.activity.def;
       // A root master like `course` (opens from the map/course, no parent) — so it
       // never folds behind anything and is the narrow-focus leaf when open.
       expect(activity.column, PanelColumn.left);
@@ -417,32 +501,10 @@ void main() {
       expect(activity.mapContent, isTrue);
       // Sized like a `room` (the live work surface) so it never shrinks past the
       // chat's floor — the bug #7385 fixed by pulling it into the allocator budget.
-      final room = PanelRegistry.defs['room']!;
+      final room = PanelTypesEnum.room.def;
       expect(activity.minWidth, room.minWidth);
       expect(activity.reasonableMin, room.reasonableMin);
       expect(activity.idealWidth, room.idealWidth);
-    });
-  });
-
-  group('exclusive panel holds the screen', () {
-    test('an exclusive panel takes the content area and hides the rest', () {
-      const exclusiveDef = PanelDef(
-        column: PanelColumn.left,
-        minWidth: 360,
-        idealWidth: 720,
-        priority: 90,
-        exclusive: true,
-      );
-      final l = PanelAllocator.allocate(
-        viewport: 1600,
-        isColumnMode: true,
-        left: [exclusiveDef],
-        right: [PanelRegistry.defs['analytics']!],
-      );
-      expect(l.left.single.vis, PanelVis.full);
-      expect(l.left.single.width, 1600 - 73); // whole content area
-      expect(l.right.single.vis, PanelVis.hidden);
-      expect(l.clusterVisible, isFalse);
     });
   });
 }

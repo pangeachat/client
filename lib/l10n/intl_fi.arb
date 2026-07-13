@@ -3871,7 +3871,6 @@
     "startNewSession": "Aloita uusi istunto",
     "joinOpenSession": "Liity avoimeen istuntoon",
     "activityNotFound": "Toimintoa ei löytynyt",
-    "levelUp": "Taso nousee",
     "myActivities": "Omat aktiviteetit",
     "openToJoin": "Avoin liittyä",
     "results": "Tulokset",
@@ -3913,7 +3912,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-06 10:20:52.661691",
+    "@@last_modified": "2026-07-13 10:04:17.126223",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9498,7 +9497,6 @@
     "enableNotificationsTitle": "Älä koskaan jää ilman keskustelua!",
     "enableNotificationsDesc": "Salli ilmoitukset Pangea Chatista ja pysy yhteydessä kielikavereihisi!",
     "enableNotifications": "Salli ilmoitukset",
-    "noActivitiesFound": "Tälle aiheelle ei ole saatavilla aktiviteetteja.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9508,10 +9506,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10316,5 +10310,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Viron",
+    "abDisplayName": "Abhaasian",
+    "elDisplayName": "Kreikka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} {total} tähteä ansaittu",
+    "activityNoLongerSupported": "Tätä toimintoa ei enää tueta, koska se toimi vanhemmassa versiossa. Voit silti tarkastella, mitä tässä istunnossa tapahtui.",
+    "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
+    "levelUpChip": "Taso {level}!",
+    "missingCourseOutline": "Tämä kurssi ei ole enää saatavilla",
+    "missingCourseOutlineCta": "Tämä kurssi ei ole enää saatavilla. Valitse uusi kurssisuunnitelma.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sulje kurssin lisäämis sivu",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Ilmoita kielioppitietojen ongelmasta",
+    "grammarFeedbackDialogTitle": "Kielioppitietojen palaute",
+    "grammarFeedbackSubmittedDesc": "Kiitos! Selitys on päivitetty palautteesi perusteella.",
+    "focusOnMap": "Keskity karttaan",
+    "welcome": "Tervetuloa",
+    "courseRequest": "Kurssipyyntö",
+    "onboarding": "Aloitus",
+    "selectImageFromDevice": "Valitse kuva laitteelta",
+    "dinoAvatarLabel": "Aurinkolasillinen dinosaurus",
+    "bearAvatarLabel": "Ystävällinen karhu",
+    "squidAvatarLabel": "Kampela, jolla on kuulokkeet",
+    "cartoonAvatarLabel": "Onnellinen sarjakuvahahmo, joka heiluttaa",
+    "robotAvatarLabel": "Robotti, jolla on tähdet silmin",
+    "featuresIncludeLabel": "Ominaisuudet sisältävät",
+    "difficultyListLabel": "Vaikeuslista",
+    "languageListLabel": "Kielilista",
+    "searchedResultsLabel": "Hakutulokset hakusanalle '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

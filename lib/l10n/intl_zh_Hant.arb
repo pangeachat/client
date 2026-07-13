@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:07.031645",
+    "@@last_modified": "2026-07-13 10:06:27.424623",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3756,7 +3756,6 @@
     "startNewSession": "開始新會話",
     "joinOpenSession": "加入公開會話",
     "activityNotFound": "未找到活動",
-    "levelUp": "升級",
     "myActivities": "我的活動",
     "openToJoin": "開放加入",
     "results": "結果",
@@ -9579,7 +9578,6 @@
     "enableNotificationsTitle": "永遠不會錯過聊天！",
     "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
     "enableNotifications": "允許通知",
-    "noActivitiesFound": "此主題沒有可用的活動。",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9589,10 +9587,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10397,5 +10391,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "愛沙尼亞語",
+    "abDisplayName": "阿布哈茲語",
+    "elDisplayName": "希臘語",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} 的 {total} 顆星",
+    "activityNoLongerSupported": "此活動運行於舊版本的活動，已不再支援。您仍然可以查看此會議中發生的事情。",
+    "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",
+    "levelUpChip": "升級到 {level} 級！",
+    "missingCourseOutline": "此課程不再可用",
+    "missingCourseOutlineCta": "此課程不再可用。請選擇一個新的課程計劃。",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "關閉新增課程頁面",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "報告語法資訊問題",
+    "grammarFeedbackDialogTitle": "語法資訊反饋",
+    "grammarFeedbackSubmittedDesc": "謝謝！根據您的反饋，解釋已更新。",
+    "focusOnMap": "專注於地圖",
+    "welcome": "歡迎",
+    "courseRequest": "課程請求",
+    "onboarding": "入門",
+    "selectImageFromDevice": "從設備選擇圖片",
+    "dinoAvatarLabel": "一隻戴著太陽眼鏡的恐龍",
+    "bearAvatarLabel": "一隻友善的熊",
+    "squidAvatarLabel": "一隻戴著耳機的魷魚",
+    "cartoonAvatarLabel": "一個快樂的卡通角色在揮手",
+    "robotAvatarLabel": "一個眼睛裡有星星的機器人",
+    "featuresIncludeLabel": "功能包括",
+    "difficultyListLabel": "難度列表",
+    "languageListLabel": "語言列表",
+    "searchedResultsLabel": "搜尋 '{search}' 的結果",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

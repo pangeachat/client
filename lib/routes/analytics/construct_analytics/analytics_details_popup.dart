@@ -14,7 +14,6 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -137,12 +136,10 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   /// (#7076).
   void _close() => NavigationUtil.popOrGo(
     context,
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      PanelToken(
-        'analytics',
-        widget.view == ConstructTypeEnum.vocab ? 'vocab' : 'grammar',
-      ),
-    ]),
+    WorkspaceNav.closeConstructDetail(
+      GoRouterState.of(context).uri,
+      widget.view,
+    ),
   );
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
@@ -351,7 +348,7 @@ class _PracticeButton extends StatelessWidget {
                 GoRouterState.of(context).uri,
                 // Canonical token vocabulary: `grammar`/`vocab`, never the
                 // legacy `morph` (ConstructTypeEnum is the one source of truth).
-                view.canonicalTokenParam,
+                view,
               ),
             )
           : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),

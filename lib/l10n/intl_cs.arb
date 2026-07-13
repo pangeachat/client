@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-06 10:21:48.804642",
+    "@@last_modified": "2026-07-13 10:05:55.093969",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3430,7 +3430,6 @@
     "startNewSession": "Začít novou relaci",
     "joinOpenSession": "Připojit se k otevřené relaci",
     "activityNotFound": "Aktivita nenalezena",
-    "levelUp": "Zvýšit úroveň",
     "myActivities": "Mé aktivity",
     "openToJoin": "Otevřeno pro připojení",
     "results": "Výsledky",
@@ -10003,7 +10002,6 @@
     "enableNotificationsTitle": "Nikdy nezmeškejte chat!",
     "enableNotificationsDesc": "Povolte oznámení pro Pangea Chat a zůstaňte v kontaktu se svými jazykovými kamarády!",
     "enableNotifications": "Povolte oznámení",
-    "noActivitiesFound": "Žádné aktivity k tomuto tématu nejsou k dispozici.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10013,10 +10011,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10821,5 +10815,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonština",
+    "abDisplayName": "Abcházština",
+    "elDisplayName": "Řečtina",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} z {total} získaných hvězd",
+    "activityNoLongerSupported": "Tato aktivita běžela na starší verzi aktivit a již není podporována. Můžete si však stále prohlédnout, co se v této relaci stalo.",
+    "activityLoadFailed": "Nepodařilo se načíst aktivitu. Zkontrolujte své připojení a zkuste to znovu.",
+    "levelUpChip": "Úroveň {level}!",
+    "missingCourseOutline": "Tento kurz již není k dispozici",
+    "missingCourseOutlineCta": "Tento kurz již není k dispozici. Vyberte nový plán kurzu.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zavřít stránku pro přidání kurzu",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Nahlásit problém s gramatikou",
+    "grammarFeedbackDialogTitle": "Zpětná vazba k informacím o gramatice",
+    "grammarFeedbackSubmittedDesc": "Děkujeme! Vysvětlení bylo aktualizováno na základě vaší zpětné vazby.",
+    "focusOnMap": "Zaměřit se na mapu",
+    "welcome": "Vítejte",
+    "courseRequest": "Žádost o kurz",
+    "onboarding": "Úvodní školení",
+    "selectImageFromDevice": "Vybrat obrázek z zařízení",
+    "dinoAvatarLabel": "Dinosaur s brýlemi",
+    "bearAvatarLabel": "Přátelský medvěd",
+    "squidAvatarLabel": "Chobotnice s sluchátky",
+    "cartoonAvatarLabel": "Šťastná kreslená postavička mává",
+    "robotAvatarLabel": "Robot se hvězdami místo očí",
+    "featuresIncludeLabel": "Funkce zahrnují",
+    "difficultyListLabel": "Seznam obtížnosti",
+    "languageListLabel": "Seznam jazyků",
+    "searchedResultsLabel": "Výsledky hledání pro '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -9,19 +9,19 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics.dart';
@@ -29,10 +29,10 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_button_row.dar
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum SpaceSettingsTabs {
@@ -60,8 +60,7 @@ class SpaceDetailsContent extends StatelessWidget {
 
     final activeTab = controller.widget.activeTab;
     if (activeTab != null) {
-      final selectedTab = SpaceSettingsTabs.fromString(activeTab);
-      return selectedTab ?? defaultTab;
+      return activeTab;
     }
 
     return defaultTab;
@@ -74,10 +73,7 @@ class SpaceDetailsContent extends StatelessWidget {
     // dropped it. The course panel decodes the tab back out. See
     // routing.instructions.md.
     context.go(
-      WorkspaceNav.openCourse(
-        GoRouterState.of(context).uri,
-        PanelToken('course', tab.name),
-      ),
+      WorkspaceNav.openCourseTab(GoRouterState.of(context).uri, tab: tab),
     );
   }
 
@@ -85,9 +81,8 @@ class SpaceDetailsContent extends StatelessWidget {
   /// as the card's DETAIL — a `coursepage` panel beside the card that coexists
   /// when width allows and folds to a push when not, keeping the `?m=` filter
   /// and the rest of the workspace. See `routing.instructions.md`.
-  void _openCoursePage(BuildContext context, String page) => context.go(
-    WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
-  );
+  void _openCoursePage(BuildContext context, RoomSubpageEnum page) => context
+      .go(WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page));
 
   List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
@@ -128,16 +123,18 @@ class SpaceDetailsContent extends StatelessWidget {
         description: l10n.inviteDesc,
         icon: const Icon(Icons.person_add_outlined, size: 30.0),
         onPressed: () {
-          String filter = 'knocking';
+          InvitationFilter filter = InvitationFilter.knocking;
           if (room.getParticipants([Membership.knock]).isEmpty) {
-            filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
+            filter = room.pangeaSpaceParents.isNotEmpty
+                ? InvitationFilter.space
+                : InvitationFilter.contacts;
           }
           // world_v2: opens beside the card as a `coursepage` detail, with the
           // initial contact filter riding in the token param.
           context.go(
             WorkspaceNav.openCoursePage(
               GoRouterState.of(context).uri,
-              'invite',
+              RoomSubpageEnum.invite,
               filter: filter,
             ),
           );
@@ -149,7 +146,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'edit'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.edit),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -157,7 +154,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: L10n.of(context).changeCourse,
         description: L10n.of(context).changeCourseDesc,
         icon: const Icon(Icons.assignment_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'addcourse'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.addcourse),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -189,7 +186,9 @@ class SpaceDetailsContent extends StatelessWidget {
               context: context,
               future: () async {
                 final outline = await QuestRepo.outline(room.coursePlan!.uuid);
-                return outline.groups.map((g) => g.activities.length).min;
+                return outline.result?.groups
+                    .map((g) => g.activities.length)
+                    .min;
               },
               showError: (e) => false,
             );
@@ -259,7 +258,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'permissions'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.permissions),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -267,7 +266,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, 'access'),
+        onPressed: () => _openCoursePage(context, RoomSubpageEnum.access),
         enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
         showInMainView: false,
       ),
@@ -316,197 +315,213 @@ class SpaceDetailsContent extends StatelessWidget {
     ];
   }
 
+  /// Below this incoming height the course card renders only its header and
+  /// progress bar — the collapsed mobile peek (the nav cavity clips there). The
+  /// wide/web panel and the expanded sheet are always well above it. See
+  /// [build].
+  static const double _kCompactCardMaxHeight = 168.0;
+
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null for
-        // spaces), so the left-panel close control — an X on desktop, a back
-        // arrow on mobile — rides at the leading edge of the card header,
-        // matching the right column's leading close affordance. Dropping it
-        // would leave the course card with no way to close. See
-        // routing.instructions.md.
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: .center,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // The collapsed mobile peek gives the card just enough height for the
+        // header + progress bar and the nav cavity clips there. The Expanded
+        // tab body can't shrink into that short box (it overflows), so below
+        // the threshold we render ONLY the header + bar; the tabs and content
+        // slide in when the learner drags the sheet up (#7597, the Figma
+        // mobile-default frame).
+        final compact =
+            constraints.maxHeight.isFinite &&
+            constraints.maxHeight < _kCompactCardMaxHeight;
+        return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            if (controller.widget.embeddedCloseButton != null)
-              controller.widget.embeddedCloseButton!,
-            SizedBox(),
-            if (room.joinCode != null)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ShareRoomButton(
-                  room: room,
-                  tooltip: L10n.of(context).shareCourse,
-                  child: const Icon(Icons.share_outlined),
-                ),
-              ),
-          ],
-        ),
-        SizedBox(height: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (isColumnMode) ...[
-                    ClipPath(
-                      clipper: MapClipper(),
-                      child: Avatar(
-                        mxContent: room.avatar,
-                        name: displayname,
-                        userId: room.directChatMatrixID,
-                        size: 80.0,
-                        borderRadius: BorderRadius.circular(0.0),
-                      ),
-                    ),
-                    const SizedBox(width: 16.0),
-                  ],
-                  Flexible(
-                    child: Column(
-                      spacing: isColumnMode ? 12.0 : 6.0,
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          displayname,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        if (room.coursePlan != null)
-                          CourseInfoChips(
-                            room.coursePlan!.uuid,
-                            fontSize: 12.0,
-                            iconSize: 12.0,
-                          ),
-                      ],
+            // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null
+            // for spaces), so the left-panel close control — an X on desktop, a
+            // back arrow on mobile — rides at the leading edge of the card
+            // header. Dropping it would leave the course card with no way to
+            // close. See routing.instructions.md.
+            //
+            // Shared header (web + mobile, #7597): [X · title · share]. The one
+            // web/mobile difference is the tab labels below — RoomDetailsButton's
+            // width-driven `mini`. No large course avatar (removed), and the
+            // language/level/module chips moved to the top of the More tab.
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (controller.widget.embeddedCloseButton != null)
+                  controller.widget.embeddedCloseButton!,
+                Expanded(
+                  child: Text(
+                    displayname,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ],
-              ),
+                ),
+                // The one camera path that zooms (#7616): course selection
+                // only pans, so this button zoom+pan-fits the map to all of
+                // the course's activities.
+                IconButton(
+                  tooltip: L10n.of(context).focusOnMap,
+                  icon: const Icon(Icons.filter_center_focus),
+                  onPressed: MapCameraFocusRequests.request,
+                ),
+                if (room.joinCode != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShareRoomButton(
+                      room: room,
+                      tooltip: L10n.of(context).shareCourse,
+                      child: const Icon(Icons.share_outlined),
+                    ),
+                  ),
+              ],
             ),
-          ],
-        ),
-        SizedBox(height: isColumnMode ? 24.0 : 12.0),
-        SpaceDetailsButtonRow(
-          controller: controller,
-          room: room,
-          selectedTab: tab(context),
-          onTabSelected: (tab) => setSelectedTab(tab, context),
-          buttons: _buttons(context),
-        ),
-        SizedBox(height: isColumnMode ? 30.0 : 14.0),
-        Expanded(
-          child: Builder(
-            builder: (context) {
-              switch (tab(context)) {
-                case SpaceSettingsTabs.chat:
-                  return CourseChats(
-                    room.id,
-                    activeChat: null,
-                    client: room.client,
-                  );
-                case SpaceSettingsTabs.course:
-                  // world_v2: the course plan is a sequence of learning
-                  // objectives, each satisfied by interchangeable activities
-                  // (no longer grouped by city).
-                  return CourseObjectivesList(
-                    room: room,
-                    hasCompletedActivity:
-                        controller.roomSummariesModel.hasCompletedActivity,
-                  );
-                case SpaceSettingsTabs.participants:
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const InstructionsInlineTooltip(
-                          instructionsEnum:
-                              InstructionsEnum.courseParticipantTooltip,
-                          padding: EdgeInsets.only(
-                            bottom: 16.0,
-                            left: 16.0,
-                            right: 16.0,
+            const SizedBox(height: 12.0),
+            // The overall course progress bar rides ABOVE the tabs so it shows on
+            // every tab and survives the collapsed mobile peek (the objective list,
+            // where it used to live, isn't mounted then). Only the course has a
+            // bar; per-Mission rows show just their stars (#7597).
+            CourseProgressBar(room: room),
+            if (!compact) ...[
+              SizedBox(height: isColumnMode ? 24.0 : 12.0),
+              SpaceDetailsButtonRow(
+                controller: controller,
+                room: room,
+                selectedTab: tab(context),
+                onTabSelected: (tab) => setSelectedTab(tab, context),
+                buttons: _buttons(context),
+              ),
+              SizedBox(height: isColumnMode ? 30.0 : 14.0),
+              Expanded(
+                child: Builder(
+                  builder: (context) {
+                    switch (tab(context)) {
+                      case SpaceSettingsTabs.chat:
+                        return CourseChats(
+                          room.id,
+                          activeChat: null,
+                          client: room.client,
+                        );
+                      case SpaceSettingsTabs.course:
+                        // world_v2: the course plan is a sequence of learning
+                        // objectives, each satisfied by interchangeable activities
+                        // (no longer grouped by city).
+                        return CourseObjectivesList(
+                          room: room,
+                          hasCompletedActivity: controller
+                              .roomSummariesModel
+                              .hasCompletedActivity,
+                        );
+                      case SpaceSettingsTabs.participants:
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const InstructionsInlineTooltip(
+                                instructionsEnum:
+                                    InstructionsEnum.courseParticipantTooltip,
+                                padding: EdgeInsets.only(
+                                  bottom: 16.0,
+                                  left: 16.0,
+                                  right: 16.0,
+                                ),
+                              ),
+                              RoomParticipantsSection(room: room),
+                            ],
                           ),
-                        ),
-                        RoomParticipantsSection(room: room),
-                      ],
-                    ),
-                  );
-                case SpaceSettingsTabs.analytics:
-                  return SingleChildScrollView(
-                    child: Center(child: SpaceAnalytics(roomId: room.id)),
-                  );
-                case SpaceSettingsTabs.more:
-                  final buttons = _buttons(
-                    context,
-                  ).where((b) => !b.showInMainView && b.visible).toList();
+                        );
+                      case SpaceSettingsTabs.analytics:
+                        return SingleChildScrollView(
+                          child: Center(child: SpaceAnalytics(roomId: room.id)),
+                        );
+                      case SpaceSettingsTabs.more:
+                        final buttons = _buttons(
+                          context,
+                        ).where((b) => !b.showInMainView && b.visible).toList();
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        if (room.topic.isNotEmpty) ...[
-                          Text(
-                            room.topic,
-                            style: TextStyle(
-                              fontSize: isColumnMode ? 16.0 : 12.0,
-                            ),
-                          ),
-                          SizedBox(height: isColumnMode ? 30.0 : 14.0),
-                        ],
-                        Column(
-                          spacing: 10.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: buttons.map((b) {
-                            return Opacity(
-                              opacity: b.enabled ? 1.0 : 0.5,
-                              child: b.isToggle
-                                  ? SwitchListTile(
-                                      title: Text(b.title),
-                                      subtitle: b.description != null
-                                          ? Text(b.description!)
-                                          : null,
-                                      secondary: b.icon,
-                                      value: b.value,
-                                      onChanged: b.enabled
-                                          ? (value) {
-                                              b.onPressed?.call();
-                                            }
-                                          : null,
-                                      activeThumbColor:
-                                          AppConfig.activeToggleColor,
-                                    )
-                                  : ListTile(
-                                      title: Text(b.title),
-                                      subtitle: b.description != null
-                                          ? Text(b.description!)
-                                          : null,
-                                      leading: b.icon,
-                                      onTap: b.enabled
-                                          ? () => b.onPressed?.call()
-                                          : null,
-                                      trailing: b.trailing,
+                        return SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Course meta at the top of More: the description, then
+                              // the language/level/module chips in a row beneath it
+                              // (moved out of the header, #7597).
+                              if (room.topic.isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 12.0),
+                                  child: Text(
+                                    room.topic,
+                                    style: TextStyle(
+                                      fontSize: isColumnMode ? 16.0 : 12.0,
                                     ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
-                    ),
-                  );
-              }
-            },
-          ),
-        ),
-      ],
+                                  ),
+                                ),
+                              if (room.coursePlan != null)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    bottom: isColumnMode ? 30.0 : 14.0,
+                                  ),
+                                  child: CourseInfoChips(
+                                    room.coursePlan!.uuid,
+                                    fontSize: 12.0,
+                                    iconSize: 12.0,
+                                  ),
+                                ),
+                              Column(
+                                spacing: 10.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: buttons.map((b) {
+                                  return Opacity(
+                                    opacity: b.enabled ? 1.0 : 0.5,
+                                    child: b.isToggle
+                                        ? SwitchListTile(
+                                            title: Text(b.title),
+                                            subtitle: b.description != null
+                                                ? Text(b.description!)
+                                                : null,
+                                            secondary: b.icon,
+                                            value: b.value,
+                                            onChanged: b.enabled
+                                                ? (value) {
+                                                    b.onPressed?.call();
+                                                  }
+                                                : null,
+                                            activeThumbColor:
+                                                AppConfig.activeToggleColor,
+                                          )
+                                        : ListTile(
+                                            title: Text(b.title),
+                                            subtitle: b.description != null
+                                                ? Text(b.description!)
+                                                : null,
+                                            leading: b.icon,
+                                            onTap: b.enabled
+                                                ? () => b.onPressed?.call()
+                                                : null,
+                                            trailing: b.trailing,
+                                          ),
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          ),
+                        );
+                    }
+                  },
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 }

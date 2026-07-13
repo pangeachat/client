@@ -185,8 +185,8 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     final left = parseOpenPanels(GoRouterState.of(context).uri).left;
     final onDetails = left.any(
       (t) =>
-          (t.type == 'room' || t.type == 'session') &&
-          (t.param ?? '').split('/').contains('details'),
+          t.type.isRoomPanel &&
+          (t.param?.build() ?? '').split('/').contains('details'),
     );
     NavigationUtil.goToSpaceRoute(
       widget.room.id,

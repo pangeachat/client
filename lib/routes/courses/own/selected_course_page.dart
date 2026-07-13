@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 
+import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -26,7 +28,15 @@ class SelectedCourse extends StatefulWidget {
   /// In join mode, the ID of the space to join that already has this course.
   final String? spaceId;
 
-  const SelectedCourse(this.courseId, this.mode, {super.key, this.spaceId});
+  final Widget? closeButton;
+
+  const SelectedCourse(
+    this.courseId,
+    this.mode, {
+    super.key,
+    this.spaceId,
+    this.closeButton,
+  });
 
   @override
   SelectedCourseController createState() => SelectedCourseController();
@@ -45,31 +55,6 @@ class SelectedCourseController extends State<SelectedCourse>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
       loadCourse(widget.courseId);
-    }
-  }
-
-  /// world_v2: the course detail is route-driven (`/courses/own/:courseid` and
-  /// `/courses/:spaceid/addcourse/:courseId`) because the launch/add Completer
-  /// can't ride a token URL, so the parent `/courses…` segments render a blank
-  /// `EmptyPage`. A plain `Navigator.pop()` surfaces that blank page (#7090).
-  /// Navigate back to where the detail was opened from instead: the start-my-own
-  /// plan list (`addcourse:own` over the world map) for launch, or the target
-  /// course card for add-to-space.
-  void back() {
-    final uri = GoRouterState.of(context).uri;
-    switch (widget.mode) {
-      case SelectedCourseMode.launch:
-        context.go(
-          WorkspaceNav.setSection(
-            uri,
-            const PanelToken('addcourse', 'own'),
-            keepRoom: false,
-          ),
-        );
-      case SelectedCourseMode.addToSpace:
-        context.go(
-          WorkspaceNav.openCourseFilter(uri, widget.spaceId!, tab: 'course'),
-        );
     }
   }
 
@@ -114,6 +99,12 @@ class SelectedCourseController extends State<SelectedCourse>
               type: PangeaEventTypes.coursePlan,
               content: {"uuid": courseId},
             ),
+            sdk.StateEvent(
+              type: PangeaEventTypes.courseSettings,
+              content: CourseSettingsModel(
+                requireAnalyticsAccess: true,
+              ).toJson(),
+            ),
           ],
           avatarUrl: course.imageUrl.toString(),
           spaceChild: 0,
@@ -121,7 +112,15 @@ class SelectedCourseController extends State<SelectedCourse>
         .then((spaceId) => completer.complete(spaceId))
         .catchError((error) => completer.completeError(error));
 
-    context.go("/courses/own/${widget.courseId}/invite", extra: completer);
+    context.go(
+      WorkspaceNav.openAddCoursePage(
+        GoRouterState.of(context).uri,
+        AddCourseSubpageEnum.own,
+        createCourseId: widget.courseId,
+        showNewCourseInvitePage: true,
+      ),
+      extra: completer,
+    );
   }
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {
@@ -147,10 +146,10 @@ class SelectedCourseController extends State<SelectedCourse>
 
     if (!mounted) return;
     context.go(
-      WorkspaceNav.openCourseFilter(
+      WorkspaceNav.openCourse(
         GoRouterState.of(context).uri,
         space.id,
-        tab: 'course',
+        tab: SpaceSettingsTabs.course,
       ),
     );
   }

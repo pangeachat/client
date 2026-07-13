@@ -4247,7 +4247,23 @@
     "startNewSession": "Start new session",
     "joinOpenSession": "Join open session",
     "activityNotFound": "Activity not found",
-    "levelUp": "Level up",
+    "starsEarnedOfTotal": "{earned} of {total} stars earned",
+    "@starsEarnedOfTotal": {
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "activityNoLongerSupported": "This activity ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
+    "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
+    "levelUpChip": "Level {level}!",
+    "@levelUpChip": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
     "myActivities": "My activities",
     "openToJoin": "Open to join",
     "results": "Results",
@@ -4304,6 +4320,9 @@
     "languageMismatchDesc": "Your target language doesn't match the language of this activity. Update your target language?",
     "reportWordIssueTooltip": "Report word information issue",
     "tokenInfoFeedbackDialogTitle": "Word Information Feedback",
+    "reportGrammarIssueTooltip": "Report grammar information issue",
+    "grammarFeedbackDialogTitle": "Grammar Information Feedback",
+    "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
     "noPublicCoursesFound": "No public courses found. Would you like to create one?",
     "noCourseTemplatesFound": "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.",
     "botActivityJoinFailMessage": "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.",
@@ -4314,6 +4333,11 @@
     "newMessageInPangeaChat": "💬 New message in Pangea Chat",
     "shareCourse": "Share course",
     "@shareCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "focusOnMap": "Focus on map",
+    "@focusOnMap": {
         "type": "String",
         "placeholders": {}
     },
@@ -4401,6 +4425,7 @@
     "esDisplayName": "Spanish",
     "esESDisplayName": "Spanish (Spain)",
     "esMXDisplayName": "Spanish (Mexico)",
+    "etDisplayName": "Estonian",
     "euDisplayName": "Basque",
     "faDisplayName": "Persian",
     "ffDisplayName": "Fulah",
@@ -4827,7 +4852,6 @@
     "enableNotificationsTitle": "Never miss a chat!",
     "enableNotificationsDesc": "Allow notifications for Pangea Chat and stay connected with your language buddies!",
     "enableNotifications": "Allow notifications",
-    "noActivitiesFound": "No activities available for this topic.",
     "numObjectives": "{count} objectives",
     "@numObjectives": {
         "type": "String",
@@ -5012,8 +5036,8 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Saved activities and stars", 
-    "customizePollLabel": "Customize poll", 
+    "starListLabel": "Saved activities and stars",
+    "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
     "analyticsAndSettingsLabel": "Analytics and Settings options",
@@ -5022,6 +5046,37 @@
     "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons", 
     "mapZoomLabel": "Map zoom controls", 
     "activityMapLabel": "Activity map", 
+    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
+    "abDisplayName": "Abkhazian", 
+    "elDisplayName": "Greek",
+    "etDisplayName": "Estonian",
+    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
+    "mapZoomLabel": "Map zoom controls",
+    "activityMapLabel": "Activity map",
+    "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
+    "missingCourseOutline": "This course is no longer available",
+    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan.",
+    "welcome": "Welcome",
+    "courseRequest": "Course request", 
+    "onboarding": "Onboarding",
+    "selectImageFromDevice": "Select image from device",
+    "dinoAvatarLabel": "A dinosaur with sunglasses",
+    "bearAvatarLabel": "A friendly bear",
+    "squidAvatarLabel": "A squid wearing headphones",
+    "cartoonAvatarLabel": "A happy cartoon character waving",
+    "robotAvatarLabel": "A robot with stars for eyes",
+    "featuresIncludeLabel": "Features include",
+    "difficultyListLabel": "Difficulty list",
+    "languageListLabel": "Language list",
+    "searchedResultsLabel": "Search results for '{search}'",
+    "@searchedLanguageListLabel": {
+        "placeholders": {
+            "search": {
+                "type": "String"
+            }
+        }
+    },
+    "closeAddCoursePage": "Close add course page"
     "bodyLabel": "{page} options",
     "@bodyLabel": {
         "placeholders": {

@@ -78,17 +78,18 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                spacing: 12.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  BotFace(
-                    expression: BotExpression.idle,
-                    useRive: true,
-                    width: 140.0,
-                  ),
-                  Text(
+            child: Column(
+              spacing: 12.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                BotFace(
+                  expression: BotExpression.idle,
+                  useRive: true,
+                  width: 140.0,
+                ),
+                Semantics(
+                  container: true,
+                  child: Text(
                     widget.error != null
                         ? L10n.of(context).courseCodeStepErrorMessage
                         : L10n.of(context).courseCodeStepTitle,
@@ -99,11 +100,14 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                           : null,
                     ),
                   ),
-                  ValueListenableBuilder(
-                    valueListenable: _showCodeInput,
-                    builder: (context, showInput, _) {
-                      if (showInput) {
-                        return TextField(
+                ),
+                ValueListenableBuilder(
+                  valueListenable: _showCodeInput,
+                  builder: (context, showInput, _) {
+                    if (showInput) {
+                      return Semantics(
+                        container: true,
+                        child: TextField(
                           controller: _codeController,
                           decoration: InputDecoration(
                             hintText: L10n.of(context).courseCodeStepHint,
@@ -120,104 +124,103 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                           ],
-                        );
-                      }
-
-                      return Column(
-                        spacing: 12.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsGeometry.symmetric(
-                              horizontal: 16.0,
-                            ),
-                            child: ElevatedButton(
-                              onPressed: widget.skip,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.surfaceContainer,
-                                foregroundColor: theme.colorScheme.onSurface,
-                              ),
-                              child: Row(
-                                spacing: 8.0,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [Text(L10n.of(context).no)],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsGeometry.symmetric(
-                              horizontal: 16.0,
-                            ),
-                            child: ElevatedButton(
-                              onPressed: _setShowCodeInput,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.surfaceContainer,
-                                foregroundColor: theme.colorScheme.onSurface,
-                              ),
-                              child: Row(
-                                spacing: 8.0,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [Text(L10n.of(context).yes)],
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       );
-                    },
-                  ),
-                ],
-              ),
+                    }
+
+                    return Column(
+                      spacing: 12.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsGeometry.symmetric(
+                            horizontal: 16.0,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: widget.skip,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.surfaceContainer,
+                              foregroundColor: theme.colorScheme.onSurface,
+                            ),
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text(L10n.of(context).no)],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsGeometry.symmetric(
+                            horizontal: 16.0,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: _setShowCodeInput,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.surfaceContainer,
+                              foregroundColor: theme.colorScheme.onSurface,
+                            ),
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text(L10n.of(context).yes)],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
-        //     Column(
-        Column(
-          children: [
-            ValueListenableBuilder(
-              valueListenable: _showCodeInput,
-              builder: (context, showInput, _) {
-                if (!showInput) return SizedBox();
-                return Padding(
+        ValueListenableBuilder(
+          valueListenable: _showCodeInput,
+          builder: (context, showInput, _) {
+            if (!showInput) return SizedBox(height: 60.0);
+            return Column(
+              children: [
+                Padding(
                   padding: EdgeInsetsGeometry.only(bottom: 12.0),
                   child: TextButton(
                     onPressed: widget.skip,
                     child: Text(L10n.of(context).courseCodeStepSkip),
                   ),
-                );
-              },
-            ),
-            ElevatedButton(
-              onPressed: _step.enableGoForward ? widget.forward : null,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primaryContainer,
-                foregroundColor: theme.colorScheme.onPrimaryContainer,
-                minimumSize: const Size.fromHeight(48),
-              ),
-              child: SizedBox(
-                height: 24,
-                child: Center(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: widget.loading
-                        ? SizedBox(
-                            key: const ValueKey('loading'),
-                            width: double.infinity,
-                            child: const LinearProgressIndicator(),
-                          )
-                        : Text(
-                            widget.hasNextStep
-                                ? _step.nextStepText(L10n.of(context))
-                                : _step.lastStepText(L10n.of(context)),
-                            key: const ValueKey('text'),
-                            textAlign: TextAlign.center,
-                          ),
+                ),
+                ElevatedButton(
+                  onPressed: _step.enableGoForward ? widget.forward : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primaryContainer,
+                    foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                  child: SizedBox(
+                    height: 24,
+                    child: Center(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        child: widget.loading
+                            ? SizedBox(
+                                key: const ValueKey('loading'),
+                                width: double.infinity,
+                                child: const LinearProgressIndicator(),
+                              )
+                            : Text(
+                                widget.hasNextStep
+                                    ? _step.nextStepText(L10n.of(context))
+                                    : _step.lastStepText(L10n.of(context)),
+                                key: const ValueKey('text'),
+                                textAlign: TextAlign.center,
+                              ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         ),
       ],
     );

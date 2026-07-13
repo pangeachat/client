@@ -3,9 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 
-/// The ONE inbound URL rewrite (routing.instructions.md): the shareable
-/// standalone activity link. Every other legacy shape is deleted, not
-/// redirected — the client is the only producer of its URLs.
+/// The inbound URL rewrites (routing.instructions.md): the shareable
+/// standalone activity link and the course join link. Every other legacy
+/// shape is deleted, not redirected — the client is the only producer of its
+/// URLs.
 void main() {
   String? resolve(String location) =>
       LegacyRedirects.resolve(Uri.parse(location));
@@ -20,7 +21,7 @@ void main() {
       final out = resolve('/$id?launch=true&roomid=!r&autoplay=1');
       final outUri = Uri.parse(out!);
       final info = activityInfoFor(outUri);
-      expect(info?.id, id);
+      expect(info?.activityId, id);
       expect(info?.launch, isTrue);
       expect(info?.roomId, '!r');
       expect(info?.autoplay, 1);
@@ -38,6 +39,50 @@ void main() {
 
     test('idempotent: the token form never re-fires', () {
       expect(resolve(resolve('/$id')!), isNull);
+    });
+  });
+
+  group('the inbound course join link (#7524)', () {
+    test('rewrites to the join-with-code leaf of the addcourse token', () {
+      expect(
+        resolve('/join_with_link?classcode=vj3pc8b'),
+        '/?left=addcoursepage:private.jvj3pc8b',
+      );
+    });
+
+    test('the native /join spelling folds to the same target', () {
+      expect(
+        resolve('/join?classcode=vj3pc8b'),
+        '/?left=addcoursepage:private.jvj3pc8b',
+      );
+    });
+
+    test('a code with unusual-but-valid characters round-trips losslessly', () {
+      const code = 'AB.1-ç 8';
+      final out = resolve(
+        '/join_with_link?classcode=${Uri.encodeComponent(code)}',
+      );
+      expect(joinCodeFor(Uri.parse(out!)), code);
+    });
+
+    test('a missing or empty code degrades to the manual join page', () {
+      expect(resolve('/join_with_link'), '/?left=addcoursepage:private');
+      expect(
+        resolve('/join_with_link?classcode='),
+        '/?left=addcoursepage:private',
+      );
+    });
+
+    test('prior panels and context are dropped — this link IS the join', () {
+      expect(
+        resolve('/join_with_link?classcode=vj3pc8b&c=!s&left=chats'),
+        '/?left=addcoursepage:private.jvj3pc8b',
+      );
+    });
+
+    test('idempotent: the token form never re-fires', () {
+      expect(resolve(resolve('/join_with_link?classcode=vj3pc8b')!), isNull);
+      expect(resolve(resolve('/join_with_link')!), isNull);
     });
   });
 
@@ -70,6 +115,16 @@ void main() {
     test('never redirects to the current location', () {
       expect(LegacyRedirects.handle(Uri.parse('/?left=chats')), isNull);
       expect(LegacyRedirects.handle(Uri.parse('/')), isNull);
+      expect(
+        LegacyRedirects.handle(
+          Uri.parse('/?left=addcoursepage:private%2Fvj3pc8b'),
+        ),
+        isNull,
+      );
+      expect(
+        LegacyRedirects.handle(Uri.parse('/?left=addcoursepage:private')),
+        isNull,
+      );
     });
   });
 }

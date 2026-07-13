@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:32.750928",
+    "@@last_modified": "2026-07-13 10:07:18.174249",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3900,7 +3900,6 @@
     "startNewSession": "Nieuwe sessie starten",
     "joinOpenSession": "Deelname aan open sessie",
     "activityNotFound": "Activiteit niet gevonden",
-    "levelUp": "Niveau omhoog",
     "myActivities": "Mijn activiteiten",
     "openToJoin": "Open voor deelname",
     "results": "Resultaten",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "Mis nooit een chat!",
     "enableNotificationsDesc": "Sta meldingen toe voor Pangea Chat en blijf verbonden met je taalkameraadjes!",
     "enableNotifications": "Sta meldingen toe",
-    "noActivitiesFound": "Geen activiteiten beschikbaar voor dit onderwerp.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10267,5 +10261,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estisch",
+    "abDisplayName": "Abchazisch",
+    "elDisplayName": "Grieks",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} van {total} sterren verdiend",
+    "activityNoLongerSupported": "Deze activiteit draaide op een oudere versie van activiteiten en wordt niet langer ondersteund. Je kunt nog steeds bekijken wat er in deze sessie is gebeurd.",
+    "activityLoadFailed": "Kon de activiteit niet laden. Controleer je verbinding en probeer het opnieuw.",
+    "levelUpChip": "Niveau {level}!",
+    "missingCourseOutline": "Deze cursus is niet langer beschikbaar",
+    "missingCourseOutlineCta": "Deze cursus is niet langer beschikbaar. Kies een nieuw cursusplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Sluit de pagina cursus toevoegen",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapporteer grammatica-informatieprobleem",
+    "grammarFeedbackDialogTitle": "Grammatica-informatiefeedback",
+    "grammarFeedbackSubmittedDesc": "Bedankt! De uitleg is bijgewerkt op basis van uw feedback.",
+    "focusOnMap": "Focus op kaart",
+    "welcome": "Welkom",
+    "courseRequest": "Cursusaanvraag",
+    "onboarding": "Inwerken",
+    "selectImageFromDevice": "Selecteer afbeelding van apparaat",
+    "dinoAvatarLabel": "Een dinosaurus met een zonnebril",
+    "bearAvatarLabel": "Een vriendelijke beer",
+    "squidAvatarLabel": "Een inktvis met een koptelefoon",
+    "cartoonAvatarLabel": "Een blije cartoonfiguur die zwaait",
+    "robotAvatarLabel": "Een robot met sterren als ogen",
+    "featuresIncludeLabel": "Kenmerken omvatten",
+    "difficultyListLabel": "Moeilijkheidslijst",
+    "languageListLabel": "Talenlijst",
+    "searchedResultsLabel": "Zoekresultaten voor '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

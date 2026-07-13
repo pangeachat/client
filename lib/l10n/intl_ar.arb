@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-06 10:22:17.189135",
+    "@@last_modified": "2026-07-13 10:06:46.719731",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3656,7 +3656,6 @@
     "startNewSession": "ابدأ جلسة جديدة",
     "joinOpenSession": "انضم إلى جلسة مفتوحة",
     "activityNotFound": "النشاط غير موجود",
-    "levelUp": "ارتقِ للمستوى التالي",
     "myActivities": "أنشطتي",
     "openToJoin": "مفتوح للانضمام",
     "results": "النتائج",
@@ -9789,7 +9788,6 @@
     "enableNotificationsTitle": "لا تفوت أي محادثة!",
     "enableNotificationsDesc": "اسمح بالإشعارات لتطبيق Pangea Chat وابقَ على اتصال مع أصدقائك في اللغة!",
     "enableNotifications": "اسمح بالإشعارات",
-    "noActivitiesFound": "لا توجد أنشطة متاحة لهذا الموضوع.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9799,10 +9797,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10607,5 +10601,142 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "starsEarnedOfTotal": "{earned} من {total} نجوم مكتسبة",
+    "activityNoLongerSupported": "لم تعد هذه النشاط مدعومة. لقد تم تشغيلها على إصدار أقدم من الأنشطة. يمكنك مراجعة ما حدث في هذه الجلسة.",
+    "activityLoadFailed": "تعذر تحميل النشاط. تحقق من اتصالك وحاول مرة أخرى.",
+    "levelUpChip": "المستوى {level}!",
+    "missingCourseOutline": "لم يعد هذا المقرر متاحًا",
+    "missingCourseOutlineCta": "لم يعد هذا المقرر متاحًا. اختر خطة مقرر جديدة.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "إغلاق صفحة إضافة دورة",
+    "etDisplayName": "إستوني",
+    "abDisplayName": "أبخازية",
+    "elDisplayName": "يوناني",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "reportGrammarIssueTooltip": "الإبلاغ عن مشكلة معلومات القواعد",
+    "grammarFeedbackDialogTitle": "ملاحظات معلومات القواعد",
+    "grammarFeedbackSubmittedDesc": "شكرًا! تم تحديث الشرح بناءً على ملاحظاتك.",
+    "focusOnMap": "التركيز على الخريطة",
+    "welcome": "مرحبًا",
+    "courseRequest": "طلب دورة",
+    "onboarding": "الانضمام",
+    "selectImageFromDevice": "اختر صورة من الجهاز",
+    "dinoAvatarLabel": "ديناصور يرتدي نظارات شمسية",
+    "bearAvatarLabel": "دب ودود",
+    "squidAvatarLabel": "حبار يرتدي سماعات",
+    "cartoonAvatarLabel": "شخصية كرتونية سعيدة تلوح",
+    "robotAvatarLabel": "روبوت بعيون على شكل نجوم",
+    "featuresIncludeLabel": "تشمل الميزات",
+    "difficultyListLabel": "قائمة الصعوبة",
+    "languageListLabel": "قائمة اللغات",
+    "searchedResultsLabel": "نتائج البحث لـ '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

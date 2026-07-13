@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-06 10:20:49.828608",
+    "@@last_modified": "2026-07-13 10:04:09.186711",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3901,7 +3901,6 @@
     "startNewSession": "Comezar nova sesión",
     "joinOpenSession": "Unirse á sesión aberta",
     "activityNotFound": "Actividade non atopada",
-    "levelUp": "Subir de nivel",
     "myActivities": "As miñas actividades",
     "openToJoin": "Aberto para unirse",
     "results": "Resultados",
@@ -9449,7 +9448,6 @@
     "enableNotificationsTitle": "¡Nunca perdas unha charla!",
     "enableNotificationsDesc": "Permite notificacións para Pangea Chat e mantente conectado cos teus compañeiros de idioma!",
     "enableNotifications": "Permitir notificacións",
-    "noActivitiesFound": "Non hai actividades dispoñibles para este tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9459,10 +9457,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10267,5 +10261,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonio",
+    "abDisplayName": "Abxaziano",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} de {total} estrelas gañadas",
+    "activityNoLongerSupported": "Esta actividade executouse nunha versión anterior das actividades e xa non se admite. Aínda podes revisar o que aconteceu nesta sesión.",
+    "activityLoadFailed": "Non se puido cargar a actividade. Comproba a túa conexión e intenta de novo.",
+    "levelUpChip": "Nivel {level}!",
+    "missingCourseOutline": "Este curso xa non está dispoñible",
+    "missingCourseOutlineCta": "Este curso xa non está dispoñible. Escolle un novo plan de curso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Pechar a páxina de engadir curso",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Informar sobre un problema de información gramatical",
+    "grammarFeedbackDialogTitle": "Comentarios sobre a información gramatical",
+    "grammarFeedbackSubmittedDesc": "Grazas! A explicación foi actualizada en base aos teus comentarios.",
+    "focusOnMap": "Concentrarse no mapa",
+    "welcome": "Benvido",
+    "courseRequest": "Solicitude de curso",
+    "onboarding": "Integración",
+    "selectImageFromDevice": "Seleccionar imaxe do dispositivo",
+    "dinoAvatarLabel": "Un dinosauro con gafas de sol",
+    "bearAvatarLabel": "Un oso amigable",
+    "squidAvatarLabel": "Un calamar cun auriculares",
+    "cartoonAvatarLabel": "Un personaxe de debuxos animados feliz que está a saudar",
+    "robotAvatarLabel": "Un robot cunha estrela como ollos",
+    "featuresIncludeLabel": "As características inclúen",
+    "difficultyListLabel": "Lista de dificultade",
+    "languageListLabel": "Lista de idiomas",
+    "searchedResultsLabel": "Resultados da busca para '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -77,6 +77,40 @@ python3 -m http.server 8090 --directory build/web   # or: npx serve build/web -l
 
 Trade-off: **no hot reload**, and **`?devlogin=1` does NOT work** in a profile/release build (it's gated on `kDebugMode`). Log in once through the real canvas login form using the `.env` `TEST_MATRIX_*` creds against your `SYNAPSE_URL` (the session then persists across reloads).
 
+## Narrow / mobile (single-column) mode in the extension browser
+
+The Claude-in-Chrome extension cannot put the app below the 840px single-column
+breakpoint on the usual path: `resize_window` shrinks the OS window but Chrome's
+**per-host page zoom** keeps `window.innerWidth` large, and zoom shortcuts sent
+via CDP never reach the browser chrome. Two pieces, both required:
+
+1. **A fresh host origin resets zoom to 100%.** Serve (or just open) the app on
+   `127.0.0.1` instead of `localhost` — zoom is keyed on the host, so the new
+   host starts at 100% and `resize_window` then maps 1:1 to logical pixels
+   (`resize_window(500, …)` → `innerWidth == 500` → single-column).
+2. **Use a profile build served statically, not the debug server.** On the new
+   origin the debug (DWDS) bootstrap tends to fail its websocket handshake — all
+   ~2.8k modules load and `main()` never runs (spinner forever, no network, no
+   errors). The profile build has no DWDS and paints in seconds:
+
+```bash
+fvm flutter build web --profile --pwa-strategy=none
+cp .env build/web/.env      # REQUIRED — see the profile-build section above
+python3 -m http.server 8091 --directory build/web
+# → navigate the extension tab to http://127.0.0.1:8091/ and resize_window to phone size
+```
+
+The new origin has its own IndexedDB (no session): log in once through the real
+form (`?devlogin=1` is debug-only). The session then persists across rebuilds —
+`build` replaces `build/web` so re-`cp` the `.env`, but the origin's storage
+survives.
+
+**Cache-bust after every rebuild.** Chrome happily serves the PREVIOUS
+`main.dart.js` from HTTP cache against `python3 -m http.server`, so a plain
+reload can silently show the old build — you will "verify" a fix that never
+loaded. Load `http://127.0.0.1:8091/?v=<timestamp>` (any fresh query string on
+the top-level URL) after each rebuild.
+
 ## Iterating on code — hot reload vs clean restart
 
 **Prefer hot reload `r` over refreshing the browser.** Hot reload keeps the loaded modules AND the logged-in session; only a full browser reload triggers the ~30s 2792-module re-fetch. `printf 'r' > /tmp/f8090`. This is the single biggest speedup for the edit loop.
@@ -152,6 +186,8 @@ for pid in $(pgrep -f "web-server.*8090"); do kill -- -$(ps -o pgid= -p "$pid" |
 There should be exactly **one** real `flutter run` (a `dartvm … flutter_tools` process) plus its single `sh -c` wrapper. More than one ⇒ kill the extras before starting.
 
 ## Env — which stack the build talks to
+
+**Which Synapse / CMS / choreo the build points at is a per-service choice, not a package deal** — `client/.env` routes each independently, and mixing is normal (e.g. local Synapse + local CMS + staging choreo to smoke-test a deployed language tool). One hard rule constrains the mix: **`SYNAPSE_URL` and `CMS_API` must be the same environment** — the client authenticates to the CMS with the Matrix bearer token, and a cross-homeserver token gets **403** with course/activity content silently missing. `CHOREO_API` mixes freely. The full wiring, base-path shapes, and the other cross-service contracts that bite live in [local-stack.instructions.md](../../../../.github/.github/instructions/local-stack.instructions.md) — read it before debugging any "content not loading" symptom.
 
 The web app fetches its config from `GET /.env` at the dev-server root (served from repo-root `client/.env`; no `assets/.env` since #6975). It is fetched once at app startup and the dev server caches it per process, so **neither a hot reload nor a browser reload picks up an edited `client/.env`** — clean-restart to serve the new values.
 

@@ -1463,7 +1463,6 @@
     "startNewSession": "Iniciar nove session",
     "joinOpenSession": "Joiner session aperte",
     "activityNotFound": "Activitate non trovate",
-    "levelUp": "Level up",
     "myActivities": "Mie actividades",
     "openToJoin": "Aperte a joiner",
     "results": "Resultatos",
@@ -1505,7 +1504,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-06 10:21:23.230139",
+    "@@last_modified": "2026-07-13 10:05:06.074350",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10559,7 +10558,6 @@
     "enableNotificationsTitle": "Nekas neperduokite pokalbio!",
     "enableNotificationsDesc": "Leiskite pranešimus Pangea pokalbiui ir likite susijungę su savo kalbos draugais!",
     "enableNotifications": "Leiskite pranešimus",
-    "noActivitiesFound": "Nėra veiklų, susijusių su šia tema.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10569,10 +10567,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11377,5 +11371,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Istońa",
+    "abDisplayName": "Abxazian",
+    "elDisplayName": "Greka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} di {total} stelle guadagnate",
+    "activityNoLongerSupported": "Questa attività è stata eseguita su una versione precedente delle attività e non è più supportata. Puoi comunque rivedere cosa è successo in questa sessione.",
+    "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
+    "levelUpChip": "Livello {level}!",
+    "missingCourseOutline": "Questo corso non è più disponibile",
+    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Chècè add course page",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Raporta informo pri gramatiko",
+    "grammarFeedbackDialogTitle": "Gramatiko Informo Reago",
+    "grammarFeedbackSubmittedDesc": "Dankon! La klarigo estis ĝisdatigita surbaze de via reago.",
+    "focusOnMap": "Fokusiĝi sur la mapo",
+    "welcome": "Bonvenon",
+    "courseRequest": "Kurso peto",
+    "onboarding": "Ensalutado",
+    "selectImageFromDevice": "Elekti bildon de aparato",
+    "dinoAvatarLabel": "Dinozaŭro kun sunokulvitroj",
+    "bearAvatarLabel": "Amika urso",
+    "squidAvatarLabel": "Un squid que lleva auriculares",
+    "cartoonAvatarLabel": "Un personaje de dibujos animados feliz que saluda",
+    "robotAvatarLabel": "Un robot con estrellas por ojos",
+    "featuresIncludeLabel": "Las características incluyen",
+    "difficultyListLabel": "Lista de dificultad",
+    "languageListLabel": "Lista de idiomas",
+    "searchedResultsLabel": "Resultados de búsqueda para '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

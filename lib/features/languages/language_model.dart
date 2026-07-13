@@ -139,6 +139,7 @@ class LanguageModel {
     final langKey = "${langCode.replaceAll("-", "")}DisplayName";
 
     final displayNameMap = <String, String>{
+      "abDisplayName": l10n.abDisplayName,
       "aceDisplayName": l10n.aceDisplayName,
       "achDisplayName": l10n.achDisplayName,
       "afDisplayName": l10n.afDisplayName,
@@ -187,6 +188,7 @@ class LanguageModel {
       "dovDisplayName": l10n.dovDisplayName,
       "dzDisplayName": l10n.dzDisplayName,
       "eeDisplayName": l10n.eeDisplayName,
+      "elDisplayName": l10n.elDisplayName,
       "enDisplayName": l10n.enDisplayName,
       "enAUDisplayName": l10n.enAUDisplayName,
       "enGBDisplayName": l10n.enGBDisplayName,
@@ -196,6 +198,7 @@ class LanguageModel {
       "esDisplayName": l10n.esDisplayName,
       "esESDisplayName": l10n.esESDisplayName,
       "esMXDisplayName": l10n.esMXDisplayName,
+      "etDisplayName": l10n.etDisplayName,
       "euDisplayName": l10n.euDisplayName,
       "faDisplayName": l10n.faDisplayName,
       "ffDisplayName": l10n.ffDisplayName,

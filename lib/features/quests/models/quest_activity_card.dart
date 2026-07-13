@@ -67,7 +67,8 @@ class QuestActivityCard {
   /// Content-search + CEFR-filter fields, populated only for World map pins read
   /// via the bbox endpoint (the projected CMS pin read leaves them null). Used
   /// by the map search box (title/description/learningObjective) and the CEFR
-  /// filter chip.
+  /// filter chip. CANONICAL-only text — thin lists never translate (choreo
+  /// #2736); these are search-matching fields, never rendered on a pin.
   final String? description;
   final String? learningObjective;
   final String? cefr;

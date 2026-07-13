@@ -12,7 +12,8 @@ extension ChoregrapherStateExtension on Choreographer {
     }
 
     if (currentText.trim().isEmpty) {
-      if (orchestratorController.activeSuggestion != null) {
+      if (orchestratorController.activeSuggestion != null &&
+          orchestratorController.activeSuggestion!.shuffledChoices.isNotEmpty) {
         return AssistanceStateEnum.suggesting;
       }
       return AssistanceStateEnum.noMessage;

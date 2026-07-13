@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 
 /// Process-wide cache of the `room_preview` data the world map's session
@@ -30,6 +32,15 @@ class DiscoveredSessionsCache {
   /// miss — in which case the caller should fetch.
   Map<String, RoomSummaryResponse>? forActivity(String activityId) =>
       _byActivityId[activityId];
+
+  /// The first still-open previewed session for [activityId] — the accurate
+  /// participant/seat source for a joinable pin whose session the learner has
+  /// not joined (discovered or invited), where local room state is absent or
+  /// stripped (#7488).
+  RoomSummaryResponse? bestOpenSummary(String activityId) =>
+      _byActivityId[activityId]?.values.firstWhereOrNull(
+        (s) => s.isActivityOpenToJoin,
+      );
 
   void clear() => _byActivityId.clear();
 }

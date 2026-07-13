@@ -2056,7 +2056,6 @@
     "startNewSession": "ახალი სესიის დაწყება",
     "joinOpenSession": "შეერთება ღია სესიაში",
     "activityNotFound": "აქტივობა ვერ მოიძებნა",
-    "levelUp": "ჩამოწევა დონეზე",
     "myActivities": "ჩემი აქტივობები",
     "openToJoin": "ღია შეუერთებისთვის",
     "results": "შედეგები",
@@ -2098,7 +2097,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-06 10:23:04.942153",
+    "@@last_modified": "2026-07-13 10:08:26.000408",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10517,7 +10516,6 @@
     "enableNotificationsTitle": "არასდროს გამოტოვოთ საუბარი!",
     "enableNotificationsDesc": "გთხოვთ, დაუშვათ შეტყობინებები Pangea Chat-ისთვის და დარჩეთ დაკავშირებული თქვენს ენასთან მეგობრებთან!",
     "enableNotifications": "დაუშვით შეტყობინებები",
-    "noActivitiesFound": "ამ თემისთვის არ არის ხელმისაწვდომი აქტივობები.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10527,10 +10525,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11335,5 +11329,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "ესტონური",
+    "abDisplayName": "აბხაზური",
+    "elDisplayName": "ბერძნული",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} ვარსკვლავი {total} ვარსკვლავიდან",
+    "activityNoLongerSupported": "ეს აქტივობა მიმდინარეობდა აქტივობების ძველ ვერსიაზე და აღარ არის მხარდაჭერილი. თქვენ შეგიძლიათ კვლავ შეისწავლოთ, რა მოხდა ამ სესიაში.",
+    "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
+    "levelUpChip": "დონის {level}!",
+    "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
+    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "დახურეთ კურსის დამატების გვერდი",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "გრამატიკული ინფორმაციის პრობლემის შეტყობინება",
+    "grammarFeedbackDialogTitle": "გრამატიკული ინფორმაციის უკუკავშირი",
+    "grammarFeedbackSubmittedDesc": "მადლობა! ახსნა განახლდა თქვენი უკუკავშირის საფუძველზე.",
+    "focusOnMap": "მაპზე ყურადღების გამახვილება",
+    "welcome": "კეთილი იყოს თქვენი მობრძანება",
+    "courseRequest": "კურსის მოთხოვნა",
+    "onboarding": "ონბორდინგი",
+    "selectImageFromDevice": "სურათის არჩევა მოწყობილობიდან",
+    "dinoAvatarLabel": "დინოზავრი სათვალეებით",
+    "bearAvatarLabel": "მეგობრული დათვი",
+    "squidAvatarLabel": "კალმახი ყურსასმენებით",
+    "cartoonAvatarLabel": "ბედნიერი მულტფილმის პერსონაჟი, რომელიც ხელს უქნევს",
+    "robotAvatarLabel": "რობოტი ვარსკვლავებით თვალებში",
+    "featuresIncludeLabel": "მახასიათებლები მოიცავს",
+    "difficultyListLabel": "სირთულის სია",
+    "languageListLabel": "ენების სია",
+    "searchedResultsLabel": "'{search}'-ის ძიების შედეგები",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

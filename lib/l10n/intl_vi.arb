@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:22:27.237694",
+    "@@last_modified": "2026-07-13 10:07:07.381687",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3282,7 +3282,6 @@
     "startNewSession": "Bắt đầu phiên mới",
     "joinOpenSession": "Tham gia phiên mở",
     "activityNotFound": "Hoạt động không tìm thấy",
-    "levelUp": "Lên cấp",
     "myActivities": "Hoạt động của tôi",
     "openToJoin": "Mở để tham gia",
     "results": "Kết quả",
@@ -6532,7 +6531,6 @@
     "enableNotificationsTitle": "Không bao giờ bỏ lỡ một cuộc trò chuyện!",
     "enableNotificationsDesc": "Cho phép thông báo cho Pangea Chat và giữ kết nối với những người bạn ngôn ngữ của bạn!",
     "enableNotifications": "Cho phép thông báo",
-    "noActivitiesFound": "Không có hoạt động nào cho chủ đề này.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -6542,10 +6540,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7350,5 +7344,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Tiếng Estonia",
+    "abDisplayName": "Tiếng Abkhaz",
+    "elDisplayName": "Tiếng Hy Lạp",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} trong số {total} sao đã kiếm được",
+    "activityNoLongerSupported": "Hoạt động này đã chạy trên phiên bản cũ hơn của các hoạt động và không còn được hỗ trợ. Bạn vẫn có thể xem lại những gì đã xảy ra trong phiên này.",
+    "activityLoadFailed": "Không thể tải hoạt động. Kiểm tra kết nối của bạn và thử lại.",
+    "levelUpChip": "Cấp độ {level}!",
+    "missingCourseOutline": "Khóa học này không còn khả dụng",
+    "missingCourseOutlineCta": "Khóa học này không còn khả dụng. Chọn một kế hoạch khóa học mới.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Đóng trang thêm khóa học",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Báo cáo vấn đề thông tin ngữ pháp",
+    "grammarFeedbackDialogTitle": "Phản hồi thông tin ngữ pháp",
+    "grammarFeedbackSubmittedDesc": "Cảm ơn! Giải thích đã được cập nhật dựa trên phản hồi của bạn.",
+    "focusOnMap": "Tập trung vào bản đồ",
+    "welcome": "Chào mừng",
+    "courseRequest": "Yêu cầu khóa học",
+    "onboarding": "Hướng dẫn sử dụng",
+    "selectImageFromDevice": "Chọn hình ảnh từ thiết bị",
+    "dinoAvatarLabel": "Một con khủng long đeo kính râm",
+    "bearAvatarLabel": "Một con gấu thân thiện",
+    "squidAvatarLabel": "Một con mực đeo tai nghe",
+    "cartoonAvatarLabel": "Một nhân vật hoạt hình vui vẻ vẫy tay",
+    "robotAvatarLabel": "Một con robot với những ngôi sao làm mắt",
+    "featuresIncludeLabel": "Các tính năng bao gồm",
+    "difficultyListLabel": "Danh sách độ khó",
+    "languageListLabel": "Danh sách ngôn ngữ",
+    "searchedResultsLabel": "Kết quả tìm kiếm cho '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

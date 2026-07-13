@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/support_chat_list_tile.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 // #Pangea
 // Pangea#
@@ -72,7 +73,7 @@ class SettingsView extends StatelessWidget {
                   container: true,
                   child: ListView(
                     key: const Key('SettingsListViewContent'),
-                    children: <Widget>[
+                    children: [
                       // world_v2: the Avatar surface merges profile + settings;
                       // the profile editor is the single-segment `profile` page.
                       // It is not a nested `profile/edit` leaf — `profile` and
@@ -201,59 +202,67 @@ class SettingsView extends StatelessWidget {
                           child: const Icon(Icons.open_in_new_outlined),
                         ),
                       ),
-                      FutureBuilder<PackageInfo>(
-                        future: PackageInfo.fromPlatform(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return ListTile(
-                              leading: const Icon(Icons.info_outline),
-                              trailing: Semantics(
-                                label: L10n.of(context).copy,
-                                child: const Icon(Icons.copy_outlined),
-                              ),
-                              onTap: () async {
-                                if (snapshot.data == null) return;
-                                await Clipboard.setData(
-                                  ClipboardData(
-                                    text:
-                                        "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
-                                  ),
-                                );
-                                ScaffoldMessenger.of(
-                                  context,
-                                ).showSnackBarAnnounced(
-                                  SnackBar(
-                                    content: Text(
-                                      L10n.of(context).copiedToClipboard,
+                      if (MatrixState
+                          .pangeaController
+                          .userController
+                          .showDeveloperOptions)
+                        FutureBuilder<PackageInfo>(
+                          future: PackageInfo.fromPlatform(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return ListTile(
+                                leading: const Icon(Icons.info_outline),
+                                trailing: Semantics(
+                                  label: L10n.of(context).copy,
+                                  child: const Icon(Icons.copy_outlined),
+                                ),
+                                onTap: () async {
+                                  if (snapshot.data == null) return;
+                                  await Clipboard.setData(
+                                    ClipboardData(
+                                      text:
+                                          "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
                                     ),
-                                  ),
-                                );
-                              },
-                              title: Text(
-                                snapshot.data != null
-                                    ? L10n.of(context).versionText(
-                                        snapshot.data!.version,
-                                        snapshot.data!.buildNumber,
-                                      )
-                                    : L10n.of(context).versionNotFound,
-                              ),
-                            );
-                          } else if (snapshot.hasError) {
-                            return ListTile(
-                              leading: const Icon(Icons.error_outline),
-                              title: Text(L10n.of(context).versionFetchError),
-                            );
-                          } else {
-                            return ListTile(
-                              leading: const CircularProgressIndicator(),
-                              title: Text(L10n.of(context).fetchingVersion),
-                            );
-                          }
-                        },
-                      ),
+                                  );
+                                  ScaffoldMessenger.of(
+                                    context,
+                                  ).showSnackBarAnnounced(
+                                    SnackBar(
+                                      content: Text(
+                                        L10n.of(context).copiedToClipboard,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                title: Text(
+                                  snapshot.data != null
+                                      ? L10n.of(context).versionText(
+                                          snapshot.data!.version,
+                                          snapshot.data!.buildNumber,
+                                        )
+                                      : L10n.of(context).versionNotFound,
+                                ),
+                              );
+                            } else if (snapshot.hasError) {
+                              return ListTile(
+                                leading: const Icon(Icons.error_outline),
+                                title: Text(L10n.of(context).versionFetchError),
+                              );
+                            } else {
+                              return ListTile(
+                                leading: const CircularProgressIndicator(),
+                                title: Text(L10n.of(context).fetchingVersion),
+                              );
+                            }
+                          },
+                        ),
                       // Conditional ListTile based on the environment (staging or not)
-                      if (Environment.isStagingEnvironment)
+                      if (Environment.isStagingEnvironment &&
+                          MatrixState
+                              .pangeaController
+                              .userController
+                              .showDeveloperOptions)
                         ListTile(
                           leading: const Icon(Icons.bug_report_outlined),
                           title: Text(L10n.of(context).connectedToStaging),

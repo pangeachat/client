@@ -10,46 +10,33 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
-import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class FindCoursePage extends StatefulWidget {
-  const FindCoursePage({super.key});
+  final Widget closeButton;
+  final String? initialLanguageCode;
+  const FindCoursePage({
+    super.key,
+    required this.closeButton,
+    this.initialLanguageCode,
+  });
 
   @override
   State<FindCoursePage> createState() => FindCoursePageState();
 }
 
 class FindCoursePageState extends State<FindCoursePage> {
-  /// Session-scoped memory of the last language filter the learner picked while
-  /// browsing public courses. Tapping a course opens the route-driven preview
-  /// (`/courses/preview/:courseroomid`); backing out of it **remounts** this
-  /// page, so without this the filter reset to the L2 default and lost the
-  /// choice (#7230). Mirrors `NewCoursePageState._lastChosenLanguage` (#7269) —
-  /// it survives the remount with no URL churn.
-  static LanguageModel? _lastChosenLanguage;
-
-  /// The language filter the browse list opens on: this session's last pick
-  /// ([lastChosen], so the preview round-trip keeps it), else the learner's L2
-  /// default (#7230).
-  @visibleForTesting
-  static LanguageModel? seedLanguage({
-    required LanguageModel? lastChosen,
-    required LanguageModel? l2Default,
-  }) => lastChosen ?? l2Default;
-
   final TextEditingController searchController = TextEditingController();
   final ScrollController scrollController = ScrollController();
   Timer? _coolDown;
@@ -72,19 +59,26 @@ class FindCoursePageState extends State<FindCoursePage> {
   @override
   void initState() {
     super.initState();
-    LanguageModel? l2Default;
+    final availableLanguages =
+        MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
+
     final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 != null) {
-      final availableLanguages =
-          MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions;
-      l2Default = availableLanguages.contains(l2) ? l2 : l2.unlocalized;
-    }
-    // Keep the language picked this session across the preview round-trip
-    // (#7230); fall back to the learner's L2 default.
-    targetLanguageFilter.value = seedLanguage(
-      lastChosen: _lastChosenLanguage,
-      l2Default: l2Default,
-    );
+    final initialLangCode = widget.initialLanguageCode;
+    final initialLang = initialLangCode != null
+        ? PLanguageStore.byLangCode(initialLangCode)
+        : null;
+
+    final targetLang = availableLanguages.contains(initialLang)
+        ? initialLang
+        : availableLanguages.contains(initialLang?.unlocalized)
+        ? initialLang?.unlocalized
+        : availableLanguages.contains(l2)
+        ? l2
+        : availableLanguages.contains(l2?.unlocalized)
+        ? l2?.unlocalized
+        : null;
+
+    targetLanguageFilter.value = targetLang;
     loadMore();
   }
 
@@ -102,8 +96,6 @@ class FindCoursePageState extends State<FindCoursePage> {
   void setTargetLanguageFilter(LanguageModel? language) {
     if (targetLanguageFilter.value == language) return;
     targetLanguageFilter.value = language;
-    _lastChosenLanguage =
-        language; // remember for the rest of this session (#7230)
     visibleCourses.value = [];
     loading.value = false;
     _loadGeneration++;
@@ -322,13 +314,10 @@ class FindCoursePageState extends State<FindCoursePage> {
     // loose `?lang=`/`?showAll=` query (routing.instructions.md).
     final targetLanguage = targetLanguageFilter.value?.langCode;
     context.go(
-      WorkspaceNav.setSection(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        PanelToken(
-          'addcourse',
-          'own/${targetLanguage != null ? TokenFields.encode(targetLanguage) : 'all'}',
-        ),
-        keepRoom: false,
+        AddCourseSubpageEnum.own,
+        initialLanguageFilter: targetLanguage,
       ),
     );
   }
@@ -350,17 +339,7 @@ class FindCoursePageView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          onPressed: () => context.go(
-            WorkspaceNav.setSection(
-              GoRouterState.of(context).uri,
-              const PanelToken('addcourse'),
-              keepRoom: false,
-            ),
-          ),
-        ),
+        leading: controller.widget.closeButton,
         title: Text(
           L10n.of(context).browsePublicCourses,
           style: FluffyThemes.isColumnMode(context)
@@ -379,263 +358,116 @@ class FindCoursePageView extends StatelessWidget {
           ),
         ],
       ),
-      body: MaxWidthBody(
-        showBorder: false,
-        withScrolling: false,
-        maxWidth: 600.0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            spacing: 16.0,
-            children: [
-              ListenableBuilder(
-                listenable: Listenable.merge([
-                  controller.visibleCourses,
-                  controller.loading,
-                  controller.searchController,
-                ]),
-                builder: (context, _) {
-                  final courses = controller.visibleCourses.value;
-                  final loading = controller.loading.value;
-                  if (courses.isEmpty &&
-                      !loading &&
-                      controller.nextBatch == null) {
-                    return Padding(
-                      padding: const EdgeInsets.all(32.0),
-                      child: Column(
-                        spacing: 12.0,
-                        children: [
-                          const BotFace(
-                            expression: BotExpression.addled,
-                            width: Avatar.defaultSize * 1.5,
-                          ),
-                          Text(
-                            L10n.of(context).noPublicCoursesFound,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                          ElevatedButton(
-                            onPressed: controller.startNewCourse,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onPrimaryContainer,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text(L10n.of(context).startOwn)],
-                            ),
-                          ),
-                        ],
-                      ),
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            constraints: const BoxConstraints(maxWidth: 450),
+            child: Column(
+              spacing: 20.0,
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: controller.targetLanguageFilter,
+                  builder: (context, value, _) {
+                    return CourseLanguageFilter(
+                      value: controller.targetLanguageFilter.value,
+                      onChanged: controller.setTargetLanguageFilter,
                     );
-                  }
-
-                  return Expanded(
-                    child: ListView.builder(
-                      controller: controller.scrollController,
-                      itemCount: courses.length + 1,
-                      itemBuilder: (context, index) {
-                        if (index == courses.length) {
-                          return Center(
-                            child: loading
-                                ? CircularProgressIndicator.adaptive()
-                                : !controller.fullyLoaded
-                                ? TextButton(
-                                    onPressed: () =>
-                                        controller.loadMore(loadMore: true),
-                                    child: Text(L10n.of(context).loadMore),
-                                  )
-                                : SizedBox(),
-                          );
-                        }
-                        final space = courses[index];
-                        return _PublicCourseTile(
-                          chunk: space,
-                          course: controller.coursePlans[space.courseId],
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PublicCourseTile extends StatelessWidget {
-  final PublicCoursesChunk chunk;
-  final CoursePlanModel? course;
-
-  const _PublicCourseTile({required this.chunk, this.course});
-
-  void _navigateToCoursePage(BuildContext context) {
-    // The live public-preview route (route-driven; the Completer/preview flow
-    // isn't token-native yet). See routing.instructions.md.
-    context.go(
-      '${PRoutes.courses}/preview/${Uri.encodeComponent(chunk.room.roomId)}',
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final space = chunk.room;
-    final courseId = chunk.courseId;
-    final course = this.course;
-    final displayname =
-        space.name ?? space.canonicalAlias ?? L10n.of(context).emptyChat;
-    final isKnock = space.joinRule == JoinRules.knock.name;
-
-    return FocusTraversalGroup(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 10.0),
-        child: Material(
-          color: theme.colorScheme.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(12.0),
-          child: InkWell(
-            // Tapping the card scopes the map to this course's activities
-            // (world_v2); the Knock/Join pill opens the join flow.
-            onTap: () => MapContextController.set(CourseMapContext(courseId)),
-            borderRadius: BorderRadius.circular(12.0),
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                border: Border.all(color: theme.colorScheme.outlineVariant),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ImageByUrl(
-                    imageUrl: space.avatarUrl,
-                    width: 44.0,
-                    borderRadius: BorderRadius.circular(10.0),
-                    replacement: Avatar(
-                      name: displayname,
-                      borderRadius: BorderRadius.circular(10.0),
-                      size: 44.0,
-                    ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  },
+                ),
+                ListenableBuilder(
+                  listenable: Listenable.merge([
+                    controller.visibleCourses,
+                    controller.loading,
+                    controller.searchController,
+                  ]),
+                  builder: (context, _) {
+                    final courses = controller.visibleCourses.value;
+                    final loading = controller.loading.value;
+                    if (courses.isEmpty &&
+                        !loading &&
+                        controller.nextBatch == null) {
+                      return Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Column(
+                          spacing: 12.0,
                           children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  displayname,
-                                  style: theme.textTheme.titleSmall?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
+                            const BotFace(
+                              expression: BotExpression.addled,
+                              width: Avatar.defaultSize * 1.5,
                             ),
-                            const SizedBox(width: 8.0),
-                            FilledButton.tonal(
-                              onPressed: () => _navigateToCoursePage(context),
-                              style: FilledButton.styleFrom(
+                            Text(
+                              L10n.of(context).noPublicCoursesFound,
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyLarge,
+                            ),
+                            ElevatedButton(
+                              onPressed: controller.startNewCourse,
+                              style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     theme.colorScheme.primaryContainer,
                                 foregroundColor:
                                     theme.colorScheme.onPrimaryContainer,
-                                visualDensity: VisualDensity.compact,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                ),
-                                minimumSize: const Size(0, 32),
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
                               ),
-                              child: Text(
-                                isKnock
-                                    ? L10n.of(context).knock
-                                    : L10n.of(context).join,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Text(L10n.of(context).startOwn)],
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8.0),
-                        if (course != null)
-                          Wrap(
-                            spacing: 6.0,
-                            runSpacing: 6.0,
-                            children: [
-                              _chip(
-                                context,
-                                Icons.language,
-                                course.targetLanguage
-                                    .split('-')
-                                    .first
-                                    .toUpperCase(),
-                              ),
-                              _chip(
-                                context,
-                                Icons.group,
-                                '${space.numJoinedMembers}',
-                              ),
-                              _chip(
-                                context,
-                                Icons.location_on,
-                                '${course.topicIds.length}',
-                              ),
-                              _chip(
-                                context,
-                                Icons.school,
-                                course.cefrLevel.string.replaceFirst(
-                                  'PREA1',
-                                  'PRE-A1',
+                      );
+                    }
+
+                    return Expanded(
+                      child: ListView.builder(
+                        controller: controller.scrollController,
+                        itemCount: courses.length + 1,
+                        itemBuilder: (context, index) {
+                          if (index == courses.length) {
+                            return Center(
+                              child: loading
+                                  ? CircularProgressIndicator.adaptive()
+                                  : !controller.fullyLoaded
+                                  ? TextButton(
+                                      onPressed: () =>
+                                          controller.loadMore(loadMore: true),
+                                      child: Text(L10n.of(context).loadMore),
+                                    )
+                                  : SizedBox(),
+                            );
+                          }
+                          final space = courses[index];
+                          if (controller.coursePlans[space.courseId] != null) {
+                            return AddCourseTile(
+                              chunk: space,
+                              coursePlan:
+                                  controller.coursePlans[space.courseId]!,
+                              onTap: () => context.go(
+                                WorkspaceNav.openAddCoursePage(
+                                  GoRouterState.of(context).uri,
+                                  AddCourseSubpageEnum.browse,
+                                  previewRoomId: space.room.roomId,
+                                  initialLanguageFilter: controller
+                                      .targetLanguageFilter
+                                      .value
+                                      ?.langCode,
                                 ),
                               ),
-                            ],
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                              isKnock:
+                                  space.room.joinRule == JoinRules.knock.name,
+                            );
+                          }
+                          return SizedBox();
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _chip(BuildContext context, IconData icon, String text) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 13.0, color: theme.colorScheme.onSurfaceVariant),
-          const SizedBox(width: 4.0),
-          Text(
-            text,
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ],
       ),
     );
   }

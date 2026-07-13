@@ -30,6 +30,25 @@ class MissionProgress {
   /// A star is one orchestrator-awarded activity goal; a Mission is satisfied
   /// once its star total reaches the (teacher-overridable) threshold.
   bool get satisfied => stars >= threshold;
+
+  /// Stars capped at the threshold — the Mission's contribution to a quest's
+  /// star total, so an over-practiced Mission can't inflate quest progress.
+  /// The per-Mission display shows the raw [stars] (surplus effort shows,
+  /// e.g. 12/7); only the quest-level sum caps. See quests.instructions.md.
+  int get cappedStars => stars > threshold ? threshold : stars;
+}
+
+/// A quest's star display summary: [earned] sums each Mission's stars capped
+/// at its threshold; [total] sums the thresholds — so earned/total is the
+/// quest header's progress fraction. See quests.instructions.md ("Star display
+/// on the course panel").
+class QuestStarSummary {
+  final int earned;
+  final int total;
+
+  const QuestStarSummary({required this.earned, required this.total});
+
+  double get fraction => total <= 0 ? 0 : (earned / total).clamp(0.0, 1.0);
 }
 
 /// One in-scope quest: its ordered Mission sequence, the resolved anchor (the
@@ -80,6 +99,22 @@ class ProgressionResolution {
   /// Missions ranks higher) and saturate at the ceiling. Outside any quest the
   /// activity's refs match nothing and this is 0 — the consumer then ranks it on
   /// plain level/L2 fit. See world-map.instructions.md Priority matrix.
+  /// The star summary for a quest given its ordered [missionIds]: per-Mission
+  /// stars capped at each threshold, summed, over the summed thresholds. A
+  /// Mission the rollup doesn't know (an outline not in scope) contributes its
+  /// default threshold and zero stars, so a partially-resolved panel still
+  /// shows a stable denominator.
+  QuestStarSummary questStars(Iterable<String> missionIds) {
+    var earned = 0;
+    var total = 0;
+    for (final id in missionIds) {
+      final progress = rollup[id];
+      earned += progress?.cappedStars ?? 0;
+      total += progress?.threshold ?? kDefaultStarsToUnlockObjective;
+    }
+    return QuestStarSummary(earned: earned, total: total);
+  }
+
   double missionGradient(Iterable<String> objectiveRefs) {
     if (quests.isEmpty) return 0;
     final refs = objectiveRefs.toSet();

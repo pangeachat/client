@@ -148,15 +148,14 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                     ),
                     const SizedBox(width: 6),
                   ],
-                  for (final level in LanguageLevelTypeEnum.values)
-                    if (level != LanguageLevelTypeEnum.preA1) ...[
-                      FilterChip(
-                        selected: widget.filter.cefrFilter.contains(level),
-                        label: Text(level.title(context)),
-                        onSelected: (_) => widget.toggleCefr(level),
-                      ),
-                      const SizedBox(width: 6),
-                    ],
+                  for (final level in LanguageLevelTypeEnum.values) ...[
+                    FilterChip(
+                      selected: widget.filter.cefrFilter.contains(level),
+                      label: Text(level.title(context)),
+                      onSelected: (_) => widget.toggleCefr(level),
+                    ),
+                    const SizedBox(width: 6),
+                  ],
                   for (final c in MapCompletionFilter.values) ...[
                     FilterChip(
                       selected: widget.filter.completionFilter.contains(c),

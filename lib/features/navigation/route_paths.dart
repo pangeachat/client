@@ -1,4 +1,6 @@
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 
 /// Canonical route paths for Pangea-owned surfaces (world_v2).
 ///
@@ -67,6 +69,13 @@ abstract class PRoutes {
 
   /// First-class world object (activity for now) — `/<uuid>`.
   static String worldObject(String id) => '/$id';
+
+  /// The join-with-code flow carrying an inbound course code — the add-course
+  /// panel's `private/<code>` leaf over the world map, which prefills the
+  /// join-with-code page and submits the join. The `LegacyRedirects` join-link
+  /// rewrite target, also re-entered after the login bounce (matrix.dart).
+  static String joinWithCode(String code) =>
+      '$world?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private, privateCourseJoinCode: code)).encode()}';
 
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-06 10:23:12.286115",
+    "@@last_modified": "2026-07-13 10:08:40.245484",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3656,7 +3656,6 @@
     "startNewSession": "Démarrer une nouvelle session",
     "joinOpenSession": "Rejoindre une session ouverte",
     "activityNotFound": "Activité non trouvée",
-    "levelUp": "Niveau supérieur",
     "myActivities": "Mes activités",
     "openToJoin": "Ouvert pour rejoindre",
     "results": "Résultats",
@@ -9846,7 +9845,6 @@
     "enableNotificationsTitle": "Ne manquez jamais une discussion !",
     "enableNotificationsDesc": "Autorisez les notifications pour Pangea Chat et restez connecté avec vos amis de langue !",
     "enableNotifications": "Autoriser les notifications",
-    "noActivitiesFound": "Aucune activité disponible pour ce sujet.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9856,10 +9854,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10664,5 +10658,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonien",
+    "abDisplayName": "Abkhaze",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} sur {total} étoiles gagnées",
+    "activityNoLongerSupported": "Cette activité s'est déroulée sur une version plus ancienne des activités et n'est plus prise en charge. Vous pouvez toujours consulter ce qui s'est passé lors de cette session.",
+    "activityLoadFailed": "Impossible de charger l'activité. Vérifiez votre connexion et réessayez.",
+    "levelUpChip": "Niveau {level} !",
+    "missingCourseOutline": "Ce cours n'est plus disponible",
+    "missingCourseOutlineCta": "Ce cours n'est plus disponible. Choisissez un nouveau plan de cours.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Fermer la page d'ajout de cours",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Signaler un problème d'information grammaticale",
+    "grammarFeedbackDialogTitle": "Retour d'information sur la grammaire",
+    "grammarFeedbackSubmittedDesc": "Merci ! L'explication a été mise à jour en fonction de vos commentaires.",
+    "focusOnMap": "Se concentrer sur la carte",
+    "welcome": "Bienvenue",
+    "courseRequest": "Demande de cours",
+    "onboarding": "Intégration",
+    "selectImageFromDevice": "Sélectionner une image depuis l'appareil",
+    "dinoAvatarLabel": "Un dinosaure avec des lunettes de soleil",
+    "bearAvatarLabel": "Un ours amical",
+    "squidAvatarLabel": "Un calmar portant des écouteurs",
+    "cartoonAvatarLabel": "Un personnage de dessin animé heureux faisant un signe",
+    "robotAvatarLabel": "Un robot avec des étoiles pour yeux",
+    "featuresIncludeLabel": "Les fonctionnalités incluent",
+    "difficultyListLabel": "Liste de difficulté",
+    "languageListLabel": "Liste de langues",
+    "searchedResultsLabel": "Résultats de recherche pour '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

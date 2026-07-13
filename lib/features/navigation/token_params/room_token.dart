@@ -1,4 +1,6 @@
 import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// The `room:` (and `session:`) panel token's structured param.
 ///
@@ -17,49 +19,72 @@ import 'package:fluffychat/features/navigation/token_fields.dart';
 /// `routing.instructions.md`). [filter] and [eventId] are open-ended content
 /// (an eventId carries `$`, `:`, `/`) and are [TokenFields]-encoded so they
 /// can't collide with the `/` sub-path separator.
-abstract class RoomToken {
-  /// Build a `room:`/`session:` param. At most one of [subPage] / [eventId] is
+class RoomTokenParam extends TokenParam {
+  final String id;
+  final String? subpage;
+  final InvitationFilter? filter;
+  final String? eventId;
+
+  const RoomTokenParam({
+    required this.id,
+    this.subpage,
+    this.filter,
+    this.eventId,
+  });
+
+  @override
+  bool get isPushed => subpage != null;
+
+  @override
+  RoomTokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
+
+  /// Build a `room:`/`session:` param. At most one of [subpage] / [eventId] is
   /// meaningful at a time — a jump-to-message has no sub-page of its own, so
   /// [eventId] takes precedence when both are passed. [filter] only ever trails
   /// an `invite` sub-page (bare or under `details/`); it is ignored otherwise.
-  static String build(
-    String id, {
-    String? subPage,
-    String? filter,
-    String? eventId,
-  }) {
+  @override
+  String build() {
+    final eventId = this.eventId;
     if (eventId != null && eventId.isNotEmpty) {
       return '$id/e/${TokenFields.encode(eventId)}';
     }
+
+    final subPage = subpage;
     if (subPage == null || subPage.isEmpty) return id;
+
     // A filter only round-trips under `invite` / `details/invite` (see [parse]);
     // appending it to any other sub-page would build a token parse can't read
     // back. Ignore it elsewhere rather than emit a lossy token.
+    final filter = this.filter;
     final allowsFilter = subPage == 'invite' || subPage == 'details/invite';
-    final withFilter = allowsFilter && filter != null && filter.isNotEmpty
-        ? '$subPage/${TokenFields.encode(filter)}'
+    final withFilter = allowsFilter && filter != null
+        ? '$subPage/${TokenFields.encode(filter.name)}'
         : subPage;
+
     return '$id/$withFilter';
   }
 
   /// Parse a `room:`/`session:` param. Unknown/malformed sub-paths degrade to a
-  /// bare [subPage] rather than throwing, so a hand-edited or older URL still
+  /// bare [subpage] rather than throwing, so a hand-edited or older URL still
   /// opens the room.
-  static ({String id, String? subPage, String? filter, String? eventId}) parse(
-    String param,
-  ) {
+  factory RoomTokenParam.parse(String param) {
     final slash = param.indexOf('/');
     if (slash < 0) {
-      return (id: param, subPage: null, filter: null, eventId: null);
+      return RoomTokenParam(
+        id: param,
+        subpage: null,
+        filter: null,
+        eventId: null,
+      );
     }
     final id = param.substring(0, slash);
     final sub = param.substring(slash + 1);
     final parts = sub.split('/');
 
     if (parts.first == 'e' && parts.length > 1) {
-      return (
+      return RoomTokenParam(
         id: id,
-        subPage: null,
+        subpage: null,
         filter: null,
         eventId: TokenFields.decode(parts[1]),
       );
@@ -67,22 +92,33 @@ abstract class RoomToken {
 
     // A trailing filter only ever follows `invite` (bare) or `details/invite`.
     if (parts.first == 'invite' && parts.length > 1) {
-      return (
+      return RoomTokenParam(
         id: id,
-        subPage: 'invite',
-        filter: TokenFields.decode(parts[1]),
+        subpage: 'invite',
+        filter: InvitationFilter.fromString(TokenFields.decode(parts[1])),
         eventId: null,
       );
     }
     if (parts.first == 'details' && parts.length > 2 && parts[1] == 'invite') {
-      return (
+      return RoomTokenParam(
         id: id,
-        subPage: 'details/invite',
-        filter: TokenFields.decode(parts[2]),
+        subpage: 'details/invite',
+        filter: InvitationFilter.fromString(TokenFields.decode(parts[2])),
         eventId: null,
       );
     }
 
-    return (id: id, subPage: sub, filter: null, eventId: null);
+    return RoomTokenParam(id: id, subpage: sub, filter: null, eventId: null);
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is RoomTokenParam &&
+      other.id == id &&
+      other.subpage == subpage &&
+      other.filter == filter &&
+      other.eventId == eventId;
+
+  @override
+  int get hashCode => Object.hash(id, subpage, filter, eventId);
 }

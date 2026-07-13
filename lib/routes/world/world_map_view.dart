@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -111,6 +113,11 @@ class WorldMapView extends StatefulWidget {
 }
 
 class _WorldMapViewState extends State<WorldMapView> {
+  /// Height of the narrow-mode bottom chrome (the floating nav rail + the
+  /// search bar riding above it, with their gaps) that on-map overlays must
+  /// clear (#7218). Update alongside the chrome if its heights change.
+  static const double _narrowBottomChromeInset = 150.0;
+
   /// Pins that have left the active set and are animating to scale 0.
   final Map<String, _PinSnapshot> _exiting = {};
 
@@ -188,10 +195,14 @@ class _WorldMapViewState extends State<WorldMapView> {
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
     // (pipeline step 4). When the large cap is zero the pass yields nothing.
+    // While the camera's zoom is actively changing the large tier is emptied —
+    // cards would slide around mid-gesture and block the zoom target — and the
+    // settle rebuild re-derives whatever tops the matrix at the new camera
+    // (#7245).
     final placement = _placeLarge(
       visible: visible,
       candidates: ranking.ordered,
-      largeBudget: budget.large,
+      largeBudget: widget.controller.isActivelyZooming ? 0 : budget.large,
       heavyEligibleIds: ranking.heavyEligibleIds,
     );
 
@@ -259,14 +270,20 @@ class _WorldMapViewState extends State<WorldMapView> {
         safeArea: safeArea,
         largeBudget: largeBudget,
         heavyEligibleIds: heavyEligibleIds,
+        dismissedIds: widget.controller.dismissedLargeIds,
       );
     } catch (_) {
       // Camera not laid out yet: static top-N (focused first), no fit test.
       // The next (camera-ready) frame does the real placement. Still honours the
-      // live-session gate — only live sessions are large-eligible.
-      final eligible = heavyEligibleIds == null
-          ? candidates
-          : candidates.where(heavyEligibleIds.contains).toList();
+      // live-session gate — only live sessions are large-eligible — and the
+      // X-dismissals (#7207), so a dismissed card cannot flash back for a frame.
+      final dismissed = widget.controller.dismissedLargeIds;
+      final eligible = candidates
+          .where((id) => !dismissed.contains(id))
+          .where(
+            (id) => heavyEligibleIds == null || heavyEligibleIds.contains(id),
+          )
+          .toList();
       return PlacementResult(
         largeIds: <String>[
           if (focusedId != null && eligible.contains(focusedId)) focusedId,
@@ -306,6 +323,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       trailBudget: budget.trail,
       progressedIds: widget.controller.progressedActivityIds,
       isNewLearner: widget.controller.isNewLearner,
+      dismissedIds: widget.controller.dismissedLargeIds,
     );
   }
 
@@ -431,6 +449,11 @@ class _WorldMapViewState extends State<WorldMapView> {
 
     final joinableActivity = widget.controller.client
         ?.bestJoinableActivityInstance(card.activityId);
+    // No joined local room — a discovered/invited session's accurate seats and
+    // participants come from its room_preview summary (#7488).
+    final discoveredSummary = joinableActivity == null
+        ? DiscoveredSessionsCache.instance.bestOpenSummary(card.activityId)
+        : null;
 
     final state = render.stateOf(card.activityId);
     final tier = PinTier.large;
@@ -456,10 +479,17 @@ class _WorldMapViewState extends State<WorldMapView> {
           plan: plan,
           starsEarned:
               widget.controller.activityStarsEarned(card.activityId) ?? 0,
-          participants: joinableActivity?.largeCardParticipants ?? [],
-          openSlots: joinableActivity?.numRemainingRoles ?? 0,
+          participants:
+              joinableActivity?.largeCardParticipants ??
+              discoveredSummary?.largeCardParticipants() ??
+              [],
+          openSlots:
+              joinableActivity?.numRemainingRoles ??
+              discoveredSummary?.openSlots ??
+              0,
           isFocused: card.activityId == render.focusedId,
           onTap: () => widget.controller.openActivity(card),
+          onClose: () => widget.controller.dismissLargeCard(card),
         ),
       ),
     );
@@ -471,6 +501,11 @@ class _WorldMapViewState extends State<WorldMapView> {
     // OpenStreetMap (light) / CartoDB Dark Matter (dark).
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
+
+    final attributionsLeft = 0.0;
+    final attributionsBottom = FluffyThemes.isColumnMode(context)
+        ? 0.0
+        : _narrowBottomChromeInset;
 
     // Resolve which pins to draw and each one's tier/state/pinged/fill once per
     // frame, then lay out the layers from it.
@@ -537,15 +572,39 @@ class _WorldMapViewState extends State<WorldMapView> {
           MarkerLayer(markers: _exitingMarkers()),
           // Large cards (always visible): the featured cards the width affords.
           MarkerLayer(markers: _largeMarkers(render)),
-          RichAttributionWidget(
-            // #7218: bottom-LEFT so the attribution and its expand popup don't sit
-            // under the bottom-right zoom/World controls (where it was covered and
-            // hard to read, especially in dark mode).
-            alignment: AttributionAlignment.bottomLeft,
-            attributions: [
-              TextSourceAttribution('OpenStreetMap contributors', onTap: () {}),
-              if (dark) TextSourceAttribution('CARTO', onTap: () {}),
-            ],
+          // Make a background, so attributions stand out in dark mode
+          Positioned(
+            left: attributionsLeft + 8,
+            bottom: attributionsBottom + 8,
+            child: Container(
+              height: 32,
+              width: 32,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(130, 135, 135, 135),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Positioned(
+            // On a narrow screen the bottom chrome (nav widget + the search bar
+            // riding above it) owns the bottom edge, so lift the attribution
+            // above it — otherwise it sits unreadable UNDER the floating rail
+            // (#7218 on narrow).
+            left: attributionsLeft,
+            bottom: attributionsBottom,
+            child: RichAttributionWidget(
+              // #7218: bottom-LEFT so the attribution and its expand popup don't
+              // sit under the bottom-right zoom/World controls (where it was
+              // covered and hard to read, especially in dark mode).
+              alignment: AttributionAlignment.bottomLeft,
+              attributions: [
+                TextSourceAttribution(
+                  'OpenStreetMap contributors',
+                  onTap: () {},
+                ),
+                if (dark) TextSourceAttribution('CARTO', onTap: () {}),
+              ],
+            ),
           ),
         ],
       ),
@@ -558,11 +617,16 @@ class _WorldMapViewState extends State<WorldMapView> {
     // slide left with the panel. (rightOverlayWidth still pads the camera fit in
     // world_map.dart so focal content lands in the uncovered area; only this
     // on-map chrome stays fixed.) Shown on world and course maps.
-    final controls = Positioned(
-      right: 12,
-      bottom: 28,
-      child: _MapZoomControls(controller: widget.controller),
-    );
+    // Column mode only: on a narrow screen the bottom chrome (the nav widget +
+    // search bar) owns this corner, pinch handles zoom, and the rail's World
+    // item is the reset — the Google Maps mobile pattern (no on-map +/- there).
+    final Widget controls = FluffyThemes.isColumnMode(context)
+        ? Positioned(
+            right: 12,
+            bottom: 28,
+            child: _MapZoomControls(controller: widget.controller),
+          )
+        : const SizedBox.shrink();
 
     // A course shows its plain map (plus the controls); the world map adds the
     // search + filter overlay.
@@ -585,26 +649,31 @@ class _WorldMapViewState extends State<WorldMapView> {
       child: Stack(
         children: [
           Positioned.fill(child: map),
-          Positioned(
-            top: 12,
-            left: widget.controller.widget.leftOverlayWidth + 12,
-            width: 360,
-            child: WorldMapSearchOverlay(
-              filter: widget.controller.filter,
-              updateQuery: widget.controller.setQuery,
-              l2Label: l2?.toUpperCase(),
-              onToggleL2: widget.controller.toggleL2,
-              onWidenSearch: () =>
-                  widget.controller.resetFilters(l2Only: false),
-              toggleCefr: widget.controller.toggleCefr,
-              toggleCompletion: widget.controller.toggleCompletion,
-              results: render.visible,
-              onResultTap: widget.controller.flyTo,
-              onReset: widget.controller.resetFilters,
-              emptyInView:
-                  !widget.controller.loadingPins && render.visible.isEmpty,
+          // Column mode only: on a narrow screen the search rides the floating
+          // bar above the nav widget instead (the shell mounts it — see
+          // routing.instructions.md → Single-column search bar), and this
+          // top-left spot belongs to the analytics bar.
+          if (FluffyThemes.isColumnMode(context))
+            Positioned(
+              top: 12,
+              left: widget.controller.widget.leftOverlayWidth + 12,
+              width: 360,
+              child: WorldMapSearchOverlay(
+                filter: widget.controller.filter,
+                updateQuery: widget.controller.setQuery,
+                l2Label: l2?.toUpperCase(),
+                onToggleL2: widget.controller.toggleL2,
+                onWidenSearch: () =>
+                    widget.controller.resetFilters(l2Only: false),
+                toggleCefr: widget.controller.toggleCefr,
+                toggleCompletion: widget.controller.toggleCompletion,
+                results: render.visible,
+                onResultTap: widget.controller.flyTo,
+                onReset: widget.controller.resetFilters,
+                emptyInView:
+                    !widget.controller.loadingPins && render.visible.isEmpty,
+              ),
             ),
-          ),
           controls,
         ],
       ),

@@ -250,6 +250,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> startSession() async {
     _clearState();
+
+    // if starting one round after another, hide the confetti from the previous round
+    MatrixState.pAnyState.closeOverlay(StarRainWidget.practiceCompleteKey);
+
     final analyticsService = Matrix.of(context).analyticsDataService;
     if (analyticsService.hasInitError) {
       // Trigger reinit so this retry attempt uses a fresh init. If reinit also

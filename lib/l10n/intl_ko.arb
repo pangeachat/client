@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:20:44.858557",
+    "@@last_modified": "2026-07-13 10:04:00.275949",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3720,7 +3720,6 @@
     "startNewSession": "새 세션 시작",
     "joinOpenSession": "열린 세션에 참여하기",
     "activityNotFound": "활동을 찾을 수 없습니다",
-    "levelUp": "레벨 업",
     "myActivities": "내 활동",
     "openToJoin": "참여 가능",
     "results": "결과",
@@ -9666,7 +9665,6 @@
     "enableNotificationsTitle": "채팅을 놓치지 마세요!",
     "enableNotificationsDesc": "Pangea Chat의 알림을 허용하고 언어 친구들과 연결 상태를 유지하세요!",
     "enableNotifications": "알림 허용",
-    "noActivitiesFound": "이 주제에 대한 활동이 없습니다.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9676,10 +9674,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10484,5 +10478,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "에스토니아어",
+    "abDisplayName": "압하즈어",
+    "elDisplayName": "그리스어",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} 중 {total}개의 별을 획득했습니다",
+    "activityNoLongerSupported": "이 활동은 이전 버전의 활동에서 실행되었으며 더 이상 지원되지 않습니다. 이 세션에서 발생한 내용을 여전히 검토할 수 있습니다.",
+    "activityLoadFailed": "활동을 로드할 수 없습니다. 연결을 확인하고 다시 시도하세요.",
+    "levelUpChip": "레벨 {level}!",
+    "missingCourseOutline": "이 과정은 더 이상 제공되지 않습니다",
+    "missingCourseOutlineCta": "이 과정은 더 이상 제공되지 않습니다. 새로운 과정 계획을 선택하세요.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "강좌 추가 페이지 닫기",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "문법 정보 문제 신고",
+    "grammarFeedbackDialogTitle": "문법 정보 피드백",
+    "grammarFeedbackSubmittedDesc": "감사합니다! 귀하의 피드백에 따라 설명이 업데이트되었습니다.",
+    "focusOnMap": "지도에 집중",
+    "welcome": "환영합니다",
+    "courseRequest": "강의 요청",
+    "onboarding": "온보딩",
+    "selectImageFromDevice": "장치에서 이미지 선택",
+    "dinoAvatarLabel": "선글라스를 쓴 공룡",
+    "bearAvatarLabel": "친근한 곰",
+    "squidAvatarLabel": "헤드폰을 쓴 오징어",
+    "cartoonAvatarLabel": "행복한 만화 캐릭터가 손을 흔드는 모습",
+    "robotAvatarLabel": "눈에 별이 있는 로봇",
+    "featuresIncludeLabel": "포함된 기능",
+    "difficultyListLabel": "난이도 목록",
+    "languageListLabel": "언어 목록",
+    "searchedResultsLabel": "'{search}'에 대한 검색 결과",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

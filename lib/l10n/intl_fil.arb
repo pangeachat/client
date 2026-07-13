@@ -2202,7 +2202,6 @@
     "startNewSession": "Simulan ang bagong sesyon",
     "joinOpenSession": "Sumali sa bukas na sesyon",
     "activityNotFound": "Hindi nahanap ang aktibidad",
-    "levelUp": "Umangat ang antas",
     "myActivities": "Aking mga aktibidad",
     "openToJoin": "Bukas para sumali",
     "results": "Mga resulta",
@@ -2257,7 +2256,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-06 10:22:12.877083",
+    "@@last_modified": "2026-07-13 10:06:35.878567",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10468,7 +10467,6 @@
     "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
     "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
     "enableNotifications": "Payagan ang mga notification",
-    "noActivitiesFound": "Walang mga aktibidad na available para sa paksang ito.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10478,10 +10476,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11286,5 +11280,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonyano",
+    "abDisplayName": "Abkhazian",
+    "elDisplayName": "Griyego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} ng {total} na mga bituin na nakuha",
+    "activityNoLongerSupported": "Ang aktibidad na ito ay tumakbo sa isang mas lumang bersyon ng mga aktibidad at hindi na sinusuportahan. Maaari mo pa ring suriin kung ano ang nangyari sa sesyon na ito.",
+    "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",
+    "levelUpChip": "Antas {level}!",
+    "missingCourseOutline": "Ang kursong ito ay hindi na available",
+    "missingCourseOutlineCta": "Ang kursong ito ay hindi na available. Pumili ng bagong plano ng kurso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Isara ang pahina ng pagdaragdag ng kurso",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Iulat ang isyu sa impormasyon ng gramatika",
+    "grammarFeedbackDialogTitle": "Feedback sa Impormasyon ng Gramatika",
+    "grammarFeedbackSubmittedDesc": "Salamat! Ang paliwanag ay na-update batay sa iyong feedback.",
+    "focusOnMap": "Magpokus sa mapa",
+    "welcome": "Maligayang pagdating",
+    "courseRequest": "Hiling sa kurso",
+    "onboarding": "Pagsasanay",
+    "selectImageFromDevice": "Pumili ng larawan mula sa aparato",
+    "dinoAvatarLabel": "Isang dinosaur na may salamin sa mata",
+    "bearAvatarLabel": "Isang magiliw na oso",
+    "squidAvatarLabel": "Isang pusit na may suot na headphone",
+    "cartoonAvatarLabel": "Isang masayang karakter ng kartun na kumakaway",
+    "robotAvatarLabel": "Isang robot na may mga bituin bilang mga mata",
+    "featuresIncludeLabel": "Kasama sa mga tampok",
+    "difficultyListLabel": "Listahan ng kahirapan",
+    "languageListLabel": "Listahan ng wika",
+    "searchedResultsLabel": "Mga resulta ng paghahanap para sa '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

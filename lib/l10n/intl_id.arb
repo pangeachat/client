@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:20:59.663913",
+    "@@last_modified": "2026-07-13 10:04:33.370976",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3785,7 +3785,6 @@
     "startNewSession": "Mulai sesi baru",
     "joinOpenSession": "Gabung sesi terbuka",
     "activityNotFound": "Aktivitas tidak ditemukan",
-    "levelUp": "Naik level",
     "myActivities": "Aktivitas saya",
     "openToJoin": "Terbuka untuk bergabung",
     "results": "Hasil",
@@ -9546,7 +9545,6 @@
     "enableNotificationsTitle": "Jangan lewatkan obrolan!",
     "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
     "enableNotifications": "Izinkan notifikasi",
-    "noActivitiesFound": "Tidak ada aktivitas yang tersedia untuk topik ini.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9556,10 +9554,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10364,5 +10358,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estonia",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Yunani",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} dari {total} bintang yang diperoleh",
+    "activityNoLongerSupported": "Aktivitas ini dijalankan pada versi lama dari aktivitas dan tidak lagi didukung. Anda masih dapat meninjau apa yang terjadi dalam sesi ini.",
+    "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",
+    "levelUpChip": "Tingkat {level}!",
+    "missingCourseOutline": "Kursus ini tidak lagi tersedia",
+    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih rencana kursus baru.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Laporkan masalah informasi tata bahasa",
+    "grammarFeedbackDialogTitle": "Umpan Balik Informasi Tata Bahasa",
+    "grammarFeedbackSubmittedDesc": "Terima kasih! Penjelasan telah diperbarui berdasarkan umpan balik Anda.",
+    "focusOnMap": "Fokus pada peta",
+    "welcome": "Selamat datang",
+    "courseRequest": "Permintaan kursus",
+    "onboarding": "Pengenalan",
+    "selectImageFromDevice": "Pilih gambar dari perangkat",
+    "dinoAvatarLabel": "Seekor dinosaurus dengan kacamata hitam",
+    "bearAvatarLabel": "Seekor beruang yang ramah",
+    "squidAvatarLabel": "Seekor cumi-cumi yang mengenakan headphone",
+    "cartoonAvatarLabel": "Karakter kartun yang bahagia melambaikan tangan",
+    "robotAvatarLabel": "Sebuah robot dengan bintang sebagai mata",
+    "featuresIncludeLabel": "Fitur termasuk",
+    "difficultyListLabel": "Daftar kesulitan",
+    "languageListLabel": "Daftar bahasa",
+    "searchedResultsLabel": "Hasil pencarian untuk '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

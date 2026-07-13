@@ -1435,7 +1435,6 @@
     "startNewSession": "Start ny session",
     "joinOpenSession": "Deltag i åben session",
     "activityNotFound": "Aktivitet ikke fundet",
-    "levelUp": "Niveau op",
     "myActivities": "Mine aktiviteter",
     "openToJoin": "Åben for deltagelse",
     "results": "Resultater",
@@ -1477,7 +1476,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-06 10:20:54.804799",
+    "@@last_modified": "2026-07-13 10:04:22.715587",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10543,7 +10542,6 @@
     "enableNotificationsTitle": "Gå ikke glip af en chat!",
     "enableNotificationsDesc": "Tillad notifikationer for Pangea Chat og forbliv forbundet med dine sprogvenner!",
     "enableNotifications": "Tillad notifikationer",
-    "noActivitiesFound": "Ingen aktiviteter tilgængelige for dette emne.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10553,10 +10551,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11361,5 +11355,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasisk",
+    "elDisplayName": "Græsk",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} af {total} stjerner optjent",
+    "activityNoLongerSupported": "Denne aktivitet kørte på en ældre version af aktiviteter og understøttes ikke længere. Du kan stadig gennemgå, hvad der skete i denne session.",
+    "activityLoadFailed": "Kunne ikke indlæse aktiviteten. Tjek din forbindelse og prøv igen.",
+    "levelUpChip": "Niveau {level}!",
+    "missingCourseOutline": "Dette kursus er ikke længere tilgængeligt",
+    "missingCourseOutlineCta": "Dette kursus er ikke længere tilgængeligt. Vælg en ny kursusplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Luk tilføj kursusside",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapporter grammatikinformation problem",
+    "grammarFeedbackDialogTitle": "Grammatikinformation feedback",
+    "grammarFeedbackSubmittedDesc": "Tak! Forklaringen er blevet opdateret baseret på din feedback.",
+    "focusOnMap": "Fokuser på kortet",
+    "welcome": "Velkommen",
+    "courseRequest": "Kursusanmodning",
+    "onboarding": "Introduktion",
+    "selectImageFromDevice": "Vælg billede fra enhed",
+    "dinoAvatarLabel": "En dinosaur med solbriller",
+    "bearAvatarLabel": "En venlig bjørn",
+    "squidAvatarLabel": "En blæksprutte med hovedtelefoner",
+    "cartoonAvatarLabel": "En glad tegneseriefigur der vinker",
+    "robotAvatarLabel": "En robot med stjerner for øjne",
+    "featuresIncludeLabel": "Funktioner inkluderer",
+    "difficultyListLabel": "Sværhedsgradsliste",
+    "languageListLabel": "Sprog liste",
+    "searchedResultsLabel": "Søgeresultater for '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

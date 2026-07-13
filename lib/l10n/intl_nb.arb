@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-06 10:21:50.868320",
+    "@@last_modified": "2026-07-13 10:05:59.148440",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3764,7 +3764,6 @@
     "startNewSession": "Start ny økt",
     "joinOpenSession": "Bli med i åpen økt",
     "activityNotFound": "Aktivitet ikke funnet",
-    "levelUp": "Nivå opp",
     "myActivities": "Mine aktiviteter",
     "openToJoin": "Åpen for å bli med",
     "results": "Resultater",
@@ -9509,7 +9508,6 @@
     "enableNotificationsTitle": "Ikke gå glipp av en chat!",
     "enableNotificationsDesc": "Tillat varsler for Pangea Chat og hold kontakten med språkvennene dine!",
     "enableNotifications": "Tillat varsler",
-    "noActivitiesFound": "Ingen aktiviteter tilgjengelig for dette emnet.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -9519,10 +9517,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10327,5 +10321,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasisk",
+    "elDisplayName": "Gresk",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} av {total} stjerner opptjent",
+    "activityNoLongerSupported": "Denne aktiviteten kjørte på en eldre versjon av aktiviteter og støttes ikke lenger. Du kan fortsatt se hva som skjedde i denne økten.",
+    "activityLoadFailed": "Kunne ikke laste aktiviteten. Sjekk tilkoblingen din og prøv igjen.",
+    "levelUpChip": "Nivå {level}!",
+    "missingCourseOutline": "Dette kurset er ikke lenger tilgjengelig",
+    "missingCourseOutlineCta": "Dette kurset er ikke lenger tilgjengelig. Velg en ny kursplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Lukk legg til kurs-siden",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapporter grammatikkinformasjonsproblem",
+    "grammarFeedbackDialogTitle": "Tilbakemelding om grammatikkinformasjon",
+    "grammarFeedbackSubmittedDesc": "Takk! Forklaringen har blitt oppdatert basert på tilbakemeldingen din.",
+    "focusOnMap": "Fokuser på kartet",
+    "welcome": "Velkommen",
+    "courseRequest": "Kursforespørsel",
+    "onboarding": "Introduksjon",
+    "selectImageFromDevice": "Velg bilde fra enheten",
+    "dinoAvatarLabel": "En dinosaur med solbriller",
+    "bearAvatarLabel": "En vennlig bjørn",
+    "squidAvatarLabel": "En blekksprut med hodetelefoner",
+    "cartoonAvatarLabel": "En glad tegneseriefigur som vinker",
+    "robotAvatarLabel": "En robot med stjerner som øyne",
+    "featuresIncludeLabel": "Funksjoner inkluderer",
+    "difficultyListLabel": "Vanskelighetsliste",
+    "languageListLabel": "Språkliste",
+    "searchedResultsLabel": "Søkeresultater for '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

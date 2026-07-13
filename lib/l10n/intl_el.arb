@@ -3729,7 +3729,6 @@
     "startNewSession": "Ξεκινήστε νέα συνεδρία",
     "joinOpenSession": "Συμμετοχή σε ανοιχτή συνεδρία",
     "activityNotFound": "Δεν βρέθηκε δραστηριότητα",
-    "levelUp": "Επίπεδο πάνω",
     "myActivities": "Οι δραστηριότητές μου",
     "openToJoin": "Ανοιχτό για συμμετοχή",
     "results": "Αποτελέσματα",
@@ -3771,7 +3770,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-06 10:22:48.645312",
+    "@@last_modified": "2026-07-13 10:08:00.885569",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10498,7 +10497,6 @@
     "enableNotificationsTitle": "Ποτέ μην χάσετε μια συνομιλία!",
     "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις για το Pangea Chat και μείνετε συνδεδεμένοι με τους φίλους σας στη γλώσσα!",
     "enableNotifications": "Επιτρέψτε τις ειδοποιήσεις",
-    "noActivitiesFound": "Δεν υπάρχουν διαθέσιμες δραστηριότητες για αυτό το θέμα.",
     "@enableNotificationsTitle": {
         "type": "String",
         "placeholders": {}
@@ -10508,10 +10506,6 @@
         "placeholders": {}
     },
     "@enableNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noActivitiesFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -11316,5 +11310,146 @@
     "@activityMapLabel": {
         "type": "String",
         "placeholders": {}
+    },
+    "etDisplayName": "Εσθονικά",
+    "abDisplayName": "Αμπχαζικά",
+    "elDisplayName": "Ελληνικά",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} από {total} αστέρια κερδισμένα",
+    "activityNoLongerSupported": "Αυτή η δραστηριότητα εκτελούνταν σε παλαιότερη έκδοση δραστηριοτήτων και δεν υποστηρίζεται πλέον. Μπορείτε να αναθεωρήσετε τι συνέβη σε αυτή τη συνεδρία.",
+    "activityLoadFailed": "Δεν ήταν δυνατή η φόρτωση της δραστηριότητας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+    "levelUpChip": "Επίπεδο {level}!",
+    "missingCourseOutline": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο",
+    "missingCourseOutlineCta": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο. Επιλέξτε ένα νέο σχέδιο μαθήματος.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Κλείσιμο σελίδας προσθήκης μαθήματος",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Αναφορά προβλήματος γραμματικής",
+    "grammarFeedbackDialogTitle": "Ανατροφοδότηση Πληροφοριών Γραμματικής",
+    "grammarFeedbackSubmittedDesc": "Ευχαριστώ! Η εξήγηση έχει ενημερωθεί με βάση την ανατροφοδότησή σας.",
+    "focusOnMap": "Εστίαση στον χάρτη",
+    "welcome": "Καλώς ήρθατε",
+    "courseRequest": "Αίτημα μαθήματος",
+    "onboarding": "Εκπαίδευση",
+    "selectImageFromDevice": "Επιλέξτε εικόνα από τη συσκευή",
+    "dinoAvatarLabel": "Ένας δεινόσαυρος με γυαλιά ηλίου",
+    "bearAvatarLabel": "Ένας φιλικός αρκούδος",
+    "squidAvatarLabel": "Ένα καλαμάρι με ακουστικά",
+    "cartoonAvatarLabel": "Ένας χαρούμενος χαρακτήρας καρτούν που χαιρετά",
+    "robotAvatarLabel": "Ένας ρομπότ με αστέρια για μάτια",
+    "featuresIncludeLabel": "Τα χαρακτηριστικά περιλαμβάνουν",
+    "difficultyListLabel": "Λίστα δυσκολίας",
+    "languageListLabel": "Λίστα γλωσσών",
+    "searchedResultsLabel": "Αποτελέσματα αναζήτησης για '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }
