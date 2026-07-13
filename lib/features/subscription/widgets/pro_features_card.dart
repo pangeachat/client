@@ -59,39 +59,46 @@ class ProFeaturesCard extends StatelessWidget {
         ? AppConfig.gold
         : AppConfig.goldLight;
 
-    return FrameContainer(
-      title: L10n.of(context).proFeatures,
-      frameColor: frameColor ?? gold,
-      borderWidth: borderWidth,
-      padding: padding,
-      titlePadding: titlePadding,
-      backgroundColor: backgroundColor ?? theme.colorScheme.surface,
-      foregroundColor:
-          foregroundColor ??
-          (theme.brightness == Brightness.light
-              ? theme.colorScheme.onSurface
-              : theme.colorScheme.surface),
-      child: Column(
-        spacing: 12.0,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ..._ProFeatureInfo.entries(L10n.of(context)).map(
-            (e) => Row(
-              spacing: 8.0,
-              children: [
-                Icon(e.icon, color: gold, size: 20.0),
-                Expanded(
-                  child: Text(
-                    e.text,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: theme.colorScheme.onSurface,
+    return Semantics(
+      label: L10n.of(context).featuresIncludeLabel,
+      container: true,
+      child: FrameContainer(
+        title: L10n.of(context).proFeatures,
+        frameColor: frameColor ?? gold,
+        borderWidth: borderWidth,
+        padding: padding,
+        titlePadding: titlePadding,
+        backgroundColor: backgroundColor ?? theme.colorScheme.surface,
+        foregroundColor:
+            foregroundColor ??
+            (theme.brightness == Brightness.light
+                ? theme.colorScheme.onSurface
+                : theme.colorScheme.surface),
+        child: Column(
+          spacing: 12.0,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ..._ProFeatureInfo.entries(L10n.of(context)).map(
+              (e) => Row(
+                spacing: 8.0,
+                children: [
+                  Icon(e.icon, color: gold, size: 20.0),
+                  Expanded(
+                    child: Semantics(
+                      container: true,
+                      child: Text(
+                        e.text,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2097,7 +2097,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-09 16:14:33.050748",
+    "@@last_modified": "2026-07-13 10:08:26.000408",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11383,5 +11383,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "გრამატიკული ინფორმაციის პრობლემის შეტყობინება",
+    "grammarFeedbackDialogTitle": "გრამატიკული ინფორმაციის უკუკავშირი",
+    "grammarFeedbackSubmittedDesc": "მადლობა! ახსნა განახლდა თქვენი უკუკავშირის საფუძველზე.",
+    "focusOnMap": "მაპზე ყურადღების გამახვილება",
+    "welcome": "კეთილი იყოს თქვენი მობრძანება",
+    "courseRequest": "კურსის მოთხოვნა",
+    "onboarding": "ონბორდინგი",
+    "selectImageFromDevice": "სურათის არჩევა მოწყობილობიდან",
+    "dinoAvatarLabel": "დინოზავრი სათვალეებით",
+    "bearAvatarLabel": "მეგობრული დათვი",
+    "squidAvatarLabel": "კალმახი ყურსასმენებით",
+    "cartoonAvatarLabel": "ბედნიერი მულტფილმის პერსონაჟი, რომელიც ხელს უქნევს",
+    "robotAvatarLabel": "რობოტი ვარსკვლავებით თვალებში",
+    "featuresIncludeLabel": "მახასიათებლები მოიცავს",
+    "difficultyListLabel": "სირთულის სია",
+    "languageListLabel": "ენების სია",
+    "searchedResultsLabel": "'{search}'-ის ძიების შედეგები",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

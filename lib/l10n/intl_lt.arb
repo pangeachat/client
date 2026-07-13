@@ -3244,7 +3244,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-09 16:14:17.178783",
+    "@@last_modified": "2026-07-13 10:07:03.254497",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11201,5 +11201,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Pranešti gramatikos informacijos problemą",
+    "grammarFeedbackDialogTitle": "Gramatikos informacijos atsiliepimai",
+    "grammarFeedbackSubmittedDesc": "Ačiū! Paaiškinimas buvo atnaujintas remiantis jūsų atsiliepimais.",
+    "focusOnMap": "Sutelkti dėmesį į žemėlapį",
+    "welcome": "Sveiki atvykę",
+    "courseRequest": "Kurso prašymas",
+    "onboarding": "Įvedimas",
+    "selectImageFromDevice": "Pasirinkite vaizdą iš įrenginio",
+    "dinoAvatarLabel": "Dinozauras su akinių nuo saulės",
+    "bearAvatarLabel": "Draugiškas lokys",
+    "squidAvatarLabel": "Kalmaras su ausinėmis",
+    "cartoonAvatarLabel": "Laimingas animacinis personažas, mojuojantis",
+    "robotAvatarLabel": "Robotas su žvaigždėmis vietoj akių",
+    "featuresIncludeLabel": "Ypatybės apima",
+    "difficultyListLabel": "Sudėtingumo sąrašas",
+    "languageListLabel": "Kalbų sąrašas",
+    "searchedResultsLabel": "Paieškos rezultatai '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }
