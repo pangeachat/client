@@ -17,7 +17,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -26,11 +25,8 @@ import '../../../config/themes.dart';
 import '../../../widgets/avatar.dart';
 
 class ActivityArchive extends StatelessWidget {
-  /// When hosted inside the world map's right-docked analytics panel, hide the
-  /// cross-metric [LearningProgressIndicators] header (its tabs navigate to the
-  /// old left-column section routes). See routing.instructions.md.
-  final bool embedded;
-  const ActivityArchive({super.key, this.embedded = false});
+  final Widget closeButton;
+  const ActivityArchive({super.key, required this.closeButton});
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +44,25 @@ class ActivityArchive extends StatelessWidget {
           context,
         ).pathParameters['roomid'];
         return Scaffold(
+          appBar: AppBar(
+            leading: Center(child: closeButton),
+            title: Text(
+              L10n.of(context).stars,
+              style: FluffyThemes.isColumnMode(context)
+                  ? Theme.of(context).textTheme.titleLarge
+                  : Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+            ),
+            centerTitle: false,
+            titleSpacing: 0,
+          ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsetsGeometry.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (!embedded)
-                    const LearningProgressIndicators(
-                      selected: ProgressIndicatorEnum.activities,
-                    ),
                   if (!analyticsService.hasInitError)
                     MaxWidthBody(
                       showBorder: false,
