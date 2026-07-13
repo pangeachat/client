@@ -5,7 +5,12 @@
 // activity start page). Pure logic — no Matrix or network — so it stays
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
 /// zero. The anchor Mission scores 1.0; each Mission further along loses
@@ -137,6 +142,28 @@ class ProgressionResolution {
       }
     }
     return total.clamp(0.0, kBandCeiling);
+  }
+
+  /// Resolve the learner's shared joined-course progression — the SAME inputs and
+  /// resolver as the world map, so the star numbers can never disagree
+  /// (quests.instructions.md). Called by both the header's [CourseProgressBar] and
+  /// the objective list's per-Mission chips; identical cached inputs (the quest
+  /// outline cache + `client.userStarsByActivity`) mean the two can't drift, so a
+  /// second resolve is safe rather than a re-derivation risk.
+  static Future<ProgressionResolution> resolveJoinedProgression(
+    Client client,
+  ) async {
+    final cache = JoinedObjectiveCache();
+    await cache.rebuildFromJoinedCourses(
+      client,
+      onError: (uuid, e, s) => ErrorHandler.logError(
+        e: e,
+        s: s,
+        m: 'course progression failed to resolve',
+        data: {'courseUuid': uuid},
+      ),
+    );
+    return cache.resolution(client.userStarsByActivity);
   }
 }
 

@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 
 void main() {
   Widget wrap(Widget child) => MaterialApp(

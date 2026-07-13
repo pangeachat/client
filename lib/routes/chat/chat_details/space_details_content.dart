@@ -29,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_button_row.dar
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -369,10 +370,21 @@ class SpaceDetailsContent extends StatelessWidget {
                 // The one camera path that zooms (#7616): course selection
                 // only pans, so this button zoom+pan-fits the map to all of
                 // the course's activities.
-                IconButton(
-                  tooltip: L10n.of(context).focusOnMap,
-                  icon: const Icon(Icons.filter_center_focus),
-                  onPressed: MapCameraFocusRequests.request,
+                ValueListenableBuilder(
+                  valueListenable: controller.objectivesProvider.questLoader,
+                  builder: (context, _, _) {
+                    if (controller
+                        .objectivesProvider
+                        .filteredObjectiveGroups
+                        .isNotEmpty) {
+                      return IconButton(
+                        tooltip: L10n.of(context).focusOnMap,
+                        icon: const Icon(Icons.filter_center_focus),
+                        onPressed: MapCameraFocusRequests.request,
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
                 ),
                 if (room.joinCode != null)
                   Padding(
@@ -390,7 +402,9 @@ class SpaceDetailsContent extends StatelessWidget {
             // every tab and survives the collapsed mobile peek (the objective list,
             // where it used to live, isn't mounted then). Only the course has a
             // bar; per-Mission rows show just their stars (#7597).
-            CourseProgressBar(room: room),
+            CourseProgressBar(
+              objectivesProvider: controller.objectivesProvider,
+            ),
             if (!compact) ...[
               SizedBox(height: isColumnMode ? 24.0 : 12.0),
               SpaceDetailsButtonRow(
@@ -415,11 +429,18 @@ class SpaceDetailsContent extends StatelessWidget {
                         // world_v2: the course plan is a sequence of learning
                         // objectives, each satisfied by interchangeable activities
                         // (no longer grouped by city).
-                        return CourseObjectivesList(
-                          room: room,
-                          hasCompletedActivity: controller
-                              .roomSummariesModel
-                              .hasCompletedActivity,
+                        return ListenableBuilder(
+                          listenable: Listenable.merge([
+                            controller.objectivesProvider.questLoader,
+                            controller.objectivesProvider.progression,
+                          ]),
+                          builder: (context, _) => CourseObjectivesList(
+                            room: room,
+                            hasCompletedActivity: controller
+                                .roomSummariesModel
+                                .hasCompletedActivity,
+                            objectivesProvider: controller.objectivesProvider,
+                          ),
                         );
                       case SpaceSettingsTabs.participants:
                         return SingleChildScrollView(

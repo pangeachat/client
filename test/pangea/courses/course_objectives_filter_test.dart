@@ -4,8 +4,8 @@ import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 /// Regression coverage for #7114 ("Remove extra space for course modules

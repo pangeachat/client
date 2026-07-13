@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -9,35 +7,18 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
-import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-
-typedef _ObjectivesLoader =
-    ValueNotifier<AsyncState<List<QuestObjectiveGroup>>>;
-
-/// The objective groups that should render: those with at least one activity.
-/// An activity-less objective would otherwise show a header over a fixed-height
-/// activity-card row that is all empty space, so it is dropped (#7114). Null
-/// (still loading / no data) maps to an empty list.
-@visibleForTesting
-List<QuestObjectiveGroup> objectiveGroupsWithActivities(
-  List<QuestObjectiveGroup>? groups,
-) => (groups ?? const <QuestObjectiveGroup>[])
-    .where((g) => g.activities.isNotEmpty)
-    .toList();
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -66,7 +47,10 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
+  final QuestObjectivesLoader objectivesProvider;
+
   const CourseObjectivesList({
+    required this.objectivesProvider,
     this.room,
     this.questId,
     this.hasCompletedActivity,
@@ -79,30 +63,13 @@ class CourseObjectivesList extends StatefulWidget {
 }
 
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
-  final _ObjectivesLoader _objectivesLoader = _ObjectivesLoader(AsyncLoading());
   final ScrollController _scrollController = ScrollController();
-
-  /// The shared progression rollup behind the star display — same inputs and
-  /// resolver as the world map, so the numbers can never disagree
-  /// (quests.instructions.md, "Star display on the course panel"). Empty in a
-  /// preview (no room → no learner progress to show) and until the first
-  /// resolve completes.
-  ProgressionResolution _progression = ProgressionResolution.empty;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
 
   @override
   void dispose() {
-    _objectivesLoader.dispose();
     _scrollController.dispose();
     super.dispose();
   }
-
-  String? get _questId => widget.questId ?? widget.room?.coursePlan?.uuid;
 
   /// Scroll this list from a vertical mouse wheel anywhere over the panel —
   /// including the gaps between cards and the objective headers. Those areas are
@@ -128,326 +95,77 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   }
 
   @override
-  void didUpdateWidget(covariant CourseObjectivesList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.questId != widget.questId ||
-        oldWidget.room?.id != widget.room?.id) {
-      _progression = ProgressionResolution.empty;
-      _load();
-    }
-  }
-
-  Future<void> _load() async {
-    // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
-    // plan's uuid) points at a quest-plans id. The outline (Missions + their
-    // activities) comes from the v3 quest read layer; the v1
-    // course-plans/topics fan-out is retired.
-    final questId = _questId;
-    if (questId == null) {
-      _objectivesLoader.value = AsyncError(MissingQuestException());
-      return;
-    }
-
-    _objectivesLoader.value = AsyncLoading();
-    final outlineResult = await QuestRepo.outline(questId);
-    final outline = outlineResult.result;
-
-    if (!mounted) return;
-
-    if (outline == null) {
-      _objectivesLoader.value = AsyncError(
-        outlineResult.error ?? MissingQuestException(),
-      );
-      return;
-    }
-
-    unawaited(_loadProgression());
-
-    final filtered = objectiveGroupsWithActivities(outline.groups);
-    if (filtered.isEmpty) {
-      _objectivesLoader.value = AsyncError(MissingQuestException());
-      return;
-    }
-    _objectivesLoader.value = AsyncLoaded(filtered);
-  }
-
-  /// Resolve the star-display rollup. Joined courses only — a preview has no
-  /// learner progress to show. Fire-and-forget from [_load]: the outline
-  /// renders immediately and the star chips fill in when the resolve lands.
-  Future<void> _loadProgression() async {
-    final client = widget.room?.client;
-    if (client == null) return;
-    final resolved = await resolveJoinedProgression(client);
-    if (!mounted) return;
-    setState(() => _progression = resolved);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _objectivesLoader,
+      valueListenable: widget.objectivesProvider.questLoader,
       builder: (context, state, _) {
         switch (state) {
           case AsyncLoading():
           case AsyncIdle():
             return const Center(child: CircularProgressIndicator.adaptive());
           case AsyncError(error: final error):
-            if (error is MissingQuestException) {
-              final showAddCourse = widget.room?.isRoomAdmin == true;
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    spacing: 12.0,
-                    children: [
-                      Text(
-                        showAddCourse
-                            ? L10n.of(context).missingCourseOutlineCta
-                            : L10n.of(context).missingCourseOutline,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.outline,
-                        ),
-                      ),
-                      if (showAddCourse)
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.tonalIcon(
-                            onPressed: () => context.go(
-                              WorkspaceNav.openCoursePage(
-                                GoRouterState.of(context).uri,
-                                RoomSubpageEnum.addcourse,
-                              ),
-                            ),
-                            icon: Icon(Icons.map_outlined, size: 20.0),
-                            label: Text(L10n.of(context).addCoursePlan),
-                            style: FilledButton.styleFrom(
-                              backgroundColor: Theme.of(
-                                context,
-                              ).colorScheme.primaryContainer,
-                              foregroundColor: Theme.of(
-                                context,
-                              ).colorScheme.onPrimaryContainer,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 14.0,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              );
-            }
-
-            return Center(
-              child: ErrorIndicator(message: error.toLocalizedString(context)),
+            return _QuestLoadErrorView(
+              error,
+              showAddCourse: widget.room?.isRoomAdmin == true,
             );
-          case AsyncLoaded(value: final groups):
+          case AsyncLoaded():
             // The overall quest-star bar now lives in the course card header
             // (above the tabs — [CourseProgressBar]), so it shows on every tab
             // and in the collapsed mobile peek; the list is just the Missions.
             // Per-Mission stars still show once the shared rollup resolves; a
             // preview has no learner progress.
-            final hasProgress =
-                widget.room != null && _progression.rollup.isNotEmpty;
-            final list = ListView.separated(
-              controller: widget.shrinkWrap ? null : _scrollController,
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              shrinkWrap: widget.shrinkWrap,
-              physics: widget.shrinkWrap
-                  ? const NeverScrollableScrollPhysics()
-                  : null,
-              itemCount: groups.length,
-              separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-              itemBuilder: (context, i) {
-                final group = groups[i];
-                return _ObjectiveSection(
-                  index: i,
-                  group: group,
-                  room: widget.room,
-                  hasCompletedActivity: widget.hasCompletedActivity,
-                  progress: hasProgress
-                      ? _progression.rollup[group.objective.id]
+            final groups = widget.objectivesProvider.filteredObjectiveGroups;
+            if (groups.isEmpty) {
+              return _QuestLoadErrorView(
+                MissingQuestException(),
+                showAddCourse: widget.room?.isRoomAdmin == true,
+              );
+            }
+
+            return ValueListenableBuilder(
+              valueListenable: widget.objectivesProvider.progression,
+              builder: (context, progression, _) {
+                final hasProgress =
+                    widget.room != null && progression.rollup.isNotEmpty;
+                final list = ListView.separated(
+                  controller: widget.shrinkWrap ? null : _scrollController,
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  shrinkWrap: widget.shrinkWrap,
+                  physics: widget.shrinkWrap
+                      ? const NeverScrollableScrollPhysics()
                       : null,
+                  itemCount: groups.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 24.0),
+                  itemBuilder: (context, i) {
+                    final group = groups[i];
+                    return _ObjectiveSection(
+                      index: i,
+                      group: group,
+                      room: widget.room,
+                      hasCompletedActivity: widget.hasCompletedActivity,
+                      progress: hasProgress
+                          ? progression.rollup[group.objective.id]
+                          : null,
+                    );
+                  },
+                );
+                // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+                // with no map behind it, so a wheel can't leak — return it bare. The
+                // standalone course-card panel floats over the map, so capture the wheel
+                // OPAQUELY across the whole panel: the gaps between cards and the
+                // objective headers are hit-transparent, and a wheel there would zoom the
+                // map instead of scrolling the list. See [_claimVerticalScroll].
+                if (widget.shrinkWrap) return list;
+                return Listener(
+                  behavior: HitTestBehavior.opaque,
+                  onPointerSignal: _claimVerticalScroll,
+                  child: list,
                 );
               },
-            );
-            // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-            // with no map behind it, so a wheel can't leak — return it bare. The
-            // standalone course-card panel floats over the map, so capture the wheel
-            // OPAQUELY across the whole panel: the gaps between cards and the
-            // objective headers are hit-transparent, and a wheel there would zoom the
-            // map instead of scrolling the list. See [_claimVerticalScroll].
-            if (widget.shrinkWrap) return list;
-            return Listener(
-              behavior: HitTestBehavior.opaque,
-              onPointerSignal: _claimVerticalScroll,
-              child: list,
             );
         }
       },
     );
-  }
-}
-
-/// Resolve the learner's shared joined-course progression — the SAME inputs and
-/// resolver as the world map, so the star numbers can never disagree
-/// (quests.instructions.md). Called by both the header's [CourseProgressBar] and
-/// the objective list's per-Mission chips; identical cached inputs (the quest
-/// outline cache + `client.userStarsByActivity`) mean the two can't drift, so a
-/// second resolve is safe rather than a re-derivation risk.
-Future<ProgressionResolution> resolveJoinedProgression(Client client) async {
-  final cache = JoinedObjectiveCache();
-  await cache.rebuildFromJoinedCourses(
-    client,
-    onError: (uuid, e, s) => ErrorHandler.logError(
-      e: e,
-      s: s,
-      m: 'course progression failed to resolve',
-      data: {'courseUuid': uuid},
-    ),
-  );
-  return cache.resolution(client.userStarsByActivity);
-}
-
-/// The overall course progress bar for the course-card HEADER (above the tabs,
-/// #7597): the quest's earned-over-threshold stars and a bar. Lives in the
-/// header so it shows on every tab and in the collapsed mobile peek — where the
-/// objective list (and its old in-list header) isn't even mounted, since the
-/// card opens on the chat tab on narrow. Self-resolves the shared progression
-/// ([resolveJoinedProgression]); renders a muted empty bar until it lands so the
-/// header height (and the peek) stays stable.
-class CourseProgressBar extends StatefulWidget {
-  final Room room;
-
-  const CourseProgressBar({required this.room, super.key});
-
-  @override
-  State<CourseProgressBar> createState() => _CourseProgressBarState();
-}
-
-class _CourseProgressBarState extends State<CourseProgressBar> {
-  QuestStarSummary? _summary;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  @override
-  void didUpdateWidget(covariant CourseProgressBar oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.room.id != widget.room.id) {
-      setState(() => _summary = null);
-      _load();
-    }
-  }
-
-  Future<void> _load() async {
-    final questId = widget.room.coursePlan?.uuid;
-    if (questId == null) return;
-    final outlineResult = await QuestRepo.outline(questId);
-    final orderedMissionIds =
-        outlineResult.result?.quest.learningObjectiveIds ?? const [];
-    final progression = await resolveJoinedProgression(widget.room.client);
-    if (!mounted) return;
-    setState(() => _summary = progression.questStars(orderedMissionIds));
-  }
-
-  @override
-  Widget build(BuildContext context) => ProgressBarRow(summary: _summary);
-}
-
-/// The overall course progress bar: a rounded gold fill over a gray track with
-/// a star sitting INSIDE the bar at the goal (right) end — no number. Learners
-/// read progress from the fill and tap/hover the bar for the exact
-/// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
-/// renders the muted empty state (pre-resolve), keeping the header height
-/// stable.
-class ProgressBarRow extends StatelessWidget {
-  final QuestStarSummary? summary;
-
-  static const double _barHeight = 20.0;
-
-  const ProgressBarRow({required this.summary, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final summary = this.summary;
-    final gold = AppConfig.goldByTheme(context);
-    final fraction = (summary?.fraction ?? 0.0).clamp(0.0, 1.0);
-    final label = summary == null
-        ? null
-        : L10n.of(context).starsEarnedOfTotal(summary.earned, summary.total);
-
-    final bar = SizedBox(
-      height: _barHeight,
-      child: Stack(
-        alignment: Alignment.centerLeft,
-        children: [
-          // Gray track.
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(_barHeight / 2),
-            ),
-            child: const SizedBox.expand(),
-          ),
-          // Gold fill — the learner's progress toward the goal. The
-          // SizedBox.expand child is load-bearing: a childless DecoratedBox in
-          // a loose Stack sizes to constraints.smallest (zero height) and
-          // paints nothing (#7603).
-          FractionallySizedBox(
-            widthFactor: fraction,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: gold,
-                borderRadius: BorderRadius.circular(_barHeight / 2),
-              ),
-              child: const SizedBox.expand(),
-            ),
-          ),
-          // The goal star, inside the bar at the right end. A surface-coloured
-          // outline star sits behind it so it reads on both the gold fill (full
-          // progress) and the gray track.
-          Positioned(
-            right: 5.0,
-            child: SizedBox(
-              width: _barHeight - 4,
-              height: _barHeight - 4,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Icon(
-                    Icons.star,
-                    size: _barHeight - 3,
-                    color: theme.colorScheme.surface,
-                  ),
-                  Icon(Icons.star, size: _barHeight - 6, color: gold),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-
-    final result = Semantics(label: label, value: label, child: bar);
-
-    // Tap (mobile) and hover (desktop) both surface the exact count.
-    return label == null
-        ? result
-        : Tooltip(
-            message: label,
-            triggerMode: TooltipTriggerMode.tap,
-            child: result,
-          );
   }
 }
 
@@ -647,6 +365,68 @@ class _ObjectivePlaceholderIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Icon(Icons.flag_outlined, size: 22.0, color: scheme.onSurface),
+    );
+  }
+}
+
+class _QuestLoadErrorView extends StatelessWidget {
+  final Object error;
+  final bool showAddCourse;
+
+  const _QuestLoadErrorView(this.error, {required this.showAddCourse});
+
+  @override
+  Widget build(BuildContext context) {
+    if (error is MissingQuestException) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            spacing: 12.0,
+            children: [
+              Text(
+                showAddCourse
+                    ? L10n.of(context).missingCourseOutlineCta
+                    : L10n.of(context).missingCourseOutline,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.outline,
+                ),
+              ),
+              if (showAddCourse)
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.tonalIcon(
+                    onPressed: () => context.go(
+                      WorkspaceNav.openCoursePage(
+                        GoRouterState.of(context).uri,
+                        RoomSubpageEnum.addcourse,
+                      ),
+                    ),
+                    icon: Icon(Icons.map_outlined, size: 20.0),
+                    label: Text(L10n.of(context).addCoursePlan),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
+                      foregroundColor: Theme.of(
+                        context,
+                      ).colorScheme.onPrimaryContainer,
+                      padding: const EdgeInsets.symmetric(vertical: 14.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Center(
+      child: ErrorIndicator(message: error.toLocalizedString(context)),
     );
   }
 }
