@@ -38,12 +38,9 @@ The whole grammar in one place. The path is always `/`; state rides in the query
   to, absent for the whole world. Read by the map and the course panels alike
   (see [The course context](#the-course-context)).
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
-  one token per open panel, ordered **first beneath, second on top** (master
-  first for a master/detail pair — the full rule is below).
+  one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
-  `course`, `settings`, `analytics`, `vocab`, `activity`, …); the param carries
-  the panel's identity and active tab, plus any page pushed within the panel
-  after a `/`.
+  `course`, `settings`, `analytics`, `vocab`, `activity`, …); the param carries any subpages within the given surface, and extra information needed to render the page. Pushed subpages within the param after separated with forward slashes. Extra information (info that would typically be in query parameters) after added to the end of the param, and separated by periods.
 
 | URL | What is on screen |
 | --- | --- |
@@ -97,15 +94,6 @@ join link (`/join_with_link?classcode=<code>`, the CloudFront short-code 302
 target, plus its native `/join` spelling — #7524), which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
 into their `activity` / `addcourse:private/<code>` tokens before render.
-
-**Known carve-out (#7519).** Five legacy path-route trees still render as
-route-driven center details and are navigated to by live flows: the chat
-archive, the new-DM form, the course-creation wizard (blocked on its
-`Completer`-via-`state.extra` result handoff, which cannot ride a URL), the
-add-plan-to-space flow, and the public-course preview. Until #7519 migrates
-them to tokens, "the path is always `/`" holds for everything except these;
-they are the only reason `CanvasMode.detail` and the shell's center-detail
-machinery still exist.
 
 ## The core model
 
@@ -173,16 +161,6 @@ smells, both forbidden in feature code:
   themselves; the query-editing utilities are internal to the navigation layer.
   If a surface needs a navigation the helpers can't express, add a helper — that
   keeps the grammar in one place.
-
-The only legitimate path destinations, all declared in `routes.dart`: the
-fork-inherited `/rooms/...` utility pages (archive, new-chat flows, …) that have
-not yet joined the token model; the pre-login and utility routes (`/home`,
-`/onboarding`, `/registration`, `/logs`, `/configs`); the route-driven Completer
-flows (`/courses/own/:courseid[/invite]`, `/courses/:spaceid/addcourse/:courseId`);
-and the public-course preview. Nothing else path-shaped exists: the retired
-section paths and their redirect shims are deleted, and `LegacyRedirects`
-handles exactly two shapes — the shareable `/<uuid>` activity link and the
-course join link (`/join_with_link` / `/join` with `?classcode=`, #7524).
 
 **Everything a panel needs rides in its token's fields — there are no loose
 params.** The one external URL producer, the shareable `/<uuid>` activity link,
@@ -766,13 +744,4 @@ lists and only history-adding navigations emit — see
 
 ### Adding a panel
 
-A new surface is a registry entry, not a new route tree: declare its column
-(which fixes its role and justification), its place in the navigation tree (its
-**parent** type, or none for a root; any **sibling groups** it shares a slot
-with), its three widths (max, reasonable min, hard min), its tiebreak priority,
-whether it is exclusive, and whether it opens its detail as a panel or pushes
-it. The parser, the width allocator (fold), the close affordance, and the
-single-column focus all read the same entry, so a correct tree placement is what
-makes a surface fold, close, and focus right. A settings or profile page is just
-a right-column entry whose parent is the settings menu and whose deeper levels
-are reached by a push.
+Valid panels are listed in the [PanelTypeEnum](lib/features/navigation/panel_type_enum.dart). Each enum entry corresponds to a subclass of [PanelToken](lib/features/navigation/panel_token.dart), which contains a nullable subclass of [TokenParam](lib/features/navigation/token_params/token_param.dart), a class describing the panel's corresponding token param and containing parsing logic for any subpages or extra info the panel needs to render. Each PanelToken also has a corresponding subclass of [PanelDef](lib/features/navigation/token_params/panel_registry.dart), containing details about where and how the panel is rendered.
