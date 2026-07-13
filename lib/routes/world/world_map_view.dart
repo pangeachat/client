@@ -502,6 +502,11 @@ class _WorldMapViewState extends State<WorldMapView> {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
 
+    final attributionsLeft = 0.0;
+    final attributionsBottom = FluffyThemes.isColumnMode(context)
+        ? 0.0
+        : _narrowBottomChromeInset;
+
     // Resolve which pins to draw and each one's tier/state/pinged/fill once per
     // frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
@@ -567,16 +572,26 @@ class _WorldMapViewState extends State<WorldMapView> {
           MarkerLayer(markers: _exitingMarkers()),
           // Large cards (always visible): the featured cards the width affords.
           MarkerLayer(markers: _largeMarkers(render)),
-          Padding(
+          // Make a background, so attributions stand out in dark mode
+          Positioned(
+            left: attributionsLeft + 8,
+            bottom: attributionsBottom + 8,
+            child: Container(
+              height: 32,
+              width: 32,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(130, 135, 135, 135),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Positioned(
             // On a narrow screen the bottom chrome (nav widget + the search bar
             // riding above it) owns the bottom edge, so lift the attribution
             // above it — otherwise it sits unreadable UNDER the floating rail
             // (#7218 on narrow).
-            padding: EdgeInsets.only(
-              bottom: FluffyThemes.isColumnMode(context)
-                  ? 0.0
-                  : _narrowBottomChromeInset,
-            ),
+            left: attributionsLeft,
+            bottom: attributionsBottom,
             child: RichAttributionWidget(
               // #7218: bottom-LEFT so the attribution and its expand popup don't
               // sit under the bottom-right zoom/World controls (where it was
