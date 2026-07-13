@@ -92,14 +92,28 @@ class CourseInvitePageController extends State<CourseInvitePage>
     }
     final spaceId = await completer.future;
     final room = Matrix.of(context).client.getRoomById(spaceId);
-    if (room == null || room.coursePlan == null) {
-      await Matrix.of(context).client.onRoomState.stream
-          .firstWhere((event) {
-            return event.roomId == spaceId &&
-                event.state.type == PangeaEventTypes.coursePlan;
-          })
-          .timeout(const Duration(seconds: 10));
+
+    final roomStateStream = Matrix.of(context).client.onRoomState.stream;
+    final futures = [
+      if (room == null) roomStateStream.firstWhere((e) => e.roomId == spaceId),
+      if (room?.coursePlan == null)
+        roomStateStream.firstWhere(
+          (e) =>
+              e.roomId == spaceId &&
+              e.state.type == PangeaEventTypes.coursePlan,
+        ),
+      if (room?.requireAnalyticsAccess != true)
+        roomStateStream.firstWhere(
+          (e) =>
+              e.roomId == spaceId &&
+              e.state.type == PangeaEventTypes.courseSettings,
+        ),
+    ];
+
+    if (futures.isNotEmpty) {
+      await Future.wait(futures).timeout(const Duration(seconds: 10));
     }
+
     return spaceId;
   }
 
