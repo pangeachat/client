@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:34.841578",
+    "@@last_modified": "2026-07-13 10:07:56.033267",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10849,6 +10849,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasiska",
+    "elDisplayName": "Grekiska",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} av {total} stjärnor tjänade",
     "activityNoLongerSupported": "Denna aktivitet kördes på en äldre version av aktiviteter och stöds inte längre. Du kan fortfarande granska vad som hände under denna session.",
     "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",
@@ -10885,5 +10897,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Stäng lägg till kurs-sidan",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapportera grammatikinformation problem",
+    "grammarFeedbackDialogTitle": "Grammatikinformation Feedback",
+    "grammarFeedbackSubmittedDesc": "Tack! Förklaringen har uppdaterats baserat på din feedback.",
+    "focusOnMap": "Fokusera på kartan",
+    "welcome": "Välkommen",
+    "courseRequest": "Kursförfrågan",
+    "onboarding": "Introduktion",
+    "selectImageFromDevice": "Välj bild från enhet",
+    "dinoAvatarLabel": "En dinosaurie med solglasögon",
+    "bearAvatarLabel": "En vänlig björn",
+    "squidAvatarLabel": "En bläckfisk med hörlurar",
+    "cartoonAvatarLabel": "En glad tecknad karaktär som vinkar",
+    "robotAvatarLabel": "En robot med stjärnor som ögon",
+    "featuresIncludeLabel": "Funktioner inkluderar",
+    "difficultyListLabel": "Svårighetslista",
+    "languageListLabel": "Språklista",
+    "searchedResultsLabel": "Sökresultat för '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:55.953398",
+    "@@last_modified": "2026-07-13 10:08:31.049476",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11385,6 +11385,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonski",
+    "abDisplayName": "Abhazijski",
+    "elDisplayName": "Grčki",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} od {total} zvezda zarađeno",
     "activityNoLongerSupported": "Ova aktivnost je radila na starijoj verziji aktivnosti i više nije podržana. I dalje možete pregledati šta se desilo u ovoj sesiji.",
     "activityLoadFailed": "Nije moguće učitati aktivnost. Proverite svoju vezu i pokušajte ponovo.",
@@ -11421,5 +11433,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Prijavite problem sa informacijama o gramatici",
+    "grammarFeedbackDialogTitle": "Povratne informacije o gramatici",
+    "grammarFeedbackSubmittedDesc": "Hvala! Objašnjenje je ažurirano na osnovu vaših povratnih informacija.",
+    "focusOnMap": "Fokusirajte se na mapu",
+    "welcome": "Dobrodošli",
+    "courseRequest": "Zahtev za kurs",
+    "onboarding": "Uvod",
+    "selectImageFromDevice": "Izaberite sliku sa uređaja",
+    "dinoAvatarLabel": "Dinosaur sa naočarima za sunce",
+    "bearAvatarLabel": "Prijateljski medved",
+    "squidAvatarLabel": "Hobotnica sa slušalicama",
+    "cartoonAvatarLabel": "Srećan crtani lik koji maše",
+    "robotAvatarLabel": "Robot sa zvezdama umesto očiju",
+    "featuresIncludeLabel": "Karakteristike uključuju",
+    "difficultyListLabel": "Lista težina",
+    "languageListLabel": "Lista jezika",
+    "searchedResultsLabel": "Rezultati pretrage za '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

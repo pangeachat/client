@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-08 15:19:54.305209",
+    "@@last_modified": "2026-07-13 10:04:27.855172",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10389,6 +10389,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "észt",
+    "abDisplayName": "abkház",
+    "elDisplayName": "görög",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} a {total} csillag megszerezve",
     "activityNoLongerSupported": "Ez a tevékenység egy régebbi verziójú tevékenységen futott, és már nem támogatott. Még mindig áttekintheti, mi történt ebben az ülésben.",
     "activityLoadFailed": "Nem sikerült betölteni a tevékenységet. Ellenőrizze a kapcsolatát, és próbálja újra.",
@@ -10425,5 +10437,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Tanfolyam hozzáadása oldal bezárása",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Nyelvtani információs probléma jelentése",
+    "grammarFeedbackDialogTitle": "Nyelvtani információ visszajelzés",
+    "grammarFeedbackSubmittedDesc": "Köszönjük! A magyarázat frissítve lett a visszajelzésed alapján.",
+    "focusOnMap": "Fókuszálj a térképre",
+    "welcome": "Üdvözöljük",
+    "courseRequest": "Tanfolyam kérelem",
+    "onboarding": "Bevezetés",
+    "selectImageFromDevice": "Kép kiválasztása az eszközről",
+    "dinoAvatarLabel": "Egy napszemüveges dinoszaurusz",
+    "bearAvatarLabel": "Egy barátságos medve",
+    "squidAvatarLabel": "Fejhallgatót viselő tintahal",
+    "cartoonAvatarLabel": "Egy boldog rajzfilmfigura integet",
+    "robotAvatarLabel": "Egy robot, akinek csillagok a szemei",
+    "featuresIncludeLabel": "A következő jellemzők találhatók",
+    "difficultyListLabel": "Nehézségi lista",
+    "languageListLabel": "Nyelvi lista",
+    "searchedResultsLabel": "'{search}' keresési eredmények",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

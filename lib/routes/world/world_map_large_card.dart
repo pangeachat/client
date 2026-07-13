@@ -22,7 +22,9 @@ typedef LargeCardParticipant = ({Uri? avatar, String name});
 /// participant avatars and open slots) / **joined** (vibrant brand). The star row
 /// shows at every state.
 ///
-/// The full [plan] carries the image and goal total - null while it hydrates
+/// The full [plan] carries the image, goal total, and the learner-L1 title
+/// (the hydration fetch localizes; choreo #2736) - null while it hydrates,
+/// during which [card]'s canonical title is the placeholder.
 /// Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   /// Height of the downward caret that tethers the card to its pin. The marker
@@ -46,10 +48,10 @@ class WorldMapLargeCard extends StatelessWidget {
   /// featuring. See world-map.instructions.md.
   final bool isFocused;
 
-  /// When non-null, the card shows an explicit dismiss (X). The maps-like
-  /// redesign removed the tap-peek card (one tap goes straight to focus), so map
-  /// cards leave this null — auto-featured cards re-rank on pan/zoom and a focused
-  /// card clears with its panel. Kept optional for reuse and widget tests.
+  /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
+  /// activity out of the large tier for the session — it re-renders as a mid pin
+  /// or dot, never leaving the map (#7207). On a focused card the X also clears
+  /// focus (closing the detail panel). Null hides the X (widget-test/reuse knob).
   final VoidCallback? onClose;
 
   const WorldMapLargeCard({
@@ -120,7 +122,7 @@ class WorldMapLargeCard extends StatelessWidget {
       // #Pangea: announce the card as a single "Activity: <title>" button so the
       // screen reader gets context and the title is not double-read (#7185).
       child: Semantics(
-        label: L10n.of(context).activityLabel(card.title),
+        label: L10n.of(context).activityLabel((plan?.title ?? card.title)),
         container: true,
         button: true,
         // The focus ring sits OUTSIDE the card with a small gap (the padding)
@@ -242,8 +244,8 @@ class WorldMapLargeCard extends StatelessWidget {
     if (onClose == null) return cardWithTail;
 
     // The dismiss sits at the card's top-right corner. The Stack keeps it out of
-    // the card's own tap target so tapping the X clears the peek (onClose) rather
-    // than opening the activity (onTap).
+    // the card's own tap target so tapping the X demotes the card (onClose)
+    // rather than opening the activity (onTap).
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -384,7 +386,7 @@ class _Header extends StatelessWidget {
               // exclude the visible text to avoid a double-read (#7185).
               ExcludeSemantics(
                 child: Text(
-                  card.title,
+                  (plan?.title ?? card.title),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(

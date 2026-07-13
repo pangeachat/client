@@ -152,19 +152,26 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
           child: Center(
             child: Column(
               children: [
-                Text(
-                  title,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Semantics(
+                  container: true,
+                  child: Text(
+                    title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 SizedBox(height: 12.0),
-                TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
+                Semantics(
+                  label: L10n.of(context).search,
+                  container: true,
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
                     ),
                   ),
                 ),
@@ -173,106 +180,114 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                   child: ValueListenableBuilder(
                     valueListenable: _searchController,
                     builder: (context, val, _) {
-                      return CustomScrollView(
-                        slivers: [
-                          SliverPadding(
-                            padding: const EdgeInsets.only(
-                              left: 16.0,
-                              right: 16.0,
-                              bottom: 60.0,
-                            ),
-                            sliver: ValueListenableBuilder(
-                              valueListenable: _selectedTargetLanguage,
-                              builder: (context, selected, _) {
-                                final filtered = _languages
-                                    .where(
-                                      (l) => LanguageModel.search(
-                                        l,
-                                        val.text,
-                                        context,
-                                      ),
-                                    )
-                                    .toList();
-                                final flagSize = 56.0;
-                                return SliverGrid(
-                                  delegate: SliverChildBuilderDelegate((
-                                    context,
-                                    index,
-                                  ) {
-                                    final l = filtered[index];
-                                    final isSelected = selected == l;
-                                    final hasSelection = selected != null;
-                                    return Opacity(
-                                      opacity: hasSelection && !isSelected
-                                          ? 0.5
-                                          : 1.0,
-                                      child: SizedBox.expand(
-                                        child: Material(
-                                          color: isSelected
-                                              ? AppConfig.goldLight.withAlpha(
-                                                  100,
-                                                )
-                                              : theme
-                                                    .colorScheme
-                                                    .surfaceContainer,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              16.0,
-                                            ),
-                                            side: isSelected
-                                                ? BorderSide(
-                                                    color: AppConfig.yellowDark
-                                                        .withAlpha(100),
-                                                    width: 4.0,
+                      return Semantics(
+                        label: _searchController.text.isNotEmpty
+                            ? L10n.of(
+                                context,
+                              ).searchedResultsLabel(_searchController.text)
+                            : L10n.of(context).languageListLabel,
+                        container: true,
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverPadding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 60.0,
+                              ),
+                              sliver: ValueListenableBuilder(
+                                valueListenable: _selectedTargetLanguage,
+                                builder: (context, selected, _) {
+                                  final filtered = _languages
+                                      .where(
+                                        (l) => LanguageModel.search(
+                                          l,
+                                          val.text,
+                                          context,
+                                        ),
+                                      )
+                                      .toList();
+                                  final flagSize = 56.0;
+                                  return SliverGrid(
+                                    delegate: SliverChildBuilderDelegate((
+                                      context,
+                                      index,
+                                    ) {
+                                      final l = filtered[index];
+                                      final isSelected = selected == l;
+                                      final hasSelection = selected != null;
+                                      return Opacity(
+                                        opacity: hasSelection && !isSelected
+                                            ? 0.5
+                                            : 1.0,
+                                        child: SizedBox.expand(
+                                          child: Material(
+                                            color: isSelected
+                                                ? AppConfig.goldLight.withAlpha(
+                                                    100,
                                                   )
-                                                : BorderSide(
-                                                    color: theme
-                                                        .colorScheme
-                                                        .surfaceContainerHigh,
-                                                    width: 2.0,
-                                                  ),
-                                          ),
-                                          child: InkWell(
-                                            onTap: () => _setTargetLanguage(
-                                              isSelected ? null : l,
+                                                : theme
+                                                      .colorScheme
+                                                      .surfaceContainer,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16.0),
+                                              side: isSelected
+                                                  ? BorderSide(
+                                                      color: AppConfig
+                                                          .yellowDark
+                                                          .withAlpha(100),
+                                                      width: 4.0,
+                                                    )
+                                                  : BorderSide(
+                                                      color: theme
+                                                          .colorScheme
+                                                          .surfaceContainerHigh,
+                                                      width: 2.0,
+                                                    ),
                                             ),
-                                            borderRadius: BorderRadius.circular(
-                                              16.0,
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 12.0,
-                                                    horizontal: 8.0,
-                                                  ),
-                                              child:
-                                                  LanguageDisplayNamePrefixWidget(
-                                                    l,
-                                                    style: textStyle,
-                                                    iconSize: flagSize,
-                                                  ),
+                                            child: InkWell(
+                                              onTap: () => _setTargetLanguage(
+                                                isSelected ? null : l,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(16.0),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      vertical: 12.0,
+                                                      horizontal: 8.0,
+                                                    ),
+                                                child:
+                                                    LanguageDisplayNamePrefixWidget(
+                                                      l,
+                                                      style: textStyle,
+                                                      iconSize: flagSize,
+                                                    ),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  }, childCount: filtered.length),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithMaxCrossAxisExtent(
-                                        maxCrossAxisExtent: 180.0,
-                                        mainAxisSpacing: 12.0,
-                                        crossAxisSpacing: 12.0,
-                                        childAspectRatio: 1.1,
-                                      ),
-                                );
-                              },
+                                      );
+                                    }, childCount: filtered.length),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent: 180.0,
+                                          mainAxisSpacing: 12.0,
+                                          crossAxisSpacing: 12.0,
+                                          childAspectRatio: 1.1,
+                                        ),
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       );
                     },
                   ),
                 ),
+
                 ListenableBuilder(
                   listenable: Listenable.merge([
                     _selectedBaseLanguage,

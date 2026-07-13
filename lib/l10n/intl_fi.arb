@@ -3912,7 +3912,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-08 15:19:49.243878",
+    "@@last_modified": "2026-07-13 10:04:17.126223",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10311,6 +10311,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Viron",
+    "abDisplayName": "Abhaasian",
+    "elDisplayName": "Kreikka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} {total} tähteä ansaittu",
     "activityNoLongerSupported": "Tätä toimintoa ei enää tueta, koska se toimi vanhemmassa versiossa. Voit silti tarkastella, mitä tässä istunnossa tapahtui.",
     "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
@@ -10347,5 +10359,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Sulje kurssin lisäämis sivu",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Ilmoita kielioppitietojen ongelmasta",
+    "grammarFeedbackDialogTitle": "Kielioppitietojen palaute",
+    "grammarFeedbackSubmittedDesc": "Kiitos! Selitys on päivitetty palautteesi perusteella.",
+    "focusOnMap": "Keskity karttaan",
+    "welcome": "Tervetuloa",
+    "courseRequest": "Kurssipyyntö",
+    "onboarding": "Aloitus",
+    "selectImageFromDevice": "Valitse kuva laitteelta",
+    "dinoAvatarLabel": "Aurinkolasillinen dinosaurus",
+    "bearAvatarLabel": "Ystävällinen karhu",
+    "squidAvatarLabel": "Kampela, jolla on kuulokkeet",
+    "cartoonAvatarLabel": "Onnellinen sarjakuvahahmo, joka heiluttaa",
+    "robotAvatarLabel": "Robotti, jolla on tähdet silmin",
+    "featuresIncludeLabel": "Ominaisuudet sisältävät",
+    "difficultyListLabel": "Vaikeuslista",
+    "languageListLabel": "Kielilista",
+    "searchedResultsLabel": "Hakutulokset hakusanalle '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

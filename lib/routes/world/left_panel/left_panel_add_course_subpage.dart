@@ -25,7 +25,7 @@ import 'package:fluffychat/routes/world/panel_header.dart';
 /// hosted page carries its own header/close; the deeper steps
 /// (`/courses/own/:courseid` …) stay route-driven detail.
 class LeftPanelAddCourseSubpage extends StatelessWidget {
-  final AddCourseTokenParam? param;
+  final AddCoursePageTokenParam? param;
   final Widget closeButton;
   final Completer<String>? courseCreationCompleter;
 
@@ -38,37 +38,51 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    switch (param?.subpage) {
-      case 'browse':
-        final roomId = param?.roomId;
+    final param = this.param;
+    if (param == null) {
+      return Column(
+        children: [
+          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
+          Expanded(child: LeftPanelCoursesListView()),
+        ],
+      );
+    }
+
+    switch (param.subpage) {
+      case AddCourseSubpageEnum.browse:
+        final roomId = param.previewRoomId;
         if (roomId != null) {
-          return PublicCoursePreview(roomID: roomId);
+          return PublicCoursePreview(roomID: roomId, closeButton: closeButton);
         }
-        return const FindCoursePage();
-      case 'private':
-        return CourseCodePage(initialCode: param?.joinCode);
-      case 'own':
-        final courseId = param?.courseId;
+        return FindCoursePage(
+          closeButton: closeButton,
+          initialLanguageCode: param.initialLanguageFilter,
+        );
+      case AddCourseSubpageEnum.private:
+        return CourseCodePage(
+          initialCode: param.privateCourseJoinCode,
+          closeButton: closeButton,
+        );
+      case AddCourseSubpageEnum.own:
+        final courseId = param.createCourseId;
         if (courseId != null) {
-          if (param?.invite == true) {
+          if (param.showNewCourseInvitePage == true) {
             return CourseInvitePage(
               courseId,
               courseCreationCompleter: courseCreationCompleter,
             );
           }
-          return SelectedCourse(courseId, SelectedCourseMode.launch);
+          return SelectedCourse(
+            courseId,
+            SelectedCourseMode.launch,
+            closeButton: closeButton,
+          );
         }
         return NewCoursePage(
           route: 'rooms',
-          initialLanguageCode: param?.targetLanguage,
-          showAll: param?.targetLanguage == 'all',
-        );
-      default:
-        return Column(
-          children: [
-            PanelHeader(leading: closeButton, title: L10n.of(context).courses),
-            Expanded(child: LeftPanelCoursesListView()),
-          ],
+          initialLanguageCode: param.initialLanguageFilter,
+          showAll: param.initialLanguageFilter == 'all',
+          closeButton: closeButton,
         );
     }
   }

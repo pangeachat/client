@@ -3,12 +3,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// The token-grammar encoding contract (routing.instructions.md): params carry
 /// open-ended, all-language content; every value round-trips the URL
@@ -65,8 +67,7 @@ void main() {
           type: ConstructTypeEnum.vocab,
           category: 'adj',
         );
-        final token = PanelToken(
-          'vocab',
+        final token = VocabAnalyticsPanelToken(
           VocabAnalyticsTokenParam.parse(construct.toTokenParam()),
         );
         // Through the list grammar and back — a comma inside a lemma can never
@@ -74,7 +75,7 @@ void main() {
         final uri = u('/?right=analytics:vocab,${token.encode()}');
         final parsed = parseOpenPanels(uri).right;
         expect(parsed.length, 2, reason: 'list shattered for "$lemma"');
-        final vocab = parsed.firstWhere((t) => t.type == 'vocab');
+        final vocab = parsed.firstWhere((t) => t.type == PanelTypesEnum.vocab);
         final back = ConstructIdentifier.fromTokenParam(
           ConstructTypeEnum.vocab,
           vocab.param!.build(),
@@ -110,7 +111,7 @@ void main() {
       final right = parseOpenPanels(
         u('/?right=analytics:vocab,vocab:%252'),
       ).right;
-      expect(right.any((t) => t.type == 'analytics'), isTrue);
+      expect(right.any((t) => t.type == PanelTypesEnum.analytics), isTrue);
     });
 
     test('fromTokenParam degrades a malformed field without throwing; an '
@@ -197,13 +198,13 @@ void main() {
         final param = RoomTokenParam(
           id: '!abc',
           subpage: 'invite',
-          filter: 'knocking',
+          filter: InvitationFilter.knocking,
         ).build();
         expect(param, '!abc/invite/knocking');
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.id, '!abc');
         expect(parsed.subpage, 'invite');
-        expect(parsed.filter, 'knocking');
+        expect(parsed.filter, InvitationFilter.knocking);
         expect(parsed.eventId, isNull);
       });
 
@@ -225,13 +226,13 @@ void main() {
           final param = RoomTokenParam(
             id: '!abc',
             subpage: 'details/invite',
-            filter: 'participants',
+            filter: InvitationFilter.participants,
           ).build();
           expect(param, '!abc/details/invite/participants');
           final parsed = RoomTokenParam.parse(param);
           expect(parsed.id, '!abc');
           expect(parsed.subpage, 'details/invite');
-          expect(parsed.filter, 'participants');
+          expect(parsed.filter, InvitationFilter.participants);
         },
       );
 
@@ -256,23 +257,6 @@ void main() {
         final parsed = RoomTokenParam.parse(param);
         expect(parsed.subpage, isNull);
         expect(parsed.eventId, r'$xyz');
-      });
-
-      test('a hostile filter value round-trips (comma, colon, dot, space)', () {
-        const hostileFilters = ['a,b:c/d', 'a.b.c', 'ir de compras'];
-        for (final filter in hostileFilters) {
-          final param = RoomTokenParam(
-            id: '!abc',
-            subpage: 'invite',
-            filter: filter,
-          ).build();
-          final parsed = RoomTokenParam.parse(param);
-          expect(
-            parsed.filter,
-            filter,
-            reason: 'filter round-trip failed for "$filter"',
-          );
-        }
       });
 
       test(
@@ -314,22 +298,22 @@ void main() {
   });
 
   group('WorkspaceNav.openActivity / dropActivityOverlay', () {
-    test(
-      'openActivity keeps the context by default and seats a sole token',
-      () {
-        final loc = WorkspaceNav.openActivity(
-          u('/?c=!s&left=course&right=analytics:vocab'),
-          'act-1',
-          roomId: '!sess',
-        );
-        final uri = u(loc);
-        expect(activeSpaceIdFor(uri), '!s');
-        expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
-        expect(parseOpenPanels(uri).right.map((t) => t.type), ['analytics']);
-        expect(activityInfoFor(uri)?.roomId, '!sess');
-        expect(uri.queryParameters['roomid'], isNull);
-      },
-    );
+    test('openActivity opens a room panel when roomId is provided', () {
+      final loc = WorkspaceNav.openActivity(
+        u('/?c=!s&left=course&right=analytics:vocab'),
+        'act-1',
+        roomId: '!sess',
+      );
+      final uri = u(loc);
+      expect(activeSpaceIdFor(uri), '!s');
+      expect(parseOpenPanels(uri).left, [
+        RoomPanelToken(RoomTokenParam(id: '!sess')),
+      ]);
+      expect(parseOpenPanels(uri).right.map((t) => t.type), [
+        PanelTypesEnum.analytics,
+      ]);
+      expect(uri.queryParameters['roomid'], isNull);
+    });
 
     test('a world-map pin (no context) opens with none, so it closes to the '
         'map', () {
@@ -338,7 +322,9 @@ void main() {
       final loc = WorkspaceNav.openActivity(u('/?left=chats'), 'act-1');
       final uri = u(loc);
       expect(activeSpaceIdFor(uri), isNull);
-      expect(parseOpenPanels(uri).left.map((t) => t.type), ['activity']);
+      expect(parseOpenPanels(uri).left.map((t) => t.type), [
+        PanelTypesEnum.activity,
+      ]);
     });
 
     test('dropActivityOverlay keeps the context; reopenCourseCard reseats the '
@@ -350,7 +336,9 @@ void main() {
       final backToCard = u(
         WorkspaceNav.dropActivityOverlay(open, reopenCourseCard: true),
       );
-      expect(parseOpenPanels(backToCard).left.map((t) => t.type), ['course']);
+      expect(parseOpenPanels(backToCard).left.map((t) => t.type), [
+        PanelTypesEnum.course,
+      ]);
     });
   });
 }

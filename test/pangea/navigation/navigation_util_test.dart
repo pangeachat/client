@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -54,12 +55,12 @@ void main() {
       () {
         final loc = WorkspaceNav.openExclusiveLeftRoom(
           NavigationUtil.stripActivityOverlay(u('/$activityId')),
-          PanelToken('room', RoomTokenParam.parse('!abc')),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         );
         final result = u(loc);
         expect(result.pathSegments, isEmpty, reason: 'no `/<uuid>` plan path');
         expect(parseOpenPanels(result).left, [
-          PanelToken('room', RoomTokenParam.parse('!abc')),
+          RoomPanelToken(RoomTokenParam.parse('!abc')),
         ]);
       },
     );
@@ -69,15 +70,15 @@ void main() {
         NavigationUtil.stripActivityOverlay(
           u('/?c=!s&left=course,activity:$activityId.l'),
         ),
-        PanelToken('room', RoomTokenParam.parse('!abc')),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       );
       final result = u(loc);
       expect(result.path, '/');
       expect(result.query.contains('activity'), isFalse);
       expect(result.query.contains('c=!s'), isTrue);
       expect(parseOpenPanels(result).left, [
-        const PanelToken('course'),
-        PanelToken('room', RoomTokenParam.parse('!abc')),
+        const CoursePanelToken(),
+        RoomPanelToken(RoomTokenParam.parse('!abc')),
       ]);
     });
   });
@@ -91,21 +92,24 @@ void main() {
   /// is one the renderer actually handles.
   group('coursePageFor (room-style subroute → course page)', () {
     test('details/<page> drops the room-only `details` segment', () {
-      expect(NavigationUtil.coursePageFor('details/invite'), 'invite');
+      expect(
+        NavigationUtil.coursePageFor('details/invite'),
+        RoomSubpageEnum.invite,
+      );
       expect(
         NavigationUtil.coursePageFor('details/permissions'),
-        'permissions',
+        RoomSubpageEnum.permissions,
       );
     });
 
-    test('bare `details` maps to the card (empty page)', () {
-      expect(NavigationUtil.coursePageFor('details'), '');
+    test('bare `details` maps to null room subpage', () {
+      expect(NavigationUtil.coursePageFor('details'), null);
     });
 
     test('an already-bare course page passes through unchanged', () {
-      expect(NavigationUtil.coursePageFor('invite'), 'invite');
-      expect(NavigationUtil.coursePageFor('edit'), 'edit');
-      expect(NavigationUtil.coursePageFor(''), '');
+      expect(NavigationUtil.coursePageFor('invite'), RoomSubpageEnum.invite);
+      expect(NavigationUtil.coursePageFor('edit'), RoomSubpageEnum.edit);
+      expect(NavigationUtil.coursePageFor(''), null);
     });
 
     test(
@@ -119,11 +123,11 @@ void main() {
         );
         final coursepage = parseOpenPanels(
           u(loc),
-        ).left.where((t) => t.type == 'coursepage').single;
+        ).left.where((t) => t.type == PanelTypesEnum.coursepage).single;
         // The renderable token — NOT the blank `coursepage:details/invite`.
         expect(
           coursepage,
-          PanelToken('coursepage', RoomSubpageTokenParam.parse('invite')),
+          CoursePagePanelToken(RoomSubpageTokenParam.parse('invite')),
         );
       },
     );

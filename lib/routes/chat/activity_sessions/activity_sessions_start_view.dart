@@ -5,11 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -20,43 +19,15 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The location that closes a non-embedded activity plan opened as a room/
-/// session token (the chat list / a left panel): it drops ONLY that token, so
-/// the rest of the workspace — notably the chat list — survives. Closing an
-/// activity (e.g. one stuck on an "activity not found" error) must not also
-/// clear the chat list (#7156). Returns null when no such token is open — the
-/// standalone `/<activityId>` route — so the caller pops or falls back to home.
-@visibleForTesting
-String? activityRoomCloseLocation(Uri uri, String? roomId) {
-  if (roomId == null || roomId.isEmpty) return null;
-
-  bool matches(PanelToken t) {
-    if (t.type != 'room' && t.type != 'session') {
-      return false;
-    }
-
-    final param = t.param;
-    if (param == null || param is! RoomTokenParam) return false;
-    return shortRoomId(param.id) == shortRoomId(roomId);
-  }
-
-  final panels = parseOpenPanels(uri);
-
-  for (final t in panels.left) {
-    if (matches(t)) return WorkspaceNav.closeLeft(uri, t);
-  }
-
-  for (final t in panels.right) {
-    if (matches(t)) return WorkspaceNav.closeRight(uri, t);
-  }
-
-  return null;
-}
+// The close-only-this-room-token location moved to the navigation layer
+// (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
+// (#7561); the activity plan's close (#7156) reads it from there.
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -98,7 +69,7 @@ class ActivitySessionStartView extends StatelessWidget {
         final uri = GoRouter.of(context).routeInformationProvider.value.uri;
         final embedded = parseOpenPanels(
           uri,
-        ).left.any((t) => t.type == 'activity');
+        ).left.any((t) => t.type == PanelTypesEnum.activity);
         final courseScoped = activeSpaceIdFor(uri) != null;
 
         return Scaffold(
@@ -155,7 +126,7 @@ class ActivitySessionStartView extends StatelessWidget {
                         tooltip: L10n.of(context).close,
                         icon: const Icon(Icons.close),
                         onPressed: () {
-                          final close = activityRoomCloseLocation(
+                          final close = roomTokenCloseLocation(
                             uri,
                             controller.widget.roomId,
                           );
@@ -171,6 +142,13 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
+              // The one camera path that zooms (#7616): selection only pans,
+              // so this button zoom+pans the map to the activity's pin.
+              IconButton(
+                tooltip: L10n.of(context).focusOnMap,
+                icon: const Icon(Icons.filter_center_focus),
+                onPressed: MapCameraFocusRequests.request,
+              ),
               IconButton(
                 tooltip: L10n.of(context).feedbackButton,
                 icon: const Icon(Icons.flag_outlined),

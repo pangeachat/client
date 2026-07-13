@@ -121,26 +121,6 @@ abstract class PanelAllocator {
     PanelSlot hidden() =>
         const PanelSlot(left: 0, width: 0, vis: PanelVis.hidden);
 
-    // ---- exclusive: one panel holds the whole content area ------------------
-    final exclusive = all.where((e) => e.def.exclusive).toList()
-      ..sort((a, b) => b.def.priority.compareTo(a.def.priority));
-    if (exclusive.isNotEmpty) {
-      final winner = exclusive.first;
-      final rail = isColumnMode ? railWidth : 0.0;
-      final width = math.max(0.0, viewport - rail);
-      return _build(
-        left,
-        right,
-        rail,
-        clusterVisible: false,
-        mapLeftOverlay: viewport,
-        mapRightOverlay: 0,
-        slot: (e) => e == winner
-            ? PanelSlot(left: rail, width: width, vis: PanelVis.full)
-            : hidden(),
-      );
-    }
-
     // ---- narrow: seat ONE panel — the **most-recently-opened** one ([focusHint],
     // the back-stack top) so opening a panel always brings it forward, per
     // Material 3 / Flutter adaptive guidance. When there is no recency to consult

@@ -17,6 +17,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
+import 'package:fluffychat/routes/world/world_map_dismissals.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -123,6 +124,30 @@ class WorldMapController extends State<WorldMap>
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
 
+  /// Activities the learner explicitly dismissed from the large-card tier (the
+  /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
+  /// X demotes, it never removes — and without this memory the very next
+  /// re-rank would just re-promote the card. Dismissals lapse after
+  /// [WorldMapDismissals.ttl] so an X is never a permanent burial (#7245).
+  final WorldMapDismissals _dismissals = WorldMapDismissals();
+
+  /// Re-ranks the pins the moment the earliest dismissal lapses, so a card can
+  /// return on an otherwise idle map (no pan/zoom/sync to trigger a rebuild).
+  Timer? _dismissalExpiryTimer;
+
+  /// Read by the view's tier pass and ranking: these ids never render large
+  /// and carry the `dismissed` score penalty while their TTL runs.
+  Set<String> get dismissedLargeIds => _dismissals.activeIds(DateTime.now());
+
+  /// True while the camera's zoom is actively changing (a pinch, scroll-wheel,
+  /// double-tap, or programmatic glide). The view empties the large tier for
+  /// the duration so cards never slide around mid-gesture or block the target
+  /// of a zoom; at settle the re-rank re-derives whatever tops the priority
+  /// matrix at the new camera (#7245). Pure pans don't trip this — only zoom.
+  bool get isActivelyZooming => _zoomSettleTimer?.isActive ?? false;
+  Timer? _zoomSettleTimer;
+  double? _lastSeenZoom;
+
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
@@ -137,6 +162,7 @@ class WorldMapController extends State<WorldMap>
     _loadForContext();
 
     MapContextController.notifier.addListener(_onContextChange);
+    MapCameraFocusRequests.notifier.addListener(_onCameraFocusRequest);
 
     // Rebuild when a featured large card's full plan hydrates (image + goals).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
@@ -227,8 +253,11 @@ class WorldMapController extends State<WorldMap>
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
+    _dismissalExpiryTimer?.cancel();
+    _zoomSettleTimer?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
+    MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
@@ -527,50 +556,121 @@ class WorldMapController extends State<WorldMap>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       try {
-        // Inset the left edge by the overlay so content lands in the uncovered
-        // area to the right of the column/panel, not behind it.
-        final padding = EdgeInsets.fromLTRB(
-          widget.leftOverlayWidth + 64.0,
-          64.0,
-          widget.rightOverlayWidth + 64.0,
-          64.0,
-        );
-
-        // A specific focus target is zoomed IN on within the exposed canvas:
-        // opening an activity glides the camera down to its pin at a close
-        // (neighborhood/building) zoom, never zooming out past where we already
-        // are. Today that is an activity; new focus kinds resolve in
-        // [_focusPoint].
+        // A specific focus target PANS into the exposed canvas at the current
+        // zoom — a pure glide, no zoom change in either direction (#7496: the
+        // zoom-to-16 jump was disorienting). The single-point fit resolves the
+        // center within the padded area; capping maxZoom at the current zoom
+        // pins the zoom in place. Today that is an activity; new focus kinds
+        // resolve in [_focusPoint].
         final point = _pinsManager.focusPoint(widget.focus);
         if (point != null) {
           _animateFit(
             CameraFit.coordinates(
               coordinates: [point],
-              padding: padding,
-              maxZoom: mapController.camera.zoom > WorldMapConstants.focusZoom
-                  ? mapController.camera.zoom
-                  : WorldMapConstants.focusZoom,
+              padding: _exposedCanvasPadding,
+              maxZoom: mapController.camera.zoom,
             ),
           );
           return;
         }
 
-        // Otherwise a course context fits all of its activities.
+        // A course context likewise PANS at the current zoom — to the course's
+        // HIGHEST-PRIORITY pin, not its bounds center: the centroid of
+        // scattered activities usually has no pin on it, so centering it read
+        // as panning to nowhere (#7616). The zoomful whole-course fit lives on
+        // the explicit focus button ([_onCameraFocusRequest]).
         if (MapContextController.notifier.value is! CourseMapContext) return;
 
-        final points = _pinsManager.focusPoints;
-        if (points.isEmpty) return;
+        final target = _topRankedCoursePoint();
+        if (target == null) return;
         _animateFit(
-          CameraFit.bounds(
-            bounds: LatLngBounds.fromPoints(points),
-            padding: padding,
-            maxZoom: 12.0,
+          CameraFit.coordinates(
+            coordinates: [target],
+            padding: _exposedCanvasPadding,
+            maxZoom: mapController.camera.zoom,
           ),
         );
       } catch (_) {
         // Controller/camera not ready yet; the next change will refit.
       }
     });
+  }
+
+  /// Inset the left/right edges by the overlays so camera targets land in the
+  /// uncovered map area beside the column/panel, not behind it.
+  EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
+    widget.leftOverlayWidth + 64.0,
+    64.0,
+    widget.rightOverlayWidth + 64.0,
+    64.0,
+  );
+
+  /// The coordinate of the course scope's highest-priority pin — scored by the
+  /// SAME priority matrix the tier pass uses ([rankPins]), but over ALL the
+  /// course's placed pins rather than the viewport (the point is to bring the
+  /// top of the matrix INTO view). Null while the course's pins haven't
+  /// loaded. See world-map.instructions.md ("Priority matrix").
+  LatLng? _topRankedCoursePoint() {
+    final pins = _pinsManager.filteredPins((c) => c.point != null);
+    if (pins.isEmpty) return null;
+    final user = MatrixState.pangeaController.userController;
+    final ranking = rankPins(
+      inViewPins: pins,
+      userL2: user.userL2Code,
+      userCefr: user.userCefrLevel,
+      progression: progression,
+      signals: signals,
+      // Ordered only — budgets sized so truncation can't drop candidates.
+      largeBudget: pins.length,
+      midBudget: 0,
+      smallBudget: 0,
+      progressedIds: progressedActivityIds,
+      isNewLearner: isNewLearner,
+      dismissedIds: dismissedLargeIds,
+    );
+    final topId = ranking.ordered.firstOrNull;
+    if (topId == null) return null;
+    for (final pin in pins) {
+      if (pin.activityId == topId) return pin.point;
+    }
+    return null;
+  }
+
+  /// The focus button (#7616) — the ONE camera path that zooms. A focused
+  /// activity glides in to [WorldMapConstants.focusZoom] (never zooming out
+  /// past the current view); a course context zoom+pan-fits all its
+  /// activities' bounds. Fired via [MapCameraFocusRequests] from the activity
+  /// plan page and the course card header.
+  void _onCameraFocusRequest() {
+    if (!mounted) return;
+    try {
+      final point = _pinsManager.focusPoint(widget.focus);
+      if (point != null) {
+        _animateFit(
+          CameraFit.coordinates(
+            coordinates: [point],
+            padding: _exposedCanvasPadding,
+            maxZoom: mapController.camera.zoom > WorldMapConstants.focusZoom
+                ? mapController.camera.zoom
+                : WorldMapConstants.focusZoom,
+          ),
+        );
+        return;
+      }
+
+      if (MapContextController.notifier.value is! CourseMapContext) return;
+      final points = _pinsManager.focusPoints;
+      if (points.isEmpty) return;
+      _animateFit(
+        CameraFit.bounds(
+          bounds: LatLngBounds.fromPoints(points),
+          padding: _exposedCanvasPadding,
+          maxZoom: WorldMapConstants.courseFitMaxZoom,
+        ),
+      );
+    } catch (_) {
+      // Controller/camera not ready yet; the button can simply be pressed again.
+    }
   }
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
@@ -628,9 +728,36 @@ class WorldMapController extends State<WorldMap>
   /// viewport (debounced); course pins are context-bound. Focus is unaffected by
   /// pan/zoom — it persists until the panel closes (world-map.instructions.md).
   void onMapPositionChanged(bool hasGesture) {
+    _trackZoomActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+  }
+
+  /// Flags [isActivelyZooming] while the camera's zoom is changing, clearing it
+  /// one settle interval after the last change — at which point the rebuild
+  /// re-derives the large tier for the new camera (#7245). Compares zoom
+  /// values, so pure pans never hide the cards. Applies in every map context
+  /// (world and course), unlike the world-only re-fetch above.
+  void _trackZoomActivity() {
+    final double zoom;
+    try {
+      zoom = mapController.camera.zoom;
+    } catch (_) {
+      return; // Camera not laid out yet.
+    }
+    final last = _lastSeenZoom;
+    _lastSeenZoom = zoom;
+    if (last == null ||
+        (zoom - last).abs() < WorldMapConstants.zoomChangeEpsilon) {
+      return;
+    }
+    final wasZooming = isActivelyZooming;
+    _zoomSettleTimer?.cancel();
+    _zoomSettleTimer = Timer(WorldMapConstants.zoomSettle, () {
+      if (mounted) setState(() {});
+    });
+    if (!wasZooming && mounted) setState(() {});
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays
@@ -649,6 +776,34 @@ class WorldMapController extends State<WorldMap>
     context.go(
       WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
     );
+  }
+
+  /// The large card's X (#7207): demote this activity out of the large tier
+  /// for [WorldMapDismissals.ttl] — it re-renders at whatever lighter tier it
+  /// earns (mid where eligible, else a dot), never disappearing from the map,
+  /// and returns to large contention when the TTL lapses (#7245). If the
+  /// dismissed card is the focused one, the X also clears focus (drops the
+  /// activity panel token, same as the panel's own close) so an open panel never
+  /// points at a non-large pin.
+  void dismissLargeCard(QuestActivityCard card) {
+    setState(() => _dismissals.dismiss(card.activityId, DateTime.now()));
+    _armDismissalExpiryTimer();
+    if (focusedActivityId == card.activityId) {
+      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+      context.go(WorkspaceNav.dropActivityOverlay(uri));
+    }
+  }
+
+  /// Re-rank when the earliest dismissal lapses; re-armed then for the next
+  /// one, so each expiry surfaces its card even on an idle map.
+  void _armDismissalExpiryTimer() {
+    _dismissalExpiryTimer?.cancel();
+    final expiry = _dismissals.nextExpiry(DateTime.now());
+    if (expiry == null) return;
+    _dismissalExpiryTimer = Timer(expiry.difference(DateTime.now()), () {
+      if (mounted) setState(() {});
+      _armDismissalExpiryTimer();
+    });
   }
 
   @override

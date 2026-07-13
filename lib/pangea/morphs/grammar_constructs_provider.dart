@@ -4,6 +4,7 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/morphs/grammar_meaning_feedback_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -125,6 +126,56 @@ class GrammarConstructsProvider {
 
     final updatedFeatures = List<GrammarFeature>.from(features);
     updatedFeatures[featureIndex] = updatedFeature;
+
+    final updatedConstructs = constructs.copyWith(features: updatedFeatures);
+    await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
+    MorphFeaturesAndTags.clearLookupCache();
+  }
+
+  /// Flag a grammar meaning (#6839): send the user's feedback to the
+  /// choreographer, which regenerates the feature's meaning bundle in
+  /// place and returns it (choreo #2548). The regenerated titles and
+  /// descriptions are merged into the cached joined response by value
+  /// (canonical-only fields — display, example, sequence — are untouched).
+  static Future<void> submitTagFeedback({
+    required String feature,
+    required String feedback,
+  }) async {
+    final request = _request;
+    final regen = await GrammarMeaningFeedbackRepo.submitFeedback(
+      feature: feature,
+      targetLanguage: request.targetLanguage,
+      userL1: request.userL1,
+      feedback: feedback,
+    );
+
+    final constructsResult = await GrammarConstructsRepo.instance.get(request);
+    final constructs = constructsResult.result;
+    if (constructs == null) {
+      Logs().w("Failed to fetch grammar constructs in submitTagFeedback");
+      return;
+    }
+
+    final features = constructs.features;
+    final featureIndex = features.indexWhere((f) => f.value == feature);
+    if (featureIndex == -1) {
+      Logs().w("Feature $feature not found in submitTagFeedback");
+      return;
+    }
+
+    final currentFeature = features[featureIndex];
+    final updatesByValue = {for (final v in regen.values) v.value: v};
+    final updatedTags = currentFeature.tags.map((tag) {
+      final update = updatesByValue[tag.value];
+      if (update == null) return tag;
+      return tag.copyWith(title: update.title, description: update.description);
+    }).toList();
+
+    final updatedFeatures = List<GrammarFeature>.from(features);
+    updatedFeatures[featureIndex] = currentFeature.copyWith(
+      title: regen.featureTitle,
+      tags: updatedTags,
+    );
 
     final updatedConstructs = constructs.copyWith(features: updatedFeatures);
     await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);

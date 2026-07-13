@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-08 15:21:21.932006",
+    "@@last_modified": "2026-07-13 10:07:31.143106",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "爱沙尼亚语",
+    "abDisplayName": "阿布哈兹语",
+    "elDisplayName": "希腊语",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} 的 {total} 星星已获得",
     "activityNoLongerSupported": "此活动运行在旧版本的活动上，现已不再支持。您仍然可以查看此会话中发生的事情。",
     "activityLoadFailed": "无法加载活动。请检查您的连接并重试。",
@@ -10298,5 +10310,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "关闭添加课程页面",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "报告语法信息问题",
+    "grammarFeedbackDialogTitle": "语法信息反馈",
+    "grammarFeedbackSubmittedDesc": "谢谢！根据您的反馈，解释已更新。",
+    "focusOnMap": "聚焦地图",
+    "welcome": "欢迎",
+    "courseRequest": "课程请求",
+    "onboarding": "入职培训",
+    "selectImageFromDevice": "从设备选择图像",
+    "dinoAvatarLabel": "一只戴着太阳镜的恐龙",
+    "bearAvatarLabel": "一只友好的熊",
+    "squidAvatarLabel": "一个戴着耳机的鱿鱼",
+    "cartoonAvatarLabel": "一个快乐的卡通角色在挥手",
+    "robotAvatarLabel": "一个眼睛里有星星的机器人",
+    "featuresIncludeLabel": "功能包括",
+    "difficultyListLabel": "难度列表",
+    "languageListLabel": "语言列表",
+    "searchedResultsLabel": "搜索结果为 '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

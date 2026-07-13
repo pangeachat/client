@@ -1,6 +1,6 @@
 import 'package:fluffychat/features/navigation/token_fields.dart';
-import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 
 /// The `room:` (and `session:`) panel token's structured param.
 ///
@@ -22,7 +22,7 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 class RoomTokenParam extends TokenParam {
   final String id;
   final String? subpage;
-  final String? filter;
+  final InvitationFilter? filter;
   final String? eventId;
 
   const RoomTokenParam({
@@ -36,14 +36,7 @@ class RoomTokenParam extends TokenParam {
   bool get isPushed => subpage != null;
 
   @override
-  TokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
-
-  RoomSubpageTokenParam? toSubpageToken() {
-    final subpage = this.subpage;
-    return subpage != null
-        ? RoomSubpageTokenParam(subpage: subpage, filter: filter)
-        : null;
-  }
+  RoomTokenParam? get poppedParam => isPushed ? RoomTokenParam(id: id) : null;
 
   /// Build a `room:`/`session:` param. At most one of [subpage] / [eventId] is
   /// meaningful at a time — a jump-to-message has no sub-page of its own, so
@@ -64,8 +57,8 @@ class RoomTokenParam extends TokenParam {
     // back. Ignore it elsewhere rather than emit a lossy token.
     final filter = this.filter;
     final allowsFilter = subPage == 'invite' || subPage == 'details/invite';
-    final withFilter = allowsFilter && filter != null && filter.isNotEmpty
-        ? '$subPage/${TokenFields.encode(filter)}'
+    final withFilter = allowsFilter && filter != null
+        ? '$subPage/${TokenFields.encode(filter.name)}'
         : subPage;
 
     return '$id/$withFilter';
@@ -102,7 +95,7 @@ class RoomTokenParam extends TokenParam {
       return RoomTokenParam(
         id: id,
         subpage: 'invite',
-        filter: TokenFields.decode(parts[1]),
+        filter: InvitationFilter.fromString(TokenFields.decode(parts[1])),
         eventId: null,
       );
     }
@@ -110,7 +103,7 @@ class RoomTokenParam extends TokenParam {
       return RoomTokenParam(
         id: id,
         subpage: 'details/invite',
-        filter: TokenFields.decode(parts[2]),
+        filter: InvitationFilter.fromString(TokenFields.decode(parts[2])),
         eventId: null,
       );
     }

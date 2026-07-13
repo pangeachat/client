@@ -8,7 +8,7 @@ class SettingsTokenParam extends TokenParam {
   bool get isPushed => subpage.contains('/');
 
   @override
-  TokenParam? get poppedParam => isPushed
+  SettingsTokenParam? get poppedParam => isPushed
       ? SettingsTokenParam(
           subpage: subpage.substring(0, subpage.lastIndexOf('/')),
         )

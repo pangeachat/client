@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-08 15:22:01.052363",
+    "@@last_modified": "2026-07-13 10:08:40.245484",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10659,6 +10659,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonien",
+    "abDisplayName": "Abkhaze",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} sur {total} étoiles gagnées",
     "activityNoLongerSupported": "Cette activité s'est déroulée sur une version plus ancienne des activités et n'est plus prise en charge. Vous pouvez toujours consulter ce qui s'est passé lors de cette session.",
     "activityLoadFailed": "Impossible de charger l'activité. Vérifiez votre connexion et réessayez.",
@@ -10695,5 +10707,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Fermer la page d'ajout de cours",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Signaler un problème d'information grammaticale",
+    "grammarFeedbackDialogTitle": "Retour d'information sur la grammaire",
+    "grammarFeedbackSubmittedDesc": "Merci ! L'explication a été mise à jour en fonction de vos commentaires.",
+    "focusOnMap": "Se concentrer sur la carte",
+    "welcome": "Bienvenue",
+    "courseRequest": "Demande de cours",
+    "onboarding": "Intégration",
+    "selectImageFromDevice": "Sélectionner une image depuis l'appareil",
+    "dinoAvatarLabel": "Un dinosaure avec des lunettes de soleil",
+    "bearAvatarLabel": "Un ours amical",
+    "squidAvatarLabel": "Un calmar portant des écouteurs",
+    "cartoonAvatarLabel": "Un personnage de dessin animé heureux faisant un signe",
+    "robotAvatarLabel": "Un robot avec des étoiles pour yeux",
+    "featuresIncludeLabel": "Les fonctionnalités incluent",
+    "difficultyListLabel": "Liste de difficulté",
+    "languageListLabel": "Liste de langues",
+    "searchedResultsLabel": "Résultats de recherche pour '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

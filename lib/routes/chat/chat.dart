@@ -40,6 +40,7 @@ import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -396,8 +397,23 @@ class ChatController extends State<ChatPageWithRoom>
     if (success.error != null) return;
     // #Pangea
     // context.go('/rooms');
-    NavigationUtil.goToSpaceRoute(null, [], context);
+    _closeLeftRoom();
     // Pangea#
+  }
+
+  /// Close ONLY the left room's token after the user leaves it — the rest of
+  /// the workspace, notably the chat list, survives (#7561). Falls back to the
+  /// bare exit when the room isn't open as a token (a pushed route).
+  void _closeLeftRoom() {
+    final close = roomTokenCloseLocation(
+      GoRouterState.of(context).uri,
+      room.id,
+    );
+    if (close != null) {
+      context.go(close);
+    } else {
+      NavigationUtil.goToSpaceRoute(null, [], context);
+    }
   }
 
   // #Pangea
@@ -3106,7 +3122,8 @@ class ChatController extends State<ChatPageWithRoom>
       ).client.waitForRoomInSync(widget.room.id, leave: true);
     }
 
-    NavigationUtil.goToSpaceRoute(null, [], context);
+    if (!mounted) return;
+    _closeLeftRoom();
   }
 
   Future<void> requestRegeneration(String eventId) async {

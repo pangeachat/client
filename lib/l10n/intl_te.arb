@@ -1466,7 +1466,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-08 15:21:07.317896",
+    "@@last_modified": "2026-07-13 10:06:58.379668",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11386,6 +11386,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "ఎస్టోనియన్",
+    "abDisplayName": "అబ్ఖాజియన్",
+    "elDisplayName": "గ్రీక్",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} లో {total} నక్షత్రాలు సంపాదించబడ్డాయి",
     "activityNoLongerSupported": "ఈ కార్యకలాపం పాత సంస్కరణలో నడిచింది మరియు ఇకపై మద్దతు ఇవ్వబడదు. మీరు ఈ సెషన్‌లో ఏమి జరిగిందో ఇంకా సమీక్షించవచ్చు.",
     "activityLoadFailed": "కార్యకలాపాన్ని లోడ్ చేయలేకపోయారు. మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
@@ -11422,5 +11434,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "కోర్సు జోడించు పేజీని మూసివేయండి",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "వ్యాకరణ సమాచార సమస్యను నివేదించండి",
+    "grammarFeedbackDialogTitle": "వ్యాకరణ సమాచార ఫీడ్‌బ్యాక్",
+    "grammarFeedbackSubmittedDesc": "ధన్యవాదాలు! మీ ఫీడ్‌బ్యాక్ ఆధారంగా వివరణను నవీకరించబడింది.",
+    "focusOnMap": "నక్సా పై దృష్టి పెట్టండి",
+    "welcome": "స్వాగతం",
+    "courseRequest": "కోర్సు అభ్యర్థన",
+    "onboarding": "ఆన్‌బోర్డింగ్",
+    "selectImageFromDevice": "పరికరంలో నుండి చిత్రం ఎంచుకోండి",
+    "dinoAvatarLabel": "చశ్మా ధరించిన డైనోసార్",
+    "bearAvatarLabel": "ఒక స్నేహపూర్వక తాబేలు",
+    "squidAvatarLabel": "హెడ్‌ఫోన్లు ధరించిన ఒక స్క్విడ్",
+    "cartoonAvatarLabel": "చల్లగా అలరించే ఒక కార్టూన్ పాత్ర",
+    "robotAvatarLabel": "నక్షత్రాలతో కూడిన కళ్ళు ఉన్న ఒక రోబోట్",
+    "featuresIncludeLabel": "ఫీచర్లు ఉన్నాయి",
+    "difficultyListLabel": "కష్టతా జాబితా",
+    "languageListLabel": "భాషల జాబితా",
+    "searchedResultsLabel": "'{search}' కోసం శోధన ఫలితాలు",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

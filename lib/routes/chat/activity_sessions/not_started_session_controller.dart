@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
@@ -238,7 +239,7 @@ class NotStartedSessionController extends State<NotStartedSession>
       WorkspaceNav.openCoursePageFor(
         GoRouterState.of(context).uri,
         course.id,
-        'invite',
+        RoomSubpageEnum.invite,
       ),
     );
   }

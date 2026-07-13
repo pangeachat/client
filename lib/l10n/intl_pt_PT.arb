@@ -2775,7 +2775,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-08 15:20:46.005914",
+    "@@last_modified": "2026-07-13 10:06:22.788726",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11338,6 +11338,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoniano",
+    "abDisplayName": "Abecásio",
+    "elDisplayName": "Grego",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
     "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
@@ -11374,5 +11386,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Fechar página de adicionar curso",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Reportar problema de informação gramatical",
+    "grammarFeedbackDialogTitle": "Feedback sobre Informação Gramatical",
+    "grammarFeedbackSubmittedDesc": "Obrigado! A explicação foi atualizada com base no seu feedback.",
+    "focusOnMap": "Focar no mapa",
+    "welcome": "Bem-vindo",
+    "courseRequest": "Solicitação de curso",
+    "onboarding": "Integração",
+    "selectImageFromDevice": "Selecionar imagem do dispositivo",
+    "dinoAvatarLabel": "Um dinossauro com óculos de sol",
+    "bearAvatarLabel": "Um urso amigável",
+    "squidAvatarLabel": "Um polvo usando fones de ouvido",
+    "cartoonAvatarLabel": "Um personagem de desenho animado feliz acenando",
+    "robotAvatarLabel": "Um robô com estrelas nos olhos",
+    "featuresIncludeLabel": "Os recursos incluem",
+    "difficultyListLabel": "Lista de dificuldade",
+    "languageListLabel": "Lista de idiomas",
+    "searchedResultsLabel": "Resultados da pesquisa para '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

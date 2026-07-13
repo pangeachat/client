@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -21,6 +22,15 @@ extension ActivitySessionDiscovery on Client {
             r.coursePlan != null,
       )
       .toList();
+
+  /// Session rooms the learner is **invited** to. They sit in `client.rooms`,
+  /// but an invite's stripped state carries no `pangea.activity_roles`, so any
+  /// seat/participant data read locally is wrong (#7488) — callers must
+  /// room_preview these ids, never trust the local room.
+  Set<String> get invitedActivitySessionRoomIds => rooms
+      .where((r) => r.membership == Membership.invite && r.activityId != null)
+      .map((r) => r.id)
+      .toSet();
 
   /// Room ids of activity-session children across [joinedCourseSpaces], read from
   /// the server hierarchy so a coursemate's session (absent from `client.rooms`)

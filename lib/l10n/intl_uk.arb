@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-08 15:20:31.267745",
+    "@@last_modified": "2026-07-13 10:05:49.548162",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Естонська",
+    "abDisplayName": "Абхазька",
+    "elDisplayName": "Грецька",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} з {total} зірок зароблено",
     "activityNoLongerSupported": "Ця активність виконувалася на старішій версії активностей і більше не підтримується. Ви все ще можете переглянути, що сталося в цій сесії.",
     "activityLoadFailed": "Не вдалося завантажити активність. Перевірте своє з'єднання та спробуйте ще раз.",
@@ -10298,5 +10310,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Закрити сторінку додавання курсу",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Повідомити про проблему з граматичною інформацією",
+    "grammarFeedbackDialogTitle": "Відгук про граматичну інформацію",
+    "grammarFeedbackSubmittedDesc": "Дякуємо! Пояснення було оновлено на основі вашого відгуку.",
+    "focusOnMap": "Зосередитися на карті",
+    "welcome": "Ласкаво просимо",
+    "courseRequest": "Запит на курс",
+    "onboarding": "Ознайомлення",
+    "selectImageFromDevice": "Вибрати зображення з пристрою",
+    "dinoAvatarLabel": "Динозавр у сонцезахисних окулярах",
+    "bearAvatarLabel": "Дружній ведмідь",
+    "squidAvatarLabel": "Кальмар у навушниках",
+    "cartoonAvatarLabel": "Щасливий мультяшний персонаж, що махає",
+    "robotAvatarLabel": "Робот з зірками замість очей",
+    "featuresIncludeLabel": "Особливості включають",
+    "difficultyListLabel": "Список складності",
+    "languageListLabel": "Список мов",
+    "searchedResultsLabel": "Результати пошуку для '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -3947,7 +3947,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-08 15:21:58.516686",
+    "@@last_modified": "2026-07-13 10:08:35.278726",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10273,6 +10273,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Eastóinise",
+    "abDisplayName": "Abcáise",
+    "elDisplayName": "Gréigis",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} réaltaí a ghnóthú",
     "activityNoLongerSupported": "Níl an gníomhaíocht seo tacaíocht níos mó. Rith sé ar leagan níos sine de na gníomhaíochtaí. Is féidir leat fós athbhreithniú a dhéanamh ar cad a tharla sa seisiún seo.",
     "activityLoadFailed": "Níor éirigh le gníomhaíocht a luchtú. Seiceáil do cheangal agus déan iarracht arís.",
@@ -10309,5 +10321,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Dún leathanach cur síos ar chúrsa",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Tuairiscigh fadhb eolais ghramadaí",
+    "grammarFeedbackDialogTitle": "Aiseolas Eolais Ghramadaí",
+    "grammarFeedbackSubmittedDesc": "Go raibh maith agat! Tá an míniú nuashonraithe bunaithe ar do aiseolas.",
+    "focusOnMap": "Díriú ar an mapa",
+    "welcome": "Fáilte",
+    "courseRequest": "Iarratas ar chúrsa",
+    "onboarding": "Tús",
+    "selectImageFromDevice": "Roghnaigh íomhá ón bhfeiste",
+    "dinoAvatarLabel": "Dínosaur le spéaclaí gréine",
+    "bearAvatarLabel": "Bear cairdiúil",
+    "squidAvatarLabel": "Sceallóga ag caitheamh cluasáin",
+    "cartoonAvatarLabel": "Carachtar cartoon sásta ag tonnadh",
+    "robotAvatarLabel": "Robatach le réaltaí ina shúile",
+    "featuresIncludeLabel": "Áirítear le gnéithe",
+    "difficultyListLabel": "Liosta deacrachta",
+    "languageListLabel": "Liosta teanga",
+    "searchedResultsLabel": "Torthaí cuardaigh do '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-08 15:20:21.125175",
+    "@@last_modified": "2026-07-13 10:05:29.351784",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10241,6 +10241,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estnisch",
+    "abDisplayName": "Abchasisch",
+    "elDisplayName": "Griechisch",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} von {total} verdienten Sternen",
     "activityNoLongerSupported": "Diese Aktivität lief auf einer älteren Version der Aktivitäten und wird nicht mehr unterstützt. Sie können jedoch überprüfen, was in dieser Sitzung passiert ist.",
     "activityLoadFailed": "Die Aktivität konnte nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
@@ -10277,5 +10289,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Schließe die Seite zum Hinzufügen eines Kurses",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Grammatikproblem melden",
+    "grammarFeedbackDialogTitle": "Feedback zur Grammatikinformation",
+    "grammarFeedbackSubmittedDesc": "Danke! Die Erklärung wurde basierend auf Ihrem Feedback aktualisiert.",
+    "focusOnMap": "Auf die Karte fokussieren",
+    "welcome": "Willkommen",
+    "courseRequest": "Kursanfrage",
+    "onboarding": "Einarbeitung",
+    "selectImageFromDevice": "Bild vom Gerät auswählen",
+    "dinoAvatarLabel": "Ein Dinosaurier mit Sonnenbrille",
+    "bearAvatarLabel": "Ein freundlicher Bär",
+    "squidAvatarLabel": "Ein Tintenfisch mit Kopfhörern",
+    "cartoonAvatarLabel": "Ein glücklicher Cartoon-Charakter, der winkt",
+    "robotAvatarLabel": "Ein Roboter mit Sternen als Augen",
+    "featuresIncludeLabel": "Funktionen umfassen",
+    "difficultyListLabel": "Schwierigkeitsliste",
+    "languageListLabel": "Sprachenliste",
+    "searchedResultsLabel": "Suchergebnisse für '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

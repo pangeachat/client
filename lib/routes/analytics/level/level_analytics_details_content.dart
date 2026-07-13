@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 class LevelAnalyticsDetailsContent extends StatelessWidget {
   /// When hosted inside the world map's right-docked analytics panel, hide the
@@ -60,13 +61,20 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "⭐ ${L10n.of(context).levelShort(level)}",
-                            style: TextStyle(
-                              fontSize: isColumnMode ? 24 : 16,
-                              fontWeight: FontWeight.w900,
-                              color: AppConfig.gold,
-                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              LevelRibbon(height: isColumnMode ? 28.0 : 20.0),
+                              const SizedBox(width: 6.0),
+                              Text(
+                                L10n.of(context).levelShort(level),
+                                style: TextStyle(
+                                  fontSize: isColumnMode ? 24 : 16,
+                                  fontWeight: FontWeight.w900,
+                                  color: AppConfig.gold,
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             L10n.of(context).xpIntoLevel(totalXP, maxLevelXP),

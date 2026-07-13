@@ -3376,7 +3376,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-08 15:20:03.240858",
+    "@@last_modified": "2026-07-13 10:04:49.451262",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10981,6 +10981,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Eesti",
+    "abDisplayName": "Abhaazian",
+    "elDisplayName": "Kreeka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelas ganhas",
     "activityNoLongerSupported": "Esta atividade foi executada em uma versão mais antiga das atividades e não é mais suportada. Você ainda pode revisar o que aconteceu nesta sessão.",
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
@@ -11017,5 +11029,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Dún an leathanach a chur cúrsa leis",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapporta problema de gramática",
+    "grammarFeedbackDialogTitle": "Retroalimentación sobre la información gramatical",
+    "grammarFeedbackSubmittedDesc": "¡Gracias! La explicación se ha actualizado según tu retroalimentación.",
+    "focusOnMap": "Enfocar en el mapa",
+    "welcome": "Bienvenido",
+    "courseRequest": "Solicitud de curso",
+    "onboarding": "Integración",
+    "selectImageFromDevice": "Seleccionar imagen del dispositivo",
+    "dinoAvatarLabel": "Un dinosaurio con gafas de sol",
+    "bearAvatarLabel": "Un oso amigable",
+    "squidAvatarLabel": "A squid wearing headphones",
+    "cartoonAvatarLabel": "A happy cartoon character waving",
+    "robotAvatarLabel": "A robot with stars for eyes",
+    "featuresIncludeLabel": "Features include",
+    "difficultyListLabel": "Difficulty list",
+    "languageListLabel": "Language list",
+    "searchedResultsLabel": "Search results for '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

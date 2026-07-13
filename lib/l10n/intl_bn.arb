@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:21:24.404660",
+    "@@last_modified": "2026-07-13 10:07:35.698507",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10977,6 +10977,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "এস্তোনিয়ান",
+    "abDisplayName": "আবখাজিয়ান",
+    "elDisplayName": "গ্রীক",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} এর {total} তারকা অর্জিত",
     "activityNoLongerSupported": "এই কার্যকলাপ পুরানো সংস্করণের উপর চলছিল এবং আর সমর্থিত নয়। আপনি এখনও এই সেশনে কি ঘটেছিল তা পর্যালোচনা করতে পারেন।",
     "activityLoadFailed": "কার্যকলাপ লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
@@ -11013,5 +11025,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "কোর্স যোগ করার পৃষ্ঠা বন্ধ করুন",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "ব্যাকরণ তথ্য সমস্যা রিপোর্ট করুন",
+    "grammarFeedbackDialogTitle": "ব্যাকরণ তথ্য প্রতিক্রিয়া",
+    "grammarFeedbackSubmittedDesc": "ধন্যবাদ! আপনার প্রতিক্রিয়ার ভিত্তিতে ব্যাখ্যা আপডেট করা হয়েছে।",
+    "focusOnMap": "মানচিত্রে ফোকাস করুন",
+    "welcome": "স্বাগতম",
+    "courseRequest": "কোর্সের অনুরোধ",
+    "onboarding": "অনবোর্ডিং",
+    "selectImageFromDevice": "ডিভাইস থেকে ছবি নির্বাচন করুন",
+    "dinoAvatarLabel": "সানগ্লাস পরা একটি ডাইনোসর",
+    "bearAvatarLabel": "একটি বন্ধুত্বপূর্ণ ভাল্লুক",
+    "squidAvatarLabel": "একটি হেডফোন পরা স্কুইড",
+    "cartoonAvatarLabel": "একটি খুশি কার্টুন চরিত্র হাত নাড়াচ্ছে",
+    "robotAvatarLabel": "একটি রোবট যার চোখে তারা",
+    "featuresIncludeLabel": "বৈশিষ্ট্য অন্তর্ভুক্ত",
+    "difficultyListLabel": "কঠিনতার তালিকা",
+    "languageListLabel": "ভাষার তালিকা",
+    "searchedResultsLabel": "'{search}' এর জন্য অনুসন্ধান ফলাফল",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

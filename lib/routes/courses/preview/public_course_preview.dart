@@ -10,20 +10,26 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_consent
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview_view.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursePreview extends StatefulWidget {
   final String? roomID;
+  final Widget? closeButton;
 
-  const PublicCoursePreview({super.key, required this.roomID});
+  const PublicCoursePreview({
+    super.key,
+    required this.roomID,
+    this.closeButton,
+  });
 
   @override
   PublicCoursePreviewController createState() =>
@@ -58,9 +64,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   /// the route-driven course-detail fix (#7092).
   void back() {
     context.go(
-      WorkspaceNav.openAddCourse(
+      WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
-        subpage: 'browse',
+        AddCourseSubpageEnum.browse,
       ),
     );
   }
@@ -83,14 +89,14 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
         roomSummaryError = null;
       });
 
-      final roomIds = [roomID];
+      final roomIds = [fullRoomId(roomID)];
       final roomSummariesResponse = await Matrix.of(context).client
           .loadRoomSummaries(
             roomIds,
             l1Code: MatrixState.pangeaController.userController.userL1Code,
           );
 
-      final roomSummary = roomSummariesResponse[roomID];
+      final roomSummary = roomSummariesResponse[fullRoomId(roomID)];
       if (roomSummary == null) {
         throw Exception("Room summary not found");
       }
@@ -143,21 +149,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     final joinResp = result.result;
     if (joinResp == null) return;
 
-    final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    room.isSpace
-        ? context.go(
-            WorkspaceNav.openCourse(
-              GoRouterState.of(context).uri,
-              joinedRoomId,
-            ),
-          )
-        : NavigationUtil.goToSpaceRoute(joinedRoomId, const [], context);
+    await SpaceCodeController.navigateAfterJoin(context, client, joinResp);
   }
 
   Future<void> joinCourse() async {

@@ -171,6 +171,11 @@ void main() {
       );
       expect(score, 0);
     });
+
+    test('a dismissed activity subtracts 0.5 (#7207/#7245)', () {
+      final score = pinScore(band: 0, s: const PinSignals(), isDismissed: true);
+      expect(score, closeTo(-kDismissedPenalty, 1e-9));
+    });
   });
 
   group('pinScore — multi-person first-map deprioritize (#7435)', () {
@@ -254,6 +259,7 @@ void main() {
     Set<String> progressedIds = const {},
     int maxPerDiversityKey = 2,
     bool isNewLearner = false,
+    Set<String> dismissedIds = const {},
   }) => rankPins(
     inViewPins: pins,
     userL2: userL2,
@@ -267,6 +273,7 @@ void main() {
     progressedIds: progressedIds,
     maxPerDiversityKey: maxPerDiversityKey,
     isNewLearner: isNewLearner,
+    dismissedIds: dismissedIds,
   );
 
   group('rankPins — multi-person deprioritize for a new learner (#7435)', () {
@@ -419,6 +426,45 @@ void main() {
       // No gate excludes it — it earns the slot when it is all there is.
       expect(result.largeIds, ['done']);
     });
+  });
+
+  group('rankPins — dismissed is demoted, not excluded (#7207/#7245)', () {
+    test('a dismissed pin sinks behind an otherwise-equal peer', () {
+      final pins = [
+        _card('xed', refs: ['k1']),
+        _card('kept', refs: ['k2']),
+      ];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 1,
+        midBudget: 10,
+        dismissedIds: {'xed'},
+      );
+      expect(result.largeIds, ['kept']);
+      expect(result.midIds, contains('xed')); // present, just demoted
+    });
+
+    test(
+      'the weight alone cannot keep a competition-free dismissed pin out of '
+      'the ranking top — that guarantee is the placement eligibility rule',
+      () {
+        // With nothing else in view the dismissed pin still tops the ranking:
+        // by design the score demotes relatively, and placeLargeCards'
+        // dismissedIds filter (covered in world_map_placement_test.dart) is
+        // what keeps its card from re-appearing.
+        final result = rank(
+          [
+            _card('xed', refs: ['k1']),
+          ],
+          {'xed': const PinSignals()},
+          largeBudget: 1,
+          midBudget: 10,
+          dismissedIds: {'xed'},
+        );
+        expect(result.ordered, ['xed']);
+      },
+    );
   });
 
   group('rankPins — total cap N and the trail reservation', () {

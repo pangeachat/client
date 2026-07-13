@@ -13,13 +13,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// over the returned set in v1. See world-map.instructions.md.
 class ActivityMapRepo {
   /// Thin pins whose coordinates fall within [bounds], optionally scoped to a
-  /// target language [l2]. [l1] is passed only for pin-text localization.
+  /// target language [l2]. Card text is canonical-only — thin lists never
+  /// translate (choreo #2736); large-card titles localize via plan hydration.
   /// Returns up to [limit] placed activities; an empty list on any error so the
   /// map stays usable.
   static Future<List<QuestActivityCard>> bboxPins({
     required LatLngBounds bounds,
     String? l2,
-    String? l1,
     int limit = 200,
   }) async {
     final params = <String, String>{
@@ -28,7 +28,6 @@ class ActivityMapRepo {
       'max_lat': '${bounds.north}',
       'max_lng': '${bounds.east}',
       if (l2 != null && l2.isNotEmpty) 'l2': l2,
-      if (l1 != null && l1.isNotEmpty) 'l1': l1,
       'limit': '$limit',
     };
     final uri = Uri.parse(

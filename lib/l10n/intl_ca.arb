@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-08 15:20:41.540177",
+    "@@last_modified": "2026-07-13 10:06:10.807933",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10413,6 +10413,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonià",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Grec",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} de {total} estrelles guanyades",
     "activityNoLongerSupported": "Aquesta activitat es va realitzar en una versió anterior d'activitats i ja no es dóna suport. Encara pots revisar el que va passar en aquesta sessió.",
     "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",
@@ -10449,5 +10461,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Tanca la pàgina d'afegir curs",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Informar d'un problema d'informació gramatical",
+    "grammarFeedbackDialogTitle": "Comentaris sobre la informació gramatical",
+    "grammarFeedbackSubmittedDesc": "Gràcies! L'explicació s'ha actualitzat en funció dels teus comentaris.",
+    "focusOnMap": "Concentra't al mapa",
+    "welcome": "Benvingut",
+    "courseRequest": "Sol·licitud de curs",
+    "onboarding": "Integració",
+    "selectImageFromDevice": "Selecciona una imatge del dispositiu",
+    "dinoAvatarLabel": "Un dinosaure amb ulleres de sol",
+    "bearAvatarLabel": "Un ós amigable",
+    "squidAvatarLabel": "Un calamar amb auriculars",
+    "cartoonAvatarLabel": "Un personatge de dibuixos animats feliç que saluda",
+    "robotAvatarLabel": "Un robot amb estrelles com a ulls",
+    "featuresIncludeLabel": "Les característiques inclouen",
+    "difficultyListLabel": "Llista de dificultats",
+    "languageListLabel": "Llista d'idiomes",
+    "searchedResultsLabel": "Resultats de la cerca per a '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

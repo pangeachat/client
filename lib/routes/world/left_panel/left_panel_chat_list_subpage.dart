@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
@@ -59,7 +61,12 @@ class _LeftPanelChatListSubpageState extends State<LeftPanelChatListSubpage> {
               IconButton(
                 tooltip: l10n.directMessage,
                 icon: const Icon(Icons.add_comment_outlined),
-                onPressed: () => context.go('/rooms/newprivatechat'),
+                onPressed: () => context.go(
+                  WorkspaceNav.openLeft(
+                    GoRouterState.of(context).uri,
+                    NewPrivateChatPanelToken(),
+                  ),
+                ),
               ),
             ],
           ),

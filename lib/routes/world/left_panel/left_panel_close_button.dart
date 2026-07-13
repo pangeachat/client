@@ -7,7 +7,6 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/close_button_labels.dart';
 
 /// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
 /// ONE level via popPage (a course management page → the card; a room sub-page
@@ -36,11 +35,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   bool get _isPushedSubPage {
     final param = token.param;
     if (param == null) return false;
-    if (token.type == 'room' || token.type == 'session') {
-      // The bare room id has no `/`; any `/` is a pushed sub-page beyond it.
-      return param.isPushed;
-    }
-    return false;
+    return param.isPushed;
   }
 
   // Centralized affordance (close_affordance.dart): `←` when closing returns to
@@ -74,7 +69,7 @@ class LeftPanelCloseButton extends StatelessWidget {
   void _close(BuildContext context) {
     final uri = _liveUri(context);
     context.go(
-      token.type == 'room' || token.type == 'session'
+      token.type.isRoomPanel
           ? WorkspaceNav.closeLeft(uri, token)
           : WorkspaceNav.closeSection(uri, token),
     );
@@ -85,9 +80,8 @@ class LeftPanelCloseButton extends StatelessWidget {
     final page = token.param;
     if (_isPushedSubPage && page != null) {
       return BackButton(
-        onPressed: () => context.go(
-          WorkspaceNav.popPage(_liveUri(context), token.type, page),
-        ),
+        onPressed: () =>
+            context.go(WorkspaceNav.popPage(_liveUri(context), token)),
       );
     }
 
@@ -95,7 +89,7 @@ class LeftPanelCloseButton extends StatelessWidget {
         ? BackButton(onPressed: () => _close(context))
         : IconButton(
             icon: const Icon(Icons.close),
-            tooltip: closeButtonLabel(L10n.of(context), token),
+            tooltip: token.type.closeButtonLabel(L10n.of(context)),
             onPressed: () => _close(context),
           );
   }

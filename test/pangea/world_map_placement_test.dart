@@ -18,6 +18,7 @@ void main() {
     String? focusedId,
     Rect safeArea = viewport,
     int largeBudget = 3,
+    Set<String> dismissedIds = const {},
   }) => placeLargeCards(
     orderedCandidates: ordered ?? offsets.keys.toList(),
     focusedId: focusedId,
@@ -25,6 +26,7 @@ void main() {
     cardSize: card,
     safeArea: safeArea,
     largeBudget: largeBudget,
+    dismissedIds: dismissedIds,
   );
 
   group('placeLargeCards — fit and overlap', () {
@@ -133,6 +135,37 @@ void main() {
         offsets: {'s': const Offset(780, 300)},
         ordered: ['s'],
         focusedId: 's',
+      );
+      expect(r.largeIds, isEmpty);
+    });
+  });
+
+  group('placeLargeCards — X-dismissals (#7207)', () {
+    test('a dismissed candidate never places large; the next back-fills', () {
+      // a and b overlap, so with a dismissed, b takes the slot a blocked.
+      final r = place(
+        offsets: {'a': const Offset(200, 300), 'b': const Offset(320, 300)},
+        dismissedIds: {'a'},
+      );
+      expect(r.largeIds, ['b']);
+    });
+
+    test('a dismissed focused pin is not placed despite focused-first', () {
+      // Dismissing a focused card also clears focus in the controller, but the
+      // placement itself must hold the demotion even if focus lingers a frame.
+      final r = place(
+        offsets: {'s': const Offset(200, 300), 'a': const Offset(600, 300)},
+        ordered: ['s', 'a'],
+        focusedId: 's',
+        dismissedIds: {'s'},
+      );
+      expect(r.largeIds, ['a']);
+    });
+
+    test('dismissing every candidate places nothing (all demote to dots)', () {
+      final r = place(
+        offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
+        dismissedIds: {'a', 'b'},
       );
       expect(r.largeIds, isEmpty);
     });

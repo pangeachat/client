@@ -204,10 +204,21 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     // not just a course in scope, since a bare map pin carries no course
     // context. Shared with the world-map pin discovery so both surface the same
     // sessions. See world-map.instructions.md ("Discovering joinable sessions").
+    final client = Matrix.of(context).client;
+    // Sessions the learner is invited to (possibly outside any shared course):
+    // in the room list, but only a preview carries accurate seats, and without
+    // this a green invited pin dead-ends at a joinless start page (#7488).
     roomIds.addAll(
-      await Matrix.of(
-        context,
-      ).client.courseActivitySessionRoomIds(activityId: widget.activityId),
+      client.rooms
+          .where(
+            (r) =>
+                r.membership == Membership.invite &&
+                r.activityId == widget.activityId,
+          )
+          .map((r) => r.id),
+    );
+    roomIds.addAll(
+      await client.courseActivitySessionRoomIds(activityId: widget.activityId),
     );
     if (!mounted) return;
 

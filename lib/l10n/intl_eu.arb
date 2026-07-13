@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-08 15:20:14.450759",
+    "@@last_modified": "2026-07-13 10:05:16.037942",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoniera",
+    "abDisplayName": "Abkhasiera",
+    "elDisplayName": "Greziar",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} {total} izarretatik irabazi direnak",
     "activityNoLongerSupported": "Jarduera honek jardueren bertsio zahar batean funtzionatu zuen eta ez da gehiago babesten. Oraindik saio honetan zer gertatu zen berrikusi dezakezu.",
     "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",
@@ -10298,5 +10310,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Itxi ikastaroa gehitzeko orria",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Gramatika informazio arazoa jakinarazi",
+    "grammarFeedbackDialogTitle": "Gramatika Informazio Feedback",
+    "grammarFeedbackSubmittedDesc": "Eskerrik asko! Zure iritzien arabera azalpena eguneratu da.",
+    "focusOnMap": "Mapan arreta jarri",
+    "welcome": "Ongi etorri",
+    "courseRequest": "Ikastaro eskaera",
+    "onboarding": "Onboarding",
+    "selectImageFromDevice": "Aukeratu irudia gailutik",
+    "dinoAvatarLabel": "Eguzkitako betaurrekoak dituen dinosauro bat",
+    "bearAvatarLabel": "Laguntzaile bat den hartz bat",
+    "squidAvatarLabel": "Entzuleak daramatzan kalamar bat",
+    "cartoonAvatarLabel": "Agur egiten duen pertsonaia dibertigarri bat",
+    "robotAvatarLabel": "Izarrek begi gisa dituen robota",
+    "featuresIncludeLabel": "Ezaugarriak barne",
+    "difficultyListLabel": "Zailtasun zerrenda",
+    "languageListLabel": "Hizkuntza zerrenda",
+    "searchedResultsLabel": "'{search}' bilaketaren emaitzak",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

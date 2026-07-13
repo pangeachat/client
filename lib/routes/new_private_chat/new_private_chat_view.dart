@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -22,44 +20,7 @@ class NewPrivateChatView extends StatelessWidget {
     final theme = Theme.of(context);
 
     final searchResponse = controller.searchResponse;
-    // #Pangea
-    // final userId = Matrix.of(context).client.userID!;
-    // Pangea#
     return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        // world_v2: this legacy path route is reached via `go` from the
-        // chat-list token, so a plain pop lands on a blank panel. Send back to
-        // the chat list explicitly (#7170).
-        leading: Center(
-          child: BackButton(onPressed: () => context.go(PRoutes.chatsList)),
-        ),
-        // #Pangea
-        title: Text(
-          L10n.of(context).newDirectMessage,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-        ),
-        centerTitle: false,
-        titleSpacing: 0,
-        // title: Text(L10n.of(context).newChat),
-        // Pangea#
-        backgroundColor: theme.scaffoldBackgroundColor,
-        // #Pangea
-        // actions: [
-        //   TextButton(
-        //     onPressed: UrlLauncher(
-        //       context,
-        //       AppConfig.startChatTutorial,
-        //     ).launchUrl,
-        //     child: Text(L10n.of(context).help),
-        //   ),
-        // ],
-        // Pangea#
-      ),
       body: MaxWidthBody(
         withScrolling: false,
         innerPadding: const EdgeInsets.symmetric(vertical: 8),

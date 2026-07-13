@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-08 15:21:04.365886",
+    "@@last_modified": "2026-07-13 10:06:52.051615",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10593,6 +10593,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estonca",
+    "abDisplayName": "Abhazca",
+    "elDisplayName": "Yunanca",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} toplam {total} yıldız kazanıldı",
     "activityNoLongerSupported": "Bu etkinlik, daha eski bir etkinlik sürümünde çalışıyordu ve artık desteklenmiyor. Bu oturumda neler olduğunu yine de gözden geçirebilirsiniz.",
     "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
@@ -10629,5 +10641,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Kurs ekleme sayfasını kapat",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Dil bilgisi sorununu bildir",
+    "grammarFeedbackDialogTitle": "Dil Bilgisi Geri Bildirimi",
+    "grammarFeedbackSubmittedDesc": "Teşekkürler! Açıklama geri bildiriminize göre güncellendi.",
+    "focusOnMap": "Haritaya odaklan",
+    "welcome": "Hoş geldiniz",
+    "courseRequest": "Kurs talebi",
+    "onboarding": "Eğitim",
+    "selectImageFromDevice": "Cihazdan resim seç",
+    "dinoAvatarLabel": "Gözlük takan bir dinozor",
+    "bearAvatarLabel": "Dostça bir ayı",
+    "squidAvatarLabel": "Kulaklık takan bir ahtapot",
+    "cartoonAvatarLabel": "El sallayan mutlu bir çizgi film karakteri",
+    "robotAvatarLabel": "Gözleri yıldız olan bir robot",
+    "featuresIncludeLabel": "Özellikler şunları içerir",
+    "difficultyListLabel": "Zorluk listesi",
+    "languageListLabel": "Dil listesi",
+    "searchedResultsLabel": "'{search}' için arama sonuçları",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

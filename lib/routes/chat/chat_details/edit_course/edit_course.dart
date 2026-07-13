@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
@@ -126,7 +127,10 @@ class EditCourseController extends State<EditCourse> {
       // which then shows the saved title/description.
       NavigationUtil.popOrGo(
         context,
-        WorkspaceNav.closeCoursePage(GoRouterState.of(context).uri, 'edit'),
+        WorkspaceNav.closeCoursePage(
+          GoRouterState.of(context).uri,
+          RoomSubpageEnum.edit,
+        ),
       );
     }
   }

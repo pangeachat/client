@@ -3918,7 +3918,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-08 15:20:58.199409",
+    "@@last_modified": "2026-07-13 10:06:41.112107",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10262,6 +10262,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Igauņu",
+    "abDisplayName": "Abhāzu",
+    "elDisplayName": "Grieķu",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} no {total} iegūtajām zvaigznēm",
     "activityNoLongerSupported": "Šī aktivitāte tika veikta vecākā aktivitāšu versijā un vairs netiek atbalstīta. Jūs joprojām varat pārskatīt, kas notika šajā sesijā.",
     "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
@@ -10298,5 +10310,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Aizvērt kursa pievienošanas lapu",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Ziņot par gramatikas informācijas problēmu",
+    "grammarFeedbackDialogTitle": "Gramatikas informācijas atsauksmes",
+    "grammarFeedbackSubmittedDesc": "Paldies! Izskaidrojums ir atjaunināts, pamatojoties uz jūsu atsauksmēm.",
+    "focusOnMap": "Fokusēties uz karti",
+    "welcome": "Laipni lūdzam",
+    "courseRequest": "Kursa pieprasījums",
+    "onboarding": "Iepazīšanās",
+    "selectImageFromDevice": "Izvēlieties attēlu no ierīces",
+    "dinoAvatarLabel": "Dinozaurs ar saulesbrillēm",
+    "bearAvatarLabel": "Draudzīgs lācis",
+    "squidAvatarLabel": "Astoņkājis ar austiņām",
+    "cartoonAvatarLabel": "Priecīgs multfilmu varonis, kas māj",
+    "robotAvatarLabel": "Robots ar zvaigznēm acīs",
+    "featuresIncludeLabel": "Iespējas ietver",
+    "difficultyListLabel": "Grūtības saraksts",
+    "languageListLabel": "Valodu saraksts",
+    "searchedResultsLabel": "Meklēšanas rezultāti '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -3194,7 +3194,7 @@
     "setupChatBackup": "Chat zaxirasini sozlash",
     "@setupChatBackup": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-08 15:20:52.049983",
+    "@@last_modified": "2026-07-13 10:06:32.062450",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10266,6 +10266,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "Estoncha",
+    "abDisplayName": "Abxazcha",
+    "elDisplayName": "Grechcha",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} dan {total} yulduz to'plandi",
     "activityNoLongerSupported": "Ushbu faoliyat eski versiyada o'tkazilgan va endi qo'llab-quvvatlanmaydi. Siz hali ham ushbu sessiyada nima bo'lganini ko'rishingiz mumkin.",
     "activityLoadFailed": "Faoliyatni yuklab bo'lmadi. Ulanishingizni tekshiring va qaytadan urinib ko'ring.",
@@ -10302,5 +10314,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "Kurs qo'shish sahifasini yopish",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Grammatika ma'lumotlari muammosini xabar berish",
+    "grammarFeedbackDialogTitle": "Grammatika Ma'lumotlari Fikri",
+    "grammarFeedbackSubmittedDesc": "Rahmat! Izoh sizning fikringizga asoslanib yangilandi.",
+    "focusOnMap": "Xaritada diqqatni jamlang",
+    "welcome": "Xush kelibsiz",
+    "courseRequest": "Kurs so'rovi",
+    "onboarding": "O'qitish",
+    "selectImageFromDevice": "Qurilmadan rasm tanlang",
+    "dinoAvatarLabel": "Kuyosh ko'zligi taqqan dinozavr",
+    "bearAvatarLabel": "Do'stona ayiq",
+    "squidAvatarLabel": "Quloqchin kiygan kalmar",
+    "cartoonAvatarLabel": "Baxtli multfilm qahramoni qo'l silkitmoqda",
+    "robotAvatarLabel": "Yulduzlar bilan ko'zlari bo'lgan robot",
+    "featuresIncludeLabel": "Xususiyatlar quyidagilarni o'z ichiga oladi",
+    "difficultyListLabel": "Qiyinchilik ro'yxati",
+    "languageListLabel": "Til ro'yxati",
+    "searchedResultsLabel": "'{search}' uchun qidiruv natijalari",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-08 15:21:40.392115",
+    "@@last_modified": "2026-07-13 10:08:05.857792",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -11130,6 +11130,18 @@
         "type": "String",
         "placeholders": {}
     },
+    "etDisplayName": "エストニア語",
+    "abDisplayName": "アブハズ語",
+    "elDisplayName": "ギリシャ語",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
     "starsEarnedOfTotal": "{earned} の {total} スターを獲得しました",
     "activityNoLongerSupported": "このアクティビティは古いバージョンのアクティビティで実行されており、もはやサポートされていません。このセッションで何が起こったかを確認することはできます。",
     "activityLoadFailed": "アクティビティを読み込めませんでした。接続を確認して再試行してください。",
@@ -11166,5 +11178,97 @@
     "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
+    },
+    "closeAddCoursePage": "コース追加ページを閉じる",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "文法情報の問題を報告",
+    "grammarFeedbackDialogTitle": "文法情報フィードバック",
+    "grammarFeedbackSubmittedDesc": "ありがとうございます！あなたのフィードバックに基づいて説明が更新されました。",
+    "focusOnMap": "地図に焦点を合わせる",
+    "welcome": "ようこそ",
+    "courseRequest": "コースリクエスト",
+    "onboarding": "オンボーディング",
+    "selectImageFromDevice": "デバイスから画像を選択",
+    "dinoAvatarLabel": "サングラスをかけた恐竜",
+    "bearAvatarLabel": "友好的なクマ",
+    "squidAvatarLabel": "ヘッドフォンを着けたイカ",
+    "cartoonAvatarLabel": "手を振る幸せなアニメキャラクター",
+    "robotAvatarLabel": "目が星のロボット",
+    "featuresIncludeLabel": "特徴には以下が含まれます",
+    "difficultyListLabel": "難易度リスト",
+    "languageListLabel": "言語リスト",
+    "searchedResultsLabel": "'{search}' の検索結果",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

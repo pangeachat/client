@@ -4,98 +4,242 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
-class AddCourseTokenParam extends TokenParam {
-  final String subpage;
-  final String? roomId;
-  final String? courseId;
-  final String? targetLanguage;
-  final String? joinCode;
-  final bool invite;
+enum AddCourseSubpageEnum {
+  own,
+  browse,
+  private;
 
-  const AddCourseTokenParam({
+  static AddCourseSubpageEnum fromString(String value) =>
+      AddCourseSubpageEnum.values.firstWhereOrNull((v) => v.name == value) ??
+      AddCourseSubpageEnum.browse;
+}
+
+class AddCoursePageTokenParam extends TokenParam {
+  final AddCourseSubpageEnum subpage;
+
+  // used by browse and own add course subpages to set initial language filter
+  // and to maintain language filters across navigation
+  final String? initialLanguageFilter;
+
+  // public browsing options
+  final String? previewRoomId;
+
+  // new course options
+  final String? createCourseId;
+  final bool showNewCourseInvitePage;
+
+  // private join options
+  final String? privateCourseJoinCode;
+
+  const AddCoursePageTokenParam({
     required this.subpage,
-    this.roomId,
-    this.courseId,
-    this.targetLanguage,
-    this.joinCode,
-    this.invite = false,
+    this.initialLanguageFilter,
+    this.previewRoomId,
+    this.createCourseId,
+    this.privateCourseJoinCode,
+    this.showNewCourseInvitePage = false,
   });
 
   @override
-  String build() {
-    final roomId = this.roomId;
-    final courseId = this.courseId;
-    final targetLanguage = this.targetLanguage;
-    final joinCode = this.joinCode;
-
-    return TokenFields.join([
-      TokenFields.encode(subpage),
-      if (roomId != null) 'r${TokenFields.encode(shortRoomId(roomId))}',
-      if (courseId != null) 'c${TokenFields.encode(courseId)}',
-      if (targetLanguage != null) 'l${TokenFields.encode(targetLanguage)}',
-      if (joinCode != null) 'j${TokenFields.encode(joinCode)}',
-      if (invite) 'i',
-    ]);
+  bool get isPushed {
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        return previewRoomId != null;
+      case AddCourseSubpageEnum.private:
+        return false;
+      case AddCourseSubpageEnum.own:
+        return createCourseId != null;
+    }
   }
 
-  factory AddCourseTokenParam.parse(String param) {
-    final parts = TokenFields.split(param);
-    final subpage = TokenFields.decode(parts.first);
-
-    if (parts.length <= 1) {
-      return AddCourseTokenParam(subpage: subpage);
+  @override
+  AddCoursePageTokenParam? get poppedParam {
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        if (previewRoomId == null) return null;
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter: initialLanguageFilter,
+        );
+      case AddCourseSubpageEnum.private:
+        return null;
+      case AddCourseSubpageEnum.own:
+        if (createCourseId == null) return null;
+        if (showNewCourseInvitePage) {
+          return AddCoursePageTokenParam(
+            subpage: subpage,
+            createCourseId: createCourseId,
+            initialLanguageFilter: initialLanguageFilter,
+          );
+        }
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter: initialLanguageFilter,
+        );
     }
+  }
 
-    final filters = parts.skip(1);
+  @override
+  String build() {
+    final subpage = this.subpage;
+    final previewRoomId = this.previewRoomId;
+    final createCourseId = this.createCourseId;
+    final initialLanguageFilter = this.initialLanguageFilter;
+    final privateCourseJoinCode = this.privateCourseJoinCode;
 
-    final roomIdEntry = filters
-        .firstWhereOrNull((f) => f.startsWith('r'))
-        ?.substring(1);
+    final encodedSubpage = TokenFields.encode(subpage.name);
+    final encodedLanguage =
+        initialLanguageFilter != null && initialLanguageFilter.isNotEmpty
+        ? 'l${TokenFields.encode(initialLanguageFilter)}'
+        : null;
 
-    final courseIdEntry = filters
-        .firstWhereOrNull((f) => f.startsWith('c'))
-        ?.substring(1);
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        final encodedRoomId = previewRoomId != null && previewRoomId.isNotEmpty
+            ? TokenFields.encode(shortRoomId(previewRoomId))
+            : null;
 
-    final targetLanguageEntry = filters
-        .firstWhereOrNull((f) => f.startsWith('l'))
-        ?.substring(1);
+        return TokenFields.join([
+          encodedRoomId != null
+              ? '$encodedSubpage/$encodedRoomId'
+              : encodedSubpage,
+          ?encodedLanguage,
+        ]);
+      case AddCourseSubpageEnum.private:
+        return TokenFields.join([
+          encodedSubpage,
+          if (privateCourseJoinCode != null && privateCourseJoinCode.isNotEmpty)
+            'j${TokenFields.encode(privateCourseJoinCode)}',
+        ]);
+      case AddCourseSubpageEnum.own:
+        if (createCourseId != null) {
+          final encodedCourseId = TokenFields.encode(createCourseId);
+          if (showNewCourseInvitePage) {
+            return '$encodedSubpage/$encodedCourseId/invite';
+          }
+          return TokenFields.join([
+            '$encodedSubpage/$encodedCourseId',
+            ?encodedLanguage,
+          ]);
+        }
+        return TokenFields.join([encodedSubpage, ?encodedLanguage]);
+    }
+  }
 
-    final joinCodeEntry = filters
-        .firstWhereOrNull((f) => f.startsWith('j'))
-        ?.substring(1);
-
-    final inviteEntry = filters.firstWhereOrNull((f) => f == 'i');
-
-    return AddCourseTokenParam(
-      subpage: subpage,
-      roomId: roomIdEntry != null && roomIdEntry.isNotEmpty
-          ? TokenFields.decode(roomIdEntry)
-          : null,
-      courseId: courseIdEntry != null && courseIdEntry.isNotEmpty
-          ? TokenFields.decode(courseIdEntry)
-          : null,
-      targetLanguage:
-          targetLanguageEntry != null && targetLanguageEntry.isNotEmpty
-          ? TokenFields.decode(targetLanguageEntry)
-          : null,
-      joinCode: joinCodeEntry != null && joinCodeEntry.isNotEmpty
-          ? TokenFields.decode(joinCodeEntry)
-          : null,
-      invite: inviteEntry != null,
+  factory AddCoursePageTokenParam.parse(String param) {
+    final parts = param.split('/');
+    final chunks = TokenFields.split(parts.first);
+    final subpage = AddCourseSubpageEnum.fromString(
+      TokenFields.decode(chunks.first),
     );
+
+    switch (subpage) {
+      case AddCourseSubpageEnum.browse:
+        if (parts.length > 1) {
+          final roomIdChunks = TokenFields.split(parts[1]);
+          final previewRoomId = TokenFields.decode(roomIdChunks.first);
+
+          final languageEntry = roomIdChunks
+              .skip(1)
+              .firstWhereOrNull((c) => c.startsWith('l'))
+              ?.substring(1);
+
+          return AddCoursePageTokenParam(
+            subpage: subpage,
+            previewRoomId: previewRoomId,
+            initialLanguageFilter:
+                languageEntry != null && languageEntry.isNotEmpty
+                ? TokenFields.decode(languageEntry)
+                : null,
+          );
+        }
+
+        final languageEntry = chunks
+            .skip(1)
+            .firstWhereOrNull((c) => c.startsWith('l'))
+            ?.substring(1);
+
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter:
+              languageEntry != null && languageEntry.isNotEmpty
+              ? TokenFields.decode(languageEntry)
+              : null,
+        );
+      case AddCourseSubpageEnum.private:
+        final privateCourseJoinCode = chunks
+            .skip(1)
+            .firstWhereOrNull((c) => c.startsWith('j'))
+            ?.substring(1);
+
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          privateCourseJoinCode:
+              privateCourseJoinCode != null && privateCourseJoinCode.isNotEmpty
+              ? TokenFields.decode(privateCourseJoinCode)
+              : null,
+        );
+      case AddCourseSubpageEnum.own:
+        if (parts.length > 2 && parts[2] == 'invite') {
+          final createCourseId = TokenFields.decode(parts[1]);
+          return AddCoursePageTokenParam(
+            subpage: subpage,
+            createCourseId: createCourseId,
+            showNewCourseInvitePage: true,
+          );
+        }
+
+        if (parts.length > 1) {
+          final courseIdChunks = TokenFields.split(parts[1]);
+          final createCourseId = TokenFields.decode(courseIdChunks.first);
+
+          final languageEntry = courseIdChunks
+              .skip(1)
+              .firstWhereOrNull((c) => c.startsWith('l'))
+              ?.substring(1);
+
+          return AddCoursePageTokenParam(
+            subpage: subpage,
+            createCourseId: createCourseId,
+            initialLanguageFilter:
+                languageEntry != null && languageEntry.isNotEmpty
+                ? TokenFields.decode(languageEntry)
+                : null,
+          );
+        }
+
+        final languageEntry = chunks
+            .skip(1)
+            .firstWhereOrNull((c) => c.startsWith('l'))
+            ?.substring(1);
+
+        return AddCoursePageTokenParam(
+          subpage: subpage,
+          initialLanguageFilter:
+              languageEntry != null && languageEntry.isNotEmpty
+              ? TokenFields.decode(languageEntry)
+              : null,
+        );
+    }
   }
 
   @override
   bool operator ==(Object other) =>
-      other is AddCourseTokenParam &&
+      other is AddCoursePageTokenParam &&
       other.subpage == subpage &&
-      other.roomId == roomId &&
-      other.courseId == courseId &&
-      other.targetLanguage == targetLanguage &&
-      other.joinCode == joinCode &&
-      other.invite == invite;
+      other.previewRoomId == previewRoomId &&
+      other.createCourseId == createCourseId &&
+      other.initialLanguageFilter == initialLanguageFilter &&
+      other.privateCourseJoinCode == privateCourseJoinCode &&
+      other.showNewCourseInvitePage == showNewCourseInvitePage;
 
   @override
-  int get hashCode =>
-      Object.hash(subpage, roomId, courseId, targetLanguage, joinCode, invite);
+  int get hashCode => Object.hash(
+    subpage,
+    previewRoomId,
+    createCourseId,
+    initialLanguageFilter,
+    privateCourseJoinCode,
+    showNewCourseInvitePage,
+  );
 }

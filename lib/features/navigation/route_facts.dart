@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
@@ -107,17 +108,18 @@ AppSection sectionFor(Uri uri) {
   //     reads as its course, not as the global chat list.
   //  3. Only a lone room with no course context is a direct chat → Chats.
   final left = parseOpenPanels(uri).left;
-  if (left.any((t) => t.type == 'chats')) return AppSection.chats;
+  if (left.any((t) => t.type == PanelTypesEnum.chats)) return AppSection.chats;
   if (left.any(
         (t) =>
-            t.type == 'course' ||
-            t.type == 'coursepage' ||
-            t.type == 'addcourse',
+            t.type == PanelTypesEnum.course ||
+            t.type == PanelTypesEnum.coursepage ||
+            t.type == PanelTypesEnum.addcourse ||
+            t.type == PanelTypesEnum.addcoursepage,
       ) ||
       activeSpaceIdFor(uri) != null) {
     return AppSection.courses;
   }
-  if (left.any((t) => t.type == 'room')) return AppSection.chats;
+  if (left.any((t) => t.type == PanelTypesEnum.room)) return AppSection.chats;
   // The few real route-driven paths (fork `/rooms/...` pages, the course
   // Completer flows and public preview) highlight by first segment.
   final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;
@@ -186,9 +188,9 @@ ActivityTokenParam? activityFor(GoRouterState state) =>
 String? joinCodeFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
     final param = token.param;
-    if (param is! AddCourseTokenParam) continue;
-    if (param.subpage != 'private') continue;
-    return param.joinCode;
+    if (param is! AddCoursePageTokenParam) continue;
+    if (param.subpage != AddCourseSubpageEnum.private) continue;
+    return param.privateCourseJoinCode;
   }
   return null;
 }
@@ -206,11 +208,14 @@ MapFocus? mapFocusFor(GoRouterState state) {
 /// deep detail views (a room/space leaf, a construct drilldown).
 bool showNavRail(GoRouterState state, bool isColumnMode) {
   if (isColumnMode) return true;
-  // An in-progress activity is immersive: on a narrow screen the bottom nav is
-  // suppressed so a stray tap (World/Chats/Avatar) can't abandon the activity
-  // mid-task — the design marks an activity the exclusive surface, and it carries
-  // its own exit. See `routing.instructions.md`.
-  if (activityFor(state) != null) return false;
+  // NOTE: an open `activity` token must NOT suppress the nav widget. The plan
+  // stage rides the widget's expandable cavity on narrow (a half-open sheet,
+  // pin visible — routing.instructions.md), so hiding the widget here left the
+  // activity with no host at all: a bare map with every control gone (#7530).
+  // The immersive case — a LAUNCHED session — is a `room`/`session` token,
+  // which hides the chrome through the focused-full-screen path instead; the
+  // liveView sibling rule drops the plan token at launch, so the two never
+  // coexist. (The suppression predated the panel/cavity model, #7385.)
   final roomId = state.pathParameters['roomid'];
   final spaceId = state.pathParameters['spaceid'];
   if (roomId == null && spaceId == null) {
@@ -248,7 +253,7 @@ const int _maxPanelsPerList = 6;
 /// parent may be in the other column (a left `session` over the right `analytics`
 /// list). See `close_affordance.dart` / `panel_registry.dart`.
 bool parentIsOpen(Uri uri, PanelToken token) {
-  final parentType = PanelRegistry.defFor(token.type)?.parent;
+  final parentType = token.type.def.parent;
   if (parentType == null) return false;
   final lists = parseOpenPanels(uri);
   return lists.left.any((t) => t.type == parentType) ||
@@ -281,14 +286,14 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   for (final element in encodedList.split(',')) {
     final token = PanelToken.parse(element);
     if (token == null) continue;
-    final def = PanelRegistry.defFor(token.type);
-    if (def == null || def.column != column) continue;
+    final def = token.type.def;
+    if (def.column != column) continue;
     // A `room`/`session` token's IDENTITY is its bare room id; the rest of the
     // param is a pushed sub-page (`<id>/search`, `<id>/details/…`). Dedup on the
     // bare id so a hand-edited URL with two sub-pages of the same room degrades
     // to one panel rather than colliding on the room's GlobalKey. Other panels
     // dedup on the whole (type, param). See `routing.instructions.md`.
-    final identity = (token.type == 'room' || token.type == 'session')
+    final identity = token.type.isRoomPanel
         ? '${token.type}:${(token.param?.build() ?? '').split('/').first}'
         : '${token.type}:${token.param?.build() ?? ''}';
     if (!seen.add(identity)) continue;
@@ -304,8 +309,9 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   }
   // Practice takes over the analytics surface, so it never coexists with the
   // analytics master (the `detail` group already excludes vocab/grammar details).
-  if (column == PanelColumn.right && tokens.any((t) => t.type == 'practice')) {
-    tokens.removeWhere((t) => t.type == 'analytics');
+  if (column == PanelColumn.right &&
+      tokens.any((t) => t.type == PanelTypesEnum.practice)) {
+    tokens.removeWhere((t) => t.type == PanelTypesEnum.analytics);
   }
   // A `course` card and a `coursepage` management page read their space id from
   // the `?c=<id>` course context, not the token, so without it they have nothing
@@ -316,7 +322,11 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   // openCourseFilter sheds the previous course's page only because it re-targets
   // the context to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
-    tokens.removeWhere((t) => t.type == 'course' || t.type == 'coursepage');
+    tokens.removeWhere(
+      (t) =>
+          t.type == PanelTypesEnum.course ||
+          t.type == PanelTypesEnum.coursepage,
+    );
   }
   return _masterFirst(tokens);
 }
@@ -329,7 +339,7 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
 List<PanelToken> _masterFirst(List<PanelToken> tokens) {
   final result = List<PanelToken>.from(tokens);
   for (var i = 0; i < result.length; i++) {
-    final parentType = PanelRegistry.defFor(result[i].type)?.parent;
+    final parentType = result[i].type.def.parent;
     if (parentType == null) continue;
     final parentIdx = result.indexWhere((t) => t.type == parentType);
     if (parentIdx > i) {

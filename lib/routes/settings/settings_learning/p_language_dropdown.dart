@@ -89,95 +89,106 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DropdownButtonFormField2<LanguageModel>(
-          customButton:
-              widget.initialLanguage != null &&
-                  sortedLanguages.contains(widget.initialLanguage)
-              ? LanguageDropDownEntry(
-                  languageModel: widget.initialLanguage!,
-                  isL2List: widget.isL2List,
-                  isDropdown: true,
-                  enabled: widget.enabled,
-                )
-              : null,
-          menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
-          decoration: InputDecoration(
-            labelText: widget.decorationText,
-            enabledBorder: hasError
-                ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
-                  )
-                : null,
-            focusedBorder: hasError
-                ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.error,
-                      width: 2,
-                    ),
-                  )
-                : null,
-          ),
-          isExpanded: true,
-          dropdownStyleData: DropdownStyleData(
-            maxHeight: kIsWeb ? 500 : null,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color:
-                  widget.backgroundColor ??
-                  Theme.of(context).colorScheme.surfaceContainerHigh,
-            ),
-          ),
-          items: [
-            ...sortedLanguages.map(
-              (languageModel) => DropdownMenuItem(
-                value: languageModel,
-                child: Container(
-                  color: widget.initialLanguage == languageModel
-                      ? Theme.of(context).colorScheme.primary.withAlpha(20)
-                      : Colors.transparent,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 12,
-                  ),
-                  child: LanguageDropDownEntry(
-                    languageModel: languageModel,
+        Semantics(
+          container: true,
+          child: DropdownButtonFormField2<LanguageModel>(
+            customButton:
+                widget.initialLanguage != null &&
+                    sortedLanguages.contains(widget.initialLanguage)
+                ? LanguageDropDownEntry(
+                    languageModel: widget.initialLanguage!,
                     isL2List: widget.isL2List,
+                    isDropdown: true,
+                    enabled: widget.enabled,
+                  )
+                : null,
+            menuItemStyleData: const MenuItemStyleData(
+              padding: EdgeInsets.zero,
+            ),
+            decoration: InputDecoration(
+              labelText: widget.decorationText,
+              enabledBorder: hasError
+                  ? OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    )
+                  : null,
+              focusedBorder: hasError
+                  ? OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.error,
+                        width: 2,
+                      ),
+                    )
+                  : null,
+            ),
+            isExpanded: true,
+            dropdownStyleData: DropdownStyleData(
+              maxHeight: kIsWeb ? 500 : null,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                color:
+                    widget.backgroundColor ??
+                    Theme.of(context).colorScheme.surfaceContainerHigh,
+              ),
+            ),
+            items: [
+              ...sortedLanguages.map(
+                (languageModel) => DropdownMenuItem(
+                  value: languageModel,
+                  child: Container(
+                    color: widget.initialLanguage == languageModel
+                        ? Theme.of(context).colorScheme.primary.withAlpha(20)
+                        : Colors.transparent,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 12,
+                    ),
+                    child: LanguageDropDownEntry(
+                      languageModel: languageModel,
+                      isL2List: widget.isL2List,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-          onChanged: widget.enabled ? (value) => widget.onChange(value!) : null,
-          value: widget.initialLanguage,
-          dropdownSearchData: DropdownSearchData(
-            searchController: _searchController,
-            searchInnerWidgetHeight: 50,
-            searchInnerWidget: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              child: Semantics(
-                label: widget.isL2List
-                    ? L10n.of(context).searchLanguagesHint
-                    : L10n.of(context).alreadySpeak,
-                child: TextField(
-                  autofocus: true,
-                  controller: _searchController,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+            ],
+            onChanged: widget.enabled
+                ? (value) => widget.onChange(value!)
+                : null,
+            value: widget.initialLanguage,
+            dropdownSearchData: DropdownSearchData(
+              searchController: _searchController,
+              searchInnerWidgetHeight: 50,
+              searchInnerWidget: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
+                child: Semantics(
+                  label: widget.isL2List
+                      ? L10n.of(context).searchLanguagesHint
+                      : L10n.of(context).alreadySpeak,
+                  container: true,
+                  child: TextField(
+                    autofocus: true,
+                    controller: _searchController,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                    ),
                   ),
                 ),
               ),
+              searchMatchFn: (item, searchValue) =>
+                  LanguageModel.search(item.value, searchValue, context),
             ),
-            searchMatchFn: (item, searchValue) =>
-                LanguageModel.search(item.value, searchValue, context),
+            onMenuStateChange: (isOpen) {
+              if (!isOpen) _searchController.clear();
+            },
+            enableFeedback: widget.enabled,
           ),
-          onMenuStateChange: (isOpen) {
-            if (!isOpen) _searchController.clear();
-          },
-          enableFeedback: widget.enabled,
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
@@ -185,11 +196,14 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               ? const SizedBox.shrink()
               : Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Text(
-                    widget.error!,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.error,
-                      fontSize: 12,
+                  child: Semantics(
+                    container: true,
+                    child: Text(
+                      widget.error!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                 ),
@@ -219,7 +233,9 @@ class LanguageDropDownEntry extends StatelessWidget {
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
-          child: Avatar(name: languageModel.langCode, size: 30),
+          child: ExcludeSemantics(
+            child: Avatar(name: languageModel.langCode, size: 30),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
