@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
@@ -64,8 +64,17 @@ class ActivitySuggestionCard extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.zero),
                     replacement: SizedBox(height: width),
                   ),
+                  // A video tag, not a play badge: tapping the card opens the
+                  // activity (where the video plays), so a play glyph here would
+                  // mislead. See #7543.
                   if (heroIsVideo)
-                    ActivityMediaPlayBadge(size: (iconSize ?? 12.0) * 2.0),
+                    Positioned(
+                      left: 6.0,
+                      bottom: 6.0,
+                      child: ActivityMediaVideoTag(
+                        size: (iconSize ?? 12.0) * 1.4,
+                      ),
+                    ),
                 ],
               ),
               Expanded(

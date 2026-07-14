@@ -24,7 +24,7 @@
           },
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-env-guard.sh\""
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\""
           }
         ]
       },
@@ -34,7 +34,21 @@
           {
             "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\""
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-env-guard.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
           {
             "type": "command",
             "command": "bash \"${CLAUDE_PROJECT_DIR}/.github/scripts/pretooluse-flutter-skill.sh\""

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 /// Circular play affordance overlaid on a video or YouTube thumbnail to mark a
-/// media block as playable. Used on compact activity surfaces (cards, list
-/// tiles, map pins) where the first media block stands in for the carousel.
+/// media block as playable in place. Used where tapping actually starts the
+/// player: the plan-page hero poster and the media carousel. Compact,
+/// navigational surfaces (cards, list tiles) use [ActivityMediaVideoTag]
+/// instead, since a centered play badge there would wrongly imply tap-to-play
+/// (#7543).
 class ActivityMediaPlayBadge extends StatelessWidget {
   /// Diameter of the play glyph; the dark circle pads around it.
   final double size;
