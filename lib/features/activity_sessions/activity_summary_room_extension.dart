@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
@@ -61,13 +62,18 @@ extension ActivitySummaryRoomExtension on Room {
     for (final messageEvent in messageEvents) {
       ActivitySummaryResultsMessage activityMessage;
       if (messageEvent.isAudioMessage) {
-        final stt = messageEvent.getSpeechToTextLocal();
-        if (stt == null) continue;
+        // A voice message without a transcript still counts as participation —
+        // dropping it silently made voice-heavy sessions look empty to the
+        // summary (#7660). The placeholder is a choreographer contract; the
+        // prompt counts it as participation without inventing its content.
+        final transcript =
+            messageEvent.getSpeechToTextLocal()?.transcript.text.trim() ??
+            ActivitySessionConstants.sttUnavailablePlaceholder;
 
         activityMessage = ActivitySummaryResultsMessage(
           userId: messageEvent.senderId,
-          sent: stt.transcript.text.trim(),
-          written: stt.transcript.text.trim(),
+          sent: transcript,
+          written: transcript,
           time: messageEvent.originServerTs,
           tool: [],
         );

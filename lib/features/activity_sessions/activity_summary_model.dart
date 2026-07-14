@@ -40,12 +40,16 @@ class ActivitySummaryModel {
     );
   }
 
+  /// How long a pending request may run before the UI treats it as failed.
+  /// Generation regularly takes 10-15s on the happy path and up to ~45s when
+  /// the choreographer retries a rejected LLM output (max_tries=3), so a 30s
+  /// cutoff showed "failed" for requests that were still succeeding (#7660).
+  static const Duration requestTimeout = Duration(seconds: 120);
+
   bool get _hasTimeout =>
       summary == null &&
       requestedAt != null &&
-      requestedAt!.isBefore(
-        DateTime.now().subtract(const Duration(seconds: 30)),
-      );
+      requestedAt!.isBefore(DateTime.now().subtract(requestTimeout));
 
   bool get hasError => errorAt != null || _hasTimeout;
 
