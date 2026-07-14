@@ -89,11 +89,13 @@ class GrammarConstructsProvider {
   }
 
   /// Flag a grammar meaning (#6839): send the user's feedback to the
-  /// choreographer, which regenerates the feature's meaning bundle in
-  /// place and returns it (choreo #2548). The regenerated titles and
-  /// descriptions are merged into the cached joined response by value
-  /// (canonical-only fields — display, example, sequence — are untouched).
-  static Future<void> submitTagFeedback({
+  /// choreographer, whose actionability gate (choreo #2769) judges it
+  /// before any regeneration. When edits were applied, the regenerated
+  /// titles and descriptions are merged into the cached joined response
+  /// by value (canonical-only fields — display, example, sequence — are
+  /// untouched). Returns the response so the UI can show the gate's
+  /// qualitative reply.
+  static Future<GrammarMeaningFeedbackResponse> submitTagFeedback({
     required String feature,
     required String feedback,
   }) async {
@@ -104,19 +106,20 @@ class GrammarConstructsProvider {
       userL1: request.userL1,
       feedback: feedback,
     );
+    if (!regen.appliedEdits) return regen;
 
     final constructsResult = await GrammarConstructsRepo.instance.get(request);
     final constructs = constructsResult.result;
     if (constructs == null) {
       Logs().w("Failed to fetch grammar constructs in submitTagFeedback");
-      return;
+      return regen;
     }
 
     final features = constructs.features;
     final featureIndex = features.indexWhere((f) => f.value == feature);
     if (featureIndex == -1) {
       Logs().w("Feature $feature not found in submitTagFeedback");
-      return;
+      return regen;
     }
 
     final currentFeature = features[featureIndex];
@@ -136,5 +139,6 @@ class GrammarConstructsProvider {
     final updatedConstructs = constructs.copyWith(features: updatedFeatures);
     await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
     MorphFeaturesAndTags.clearLookupCache();
+    return regen;
   }
 }

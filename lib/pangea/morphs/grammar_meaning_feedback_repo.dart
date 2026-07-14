@@ -35,11 +35,25 @@ class GrammarMeaningFeedbackResponse {
   final String featureTitle;
   final List<GrammarMeaningValueUpdate> values;
 
+  /// Qualitative reply from the server's feedback gate (choreo #2769) —
+  /// what changed, or why nothing will. Null from pre-gate servers.
+  final String? userFriendlyResponse;
+
+  /// Whether the gate judged the feedback actionable and regenerated the
+  /// bundle. Null from pre-gate servers (which always regenerated).
+  final bool? editsApplied;
+
   const GrammarMeaningFeedbackResponse({
     required this.feature,
     required this.featureTitle,
     required this.values,
+    this.userFriendlyResponse,
+    this.editsApplied,
   });
+
+  /// Treat null (pre-gate server) as applied — those servers regenerated
+  /// unconditionally.
+  bool get appliedEdits => editsApplied ?? true;
 
   static GrammarMeaningFeedbackResponse fromJson(Map<String, dynamic> json) =>
       GrammarMeaningFeedbackResponse(
@@ -52,6 +66,8 @@ class GrammarMeaningFeedbackResponse {
               ),
             )
             .toList(),
+        userFriendlyResponse: json['user_friendly_response'],
+        editsApplied: json['edits_applied'],
       );
 }
 
