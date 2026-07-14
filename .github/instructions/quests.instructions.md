@@ -38,9 +38,16 @@ The course panel tells the learner how far along they are, at two grains, comput
 
 A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
 
+## Star display on Activity Card
+Follow the logic for how many star to show in [activities.instruction.md](.github/instructions/activities.instructions.md)
+
+## Star display on each LO
+
 ## Future Work
 
 File GitHub issues for these and link them here (use the `update-future-work` skill).
 
 - A persisted per-Mission star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
 - Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc).
+- [ ] Implement designs of Joinabel and Open Activity https://github.com/pangeachat/client/issues/7669
+- [ ] Implement design hint to indicate Activity that need more people to start https://github.com/pangeachat/client/issues/6810
