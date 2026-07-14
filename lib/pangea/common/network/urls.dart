@@ -88,7 +88,6 @@ class PApiUrls {
   static String rcAppsChoreo = "${PApiUrls._subscriptionRoute}/app_ids";
   static String rcProductsChoreo =
       "${PApiUrls._subscriptionRoute}/all_products";
-  static String rcProductsTrial = "${PApiUrls._subscriptionRoute}/free_trial";
 
   static String rcSubscription = PApiUrls._subscriptionRoute;
 
@@ -100,4 +99,5 @@ class PApiUrls {
   static String subscriptionCancel = "$_subscriptionRoute/cancel";
   static String subscriptionHistory = "$_subscriptionRoute/history";
   static String billingPortal = "$_subscriptionRoute/billing_portal";
+  static String freeTrial = "$_subscriptionRoute/free_trial";
 }

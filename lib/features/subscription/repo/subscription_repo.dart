@@ -56,29 +56,6 @@ class SubscriptionRepo {
     }
   }
 
-  static Future<bool> activateFreeTrial() async {
-    try {
-      final Requests req = Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
-      final http.Response res = await req.get(url: PApiUrls.rcProductsTrial);
-
-      if (res.statusCode != 201) {
-        ErrorHandler.logError(e: res.body, data: {});
-        return false;
-      } else {
-        return true;
-      }
-    } catch (err, s) {
-      if (err is ChoreoException) {
-        ErrorHandler.logError(e: err.errorMessage, data: {});
-      } else {
-        ErrorHandler.logError(e: err, s: s, data: {});
-      }
-      return false;
-    }
-  }
-
   static Future<RCSubscriptionResponseModel> getCurrentSubscriptionInfo(
     List<SubscriptionDetails>? allProducts,
   ) async {

@@ -18,7 +18,8 @@ import 'package:fluffychat/features/subscription/models/web_subscription_info_ma
 import 'package:fluffychat/features/subscription/repo/all_products_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_app_ids_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -276,7 +277,8 @@ class SubscriptionController with ChangeNotifier {
   }
 
   Future<void> activateNewUserTrial() async {
-    final activated = await SubscriptionRepo.activateFreeTrial();
+    final result = await FreeTrialRepo.instance.get(FreeTrialRequest());
+    final activated = !result.isError;
     if (!activated) return;
     await updateCurrentSubscription();
   }
