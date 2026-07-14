@@ -92,13 +92,11 @@ class PApiUrls {
 
   static String rcSubscription = PApiUrls._subscriptionRoute;
 
-  static String validatePromoCode =
-      "${PApiUrls._subscriptionRoute}/validate_promo_code";
-
   static String paymentHistory = "${PApiUrls._subscriptionRoute}/history";
 
   static String billingPortal = "${PApiUrls._subscriptionRoute}/billing_portal";
 
   // subscriptions v2
   static String subscriptionProducts = "$_subscriptionRoute/products";
+  static String validatePromoCode = "$_subscriptionRoute/validate_promo_code";
 }

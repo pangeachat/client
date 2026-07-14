@@ -1,5 +1,7 @@
-class ValidatePromoCodeResponse {
-  final bool valid;
+import 'package:fluffychat/pangea/common/utils/base_response.dart';
+
+class ValidatePromoCodeResponse extends BaseResponse {
+  final bool? valid;
   final String? code;
   final String? discountType;
   final double? percentOff;
@@ -8,11 +10,11 @@ class ValidatePromoCodeResponse {
   final String? couponDuration;
   final PromoRestrictions? restrictions;
   final DiscountedPrice? discountedPrice;
-  final int? expiresAt;
+  final DateTime? expiresAt;
   final String? reason;
 
   const ValidatePromoCodeResponse({
-    required this.valid,
+    this.valid,
     this.code,
     this.discountType,
     this.percentOff,
@@ -27,7 +29,7 @@ class ValidatePromoCodeResponse {
 
   factory ValidatePromoCodeResponse.fromJson(Map<String, dynamic> json) {
     return ValidatePromoCodeResponse(
-      valid: json['valid'] as bool,
+      valid: json['valid'] as bool?,
       code: json['code'] as String?,
       discountType: json['discount_type'] as String?,
       percentOff: (json['percent_off'] as num?)?.toDouble(),
@@ -44,11 +46,16 @@ class ValidatePromoCodeResponse {
               json['discounted_price'] as Map<String, dynamic>,
             )
           : null,
-      expiresAt: json['expires_at'] as int?,
+      expiresAt: json['expires_at'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(
+              (json['expires_at'] as int) * 1000,
+            )
+          : null,
       reason: json['reason'] as String?,
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'valid': valid,
@@ -60,36 +67,36 @@ class ValidatePromoCodeResponse {
       'coupon_duration': couponDuration,
       'restrictions': restrictions?.toJson(),
       'discounted_price': discountedPrice?.toJson(),
-      'expires_at': expiresAt,
+      'expires_at': expiresAt?.millisecondsSinceEpoch,
       'reason': reason,
     };
   }
 }
 
 class PromoRestrictions {
+  final bool? firstTimeTransaction;
   final int? minimumAmount;
   final String? minimumAmountCurrency;
-  final bool firstTimeTransaction;
 
   const PromoRestrictions({
+    this.firstTimeTransaction,
     this.minimumAmount,
     this.minimumAmountCurrency,
-    this.firstTimeTransaction = false,
   });
 
   factory PromoRestrictions.fromJson(Map<String, dynamic> json) {
     return PromoRestrictions(
+      firstTimeTransaction: json['first_time_transaction'] as bool?,
       minimumAmount: json['minimum_amount'] as int?,
       minimumAmountCurrency: json['minimum_amount_currency'] as String?,
-      firstTimeTransaction: json['first_time_transaction'] as bool? ?? false,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'first_time_transaction': firstTimeTransaction,
       'minimum_amount': minimumAmount,
       'minimum_amount_currency': minimumAmountCurrency,
-      'first_time_transaction': firstTimeTransaction,
     };
   }
 }

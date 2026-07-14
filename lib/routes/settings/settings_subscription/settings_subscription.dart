@@ -33,6 +33,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
 
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addObserver(this);
     _refreshSubscription();
 
@@ -49,7 +50,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         setState(() => _userEmail = email);
       }
     });
-    super.initState();
   }
 
   @override
