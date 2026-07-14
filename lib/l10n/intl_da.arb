@@ -8042,8 +8042,6 @@
     "allow": "Tillad",
     "deny": "Afvis",
     "enabledRenewal": "Aktiver abonnement fornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Ændringer til dit abonnement kan tage et øjeblik at afspejle i appen.",
     "subscribeReadingAssistance": "Abonner for at låse op for beskedværktøjer",
     "aceDisplayName": "Achinese",
@@ -8322,14 +8320,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -7997,8 +7997,6 @@
     "allow": "Επιτρέπω",
     "deny": "Αρνούμαι",
     "enabledRenewal": "Ενεργοποίηση Ανανέωσης Συνδρομής",
-    "subscriptionEndsOn": "Η Συνδρομή Λήγει Στις",
-    "subscriptionRenewsOn": "Η Συνδρομή Ανανεώνεται Στις",
     "waitForSubscriptionChanges": "Οι αλλαγές στη συνδρομή σας μπορεί να χρειαστούν λίγο χρόνο για να εμφανιστούν στην εφαρμογή.",
     "subscribeReadingAssistance": "Εγγραφείτε για να ξεκλειδώσετε τα εργαλεία μηνυμάτων",
     "aceDisplayName": "Αχινέζικα",
@@ -8277,14 +8275,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

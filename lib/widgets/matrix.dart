@@ -328,6 +328,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           scope.setUser(SentryUser(id: client.userID, name: client.userID)),
     );
     pangeaController = PangeaController(matrixState: this);
+    pangeaController.initControllers(client.userID);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();

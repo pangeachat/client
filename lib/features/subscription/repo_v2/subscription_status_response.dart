@@ -1,6 +1,9 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/features/subscription/enums/entitlement_source_enum.dart';
 import 'package:fluffychat/features/subscription/enums/manage_account_kind_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_provider_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
@@ -130,6 +133,10 @@ class SubscriptionWinning {
     if (value == null) return null;
     return DateTime.tryParse(value as String);
   }
+
+  SubscriptionDuration get duration =>
+      SubscriptionDuration.values.firstWhereOrNull((d) => d.name == planId) ??
+      SubscriptionDuration.month;
 }
 
 class SubscriptionEntitlement {

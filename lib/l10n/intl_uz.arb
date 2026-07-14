@@ -3982,8 +3982,6 @@
     "allow": "Ruxsat berish",
     "deny": "Rad etish",
     "enabledRenewal": "Obunani yangilashni yoqish",
-    "subscriptionEndsOn": "Obuna tugash sanasi",
-    "subscriptionRenewsOn": "Obuna yangilanish sanasi",
     "waitForSubscriptionChanges": "Obuna o'zgarishlari ilovada aks etishi uchun biroz vaqt talab qilishi mumkin.",
     "subscribeReadingAssistance": "Xabar vositalarini ochish uchun obuna bo'ling",
     "aceDisplayName": "Achinese",
@@ -7615,14 +7613,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

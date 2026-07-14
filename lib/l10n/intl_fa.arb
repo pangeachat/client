@@ -7065,8 +7065,6 @@
     "allow": "اجازه دادن",
     "deny": "رد کردن",
     "enabledRenewal": "فعال کردن تمدید اشتراک",
-    "subscriptionEndsOn": "اشتراک در تاریخ پایان می‌یابد",
-    "subscriptionRenewsOn": "اشتراک در تاریخ تمدید می‌شود",
     "waitForSubscriptionChanges": "تغییرات در اشتراک شما ممکن است مدتی طول بکشد تا در برنامه منعکس شود.",
     "subscribeReadingAssistance": "برای باز کردن ابزارهای پیام، اشتراک بگیرید",
     "aceDisplayName": "آچین",
@@ -7345,14 +7343,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

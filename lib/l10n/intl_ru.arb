@@ -8131,8 +8131,6 @@
     "allow": "Разрешить",
     "deny": "Запретить",
     "enabledRenewal": "Включить автоматическое продление подписки",
-    "subscriptionEndsOn": "Подписка заканчивается",
-    "subscriptionRenewsOn": "Подписка продлевается",
     "waitForSubscriptionChanges": "Изменения в вашей подписке могут отобразиться в приложении с небольшой задержкой.",
     "subscribeReadingAssistance": "Подпишитесь, чтобы разблокировать инструменты сообщений",
     "aceDisplayName": "Ачехский",
@@ -8411,14 +8409,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -25,9 +25,12 @@ class RightPanelSettingsSubpage extends StatelessWidget {
   /// The settings sub-page id from the token param, e.g. `learning`,
   /// `security`, `security/password`, `profile/edit`. Null/empty is the menu.
   final SettingsTokenParam? param;
-  final Widget? closeButton;
-
-  const RightPanelSettingsSubpage({super.key, this.param, this.closeButton});
+  final Widget closeButton;
+  const RightPanelSettingsSubpage({
+    super.key,
+    this.param,
+    required this.closeButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +63,7 @@ class RightPanelSettingsSubpage extends StatelessWidget {
       case 'chat':
         return const SettingsChat();
       case 'subscription':
-        return const SubscriptionManagement();
+        return SettingsSubscription(closeButton: closeButton);
       case 'security':
         return const SettingsSecurity();
       case 'security/password':

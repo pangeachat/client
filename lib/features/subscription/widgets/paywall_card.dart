@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -55,12 +57,12 @@ class PaywallCard extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: TextButton(
-                onPressed: () {
-                  SubscriptionPaywall.show(
-                    context,
-                    userID: Matrix.of(context).client.userID,
-                  );
-                },
+                onPressed: () => context.go(
+                  WorkspaceNav.openSettings(
+                    GoRouterState.of(context).uri,
+                    page: 'subscription',
+                  ),
+                ),
                 style: TextButton.styleFrom(
                   backgroundColor: Theme.of(
                     context,

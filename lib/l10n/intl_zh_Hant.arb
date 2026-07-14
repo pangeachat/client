@@ -7073,8 +7073,6 @@
     "allow": "允許",
     "deny": "拒絕",
     "enabledRenewal": "啟用訂閱續訂",
-    "subscriptionEndsOn": "訂閱結束於",
-    "subscriptionRenewsOn": "訂閱續訂於",
     "waitForSubscriptionChanges": "您的訂閱變更可能需要一些時間才能在應用程式中反映。",
     "subscribeReadingAssistance": "訂閱以解鎖消息工具",
     "aceDisplayName": "阿齊尼語",
@@ -7353,14 +7351,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

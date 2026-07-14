@@ -7360,8 +7360,6 @@
     "allow": "Autoriser",
     "deny": "Refuser",
     "enabledRenewal": "Activer le renouvellement de l'abonnement",
-    "subscriptionEndsOn": "L'abonnement se termine le",
-    "subscriptionRenewsOn": "L'abonnement se renouvelle le",
     "waitForSubscriptionChanges": "Les modifications de votre abonnement peuvent prendre un moment à se refléter dans l'application.",
     "subscribeReadingAssistance": "Abonnez-vous pour débloquer les outils de message",
     "aceDisplayName": "Achinese",
@@ -7640,14 +7638,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -2,11 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -360,9 +361,11 @@ class _MessageSelectModeContent extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: ErrorIndicator(
               message: L10n.of(context).subscribeReadingAssistance,
-              onTap: () => SubscriptionPaywall.show(
-                context,
-                userID: Matrix.of(context).client.userID,
+              onTap: () => context.go(
+                WorkspaceNav.openSettings(
+                  GoRouterState.of(context).uri,
+                  page: 'subscription',
+                ),
               ),
               style: style,
             ),

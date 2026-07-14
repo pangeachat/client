@@ -5,16 +5,16 @@ import 'package:fluffychat/pangea/common/constants/local.key.dart';
 class SubscriptionManagementRepo {
   static final GetStorage _cache = GetStorage("subscription_storage");
 
-  static bool getBeganWebPayment() {
-    return _cache.read(PLocalKey.beganWebPayment) ?? false;
+  static bool getBeganPayment() {
+    return _cache.read(PLocalKey.beganPayment) ?? false;
   }
 
-  static Future<void> setBeganWebPayment() async {
-    await _cache.write(PLocalKey.beganWebPayment, true);
+  static Future<void> setBeganPayment() async {
+    await _cache.write(PLocalKey.beganPayment, true);
   }
 
-  static Future<void> removeBeganWebPayment() async {
-    await _cache.remove(PLocalKey.beganWebPayment);
+  static Future<void> removeBeganPayment() async {
+    await _cache.remove(PLocalKey.beganPayment);
   }
 
   static bool getDismissedPaywall() {

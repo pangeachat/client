@@ -1,3 +1,6 @@
+import 'package:collection/collection.dart';
+
+import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class ProductsResponse extends BaseResponse {
@@ -65,5 +68,16 @@ class ProductPlan {
       'interval': interval,
       'interval_count': intervalCount,
     };
+  }
+
+  SubscriptionDuration get duration =>
+      SubscriptionDuration.values.firstWhereOrNull((d) => d.name == planId) ??
+      SubscriptionDuration.month;
+
+  // V2 TODO
+  String get priceDisplay {
+    final updatedAmount = amount * 0.01;
+    if (currency == 'usd') return "\$$updatedAmount";
+    return "$updatedAmount";
   }
 }

@@ -7186,8 +7186,6 @@
     "allow": "Atļaut",
     "deny": "Noraidīt",
     "enabledRenewal": "Iespējot abonēšanas atjaunošanu",
-    "subscriptionEndsOn": "Abonēšana beidzas",
-    "subscriptionRenewsOn": "Abonēšana tiek atjaunota",
     "waitForSubscriptionChanges": "Izmaiņas jūsu abonēšanā var aizņemt brīdi, lai atspoguļotos lietotnē.",
     "subscribeReadingAssistance": "Abonēt, lai atbloķētu ziņojumu rīkus",
     "aceDisplayName": "Achinese",
@@ -7466,14 +7464,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

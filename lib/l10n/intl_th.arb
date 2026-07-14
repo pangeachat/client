@@ -7667,8 +7667,6 @@
     "allow": "อนุญาต",
     "deny": "ปฏิเสธ",
     "enabledRenewal": "เปิดใช้งานการต่ออายุการสมัครสมาชิก",
-    "subscriptionEndsOn": "การสมัครสมาชิกสิ้นสุดในวันที่",
-    "subscriptionRenewsOn": "การสมัครสมาชิกต่ออายุในวันที่",
     "waitForSubscriptionChanges": "การเปลี่ยนแปลงการสมัครสมาชิกของคุณอาจใช้เวลาสักครู่ในการสะท้อนในแอป",
     "subscribeReadingAssistance": "สมัครสมาชิกเพื่อปลดล็อกเครื่องมือข้อความ",
     "aceDisplayName": "Achinese",
@@ -7947,14 +7945,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

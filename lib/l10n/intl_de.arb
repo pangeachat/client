@@ -7218,8 +7218,6 @@
     "allow": "Erlauben",
     "deny": "Ablehnen",
     "enabledRenewal": "Abonnementverlängerung aktivieren",
-    "subscriptionEndsOn": "Abonnement endet am",
-    "subscriptionRenewsOn": "Abonnement erneuert sich am",
     "waitForSubscriptionChanges": "Änderungen an Ihrem Abonnement können einen Moment dauern, um in der App angezeigt zu werden.",
     "subscribeReadingAssistance": "Abonnieren, um Nachrichtentools freizuschalten",
     "aceDisplayName": "Achinese",
@@ -7498,14 +7496,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

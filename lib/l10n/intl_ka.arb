@@ -8016,8 +8016,6 @@
     "allow": "დაშვება",
     "deny": "უარყოფა",
     "enabledRenewal": "გამოწერის განახლების გაწვდვა",
-    "subscriptionEndsOn": "გამოწერა მთავრდება",
-    "subscriptionRenewsOn": "გამოწერა განახლდება",
     "waitForSubscriptionChanges": "თქვენი გამოწერის ცვლილებებს შეიძლება რამდენიმე წუთი დასჭირდეს აპლიკაციაში ასახვისთვის.",
     "subscribeReadingAssistance": "გამოწერა მესიჯების ინსტრუმენტების გასახსნელად",
     "aceDisplayName": "აჩინეზი",
@@ -8296,14 +8294,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -7099,8 +7099,6 @@
     "allow": "Permetre",
     "deny": "Denegar",
     "enabledRenewal": "Habilitar la renovació de la subscripció",
-    "subscriptionEndsOn": "La subscripció acaba el",
-    "subscriptionRenewsOn": "La subscripció es renova el",
     "waitForSubscriptionChanges": "Els canvis a la teva subscripció poden trigar un moment a reflectir-se a l'aplicació.",
     "subscribeReadingAssistance": "Subscriu-te per desbloquejar eines de missatge",
     "aceDisplayName": "Achinese",
@@ -7379,14 +7377,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

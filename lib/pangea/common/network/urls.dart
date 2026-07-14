@@ -25,8 +25,6 @@ class PApiUrls {
   static String cmsLanguages = "${Environment.cmsApi}/cms/api/languages";
 
   ///   ---------------------- Users --------------------------------------
-  static String paymentLink = "${PApiUrls._subscriptionRoute}/payment_link";
-
   static String languageDetection =
       "${PApiUrls._choreoRoute}/language_detection";
 
@@ -83,13 +81,6 @@ class PApiUrls {
       "${PApiUrls._choreoRoute}/activity_plan/localize";
   static String requestCustomCourse =
       "${PApiUrls._choreoRoute}/courses/request";
-
-  ///-------------------------------- revenue cat --------------------------
-  static String rcAppsChoreo = "${PApiUrls._subscriptionRoute}/app_ids";
-  static String rcProductsChoreo =
-      "${PApiUrls._subscriptionRoute}/all_products";
-
-  static String rcSubscription = PApiUrls._subscriptionRoute;
 
   // subscriptions v2
   static String subscriptionProducts = "$_subscriptionRoute/products";

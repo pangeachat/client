@@ -7074,8 +7074,6 @@
     "allow": "அனுமதிக்கவும்",
     "deny": "மறுக்கவும்",
     "enabledRenewal": "சந்தா புதுப்பிப்பை செயல்படுத்தவும்",
-    "subscriptionEndsOn": "சந்தா முடிவடைகிறது",
-    "subscriptionRenewsOn": "சந்தா புதுப்பிக்கப்படுகிறது",
     "waitForSubscriptionChanges": "உங்கள் சந்தாவிற்கு மாற்றங்கள் செயலியில் பிரதிபலிக்க சில நேரம் ஆகலாம்.",
     "subscribeReadingAssistance": "செய்தி கருவிகளை திறக்க சந்தா செய்யவும்",
     "aceDisplayName": "அசினீஸ்",
@@ -7354,14 +7352,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

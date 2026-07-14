@@ -8523,8 +8523,6 @@
     "allow": "ཆོག",
     "deny": "མི་ཆོག",
     "enabledRenewal": "ཉོ་ཡུན་གསར་བསྐྲུན་སྤྱོད་གཏོང",
-    "subscriptionEndsOn": "ཉོ་ཡུན་མཇུག་འགྲིལ་ཚེས",
-    "subscriptionRenewsOn": "ཉོ་ཡུན་གསར་བསྐྲུན་ཚེས",
     "waitForSubscriptionChanges": "ཁྱེད་ཀྱི་ཉོ་ཡུན་གྱི་བསྒྱུར་བ་མཉེན་ཆས་ནང་མངོན་པར་ཏོག་ཙམ་འགོར་སྲིད།",
     "subscribeReadingAssistance": "འཕྲིན་ཆ་ཤས་ཀྱི་ལག་ཆ་སྤྱོད་པའི་ཆེད་དུ་ཉོ་ཡུན་བྱོས།",
     "aceDisplayName": "ཨ་ཅི་ནིས",

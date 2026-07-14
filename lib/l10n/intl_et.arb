@@ -7197,8 +7197,6 @@
     "allow": "Luba",
     "deny": "Keela",
     "enabledRenewal": "Luba tellimuse uuendamine",
-    "subscriptionEndsOn": "Tellimus lõppeb",
-    "subscriptionRenewsOn": "Tellimus uuendatakse",
     "waitForSubscriptionChanges": "Teie tellimuse muudatused võivad rakenduses kajastuda mõne hetke pärast.",
     "subscribeReadingAssistance": "Tellige, et avada sõnumite tööriistad",
     "aceDisplayName": "Achinese",
@@ -7477,14 +7475,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

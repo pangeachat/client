@@ -7079,8 +7079,6 @@
     "allow": "Consenti",
     "deny": "Nega",
     "enabledRenewal": "Abilita il rinnovo dell'abbonamento",
-    "subscriptionEndsOn": "L'abbonamento scade il",
-    "subscriptionRenewsOn": "L'abbonamento si rinnova il",
     "waitForSubscriptionChanges": "Le modifiche al tuo abbonamento potrebbero richiedere un momento per riflettersi nell'app.",
     "subscribeReadingAssistance": "Abbonati per sbloccare gli strumenti di messaggistica",
     "aceDisplayName": "Achinese",
@@ -7359,14 +7357,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

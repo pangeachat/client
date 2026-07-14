@@ -1,13 +1,14 @@
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 
 class CheckoutRequest extends BaseRequest {
+  final String userID;
   final String planId;
   final String? promoCode;
 
-  CheckoutRequest({required this.planId, this.promoCode});
+  CheckoutRequest({required this.userID, required this.planId, this.promoCode});
 
   @override
-  String get storageKey => "checkout_${planId}_$promoCode";
+  String get storageKey => "checkout_${userID}_${planId}_$promoCode";
 
   @override
   Map<String, dynamic> toJson() {

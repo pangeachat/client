@@ -115,11 +115,9 @@ dependencies:
   flutter_html: ^3.0.0
   flutter_svg: ^2.0.10+1
   get_storage: ^2.1.1
-  in_app_purchase: ^3.2.1
   jwt_decode: ^0.3.1
   material_symbols_icons: ^4.2741.0
   open_file: ^3.3.2
-  purchases_flutter: ^8.5.1
   sentry_flutter: ^9.17.0
   shimmer: ^3.0.0
   rive: ^0.14.5
