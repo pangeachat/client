@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/persistent_repo_cache.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// How a plan [ActivityPlanRepo.lookup] resolved.
@@ -60,7 +61,9 @@ class ActivityPlanRepo
     with ChangeNotifier {
   ActivityPlanRepo._internal()
     : super(
-        boxName: 'activity_plan_storage',
+        cache: PersistentRepoCache<ActivityPlanFetchResponse>(
+          'activity_plan_storage',
+        ),
         responseFromJson: ActivityPlanFetchResponse.fromJson,
         cacheDuration: const Duration(hours: 1),
       );

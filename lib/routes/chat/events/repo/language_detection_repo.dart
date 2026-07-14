@@ -3,6 +3,7 @@ import 'package:http/http.dart' show Response;
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/memory_repo_cache.dart';
 import 'package:fluffychat/routes/chat/events/repo/language_detection_request.dart';
 import 'package:fluffychat/routes/chat/events/repo/language_detection_response.dart';
 
@@ -13,10 +14,9 @@ class LanguageDetectionRepo
     extends BaseRepo<LanguageDetectionRequest, LanguageDetectionResponse> {
   LanguageDetectionRepo._internal()
     : super(
-        boxName: 'language_detection',
+        cache: MemoryRepoCache<LanguageDetectionResponse>(),
         responseFromJson: LanguageDetectionResponse.fromJson,
         cacheDuration: const Duration(minutes: 10),
-        persist: false,
       );
 
   static final LanguageDetectionRepo _instance =
