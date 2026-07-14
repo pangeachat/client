@@ -772,7 +772,7 @@ class WorldMapController extends State<WorldMap>
     // a pin on the world map has none and closes with an X. A held session
     // resumes via the token's session-binding field (#7257). The map focuses
     // the activity's pin via the token (`mapFocusFor` → `ActivityFocus`).
-    final myRoom = client?.myActivityInstance(card.activityId);
+    final myRoom = client?.activeActivityInstance(card.activityId);
     context.go(
       WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
     );

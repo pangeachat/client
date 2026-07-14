@@ -9,19 +9,12 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/widgets/analytics_summary/learning_progress_indicators.dart';
-import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 class LevelAnalyticsDetailsContent extends StatelessWidget {
-  /// When hosted inside the world map's right-docked analytics panel, hide the
-  /// cross-metric [LearningProgressIndicators] header — the panel card already
-  /// carries the title and close control, and the metric switcher belongs to the
-  /// cluster, not the docked tab. Mirrors `ConstructAnalyticsView.embedded`.
-  final bool embedded;
-
-  const LevelAnalyticsDetailsContent({super.key, this.embedded = false});
+  final Widget closeButton;
+  const LevelAnalyticsDetailsContent({super.key, required this.closeButton});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +24,19 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return Scaffold(
+      appBar: AppBar(
+        leading: Center(child: closeButton),
+        title: Text(
+          L10n.of(context).level,
+          style: FluffyThemes.isColumnMode(context)
+              ? Theme.of(context).textTheme.titleLarge
+              : Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsGeometry.all(16.0),
@@ -40,11 +46,6 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
             builder: (context, _) {
               return Column(
                 children: [
-                  if (!embedded)
-                    const LearningProgressIndicators(
-                      selected: ProgressIndicatorEnum.level,
-                      canSelect: false,
-                    ),
                   FutureBuilder(
                     future: language != null
                         ? analyticsService.derivedData(language)

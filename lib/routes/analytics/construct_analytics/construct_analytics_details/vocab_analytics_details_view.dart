@@ -98,7 +98,7 @@ class VocabDetailsView extends StatelessWidget {
                         LemmaInfoResponse lemmaInfo,
                         PTRequest ptRequest,
                         PTResponse ptResponse,
-                      ) => controller.onFlagTokenInfo(
+                      ) => controller.onFlagVocabDetails(
                         token,
                         lemmaInfo,
                         ptRequest,
