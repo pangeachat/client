@@ -3,7 +3,7 @@ applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/ch
 description: "Client design for activities: thin cards, the start page's room-driven state, navigation, and the media carousel (video next)."
 ---
 
-# Activity System
+# Activity System change
 
 Conversation activities are structured, game-like conversations. What an activity _is_ — its schema, goals, session lifecycle, and the Matrix-room contract behind it — is owned by the org-wide [activities doc](../../../.github/.github/instructions/activities.instructions.md); backend generation and the read endpoints by the [choreographer doc](../../../2-step-choreographer/.github/instructions/activities.instructions.md). This doc covers only how the **client** discovers, opens, runs, and shows an activity.
 
