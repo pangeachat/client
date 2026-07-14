@@ -88,50 +88,6 @@ class GrammarConstructsProvider {
     return defaultFeaturesAndTags;
   }
 
-  static Future<void> setTagDescription({
-    required String feature,
-    required String tag,
-    required String description,
-  }) async {
-    final request = _request;
-    final constructsResult = await GrammarConstructsRepo.instance.get(request);
-    final constructs = constructsResult.result;
-    if (constructs == null) {
-      Logs().w("Failed to fetch grammar constructs in setTagDescription");
-      return;
-    }
-
-    final features = constructs.features;
-    final featureIndex = features.indexWhere((f) => f.value == feature);
-    if (featureIndex == -1) {
-      Logs().w("Feature $feature not found in setTagDescription");
-      return;
-    }
-
-    final tags = features[featureIndex].tags;
-    final tagIndex = tags.indexWhere((t) => t.value == tag);
-    if (tagIndex == -1) {
-      Logs().w("Tag $tag not found in setTagDescription");
-      return;
-    }
-
-    final currentTag = tags[tagIndex];
-    final updatedTag = currentTag.copyWith(description: description);
-
-    final updatedTags = List<GrammarTag>.from(tags);
-    updatedTags[tagIndex] = updatedTag;
-
-    final currentFeature = features[featureIndex];
-    final updatedFeature = currentFeature.copyWith(tags: updatedTags);
-
-    final updatedFeatures = List<GrammarFeature>.from(features);
-    updatedFeatures[featureIndex] = updatedFeature;
-
-    final updatedConstructs = constructs.copyWith(features: updatedFeatures);
-    await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
-    MorphFeaturesAndTags.clearLookupCache();
-  }
-
   /// Flag a grammar meaning (#6839): send the user's feedback to the
   /// choreographer, which regenerates the feature's meaning bundle in
   /// place and returns it (choreo #2548). The regenerated titles and
