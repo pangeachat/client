@@ -5076,5 +5076,6 @@
             }
         }
     },
+    "bannedCourseError": "You've been removed from this course. Contact your teacher.",
     "closeAddCoursePage": "Close add course page"
 }
