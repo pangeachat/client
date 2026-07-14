@@ -232,7 +232,9 @@ class SpaceDetailsContent extends StatelessWidget {
           await showFutureLoadingDialog(
             context: context,
             future: () => room.setTeacherMode(
-              room.teacherMode.copyWith(starsToUnlockObjective: int.parse(resp)),
+              room.teacherMode.copyWith(
+                starsToUnlockObjective: int.parse(resp),
+              ),
             ),
           );
         },
