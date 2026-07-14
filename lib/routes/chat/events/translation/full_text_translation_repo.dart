@@ -3,6 +3,7 @@ import 'package:http/http.dart' show Response;
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/memory_repo_cache.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
 
@@ -17,10 +18,9 @@ class FullTextTranslationRepo
         > {
   FullTextTranslationRepo._internal()
     : super(
-        boxName: 'full_text_translation',
+        cache: MemoryRepoCache<FullTextTranslationResponseModel>(),
         responseFromJson: FullTextTranslationResponseModel.fromJson,
         cacheDuration: const Duration(minutes: 10),
-        persist: false,
       );
 
   static final FullTextTranslationRepo _instance =

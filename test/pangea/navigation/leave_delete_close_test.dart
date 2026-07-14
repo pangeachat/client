@@ -94,18 +94,19 @@ void main() {
   });
 
   group('closeOwnRoomPanel — leaving from the chat\'s own surface (#7561)', () {
-    testWidgets('leaving the open chat drops its panel, keeping the chat list', (
-      tester,
-    ) async {
-      final uri = await tapClose(
-        tester,
-        '/?left=chats,room:!abc',
-        (c) => closeOwnRoomPanel(c, '!abc'),
-      );
-      expect(parseOpenPanels(uri).left.map((t) => t.type), [
-        PanelTypesEnum.chats,
-      ]);
-    });
+    testWidgets(
+      'leaving the open chat drops its panel, keeping the chat list',
+      (tester) async {
+        final uri = await tapClose(
+          tester,
+          '/?left=chats,room:!abc',
+          (c) => closeOwnRoomPanel(c, '!abc'),
+        );
+        expect(parseOpenPanels(uri).left.map((t) => t.type), [
+          PanelTypesEnum.chats,
+        ]);
+      },
+    );
 
     testWidgets('falls back to the bare workspace exit when the room is not a '
         'token panel', (tester) async {
