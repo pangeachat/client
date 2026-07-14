@@ -1,4 +1,4 @@
-import 'package:fluffychat/features/subscription/utils/subscription_duration_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
 
 class ValidatePromoCodeRequest {
   final String code;

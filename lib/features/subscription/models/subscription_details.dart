@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
-
-import 'package:fluffychat/features/subscription/utils/subscription_duration_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:flutter/material.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 class SubscriptionDetails {
   final double price;

@@ -1,14 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:collection/collection.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
-
+import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/mobile_subscription_info_manager.dart';
+import 'package:fluffychat/features/subscription/models/subscription_app_id.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/models/subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
@@ -17,13 +13,15 @@ import 'package:fluffychat/features/subscription/repo/all_products_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_app_ids_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 class SubscriptionController with ChangeNotifier {
   SubscriptionState _state = SubscriptionLoading();
