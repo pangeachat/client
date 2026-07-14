@@ -165,8 +165,15 @@ class SubscriptionController with ChangeNotifier {
     return appIds?.defaultManagementURL(appId);
   }
 
+  /// Test seam: overrides the platform-selected manager so the guarded submit
+  /// path can be exercised without RevenueCat / MatrixState. Null in production,
+  /// so runtime behavior is byte-for-byte unchanged.
+  @visibleForTesting
+  SubscriptionInfoManager? managerOverride;
+
   SubscriptionInfoManager get _manager =>
-      kIsWeb ? WebSubscriptionInfoManager() : MobileSubscriptionInfoManager();
+      managerOverride ??
+      (kIsWeb ? WebSubscriptionInfoManager() : MobileSubscriptionInfoManager());
 
   void _onSubscribe() {
     subscriptionNotifier.value = true;

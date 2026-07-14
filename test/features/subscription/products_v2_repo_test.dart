@@ -64,4 +64,33 @@ void main() {
       throwsA(anything),
     );
   });
+
+  test('a 200 with NO plans key -> THROWS (contract-malformed, not empty)',
+      () async {
+    final req = requestsWith(200, jsonEncode({}));
+
+    await expectLater(
+      ProductsV2Repo.getWith(req, url: productsUrl),
+      throwsA(isA<FormatException>()),
+    );
+  });
+
+  test('a 200 with plans:null -> THROWS (contract-malformed, not empty)',
+      () async {
+    final req = requestsWith(200, jsonEncode({"plans": null}));
+
+    await expectLater(
+      ProductsV2Repo.getWith(req, url: productsUrl),
+      throwsA(isA<FormatException>()),
+    );
+  });
+
+  test('a 200 with plans as a non-list -> THROWS', () async {
+    final req = requestsWith(200, jsonEncode({"plans": "oops"}));
+
+    await expectLater(
+      ProductsV2Repo.getWith(req, url: productsUrl),
+      throwsA(isA<FormatException>()),
+    );
+  });
 }

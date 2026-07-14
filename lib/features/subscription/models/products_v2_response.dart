@@ -50,7 +50,16 @@ class ProductsV2Response {
   });
 
   factory ProductsV2Response.fromJson(Map<String, dynamic> json) {
-    final rawPlans = (json['plans'] as List<dynamic>?) ?? const <dynamic>[];
+    // A REAL empty catalog is `{"plans": []}`; a body with no `plans` LIST
+    // (absent / null / non-list) is contract-malformed and must THROW so the
+    // repo's getWith propagates it as a fetch failure — NEVER default it into
+    // an empty catalog that would render "no plans" and strand a buyer.
+    final rawPlans = json['plans'];
+    if (rawPlans is! List) {
+      throw const FormatException(
+        'ProductsV2Response: "plans" must be a list — malformed /products body',
+      );
+    }
     return ProductsV2Response(
       plans: rawPlans
           .map((e) => ProductV2.fromJson(Map<String, dynamic>.from(e as Map)))

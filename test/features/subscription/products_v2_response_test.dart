@@ -66,6 +66,24 @@ void main() {
       expect(res.plans, isEmpty);
     });
 
+    test('a MISSING plans key throws (malformed, not an empty catalog)', () {
+      expect(
+        () => ProductsV2Response.fromJson({}),
+        throwsA(isA<FormatException>()),
+      );
+    });
+
+    test('a null / non-list plans throws (malformed)', () {
+      expect(
+        () => ProductsV2Response.fromJson({"plans": null}),
+        throwsA(isA<FormatException>()),
+      );
+      expect(
+        () => ProductsV2Response.fromJson({"plans": "oops"}),
+        throwsA(isA<FormatException>()),
+      );
+    });
+
     test('echoes country when present', () {
       final json = productsFixture()..["country"] = "US";
       expect(ProductsV2Response.fromJson(json).country, "US");
