@@ -38,6 +38,33 @@ The course panel tells the learner how far along they are, at two grains, comput
 
 A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
 
+# Panel > Chats
+This panel
+
+# Panel > Course Plan
+This panel listing group of Activity Cards in multiple row.
+
+## Various Activity Card UI
+To help users easily scan and search for the right activity in Course listing, we design various Activity Card UI to help differentiate:
+
+1. **Normal Activity Plan**
+:🔘 Light Gray Card showing from top down: the large Activity image, the large Activity name, the row of star, and small Activity type next to number of role.
+
+2. **Joinable/Open Activity**
+:🟢 Green Card with an overlay tag [Open (number of open session/instance)] on the top right, and White text color. The tag will convey clearly that this Activity is Open and how many open sessions to choose. The tag also make it easy for screen reader, accessibility check. The color choice align with design of Green Joinable Map Pin V6. 
+
+3. **Ongoing Activity**
+:🟣 Purple Card with overlay tag [Ongoing]on the top right, and White text color. The tag will convey clearly that this Activity is Ongoing. The tag also make it easy for screen reader, accessibility check. The color choice align with design of Purple Ongoing Map Pin V6. 
+
+4. **Need to invite more participant to start** 
+:🔘 Light Gray Card with 30% Opacity, this convey that the Activity is still clickable but de-emphasized. If users want to know why, they can click on the card and see the "Uh oh, you need to invite NN people...".
+
+[Figma link to design mockup](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13765-270419&t=pnytLg8wuPthDfDt-11)
+
+# Panel > Participants
+
+# Panel > More
+
 ## Future Work
 
 File GitHub issues for these and link them here (use the `update-future-work` skill).
