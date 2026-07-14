@@ -22,6 +22,7 @@ import 'package:fluffychat/features/subscription/repo/subscription_app_ids_repo.
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/utils/single_flight_guard.dart';
 import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
 import 'package:fluffychat/features/subscription/utils/v2_subscription_catalog.dart';
@@ -45,6 +46,16 @@ class SubscriptionController with ChangeNotifier {
   SubscriptionStatusV2? _statusV2;
 
   Completer<void>? _initCompleter;
+
+  /// Single-flight guard for the buy path (finding #1): a purchase submit is
+  /// re-entrant-safe at the CONTROLLER level, so ANY caller (paywall or
+  /// settings) is protected from a double-tap firing concurrent checkouts —
+  /// without redesigning the paywall widget. Drives [isSubmitting] for the UI.
+  final SingleFlightGuard _submitGuard = SingleFlightGuard();
+
+  /// Whether a purchase submit is in flight. The buy button should stay
+  /// disabled while true (see the frontend contract's client-rules note).
+  bool get isSubmitting => _submitGuard.inFlight;
 
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
@@ -198,15 +209,11 @@ class SubscriptionController with ChangeNotifier {
       await _setAppIds();
 
       if (Environment.subsV2WebEnabled && kIsWeb) {
-        // v2 web (finding #3): fetch /status ONCE, reuse it for BOTH the
-        // trial-card decision (_setAvailableSubscriptions) AND the initial
-        // state, so /status is read before /products and only once.
-        _statusV2 = await StatusV2Repo.get();
-        await _setAvailableSubscriptions();
-        _state = mapStatusV2ToState(
-          _statusV2!,
-          stripeAppId: _appIds?.stripeId ?? kStripeAppIdFallback,
-        );
+        // v2 web: compute state, catalog, and _statusV2 from ONE fresh /status
+        // snapshot (finding #3). A /products fetch failure throws here and is
+        // caught below into SubscriptionError (finding #2) rather than degrading
+        // to an empty catalog.
+        await _refreshV2State();
         notifyListeners();
       } else {
         await _setAvailableSubscriptions();
@@ -266,9 +273,12 @@ class SubscriptionController with ChangeNotifier {
       // appId/isVisible filter is needed (these are already the sellable web
       // plans, all appId==stripeId), and the trial card is synthesized off the
       // status snapshot (D3). Pure logic lives in buildV2SubscriptionCatalog.
+      // A /products FETCH failure THROWS out of here (finding #2) — the caller
+      // (_refreshV2State / _initialize) turns it into a retryable error state
+      // rather than a silently-empty catalog. A real empty 200 stays empty.
       final productsResponse = await ProductsV2Repo.get();
       final catalog = buildV2SubscriptionCatalog(
-        productsResponse?.plans ?? const [],
+        productsResponse.plans,
         _statusV2,
         stripeAppId: _appIds?.stripeId ?? kStripeAppIdFallback,
       );
@@ -348,6 +358,12 @@ class SubscriptionController with ChangeNotifier {
     SubscriptionDetails selectedSubscription,
     BuildContext context,
   ) async {
+    // Single-flight at the controller (finding #1): a concurrent submit — e.g.
+    // a paywall double-tap — is a no-op, so no caller can fire two checkouts or
+    // two redirects. Real failures still propagate so the caller's
+    // showFutureLoadingDialog renders them (see the contract client-rules note).
+    if (!_submitGuard.tryEnter()) return;
+    notifyListeners(); // isSubmitting -> true
     try {
       if (selectedSubscription.isTrial) {
         await activateNewUserTrial();
@@ -369,6 +385,9 @@ class SubscriptionController with ChangeNotifier {
       );
 
       rethrow;
+    } finally {
+      _submitGuard.exit();
+      notifyListeners(); // isSubmitting -> false
     }
   }
 
@@ -379,11 +398,53 @@ class SubscriptionController with ChangeNotifier {
   }
 
   Future<void> updateCurrentSubscription() async {
+    // v2 web: refresh through the single source of truth so _statusV2 (and the
+    // catalog / v2TrialOfferable) can never go stale after a status-changing
+    // action such as trial activation or cancel (finding #3). A fetch failure
+    // sets a retryable error state instead of leaving the caller with an
+    // unhandled throw (safe for the paywall's fire-and-forget trial tap).
+    if (Environment.subsV2WebEnabled && kIsWeb) {
+      try {
+        await _refreshV2State();
+      } catch (e, s) {
+        ErrorHandler.logError(e: e, s: s, data: {});
+        _state = SubscriptionError(error: e);
+      }
+      notifyListeners();
+      return;
+    }
+
     // stripeAppId is web-v2 only; the mobile/RC manager ignores it.
     _state = await _manager.getCurrentSubscriptionInfo(
       stripeAppId: _appIds?.stripeId,
     );
     notifyListeners();
+  }
+
+  /// The single source of truth for the v2 web state: re-fetch `/status`, store
+  /// it in [_statusV2], rebuild the sellable catalog from that SAME snapshot,
+  /// and map the state — so [_statusV2], the catalog ([v2TrialOfferable]), and
+  /// [_state] can never drift (finding #3). Throws on a fetch failure (e.g. a
+  /// `/products` 503) so the caller sets an error state instead of an empty
+  /// sellable catalog (finding #2). Does NOT notify — the caller decides when.
+  Future<void> _refreshV2State() async {
+    _statusV2 = await StatusV2Repo.get();
+    final status = _statusV2!;
+    if (isPaidWithoutPlan(status)) {
+      // #4b: a paid entitlement should always map to a catalog plan; log the
+      // anomaly (the generic-tile fallback in `subscription` keeps management
+      // working) rather than stranding a paying user on a broken tile.
+      ErrorHandler.logError(
+        m: "v2 paid entitlement missing a catalog planId",
+        s: StackTrace.current,
+        data: {},
+      );
+    }
+    await _setAvailableSubscriptions();
+    _state = mapStatusV2ToState(
+      status,
+      stripeAppId: _appIds?.stripeId ?? kStripeAppIdFallback,
+    );
   }
 
   /// In-app v2 cancel (S4/D4): POST /cancel for the user-owned entitlement, then

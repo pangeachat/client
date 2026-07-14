@@ -5,6 +5,7 @@ import 'package:fluffychat/features/subscription/models/subscription_status_v2.d
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/utils/subscription_duration_enum.dart';
 import 'package:fluffychat/features/subscription/utils/v2_subscription_catalog.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 
 void main() {
   const stripeAppId = "stripe_app_1";
@@ -143,6 +144,53 @@ void main() {
       );
       expect(catalog.available.where((s) => s.isTrial), isEmpty);
       expect(catalog.all.where((s) => s.isTrial), isEmpty);
+    });
+
+    test('the trial in `all` and `available` is ONE reused object (finding #3)',
+        () {
+      final catalog = buildV2SubscriptionCatalog(
+        [month, year],
+        status(trialEligible: true, trialClaimed: false),
+        stripeAppId: stripeAppId,
+      );
+      final inAll = catalog.all.firstWhere((s) => s.isTrial);
+      final inAvailable = catalog.available.firstWhere((s) => s.isTrial);
+      expect(identical(inAll, inAvailable), isTrue);
+    });
+  });
+
+  // finding #3: after the trial is activated the /status snapshot flips to
+  // trialClaimed:true + an active trial. The paywall must stop offering it AND
+  // the active-trial tile must still resolve as the current subscription.
+  group('trial lifecycle transition (finding #3)', () {
+    // The exact controller resolution predicate (subscription getter), so the
+    // "resolves as current" claim is tested against real logic.
+    bool resolves(List catalog, String id) => catalog.any(
+      (s) => s.id.contains(id) || id.contains(s.id),
+    );
+
+    test('post-activation: not offered on paywall, resolves as current in all',
+        () {
+      final afterActivation = status(
+        accessLevel: "full",
+        trialEligible: false,
+        trialClaimed: true,
+        winning: const WinningSummaryV2(type: "trial", status: "active"),
+      );
+
+      // The server signal that drives v2TrialOfferable is now false.
+      expect(v2TrialOfferableFor(afterActivation), isFalse);
+
+      final catalog = buildV2SubscriptionCatalog(
+        [month, year],
+        afterActivation,
+        stripeAppId: stripeAppId,
+      );
+
+      // No longer offered on the paywall ...
+      expect(catalog.available.where((s) => s.isTrial), isEmpty);
+      // ... but the active trial (subscriptionId == kV2TrialId) still resolves.
+      expect(resolves(catalog.all, kV2TrialId), isTrue);
     });
   });
 }

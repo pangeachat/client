@@ -77,6 +77,36 @@ void main() {
       expect(result.asError!.error, isNot(isA<NoBillingAccountException>()));
     });
 
+    // finding #4: only a 404 whose detail is exactly "No billing account" is the
+    // no-portal signal. Any other 404 (route/deploy mismatch, FastAPI
+    // "Not Found") is an integration failure and must NOT be masked as
+    // "management unavailable".
+    test('404 "No billing account" -> NoBillingAccountException', () async {
+      final req = requestsWith(404, {"detail": "No billing account"});
+
+      final result = await BillingPortalRepo.getWith(
+        req,
+        url: portalUrl,
+        dedupeKey: "t-404-nba",
+      );
+
+      expect(result.asError!.error, isA<NoBillingAccountException>());
+    });
+
+    test('a DIFFERENT 404 body (route mismatch) -> real ChoreoException', () async {
+      final req = requestsWith(404, {"detail": "Not Found"});
+
+      final result = await BillingPortalRepo.getWith(
+        req,
+        url: portalUrl,
+        dedupeKey: "t-404-notfound",
+      );
+
+      expect(result.isError, true);
+      expect(result.asError!.error, isNot(isA<NoBillingAccountException>()));
+      expect(result.asError!.error, isA<ChoreoException>());
+    });
+
     // Portal session URLs are SHORT-LIVED and minted on click — the repo must
     // never cache them, and must NEVER cache a transient error (a single 5xx
     // must not poison manage-billing).

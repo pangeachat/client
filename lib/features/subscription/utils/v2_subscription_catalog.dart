@@ -59,14 +59,21 @@ V2SubscriptionCatalog buildV2SubscriptionCatalog(
       status.accessLevel == "full" &&
       status.winning?.type == "trial";
 
+  // Reuse ONE synthesized trial object across both lists (finding #3), so an
+  // active trial is identified by the same stable instance/id in `all` and
+  // `available` — never two divergent objects.
+  final SubscriptionDetails? trial = (trialEligible || trialActive)
+      ? v2TrialSubscription()
+      : null;
+
   final all = List<SubscriptionDetails>.from(mapped);
-  if (trialEligible || trialActive) {
-    all.add(v2TrialSubscription());
+  if (trial != null) {
+    all.add(trial);
   }
 
   final available = List<SubscriptionDetails>.from(mapped);
-  if (trialEligible && !trialClaimed) {
-    available.add(v2TrialSubscription());
+  if (trial != null && trialEligible && !trialClaimed) {
+    available.add(trial);
   }
 
   return V2SubscriptionCatalog(

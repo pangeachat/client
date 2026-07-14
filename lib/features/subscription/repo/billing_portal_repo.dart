@@ -79,8 +79,12 @@ class BillingPortalRepo {
       );
       return Result.value(BillingPortalResponse.fromJson(json));
     } on ChoreoException catch (e) {
-      if (e.response.statusCode == 404) {
-        // No canonical Stripe customer — a typed, non-retryable outcome.
+      // ONLY a 404 whose detail is exactly "No billing account" is the
+      // no-portal signal (no canonical Stripe customer). Any OTHER 404
+      // (route/deploy mismatch, FastAPI "Not Found") is a real integration
+      // failure and must surface as the ChoreoException — never masked as
+      // "management unavailable" (finding #4).
+      if (e.response.statusCode == 404 && e.message == "No billing account") {
         return Result.error(const NoBillingAccountException());
       }
       ErrorHandler.logError(e: e.errorMessage, data: {});
