@@ -68,15 +68,10 @@ class WorldMapLargeCard extends StatelessWidget {
     this.openSlots = 0,
   });
 
-  /// The most-goal role's goal count stands in for the activity's star total: a
-  /// learner plays one role, and the richest role bounds the progress bar.
-  int get _starsTotal {
-    final plan = this.plan;
-    if (plan == null) return 0;
-    return plan.roles.values
-        .map((r) => r.allGoals.length)
-        .fold(0, (a, b) => b > a ? b : a);
-  }
+  /// One player's earnable stars stands in for the activity's star total —
+  /// uniform across roles by generation, min across roles for older plans
+  /// (see ActivityPlanModel.earnableStars).
+  int get _starsTotal => plan?.earnableStars ?? 0;
 
   /// "Done": a full star total on an inProgress pin — the inProgress state at
   /// 100% (world-map.instructions.md, "Pin state"). A pin with a live session

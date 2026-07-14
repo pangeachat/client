@@ -31,9 +31,9 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.starsEarned = 0,
   });
 
-  int get _starsTotal => activity.roles.values
-      .map((r) => r.allGoals.length)
-      .fold(0, (a, b) => b > a ? b : a);
+  // One player's earnable stars — uniform across roles by generation, min
+  // across roles for older plans (see ActivityPlanModel.earnableStars).
+  int get _starsTotal => activity.earnableStars;
 
   @override
   Widget build(BuildContext context) {

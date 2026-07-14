@@ -4643,6 +4643,17 @@
     "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
     "activitiesToUnlockTopicTitle": "Activities to Unlock Next Topic",
     "activitiesToUnlockTopicDesc": "Set the number of activities to unlock the next course topic",
+    "starsToUnlockObjectiveTitle": "Stars per Mission",
+    "starsToUnlockObjectiveDesc": "Set the number of stars needed to complete each mission",
+    "maxStarsPerMissionWarning": "This course has missions where only {maxValue} stars can be earned. Please enter a number less than or equal to {maxValue}.",
+    "@maxStarsPerMissionWarning": {
+        "type": "integer",
+        "placeholders": {
+            "maxValue": {
+                "type": "int"
+            }
+        }
+    },
     "activitySettingsOverrideWarning": "Language and language level determined by activity plan",
     "voice": "Voice",
     "youLeftTheChat": "🚪 You left the chat",
