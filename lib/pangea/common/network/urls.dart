@@ -102,4 +102,5 @@ class PApiUrls {
   static String subscriptionCheckout = "$_subscriptionRoute/checkout";
   static String subscriptionStatus = "$_subscriptionRoute/status";
   static String subscriptionCancel = "$_subscriptionRoute/cancel";
+  static String subscriptionHistory = "$_subscriptionRoute/history";
 }

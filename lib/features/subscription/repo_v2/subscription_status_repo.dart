@@ -13,7 +13,7 @@ class SubscriptionStatusRepo
     : super(
         cache: MemoryRepoCache(),
         responseFromJson: SubscriptionStatusResponse.fromJson,
-        cacheDuration: const Duration(days: 1),
+        cacheDuration: Duration(minutes: 10),
         timeout: Duration(seconds: 10),
       );
 

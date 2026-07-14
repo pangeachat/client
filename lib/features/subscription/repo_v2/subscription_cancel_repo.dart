@@ -13,7 +13,7 @@ class SubscriptionCancelRepo
     : super(
         cache: MemoryRepoCache(),
         responseFromJson: SubscriptionCancelResponse.fromJson,
-        cacheDuration: const Duration(days: 1),
+        cacheDuration: Duration(seconds: 10),
         timeout: Duration(seconds: 10),
       );
 
