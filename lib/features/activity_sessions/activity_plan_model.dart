@@ -172,6 +172,20 @@ class ActivityPlanModel {
   /// must surface (the parse sites log it loudly) — return empty, not fakes.
   Map<String, ActivityRole> get roles => _roles ?? const {};
 
+  /// The stars ONE player can earn in this activity: their role's goal count.
+  /// Generation guarantees the count is uniform across roles; plans predating
+  /// that rule may differ, so this takes the min across roles — permissive
+  /// (org activities doc, goal-progression invariants). The single home for
+  /// the rule: card star rows, the map's large card, and the Mission threshold
+  /// ceiling (quest_progression_resolver.dart) all read this. 0 when the plan
+  /// has no roles (degraded data — surfaces elsewhere).
+  int get earnableStars {
+    if (roles.isEmpty) return 0;
+    return roles.values
+        .map((r) => r.allGoals.length)
+        .reduce((a, b) => b < a ? b : a);
+  }
+
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     final req = ActivityPlanRequest.fromJson(
       json[ActivitySessionConstants.activityPlanRequest],
