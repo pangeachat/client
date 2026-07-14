@@ -3,6 +3,7 @@ import 'package:http/http.dart' show Response;
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/memory_repo_cache.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
@@ -13,10 +14,9 @@ class SpeechToTextRepo
     extends BaseRepo<SpeechToTextRequestModel, SpeechToTextResponseModel> {
   SpeechToTextRepo._internal()
     : super(
-        boxName: 'speech_to_text',
+        cache: MemoryRepoCache<SpeechToTextResponseModel>(),
         responseFromJson: SpeechToTextResponseModel.fromJson,
         cacheDuration: const Duration(minutes: 10),
-        persist: false,
       );
 
   static final SpeechToTextRepo _instance = SpeechToTextRepo._internal();

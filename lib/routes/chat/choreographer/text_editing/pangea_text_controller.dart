@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/autocorrect_span.dart';
