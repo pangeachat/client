@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -150,7 +151,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.leave,
           );
           if (!resp.isError) {
-            NavigationUtil.goToSpaceRoute(null, [], context);
+            closeOwnRoomPanel(context, room.id);
           }
         },
         enabled: room.membership == Membership.join,
@@ -175,7 +176,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.delete,
           );
           if (resp.isError) return;
-          NavigationUtil.goToSpaceRoute(null, [], context);
+          closeOwnRoomPanel(context, room.id);
         },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,

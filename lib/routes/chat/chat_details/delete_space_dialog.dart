@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
@@ -51,7 +51,9 @@ class DeleteSpaceDialog extends StatefulWidget {
     );
 
     if (!result.isError) {
-      context.go(PRoutes.chatsList);
+      // Deleting a course is the World/home reset (parity with leaving one):
+      // drop every panel and the `?c=` scope, back to the world map.
+      context.go(WorkspaceNav.clearAll());
     }
   }
 
