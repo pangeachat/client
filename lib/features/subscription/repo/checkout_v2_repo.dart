@@ -158,11 +158,7 @@ class CheckoutV2Repo {
     for (var attempt = 1; attempt <= maxAttempts; attempt++) {
       final http.Response res;
       try {
-        res = await req.post(
-          url: target,
-          body: body,
-          injectUserContext: false,
-        );
+        res = await req.post(url: target, body: body, injectUserContext: false);
       } on http.Response catch (errRes) {
         // `Requests.handleError` throws the raw response for a non-string
         // `detail` — the two 422 shapes. Map them to typed outcomes. (A

@@ -93,57 +93,62 @@ void main() {
       expect(result.asError!.error, isA<NoBillingAccountException>());
     });
 
-    test('a DIFFERENT 404 body (route mismatch) -> real ChoreoException', () async {
-      final req = requestsWith(404, {"detail": "Not Found"});
+    test(
+      'a DIFFERENT 404 body (route mismatch) -> real ChoreoException',
+      () async {
+        final req = requestsWith(404, {"detail": "Not Found"});
 
-      final result = await BillingPortalRepo.getWith(
-        req,
-        url: portalUrl,
-        dedupeKey: "t-404-notfound",
-      );
+        final result = await BillingPortalRepo.getWith(
+          req,
+          url: portalUrl,
+          dedupeKey: "t-404-notfound",
+        );
 
-      expect(result.isError, true);
-      expect(result.asError!.error, isNot(isA<NoBillingAccountException>()));
-      expect(result.asError!.error, isA<ChoreoException>());
-    });
+        expect(result.isError, true);
+        expect(result.asError!.error, isNot(isA<NoBillingAccountException>()));
+        expect(result.asError!.error, isA<ChoreoException>());
+      },
+    );
 
     // Portal session URLs are SHORT-LIVED and minted on click — the repo must
     // never cache them, and must NEVER cache a transient error (a single 5xx
     // must not poison manage-billing).
-    test('an error is never cached — the next call retries and succeeds',
-        () async {
-      var calls = 0;
-      final client = MockClient((request) async {
-        calls++;
-        if (calls == 1) {
-          return http.Response(jsonEncode({"detail": "upstream down"}), 502);
-        }
-        return http.Response(
-          jsonEncode({"url": "https://billing.stripe.com/p/session_retry"}),
-          200,
+    test(
+      'an error is never cached — the next call retries and succeeds',
+      () async {
+        var calls = 0;
+        final client = MockClient((request) async {
+          calls++;
+          if (calls == 1) {
+            return http.Response(jsonEncode({"detail": "upstream down"}), 502);
+          }
+          return http.Response(
+            jsonEncode({"url": "https://billing.stripe.com/p/session_retry"}),
+            200,
+          );
+        });
+        final req = Requests(accessToken: "token", client: client);
+
+        final first = await BillingPortalRepo.getWith(
+          req,
+          url: portalUrl,
+          dedupeKey: "t-retry",
         );
-      });
-      final req = Requests(accessToken: "token", client: client);
+        expect(first.isError, true);
 
-      final first = await BillingPortalRepo.getWith(
-        req,
-        url: portalUrl,
-        dedupeKey: "t-retry",
-      );
-      expect(first.isError, true);
-
-      final second = await BillingPortalRepo.getWith(
-        req,
-        url: portalUrl,
-        dedupeKey: "t-retry",
-      );
-      expect(second.isError, false);
-      expect(
-        second.asValue!.value.url,
-        "https://billing.stripe.com/p/session_retry",
-      );
-      expect(calls, 2);
-    });
+        final second = await BillingPortalRepo.getWith(
+          req,
+          url: portalUrl,
+          dedupeKey: "t-retry",
+        );
+        expect(second.isError, false);
+        expect(
+          second.asValue!.value.url,
+          "https://billing.stripe.com/p/session_retry",
+        );
+        expect(calls, 2);
+      },
+    );
 
     test('two CONCURRENT calls dedupe to a single HTTP request', () async {
       var calls = 0;
@@ -182,38 +187,40 @@ void main() {
       );
     });
 
-    test('SEQUENTIAL calls mint a FRESH session each time (no URL cache)',
-        () async {
-      var calls = 0;
-      final client = MockClient((request) async {
-        calls++;
-        return http.Response(
-          jsonEncode({"url": "https://billing.stripe.com/p/session_$calls"}),
-          200,
+    test(
+      'SEQUENTIAL calls mint a FRESH session each time (no URL cache)',
+      () async {
+        var calls = 0;
+        final client = MockClient((request) async {
+          calls++;
+          return http.Response(
+            jsonEncode({"url": "https://billing.stripe.com/p/session_$calls"}),
+            200,
+          );
+        });
+        final req = Requests(accessToken: "token", client: client);
+
+        final first = await BillingPortalRepo.getWith(
+          req,
+          url: portalUrl,
+          dedupeKey: "t-fresh",
         );
-      });
-      final req = Requests(accessToken: "token", client: client);
+        final second = await BillingPortalRepo.getWith(
+          req,
+          url: portalUrl,
+          dedupeKey: "t-fresh",
+        );
 
-      final first = await BillingPortalRepo.getWith(
-        req,
-        url: portalUrl,
-        dedupeKey: "t-fresh",
-      );
-      final second = await BillingPortalRepo.getWith(
-        req,
-        url: portalUrl,
-        dedupeKey: "t-fresh",
-      );
-
-      expect(calls, 2);
-      expect(
-        first.asValue!.value.url,
-        "https://billing.stripe.com/p/session_1",
-      );
-      expect(
-        second.asValue!.value.url,
-        "https://billing.stripe.com/p/session_2",
-      );
-    });
+        expect(calls, 2);
+        expect(
+          first.asValue!.value.url,
+          "https://billing.stripe.com/p/session_1",
+        );
+        expect(
+          second.asValue!.value.url,
+          "https://billing.stripe.com/p/session_2",
+        );
+      },
+    );
   });
 }

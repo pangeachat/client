@@ -194,8 +194,7 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
                                       ElevatedButton(
                                         onPressed: _loading
                                             ? null
-                                            : () =>
-                                                  _submitChange(subscription),
+                                            : () => _submitChange(subscription),
                                         child: _loading
                                             ? const LinearProgressIndicator()
                                             : Row(

@@ -22,11 +22,14 @@ class _FakeManager implements SubscriptionInfoManager {
   Object? throwError;
 
   @override
-  Future<SubscriptionState> getCurrentSubscriptionInfo({String? stripeAppId}) async =>
-      SubscriptionInactive();
+  Future<SubscriptionState> getCurrentSubscriptionInfo({
+    String? stripeAppId,
+  }) async => SubscriptionInactive();
 
   @override
-  Future<void> submitSubscriptionChange(SubscriptionDetails subscription) async {
+  Future<void> submitSubscriptionChange(
+    SubscriptionDetails subscription,
+  ) async {
     submitCalls++;
     if (block != null) await block!.future;
     if (throwError != null) throw throwError!;
@@ -44,45 +47,49 @@ final _monthly = SubscriptionDetails(
 );
 
 void main() {
-  testWidgets(
-    'a concurrent second submit while one is in-flight is a NO-OP '
-    '(manager invoked once; isSubmitting stays true until release)',
-    (tester) async {
-      final manager = _FakeManager()..block = Completer<void>();
-      final controller = SubscriptionController(managerOverride: manager);
+  testWidgets('a concurrent second submit while one is in-flight is a NO-OP '
+      '(manager invoked once; isSubmitting stays true until release)', (
+    tester,
+  ) async {
+    final manager = _FakeManager()..block = Completer<void>();
+    final controller = SubscriptionController(managerOverride: manager);
 
-      await tester.pumpWidget(
-        MaterialApp(
-          localizationsDelegates: L10n.localizationsDelegates,
-          supportedLocales: L10n.supportedLocales,
-          home: Builder(
-            builder: (context) {
-              // First submit enters the guard and blocks inside the manager.
-              final first = controller.submitSubscriptionChange(_monthly, context);
-              // Second submit, while the first is in flight, must no-op.
-              final second =
-                  controller.submitSubscriptionChange(_monthly, context);
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Builder(
+          builder: (context) {
+            // First submit enters the guard and blocks inside the manager.
+            final first = controller.submitSubscriptionChange(
+              _monthly,
+              context,
+            );
+            // Second submit, while the first is in flight, must no-op.
+            final second = controller.submitSubscriptionChange(
+              _monthly,
+              context,
+            );
 
-              scheduleMicrotask(() async {
-                await second; // returns immediately (guard rejected)
-                expect(manager.submitCalls, 1); // never reached the manager
-                expect(controller.isSubmitting, isTrue); // first still in flight
+            scheduleMicrotask(() async {
+              await second; // returns immediately (guard rejected)
+              expect(manager.submitCalls, 1); // never reached the manager
+              expect(controller.isSubmitting, isTrue); // first still in flight
 
-                manager.block!.complete();
-                await first;
-                expect(manager.submitCalls, 1);
-                expect(controller.isSubmitting, isFalse); // released
-              });
-              return const SizedBox();
-            },
-          ),
+              manager.block!.complete();
+              await first;
+              expect(manager.submitCalls, 1);
+              expect(controller.isSubmitting, isFalse); // released
+            });
+            return const SizedBox();
+          },
         ),
-      );
-      await tester.pumpAndSettle();
-      expect(manager.submitCalls, 1);
-      expect(controller.isSubmitting, isFalse);
-    },
-  );
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(manager.submitCalls, 1);
+    expect(controller.isSubmitting, isFalse);
+  });
 
   testWidgets('the guard RELEASES on success — a later submit proceeds', (
     tester,
@@ -132,7 +139,10 @@ void main() {
                 controller.submitSubscriptionChange(_monthly, context),
                 throwsA(isA<Exception>()),
               );
-              expect(controller.isSubmitting, isFalse); // released despite throw
+              expect(
+                controller.isSubmitting,
+                isFalse,
+              ); // released despite throw
 
               // A subsequent submit still proceeds.
               manager.throwError = null;

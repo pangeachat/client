@@ -71,8 +71,9 @@ CancelClickAction classifyCancelClick({
 /// mobile the legacy behavior is byte-for-byte unchanged.
 enum ManagementLaunchRoute { v2BillingPortal, legacy }
 
-ManagementLaunchRoute classifyManagementLaunch({required bool v2Path}) =>
-    v2Path ? ManagementLaunchRoute.v2BillingPortal : ManagementLaunchRoute.legacy;
+ManagementLaunchRoute classifyManagementLaunch({required bool v2Path}) => v2Path
+    ? ManagementLaunchRoute.v2BillingPortal
+    : ManagementLaunchRoute.legacy;
 
 /// Whether the promotional-access warning should use the UNDATED copy (no
 /// expiration date). True for a lifetime/comp/seat/manual grant whose expiration

@@ -126,7 +126,8 @@ class SubscriptionPaywall extends StatelessWidget {
                                     ? sub.v2TrialOfferable
                                     : true,
                                 description:
-                                    subscription.isTrial && !sub.v2TrialOfferable
+                                    subscription.isTrial &&
+                                        !sub.v2TrialOfferable
                                     ? L10n.of(context).trialPeriodExpired
                                     : null,
                               ),

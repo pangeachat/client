@@ -318,28 +318,33 @@ void main() {
       },
     );
 
-    test('an unmodeled promo reason maps to unknown (never throws on map)',
-        () async {
-      final req = requestsErroring(
-        detail: {"code": "promo_not_applicable", "reason": "brand_new_reason"},
-      );
+    test(
+      'an unmodeled promo reason maps to unknown (never throws on map)',
+      () async {
+        final req = requestsErroring(
+          detail: {
+            "code": "promo_not_applicable",
+            "reason": "brand_new_reason",
+          },
+        );
 
-      await expectLater(
-        CheckoutV2Repo.checkoutWith(
-          req,
-          "month",
-          promoCode: "BADCODE",
-          url: checkoutUrl,
-        ),
-        throwsA(
-          isA<PromoNotApplicableException>().having(
-            (e) => e.reason,
-            'reason',
-            CheckoutPromoRejectionReason.unknown,
+        await expectLater(
+          CheckoutV2Repo.checkoutWith(
+            req,
+            "month",
+            promoCode: "BADCODE",
+            url: checkoutUrl,
           ),
-        ),
-      );
-    });
+          throwsA(
+            isA<PromoNotApplicableException>().having(
+              (e) => e.reason,
+              'reason',
+              CheckoutPromoRejectionReason.unknown,
+            ),
+          ),
+        );
+      },
+    );
 
     test(
       'schema-shaped 422 (list detail) -> CheckoutException, NOT promo rejection',
@@ -371,14 +376,19 @@ void main() {
       },
     );
 
-    test('a string-detail error (e.g. 409) surfaces as ChoreoException',
-        () async {
-      final req = requestsErroring(detail: "already_subscribed", statusCode: 409);
+    test(
+      'a string-detail error (e.g. 409) surfaces as ChoreoException',
+      () async {
+        final req = requestsErroring(
+          detail: "already_subscribed",
+          statusCode: 409,
+        );
 
-      await expectLater(
-        CheckoutV2Repo.checkoutWith(req, "month", url: checkoutUrl),
-        throwsA(isA<ChoreoException>()),
-      );
-    });
+        await expectLater(
+          CheckoutV2Repo.checkoutWith(req, "month", url: checkoutUrl),
+          throwsA(isA<ChoreoException>()),
+        );
+      },
+    );
   });
 }

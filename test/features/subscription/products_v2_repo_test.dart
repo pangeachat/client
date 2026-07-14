@@ -15,7 +15,9 @@ void main() {
   const productsUrl = "https://example.test/subscription/products";
 
   Requests requestsWith(int statusCode, String body) {
-    final client = MockClient((request) async => http.Response(body, statusCode));
+    final client = MockClient(
+      (request) async => http.Response(body, statusCode),
+    );
     return Requests(accessToken: "token", client: client);
   }
 
@@ -40,21 +42,30 @@ void main() {
     expect(res.plans.single.planId, "month");
   });
 
-  test('200 with an EMPTY plans list -> empty catalog (NOT an error)', () async {
-    final req = requestsWith(200, jsonEncode({"plans": []}));
+  test(
+    '200 with an EMPTY plans list -> empty catalog (NOT an error)',
+    () async {
+      final req = requestsWith(200, jsonEncode({"plans": []}));
 
-    final res = await ProductsV2Repo.getWith(req, url: productsUrl);
-    expect(res.plans, isEmpty);
-  });
+      final res = await ProductsV2Repo.getWith(req, url: productsUrl);
+      expect(res.plans, isEmpty);
+    },
+  );
 
-  test('503 products_unavailable -> THROWS (fetch failure, not empty)', () async {
-    final req = requestsWith(503, jsonEncode({"detail": "products_unavailable"}));
+  test(
+    '503 products_unavailable -> THROWS (fetch failure, not empty)',
+    () async {
+      final req = requestsWith(
+        503,
+        jsonEncode({"detail": "products_unavailable"}),
+      );
 
-    await expectLater(
-      ProductsV2Repo.getWith(req, url: productsUrl),
-      throwsA(anything),
-    );
-  });
+      await expectLater(
+        ProductsV2Repo.getWith(req, url: productsUrl),
+        throwsA(anything),
+      );
+    },
+  );
 
   test('a malformed 200 body -> THROWS (fetch failure, not empty)', () async {
     final req = requestsWith(200, "<html>not json</html>");
@@ -65,25 +76,29 @@ void main() {
     );
   });
 
-  test('a 200 with NO plans key -> THROWS (contract-malformed, not empty)',
-      () async {
-    final req = requestsWith(200, jsonEncode({}));
+  test(
+    'a 200 with NO plans key -> THROWS (contract-malformed, not empty)',
+    () async {
+      final req = requestsWith(200, jsonEncode({}));
 
-    await expectLater(
-      ProductsV2Repo.getWith(req, url: productsUrl),
-      throwsA(isA<FormatException>()),
-    );
-  });
+      await expectLater(
+        ProductsV2Repo.getWith(req, url: productsUrl),
+        throwsA(isA<FormatException>()),
+      );
+    },
+  );
 
-  test('a 200 with plans:null -> THROWS (contract-malformed, not empty)',
-      () async {
-    final req = requestsWith(200, jsonEncode({"plans": null}));
+  test(
+    'a 200 with plans:null -> THROWS (contract-malformed, not empty)',
+    () async {
+      final req = requestsWith(200, jsonEncode({"plans": null}));
 
-    await expectLater(
-      ProductsV2Repo.getWith(req, url: productsUrl),
-      throwsA(isA<FormatException>()),
-    );
-  });
+      await expectLater(
+        ProductsV2Repo.getWith(req, url: productsUrl),
+        throwsA(isA<FormatException>()),
+      );
+    },
+  );
 
   test('a 200 with plans as a non-list -> THROWS', () async {
     final req = requestsWith(200, jsonEncode({"plans": "oops"}));

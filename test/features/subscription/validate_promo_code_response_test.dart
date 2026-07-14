@@ -42,30 +42,33 @@ void main() {
       expect(res.discountedPrice!.currency, "usd");
     });
 
-    test('amount coupon: amount_off + top-level currency, percent_off null', () {
-      final res = ValidatePromoCodeResponse.fromJson({
-        "valid": true,
-        "code": "5OFF",
-        "discount_type": "amount",
-        "percent_off": null,
-        "amount_off": 500,
-        "currency": "usd",
-        "coupon_duration": "repeating",
-        "restrictions": {"first_time_transaction": true},
-        "discounted_price": null,
-        "expires_at": null,
-      });
+    test(
+      'amount coupon: amount_off + top-level currency, percent_off null',
+      () {
+        final res = ValidatePromoCodeResponse.fromJson({
+          "valid": true,
+          "code": "5OFF",
+          "discount_type": "amount",
+          "percent_off": null,
+          "amount_off": 500,
+          "currency": "usd",
+          "coupon_duration": "repeating",
+          "restrictions": {"first_time_transaction": true},
+          "discounted_price": null,
+          "expires_at": null,
+        });
 
-      expect(res.discountType, "amount");
-      expect(res.amountOff, 500);
-      expect(res.percentOff, isNull);
-      expect(res.currency, "usd");
-      expect(res.couponDuration, "repeating");
-      // discounted_price is present only when ?duration= is a known plan.
-      expect(res.discountedPrice, isNull);
-      expect(res.expiresAt, isNull);
-      expect(res.restrictions!.firstTimeTransaction, true);
-    });
+        expect(res.discountType, "amount");
+        expect(res.amountOff, 500);
+        expect(res.percentOff, isNull);
+        expect(res.currency, "usd");
+        expect(res.couponDuration, "repeating");
+        // discounted_price is present only when ?duration= is a known plan.
+        expect(res.discountedPrice, isNull);
+        expect(res.expiresAt, isNull);
+        expect(res.restrictions!.firstTimeTransaction, true);
+      },
+    );
   });
 
   group('ValidatePromoCodeResponse.fromJson — valid:false', () {

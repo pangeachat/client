@@ -25,11 +25,8 @@ class V2SubscriptionCatalog {
 /// The synthesized trial card / active-trial tile (D3/D7): a $0, appId=="trial"
 /// [SubscriptionDetails] with the [kV2TrialId] id, so `isTrial` is true and the
 /// controller `subscription` getter resolves an active trial by id.
-SubscriptionDetails v2TrialSubscription() => SubscriptionDetails(
-  id: kV2TrialId,
-  appId: "trial",
-  price: 0,
-);
+SubscriptionDetails v2TrialSubscription() =>
+    SubscriptionDetails(id: kV2TrialId, appId: "trial", price: 0);
 
 /// Builds the v2 web catalog from the storefront [plans] and the [status]
 /// snapshot (D3, finding #11).

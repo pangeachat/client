@@ -119,22 +119,25 @@ void main() {
       expect(catalog.all.where((s) => s.isTrial).length, 1);
     });
 
-    test('active trial (not eligible to start) -> trial present in all only', () {
-      final catalog = buildV2SubscriptionCatalog(
-        [month, year],
-        status(
-          accessLevel: "full",
-          trialEligible: false,
-          winning: const WinningSummaryV2(type: "trial", status: "active"),
-        ),
-        stripeAppId: stripeAppId,
-      );
-      // The current-subscription getter must resolve the active trial tile ...
-      expect(catalog.all.where((s) => s.isTrial).length, 1);
-      expect(catalog.all.firstWhere((s) => s.isTrial).id, kV2TrialId);
-      // ... but the paywall does not re-offer a trial the user is on.
-      expect(catalog.available.where((s) => s.isTrial), isEmpty);
-    });
+    test(
+      'active trial (not eligible to start) -> trial present in all only',
+      () {
+        final catalog = buildV2SubscriptionCatalog(
+          [month, year],
+          status(
+            accessLevel: "full",
+            trialEligible: false,
+            winning: const WinningSummaryV2(type: "trial", status: "active"),
+          ),
+          stripeAppId: stripeAppId,
+        );
+        // The current-subscription getter must resolve the active trial tile ...
+        expect(catalog.all.where((s) => s.isTrial).length, 1);
+        expect(catalog.all.firstWhere((s) => s.isTrial).id, kV2TrialId);
+        // ... but the paywall does not re-offer a trial the user is on.
+        expect(catalog.available.where((s) => s.isTrial), isEmpty);
+      },
+    );
 
     test('not eligible, no active trial -> no trial in either list', () {
       final catalog = buildV2SubscriptionCatalog(
@@ -146,17 +149,19 @@ void main() {
       expect(catalog.all.where((s) => s.isTrial), isEmpty);
     });
 
-    test('the trial in `all` and `available` is ONE reused object (finding #3)',
-        () {
-      final catalog = buildV2SubscriptionCatalog(
-        [month, year],
-        status(trialEligible: true, trialClaimed: false),
-        stripeAppId: stripeAppId,
-      );
-      final inAll = catalog.all.firstWhere((s) => s.isTrial);
-      final inAvailable = catalog.available.firstWhere((s) => s.isTrial);
-      expect(identical(inAll, inAvailable), isTrue);
-    });
+    test(
+      'the trial in `all` and `available` is ONE reused object (finding #3)',
+      () {
+        final catalog = buildV2SubscriptionCatalog(
+          [month, year],
+          status(trialEligible: true, trialClaimed: false),
+          stripeAppId: stripeAppId,
+        );
+        final inAll = catalog.all.firstWhere((s) => s.isTrial);
+        final inAvailable = catalog.available.firstWhere((s) => s.isTrial);
+        expect(identical(inAll, inAvailable), isTrue);
+      },
+    );
   });
 
   // finding #3: after the trial is activated the /status snapshot flips to
@@ -165,32 +170,33 @@ void main() {
   group('trial lifecycle transition (finding #3)', () {
     // The exact controller resolution predicate (subscription getter), so the
     // "resolves as current" claim is tested against real logic.
-    bool resolves(List catalog, String id) => catalog.any(
-      (s) => s.id.contains(id) || id.contains(s.id),
+    bool resolves(List catalog, String id) =>
+        catalog.any((s) => s.id.contains(id) || id.contains(s.id));
+
+    test(
+      'post-activation: not offered on paywall, resolves as current in all',
+      () {
+        final afterActivation = status(
+          accessLevel: "full",
+          trialEligible: false,
+          trialClaimed: true,
+          winning: const WinningSummaryV2(type: "trial", status: "active"),
+        );
+
+        // The server signal that drives v2TrialOfferable is now false.
+        expect(v2TrialOfferableFor(afterActivation), isFalse);
+
+        final catalog = buildV2SubscriptionCatalog(
+          [month, year],
+          afterActivation,
+          stripeAppId: stripeAppId,
+        );
+
+        // No longer offered on the paywall ...
+        expect(catalog.available.where((s) => s.isTrial), isEmpty);
+        // ... but the active trial (subscriptionId == kV2TrialId) still resolves.
+        expect(resolves(catalog.all, kV2TrialId), isTrue);
+      },
     );
-
-    test('post-activation: not offered on paywall, resolves as current in all',
-        () {
-      final afterActivation = status(
-        accessLevel: "full",
-        trialEligible: false,
-        trialClaimed: true,
-        winning: const WinningSummaryV2(type: "trial", status: "active"),
-      );
-
-      // The server signal that drives v2TrialOfferable is now false.
-      expect(v2TrialOfferableFor(afterActivation), isFalse);
-
-      final catalog = buildV2SubscriptionCatalog(
-        [month, year],
-        afterActivation,
-        stripeAppId: stripeAppId,
-      );
-
-      // No longer offered on the paywall ...
-      expect(catalog.available.where((s) => s.isTrial), isEmpty);
-      // ... but the active trial (subscriptionId == kV2TrialId) still resolves.
-      expect(resolves(catalog.all, kV2TrialId), isTrue);
-    });
   });
 }
