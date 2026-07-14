@@ -3376,7 +3376,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-09 16:14:05.202616",
+    "@@last_modified": "2026-07-13 10:06:17.363303",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11034,5 +11034,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "รายงานปัญหาข้อมูลไวยากรณ์",
+    "grammarFeedbackDialogTitle": "ข้อเสนอแนะแบบฟีดแบ็กเกี่ยวกับข้อมูลไวยากรณ์",
+    "grammarFeedbackSubmittedDesc": "ขอบคุณ! คำอธิบายได้รับการปรับปรุงตามข้อเสนอแนะแบบฟีดแบ็กของคุณ.",
+    "focusOnMap": "มุ่งเน้นไปที่แผนที่",
+    "welcome": "ยินดีต้อนรับ",
+    "courseRequest": "คำขอหลักสูตร",
+    "onboarding": "การเริ่มต้นใช้งาน",
+    "selectImageFromDevice": "เลือกภาพจากอุปกรณ์",
+    "dinoAvatarLabel": "ไดโนเสาร์ที่ใส่แว่นกันแดด",
+    "bearAvatarLabel": "หมีที่เป็นมิตร",
+    "squidAvatarLabel": "ปลาหมึกที่สวมหูฟัง",
+    "cartoonAvatarLabel": "ตัวการ์ตูนที่มีความสุขกำลังโบกมือ",
+    "robotAvatarLabel": "หุ่นยนต์ที่มีดาวเป็นตา",
+    "featuresIncludeLabel": "ฟีเจอร์รวมถึง",
+    "difficultyListLabel": "รายการความยาก",
+    "languageListLabel": "รายการภาษา",
+    "searchedResultsLabel": "ผลการค้นหาสำหรับ '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }

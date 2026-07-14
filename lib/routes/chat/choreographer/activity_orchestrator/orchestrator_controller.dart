@@ -155,6 +155,11 @@ class OrchestratorController {
       );
       if (suggestion == null) return;
 
+      if (suggestion.suggestions.isEmpty) {
+        Logs().w("Suggestion without choices received");
+        return;
+      }
+
       _setActiveSuggestion(ActiveSuggestionModel(suggestion: suggestion));
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: event.content);

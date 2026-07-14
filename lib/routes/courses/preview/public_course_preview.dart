@@ -7,14 +7,16 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview_view.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -36,15 +38,19 @@ class PublicCoursePreview extends StatefulWidget {
       PublicCoursePreviewController();
 }
 
-class PublicCoursePreviewController extends State<PublicCoursePreview>
-    with CoursePlanProvider {
+class PublicCoursePreviewController extends State<PublicCoursePreview> {
   RoomSummaryResponse? roomSummary;
   Object? roomSummaryError;
   bool loadingRoomSummary = false;
 
+  late final QuestObjectivesLoader _objectivesProvider;
+
   @override
   initState() {
     super.initState();
+    _objectivesProvider = QuestObjectivesLoader(
+      client: Matrix.of(context).client,
+    );
     _loadSummary();
   }
 
@@ -55,6 +61,14 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       _loadSummary();
     }
   }
+
+  @override
+  void dispose() {
+    _objectivesProvider.dispose();
+    super.dispose();
+  }
+
+  QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 
   /// world_v2: the public course preview is route-driven
   /// (`/courses/preview/:courseroomid`) because its parent `/courses…` segments
@@ -71,9 +85,22 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     );
   }
 
-  bool get loading => loadingCourse || loadingRoomSummary;
+  bool get _loadingCourse =>
+      _objectivesProvider.questLoader.value is AsyncLoading;
+
+  Object? get _courseError => switch (_objectivesProvider.questLoader.value) {
+    AsyncError(error: final error) => error,
+    _ => null,
+  };
+
+  QuestPlan? get course => switch (_objectivesProvider.questLoader.value) {
+    AsyncLoaded(value: final value) => value.quest,
+    _ => null,
+  };
+
+  bool get loading => _loadingCourse || loadingRoomSummary;
   bool get hasError =>
-      (courseError != null || (!loadingCourse && course == null)) ||
+      (_courseError != null || (!_loadingCourse && course == null)) ||
       (roomSummaryError != null ||
           (!loadingRoomSummary && roomSummary == null));
 
@@ -104,8 +131,6 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       this.roomSummary = roomSummary;
     } catch (e, s) {
       roomSummaryError = e;
-      loadingCourse = false;
-
       ErrorHandler.logError(
         e: e,
         s: s,
@@ -120,7 +145,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     }
 
     if (roomSummary?.coursePlan != null) {
-      await loadCourse(roomSummary!.coursePlan!.uuid);
+      await _objectivesProvider.loadOutline(roomSummary!.coursePlan!.uuid);
     } else {
       ErrorHandler.logError(
         e: Exception("No course plan found in room summary"),
@@ -129,7 +154,6 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       if (mounted) {
         setState(() {
           roomSummaryError = Exception("No course plan found in room summary");
-          loadingCourse = false;
         });
       }
     }

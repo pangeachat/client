@@ -404,17 +404,7 @@ class ChatController extends State<ChatPageWithRoom>
   /// Close ONLY the left room's token after the user leaves it — the rest of
   /// the workspace, notably the chat list, survives (#7561). Falls back to the
   /// bare exit when the room isn't open as a token (a pushed route).
-  void _closeLeftRoom() {
-    final close = roomTokenCloseLocation(
-      GoRouterState.of(context).uri,
-      room.id,
-    );
-    if (close != null) {
-      context.go(close);
-    } else {
-      NavigationUtil.goToSpaceRoute(null, [], context);
-    }
-  }
+  void _closeLeftRoom() => closeOwnRoomPanel(context, room.id);
 
   // #Pangea
   // void requestHistory([dynamic _]) async {
@@ -2823,7 +2813,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void showSuggestion() {
     final suggestion = choreographer.orchestratorController.activeSuggestion;
-    if (suggestion == null) {
+    if (suggestion == null || suggestion.shuffledChoices.isEmpty) {
       Logs().w("Show suggestion called without active suggestion");
       return;
     }

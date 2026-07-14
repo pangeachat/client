@@ -449,13 +449,6 @@ class BackgroundPush {
     }
     await loadLocale();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (PlatformInfos.isAndroid) {
-        onFcmError?.call(
-          l10n!.noGoogleServicesWarning,
-          link: Uri.parse(AppConfig.enablePushTutorial),
-        );
-        return;
-      }
       onFcmError?.call(l10n!.oopsPushError);
     });
   }

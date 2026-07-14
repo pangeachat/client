@@ -1,13 +1,9 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class SessionBackup {
@@ -105,13 +101,8 @@ extension InitWithRestoreExtension on Client {
       }
     } catch (e, s) {
       Logs().wtf('Client init failed!', e, s);
-      final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
       final sessionBackupString = await storage?.read(key: storageKey);
       if (sessionBackupString == null) {
-        ClientManager.sendInitNotification(
-          l10n.initAppError,
-          l10n.sessionLostBody(AppConfig.newIssueUrl.toString(), e.toString()),
-        );
         rethrow;
       }
 
@@ -130,19 +121,8 @@ extension InitWithRestoreExtension on Client {
             if (state == InitState.migratingDatabase) onMigration?.call();
           },
         );
-        ClientManager.sendInitNotification(
-          l10n.initAppError,
-          l10n.restoreSessionBody(
-            AppConfig.newIssueUrl.toString(),
-            e.toString(),
-          ),
-        );
       } catch (e, s) {
         Logs().wtf('Restore client failed!', e, s);
-        ClientManager.sendInitNotification(
-          l10n.initAppError,
-          l10n.sessionLostBody(AppConfig.newIssueUrl.toString(), e.toString()),
-        );
         rethrow;
       }
     }

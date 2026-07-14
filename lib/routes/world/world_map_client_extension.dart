@@ -16,13 +16,17 @@ extension WorldMapClientExtension on Client {
   /// *another* learner's open session): here we resolve "my started/joined
   /// session" so a map-pin tap reopens it (binding the overlay via `roomid=`)
   /// instead of spawning a fresh instance (#7257).
-  Room? myActivityInstance(String activityId) {
+  Room? activeActivityInstance(String activityId) {
     Room? best;
     var bestHasRole = false;
     for (final r in rooms) {
       if (r.activityId != activityId) continue;
       if (r.membership != Membership.join) continue;
-      final hasRole = r.ownRole != null;
+
+      final ownRole = r.ownRoleState;
+      final hasRole = ownRole != null;
+      if (ownRole != null && ownRole.isFinished) continue;
+
       final ms = r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;
       final bestMs =
           best?.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0;

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
@@ -8,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -17,9 +19,12 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/morph_analytics_list_view.dart';
@@ -35,16 +40,18 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
-  const ConstructAnalyticsView({
-    super.key,
-    required this.view,
-    this.construct,
-    this.showPracticeButton = false,
-  });
-
   final ConstructTypeEnum view;
   final ConstructIdentifier? construct;
   final bool showPracticeButton;
+  final Widget closeButton;
+
+  const ConstructAnalyticsView({
+    super.key,
+    required this.view,
+    required this.closeButton,
+    this.construct,
+    this.showPracticeButton = false,
+  });
 
   @override
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
@@ -246,7 +253,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   bool get selectMode => selectedConstructs.isNotEmpty;
 
-  Future<void> onFlagTokenInfo(
+  Future<void> onFlagVocabDetails(
     PangeaToken token,
     LemmaInfoResponse lemmaInfo,
     PTRequest ptRequest,
@@ -273,10 +280,81 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     );
   }
 
+  Future<void> onFlagGrammarDetails() async {
+    if (widget.view != ConstructTypeEnum.morph) return;
+
+    final construct = widget.construct;
+    final feature = construct?.category;
+    if (feature == null) return;
+
+    final l10n = L10n.of(context);
+    await showDialog(
+      context: context,
+      builder: (dialogContext) => FeedbackDialog(
+        title: l10n.grammarFeedbackDialogTitle,
+        onSubmit: (feedback) async {
+          Navigator.of(dialogContext).pop();
+          final result = await showFutureLoadingDialog(
+            context: context,
+            future: () => GrammarConstructsProvider.submitTagFeedback(
+              feature: feature,
+              feedback: feedback,
+            ),
+          );
+          if (!mounted || result.isError) return;
+          setState(() {});
+          await showDialog(
+            context: context,
+            builder: (context) => FeedbackResponseDialog(
+              title: l10n.grammarFeedbackDialogTitle,
+              feedback: L10n.of(context).grammarFeedbackSubmittedDesc,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
+    final title = widget.construct != null
+        ? null
+        : switch (widget.view) {
+            ConstructTypeEnum.morph => L10n.of(context).grammar,
+            ConstructTypeEnum.vocab => L10n.of(context).vocab,
+          };
+
+    final showDownload = kIsWeb && widget.construct == null;
+    final showReport =
+        widget.view == ConstructTypeEnum.morph && widget.construct != null;
+
     return Scaffold(
+      appBar: AppBar(
+        leading: Center(child: widget.closeButton),
+        title: title != null
+            ? Text(
+                title,
+                style: FluffyThemes.isColumnMode(context)
+                    ? Theme.of(context).textTheme.titleLarge
+                    : Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+              )
+            : null,
+        centerTitle: false,
+        titleSpacing: 0,
+        actions: [
+          if (showDownload) DownloadAnalyticsButton(),
+          if (showReport)
+            IconButton(
+              color: Theme.of(context).iconTheme.color,
+              icon: const Icon(Icons.flag_outlined),
+              tooltip: L10n.of(context).reportGrammarIssueTooltip,
+              onPressed: onFlagGrammarDetails,
+            ),
+        ],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsGeometry.all(16.0),

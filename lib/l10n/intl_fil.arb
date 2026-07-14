@@ -2256,7 +2256,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-09 16:14:09.701334",
+    "@@last_modified": "2026-07-13 10:06:35.878567",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11334,5 +11334,92 @@
     "@closeAddCoursePage": {
         "type": "String",
         "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Iulat ang isyu sa impormasyon ng gramatika",
+    "grammarFeedbackDialogTitle": "Feedback sa Impormasyon ng Gramatika",
+    "grammarFeedbackSubmittedDesc": "Salamat! Ang paliwanag ay na-update batay sa iyong feedback.",
+    "focusOnMap": "Magpokus sa mapa",
+    "welcome": "Maligayang pagdating",
+    "courseRequest": "Hiling sa kurso",
+    "onboarding": "Pagsasanay",
+    "selectImageFromDevice": "Pumili ng larawan mula sa aparato",
+    "dinoAvatarLabel": "Isang dinosaur na may salamin sa mata",
+    "bearAvatarLabel": "Isang magiliw na oso",
+    "squidAvatarLabel": "Isang pusit na may suot na headphone",
+    "cartoonAvatarLabel": "Isang masayang karakter ng kartun na kumakaway",
+    "robotAvatarLabel": "Isang robot na may mga bituin bilang mga mata",
+    "featuresIncludeLabel": "Kasama sa mga tampok",
+    "difficultyListLabel": "Listahan ng kahirapan",
+    "languageListLabel": "Listahan ng wika",
+    "searchedResultsLabel": "Mga resulta ng paghahanap para sa '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
     }
 }
