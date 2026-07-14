@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/repo_cache.dart';
+import 'package:fluffychat/pangea/common/utils/repo_cache_item.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -116,7 +117,8 @@ abstract class BaseRepo<
     }
   }
 
-  Future<void> setCached(TRequest request, TResponse response) {
+  Future<void> setCached(TRequest request, TResponse response) async {
+    await _cacheInit;
     return cache.set(
       request.storageKey,
       RepoCacheItem(timestamp: DateTime.now(), response: response),

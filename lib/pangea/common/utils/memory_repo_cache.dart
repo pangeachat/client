@@ -1,5 +1,6 @@
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/pangea/common/utils/repo_cache.dart';
+import 'package:fluffychat/pangea/common/utils/repo_cache_item.dart';
 
 class MemoryRepoCache<TResponse extends BaseResponse>
     implements RepoCache<TResponse> {

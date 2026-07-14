@@ -2,6 +2,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/pangea/common/utils/repo_cache.dart';
+import 'package:fluffychat/pangea/common/utils/repo_cache_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PersistentRepoCache<TResponse extends BaseResponse>

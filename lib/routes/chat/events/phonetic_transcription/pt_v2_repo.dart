@@ -6,8 +6,6 @@ import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 import 'package:fluffychat/pangea/common/utils/persistent_repo_cache.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 
-/// Disk-cached phonetic transcription v2 (`POST /phonetic_transcription_v2`).
-/// `persist: true` — pronunciations are stable, so keep them across restarts.
 class PTV2Repo extends BaseRepo<PTRequest, PTResponse> {
   PTV2Repo._internal()
     : super(
