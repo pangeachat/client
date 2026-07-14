@@ -26,6 +26,21 @@ class ValidatePromoCodeCacheEntry {
       timestamp.isBefore(DateTime.now().subtract(_cacheDuration));
 }
 
+/// GETs `/subscription/validate_promo_code?code=&duration=` for a DISPLAY-ONLY
+/// discount preview (choreo `PromoCodeValidationResponse`).
+///
+/// The returned terms (`percent_off` / `amount_off` / `discounted_price` /
+/// `expires_at` / `restrictions`) and `discounted_price` in particular are an
+/// ESTIMATE for the UI only — the server independently re-validates the code at
+/// `/checkout` and Stripe finalizes the charged total, so a green preview is
+/// NEVER authorization. A `valid:false` body carries a `reason`
+/// (`not_found_or_inactive | expired | max_redeemed | below_minimum`; for
+/// `below_minimum` the `restrictions` object is also present) — show an inline
+/// message but do NOT block a checkout retry. An upstream Stripe outage /
+/// unresolvable coupon surfaces as an HTTP 400 (`Promo validation failed`),
+/// returned here as a `Result.error` (distinct from a `valid:false` value).
+/// Results are cached (10 min) and in-flight requests de-duplicated by code +
+/// duration.
 class ValidatePromoCodeRepo {
   static final Map<String, Future<Result<ValidatePromoCodeResponse>>>
   _inflightCache = {};

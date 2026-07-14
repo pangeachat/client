@@ -15,8 +15,8 @@ void main() {
 
   // Bounded-poll behavior (I3), driven through the testable `checkoutWith` core
   // with a MockClient transport + a fake delay seam (no real waits). Each POST
-  // body is captured to assert the money-safety contract: EXACTLY {"planId"},
-  // no injected user context (I1).
+  // body is captured to assert the money-safety contract: EXACTLY {"planId"}
+  // (plus an optional "promoCode"), no injected user context (I1).
   group('CheckoutV2Repo.checkoutWith poll', () {
     late List<Map<String, dynamic>> sentBodies;
     late List<Duration> observedDelays;
@@ -43,7 +43,7 @@ void main() {
     }
 
     test(
-      'creating -> created loops, honors retryAfterSeconds, returns url',
+      'creating -> created loops, honors retryAfterSeconds, returns response',
       () async {
         final req = requestsReturning([
           {"status": "creating", "sessionUrl": null, "retryAfterSeconds": 2},
@@ -53,14 +53,14 @@ void main() {
           },
         ]);
 
-        final url = await CheckoutV2Repo.checkoutWith(
+        final res = await CheckoutV2Repo.checkoutWith(
           req,
           "month",
           url: checkoutUrl,
           delay: fakeDelay,
         );
 
-        expect(url, "https://checkout.stripe.com/c/pay/cs_test_ok");
+        expect(res.sessionUrl, "https://checkout.stripe.com/c/pay/cs_test_ok");
         // One wait, of exactly the server-supplied retryAfterSeconds.
         expect(observedDelays, [const Duration(seconds: 2)]);
         expect(sentBodies.length, 2);
@@ -159,6 +159,226 @@ void main() {
       );
       expect(observedDelays, [const Duration(seconds: 10)]);
       expect(sentBodies.length, 2);
+    });
+  });
+
+  // Discount-checkout behavior: the optional promoCode in the body, the echoed
+  // appliedPromoCode, and the typed promo-rejection surface Gabby's UI consumes.
+  group('CheckoutV2Repo.checkoutWith discount', () {
+    const checkoutUrl = "https://example.test/subscription/checkout";
+    late List<Map<String, dynamic>> sentBodies;
+
+    setUp(() => sentBodies = []);
+
+    Requests requestsReturning({
+      required Map<String, dynamic> body,
+      int statusCode = 200,
+    }) {
+      final client = MockClient((request) async {
+        sentBodies.add(jsonDecode(request.body) as Map<String, dynamic>);
+        return http.Response(jsonEncode(body), statusCode);
+      });
+      return Requests(accessToken: "token", client: client);
+    }
+
+    // Emits a raw error response with the given `detail` (object or list) so
+    // `Requests.handleError` rethrows the raw response — the 422 shapes.
+    Requests requestsErroring({required Object detail, int statusCode = 422}) {
+      final client = MockClient((request) async {
+        sentBodies.add(jsonDecode(request.body) as Map<String, dynamic>);
+        return http.Response(jsonEncode({"detail": detail}), statusCode);
+      });
+      return Requests(accessToken: "token", client: client);
+    }
+
+    test('promoCode is sent as exactly {planId, promoCode}', () async {
+      final req = requestsReturning(
+        body: {
+          "status": "created",
+          "sessionUrl": "https://s/cs_test_disc",
+          "appliedPromoCode": "WELCOME50",
+        },
+      );
+
+      await CheckoutV2Repo.checkoutWith(
+        req,
+        "month",
+        promoCode: "WELCOME50",
+        url: checkoutUrl,
+      );
+
+      expect(sentBodies.single, {"planId": "month", "promoCode": "WELCOME50"});
+    });
+
+    test('an empty promoCode is omitted from the body', () async {
+      final req = requestsReturning(
+        body: {"status": "created", "sessionUrl": "https://s/cs_test_ok"},
+      );
+
+      await CheckoutV2Repo.checkoutWith(
+        req,
+        "month",
+        promoCode: "",
+        url: checkoutUrl,
+      );
+
+      expect(sentBodies.single, {"planId": "month"});
+    });
+
+    test('a whitespace-only promoCode is omitted from the body', () async {
+      final req = requestsReturning(
+        body: {"status": "created", "sessionUrl": "https://s/cs_test_ok"},
+      );
+
+      await CheckoutV2Repo.checkoutWith(
+        req,
+        "month",
+        promoCode: "   ",
+        url: checkoutUrl,
+      );
+
+      expect(sentBodies.single, {"planId": "month"});
+    });
+
+    test('a promoCode with surrounding whitespace is sent trimmed', () async {
+      final req = requestsReturning(
+        body: {
+          "status": "created",
+          "sessionUrl": "https://s/cs_test_disc",
+          "appliedPromoCode": "WELCOME50",
+        },
+      );
+
+      await CheckoutV2Repo.checkoutWith(
+        req,
+        "month",
+        promoCode: "  WELCOME50  ",
+        url: checkoutUrl,
+      );
+
+      expect(sentBodies.single, {"planId": "month", "promoCode": "WELCOME50"});
+    });
+
+    test('exposes appliedPromoCode from the resolved response', () async {
+      final req = requestsReturning(
+        body: {
+          "status": "reused",
+          "sessionUrl": "https://s/cs_test_reuse",
+          // Reuse ignores the requested code; the STORED code echoes back.
+          "appliedPromoCode": "EXISTINGCODE",
+        },
+      );
+
+      final res = await CheckoutV2Repo.checkoutWith(
+        req,
+        "month",
+        promoCode: "WELCOME50",
+        url: checkoutUrl,
+      );
+
+      expect(res.appliedPromoCode, "EXISTINGCODE");
+      expect(res.sessionUrl, "https://s/cs_test_reuse");
+    });
+
+    test(
+      'promo_not_applicable 422 -> PromoNotApplicableException, each reason typed',
+      () async {
+        const wireToReason = <String, CheckoutPromoRejectionReason>{
+          "not_found_or_inactive":
+              CheckoutPromoRejectionReason.notFoundOrInactive,
+          "wrong_customer": CheckoutPromoRejectionReason.wrongCustomer,
+          "expired": CheckoutPromoRejectionReason.expired,
+          "max_redeemed": CheckoutPromoRejectionReason.maxRedeemed,
+          "coupon_invalid": CheckoutPromoRejectionReason.couponInvalid,
+          "wrong_plan": CheckoutPromoRejectionReason.wrongPlan,
+          "below_minimum": CheckoutPromoRejectionReason.belowMinimum,
+          "currency_mismatch": CheckoutPromoRejectionReason.currencyMismatch,
+          "rejected_by_stripe": CheckoutPromoRejectionReason.rejectedByStripe,
+        };
+
+        for (final entry in wireToReason.entries) {
+          final req = requestsErroring(
+            detail: {"code": "promo_not_applicable", "reason": entry.key},
+          );
+
+          await expectLater(
+            CheckoutV2Repo.checkoutWith(
+              req,
+              "month",
+              promoCode: "BADCODE",
+              url: checkoutUrl,
+            ),
+            throwsA(
+              isA<PromoNotApplicableException>()
+                  .having((e) => e.reason, 'reason', entry.value)
+                  .having((e) => e.rawReason, 'rawReason', entry.key),
+            ),
+          );
+        }
+      },
+    );
+
+    test('an unmodeled promo reason maps to unknown (never throws on map)',
+        () async {
+      final req = requestsErroring(
+        detail: {"code": "promo_not_applicable", "reason": "brand_new_reason"},
+      );
+
+      await expectLater(
+        CheckoutV2Repo.checkoutWith(
+          req,
+          "month",
+          promoCode: "BADCODE",
+          url: checkoutUrl,
+        ),
+        throwsA(
+          isA<PromoNotApplicableException>().having(
+            (e) => e.reason,
+            'reason',
+            CheckoutPromoRejectionReason.unknown,
+          ),
+        ),
+      );
+    });
+
+    test(
+      'schema-shaped 422 (list detail) -> CheckoutException, NOT promo rejection',
+      () async {
+        final req = requestsErroring(
+          detail: [
+            {
+              "type": "extra_forbidden",
+              "loc": ["body", "surprise"],
+              "msg": "Extra inputs are not permitted",
+            },
+          ],
+        );
+
+        await expectLater(
+          CheckoutV2Repo.checkoutWith(
+            req,
+            "month",
+            promoCode: "WELCOME50",
+            url: checkoutUrl,
+          ),
+          throwsA(
+            allOf(
+              isA<CheckoutException>(),
+              isNot(isA<PromoNotApplicableException>()),
+            ),
+          ),
+        );
+      },
+    );
+
+    test('a string-detail error (e.g. 409) surfaces as ChoreoException',
+        () async {
+      final req = requestsErroring(detail: "already_subscribed", statusCode: 409);
+
+      await expectLater(
+        CheckoutV2Repo.checkoutWith(req, "month", url: checkoutUrl),
+        throwsA(isA<ChoreoException>()),
+      );
     });
   });
 }

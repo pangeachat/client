@@ -11,10 +11,17 @@ class CheckoutResponse {
   final String? sessionUrl;
   final int? retryAfterSeconds;
 
+  /// The promo code ACTUALLY on the returned session (the STORED code the
+  /// server echoes back), or null when no discount is applied. On a `reused`
+  /// open session the request's `promoCode` is IGNORED, so this — not the
+  /// requested code — is the discount state the UI should reflect.
+  final String? appliedPromoCode;
+
   const CheckoutResponse({
     required this.status,
     this.sessionUrl,
     this.retryAfterSeconds,
+    this.appliedPromoCode,
   });
 
   /// A terminal, session-bearing response (`created` or `reused`).
@@ -28,5 +35,6 @@ class CheckoutResponse {
         status: json['status'] as String,
         sessionUrl: json['sessionUrl'] as String?,
         retryAfterSeconds: (json['retryAfterSeconds'] as num?)?.toInt(),
+        appliedPromoCode: json['appliedPromoCode'] as String?,
       );
 }

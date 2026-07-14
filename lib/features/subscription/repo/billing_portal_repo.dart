@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
@@ -8,6 +10,17 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// Returned (as the `Result.error`) when `/subscription/billing_portal` answers
+/// 404 `{"detail": "No billing account"}` — the user has no canonical Stripe
+/// customer (e.g. never purchased on web). Typed so the UI can HIDE the manage
+/// entry rather than surfacing a transient-error retry.
+class NoBillingAccountException implements Exception {
+  const NoBillingAccountException();
+
+  @override
+  String toString() => "NoBillingAccountException";
+}
 
 class BillingPortalCacheEntry {
   final Future<Result<BillingPortalResponse>> future;
@@ -24,6 +37,10 @@ class BillingPortalCacheEntry {
       timestamp.isBefore(DateTime.now().subtract(_cacheDuration));
 }
 
+/// Mints a short-lived Stripe billing-portal URL for the user's CANONICAL
+/// customer (choreo `BillingPortalSessionResponse`, field `url`). Portal URLs
+/// are short-lived, so callers mint on click and open immediately. A user with
+/// no canonical customer -> [NoBillingAccountException] (hide the manage entry).
 class BillingPortalRepo {
   static final Map<String, BillingPortalCacheEntry> _cache = {};
 
@@ -37,32 +54,38 @@ class BillingPortalRepo {
       }
     }
 
-    final future = _fetch();
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+    final future = getWith(req);
     _cache[userID] = BillingPortalCacheEntry(
       future: future,
       timestamp: DateTime.now(),
     );
-    final result = await future;
-    return result;
+    return future;
   }
 
-  static Future<Result<BillingPortalResponse>> _fetch() async {
+  /// The transport core, decoupled from `MatrixState` so the typed-404 and
+  /// success paths are unit-testable with an injected [Requests] (MockClient).
+  @visibleForTesting
+  static Future<Result<BillingPortalResponse>> getWith(
+    Requests req, {
+    String? url,
+  }) async {
     try {
-      final Requests req = Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
-      final Response res = await req.get(url: PApiUrls.billingPortal);
-
-      if (res.statusCode != 200) {
-        throw res;
-      }
-
+      final Response res = await req.get(url: url ?? PApiUrls.billingPortal);
+      // `req.get` throws on >= 400; only a 2xx body reaches here.
       final Map<String, dynamic> json = jsonDecode(
         utf8.decode(res.bodyBytes).toString(),
       );
-
-      final response = BillingPortalResponse.fromJson(json);
-      return Result.value(response);
+      return Result.value(BillingPortalResponse.fromJson(json));
+    } on ChoreoException catch (e) {
+      if (e.response.statusCode == 404) {
+        // No canonical Stripe customer — a typed, non-retryable outcome.
+        return Result.error(const NoBillingAccountException());
+      }
+      ErrorHandler.logError(e: e.errorMessage, data: {});
+      return Result.error(e);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
       return Result.error(e);

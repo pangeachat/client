@@ -109,7 +109,17 @@ class WebSubscriptionInfoManager implements SubscriptionInfoManager {
           )
           .key;
 
-      final sessionUrl = await CheckoutV2Repo.checkout(planId);
+      // The repo now returns the resolved CheckoutResponse (sessionUrl +
+      // appliedPromoCode). A discount code, when Gabby's UI collects one, is
+      // passed via `promoCode:`; appliedPromoCode reflects what actually landed
+      // on the session (an open session ignores a late code). checkoutWith
+      // guarantees a non-null sessionUrl on a resolved response — the guard is
+      // defensive.
+      final checkout = await CheckoutV2Repo.checkout(planId);
+      final sessionUrl = checkout.sessionUrl;
+      if (sessionUrl == null) {
+        throw const CheckoutException("Checkout returned no session URL");
+      }
 
       await SubscriptionManagementRepo.setBeganWebPayment();
       launchUrlString(sessionUrl, webOnlyWindowName: "_self");
