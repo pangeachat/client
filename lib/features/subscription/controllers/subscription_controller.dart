@@ -59,7 +59,17 @@ class SubscriptionController with ChangeNotifier {
 
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
-  SubscriptionController();
+  /// Test-only override of the platform-selected manager, injected ONCE at
+  /// construction into a `final` field so it cannot be mutated post-construction
+  /// (unlike a public settable field, this cannot change real submit/refresh
+  /// behavior from any production reference). Production constructs the
+  /// controller WITHOUT this param, so it is null and [_manager] resolves the
+  /// real web/mobile manager — byte-for-byte unchanged.
+  final SubscriptionInfoManager? _managerOverride;
+
+  SubscriptionController({
+    @visibleForTesting SubscriptionInfoManager? managerOverride,
+  }) : _managerOverride = managerOverride;
 
   SubscriptionState get state => _state;
 
@@ -165,14 +175,8 @@ class SubscriptionController with ChangeNotifier {
     return appIds?.defaultManagementURL(appId);
   }
 
-  /// Test seam: overrides the platform-selected manager so the guarded submit
-  /// path can be exercised without RevenueCat / MatrixState. Null in production,
-  /// so runtime behavior is byte-for-byte unchanged.
-  @visibleForTesting
-  SubscriptionInfoManager? managerOverride;
-
   SubscriptionInfoManager get _manager =>
-      managerOverride ??
+      _managerOverride ??
       (kIsWeb ? WebSubscriptionInfoManager() : MobileSubscriptionInfoManager());
 
   void _onSubscribe() {

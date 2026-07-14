@@ -48,9 +48,8 @@ void main() {
     'a concurrent second submit while one is in-flight is a NO-OP '
     '(manager invoked once; isSubmitting stays true until release)',
     (tester) async {
-      final controller = SubscriptionController();
       final manager = _FakeManager()..block = Completer<void>();
-      controller.managerOverride = manager;
+      final controller = SubscriptionController(managerOverride: manager);
 
       await tester.pumpWidget(
         MaterialApp(
@@ -88,9 +87,8 @@ void main() {
   testWidgets('the guard RELEASES on success — a later submit proceeds', (
     tester,
   ) async {
-    final controller = SubscriptionController();
     final manager = _FakeManager();
-    controller.managerOverride = manager;
+    final controller = SubscriptionController(managerOverride: manager);
 
     await tester.pumpWidget(
       MaterialApp(
@@ -120,9 +118,8 @@ void main() {
   testWidgets('the guard RELEASES on throw — exit() is in finally', (
     tester,
   ) async {
-    final controller = SubscriptionController();
     final manager = _FakeManager()..throwError = Exception("boom");
-    controller.managerOverride = manager;
+    final controller = SubscriptionController(managerOverride: manager);
 
     await tester.pumpWidget(
       MaterialApp(
