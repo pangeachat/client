@@ -107,6 +107,10 @@ CLAUDE.md
 # E2E test artifacts
 test-results/
 
-# Claude Code team config (per-repo) — track the team hooks, ignore the rest of .claude/
+# Claude Code team config (per-repo) — track the team hooks, ignore the rest of .claude/.
+# settings.json is sync-generated (base + fragment; see harness-sync.instructions.md in
+# pangeachat/.github); the fragment holds this repo's own hooks; the sidecar marks generated-ness.
 .claude/*
 !.claude/settings.json
+!.claude/settings.fragment.json
+!.claude/settings.json.generated_by_sync
