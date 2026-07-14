@@ -228,18 +228,23 @@ class _UserHomePageState extends State<UserHomePage> {
                       children: [
                         Stack(
                           children: [
-                            ExcludeSemantics(
-                              child: Avatar(
-                                mxContent: avatar,
-                                name: displayname,
-                                userId: profile?.userId,
-                                size: Avatar.defaultSize * 2.5,
-                                onTap: avatar != null
-                                    ? () => showDialog(
-                                        context: context,
-                                        builder: (_) => MxcImageViewer(avatar),
-                                      )
-                                    : null,
+                            Semantics(
+                              label: L10n.of(context).viewProfileImageLabel,
+                              container: true,
+                              child: ExcludeSemantics(
+                                child: Avatar(
+                                  mxContent: avatar,
+                                  name: displayname,
+                                  userId: profile?.userId,
+                                  size: Avatar.defaultSize * 2.5,
+                                  onTap: avatar != null
+                                      ? () => showDialog(
+                                          context: context,
+                                          builder: (_) =>
+                                              MxcImageViewer(avatar),
+                                        )
+                                      : null,
+                                ),
                               ),
                             ),
                             if (profile != null)

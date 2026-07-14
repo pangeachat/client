@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/utils/beautify_string_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -93,45 +91,45 @@ class SettingsSecurityView extends StatelessWidget {
                         ),
                     },
                     Divider(color: theme.dividerColor),
-                    ListTile(
-                      title: Text(
-                        L10n.of(context).shareKeysWith,
-                        style: TextStyle(
-                          color: theme.colorScheme.secondary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(L10n.of(context).shareKeysWithDescription),
-                    ),
-                    ListTile(
-                      title: Material(
-                        borderRadius: BorderRadius.circular(
-                          AppConfig.borderRadius / 2,
-                        ),
-                        color: theme.colorScheme.onInverseSurface,
-                        child: DropdownButton<ShareKeysWith>(
-                          isExpanded: true,
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          borderRadius: BorderRadius.circular(
-                            AppConfig.borderRadius / 2,
-                          ),
-                          underline: const SizedBox.shrink(),
-                          value: Matrix.of(context).client.shareKeysWith,
-                          items: ShareKeysWith.values
-                              .map(
-                                (share) => DropdownMenuItem(
-                                  value: share,
-                                  child: Text(
-                                    share.localized(L10n.of(context)),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: controller.changeShareKeysWith,
-                        ),
-                      ),
-                    ),
-                    Divider(color: theme.dividerColor),
+                    // ListTile(
+                    //   title: Text(
+                    //     L10n.of(context).shareKeysWith,
+                    //     style: TextStyle(
+                    //       color: theme.colorScheme.secondary,
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //   ),
+                    //   subtitle: Text(L10n.of(context).shareKeysWithDescription),
+                    // ),
+                    // ListTile(
+                    //   title: Material(
+                    //     borderRadius: BorderRadius.circular(
+                    //       AppConfig.borderRadius / 2,
+                    //     ),
+                    //     color: theme.colorScheme.onInverseSurface,
+                    //     child: DropdownButton<ShareKeysWith>(
+                    //       isExpanded: true,
+                    //       padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    //       borderRadius: BorderRadius.circular(
+                    //         AppConfig.borderRadius / 2,
+                    //       ),
+                    //       underline: const SizedBox.shrink(),
+                    //       value: Matrix.of(context).client.shareKeysWith,
+                    //       items: ShareKeysWith.values
+                    //           .map(
+                    //             (share) => DropdownMenuItem(
+                    //               value: share,
+                    //               child: Text(
+                    //                 share.localized(L10n.of(context)),
+                    //               ),
+                    //             ),
+                    //           )
+                    //           .toList(),
+                    //       onChanged: controller.changeShareKeysWith,
+                    //     ),
+                    //   ),
+                    // ),
+                    // Divider(color: theme.dividerColor),
                     ListTile(
                       title: Text(
                         L10n.of(context).account,
@@ -141,14 +139,14 @@ class SettingsSecurityView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    ListTile(
-                      title: Text(L10n.of(context).yourPublicKey),
-                      leading: const Icon(Icons.vpn_key_outlined),
-                      subtitle: SelectableText(
-                        Matrix.of(context).client.fingerprintKey.beautified,
-                        style: const TextStyle(fontFamily: 'RobotoMono'),
-                      ),
-                    ),
+                    // ListTile(
+                    //   title: Text(L10n.of(context).yourPublicKey),
+                    //   leading: const Icon(Icons.vpn_key_outlined),
+                    //   subtitle: SelectableText(
+                    //     Matrix.of(context).client.fingerprintKey.beautified,
+                    //     style: const TextStyle(fontFamily: 'RobotoMono'),
+                    //   ),
+                    // ),
                     // #Pangea
                     if (capabilities?.m3pidChanges?.enabled != false ||
                         error != null)

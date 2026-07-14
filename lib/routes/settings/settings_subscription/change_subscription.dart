@@ -70,149 +70,181 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
       );
     }
 
-    return Column(
-      spacing: 16.0,
-      children: [
-        Text(
-          L10n.of(context).selectYourPlan,
-          style: const TextStyle(fontSize: 16),
-        ),
-        Column(
-          children: [
-            ...subscriptions.map((subscription) {
-              final selected = _isSelected(subscription);
-              return DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Theme.of(context).dividerColor,
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Text(subscription.displayName(context)),
-                      trailing: Icon(
-                        selected
-                            ? Icons.keyboard_arrow_right_outlined
-                            : Icons.keyboard_arrow_down_outlined,
-                      ),
-                      enabled: _isEnabled(subscription),
-                      onTap: () => _selectSubscription(subscription),
-                    ),
-                    AnimatedSize(
-                      duration: FluffyThemes.animationDuration,
-                      child: _selectedSubscription?.id != subscription.id
-                          ? const SizedBox()
-                          : Column(
-                              children: [
-                                Container(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 400.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Theme.of(context).dividerColor,
-                                    ),
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(16.0),
-                                    ),
-                                  ),
-                                  margin: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Row(
-                                          spacing: 4.0,
-                                          children: [
-                                            Expanded(
-                                              flex: 3,
-                                              child: Text(
-                                                L10n.of(
-                                                  context,
-                                                ).paidSubscriptionStarts(
-                                                  _formattedDate,
-                                                ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Text(
-                                                "${subscription.displayPrice(context)}/${subscription.duration?.name}",
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 400.0,
-                                  ),
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        L10n.of(
-                                          context,
-                                        ).cancelInSubscriptionSettings,
-                                      ),
-                                      const SizedBox(height: 20.0),
-                                      ElevatedButton(
-                                        onPressed: () =>
-                                            _submitChange(subscription),
-                                        child: _loading
-                                            ? const LinearProgressIndicator()
-                                            : Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    subscription.isTrial
-                                                        ? L10n.of(
-                                                            context,
-                                                          ).activateTrial
-                                                        : L10n.of(context).pay,
-                                                  ),
-                                                ],
-                                              ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                    ),
-                  ],
-                ),
-              );
-            }),
-          ],
-        ),
-        if (kIsWeb)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              spacing: 8.0,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.info_outlined),
-                Flexible(child: Text(L10n.of(context).promoCodeInfo)),
-              ],
+    return Semantics(
+      label: L10n.of(context).selectYourPlan,
+      container: true,
+      child: Column(
+        spacing: 16.0,
+        children: [
+          ExcludeSemantics(
+            child: Text(
+              L10n.of(context).selectYourPlan,
+              style: const TextStyle(fontSize: 16),
             ),
           ),
-        const SizedBox(height: 20.0),
-      ],
+          Column(
+            children: [
+              ...subscriptions.map((subscription) {
+                final selected = _isSelected(subscription);
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context).dividerColor,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  child: Semantics(
+                    label: subscription.displayName(context),
+                    container: true,
+                    expanded: _selectedSubscription?.id == subscription.id,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: ExcludeSemantics(
+                            child: Text(subscription.displayName(context)),
+                          ),
+
+                          trailing: Icon(
+                            selected
+                                ? Icons.keyboard_arrow_right_outlined
+                                : Icons.keyboard_arrow_down_outlined,
+                          ),
+                          enabled: _isEnabled(subscription),
+                          onTap: () => _selectSubscription(subscription),
+                        ),
+                        AnimatedSize(
+                          duration: FluffyThemes.animationDuration,
+                          child: _selectedSubscription?.id != subscription.id
+                              ? const SizedBox()
+                              : Column(
+                                  children: [
+                                    Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 400.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Theme.of(context).dividerColor,
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(16.0),
+                                        ),
+                                      ),
+                                      margin: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: Row(
+                                              spacing: 4.0,
+                                              children: [
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Semantics(
+                                                    container: true,
+                                                    child: Text(
+                                                      L10n.of(
+                                                        context,
+                                                      ).paidSubscriptionStarts(
+                                                        _formattedDate,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Semantics(
+                                                    container: true,
+                                                    child: Text(
+                                                      "${subscription.displayPrice(context)}/${subscription.duration?.name}",
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 400.0,
+                                      ),
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Semantics(
+                                            container: true,
+                                            child: Text(
+                                              L10n.of(
+                                                context,
+                                              ).cancelInSubscriptionSettings,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 20.0),
+                                          ElevatedButton(
+                                            onPressed: () =>
+                                                _submitChange(subscription),
+                                            child: _loading
+                                                ? const LinearProgressIndicator()
+                                                : Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        subscription.isTrial
+                                                            ? L10n.of(
+                                                                context,
+                                                              ).activateTrial
+                                                            : L10n.of(
+                                                                context,
+                                                              ).pay,
+                                                      ),
+                                                    ],
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            ],
+          ),
+          if (kIsWeb)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                spacing: 8.0,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.info_outlined),
+                  Semantics(
+                    container: true,
+                    child: Flexible(
+                      child: Text(L10n.of(context).promoCodeInfo),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 20.0),
+        ],
+      ),
     );
   }
 }

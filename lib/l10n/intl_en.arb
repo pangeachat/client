@@ -5085,5 +5085,20 @@
     },
     "openDM": "Open direct message", 
     "openNewTab": "Open in new tab", 
+    "viewProfileImageLabel": "View profile image", 
+    "profileImageLabel": "Profile image", 
+    "actionsLabel": "Actions",
+    "colorListLabel": "Color list",
+    "chatAppearanceStyleLabel": "Chat appearance with chosen style",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} list",
+    "@listLabel": {
+        "placeholders": {
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordFormLabel": "Change password form",
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes."
 }
