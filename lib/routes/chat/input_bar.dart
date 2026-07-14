@@ -6,7 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
@@ -408,7 +408,7 @@ class InputBar extends StatelessWidget {
   }
 
   // #Pangea
-  SubscriptionStatus get _paywallStatus =>
+  SubscriptionPaywallStatus get _paywallStatus =>
       MatrixState.pangeaController.subscriptionController.paywallStatus;
 
   String _defaultHintText(BuildContext context) {
@@ -441,7 +441,7 @@ class InputBar extends StatelessWidget {
   }
 
   bool _shouldShowPaywall(BuildContext context) {
-    if (_paywallStatus == SubscriptionStatus.shouldShowPaywall) {
+    if (_paywallStatus == SubscriptionPaywallStatus.shouldShowPaywall) {
       PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return true;
     }

@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:collection/collection.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
-import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/mobile_subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/models/subscription_app_id.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
@@ -52,12 +52,12 @@ class SubscriptionController with ChangeNotifier {
     _ => true,
   };
 
-  SubscriptionStatus get paywallStatus => switch (_state) {
-    SubscriptionActive() => SubscriptionStatus.subscribed,
+  SubscriptionPaywallStatus get paywallStatus => switch (_state) {
+    SubscriptionActive() => SubscriptionPaywallStatus.subscribed,
     _ =>
       shouldShowPaywall
-          ? SubscriptionStatus.shouldShowPaywall
-          : SubscriptionStatus.dimissedPaywall,
+          ? SubscriptionPaywallStatus.shouldShowPaywall
+          : SubscriptionPaywallStatus.dimissedPaywall,
   };
 
   bool get inTrialWindow =>

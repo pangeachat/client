@@ -100,4 +100,5 @@ class PApiUrls {
   static String subscriptionProducts = "$_subscriptionRoute/products";
   static String validatePromoCode = "$_subscriptionRoute/validate_promo_code";
   static String subscriptionCheckout = "$_subscriptionRoute/checkout";
+  static String subscriptionStatus = "$_subscriptionRoute/status";
 }
