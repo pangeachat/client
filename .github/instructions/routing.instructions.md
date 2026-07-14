@@ -133,11 +133,16 @@ token over the course-scoped map.
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
 precisely how you get a clear look at the scoped map (#7087). The context
-changes in exactly two ways: selecting another **course** replaces it, and the
-**World/home** control clears it — the one deliberate full reset, dropping every
-open panel *and* the context together in one history step so the back button
-restores both. Surfaces that carry no context of their own (the Courses hub,
-Chats, Settings) overlay the map you left without changing it.
+changes in three ways: selecting another **course** replaces it; the
+**World/home** control clears it; and **leaving or deleting the course you are
+in** clears it. The latter two are the same deliberate full reset — dropping
+every open panel *and* the context together in one history step (so the back
+button restores both) and revealing the world map at its personal default.
+Leaving or deleting a *course* is the only membership change that resets scope:
+leaving or deleting a chat, DM, or activity just drops that one panel and leaves
+the rest of the workspace — notably the list it sat in — standing (#7561).
+Surfaces that carry no context of their own (the Courses hub, Chats, Settings)
+overlay the map you left without changing it.
 
 Pure **map filters** (region, language, activity kind) are a future, separate
 `?m=` list — display refinement, not workspace context. Nothing uses it today.
