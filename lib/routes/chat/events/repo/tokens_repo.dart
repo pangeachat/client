@@ -3,6 +3,7 @@ import 'package:http/http.dart' show Response;
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/memory_repo_cache.dart';
 import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 
 /// In-memory cached tokenization (`POST /tokenize`).
@@ -11,10 +12,9 @@ import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 class TokensRepo extends BaseRepo<TokensRequestModel, TokensResponseModel> {
   TokensRepo._internal()
     : super(
-        boxName: 'tokens',
+        cache: MemoryRepoCache<TokensResponseModel>(),
         responseFromJson: TokensResponseModel.fromJson,
         cacheDuration: const Duration(minutes: 10),
-        persist: false,
       );
 
   static final TokensRepo _instance = TokensRepo._internal();
