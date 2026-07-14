@@ -115,4 +115,29 @@ void main() {
       expect(r.minimumAmountCurrency, isNull);
     });
   });
+
+  group('numeric leniency (serializer may emit 500.0 for 500)', () {
+    test('double-valued money/expiry fields parse to ints', () {
+      final res = ValidatePromoCodeResponse.fromJson({
+        "valid": true,
+        "code": "5OFF",
+        "discount_type": "amount",
+        "amount_off": 500.0,
+        "currency": "usd",
+        "coupon_duration": "once",
+        "restrictions": {
+          "first_time_transaction": false,
+          "minimum_amount": 2000.0,
+          "minimum_amount_currency": "usd",
+        },
+        "discounted_price": {"amount": 499.0, "currency": "usd"},
+        "expires_at": 1735689600.0,
+      });
+
+      expect(res.amountOff, 500);
+      expect(res.restrictions!.minimumAmount, 2000);
+      expect(res.discountedPrice!.amount, 499);
+      expect(res.expiresAt, 1735689600);
+    });
+  });
 }

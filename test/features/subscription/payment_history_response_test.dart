@@ -78,6 +78,24 @@ void main() {
     });
   });
 
+  group('numeric leniency (serializer may emit 999.0 for 999)', () {
+    test('double-valued minor-unit amounts parse to ints', () {
+      final inv = InvoiceSummary.fromJson({
+        "id": "in_dbl",
+        "created": "2026-07-01T12:00:00Z",
+        "subtotal": 999.0,
+        "total": 999.0,
+        "amount_paid": 999.0,
+        "currency": "usd",
+        "status": "paid",
+      });
+
+      expect(inv.subtotal, 999);
+      expect(inv.total, 999);
+      expect(inv.amountPaid, 999);
+    });
+  });
+
   group('PaymentHistoryResponse.fromJson', () {
     test('parses a list of invoices', () {
       final res = PaymentHistoryResponse.fromJson({

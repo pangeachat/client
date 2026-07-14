@@ -22,53 +22,52 @@ class NoBillingAccountException implements Exception {
   String toString() => "NoBillingAccountException";
 }
 
-class BillingPortalCacheEntry {
-  final Future<Result<BillingPortalResponse>> future;
-  final DateTime timestamp;
-
-  const BillingPortalCacheEntry({
-    required this.future,
-    required this.timestamp,
-  });
-
-  static const Duration _cacheDuration = Duration(minutes: 10);
-
-  bool get isExpired =>
-      timestamp.isBefore(DateTime.now().subtract(_cacheDuration));
-}
-
 /// Mints a short-lived Stripe billing-portal URL for the user's CANONICAL
-/// customer (choreo `BillingPortalSessionResponse`, field `url`). Portal URLs
-/// are short-lived, so callers mint on click and open immediately. A user with
-/// no canonical customer -> [NoBillingAccountException] (hide the manage entry).
+/// customer (choreo `BillingPortalSessionResponse`, field `url`).
+///
+/// Portal session URLs are SHORT-LIVED by design: mint on click, open
+/// immediately, and NEVER cache the minted URL — every call performs a fresh
+/// request. The only sharing is in-flight dedupe (two overlapping taps ride
+/// the same request), and the in-flight entry is evicted as soon as the
+/// request completes, success OR failure — a transient error is never cached,
+/// so the next tap retries cleanly. A user with no canonical customer ->
+/// [NoBillingAccountException] (hide the manage entry).
 class BillingPortalRepo {
-  static final Map<String, BillingPortalCacheEntry> _cache = {};
+  static final Map<String, Future<Result<BillingPortalResponse>>> _inflight =
+      {};
 
-  static Future<Result<BillingPortalResponse>> get(String userID) async {
-    final cached = _cache[userID];
-    if (cached != null) {
-      if (cached.isExpired) {
-        _cache.remove(userID);
-      } else {
-        return cached.future;
-      }
-    }
-
+  static Future<Result<BillingPortalResponse>> get(String userID) {
     final Requests req = Requests(
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
-    final future = getWith(req);
-    _cache[userID] = BillingPortalCacheEntry(
-      future: future,
-      timestamp: DateTime.now(),
-    );
+    return getWith(req, dedupeKey: userID);
+  }
+
+  /// The transport core, decoupled from `MatrixState` so the dedupe/no-cache
+  /// behavior and the typed-404 path are unit-testable with an injected
+  /// [Requests] (MockClient).
+  @visibleForTesting
+  static Future<Result<BillingPortalResponse>> getWith(
+    Requests req, {
+    String? url,
+    String dedupeKey = "portal",
+  }) {
+    final inflight = _inflight[dedupeKey];
+    if (inflight != null) return inflight;
+
+    // _fetch never throws (failures come back as Result.error), so
+    // whenComplete is the `finally` that guarantees eviction either way.
+    // NOTE: the callback MUST have a block body — `Map.remove` returns the
+    // evicted value (this very future), and whenComplete AWAITS a returned
+    // future, which would deadlock the future on itself.
+    final future = _fetch(req, url: url).whenComplete(() {
+      _inflight.remove(dedupeKey);
+    });
+    _inflight[dedupeKey] = future;
     return future;
   }
 
-  /// The transport core, decoupled from `MatrixState` so the typed-404 and
-  /// success paths are unit-testable with an injected [Requests] (MockClient).
-  @visibleForTesting
-  static Future<Result<BillingPortalResponse>> getWith(
+  static Future<Result<BillingPortalResponse>> _fetch(
     Requests req, {
     String? url,
   }) async {

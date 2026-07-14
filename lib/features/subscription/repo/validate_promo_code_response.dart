@@ -31,7 +31,9 @@ class ValidatePromoCodeResponse {
       code: json['code'] as String?,
       discountType: json['discount_type'] as String?,
       percentOff: (json['percent_off'] as num?)?.toDouble(),
-      amountOff: json['amount_off'] as int?,
+      // Minor-unit amounts arrive as JSON numbers; a serializer may emit
+      // 500.0 for 500, so parse via num (consistent with products_v2).
+      amountOff: (json['amount_off'] as num?)?.toInt(),
       currency: json['currency'] as String?,
       couponDuration: json['coupon_duration'] as String?,
       restrictions: json['restrictions'] != null
@@ -44,7 +46,7 @@ class ValidatePromoCodeResponse {
               json['discounted_price'] as Map<String, dynamic>,
             )
           : null,
-      expiresAt: json['expires_at'] as int?,
+      expiresAt: (json['expires_at'] as num?)?.toInt(),
       reason: json['reason'] as String?,
     );
   }
@@ -79,7 +81,7 @@ class PromoRestrictions {
 
   factory PromoRestrictions.fromJson(Map<String, dynamic> json) {
     return PromoRestrictions(
-      minimumAmount: json['minimum_amount'] as int?,
+      minimumAmount: (json['minimum_amount'] as num?)?.toInt(),
       minimumAmountCurrency: json['minimum_amount_currency'] as String?,
       firstTimeTransaction: json['first_time_transaction'] as bool? ?? false,
     );
@@ -102,7 +104,7 @@ class DiscountedPrice {
 
   factory DiscountedPrice.fromJson(Map<String, dynamic> json) {
     return DiscountedPrice(
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
       currency: json['currency'] as String,
     );
   }

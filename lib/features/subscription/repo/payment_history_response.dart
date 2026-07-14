@@ -50,9 +50,11 @@ class InvoiceSummary {
       id: json['id'] as String,
       number: json['number'] as String?,
       created: json['created'] as String,
-      subtotal: json['subtotal'] as int,
-      total: json['total'] as int,
-      amountPaid: json['amount_paid'] as int,
+      // Minor-unit amounts arrive as JSON numbers; a serializer may emit
+      // 999.0 for 999, so parse via num (consistent with products_v2).
+      subtotal: (json['subtotal'] as num).toInt(),
+      total: (json['total'] as num).toInt(),
+      amountPaid: (json['amount_paid'] as num).toInt(),
       currency: json['currency'] as String,
       status: json['status'] as String,
       hostedInvoiceUrl: json['hosted_invoice_url'] as String?,

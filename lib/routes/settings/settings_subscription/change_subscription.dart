@@ -6,7 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
+import 'package:fluffychat/features/subscription/utils/single_flight_guard.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ChangeSubscription extends StatefulWidget {
@@ -18,7 +20,12 @@ class ChangeSubscription extends StatefulWidget {
 
 class ChangeSubscriptionState extends State<ChangeSubscription> {
   SubscriptionDetails? _selectedSubscription;
-  bool _loading = false;
+
+  /// Re-entry guard for the checkout button (unit-tested SingleFlightGuard):
+  /// a double-tap must never fire concurrent checkouts or multiple redirects.
+  final SingleFlightGuard _submitGuard = SingleFlightGuard();
+
+  bool get _loading => _submitGuard.inFlight;
 
   SubscriptionController get _subscriptionController =>
       MatrixState.pangeaController.subscriptionController;
@@ -52,14 +59,25 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
   }
 
   Future<void> _submitChange(SubscriptionDetails subscription) async {
-    setState(() => _loading = true);
+    // Early-return while a submit is already in flight (the button is ALSO
+    // disabled below — belt and braces against a queued double-tap).
+    if (!_submitGuard.tryEnter()) return;
+    setState(() {});
     try {
-      await _subscriptionController.submitSubscriptionChange(
-        subscription,
-        context,
+      // The paywall idiom: showFutureLoadingDialog surfaces a checkout
+      // failure (network error, promo rejection, poll give-up) in a
+      // dismissible error dialog instead of letting it escape the tap
+      // handler unrendered.
+      await showFutureLoadingDialog(
+        context: context,
+        future: () => _subscriptionController.submitSubscriptionChange(
+          subscription,
+          context,
+        ),
       );
     } finally {
-      if (mounted) setState(() => _loading = false);
+      _submitGuard.exit();
+      if (mounted) setState(() {});
     }
   }
 
@@ -174,8 +192,10 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
                                       ),
                                       const SizedBox(height: 20.0),
                                       ElevatedButton(
-                                        onPressed: () =>
-                                            _submitChange(subscription),
+                                        onPressed: _loading
+                                            ? null
+                                            : () =>
+                                                  _submitChange(subscription),
                                         child: _loading
                                             ? const LinearProgressIndicator()
                                             : Row(

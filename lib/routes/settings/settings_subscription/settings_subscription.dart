@@ -8,8 +8,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
+import 'package:fluffychat/features/subscription/repo/billing_portal_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/utils/cancel_eligibility.dart';
+import 'package:fluffychat/features/subscription/utils/single_flight_guard.dart';
 import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -17,6 +19,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -143,6 +146,12 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   /// this is false and every v2 branch below is inert.
   bool get _v2CancelPath => Environment.subsV2WebEnabled && kIsWeb;
 
+  /// Re-entry guards (unit-tested SingleFlightGuard): a double-tap on the
+  /// cancel tile or a manage tile must not fire concurrent requests or open
+  /// duplicate confirm dialogs / portal tabs.
+  final SingleFlightGuard _cancelGuard = SingleFlightGuard();
+  final SingleFlightGuard _portalGuard = SingleFlightGuard();
+
   /// Gates the cancel / re-enable-renewal tile in the view. Off the v2 path
   /// this is always true (RC behavior byte-for-byte unchanged — the tile always
   /// renders in that block). On the v2 path the in-app cancel tile shows ONLY
@@ -199,20 +208,31 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         // Cancel is synchronous + server-confirmed, so we do NOT set the
         // clicked-cancel/end-date polling shim — we refresh via
         // updateCurrentSubscription inside the controller.
-        final result = await showOkCancelAlertDialog(
-          context: context,
-          title: L10n.of(context).cancelSubscription,
-          message: L10n.of(context).areYouSure,
-          okLabel: L10n.of(context).yes,
-          cancelLabel: L10n.of(context).cancel,
-          isDestructive: true,
-        );
-        if (result != OkCancelResult.ok) return;
+        if (!_cancelGuard.tryEnter()) return; // no concurrent cancels
+        try {
+          final result = await showOkCancelAlertDialog(
+            context: context,
+            title: L10n.of(context).cancelSubscription,
+            message: L10n.of(context).areYouSure,
+            okLabel: L10n.of(context).yes,
+            cancelLabel: L10n.of(context).cancel,
+            isDestructive: true,
+          );
+          if (result != OkCancelResult.ok) return;
 
-        await subscriptionController.cancelSubscription(
-          (state as SubscriptionActive).entitlementRef!,
-        );
-        if (mounted) setState(() {});
+          // The repo idiom for exactly this: a blocking loading dialog while
+          // the cancel runs, and a dismissible error surface if it throws —
+          // the tile stays available, so the user can retry.
+          await showFutureLoadingDialog(
+            context: context,
+            future: () => subscriptionController.cancelSubscription(
+              (state as SubscriptionActive).entitlementRef!,
+            ),
+          );
+          if (mounted) setState(() {});
+        } finally {
+          _cancelGuard.exit();
+        }
         return;
       case CancelClickAction.v2NoOp:
         return;
@@ -254,6 +274,21 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   }
 
   Future<Uri?> launchMangementUrl(ManagementOption option) async {
+    // v2 web path: BOTH the payment-method and payment-history tiles mint a
+    // fresh Stripe billing-portal session — the portal surfaces the payment
+    // method AND the full invoice history, which is the minimal correct
+    // wiring onto the canonical v2 APIs without building new client UI
+    // (Gabby's history page will consume PaymentHistoryRepo directly). The
+    // legacy static stripeManagementUrl is NEVER launched on this path; off
+    // the flag / on mobile the legacy code below is byte-for-byte unchanged.
+    // The routing decision is the unit-tested classifyManagementLaunch.
+    switch (classifyManagementLaunch(v2Path: _v2CancelPath)) {
+      case ManagementLaunchRoute.v2BillingPortal:
+        return _launchV2BillingPortal();
+      case ManagementLaunchRoute.legacy:
+        break;
+    }
+
     String managementUrl = Environment.stripeManagementUrl;
     if (_userEmail != null) {
       managementUrl += "?prefilled_email=${Uri.encodeComponent(_userEmail!)}";
@@ -286,6 +321,53 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
         final uri = Uri.parse(AppConfig.googlePlayMangementUrl);
         launchUrl(uri, mode: LaunchMode.externalApplication);
         return uri;
+    }
+  }
+
+  /// Mints a fresh Stripe billing-portal session and opens it (v2 web path).
+  /// Portal URLs are SHORT-LIVED — always minted on click, never cached (the
+  /// repo only dedupes an in-flight request). The typed no-portal outcome
+  /// ([NoBillingAccountException] — the user has no canonical Stripe customer)
+  /// is NOT an error: it renders the management-unavailable message instead of
+  /// an error dialog. Transient failures surface in the loading dialog's
+  /// dismissible error state, so the user can retry from the same tile.
+  Future<Uri?> _launchV2BillingPortal() async {
+    if (!_portalGuard.tryEnter()) return null; // no duplicate portal mints
+    try {
+      final userID = Matrix.of(context).client.userID;
+      if (userID == null) return null;
+
+      final result = await showFutureLoadingDialog(
+        context: context,
+        future: () async {
+          final res = await BillingPortalRepo.get(userID);
+          final error = res.asError?.error;
+          if (error != null) throw error;
+          return res.asValue!.value;
+        },
+        // The typed no-portal outcome is handled below, not as an error UI.
+        showError: (e) => e is! NoBillingAccountException,
+      );
+      if (!mounted) return null;
+
+      if (result.error is NoBillingAccountException) {
+        ScaffoldMessenger.of(context).showSnackBarAnnounced(
+          SnackBar(
+            content: Text(L10n.of(context).subscriptionManagementUnavailable),
+          ),
+          announcement: L10n.of(context).subscriptionManagementUnavailable,
+        );
+        return null;
+      }
+
+      final portal = result.result;
+      if (portal == null) return null;
+
+      final uri = Uri.parse(portal.url);
+      launchUrl(uri, mode: LaunchMode.externalApplication);
+      return uri;
+    } finally {
+      _portalGuard.exit();
     }
   }
 

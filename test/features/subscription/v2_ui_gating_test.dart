@@ -274,6 +274,21 @@ void main() {
     });
   });
 
+  group('classifyManagementLaunch (payment method / history routing)', () {
+    test('v2 path -> billing portal (legacy static URL is NEVER launched)', () {
+      final route = classifyManagementLaunch(v2Path: true);
+      expect(route, ManagementLaunchRoute.v2BillingPortal);
+      expect(route, isNot(ManagementLaunchRoute.legacy));
+    });
+
+    test('off-flag / mobile -> legacy (byte-for-byte unchanged)', () {
+      expect(
+        classifyManagementLaunch(v2Path: false),
+        ManagementLaunchRoute.legacy,
+      );
+    });
+  });
+
   group('shouldWarnBeforeAccountDelete (finding #4 — delete safety)', () {
     test('paid + no management URL + v2 path -> WARN (safety net)', () {
       expect(

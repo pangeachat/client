@@ -61,6 +61,19 @@ CancelClickAction classifyCancelClick({
   return CancelClickAction.legacy;
 }
 
+/// Where the management actions (payment method / payment history) route.
+/// DECISION (subs-v2 wiring): on the v2 web path BOTH tiles mint a fresh
+/// Stripe billing-portal session — the portal surfaces the payment method AND
+/// the full invoice history, which is the minimal correct wiring onto the
+/// canonical v2 APIs without building new client UI (Gabby's history page will
+/// consume `PaymentHistoryRepo` directly). The legacy static
+/// `stripeManagementUrl` is NEVER launched on the v2 path. Off the flag / on
+/// mobile the legacy behavior is byte-for-byte unchanged.
+enum ManagementLaunchRoute { v2BillingPortal, legacy }
+
+ManagementLaunchRoute classifyManagementLaunch({required bool v2Path}) =>
+    v2Path ? ManagementLaunchRoute.v2BillingPortal : ManagementLaunchRoute.legacy;
+
 /// Whether the promotional-access warning should use the UNDATED copy (no
 /// expiration date). True for a lifetime/comp/seat/manual grant whose expiration
 /// is null — force-unwrapping the date there would crash (finding: settings NPE
