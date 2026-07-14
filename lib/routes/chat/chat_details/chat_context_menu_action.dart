@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -294,8 +293,11 @@ void chatContextMenuAction(
       }
 
       if (!resp.isError) {
+        // Leaving a whole course is the World/home reset: drop every panel and
+        // the `?c=` scope, back to the world map at its personal default. A
+        // chat/DM/activity instead just drops its own panel (closeRoomPanelFromList).
         isSpace
-            ? context.go(PRoutes.chatsList)
+            ? outerContext.go(WorkspaceNav.clearAll())
             : closeRoomPanelFromList(outerContext, room.id);
       }
 

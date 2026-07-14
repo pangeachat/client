@@ -13,7 +13,6 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -299,7 +298,9 @@ class SpaceDetailsContent extends StatelessWidget {
             future: room.leaveSpace,
           );
           if (!resp.isError) {
-            context.go(PRoutes.chatsList);
+            // Leaving a course is the World/home reset: drop every panel and the
+            // `?c=` scope, back to the world map at its personal default.
+            context.go(WorkspaceNav.clearAll());
           }
         },
         enabled: room.membership == Membership.join,
