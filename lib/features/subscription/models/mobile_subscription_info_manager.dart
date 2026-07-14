@@ -8,7 +8,11 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class MobileSubscriptionInfoManager implements SubscriptionInfoManager {
   @override
-  Future<SubscriptionState> getCurrentSubscriptionInfo() async {
+  Future<SubscriptionState> getCurrentSubscriptionInfo({
+    String? stripeAppId,
+  }) async {
+    // [stripeAppId] is web-v2 only; the RC SDK path ignores it (behavior
+    // unchanged).
     try {
       await Purchases.invalidateCustomerInfoCache();
       final info = await Purchases.getCustomerInfo();

@@ -35,7 +35,12 @@ class ChangeSubscriptionState extends State<ChangeSubscription> {
       _subscriptionController.subscription == subscription;
 
   bool _isEnabled(SubscriptionDetails subscription) =>
-      (!subscription.isTrial || _subscriptionController.inTrialWindow) &&
+      // #1: a trial is enabled when the local RC trial window is open OR (v2
+      // web) the server says the trial is offerable. Off the flag
+      // `v2TrialOfferable` is false, so this is byte-for-byte today's behavior.
+      (!subscription.isTrial ||
+          _subscriptionController.inTrialWindow ||
+          _subscriptionController.v2TrialOfferable) &&
       !_isCurrentSubscription(subscription);
 
   void _selectSubscription(SubscriptionDetails? subscription) {

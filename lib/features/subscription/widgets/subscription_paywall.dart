@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -82,8 +85,18 @@ class SubscriptionPaywall extends StatelessWidget {
                   direction: Axis.horizontal,
                   spacing: 10,
                   children:
-                      MatrixState.pangeaController.userController
-                          .inTrialWindow()
+                      // #2: path-aware trial branch. v2 web uses the server
+                      // signal (v2TrialOfferable); off the flag / mobile keeps
+                      // the RC `inTrialWindow()` heuristic, so this is
+                      // byte-for-byte unchanged off the flag.
+                      isTrialOfferable(
+                        v2Path: Environment.subsV2WebEnabled && kIsWeb,
+                        v2TrialOfferable: sub.v2TrialOfferable,
+                        inTrialWindow: MatrixState
+                            .pangeaController
+                            .userController
+                            .inTrialWindow(),
+                      )
                       ? [
                           SubscriptionCard(
                             onTap: sub.activateNewUserTrial,
@@ -104,8 +117,16 @@ class SubscriptionPaywall extends StatelessWidget {
                                   ),
                                 ),
                                 title: subscription.displayName(context),
-                                enabled: !subscription.isTrial,
-                                description: subscription.isTrial
+                                // #1: on the v2 path a server-eligible trial card
+                                // is enabled (driven off v2 status, not the RC
+                                // `inTrialWindow`). Off the flag `v2TrialOfferable`
+                                // is false, so this collapses to today's exact
+                                // `!isTrial` / "trial expired" behavior.
+                                enabled: subscription.isTrial
+                                    ? sub.v2TrialOfferable
+                                    : true,
+                                description:
+                                    subscription.isTrial && !sub.v2TrialOfferable
                                     ? L10n.of(context).trialPeriodExpired
                                     : null,
                               ),

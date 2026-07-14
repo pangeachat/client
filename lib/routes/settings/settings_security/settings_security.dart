@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
@@ -5,7 +6,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/authentication/delete_account_extension.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
@@ -53,17 +56,39 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     final subscriptionController =
         MatrixState.pangeaController.subscriptionController;
     final managementURL = subscriptionController.defaultManagementURL;
-    if (subscriptionController.hasPaidSubscription && managementURL != null) {
+    final bool v2Path = Environment.subsV2WebEnabled && kIsWeb;
+    // #4a: warn a paying user before deletion. On the v2 path warn for ANY
+    // active paid access even when no management URL resolves (a paid
+    // entitlement whose plan is not in the catalog still bills the user), so a
+    // paying user can never delete with no warning. Off the flag this is
+    // byte-for-byte today's gate: `hasPaidSubscription && managementURL != null`.
+    if (shouldWarnBeforeAccountDelete(
+      hasPaidSubscription: subscriptionController.hasPaidSubscription,
+      hasManagementUrl: managementURL != null,
+      v2Path: v2Path,
+    )) {
+      final bool canManage = managementURL != null;
       final resp = await showOkCancelAlertDialog(
         useRootNavigator: false,
         context: context,
         title: L10n.of(context).deleteSubscriptionWarningTitle,
         message: L10n.of(context).deleteSubscriptionWarningBody,
-        okLabel: L10n.of(context).manageSubscription,
-        cancelLabel: L10n.of(context).continueText,
+        okLabel: canManage
+            ? L10n.of(context).manageSubscription
+            : L10n.of(context).continueText,
+        cancelLabel: canManage
+            ? L10n.of(context).continueText
+            : L10n.of(context).cancel,
+        isDestructive: !canManage,
       );
-      if (resp == OkCancelResult.ok) {
-        launchUrlString(managementURL, mode: LaunchMode.externalApplication);
+      if (managementURL != null) {
+        if (resp == OkCancelResult.ok) {
+          launchUrlString(managementURL, mode: LaunchMode.externalApplication);
+          return;
+        }
+      } else if (resp != OkCancelResult.ok) {
+        // No management URL to offer: OK = acknowledge + continue to the delete
+        // confirmation; Cancel = abort deletion entirely.
         return;
       }
     }

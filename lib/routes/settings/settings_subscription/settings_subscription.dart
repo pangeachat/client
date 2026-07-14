@@ -9,10 +9,13 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/utils/cancel_eligibility.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -136,6 +139,21 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   DateTime? get subscriptionEndDate =>
       _unsubscribeDetectedAt == null ? null : expirationDate;
 
+  /// True on the v2 web path (flag-on, web) only. Off the flag and on mobile
+  /// this is false and every v2 branch below is inert.
+  bool get _v2CancelPath => Environment.subsV2WebEnabled && kIsWeb;
+
+  /// Gates the cancel / re-enable-renewal tile in the view. Off the v2 path
+  /// this is always true (RC behavior byte-for-byte unchanged — the tile always
+  /// renders in that block). On the v2 path the in-app cancel tile shows ONLY
+  /// when a user-owned, cancelable, not-already-cancelling entitlement exists
+  /// (shouldShowV2Cancel, I5); D4 keeps re-enable-renewal out of scope.
+  bool get showCancelRenewalTile {
+    if (!_v2CancelPath) return true;
+    final state = subscriptionController.state;
+    return state is SubscriptionActive && shouldShowV2Cancel(state);
+  }
+
   void _onSubscriptionUpdate() => setState(() {});
 
   void _onSubscribe() => showSubscribedSnackbar(context);
@@ -170,6 +188,38 @@ class SubscriptionManagementController extends State<SubscriptionManagement>
   }
 
   Future<void> onClickCancelSubscription() async {
+    final state = subscriptionController.state;
+    // #3: the v2 path is SELF-CONTAINED — it either runs the in-app cancel or
+    // no-ops, and NEVER falls through to the legacy external-portal +
+    // clicked-cancel polling shim. Only the non-v2 path reaches the legacy code
+    // below (byte-for-byte unchanged off the flag). classifyCancelClick encodes
+    // this so the routing is unit-tested.
+    switch (classifyCancelClick(v2CancelPath: _v2CancelPath, state: state)) {
+      case CancelClickAction.v2Cancel:
+        // Cancel is synchronous + server-confirmed, so we do NOT set the
+        // clicked-cancel/end-date polling shim — we refresh via
+        // updateCurrentSubscription inside the controller.
+        final result = await showOkCancelAlertDialog(
+          context: context,
+          title: L10n.of(context).cancelSubscription,
+          message: L10n.of(context).areYouSure,
+          okLabel: L10n.of(context).yes,
+          cancelLabel: L10n.of(context).cancel,
+          isDestructive: true,
+        );
+        if (result != OkCancelResult.ok) return;
+
+        await subscriptionController.cancelSubscription(
+          (state as SubscriptionActive).entitlementRef!,
+        );
+        if (mounted) setState(() {});
+        return;
+      case CancelClickAction.v2NoOp:
+        return;
+      case CancelClickAction.legacy:
+        break;
+    }
+
     final uri = await launchMangementUrl(ManagementOption.cancel);
     if (uri != null) {
       ScaffoldMessenger.of(context).showSnackBarAnnounced(

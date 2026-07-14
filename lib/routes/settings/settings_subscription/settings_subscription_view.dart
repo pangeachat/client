@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/change_subscription.dart';
@@ -90,24 +91,31 @@ class SettingsSubscriptionView extends StatelessWidget {
                                   ),
                                 Column(
                                   children: [
-                                    ListTile(
-                                      title: Text(
-                                        controller.subscriptionEndDate == null
-                                            ? L10n.of(
-                                                context,
-                                              ).cancelSubscription
-                                            : L10n.of(context).enabledRenewal,
+                                    // Off the v2 path this always renders (RC
+                                    // behavior unchanged); on the v2 path the
+                                    // in-app cancel tile shows only when an
+                                    // eligible entitlement exists (I5/D4).
+                                    if (controller.showCancelRenewalTile) ...[
+                                      ListTile(
+                                        title: Text(
+                                          controller.subscriptionEndDate == null
+                                              ? L10n.of(
+                                                  context,
+                                                ).cancelSubscription
+                                              : L10n.of(context).enabledRenewal,
+                                        ),
+                                        enabled:
+                                            controller.showManagementOptions,
+                                        onTap: controller
+                                            .onClickCancelSubscription,
+                                        trailing: Icon(
+                                          controller.subscriptionEndDate == null
+                                              ? Icons.cancel_outlined
+                                              : Icons.refresh_outlined,
+                                        ),
                                       ),
-                                      enabled: controller.showManagementOptions,
-                                      onTap:
-                                          controller.onClickCancelSubscription,
-                                      trailing: Icon(
-                                        controller.subscriptionEndDate == null
-                                            ? Icons.cancel_outlined
-                                            : Icons.refresh_outlined,
-                                      ),
-                                    ),
-                                    const Divider(height: 1),
+                                      const Divider(height: 1),
+                                    ],
                                     ListTile(
                                       title: Text(
                                         L10n.of(context).paymentMethod,
@@ -209,14 +217,20 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
   String getWarningText(BuildContext context) {
     if (controller.currentSubscriptionIsPromotional) {
-      if (controller.isLifetimeSubscription) {
+      // #2: a comp/seat/manual promotional grant has no expiration date, so
+      // force-unwrapping it crashed. Render the undated promotional copy for
+      // lifetime OR any null-expiration promotional access; only format a date
+      // when one actually exists.
+      final expiration = controller.expirationDate;
+      if (showUndatedPromoWarning(
+        isLifetime: controller.isLifetimeSubscription,
+        expiration: expiration,
+      )) {
         return L10n.of(context).promotionalSubscriptionDesc;
       }
 
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      return L10n.of(
-        context,
-      ).trialExpiration(formatter.format(controller.expirationDate!));
+      return L10n.of(context).trialExpiration(formatter.format(expiration!));
     }
     if (controller.currentSubscriptionAvailable) {
       String warningText = L10n.of(context).subsciptionPlatformTooltip;

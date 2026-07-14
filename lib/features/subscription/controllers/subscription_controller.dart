@@ -12,13 +12,20 @@ import 'package:fluffychat/features/subscription/models/mobile_subscription_info
 import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/features/subscription/models/subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
+import 'package:fluffychat/features/subscription/models/subscription_status_v2.dart';
 import 'package:fluffychat/features/subscription/models/web_subscription_info_manager.dart';
 import 'package:fluffychat/features/subscription/repo/all_products_repo.dart';
+import 'package:fluffychat/features/subscription/repo/cancel_v2_repo.dart';
+import 'package:fluffychat/features/subscription/repo/products_v2_repo.dart';
+import 'package:fluffychat/features/subscription/repo/status_v2_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_app_ids_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
+import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
+import 'package:fluffychat/features/subscription/utils/v2_subscription_catalog.dart';
+import 'package:fluffychat/features/subscription/utils/v2_ui_gating.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -31,6 +38,11 @@ class SubscriptionController with ChangeNotifier {
   SubscriptionAppIds? _appIds;
   List<SubscriptionDetails> _allSubscriptions = [];
   List<SubscriptionDetails> _availableSubscriptions = [];
+
+  /// The `/subscription/status` snapshot fetched once at v2-web init and reused
+  /// for BOTH the initial state AND the trial-card decision in
+  /// `_setAvailableSubscriptions` (finding #3). Null on the RC/mobile path.
+  SubscriptionStatusV2? _statusV2;
 
   Completer<void>? _initCompleter;
 
@@ -74,7 +86,12 @@ class SubscriptionController with ChangeNotifier {
   };
 
   bool get hasPromotionalSubscription => switch (_state) {
-    SubscriptionActive(subscriptionId: final id) => id.startsWith("rc_promo"),
+    // I11: on the v2 web path `isPromotional` is set (`!isV2PaidType(...)`, so
+    // paid/individual are NOT promotional); on the RC/mobile path it is null, so
+    // this falls back to today's exact `id.startsWith("rc_promo")` check —
+    // behavior unchanged off the flag.
+    SubscriptionActive(subscriptionId: final id, isPromotional: final promo) =>
+      promo ?? id.startsWith("rc_promo"),
     _ => false,
   };
 
@@ -83,11 +100,50 @@ class SubscriptionController with ChangeNotifier {
     _ => null,
   };
 
+  /// Whether a v2 trial can be STARTED (D3). Drives trial-card enablement on the
+  /// v2 web path in place of the RC-only `inTrialWindow`. False off the flag and
+  /// on mobile, so those paths keep using `inTrialWindow` unchanged.
+  bool get v2TrialOfferable =>
+      Environment.subsV2WebEnabled && kIsWeb && v2TrialOfferableFor(_statusV2);
+
   SubscriptionDetails? get subscription {
     final id = _subscriptionId;
     if (id == null) return null;
-    return _allSubscriptions.firstWhereOrNull(
+    final resolved = _allSubscriptions.firstWhereOrNull(
       (SubscriptionDetails sub) => sub.id.contains(id) || id.contains(sub.id),
+    );
+    if (resolved != null) return resolved;
+
+    // v2 (finding #4b): a PAID entitlement whose plan is not in the catalog
+    // (e.g. a grandfathered price with a null planId) still bills the user —
+    // render a generic tile with working management instead of an empty/broken
+    // one (which would also skip the account-delete warning). comp/seat/trial
+    // legitimately have no sellable plan and keep returning null here. Off the
+    // flag / on mobile this fallback is never reached, so behavior is unchanged.
+    final state = _state;
+    if (Environment.subsV2WebEnabled &&
+        kIsWeb &&
+        state is SubscriptionActive &&
+        state.isPromotional == false &&
+        !state.isTrial) {
+      return _genericV2PaidSubscription();
+    }
+    return null;
+  }
+
+  /// A generic tile for a paid v2 entitlement missing from the catalog (#4b):
+  /// `appId == stripeId` so management resolves, `duration == null` so the name
+  /// is the default-subscription copy, and a blank price (we do not know the
+  /// grandfathered amount) rather than the misleading "free trial" that a
+  /// `price <= 0` would render.
+  SubscriptionDetails _genericV2PaidSubscription() {
+    final stripeId = _appIds?.stripeId ?? kStripeAppIdFallback;
+    return SubscriptionDetails(
+      id: _subscriptionId ?? stripeId,
+      appId: stripeId,
+      price: 1,
+      localizedPrice: "",
+      duration: null,
     );
   }
 
@@ -140,10 +196,35 @@ class SubscriptionController with ChangeNotifier {
       await configurePurchases(userID);
 
       await _setAppIds();
-      await _setAvailableSubscriptions();
-      await updateCurrentSubscription();
 
-      if (_subscriptionId == null && inTrialWindow) {
+      if (Environment.subsV2WebEnabled && kIsWeb) {
+        // v2 web (finding #3): fetch /status ONCE, reuse it for BOTH the
+        // trial-card decision (_setAvailableSubscriptions) AND the initial
+        // state, so /status is read before /products and only once.
+        _statusV2 = await StatusV2Repo.get();
+        await _setAvailableSubscriptions();
+        _state = mapStatusV2ToState(
+          _statusV2!,
+          stripeAppId: _appIds?.stripeId ?? kStripeAppIdFallback,
+        );
+        notifyListeners();
+      } else {
+        await _setAvailableSubscriptions();
+        await updateCurrentSubscription();
+      }
+
+      // Auto-activate a trial for a brand-new user. On the v2 web path this
+      // uses the SERVER signal (v2TrialOfferable) rather than the RC-only local
+      // `inTrialWindow`, so a server-eligible user outside the local window
+      // still gets their trial; off the flag / on mobile it stays on
+      // `inTrialWindow`, byte-for-byte. `_statusV2` is already fetched above on
+      // the v2 path, so `v2TrialOfferable` is populated here.
+      final bool trialOfferable = isTrialOfferable(
+        v2Path: Environment.subsV2WebEnabled && kIsWeb,
+        v2TrialOfferable: v2TrialOfferable,
+        inTrialWindow: inTrialWindow,
+      );
+      if (_subscriptionId == null && trialOfferable) {
         await activateNewUserTrial();
       }
 
@@ -180,6 +261,22 @@ class SubscriptionController with ChangeNotifier {
   }
 
   Future<void> _setAvailableSubscriptions() async {
+    if (Environment.subsV2WebEnabled && kIsWeb) {
+      // v2 web: build the catalog from /products + the /status snapshot. No
+      // appId/isVisible filter is needed (these are already the sellable web
+      // plans, all appId==stripeId), and the trial card is synthesized off the
+      // status snapshot (D3). Pure logic lives in buildV2SubscriptionCatalog.
+      final productsResponse = await ProductsV2Repo.get();
+      final catalog = buildV2SubscriptionCatalog(
+        productsResponse?.plans ?? const [],
+        _statusV2,
+        stripeAppId: _appIds?.stripeId ?? kStripeAppIdFallback,
+      );
+      _allSubscriptions = catalog.all;
+      _availableSubscriptions = catalog.available;
+      return;
+    }
+
     final allProductsResult = await AllProductsRepo.get();
     final allProducts = allProductsResult.result;
     if (allProducts != null) {
@@ -282,7 +379,30 @@ class SubscriptionController with ChangeNotifier {
   }
 
   Future<void> updateCurrentSubscription() async {
-    _state = await _manager.getCurrentSubscriptionInfo();
+    // stripeAppId is web-v2 only; the mobile/RC manager ignores it.
+    _state = await _manager.getCurrentSubscriptionInfo(
+      stripeAppId: _appIds?.stripeId,
+    );
     notifyListeners();
+  }
+
+  /// In-app v2 cancel (S4/D4): POST /cancel for the user-owned entitlement, then
+  /// refresh from /status so the UI reflects the server-confirmed
+  /// cancel-at-period-end. [entitlementRef] MUST come from `/status` (I5) — the
+  /// caller sources it from the active state's `entitlementRef`. Errors are
+  /// logged and rethrown (matching submitSubscriptionChange) so the UI can react.
+  Future<void> cancelSubscription(String entitlementRef) async {
+    try {
+      await CancelV2Repo.cancel(entitlementRef);
+      await updateCurrentSubscription();
+      notifyListeners();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"entitlementRef": entitlementRef},
+      );
+      rethrow;
+    }
   }
 }
