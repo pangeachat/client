@@ -98,6 +98,17 @@ class PApiUrls {
 
   static String rcSubscription = PApiUrls._subscriptionEndpoint;
 
+  ///-------------------------------- subscriptions v2 --------------------------
+  /// The four Subscriptions-v2 endpoints (web-only, flag-gated by
+  /// `Environment.subsV2WebEnabled`). The RC constants above stay for the
+  /// flag-off / mobile path.
+  static String subscriptionProducts =
+      "${PApiUrls._subscriptionEndpoint}/products";
+  static String subscriptionCheckout =
+      "${PApiUrls._subscriptionEndpoint}/checkout";
+  static String subscriptionStatus = "${PApiUrls._subscriptionEndpoint}/status";
+  static String subscriptionCancel = "${PApiUrls._subscriptionEndpoint}/cancel";
+
   static String validatePromoCode =
       "${PApiUrls._subscriptionEndpoint}/validate_promo_code";
 

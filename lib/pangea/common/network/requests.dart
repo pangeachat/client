@@ -20,18 +20,41 @@ class ChoreoException implements Exception {
 class Requests {
   late String? accessToken;
 
-  Requests({this.accessToken});
+  /// Optional injected HTTP client. Production callers leave this null, so the
+  /// package's top-level `http.post`/`http.get` are used exactly as before
+  /// (behavior unchanged). Tests pass a `MockClient` to capture the outbound
+  /// request — the repo's established seam (see PayloadClient).
+  final http.Client? client;
+
+  /// Optional override for the user-context injector, defaulting to
+  /// [BaseRequestModel.injectUserContext]. Production leaves this null. It
+  /// exists ONLY so tests can prove the routing honestly: the real injector
+  /// reads `MatrixState`, which is unavailable under `flutter test`, so without
+  /// this seam the `injectUserContext: true` path is indistinguishable from a
+  /// verbatim copy for a bare body. A test spy makes the routing observable.
+  final Map<String, dynamic> Function(Map<dynamic, dynamic>)? contextInjector;
+
+  Requests({this.accessToken, this.client, this.contextInjector});
 
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
+    bool injectUserContext = true,
   }) async {
-    final enrichedBody = BaseRequestModel.injectUserContext(body);
+    // I8 (finding #7): whether user context (cefr_level / user_gender) is added
+    // is controlled ONLY by this param, NEVER by any feature flag. Callers that
+    // hit an `extra="forbid"` choreo schema (v2 `/checkout`, `/cancel`) pass
+    // `injectUserContext: false` so the body is sent verbatim; every existing
+    // caller keeps the default `true`.
+    final inject = contextInjector ?? BaseRequestModel.injectUserContext;
+    final Map<String, dynamic> enrichedBody = injectUserContext
+        ? inject(body)
+        : Map<String, dynamic>.from(body);
 
     dynamic encoded;
     encoded = jsonEncode(enrichedBody);
 
-    final http.Response response = await http.post(
+    final http.Response response = await (client?.post ?? http.post)(
       Uri.parse(url),
       body: encoded,
       headers: _headers,
@@ -42,7 +65,7 @@ class Requests {
   }
 
   Future<http.Response> get({required String url}) async {
-    final http.Response response = await http.get(
+    final http.Response response = await (client?.get ?? http.get)(
       Uri.parse(url),
       headers: _headers,
     );

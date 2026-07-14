@@ -25,6 +25,13 @@ class Environment {
   /// production. See `playwright-testing.instructions.md`.
   static bool get enableSemantics => dotenv.env["ENABLE_SEMANTICS"] == "true";
 
+  /// Subscriptions v2 web path (D1). When unset/false, the web subscription
+  /// flow keeps today's RevenueCat-shaped choreo endpoints byte-for-byte; when
+  /// "true", the client uses the four v2 endpoints (`/products`, `/checkout`,
+  /// `/status`, `/cancel`). Ships dark; flipped on only in lockstep with the
+  /// backend Plan-7 gate flip. Mirrors `enableSemantics`.
+  static bool get subsV2WebEnabled => dotenv.env["SUBS_V2_WEB"] == "true";
+
   static String get frontendURL {
     return appConfigOverride?.frontendURL ??
         dotenv.env["FRONTEND_URL"] ??

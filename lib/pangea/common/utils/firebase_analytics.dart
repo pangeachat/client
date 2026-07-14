@@ -217,7 +217,9 @@ class GoogleAnalytics {
     logEvent(
       'begin_checkout',
       parameters: {
-        "currency": "USD",
+        // Use the plan's own ISO currency when present (v2 web path, D5);
+        // otherwise keep the historical USD default (mobile/RC, currency null).
+        "currency": details.currency?.toUpperCase() ?? "USD",
         'value': details.price,
         'transaction_id': details.id,
         if (details.package != null) 'item_id': details.package!.identifier,
