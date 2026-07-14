@@ -312,7 +312,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               title: l10n.grammarFeedbackDialogTitle,
               // The gate's qualitative reply (choreo #2769); static copy
               // only for pre-gate servers that don't send one.
-              feedback: response?.userFriendlyResponse ??
+              feedback:
+                  response?.userFriendlyResponse ??
                   L10n.of(context).grammarFeedbackSubmittedDesc,
             ),
           );
