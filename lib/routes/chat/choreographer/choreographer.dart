@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';

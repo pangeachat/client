@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -8,9 +12,6 @@ import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../choreographer.dart';
 import 'edit_type_enum.dart';
 

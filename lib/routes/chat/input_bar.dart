@@ -1,4 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:matrix/matrix.dart';
+import 'package:slugify/slugify.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
@@ -11,11 +17,6 @@ import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_co
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:matrix/matrix.dart';
-import 'package:slugify/slugify.dart';
-
 import '../../widgets/avatar.dart';
 import '../../widgets/matrix.dart';
 import 'command_hints.dart';
