@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -27,6 +29,40 @@ class SuggestionCard extends StatefulWidget {
 class SuggestionCardState extends State<SuggestionCard> {
   ActiveSuggestionModel? get suggestionsModel =>
       widget.controller.activeSuggestion;
+
+  StreamSubscription<ActiveSuggestionModel?>? _suggestionSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    // Under re-fire the active suggestion can be replaced or cleared while
+    // this card is open. Rebuild on replace (so taps never hit a swapped-out
+    // model) and close on clear.
+    _suggestionSubscription = widget.controller.suggestionStream.stream.listen(
+      (suggestion) {
+        if (!mounted) return;
+        if (suggestion == null) {
+          _close();
+        } else {
+          setState(() {});
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _suggestionSubscription?.cancel();
+    // Closing the card without accepting releases the mid-interaction pin
+    // (a tapped distractor otherwise blocks every future replacement).
+    final model = widget.controller.activeSuggestion;
+    if (model != null &&
+        model.acceptedChoice == null &&
+        model.selectedChoice != null) {
+      widget.controller.resetSuggestionState();
+    }
+    super.dispose();
+  }
 
   void _close() {
     widget.popupManager.close();

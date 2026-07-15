@@ -373,6 +373,10 @@ class Choreographer extends ChangeNotifier {
   void _onUpdateSuggestion(ActiveSuggestionModel? suggestion) {
     final acceptedChoice = suggestion?.acceptedChoice;
     if (acceptedChoice != null) {
+      // Record BEFORE setSystemText so the lazily-created record snapshots
+      // the pre-suggestion input as its originalText. Accepted-suggestion
+      // tokens are excluded from XP like pastes (#7665).
+      _record.suggestionStrings.add(acceptedChoice.text);
       textController.setSystemText(
         acceptedChoice.text,
         EditTypeEnum.suggestion,

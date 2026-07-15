@@ -119,9 +119,13 @@ class OrchestratorController {
         return;
       }
 
-      if (_activeSuggestion != null) {
+      // Re-fire (choreo#2761): the orchestrator runs after every message, so
+      // fresh outputs replace the active suggestion — EXCEPT mid-interaction.
+      // Once the user has tapped a choice, don't yank the card out from under
+      // them; the next re-fire supplies a fresher output anyway.
+      if (_activeSuggestion?.selectedChoice != null) {
         _log(
-          "Received orchestrator output event but already have active suggestion, ignoring",
+          "Received orchestrator output while a choice is selected, ignoring",
         );
         return;
       }
@@ -131,6 +135,13 @@ class OrchestratorController {
       // bot's own role.
       final botUserId = event.senderId;
       final timeline = await room.getTimeline();
+      // Staleness key: the latest visible message of ANY sender (choreo#2761
+      // rule 6) — under re-fire the freshest output is legitimately based on
+      // a bot reply. Out-of-order arrivals resolve here too: an older
+      // in-flight output fails this check regardless of arrival order.
+      final latestMessage = timeline.events.firstWhereOrNull(
+        (e) => e.type == EventTypes.Message && e.isVisibleInGui,
+      );
       final latestHumanMessage = timeline.events.firstWhereOrNull(
         (e) =>
             e.type == EventTypes.Message &&
@@ -145,22 +156,29 @@ class OrchestratorController {
               .length ??
           0;
 
+      // A stale output decides nothing — keep whatever is showing.
+      if (output.basedOnEventId != latestMessage?.eventId) {
+        _log("Received stale orchestrator output, ignoring");
+        return;
+      }
+
       final suggestion = suggestionToShow(
         output: output,
         ownRoleId: roleId,
         currentUserId: room.client.userID,
-        latestHumanMessageEventId: latestHumanMessage?.eventId,
+        latestMessageEventId: latestMessage?.eventId,
         latestHumanMessageSenderId: latestHumanMessage?.senderId,
         humanRoleCount: humanRoleCount,
       );
-      if (suggestion == null) return;
 
-      if (suggestion.suggestions.isEmpty) {
-        Logs().w("Suggestion without choices received");
-        return;
-      }
-
-      _setActiveSuggestion(ActiveSuggestionModel(suggestion: suggestion));
+      // A fresh output fully wins: it sets OR clears the active suggestion.
+      // Clearing matters — without it a chip from an earlier turn would
+      // linger after an output that carries no bucket for this role.
+      _setActiveSuggestion(
+        suggestion == null
+            ? null
+            : ActiveSuggestionModel(suggestion: suggestion),
+      );
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: event.content);
     }
@@ -170,27 +188,28 @@ class OrchestratorController {
   /// current user for an orchestrator output, or null if they should not be
   /// prompted. Extracted from [_onOrchestratorOutputEvent] for unit testing.
   ///
-  /// The orchestrator broadcasts a single event (triggered by whoever spoke
-  /// last) carrying a bucket per role; the recommendation goes to the responder,
-  /// not the speaker:
+  /// The orchestrator re-fires on every message (choreo#2761), so outputs are
+  /// legitimately based on bot replies too; the recommendation goes to the
+  /// responder, not the speaker:
   /// - multi-human (>= 2 human roles): prompt the user who did NOT send the
   ///   latest human message — after A's message B is prompted; after B's, A.
   /// - single-human (participant mode, bot holds a role): prompt the lone human
-  ///   right after their own message.
-  /// Stale outputs — not based on the latest human message — are dropped.
+  ///   right after their own message OR after the bot's reply to them.
+  /// Stale outputs — not based on the latest visible message of ANY sender —
+  /// are dropped (the caller also checks this before deciding to clear).
   @visibleForTesting
   static OrchestratorRoleSuggestions? suggestionToShow({
     required OrchestratorOutput output,
     required String ownRoleId,
     required String? currentUserId,
-    required String? latestHumanMessageEventId,
+    required String? latestMessageEventId,
     required String? latestHumanMessageSenderId,
     required int humanRoleCount,
   }) {
     final roleSuggestion = output.suggestionsByRoleId(ownRoleId).firstOrNull;
     if (roleSuggestion == null) return null;
 
-    if (output.basedOnEventId != latestHumanMessageEventId) return null;
+    if (output.basedOnEventId != latestMessageEventId) return null;
 
     final isMultiHumanActivity = humanRoleCount >= 2;
     final currentUserSpokeLast = latestHumanMessageSenderId == currentUserId;
