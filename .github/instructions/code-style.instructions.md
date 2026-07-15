@@ -26,3 +26,7 @@ Conventions for Dart/Flutter code in this repo, beyond what `dart format` and `f
 - Don't write pointless tests. Tests should confirm that the explicit functionalities of the given class are working, and that edge cases do not cause error. Prefer to write tests first and then write code that makes those tests pass. This ensures that tests are targeting the correct functionality, and that tests don't know about any of the internal workings of the code they're testing.
 - Keep widgets well encapsulated. Child classes / widgets shouldn't need to know too much information about their parents. Only pass necessary information into widgets.
 - Cache the results of heavy computations.
+
+## Formatting toolchain
+
+The `code_tests` gate rejects any `dart format` diff, and it formats with the Flutter version pinned in `.fvmrc` — not whatever Flutter is on your PATH. Different Flutter versions format Dart differently, so code that looks clean under a newer or older local Flutter can still fail the gate, while `dart format` on that machine reports no changes — which is why the person who introduced a formatting failure often can't reproduce it. Format with the pinned version so local output matches CI; the simplest way is to install [FVM](https://fvm.app) and run `dart format` through it. The gate also verifies `.fvmrc` and the CI Flutter version stay in sync, so the two toolchains can't silently drift.
