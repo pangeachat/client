@@ -18,6 +18,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -394,6 +395,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _chatsSheetHeaderAllowance = 96.0;
   static const double _chatsSheetRowEstimate = 76.0;
 
+  /// Fit-height estimate inputs for the Courses hub sheet: one course tile per
+  /// joined course, or — when the learner is in no courses yet — the full
+  /// add-course buttons block (the empty state). Reuses the shared cavity
+  /// header allowance above.
+  static const double _coursesSheetRowEstimate = 84.0;
+  static const double _coursesSheetAddOptionsAllowance = 236.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -402,6 +410,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// changes (routing.instructions.md → Single-column search bar).
   bool _searchRestored = false;
   String? _lastScopeId;
+
+  /// The nav widget reports when its hosted cavity is pulled to full height
+  /// (latched to the settled rest state). Used to drop the floating map search
+  /// bar over a full COURSE sheet and hand its reserved strip to the course
+  /// content (#7697) — see the searchBar construction below.
+  bool _cavityAtFull = false;
 
   @override
   Widget build(BuildContext context) {
@@ -463,7 +477,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // (chats, the hub) re-target it in the follow-up and mount nothing yet.
     final mapIsGround =
         cavityToken == null || isCourseCavity || isActivityCavity;
-    final searchBar = mapIsGround && mapController != null
+    // Once a COURSE sheet is pulled to full it covers the map, so the map
+    // search is moot: hide the bar entirely and let its reserved strip (dropped
+    // from the height reservation below, since searchBar is then null) go to the
+    // course content (#7697). The bar stays over a peeking/half course, the
+    // bare/scoped map, and the chats/courses sections (which re-target it), so
+    // gate strictly on a full course cavity.
+    final hideSearchForFullCourse = isCourseCavity && _cavityAtFull;
+    final searchBar =
+        mapIsGround && mapController != null && !hideSearchForFullCourse
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
@@ -507,6 +529,17 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           .length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
+    } else if (cavityToken?.type == PanelTypesEnum.addcourse) {
+      // The Courses hub opens tall enough to show all joined courses (or the
+      // add-course buttons when there are none), capped by maxHeightFraction —
+      // no longer defaulting to half (#7692). Same joined-course predicate as
+      // the hub list, so the estimate counts exactly what renders.
+      final courseCount = joinedCourses(client, l10n).length;
+      preferredCavityHeight =
+          _chatsSheetHeaderAllowance +
+          (courseCount == 0
+              ? _coursesSheetAddOptionsAllowance
+              : courseCount * _coursesSheetRowEstimate);
     }
 
     String? cavityKey;
@@ -612,6 +645,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         onDismissed: isActivityCavity && cavityToken != null
             ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
             : null,
+        // Latched full-height reports drive the course-sheet search-bar hide
+        // above (#7697). Guarded so an unchanged report is not a rebuild.
+        onCavityFullChanged: (full) {
+          if (_cavityAtFull != full) {
+            setState(() => _cavityAtFull = full);
+          }
+        },
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,

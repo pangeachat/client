@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
 import 'package:fluffychat/routes/courses/preview/public_course_preview.dart';
 import 'package:fluffychat/routes/courses/private/course_code_page.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
-import 'package:fluffychat/routes/world/panel_header.dart';
 
 /// The body of the left-column **add-course panel** (world_v2): the add-course
 /// wizard, hosted as a URL-token panel instead of the retired route-driven
@@ -40,12 +38,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
   Widget build(BuildContext context) {
     final param = this.param;
     if (param == null) {
-      return Column(
-        children: [
-          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
-          Expanded(child: LeftPanelCoursesListView()),
-        ],
-      );
+      return CoursesHubPanel(closeButton: closeButton);
     }
 
     switch (param.subpage) {
