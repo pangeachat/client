@@ -31,6 +31,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         leading: Center(child: closeButton),
@@ -60,36 +61,41 @@ class SettingsSubscriptionView extends StatelessWidget {
             ),
           ),
           SafeArea(
-            child: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.all(32),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 300),
-                child: switch (subscriptionStatusState) {
-                  AsyncLoading() || AsyncIdle() => Center(
-                    child: CircularProgressIndicator.adaptive(),
+            child: SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.all(32),
+                child: Container(
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface,
+                    borderRadius: BorderRadius.circular(24.0),
                   ),
-                  AsyncError() => SizedBox.shrink(),
-                  AsyncLoaded(value: final subscriptionStatus) => () {
-                    final winning = subscriptionStatus.winning;
+                  constraints: BoxConstraints(maxWidth: 400),
+                  child: switch (subscriptionStatusState) {
+                    AsyncLoading() || AsyncIdle() => Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                    AsyncError() => SizedBox.shrink(),
+                    AsyncLoaded(value: final subscriptionStatus) => () {
+                      final winning = subscriptionStatus.winning;
 
-                    final products = switch (productsState) {
-                      AsyncLoaded(value: final products) => products,
-                      _ => const <ProductPlan>[],
-                    };
+                      final products = switch (productsState) {
+                        AsyncLoaded(value: final products) => products,
+                        _ => const <ProductPlan>[],
+                      };
 
-                    final planId = subscriptionStatus.winning?.planId;
-                    final subscriptionPlan = planId != null
-                        ? products.firstWhereOrNull((p) => p.planId == planId)
-                        : null;
+                      final planId = subscriptionStatus.winning?.planId;
+                      final subscriptionPlan = planId != null
+                          ? products.firstWhereOrNull((p) => p.planId == planId)
+                          : null;
 
-                    return Column(
-                      spacing: 16.0,
-                      children: [
-                        ProFeaturesCard(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: switch (subscriptionStatus.accessLevel) {
+                      return Column(
+                        spacing: 20.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ProFeaturesCard(),
+                          switch (subscriptionStatus.accessLevel) {
                             SubscriptionAccessLevel.full => _FullAccessContent(
                               type: winning?.type,
                               subscriptionTitle:
@@ -102,13 +108,14 @@ class SettingsSubscriptionView extends StatelessWidget {
                                   winning?.priceDisplay(l10n),
                               manageEligible: subscriptionStatus.manageEligible,
                             ),
-                            SubscriptionAccessLevel.none => _NoAccessContent(),
+                            SubscriptionAccessLevel.none =>
+                              SubscriptionOptions(),
                           },
-                        ),
-                      ],
-                    );
-                  }(),
-                },
+                        ],
+                      );
+                    }(),
+                  },
+                ),
               ),
             ),
           ),
@@ -137,13 +144,13 @@ class _FullAccessContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
-      spacing: 12.0,
+      spacing: 20.0,
       children: [
         type == SubscriptionType.trial
             ? Text(
                 paymentPeriodDescription ??
                     L10n.of(context).freeTrialDescription,
-                style: theme.textTheme.titleLarge,
+                style: theme.textTheme.titleMedium,
               )
             : UserSubscriptionPlanCard(
                 subscriptionTitle: subscriptionTitle,
@@ -154,50 +161,26 @@ class _FullAccessContent extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              border: Border.all(color: theme.colorScheme.primary, width: 3.0),
+              border: Border.all(
+                color: theme.colorScheme.primaryContainer,
+                width: 3.0,
+              ),
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Row(
               children: [
-                Expanded(child: Text(L10n.of(context).manage)),
+                Expanded(
+                  child: Text(
+                    L10n.of(context).manage,
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
                 Icon(Icons.chevron_right),
               ],
             ),
           ),
-        if (type == SubscriptionType.trial) _NoAccessContent(),
+        if (type == SubscriptionType.trial) SubscriptionOptions(),
       ],
-    );
-  }
-}
-
-class _NoAccessContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: EdgeInsetsGeometry.symmetric(vertical: 16.0),
-      child: Column(
-        spacing: 12.0,
-        children: [
-          SubscriptionOptions(),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.colorScheme.primary,
-              foregroundColor: theme.colorScheme.onPrimary,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  L10n.of(context).enterDiscountCode,
-                  style: theme.textTheme.titleLarge,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

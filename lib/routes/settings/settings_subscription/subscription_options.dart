@@ -34,15 +34,37 @@ class SubscriptionOptionsInternal extends StatelessWidget {
       children: [
         Text(
           L10n.of(context).selectYourPlan,
-          style: theme.textTheme.headlineMedium?.copyWith(
+          style: theme.textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
-        Row(
+        Wrap(
           spacing: 12.0,
+          runSpacing: 12.0,
           children: plans
-              .map((p) => Expanded(child: _SubscriptionOptionCard(p)))
+              .map(
+                (p) =>
+                    SizedBox(width: 160.0, child: _SubscriptionOptionCard(p)),
+              )
               .toList(),
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: theme.colorScheme.primaryContainer,
+            foregroundColor: theme.colorScheme.onPrimaryContainer,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                L10n.of(context).enterDiscountCode,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -59,25 +81,29 @@ class _SubscriptionOptionCard extends StatelessWidget {
     final theme = Theme.of(context);
     return FrameContainer(
       title: plan.duration.cardTitle(l10n),
-      frameColor: theme.colorScheme.primary,
+      frameColor: theme.colorScheme.primaryContainer,
       backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.onPrimary,
+      foregroundColor: theme.colorScheme.onPrimaryContainer,
       padding: EdgeInsets.all(8.0),
       titlePadding: EdgeInsetsGeometry.symmetric(
         vertical: 8.0,
         horizontal: 2.0,
       ),
       borderRadius: 12.0,
+      titleStyle: theme.textTheme.titleMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: theme.colorScheme.onPrimaryContainer,
+      ),
       child: Column(
         spacing: 8.0,
         children: [
           Text(
             plan.duration.copy(l10n),
-            style: theme.textTheme.headlineMedium?.copyWith(
+            style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(plan.priceDisplay, style: theme.textTheme.headlineMedium),
+          Text(plan.priceDisplay, style: theme.textTheme.titleMedium),
         ],
       ),
     );

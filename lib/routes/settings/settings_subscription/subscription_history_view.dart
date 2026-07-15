@@ -33,7 +33,7 @@ class SubscriptionHistoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
-    final formatter = DateFormat('yyyy-MM-dd');
+
     return Scaffold(
       appBar: AppBar(
         leading: Center(child: closeButton),
@@ -63,105 +63,125 @@ class SubscriptionHistoryView extends StatelessWidget {
             ),
           ),
           SafeArea(
-            child: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.all(32),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 300),
-                child: Column(
-                  spacing: 16.0,
-                  children: [
-                    switch (subscriptionStatusState) {
-                      AsyncLoading() || AsyncIdle() => Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                      AsyncError() => SizedBox.shrink(),
-                      AsyncLoaded(value: final subscriptionStatus) => () {
-                        final winning = subscriptionStatus.winning;
+            child: SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.all(32),
+                child: Container(
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface,
+                    borderRadius: BorderRadius.circular(24.0),
+                  ),
+                  constraints: BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    spacing: 16.0,
+                    children: [
+                      switch (subscriptionStatusState) {
+                        AsyncLoading() || AsyncIdle() => Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                        AsyncError() => SizedBox.shrink(),
+                        AsyncLoaded(value: final subscriptionStatus) => () {
+                          final winning = subscriptionStatus.winning;
 
-                        final products = switch (productsState) {
-                          AsyncLoaded(value: final products) => products,
-                          _ => const <ProductPlan>[],
-                        };
+                          final products = switch (productsState) {
+                            AsyncLoaded(value: final products) => products,
+                            _ => const <ProductPlan>[],
+                          };
 
-                        final planId = subscriptionStatus.winning?.planId;
-                        final subscriptionPlan = planId != null
-                            ? products.firstWhereOrNull(
-                                (p) => p.planId == planId,
-                              )
-                            : null;
+                          final planId = subscriptionStatus.winning?.planId;
+                          final subscriptionPlan = planId != null
+                              ? products.firstWhereOrNull(
+                                  (p) => p.planId == planId,
+                                )
+                              : null;
 
-                        return UserSubscriptionPlanCard(
-                          subscriptionTitle:
-                              winning?.subscriptionTitle(l10n) ??
-                              l10n.currentSubscription,
-                          paymentPeriodDescription: winning
-                              ?.paymentPeriodDescription(l10n),
-                          priceDisplay:
-                              subscriptionPlan?.priceDisplay ??
-                              winning?.priceDisplay(l10n),
-                          showCancel: true,
-                        );
-                      }(),
-                    },
-                    switch (invoiceHistoryState) {
-                      AsyncLoading() || AsyncIdle() => Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                      AsyncError() => SizedBox.shrink(),
-                      AsyncLoaded(value: final invoices) =>
-                        invoices.isEmpty
-                            ? Text(L10n.of(context).noPaymentHistoryFound)
-                            : FrameContainer(
-                                title: L10n.of(context).history,
-                                frameColor: theme.colorScheme.primary,
-                                backgroundColor: theme.colorScheme.surface,
-                                foregroundColor: theme.colorScheme.surface,
-                                padding: EdgeInsets.all(8.0),
-                                titlePadding: EdgeInsetsGeometry.symmetric(
-                                  vertical: 8.0,
-                                  horizontal: 12.0,
-                                ),
-                                borderRadius: 12.0,
-                                expandable: true,
-                                initiallyExpanded: false,
-                                child: Column(
-                                  children: [
-                                    ...invoices.map(
-                                      (invoice) => Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 4.0,
-                                          horizontal: 8.0,
-                                        ),
-                                        child: Row(
-                                          spacing: 4.0,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                formatter.format(
-                                                  invoice.created,
-                                                ),
-                                              ),
-                                            ),
-                                            if (invoice.showSubtotal)
-                                              Text(
-                                                invoice.subtotalDisplay,
-                                                style: TextStyle(
-                                                  decoration: TextDecoration
-                                                      .lineThrough,
-                                                ),
-                                              ),
-                                            Text(invoice.totalDisplay),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                    },
-                  ],
+                          return UserSubscriptionPlanCard(
+                            subscriptionTitle:
+                                winning?.subscriptionTitle(l10n) ??
+                                l10n.currentSubscription,
+                            paymentPeriodDescription: winning
+                                ?.paymentPeriodDescription(l10n),
+                            priceDisplay:
+                                subscriptionPlan?.priceDisplay ??
+                                winning?.priceDisplay(l10n),
+                            showCancel: true,
+                          );
+                        }(),
+                      },
+                      switch (invoiceHistoryState) {
+                        AsyncLoading() || AsyncIdle() => Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                        AsyncError() => SizedBox.shrink(),
+                        AsyncLoaded(value: final invoices) =>
+                          invoices.isEmpty
+                              ? Text(L10n.of(context).noPaymentHistoryFound)
+                              : _InvoiceHistoryList(invoices),
+                      },
+                    ],
+                  ),
                 ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _InvoiceHistoryList extends StatelessWidget {
+  final List<Invoice> invoices;
+  const _InvoiceHistoryList(this.invoices);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final formatter = DateFormat('yyyy-MM-dd');
+
+    return FrameContainer(
+      title: L10n.of(context).history,
+      frameColor: theme.colorScheme.primaryContainer,
+      backgroundColor: theme.colorScheme.surface,
+      foregroundColor: theme.colorScheme.onPrimaryContainer,
+      padding: EdgeInsets.all(8.0),
+      titlePadding: EdgeInsetsGeometry.symmetric(
+        vertical: 8.0,
+        horizontal: 12.0,
+      ),
+      borderRadius: 12.0,
+      expandable: true,
+      initiallyExpanded: false,
+      child: Column(
+        children: [
+          ...invoices.map(
+            (invoice) => Padding(
+              padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+              child: Row(
+                spacing: 4.0,
+                children: [
+                  Expanded(
+                    child: Text(
+                      formatter.format(invoice.created),
+                      style: theme.textTheme.titleMedium,
+                    ),
+                  ),
+                  if (invoice.showSubtotal)
+                    Text(
+                      invoice.subtotalDisplay,
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                  Text(
+                    invoice.totalDisplay,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

@@ -17,6 +17,8 @@ class FrameContainer extends StatefulWidget {
   final bool expandable;
   final bool initiallyExpanded;
 
+  final TextStyle? titleStyle;
+
   const FrameContainer({
     super.key,
     required this.title,
@@ -33,6 +35,7 @@ class FrameContainer extends StatefulWidget {
     ),
     this.expandable = false,
     this.initiallyExpanded = true,
+    this.titleStyle,
   });
 
   @override
@@ -49,6 +52,8 @@ class _FrameContainerState extends State<FrameContainer>
     _expanded = widget.initiallyExpanded;
   }
 
+  void _toggleExpanded() => setState(() => _expanded = !_expanded);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,44 +69,49 @@ class _FrameContainerState extends State<FrameContainer>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: double.infinity,
-              color: widget.frameColor,
-              padding: widget.titlePadding,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ExcludeSemantics(
-                      child: Text(
-                        widget.title,
-                        textAlign: widget.expandable
-                            ? TextAlign.start
-                            : TextAlign.center,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: widget.foregroundColor,
+            InkWell(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(widget.borderRadius),
+                topRight: Radius.circular(widget.borderRadius),
+              ),
+              onTap: widget.expandable ? _toggleExpanded : null,
+              child: Container(
+                width: double.infinity,
+                color: widget.frameColor,
+                padding: widget.titlePadding,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ExcludeSemantics(
+                        child: Text(
+                          widget.title,
+                          textAlign: widget.expandable
+                              ? TextAlign.start
+                              : TextAlign.center,
+                          style:
+                              widget.titleStyle ??
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: widget.foregroundColor,
+                              ),
                         ),
                       ),
                     ),
-                  ),
-                  if (widget.expandable)
-                    IconButton(
-                      visualDensity: VisualDensity.compact,
-                      splashRadius: 20,
-                      color: widget.foregroundColor,
-                      icon: AnimatedRotation(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        turns: _expanded ? 0.5 : 0.0,
-                        child: const Icon(Icons.expand_less),
+                    if (widget.expandable)
+                      IconButton(
+                        visualDensity: VisualDensity.compact,
+                        splashRadius: 20,
+                        color: widget.foregroundColor,
+                        icon: AnimatedRotation(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
+                          turns: _expanded ? 0.5 : 0.0,
+                          child: const Icon(Icons.expand_less),
+                        ),
+                        onPressed: _toggleExpanded,
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _expanded = !_expanded;
-                        });
-                      },
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
             AnimatedSize(

@@ -28,9 +28,9 @@ class UserSubscriptionPlanCard extends StatelessWidget {
 
     return FrameContainer(
       title: L10n.of(context).yourPlan,
-      frameColor: theme.colorScheme.primary,
+      frameColor: theme.colorScheme.primaryContainer,
       backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.onPrimary,
+      foregroundColor: theme.colorScheme.onPrimaryContainer,
       padding: EdgeInsets.all(8.0),
       titlePadding: EdgeInsetsGeometry.symmetric(
         vertical: 8.0,
@@ -43,11 +43,28 @@ class UserSubscriptionPlanCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(subscriptionTitle)),
-              if (priceDisplay != null) Text(priceDisplay),
+              Expanded(
+                child: Text(
+                  subscriptionTitle,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ),
+              if (priceDisplay != null)
+                Text(
+                  priceDisplay,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
             ],
           ),
-          if (paymentPeriodDescription != null) Text(paymentPeriodDescription),
+          if (paymentPeriodDescription != null)
+            Text(
+              paymentPeriodDescription,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.disabledColor,
+              ),
+            ),
           if (showCancel)
             ElevatedButton(
               onPressed: onCancel,
