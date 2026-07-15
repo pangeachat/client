@@ -152,9 +152,8 @@ class PangeaRepresentation {
         .where((token) => token.lemma.saveVocab)
         .toList();
 
-    // Accepted-suggestion text is excluded exactly like pasted text: neither
-    // is self-written language, so neither should generate construct uses
-    // (#7665).
+    // Accepted-suggestion text is excluded like pasted text — neither is
+    // self-written language, so neither generates construct uses (#7665).
     final excludedStrings = {
       ...?choreo?.pastedStrings,
       ...?choreo?.suggestionStrings,

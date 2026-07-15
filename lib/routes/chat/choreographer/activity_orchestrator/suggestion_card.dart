@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup.dart';
@@ -35,9 +36,8 @@ class SuggestionCardState extends State<SuggestionCard> {
   @override
   void initState() {
     super.initState();
-    // Under re-fire the active suggestion can be replaced or cleared while
-    // this card is open. Rebuild on replace (so taps never hit a swapped-out
-    // model) and close on clear.
+    // Under re-fire the active suggestion can change while the card is open:
+    // rebuild on replace (taps never hit a swapped-out model), close on clear.
     _suggestionSubscription = widget.controller.suggestionStream.stream.listen((
       suggestion,
     ) {

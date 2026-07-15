@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
@@ -374,8 +375,8 @@ class Choreographer extends ChangeNotifier {
     final acceptedChoice = suggestion?.acceptedChoice;
     if (acceptedChoice != null) {
       // Record BEFORE setSystemText so the lazily-created record snapshots
-      // the pre-suggestion input as its originalText. Accepted-suggestion
-      // tokens are excluded from XP like pastes (#7665).
+      // pre-suggestion input as originalText; excluded from XP like pastes
+      // (#7665).
       _record.suggestionStrings.add(acceptedChoice.text);
       textController.setSystemText(
         acceptedChoice.text,

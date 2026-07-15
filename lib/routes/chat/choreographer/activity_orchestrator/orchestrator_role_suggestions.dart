@@ -10,11 +10,8 @@ class OrchestratorRoleSuggestions {
   });
 
   static OrchestratorRoleSuggestions fromJson(Map<String, dynamic> json) {
-    // Under the v2 contract (choreo#2761) a bucket's options list may be
-    // empty (the bot adapts Reaction and turn-0 null buckets to empty lists)
-    // and unknown option shapes may appear during rollout. Skip malformed
-    // entries instead of throwing — one bad entry must not discard the
-    // whole orchestrator output.
+    // v2 (choreo#2761): options may be empty (adapted Reaction / turn-0 null
+    // buckets) or malformed during rollout — skip bad entries, never throw.
     return OrchestratorRoleSuggestions(
       roleId: json["role_id"],
       suggestions: List.from(json["suggestions"] ?? [])

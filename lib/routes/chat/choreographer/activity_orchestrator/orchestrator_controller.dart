@@ -8,38 +8,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_output.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_role_suggestions.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
-
-class ActiveSuggestionModel {
-  final OrchestratorRoleSuggestions suggestion;
-  final List<OrchestratorSuggestion> shuffledChoices;
-
-  final OrchestratorSuggestion? selectedChoice;
-  final OrchestratorSuggestion? acceptedChoice;
-
-  ActiveSuggestionModel({
-    required this.suggestion,
-    this.selectedChoice,
-    this.acceptedChoice,
-    List<OrchestratorSuggestion>? shuffledChoices,
-  }) : shuffledChoices =
-           shuffledChoices ?? (List.from(suggestion.suggestions)..shuffle());
-
-  ActiveSuggestionModel copyWith({
-    OrchestratorSuggestion? selectedChoice,
-    OrchestratorSuggestion? acceptedChoice,
-  }) => ActiveSuggestionModel(
-    suggestion: suggestion,
-    selectedChoice: selectedChoice ?? this.selectedChoice,
-    acceptedChoice: acceptedChoice ?? this.acceptedChoice,
-    shuffledChoices: shuffledChoices,
-  );
-}
 
 class OrchestratorController {
   final Room room;
@@ -119,10 +94,8 @@ class OrchestratorController {
         return;
       }
 
-      // Re-fire (choreo#2761): the orchestrator runs after every message, so
-      // fresh outputs replace the active suggestion — EXCEPT mid-interaction.
-      // Once the user has tapped a choice, don't yank the card out from under
-      // them; the next re-fire supplies a fresher output anyway.
+      // Re-fire (choreo#2761): fresh outputs replace the active suggestion —
+      // except mid-interaction; a tapped card is never yanked from the user.
       if (_activeSuggestion?.selectedChoice != null) {
         _log(
           "Received orchestrator output while a choice is selected, ignoring",
@@ -135,10 +108,8 @@ class OrchestratorController {
       // bot's own role.
       final botUserId = event.senderId;
       final timeline = await room.getTimeline();
-      // Staleness key: the latest visible message of ANY sender (choreo#2761
-      // rule 6) — under re-fire the freshest output is legitimately based on
-      // a bot reply. Out-of-order arrivals resolve here too: an older
-      // in-flight output fails this check regardless of arrival order.
+      // Staleness key (choreo#2761 rule 6): the latest visible message of ANY
+      // sender — recency against the timeline decides, never arrival order.
       final latestMessage = timeline.events.firstWhereOrNull(
         (e) => e.type == EventTypes.Message && e.isVisibleInGui,
       );
@@ -171,8 +142,7 @@ class OrchestratorController {
         humanRoleCount: humanRoleCount,
       );
 
-      // A fresh output fully wins: it sets OR clears the active suggestion.
-      // Clearing matters — without it a chip from an earlier turn would
+      // Null clears on purpose — otherwise a chip from an earlier turn would
       // linger after an output that carries no bucket for this role.
       _setActiveSuggestion(
         suggestion == null

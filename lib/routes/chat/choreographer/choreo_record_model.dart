@@ -24,8 +24,7 @@ class ChoreoRecordModel {
   final Set<String> pastedStrings = {};
 
   /// Texts inserted by accepting an orchestrator suggestion chip. Like
-  /// [pastedStrings], in-memory only (not serialized): send-time scoring
-  /// reads the live record, and suggestion tokens must not score as
+  /// [pastedStrings], in-memory only — suggestion tokens must not score as
   /// self-written language (#7665).
   final Set<String> suggestionStrings = {};
 

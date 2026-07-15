@@ -32,10 +32,9 @@ class OrchestratorOutput {
           ),
         )
         .toList(),
-    // v2 (choreo#2761): Reaction buckets and turn-0 null buckets arrive from
-    // the bot's adapter as empty options lists — they are emitted for
-    // uniformity and deliberately never rendered, so drop them here along
-    // with malformed buckets. Valid sibling buckets are kept.
+    // v2 (choreo#2761): reaction and turn-0 null buckets arrive as empty
+    // options lists, deliberately never rendered — drop them and malformed
+    // buckets.
     suggestions: List.from(json["suggestions"] ?? [])
         .whereType<Map>()
         .where((s) => s["role_id"] is String)
