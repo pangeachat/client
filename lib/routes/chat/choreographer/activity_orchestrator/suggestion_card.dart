@@ -38,16 +38,16 @@ class SuggestionCardState extends State<SuggestionCard> {
     // Under re-fire the active suggestion can be replaced or cleared while
     // this card is open. Rebuild on replace (so taps never hit a swapped-out
     // model) and close on clear.
-    _suggestionSubscription = widget.controller.suggestionStream.stream.listen(
-      (suggestion) {
-        if (!mounted) return;
-        if (suggestion == null) {
-          _close();
-        } else {
-          setState(() {});
-        }
-      },
-    );
+    _suggestionSubscription = widget.controller.suggestionStream.stream.listen((
+      suggestion,
+    ) {
+      if (!mounted) return;
+      if (suggestion == null) {
+        _close();
+      } else {
+        setState(() {});
+      }
+    });
   }
 
   @override

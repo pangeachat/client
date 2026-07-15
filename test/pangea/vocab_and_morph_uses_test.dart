@@ -45,28 +45,30 @@ void main() {
     expect(uses.first.xp, ConstructUseTypeEnum.wa.pointValue);
   });
 
-  test('accepted-suggestion tokens produce zero uses; typed tokens still score',
-      () {
-    final choreo = _record()..suggestionStrings.add('quiero un café');
+  test(
+    'accepted-suggestion tokens produce zero uses; typed tokens still score',
+    () {
+      final choreo = _record()..suggestionStrings.add('quiero un café');
 
-    final suggestionUses = representation.vocabAndMorphUses(
-      tokens: [_token('quiero', 5), _token('café', 15)],
-      metadata: metadata,
-      choreo: choreo,
-    );
-    expect(suggestionUses, isEmpty);
+      final suggestionUses = representation.vocabAndMorphUses(
+        tokens: [_token('quiero', 5), _token('café', 15)],
+        metadata: metadata,
+        choreo: choreo,
+      );
+      expect(suggestionUses, isEmpty);
 
-    final typedUses = representation.vocabAndMorphUses(
-      tokens: [_token('hola', 0)],
-      metadata: metadata,
-      choreo: choreo,
-    );
-    expect(typedUses, isNotEmpty);
-    expect(
-      typedUses.every((u) => u.useType == ConstructUseTypeEnum.wa),
-      isTrue,
-    );
-  });
+      final typedUses = representation.vocabAndMorphUses(
+        tokens: [_token('hola', 0)],
+        metadata: metadata,
+        choreo: choreo,
+      );
+      expect(typedUses, isNotEmpty);
+      expect(
+        typedUses.every((u) => u.useType == ConstructUseTypeEnum.wa),
+        isTrue,
+      );
+    },
+  );
 
   test('pasted tokens stay excluded (regression pin)', () {
     final choreo = _record()..pastedStrings.add('quiero un café');

@@ -189,43 +189,37 @@ void main() {
   group('OrchestratorController.suggestionToShow — any-sender staleness', () {
     const botEvent = r'$botReply';
 
-    test(
-      'output based on the bot reply (the latest message) is shown to the '
-      'lone human',
-      () {
-        // Re-fire (choreo#2761): after the bot replies to the lone human, the
-        // fresh output is based on the bot's message. The human still sent the
-        // latest HUMAN message, so they are prompted.
-        final output = outputWithBothRoles(botEvent);
-        final result = OrchestratorController.suggestionToShow(
-          output: output,
-          ownRoleId: roleA,
-          currentUserId: userA,
-          latestMessageEventId: botEvent,
-          latestHumanMessageSenderId: userA,
-          humanRoleCount: 1,
-        );
-        expect(result, isNotNull);
-        expect(result!.roleId, roleA);
-      },
-    );
+    test('output based on the bot reply (the latest message) is shown to the '
+        'lone human', () {
+      // Re-fire (choreo#2761): after the bot replies to the lone human, the
+      // fresh output is based on the bot's message. The human still sent the
+      // latest HUMAN message, so they are prompted.
+      final output = outputWithBothRoles(botEvent);
+      final result = OrchestratorController.suggestionToShow(
+        output: output,
+        ownRoleId: roleA,
+        currentUserId: userA,
+        latestMessageEventId: botEvent,
+        latestHumanMessageSenderId: userA,
+        humanRoleCount: 1,
+      );
+      expect(result, isNotNull);
+      expect(result!.roleId, roleA);
+    });
 
-    test(
-      'output based on an older human message is dropped once a bot reply '
-      'is the latest message',
-      () {
-        final output = outputWithBothRoles(eventA);
-        final result = OrchestratorController.suggestionToShow(
-          output: output,
-          ownRoleId: roleA,
-          currentUserId: userA,
-          latestMessageEventId: botEvent, // the bot has since replied
-          latestHumanMessageSenderId: userA,
-          humanRoleCount: 1,
-        );
-        expect(result, isNull);
-      },
-    );
+    test('output based on an older human message is dropped once a bot reply '
+        'is the latest message', () {
+      final output = outputWithBothRoles(eventA);
+      final result = OrchestratorController.suggestionToShow(
+        output: output,
+        ownRoleId: roleA,
+        currentUserId: userA,
+        latestMessageEventId: botEvent, // the bot has since replied
+        latestHumanMessageSenderId: userA,
+        humanRoleCount: 1,
+      );
+      expect(result, isNull);
+    });
   });
 
   group('OrchestratorOutput.fromJson — v2 bucket tolerance', () {
@@ -248,57 +242,63 @@ void main() {
       expect(output.suggestions.single.roleId, roleB);
     });
 
-    test('null options list and missing role_id are dropped, siblings kept', () {
-      final output = OrchestratorOutput.fromJson({
-        'based_on_event_id': eventA,
-        'goal_completion': [
-          {
-            'role_id': roleA,
-            'goal_ids': ['goal-1'],
-          },
-        ],
-        'suggestions': [
-          {'role_id': roleA, 'suggestions': null},
-          {
-            'suggestions': [
-              {'text': 'no-role', 'type': 'best'},
-            ],
-          },
-          {
-            'role_id': roleB,
-            'suggestions': [
-              {'text': 'B-best', 'type': 'best'},
-            ],
-          },
-        ],
-        'flag': null,
-      });
-      expect(output.suggestions, hasLength(1));
-      expect(output.suggestions.single.roleId, roleB);
-      // goal_completion survives malformed sibling buckets.
-      expect(output.goalCompletion, hasLength(1));
-    });
+    test(
+      'null options list and missing role_id are dropped, siblings kept',
+      () {
+        final output = OrchestratorOutput.fromJson({
+          'based_on_event_id': eventA,
+          'goal_completion': [
+            {
+              'role_id': roleA,
+              'goal_ids': ['goal-1'],
+            },
+          ],
+          'suggestions': [
+            {'role_id': roleA, 'suggestions': null},
+            {
+              'suggestions': [
+                {'text': 'no-role', 'type': 'best'},
+              ],
+            },
+            {
+              'role_id': roleB,
+              'suggestions': [
+                {'text': 'B-best', 'type': 'best'},
+              ],
+            },
+          ],
+          'flag': null,
+        });
+        expect(output.suggestions, hasLength(1));
+        expect(output.suggestions.single.roleId, roleB);
+        // goal_completion survives malformed sibling buckets.
+        expect(output.goalCompletion, hasLength(1));
+      },
+    );
 
-    test('unknown option type or null text skips the entry, keeps valid ones', () {
-      final output = OrchestratorOutput.fromJson({
-        'based_on_event_id': eventA,
-        'goal_completion': [],
-        'suggestions': [
-          {
-            'role_id': roleA,
-            'suggestions': [
-              {'text': null, 'type': 'best'},
-              {'text': 'valid', 'type': 'best'},
-              {'text': 'weird', 'type': 'emoji'},
-            ],
-          },
-        ],
-        'flag': null,
-      });
-      expect(output.suggestions, hasLength(1));
-      expect(output.suggestions.single.suggestions, hasLength(1));
-      expect(output.suggestions.single.suggestions.single.text, 'valid');
-    });
+    test(
+      'unknown option type or null text skips the entry, keeps valid ones',
+      () {
+        final output = OrchestratorOutput.fromJson({
+          'based_on_event_id': eventA,
+          'goal_completion': [],
+          'suggestions': [
+            {
+              'role_id': roleA,
+              'suggestions': [
+                {'text': null, 'type': 'best'},
+                {'text': 'valid', 'type': 'best'},
+                {'text': 'weird', 'type': 'emoji'},
+              ],
+            },
+          ],
+          'flag': null,
+        });
+        expect(output.suggestions, hasLength(1));
+        expect(output.suggestions.single.suggestions, hasLength(1));
+        expect(output.suggestions.single.suggestions.single.text, 'valid');
+      },
+    );
 
     test('missing suggestions key parses to an empty list', () {
       final output = OrchestratorOutput.fromJson({
