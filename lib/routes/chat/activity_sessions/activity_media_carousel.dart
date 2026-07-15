@@ -7,7 +7,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The focused-surface media display for an activity (plan page and live
@@ -57,9 +59,12 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
   @override
   void initState() {
     super.initState();
-    _playingIndex = widget.autoplayIndex;
+    // On native mobile nothing mounts a live player inline (#7672/#7673): the
+    // deep-link block still lands under the viewport, but as a thumbnail — tap
+    // opens it on its own screen. Web/desktop keep the muted inline autostart.
+    _playingIndex = PlatformInfos.isMobile ? null : widget.autoplayIndex;
     _page = widget.autoplayIndex ?? 0;
-    _mutedAutostart = widget.autoplayIndex != null;
+    _mutedAutostart = !PlatformInfos.isMobile && widget.autoplayIndex != null;
   }
 
   List<ActivityMediaBlock> get _visible =>
@@ -161,10 +166,18 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     // thumbnail + play badge — tap to play (with sound)
     final thumb = block.displayUrl(size);
     return GestureDetector(
-      onTap: () => setState(() {
-        _playingIndex = index;
-        _mutedAutostart = false;
-      }),
+      onTap: () {
+        // Native mobile can't mount a webview inside this scrolling surface
+        // (#7672/#7673), so play on a dedicated screen; inline elsewhere.
+        if (PlatformInfos.isMobile) {
+          openActivityVideo(context, block);
+          return;
+        }
+        setState(() {
+          _playingIndex = index;
+          _mutedAutostart = false;
+        });
+      },
       child: Stack(
         alignment: Alignment.center,
         children: [
