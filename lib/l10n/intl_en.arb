@@ -5098,5 +5098,22 @@
     "manage": "Manage",
     "subscriptionHistory": "Subscription History",
     "history": "History",
-    "noPaymentHistoryFound": "No payment history found"
+    "noPaymentHistoryFound": "No payment history found",
+    "cancelAnytime": "Cancel at any time in subscription settings",
+    "pricePerMonth": "{price}/month",
+    "@pricePerMonth": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            }
+        }
+    },
+    "pricePerYear": "{price}/year",
+    "@pricePerYear": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            }
+        }
+    }
 }

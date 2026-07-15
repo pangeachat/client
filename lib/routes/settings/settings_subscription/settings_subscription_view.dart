@@ -21,11 +21,16 @@ class SettingsSubscriptionView extends StatelessWidget {
   final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
   final AsyncState<List<ProductPlan>> productsState;
 
+  final Future<void> Function(ProductPlan) onTapSubscription;
+  final ValueNotifier<ProductPlan?> selectedSubscription;
+
   const SettingsSubscriptionView({
     super.key,
     required this.closeButton,
     required this.subscriptionStatusState,
     required this.productsState,
+    required this.onTapSubscription,
+    required this.selectedSubscription,
   });
 
   @override
@@ -107,9 +112,13 @@ class SettingsSubscriptionView extends StatelessWidget {
                                   subscriptionPlan?.priceDisplay ??
                                   winning?.priceDisplay(l10n),
                               manageEligible: subscriptionStatus.manageEligible,
+                              onTapSubscription: onTapSubscription,
+                              selectedSubscription: selectedSubscription,
                             ),
-                            SubscriptionAccessLevel.none =>
-                              SubscriptionOptions(),
+                            SubscriptionAccessLevel.none => SubscriptionOptions(
+                              onTapSubscription: onTapSubscription,
+                              selectedSubscription: selectedSubscription,
+                            ),
                           },
                         ],
                       );
@@ -132,12 +141,17 @@ class _FullAccessContent extends StatelessWidget {
   final String? priceDisplay;
   final bool manageEligible;
 
+  final Future<void> Function(ProductPlan) onTapSubscription;
+  final ValueNotifier<ProductPlan?> selectedSubscription;
+
   const _FullAccessContent({
     required this.type,
     required this.subscriptionTitle,
     this.paymentPeriodDescription,
     this.priceDisplay,
     this.manageEligible = false,
+    required this.onTapSubscription,
+    required this.selectedSubscription,
   });
 
   @override
@@ -179,7 +193,11 @@ class _FullAccessContent extends StatelessWidget {
               ],
             ),
           ),
-        if (type == SubscriptionType.trial) SubscriptionOptions(),
+        if (type == SubscriptionType.trial)
+          SubscriptionOptions(
+            onTapSubscription: onTapSubscription,
+            selectedSubscription: selectedSubscription,
+          ),
       ],
     );
   }

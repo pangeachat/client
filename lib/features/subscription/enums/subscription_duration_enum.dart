@@ -13,4 +13,9 @@ enum SubscriptionDuration {
     SubscriptionDuration.month => l10n.monthlySubscription,
     SubscriptionDuration.year => l10n.yearlySubscription,
   };
+
+  String periodPriceDisplay(L10n l10n, String price) => switch (this) {
+    SubscriptionDuration.month => l10n.pricePerMonth(price),
+    SubscriptionDuration.year => l10n.pricePerYear(price),
+  };
 }

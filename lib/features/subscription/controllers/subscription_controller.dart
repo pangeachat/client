@@ -2,13 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
-import 'package:fluffychat/features/subscription/repo_v2/checkout_repo.dart';
-import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/free_trial_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
@@ -89,10 +85,10 @@ class SubscriptionController with ChangeNotifier {
   Future<void> _initialize(String userID) async {
     try {
       await MatrixState.pangeaController.userController.initCompleter.future;
-      await updateCurrentSubscription(userID);
+      await _updateCurrentSubscription(userID);
 
       if (_state is! SubscriptionActive && _inTrialWindow) {
-        await activateNewUserTrial(userID);
+        await _activateNewUserTrial(userID);
       }
 
       if (SubscriptionManagementRepo.getBeganPayment()) {
@@ -107,54 +103,16 @@ class SubscriptionController with ChangeNotifier {
     }
   }
 
-  Future<void> submitSubscriptionChange(
-    String planId,
-    BuildContext context, {
-    required String userID,
-    String? promoCode,
-  }) async {
-    try {
-      GoogleAnalytics.beginPurchaseSubscription(planId, promoCode, context);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"plan_id": planId, "promo_code": promoCode},
-      );
-    }
-
-    try {
-      final result = await CheckoutRepo.instance.getPaymentLink(
-        CheckoutRequest(userID: userID, planId: planId, promoCode: promoCode),
-      );
-
-      final response = result.result;
-      if (response == null) {
-        throw result.asError ?? "Failed to fetch payment link";
-      }
-
-      await SubscriptionManagementRepo.setBeganPayment();
-      launchUrlString(response, webOnlyWindowName: "_self");
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"plan_id": planId, "promo_code": promoCode},
-      );
-      rethrow;
-    }
-  }
-
-  Future<void> activateNewUserTrial(String userID) async {
+  Future<void> _activateNewUserTrial(String userID) async {
     final result = await FreeTrialRepo.instance.get(
       FreeTrialRequest(userID: userID),
     );
     final activated = !result.isError;
     if (!activated) return;
-    await updateCurrentSubscription(userID);
+    await _updateCurrentSubscription(userID);
   }
 
-  Future<void> updateCurrentSubscription(String userID) async {
+  Future<void> _updateCurrentSubscription(String userID) async {
     final result = await SubscriptionStatusRepo.instance.get(
       SubscriptionStatusRequest(userID: userID),
     );
