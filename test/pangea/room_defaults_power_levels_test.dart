@@ -26,13 +26,16 @@ void main() {
       });
     });
 
-    test('bot id without a creator id emits no users key', () {
+    test('bot id without a creator id fails loudly', () {
       // Emitting {bot: 50} alone would wipe the creator's 100 (shallow merge)
-      // and leave the room unmanageable — refuse the partial form.
-      final content = RoomDefaults.defaultPowerLevelsContent(
-        botUserId: '@bot:staging.pangea.chat',
+      // and leave the room unmanageable; omitting the map leaves the bot at
+      // PL 0 — a half-specified grant must not silently do either.
+      expect(
+        () => RoomDefaults.defaultPowerLevelsContent(
+          botUserId: '@bot:staging.pangea.chat',
+        ),
+        throwsA(isA<AssertionError>()),
       );
-      expect(content.containsKey('users'), isFalse);
     });
   });
 }
