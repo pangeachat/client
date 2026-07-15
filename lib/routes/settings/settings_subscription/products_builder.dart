@@ -9,15 +9,15 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 typedef _ProductsLoader = ValueNotifier<AsyncState<List<ProductPlan>>>;
 
-class ProductsProvider extends StatefulWidget {
+class ProductsBuilder extends StatefulWidget {
   final Widget Function(BuildContext, AsyncState<List<ProductPlan>>) builder;
-  const ProductsProvider({super.key, required this.builder});
+  const ProductsBuilder({super.key, required this.builder});
 
   @override
-  ProductsProviderState createState() => ProductsProviderState();
+  ProductsBuilderState createState() => ProductsBuilderState();
 }
 
-class ProductsProviderState extends State<ProductsProvider> {
+class ProductsBuilderState extends State<ProductsBuilder> {
   final _loader = _ProductsLoader(AsyncLoading());
 
   @override

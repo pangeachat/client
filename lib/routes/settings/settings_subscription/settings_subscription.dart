@@ -13,10 +13,10 @@ import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_res
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_provider.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_builder.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -48,7 +48,7 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
   Future<void> _onEnterDiscountCode() async {
     final resp = await showDialog<CheckoutRequest>(
       context: context,
-      builder: (context) => ProductsProvider(
+      builder: (context) => ProductsBuilder(
         builder: (context, productsState) => DiscountCodePopup(
           validateCode: _validatePromoCode,
           productsState: productsState,
@@ -123,8 +123,8 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
 
   @override
   Widget build(BuildContext context) {
-    return SubscriptionStatusProvider(
-      builder: (context, subscriptionStatusState) => ProductsProvider(
+    return SubscriptionStatusBuilder(
+      builder: (context, subscriptionStatusState) => ProductsBuilder(
         builder: (context, productsState) => SettingsSubscriptionView(
           closeButton: widget.closeButton,
           subscriptionStatusState: subscriptionStatusState,

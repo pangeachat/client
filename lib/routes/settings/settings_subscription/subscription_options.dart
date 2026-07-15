@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_option_card.dart';
 
 class SubscriptionOptions extends StatelessWidget {
@@ -19,7 +19,7 @@ class SubscriptionOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProductsProvider(
+    return ProductsBuilder(
       builder: (context, state) => switch (state) {
         AsyncLoading() ||
         AsyncIdle() => Center(child: CircularProgressIndicator.adaptive()),

@@ -20,6 +20,8 @@ class SubscriptionHistoryView extends StatelessWidget {
   final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
   final AsyncState<List<ProductPlan>> productsState;
   final AsyncState<List<Invoice>> invoiceHistoryState;
+  final Future<void> Function() onCancelSubscription;
+  final bool canCancelSubscription;
 
   const SubscriptionHistoryView({
     super.key,
@@ -27,6 +29,8 @@ class SubscriptionHistoryView extends StatelessWidget {
     required this.subscriptionStatusState,
     required this.productsState,
     required this.invoiceHistoryState,
+    required this.onCancelSubscription,
+    required this.canCancelSubscription,
   });
 
   @override
@@ -106,7 +110,8 @@ class SubscriptionHistoryView extends StatelessWidget {
                             priceDisplay:
                                 subscriptionPlan?.priceDisplay ??
                                 winning?.priceDisplay(l10n),
-                            showCancel: true,
+                            showCancel: canCancelSubscription,
+                            onCancel: onCancelSubscription,
                           );
                         }(),
                       },

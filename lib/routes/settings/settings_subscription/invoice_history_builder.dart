@@ -9,15 +9,15 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 typedef _InvoiceLoader = ValueNotifier<AsyncState<List<Invoice>>>;
 
-class InvoiceHistoryProvider extends StatefulWidget {
+class InvoiceHistoryBuilder extends StatefulWidget {
   final Widget Function(BuildContext, AsyncState<List<Invoice>>) builder;
-  const InvoiceHistoryProvider({super.key, required this.builder});
+  const InvoiceHistoryBuilder({super.key, required this.builder});
 
   @override
-  InvoiceHistoryProviderState createState() => InvoiceHistoryProviderState();
+  InvoiceHistoryBuilderState createState() => InvoiceHistoryBuilderState();
 }
 
-class InvoiceHistoryProviderState extends State<InvoiceHistoryProvider> {
+class InvoiceHistoryBuilderState extends State<InvoiceHistoryBuilder> {
   final _loader = _InvoiceLoader(AsyncLoading());
 
   @override
