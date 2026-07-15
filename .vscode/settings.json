@@ -1,4 +1,5 @@
 {
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
     "dart.previewLsp": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",

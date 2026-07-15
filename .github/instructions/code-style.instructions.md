@@ -29,4 +29,4 @@ Conventions for Dart/Flutter code in this repo, beyond what `dart format` and `f
 
 ## Formatting toolchain
 
-The `code_tests` gate rejects any `dart format` diff, and it formats with the Flutter version pinned in `.fvmrc` — not whatever Flutter is on your PATH. Different Flutter versions format Dart differently, so code that looks clean under a newer or older local Flutter can still fail the gate, while `dart format` on that machine reports no changes — which is why the person who introduced a formatting failure often can't reproduce it. Format with the pinned version so local output matches CI; the simplest way is to install [FVM](https://fvm.app) and run `dart format` through it. The gate also verifies `.fvmrc` and the CI Flutter version stay in sync, so the two toolchains can't silently drift.
+`dart format` output depends on the Flutter version, so format with the one pinned in `.fvmrc` — otherwise the `code_tests` gate can reject code that looks clean under a different local Flutter. Setup and the one-command formatter (`scripts/format.sh`) live in [CONTRIBUTING.md](../../CONTRIBUTING.md#flutter-version-fvm).
