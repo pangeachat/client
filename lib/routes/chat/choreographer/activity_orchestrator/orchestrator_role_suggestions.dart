@@ -10,9 +10,19 @@ class OrchestratorRoleSuggestions {
   });
 
   static OrchestratorRoleSuggestions fromJson(Map<String, dynamic> json) {
+    // v2 (choreo#2761): options may be empty (adapted Reaction / turn-0 null
+    // buckets) or malformed during rollout — skip bad entries, never throw.
     return OrchestratorRoleSuggestions(
       roleId: json["role_id"],
-      suggestions: List.from(json["suggestions"])
+      suggestions: List.from(json["suggestions"] ?? [])
+          .whereType<Map>()
+          .where(
+            (s) =>
+                s["text"] is String &&
+                OrchestratorSuggestionType.values.any(
+                  (v) => v.name == s["type"],
+                ),
+          )
           .map(
             (s) =>
                 OrchestratorSuggestion.fromJson(Map<String, dynamic>.from(s)),

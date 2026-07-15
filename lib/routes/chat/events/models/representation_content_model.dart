@@ -152,15 +152,20 @@ class PangeaRepresentation {
         .where((token) => token.lemma.saveVocab)
         .toList();
 
-    final pastedStrings = choreo?.pastedStrings ?? <String>{};
+    // Accepted-suggestion text is excluded like pasted text — neither is
+    // self-written language, so neither generates construct uses (#7665).
+    final excludedStrings = {
+      ...?choreo?.pastedStrings,
+      ...?choreo?.suggestionStrings,
+    };
 
     final openMatches = choreo?.openMatches ?? [];
 
     return tokensToSave
         .where(
           (token) =>
-              !pastedStrings.any(
-                (pasted) => pasted.toLowerCase().contains(
+              !excludedStrings.any(
+                (excluded) => excluded.toLowerCase().contains(
                   token.text.content.toLowerCase(),
                 ),
               ) &&
