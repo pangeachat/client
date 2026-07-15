@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/quests/**"
+applyTo: "lib/features/quests/**,lib/features/course_plans/**"
 description: "Client-side next-Mission resolver — the one shared answer to 'which Mission should this learner work on next, per quest?', its inputs (joined-course Mission sequences + per-Mission star rollup), and the ranking surfaces that read it."
 ---
 
