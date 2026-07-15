@@ -338,10 +338,13 @@ class WorkspaceShell extends StatelessWidget {
                     bottom: 0,
                     left: l.allocation.right[i].left,
                     width: l.allocation.right[i].width,
-                    child: WorkspaceRightPanel(
-                      token: l.rightTokens[i],
-                      currentUri: state.uri,
-                      foldedOver: l.allocation.right[i].foldedOver,
+                    child: FocusTraversalGroup(
+                      policy: OrderedTraversalPolicy(),
+                      child: WorkspaceRightPanel(
+                        token: l.rightTokens[i],
+                        currentUri: state.uri,
+                        foldedOver: l.allocation.right[i].foldedOver,
+                      ),
                     ),
                   ),
             ],
@@ -593,10 +596,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             shortcutCourse.id == activeSpaceId,
         cavityChild: cavityToken == null
             ? null
-            : WorkspaceLeftPanel(
-                token: cavityToken,
-                currentUri: uri,
-                bare: true,
+            : FocusTraversalGroup(
+                policy: OrderedTraversalPolicy(),
+                child: WorkspaceLeftPanel(
+                  token: cavityToken,
+                  currentUri: uri,
+                  bare: true,
+                ),
               ),
         cavityKey: cavityKey,
         // A course card opens at peek (the map leads); sections and the
