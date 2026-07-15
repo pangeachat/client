@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'package:fluffychat/features/subscription/enums/invoice_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
@@ -78,4 +80,18 @@ class Invoice {
       'promo_code': promoCode,
     };
   }
+
+  String get totalDisplay {
+    final updatedAmount = total / 100;
+    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
+    return "$symbol$updatedAmount";
+  }
+
+  String get subtotalDisplay {
+    final updatedAmount = subtotal / 100;
+    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
+    return "$symbol$updatedAmount";
+  }
+
+  bool get showSubtotal => subtotal > total;
 }

@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/settings/settings_security/settings_password/s
 import 'package:fluffychat/routes/settings/settings_security/settings_security.dart';
 import 'package:fluffychat/routes/settings/settings_style/settings_style.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/subscription_history.dart';
 
 /// The body of the right-column **settings panel** (world_v2): the profile +
 /// settings tree, hosted in one panel instead of the retired route-driven
@@ -64,6 +65,8 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         return const SettingsChat();
       case 'subscription':
         return SettingsSubscription(closeButton: closeButton);
+      case 'subscription/history':
+        return SubscriptionHistory(closeButton: closeButton);
       case 'security':
         return const SettingsSecurity();
       case 'security/password':

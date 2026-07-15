@@ -1,55 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/subscription/repo_v2/products_repo.dart';
-import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
 
-typedef _ProductsLoader = ValueNotifier<AsyncState<List<ProductPlan>>>;
-
-class SubscriptionOptions extends StatefulWidget {
+class SubscriptionOptions extends StatelessWidget {
   const SubscriptionOptions({super.key});
 
   @override
-  SubscriptionOptionsState createState() => SubscriptionOptionsState();
-}
-
-class SubscriptionOptionsState extends State<SubscriptionOptions> {
-  final _loader = _ProductsLoader(AsyncLoading());
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  @override
-  void dispose() {
-    _loader.dispose();
-    super.dispose();
-  }
-
-  Future<void> _load() async {
-    final result = await ProductsRepo.instance.get(
-      ProductsRequest(userID: Matrix.of(context).client.userID!),
-    );
-    final response = result.result;
-    if (mounted) {
-      _loader.value = response != null
-          ? AsyncLoaded(response.plans)
-          : AsyncError(result.error ?? "Failed to fetch products");
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _loader,
-      builder: (context, state, _) => switch (state) {
+    return ProductsProvider(
+      builder: (context, state) => switch (state) {
         AsyncLoading() ||
         AsyncIdle() => Center(child: CircularProgressIndicator.adaptive()),
         AsyncError() => SizedBox.shrink(),
@@ -65,10 +28,16 @@ class SubscriptionOptionsInternal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       spacing: 12.0,
       children: [
-        Text(L10n.of(context).selectYourPlan),
+        Text(
+          L10n.of(context).selectYourPlan,
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         Row(
           spacing: 12.0,
           children: plans
@@ -101,7 +70,15 @@ class _SubscriptionOptionCard extends StatelessWidget {
       borderRadius: 12.0,
       child: Column(
         spacing: 8.0,
-        children: [Text(plan.duration.copy(l10n)), Text(plan.priceDisplay)],
+        children: [
+          Text(
+            plan.duration.copy(l10n),
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(plan.priceDisplay, style: theme.textTheme.headlineMedium),
+        ],
       ),
     );
   }

@@ -1,17 +1,16 @@
 import 'package:collection/collection.dart';
+import 'package:intl/intl.dart';
 
-import 'package:fluffychat/features/subscription/enums/entitlement_source_enum.dart';
 import 'package:fluffychat/features/subscription/enums/manage_account_kind_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
-import 'package:fluffychat/features/subscription/enums/subscription_provider_enum.dart';
-import 'package:fluffychat/features/subscription/enums/subscription_status_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class SubscriptionStatusResponse extends BaseResponse {
   final SubscriptionAccessLevel accessLevel;
-  final EntitlementSource entitlementSource;
+  final String entitlementSource;
   final SubscriptionWinning? winning;
   final BillingIssue? billingIssue;
   final List<SubscriptionEntitlement> entitlements;
@@ -37,9 +36,7 @@ class SubscriptionStatusResponse extends BaseResponse {
       accessLevel: SubscriptionAccessLevel.fromString(
         json['access_level'] as String,
       ),
-      entitlementSource: EntitlementSource.fromString(
-        json['entitlement_source'] as String,
-      ),
+      entitlementSource: json['entitlement_source'] as String,
       winning: json['winning'] != null
           ? SubscriptionWinning.fromJson(
               json['winning'] as Map<String, dynamic>,
@@ -66,7 +63,7 @@ class SubscriptionStatusResponse extends BaseResponse {
   Map<String, dynamic> toJson() {
     return {
       'access_level': accessLevel.name,
-      'entitlement_source': entitlementSource.name,
+      'entitlement_source': entitlementSource,
       'winning': winning?.toJson(),
       'billing_issue': billingIssue?.toJson(),
       'entitlements': entitlements.map((e) => e.toJson()).toList(),
@@ -79,18 +76,18 @@ class SubscriptionStatusResponse extends BaseResponse {
 }
 
 class SubscriptionWinning {
-  final SubscriptionType type;
-  final SubscriptionStatus status;
+  final SubscriptionType? type;
+  final String status;
   final DateTime? endsAt;
   final DateTime? paidThroughAt;
   final DateTime? graceEndsAt;
   final bool cancelAtPeriodEnd;
-  final SubscriptionProvider provider;
+  final String provider;
   final String? planId;
   final String? entitlementRef;
 
   const SubscriptionWinning({
-    required this.type,
+    this.type,
     required this.status,
     this.endsAt,
     this.paidThroughAt,
@@ -104,12 +101,12 @@ class SubscriptionWinning {
   factory SubscriptionWinning.fromJson(Map<String, dynamic> json) {
     return SubscriptionWinning(
       type: SubscriptionType.fromString(json['type'] as String),
-      status: SubscriptionStatus.fromString(json['status'] as String),
+      status: json['status'] as String,
       endsAt: _parseDate(json['ends_at']),
       paidThroughAt: _parseDate(json['paid_through_at']),
       graceEndsAt: _parseDate(json['grace_ends_at']),
       cancelAtPeriodEnd: json['cancel_at_period_end'] as bool? ?? false,
-      provider: SubscriptionProvider.fromString(json['provider'] as String),
+      provider: json['provider'] as String,
       planId: json['planId'] as String?,
       entitlementRef: json['entitlementRef'] as String?,
     );
@@ -117,13 +114,13 @@ class SubscriptionWinning {
 
   Map<String, dynamic> toJson() {
     return {
-      'type': type.name,
-      'status': status.name,
+      'type': type?.name,
+      'status': status,
       'ends_at': endsAt?.toIso8601String(),
       'paid_through_at': paidThroughAt?.toIso8601String(),
       'grace_ends_at': graceEndsAt?.toIso8601String(),
       'cancel_at_period_end': cancelAtPeriodEnd,
-      'provider': provider.name,
+      'provider': provider,
       'planId': planId,
       'entitlementRef': entitlementRef,
     };
@@ -134,24 +131,69 @@ class SubscriptionWinning {
     return DateTime.tryParse(value as String);
   }
 
-  SubscriptionDuration get duration =>
-      SubscriptionDuration.values.firstWhereOrNull((d) => d.name == planId) ??
-      SubscriptionDuration.month;
+  SubscriptionDuration? get _duration =>
+      SubscriptionDuration.values.firstWhereOrNull((d) => d.name == planId);
+
+  String subscriptionTitle(L10n l10n) {
+    final fallback = l10n.currentSubscription;
+    return switch (type) {
+      SubscriptionType.paid ||
+      SubscriptionType.individual => _duration?.copy(l10n) ?? fallback,
+      SubscriptionType.trial => l10n.freeTrial,
+      SubscriptionType.comp => l10n.promoSubscription,
+      SubscriptionType.seat => l10n.seatSubscription,
+      null => fallback,
+    };
+  }
+
+  String? paymentPeriodDescription(L10n l10n) {
+    final formatter = DateFormat('yyyy-MM-dd');
+    final endsAt = this.endsAt;
+    switch (type) {
+      case SubscriptionType.paid:
+      case SubscriptionType.individual:
+      case SubscriptionType.seat:
+        if (endsAt == null) return null;
+        return cancelAtPeriodEnd
+            ? l10n.subscriptionEndsOn(formatter.format(endsAt))
+            : l10n.subscriptionRenewsOn(formatter.format(endsAt));
+      case SubscriptionType.comp:
+        if (endsAt == null || endsAt.isAfter(DateTime(2100))) {
+          return l10n.lifetimeSubscription;
+        }
+        return l10n.subscriptionEndsOn(formatter.format(endsAt));
+      case SubscriptionType.trial:
+        if (endsAt == null) return l10n.freeTrialDescription;
+        return l10n.trialExpiration(formatter.format(endsAt));
+      case null:
+        if (endsAt == null) return null;
+        return l10n.subscriptionEndsOn(formatter.format(endsAt));
+    }
+  }
+
+  String? priceDisplay(L10n l10n) {
+    return switch (type) {
+      SubscriptionType.paid || SubscriptionType.individual || null => null,
+      SubscriptionType.trial ||
+      SubscriptionType.comp ||
+      SubscriptionType.seat => l10n.freeSubscription,
+    };
+  }
 }
 
 class SubscriptionEntitlement {
   final String entitlementRef;
-  final SubscriptionType type;
-  final SubscriptionProvider provider;
+  final SubscriptionType? type;
+  final String provider;
   final String? planId;
   final String? sourceSubscriptionId;
   final bool cancelable;
-  final SubscriptionStatus status;
+  final String status;
   final ManageAction? manageAction;
 
   const SubscriptionEntitlement({
     required this.entitlementRef,
-    required this.type,
+    this.type,
     required this.provider,
     this.planId,
     this.sourceSubscriptionId,
@@ -164,11 +206,11 @@ class SubscriptionEntitlement {
     return SubscriptionEntitlement(
       entitlementRef: json['entitlementRef'] as String,
       type: SubscriptionType.fromString(json['type'] as String),
-      provider: SubscriptionProvider.fromString(json['provider'] as String),
+      provider: json['provider'] as String,
       planId: json['planId'] as String?,
       sourceSubscriptionId: json['sourceSubscriptionId'] as String?,
       cancelable: json['cancelable'] as bool? ?? false,
-      status: SubscriptionStatus.fromString(json['status'] as String),
+      status: json['status'] as String,
       manageAction: json['manage_action'] != null
           ? ManageAction.fromJson(json['manage_action'] as Map<String, dynamic>)
           : null,
@@ -178,12 +220,12 @@ class SubscriptionEntitlement {
   Map<String, dynamic> toJson() {
     return {
       'entitlementRef': entitlementRef,
-      'type': type.name,
-      'provider': provider.name,
+      'type': type?.name,
+      'provider': provider,
       'planId': planId,
       'sourceSubscriptionId': sourceSubscriptionId,
       'cancelable': cancelable,
-      'status': status.name,
+      'status': status,
       'manage_action': manageAction?.toJson(),
     };
   }
