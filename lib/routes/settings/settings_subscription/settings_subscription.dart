@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/features/subscription/repo_v2/checkout_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_response.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
@@ -32,6 +37,34 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
     super.dispose();
   }
 
+  Future<Result<ValidatePromoCodeResponse>> _validatePromoCode(String code) =>
+      ValidatePromoCodeRepo.instance.get(
+        ValidatePromoCodeRequest(
+          userID: Matrix.of(context).client.userID!,
+          code: code,
+        ),
+      );
+
+  Future<void> _onEnterDiscountCode() async {
+    final resp = await showDialog<CheckoutRequest>(
+      context: context,
+      builder: (context) => ProductsProvider(
+        builder: (context, productsState) => DiscountCodePopup(
+          validateCode: _validatePromoCode,
+          productsState: productsState,
+        ),
+      ),
+    );
+    if (resp == null) return;
+
+    _recordBeganPayment(resp.planId, resp.promoCode);
+
+    final paymentLink = await _requestPaymentLink(resp);
+    if (paymentLink == null) return;
+
+    await _launchPaymentLink(paymentLink);
+  }
+
   Future<void> _onTapSubscription(ProductPlan plan) async {
     _selectedSubscription.value = plan;
     final resp = await showDialog(
@@ -41,18 +74,34 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
     if (mounted) _selectedSubscription.value = null;
     if (resp != true) return;
 
-    try {
-      GoogleAnalytics.beginPurchaseSubscription(plan.planId, null, context);
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"plan_id": plan.planId});
-    }
+    _recordBeganPayment(plan.planId);
 
     final userID = Matrix.of(context).client.userID!;
+    final request = CheckoutRequest(userID: userID, planId: plan.planId);
+    final paymentLink = await _requestPaymentLink(request);
+    if (paymentLink == null) return;
+
+    await _launchPaymentLink(paymentLink);
+  }
+
+  void _recordBeganPayment(String planId, [String? promoCode]) {
+    try {
+      GoogleAnalytics.beginPurchaseSubscription(planId, promoCode, context);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"plan_id": planId, "promo_code": promoCode},
+      );
+    }
+  }
+
+  Future<String?> _requestPaymentLink(CheckoutRequest request) async {
     final checkoutResult = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
         final checkoutResult = await CheckoutRepo.instance.getPaymentLink(
-          CheckoutRequest(userID: userID, planId: plan.planId),
+          request,
         );
 
         final checkoutResponse = checkoutResult.result;
@@ -64,9 +113,10 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
       },
     );
 
-    final paymentLink = checkoutResult.result;
-    if (paymentLink == null) return;
+    return checkoutResult.result;
+  }
 
+  Future<void> _launchPaymentLink(String paymentLink) async {
     await SubscriptionManagementRepo.setBeganPayment();
     await launchUrlString(paymentLink, webOnlyWindowName: "_self");
   }
@@ -79,6 +129,7 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
           closeButton: widget.closeButton,
           subscriptionStatusState: subscriptionStatusState,
           productsState: productsState,
+          onEnterDiscountCode: _onEnterDiscountCode,
           onTapSubscription: _onTapSubscription,
           selectedSubscription: _selectedSubscription,
         ),

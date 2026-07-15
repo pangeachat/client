@@ -21,6 +21,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
   final AsyncState<List<ProductPlan>> productsState;
 
+  final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
@@ -29,6 +30,7 @@ class SettingsSubscriptionView extends StatelessWidget {
     required this.closeButton,
     required this.subscriptionStatusState,
     required this.productsState,
+    required this.onEnterDiscountCode,
     required this.onTapSubscription,
     required this.selectedSubscription,
   });
@@ -114,8 +116,10 @@ class SettingsSubscriptionView extends StatelessWidget {
                               manageEligible: subscriptionStatus.manageEligible,
                               onTapSubscription: onTapSubscription,
                               selectedSubscription: selectedSubscription,
+                              onEnterDiscountCode: onEnterDiscountCode,
                             ),
                             SubscriptionAccessLevel.none => SubscriptionOptions(
+                              onEnterDiscountCode: onEnterDiscountCode,
                               onTapSubscription: onTapSubscription,
                               selectedSubscription: selectedSubscription,
                             ),
@@ -141,6 +145,7 @@ class _FullAccessContent extends StatelessWidget {
   final String? priceDisplay;
   final bool manageEligible;
 
+  final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
@@ -150,6 +155,7 @@ class _FullAccessContent extends StatelessWidget {
     this.paymentPeriodDescription,
     this.priceDisplay,
     this.manageEligible = false,
+    required this.onEnterDiscountCode,
     required this.onTapSubscription,
     required this.selectedSubscription,
   });
@@ -195,6 +201,7 @@ class _FullAccessContent extends StatelessWidget {
           ),
         if (type == SubscriptionType.trial)
           SubscriptionOptions(
+            onEnterDiscountCode: onEnterDiscountCode,
             onTapSubscription: onTapSubscription,
             selectedSubscription: selectedSubscription,
           ),

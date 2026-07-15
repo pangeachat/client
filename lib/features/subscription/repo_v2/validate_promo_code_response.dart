@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
 class ValidatePromoCodeResponse extends BaseResponse {
@@ -70,6 +72,21 @@ class ValidatePromoCodeResponse extends BaseResponse {
       'expires_at': expiresAt?.millisecondsSinceEpoch,
       'reason': reason,
     };
+  }
+
+  String? get discountCopy {
+    final percentOff = this.percentOff;
+    if (percentOff != null) {
+      return "$percentOff%";
+    }
+
+    final currency = this.currency;
+    if (currency == null) return null;
+    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
+
+    final amountOff = this.amountOff;
+    if (amountOff == null) return null;
+    return "$symbol${amountOff / 100}";
   }
 }
 

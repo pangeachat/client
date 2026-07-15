@@ -5116,5 +5116,17 @@
             }
         }
     },
-    "viewSubscriptionOptions": "View subscription options"
+    "viewSubscriptionOptions": "View subscription options",
+    "apply": "Apply",
+    "continueToSubscribe": "Continue to subscribe",
+    "invalidDiscountCode": "Invalid discount code",
+    "selectDiscountPlan": "Select discount plan",
+    "discountApplied": "{discount} discount applied",
+    "@discountApplied": {
+        "placeholders": {
+            "discount": {
+                "type": "String"
+            }
+        }
+    }
 }
