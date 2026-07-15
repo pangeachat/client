@@ -5115,5 +5115,6 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "viewSubscriptionOptions": "View subscription options"
 }
