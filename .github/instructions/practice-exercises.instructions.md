@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/practice_activities/**,lib/pangea/analytics_practice/**,lib/pangea/toolbar/message_practice/**"
+applyTo: "lib/routes/chat/toolbar/practice_exercises/**,lib/routes/chat/toolbar/message_practice/**,lib/routes/analytics/construct_analytics/practice/**"
 ---
 
 # Practice Exercises
@@ -18,9 +18,9 @@ For **conversation activities**, see [activities.instructions.md](activities.ins
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
 |---|---|---|---|
-| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button → [`AnalyticsPractice(type: vocab)`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) | `lemmaMeaning`, `lemmaAudio` |
-| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPractice(type: morph)`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) | `grammarError`, `grammarCategory` |
-| **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/pangea/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
+| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` |
+| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` |
+| **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
 
 All three entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
 
@@ -130,14 +130,14 @@ Each activity type maps to specific [`ConstructUseTypeEnum`](../../lib/pangea/an
 
 ### Session Lifecycle
 
-1. [`AnalyticsPracticeSessionRepo.get(type, language)`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) builds a session:
-   - **Vocab**: fetches the user's weakest lemmas (by spaced-repetition score), splits ~50/50 between `lemmaAudio` (needs example messages with audio) and `lemmaMeaning` targets
-   - **Grammar**: fetches recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
-   - Session size: 10 exercises shown, plus a 5-item error buffer (15 targets generated — `targetsToGenerate`; constants in [`AnalyticsPracticeConstants`](../../lib/pangea/analytics_practice/analytics_practice_constants.dart)). The "~10" entry-point sessions above are this same 10 shown.
-2. [`AnalyticsPracticeState`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) manages the session UI — progress bar, timer, activity queue, hints
-3. For each target, a [`MessageActivityRequest`](../../lib/pangea/practice_activities/message_activity_request.dart) is sent to the appropriate generator
-4. The generator returns a [`PracticeActivityModel`](../../lib/pangea/practice_activities/practice_activity_model.dart) subclass with choices and answers
-5. On answer, a construct use is recorded and the session advances
+1. [`AnalyticsPracticeSessionRepo.get(type, userL1, userL2)`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart) selects the session's targets (words/constructs + exercise type), NOT their content:
+   - **Vocab**: picks the user's weakest lemmas (by spaced-repetition score) and splits ~50/50 between `lemmaAudio` and `lemmaMeaning` targets. The split is by **count**; audio candidates are picked by a cheap local check that the lemma has an example-bearing use, and the example message itself is resolved later at generation (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
+   - **Grammar**: picks recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
+   - Session size: 10 exercises shown, plus a 5-item error buffer (15 targets generated — `targetsToGenerate`; constants in [`AnalyticsPracticeConstants`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart)). The "~10" entry-point sessions above are this same 10 shown.
+2. [`PracticeSessionController`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart) owns the session and the exercise queue; the page widgets show progress bar, timer, hints.
+3. For each target, a [`MessagePracticeExerciseRequest`](../../lib/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart) is routed by [`PracticeRepo`](../../lib/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart) to the appropriate generator.
+4. The generator returns a [`PracticeExerciseModel`](../../lib/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart) subclass with choices and answers.
+5. On answer, a construct use is recorded and the session advances.
 
 ### Session Completion
 
@@ -146,9 +146,20 @@ When all targets are answered, [`CompletedActivitySessionView`](../../lib/pangea
 - Time elapsed (with bonus XP if under 60 seconds)
 - Per-item review
 
+### Loading & Generation Sequencing
+
+Standalone practice loads in two phases, and only the first sits behind the loading screen:
+
+1. **Selection** ([`AnalyticsPracticeSessionRepo.get`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart)) picks the session's targets from aggregated constructs (local analytics).
+2. **Content generation** ([`PracticeSessionController.getNextExercise`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart)) turns targets into exercises. The **first** exercise is awaited and shown; the moment it resolves, generation of **every** remaining exercise is kicked off eagerly and concurrently (`_fillExerciseQueue`), so later exercises are prefetched and waiting by the time the learner reaches them.
+
+Selection must stay cheap: it reads aggregated constructs from local analytics and does **not** resolve per-target example messages, audio, or Matrix events. Those resolve during content generation, inside the eager background queue. The goal is not to defer the work — every exercise is still prefetched — but to keep it from gating first paint: resolving example messages *during selection* blocked the first exercise on N serial event fetches, which made practice load slowly and inconsistently (#7702).
+
+A `lemmaAudio` target whose audio example can't be resolved at generation **falls back to a `lemmaMeaning` exercise for the same lemma**, so a deferred resolution failure never leaves a gap. This is a degradation path only — the audio/meaning mix is set at selection by count, so it doesn't materially shift the mix.
+
 ### Subscription Gate
 
-Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/pangea/analytics_practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
+Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
 
 ---
 
@@ -207,7 +218,8 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 ## Key Contracts
 
 - **Practice targets are deterministic per message.** For a given eventId + language + token set, the same targets are generated and cached. Don't introduce randomness that would change targets on re-render.
-- **Practice never blocks on network.** Selection happens locally from cached token data. Activity content fetches from choreo, but the UI shows shimmer placeholders, never a blocking spinner.
+- **Message practice never blocks on network.** Selection is local from cached token data; content fetches from choreo behind shimmer placeholders, never a blocking spinner.
+- **Standalone practice gates the UI only on the first exercise.** The loading screen covers target selection (local analytics reads) plus generation of the first exercise; the remaining exercises are prefetched eagerly in the background — their example-message, audio, and event resolution runs concurrently so they're ready when reached — but the UI never waits on the full set. Selection stays cheap and resolves no example messages, audio, or events (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
 - **Emoji and meaning choices persist beyond the practice session.** They become the user's personal annotation on that lemma, visible in word cards and analytics.
 - **All practice produces construct uses.** Whether from the toolbar or the standalone page, every answer is recorded as a `ConstructUseModel` that feeds into the analytics system.
 
