@@ -154,43 +154,35 @@ class SpanCardState extends State<SpanCard> {
             child: Column(
               mainAxisSize: .min,
               children: [
-                SizedBox(
-                  height: 40.0,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        tooltip: L10n.of(context).close,
-                        icon: const Icon(Icons.close),
-                        color: theme.iconTheme.color,
-                        onPressed: widget.controller.close,
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            child: Text(
-                              match.updatedMatch.match.type.displayName(
-                                context,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.titleLarge?.merge(
-                                TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: theme.colorScheme.primary,
-                                ),
-                              ),
+                Row(
+                  children: [
+                    IconButton(
+                      tooltip: L10n.of(context).close,
+                      icon: const Icon(Icons.close),
+                      color: theme.iconTheme.color,
+                      onPressed: widget.controller.close,
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          match.updatedMatch.match.type.displayName(context),
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.titleLarge?.merge(
+                            TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: theme.colorScheme.primary,
                             ),
                           ),
                         ),
                       ),
-                      IconButton(
-                        tooltip: L10n.of(context).feedbackButton,
-                        icon: const Icon(Icons.flag_outlined),
-                        color: theme.iconTheme.color,
-                        onPressed: _showFeedbackDialog,
-                      ),
-                    ],
-                  ),
+                    ),
+                    IconButton(
+                      tooltip: L10n.of(context).feedbackButton,
+                      icon: const Icon(Icons.flag_outlined),
+                      color: theme.iconTheme.color,
+                      onPressed: _showFeedbackDialog,
+                    ),
+                  ],
                 ),
                 Expanded(
                   child: AnimatedSwitcher(
