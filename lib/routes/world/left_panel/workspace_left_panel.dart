@@ -83,12 +83,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
         shareItems: shareItems,
         closeButton: closeButton,
       ),
-      AddCoursePanelToken() => Column(
-        children: [
-          PanelHeader(leading: closeButton, title: L10n.of(context).courses),
-          Expanded(child: LeftPanelCoursesListView()),
-        ],
-      ),
+      AddCoursePanelToken() => CoursesHubPanel(closeButton: closeButton),
       AddCoursePagePanelToken(param: final param) => LeftPanelAddCourseSubpage(
         param: param,
         closeButton: closeButton,

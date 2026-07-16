@@ -8,13 +8,25 @@ Future<int?> showPermissionChooser(
   BuildContext context, {
   int currentLevel = 0,
   int maxLevel = 100,
+  // #Pangea
+  bool isCourse = false,
+  // Pangea#
 }) async {
   final controller = TextEditingController();
   final error = ValueNotifier<String?>(null);
   return await showAdaptiveDialog<int>(
     context: context,
     builder: (context) => AlertDialog.adaptive(
-      title: Center(child: Text(L10n.of(context).chatPermissions)),
+      title: Center(
+        child: Text(
+          // #Pangea
+          // L10n.of(context).chatPermissions,
+          isCourse
+              ? L10n.of(context).coursePermissions
+              : L10n.of(context).chatPermissions,
+          // Pangea#
+        ),
+      ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
         child: Column(

@@ -92,7 +92,12 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
       );
     }
 
-    final searching = widget.query.trim().isNotEmpty;
+    // Drive the clear (X) button off the field's own controller, not the
+    // externally-owned query. This single-column bar is built by the shell, but
+    // its onQueryChanged reaches only the map's State (through a GlobalKey), so
+    // a clear — or any programmatic query change — never rebuilds this bar with
+    // a fresh widget.query. Reading the controller keeps it in sync. See #7685.
+    final searching = _controller.text.trim().isNotEmpty;
     return Semantics(
       label: widget.hintText,
       container: true,
@@ -110,7 +115,12 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
             color: theme.colorScheme.surface,
             child: TextField(
               controller: _controller,
-              onChanged: widget.onQueryChanged,
+              onChanged: (value) {
+                widget.onQueryChanged(value);
+                // Rebuild so [searching] tracks the field as the user types and
+                // backspaces — the shell doesn't rebuild this bar per keystroke.
+                setState(() {});
+              },
               decoration: InputDecoration(
                 isDense: true,
                 filled: true,
@@ -121,7 +131,14 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
                     ? IconButton(
                         icon: const Icon(Icons.close),
                         tooltip: l10n.clearSearch,
-                        onPressed: () => widget.onQueryChanged(''),
+                        onPressed: () {
+                          // Clear the field locally too: onQueryChanged only
+                          // reaches the map's State, which won't rebuild this
+                          // shell-built bar to sync the emptied query back in.
+                          _controller.clear();
+                          widget.onQueryChanged('');
+                          setState(() {});
+                        },
                       )
                     : null,
                 border: OutlineInputBorder(

@@ -833,6 +833,8 @@
     },
     "chatPermissions": "Chat permissions",
     "@chatPermissions": {},
+    "coursePermissions": "Course permissions",
+    "@coursePermissions": {},
     "editDisplayname": "Edit displayname",
     "@editDisplayname": {
         "type": "String",
