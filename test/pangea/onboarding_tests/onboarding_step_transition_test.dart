@@ -190,4 +190,31 @@ void main() async {
   test("Test backward navigation through teacher without course code", () {
     testBackwardNavigationWithoutCode(teacherWithoutCode, UserType.teacher);
   });
+
+  test("Switching role clears a stale CEFR selection (#7583)", () {
+    final state = getInitialOnboardingStep(client).state;
+
+    // Pick a CEFR level as a teacher.
+    state.setUserType(UserType.teacher);
+    state.setLanguageLevel(LanguageLevelTypeEnum.a1);
+    expect(state.languageLevel, LanguageLevelTypeEnum.a1);
+
+    // Switching to learner must NOT carry the teacher's level over — otherwise
+    // the learner CEFR page shows nothing selected while Next stays enabled.
+    state.setUserType(UserType.student);
+    expect(state.languageLevel, isNull);
+
+    final levelStep = PickCefrLevelOnboardingStep(
+      client: client,
+      state: state,
+      maxRemainingSteps: 0,
+    );
+    expect(levelStep.enableGoForward, isFalse);
+
+    // Re-tapping the same role keeps a real selection.
+    state.setLanguageLevel(LanguageLevelTypeEnum.b1);
+    state.setUserType(UserType.student);
+    expect(state.languageLevel, LanguageLevelTypeEnum.b1);
+    expect(levelStep.enableGoForward, isTrue);
+  });
 }
