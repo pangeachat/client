@@ -63,11 +63,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Csatlakozhatnak-e vendégek",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "areYouSure": "Biztos benne?",
     "@areYouSure": {
         "type": "String",
@@ -333,11 +328,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "Kapcsolat meghívásra került a csoportba",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "copiedToClipboard": "Vágólapra másolva",
     "@copiedToClipboard": {
         "type": "String",
@@ -482,11 +472,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "Többé nem fogja tudni kikapcsolni a titkosítást. Biztos benne?",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encryption": "Titkosítás",
     "@encryption": {
         "type": "String",
@@ -533,11 +518,6 @@
     },
     "group": "Csoport",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "A csoport nyilvános",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -606,15 +586,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "Ismerős meghívása a(z) {groupName} csoportba",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "Meghívott",
     "@invited": {
@@ -722,15 +693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "További {count} résztvevő betöltése",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "Betöltés… Kérem, várjon.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -745,15 +707,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "Bejelentkezés a(z) {homeserver} Matrix-kiszolgálóra",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "Kijelentkezés",
     "@logout": {
@@ -797,11 +750,6 @@
     },
     "noEmotesFound": "Nem találhatóak hangulatjelek. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "Úgy tűnik a Firebase Cloud Messaging nem elérhető a készülékén. Ha mégis push értesítéseket kíván kapni, javasoljuk a ntfy telepítését. A ntfy vagy más egyéb Egyesített Push szolgáltató esetében úgy kaphat értesítést, hogy adatai biztonságban maradnak. Letöltheti a ntfy-t a PlayStore-ból, vagy F-Droid-ról is.",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -955,11 +903,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "Eszköz eltávolítása",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "Csevegés kitiltás feloldása",
     "@unbanFromChat": {
@@ -1195,15 +1138,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "unreadChats": "{unreadCount, plural, =1{1 olvasatlan csevegés} other{{unreadCount} olvasatlan csevegés}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
-    },
     "userAndOthersAreTyping": "{username} és {count} másik résztvevő gépel…",
     "@userAndOthersAreTyping": {
         "type": "String",
@@ -1283,16 +1217,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Videóhívás",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Csevegési előzmény láthatósága",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "Minden résztvevő számára látható",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1333,11 +1257,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoIsAllowedToJoinThisGroup": "Ki csatlakozhat a csoporthoz",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "writeAMessage": "Írjon egy üzenetet…",
     "@writeAMessage": {
         "type": "String",
@@ -1370,11 +1289,6 @@
     },
     "weSentYouAnEmail": "Küldtünk Önnek egy emailt",
     "@weSentYouAnEmail": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "Jelszó visszaállítás",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1540,11 +1454,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "Minden kész!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "groups": "Csoportok",
     "@groups": {
         "type": "String",
@@ -1614,20 +1523,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "A csevegés biztonsági mentés beállításra került.",
-    "@yourChatBackupHasBeenSetUp": {},
-    "chatBackupDescription": "A régebbi beszélgetései egy biztonsági kulccsal vannak védve. Bizonyosodjon meg róla, hogy nem veszíti el.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noConnectionToTheServer": "Nem elérhető a szerver",
     "@noConnectionToTheServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "Csak akkor kapcsolható be a titkosítás, ha a szoba nem nyilvánosan hozzáférhető.",
-    "@noEncryptionForPublicRooms": {
         "type": "String",
         "placeholders": {}
     },
@@ -1694,11 +1591,6 @@
     },
     "configureChat": "Csevegés konfigurálása",
     "@configureChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "createNewSpace": "Új tér",
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1816,8 +1708,6 @@
     },
     "commandHint_markasgroup": "Jelölés csoportnak",
     "@commandHint_markasgroup": {},
-    "addAccount": "Fiók hozzáadása",
-    "@addAccount": {},
     "search": "Keresés",
     "@search": {
         "type": "String",
@@ -1929,11 +1819,6 @@
     "@dismiss": {},
     "reportErrorDescription": "😭 Sajnos, valami félresiklott. Ha kívánja, jelezheti a bugot a fejlesztőknek.",
     "@reportErrorDescription": {},
-    "setPermissionsLevel": "Engedélyszint beállítása",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "removeYourAvatar": "Profilképének törlése",
     "@removeYourAvatar": {
         "type": "String",
@@ -2006,34 +1891,17 @@
     "@messagesStyle": {},
     "widgetUrlError": "Helytelen hivatkozás.",
     "@widgetUrlError": {},
-    "emailOrUsername": "Email vagy felhasználónév",
-    "@emailOrUsername": {},
-    "newSpaceDescription": "A terek lehetővé teszik a csevegések konszolidációját, ezáltal létrehozva publikus vagy privát közösségeket.",
-    "@newSpaceDescription": {},
-    "chatDescription": "Csevegés leírás",
-    "@chatDescription": {},
     "pleaseFollowInstructionsOnWeb": "Kérem, kövesse az instrukciókat az oldalon, és nyomjon a tovább gombra.",
     "@pleaseFollowInstructionsOnWeb": {
         "type": "String",
         "placeholders": {}
     },
-    "enterSpace": "Belépés a térre",
-    "@enterSpace": {},
-    "encryptThisChat": "A csevegés titkosítása",
-    "@encryptThisChat": {},
     "reopenChat": "Csevegés újranyitása",
     "@reopenChat": {},
-    "pleaseEnterRecoveryKey": "Kérem, adja meg a visszaállító kódját:",
-    "@pleaseEnterRecoveryKey": {},
     "widgetNameError": "Kérem adjon meg egy megjelenítendő nevet.",
     "@widgetNameError": {},
     "addToBundle": "Hozzáadás fiókcsoporthoz",
     "@addToBundle": {},
-    "spaceIsPublic": "A tér publikus",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "addWidget": "Widget hozzáadása",
     "@addWidget": {},
     "countFiles": "{count} fájl",
@@ -2053,8 +1921,6 @@
     },
     "pushNotificationsNotAvailable": "Push értesítések nem elérhetőek",
     "@pushNotificationsNotAvailable": {},
-    "storeInAppleKeyChain": "Tárolás az Apple KeyChain-be",
-    "@storeInAppleKeyChain": {},
     "replaceRoomWithNewerVersion": "Szoba cserélése egy újabb verzióra",
     "@replaceRoomWithNewerVersion": {
         "type": "String",
@@ -2064,24 +1930,12 @@
     "@invalidServerName": {},
     "chatPermissions": "Csevegés engedélyek",
     "@chatPermissions": {},
-    "wipeChatBackup": "Le kívánja törölni a chat mentését, hogy létrehozhasson egy új visszaállítási kulcsot?",
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "sender": "Küldő",
     "@sender": {},
-    "storeInAndroidKeystore": "Tárolás az Android KeyStore-ba",
-    "@storeInAndroidKeystore": {},
     "makeAdminDescription": "Miután a felhasználót aminisztrátorrá lépteti elő, nem fogja tudni visszavonni döntését, mivel azonos jogosultsági szinttel fognak rendelkezni.",
     "@makeAdminDescription": {},
     "synchronizingPleaseWait": "Szinkronizálás... Kérem, várjon.",
     "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "transferFromAnotherDevice": "Átvitel másik eszközről",
-    "@transferFromAnotherDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -2090,19 +1944,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "saveKeyManuallyDescription": "A kulcs manuális mentése rendszer megosztás vagy vágólap másolás segítségével.",
-    "@saveKeyManuallyDescription": {},
     "editBundlesForAccount": "Fiókcsoportok szerkesztése ehhez a fiókhoz",
     "@editBundlesForAccount": {},
     "whyIsThisMessageEncrypted": "Miért olvashatatlan ez az üzenet?",
     "@whyIsThisMessageEncrypted": {},
     "setChatDescription": "Csevegés leírás beállítása",
     "@setChatDescription": {},
-    "spaceName": "Tér név",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "importFromZipFile": "Importálás zip fájlból",
     "@importFromZipFile": {},
     "noOtherDevicesFound": "Nem található más eszköz",
@@ -2116,8 +1963,6 @@
             }
         }
     },
-    "videoCallsBetaWarning": "Kérem vegye figyelembe, hogy a videó hívások jelenleg béta fázisban vannak. Nem biztos, hogy megfelelően fognak működni, vagy egyáltalán elindulnak egyes platformokon.",
-    "@videoCallsBetaWarning": {},
     "fileIsTooBigForServer": "Nem küldhető el! A szerver csak {max} határig enged csatolmányokat.",
     "@fileIsTooBigForServer": {},
     "verified": "Hitelesített",
@@ -2129,8 +1974,6 @@
     "@readUpToHere": {},
     "start": "Kezdés",
     "@start": {},
-    "unlockOldMessages": "Régi üzenetek feloldása",
-    "@unlockOldMessages": {},
     "optionalRedactReason": "(Választható) A szerkesztés oka...",
     "@optionalRedactReason": {},
     "sendAsText": "Küldés szövegként",
@@ -2153,8 +1996,6 @@
     },
     "experimentalVideoCalls": "Kísérleti videó hívások",
     "@experimentalVideoCalls": {},
-    "pleaseEnterRecoveryKeyDescription": "A régi üzenetei feloldásához adja meg a korábban generált visszaállítási jelszavát. A visszaállítási jelszó NEM EGYEZIK MEG a jelszóval.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "redactedByBecause": "{username} által szerkesztve, mivel: \"{reason}\"",
     "@redactedByBecause": {
         "type": "String",
@@ -2203,8 +2044,6 @@
     },
     "redactMessageDescription": "A társalgásban összes résztvevője számára módosításra kerül az üzenet. Ez nem visszavonható.",
     "@redactMessageDescription": {},
-    "recoveryKey": "Visszaállító kulcs",
-    "@recoveryKey": {},
     "invalidInput": "Hibás bevitel!",
     "@invalidInput": {},
     "yourPublicKey": "A publikus kulcsa",
@@ -2230,8 +2069,6 @@
     "@unverified": {},
     "serverRequiresEmail": "Ehhez a szerverhez szükséges az email címének visszaigazolása.",
     "@serverRequiresEmail": {},
-    "screenSharingTitle": "képernyő megosztás",
-    "@screenSharingTitle": {},
     "widgetCustom": "Egyedi",
     "@widgetCustom": {},
     "youBannedUser": "Letitotta {user} felhasználót",
@@ -2256,8 +2093,6 @@
     "@openLinkInBrowser": {},
     "messageInfo": "Üzenet információ",
     "@messageInfo": {},
-    "disableEncryptionWarning": "Biztonsági okokból nem kapcsolható ki egy korábban bekapcsolt csevegés titkosítás.",
-    "@disableEncryptionWarning": {},
     "directChat": "Privát csevegés",
     "@directChat": {},
     "wrongPinEntered": "Hibás pinkódot adott meg! Próbálja újra {seconds} mp múlva...",
@@ -2273,10 +2108,6 @@
     "@sendTypingNotifications": {},
     "inviteGroupChat": "📨 Meghívó a csoportba",
     "@inviteGroupChat": {},
-    "foregroundServiceRunning": "Ez az értesítés akkor jelenik meg ha az előtéri szolgáltatás fut.",
-    "@foregroundServiceRunning": {},
-    "voiceCall": "Hang hívás",
-    "@voiceCall": {},
     "importEmojis": "Emojik importálása",
     "@importEmojis": {},
     "wasDirectChatDisplayName": "Üres csevegés (korábban {oldDisplayName})",
@@ -2292,11 +2123,6 @@
     "@noChatDescriptionYet": {},
     "removeFromBundle": "Eltávolítás a fiókcsoportból",
     "@removeFromBundle": {},
-    "whoCanPerformWhichAction": "Ki milyen műveletet végezhet",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learnMore": "Tudjon meg többet",
     "@learnMore": {},
     "users": "Felhasználók",
@@ -2309,8 +2135,6 @@
     "@newGroup": {},
     "bundleName": "Fiókcsoport neve",
     "@bundleName": {},
-    "removeFromSpace": "Eltávolítás a térről",
-    "@removeFromSpace": {},
     "roomUpgradeDescription": "A csevegés újra elkészül az új szoba verzióval. Minden résztvevő értesítést kap, hogy át kell állniuk az új csevegésre. További információkért a szoba verziókról látogasson el a https://spec.matrix.org/latest/rooms/ címre",
     "@roomUpgradeDescription": {},
     "pleaseEnterANumber": "Adjon meg egy 0-nál nagyobb számot",
@@ -2337,14 +2161,10 @@
             }
         }
     },
-    "sorryThatsNotPossible": "Ez sajnos nem lehetséges",
-    "@sorryThatsNotPossible": {},
     "shareInviteLink": "Meghívó link megosztása",
     "@shareInviteLink": {},
     "commandHint_markasdm": "Szoba megjelölése mint közvetlen csevegő szoba az adott Matrix ID-nél",
     "@commandHint_markasdm": {},
-    "recoveryKeyLost": "Elveszett visszaállító kulcs?",
-    "@recoveryKeyLost": {},
     "deviceKeys": "Eszköz kulcsok:",
     "@deviceKeys": {},
     "emoteKeyboardNoRecents": "A nemrég használt hangulatjelek fognak itt megjelenni...",
@@ -2352,8 +2172,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setTheme": "Téma beállítása:",
-    "@setTheme": {},
     "youJoinedTheChat": "Becsatlakozott a csevegésbe",
     "@youJoinedTheChat": {},
     "markAsRead": "Olvasottként megjelölés",
@@ -2384,8 +2202,6 @@
     "@custom": {},
     "noBackupWarning": "Figyelem! Ha nem kapcsolja be a csevegés mentést, elveszíti a hozzáférést a tikosított üzeneteihez. Erősen ajánlott a csevegés mentés bekapcsolása kijelentkezés előtt.",
     "@noBackupWarning": {},
-    "storeInSecureStorageDescription": "Tárolja a visszaállítási kulcsot az eszköz biztonsági tárjában.",
-    "@storeInSecureStorageDescription": {},
     "openChat": "Csevegés megnyitása",
     "@openChat": {},
     "kickUserDescription": "A felhasználó kirúgásra került a csevegésből, de nincs kitiltva. Publikus csevegés esetén a felhasználó bármikor visszatérhet.",
@@ -2396,14 +2212,8 @@
     "@pinMessage": {},
     "invite": "Meghívás",
     "@invite": {},
-    "enableMultiAccounts": "(BÉTA) Több fiók bekapcsolása az eszközön",
-    "@enableMultiAccounts": {},
     "unsupportedAndroidVersionLong": "Ehhez a funkcióhoz egy újabb Android verzió kell. Kérem ellenőrizze be van e frissítve teljesen készüléke, esetlegesen van e LineageOS támogatás hozzá.",
     "@unsupportedAndroidVersionLong": {},
-    "storeSecurlyOnThisDevice": "Biztonságos tárolás az eszközön",
-    "@storeSecurlyOnThisDevice": {},
-    "screenSharingDetail": "Megosztja a képernyőjét a FluffyChat-ben",
-    "@screenSharingDetail": {},
     "placeCall": "Tér hívás",
     "@placeCall": {},
     "block": "Blokkolás",
@@ -2455,8 +2265,6 @@
     "@pleaseEnterYourCurrentPassword": {},
     "newPassword": "Új jelszó",
     "@newPassword": {},
-    "addChatOrSubSpace": "Csevegés vagy al-tér hozzáadása",
-    "@addChatOrSubSpace": {},
     "pleaseChooseAStrongPassword": "Kérem válasszon egy erős jelszót",
     "@pleaseChooseAStrongPassword": {},
     "passwordsDoNotMatch": "A jelszavak nem egyeznek",
@@ -2477,38 +2285,10 @@
     "@formattedMessages": {},
     "formattedMessagesDescription": "Formázott szöveg - mint például félkövér - megjelenítése \"markdown\"-al.",
     "@formattedMessagesDescription": {},
-    "verifyOtherUser": "🔐 Más felhasználó igazolása",
-    "@verifyOtherUser": {},
     "verifyOtherDevice": "🔐 Más eszköz hitelesítése",
     "@verifyOtherDevice": {},
-    "sessionLostBody": "A munkamenete elvesződött. Kérem jelentse ezt a fejlesztőknek a {url} címen. A hiba szövege a következő: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "restoreSessionBody": "Megpróbálkozunk visszaállítani a munkamenetét egy korábbi mentésből. Kérem jelezze a hibát a fejlesztőknek a {url} címen. A hiba szövege a következő: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "hidePresences": "El kívánja rejteni a státusz listát?",
     "@hidePresences": {},
-    "searchChatsRooms": "Keressen #csevegéseket, @felhasználókat...",
-    "@searchChatsRooms": {},
     "wrongRecoveryKey": "Sajnos, úgy tűnik hibásan adta meg a visszaállítási kulcsot.",
     "@wrongRecoveryKey": {},
     "startConversation": "Társalgás kezdése",
@@ -2578,35 +2358,14 @@
     "@discover": {},
     "groupName": "Csoport név",
     "@groupName": {},
-    "createGroupAndInviteUsers": "Hozzon létre egy csoportot és hívjon meg felhasználókat",
-    "@createGroupAndInviteUsers": {},
-    "groupCanBeFoundViaSearch": "A csoportokat kereséssel találhatja meg",
-    "@groupCanBeFoundViaSearch": {},
-    "verifyOtherUserDescription": "Ha megerősít egy másik felhasználót, akkor teljesen biztos lehet abban kivel cseveg. 💪\n\nA megerősítési folyamat kezdetekor megjelenik egy felugró ablak mindkettőjüknél. Ekkor egy hangulatjel vagy szám sor összehasonlítási folyamat veszi kezdetét.\n\nA legpraktikusabb módja ennek, hogy találkozzanak, vagy videó hívás során beszéljék meg. 👭",
-    "@verifyOtherUserDescription": {},
     "verifyOtherDeviceDescription": "Amikor egy másik eszközt hitelesít, az eszközök kulcsokat cserélnek egymás között, ezáltal növelve az összbiztonságot. 💪 Amikor megkezdődik a folyamat, mind a két eszközön megjelenik egy felugró üzenet. Hangulatjelek és számok sorozata fog megjelenni, amit össze tud hasonlítani a két eszközön. Érdemes tehát mind a két eszközt a közelben tartani. 🤳",
     "@verifyOtherDeviceDescription": {},
-    "accessAndVisibility": "Hozzáférés és láthatóság",
-    "@accessAndVisibility": {},
-    "accessAndVisibilityDescription": "Ki számára engedélyezett a csevegéshez való csatlakozás, és hogyan találhatja azt meg.",
-    "@accessAndVisibilityDescription": {},
     "calls": "Hívások",
     "@calls": {},
     "hideInvalidOrUnknownMessageFormats": "Érvénytelen vagy ismeretlen üzenetformátum elrejtése",
     "@hideInvalidOrUnknownMessageFormats": {},
     "passwordRecoverySettings": "Jelszó-helyreállítási beállítások",
     "@passwordRecoverySettings": {},
-    "noOneCanJoin": "Senki sem csatlakozhat",
-    "@noOneCanJoin": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "Csevegés felfedezhető a {server} szerveren történő kereséssel",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "appLockDescription": "Applikáció zárolása PIN kóddal használaton kívül",
     "@appLockDescription": {},
     "customEmojisAndStickers": "Egyedi hangulatjelek és matricák",
@@ -2615,10 +2374,6 @@
     "@customEmojisAndStickersBody": {},
     "overview": "Áttekintés",
     "@overview": {},
-    "publicChatAddresses": "Nyilvános csevegés címek",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Új cím létrehozása",
-    "@createNewAddress": {},
     "noDatabaseEncryption": "Adatbázis titkosítás nem támogatott ezen a platformon",
     "@noDatabaseEncryption": {},
     "thereAreCountUsersBlocked": "Jelenleg {count} felhasználó van letiltva.",
@@ -2655,16 +2410,12 @@
     "@restricted": {},
     "knockRestricted": "Kopogás korlátozva",
     "@knockRestricted": {},
-    "globalChatId": "Átfogó csevegő ID",
-    "@globalChatId": {},
     "hideRedactedMessages": "Szerkesztett üzenetek elrejtése",
     "@hideRedactedMessages": {},
     "hideRedactedMessagesBody": "Ha valaki szerkeszti az üzenetét, ez az üzenet nem jelenik meg a csevegés során.",
     "@hideRedactedMessagesBody": {},
     "knocking": "Bekopogás",
     "@knocking": {},
-    "usersMustKnock": "A felhasználóknak be kell kopogniuk",
-    "@usersMustKnock": {},
     "knock": "Kopogás",
     "@knock": {},
     "searchMore": "További keresés...",
@@ -2724,10 +2475,6 @@
     "@changeTheCanonicalRoomAlias": {},
     "chatPermissionsDescription": "Adja meg milyen erősségi szint kell egyes csevegési művelethez. A 0, 50 és 100-as szintek általában felhasználókat, moderátorokat és adminisztrátorokat jelölnek de bármilyen szintezés lehetséges.",
     "@chatPermissionsDescription": {},
-    "whatIsAHomeserver": "Mi az a Matrix-kiszolgáló?",
-    "@whatIsAHomeserver": {},
-    "homeserverDescription": "Az összes adata a Mátrix-kiszolgálón tárolódik, pont mint egy e-mail kiszolgálón. Kiválaszthatja melyik Matrix-kiszolgálót akarja használni, miközben tud kommunikálni mindenkivel. Tudjon meg többet a https://matrix.org címen.",
-    "@homeserverDescription": {},
     "userLevel": "{level} - Felhasználó",
     "@userLevel": {
         "type": "String",
@@ -2762,10 +2509,6 @@
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
     },
-    "loginWithMatrixId": "Bejelentkezés Matrix-ID-vel",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "Matrix-kiszolgálók felfedezése",
-    "@discoverHomeservers": {},
     "doesNotSeemToBeAValidHomeserver": "Nem tűnik kompatibilisnek a Mátrix-kiszolgálónak. Hibás a hivatkozás?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "noMoreChatsFound": "Nem található több csevegés...",
@@ -2774,15 +2517,6 @@
     "@joinedChats": {},
     "checkList": "Tennivalók listája",
     "@checkList": {},
-    "countInvited": "{count} meghívott",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "sendImages": "{count} kép küldése",
     "@sendImages": {
         "type": "String",
@@ -2902,23 +2636,10 @@
     "@italicText": {},
     "strikeThrough": "Áthúzott",
     "@strikeThrough": {},
-    "appWantsToUseForLogin": "Használja a '{server}' szervert a bejelentkezéshez",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "otherPartyNotLoggedIn": "A másik fél jelenleg nincs bejelentkezve, emiatt nem fogadhat üzeneteket!",
     "@otherPartyNotLoggedIn": {},
-    "appWantsToUseForLoginDescription": "Ezennel engedélyezi az applikáció és weboldal számára, hogy információkat gyűjtsön Önről.",
-    "@appWantsToUseForLoginDescription": {},
     "waitingForServer": "Várakozás a szerverre...",
     "@waitingForServer": {},
-    "appIntroduction": "A FluffyChat segítségével cseveghet barátaival, akár más üzenetküldő alkalmazásokon keresztül is. Tudjon meg erről többet a https://matrix.org oldalon, vagy nyomjon a \"Folytatás\" gombra.",
-    "@appIntroduction": {},
     "open": "Megnyitás",
     "@open": {},
     "notificationRuleSuppressNotices": "Minden automata üzenetet némít",
@@ -2993,8 +2714,6 @@
     },
     "deletePushRuleCanNotBeUndone": "Ha törli ezt az értesítési beállítást, később nem vonható vissza.",
     "@deletePushRuleCanNotBeUndone": {},
-    "manageAccount": "Fiók kezelése",
-    "@manageAccount": {},
     "enterNewChat": "Belépés új csevegésbe",
     "@enterNewChat": {},
     "blur": "Homályosít:",
@@ -3005,8 +2724,6 @@
     "@continueText": {},
     "opacity": "Átlátszóság:",
     "@opacity": {},
-    "welcomeText": "Üdv 👋 Ez a FluffyChat. Bejelentkezhet bármely matrix-kiszolgálóhoz amely kompatibilis a https://matrix.org címmel. Ezután cseveghet bárkivel. Így képez egy óriási decentralizált üzenetküldő hálózatot!",
-    "@welcomeText": {},
     "addLink": "Hivatkozás hozzáadása",
     "@addLink": {},
     "invalidUrl": "Helytelen hivatkozás",
@@ -3075,11 +2792,9 @@
     "taTooltip": "L2 használata fordítási segítséggel",
     "interactiveTranslatorSliderHeader": "Interaktív Fordító",
     "interactiveGrammarSliderHeader": "Interaktív Nyelvtani Ellenőrző",
-    "interactiveTranslatorRequired": "Kötelező",
     "waTooltip": "L2 segítség nélkül",
     "interactiveTranslator": "Fordítási segítség",
     "noIdenticalLanguages": "Kérjük, válasszon különböző alap- és célnyelvet",
-    "searchBy": "Keresés ország és nyelv szerint",
     "joinWithClassCode": "Csatlakozás kurzushoz",
     "languageLevelPreA1": "Novice Low (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -3100,19 +2815,14 @@
     "saveChanges": "Módosítások mentése",
     "publicProfileTitle": "Engedélyezem, hogy profilomat keresésben megtalálják",
     "publicProfileDesc": "Bekapcsolásával lehetővé teszed más felhasználók számára, hogy megtalálják profilodat a globális keresősávban, és kérjenek csevegést. Ekkor dönthetsz arról, hogy elfogadod vagy elutasítod a kérést.",
-    "errorDisableIT": "A Fordítási segítség kikapcsolva van.",
-    "errorDisableIGC": "A Nyelvtani segítség kikapcsolva van.",
     "errorDisableITUserDesc": "Kattints ide a fordítási segítség beállításainak frissítéséhez",
     "errorDisableIGCUserDesc": "Kattints ide a nyelvtani segítség beállításainak frissítéséhez",
     "errorDisableITClassDesc": "A fordítási segítség kikapcsolva van az adott kurzushoz tartozó csevegésben.",
     "errorDisableIGCClassDesc": "A nyelvtani segítség kikapcsolva van az adott kurzushoz tartozó csevegésben.",
-    "error405Title": "Nyelvek nincsenek beállítva",
     "error405Desc": "Kérjük, állítsa be nyelveit a Főmenü > Tanulási Beállítások menüpontban.",
     "termsAndConditions": "Felhasználási feltételeket",
     "andCertifyIAmAtLeast13YearsOfAge": " és igazolom, hogy legalább 16 éves vagyok.",
-    "error502504Title": "Hűha, sok diák van online!",
     "error502504Desc": "A fordítási és nyelvtani eszközök lehetnek lassúak vagy nem elérhetők, amíg a Pangea botok utolérik magukat.",
-    "error404Title": "Fordítási hiba!",
     "error404Desc": "A Pangea Bot nem biztos benne, hogyan fordítsa ezt...",
     "errorPleaseRefresh": "Ellenőrizzük a problémát! Kérjük, frissítse az oldalt és próbálja újra.",
     "connectedToStaging": "Csatlakozva a Staginghez",
@@ -3150,13 +2860,9 @@
     "definitionsToolName": "Szódefiníciók",
     "definitionsToolDescription": "Amikor be van kapcsolva, a kék színnel aláhúzott szavakat kattintással lehet megtekinteni definícióikat. Kattints az üzenetekre a definíciók eléréséhez.",
     "welcomeBack": "Üdvözlünk vissza! Ha részt vettél a 2023-2024-es pilot programban, kérjük, vedd fel velünk a kapcsolatot a különleges pilot előfizetésedért. Ha te vagy az oktató, aki (vagy az intézményed) vásárolt licencet az osztályod számára, kérjük, vedd fel velünk a kapcsolatot az oktatói előfizetésedért.",
-    "downloadTxtFile": "Szövegfájl letöltése",
-    "downloadCSVFile": "CSV fájl letöltése",
     "promotionalSubscriptionDesc": "Jelenleg életre szóló promóciós előfizetésed van. Segítségért írj az support@pangea.chat címre az előfizetés módosításához.",
     "originalSubscriptionPlatform": "Előfizetés a {purchasePlatform} platformon vásárolva",
     "oneWeekTrial": "Egynapos próbaverzió",
-    "downloadXLSXFile": "Excel fájl letöltése",
-    "unkDisplayName": "Ismeretlen",
     "wwCountryDisplayName": "Világszerte",
     "afCountryDisplayName": "Afganisztán",
     "axCountryDisplayName": "Aland-szigetek",
@@ -3451,7 +3157,6 @@
     "chatCapacityHasBeenChanged": "A csevegési kapacitás megváltozott",
     "chatCapacitySetTooLow": "A csevegési kapacitásnak legalább {count} kell legyen.",
     "chatCapacityExplanation": "A csevegési kapacitás korlátozza a csevegésben részt vevő tagok számát.",
-    "tooManyRequest": "Túl sok kérés, kérjük, próbálja meg később.",
     "enterNumber": "Kérjük, írjon be egy egész szám értéket.",
     "practice": "Gyakorlat",
     "versionNotFound": "Verzió nem található",
@@ -3461,7 +3166,6 @@
     "deleteSubscriptionWarningTitle": "Aktív előfizetésed van",
     "deleteSubscriptionWarningBody": "Fiókod törlése nem törli automatikusan az előfizetésedet.",
     "manageSubscription": "Előfizetés kezelése",
-    "error520Title": "Kérjük, próbáld újra.",
     "error520Desc": "Sajnáljuk, nem értettük üzenetedet...",
     "wordsUsed": "Használt szavak",
     "level": "Szint",
@@ -3479,7 +3183,6 @@
     "other": "Egyéb",
     "levelShort": "SZINT {level}",
     "noCapacityLimit": "Nincs kapacitáskorlát",
-    "downloadGroupText": "Csoport szöveg letöltése",
     "notificationsOn": "Értesítések be",
     "notificationsOff": "Értesítések ki",
     "joinWithCode": "Csatlakozás kóddal",
@@ -3543,24 +3246,12 @@
     "whatIsTheMorphTag": "Mi a {morphologicalFeature} '{wordForm}' esetében?",
     "dataAvailable": "Adat elérhetőség",
     "available": "Elérhető",
-    "pangeaBotIsFallible": "A Pangea Bot is hibázik!",
-    "whatIsMeaning": "Mit jelent '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Egyeztesd a jelentéseket a szavakkal az üzenetben!",
-    "doubleClickToEdit": "Dupla kattintással szerkesztheted.",
-    "topicLabel": "Téma",
-    "topicPlaceholder": "Válassz egy témát...",
-    "modePlaceholder": "Válassz egy módot...",
-    "learningObjectiveLabel": "Tanulási cél",
-    "learningObjectivePlaceholder": "Válassz egy tanulási célt...",
-    "targetLanguageLabel": "Cél nyelv",
     "cefrLevelLabel": "CEFR szint",
     "image": "Kép",
     "video": "Videó",
     "nan": "Nem alkalmazható",
-    "addVocabulary": "Szókincs hozzáadása",
     "instructions": "Utasítások",
-    "numberOfLearners": "Tanulók száma",
-    "mustBeInteger": "Egész szám kell legyen, pl. 1, 2, 3, ...",
     "constructUsePvmDesc": "Hangüzenetben készült",
     "leaveSpaceDescription": "Ha elhagyod a kurzust, minden benne lévő csevegést elhagyasz. A többi felhasználó látni fogja, hogy elhagytad a kurzust.",
     "constructUseCorMmDesc": "Helyes üzenet jelentése",
@@ -3575,7 +3266,6 @@
     "ttsDisabledBody": "A szöveg-beszéd funkciót engedélyezheti a tanulási beállításokban",
     "noSpaceDescriptionYet": "Még nincs létrehozva kurzusleírás.",
     "tooLargeToSend": "Ez az üzenet túl nagy ahhoz, hogy elküldje",
-    "exitWithoutSaving": "Biztosan el akarja hagyni mentés nélkül?",
     "enableAutocorrectPopupTitle": "Adja hozzá a célnyelvi billentyűzetet a következő lépésekkel:",
     "enableAutocorrectPopupSteps": "  • Beállítások\n  • Általános\n  • Billentyűzet\n  • Billentyűzetek\n  • Új billentyűzet hozzáadása",
     "enableAutocorrectPopupDescription": "Miután kiválasztotta a nyelvet, kattintson a billentyűzet bal alsó sarkában lévő kis földgömb ikonra az újonnan telepített billentyűzet aktiválásához.",
@@ -3586,11 +3276,8 @@
     "displayName": "Megjelenítendő név",
     "leaveRoomDescription": "El fogja hagyni ezt a csevegést. A többi felhasználó látni fogja, hogy elhagyta a csevegést.",
     "confirmUserId": "Kérjük, erősítse meg Pangea Chat felhasználónevét a fiók törléséhez.",
-    "startingToday": "Ma kezdődik",
-    "oneWeekFreeTrial": "Egy hét ingyenes próbaidőszak",
     "paidSubscriptionStarts": "Kezdete {startDate}",
     "cancelInSubscriptionSettings": "• Lemondás bármikor az előfizetési beállításokban",
-    "cancelToAvoidCharges": "• Lemondás {trialEnds} előtt a díjak elkerülése érdekében",
     "downloadGboard": "Gboard letöltése",
     "autocorrectNotAvailable": "Sajnáljuk, jelenleg nem támogatott ez a funkció a platformján. Maradjon velünk a további fejlesztésekért!",
     "pleaseUpdateApp": "Kérjük, frissítse az alkalmazást a folytatáshoz.",
@@ -3600,17 +3287,12 @@
     "knockSpaceSuccess": "Kérte, hogy csatlakozzon ehhez a kurzushoz! Egy admin válaszol a kérésére, amint megkapja azt 😊",
     "chooseWordAudioInstructionsBody": "Hallgassa meg az üzenet teljes változatát. Ezután párosítsa az audiókat a szavakkal.",
     "chooseMorphsInstructionsBody": "Kattintson a puzzle darabokra a nyelvtani kérdésekhez!",
-    "pleaseEnterInt": "Kérjük, írjon be egy számot",
     "home": "Kezdőlap",
     "join": "Csatlakozás",
     "resetInstructionTooltipsTitle": "Útmutató eszköztippek visszaállítása",
     "resetInstructionTooltipsDesc": "Kattints az útmutató eszköztippek megjelenítéséhez, mint egy teljesen új felhasználó esetén.",
-    "randomize": "Véletlenszerű sorrend",
     "clear": "Törlés",
-    "featuredActivities": "Kiemelt",
     "save": "Mentés",
-    "startChat": "Indíts el egy beszélgetést",
-    "translationProblem": "Fordítási probléma",
     "askToJoin": "Kérj csatlakozást",
     "emptyChatWarningTitle": "Üres a chat",
     "emptyChatWarningDesc": "Senkit sem hívtál meg a chatbe. Menj a Chat beállításokhoz, hogy meghívhasd a kontaktjaidat vagy a Botot. Ezt később is megteheted.",
@@ -3640,17 +3322,13 @@
     "timesUsedIndependently": "Önállóan használt alkalmak száma",
     "timesUsedWithAssistance": "Segítséggel használt alkalmak száma",
     "shareInviteCode": "Meghívó kód megosztása: {code}",
-    "leaderboard": "Rangsoroló lista",
     "skipForNow": "Átmenetileg kihagyom",
     "permissions": "Engedélyek",
     "spaceChildPermission": "Ki adhat hozzá új csevegéseket ehhez a kurzushoz",
-    "addEnvironmentOverride": "Környezet felülbírálás hozzáadása",
     "defaultOption": "Alapértelmezett",
     "deleteChatDesc": "Biztosan törölni szeretné ezt a csevegést? Minden résztvevő számára törlődik, és minden üzenet nem lesz többé elérhető gyakorláshoz vagy tanulási elemzésekhez.",
     "deleteSpaceDesc": "A kurzus és a kiválasztott csevegések minden résztvevő számára törlődnek, és minden üzenet nem lesz többé elérhető gyakorláshoz vagy tanulási elemzésekhez. Ez a művelet nem vonható vissza.",
     "launch": "Indítás",
-    "searchChats": "Csevegések keresése",
-    "maxFifty": "Maximum 50",
     "configureSpace": "Kurzus konfigurálása",
     "pinMessages": "Üzenetek rögzítése",
     "setJoinRules": "Csatlakozási szabályok beállítása",
@@ -3684,9 +3362,6 @@
     "failedToFetchTranscription": "Nem sikerült letölteni a átírást",
     "deleteEmptySpaceDesc": "A kurzus minden résztvevő számára törlésre kerül. Ez a művelet nem vonható vissza.",
     "regenerate": "Újragenerálás",
-    "mySavedActivities": "Mentett tevékenységeim",
-    "noSavedActivities": "Nincsenek mentett tevékenységek",
-    "saveActivity": "Mentse ezt a tevékenységet",
     "failedToPlayVideo": "Nem sikerült lejátszani a videót",
     "done": "Kész",
     "inThisSpace": "Ebben a kurzusban",
@@ -3697,13 +3372,9 @@
     "numInvited": "{count} meghívott",
     "saved": "Mentett",
     "reset": "Visszaállítás",
-    "errorFetchingActivitiesMessage": "Nem sikerült lekérni a tevékenységeket",
     "errorFetchingDefinition": "Nem sikerült lekérni a definíciót",
     "errorProcessAnalytics": "Nem sikerült feldolgozni az elemzéseket",
     "errorDownloading": "Letöltés sikertelen",
-    "errorLoadingSpaceChildren": "Nem sikerült betölteni a csoport beszélgetéseit ebben a kurzusban",
-    "unexpectedError": "Váratlan hiba.",
-    "pleaseReload": "Kérjük, töltsd újra az oldalt, és próbáld újra.",
     "translationError": "Fordítási hiba",
     "check": "Ellenőrizze",
     "unableToFindRoom": "Nem található csevegés vagy kurzus ezzel a kóddal. Kérjük, próbálja újra.",
@@ -3712,19 +3383,14 @@
     "request": "Kérés",
     "requestAll": "Összes kérés",
     "confirmMessageUnpin": "Biztos benne, hogy fel szeretné oldani ezt az üzenetet?",
-    "saveAndLaunch": "Mentés és indítás",
-    "launchToSpace": "Indítás a kurzusra",
     "pending": "Függőben",
     "inactive": "Inaktív",
-    "confirmRole": "Szerep megerősítése",
     "openRoleLabel": "NYITOTT",
     "finishedTheActivity": "🎯 {username} befejezte ezt a tevékenységet",
     "activitySummaryError": "A tevékenység összegzések nem elérhetők",
     "requestSummaries": "Összegzések kérés",
-    "generatingNewActivities": "Ez az első felhasználó ebben a nyelvpárban! Kérjük, adj egy percet, készítjük a tevékenységeket csak neked.",
     "requestAccessTitle": "Kérjük az elemzési hozzáférést?",
     "requestAccessDesc": "Szeretnél hozzáférést kérni a résztvevők elemzéseinek megtekintéséhez?\n\nHa a résztvevők egyetértenek, a kurzus adminjai megtekinthetik:\n    • az összes szókincset\n    • az összes nyelvtani fogalmat\n    • az elvégzett tevékenységi ülések összes számát\n    • a használt, helyes és helytelen nyelvtani fogalmakat\n\nNem fogják látni:\n    • az üzeneteket a kurzuson kívüli chatben\n    • a szókincs listát",
-    "requestAccess": "Kérelem hozzáféréshez ({count})",
     "analyticsInactiveTitle": "Az inaktív felhasználóknak nem küldhetők kérések",
     "analyticsInactiveDesc": "Az inaktív felhasználók, akik nem jelentkeztek be azóta, hogy ez a funkció bevezetésre került, nem fogják látni a kérését.\n\nA Kérelem gomb akkor jelenik meg, amikor visszatérnek. Később újra küldheti a kérést a nevük alatt található Kérelem gombra kattintva, amikor az elérhetővé válik.",
     "accessRequestedTitle": "Elemzési hozzáférési kérés",
@@ -3747,8 +3413,6 @@
     "accessDesc": "Nyilvánossá teheted a kurzusodat a világ számára! Vagy, tedd priváttá és biztonságossá.",
     "createGroupChatDesc": "Míg az aktivitási ülések kezdete és vége, a csoportos beszélgetések nyitva maradnak a rutinszerű kommunikációhoz.",
     "deleteDesc": "Csak az adminok törölhetnek kurzust. Ez egy destruktív művelet, amely minden felhasználót eltávolít és törli az összes kiválasztott csoportot a kurzuson belül. Légy óvatos.",
-    "noCourseFound": "Ó, ennek a kurzusnak tervre van szüksége!\n\nA kurzustervek témák és beszélgetési tevékenységek sorozata.",
-    "additionalParticipants": "+ {num} mások",
     "whatNow": "Most mi?",
     "chooseNextActivity": "Válaszd ki a következő tevékenységet!",
     "letsGo": "Indulj el",
@@ -3761,13 +3425,11 @@
     "waitNotDone": "Várj, még nem végeztem!",
     "waitingForOthersToFinish": "Várakozás a többiek befejezésére...",
     "generatingSummary": "Chat elemzése és eredmények generálása",
-    "findCourse": "Kurzus keresése",
     "pingParticipantsNotification": "{user} keres felhasználókat a {room} szobában a tevékenységhez",
     "course": "Kurzus",
     "courses": "Kurzusok",
     "goToCourse": "Ugrás a kurzusra: {course}",
     "activityComplete": "Ez a tevékenység befejeződött. Az összefoglaló az alábbiakban érhető el.",
-    "startNewSession": "Új szekció indítása",
     "joinOpenSession": "Csatlakozás nyitott szekcióhoz",
     "activityNotFound": "Nem található tevékenység",
     "myActivities": "Saját tevékenységeim",
@@ -3857,10 +3519,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3870,10 +3528,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -3961,14 +3615,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -3985,10 +3631,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4001,15 +3643,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4161,14 +3795,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4182,14 +3808,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5412,10 +5030,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5456,10 +5070,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5532,10 +5142,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5805,47 +5411,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5865,19 +5431,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -5941,10 +5495,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -5985,14 +5535,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6004,14 +5546,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6049,10 +5583,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6069,27 +5599,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6213,10 +5727,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6226,10 +5736,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6246,14 +5752,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6393,18 +5891,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6453,10 +5939,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6466,18 +5948,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6520,23 +5990,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6560,10 +6018,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6571,14 +6025,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6683,18 +6129,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6747,10 +6181,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6777,10 +6207,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -6961,7 +6387,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Jövőre nézz vissza az aktivitás frissítéseiért.",
-    "activityDropdownDesc": "Amikor befejezed ezt az aktivitást, kattints az alábbi gombra",
     "languageMismatchTitle": "Nyelvi eltérés",
     "languageMismatchDesc": "A célnyelved nem egyezik ezzel az aktivitással. Frissíted a célnyelvet?",
     "reportWordIssueTooltip": "Szóinformációs probléma jelentése",
@@ -6974,10 +6399,6 @@
     "selectAll": "Összes kiválasztása",
     "deselectAll": "Összes kijelölés megszüntetése",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7026,17 +6447,11 @@
         "placeholders": {}
     },
     "startOwn": "Indítsa el sajátját",
-    "joinCourseDesc": "Minden kurzusnak 8-10 egymásra épülő témája van, különféle feladat-alapú nyelvtanulási tevékenységekkel.",
     "newMessageInPangeaChat": "💬 Új üzenet a Pangea Csevegésben",
     "shareCourse": "Kurzus megosztása",
     "addCourse": "Kurzus hozzáadása",
-    "joinPublicCourse": "Csatlakozás nyilvános kurzushoz",
     "vocabLevelsDesc": "Itt jelennek meg a szókincs szavai, amint szintet lépnek!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7049,10 +6464,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7071,7 +6482,6 @@
     "emojiView": "Emoji nézet",
     "feedbackDialogDesc": "Én is hibázom! Van valami, amivel segíthetnél a fejlődésemben?",
     "contactHasBeenInvitedToTheCourse": "A kapcsolatot meghívták a tanfolyamra",
-    "activityStatsButtonTooltip": "Tevékenységi információ",
     "allow": "Engedélyez",
     "deny": "Elutasít",
     "enabledRenewal": "Előfizetés megújításának engedélyezése",
@@ -7339,10 +6749,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8398,16 +7804,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Tevékenységek a következő téma feloldásához",
-    "activitiesToUnlockTopicDesc": "Állítsa be a tevékenységek számát a következő tanfolyam téma feloldásához",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Helyes szókincs definíció gyakorlás",
     "constructUseIncLMDesc": "Helytelen szókincs definíció gyakorlás",
     "constructUseCorLADesc": "Helyes szókincs audio gyakorlás",
@@ -8415,7 +7811,6 @@
     "constructUseBonus": "Bónusz a szókincs gyakorlás során",
     "practiceVocab": "Szókincs gyakorlás",
     "selectMeaning": "Jelöld ki a jelentést",
-    "selectAudio": "Válaszd ki a megfelelő audiót",
     "anotherRound": "Még egy kör",
     "activitySettingsOverrideWarning": "A nyelvet és a nyelvi szintet az aktivitási terv határozza meg",
     "voice": "Hang",
@@ -8447,10 +7842,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8468,12 +7859,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Letöltés megkezdődött",
     "webDownloadPermissionMessage": "Ha a böngésződ blokkolja a letöltéseket, kérlek engedélyezd a letöltéseket ezen az oldalon.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8568,11 +7954,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Valami hiba történt, és keményen dolgozunk a javításon. Kérlek, nézd meg később.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Írássegítő engedélyezése",
     "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
     "@autoIGCToolName": {
@@ -8628,24 +8009,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Nyelvtan",
-    "spanTypeWordChoice": "Szóválasztás",
     "spanTypeSpelling": "Helyesírás",
     "spanTypePunctuation": "Írásjelek",
     "spanTypeStyle": "Stílus",
     "spanTypeFluency": "Folyékonyság",
     "spanTypeAccents": "Akcentusok",
     "spanTypeCapitalization": "Nagybetűs írás",
-    "spanTypeCorrection": "Javítás",
     "spanFeedbackTitle": "Javítási probléma jelentése",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8670,10 +8040,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -8686,13 +8052,7 @@
     "longPressToRecordVoiceMessage": "Hosszan nyomja meg a hangüzenet rögzítéséhez.",
     "pause": "Szünet",
     "resume": "Folytatás",
-    "newSubSpace": "Új alhely",
-    "moveToDifferentSpace": "Áthelyezés másik helyre",
-    "removeFromSpaceDescription": "A csevegés eltávolításra kerül a térből, de továbbra is megjelenik a csevegési listádban.",
     "countChats": "{chats} csevegés",
-    "spaceMemberOf": "{spaces} tér tagja",
-    "spaceMemberOfCanKnock": "{spaces} tér tagja kopoghat",
-    "donate": "Adományozás",
     "startedAPoll": "{username} szavazást indított.",
     "poll": "Szavazás",
     "startPoll": "Szavazás indítása",
@@ -8716,23 +8076,15 @@
     "newStickerPack": "Új matrica csomag",
     "stickerPackName": "Matrica csomag neve",
     "attribution": "Hozzárendelés",
-    "skipChatBackup": "Csevegés biztonsági mentésének kihagyása",
-    "skipChatBackupWarning": "Biztos benne? A csevegés biztonsági mentésének engedélyezése nélkül elveszítheti a hozzáférést az üzeneteihez, ha vált a készüléke.",
-    "loadingMessages": "Üzenetek betöltése",
-    "setupChatBackup": "Csevegés biztonsági mentésének beállítása",
     "noMoreResultsFound": "Nincs több találat",
     "chatSearchedUntil": "Csevegés keresve: {time} -ig",
     "federationBaseUrl": "Szövetségi alap URL",
     "clientWellKnownInformation": "Kliens-jól ismert információ:",
     "baseUrl": "Alap URL",
     "identityServer": "Identitás Szolgáltató:",
-    "versionWithNumber": "Verzió: {version}",
     "logs": "Naplók",
-    "advancedConfigs": "Haladó Beállítások",
     "advancedConfigurations": "Haladó konfigurációk",
-    "signInWithLabel": "Bejelentkezés ezzel:",
     "selectAllWords": "Válaszd ki az összes szót, amit hallasz a hanganyagban",
-    "joinCourseForActivities": "Csatlakozz egy kurzushoz, hogy kipróbálhasd a tevékenységeket.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -8769,18 +8121,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -8788,26 +8128,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -8913,22 +8233,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -8957,19 +8261,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -8977,15 +8269,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9186,11 +8470,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "Osztályban? Írd be ide a csatlakozási kódodat.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
     "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9234,18 +8513,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Ez a kurzus olyan témákat tartalmaz, amelyek kevesebb mint {input} tevékenységgel rendelkeznek. Kérjük, adjon meg egy számot, amely kisebb vagy egyenlő {minValue}-val.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Kattintson ide a visszajelentkezéshez.",
     "@clickToLogin": {
@@ -9662,17 +8929,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Egy rajzfilmszerű sárga medve, amely izgalmában felemelte a karjait.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Válassza ki a szavakat, hogy többet tudjon meg róluk",
     "requireAnalyticsAccessTitle": "Elemzési hozzáférés szükséges a csatlakozáshoz",
     "requireAnalyticsAccessDesc": "A résztvevőknek engedélyezniük kell az elemzési adataikhoz való hozzáférést a kurzushoz való csatlakozáshoz",
     "analyticsAccessNoticeTitle": "Elemzési hozzáférés szükséges",
     "analyticsAccessNoticeDesc": "A kurzushoz való csatlakozással beleegyezését adja, hogy az adminisztrátorok hozzáférjenek az elemzési adataihoz.",
-    "skipOnboardingClassCodeDesc": "Önállóan tanul? Ne aggódjon, megteheti:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9690,10 +8951,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9722,7 +8979,6 @@
     "pickCefrLevelTeacherStepTitle": "Milyen szinten tanítasz?",
     "pickCefrLevelStudentStepTitle": "Milyen szinten vagy?",
     "customCourseStepTitle": "Töltsd ki ezt a űrlapot, hogy egyedi kurzust kapj",
-    "aboutYourClass": "Az osztályodról",
     "courseCodeStepErrorMessage": "Kérjük, ellenőrizd a kódodat, és próbáld újra",
     "institution": "Intézmény",
     "courseGoals": "Tanfolyami célok",
@@ -9765,10 +9021,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9885,12 +9137,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Pangea Chat logó",
     "introChatDetails": "Köszönts! Mutatkozz be a kurzus többi résztvevőjének, találj barátokat, és csevegj a tevékenységeken kívül.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -9934,11 +9181,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Tevékenységi műveletek",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Kiejtési eszközök",
     "audioTranscription": "AI hangátírás",
     "visualLearnerSupport": "Vizuális tanulók támogatása",
@@ -9979,7 +9221,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Csatlakozz egy olyan kurzushoz, amely tartalmazza ezt a tevékenységet, hogy játszhass vele.",
     "resizeCoursePanel": "Kurzuspanel átméretezése",
     "undo": "Visszavonás",
     "unlock": "Feloldás",
@@ -9993,7 +9234,6 @@
     "addCourseBrowsePublic": "Böngésszen a nyilvános kurzusok között",
     "browsePublicCourses": "Böngésszen a nyilvános kurzusok között",
     "editProfile": "Profil szerkesztése",
-    "numObjectives": "{count} cél",
     "mapSearchHint": "Tevékenységek keresése",
     "mapSearchNoResults": "Nincsenek találatok a nézetben",
     "mapFilterAllLanguages": "Minden nyelv",
@@ -10002,7 +9242,6 @@
     "mapFilterCompleted": "Befejezett",
     "mapFilterReset": "Visszaállítás",
     "activityTypeConversation": "Beszélgetés",
-    "lockedMissionRequirement": "Fejezd be az előző küldetést a feloldáshoz",
     "playAgain": "Játssz újra",
     "reviewActivity": "Áttekintés",
     "mapEmptyInView": "Itt semmi sincs a szintedhez vagy nyelvedhez. Szélesítsd a szűrőidet vagy nagyíts ki.",
@@ -10017,14 +9256,9 @@
     "scrollToBottom": "Görgetés az aljára",
     "courseImage": "Tanfolyam kép",
     "avatarPreview": "Avatar előnézet",
-    "activityPhoto": "Tevékenység fénykép",
     "emotePreview": "Emote előnézet: {name}",
     "activityLabel": "Tevékenység: {title}",
     "resetMapView": "Térkép nézet visszaállítása",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10077,14 +9311,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10114,10 +9340,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10174,10 +9396,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },

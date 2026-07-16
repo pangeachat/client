@@ -128,15 +128,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "თქვენი ჩატის სარეზერვო საშუალება კონფიგურირებული იქნა.",
-    "@yourChatBackupHasBeenSetUp": {},
     "channelCorruptedDecryptError": "დაშიფვრა დაზიანდა",
     "@channelCorruptedDecryptError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "chatBackupDescription": "თქვენი შეტყობინებები დაცულია აღდგენის გასაღებით. არ დაკარგოთ ის.",
-    "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -333,11 +326,6 @@
                 "type": "String"
             }
         }
-    },
-    "areGuestsAllowedToJoin": "შეუძლიათ თუ არა სტუმარ მომხმარებლებს გაწევრიანება",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
     },
     "askVerificationRequest": "მიიღებთ {username} დადასტურების მოთხოვნას?",
     "@askVerificationRequest": {
@@ -569,11 +557,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "კონტაქტი მოწვეული იქნა ჯგუფში",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "copiedToClipboard": "კოპირებულია ბუფერში",
     "@copiedToClipboard": {
         "type": "String",
@@ -611,11 +594,6 @@
                 "type": "String"
             }
         }
-    },
-    "createNewSpace": "ახალი სივრცე",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
     },
     "currentlyActive": "ახლა აქტიურია",
     "@currentlyActive": {
@@ -677,8 +655,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "globalChatId": "გლობალური ჩატის ID",
-    "@globalChatId": {},
     "repeatPassword": "გაიმეორეთ პაროლი",
     "@repeatPassword": {},
     "notAnImage": "ფაილი არაა სურათი.",
@@ -794,11 +770,8 @@
     "spaces": "სივრცეები",
     "commandHint_markasdm": "მარკირება როგორც პირდაპირი შეტყობინების ოთახი მითითებული მატრიქსის ID-სთვის",
     "checkList": "შეამოწმეთ სია",
-    "countInvited": "{count} მოწვეული",
     "emoteKeyboardNoRecents": "ბოლოს გამოყენებული ემოტები აქ გამოჩნდება...",
     "emotePacks": "ემოტების პაკეტები ოთახისთვის",
-    "accessAndVisibility": "წვდომა და ხილვადობა",
-    "accessAndVisibilityDescription": "ვინ არის დაშვებული ამ ჩატის შეუერთებლად და როგორ შეიძლება იპოვოს ეს ჩატი.",
     "calls": "ზარები",
     "customEmojisAndStickers": "მოწოდებული ემოტები და სტიკერები",
     "customEmojisAndStickersBody": "დაამატეთ ან გაუზიარეთ მოწოდებული ემოტები ან სტიკერები, რომლებიც შეიძლება გამოყენებულ იქნას ნებისმიერ ჩატში.",
@@ -806,7 +779,6 @@
     "emptyChat": "ცარიელი ჩატი",
     "enableEmotesGlobally": "ჩართეთ ემოტების პაკეტი გლობალურად",
     "enableEncryption": "ჩართეთ დაშიფვრა",
-    "enableEncryptionWarning": "თქვენ აღარ შეძლებთ დაშიფვრის გამორთვას. დარწმუნებული ხართ?",
     "encrypted": "დაშიფვრული",
     "encryption": "დაშიფვრა",
     "encryptionNotEnabled": "დაშიფვრა არ არის ჩართული",
@@ -814,7 +786,6 @@
     "enterAnEmailAddress": "შეიყვანეთ ელფოსტის მისამართი",
     "homeserver": "მთავარი სერვერი",
     "errorObtainingLocation": "შეცდომა მდებარეობის მიღებაში: {error}",
-    "everythingReady": "ყველაფერი მზადაა!",
     "extremeOffensive": "მძიმე შეურაცხყოფა",
     "fileName": "ფაილის სახელი",
     "fluffychat": "ფლუფი ჩატი",
@@ -823,9 +794,7 @@
     "fromJoining": "შესერთებისგან",
     "fromTheInvitation": "პატიჟიდან",
     "group": "ჯგუფი",
-    "chatDescription": "ჩატის აღწერა",
     "chatDescriptionHasBeenChanged": "ჩატის აღწერა შეიცვალა",
-    "groupIsPublic": "ჯგუფი საჯარია",
     "groups": "ჯგუფები",
     "groupWith": "ჯგუფი {displayname} -თან",
     "guestsAreForbidden": "მოწვევები აკრძალულია",
@@ -847,7 +816,6 @@
     "incorrectPassphraseOrKey": "არასწორი პაროლი ან აღდგენის გასაღები",
     "inoffensive": "არასაშიში",
     "inviteContact": "პიროვნების მოწვევა",
-    "inviteContactToGroup": "მოწვევა {groupName}-ში",
     "noChatDescriptionYet": "ჩატის აღწერა ჯერ არ შექმნილა.",
     "tryAgain": "მეორედ სცადეთ",
     "invalidServerName": "არასწორი სერვერის სახელი",
@@ -868,7 +836,6 @@
     "leave": "გადადი",
     "leftTheChat": "გადადგა საუბარი",
     "lightTheme": "მარტივი",
-    "loadCountMoreParticipants": "ატვირთეთ კიდევ {count} მონაწილე",
     "dehydrate": "ექსპორტი სესია და წაშალეთ მოწყობილობა",
     "dehydrateWarning": "ეს მოქმედება ვერ მოხერხდება უკან დაბრუნება. დარწმუნდით, რომ უსაფრთხოდ ინახავთ სარეზერვო ფაილს.",
     "hydrate": "აღადგინე სარეზერვო ფაილიდან",
@@ -877,7 +844,6 @@
     "locationDisabledNotice": "მდებარეობის სერვისები გამორთულია. გთხოვთ ჩართოთ მათ, რათა შეძლოთ თქვენი მდებარეობის გაზიარება.",
     "locationPermissionDeniedNotice": "მდებარეობის ნებართვა უარყოფილია. გთხოვთ მიაწოდოთ ნებართვა, რათა შეძლოთ თქვენი მდებარეობის გაზიარება.",
     "login": "შესვლა",
-    "logInTo": "შესვლა {homeserver}-ზე",
     "logout": "გამოსვლა",
     "mention": "შესანიშნავი მოხსენება",
     "messages": "შეტყობინებები",
@@ -892,8 +858,6 @@
     "no": "არა",
     "noConnectionToTheServer": "სერვერთან კავშირი არ არის",
     "noEmotesFound": "ემოტები არ მოიძებნა. 😕",
-    "noEncryptionForPublicRooms": "შეგიძლიათ გააქტიუროთ დაშიფვრა მხოლოდ მაშინ, როდესაც ოთახი აღარ არის საჯარო.",
-    "noGoogleServicesWarning": "Firebase Cloud Messaging-ი თქვენს მოწყობილობაზე არ ჩანს ხელმისაწვდომი. შეტყობინებების მიღებისათვის გირჩევთ დააინსტალიროთ ntfy. ntfy ან სხვა ერთიანი შეტყობინების მიმწოდებლის გამოყენებით შეგიძლიათ მიიღოთ შეტყობინებები მონაცემების უსაფრთხო გზით. შეგიძლიათ ჩამოტვირთოთ ntfy PlayStore-დან ან F-Droid-დან.",
     "noMatrixServer": "{server1} არ არის მეტრიქს სერვერი, გამოიყენეთ {server2} ნაცვლად?",
     "shareInviteLink": "გაუზიარე მოწვევის ბმული",
     "scanQrCode": "სკანერით QR კოდი",
@@ -915,12 +879,10 @@
     "openCamera": "კამერის გახსნა",
     "openVideoCamera": "ვიდეოსთვის კამერის გახსნა",
     "oneClientLoggedOut": "თქვენს ერთ-ერთ მომხმარებელს გამოუთვლია სისტემამ",
-    "addAccount": "ანგარიშის დამატება",
     "editBundlesForAccount": "ბანდლების რედაქტირება ამ ანგარიშისთვის",
     "addToBundle": "დამატება ბანდლში",
     "removeFromBundle": "ამ ბანდლიდან ამოღება",
     "bundleName": "ბანდლის სახელი",
-    "enableMultiAccounts": "(BETA) მრავალანგარიშის ჩართვა ამ მოწყობილობაზე",
     "openInMaps": "გახსნა რუკებში",
     "link": "ლინკი",
     "serverRequiresEmail": "ეს სერვერი საჭიროებს თქვენი ელფოსტის მისამართის დადასტურებას რეგისტრაციისთვის.",
@@ -932,7 +894,6 @@
     "passwordHasBeenChanged": "პაროლი შეიცვალა",
     "overview": "საგამოფენო",
     "passwordRecoverySettings": "პაროლის აღდგენის პარამეტრები",
-    "passwordRecovery": "პაროლის აღდგენა",
     "people": "ადამიანები",
     "pickImage": "აირჩიეთ სურათი",
     "pin": "პინ",
@@ -941,7 +902,6 @@
     "pleaseChooseAPasscode": "გთხოვთ, აირჩიეთ პაროლის კოდი",
     "pleaseClickOnLink": "გთხოვთ, დააჭირეთ ბმულს ელფოსტაში და შემდეგ განაგრძეთ.",
     "pleaseEnter4Digits": "გთხოვთ, შეიყვანეთ 4 ციფრი ან დატოვეთ ცარიელი აპლიკაციის გასაღების გამორთვისთვის.",
-    "pleaseEnterRecoveryKey": "გთხოვთ, შეიყვანეთ თქვენი აღდგენის გასაღები:",
     "pleaseEnterYourPassword": "გთხოვთ, შეიყვანოთ თქვენი პაროლი",
     "pleaseEnterYourPin": "გთხოვთ, შეიყვანოთ თქვენი პინკოდი",
     "pleaseEnterYourUsername": "გთხოვთ, შეიყვანოთ თქვენი მომხმარებლის სახელი",
@@ -961,7 +921,6 @@
     "rejectedTheInvitation": "{username} უარყო მოწვევა",
     "removeAllOtherDevices": "წაშალეთ ყველა სხვა მოწყობილობა",
     "removedBy": "წაშლილია {username} მიერ",
-    "removeDevice": "წაშალეთ მოწყობილობა",
     "unbanFromChat": "გამოდით ჩათიდან",
     "removeYourAvatar": "წაშალეთ თქვენი ავატარი",
     "replaceRoomWithNewerVersion": "გააახლეთ ოთახი ახალი ვერსიით",
@@ -973,8 +932,6 @@
     "saveFile": "ფაილის შენახვა",
     "search": "ძებნა",
     "security": "უსაფრთხოება",
-    "recoveryKey": "აღდგენის გასაღები",
-    "recoveryKeyLost": "აღდგენის გასაღები დაკარგულია?",
     "send": "გაგზავნა",
     "sendAMessage": "შეტყობინების გაგზავნა",
     "sendAsText": "გაგზავნეთ ტექსტის სახით",
@@ -993,7 +950,6 @@
     "separateChatTypes": "განსხვავებული პირდაპირი ჩატები და ჯგუფები",
     "setAsCanonicalAlias": "დააყენეთ როგორც მთავარი ალის",
     "setChatDescription": "დააყენეთ ჩატის აღწერა",
-    "setPermissionsLevel": "დააყენეთ დაშვების დონე",
     "setStatus": "დააყენეთ სტატუსი",
     "settings": "პარამეტრები",
     "share": "გააზიარე",
@@ -1003,8 +959,6 @@
     "presencesToggle": "აჩვენე სტატუსის შეტყობინებები სხვა მომხმარებლებისგან",
     "skip": "გადახვევა",
     "sourceCode": "კოდის წყარო",
-    "spaceIsPublic": "მდებარეობა საჯარია",
-    "spaceName": "მდებარეობის სახელი",
     "startedACall": "{senderName} დაიწყო ზარი",
     "status": "სტატუსი",
     "statusExampleMessage": "როგორ ხარ დღეს?",
@@ -1016,7 +970,6 @@
     "theyMatch": "მათ ემთხვევა",
     "title": "FluffyChat",
     "tooManyRequestsWarning": "ძალიან ბევრი მოთხოვნა. გთხოვთ, სცადეთ მოგვიანებით!",
-    "transferFromAnotherDevice": "გადაცემა სხვა მოწყობილობიდან",
     "tryToSendAgain": "მეორედ სცადეთ გაგზავნა",
     "unavailable": "ხელმისაწვდომი არაა",
     "unbannedUser": "{username} გაათავისუფლა {targetName}",
@@ -1026,7 +979,6 @@
     "unknownEvent": "უცნობი მოვლენა '{type}'",
     "unmuteChat": "ჩუმის მოხსნა",
     "unpin": "გაუქმება",
-    "unreadChats": "{unreadCount, plural, =1{1 წაკითხული საუბარი} other{{unreadCount} წაკითხული საუბარი}}",
     "userAndOthersAreTyping": "{username} და {count} სხვა აკრეფენ…",
     "userAndUserAreTyping": "{username} და {username2} აკრეფენ…",
     "userIsTyping": "{username} აკრეფენ…",
@@ -1039,8 +991,6 @@
     "verifyStart": "დაწყება ვერიფიკაცია",
     "verifySuccess": "თქვენ წარმატებით დაადასტურეთ!",
     "verifyTitle": "სხვა ანგარიშის ვერიფიკაცია",
-    "videoCall": "ვიდეო ზარი",
-    "visibilityOfTheChatHistory": "ჩატის ისტორიის ხილვადობა",
     "visibleForAllParticipants": "ხილვადია ყველა მონაწილისთვის",
     "visibleForEveryone": "ხილვადია ყველასთვის",
     "voiceMessage": "ხმოვანი შეტყობინება",
@@ -1050,10 +1000,7 @@
     "wallpaper": "სათაური:",
     "warning": "გაფრთხილება!",
     "weSentYouAnEmail": "ჩვენ გაგზავნეთ ელფოსტა",
-    "whoCanPerformWhichAction": "ვინ შეუძლია განახორციელოს რომელიმე მოქმედება",
-    "whoIsAllowedToJoinThisGroup": "ვინ არის დაშვებული შეუერთდეს ამ ჯგუფს",
     "whyDoYouWantToReportThis": "რატომ გსურთ ამის შეტყობინება?",
-    "wipeChatBackup": "წაშალეთ თქვენი ჩატის სარეზერვო ასლი ახალი აღდგენის გასაღების შესაქმნელად?",
     "withTheseAddressesRecoveryDescription": "ამ მისამართებით შეგიძლიათ აღადგინოთ თქვენი პაროლი.",
     "writeAMessage": "დაწერეთ შეტყობინება…",
     "yes": "დიახ",
@@ -1066,9 +1013,7 @@
     "messageType": "შეტყობინების ტიპი",
     "sender": "გაგზავნი",
     "openGallery": "გაფართოვება გალერეა",
-    "removeFromSpace": "ამოიღეთ სივრციდან",
     "start": "დაწყება",
-    "pleaseEnterRecoveryKeyDescription": "შეიყვანეთ თქვენი აღდგენის გასაღები, რათა გახსნათ თქვენი ძველი შეტყობინებები, რომელიც გენერირებულია წინასწარ სესიაში. თქვენი აღდგენის გასაღები არ არის თქვენი პაროლი.",
     "publish": "გამოქვეყნება",
     "openChat": "ჩატი გახსნა",
     "markAsRead": "წაკითხულად მონიშვნა",
@@ -1079,12 +1024,9 @@
     "confirmEventUnpin": "დარწმუნებული ხართ, რომ გსურთ სამუდამოდ მოხსნათ ღონისძიების პინინგი?",
     "emojis": "ემოჯიები",
     "placeCall": "ზარის განხორციელება",
-    "voiceCall": "ხმოვანი ზარი",
     "unsupportedAndroidVersion": "მხარდაჭერა არ აქვს Android-ის ვერსიას",
     "unsupportedAndroidVersionLong": "ეს ფუნქცია საჭიროებს ახალი Android ვერსიას. გთხოვთ, შეამოწმოთ განახლებები ან Lineage OS-ის მხარდაჭერა.",
-    "videoCallsBetaWarning": "გთხოვთ, გაითვალისწინოთ, რომ ვიდეოზარები ამჟამად ბეტა ვერსიაშია. ისინი შესაძლოა არ მუშაობდეს როგორც უნდა ან საერთოდ არ იმუშაონ ყველა პლატფორმაზე.",
     "experimentalVideoCalls": "გამოყენებითი ვიდეოზარები",
-    "emailOrUsername": "ელფოსტა ან მომხმარებლის სახელი",
     "addWidget": "პლაგინის დამატება",
     "widgetVideo": "ვიდეო",
     "widgetEtherpad": "ტექსტური შენიშვნა",
@@ -1106,35 +1048,19 @@
     "youKickedAndBanned": "👥 თქვენ გამოგაგდეთ და ბლოკეთ {user}",
     "youUnbannedUser": "თქვენ გაუქმეთ ბლოკი {user}",
     "hasKnocked": "🚪 {user} დარეკა",
-    "usersMustKnock": "მომხმარებლებს უნდა დარეკონ",
-    "noOneCanJoin": "ვინც არ უნდა შემოუერთდეს",
     "knock": "დარეკვა",
     "users": "მომხმარებლები",
-    "unlockOldMessages": "გახსენი ძველი შეტყობინებები",
-    "storeInSecureStorageDescription": "შეინახეთ აღდგენის გასაღები ამ მოწყობილობის უსაფრთხო შენახვაში.",
-    "saveKeyManuallyDescription": "შეინახეთ ეს გასაღები ხელით სისტემის გაზიარების დიალოგის ან კლიპბორდის გამოყენებით.",
-    "storeInAndroidKeystore": "შეინახეთ Android KeyStore-ში",
-    "storeInAppleKeyChain": "შეინახეთ Apple KeyChain-ში",
-    "storeSecurlyOnThisDevice": "შეინახეთ უსაფრთხოდ ამ მოწყობილობაზე",
     "countFiles": "{count} ფაილი",
     "user": "მომხმარებელი",
     "custom": "შექმნილი",
-    "foregroundServiceRunning": "ეს შეტყობინება გამოჩნდება, როდესაც ფონი სერვისი მუშაობს.",
-    "screenSharingTitle": "ეკრანის გაზიარება",
-    "screenSharingDetail": "თქვენ გაზიარებთ თქვენს ეკრანს FuffyChat-ში",
     "whyIsThisMessageEncrypted": "რატომ არის ეს შეტყობინება გაუგებარი?",
     "noKeyForThisMessage": "ეს შეიძლება მოხდეს, თუ შეტყობინება გაგზავნილია თქვენი ანგარიშის შესვლის წინ ამ მოწყობილობაზე.\n\nასევე შესაძლებელია, რომ გამგზავნმა დაბლოკა თქვენი მოწყობილობა ან რამე მოხდა ინტერნეტ კავშირის დროს.\n\nშეგიძლიათ წაიკითხოთ შეტყობინება სხვა სესიაში? მაშინ შეგიძლიათ გადმოიტანოთ შეტყობინება მასიდან! წადით პარამეტრებზე > მოწყობილობები და დარწმუნდით, რომ თქვენი მოწყობილობები ერთმანეთს დაუდასტურეს. როდესაც გახსნით ოთახს შემდეგი ჯერზე და ორივე სესია იქნება წინაპირობაში, გასაღებები ავტომატურად გადმოიცემა.\n\nარ გსურთ დაკარგოთ გასაღებები გამოსვლის ან მოწყობილობების შეცვლის დროს? დარწმუნდით, რომ ჩართეთ ჩატის სარეზერვო ასლი პარამეტრებში.",
     "newGroup": "ახალი ჯგუფი",
     "newSpace": "ახალი სივრცე",
-    "enterSpace": "შეიყვანეთ სივრცე",
     "allSpaces": "ყველა სივრცე",
     "hidePresences": "დაფარეთ სტატუსის სია?",
     "doNotShowAgain": "მეორედ არ აჩვენოთ",
     "wasDirectChatDisplayName": "ცარიელი ჩატი (იყო {oldDisplayName})",
-    "newSpaceDescription": "Spaces გთავაზობთ თქვენს ჩეთებს ერთიანად დააშენოთ პირადი ან საჯარო საზოგადოებები.",
-    "encryptThisChat": "შეინახეთ ეს ჩათი კოდირებით",
-    "disableEncryptionWarning": "უსაფრთხოების მიზნით, ვერ შეძლებთ კოდირების გამორთვას ჩათში, სადაც ის ადრე ჩართული იყო.",
-    "sorryThatsNotPossible": "უკაცრავად... ეს შეუძლებელია",
     "deviceKeys": "მოწყობილობის გასაღებები:",
     "reopenChat": "ჩათის გადახსნა",
     "noBackupWarning": "გაფრთხილება! ჩათის სარეზერვო ასლების გამორთვის გარეშე, დაკარგავთ დაშიფრულ შეტყობინებებზე წვდომას. რეკომენდებულია სარეზერვო ასლის შექმნა პირველ რიგში, სანამ გამოვიდეთ სისტემიდან.",
@@ -1147,7 +1073,6 @@
     "openLinkInBrowser": "გახსენი ბმული ბრაუზერში",
     "reportErrorDescription": "😞 უაი, რაღაც შეცდა. თუ გსურთ, შეგიძლიათ ამ ბაგის შეტყობინება დეველოპერებს.",
     "report": "შეტყობინება",
-    "setTheme": "პარამეტრის დაყენება:",
     "setColorTheme": "ფერის თემის დაყენება:",
     "invite": "პატიჟება",
     "inviteGroupChat": "📨 ჯგუფის ჩატი მოწვევა",
@@ -1166,12 +1091,8 @@
     "yourGlobalUserIdIs": "თქვენი გლობალური მომხმარებლის ID არის: ",
     "noUsersFoundWithQuery": "სამწუხაროდ, ვერ მოიძებნა მომხმარებელი \"{query}\"-ით. გთხოვთ, გადაამოწმოთ შეცდომა.",
     "knocking": "საკაკუნო",
-    "chatCanBeDiscoveredViaSearchOnServer": "ჩათი შეიძლება იპოვოთ სერვერზე ძიებით {server}",
-    "searchChatsRooms": "ძებნა #ჩატებს, @მომხმარებლებს...",
     "nothingFound": "არაფერი მოიძებნა...",
     "groupName": "ჯგუფის სახელი",
-    "createGroupAndInviteUsers": "შექმენით ჯგუფი და მიიწვიეთ მომხმარებლები",
-    "groupCanBeFoundViaSearch": "ჯგუფი შეიძლება იპოვოთ ძიებით",
     "wrongRecoveryKey": "უკაცრავად... ეს არ ჩანს სწორი აღდგენის გასაღები.",
     "startConversation": "დაუწყეთ საუბარი",
     "commandHint_sendraw": "გაგზავნეთ ნედლი json",
@@ -1185,11 +1106,8 @@
     "pleaseChooseAStrongPassword": "გთხოვთ, აირჩიეთ ძლიერი პაროლი",
     "passwordsDoNotMatch": "პაროლები არ ემთხვევა",
     "passwordIsWrong": "თქვენი შეყვანილი პაროლი არასწორია",
-    "publicChatAddresses": "საზოგადოების ჩატის მისამართები",
-    "createNewAddress": "ახალი მისამართის შექმნა",
     "joinSpace": "შეერთება სივრცეში",
     "publicSpaces": "საზოგადოების სივრცეები",
-    "addChatOrSubSpace": "ჩატის ან ქვესივრცის დამატება",
     "subspace": "ქვესივრცე",
     "decline": "უარყოფა",
     "thisDevice": "ეს მოწყობილობა:",
@@ -1198,15 +1116,11 @@
     "searchMore": "მეტი ძებნა...",
     "gallery": "გალერეა",
     "files": "ფაილები",
-    "sessionLostBody": "თქვენი სესია დაკარგულია. გთხოვთ, აცნობოთ ამ შეცდომის შესახებ დეველოპერებს {url}-ზე. შეცდომის შეტყობინება არის: {error}",
-    "restoreSessionBody": "აპლიკაცია ახლა ცდილობს აღადგინოს თქვენი სესია სარეზერვო კოპიიდან. გთხოვთ, აცნობოთ ამ შეცდომის შესახებ დეველოპერებს {url}-ზე. შეცდომის შეტყობინება არის: {error}",
     "sendReadReceipts": "გაგზავნეთ წაკითხვის დადასტურებები",
     "sendTypingNotificationsDescription": "სხვა მონაწილეები ჩატში ხედავენ, როდესაც თქვენ აკრავთ ახალ შეტყობინებას.",
     "sendReadReceiptsDescription": "სხვა მონაწილეები ჩატში ხედავენ, როდესაც თქვენ წაიკითხეთ შეტყობინება.",
     "formattedMessages": "ფორმატირებული შეტყობინებები",
     "formattedMessagesDescription": "აჩვენეთ მდიდარი შეტყობინების შინაარსი, როგორიცაა გამკაცრებული ტექსტი, მარკდაუნის გამოყენებით.",
-    "verifyOtherUser": "🔐 სხვა მომხმარებლის გადამოწმება",
-    "verifyOtherUserDescription": "თუ გადამოწმებთ სხვა მომხმარებელს, შეგიძლიათ დარწმუნდეთ, რომ ნამდვილად იცით, ვისთან გწერთ. 💪\n\nგადამოწმების დაწყებისას, თქვენ და სხვა მომხმარებელი იხილავთ აპლიკაციაში პოპაპს. იქ თქვენ იხილავთ ემოჯებს ან ნომრებს, რომლებსაც უნდა შეადაროთ ერთმანეთს.\n\nსაუკეთესო გზაა შეხვედრა ან ვიდეო ზარის დაწყება. 👩‍💻",
     "verifyOtherDevice": "🔐 სხვა მოწყობილობის გადამოწმება",
     "verifyOtherDeviceDescription": "როდესაც გადამოწმებთ სხვა მოწყობილობას, ეს მოწყობილობები შეძლებენ გასაღებების გაცვლას, რაც ზრდის თქვენი მთლიან უსაფრთხოებას. 💪 როდესაც დაიწყებთ გადამოწმებას, პოპაპი გამოჩნდება ორივე მოწყობილობაზე. იქ თქვენ იხილავთ ემოჯებს ან ნომრებს, რომლებსაც უნდა შეადაროთ ერთმანეთს. საუკეთესოა ორივე მოწყობილობა ხელთ გქონდეთ გადამოწმების დაწყებამდე. 🤳",
     "acceptedKeyVerification": "{sender} მიიღო გასაღების გადამოწმება",
@@ -1242,10 +1156,6 @@
     "updateInstalled": "🎉 განახლება {version} დამონტაჟებულია!",
     "changelog": "ცვლილებები",
     "sendCanceled": "გაგზავნა გაუქმდა",
-    "loginWithMatrixId": "შესვლა Matrix-ID-ით",
-    "discoverHomeservers": "მოძებნეთ სახლის სერვერები",
-    "whatIsAHomeserver": "რა არის სახლის სერვერი?",
-    "homeserverDescription": "თქვენი ყველა მონაცემი ინახება სახლის სერვერზე, როგორც ელფოსტის მიმწოდებელი. შეგიძლიათ აირჩიოთ რომელ სახლის სერვერს გამოიყენებთ, ხოლო თქვენ შეგიძლიათ კომუნიკაცია გქონდეთ ყველასთან. მეტი ინფორმაციისთვის იხილეთ https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "საიმედო სახლის სერვერი არ ჩანს. არასწორი URL?",
     "calculatingFileSize": "ფაილის ზომის გამოთვლა...",
     "prepareSendingAttachment": "მზადება მიმაგრებული ფაილის გაგზავნისთვის...",
@@ -1257,11 +1167,9 @@
     "oneOfYourDevicesIsNotVerified": "თქვენს ერთ-ერთ მოწყობილობას ვერ დაუდასტურეს",
     "noticeChatBackupDeviceVerification": "შენიშვნა: როდესაც ყველა თქვენი მოწყობილობა ჩართეთ ჩატის სარეზერვო ასლში, ისინი ავტომატურად დადასტურებული იქნება.",
     "continueText": "გაგრძელება",
-    "welcomeText": "გამარჯობა, ეს არის FluffyChat. შეგიძლიათ შეხვიდეთ ნებისმიერ სახლის სერვერზე, რომელიც თავსებადია https://matrix.org-თან. და შემდეგ ისაუბროთ ნებისმიერ ადამიანთან. ეს არის დიდი დეცენტრალიზებული შეტყობინებების ქსელი!",
     "blur": "დაფარვა:",
     "opacity": "მოჩინვარება:",
     "setWallpaper": "საფონი დაყენება",
-    "manageAccount": "ანგარიშის მართვა",
     "noContactInformationProvided": "სერვერმა არ უზრუნველყო ვალიდური კონტაქტის ინფორმაცია",
     "contactServerAdmin": "სერვერის ადმინისტრატორთან დაკავშირება",
     "contactServerSecurity": "სერვერის უსაფრთხოებასთან დაკავშირება",
@@ -1280,11 +1188,8 @@
     "unableToJoinChat": "ჩართვა ვერ მოხერხდა. შესაძლოა მეორე მხარემ უკვე დახურა საუბარი.",
     "previous": "წინა",
     "otherPartyNotLoggedIn": "მეორე მხარე ამჟამად არ არის შესული და შესაბამისად ვერ მიიღებს შეტყობინებებს!",
-    "appWantsToUseForLogin": "გამოიყენეთ '{server}' შესასვლელად",
-    "appWantsToUseForLoginDescription": "თქვენ აქვე აძლევთ საშუალებას აპლიკაციას და ვებგვერდს გააზიარონ თქვენი ინფორმაცია.",
     "open": "გახსნა",
     "waitingForServer": "მოსალოდნელია სერვერის პასუხი...",
-    "appIntroduction": "FluffyChat-ის საშუალებით შეგიძლიათ ისაუბროთ მეგობრებთან სხვადასხვა მესენჯერებზე. მეტი ინფორმაციისთვის ეწვიეთ https://matrix.org ან უბრალოდ დააჭირეთ *გაგრძელება*.",
     "newChatRequest": "📩 ახალი საუბრის მოთხოვნა",
     "contentNotificationSettings": "შინაარსის შეტყობინებების პარამეტრები",
     "generalNotificationSettings": "საერთო შეტყობინებების პარამეტრები",
@@ -1361,11 +1266,9 @@
     "taTooltip": "L2 გამოყენება თარგმნის დახმარებით",
     "interactiveTranslatorSliderHeader": "ინტერაქტიული თარგმნელი",
     "interactiveGrammarSliderHeader": "ინტერაქტიული გრამატიკის შემოწმება",
-    "interactiveTranslatorRequired": "მოსახერხია",
     "waTooltip": "L2 გამოყენება დახმარების გარეშე",
     "interactiveTranslator": "თარგმნის დახმარება",
     "noIdenticalLanguages": "გთხოვთ, აირჩიოთ განსხვავებული საწყისი და სამიზნე ენები",
-    "searchBy": "ძებნა ქვეყნით და ენებით",
     "joinWithClassCode": "შეერთება კურსში",
     "languageLevelPreA1": "ახალი დაბალი (წინა A1)",
     "languageLevelA1": "ახალი შუა (A1)",
@@ -1386,19 +1289,14 @@
     "saveChanges": "შენახვა ცვლილებები",
     "publicProfileTitle": "მომეცი ნება ჩემი პროფილი იპოვოს ძიებაში",
     "publicProfileDesc": "ჩართვისას, თქვენ აძლევთ სხვა მომხმარებლებს საშუალებას იპოვონ თქვენი პროფილი გლობალურ ძიებაში და გამოგზავნონ შეტყობინებები ჩატისთვის. ამ ეტაპზე, შეგიძლიათ აირჩიოთ მიიღოთ თუ უარყოთ მოთხოვნა.",
-    "errorDisableIT": "თარგმნის დახმარება გამორთულია.",
-    "errorDisableIGC": "გრამატიკის დახმარება გამორთულია.",
     "errorDisableITUserDesc": "დააჭირეთ აქ, რათა განაახლოთ თარგმნის დახმარების პარამეტრები",
     "errorDisableIGCUserDesc": "დააჭირეთ აქ, რათა განაახლოთ გრამატიკის დახმარების პარამეტრები",
     "errorDisableITClassDesc": "თარგმნის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
     "errorDisableIGCClassDesc": "გრამატიკის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
-    "error405Title": "ენა არ არის მითითებული",
     "error405Desc": "გთხოვთ, დააყენოთ თქვენი ენები მთავარი მენიუდან > სწავლების პარამეტრებიდან.",
     "termsAndConditions": "წესებს და პირობებს",
     "andCertifyIAmAtLeast13YearsOfAge": "და ვადასტურებ, რომ მე მინიმუმ 16 წლის ვარ.",
-    "error502504Title": "ვაი, ბევრი სტუდენტი ონლაინშია!",
     "error502504Desc": "თარგმნის და გრამატიკის ხელსაწყოები შეიძლება იყოს ნელი ან მიუწვდომელი, სანამ პანგეა ბოტები არ დაეწევიან.",
-    "error404Title": "თარგმნის შეცდომა!",
     "error404Desc": "Pangea Bot-ი ვერ გარჩევს, როგორ უნდა თარგმნოს ეს...",
     "errorPleaseRefresh": "ჩვენ ამას ვისწრაფვით! გთხოვთ, განაახლოთ გვერდი და სცადოთ თავიდან.",
     "connectedToStaging": "დაკავშირებულია სტეიჯთან",
@@ -1436,13 +1334,9 @@
     "definitionsToolName": "სიტყვის განმარტებები",
     "definitionsToolDescription": "როდესაც ჩართულია, ლურჯი ხაზით აღნიშნული სიტყვები შეიძლება დაწკაპუნებით იხილოთ განმარტებისთვის. დაწკაპუნეთ შეტყობინებებზე განმარტებების მისაღებად.",
     "welcomeBack": "კეთილი იყოს თქვენი დაბრუნება! თუ თქვენ მონაწილეობდით 2023-2024 წლის პილოტში, გთხოვთ დაგვიკავშირდეთ თქვენი სპეციალური პილოტის გამოწერისთვის. თუ თქვენ მასწავლებელი ხართ და გაქვთ (ან თქვენი დაწესებულება აქვს) ლიცენზიები თქვენი კლასი, გთხოვთ დაგვიკავშირდეთ თქვენი მასწავლებლის გამოწერისთვის.",
-    "downloadTxtFile": "ტექსტის ფაილის ჩამოტვირთვა",
-    "downloadCSVFile": "CSV ფაილის ჩამოტვირთვა",
     "promotionalSubscriptionDesc": "ამჟამად გაქვთ სიცოცხლის ხანგრძლივობის პრომო გამოწერა. დახმარებისთვის დაუკავშირდით support@pangea.chat-ს, თქვენი გამოწერის შეცვლის მიზნით.",
     "originalSubscriptionPlatform": "გამოწერა შეძენილი {purchasePlatform}-დან",
     "oneWeekTrial": "ერთი კვირის საცდელი პერიოდი",
-    "downloadXLSXFile": "Excel ფაილის ჩამოტვირთვა",
-    "unkDisplayName": "უცნობი",
     "wwCountryDisplayName": "მსოფლიოს მასშტაბით",
     "afCountryDisplayName": "აფგანისტანი",
     "axCountryDisplayName": "ალანდის კუნძულები",
@@ -1737,7 +1631,6 @@
     "chatCapacityHasBeenChanged": "ჩატის შესაძლებლობა შეიცვალა",
     "chatCapacitySetTooLow": "ჩატის შესაძლებლობა უნდა იყოს მინიმუმ {count}.",
     "chatCapacityExplanation": "ჩატის შესაძლებლობა განსაზღვრავს წევრთა რაოდენობას, რომელიც შეიძლება იყოს ჩატში.",
-    "tooManyRequest": "ძალიან ბევრი მოთხოვნა, გთხოვთ სცადოთ მოგვიანებით.",
     "enterNumber": "გთხოვთ შეიყვანოთ მთელი რიცხვი.",
     "practice": "ვარჯიში",
     "versionNotFound": "ვერსია ვერ მოიძებნა",
@@ -1747,7 +1640,6 @@
     "deleteSubscriptionWarningTitle": "თქვენ გაქვთ აქტიური გამოწერა",
     "deleteSubscriptionWarningBody": "თქვენის ანგარიშის წაშლა ავტომატურად არ გააუქმებს თქვენს გამოწერას.",
     "manageSubscription": "მოწერის მართვა",
-    "error520Title": "გთხოვთ, სცადეთ თავიდან.",
     "error520Desc": "უკაცრავად, ვერ გავიგეთ თქვენი შეტყობინება...",
     "wordsUsed": "გამოყენებული სიტყვები",
     "level": "საფეხური",
@@ -1765,7 +1657,6 @@
     "other": "სხვა",
     "levelShort": "LVL {level}",
     "noCapacityLimit": "შესაძლებლობის შეზღუდვა არ არის",
-    "downloadGroupText": "გთხოვთ, ჩამოტვირთოთ ჯგუფის ტექსტი",
     "notificationsOn": "შეტყობინებები ჩართულია",
     "notificationsOff": "შეტყობინებები გამორთულია",
     "joinWithCode": "შეერთდით კოდის საშუალებით",
@@ -1829,24 +1720,12 @@
     "whatIsTheMorphTag": "რა არის {morphologicalFeature} '{wordForm}'-ის?",
     "dataAvailable": "მონაცემების ხელმისაწვდომობა",
     "available": "ხელმისაწვდომია",
-    "pangeaBotIsFallible": "Pangea Bot-იც შეცდომებს უშვებს!",
-    "whatIsMeaning": "რა ნიშნავს '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "შეადარეთ მნიშვნელობები სიტყვებთან შეტყობინებაში!",
-    "doubleClickToEdit": "ჩამკეცეთ ორჯერ რედაქტირებისთვის.",
-    "topicLabel": "თემა",
-    "topicPlaceholder": "აირჩიეთ თემა...",
-    "modePlaceholder": "აირჩიეთ რეჟიმი...",
-    "learningObjectiveLabel": "სწავლების მიზანი",
-    "learningObjectivePlaceholder": "აირჩიეთ სასწავლო მიზანი...",
-    "targetLanguageLabel": "მიზნობრივი ენა",
     "cefrLevelLabel": "CEFR დონე",
     "image": "სურათი",
     "video": "ვიდეო",
     "nan": "არ არის გამოყენებადი",
-    "addVocabulary": "დაამატეთ ლექსიკა",
     "instructions": "ინსტრუქციები",
-    "numberOfLearners": "სწავლողների რაოდენობა",
-    "mustBeInteger": "უნდა იყოს მთელი რიცხვი, მაგ. 1, 2, 3, ...",
     "constructUsePvmDesc": "წარმოქმნილი ხმის შეტყობინებაში",
     "leaveSpaceDescription": "კურსის დატოვებით, დატოვებთ ყველა ჩათს მასში. სხვა მომხმარებლები იხილავენ, რომ დატოვეთ კურსი.",
     "constructUseCorMmDesc": "სწორი შეტყობინების მნიშვნელობა",
@@ -1861,7 +1740,6 @@
     "ttsDisabledBody": "თქვენ შეგიძლიათ ჩართოთ ტექსტიდან ხმაში გამოთქმა თქვენი სწავლების პარამეტრებში",
     "noSpaceDescriptionYet": "ჯერ არ შექმნილა კურსის აღწერა.",
     "tooLargeToSend": "ეს შეტყობინება ძალიან დიდია გამოგზავნისთვის",
-    "exitWithoutSaving": "დარწმუნებული ხართ, რომ გსურთ დატოვოთ შენახვის გარეშე?",
     "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
     "enableAutocorrectPopupSteps": "  • პარამეტრები\n  • ზოგადი\n  • კლავიატურა\n  • კლავიატურები\n  • ახალი კლავიატურის დამატება",
     "enableAutocorrectPopupDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
@@ -1872,11 +1750,8 @@
     "displayName": "სახელის ჩვენება",
     "leaveRoomDescription": "თქვენ აპირებთ ამ ჩატის დატოვებას. სხვა მომხმარებლები იხილავენ, რომ თქვენ დატოვეთ ჩატი.",
     "confirmUserId": "გთხოვთ დაადასტუროთ თქვენი Pangea Chat-ის მომხმარებლის სახელი თქვენი ანგარიშის წაშლის მიზნით.",
-    "startingToday": "დაწყება დღეს",
-    "oneWeekFreeTrial": "ერთი კვირის უფასო საცდელი პერიოდი",
     "paidSubscriptionStarts": "დაწყება {startDate}",
     "cancelInSubscriptionSettings": "• გაუქმება ნებისმიერ დროს გამოწერის პარამეტრებში",
-    "cancelToAvoidCharges": "• გაუქმება წინასწარ {trialEnds} რათა თავიდან აიცილოთ გადასახადები",
     "downloadGboard": "ჩამოტვირთეთ Gboard",
     "autocorrectNotAvailable": "სამწუხაროდ, თქვენი პლატფორმა ამ ფუნქციისთვის ამჟამად არ არის მხარდაჭერილი. დარჩით განახლებებისთვის!",
     "pleaseUpdateApp": "გთხოვთ განაახლოთ აპლიკაცია გაგრძელებისთვის.",
@@ -1886,17 +1761,12 @@
     "knockSpaceSuccess": "თქვენ მოითხოვეთ ამ კურსში ჩართვა! ადმინისტრატორი უპასუხებს თქვენს მოთხოვნას, როდესაც მიიღებს მას 😊",
     "chooseWordAudioInstructionsBody": "მოსმინეთ სრულ შეტყობინებას. შემდეგ შეადარეთ აუდიოები მათ სიტყვებთან.",
     "chooseMorphsInstructionsBody": "დაწკაპეთ პაზლის ნაწილებს გრამატიკული კითხვებისთვის!",
-    "pleaseEnterInt": "გთხოვთ, შეიყვანეთ რიცხვი",
     "home": "მთავარი",
     "join": "შეერთება",
     "resetInstructionTooltipsTitle": "გადატვირთეთ ინსტრუქციის ხატულები",
     "resetInstructionTooltipsDesc": "დააჭირეთ, რათა აჩვენოთ ინსტრუქციის ხატულები, როგორც ახალი მომხმარებლისთვის.",
-    "randomize": "შემთხვევითი",
     "clear": "წაშლა",
-    "featuredActivities": "გამორჩეული",
     "save": "შენახვა",
-    "startChat": "დაიწყეთ ჩათი",
-    "translationProblem": "თარგმნის პრობლემა",
     "askToJoin": "მოითხოვეთ შეუერთება",
     "emptyChatWarningTitle": "ჩათი ცარიელია",
     "emptyChatWarningDesc": "თქვენ არ მოგიწვიათ ვინმე თქვენს ჩათში. გადადით ჩატის პარამეტრებში და მოიწვიეთ თქვენი კონტაქტები ან ბოტი. ასევე შეგიძლიათ ამის გაკეთება მოგვიანებით.",
@@ -1926,17 +1796,13 @@
     "timesUsedIndependently": "გამოყენებულია დამოუკიდებლად",
     "timesUsedWithAssistance": "გამოყენებულია დახმარებით",
     "shareInviteCode": "გაზიარეთ მოწვევის კოდი: {code}",
-    "leaderboard": "წინსვლის სია",
     "skipForNow": "ამ დროისთვის გამოტოვება",
     "permissions": "უფლებები",
     "spaceChildPermission": "ვინ შეუძლია დაამატოს ახალი ჩატები ამ კურსში",
-    "addEnvironmentOverride": "დამატეთ გარემოს გადახედვა",
     "defaultOption": "ნაგულისხმევი",
     "deleteChatDesc": "დარწმუნებული ხართ, რომ გსურთ ამ ჩატის წაშლა? ის წაიშლება ყველა მონაწილისთვის და ყველა შეტყობინება, რომელიც ჩატშია, აღარ იქნება ხელმისაწვდომი პრაქტიკის ან სწავლების ანალიტიკისთვის.",
     "deleteSpaceDesc": "კურსი და ნებისმიერი არჩეული ჩატები წაიშლება ყველა მონაწილისთვის და ყველა შეტყობინება, რომელიც ჩატშია, აღარ იქნება ხელმისაწვდომი პრაქტიკის ან სწავლების ანალიტიკისთვის. ეს მოქმედება ვერ იქნება გაუქმებული.",
     "launch": "შესრულება",
-    "searchChats": "ძებნა საუბრები",
-    "maxFifty": "მაქსიმუმ 50",
     "configureSpace": "კურსის კონფიგურაცია",
     "pinMessages": "მესიჯების პინვა",
     "setJoinRules": "შეადგინეთ შეუერთების წესები",
@@ -1970,9 +1836,6 @@
     "failedToFetchTranscription": "ტრანსკრიპტის მიღება ვერ მოხერხდა",
     "deleteEmptySpaceDesc": "კურსი წაიშლება ყველა მონაწილისთვის. ეს მოქმედება ვერ იქნება გაუქმებული.",
     "regenerate": "განახლება",
-    "mySavedActivities": "ჩემი შენახული აქტივობები",
-    "noSavedActivities": "შენახული აქტივობები არ არის",
-    "saveActivity": "შენახე ეს აქტივობა",
     "failedToPlayVideo": "ვიდეოს გაშვება ვერ მოხერხდა",
     "done": "შესრულებულია",
     "inThisSpace": "ამ კურსში",
@@ -1983,13 +1846,9 @@
     "numInvited": "{count} მოწვეული",
     "saved": "შენახულია",
     "reset": "გადატვირთვა",
-    "errorFetchingActivitiesMessage": "აქტივობების მიღება ვერ მოხერხდა",
     "errorFetchingDefinition": "განმარტების მიღება ვერ მოხერხდა",
     "errorProcessAnalytics": "ანალიტიკის დამუშავება ვერ მოხერხდა",
     "errorDownloading": "ჩამოტვირთვა ვერ მოხერხდა",
-    "errorLoadingSpaceChildren": "ჩათის ჩატვირთვა ვერ მოხერხდა ამ კურსში",
-    "unexpectedError": "უცნობი შეცდომა.",
-    "pleaseReload": "გთხოვთ, გადატვირთეთ და სცადეთ თავიდან.",
     "translationError": "თარგმნის შეცდომა",
     "check": "შემოწმება",
     "unableToFindRoom": "ამ კოდით ვერ მოიძებნა ჩატი ან კურსი. სცადეთ თავიდან.",
@@ -1998,19 +1857,14 @@
     "request": "მოთხოვნა",
     "requestAll": "მოთხოვნა ყველა",
     "confirmMessageUnpin": "დარწმუნებული ხართ, რომ გსურთ ამ შეტყობინების განთავსების გაუქმება?",
-    "saveAndLaunch": "შენახვა და დაწყება",
-    "launchToSpace": "გახსნა კურსზე",
     "pending": "მოლოდინში",
     "inactive": "არაქტიული",
-    "confirmRole": "დადასტურება როლი",
     "openRoleLabel": "ღია",
     "finishedTheActivity": "🎯 {username} დასრულდა ეს აქტივობა",
     "activitySummaryError": "აქტივობის მიმოხილვები ხელმისაწვდომი არაა",
     "requestSummaries": "მოთხოვნა მიმოხილვებისთვის",
-    "generatingNewActivities": "თქვენ ხართ ამ ენის წყვილის პირველი მომხმარებელი! გთხოვთ, ერთი წუთი გქონდეთ, ჩვენ ვამზადებთ აქტივობებს თქვენთვის.",
     "requestAccessTitle": "ანალიტიკის წვდომის მოთხოვნა?",
     "requestAccessDesc": "გსურთ მიიღოთ დაშვება მონაწილეთა ანალიტიკის სანახავად?\n\nთუ მონაწილეები თანხმდებიან, ამ კურსის ადმინისტრატორები შეძლებენ ნახონ მათ:\n    • საერთო ლექსიკონი\n    • საერთო გრამატიკის კონცეპტები\n    • დასრულებული აქტივობის სესიონები\n    • გამოყენებული, სწორად და არასწორად გრამატიკის კონცეპტები\n\nისინი ვერ შეძლებენ ნახონ:\n    • შეტყობინებები ჩატებში კურსის გარეთ\n    • ლექსიკონის სია",
-    "requestAccess": "მოთხოვნა დაშვებაზე ({count})",
     "analyticsInactiveTitle": "მოთხოვნები არაქტიურ მომხმარებლებს ვერ გაიგზავნება",
     "analyticsInactiveDesc": "არაქტიური მომხმარებლები, რომლებიც ამ ფუნქციის გამოჩენის შემდეგ არ შესულან, თქვენი მოთხოვნა ვერ იხილავენ.\n\nმოთხოვნის ღილაკი გამოჩნდება, როდესაც ისინი დაბრუნდებიან. შეგიძლიათ მოგვიანებით ისევ გამოაგზავნოთ მოთხოვნა მათი სახელის ქვეშ არსებული ღილაკის დაჭერით, როდესაც ის ხელმისაწვდომია.",
     "accessRequestedTitle": "ანალიტიკის დაშვების მოთხოვნა",
@@ -2033,8 +1887,6 @@
     "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
     "createGroupChatDesc": "სადაც იწყება და მთავრდება აქტივობის სესია, ჯგუფური ჩატები დარჩება ღია რეგულარული კომუნიკაციისთვის.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
-    "noCourseFound": "ოჰ, ამ კურსისთვის სჭირდება გეგმა!\n\nკურსის გეგმა არის თემების და საუბრის აქტივობების სერია.",
-    "additionalParticipants": "+ {num} სხვა",
     "whatNow": "ახლა რა?",
     "chooseNextActivity": "აირჩიეთ თქვენი შემდეგი აქტივობა!",
     "letsGo": "მოდით დავიწყოთ",
@@ -2047,13 +1899,11 @@
     "waitNotDone": "მოლოდინი, ჯერ არ დამისრულებია!",
     "waitingForOthersToFinish": "მოსალოდნელია დანარჩენების დასრულება...",
     "generatingSummary": "საუბრის ანალიზი და შედეგების გენერირება",
-    "findCourse": "კურსის მოძებნა",
     "pingParticipantsNotification": "{user} ეძებს მომხმარებლებს, რომ შეუერთდნენ აქტივობის სესიას {room}-ში",
     "course": "კურსი",
     "courses": "კურსები",
     "goToCourse": "გადადი კურსზე: {course}",
     "activityComplete": "ეს აქტივობა დასრულებულია. აქტივობის მიმოხილვა უნდა იყოს ხელმისაწვდომი ქვემოთ.",
-    "startNewSession": "ახალი სესიის დაწყება",
     "joinOpenSession": "შეერთება ღია სესიაში",
     "activityNotFound": "აქტივობა ვერ მოიძებნა",
     "myActivities": "ჩემი აქტივობები",
@@ -2166,27 +2016,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@emoteKeyboardNoRecents": {
         "type": "String",
         "placeholders": {}
     },
     "@emotePacks": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -2215,10 +2049,6 @@
         "placeholders": {}
     },
     "@enableEncryption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -2258,10 +2088,6 @@
             }
         }
     },
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@extremeOffensive": {
         "type": "String",
         "placeholders": {}
@@ -2294,15 +2120,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@chatDescriptionHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -2400,14 +2218,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "@noChatDescriptionYet": {
         "type": "String",
@@ -2525,14 +2335,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@dehydrate": {
         "type": "String",
         "placeholders": {}
@@ -2564,14 +2366,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "@logout": {
         "type": "String",
@@ -2626,14 +2420,6 @@
         "placeholders": {}
     },
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -2732,10 +2518,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addAccount": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editBundlesForAccount": {
         "type": "String",
         "placeholders": {}
@@ -2749,10 +2531,6 @@
         "placeholders": {}
     },
     "@bundleName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableMultiAccounts": {
         "type": "String",
         "placeholders": {}
     },
@@ -2800,10 +2578,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@people": {
         "type": "String",
         "placeholders": {}
@@ -2837,10 +2611,6 @@
         "placeholders": {}
     },
     "@pleaseEnter4Digits": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKey": {
         "type": "String",
         "placeholders": {}
     },
@@ -2943,10 +2713,6 @@
             }
         }
     },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unbanFromChat": {
         "type": "String",
         "placeholders": {}
@@ -2988,14 +2754,6 @@
         "placeholders": {}
     },
     "@security": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKeyLost": {
         "type": "String",
         "placeholders": {}
     },
@@ -3099,10 +2857,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@setStatus": {
         "type": "String",
         "placeholders": {}
@@ -3140,14 +2894,6 @@
         "placeholders": {}
     },
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -3203,10 +2949,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@tryToSendAgain": {
         "type": "String",
         "placeholders": {}
@@ -3253,14 +2995,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "@userAndOthersAreTyping": {
         "type": "String",
@@ -3339,14 +3073,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@visibleForAllParticipants": {
         "type": "String",
         "placeholders": {}
@@ -3383,19 +3109,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -3447,15 +3161,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@removeFromSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@start": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKeyDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3506,10 +3212,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@voiceCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unsupportedAndroidVersion": {
         "type": "String",
         "placeholders": {}
@@ -3518,15 +3220,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCallsBetaWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@experimentalVideoCalls": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@emailOrUsername": {
         "type": "String",
         "placeholders": {}
     },
@@ -3650,43 +3344,11 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
     },
     "@users": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unlockOldMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInSecureStorageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveKeyManuallyDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAndroidKeystore": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeSecurlyOnThisDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -3706,18 +3368,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@foregroundServiceRunning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingDetail": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@whyIsThisMessageEncrypted": {
         "type": "String",
         "placeholders": {}
@@ -3731,10 +3381,6 @@
         "placeholders": {}
     },
     "@newSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enterSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -3757,22 +3403,6 @@
                 "type": "String"
             }
         }
-    },
-    "@newSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@encryptThisChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@disableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@sorryThatsNotPossible": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deviceKeys": {
         "type": "String",
@@ -3827,10 +3457,6 @@
         "placeholders": {}
     },
     "@report": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setTheme": {
         "type": "String",
         "placeholders": {}
     },
@@ -3914,31 +3540,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -3994,23 +3600,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4050,28 +3644,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -4089,14 +3661,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4289,22 +3853,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4360,10 +3908,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4373,10 +3917,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4452,27 +3992,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4798,10 +4322,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4811,10 +4331,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4902,14 +4418,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4926,10 +4434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4942,15 +4446,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5102,14 +4598,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -5123,14 +4611,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6353,10 +5833,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -6397,10 +5873,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6473,10 +5945,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6746,47 +6214,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6806,19 +6234,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6882,10 +6298,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6926,14 +6338,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6945,14 +6349,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6990,10 +6386,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -7010,27 +6402,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -7154,10 +6530,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -7167,10 +6539,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -7187,14 +6555,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -7334,18 +6694,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -7394,10 +6742,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -7407,18 +6751,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -7461,23 +6793,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -7501,10 +6821,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -7512,14 +6828,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -7624,18 +6932,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -7688,10 +6984,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -7718,10 +7010,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7902,7 +7190,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "ხვედრეთ ხვალისთვის აქტივობის განახლებებისთვის.",
-    "activityDropdownDesc": "როდესაც ამ აქტივობას დაასრულებთ, დაწკაპეთ ქვემოთ",
     "languageMismatchTitle": "ენის შეუთავსებლობა",
     "languageMismatchDesc": "თქვენი სამიზნე ენა არ ემთხვევა ამ აქტივობის ენას. განაახლეთ თქვენი სამიზნე ენა?",
     "reportWordIssueTooltip": "გთხოვთ, გამოეხმაუროთ სიტყვების ინფორმაციის პრობლემას",
@@ -7915,10 +7202,6 @@
     "selectAll": "მთლიანი არჩევა",
     "deselectAll": "ყველას მოხსნა",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7967,17 +7250,11 @@
         "placeholders": {}
     },
     "startOwn": "დაიწყე შენი საკუთარი",
-    "joinCourseDesc": "ყოველ კურსზე აქვს 8-10 სერიული თემა და სხვადასხვა დავალებებზე დაფუძნებული ენის სწავლების აქტივობები.",
     "newMessageInPangeaChat": "💬 ახალი შეტყობინება Pangea ჩატში",
     "shareCourse": "გააზიარე კურსი",
     "addCourse": "დაამატე კურსი",
-    "joinPublicCourse": "შეერთდი საჯარო კურსთან",
     "vocabLevelsDesc": "ეს არის ადგილი, სადაც სიტყვები განთავსდება, როგორც კი მათ დონე გაუმჯობესდება!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7990,10 +7267,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8012,7 +7285,6 @@
     "emojiView": "ემოჯი ხედვა",
     "feedbackDialogDesc": "მეაც ვაკეთებ შეცდომებს! რაიმე, რაც დამეხმარება გაუმჯობესებაში?",
     "contactHasBeenInvitedToTheCourse": "კონტაქტი მოწვეულ იქნა კურსზე",
-    "activityStatsButtonTooltip": "აქტივობის ინფორმაცია",
     "allow": "დაშვება",
     "deny": "უარყოფა",
     "enabledRenewal": "გამოწერის განახლების გაწვდვა",
@@ -8280,10 +7552,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -9339,16 +8607,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "აქტივობები შემდეგ თემაზე გადასასვლელად",
-    "activitiesToUnlockTopicDesc": "განსაზღვრეთ აქტივობების რაოდენობა, რათა გახსნათ შემდეგი კურსის თემა",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "სწორი სიტყვების განმარტების პრაქტიკა",
     "constructUseIncLMDesc": "არასწორი სიტყვების განმარტების პრაქტიკა",
     "constructUseCorLADesc": "სწორი სიტყვების აუდიო პრაქტიკა",
@@ -9356,7 +8614,6 @@
     "constructUseBonus": "ბონუსი სიტყვების პრაქტიკის დროს",
     "practiceVocab": "სიტყვების პრაქტიკა",
     "selectMeaning": "მნიშვნელობის არჩევა",
-    "selectAudio": "შესაბამის აუდიოს არჩევა",
     "anotherRound": "მეორე რაუნდი",
     "activitySettingsOverrideWarning": "ენასა და ენების დონეს განსაზღვრავს აქტივობის გეგმა",
     "voice": "ხმა",
@@ -9388,10 +8645,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -9409,12 +8662,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "ჩამოტვირთვა დაწყებულია",
     "webDownloadPermissionMessage": "თუ თქვენი ბრაუზერი ბლოკავს ჩამოტვირთვებს, გთხოვთ გააქტიუროთ ჩამოტვირთვები ამ ვებსაიტისთვის.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -9509,11 +8757,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "რამე არასწორად მოხდა, და ჩვენ აქტიურად ვმუშაობთ ამის გამოსასწორებლად. შეამოწმეთ მოგვიანებით.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "წერის დახმარების ჩართვა",
     "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
     "@autoIGCToolName": {
@@ -9569,24 +8812,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "გრამატიკა",
-    "spanTypeWordChoice": "სიტყვების არჩევანი",
     "spanTypeSpelling": "წერა",
     "spanTypePunctuation": "ნიშნის გამოყენება",
     "spanTypeStyle": "სტილი",
     "spanTypeFluency": "მიმდინარე",
     "spanTypeAccents": "აქცენტები",
     "spanTypeCapitalization": "დიდი ასოები",
-    "spanTypeCorrection": "კორექტირება",
     "spanFeedbackTitle": "შეტყობინება კორექტირების პრობლემაზე",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -9611,10 +8843,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -9627,13 +8855,7 @@
     "longPressToRecordVoiceMessage": "ხანგრძლივი დაჭერა ხმის შეტყობინების ჩასაწერად.",
     "pause": "შეჩერება",
     "resume": "გაგრძელება",
-    "newSubSpace": "ახალი ქვესივრცე",
-    "moveToDifferentSpace": "გადაიყვანეთ სხვა სივრცეში",
-    "removeFromSpaceDescription": "ჩატი მოიხსნება სივრციდან, მაგრამ მაინც გამოჩნდება თქვენს ჩატების სიაში.",
     "countChats": "{chats} ჩატი",
-    "spaceMemberOf": "სივრცის წევრი {spaces}-ის",
-    "spaceMemberOfCanKnock": "სივრცის წევრი {spaces} შეუძლია დააკაკუნოს",
-    "donate": "გადარიცხვა",
     "startedAPoll": "{username} დაიწყო გამოკითხვა.",
     "poll": "გამოკითხვა",
     "startPoll": "დაიწყეთ გამოკითხვა",
@@ -9657,23 +8879,15 @@
     "newStickerPack": "ახალი სტიკერის პაკეტი",
     "stickerPackName": "სტიკერის პაკეტის სახელი",
     "attribution": "ატრიბუცია",
-    "skipChatBackup": "ჩეთის სარეზერვო ასლის გამოტოვება",
-    "skipChatBackupWarning": "დარწმუნებული ხართ? თუ ჩეთის სარეზერვო ასლი არ გააქტიურებთ, შესაძლოა დაკარგოთ წვდომა თქვენს შეტყობინებებზე, თუ მოწყობილობას შეცვლით.",
-    "loadingMessages": "შეტყობინებების დატვირთვა",
-    "setupChatBackup": "ჩეთის სარეზერვო ასლის დაყენება",
     "noMoreResultsFound": "მეტი შედეგი ვერ მოიძებნა",
     "chatSearchedUntil": "ჩეთი მოძიებულია {time}-მდე",
     "federationBaseUrl": "ფედერაციის ძირითადი URL",
     "clientWellKnownInformation": "კლაიენტის კარგად ცნობილი ინფორმაცია:",
     "baseUrl": "ძირითადი URL",
     "identityServer": "იდენტობის სერვერი:",
-    "versionWithNumber": "ვერსია: {version}",
     "logs": "ლოგები",
-    "advancedConfigs": "განვითარებული კონფიგურაციები",
     "advancedConfigurations": "განვითარებული კონფიგურაციები",
-    "signInWithLabel": "შეიყვანეთ:",
     "selectAllWords": "აირჩიეთ ყველა სიტყვა, რომელიც მოისმენთ აუდიოში",
-    "joinCourseForActivities": "შეერთდით კურსს, რათა სცადოთ აქტივობები.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -9710,18 +8924,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9729,26 +8931,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9854,22 +9036,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9898,19 +9064,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9918,15 +9072,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10127,11 +9273,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "კლასში ხართ? მოათავსეთ თქვენი გაწვდილი კოდი აქ.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "აუდიო შეტყობინებების ავტომატური ხაზგასმა",
     "selectAudioMessagesOnPlayDescription": "აუდიო შეტყობინებების ავტომატურად ხაზგასმა მათი დაკვრის დროს",
     "@selectAudioMessagesOnPlayToolName": {
@@ -10175,18 +9316,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "ამ კურსში თემებია, რომელთა აქტივობების რაოდენობა {input}-ზე ნაკლებია. გთხოვთ, შეიყვანოთ რიცხვი, რომელიც ნაკლებია ან თანაბარია {minValue}-ს.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "დააჭირეთ აქ, რომ კვლავ შეხვიდეთ.",
     "@clickToLogin": {
@@ -10603,17 +9732,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "კარტონული ყვითელი დათვი, რომლის ხელები აღიმართა აღფრთოვანებით.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "აირჩიეთ სიტყვები, რომ მეტი გაიგოთ მათზე",
     "requireAnalyticsAccessTitle": "ანალიტიკის წვდომა საჭიროა გაწვდისთვის",
     "requireAnalyticsAccessDesc": "მონაწილეებს უნდა მიაწვდონ წვდომა თავიანთი სასწავლო ანალიტიკაზე, რომ ამ კურსში გაწვდონ",
     "analyticsAccessNoticeTitle": "ანალიტიკის წვდომა საჭიროა",
     "analyticsAccessNoticeDesc": "ამ კურსში გაწვდით, თქვენ თანხმდებით, რომ ადმინისტრატორებს მიაწვდონ წვდომა თქვენს სასწავლო ანალიტიკაზე.",
-    "skipOnboardingClassCodeDesc": "მარტო სწავლობთ? ნუ ინერვიულებთ, შეგიძლიათ:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -10631,10 +9754,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10663,7 +9782,6 @@
     "pickCefrLevelTeacherStepTitle": "რომელი დონე ასწავლით?",
     "pickCefrLevelStudentStepTitle": "რომელი დონეზე ხართ?",
     "customCourseStepTitle": "შეავსეთ ეს ფორმა რომ მიიღოთ პერსონალური კურსი",
-    "aboutYourClass": "შენი კლასის შესახებ",
     "courseCodeStepErrorMessage": "გთხოვთ გადაამოწმოთ თქვენი კოდი და სცადოთ კიდევ ერთხელ",
     "institution": "ინსტიტუტი",
     "courseGoals": "კურსის მიზნები",
@@ -10706,10 +9824,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10826,12 +9940,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "პანჯეა ჩატის ლოგო",
     "introChatDetails": "თქვენი გამარჯობა! წარუდგინეთ თავი თქვენს თანაკურსელებს, მოიძიეთ მეგობრები და ისაუბრეთ აქტივობების გარეთ.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10875,11 +9984,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "აქტივობის მოქმედებები",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "გამოთქმის ინსტრუმენტები",
     "audioTranscription": "AI აუდიო ტრანსკრიფცია",
     "visualLearnerSupport": "ვიზუალური სწავლების მხარდაჭერა",
@@ -10920,7 +10024,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "შეერთდით კურსს, რომელიც მოიცავს ამ აქტივობას, რომ ითამაშოთ იგი.",
     "resizeCoursePanel": "კურსის პანელის ზომის შეცვლა",
     "undo": "გაუქმება",
     "unlock": "გახსნა",
@@ -10934,7 +10037,6 @@
     "addCourseBrowsePublic": "გადახედეთ საჯარო კურსებს",
     "browsePublicCourses": "გადახედეთ საჯარო კურსებს",
     "editProfile": "რედაქტირება პროფილში",
-    "numObjectives": "{count} მიზანი",
     "mapSearchHint": "ძებნა აქტივობებში",
     "mapSearchNoResults": "არ არის შესაბამისი შედეგები",
     "mapFilterAllLanguages": "ყველა ენა",
@@ -10943,7 +10045,6 @@
     "mapFilterCompleted": "დასრულებულია",
     "mapFilterReset": "გაასუფთავე",
     "activityTypeConversation": "საუბარი",
-    "lockedMissionRequirement": "გთხოვთ, დაასრულოთ წინა მისია, რომ გაახსნათ",
     "playAgain": "მორიგე თამაში",
     "reviewActivity": "მიმოხილვა",
     "mapEmptyInView": "აქ არაფერია თქვენს დონეზე ან ენაზე. გააფართოვეთ თქვენი ფილტრები ან დააკლებეთ ზუმი.",
@@ -10958,14 +10059,9 @@
     "scrollToBottom": "ქვედა მხარეზე გადახვევა",
     "courseImage": "კურსის სურათი",
     "avatarPreview": "ავატარის წინასწარი ნახვა",
-    "activityPhoto": "აქტივობის ფოტო",
     "emotePreview": "ემოჯის წინასწარი ნახვა: {name}",
     "activityLabel": "აქტივობა: {title}",
     "resetMapView": "მონიტორის ხედვის აღდგენა",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -11018,14 +10114,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -11055,10 +10143,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -11115,10 +10199,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },

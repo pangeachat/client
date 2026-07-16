@@ -44,11 +44,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Επιτρέπεται στους επισκέπτες χρήστες να συμμετάσχουν",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "blocked": "Αποκλείστηκε",
     "@blocked": {
         "type": "String",
@@ -515,31 +510,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@reportErrorDescription": {
         "type": "String",
         "placeholders": {}
     },
     "@directChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
-    "@addAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -683,10 +658,6 @@
             }
         }
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youAcceptedTheInvitation": {
         "type": "String",
         "placeholders": {}
@@ -793,10 +764,6 @@
         },
         "type": "String"
     },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unbanUserDescription": {
         "type": "String",
         "placeholders": {}
@@ -852,18 +819,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@emailOrUsername": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@chatDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@next": {
         "type": "String",
         "placeholders": {}
@@ -873,14 +828,6 @@
         "placeholders": {}
     },
     "@editRoomAliases": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enterSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@encryptThisChat": {
         "type": "String",
         "placeholders": {}
     },
@@ -912,10 +859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterRecoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@create": {
         "type": "String",
         "placeholders": {}
@@ -944,10 +887,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@addWidget": {
         "type": "String",
         "placeholders": {}
@@ -969,10 +908,6 @@
         "type": "String"
     },
     "@noKeyForThisMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1011,14 +946,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@replaceRoomWithNewerVersion": {
         "type": "String",
         "placeholders": {}
@@ -1039,15 +966,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@sender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAndroidKeystore": {
         "type": "String",
         "placeholders": {}
     },
@@ -1103,10 +1022,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -1120,10 +1035,6 @@
         "placeholders": {}
     },
     "@copy": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveKeyManuallyDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -1142,14 +1053,6 @@
     "@whyIsThisMessageEncrypted": {
         "type": "String",
         "placeholders": {}
-    },
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "@rejectedTheInvitation": {
         "type": "String",
@@ -1171,10 +1074,6 @@
             }
         }
     },
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@or": {
         "type": "String",
         "placeholders": {}
@@ -1187,19 +1086,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@emptyChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeSecurlyOnThisDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@yourChatBackupHasBeenSetUp": {
         "type": "String",
         "placeholders": {}
     },
@@ -1212,10 +1099,6 @@
         }
     },
     "@submit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@videoCallsBetaWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1246,14 +1129,6 @@
     "@participant": {
         "type": "String",
         "placeholders": {}
-    },
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "@yes": {
         "type": "String",
@@ -1336,10 +1211,6 @@
         "placeholders": {}
     },
     "@register": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unlockOldMessages": {
         "type": "String",
         "placeholders": {}
     },
@@ -1485,10 +1356,6 @@
         "placeholders": {}
     },
     "@openCamera": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKeyDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -1650,10 +1517,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@recoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@redactMessage": {
         "type": "String",
         "placeholders": {}
@@ -1721,10 +1584,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@verifyStart": {
         "type": "String",
         "placeholders": {}
@@ -1746,10 +1605,6 @@
         "placeholders": {}
     },
     "@serverRequiresEmail": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -1845,10 +1700,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@disableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@directChat": {
         "type": "String",
         "placeholders": {}
@@ -1877,15 +1728,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@foregroundServiceRunning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterAnEmailAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@voiceCall": {
         "type": "String",
         "placeholders": {}
     },
@@ -1894,10 +1737,6 @@
         "description": "Usage hint for the command /kick"
     },
     "@copiedToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1945,10 +1784,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@learnMore": {
         "type": "String",
         "placeholders": {}
@@ -1982,10 +1817,6 @@
         "placeholders": {}
     },
     "@bundleName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -2039,10 +1870,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youKicked": {
         "placeholders": {
             "user": {
@@ -2070,31 +1897,15 @@
             }
         }
     },
-    "@sorryThatsNotPossible": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@oopsSomethingWentWrong": {
         "type": "String",
         "placeholders": {}
-    },
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@shareInviteLink": {
         "type": "String",
         "placeholders": {}
     },
     "@commandHint_markasdm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKeyLost": {
         "type": "String",
         "placeholders": {}
     },
@@ -2111,14 +1922,6 @@
         "placeholders": {}
     },
     "@waitingPartnerNumbers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -2146,15 +1949,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@settings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setTheme": {
         "type": "String",
         "placeholders": {}
     },
@@ -2181,10 +1976,6 @@
                 "type": "String"
             }
         }
-    },
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@passwordForgotten": {
         "type": "String",
@@ -2342,10 +2133,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@storeInSecureStorageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openChat": {
         "type": "String",
         "placeholders": {}
@@ -2370,19 +2157,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@screenSharingDetail": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@muteChat": {
         "type": "String",
         "placeholders": {}
     },
     "@invite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableMultiAccounts": {
         "type": "String",
         "placeholders": {}
     },
@@ -2404,8 +2183,6 @@
     "changeTheNameOfTheGroup": "Αλλαγή ονόματος ομάδας",
     "channelCorruptedDecryptError": "Ο κρυπτογραφημένος κώδικας έχει καταστραφεί",
     "chat": "Συνομιλία",
-    "yourChatBackupHasBeenSetUp": "Η δημιουργία αντιγράφων ασφαλείας της συνομιλίας σας έχει ρυθμιστεί.",
-    "chatBackupDescription": "Τα παλιά σας μηνύματα είναι ασφαλή με ένα κλειδί ανάκτησης. Παρακαλώ βεβαιωθείτε ότι δεν το χάνετε.",
     "clearArchive": "Διαγραφή αρχείου",
     "commandHint_markasdm": "Σημειώστε ως άμεσο μήνυμα για το δοσμένο ID του Matrix",
     "commandHint_markasgroup": "Σημειώστε ως ομάδα",
@@ -2431,7 +2208,6 @@
     "configureChat": "Ρύθμιση συνομιλίας",
     "confirm": "Επιβεβαίωση",
     "connect": "Σύνδεση",
-    "contactHasBeenInvitedToTheGroup": "Ο επαφή έχει προσκληθεί στην ομάδα",
     "contentHasBeenReported": "Το περιεχόμενο έχει αναφερθεί στους διαχειριστές του διακομιστή",
     "copiedToClipboard": "Αντιγράφηκε στο πρόχειρο",
     "copy": "Αντιγραφή",
@@ -2439,11 +2215,9 @@
     "couldNotDecryptMessage": "Αδύνατη η αποκρυπτογράφηση μηνύματος: {error}",
     "checkList": "Λίστα ελέγχου",
     "countParticipants": "{count} συμμετέχοντες",
-    "countInvited": "{count} προσκεκλημένοι",
     "create": "Δημιουργία",
     "createdTheChat": "💬 {username} δημιούργησε τη συνομιλία",
     "createGroup": "Δημιουργία ομάδας",
-    "createNewSpace": "Νέος χώρος",
     "currentlyActive": "Ενεργό αυτήν τη στιγμή",
     "darkTheme": "Σκοτεινό",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2469,9 +2243,6 @@
     "emoteKeyboardNoRecents": "Πρόσφατα χρησιμοποιημένα emoji θα εμφανίζονται εδώ...",
     "emotePacks": "Πακέτα emoji για το δωμάτιο",
     "emoteSettings": "Ρυθμίσεις emoji",
-    "globalChatId": "Παγκόσμιο ID συνομιλίας",
-    "accessAndVisibility": "Πρόσβαση και ορατότητα",
-    "accessAndVisibilityDescription": "Ποιος επιτρέπεται να συμμετάσχει σε αυτήν τη συνομιλία και πώς μπορεί να βρεθεί η συνομιλία.",
     "calls": "Κλήσεις",
     "customEmojisAndStickers": "Προσαρμοσμένα emojis και αυτοκόλλητα",
     "customEmojisAndStickersBody": "Προσθέστε ή μοιραστείτε προσαρμοσμένα emojis ή αυτοκόλλητα που μπορούν να χρησιμοποιηθούν σε οποιαδήποτε συνομιλία.",
@@ -2479,7 +2250,6 @@
     "emptyChat": "Άδειο chat",
     "enableEmotesGlobally": "Ενεργοποίηση πακέτου emoji σε όλο το σύστημα",
     "enableEncryption": "Ενεργοποίηση κρυπτογράφησης",
-    "enableEncryptionWarning": "Δεν θα μπορείτε πλέον να απενεργοποιήσετε την κρυπτογράφηση. Είστε σίγουροι;",
     "encrypted": "Κρυπτογραφημένο",
     "encryption": "Κρυπτογράφηση",
     "encryptionNotEnabled": "Η κρυπτογράφηση δεν είναι ενεργοποιημένη",
@@ -2487,7 +2257,6 @@
     "enterAnEmailAddress": "Εισάγετε μια διεύθυνση email",
     "homeserver": "Homeserver",
     "errorObtainingLocation": "Σφάλμα κατά την απόκτηση τοποθεσίας: {error}",
-    "everythingReady": "Όλα έτοιμα!",
     "extremeOffensive": "Απολύτως προσβλητικό",
     "fileName": "Όνομα αρχείου",
     "fluffychat": "FluffyChat",
@@ -2496,9 +2265,7 @@
     "fromJoining": "Από την ένταξη",
     "fromTheInvitation": "Από την πρόσκληση",
     "group": "Ομάδα",
-    "chatDescription": "Περιγραφή συνομιλίας",
     "chatDescriptionHasBeenChanged": "Η περιγραφή της συνομιλίας άλλαξε",
-    "groupIsPublic": "Η ομάδα είναι δημόσια",
     "groups": "Ομάδες",
     "groupWith": "Ομάδα με {displayname}",
     "guestsAreForbidden": "Οι επισκέπτες απαγορεύονται",
@@ -2520,7 +2287,6 @@
     "incorrectPassphraseOrKey": "Λάθος φράση πρόσβασης ή κλειδί ανάκτησης",
     "inoffensive": "Ακίνδυνο",
     "inviteContact": "Πρόσκληση επαφής",
-    "inviteContactToGroup": "Πρόσκληση επαφής στο {groupName}",
     "noChatDescriptionYet": "Δεν έχει δημιουργηθεί ακόμη περιγραφή συνομιλίας.",
     "tryAgain": "Δοκιμάστε ξανά",
     "invalidServerName": "Μη έγκυρο όνομα διακομιστή",
@@ -2541,7 +2307,6 @@
     "leave": "Αποχώρηση",
     "leftTheChat": "Έφυγε από τη συζήτηση",
     "lightTheme": "Φωτεινό",
-    "loadCountMoreParticipants": "Φόρτωση {count} επιπλέον συμμετεχόντων",
     "dehydrate": "Εξαγωγή συνεδρίας και διαγραφή συσκευής",
     "dehydrateWarning": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Βεβαιωθείτε ότι αποθηκεύετε με ασφάλεια το αρχείο αντιγράφου ασφαλείας.",
     "hydrate": "Ανάκτηση από αρχείο δημιουργίας αντιγράφων ασφαλείας",
@@ -2550,7 +2315,6 @@
     "locationDisabledNotice": "Οι υπηρεσίες τοποθεσίας είναι απενεργοποιημένες. Παρακαλώ ενεργοποιήστε τες για να μπορείτε να μοιραστείτε την τοποθεσία σας.",
     "locationPermissionDeniedNotice": "Η άδεια τοποθεσίας απορρίφθηκε. Παρακαλώ δώστε την για να μπορείτε να μοιραστείτε την τοποθεσία σας.",
     "login": "Σύνδεση",
-    "logInTo": "Συνδεθείτε στο {homeserver}",
     "logout": "Αποσύνδεση",
     "mention": "Αναφορά",
     "messages": "Μηνύματα",
@@ -2565,8 +2329,6 @@
     "no": "Όχι",
     "noConnectionToTheServer": "Δεν υπάρχει σύνδεση με τον διακομιστή",
     "noEmotesFound": "Δεν βρέθηκαν εμοτέ. 😝",
-    "noEncryptionForPublicRooms": "Μπορείτε να ενεργοποιήσετε την κρυπτογράφηση μόνο όταν το δωμάτιο δεν είναι πλέον δημόσια προσβάσιμο.",
-    "noGoogleServicesWarning": "Το Firebase Cloud Messaging δεν φαίνεται να είναι διαθέσιμο στη συσκευή σας. Για να λαμβάνετε ακόμα ειδοποιήσεις push, προτείνουμε την εγκατάσταση του ntfy. Με το ntfy ή έναν άλλο πάροχο Unified Push μπορείτε να λαμβάνετε ειδοποιήσεις push με ασφαλή τρόπο. Μπορείτε να κατεβάσετε το ntfy από το PlayStore ή από το F-Droid.",
     "noMatrixServer": "{server1} δεν είναι διακομιστής matrix, να χρησιμοποιήσω το {server2} αντί αυτού;",
     "shareInviteLink": "Μοιραστείτε τον σύνδεσμο πρόσκλησης",
     "scanQrCode": "Σάρωση κωδικού QR",
@@ -2588,12 +2350,10 @@
     "openCamera": "Άνοιγμα κάμερας",
     "openVideoCamera": "Άνοιγμα κάμερας για βίντεο",
     "oneClientLoggedOut": "Ένας από τους πελάτες σας έχει αποσυνδεθεί",
-    "addAccount": "Προσθήκη λογαριασμού",
     "editBundlesForAccount": "Επεξεργασία πακέτων για αυτόν τον λογαριασμό",
     "addToBundle": "Προσθήκη στο πακέτο",
     "removeFromBundle": "Αφαίρεση από αυτό το πακέτο",
     "bundleName": "Όνομα πακέτου",
-    "enableMultiAccounts": "(BETA) Ενεργοποίηση πολλαπλών λογαριασμών σε αυτήν τη συσκευή",
     "openInMaps": "Άνοιγμα στους χάρτες",
     "link": "Σύνδεσμος",
     "serverRequiresEmail": "Αυτός ο διακομιστής χρειάζεται να επικυρώσει τη διεύθυνση email σας για εγγραφή.",
@@ -2605,7 +2365,6 @@
     "passwordHasBeenChanged": "Ο κωδικός πρόσβασης έχει αλλάξει",
     "overview": "Επισκόπηση",
     "passwordRecoverySettings": "Ρυθμίσεις ανάκτησης κωδικού πρόσβασης",
-    "passwordRecovery": "Ανάκτηση κωδικού πρόσβασης",
     "people": "Άνθρωποι",
     "pickImage": "Επιλέξτε μια εικόνα",
     "pin": "Καρφίτσωμα",
@@ -2614,7 +2373,6 @@
     "pleaseChooseAPasscode": "Παρακαλώ επιλέξτε έναν κωδικό πρόσβασης",
     "pleaseClickOnLink": "Παρακαλώ κάντε κλικ στον σύνδεσμο στο email και συνεχίστε.",
     "pleaseEnter4Digits": "Παρακαλώ εισάγετε 4 ψηφία ή αφήστε κενό για να απενεργοποιήσετε το κλείδωμα εφαρμογής.",
-    "pleaseEnterRecoveryKey": "Παρακαλώ εισάγετε το κλειδί ανάκτησης σας:",
     "pleaseEnterYourPassword": "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας",
     "pleaseEnterYourPin": "Παρακαλώ εισάγετε το PIN σας",
     "pleaseEnterYourUsername": "Παρακαλώ εισάγετε το όνομα χρήστη σας",
@@ -2634,7 +2392,6 @@
     "rejectedTheInvitation": "{username} απέρριψε την πρόσκληση",
     "removeAllOtherDevices": "Αφαίρεση όλων των άλλων συσκευών",
     "removedBy": "Αφαιρέθηκε από {username}",
-    "removeDevice": "Αφαίρεση συσκευής",
     "unbanFromChat": "Άρση αποκλεισμού από τη συνομιλία",
     "removeYourAvatar": "Αφαίρεση του προφίλ σας",
     "replaceRoomWithNewerVersion": "Αντικαταστήστε το δωμάτιο με νεότερη έκδοση",
@@ -2646,8 +2403,6 @@
     "saveFile": "Αποθήκευση αρχείου",
     "search": "Αναζήτηση",
     "security": "Ασφάλεια",
-    "recoveryKey": "Κλειδί ανάκτησης",
-    "recoveryKeyLost": "Έχετε χάσει το κλειδί ανάκτησης;",
     "send": "Αποστολή",
     "sendAMessage": "Αποστολή μηνύματος",
     "sendAsText": "Αποστολή ως κείμενο",
@@ -2666,7 +2421,6 @@
     "separateChatTypes": "Διαχωρισμός άμεσων μηνυμάτων και ομάδων",
     "setAsCanonicalAlias": "Ορισμός ως κύριο ψευδώνυμο",
     "setChatDescription": "Ορισμός περιγραφής συνομιλίας",
-    "setPermissionsLevel": "Ορισμός επιπέδου δικαιωμάτων",
     "setStatus": "Ορισμός κατάστασης",
     "settings": "Ρυθμίσεις",
     "share": "Κοινοποίηση",
@@ -2676,8 +2430,6 @@
     "presencesToggle": "Εμφάνιση μηνυμάτων κατάστασης από άλλους χρήστες",
     "skip": "Παραλείπω",
     "sourceCode": "Κώδικας πηγής",
-    "spaceIsPublic": "Ο χώρος είναι δημόσιος",
-    "spaceName": "Όνομα χώρου",
     "startedACall": "{senderName} ξεκίνησε μια κλήση",
     "status": "Κατάσταση",
     "statusExampleMessage": "Πώς είστε σήμερα;",
@@ -2689,7 +2441,6 @@
     "theyMatch": "Ταιριάζουν",
     "title": "FluffyChat",
     "tooManyRequestsWarning": "Πάρα πολλά αιτήματα. Παρακαλώ δοκιμάστε ξανά αργότερα!",
-    "transferFromAnotherDevice": "Μεταφορά από άλλη συσκευή",
     "tryToSendAgain": "Προσπαθήστε ξανά να στείλετε",
     "unavailable": "Μη διαθέσιμο",
     "unbannedUser": "{username} άρπαξε τον αποκλεισμό του {targetName}",
@@ -2699,7 +2450,6 @@
     "unknownEvent": "Άγνωστο γεγονός '{type}'",
     "unmuteChat": "Αναίρεση σίγασης συνομιλίας",
     "unpin": "Αφαίρεση από την κορυφή",
-    "unreadChats": "{unreadCount, plural, =1{1 μη αναγνωσμένο μήνυμα} other{{unreadCount} μη αναγνωσμένα μηνύματα}}",
     "userAndOthersAreTyping": "{username} και {count} άλλοι πληκτρολογούν…",
     "userAndUserAreTyping": "{username} και {username2} πληκτρολογούν…",
     "userIsTyping": "{username} πληκτρολογεί…",
@@ -2712,8 +2462,6 @@
     "verifyStart": "Ξεκινήστε την επαλήθευση",
     "verifySuccess": "Επιτυχής επαλήθευση!",
     "verifyTitle": "Επαλήθευση άλλου λογαριασμού",
-    "videoCall": "Βιντεοκλήση",
-    "visibilityOfTheChatHistory": "Ορατότητα του ιστορικού συνομιλίας",
     "visibleForAllParticipants": "Ορατό για όλους τους συμμετέχοντες",
     "visibleForEveryone": "Ορατό για όλους",
     "voiceMessage": "Φωνητικό μήνυμα",
@@ -2723,10 +2471,7 @@
     "wallpaper": "Φόντο:",
     "warning": "Προειδοποίηση!",
     "weSentYouAnEmail": "Σας στείλαμε ένα email",
-    "whoCanPerformWhichAction": "Ποιος μπορεί να εκτελέσει ποια ενέργεια",
-    "whoIsAllowedToJoinThisGroup": "Ποιος επιτρέπεται να συμμετάσχει σε αυτήν την ομάδα",
     "whyDoYouWantToReportThis": "Γιατί θέλετε να αναφέρετε αυτό;",
-    "wipeChatBackup": "Διαγράψτε το αντίγραφο ασφαλείας της συνομιλίας σας για να δημιουργήσετε ένα νέο κλειδί ανάκτησης;",
     "withTheseAddressesRecoveryDescription": "Με αυτές τις διευθύνσεις μπορείτε να ανακτήσετε τον κωδικό πρόσβασής σας.",
     "writeAMessage": "Γράψτε ένα μήνυμα…",
     "yes": "Ναι",
@@ -2739,9 +2484,7 @@
     "messageType": "Τύπος μηνύματος",
     "sender": "Αποστολέας",
     "openGallery": "Άνοιγμα γκαλερί",
-    "removeFromSpace": "Αφαίρεση από τον χώρο",
     "start": "Έναρξη",
-    "pleaseEnterRecoveryKeyDescription": "Για να ξεκλειδώσετε τα παλιά μηνύματά σας, εισάγετε το κλειδί ανάκτησης που δημιουργήθηκε σε προηγούμενη συνεδρία. Το κλειδί ανάκτησης ΔΕΝ είναι ο κωδικός πρόσβασής σας.",
     "publish": "Δημοσίευση",
     "openChat": "Άνοιγμα συνομιλίας",
     "markAsRead": "Σημείωσε ως διαβασμένο",
@@ -2752,12 +2495,9 @@
     "confirmEventUnpin": "Είστε βέβαιοι ότι θέλετε να αποσυνδέσετε οριστικά το γεγονός;",
     "emojis": "Εμοji",
     "placeCall": "Κάντε κλήση",
-    "voiceCall": "Φωνητική κλήση",
     "unsupportedAndroidVersion": "Μη υποστηριζόμενη έκδοση Android",
     "unsupportedAndroidVersionLong": "Αυτή η λειτουργία απαιτεί νεότερη έκδοση Android. Παρακαλούμε ελέγξτε για ενημερώσεις ή υποστήριξη Lineage OS.",
-    "videoCallsBetaWarning": "Παρακαλούμε σημειώστε ότι οι βιντεοκλήσεις βρίσκονται επί του παρόντος σε beta. Μπορεί να μην λειτουργούν όπως αναμένεται ή καθόλου σε όλες τις πλατφόρμες.",
     "experimentalVideoCalls": "Πειραματικές βιντεοκλήσεις",
-    "emailOrUsername": "Email ή όνομα χρήστη",
     "addWidget": "Προσθήκη widget",
     "widgetVideo": "Βίντεο",
     "widgetEtherpad": "Κείμενο σημείωσης",
@@ -2779,35 +2519,19 @@
     "youKickedAndBanned": "🙅‍♀️ Απομακρύνατε και αποκλείσατε τον {user}",
     "youUnbannedUser": "Απελευθερώσατε τον {user}",
     "hasKnocked": "🚪 {user} χτύπησε",
-    "usersMustKnock": "Οι χρήστες πρέπει να χτυπήσουν",
-    "noOneCanJoin": "Κανείς δεν μπορεί να συμμετάσχει",
     "knock": "Χτύπημα",
     "users": "Χρήστες",
-    "unlockOldMessages": "Ξεκλείδωμα παλαιών μηνυμάτων",
-    "storeInSecureStorageDescription": "Αποθηκεύστε το κλειδί ανάκαμψης στην ασφαλή αποθήκευση αυτής της συσκευής.",
-    "saveKeyManuallyDescription": "Αποθηκεύστε αυτό το κλειδί χειροκίνητα ενεργοποιώντας το διάλογο κοινής χρήσης συστήματος ή το πρόχειρο.",
-    "storeInAndroidKeystore": "Αποθήκευση στο Android KeyStore",
-    "storeInAppleKeyChain": "Αποθήκευση στο Apple KeyChain",
-    "storeSecurlyOnThisDevice": "Αποθήκευση με ασφάλεια σε αυτήν τη συσκευή",
     "countFiles": "{count} αρχεία",
     "user": "Χρήστης",
     "custom": "Προσαρμοσμένο",
-    "foregroundServiceRunning": "Αυτή η ειδοποίηση εμφανίζεται όταν τρέχει η υπηρεσία μπροστά.",
-    "screenSharingTitle": "κοινή χρήση οθόνης",
-    "screenSharingDetail": "Μοιράζεστε την οθόνη σας στο FuffyChat",
     "whyIsThisMessageEncrypted": "Γιατί αυτό το μήνυμα είναι μη αναγνώσιμο;",
     "noKeyForThisMessage": "Αυτό μπορεί να συμβεί αν το μήνυμα στάλθηκε πριν συνδεθείτε στον λογαριασμό σας σε αυτήν τη συσκευή.\n\nΕίναι επίσης πιθανό ο αποστολέας να έχει μπλοκάρει τη συσκευή σας ή να υπήρξε κάποιο πρόβλημα με τη σύνδεση στο διαδίκτυο.\n\nΜπορείτε να διαβάσετε το μήνυμα σε μια άλλη συνεδρία; Τότε μπορείτε να μεταφέρετε το μήνυμα από αυτήν! Μεταβείτε στις Ρυθμίσεις > Συσκευές και βεβαιωθείτε ότι οι συσκευές σας έχουν επαληθευτεί η μία την άλλη. Όταν ανοίξετε ξανά το δωμάτιο και και οι δύο συνεδρίες είναι στην μπροστινή γραμμή, τα κλειδιά θα μεταδοθούν αυτόματα.\n\nΔεν θέλετε να χάσετε τα κλειδιά κατά το αποσύνδεση ή την αλλαγή συσκευής; Βεβαιωθείτε ότι έχετε ενεργοποιήσει την εφεδρεία συνομιλίας στις ρυθμίσεις.",
     "newGroup": "Νέα ομάδα",
     "newSpace": "Νέος χώρος",
-    "enterSpace": "Εισέλθετε στον χώρο",
     "allSpaces": "Όλοι οι χώροι",
     "hidePresences": "Απόκρυψη λίστας κατάστασης;",
     "doNotShowAgain": "Μην το εμφανίζετε ξανά",
     "wasDirectChatDisplayName": "Άδειο chat (ήταν {oldDisplayName})",
-    "newSpaceDescription": "Οι χώροι σας επιτρέπουν να ενοποιήσετε τις συνομιλίες σας και να δημιουργήσετε ιδιωτικές ή δημόσιες κοινότητες.",
-    "encryptThisChat": "Κρυπτογραφήστε αυτήν τη συνομιλία",
-    "disableEncryptionWarning": "Για λόγους ασφαλείας, δεν μπορείτε να απενεργοποιήσετε την κρυπτογράφηση σε μια συνομιλία όπου είχε ενεργοποιηθεί προηγουμένως.",
-    "sorryThatsNotPossible": "Λυπούμαστε... αυτό δεν είναι δυνατό",
     "deviceKeys": "Κλειδιά συσκευής:",
     "reopenChat": "Άνοιγμα ξανά συνομιλίας",
     "noBackupWarning": "Προειδοποίηση! Χωρίς ενεργοποίηση αντιγράφου ασφαλείας συνομιλίας, θα χάσετε την πρόσβαση στα κρυπτογραφημένα μηνύματά σας. Συνιστάται ιδιαίτερα να ενεργοποιήσετε το αντίγραφο ασφαλείας πριν αποσυνδεθείτε.",
@@ -2820,7 +2544,6 @@
     "openLinkInBrowser": "Άνοιγμα συνδέσμου στον περιηγητή",
     "reportErrorDescription": "😞 Ωχ. Κάτι πήγε στραβά. Αν θέλετε, μπορείτε να αναφέρετε αυτό το σφάλμα στους προγραμματιστές.",
     "report": "αναφορά",
-    "setTheme": "Ορίστε θέμα:",
     "setColorTheme": "Ορίστε χρωματικό θέμα:",
     "invite": "Πρόσκληση",
     "inviteGroupChat": "📨 Πρόσκληση σε ομαδική συνομιλία",
@@ -2839,12 +2562,8 @@
     "yourGlobalUserIdIs": "Το παγκόσμιο αναγνωριστικό χρήστη σας είναι: ",
     "noUsersFoundWithQuery": "Δυστυχώς, δεν βρέθηκε χρήστης με την ερώτηση \"{query}\". Παρακαλώ ελέγξτε αν κάνατε τυπογραφικό λάθος.",
     "knocking": "Χτυπάει",
-    "chatCanBeDiscoveredViaSearchOnServer": "Η συνομιλία μπορεί να βρεθεί μέσω της αναζήτησης στο {server}",
-    "searchChatsRooms": "Αναζήτηση για #συνομιλίες, @χρήστες...",
     "nothingFound": "Δεν βρέθηκε τίποτα...",
     "groupName": "Όνομα ομάδας",
-    "createGroupAndInviteUsers": "Δημιουργήστε μια ομάδα και προσκαλέστε χρήστες",
-    "groupCanBeFoundViaSearch": "Η ομάδα μπορεί να βρεθεί μέσω αναζήτησης",
     "wrongRecoveryKey": "Λυπάμαι... αυτό δεν φαίνεται να είναι το σωστό κλειδί ανάκτησης.",
     "startConversation": "Ξεκινήστε συνομιλία",
     "commandHint_sendraw": "Αποστολή ακατέργαστου json",
@@ -2858,11 +2577,8 @@
     "pleaseChooseAStrongPassword": "Παρακαλώ επιλέξτε έναν ισχυρό κωδικό πρόσβασης",
     "passwordsDoNotMatch": "Οι κωδικοί πρόσβασης δεν ταιριάζουν",
     "passwordIsWrong": "Ο εισαγόμενος κωδικός πρόσβασης είναι λανθασμένος",
-    "publicChatAddresses": "Διευθύνσεις δημόσιων συνομιλιών",
-    "createNewAddress": "Δημιουργία νέας διεύθυνσης",
     "joinSpace": "Συμμετοχή στον χώρο",
     "publicSpaces": "Δημόσιοι χώροι",
-    "addChatOrSubSpace": "Προσθήκη συνομιλίας ή υποχώρου",
     "subspace": "Υποχώρος",
     "decline": "Απόρριψη",
     "thisDevice": "Αυτή η συσκευή:",
@@ -2871,15 +2587,11 @@
     "searchMore": "Αναζήτηση περισσότερο...",
     "gallery": "Πινακοθήκη",
     "files": "Αρχεία",
-    "sessionLostBody": "Η συνεδρία σας χάθηκε. Παρακαλούμε αναφέρετε αυτό το σφάλμα στους προγραμματιστές στο {url}. Το μήνυμα σφάλματος είναι: {error}",
-    "restoreSessionBody": "Η εφαρμογή προσπαθεί τώρα να επαναφέρει τη συνεδρία σας από το αντίγραφο ασφαλείας. Παρακαλούμε αναφέρετε αυτό το σφάλμα στους προγραμματιστές στο {url}. Το μήνυμα σφάλματος είναι: {error}",
     "sendReadReceipts": "Αποστολή αποδείξεων ανάγνωσης",
     "sendTypingNotificationsDescription": "Οι άλλοι συμμετέχοντες σε μια συνομιλία μπορούν να δουν πότε πληκτρολογείτε ένα νέο μήνυμα.",
     "sendReadReceiptsDescription": "Οι άλλοι συμμετέχοντες σε μια συνομιλία μπορούν να δουν πότε έχετε διαβάσει ένα μήνυμα.",
     "formattedMessages": "Μορφοποιημένα μηνύματα",
     "formattedMessagesDescription": "Εμφάνιση πλούσιου περιεχομένου μηνυμάτων όπως έντονο κείμενο χρησιμοποιώντας markdown.",
-    "verifyOtherUser": "🔐 Επιβεβαίωση άλλου χρήστη",
-    "verifyOtherUserDescription": "Αν επιβεβαιώσετε έναν άλλο χρήστη, μπορείτε να είστε σίγουροι ότι γνωρίζετε πραγματικά σε ποιον γράφετε. 💪\n\nΌταν ξεκινάτε μια επιβεβαίωση, εσείς και ο άλλος χρήστης θα δείτε ένα αναδυόμενο παράθυρο στην εφαρμογή. Εκεί θα δείτε μια σειρά από emoji ή αριθμούς που πρέπει να συγκρίνετε μεταξύ σας.\n\nΟ καλύτερος τρόπος να το κάνετε αυτό είναι να συναντηθείτε ή να ξεκινήσετε μια βιντεκλήση. 👭",
     "verifyOtherDevice": "🔐 Επιβεβαίωση άλλης συσκευής",
     "verifyOtherDeviceDescription": "Όταν επιβεβαιώνετε μια άλλη συσκευή, αυτές οι συσκευές μπορούν να ανταλλάξουν κλειδιά, αυξάνοντας τη συνολική ασφάλειά σας. 💪 Όταν ξεκινάτε μια επιβεβαίωση, θα εμφανιστεί ένα αναδυόμενο παράθυρο στην εφαρμογή και στις δύο συσκευές. Εκεί θα δείτε μια σειρά από emoji ή αριθμούς που πρέπει να συγκρίνετε. Είναι καλύτερο να έχετε και τις δύο συσκευές έτοιμες πριν ξεκινήσετε την επιβεβαίωση. 🤳",
     "acceptedKeyVerification": "{sender} αποδέχτηκε την επιβεβαίωση κλειδιού",
@@ -2915,10 +2627,6 @@
     "updateInstalled": "🎉 Εγκαταστάθηκε η ενημέρωση {version}!",
     "changelog": "Αλλαγές",
     "sendCanceled": "Η αποστολή ακυρώθηκε",
-    "loginWithMatrixId": "Σύνδεση με Matrix-ID",
-    "discoverHomeservers": "Ανακαλύψτε τους διακομιστές",
-    "whatIsAHomeserver": "Τι είναι ένας διακομιστής σπιτιού;",
-    "homeserverDescription": "Όλα τα δεδομένα σας αποθηκεύονται στον διακομιστή σπιτιού, όπως και ένας πάροχος email. Μπορείτε να επιλέξετε ποιον διακομιστή σπιτιού θέλετε να χρησιμοποιήσετε, ενώ μπορείτε ακόμα να επικοινωνείτε με όλους. Μάθετε περισσότερα στο https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "Δεν φαίνεται να είναι συμβατός διακομιστής σπιτιού. Λάθος URL;",
     "calculatingFileSize": "Υπολογισμός μεγέθους αρχείου...",
     "prepareSendingAttachment": "Ετοιμασία αποστολής συνημμένου...",
@@ -2930,11 +2638,9 @@
     "oneOfYourDevicesIsNotVerified": "Ένα από τα συσκευές σας δεν είναι επαληθευμένο",
     "noticeChatBackupDeviceVerification": "Σημείωση: Όταν συνδέσετε όλες τις συσκευές σας στο αντίγραφο ασφαλείας συνομιλίας, αυτομάτως επαληθεύονται.",
     "continueText": "Συνέχεια",
-    "welcomeText": "Γεια Γεια 👋 Αυτό είναι το FluffyChat. Μπορείτε να συνδεθείτε σε οποιονδήποτε διακομιστή σπιτιού, ο οποίος είναι συμβατός με το https://matrix.org. Και στη συνέχεια να συνομιλήσετε με οποιονδήποτε. Είναι ένα τεράστιο αποκεντρωμένο δίκτυο μηνυμάτων!",
     "blur": "Θάμπωμα:",
     "opacity": "Αδιαφάνεια:",
     "setWallpaper": "Ορισμός φόντου",
-    "manageAccount": "Διαχείριση λογαριασμού",
     "noContactInformationProvided": "Ο διακομιστής δεν παρέχει έγκυρες πληροφορίες επικοινωνίας",
     "contactServerAdmin": "Επικοινωνήστε με τον διαχειριστή του διακομιστή",
     "contactServerSecurity": "Επικοινωνία με την ασφάλεια διακομιστή",
@@ -2953,11 +2659,8 @@
     "unableToJoinChat": "Αδύνατη η συμμετοχή στη συνομιλία. Ίσως το άλλο μέρος έχει ήδη κλείσει τη συνομιλία.",
     "previous": "Προηγούμενο",
     "otherPartyNotLoggedIn": "Το άλλο μέρος δεν είναι αυτήν τη στιγμή συνδεδεμένο και επομένως δεν μπορεί να λάβει μηνύματα!",
-    "appWantsToUseForLogin": "Χρησιμοποιήστε '{server}' για σύνδεση",
-    "appWantsToUseForLoginDescription": "Επιτρέπετε στην εφαρμογή και στον ιστότοπο να μοιράζονται πληροφορίες σχετικά με εσάς.",
     "open": "Άνοιγμα",
     "waitingForServer": "Αναμονή για διακομιστή...",
-    "appIntroduction": "Το FluffyChat σας επιτρέπει να συνομιλείτε με τους φίλους σας σε διαφορετικά μηνύματα. Μάθετε περισσότερα στο https://matrix.org ή απλώς πατήστε *Συνέχεια*.",
     "newChatRequest": "📩 Νέα αίτηση συνομιλίας",
     "contentNotificationSettings": "Ρυθμίσεις ειδοποιήσεων περιεχομένου",
     "generalNotificationSettings": "Γενικές ρυθμίσεις ειδοποιήσεων",
@@ -3034,11 +2737,9 @@
     "taTooltip": "L2 χρήση με βοήθεια μετάφρασης",
     "interactiveTranslatorSliderHeader": "Διαδραστικός Μεταφραστής",
     "interactiveGrammarSliderHeader": "Διαδραστικός Έλεγχος Γραμματικής",
-    "interactiveTranslatorRequired": "Απαιτείται",
     "waTooltip": "Χρήση L2 χωρίς βοήθεια",
     "interactiveTranslator": "Βοήθεια μετάφρασης",
     "noIdenticalLanguages": "Παρακαλώ επιλέξτε διαφορετικές βασικές και στόχους γλώσσες",
-    "searchBy": "Αναζήτηση με βάση χώρα και γλώσσες",
     "joinWithClassCode": "Εγγραφή στο μάθημα",
     "languageLevelPreA1": "Νέος Χαμηλός (Προ Α1)",
     "languageLevelA1": "Νέος Μέσος (A1)",
@@ -3059,19 +2760,14 @@
     "saveChanges": "Αποθήκευση αλλαγών",
     "publicProfileTitle": "Να επιτρέπεται η εύρεση του προφίλ μου στην αναζήτηση",
     "publicProfileDesc": "Με την ενεργοποίηση, επιτρέπετε σε άλλους χρήστες να βρουν το προφίλ σας στη διεθνή γραμμή αναζήτησης και να στείλουν αιτήματα συνομιλίας. Σε αυτό το σημείο, μπορείτε να επιλέξετε να αποδεχτείτε ή να αρνηθείτε το αίτημα.",
-    "errorDisableIT": "Η βοήθεια μετάφρασης είναι απενεργοποιημένη.",
-    "errorDisableIGC": "Η βοήθεια γραμματικής είναι απενεργοποιημένη.",
     "errorDisableITUserDesc": "Κάντε κλικ εδώ για να ενημερώσετε τις ρυθμίσεις βοήθειας μετάφρασης",
     "errorDisableIGCUserDesc": "Κάντε κλικ εδώ για να ενημερώσετε τις ρυθμίσεις βοήθειας γραμματικής",
     "errorDisableITClassDesc": "Η βοήθεια μετάφρασης είναι απενεργοποιημένη για το μάθημα στο οποίο βρίσκεται αυτή η συνομιλία.",
     "errorDisableIGCClassDesc": "Η βοήθεια γραμματικής είναι απενεργοποιημένη για το μάθημα στο οποίο βρίσκεται αυτή η συνομιλία.",
-    "error405Title": "Οι γλώσσες δεν έχουν οριστεί",
     "error405Desc": "Ορίστε τις γλώσσες σας στο Μενού > Ρυθμίσεις Μάθησης.",
     "termsAndConditions": "Όρους και Προϋποθέσεις",
     "andCertifyIAmAtLeast13YearsOfAge": " και πιστοποιώ ότι είμαι τουλάχιστον 16 ετών.",
-    "error502504Title": "Ω, υπάρχουν πολλοί μαθητές online!",
     "error502504Desc": "Τα εργαλεία μετάφρασης και γραμματικής ενδέχεται να είναι αργά ή μη διαθέσιμα ενώ οι bots της Pangea ενημερώνονται.",
-    "error404Title": "Σφάλμα μετάφρασης!",
     "error404Desc": "Ο Pangea Bot δεν είναι σίγουρος πώς να μεταφράσει αυτό...",
     "errorPleaseRefresh": "Το ερευνούμε! Παρακαλούμε ανανεώστε και δοκιμάστε ξανά.",
     "connectedToStaging": "Συνδεδεμένο με το Staging",
@@ -3109,13 +2805,9 @@
     "definitionsToolName": "Ορισμοί Λέξεων",
     "definitionsToolDescription": "Όταν ενεργοποιείται, οι λέξεις με υπογράμμιση μπλε μπορούν να πατηθούν για ορισμούς. Πατήστε μηνύματα για πρόσβαση στους ορισμούς.",
     "welcomeBack": "Καλώς ήρθατε ξανά! Αν ήσασταν μέρος του πιλοτικού προγράμματος 2023-2024, παρακαλούμε επικοινωνήστε μαζί μας για τη ειδική σας συνδρομή πιλοτικού προγράμματος. Αν είστε εκπαιδευτικός που έχει αγοράσει (ή η εκπαιδευτική σας ιδιότητα έχει αγοράσει) άδειες για την τάξη σας, επικοινωνήστε μαζί μας για τη συνδρομή εκπαιδευτικού.",
-    "downloadTxtFile": "Λήψη αρχείου κειμένου",
-    "downloadCSVFile": "Λήψη αρχείου CSV",
     "promotionalSubscriptionDesc": "Έχετε επί του παρόντος μια συνδρομή προώθησης διάρκειας ζωής. Στείλτε μήνυμα στο support@pangea.chat για βοήθεια στην αλλαγή της συνδρομής σας.",
     "originalSubscriptionPlatform": "Συνδρομή αγοράστηκε μέσω {purchasePlatform}",
     "oneWeekTrial": "Δοκιμαστική περίοδος μιας εβδομάδας",
-    "downloadXLSXFile": "Λήψη αρχείου Excel",
-    "unkDisplayName": "Άγνωστο",
     "wwCountryDisplayName": "Παγκόσμιος",
     "afCountryDisplayName": "Αφγανιστάν",
     "axCountryDisplayName": "Νήσοι Αλάντες",
@@ -3410,7 +3102,6 @@
     "chatCapacityHasBeenChanged": "Η χωρητικότητα της συνομιλίας άλλαξε",
     "chatCapacitySetTooLow": "Η χωρητικότητα της συνομιλίας πρέπει να είναι τουλάχιστον {count}.",
     "chatCapacityExplanation": "Η χωρητικότητα της συνομιλίας περιορίζει τον αριθμό των μελών που επιτρέπονται σε μια συνομιλία.",
-    "tooManyRequest": "Πάρα πολλά αιτήματα, παρακαλώ δοκιμάστε ξανά αργότερα.",
     "enterNumber": "Παρακαλώ εισάγετε μια ακέραια τιμή.",
     "practice": "Εξάσκηση",
     "versionNotFound": "Δεν βρέθηκε έκδοση",
@@ -3420,7 +3111,6 @@
     "deleteSubscriptionWarningTitle": "Έχετε ενεργή συνδρομή",
     "deleteSubscriptionWarningBody": "Η διαγραφή του λογαριασμού σας δεν θα ακυρώσει αυτόματα τη συνδρομή σας.",
     "manageSubscription": "Διαχείριση συνδρομής",
-    "error520Title": "Παρακαλώ δοκιμάστε ξανά.",
     "error520Desc": "Λυπούμαστε, δεν καταλάβαμε το μήνυμά σας...",
     "wordsUsed": "Χρησιμοποιημένες λέξεις",
     "level": "Επίπεδο",
@@ -3438,7 +3128,6 @@
     "other": "Άλλο",
     "levelShort": "ΕΠΙΠΕΔΟ {level}",
     "noCapacityLimit": "Χωρίς όριο χωρητικότητας",
-    "downloadGroupText": "Λήψη κειμένου ομάδας",
     "notificationsOn": "Ειδοποιήσεις ενεργές",
     "notificationsOff": "Ειδοποιήσεις απενεργοποιημένες",
     "joinWithCode": "Συμμετοχή με κωδικό",
@@ -3502,24 +3191,12 @@
     "whatIsTheMorphTag": "Τι είναι το {morphologicalFeature} του '{wordForm}'?",
     "dataAvailable": "Διαθεσιμότητα δεδομένων",
     "available": "Διαθέσιμο",
-    "pangeaBotIsFallible": "Ο Pangea Bot κάνει και λάθη!",
-    "whatIsMeaning": "Τι σημαίνει το '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Ταιριάξτε τις σημασίες με τις λέξεις στο μήνυμα!",
-    "doubleClickToEdit": "Διπλό κλικ για επεξεργασία.",
-    "topicLabel": "Θέμα",
-    "topicPlaceholder": "Επιλέξτε ένα θέμα...",
-    "modePlaceholder": "Επιλέξτε μια λειτουργία...",
-    "learningObjectiveLabel": "Στόχος μάθησης",
-    "learningObjectivePlaceholder": "Επιλέξτε στόχο μάθησης...",
-    "targetLanguageLabel": "Στόχος γλώσσα",
     "cefrLevelLabel": "Επίπεδο CEFR",
     "image": "Εικόνα",
     "video": "Βίντεο",
     "nan": "Μη εφαρμόσιμο",
-    "addVocabulary": "Προσθήκη λεξιλογίου",
     "instructions": "Οδηγίες",
-    "numberOfLearners": "Αριθμός μαθητών",
-    "mustBeInteger": "Πρέπει να είναι ακέραιος π.χ. 1, 2, 3, ...",
     "constructUsePvmDesc": "Παράγεται σε φωνητικό μήνυμα",
     "leaveSpaceDescription": "Αφήνοντας το μάθημα, θα αφήσετε όλες τις συνομιλίες μέσα σε αυτό. Οι άλλοι χρήστες θα δουν ότι έχετε φύγει από το μάθημα.",
     "constructUseCorMmDesc": "Ορθό μήνυμα σημασίας",
@@ -3534,7 +3211,6 @@
     "ttsDisabledBody": "Μπορείτε να ενεργοποιήσετε τη φωνητική ανάγνωση στις ρυθμίσεις εκμάθησης",
     "noSpaceDescriptionYet": "Δεν έχει δημιουργηθεί ακόμη περιγραφή μαθήματος.",
     "tooLargeToSend": "Αυτό το μήνυμα είναι πολύ μεγάλο για αποστολή",
-    "exitWithoutSaving": "Είστε βέβαιοι ότι θέλετε να φύγετε χωρίς να αποθηκεύσετε;",
     "enableAutocorrectPopupTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας στόχου πηγαίνοντας στα:",
     "enableAutocorrectPopupSteps": "  • Ρυθμίσεις\n  • Γενικά\n  • Πληκτρολόγιο\n  • Πληκτρολόγια\n  • Προσθήκη νέου πληκτρολογίου",
     "enableAutocorrectPopupDescription": "Μόλις επιλεγεί η γλώσσα, μπορείτε να κάνετε κλικ στο μικρό εικονίδιο του κόσμου στο κάτω αριστερό μέρος του πληκτρολογίου σας για να ενεργοποιήσετε το νέο εγκατεστημένο πληκτρολόγιο.",
@@ -3545,11 +3221,8 @@
     "displayName": "Εμφανιζόμενο όνομα",
     "leaveRoomDescription": "Πρόκειται να φύγετε από αυτήν τη συνομιλία. Οι άλλοι χρήστες θα δουν ότι έχετε φύγει.",
     "confirmUserId": "Παρακαλούμε επιβεβαιώστε το όνομα χρήστη Pangea Chat για να διαγράψετε τον λογαριασμό σας.",
-    "startingToday": "Από σήμερα",
-    "oneWeekFreeTrial": "Μια εβδομάδα δωρεάν δοκιμής",
     "paidSubscriptionStarts": "Ξεκινάει {startDate}",
     "cancelInSubscriptionSettings": "• Ακύρωση οποιαδήποτε στιγμή στις ρυθμίσεις συνδρομής",
-    "cancelToAvoidCharges": "• Ακύρωση πριν από {trialEnds} για να αποφύγετε χρεώσεις",
     "downloadGboard": "Κατεβάστε το Gboard",
     "autocorrectNotAvailable": "Δυστυχώς, η πλατφόρμα σας δεν υποστηρίζεται αυτήν τη στιγμή για αυτήν τη λειτουργία. Μείνετε συντονισμένοι για περαιτέρω ανάπτυξη!",
     "pleaseUpdateApp": "Παρακαλούμε ενημερώστε την εφαρμογή για να συνεχίσετε.",
@@ -3559,17 +3232,12 @@
     "knockSpaceSuccess": "Έχετε ζητήσει να συμμετάσχετε σε αυτό το μάθημα! Ένας διαχειριστής θα απαντήσει στο αίτημά σας μόλις το λάβει 😀",
     "chooseWordAudioInstructionsBody": "Ακούστε το πλήρες μήνυμα. Στη συνέχεια, ταιριάξτε τα ηχητικά με τις λέξεις.",
     "chooseMorphsInstructionsBody": "Κάντε κλικ στα κομμάτια παζλ για γραμματικές ερωτήσεις!",
-    "pleaseEnterInt": "Παρακαλούμε εισάγετε έναν αριθμό",
     "home": "Αρχική",
     "join": "Συμμετοχή",
     "resetInstructionTooltipsTitle": "Επαναφορά οδηγιών βοήθειας",
     "resetInstructionTooltipsDesc": "Κάντε κλικ για να εμφανίσετε ξανά τις οδηγίες βοήθειας, όπως για έναν ολοκαίνουργιο χρήστη.",
-    "randomize": "Τυχαία επιλογή",
     "clear": "Καθαρισμός",
-    "featuredActivities": "Προτεινόμενες",
     "save": "Αποθήκευση",
-    "startChat": "Ξεκίνα μια συνομιλία",
-    "translationProblem": "Πρόβλημα μετάφρασης",
     "askToJoin": "Ζήτησε να συμμετάσχεις",
     "emptyChatWarningTitle": "Η συνομιλία είναι κενή",
     "emptyChatWarningDesc": "Δεν έχεις προσκαλέσει κανέναν στη συνομιλία σου. Πήγαινε στις ρυθμίσεις συνομιλίας για να προσκαλέσεις τις επαφές σου ή το Bot. Μπορείς επίσης να το κάνεις αργότερα.",
@@ -3599,17 +3267,13 @@
     "timesUsedIndependently": "Χρησιμοποιήθηκε αυτόνομα",
     "timesUsedWithAssistance": "Χρησιμοποιήθηκε με βοήθεια",
     "shareInviteCode": "Μοιραστείτε τον κωδικό πρόσκλησης: {code}",
-    "leaderboard": "Κατάταξη",
     "skipForNow": "Παραλείψτε προς το παρόν",
     "permissions": "Άδειες",
     "spaceChildPermission": "Ποιος μπορεί να προσθέσει νέες συνομιλίες σε αυτό το μάθημα",
-    "addEnvironmentOverride": "Προσθήκη παραμέτρου περιβάλλοντος",
     "defaultOption": "Προεπιλογή",
     "deleteChatDesc": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτήν τη συνομιλία; Θα διαγραφεί για όλους τους συμμετέχοντες και όλα τα μηνύματα μέσα στη συνομιλία δεν θα είναι πλέον διαθέσιμα για πρακτική ή αναλυτικά δεδομένα μάθησης.",
     "deleteSpaceDesc": "Το μάθημα και οποιεσδήποτε επιλεγμένες συνομιλίες θα διαγραφούν για όλους τους συμμετέχοντες και όλα τα μηνύματα μέσα στη συνομιλία δεν θα είναι πλέον διαθέσιμα για πρακτική ή αναλυτικά δεδομένα μάθησης. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
     "launch": "Έναρξη",
-    "searchChats": "Αναζήτηση συνομιλιών",
-    "maxFifty": "Μέγιστο 50",
     "configureSpace": "Διαμόρφωση μαθήματος",
     "pinMessages": "Καρφιτσώστε μηνύματα",
     "setJoinRules": "Ορίστε κανόνες συμμετοχής",
@@ -3643,9 +3307,6 @@
     "failedToFetchTranscription": "Αποτυχία λήψης μεταγραφής",
     "deleteEmptySpaceDesc": "Το μάθημα θα διαγραφεί για όλους τους συμμετέχοντες. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
     "regenerate": "Αναδημιουργία",
-    "mySavedActivities": "Αποθηκευμένες Δραστηριότητες μου",
-    "noSavedActivities": "Δεν υπάρχουν αποθηκευμένες δραστηριότητες",
-    "saveActivity": "Αποθήκευση αυτής της δραστηριότητας",
     "failedToPlayVideo": "Αποτυχία αναπαραγωγής βίντεο",
     "done": "Ολοκληρώθηκε",
     "inThisSpace": "Σε αυτό το μάθημα",
@@ -3656,13 +3317,9 @@
     "numInvited": "{count} προσκεκλημένοι",
     "saved": "Αποθηκευμένο",
     "reset": "Επαναφορά",
-    "errorFetchingActivitiesMessage": "Αποτυχία λήψης δραστηριοτήτων",
     "errorFetchingDefinition": "Αποτυχία λήψης ορισμού",
     "errorProcessAnalytics": "Αποτυχία επεξεργασίας αναλυτικών στοιχείων",
     "errorDownloading": "Η λήψη απέτυχε",
-    "errorLoadingSpaceChildren": "Αποτυχία φόρτωσης συνομιλιών εντός αυτού του μαθήματος",
-    "unexpectedError": "Απρόβλεπτο σφάλμα.",
-    "pleaseReload": "Παρακαλώ επαναφορτώστε και δοκιμάστε ξανά.",
     "translationError": "Σφάλμα μετάφρασης",
     "check": "Έλεγχος",
     "unableToFindRoom": "Δεν βρέθηκε συνομιλία ή μάθημα με αυτόν τον κωδικό. Παρακαλώ δοκιμάστε ξανά.",
@@ -3671,19 +3328,14 @@
     "request": "Αίτημα",
     "requestAll": "Ζήτηση Όλα",
     "confirmMessageUnpin": "Είστε σίγουροι ότι θέλετε να αποσυνδέσετε αυτό το μήνυμα;",
-    "saveAndLaunch": "Αποθήκευση και Εκκίνηση",
-    "launchToSpace": "Εκκίνηση στην πορεία",
     "pending": "Εκκρεμεί",
     "inactive": "Ανενεργό",
-    "confirmRole": "Επιβεβαίωση ρόλου",
     "openRoleLabel": "ΑΝΟΙΧΤΟ",
     "finishedTheActivity": "🎯 {username} ολοκλήρωσε αυτήν τη δραστηριότητα",
     "activitySummaryError": "Οι περιλήψεις δραστηριοτήτων δεν είναι διαθέσιμες",
     "requestSummaries": "Αιτήματα περιλήψεων",
-    "generatingNewActivities": "Είστε ο πρώτος χρήστης αυτής της ζεύξης γλωσσών! Παρακαλούμε δώστε μας ένα λεπτό, ετοιμάζουμε δραστηριότητες αποκλειστικά για εσάς.",
     "requestAccessTitle": "Ζητήστε πρόσβαση σε αναλύσεις;",
     "requestAccessDesc": "Θα θέλατε να ζητήσετε πρόσβαση για να δείτε τα αναλυτικά στοιχεία των συμμετεχόντων;\n\nΑν οι συμμετέχοντες συμφωνήσουν, οι διαχειριστές αυτού του μαθήματος θα μπορούν να δουν:\n    • συνολικό λεξιλόγιο\n    • συνολικές γραμματικές έννοιες\n    • συνολικές συνεδρίες δραστηριότητας που ολοκληρώθηκαν\n    • τις συγκεκριμένες γραμματικές έννοιες που χρησιμοποιήθηκαν, σωστά και λανθασμένα\n\nΔεν θα μπορούν να δουν:\n    • μηνύματα σε συνομιλίες εκτός του μαθήματος\n    • λίστα λεξιλογίου",
-    "requestAccess": "Αίτηση πρόσβασης ({count})",
     "analyticsInactiveTitle": "Οι αιτήσεις σε ανενεργούς χρήστες δεν μπορούν να σταλούν",
     "analyticsInactiveDesc": "Οι ανενεργοί χρήστες που δεν έχουν συνδεθεί από τότε που εισήχθη αυτή η λειτουργία δεν θα δουν το αίτημά σας.\n\nΤο κουμπί Αίτημα θα εμφανιστεί μόλις επιστρέψουν. Μπορείτε να ξαναστείλετε το αίτημα αργότερα κάνοντας κλικ στο κουμπί Αίτημα κάτω από το όνομά τους όταν είναι διαθέσιμο.",
     "accessRequestedTitle": "Αίτημα πρόσβασης στα αναλυτικά στοιχεία",
@@ -3706,8 +3358,6 @@
     "accessDesc": "Μπορείτε να κάνετε το μάθημά σας ανοιχτό στον κόσμο! Ή, να το κρατήσετε ιδιωτικό και ασφαλές.",
     "createGroupChatDesc": "Ενώ οι συνεδρίες δραστηριοτήτων ξεκινούν και τελειώνουν, οι ομαδικές συνομιλίες θα παραμένουν ανοιχτές για τακτική επικοινωνία.",
     "deleteDesc": "Μόνο διαχειριστές μπορούν να διαγράψουν ένα μάθημα. Αυτή είναι μια καταστροφική ενέργεια που αφαιρεί όλους τους χρήστες και διαγράφει όλες τις επιλεγμένες συνομιλίες εντός του μαθήματος. Προχωρήστε με προσοχή.",
-    "noCourseFound": "Ωχ, αυτό το μάθημα χρειάζεται ένα πλάνο!\n\nΤα πλάνα μαθημάτων είναι μια σειρά θεμάτων και δραστηριοτήτων συζήτησης.",
-    "additionalParticipants": "+ {num} άλλοι",
     "whatNow": "Τι τώρα;",
     "chooseNextActivity": "Επιλέξτε την επόμενη δραστηριότητά σας!",
     "letsGo": "Πάμε",
@@ -3720,13 +3370,11 @@
     "waitNotDone": "Περίμενε, δεν έχω τελειώσει!",
     "waitingForOthersToFinish": "Αναμονή για τους υπόλοιπους να τελειώσουν...",
     "generatingSummary": "Ανάλυση συνομιλίας και δημιουργία αποτελεσμάτων",
-    "findCourse": "Βρείτε ένα μάθημα",
     "pingParticipantsNotification": "{user} ψάχνει χρήστες να συμμετάσχουν στη συνεδρία δραστηριότητας στο {room}",
     "course": "Μάθημα",
     "courses": "Μαθήματα",
     "goToCourse": "Πήγαινε στο μάθημα: {course}",
     "activityComplete": "Αυτή η δραστηριότητα έχει ολοκληρωθεί. Η περίληψη της δραστηριότητας θα πρέπει να είναι διαθέσιμη παρακάτω.",
-    "startNewSession": "Ξεκινήστε νέα συνεδρία",
     "joinOpenSession": "Συμμετοχή σε ανοιχτή συνεδρία",
     "activityNotFound": "Δεν βρέθηκε δραστηριότητα",
     "myActivities": "Οι δραστηριότητές μου",
@@ -3772,26 +3420,6 @@
     "@@locale": "el",
     "@@last_modified": "2026-07-13 10:08:00.885569",
     "@checkList": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3871,14 +3499,6 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
@@ -3903,31 +3523,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -3983,23 +3583,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4039,28 +3627,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -4078,14 +3644,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4278,22 +3836,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4349,10 +3891,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4362,10 +3900,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4441,27 +3975,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4779,10 +4297,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4792,10 +4306,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4883,14 +4393,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4907,10 +4409,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4923,15 +4421,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5083,14 +4573,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -5104,14 +4586,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6334,10 +5808,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -6378,10 +5848,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6454,10 +5920,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6727,47 +6189,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6787,19 +6209,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6863,10 +6273,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6907,14 +6313,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6926,14 +6324,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6971,10 +6361,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6991,27 +6377,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -7135,10 +6505,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -7148,10 +6514,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -7168,14 +6530,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -7315,18 +6669,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -7375,10 +6717,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -7388,18 +6726,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -7442,23 +6768,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -7482,10 +6796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -7493,14 +6803,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -7605,18 +6907,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -7669,10 +6959,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -7699,10 +6985,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7883,7 +7165,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Ελέγξτε ξανά αύριο για ενημερώσεις δραστηριότητας.",
-    "activityDropdownDesc": "Όταν τελειώσετε με αυτή τη δραστηριότητα, κάντε κλικ παρακάτω",
     "languageMismatchTitle": "Αντιφάσεις γλώσσας",
     "languageMismatchDesc": "Η γλώσσα στόχος σας δεν ταιριάζει με τη γλώσσα αυτής της δραστηριότητας. Θέλετε να ενημερώσετε τη γλώσσα στόχο;",
     "reportWordIssueTooltip": "Αναφορά προβλήματος με τις πληροφορίες της λέξης",
@@ -7896,10 +7177,6 @@
     "selectAll": "Επιλογή όλων",
     "deselectAll": "Αποεπιλογή όλων",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7948,17 +7225,11 @@
         "placeholders": {}
     },
     "startOwn": "Ξεκίνα το δικό σου",
-    "joinCourseDesc": "Κάθε μάθημα έχει 8-10 διαδοχικά θέματα με μια σειρά δραστηριοτήτων μάθησης γλώσσας βασισμένων σε εργασίες.",
     "newMessageInPangeaChat": "🔊 Νέο μήνυμα στο Pangea Chat",
     "shareCourse": "Μοιράσου το μάθημα",
     "addCourse": "Πρόσθεσε ένα μάθημα",
-    "joinPublicCourse": "Συνδεθείτε σε δημόσιο μάθημα",
     "vocabLevelsDesc": "Εδώ θα προστεθούν οι λέξεις λεξιλογίου μόλις τις αναβαθμίσετε!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7971,10 +7242,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7993,7 +7260,6 @@
     "emojiView": "Προβολή emoji",
     "feedbackDialogDesc": "Κάνω λάθη κι εγώ! Οτιδήποτε μπορεί να με βοηθήσει να βελτιωθώ;",
     "contactHasBeenInvitedToTheCourse": "Η επαφή έχει προσκληθεί στο μάθημα",
-    "activityStatsButtonTooltip": "Πληροφορίες δραστηριότητας",
     "allow": "Επιτρέπω",
     "deny": "Αρνούμαι",
     "enabledRenewal": "Ενεργοποίηση Ανανέωσης Συνδρομής",
@@ -8261,10 +7527,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -9320,16 +8582,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Δραστηριότητες για Ξεκλείδωμα Επόμενου Θέματος",
-    "activitiesToUnlockTopicDesc": "Ορίστε τον αριθμό των δραστηριοτήτων για να ξεκλειδώσετε το επόμενο θέμα του μαθήματος",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Διόρθωση πρακτικής ορισμού λεξιλογίου",
     "constructUseIncLMDesc": "Λάθος πρακτική ορισμού λεξιλογίου",
     "constructUseCorLADesc": "Διόρθωση πρακτικής ήχου λεξιλογίου",
@@ -9337,7 +8589,6 @@
     "constructUseBonus": "Μπόνους κατά τη διάρκεια της πρακτικής λεξιλογίου",
     "practiceVocab": "Πρακτική λεξιλογίου",
     "selectMeaning": "Επιλέξτε την έννοια",
-    "selectAudio": "Επιλέξτε τον αντίστοιχο ήχο",
     "anotherRound": "Μια ακόμη γύρος",
     "activitySettingsOverrideWarning": "Η γλώσσα και το επίπεδο γλώσσας καθορίζονται από το σχέδιο δραστηριότητας",
     "voice": "Φωνή",
@@ -9369,10 +8620,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -9390,12 +8637,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Η λήψη ξεκίνησε",
     "webDownloadPermissionMessage": "Εάν ο περιηγητής σας μπλοκάρει τις λήψεις, παρακαλώ ενεργοποιήστε τις λήψεις για αυτόν τον ιστότοπο.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -9490,11 +8732,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Κάτι πήγε στραβά και εργαζόμαστε σκληρά για να το διορθώσουμε. Έλεγξε ξανά αργότερα.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Ενεργοποίηση βοήθειας γραφής",
     "autoIGCToolDescription": "Αυτόματα εκτελέστε τα εργαλεία Pangea Chat για να διορθώσετε τα αποσταλμένα μηνύματα στη γλώσσα στόχο.",
     "@autoIGCToolName": {
@@ -9518,13 +8755,7 @@
     "longPressToRecordVoiceMessage": "Πατήστε παρατεταμένα για να ηχογραφήσετε φωνητικό μήνυμα.",
     "pause": "Παύση",
     "resume": "Συνέχεια",
-    "newSubSpace": "Νέος υποχώρος",
-    "moveToDifferentSpace": "Μετακίνηση σε διαφορετικό χώρο",
-    "removeFromSpaceDescription": "Η συνομιλία θα αφαιρεθεί από το χώρο αλλά θα εμφανίζεται ακόμα στη λίστα συνομιλιών σας.",
     "countChats": "{chats} συνομιλίες",
-    "spaceMemberOf": "Μέλος χώρου {spaces}",
-    "spaceMemberOfCanKnock": "Μέλος χώρου {spaces} μπορεί να χτυπήσει",
-    "donate": "Δωρεά",
     "startedAPoll": "{username} ξεκίνησε μια δημοσκόπηση.",
     "poll": "Δημοσκόπηση",
     "startPoll": "Ξεκινήστε τη δημοσκόπηση",
@@ -9548,23 +8779,15 @@
     "newStickerPack": "Νέο πακέτο αυτοκόλλητων",
     "stickerPackName": "Όνομα πακέτου αυτοκόλλητων",
     "attribution": "Αναγνώριση",
-    "skipChatBackup": "Παράλειψη αντιγράφου ασφαλείας συνομιλίας",
-    "skipChatBackupWarning": "Είστε σίγουροι; Χωρίς την ενεργοποίηση του αντιγράφου ασφαλείας συνομιλίας, μπορεί να χάσετε την πρόσβαση στα μηνύματά σας αν αλλάξετε συσκευή.",
-    "loadingMessages": "Φόρτωση μηνυμάτων",
-    "setupChatBackup": "Ρύθμιση αντιγράφου ασφαλείας συνομιλίας",
     "noMoreResultsFound": "Δεν βρέθηκαν περισσότερα αποτελέσματα",
     "chatSearchedUntil": "Η συνομιλία αναζητήθηκε μέχρι {time}",
     "federationBaseUrl": "Βασικό URL Ομοσπονδίας",
     "clientWellKnownInformation": "Πληροφορίες Πελάτη-Γνωστές:",
     "baseUrl": "Βασικό URL",
     "identityServer": "Διακομιστής Ταυτότητας:",
-    "versionWithNumber": "Έκδοση: {version}",
     "logs": "Καταγραφές",
-    "advancedConfigs": "Προχωρημένες Ρυθμίσεις",
     "advancedConfigurations": "Προχωρημένες ρυθμίσεις",
-    "signInWithLabel": "Συνδεθείτε με:",
     "selectAllWords": "Επιλέξτε όλες τις λέξεις που ακούτε στον ήχο",
-    "joinCourseForActivities": "Εγγραφείτε σε ένα μάθημα για να δοκιμάσετε δραστηριότητες.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -9601,18 +8824,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9620,26 +8831,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9745,22 +8936,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9789,19 +8964,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9809,27 +8972,16 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
         "type": "String",
         "placeholders": {}
     },
-    "@joinCourseForActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spanTypeGrammar": "Γραμματική",
-    "spanTypeWordChoice": "Επιλογή Λέξης",
     "spanTypeSpelling": "Ορθογραφία",
     "spanTypePunctuation": "Στίξη",
     "spanTypeStyle": "Στυλ",
     "spanTypeFluency": "Άνεση",
     "spanTypeAccents": "Τονισμοί",
     "spanTypeCapitalization": "Κεφαλαιοποίηση",
-    "spanTypeCorrection": "Διόρθωση",
     "spanFeedbackTitle": "Αναφορά προβλήματος διόρθωσης",
     "aboutMeHint": "Σχετικά με εμένα",
     "changeEmail": "Αλλαγή email",
@@ -9839,14 +8991,6 @@
     "greatPractice": "Υπέροχη πρακτική!",
     "usedNoHints": "Καλή δουλειά που δεν χρησιμοποίησες καμία υπόδειξη!",
     "youveCompletedPractice": "Ολοκλήρωσες την πρακτική, συνέχισε έτσι για να βελτιωθείς!",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -9868,10 +9012,6 @@
         "placeholders": {}
     },
     "@spanTypeCapitalization": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeCorrection": {
         "type": "String",
         "placeholders": {}
     },
@@ -10108,11 +9248,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "Σε μάθημα; Βάλε τον κωδικό συμμετοχής σου εδώ.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Αυτόματη επισήμανση ηχητικών μηνυμάτων",
     "selectAudioMessagesOnPlayDescription": "Αυτόματα επισήμανση ηχητικών μηνυμάτων κατά την αναπαραγωγή",
     "@selectAudioMessagesOnPlayToolName": {
@@ -10156,18 +9291,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Αυτό το μάθημα έχει θέματα με λιγότερες από {input} δραστηριότητες. Παρακαλώ εισάγετε έναν αριθμό μικρότερο ή ίσο με {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Κάντε κλικ εδώ για να συνδεθείτε ξανά.",
     "@clickToLogin": {
@@ -10584,17 +9707,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Ένας καρτουνίστικος κίτρινος αρκούδος με τα χέρια του υψωμένα από ενθουσιασμό.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Επιλέξτε λέξεις για να μάθετε περισσότερα γι' αυτές",
     "requireAnalyticsAccessTitle": "Απαιτείται πρόσβαση σε αναλύσεις για να συμμετάσχετε",
     "requireAnalyticsAccessDesc": "Οι συμμετέχοντες πρέπει να παραχωρήσουν πρόσβαση στις αναλύσεις μάθησής τους για να συμμετάσχουν σε αυτό το μάθημα",
     "analyticsAccessNoticeTitle": "Απαιτείται πρόσβαση σε αναλύσεις",
     "analyticsAccessNoticeDesc": "Με την συμμετοχή σας σε αυτό το μάθημα, συμφωνείτε να παραχωρήσετε στους διαχειριστές πρόσβαση στις αναλύσεις μάθησής σας.",
-    "skipOnboardingClassCodeDesc": "Μαθαίνετε ανεξάρτητα; Μην ανησυχείτε, μπορείτε να:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -10612,10 +9729,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10644,7 +9757,6 @@
     "pickCefrLevelTeacherStepTitle": "Ποιο επίπεδο διδάσκετε;",
     "pickCefrLevelStudentStepTitle": "Ποιο επίπεδο είστε;",
     "customCourseStepTitle": "Συμπληρώστε αυτή τη φόρμα για να αποκτήσετε ένα προσαρμοσμένο μάθημα",
-    "aboutYourClass": "Σχετικά με την τάξη σας",
     "courseCodeStepErrorMessage": "Παρακαλώ ελέγξτε τον κωδικό σας και δοκιμάστε ξανά",
     "institution": "Ίδρυμα",
     "courseGoals": "Στόχοι Μαθήματος",
@@ -10687,10 +9799,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10807,12 +9915,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Λογότυπο Pangea Chat",
     "introChatDetails": "Πες γειά! Παρουσίασε τον εαυτό σου στους υπόλοιπους συμμετέχοντες του μαθήματος, βρες φίλους και συνομιλήστε εκτός δραστηριοτήτων.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10856,11 +9959,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Ενέργειες δραστηριότητας",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Εργαλεία προφοράς",
     "audioTranscription": "Αυτόματη μεταγραφή ήχου",
     "visualLearnerSupport": "Υποστήριξη οπτικών μαθητών",
@@ -10901,7 +9999,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Εγγραφείτε σε ένα μάθημα που περιλαμβάνει αυτή τη δραστηριότητα για να το παίξετε.",
     "resizeCoursePanel": "Αλλαγή μεγέθους πίνακα μαθήματος",
     "undo": "Αναίρεση",
     "unlock": "Ξεκλείδωμα",
@@ -10915,7 +10012,6 @@
     "addCourseBrowsePublic": "Περιήγηση σε δημόσια μαθήματα",
     "browsePublicCourses": "Περιήγηση σε δημόσια μαθήματα",
     "editProfile": "Επεξεργασία προφίλ",
-    "numObjectives": "{count} στόχοι",
     "mapSearchHint": "Αναζητήστε δραστηριότητες",
     "mapSearchNoResults": "Δεν υπάρχουν αποτελέσματα στην προβολή",
     "mapFilterAllLanguages": "Όλες οι γλώσσες",
@@ -10924,7 +10020,6 @@
     "mapFilterCompleted": "Ολοκληρώθηκε",
     "mapFilterReset": "Επαναφορά",
     "activityTypeConversation": "Συζήτηση",
-    "lockedMissionRequirement": "Ολοκληρώστε την προηγούμενη αποστολή για να ξεκλειδώσετε",
     "playAgain": "Παίξτε ξανά",
     "reviewActivity": "Αξιολόγηση",
     "mapEmptyInView": "Δεν υπάρχει τίποτα εδώ στο επίπεδό σας ή στη γλώσσα σας. Διευρύνετε τα φίλτρα σας ή απομακρυνθείτε.",
@@ -10939,14 +10034,9 @@
     "scrollToBottom": "Κύλιση προς τα κάτω",
     "courseImage": "Εικόνα μαθήματος",
     "avatarPreview": "Προεπισκόπηση avatar",
-    "activityPhoto": "Φωτογραφία δραστηριότητας",
     "emotePreview": "Προεπισκόπηση emote: {name}",
     "activityLabel": "Δραστηριότητα: {title}",
     "resetMapView": "Επαναφορά προβολής χάρτη",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10999,14 +10089,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -11036,10 +10118,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -11096,10 +10174,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
