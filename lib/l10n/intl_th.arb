@@ -10276,5 +10276,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "สิทธิ์ของคอร์ส",
+    "starsToUnlockObjectiveTitle": "ดาวต่อภารกิจ",
+    "starsToUnlockObjectiveDesc": "กำหนดจำนวนดาวที่จำเป็นต่อการทำแต่ละภารกิจให้สำเร็จ",
+    "maxStarsPerMissionWarning": "คอร์สนี้มีภารกิจที่สามารถได้รับดาวสูงสุดเพียง {maxValue} ดวงเท่านั้น โปรดป้อนตัวเลขที่น้อยกว่าหรือเท่ากับ {maxValue}",
+    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ"
 }

@@ -9247,5 +9247,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "སློབ་ཚན་གྱི་ཆོག་མཆན།",
+    "starsToUnlockObjectiveTitle": "འགན་འཁྲི་རེར་སྐར་མ།",
+    "starsToUnlockObjectiveDesc": "འགན་འཁྲི་རེ་མཇུག་སྒྲིལ་བར་དགོས་པའི་སྐར་གྲངས་གཏན་འབེབས་བྱེད་པ།",
+    "maxStarsPerMissionWarning": "སློབ་ཚན་འདིའི་ནང་འགན་འཁྲི་ཁ་ཤས་ལ་སྐར་མ་ {maxValue} ལས་བསྒྲུབ་མི་ཐུབ། གྲངས་ཀ་ {maxValue} དང་མཉམ་པ་ཡང་ན་ཆུང་བ་ཞིག་བཅུག་རོགས།",
+    "removedFromCourseError": "ཁྱེད་རང་སློབ་ཚན་འདི་ནས་ཕྱིར་འབུད་བྱས་འདུག དགེ་རྒན་ལ་འབྲེལ་བ་བྱོས།"
 }

@@ -9999,5 +9999,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Autorisations du cours",
+    "starsToUnlockObjectiveTitle": "Étoiles par mission",
+    "starsToUnlockObjectiveDesc": "Définissez le nombre d'étoiles nécessaires pour terminer chaque mission",
+    "maxStarsPerMissionWarning": "Ce cours contient des missions où seulement {maxValue} étoiles peuvent être gagnées. Veuillez entrer un nombre inférieur ou égal à {maxValue}.",
+    "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur."
 }

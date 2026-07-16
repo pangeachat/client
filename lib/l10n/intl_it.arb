@@ -9717,5 +9717,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Permessi del corso",
+    "starsToUnlockObjectiveTitle": "Stelle per missione",
+    "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
+    "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
+    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante."
 }

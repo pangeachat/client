@@ -10138,5 +10138,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Oprávnění kurzu",
+    "starsToUnlockObjectiveTitle": "Hvězdy za misi",
+    "starsToUnlockObjectiveDesc": "Nastavte počet hvězd potřebných k dokončení každé mise",
+    "maxStarsPerMissionWarning": "Tento kurz obsahuje mise, ve kterých lze získat pouze {maxValue} hvězd. Zadejte prosím číslo menší nebo rovné {maxValue}.",
+    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele."
 }

@@ -9945,5 +9945,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Ders izinleri",
+    "starsToUnlockObjectiveTitle": "Görev Başına Yıldız",
+    "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
+    "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
+    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin."
 }

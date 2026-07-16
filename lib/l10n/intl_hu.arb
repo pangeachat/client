@@ -9747,5 +9747,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurzusjogosultságok",
+    "starsToUnlockObjectiveTitle": "Csillagok küldetésenként",
+    "starsToUnlockObjectiveDesc": "Állítsa be a küldetések teljesítéséhez szükséges csillagok számát",
+    "maxStarsPerMissionWarning": "Ez a kurzus olyan küldetéseket tartalmaz, ahol csak {maxValue} csillag szerezhető. Kérjük, adjon meg egy {maxValue} értékkel egyenlő vagy annál kisebb számot.",
+    "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát."
 }

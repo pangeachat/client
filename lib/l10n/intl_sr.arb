@@ -10599,5 +10599,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Dozvole za kurs",
+    "starsToUnlockObjectiveTitle": "Zvezdice po misiji",
+    "starsToUnlockObjectiveDesc": "Podesite broj zvezdica potrebnih za završetak svake misije",
+    "maxStarsPerMissionWarning": "Ovaj kurs ima misije gde se može zaraditi samo {maxValue} zvezdica. Unesite broj manji ili jednak {maxValue}.",
+    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika."
 }

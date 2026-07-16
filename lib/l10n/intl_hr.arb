@@ -10080,5 +10080,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Dozvole za tečaj",
+    "starsToUnlockObjectiveTitle": "Zvijezde po misiji",
+    "starsToUnlockObjectiveDesc": "Postavite broj zvjezdica potrebnih za dovršetak svake misije",
+    "maxStarsPerMissionWarning": "Ovaj tečaj ima misije gdje se može zaraditi samo {maxValue} zvjezdica. Unesite broj manji ili jednak {maxValue}.",
+    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju."
 }

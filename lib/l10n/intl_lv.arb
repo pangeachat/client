@@ -9644,5 +9644,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kursa atļaujas",
+    "starsToUnlockObjectiveTitle": "Zvaigznes par misiju",
+    "starsToUnlockObjectiveDesc": "Iestatiet zvaigžņu skaitu, kas nepieciešams katras misijas pabeigšanai",
+    "maxStarsPerMissionWarning": "Šajā kursā ir misijas, kurās var nopelnīt tikai {maxValue} zvaigznes. Lūdzu, ievadiet skaitli, kas ir mazāks vai vienāds ar {maxValue}.",
+    "removedFromCourseError": "Jūs esat noņemts no šī kursa. Sazinieties ar savu skolotāju."
 }

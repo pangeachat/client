@@ -10586,5 +10586,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Permissiones de curso",
+    "starsToUnlockObjectiveTitle": "Stellas per Mission",
+    "starsToUnlockObjectiveDesc": "Define le numero de stellas necessari pro completar cata mission",
+    "maxStarsPerMissionWarning": "Iste curso ha missiones ubi solmente {maxValue} stellas pote esser ganiate. Per favor entra un numero minus que o equal a {maxValue}.",
+    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator."
 }
