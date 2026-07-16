@@ -1,7 +1,6 @@
-import 'package:intl/intl.dart';
-
 import 'package:fluffychat/features/subscription/enums/invoice_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
+import 'package:fluffychat/pangea/common/utils/price_formatter.dart';
 
 class InvoiceHistoryResponse extends BaseResponse {
   final List<Invoice> invoices;
@@ -82,15 +81,11 @@ class Invoice {
   }
 
   String get totalDisplay {
-    final updatedAmount = total / 100;
-    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
-    return "$symbol$updatedAmount";
+    return PriceFormatter.format(currency: currency, amount: total);
   }
 
   String get subtotalDisplay {
-    final updatedAmount = subtotal / 100;
-    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
-    return "$symbol$updatedAmount";
+    return PriceFormatter.format(currency: currency, amount: subtotal);
   }
 
   bool get showSubtotal => subtotal > total;

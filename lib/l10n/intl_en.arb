@@ -5129,12 +5129,13 @@
             }
         }
     },
-    "cancelDescriptionDialogWarning": "Your subscription will be active until it’s renewal date ({date}), then deactivate. You’ll retain analytics but be unable to use pro features.",
-    "@cancelDescriptionDialogWarning": {
+    "cancelDescriptionWithRenewalDate": "Your subscription will be active until it’s renewal date ({date}), then deactivate. You’ll retain analytics but be unable to use pro features.",
+    "@cancelDescriptionWithRenewalDate": {
         "placeholders": {
             "date": {
                 "type": "String"
             }
         }
-    }
+    },
+    "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features."
 }

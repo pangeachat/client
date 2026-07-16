@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:intl/intl.dart';
 
 import 'package:fluffychat/features/subscription/enums/manage_account_kind_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
@@ -7,6 +6,7 @@ import 'package:fluffychat/features/subscription/enums/subscription_duration_enu
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
+import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
 
 class SubscriptionStatusResponse extends BaseResponse {
   final SubscriptionAccessLevel accessLevel;
@@ -72,6 +72,12 @@ class SubscriptionStatusResponse extends BaseResponse {
       'trial_claimed': trialClaimed,
       'trial_ends_at': trialEndsAt?.toIso8601String(),
     };
+  }
+
+  SubscriptionEntitlement? get winningEntitlement {
+    final planId = winning?.planId;
+    if (planId == null) return null;
+    return entitlements.firstWhereOrNull((e) => e.planId == planId);
   }
 }
 
@@ -147,7 +153,6 @@ class SubscriptionWinning {
   }
 
   String? paymentPeriodDescription(L10n l10n) {
-    final formatter = DateFormat('yyyy-MM-dd');
     final endsAt = this.endsAt;
     switch (type) {
       case SubscriptionType.paid:
@@ -155,19 +160,19 @@ class SubscriptionWinning {
       case SubscriptionType.seat:
         if (endsAt == null) return null;
         return cancelAtPeriodEnd
-            ? l10n.subscriptionEndsOn(formatter.format(endsAt))
-            : l10n.subscriptionRenewsOn(formatter.format(endsAt));
+            ? l10n.subscriptionEndsOn(DateFormatter.format(endsAt))
+            : l10n.subscriptionRenewsOn(DateFormatter.format(endsAt));
       case SubscriptionType.comp:
         if (endsAt == null || endsAt.isAfter(DateTime(2100))) {
           return l10n.lifetimeSubscription;
         }
-        return l10n.subscriptionEndsOn(formatter.format(endsAt));
+        return l10n.subscriptionEndsOn(DateFormatter.format(endsAt));
       case SubscriptionType.trial:
         if (endsAt == null) return l10n.freeTrialDescription;
-        return l10n.trialExpiration(formatter.format(endsAt));
+        return l10n.trialExpiration(DateFormatter.format(endsAt));
       case null:
         if (endsAt == null) return null;
-        return l10n.subscriptionEndsOn(formatter.format(endsAt));
+        return l10n.subscriptionEndsOn(DateFormatter.format(endsAt));
     }
   }
 
@@ -185,21 +190,23 @@ class SubscriptionEntitlement {
   final String entitlementRef;
   final SubscriptionType? type;
   final String provider;
-  final String? planId;
   final String? sourceSubscriptionId;
   final bool cancelable;
   final String status;
+  final DateTime? endsAt;
   final ManageAction? manageAction;
+  final String? planId;
 
   const SubscriptionEntitlement({
     required this.entitlementRef,
     this.type,
     required this.provider,
-    this.planId,
     this.sourceSubscriptionId,
     required this.cancelable,
     required this.status,
+    this.endsAt,
     this.manageAction,
+    this.planId,
   });
 
   factory SubscriptionEntitlement.fromJson(Map<String, dynamic> json) {
@@ -214,6 +221,9 @@ class SubscriptionEntitlement {
       manageAction: json['manage_action'] != null
           ? ManageAction.fromJson(json['manage_action'] as Map<String, dynamic>)
           : null,
+      endsAt: json['ends_at'] != null
+          ? DateTime.tryParse(json['ends_at'] as String)
+          : null,
     );
   }
 
@@ -227,6 +237,7 @@ class SubscriptionEntitlement {
       'cancelable': cancelable,
       'status': status,
       'manage_action': manageAction?.toJson(),
+      'ends_at': endsAt?.toIso8601String(),
     };
   }
 }

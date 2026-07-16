@@ -11,6 +11,9 @@ class UserSubscriptionPlanCard extends StatelessWidget {
   final bool showCancel;
   final VoidCallback? onCancel;
 
+  final bool showManage;
+  final VoidCallback? onManage;
+
   const UserSubscriptionPlanCard({
     super.key,
     required this.subscriptionTitle,
@@ -18,6 +21,8 @@ class UserSubscriptionPlanCard extends StatelessWidget {
     this.priceDisplay,
     this.showCancel = false,
     this.onCancel,
+    this.showManage = false,
+    this.onManage,
   });
 
   @override
@@ -63,6 +68,26 @@ class UserSubscriptionPlanCard extends StatelessWidget {
               paymentPeriodDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.disabledColor,
+              ),
+            ),
+          if (showManage)
+            ElevatedButton(
+              onPressed: onManage,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.surface,
+                foregroundColor: theme.colorScheme.onSurface,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 1,
+                    color: theme.colorScheme.onSurface,
+                  ),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 12.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text(L10n.of(context).manage)],
               ),
             ),
           if (showCancel)

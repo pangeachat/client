@@ -1,6 +1,5 @@
-import 'package:intl/intl.dart';
-
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
+import 'package:fluffychat/pangea/common/utils/price_formatter.dart';
 
 class ValidatePromoCodeResponse extends BaseResponse {
   final bool? valid;
@@ -81,12 +80,9 @@ class ValidatePromoCodeResponse extends BaseResponse {
     }
 
     final currency = this.currency;
-    if (currency == null) return null;
-    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
-
     final amountOff = this.amountOff;
-    if (amountOff == null) return null;
-    return "$symbol${amountOff / 100}";
+    if (currency == null || amountOff == null) return null;
+    return PriceFormatter.format(currency: currency, amount: amountOff);
   }
 }
 

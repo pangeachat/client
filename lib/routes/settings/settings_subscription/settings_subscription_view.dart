@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
@@ -178,25 +180,34 @@ class _FullAccessContent extends StatelessWidget {
                 paymentPeriodDescription: paymentPeriodDescription,
               ),
         if (manageEligible)
-          Container(
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: theme.colorScheme.primaryContainer,
-                width: 3.0,
+          InkWell(
+            onTap: () => context.go(
+              WorkspaceNav.openSettings(
+                GoRouterState.of(context).uri,
+                page: 'subscription/history',
               ),
-              borderRadius: BorderRadius.circular(12.0),
             ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    L10n.of(context).manage,
-                    style: theme.textTheme.titleMedium,
-                  ),
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: theme.colorScheme.primaryContainer,
+                  width: 3.0,
                 ),
-                Icon(Icons.chevron_right),
-              ],
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      L10n.of(context).manage,
+                      style: theme.textTheme.titleMedium,
+                    ),
+                  ),
+                  Icon(Icons.chevron_right),
+                ],
+              ),
             ),
           ),
         if (type == SubscriptionType.trial)

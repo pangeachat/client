@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 class SelectedSubscriptionPopup extends StatelessWidget {
@@ -17,8 +17,6 @@ class SelectedSubscriptionPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final formatter = DateFormat('yyyy-MM-dd');
-
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: Dialog(
@@ -82,7 +80,7 @@ class SelectedSubscriptionPopup extends StatelessWidget {
                           ),
                           Text(
                             L10n.of(context).paidSubscriptionStarts(
-                              formatter.format(DateTime.now()),
+                              DateFormatter.format(DateTime.now()),
                             ),
                             style: theme.textTheme.bodyMedium,
                           ),

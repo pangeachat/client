@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -13,6 +12,7 @@ import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/user_subscription_plan_card.dart';
 
 class SubscriptionHistoryView extends StatelessWidget {
@@ -144,8 +144,6 @@ class _InvoiceHistoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final formatter = DateFormat('yyyy-MM-dd');
-
     return FrameContainer(
       title: L10n.of(context).history,
       frameColor: theme.colorScheme.primaryContainer,
@@ -169,7 +167,7 @@ class _InvoiceHistoryList extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      formatter.format(invoice.created),
+                      DateFormatter.format(invoice.created),
                       style: theme.textTheme.titleMedium,
                     ),
                   ),

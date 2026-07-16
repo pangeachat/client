@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
-import 'package:intl/intl.dart';
 
 import 'package:fluffychat/features/subscription/enums/subscription_duration_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
+import 'package:fluffychat/pangea/common/utils/price_formatter.dart';
 
 class ProductsResponse extends BaseResponse {
   final List<ProductPlan> plans;
@@ -77,9 +77,7 @@ class ProductPlan {
       SubscriptionDuration.month;
 
   String get priceDisplay {
-    final updatedAmount = amount / 100;
-    final symbol = NumberFormat().simpleCurrencySymbol(currency.toUpperCase());
-    return "$symbol$updatedAmount";
+    return PriceFormatter.format(currency: currency, amount: amount);
   }
 
   String periodPriceDisplay(L10n l10n) =>
