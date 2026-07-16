@@ -13,6 +13,7 @@ import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_res
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
@@ -46,15 +47,17 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
       );
 
   Future<void> _onEnterDiscountCode() async {
+    final viewModel = DiscountCodeViewModel(validateCode: _validatePromoCode);
     final resp = await showDialog<CheckoutRequest>(
       context: context,
       builder: (context) => ProductsBuilder(
         builder: (context, productsState) => DiscountCodePopup(
-          validateCode: _validatePromoCode,
+          viewModel: viewModel,
           productsState: productsState,
         ),
       ),
     );
+    viewModel.dispose();
     if (resp == null) return;
 
     _recordBeganPayment(resp.planId, resp.promoCode);
