@@ -39,17 +39,20 @@ void main() {
   });
 
   group('BannedFromRoomException.fromErrorBody', () {
-    test('returns a typed exception with the banned list on the ban errcode', () {
-      final exception = BannedFromRoomException.fromErrorBody(
-        jsonEncode({
-          'errcode': 'ORG.PANGEA.BANNED_FROM_ROOM',
-          'error': 'You are banned from every matched room.',
-          'banned': ['!room:server'],
-        }),
-      );
-      expect(exception, isNotNull);
-      expect(exception!.banned, ['!room:server']);
-    });
+    test(
+      'returns a typed exception with the banned list on the ban errcode',
+      () {
+        final exception = BannedFromRoomException.fromErrorBody(
+          jsonEncode({
+            'errcode': 'ORG.PANGEA.BANNED_FROM_ROOM',
+            'error': 'You are banned from every matched room.',
+            'banned': ['!room:server'],
+          }),
+        );
+        expect(exception, isNotNull);
+        expect(exception!.banned, ['!room:server']);
+      },
+    );
 
     test('tolerates a missing banned list', () {
       final exception = BannedFromRoomException.fromErrorBody(
