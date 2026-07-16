@@ -164,7 +164,10 @@ class OrchestratorController {
   /// - multi-human (>= 2 human roles): prompt the user who did NOT send the
   ///   latest human message — after A's message B is prompted; after B's, A.
   /// - single-human (participant mode, bot holds a role): prompt the lone human
-  ///   right after their own message OR after the bot's reply to them.
+  ///   whenever a fresh own-role bucket exists — after their own message, after
+  ///   the bot's reply, and on the bot's turn-0 opener before they have spoken
+  ///   (#7703; under v2 the sender's own role is omitted and empty buckets are
+  ///   dropped, so a surviving own-role bucket already means it is their turn).
   /// Stale outputs — not based on the latest visible message of ANY sender —
   /// are dropped (the caller also checks this before deciding to clear).
   @visibleForTesting
@@ -183,9 +186,12 @@ class OrchestratorController {
 
     final isMultiHumanActivity = humanRoleCount >= 2;
     final currentUserSpokeLast = latestHumanMessageSenderId == currentUserId;
-    final shouldPrompt = isMultiHumanActivity
-        ? !currentUserSpokeLast
-        : currentUserSpokeLast;
+    // Single-human: reaching here already means a fresh own-role bucket exists
+    // (the guards above), and under v2 the sender's own role is omitted from
+    // outputs — so a surviving own-role bucket means it is the human's turn.
+    // Prompt regardless of whether they have spoken yet, so the bot's turn-0
+    // opener gets a chip too (#7703). Multi-human still prompts the responder.
+    final shouldPrompt = isMultiHumanActivity ? !currentUserSpokeLast : true;
     return shouldPrompt ? roleSuggestion : null;
   }
 
