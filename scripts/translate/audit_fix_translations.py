@@ -60,15 +60,21 @@ PROMPT = """You are auditing existing UI translations into {name} for a language
 
 Return the correct FINAL {name} translation for every key as a JSON object (key → value), nothing else.
 
-Default to KEEPING the current translation. Change it only when it is clearly wrong. The existing copy is often human community work — preserve it.
+Most of this copy is human community translation. Your job is to catch genuine errors, NOT to improve or restyle it. Return every value UNCHANGED unless it meets one of the four Fix Conditions below.
 
-Decide per entry:
-- If the current translation is accurate, complete, natural, and keeps every ICU placeholder — return it UNCHANGED.
-- Fix it only if it is: mistranslated, incomplete, still in English when it should be translated, or has wrong / missing / extra `{{placeholders}}` or broken plural/select syntax.
-- **When in doubt, keep the existing copy.** For loanwords, borrowings, brand names, technical terms, or any ambiguous case where the current wording is defensible, DEFER to it — do not substitute your own preference.
-- KEEP legitimately shared terms untranslated (e.g. "Chat", "Homeserver", "FluffyChat", "Matrix", "Emoji", proper nouns) — do not "over-translate" them.
-- NEVER drop or invent placeholders. Preserve ICU plural/select structure. Translate only the human-readable text.
-- Never rewrite for style, tone, or dialect preference alone — only to correct a genuine error.
+Fix Conditions — change a value ONLY if it is:
+1. A mistranslation — the current translation means something different from the English.
+2. Untranslated — still in English (or another wrong language) when it should be translated. Legitimately-shared terms and brand names (e.g. "Chat", "Homeserver", "FluffyChat", "Matrix", "Emoji", proper nouns) do NOT count as untranslated — keep them.
+3. Incomplete — missing part of the meaning.
+4. Broken placeholder/ICU — a `{{placeholder}}` is missing, extra, renamed, or the plural/select structure is malformed.
+
+DO NOT change a value for any other reason. Specifically, NEVER change:
+- punctuation, spacing, capitalization, or whitespace (e.g. "…" vs "...", a space before an ellipsis);
+- one word for a synonym when the current word is correct (e.g. do not swap "Analytik"→"Analyse");
+- formality or register (e.g. formal vs informal address, imperative vs infinitive);
+- an already-understandable borrowed or playful term into a more "native" one.
+
+When in doubt, KEEP the existing copy. Preserve ICU plural/select structure; translate only human-readable text; never drop or invent placeholders.
 
 Entries:
 {payload}"""

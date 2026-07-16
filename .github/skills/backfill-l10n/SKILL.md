@@ -30,6 +30,12 @@ python scripts/translate/translate_gemini.py --lang sw --name Swahili
 # smoke test first: add --limit 40 --dry
 ```
 
+Audit an existing locale for errors (review-assisted — vet the diff, apply selectively; do NOT blind-apply to community locales):
+
+```sh
+python scripts/translate/audit_fix_translations.py --lang de --name German --dry
+```
+
 ## After translating (required)
 
 ```sh
