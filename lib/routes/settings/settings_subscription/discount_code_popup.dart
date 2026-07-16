@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/dialog_wrapper.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
@@ -10,12 +8,7 @@ import 'package:fluffychat/routes/settings/settings_subscription/discount_code_v
 
 class DiscountCodePopup extends StatelessWidget {
   final DiscountCodeViewModel viewModel;
-  final AsyncState<List<ProductPlan>> productsState;
-  const DiscountCodePopup({
-    super.key,
-    required this.viewModel,
-    required this.productsState,
-  });
+  const DiscountCodePopup({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +25,7 @@ class DiscountCodePopup extends StatelessWidget {
         children: [
           Row(
             children: [
-              CloseButton(onPressed: () => Navigator.of(context).pop()),
+              CloseButton(onPressed: Navigator.of(context).pop),
               Expanded(
                 child: DiscountCodeViewTitle(
                   viewModel: viewModel,
@@ -46,7 +39,6 @@ class DiscountCodePopup extends StatelessWidget {
           ),
           DiscountCodeViewContent(
             viewModel: viewModel,
-            productsState: productsState,
             onSubscribe: Navigator.of(context).pop,
           ),
         ],

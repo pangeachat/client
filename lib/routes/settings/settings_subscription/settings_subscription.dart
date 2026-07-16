@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:async/async.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/subscription/repo_v2/checkout_repo.dart';
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_repo.dart';
-import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_request.dart';
-import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_response.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/payment_page_mixin.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_builder.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SettingsSubscription extends StatefulWidget {
@@ -29,7 +23,8 @@ class SettingsSubscription extends StatefulWidget {
   SettingsSubscriptionState createState() => SettingsSubscriptionState();
 }
 
-class SettingsSubscriptionState extends State<SettingsSubscription> {
+class SettingsSubscriptionState extends State<SettingsSubscription>
+    with PaymentPageMixin {
   final ValueNotifier<ProductPlan?> _selectedSubscription = ValueNotifier(null);
 
   @override
@@ -38,34 +33,33 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
     super.dispose();
   }
 
-  Future<Result<ValidatePromoCodeResponse>> _validatePromoCode(String code) =>
-      ValidatePromoCodeRepo.instance.get(
-        ValidatePromoCodeRequest(
-          userID: Matrix.of(context).client.userID!,
-          code: code,
-        ),
+  Future<void> _onEnterDiscountCode() => FluffyThemes.isColumnMode(context)
+      ? _showDiscountCodePopup()
+      : _goToDiscountCodePage();
+
+  Future<void> _goToDiscountCodePage() async => context.go(
+    WorkspaceNav.openSettings(
+      GoRouterState.of(context).uri,
+      page: 'subscription/discount',
+    ),
+  );
+
+  Future<void> _showDiscountCodePopup() async {
+    final viewModel = DiscountCodeViewModel(
+      userID: Matrix.of(context).client.userID!,
+    );
+
+    try {
+      final resp = await showDialog<CheckoutRequest>(
+        context: context,
+        builder: (context) => DiscountCodePopup(viewModel: viewModel),
       );
 
-  Future<void> _onEnterDiscountCode() async {
-    final viewModel = DiscountCodeViewModel(validateCode: _validatePromoCode);
-    final resp = await showDialog<CheckoutRequest>(
-      context: context,
-      builder: (context) => ProductsBuilder(
-        builder: (context, productsState) => DiscountCodePopup(
-          viewModel: viewModel,
-          productsState: productsState,
-        ),
-      ),
-    );
-    viewModel.dispose();
-    if (resp == null) return;
-
-    _recordBeganPayment(resp.planId, resp.promoCode);
-
-    final paymentLink = await _requestPaymentLink(resp);
-    if (paymentLink == null) return;
-
-    await _launchPaymentLink(paymentLink);
+      if (resp == null) return;
+      await processCheckoutRequest(resp);
+    } finally {
+      viewModel.dispose();
+    }
   }
 
   Future<void> _onTapSubscription(ProductPlan plan) async {
@@ -77,51 +71,9 @@ class SettingsSubscriptionState extends State<SettingsSubscription> {
     if (mounted) _selectedSubscription.value = null;
     if (resp != true) return;
 
-    _recordBeganPayment(plan.planId);
-
     final userID = Matrix.of(context).client.userID!;
     final request = CheckoutRequest(userID: userID, planId: plan.planId);
-    final paymentLink = await _requestPaymentLink(request);
-    if (paymentLink == null) return;
-
-    await _launchPaymentLink(paymentLink);
-  }
-
-  void _recordBeganPayment(String planId, [String? promoCode]) {
-    try {
-      GoogleAnalytics.beginPurchaseSubscription(planId, promoCode, context);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"plan_id": planId, "promo_code": promoCode},
-      );
-    }
-  }
-
-  Future<String?> _requestPaymentLink(CheckoutRequest request) async {
-    final checkoutResult = await showFutureLoadingDialog<String>(
-      context: context,
-      future: () async {
-        final checkoutResult = await CheckoutRepo.instance.getPaymentLink(
-          request,
-        );
-
-        final checkoutResponse = checkoutResult.result;
-        if (checkoutResponse == null) {
-          throw checkoutResult.asError ?? "Failed to checkout";
-        }
-
-        return checkoutResponse;
-      },
-    );
-
-    return checkoutResult.result;
-  }
-
-  Future<void> _launchPaymentLink(String paymentLink) async {
-    await SubscriptionManagementRepo.setBeganPayment();
-    await launchUrlString(paymentLink, webOnlyWindowName: "_self");
+    await processCheckoutRequest(request);
   }
 
   @override

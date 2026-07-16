@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
-import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
@@ -11,12 +10,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class DiscountCodeViewContent extends StatelessWidget {
   final DiscountCodeViewModel viewModel;
-  final AsyncState<List<ProductPlan>> productsState;
   final void Function(CheckoutRequest) onSubscribe;
   const DiscountCodeViewContent({
     super.key,
     required this.viewModel,
-    required this.productsState,
     required this.onSubscribe,
   });
 
@@ -95,46 +92,52 @@ class DiscountCodeViewContent extends StatelessWidget {
             return Column(
               spacing: 10.0,
               children: [
-                switch (productsState) {
-                  AsyncLoading() || AsyncIdle() => LinearProgressIndicator(),
-                  AsyncError() => Row(
-                    spacing: 10.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.error_outline,
-                        color: AppConfig.error,
-                        size: 24.0,
-                      ),
-                      Text(
-                        L10n.of(context).oopsSomethingWentWrong,
-                        style: TextStyle(color: AppConfig.error),
-                      ),
-                    ],
-                  ),
-                  AsyncLoaded(value: final plans) => ValueListenableBuilder(
-                    valueListenable: viewModel.selectedSubscription,
-                    builder: (context, selectedPlan, _) => Wrap(
-                      spacing: 12.0,
-                      runSpacing: 12.0,
-                      children: plans
-                          .map(
-                            (p) => SizedBox(
-                              width: 160.0,
-                              child: SubscriptionOptionCard(
-                                p,
-                                onTap: () =>
-                                    viewModel.setSelectedSubscription(p),
-                                selected:
-                                    selectedPlan != null &&
-                                    p.planId == selectedPlan.planId,
-                              ),
+                ValueListenableBuilder(
+                  valueListenable: viewModel.productsNotifier,
+                  builder: (context, productsState, _) =>
+                      switch (productsState) {
+                        AsyncLoading() ||
+                        AsyncIdle() => LinearProgressIndicator(),
+                        AsyncError() => Row(
+                          spacing: 10.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.error_outline,
+                              color: AppConfig.error,
+                              size: 24.0,
                             ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                },
+                            Text(
+                              L10n.of(context).oopsSomethingWentWrong,
+                              style: TextStyle(color: AppConfig.error),
+                            ),
+                          ],
+                        ),
+                        AsyncLoaded(value: final plans) =>
+                          ValueListenableBuilder(
+                            valueListenable: viewModel.selectedSubscription,
+                            builder: (context, selectedPlan, _) => Wrap(
+                              spacing: 12.0,
+                              runSpacing: 12.0,
+                              children: plans
+                                  .map(
+                                    (p) => SizedBox(
+                                      width: 160.0,
+                                      child: SubscriptionOptionCard(
+                                        p,
+                                        onTap: () => viewModel
+                                            .setSelectedSubscription(p),
+                                        selected:
+                                            selectedPlan != null &&
+                                            p.planId == selectedPlan.planId,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                      },
+                ),
                 Row(
                   spacing: 10.0,
                   mainAxisSize: MainAxisSize.min,
