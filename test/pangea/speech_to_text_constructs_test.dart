@@ -39,19 +39,19 @@ SpeechToTextResponseModel _stt(List<PangeaToken> tokens) =>
 
 void main() {
   test('spoken vocab tokens produce vocab construct uses scored as pvm', () {
-    final uses = _stt([_token('hola'), _token('gracias')]).constructs(
-      '!room:test',
-      r'$event',
-    );
+    final uses = _stt([
+      _token('hola'),
+      _token('gracias'),
+    ]).constructs('!room:test', r'$event');
 
     final vocabUses = uses
         .where((u) => u.identifier.type == ConstructTypeEnum.vocab)
         .toList();
 
-    expect(
-      vocabUses.map((u) => u.identifier.lemma).toSet(),
-      {'hola', 'gracias'},
-    );
+    expect(vocabUses.map((u) => u.identifier.lemma).toSet(), {
+      'hola',
+      'gracias',
+    });
     // Spoken production scores as pvm (parity with the send-path voice
     // analytics), not the typed `wa`.
     expect(
@@ -61,10 +61,9 @@ void main() {
   });
 
   test('tokens flagged not to save vocab produce no uses (saveVocab gate)', () {
-    final uses = _stt([_token('the', saveVocab: false)]).constructs(
-      '!room:test',
-      r'$event',
-    );
+    final uses = _stt([
+      _token('the', saveVocab: false),
+    ]).constructs('!room:test', r'$event');
     expect(uses, isEmpty);
   });
 

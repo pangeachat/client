@@ -36,17 +36,11 @@ void main() {
 
     test('case-insensitive — spoken casing must not defeat the match', () {
       // vocabLemmas is pre-lower-cased by callers; the token lemma may not be.
-      expect(
-        TokenRenderingUtil.isVocabHighlight('Hola', {'hola'}),
-        isTrue,
-      );
+      expect(TokenRenderingUtil.isVocabHighlight('Hola', {'hola'}), isTrue);
     });
 
     test('false for empty lemma even against a non-empty set', () {
-      expect(
-        TokenRenderingUtil.isVocabHighlight('', {'hola'}),
-        isFalse,
-      );
+      expect(TokenRenderingUtil.isVocabHighlight('', {'hola'}), isFalse);
     });
   });
 
@@ -63,31 +57,34 @@ void main() {
       expect(identical(result, child), isTrue);
     });
 
-    testWidgets('wraps the child in the gold highlight when highlight is true', (
-      tester,
-    ) async {
-      final result = TokenRenderingUtil.vocabHighlight(
-        highlight: true,
-        child: const Text('hola'),
-      );
+    testWidgets(
+      'wraps the child in the gold highlight when highlight is true',
+      (tester) async {
+        final result = TokenRenderingUtil.vocabHighlight(
+          highlight: true,
+          child: const Text('hola'),
+        );
 
-      await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: Center(child: result))),
-      );
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(body: Center(child: result)),
+          ),
+        );
 
-      // The spoken word is still shown...
-      expect(find.text('hola'), findsOneWidget);
+        // The spoken word is still shown...
+        expect(find.text('hola'), findsOneWidget);
 
-      // ...inside a DecoratedBox tinted with the gold vocab colour, matching
-      // the typed-message highlight in html_message.dart.
-      final decoratedBox = tester.widget<DecoratedBox>(
-        find.ancestor(
-          of: find.text('hola'),
-          matching: find.byType(DecoratedBox),
-        ),
-      );
-      final decoration = decoratedBox.decoration as BoxDecoration;
-      expect(decoration.color, AppConfig.gold.withAlpha(50));
-    });
+        // ...inside a DecoratedBox tinted with the gold vocab colour, matching
+        // the typed-message highlight in html_message.dart.
+        final decoratedBox = tester.widget<DecoratedBox>(
+          find.ancestor(
+            of: find.text('hola'),
+            matching: find.byType(DecoratedBox),
+          ),
+        );
+        final decoration = decoratedBox.decoration as BoxDecoration;
+        expect(decoration.color, AppConfig.gold.withAlpha(50));
+      },
+    );
   });
 }
