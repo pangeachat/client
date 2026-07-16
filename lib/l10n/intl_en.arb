@@ -5095,5 +5095,13 @@
             }
         }
     },
+    "searchHint": "Search {name}",
+    "@searchHint": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "closeAddCoursePage": "Close add course page"
 }

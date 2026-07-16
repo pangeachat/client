@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Displays vocab analytics, sorted into categories
 /// (flowers, greens, and seeds) by points
@@ -197,24 +198,19 @@ class VocabAnalyticsListView extends StatelessWidget {
                       key: const ValueKey('search'),
                       children: [
                         Expanded(
-                          child: TextField(
+                          child: PangeaSearchBar(
+                            controller: controller.searchController,
+                            labelText: L10n.of(
+                              context,
+                            ).searchHint(L10n.of(context).vocab),
                             autofocus: true,
                             focusNode: controller.searchFocusNode,
-                            controller: controller.searchController,
-                            decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: 6.0,
-                                horizontal: 12.0,
-                              ),
-                              isDense: true,
-                              border: OutlineInputBorder(),
+                            suffixIcon: IconButton(
+                              tooltip: L10n.of(context).close,
+                              icon: const Icon(Icons.close),
+                              onPressed: controller.toggleSearching,
                             ),
                           ),
-                        ),
-                        IconButton(
-                          tooltip: L10n.of(context).close,
-                          icon: const Icon(Icons.close),
-                          onPressed: controller.toggleSearching,
                         ),
                       ],
                     ),
