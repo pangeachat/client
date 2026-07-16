@@ -18,6 +18,6 @@ class SubscriptionCancelResponse extends BaseResponse {
   factory SubscriptionCancelResponse.fromJson(Map<String, dynamic> json) =>
       SubscriptionCancelResponse(
         status: json["status"] as String,
-        entitlementRef: json["entitlementRef"] as String,
+        entitlementRef: json['entitlementRef'] as String? ?? "",
       );
 }

@@ -25,9 +25,9 @@ class SubscriptionStatusResponse extends BaseResponse {
     this.winning,
     this.billingIssue,
     required this.entitlements,
-    required this.manageEligible,
-    required this.trialEligible,
-    required this.trialClaimed,
+    this.manageEligible = false,
+    this.trialEligible = false,
+    this.trialClaimed = false,
     this.trialEndsAt,
   });
 
@@ -79,6 +79,16 @@ class SubscriptionStatusResponse extends BaseResponse {
     if (planId == null) return null;
     return entitlements.firstWhereOrNull((e) => e.planId == planId);
   }
+
+  bool get isTrialOfferable => trialEligible == true && trialClaimed != true;
+
+  bool get isPaidWithoutPlan {
+    final winning = this.winning;
+    return accessLevel == SubscriptionAccessLevel.full &&
+        winning != null &&
+        winning.planId == null &&
+        winning.type?.isBillable == true;
+  }
 }
 
 class SubscriptionWinning {
@@ -88,7 +98,7 @@ class SubscriptionWinning {
   final DateTime? paidThroughAt;
   final DateTime? graceEndsAt;
   final bool cancelAtPeriodEnd;
-  final String provider;
+  final String? provider;
   final String? planId;
   final String? entitlementRef;
 
@@ -98,8 +108,8 @@ class SubscriptionWinning {
     this.endsAt,
     this.paidThroughAt,
     this.graceEndsAt,
-    required this.cancelAtPeriodEnd,
-    required this.provider,
+    this.cancelAtPeriodEnd = false,
+    this.provider,
     this.planId,
     this.entitlementRef,
   });
@@ -112,9 +122,11 @@ class SubscriptionWinning {
       paidThroughAt: _parseDate(json['paid_through_at']),
       graceEndsAt: _parseDate(json['grace_ends_at']),
       cancelAtPeriodEnd: json['cancel_at_period_end'] as bool? ?? false,
-      provider: json['provider'] as String,
-      planId: json['planId'] as String?,
-      entitlementRef: json['entitlementRef'] as String?,
+      provider: json['provider'] as String?,
+      planId: json['planId'] as String? ?? json['plan_id'] as String?,
+      entitlementRef:
+          json['entitlementRef'] as String? ??
+          json['entitlement_ref'] as String?,
     );
   }
 
@@ -189,7 +201,7 @@ class SubscriptionWinning {
 class SubscriptionEntitlement {
   final String entitlementRef;
   final SubscriptionType? type;
-  final String provider;
+  final String? provider;
   final String? sourceSubscriptionId;
   final bool cancelable;
   final String status;
@@ -200,7 +212,7 @@ class SubscriptionEntitlement {
   const SubscriptionEntitlement({
     required this.entitlementRef,
     this.type,
-    required this.provider,
+    this.provider,
     this.sourceSubscriptionId,
     required this.cancelable,
     required this.status,
@@ -213,8 +225,8 @@ class SubscriptionEntitlement {
     return SubscriptionEntitlement(
       entitlementRef: json['entitlementRef'] as String,
       type: SubscriptionType.fromString(json['type'] as String),
-      provider: json['provider'] as String,
-      planId: json['planId'] as String?,
+      provider: json['provider'] as String?,
+      planId: json['planId'] as String? ?? json['plan_id'] as String?,
       sourceSubscriptionId: json['sourceSubscriptionId'] as String?,
       cancelable: json['cancelable'] as bool? ?? false,
       status: json['status'] as String,
@@ -245,7 +257,7 @@ class SubscriptionEntitlement {
 class BillingIssue {
   final bool present;
   final String? reason;
-  final String? action;
+  final ActionDescriptor? action;
 
   const BillingIssue({required this.present, this.reason, this.action});
 
@@ -253,12 +265,34 @@ class BillingIssue {
     return BillingIssue(
       present: json['present'] as bool? ?? false,
       reason: json['reason'] as String?,
-      action: json['action'] as String?,
+      action: json['action'] == null
+          ? null
+          : ActionDescriptor.fromJson(
+              Map<String, dynamic>.from(json['action'] as Map),
+            ),
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'present': present, 'reason': reason, 'action': action};
+    return {'present': present, 'reason': reason, 'action': action?.toJson()};
+  }
+}
+
+class ActionDescriptor {
+  /// "portal" | "update_payment".
+  final String kind;
+  final String entitlementRef;
+
+  const ActionDescriptor({required this.kind, required this.entitlementRef});
+
+  factory ActionDescriptor.fromJson(Map<String, dynamic> json) =>
+      ActionDescriptor(
+        kind: json['kind'] as String? ?? "",
+        entitlementRef: json['entitlementRef'] as String? ?? "",
+      );
+
+  Map<String, dynamic> toJson() {
+    return {'kind': kind, 'entitlementRef': entitlementRef};
   }
 }
 

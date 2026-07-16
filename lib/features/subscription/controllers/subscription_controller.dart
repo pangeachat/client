@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
@@ -87,7 +86,10 @@ class SubscriptionController with ChangeNotifier {
       await MatrixState.pangeaController.userController.initCompleter.future;
       await _updateCurrentSubscription(userID);
 
-      if (_state is! SubscriptionActive && _inTrialWindow) {
+      final state = _state;
+      if (state is SubscriptionInactive &&
+          state.response.isTrialOfferable &&
+          _inTrialWindow) {
         await _activateNewUserTrial(userID);
       }
 
@@ -126,10 +128,19 @@ class SubscriptionController with ChangeNotifier {
       return;
     }
 
-    _state = response.accessLevel == SubscriptionAccessLevel.full
-        ? SubscriptionActive()
-        : SubscriptionInactive();
+    if (response.isPaidWithoutPlan) {
+      // a paid entitlement should always map to a catalog plan. If it
+      // does not, log it (this shouldn't happen) — the controller renders a
+      // generic tile so the paying user still sees management + the
+      // account-delete warning, rather than a broken/empty tile.
+      ErrorHandler.logError(
+        m: "v2 paid entitlement missing a catalog planId",
+        s: StackTrace.current,
+        data: {},
+      );
+    }
 
+    _state = SubscriptionState.fromSubscriptionStatus(response);
     notifyListeners();
   }
 }

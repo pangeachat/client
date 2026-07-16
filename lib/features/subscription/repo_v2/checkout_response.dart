@@ -33,7 +33,7 @@ class CheckoutResponse extends BaseResponse {
     };
   }
 
-  bool get isReady =>
+  bool get isResolved =>
       status == CheckoutStatus.created || status == CheckoutStatus.reused;
 
   bool get isCreating => status == CheckoutStatus.creating;

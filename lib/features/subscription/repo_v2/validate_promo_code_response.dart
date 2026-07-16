@@ -34,7 +34,7 @@ class ValidatePromoCodeResponse extends BaseResponse {
       code: json['code'] as String?,
       discountType: json['discount_type'] as String?,
       percentOff: (json['percent_off'] as num?)?.toDouble(),
-      amountOff: json['amount_off'] as int?,
+      amountOff: (json['amount_off'] as num?)?.toInt(),
       currency: json['currency'] as String?,
       couponDuration: json['coupon_duration'] as String?,
       restrictions: json['restrictions'] != null
@@ -49,7 +49,7 @@ class ValidatePromoCodeResponse extends BaseResponse {
           : null,
       expiresAt: json['expires_at'] != null
           ? DateTime.fromMillisecondsSinceEpoch(
-              (json['expires_at'] as int) * 1000,
+              (json['expires_at'] as num).toInt() * 1000,
             )
           : null,
       reason: json['reason'] as String?,
@@ -87,20 +87,20 @@ class ValidatePromoCodeResponse extends BaseResponse {
 }
 
 class PromoRestrictions {
-  final bool? firstTimeTransaction;
+  final bool firstTimeTransaction;
   final int? minimumAmount;
   final String? minimumAmountCurrency;
 
   const PromoRestrictions({
-    this.firstTimeTransaction,
+    this.firstTimeTransaction = false,
     this.minimumAmount,
     this.minimumAmountCurrency,
   });
 
   factory PromoRestrictions.fromJson(Map<String, dynamic> json) {
     return PromoRestrictions(
-      firstTimeTransaction: json['first_time_transaction'] as bool?,
-      minimumAmount: json['minimum_amount'] as int?,
+      firstTimeTransaction: (json['first_time_transaction'] as bool?) ?? false,
+      minimumAmount: (json['minimum_amount'] as num?)?.toInt(),
       minimumAmountCurrency: json['minimum_amount_currency'] as String?,
     );
   }
@@ -122,7 +122,7 @@ class DiscountedPrice {
 
   factory DiscountedPrice.fromJson(Map<String, dynamic> json) {
     return DiscountedPrice(
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
       currency: json['currency'] as String,
     );
   }

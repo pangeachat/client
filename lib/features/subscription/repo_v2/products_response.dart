@@ -17,8 +17,15 @@ class ProductsResponse extends BaseResponse {
   });
 
   factory ProductsResponse.fromJson(Map<String, dynamic> json) {
+    final rawPlans = json['plans'];
+    if (rawPlans is! List) {
+      throw const FormatException(
+        'ProductsV2Response: "plans" must be a list — malformed /products body',
+      );
+    }
+
     return ProductsResponse(
-      plans: (json['plans'] as List<dynamic>? ?? [])
+      plans: rawPlans
           .map((e) => ProductPlan.fromJson(e as Map<String, dynamic>))
           .toList(),
       pricesLocalizedAtCheckout:
