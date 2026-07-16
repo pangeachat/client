@@ -41,12 +41,13 @@ class SettingsSubscriptionView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
     return Scaffold(
       appBar: AppBar(
         leading: Center(child: closeButton),
         title: Text(
           L10n.of(context).subscriptionManagement,
-          style: FluffyThemes.isColumnMode(context)
+          style: isColumnMode
               ? Theme.of(context).textTheme.titleLarge
               : Theme.of(
                   context,
@@ -73,9 +74,12 @@ class SettingsSubscriptionView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Container(
                 alignment: Alignment.topCenter,
-                padding: EdgeInsets.all(32),
                 child: Container(
-                  padding: EdgeInsets.all(16.0),
+                  padding: EdgeInsets.only(
+                    left: 16.0,
+                    right: 16.0,
+                    bottom: 16.0,
+                  ),
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surface,
                     borderRadius: BorderRadius.circular(24.0),
@@ -103,7 +107,17 @@ class SettingsSubscriptionView extends StatelessWidget {
                         spacing: 20.0,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          ProFeaturesCard(),
+                          ProFeaturesCard(
+                            titlePadding: isColumnMode
+                                ? const EdgeInsets.all(12.0)
+                                : const EdgeInsets.all(4.0),
+                            padding: isColumnMode
+                                ? const EdgeInsets.all(24)
+                                : const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                    horizontal: 24,
+                                  ),
+                          ),
                           switch (subscriptionStatus.accessLevel) {
                             SubscriptionAccessLevel.full => _FullAccessContent(
                               type: winning?.type,
@@ -169,6 +183,7 @@ class _FullAccessContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
     return Column(
       spacing: 20.0,
       children: [
@@ -176,7 +191,9 @@ class _FullAccessContent extends StatelessWidget {
             ? Text(
                 paymentPeriodDescription ??
                     L10n.of(context).freeTrialDescription,
-                style: theme.textTheme.titleMedium,
+                style: isColumnMode
+                    ? theme.textTheme.titleMedium
+                    : theme.textTheme.titleSmall,
               )
             : UserSubscriptionPlanCard(
                 subscriptionTitle: subscriptionTitle,
@@ -206,7 +223,9 @@ class _FullAccessContent extends StatelessWidget {
                   Expanded(
                     child: Text(
                       L10n.of(context).manage,
-                      style: theme.textTheme.titleMedium,
+                      style: isColumnMode
+                          ? theme.textTheme.titleMedium
+                          : theme.textTheme.titleSmall,
                     ),
                   ),
                   Icon(Icons.chevron_right),

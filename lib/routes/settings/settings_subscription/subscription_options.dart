@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -52,14 +53,18 @@ class SubscriptionOptionsInternal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Column(
       spacing: 12.0,
       children: [
         Text(
           L10n.of(context).selectYourPlan,
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          style:
+              (isColumnMode
+                      ? theme.textTheme.titleLarge
+                      : theme.textTheme.titleMedium)
+                  ?.copyWith(fontWeight: FontWeight.bold),
         ),
         ValueListenableBuilder(
           valueListenable: selectedSubscription,
@@ -69,7 +74,7 @@ class SubscriptionOptionsInternal extends StatelessWidget {
             children: plans
                 .map(
                   (p) => SizedBox(
-                    width: 160.0,
+                    width: 150.0,
                     child: SubscriptionOptionCard(
                       p,
                       onTap: () => onTapSubscription(p),
@@ -93,9 +98,11 @@ class SubscriptionOptionsInternal extends StatelessWidget {
             children: [
               Text(
                 L10n.of(context).enterDiscountCode,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  color: theme.colorScheme.onPrimaryContainer,
-                ),
+                style:
+                    (isColumnMode
+                            ? theme.textTheme.titleMedium
+                            : theme.textTheme.titleSmall)
+                        ?.copyWith(color: theme.colorScheme.onPrimaryContainer),
               ),
             ],
           ),

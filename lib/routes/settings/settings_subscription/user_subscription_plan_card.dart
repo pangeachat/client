@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -32,6 +33,8 @@ class UserSubscriptionPlanCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     final priceDisplay = this.priceDisplay;
     final paymentPeriodDescription = this.paymentPeriodDescription;
 
@@ -47,43 +50,59 @@ class UserSubscriptionPlanCard extends StatelessWidget {
 
     return FrameContainer(
       title: L10n.of(context).yourPlan,
+      titleStyle:
+          (isColumnMode
+                  ? theme.textTheme.titleLarge
+                  : theme.textTheme.titleMedium)
+              ?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
+      titlePadding: isColumnMode
+          ? const EdgeInsets.all(12.0)
+          : const EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(8.0),
       frameColor: theme.colorScheme.primaryContainer,
       backgroundColor: theme.colorScheme.surface,
       foregroundColor: theme.colorScheme.onPrimaryContainer,
-      padding: EdgeInsets.all(8.0),
-      titlePadding: EdgeInsetsGeometry.symmetric(
-        vertical: 8.0,
-        horizontal: 12.0,
-      ),
       borderRadius: 12.0,
       child: Column(
-        spacing: 8.0,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 12.0,
         children: [
-          Row(
+          Column(
+            spacing: 8.0,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Text(
-                  subscriptionTitle,
-                  style: theme.textTheme.titleMedium,
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      subscriptionTitle,
+                      style: isColumnMode
+                          ? theme.textTheme.titleMedium
+                          : theme.textTheme.titleSmall,
+                    ),
+                  ),
+                  if (priceDisplay != null)
+                    Text(
+                      priceDisplay,
+                      style:
+                          (isColumnMode
+                                  ? theme.textTheme.titleMedium
+                                  : theme.textTheme.titleSmall)
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                ],
               ),
-              if (priceDisplay != null)
+              if (paymentPeriodDescription != null)
                 Text(
-                  priceDisplay,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                  paymentPeriodDescription,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.disabledColor,
                   ),
                 ),
             ],
           ),
-          if (paymentPeriodDescription != null)
-            Text(
-              paymentPeriodDescription,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.disabledColor,
-              ),
-            ),
           if (showManage || showCancel)
             Row(
               spacing: 12.0,
@@ -94,7 +113,14 @@ class UserSubscriptionPlanCard extends StatelessWidget {
                       builder: (context) {
                         final content = Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(L10n.of(context).change)],
+                          children: [
+                            Text(
+                              L10n.of(context).change,
+                              style: isColumnMode
+                                  ? theme.textTheme.titleMedium
+                                  : theme.textTheme.titleSmall,
+                            ),
+                          ],
                         );
 
                         final canManageNotifier = this.canManageNotifier;
@@ -123,7 +149,14 @@ class UserSubscriptionPlanCard extends StatelessWidget {
                       builder: (context) {
                         final content = Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(L10n.of(context).cancel)],
+                          children: [
+                            Text(
+                              L10n.of(context).cancel,
+                              style: isColumnMode
+                                  ? theme.textTheme.titleMedium
+                                  : theme.textTheme.titleSmall,
+                            ),
+                          ],
                         );
 
                         final canCancelNotifier = this.canCancelNotifier;

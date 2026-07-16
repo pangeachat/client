@@ -43,13 +43,14 @@ class SubscriptionHistoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Scaffold(
       appBar: AppBar(
         leading: Center(child: closeButton),
         title: Text(
           L10n.of(context).subscriptionHistory,
-          style: FluffyThemes.isColumnMode(context)
+          style: isColumnMode
               ? Theme.of(context).textTheme.titleLarge
               : Theme.of(
                   context,
@@ -76,7 +77,6 @@ class SubscriptionHistoryView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Container(
                 alignment: Alignment.topCenter,
-                padding: EdgeInsets.all(32),
                 child: Container(
                   padding: EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
@@ -160,16 +160,24 @@ class _InvoiceHistoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
     return FrameContainer(
       title: L10n.of(context).history,
+      titleStyle:
+          (isColumnMode
+                  ? theme.textTheme.titleLarge
+                  : theme.textTheme.titleMedium)
+              ?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
+      titlePadding: isColumnMode
+          ? const EdgeInsets.all(12.0)
+          : const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
       frameColor: theme.colorScheme.primaryContainer,
       backgroundColor: theme.colorScheme.surface,
       foregroundColor: theme.colorScheme.onPrimaryContainer,
       padding: EdgeInsets.all(8.0),
-      titlePadding: EdgeInsetsGeometry.symmetric(
-        vertical: 8.0,
-        horizontal: 12.0,
-      ),
       borderRadius: 12.0,
       expandable: true,
       initiallyExpanded: false,
@@ -184,7 +192,9 @@ class _InvoiceHistoryList extends StatelessWidget {
                   Expanded(
                     child: Text(
                       DateFormatter.format(invoice.created),
-                      style: theme.textTheme.titleMedium,
+                      style: isColumnMode
+                          ? theme.textTheme.titleMedium
+                          : theme.textTheme.titleSmall,
                     ),
                   ),
                   if (invoice.showSubtotal)
@@ -196,9 +206,11 @@ class _InvoiceHistoryList extends StatelessWidget {
                     ),
                   Text(
                     invoice.totalDisplay,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style:
+                        (isColumnMode
+                                ? theme.textTheme.titleMedium
+                                : theme.textTheme.titleSmall)
+                            ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

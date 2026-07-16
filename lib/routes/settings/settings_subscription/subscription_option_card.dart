@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -20,6 +21,11 @@ class SubscriptionOptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    final textStyle = isColumnMode
+        ? theme.textTheme.titleMedium
+        : theme.textTheme.titleSmall;
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12.0),
@@ -40,7 +46,7 @@ class SubscriptionOptionCard extends StatelessWidget {
           horizontal: 2.0,
         ),
         borderRadius: 12.0,
-        titleStyle: theme.textTheme.titleMedium?.copyWith(
+        titleStyle: textStyle?.copyWith(
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.onPrimaryContainer,
         ),
@@ -49,11 +55,9 @@ class SubscriptionOptionCard extends StatelessWidget {
           children: [
             Text(
               plan.duration.copy(l10n),
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: textStyle?.copyWith(fontWeight: FontWeight.bold),
             ),
-            Text(plan.priceDisplay, style: theme.textTheme.titleMedium),
+            Text(plan.priceDisplay, style: textStyle),
           ],
         ),
       ),
