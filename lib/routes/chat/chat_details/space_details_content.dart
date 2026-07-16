@@ -15,6 +15,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -174,49 +175,57 @@ class SpaceDetailsContent extends StatelessWidget {
         value: room.isTeacherMode,
       ),
       ButtonDetails(
-        title: L10n.of(context).activitiesToUnlockTopicTitle,
-        description: L10n.of(context).activitiesToUnlockTopicDesc,
-        icon: const Icon(Icons.lock_open_outlined, size: 30.0),
+        title: L10n.of(context).starsToUnlockObjectiveTitle,
+        description: L10n.of(context).starsToUnlockObjectiveDesc,
+        icon: const Icon(Icons.star_outline, size: 30.0),
         onPressed: () async {
-          int minActivities = 0;
+          // The cap is the lowest-content Mission's earnable stars — the sum
+          // of one player's earnable stars (goals per role) across its
+          // activities. A value above it could never be satisfied there; the
+          // resolver also clamps at resolve time as content changes
+          // (quests.instructions.md; #7663).
+          int maxStars = 0;
           if (room.coursePlan != null) {
-            // world_v2: the cap is the fewest activities in any mission of the
-            // v3 quest outline (replaces the v1 per-topic activity count).
             final resp = await showFutureLoadingDialog(
               context: context,
               future: () async {
                 final outline = await QuestRepo.outline(room.coursePlan!.uuid);
                 return outline.result?.groups
-                    .map((g) => g.activities.length)
+                    .map(
+                      (g) => g.activities.fold(
+                        0,
+                        (sum, a) => sum + a.plan.earnableStars,
+                      ),
+                    )
                     .min;
               },
               showError: (e) => false,
             );
 
             if (resp.result != null) {
-              minActivities = resp.result!;
+              maxStars = resp.result!;
             }
           }
-          final current = room.teacherMode.activitiesToUnlockTopic;
+          final current =
+              room.teacherMode.starsToUnlockObjective ??
+              kDefaultStarsToUnlockObjective;
           final resp = await showTextInputDialog(
             context: context,
-            title: L10n.of(context).activitiesToUnlockTopicTitle,
+            title: L10n.of(context).starsToUnlockObjectiveTitle,
             keyboardType: TextInputType.number,
             maxLength: 2,
             maxLines: 1,
             validator: (input) {
               final value = int.tryParse(input);
-              if (value == null || value < 0) {
+              if (value == null || value < 1) {
                 return L10n.of(context).enterNumber;
               }
-              if (value > minActivities) {
-                return L10n.of(
-                  context,
-                ).minActivitiesPerTopicWarning(value, minActivities);
+              if (maxStars > 0 && value > maxStars) {
+                return L10n.of(context).maxStarsPerMissionWarning(maxStars);
               }
               return null;
             },
-            initialText: current != null ? "$current" : null,
+            initialText: "$current",
           );
 
           if (resp == null) return;
@@ -224,22 +233,20 @@ class SpaceDetailsContent extends StatelessWidget {
             context: context,
             future: () => room.setTeacherMode(
               room.teacherMode.copyWith(
-                activitiesToUnlockTopic: int.parse(resp),
+                starsToUnlockObjective: int.parse(resp),
               ),
             ),
           );
         },
         enabled: room.isRoomAdmin,
         showInMainView: false,
-        trailing: room.teacherMode.activitiesToUnlockTopic != null
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  "${room.teacherMode.activitiesToUnlockTopic}",
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-              )
-            : null,
+        trailing: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+        ),
       ),
       ButtonDetails(
         title: l10n.requireAnalyticsAccessTitle,

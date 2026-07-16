@@ -80,6 +80,24 @@ void main() async {
       );
     });
 
+    test("suggestionStrings is in-memory only, like pastedStrings", () {
+      // Send-time scoring reads the live record (#7665); neither exclusion
+      // set is serialized.
+      final record = ChoreoRecordModel(
+        originalText: "",
+        choreoSteps: [],
+        openMatches: [],
+      );
+
+      expect(record.suggestionStrings, isEmpty);
+      record.suggestionStrings.add("quiero un café");
+      record.pastedStrings.add("hola");
+
+      final received = ChoreoRecordModel.fromJson(record.toJson());
+      expect(received.suggestionStrings, isEmpty);
+      expect(received.pastedStrings, isEmpty);
+    });
+
     test("Test that fromJSON converts old version correctly", () {
       final List<String> steps = [];
 

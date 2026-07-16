@@ -454,12 +454,19 @@ of the URL; the other joined courses are reached through the Courses list.
 web rail — it replaces the open left panels with that section's token
 (`left=chats`, the Courses hub, the course card under `?c=`) — and expands the
 widget upward, filling the upper portion of the rounded box with that
-section's content. The **chats sheet opens content-fit**: just tall enough to
-show all its chats, capped by the height available below the analytics bar (a
-short list yields a short sheet; a long one fills to the cap and scrolls).
-Other sections open at roughly half the screen. The 4 rail icons remain
-anchored at the bottom of the widget at all heights. Content inside the
-expanded area is **scrollable**.
+section's content. The **chats sheet and the Courses hub open content-fit**:
+just tall enough to show all their rows — all chats, or all joined courses (the
+add-course buttons when there are none) — capped by the height available below
+the analytics bar (a short list yields a short sheet; a long one fills to the
+cap and scrolls). Other sections open at roughly half the screen. The 4 rail
+icons remain anchored at the bottom of the widget at all heights. Content inside
+the expanded area is **scrollable**.
+
+**The Courses hub header carries the add-course actions.** With at least one
+joined course, the three add-course actions (start my own / enter a code /
+browse public) ride the panel header as compact right-justified icons, so the
+joined-course list keeps the vertical space; when the learner is in no courses
+yet they drop to full-width buttons in the body as the empty state.
 
 **The chats sheet header carries its actions**: an expanding **search
 toggle** (an icon; tapping it reveals the filter field, autofocused — the
@@ -470,8 +477,10 @@ covered the bottom list rows).
 **The URL carries the panel, not the geometry.** The widget's height — collapsed,
 half, full — is ephemeral view state, exactly like fold recency above: a cold
 link or a refresh with an open **section** token (the chat list, the Courses
-hub) or an **activity plan** draws it expanded at half height (the leaf rule);
-a **course card** draws at its remembered height — the collapsed peek by
+hub) or an **activity plan** draws it expanded at its default rest height (the
+leaf rule) — content-fit for the list sections (the chat list, the Courses
+hub), roughly half otherwise; a **course card** draws at its remembered height —
+the collapsed peek by
 default (see the per-course memory above), so the scoped map leads. The
 collapsed rail over the bare map is just `/`. A shared URL never encodes how
 far someone had dragged a sheet.
@@ -617,7 +626,10 @@ section roots while the map is not being actively scrolled.
 the nav widget collapsed, or while the workspace is course-scoped (`?c=` set),
 the search bar and its active filters **minimize to a compact search icon
 button** pinned to the left side just above the nav rail. Tapping it restores
-the full bar.
+the full bar. **Once the course card itself is pulled to full height it covers
+the map, so the bar hides entirely** — its reserved strip is handed to the
+course content, and the compact button reappears when the sheet is dragged back
+below full (#7697).
 [Minimized component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562&t=NJSsG23tsR9Kdwlz-0)
 
 **Keyboard behavior.** When the search bar is active and the software keyboard

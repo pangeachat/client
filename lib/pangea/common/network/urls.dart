@@ -24,6 +24,13 @@ class PApiUrls {
   /// CMS REST API endpoint for languages (public, no auth required)
   static String cmsLanguages = "${Environment.cmsApi}/cms/api/languages";
 
+  ///   ---------------------- Analytics dual-write ----------------------------
+  /// Teacher-BFF (admin-dash-api) student-authenticated ingest for the
+  /// best-effort analytics dual-write. Lives on [Environment.teacherBffApi],
+  /// NOT the choreo endpoint. Empty base => the dual-write is skipped.
+  static String get analyticsEvents =>
+      "${Environment.teacherBffApi}/api/internal/analytics-events";
+
   ///   ---------------------- Users --------------------------------------
   static String paymentLink = "${PApiUrls._subscriptionEndpoint}/payment_link";
 

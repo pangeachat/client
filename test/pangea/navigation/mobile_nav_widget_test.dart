@@ -30,6 +30,7 @@ void main() {
     AppSection? cavitySection,
     bool courseShortcutHostsCavity = false,
     VoidCallback? onDismissed,
+    ValueChanged<bool>? onCavityFullChanged,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -53,6 +54,7 @@ void main() {
             cavitySection: cavitySection,
             courseShortcutHostsCavity: courseShortcutHostsCavity,
             onDismissed: onDismissed,
+            onCavityFullChanged: onCavityFullChanged,
           ),
         ),
       ),
@@ -687,6 +689,56 @@ void main() {
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));
+    });
+  });
+
+  group('full-height reporting (#7697)', () {
+    testWidgets('reports full only on settle, and toggles back on collapse', (
+      tester,
+    ) async {
+      final reports = <bool>[];
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        onCavityFullChanged: reports.add,
+      );
+      // Opens at half — never full — so nothing is reported yet.
+      expect(reports, isEmpty);
+
+      // Handle tap settles at full: one true report.
+      await tester.tap(handleFinder());
+      await tester.pumpAndSettle();
+      expect(reports, [true]);
+
+      // Handle tap settles back at half: reports false. Only real changes fire.
+      await tester.tap(handleFinder());
+      await tester.pumpAndSettle();
+      expect(reports, [true, false]);
+    });
+
+    testWidgets('an ephemeral tap-outside collapse reports not-full', (
+      tester,
+    ) async {
+      final reports = <bool>[];
+      await pumpNav(
+        tester,
+        activeSection: AppSection.chats,
+        cavitySection: AppSection.chats,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        onCavityFullChanged: reports.add,
+      );
+      await tester.tap(handleFinder()); // -> full
+      await tester.pumpAndSettle();
+      expect(reports, [true]);
+
+      // Tap outside collapses ephemerally — the sheet is no longer full.
+      await tester.tapAt(const Offset(200, 20));
+      await tester.pumpAndSettle();
+      expect(reports, [true, false]);
     });
   });
 }

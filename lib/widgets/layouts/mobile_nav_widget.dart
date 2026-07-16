@@ -98,6 +98,14 @@ class MobileNavWidget extends StatefulWidget {
   /// design for section sheets and the course card.
   final VoidCallback? onDismissed;
 
+  /// Fires when the hosted cavity settles at (or leaves) its FULL height, so
+  /// the shell can drop the floating search bar over a full course sheet and
+  /// hand that reserved strip to the course content (#7697). Latched to the
+  /// settled rest state — it deliberately does NOT toggle mid-drag, so the
+  /// reserved height (and thus the drag's coordinate space) stays stable while
+  /// the finger moves.
+  final ValueChanged<bool>? onCavityFullChanged;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -114,6 +122,7 @@ class MobileNavWidget extends StatefulWidget {
     this.preferredCavityHeightPx,
     this.topAttachment,
     this.onDismissed,
+    this.onCavityFullChanged,
     super.key,
   });
 
@@ -161,10 +170,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   double _fraction = 0.0;
   double? _dragStartFraction;
 
+  /// Whether the cavity is settled at full height, LATCHED across drags: it
+  /// flips only when the sheet settles at a rest stop ([_openAt]) or the cavity
+  /// opens / closes / changes key — never on the transient null rest state
+  /// mid-drag. That keeps the shell's search-bar reservation (#7697) from
+  /// thrashing (and the box from jumping) while the finger is dragging.
+  bool _fullLatched = false;
+
+  /// Last value handed to [MobileNavWidget.onCavityFullChanged]; the post-frame
+  /// notify in [build] fires only on a real change.
+  bool _reportedFull = false;
+
   @override
   void initState() {
     super.initState();
     _restState = _restoreHeight();
+    _fullLatched = _restState == NavCavityHeight.full;
   }
 
   @override
@@ -183,8 +204,11 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
         _restState = null;
         _fraction = 0.0;
       });
+      _fullLatched = false;
     } else if (openedNow || keyChanged) {
-      setState(() => _restState = _restoreHeight());
+      final restored = _restoreHeight();
+      setState(() => _restState = restored);
+      _fullLatched = restored == NavCavityHeight.full;
     }
     // A preferredCavityHeightPx change needs no handling: a resting sheet
     // derives its fraction from the current hint every build.
@@ -260,7 +284,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
 
   void _openAt(NavCavityHeight height) {
     _remember(height);
+    _fullLatched = height == NavCavityHeight.full;
     setState(() => _restState = height);
+  }
+
+  /// Notify the shell of a latched full-height change AFTER the frame — calling
+  /// back synchronously from build would `setState` the shell mid-build.
+  void _syncFullReport() {
+    if (_fullLatched == _reportedFull) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _fullLatched == _reportedFull) return;
+      _reportedFull = _fullLatched;
+      widget.onCavityFullChanged?.call(_reportedFull);
+    });
   }
 
   /// Handle tap: toggles half <-> full (the #7128 pattern) — reachable without
@@ -335,6 +371,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       onDismissed();
       return;
     }
+    _fullLatched = false;
     setState(() {
       _restState = null;
       _fraction = 0.0;
@@ -391,6 +428,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
         : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
 
     final isExpanded = widget.cavityChild != null && _currentFraction > 0.01;
+
+    // Report a settled full-height change up to the shell (post-frame).
+    _syncFullReport();
 
     return Stack(
       children: [

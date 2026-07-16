@@ -49,32 +49,35 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ListenableBuilder(
-                listenable: Listenable.merge([
-                  viewModel.avatarUrl,
-                  viewModel.displayName,
-                ]),
-                builder: (context, _) => ClusterAvatar(
-                  avatarUrl: viewModel.avatarUrl.value,
-                  name: viewModel.displayName.value,
-                  onTap: () => viewModel.openProfile(context),
-                ),
-              ),
-              const SizedBox(height: 8),
-              _PowerupsPill(viewModel: viewModel),
-              if (l2 != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: ClusterLanguageFlag(
-                    language: l2,
-                    onTap: () => viewModel.openLearningSettings(context),
+          child: FocusTraversalGroup(
+            policy: OrderedTraversalPolicy(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ListenableBuilder(
+                  listenable: Listenable.merge([
+                    viewModel.avatarUrl,
+                    viewModel.displayName,
+                  ]),
+                  builder: (context, _) => ClusterAvatar(
+                    avatarUrl: viewModel.avatarUrl.value,
+                    name: viewModel.displayName.value,
+                    onTap: () => viewModel.openProfile(context),
                   ),
                 ),
-            ],
+                const SizedBox(height: 8),
+                _PowerupsPill(viewModel: viewModel),
+                if (l2 != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: ClusterLanguageFlag(
+                      language: l2,
+                      onTap: () => viewModel.openLearningSettings(context),
+                    ),
+                  ),
+              ],
+            ),
           ),
         );
       },

@@ -2,7 +2,6 @@ import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/construct_practice_extension.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 
@@ -18,7 +17,6 @@ class VocabAudioTargetGenerator {
     final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenLemmas = {};
-    final Set<String> seenEventIds = {};
 
     final targets = <AnalyticsPracticeTarget>[];
 
@@ -33,22 +31,19 @@ class VocabAudioTargetGenerator {
         continue;
       }
 
-      // Try to get an audio example message with token data for this lemma
-      final exampleMessage = await ExampleMessageUtil.getAudioExampleMessage(
-        construct,
-        noBold: true,
-      );
-
-      if (exampleMessage == null) continue;
-      final eventId = exampleMessage.eventId;
-      if (eventId != null && seenEventIds.contains(eventId)) {
+      // Cheap local check that an audio example is *resolvable* — a use that
+      // points at a message (eventId + roomId). The example message itself is
+      // resolved later, at generation, off the critical path (#7702): doing it
+      // here forced N serial event fetches before the first exercise could
+      // show. An audio target that fails to resolve at generation falls back
+      // to a meaning exercise (VocabAudioPracticeExerciseGenerator).
+      if (!construct.cappedUses.any(
+        (u) => u.metadata.eventId != null && u.metadata.roomId != null,
+      )) {
         continue;
       }
 
       seenLemmas.add(construct.lemma);
-      if (eventId != null) {
-        seenEventIds.add(eventId);
-      }
 
       targets.add(
         AnalyticsPracticeTarget(
@@ -56,7 +51,6 @@ class VocabAudioTargetGenerator {
             tokens: [construct.id.asToken],
             exerciseType: exerciseType,
           ),
-          audioExampleMessage: exampleMessage,
         ),
       );
     }

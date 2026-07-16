@@ -14,58 +14,74 @@ class GrammarErrorExampleWidget extends StatelessWidget {
     required this.showTranslation,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    final text = analyticsPracticeExercise.text;
-    final errorOffset = analyticsPracticeExercise.errorOffset;
-    final errorLength = analyticsPracticeExercise.errorLength;
-
-    const maxContextChars = 50;
-
+  /// The sentence split around the blanked error span, as (before, after) plus
+  /// whether either side was context-trimmed. Grapheme-based (matching
+  /// [SpanData.errorSpan]), so the blank aligns exactly with
+  /// `text.characters[errorOffset .. errorOffset + errorLength)` — the true
+  /// error word once the offsets index the right base string (#7360). Pure and
+  /// static so the alignment is unit-testable without pumping the widget.
+  @visibleForTesting
+  static ({String before, String after, bool trimmedBefore, bool trimmedAfter})
+  splitAroundBlank(
+    String text,
+    int errorOffset,
+    int errorLength, {
+    int maxContextChars = 50,
+  }) {
     final chars = text.characters;
     final totalLength = chars.length;
 
-    // ---------- BEFORE ----------
     int beforeStart = 0;
     bool trimmedBefore = false;
-
     if (errorOffset > maxContextChars) {
       int desiredStart = errorOffset - maxContextChars;
-
-      // Snap left to nearest whitespace to avoid cutting words
+      // Snap left to nearest whitespace to avoid cutting words.
       while (desiredStart > 0 && chars.elementAt(desiredStart) != ' ') {
         desiredStart--;
       }
-
       beforeStart = desiredStart;
       trimmedBefore = true;
     }
-
     final before = chars
         .skip(beforeStart)
         .take(errorOffset - beforeStart)
         .toString();
 
-    // ---------- AFTER ----------
     int afterEnd = totalLength;
     bool trimmedAfter = false;
-
     final errorEnd = errorOffset + errorLength;
-    final afterChars = totalLength - errorEnd;
-
-    if (afterChars > maxContextChars) {
+    if (totalLength - errorEnd > maxContextChars) {
       int desiredEnd = errorEnd + maxContextChars;
-
-      // Snap right to nearest whitespace
+      // Snap right to nearest whitespace.
       while (desiredEnd < totalLength && chars.elementAt(desiredEnd) != ' ') {
         desiredEnd++;
       }
-
       afterEnd = desiredEnd;
       trimmedAfter = true;
     }
-
     final after = chars.skip(errorEnd).take(afterEnd - errorEnd).toString();
+
+    return (
+      before: before,
+      after: after,
+      trimmedBefore: trimmedBefore,
+      trimmedAfter: trimmedAfter,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final errorLength = analyticsPracticeExercise.errorLength;
+
+    final split = splitAroundBlank(
+      analyticsPracticeExercise.text,
+      analyticsPracticeExercise.errorOffset,
+      errorLength,
+    );
+    final before = split.before;
+    final after = split.after;
+    final trimmedBefore = split.trimmedBefore;
+    final trimmedAfter = split.trimmedAfter;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),

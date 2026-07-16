@@ -10,6 +10,13 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 /// browser permits autoplay; with sound it relies on the user's tap as the
 /// gesture. Only the carousel's active page should mount one — it owns an
 /// iframe/webview that must be torn down with [YoutubePlayerController.close].
+///
+/// The embed stays inline: fullscreen is fully disabled (no fullscreen button,
+/// no auto-fullscreen on landscape rotation, no fullscreen-on-vertical-drag).
+/// Activity video is an in-place plan-page stimulus, and the package's
+/// fullscreen has no in-app exit affordance the way we mount it, so on a
+/// landscape tablet it would otherwise take over the screen with no way out and
+/// trap the learner (#7500).
 class ActivityYoutubePlayer extends StatefulWidget {
   final String url;
   final bool muted;
@@ -37,6 +44,9 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
         mute: widget.muted,
         showControls: true,
         playsInline: true,
+        // Keep it inline — see the class doc (#7500). Already the package
+        // default, but pinned so it can't silently flip back on.
+        showFullscreenButton: false,
         privacyEnhancedMode: true,
       ),
     );
@@ -59,6 +69,10 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
     return YoutubePlayer(
       controller: _controller,
       aspectRatio: widget.aspectRatio,
+      // Inline only (#7500): don't auto-fullscreen on landscape rotation, and
+      // don't let a vertical drag push into fullscreen.
+      autoFullScreen: false,
+      enableFullScreenOnVerticalDrag: false,
     );
   }
 }

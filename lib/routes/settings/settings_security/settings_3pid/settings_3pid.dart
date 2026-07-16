@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/home/signup/registration_email_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -44,31 +45,37 @@ class Settings3PidController extends State<Settings3Pid> {
       ),
     );
     if (response.error != null) return;
-    final ok = await showOkAlertDialog(
-      useRootNavigator: false,
-      context: context,
-      title: L10n.of(context).weSentYouAnEmail,
-      // #Pangea
-      // message: L10n.of(context).pleaseClickOnLink,
-      message: L10n.of(context).clickOnEmailLinkDesc,
-      // Pangea#
-      okLabel: L10n.of(context).iHaveClickedOnLink,
-    );
-    if (ok != OkCancelResult.ok) return;
-    final success = await showFutureLoadingDialog(
-      context: context,
-      delay: false,
-      future: () => Matrix.of(context).client.uiaRequestBackground(
-        (auth) => Matrix.of(
-          context,
-        ).client.add3PID(clientSecret, response.result!.sid, auth: auth),
-      ),
-      // #Pangea
-      showError: (e) => !e.toString().contains("Request has been canceled"),
-      // Pangea#
-    );
-    if (success.error != null) return;
-    setState(() => request = null);
+    if (OkCancelResult.ok ==
+        await showDialog<OkCancelResult?>(
+          useRootNavigator: false,
+          barrierDismissible: false,
+          context: context,
+          builder: (context) => RegistrationEmailPopup(
+            onResendEmail: () async {
+              Settings3Pid.sendAttempt++;
+              await Matrix.of(context).client.requestTokenToRegisterEmail(
+                clientSecret,
+                input,
+                Settings3Pid.sendAttempt,
+              );
+            },
+          ),
+        )) {
+      final success = await showFutureLoadingDialog(
+        context: context,
+        delay: false,
+        future: () => Matrix.of(context).client.uiaRequestBackground(
+          (auth) => Matrix.of(
+            context,
+          ).client.add3PID(clientSecret, response.result!.sid, auth: auth),
+        ),
+        // #Pangea
+        showError: (e) => !e.toString().contains("Request has been canceled"),
+        // Pangea#
+      );
+      if (success.error != null) return;
+      setState(() => request = null);
+    }
   }
 
   Future<List<ThirdPartyIdentifier>?>? request;

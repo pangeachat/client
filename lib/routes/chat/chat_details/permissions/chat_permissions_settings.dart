@@ -120,7 +120,7 @@ class ChatPermissionsSettingsController extends State<ChatPermissionsSettings> {
 
   // #Pangea
   Map<String, dynamic> get defaultPowerLevels {
-    final chatPowerLevels = RoomDefaults.defaultPowerLevelsContent;
+    final chatPowerLevels = RoomDefaults.defaultPowerLevelsContent();
     final spacePowerLevels = RoomDefaults.defaultSpacePowerLevelsContent();
 
     if (roomId == null) return chatPowerLevels;

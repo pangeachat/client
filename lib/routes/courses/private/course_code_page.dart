@@ -183,35 +183,39 @@ class CourseCodePageState extends State<CourseCodePage> {
                     BlendMode.srcIn,
                   ),
                 ),
-                Column(
-                  spacing: 16.0,
-                  children: [
-                    Text(
-                      L10n.of(context).enterCodeToJoin,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
+
+                FocusTraversalGroup(
+                  policy: OrderedTraversalPolicy(),
+                  child: Column(
+                    spacing: 16.0,
+                    children: [
+                      Text(
+                        L10n.of(context).enterCodeToJoin,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    TextFormField(
-                      controller: _codeController,
-                      decoration: InputDecoration(
-                        hintText: L10n.of(context).courseCodeHint,
+                      TextFormField(
+                        controller: _codeController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).courseCodeHint,
+                        ),
+                        onFieldSubmitted: (_) => _submit(),
+                        inputFormatters: [LengthLimitingTextInputFormatter(10)],
                       ),
-                      onFieldSubmitted: (_) => _submit(),
-                      inputFormatters: [LengthLimitingTextInputFormatter(10)],
-                    ),
-                    ElevatedButton(
-                      onPressed: _code.isNotEmpty ? _submit : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
+                      ElevatedButton(
+                        onPressed: _code.isNotEmpty ? _submit : null,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(L10n.of(context).submit)],
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).submit)],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -330,7 +330,7 @@ class ChatDetailsController extends State<ChatDetails>
               allowRoomId: roomId,
             ),
           ],
-          powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
+          powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent(),
         );
 
         try {

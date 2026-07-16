@@ -32,12 +32,18 @@ class OrchestratorOutput {
           ),
         )
         .toList(),
-    suggestions: List.from(json["suggestions"])
+    // v2 (choreo#2761): reaction and turn-0 null buckets arrive as empty
+    // options lists, deliberately never rendered — drop them and malformed
+    // buckets.
+    suggestions: List.from(json["suggestions"] ?? [])
+        .whereType<Map>()
+        .where((s) => s["role_id"] is String)
         .map(
           (s) => OrchestratorRoleSuggestions.fromJson(
             Map<String, dynamic>.from(s),
           ),
         )
+        .where((s) => s.suggestions.isNotEmpty)
         .toList(),
     flag: json["flag"] != null
         ? OrchestratorFlag.fromJson(Map<String, dynamic>.from(json["flag"]))
