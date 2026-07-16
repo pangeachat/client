@@ -1,5 +1,6 @@
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
@@ -156,7 +157,7 @@ class ChatView extends StatelessWidget {
     //   ];
     // }
     // return [];
-    if (controller.room.isArchived || controller.room.hasArchivedActivity) {
+    if (controller.room.isArchived) {
       return [];
     }
 
@@ -169,8 +170,18 @@ class ChatView extends StatelessWidget {
         : const AnalyticsHeaderAvatar();
 
     if (controller.room.showActivityChatUI) {
+      // A completed session (own role archived) keeps its "More" menu, but only
+      // to download the transcript — leave/invite no longer apply. Download is
+      // web/desktop only for now, so on native a completed session has no menu
+      // items; omit the button entirely there.
+      final bool isCompleted = controller.room.hasArchivedActivity;
       return [
-        ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
+        if (!isCompleted || kIsWeb)
+          ActivitySessionPopupMenu(
+            controller.room,
+            onLeave: controller.onLeave,
+            isCompleted: isCompleted,
+          ),
         ?analyticsAvatar,
       ];
     }
