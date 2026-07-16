@@ -9,6 +9,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -232,6 +233,16 @@ class PangeaMessageEvent {
   RepresentationEvent? get originalSent => representations.firstWhereOrNull(
     (element) => element.content.originalSent,
   );
+
+  /// Vocab + morph construct uses the sender actually produced in this
+  /// message — the single source for analytics and used-vocab tracking.
+  /// Typed messages read the sent representation's tokens; voice messages
+  /// read the embedded STT transcript. Both yield the same [OneConstructUse]
+  /// shape (spoken words score as `pvm`), so callers don't special-case audio
+  /// (issue #7659).
+  List<OneConstructUse>? get constructUses => isAudioMessage
+      ? getSpeechToTextLocal()?.constructs(room.id, eventId)
+      : originalSent?.vocabAndMorphUses;
 
   RepresentationEvent? get originalWritten => representations.firstWhereOrNull(
     (element) => element.content.originalWritten,

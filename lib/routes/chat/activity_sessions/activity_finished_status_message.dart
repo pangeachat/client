@@ -1,75 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/languages/p_language_store.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// Bottom status bar for a session the user has finished: shows the waiting
+/// state while others are still going, then the summary's loading/error
+/// states. Saving is automatic (ActivityAutoSaveService) — there is no manual
+/// save step here.
 class ActivityFinishedStatusMessage extends StatelessWidget {
   final ChatController controller;
 
   const ActivityFinishedStatusMessage({super.key, required this.controller});
-
-  void _onArchive(BuildContext context) {
-    _archiveToAnalytics();
-    // A standalone activity has no course to return to — go home instead.
-    final course = controller.room.courseParent;
-    context.go(
-      course != null
-          ? WorkspaceNav.openCourse(
-              GoRouterState.of(context).uri,
-              course.id,
-              tab: SpaceSettingsTabs.course,
-            )
-          : "/",
-    );
-  }
-
-  Future<void> _archiveToAnalytics() async {
-    try {
-      final activityPlan = controller.room.activityPlan;
-      if (activityPlan == null) {
-        throw Exception("No activity plan found for room");
-      }
-
-      GoogleAnalytics.completeActivity(
-        activityPlan.activityId,
-        controller.room.id,
-        versionPinHonored: !activityPlan.usedFallbackVersion,
-        fallbackCause: activityPlan.fallbackCause,
-      );
-
-      final lang = activityPlan.req.targetLanguage.split("-").first;
-      final langModel = PLanguageStore.byLangCode(lang)!;
-      await controller.room.archiveActivity();
-      await MatrixState
-          .pangeaController
-          .matrixState
-          .analyticsDataService
-          .updateService
-          .sendActivityAnalytics(controller.room.id, langModel);
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'roomId': controller.room.id});
-    }
-  }
-
-  ActivitySummaryModel? get summary => controller.room.activitySummaryByL1;
-
-  bool get _enableArchive =>
-      summary?.summary != null || summary?.hasError == true;
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +30,9 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
 
     final finished = controller.room.isActivityFinished;
-    final archived = controller.room.hasArchivedActivity;
     final summary = controller.room.activitySummaryByL1;
 
-    final hasContent =
-        !finished || !archived || (summary != null && summary.summary == null);
+    final hasContent = !finished || (summary != null && summary.summary == null);
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
@@ -113,11 +59,6 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                             fetchSummaries: l1 != null
                                 ? () => controller.room.fetchSummaries(l1)
                                 : null,
-                          ),
-                        if (!archived)
-                          _ArchiveSection(
-                            enabled: _enableArchive,
-                            onArchive: () => _onArchive(context),
                           ),
                       ] else
                         _WaitSection(
@@ -204,48 +145,6 @@ class _SummarySection extends StatelessWidget {
     }
 
     return const SizedBox.shrink();
-  }
-}
-
-class _ArchiveSection extends StatelessWidget {
-  final bool enabled;
-  final VoidCallback onArchive;
-
-  const _ArchiveSection({required this.enabled, required this.onArchive});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Column(
-      spacing: 12,
-      children: [
-        Text(
-          L10n.of(context).saveActivityDesc,
-          style: const TextStyle(fontStyle: FontStyle.italic),
-          textAlign: TextAlign.center,
-        ),
-        ElevatedButton(
-          onPressed: enabled ? onArchive : null,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-            backgroundColor: theme.colorScheme.primaryContainer,
-          ),
-          child: Row(
-            spacing: 12,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.radar, size: 20),
-              Text(
-                L10n.of(context).saveActivityTitle,
-                style: const TextStyle(fontSize: 12),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
   }
 }
 

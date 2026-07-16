@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/routes/courses/find_course_page.dart';
 import 'package:fluffychat/routes/courses/own/invite/course_invite_page.dart';
@@ -45,7 +46,14 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
       case AddCourseSubpageEnum.browse:
         final roomId = param.previewRoomId;
         if (roomId != null) {
-          return PublicCoursePreview(roomID: roomId, closeButton: closeButton);
+          // previewRoomId rides the URL token as a bare localpart (shortRoomId
+          // on encode); re-attach the home server_name at this read-back
+          // boundary so join/knock get a legal room id — mirrors routes.dart's
+          // `preview/:courseroomid` builder. See room_id_url.dart.
+          return PublicCoursePreview(
+            roomID: fullRoomId(roomId),
+            closeButton: closeButton,
+          );
         }
         return FindCoursePage(
           closeButton: closeButton,

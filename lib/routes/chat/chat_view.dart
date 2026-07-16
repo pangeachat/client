@@ -1,5 +1,6 @@
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart';
@@ -156,7 +157,7 @@ class ChatView extends StatelessWidget {
     //   ];
     // }
     // return [];
-    if (controller.room.isArchived || controller.room.hasArchivedActivity) {
+    if (controller.room.isArchived) {
       return [];
     }
 
@@ -169,8 +170,18 @@ class ChatView extends StatelessWidget {
         : const AnalyticsHeaderAvatar();
 
     if (controller.room.showActivityChatUI) {
+      // A completed session (own role archived) keeps its "More" menu, but only
+      // to download the transcript — leave/invite no longer apply. Download is
+      // web/desktop only for now, so on native a completed session has no menu
+      // items; omit the button entirely there.
+      final bool isCompleted = controller.room.hasArchivedActivity;
       return [
-        ActivitySessionPopupMenu(controller.room, onLeave: controller.onLeave),
+        if (!isCompleted || kIsWeb)
+          ActivitySessionPopupMenu(
+            controller.room,
+            onLeave: controller.onLeave,
+            isCompleted: isCompleted,
+          ),
         ?analyticsAvatar,
       ];
     }
@@ -304,7 +315,14 @@ class ChatView extends StatelessWidget {
                       )
                     // #Pangea
                     : controller.widget.backButton != null
-                    ? controller.widget.backButton!
+                    // Center so the injected close/back control keeps its
+                    // natural square size instead of being stretched to the
+                    // leading slot's tight height (72 in column mode, per
+                    // appBarTheme.toolbarHeight). A stretched M3 IconButton's
+                    // StadiumBorder hover overlay renders as a tall pill rather
+                    // than a circle (#7656). Mirrors the default BackButton
+                    // branch below, which is likewise Center-wrapped.
+                    ? Center(child: controller.widget.backButton!)
                     // : FluffyThemes.isColumnMode(context)
                     // ? null
                     // Pangea#

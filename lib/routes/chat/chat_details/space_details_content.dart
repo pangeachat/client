@@ -109,16 +109,19 @@ class SpaceDetailsContent extends StatelessWidget {
             setSelectedTab(SpaceSettingsTabs.participants, context),
         tab: SpaceSettingsTabs.participants,
       ),
-      ButtonDetails(
-        title: l10n.stats,
-        icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
-        onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics, context),
-        enabled: room.isRoomAdmin,
-        tab: SpaceSettingsTabs.analytics,
-        // world_v2: the card has 4 primary tabs (chats / course plan /
-        // participants / more); course stats live inside More for admins.
-        showInMainView: false,
-      ),
+      // #7709: the in-app course Stats page is hidden — the admin dashboard
+      // (admin.pangea.chat) now owns course analytics. Left commented (not
+      // deleted) so it's trivially reversible while the admin dash matures.
+      // ButtonDetails(
+      //   title: l10n.stats,
+      //   icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
+      //   onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics, context),
+      //   enabled: room.isRoomAdmin,
+      //   tab: SpaceSettingsTabs.analytics,
+      //   // world_v2: the card has 4 primary tabs (chats / course plan /
+      //   // participants / more); course stats live inside More for admins.
+      //   showInMainView: false,
+      // ),
       ButtonDetails(
         title: l10n.invite,
         description: l10n.inviteDesc,

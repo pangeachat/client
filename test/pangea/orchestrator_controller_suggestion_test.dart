@@ -113,30 +113,27 @@ void main() {
         expect(result!.roleId, roleA);
       });
 
-      test(
-        'lone human is prompted on the bot\'s opener, before their first '
-        'message (#7703)',
-        () {
-          // v2 re-fires on the bot's turn-0 opener (choreo#2761): the output is
-          // based on the bot's message and carries the human role's bucket (the
-          // sender's own role is omitted), so the lone human is prompted even
-          // though they have not spoken yet (latestHumanMessageSenderId null).
-          // The old currentUserSpokeLast gate dropped this — the moment
-          // forced-choice suggestions matter most for the PreA1-B1 audience.
-          const botOpener = r'$botOpener';
-          final output = outputWithBothRoles(botOpener);
-          final result = OrchestratorController.suggestionToShow(
-            output: output,
-            ownRoleId: roleA,
-            currentUserId: userA,
-            latestMessageEventId: botOpener,
-            latestHumanMessageSenderId: null, // no human has spoken yet
-            humanRoleCount: 1,
-          );
-          expect(result, isNotNull);
-          expect(result!.roleId, roleA);
-        },
-      );
+      test('lone human is prompted on the bot\'s opener, before their first '
+          'message (#7703)', () {
+        // v2 re-fires on the bot's turn-0 opener (choreo#2761): the output is
+        // based on the bot's message and carries the human role's bucket (the
+        // sender's own role is omitted), so the lone human is prompted even
+        // though they have not spoken yet (latestHumanMessageSenderId null).
+        // The old currentUserSpokeLast gate dropped this — the moment
+        // forced-choice suggestions matter most for the PreA1-B1 audience.
+        const botOpener = r'$botOpener';
+        final output = outputWithBothRoles(botOpener);
+        final result = OrchestratorController.suggestionToShow(
+          output: output,
+          ownRoleId: roleA,
+          currentUserId: userA,
+          latestMessageEventId: botOpener,
+          latestHumanMessageSenderId: null, // no human has spoken yet
+          humanRoleCount: 1,
+        );
+        expect(result, isNotNull);
+        expect(result!.roleId, roleA);
+      });
     },
   );
 

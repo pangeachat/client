@@ -53,9 +53,15 @@ class HtmlMessage extends StatelessWidget {
   final bool isTransitionAnimation;
   final bool isPracticeMode;
   final void Function(PangeaToken)? onClick;
+
+  /// Target vocab lemmas for the room's activity, computed once per build so
+  /// the per-token render loop doesn't rebuild the set for every token
+  /// (issue #7659). Null when the room has no activity plan.
+  late final Set<String>? _activityVocabLemmas =
+      controller.room.activityPlan?.vocabLemmas;
   // Pangea#
 
-  const HtmlMessage({
+  HtmlMessage({
     super.key,
     required this.html,
     required this.room,
@@ -470,13 +476,12 @@ class HtmlMessage extends StatelessWidget {
             !isPracticeMode &&
             isFirstNewToken;
 
-        final vocabLemmas = controller.room.activityPlan?.vocab
-            .map((v) => v.lemma.toLowerCase())
-            .toSet();
         final isVocabHighlight =
-            vocabLemmas != null &&
             token != null &&
-            vocabLemmas.contains(token.lemma.text.toLowerCase());
+            TokenRenderingUtil.isVocabHighlight(
+              token.lemma.text,
+              _activityVocabLemmas,
+            );
 
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,
@@ -552,20 +557,10 @@ class HtmlMessage extends StatelessWidget {
                             return ShimmerBackground(
                               enabled: showShimmer,
                               borderRadius: BorderRadius.circular(4.0),
-                              child: isVocabHighlight
-                                  ? DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        color: AppConfig.gold.withAlpha(50),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 4,
-                                        ),
-                                        child: underlineTextWidget,
-                                      ),
-                                    )
-                                  : underlineTextWidget,
+                              child: TokenRenderingUtil.vocabHighlight(
+                                highlight: isVocabHighlight,
+                                child: underlineTextWidget,
+                              ),
                             );
                           },
                         ),
