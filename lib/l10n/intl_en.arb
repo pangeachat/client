@@ -1524,6 +1524,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "changePasswordSessionExpired": "Your session has expired. Please log in again.",
+    "@changePasswordSessionExpired": {
+        "type": "String",
+        "placeholders": {}
+    },
     "overview": "Overview",
     "@overview": {},
     "passwordRecoverySettings": "Password recovery settings",
