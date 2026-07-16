@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/settings/settings_security/settings_password/s
 import 'package:fluffychat/routes/settings/settings_security/settings_security.dart';
 import 'package:fluffychat/routes/settings/settings_style/settings_style.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_page.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_page.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_history.dart';
 
@@ -70,6 +71,11 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         return SubscriptionHistory(closeButton: closeButton);
       case 'subscription/discount':
         return DiscountCodePage(closeButton: closeButton);
+      case 'subscription/selected':
+        final planId = param?.planId;
+        return planId != null
+            ? SelectedSubscriptionPage(closeButton: closeButton, planId: planId)
+            : SizedBox.shrink();
       case 'security':
         return const SettingsSecurity();
       case 'security/password':

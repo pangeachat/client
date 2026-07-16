@@ -62,18 +62,29 @@ class SettingsSubscriptionState extends State<SettingsSubscription>
     }
   }
 
-  Future<void> _onTapSubscription(ProductPlan plan) async {
+  Future<void> _onTapSubscription(ProductPlan plan) =>
+      FluffyThemes.isColumnMode(context)
+      ? _showSelectedSubscriptionPopup(plan)
+      : _goToSelectedSubscriptionPage(plan);
+
+  Future<void> _goToSelectedSubscriptionPage(ProductPlan plan) async =>
+      context.go(
+        WorkspaceNav.openSettings(
+          GoRouterState.of(context).uri,
+          page: 'subscription/selected',
+          planId: plan.planId,
+        ),
+      );
+
+  Future<void> _showSelectedSubscriptionPopup(ProductPlan plan) async {
     _selectedSubscription.value = plan;
-    final resp = await showDialog(
+    final resp = await showDialog<CheckoutRequest>(
       context: context,
       builder: (context) => SelectedSubscriptionPopup(plan),
     );
     if (mounted) _selectedSubscription.value = null;
-    if (resp != true) return;
-
-    final userID = Matrix.of(context).client.userID!;
-    final request = CheckoutRequest(userID: userID, planId: plan.planId);
-    await processCheckoutRequest(request);
+    if (resp == null) return;
+    await processCheckoutRequest(resp);
   }
 
   @override

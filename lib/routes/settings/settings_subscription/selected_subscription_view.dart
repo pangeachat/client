@@ -10,7 +10,12 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 class SelectedSubscriptionView extends StatelessWidget {
   final ProductPlan plan;
-  const SelectedSubscriptionView(this.plan, {super.key});
+  final VoidCallback onSubscribe;
+  const SelectedSubscriptionView(
+    this.plan, {
+    super.key,
+    required this.onSubscribe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +24,6 @@ class SelectedSubscriptionView extends StatelessWidget {
       spacing: 10.0,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: [
-            CloseButton(onPressed: () => Navigator.of(context).pop(false)),
-            Expanded(
-              child: Text(
-                plan.duration.copy(L10n.of(context)),
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(width: 40.0),
-          ],
-        ),
         Container(
           decoration: BoxDecoration(
             border: Border.all(color: theme.colorScheme.primaryContainer),
@@ -80,7 +70,7 @@ class SelectedSubscriptionView extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(true),
+          onPressed: onSubscribe,
           style: ElevatedButton.styleFrom(
             backgroundColor: AppConfig.goldByTheme(context),
             foregroundColor: theme.brightness == Brightness.light
