@@ -2,6 +2,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
@@ -163,6 +164,15 @@ class PracticeSelectionRepo {
 
   static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
     return t.morphsBasicallyEligibleForPracticeByPriority
+        // Only offer a question when at least one real (display-eligible)
+        // distractor exists for this feature+answer in the current language;
+        // otherwise the exercise would have no valid wrong answers.
+        .where(
+          (m) => GrammarConstructsProvider.distractorTagValues(
+            feature: m.category,
+            answerTag: m.lemma,
+          ).isNotEmpty,
+        )
         .map(
           (m) => PracticeTarget(
             tokens: [t],
