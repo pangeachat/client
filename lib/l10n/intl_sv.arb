@@ -2009,7 +2009,7 @@
     },
     "noKeyForThisMessage": "Detta kan hända om meddelandet skickades innan du loggade in på ditt konto i den här enheten.\n\nDet kan också vara så att avsändaren har blockerat din enhet eller att något gick fel med internetanslutningen.\n\nKan du läsa meddelandet i en annan session? I sådana fall kan du överföra meddelandet från den sessionen! Gå till Inställningar > Enhet och säkerställ att dina enheter har verifierat varandra. När du öppnar rummet nästa gång och båda sessionerna är i förgrunden, så kommer nycklarna att överföras automatiskt.\n\nVill du inte förlora nycklarna vid utloggning eller när du byter enhet? Säkerställ att du har aktiverat säkerhetskopiering för chatten i inställningarna.",
     "@noKeyForThisMessage": {},
-    "fileIsTooBigForServer": "Servern informerar om att filen är för stor för att skickas.",
+    "fileIsTooBigForServer": "Det gick inte att skicka! Servern stöder endast bilagor upp till {max}.",
     "@fileIsTooBigForServer": {},
     "deviceKeys": "Enhetsnycklar:",
     "@deviceKeys": {},

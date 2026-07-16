@@ -211,7 +211,7 @@
             }
         }
     },
-    "changedTheDisplaynameTo": "{username} ŝanĝis sian prezentan nomon al: {username}",
+    "changedTheDisplaynameTo": "{username} ŝanĝis sian montronomon al: '{displayname}'",
     "@changedTheDisplaynameTo": {
         "type": "String",
         "placeholders": {

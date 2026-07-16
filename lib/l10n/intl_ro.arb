@@ -553,7 +553,7 @@
             }
         }
     },
-    "fileIsTooBigForServer": "Serverul reportează că fișierul este prea mare să fie trimis.",
+    "fileIsTooBigForServer": "Trimitere imposibilă! Serverul acceptă atașamente de până la {max}.",
     "@fileIsTooBigForServer": {},
     "widgetName": "Nume",
     "@widgetName": {},

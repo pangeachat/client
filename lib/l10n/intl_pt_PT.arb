@@ -111,7 +111,7 @@
     },
     "sendOnEnter": "Enviar com Enter",
     "@sendOnEnter": {},
-    "badServerLoginTypesException": "O servidor suporta os tipos de início de sessão:\n{serverVersions}\nMas esta aplicação apenas suporta:\n{suportedVersions}",
+    "badServerLoginTypesException": "O servidor doméstico suporta os seguintes tipos de início de sessão:\n{serverVersions}\nMas esta aplicação suporta apenas:\n{supportedVersions}",
     "@badServerLoginTypesException": {
         "type": "String",
         "placeholders": {

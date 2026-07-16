@@ -8202,8 +8202,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "denyKnockSpace": "Déanfar diúltú do {username} ón gcúrsa, áfach, is féidir leo iarracht a dhéanamh arís ag am ar bith níos déanaí.",
-    "denyKnockChat": "Déanfar diúltú do {username} ón gcomhrá, áfach, is féidir leo iarracht a dhéanamh arís ag am ar bith níos déanaí.",
+    "denyKnockSpace": "Diúltófar don úsáideoir ón gcúrsa, ach féadfaidh siad iarracht a dhéanamh teacht isteach arís am ar bith níos déanaí.",
+    "denyKnockChat": "Diúltófar don úsáideoir ón gcomhrá, ach féadfaidh siad iarracht a dhéanamh teacht isteach arís am ar bith níos déanaí.",
     "banFromSpace": "Díothú ón gcúrsa",
     "unbanFromSpace": "Díothú a chur ar ceal ón gcúrsa",
     "@denyKnockSpace": {
