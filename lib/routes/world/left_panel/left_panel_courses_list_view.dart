@@ -18,7 +18,9 @@ List<Room> joinedCourses(Client client, L10n l10n) =>
     client.rooms
         .where(
           (r) =>
-              r.isSpace && r.membership == Membership.join && r.coursePlan != null,
+              r.isSpace &&
+              r.membership == Membership.join &&
+              r.coursePlan != null,
         )
         .toList()
       ..sort(
@@ -63,8 +65,7 @@ class CoursesHubPanel extends StatelessWidget {
               // With courses present, the three add-course actions ride the
               // header as right-justified icons; when empty they stay as full
               // buttons in the body below (the empty state).
-              trailing:
-                  courses.isEmpty ? null : const AddCourseHeaderActions(),
+              trailing: courses.isEmpty ? null : const AddCourseHeaderActions(),
             ),
             Expanded(child: LeftPanelCoursesListView(courses: courses)),
           ],
@@ -97,9 +98,7 @@ class LeftPanelCoursesListView extends StatelessWidget {
           // "Add new course" section divider + the full add-course buttons.
           Row(
             children: [
-              Expanded(
-                child: Divider(color: theme.colorScheme.outlineVariant),
-              ),
+              Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text(
@@ -109,9 +108,7 @@ class LeftPanelCoursesListView extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Divider(color: theme.colorScheme.outlineVariant),
-              ),
+              Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
             ],
           ),
           const SizedBox(height: 12.0),
