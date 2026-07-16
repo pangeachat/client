@@ -22,7 +22,8 @@ class SelectedSubscriptionPopup extends StatelessWidget {
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(16.0),
+          side: BorderSide(color: AppConfig.goldByTheme(context)),
         ),
         child: Container(
           width: 325.0,

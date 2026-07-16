@@ -138,7 +138,8 @@ class DiscountCodePopupState extends State<DiscountCodePopup> {
       child: Dialog(
         backgroundColor: Theme.of(context).colorScheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(16.0),
+          side: BorderSide(color: AppConfig.goldByTheme(context)),
         ),
         child: Container(
           constraints: const BoxConstraints(maxHeight: 600.0, maxWidth: 375.0),
