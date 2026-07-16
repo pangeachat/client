@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
@@ -10,6 +8,7 @@ import 'package:fluffychat/features/subscription/repo_v2/products_response.dart'
 import 'package:fluffychat/features/subscription/repo_v2/validate_promo_code_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/dialog_wrapper.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_option_card.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -133,152 +132,142 @@ class DiscountCodePopupState extends State<DiscountCodePopup> {
       ],
     );
 
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-      child: Dialog(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          side: BorderSide(color: AppConfig.goldByTheme(context)),
-        ),
-        child: Container(
-          constraints: const BoxConstraints(maxHeight: 600.0, maxWidth: 375.0),
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            spacing: 10.0,
-            mainAxisSize: MainAxisSize.min,
+    return DialogWrapper(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      borderRadius: 16.0,
+      side: BorderSide(color: AppConfig.goldByTheme(context)),
+      maxHeight: 600.0,
+      maxWidth: 375.0,
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        spacing: 10.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  CloseButton(onPressed: () => Navigator.of(context).pop()),
-                  Expanded(
-                    child: ValueListenableBuilder(
-                      valueListenable: _loader,
-                      builder: (context, state, _) => Text(
-                        switch (state) {
-                          AsyncLoaded() => L10n.of(context).selectDiscountPlan,
-                          _ => L10n.of(context).enterDiscountCode,
-                        },
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
+              CloseButton(onPressed: () => Navigator.of(context).pop()),
+              Expanded(
+                child: ValueListenableBuilder(
+                  valueListenable: _loader,
+                  builder: (context, state, _) => Text(
+                    switch (state) {
+                      AsyncLoaded() => L10n.of(context).selectDiscountPlan,
+                      _ => L10n.of(context).enterDiscountCode,
+                    },
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                  SizedBox(width: 40.0),
-                ],
+                ),
               ),
-              ValueListenableBuilder(
-                valueListenable: _loader,
-                builder: (context, state, _) {
-                  return switch (state) {
-                    AsyncIdle() => inputArea,
-                    AsyncLoading() => LinearProgressIndicator(),
-                    AsyncError() => errorDisplay,
-                    AsyncLoaded(value: final response) => () {
-                      if (response.valid != true) return errorDisplay;
-
-                      final discountCopy = response.discountCopy;
-                      return Column(
-                        spacing: 10.0,
-                        children: [
-                          switch (widget.productsState) {
-                            AsyncLoading() ||
-                            AsyncIdle() => LinearProgressIndicator(),
-                            AsyncError() => Row(
-                              spacing: 10.0,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.error_outline,
-                                  color: AppConfig.error,
-                                  size: 24.0,
-                                ),
-                                Text(
-                                  L10n.of(context).oopsSomethingWentWrong,
-                                  style: TextStyle(color: AppConfig.error),
-                                ),
-                              ],
-                            ),
-                            AsyncLoaded(value: final plans) =>
-                              ValueListenableBuilder(
-                                valueListenable: _selectedSubscription,
-                                builder: (context, selectedPlan, _) => Wrap(
-                                  spacing: 12.0,
-                                  runSpacing: 12.0,
-                                  children: plans
-                                      .map(
-                                        (p) => SizedBox(
-                                          width: 160.0,
-                                          child: SubscriptionOptionCard(
-                                            p,
-                                            onTap: () =>
-                                                _setSelectedSubscription(p),
-                                            selected:
-                                                selectedPlan != null &&
-                                                p.planId == selectedPlan.planId,
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                          },
-                          Row(
-                            spacing: 10.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.check,
-                                color: AppConfig.success,
-                                size: 24.0,
-                              ),
-                              if (discountCopy != null)
-                                Text(
-                                  L10n.of(
-                                    context,
-                                  ).discountApplied(discountCopy),
-                                  style: TextStyle(color: AppConfig.success),
-                                ),
-                            ],
-                          ),
-                          ValueListenableBuilder(
-                            valueListenable: _selectedSubscription,
-                            builder: (context, selected, _) => ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
-                              ),
-                              onPressed: selected != null
-                                  ? () => Navigator.of(context).pop(
-                                      CheckoutRequest(
-                                        userID: Matrix.of(
-                                          context,
-                                        ).client.userID!,
-                                        planId: selected.planId,
-                                        promoCode: _controller.text.trim(),
-                                      ),
-                                    )
-                                  : null,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(L10n.of(context).continueToSubscribe),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }(),
-                  };
-                },
-              ),
+              SizedBox(width: 40.0),
             ],
           ),
-        ),
+          ValueListenableBuilder(
+            valueListenable: _loader,
+            builder: (context, state, _) {
+              return switch (state) {
+                AsyncIdle() => inputArea,
+                AsyncLoading() => LinearProgressIndicator(),
+                AsyncError() => errorDisplay,
+                AsyncLoaded(value: final response) => () {
+                  if (response.valid != true) return errorDisplay;
+
+                  final discountCopy = response.discountCopy;
+                  return Column(
+                    spacing: 10.0,
+                    children: [
+                      switch (widget.productsState) {
+                        AsyncLoading() ||
+                        AsyncIdle() => LinearProgressIndicator(),
+                        AsyncError() => Row(
+                          spacing: 10.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.error_outline,
+                              color: AppConfig.error,
+                              size: 24.0,
+                            ),
+                            Text(
+                              L10n.of(context).oopsSomethingWentWrong,
+                              style: TextStyle(color: AppConfig.error),
+                            ),
+                          ],
+                        ),
+                        AsyncLoaded(value: final plans) =>
+                          ValueListenableBuilder(
+                            valueListenable: _selectedSubscription,
+                            builder: (context, selectedPlan, _) => Wrap(
+                              spacing: 12.0,
+                              runSpacing: 12.0,
+                              children: plans
+                                  .map(
+                                    (p) => SizedBox(
+                                      width: 160.0,
+                                      child: SubscriptionOptionCard(
+                                        p,
+                                        onTap: () =>
+                                            _setSelectedSubscription(p),
+                                        selected:
+                                            selectedPlan != null &&
+                                            p.planId == selectedPlan.planId,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                      },
+                      Row(
+                        spacing: 10.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.check,
+                            color: AppConfig.success,
+                            size: 24.0,
+                          ),
+                          if (discountCopy != null)
+                            Text(
+                              L10n.of(context).discountApplied(discountCopy),
+                              style: TextStyle(color: AppConfig.success),
+                            ),
+                        ],
+                      ),
+                      ValueListenableBuilder(
+                        valueListenable: _selectedSubscription,
+                        builder: (context, selected, _) => ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                          ),
+                          onPressed: selected != null
+                              ? () => Navigator.of(context).pop(
+                                  CheckoutRequest(
+                                    userID: Matrix.of(context).client.userID!,
+                                    planId: selected.planId,
+                                    promoCode: _controller.text.trim(),
+                                  ),
+                                )
+                              : null,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(L10n.of(context).continueToSubscribe),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }(),
+              };
+            },
+          ),
+        ],
       ),
     );
   }
