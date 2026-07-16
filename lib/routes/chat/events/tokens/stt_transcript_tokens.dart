@@ -15,6 +15,11 @@ class SttTranscriptTokens extends StatelessWidget {
   final void Function(PangeaToken)? onClick;
   final bool Function(PangeaToken)? isSelected;
 
+  /// Lower-cased target vocab lemmas for the room's activity, or null when
+  /// the room has no activity plan. Spoken words whose lemma is in this set
+  /// get the gold highlight, matching typed messages (issue #7659).
+  final Set<String>? vocabLemmas;
+
   const SttTranscriptTokens({
     super.key,
     required this.eventId,
@@ -22,6 +27,7 @@ class SttTranscriptTokens extends StatelessWidget {
     this.onClick,
     this.isSelected,
     this.style,
+    this.vocabLemmas,
   });
 
   List<PangeaToken> get tokens =>
@@ -65,6 +71,10 @@ class SttTranscriptTokens extends StatelessWidget {
 
               final token = tokenPosition.token!;
               final selected = isSelected?.call(token) ?? false;
+              final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
+                token.lemma.text,
+                vocabLemmas,
+              );
 
               return WidgetSpan(
                 child: HoverBuilder(
@@ -75,14 +85,19 @@ class SttTranscriptTokens extends StatelessWidget {
                       onTap: onClick != null
                           ? () => onClick?.call(token)
                           : null,
-                      child: UnderlineText(
-                        text: text,
-                        style: style ?? DefaultTextStyle.of(context).style,
-                        underlineColor: TokenRenderingUtil.underlineColor(
-                          Theme.of(context).colorScheme.primary.withAlpha(200),
-                          selected: selected,
-                          hovered: hovered,
-                          isNew: newTokens.any((t) => t == token.text),
+                      child: TokenRenderingUtil.vocabHighlight(
+                        highlight: isVocabHighlight,
+                        child: UnderlineText(
+                          text: text,
+                          style: style ?? DefaultTextStyle.of(context).style,
+                          underlineColor: TokenRenderingUtil.underlineColor(
+                            Theme.of(
+                              context,
+                            ).colorScheme.primary.withAlpha(200),
+                            selected: selected,
+                            hovered: hovered,
+                            isNew: newTokens.any((t) => t == token.text),
+                          ),
                         ),
                       ),
                     ),

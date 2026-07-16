@@ -474,9 +474,8 @@ class HtmlMessage extends StatelessWidget {
             .map((v) => v.lemma.toLowerCase())
             .toSet();
         final isVocabHighlight =
-            vocabLemmas != null &&
             token != null &&
-            vocabLemmas.contains(token.lemma.text.toLowerCase());
+            TokenRenderingUtil.isVocabHighlight(token.lemma.text, vocabLemmas);
 
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,
@@ -552,20 +551,10 @@ class HtmlMessage extends StatelessWidget {
                             return ShimmerBackground(
                               enabled: showShimmer,
                               borderRadius: BorderRadius.circular(4.0),
-                              child: isVocabHighlight
-                                  ? DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        color: AppConfig.gold.withAlpha(50),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 4,
-                                        ),
-                                        child: underlineTextWidget,
-                                      ),
-                                    )
-                                  : underlineTextWidget,
+                              child: TokenRenderingUtil.vocabHighlight(
+                                highlight: isVocabHighlight,
+                                child: underlineTextWidget,
+                              ),
                             );
                           },
                         ),
