@@ -282,13 +282,20 @@ class ButtonControlledCarouselView extends StatelessWidget {
                       final userRole = assignedRoles.values.firstWhere(
                         (role) => role.userId == p.participantId,
                       );
-                      final userRoleInfo = availableRoles[userRole.id]!;
+                      // The assigned role id can be missing from the resolved
+                      // plan when the pinned plan version was evicted and a
+                      // fallback version (with regenerated role ids) was
+                      // served — fall back to the role name in room state.
+                      final roleName =
+                          availableRoles[userRole.id]?.name ??
+                          userRole.role ??
+                          L10n.of(context).participant;
                       return SizedBox(
                         width: 100.0,
                         height: 125.0,
                         child: Center(
                           child: ActivityParticipantIndicator(
-                            name: userRoleInfo.name,
+                            name: roleName,
                             userId: p.participantId,
                             user: user,
                             borderRadius: BorderRadius.circular(4),

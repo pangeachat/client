@@ -339,53 +339,31 @@ class NewCoursePageState extends State<NewCoursePage> {
                 ValueListenableBuilder(
                   valueListenable: _courses,
                   builder: (context, value, _) {
-                    final loading = value == null;
-                    if (loading || value.isError || value.result!.isEmpty) {
-                      return Center(
+                    if (value == null) {
+                      return const Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: loading
-                              ? const CircularProgressIndicator.adaptive()
-                              : Center(
-                                  child: Column(
-                                    spacing: 12.0,
-                                    children: [
-                                      const BotFace(
-                                        expression: BotExpression.addled,
-                                        width: Avatar.defaultSize * 1.5,
-                                      ),
-                                      Text(
-                                        L10n.of(context).noCourseTemplatesFound,
-                                        textAlign: TextAlign.center,
-                                        style: theme.textTheme.bodyLarge,
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () =>
-                                            context.go(PRoutes.chatsList),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: theme
-                                              .colorScheme
-                                              .primaryContainer,
-                                          foregroundColor: theme
-                                              .colorScheme
-                                              .onPrimaryContainer,
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(L10n.of(context).continueText),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                          padding: EdgeInsets.all(32.0),
+                          child: CircularProgressIndicator.adaptive(),
                         ),
                       );
                     }
 
+                    if (value.isError) {
+                      return _CoursePickerMessage(
+                        message: L10n.of(context).oopsSomethingWentWrong,
+                        buttonLabel: L10n.of(context).tryAgain,
+                        onPressed: _loadCourses,
+                      );
+                    }
+
                     final courses = value.result!;
+                    if (courses.isEmpty) {
+                      return _CoursePickerMessage(
+                        message: L10n.of(context).noCourseTemplatesFound,
+                        buttonLabel: L10n.of(context).continueText,
+                        onPressed: () => context.go(PRoutes.chatsList),
+                      );
+                    }
                     return Expanded(
                       child: ListView.builder(
                         controller: _scrollController,
@@ -433,6 +411,54 @@ class NewCoursePageState extends State<NewCoursePage> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Empty- and error-state message for the course picker: an addled bot face, a
+/// message, and a single action button. Used for both the "no courses" and the
+/// "something went wrong" states, which differ only in copy and action.
+class _CoursePickerMessage extends StatelessWidget {
+  final String message;
+  final String buttonLabel;
+  final VoidCallback onPressed;
+
+  const _CoursePickerMessage({
+    required this.message,
+    required this.buttonLabel,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 12.0,
+          children: [
+            const BotFace(
+              expression: BotExpression.addled,
+              width: Avatar.defaultSize * 1.5,
+            ),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyLarge,
+            ),
+            ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primaryContainer,
+                foregroundColor: theme.colorScheme.onPrimaryContainer,
+              ),
+              child: Text(buttonLabel),
+            ),
+          ],
         ),
       ),
     );

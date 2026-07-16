@@ -180,12 +180,21 @@ ProgressionResolution resolveProgression({
   // Mission is shared.
   final activitiesByMission = <String, Set<String>>{};
   final thresholdByMission = <String, int>{};
+  final earnableByActivity = <String, int>{};
   final sequences = <List<String>>[];
 
   for (final outline in outlines) {
     final seq = outline.orderedLoIds;
     if (seq.isEmpty) continue;
     sequences.add(seq);
+    outline.earnableByActivity.forEach((activityId, earnable) {
+      // Outlines carry the same plan, so values agree; min keeps a
+      // disagreement permissive (the lower ceiling clamps the threshold lower).
+      final existing = earnableByActivity[activityId];
+      earnableByActivity[activityId] = existing == null || earnable < existing
+          ? earnable
+          : existing;
+    });
     for (final missionId in seq) {
       (activitiesByMission[missionId] ??= <String>{}).addAll(
         outline.activityIdsByLo[missionId] ?? const <String>{},
@@ -202,13 +211,24 @@ ProgressionResolution resolveProgression({
   final rollup = <String, MissionProgress>{};
   activitiesByMission.forEach((missionId, activities) {
     var stars = 0;
+    var earnableCeiling = 0;
     for (final activityId in activities) {
       stars += starsByActivity[activityId] ?? 0;
+      earnableCeiling += earnableByActivity[activityId] ?? 0;
     }
+    final configured =
+        thresholdByMission[missionId] ?? kDefaultStarsToUnlockObjective;
+    // Effective threshold: the configured stars-to-unlock clamped to the sum of
+    // earnable stars across the Mission's activities, so a Mission is always
+    // satisfiable from its content and displays never advertise stars the
+    // learner cannot earn (org quests doc invariant; #7663). A ceiling of 0
+    // means no goal data reached the outline (degraded/legacy plans) — leave
+    // the configured threshold rather than marking the Mission satisfied at 0.
     rollup[missionId] = MissionProgress(
       stars: stars,
-      threshold:
-          thresholdByMission[missionId] ?? kDefaultStarsToUnlockObjective,
+      threshold: earnableCeiling > 0 && earnableCeiling < configured
+          ? earnableCeiling
+          : configured,
     );
   });
 

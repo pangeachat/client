@@ -57,7 +57,7 @@ Wall-clock ≈ 12m50s (parallel; APK was the critical path). `build_debug_linux`
 
 ### Gotchas for future edits
 
-- **No required status checks are configured on `main`** (verified via the branch-protection API), so gating APK/iOS to push-only strands nothing. If required checks are added later, do **not** mark the native jobs required, or PRs will wait on checks that never run.
+- **`main` requires the `code_tests` check** (branch protection; pangeachat/client#7680) — the format / import-sort / analyze / test gate. The native jobs (`build_debug_apk`, `build_debug_ios`) run push-only (`if: github.event_name == 'push'`), so they must **never** be added as required checks, or PRs will wait on checks that never run. `build_debug_web` and `accessibility_floor_check` do run on PRs but are intentionally left un-required.
 - **Keep the PR and main-push builds using identical debug steps.** The cache key is derived from the build; if the main-push web build diverges from the PR web build (e.g. profile vs debug, like `main_deploy.yaml`), the key stops matching and PRs miss again.
 - **No cache purge was needed.** The stale per-PR rust entries self-evict on GitHub's 7-day / 10 GB LRU, and the new `main`-scope debug key does not collide with the existing profile-build key.
 

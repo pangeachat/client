@@ -9,7 +9,9 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_li
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The activity start page's hero: a full-bleed background over which the role
@@ -21,6 +23,11 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 /// tapping it mounts the player inline. While the clip plays, the role cards,
 /// gradient, and goals overlay fade out so the player is unobstructed; a close
 /// control returns to the poster and restores the overlays.
+///
+/// That inline path is web/desktop only. On native mobile the plan is a
+/// scrolling bottom sheet, which a webview can't live inside (#7672/#7673), so
+/// tapping the poster opens the video on its own screen instead — see
+/// [openActivityVideo].
 ///
 /// A non-playable (image) lead, or an activity with no media, renders as before:
 /// the poster/placeholder with the cards over it and no play affordance.
@@ -66,10 +73,21 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
   ActivityPlanModel get _activity => widget.activity;
   ActivityMediaBlock? get _hero => _activity.visibleHeroBlock;
 
-  void _play() => setState(() {
-    _playing = true;
-    _overlaysMounted = true; // kept for the fade-out, dropped by _onFadedOut
-  });
+  void _play() {
+    final hero = _hero;
+    // Native mobile: the player is a webview that can't live in the plan's
+    // scrolling bottom sheet (it escapes the sheet and its gestures force an
+    // inexitable fullscreen — #7672/#7673), so play it on its own screen.
+    // Web/desktop play inline below, where a platform view behaves.
+    if (hero != null && PlatformInfos.isMobile) {
+      openActivityVideo(context, hero);
+      return;
+    }
+    setState(() {
+      _playing = true;
+      _overlaysMounted = true; // kept for the fade-out, dropped by _onFadedOut
+    });
+  }
 
   void _stop() => setState(() {
     _playing = false;

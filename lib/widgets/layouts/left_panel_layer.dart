@@ -46,12 +46,15 @@ class LeftPanelLayer extends StatelessWidget {
         ? state.extra as Completer<String>
         : null;
 
-    final panel = WorkspaceLeftPanel(
-      token: token,
-      currentUri: state.uri,
-      foldedOver: foldedOver,
-      shareItems: shareItems,
-      courseCreationCompleter: courseCreationCompleter,
+    final panel = FocusTraversalGroup(
+      policy: OrderedTraversalPolicy(),
+      child: WorkspaceLeftPanel(
+        token: token,
+        currentUri: state.uri,
+        foldedOver: foldedOver,
+        shareItems: shareItems,
+        courseCreationCompleter: courseCreationCompleter,
+      ),
     );
 
     final type = token.type;

@@ -25,21 +25,24 @@ class GrammarErrorPracticeGenerator {
     final correctChoice = igcMatch!.bestChoice!.value;
     final choices = igcMatch.choices!.map((c) => c.value).toList();
 
-    final stepText = choreo.stepText(stepIndex: stepIndex - 1);
-    final errorSpan = stepText.characters
-        .skip(igcMatch.offset)
-        .take(igcMatch.length)
-        .toString();
+    // The offset/length index the match's own fullText — the exact IGC input
+    // the server measured against (the same base SpanData.errorSpan uses) — NOT
+    // a client-side stepText reconstruction. Pairing the offsets with stepText
+    // slid the blank a few characters into the following word whenever the two
+    // strings differed, so display both the sentence and the blank off fullText
+    // (#7360).
+    final baseText = igcMatch.fullText;
+    final errorSpan = igcMatch.errorSpan;
 
     if (!req.grammarErrorInfo!.translation.contains(errorSpan)) {
       choices.add(errorSpan);
     }
 
-    if (igcMatch.offset + igcMatch.length > stepText.characters.length) {
+    if (igcMatch.offset + igcMatch.length > baseText.characters.length) {
       // Sometimes choreo records turn out weird when users edit the message
       // mid-IGC. If the offsets / lengths don't make sense, skip this target.
       throw Exception(
-        "IGC match offset and length exceed step text length. Step text: '$stepText', match offset: ${igcMatch.offset}, match length: ${igcMatch.length}",
+        "IGC match offset and length exceed base text length. Base text: '$baseText', match offset: ${igcMatch.offset}, match length: ${igcMatch.length}",
       );
     }
 
@@ -52,7 +55,7 @@ class GrammarErrorPracticeGenerator {
           choices: choices.toSet(),
           answers: {correctChoice},
         ),
-        text: stepText,
+        text: baseText,
         errorOffset: igcMatch.offset,
         errorLength: igcMatch.length,
         eventID: eventID,

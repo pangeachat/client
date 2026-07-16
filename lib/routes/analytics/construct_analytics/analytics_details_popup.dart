@@ -302,12 +302,19 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             ),
           );
           if (!mounted || result.isError) return;
-          setState(() {});
+          final response = result.result;
+          // Only remount when the gate actually regenerated the copy;
+          // a declined feedback leaves the card untouched (#7676).
+          if (response?.appliedEdits ?? true) setState(() {});
           await showDialog(
             context: context,
             builder: (context) => FeedbackResponseDialog(
               title: l10n.grammarFeedbackDialogTitle,
-              feedback: L10n.of(context).grammarFeedbackSubmittedDesc,
+              // The gate's qualitative reply (choreo #2769); static copy
+              // only for pre-gate servers that don't send one.
+              feedback:
+                  response?.userFriendlyResponse ??
+                  L10n.of(context).grammarFeedbackSubmittedDesc,
             ),
           );
         },

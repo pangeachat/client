@@ -90,10 +90,49 @@ extension AnalyticsRoomExtension on Room {
 
     for (final chunk in useChunks) {
       final constructsModel = ConstructAnalyticsModel(uses: chunk);
-      await sendEvent(
+      final String? eventId = await sendEvent(
         constructsModel.toJson(),
         type: PangeaEventTypes.construct,
       );
+
+      // Send-then-POST: the Matrix write is already durable; now best-effort
+      // dual-write this batch to the teacher-BFF under its REAL event id. This
+      // is a no-op unless the feature is enabled + a BFF URL is configured, and
+      // it never throws — a failure is swallowed and cannot affect this flow.
+      _dualWriteConstructUses(eventId, chunk);
     }
+  }
+
+  /// Fire-and-forget the best-effort analytics dual-write for one sent batch.
+  ///
+  /// Deliberately NOT awaited: the construct event is already written to Matrix
+  /// (the durable source of truth), so the dual-write is a pure side-channel and
+  /// must not add latency or failure surface to [sendConstructsEvent]. The repo
+  /// never throws; this only guards the pre-conditions (a resolved event id and
+  /// a self-owned analytics room) before firing.
+  void _dualWriteConstructUses(String? eventId, List<OneConstructUse> chunk) {
+    // A null id means sendEvent could not resolve one (e.g. offline queue); the
+    // server rejects blank/placeholder ids, so skip rather than post a bad one.
+    if (eventId == null || eventId.isEmpty) return;
+    // The endpoint's ownership check requires the caller to be the analytics
+    // room creator; only dual-write our OWN analytics room.
+    if (!isAnalyticsRoomOfUser(client.userID ?? "")) return;
+
+    // Defer the ENTIRE dual-write onto the event loop. `unawaited` alone would
+    // still run postConstructUses synchronously up to its first `await` (the env
+    // reads + `jsonEncode` of a near-max chunk) INSIDE sendConstructsEvent,
+    // adding latency between Matrix sends for a large backlog. Wrapping in
+    // `Future(...)` schedules all of that work off the current stack; the
+    // trailing `.catchError` is belt-and-suspenders (the repo never throws).
+    unawaited(
+      Future<void>(() async {
+        await AnalyticsEventsRepo.postConstructUses(
+          analyticsRoomId: id,
+          matrixEventId: eventId,
+          uses: chunk,
+          accessToken: client.accessToken,
+        );
+      }).catchError((_) {}),
+    );
   }
 }

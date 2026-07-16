@@ -35,9 +35,13 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
     super.initState();
     _step = widget.step;
     final userLevel = MatrixState.pangeaController.userController.userCefrLevel;
-    if (_step.state.languageLevel == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => _setLevel(userLevel));
-    }
+    // Seed the highlight from the persisted selection (or the profile default)
+    // so it always reflects state.languageLevel: on re-entry the local notifier
+    // is a fresh null, and without this the page showed nothing selected while
+    // Next stayed enabled off the still-set state (#7583).
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _setLevel(_step.state.languageLevel ?? userLevel),
+    );
   }
 
   @override

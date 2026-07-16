@@ -183,7 +183,9 @@ class SpaceCodeController {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () => _joinSpaceWithCodeWithoutLoading(spaceCode, client: client),
-      onError: (e, s) => notFoundError ?? L10n.of(context).unableToFindRoom,
+      onError: (e, s) => e is BannedFromRoomException
+          ? L10n.of(context).removedFromCourseError
+          : (notFoundError ?? L10n.of(context).unableToFindRoom),
       showError: (err) => err is! StreamedResponse || err.statusCode != 429,
     );
 
