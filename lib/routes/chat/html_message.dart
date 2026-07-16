@@ -53,9 +53,15 @@ class HtmlMessage extends StatelessWidget {
   final bool isTransitionAnimation;
   final bool isPracticeMode;
   final void Function(PangeaToken)? onClick;
+
+  /// Target vocab lemmas for the room's activity, computed once per build so
+  /// the per-token render loop doesn't rebuild the set for every token
+  /// (issue #7659). Null when the room has no activity plan.
+  late final Set<String>? _activityVocabLemmas =
+      controller.room.activityPlan?.vocabLemmas;
   // Pangea#
 
-  const HtmlMessage({
+  HtmlMessage({
     super.key,
     required this.html,
     required this.room,
@@ -470,12 +476,12 @@ class HtmlMessage extends StatelessWidget {
             !isPracticeMode &&
             isFirstNewToken;
 
-        final vocabLemmas = controller.room.activityPlan?.vocab
-            .map((v) => v.lemma.toLowerCase())
-            .toSet();
         final isVocabHighlight =
             token != null &&
-            TokenRenderingUtil.isVocabHighlight(token.lemma.text, vocabLemmas);
+            TokenRenderingUtil.isVocabHighlight(
+              token.lemma.text,
+              _activityVocabLemmas,
+            );
 
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,

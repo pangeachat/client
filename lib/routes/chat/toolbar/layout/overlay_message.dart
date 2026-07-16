@@ -150,9 +150,7 @@ class OverlayMessage extends StatelessWidget {
     // Target vocab lemmas for the room's activity, so a spoken word gets the
     // same gold highlight in the transcript as a typed one does inline
     // (issue #7659). Null in non-activity rooms — then nothing highlights.
-    final vocabLemmas = controller.room.activityPlan?.vocab
-        .map((v) => v.lemma.toLowerCase())
-        .toSet();
+    final vocabLemmas = controller.room.activityPlan?.vocabLemmas;
 
     final content = Container(
       decoration: BoxDecoration(
