@@ -106,6 +106,16 @@ extension LocalizedExceptionExtension on Object {
           )) {
             return L10n.of(context).unableToJoinChat;
           }
+          // Changing a password logs the user out of their other sessions
+          // (logout_devices defaults to true server-side). On refresh-token
+          // sessions Synapse can also tear down the current session's token,
+          // so a follow-up request returns a raw 404 "No row found
+          // (access_tokens)" (M_UNKNOWN, not M_UNKNOWN_TOKEN, so soft-logout
+          // never catches it). Surface an actionable message instead of the
+          // internal DB string. See ansible#191 / client#7670.
+          if (exceptionContext == ExceptionContext.changePassword) {
+            return L10n.of(context).changePasswordSessionExpired;
+          }
           // Pangea#
           return (this as MatrixException).errorMessage;
       }
