@@ -95,6 +95,29 @@ class Environment {
     return envEntry;
   }
 
+  /// Base URL of the teacher-BFF (admin-dash-api). Used only by the best-effort
+  /// analytics dual-write (see [AnalyticsEventsRepo]); empty when unconfigured,
+  /// in which case the dual-write is skipped. Trailing slash is trimmed so the
+  /// caller can concatenate a leading-slash path safely.
+  static String get teacherBffApi {
+    final envEntry =
+        appConfigOverride?.teacherBffApi ?? dotenv.env['TEACHER_BFF_API'];
+    if (envEntry == null || envEntry.isEmpty) {
+      return "";
+    }
+    return envEntry.endsWith("/")
+        ? envEntry.substring(0, envEntry.length - 1)
+        : envEntry;
+  }
+
+  /// Feature flag for the best-effort analytics dual-write to the teacher-BFF.
+  /// Defaults to `false` so the behavior ships dark; the dual-write is also a
+  /// no-op whenever [teacherBffApi] is empty, so both must be set for it to run.
+  static bool get analyticsDualWriteEnabled {
+    return appConfigOverride?.analyticsDualWriteEnabled ??
+        (dotenv.env["ANALYTICS_DUAL_WRITE_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
@@ -208,6 +231,8 @@ class AppConfigOverride {
   final String? synapseURL;
   final String? homeServer;
   final String? choreoApi;
+  final String? teacherBffApi;
+  final bool? analyticsDualWriteEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
@@ -222,6 +247,8 @@ class AppConfigOverride {
     this.synapseURL,
     this.homeServer,
     this.choreoApi,
+    this.teacherBffApi,
+    this.analyticsDualWriteEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
@@ -238,6 +265,8 @@ class AppConfigOverride {
       synapseURL: json['synapseURL'] as String?,
       homeServer: json['homeServer'] as String?,
       choreoApi: json['choreoApi'] as String?,
+      teacherBffApi: json['teacherBffApi'] as String?,
+      analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
@@ -256,6 +285,8 @@ class AppConfigOverride {
       'synapseURL': synapseURL,
       'homeServer': homeServer,
       'choreoApi': choreoApi,
+      'teacherBffApi': teacherBffApi,
+      'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
@@ -274,6 +305,8 @@ class AppConfigOverride {
         synapseURL.hashCode ^
         homeServer.hashCode ^
         choreoApi.hashCode ^
+        teacherBffApi.hashCode ^
+        analyticsDualWriteEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
@@ -292,6 +325,8 @@ class AppConfigOverride {
         synapseURL == other.synapseURL &&
         homeServer == other.homeServer &&
         choreoApi == other.choreoApi &&
+        teacherBffApi == other.teacherBffApi &&
+        analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&
