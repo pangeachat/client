@@ -33,4 +33,6 @@ Always run `flutter gen-l10n` after translating, and commit the regenerated loca
 
 ## Keeping copy in sync
 
-When `intl_en.arb` changes, every locale falls behind. `gen-l10n` surfaces the gap in `needed-translations.txt`; re-run the translator to close it. A CI guard that fails when a PR leaves `needed-translations.txt` non-empty is the intended backstop against drift.
+When `intl_en.arb` changes, every locale falls behind — and `gen-l10n` only catches *added* keys (missing from a locale), never *updated* ones (a key whose English value changed while the stale translation stays present).
+
+[`check_l10n_sync.py`](../../scripts/translate/check_l10n_sync.py) closes both gaps. On a PR it diffs `intl_en.arb` against the base branch, finds every key added or value-changed, and lists the locales that weren't re-translated for those keys. The [`l10n_sync_check`](../../.github/workflows/l10n_sync_check.yaml) workflow runs it and posts the result as a **non-blocking warning annotation** — it notifies, it does not fail the build. Remediation is one command (`translate_gemini.py` / the `backfill-l10n` skill).

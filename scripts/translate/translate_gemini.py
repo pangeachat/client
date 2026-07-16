@@ -49,6 +49,7 @@ Rules — follow exactly:
 - Keep every key unchanged.
 - Preserve ICU placeholders EXACTLY: tokens in curly braces like {{username}}, {{count}}, {{homeserver}} must appear verbatim, untranslated, in the same positions.
 - Preserve ICU plural/select syntax EXACTLY, e.g. `{{count, plural, =1{{...}} other{{...}}}}` — do not translate the keywords `plural`, `select`, `one`, `other`, `=1`, or the variable name; translate ONLY the human-readable text inside each branch.
+- MATCH THE ENGLISH MESSAGE STRUCTURE. If the English is a plain string (no plural/select), keep the translation a plain string with the same placeholders — do NOT introduce plural or select syntax, even if the target language would normally inflect for number. Only use plural/select where the English already does.
 - Do not add, drop, or reorder placeholders. Leave non-text literal values (e.g. "true"/"false") unchanged.
 - Use natural, native-quality {name}; match the app's friendly, concise tone.
 
@@ -148,15 +149,25 @@ def main() -> None:
     for i in range(0, len(keys), BATCH):
         chunk = keys[i : i + BATCH]
         tr = translate_batch(client, args.model, args.name, {k: en[k] for k in chunk})
-        for k in chunk:
-            if k not in tr:
-                errors.append(f"{k}: MISSING from response")
-                continue
-            err = validate(en[k], tr[k])
-            if err:
-                errors.append(f"{k}: {err} | en={en[k]!r} tr={tr[k]!r}")
-            out[k] = tr[k]
+        out.update({k: tr[k] for k in chunk if k in tr})
         print(f"  {min(i + BATCH, len(keys))}/{len(keys)} translated")
+
+    # Recover keys the model dropped at batch boundaries by re-requesting them.
+    for _ in range(3):
+        missing = [k for k in keys if k not in out]
+        if not missing:
+            break
+        print(f"  recovering {len(missing)} dropped key(s): {missing[:5]}")
+        fix = translate_batch(client, args.model, args.name, {k: en[k] for k in missing})
+        out.update({k: fix[k] for k in missing if k in fix})
+
+    for k in keys:
+        if k not in out:
+            errors.append(f"{k}: MISSING after recovery")
+            continue
+        err = validate(en[k], out[k])
+        if err:
+            errors.append(f"{k}: {err} | en={en[k]!r} tr={out[k]!r}")
 
     print(f"\nTranslated {len(out)}/{len(keys)} keys, {len(errors)} validation errors")
     for e in errors[:40]:
