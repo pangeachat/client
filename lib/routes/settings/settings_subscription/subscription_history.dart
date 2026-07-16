@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/repo_v2/billing_portal_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/invoice_history_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
@@ -12,8 +17,8 @@ import 'package:fluffychat/features/subscription/repo_v2/subscription_status_res
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/billing_portal_provider.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/invoice_history_builder.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/invoice_history_provider.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_history_view.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_provider.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -31,20 +36,49 @@ class SubscriptionHistory extends StatefulWidget {
 class SubscriptionHistoryState extends State<SubscriptionHistory> {
   final _subscriptionStatusProvider = SubscriptionStatusProvider();
   final _billingPortalProvider = BillingPortalProvider();
+  final _productsProvider = ProductsProvider();
+  final _invoiceHistoryProvider = InvoiceHistoryProvider();
+
+  final ValueNotifier<ProductPlan?> _subscriptionPlanNotifier = ValueNotifier(
+    null,
+  );
+
+  final ValueNotifier<bool> _canCancelNotifier = ValueNotifier(false);
+  final ValueNotifier<bool> _canManageNotifier = ValueNotifier(false);
 
   @override
   void initState() {
     super.initState();
 
+    _productsProvider.loader.addListener(_updateSubscriptionPlan);
+    _subscriptionStatusProvider.loader.addListener(_updateSubscriptionPlan);
+    _subscriptionStatusProvider.loader.addListener(_updateManagementNotifiers);
+    _billingPortalProvider.loader.addListener(_updateManagementNotifiers);
+
     final userID = Matrix.of(context).client.userID!;
     _subscriptionStatusProvider.load(SubscriptionStatusRequest(userID: userID));
     _billingPortalProvider.load(BillingPortalRequest(userID: userID));
+    _productsProvider.load(ProductsRequest(userID: userID));
+    _invoiceHistoryProvider.load(InvoiceHistoryRequest(userID: userID));
   }
 
   @override
   void dispose() {
+    _productsProvider.loader.removeListener(_updateSubscriptionPlan);
+    _subscriptionStatusProvider.loader.removeListener(_updateSubscriptionPlan);
+    _subscriptionStatusProvider.loader.removeListener(
+      _updateManagementNotifiers,
+    );
+    _billingPortalProvider.loader.removeListener(_updateManagementNotifiers);
+
     _subscriptionStatusProvider.dispose();
     _billingPortalProvider.dispose();
+    _productsProvider.dispose();
+    _invoiceHistoryProvider.dispose();
+
+    _subscriptionPlanNotifier.dispose();
+    _canCancelNotifier.dispose();
+    _canManageNotifier.dispose();
     super.dispose();
   }
 
@@ -55,10 +89,36 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
 
   DateTime? get _renewalDate => _entitlement?.endsAt;
 
+  String? get _billingPortal => _billingPortalProvider.response?.url;
+
   bool get _canCancelSubscription =>
       _entitlement?.cancelable == true &&
-      _entitlementRef != null &&
-      _subscriptionStatusProvider.response?.winning?.cancelAtPeriodEnd != true;
+      _subscriptionStatusProvider.response?.winning?.cancelAtPeriodEnd !=
+          true &&
+      _entitlementRef != null;
+
+  bool get _canManageSubscription =>
+      _subscriptionStatusProvider.response?.manageEligible == true &&
+      _billingPortal != null;
+
+  void _updateSubscriptionPlan() {
+    final products = _productsProvider.response ?? [];
+    final planId = _subscriptionStatusProvider.response?.winning?.planId;
+    if (planId == null) {
+      _subscriptionPlanNotifier.value = null;
+      return;
+    }
+
+    final subscriptionPlan = products.firstWhereOrNull(
+      (p) => p.planId == planId,
+    );
+    _subscriptionPlanNotifier.value = subscriptionPlan;
+  }
+
+  void _updateManagementNotifiers() {
+    _canCancelNotifier.value = _canCancelSubscription;
+    _canManageNotifier.value = _canManageSubscription;
+  }
 
   Future<void> _onCancelSubscription() async {
     if (!await _confirmCancelSubscription()) return;
@@ -112,26 +172,27 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     if (error != null) throw error;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // V2 TODO - too many rebuilds
-    return ValueListenableBuilder(
-      valueListenable: _subscriptionStatusProvider.loader,
-      builder: (context, subscriptionStatusState, _) => ValueListenableBuilder(
-        valueListenable: _billingPortalProvider.loader,
-        builder: (context, billingPortalState, _) => ProductsBuilder(
-          builder: (context, productsState) => InvoiceHistoryBuilder(
-            builder: (context, invoiceHistoryState) => SubscriptionHistoryView(
-              closeButton: widget.closeButton,
-              subscriptionStatusState: subscriptionStatusState,
-              productsState: productsState,
-              invoiceHistoryState: invoiceHistoryState,
-              onCancelSubscription: _onCancelSubscription,
-              canCancelSubscription: _canCancelSubscription,
-            ),
-          ),
-        ),
-      ),
-    );
+  Future<void> _onManageSubscription() =>
+      showFutureLoadingDialog(context: context, future: _manageSubscription);
+
+  Future<void> _manageSubscription() async {
+    final billingPortal = _billingPortal;
+    if (billingPortal == null) {
+      throw "Cannot manage subscription without billing portal link";
+    }
+
+    await launchUrlString(billingPortal);
   }
+
+  @override
+  Widget build(BuildContext context) => SubscriptionHistoryView(
+    closeButton: widget.closeButton,
+    subscriptionStatusNotifier: _subscriptionStatusProvider.loader,
+    subscriptionPlanNotifier: _subscriptionPlanNotifier,
+    invoiceHistoryNotifier: _invoiceHistoryProvider.loader,
+    canCancelSubscriptionNotifier: _canCancelNotifier,
+    onCancelSubscription: _onCancelSubscription,
+    canManageSubscriptionNotifier: _canManageNotifier,
+    onManageSubscription: _onManageSubscription,
+  );
 }

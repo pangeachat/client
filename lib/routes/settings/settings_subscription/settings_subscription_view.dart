@@ -117,12 +117,14 @@ class SettingsSubscriptionView extends StatelessWidget {
                                   winning?.priceDisplay(l10n),
                               manageEligible: subscriptionStatus.manageEligible,
                               onTapSubscription: onTapSubscription,
+                              productsState: productsState,
                               selectedSubscription: selectedSubscription,
                               onEnterDiscountCode: onEnterDiscountCode,
                             ),
                             SubscriptionAccessLevel.none => SubscriptionOptions(
                               onEnterDiscountCode: onEnterDiscountCode,
                               onTapSubscription: onTapSubscription,
+                              productsState: productsState,
                               selectedSubscription: selectedSubscription,
                             ),
                           },
@@ -149,6 +151,7 @@ class _FullAccessContent extends StatelessWidget {
 
   final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
+  final AsyncState<List<ProductPlan>> productsState;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
   const _FullAccessContent({
@@ -159,6 +162,7 @@ class _FullAccessContent extends StatelessWidget {
     this.manageEligible = false,
     required this.onEnterDiscountCode,
     required this.onTapSubscription,
+    required this.productsState,
     required this.selectedSubscription,
   });
 
@@ -214,6 +218,7 @@ class _FullAccessContent extends StatelessWidget {
           SubscriptionOptions(
             onEnterDiscountCode: onEnterDiscountCode,
             onTapSubscription: onTapSubscription,
+            productsState: productsState,
             selectedSubscription: selectedSubscription,
           ),
       ],

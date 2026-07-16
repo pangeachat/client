@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/subscription/repo_v2/products_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-typedef _ProductsLoader = ValueNotifier<AsyncState<List<ProductPlan>>>;
 
 class ProductsBuilder extends StatefulWidget {
   final Widget Function(BuildContext, AsyncState<List<ProductPlan>>) builder;
@@ -18,36 +15,24 @@ class ProductsBuilder extends StatefulWidget {
 }
 
 class ProductsBuilderState extends State<ProductsBuilder> {
-  final _loader = _ProductsLoader(AsyncLoading());
+  final _provider = ProductsProvider();
 
   @override
   void initState() {
     super.initState();
-    _load();
+    _provider.load(ProductsRequest(userID: Matrix.of(context).client.userID!));
   }
 
   @override
   void dispose() {
-    _loader.dispose();
+    _provider.dispose();
     super.dispose();
-  }
-
-  Future<void> _load() async {
-    final result = await ProductsRepo.instance.get(
-      ProductsRequest(userID: Matrix.of(context).client.userID!),
-    );
-    final response = result.result;
-    if (mounted) {
-      _loader.value = response != null
-          ? AsyncLoaded(response.plans)
-          : AsyncError(result.error ?? "Failed to fetch products");
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _loader,
+      valueListenable: _provider.loader,
       builder: (context, state, _) => widget.builder(context, state),
     );
   }

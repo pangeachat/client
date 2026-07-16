@@ -9,9 +9,11 @@ class UserSubscriptionPlanCard extends StatelessWidget {
   final String? priceDisplay;
 
   final bool showCancel;
+  final ValueNotifier<bool>? canCancelNotifier;
   final VoidCallback? onCancel;
 
   final bool showManage;
+  final ValueNotifier<bool>? canManageNotifier;
   final VoidCallback? onManage;
 
   const UserSubscriptionPlanCard({
@@ -20,8 +22,10 @@ class UserSubscriptionPlanCard extends StatelessWidget {
     this.paymentPeriodDescription,
     this.priceDisplay,
     this.showCancel = false,
+    this.canCancelNotifier,
     this.onCancel,
     this.showManage = false,
+    this.canManageNotifier,
     this.onManage,
   });
 
@@ -30,6 +34,16 @@ class UserSubscriptionPlanCard extends StatelessWidget {
     final theme = Theme.of(context);
     final priceDisplay = this.priceDisplay;
     final paymentPeriodDescription = this.paymentPeriodDescription;
+
+    final buttonStyle = ElevatedButton.styleFrom(
+      backgroundColor: theme.colorScheme.surface,
+      foregroundColor: theme.colorScheme.onSurface,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(width: 1, color: theme.colorScheme.onSurface),
+        borderRadius: BorderRadius.circular(100),
+      ),
+      padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 12.0),
+    );
 
     return FrameContainer(
       title: L10n.of(context).yourPlan,
@@ -70,45 +84,69 @@ class UserSubscriptionPlanCard extends StatelessWidget {
                 color: theme.disabledColor,
               ),
             ),
-          if (showManage)
-            ElevatedButton(
-              onPressed: onManage,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.surface,
-                foregroundColor: theme.colorScheme.onSurface,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 1,
-                    color: theme.colorScheme.onSurface,
+          if (showManage || showCancel)
+            Row(
+              spacing: 12.0,
+              children: [
+                if (showManage)
+                  Expanded(
+                    child: Builder(
+                      builder: (context) {
+                        final content = Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(L10n.of(context).change)],
+                        );
+
+                        final canManageNotifier = this.canManageNotifier;
+                        if (canManageNotifier != null) {
+                          return ValueListenableBuilder(
+                            valueListenable: canManageNotifier,
+                            builder: (context, canManage, _) => ElevatedButton(
+                              onPressed: canManage ? onManage : null,
+                              style: buttonStyle,
+                              child: content,
+                            ),
+                          );
+                        }
+
+                        return ElevatedButton(
+                          onPressed: null,
+                          style: buttonStyle,
+                          child: content,
+                        );
+                      },
+                    ),
                   ),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 12.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text(L10n.of(context).manage)],
-              ),
-            ),
-          if (showCancel)
-            ElevatedButton(
-              onPressed: onCancel,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.surface,
-                foregroundColor: theme.colorScheme.onSurface,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 1,
-                    color: theme.colorScheme.onSurface,
+                if (showCancel)
+                  Expanded(
+                    child: Builder(
+                      builder: (context) {
+                        final content = Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(L10n.of(context).cancel)],
+                        );
+
+                        final canCancelNotifier = this.canCancelNotifier;
+                        if (canCancelNotifier != null) {
+                          return ValueListenableBuilder(
+                            valueListenable: canCancelNotifier,
+                            builder: (context, canCancel, _) => ElevatedButton(
+                              onPressed: canCancel ? onCancel : null,
+                              style: buttonStyle,
+                              child: content,
+                            ),
+                          );
+                        }
+
+                        return ElevatedButton(
+                          onPressed: null,
+                          style: buttonStyle,
+                          child: content,
+                        );
+                      },
+                    ),
                   ),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 12.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text(L10n.of(context).cancel)],
-              ),
+              ],
             ),
         ],
       ),

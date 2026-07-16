@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -17,20 +16,27 @@ import 'package:fluffychat/routes/settings/settings_subscription/user_subscripti
 
 class SubscriptionHistoryView extends StatelessWidget {
   final Widget closeButton;
-  final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
-  final AsyncState<List<ProductPlan>> productsState;
-  final AsyncState<List<Invoice>> invoiceHistoryState;
-  final Future<void> Function() onCancelSubscription;
-  final bool canCancelSubscription;
+  final ValueNotifier<AsyncState<SubscriptionStatusResponse>>
+  subscriptionStatusNotifier;
+  final ValueNotifier<AsyncState<List<Invoice>>> invoiceHistoryNotifier;
+  final ValueNotifier<ProductPlan?> subscriptionPlanNotifier;
+
+  final ValueNotifier<bool> canCancelSubscriptionNotifier;
+  final Future<void> Function()? onCancelSubscription;
+
+  final ValueNotifier<bool> canManageSubscriptionNotifier;
+  final Future<void> Function()? onManageSubscription;
 
   const SubscriptionHistoryView({
     super.key,
     required this.closeButton,
-    required this.subscriptionStatusState,
-    required this.productsState,
-    required this.invoiceHistoryState,
+    required this.subscriptionStatusNotifier,
+    required this.subscriptionPlanNotifier,
+    required this.invoiceHistoryNotifier,
+    required this.canCancelSubscriptionNotifier,
     required this.onCancelSubscription,
-    required this.canCancelSubscription,
+    required this.canManageSubscriptionNotifier,
+    required this.onManageSubscription,
   });
 
   @override
@@ -81,50 +87,60 @@ class SubscriptionHistoryView extends StatelessWidget {
                   child: Column(
                     spacing: 16.0,
                     children: [
-                      switch (subscriptionStatusState) {
-                        AsyncLoading() || AsyncIdle() => Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
-                        AsyncError() => SizedBox.shrink(),
-                        AsyncLoaded(value: final subscriptionStatus) => () {
-                          final winning = subscriptionStatus.winning;
-
-                          final products = switch (productsState) {
-                            AsyncLoaded(value: final products) => products,
-                            _ => const <ProductPlan>[],
-                          };
-
-                          final planId = subscriptionStatus.winning?.planId;
-                          final subscriptionPlan = planId != null
-                              ? products.firstWhereOrNull(
-                                  (p) => p.planId == planId,
-                                )
-                              : null;
-
-                          return UserSubscriptionPlanCard(
-                            subscriptionTitle:
-                                winning?.subscriptionTitle(l10n) ??
-                                l10n.currentSubscription,
-                            paymentPeriodDescription: winning
-                                ?.paymentPeriodDescription(l10n),
-                            priceDisplay:
-                                subscriptionPlan?.priceDisplay ??
-                                winning?.priceDisplay(l10n),
-                            showCancel: canCancelSubscription,
-                            onCancel: onCancelSubscription,
-                          );
-                        }(),
-                      },
-                      switch (invoiceHistoryState) {
-                        AsyncLoading() || AsyncIdle() => Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
-                        AsyncError() => SizedBox.shrink(),
-                        AsyncLoaded(value: final invoices) =>
-                          invoices.isEmpty
-                              ? Text(L10n.of(context).noPaymentHistoryFound)
-                              : _InvoiceHistoryList(invoices),
-                      },
+                      ValueListenableBuilder(
+                        valueListenable: subscriptionStatusNotifier,
+                        builder: (context, subscriptionStatusState, _) =>
+                            switch (subscriptionStatusState) {
+                              AsyncLoading() || AsyncIdle() => Center(
+                                child: CircularProgressIndicator.adaptive(),
+                              ),
+                              AsyncError() => SizedBox.shrink(),
+                              AsyncLoaded(value: final subscriptionStatus) =>
+                                () {
+                                  final winning = subscriptionStatus.winning;
+                                  return ValueListenableBuilder(
+                                    valueListenable: subscriptionPlanNotifier,
+                                    builder: (context, subscriptionPlan, _) =>
+                                        UserSubscriptionPlanCard(
+                                          subscriptionTitle:
+                                              winning?.subscriptionTitle(
+                                                l10n,
+                                              ) ??
+                                              l10n.currentSubscription,
+                                          paymentPeriodDescription: winning
+                                              ?.paymentPeriodDescription(l10n),
+                                          priceDisplay:
+                                              subscriptionPlan?.priceDisplay ??
+                                              winning?.priceDisplay(l10n),
+                                          showCancel: true,
+                                          canCancelNotifier:
+                                              canCancelSubscriptionNotifier,
+                                          onCancel: onCancelSubscription,
+                                          showManage: true,
+                                          canManageNotifier:
+                                              canManageSubscriptionNotifier,
+                                          onManage: onManageSubscription,
+                                        ),
+                                  );
+                                }(),
+                            },
+                      ),
+                      ValueListenableBuilder(
+                        valueListenable: invoiceHistoryNotifier,
+                        builder: (context, invoiceHistoryState, _) =>
+                            switch (invoiceHistoryState) {
+                              AsyncLoading() || AsyncIdle() => Center(
+                                child: CircularProgressIndicator.adaptive(),
+                              ),
+                              AsyncError() => SizedBox.shrink(),
+                              AsyncLoaded(value: final invoices) =>
+                                invoices.isEmpty
+                                    ? Text(
+                                        L10n.of(context).noPaymentHistoryFound,
+                                      )
+                                    : _InvoiceHistoryList(invoices),
+                            },
+                      ),
                     ],
                   ),
                 ),

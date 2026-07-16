@@ -5151,5 +5151,6 @@
             }
         }
     },
-    "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features."
+    "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features.",
+    "change": "Change"
 }
