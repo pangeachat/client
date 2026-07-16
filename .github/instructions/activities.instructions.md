@@ -25,6 +25,12 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
 
+## Completion saves itself
+
+Saving a completed session is automatic — the design (what saving means, when it happens, and how stars bank on it) is the org doc's ([Saving and stars](../../../.github/.github/instructions/activities.instructions.md#saving-and-stars)); what the client owns is where the save runs. [`ActivityAutoSaveService`](../../lib/features/activity_sessions/activity_auto_save_service.dart) watches activity-role state changes across **all** rooms, not just the open chat, so a session that completes while the learner is elsewhere — or that completed before this login — still saves on the next sync. The save is idempotent, so a second device observing the same completion is harmless. A room whose plan is still hydrating is retried once the plan lands; a room whose plan is gone entirely (the archived-view rung in [When the activity can't be fetched](#when-the-activity-cant-be-fetched)) cannot resolve a target language and is skipped.
+
+The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
+
 ## Downloading the transcript
 
 The session's app bar carries a "More" (⋮) menu ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)). A **live** session offers Invite, Leave, and Download; a **completed** session — the learner's own role archived (`hasArchivedActivity`) — keeps the menu but offers **Download only**, since Invite and Leave no longer apply once the session is over. Completing a session must not strip the menu: a learner returning to a finished session still needs to export it. (Regular, non-activity chats expose the same export from the chat-details button row, not this menu.)

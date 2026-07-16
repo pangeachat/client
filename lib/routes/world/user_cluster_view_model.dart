@@ -110,7 +110,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
 
   @override
   Stream<void> get starsUpdateStream => client.onRoomState.stream.where(
-    (e) => e.state.type == PangeaEventTypes.orchestratorAwardedGoals,
+    // Stars bank when the session saves (archived_at on the role state), so
+    // the counter listens for role-state changes as well as live awards.
+    (e) =>
+        e.state.type == PangeaEventTypes.orchestratorAwardedGoals ||
+        e.state.type == PangeaEventTypes.activityRole,
   );
 
   @override
