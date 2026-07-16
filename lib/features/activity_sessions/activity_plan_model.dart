@@ -419,7 +419,9 @@ class ActivityRole {
     return {
       'id': id,
       'name': name,
-      'goal': goal,
+      // Omit when null: the choreographer's Role schema defaults a missing
+      // `goal` but 422s on an explicit null (v2 roles carry `goals` instead).
+      if (goal != null) 'goal': goal,
       'avatar_url': avatarUrl,
       "goals": goals.map((g) => g.toJson()).toList(),
     };
