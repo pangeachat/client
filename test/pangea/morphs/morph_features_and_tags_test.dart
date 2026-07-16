@@ -59,10 +59,7 @@ void main() {
         {
           "feature": "Mood",
           "feature_title": "Mood",
-          "values": [
-            tag("Ind", display: true),
-            tag("Jus", display: false),
-          ],
+          "values": [tag("Ind", display: true), tag("Jus", display: false)],
         },
       ]);
 
@@ -119,10 +116,7 @@ void main() {
         {
           "feature": "Poss",
           "feature_title": "Possessive",
-          "values": [
-            tag("Yes", display: true),
-            tag("No", display: false),
-          ],
+          "values": [tag("Yes", display: true), tag("No", display: false)],
         },
       ]);
 
