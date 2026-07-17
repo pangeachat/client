@@ -4644,6 +4644,7 @@
         }
     },
     "closeAddCoursePage": "Close add course page",
+    "constructUseSugDesc": "Accepted suggestions",
     "mostPopular": "Most popular",
     "mostSavings": "Most savings",
     "enterDiscountCode": "Enter discount code",
