@@ -46,9 +46,14 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   final ValueNotifier<bool> _canCancelNotifier = ValueNotifier(false);
   final ValueNotifier<bool> _canManageNotifier = ValueNotifier(false);
 
+  bool _loaded = false;
+
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_loaded) return;
+    _loaded = true;
 
     _productsProvider.loader.addListener(_updateSubscriptionPlan);
     _subscriptionStatusProvider.loader.addListener(_updateSubscriptionPlan);
