@@ -1029,8 +1029,7 @@ class _ShellLayout {
     // of the resting sheet, deliberately not live-tracked: dragging the sheet
     // must not yank the camera.
     var mapBottomOverlay = 0.0;
-    if (hasCavity &&
-        leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
+    if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
       final screenPadding = MediaQuery.viewPaddingOf(context);
       final screenHeight = MediaQuery.sizeOf(context).height;
       final reserved = navChromeReserved(
