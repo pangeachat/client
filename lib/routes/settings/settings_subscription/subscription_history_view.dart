@@ -97,30 +97,57 @@ class SubscriptionHistoryView extends StatelessWidget {
                               AsyncError() => SizedBox.shrink(),
                               AsyncLoaded(value: final subscriptionStatus) =>
                                 () {
-                                  final winning = subscriptionStatus.winning;
                                   return ValueListenableBuilder(
                                     valueListenable: subscriptionPlanNotifier,
-                                    builder: (context, subscriptionPlan, _) =>
-                                        UserSubscriptionPlanCard(
-                                          subscriptionTitle:
-                                              winning?.subscriptionTitle(
-                                                l10n,
-                                              ) ??
-                                              l10n.currentSubscription,
-                                          paymentPeriodDescription: winning
-                                              ?.paymentPeriodDescription(l10n),
-                                          priceDisplay:
-                                              subscriptionPlan?.priceDisplay ??
-                                              winning?.priceDisplay(l10n),
-                                          showCancel: true,
-                                          canCancelNotifier:
-                                              canCancelSubscriptionNotifier,
-                                          onCancel: onCancelSubscription,
-                                          showManage: true,
-                                          canManageNotifier:
-                                              canManageSubscriptionNotifier,
-                                          onManage: onManageSubscription,
-                                        ),
+                                    builder: (context, subscriptionPlan, _) {
+                                      final displayEntitlement =
+                                          subscriptionStatus
+                                              .cardDisplayEntitlement;
+
+                                      final activeTrial =
+                                          subscriptionStatus.activeTrial;
+
+                                      final trialDescription = activeTrial
+                                          ?.paymentPeriodDescription(l10n);
+
+                                      return Column(
+                                        spacing: 20.0,
+                                        children: [
+                                          if (activeTrial != null &&
+                                              trialDescription != null)
+                                            Text(
+                                              trialDescription,
+                                              style: isColumnMode
+                                                  ? theme.textTheme.titleMedium
+                                                  : theme.textTheme.titleSmall,
+                                            ),
+                                          UserSubscriptionPlanCard(
+                                            subscriptionTitle:
+                                                displayEntitlement
+                                                    ?.subscriptionTitle(l10n) ??
+                                                l10n.currentSubscription,
+                                            paymentPeriodDescription:
+                                                displayEntitlement
+                                                    ?.paymentPeriodDescription(
+                                                      l10n,
+                                                    ),
+                                            priceDisplay:
+                                                subscriptionPlan
+                                                    ?.priceDisplay ??
+                                                displayEntitlement
+                                                    ?.priceDisplay(l10n),
+                                            showCancel: true,
+                                            canCancelNotifier:
+                                                canCancelSubscriptionNotifier,
+                                            onCancel: onCancelSubscription,
+                                            showManage: true,
+                                            canManageNotifier:
+                                                canManageSubscriptionNotifier,
+                                            onManage: onManageSubscription,
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
                                 }(),
                             },

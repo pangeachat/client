@@ -87,24 +87,16 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     super.dispose();
   }
 
-  SubscriptionEntitlement? get _entitlement =>
-      _subscriptionStatusProvider.response?.winningEntitlement;
-
-  String? get _entitlementRef => _entitlement?.entitlementRef;
-
-  DateTime? get _renewalDate => _entitlement?.endsAt;
-
   String? get _billingPortal => _billingPortalProvider.response?.url;
 
-  bool get _canCancelSubscription =>
-      _entitlement?.cancelable == true &&
-      _subscriptionStatusProvider.response?.winning?.cancelAtPeriodEnd !=
-          true &&
-      _entitlementRef != null;
+  bool get _canCancelSubscription => _cancelableEntitlement != null;
 
   bool get _canManageSubscription =>
       _subscriptionStatusProvider.response?.manageEligible == true &&
       _billingPortal != null;
+
+  SubscriptionEntitlement? get _cancelableEntitlement =>
+      _subscriptionStatusProvider.response?.cancelableEntitlement;
 
   void _updateSubscriptionPlan() {
     final products = _productsProvider.response ?? [];
@@ -146,7 +138,7 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   }
 
   Future<bool> _confirmCancelSubscription() async {
-    final renewalDate = _renewalDate;
+    final renewalDate = _cancelableEntitlement?.endsAt;
     final resp = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
@@ -161,7 +153,7 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   }
 
   Future<void> _cancelSubscription() async {
-    final entitlementRef = _entitlementRef;
+    final entitlementRef = _cancelableEntitlement?.entitlementRef;
     if (entitlementRef == null) {
       throw "Cannot cancel subscription without entitlement";
     }

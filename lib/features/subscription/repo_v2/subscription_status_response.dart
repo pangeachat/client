@@ -74,12 +74,6 @@ class SubscriptionStatusResponse extends BaseResponse {
     };
   }
 
-  SubscriptionEntitlement? get winningEntitlement {
-    final planId = winning?.planId;
-    if (planId == null) return null;
-    return entitlements.firstWhereOrNull((e) => e.planId == planId);
-  }
-
   bool get isActive =>
       accessLevel == SubscriptionAccessLevel.full && winning != null;
 
@@ -91,6 +85,38 @@ class SubscriptionStatusResponse extends BaseResponse {
         winning != null &&
         winning.planId == null &&
         winning.type?.isBillable == true;
+  }
+
+  SubscriptionEntitlement? get activeTrial => entitlements.firstWhereOrNull(
+    (e) => e.type == SubscriptionType.trial && e.isActive,
+  );
+
+  SubscriptionEntitlement? get _winningEntitlement {
+    final winning = this.winning;
+    if (winning == null || winning.planId == null) return null;
+    return entitlements.firstWhereOrNull((e) => e.planId == winning.planId);
+  }
+
+  SubscriptionEntitlement? get cardDisplayEntitlement {
+    final winning = this.winning;
+    if (winning != null &&
+        winning.type != SubscriptionType.trial &&
+        winning.planId != null) {
+      final winningEntitlement = _winningEntitlement;
+      if (winningEntitlement != null) return winningEntitlement;
+    }
+
+    return entitlements.firstWhereOrNull(
+      (e) => e.isActive && e.type != SubscriptionType.trial,
+    );
+  }
+
+  SubscriptionEntitlement? get cancelableEntitlement {
+    final winningEntitlement = _winningEntitlement;
+    if (winningEntitlement != null && winningEntitlement.canCancel) {
+      return winningEntitlement;
+    }
+    return entitlements.firstWhereOrNull((e) => e.canCancel);
   }
 }
 
@@ -152,6 +178,73 @@ class SubscriptionWinning {
     if (value == null) return null;
     return DateTime.tryParse(value as String);
   }
+}
+
+class SubscriptionEntitlement {
+  final String entitlementRef;
+  final SubscriptionType? type;
+  final String? provider;
+  final String? sourceSubscriptionId;
+  final bool cancelable;
+  final String status;
+  final DateTime? endsAt;
+  final ManageAction? manageAction;
+  final String? planId;
+  final bool cancelAtPeriodEnd;
+
+  const SubscriptionEntitlement({
+    required this.entitlementRef,
+    this.type,
+    this.provider,
+    this.sourceSubscriptionId,
+    required this.cancelable,
+    required this.status,
+    this.endsAt,
+    this.manageAction,
+    this.planId,
+    this.cancelAtPeriodEnd = false,
+  });
+
+  factory SubscriptionEntitlement.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
+    return SubscriptionEntitlement(
+      entitlementRef: json['entitlementRef'] as String,
+      type: type is String ? SubscriptionType.fromString(type) : null,
+      provider: json['provider'] as String?,
+      planId: json['planId'] as String? ?? json['plan_id'] as String?,
+      sourceSubscriptionId: json['sourceSubscriptionId'] as String?,
+      cancelable: json['cancelable'] as bool? ?? false,
+      status: json['status'] as String,
+      manageAction: json['manage_action'] != null
+          ? ManageAction.fromJson(json['manage_action'] as Map<String, dynamic>)
+          : null,
+      endsAt: json['ends_at'] != null
+          ? DateTime.tryParse(json['ends_at'] as String)
+          : null,
+      cancelAtPeriodEnd: json['cancel_at_period_end'] as bool? ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'entitlementRef': entitlementRef,
+      'type': type?.name,
+      'provider': provider,
+      'planId': planId,
+      'sourceSubscriptionId': sourceSubscriptionId,
+      'cancelable': cancelable,
+      'status': status,
+      'manage_action': manageAction?.toJson(),
+      'ends_at': endsAt?.toIso8601String(),
+      'cancel_at_period_end': cancelAtPeriodEnd,
+    };
+  }
+
+  bool get isActive {
+    if (status != 'active') return false;
+    final endsAt = this.endsAt;
+    return endsAt == null || endsAt.isAfter(DateTime.now());
+  }
 
   SubscriptionDuration? get _duration =>
       SubscriptionDuration.values.firstWhereOrNull((d) => d.name == planId);
@@ -200,63 +293,8 @@ class SubscriptionWinning {
       SubscriptionType.seat => l10n.freeSubscription,
     };
   }
-}
 
-class SubscriptionEntitlement {
-  final String entitlementRef;
-  final SubscriptionType? type;
-  final String? provider;
-  final String? sourceSubscriptionId;
-  final bool cancelable;
-  final String status;
-  final DateTime? endsAt;
-  final ManageAction? manageAction;
-  final String? planId;
-
-  const SubscriptionEntitlement({
-    required this.entitlementRef,
-    this.type,
-    this.provider,
-    this.sourceSubscriptionId,
-    required this.cancelable,
-    required this.status,
-    this.endsAt,
-    this.manageAction,
-    this.planId,
-  });
-
-  factory SubscriptionEntitlement.fromJson(Map<String, dynamic> json) {
-    final type = json['type'];
-    return SubscriptionEntitlement(
-      entitlementRef: json['entitlementRef'] as String,
-      type: type is String ? SubscriptionType.fromString(type) : null,
-      provider: json['provider'] as String?,
-      planId: json['planId'] as String? ?? json['plan_id'] as String?,
-      sourceSubscriptionId: json['sourceSubscriptionId'] as String?,
-      cancelable: json['cancelable'] as bool? ?? false,
-      status: json['status'] as String,
-      manageAction: json['manage_action'] != null
-          ? ManageAction.fromJson(json['manage_action'] as Map<String, dynamic>)
-          : null,
-      endsAt: json['ends_at'] != null
-          ? DateTime.tryParse(json['ends_at'] as String)
-          : null,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'entitlementRef': entitlementRef,
-      'type': type?.name,
-      'provider': provider,
-      'planId': planId,
-      'sourceSubscriptionId': sourceSubscriptionId,
-      'cancelable': cancelable,
-      'status': status,
-      'manage_action': manageAction?.toJson(),
-      'ends_at': endsAt?.toIso8601String(),
-    };
-  }
+  bool get canCancel => cancelable && !cancelAtPeriodEnd;
 }
 
 class BillingIssue {

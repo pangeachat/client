@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
@@ -108,16 +107,20 @@ class SettingsSubscriptionView extends StatelessWidget {
                       ),
                     ),
                     AsyncLoaded(value: final subscriptionStatus) => () {
-                      final winning = subscriptionStatus.winning;
-
                       final products = switch (productsState) {
                         AsyncLoaded(value: final products) => products,
                         _ => const <ProductPlan>[],
                       };
 
-                      final planId = subscriptionStatus.winning?.planId;
-                      final subscriptionPlan = planId != null
-                          ? products.firstWhereOrNull((p) => p.planId == planId)
+                      final activeTrial = subscriptionStatus.activeTrial;
+
+                      final displayEntitlement =
+                          subscriptionStatus.cardDisplayEntitlement;
+
+                      final displayPlan = displayEntitlement?.planId != null
+                          ? products.firstWhereOrNull(
+                              (p) => p.planId == displayEntitlement?.planId,
+                            )
                           : null;
 
                       return Column(
@@ -137,15 +140,19 @@ class SettingsSubscriptionView extends StatelessWidget {
                           ),
                           subscriptionStatus.isActive
                               ? FullAccessContent(
-                                  type: winning?.type,
+                                  showTrialInfo: activeTrial != null,
+                                  trialDescription: activeTrial
+                                      ?.paymentPeriodDescription(l10n),
                                   subscriptionTitle:
-                                      winning?.subscriptionTitle(l10n) ??
+                                      displayEntitlement?.subscriptionTitle(
+                                        l10n,
+                                      ) ??
                                       l10n.currentSubscription,
-                                  paymentPeriodDescription: winning
+                                  paymentPeriodDescription: displayEntitlement
                                       ?.paymentPeriodDescription(l10n),
                                   priceDisplay:
-                                      subscriptionPlan?.priceDisplay ??
-                                      winning?.priceDisplay(l10n),
+                                      displayPlan?.priceDisplay ??
+                                      displayEntitlement?.priceDisplay(l10n),
                                   manageEligible:
                                       subscriptionStatus.manageEligible,
                                   onTapSubscription: onTapSubscription,
@@ -174,11 +181,16 @@ class SettingsSubscriptionView extends StatelessWidget {
 }
 
 class FullAccessContent extends StatelessWidget {
-  final SubscriptionType? type;
-  final String subscriptionTitle;
+  final bool showTrialInfo;
+  final String? trialDescription;
+
+  final bool showSubscriptionCard;
+  final String? subscriptionTitle;
   final String? paymentPeriodDescription;
   final String? priceDisplay;
+
   final bool manageEligible;
+  final bool showSubscriptionOptions;
 
   final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
@@ -187,11 +199,14 @@ class FullAccessContent extends StatelessWidget {
 
   const FullAccessContent({
     super.key,
-    required this.type,
-    required this.subscriptionTitle,
+    this.showTrialInfo = false,
+    this.trialDescription,
+    this.showSubscriptionCard = true,
+    this.subscriptionTitle,
     this.paymentPeriodDescription,
     this.priceDisplay,
     this.manageEligible = false,
+    this.showSubscriptionOptions = false,
     required this.onEnterDiscountCode,
     required this.onTapSubscription,
     required this.productsState,
@@ -202,22 +217,26 @@ class FullAccessContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final subscriptionTitle = this.subscriptionTitle;
+    final trialDescription = this.trialDescription;
+
     return Column(
       spacing: 20.0,
       children: [
-        type == SubscriptionType.trial
-            ? Text(
-                paymentPeriodDescription ??
-                    L10n.of(context).freeTrialDescription,
-                style: isColumnMode
-                    ? theme.textTheme.titleMedium
-                    : theme.textTheme.titleSmall,
-              )
-            : UserSubscriptionPlanCard(
-                subscriptionTitle: subscriptionTitle,
-                priceDisplay: priceDisplay,
-                paymentPeriodDescription: paymentPeriodDescription,
-              ),
+        if (showTrialInfo && trialDescription != null)
+          Text(
+            trialDescription,
+            style: isColumnMode
+                ? theme.textTheme.titleMedium
+                : theme.textTheme.titleSmall,
+          ),
+        if (showSubscriptionCard && subscriptionTitle != null)
+          UserSubscriptionPlanCard(
+            subscriptionTitle: subscriptionTitle,
+            priceDisplay: priceDisplay,
+            paymentPeriodDescription: paymentPeriodDescription,
+          ),
         if (manageEligible)
           InkWell(
             onTap: () => context.go(
@@ -251,7 +270,7 @@ class FullAccessContent extends StatelessWidget {
               ),
             ),
           ),
-        if (type == SubscriptionType.trial)
+        if (showSubscriptionOptions)
           SubscriptionOptions(
             onEnterDiscountCode: onEnterDiscountCode,
             onTapSubscription: onTapSubscription,
