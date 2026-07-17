@@ -120,8 +120,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   Stream<AnalyticsStreamUpdate> get constructUpdateStream =>
       analyticsService.updateDispatcher.constructUpdateStream.stream;
 
+  // A stable stream instance (not a getter building a new merge per access),
+  // so a StreamBuilder reading it across rebuilds keeps one subscription
+  // instead of resubscribing every frame.
   @override
-  Stream<void> get starsUpdateStream => StreamGroup.mergeBroadcast([
+  late final Stream<void> starsUpdateStream = StreamGroup.mergeBroadcast([
     client.onRoomState.stream.where(
       // Stars bank when the session saves (archived_at on the role state), so
       // the counter listens for role-state changes as well as live awards.
