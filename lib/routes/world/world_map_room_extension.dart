@@ -38,10 +38,11 @@ extension WorldMapSummaryExtension on RoomSummaryResponse {
           .toList();
 
   /// Free seats: the plan's role count minus seats verifiably taken (assigned
-  /// AND joined). 0 when the preview carries only a thin plan ref (v3) — seat
-  /// count unknown, so show nothing rather than phantoms.
+  /// AND joined). Thin v3 refs resolve through [resolvedActivityPlan]; 0 while
+  /// the plan is still hydrating — seat count unknown, so show nothing rather
+  /// than phantoms.
   int get openSlots {
-    final plan = activityPlan;
+    final plan = resolvedActivityPlan;
     if (plan == null) return 0;
     return max(0, plan.roles.length - joinedUsersWithRoles.length);
   }
