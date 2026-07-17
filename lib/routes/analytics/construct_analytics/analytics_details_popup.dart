@@ -25,6 +25,7 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/morph_analytics_list_view.dart';
@@ -405,6 +406,38 @@ class _PracticeButton extends StatelessWidget {
     );
   }
 
+  // world_v2: practice opens as a right-column `practice:<type>` panel that
+  // takes over the analytics surface (it is not a route). One session at a
+  // time: starting here while the OTHER section holds an unfinished session
+  // replaces it, confirming first. (This button is unreachable while THIS
+  // section's session is live — its analytics is blocked.) See
+  // routing.instructions.md § Practice is a persistent background session.
+  Future<void> _startPractice(BuildContext context) async {
+    final holder = PracticeSessionHolder.instance;
+    if (holder.hasUnfinishedSession && holder.liveType != view) {
+      final l10n = L10n.of(context);
+      final result = await showOkCancelAlertDialog(
+        context: context,
+        title: l10n.areYouSure,
+        okLabel: l10n.yes,
+        cancelLabel: l10n.cancel,
+        message: l10n.exitPractice,
+      );
+      if (result != OkCancelResult.ok) return;
+      holder.end();
+    }
+
+    if (!context.mounted) return;
+    context.go(
+      WorkspaceNav.openPractice(
+        GoRouterState.of(context).uri,
+        // Canonical token vocabulary: `grammar`/`vocab`, never the
+        // legacy `morph` (ConstructTypeEnum is the one source of truth).
+        view,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final analyticsService = Matrix.of(context).analyticsDataService;
@@ -425,17 +458,7 @@ class _PracticeButton extends StatelessWidget {
 
     return FloatingActionButton.extended(
       onPressed: enabled
-          // world_v2: practice opens as a right-column `practice:<type>` panel
-          // that takes over the analytics surface (it is not a route). See
-          // routing.instructions.md.
-          ? () => context.go(
-              WorkspaceNav.openPractice(
-                GoRouterState.of(context).uri,
-                // Canonical token vocabulary: `grammar`/`vocab`, never the
-                // legacy `morph` (ConstructTypeEnum is the one source of truth).
-                view,
-              ),
-            )
+          ? () => _startPractice(context)
           : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
       backgroundColor: enabled
           ? null

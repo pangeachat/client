@@ -8,6 +8,8 @@ import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/world/compact_count.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
@@ -307,43 +309,82 @@ class ClusterTrackerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: indicator.tooltip(context),
-      // The Semantics below carries the full "<stat>: <count>" name; exclude the
-      // Tooltip so it isn't announced twice ("Stars Stars: 0").
-      excludeFromSemantics: true,
-      child: InkWell(
-        onTap: onTap,
-        hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
-        borderRadius: BorderRadius.circular(100),
-        child: Semantics(
-          button: true,
-          // The exact count — assistive tech is never given the abbreviation.
-          label: '${indicator.tooltip(context)}: $count',
-          excludeSemantics: true,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: horizontalPadding,
-              vertical: 9,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(indicator.icon, size: iconSize),
-                const SizedBox(height: 3),
-                Text(
-                  compactCount(count),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    height: 1.1,
-                    fontWeight: FontWeight.w600,
-                  ),
+    // While this section has a live background practice session, the tracker
+    // wears the practice badge (icon + running timer) and its tap RESUMES the
+    // session instead of opening analytics (gated in the view model). See
+    // routing.instructions.md § Practice is a persistent background session.
+    return ListenableBuilder(
+      listenable: PracticeSessionHolder.instance,
+      builder: (context, _) {
+        final holder = PracticeSessionHolder.instance;
+        final tracksPractice =
+            indicator == ProgressIndicatorEnum.wordsUsed ||
+            indicator == ProgressIndicatorEnum.morphsUsed;
+        final liveSessionStart =
+            tracksPractice && holder.liveType == indicator.constructType
+            ? holder.current?.sessionController.session?.startedAt
+            : null;
+
+        final semanticsLabel = liveSessionStart != null
+            ? '${indicator.tooltip(context)}: $count — '
+                  '${L10n.of(context).practice}'
+            : '${indicator.tooltip(context)}: $count';
+
+        return Tooltip(
+          message: liveSessionStart != null
+              ? L10n.of(context).practice
+              : indicator.tooltip(context),
+          // The Semantics below carries the full "<stat>: <count>" name;
+          // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
+          excludeFromSemantics: true,
+          child: InkWell(
+            onTap: onTap,
+            hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
+            borderRadius: BorderRadius.circular(100),
+            child: Semantics(
+              button: true,
+              // The exact count — assistive tech is never given the
+              // abbreviation.
+              label: semanticsLabel,
+              excludeSemantics: true,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: 9,
                 ),
-              ],
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(indicator.icon, size: iconSize),
+                        const SizedBox(height: 3),
+                        Text(
+                          compactCount(count),
+                          style: TextStyle(
+                            fontSize: fontSize,
+                            height: 1.1,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    if (liveSessionStart != null)
+                      Positioned(
+                        top: 0,
+                        child: PracticeSessionBadge(
+                          startedAt: liveSessionStart,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

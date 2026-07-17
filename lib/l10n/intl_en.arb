@@ -4258,6 +4258,7 @@
     "youLeftTheChat": "🚪 You left the chat",
     "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
     "exitPractice": "Your practice session progress won't be saved.",
+    "endPractice": "End practice",
     "practiceGrammar": "Practice grammar",
     "notEnoughToPractice": "Send more messages to unlock practice",
     "constructUseCorGCDesc": "Correct grammar category practice",

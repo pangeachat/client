@@ -14,6 +14,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -160,23 +161,55 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     _loadProfile();
   }
 
-  @override
-  void openAnalytics(BuildContext context, AnalyticsPanelTab tab) => context.go(
-    WorkspaceNav.openAnalytics(
-      GoRouterState.of(context).uri,
-      subpage: tab.indicator,
-      closeSections: _closeSections(context),
-    ),
-  );
+  /// While [type] has a live practice session, its analytics is off-limits (no
+  /// peeking at definitions mid-exercise) — the tap resumes the session
+  /// instead. See routing.instructions.md § Practice is a persistent
+  /// background session.
+  bool _resumePracticeInsteadOfAnalytics(
+    BuildContext context,
+    ConstructTypeEnum type,
+  ) {
+    if (!PracticeSessionHolder.instance.blocksAnalytics(type)) return false;
+    context.go(WorkspaceNav.openPractice(GoRouterState.of(context).uri, type));
+    return true;
+  }
 
   @override
-  void openAnalyticsSummary(BuildContext context) => context.go(
-    WorkspaceNav.setRight(GoRouterState.of(context).uri, [
-      AnalyticsPanelToken(
-        AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+  void openAnalytics(BuildContext context, AnalyticsPanelTab tab) {
+    final constructType = switch (tab) {
+      AnalyticsPanelTab.vocab => ConstructTypeEnum.vocab,
+      AnalyticsPanelTab.grammar => ConstructTypeEnum.morph,
+      AnalyticsPanelTab.sessions => null,
+    };
+    if (constructType != null &&
+        _resumePracticeInsteadOfAnalytics(context, constructType)) {
+      return;
+    }
+
+    context.go(
+      WorkspaceNav.openAnalytics(
+        GoRouterState.of(context).uri,
+        subpage: tab.indicator,
+        closeSections: _closeSections(context),
       ),
-    ], closeSections: _closeSections(context)),
-  );
+    );
+  }
+
+  @override
+  void openAnalyticsSummary(BuildContext context) {
+    // The summary opens on the vocab tab, so a live vocab session blocks it.
+    if (_resumePracticeInsteadOfAnalytics(context, ConstructTypeEnum.vocab)) {
+      return;
+    }
+
+    context.go(
+      WorkspaceNav.setRight(GoRouterState.of(context).uri, [
+        AnalyticsPanelToken(
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+        ),
+      ], closeSections: _closeSections(context)),
+    );
+  }
 
   @override
   void openProfile(BuildContext context) => context.go(
