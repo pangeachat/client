@@ -53,6 +53,10 @@ class DosageEngagementTracker {
     required String? accessToken,
   }) {
     if (!DosageSignalsRepo.isEnabled) return;
+    // A span needs a device id (the repo drops spans without one). Skip until it
+    // is known rather than open a span that would be silently rejected — the
+    // next activity with a resolved device id opens one.
+    if (deviceId.isEmpty) return;
     final DateTime t = _now().toUtc();
 
     if (_spanStart == null) {

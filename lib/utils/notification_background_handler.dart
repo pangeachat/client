@@ -181,6 +181,11 @@ Future<void> notificationTap(
             );
           }
 
+          // No dosage message-envelope emit here: this runs in the
+          // notification background isolate (vm:entry-point) where dotenv /
+          // Environment / the dosage flags are NOT initialized, so an emit would
+          // throw NotInitializedError, not count anything. A.3 backfill counts
+          // this turn from the reconciled event_log regardless of send path.
           final eventId = await room.sendTextEvent(
             input,
             parseCommands: false,

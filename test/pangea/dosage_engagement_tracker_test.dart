@@ -119,6 +119,25 @@ void main() {
   });
 
   test(
+    'an empty device id opens no span (activity is not silently lost)',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(deviceId: '', accessToken: token);
+      clock = base.add(const Duration(minutes: 5));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, isEmpty, reason: 'no span may open without a device id');
+
+      // A later activity with a known device id still opens a span.
+      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      clock = base.add(const Duration(minutes: 6));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(1));
+    },
+  );
+
+  test(
     'idle gap closes the span at the last activity, not the flush time',
     () async {
       final tracker = buildTracker();
