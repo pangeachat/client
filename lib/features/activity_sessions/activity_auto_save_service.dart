@@ -132,6 +132,12 @@ class ActivityAutoSaveService {
     final activityId = room.activityId;
     if (activityId == null) return;
 
+    // completed_at must be the canonical archived-at marker. If the role state
+    // isn't hydrated yet, SKIP rather than send a synthetic now() — A.3.2
+    // backfills a missing outcome, but a wrong timestamp is not recoverable.
+    final archivedAt = room.ownRoleState?.archivedAt;
+    if (archivedAt == null) return;
+
     final starsByGoalSlug = <String, int>{
       for (final goal in room.ownCompletedGoals) (goal.goalSlug ?? goal.id): 1,
     };
@@ -142,7 +148,7 @@ class ActivityAutoSaveService {
       sourceCourseId: room.courseParent?.coursePlan?.uuid,
       loRefs: plan.learningObjective.isEmpty ? [] : [plan.learningObjective],
       starsByGoalSlug: starsByGoalSlug,
-      completedAt: room.ownRoleState?.archivedAt ?? DateTime.now(),
+      completedAt: archivedAt,
     );
 
     unawaited(
