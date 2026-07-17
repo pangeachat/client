@@ -43,6 +43,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
 
   AssistanceStateEnum? _prevState;
   bool _shouldStop = false;
+  bool _didInitSegments = false;
 
   List<Segment> _prevSegments = [];
   List<Segment> _currentSegments = [];
@@ -80,15 +81,6 @@ class _StartIGCButtonState extends State<StartIGCButton>
     final igc = choreographer.igcController;
     final orchestator = choreographer.orchestratorController;
 
-    _currentSegments = _segmentsForState(
-      widget.initialState,
-      igc.activeMatch.value,
-      overrideColor: widget.initialForegroundColor,
-    );
-
-    _prevSegments = List.from(_currentSegments);
-    _segmentController.forward(from: 0.0);
-
     _prevState = widget.initialState;
 
     choreographer.addListener(_handleStateChange);
@@ -97,6 +89,24 @@ class _StartIGCButtonState extends State<StartIGCButton>
       igc.matchUpdateStream.stream,
       orchestator.suggestionStream.stream,
     ]).listen((_) => _updateSegments());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Initial segments must be computed here, not in initState:
+    // _segmentsForState reads Theme.of(context) via stateColor(), which is
+    // unavailable until dependencies are ready. Run only once.
+    if (_didInitSegments) return;
+    _didInitSegments = true;
+
+    _currentSegments = _segmentsForState(
+      widget.initialState,
+      widget.choreographer.igcController.activeMatch.value,
+      overrideColor: widget.initialForegroundColor,
+    );
+    _prevSegments = List.from(_currentSegments);
+    _segmentController.forward(from: 0.0);
   }
 
   @override
