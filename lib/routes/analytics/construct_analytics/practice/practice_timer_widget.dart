@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 /// Practice session timer — WALL-CLOCK from [startedAt], not time-on-screen.
 /// The session keeps counting while its panel is closed (the cluster badge
-/// shows the same clock), so the speed bonus rewards finishing in one sitting.
-/// See practice-exercises.instructions.md § Session Persistence & Lifecycle.
+/// shows the same clock). Deliberate anti-cheat: leaving mid-session to
+/// consult a dictionary/AI costs the clock, so the speed bonus rewards
+/// finishing unaided in one sitting. See practice-exercises.instructions.md
+/// § Session Persistence & Lifecycle.
 class PracticeTimerWidget extends StatefulWidget {
   /// Wall-clock zero. Null while the session is still loading.
   final DateTime? startedAt;

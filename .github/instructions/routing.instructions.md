@@ -696,8 +696,9 @@ until it is explicitly ended or finished.
   in-progress work, so it asks first. The panel's **X is just "leave"** —
   drops the panel, reveals what's beneath, never prompts.
 - **The timer runs on wall-clock** from session start and keeps counting while
-  the panel is closed; the speed bonus therefore rewards finishing in one
-  sitting.
+  the panel is closed. This is itself an anti-cheat mechanism: stepping out
+  mid-session to consult a dictionary or an AI costs the clock, so the speed
+  bonus rewards finishing unaided in one sitting.
 
 **You can't study the answer key mid-exercise.** While a section's session is
 live, that section's analytics is off-limits: its cluster tracker **resumes the

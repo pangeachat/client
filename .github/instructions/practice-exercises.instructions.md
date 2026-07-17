@@ -176,8 +176,10 @@ badge, and the same-section analytics block — live in
   progress), or being replaced by a newly started session (confirms). Ending
   clears the holder and the cluster badge.
 - **Elapsed time is wall-clock from session start**, not time-on-screen. The
-  timer keeps counting while the panel is closed, so the speed bonus rewards
-  finishing in one sitting; the cluster badge shows the same running clock.
+  timer keeps counting while the panel is closed — an anti-cheat mechanism in
+  its own right: leaving mid-session to consult a dictionary or an AI costs
+  the clock, so the speed bonus rewards finishing unaided in one sitting. The
+  cluster badge shows the same running clock.
 
 ### Subscription Gate
 
