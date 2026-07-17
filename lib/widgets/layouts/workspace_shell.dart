@@ -296,12 +296,19 @@ class WorkspaceShell extends StatelessWidget {
                     l.allocation.left[i].vis != PanelVis.hidden)
                   Positioned(
                     key: ValueKey(l.leftTokens[i].encode()),
-                    // Respect the top safe-area inset so the panel's close/back control
-                    // isn't cut off under the system top bar (#7143). PanelCard's own 12px
-                    // top margin equals the cluster's chromeMargin, so this aligns the
-                    // panel content with the safe-area-respecting top-right cluster. No-op
-                    // where there is no top inset (desktop/web).
-                    top: MediaQuery.viewPaddingOf(context).top,
+                    // The narrow full-screen focus (a live room / session) is
+                    // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
+                    // app bar absorbs the status-bar inset, and skipping the
+                    // shell's extra safe-area offset removes the doubled top
+                    // padding (#7554). Column-mode / non-focused panels keep
+                    // the card and respect the top inset so their close/back
+                    // control clears the system top bar (#7143); PanelCard's
+                    // 12px top margin aligns them with the top-right cluster.
+                    top:
+                        !l.isColumnMode &&
+                            l.allocation.left[i].vis == PanelVis.full
+                        ? 0.0
+                        : MediaQuery.viewPaddingOf(context).top,
                     bottom: 0,
                     left: l.allocation.left[i].left,
                     width: l.allocation.left[i].width,
@@ -310,6 +317,9 @@ class WorkspaceShell extends StatelessWidget {
                       state: state,
                       foldedOver: l.allocation.left[i].foldedOver,
                       getRoomKey: _roomKeyFor,
+                      bare:
+                          !l.isColumnMode &&
+                          l.allocation.left[i].vis == PanelVis.full,
                     ),
                   ),
             ],
