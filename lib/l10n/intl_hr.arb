@@ -6818,8 +6818,6 @@
     "allow": "Dopusti",
     "deny": "Odbij",
     "enabledRenewal": "Omogući obnavljanje pretplate",
-    "subscriptionEndsOn": "Pretplata završava",
-    "subscriptionRenewsOn": "Pretplata se obnavlja",
     "waitForSubscriptionChanges": "Promjene na vašoj pretplati mogu potrajati trenutak da se odraze u aplikaciji.",
     "subscribeReadingAssistance": "Pretplatite se za otključavanje alata za poruke",
     "aceDisplayName": "Achinese",
@@ -7094,14 +7092,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

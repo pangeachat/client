@@ -7010,8 +7010,6 @@
     "allow": "অনুমতি দিন",
     "deny": "অস্বীকার করুন",
     "enabledRenewal": "সাবস্ক্রিপশন নবীকরণ সক্ষম করুন",
-    "subscriptionEndsOn": "সাবস্ক্রিপশন শেষ হবে",
-    "subscriptionRenewsOn": "সাবস্ক্রিপশন নবীকরণ হবে",
     "waitForSubscriptionChanges": "আপনার সাবস্ক্রিপশনের পরিবর্তনগুলি অ্যাপে প্রতিফলিত হতে কিছু সময় লাগতে পারে।",
     "subscribeReadingAssistance": "বার্তা সরঞ্জাম আনলক করতে সাবস্ক্রাইব করুন",
     "aceDisplayName": "আচিনিজ",
@@ -7286,14 +7284,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

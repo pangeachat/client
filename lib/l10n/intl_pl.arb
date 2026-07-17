@@ -6477,8 +6477,6 @@
     "allow": "Zezwól",
     "deny": "Odmów",
     "enabledRenewal": "Włącz odnowienie subskrypcji",
-    "subscriptionEndsOn": "Subskrypcja kończy się",
-    "subscriptionRenewsOn": "Subskrypcja odnawia się",
     "waitForSubscriptionChanges": "Zmiany w subskrypcji mogą chwilę potrwać, zanim zostaną odzwierciedlone w aplikacji.",
     "subscribeReadingAssistance": "Subskrybuj, aby odblokować narzędzia do wiadomości",
     "aceDisplayName": "Achinese",
@@ -6753,14 +6751,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

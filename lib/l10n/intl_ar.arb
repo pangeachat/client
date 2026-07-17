@@ -6692,8 +6692,6 @@
     "allow": "السماح",
     "deny": "رفض",
     "enabledRenewal": "تفعيل تجديد الاشتراك",
-    "subscriptionEndsOn": "ينتهي الاشتراك في",
-    "subscriptionRenewsOn": "يتجدد الاشتراك في",
     "waitForSubscriptionChanges": "قد تستغرق التغييرات في اشتراكك بعض الوقت لتظهر في التطبيق.",
     "subscribeReadingAssistance": "اشترك لفتح أدوات الرسائل",
     "aceDisplayName": "أكينيس",
@@ -6968,14 +6966,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

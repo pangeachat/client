@@ -7243,8 +7243,6 @@
     "allow": "Pahintulutan",
     "deny": "Tanggihan",
     "enabledRenewal": "Paganahin ang Pag-renew ng Subscription",
-    "subscriptionEndsOn": "Nagtatapos ang Subscription Sa",
-    "subscriptionRenewsOn": "Nag-renew ang Subscription Sa",
     "waitForSubscriptionChanges": "Ang mga pagbabago sa iyong subscription ay maaaring magtagal ng kaunti upang magpakita sa app.",
     "subscribeReadingAssistance": "Mag-subscribe upang i-unlock ang mga tool sa mensahe",
     "aceDisplayName": "Achinese",
@@ -7519,14 +7517,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

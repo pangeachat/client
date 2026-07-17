@@ -7302,8 +7302,6 @@
     "allow": "אפשר",
     "deny": "סירב",
     "enabledRenewal": "אפשר חידוש מנוי",
-    "subscriptionEndsOn": "המנוי מסתיים ב",
-    "subscriptionRenewsOn": "המנוי מתחדש ב",
     "waitForSubscriptionChanges": "שינויים במנוי שלך עשויים לקחת רגע להופיע באפליקציה.",
     "subscribeReadingAssistance": "הירשם כדי לפתוח כלים להודעות",
     "aceDisplayName": "אכינזי",
@@ -7578,14 +7576,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

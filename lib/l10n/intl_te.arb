@@ -7338,8 +7338,6 @@
     "allow": "అనుమతించు",
     "deny": "అంగీకరించు",
     "enabledRenewal": "సబ్‌స్క్రిప్షన్ పునరుద్ధరణను ప్రారంభించు",
-    "subscriptionEndsOn": "సబ్‌స్క్రిప్షన్ ముగుస్తుంది",
-    "subscriptionRenewsOn": "సబ్‌స్క్రిప్షన్ పునరుద్ధరించబడుతుంది",
     "waitForSubscriptionChanges": "మీ సబ్‌స్క్రిప్షన్‌లో మార్పులు యాప్‌లో ప్రతిబింబించడానికి కొంత సమయం పడవచ్చు.",
     "subscribeReadingAssistance": "సందేశం సాధనాలను అన్లాక్ చేయడానికి సబ్‌స్క్రైబ్ చేయండి",
     "aceDisplayName": "అచినీస్",
@@ -7614,14 +7612,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
