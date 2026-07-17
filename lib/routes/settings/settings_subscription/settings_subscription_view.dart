@@ -100,6 +100,7 @@ class SettingsSubscriptionView extends StatelessWidget {
                             message: error.toLocalizedString(context),
                           ),
                           IconButton(
+                            tooltip: L10n.of(context).refresh,
                             icon: Icon(Icons.refresh),
                             onPressed: reloadStatus,
                           ),

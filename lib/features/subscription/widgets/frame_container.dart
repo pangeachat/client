@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+
 class FrameContainer extends StatefulWidget {
   final Widget child;
   final String title;
@@ -105,6 +107,9 @@ class _FrameContainerState extends State<FrameContainer>
                       ),
                       if (widget.expandable)
                         IconButton(
+                          tooltip: _expanded
+                              ? L10n.of(context).close
+                              : L10n.of(context).open,
                           visualDensity: VisualDensity.compact,
                           splashRadius: 20,
                           color: widget.foregroundColor,
