@@ -7,9 +7,11 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -134,6 +136,14 @@ class WorldMapLargeCard extends StatelessWidget {
   final int openSlots;
   final VoidCallback onTap;
 
+  /// The learner's completion tier for this activity. When not `none`, the
+  /// completed-activity trail star (or super star) rides BEHIND the card,
+  /// peeking below the caret tip exactly like a mid pin — a joinable/ongoing
+  /// card stacked on a previously-completed activity keeps its star visible
+  /// (world-map.instructions.md, "Goal Progress"). Distinct from the in-session
+  /// star row, which shows only during an `ongoingActive` session.
+  final ActivityStarLevel starLevel;
+
   /// When true, the activity is focused (its detail panel is open): the card
   /// darkens its state-accent frame slightly and casts a soft state-coloured
   /// glow around the whole balloon (caret included) — no outline — matching a
@@ -161,6 +171,7 @@ class WorldMapLargeCard extends StatelessWidget {
     this.onClose,
     this.participants = const [],
     this.openSlots = 0,
+    this.starLevel = ActivityStarLevel.none,
   });
 
   /// One player's earnable stars stands in for the activity's star total —
@@ -280,23 +291,32 @@ class WorldMapLargeCard extends StatelessWidget {
     // corner. That keeps the whole badge within the Stack's own bounds — it
     // never overflows into an ancestor that might clip it (a marker box, a
     // transform layer), which a negative-offset peek would rely on.
-    if (topRightBadge != null) {
-      return Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: badgeOverhang,
-              left: badgeOverhang,
-              right: badgeOverhang,
-            ),
-            child: cardWithTail,
-          ),
-          Positioned(top: 0, right: 0, child: topRightBadge),
-        ],
-      );
-    }
-    return cardWithTail;
+    final Widget cardVisual = topRightBadge == null
+        ? cardWithTail
+        : Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: badgeOverhang,
+                  left: badgeOverhang,
+                  right: badgeOverhang,
+                ),
+                child: cardWithTail,
+              ),
+              Positioned(top: 0, right: 0, child: topRightBadge),
+            ],
+          );
+
+    // A completed activity keeps its trail star visible with the live large card
+    // stacked on top: the star peeks below the caret tip exactly like a mid pin
+    // (shared [CompletionStarBelowTip]; world-map.instructions.md, "Goal
+    // Progress"). Only when the learner has earned it — never on the caret alone.
+    if (starLevel == ActivityStarLevel.none) return cardVisual;
+    return CompletionStarBelowTip(
+      superStar: starLevel == ActivityStarLevel.superStar,
+      child: cardVisual,
+    );
   }
 }
 

@@ -125,6 +125,7 @@ class _LargeCardSnapshot {
   final int starsEarned;
   final List<LargeCardParticipant> participants;
   final int openSlots;
+  final ActivityStarLevel starLevel;
 
   const _LargeCardSnapshot({
     required this.card,
@@ -135,6 +136,7 @@ class _LargeCardSnapshot {
     required this.starsEarned,
     required this.participants,
     required this.openSlots,
+    required this.starLevel,
   });
 }
 
@@ -880,6 +882,9 @@ class _WorldMapViewState extends State<WorldMapView> {
           : (widget.controller.activityStarsEarned(card.activityId) ?? 0),
       participants: participants,
       openSlots: openSlots,
+      // The completed-activity trail tier (all-time), so a live large card on a
+      // previously-completed activity still shows its star below the caret.
+      starLevel: render.starLevelOf(card.activityId),
     );
   }
 
@@ -932,6 +937,7 @@ class _WorldMapViewState extends State<WorldMapView> {
               starsEarned: snap.starsEarned,
               participants: snap.participants,
               openSlots: snap.openSlots,
+              starLevel: snap.starLevel,
               isFocused: card.activityId == render.focusedId,
               onTap: () => widget.controller.openActivity(card),
               onClose: () => widget.controller.dismissLargeCard(card),
@@ -977,6 +983,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                 starsEarned: snap.starsEarned,
                 participants: snap.participants,
                 openSlots: snap.openSlots,
+                starLevel: snap.starLevel,
                 // No interaction on a card that's on its way out.
                 onTap: () {},
                 onClose: null,

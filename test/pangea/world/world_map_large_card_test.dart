@@ -154,7 +154,8 @@ void main() {
         state: ActivityPinState.ongoingPending,
         openSlots: 2,
       );
-      expect(find.byIcon(Icons.hourglass_empty), findsOneWidget);
+      // hourglass_bottom (the half-full glass) matches the mid pin's icon.
+      expect(find.byIcon(Icons.hourglass_bottom), findsOneWidget);
       expect(find.byIcon(Icons.meeting_room), findsNothing);
     });
 
@@ -167,7 +168,7 @@ void main() {
           starsEarned: 0,
         );
         expect(find.byIcon(Icons.meeting_room), findsNothing);
-        expect(find.byIcon(Icons.hourglass_empty), findsNothing);
+        expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
         expect(find.byIcon(Icons.person), findsNothing);
       },
     );
@@ -181,7 +182,7 @@ void main() {
         // stray icon.
         await pumpCard(tester, state: ActivityPinState.available);
         expect(find.byIcon(Icons.meeting_room), findsNothing);
-        expect(find.byIcon(Icons.hourglass_empty), findsNothing);
+        expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
       },
     );
   });

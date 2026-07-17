@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
@@ -12,6 +11,7 @@ import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 
 class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
@@ -161,22 +161,18 @@ class _WorldMapDotState extends State<WorldMapDot>
         state == ActivityPinState.available) {
       return pin;
     }
-    final star = IgnorePointer(
-      child: _StarDot(
-        superStar: widget.starLevel == ActivityStarLevel.superStar,
-      ),
-    );
-    // A mid teardrop head (44) fully hides a centred star, so push it straight
-    // down: horizontally centred on the pin, peeking out from directly beneath
-    // the teardrop's tip. A small dot (8) is smaller than the star, so the dot
-    // just sits centred on top of it.
+    final superStar = widget.starLevel == ActivityStarLevel.superStar;
+    // Mid teardrop: the star peeks out from beneath the tip (shared with the
+    // large card via [CompletionStarBelowTip], so both read identically). A small
+    // dot (8) is smaller than the star, so the dot just sits centred on top of it.
+    if (widget.tier == PinTier.mid) {
+      return CompletionStarBelowTip(superStar: superStar, child: pin);
+    }
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
-        widget.tier == PinTier.mid
-            ? Transform.translate(offset: const Offset(0, 30), child: star)
-            : star,
+        IgnorePointer(child: WorldMapStarDot(superStar: superStar)),
         pin,
       ],
     );
@@ -310,38 +306,6 @@ class _MediumDotContent extends StatelessWidget {
   }
 }
 
-/// The completed-activity trail marker: a gold [Icons.star] (one role done) or a
-/// slightly larger [Icons.hotel_class] **super** star (all roles) centred in a
-/// base-colour circle, so the dot reads as a callout on the map rather than a
-/// bare glyph (world-map.instructions.md, "Pin state" / "Goal Progress").
-class _StarDot extends StatelessWidget {
-  final bool superStar;
-
-  const _StarDot({required this.superStar});
-
-  /// The circle diameter for a [superStar] / regular star — also what the
-  /// marker-box math and focus ring size to (the super star is the larger).
-  static double diameterFor(bool superStar) =>
-      superStar ? PinSize.superStarDotDiameter : PinSize.starDotDiameter;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: diameterFor(superStar),
-    height: diameterFor(superStar),
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.surface,
-      shape: BoxShape.circle,
-      boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
-    ),
-    child: Icon(
-      superStar ? Icons.hotel_class : Icons.star,
-      size: superStar ? PinSize.superStarGlyphSize : PinSize.starGlyphSize,
-      color: AppConfig.gold,
-    ),
-  );
-}
-
 /// The pin body, keyed off the colour [state]:
 ///
 ///  - **inProgress** renders as a completed-activity **star dot** (the state
@@ -387,8 +351,12 @@ class _WorldMapStateDot extends StatelessWidget {
       // Progress is the state: a fixed-size star dot replaces the coloured body
       // — a super star (all roles) or a plain star (one role). No shape/point.
       final superStar = starLevel == ActivityStarLevel.superStar;
-      final star = _StarDot(superStar: superStar);
-      return _withSelectedGlow(context, star, _StarDot.diameterFor(superStar));
+      final star = WorldMapStarDot(superStar: superStar);
+      return _withSelectedGlow(
+        context,
+        star,
+        WorldMapStarDot.diameterFor(superStar),
+      );
     }
 
     if (pointHeight <= 0) {
