@@ -157,6 +157,28 @@ Selection must stay cheap: it reads aggregated constructs from local analytics a
 
 A `lemmaAudio` target whose audio example can't be resolved at generation **falls back to a `lemmaMeaning` exercise for the same lemma**, so a deferred resolution failure never leaves a gap. This is a degradation path only — the audio/meaning mix is set at selection by count, so it doesn't materially shift the mix.
 
+### Session Persistence & Lifecycle
+
+A standalone practice session is a **background activity that outlives its
+panel** (the routing-level rules — silent leave, explicit end, the cluster
+badge, and the same-section analytics block — live in
+[routing.instructions.md](routing.instructions.md#practice-is-a-persistent-background-session)):
+
+- **The session lives in a holder that survives panel teardown.** Closing the
+  practice panel (or navigating anywhere else) neither disposes nor pauses the
+  session; re-opening practice re-attaches to the held session and resumes at
+  the current exercise. The holder is in-memory only — a refresh or app
+  restart starts fresh.
+- **One session at a time**, across vocab and grammar. Starting a new session
+  while an unfinished one is held confirms first, then replaces it.
+- **A session ends three ways**: finishing all exercises (completion view,
+  XP awarded), the explicit **End session** control (confirms, discards
+  progress), or being replaced by a newly started session (confirms). Ending
+  clears the holder and the cluster badge.
+- **Elapsed time is wall-clock from session start**, not time-on-screen. The
+  timer keeps counting while the panel is closed, so the speed bonus rewards
+  finishing in one sitting; the cluster badge shows the same running clock.
+
 ### Subscription Gate
 
 Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
