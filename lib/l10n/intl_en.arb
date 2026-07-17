@@ -4645,5 +4645,6 @@
             }
         }
     },
-    "closeAddCoursePage": "Close add course page"
+    "closeAddCoursePage": "Close add course page",
+    "constructUseSugDesc": "Accepted suggestions"
 }
