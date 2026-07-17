@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -81,12 +86,20 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
               .subscriptionController
               .showSubscriptionGatedContent,
         );
+    ActivityPlanRepo.instance.addListener(_onPlanHydrate);
   }
+
+  final StreamController<void> _planHydrationStream =
+      StreamController.broadcast();
+
+  void _onPlanHydrate() => _planHydrationStream.add(null);
 
   bool _profileLoaded = false;
 
   @override
   void dispose() {
+    ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    _planHydrationStream.close();
     _avatarUrl.dispose();
     _displayName.dispose();
   }
@@ -109,13 +122,19 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       analyticsService.updateDispatcher.constructUpdateStream.stream;
 
   @override
-  Stream<void> get starsUpdateStream => client.onRoomState.stream.where(
-    // Stars bank when the session saves (archived_at on the role state), so
-    // the counter listens for role-state changes as well as live awards.
-    (e) =>
-        e.state.type == PangeaEventTypes.orchestratorAwardedGoals ||
-        e.state.type == PangeaEventTypes.activityRole,
-  );
+  Stream<void> get starsUpdateStream => StreamGroup.mergeBroadcast([
+    client.onRoomState.stream.where(
+      // Stars bank when the session saves (archived_at on the role state), so
+      // the counter listens for role-state changes as well as live awards.
+      (e) =>
+          e.state.type == PangeaEventTypes.orchestratorAwardedGoals ||
+          e.state.type == PangeaEventTypes.activityRole,
+    ),
+    // totalStarsEarned matches sessions by their plan's target language, and
+    // reading it kicks off hydration for thin v3 refs — recount when a plan
+    // lands, or a fresh session shows 0 until the next role-state event.
+    _planHydrationStream.stream,
+  ]);
 
   @override
   bool get isAnalyticsInitializing => analyticsService.isInitializing;
