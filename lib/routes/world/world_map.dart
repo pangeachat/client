@@ -216,7 +216,7 @@ class WorldMapController extends State<WorldMap>
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
-          .rateLimit(const Duration(seconds: 2))
+          .rateLimit(const Duration(seconds: 1))
           .listen((_) {
             if (!mounted) return;
             _recomputeProgress();
@@ -699,7 +699,21 @@ class WorldMapController extends State<WorldMap>
     _trackZoomActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
-    _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+    _refetchDebounce = Timer(
+      const Duration(milliseconds: 500),
+      _onCameraSettled,
+    );
+  }
+
+  /// One camera-settle pass: re-fetch the viewport's pins AND kick a (self-
+  /// throttled) live-session discovery + signal recompute. Without the kick the
+  /// matrix's live facts refresh only off sync ticks, so the viewport you pan
+  /// to could rank against several-seconds-stale facts — the sluggish re-rank
+  /// while scrolling around.
+  void _onCameraSettled() {
+    loadWorldPins();
+    final client = _client;
+    if (client != null) _discoverCoursemateSessions(client);
   }
 
   /// Flags [isActivelyZooming] while the camera's zoom is changing, clearing it
