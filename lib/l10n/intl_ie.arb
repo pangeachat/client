@@ -10281,5 +10281,7 @@
     "starsToUnlockObjectiveTitle": "Stelles per Mission",
     "starsToUnlockObjectiveDesc": "Fixar li númere de stelles necessari por completar chascun mission",
     "maxStarsPerMissionWarning": "Ti curse have missiones u solmen {maxValue} stelles posse esser ganiat. Ples introducter un númere minor o egal a {maxValue}.",
-    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor."
+    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor.",
+    "appInTargetLanguageTitle": "Monstrar li app in li lingue quel yo apprende",
+    "appInTargetLanguageDesc": "Menus, botons, e etiquettes apari in vor lingue-scop por inmersion."
 }

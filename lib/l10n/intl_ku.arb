@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "لیستی ئاستەکان",
     "languageListLabel": "لیستی زمانەکان",
     "searchedResultsLabel": "ئەنجامەکانی گەڕان بۆ '{search}'",
-    "closeAddCoursePage": "داخستنی پەڕەی زیادکردنی خول"
+    "closeAddCoursePage": "داخستنی پەڕەی زیادکردنی خول",
+    "appInTargetLanguageTitle": "ئەپەکە بە زمانی ئامانج پیشان بدە",
+    "appInTargetLanguageDesc": "مێنو، دوگمەکان، و ناونیشانەکان بە زمانی ئامانج دەردەکەون بۆ نوقمبوون."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Mndandanda wa zovuta",
     "languageListLabel": "Mndandanda wa zilankhulo",
     "searchedResultsLabel": "Zotsatira zakusaka kwa '{search}'",
-    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro"
+    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro",
+    "appInTargetLanguageTitle": "Onetsani pulogalamu mu chilankhulo chomwe ndikuphunzira",
+    "appInTargetLanguageDesc": "Zosankha, mabatani, ndi zilembo zikuwonekera mu chilankhulo chanu chofuna kuphunzira kuti muzolowere."
 }

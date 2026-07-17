@@ -10600,5 +10600,7 @@
     "starsToUnlockObjectiveTitle": "Hviezdy za misiu",
     "starsToUnlockObjectiveDesc": "Nastavte počet hviezd potrebných na dokončenie každej misie",
     "maxStarsPerMissionWarning": "Tento kurz má misie, kde je možné získať iba {maxValue} hviezd. Zadajte číslo menšie alebo rovné {maxValue}.",
-    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa."
+    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa.",
+    "appInTargetLanguageTitle": "Zobraziť aplikáciu v jazyku, ktorý sa učím",
+    "appInTargetLanguageDesc": "Ponuky, tlačidlá a štítky sa zobrazia vo vašom cieľovom jazyku pre lepšie ponorenie."
 }

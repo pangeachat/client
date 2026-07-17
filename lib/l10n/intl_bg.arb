@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Списък с трудности",
     "languageListLabel": "Списък с езици",
     "searchedResultsLabel": "Резултати от търсене за '{search}'",
-    "closeAddCoursePage": "Затвори страницата за добавяне на курс"
+    "closeAddCoursePage": "Затвори страницата за добавяне на курс",
+    "appInTargetLanguageTitle": "Показване на приложението на езика, който изучавам",
+    "appInTargetLanguageDesc": "Менютата, бутоните и етикетите се показват на целевия език за потапяне."
 }

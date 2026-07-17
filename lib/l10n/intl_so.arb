@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Liiska heerka adkaanta",
     "languageListLabel": "Liiska luqadaha",
     "searchedResultsLabel": "Natiijooyinka raadinta ee '{search}'",
-    "closeAddCoursePage": "Xir bogga ku darista koorsada"
+    "closeAddCoursePage": "Xir bogga ku darista koorsada",
+    "appInTargetLanguageTitle": "Tus app-ka luqadda aan baranayo",
+    "appInTargetLanguageDesc": "Menus-ka, badhamada, iyo calaamadaha ayaa ku soo bixi doona luqadda aad bartay si aad u dhex gasho."
 }

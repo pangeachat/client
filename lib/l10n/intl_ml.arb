@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "ബുദ്ധിമുട്ട് ലിസ്റ്റ്",
     "languageListLabel": "ഭാഷാ ലിസ്റ്റ്",
     "searchedResultsLabel": "'{search}' എന്നതിനായുള്ള തിരയൽ ഫലങ്ങൾ",
-    "closeAddCoursePage": "കോഴ്സ് ചേർക്കുന്ന പേജ് അടയ്ക്കുക"
+    "closeAddCoursePage": "കോഴ്സ് ചേർക്കുന്ന പേജ് അടയ്ക്കുക",
+    "appInTargetLanguageTitle": "ഞാൻ പഠിക്കുന്ന ഭാഷയിൽ ആപ്പ് കാണിക്കുക",
+    "appInTargetLanguageDesc": "മെനുകൾ, ബട്ടണുകൾ, ലേബലുകൾ എന്നിവ ഇമ്മേർഷനായി നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ ദൃശ്യമാകും."
 }

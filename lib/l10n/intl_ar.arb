@@ -9955,5 +9955,7 @@
     "starsToUnlockObjectiveTitle": "النجوم لكل مهمة",
     "starsToUnlockObjectiveDesc": "حدد عدد النجوم المطلوبة لإكمال كل مهمة",
     "maxStarsPerMissionWarning": "تحتوي هذه الدورة التدريبية على مهام لا يمكن الحصول فيها إلا على {maxValue} نجوم. يرجى إدخال رقم أقل من أو يساوي {maxValue}.",
-    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك."
+    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك.",
+    "appInTargetLanguageTitle": "عرض التطبيق باللغة التي أتعلمها",
+    "appInTargetLanguageDesc": "تظهر القوائم والأزرار والتسميات بلغتك المستهدفة للانغماس."
 }

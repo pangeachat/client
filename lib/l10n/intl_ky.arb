@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Кыйынчылык деңгээлинин тизмеси",
     "languageListLabel": "Тилдердин тизмеси",
     "searchedResultsLabel": "'{search}' үчүн издөө натыйжалары",
-    "closeAddCoursePage": "Курс кошуу барагын жабуу"
+    "closeAddCoursePage": "Курс кошуу барагын жабуу",
+    "appInTargetLanguageTitle": "Колдонмону үйрөнүп жаткан тилимде көрсөтүү",
+    "appInTargetLanguageDesc": "Чөмүлүү үчүн менюлар, баскычтар жана энбелгилер үйрөнүп жаткан тилиңизде көрсөтүлөт."
 }

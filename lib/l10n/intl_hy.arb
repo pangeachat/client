@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Դժվարության ցուցակ",
     "languageListLabel": "Լեզուների ցուցակ",
     "searchedResultsLabel": "Որոնման արդյունքներ՝ '{search}'",
-    "closeAddCoursePage": "Փակել դասընթացի ավելացման էջը"
+    "closeAddCoursePage": "Փակել դասընթացի ավելացման էջը",
+    "appInTargetLanguageTitle": "Ցուցադրել հավելվածը իմ սովորած լեզվով",
+    "appInTargetLanguageDesc": "Ընտրացանկերը, կոճակները և պիտակները կցուցադրվեն ձեր թիրախային լեզվով՝ լիարժեք ընկղմվելու համար։"
 }

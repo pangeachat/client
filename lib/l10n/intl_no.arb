@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Vanskelighetsliste",
     "languageListLabel": "Språkliste",
     "searchedResultsLabel": "Søkeresultater for '{search}'",
-    "closeAddCoursePage": "Lukk siden for å legge til kurs"
+    "closeAddCoursePage": "Lukk siden for å legge til kurs",
+    "appInTargetLanguageTitle": "Vis appen på språket jeg lærer",
+    "appInTargetLanguageDesc": "Menyer, knapper og etiketter vises på målspråket ditt for fordypning."
 }

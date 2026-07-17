@@ -10600,5 +10600,7 @@
     "starsToUnlockObjectiveTitle": "Zvezdice na misijo",
     "starsToUnlockObjectiveDesc": "Nastavite število zvezdic, potrebnih za dokončanje vsake misije",
     "maxStarsPerMissionWarning": "Ta tečaj ima misije, kjer je mogoče zaslužiti samo {maxValue} zvezdic. Prosimo, vnesite število, ki je manjše ali enako {maxValue}.",
-    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja."
+    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja.",
+    "appInTargetLanguageTitle": "Prikaži aplikacijo v jeziku, ki se ga učim",
+    "appInTargetLanguageDesc": "Meniji, gumbi in oznake se prikažejo v vašem ciljnem jeziku za poglobljeno izkušnjo."
 }

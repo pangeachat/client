@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Senarai kesukaran",
     "languageListLabel": "Senarai bahasa",
     "searchedResultsLabel": "Hasil carian untuk '{search}'",
-    "closeAddCoursePage": "Tutup halaman tambah kursus"
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "appInTargetLanguageTitle": "Tunjukkan aplikasi dalam bahasa yang saya pelajari",
+    "appInTargetLanguageDesc": "Menu, butang dan label dipaparkan dalam bahasa sasaran anda untuk rendaman."
 }

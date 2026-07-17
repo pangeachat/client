@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Erfiðleikalisti",
     "languageListLabel": "Tungumálalisti",
     "searchedResultsLabel": "Leitarniðurstöður fyrir '{search}'",
-    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði"
+    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði",
+    "appInTargetLanguageTitle": "Sýna appið á tungumálinu sem ég er að læra",
+    "appInTargetLanguageDesc": "Valmyndir, hnappar og merkingar birtast á markmálinu þínu til að dýfa þér í tungumálið."
 }

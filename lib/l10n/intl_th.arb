@@ -10281,5 +10281,7 @@
     "starsToUnlockObjectiveTitle": "ดาวต่อภารกิจ",
     "starsToUnlockObjectiveDesc": "กำหนดจำนวนดาวที่จำเป็นต่อการทำแต่ละภารกิจให้สำเร็จ",
     "maxStarsPerMissionWarning": "คอร์สนี้มีภารกิจที่สามารถได้รับดาวสูงสุดเพียง {maxValue} ดวงเท่านั้น โปรดป้อนตัวเลขที่น้อยกว่าหรือเท่ากับ {maxValue}",
-    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ"
+    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ",
+    "appInTargetLanguageTitle": "แสดงแอปในภาษาที่ฉันกำลังเรียนรู้",
+    "appInTargetLanguageDesc": "เมนู ปุ่ม และป้ายกำกับจะแสดงเป็นภาษาที่คุณกำลังเรียนรู้เพื่อการดื่มด่ำ"
 }

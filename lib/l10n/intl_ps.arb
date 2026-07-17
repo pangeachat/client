@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "د ستونزو لیست",
     "languageListLabel": "د ژبې لیست",
     "searchedResultsLabel": "د '{search}' لپاره د لټون پایلې",
-    "closeAddCoursePage": "د کورس اضافه کولو پاڼه بنده کړئ"
+    "closeAddCoursePage": "د کورس اضافه کولو پاڼه بنده کړئ",
+    "appInTargetLanguageTitle": "اپلیکیشن په هغه ژبه وښایاست چې زه یې زده کوم",
+    "appInTargetLanguageDesc": "د ژورې زده کړې لپاره مینو، بټنونه او لیبلونه ستاسو په هدف ژبه کې ښکاري."
 }

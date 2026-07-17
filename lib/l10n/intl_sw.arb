@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Orodha ya ugumu",
     "languageListLabel": "Orodha ya lugha",
     "searchedResultsLabel": "Matokeo ya utafutaji kwa '{search}'",
-    "closeAddCoursePage": "Funga ukurasa wa kuongeza kozi"
+    "closeAddCoursePage": "Funga ukurasa wa kuongeza kozi",
+    "appInTargetLanguageTitle": "Onyesha programu katika lugha ninayojifunza",
+    "appInTargetLanguageDesc": "Menyu, vitufe, na lebo huonekana katika lugha unayolenga kwa ajili ya kuzama."
 }

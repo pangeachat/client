@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Liosta doirbheadaireachd",
     "languageListLabel": "Liosta chànanan",
     "searchedResultsLabel": "Toraidhean rannsachaidh airson '{search}'",
-    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris"
+    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris",
+    "appInTargetLanguageTitle": "Seall an aplacaid sa chànan a tha mi ag ionnsachadh",
+    "appInTargetLanguageDesc": "Bidh clàran-taice, putanan, agus bileagan a' nochdadh sa chànan targaid agad airson bogadh."
 }

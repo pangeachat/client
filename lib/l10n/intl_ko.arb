@@ -9842,5 +9842,7 @@
     "starsToUnlockObjectiveTitle": "미션당 별 개수",
     "starsToUnlockObjectiveDesc": "각 미션을 완료하는 데 필요한 별 개수를 설정하세요",
     "maxStarsPerMissionWarning": "이 코스에는 {maxValue}개의 별만 획득할 수 있는 미션이 있습니다. {maxValue}보다 작거나 같은 숫자를 입력하세요.",
-    "removedFromCourseError": "이 코스에서 삭제되었습니다. 선생님께 문의하세요."
+    "removedFromCourseError": "이 코스에서 삭제되었습니다. 선생님께 문의하세요.",
+    "appInTargetLanguageTitle": "학습 중인 언어로 앱 표시",
+    "appInTargetLanguageDesc": "몰입도를 높이기 위해 메뉴, 버튼, 라벨이 학습 대상 언어로 표시됩니다."
 }

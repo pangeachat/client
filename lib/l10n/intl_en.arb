@@ -163,7 +163,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "appInTargetLanguageDesc": "Menus, buttons, and labels appear in your target language for immersion. Untranslated text falls back to English.",
+    "appInTargetLanguageDesc": "Menus, buttons, and labels appear in your target language for immersion.",
     "@appInTargetLanguageDesc": {
         "type": "String",
         "placeholders": {}

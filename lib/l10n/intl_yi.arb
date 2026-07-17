@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "שוועריקייט רשימה",
     "languageListLabel": "שפּראַך רשימה",
     "searchedResultsLabel": "זוך רעזולטאַטן פֿאַר '{search}'",
-    "closeAddCoursePage": "פאַרמאַכן צוגעבן קורס בלאַט"
+    "closeAddCoursePage": "פאַרמאַכן צוגעבן קורס בלאַט",
+    "appInTargetLanguageTitle": "ווייַזן די אַפּ אין דער שפּראַך וואָס איך לערן",
+    "appInTargetLanguageDesc": "מעניוז, קנעפּלעך און לאַבעלס דערשייַנען אין דיין ציל שפּראַך פֿאַר אימערסיע."
 }

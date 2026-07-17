@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Daptar kasusah",
     "languageListLabel": "Daptar basa",
     "searchedResultsLabel": "Hasil pamilarian pikeun '{search}'",
-    "closeAddCoursePage": "Tutup halaman tambah kursus"
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "appInTargetLanguageTitle": "Témbongkeun aplikasi dina basa anu kuring diajar",
+    "appInTargetLanguageDesc": "Menu, tombol, jeung labél némbongan dina basa target anjeun pikeun immersion."
 }

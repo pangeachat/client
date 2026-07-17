@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "ಕಷ್ಟದ ಪಟ್ಟಿ",
     "languageListLabel": "ಭಾಷಾ ಪಟ್ಟಿ",
     "searchedResultsLabel": "'{search}' ಗಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",
-    "closeAddCoursePage": "ಕೋರ್ಸ್ ಸೇರಿಸುವ ಪುಟವನ್ನು ಮುಚ್ಚಿ"
+    "closeAddCoursePage": "ಕೋರ್ಸ್ ಸೇರಿಸುವ ಪುಟವನ್ನು ಮುಚ್ಚಿ",
+    "appInTargetLanguageTitle": "ನಾನು ಕಲಿಯುತ್ತಿರುವ ಭಾಷೆಯಲ್ಲಿ ಅಪ್ಲಿಕೇಶನ್ ತೋರಿಸಿ",
+    "appInTargetLanguageDesc": "ಇಮ್ಮರ್ಶನ್‌ಗಾಗಿ ಮೆನುಗಳು, ಬಟನ್‌ಗಳು ಮತ್ತು ಲೇಬಲ್‌ಗಳು ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
 }

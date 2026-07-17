@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lis difikilte",
     "languageListLabel": "Lis lang",
     "searchedResultsLabel": "Rezilta rechèch pou '{search}'",
-    "closeAddCoursePage": "Fèmen paj ajoute kou"
+    "closeAddCoursePage": "Fèmen paj ajoute kou",
+    "appInTargetLanguageTitle": "Montre aplikasyon an nan lang m ap aprann nan",
+    "appInTargetLanguageDesc": "Meni, bouton, ak etikèt ap parèt nan lang sib ou pou imèsyon."
 }

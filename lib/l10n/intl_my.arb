@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "အခက်အခဲစာရင်း",
     "languageListLabel": "ဘာသာစကားစာရင်း",
     "searchedResultsLabel": "'{search}' အတွက် ရှာဖွေမှုရလဒ်များ",
-    "closeAddCoursePage": "သင်တန်းထည့်သွင်းခြင်း စာမျက်နှာကို ပိတ်ပါ"
+    "closeAddCoursePage": "သင်တန်းထည့်သွင်းခြင်း စာမျက်နှာကို ပိတ်ပါ",
+    "appInTargetLanguageTitle": "ကျွန်ုပ်လေ့လာနေသော ဘာသာစကားဖြင့် အက်ပ်ကို ပြသပါ",
+    "appInTargetLanguageDesc": "နှစ်မြှုပ်လေ့လာနိုင်ရန် မီနူးများ၊ ခလုတ်များနှင့် တံဆိပ်များကို သင်၏ပစ်မှတ်ဘာသာစကားဖြင့် ပြသပါမည်။"
 }

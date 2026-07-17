@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Листа на тежина",
     "languageListLabel": "Листа на јазици",
     "searchedResultsLabel": "Резултати од пребарување за '{search}'",
-    "closeAddCoursePage": "Затвори ја страницата за додавање курс"
+    "closeAddCoursePage": "Затвори ја страницата за додавање курс",
+    "appInTargetLanguageTitle": "Прикажи ја апликацијата на јазикот што го учам",
+    "appInTargetLanguageDesc": "Менијата, копчињата и ознаките се појавуваат на вашиот целен јазик за целосно искуство."
 }

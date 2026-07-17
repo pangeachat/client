@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "مشکل کی فہرست",
     "languageListLabel": "زبان کی فہرست",
     "searchedResultsLabel": "'{search}' کے لیے تلاش کے نتائج",
-    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں"
+    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں",
+    "appInTargetLanguageTitle": "ایپ کو اس زبان میں دکھائیں جو میں سیکھ رہا ہوں",
+    "appInTargetLanguageDesc": "ایمرشن کے لیے مینیو، بٹن اور لیبل آپ کی ہدف زبان میں ظاہر ہوتے ہیں۔"
 }

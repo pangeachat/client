@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "কঠিনতাৰ তালিকা",
     "languageListLabel": "ভাষাৰ তালিকা",
     "searchedResultsLabel": "'{search}'ৰ বাবে সন্ধানৰ ফলাফল",
-    "closeAddCoursePage": "পাঠ্যক্ৰম যোগ কৰা পৃষ্ঠা বন্ধ কৰক"
+    "closeAddCoursePage": "পাঠ্যক্ৰম যোগ কৰা পৃষ্ঠা বন্ধ কৰক",
+    "appInTargetLanguageTitle": "মই শিকা ভাষাৰে এপটো দেখুৱাওক",
+    "appInTargetLanguageDesc": "নিমজ্জনৰ বাবে মেনু, বুটাম আৰু লেবেলবোৰ আপোনাৰ লক্ষ্য ভাষাত দেখা যাব।"
 }

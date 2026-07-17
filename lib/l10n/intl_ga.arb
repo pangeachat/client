@@ -9660,5 +9660,7 @@
     "starsToUnlockObjectiveTitle": "Réaltaí in aghaidh an Mhisean",
     "starsToUnlockObjectiveDesc": "Socraigh an líon réaltaí atá ag teastáil chun gach misean a chríochnú",
     "maxStarsPerMissionWarning": "Tá misin sa chúrsa seo nach féidir ach {maxValue} réalta a thuilleamh iontu. Cuir isteach uimhir atá níos lú ná nó cothrom le {maxValue}.",
-    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir."
+    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir.",
+    "appInTargetLanguageTitle": "Taispeáin an aip sa teanga atáim ag foghlaim",
+    "appInTargetLanguageDesc": "Beidh biachláir, cnaipí, agus lipéid le feiceáil i do sprioc-theanga le haghaidh tumoideachais."
 }

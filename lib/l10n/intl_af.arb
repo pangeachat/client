@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Moeilikheidsgraadlys",
     "languageListLabel": "Taallys",
     "searchedResultsLabel": "Soekresultate vir '{search}'",
-    "closeAddCoursePage": "Maak kursus-byvoegbladsy toe"
+    "closeAddCoursePage": "Maak kursus-byvoegbladsy toe",
+    "appInTargetLanguageTitle": "Wys die toepassing in die taal wat ek leer",
+    "appInTargetLanguageDesc": "Spyskaarte, knoppies en etikette verskyn in jou teikentaal vir onderdompeling."
 }

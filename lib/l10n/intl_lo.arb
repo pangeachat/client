@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "ລາຍຊື່ຄວາມຍາກ",
     "languageListLabel": "ລາຍຊື່ພາສາ",
     "searchedResultsLabel": "ຜົນການຄົ້ນຫາສໍາລັບ '{search}'",
-    "closeAddCoursePage": "ປິດໜ້າເພີ່ມຫຼັກສູດ"
+    "closeAddCoursePage": "ປິດໜ້າເພີ່ມຫຼັກສູດ",
+    "appInTargetLanguageTitle": "ສະແດງແອັບເປັນພາສາທີ່ຂ້ອຍກຳລັງຮຽນ",
+    "appInTargetLanguageDesc": "ເມນູ, ປຸ່ມ ແລະ ປ້າຍຕ່າງໆຈະສະແດງເປັນພາສາເປົ້າໝາຍຂອງທ່ານເພື່ອການຮຽນຮູ້ທີ່ເລິກເຊິ່ງ."
 }

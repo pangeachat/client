@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Ndepụta ihe isi ike",
     "languageListLabel": "Ndepụta asụsụ",
     "searchedResultsLabel": "Nsonaazụ ọchụchọ maka '{search}'",
-    "closeAddCoursePage": "Mechie ibe tinye ọmụmụ"
+    "closeAddCoursePage": "Mechie ibe tinye ọmụmụ",
+    "appInTargetLanguageTitle": "Gosi ngwa n'asụsụ m na-amụ",
+    "appInTargetLanguageDesc": "Nchịkọta nhọrọ, bọtịnụ, na akara ga-apụta n'asụsụ ị na-amụ maka imikpu."
 }

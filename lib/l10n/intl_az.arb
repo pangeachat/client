@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Çətinlik siyahısı",
     "languageListLabel": "Dil siyahısı",
     "searchedResultsLabel": "'{search}' üçün axtarış nəticələri",
-    "closeAddCoursePage": "Kurs əlavə etmə səhifəsini bağlayın"
+    "closeAddCoursePage": "Kurs əlavə etmə səhifəsini bağlayın",
+    "appInTargetLanguageTitle": "Tətbiqi öyrəndiyim dildə göstər",
+    "appInTargetLanguageDesc": "Menyular, düymələr və etiketlər immersiya üçün hədəf dilinizdə görünür."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "કઠિનતા યાદી",
     "languageListLabel": "ભાષા યાદી",
     "searchedResultsLabel": "'{search}' માટે શોધ પરિણામો",
-    "closeAddCoursePage": "કોર્સ ઉમેરવાનું પેજ બંધ કરો"
+    "closeAddCoursePage": "કોર્સ ઉમેરવાનું પેજ બંધ કરો",
+    "appInTargetLanguageTitle": "હું જે ભાષા શીખી રહ્યો છું તેમાં એપ્લિકેશન બતાવો",
+    "appInTargetLanguageDesc": "મેનૂ, બટનો અને લેબલ્સ તમને ભાષામાં નિપુણ બનાવવા માટે તમારી લક્ષ્ય ભાષામાં દેખાશે."
 }

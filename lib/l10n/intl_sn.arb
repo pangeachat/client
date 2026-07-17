@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Rondedzero yekuoma",
     "languageListLabel": "Rondedzero yemutauro",
     "searchedResultsLabel": "Mhedzisiro yekutsvaga ye '{search}'",
-    "closeAddCoursePage": "Vhara peji rekuwedzera kosi"
+    "closeAddCoursePage": "Vhara peji rekuwedzera kosi",
+    "appInTargetLanguageTitle": "Ratidza app nemutauro wandiri kudzidza",
+    "appInTargetLanguageDesc": "Mamenyu, mabhatani, nemalebels zvinoonekwa nemutauro wauri kudzidza kuti unyure mukudzidza."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Papa inoa paʻakikī",
     "languageListLabel": "Papa inoa ʻōlelo",
     "searchedResultsLabel": "Nā hualoaʻa no '{search}'",
-    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa"
+    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa",
+    "appInTargetLanguageTitle": "Hōʻike i ka polokalamu ma ka ʻōlelo aʻu e aʻo nei",
+    "appInTargetLanguageDesc": "E ʻike ʻia nā papa kuhikuhi, nā pihi, a me nā lepili ma kāu ʻōlelo i manaʻo ʻia no ka hoʻohuʻu ʻana."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lisi o faigata",
     "languageListLabel": "Lisi o gagana",
     "searchedResultsLabel": "Su'esu'ega mo '{search}'",
-    "closeAddCoursePage": "Tapuni le itulau fa'aopoopo kosi"
+    "closeAddCoursePage": "Tapuni le itulau fa'aopoopo kosi",
+    "appInTargetLanguageTitle": "Fa'aali le app i le gagana o lo'o ou a'oa'oina",
+    "appInTargetLanguageDesc": "O menus, fa'amau, ma fa'ailoga e aliali mai i lau gagana o lo'o a'oa'oina mo le fa'atofuina."
 }

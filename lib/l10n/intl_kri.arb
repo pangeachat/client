@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Difikult lis",
     "languageListLabel": "Langwej lis",
     "searchedResultsLabel": "Sach rizalt dɛn fɔ '{search}'",
-    "closeAddCoursePage": "Klos ad kos pej"
+    "closeAddCoursePage": "Klos ad kos pej",
+    "appInTargetLanguageTitle": "Sho di app na di langwej we a de lan",
+    "appInTargetLanguageDesc": "Menyu, botin, ɛn lebul dɛn de sho na yu target langwej fɔ mek yu bɛtɛ lan."
 }

@@ -6915,5 +6915,7 @@
     "starsToUnlockObjectiveTitle": "Số sao mỗi nhiệm vụ",
     "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
     "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
-    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn."
+    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn.",
+    "appInTargetLanguageTitle": "Hiển thị ứng dụng bằng ngôn ngữ tôi đang học",
+    "appInTargetLanguageDesc": "Menu, nút và nhãn sẽ hiển thị bằng ngôn ngữ bạn đang học để bạn đắm chìm vào ngôn ngữ đó."
 }

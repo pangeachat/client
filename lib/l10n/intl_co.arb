@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lista di difficultà",
     "languageListLabel": "Lista di lingue",
     "searchedResultsLabel": "Risultati di a ricerca per '{search}'",
-    "closeAddCoursePage": "Chjode a pagina d'aghjunta di corsu"
+    "closeAddCoursePage": "Chjode a pagina d'aghjunta di corsu",
+    "appInTargetLanguageTitle": "Mustrà l'app in a lingua ch'e imparu",
+    "appInTargetLanguageDesc": "I menu, i buttoni è l'etichette appariscenu in a vostra lingua di destinazione per l'immersione."
 }

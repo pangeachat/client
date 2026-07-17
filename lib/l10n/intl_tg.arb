@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Рӯйхати мушкилӣ",
     "languageListLabel": "Рӯйхати забонҳо",
     "searchedResultsLabel": "Натиҷаҳои ҷустуҷӯ барои '{search}'",
-    "closeAddCoursePage": "Саҳифаи илова кардани курсро пӯшед"
+    "closeAddCoursePage": "Саҳифаи илова кардани курсро пӯшед",
+    "appInTargetLanguageTitle": "Барномаро бо забони омӯхтаистодаам нишон диҳед",
+    "appInTargetLanguageDesc": "Менюҳо, тугмаҳо ва нишонаҳо бо забони мавриди ҳадафи шумо барои ғарқшавӣ пайдо мешаванд."
 }

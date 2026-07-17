@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lisitry ny fahasarotana",
     "languageListLabel": "Lisitry ny fiteny",
     "searchedResultsLabel": "Valin'ny fikarohana ho an'ny '{search}'",
-    "closeAddCoursePage": "Akatona ny pejy fanampiana taranja"
+    "closeAddCoursePage": "Akatona ny pejy fanampiana taranja",
+    "appInTargetLanguageTitle": "Asehoy amin'ny fiteny ianarako ny fampiharana",
+    "appInTargetLanguageDesc": "Miseho amin'ny fiteny kendrena ny menus, bokotra ary marika ho an'ny fampidirana."
 }

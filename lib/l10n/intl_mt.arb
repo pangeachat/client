@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lista ta' diffikultà",
     "languageListLabel": "Lista tal-lingwi",
     "searchedResultsLabel": "Riżultati tat-tfittxija għal '{search}'",
-    "closeAddCoursePage": "Agħlaq il-paġna żid kors"
+    "closeAddCoursePage": "Agħlaq il-paġna żid kors",
+    "appInTargetLanguageTitle": "Uri l-app bil-lingwa li qed nitgħallem",
+    "appInTargetLanguageDesc": "Il-menus, il-buttuni u t-tikketti jidhru bil-lingwa fil-mira tiegħek għall-immersjoni."
 }

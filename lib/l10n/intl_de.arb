@@ -9636,5 +9636,7 @@
     "starsToUnlockObjectiveTitle": "Sterne pro Mission",
     "starsToUnlockObjectiveDesc": "Legen Sie die Anzahl der Sterne fest, die zum Abschluss jeder Mission benötigt werden",
     "maxStarsPerMissionWarning": "Dieser Kurs enthält Missionen, in denen nur {maxValue} Sterne verdient werden können. Bitte geben Sie eine Zahl kleiner oder gleich {maxValue} ein.",
-    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer."
+    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer.",
+    "appInTargetLanguageTitle": "App in der Zielsprache anzeigen",
+    "appInTargetLanguageDesc": "Menüs, Schaltflächen und Beschriftungen werden zur Immersion in Ihrer Zielsprache angezeigt."
 }

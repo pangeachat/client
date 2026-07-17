@@ -10004,5 +10004,7 @@
     "starsToUnlockObjectiveTitle": "Étoiles par mission",
     "starsToUnlockObjectiveDesc": "Définissez le nombre d'étoiles nécessaires pour terminer chaque mission",
     "maxStarsPerMissionWarning": "Ce cours contient des missions où seulement {maxValue} étoiles peuvent être gagnées. Veuillez entrer un nombre inférieur ou égal à {maxValue}.",
-    "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur."
+    "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur.",
+    "appInTargetLanguageTitle": "Afficher l'application dans la langue que j'apprends",
+    "appInTargetLanguageDesc": "Les menus, boutons et libellés s'affichent dans votre langue cible pour une immersion totale."
 }

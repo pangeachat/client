@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Қиындықтар тізімі",
     "languageListLabel": "Тілдер тізімі",
     "searchedResultsLabel": "'{search}' үшін іздеу нәтижелері",
-    "closeAddCoursePage": "Курс қосу бетін жабу"
+    "closeAddCoursePage": "Курс қосу бетін жабу",
+    "appInTargetLanguageTitle": "Қолданбаны үйреніп жатқан тілімде көрсету",
+    "appInTargetLanguageDesc": "Тереңдетілген оқыту үшін мәзірлер, түймелер және белгілер сіздің мақсатты тіліңізде көрсетіледі."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lista e vështirësive",
     "languageListLabel": "Lista e gjuhëve",
     "searchedResultsLabel": "Rezultatet e kërkimit për '{search}'",
-    "closeAddCoursePage": "Mbyll faqen e shtimit të kursit"
+    "closeAddCoursePage": "Mbyll faqen e shtimit të kursit",
+    "appInTargetLanguageTitle": "Shfaq aplikacionin në gjuhën që po mësoj",
+    "appInTargetLanguageDesc": "Menutë, butonat dhe etiketat shfaqen në gjuhën tuaj të synuar për zhytje."
 }

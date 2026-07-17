@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Swierrichheidslist",
     "languageListLabel": "Talenlist",
     "searchedResultsLabel": "Sykresultaten foar '{search}'",
-    "closeAddCoursePage": "Slút de side foar it tafoegjen fan in kursus"
+    "closeAddCoursePage": "Slút de side foar it tafoegjen fan in kursus",
+    "appInTargetLanguageTitle": "Lit de app sjen yn de taal dy't ik lear",
+    "appInTargetLanguageDesc": "Menu's, knoppen en labels ferskine yn jo doeltaal foar ymmersje."
 }

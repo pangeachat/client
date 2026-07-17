@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lista težina",
     "languageListLabel": "Lista jezika",
     "searchedResultsLabel": "Rezultati pretrage za '{search}'",
-    "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa"
+    "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa",
+    "appInTargetLanguageTitle": "Prikaži aplikaciju na jeziku koji učim",
+    "appInTargetLanguageDesc": "Izbornici, dugmad i oznake prikazuju se na vašem ciljnom jeziku radi uranjanja."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Uluhlu lobunzima",
     "languageListLabel": "Uluhlu lweelwimi",
     "searchedResultsLabel": "Iziphumo zokukhangela '{search}'",
-    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi"
+    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi",
+    "appInTargetLanguageTitle": "Bonisa usetyenziso ngolwimi endilufundayo",
+    "appInTargetLanguageDesc": "Iimenyu, amaqhosha, kunye neelebhile zivela ngolwimi olufundayo ukuze ungene nzulu."
 }

@@ -10167,5 +10167,7 @@
     "starsToUnlockObjectiveTitle": "Stjärnor per uppdrag",
     "starsToUnlockObjectiveDesc": "Ange antalet stjärnor som behövs för att slutföra varje uppdrag",
     "maxStarsPerMissionWarning": "Den här kursen har uppdrag där endast {maxValue} stjärnor kan tjänas. Ange ett nummer som är mindre än eller lika med {maxValue}.",
-    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare."
+    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare.",
+    "appInTargetLanguageTitle": "Visa appen på språket jag lär mig",
+    "appInTargetLanguageDesc": "Menyer, knappar och etiketter visas på ditt målspråk för immersion."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Rārangi taumata uaua",
     "languageListLabel": "Rārangi reo",
     "searchedResultsLabel": "Ngā hua rapu mō '{search}'",
-    "closeAddCoursePage": "Katia te whārangi tāpiri akoranga"
+    "closeAddCoursePage": "Katia te whārangi tāpiri akoranga",
+    "appInTargetLanguageTitle": "Whakaaturia te taupānga ki te reo e akohia ana e au",
+    "appInTargetLanguageDesc": "Ka puta ngā tahua, ngā pātene, me ngā tapanga ki tō reo e whāia ana mō te ruku reo."
 }

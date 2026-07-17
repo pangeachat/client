@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Schwieregkeetslëscht",
     "languageListLabel": "Sproochlëscht",
     "searchedResultsLabel": "Sichresultater fir '{search}'",
-    "closeAddCoursePage": "Säit 'Cours derbäisetzen' zoumaachen"
+    "closeAddCoursePage": "Säit 'Cours derbäisetzen' zoumaachen",
+    "appInTargetLanguageTitle": "App an der Zilssprooch weisen",
+    "appInTargetLanguageDesc": "Menüen, Knäppercher an Etikette ginn an Ärer Zilssprooch ugewisen fir Immersion."
 }

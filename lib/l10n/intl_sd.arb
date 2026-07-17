@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "مشڪل جي فهرست",
     "languageListLabel": "ٻولين جي فهرست",
     "searchedResultsLabel": "'{search}' لاءِ ڳولا جا نتيجا",
-    "closeAddCoursePage": "ڪورس شامل ڪرڻ وارو صفحو بند ڪريو"
+    "closeAddCoursePage": "ڪورس شامل ڪرڻ وارو صفحو بند ڪريو",
+    "appInTargetLanguageTitle": "منهنجي سکڻ واري ٻوليءَ ۾ ايپ ڏيکاريو",
+    "appInTargetLanguageDesc": "مينيو، بٽڻ، ۽ ليبل توهان جي سکڻ واري ٻوليءَ ۾ ظاهر ٿيندا ته جيئن توهان کي ان ۾ غرق ڪري سگهجي."
 }

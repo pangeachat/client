@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Jerin wahala",
     "languageListLabel": "Jerin harsuna",
     "searchedResultsLabel": "Sakamakon bincike na '{search}'",
-    "closeAddCoursePage": "Rufe shafin ƙara kwas"
+    "closeAddCoursePage": "Rufe shafin ƙara kwas",
+    "appInTargetLanguageTitle": "Nuna manhajar a yaren da nake koya",
+    "appInTargetLanguageDesc": "Za a nuna menus, maballai, da lakabi a yaren da kake koya don zurfafa ilimi."
 }

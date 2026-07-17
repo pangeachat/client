@@ -9649,5 +9649,7 @@
     "starsToUnlockObjectiveTitle": "Izarrak misio bakoitzeko",
     "starsToUnlockObjectiveDesc": "Ezarri misio bakoitza osatzeko behar diren izar kopurua",
     "maxStarsPerMissionWarning": "Ikastaro honek misioak ditu, non gehienez {maxValue} izar irabaz daitezkeen. Mesedez, sartu {maxValue} baino txikiagoa edo berdina den zenbaki bat.",
-    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin."
+    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin.",
+    "appInTargetLanguageTitle": "Erakutsi aplikazioa ikasten ari naizen hizkuntzan",
+    "appInTargetLanguageDesc": "Menuak, botoiak eta etiketak zure xede-hizkuntzan agertuko dira, murgiltze-esperientzia bat izateko."
 }

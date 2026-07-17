@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "የችግር ደረጃ ዝርዝር",
     "languageListLabel": "የቋንቋ ዝርዝር",
     "searchedResultsLabel": "ለ'{search}' የተገኙ የፍለጋ ውጤቶች",
-    "closeAddCoursePage": "ኮርስ መጨመሪያ ገጹን ዝጋ"
+    "closeAddCoursePage": "ኮርስ መጨመሪያ ገጹን ዝጋ",
+    "appInTargetLanguageTitle": "መተግበሪያውን እየተማርኩት ባለው ቋንቋ አሳይ",
+    "appInTargetLanguageDesc": "ለጥምቀት ምናሌዎች፣ አዝራሮች እና መለያዎች በሚማሩት ቋንቋ ይታያሉ።"
 }

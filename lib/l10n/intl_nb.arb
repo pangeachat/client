@@ -9706,5 +9706,7 @@
     "starsToUnlockObjectiveTitle": "Stjerner per oppdrag",
     "starsToUnlockObjectiveDesc": "Angi antall stjerner som trengs for å fullføre hvert oppdrag",
     "maxStarsPerMissionWarning": "Dette kurset har oppdrag der bare {maxValue} stjerner kan opptjenes. Angi et tall som er mindre enn eller lik {maxValue}.",
-    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din."
+    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din.",
+    "appInTargetLanguageTitle": "Vis appen på språket jeg lærer",
+    "appInTargetLanguageDesc": "Menyer, knapper og etiketter vises på målspråket ditt for fordypning."
 }

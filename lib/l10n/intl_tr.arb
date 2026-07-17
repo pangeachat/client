@@ -9950,5 +9950,7 @@
     "starsToUnlockObjectiveTitle": "Görev Başına Yıldız",
     "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
     "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
-    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin."
+    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin.",
+    "appInTargetLanguageTitle": "Uygulamayı öğrendiğim dilde göster",
+    "appInTargetLanguageDesc": "Menüler, düğmeler ve etiketler, kendinizi dile kaptırmanız için hedef dilinizde görünür."
 }

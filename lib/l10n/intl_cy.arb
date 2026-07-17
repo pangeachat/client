@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Rhestr anhawster",
     "languageListLabel": "Rhestr iaith",
     "searchedResultsLabel": "Canlyniadau chwilio am '{search}'",
-    "closeAddCoursePage": "Cau tudalen ychwanegu cwrs"
+    "closeAddCoursePage": "Cau tudalen ychwanegu cwrs",
+    "appInTargetLanguageTitle": "Dangos yr ap yn yr iaith rwy'n ei dysgu",
+    "appInTargetLanguageDesc": "Mae dewislenni, botymau, a labeli'n ymddangos yn eich iaith darged ar gyfer trochi."
 }

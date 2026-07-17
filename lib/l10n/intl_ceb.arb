@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lista sa kalisod",
     "languageListLabel": "Lista sa lengguwahe",
     "searchedResultsLabel": "Mga resulta sa pagpangita para sa '{search}'",
-    "closeAddCoursePage": "Isira ang panid sa pagdugang og kurso"
+    "closeAddCoursePage": "Isira ang panid sa pagdugang og kurso",
+    "appInTargetLanguageTitle": "Ipakita ang app sa pinulongan nga akong ginatun-an",
+    "appInTargetLanguageDesc": "Ang mga menu, buton, ug label makita sa imong target nga pinulongan para sa immersion."
 }

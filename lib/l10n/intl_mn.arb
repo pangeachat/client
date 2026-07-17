@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Хүндрэлийн жагсаалт",
     "languageListLabel": "Хэлний жагсаалт",
     "searchedResultsLabel": "'{search}' хайлтын үр дүн",
-    "closeAddCoursePage": "Хичээл нэмэх хуудсыг хаах"
+    "closeAddCoursePage": "Хичээл нэмэх хуудсыг хаах",
+    "appInTargetLanguageTitle": "Аппыг сурч буй хэл дээр харуулах",
+    "appInTargetLanguageDesc": "Цэс, товчлуур, шошго нь таны сурч буй хэл дээр гарч, хэлний орчинд ороход тусална."
 }

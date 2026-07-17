@@ -10515,5 +10515,7 @@
     "starsToUnlockObjectiveTitle": "Mga Bituin bawat Misyon",
     "starsToUnlockObjectiveDesc": "Itakda ang bilang ng mga bituin na kailangan upang makumpleto ang bawat misyon",
     "maxStarsPerMissionWarning": "Ang kursong ito ay may mga misyon kung saan {maxValue} na bituin lamang ang maaaring makuha. Mangyaring maglagay ng numero na mas mababa o katumbas ng {maxValue}.",
-    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro."
+    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro.",
+    "appInTargetLanguageTitle": "Ipakita ang app sa wikang aking pinag-aaralan",
+    "appInTargetLanguageDesc": "Ang mga menu, button, at label ay lalabas sa iyong target na wika para sa immersion."
 }

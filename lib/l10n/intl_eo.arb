@@ -10600,5 +10600,7 @@
     "starsToUnlockObjectiveTitle": "Steloj por Misio",
     "starsToUnlockObjectiveDesc": "Agordu la nombron da steloj necesaj por kompletigi ĉiun mision",
     "maxStarsPerMissionWarning": "Ĉi tiu kurso havas misiojn, kie nur {maxValue} steloj povas esti gajnitaj. Bonvolu enigi nombron malpli ol aŭ egala al {maxValue}.",
-    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston."
+    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston.",
+    "appInTargetLanguageTitle": "Montri la apon en la lingvo, kiun mi lernas",
+    "appInTargetLanguageDesc": "Menuoj, butonoj kaj etikedoj aperas en via cellingvo por mergiĝo."
 }

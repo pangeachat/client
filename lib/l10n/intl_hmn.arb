@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Cov npe nyuaj",
     "languageListLabel": "Cov npe lus",
     "searchedResultsLabel": "Cov txiaj ntsig tshawb nrhiav rau '{search}'",
-    "closeAddCoursePage": "Kaw nplooj ntawv ntxiv kev kawm"
+    "closeAddCoursePage": "Kaw nplooj ntawv ntxiv kev kawm",
+    "appInTargetLanguageTitle": "Qhia lub app hauv hom lus kuv tab tom kawm",
+    "appInTargetLanguageDesc": "Cov ntawv qhia zaub mov, cov nyees khawm, thiab cov cim yuav tshwm sim hauv koj hom lus kawm kom nkag siab zoo."
 }

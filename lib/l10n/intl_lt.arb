@@ -10430,5 +10430,7 @@
     "starsToUnlockObjectiveTitle": "Žvaigždės už misiją",
     "starsToUnlockObjectiveDesc": "Nustatykite žvaigždžių skaičių, reikalingą kiekvienai misijai užbaigti",
     "maxStarsPerMissionWarning": "Šiame kurse yra misijų, kuriose galima uždirbti tik {maxValue} žvaigždutes. Įveskite skaičių, mažesnį arba lygų {maxValue}.",
-    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju."
+    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju.",
+    "appInTargetLanguageTitle": "Rodyti programėlę mokomąja kalba",
+    "appInTargetLanguageDesc": "Meniu, mygtukai ir etiketės bus rodomi jūsų mokomąja kalba, kad pasinertumėte į kalbos aplinką."
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "कठिनाई सूची",
     "languageListLabel": "भाषा सूची",
     "searchedResultsLabel": "'{search}' को लागि खोज परिणामहरू",
-    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्"
+    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्",
+    "appInTargetLanguageTitle": "मैले सिकिरहेको भाषामा एप देखाउनुहोस्",
+    "appInTargetLanguageDesc": "मेनु, बटन र लेबलहरू तपाईंले सिकिरहेको भाषामा देखिनेछन्।"
 }

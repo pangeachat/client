@@ -9646,5 +9646,7 @@
     "starsToUnlockObjectiveTitle": "Tähed missiooni kohta",
     "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
     "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
-    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga."
+    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga.",
+    "appInTargetLanguageTitle": "Näita rakendust õpitavas keeles",
+    "appInTargetLanguageDesc": "Menüüd, nupud ja sildid kuvatakse keelekümbluse eesmärgil teie sihtkeeles."
 }

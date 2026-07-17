@@ -10281,5 +10281,7 @@
     "starsToUnlockObjectiveTitle": "प्रति मिशन सितारे",
     "starsToUnlockObjectiveDesc": "प्रत्येक मिशन को पूरा करने के लिए आवश्यक सितारों की संख्या निर्धारित करें",
     "maxStarsPerMissionWarning": "इस कोर्स में ऐसे मिशन हैं जहाँ केवल {maxValue} सितारे ही अर्जित किए जा सकते हैं। कृपया {maxValue} से कम या उसके बराबर संख्या दर्ज करें।",
-    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।"
+    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।",
+    "appInTargetLanguageTitle": "जिस भाषा को मैं सीख रहा हूँ, उसमें ऐप दिखाएँ",
+    "appInTargetLanguageDesc": "इमर्शन के लिए मेन्यू, बटन और लेबल आपकी लक्ष्य भाषा में दिखेंगे।"
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "କଠିନତା ତାଲିକା",
     "languageListLabel": "ଭାଷା ତାଲିକା",
     "searchedResultsLabel": "'{search}' ପାଇଁ ସନ୍ଧାନ ଫଳାଫଳ",
-    "closeAddCoursePage": "କୋର୍ସ ଯୋଗ ପୃଷ୍ଠା ବନ୍ଦ କରନ୍ତୁ"
+    "closeAddCoursePage": "କୋର୍ସ ଯୋଗ ପୃଷ୍ଠା ବନ୍ଦ କରନ୍ତୁ",
+    "appInTargetLanguageTitle": "ମୁଁ ଶିଖୁଥିବା ଭାଷାରେ ଆପ୍ ଦେଖାନ୍ତୁ",
+    "appInTargetLanguageDesc": "ଇମର୍ସନ୍ ପାଇଁ ମେନୁ, ବଟନ୍ ଏବଂ ଲେବଲ୍ ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷାରେ ଦେଖାଯିବ।"
 }

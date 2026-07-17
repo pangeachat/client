@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Àtòjọ ìṣòro",
     "languageListLabel": "Àtòjọ èdè",
     "searchedResultsLabel": "Àwọn èsì àwárí fún '{search}'",
-    "closeAddCoursePage": "Pa ojú-ìwé fi ìkẹ́kọ̀ọ́ kún"
+    "closeAddCoursePage": "Pa ojú-ìwé fi ìkẹ́kọ̀ọ́ kún",
+    "appInTargetLanguageTitle": "Fi ohun elo han ni ede ti mo n ko",
+    "appInTargetLanguageDesc": "Awọn akojọ aṣayan, awọn bọtini, ati awọn aami yoo han ni ede ibi-afẹde rẹ fun immersion."
 }

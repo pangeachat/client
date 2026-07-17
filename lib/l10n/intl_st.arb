@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Lenane la bothata",
     "languageListLabel": "Lenane la lipuo",
     "searchedResultsLabel": "Liphetho tsa patlo bakeng sa '{search}'",
-    "closeAddCoursePage": "Koala leqephe la ho eketsa thupelo"
+    "closeAddCoursePage": "Koala leqephe la ho eketsa thupelo",
+    "appInTargetLanguageTitle": "Bontsha app ka puo eo ke e ithutang",
+    "appInTargetLanguageDesc": "Dimenu, dikonopo le dileibole di tla hlaha ka puo eo o e ithutang bakeng sa ho qoelisoa."
 }

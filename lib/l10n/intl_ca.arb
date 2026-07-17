@@ -9776,5 +9776,7 @@
     "starsToUnlockObjectiveTitle": "Estrelles per Missió",
     "starsToUnlockObjectiveDesc": "Defineix el nombre d'estrelles necessàries per completar cada missió",
     "maxStarsPerMissionWarning": "Aquest curs té missions on només es poden guanyar {maxValue} estrelles. Si us plau, introdueix un número inferior o igual a {maxValue}.",
-    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor."
+    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor.",
+    "appInTargetLanguageTitle": "Mostra l'aplicació en l'idioma que estic aprenent",
+    "appInTargetLanguageDesc": "Els menús, botons i etiquetes apareixen en el teu idioma objectiu per a la immersió."
 }

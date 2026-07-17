@@ -10591,5 +10591,7 @@
     "starsToUnlockObjectiveTitle": "Stellas per Mission",
     "starsToUnlockObjectiveDesc": "Define le numero de stellas necessari pro completar cata mission",
     "maxStarsPerMissionWarning": "Iste curso ha missiones ubi solmente {maxValue} stellas pote esser ganiate. Per favor entra un numero minus que o equal a {maxValue}.",
-    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator."
+    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator.",
+    "appInTargetLanguageTitle": "Monstrar le app in le lingua que io apprende",
+    "appInTargetLanguageDesc": "Menus, buttones e etiquettas appare in tu lingua de destination pro immersion."
 }

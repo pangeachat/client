@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "कठीण पातळीची यादी",
     "languageListLabel": "भाषेची यादी",
     "searchedResultsLabel": "'{search}' साठी शोध परिणाम",
-    "closeAddCoursePage": "अभ्यासक्रम जोडा पृष्ठ बंद करा"
+    "closeAddCoursePage": "अभ्यासक्रम जोडा पृष्ठ बंद करा",
+    "appInTargetLanguageTitle": "मी शिकत असलेल्या भाषेत ॲप दाखवा",
+    "appInTargetLanguageDesc": "इमर्शनसाठी मेनू, बटणे आणि लेबले तुमच्या लक्ष्य भाषेत दिसतील."
 }

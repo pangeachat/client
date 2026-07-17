@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Daftar kesulitan",
     "languageListLabel": "Daftar basa",
     "searchedResultsLabel": "Asil panelusuran kanggo '{search}'",
-    "closeAddCoursePage": "Tutup kaca tambah kursus"
+    "closeAddCoursePage": "Tutup kaca tambah kursus",
+    "appInTargetLanguageTitle": "Tampilake aplikasi ing basa sing lagi disinaoni",
+    "appInTargetLanguageDesc": "Menu, tombol, lan label katon ing basa sing lagi disinaoni kanggo immersion."
 }

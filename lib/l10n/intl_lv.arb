@@ -9649,5 +9649,7 @@
     "starsToUnlockObjectiveTitle": "Zvaigznes par misiju",
     "starsToUnlockObjectiveDesc": "Iestatiet zvaigžņu skaitu, kas nepieciešams katras misijas pabeigšanai",
     "maxStarsPerMissionWarning": "Šajā kursā ir misijas, kurās var nopelnīt tikai {maxValue} zvaigznes. Lūdzu, ievadiet skaitli, kas ir mazāks vai vienāds ar {maxValue}.",
-    "removedFromCourseError": "Jūs esat noņemts no šī kursa. Sazinieties ar savu skolotāju."
+    "removedFromCourseError": "Jūs esat noņemts no šī kursa. Sazinieties ar savu skolotāju.",
+    "appInTargetLanguageTitle": "Rādīt lietotni valodā, ko apgūstu",
+    "appInTargetLanguageDesc": "Izvēlnes, pogas un etiķetes tiek rādītas jūsu mērķa valodā, lai nodrošinātu iegremdēšanos."
 }

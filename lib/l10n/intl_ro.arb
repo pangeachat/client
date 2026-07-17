@@ -10381,5 +10381,7 @@
     "starsToUnlockObjectiveTitle": "Stele per Misiune",
     "starsToUnlockObjectiveDesc": "Setează numărul de stele necesare pentru a finaliza fiecare misiune",
     "maxStarsPerMissionWarning": "Acest curs are misiuni în care pot fi câștigate doar {maxValue} stele. Te rugăm să introduci un număr mai mic sau egal cu {maxValue}.",
-    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul."
+    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul.",
+    "appInTargetLanguageTitle": "Afișează aplicația în limba pe care o învăț",
+    "appInTargetLanguageDesc": "Meniurile, butoanele și etichetele apar în limba țintă pentru imersiune."
 }

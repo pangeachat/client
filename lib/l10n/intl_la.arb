@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "Index difficultatum",
     "languageListLabel": "Index linguarum",
     "searchedResultsLabel": "Eventus quaestionis pro '{search}'",
-    "closeAddCoursePage": "Claude paginam additionis cursus"
+    "closeAddCoursePage": "Claude paginam additionis cursus",
+    "appInTargetLanguageTitle": "App in lingua discendi ostende",
+    "appInTargetLanguageDesc": "Menu, bullae, et tituli in lingua discendi ad immersionem apparent."
 }

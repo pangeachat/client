@@ -10418,5 +10418,7 @@
     "starsToUnlockObjectiveTitle": "ミッションごとのスター数",
     "starsToUnlockObjectiveDesc": "各ミッションを完了するために必要なスター数を設定します",
     "maxStarsPerMissionWarning": "このコースには、獲得できるスターが{maxValue}個までのミッションがあります。{maxValue}以下の数字を入力してください。",
-    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。"
+    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。",
+    "appInTargetLanguageTitle": "学習中の言語でアプリを表示",
+    "appInTargetLanguageDesc": "メニュー、ボタン、ラベルが学習中の言語で表示され、没入感を高めます。"
 }

@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "قىيىنلىق دەرىجىسى تىزىملىكى",
     "languageListLabel": "تىل تىزىملىكى",
     "searchedResultsLabel": "'{search}' ئۈچۈن ئىزدەش نەتىجىسى",
-    "closeAddCoursePage": "كۇرس قوشۇش بېتىنى تاقاش"
+    "closeAddCoursePage": "كۇرس قوشۇش بېتىنى تاقاش",
+    "appInTargetLanguageTitle": "ئۆگىنىۋاتقان تىلىمدىكى ئەپنى كۆرسەت",
+    "appInTargetLanguageDesc": "چۆكۈش ئۈچۈن تىزىملىك، كۇنۇپكا ۋە بەلگىلەر نىشان تىلىڭىزدا كۆرۈنىدۇ."
 }

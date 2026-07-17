@@ -1983,5 +1983,7 @@
     "difficultyListLabel": "දුෂ්කරතා ලැයිස්තුව",
     "languageListLabel": "භාෂා ලැයිස්තුව",
     "searchedResultsLabel": "'{search}' සඳහා සෙවුම් ප්‍රතිඵල",
-    "closeAddCoursePage": "පාඨමාලා එකතු කිරීමේ පිටුව වසන්න"
+    "closeAddCoursePage": "පාඨමාලා එකතු කිරීමේ පිටුව වසන්න",
+    "appInTargetLanguageTitle": "මම ඉගෙන ගන්නා භාෂාවෙන් යෙදුම පෙන්වන්න",
+    "appInTargetLanguageDesc": "ගැඹුරු ඉගෙනීම සඳහා මෙනු, බොත්තම් සහ ලේබල ඔබගේ ඉලක්ක භාෂාවෙන් දිස්වේ."
 }
