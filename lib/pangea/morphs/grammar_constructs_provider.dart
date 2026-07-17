@@ -50,15 +50,27 @@ class GrammarConstructsProvider {
     return morphs.getTag(feature, tag);
   }
 
-  static List<GrammarTag> getTags({required String feature}) {
-    final morphs = getFeaturesAndTags();
-    return morphs.getFeature(feature)?.tags ?? [];
-  }
+  static List<GrammarTag> getTags({required String feature}) =>
+      getFeaturesAndTags().getTags(feature);
 
-  static Future<List<GrammarTag>> fetchTags({required String feature}) async {
-    final morphs = await fetchFeaturesAndTags();
-    return morphs.getFeature(feature)?.tags ?? [];
-  }
+  static Future<List<GrammarTag>> fetchTags({required String feature}) async =>
+      (await fetchFeaturesAndTags()).getTags(feature);
+
+  /// Eligible distractor tag values for a morph practice question on
+  /// [feature] with correct answer [answerTag]. Single source of truth for
+  /// both practice generators — display-filtered, answer-excluded, and with
+  /// non-lemma POS categories removed. See
+  /// [MorphFeaturesAndTags.distractorTagValues].
+  static List<String> distractorTagValues({
+    required String feature,
+    required String answerTag,
+  }) => getFeaturesAndTags().distractorTagValues(feature, answerTag);
+
+  static Future<List<String>> fetchDistractorTagValues({
+    required String feature,
+    required String answerTag,
+  }) async =>
+      (await fetchFeaturesAndTags()).distractorTagValues(feature, answerTag);
 
   static GrammarFeature? getFeature({required String feature}) {
     final morphs = getFeaturesAndTags();

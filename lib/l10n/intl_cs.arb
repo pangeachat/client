@@ -83,11 +83,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Mohou se připojit hosté",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "areYouSure": "Jste si jistý?",
     "@areYouSure": {
         "type": "String",
@@ -364,11 +359,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Vaše zprávy jsou zabezpečeny bezpečnostním klíčem. Ujistěte se, prosím, že klíč neztratíte.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatDetails": "Bližší údaje o chatu",
     "@chatDetails": {
         "type": "String",
@@ -500,11 +490,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "Kontakt byl pozván do skupiny",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "contentHasBeenReported": "Obsah byl nahlášen správcům serveru",
     "@contentHasBeenReported": {
         "type": "String",
@@ -556,11 +541,6 @@
                 "type": "String"
             }
         }
-    },
-    "createNewSpace": "Nový prostor",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
     },
     "currentlyActive": "Aktuálně aktivní",
     "@currentlyActive": {
@@ -704,11 +684,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "Šifrování již nebude možné vypnout. Jste si tím jisti?",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encrypted": "Šifrováno",
     "@encrypted": {
         "type": "String",
@@ -747,11 +722,6 @@
             }
         }
     },
-    "everythingReady": "Vše připraveno!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "extremeOffensive": "Extrémně urážlivé",
     "@extremeOffensive": {
         "type": "String",
@@ -789,11 +759,6 @@
     },
     "group": "Skupina",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "Skupina je veřejná",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -887,15 +852,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "Pozvat kontakt do {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "Pozvaný",
     "@invited": {
@@ -1008,15 +964,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "Načíst dalších {count} účastníků",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "Načítání… Prosíme vyčkejte.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -1041,15 +988,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "Přihlášení k {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "Odhlásit",
     "@logout": {
@@ -1113,16 +1051,6 @@
     },
     "noEmotesFound": "Nebyly nalezeny žádné emotikony. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "Můžete aktivovat šifrování jakmile místnost přestane být veřejně dostupná.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "Zdá se, že služba Firebase Cloud Messaging není ve vašem zařízení k dispozici. Chcete-li i nadále přijímat push oznámení, doporučujeme nainstalovat ntfy. Pomocí ntfy nebo jiného poskytovatele Unified Push můžete přijímat oznámení push zabezpečeným způsobem přenosu dat. Aplikaci ntfy si můžete stáhnout z obchodu PlayStore nebo z webu F-Droid.",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1254,11 +1182,6 @@
     },
     "passwordHasBeenChanged": "Heslo bylo změněno",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "Obnova hesla",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1402,11 +1325,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "Odstraňit zařízení",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "Zrušit zákaz chatu",
     "@unbanFromChat": {
@@ -1561,11 +1479,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setPermissionsLevel": "Nastavit úroveň oprávnění",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "Nastavit stav",
     "@setStatus": {
         "type": "String",
@@ -1607,16 +1520,6 @@
     },
     "sourceCode": "Zdrojové kódy",
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "Prostor je veřejný",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceName": "Název prostoru",
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1675,11 +1578,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "Přenos z jiného zařízení",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "Zkuste odeslat znovu",
     "@tryToSendAgain": {
         "type": "String",
@@ -1735,15 +1633,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 nepřečtený chat} other{{unreadCount} nepřečtené chaty}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} a {count} dalších píší…",
     "@userAndOthersAreTyping": {
@@ -1829,16 +1718,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Video hovor",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Viditelnost historie chatu",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "Viditelné pro všechny účastnící se",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1884,23 +1763,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "Kdo může provést jakou akci",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Kdo se může připojit do této skupiny",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Proč to chcete nahlásit?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "Chcete vymazat zálohu chatu a vytvořit nový bezpečnostní klíč?",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1951,18 +1815,12 @@
     "@serverRequiresEmail": {},
     "addToBundle": "Přidat do balíčku",
     "@addToBundle": {},
-    "addAccount": "Přidat účet",
-    "@addAccount": {},
     "bundleName": "Název balíčku",
     "@bundleName": {},
     "link": "Odkaz",
     "@link": {},
-    "yourChatBackupHasBeenSetUp": "Vaše záloha chatu byla nastavena.",
-    "@yourChatBackupHasBeenSetUp": {},
     "editBundlesForAccount": "Upravit balíčky pro tento účet",
     "@editBundlesForAccount": {},
-    "enableMultiAccounts": "(BETA) Na tomto zařízení povolte více účtů",
-    "@enableMultiAccounts": {},
     "oneClientLoggedOut": "Jeden z vašich klientů byl odhlášen",
     "@oneClientLoggedOut": {},
     "removeFromBundle": "Odstranit z tohoto balíčku",
@@ -1983,8 +1841,6 @@
     "@openGallery": {},
     "start": "Start",
     "@start": {},
-    "removeFromSpace": "Odstranit z tohoto místa",
-    "@removeFromSpace": {},
     "commandHint_clearcache": "Vymazat mezipamět",
     "@commandHint_clearcache": {
         "type": "String",
@@ -2034,16 +1890,10 @@
     },
     "emojis": "Emojis",
     "@emojis": {},
-    "voiceCall": "Hlasový hovor",
-    "@voiceCall": {},
     "unsupportedAndroidVersion": "Nepodporovaná verze Androidu",
     "@unsupportedAndroidVersion": {},
-    "videoCallsBetaWarning": "Upozorňujeme, že videohovory jsou aktuálně ve verzi beta. Nemusí fungovat podle očekávání nebo fungovat vůbec na všech platformách.",
-    "@videoCallsBetaWarning": {},
     "placeCall": "Zavolejte",
     "@placeCall": {},
-    "emailOrUsername": "E-mail nebo uživatelské jméno",
-    "@emailOrUsername": {},
     "experimentalVideoCalls": "Experimentální videohovory",
     "@experimentalVideoCalls": {},
     "unsupportedAndroidVersionLong": "Tato funkce vyžaduje novější verzi Android. Zkontrolujte prosím aktualizace nebo podporu Lineage OS.",
@@ -2137,8 +1987,6 @@
     "@widgetNameError": {},
     "errorAddingWidget": "Chyba při přidávání widgetu.",
     "@errorAddingWidget": {},
-    "disableEncryptionWarning": "Z bezpečnostních důvodů nemůžete vypnout šifrování v chatu, kde již bylo dříve zapnuto.",
-    "@disableEncryptionWarning": {},
     "confirmMatrixId": "Prosím, potvrďte vaše Matrix ID, abyste mohli smazat váš účet.",
     "@confirmMatrixId": {},
     "commandHint_googly": "Poslat kroutící se očička",
@@ -2190,8 +2038,6 @@
             }
         }
     },
-    "storeInAndroidKeystore": "Uložit v Android KeyStore",
-    "@storeInAndroidKeystore": {},
     "dehydrate": "Exportovat sezení a promazat zařízení",
     "@dehydrate": {},
     "newGroup": "Nová skupina",
@@ -2200,18 +2046,12 @@
     "@doNotShowAgain": {},
     "commandHint_markasdm": "Označit jako místnost přímé konverzace s daným Matrix ID",
     "@commandHint_markasdm": {},
-    "recoveryKey": "Klíč k obnovení",
-    "@recoveryKey": {},
     "hydrate": "Obnovit ze záložního souboru",
     "@hydrate": {},
-    "pleaseEnterRecoveryKey": "Prosím vložte váš klíč pro obnovení:",
-    "@pleaseEnterRecoveryKey": {},
     "createGroup": "Vytvořit skupinu",
     "@createGroup": {},
     "shareInviteLink": "Sdílet pozvánku",
     "@shareInviteLink": {},
-    "pleaseEnterRecoveryKeyDescription": "K odemknutí vašich starých zpráv prosím vložte váš klíč k obnovení vygenerovaný v předchozím sezení. Váš klíč k obnovení NENÍ vaše heslo.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "setColorTheme": "Nastavit barvy:",
     "@setColorTheme": {},
     "importEmojis": "Importovat Emoji",
@@ -2224,8 +2064,6 @@
     "@replace": {},
     "users": "Uživatelé",
     "@users": {},
-    "storeInAppleKeyChain": "Uložit v Apple KeyChain",
-    "@storeInAppleKeyChain": {},
     "jumpToLastReadMessage": "Skočit na naposledy přečtenou zprávu",
     "@jumpToLastReadMessage": {},
     "redactedBy": "Smazáno uživatelem {username}",
@@ -2249,8 +2087,6 @@
     "@allSpaces": {},
     "noOtherDevicesFound": "Žádná ostatní zařízení nebyla nalezena",
     "@noOtherDevicesFound": {},
-    "chatDescription": "Popis konverzace",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "Popis konverzace byl změněn",
     "@chatDescriptionHasBeenChanged": {},
     "noChatDescriptionYet": "Zatím nebyl vytvořen žádný popis konverzace.",
@@ -2274,26 +2110,10 @@
             }
         }
     },
-    "newSpaceDescription": "Prostory umožňují organizovat Vaše konverzace a vytvářet soukromé nebo veřejné komunity.",
-    "@newSpaceDescription": {},
-    "setTheme": "Nastavit vzhled:",
-    "@setTheme": {},
     "sendTypingNotifications": "Posílat oznámení o psaní",
     "@sendTypingNotifications": {},
     "commandHint_markasgroup": "Označit jako skupinu",
     "@commandHint_markasgroup": {},
-    "recoveryKeyLost": "Ztracený klíč k obnovení?",
-    "@recoveryKeyLost": {},
-    "unlockOldMessages": "Odemknout staré zprávy",
-    "@unlockOldMessages": {},
-    "foregroundServiceRunning": "Toto oznámení se zobrazuje když běží služba na pozadí.",
-    "@foregroundServiceRunning": {},
-    "screenSharingDetail": "Sdílíte svou obrazovku přes FluffyChat",
-    "@screenSharingDetail": {},
-    "encryptThisChat": "Zašifrovat tuto konverzaci",
-    "@encryptThisChat": {},
-    "sorryThatsNotPossible": "Omlouváme se… to není možné",
-    "@sorryThatsNotPossible": {},
     "deviceKeys": "Klíče zařízení:",
     "@deviceKeys": {},
     "reopenChat": "Znovu otevřít konverzaci",
@@ -2315,8 +2135,6 @@
     },
     "newSpace": "Nový prostor",
     "@newSpace": {},
-    "screenSharingTitle": "sdílení obrazovky",
-    "@screenSharingTitle": {},
     "user": "Uživatel",
     "@user": {},
     "fileHasBeenSavedAt": "Soubor uložen do {path}",
@@ -2332,12 +2150,6 @@
     "@custom": {},
     "dehydrateWarning": "Tuto akci nelze vzít zpět. Ujistěte se že záložní soubor máte bezpečně uložen.",
     "@dehydrateWarning": {},
-    "storeInSecureStorageDescription": "Klíč k obnovení uložte v zabezpečeném úložišti tohoto zařízení.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Uložte tento klíč manuálně pomocí systémového dialogu sdílení nebo zkopírováním do schránky.",
-    "@saveKeyManuallyDescription": {},
-    "storeSecurlyOnThisDevice": "Uložit bezpečně na tomto zařízení",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "{count} souborů",
     "@countFiles": {
         "placeholders": {
@@ -2353,16 +2165,10 @@
     },
     "appLockDescription": "Zamknout aplikaci pomocí PIN kódu když není používána",
     "@appLockDescription": {},
-    "globalChatId": "Globální ID chatu",
-    "@globalChatId": {},
-    "accessAndVisibility": "Přístup a viditelnost",
-    "@accessAndVisibility": {},
     "calls": "Volání",
     "@calls": {},
     "customEmojisAndStickers": "Vlastní emoji a nálepky",
     "@customEmojisAndStickers": {},
-    "accessAndVisibilityDescription": "Kdo se může připojit a najít tuto konverzaci.",
-    "@accessAndVisibilityDescription": {},
     "customEmojisAndStickersBody": "Přidat nebo sdílet vlastní emoji nebo nálepky, které mohou být použité v konverzaci.",
     "@customEmojisAndStickersBody": {},
     "swipeRightToLeftToReply": "Potáhněte z prava do leva pro odpověď",
@@ -2419,15 +2225,6 @@
     "@ignoreUser": {},
     "normalUser": "Normalní uživatel",
     "@normalUser": {},
-    "countInvited": "{count} pozváno",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "invitedBy": "📩 Pozván {user}",
     "@invitedBy": {
         "placeholders": {
@@ -2444,8 +2241,6 @@
             }
         }
     },
-    "usersMustKnock": "Uživatelé musí zaklepat",
-    "@usersMustKnock": {},
     "setCustomPermissionLevel": "Nastavit vlastní úroveň oprávnění",
     "@setCustomPermissionLevel": {},
     "changedTheChatDescription": "{username} změnil/a popis konverzace",
@@ -2456,8 +2251,6 @@
     "@checkList": {},
     "knock": "Zaklepat",
     "@knock": {},
-    "enterSpace": "Vstoupit do prostoru",
-    "@enterSpace": {},
     "hidePresences": "Skrýt seznam událostí?",
     "@hidePresences": {},
     "noBackupWarning": "Pozor! Bez povolení zálohování konverzací ztratíte přístup k zašifrovaným zprávám. Důrazně doporučujeme zálohování konverzací před odhlášením povolit.",
@@ -2507,25 +2300,10 @@
     "@yourGlobalUserIdIs": {},
     "knocking": "Klepání",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "Konverzaci naleznete vyhledáváním na {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "searchChatsRooms": "Vyhledat #konverzace, @uživatele...",
-    "@searchChatsRooms": {},
     "nothingFound": "Nic nenalezeno...",
     "@nothingFound": {},
     "groupName": "Název skupiny",
     "@groupName": {},
-    "createGroupAndInviteUsers": "Vytvořit skupinu a pozvat uživatele",
-    "@createGroupAndInviteUsers": {},
-    "groupCanBeFoundViaSearch": "Skupinu naleznete vyhledávním",
-    "@groupCanBeFoundViaSearch": {},
     "startConversation": "Začít konverzaci",
     "@startConversation": {},
     "commandHint_sendraw": "Odeslat soubor json",
@@ -2550,23 +2328,17 @@
     "@passwordsDoNotMatch": {},
     "passwordIsWrong": "Zadané heslo je nesprávné",
     "@passwordIsWrong": {},
-    "publicChatAddresses": "Adresy veřejných konverzací",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Vytvořit novou adresu",
-    "@createNewAddress": {},
     "thisDevice": "Toto zařzení:",
     "@thisDevice": {},
     "setPermissionsLevelDescription": "Vyberte níže předdefinovanou roli nebo zadejte vlastní úroveň oprávnění mezi 0 a 100.",
     "commandHint_roomupgrade": "Upgradujte tento pokoj na danou verzi pokoje",
     "sendImages": "Odeslat {count} obrázek",
     "synchronizingPleaseWaitCounter": "Synchronizuji… ({percentage}%)",
-    "noOneCanJoin": "Nikdo se nemůže připojit",
     "kickUserDescription": "Uživatel je vyhozen z chatu, ale není zablokován. Ve veřejných chatech se může kdykoli znovu připojit.",
     "noUsersFoundWithQuery": "Bohužel nebyl nalezen žádný uživatel s \"{query}\". Zkontrolujte, zda jste neudělali překlep.",
     "wrongRecoveryKey": "Omlouváme se... zdá se, že toto není správný klíč pro obnovení.",
     "joinSpace": "Připojit se ke prostoru",
     "publicSpaces": "Veřejné prostory",
-    "addChatOrSubSpace": "Přidat chat nebo podprostor",
     "subspace": "Podprostor",
     "decline": "Odmítnout",
     "initAppError": "Při inicializaci aplikace došlo k chybě",
@@ -2574,15 +2346,11 @@
     "searchMore": "Hledat více...",
     "gallery": "Galerie",
     "files": "Soubory",
-    "sessionLostBody": "Vaše relace byla ztracena. Prosím, nahlaste tuto chybu vývojářům na {url}. Chybová zpráva je: {error}",
-    "restoreSessionBody": "Aplikace se nyní snaží obnovit vaši relaci ze zálohy. Prosím, nahlaste tuto chybu vývojářům na {url}. Chybová zpráva je: {error}",
     "sendReadReceipts": "Odesílat potvrzení přečtení",
     "sendTypingNotificationsDescription": "Ostatní účastníci chatu vidí, když píšete novou zprávu.",
     "sendReadReceiptsDescription": "Ostatní účastníci chatu vidí, kdy jste přečetli zprávu.",
     "formattedMessages": "Formátované zprávy",
     "formattedMessagesDescription": "Zobrazit bohatý obsah zpráv, například tučný text, pomocí markdownu.",
-    "verifyOtherUser": "🔐 Ověřit jiného uživatele",
-    "verifyOtherUserDescription": "Pokud ověříte jiného uživatele, můžete si být jisti, že opravdu píšete tomu správnému. 💪\n\nKdyž zahájíte ověření, uvidíte v aplikaci vyskakovací okno. Tam uvidíte sérii emoji nebo čísel, které si musíte navzájem porovnat.\n\nNejlepší je se setkat nebo začít videohovor. 👩‍💻",
     "verifyOtherDevice": "🔐 Ověřit jiné zařízení",
     "verifyOtherDeviceDescription": "Když ověříte jiné zařízení, mohou si tato zařízení vyměňovat klíče, čímž se zvýší vaše celková bezpečnost. 💪 Když zahájíte ověření, objeví se v aplikaci vyskakovací okno na obou zařízeních. Tam uvidíte sérii emoji nebo čísel, které si musíte navzájem porovnat. Nejlepší je mít obě zařízení po ruce před začátkem ověření. 🤓",
     "acceptedKeyVerification": "{sender} přijal ověření klíče",
@@ -2618,10 +2386,6 @@
     "updateInstalled": "🎉 Nainstalována aktualizace {version}!",
     "changelog": "Seznam změn",
     "sendCanceled": "Odeslání zrušeno",
-    "loginWithMatrixId": "Přihlásit se pomocí Matrix-ID",
-    "discoverHomeservers": "Objevte domácí servery",
-    "whatIsAHomeserver": "Co je domácí server?",
-    "homeserverDescription": "Všechna vaše data jsou uložena na domácím serveru, stejně jako u poskytovatele e-mailu. Můžete si vybrat, který domácí server chcete používat, a přesto komunikovat se všemi. Více na https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "Zdá se, že nejde o kompatibilní domácí server. Špatná URL?",
     "calculatingFileSize": "Vypočítávám velikost souboru...",
     "prepareSendingAttachment": "Připravit odeslání přílohy...",
@@ -2633,11 +2397,9 @@
     "oneOfYourDevicesIsNotVerified": "Jedno z vašich zařízení není ověřeno",
     "noticeChatBackupDeviceVerification": "Poznámka: Když připojíte všechna svá zařízení k záloze chatu, jsou automaticky ověřena.",
     "continueText": "Pokračovat",
-    "welcomeText": "Ahoj ahoj 👋 Toto je FluffyChat. Můžete se přihlásit na jakýkoli domácí server, který je kompatibilní s https://matrix.org. A pak si můžete psát s kýmkoli. Je to obrovská decentralizovaná síť pro zasílání zpráv!",
     "blur": "Rozostření:",
     "opacity": "Průhlednost:",
     "setWallpaper": "Nastavit pozadí",
-    "manageAccount": "Spravovat účet",
     "noContactInformationProvided": "Server neposkytuje žádné platné kontaktní informace",
     "contactServerAdmin": "Kontaktovat správce serveru",
     "contactServerSecurity": "Kontaktovat bezpečnost serveru",
@@ -2656,11 +2418,8 @@
     "unableToJoinChat": "Nelze se připojit ke chatu. Možná druhá strana již ukončila konverzaci.",
     "previous": "Předchozí",
     "otherPartyNotLoggedIn": "Druhá strana momentálně není přihlášena a nemůže tak přijímat zprávy!",
-    "appWantsToUseForLogin": "Použít '{server}' pro přihlášení",
-    "appWantsToUseForLoginDescription": "Tímto umožňujete aplikaci a webové stránce sdílet informace o vás.",
     "open": "Otevřít",
     "waitingForServer": "Čekání na server...",
-    "appIntroduction": "FluffyChat vám umožňuje chatovat s přáteli přes různé messengery. Více se dozvíte na https://matrix.org nebo jednoduše klepněte na *Pokračovat*.",
     "newChatRequest": "📩 Nová žádost o chat",
     "contentNotificationSettings": "Nastavení oznámení obsahu",
     "generalNotificationSettings": "Obecná nastavení oznámení",
@@ -2735,11 +2494,9 @@
     "taTooltip": "L2 použití s překladatelskou asistencí",
     "interactiveTranslatorSliderHeader": "Interaktivní překladač",
     "interactiveGrammarSliderHeader": "Interaktivní kontrola gramatiky",
-    "interactiveTranslatorRequired": "Požadováno",
     "waTooltip": "Použití L2 bez pomoci",
     "interactiveTranslator": "Pomoc s překladem",
     "noIdenticalLanguages": "Prosím, vyberte různé základní a cílové jazyky",
-    "searchBy": "Hledat podle země a jazyků",
     "joinWithClassCode": "Připojit se ke kurzu",
     "languageLevelPreA1": "Nováček Nízká (Pre A1)",
     "languageLevelA1": "Nováček Mid (A1)",
@@ -2760,19 +2517,14 @@
     "saveChanges": "Uložit změny",
     "publicProfileTitle": "Povolit, aby mě profil byl nalezen ve vyhledávání",
     "publicProfileDesc": "Zapnutím umožníte ostatním uživatelům najít váš profil v globálním vyhledávacím panelu a posílat žádosti o chat. V tuto chvíli můžete požadavek přijmout nebo odmítnout.",
-    "errorDisableIT": "Pomoc s překladem je vypnuta.",
-    "errorDisableIGC": "Pomoc s gramatikou je vypnuta.",
     "errorDisableITUserDesc": "Klikněte zde pro aktualizaci nastavení pomoci s překladem",
     "errorDisableIGCUserDesc": "Klikněte zde pro aktualizaci nastavení pomoci s gramatikou",
     "errorDisableITClassDesc": "Pomoc s překladem je vypnuta pro kurz, ve kterém je tento chat.",
     "errorDisableIGCClassDesc": "Pomoc s gramatikou je vypnuta pro kurz, ve kterém je tento chat.",
-    "error405Title": "Jazyky nejsou nastaveny",
     "error405Desc": "Prosím, nastavte své jazyky v Hlavním menu > Nastavení učení.",
     "termsAndConditions": "Obchodními podmínkami",
     "andCertifyIAmAtLeast13YearsOfAge": "a potvrzuji, že mám alespoň 16 let.",
-    "error502504Title": "Wow, je online hodně studentů!",
     "error502504Desc": "Nástroje pro překlad a gramatiku mohou být pomalé nebo nedostupné, zatímco se boty Pangea dožene.",
-    "error404Title": "Chyba překladu!",
     "error404Desc": "Bot Pangea si není jistý, jak to přeložit...",
     "errorPleaseRefresh": "Řešíme to! Prosím, načtěte stránku znovu a zkuste to znovu.",
     "connectedToStaging": "Připojeno k testovací verzi",
@@ -2810,13 +2562,9 @@
     "definitionsToolName": "Definice slov",
     "definitionsToolDescription": "Když je povoleno, slova podtržená modře lze kliknutím zobrazit jejich definice. Klikněte na zprávy pro přístup k definicím.",
     "welcomeBack": "Vítejte zpět! Pokud jste byli součástí pilotního projektu 2023-2024, kontaktujte nás ohledně vaší speciální pilotní předplatného. Pokud jste učitel, který (nebo vaše instituce) zakoupil licence pro vaši třídu, kontaktujte nás ohledně vašeho učitelského předplatného.",
-    "downloadTxtFile": "Stáhnout textový soubor",
-    "downloadCSVFile": "Stáhnout CSV soubor",
     "promotionalSubscriptionDesc": "Aktuálně máte doživotní promo předplatné. Kontaktujte support@pangea.chat pro pomoc s změnou předplatného.",
     "originalSubscriptionPlatform": "Předplatné zakoupeno přes {purchasePlatform}",
     "oneWeekTrial": "Jedno-týdenní zkušební verze",
-    "downloadXLSXFile": "Stáhnout Excel soubor",
-    "unkDisplayName": "Neznámý",
     "wwCountryDisplayName": "Celosvětově",
     "afCountryDisplayName": "Afghánistán",
     "axCountryDisplayName": "Alandy",
@@ -3111,7 +2859,6 @@
     "chatCapacityHasBeenChanged": "Kapacita chatu byla změněna",
     "chatCapacitySetTooLow": "Kapacita chatu musí být alespoň {count}.",
     "chatCapacityExplanation": "Kapacita chatu omezuje počet členů povolených v chatu.",
-    "tooManyRequest": "Příliš mnoho požadavků, zkuste to prosím později.",
     "enterNumber": "Zadejte celé číslo.",
     "practice": "Procvičování",
     "versionNotFound": "Verze nenalezena",
@@ -3121,7 +2868,6 @@
     "deleteSubscriptionWarningTitle": "Máte aktivní předplatné",
     "deleteSubscriptionWarningBody": "Smazání vašeho účtu automaticky nezruší vaše předplatné.",
     "manageSubscription": "Spravovat předplatné",
-    "error520Title": "Prosím zkuste to znovu.",
     "error520Desc": "Omlouváme se, nerozuměli jsme vaší zprávě...",
     "wordsUsed": "Použité slova",
     "level": "Úroveň",
@@ -3139,7 +2885,6 @@
     "other": "Jiné",
     "levelShort": "ÚROVEŇ {level}",
     "noCapacityLimit": "Žádný limit kapacity",
-    "downloadGroupText": "Stáhnout text skupiny",
     "notificationsOn": "Oznámení zapnuta",
     "notificationsOff": "Oznámení vypnuta",
     "joinWithCode": "Připojit se s kódem",
@@ -3203,24 +2948,12 @@
     "whatIsTheMorphTag": "Co je {morphologicalFeature} u '{wordForm}'?",
     "dataAvailable": "Dostupnost dat",
     "available": "Dostupné",
-    "pangeaBotIsFallible": "Pangea Bot dělá také chyby!",
-    "whatIsMeaning": "Co znamená '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Spojte významy se slovy ve zprávě!",
-    "doubleClickToEdit": "Dvakrát klikněte pro úpravu.",
-    "topicLabel": "Téma",
-    "topicPlaceholder": "Vyberte téma...",
-    "modePlaceholder": "Vyberte režim...",
-    "learningObjectiveLabel": "Cíl učení",
-    "learningObjectivePlaceholder": "Vyberte cíl učení...",
-    "targetLanguageLabel": "Cílový jazyk",
     "cefrLevelLabel": "Úroveň CEFR",
     "image": "Obrázek",
     "video": "Video",
     "nan": "Nepoužitelné",
-    "addVocabulary": "Přidat slovní zásobu",
     "instructions": "Pokyny",
-    "numberOfLearners": "Počet studentů",
-    "mustBeInteger": "Musí být celé číslo např. 1, 2, 3, ...",
     "constructUsePvmDesc": "Vytvořeno ve formě hlasové zprávy",
     "leaveSpaceDescription": "Opuštěním kurzu opustíte všechny chaty v něm. Ostatní uživatelé uvidí, že jste kurz opustili.",
     "constructUseCorMmDesc": "Správný význam zprávy",
@@ -3235,7 +2968,6 @@
     "ttsDisabledBody": "Můžete povolit převod textu na řeč v nastavení vašeho učení",
     "noSpaceDescriptionYet": "Ještě nebyl vytvořen popis kurzu.",
     "tooLargeToSend": "Tato zpráva je příliš velká na odeslání",
-    "exitWithoutSaving": "Opravdu chcete odejít bez uložení?",
     "enableAutocorrectPopupTitle": "Přidejte klávesnici cílového jazyka přechodem na:",
     "enableAutocorrectPopupSteps": "  • Nastavení\n  • Obecné\n  • Klávesnice\n  • Klávesnice\n  • Přidat novou klávesnici",
     "enableAutocorrectPopupDescription": "Po výběru jazyka můžete kliknout na malou ikonu glóbu v levém dolním rohu klávesnice, abyste aktivovali nově nainstalovanou klávesnici.",
@@ -3246,11 +2978,8 @@
     "displayName": "Zobrazované jméno",
     "leaveRoomDescription": "Chystáte se opustit tento chat. Ostatní uživatelé uvidí, že jste chat opustili.",
     "confirmUserId": "Prosím potvrďte své uživatelské jméno v Pangea Chatu, abyste mohli smazat svůj účet.",
-    "startingToday": "Od dnešního dne",
-    "oneWeekFreeTrial": "Týdenní bezplatná zkušební doba",
     "paidSubscriptionStarts": "Začíná {startDate}",
     "cancelInSubscriptionSettings": " • Zrušit kdykoli v nastavení předplatného",
-    "cancelToAvoidCharges": " • Zrušit před {trialEnds} a vyhnout se poplatkům",
     "downloadGboard": "Stáhnout Gboard",
     "autocorrectNotAvailable": "Bohužel vaše platforma momentálně nepodporuje tuto funkci. Sledujte další vývoj!",
     "pleaseUpdateApp": "Prosím aktualizujte aplikaci, abyste mohli pokračovat.",
@@ -3260,17 +2989,12 @@
     "knockSpaceSuccess": "Požádali jste o připojení k tomuto kurzu! Administrátor odpoví na vaši žádost, jakmile ji obdrží 😄",
     "chooseWordAudioInstructionsBody": "Poslouchejte úplnou zprávu. Poté přiřaďte audia ke slovům.",
     "chooseMorphsInstructionsBody": "Klikněte na puzzle kousky pro gramatické otázky!",
-    "pleaseEnterInt": "Zadejte číslo",
     "home": "Domů",
     "join": "Připojit se",
     "resetInstructionTooltipsTitle": "Obnovit instrukční nápovědy",
     "resetInstructionTooltipsDesc": "Klikněte pro zobrazení instrukčních nápověd, jako pro úplného nováčka.",
-    "randomize": "Náhodně",
     "clear": "Vymazat",
-    "featuredActivities": "Zvýrazněné",
     "save": "Uložit",
-    "startChat": "Začít chat",
-    "translationProblem": "Problém s překladem",
     "askToJoin": "Požádat o připojení",
     "emptyChatWarningTitle": "Chat je prázdný",
     "emptyChatWarningDesc": "Ještě jste nikoho nezval do svého chatu. Přejděte do nastavení chatu, abyste pozvali své kontakty nebo bota. Můžete to udělat i později.",
@@ -3300,17 +3024,13 @@
     "timesUsedIndependently": "Počet použití samostatně",
     "timesUsedWithAssistance": "Počet použití s pomocí",
     "shareInviteCode": "Sdílet kód pozvánky: {code}",
-    "leaderboard": "Žebříček",
     "skipForNow": "Přeskočit zatím",
     "permissions": "Oprávnění",
     "spaceChildPermission": "Kdo může přidat nové chaty do tohoto kurzu",
-    "addEnvironmentOverride": "Přidat přepsání prostředí",
     "defaultOption": "Výchozí",
     "deleteChatDesc": "Jste si jistí, že chcete smazat tento chat? Bude smazán pro všechny účastníky a všechny zprávy v chatu již nebudou dostupné pro praxi nebo analytiku učení.",
     "deleteSpaceDesc": "Kurz a jakékoli vybrané chaty budou smazány pro všechny účastníky a všechny zprávy v chatu již nebudou dostupné pro praxi nebo analytiku učení. Tato akce nelze vrátit zpět.",
     "launch": "Spustit",
-    "searchChats": "Hledat chaty",
-    "maxFifty": "Max 50",
     "configureSpace": "Nastavit kurz",
     "pinMessages": " Připnout zprávy",
     "setJoinRules": "Nastavit pravidla připojení",
@@ -3344,9 +3064,6 @@
     "failedToFetchTranscription": "Nepodařilo se načíst přepis",
     "deleteEmptySpaceDesc": "Kurz bude smazán pro všechny účastníky. Tato akce nelze vrátit zpět.",
     "regenerate": "Vygenerovat znovu",
-    "mySavedActivities": "Mé uložené aktivity",
-    "noSavedActivities": "Žádné uložené aktivity",
-    "saveActivity": "Uložit tuto aktivitu",
     "failedToPlayVideo": "Nepodařilo se přehrát video",
     "done": "Hotovo",
     "inThisSpace": "V tomto kurzu",
@@ -3357,13 +3074,9 @@
     "numInvited": "{count} pozváno",
     "saved": "Uloženo",
     "reset": "Obnovit",
-    "errorFetchingActivitiesMessage": "Nepodařilo se načíst aktivity",
     "errorFetchingDefinition": "Nepodařilo se načíst definici",
     "errorProcessAnalytics": "Nepodařilo se zpracovat analytiku",
     "errorDownloading": "Stahování selhalo",
-    "errorLoadingSpaceChildren": "Nepodařilo se načíst chaty v tomto kurzu",
-    "unexpectedError": "Neočekávaná chyba.",
-    "pleaseReload": "Prosím, načtěte stránku znovu a zkuste to znovu.",
     "translationError": "Chyba překladu",
     "check": "Zkontrolovat",
     "unableToFindRoom": "Nebyly nalezeny žádné chaty nebo kurzy s tímto kódem. Zkuste to prosím znovu.",
@@ -3372,19 +3085,14 @@
     "request": "Žádost",
     "requestAll": "Žádat vše",
     "confirmMessageUnpin": "Jste si jistí, že chcete odpojit tuto zprávu?",
-    "saveAndLaunch": "Uložit a spustit",
-    "launchToSpace": "Spustit do kurzu",
     "pending": "Čeká se",
     "inactive": "Neaktivní",
-    "confirmRole": "Potvrdit roli",
     "openRoleLabel": "Otevřeno",
     "finishedTheActivity": "🎯 {username} ukončil tuto aktivitu",
     "activitySummaryError": "Souhrny aktivit nejsou k dispozici",
     "requestSummaries": "Požádat o souhrny",
-    "generatingNewActivities": "Jste první uživatel tohoto jazykového páru! Počkejte chvíli, připravujeme aktivity právě pro vás.",
     "requestAccessTitle": "Požádat o přístup k analýzám?",
     "requestAccessDesc": "Chcete požádat o přístup k zobrazení analytiky účastníků?\n\nPokud se účastníci shodnou, správci tohoto kurzu budou moci vidět:\n    • celkovou slovní zásobu\n    • celkové gramatické koncepty\n    • počet dokončených aktivit\n    • konkrétní gramatické koncepty použité správně a nesprávně\n\nNebudou moci vidět:\n    • zprávy v chatech mimo kurz\n    • seznam slovní zásoby",
-    "requestAccess": "Požádat o přístup ({count})",
     "analyticsInactiveTitle": "Žádosti o přístup od neaktivních uživatelů nemohly být odeslány",
     "analyticsInactiveDesc": "Neaktivní uživatelé, kteří se od té doby, co byla tato funkce představena, nepřihlásili, neuvidí vaši žádost.\n\nTlačítko Žádost se zobrazí, jakmile se vrátí. Můžete požadavek znovu odeslat později kliknutím na tlačítko Žádost pod jejich jménem, když bude dostupné.",
     "accessRequestedTitle": "Žádost o přístup k analytice",
@@ -3407,8 +3115,6 @@
     "accessDesc": "Můžete udělat svůj kurz otevřený pro celý svět! Nebo ho udělat soukromým a zabezpečeným.",
     "createGroupChatDesc": "Zatímco se začínají a končí aktivity, skupinové chaty zůstanou otevřené pro rutinní komunikaci.",
     "deleteDesc": "Pouze správci mohou smazat kurz. Jedná se o destruktivní akci, která odstraní všechny uživatele a smaže všechny vybrané chaty v kurzu. Postupujte opatrně.",
-    "noCourseFound": "Ó, tento kurz potřebuje plán!\n\nPlány kurzů jsou posloupností témat a aktivit konverzace.",
-    "additionalParticipants": "+ {num} dalších",
     "whatNow": "Co teď?",
     "chooseNextActivity": "Vyberte si další aktivitu!",
     "letsGo": "Jdeme na to",
@@ -3421,13 +3127,11 @@
     "waitNotDone": "Počkej, ještě nejsem hotový!",
     "waitingForOthersToFinish": "Čekám na ostatní, až dokončí...",
     "generatingSummary": "Analyzuji chat a generuji výsledky",
-    "findCourse": "Najít kurz",
     "pingParticipantsNotification": "{user} hledá uživatele, kteří se připojí ke schůzce v {room}",
     "course": "Kurz",
     "courses": "Kurzy",
     "goToCourse": "Přejít na kurz: {course}",
     "activityComplete": "Tato aktivita byla dokončena. Shrnutí aktivity by mělo být k dispozici níže.",
-    "startNewSession": "Začít novou relaci",
     "joinOpenSession": "Připojit se k otevřené relaci",
     "activityNotFound": "Aktivita nenalezena",
     "myActivities": "Mé aktivity",
@@ -3494,10 +3198,6 @@
             }
         }
     },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@kickUserDescription": {
         "type": "String",
         "placeholders": {}
@@ -3519,10 +3219,6 @@
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -3558,28 +3254,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -3597,14 +3271,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3797,22 +3463,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -3868,10 +3518,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -3881,10 +3527,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -3960,27 +3602,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4298,10 +3924,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4311,10 +3933,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4402,14 +4020,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4426,10 +4036,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4442,15 +4048,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4602,14 +4200,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4623,14 +4213,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5853,10 +5435,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5897,10 +5475,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5973,10 +5547,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6246,47 +5816,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6306,19 +5836,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6382,10 +5900,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6426,14 +5940,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6445,14 +5951,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6490,10 +5988,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6510,27 +6004,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6654,10 +6132,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6667,10 +6141,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6687,14 +6157,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6834,18 +6296,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6894,10 +6344,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6907,18 +6353,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6961,23 +6395,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -7001,10 +6423,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -7012,14 +6430,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -7124,18 +6534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -7188,10 +6586,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -7218,10 +6612,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7402,7 +6792,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Zítra se vraťte pro aktualizace aktivit.",
-    "activityDropdownDesc": "Když dokončíte tuto aktivitu, klikněte níže",
     "languageMismatchTitle": "Neshoda jazyka",
     "languageMismatchDesc": "Váš cílový jazyk se neshoduje s jazykem této aktivity. Chcete aktualizovat svůj cílový jazyk?",
     "reportWordIssueTooltip": "Nahlásit problém s informacemi o slově",
@@ -7415,10 +6804,6 @@
     "selectAll": "Vybrat vše",
     "deselectAll": "Zrušit výběr všeho",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7467,17 +6852,11 @@
         "placeholders": {}
     },
     "startOwn": "Začít svůj vlastní",
-    "joinCourseDesc": "Každý kurz má 8-10 sekvenčních témat s řadou aktivit založených na úkolech pro učení jazyků.",
     "newMessageInPangeaChat": "📝 Nová zpráva v chatu Pangea",
     "shareCourse": "Sdílet kurz",
     "addCourse": "Přidat kurz",
-    "joinPublicCourse": "Připojit se k veřejnému kurzu",
     "vocabLevelsDesc": "Zde se objeví slovíčka, jakmile je vylepšíte na vyšší úroveň!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7490,10 +6869,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7512,7 +6887,6 @@
     "emojiView": "Zobrazení emoji",
     "feedbackDialogDesc": "Dělám chyby také! Můžete mi pomoci se zlepšit?",
     "contactHasBeenInvitedToTheCourse": "Kontaktní osoba byla pozvána do kurzu",
-    "activityStatsButtonTooltip": "Informace o aktivitě",
     "allow": "Povolit",
     "deny": "Odmítnout",
     "enabledRenewal": "Povolit obnovení předplatného",
@@ -7780,10 +7154,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8839,16 +8209,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Aktivity k odemčení dalšího tématu",
-    "activitiesToUnlockTopicDesc": "Nastavte počet aktivit k odemčení dalšího tématu kurzu",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Správná praxe definice slovní zásoby",
     "constructUseIncLMDesc": "Nesprávná praxe definice slovní zásoby",
     "constructUseCorLADesc": "Správná praxe audio slovní zásoby",
@@ -8856,7 +8216,6 @@
     "constructUseBonus": "Bonus během praxe slovní zásoby",
     "practiceVocab": "Procvičování slovní zásoby",
     "selectMeaning": "Vyberte význam",
-    "selectAudio": "Vyberte odpovídající audio",
     "anotherRound": "Další kolo",
     "activitySettingsOverrideWarning": "Jazyk a jazyková úroveň určené plánem aktivity",
     "voice": "Hlas",
@@ -8888,10 +8247,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8909,12 +8264,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Stahování zahájeno",
     "webDownloadPermissionMessage": "Pokud váš prohlížeč blokuje stahování, povolte prosím stahování pro tuto stránku.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -9009,11 +8359,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Něco se pokazilo a my na tom tvrdě pracujeme. Zkontrolujte to prosím později.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Povolit asistenci při psaní",
     "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
     "@autoIGCToolName": {
@@ -9069,24 +8414,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Gramatika",
-    "spanTypeWordChoice": "Výběr slov",
     "spanTypeSpelling": "Pravopis",
     "spanTypePunctuation": "Interpunkce",
     "spanTypeStyle": "Styl",
     "spanTypeFluency": "Plynulost",
     "spanTypeAccents": "Přízvuky",
     "spanTypeCapitalization": "Velká písmena",
-    "spanTypeCorrection": "Oprava",
     "spanFeedbackTitle": "Nahlásit problém s opravou",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -9111,10 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -9125,13 +8455,7 @@
     "longPressToRecordVoiceMessage": "Dlouze stiskněte pro nahrání hlasové zprávy.",
     "pause": "Pauza",
     "resume": "Pokračovat",
-    "newSubSpace": "Nový podprostor",
-    "moveToDifferentSpace": "Přesunout do jiného prostoru",
-    "removeFromSpaceDescription": "Chat bude odstraněn z prostoru, ale stále se zobrazí ve vašem seznamu chatů.",
     "countChats": "{chats} chaty",
-    "spaceMemberOf": "Člen prostoru {spaces}",
-    "spaceMemberOfCanKnock": "Člen prostoru {spaces} může zaklepat",
-    "donate": "Darovat",
     "startedAPoll": "{username} zahájil anketu.",
     "poll": "Anketa",
     "startPoll": "Zahájit anketu",
@@ -9155,23 +8479,15 @@
     "newStickerPack": "Nový balíček nálepek",
     "stickerPackName": "Název balíčku nálepek",
     "attribution": "Připsání",
-    "skipChatBackup": "Přeskočit zálohu chatu",
-    "skipChatBackupWarning": "Jste si jisti? Bez povolení zálohy chatu můžete ztratit přístup k vašim zprávám, pokud přepnete zařízení.",
-    "loadingMessages": "Načítání zpráv",
-    "setupChatBackup": "Nastavit zálohu chatu",
     "noMoreResultsFound": "Nebyly nalezeny žádné další výsledky",
     "chatSearchedUntil": "Chat prohledán do {time}",
     "federationBaseUrl": "Základní URL federace",
     "clientWellKnownInformation": "Informace o klientovi:",
     "baseUrl": "Základní URL",
     "identityServer": "Identitní server:",
-    "versionWithNumber": "Verze: {version}",
     "logs": "Protokoly",
-    "advancedConfigs": "Pokročilé konfigurace",
     "advancedConfigurations": "Pokročilé konfigurace",
-    "signInWithLabel": "Přihlásit se pomocí:",
     "selectAllWords": "Vyberte všechna slova, která slyšíte v audionahrávce",
-    "joinCourseForActivities": "Připojte se k kurzu, abyste vyzkoušeli aktivity.",
     "@moreEvents": {
         "type": "String",
         "placeholders": {}
@@ -9196,18 +8512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9215,26 +8519,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9340,22 +8624,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9384,19 +8652,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9404,15 +8660,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9613,11 +8861,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "Ve třídě? Vložte sem svůj kód pro připojení.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Automaticky zvýraznit audio zprávy",
     "selectAudioMessagesOnPlayDescription": "Automaticky zvýraznit audio zprávy při přehrávání",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9661,18 +8904,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Tento kurz má témata s méně než {input} aktivitami. Prosím, zadejte číslo menší nebo rovné {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Klikněte sem pro opětovné přihlášení.",
     "@clickToLogin": {
@@ -10089,17 +9320,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Kreslená žlutá medvěd s rukama vztyčenýma v nadšení.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Vyberte slova, abyste se o nich dozvěděli více",
     "requireAnalyticsAccessTitle": "Vyžadovat přístup k analytice pro připojení",
     "requireAnalyticsAccessDesc": "Účastníci musí udělit přístup k jejich analytice učení, aby se mohli připojit k tomuto kurzu",
     "analyticsAccessNoticeTitle": "Vyžaduje se přístup k analytice",
     "analyticsAccessNoticeDesc": "Připojením k tomuto kurzu souhlasíte s tím, že udělíte administrátorům přístup k vaší analytice učení.",
-    "skipOnboardingClassCodeDesc": "Učíte se nezávisle? Nebojte se, můžete:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -10117,10 +9342,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10149,7 +9370,6 @@
     "pickCefrLevelTeacherStepTitle": "Jakou úroveň učíte?",
     "pickCefrLevelStudentStepTitle": "Jakou úroveň máte?",
     "customCourseStepTitle": "Vyplňte tento formulář pro získání vlastního kurzu",
-    "aboutYourClass": "O vaší třídě",
     "courseCodeStepErrorMessage": "Zkontrolujte svůj kód a zkuste to znovu",
     "institution": "Instituce",
     "courseGoals": "Cíle kurzu",
@@ -10192,10 +9412,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10312,12 +9528,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Logo Pangea Chat",
     "introChatDetails": "Pozdravte se! Představte se svým spoluúčastníkům kurzu, najděte přátele a povídejte si mimo aktivity.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10361,11 +9572,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Akce aktivity",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Nástroje pro výslovnost",
     "audioTranscription": "AI přepis zvuku",
     "visualLearnerSupport": "Podpora vizuálních učitelů",
@@ -10406,7 +9612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Připojte se k kurzu, který zahrnuje tuto aktivitu, abyste ji mohli hrát.",
     "resizeCoursePanel": "Změnit velikost panelu kurzu",
     "undo": "Zpět",
     "unlock": "Odemknout",
@@ -10420,7 +9625,6 @@
     "addCourseBrowsePublic": "Procházet veřejné kurzy",
     "browsePublicCourses": "Procházet veřejné kurzy",
     "editProfile": "Upravit profil",
-    "numObjectives": "{count} cíle",
     "mapSearchHint": "Hledat aktivity",
     "mapSearchNoResults": "Žádné shody v zobrazení",
     "mapFilterAllLanguages": "Všechny jazyky",
@@ -10429,7 +9633,6 @@
     "mapFilterCompleted": "Dokončeno",
     "mapFilterReset": "Resetovat",
     "activityTypeConversation": "Konverzace",
-    "lockedMissionRequirement": "Dokončete předchozí misi, abyste odemkli",
     "playAgain": "Hrát znovu",
     "reviewActivity": "Přehled",
     "mapEmptyInView": "Na vaší úrovni nebo jazyce není nic. Rozšiřte své filtry nebo se přiblížte.",
@@ -10444,14 +9647,9 @@
     "scrollToBottom": "Přejít na konec",
     "courseImage": "Obrázek kurzu",
     "avatarPreview": "Náhled avatara",
-    "activityPhoto": "Fotografie aktivity",
     "emotePreview": "Náhled emoce: {name}",
     "activityLabel": "Aktivita: {title}",
     "resetMapView": "Obnovit zobrazení mapy",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10504,14 +9702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10541,10 +9731,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10601,10 +9787,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10956,5 +10138,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Oprávnění kurzu",
+    "starsToUnlockObjectiveTitle": "Hvězdy za misi",
+    "starsToUnlockObjectiveDesc": "Nastavte počet hvězd potřebných k dokončení každé mise",
+    "maxStarsPerMissionWarning": "Tento kurz obsahuje mise, ve kterých lze získat pouze {maxValue} hvězd. Zadejte prosím číslo menší nebo rovné {maxValue}.",
+    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele."
 }

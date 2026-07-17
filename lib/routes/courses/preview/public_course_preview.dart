@@ -196,17 +196,21 @@ class PublicCoursePreviewController extends State<PublicCoursePreview> {
 
     final knock = roomSummary?.joinRule == JoinRules.knock;
     if (knock) {
-      await showFutureLoadingDialog(
+      final knockResult = await showFutureLoadingDialog(
         context: context,
         future: () async {
           try {
-            await client.knockAndRecordRoom(widget.roomID!);
+            return await client.knockAndRecordRoom(widget.roomID!);
           } catch (e, s) {
             ErrorHandler.logError(e: e, s: s, data: {'roomID': widget.roomID});
             rethrow;
           }
         },
       );
+      // Only confirm the knock when it actually reached the server. On failure
+      // the loading dialog has already surfaced the error; show "You have
+      // knocked" only on success so it can't report a knock that never landed.
+      if (knockResult.result == null) return;
       await showOkAlertDialog(
         context: context,
         title: L10n.of(context).youHaveKnocked,

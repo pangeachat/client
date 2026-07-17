@@ -315,7 +315,14 @@ class ChatView extends StatelessWidget {
                       )
                     // #Pangea
                     : controller.widget.backButton != null
-                    ? controller.widget.backButton!
+                    // Center so the injected close/back control keeps its
+                    // natural square size instead of being stretched to the
+                    // leading slot's tight height (72 in column mode, per
+                    // appBarTheme.toolbarHeight). A stretched M3 IconButton's
+                    // StadiumBorder hover overlay renders as a tall pill rather
+                    // than a circle (#7656). Mirrors the default BackButton
+                    // branch below, which is likewise Center-wrapped.
+                    ? Center(child: controller.widget.backButton!)
                     // : FluffyThemes.isColumnMode(context)
                     // ? null
                     // Pangea#

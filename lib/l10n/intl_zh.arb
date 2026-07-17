@@ -78,11 +78,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "是否允许访客加入",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "areYouSure": "你确定吗？",
     "@areYouSure": {
         "type": "String",
@@ -345,11 +340,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "你的消息受恢复密钥保护。请确保你不会丢失它。",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatDetails": "聊天详情",
     "@chatDetails": {
         "type": "String",
@@ -478,11 +468,6 @@
     },
     "connect": "连接",
     "@connect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "联系人已被邀请至群组",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -680,11 +665,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "你之后将无法停用加密，确定吗？",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encrypted": "已加密",
     "@encrypted": {
         "type": "String",
@@ -711,11 +691,6 @@
     },
     "enterAnEmailAddress": "输入一个电子邮件地址",
     "@enterAnEmailAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "everythingReady": "一切就绪！",
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -756,11 +731,6 @@
     },
     "group": "群组",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "群组是公开的",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -854,15 +824,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "邀请联系人到 {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "已邀请",
     "@invited": {
@@ -975,15 +936,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "加载 {count} 个更多的参与者",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "加载中…请等待。",
     "@loadingPleaseWait": {
         "type": "String",
@@ -998,15 +950,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "登录 {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "退出登录",
     "@logout": {
@@ -1070,16 +1013,6 @@
     },
     "noEmotesFound": "未找到表情。😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "你只能在聊天室不可被公众访问时才能启用加密。",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "看起来你手机上没有 Firebase Cloud Messaging。如果仍希望接收 FluffyChat 的推送通知，推荐安装 ntfy。借助 ntfy 或另一个 Unified Push 程序，你可以以一种数据安全的方式接收推送通知。你可以从 PlayStore 或 F-Droid 商店下载 ntfy。",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1189,11 +1122,6 @@
     },
     "passwordHasBeenChanged": "密码已被更改",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "密码恢复",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1337,11 +1265,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "移除设备",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "从聊天中解封",
     "@unbanFromChat": {
@@ -1496,11 +1419,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setPermissionsLevel": "设置权限级别",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "设置状态",
     "@setStatus": {
         "type": "String",
@@ -1595,11 +1513,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "从其它设备传输",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "尝试重新发送",
     "@tryToSendAgain": {
         "type": "String",
@@ -1655,15 +1568,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 个未读聊天} other{{unreadCount} 个未读聊天}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} 和其他 {count} 人正在输入…",
     "@userAndOthersAreTyping": {
@@ -1749,16 +1653,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "视频通话",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "聊天记录的可见性",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "对所有参与者可见",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1804,23 +1698,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "谁可以执行哪些操作",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "谁可以加入此群组",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "你举报的理由是什么？",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "确定要清除你的聊天记录备份以创建新的恢复密钥吗？",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1902,11 +1781,6 @@
             }
         }
     },
-    "createNewSpace": "创建新空间",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "cantOpenUri": "无法打开 URI {uri}",
     "@cantOpenUri": {
         "type": "String",
@@ -1921,16 +1795,6 @@
         "type": "String",
         "placeholder": {}
     },
-    "spaceName": "空间名称",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "空间是公开的",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "shareLocation": "分享位置",
     "@shareLocation": {
         "type": "String",
@@ -1943,8 +1807,6 @@
     },
     "sendOnEnter": "按 Enter 键发送",
     "@sendOnEnter": {},
-    "yourChatBackupHasBeenSetUp": "你的聊天记录备份已设置。",
-    "@yourChatBackupHasBeenSetUp": {},
     "scanQrCode": "扫描二维码",
     "@scanQrCode": {},
     "homeserver": "服务器",
@@ -1957,12 +1819,8 @@
     "@unverified": {},
     "repeatPassword": "重复输入密码",
     "@repeatPassword": {},
-    "addAccount": "添加账户",
-    "@addAccount": {},
     "editBundlesForAccount": "编辑此账户的集合",
     "@editBundlesForAccount": {},
-    "enableMultiAccounts": "（测试功能）在此设备上添加多个账户",
-    "@enableMultiAccounts": {},
     "addToBundle": "添加到集合",
     "@addToBundle": {},
     "bundleName": "集合名称",
@@ -1981,8 +1839,6 @@
     "@messageInfo": {},
     "time": "时间",
     "@time": {},
-    "removeFromSpace": "从此空间中移除",
-    "@removeFromSpace": {},
     "start": "开始",
     "@start": {},
     "commandHint_discardsession": "丢弃会话",
@@ -2042,16 +1898,10 @@
     "@unsupportedAndroidVersionLong": {},
     "unsupportedAndroidVersion": "不受支持的 Android 版本",
     "@unsupportedAndroidVersion": {},
-    "voiceCall": "语音通话",
-    "@voiceCall": {},
     "placeCall": "发起通话",
     "@placeCall": {},
-    "videoCallsBetaWarning": "请注意，视频通话目前处于测试阶段。它们可能不能像预期的那样工作，或者在所有平台上都不能工作。",
-    "@videoCallsBetaWarning": {},
     "experimentalVideoCalls": "实验性的视频通话",
     "@experimentalVideoCalls": {},
-    "emailOrUsername": "电子邮箱或用户名",
-    "@emailOrUsername": {},
     "widgetVideo": "视频",
     "@widgetVideo": {},
     "widgetJitsi": "Jitsi Meet",
@@ -2137,26 +1987,6 @@
             }
         }
     },
-    "storeInSecureStorageDescription": "将恢复密钥存储在此设备的安全存储中。",
-    "@storeInSecureStorageDescription": {},
-    "storeInAppleKeyChain": "存储在 Apple KeyChain 中",
-    "@storeInAppleKeyChain": {},
-    "unlockOldMessages": "解锁旧消息",
-    "@unlockOldMessages": {},
-    "pleaseEnterRecoveryKey": "请输入你的恢复密钥：",
-    "@pleaseEnterRecoveryKey": {},
-    "recoveryKey": "恢复密钥",
-    "@recoveryKey": {},
-    "recoveryKeyLost": "丢失了恢复密钥？",
-    "@recoveryKeyLost": {},
-    "pleaseEnterRecoveryKeyDescription": "要解锁你的旧邮件，请输入你在之前会话中生成的恢复密钥。 你的恢复密钥不是你的密码。",
-    "@pleaseEnterRecoveryKeyDescription": {},
-    "saveKeyManuallyDescription": "通过触发系统共享对话框或剪贴板手动保存此密钥。",
-    "@saveKeyManuallyDescription": {},
-    "storeInAndroidKeystore": "存储在 Android KeyStore 中",
-    "@storeInAndroidKeystore": {},
-    "storeSecurlyOnThisDevice": "安全地存储在此设备上",
-    "@storeSecurlyOnThisDevice": {},
     "users": "用户",
     "@users": {},
     "countFiles": "{count} 个文件",
@@ -2200,16 +2030,8 @@
     "@newGroup": {},
     "newSpace": "新的空间",
     "@newSpace": {},
-    "enterSpace": "进入空间",
-    "@enterSpace": {},
     "allSpaces": "所有空间",
     "@allSpaces": {},
-    "foregroundServiceRunning": "此通知在前台服务运行时出现。",
-    "@foregroundServiceRunning": {},
-    "screenSharingTitle": "屏幕共享",
-    "@screenSharingTitle": {},
-    "screenSharingDetail": "你正在 FluffyChat 中共享屏幕",
-    "@screenSharingDetail": {},
     "doNotShowAgain": "不再显示",
     "@doNotShowAgain": {},
     "googlyEyesContent": "{senderName} 向你发送了“大眼”表情",
@@ -2254,14 +2076,6 @@
             }
         }
     },
-    "newSpaceDescription": "空间让你可以整合聊天并建立私人或公共社区。",
-    "@newSpaceDescription": {},
-    "encryptThisChat": "加密此聊天",
-    "@encryptThisChat": {},
-    "disableEncryptionWarning": "出于安全考虑 ，你不能在之前已启用加密的聊天中禁用加密。",
-    "@disableEncryptionWarning": {},
-    "sorryThatsNotPossible": "非常抱歉……这是做不到的",
-    "@sorryThatsNotPossible": {},
     "deviceKeys": "设备密钥：",
     "@deviceKeys": {},
     "report": "报错",
@@ -2315,8 +2129,6 @@
     "@tryAgain": {},
     "chatPermissions": "聊天权限",
     "@chatPermissions": {},
-    "chatDescription": "聊天描述",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "聊天描述已被更改",
     "@chatDescriptionHasBeenChanged": {},
     "noChatDescriptionYet": "尚未创建聊天描述。",
@@ -2329,8 +2141,6 @@
     "@optionalRedactReason": {},
     "setChatDescription": "设置聊天描述",
     "@setChatDescription": {},
-    "setTheme": "设置主题：",
-    "@setTheme": {},
     "setColorTheme": "设置主题颜色：",
     "@setColorTheme": {},
     "invite": "邀请",
@@ -2408,14 +2218,10 @@
     "@kickUserDescription": {},
     "blockListDescription": "你可以屏蔽打扰你的用户。你将不会收到来自屏蔽列表中用户的任何消息或聊天室邀请。",
     "@blockListDescription": {},
-    "createGroupAndInviteUsers": "创建群组并邀请用户",
-    "@createGroupAndInviteUsers": {},
     "startConversation": "开始对话",
     "@startConversation": {},
     "blockedUsers": "已屏蔽的用户",
     "@blockedUsers": {},
-    "groupCanBeFoundViaSearch": "可通过搜索找到该群组",
-    "@groupCanBeFoundViaSearch": {},
     "noUsersFoundWithQuery": "很遗憾，没有找到有关\"{query}\"的用户。请检查是否输入错误。",
     "@noUsersFoundWithQuery": {
         "type": "String",
@@ -2439,8 +2245,6 @@
     "@groupName": {},
     "databaseMigrationTitle": "数据库已优化",
     "@databaseMigrationTitle": {},
-    "searchChatsRooms": "搜索 #聊天，@用户…",
-    "@searchChatsRooms": {},
     "databaseMigrationBody": "请稍候。可能需要稍等片刻。",
     "@databaseMigrationBody": {},
     "thisDevice": "此设备：",
@@ -2465,8 +2269,6 @@
     "@select": {},
     "pleaseChooseAStrongPassword": "请选择一个强密码",
     "@pleaseChooseAStrongPassword": {},
-    "addChatOrSubSpace": "添加聊天或子空间",
-    "@addChatOrSubSpace": {},
     "leaveEmptyToClearStatus": "留空以清除你的状态。",
     "@leaveEmptyToClearStatus": {},
     "joinSpace": "加入空间",
@@ -2475,36 +2277,10 @@
     "@searchForUsers": {},
     "initAppError": "在初始化应用时发生错误",
     "@initAppError": {},
-    "sessionLostBody": "你的会话已丢失。请将此错误报告给开发者，网址为 {url}。错误消息为：{error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "restoreSessionBody": "应用现在尝试从备份中恢复你的会话。请将此错误报告给开发者，网址为 {url}。错误消息为：{error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "sendTypingNotificationsDescription": "聊天中的其他参与者可以看到你正在输入新消息。",
     "@sendTypingNotificationsDescription": {},
     "formattedMessagesDescription": "使用 Markdown 显示富文本内容，例如加粗文本。",
     "@formattedMessagesDescription": {},
-    "verifyOtherUserDescription": "如果你验证了其他用户，就可以确保你清楚自己正在与谁进行通信。💪\n\n当你开始验证时，你和其他用户将在应用中看到一个弹出窗口。然后你会看到一系列表情符号或数字，你和其他用户需要比较它们是否一致。\n\n最好的方式是线下会面或开始视频通话。👭",
-    "@verifyOtherUserDescription": {},
     "verifyOtherDeviceDescription": "当你验证另一个设备时，这些设备可以交换密钥，从而提高整体安全性。 💪 当你开始验证时，两个设备上的应用都将显示一个弹出窗口。然后你会看到一系列表情符号或数字，你需要比较两个设备上显示的内容。在开始验证之前，最好将两个设备都放在手边。🤳",
     "@verifyOtherDeviceDescription": {},
     "canceledKeyVerification": "{sender} 取消了密钥验证",
@@ -2522,8 +2298,6 @@
     "@formattedMessages": {},
     "verifyOtherDevice": "🔐 验证其它设备",
     "@verifyOtherDevice": {},
-    "verifyOtherUser": "🔐 验证其他用户",
-    "@verifyOtherUser": {},
     "sendReadReceiptsDescription": "聊天中的其他参与者可以看到你是否读过消息。",
     "@sendReadReceiptsDescription": {},
     "acceptedKeyVerification": "{sender} 接受了密钥验证",
@@ -2604,12 +2378,6 @@
     },
     "appLockDescription": "用 pin 码在不用 FluffyChat 时锁定它",
     "@appLockDescription": {},
-    "globalChatId": "全局聊天 ID",
-    "@globalChatId": {},
-    "accessAndVisibility": "访问和可见性",
-    "@accessAndVisibility": {},
-    "accessAndVisibilityDescription": "谁可以加入此聊天以及怎样发现该聊天。",
-    "@accessAndVisibilityDescription": {},
     "calls": "通话",
     "@calls": {},
     "customEmojisAndStickers": "自定义表情符号和贴纸",
@@ -2622,19 +2390,8 @@
     "@passwordRecoverySettings": {},
     "knock": "请求",
     "@knock": {},
-    "noOneCanJoin": "无人可以加入",
-    "@noOneCanJoin": {},
     "knocking": "正在请求",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "可通过搜索 {server} 发现聊天",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "thereAreCountUsersBlocked": "目前有 {count} 名用户被封禁。",
     "@thereAreCountUsersBlocked": {
         "type": "String",
@@ -2646,14 +2403,8 @@
     "@hideInvalidOrUnknownMessageFormats": {},
     "customEmojisAndStickersBody": "添加或分享可用于任何聊天的表情符号或贴纸。",
     "@customEmojisAndStickersBody": {},
-    "usersMustKnock": "用户必须请求加入",
-    "@usersMustKnock": {},
     "noDatabaseEncryption": "数据库加密在此平台上不受支持",
     "@noDatabaseEncryption": {},
-    "publicChatAddresses": "公开聊天的地址",
-    "@publicChatAddresses": {},
-    "createNewAddress": "新建地址",
-    "@createNewAddress": {},
     "searchMore": "搜索更多…",
     "@searchMore": {},
     "gallery": "图库",
@@ -2762,14 +2513,6 @@
     "@sendCanceled": {},
     "noChatsFoundHere": "此处尚未找到聊天。使用下方按钮 ⤵️ 开始和某人的新聊天",
     "@noChatsFoundHere": {},
-    "loginWithMatrixId": "使用 Matrix-ID 登录",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "发现主服务器",
-    "@discoverHomeservers": {},
-    "whatIsAHomeserver": "什么是主服务器？",
-    "@whatIsAHomeserver": {},
-    "homeserverDescription": "主服务器上就像电子邮件提供商，你的所有数据都存储在上面。你可以选择你想使用哪个主服务器。在 https://matrix.org 上了解更多信息。",
-    "@homeserverDescription": {},
     "doesNotSeemToBeAValidHomeserver": "似乎不是兼容的主服务器。URL 不正确？",
     "@doesNotSeemToBeAValidHomeserver": {},
     "prepareSendingAttachment": "准备发送附件…",
@@ -2807,8 +2550,6 @@
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "注意：当你连接所有设备到聊天备份时，这些设备将被自动验证。",
     "@noticeChatBackupDeviceVerification": {},
-    "welcomeText": "你好呀 👋 欢迎来到 FluffyChat。你可以登录任意兼容 https://matrix.org 的 homeserver，然后和任何人聊天。这是个巨大的去中心化消息网络！",
-    "@welcomeText": {},
     "continueText": "继续",
     "@continueText": {},
     "blur": "模糊：",
@@ -2817,8 +2558,6 @@
     "@opacity": {},
     "setWallpaper": "设置壁纸",
     "@setWallpaper": {},
-    "manageAccount": "管理账户",
-    "@manageAccount": {},
     "aboutHomeserver": "关于 {homeserver}",
     "@aboutHomeserver": {
         "type": "String",
@@ -2873,19 +2612,8 @@
     "@previous": {},
     "otherPartyNotLoggedIn": "另一方当前未登录，因而无法接收消息！",
     "@otherPartyNotLoggedIn": {},
-    "appWantsToUseForLoginDescription": "您特此允许本应用和网站分享关于您的信息。",
-    "@appWantsToUseForLoginDescription": {},
     "open": "打开",
     "@open": {},
-    "appWantsToUseForLogin": "使用 '{server}'服务器登录",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "waitingForServer": "正在等待服务器…",
     "@waitingForServer": {},
     "synchronizingPleaseWaitCounter": " 同步中… ({percentage}%)",
@@ -2897,8 +2625,6 @@
             }
         }
     },
-    "appIntroduction": "FluffyChat 让使用不同即时通信工具的你和你的好友得以聊天。 访问 https://matrix.org 了解详情或轻按 *继续*。",
-    "@appIntroduction": {},
     "newChatRequest": "📩 新的聊天请求",
     "@newChatRequest": {},
     "generalNotificationSettings": "常规通知设置",
@@ -3042,15 +2768,6 @@
     "@youHaveKnocked": {},
     "pleaseWaitUntilInvited": "在来自该聊天室的某人邀请你之前请等待。",
     "@pleaseWaitUntilInvited": {},
-    "countInvited": "邀请了 {count}",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "checkList": "清单",
     "@checkList": {},
     "sentVoiceMessage": "🎙️ {duration} - 来自 {sender} 的语音消息",
@@ -3085,12 +2802,6 @@
     "@pause": {},
     "resume": "继续",
     "@resume": {},
-    "newSubSpace": "新建子空间",
-    "@newSubSpace": {},
-    "moveToDifferentSpace": "移动到别的空间",
-    "@moveToDifferentSpace": {},
-    "removeFromSpaceDescription": "将从空间移除该聊天，但仍出现在聊天列表中。",
-    "@removeFromSpaceDescription": {},
     "countChats": "{chats} 个聊天",
     "@countChats": {
         "type": "String",
@@ -3100,26 +2811,6 @@
             }
         }
     },
-    "spaceMemberOf": "{spaces} 的空间成员",
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "spaceMemberOfCanKnock": "{spaces} 的空间成员可以敲门",
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "donate": "捐赠",
-    "@donate": {},
     "startedAPoll": "{username} 启动了投票。",
     "@startedAPoll": {
         "type": "String",
@@ -3189,14 +2880,6 @@
     "@stickerPackName": {},
     "attribution": "作者",
     "@attribution": {},
-    "skipChatBackup": "跳过聊天备份",
-    "@skipChatBackup": {},
-    "skipChatBackupWarning": "确定吗？不开启聊天备份，如果切换设备可能无法访问消息。",
-    "@skipChatBackupWarning": {},
-    "loadingMessages": "加载消息中",
-    "@loadingMessages": {},
-    "setupChatBackup": "设置聊天备份",
-    "@setupChatBackup": {},
     "changedTheChatDescription": "{username} 更改了聊天描述",
     "@changedTheChatDescription": {},
     "changedTheChatName": "{username} 更改了聊天名",
@@ -3207,11 +2890,9 @@
     "taTooltip": "使用翻译辅助的二级语言",
     "interactiveTranslatorSliderHeader": "互动翻译器",
     "interactiveGrammarSliderHeader": "互动语法检查器",
-    "interactiveTranslatorRequired": "必需",
     "waTooltip": "无需辅助的二级语言",
     "interactiveTranslator": "翻译辅助",
     "noIdenticalLanguages": "请选择不同的基础语言和目标语言",
-    "searchBy": "按国家和语言搜索",
     "joinWithClassCode": "加入课程",
     "languageLevelPreA1": "初学者低级（预 A1）",
     "languageLevelA1": "新手中级 (A1)",
@@ -3231,19 +2912,14 @@
     "whatIsYourBaseLanguage": "你的基础语言是什么？",
     "publicProfileTitle": "允许在搜索中找到我的资料",
     "publicProfileDesc": "开启后，其他用户可以在全球搜索栏中找到你的资料并向你发起聊天请求。此时，你可以选择接受或拒绝请求。",
-    "errorDisableIT": "翻译协助已关闭。",
-    "errorDisableIGC": "语法协助已关闭。",
     "errorDisableITUserDesc": "点击这里更新翻译协助设置",
     "errorDisableIGCUserDesc": "点击这里更新语法协助设置",
     "errorDisableITClassDesc": "此课程中的翻译协助已关闭。",
     "errorDisableIGCClassDesc": "此课程中的语法协助已关闭。",
-    "error405Title": "未设置语言",
     "error405Desc": "请在主菜单 > 学习设置中设置您的语言。",
     "termsAndConditions": "条款和条件",
     "andCertifyIAmAtLeast13YearsOfAge": "并证明我已满16岁。",
-    "error502504Title": "哇，在线的学生很多！",
     "error502504Desc": "在Pangea机器人赶上进度时，翻译和语法工具可能会变慢或不可用。",
-    "error404Title": "翻译错误！",
     "error404Desc": "Pangea机器人不确定如何翻译这个...",
     "errorPleaseRefresh": "我们正在处理！请重新加载并重试。",
     "connectedToStaging": "已连接到预发布环境",
@@ -3281,13 +2957,9 @@
     "definitionsToolName": "单词定义",
     "definitionsToolDescription": "启用后，蓝色下划线的单词可以点击查看定义。点击消息以获取定义。",
     "welcomeBack": "欢迎回来！如果您是2023-2024试点的一部分，请联系我们获取您的特别试点订阅。如果您是教师，或者您的机构为您的班级购买了许可证，请联系我们获取您的教师订阅。",
-    "downloadTxtFile": "下载文本文件",
-    "downloadCSVFile": "下载CSV文件",
     "promotionalSubscriptionDesc": "您目前拥有终身促销订阅。若需帮助更改订阅，请联系 support@pangea.chat。",
     "originalSubscriptionPlatform": "通过 {purchasePlatform} 购买的订阅",
     "oneWeekTrial": "一周试用",
-    "downloadXLSXFile": "下载Excel文件",
-    "unkDisplayName": "未知",
     "wwCountryDisplayName": "全球",
     "afCountryDisplayName": "阿富汗",
     "axCountryDisplayName": "奥兰群岛",
@@ -3582,7 +3254,6 @@
     "chatCapacityHasBeenChanged": "聊天容量已更改",
     "chatCapacitySetTooLow": "聊天容量必须至少为 {count}。",
     "chatCapacityExplanation": "聊天容量限制允许加入聊天的成员人数。",
-    "tooManyRequest": "请求过多，请稍后再试。",
     "enterNumber": "请输入一个整数值。",
     "practice": "练习",
     "versionNotFound": "未找到版本",
@@ -3592,7 +3263,6 @@
     "deleteSubscriptionWarningTitle": "您有一个有效的订阅",
     "deleteSubscriptionWarningBody": "删除您的账户不会自动取消您的订阅。",
     "manageSubscription": "管理订阅",
-    "error520Title": "请再试一次。",
     "error520Desc": "抱歉，我们无法理解您的消息……",
     "wordsUsed": "已使用的单词",
     "level": "等级",
@@ -3610,7 +3280,6 @@
     "other": "其他",
     "levelShort": "等级 {level}",
     "noCapacityLimit": "没有容量限制",
-    "downloadGroupText": "下载群组文本",
     "notificationsOn": "通知已开启",
     "notificationsOff": "通知已关闭",
     "joinWithCode": "用代码加入",
@@ -3674,24 +3343,12 @@
     "whatIsTheMorphTag": "'{wordForm}'的{morphologicalFeature}是什么？",
     "dataAvailable": "数据可用性",
     "available": "可用",
-    "pangeaBotIsFallible": "Pangea机器人也会犯错！",
-    "whatIsMeaning": "'{lemma}'是什么意思？",
     "chooseLemmaMeaningInstructionsBody": "将意思与消息中的单词匹配！",
-    "doubleClickToEdit": "双击编辑。",
-    "topicLabel": "主题",
-    "topicPlaceholder": "选择一个主题...",
-    "modePlaceholder": "选择一种模式...",
-    "learningObjectiveLabel": "学习目标",
-    "learningObjectivePlaceholder": "选择一个学习目标...",
-    "targetLanguageLabel": "目标语言",
     "cefrLevelLabel": "CEFR等级",
     "image": "图片",
     "video": "视频",
     "nan": "不适用",
-    "addVocabulary": "添加词汇",
     "instructions": "说明",
-    "numberOfLearners": "学习者人数",
-    "mustBeInteger": "必须是整数，例如1、2、3等",
     "constructUsePvmDesc": "以语音消息形式生成",
     "leaveSpaceDescription": "退出课程后，您将离开其中所有的聊天。其他用户将看到您已离开课程。",
     "constructUseCorMmDesc": "正确的消息含义",
@@ -3706,7 +3363,6 @@
     "ttsDisabledBody": "您可以在学习设置中启用文本转语音",
     "noSpaceDescriptionYet": "尚未创建课程描述。",
     "tooLargeToSend": "此消息过大，无法发送",
-    "exitWithoutSaving": "你确定要退出而不保存吗？",
     "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
     "enableAutocorrectPopupSteps": "  • 设置\n  • 通用\n  • 键盘\n  • 键盘\n  • 添加新键盘",
     "enableAutocorrectPopupDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
@@ -3717,11 +3373,8 @@
     "displayName": "显示名称",
     "leaveRoomDescription": "你即将离开此聊天。其他用户将看到你已离开聊天。",
     "confirmUserId": "请确认您的Pangea聊天用户名以删除您的账户。",
-    "startingToday": "从今天开始",
-    "oneWeekFreeTrial": "一周免费试用",
     "paidSubscriptionStarts": "开始于 {startDate}",
     "cancelInSubscriptionSettings": "• 在订阅设置中随时取消",
-    "cancelToAvoidCharges": "• 在 {trialEnds} 之前取消以避免收费",
     "downloadGboard": "下载Gboard",
     "autocorrectNotAvailable": "很抱歉，您的平台目前不支持此功能。请关注后续开发！",
     "pleaseUpdateApp": "请更新应用以继续。",
@@ -3731,17 +3384,12 @@
     "knockSpaceSuccess": "你已请求加入此课程！管理员将在收到请求后回复你 😀",
     "chooseWordAudioInstructionsBody": "听完整个消息，然后将音频与单词匹配。",
     "chooseMorphsInstructionsBody": "点击拼图块以回答语法问题！",
-    "pleaseEnterInt": "请输入一个数字",
     "home": "首页",
     "join": "加入",
     "resetInstructionTooltipsTitle": "重置操作提示",
     "resetInstructionTooltipsDesc": "点击显示像新用户一样的操作提示。",
-    "randomize": "随机",
     "clear": "清除",
-    "featuredActivities": "精选",
     "save": "保存",
-    "startChat": "开始聊天",
-    "translationProblem": "翻译问题",
     "askToJoin": "请求加入",
     "emptyChatWarningTitle": "聊天为空",
     "emptyChatWarningDesc": "你还没有邀请任何人加入你的聊天。前往聊天设置邀请你的联系人或机器人。你也可以稍后再做。",
@@ -3771,17 +3419,13 @@
     "timesUsedIndependently": "独立使用次数",
     "timesUsedWithAssistance": "协助使用次数",
     "shareInviteCode": "分享邀请码：{code}",
-    "leaderboard": "排行榜",
     "skipForNow": "暂时跳过",
     "permissions": "权限",
     "spaceChildPermission": "谁可以向此课程添加新聊天",
-    "addEnvironmentOverride": "添加环境覆盖",
     "defaultOption": "默认",
     "deleteChatDesc": "您确定要删除此聊天吗？它将被所有参与者删除，聊天中的所有消息将不再可用于练习或学习分析。",
     "deleteSpaceDesc": "课程和任何已选择的聊天将被所有参与者删除，聊天中的所有消息将不再可用于练习或学习分析。此操作无法撤销。",
     "launch": "启动",
-    "searchChats": "搜索聊天",
-    "maxFifty": "最多50个",
     "configureSpace": "配置课程",
     "pinMessages": "置顶消息",
     "setJoinRules": "设置加入规则",
@@ -3815,9 +3459,6 @@
     "failedToFetchTranscription": "获取转录失败",
     "deleteEmptySpaceDesc": "课程将被所有参与者删除。此操作无法撤销。",
     "regenerate": "重新生成",
-    "mySavedActivities": "我的已保存活动",
-    "noSavedActivities": "没有已保存的活动",
-    "saveActivity": "保存此活动",
     "failedToPlayVideo": "播放视频失败",
     "done": "完成",
     "inThisSpace": "在此空间",
@@ -3828,13 +3469,9 @@
     "numInvited": "{count} 已被邀请",
     "saved": "已保存",
     "reset": "重置",
-    "errorFetchingActivitiesMessage": "获取活动失败",
     "errorFetchingDefinition": "获取定义失败",
     "errorProcessAnalytics": "处理分析失败",
     "errorDownloading": "下载失败",
-    "errorLoadingSpaceChildren": "加载此课程中的聊天失败",
-    "unexpectedError": "发生意外错误。",
-    "pleaseReload": "请重新加载并重试。",
     "translationError": "翻译错误",
     "check": "检查",
     "unableToFindRoom": "未找到该代码对应的聊天或课程。请重试。",
@@ -3843,19 +3480,14 @@
     "request": "请求",
     "requestAll": "请求全部",
     "confirmMessageUnpin": "您确定要取消置顶此消息吗？",
-    "saveAndLaunch": "保存并启动",
-    "launchToSpace": "发布到课程",
     "pending": "待处理",
     "inactive": "不活跃",
-    "confirmRole": "确认角色",
     "openRoleLabel": "开放",
     "finishedTheActivity": "🎯 {username} 完成了此次活动",
     "activitySummaryError": "无法获取活动总结",
     "requestSummaries": "请求总结",
-    "generatingNewActivities": "你是此语言对的第一个用户！请稍等，我们正在为你准备活动。",
     "requestAccessTitle": "请求分析访问权限？",
     "requestAccessDesc": "你想请求查看参与者分析吗？\n\n如果参与者同意，课程管理员将能够查看他们的：\n    • 词汇总数\n    • 语法概念总数\n    • 完成的活动会话总数\n    • 使用的具体语法概念，正确与错误\n\n他们将无法查看：\n    • 课程外的聊天消息\n    • 词汇列表",
-    "requestAccess": "请求访问（{count}）",
     "analyticsInactiveTitle": "无法向不活跃用户发送请求",
     "analyticsInactiveDesc": "自此功能推出以来未登录的不活跃用户将不会看到你的请求。\n\n当他们返回时，请求按钮会出现。你可以稍后通过点击他们名字下的请求按钮重新发送请求。",
     "accessRequestedTitle": "访问分析请求",
@@ -3878,8 +3510,6 @@
     "accessDesc": "你可以让你的课程对全世界开放！或者，将你的课程设为私密且安全。",
     "createGroupChatDesc": "活动会话开始和结束，而群聊将保持开放以进行日常沟通。",
     "deleteDesc": "只有管理员可以删除课程。这是一个破坏性操作，会删除所有用户和课程内的所有选定聊天。请谨慎操作。",
-    "noCourseFound": "哦，这个课程需要一个计划！\n\n课程计划是一系列主题和对话活动。",
-    "additionalParticipants": "+ {num} 其他人",
     "whatNow": "接下来怎么办？",
     "chooseNextActivity": "选择你的下一个活动！",
     "letsGo": "开始吧",
@@ -3892,13 +3522,11 @@
     "waitNotDone": "等一下，我还没完成！",
     "waitingForOthersToFinish": "等待其他人完成...",
     "generatingSummary": "正在分析聊天内容并生成结果",
-    "findCourse": "查找课程",
     "pingParticipantsNotification": "{user} 正在寻找用户加入 {room} 中的活动会话",
     "course": "课程",
     "courses": "课程",
     "goToCourse": "前往课程：{course}",
     "activityComplete": "此活动已完成。活动摘要应在下方显示。",
-    "startNewSession": "开始新会话",
     "joinOpenSession": "加入公开会话",
     "activityNotFound": "未找到活动",
     "myActivities": "我的活动",
@@ -3972,10 +3600,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3985,10 +3609,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4072,14 +3692,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4096,10 +3708,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4112,15 +3720,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4272,14 +3872,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4293,14 +3885,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5523,10 +5107,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5567,10 +5147,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5643,10 +5219,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5916,47 +5488,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5976,19 +5508,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6052,10 +5572,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6096,14 +5612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6115,14 +5623,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6160,10 +5660,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6180,27 +5676,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6324,10 +5804,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6337,10 +5813,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6357,14 +5829,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6504,18 +5968,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6564,10 +6016,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6577,18 +6025,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6631,23 +6067,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6671,10 +6095,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6682,14 +6102,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6794,18 +6206,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6858,10 +6258,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6888,10 +6284,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7072,7 +6464,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "明天回来查看活动更新。",
-    "activityDropdownDesc": "完成此活动后，点击下面",
     "languageMismatchTitle": "语言不匹配",
     "languageMismatchDesc": "你的目标语言与此活动的语言不匹配。要更新你的目标语言吗？",
     "reportWordIssueTooltip": "报告单词信息问题",
@@ -7085,10 +6476,6 @@
     "selectAll": "全选",
     "deselectAll": "取消全选",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7137,17 +6524,11 @@
         "placeholders": {}
     },
     "startOwn": "开始我的课程",
-    "joinCourseDesc": "每门课程包含8-10个有序的主题，配备一系列基于任务的语言学习活动。",
     "newMessageInPangeaChat": "📩 Pangea 聊天中有新消息",
     "shareCourse": "分享课程",
     "addCourse": "添加课程",
-    "joinPublicCourse": "加入公共课程",
     "vocabLevelsDesc": "这是你提升词汇等级后，词汇将会显示的地方！",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7160,10 +6541,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7182,7 +6559,6 @@
     "emojiView": "表情符号视图",
     "feedbackDialogDesc": "我也会犯错！有什么可以帮助我改进的吗？",
     "contactHasBeenInvitedToTheCourse": "联系人已被邀请参加课程",
-    "activityStatsButtonTooltip": "活动信息",
     "allow": "允许",
     "deny": "拒绝",
     "enabledRenewal": "启用订阅续费",
@@ -7450,10 +6826,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8509,16 +7881,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "解锁下一个主题的活动",
-    "activitiesToUnlockTopicDesc": "设置解锁下一个课程主题所需的活动数量",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "正确的词汇定义练习",
     "constructUseIncLMDesc": "错误的词汇定义练习",
     "constructUseCorLADesc": "正确的词汇音频练习",
@@ -8526,7 +7888,6 @@
     "constructUseBonus": "词汇练习期间的奖励",
     "practiceVocab": "练习词汇",
     "selectMeaning": "选择意思",
-    "selectAudio": "选择匹配的音频",
     "anotherRound": "再来一轮",
     "activitySettingsOverrideWarning": "活动计划确定的语言和语言级别",
     "voice": "声音",
@@ -8558,10 +7919,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8579,12 +7936,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "下载已启动",
     "webDownloadPermissionMessage": "如果您的浏览器阻止下载，请为此网站启用下载。",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8679,11 +8031,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "出现了一些问题，我们正在努力修复。请稍后再检查。",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "启用写作辅助",
     "autoIGCToolDescription": "自动运行 Pangea Chat 工具以将发送的消息纠正为目标语言。",
     "@autoIGCToolName": {
@@ -8739,24 +8086,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "语法",
-    "spanTypeWordChoice": "用词选择",
     "spanTypeSpelling": "拼写",
     "spanTypePunctuation": "标点",
     "spanTypeStyle": "风格",
     "spanTypeFluency": "流利度",
     "spanTypeAccents": "口音",
     "spanTypeCapitalization": "大写",
-    "spanTypeCorrection": "更正",
     "spanFeedbackTitle": "报告更正问题",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8781,10 +8117,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -8795,13 +8127,9 @@
     "clientWellKnownInformation": "客户端已知信息：",
     "baseUrl": "基础网址",
     "identityServer": "身份服务器：",
-    "versionWithNumber": "版本：{version}",
     "logs": "日志",
-    "advancedConfigs": "高级配置",
     "advancedConfigurations": "高级配置",
-    "signInWithLabel": "使用以下方式登录：",
     "selectAllWords": "选择你在音频中听到的所有单词",
-    "joinCourseForActivities": "加入课程以尝试活动。",
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -8830,19 +8158,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -8850,15 +8166,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9059,11 +8367,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "在课堂上？把你的加入代码放在这里。",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "自动高亮音频消息",
     "selectAudioMessagesOnPlayDescription": "播放时自动高亮音频消息",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9107,18 +8410,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "本课程有主题的活动少于 {input} 个。请您输入一个小于或等于 {minValue} 的数字。",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "点击这里重新登录。",
     "@clickToLogin": {
@@ -9535,17 +8826,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "一只卡通风格的黄色熊，兴奋地举起双臂。",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "选择单词以了解更多信息",
     "requireAnalyticsAccessTitle": "需要分析访问权限才能加入",
     "requireAnalyticsAccessDesc": "参与者必须授予访问其学习分析的权限才能加入此课程",
     "analyticsAccessNoticeTitle": "需要分析访问权限",
     "analyticsAccessNoticeDesc": "通过加入此课程，您同意授予管理员访问您的学习分析的权限。",
-    "skipOnboardingClassCodeDesc": "独立学习？别担心，您可以：",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9563,10 +8848,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9595,7 +8876,6 @@
     "pickCefrLevelTeacherStepTitle": "你教什么级别？",
     "pickCefrLevelStudentStepTitle": "你是什么级别？",
     "customCourseStepTitle": "填写此表单以获取自定义课程",
-    "aboutYourClass": "关于您的课程",
     "courseCodeStepErrorMessage": "请检查您的代码并重试",
     "institution": "机构",
     "courseGoals": "课程目标",
@@ -9638,10 +8918,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9758,12 +9034,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Pangea Chat 标志",
     "introChatDetails": "打个招呼！向你的同学介绍自己，寻找朋友，并在活动之外聊天。",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -9807,11 +9078,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "活动操作",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "发音工具",
     "audioTranscription": "AI音频转录",
     "visualLearnerSupport": "视觉学习者支持",
@@ -9852,7 +9118,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "加入一个包含此活动的课程以进行游戏。",
     "resizeCoursePanel": "调整课程面板大小",
     "undo": "撤销",
     "unlock": "解锁",
@@ -9866,7 +9131,6 @@
     "addCourseBrowsePublic": "浏览公开课程",
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
-    "numObjectives": "{count} 个目标",
     "mapSearchHint": "搜索活动",
     "mapSearchNoResults": "视图中没有匹配项",
     "mapFilterAllLanguages": "所有语言",
@@ -9875,7 +9139,6 @@
     "mapFilterCompleted": "完成",
     "mapFilterReset": "重置",
     "activityTypeConversation": "对话",
-    "lockedMissionRequirement": "完成前一个任务以解锁",
     "playAgain": "再玩一次",
     "reviewActivity": "回顾",
     "mapEmptyInView": "在您的级别或语言中没有任何内容。扩大您的过滤器或缩小视图。",
@@ -9890,14 +9153,9 @@
     "scrollToBottom": "滚动到底部",
     "courseImage": "课程图片",
     "avatarPreview": "头像预览",
-    "activityPhoto": "活动照片",
     "emotePreview": "表情预览: {name}",
     "activityLabel": "活动: {title}",
     "resetMapView": "重置地图视图",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -9950,14 +9208,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -9987,10 +9237,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10047,10 +9293,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10402,5 +9644,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "课程权限",
+    "starsToUnlockObjectiveTitle": "每个任务的星数",
+    "starsToUnlockObjectiveDesc": "设置完成每个任务所需的星数",
+    "maxStarsPerMissionWarning": "此课程中的任务最多只能获得 {maxValue} 颗星。请输入一个小于或等于 {maxValue} 的数字。",
+    "removedFromCourseError": "您已被移出此课程。请联系您的老师。"
 }

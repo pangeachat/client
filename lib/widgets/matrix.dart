@@ -19,6 +19,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
@@ -83,6 +84,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   late StreamSubscription? _uriListener;
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
+  final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -517,6 +519,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     // #Pangea
     _analyticsServices[name] ??= AnalyticsDataService(c);
+    if (_activityAutoSaveServices[name] == null) {
+      _activityAutoSaveServices[name] = ActivityAutoSaveService(
+        client: c,
+        analyticsService: _analyticsServices[name]!,
+      );
+      _activityAutoSaveServices[name]!.start();
+    }
     // Pangea#
   }
 
@@ -532,6 +541,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    _activityAutoSaveServices[name]?.dispose();
+    _activityAutoSaveServices.remove(name);
     _analyticsServices[name]?.dispose();
     _analyticsServices.remove(name);
     // Pangea#

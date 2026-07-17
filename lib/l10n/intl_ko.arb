@@ -74,15 +74,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "{count}명의 참가자 더 표시",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "lightTheme": "라이트",
     "@lightTheme": {
         "type": "String",
@@ -100,11 +91,6 @@
     },
     "groups": "그룹 채팅",
     "@groups": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "그룹 채팅 공개",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -148,11 +134,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "모든 것이 준비됐어요!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "homeserver": "홈서버",
     "@homeserver": {},
     "enterAnEmailAddress": "이메일 주소 입력",
@@ -181,11 +162,6 @@
     },
     "encrypted": "암호화됨",
     "@encrypted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableEncryptionWarning": "당신은 다시 암호화를 비활성화할 수 없습니다. 확실한가요?",
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -304,11 +280,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "createNewSpace": "새로운 스페이스",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "createdTheChat": "💬 {username}님이 채팅을 생성함",
     "@createdTheChat": {
         "type": "String",
@@ -358,11 +329,6 @@
     },
     "contentHasBeenReported": "콘텐츠가 서버 운영자에게 신고되었습니다",
     "@contentHasBeenReported": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "연락처가 채팅에 초대되었습니다",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -449,11 +415,6 @@
     },
     "chatDetails": "채팅 정보",
     "@chatDetails": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "chatBackupDescription": "당신의 오래된 메시지는 보안 키로 보호됩니다. 이 키를 잃어버리지 마세요.",
-    "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -726,11 +687,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "게스트 유저의 참가 여부",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "archive": "저장",
     "@archive": {
         "type": "String",
@@ -897,23 +853,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "wipeChatBackup": "새로운 복구키를 생성하기 위해 채팅 백업을 초기화할까요?",
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "왜 이것을 신고하려고 하나요?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "참가 제한 설정",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoCanPerformWhichAction": "누가 어떤 행동을 할 수 있는지",
-    "@whoCanPerformWhichAction": {
         "type": "String",
         "placeholders": {}
     },
@@ -959,11 +900,6 @@
     },
     "visibleForAllParticipants": "모든 참가자에게 보임",
     "@visibleForAllParticipants": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "videoCall": "영상 통화",
-    "@videoCall": {
         "type": "String",
         "placeholders": {}
     },
@@ -1064,11 +1000,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "passwordRecovery": "비밀번호 복구",
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "passwordForgotten": "비밀번호 까먹음",
     "@passwordForgotten": {
         "type": "String",
@@ -1089,8 +1020,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "addAccount": "계정 추가",
-    "@addAccount": {},
     "openCamera": "카메라 열기",
     "@openCamera": {
         "type": "String",
@@ -1174,15 +1103,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "logInTo": "{homeserver} 에 로그인",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
-    },
     "login": "로그인",
     "@login": {
         "type": "String",
@@ -1238,15 +1158,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "unreadChats": "{unreadCount, plural, =1{읽지 않은 채팅 1} other{{unreadCount} 개}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
-    },
     "unavailable": "사용할 수 없음",
     "@unavailable": {
         "type": "String",
@@ -1274,11 +1185,6 @@
     },
     "you": "당신",
     "@you": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "대화 기록 설정",
-    "@visibilityOfTheChatHistory": {
         "type": "String",
         "placeholders": {}
     },
@@ -1327,11 +1233,6 @@
     },
     "tryToSendAgain": "다시 보내도록 시도",
     "@tryToSendAgain": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "transferFromAnotherDevice": "다른 기기에서 가져오기",
-    "@transferFromAnotherDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -1389,16 +1290,6 @@
                 "type": "String"
             }
         }
-    },
-    "spaceName": "스페이스 이름",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "스페이스 공개",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
     },
     "pushRules": "푸시 규칙",
     "@pushRules": {
@@ -1465,8 +1356,6 @@
     },
     "serverRequiresEmail": "이 서버는 가입을 위해 당신의 이메일을 확인해야 합니다.",
     "@serverRequiresEmail": {},
-    "enableMultiAccounts": "(베타) 이 기기에서 다중 계정 활성화",
-    "@enableMultiAccounts": {},
     "bundleName": "번들 이름",
     "@bundleName": {},
     "removeFromBundle": "이 번들에서 삭제",
@@ -1494,16 +1383,6 @@
     },
     "none": "없음",
     "@none": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "이 휴대폰에 Firebase Cloud Messaging 서비스가 없는 것 같습니다. FluffyChat에서 푸시 알림을 받으려면 ntfy 사용을 추천합니다. ntfy 혹은 다른 푸시 알림 제공자를 사용하면 알림을 보안적인 방법으로 받을 수 있습니다. ntfy는 PlayStore와 F-Droid에서 설치 가능합니다.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "당신은 방이 공개적으로 접근 가능하지 않을 때만 암호화를 켤 수 있습니다.",
-    "@noEncryptionForPublicRooms": {
         "type": "String",
         "placeholders": {}
     },
@@ -1583,11 +1462,6 @@
     },
     "setStatus": "상태 설정",
     "@setStatus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "setPermissionsLevel": "권한 레벨 설정",
-    "@setPermissionsLevel": {
         "type": "String",
         "placeholders": {}
     },
@@ -1771,15 +1645,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteContactToGroup": "연락처를 {groupName}에 초대",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
     "inviteContact": "연락처 초대",
     "@inviteContact": {
         "type": "String",
@@ -1863,11 +1728,6 @@
     },
     "unbanFromChat": "채팅에서 영구추방 해제됨",
     "@unbanFromChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "removeDevice": "기기 삭제",
-    "@removeDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -1966,8 +1826,6 @@
     "@link": {},
     "unverified": "확인되지 않음",
     "@unverified": {},
-    "yourChatBackupHasBeenSetUp": "당신의 채팅 백업이 설정되었습니다.",
-    "@yourChatBackupHasBeenSetUp": {},
     "time": "시간",
     "@time": {},
     "messageType": "메시지 유형",
@@ -1982,8 +1840,6 @@
     "@repeatPassword": {},
     "start": "시작",
     "@start": {},
-    "removeFromSpace": "스페이스에서 삭제",
-    "@removeFromSpace": {},
     "commandHint_discardsession": "세션 삭제",
     "@commandHint_discardsession": {
         "type": "String",
@@ -2037,8 +1893,6 @@
     "@pinMessage": {},
     "emojis": "이모지",
     "@emojis": {},
-    "voiceCall": "음성 통화",
-    "@voiceCall": {},
     "placeCall": "전화 걸기",
     "@placeCall": {},
     "experimentalVideoCalls": "실험적인 영상 통화",
@@ -2047,10 +1901,6 @@
     "@unsupportedAndroidVersion": {},
     "unsupportedAndroidVersionLong": "이 기능은 새로운 안드로이드 버전을 요구합니다. Lineage OS 지원이나 업데이트를 확인해주세요.",
     "@unsupportedAndroidVersionLong": {},
-    "videoCallsBetaWarning": "영상 통화는 베타임을 확인해주세요. 의도한 대로 작동하지 않거나 모든 플랫폼에서 작동하지 않을 수 있습니다.",
-    "@videoCallsBetaWarning": {},
-    "emailOrUsername": "이메일이나 유저 이름",
-    "@emailOrUsername": {},
     "confirmMatrixId": "계정을 삭제하려면 Matrix ID를 입력해 주세요.",
     "@confirmMatrixId": {},
     "commandHint_googly": "왕눈이 눈알 보내기",
@@ -2143,18 +1993,8 @@
     "@messagesStyle": {},
     "widgetUrlError": "유효한 URL이 아닙니다.",
     "@widgetUrlError": {},
-    "newSpaceDescription": "스페이스를 사용하면 채팅을 통합하고 비공개 또는 공개 커뮤니티를 구축할 수 있습니다.",
-    "@newSpaceDescription": {},
-    "chatDescription": "채팅 설명",
-    "@chatDescription": {},
-    "enterSpace": "스페이스에 입장",
-    "@enterSpace": {},
-    "encryptThisChat": "이 채팅을 암호화",
-    "@encryptThisChat": {},
     "reopenChat": "채팅 다시 열기",
     "@reopenChat": {},
-    "pleaseEnterRecoveryKey": "당신의 복구키를 입력하세요:",
-    "@pleaseEnterRecoveryKey": {},
     "widgetNameError": "표시 이름을 입력하세요.",
     "@widgetNameError": {},
     "addWidget": "위젯 추가",
@@ -2171,20 +2011,14 @@
     "@noKeyForThisMessage": {},
     "pushNotificationsNotAvailable": "푸시 알림 사용 불가",
     "@pushNotificationsNotAvailable": {},
-    "storeInAppleKeyChain": "Apple KeyChain에 저장하기",
-    "@storeInAppleKeyChain": {},
     "hydrate": "백업 파일로부터 가져오기",
     "@hydrate": {},
     "invalidServerName": "잘못된 서버 이름",
     "@invalidServerName": {},
     "chatPermissions": "채팅 권한",
     "@chatPermissions": {},
-    "storeInAndroidKeystore": "Android KeyStore에 저장하기",
-    "@storeInAndroidKeystore": {},
     "makeAdminDescription": "유저를 한 번 관리자로 만들면, 당신과 같은 권한을 가지기때문에 권한 회수가 불가능합니다.",
     "@makeAdminDescription": {},
-    "saveKeyManuallyDescription": "공유나 클립보드를 이용해 수동으로 키를 저장합니다.",
-    "@saveKeyManuallyDescription": {},
     "whyIsThisMessageEncrypted": "왜 이 메시지를 읽을 수 없나요?",
     "@whyIsThisMessageEncrypted": {},
     "setChatDescription": "채팅 설명 설정",
@@ -2206,16 +2040,12 @@
     "@fileIsTooBigForServer": {},
     "readUpToHere": "여기까지 읽음",
     "@readUpToHere": {},
-    "unlockOldMessages": "오래된 메시지 잠금 해제하기",
-    "@unlockOldMessages": {},
     "optionalRedactReason": "(선택) 이 메시지를 편집하는 이유...",
     "@optionalRedactReason": {},
     "archiveRoomDescription": "채팅이 보관함으로 이동합니다. 다른 유저들은 당신이 떠난다는것을 볼 수 있습니다.",
     "@archiveRoomDescription": {},
     "exportEmotePack": ".zip 파일로 이모트 내보내기",
     "@exportEmotePack": {},
-    "pleaseEnterRecoveryKeyDescription": "오래된 메시지를 잠금 해제하려면, 이전 세션에서 생성된 복호화 키를 입력하세요. 복호화 키는 비밀번호가 아닙니다.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "redactedByBecause": "{username}님이 삭제함. 사유: \"{reason}\"",
     "@redactedByBecause": {
         "type": "String",
@@ -2255,16 +2085,12 @@
     },
     "redactMessageDescription": "메시지는 이 대화의 모든 참여자에게 삭제될 것 입니다. 되돌릴 수 없습니다.",
     "@redactMessageDescription": {},
-    "recoveryKey": "복구키",
-    "@recoveryKey": {},
     "invalidInput": "잘못된 입력!",
     "@invalidInput": {},
     "doNotShowAgain": "다시 보지 않기",
     "@doNotShowAgain": {},
     "report": "신고",
     "@report": {},
-    "screenSharingTitle": "화면 공유",
-    "@screenSharingTitle": {},
     "widgetCustom": "사용자 정의",
     "@widgetCustom": {},
     "youBannedUser": "{user}님을 영구 추방함",
@@ -2285,8 +2111,6 @@
     },
     "openLinkInBrowser": "브라우저에서 링크 열기",
     "@openLinkInBrowser": {},
-    "disableEncryptionWarning": "보안상의 이유로 암호화가 활성화된 채팅에서 암호화를 비활성화 할 수 없습니다.",
-    "@disableEncryptionWarning": {},
     "directChat": "다이렉트 채팅",
     "@directChat": {},
     "wrongPinEntered": "잘못된 pin입니다! {seconds}초 후에 다시 시도하세요...",
@@ -2302,8 +2126,6 @@
     "@sendTypingNotifications": {},
     "inviteGroupChat": "📨 그룹 채팅에 초대",
     "@inviteGroupChat": {},
-    "foregroundServiceRunning": "이 알림은 백그라운드 서비스가 실행중일때 표시됩니다.",
-    "@foregroundServiceRunning": {},
     "importEmojis": "이모지 불러오기",
     "@importEmojis": {},
     "wasDirectChatDisplayName": "빈 채팅 (전 {oldDisplayName})",
@@ -2341,14 +2163,10 @@
     },
     "jump": "점프",
     "@jump": {},
-    "sorryThatsNotPossible": "죄송합니다...그것은 불가능합니다",
-    "@sorryThatsNotPossible": {},
     "shareInviteLink": "초대 링크 공유",
     "@shareInviteLink": {},
     "commandHint_markasdm": "Matrix ID를 위한 다이렉트 메시지 방으로 표시",
     "@commandHint_markasdm": {},
-    "recoveryKeyLost": "복구키를 분실하셨나요?",
-    "@recoveryKeyLost": {},
     "cuddleContent": "{senderName} 님이 당신에게 미소짓습니다",
     "@cuddleContent": {
         "type": "String",
@@ -2365,8 +2183,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setTheme": "테마 설정:",
-    "@setTheme": {},
     "youJoinedTheChat": "채팅에 참가하였습니다",
     "@youJoinedTheChat": {},
     "widgetName": "이름",
@@ -2393,18 +2209,12 @@
     "@custom": {},
     "noBackupWarning": "경고! 채팅 백업을 켜지 않을경우, 당신은 암호화된 메시지에 대한 접근권한을 잃을것 입니다. 로그아웃 하기 전에 채팅을 백업하는것이 강력히 권장됩니다.",
     "@noBackupWarning": {},
-    "storeInSecureStorageDescription": "이 기기의 보안 스토리지에 복구키를 저장합니다.",
-    "@storeInSecureStorageDescription": {},
     "kickUserDescription": "유저는 채팅에서 추방되지만 영구 추방되지 않습니다. 공개 채팅의 경우, 언제든 유저가 다시 참가할 수 있습니다.",
     "@kickUserDescription": {},
     "importNow": "지금 불러오기",
     "@importNow": {},
     "invite": "초대",
     "@invite": {},
-    "storeSecurlyOnThisDevice": "이 기기에 안전하게 저장",
-    "@storeSecurlyOnThisDevice": {},
-    "screenSharingDetail": "FluffyChat에 당신의 화면을 공유하는중",
-    "@screenSharingDetail": {},
     "blockUsername": "유저 이름 무시",
     "@blockUsername": {},
     "block": "차단",
@@ -2417,8 +2227,6 @@
     "@commandHint_sendraw": {},
     "pleaseChooseAStrongPassword": "강력한 비밀번호를 사용하세요",
     "@pleaseChooseAStrongPassword": {},
-    "addChatOrSubSpace": "채팅 또는 하위 스페이스 추가",
-    "@addChatOrSubSpace": {},
     "subspace": "하위 스페이스",
     "@subspace": {},
     "databaseMigrationBody": "잠시만 기다리세요. 시간이 걸릴 수 있습니다.",
@@ -2449,8 +2257,6 @@
             }
         }
     },
-    "createGroupAndInviteUsers": "그룹 채팅을 생성하고 유저를 초대",
-    "@createGroupAndInviteUsers": {},
     "passwordsDoNotMatch": "비밀번호가 일치하지 않습니다",
     "@passwordsDoNotMatch": {},
     "passwordIsWrong": "비밀번호가 틀립니다",
@@ -2461,26 +2267,8 @@
     "@sendReadReceipts": {},
     "sendReadReceiptsDescription": "채팅의 다른 참가자들이 당신이 메시지를 읽었는지 볼 수 있습니다.",
     "@sendReadReceiptsDescription": {},
-    "verifyOtherUser": "🔐 다른 유저 확인",
-    "@verifyOtherUser": {},
     "hidePresences": "상태 목록을 숨길까요?",
     "@hidePresences": {},
-    "searchChatsRooms": "#chats, @users 검색...",
-    "@searchChatsRooms": {},
-    "groupCanBeFoundViaSearch": "검색으로 그룹 채팅을 찾을 수 있음",
-    "@groupCanBeFoundViaSearch": {},
-    "restoreSessionBody": "앱이 백업에서 세션을 복원하려 시도중입니다. {url} 에서 개발자에게 오류를 신고하세요. 오류 메시지는 다음과 같습니다: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "acceptedKeyVerification": "{sender}가 키 검증을 수락함",
     "@acceptedKeyVerification": {
         "type": "String",
@@ -2509,18 +2297,6 @@
     "@commandHint_unignore": {},
     "blockListDescription": "당신은 당신을 방해하는 유저들을 차단할 수 있습니다. 당신은 당신의 개인 차단 목록에 있는 어떠한 유저의 메시지와 방 초대도 받지 않을것 입니다.",
     "@blockListDescription": {},
-    "sessionLostBody": "세션을 잃었습니다. {url} 에서 개발자에게 오류를 신고하세요. 오류 메시지는 다음과 같습니다: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "yourGlobalUserIdIs": "글로벌 유저 ID: ",
     "@yourGlobalUserIdIs": {},
     "noUsersFoundWithQuery": "안타깝게도 \"{query}\"로 유저를 찾을 수 없습니다. 오타가 없는지 확인하십시오.",
@@ -2550,8 +2326,6 @@
     "@formattedMessages": {},
     "verifyOtherDevice": "🔐 다른 기기를 확인",
     "@verifyOtherDevice": {},
-    "verifyOtherUserDescription": "다른 유저를 확인하면, 당신은 당신이 누구에게 말하고있는지 알 수 있습니다. 💪\n\n확인을 시작할 때, 다른 유저는 앱에서 팝업을 볼 수 있습니다. 당신은 그런 다음 서로 비교해야 이모지 또는 숫자의 목록을 볼 수 있습니다.\n\n이 작업을 수행하는 가장 좋은 방법은 직접 만나거나 영상통화를 하는것입니다. 👭",
-    "@verifyOtherUserDescription": {},
     "verifyOtherDeviceDescription": "다른 장치를 확인하면, 장치와 키를 교환하고, 전반적인 보안을 증가시킵니다. 💪 확인을 시작하면 팝업은 두 장치에 나타납니다. 그런 다음 서로 비교해야 이모지 또는 숫자의 목록를 볼 수 있습니다. 확인을 시작하기 전에 모든 장치를 준비하세요. 🤳",
     "@verifyOtherDeviceDescription": {},
     "isReadyForKeyVerification": "{sender}가 키 검증 준비를 완료함",
@@ -2605,14 +2379,8 @@
     "@appLockDescription": {},
     "calls": "전화",
     "@calls": {},
-    "globalChatId": "글로벌 채팅 ID",
-    "@globalChatId": {},
     "customEmojisAndStickers": "커스텀 이모지와 스티커",
     "@customEmojisAndStickers": {},
-    "accessAndVisibilityDescription": "채팅에 참가 할 수 있는 사람과 채팅을 볼 수 있는 범위",
-    "@accessAndVisibilityDescription": {},
-    "accessAndVisibility": "채팅 가입과 대화 기록",
-    "@accessAndVisibility": {},
     "customEmojisAndStickersBody": "모든 채팅에서 사용할 수있는 커스텀 이모지와 스티커를 추가하거나 공유합니다.",
     "@customEmojisAndStickersBody": {},
     "hideRedactedMessages": "삭제된 메시지 숨기기",
@@ -2627,21 +2395,8 @@
     "@passwordRecoverySettings": {},
     "knock": "참가 요청",
     "@knock": {},
-    "usersMustKnock": "유저들이 참가를 허가받아야함",
-    "@usersMustKnock": {},
     "knocking": "참가 요청중",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "채팅은 {server} 에서 검색하여 찾을 수 있습니다.",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "noOneCanJoin": "아무도 참가할 수 없음",
-    "@noOneCanJoin": {},
     "thereAreCountUsersBlocked": "{count}명의 차단된 유저가 있습니다.",
     "@thereAreCountUsersBlocked": {
         "type": "String",
@@ -2649,10 +2404,6 @@
     },
     "noDatabaseEncryption": "데이터베이스 암호화는 이 플랫폼에서 지원되지 않음",
     "@noDatabaseEncryption": {},
-    "publicChatAddresses": "공개 채팅 주소",
-    "@publicChatAddresses": {},
-    "createNewAddress": "새 주소 만들기",
-    "@createNewAddress": {},
     "searchMore": "더 검색...",
     "@searchMore": {},
     "files": "파일",
@@ -2738,8 +2489,6 @@
     "@changeTheCanonicalRoomAlias": {},
     "sendCanceled": "전송 최소됨",
     "@sendCanceled": {},
-    "homeserverDescription": "당신의 모든 데이터는 이메일과 흡사하게 당신의 홈서버에 저장됩니다. 당신이 소통하고 싶은 사람들과 다른 서버를 사용해도 무관하니 당신이 원하는 홈서버를 선택해도 됩니다. https://matrix.org에서 자세히 알아보세요.",
-    "@homeserverDescription": {},
     "sendingAttachmentCountOfCount": "첨부파일 {length}개중 {index}번째 전송 중...",
     "@sendingAttachmentCountOfCount": {
         "type": "integer",
@@ -2763,8 +2512,6 @@
     },
     "noContactInformationProvided": "서버가 유효한 연락처 정보를 제공하지 않음",
     "@noContactInformationProvided": {},
-    "welcomeText": "안녕하세요 👋 FluffyChat이에요. 당신은 htpps://matrix.org와 호환되는 모든 홈서버를 사용할 수 있어요. 그리고 모두와 대화해보세요. 거대한 분산 대화망이니까요!",
-    "@welcomeText": {},
     "changeGeneralChatSettings": "일반 채팅 설정 번경하기",
     "@changeGeneralChatSettings": {},
     "inviteOtherUsers": "다른 사용자를 이 채팅에 초대하기",
@@ -2783,8 +2530,6 @@
     "@opacity": {},
     "setWallpaper": "배경화면 설정하기",
     "@setWallpaper": {},
-    "manageAccount": "계정 관리하기",
-    "@manageAccount": {},
     "aboutHomeserver": "{homeserver}의 대해서",
     "@aboutHomeserver": {
         "type": "String",
@@ -2814,12 +2559,6 @@
     "@sendRoomNotifications": {},
     "chatPermissionsDescription": "이 채팅에서 특정 작업에 요구할 권한 레벨을 정의합니다. 권한 레벨 0, 50, 100은 일반적으로 유저, 관리자, 운영자를 나타내지만, 모든 숫자가 가능합니다.",
     "@chatPermissionsDescription": {},
-    "loginWithMatrixId": "Matrix-ID로 로그인",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "홈서버 찾아보기",
-    "@discoverHomeservers": {},
-    "whatIsAHomeserver": "홈서버가 무엇인가요?",
-    "@whatIsAHomeserver": {},
     "doesNotSeemToBeAValidHomeserver": "호환되는 홈서버가 아닌 것 같습니다. URL을 올바르게 입력됐나요?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "continueText": "계속하기",
@@ -2856,17 +2595,6 @@
     "@italicText": {},
     "boldText": "두꺼운 글꼴",
     "@boldText": {},
-    "appWantsToUseForLoginDescription": "웹사이트와 당신에 대한 정보를 공유하게됩니다.",
-    "@appWantsToUseForLoginDescription": {},
-    "appWantsToUseForLogin": "'{server}'로 로그인",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "otherPartyNotLoggedIn": "다른 구성원이 현재 로그인하지 않아 메시지를 수신하지 못합니다!",
     "@otherPartyNotLoggedIn": {},
     "open": "열기",
@@ -2887,8 +2615,6 @@
     "@previous": {},
     "newChatRequest": "📩 새 채팅 요청",
     "@newChatRequest": {},
-    "appIntroduction": "FluffyChat는 다른 메신저들을 사용하는 친구들과도 채팅할 수 있습니다. https://matrix.org에 방문하거나 *계속*을 눌러 자세한 정보를 확인하세요.",
-    "@appIntroduction": {},
     "synchronizingPleaseWaitCounter": " 동기화중… ({percentage}%)",
     "@synchronizingPleaseWaitCounter": {
         "type": "String",
@@ -2974,15 +2700,6 @@
     "@commandHint_roomupgrade": {},
     "checkList": "체크리스트",
     "@checkList": {},
-    "countInvited": "{count}초대받은",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "userSpecificNotificationSettings": "사용자별 알림 설정",
     "notificationRuleCallDescription": "통화에 대해 사용자에게 알림을 보냅니다.",
     "notificationRuleEncryptedRoomOneToOne": "암호화된 1:1 방",
@@ -3025,11 +2742,9 @@
     "taTooltip": "번역 도움말과 함께 L2 사용",
     "interactiveTranslatorSliderHeader": "인터랙티브 번역기",
     "interactiveGrammarSliderHeader": "인터랙티브 문법 검사기",
-    "interactiveTranslatorRequired": "필수",
     "waTooltip": "도움말 없이 L2 사용",
     "interactiveTranslator": "번역 지원",
     "noIdenticalLanguages": "기본 언어와 대상 언어를 다르게 선택하세요",
-    "searchBy": "국가 및 언어별 검색",
     "joinWithClassCode": "수업 참여",
     "languageLevelPreA1": "초급 낮음 (Pre A1)",
     "languageLevelA1": "초급 중급 (A1)",
@@ -3050,19 +2765,14 @@
     "saveChanges": "변경 사항 저장",
     "publicProfileTitle": "내 프로필을 검색에서 찾을 수 있도록 허용",
     "publicProfileDesc": "켜면, 다른 사용자가 글로벌 검색창에서 당신의 프로필을 찾고 채팅 요청을 보낼 수 있습니다. 이때 요청을 수락하거나 거부할 수 있습니다.",
-    "errorDisableIT": "번역 지원이 꺼져 있습니다.",
-    "errorDisableIGC": "문법 지원이 꺼져 있습니다.",
     "errorDisableITUserDesc": "여기를 클릭하여 번역 지원 설정을 업데이트하세요",
     "errorDisableIGCUserDesc": "여기를 클릭하여 문법 지원 설정을 업데이트하세요",
     "errorDisableITClassDesc": "이 채팅이 속한 강좌에 대한 번역 지원이 꺼져 있습니다.",
     "errorDisableIGCClassDesc": "이 채팅이 속한 강좌에 대한 문법 지원이 꺼져 있습니다.",
-    "error405Title": "언어가 설정되지 않음",
     "error405Desc": "메인 메뉴 > 학습 설정에서 언어를 설정하세요.",
     "termsAndConditions": "이용 약관",
     "andCertifyIAmAtLeast13YearsOfAge": " 및 만 16세 이상임을 인증합니다.",
-    "error502504Title": "와, 온라인에 학생이 정말 많네요!",
     "error502504Desc": "파니아 봇이 따라잡는 동안 번역 및 문법 도구가 느리거나 사용할 수 없을 수 있습니다.",
-    "error404Title": "번역 오류!",
     "error404Desc": "파니아 봇이 어떻게 번역해야 할지 확실하지 않아요...",
     "errorPleaseRefresh": "문제를 해결 중입니다! 새로고침 후 다시 시도하세요.",
     "connectedToStaging": "스테이징에 연결됨",
@@ -3100,13 +2810,9 @@
     "definitionsToolName": "단어 정의",
     "definitionsToolDescription": "활성화하면 파란색 밑줄이 그어진 단어를 클릭하여 정의를 볼 수 있습니다. 메시지를 클릭하여 정의에 접근하세요.",
     "welcomeBack": "다시 오신 것을 환영합니다! 2023-2024 파일럿에 참여하셨다면, 특별 파일럿 구독을 위해 저희에게 연락하세요. 교사이거나 귀하의 기관이 수업용 라이선스를 구매한 경우, 교사 구독을 위해 저희에게 연락하세요.",
-    "downloadTxtFile": "텍스트 파일 다운로드",
-    "downloadCSVFile": "CSV 파일 다운로드",
     "promotionalSubscriptionDesc": "현재 평생 프로모션 구독을 보유하고 있습니다. 구독 변경에 대한 도움을 원하시면 support@pangea.chat으로 메시지를 보내세요.",
     "originalSubscriptionPlatform": "구매 플랫폼: {purchasePlatform}",
     "oneWeekTrial": "일주일 무료 체험",
-    "downloadXLSXFile": "엑셀 파일 다운로드",
-    "unkDisplayName": "알 수 없음",
     "wwCountryDisplayName": "전 세계",
     "afCountryDisplayName": "아프가니스탄",
     "axCountryDisplayName": "올란드 제도",
@@ -3401,7 +3107,6 @@
     "chatCapacityHasBeenChanged": "채팅 용량이 변경되었습니다.",
     "chatCapacitySetTooLow": "채팅 용량은 최소 {count} 이상이어야 합니다.",
     "chatCapacityExplanation": "채팅 용량은 채팅에 허용되는 멤버 수를 제한합니다.",
-    "tooManyRequest": "요청이 너무 많습니다. 잠시 후 다시 시도하세요.",
     "enterNumber": "정수 값을 입력하세요.",
     "practice": "연습",
     "versionNotFound": "버전을 찾을 수 없습니다",
@@ -3411,7 +3116,6 @@
     "deleteSubscriptionWarningTitle": "활성 구독이 있습니다",
     "deleteSubscriptionWarningBody": "계정을 삭제하더라도 구독이 자동으로 취소되지 않습니다.",
     "manageSubscription": "구독 관리",
-    "error520Title": "다시 시도해 주세요.",
     "error520Desc": "죄송합니다, 메시지를 이해하지 못했습니다...",
     "wordsUsed": "사용된 단어",
     "level": "레벨",
@@ -3429,7 +3133,6 @@
     "other": "기타",
     "levelShort": "LVL {level}",
     "noCapacityLimit": "용량 제한 없음",
-    "downloadGroupText": "그룹 텍스트 다운로드",
     "notificationsOn": "알림 켜기",
     "notificationsOff": "알림 끄기",
     "joinWithCode": "코드로 참여",
@@ -3493,24 +3196,12 @@
     "whatIsTheMorphTag": "'{wordForm}'의 {morphologicalFeature}는 무엇입니까?",
     "dataAvailable": "데이터 가용성",
     "available": "이용 가능",
-    "pangeaBotIsFallible": "판게아 봇도 실수를 합니다!",
-    "whatIsMeaning": "'{lemma}'의 의미는 무엇입니까?",
     "chooseLemmaMeaningInstructionsBody": "메시지의 단어와 의미를 일치시키세요!",
-    "doubleClickToEdit": "더블 클릭하여 편집하세요.",
-    "topicLabel": "주제",
-    "topicPlaceholder": "주제 선택...",
-    "modePlaceholder": "모드 선택...",
-    "learningObjectiveLabel": "학습 목표",
-    "learningObjectivePlaceholder": "학습 목표 선택...",
-    "targetLanguageLabel": "목표 언어",
     "cefrLevelLabel": "CEFR 수준",
     "image": "이미지",
     "video": "비디오",
     "nan": "해당 없음",
-    "addVocabulary": "어휘 추가",
     "instructions": "지침",
-    "numberOfLearners": "학습자 수",
-    "mustBeInteger": "정수여야 합니다. 예: 1, 2, 3, ...",
     "constructUsePvmDesc": "음성 메시지로 제작됨",
     "leaveSpaceDescription": "코스를 떠나면 그 안의 모든 채팅이 종료됩니다. 다른 사용자는 당신이 코스를 떠났다는 것을 볼 수 있습니다.",
     "constructUseCorMmDesc": "메시지 의미가 정확함",
@@ -3525,7 +3216,6 @@
     "ttsDisabledBody": "학습 설정에서 텍스트 음성 변환을 활성화할 수 있습니다",
     "noSpaceDescriptionYet": "아직 생성된 강좌 설명이 없습니다.",
     "tooLargeToSend": "이 메시지는 너무 커서 보낼 수 없습니다",
-    "exitWithoutSaving": "저장하지 않고 종료하시겠습니까?",
     "enableAutocorrectPopupTitle": "목표 언어 키보드를 추가하려면 다음으로 이동하세요:",
     "enableAutocorrectPopupSteps": "  • 설정\n  • 일반\n  • 키보드\n  • 키보드\n  • 새 키보드 추가",
     "enableAutocorrectPopupDescription": "언어를 선택하면, 키보드 왼쪽 하단의 작은 지구본 아이콘을 클릭하여 새로 설치한 키보드를 활성화할 수 있습니다.",
@@ -3536,11 +3226,8 @@
     "displayName": "표시 이름",
     "leaveRoomDescription": "이 채팅을 떠날 예정입니다. 다른 사용자는 당신이 채팅을 떠났음을 볼 수 있습니다.",
     "confirmUserId": "계정을 삭제하려면 Pangea 채팅 사용자 이름을 확인하세요.",
-    "startingToday": "오늘부터 시작",
-    "oneWeekFreeTrial": "일주일 무료 체험",
     "paidSubscriptionStarts": "{startDate}부터 시작",
     "cancelInSubscriptionSettings": "• 구독 설정에서 언제든 취소 가능",
-    "cancelToAvoidCharges": "• {trialEnds} 전에 취소하여 요금을 피하세요",
     "downloadGboard": "Gboard 다운로드",
     "autocorrectNotAvailable": "안타깝게도 현재 이 플랫폼은 이 기능을 지원하지 않습니다. 향후 개발을 기대하세요!",
     "pleaseUpdateApp": "앱을 계속 사용하려면 업데이트하세요.",
@@ -3550,17 +3237,12 @@
     "knockSpaceSuccess": "이 강좌에 참여 요청을 보냈습니다! 관리자가 요청을 받으면 응답할 것입니다 😄",
     "chooseWordAudioInstructionsBody": "전체 메시지를 듣고, 그 다음에 오디오와 단어를 일치시키세요.",
     "chooseMorphsInstructionsBody": "문법 질문을 위해 퍼즐 조각을 클릭하세요!",
-    "pleaseEnterInt": "숫자를 입력하세요",
     "home": "홈",
     "join": "참여하기",
     "resetInstructionTooltipsTitle": "설명 툴팁 재설정",
     "resetInstructionTooltipsDesc": "클릭하여 새 사용자처럼 설명 툴팁을 표시하세요.",
-    "randomize": "무작위로 선택",
     "clear": "지우기",
-    "featuredActivities": "추천 활동",
     "save": "저장",
-    "startChat": "채팅 시작",
-    "translationProblem": "번역 문제",
     "askToJoin": "참여 요청",
     "emptyChatWarningTitle": "채팅이 비어 있습니다",
     "emptyChatWarningDesc": "아무도 채팅에 초대하지 않으셨습니다. 채팅 설정으로 이동하여 연락처 또는 봇을 초대하세요. 나중에 하셔도 됩니다.",
@@ -3590,17 +3272,13 @@
     "timesUsedIndependently": "독립적으로 사용된 횟수",
     "timesUsedWithAssistance": "도움과 함께 사용된 횟수",
     "shareInviteCode": "초대 코드 공유: {code}",
-    "leaderboard": "리더보드",
     "skipForNow": "지금은 건너뛰기",
     "permissions": "권한",
     "spaceChildPermission": "이 강좌에 새 채팅을 추가할 수 있는 사람",
-    "addEnvironmentOverride": "환경 재정의 추가",
     "defaultOption": "기본값",
     "deleteChatDesc": "이 채팅을 삭제하시겠습니까? 모든 참가자에게 삭제되며, 채팅 내 모든 메시지는 더 이상 연습이나 학습 분석에 사용할 수 없습니다.",
     "deleteSpaceDesc": "이 강좌와 선택된 채팅은 모든 참가자에게 삭제되며, 채팅 내 모든 메시지는 더 이상 연습이나 학습 분석에 사용할 수 없습니다. 이 작업은 되돌릴 수 없습니다.",
     "launch": "시작",
-    "searchChats": "채팅 검색",
-    "maxFifty": "최대 50개",
     "configureSpace": "강좌 구성",
     "pinMessages": "메시지 고정",
     "setJoinRules": "참여 규칙 설정",
@@ -3634,9 +3312,6 @@
     "failedToFetchTranscription": "전사 정보를 가져오지 못했어요",
     "deleteEmptySpaceDesc": "이 과정은 모든 참가자에게 삭제됩니다. 이 작업은 취소할 수 없습니다.",
     "regenerate": "다시 생성",
-    "mySavedActivities": "내 저장된 활동",
-    "noSavedActivities": "저장된 활동이 없습니다",
-    "saveActivity": "이 활동 저장",
     "failedToPlayVideo": "비디오 재생 실패",
     "done": "완료",
     "inThisSpace": "이 과정에서",
@@ -3647,13 +3322,9 @@
     "numInvited": "{count} 명이 초대됨",
     "saved": "저장됨",
     "reset": "초기화",
-    "errorFetchingActivitiesMessage": "활동 가져오기 실패",
     "errorFetchingDefinition": "정의를 가져오지 못했습니다",
     "errorProcessAnalytics": "분석 처리 실패",
     "errorDownloading": "다운로드 실패",
-    "errorLoadingSpaceChildren": "이 과정 내 채팅을 불러오지 못했습니다",
-    "unexpectedError": "예기치 않은 오류가 발생했습니다.",
-    "pleaseReload": "다시 로드하고 다시 시도하세요.",
     "translationError": "번역 오류",
     "check": "확인",
     "unableToFindRoom": "해당 코드로 채팅 또는 과정을 찾을 수 없습니다. 다시 시도하세요.",
@@ -3662,19 +3333,14 @@
     "request": "요청",
     "requestAll": "모든 요청",
     "confirmMessageUnpin": "이 메시지의 고정을 해제하시겠습니까?",
-    "saveAndLaunch": "저장하고 시작",
-    "launchToSpace": "과정에 시작",
     "pending": "보류 중",
     "inactive": "비활성",
-    "confirmRole": "역할 확인",
     "openRoleLabel": "오픈",
     "finishedTheActivity": "🎯 {username}님이 이 활동을 마무리하셨습니다",
     "activitySummaryError": "활동 요약을 사용할 수 없습니다",
     "requestSummaries": "요약 요청",
-    "generatingNewActivities": "이 언어 쌍의 첫 사용자입니다! 잠시만 기다려 주세요, 여러분만을 위한 활동을 준비 중입니다.",
     "requestAccessTitle": "분석 접근 요청?",
     "requestAccessDesc": "참가자 분석 보기 권한을 요청하시겠습니까?\n\n참가자가 동의하면, 이 강좌의 관리자는 다음을 볼 수 있습니다:\n    • 총 어휘 수\n    • 총 문법 개념\n    • 완료된 활동 세션 수\n    • 사용된 문법 개념, 맞게 또는 틀리게\n\n그들은 다음을 볼 수 없습니다:\n    • 강좌 외 채팅 메시지\n    • 어휘 목록",
-    "requestAccess": "접근 요청 ({count})",
     "analyticsInactiveTitle": "비활성 사용자에게 요청을 보낼 수 없습니다",
     "analyticsInactiveDesc": "이 기능이 도입된 이후로 로그인하지 않은 비활성 사용자는 요청을 볼 수 없습니다.\n\n사용자가 돌아오면 요청 버튼이 표시됩니다. 요청 버튼을 클릭하여 나중에 다시 요청할 수 있습니다.",
     "accessRequestedTitle": "분석 액세스 요청",
@@ -3697,8 +3363,6 @@
     "accessDesc": "코스를 공개하거나 비공개로 안전하게 설정할 수 있습니다!",
     "createGroupChatDesc": "활동 세션이 시작되고 종료되는 동안, 그룹 채팅은 일상적인 소통을 위해 열려 있습니다.",
     "deleteDesc": "코스는 관리자만 삭제할 수 있습니다. 이는 모든 사용자와 선택된 채팅을 삭제하는 파괴적인 작업입니다. 신중히 진행하세요.",
-    "noCourseFound": "이 코스에는 계획이 필요합니다!\n\n코스 계획은 주제와 대화 활동의 연속입니다.",
-    "additionalParticipants": "+ {num}명 더",
     "whatNow": "이제 무엇을 할까요?",
     "chooseNextActivity": "다음 활동을 선택하세요!",
     "letsGo": "시작합시다",
@@ -3711,13 +3375,11 @@
     "waitNotDone": "기다려, 아직 끝나지 않았어!",
     "waitingForOthersToFinish": "나머지 사람들이 끝내기를 기다리는 중...",
     "generatingSummary": "채팅 분석 및 결과 생성 중",
-    "findCourse": "코스 찾기",
     "pingParticipantsNotification": "{user}님이 {room}에서 활동 세션에 참여할 사용자를 찾고 있습니다",
     "course": "코스",
     "courses": "코스들",
     "goToCourse": "코스로 이동: {course}",
     "activityComplete": "이 활동이 완료되었습니다. 활동 요약은 아래에서 확인하실 수 있습니다.",
-    "startNewSession": "새 세션 시작",
     "joinOpenSession": "열린 세션에 참여하기",
     "activityNotFound": "활동을 찾을 수 없습니다",
     "myActivities": "내 활동",
@@ -3947,10 +3609,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3960,10 +3618,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4051,14 +3705,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4075,10 +3721,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4091,15 +3733,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4251,14 +3885,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4272,14 +3898,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5502,10 +5120,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5546,10 +5160,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5622,10 +5232,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5895,47 +5501,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5955,19 +5521,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6031,10 +5585,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6075,14 +5625,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6094,14 +5636,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6139,10 +5673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6159,27 +5689,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6303,10 +5817,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6316,10 +5826,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6336,14 +5842,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6483,18 +5981,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6543,10 +6029,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6556,18 +6038,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6610,23 +6080,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6650,10 +6108,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6661,14 +6115,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6773,18 +6219,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6837,10 +6271,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6867,10 +6297,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7051,7 +6477,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "내일 다시 확인하여 활동 업데이트를 확인하세요.",
-    "activityDropdownDesc": "이 활동이 끝나면 아래를 클릭하세요",
     "languageMismatchTitle": "언어 불일치",
     "languageMismatchDesc": "목표 언어가 이 활동의 언어와 일치하지 않습니다. 목표 언어를 업데이트하시겠습니까?",
     "reportWordIssueTooltip": "단어 정보 문제 신고",
@@ -7064,10 +6489,6 @@
     "selectAll": "모두 선택",
     "deselectAll": "모두 선택 해제",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7116,17 +6537,11 @@
         "placeholders": {}
     },
     "startOwn": "나만의 시작",
-    "joinCourseDesc": "각 강좌에는 8-10개의 순차적인 주제와 다양한 과제 기반 언어 학습 활동이 포함되어 있습니다.",
     "newMessageInPangeaChat": "💬 Pangea 채팅에 새 메시지",
     "shareCourse": "강좌 공유",
     "addCourse": "강좌 추가",
-    "joinPublicCourse": "공개 강좌 참여",
     "vocabLevelsDesc": "단어를 레벨업하면 여기에 단어가 표시됩니다!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7139,10 +6554,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7161,7 +6572,6 @@
     "emojiView": "이모지 보기",
     "feedbackDialogDesc": "저도 실수를 해요! 제가 개선할 수 있도록 도와줄 수 있는 것이 있나요?",
     "contactHasBeenInvitedToTheCourse": "연락처가 과정에 초대되었습니다",
-    "activityStatsButtonTooltip": "활동 정보",
     "allow": "허용",
     "deny": "거부",
     "enabledRenewal": "구독 갱신 활성화",
@@ -7429,10 +6839,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8488,16 +7894,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "다음 주제를 잠금 해제할 활동",
-    "activitiesToUnlockTopicDesc": "다음 과정 주제를 잠금 해제할 활동 수를 설정하세요",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "정확한 어휘 정의 연습",
     "constructUseIncLMDesc": "부정확한 어휘 정의 연습",
     "constructUseCorLADesc": "정확한 어휘 오디오 연습",
@@ -8505,7 +7901,6 @@
     "constructUseBonus": "어휘 연습 중 보너스",
     "practiceVocab": "어휘 연습",
     "selectMeaning": "의미 선택",
-    "selectAudio": "일치하는 오디오 선택",
     "anotherRound": "또 다른 라운드",
     "activitySettingsOverrideWarning": "활동 계획에 의해 결정된 언어 및 언어 수준",
     "voice": "음성",
@@ -8537,10 +7932,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8558,12 +7949,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "다운로드가 시작되었습니다",
     "webDownloadPermissionMessage": "브라우저가 다운로드를 차단하는 경우, 이 사이트에 대한 다운로드를 활성화해 주세요.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8658,11 +8044,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "문제가 발생했으며, 우리는 이를 해결하기 위해 열심히 작업하고 있습니다. 나중에 다시 확인해 주세요.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "쓰기 지원 활성화",
     "autoIGCToolDescription": "전송된 메시지를 목표 언어로 수정하기 위해 Pangea Chat 도구를 자동으로 실행합니다.",
     "@autoIGCToolName": {
@@ -8718,24 +8099,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "문법",
-    "spanTypeWordChoice": "단어 선택",
     "spanTypeSpelling": "철자",
     "spanTypePunctuation": "구두점",
     "spanTypeStyle": "스타일",
     "spanTypeFluency": "유창성",
     "spanTypeAccents": "억양",
     "spanTypeCapitalization": "대문자 사용",
-    "spanTypeCorrection": "수정",
     "spanFeedbackTitle": "수정 문제 보고",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8760,10 +8130,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -8776,13 +8142,7 @@
     "longPressToRecordVoiceMessage": "길게 눌러 음성 메시지를 녹음하세요.",
     "pause": "일시 정지",
     "resume": "재개",
-    "newSubSpace": "새 하위 공간",
-    "moveToDifferentSpace": "다른 공간으로 이동",
-    "removeFromSpaceDescription": "채팅은 공간에서 제거되지만 여전히 채팅 목록에 나타납니다.",
     "countChats": "{chats} 개의 채팅",
-    "spaceMemberOf": "{spaces}의 공간 구성원",
-    "spaceMemberOfCanKnock": "{spaces}의 공간 구성원이 노크할 수 있습니다.",
-    "donate": "기부하기",
     "startedAPoll": "{username}이(가) 설문조사를 시작했습니다.",
     "poll": "설문조사",
     "startPoll": "설문조사 시작",
@@ -8806,23 +8166,15 @@
     "newStickerPack": "새 스티커 팩",
     "stickerPackName": "스티커 팩 이름",
     "attribution": "출처",
-    "skipChatBackup": "채팅 백업 건너뛰기",
-    "skipChatBackupWarning": "확실합니까? 채팅 백업을 활성화하지 않으면 기기를 전환할 때 메시지에 대한 접근을 잃을 수 있습니다.",
-    "loadingMessages": "메시지 로딩 중",
-    "setupChatBackup": "채팅 백업 설정",
     "noMoreResultsFound": "더 이상 결과가 없습니다",
     "chatSearchedUntil": "{time}까지 채팅 검색됨",
     "federationBaseUrl": "연합 기본 URL",
     "clientWellKnownInformation": "클라이언트-잘 알려진 정보:",
     "baseUrl": "기본 URL",
     "identityServer": "아이덴티티 서버:",
-    "versionWithNumber": "버전: {version}",
     "logs": "로그",
-    "advancedConfigs": "고급 구성",
     "advancedConfigurations": "고급 구성",
-    "signInWithLabel": "다음으로 로그인:",
     "selectAllWords": "오디오에서 들리는 모든 단어를 선택하세요",
-    "joinCourseForActivities": "활동을 시도하려면 코스에 참여하세요.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -8859,18 +8211,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -8878,26 +8218,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9003,22 +8323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9047,19 +8351,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9067,15 +8359,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9276,11 +8560,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "수업 중인가요? 여기에 참여 코드를 입력하세요.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "오디오 메시지 자동 강조",
     "selectAudioMessagesOnPlayDescription": "재생할 때 오디오 메시지를 자동으로 강조 표시합니다",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9324,18 +8603,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "이 과정에는 {input} 활동보다 적은 주제가 있습니다. {minValue} 이하의 숫자를 입력해 주세요.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "여기에 클릭하여 다시 로그인하세요.",
     "@clickToLogin": {
@@ -9752,17 +9019,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "흥분한 듯 팔을 들고 있는 만화 같은 노란 곰.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "배우고 싶은 단어를 선택하세요",
     "requireAnalyticsAccessTitle": "참여를 위해 분석 접근 권한 필요",
     "requireAnalyticsAccessDesc": "참여자는 이 과정에 참여하기 위해 학습 분석에 대한 접근 권한을 부여해야 합니다.",
     "analyticsAccessNoticeTitle": "분석 접근 권한 필요",
     "analyticsAccessNoticeDesc": "이 과정에 참여함으로써, 귀하는 관리자에게 귀하의 학습 분석에 대한 접근 권한을 부여하는 것에 동의합니다.",
-    "skipOnboardingClassCodeDesc": "독립적으로 학습하고 있나요? 걱정하지 마세요, 당신은:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9780,10 +9041,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9812,7 +9069,6 @@
     "pickCefrLevelTeacherStepTitle": "어떤 수준을 가르치고 있습니까?",
     "pickCefrLevelStudentStepTitle": "당신은 어떤 수준입니까?",
     "customCourseStepTitle": "맞춤 코스를 받으려면 이 양식을 작성하세요",
-    "aboutYourClass": "수업에 대하여",
     "courseCodeStepErrorMessage": "코드를 확인하고 다시 시도해 주세요",
     "institution": "기관",
     "courseGoals": "강좌 목표",
@@ -9855,10 +9111,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9975,12 +9227,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "판게아 채팅 로고",
     "introChatDetails": "안녕하세요! 동료 코스 참가자에게 자신을 소개하고, 친구를 찾고, 활동 외부에서 채팅하세요.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10024,11 +9271,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "활동 작업",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "발음 도구",
     "audioTranscription": "AI 오디오 전사",
     "visualLearnerSupport": "시각 학습자 지원",
@@ -10069,7 +9311,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "이 활동을 플레이하려면 이 활동이 포함된 코스를 가입하세요.",
     "resizeCoursePanel": "코스 패널 크기 조정",
     "undo": "실행 취소",
     "unlock": "잠금 해제",
@@ -10083,7 +9324,6 @@
     "addCourseBrowsePublic": "공개 과정 탐색",
     "browsePublicCourses": "공개 과정 탐색",
     "editProfile": "프로필 수정",
-    "numObjectives": "{count} 개의 목표",
     "mapSearchHint": "활동 검색",
     "mapSearchNoResults": "일치하는 항목이 없습니다",
     "mapFilterAllLanguages": "모든 언어",
@@ -10092,7 +9332,6 @@
     "mapFilterCompleted": "완료됨",
     "mapFilterReset": "재설정",
     "activityTypeConversation": "대화",
-    "lockedMissionRequirement": "이전 미션을 완료하여 잠금을 해제하세요",
     "playAgain": "다시 플레이",
     "reviewActivity": "검토",
     "mapEmptyInView": "귀하의 수준이나 언어에 해당하는 내용이 없습니다. 필터를 넓히거나 축소하세요.",
@@ -10107,14 +9346,9 @@
     "scrollToBottom": "맨 아래로 스크롤",
     "courseImage": "강의 이미지",
     "avatarPreview": "아바타 미리보기",
-    "activityPhoto": "활동 사진",
     "emotePreview": "이모티콘 미리보기: {name}",
     "activityLabel": "활동: {title}",
     "resetMapView": "지도 보기 초기화",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10167,14 +9401,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10204,10 +9430,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10264,10 +9486,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10619,5 +9837,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "코스 권한",
+    "starsToUnlockObjectiveTitle": "미션당 별 개수",
+    "starsToUnlockObjectiveDesc": "각 미션을 완료하는 데 필요한 별 개수를 설정하세요",
+    "maxStarsPerMissionWarning": "이 코스에는 {maxValue}개의 별만 획득할 수 있는 미션이 있습니다. {maxValue}보다 작거나 같은 숫자를 입력하세요.",
+    "removedFromCourseError": "이 코스에서 삭제되었습니다. 선생님께 문의하세요."
 }

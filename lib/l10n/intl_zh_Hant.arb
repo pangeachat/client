@@ -77,11 +77,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "是否允許訪客加入",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "areYouSure": "您確定嗎？",
     "@areYouSure": {
         "type": "String",
@@ -339,11 +334,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "您的過往聊天室記錄已被恢復金鑰加密。請您確保不會弄丟它。",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatDetails": "對話詳細",
     "@chatDetails": {
         "type": "String",
@@ -381,11 +371,6 @@
     },
     "connect": "連接",
     "@connect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "聯絡人已被邀請至群組",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -578,11 +563,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "您將不能再停用加密，確定嗎？",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encrypted": "已加密的",
     "@encrypted": {
         "type": "String",
@@ -609,11 +589,6 @@
     },
     "enterAnEmailAddress": "輸入一個電子郵件位址",
     "@enterAnEmailAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "everythingReady": "一切就緒！",
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -654,11 +629,6 @@
     },
     "group": "群組",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "群組是公開的",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -752,15 +722,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "邀請聯絡人到 {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "已邀請",
     "@invited": {
@@ -873,15 +834,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "載入 {count} 個更多的參與者",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "載入中...... 請稍候。",
     "@loadingPleaseWait": {
         "type": "String",
@@ -896,15 +848,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "登入 {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "登出",
     "@logout": {
@@ -968,16 +911,6 @@
     },
     "noEmotesFound": "表情符號不存在。😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "您只能在這個聊天室不再被允許公開訪問後，才能啟用加密。",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "未能在你的裝置找到 Firebase Cloud Messaging(FCM). 如果想要收到通知消息的推送，我們建議安裝 ntfy。在有 ntfy 或其他 Unified Push 應用，便能在資料安全的情況下收到通知的推送。你可以在 Play store 或 F-Droid 下載並安裝 ntfy。",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1077,11 +1010,6 @@
     },
     "passwordHasBeenChanged": "密碼已被變更",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "恢復密碼",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1205,11 +1133,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "移除裝置",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "解封聊天室",
     "@unbanFromChat": {
@@ -1340,11 +1263,6 @@
             }
         }
     },
-    "setPermissionsLevel": "設定權限等級",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "設定狀態",
     "@setStatus": {
         "type": "String",
@@ -1434,11 +1352,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "從其他裝置傳輸",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "再次嘗試傳送",
     "@tryToSendAgain": {
         "type": "String",
@@ -1494,15 +1407,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, =1 {1 unread chat} other { {unreadCount} 個未讀聊天室} }",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} 和其他 {count} 個人正在輸入...…",
     "@userAndOthersAreTyping": {
@@ -1588,16 +1492,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "視訊通話",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "聊天室記錄的可見性",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "對所有參與者可見",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1643,23 +1537,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "誰可以執行這個動作",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "誰可以加入這個群組",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "您檢舉的原因是什麼？",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "是否清除您的聊天室記錄備份以建立新的安全金鑰嗎？",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1786,8 +1665,6 @@
     },
     "repeatPassword": "再次輸入密碼",
     "@repeatPassword": {},
-    "yourChatBackupHasBeenSetUp": "您的聊天室記錄備份已設定。",
-    "@yourChatBackupHasBeenSetUp": {},
     "commandHint_myroomavatar": "設定您的聊天室頭貼（通過 mxc-uri）",
     "@commandHint_myroomavatar": {
         "type": "String",
@@ -1902,14 +1779,10 @@
     },
     "sender": "傳送者",
     "@sender": {},
-    "voiceCall": "語音通話",
-    "@voiceCall": {},
     "blockUsername": "無視使用者名稱",
     "@blockUsername": {},
     "noBackupWarning": "警告！如果不啟用聊天室備份，您將失去對加密訊息的訪問。強烈建議在登出前先啟用聊天室備份。",
     "@noBackupWarning": {},
-    "addChatOrSubSpace": "新增聊天室或子空間",
-    "@addChatOrSubSpace": {},
     "thisDevice": "這個裝置：",
     "@thisDevice": {},
     "separateChatTypes": "分開私訊和群組",
@@ -1995,8 +1868,6 @@
             }
         }
     },
-    "unlockOldMessages": "解鎖舊消息",
-    "@unlockOldMessages": {},
     "noOtherDevicesFound": "未找到其他裝置",
     "@noOtherDevicesFound": {},
     "noUsersFoundWithQuery": "很遺憾，找不到與「{query}」相符的使用者。請檢查是否有打錯字。",
@@ -2020,8 +1891,6 @@
     "@experimentalVideoCalls": {},
     "youAcceptedTheInvitation": "👍 您接受了邀請",
     "@youAcceptedTheInvitation": {},
-    "storeSecurlyOnThisDevice": "在此裝置上安全存儲",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "{count} 個文件",
     "@countFiles": {
         "placeholders": {
@@ -2030,8 +1899,6 @@
             }
         }
     },
-    "screenSharingDetail": "您正在 FuffyChat 中分享您的螢幕",
-    "@screenSharingDetail": {},
     "wrongPinEntered": "輸入的密碼錯誤！ {seconds} 秒後再試一次......",
     "@wrongPinEntered": {
         "type": "String",
@@ -2045,8 +1912,6 @@
     "@archiveRoomDescription": {},
     "banUserDescription": "該使用者將被禁止進入聊天室，直到他們被解封之前都無法再次進入聊天室。",
     "@banUserDescription": {},
-    "searchChatsRooms": "搜尋 #chats, @users...",
-    "@searchChatsRooms": {},
     "decline": "拒絕",
     "@decline": {},
     "sendReadReceipts": "傳送已讀回條",
@@ -2102,18 +1967,12 @@
     "@setColorTheme": {},
     "makeAdminDescription": "一旦您讓這個使用者成為管理員，您可能無法撤銷此操作，因為他們將擁有與您相同的權限。",
     "@makeAdminDescription": {},
-    "createGroupAndInviteUsers": "建立群組並邀請使用者",
-    "@createGroupAndInviteUsers": {},
-    "groupCanBeFoundViaSearch": "可以透過搜尋找到群組",
-    "@groupCanBeFoundViaSearch": {},
     "pleaseEnterYourCurrentPassword": "請輸入您當前的密碼",
     "@pleaseEnterYourCurrentPassword": {},
     "widgetCustom": "自訂",
     "@widgetCustom": {},
     "createGroup": "建立群組",
     "@createGroup": {},
-    "enterSpace": "進入空間",
-    "@enterSpace": {},
     "shareLocation": "分享位置",
     "@shareLocation": {
         "type": "String",
@@ -2148,11 +2007,6 @@
         "type": "String",
         "description": "Usage hint for the command /react"
     },
-    "createNewSpace": "新建空間",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatPermissions": "聊天室權限",
     "@chatPermissions": {},
     "customEmojisAndStickersBody": "新增或分享可在任何聊天室中使用的自訂表情符號或貼圖。",
@@ -2183,8 +2037,6 @@
     },
     "oneClientLoggedOut": "您的一個客戶端已登出",
     "@oneClientLoggedOut": {},
-    "addAccount": "新增帳號",
-    "@addAccount": {},
     "editBundlesForAccount": "為此帳號編輯套組",
     "@editBundlesForAccount": {},
     "openInMaps": "在地圖中打開",
@@ -2212,13 +2064,6 @@
             }
         }
     },
-    "recoveryKey": "恢復金鑰",
-    "@recoveryKey": {},
-    "spaceName": "空間名稱",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "synchronizingPleaseWait": "正在同步... 請稍候。",
     "@synchronizingPleaseWait": {
         "type": "String",
@@ -2226,18 +2071,12 @@
     },
     "messageInfo": "訊息資訊",
     "@messageInfo": {},
-    "removeFromSpace": "從空間中移除",
-    "@removeFromSpace": {},
-    "pleaseEnterRecoveryKeyDescription": "要解鎖您的舊訊息，請輸入在之前的會話中生成的恢復密鑰。您的恢復密鑰不是您的密碼。",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "emojis": "表情符號",
     "@emojis": {},
     "placeCall": "發起通話",
     "@placeCall": {},
     "unsupportedAndroidVersion": "不支持的Android版本",
     "@unsupportedAndroidVersion": {},
-    "videoCallsBetaWarning": "請注意，視訊通話目前處於測試階段。它們可能不會按預期工作，或者在所有平台上都不工作。",
-    "@videoCallsBetaWarning": {},
     "widgetUrlError": "這不是一個有效的URL。",
     "@widgetUrlError": {},
     "addWidget": "新增小工具",
@@ -2284,10 +2123,6 @@
     "@newSpace": {},
     "doNotShowAgain": "不再顯示",
     "@doNotShowAgain": {},
-    "encryptThisChat": "加密此聊天室",
-    "@encryptThisChat": {},
-    "sorryThatsNotPossible": "抱歉......這是不可能的",
-    "@sorryThatsNotPossible": {},
     "invite": "邀請",
     "@invite": {},
     "removeDevicesDescription": "您將從這個裝置登出，並將不再能夠接收消息。",
@@ -2310,8 +2145,6 @@
     "@pleaseChooseAStrongPassword": {},
     "passwordIsWrong": "您輸入的密碼錯誤",
     "@passwordIsWrong": {},
-    "publicChatAddresses": "公開聊天室地址",
-    "@publicChatAddresses": {},
     "leaveEmptyToClearStatus": "留空以清除您的狀態。",
     "@leaveEmptyToClearStatus": {},
     "select": "選擇",
@@ -2358,22 +2191,12 @@
     "@knockRestricted": {},
     "appLockDescription": "未使用時以密碼鎖定應用程式",
     "@appLockDescription": {},
-    "globalChatId": "全球聊天室 ID",
-    "@globalChatId": {},
-    "accessAndVisibility": "訪問權限和可見性",
-    "@accessAndVisibility": {},
-    "accessAndVisibilityDescription": "誰被允許加入此聊天室以及如何發現聊天室。",
-    "@accessAndVisibilityDescription": {},
     "calls": "通話",
     "@calls": {},
-    "chatDescription": "聊天室描述",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "聊天室描述已變更",
     "@chatDescriptionHasBeenChanged": {},
     "tryAgain": "再試一次",
     "@tryAgain": {},
-    "pleaseEnterRecoveryKey": "請輸入您的恢復金鑰：",
-    "@pleaseEnterRecoveryKey": {},
     "directChat": "私訊",
     "@directChat": {},
     "register": "註冊",
@@ -2394,22 +2217,8 @@
     "@searchForUsers": {},
     "inviteGroupChat": "📨 邀請群組聊天室",
     "@inviteGroupChat": {},
-    "setTheme": "設定主題：",
-    "@setTheme": {},
     "knocking": "敲門",
     "@knocking": {},
-    "sessionLostBody": "您的會話已丟失。請將此錯誤報告給開發人員，網址為 {url}。錯誤訊息為：{error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "swipeRightToLeftToReply": "向右滑至左以回覆",
     "@swipeRightToLeftToReply": {},
     "hideRedactedMessagesBody": "如果有人收回一條訊息，該訊息將不再在聊天室中顯示。",
@@ -2436,11 +2245,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "spaceIsPublic": "空間是公開的",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "dismiss": "解散",
     "@dismiss": {},
     "reactedWith": "{sender} 以 {reaction} 回應",
@@ -2459,18 +2263,6 @@
     "@confirmEventUnpin": {},
     "widgetEtherpad": "文字筆記",
     "@widgetEtherpad": {},
-    "noOneCanJoin": "沒有人可以加入",
-    "@noOneCanJoin": {},
-    "saveKeyManuallyDescription": "通過觸發系統分享對話框或剪貼板手動保存此密鑰。",
-    "@saveKeyManuallyDescription": {},
-    "storeInAndroidKeystore": "存儲在 Android KeyStore",
-    "@storeInAndroidKeystore": {},
-    "storeInAppleKeyChain": "存儲在 Apple KeyChain",
-    "@storeInAppleKeyChain": {},
-    "foregroundServiceRunning": "當前景服務正在運行時會顯示此通知。",
-    "@foregroundServiceRunning": {},
-    "screenSharingTitle": "螢幕分享",
-    "@screenSharingTitle": {},
     "wasDirectChatDisplayName": "空的聊天室（原名稱為 {oldDisplayName} ）",
     "@wasDirectChatDisplayName": {
         "type": "String",
@@ -2480,8 +2272,6 @@
             }
         }
     },
-    "disableEncryptionWarning": "出於安全原因，您不能在之前已加密的聊天室中停用加密。",
-    "@disableEncryptionWarning": {},
     "deviceKeys": "裝置密鑰：",
     "@deviceKeys": {},
     "fileIsTooBigForServer": "無法發送！該伺服器僅支援最大到 {max} 的附件。",
@@ -2543,18 +2333,6 @@
     "@incomingMessages": {},
     "databaseMigrationTitle": "資料庫已最佳化",
     "@databaseMigrationTitle": {},
-    "restoreSessionBody": "應用程式現在嘗試從備份中恢復您的會話。請將此錯誤報告給開發人員，網址為 {url}。錯誤訊息為：{error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "stickers": "貼圖",
     "@stickers": {},
     "joinSpace": "加入空間",
@@ -2573,10 +2351,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableMultiAccounts": "（實驗性功能）在此裝置上啟用多個帳號",
-    "@enableMultiAccounts": {},
-    "recoveryKeyLost": "遺失恢復金鑰？",
-    "@recoveryKeyLost": {},
     "sendAsText": "以文字傳送",
     "@sendAsText": {
         "type": "String"
@@ -2585,21 +2359,10 @@
     "@unverified": {},
     "time": "時間",
     "@time": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "可以透過在 {server} 上的搜尋發現聊天室",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "commandHint_sendraw": "傳送原始 json",
     "@commandHint_sendraw": {},
     "newPassword": "新密碼",
     "@newPassword": {},
-    "createNewAddress": "建立新地址",
-    "@createNewAddress": {},
     "searchIn": "在聊天室「{chat}」中搜尋......",
     "@searchIn": {
         "type": "String",
@@ -2638,28 +2401,16 @@
     "@reportUser": {},
     "unsupportedAndroidVersionLong": "此功能需要較新的 Android 版本。請檢查更新或 Lineage OS 支持。",
     "@unsupportedAndroidVersionLong": {},
-    "emailOrUsername": "電子郵件或使用者名",
-    "@emailOrUsername": {},
     "widgetJitsi": "Jitsi Meet",
     "@widgetJitsi": {},
-    "usersMustKnock": "使用者必須敲門",
-    "@usersMustKnock": {},
     "knock": "敲門",
     "@knock": {},
-    "storeInSecureStorageDescription": "將恢復密鑰存儲在此裝置的安全存儲中。",
-    "@storeInSecureStorageDescription": {},
     "whyIsThisMessageEncrypted": "為什麼這條訊息無法讀取？",
     "@whyIsThisMessageEncrypted": {},
     "noKeyForThisMessage": "如果訊息是在您登入此裝置之前傳送的，就可能會發生這種情況。\n\n也有可能是傳送者已經封鎖了您的裝置，或者網絡連接出了問題。\n\n如果您能在另一個會話中讀取該訊息，那麼您可以從中轉移訊息！前往設定 > 裝置，並確保您的裝置已相互驗證。當您下次打開房間且兩個會話都在前景時，密鑰將自動傳輸。\n\n不想在登出或切換裝置時丟失密鑰？請確保您已在設定中啟用了聊天室備份。",
     "@noKeyForThisMessage": {},
-    "newSpaceDescription": "空間允許您整合您的聊天室並建立私人或公開社群。",
-    "@newSpaceDescription": {},
     "invalidInput": "無效的輸入！",
     "@invalidInput": {},
-    "verifyOtherUser": "🔐 驗證其他使用者",
-    "@verifyOtherUser": {},
-    "verifyOtherUserDescription": "如果您驗證了另一個使用者，您可以確定您真正與誰通信。💪\n\n當您開始驗證時，您和另一個使用者將在應用程式中看到一個彈出視窗。在那裡，您將看到一系列的表情符號或數字，您需要相互比較。\n\n最好的方式是見面或開始視訊通話。👭",
-    "@verifyOtherUserDescription": {},
     "requestedKeyVerification": "{sender} 請求了密鑰驗證",
     "@requestedKeyVerification": {
         "type": "String",
@@ -2749,8 +2500,6 @@
             }
         }
     },
-    "loginWithMatrixId": "以Matrix-ID登入",
-    "@loginWithMatrixId": {},
     "inviteOtherUsers": "邀請其他用戶進入本聊天",
     "@inviteOtherUsers": {},
     "sendRoomNotifications": "傳送一條 @room 群提醒",
@@ -2770,14 +2519,10 @@
     "@chatPermissionsDescription": {},
     "changeGeneralChatSettings": "變更一般聊天設定",
     "@changeGeneralChatSettings": {},
-    "manageAccount": "帳號管理",
-    "@manageAccount": {},
     "changeTheChatPermissions": "變更聊天室權限",
     "@changeTheChatPermissions": {},
     "changeTheVisibilityOfChatHistory": "變更過往聊天記錄可見度",
     "@changeTheVisibilityOfChatHistory": {},
-    "homeserverDescription": "您的所有資料都儲存在歸屬伺服器上，就像電子郵件提供商一樣。 您可以選擇要使用的歸屬伺服器，同時您仍然可以與每個人溝通。 請訪問https://matrix.org瞭解更多資訊。",
-    "@homeserverDescription": {},
     "sendingAttachment": "附件傳送中…",
     "@sendingAttachment": {},
     "compressVideo": "影片壓縮中…",
@@ -2797,10 +2542,6 @@
     "@noChatsFoundHere": {},
     "changeTheDescriptionOfTheGroup": "變更聊天室說明",
     "@changeTheDescriptionOfTheGroup": {},
-    "discoverHomeservers": "探索歸屬伺服器",
-    "@discoverHomeservers": {},
-    "whatIsAHomeserver": "什麼是歸屬伺服器?",
-    "@whatIsAHomeserver": {},
     "calculatingFileSize": "正在計算檔案大小…",
     "@calculatingFileSize": {},
     "prepareSendingAttachment": "準備傳送附件…",
@@ -2828,8 +2569,6 @@
             }
         }
     },
-    "welcomeText": "嘿，嘿👋這是FluffyChat。 您可以登入任何與https://matrix.org相容的歸屬伺服器後和任何人聊天。 這是一個巨大的去中心化訊息網路！",
-    "@welcomeText": {},
     "setWallpaper": "設定背景樣式",
     "@setWallpaper": {},
     "noContactInformationProvided": "伺服器沒有提供任何有效的聯絡資訊",
@@ -2901,15 +2640,6 @@
     "@version": {},
     "unableToJoinChat": "無法加入聊天室。對話可能以被其他方結束。",
     "@unableToJoinChat": {},
-    "appWantsToUseForLogin": "使用「{server} 」伺服器登入",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "italicText": "斜體",
     "@italicText": {},
     "boldText": "粗體",
@@ -2920,14 +2650,10 @@
     "@pleaseFillOut": {},
     "invalidUrl": "無效 url",
     "@invalidUrl": {},
-    "appWantsToUseForLoginDescription": "你特此允許該應用程式和網站分享關於你的信息。",
-    "@appWantsToUseForLoginDescription": {},
     "open": "打開",
     "@open": {},
     "waitingForServer": "等待伺服器中...",
     "@waitingForServer": {},
-    "appIntroduction": "FluffyChat 讓你和你的朋友跨越工具聊天。在 https://matrix.org 了解更多或*繼續*。",
-    "@appIntroduction": {},
     "previous": "上一個",
     "@previous": {},
     "otherPartyNotLoggedIn": "對方現未登入，未能接收訊息 !",
@@ -3041,15 +2767,6 @@
     "@pleaseWaitUntilInvited": {},
     "notificationRuleIsUserMentionDescription": "被@時通知他們。",
     "@notificationRuleIsUserMentionDescription": {},
-    "countInvited": "已邀請{count}位",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "checkList": "清單",
     "sentVoiceMessage": "🎙️ {duration} - 來自 {sender} 的語音訊息",
     "commandHint_logout": "登出您的當前設備",
@@ -3062,11 +2779,9 @@
     "taTooltip": "与翻译辅助一起使用L2",
     "interactiveTranslatorSliderHeader": "互动翻译器",
     "interactiveGrammarSliderHeader": "互动语法检查器",
-    "interactiveTranslatorRequired": "必需",
     "waTooltip": "无辅助使用L2",
     "interactiveTranslator": "翻譯協助",
     "noIdenticalLanguages": "請選擇不同的基礎語言和目標語言",
-    "searchBy": "按國家和語言搜索",
     "joinWithClassCode": "加入課程",
     "languageLevelPreA1": "新手低級（Pre A1）",
     "languageLevelA1": "新手中級 (A1)",
@@ -3087,19 +2802,14 @@
     "saveChanges": "保存更改",
     "publicProfileTitle": "允許在搜索中找到我的個人資料",
     "publicProfileDesc": "開啟後，您可以讓其他用戶在全球搜索欄中找到您的個人資料並發送聊天請求。此時，您可以選擇接受或拒絕該請求。",
-    "errorDisableIT": "翻譯協助已關閉。",
-    "errorDisableIGC": "語法協助已關閉。",
     "errorDisableITUserDesc": "點擊此處更新翻譯協助設置",
     "errorDisableIGCUserDesc": "點擊此處更新語法協助設置",
     "errorDisableITClassDesc": "此課程已關閉互動翻譯協助。",
     "errorDisableIGCClassDesc": "此課程已關閉互動語法協助。",
-    "error405Title": "未設定語言",
     "error405Desc": "請在主選單 > 學習設定中設定您的語言。",
     "termsAndConditions": "條款與條件",
     "andCertifyIAmAtLeast13YearsOfAge": " 並證明我已年滿16歲。",
-    "error502504Title": "哇，線上學生好多！",
     "error502504Desc": "在 Pangea 機器人追趕時，翻譯和語法工具可能會變慢或無法使用。",
-    "error404Title": "翻譯錯誤！",
     "error404Desc": "Pangea 機器人不確定如何翻譯那個...",
     "errorPleaseRefresh": "我們正在處理！請重新載入並再試一次。",
     "connectedToStaging": "已連接到測試環境",
@@ -3137,13 +2847,9 @@
     "definitionsToolName": "單詞定義",
     "definitionsToolDescription": "啟用後，藍色底線的單詞可以點擊查看定義。點擊訊息以存取定義。",
     "welcomeBack": "歡迎回來！如果您是2023-2024試點計畫的一部分，請聯繫我們以獲取您的特別試點訂閱。如果您是教師，且已為您的班級購買許可證（或您的機構已購買），請聯繫我們以獲取教師訂閱。",
-    "downloadTxtFile": "下載文字檔",
-    "downloadCSVFile": "下載CSV檔",
     "promotionalSubscriptionDesc": "您目前擁有終身促銷訂閱。請聯繫 support@pangea.chat 以獲取更改訂閱的幫助。",
     "originalSubscriptionPlatform": "訂閱平台為 {purchasePlatform}",
     "oneWeekTrial": "一週試用",
-    "downloadXLSXFile": "下載Excel檔",
-    "unkDisplayName": "未知",
     "wwCountryDisplayName": "全球",
     "afCountryDisplayName": "阿富汗",
     "axCountryDisplayName": "奥兰群岛",
@@ -3438,7 +3144,6 @@
     "chatCapacityHasBeenChanged": "聊天容量已更改",
     "chatCapacitySetTooLow": "聊天容量必須至少為 {count}。",
     "chatCapacityExplanation": "聊天容量限制允許加入的成員數量。",
-    "tooManyRequest": "請求過多，請稍後再試。",
     "enterNumber": "請輸入整數值。",
     "practice": "練習",
     "versionNotFound": "未找到版本",
@@ -3448,7 +3153,6 @@
     "deleteSubscriptionWarningTitle": "您有一個有效的訂閱",
     "deleteSubscriptionWarningBody": "刪除您的帳戶不會自動取消您的訂閱。",
     "manageSubscription": "管理訂閱",
-    "error520Title": "請再試一次。",
     "error520Desc": "抱歉，我們無法理解您的訊息...",
     "wordsUsed": "已使用字數",
     "level": "等級",
@@ -3466,7 +3170,6 @@
     "other": "其他",
     "levelShort": "等級 {level}",
     "noCapacityLimit": "沒有容量限制",
-    "downloadGroupText": "下載群組文字",
     "notificationsOn": "通知已開啟",
     "notificationsOff": "通知已關閉",
     "joinWithCode": "用密碼加入",
@@ -3530,24 +3233,12 @@
     "whatIsTheMorphTag": "'{wordForm}'的{morphologicalFeature}是什麼？",
     "dataAvailable": "資料可用性",
     "available": "可用",
-    "pangeaBotIsFallible": "Pangea 機器人也會犯錯！",
-    "whatIsMeaning": "'{lemma}'的意思是什麼？",
     "chooseLemmaMeaningInstructionsBody": "將意思與訊息中的單詞配對！",
-    "doubleClickToEdit": "雙擊以編輯。",
-    "topicLabel": "主題",
-    "topicPlaceholder": "選擇一個主題...",
-    "modePlaceholder": "選擇一個模式...",
-    "learningObjectiveLabel": "學習目標",
-    "learningObjectivePlaceholder": "選擇一個學習目標...",
-    "targetLanguageLabel": "目標語言",
     "cefrLevelLabel": "CEFR 等級",
     "image": "圖片",
     "video": "影片",
     "nan": "不適用",
-    "addVocabulary": "新增詞彙",
     "instructions": "指示",
-    "numberOfLearners": "學習者人數",
-    "mustBeInteger": "必須是整數，例如 1、2、3、...",
     "constructUsePvmDesc": "以語音訊息產生",
     "leaveSpaceDescription": "退出課程後，您將離開所有該課程中的聊天。其他用戶將看到您已離開課程。",
     "constructUseCorMmDesc": "正確的訊息含義",
@@ -3562,7 +3253,6 @@
     "ttsDisabledBody": "您可以在學習設定中啟用文字轉語音",
     "noSpaceDescriptionYet": "尚未建立課程描述。",
     "tooLargeToSend": "此訊息過大，無法傳送",
-    "exitWithoutSaving": "您確定要不儲存直接離開嗎？",
     "enableAutocorrectPopupTitle": "請前往以下位置加入您的目標語言鍵盤：",
     "enableAutocorrectPopupSteps": "  • 設定\n  • 一般\n  • 鍵盤\n  • 鍵盤\n  • 新增鍵盤",
     "enableAutocorrectPopupDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖示來啟用新安裝的鍵盤。",
@@ -3573,11 +3263,8 @@
     "displayName": "顯示名稱",
     "leaveRoomDescription": "您即將離開此聊天。其他用戶將看到您已離開聊天。",
     "confirmUserId": "請確認您的 Pangea 聊天用戶名稱以刪除您的帳戶。",
-    "startingToday": "從今天開始",
-    "oneWeekFreeTrial": "一週免費試用",
     "paidSubscriptionStarts": "自 {startDate} 起",
     "cancelInSubscriptionSettings": "• 可在訂閱設定中隨時取消",
-    "cancelToAvoidCharges": "• 在 {trialEnds} 前取消以避免收費",
     "downloadGboard": "下載 Gboard",
     "autocorrectNotAvailable": "很抱歉，您的平台目前不支援此功能。請持續關注後續開發！",
     "pleaseUpdateApp": "請更新應用程式以繼續使用。",
@@ -3587,17 +3274,12 @@
     "knockSpaceSuccess": "你已申請加入此課程！管理員收到後會回覆你的請求 😄",
     "chooseWordAudioInstructionsBody": "聽完整個訊息。然後將音訊與詞語配對。",
     "chooseMorphsInstructionsBody": "點擊拼圖碎片回答語法問題！",
-    "pleaseEnterInt": "請輸入一個數字",
     "home": "首頁",
     "join": "加入",
     "resetInstructionTooltipsTitle": "重置指示提示",
     "resetInstructionTooltipsDesc": "點擊顯示像新用戶一樣的指示提示。",
-    "randomize": "隨機",
     "clear": "清除",
-    "featuredActivities": "精選",
     "save": "儲存",
-    "startChat": "開始聊天",
-    "translationProblem": "翻譯問題",
     "askToJoin": "請求加入",
     "emptyChatWarningTitle": "聊天是空的",
     "emptyChatWarningDesc": "你還沒有邀請任何人加入你的聊天。前往聊天設置邀請你的聯絡人或機器人。你也可以稍後再做。",
@@ -3627,17 +3309,13 @@
     "timesUsedIndependently": "独立使用次数",
     "timesUsedWithAssistance": "协助使用次数",
     "shareInviteCode": "分享邀请代码：{code}",
-    "leaderboard": "排行榜",
     "skipForNow": "暫時跳過",
     "permissions": "權限",
     "spaceChildPermission": "誰可以向此課程添加新聊天",
-    "addEnvironmentOverride": "新增環境覆蓋",
     "defaultOption": "預設",
     "deleteChatDesc": "你確定要刪除此聊天嗎？所有參與者的聊天內容將被刪除，且所有訊息將不再供練習或學習分析使用。",
     "deleteSpaceDesc": "此課程及所有選擇的聊天將被刪除，所有訊息將不再供練習或學習分析使用。此操作無法還原。",
     "launch": "啟動",
-    "searchChats": "搜尋聊天",
-    "maxFifty": "最多50個",
     "configureSpace": "設定課程",
     "pinMessages": "置頂訊息",
     "setJoinRules": "設定加入規則",
@@ -3671,9 +3349,6 @@
     "failedToFetchTranscription": "獲取轉錄失敗",
     "deleteEmptySpaceDesc": "該課程將被刪除，所有參與者都將失去訪問權限。此操作無法撤銷。",
     "regenerate": "重新生成",
-    "mySavedActivities": "我的已保存活動",
-    "noSavedActivities": "沒有已保存的活動",
-    "saveActivity": "保存此活動",
     "failedToPlayVideo": "播放視頻失敗",
     "done": "完成",
     "inThisSpace": "在此課程中",
@@ -3684,13 +3359,9 @@
     "numInvited": "{count} 已邀請",
     "saved": "已保存",
     "reset": "重置",
-    "errorFetchingActivitiesMessage": "獲取活動失敗",
     "errorFetchingDefinition": "獲取定義失敗",
     "errorProcessAnalytics": "處理分析失敗",
     "errorDownloading": "下載失敗",
-    "errorLoadingSpaceChildren": "載入此課程中的聊天失敗",
-    "unexpectedError": "發生未預期的錯誤。",
-    "pleaseReload": "請重新載入並重試。",
     "translationError": "翻譯錯誤",
     "check": "檢查",
     "unableToFindRoom": "找不到該代碼的聊天或課程。請再試一次。",
@@ -3699,19 +3370,14 @@
     "request": "請求",
     "requestAll": "全部請求",
     "confirmMessageUnpin": "您確定要取消釘選此訊息嗎？",
-    "saveAndLaunch": "保存並啟動",
-    "launchToSpace": "發布到課程",
     "pending": "待處理",
     "inactive": "未激活",
-    "confirmRole": "確認角色",
     "openRoleLabel": "開放",
     "finishedTheActivity": "🎯 {username} 完成了此活動",
     "activitySummaryError": "無法取得活動摘要",
     "requestSummaries": "請求摘要",
-    "generatingNewActivities": "你是此語言對的第一位用戶！請稍候，我們正在為你準備活動。",
     "requestAccessTitle": "請求分析訪問權限？",
     "requestAccessDesc": "你是否想請求查看參與者分析的權限？\n\n如果參與者同意，該課程的管理員將能夠查看他們的：\n    • 總詞彙量\n    • 總語法概念\n    • 完成的活動會話總數\n    • 使用的具體語法概念，正確與錯誤\n\n他們將無法查看他們的：\n    • 課程外的聊天訊息\n    • 詞彙清單",
-    "requestAccess": "請求存取 ({count})",
     "analyticsInactiveTitle": "無法向非活躍用戶發送請求",
     "analyticsInactiveDesc": "自此功能推出以來未登入的非活躍用戶將看不到您的請求。\n\n當他們回來時，請求按鈕將會出現。您可以稍後再次點擊他們名字下的請求按鈕來重新發送請求。",
     "accessRequestedTitle": "分析存取請求",
@@ -3734,8 +3400,6 @@
     "accessDesc": "您可以讓您的課程向全世界開放！或者，將您的課程設為私有且安全。",
     "createGroupChatDesc": "活動會話開始和結束，而群聊將保持開放以進行日常交流。",
     "deleteDesc": "只有管理員可以刪除課程。這是一個破壞性操作，會刪除所有用戶並刪除課程內所有選擇的聊天。請謹慎操作。",
-    "noCourseFound": "哦，這個課程需要一個計劃！\n\n課程計劃是一系列主題和對話活動。",
-    "additionalParticipants": "+ {num} 其他人",
     "whatNow": "接下來怎麼辦？",
     "chooseNextActivity": "選擇您的下一個活動！",
     "letsGo": "我們走吧",
@@ -3747,13 +3411,11 @@
     "waitNotDone": "等一下，我還沒完成！",
     "waitingForOthersToFinish": "等待其他人完成...",
     "generatingSummary": "分析聊天並生成結果",
-    "findCourse": "尋找課程",
     "pingParticipantsNotification": "{user} 正在尋找用戶加入 {room} 的活動會議",
     "course": "課程",
     "courses": "課程",
     "goToCourse": "前往課程：{course}",
     "activityComplete": "此活動已完成。活動摘要應在下方提供。",
-    "startNewSession": "開始新會話",
     "joinOpenSession": "加入公開會話",
     "activityNotFound": "未找到活動",
     "myActivities": "我的活動",
@@ -3797,7 +3459,6 @@
     "inviteYourFriends": "邀请你的朋友",
     "playWithAI": "暂时与AI玩玩",
     "courseStartDesc": "Pangea机器人随时准备开始！\n\n……但和朋友一起学习更好！",
-    "activityDropdownDesc": "完成此活動後，請點擊下方",
     "languageMismatchTitle": "語言不匹配",
     "languageMismatchDesc": "您的目標語言與此活動的語言不符。是否要更新您的目標語言？",
     "reportWordIssueTooltip": "舉報單詞資訊問題",
@@ -3872,10 +3533,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3885,10 +3542,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -3976,14 +3629,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4000,10 +3645,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4016,15 +3657,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4176,14 +3809,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4197,14 +3822,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5427,10 +5044,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5471,10 +5084,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5547,10 +5156,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5820,47 +5425,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5880,19 +5445,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -5956,10 +5509,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6000,14 +5549,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6019,14 +5560,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6064,10 +5597,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6084,27 +5613,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6228,10 +5741,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6241,10 +5750,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6261,14 +5766,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6408,18 +5905,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6468,10 +5953,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6481,18 +5962,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6535,23 +6004,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6575,10 +6032,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6586,14 +6039,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6698,18 +6143,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6758,10 +6191,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6788,10 +6217,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -6975,10 +6400,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityDropdownDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@languageMismatchTitle": {
         "type": "String",
         "placeholders": {}
@@ -7024,17 +6445,11 @@
         "placeholders": {}
     },
     "startOwn": "開始我的課程",
-    "joinCourseDesc": "每門課程包含8-10個有序的主題，並配有各種基於任務的語言學習活動。",
     "newMessageInPangeaChat": "📩 Pangea 聊天中有新訊息",
     "shareCourse": "分享課程",
     "addCourse": "添加課程",
-    "joinPublicCourse": "加入公開課程",
     "vocabLevelsDesc": "這是你升級後詞彙將會放置的地方！",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7047,10 +6462,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7069,7 +6480,6 @@
     "emojiView": "表情符號視圖",
     "feedbackDialogDesc": "我也會犯錯！有什麼可以幫助我改進的嗎？",
     "contactHasBeenInvitedToTheCourse": "聯絡人已被邀請參加課程",
-    "activityStatsButtonTooltip": "活動資訊",
     "allow": "允許",
     "deny": "拒絕",
     "enabledRenewal": "啟用訂閱續訂",
@@ -7337,10 +6747,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8396,16 +7802,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "解鎖下一主題的活動",
-    "activitiesToUnlockTopicDesc": "設定解鎖下一課程主題所需的活動數量",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "正確的詞彙定義練習",
     "constructUseIncLMDesc": "不正確的詞彙定義練習",
     "constructUseCorLADesc": "正確的詞彙音頻練習",
@@ -8413,7 +7809,6 @@
     "constructUseBonus": "詞彙練習期間的獎勵",
     "practiceVocab": "練習詞彙",
     "selectMeaning": "選擇意思",
-    "selectAudio": "選擇匹配的音頻",
     "anotherRound": "再來一輪",
     "activitySettingsOverrideWarning": "語言和語言級別由活動計劃決定",
     "voice": "聲音",
@@ -8445,10 +7840,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8466,12 +7857,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "下載已啟動",
     "webDownloadPermissionMessage": "如果您的瀏覽器阻止下載，請為此網站啟用下載。",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8566,11 +7952,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "發生了一些問題，我們正在努力修復。稍後再檢查。",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "啟用寫作輔助",
     "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
     "@autoIGCToolName": {
@@ -8626,24 +8007,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "文法",
-    "spanTypeWordChoice": "用詞選擇",
     "spanTypeSpelling": "拼寫",
     "spanTypePunctuation": "標點符號",
     "spanTypeStyle": "風格",
     "spanTypeFluency": "流暢度",
     "spanTypeAccents": "重音",
     "spanTypeCapitalization": "大寫",
-    "spanTypeCorrection": "修正",
     "spanFeedbackTitle": "報告修正問題",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8668,10 +8038,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -8684,13 +8050,7 @@
     "longPressToRecordVoiceMessage": "長按以錄製語音消息。",
     "pause": "暫停",
     "resume": "繼續",
-    "newSubSpace": "新的子空間",
-    "moveToDifferentSpace": "移動到不同的空間",
-    "removeFromSpaceDescription": "聊天將從空間中移除，但仍會出現在您的聊天列表中。",
     "countChats": "{chats} 條聊天",
-    "spaceMemberOf": "{spaces} 的空間成員",
-    "spaceMemberOfCanKnock": "{spaces} 的空間成員可以敲門",
-    "donate": "捐贈",
     "startedAPoll": "{username} 發起了一個投票。",
     "poll": "投票",
     "startPoll": "開始投票",
@@ -8714,23 +8074,15 @@
     "newStickerPack": "新貼圖包",
     "stickerPackName": "貼圖包名稱",
     "attribution": "歸屬",
-    "skipChatBackup": "跳過聊天備份",
-    "skipChatBackupWarning": "您確定嗎？如果不啟用聊天備份，您可能會在更換設備時失去訪問消息的權限。",
-    "loadingMessages": "正在加載消息",
-    "setupChatBackup": "設置聊天備份",
     "noMoreResultsFound": "未找到更多結果",
     "chatSearchedUntil": "聊天搜索至 {time}",
     "federationBaseUrl": "聯邦基本 URL",
     "clientWellKnownInformation": "客戶端已知信息：",
     "baseUrl": "基本 URL",
     "identityServer": "身份伺服器：",
-    "versionWithNumber": "版本：{version}",
     "logs": "日誌",
-    "advancedConfigs": "進階設定",
     "advancedConfigurations": "進階配置",
-    "signInWithLabel": "使用以下方式登入：",
     "selectAllWords": "選擇您在音頻中聽到的所有單詞",
-    "joinCourseForActivities": "加入課程以嘗試活動。",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -8767,18 +8119,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -8786,26 +8126,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -8911,22 +8231,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -8955,19 +8259,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -8975,15 +8267,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9189,11 +8473,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "在課堂上？將您的加入代碼放在這裡。",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "自動突出顯示音訊消息",
     "selectAudioMessagesOnPlayDescription": "播放時自動突出顯示音訊消息",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9237,18 +8516,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "這門課程有主題的活動數少於 {input}。請輸入一個小於或等於 {minValue} 的數字。",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "點擊這裡重新登入。",
     "@clickToLogin": {
@@ -9665,17 +8932,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "一隻卡通風格的黃色熊，興奮地舉起雙臂。",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "選擇單詞以了解更多信息",
     "requireAnalyticsAccessTitle": "需要分析訪問權限才能加入",
     "requireAnalyticsAccessDesc": "參與者必須授予訪問其學習分析的權限才能加入此課程",
     "analyticsAccessNoticeTitle": "需要分析訪問權限",
     "analyticsAccessNoticeDesc": "通過加入此課程，您同意授予管理員訪問您的學習分析的權限。",
-    "skipOnboardingClassCodeDesc": "獨立學習？別擔心，您可以：",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9693,10 +8954,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9725,7 +8982,6 @@
     "pickCefrLevelTeacherStepTitle": "你教什麼級別？",
     "pickCefrLevelStudentStepTitle": "你是什麼級別？",
     "customCourseStepTitle": "填寫此表單以獲得自訂課程",
-    "aboutYourClass": "關於您的課程",
     "courseCodeStepErrorMessage": "請檢查您的代碼並重試",
     "institution": "機構",
     "courseGoals": "課程目標",
@@ -9768,10 +9024,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9888,12 +9140,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Pangea 聊天標誌",
     "introChatDetails": "打聲招呼！向你的課程參與者介紹自己，尋找朋友，並在活動之外聊天。",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -9937,11 +9184,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "活動操作",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "發音工具",
     "audioTranscription": "AI 音頻轉錄",
     "visualLearnerSupport": "視覺學習者支持",
@@ -9982,7 +9224,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "加入包含此活動的課程以進行遊玩。",
     "resizeCoursePanel": "調整課程面板大小",
     "undo": "撤銷",
     "unlock": "解鎖",
@@ -9996,7 +9237,6 @@
     "addCourseBrowsePublic": "瀏覽公共課程",
     "browsePublicCourses": "瀏覽公共課程",
     "editProfile": "編輯個人資料",
-    "numObjectives": "{count} 個目標",
     "mapSearchHint": "搜尋活動",
     "mapSearchNoResults": "視圖中沒有匹配項",
     "mapFilterAllLanguages": "所有語言",
@@ -10005,7 +9245,6 @@
     "mapFilterCompleted": "完成",
     "mapFilterReset": "重置",
     "activityTypeConversation": "對話",
-    "lockedMissionRequirement": "完成前一個任務以解鎖",
     "playAgain": "再玩一次",
     "reviewActivity": "檢視",
     "mapEmptyInView": "在您的等級或語言中沒有任何內容。擴大您的篩選條件或縮小視圖。",
@@ -10020,14 +9259,9 @@
     "scrollToBottom": "滾動到底部",
     "courseImage": "課程圖片",
     "avatarPreview": "頭像預覽",
-    "activityPhoto": "活動照片",
     "emotePreview": "表情預覽: {name}",
     "activityLabel": "活動: {title}",
     "resetMapView": "重置地圖視圖",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10080,14 +9314,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10117,10 +9343,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10177,10 +9399,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10532,5 +9750,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "課程權限",
+    "starsToUnlockObjectiveTitle": "每個任務的星數",
+    "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
+    "maxStarsPerMissionWarning": "此課程中的任務最多只能獲得 {maxValue} 顆星。請輸入小於或等於 {maxValue} 的數字。",
+    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。"
 }
