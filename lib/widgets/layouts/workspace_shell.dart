@@ -216,6 +216,7 @@ class WorkspaceShell extends StatelessWidget {
               key: _persistentWorldMapKey,
               leftOverlayWidth: l.mapLeftOverlay,
               rightOverlayWidth: l.allocation.mapRightOverlay,
+              bottomOverlayHeight: l.mapBottomOverlay,
               availableVisibleMapWidth: l.availableVisibleMapWidth,
               focus: mapFocusFor(state),
             ),
@@ -508,13 +509,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // bottom margin + bottom safe area + one margin of breathing room below
     // the bar. Omitting the rail row here previously let a fully-expanded
     // widget push the search bar under the analytics bar.
-    final reserved =
-        screenPadding.top +
-        _ShellLayout.analyticsBarAllowance +
-        (searchBar != null ? _ShellLayout.searchBarAllowance : 0.0) +
-        MobileNavWidget.railRowHeight +
-        screenPadding.bottom +
-        _ShellLayout.chromeMargin * 2;
+    final reserved = _ShellLayout.navChromeReserved(
+      screenPadding: screenPadding,
+      hasSearchBar: searchBar != null,
+    );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
         : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
@@ -700,6 +698,23 @@ class _ShellLayout {
   /// analytics bar (routing.instructions.md → Single-column search bar).
   static const double searchBarAllowance = 56.0;
 
+  /// The vertical chain around the nav widget's CAVITY that its full-height
+  /// bound must reserve: top safe area + analytics bar + the search-bar
+  /// allowance when one rides the widget + the rail row + bottom margin +
+  /// bottom safe area + one margin of breathing room below the bar. Shared by
+  /// the nav layer's [MobileNavWidget.maxHeightFraction] and the map's
+  /// bottom camera padding ([mapBottomOverlay]) so the two can't drift.
+  static double navChromeReserved({
+    required EdgeInsets screenPadding,
+    required bool hasSearchBar,
+  }) =>
+      screenPadding.top +
+      analyticsBarAllowance +
+      (hasSearchBar ? searchBarAllowance : 0.0) +
+      MobileNavWidget.railRowHeight +
+      screenPadding.bottom +
+      chromeMargin * 2;
+
   /// Whether the nav rail shows (vertical-left in column mode, bottom bar narrow).
   final bool navRail;
 
@@ -766,6 +781,11 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// Map camera bottom padding: the vertical band the narrow activity-plan
+  /// sheet occupies at its half-rest state, so a focused pin centers in the
+  /// exposed map above the sheet (#7640). 0 everywhere else.
+  final double mapBottomOverlay;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -792,6 +812,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.detailWidth,
     required this.mapLeftOverlay,
+    required this.mapBottomOverlay,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -962,8 +983,8 @@ class _ShellLayout {
     // padding both begin here so neither can slide under a left panel. Map
     // content on a narrow screen (a course card, an activity plan) rides in a
     // bottom sheet over the FULL map, not a left panel, so the camera uses the
-    // whole width (the sheet covers the bottom, which the left/right overlays
-    // don't model). See `routing.instructions.md`.
+    // whole width; the band the sheet covers is modeled separately as
+    // [mapBottomOverlay]. See `routing.instructions.md`.
     final leftInset = hasCavity
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
@@ -995,6 +1016,37 @@ class _ShellLayout {
         ? 0.0
         : leftInset +
               (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+
+    // The narrow activity-plan sheet covers the bottom of the full-width map —
+    // the band the left/right overlays don't model. Pad the camera's bottom by
+    // the sheet's half-rest state (its default; the height it opens at) so a
+    // focused pin lands in the exposed area ABOVE the sheet instead of behind
+    // it (#7640; activities doc — "the plan keeps its pin visible above", the
+    // Google Maps target UX). The band: half the cavity's growth bound plus
+    // the chrome below/above it (rail row, the search bar the activity cavity
+    // always rides, margins, safe area) — the same [navChromeReserved] chain
+    // the nav layer sizes the cavity with, so the two can't drift. An estimate
+    // of the resting sheet, deliberately not live-tracked: dragging the sheet
+    // must not yank the camera.
+    var mapBottomOverlay = 0.0;
+    if (hasCavity &&
+        leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
+      final screenPadding = MediaQuery.viewPaddingOf(context);
+      final screenHeight = MediaQuery.sizeOf(context).height;
+      final reserved = navChromeReserved(
+        screenPadding: screenPadding,
+        hasSearchBar: true,
+      );
+      final maxHeightFraction = screenHeight <= 0
+          ? 0.8
+          : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
+      mapBottomOverlay =
+          0.5 * maxHeightFraction * screenHeight +
+          MobileNavWidget.railRowHeight +
+          searchBarAllowance +
+          screenPadding.bottom +
+          chromeMargin * 2;
+    }
 
     // The map actually visible between the open side panels — drives the pin
     // density budget (world_map_pin_budget). A mobile sheet leaves the map
@@ -1045,6 +1097,7 @@ class _ShellLayout {
       leftInset: leftInset,
       detailWidth: detailWidth,
       mapLeftOverlay: mapLeftOverlay,
+      mapBottomOverlay: mapBottomOverlay,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

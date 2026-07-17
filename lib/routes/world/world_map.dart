@@ -59,6 +59,12 @@ class WorldMap extends StatefulWidget {
   /// the uncovered area to the left of the panel. 0 when nothing docks right.
   final double rightOverlayWidth;
 
+  /// Logical-pixel height of a bottom overlay — the narrow activity-plan
+  /// sheet at its half-rest state. A focus pan adds it as bottom padding so
+  /// the focused pin centers in the exposed map ABOVE the sheet instead of
+  /// behind it (#7640). 0 when nothing covers the bottom.
+  final double bottomOverlayHeight;
+
   /// Logical-pixel width of the map actually visible between the open side panels
   /// (viewport − left overlay − right overlay). Drives the pin-density budget
   /// ([budgetForWidth]) — how many pins show and how many are large cards — so as
@@ -79,6 +85,7 @@ class WorldMap extends StatefulWidget {
     this.controller,
     this.leftOverlayWidth = 0.0,
     this.rightOverlayWidth = 0.0,
+    this.bottomOverlayHeight = 0.0,
     this.availableVisibleMapWidth = 0.0,
     this.focus,
   });
@@ -240,7 +247,8 @@ class WorldMapController extends State<WorldMap>
     if (oldWidget.focus != widget.focus) {
       _fitToContext();
     } else if (oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
-        oldWidget.rightOverlayWidth != widget.rightOverlayWidth) {
+        oldWidget.rightOverlayWidth != widget.rightOverlayWidth ||
+        oldWidget.bottomOverlayHeight != widget.bottomOverlayHeight) {
       _fitToContext(debounce: true);
     }
   }
@@ -586,13 +594,14 @@ class WorldMapController extends State<WorldMap>
     });
   }
 
-  /// Inset the left/right edges by the overlays so camera targets land in the
-  /// uncovered map area beside the column/panel, not behind it.
+  /// Inset the edges by the overlays so camera targets land in the uncovered
+  /// map area beside the column/panel — and, on narrow, above the half-open
+  /// activity sheet — not behind them.
   EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
     widget.leftOverlayWidth + 64.0,
     64.0,
     widget.rightOverlayWidth + 64.0,
-    64.0,
+    widget.bottomOverlayHeight + 64.0,
   );
 
   /// The focus button (#7616) — the ONE camera path that zooms. A focused
