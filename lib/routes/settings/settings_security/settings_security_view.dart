@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -202,20 +201,5 @@ class SettingsSecurityView extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-extension on ShareKeysWith {
-  String localized(L10n l10n) {
-    switch (this) {
-      case ShareKeysWith.all:
-        return l10n.allDevices;
-      case ShareKeysWith.crossVerifiedIfEnabled:
-        return l10n.crossVerifiedDevicesIfEnabled;
-      case ShareKeysWith.crossVerified:
-        return l10n.crossVerifiedDevices;
-      case ShareKeysWith.directlyVerifiedOnly:
-        return l10n.verifiedDevicesOnly;
-    }
   }
 }
