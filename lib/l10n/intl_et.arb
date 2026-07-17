@@ -9641,5 +9641,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kursuse õigused",
+    "starsToUnlockObjectiveTitle": "Tähed missiooni kohta",
+    "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
+    "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
+    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga."
 }

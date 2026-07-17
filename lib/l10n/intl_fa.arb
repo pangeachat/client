@@ -9732,5 +9732,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "مجوزهای دوره",
+    "starsToUnlockObjectiveTitle": "ستاره برای هر ماموریت",
+    "starsToUnlockObjectiveDesc": "تعداد ستاره‌های مورد نیاز برای تکمیل هر ماموریت را تنظیم کنید",
+    "maxStarsPerMissionWarning": "این دوره دارای ماموریت‌هایی است که فقط {maxValue} ستاره می‌توان کسب کرد. لطفاً عددی کمتر یا مساوی با {maxValue} وارد کنید.",
+    "removedFromCourseError": "شما از این دوره حذف شده‌اید. با معلم خود تماس بگیرید."
 }

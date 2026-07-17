@@ -9729,5 +9729,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Uprawnienia kursu",
+    "starsToUnlockObjectiveTitle": "Gwiazd na misję",
+    "starsToUnlockObjectiveDesc": "Ustaw liczbę gwiazdek potrzebnych do ukończenia każdej misji",
+    "maxStarsPerMissionWarning": "Ten kurs zawiera misje, w których można zdobyć tylko {maxValue} gwiazdek. Wprowadź liczbę mniejszą lub równą {maxValue}.",
+    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem."
 }

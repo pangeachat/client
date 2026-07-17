@@ -10564,5 +10564,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "הרשאות קורס",
+    "starsToUnlockObjectiveTitle": "כוכבים למשימה",
+    "starsToUnlockObjectiveDesc": "קבע את מספר הכוכבים הדרושים להשלמת כל משימה",
+    "maxStarsPerMissionWarning": "בקורס זה יש משימות שבהן ניתן לצבור רק {maxValue} כוכבים. אנא הזן מספר קטן או שווה ל-{maxValue}.",
+    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך."
 }

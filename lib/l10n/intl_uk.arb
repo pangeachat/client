@@ -9644,5 +9644,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Дозволи курсу",
+    "starsToUnlockObjectiveTitle": "Зірки за місію",
+    "starsToUnlockObjectiveDesc": "Встановіть кількість зірок, необхідних для завершення кожної місії",
+    "maxStarsPerMissionWarning": "Цей курс містить місії, де можна заробити лише {maxValue} зірок. Будь ласка, введіть число, менше або рівне {maxValue}.",
+    "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя."
 }

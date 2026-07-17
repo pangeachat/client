@@ -10525,5 +10525,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Δικαιώματα μαθήματος",
+    "starsToUnlockObjectiveTitle": "Αστέρια ανά αποστολή",
+    "starsToUnlockObjectiveDesc": "Ορίστε τον αριθμό των αστεριών που απαιτούνται για την ολοκλήρωση κάθε αποστολής",
+    "maxStarsPerMissionWarning": "Αυτό το μάθημα έχει αποστολές όπου μπορούν να κερδηθούν μόνο {maxValue} αστέρια. Εισαγάγετε έναν αριθμό μικρότερο ή ίσο του {maxValue}.",
+    "removedFromCourseError": "Έχετε αφαιρεθεί από αυτό το μάθημα. Επικοινωνήστε με τον δάσκαλό σας."
 }

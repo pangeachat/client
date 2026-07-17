@@ -10425,5 +10425,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurso leidimai",
+    "starsToUnlockObjectiveTitle": "Žvaigždės už misiją",
+    "starsToUnlockObjectiveDesc": "Nustatykite žvaigždžių skaičių, reikalingą kiekvienai misijai užbaigti",
+    "maxStarsPerMissionWarning": "Šiame kurse yra misijų, kuriose galima uždirbti tik {maxValue} žvaigždutes. Įveskite skaičių, mažesnį arba lygų {maxValue}.",
+    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju."
 }

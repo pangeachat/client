@@ -111,7 +111,7 @@
     },
     "sendOnEnter": "Enviar com Enter",
     "@sendOnEnter": {},
-    "badServerLoginTypesException": "O servidor suporta os tipos de início de sessão:\n{serverVersions}\nMas esta aplicação apenas suporta:\n{suportedVersions}",
+    "badServerLoginTypesException": "O servidor doméstico suporta os seguintes tipos de início de sessão:\n{serverVersions}\nMas esta aplicação suporta apenas:\n{supportedVersions}",
     "@badServerLoginTypesException": {
         "type": "String",
         "placeholders": {
@@ -10561,5 +10561,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Permissões do curso",
+    "starsToUnlockObjectiveTitle": "Estrelas por Missão",
+    "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
+    "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
+    "removedFromCourseError": "Foi removido deste curso. Contacte o seu professor."
 }

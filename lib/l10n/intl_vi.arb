@@ -508,7 +508,7 @@
     "@incomingMessages": {},
     "noOtherDevicesFound": "Không tìm thấy thiết bị khác",
     "@noOtherDevicesFound": {},
-    "fileIsTooBigForServer": "Máy chủ báo cáo rằng tệp tin quá lớn để gửi.",
+    "fileIsTooBigForServer": "Không thể gửi! Máy chủ chỉ hỗ trợ tệp đính kèm tối đa {max}.",
     "@fileIsTooBigForServer": {},
     "notAnImage": "Không phải tệp ảnh.",
     "@notAnImage": {},
@@ -6910,5 +6910,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Quyền của khóa học",
+    "starsToUnlockObjectiveTitle": "Số sao mỗi nhiệm vụ",
+    "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
+    "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
+    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn."
 }

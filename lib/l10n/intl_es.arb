@@ -2927,7 +2927,7 @@
     "taAndGaTooltip": "Uso de la L2 con ayuda de traducción y asistencia gramatical.",
     "subscriptionManagementUnavailable": "Gestión de suscripciones no disponible",
     "promotionalSubscriptionDesc": "Su suscripción actual es promocional. Envíe un mensaje a support@pangea.chat para cambiar su suscripción.",
-    "originalSubscriptionPlatform": "Suscripción adquirida a través de",
+    "originalSubscriptionPlatform": "Suscripción comprada a través de {purchasePlatform}",
     "oneWeekTrial": "Una semana de prueba",
     "wwCountryDisplayName": "Mundial",
     "afCountryDisplayName": "Afganistán",
@@ -7839,5 +7839,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Permisos del curso",
+    "starsToUnlockObjectiveTitle": "Estrellas por misión",
+    "starsToUnlockObjectiveDesc": "Establece el número de estrellas necesarias para completar cada misión",
+    "maxStarsPerMissionWarning": "Este curso tiene misiones donde solo se pueden ganar {maxValue} estrellas. Introduce un número menor o igual a {maxValue}.",
+    "removedFromCourseError": "Has sido eliminado de este curso. Contacta con tu profesor."
 }

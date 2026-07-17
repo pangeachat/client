@@ -9644,5 +9644,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Cursusrechten",
+    "starsToUnlockObjectiveTitle": "Sterren per missie",
+    "starsToUnlockObjectiveDesc": "Stel het aantal sterren in dat nodig is om elke missie te voltooien",
+    "maxStarsPerMissionWarning": "Deze cursus heeft missies waarbij slechts {maxValue} sterren kunnen worden verdiend. Voer een getal in dat kleiner is dan of gelijk is aan {maxValue}.",
+    "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent."
 }

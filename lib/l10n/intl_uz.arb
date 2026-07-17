@@ -9648,5 +9648,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurs ruxsatnomalari",
+    "starsToUnlockObjectiveTitle": "Har bir topshiriq uchun yulduzlar",
+    "starsToUnlockObjectiveDesc": "Har bir topshiriqni bajarish uchun zarur bo'lgan yulduzlar sonini belgilang",
+    "maxStarsPerMissionWarning": "Ushbu kursda faqat {maxValue} yulduz olish mumkin bo'lgan topshiriqlar mavjud. Iltimos, {maxValue} dan kichik yoki unga teng raqam kiriting.",
+    "removedFromCourseError": "Siz ushbu kursdan olib tashlandingiz. O'qituvchingiz bilan bog'laning."
 }

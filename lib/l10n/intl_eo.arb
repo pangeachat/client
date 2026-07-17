@@ -211,7 +211,7 @@
             }
         }
     },
-    "changedTheDisplaynameTo": "{username} ŝanĝis sian prezentan nomon al: {username}",
+    "changedTheDisplaynameTo": "{username} ŝanĝis sian montronomon al: '{displayname}'",
     "@changedTheDisplaynameTo": {
         "type": "String",
         "placeholders": {
@@ -10595,5 +10595,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurso-permesoj",
+    "starsToUnlockObjectiveTitle": "Steloj por Misio",
+    "starsToUnlockObjectiveDesc": "Agordu la nombron da steloj necesaj por kompletigi ĉiun mision",
+    "maxStarsPerMissionWarning": "Ĉi tiu kurso havas misiojn, kie nur {maxValue} steloj povas esti gajnitaj. Bonvolu enigi nombron malpli ol aŭ egala al {maxValue}.",
+    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston."
 }

@@ -9717,5 +9717,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Izin kursus",
+    "starsToUnlockObjectiveTitle": "Bintang per Misi",
+    "starsToUnlockObjectiveDesc": "Tetapkan jumlah bintang yang dibutuhkan untuk menyelesaikan setiap misi",
+    "maxStarsPerMissionWarning": "Kursus ini memiliki misi di mana hanya {maxValue} bintang yang dapat diperoleh. Harap masukkan angka kurang dari atau sama dengan {maxValue}.",
+    "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda."
 }

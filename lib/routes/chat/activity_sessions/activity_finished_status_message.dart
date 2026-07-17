@@ -32,7 +32,8 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final finished = controller.room.isActivityFinished;
     final summary = controller.room.activitySummaryByL1;
 
-    final hasContent = !finished || (summary != null && summary.summary == null);
+    final hasContent =
+        !finished || (summary != null && summary.summary == null);
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,

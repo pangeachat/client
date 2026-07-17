@@ -9681,5 +9681,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurssin oikeudet",
+    "starsToUnlockObjectiveTitle": "Tähtiä per tehtävä",
+    "starsToUnlockObjectiveDesc": "Aseta tähtien määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
+    "maxStarsPerMissionWarning": "Tällä kurssilla on tehtäviä, joissa voi ansaita vain {maxValue} tähteä. Anna luku, joka on pienempi tai yhtä suuri kuin {maxValue}.",
+    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi."
 }

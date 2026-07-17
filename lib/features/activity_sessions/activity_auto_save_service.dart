@@ -99,10 +99,7 @@ class ActivityAutoSaveService {
     try {
       // Analytics room first: if this write fails, archived_at stays unset and
       // the save retries on the next role-state event or sweep.
-      await analyticsService.updateService.sendActivityAnalytics(
-        room.id,
-        lang,
-      );
+      await analyticsService.updateService.sendActivityAnalytics(room.id, lang);
       await room.archiveActivity();
 
       GoogleAnalytics.completeActivity(

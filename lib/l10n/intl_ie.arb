@@ -10276,5 +10276,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Permissiones del curse",
+    "starsToUnlockObjectiveTitle": "Stelles per Mission",
+    "starsToUnlockObjectiveDesc": "Fixar li númere de stelles necessari por completar chascun mission",
+    "maxStarsPerMissionWarning": "Ti curse have missiones u solmen {maxValue} stelles posse esser ganiat. Ples introducter un númere minor o egal a {maxValue}.",
+    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor."
 }

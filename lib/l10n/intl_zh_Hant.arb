@@ -9750,5 +9750,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "課程權限",
+    "starsToUnlockObjectiveTitle": "每個任務的星數",
+    "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
+    "maxStarsPerMissionWarning": "此課程中的任務最多只能獲得 {maxValue} 顆星。請輸入小於或等於 {maxValue} 的數字。",
+    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。"
 }

@@ -10618,5 +10618,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Разрешения курса",
+    "starsToUnlockObjectiveTitle": "Звезды за миссию",
+    "starsToUnlockObjectiveDesc": "Установите количество звезд, необходимое для выполнения каждой миссии",
+    "maxStarsPerMissionWarning": "В этом курсе есть миссии, в которых можно заработать только {maxValue} звезд. Введите число, меньшее или равное {maxValue}.",
+    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем."
 }
