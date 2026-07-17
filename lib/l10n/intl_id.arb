@@ -132,15 +132,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteContactToGroup": "Undang kontak ke {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
     "inviteContact": "Undang kontak",
     "@inviteContact": {
         "type": "String",
@@ -212,11 +203,6 @@
             }
         }
     },
-    "groupIsPublic": "Grup bersifat publik",
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "group": "Grup",
     "@group": {
         "type": "String",
@@ -247,11 +233,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "Semua siap!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enterAnEmailAddress": "Masukkan alamat email",
     "@enterAnEmailAddress": {
         "type": "String",
@@ -273,11 +254,6 @@
     },
     "encrypted": "Terenkripsi",
     "@encrypted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableEncryptionWarning": "Kamu tidak akan bisa menonaktifkan enkripsi. Apakah kamu yakin?",
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -703,11 +679,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Apakah pengguna tamu diizinkan untuk bergabung",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "appLock": "Kunci aplikasi",
     "@appLock": {
         "type": "String",
@@ -732,11 +703,6 @@
     },
     "encryptionNotEnabled": "Enkripsi tidak diaktifkan",
     "@encryptionNotEnabled": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "Kontak telah diundang ke grup",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -777,11 +743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Pesan lamamu diamankan dengan sebuah kunci pemulihan. Pastikan kamu tidak menghilangkannya.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "activatedEndToEndEncryption": "🔐 {username} mengaktifkan enkripsi ujung ke ujung",
     "@activatedEndToEndEncryption": {
         "type": "String",
@@ -795,15 +756,6 @@
     "@loadingPleaseWait": {
         "type": "String",
         "placeholders": {}
-    },
-    "loadCountMoreParticipants": "Muat {count} anggota",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "leftTheChat": "Keluar dari obrolan",
     "@leftTheChat": {
@@ -887,16 +839,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noGoogleServicesWarning": "Perpesanan Awan Firebase sepertinya tidak tersedia di perangkatmu. Untuk dapat menerima notifikasi dorongan, kami menyarankan memasang ntfy. Dengan ntfy atau penyedia UnifiedPush lainnya, kamu bisa menerima notifikasi dorongan dengan cara yang aman. Kamu bisa mengunduh ntfy dari Play Store atau F-Droid.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "Kamu hanya bisa mengaktifkan enkripsi setelah ruangan tidak lagi dapat diakses secara publik.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noEmotesFound": "Tidak ada emote yang ditemukan. 😕",
     "@noEmotesFound": {
         "type": "String",
@@ -947,15 +889,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "logInTo": "Masuk ke {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
-    },
     "login": "Masuk",
     "@login": {
         "type": "String",
@@ -982,11 +915,6 @@
     },
     "unavailable": "Tidak tersedia",
     "@unavailable": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "transferFromAnotherDevice": "Transfer dari perangkat lain",
-    "@transferFromAnotherDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -1085,23 +1013,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "wipeChatBackup": "Hapus cadangan obrolan untuk membuat kunci pemulihan baru?",
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Kenapa kamu ingin melaporkannya?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Siapa yang dapat bergabung ke grup ini",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoCanPerformWhichAction": "Siapa yang dapat melakukan tindakan apa",
-    "@whoCanPerformWhichAction": {
         "type": "String",
         "placeholders": {}
     },
@@ -1147,16 +1060,6 @@
     },
     "visibleForAllParticipants": "Terlihat untuk semua anggota",
     "@visibleForAllParticipants": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Visibilitas sejarah obrolan",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "videoCall": "Panggilan video",
-    "@videoCall": {
         "type": "String",
         "placeholders": {}
     },
@@ -1226,15 +1129,6 @@
                 "type": "String"
             },
             "count": {
-                "type": "int"
-            }
-        }
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 obrolan belum dibaca} other{{unreadCount} obrolan belum dibaca}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
                 "type": "int"
             }
         }
@@ -1345,16 +1239,6 @@
             }
         }
     },
-    "spaceName": "Nama space",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "Space publik",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "sourceCode": "Kode sumber",
     "@sourceCode": {
         "type": "String",
@@ -1391,11 +1275,6 @@
     },
     "setStatus": "Tetapkan status",
     "@setStatus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "setPermissionsLevel": "Tetapkan level izin",
-    "@setPermissionsLevel": {
         "type": "String",
         "placeholders": {}
     },
@@ -1550,11 +1429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "passwordRecovery": "Pemulihan kata sandi",
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "passwordHasBeenChanged": "Kata sandi telah diubah",
     "@passwordHasBeenChanged": {
         "type": "String",
@@ -1592,8 +1466,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableMultiAccounts": "(BETA) Aktifkan multi-akun di perangkat ini",
-    "@enableMultiAccounts": {},
     "bundleName": "Nama bundel",
     "@bundleName": {},
     "removeFromBundle": "Hilangkan dari bundel ini",
@@ -1602,8 +1474,6 @@
     "@addToBundle": {},
     "editBundlesForAccount": "Edit bundel untuk akun ini",
     "@editBundlesForAccount": {},
-    "addAccount": "Tambah akun",
-    "@addAccount": {},
     "oneClientLoggedOut": "Salah satu klienmu telah keluar",
     "@oneClientLoggedOut": {},
     "openCamera": "Buka kamera",
@@ -1742,11 +1612,6 @@
     },
     "darkTheme": "Gelap",
     "@darkTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "createNewSpace": "Space baru",
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1903,11 +1768,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "removeDevice": "Hapus perangkat",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "removedBy": "Dihapus oleh {username}",
     "@removedBy": {
         "type": "String",
@@ -1964,8 +1824,6 @@
     },
     "link": "Tautan",
     "@link": {},
-    "yourChatBackupHasBeenSetUp": "Cadangan obrolanmu telah disiapkan.",
-    "@yourChatBackupHasBeenSetUp": {},
     "unverified": "Tidak terverifikasi",
     "@unverified": {},
     "repeatPassword": "Ulangi kata sandi",
@@ -1982,8 +1840,6 @@
     "@openGallery": {},
     "start": "Mulai",
     "@start": {},
-    "removeFromSpace": "Hilangkan dari space",
-    "@removeFromSpace": {},
     "commandHint_clearcache": "Bersihkan tembolok",
     "@commandHint_clearcache": {
         "type": "String",
@@ -2043,12 +1899,6 @@
     "@unsupportedAndroidVersion": {},
     "placeCall": "Lakukan panggilan",
     "@placeCall": {},
-    "voiceCall": "Panggilan suara",
-    "@voiceCall": {},
-    "videoCallsBetaWarning": "Dicatat bahwa panggilan video sedang dalam beta. Fitur ini mungkin tidak berkerja dengan benar atau tidak berkerja sama sekali pada semua platform.",
-    "@videoCallsBetaWarning": {},
-    "emailOrUsername": "Email atau nama pengguna",
-    "@emailOrUsername": {},
     "experimentalVideoCalls": "Panggilan video eksperimental",
     "@experimentalVideoCalls": {},
     "widgetEtherpad": "Catatan teks",
@@ -2136,28 +1986,8 @@
             }
         }
     },
-    "pleaseEnterRecoveryKeyDescription": "Untuk mengakses pesan lamamu, mohon masukkan kunci pemulihanmu yang telah dibuat di sesi sebelumnya. Kunci pemulihanmu BUKAN kata sandimu.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "users": "Pengguna",
     "@users": {},
-    "storeInSecureStorageDescription": "Simpan kunci pemulihan di penyimpanan aman perangkat ini.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Simpan kunci ini secara manual dengan memicu dialog pembagian atau papan klip sistem.",
-    "@saveKeyManuallyDescription": {},
-    "recoveryKey": "Kunci pemulihan",
-    "@recoveryKey": {},
-    "storeInAppleKeyChain": "Simpan di Apple KeyChain",
-    "@storeInAppleKeyChain": {},
-    "pleaseEnterRecoveryKey": "Mohon masukkan kunci pemulihanmu:",
-    "@pleaseEnterRecoveryKey": {},
-    "unlockOldMessages": "Akses pesan lama",
-    "@unlockOldMessages": {},
-    "recoveryKeyLost": "Kunci pemulihan hilang?",
-    "@recoveryKeyLost": {},
-    "storeInAndroidKeystore": "Simpan di Android KeyStore",
-    "@storeInAndroidKeystore": {},
-    "storeSecurlyOnThisDevice": "Simpan secara aman di perangkat ini",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "{count} file",
     "@countFiles": {
         "placeholders": {
@@ -2191,24 +2021,16 @@
     "@commandHint_markasdm": {},
     "commandHint_markasgroup": "Tandai sebagai grup",
     "@commandHint_markasgroup": {},
-    "screenSharingTitle": "membagikan layar",
-    "@screenSharingTitle": {},
     "noKeyForThisMessage": "Hal ini bisa terjadi jika pesan dikirim sebelum kamu masuk ke akunmu di perangkat ini.\n\nMungkin juga pengirim telah memblokir perangkatmu atau ada yang tidak beres dengan koneksi internet.\n\nApakah kamu bisa membaca pesan pada sesi lain? Maka kamu bisa mentransfer pesan dari sesi tersebut! Buka Pengaturan > Perangkat dan pastikan bahwa perangkat Anda telah ditandatangani secara silang. Ketika kamu membuka ruangan di lain waktu dan kedua sesi berada di latar depan, kunci akan ditransmisikan secara otomatis.\n\nApakah kamu tidak mau kehilangan kunci saat keluar atau berpindah perangkat? Pastikan bahwa kamu telah mengaktifkan cadangan obrolan dalam pengaturan.",
     "@noKeyForThisMessage": {},
-    "foregroundServiceRunning": "Notifikasi ini ditampilkan ketika layanan latar depan berjalan.",
-    "@foregroundServiceRunning": {},
     "whyIsThisMessageEncrypted": "Mengapa pesan ini tidak bisa dibaca?",
     "@whyIsThisMessageEncrypted": {},
     "newGroup": "Grup baru",
     "@newGroup": {},
     "newSpace": "Space baru",
     "@newSpace": {},
-    "enterSpace": "Masuk space",
-    "@enterSpace": {},
     "allSpaces": "Semua space",
     "@allSpaces": {},
-    "screenSharingDetail": "Kamu membagikan layarmu di FluffyChat",
-    "@screenSharingDetail": {},
     "doNotShowAgain": "Jangan tampilkan lagi",
     "@doNotShowAgain": {},
     "hugContent": "{senderName} memeluk kamu",
@@ -2253,16 +2075,8 @@
             }
         }
     },
-    "newSpaceDescription": "Fitur space bisa membantu untuk memisahkan obrolanmu dan membuat komunitas pribadi atau publik.",
-    "@newSpaceDescription": {},
-    "sorryThatsNotPossible": "Maaf... itu tidak mungkin",
-    "@sorryThatsNotPossible": {},
     "deviceKeys": "Kunci perangkat:",
     "@deviceKeys": {},
-    "encryptThisChat": "Enkripsi obrolan ini",
-    "@encryptThisChat": {},
-    "disableEncryptionWarning": "Demi keamanan kamu tidak bisa menonaktifkan enkripsi dalam sebuah obrolan di mana sebelumbya sudah diaktifkan.",
-    "@disableEncryptionWarning": {},
     "reopenChat": "Buka obrolan lagi",
     "@reopenChat": {},
     "noBackupWarning": "Peringatan! Tanpa mengaktifkan cadangan percakapan, kamu akan kehilangan akses ke pesan terenkripsimu. Disarankan untuk mengaktifkan cadangan percakapan terlebih dahulu sebelum keluar dari akun.",
@@ -2314,14 +2128,10 @@
     "@messagesStyle": {},
     "shareInviteLink": "Bagikan tautan undangan",
     "@shareInviteLink": {},
-    "setTheme": "Atur tema:",
-    "@setTheme": {},
     "invalidServerName": "Nama server tidak valid",
     "@invalidServerName": {},
     "chatPermissions": "Perizinan obrolan",
     "@chatPermissions": {},
-    "chatDescription": "Deskripsi obrolan",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "Deskripsi obrolan diubah",
     "@chatDescriptionHasBeenChanged": {},
     "noChatDescriptionYet": "Deskripsi obrolan belum dibuat.",
@@ -2405,14 +2215,10 @@
     "@pleaseEnterANumber": {},
     "kickUserDescription": "Pengguna ini dikeluarkan dari percakapan tetapi tidak dicekal. Dalam percakapan publik, penggunanya dapat bergabung ulang kapan pun.",
     "@kickUserDescription": {},
-    "groupCanBeFoundViaSearch": "Grup dapat dicari melalui pencarian",
-    "@groupCanBeFoundViaSearch": {},
     "groupName": "Nama grup",
     "@groupName": {},
     "wrongRecoveryKey": "Maaf... ini sepertinya bukan kunci pemulihan yang benar.",
     "@wrongRecoveryKey": {},
-    "addChatOrSubSpace": "Tambahkan percakapan atau subspace",
-    "@addChatOrSubSpace": {},
     "pleaseChooseAStrongPassword": "Silakan pilih kata sandi yang kuat",
     "@pleaseChooseAStrongPassword": {},
     "joinSpace": "Bergabung ke space",
@@ -2477,10 +2283,6 @@
     },
     "passwordIsWrong": "Kata sandi yang kamu masukkan salah",
     "@passwordIsWrong": {},
-    "searchChatsRooms": "Cari #percakapan, @pengguna...",
-    "@searchChatsRooms": {},
-    "createGroupAndInviteUsers": "Buat sebuah grup dan undang pengguna",
-    "@createGroupAndInviteUsers": {},
     "pleaseEnterYourCurrentPassword": "Silakan masukkan kata sandimu saat ini",
     "@pleaseEnterYourCurrentPassword": {},
     "passwordsDoNotMatch": "Kata sandi tidak cocok",
@@ -2491,32 +2293,6 @@
     "@sendReadReceipts": {},
     "formattedMessages": "Pesan yang diformat",
     "@formattedMessages": {},
-    "verifyOtherUser": "🔐 Verifikasi pengguna lain",
-    "@verifyOtherUser": {},
-    "sessionLostBody": "Sesimu hilang. Silakan laporkan kesalahan ini kepada pengembang di {url}. Pesan kesalahannya adalah: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "restoreSessionBody": "Aplikasi sekarang mencoba memulihkan sesimu dari cadangan. Silakan laporkan kesalahan ini kepada pengembang di {url}. Pesan kesalahannya adalah: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "presencesToggle": "Tampilkan pesan status dari pengguna lain",
     "@presencesToggle": {
         "type": "String",
@@ -2583,8 +2359,6 @@
     "@initAppError": {},
     "verifyOtherDeviceDescription": "Saat kamu memverifikasi perangkat lain, perangkat tersebut dapat bertukar kunci, sehingga meningkatkan keamananmu secara keseluruhan. 💪 Saat Anda memulai verifikasi, sebuah pemberitahuan akan muncul di aplikasi pada kedua perangkat. Di situ kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain. Sebaiknya siapkan kedua perangkat sebelum kamu memulai verifikasi. 🤳",
     "@verifyOtherDeviceDescription": {},
-    "verifyOtherUserDescription": "Jika kamu memverifikasi pengguna lain, kamu bisa yakin bahwa kamu tahu kepada siapa sebenarnya kamu menulis pesan kepadanya. 💪\n\nSaat kamu memulai verifikasi, kamu dan pengguna lain akan melihat pemberitahuan di aplikasi. Di sana kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain.\n\nCara terbaik untuk melakukannya adalah dengan bertemu secara langsung atau memulai panggilan video. 👭",
-    "@verifyOtherUserDescription": {},
     "commandHint_ignore": "Abaikan ID Matrix yang diberikan",
     "@commandHint_ignore": {},
     "commandHint_unignore": "Batalkan pengabaian ID Matrix yang diberikan",
@@ -2609,12 +2383,6 @@
     "@hideRedactedMessages": {},
     "appLockDescription": "Kunci aplikasi ketika tidak digunakan dengan kode PIN",
     "@appLockDescription": {},
-    "accessAndVisibility": "Akses dan keterlihatan",
-    "@accessAndVisibility": {},
-    "globalChatId": "ID obrolan global",
-    "@globalChatId": {},
-    "accessAndVisibilityDescription": "Siapa yang diperbolehkan bergabung ke obrolan ini dan bagaimana obrolannya dapat ditemukan.",
-    "@accessAndVisibilityDescription": {},
     "calls": "Panggilan",
     "@calls": {},
     "customEmojisAndStickers": "Emoji dan stiker kustom",
@@ -2627,32 +2395,15 @@
     "@overview": {},
     "passwordRecoverySettings": "Pengaturan pemulihan kata sandi",
     "@passwordRecoverySettings": {},
-    "usersMustKnock": "Pengguna harus mengetuk",
-    "@usersMustKnock": {},
-    "noOneCanJoin": "Tidak ada siapa pun yang dapat bergabung",
-    "@noOneCanJoin": {},
     "knock": "Ketuk",
     "@knock": {},
     "knocking": "Mengetuk",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "Obrolan dapat ditemukan melalui pencarian di {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "thereAreCountUsersBlocked": "Saat ini ada {count} pengguna yang diblokir.",
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
     },
-    "publicChatAddresses": "Alamat obrolan umum",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Buat alamat baru",
-    "@createNewAddress": {},
     "swipeRightToLeftToReply": "Usap dari kanan ke kiri untuk membalas",
     "@swipeRightToLeftToReply": {},
     "searchMore": "Cari lebih banyak...",
@@ -2754,10 +2505,6 @@
     },
     "changeGeneralChatSettings": "Ubah pengaturan chat umum",
     "@changeGeneralChatSettings": {},
-    "discoverHomeservers": "Jelajahi homeserver",
-    "@discoverHomeservers": {},
-    "loginWithMatrixId": "Masuk dengan ID Matrix",
-    "@loginWithMatrixId": {},
     "doesNotSeemToBeAValidHomeserver": "Sepertinya bukan homeserver yang kompatibel. URL salah?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "unread": "Tidak dibaca",
@@ -2774,8 +2521,6 @@
     "@generatingVideoThumbnail": {},
     "changelog": "Catatan perubahan",
     "@changelog": {},
-    "whatIsAHomeserver": "Apa itu homeserver?",
-    "@whatIsAHomeserver": {},
     "sendRoomNotifications": "Kirim notifikasi @room",
     "@sendRoomNotifications": {},
     "updateInstalled": "🎉 Pembaruan {version} terpasang!",
@@ -2800,14 +2545,10 @@
     },
     "chatPermissionsDescription": "Tentukan tingkat kekuasaan yang diperlukan untuk tindakan tertentu dalam chat ini. Tingkat kekuasaan 0, 50 dan 100 biasanya mewakili pengguna, moderator dan admin, tetapi gradasi apa pun dimungkinkan.",
     "@chatPermissionsDescription": {},
-    "homeserverDescription": "Semua data Anda disimpan di dalam server, seperti halnya penyedia email. Anda dapat memilih homeserver mana yang ingin Anda gunakan, sementara Anda masih dapat berkomunikasi dengan semua orang. Pelajari lebih lanjut di https://matrix.org.",
-    "@homeserverDescription": {},
     "oneOfYourDevicesIsNotVerified": "Salah satu perangkat Anda tidak terverifikasi",
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "Catatan: Ketika Anda menghubungkan semua perangkat Anda ke cadangan chat, mereka akan diverifikasi secara otomatis.",
     "@noticeChatBackupDeviceVerification": {},
-    "welcomeText": "Halo 👋 Ini FluffyChat. Kamu bisa masuk ke homeserver mana pun, yang kompatibel dengan https://matrix.org. Lalu, chat dengan siapa pun. Ini merupakan jaringan perpesanan besar yang terdesentralisasi!",
-    "@welcomeText": {},
     "continueText": "Lanjutkan",
     "@continueText": {},
     "aboutHomeserver": "Tentang {homeserver}",
@@ -2837,8 +2578,6 @@
     "@version": {},
     "website": "Situs Web",
     "@website": {},
-    "manageAccount": "Kelola akun",
-    "@manageAccount": {},
     "contactServerSecurity": "Hubungi keamanan server",
     "@contactServerSecurity": {},
     "name": "Nama",
@@ -2977,8 +2716,6 @@
     "@crossVerifiedDevices": {},
     "waitingForServer": "Menunggu server...",
     "@waitingForServer": {},
-    "appIntroduction": "FluffyChat memungkinkanmu untuk mengobrol dengan teman-temanmu di berbagai perpesanan. Pelajari lebih lanjut di https://matrix.org atau ketuk *Lanjutkan* saja.",
-    "@appIntroduction": {},
     "notificationRuleContainsDisplayNameDescription": "Memberi tahu pengguna ketika pesan berisi nama tampilannya.",
     "@notificationRuleContainsDisplayNameDescription": {},
     "shareKeysWith": "Bagikan kunci dengan...",
@@ -3002,17 +2739,6 @@
     "@previous": {},
     "otherPartyNotLoggedIn": "Pihak lain belum masuk dan tidak dapat menerima pesan!",
     "@otherPartyNotLoggedIn": {},
-    "appWantsToUseForLogin": "Gunakan '{server}' untuk masuk",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "appWantsToUseForLoginDescription": "Anda memperbolehkan aplikasi dan situs web membagikan informasi tentang Anda.",
-    "@appWantsToUseForLoginDescription": {},
     "open": "Buka",
     "@open": {},
     "takeAPhoto": "Ambil foto",
@@ -3055,15 +2781,6 @@
     },
     "checkList": "Ceklis",
     "@checkList": {},
-    "countInvited": "{count} diundang",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "commandHint_logout": "Keluar dari perangkatmu saat ini",
     "@commandHint_logout": {},
     "commandHint_logoutall": "Keluarkan semua perangkat aktif",
@@ -3090,11 +2807,9 @@
     "taTooltip": "Penggunaan L2 dengan bantuan terjemahan",
     "interactiveTranslatorSliderHeader": "Penerjemah Interaktif",
     "interactiveGrammarSliderHeader": "Pemeriksa Tata Bahasa Interaktif",
-    "interactiveTranslatorRequired": "Diperlukan",
     "waTooltip": "Penggunaan L2 tanpa bantuan",
     "interactiveTranslator": "Bantuan Terjemahan",
     "noIdenticalLanguages": "Harap pilih bahasa dasar dan target yang berbeda",
-    "searchBy": "Cari berdasarkan negara dan bahasa",
     "joinWithClassCode": "Gabung kursus",
     "languageLevelPreA1": "Pemula Rendah (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -3115,19 +2830,14 @@
     "saveChanges": "Simpan perubahan",
     "publicProfileTitle": "Izinkan profil saya ditemukan dalam pencarian",
     "publicProfileDesc": "Dengan mengaktifkan, Anda memungkinkan pengguna lain menemukan profil Anda di bilah pencarian global dan mengirim permintaan untuk mengobrol. Pada titik ini, Anda dapat memilih untuk menerima atau menolak permintaan tersebut.",
-    "errorDisableIT": "Bantuan terjemahan dimatikan.",
-    "errorDisableIGC": "Bantuan tata bahasa dimatikan.",
     "errorDisableITUserDesc": "Klik di sini untuk memperbarui pengaturan bantuan terjemahan",
     "errorDisableIGCUserDesc": "Klik di sini untuk memperbarui pengaturan bantuan tata bahasa",
     "errorDisableITClassDesc": "Bantuan terjemahan dimatikan untuk kursus tempat obrolan ini berada.",
     "errorDisableIGCClassDesc": "Bantuan tata bahasa dimatikan untuk kursus tempat obrolan ini berada.",
-    "error405Title": "Bahasa belum diatur",
     "error405Desc": "Silakan atur bahasa Anda di Menu Utama > Pengaturan Pembelajaran.",
     "termsAndConditions": "Syarat dan Ketentuan",
     "andCertifyIAmAtLeast13YearsOfAge": " dan menyatakan saya berusia minimal 16 tahun.",
-    "error502504Title": "Wow, banyak siswa online!",
     "error502504Desc": "Alat terjemahan dan tata bahasa mungkin lambat atau tidak tersedia sementara bot Pangea mengejar ketertinggalan.",
-    "error404Title": "Kesalahan terjemahan!",
     "error404Desc": "Bot Pangea tidak yakin bagaimana menerjemahkan itu...",
     "errorPleaseRefresh": "Kami sedang menelusurinya! Silakan muat ulang dan coba lagi.",
     "connectedToStaging": "Terhubung ke Staging",
@@ -3165,13 +2875,9 @@
     "definitionsToolName": "Definisi Kata",
     "definitionsToolDescription": "Ketika diaktifkan, kata yang digarisbawahi berwarna biru dapat diklik untuk melihat definisi. Klik pesan untuk mengakses definisi.",
     "welcomeBack": "Selamat datang kembali! Jika Anda bagian dari pilot 2023-2024, silakan hubungi kami untuk langganan pilot khusus Anda. Jika Anda seorang guru yang telah (atau institusi Anda telah) membeli lisensi untuk kelas Anda, hubungi kami untuk langganan guru.",
-    "downloadTxtFile": "Unduh File Teks",
-    "downloadCSVFile": "Unduh File CSV",
     "promotionalSubscriptionDesc": "Anda saat ini memiliki langganan promosi seumur hidup. Pesan ke support@pangea.chat untuk bantuan mengubah langganan Anda.",
     "originalSubscriptionPlatform": "Langganan dibeli melalui {purchasePlatform}",
     "oneWeekTrial": "Percobaan Seminggu",
-    "downloadXLSXFile": "Unduh Berkas Excel",
-    "unkDisplayName": "Tidak Diketahui",
     "wwCountryDisplayName": "Dunia",
     "afCountryDisplayName": "Afghanistan",
     "axCountryDisplayName": "Kepulauan Aland",
@@ -3466,7 +3172,6 @@
     "chatCapacityHasBeenChanged": "Kapasitas obrolan telah diubah",
     "chatCapacitySetTooLow": "Kapasitas obrolan harus minimal {count}.",
     "chatCapacityExplanation": "Kapasitas obrolan membatasi jumlah anggota yang diizinkan dalam obrolan.",
-    "tooManyRequest": "Terlalu banyak permintaan, silakan coba lagi nanti.",
     "enterNumber": "Silakan masukkan nilai angka bulat.",
     "practice": "Latihan",
     "versionNotFound": "Versi Tidak Ditemukan",
@@ -3476,7 +3181,6 @@
     "deleteSubscriptionWarningTitle": "Anda memiliki langganan aktif",
     "deleteSubscriptionWarningBody": "Menghapus akun Anda tidak akan secara otomatis membatalkan langganan Anda.",
     "manageSubscription": "Kelola Langganan",
-    "error520Title": "Silakan coba lagi.",
     "error520Desc": "Maaf, kami tidak dapat memahami pesan Anda...",
     "wordsUsed": "Kata yang Digunakan",
     "level": "Level",
@@ -3494,7 +3198,6 @@
     "other": "Lainnya",
     "levelShort": "LVL {level}",
     "noCapacityLimit": "Tanpa batas kapasitas",
-    "downloadGroupText": "Unduh teks grup",
     "notificationsOn": "Notifikasi aktif",
     "notificationsOff": "Notifikasi mati",
     "joinWithCode": "Gabung dengan kode",
@@ -3558,24 +3261,12 @@
     "whatIsTheMorphTag": "Apa {morphologicalFeature} dari '{wordForm}'?",
     "dataAvailable": "Ketersediaan data",
     "available": "Tersedia",
-    "pangeaBotIsFallible": "Pangea Bot juga bisa membuat kesalahan!",
-    "whatIsMeaning": "Apa arti '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Cocokkan arti dengan kata-kata dalam pesan!",
-    "doubleClickToEdit": "Klik dua kali untuk mengedit.",
-    "topicLabel": "Topik",
-    "topicPlaceholder": "Pilih topik...",
-    "modePlaceholder": "Pilih mode...",
-    "learningObjectiveLabel": "Tujuan Pembelajaran",
-    "learningObjectivePlaceholder": "Pilih tujuan pembelajaran...",
-    "targetLanguageLabel": "Bahasa target",
     "cefrLevelLabel": "Level CEFR",
     "image": "Gambar",
     "video": "Video",
     "nan": "Tidak berlaku",
-    "addVocabulary": "Tambah kosakata",
     "instructions": "Instruksi",
-    "numberOfLearners": "Jumlah pelajar",
-    "mustBeInteger": "Harus berupa bilangan bulat misalnya 1, 2, 3, ...",
     "constructUsePvmDesc": "Diproduksi dalam pesan suara",
     "leaveSpaceDescription": "Dengan meninggalkan kursus, Anda akan meninggalkan semua obrolan di dalamnya. Pengguna lain akan melihat bahwa Anda telah meninggalkan kursus.",
     "constructUseCorMmDesc": "Makna pesan yang benar",
@@ -3590,7 +3281,6 @@
     "ttsDisabledBody": "Anda dapat mengaktifkan teks-ke-ucapan di pengaturan pembelajaran Anda",
     "noSpaceDescriptionYet": "Belum ada deskripsi kursus yang dibuat.",
     "tooLargeToSend": "Pesan ini terlalu besar untuk dikirim",
-    "exitWithoutSaving": "Apakah Anda yakin ingin meninggalkan tanpa menyimpan?",
     "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Pengaturan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Baru",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
@@ -3601,11 +3291,8 @@
     "displayName": "Nama tampilan",
     "leaveRoomDescription": "Anda akan meninggalkan obrolan ini. Pengguna lain akan melihat bahwa Anda telah meninggalkan obrolan.",
     "confirmUserId": "Harap konfirmasi nama pengguna Pangea Chat Anda untuk menghapus akun Anda.",
-    "startingToday": "Mulai hari ini",
-    "oneWeekFreeTrial": "Percobaan gratis satu minggu",
     "paidSubscriptionStarts": "Dimulai {startDate}",
     "cancelInSubscriptionSettings": "• Batalkan kapan saja di pengaturan langganan",
-    "cancelToAvoidCharges": "• Batalkan sebelum {trialEnds} untuk menghindari biaya",
     "downloadGboard": "Unduh Gboard",
     "autocorrectNotAvailable": "Sayangnya platform Anda saat ini tidak didukung untuk fitur ini. Nantikan pengembangan lebih lanjut!",
     "pleaseUpdateApp": "Harap perbarui aplikasi untuk melanjutkan.",
@@ -3615,17 +3302,12 @@
     "knockSpaceSuccess": "Anda telah meminta untuk bergabung dengan kursus ini! Seorang admin akan merespons permintaan Anda saat mereka menerimanya 😊",
     "chooseWordAudioInstructionsBody": "Dengarkan pesan lengkapnya. Kemudian cocokkan audio dengan kata-kata.",
     "chooseMorphsInstructionsBody": "Klik bagian puzzle untuk pertanyaan tata bahasa!",
-    "pleaseEnterInt": "Silakan masukkan angka",
     "home": "Beranda",
     "join": "Gabung",
     "resetInstructionTooltipsTitle": "Atur ulang tooltip instruksi",
     "resetInstructionTooltipsDesc": "Klik untuk menampilkan tooltip instruksi seperti untuk pengguna baru.",
-    "randomize": "Acak",
     "clear": "Hapus",
-    "featuredActivities": "Unggulan",
     "save": "Simpan",
-    "startChat": "Mulai obrolan",
-    "translationProblem": "Masalah terjemahan",
     "askToJoin": "Minta bergabung",
     "emptyChatWarningTitle": "Obrolan kosong",
     "emptyChatWarningDesc": "Anda belum mengundang siapa pun ke obrolan Anda. Pergi ke Pengaturan Obrolan untuk mengundang kontak Anda atau Bot. Anda juga dapat melakukannya nanti.",
@@ -3655,17 +3337,13 @@
     "timesUsedIndependently": "Jumlah digunakan secara mandiri",
     "timesUsedWithAssistance": "Jumlah digunakan dengan bantuan",
     "shareInviteCode": "Bagikan kode undangan: {code}",
-    "leaderboard": "Papan peringkat",
     "skipForNow": "Lewati untuk saat ini",
     "permissions": "Izin",
     "spaceChildPermission": "Siapa yang dapat menambahkan obrolan baru ke kursus ini",
-    "addEnvironmentOverride": "Tambahkan override lingkungan",
     "defaultOption": "Default",
     "deleteChatDesc": "Anda yakin ingin menghapus obrolan ini? Ini akan dihapus untuk semua peserta dan semua pesan dalam obrolan tidak akan lagi tersedia untuk latihan atau analitik pembelajaran.",
     "deleteSpaceDesc": "Kursus dan obrolan yang dipilih akan dihapus untuk semua peserta dan semua pesan dalam obrolan tidak akan lagi tersedia untuk latihan atau analitik pembelajaran. Tindakan ini tidak dapat dibatalkan.",
     "launch": "Luncurkan",
-    "searchChats": "Cari obrolan",
-    "maxFifty": "Maks 50",
     "configureSpace": "Konfigurasi kursus",
     "pinMessages": "Pin pesan",
     "setJoinRules": "Atur aturan bergabung",
@@ -3699,9 +3377,6 @@
     "failedToFetchTranscription": "Gagal mengambil transkripsi",
     "deleteEmptySpaceDesc": "Kursus akan dihapus untuk semua peserta. Tindakan ini tidak dapat dibatalkan.",
     "regenerate": "Hasilkan ulang",
-    "mySavedActivities": "Aktivitas Tersimpan Saya",
-    "noSavedActivities": "Tidak ada aktivitas tersimpan",
-    "saveActivity": "Simpan aktivitas ini",
     "failedToPlayVideo": "Gagal memutar video",
     "done": "Selesai",
     "inThisSpace": "Dalam kursus ini",
@@ -3712,13 +3387,9 @@
     "numInvited": "{count} diundang",
     "saved": "Tersimpan",
     "reset": "Atur ulang",
-    "errorFetchingActivitiesMessage": "Gagal mengambil aktivitas",
     "errorFetchingDefinition": "Gagal mengambil definisi",
     "errorProcessAnalytics": "Gagal memproses analitik",
     "errorDownloading": "Gagal mengunduh",
-    "errorLoadingSpaceChildren": "Gagal memuat obrolan dalam kursus ini",
-    "unexpectedError": "Kesalahan tak terduga.",
-    "pleaseReload": "Silakan muat ulang dan coba lagi.",
     "translationError": "Kesalahan terjemahan",
     "check": "Periksa",
     "unableToFindRoom": "Tidak ditemukan obrolan atau kursus dengan kode tersebut. Silakan coba lagi.",
@@ -3727,19 +3398,14 @@
     "request": "Permintaan",
     "requestAll": "Permintaan Semua",
     "confirmMessageUnpin": "Apakah Anda yakin ingin melepas pin pesan ini?",
-    "saveAndLaunch": "Simpan dan Luncurkan",
-    "launchToSpace": "Luncurkan ke kursus",
     "pending": "Menunggu",
     "inactive": "Tidak aktif",
-    "confirmRole": "Konfirmasi peran",
     "openRoleLabel": "TERBUKA",
     "finishedTheActivity": "🎯 {username} menyelesaikan aktivitas ini",
     "activitySummaryError": "Ringkasan aktivitas tidak tersedia",
     "requestSummaries": "Minta ringkasan",
-    "generatingNewActivities": "Anda adalah pengguna pertama dari pasangan bahasa ini! Mohon tunggu sebentar, kami sedang menyiapkan aktivitas khusus untuk Anda.",
     "requestAccessTitle": "Minta akses analitik?",
     "requestAccessDesc": "Apakah Anda ingin meminta akses untuk melihat analitik peserta?\n\nJika peserta setuju, admin kursus ini akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa tertentu yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan dalam obrolan di luar kursus\n    • daftar kosakata",
-    "requestAccess": "Permintaan akses ({count})",
     "analyticsInactiveTitle": "Permintaan ke pengguna tidak aktif tidak dapat dikirim",
     "analyticsInactiveDesc": "Pengguna tidak aktif yang belum masuk sejak fitur ini diperkenalkan tidak akan melihat permintaan Anda.\n\nTombol Permintaan akan muncul setelah mereka kembali. Anda dapat mengirim ulang permintaan nanti dengan mengklik tombol Permintaan di bawah nama mereka saat tersedia.",
     "accessRequestedTitle": "Permintaan Akses Analitik",
@@ -3762,8 +3428,6 @@
     "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
     "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
-    "noCourseFound": "Oh, kursus ini membutuhkan rencana!\n\nRencana kursus adalah rangkaian topik dan aktivitas percakapan.",
-    "additionalParticipants": "+ {num} lainnya",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktivitas berikutnya!",
     "letsGo": "Ayo mulai",
@@ -3776,13 +3440,11 @@
     "waitNotDone": "Tunggu, saya belum selesai!",
     "waitingForOthersToFinish": "Menunggu yang lain selesai...",
     "generatingSummary": "Menganalisis obrolan dan menghasilkan hasil",
-    "findCourse": "Cari kursus",
     "pingParticipantsNotification": "{user} sedang mencari pengguna untuk bergabung dalam sesi aktivitas di {room}",
     "course": "Kursus",
     "courses": "Kursus",
     "goToCourse": "Pergi ke kursus: {course}",
     "activityComplete": "Aktivitas ini telah selesai. Ringkasan aktivitas harus tersedia di bawah.",
-    "startNewSession": "Mulai sesi baru",
     "joinOpenSession": "Gabung sesi terbuka",
     "activityNotFound": "Aktivitas tidak ditemukan",
     "myActivities": "Aktivitas saya",
@@ -3857,10 +3519,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3870,10 +3528,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -3961,14 +3615,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -3985,10 +3631,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4001,15 +3643,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4161,14 +3795,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4182,14 +3808,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5412,10 +5030,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5456,10 +5070,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5532,10 +5142,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5805,47 +5411,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5865,19 +5431,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -5941,10 +5495,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -5985,14 +5535,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6004,14 +5546,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6049,10 +5583,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6069,27 +5599,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6213,10 +5727,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6226,10 +5736,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6246,14 +5752,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6393,18 +5891,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6453,10 +5939,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6466,18 +5948,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6520,23 +5990,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6560,10 +6018,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6571,14 +6025,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6683,18 +6129,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6747,10 +6181,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6777,10 +6207,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -6961,7 +6387,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Periksa kembali besok untuk pembaruan aktivitas.",
-    "activityDropdownDesc": "Ketika Anda selesai dengan aktivitas ini, klik di bawah",
     "languageMismatchTitle": "Ketidaksesuaian bahasa",
     "languageMismatchDesc": "Bahasa target Anda tidak cocok dengan bahasa aktivitas ini. Perbarui bahasa target Anda?",
     "reportWordIssueTooltip": "Laporkan masalah informasi kata",
@@ -6974,10 +6399,6 @@
     "selectAll": "Pilih semua",
     "deselectAll": "Batalkan pilihan semua",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7026,17 +6447,11 @@
         "placeholders": {}
     },
     "startOwn": "Mulai milik saya sendiri",
-    "joinCourseDesc": "Setiap kursus memiliki 8-10 topik berurutan dengan berbagai aktivitas pembelajaran bahasa berbasis tugas.",
     "newMessageInPangeaChat": "📝 Pesan baru di Pangea Chat",
     "shareCourse": "Bagikan kursus",
     "addCourse": "Tambahkan kursus",
-    "joinPublicCourse": "Gabung kursus publik",
     "vocabLevelsDesc": "Di sinilah kata-kata kosakata akan ditempatkan setelah Anda meningkatkannya!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7049,10 +6464,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7071,7 +6482,6 @@
     "emojiView": "Tampilan emoji",
     "feedbackDialogDesc": "Saya juga membuat kesalahan! Ada yang bisa membantu saya untuk memperbaiki?",
     "contactHasBeenInvitedToTheCourse": "Kontak telah diundang ke kursus",
-    "activityStatsButtonTooltip": "Info aktivitas",
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
@@ -7337,10 +6747,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8388,16 +7794,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Kegiatan untuk Membuka Topik Berikutnya",
-    "activitiesToUnlockTopicDesc": "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Latihan definisi kosakata yang benar",
     "constructUseIncLMDesc": "Latihan definisi kosakata yang salah",
     "constructUseCorLADesc": "Latihan audio kosakata yang benar",
@@ -8405,7 +7801,6 @@
     "constructUseBonus": "Bonus selama latihan kosakata",
     "practiceVocab": "Latihan kosakata",
     "selectMeaning": "Pilih arti",
-    "selectAudio": "Pilih audio yang sesuai",
     "anotherRound": "Putaran lain",
     "activitySettingsOverrideWarning": "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas",
     "voice": "Suara",
@@ -8437,10 +7832,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8458,12 +7849,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Unduhan dimulai",
     "webDownloadPermissionMessage": "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8558,11 +7944,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Aktifkan bantuan penulisan",
     "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
     "@autoIGCToolName": {
@@ -8618,24 +7999,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Tata Bahasa",
-    "spanTypeWordChoice": "Pilihan Kata",
     "spanTypeSpelling": "Ejaan",
     "spanTypePunctuation": "Tanda Baca",
     "spanTypeStyle": "Gaya",
     "spanTypeFluency": "Kefasihan",
     "spanTypeAccents": "Aksen",
     "spanTypeCapitalization": "Kapitalisasi",
-    "spanTypeCorrection": "Koreksi",
     "spanFeedbackTitle": "Laporkan masalah koreksi",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8660,23 +8030,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
     },
     "changedTheChatDescription": "{username} mengubah deskripsi obrolan",
     "changedTheChatName": "{username} mengubah nama obrolan",
-    "newSubSpace": "Ruang sub baru",
-    "moveToDifferentSpace": "Pindah ke ruang yang berbeda",
-    "removeFromSpaceDescription": "Obrolan akan dihapus dari ruang tetapi masih muncul di daftar obrolan Anda.",
     "countChats": "{chats} obrolan",
-    "spaceMemberOf": "Anggota ruang {spaces}",
-    "spaceMemberOfCanKnock": "Anggota ruang {spaces} dapat mengetuk",
-    "donate": "Donasi",
     "startedAPoll": "{username} memulai sebuah jajak pendapat.",
     "poll": "Jajak pendapat",
     "startPoll": "Mulai jajak pendapat",
@@ -8700,23 +8060,15 @@
     "newStickerPack": "Paket stiker baru",
     "stickerPackName": "Nama paket stiker",
     "attribution": "Atribusi",
-    "skipChatBackup": "Lewati cadangan obrolan",
-    "skipChatBackupWarning": "Apakah Anda yakin? Tanpa mengaktifkan cadangan obrolan, Anda mungkin kehilangan akses ke pesan Anda jika Anda mengganti perangkat.",
-    "loadingMessages": "Memuat pesan",
-    "setupChatBackup": "Siapkan cadangan obrolan",
     "noMoreResultsFound": "Tidak ada hasil lagi yang ditemukan",
     "chatSearchedUntil": "Obrolan dicari hingga {time}",
     "federationBaseUrl": "URL Dasar Federasi",
     "clientWellKnownInformation": "Informasi Klien-Terkenal:",
     "baseUrl": "URL Dasar",
     "identityServer": "Server Identitas:",
-    "versionWithNumber": "Versi: {version}",
     "logs": "Log",
-    "advancedConfigs": "Konfigurasi Lanjutan",
     "advancedConfigurations": "Konfigurasi lanjutan",
-    "signInWithLabel": "Masuk dengan:",
     "selectAllWords": "Pilih semua kata yang Anda dengar dalam audio",
-    "joinCourseForActivities": "Bergabunglah dengan kursus untuk mencoba aktivitas.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -8729,18 +8081,6 @@
             "username": {}
         }
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -8748,26 +8088,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -8873,22 +8193,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -8917,19 +8221,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -8937,15 +8229,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9146,11 +8430,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "Dalam kelas? Masukkan kode bergabung Anda di sini.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
     "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9194,18 +8473,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Kursus ini memiliki topik dengan kurang dari {input} aktivitas. Silakan masukkan angka yang kurang dari atau sama dengan {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Klik di sini untuk masuk kembali.",
     "@clickToLogin": {
@@ -9622,17 +8889,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Seekor beruang kuning kartun dengan lengan terangkat dalam kegembiraan.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Pilih kata untuk mempelajari lebih lanjut tentangnya",
     "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
     "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
     "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
     "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
-    "skipOnboardingClassCodeDesc": "Belajar secara mandiri? Jangan khawatir, Anda bisa:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9650,10 +8911,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9682,7 +8939,6 @@
     "pickCefrLevelTeacherStepTitle": "Tingkat apa yang Anda ajarkan?",
     "pickCefrLevelStudentStepTitle": "Tingkat apa Anda?",
     "customCourseStepTitle": "Isi formulir ini untuk mendapatkan kursus kustom",
-    "aboutYourClass": "Tentang kelas Anda",
     "courseCodeStepErrorMessage": "Silakan periksa kode Anda dan coba lagi",
     "institution": "Institusi",
     "courseGoals": "Tujuan Kursus",
@@ -9725,10 +8981,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9845,12 +9097,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Logo Pangea Chat",
     "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -9894,11 +9141,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Tindakan aktivitas",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Alat pengucapan",
     "audioTranscription": "Transkripsi audio AI",
     "visualLearnerSupport": "Dukungan pembelajar visual",
@@ -9939,7 +9181,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Bergabunglah dengan kursus yang mencakup aktivitas ini untuk memainkannya.",
     "resizeCoursePanel": "Ubah ukuran panel kursus",
     "undo": "Batalkan",
     "unlock": "Buka kunci",
@@ -9953,7 +9194,6 @@
     "addCourseBrowsePublic": "Jelajahi kursus publik",
     "browsePublicCourses": "Jelajahi kursus publik",
     "editProfile": "Edit profil",
-    "numObjectives": "{count} tujuan",
     "mapSearchHint": "Cari aktivitas",
     "mapSearchNoResults": "Tidak ada kecocokan dalam tampilan",
     "mapFilterAllLanguages": "Semua bahasa",
@@ -9962,7 +9202,6 @@
     "mapFilterCompleted": "Selesai",
     "mapFilterReset": "Atur Ulang",
     "activityTypeConversation": "Percakapan",
-    "lockedMissionRequirement": "Selesaikan misi sebelumnya untuk membuka kunci",
     "playAgain": "Main lagi",
     "reviewActivity": "Tinjau",
     "mapEmptyInView": "Tidak ada di sini pada level atau bahasa Anda. Perluas filter Anda atau perbesar.",
@@ -9977,14 +9216,9 @@
     "scrollToBottom": "Gulir ke bawah",
     "courseImage": "Gambar kursus",
     "avatarPreview": "Prabaca avatar",
-    "activityPhoto": "Foto aktivitas",
     "emotePreview": "Prabaca emote: {name}",
     "activityLabel": "Aktivitas: {title}",
     "resetMapView": "Atur ulang tampilan peta",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10037,14 +9271,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10074,10 +9300,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10134,10 +9356,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10489,5 +9707,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Izin kursus",
+    "starsToUnlockObjectiveTitle": "Bintang per Misi",
+    "starsToUnlockObjectiveDesc": "Tetapkan jumlah bintang yang dibutuhkan untuk menyelesaikan setiap misi",
+    "maxStarsPerMissionWarning": "Kursus ini memiliki misi di mana hanya {maxValue} bintang yang dapat diperoleh. Harap masukkan angka kurang dari atau sama dengan {maxValue}.",
+    "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda."
 }

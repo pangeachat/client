@@ -25,6 +25,21 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
 
+## Completion saves itself
+
+Saving a completed session is automatic — the design (what saving means, when it happens, and how stars bank on it) is the org doc's ([Saving and stars](../../../.github/.github/instructions/activities.instructions.md#saving-and-stars)); what the client owns is where the save runs. [`ActivityAutoSaveService`](../../lib/features/activity_sessions/activity_auto_save_service.dart) watches activity-role state changes across **all** rooms, not just the open chat, so a session that completes while the learner is elsewhere — or that completed before this login — still saves on the next sync. The save is idempotent, so a second device observing the same completion is harmless. A room whose plan is still hydrating is retried once the plan lands; a room whose plan is gone entirely (the archived-view rung in [When the activity can't be fetched](#when-the-activity-cant-be-fetched)) cannot resolve a target language and is skipped.
+
+The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
+
+## Downloading the transcript
+
+The session's app bar carries a "More" (⋮) menu ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)). A **live** session offers Invite, Leave, and Download; a **completed** session — the learner's own role archived (`hasArchivedActivity`) — keeps the menu but offers **Download only**, since Invite and Leave no longer apply once the session is over. Completing a session must not strip the menu: a learner returning to a finished session still needs to export it. (Regular, non-activity chats expose the same export from the chat-details button row, not this menu.)
+
+Download exports the full message history — sender, timestamp, original and sent message, and use type — as TXT / CSV / XLSX ([`lib/features/download/`](../../lib/features/download/)). Two decisions govern who sees it and where:
+
+- **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
+- **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
+
 ## When the activity can't be fetched
 
 Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:

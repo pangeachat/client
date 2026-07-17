@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -147,6 +148,11 @@ class OverlayMessage extends StatelessWidget {
     final selectModeController = overlayController.selectModeController;
     final inReplyTo = event.inReplyToEventId(includingFallback: false);
 
+    // Target vocab lemmas for the room's activity, so a spoken word gets the
+    // same gold highlight in the transcript as a typed one does inline
+    // (issue #7659). Null in non-activity rooms — then nothing highlights.
+    final vocabLemmas = controller.room.activityPlan?.vocabLemmas;
+
     final content = Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -286,6 +292,7 @@ class OverlayMessage extends StatelessWidget {
                 eventId: event.eventId,
                 onTokenSelected: overlayController.onClickOverlayMessageToken,
                 isTokenSelected: overlayController.isTokenSelected,
+                vocabLemmas: vocabLemmas,
               ),
               sizeAnimation != null
                   ? AnimatedBuilder(
@@ -453,6 +460,8 @@ class _MessageBubbleTranscription extends StatelessWidget {
   final Function(PangeaToken) onTokenSelected;
   final bool Function(PangeaToken) isTokenSelected;
 
+  final Set<String>? vocabLemmas;
+
   const _MessageBubbleTranscription({
     required this.controller,
     required this.enabled,
@@ -461,6 +470,7 @@ class _MessageBubbleTranscription extends StatelessWidget {
     required this.eventId,
     required this.onTokenSelected,
     required this.isTokenSelected,
+    this.vocabLemmas,
   });
 
   @override
@@ -515,6 +525,7 @@ class _MessageBubbleTranscription extends StatelessWidget {
                         style: style.copyWith(fontStyle: FontStyle.italic),
                         onClick: onTokenSelected,
                         isSelected: isTokenSelected,
+                        vocabLemmas: vocabLemmas,
                       ),
                       // if (MatrixState
                       //     .pangeaController.userController.showTranscription)

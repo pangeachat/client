@@ -279,6 +279,13 @@ class ActivityPlanModel {
     };
   }
 
+  /// Target vocab lemmas, lower-cased, as a set for membership tests — used
+  /// to highlight target words in messages and to track which target vocab
+  /// has been used in a session. Callers in hot render loops should read this
+  /// once and reuse it rather than per token (issue #7659).
+  Set<String> get vocabLemmas =>
+      vocab.map((v) => v.lemma.toLowerCase()).toSet();
+
   String get vocabString {
     final List<String> vocabList = [];
     String vocabString = "";
@@ -412,7 +419,9 @@ class ActivityRole {
     return {
       'id': id,
       'name': name,
-      'goal': goal,
+      // Omit when null: the choreographer's Role schema defaults a missing
+      // `goal` but 422s on an explicit null (v2 roles carry `goals` instead).
+      if (goal != null) 'goal': goal,
       'avatar_url': avatarUrl,
       "goals": goals.map((g) => g.toJson()).toList(),
     };

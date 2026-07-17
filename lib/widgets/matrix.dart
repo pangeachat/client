@@ -19,6 +19,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
@@ -83,6 +84,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   late StreamSubscription? _uriListener;
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
+  final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -394,6 +396,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   StreamSubscription? _languageListener;
+  StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
     GrammarConstructsProvider.fetchFeaturesAndTags();
@@ -405,13 +408,31 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           analyticsDataService.updateService.onUpdateLanguages(update);
           GrammarConstructsProvider.fetchFeaturesAndTags();
         });
+
+    // Non-language settings changes (e.g. the app-copy-language immersion
+    // toggle) emit here, not on languageStream — re-apply the locale so the
+    // toggle takes effect.
+    _appLanguageSettingsListener?.cancel();
+    _appLanguageSettingsListener = pangeaController
+        .userController
+        .settingsUpdateStream
+        .stream
+        .listen((_) => _setAppLanguage());
   }
 
   void _setAppLanguage() {
     try {
-      Provider.of<LocaleProvider>(context, listen: false).setLocale(
-        pangeaController.userController.profile.userSettings.sourceLanguage,
-      );
+      final settings = pangeaController.userController.profile.userSettings;
+      // Immersion: show the app in the target language when the user opts in,
+      // otherwise their source/native language. Falls back to source (then
+      // system) if the target isn't set.
+      final appLanguage = settings.appLanguageIsTarget
+          ? (settings.targetLanguage ?? settings.sourceLanguage)
+          : settings.sourceLanguage;
+      Provider.of<LocaleProvider>(
+        context,
+        listen: false,
+      ).setLocale(appLanguage);
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -518,6 +539,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     // #Pangea
     _analyticsServices[name] ??= AnalyticsDataService(c);
+    if (_activityAutoSaveServices[name] == null) {
+      _activityAutoSaveServices[name] = ActivityAutoSaveService(
+        client: c,
+        analyticsService: _analyticsServices[name]!,
+      );
+      _activityAutoSaveServices[name]!.start();
+    }
     // Pangea#
   }
 
@@ -533,6 +561,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    _activityAutoSaveServices[name]?.dispose();
+    _activityAutoSaveServices.remove(name);
     _analyticsServices[name]?.dispose();
     _analyticsServices.remove(name);
     // Pangea#
@@ -606,6 +636,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     linuxNotifications?.close();
     // #Pangea
     _languageListener?.cancel();
+    _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
     notifPermissionNotifier.dispose();
     // Pangea#

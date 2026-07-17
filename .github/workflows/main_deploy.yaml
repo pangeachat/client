@@ -91,6 +91,14 @@ jobs:
           # automated and assistive-tech testing can read the canvas. NOT set on
           # production (release.yaml), where semantics stays on-demand per user.
           echo "ENABLE_SEMANTICS=true" >> build/web/.env
+          # Staging only: enable the best-effort analytics dual-write to the
+          # teacher-BFF (admin-dash-api). BOTH must be set for it to fire (no-op if
+          # either is missing). Points at the STAGING BFF; NOT set on production
+          # (release.yaml) until validated on staging. The BFF's CORS allowlist must
+          # include this web origin (app.staging.pangea.chat) — see admin-dash-api
+          # task_definition_staging.json CORS_ORIGINS.
+          echo "ANALYTICS_DUAL_WRITE_ENABLED=true" >> build/web/.env
+          echo "TEACHER_BFF_API=https://admin-dash-api.staging.pangea.chat" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known

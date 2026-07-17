@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/morphs/default_grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 
 class MorphFeaturesAndTags {
   final String _targetLanguage;
@@ -94,6 +95,32 @@ class MorphFeaturesAndTags {
     _tagLookup[_langKey]![feature]![tag] = match;
     return match;
   }
+
+  /// The display-eligible tags for [feature] — only those whose
+  /// (feature, value) actually manifests in the target language
+  /// (`display: true`), the same set surfaced in grammar analytics.
+  ///
+  /// Distinct from `getFeature(feature)?.tags`, which exposes the raw
+  /// `GrammarFeature` carrying the full unfiltered UD inventory. Grammar
+  /// practice must draw from this filtered set so typological labels that
+  /// don't apply to the language (e.g. jussive mood in French) never
+  /// surface as answer options.
+  List<GrammarTag> getTags(String feature) => _getFeature(feature)?.tags ?? [];
+
+  /// Candidate distractor tag *values* for a morph practice question on
+  /// [feature] whose correct answer is [answerTag]. Drawn only from the
+  /// display-eligible set ([getTags]), minus the answer (case-insensitive)
+  /// and any non-lemma POS category (punctuation/symbol/space/affix/x —
+  /// never a real word a learner could produce).
+  List<String> distractorTagValues(String feature, String answerTag) =>
+      getTags(feature)
+          .map((t) => t.value)
+          .where(
+            (value) =>
+                value.toLowerCase() != answerTag.toLowerCase() &&
+                PartOfSpeechEnum.isEligibleLemmaTag(value),
+          )
+          .toList();
 
   String guessMorphCategory(String morphLemma) {
     final cached = _morphCategoriesCache[morphLemma];

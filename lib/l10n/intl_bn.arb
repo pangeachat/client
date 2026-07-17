@@ -222,28 +222,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@reportErrorDescription": {},
     "@directChats": {
         "type": "String",
         "placeholders": {}
     },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
-    "@addAccount": {},
     "@configureChat": {
         "type": "String",
         "placeholders": {}
@@ -367,10 +350,6 @@
             }
         }
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youAcceptedTheInvitation": {},
     "@banFromChat": {
         "type": "String",
@@ -476,10 +455,6 @@
         "placeholders": {}
     },
     "@tryAgain": {},
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blocked": {
         "type": "String",
         "placeholders": {}
@@ -490,10 +465,6 @@
                 "type": "String"
             }
         }
-    },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "@unbanUserDescription": {},
     "@userAndUserAreTyping": {
@@ -540,9 +511,6 @@
     },
     "@link": {},
     "@widgetUrlError": {},
-    "@emailOrUsername": {},
-    "@newSpaceDescription": {},
-    "@chatDescription": {},
     "@next": {
         "type": "String",
         "placeholders": {}
@@ -563,8 +531,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enterSpace": {},
-    "@encryptThisChat": {},
     "@fileName": {
         "type": "String",
         "placeholders": {}
@@ -590,7 +556,6 @@
         "placeholders": {}
     },
     "@reopenChat": {},
-    "@pleaseEnterRecoveryKey": {},
     "@no": {
         "type": "String",
         "placeholders": {}
@@ -606,10 +571,6 @@
     },
     "@addToBundle": {},
     "@reportMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -634,10 +595,6 @@
         }
     },
     "@noKeyForThisMessage": {},
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -667,11 +624,6 @@
         }
     },
     "@pushNotificationsNotAvailable": {},
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {},
     "@replaceRoomWithNewerVersion": {
         "type": "String",
         "placeholders": {}
@@ -694,10 +646,6 @@
             }
         }
     },
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cantOpenUri": {
         "type": "String",
         "placeholders": {
@@ -707,7 +655,6 @@
         }
     },
     "@sender": {},
-    "@storeInAndroidKeystore": {},
     "@hideRedactedEvents": {
         "type": "String",
         "placeholders": {}
@@ -764,10 +711,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -784,7 +727,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveKeyManuallyDescription": {},
     "@none": {
         "type": "String",
         "placeholders": {}
@@ -812,10 +754,6 @@
             }
         }
     },
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@importFromZipFile": {},
     "@or": {
         "type": "String",
@@ -823,15 +761,10 @@
     },
     "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@emptyChat": {
         "type": "String",
         "placeholders": {}
     },
-    "@yourChatBackupHasBeenSetUp": {},
     "@chatBackup": {
         "type": "String",
         "placeholders": {}
@@ -848,7 +781,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCallsBetaWarning": {},
     "@unmuteChat": {
         "type": "String",
         "placeholders": {}
@@ -880,14 +812,6 @@
     "@participant": {
         "type": "String",
         "placeholders": {}
-    },
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "@yes": {
         "type": "String",
@@ -964,7 +888,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@unlockOldMessages": {},
     "@changedTheJoinRulesTo": {
         "type": "String",
         "placeholders": {
@@ -1113,7 +1036,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterRecoveryKeyDescription": {},
     "@guestsAreForbidden": {
         "type": "String",
         "placeholders": {}
@@ -1254,7 +1176,6 @@
         "description": "State that {command} is not a valid /command."
     },
     "@redactMessageDescription": {},
-    "@recoveryKey": {},
     "@redactMessage": {
         "type": "String",
         "placeholders": {}
@@ -1321,10 +1242,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@verifyStart": {
         "type": "String",
         "placeholders": {}
@@ -1339,7 +1256,6 @@
         "placeholders": {}
     },
     "@serverRequiresEmail": {},
-    "@screenSharingTitle": {},
     "@widgetCustom": {},
     "@sentCallInformations": {
         "type": "String",
@@ -1431,7 +1347,6 @@
         "placeholders": {}
     },
     "@messageInfo": {},
-    "@disableEncryptionWarning": {},
     "@directChat": {},
     "@encryptionNotEnabled": {
         "type": "String",
@@ -1455,21 +1370,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "@foregroundServiceRunning": {},
     "@enterAnEmailAddress": {
         "type": "String",
         "placeholders": {}
     },
-    "@voiceCall": {},
     "@commandHint_kick": {
         "type": "String",
         "description": "Usage hint for the command /kick"
     },
     "@copiedToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1512,10 +1421,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@confirmMatrixId": {},
     "@learnMore": {},
     "@iHaveClickedOnLink": {
@@ -1535,7 +1440,6 @@
     },
     "@newGroup": {},
     "@bundleName": {},
-    "@removeFromSpace": {},
     "@dateAndTimeOfDay": {
         "type": "String",
         "placeholders": {
@@ -1577,10 +1481,6 @@
     },
     "@scanQrCode": {},
     "@pleaseEnterANumber": {},
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youKicked": {
         "placeholders": {
             "user": {
@@ -1627,22 +1527,12 @@
             }
         }
     },
-    "@sorryThatsNotPossible": {},
     "@oopsSomethingWentWrong": {
         "type": "String",
         "placeholders": {}
     },
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@shareInviteLink": {},
     "@commandHint_markasdm": {},
-    "@recoveryKeyLost": {},
     "@cuddleContent": {
         "type": "String",
         "placeholders": {
@@ -1665,14 +1555,6 @@
     },
     "@deviceKeys": {},
     "@waitingPartnerNumbers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -1704,15 +1586,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@settings": {
         "type": "String",
         "placeholders": {}
     },
-    "@setTheme": {},
     "@changeTheHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -1733,10 +1610,6 @@
                 "type": "String"
             }
         }
-    },
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@changeDeviceName": {
         "type": "String",
@@ -1873,7 +1746,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@storeInSecureStorageDescription": {},
     "@openChat": {},
     "@kickUserDescription": {},
     "@sendAMessage": {
@@ -1895,7 +1767,6 @@
         "placeholders": {}
     },
     "@invite": {},
-    "@enableMultiAccounts": {},
     "@anyoneCanJoin": {
         "type": "String",
         "placeholders": {}
@@ -1913,7 +1784,6 @@
         }
     },
     "@unsupportedAndroidVersionLong": {},
-    "@storeSecurlyOnThisDevice": {},
     "@ok": {
         "type": "String",
         "placeholders": {}
@@ -1930,7 +1800,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@screenSharingDetail": {},
     "@changedTheDisplaynameTo": {
         "type": "String",
         "placeholders": {
@@ -1939,14 +1808,6 @@
             },
             "displayname": {
                 "type": "String"
-            }
-        }
-    },
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
             }
         }
     },
@@ -1987,7 +1848,6 @@
     "anyoneCanJoin": "কেউ যোগ দিতে পারে! তবে, অ্যাডমিন যে কেউকে বহিষ্কার ও নিষিদ্ধ করতে পারেন। যারা নিষিদ্ধ, তারা ফিরে আসতে পারবেন না!",
     "appLock": "অ্যাপ লক",
     "appLockDescription": "পিন কোড দিয়ে ব্যবহার না করলে অ্যাপটি লক করুন",
-    "areGuestsAllowedToJoin": "অতিথি ব্যবহারকারীরা যোগ দিতে পারবে?",
     "areYouSure": "আপনি কি নিশ্চিত?",
     "areYouSureYouWantToLogout": "আপনি কি নিশ্চিত যে আপনি লগ আউট করতে চান?",
     "askSSSSSign": "অন্য ব্যক্তির স্বাক্ষর করতে, দয়া করে আপনার নিরাপদ স্টোর পাসফ্রেজ বা পুনরুদ্ধার কী প্রবেশ করুন।",
@@ -2029,9 +1889,7 @@
     "changeTheNameOfTheGroup": "গ্রুপের নাম পরিবর্তন করুন",
     "changeYourAvatar": "আপনার অবতার পরিবর্তন করুন",
     "channelCorruptedDecryptError": "এনক্রিপশন ক্ষতিগ্রস্ত হয়েছে",
-    "yourChatBackupHasBeenSetUp": "আপনার চ্যাট ব্যাকআপ সেটআপ করা হয়েছে।",
     "chatBackup": "চ্যাট ব্যাকআপ",
-    "chatBackupDescription": "আপনার পুরানো বার্তা গুলি একটি পুনরুদ্ধার কী দিয়ে সুরক্ষিত। দয়া করে নিশ্চিত করুন যে আপনি এটি হারাবেন না।",
     "chatDetails": "চ্যাটের বিবরণ",
     "chats": "চ্যাট",
     "chooseAStrongPassword": "একটি শক্তিশালী পাসওয়ার্ড নির্বাচন করুন",
@@ -2061,17 +1919,14 @@
     "compareEmojiMatch": "অনুগ্রহ করে ইমোজিগুলি তুলনা করুন",
     "compareNumbersMatch": "অনুগ্রহ করে সংখ্যাগুলি তুলনা করুন",
     "configureChat": "চ্যাট কনফিগার করুন",
-    "contactHasBeenInvitedToTheGroup": "যোগাযোগকে গ্রুপে আমন্ত্রণ জানানো হয়েছে",
     "contentHasBeenReported": "বিষয়বস্তু সার্ভার অ্যাডমিনদের কাছে রিপোর্ট করা হয়েছে",
     "copiedToClipboard": "ক্লিপবোর্ডে কপি করা হয়েছে",
     "copyToClipboard": "ক্লিপবোর্ডে কপি করুন",
     "couldNotDecryptMessage": "বার্তা ডিক্রিপ্ট করতে পারিনি: {error}",
     "checkList": "তালিকা পরীক্ষা করুন",
     "countParticipants": "{count} অংশগ্রহণকারী",
-    "countInvited": "{count} আমন্ত্রিত",
     "createdTheChat": "💬 {username} চ্যাটটি তৈরি করেছেন",
     "createGroup": "গ্রুপ তৈরি করুন",
-    "createNewSpace": "নতুন স্থান",
     "currentlyActive": "বর্তমানে সক্রিয়",
     "darkTheme": "অন্ধকার",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2093,9 +1948,6 @@
     "emoteKeyboardNoRecents": "সাম্প্রতিক ব্যবহৃত ইমোটগুলি এখানে দেখাবে...",
     "emotePacks": "রুমের জন্য ইমোট প্যাক",
     "emoteSettings": "ইমোট সেটিংস",
-    "globalChatId": "গ্লোবাল চ্যাট আইডি",
-    "accessAndVisibility": "অ্যাক্সেস এবং দৃশ্যমানতা",
-    "accessAndVisibilityDescription": "কে এই চ্যাটে যোগ দিতে পারবে এবং কিভাবে চ্যাটটি আবিষ্কৃত হবে।",
     "calls": "কল",
     "customEmojisAndStickers": "কাস্টম ইমোজি এবং স্টিকার",
     "customEmojisAndStickersBody": "কাস্টম ইমোজি বা স্টিকার যোগ করুন বা শেয়ার করুন যা যে কোনও চ্যাটে ব্যবহার করা যেতে পারে।",
@@ -2103,21 +1955,17 @@
     "emptyChat": "খালি চ্যাট",
     "enableEmotesGlobally": "গ্লোবালি ইমোট প্যাক সক্রিয় করুন",
     "enableEncryption": "এনক্রিপশন সক্রিয় করুন",
-    "enableEncryptionWarning": "আপনি আর এনক্রিপশন বন্ধ করতে পারবেন না। আপনি কি নিশ্চিত?",
     "encryptionNotEnabled": "এনক্রিপশন সক্রিয় নয়",
     "endedTheCall": "{senderName} কল শেষ করেছেন",
     "enterAnEmailAddress": "একটি ইমেল ঠিকানা লিখুন",
     "homeserver": "হোমসার্ভার",
     "errorObtainingLocation": "অবস্থান পাওয়ার ত্রুটি: {error}",
-    "everythingReady": "সব কিছু প্রস্তুত!",
     "extremeOffensive": "অত্যন্ত আপত্তিজনক",
     "fileName": "ফাইলের নাম",
     "fontSize": "ফন্টের আকার",
     "fromJoining": "যোগদান থেকে",
     "fromTheInvitation": "নিমন্ত্রণ থেকে",
-    "chatDescription": "চ্যাট বিবরণ",
     "chatDescriptionHasBeenChanged": "চ্যাট বিবরণ পরিবর্তিত হয়েছে",
-    "groupIsPublic": "গ্রুপটি পাবলিক",
     "groups": "গ্রুপসমূহ",
     "groupWith": "{displayname} এর সাথে গ্রুপ",
     "guestsAreForbidden": "অতিথিদের নিষিদ্ধ করা হয়েছে",
@@ -2136,7 +1984,6 @@
     "incorrectPassphraseOrKey": "ভুল পাসফ্রেজ বা পুনরুদ্ধার কী",
     "inoffensive": "অপ্রতিবন্ধক",
     "inviteContact": "যোগাযোগ আমন্ত্রণ করুন",
-    "inviteContactToGroup": "যোগাযোগকে {groupName} এ আমন্ত্রণ জানান",
     "noChatDescriptionYet": "এখনো কোনও চ্যাট বিবরণ তৈরি হয়নি।",
     "tryAgain": "আবার চেষ্টা করুন",
     "invalidServerName": "অবৈধ সার্ভার নাম",
@@ -2155,7 +2002,6 @@
     "lastActiveAgo": "শেষ সক্রিয়তা: {localizedTimeShort}",
     "leftTheChat": "চ্যাট থেকে প্রস্থান করেছেন",
     "lightTheme": "আলো",
-    "loadCountMoreParticipants": "আরও {count} অংশগ্রহণকারী লোড করুন",
     "dehydrate": "সেশন এক্সপোর্ট করুন এবং ডিভাইসটি মুছে ফেলুন",
     "dehydrateWarning": "এই ক্রিয়া পূর্বে ফিরে আসবে না। নিশ্চিত করুন যে আপনি ব্যাকআপ ফাইলটি নিরাপদে সংরক্ষণ করেছেন।",
     "hydrate": "ব্যাকআপ ফাইল থেকে পুনরুদ্ধার করুন",
@@ -2163,7 +2009,6 @@
     "loadMore": "আরও লোড করুন…",
     "locationDisabledNotice": "অবস্থান পরিষেবা নিষ্ক্রিয়। দয়া করে এগুলি সক্ষম করুন যাতে আপনি আপনার অবস্থান শেয়ার করতে পারেন।",
     "locationPermissionDeniedNotice": "অবস্থান অনুমতি অস্বীকৃত। দয়া করে অনুমতি দিন যাতে আপনি আপনার অবস্থান শেয়ার করতে পারেন।",
-    "logInTo": "{homeserver} এ লগইন করুন",
     "mention": "উল্লেখ করুন",
     "messages": "বার্তা",
     "messagesStyle": "বার্তা:",
@@ -2177,8 +2022,6 @@
     "no": "না",
     "noConnectionToTheServer": "সার্ভারের সাথে সংযোগ নেই",
     "noEmotesFound": "কোন ইমোট পাওয়া যায়নি। 😕",
-    "noEncryptionForPublicRooms": "আপনি কেবল তখনই এনক্রিপশন সক্রিয় করতে পারেন যখন রুমটি আর পাবলিক অ্যাক্সেসযোগ্য নয়।",
-    "noGoogleServicesWarning": "ফায়ারবেস ক্লাউড মেসেজিং আপনার ডিভাইসে উপলব্ধ নয় বলে মনে হচ্ছে। এখনও পুশ নোটিফিকেশন পেতে, আমরা ntfy ইনস্টল করার সুপারিশ করি। ntfy বা অন্য কোনও ইউনিফাইড পুশ প্রোভাইডার দিয়ে আপনি ডেটা সুরক্ষিত উপায়ে পুশ নোটিফিকেশন পেতে পারেন। আপনি PlayStore বা F-Droid থেকে ntfy ডাউনলোড করতে পারেন।",
     "noMatrixServer": "{server1} কোনও ম্যাট্রিক্স সার্ভার নয়, এর পরিবর্তে {server2} ব্যবহার করবেন?",
     "shareInviteLink": "আমন্ত্রণ লিঙ্ক শেয়ার করুন",
     "scanQrCode": "QR কোড স্ক্যান করুন",
@@ -2199,12 +2042,10 @@
     "openCamera": "ক্যামেরা খুলুন",
     "openVideoCamera": "ভিডিওর জন্য ক্যামেরা খুলুন",
     "oneClientLoggedOut": "আপনার এক ক্লায়েন্ট লগআউট হয়েছে",
-    "addAccount": "অ্যাকাউন্ট যোগ করুন",
     "editBundlesForAccount": "এই অ্যাকাউন্টের জন্য বান্ডিল সম্পাদনা করুন",
     "addToBundle": "বান্ডিলে যোগ করুন",
     "removeFromBundle": "এই বান্ডিল থেকে সরান",
     "bundleName": "বান্ডিলের নাম",
-    "enableMultiAccounts": "(BETA) এই ডিভাইসে মাল্টি অ্যাকাউন্ট সক্ষম করুন",
     "openInMaps": "ম্যাপে খুলুন",
     "link": "লিঙ্ক",
     "serverRequiresEmail": "এই সার্ভারটি নিবন্ধনের জন্য আপনার ইমেল ঠিকানা যাচাই করতে চায়।",
@@ -2216,7 +2057,6 @@
     "passwordHasBeenChanged": "পাসওয়ার্ড পরিবর্তন করা হয়েছে",
     "overview": "সারাংশ",
     "passwordRecoverySettings": "পাসওয়ার্ড পুনরুদ্ধার সেটিংস",
-    "passwordRecovery": "পাসওয়ার্ড পুনরুদ্ধার",
     "people": "মানুষ",
     "pickImage": "একটি ছবি নির্বাচন করুন",
     "pin": "পিন",
@@ -2225,7 +2065,6 @@
     "pleaseChooseAPasscode": "একটি পাসকোড নির্বাচন করুন",
     "pleaseClickOnLink": "অনুগ্রহ করে ইমেইলে লিঙ্কে ক্লিক করুন এবং তারপর এগিয়ে যান।",
     "pleaseEnter4Digits": "অনুগ্রহ করে ৪ অঙ্ক লিখুন বা অ্যাপ লক নিষ্ক্রিয় করতে খালি রাখুন।",
-    "pleaseEnterRecoveryKey": "অনুগ্রহ করে আপনার পুনরুদ্ধার কী লিখুন:",
     "pleaseEnterYourPassword": "অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন",
     "pleaseEnterYourPin": "অনুগ্রহ করে আপনার পিন লিখুন",
     "pleaseEnterYourUsername": "অনুগ্রহ করে আপনার ব্যবহারকারীর নাম লিখুন",
@@ -2245,7 +2084,6 @@
     "rejectedTheInvitation": "{username} আমন্ত্রণ প্রত্যাখ্যান করেছেন",
     "removeAllOtherDevices": "অন্য সব ডিভাইস সরান",
     "removedBy": "{username} দ্বারা সরানো হয়েছে",
-    "removeDevice": "ডিভাইস সরান",
     "unbanFromChat": "চ্যাট থেকে আনব্যান করুন",
     "removeYourAvatar": "আপনার অবতার সরান",
     "replaceRoomWithNewerVersion": "কক্ষটি নতুন সংস্করণে প্রতিস্থাপন করুন",
@@ -2257,8 +2095,6 @@
     "saveFile": "ফাইল সংরক্ষণ করুন",
     "search": "অনুসন্ধান",
     "security": "নিরাপত্তা",
-    "recoveryKey": "পুনরুদ্ধার কী",
-    "recoveryKeyLost": "পুনরুদ্ধার কী হারিয়ে গেছে?",
     "send": "পাঠান",
     "sendAMessage": "একটি বার্তা পাঠান",
     "sendAsText": "টেক্সট হিসেবে পাঠান",
@@ -2277,7 +2113,6 @@
     "separateChatTypes": "সরাসরি চ্যাট এবং গ্রুপ আলাদা করুন",
     "setAsCanonicalAlias": "প্রধান উপনাম হিসেবে সেট করুন",
     "setChatDescription": "চ্যাট বিবরণ সেট করুন",
-    "setPermissionsLevel": "অনুমতি স্তর সেট করুন",
     "setStatus": "অবস্থা সেট করুন",
     "settings": "সেটিংস",
     "share": "শেয়ার করুন",
@@ -2287,8 +2122,6 @@
     "presencesToggle": "অন্য ব্যবহারকারীদের স্ট্যাটাস বার্তা দেখান",
     "skip": "এড়িয়ে যান",
     "sourceCode": "উৎস কোড",
-    "spaceIsPublic": "স্থানটি পাবলিক",
-    "spaceName": "স্থান নাম",
     "startedACall": "{senderName} একটি কল শুরু করেছেন",
     "status": "অবস্থা",
     "statusExampleMessage": "আজ আপনি কেমন আছেন?",
@@ -2300,7 +2133,6 @@
     "theyMatch": "তারা মেলে",
     "title": "ফ্লাফি চ্যাট",
     "tooManyRequestsWarning": "অনেক অনুরোধ। দয়া করে পরে আবার চেষ্টা করুন!",
-    "transferFromAnotherDevice": "অন্য ডিভাইস থেকে স্থানান্তর করুন",
     "tryToSendAgain": "আবার পাঠানোর চেষ্টা করুন",
     "unavailable": "অপ্রাপ্য",
     "unbannedUser": "{username} {targetName} এর থেকে নিষেধাজ্ঞা প্রত্যাহার করেছেন",
@@ -2310,7 +2142,6 @@
     "unknownEvent": "অজানা ঘটনা '{type}'",
     "unmuteChat": "চ্যাট আনমিউট করুন",
     "unpin": "অপিন করুন",
-    "unreadChats": "{unreadCount, plural, =1{1টি পড়া বাকি চ্যাট} other{{unreadCount}টি পড়া বাকি চ্যাট}}",
     "userAndOthersAreTyping": "{username} এবং {count} অন্যরা টাইপ করছে…",
     "userAndUserAreTyping": "{username} এবং {username2} টাইপ করছে…",
     "userIsTyping": "{username} টাইপ করছে…",
@@ -2323,8 +2154,6 @@
     "verifyStart": "প্রমাণীকরণ শুরু করুন",
     "verifySuccess": "আপনি সফলভাবে প্রমাণিত হয়েছেন!",
     "verifyTitle": "অন্য অ্যাকাউন্ট যাচাই করা হচ্ছে",
-    "videoCall": "ভিডিও কল",
-    "visibilityOfTheChatHistory": "চ্যাট ইতিহাসের দৃশ্যমানতা",
     "visibleForAllParticipants": "সকল অংশগ্রহণকারীর জন্য দৃশ্যমান",
     "visibleForEveryone": "সবার জন্য দৃশ্যমান",
     "voiceMessage": "কণ্ঠ বার্তা",
@@ -2334,10 +2163,7 @@
     "wallpaper": "ওয়ালপেপার:",
     "warning": "সতর্কতা!",
     "weSentYouAnEmail": "আমরা আপনাকে একটি ইমেল পাঠিয়েছি",
-    "whoCanPerformWhichAction": "কেউ কোন কাজ করতে পারে",
-    "whoIsAllowedToJoinThisGroup": "এই গ্রুপে যোগদানের অনুমতি কার?",
     "whyDoYouWantToReportThis": "আপনি এটি রিপোর্ট করতে চান কেন?",
-    "wipeChatBackup": "আপনার চ্যাট ব্যাকআপ মুছে ফেলুন এবং একটি নতুন পুনরুদ্ধার কী তৈরি করুন?",
     "withTheseAddressesRecoveryDescription": "এই ঠিকানাগুলির মাধ্যমে আপনি আপনার পাসওয়ার্ড পুনরুদ্ধার করতে পারেন।",
     "writeAMessage": "একটি বার্তা লিখুন…",
     "yes": "হ্যাঁ",
@@ -2350,9 +2176,7 @@
     "messageType": "বার্তার ধরণ",
     "sender": "প্রেরক",
     "openGallery": "গ্যালারী খুলুন",
-    "removeFromSpace": "স্থান থেকে সরান",
     "start": "শুরু করুন",
-    "pleaseEnterRecoveryKeyDescription": "আপনার পুরোনো বার্তা আনলক করতে, দয়া করে আপনার পুনরুদ্ধার কী প্রবেশ করুন যা পূর্ববর্তী সেশনে তৈরি করা হয়েছে। আপনার পুনরুদ্ধার কী আপনার পাসওয়ার্ড নয়।",
     "publish": "প্রকাশ করুন",
     "openChat": "চ্যাট খুলুন",
     "markAsRead": "পড়া হিসেবে চিহ্নিত করুন",
@@ -2363,12 +2187,9 @@
     "confirmEventUnpin": "আপনি কি নিশ্চিত যে আপনি ইভেন্টটি স্থায়ীভাবে আনপিন করতে চান?",
     "emojis": "ইমোজি",
     "placeCall": "কল করুন",
-    "voiceCall": "ভয়েস কল",
     "unsupportedAndroidVersion": "অপ্রোড Android সংস্করণ",
     "unsupportedAndroidVersionLong": "এই বৈশিষ্ট্যটি একটি নতুন Android সংস্করণ প্রয়োজন। অনুগ্রহ করে আপডেট বা Lineage OS সমর্থনের জন্য চেক করুন।",
-    "videoCallsBetaWarning": "দয়া করে মনে রাখবেন যে ভিডিও কল বর্তমানে বিটা পর্যায়ে। এটি প্রত্যাশিত মতো কাজ নাও করতে পারে বা সব প্ল্যাটফর্মে কাজ নাও করতে পারে।",
     "experimentalVideoCalls": "প্রায়োগিক ভিডিও কল",
-    "emailOrUsername": "ইমেল বা ব্যবহারকারীর নাম",
     "addWidget": "উইজেট যোগ করুন",
     "widgetVideo": "ভিডিও",
     "widgetEtherpad": "টেক্সট নোট",
@@ -2390,35 +2211,19 @@
     "youKickedAndBanned": "🙅 আপনি {user} কে বহিষ্কার ও নিষিদ্ধ করেছেন",
     "youUnbannedUser": "আপনি {user} এর নিষেধাজ্ঞা প্রত্যাহার করেছেন",
     "hasKnocked": "🚪 {user} Knock করেছেন",
-    "usersMustKnock": "ব্যবহারকারীদের Knock করতে হবে",
-    "noOneCanJoin": "কেউ যোগ দিতে পারবে না",
     "knock": "Knock",
     "users": "ব্যবহারকারীরা",
-    "unlockOldMessages": "পুরানো বার্তা আনলক করুন",
-    "storeInSecureStorageDescription": "এই ডিভাইসের সুরক্ষিত স্টোরেজে পুনরুদ্ধার কী সংরক্ষণ করুন।",
-    "saveKeyManuallyDescription": "সিস্টেম শেয়ার ডায়ালগ বা ক্লিপবোর্ড ট্রিগার করে এই কী ম্যানুয়ালি সংরক্ষণ করুন।",
-    "storeInAndroidKeystore": "Android KeyStore-এ সংরক্ষণ করুন",
-    "storeInAppleKeyChain": "Apple KeyChain-এ সংরক্ষণ করুন",
-    "storeSecurlyOnThisDevice": "এই ডিভাইসে নিরাপদে সংরক্ষণ করুন",
     "countFiles": "{count} ফাইল",
     "user": "ব্যবহারকারী",
     "custom": "কাস্টম",
-    "foregroundServiceRunning": "এই বিজ্ঞপ্তিটি তখন প্রদর্শিত হয় যখন সামনের সারির পরিষেবা চলমান থাকে।",
-    "screenSharingTitle": "স্ক্রীন শেয়ারিং",
-    "screenSharingDetail": "আপনি FuffyChat-এ আপনার স্ক্রীন শেয়ার করছেন",
     "whyIsThisMessageEncrypted": "এই বার্তা unreadable কেন?",
     "noKeyForThisMessage": "এটি ঘটতে পারে যদি বার্তাটি আপনি এই ডিভাইসে সাইন ইন করার আগে পাঠানো হয়।\n\nএছাড়াও সম্ভব যে প্রেরক আপনার ডিভাইস ব্লক করেছে বা ইন্টারনেট সংযোগে কিছু ভুল হয়েছে।\n\nআপনি কি অন্য সেশনে বার্তাটি পড়তে পারছেন? তাহলে আপনি এটি থেকে বার্তাটি ট্রান্সফার করতে পারেন! সেটিংস > ডিভাইস এ যান এবং নিশ্চিত করুন যে আপনার ডিভাইসগুলো একে অপরকে ভেরিফাই করেছে। যখন আপনি পরবর্তী বার রুমটি খুলবেন এবং উভয় সেশন ফ্রন্টে থাকবে, তখন কী স্বয়ংক্রিয়ভাবে ট্রান্সমিট হবে।\n\nলগআউট বা ডিভাইস পরিবর্তনের সময় কি আপনি কী হারাতে চান না? নিশ্চিত করুন যে আপনি চ্যাট ব্যাকআপ সক্ষম করেছেন সেটিংসে।",
     "newGroup": "নতুন গ্রুপ",
     "newSpace": "নতুন স্পেস",
-    "enterSpace": "স্পেসে প্রবেশ করুন",
     "allSpaces": "সব স্পেস",
     "hidePresences": "স্ট্যাটাস তালিকা লুকান?",
     "doNotShowAgain": "আবার দেখাবেন না",
     "wasDirectChatDisplayName": "খালি চ্যাট (পূর্বে {oldDisplayName})",
-    "newSpaceDescription": "স্পেস আপনাকে আপনার চ্যাটগুলো একত্রিত করতে এবং ব্যক্তিগত বা পাবলিক কমিউনিটি তৈরি করতে দেয়।",
-    "encryptThisChat": "এই চ্যাট এনক্রিপ্ট করুন",
-    "disableEncryptionWarning": "নিরাপত্তার জন্য আপনি পূর্বে সক্রিয় থাকলে এই চ্যাটে এনক্রিপশন বন্ধ করতে পারবেন না।",
-    "sorryThatsNotPossible": "দুঃখিত... এটি সম্ভব নয়",
     "deviceKeys": "ডিভাইস কীসমূহ:",
     "reopenChat": "চ্যাট পুনরায় খোলা",
     "noBackupWarning": "সতর্কতা! চ্যাট ব্যাকআপ ছাড়া, আপনি আপনার এনক্রিপ্টেড বার্তাগুলিতে অ্যাক্সেস হারাবেন। লগ আউট করার আগে চ্যাট ব্যাকআপ সক্ষম করা অত্যন্ত সুপারিশ করা হয়।",
@@ -2431,7 +2236,6 @@
     "openLinkInBrowser": "ব্রাউজারে লিঙ্ক খুলুন",
     "reportErrorDescription": "😞 ওহ না। কিছু ভুল হয়েছে। আপনি চাইলে এই বাগটি ডেভেলপারদের কাছে রিপোর্ট করতে পারেন।",
     "report": "রিপোর্ট করুন",
-    "setTheme": "থিম সেট করুন:",
     "setColorTheme": "রঙের থিম সেট করুন:",
     "invite": "আমন্ত্রণ জানান",
     "inviteGroupChat": "📨 গ্রুপ চ্যাট আমন্ত্রণ",
@@ -2450,12 +2254,8 @@
     "yourGlobalUserIdIs": "আপনার গ্লোবাল ইউজার-আইডি হলো: ",
     "noUsersFoundWithQuery": "দুঃখিত, \"{query}\" এর সাথে কোনও ব্যবহারকারী পাওয়া যায়নি। দয়া করে ভুল টাইপ হয়েছে কি না তা পরীক্ষা করুন।",
     "knocking": "নক করা হচ্ছে",
-    "chatCanBeDiscoveredViaSearchOnServer": "চ্যাটটি সার্ভারে অনুসন্ধানের মাধ্যমে খুঁজে পাওয়া যেতে পারে {server} এ",
-    "searchChatsRooms": "#চ্যাট, @ব্যবহারকারীদের জন্য অনুসন্ধান করুন...",
     "nothingFound": "কিছুই পাওয়া যায়নি...",
     "groupName": "গ্রুপের নাম",
-    "createGroupAndInviteUsers": "একটি গ্রুপ তৈরি করুন এবং ব্যবহারকারীদের আমন্ত্রণ জানান",
-    "groupCanBeFoundViaSearch": "অনুসন্ধানের মাধ্যমে গ্রুপটি খুঁজে পাওয়া যায়",
     "wrongRecoveryKey": "দুঃখিত... এটি সঠিক পুনরুদ্ধার কী মনে হচ্ছে না।",
     "startConversation": "আলাপ শুরু করুন",
     "commandHint_sendraw": "কাঁচা JSON পাঠান",
@@ -2469,11 +2269,8 @@
     "pleaseChooseAStrongPassword": "অনুগ্রহ করে একটি শক্তিশালী পাসওয়ার্ড নির্বাচন করুন",
     "passwordsDoNotMatch": "পাসওয়ার্ডগুলি মিলছে না",
     "passwordIsWrong": "আপনার প্রবেশ করা পাসওয়ার্ডটি ভুল",
-    "publicChatAddresses": "পাবলিক চ্যাট ঠিকানা",
-    "createNewAddress": "নতুন ঠিকানা তৈরি করুন",
     "joinSpace": "স্পেসে যোগ দিন",
     "publicSpaces": "পাবলিক স্পেস",
-    "addChatOrSubSpace": "চ্যাট বা সাব স্পেস যোগ করুন",
     "subspace": "সাবস্পেস",
     "decline": "প্রত্যাখ্যান করুন",
     "thisDevice": "এই ডিভাইস:",
@@ -2482,15 +2279,11 @@
     "searchMore": "আরও অনুসন্ধান করুন...",
     "gallery": "গ্যালারি",
     "files": "ফাইলসমূহ",
-    "sessionLostBody": "আপনার সেশন হারিয়ে গেছে। দয়া করে এই ত্রুটিটি ডেভেলপারদের {url} এ রিপোর্ট করুন। ত্রুটির বার্তা হলো: {error}",
-    "restoreSessionBody": "অ্যাপটি এখন আপনার ব্যাকআপ থেকে আপনার সেশন পুনরুদ্ধার করার চেষ্টা করছে। দয়া করে এই ত্রুটিটি ডেভেলপারদের {url} এ রিপোর্ট করুন। ত্রুটির বার্তা হলো: {error}",
     "sendReadReceipts": "পড়ার রসিদ পাঠান",
     "sendTypingNotificationsDescription": "অন্য অংশগ্রহণকারীরা দেখতে পাবে আপনি নতুন বার্তা টাইপ করছেন কখন।",
     "sendReadReceiptsDescription": "অন্য অংশগ্রহণকারীরা দেখতে পাবে আপনি কখন একটি বার্তা পড়েছেন।",
     "formattedMessages": "ফরম্যাটেড বার্তা",
     "formattedMessagesDescription": "মার্কডাউনের মাধ্যমে বল্ড টেক্সটের মতো সমৃদ্ধ বার্তা বিষয়বস্তু দেখান।",
-    "verifyOtherUser": "🔐 অন্য ব্যবহারকারীর সত্যতা যাচাই করুন",
-    "verifyOtherUserDescription": "যদি আপনি অন্য ব্যবহারকারীর সত্যতা যাচাই করেন, তবে আপনি নিশ্চিত হতে পারেন আপনি সত্যিই কার সাথে লিখছেন। 💪\n\nযখন আপনি যাচাই শুরু করবেন, তখন আপনি এবং অন্য ব্যবহারকারী অ্যাপে একটি পপআপ দেখবেন। সেখানে আপনি একে অপরের সাথে তুলনা করতে হবে একটি সিরিজ ইমোজি বা সংখ্যার।\n\nএটি করার সবচেয়ে ভালো উপায় হলো দেখা বা ভিডিও কল শুরু করা। 👩‍💻",
     "verifyOtherDevice": "🔐 অন্য ডিভাইসের সত্যতা যাচাই করুন",
     "verifyOtherDeviceDescription": "যখন আপনি অন্য ডিভাইসের সত্যতা যাচাই করেন, সেই ডিভাইসগুলো কী বিনিময় করতে পারে, যা আপনার সামগ্রিক নিরাপত্তা বাড়ায়। 💪 যখন আপনি যাচাই শুরু করবেন, তখন অ্যাপে একটি পপআপ উভয় ডিভাইসে দেখাবে। সেখানে আপনি একে অপরের সাথে তুলনা করতে হবে একটি সিরিজ ইমোজি বা সংখ্যার। যাচাই শুরু করার আগে উভয় ডিভাইস হাতের কাছে থাকা উত্তম। 🤳",
     "acceptedKeyVerification": "{sender} কী যাচাই গ্রহণ করেছেন",
@@ -2526,10 +2319,6 @@
     "updateInstalled": "🎉 আপডেট {version} ইনস্টল হয়েছে!",
     "changelog": "চেঞ্জলগ",
     "sendCanceled": "পাঠানো বাতিল হয়েছে",
-    "loginWithMatrixId": "ম্যাট্রিক্স-আইডি দিয়ে লগইন করুন",
-    "discoverHomeservers": "হোমসার্ভার আবিষ্কার করুন",
-    "whatIsAHomeserver": "হোমসার্ভার কী?",
-    "homeserverDescription": "আপনার সমস্ত ডেটা হোমসার্ভারে সংরক্ষিত হয়, ঠিক যেমন একটি ইমেল প্রদানকারী। আপনি কোন হোমসার্ভার ব্যবহার করতে চান তা নির্বাচন করতে পারেন, তবে আপনি এখনও সবাইকে যোগাযোগ করতে পারেন। আরও জানুন https://matrix.org এ।",
     "doesNotSeemToBeAValidHomeserver": "এটি একটি মানানসই হোমসার্ভার বলে মনে হচ্ছে না। ভুল URL?",
     "calculatingFileSize": "ফাইলের আকার গণনা করা হচ্ছে...",
     "prepareSendingAttachment": "সংযুক্তি পাঠানোর প্রস্তুতি নিচ্ছি...",
@@ -2541,11 +2330,9 @@
     "oneOfYourDevicesIsNotVerified": "আপনার ডিভাইসের একটি যাচাই হয়নি",
     "noticeChatBackupDeviceVerification": "নোট: যখন আপনি আপনার সমস্ত ডিভাইস চ্যাট ব্যাকআপের সাথে সংযুক্ত করবেন, তারা স্বয়ংক্রিয়ভাবে যাচাই হয়।",
     "continueText": "চালিয়ে যান",
-    "welcomeText": "হেই হেই 👋 এটি ফ্লাফি চ্যাট। আপনি যে কোনও হোমসার্ভারে সাইন ইন করতে পারেন, যা https://matrix.org এর সাথে সামঞ্জস্যপূর্ণ। এবং তারপর যে কোনও ব্যক্তির সাথে চ্যাট করুন। এটি একটি বিশাল বিকেন্দ্রীকৃত বার্তা প্রেরণ নেটওয়ার্ক!",
     "blur": "ধূসর:",
     "opacity": "অপেক্ষা:",
     "setWallpaper": "ওয়ালপেপার সেট করুন",
-    "manageAccount": "অ্যাকাউন্ট পরিচালনা করুন",
     "noContactInformationProvided": "সার্ভার কোনও বৈধ যোগাযোগের তথ্য প্রদান করে না",
     "contactServerAdmin": "সার্ভার অ্যাডমিনের সাথে যোগাযোগ করুন",
     "contactServerSecurity": "সার্ভার সুরক্ষা সংক্রান্ত যোগাযোগ করুন",
@@ -2564,11 +2351,8 @@
     "unableToJoinChat": "চ্যাটে যোগ দিতে পারছেন না। হয়তো অন্য পক্ষটি ইতিমধ্যে কথোপকথন বন্ধ করে দিয়েছে।",
     "previous": "আগে",
     "otherPartyNotLoggedIn": "অন্য পক্ষ বর্তমানে লগ ইন করেনি এবং তাই বার্তা গ্রহণ করতে পারবে না!",
-    "appWantsToUseForLogin": "'{server}' ব্যবহার করে লগ ইন করুন",
-    "appWantsToUseForLoginDescription": "আপনি এইভাবে অ্যাপ এবং ওয়েবসাইটকে আপনার সম্পর্কে তথ্য শেয়ার করতে অনুমতি দিচ্ছেন।",
     "open": "খুলুন",
     "waitingForServer": "সার্ভারের জন্য অপেক্ষা করছে...",
-    "appIntroduction": "ফ্লাফি চ্যাট আপনাকে বিভিন্ন মেসেঞ্জার ব্যবহার করে আপনার বন্ধুদের সাথে চ্যাট করার সুযোগ দেয়। আরও জানুন https://matrix.org বা কেবল *Continue* ট্যাপ করুন।",
     "newChatRequest": "📩 নতুন চ্যাট অনুরোধ",
     "contentNotificationSettings": "বিষয়বস্তুর বিজ্ঞপ্তি সেটিংস",
     "generalNotificationSettings": "সাধারণ বিজ্ঞপ্তি সেটিংস",
@@ -2645,11 +2429,9 @@
     "taTooltip": "অনুবাদ সহায়তার জন্য L2 ব্যবহার করুন",
     "interactiveTranslatorSliderHeader": "ইন্টারেক্টিভ অনুবাদক",
     "interactiveGrammarSliderHeader": "ইন্টারেক্টিভ ব্যাকরণ চেকার",
-    "interactiveTranslatorRequired": "প্রয়োজনীয়",
     "waTooltip": "সহায়তা ছাড়াই L2 ব্যবহার",
     "interactiveTranslator": "অনুবাদ সহায়তা",
     "noIdenticalLanguages": "অনুগ্রহ করে ভিন্ন ভিত্তি এবং লক্ষ্য ভাষা নির্বাচন করুন",
-    "searchBy": "দেশ এবং ভাষা দ্বারা অনুসন্ধান করুন",
     "joinWithClassCode": "কোর্সে যোগ দিন",
     "languageLevelPreA1": "নবীন নিম্ন (প্রি A1)",
     "languageLevelA1": "নবীন মধ্য (এ1)",
@@ -2670,19 +2452,14 @@
     "saveChanges": "পরিবর্তন সংরক্ষণ করুন",
     "publicProfileTitle": "আমার প্রোফাইল খুঁজে পাওয়ার অনুমতি দিন",
     "publicProfileDesc": "চালু করলে, অন্য ব্যবহারকারীরা গ্লোবাল সার্চ বারে আপনার প্রোফাইল খুঁজে পাবে এবং চ্যাটের জন্য অনুরোধ পাঠাতে পারবে। এই মুহূর্তে, আপনি গ্রহণ বা অস্বীকার করার সিদ্ধান্ত নিতে পারেন।",
-    "errorDisableIT": "অনুবাদ সহায়তা বন্ধ করা হয়েছে।",
-    "errorDisableIGC": "ব্যাকরণ সহায়তা বন্ধ করা হয়েছে।",
     "errorDisableITUserDesc": "অনুবাদ সহায়তা সেটিংস আপডেট করতে এখানে ক্লিক করুন",
     "errorDisableIGCUserDesc": "ব্যাকরণ সহায়তা সেটিংস আপডেট করতে এখানে ক্লিক করুন",
     "errorDisableITClassDesc": "এই কোর্সের জন্য অনুবাদ সহায়তা বন্ধ করা হয়েছে।",
     "errorDisableIGCClassDesc": "এই কোর্সের জন্য ব্যাকরণ সহায়তা বন্ধ করা হয়েছে।",
-    "error405Title": "ভাষা সেট করা হয়নি",
     "error405Desc": "অনুগ্রহ করে মূল মেনু > শিক্ষার সেটিংসে আপনার ভাষা সেট করুন।",
     "termsAndConditions": "শর্তাবলী ও শর্তসমূহ",
     "andCertifyIAmAtLeast13YearsOfAge": "এবং আমি নিশ্চিত করি যে আমি কমপক্ষে ১৬ বছর বয়সী।",
-    "error502504Title": "উফ, অনলাইনে অনেক ছাত্র রয়েছে!",
     "error502504Desc": "পাঙ্গিয়া বটগুলি আপডেট হওয়ার সময় অনুবাদ এবং ব্যাকরণ সরঞ্জামগুলি ধীর বা অপ্রাপ্য হতে পারে।",
-    "error404Title": "অনুবাদ ত্রুটি!",
     "error404Desc": "পাঙ্গিয়া বট নিশ্চিত নয় কিভাবে এটি অনুবাদ করবে...",
     "errorPleaseRefresh": "আমরা এটি দেখছি! দয়া করে রিফ্রেশ করুন এবং আবার চেষ্টা করুন।",
     "connectedToStaging": "স্টেজিং-এ সংযুক্ত",
@@ -2720,13 +2497,9 @@
     "definitionsToolName": "শব্দের সংজ্ঞা",
     "definitionsToolDescription": "সক্রিয় হলে, নীল রঙে আন্ডারলাইন করা শব্দগুলিতে ক্লিক করে সংজ্ঞা দেখা যায়। বার্তাগুলিতে ক্লিক করে সংজ্ঞা অ্যাক্সেস করুন।",
     "welcomeBack": "ফিরে আসায় স্বাগতম! আপনি যদি ২০২৩-২০২৪ পাইলটের অংশ হয়ে থাকেন, তবে আমাদের সাথে যোগাযোগ করুন আপনার বিশেষ পাইলট সাবস্ক্রিপশনের জন্য। আপনি যদি একজন শিক্ষক হন যিনি (অথবা আপনার প্রতিষ্ঠান) আপনার ক্লাসের জন্য লাইসেন্স কিনেছেন, তবে আমাদের সাথে যোগাযোগ করুন আপনার শিক্ষক সাবস্ক্রিপশনের জন্য।",
-    "downloadTxtFile": "টেক্সট ফাইল ডাউনলোড করুন",
-    "downloadCSVFile": "CSV ফাইল ডাউনলোড করুন",
     "promotionalSubscriptionDesc": "আপনার বর্তমানে একটি আজীবন প্রচারমূলক সাবস্ক্রিপশন রয়েছে। আপনার সাবস্ক্রিপশন পরিবর্তনের জন্য support@pangea.chat এ বার্তা পাঠান।",
     "originalSubscriptionPlatform": "{purchasePlatform} এর মাধ্যমে কেনা সাবস্ক্রিপশন",
     "oneWeekTrial": "এক সপ্তাহের ট্রায়াল",
-    "downloadXLSXFile": "এক্সেল ফাইল ডাউনলোড করুন",
-    "unkDisplayName": "অজানা",
     "wwCountryDisplayName": "বিশ্বব্যাপী",
     "afCountryDisplayName": "আফগানিস্তান",
     "axCountryDisplayName": "আল্যান্ড দ্বীপপুঞ্জ",
@@ -3021,7 +2794,6 @@
     "chatCapacityHasBeenChanged": "চ্যাট ক্ষমতা পরিবর্তিত হয়েছে",
     "chatCapacitySetTooLow": "চ্যাট ক্ষমতা কমপক্ষে {count} হতে হবে।",
     "chatCapacityExplanation": "চ্যাট ক্ষমতা চ্যাটে অনুমোদিত সদস্যের সংখ্যাকে সীমাবদ্ধ করে।",
-    "tooManyRequest": "অনেক বেশি অনুরোধ, দয়া করে পরে আবার চেষ্টা করুন।",
     "enterNumber": "একটি পূর্ণসংখ্যা মান লিখুন।",
     "practice": "অভ্যাস",
     "versionNotFound": "সংস্করণ পাওয়া যায়নি",
@@ -3031,7 +2803,6 @@
     "deleteSubscriptionWarningTitle": "আপনার একটি সক্রিয় সাবস্ক্রিপশন রয়েছে",
     "deleteSubscriptionWarningBody": "আপনার অ্যাকাউন্ট মুছে ফেলা স্বয়ংক্রিয়ভাবে আপনার সাবস্ক্রিপশন বাতিল করবে না।",
     "manageSubscription": "সাবস্ক্রিপশন পরিচালনা করুন",
-    "error520Title": "অনুগ্রহ করে আবার চেষ্টা করুন।",
     "error520Desc": "দুঃখিত, আমরা আপনার বার্তা বুঝতে পারিনি...",
     "wordsUsed": "ব্যবহৃত শব্দ",
     "level": "স্তর",
@@ -3049,7 +2820,6 @@
     "other": "অন্য",
     "levelShort": "স্তর {level}",
     "noCapacityLimit": "কোন ক্ষমতা সীমা নেই",
-    "downloadGroupText": "গ্রুপ টেক্সট ডাউনলোড করুন",
     "notificationsOn": "বিজ্ঞপ্তি চালু",
     "notificationsOff": "বিজ্ঞপ্তি বন্ধ",
     "joinWithCode": "কোড দিয়ে যোগ দিন",
@@ -3113,24 +2883,12 @@
     "whatIsTheMorphTag": "'{wordForm}' এর {morphologicalFeature} কী?",
     "dataAvailable": "ডেটা উপলব্ধতা",
     "available": "উপলব্ধ",
-    "pangeaBotIsFallible": "পাঙ্গিয়া বটও ভুল করে!",
-    "whatIsMeaning": "'{lemma}' এর অর্থ কী?",
     "chooseLemmaMeaningInstructionsBody": "বার্তার শব্দের সাথে অর্থ মিলান!",
-    "doubleClickToEdit": "সম্পাদনা করতে ডাবল ক্লিক করুন।",
-    "topicLabel": "বিষয়",
-    "topicPlaceholder": "একটি বিষয় নির্বাচন করুন...",
-    "modePlaceholder": "একটি মোড নির্বাচন করুন...",
-    "learningObjectiveLabel": "শিক্ষার লক্ষ্য",
-    "learningObjectivePlaceholder": "একটি শিক্ষার লক্ষ্য নির্বাচন করুন...",
-    "targetLanguageLabel": "লক্ষ্য ভাষা",
     "cefrLevelLabel": "CEFR স্তর",
     "image": "ছবি",
     "video": "ভিডিও",
     "nan": "প্রযোজ্য নয়",
-    "addVocabulary": "শব্দভাণ্ডার যোগ করুন",
     "instructions": "নির্দেশনা",
-    "numberOfLearners": "শিক্ষার্থীর সংখ্যা",
-    "mustBeInteger": "একটি পূর্ণসংখ্যা হতে হবে যেমন ১, ২, ৩, ...",
     "constructUsePvmDesc": "ভয়েস মেসেজে তৈরি",
     "leaveSpaceDescription": "কোর্স থেকে ছেড়ে গেলে, আপনি এর মধ্যে সমস্ত চ্যাট ছেড়ে যাবেন। অন্যান্য ব্যবহারকারীরা দেখবে যে আপনি কোর্স ছেড়ে গেছেন।",
     "constructUseCorMmDesc": "সঠিক বার্তা অর্থ",
@@ -3145,7 +2903,6 @@
     "ttsDisabledBody": "আপনি আপনার শেখার সেটিংসে টেক্সট-টু-স্পিচ চালু করতে পারেন",
     "noSpaceDescriptionYet": "এখনো কোনও কোর্সের বিবরণ তৈরি হয়নি।",
     "tooLargeToSend": "এই বার্তা পাঠানোর জন্য খুব বড়",
-    "exitWithoutSaving": "আপনি কি নিশ্চিত যে আপনি সংরক্ষণ না করে ছেড়ে যেতে চান?",
     "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
     "enableAutocorrectPopupSteps": "  • সেটিংস\n  • সাধারণ\n  • কীবোর্ড\n  • কীবোর্ডসমূহ\n  • নতুন কীবোর্ড যোগ করুন",
     "enableAutocorrectPopupDescription": "একবার ভাষা নির্বাচন করলে, আপনি আপনার কীবোর্ডের নিচে বাম পাশে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
@@ -3156,11 +2913,8 @@
     "displayName": "প্রদর্শন নাম",
     "leaveRoomDescription": "আপনি এই চ্যাট থেকে ছেড়ে যাচ্ছেন। অন্যান্য ব্যবহারকারীরা দেখবে যে আপনি চ্যাট ছেড়ে গেছেন।",
     "confirmUserId": "আপনার পাঞ্জিয়া চ্যাটের ব্যবহারকার নাম নিশ্চিত করুন যাতে আপনি আপনার অ্যাকাউন্ট মুছে ফেলতে পারেন।",
-    "startingToday": "আজ থেকে শুরু",
-    "oneWeekFreeTrial": "এক সপ্তাহের ফ্রি ট্রায়াল",
     "paidSubscriptionStarts": "{startDate} থেকে শুরু",
     "cancelInSubscriptionSettings": " • সাবস্ক্রিপশন সেটিংসে যেকোনো সময় বাতিল করুন",
-    "cancelToAvoidCharges": " • চার্জ এড়াতে {trialEnds} এর আগে বাতিল করুন",
     "downloadGboard": "Gboard ডাউনলোড করুন",
     "autocorrectNotAvailable": "দুঃখিত, এই বৈশিষ্ট্যের জন্য আপনার প্ল্যাটফর্ম বর্তমানে সমর্থিত নয়। আরও উন্নতির জন্য অপেক্ষা করুন!",
     "pleaseUpdateApp": "অ্যাপটি আপডেট করুন চালিয়ে যেতে।",
@@ -3170,17 +2924,12 @@
     "knockSpaceSuccess": "আপনি এই কোর্সে যোগদানের জন্য অনুরোধ করেছেন! একজন অ্যাডমিন আপনার অনুরোধ পেলে উত্তর দেবেন 😄",
     "chooseWordAudioInstructionsBody": "সম্পূর্ণ বার্তাটি শুনুন। তারপর শব্দের সাথে অডিও মিলান করুন।",
     "chooseMorphsInstructionsBody": "ব্যাকরণ প্রশ্নের জন্য পাজল টুকরোগুলিতে ক্লিক করুন!",
-    "pleaseEnterInt": "একটি সংখ্যা লিখুন দয়া করে",
     "home": "হোম",
     "join": "যোগ দিন",
     "resetInstructionTooltipsTitle": "নির্দেশনা টিপস রিসেট করুন",
     "resetInstructionTooltipsDesc": "নতুন ব্যবহারকারীর জন্য নির্দেশনা টিপস দেখানোর জন্য ক্লিক করুন।",
-    "randomize": "র্যান্ডমাইজ করুন",
     "clear": "পরিষ্কার করুন",
-    "featuredActivities": "বিশেষ বৈশিষ্ট্যযুক্ত",
     "save": "সংরক্ষণ করুন",
-    "startChat": "চ্যাট শুরু করুন",
-    "translationProblem": "অনুবাদ সমস্যা",
     "askToJoin": "যোগ দেওয়ার জন্য জিজ্ঞাসা করুন",
     "emptyChatWarningTitle": "চ্যাট খালি",
     "emptyChatWarningDesc": "আপনি এখনও কারোকে আপনার চ্যাটে আমন্ত্রণ জানাননি। চ্যাট সেটিংসে গিয়ে আপনার যোগাযোগ বা বটকে আমন্ত্রণ জানান। আপনি পরে এটি করতে পারেন।",
@@ -3210,17 +2959,13 @@
     "timesUsedIndependently": "স্বতন্ত্রভাবে ব্যবহারের সময়",
     "timesUsedWithAssistance": "সহায়তার সাথে ব্যবহারের সময়",
     "shareInviteCode": "আমন্ত্রণ কোড শেয়ার করুন: {code}",
-    "leaderboard": "নেতৃস্থান তালিকা",
     "skipForNow": "এখন জন্য এড়িয়ে যান",
     "permissions": "অনুমতিসমূহ",
     "spaceChildPermission": "কোন ব্যক্তি এই কোর্সে নতুন চ্যাট যোগ করতে পারে",
-    "addEnvironmentOverride": "পরিবেশ অতিক্রম যোগ করুন",
     "defaultOption": "ডিফল্ট",
     "deleteChatDesc": "আপনি কি নিশ্চিত যে আপনি এই চ্যাটটি মুছে ফেলতে চান? এটি সকল অংশগ্রহণকারীর জন্য মুছে ফেলা হবে এবং চ্যাটের সমস্ত বার্তা আর অনুশীলন বা শেখার বিশ্লেষণের জন্য উপলব্ধ থাকবে না।",
     "deleteSpaceDesc": "কোর্স এবং যেকোনো নির্বাচিত চ্যাট সকল অংশগ্রহণকারীর জন্য মুছে ফেলা হবে এবং চ্যাটের সমস্ত বার্তা আর অনুশীলন বা শেখার বিশ্লেষণের জন্য উপলব্ধ থাকবে না। এই ক্রিয়া পূর্বাবস্থায় ফিরিয়ে আনা যাবে না।",
     "launch": "শুরু করুন",
-    "searchChats": "চ্যাট অনুসন্ধান করুন",
-    "maxFifty": "সর্বোচ্চ ৫০",
     "configureSpace": "কোর্স কনফিগার করুন",
     "pinMessages": "বার্তা পিন করুন",
     "setJoinRules": "যোগদানের নিয়ম সেট করুন",
@@ -3253,9 +2998,6 @@
     "failedToFetchTranscription": "ট্রান্সক্রিপশন আনতে ব্যর্থ হয়েছে",
     "deleteEmptySpaceDesc": "কোর্সটি সব অংশগ্রহণকারীর জন্য মুছে ফেলা হবে। এই কাজটি পূর্বাবস্থায় ফিরিয়ে আনা যাবে না।",
     "regenerate": "পুনরায় তৈরি করুন",
-    "mySavedActivities": "আমার সংরক্ষিত কার্যকলাপ",
-    "noSavedActivities": "কোন সংরক্ষিত কার্যকলাপ নেই",
-    "saveActivity": "এই কার্যকলাপ সংরক্ষণ করুন",
     "failedToPlayVideo": "ভিডিও প্লে করতে ব্যর্থ হয়েছে",
     "done": "সম্পন্ন",
     "inThisSpace": "এই কোর্সে",
@@ -3266,13 +3008,9 @@
     "numInvited": "{count} টা আমন্ত্রণ জানানো হয়েছে",
     "saved": "সংরক্ষিত",
     "reset": "রিসেট",
-    "errorFetchingActivitiesMessage": "অ্যাকটিভিটিগুলি আনতে ব্যর্থ হয়েছে",
     "errorFetchingDefinition": "সংজ্ঞা আনতে ব্যর্থ হয়েছে",
     "errorProcessAnalytics": "অ্যানালিটিক্স প্রক্রিয়া করতে ব্যর্থ হয়েছে",
     "errorDownloading": "ডাউনলোড ব্যর্থ হয়েছে",
-    "errorLoadingSpaceChildren": "এই কোর্সের চ্যাট লোড করতে ব্যর্থ হয়েছে",
-    "unexpectedError": "অপ্রত্যাশিত ত্রুটি।",
-    "pleaseReload": "অনুগ্রহ করে পুনরায় লোড করুন এবং আবার চেষ্টা করুন।",
     "translationError": "অনুবাদ ত্রুটি",
     "check": "পরীক্ষা করুন",
     "unableToFindRoom": "সেই কোডের সাথে কোনও চ্যাট বা কোর্স পাওয়া যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
@@ -3281,19 +3019,14 @@
     "request": "অনুরোধ",
     "requestAll": "সব অনুরোধ করুন",
     "confirmMessageUnpin": "আপনি কি নিশ্চিত যে আপনি এই বার্তা আনপিন করতে চান?",
-    "saveAndLaunch": "সংরক্ষণ করুন এবং চালু করুন",
-    "launchToSpace": "কোর্সে চালু করুন",
     "pending": "বিচারাধীন",
     "inactive": "অচল",
-    "confirmRole": "ভূমিকা নিশ্চিত করুন",
     "openRoleLabel": "খোলা",
     "finishedTheActivity": "🎯 {username} এই কার্যক্রম শেষ করেছেন",
     "activitySummaryError": "কার্যক্রমের সারাংশ উপলব্ধ নয়",
     "requestSummaries": "সারাংশের জন্য অনুরোধ করুন",
-    "generatingNewActivities": "আপনি এই ভাষা জোড়ার প্রথম ব্যবহারকারী! দয়া করে এক মিনিট দিন, আমরা আপনার জন্য কার্যক্রম প্রস্তুত করছি।",
     "requestAccessTitle": "বিশ্লেষণ অ্যাক্সেসের জন্য অনুরোধ করবেন?",
     "requestAccessDesc": "আপনি কি অংশগ্রহণকারীদের বিশ্লেষণ দেখার জন্য অ্যাক্সেসের জন্য অনুরোধ করতে চান?\n\nযদি অংশগ্রহণকারীরা সম্মত হন, এই কোর্সের অ্যাডমিনরা দেখতে পারবেন:\n    • মোট শব্দভাণ্ডার\n    • মোট ব্যাকরণ ধারণা\n    • সম্পন্ন কার্যক্রমের মোট সেশন\n    • ব্যবহৃত নির্দিষ্ট ব্যাকরণ ধারণাগুলি, সঠিক ও ভুল\n\nতারা দেখতে পারবেন না:\n    • কোর্সের বাইরে চ্যাটে বার্তা\n    • শব্দভাণ্ডার তালিকা",
-    "requestAccess": "অনুরোধ করুন ({count})",
     "analyticsInactiveTitle": "নিষ্ক্রিয় ব্যবহারকারীদের জন্য অনুরোধ পাঠানো যায়নি",
     "analyticsInactiveDesc": "নিষ্ক্রিয় ব্যবহারকারীরা যারা এই বৈশিষ্ট্য চালু হওয়ার পর থেকে লগইন করেননি, তারা আপনার অনুরোধ দেখবে না।\n\nতাদের ফিরে আসার পরে 'অনুরোধ' বোতাম দেখা যাবে। আপনি পরে তাদের নামের নিচে থাকা 'অনুরোধ' বোতামে ক্লিক করে আবার পাঠাতে পারেন।",
     "accessRequestedTitle": "বিশ্লেষণ অ্যাক্সেস অনুরোধ",
@@ -3316,8 +3049,6 @@
     "accessDesc": "আপনি আপনার কোর্সকে বিশ্বব্যাপী উন্মুক্ত করতে পারেন! অথবা, আপনার কোর্সকে ব্যক্তিগত এবং নিরাপদ করে তুলুন।",
     "createGroupChatDesc": "যেখানে কার্যকলাপ সেশন শুরু হয় এবং শেষ হয়, সেখানে গ্রুপ চ্যাটগুলি রুটিন যোগাযোগের জন্য খোলা থাকবে।",
     "deleteDesc": "শুধুমাত্র অ্যাডমিনরা কোর্স মুছে দিতে পারেন। এটি একটি ধ্বংসাত্মক ক্রিয়া যা সমস্ত ব্যবহারকারীকে সরিয়ে দেয় এবং কোর্সের মধ্যে নির্বাচিত সমস্ত চ্যাট মুছে দেয়। সাবধানতার সাথে এগিয়ে যান।",
-    "noCourseFound": "ওহ, এই কোর্সের জন্য একটি পরিকল্পনা দরকার!\n\nকোর্স পরিকল্পনা হলো বিষয়বস্তুর ক্রম এবং কথোপকথনের কার্যকলাপের একটি সিরিজ।",
-    "additionalParticipants": "+ {num} অন্যান্য",
     "whatNow": "এখন কি?",
     "chooseNextActivity": "আপনার পরবর্তী কার্যকলাপ নির্বাচন করুন!",
     "letsGo": "চলুন",
@@ -3330,13 +3061,11 @@
     "waitNotDone": "অপেক্ষা করুন, আমি শেষ করিনি!",
     "waitingForOthersToFinish": "অন্যদের শেষ করার জন্য অপেক্ষা করছি...",
     "generatingSummary": "চ্যাট বিশ্লেষণ এবং ফলাফল তৈরি করা হচ্ছে",
-    "findCourse": "একটি কোর্স খুঁজুন",
     "pingParticipantsNotification": "{user} ব্যবহারকারীদের খুঁজছেন যাতে {room} এ কার্যকলাপ সেশনে যোগ দিতে পারে",
     "course": "কোর্স",
     "courses": "কোর্সসমূহ",
     "goToCourse": "কোর্সে যান: {course}",
     "activityComplete": "এই কার্যকলাপটি সম্পন্ন হয়েছে। কার্যকলাপের সারাংশ নিচে পাওয়া যাবে।",
-    "startNewSession": "নতুন সেশন শুরু করুন",
     "joinOpenSession": "খোলা সেশনে যোগ দিন",
     "activityNotFound": "ক্রিয়াকলাপ পাওয়া যায়নি",
     "myActivities": "আমার কার্যক্রম",
@@ -3441,26 +3170,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@calls": {
         "type": "String",
         "placeholders": {}
@@ -3537,14 +3246,6 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
@@ -3569,31 +3270,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -3649,23 +3330,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -3705,28 +3374,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -3744,14 +3391,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3944,22 +3583,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4015,10 +3638,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4028,10 +3647,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4107,27 +3722,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4445,10 +4044,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4458,10 +4053,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4549,14 +4140,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4573,10 +4156,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4589,15 +4168,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4749,14 +4320,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4770,14 +4333,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6000,10 +5555,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -6044,10 +5595,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6120,10 +5667,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6393,47 +5936,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6453,19 +5956,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6529,10 +6020,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6573,14 +6060,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6592,14 +6071,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6637,10 +6108,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6657,27 +6124,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6801,10 +6252,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6814,10 +6261,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6834,14 +6277,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6981,18 +6416,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -7041,10 +6464,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -7054,18 +6473,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -7108,23 +6515,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -7148,10 +6543,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -7159,14 +6550,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -7271,18 +6654,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -7335,10 +6706,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -7365,10 +6732,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7549,7 +6912,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "কার্যকলাপের আপডেটের জন্য আগামীকাল আবার চেক করুন।",
-    "activityDropdownDesc": "আপনি যখন এই কার্যকলাপ শেষ করবেন, নিচের ক্লিক করুন",
     "languageMismatchTitle": "ভাষার মিল নেই",
     "languageMismatchDesc": "আপনার লক্ষ্য ভাষা এই কার্যকলাপের ভাষার সাথে মিলছে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
     "reportWordIssueTooltip": "শব্দের তথ্য সমস্যা রিপোর্ট করুন",
@@ -7562,10 +6924,6 @@
     "selectAll": "সব নির্বাচন করুন",
     "deselectAll": "সব বাতিল করুন",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7614,17 +6972,11 @@
         "placeholders": {}
     },
     "startOwn": "নিজের শুরু করুন",
-    "joinCourseDesc": "প্রতিটি কোর্সে ৮-১০টি ক্রমবর্ধমান বিষয় রয়েছে যার সাথে বিভিন্ন কার্যক্রমভিত্তিক ভাষা শেখার কার্যক্রম রয়েছে।",
     "newMessageInPangeaChat": "💬 পেঙ্গিয়া চ্যাটে নতুন বার্তা",
     "shareCourse": "কোর্স শেয়ার করুন",
     "addCourse": "একটি কোর্স যোগ করুন",
-    "joinPublicCourse": "পাবলিক কোর্সে যোগ দিন",
     "vocabLevelsDesc": "এখানে আপনি শব্দের স্তর উন্নত করলে শব্দগুলি যাবে!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7637,10 +6989,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7659,7 +7007,6 @@
     "emojiView": "ইমোজি ভিউ",
     "feedbackDialogDesc": "আমি ও ভুল করি! আমাকে উন্নত করতে সাহায্য করার জন্য কিছু আছে?",
     "contactHasBeenInvitedToTheCourse": "যোগাযোগকে কোর্সে আমন্ত্রণ জানানো হয়েছে",
-    "activityStatsButtonTooltip": "কার্যকলাপের তথ্য",
     "allow": "অনুমতি দিন",
     "deny": "অস্বীকার করুন",
     "enabledRenewal": "সাবস্ক্রিপশন নবীকরণ সক্ষম করুন",
@@ -7925,10 +7272,6 @@
         "placeholders": {}
     },
     "@contactHasBeenInvitedToTheCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityStatsButtonTooltip": {
         "type": "String",
         "placeholders": {}
     },
@@ -8976,16 +8319,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "পরবর্তী বিষয় উন্মুক্ত করার জন্য কার্যক্রম",
-    "activitiesToUnlockTopicDesc": "পরবর্তী কোর্স বিষয় উন্মুক্ত করার জন্য কার্যক্রমের সংখ্যা নির্ধারণ করুন",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "সঠিক শব্দভাণ্ডার সংজ্ঞা অনুশীলন",
     "constructUseIncLMDesc": "ভুল শব্দভাণ্ডার সংজ্ঞা অনুশীলন",
     "constructUseCorLADesc": "সঠিক শব্দভাণ্ডার অডিও অনুশীলন",
@@ -8993,7 +8326,6 @@
     "constructUseBonus": "শব্দভাণ্ডার অনুশীলনের সময় বোনাস",
     "practiceVocab": "শব্দভাণ্ডার অনুশীলন",
     "selectMeaning": "অর্থ নির্বাচন করুন",
-    "selectAudio": "মিলানো অডিও নির্বাচন করুন",
     "anotherRound": "আরেকটি রাউন্ড",
     "activitySettingsOverrideWarning": "কার্যকলাপ পরিকল্পনার দ্বারা নির্ধারিত ভাষা এবং ভাষার স্তর",
     "voice": "কণ্ঠ",
@@ -9025,10 +8357,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -9046,12 +8374,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "ডাউনলোড শুরু হয়েছে",
     "webDownloadPermissionMessage": "যদি আপনার ব্রাউজার ডাউনলোড ব্লক করে, অনুগ্রহ করে এই সাইটের জন্য ডাউনলোড সক্ষম করুন।",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -9146,11 +8469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "কিছু ভুল হয়েছে, এবং আমরা এটি ঠিক করতে কঠোর পরিশ্রম করছি। পরে আবার চেক করুন।",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "লেখার সহায়তা সক্রিয় করুন",
     "autoIGCToolDescription": "লক্ষ্য ভাষায় পাঠানো বার্তা সংশোধন করতে স্বয়ংক্রিয়ভাবে প্যাঙ্গিয়া চ্যাট টুলগুলি চালান।",
     "@autoIGCToolName": {
@@ -9206,24 +8524,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "ব্যাকরণ",
-    "spanTypeWordChoice": "শব্দ নির্বাচন",
     "spanTypeSpelling": "বানান",
     "spanTypePunctuation": "বিরাম চিহ্ন",
     "spanTypeStyle": "শৈলী",
     "spanTypeFluency": "প্রবাহ",
     "spanTypeAccents": "উচ্চারণ",
     "spanTypeCapitalization": "বড় হাতের অক্ষর",
-    "spanTypeCorrection": "সংশোধন",
     "spanFeedbackTitle": "সংশোধন সমস্যা রিপোর্ট করুন",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -9248,10 +8555,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -9264,13 +8567,7 @@
     "longPressToRecordVoiceMessage": "ভয়েস মেসেজ রেকর্ড করতে দীর্ঘ প্রেস করুন।",
     "pause": "বিরতি",
     "resume": "পুনরায় শুরু করুন",
-    "newSubSpace": "নতুন সাব স্পেস",
-    "moveToDifferentSpace": "ভিন্ন স্পেসে সরান",
-    "removeFromSpaceDescription": "চ্যাটটি স্থান থেকে মুছে ফেলা হবে কিন্তু আপনার চ্যাট তালিকায় এখনও প্রদর্শিত হবে।",
     "countChats": "{chats} চ্যাট",
-    "spaceMemberOf": "{spaces} এর সদস্য",
-    "spaceMemberOfCanKnock": "{spaces} এর সদস্যরা নক করতে পারে",
-    "donate": "দান করুন",
     "startedAPoll": "{username} একটি ভোট শুরু করেছে।",
     "poll": "ভোট",
     "startPoll": "ভোট শুরু করুন",
@@ -9294,23 +8591,15 @@
     "newStickerPack": "নতুন স্টিকার প্যাক",
     "stickerPackName": "স্টিকার প্যাকের নাম",
     "attribution": "অ্যাট্রিবিউশন",
-    "skipChatBackup": "চ্যাট ব্যাকআপ বাদ দিন",
-    "skipChatBackupWarning": "আপনি কি নিশ্চিত? চ্যাট ব্যাকআপ সক্ষম না করলে আপনি আপনার বার্তাগুলিতে প্রবেশাধিকার হারাতে পারেন যদি আপনি আপনার ডিভাইস পরিবর্তন করেন।",
-    "loadingMessages": "বার্তা লোড হচ্ছে",
-    "setupChatBackup": "চ্যাট ব্যাকআপ সেট আপ করুন",
     "noMoreResultsFound": "আরও কোন ফলাফল পাওয়া যায়নি",
     "chatSearchedUntil": "চ্যাট অনুসন্ধান করা হয়েছে {time} পর্যন্ত",
     "federationBaseUrl": "ফেডারেশন বেস URL",
     "clientWellKnownInformation": "ক্লায়েন্ট-ওয়েল-নোwn তথ্য:",
     "baseUrl": "বেস URL",
     "identityServer": "আইডেন্টিটি সার্ভার:",
-    "versionWithNumber": "সংস্করণ: {version}",
     "logs": "লগস",
-    "advancedConfigs": "উন্নত কনফিগারেশন",
     "advancedConfigurations": "উন্নত কনফিগারেশনসমূহ",
-    "signInWithLabel": "সাইন ইন করুন:",
     "selectAllWords": "শ্রবণে শোনা সমস্ত শব্দ নির্বাচন করুন",
-    "joinCourseForActivities": "কার্যকলাপের জন্য একটি কোর্সে যোগ দিন।",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -9347,18 +8636,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9366,26 +8643,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9491,22 +8748,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9535,19 +8776,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9555,15 +8784,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9764,11 +8985,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "একটি ক্লাসে? আপনার যোগদান কোড এখানে দিন।",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
     "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9812,18 +9028,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "এই কোর্সে এমন বিষয় রয়েছে যার মধ্যে {input} এর চেয়ে কম কার্যক্রম রয়েছে। দয়া করে এমন একটি সংখ্যা প্রবেশ করুন যা {minValue} এর সমান বা তার কম।",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "এখানে ক্লিক করুন পুনরায় সাইন ইন করতে।",
     "@clickToLogin": {
@@ -10240,17 +9444,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "একটি কার্টুনের মতো হলুদ ভালুক যার হাত উত্তেজনায় উঁচু করা হয়েছে।",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "শিখতে আরও জানার জন্য শব্দ নির্বাচন করুন",
     "requireAnalyticsAccessTitle": "যোগ দিতে বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
     "requireAnalyticsAccessDesc": "অংশগ্রহণকারীদের এই কোর্সে যোগ দিতে তাদের শেখার বিশ্লেষণে অ্যাক্সেস দিতে হবে",
     "analyticsAccessNoticeTitle": "বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
     "analyticsAccessNoticeDesc": "এই কোর্সে যোগ দিয়ে, আপনি প্রশাসকদের আপনার শেখার বিশ্লেষণে অ্যাক্সেস দিতে সম্মত হন।",
-    "skipOnboardingClassCodeDesc": "স্বতন্ত্রভাবে শিখছেন? চিন্তা করবেন না, আপনি:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -10268,10 +9466,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10300,7 +9494,6 @@
     "pickCefrLevelTeacherStepTitle": "আপনি কোন স্তর শেখান?",
     "pickCefrLevelStudentStepTitle": "আপনি কোন স্তরে?",
     "customCourseStepTitle": "একটি কাস্টম কোর্স পেতে এই ফর্মটি পূরণ করুন",
-    "aboutYourClass": "আপনার ক্লাস সম্পর্কে",
     "courseCodeStepErrorMessage": "দয়া করে আপনার কোডটি পরীক্ষা করুন এবং আবার চেষ্টা করুন",
     "institution": "প্রতিষ্ঠান",
     "courseGoals": "কোর্সের লক্ষ্য",
@@ -10343,10 +9536,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10463,12 +9652,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "প্যাঙ্গিয়া চ্যাট লোগো",
     "introChatDetails": "হ্যালো বলুন! আপনার সহপাঠীদের সাথে পরিচয় করিয়ে দিন, বন্ধু খুঁজুন, এবং কার্যক্রমের বাইরে চ্যাট করুন।",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10512,11 +9696,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "কার্যকলাপের কার্যক্রম",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "উচ্চারণের সরঞ্জাম",
     "audioTranscription": "এআই অডিও ট্রান্সক্রিপশন",
     "visualLearnerSupport": "ভিজ্যুয়াল লার্নার সাপোর্ট",
@@ -10557,7 +9736,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "এই কার্যকলাপটি খেলতে একটি কোর্সে যোগ দিন।",
     "resizeCoursePanel": "কোর্স প্যানেল আকার পরিবর্তন করুন",
     "undo": "পুনরুদ্ধার করুন",
     "unlock": "মুক্ত করুন",
@@ -10571,7 +9749,6 @@
     "addCourseBrowsePublic": "সার্বজনীন কোর্স ব্রাউজ করুন",
     "browsePublicCourses": "সার্বজনীন কোর্স ব্রাউজ করুন",
     "editProfile": "প্রোফাইল সম্পাদনা করুন",
-    "numObjectives": "{count} লক্ষ্য",
     "mapSearchHint": "কার্যকলাপ অনুসন্ধান করুন",
     "mapSearchNoResults": "দৃশ্যে কোন মিল নেই",
     "mapFilterAllLanguages": "সমস্ত ভাষা",
@@ -10580,7 +9757,6 @@
     "mapFilterCompleted": "সম্পন্ন",
     "mapFilterReset": "রিসেট",
     "activityTypeConversation": "আলাপ",
-    "lockedMissionRequirement": "মিশন আনলক করতে পূর্ববর্তী মিশন সম্পন্ন করুন",
     "playAgain": "পুনরায় খেলুন",
     "reviewActivity": "পর্যালোচনা",
     "mapEmptyInView": "আপনার স্তর বা ভাষায় এখানে কিছুই নেই। আপনার ফিল্টারগুলি প্রসারিত করুন বা জুম আউট করুন।",
@@ -10595,14 +9771,9 @@
     "scrollToBottom": "নিচে স্ক্রোল করুন",
     "courseImage": "কোর্সের ছবি",
     "avatarPreview": "অ্যাভাটার প্রিভিউ",
-    "activityPhoto": "অ্যাক্টিভিটি ফটো",
     "emotePreview": "ইমোট প্রিভিউ: {name}",
     "activityLabel": "কার্যকলাপ: {title}",
     "resetMapView": "মানচিত্রের দৃশ্য পুনরায় সেট করুন",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10655,14 +9826,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10692,10 +9855,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10752,10 +9911,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -11107,5 +10262,10 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "কোর্সের অনুমতি",
+    "starsToUnlockObjectiveTitle": "প্রতিটি মিশনে স্টার",
+    "starsToUnlockObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করার জন্য প্রয়োজনীয় স্টারের সংখ্যা সেট করুন",
+    "maxStarsPerMissionWarning": "এই কোর্সে এমন মিশন রয়েছে যেখানে শুধুমাত্র {maxValue} স্টার অর্জন করা যাবে। অনুগ্রহ করে {maxValue} এর কম বা সমান একটি সংখ্যা লিখুন।",
+    "removedFromCourseError": "আপনাকে এই কোর্স থেকে সরিয়ে দেওয়া হয়েছে। আপনার শিক্ষকের সাথে যোগাযোগ করুন।"
 }
