@@ -93,9 +93,11 @@ class SubscriptionController with ChangeNotifier {
         await _activateNewUserTrial(userID);
       }
 
-      if (SubscriptionManagementRepo.getBeganPayment()) {
+      final isSubscribed = _state is SubscriptionActive;
+      final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+      if (beganPayment && isSubscribed) {
         await SubscriptionManagementRepo.removeBeganPayment();
-        if (_state is SubscriptionActive) _onSubscribe();
+        _onSubscribe();
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
