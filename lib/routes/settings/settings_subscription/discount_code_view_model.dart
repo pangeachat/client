@@ -34,7 +34,8 @@ class DiscountCodeViewModel {
       _productsProvider.loader;
 
   String title(L10n l10n) => switch (_loader.value) {
-    AsyncLoaded() => l10n.selectDiscountPlan,
+    AsyncLoaded(value: final response) =>
+      response.valid == true ? l10n.selectDiscountPlan : l10n.enterDiscountCode,
     _ => l10n.enterDiscountCode,
   };
 

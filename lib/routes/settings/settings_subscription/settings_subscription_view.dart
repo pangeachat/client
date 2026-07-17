@@ -15,14 +15,17 @@ import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_options.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/user_subscription_plan_card.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
   final Widget closeButton;
   final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
   final AsyncState<List<ProductPlan>> productsState;
 
+  final VoidCallback reloadStatus;
   final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
   final ValueNotifier<ProductPlan?> selectedSubscription;
@@ -32,6 +35,7 @@ class SettingsSubscriptionView extends StatelessWidget {
     required this.closeButton,
     required this.subscriptionStatusState,
     required this.productsState,
+    required this.reloadStatus,
     required this.onEnterDiscountCode,
     required this.onTapSubscription,
     required this.selectedSubscription,
@@ -89,7 +93,21 @@ class SettingsSubscriptionView extends StatelessWidget {
                     AsyncLoading() || AsyncIdle() => Center(
                       child: CircularProgressIndicator.adaptive(),
                     ),
-                    AsyncError() => SizedBox.shrink(),
+                    AsyncError(error: final error) => Center(
+                      child: Row(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ErrorIndicator(
+                            message: error.toLocalizedString(context),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.refresh),
+                            onPressed: reloadStatus,
+                          ),
+                        ],
+                      ),
+                    ),
                     AsyncLoaded(value: final subscriptionStatus) => () {
                       final winning = subscriptionStatus.winning;
 

@@ -51,6 +51,12 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
 
   Future<void> _launchPaymentLink(String paymentLink) async {
     await SubscriptionManagementRepo.setBeganPayment();
-    await launchUrlString(paymentLink, webOnlyWindowName: "_self");
+    final success = await launchUrlString(
+      paymentLink,
+      webOnlyWindowName: "_self",
+    );
+    if (!success) {
+      await SubscriptionManagementRepo.removeBeganPayment();
+    }
   }
 }
