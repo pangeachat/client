@@ -14,6 +14,10 @@ How the Flutter client's UI strings are stored, translated, and kept in sync. Fo
 - **Only the template carries `@`-metadata** (placeholder types, plural definitions). Locale files hold just `@@locale`, `@@last_modified`, and the translated key→value strings — gen-l10n reads placeholder metadata from the template.
 - Locale selection falls back to English for any key (or whole locale) not translated, so a missing translation degrades gracefully rather than breaking the UI.
 
+## Which language the app UI uses
+
+By default the app UI is shown in the user's **source/native language (L1)**. A learner can opt into **immersion** — showing the UI in their **target language (L2)** — via the `appLanguageIsTarget` flag in `UserSettings` (toggle on the learning settings page). [`MatrixState._setAppLanguage`](../../lib/widgets/matrix.dart) resolves the locale from that flag, falling back to L1 (then system) when L2 isn't set. Because it's a non-language setting, the change propagates on `settingsUpdateStream`, which `_setAppLanguage` also listens to so the toggle takes effect immediately. Untranslated L2 keys fall back to English like any other locale.
+
 ## L1 coverage principle
 
 Every L1 — every language in the CMS `languages` collection — should get a UI translation. A language is offered as an L1 only if an LLM we route to supports it (the L1 gate in the language-list doc), so offering it while showing English UI is the mismatch we're closing. Until a locale is translated it falls back to English; the backfill tooling below exists to drive that gap to zero.
