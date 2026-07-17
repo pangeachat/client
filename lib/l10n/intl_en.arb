@@ -158,6 +158,16 @@
         "type": "String",
         "placeholders": {}
     },
+    "appInTargetLanguageTitle": "Show the app in the language I'm learning",
+    "@appInTargetLanguageTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "appInTargetLanguageDesc": "Menus, buttons, and labels appear in your target language for immersion. Untranslated text falls back to English.",
+    "@appInTargetLanguageDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
     "appLock": "App lock",
     "@appLock": {
         "type": "String",

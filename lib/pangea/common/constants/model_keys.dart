@@ -2,6 +2,7 @@ class ModelKey {
   static const String userId = 'user_id';
   static const String targetLanguage = 'target_language';
   static const String sourceLanguage = 'source_language';
+  static const String appLanguageIsTarget = 'app_language_is_target';
   static const String userL1 = 'user_l1';
   static const String userL2 = 'user_l2';
   static const String langCode = 'lang_code';

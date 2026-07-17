@@ -15,6 +15,10 @@ The shared staging test account is `staging_automated_tests`. Credentials live i
 
 Read these values from the file at runtime. **Never hardcode credentials in skills, scripts, or chat output.** If `client/.env` is missing them, see [`e2e/README.md` § Credentials](../../e2e/README.md#credentials) for the AWS Secrets Manager / mirrored-env fetch.
 
+## Environment profiles — `.env` is generated, not edited
+
+`client/.env` is a copy of a per-environment profile (`.env.local`, `.env.staging` — gitignored), switched by [`scripts/use-env.sh`](../../scripts/use-env.sh); never edit `.env` in place. Each profile carries the routing keys **and the `TEST_MATRIX_*` credentials that exist on that profile's homeserver** (`.env.local` → the local `@learner` account, `.env.staging` → `staging_automated_tests`). The pairing is the point: `?devlogin=1` and the endpoint test suites follow `.env`, so a homeserver pointed one way with credentials from the other guarantees login 403s and hung dev-login boots. Sessions that used to sed individual keys in `.env` drifted exactly into that state — switch profiles whole, via the script.
+
 ## Bypass the login UI in debug (`?devlogin=1`)
 
 The web client renders its login form on a canvas, so a password manager can't fill it and browser-driving agents struggle to type into it — reaching a logged-in state is the slowest part of local QA. A debug-only shortcut signs the local build straight into the test account.
