@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -18,6 +20,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
+import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The per-frame pin draw model resolved by [_WorldMapViewState._resolvePinRender]:
@@ -652,6 +655,22 @@ class _WorldMapViewState extends State<WorldMapView> {
       );
     }
     final l2 = MatrixState.pangeaController.userController.userL2Code;
+    // The overlay lives in the EXPOSED map sliver: right of the open left
+    // panels, clear of the right column / the top-right cluster gutter (a fixed
+    // 360 slid under the cluster and off-screen whenever panels squeezed the
+    // sliver — the surviving overlap in #7088). Below a usable width it hides
+    // entirely; close a panel to search.
+    final searchLeft = widget.controller.widget.leftOverlayWidth + 12;
+    final searchWidth = math.min(
+      360.0,
+      MediaQuery.sizeOf(context).width -
+          searchLeft -
+          math.max(
+            widget.controller.widget.rightOverlayWidth,
+            PanelAllocator.clusterGutter,
+          ) -
+          12,
+    );
     return Semantics(
       label: L10n.of(context).activityMapLabel,
       container: true,
@@ -662,11 +681,11 @@ class _WorldMapViewState extends State<WorldMapView> {
           // bar above the nav widget instead (the shell mounts it — see
           // routing.instructions.md → Single-column search bar), and this
           // top-left spot belongs to the analytics bar.
-          if (FluffyThemes.isColumnMode(context))
+          if (FluffyThemes.isColumnMode(context) && searchWidth >= 220)
             Positioned(
               top: 12,
-              left: widget.controller.widget.leftOverlayWidth + 12,
-              width: 360,
+              left: searchLeft,
+              width: searchWidth,
               child: WorldMapSearchOverlay(
                 filter: widget.controller.filter,
                 updateQuery: widget.controller.setQuery,
