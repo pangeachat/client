@@ -8,7 +8,90 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 
+/// The learner's completion tier for a map activity (world-map.instructions.md,
+/// "Goal Progress"). A gold star appears **only** once a full role is done —
+/// partial progress is never shown on a pin.
+enum ActivityStarLevel {
+  /// No role fully completed — not a star pin (the activity renders `available`).
+  none,
+
+  /// All goals of at least one role completed in some session — a gold star.
+  star,
+
+  /// Every role's goals completed across the learner's attempts — a super star.
+  superStar,
+}
+
+/// The star tier from the learner's [completedRoles] on an activity and its
+/// full [allRoleIds]: `none` (no full role → not a star), `star` (≥1 role),
+/// `superStar` (every role). Falls back to `star` only when the total role set
+/// is unknown (no hydrated plan AND the card didn't project its roles), since
+/// "all roles" then can't be proven. Pure — fed by
+/// [WorldMapClientExtension.completedRolesByActivity] (per-role completion) and
+/// [WorldMapClientExtension.roleIdsByActivity] (the room-derived total role set).
+ActivityStarLevel starLevelFor(
+  Set<String> completedRoles,
+  Iterable<String> allRoleIds,
+) {
+  if (completedRoles.isEmpty) return ActivityStarLevel.none;
+  if (allRoleIds.isNotEmpty && completedRoles.containsAll(allRoleIds)) {
+    return ActivityStarLevel.superStar;
+  }
+  return ActivityStarLevel.star;
+}
+
 extension WorldMapClientExtension on Client {
+  /// The learner's completed role-ids per activity across their joined sessions,
+  /// built in ONE pass over `rooms` — the precomputed source for [starLevelFor]
+  /// so the map resolves each pin's star tier without rescanning rooms per pin
+  /// (mirrors the precomputed `_userStars` in the pins manager). A role counts
+  /// as done when the learner completed all its goals in one of their own joined
+  /// sessions ([Room.hasCompletedOwnGoals]).
+  Map<String, Set<String>> get completedRolesByActivity {
+    final result = <String, Set<String>>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null) continue;
+      if (room.membership != Membership.join) continue;
+      final roleId = room.ownRole?.id;
+      if (roleId == null) continue;
+      if (!room.hasCompletedOwnGoals) continue;
+      (result[activityId] ??= <String>{}).add(roleId);
+    }
+    return result;
+  }
+
+  /// The full role-id set per activity, unioned from the hydrated plan
+  /// (`activityPlan.roles`) on the learner's joined session rooms — the
+  /// room-derived "all roles" for [starLevelFor], so the super-star no longer
+  /// depends on the thin bbox card projecting `roles` (which it may omit). Built
+  /// in ONE pass over `rooms`, mirroring [completedRolesByActivity].
+  Map<String, Set<String>> get roleIdsByActivity {
+    final result = <String, Set<String>>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null) continue;
+      if (room.membership != Membership.join) continue;
+      final roleIds = room.activityPlan?.roles.keys;
+      if (roleIds == null) continue;
+      (result[activityId] ??= <String>{}).addAll(roleIds);
+    }
+    return result;
+  }
+
+  /// The learner's [ActivityStarLevel] for a single [activityId] — the
+  /// convenience over [completedRolesByActivity]/[roleIdsByActivity]/
+  /// [starLevelFor]. Prefer the precomputed maps in a per-pin loop; this rescans
+  /// rooms on each call. When [allRoleIds] is omitted the room-derived total set
+  /// is used, so the super-star stays reachable without the bbox card's roles.
+  ActivityStarLevel activityStarLevel(
+    String activityId, {
+    Iterable<String>? allRoleIds,
+  }) => starLevelFor(
+    completedRolesByActivity[activityId] ?? const {},
+    allRoleIds ?? roleIdsByActivity[activityId] ?? const {},
+  );
+
   /// The learner's OWN session room for [activityId] — a room they have *joined*
   /// (membership join), whether or not they have confirmed a role. Prefers a
   /// room where they hold a role, then the most recently active. This is the
@@ -110,6 +193,12 @@ extension WorldMapClientExtension on Client {
           // A free role the user hasn't taken → joinable (the open-session state).
           joinable: r.numRemainingRoles > 0 && r.ownRoleState == null,
           lastEventMs: r.lastEvent?.originServerTs.millisecondsSinceEpoch ?? 0,
+          // Distinguishes ongoingPending (>0, chat hasn't started) from
+          // ongoingActive (0, roster full) when holdsRole is true.
+          numRemainingRoles: r.numRemainingRoles,
+          // A finished own role (even one not fully starred, or archived) is
+          // never a live "resume it" state.
+          ownRoleFinished: r.hasCompletedRole,
         );
       })
       .whereType<ActivitySessionFacts>()

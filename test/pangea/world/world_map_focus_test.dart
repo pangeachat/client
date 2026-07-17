@@ -7,6 +7,7 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 
 /// #7349 — a focused activity drives a distinct focus marker on its pin. The
@@ -55,12 +56,17 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  bool hasBorderColored(WidgetTester tester, Color color) =>
-      tester.widgetList<Container>(find.byType(Container)).any((c) {
-        final d = c.decoration;
+  /// Whether any shape casts the selected-state glow — a boxShadow in [color]
+  /// (the state hue) at the glow's blur radius, distinct from the pin's base
+  /// black drop shadow (#7349). Scans DecoratedBox so it also matches the
+  /// DecoratedBox a Container builds internally.
+  bool hasStateGlow(WidgetTester tester, Color color) =>
+      tester.widgetList<DecoratedBox>(find.byType(DecoratedBox)).any((b) {
+        final d = b.decoration;
         return d is BoxDecoration &&
-            d.border is Border &&
-            (d.border as Border).top.color == color;
+            (d.boxShadow ?? const []).any(
+              (s) => s.color == color && s.blurRadius > 8,
+            );
       });
 
   group('WorldMapController.focusedActivityIdOf (#7349)', () {
@@ -98,41 +104,41 @@ void main() {
     });
   });
 
-  group('WorldMapDot focus ring (#7349)', () {
+  group('WorldMapDot selected glow (#7349)', () {
     const primary = Color(0xFF112233);
+    // The focused pin haloes in its state hue (here `available`), not the theme
+    // primary — the treatment is state-coloured now, no outline.
+    final glowColor =
+        WorldMapSelection.glow(ActivityPinState.available.color).first.color;
 
-    testWidgets('a focused small dot draws the primary focus ring', (
-      tester,
-    ) async {
+    testWidgets('a focused small dot casts the state glow', (tester) async {
       await pumpDot(
         tester,
         tier: PinTier.small,
         isFocused: true,
         primary: primary,
       );
-      expect(hasBorderColored(tester, primary), isTrue);
+      expect(hasStateGlow(tester, glowColor), isTrue);
     });
 
-    testWidgets('a focused mid pin draws the primary focus ring', (
-      tester,
-    ) async {
+    testWidgets('a focused mid pin casts the state glow', (tester) async {
       await pumpDot(
         tester,
         tier: PinTier.mid,
         isFocused: true,
         primary: primary,
       );
-      expect(hasBorderColored(tester, primary), isTrue);
+      expect(hasStateGlow(tester, glowColor), isTrue);
     });
 
-    testWidgets('an unfocused dot has no primary focus ring', (tester) async {
+    testWidgets('an unfocused dot casts no glow', (tester) async {
       await pumpDot(
         tester,
         tier: PinTier.small,
         isFocused: false,
         primary: primary,
       );
-      expect(hasBorderColored(tester, primary), isFalse);
+      expect(hasStateGlow(tester, glowColor), isFalse);
     });
   });
 }
