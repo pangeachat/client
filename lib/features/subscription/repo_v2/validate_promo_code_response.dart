@@ -58,6 +58,7 @@ class ValidatePromoCodeResponse extends BaseResponse {
 
   @override
   Map<String, dynamic> toJson() {
+    final expiresAt = this.expiresAt;
     return {
       'valid': valid,
       'code': code,
@@ -68,7 +69,9 @@ class ValidatePromoCodeResponse extends BaseResponse {
       'coupon_duration': couponDuration,
       'restrictions': restrictions?.toJson(),
       'discounted_price': discountedPrice?.toJson(),
-      'expires_at': expiresAt?.millisecondsSinceEpoch,
+      'expires_at': expiresAt != null
+          ? expiresAt.millisecondsSinceEpoch ~/ 1000
+          : null,
       'reason': reason,
     };
   }

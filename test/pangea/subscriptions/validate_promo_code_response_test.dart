@@ -40,6 +40,9 @@ void main() {
       expect(res.discountedPrice, isNotNull);
       expect(res.discountedPrice!.amount, 499);
       expect(res.discountedPrice!.currency, "usd");
+
+      final reparsed = ValidatePromoCodeResponse.fromJson(res.toJson());
+      expect(reparsed.expiresAt, res.expiresAt);
     });
 
     test(
@@ -141,6 +144,9 @@ void main() {
       expect(res.restrictions!.minimumAmount, 2000);
       expect(res.discountedPrice!.amount, 499);
       expect(res.expiresAt?.millisecondsSinceEpoch, 1735689600000);
+
+      final reparsed = ValidatePromoCodeResponse.fromJson(res.toJson());
+      expect(reparsed.expiresAt, res.expiresAt);
     });
   });
 }
