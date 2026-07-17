@@ -13,10 +13,19 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 profile="${1:-}"
+case "$profile" in
+  *template*|*example*) profile="" ;;  # checked-in docs, not runtime profiles
+esac
 if [ -z "$profile" ] || [ ! -f ".env.$profile" ]; then
   echo "usage: scripts/use-env.sh <profile>   (needs client/.env.<profile>)"
   echo "available profiles:"
-  ls -1 .env.* 2>/dev/null | grep -v example | sed 's/^\.env\./  /' || echo "  (none — create .env.local / .env.staging first)"
+  found=0
+  for f in .env.*; do
+    [ -f "$f" ] || continue
+    case "$f" in *.template|*.example) continue ;; esac
+    echo "  ${f#.env.}"; found=1
+  done
+  [ "$found" = 0 ] && echo "  (none — create .env.local / .env.staging first)"
   exit 1
 fi
 
