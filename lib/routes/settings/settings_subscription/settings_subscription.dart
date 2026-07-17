@@ -70,7 +70,7 @@ class SettingsSubscriptionState extends State<SettingsSubscription>
         builder: (context) => DiscountCodePopup(viewModel: viewModel),
       );
 
-      if (resp == null) return;
+      if (resp == null || !mounted) return;
       await processCheckoutRequest(resp);
     } finally {
       viewModel.dispose();
@@ -98,7 +98,7 @@ class SettingsSubscriptionState extends State<SettingsSubscription>
       builder: (context) => SelectedSubscriptionPopup(plan),
     );
     if (mounted) _selectedSubscription.value = null;
-    if (resp == null) return;
+    if (resp == null || !mounted) return;
     await processCheckoutRequest(resp);
   }
 
