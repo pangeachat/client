@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -12,6 +13,7 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,7 +21,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/user_lemma_info_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class AnalyticsUpdateService {
+class AnalyticsUpdateService with WidgetsBindingObserver {
   static const int _maxMessagesCached = 10;
 
   final AnalyticsDataService dataService;
@@ -30,8 +32,16 @@ class AnalyticsUpdateService {
   Timer? _periodicTimer;
 
   void start() {
+    // Piggyback app-lifecycle hooks for the dosage engagement tracker; the
+    // 5-minute tick below is its heartbeat flush. Idempotent re-registration
+    // so a restart can't stack observers.
+    WidgetsBinding.instance
+      ..removeObserver(this)
+      ..addObserver(this);
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
+      // Heartbeat flush of any open engagement span (no-op when none / dark).
+      DosageEngagementTracker.instance.flushOpenSpan();
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -47,7 +57,19 @@ class AnalyticsUpdateService {
   }
 
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    DosageEngagementTracker.instance.flushOpenSpan();
     _periodicTimer?.cancel();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // A span represents FOREGROUND engagement, so any move off `resumed`
+    // (inactive/paused/detached/hidden) closes and flushes it; it reopens on
+    // the next learner activity.
+    if (state != AppLifecycleState.resumed) {
+      DosageEngagementTracker.instance.flushOpenSpan();
+    }
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;

@@ -32,6 +32,9 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+import 'package:fluffychat/features/dosage/dosage_message_event.dart';
+import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -1517,6 +1520,17 @@ class ChatController extends State<ChatPageWithRoom>
             choreo: content.choreo,
           );
 
+          // Best-effort dosage signals: a message envelope for EVERY sent
+          // message (incl. ones with no construct) + engagement activity. Fires
+          // send-then-POST like the analytics dual-write, guarded on a resolved
+          // event id, and is a no-op unless the dosage flags are enabled.
+          _emitDosageMessageSignals(
+            msgEventId,
+            message,
+            tokenCount: content.tokensSent?.tokens.length,
+            langCode: content.tokensSent?.detections?.firstOrNull?.langCode,
+          );
+
           if (previousEdit != null) {
             pangeaEditingEvent = previousEdit;
           }
@@ -1569,6 +1583,44 @@ class ChatController extends State<ChatPageWithRoom>
     //   pendingText = '';
     // });
     // Pangea#
+  }
+
+  /// Fire-and-forget the best-effort dosage message-envelope signal for one
+  /// just-sent message, and register the send as engagement activity.
+  ///
+  /// Deliberately NOT awaited: the message is already in Matrix, so this is a
+  /// pure side-channel that must not add latency or failure surface to [send].
+  /// A null id means the send couldn't resolve one (offline queue) and the
+  /// server rejects blank ids, so skip. [DosageSignalsRepo] never throws and is
+  /// a no-op unless the dosage flags are enabled.
+  void _emitDosageMessageSignals(
+    String? msgEventId,
+    String message, {
+    int? tokenCount,
+    String? langCode,
+  }) {
+    if (msgEventId == null || msgEventId.isEmpty) return;
+
+    final event = DosageMessageEvent.fromSentMessage(
+      roomId: room.id,
+      msgId: msgEventId,
+      ts: DateTime.now(),
+      body: message,
+      tokenCount: tokenCount,
+      langCode: langCode,
+    );
+
+    unawaited(
+      DosageSignalsRepo.postMessageEvents(
+        events: [event],
+        accessToken: room.client.accessToken,
+      ).catchError((_) {}),
+    );
+
+    DosageEngagementTracker.instance.recordActivity(
+      deviceId: room.client.deviceID ?? "",
+      accessToken: room.client.accessToken,
+    );
   }
 
   void sendFileAction({FileType type = FileType.any}) async {

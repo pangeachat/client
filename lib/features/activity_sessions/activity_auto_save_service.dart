@@ -4,13 +4,18 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
+import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Whether a session is due for an automatic save: the session ended, this
@@ -102,6 +107,10 @@ class ActivityAutoSaveService {
       await analyticsService.updateService.sendActivityAnalytics(room.id, lang);
       await room.archiveActivity();
 
+      // Best-effort dosage session outcome at the archive moment (stars bank
+      // here). Fire-and-forget; never blocks or fails the save.
+      _emitDosageSessionOutcome(room, plan);
+
       GoogleAnalytics.completeActivity(
         plan.activityId,
         room.id,
@@ -113,5 +122,34 @@ class ActivityAutoSaveService {
     } finally {
       _saving.remove(room.id);
     }
+  }
+
+  /// Fire-and-forget the best-effort dosage session-outcome signal at the
+  /// archive moment. Every field is a client-side HINT the server re-verifies
+  /// against the room's bot-authored state; stars are the learner's own
+  /// completed goals (one star each), keyed by goal slug with an id fallback.
+  void _emitDosageSessionOutcome(Room room, ActivityPlanModel plan) {
+    final activityId = room.activityId;
+    if (activityId == null) return;
+
+    final starsByGoalSlug = <String, int>{
+      for (final goal in room.ownCompletedGoals) (goal.goalSlug ?? goal.id): 1,
+    };
+
+    final outcome = DosageSessionOutcome(
+      sessionRoomId: room.id,
+      activityId: activityId,
+      sourceCourseId: room.courseParent?.coursePlan?.uuid,
+      loRefs: plan.learningObjective.isEmpty ? [] : [plan.learningObjective],
+      starsByGoalSlug: starsByGoalSlug,
+      completedAt: room.ownRoleState?.archivedAt ?? DateTime.now(),
+    );
+
+    unawaited(
+      DosageSignalsRepo.postSessionOutcomes(
+        outcomes: [outcome],
+        accessToken: client.accessToken,
+      ).catchError((_) {}),
+    );
   }
 }
