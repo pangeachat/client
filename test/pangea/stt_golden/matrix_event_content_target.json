@@ -1,5 +1,6 @@
 {
   "body": "recording.wav",
+  "filename": "recording.wav",
   "info": {
     "duration": 2000,
     "mimetype": "audio/wav",

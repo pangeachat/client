@@ -25,6 +25,50 @@ Map<String, dynamic> _loadJson(String name) {
   return jsonDecode(raw) as Map<String, dynamic>;
 }
 
+/// Reconstructs the FULL `m.audio` event content the client emits for a voice
+/// message, so the golden fixture is pinned as real client output rather than
+/// just its `user_stt` embed. Any drift in a top-level field, the nested
+/// `info` / `org.matrix.msc1767.audio` maps, or the `user_stt` serialization
+/// then fails the deep-equality assertion.
+///
+/// Mirrors two real code paths for the fixture's fixed inputs:
+///  - the Matrix SDK `Room.sendFileEvent` base content for an unencrypted
+///    room (`matrix` room.dart ~L1001): `msgtype`, `body`, `filename`
+///    (== `body` == `file.name`), `url`, `info`;
+///  - `chat.dart` `voiceMessageAction` `extraContent` (~L1700-1711): the `info`
+///    override with `duration`, the msc3245 voice marker, the msc1767 audio
+///    block, `speaker_l1` / `speaker_l2`, and `user_stt`.
+///
+/// `userSttEmbed` MUST come from the real `SpeechToTextResponseModel` round
+/// trip so this pins the client's actual serialization, not a copy of it.
+Map<String, dynamic> _buildClientAudioEventContent(
+  Map<String, dynamic> userSttEmbed,
+) {
+  const fileName = 'recording.wav';
+  const url = 'mxc://staging.pangea.chat/EXAMPLESTTGOLDENfixture0001';
+  const duration = 2000;
+  const waveform = <int>[0, 256, 512, 256, 0];
+  final fileInfo = <String, dynamic>{'mimetype': 'audio/wav', 'size': 20480};
+  return <String, dynamic>{
+    // matrix SDK Room.sendFileEvent base content (unencrypted room)
+    'msgtype': 'm.audio',
+    'body': fileName,
+    'filename': fileName,
+    'url': url,
+    // chat.dart overrides info via extraContent: {...file.info, duration}
+    'info': <String, dynamic>{...fileInfo, 'duration': duration},
+    // chat.dart voiceMessageAction extraContent
+    'org.matrix.msc3245.voice': <String, dynamic>{},
+    'org.matrix.msc1767.audio': <String, dynamic>{
+      'duration': duration,
+      'waveform': waveform,
+    },
+    'speaker_l1': 'en',
+    'speaker_l2': 'es',
+    'user_stt': userSttEmbed,
+  };
+}
+
 void main() {
   group('golden fixture pack integrity', () {
     test('data fixtures match MANIFEST.sha256', () {
@@ -62,6 +106,37 @@ void main() {
           _loadJson('matrix_event_content_current.json')['user_stt']
               as Map<String, dynamic>;
       expect(roundTripped, equals(expectedEmbed));
+    });
+
+    test('full m.audio event content matches matrix_event_content_current', () {
+      // Assemble the whole event content the way the client does, embedding the
+      // REAL round-tripped user_stt, and pin it against the entire fixture so no
+      // event-level field, nested map, key, or formatting can drift unnoticed
+      // while only the user_stt embed is checked.
+      final choreo = _loadJson('choreo_response_normal.json');
+      final sttEmbed = SpeechToTextResponseModel.fromJson(
+        Map<String, dynamic>.from(choreo),
+      ).toJson();
+
+      final content = _buildClientAudioEventContent(sttEmbed);
+      final fixture = _loadJson('matrix_event_content_current.json');
+
+      // Whole-content deep equality: every top-level key (incl. body/filename/
+      // url/msgtype/speaker_l1/speaker_l2), the nested info + msc1767 audio
+      // maps, and the user_stt embed must match the fixture exactly.
+      expect(content, equals(fixture));
+      // Guard the exact key set too, so an added/removed field can never slip
+      // past the map comparison.
+      expect(
+        content.keys.toSet(),
+        equals(fixture.keys.toSet()),
+        reason: 'client event content and fixture must have identical keys',
+      );
+      // filename is what the R0-1 codex-fix added: the Matrix SDK sendFileEvent
+      // sets filename == body == file.name; assert both explicitly.
+      expect(content['filename'], 'recording.wav');
+      expect(fixture['filename'], 'recording.wav');
+      expect(fixture['filename'], fixture['body']);
     });
 
     test('word times are inflated x1000 on the round trip', () {
