@@ -17,6 +17,11 @@ class UserSettings {
   final bool? publicProfile;
   final String? targetLanguage;
   final String? sourceLanguage;
+
+  /// When true, the app UI (menus, buttons, labels) is shown in the user's
+  /// target language for immersion instead of their source/native language.
+  /// Untranslated keys fall back to English.
+  final bool appLanguageIsTarget;
   final GenderEnum gender;
   final String? country;
   final String? about;
@@ -29,6 +34,7 @@ class UserSettings {
     this.publicProfile,
     this.targetLanguage,
     this.sourceLanguage,
+    this.appLanguageIsTarget = false,
     this.gender = GenderEnum.unselected,
     this.country,
     this.about,
@@ -46,6 +52,7 @@ class UserSettings {
     publicProfile: json[UserConstants.publicProfile],
     targetLanguage: json[ModelKey.targetLanguage],
     sourceLanguage: json[ModelKey.sourceLanguage],
+    appLanguageIsTarget: json[ModelKey.appLanguageIsTarget] as bool? ?? false,
     gender: json[UserConstants.userGender] is String
         ? GenderEnumExtension.fromString(json[UserConstants.userGender])
         : GenderEnum.unselected,
@@ -64,6 +71,7 @@ class UserSettings {
     data[UserConstants.publicProfile] = publicProfile;
     data[ModelKey.targetLanguage] = targetLanguage;
     data[ModelKey.sourceLanguage] = sourceLanguage;
+    data[ModelKey.appLanguageIsTarget] = appLanguageIsTarget;
     data[UserConstants.userGender] = gender.string;
     data[UserConstants.userCountry] = country;
     data[UserConstants.userAbout] = about;
@@ -130,6 +138,7 @@ class UserSettings {
     bool? publicProfile,
     String? targetLanguage,
     String? sourceLanguage,
+    bool? appLanguageIsTarget,
     GenderEnum? gender,
     String? country,
     String? about,
@@ -143,6 +152,7 @@ class UserSettings {
       publicProfile: publicProfile ?? this.publicProfile,
       targetLanguage: targetLanguage ?? this.targetLanguage,
       sourceLanguage: sourceLanguage ?? this.sourceLanguage,
+      appLanguageIsTarget: appLanguageIsTarget ?? this.appLanguageIsTarget,
       gender: gender ?? this.gender,
       country: country ?? this.country,
       about: about ?? this.about,
@@ -161,6 +171,7 @@ class UserSettings {
         (other.publicProfile ?? false) == (publicProfile ?? false) &&
         other.targetLanguage == targetLanguage &&
         other.sourceLanguage == sourceLanguage &&
+        other.appLanguageIsTarget == appLanguageIsTarget &&
         other.gender == gender &&
         other.country == country &&
         other.about == about &&
@@ -175,6 +186,7 @@ class UserSettings {
     (publicProfile ?? false).hashCode,
     targetLanguage.hashCode,
     sourceLanguage.hashCode,
+    appLanguageIsTarget.hashCode,
     gender.hashCode,
     country.hashCode,
     about.hashCode,
