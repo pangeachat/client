@@ -22,42 +22,44 @@ class FeedbackResponseDialog extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
       maxHeight: 325.0,
       padding: const EdgeInsets.all(12.0),
-      child: Column(
-        spacing: 20.0,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              IconButton(
-                tooltip: L10n.of(context).close,
-                icon: const Icon(Icons.close),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              Expanded(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleLarge,
-                  textAlign: TextAlign.center,
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: 20.0,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  tooltip: L10n.of(context).close,
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
-              ),
-              const SizedBox(
-                width: 40.0,
-                height: 40.0,
-                child: Center(child: Icon(Icons.flag_outlined)),
-              ),
-            ],
-          ),
-          Column(
-            spacing: 20.0,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const BotFace(width: 60.0, expression: BotExpression.idle),
-              Text(feedback, textAlign: TextAlign.center),
-              if (description != null)
-                Text(description!, textAlign: TextAlign.center),
-            ],
-          ),
-        ],
+                Expanded(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Center(child: Icon(Icons.flag_outlined)),
+                ),
+              ],
+            ),
+            Column(
+              spacing: 20.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const BotFace(width: 60.0, expression: BotExpression.idle),
+                Text(feedback, textAlign: TextAlign.center),
+                if (description != null)
+                  Text(description!, textAlign: TextAlign.center),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
