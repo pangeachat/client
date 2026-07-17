@@ -321,6 +321,18 @@ One vocabulary covers how content opens:
   chat opened in a course folds the course card behind it, and closing the chat
   reveals the card as it was left (#7332).
 
+**Panel widths come in three named families, not per-panel numbers (#7572).**
+Panels that can replace each other in a slot share one min/comfort/ideal
+triple (`PanelWidths` in the registry), so navigating between them never
+resizes the column — the width-jump QA kept catching. The families: **list**
+(the thin index columns — the chat list, the DM-create picker), **wide** (the
+live/content surfaces — a chat, a session, an activity or course card, and the
+course flow pages, which host forms and media and earn the same room), and
+**tool** (the entire right column — settings, analytics and its details,
+practice — one width for every tool panel). The only remaining width step is
+the deliberate list↔wide difference. A new panel type joins a family; it does
+not invent its own widths.
+
 **Opening is a fit test, not a depth count.** A surface opens a new panel when
 the column is under its two-panel budget *and* the budget can grant the newcomer
 its minimum width; otherwise the page **pushes** onto the panel it came from.
