@@ -4635,13 +4635,12 @@
             }
         }
     },
-    "searchHint": "Search {name}",
-    "@searchHint": {
-        "placeholders": {
-            "name": {
-                "type": "String"
-            }
-        }
-    },
+    "searchCountriesHint": "Search countries",
+    "searchVocabHint": "Search vocab",
+    "searchUsersHint": "Search users",
+    "searchMessagesHint": "Search messages",
+    "searchChatsHint": "Search chats",
+    "searchLanguagesHint": "Search languages",
+    "searchActivitiesHint": "Search activities",
     "closeAddCoursePage": "Close add course page"
 }

@@ -200,9 +200,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                         Expanded(
                           child: PangeaSearchBar(
                             controller: controller.searchController,
-                            labelText: L10n.of(
-                              context,
-                            ).searchHint(L10n.of(context).vocab),
+                            labelText: L10n.of(context).searchVocabHint,
                             autofocus: true,
                             focusNode: controller.searchFocusNode,
                             suffixIcon: IconButton(

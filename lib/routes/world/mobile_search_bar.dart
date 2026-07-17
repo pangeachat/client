@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The single-column floating search bar riding above the nav widget
 /// (routing.instructions.md → Single-column search bar): ONE persistent bar
@@ -113,7 +114,8 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
             elevation: 4,
             borderRadius: BorderRadius.circular(99),
             color: theme.colorScheme.surface,
-            child: TextField(
+            child: PangeaSearchBar(
+              labelText: L10n.of(context).searchActivitiesHint,
               controller: _controller,
               onChanged: (value) {
                 widget.onQueryChanged(value);
@@ -121,31 +123,20 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
                 // backspaces — the shell doesn't rebuild this bar per keystroke.
                 setState(() {});
               },
-              decoration: InputDecoration(
-                isDense: true,
-                filled: true,
-                fillColor: theme.colorScheme.surface,
-                labelText: widget.hintText,
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: searching
-                    ? IconButton(
-                        icon: const Icon(Icons.close),
-                        tooltip: l10n.clearSearch,
-                        onPressed: () {
-                          // Clear the field locally too: onQueryChanged only
-                          // reaches the map's State, which won't rebuild this
-                          // shell-built bar to sync the emptied query back in.
-                          _controller.clear();
-                          widget.onQueryChanged('');
-                          setState(() {});
-                        },
-                      )
-                    : null,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(99),
-                  borderSide: BorderSide.none,
-                ),
-              ),
+              suffixIcon: searching
+                  ? IconButton(
+                      icon: const Icon(Icons.close),
+                      tooltip: l10n.clearSearch,
+                      onPressed: () {
+                        // Clear the field locally too: onQueryChanged only
+                        // reaches the map's State, which won't rebuild this
+                        // shell-built bar to sync the emptied query back in.
+                        _controller.clear();
+                        widget.onQueryChanged('');
+                        setState(() {});
+                      },
+                    )
+                  : null,
             ),
           ),
         ],

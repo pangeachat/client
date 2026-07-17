@@ -7,6 +7,9 @@ class PangeaSearchBar extends StatelessWidget {
   final Widget? suffixIcon;
   final bool autofocus;
   final FocusNode? focusNode;
+  final Function(String)? onSubmitted;
+  final bool? enabled;
+  final Widget? prefixIcon;
 
   const PangeaSearchBar({
     super.key,
@@ -16,6 +19,9 @@ class PangeaSearchBar extends StatelessWidget {
     this.suffixIcon,
     this.autofocus = false,
     this.focusNode,
+    this.onSubmitted,
+    this.enabled,
+    this.prefixIcon,
   });
 
   @override
@@ -29,21 +35,39 @@ class PangeaSearchBar extends StatelessWidget {
       child: Semantics(
         container: true,
         child: TextField(
+          textInputAction: TextInputAction.search,
           controller: controller,
           autofocus: autofocus,
           focusNode: focusNode,
           onChanged: onChanged,
+          onSubmitted: onSubmitted,
+          enabled: enabled,
           decoration: InputDecoration(
             isDense: true,
             filled: true,
             fillColor: theme.colorScheme.surface,
             labelText: labelText,
-            prefixIcon: const Icon(Icons.search),
+            prefixIcon: prefixIcon ?? const Icon(Icons.search),
             suffixIcon: suffixIcon,
-            border: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(99),
               borderSide: BorderSide(
-                color: theme.colorScheme.surfaceContainerHigh,
+                color: theme.colorScheme.outlineVariant,
+                width: 1,
+              ),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(99),
+              borderSide: BorderSide(
+                color: theme.colorScheme.outlineVariant,
+                width: 1,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(99),
+              borderSide: BorderSide(
+                color: theme.colorScheme.primary,
+                width: 2,
               ),
             ),
           ),
