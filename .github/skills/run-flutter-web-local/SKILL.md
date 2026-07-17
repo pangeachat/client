@@ -200,7 +200,7 @@ curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API
 
 > `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do not include `/cms`. Only the **legacy** Synapse-only local setup (no seeded local CMS) leaves `CMS_API` at staging — and there, authed course content does not load. The full local stack uses `http://localhost:13134`.
 
-`local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, clean-restart so the new `.env` is served.
+`local-dev/pangea env` (the control plane) regenerates the localhost values via `lib/gen-env.sh`; land its output in `.env.local` (the local profile) and activate with `scripts/use-env.sh local`, then clean-restart so the new `.env` is served.
 
 ### Switching environments (local ↔ staging)
 
