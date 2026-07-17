@@ -38,9 +38,7 @@ void main() {
       // Read the localized string from the live element tree rather than
       // awaiting L10n.delegate.load — awaiting that future stalls the
       // testWidgets fake-async clock.
-      final l10n = L10n.of(
-        tester.element(find.byType(LeftPanelRoomSubpage)),
-      );
+      final l10n = L10n.of(tester.element(find.byType(LeftPanelRoomSubpage)));
       expect(
         find.text(l10n.youAreNoLongerParticipatingInThisChat),
         findsOneWidget,
