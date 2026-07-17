@@ -132,6 +132,9 @@ dependencies:
   # Pangea#
 
 dev_dependencies:
+  # Test-only: SHA-256 for the streaming-STT golden fixture checksum test
+  # (test/pangea/stt_golden_contract_test.dart). Already resolved transitively.
+  crypto: ^3.0.6
   flutter_lints: ^6.0.0
   flutter_native_splash: ^2.4.7
   flutter_test:
