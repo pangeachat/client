@@ -115,8 +115,9 @@ class SubscriptionWinning {
   });
 
   factory SubscriptionWinning.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
     return SubscriptionWinning(
-      type: SubscriptionType.fromString(json['type'] as String),
+      type: type is String ? SubscriptionType.fromString(type) : null,
       status: json['status'] as String,
       endsAt: _parseDate(json['ends_at']),
       paidThroughAt: _parseDate(json['paid_through_at']),
@@ -222,9 +223,10 @@ class SubscriptionEntitlement {
   });
 
   factory SubscriptionEntitlement.fromJson(Map<String, dynamic> json) {
+    final type = json['type'];
     return SubscriptionEntitlement(
       entitlementRef: json['entitlementRef'] as String,
-      type: SubscriptionType.fromString(json['type'] as String),
+      type: type is String ? SubscriptionType.fromString(type) : null,
       provider: json['provider'] as String?,
       planId: json['planId'] as String? ?? json['plan_id'] as String?,
       sourceSubscriptionId: json['sourceSubscriptionId'] as String?,
