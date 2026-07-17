@@ -28,6 +28,7 @@ Every L1 — every language in the CMS `languages` collection — should get a U
   - **ICU safety is a hard gate.** Placeholders (`{count}`) and plural/select syntax must survive verbatim — the model is instructed to preserve them, and every value is then validated (placeholder set matches English, plural/select structure intact). The script **refuses to write** an arb if any value fails. AI-translated locales are recorded in `ai-translated-keys.json` so native-speaker corrections can layer on later.
   - **Vertex, not AI Studio.** Auth is the service account / ADC on the org's Cloud Billing. The AI Studio API-key path is deprecated — its prepaid credit pool depletes silently.
 - **[`backfill_l10n.py`](../../scripts/translate/backfill_l10n.py)** fetches the L1 list from the CMS, diffs it against existing locales, and runs the translator for every missing one in parallel. Resumable (skips existing locales); one language failing doesn't abort the batch.
+- **[`audit_fix_translations.py`](../../scripts/translate/audit_fix_translations.py)** reviews an *existing* locale against English with Gemini 2.5 Pro and proposes fixes for mistranslations, untranslated strings, and broken placeholders — keeping correct copy verbatim. **Review-assisted, not blind-apply**: an LLM reviewer has a persistent bias toward restyling even when told not to. Run it with `--dry`, have a human vet the proposed diff, and apply selectively — do not auto-run it across community (human-translated) locales.
 
 Always run `flutter gen-l10n` after translating, and commit the regenerated locale set.
 
@@ -37,4 +38,6 @@ Always run `flutter gen-l10n` after translating, and commit the regenerated loca
 
 ## Keeping copy in sync
 
-When `intl_en.arb` changes, every locale falls behind. `gen-l10n` surfaces the gap in `needed-translations.txt`; re-run the translator to close it. A CI guard that fails when a PR leaves `needed-translations.txt` non-empty is the intended backstop against drift.
+When `intl_en.arb` changes, every locale falls behind — and `gen-l10n` only catches *added* keys (missing from a locale), never *updated* ones (a key whose English value changed while the stale translation stays present).
+
+[`check_l10n_sync.py`](../../scripts/translate/check_l10n_sync.py) closes both gaps. On a PR it diffs `intl_en.arb` against the base branch, finds every key added or value-changed, and lists the locales that weren't re-translated for those keys. The [`l10n_sync_check`](../../.github/workflows/l10n_sync_check.yaml) workflow runs it and posts the result as a **non-blocking warning annotation** — it notifies, it does not fail the build. The remediation the annotation names is to run the translator for the changed keys before merging.
