@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 
@@ -14,6 +15,7 @@ import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -45,20 +47,35 @@ class SelectedCourse extends StatefulWidget {
 class SelectedCourseController extends State<SelectedCourse> {
   late final QuestObjectivesLoader _objectivesProvider;
 
+  /// The joined course room for this course plan, if any — the home of the
+  /// per-Mission activity pin (org quests doc, client#7748). Null (not joined)
+  /// means unrestricted, the fail-open default.
+  Map<String, List<String>>? get _pinnedActivitiesByObjective =>
+      Matrix.of(context).client.joinedCourseRooms
+          .firstWhereOrNull((r) => r.coursePlan?.uuid == widget.courseId)
+          ?.teacherMode
+          .pinnedActivitiesByObjective;
+
   @override
   initState() {
     super.initState();
     _objectivesProvider = QuestObjectivesLoader(
       client: Matrix.of(context).client,
     );
-    _objectivesProvider.loadOutline(widget.courseId);
+    _objectivesProvider.loadOutline(
+      widget.courseId,
+      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+    );
   }
 
   @override
   void didUpdateWidget(covariant SelectedCourse oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
-      _objectivesProvider.loadOutline(widget.courseId);
+      _objectivesProvider.loadOutline(
+        widget.courseId,
+        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+      );
     }
   }
 
