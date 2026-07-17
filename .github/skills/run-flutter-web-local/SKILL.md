@@ -200,26 +200,31 @@ curl -s http://localhost:8090/.env | grep -E "SYNAPSE_URL|HOME_SERVER|CHOREO_API
 
 > `CMS_API` is the **host root** — the client appends `/cms/api/...` itself (`PayloadClient.basePath = "/cms/api"`), so do not include `/cms`. Only the **legacy** Synapse-only local setup (no seeded local CMS) leaves `CMS_API` at staging — and there, authed course content does not load. The full local stack uses `http://localhost:13134`.
 
-`local-dev/pangea env` (the control plane) regenerates these to localhost via `lib/gen-env.sh`; after running it, clean-restart so the new `.env` is served.
+`local-dev/pangea env` (the control plane) regenerates the localhost values via `lib/gen-env.sh`; land its output in `.env.local` (the local profile) and activate with `scripts/use-env.sh local`, then clean-restart so the new `.env` is served.
 
 ### Switching environments (local ↔ staging)
 
-Run the local client against **staging** backends — a fast smoke-test against real staging data + the staging bot without the full local stack — by flipping the routing keys in `client/.env` and clean-restarting. Back up first (`.env` is gitignored):
+**Switch whole profiles, never individual keys.** `client/.env` is a generated copy of a per-environment profile — `.env.local` / `.env.staging`, both gitignored — switched by:
 
 ```bash
-cp client/.env /tmp/client.env.bak     # restore: cp /tmp/client.env.bak client/.env
+cd <repo>/client
+scripts/use-env.sh local      # or: staging
+# then clean-restart the dev server (it caches /.env per process)
 ```
 
-`CHOREO_API_KEY` is identical in both. **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the Matrix access token as the CMS bearer and the CMS validates it against *its own* homeserver — a mismatched pair (local `@learner` token against staging CMS, or vice-versa) returns **403** and content silently fails to load.
+**MUST READ** [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md) for the profile rules (why `.env` is never edited in place, and the credentials each profile must carry).
 
-| Key | Local stack | Staging |
+Profile contents: `CHOREO_API_KEY` is identical in both. **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the Matrix access token as the CMS bearer and the CMS validates it against *its own* homeserver — a mismatched pair (local `@learner` token against staging CMS, or vice-versa) returns **403** and content silently fails to load.
+
+| Key | `.env.local` | `.env.staging` |
 |---|---|---|
 | `SYNAPSE_URL` | `http://localhost:8008` | `matrix.staging.pangea.chat` |
 | `CHOREO_API`  | `http://localhost:8002` | `https://api.staging.pangea.chat` |
 | `CMS_API`     | `http://localhost:13134` *(host root; needs the full local stack)* | `https://api.staging.pangea.chat` |
 | `HOME_SERVER` | `local.pangea.chat` | `staging.pangea.chat` *(or omit — it derives from `SYNAPSE_URL`: scheme stripped, leading `matrix.` dropped)* |
+| `TEST_MATRIX_*` | the local `@learner` account | the shared `staging_automated_tests` account |
 
-Source of truth for the staging values is the deployed client: `curl -s https://app.staging.pangea.chat/.env`. After editing, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session, dropping the app to onboarding/login — sign in with the matching account. **Never point a local build at production.**
+Source of truth for the staging routing values is the deployed client: `curl -s https://app.staging.pangea.chat/.env`. If a profile file is missing, seed it from the current `.env` plus that table. After switching, clean-restart and open a **fresh tab** — the dev server caches `/.env` per process, so a reload alone won't switch. Changing the homeserver invalidates the current session (stored per origin), dropping the app to onboarding/login — `?devlogin=1` signs into the profile's account. For back-and-forth work, prefer keeping staging on a **separate origin** (profile build on `127.0.0.1:8091`, the pattern below) so the two sessions' IndexedDB stores never invalidate each other. **Never point a local build at production.**
 
 ### Driving the app by semantics (Chrome extension)
 

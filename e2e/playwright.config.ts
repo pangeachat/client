@@ -2,9 +2,13 @@ import { defineConfig, devices } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 
-// Load env vars from client/.env (no dotenv dependency needed)
-const envPath = path.resolve(__dirname, "..", ".env");
-if (fs.existsSync(envPath)) {
+// Load env vars (no dotenv dependency needed). Specs run against staging, so
+// prefer the staging profile: client/.env is a switched copy of an env profile
+// (matrix-auth.instructions.md) and may hold the LOCAL stack's credentials,
+// which don't exist on staging. Precedence: shell env > .env.staging > .env.
+for (const file of [".env.staging", ".env"]) {
+  const envPath = path.resolve(__dirname, "..", file);
+  if (!fs.existsSync(envPath)) continue;
   for (const line of fs.readFileSync(envPath, "utf-8").split("\n")) {
     const match = line.match(/^\s*([\w]+)\s*=\s*['"]?(.+?)['"]?\s*$/);
     if (match && !process.env[match[1]]) process.env[match[1]] = match[2];
