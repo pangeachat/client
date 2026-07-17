@@ -28,6 +28,7 @@ Every L1 — every language in the CMS `languages` collection — should get a U
   - **ICU safety is a hard gate.** Placeholders (`{count}`) and plural/select syntax must survive verbatim — the model is instructed to preserve them, and every value is then validated (placeholder set matches English, plural/select structure intact). The script **refuses to write** an arb if any value fails. AI-translated locales are recorded in `ai-translated-keys.json` so native-speaker corrections can layer on later.
   - **Vertex, not AI Studio.** Auth is the service account / ADC on the org's Cloud Billing. The AI Studio API-key path is deprecated — its prepaid credit pool depletes silently.
 - **[`backfill_l10n.py`](../../scripts/translate/backfill_l10n.py)** fetches the L1 list from the CMS, diffs it against existing locales, and runs the translator for every missing one in parallel. Resumable (skips existing locales); one language failing doesn't abort the batch.
+- **[`translate_new_keys.py`](../../scripts/translate/translate_new_keys.py)** fills newly-added template keys into every EXISTING locale — the l10n-sync gate's remediation path when a PR adds keys to `intl_en.arb`. It translates only each locale's missing keys and merges them in, never touching existing values (so native-speaker corrections survive), with the same ICU refuse-to-write gate and `ai-translated-keys.json` provenance.
 
 Always run `flutter gen-l10n` after translating, and commit the regenerated locale set.
 
