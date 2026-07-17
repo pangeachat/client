@@ -7294,8 +7294,6 @@
     "allow": "Permitir",
     "deny": "Negar",
     "enabledRenewal": "Ativar Renovação de Assinatura",
-    "subscriptionEndsOn": "A Assinatura Termina Em",
-    "subscriptionRenewsOn": "A Assinatura Renova Em",
     "waitForSubscriptionChanges": "As alterações na sua assinatura podem levar um momento para refletir no aplicativo.",
     "subscribeReadingAssistance": "Assine para desbloquear ferramentas de mensagem",
     "aceDisplayName": "Achinese",
@@ -7570,14 +7568,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -7114,8 +7114,6 @@
     "allow": "Permite",
     "deny": "Refuză",
     "enabledRenewal": "Activează reînnoirea abonamentului",
-    "subscriptionEndsOn": "Abonamentul se încheie pe",
-    "subscriptionRenewsOn": "Abonamentul se reînnoiește pe",
     "waitForSubscriptionChanges": "Modificările la abonamentul tău pot dura câteva momente pentru a se reflecta în aplicație.",
     "subscribeReadingAssistance": "Abonează-te pentru a debloca instrumentele de mesagerie",
     "aceDisplayName": "Achinese",
@@ -7390,14 +7388,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

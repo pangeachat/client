@@ -6618,8 +6618,6 @@
     "allow": "Tillat",
     "deny": "Avvis",
     "enabledRenewal": "Aktiver abonnementfornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Endringer i abonnementet ditt kan ta et øyeblikk å gjenspeile i appen.",
     "subscribeReadingAssistance": "Abonner for å låse opp meldingsverktøy",
     "aceDisplayName": "Achinese",
@@ -6894,14 +6892,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

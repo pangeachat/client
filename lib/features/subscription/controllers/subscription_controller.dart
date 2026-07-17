@@ -1,25 +1,14 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:collection/collection.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
-
-import 'package:fluffychat/features/subscription/models/mobile_subscription_info_manager.dart';
-import 'package:fluffychat/features/subscription/models/subscription_details.dart';
-import 'package:fluffychat/features/subscription/models/subscription_info_manager.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
-import 'package:fluffychat/features/subscription/models/web_subscription_info_manager.dart';
-import 'package:fluffychat/features/subscription/repo/all_products_repo.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_app_ids_repo.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_repo.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_app_id.dart';
-import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -27,79 +16,37 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionController with ChangeNotifier {
   SubscriptionState _state = SubscriptionLoading();
-
-  SubscriptionAppIds? _appIds;
-  List<SubscriptionDetails> _allSubscriptions = [];
-  List<SubscriptionDetails> _availableSubscriptions = [];
-
   Completer<void>? _initCompleter;
-
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
-
-  SubscriptionController();
 
   SubscriptionState get state => _state;
 
-  SubscriptionAppIds? get appIds => _appIds;
-
-  List<SubscriptionDetails> get availableSubscriptions =>
-      _availableSubscriptions;
-
-  bool get loading => _state is SubscriptionLoading;
-
   bool get showSubscriptionGatedContent => switch (_state) {
-    SubscriptionInactive() => inTrialWindow,
+    SubscriptionInactive() => _inTrialWindow,
     _ => true,
   };
 
-  SubscriptionStatus get paywallStatus => switch (_state) {
-    SubscriptionActive() => SubscriptionStatus.subscribed,
+  SubscriptionPaywallStatus get paywallStatus => switch (_state) {
+    SubscriptionActive() => SubscriptionPaywallStatus.subscribed,
     _ =>
       shouldShowPaywall
-          ? SubscriptionStatus.shouldShowPaywall
-          : SubscriptionStatus.dimissedPaywall,
+          ? SubscriptionPaywallStatus.shouldShowPaywall
+          : SubscriptionPaywallStatus.dimissedPaywall,
   };
-
-  bool get inTrialWindow =>
-      MatrixState.pangeaController.userController.inTrialWindow();
 
   bool get shouldShowPaywall => switch (_state) {
     SubscriptionInactive() => !SubscriptionManagementRepo.getDismissedPaywall(),
     _ => false,
   };
 
-  bool get hasPaidSubscription => switch (_state) {
-    SubscriptionActive() => !hasPromotionalSubscription,
-    _ => false,
-  };
+  bool get _inTrialWindow =>
+      MatrixState.pangeaController.userController.inTrialWindow();
 
-  bool get hasPromotionalSubscription => switch (_state) {
-    SubscriptionActive(subscriptionId: final id) => id.startsWith("rc_promo"),
-    _ => false,
-  };
-
-  String? get _subscriptionId => switch (_state) {
-    SubscriptionActive(subscriptionId: final id) => id,
-    _ => null,
-  };
-
-  SubscriptionDetails? get subscription {
-    final id = _subscriptionId;
-    if (id == null) return null;
-    return _allSubscriptions.firstWhereOrNull(
-      (SubscriptionDetails sub) => sub.id.contains(id) || id.contains(sub.id),
-    );
+  @override
+  void dispose() {
+    subscriptionNotifier.dispose();
+    super.dispose();
   }
-
-  String? get defaultManagementURL {
-    final appIds = _appIds;
-    final appId = subscription?.appId;
-    if (appId == null) return null;
-    return appIds?.defaultManagementURL(appId);
-  }
-
-  SubscriptionInfoManager get _manager =>
-      kIsWeb ? WebSubscriptionInfoManager() : MobileSubscriptionInfoManager();
 
   void _onSubscribe() {
     subscriptionNotifier.value = true;
@@ -137,18 +84,21 @@ class SubscriptionController with ChangeNotifier {
   Future<void> _initialize(String userID) async {
     try {
       await MatrixState.pangeaController.userController.initCompleter.future;
-      await configurePurchases(userID);
+      await _updateCurrentSubscription(userID);
 
-      await _setAppIds();
-      await _setAvailableSubscriptions();
-      await updateCurrentSubscription();
-
-      if (_subscriptionId == null && inTrialWindow) {
-        await activateNewUserTrial();
+      final state = _state;
+      if (state is SubscriptionInactive &&
+          state.response.isTrialOfferable &&
+          _inTrialWindow) {
+        await _activateNewUserTrial(userID);
       }
 
-      await _handleWebSubscriptionFlow();
-      _registerSubscriptionListener();
+      final isSubscribed = _state is SubscriptionActive;
+      final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+      if (beganPayment && isSubscribed) {
+        await SubscriptionManagementRepo.removeBeganPayment();
+        _onSubscribe();
+      }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
       _state = SubscriptionError(error: e);
@@ -157,132 +107,42 @@ class SubscriptionController with ChangeNotifier {
     }
   }
 
-  Future<void> configurePurchases(String userID) async {
-    if (kIsWeb) return;
-
-    final PurchasesConfiguration configuration = Platform.isAndroid
-        ? PurchasesConfiguration(Environment.rcGoogleKey)
-        : PurchasesConfiguration(Environment.rcIosKey);
-
-    try {
-      await Purchases.configure(configuration..appUserID = userID);
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"userID": userID});
-    }
+  Future<void> _activateNewUserTrial(String userID) async {
+    final result = await FreeTrialRepo.instance.get(
+      FreeTrialRequest(userID: userID),
+    );
+    final activated = !result.isError;
+    if (!activated) return;
+    await _updateCurrentSubscription(userID);
   }
 
-  Future<void> _setAppIds() async {
-    final appIdsResult = await SubscriptionAppIdsRepo.get();
-    final appIds = appIdsResult.result;
-    if (appIds != null) {
-      _appIds = appIds;
-    }
-  }
+  Future<void> _updateCurrentSubscription(String userID) async {
+    final result = await SubscriptionStatusRepo.instance.get(
+      SubscriptionStatusRequest(userID: userID),
+    );
 
-  Future<void> _setAvailableSubscriptions() async {
-    final allProductsResult = await AllProductsRepo.get();
-    final allProducts = allProductsResult.result;
-    if (allProducts != null) {
-      _allSubscriptions = await _setSubscriptionPackages(allProducts);
-      _availableSubscriptions = _allSubscriptions
-          .where(
-            (product) =>
-                (product.appId == appIds?.currentAppId && product.isVisible) ||
-                product.appId == "trial",
-          )
-          .sorted((a, b) => a.price.compareTo(b.price))
-          .toList();
-    }
-  }
-
-  Future<List<SubscriptionDetails>> _setSubscriptionPackages(
-    List<SubscriptionDetails> subscriptions,
-  ) async {
-    final updatedSubscriptions = List<SubscriptionDetails>.from(subscriptions);
-    if (kIsWeb) return updatedSubscriptions;
-
-    final Offerings offerings = await Purchases.getOfferings();
-    final Offering? offering = offerings.all[Environment.rcOfferingName];
-    if (offering == null) return updatedSubscriptions;
-
-    for (final package in offering.availablePackages) {
-      final int productIndex = updatedSubscriptions.indexWhere(
-        (product) => product.id.contains(package.storeProduct.identifier),
+    final response = result.result;
+    if (response == null) {
+      _state = SubscriptionError(
+        error: result.error ?? "Failed to fetch subscription status",
       );
-
-      if (productIndex < 0) continue;
-      final current = updatedSubscriptions[productIndex];
-      final updated = current.copyWith(
-        package: package,
-        localizedPrice: package.storeProduct.priceString,
-      );
-      updatedSubscriptions[productIndex] = updated;
-    }
-
-    return updatedSubscriptions;
-  }
-
-  void _registerSubscriptionListener() {
-    if (kIsWeb) return;
-
-    Purchases.addCustomerInfoUpdateListener((CustomerInfo info) async {
-      final wasSubscribed = _state is SubscriptionActive;
-      await updateCurrentSubscription();
-      if (wasSubscribed == false && _state is SubscriptionActive) {
-        _onSubscribe();
-      }
-    });
-  }
-
-  Future<void> _handleWebSubscriptionFlow() async {
-    if (!kIsWeb) return;
-
-    if (!SubscriptionManagementRepo.getBeganWebPayment()) {
+      notifyListeners();
       return;
     }
 
-    await SubscriptionManagementRepo.removeBeganWebPayment();
-    if (_state is SubscriptionActive) {
-      _onSubscribe();
-    }
-  }
-
-  Future<void> submitSubscriptionChange(
-    SubscriptionDetails selectedSubscription,
-    BuildContext context,
-  ) async {
-    try {
-      if (selectedSubscription.isTrial) {
-        await activateNewUserTrial();
-        return;
-      }
-
-      GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
-      await _manager.submitSubscriptionChange(selectedSubscription);
-    } catch (e, s) {
-      if (e is PlatformException &&
-          e.message?.contains("Purchase was cancelled") == true) {
-        return;
-      }
-
+    if (response.isPaidWithoutPlan) {
+      // a paid entitlement should always map to a catalog plan. If it
+      // does not, log it (this shouldn't happen) — the controller renders a
+      // generic tile so the paying user still sees management + the
+      // account-delete warning, rather than a broken/empty tile.
       ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"subscription_id": selectedSubscription.id},
+        m: "v2 paid entitlement missing a catalog planId",
+        s: StackTrace.current,
+        data: {},
       );
-
-      rethrow;
     }
-  }
 
-  Future<void> activateNewUserTrial() async {
-    final activated = await SubscriptionRepo.activateFreeTrial();
-    if (!activated) return;
-    await updateCurrentSubscription();
-  }
-
-  Future<void> updateCurrentSubscription() async {
-    _state = await _manager.getCurrentSubscriptionInfo();
+    _state = SubscriptionState.fromSubscriptionStatus(response);
     notifyListeners();
   }
 }

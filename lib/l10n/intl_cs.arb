@@ -6890,8 +6890,6 @@
     "allow": "Povolit",
     "deny": "Odmítnout",
     "enabledRenewal": "Povolit obnovení předplatného",
-    "subscriptionEndsOn": "Předplatné končí dne",
-    "subscriptionRenewsOn": "Předplatné se obnoví dne",
     "waitForSubscriptionChanges": "Změny ve vašem předplatném mohou chvíli trvat, než se projeví v aplikaci.",
     "subscribeReadingAssistance": "Přihlaste se k odběru pro odemknutí nástrojů pro zprávy",
     "aceDisplayName": "Achinese",
@@ -7166,14 +7164,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -3648,8 +3648,6 @@
     "allow": "Cho phép",
     "deny": "Từ chối",
     "enabledRenewal": "Kích hoạt gia hạn đăng ký",
-    "subscriptionEndsOn": "Đăng ký kết thúc vào",
-    "subscriptionRenewsOn": "Đăng ký gia hạn vào",
     "waitForSubscriptionChanges": "Các thay đổi đối với đăng ký của bạn có thể mất một chút thời gian để phản ánh trong ứng dụng.",
     "subscribeReadingAssistance": "Đăng ký để mở khóa công cụ nhắn tin",
     "aceDisplayName": "Achinese",
@@ -3924,14 +3922,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

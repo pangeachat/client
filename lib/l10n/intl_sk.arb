@@ -7333,8 +7333,6 @@
     "allow": "Povoliť",
     "deny": "Odmietnuť",
     "enabledRenewal": "Povoliť obnovenie predplatného",
-    "subscriptionEndsOn": "Predplatné končí dňa",
-    "subscriptionRenewsOn": "Predplatné sa obnoví dňa",
     "waitForSubscriptionChanges": "Zmeny vo vašom predplatnom sa môžu chvíľu odrážať v aplikácii.",
     "subscribeReadingAssistance": "Prihláste sa na odomknutie nástrojov na správu správ",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

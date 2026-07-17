@@ -6569,8 +6569,6 @@
     "allow": "Ceadaigh",
     "deny": "Diúltaigh",
     "enabledRenewal": "Cuir Athnuachan Suibscríofa ar Siúl",
-    "subscriptionEndsOn": "Críochnaíonn an Suibscríobh Ar",
-    "subscriptionRenewsOn": "Athnuachan an Suibscríobh Ar",
     "waitForSubscriptionChanges": "D'fhéadfadh go dtógfadh athruithe ar do shuibscríobh nóiméad chun léiriú a fháil sa aip.",
     "subscribeReadingAssistance": "Suibscríobh chun uirlisí teachtaireachta a dhíghlasáil",
     "aceDisplayName": "Achinese",
@@ -6845,14 +6843,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

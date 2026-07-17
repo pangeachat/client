@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/authentication/delete_account_extension.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -48,31 +51,35 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     }
   }
 
-  void deleteAccountAction() async {
-    // #Pangea
-    final subscriptionController =
-        MatrixState.pangeaController.subscriptionController;
-    final managementURL = subscriptionController.defaultManagementURL;
-    if (subscriptionController.hasPaidSubscription && managementURL != null) {
-      final resp = await showOkCancelAlertDialog(
-        useRootNavigator: false,
-        context: context,
-        title: L10n.of(context).deleteSubscriptionWarningTitle,
-        message: L10n.of(context).deleteSubscriptionWarningBody,
-        okLabel: L10n.of(context).manageSubscription,
-        cancelLabel: L10n.of(context).continueText,
-      );
-      if (resp == OkCancelResult.ok) {
-        launchUrlString(managementURL, mode: LaunchMode.externalApplication);
-        return;
-      }
+  Future<String?> _entitlementToCancel() async {
+    final userID = Matrix.of(context).client.userID!;
+    final statusResult = await SubscriptionStatusRepo.instance.get(
+      SubscriptionStatusRequest(userID: userID),
+    );
+    final statusResponse = statusResult.result;
+    if (statusResponse == null) {
+      throw statusResult.error ?? "Failed to fetch subscription status";
     }
-    // Pangea#
+
+    return statusResponse.cancelableEntitlement?.entitlementRef;
+  }
+
+  void deleteAccountAction() async {
+    final entitlementResult = await showFutureLoadingDialog(
+      context: context,
+      future: _entitlementToCancel,
+      onError: (_, _) => L10n.of(context).errorTryAgainLater,
+    );
+    if (entitlementResult.isError) return;
+
+    final entitlementRef = entitlementResult.result;
     if (await showOkCancelAlertDialog(
           useRootNavigator: false,
           context: context,
           title: L10n.of(context).warning,
-          message: L10n.of(context).deactivateAccountWarning,
+          message: entitlementRef != null
+              ? L10n.of(context).deactivateSubscribedAccountWarning
+              : L10n.of(context).deactivateAccountWarning,
           okLabel: L10n.of(context).ok,
           cancelLabel: L10n.of(context).cancel,
           isDestructive: true,
@@ -113,6 +120,18 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       //     ),
       future: () async {
         final client = Matrix.of(context).client;
+        if (entitlementRef != null) {
+          final result = await SubscriptionCancelRepo.instance
+              .cancelSubscription(
+                SubscriptionCancelRequest(
+                  userID: client.userID!,
+                  entitlementRef: entitlementRef,
+                ),
+              );
+          final error = result.error;
+          if (error != null) throw error;
+        }
+
         await client.deleteAccount();
         await client.uiaRequestBackground<IdServerUnbindResult?>(
           (auth) => Matrix.of(

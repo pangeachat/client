@@ -6900,8 +6900,6 @@
     "allow": "Tillåt",
     "deny": "Neka",
     "enabledRenewal": "Aktivera prenumerationsförnyelse",
-    "subscriptionEndsOn": "Prenumerationen slutar den",
-    "subscriptionRenewsOn": "Prenumerationen förnyas den",
     "waitForSubscriptionChanges": "Ändringar i din prenumeration kan ta en stund att återspeglas i appen.",
     "subscribeReadingAssistance": "Prenumerera för att låsa upp meddelandeverktyg",
     "aceDisplayName": "Achinese",
@@ -7176,14 +7174,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

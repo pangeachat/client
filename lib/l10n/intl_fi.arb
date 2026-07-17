@@ -6550,8 +6550,6 @@
     "allow": "Salli",
     "deny": "Hylkää",
     "enabledRenewal": "Ota käyttöön tilauksen uusiminen",
-    "subscriptionEndsOn": "Tilauksen päättymispäivä",
-    "subscriptionRenewsOn": "Tilauksen uusimispäivä",
     "waitForSubscriptionChanges": "Muutokset tilauksessasi saattavat kestää hetken näkyä sovelluksessa.",
     "subscribeReadingAssistance": "Tilaa avustustyökalujen avaamiseksi",
     "aceDisplayName": "Achinese",
@@ -6826,14 +6824,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

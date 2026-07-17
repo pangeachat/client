@@ -6562,8 +6562,6 @@
     "allow": "Baimendu",
     "deny": "Ukatu",
     "enabledRenewal": "Harpidetzaren Berritzea Aktibatu",
-    "subscriptionEndsOn": "Harpidetzak Amaitzen Da",
-    "subscriptionRenewsOn": "Harpidetzak Berritzen Da",
     "waitForSubscriptionChanges": "Zure harpidetzako aldaketek momentu bat behar izan dezakete aplikazioan islatzeko.",
     "subscribeReadingAssistance": "Mezu tresnak desblokeatzeko harpidetu",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
