@@ -125,6 +125,12 @@ class QuestPlansRepo {
 
     final sequence = res['learning_objective_sequence'] as List<dynamic>?;
     final missionCount = sequence?.length ?? 0;
+    // A quest-plan with no missions has no content to build a course from — it
+    // would show as a "0 modules" card the learner can't actually create. Drop
+    // it here (the same null-to-filter contract as the missing-field guards
+    // above) so it never reaches the creation picker or the repo's other
+    // consumers (find-course, course-plan provider, onboarding). #7700
+    if (missionCount == 0) return null;
     // Placeholder strings carry the *count* so the "N modules" chip reads
     // correctly. They are never resolved against the v1 ``course-plan-topics``
     // collection — no v3 surface walks ``topicIds`` on a synthesized model.

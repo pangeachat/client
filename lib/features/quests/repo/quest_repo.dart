@@ -59,6 +59,10 @@ class QuestOutline {
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
     starsToUnlock: starsToUnlock,
+    earnableByActivity: {
+      for (final group in groups)
+        for (final a in group.activities) a.activityId: a.plan.earnableStars,
+    },
   );
 }
 

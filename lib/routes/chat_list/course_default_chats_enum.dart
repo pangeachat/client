@@ -35,7 +35,7 @@ enum CourseDefaultChatsEnum {
 
   Map<String, dynamic> get powerLevels => switch (this) {
     CourseDefaultChatsEnum.introductions =>
-      RoomDefaults.defaultPowerLevelsContent,
+      RoomDefaults.defaultPowerLevelsContent(),
     CourseDefaultChatsEnum.announcements =>
       RoomDefaults.restrictedPowerLevelsContent,
   };

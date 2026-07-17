@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -33,8 +35,11 @@ extension OrchestratorClientExtension on Client {
     return completed;
   }
 
+  /// Profile star total: counts saved sessions only. Stars earned in a
+  /// session bank into this total when the session is auto-saved on
+  /// completion — see activities.instructions.md → "Completion saves itself".
   int totalStarsEarned(LanguageModel lang) {
-    final byActivity = <String, int>{};
+    final sessions = <SessionStars>[];
     for (final room in rooms) {
       final activityId = room.activityId;
       final activityLang = room.activityPlan?.req.targetLanguage;
@@ -45,11 +50,28 @@ extension OrchestratorClientExtension on Client {
 
       if (lang.langCodeShort != activityLang.split('-').first) continue;
 
-      final earned = room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0;
-      if (earned > (byActivity[activityId] ?? 0)) {
-        byActivity[activityId] = earned;
-      }
+      sessions.add((
+        activityId: activityId,
+        earned: room.orchestratorAwardedGoals.awards[roleId]?.length ?? 0,
+        saved: room.hasArchivedActivity,
+      ));
     }
-    return byActivity.values.fold<int>(0, (a, b) => a + b);
+    return totalBankedStars(sessions);
   }
+}
+
+typedef SessionStars = ({String activityId, int earned, bool saved});
+
+/// Sums banked stars: saved sessions only, deduped to the best run per
+/// activity so replays don't double-count.
+@visibleForTesting
+int totalBankedStars(Iterable<SessionStars> sessions) {
+  final byActivity = <String, int>{};
+  for (final session in sessions) {
+    if (!session.saved) continue;
+    if (session.earned > (byActivity[session.activityId] ?? 0)) {
+      byActivity[session.activityId] = session.earned;
+    }
+  }
+  return byActivity.values.fold<int>(0, (a, b) => a + b);
 }

@@ -199,7 +199,14 @@ void showMemberActionsPopupMenu({
                 mainAxisSize: .min,
                 crossAxisAlignment: .start,
                 children: [
-                  Text(L10n.of(context).chatPermissions),
+                  // #Pangea
+                  // Text(L10n.of(context).chatPermissions),
+                  Text(
+                    user.room.isSpace
+                        ? L10n.of(context).coursePermissions
+                        : L10n.of(context).chatPermissions,
+                  ),
+                  // Pangea#
                   Text(
                     user.powerLevel < 50
                         ? L10n.of(context).userLevel(user.powerLevel)
@@ -308,6 +315,9 @@ void showMemberActionsPopupMenu({
         context,
         currentLevel: user.powerLevel,
         maxLevel: user.room.ownPowerLevel,
+        // #Pangea
+        isCourse: user.room.isSpace,
+        // Pangea#
       );
       if (power == null) return;
       if (!context.mounted) return;

@@ -517,96 +517,105 @@ class _WorldMapViewState extends State<WorldMapView> {
     final map = Semantics(
       label: L10n.of(context).activities,
       container: true,
-      child: FlutterMap(
-        mapController: widget.controller.mapController,
-        options: MapOptions(
-          // The persistent instance keeps its own camera across navigation,
-          // so no external camera-state restore is needed.
-          initialCenter:
-              widget.controller.widget.initialCenter ?? const LatLng(20, 0),
-          initialZoom: widget.controller.widget.initialZoom ?? 3,
-          // minZoom 3 (not 2): containLatitude rejects a move when the
-          // constrained latitude band is shorter than the viewport, and the
-          // ±90 band is only ~1024px tall at z2 — that would freeze *all*
-          // panning on windows taller than ~1024px (common when maximized).
-          // z3 gives a ~2048px band, clearing any realistic viewport.
-          minZoom: WorldMapConstants.minZoom,
-          maxZoom: WorldMapConstants.maxZoom,
-          // Clamp latitude only — leaving longitude free so the user can pan
-          // east-west and the world wraps seamlessly ("rotate the world
-          // around"). Epsg3857 replicates longitude, so tiles and markers
-          // repeat across world copies automatically. A longitude-bounded
-          // `contain`/`containCenter` pins the camera when zoomed out and hides
-          // content behind the left column with no way to pan it out.
-          cameraConstraint: const CameraConstraint.containLatitude(90, -90),
-          interactionOptions: const InteractionOptions(
-            flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+      // Any pointer-down on the map drops text-input focus, so tapping or
+      // panning the map closes the search bar's keyboard — on a narrow screen
+      // an open keyboard pins most of the viewport (#7635). Listener observes
+      // without consuming, so pin taps and map gestures are unaffected. (Pin
+      // FOCUS is separate and deliberately not cleared by map taps — see the
+      // note on MapOptions below.)
+      child: Listener(
+        onPointerDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+        child: FlutterMap(
+          mapController: widget.controller.mapController,
+          options: MapOptions(
+            // The persistent instance keeps its own camera across navigation,
+            // so no external camera-state restore is needed.
+            initialCenter:
+                widget.controller.widget.initialCenter ?? const LatLng(20, 0),
+            initialZoom: widget.controller.widget.initialZoom ?? 3,
+            // minZoom 3 (not 2): containLatitude rejects a move when the
+            // constrained latitude band is shorter than the viewport, and the
+            // ±90 band is only ~1024px tall at z2 — that would freeze *all*
+            // panning on windows taller than ~1024px (common when maximized).
+            // z3 gives a ~2048px band, clearing any realistic viewport.
+            minZoom: WorldMapConstants.minZoom,
+            maxZoom: WorldMapConstants.maxZoom,
+            // Clamp latitude only — leaving longitude free so the user can pan
+            // east-west and the world wraps seamlessly ("rotate the world
+            // around"). Epsg3857 replicates longitude, so tiles and markers
+            // repeat across world copies automatically. A longitude-bounded
+            // `contain`/`containCenter` pins the camera when zoomed out and hides
+            // content behind the left column with no way to pan it out.
+            cameraConstraint: const CameraConstraint.containLatitude(90, -90),
+            interactionOptions: const InteractionOptions(
+              flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+            ),
+            // Tapping empty map does not clear focus — a focus is cleared only by
+            // closing its panel or focusing another (world-map.instructions.md).
+            // World pins are viewport-bounded: load once the camera is ready, then
+            // re-load (debounced) as the user pans/zooms. Course pins are
+            // context-bound and unaffected.
+            onMapReady: widget.controller.loadWorldPins,
+            onPositionChanged: (_, hasGesture) =>
+                widget.controller.onMapPositionChanged(hasGesture),
           ),
-          // Tapping empty map does not clear focus — a focus is cleared only by
-          // closing its panel or focusing another (world-map.instructions.md).
-          // World pins are viewport-bounded: load once the camera is ready, then
-          // re-load (debounced) as the user pans/zooms. Course pins are
-          // context-bound and unaffected.
-          onMapReady: widget.controller.loadWorldPins,
-          onPositionChanged: (_, hasGesture) =>
-              widget.controller.onMapPositionChanged(hasGesture),
-        ),
-        children: [
-          // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-          // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
-          // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
-          TileLayer(
-            urlTemplate: dark
-                ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-                : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            retinaMode: retina,
-            userAgentPackageName: 'com.talktolearn.chat',
-          ),
-          // world_v2: activity pins by relevance tier + state, capped by the
-          // width-driven budget. Small/mid dots render individually (no
-          // clustering); the large featured cards render unclustered above so
-          // they're always visible.
-          MarkerLayer(markers: _dotMarkers(render)),
-          // Dying pins (a separate layer) so they don't disturb the live pins
-          // while animating out.
-          MarkerLayer(markers: _exitingMarkers()),
-          // Large cards (always visible): the featured cards the width affords.
-          MarkerLayer(markers: _largeMarkers(render)),
-          // Make a background, so attributions stand out in dark mode
-          Positioned(
-            left: attributionsLeft + 8,
-            bottom: attributionsBottom + 8,
-            child: Container(
-              height: 32,
-              width: 32,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(130, 135, 135, 135),
-                shape: BoxShape.circle,
+          children: [
+            // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
+            // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
+            // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
+            TileLayer(
+              urlTemplate: dark
+                  ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+                  : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              retinaMode: retina,
+              userAgentPackageName: 'com.talktolearn.chat',
+            ),
+            // world_v2: activity pins by relevance tier + state, capped by the
+            // width-driven budget. Small/mid dots render individually (no
+            // clustering); the large featured cards render unclustered above so
+            // they're always visible.
+            MarkerLayer(markers: _dotMarkers(render)),
+            // Dying pins (a separate layer) so they don't disturb the live pins
+            // while animating out.
+            MarkerLayer(markers: _exitingMarkers()),
+            // Large cards (always visible): the featured cards the width affords.
+            MarkerLayer(markers: _largeMarkers(render)),
+            // Make a background, so attributions stand out in dark mode
+            Positioned(
+              left: attributionsLeft + 8,
+              bottom: attributionsBottom + 8,
+              child: Container(
+                height: 32,
+                width: 32,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(130, 135, 135, 135),
+                  shape: BoxShape.circle,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            // On a narrow screen the bottom chrome (nav widget + the search bar
-            // riding above it) owns the bottom edge, so lift the attribution
-            // above it — otherwise it sits unreadable UNDER the floating rail
-            // (#7218 on narrow).
-            left: attributionsLeft,
-            bottom: attributionsBottom,
-            child: RichAttributionWidget(
-              // #7218: bottom-LEFT so the attribution and its expand popup don't
-              // sit under the bottom-right zoom/World controls (where it was
-              // covered and hard to read, especially in dark mode).
-              alignment: AttributionAlignment.bottomLeft,
-              attributions: [
-                TextSourceAttribution(
-                  'OpenStreetMap contributors',
-                  onTap: () {},
-                ),
-                if (dark) TextSourceAttribution('CARTO', onTap: () {}),
-              ],
+            Positioned(
+              // On a narrow screen the bottom chrome (nav widget + the search bar
+              // riding above it) owns the bottom edge, so lift the attribution
+              // above it — otherwise it sits unreadable UNDER the floating rail
+              // (#7218 on narrow).
+              left: attributionsLeft,
+              bottom: attributionsBottom,
+              child: RichAttributionWidget(
+                // #7218: bottom-LEFT so the attribution and its expand popup don't
+                // sit under the bottom-right zoom/World controls (where it was
+                // covered and hard to read, especially in dark mode).
+                alignment: AttributionAlignment.bottomLeft,
+                attributions: [
+                  TextSourceAttribution(
+                    'OpenStreetMap contributors',
+                    onTap: () {},
+                  ),
+                  if (dark) TextSourceAttribution('CARTO', onTap: () {}),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 

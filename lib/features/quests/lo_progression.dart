@@ -17,9 +17,17 @@ class CourseLoOutline {
   final Map<String, Set<String>> activityIdsByLo;
   final int starsToUnlock;
 
+  /// Stars ONE player can earn per activity (ActivityPlanModel.earnableStars),
+  /// keyed by activity id. Feeds the resolver's threshold clamp: an objective's
+  /// effective threshold never exceeds the sum of earnable stars across its
+  /// activities (quests.instructions.md). Empty when the builder had no plans
+  /// in hand — the resolver then leaves the configured threshold unclamped.
+  final Map<String, int> earnableByActivity;
+
   const CourseLoOutline({
     required this.orderedLoIds,
     required this.activityIdsByLo,
     this.starsToUnlock = kDefaultStarsToUnlockObjective,
+    this.earnableByActivity = const {},
   });
 }

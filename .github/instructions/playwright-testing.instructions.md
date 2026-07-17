@@ -52,7 +52,7 @@ Specs that want to start unauthenticated reset to `test.use({ storageState: { co
 The shared test account is `staging_automated_tests`. Specs read `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from `process.env`. Single source of truth: AWS Secrets Manager at `/staging/test-user/matrix-credentials`.
 
 - **CI**: GitHub OIDC → `AWS_ROLE_ARN_STAGING` → `aws-actions/aws-secretsmanager-get-secrets` with `parse-json-secrets: true` populates the env vars. No GitHub-secret mirror.
-- **Local**: engineers export the same env vars into `client/.env` (gitignored). See [`e2e/README.md`](../../e2e/README.md) for the SSO-fetch command.
+- **Local**: engineers put the same env vars in `client/.env.staging` (gitignored) — the staging env profile ([matrix-auth.instructions.md](matrix-auth.instructions.md)). The Playwright config prefers `.env.staging` over `.env`, so specs keep working staging credentials even while the developer's active `.env` is the local-stack profile (whose credentials don't exist on staging). See [`e2e/README.md`](../../e2e/README.md) for the SSO-fetch command.
 
 The OIDC role's IAM grant lives in `devops/terraform/staging/iam/github-oidc/`.
 

@@ -174,8 +174,11 @@ CI fails if the two ever disagree.
 We use [FVM (Flutter Version Management)](https://fvm.app) to consume that pin:
 
 ```sh
-# one-time: install FVM (see https://fvm.app/documentation/getting-started/installation)
-dart pub global activate fvm
+# one-time: install FVM. Homebrew is simplest and puts fvm on your PATH:
+brew install fvm
+# Alternatively `dart pub global activate fvm`, then add ~/.pub-cache/bin to your PATH
+# (e.g. in ~/.zshenv) so editors and Claude Code sessions can find fvm too — otherwise
+# they fall back to your system Flutter and format differently from CI.
 
 # from the repo root: install the pinned version recorded in .fvmrc
 fvm install
@@ -185,15 +188,19 @@ fvm flutter pub get
 fvm dart format lib/ test/
 ```
 
-Tip: point your IDE's Flutter SDK at `.fvm/flutter_sdk` (created by `fvm install`) so
-editor formatting matches CI. To bump the version, change it in **both** `.fvmrc` and
-`versions.env` in the same PR.
+Or just run [`scripts/format.sh`](scripts/format.sh) — it formats `lib/` and `test/` with the
+pinned SDK, locates fvm even when it isn't on your PATH, and runs `fvm install` on first use.
+
+This repo's tracked [`.vscode/settings.json`](.vscode/settings.json) points the Dart/Flutter
+extension at `.fvm/flutter_sdk`, so once you've run `fvm install`, VS Code's format-on-save and
+analyzer use the pinned version automatically. To bump the version, change it in **both**
+`.fvmrc` and `versions.env` in the same PR.
 
 ### Formatting
 
-We do not allow code with wrong formatting. Please run `fvm dart format lib/ test/`
-(or `dart format lib/ test/` if you already run the pinned Flutter) if your IDE
-doesn't do this automatically. CI runs `dart format lib/ test/ --set-exit-if-changed`.
+We do not allow code with wrong formatting. Run [`scripts/format.sh`](scripts/format.sh)
+(or `fvm dart format lib/ test/`) if your IDE doesn't do this automatically.
+`scripts/format.sh --check` mirrors CI, which runs `dart format lib/ test/ --set-exit-if-changed`.
 
 ### Code Analyzis
 

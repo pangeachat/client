@@ -98,7 +98,13 @@ extension LaunchActivitySession on Client {
             allowRoomIds: spaces.keys.toList(),
           ),
         ],
-        powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent,
+        // Seeds the bot at PL 50 so it can write its state events without
+        // the self-promotion dance that overloaded staging Synapse
+        // (pangea-bot#1409). Same bot-id source as the invite below.
+        powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent(
+          ownUserId: userID!,
+          botUserId: BotName.byEnvironment,
+        ),
       ),
     );
 

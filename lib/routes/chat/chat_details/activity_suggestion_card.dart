@@ -31,9 +31,9 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.starsEarned = 0,
   });
 
-  int get _starsTotal => activity.roles.values
-      .map((r) => r.allGoals.length)
-      .fold(0, (a, b) => b > a ? b : a);
+  // One player's earnable stars — uniform across roles by generation, min
+  // across roles for older plans (see ActivityPlanModel.earnableStars).
+  int get _starsTotal => activity.earnableStars;
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +87,17 @@ class ActivitySuggestionCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        activity.title,
-                        style: TextStyle(fontSize: fontSize),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
+                      // Fixed-height card: cap the title and let it yield space
+                      // (Flexible) so the star row and participant/mode row below
+                      // can't be pushed past the card's bottom edge and clipped by
+                      // the ClipRRect when a long title wraps (#7675).
+                      Flexible(
+                        child: Text(
+                          activity.title,
+                          style: TextStyle(fontSize: fontSize),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       if (_starsTotal > 0)
                         ActivityStarRow(

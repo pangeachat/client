@@ -21,7 +21,10 @@ class ActivityRoleModel {
   bool get isArchived => archivedAt != null;
 
   String? stateEventMessage(String displayName, L10n l10n) {
-    if (isFinished) {
+    // Only the transition into finished gets a timeline row. The automatic
+    // save re-writes the same role state (adding archived_at), and rendering
+    // that write too would repeat the row on every completed session.
+    if (isFinished && !isArchived) {
       return l10n.finishedTheActivity(displayName);
     } else {
       return null;

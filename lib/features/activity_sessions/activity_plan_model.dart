@@ -172,6 +172,20 @@ class ActivityPlanModel {
   /// must surface (the parse sites log it loudly) — return empty, not fakes.
   Map<String, ActivityRole> get roles => _roles ?? const {};
 
+  /// The stars ONE player can earn in this activity: their role's goal count.
+  /// Generation guarantees the count is uniform across roles; plans predating
+  /// that rule may differ, so this takes the min across roles — permissive
+  /// (org activities doc, goal-progression invariants). The single home for
+  /// the rule: card star rows, the map's large card, and the Mission threshold
+  /// ceiling (quest_progression_resolver.dart) all read this. 0 when the plan
+  /// has no roles (degraded data — surfaces elsewhere).
+  int get earnableStars {
+    if (roles.isEmpty) return 0;
+    return roles.values
+        .map((r) => r.allGoals.length)
+        .reduce((a, b) => b < a ? b : a);
+  }
+
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     final req = ActivityPlanRequest.fromJson(
       json[ActivitySessionConstants.activityPlanRequest],
@@ -264,6 +278,13 @@ class ActivityPlanModel {
       'roles': _roles?.map((key, value) => MapEntry(key, value.toJson())),
     };
   }
+
+  /// Target vocab lemmas, lower-cased, as a set for membership tests — used
+  /// to highlight target words in messages and to track which target vocab
+  /// has been used in a session. Callers in hot render loops should read this
+  /// once and reuse it rather than per token (issue #7659).
+  Set<String> get vocabLemmas =>
+      vocab.map((v) => v.lemma.toLowerCase()).toSet();
 
   String get vocabString {
     final List<String> vocabList = [];
@@ -398,7 +419,9 @@ class ActivityRole {
     return {
       'id': id,
       'name': name,
-      'goal': goal,
+      // Omit when null: the choreographer's Role schema defaults a missing
+      // `goal` but 422s on an explicit null (v2 roles carry `goals` instead).
+      if (goal != null) 'goal': goal,
       'avatar_url': avatarUrl,
       "goals": goals.map((g) => g.toJson()).toList(),
     };

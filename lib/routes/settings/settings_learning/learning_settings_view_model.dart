@@ -153,6 +153,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
     _updateProfile(updated);
   }
 
+  bool get appLanguageIsTarget =>
+      _updatedProfile.userSettings.appLanguageIsTarget;
+
+  void setAppLanguageIsTarget(bool value) {
+    final updated = _updatedProfile.copyWith(
+      userSettings: _updatedProfile.userSettings.copyWith(
+        appLanguageIsTarget: value,
+      ),
+    );
+    _updateProfile(updated);
+  }
+
   void resetInstructionTooltips() {
     final updated = _updatedProfile.copyWith(
       instructionSettings: InstructionSettings(),

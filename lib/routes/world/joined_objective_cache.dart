@@ -72,6 +72,7 @@ class JoinedObjectiveCache {
               activityIdsByLo: o.activityIdsByLo,
               starsToUnlock:
                   starsToUnlockOf?.call(uuid) ?? kDefaultStarsToUnlockObjective,
+              earnableByActivity: o.earnableByActivity,
             ),
           );
         } catch (e, s) {

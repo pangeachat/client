@@ -73,6 +73,20 @@ Drill-down for a single tag showing:
 
 Recent addition: users can practice grammar concepts they've struggled with. `GrammarErrorPracticeGenerator` creates activities from past writing-assistance grammar corrections. `MorphCategoryActivityGenerator` creates practice targeting specific morph categories.
 
+### In-app feedback on grammar info (#6839, #7676)
+
+The flag icon on a grammar detail card opens a free-text feedback dialog.
+`GrammarMeaningFeedbackRepo` POSTs it to the choreographer's meaning
+endpoint, where an actionability gate (choreo #2769) judges the text before
+any regeneration: actionable feedback regenerates the (feature,
+target_language, user_l1) translation row and returns the new bundle;
+off-topic or out-of-scope feedback leaves the row untouched. The response
+carries `user_friendly_response` (a per-feedback reply in the learner's L1)
+and `edits_applied`. The client shows the server's reply in the response
+dialog — falling back to the static `grammarFeedbackSubmittedDesc` copy for
+pre-gate servers — and only merges the regenerated copy into the constructs
+cache when edits were actually applied.
+
 ## Recent Improvements
 
 - **Grammar practice section** on the analytics page allowing rehearsal of past grammar mistakes via generated multiple-choice activities.
@@ -80,7 +94,6 @@ Recent addition: users can practice grammar concepts they've struggled with. `Gr
 ## Future Work
 
 - **Client migration onto grammar-constructs v2** (#6660): replace `morph_repo.dart` + `morph_info_repo.dart` with a single `grammar_constructs_repo.dart` backed by `POST /choreo/grammar_constructs`. Phased plan in the issue body.
-- **In-app feedback on grammar info**: Allow users to flag incorrect or confusing tags/descriptions to trigger an audit pass on the (feature, target_language) canonical or the (feature, target_language, user_l1) translation row. The handler already supports feedback-driven regeneration via the existing `LLMBaseHandler` feedback channel.
 - **Target grammar in activities**: Allow course creators and activity generators to specify grammar concepts as learning targets (e.g., "practice the subjunctive"), connecting the grammar inventory to the activity system. The new `sequence_position` makes "next concept on the CEFR curve" a queryable property.
 
 ## Key Files

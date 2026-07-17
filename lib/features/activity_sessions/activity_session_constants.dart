@@ -40,4 +40,12 @@ class ActivitySessionConstants {
 
   static String goalMenuStarTargetId(String goalId) =>
       "goal-display-star-$goalId";
+
+  /// Cross-service contract with the choreographer's activity summary
+  /// (STT_UNAVAILABLE_PLACEHOLDER in app/infra/matrix/message_schema.py):
+  /// sent verbatim for a voice message whose transcript is unavailable, so
+  /// the sender's voice activity still counts as participation instead of
+  /// being dropped from the summary transcript.
+  static const String sttUnavailablePlaceholder =
+      "[voice message: transcript unavailable]";
 }

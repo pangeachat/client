@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_suggestion.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup.dart';
@@ -27,6 +30,39 @@ class SuggestionCard extends StatefulWidget {
 class SuggestionCardState extends State<SuggestionCard> {
   ActiveSuggestionModel? get suggestionsModel =>
       widget.controller.activeSuggestion;
+
+  StreamSubscription<ActiveSuggestionModel?>? _suggestionSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    // Under re-fire the active suggestion can change while the card is open:
+    // rebuild on replace (taps never hit a swapped-out model), close on clear.
+    _suggestionSubscription = widget.controller.suggestionStream.stream.listen((
+      suggestion,
+    ) {
+      if (!mounted) return;
+      if (suggestion == null) {
+        _close();
+      } else {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _suggestionSubscription?.cancel();
+    // Closing the card without accepting releases the mid-interaction pin
+    // (a tapped distractor otherwise blocks every future replacement).
+    final model = widget.controller.activeSuggestion;
+    if (model != null &&
+        model.acceptedChoice == null &&
+        model.selectedChoice != null) {
+      widget.controller.resetSuggestionState();
+    }
+    super.dispose();
+  }
 
   void _close() {
     widget.popupManager.close();

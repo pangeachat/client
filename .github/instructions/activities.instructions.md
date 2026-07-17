@@ -25,6 +25,21 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
 
+## Completion saves itself
+
+Saving a completed session is automatic — the design (what saving means, when it happens, and how stars bank on it) is the org doc's ([Saving and stars](../../../.github/.github/instructions/activities.instructions.md#saving-and-stars)); what the client owns is where the save runs. [`ActivityAutoSaveService`](../../lib/features/activity_sessions/activity_auto_save_service.dart) watches activity-role state changes across **all** rooms, not just the open chat, so a session that completes while the learner is elsewhere — or that completed before this login — still saves on the next sync. The save is idempotent, so a second device observing the same completion is harmless. A room whose plan is still hydrating is retried once the plan lands; a room whose plan is gone entirely (the archived-view rung in [When the activity can't be fetched](#when-the-activity-cant-be-fetched)) cannot resolve a target language and is skipped.
+
+The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
+
+## Downloading the transcript
+
+The session's app bar carries a "More" (⋮) menu ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)). A **live** session offers Invite, Leave, and Download; a **completed** session — the learner's own role archived (`hasArchivedActivity`) — keeps the menu but offers **Download only**, since Invite and Leave no longer apply once the session is over. Completing a session must not strip the menu: a learner returning to a finished session still needs to export it. (Regular, non-activity chats expose the same export from the chat-details button row, not this menu.)
+
+Download exports the full message history — sender, timestamp, original and sent message, and use type — as TXT / CSV / XLSX ([`lib/features/download/`](../../lib/features/download/)). Two decisions govern who sees it and where:
+
+- **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
+- **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
+
 ## When the activity can't be fetched
 
 Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:
@@ -51,7 +66,7 @@ On the web, media images are fetched in a way that needs the content CDN to allo
 
 Video is where the two surfaces differ most:
 
-- **On a focused surface — the plan page, the live session — each block plays in place.** Images show, uploaded videos use the app's player, and YouTube always plays as an embed, never downloaded or re-hosted (YouTube's terms forbid it). The carousel stays calm: the learner swipes through blocks, a video plays only when they tap it, and nothing starts on its own.
+- **On a focused surface — the plan page, the live session — each block plays in place.** Images show, uploaded videos use the app's player, and YouTube always plays as an embed, never downloaded or re-hosted (YouTube's terms forbid it). The carousel stays calm: the learner swipes through blocks, a video plays only when they tap it, and nothing starts on its own. **Playing in place is web and desktop only.** On native mobile the focused surface is a scrolling bottom sheet, and a live player is a platform view (webview) that can't live inside a scrolling sheet — it escapes the sheet's bounds and its drag gestures force the embed into an inexitable fullscreen ([#7672](https://github.com/pangeachat/client/issues/7672)/[#7673](https://github.com/pangeachat/client/issues/7673)). So on iOS/Android a tapped video opens on its own full-screen player with an obvious close, instead of inline.
 - **On a compact surface — a card, a map pin — the first block stands in for the carousel, carrying a small video tag (not a play badge) when it's a video.** That is what makes a card carousel-aware: a video-first activity leads with its video, not an unrelated image. The tag differentiates video without a play badge's false promise of play-in-place: tapping the card doesn't play the video there; it opens the activity, where the video starts. (A centered play badge on a card read as "play here" and did nothing on tap — see [pangeachat/client#7543](https://github.com/pangeachat/client/issues/7543).)
 
 That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.

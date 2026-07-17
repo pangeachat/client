@@ -8,10 +8,12 @@ void main() {
     List<String> seq,
     Map<String, Set<String>> acts, {
     int threshold = kDefaultStarsToUnlockObjective,
+    Map<String, int> earnable = const {},
   }) => CourseLoOutline(
     orderedLoIds: seq,
     activityIdsByLo: acts,
     starsToUnlock: threshold,
+    earnableByActivity: earnable,
   );
 
   group('resolveProgression — rollup', () {
@@ -68,6 +70,102 @@ void main() {
         starsByActivity: {'a': 6},
       );
       expect(r.rollup['m1']!.stars, 6); // unioned, not 12
+    });
+  });
+
+  group('resolveProgression — effective threshold clamp', () {
+    test('threshold clamps to the sum of earnable stars across activities', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a', 'b'},
+            },
+            earnable: {'a': 3, 'b': 4},
+          ),
+        ],
+        starsByActivity: {},
+      );
+      // configured 10, content offers 3 + 4 = 7
+      expect(r.rollup['m1']!.threshold, 7);
+    });
+
+    test('a configured threshold below the ceiling is kept as-is', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a', 'b'},
+            },
+            threshold: 5,
+            earnable: {'a': 3, 'b': 4},
+          ),
+        ],
+        starsByActivity: {},
+      );
+      expect(r.rollup['m1']!.threshold, 5);
+    });
+
+    test('a zero ceiling (no goal data) leaves the configured threshold', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a'},
+            },
+          ),
+        ],
+        starsByActivity: {},
+      );
+      // no earnable data — do NOT clamp to 0 (a Mission must not read
+      // satisfied-at-zero off degraded/legacy plans)
+      expect(r.rollup['m1']!.threshold, kDefaultStarsToUnlockObjective);
+      expect(r.rollup['m1']!.satisfied, isFalse);
+    });
+
+    test('a Mission satisfiable only via the clamp reads satisfied', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1', 'm2'],
+            {
+              'm1': {'a'},
+              'm2': {'b'},
+            },
+            earnable: {'a': 4, 'b': 4},
+          ),
+        ],
+        starsByActivity: {'a': 4}, // full marks on m1's only activity
+      );
+      expect(r.rollup['m1']!.satisfied, isTrue);
+      // and the anchor advances past it
+      expect(r.quests.single.anchorMissionId, 'm2');
+    });
+
+    test('disagreeing earnable values across outlines take the min', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a'},
+            },
+            earnable: {'a': 4},
+          ),
+          outline(
+            ['m1'],
+            {
+              'm1': {'a'},
+            },
+            earnable: {'a': 3},
+          ),
+        ],
+        starsByActivity: {},
+      );
+      expect(r.rollup['m1']!.threshold, 3);
     });
   });
 
