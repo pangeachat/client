@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mime/mime.dart';
 
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
@@ -48,7 +49,13 @@ Map<String, dynamic> _buildClientAudioEventContent(
   const url = 'mxc://staging.pangea.chat/EXAMPLESTTGOLDENfixture0001';
   const duration = 2000;
   const waveform = <int>[0, 256, 512, 256, 0];
-  final fileInfo = <String, dynamic>{'mimetype': 'audio/wav', 'size': 20480};
+  // The client constructs MatrixAudioFile(bytes, name) with NO explicit
+  // mimeType (chat.dart ~L1673), so the Matrix SDK resolves it from the
+  // filename via the `mime` package (`lookupMimeType`). For `.wav` that is
+  // `audio/x-wav`, NOT `audio/wav`. Derive it here from the same source the
+  // SDK uses so this fixture can never silently diverge from real emission.
+  final mimetype = lookupMimeType(fileName)!;
+  final fileInfo = <String, dynamic>{'mimetype': mimetype, 'size': 20480};
   return <String, dynamic>{
     // matrix SDK Room.sendFileEvent base content (unencrypted room)
     'msgtype': 'm.audio',
