@@ -69,20 +69,27 @@ class _FrameContainerState extends State<FrameContainer>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            InkWell(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(widget.borderRadius),
-                topRight: Radius.circular(widget.borderRadius),
-              ),
+            Semantics(
+              header: true,
+              button: widget.expandable,
+              toggled: widget.expandable ? _expanded : null,
+              label: widget.title,
               onTap: widget.expandable ? _toggleExpanded : null,
-              child: Container(
-                width: double.infinity,
-                color: widget.frameColor,
-                padding: widget.titlePadding,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: ExcludeSemantics(
+              excludeSemantics:
+                  true, // suppress children's own semantics; we've already described the whole node
+              child: InkWell(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(widget.borderRadius),
+                  topRight: Radius.circular(widget.borderRadius),
+                ),
+                onTap: widget.expandable ? _toggleExpanded : null,
+                child: Container(
+                  width: double.infinity,
+                  color: widget.frameColor,
+                  padding: widget.titlePadding,
+                  child: Row(
+                    children: [
+                      Expanded(
                         child: Text(
                           widget.title,
                           textAlign: widget.expandable
@@ -96,21 +103,21 @@ class _FrameContainerState extends State<FrameContainer>
                               ),
                         ),
                       ),
-                    ),
-                    if (widget.expandable)
-                      IconButton(
-                        visualDensity: VisualDensity.compact,
-                        splashRadius: 20,
-                        color: widget.foregroundColor,
-                        icon: AnimatedRotation(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.easeInOut,
-                          turns: _expanded ? 0.5 : 0.0,
-                          child: const Icon(Icons.expand_less),
+                      if (widget.expandable)
+                        IconButton(
+                          visualDensity: VisualDensity.compact,
+                          splashRadius: 20,
+                          color: widget.foregroundColor,
+                          icon: AnimatedRotation(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOut,
+                            turns: _expanded ? 0.5 : 0.0,
+                            child: const Icon(Icons.expand_less),
+                          ),
+                          onPressed: _toggleExpanded,
                         ),
-                        onPressed: _toggleExpanded,
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
