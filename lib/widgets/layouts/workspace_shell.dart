@@ -475,21 +475,21 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     }
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // The bar shows over the bare map AND over map-content cavities (the
-    // course card, the activity plan — the map is still the ground behind
-    // them, per the Figma course frame's minimized icon); section cavities
-    // (chats, the hub) re-target it in the follow-up and mount nothing yet.
-    final mapIsGround =
-        cavityToken == null || isCourseCavity || isActivityCavity;
+    // The bar shows over the bare map and the course card (the map is still
+    // the ground behind it, per the Figma course frame's minimized icon).
+    // NOT over a selected activity: its sheet is the focus and the bar only
+    // crowded the exposed map band the camera centers the pin in (#7640).
+    // Section cavities (chats, the hub) re-target it in the follow-up and
+    // mount nothing yet.
+    final showsSearchBar = cavityToken == null || isCourseCavity;
     // Once a COURSE sheet is pulled to full it covers the map, so the map
     // search is moot: hide the bar entirely and let its reserved strip (dropped
     // from the height reservation below, since searchBar is then null) go to the
-    // course content (#7697). The bar stays over a peeking/half course, the
-    // bare/scoped map, and the chats/courses sections (which re-target it), so
-    // gate strictly on a full course cavity.
+    // course content (#7697). The bar stays over a peeking/half course and the
+    // bare/scoped map, so gate strictly on a full course cavity.
     final hideSearchForFullCourse = isCourseCavity && _cavityAtFull;
     final searchBar =
-        mapIsGround && mapController != null && !hideSearchForFullCourse
+        showsSearchBar && mapController != null && !hideSearchForFullCourse
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
@@ -640,15 +640,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
-        // Dismissing the activity plan sheet (drag down / tap the map outside
-        // it) CLOSES the plan — dropping its token clears the map's activity
-        // focus (#7614; world-map.instructions.md: focus is cleared by
-        // "closing the plan" and "tapping the empty map"). Same navigation as
-        // the panel's own back/X. Sections and the course card keep
-        // collapse-not-close.
+        // Dismissing the activity plan sheet (drag down, or its own back/X)
+        // CLOSES the plan — dropping its token clears the map's activity
+        // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
+        // the map stays live around the sheet (mapStaysLive below), so a tap
+        // on another pin moves the selection directly. Sections and the
+        // course card keep collapse-not-close.
         onDismissed: isActivityCavity && cavityToken != null
             ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
             : null,
+        // The map stays interactive around the activity plan and course card
+        // sheets: taps/pans in the exposed map pass through — tap another pin
+        // to select it directly; panning never dismisses. Dismissal is the
+        // drag-down handle or the sheet's own close control (#7742).
+        mapStaysLive: isActivityCavity || isCourseCavity,
         // Latched full-height reports drive the course-sheet search-bar hide
         // above (#7697). Guarded so an unchanged report is not a rebuild.
         onCavityFullChanged: (full) {
@@ -1032,9 +1037,11 @@ class _ShellLayout {
     if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
       final screenPadding = MediaQuery.viewPaddingOf(context);
       final screenHeight = MediaQuery.sizeOf(context).height;
+      // No search bar rides the activity sheet (it hides on selection), so
+      // the reservation and the covered band both exclude its allowance.
       final reserved = navChromeReserved(
         screenPadding: screenPadding,
-        hasSearchBar: true,
+        hasSearchBar: false,
       );
       final maxHeightFraction = screenHeight <= 0
           ? 0.8
@@ -1042,7 +1049,6 @@ class _ShellLayout {
       mapBottomOverlay =
           0.5 * maxHeightFraction * screenHeight +
           MobileNavWidget.railRowHeight +
-          searchBarAllowance +
           screenPadding.bottom +
           chromeMargin * 2;
     }
