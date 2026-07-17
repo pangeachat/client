@@ -40,4 +40,7 @@ Always run `flutter gen-l10n` after translating, and commit the regenerated loca
 
 When `intl_en.arb` changes, every locale falls behind — and `gen-l10n` only catches *added* keys (missing from a locale), never *updated* ones (a key whose English value changed while the stale translation stays present).
 
-[`check_l10n_sync.py`](../../scripts/translate/check_l10n_sync.py) closes both gaps. On a PR it diffs `intl_en.arb` against the base branch, finds every key added or value-changed, and lists the locales that weren't re-translated for those keys. The [`l10n_sync_check`](../../.github/workflows/l10n_sync_check.yaml) workflow runs it and posts the result as a **non-blocking warning annotation** — it notifies, it does not fail the build. The remediation the annotation names is to run the translator for the changed keys before merging.
+[`check_l10n_sync.py`](../../scripts/translate/check_l10n_sync.py) closes both gaps. On a PR it diffs `intl_en.arb` against the base branch and splits what changed into two tiers, run by the [`l10n_sync_check`](../../.github/workflows/l10n_sync_check.yaml) workflow:
+
+- **Added keys → blocking.** A newly-added English key that isn't translated into every locale ships English-only (the gap that let the immersion toggle merge untranslated). Any locale missing an added key **fails the check** — translate them (`backfill_l10n.py`, or `translate_gemini.py` per locale) and commit before merging.
+- **Value-changed keys → warning.** When an existing key's English text changes but a locale keeps its old translation, the locale still renders (just slightly stale), so this only **warns** — a copy tweak isn't blocked on re-translating every locale.
