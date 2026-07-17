@@ -4712,5 +4712,6 @@
         }
     },
     "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features.",
-    "change": "Change"
+    "change": "Change",
+    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?"
 }

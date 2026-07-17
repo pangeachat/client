@@ -51,33 +51,35 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     }
   }
 
-  void deleteAccountAction() async {
-    // V2 TODO
-    // Move to better place
+  Future<String?> _entitlementToCancel() async {
     final userID = Matrix.of(context).client.userID!;
     final statusResult = await SubscriptionStatusRepo.instance.get(
       SubscriptionStatusRequest(userID: userID),
     );
     final statusResponse = statusResult.result;
-    final entitlementRef = statusResponse?.winning?.entitlementRef;
-
-    if (entitlementRef != null) {
-      final cancelResult = await SubscriptionCancelRepo.instance.get(
-        SubscriptionCancelRequest(
-          userID: userID,
-          entitlementRef: entitlementRef,
-        ),
-      );
-      if (cancelResult.isError) {
-        throw cancelResult.asError ?? "Failed to cancel paid subscription";
-      }
+    if (statusResponse == null) {
+      throw statusResult.error ?? "Failed to fetch subscription status";
     }
 
+    return statusResponse.cancelableEntitlement?.entitlementRef;
+  }
+
+  void deleteAccountAction() async {
+    final entitlementResult = await showFutureLoadingDialog(
+      context: context,
+      future: _entitlementToCancel,
+      onError: (_, _) => L10n.of(context).errorTryAgainLater,
+    );
+    if (entitlementResult.isError) return;
+
+    final entitlementRef = entitlementResult.result;
     if (await showOkCancelAlertDialog(
           useRootNavigator: false,
           context: context,
           title: L10n.of(context).warning,
-          message: L10n.of(context).deactivateAccountWarning,
+          message: entitlementRef != null
+              ? L10n.of(context).deactivateSubscribedAccountWarning
+              : L10n.of(context).deactivateAccountWarning,
           okLabel: L10n.of(context).ok,
           cancelLabel: L10n.of(context).cancel,
           isDestructive: true,
@@ -118,6 +120,18 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       //     ),
       future: () async {
         final client = Matrix.of(context).client;
+        if (entitlementRef != null) {
+          final result = await SubscriptionCancelRepo.instance
+              .cancelSubscription(
+                SubscriptionCancelRequest(
+                  userID: client.userID!,
+                  entitlementRef: entitlementRef,
+                ),
+              );
+          final error = result.error;
+          if (error != null) throw error;
+        }
+
         await client.deleteAccount();
         await client.uiaRequestBackground<IdServerUnbindResult?>(
           (auth) => Matrix.of(

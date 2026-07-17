@@ -158,12 +158,13 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
       throw "Cannot cancel subscription without entitlement";
     }
 
-    final cancelResult = await SubscriptionCancelRepo.instance.get(
-      SubscriptionCancelRequest(
-        userID: Matrix.of(context).client.userID!,
-        entitlementRef: entitlementRef,
-      ),
-    );
+    final cancelResult = await SubscriptionCancelRepo.instance
+        .cancelSubscription(
+          SubscriptionCancelRequest(
+            userID: Matrix.of(context).client.userID!,
+            entitlementRef: entitlementRef,
+          ),
+        );
 
     final error = cancelResult.error;
     if (error != null) throw error;
