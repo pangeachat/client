@@ -80,6 +80,9 @@ class SubscriptionStatusResponse extends BaseResponse {
     return entitlements.firstWhereOrNull((e) => e.planId == planId);
   }
 
+  bool get isActive =>
+      accessLevel == SubscriptionAccessLevel.full && winning != null;
+
   bool get isTrialOfferable => trialEligible == true && trialClaimed != true;
 
   bool get isPaidWithoutPlan {

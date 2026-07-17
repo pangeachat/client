@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
@@ -136,30 +135,30 @@ class SettingsSubscriptionView extends StatelessWidget {
                                     horizontal: 24,
                                   ),
                           ),
-                          switch (subscriptionStatus.accessLevel) {
-                            SubscriptionAccessLevel.full => _FullAccessContent(
-                              type: winning?.type,
-                              subscriptionTitle:
-                                  winning?.subscriptionTitle(l10n) ??
-                                  l10n.currentSubscription,
-                              paymentPeriodDescription: winning
-                                  ?.paymentPeriodDescription(l10n),
-                              priceDisplay:
-                                  subscriptionPlan?.priceDisplay ??
-                                  winning?.priceDisplay(l10n),
-                              manageEligible: subscriptionStatus.manageEligible,
-                              onTapSubscription: onTapSubscription,
-                              productsState: productsState,
-                              selectedSubscription: selectedSubscription,
-                              onEnterDiscountCode: onEnterDiscountCode,
-                            ),
-                            SubscriptionAccessLevel.none => SubscriptionOptions(
-                              onEnterDiscountCode: onEnterDiscountCode,
-                              onTapSubscription: onTapSubscription,
-                              productsState: productsState,
-                              selectedSubscription: selectedSubscription,
-                            ),
-                          },
+                          subscriptionStatus.isActive
+                              ? FullAccessContent(
+                                  type: winning?.type,
+                                  subscriptionTitle:
+                                      winning?.subscriptionTitle(l10n) ??
+                                      l10n.currentSubscription,
+                                  paymentPeriodDescription: winning
+                                      ?.paymentPeriodDescription(l10n),
+                                  priceDisplay:
+                                      subscriptionPlan?.priceDisplay ??
+                                      winning?.priceDisplay(l10n),
+                                  manageEligible:
+                                      subscriptionStatus.manageEligible,
+                                  onTapSubscription: onTapSubscription,
+                                  productsState: productsState,
+                                  selectedSubscription: selectedSubscription,
+                                  onEnterDiscountCode: onEnterDiscountCode,
+                                )
+                              : SubscriptionOptions(
+                                  onEnterDiscountCode: onEnterDiscountCode,
+                                  onTapSubscription: onTapSubscription,
+                                  productsState: productsState,
+                                  selectedSubscription: selectedSubscription,
+                                ),
                         ],
                       );
                     }(),
@@ -174,7 +173,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   }
 }
 
-class _FullAccessContent extends StatelessWidget {
+class FullAccessContent extends StatelessWidget {
   final SubscriptionType? type;
   final String subscriptionTitle;
   final String? paymentPeriodDescription;
@@ -186,7 +185,8 @@ class _FullAccessContent extends StatelessWidget {
   final AsyncState<List<ProductPlan>> productsState;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
-  const _FullAccessContent({
+  const FullAccessContent({
+    super.key,
     required this.type,
     required this.subscriptionTitle,
     this.paymentPeriodDescription,
