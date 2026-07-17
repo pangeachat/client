@@ -12,3 +12,5 @@ reviews:
         design/logic of the affected code. If no such doc exists, or it is
         ambiguous, or it contradicts the implementation, flag this for
         review.
+  path_filters:
+    - "!lib/l10n/**"
