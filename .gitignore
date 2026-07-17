@@ -114,3 +114,5 @@ test-results/
 !.claude/settings.json
 !.claude/settings.fragment.json
 !.claude/settings.json.generated_by_sync
+.env.*
+!.env.*.template
