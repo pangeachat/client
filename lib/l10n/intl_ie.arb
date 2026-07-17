@@ -7014,8 +7014,6 @@
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Berlangganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

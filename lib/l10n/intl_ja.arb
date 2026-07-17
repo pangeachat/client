@@ -7151,8 +7151,6 @@
     "allow": "許可",
     "deny": "拒否",
     "enabledRenewal": "サブスクリプション更新を有効にする",
-    "subscriptionEndsOn": "サブスクリプションの終了日",
-    "subscriptionRenewsOn": "サブスクリプションの更新日",
     "waitForSubscriptionChanges": "サブスクリプションの変更がアプリに反映されるまで少々お待ちください。",
     "subscribeReadingAssistance": "メッセージツールを解除するために購読する",
     "aceDisplayName": "アチネース",
@@ -7427,14 +7425,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

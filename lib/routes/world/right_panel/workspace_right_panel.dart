@@ -115,31 +115,25 @@ class WorkspaceRightPanel extends StatelessWidget {
             ),
           ),
           tooltip: leadingTooltip,
-          child: RightPanelSettingsSubpage(),
+          child: RightPanelSettingsSubpage(
+            closeButton: IconButton(
+              tooltip: leadingTooltip,
+              icon: Icon(leadingIcon),
+              onPressed: onLeading,
+            ),
+          ),
         );
       case SettingsPagePanelToken(param: final param):
-        final settingsPage = param != null
-            ? SettingsPageEnum.fromString(param.subpage)
-            : null;
-
-        return settingsPage != null && settingsPage.addHeader
-            ? PanelCardWithHeader(
-                title: settingsPage.title(l10n),
-                icon: leadingIcon,
-                onLeading: onLeading,
-                tooltip: leadingTooltip,
-                child: RightPanelSettingsSubpage(param: param),
-              )
-            : PanelCard(
-                child: RightPanelSettingsSubpage(
-                  param: param,
-                  closeButton: IconButton(
-                    tooltip: leadingTooltip,
-                    icon: Icon(leadingIcon),
-                    onPressed: onLeading,
-                  ),
-                ),
-              );
+        return PanelCard(
+          child: RightPanelSettingsSubpage(
+            param: param,
+            closeButton: IconButton(
+              tooltip: leadingTooltip,
+              icon: Icon(leadingIcon),
+              onPressed: onLeading,
+            ),
+          ),
+        );
       case VocabAnalyticsPanelToken(param: final param):
         return PanelCard(
           child: ConstructAnalyticsView(

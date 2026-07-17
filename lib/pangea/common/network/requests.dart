@@ -25,8 +25,11 @@ class Requests {
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
+    bool enrichBody = true,
   }) async {
-    final enrichedBody = BaseRequestModel.injectUserContext(body);
+    final enrichedBody = enrichBody
+        ? BaseRequestModel.injectUserContext(body)
+        : body;
 
     dynamic encoded;
     encoded = jsonEncode(enrichedBody);

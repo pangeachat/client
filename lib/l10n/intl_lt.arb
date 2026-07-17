@@ -7163,8 +7163,6 @@
     "allow": "Leisti",
     "deny": "Atmesti",
     "enabledRenewal": "Įjungti prenumeratos atnaujinimą",
-    "subscriptionEndsOn": "Prenumerata baigiasi",
-    "subscriptionRenewsOn": "Prenumerata atnaujinama",
     "waitForSubscriptionChanges": "Prenumeratos pakeitimai gali užtrukti, kol atsispindės programėlėje.",
     "subscribeReadingAssistance": "Prenumeruokite, kad atrakintumėte žinučių įrankius",
     "aceDisplayName": "Ačinė",
@@ -7439,14 +7437,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

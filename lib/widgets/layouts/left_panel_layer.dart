@@ -21,12 +21,20 @@ class LeftPanelLayer extends StatelessWidget {
   final bool foldedOver;
   final Function(String) getRoomKey;
 
+  /// Render without the floating [PanelCard] chrome. The narrow full-screen
+  /// focus (a live room / session) passes true: it covers the whole viewport,
+  /// so the card's margins, rounding, and elevation only wasted edge space and
+  /// let the map peek through (#7554). Purely a render fact — routing,
+  /// tokens, and the allocator are untouched.
+  final bool bare;
+
   const LeftPanelLayer({
     super.key,
     required this.token,
     required this.state,
     required this.foldedOver,
     required this.getRoomKey,
+    this.bare = false,
   });
 
   @override
@@ -54,6 +62,7 @@ class LeftPanelLayer extends StatelessWidget {
         foldedOver: foldedOver,
         shareItems: shareItems,
         courseCreationCompleter: courseCreationCompleter,
+        bare: bare,
       ),
     );
 

@@ -7333,8 +7333,6 @@
     "allow": "Permesi",
     "deny": "Malpermesi",
     "enabledRenewal": "Ebligi Abonrenovigon",
-    "subscriptionEndsOn": "Abono Finiĝas Je",
-    "subscriptionRenewsOn": "Abono Renovigas Je",
     "waitForSubscriptionChanges": "Ŝanĝoj al via abono povas preni momenton por reflekti en la aplikaĵo.",
     "subscribeReadingAssistance": "Aboni por malŝlosi mesaĝajn ilojn",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

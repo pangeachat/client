@@ -6562,8 +6562,6 @@
     "allow": "Дозволити",
     "deny": "Відхилити",
     "enabledRenewal": "Увімкнути продовження підписки",
-    "subscriptionEndsOn": "Підписка закінчується",
-    "subscriptionRenewsOn": "Підписка поновлюється",
     "waitForSubscriptionChanges": "Зміни у вашій підписці можуть зайняти деякий час, щоб відобразитися в додатку.",
     "subscribeReadingAssistance": "Підпишіться, щоб розблокувати інструменти повідомлень",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -6485,8 +6485,6 @@
     "allow": "Engedélyez",
     "deny": "Elutasít",
     "enabledRenewal": "Előfizetés megújításának engedélyezése",
-    "subscriptionEndsOn": "Az előfizetés vége",
-    "subscriptionRenewsOn": "Az előfizetés megújul",
     "waitForSubscriptionChanges": "Az előfizetésed változásai egy pillanatot igénybe vehetnek, hogy megjelenjenek az alkalmazásban.",
     "subscribeReadingAssistance": "Iratkozz fel az üzenetkezelő eszközök feloldásához",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6759,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

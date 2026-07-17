@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class MessageUnsubscribedCard extends StatelessWidget {
   final PangeaTokenText token;
@@ -112,12 +113,12 @@ class MessageUnsubscribedCard extends StatelessWidget {
                   child: PressableButton(
                     borderRadius: BorderRadius.circular(36),
                     color: primaryColor,
-                    onPressed: () {
-                      SubscriptionPaywall.show(
-                        context,
-                        userID: Matrix.of(context).client.userID,
-                      );
-                    },
+                    onPressed: () => context.go(
+                      WorkspaceNav.openSettings(
+                        GoRouterState.of(context).uri,
+                        page: 'subscription',
+                      ),
+                    ),
                     builder: (context, depressed, shadowColor) => Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,

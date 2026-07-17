@@ -7333,8 +7333,6 @@
     "allow": "Dovoli",
     "deny": "Zavrni",
     "enabledRenewal": "Omogoči obnavljanje naročnine",
-    "subscriptionEndsOn": "Naročnina se konča",
-    "subscriptionRenewsOn": "Naročnina se obnavlja",
     "waitForSubscriptionChanges": "Spremembe vaše naročnine lahko trajajo trenutek, da se odražajo v aplikaciji.",
     "subscribeReadingAssistance": "Naročite se za odklepanje orodij za sporočanje",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

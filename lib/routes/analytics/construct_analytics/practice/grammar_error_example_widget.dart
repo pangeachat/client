@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 
 class GrammarErrorExampleWidget extends StatelessWidget {
@@ -83,6 +82,11 @@ class GrammarErrorExampleWidget extends StatelessWidget {
     final trimmedBefore = split.trimmedBefore;
     final trimmedAfter = split.trimmedAfter;
 
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    final textStyle = isColumnMode
+        ? Theme.of(context).textTheme.titleMedium
+        : Theme.of(context).textTheme.titleSmall;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -94,11 +98,8 @@ class GrammarErrorExampleWidget extends StatelessWidget {
         children: [
           RichText(
             text: TextSpan(
-              style: TextStyle(
+              style: textStyle?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
-                fontSize:
-                    AppSettings.fontSizeFactor.value *
-                    AppConfig.messageFontSize,
               ),
               children: [
                 if (trimmedBefore) const TextSpan(text: '…'),
@@ -131,11 +132,8 @@ class GrammarErrorExampleWidget extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         analyticsPracticeExercise.translation,
-                        style: TextStyle(
+                        style: textStyle?.copyWith(
                           color: Theme.of(context).colorScheme.onPrimary,
-                          fontSize:
-                              AppSettings.fontSizeFactor.value *
-                              AppConfig.messageFontSize,
                           fontStyle: FontStyle.italic,
                         ),
                         textAlign: TextAlign.center,
