@@ -118,6 +118,15 @@ class Environment {
         (dotenv.env["ANALYTICS_DUAL_WRITE_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// Feature flag for the best-effort dosage signals (see [DosageSignalsRepo]).
+  /// Defaults to `false` so the behavior ships dark. This is the third gate on
+  /// top of [analyticsDualWriteEnabled] + [teacherBffApi]: dosage signals ride
+  /// the same BFF door as the analytics dual-write, so all three must be set.
+  static bool get dosageSignalsEnabled {
+    return appConfigOverride?.dosageSignalsEnabled ??
+        (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
@@ -233,6 +242,7 @@ class AppConfigOverride {
   final String? choreoApi;
   final String? teacherBffApi;
   final bool? analyticsDualWriteEnabled;
+  final bool? dosageSignalsEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
@@ -249,6 +259,7 @@ class AppConfigOverride {
     this.choreoApi,
     this.teacherBffApi,
     this.analyticsDualWriteEnabled,
+    this.dosageSignalsEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
@@ -267,6 +278,7 @@ class AppConfigOverride {
       choreoApi: json['choreoApi'] as String?,
       teacherBffApi: json['teacherBffApi'] as String?,
       analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
+      dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
@@ -287,6 +299,7 @@ class AppConfigOverride {
       'choreoApi': choreoApi,
       'teacherBffApi': teacherBffApi,
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
+      'dosageSignalsEnabled': dosageSignalsEnabled,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
@@ -307,6 +320,7 @@ class AppConfigOverride {
         choreoApi.hashCode ^
         teacherBffApi.hashCode ^
         analyticsDualWriteEnabled.hashCode ^
+        dosageSignalsEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
@@ -327,6 +341,7 @@ class AppConfigOverride {
         choreoApi == other.choreoApi &&
         teacherBffApi == other.teacherBffApi &&
         analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
+        dosageSignalsEnabled == other.dosageSignalsEnabled &&
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&
