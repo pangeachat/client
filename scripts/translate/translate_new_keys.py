@@ -33,7 +33,12 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-from translate_gemini import translate_batch, validate, vertex_client
+from translate_gemini import (
+    display_name_for,
+    translate_batch,
+    validate,
+    vertex_client,
+)
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
@@ -59,7 +64,9 @@ def cms_names(cms_url: str) -> dict:
 
 def display_name(code: str, names: dict) -> str:
     base = code.split("-")[0].split("_")[0]
-    return names.get(base) or f"the language with ISO 639 code '{code}'"
+    fallback = names.get(base) or f"the language with ISO 639 code '{code}'"
+    # Script-variant locales get an unambiguous name (zh -> Simplified, ...).
+    return display_name_for(code, fallback)
 
 
 def locale_paths() -> list:

@@ -47,6 +47,21 @@ _THINKING_FLOOR = {"gemini-2.5-pro": 128}
 # ({var, plural, ...} has a comma; =1{...} has spaces/digits inside).
 VAR_RE = re.compile(r"\{(\w+)\}")
 
+# Locales whose bare language name invites the wrong script/orthography from the
+# model (bare "Chinese" sometimes yields Traditional for zh — caught by hand in
+# client#7744). Keyed by arb locale code; wins over any caller-/CMS-supplied name.
+LOCALE_NAME_OVERRIDES = {
+    "zh": "Simplified Chinese (简体中文) — Simplified characters ONLY",
+    "zh_Hant": "Traditional Chinese (繁體中文) — Traditional characters ONLY",
+    "pt_BR": "Brazilian Portuguese (português do Brasil)",
+    "pt_PT": "European Portuguese (português europeu)",
+}
+
+
+def display_name_for(code: str, fallback: str) -> str:
+    return LOCALE_NAME_OVERRIDES.get(code, fallback)
+
+
 PROMPT = """You are a professional software-localization translator. Translate the VALUES of the following JSON object from English into {name}. This is UI text for a language-learning chat app.
 
 Rules — follow exactly:
@@ -56,6 +71,7 @@ Rules — follow exactly:
 - Preserve ICU plural/select syntax EXACTLY, e.g. `{{count, plural, =1{{...}} other{{...}}}}` — do not translate the keywords `plural`, `select`, `one`, `other`, `=1`, or the variable name; translate ONLY the human-readable text inside each branch.
 - Do not add, drop, or reorder placeholders. Leave non-text literal values (e.g. "true"/"false") unchanged.
 - Use natural, native-quality {name}; match the app's friendly, concise tone.
+- Use the standard script and orthography of exactly this locale — never substitute a different script variant of the same language (e.g. never Traditional characters for a Simplified-Chinese locale, or vice versa).
 
 JSON to translate:
 {payload}"""
@@ -151,11 +167,12 @@ def main() -> None:
         keys = keys[: args.limit]
 
     client = vertex_client()
+    name = display_name_for(args.lang, args.name)
     out: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(keys), BATCH):
         chunk = keys[i : i + BATCH]
-        tr = translate_batch(client, args.model, args.name, {k: en[k] for k in chunk})
+        tr = translate_batch(client, args.model, name, {k: en[k] for k in chunk})
         for k in chunk:
             if k not in tr:
                 errors.append(f"{k}: MISSING from response")

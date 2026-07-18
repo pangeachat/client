@@ -34,6 +34,8 @@ from google import genai
 from google.genai import errors as genai_errors
 from google.genai import types
 
+from translate_gemini import display_name_for
+
 MODEL = "gemini-2.5-pro"
 BATCH = 50
 VAR_RE = re.compile(r"\{(\w+)\}")
@@ -142,12 +144,13 @@ def main() -> None:
         keys = keys[: args.limit]
 
     client = vertex_client()
+    name = display_name_for(args.lang, args.name)
     final: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(keys), BATCH):
         chunk = keys[i : i + BATCH]
         items = {k: {"english": en[k], "current": cur.get(k)} for k in chunk}
-        out = review_batch(client, args.name, items)
+        out = review_batch(client, name, items)
         for k in chunk:
             v = out.get(k)
             err = validate(en[k], v)
