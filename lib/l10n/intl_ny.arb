@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-16 17:22:06.839510",
+    "@@last_modified": "2026-07-18 11:06:04.937797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Mndandanda wa zovuta",
     "languageListLabel": "Mndandanda wa zilankhulo",
     "searchedResultsLabel": "Zotsatira zakusaka kwa '{search}'",
-    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro"
+    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro",
+    "endPractice": "Malizitsani zochita",
+    "bodyLabel": "Zosankha za {page}",
+    "openDM": "Tsegulani uthenga wachindunji",
+    "openNewTab": "Tsegulani mu tabu yatsopano",
+    "viewProfileImageLabel": "Onani chithunzi cha mbiri",
+    "profileImageLabel": "Chithunzi cha mbiri",
+    "actionsLabel": "Zochita",
+    "colorListLabel": "Mndandanda wamitundu",
+    "chatAppearanceStyleLabel": "Maonekedwe a macheza ndi kalembedwe kosankhidwa",
+    "volumeLabel": "Voliyumu",
+    "listLabel": "Mndandanda wa {description}",
+    "passwordFormLabel": "Sinthani fomu yachinsinsi"
 }

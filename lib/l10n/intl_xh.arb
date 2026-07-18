@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-16 17:27:19.623179",
+    "@@last_modified": "2026-07-18 11:06:09.981315",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Uluhlu lobunzima",
     "languageListLabel": "Uluhlu lweelwimi",
     "searchedResultsLabel": "Iziphumo zokukhangela '{search}'",
-    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi"
+    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi",
+    "endPractice": "Phelisa umthambo",
+    "bodyLabel": "Iinketho ze-{page}",
+    "openDM": "Vula umyalezo othe ngqo",
+    "openNewTab": "Vula kwithebhu entsha",
+    "viewProfileImageLabel": "Jonga umfanekiso weprofayile",
+    "profileImageLabel": "Umfanekiso weprofayile",
+    "actionsLabel": "Izinto ezenziwayo",
+    "colorListLabel": "Uluhlu lwemibala",
+    "chatAppearanceStyleLabel": "Inkangeleko yencoko enesitayile esikhethiweyo",
+    "volumeLabel": "Umthamo",
+    "listLabel": "Uluhlu lwe-{description}",
+    "passwordFormLabel": "Fomu yokutshintsha iphasiwedi"
 }

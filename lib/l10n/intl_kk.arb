@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-16 17:14:28.549893",
+    "@@last_modified": "2026-07-18 11:06:00.761758",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Қиындықтар тізімі",
     "languageListLabel": "Тілдер тізімі",
     "searchedResultsLabel": "'{search}' үшін іздеу нәтижелері",
-    "closeAddCoursePage": "Курс қосу бетін жабу"
+    "closeAddCoursePage": "Курс қосу бетін жабу",
+    "endPractice": "Жаттығуды аяқтау",
+    "bodyLabel": "{page} опциялары",
+    "openDM": "Тікелей хабарламаны ашу",
+    "openNewTab": "Жаңа қойындыда ашу",
+    "viewProfileImageLabel": "Профиль суретін көру",
+    "profileImageLabel": "Профиль суреті",
+    "actionsLabel": "Әрекеттер",
+    "colorListLabel": "Түстер тізімі",
+    "chatAppearanceStyleLabel": "Таңдалған стильмен чат көрінісі",
+    "volumeLabel": "Дыбыс деңгейі",
+    "listLabel": "{description} тізімі",
+    "passwordFormLabel": "Құпия сөзді өзгерту формасы"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-16 17:27:50.003995",
+    "@@last_modified": "2026-07-18 11:06:03.579672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "অওনবা লিষ্ট",
     "languageListLabel": "লোনগী লিষ্ট",
     "searchedResultsLabel": "'{search}' গী সর্চ রিজল্টশিং",
-    "closeAddCoursePage": "কোর্স পেজ থিংজিনবা"
+    "closeAddCoursePage": "কোর্স পেজ থিংজিনবা",
+    "endPractice": "প্র্যাকটিস লোয়শিনব",
+    "bodyLabel": "{page} অপশনশিং",
+    "openDM": "সরাসরী মেসেজ হাংদোক্কনবা",
+    "openNewTab": "অনৌবা ট্যাবদা হাংদোক্কনবা",
+    "viewProfileImageLabel": "প্রোফাইল ইমেজ উবা",
+    "profileImageLabel": "প্রোফাইল ইমেজ",
+    "actionsLabel": "থবকশিং",
+    "colorListLabel": "মখলগী লিষ্ট",
+    "chatAppearanceStyleLabel": "খল্লবা স্টাইলগা লোইননা চ্যাটকী মওং",
+    "volumeLabel": "ভলিউম",
+    "listLabel": "{description} লিষ্ট",
+    "passwordFormLabel": "পাসৱার্ড ফম চেঞ্জ তৌনবা"
 }

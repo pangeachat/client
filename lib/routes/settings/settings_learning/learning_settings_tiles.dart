@@ -150,6 +150,13 @@ class LearningSettingsTiles extends StatelessWidget {
                     );
                   },
                 ),
+                SwitchListTile.adaptive(
+                  value: viewModel.appLanguageIsTarget,
+                  title: Text(L10n.of(context).appInTargetLanguageTitle),
+                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
+                  activeThumbColor: AppConfig.activeToggleColor,
+                  onChanged: viewModel.setAppLanguageIsTarget,
+                ),
                 ListTile(
                   leading: const Icon(Icons.lightbulb),
                   title: Text(L10n.of(context).resetInstructionTooltipsTitle),

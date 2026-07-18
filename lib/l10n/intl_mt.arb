@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-16 17:19:48.775592",
+    "@@last_modified": "2026-07-18 11:06:04.211333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Lista ta' diffikultà",
     "languageListLabel": "Lista tal-lingwi",
     "searchedResultsLabel": "Riżultati tat-tfittxija għal '{search}'",
-    "closeAddCoursePage": "Agħlaq il-paġna żid kors"
+    "closeAddCoursePage": "Agħlaq il-paġna żid kors",
+    "endPractice": "Temm il-prattika",
+    "bodyLabel": "Għażliet ta' {page}",
+    "openDM": "Iftaħ messaġġ dirett",
+    "openNewTab": "Iftaħ f'tab ġdida",
+    "viewProfileImageLabel": "Ara l-istampa tal-profil",
+    "profileImageLabel": "Stampa tal-profil",
+    "actionsLabel": "Azzjonijiet",
+    "colorListLabel": "Lista tal-kuluri",
+    "chatAppearanceStyleLabel": "Id-dehra taċ-chat bl-istil magħżul",
+    "volumeLabel": "Volum",
+    "listLabel": "Lista ta' {description}",
+    "passwordFormLabel": "Formola għall-bidla tal-password"
 }

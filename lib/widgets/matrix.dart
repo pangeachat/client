@@ -330,6 +330,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           scope.setUser(SentryUser(id: client.userID, name: client.userID)),
     );
     pangeaController = PangeaController(matrixState: this);
+    pangeaController.initControllers(client.userID);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
@@ -395,6 +396,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   StreamSubscription? _languageListener;
+  StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
     GrammarConstructsProvider.fetchFeaturesAndTags();
@@ -406,13 +408,31 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           analyticsDataService.updateService.onUpdateLanguages(update);
           GrammarConstructsProvider.fetchFeaturesAndTags();
         });
+
+    // Non-language settings changes (e.g. the app-copy-language immersion
+    // toggle) emit here, not on languageStream — re-apply the locale so the
+    // toggle takes effect.
+    _appLanguageSettingsListener?.cancel();
+    _appLanguageSettingsListener = pangeaController
+        .userController
+        .settingsUpdateStream
+        .stream
+        .listen((_) => _setAppLanguage());
   }
 
   void _setAppLanguage() {
     try {
-      Provider.of<LocaleProvider>(context, listen: false).setLocale(
-        pangeaController.userController.profile.userSettings.sourceLanguage,
-      );
+      final settings = pangeaController.userController.profile.userSettings;
+      // Immersion: show the app in the target language when the user opts in,
+      // otherwise their source/native language. Falls back to source (then
+      // system) if the target isn't set.
+      final appLanguage = settings.appLanguageIsTarget
+          ? (settings.targetLanguage ?? settings.sourceLanguage)
+          : settings.sourceLanguage;
+      Provider.of<LocaleProvider>(
+        context,
+        listen: false,
+      ).setLocale(appLanguage);
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -616,6 +636,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     linuxNotifications?.close();
     // #Pangea
     _languageListener?.cancel();
+    _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
     notifPermissionNotifier.dispose();
     // Pangea#

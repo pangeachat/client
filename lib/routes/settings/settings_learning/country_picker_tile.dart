@@ -106,9 +106,11 @@ class CountryPickerTile extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
-              CountryDisplayUtil.flagEmoji(country.name),
-              style: const TextStyle(fontSize: 25),
+            ExcludeSemantics(
+              child: Text(
+                CountryDisplayUtil.flagEmoji(country.name),
+                style: const TextStyle(fontSize: 25),
+              ),
             ),
             const SizedBox(width: 10),
             Text(

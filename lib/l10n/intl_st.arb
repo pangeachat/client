@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-16 19:02:48.587458",
+    "@@last_modified": "2026-07-18 11:06:07.653029",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Lenane la bothata",
     "languageListLabel": "Lenane la lipuo",
     "searchedResultsLabel": "Liphetho tsa patlo bakeng sa '{search}'",
-    "closeAddCoursePage": "Koala leqephe la ho eketsa thupelo"
+    "closeAddCoursePage": "Koala leqephe la ho eketsa thupelo",
+    "endPractice": "Fetsa boikoetliso",
+    "bodyLabel": "Likhetho tsa {page}",
+    "openDM": "Bula molaetsa o tobileng",
+    "openNewTab": "Bula tab e ncha",
+    "viewProfileImageLabel": "Bona setšoantšo sa boemo",
+    "profileImageLabel": "Setšoantšo sa boemo",
+    "actionsLabel": "Liketso",
+    "colorListLabel": "Lenane la mebala",
+    "chatAppearanceStyleLabel": "Ponahalo ea moqoqo ka mokhoa o khethiloeng",
+    "volumeLabel": "Molumo",
+    "listLabel": "Lenane la {description}",
+    "passwordFormLabel": "Foromo ea ho fetola phasewete"
 }

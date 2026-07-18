@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-13 10:06:52.051615",
+    "@@last_modified": "2026-07-18 11:06:08.639035",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -6683,8 +6683,6 @@
     "allow": "İzin ver",
     "deny": "Reddet",
     "enabledRenewal": "Abonelik Yenilemeyi Etkinleştir",
-    "subscriptionEndsOn": "Abonelik Şu Tarihte Sona Eriyor",
-    "subscriptionRenewsOn": "Abonelik Şu Tarihte Yenileniyor",
     "waitForSubscriptionChanges": "Aboneliğinizdeki değişikliklerin uygulamada yansıması biraz zaman alabilir.",
     "subscribeReadingAssistance": "Mesaj araçlarını açmak için abone olun",
     "aceDisplayName": "Achinese",
@@ -6959,14 +6957,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9950,5 +9940,17 @@
     "starsToUnlockObjectiveTitle": "Görev Başına Yıldız",
     "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
     "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
-    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin."
+    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin.",
+    "endPractice": "Alıştırmayı bitir",
+    "bodyLabel": "{page} seçenekleri",
+    "openDM": "Direkt mesajı aç",
+    "openNewTab": "Yeni sekmede aç",
+    "viewProfileImageLabel": "Profil resmini görüntüle",
+    "profileImageLabel": "Profil resmi",
+    "actionsLabel": "Eylemler",
+    "colorListLabel": "Renk listesi",
+    "chatAppearanceStyleLabel": "Seçilen stille sohbet görünümü",
+    "volumeLabel": "Ses",
+    "listLabel": "{description} listesi",
+    "passwordFormLabel": "Şifre değiştirme formu"
 }

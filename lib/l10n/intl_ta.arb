@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:14.084787",
+    "@@last_modified": "2026-07-18 11:06:08.484625",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -6484,8 +6484,6 @@
     "allow": "அனுமதிக்கவும்",
     "deny": "மறுக்கவும்",
     "enabledRenewal": "சந்தா புதுப்பிப்பை செயல்படுத்தவும்",
-    "subscriptionEndsOn": "சந்தா முடிவடைகிறது",
-    "subscriptionRenewsOn": "சந்தா புதுப்பிக்கப்படுகிறது",
     "waitForSubscriptionChanges": "உங்கள் சந்தாவிற்கு மாற்றங்கள் செயலியில் பிரதிபலிக்க சில நேரம் ஆகலாம்.",
     "subscribeReadingAssistance": "செய்தி கருவிகளை திறக்க சந்தா செய்யவும்",
     "aceDisplayName": "அசினீஸ்",
@@ -6760,14 +6758,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9741,5 +9731,17 @@
     "starsToUnlockObjectiveTitle": "ஒரு பணிக்கு நட்சத்திரங்கள்",
     "starsToUnlockObjectiveDesc": "ஒவ்வொரு பணியையும் முடிக்கத் தேவையான நட்சத்திரங்களின் எண்ணிக்கையை அமைக்கவும்",
     "maxStarsPerMissionWarning": "இந்த பாடத்திட்டத்தில் {maxValue} நட்சத்திரங்கள் மட்டுமே பெறக்கூடிய பணிகள் உள்ளன. தயவுசெய்து {maxValue} அல்லது அதற்குக் குறைவான எண்ணை உள்ளிடவும்.",
-    "removedFromCourseError": "நீங்கள் இந்தப் பாடத்திட்டத்திலிருந்து நீக்கப்பட்டுள்ளீர்கள். உங்கள் ஆசிரியரைத் தொடர்பு கொள்ளவும்."
+    "removedFromCourseError": "நீங்கள் இந்தப் பாடத்திட்டத்திலிருந்து நீக்கப்பட்டுள்ளீர்கள். உங்கள் ஆசிரியரைத் தொடர்பு கொள்ளவும்.",
+    "endPractice": "பயிற்சியை முடி",
+    "bodyLabel": "{page} விருப்பங்கள்",
+    "openDM": "நேரடி செய்தியைத் திற",
+    "openNewTab": "புதிய தாவலில் திற",
+    "viewProfileImageLabel": "சுயவிவரப் படத்தைப் பார்",
+    "profileImageLabel": "சுயவிவரப் படம்",
+    "actionsLabel": "செயல்கள்",
+    "colorListLabel": "வண்ணப் பட்டியல்",
+    "chatAppearanceStyleLabel": "தேர்ந்தெடுத்த பாணியுடன் அரட்டை தோற்றம்",
+    "volumeLabel": "ஒலி அளவு",
+    "listLabel": "{description} பட்டியல்",
+    "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்"
 }

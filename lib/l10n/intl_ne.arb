@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-16 17:19:21.055202",
+    "@@last_modified": "2026-07-18 11:06:04.241001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "कठिनाई सूची",
     "languageListLabel": "भाषा सूची",
     "searchedResultsLabel": "'{search}' को लागि खोज परिणामहरू",
-    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्"
+    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्",
+    "endPractice": "अभ्यास समाप्त गर्नुहोस्",
+    "bodyLabel": "{page} विकल्पहरू",
+    "openDM": "प्रत्यक्ष सन्देश खोल्नुहोस्",
+    "openNewTab": "नयाँ ट्याबमा खोल्नुहोस्",
+    "viewProfileImageLabel": "प्रोफाइल छवि हेर्नुहोस्",
+    "profileImageLabel": "प्रोफाइल छवि",
+    "actionsLabel": "कार्यहरू",
+    "colorListLabel": "रङ सूची",
+    "chatAppearanceStyleLabel": "चयन गरिएको शैलीको साथ च्याट उपस्थिति",
+    "volumeLabel": "भोल्युम",
+    "listLabel": "{description} सूची",
+    "passwordFormLabel": "पासवर्ड परिवर्तन फारम"
 }

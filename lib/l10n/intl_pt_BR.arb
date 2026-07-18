@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:11.282868",
+    "@@last_modified": "2026-07-18 11:06:05.358221",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -6557,8 +6557,6 @@
     "allow": "Permitir",
     "deny": "Negar",
     "enabledRenewal": "Ativar Renovação de Assinatura",
-    "subscriptionEndsOn": "A assinatura termina em",
-    "subscriptionRenewsOn": "A assinatura renova em",
     "waitForSubscriptionChanges": "As alterações na sua assinatura podem levar um momento para refletir no aplicativo.",
     "subscribeReadingAssistance": "Assine para desbloquear ferramentas de mensagem",
     "aceDisplayName": "Achinese",
@@ -6833,14 +6831,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9649,5 +9639,17 @@
     "starsToUnlockObjectiveTitle": "Estrelas por Missão",
     "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
     "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor."
+    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor.",
+    "endPractice": "Terminar prática",
+    "bodyLabel": "Opções de {page}",
+    "openDM": "Abrir mensagem direta",
+    "openNewTab": "Abrir num novo separador",
+    "viewProfileImageLabel": "Ver imagem de perfil",
+    "profileImageLabel": "Imagem de perfil",
+    "actionsLabel": "Ações",
+    "colorListLabel": "Lista de cores",
+    "chatAppearanceStyleLabel": "Aspeto do chat com o estilo escolhido",
+    "volumeLabel": "Volume",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulário de alteração de palavra-passe"
 }

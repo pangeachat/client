@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 class AnalyticsNavigationUtil {
@@ -22,6 +23,22 @@ class AnalyticsNavigationUtil {
     // actual (locked) session chat as a left room panel beside it. See
     // routing.instructions.md.
     final uri = GoRouterState.of(context).uri;
+
+    // While a section has a live practice session, its analytics summary and
+    // construct details are off-limits (no peeking at definitions
+    // mid-exercise) — the tap resumes the session instead. See
+    // routing.instructions.md § Practice is a persistent background session.
+    if (const {
+      ProgressIndicatorEnum.wordsUsed,
+      ProgressIndicatorEnum.morphsUsed,
+    }.contains(view)) {
+      final constructType = view!.constructType;
+      if (PracticeSessionHolder.instance.blocksAnalytics(constructType)) {
+        context.go(WorkspaceNav.openPractice(uri, constructType));
+        return;
+      }
+    }
+
     final panelOpen = parseOpenPanels(uri).right.any(
       (t) => const {
         PanelTypesEnum.analytics,

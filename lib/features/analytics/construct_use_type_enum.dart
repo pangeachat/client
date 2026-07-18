@@ -40,6 +40,9 @@ enum ConstructUseTypeEnum {
   incIGC,
   ignIGC,
 
+  // suggestions
+  sug,
+
   /// word meaning practice exercise
   corPA,
   ignPA,
@@ -129,6 +132,8 @@ enum ConstructUseTypeEnum {
         return L10n.of(context).constructUseCorIGCDesc;
       case ConstructUseTypeEnum.incIGC:
         return L10n.of(context).constructUseIncIGCDesc;
+      case ConstructUseTypeEnum.sug:
+        return L10n.of(context).constructUseSugDesc;
       case ConstructUseTypeEnum.corPA:
         return L10n.of(context).constructUseCorPADesc;
       case ConstructUseTypeEnum.ignPA:
@@ -251,6 +256,8 @@ enum ConstructUseTypeEnum {
         return Icons.format_color_text;
       case ConstructUseTypeEnum.bonus:
         return Icons.star;
+      case ConstructUseTypeEnum.sug:
+        return Icons.lightbulb_outline;
     }
   }
 
@@ -287,6 +294,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIt:
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.bonus:
+      case ConstructUseTypeEnum.sug:
         return 1;
 
       case ConstructUseTypeEnum.ignIt:
@@ -334,6 +342,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.ignIGC:
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.sug:
         return true;
 
       case ConstructUseTypeEnum.corPA:
@@ -383,6 +392,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.ignIGC:
       case ConstructUseTypeEnum.incIGC:
+      case ConstructUseTypeEnum.sug:
         return LearningSkillsEnum.writing;
       case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.ignWL:
@@ -444,6 +454,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.corGE:
+      case ConstructUseTypeEnum.sug:
         return SpaceAnalyticsSummaryEnum.numChoicesCorrect;
 
       case ConstructUseTypeEnum.incIt:
@@ -487,6 +498,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.sug:
         return true;
       default:
         return false;
@@ -504,6 +516,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.ignIGC:
+      case ConstructUseTypeEnum.sug:
         return true;
       default:
         return false;

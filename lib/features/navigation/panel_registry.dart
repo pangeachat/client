@@ -3,6 +3,32 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 /// Which column a panel belongs to, which fixes its role and its justification.
 enum PanelColumn { left, right }
 
+/// The three width families every panel draws from (#7572). Panels that can
+/// replace each other in a slot share a family, so navigating between them
+/// never changes the column's width — the only width step left is the
+/// deliberate list↔wide difference. Defined once here (not per-def literals)
+/// so the families can't drift apart.
+///
+///  - **list** — the thin index columns (the chat list, the DM-create picker).
+///  - **wide** — the live/content surfaces: a chat, a session, an activity or
+///    course card, and the course flow pages (details / invite / edit / add),
+///    which host forms and media and want the same room.
+///  - **tool** — the entire right column (settings, analytics + its details,
+///    practice), one width for every tool panel.
+abstract class PanelWidths {
+  static const double listMin = 300;
+  static const double listComfort = 340;
+  static const double listIdeal = 380;
+
+  static const double wideMin = 360;
+  static const double wideComfort = 480;
+  static const double wideIdeal = 720;
+
+  static const double toolMin = 360;
+  static const double toolComfort = 440;
+  static const double toolIdeal = 520;
+}
+
 /// Static layout metadata for a panel type. Pure data (no widgets), so the URL
 /// parser in `route_facts.dart` and the width allocator can read it without a
 /// widget binding; the widget builder is resolved separately by the shell.
@@ -115,18 +141,18 @@ sealed class PanelDef {
 
 class ChatsPanelDef extends PanelDef {
   const ChatsPanelDef({
-    super.minWidth = 300,
-    super.reasonableMinWidth = 340,
-    super.idealWidth = 380,
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
     super.priority = 30,
   }) : super(type: PanelTypesEnum.chats, column: PanelColumn.left);
 }
 
 class RoomPanelDef extends PanelDef {
   const RoomPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 480,
-    super.idealWidth = 720,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
     super.priority = 80,
   }) : super(
          type: PanelTypesEnum.room,
@@ -139,9 +165,9 @@ class RoomPanelDef extends PanelDef {
 
 class SessionPanelDef extends PanelDef {
   const SessionPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 480,
-    super.idealWidth = 720,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
   }) : super(
          type: PanelTypesEnum.session,
          column: PanelColumn.left,
@@ -155,9 +181,9 @@ class SessionPanelDef extends PanelDef {
 
 class ActivityPanelDef extends PanelDef {
   const ActivityPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 480,
-    super.idealWidth = 720,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
   }) : super(
          type: PanelTypesEnum.activity,
          column: PanelColumn.left,
@@ -168,22 +194,24 @@ class ActivityPanelDef extends PanelDef {
 }
 
 class CoursePanelDef extends PanelDef {
-  const CoursePanelDef({super.minWidth = 360, super.reasonableMinWidth = 480})
-    : super(
-        idealWidth: 720,
-        type: PanelTypesEnum.course,
-        column: PanelColumn.left,
-        priority: 60,
-        mapContent:
-            true, // selecting a course scopes the map (mobile: bottom sheet)
-      );
+  const CoursePanelDef({
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+  }) : super(
+         idealWidth: PanelWidths.wideIdeal,
+         type: PanelTypesEnum.course,
+         column: PanelColumn.left,
+         priority: 60,
+         mapContent:
+             true, // selecting a course scopes the map (mobile: bottom sheet)
+       );
 }
 
 class CoursePagePanelDef extends PanelDef {
   const CoursePagePanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 440,
-    super.idealWidth = 600,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
   }) : super(
          type: PanelTypesEnum.coursepage,
          column: PanelColumn.left,
@@ -196,9 +224,9 @@ class CoursePagePanelDef extends PanelDef {
 
 class AddCoursePanelDef extends PanelDef {
   const AddCoursePanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 440,
-    super.idealWidth = 600,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
   }) : super(
          type: PanelTypesEnum.addcourse,
          column: PanelColumn.left,
@@ -210,9 +238,9 @@ class AddCoursePanelDef extends PanelDef {
 
 class AddCoursePagePanelDef extends PanelDef {
   const AddCoursePagePanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 440,
-    super.idealWidth = 600,
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
   }) : super(
          type: PanelTypesEnum.addcoursepage,
          column: PanelColumn.left,
@@ -226,9 +254,9 @@ class AddCoursePagePanelDef extends PanelDef {
 
 class SettingsPanelDef extends PanelDef {
   const SettingsPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 440,
-    super.idealWidth = 520,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.settings,
          column: PanelColumn.right,
@@ -238,12 +266,12 @@ class SettingsPanelDef extends PanelDef {
 
 class SettingsPagePanelDef extends PanelDef {
   const SettingsPagePanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 440,
-    // Match the `settings` menu width so a page folded into the menu's slot
-    // (under width pressure) doesn't resize and jump the close/back icon
-    // when drilling in or out (#7146).
-    super.idealWidth = 520,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    // Same tool family as the `settings` menu so a page folded into the menu's
+    // slot (under width pressure) doesn't resize and jump the close/back icon
+    // when drilling in or out (#7146) — now guaranteed by the shared family.
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.settingspage,
          column: PanelColumn.right,
@@ -256,9 +284,9 @@ class SettingsPagePanelDef extends PanelDef {
 
 class AnalyticsPanelDef extends PanelDef {
   const AnalyticsPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 420,
-    super.idealWidth = 488,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.analytics,
          column: PanelColumn.right,
@@ -268,9 +296,9 @@ class AnalyticsPanelDef extends PanelDef {
 
 class VocabPanelDef extends PanelDef {
   const VocabPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 420,
-    super.idealWidth = 488,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.vocab,
          column: PanelColumn.right,
@@ -282,9 +310,9 @@ class VocabPanelDef extends PanelDef {
 
 class GrammarPanelDef extends PanelDef {
   const GrammarPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 420,
-    super.idealWidth = 488,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.grammar,
          column: PanelColumn.right,
@@ -296,9 +324,9 @@ class GrammarPanelDef extends PanelDef {
 
 class ReviewPanelDef extends PanelDef {
   const ReviewPanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 420,
-    super.idealWidth = 488,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.review,
          column: PanelColumn.right,
@@ -308,9 +336,9 @@ class ReviewPanelDef extends PanelDef {
 
 class PracticePanelDef extends PanelDef {
   const PracticePanelDef({
-    super.minWidth = 360,
-    super.reasonableMinWidth = 420,
-    super.idealWidth = 520,
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
   }) : super(
          type: PanelTypesEnum.practice,
          column: PanelColumn.right,
@@ -321,9 +349,9 @@ class PracticePanelDef extends PanelDef {
 
 class NewPrivateChatPanelDef extends PanelDef {
   const NewPrivateChatPanelDef({
-    super.minWidth = 300,
-    super.reasonableMinWidth = 380,
-    super.idealWidth = 400,
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
   }) : super(
          type: PanelTypesEnum.newprivatechat,
          column: PanelColumn.left,

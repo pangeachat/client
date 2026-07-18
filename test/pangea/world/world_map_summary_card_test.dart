@@ -14,6 +14,17 @@ import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 void main() {
   const bot = '@bot:test.pangea.chat';
 
+  setUp(() {
+    // Thin refs resolve via plan hydration in production; headless tests have
+    // no repo context, so pin resolution to "still hydrating".
+    RoomSummaryResponse.referencePlanResolver = (_) => null;
+  });
+
+  tearDown(() {
+    RoomSummaryResponse.referencePlanResolver =
+        RoomSummaryResponse.defaultReferencePlanResolver;
+  });
+
   RoomSummaryResponse summary(Map<String, String> members) =>
       RoomSummaryResponse(membershipSummary: members, activityId: 'act-1');
 
@@ -29,8 +40,8 @@ void main() {
       ]);
     });
 
-    test('a thin-ref preview (no embedded plan) shows zero open slots — seats '
-        'unknown, so nothing rather than phantoms', () {
+    test('a thin-ref preview whose plan has not hydrated shows zero open '
+        'slots — seats unknown, so nothing rather than phantoms', () {
       expect(summary({'@ana:pangea.chat': 'join'}).openSlots, 0);
     });
   });

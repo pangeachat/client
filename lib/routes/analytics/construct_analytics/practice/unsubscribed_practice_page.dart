@@ -2,12 +2,13 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class _DecorativeStar extends StatelessWidget {
   final double size;
@@ -146,12 +147,12 @@ class UnsubscribedPracticePage extends StatelessWidget {
             child: PressableButton(
               borderRadius: BorderRadius.circular(36),
               color: primaryColor,
-              onPressed: () {
-                SubscriptionPaywall.show(
-                  context,
-                  userID: Matrix.of(context).client.userID,
-                );
-              },
+              onPressed: () => context.go(
+                WorkspaceNav.openSettings(
+                  GoRouterState.of(context).uri,
+                  page: 'subscription',
+                ),
+              ),
               builder: (context, depressed, shadowColor) => Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(

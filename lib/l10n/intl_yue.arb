@@ -1273,7 +1273,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-13 10:05:38.977247",
+    "@@last_modified": "2026-07-18 11:06:10.067872",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -7340,8 +7340,6 @@
     "allow": "允許",
     "deny": "拒絕",
     "enabledRenewal": "啟用訂閱續訂",
-    "subscriptionEndsOn": "訂閱於以下日期結束",
-    "subscriptionRenewsOn": "訂閱於以下日期續訂",
     "waitForSubscriptionChanges": "您的訂閱更改可能需要一段時間才能在應用程式中反映。",
     "subscribeReadingAssistance": "訂閱以解鎖消息工具",
     "aceDisplayName": "Achinese",
@@ -7616,14 +7614,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10602,17 @@
     "starsToUnlockObjectiveTitle": "每個任務的星數",
     "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
     "maxStarsPerMissionWarning": "此課程的任務最多只能獲得 {maxValue} 顆星。請輸入一個小於或等於 {maxValue} 的數字。",
-    "removedFromCourseError": "您已被從此課程中移除。請聯絡您的老師。"
+    "removedFromCourseError": "您已被從此課程中移除。請聯絡您的老師。",
+    "endPractice": "結束練習",
+    "bodyLabel": "{page} 選項",
+    "openDM": "開啟私人訊息",
+    "openNewTab": "在新分頁開啟",
+    "viewProfileImageLabel": "檢視個人檔案圖片",
+    "profileImageLabel": "個人檔案圖片",
+    "actionsLabel": "動作",
+    "colorListLabel": "顏色列表",
+    "chatAppearanceStyleLabel": "聊天室外觀樣式",
+    "volumeLabel": "音量",
+    "listLabel": "{description} 列表",
+    "passwordFormLabel": "更改密碼表格"
 }

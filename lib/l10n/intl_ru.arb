@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-13 10:08:19.663033",
+    "@@last_modified": "2026-07-18 11:06:06.109765",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -7467,8 +7467,6 @@
     "allow": "Разрешить",
     "deny": "Запретить",
     "enabledRenewal": "Включить автоматическое продление подписки",
-    "subscriptionEndsOn": "Подписка заканчивается",
-    "subscriptionRenewsOn": "Подписка продлевается",
     "waitForSubscriptionChanges": "Изменения в вашей подписке могут отобразиться в приложении с небольшой задержкой.",
     "subscribeReadingAssistance": "Подпишитесь, чтобы разблокировать инструменты сообщений",
     "aceDisplayName": "Ачехский",
@@ -7743,14 +7741,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10623,5 +10613,17 @@
     "starsToUnlockObjectiveTitle": "Звезды за миссию",
     "starsToUnlockObjectiveDesc": "Установите количество звезд, необходимое для выполнения каждой миссии",
     "maxStarsPerMissionWarning": "В этом курсе есть миссии, в которых можно заработать только {maxValue} звезд. Введите число, меньшее или равное {maxValue}.",
-    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем."
+    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем.",
+    "endPractice": "Завершить практику",
+    "bodyLabel": "Настройки {page}",
+    "openDM": "Открыть личное сообщение",
+    "openNewTab": "Открыть в новой вкладке",
+    "viewProfileImageLabel": "Посмотреть изображение профиля",
+    "profileImageLabel": "Изображение профиля",
+    "actionsLabel": "Действия",
+    "colorListLabel": "Список цветов",
+    "chatAppearanceStyleLabel": "Вид чата с выбранным стилем",
+    "volumeLabel": "Громкость",
+    "listLabel": "Список {description}",
+    "passwordFormLabel": "Форма смены пароля"
 }
