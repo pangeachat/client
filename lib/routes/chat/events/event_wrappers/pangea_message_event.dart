@@ -342,9 +342,14 @@ class PangeaMessageEvent {
 
     if (rawEmbeddedStt != null) {
       try {
-        return SpeechToTextResponseModel.fromJson(
+        final stt = SpeechToTextResponseModel.fromJson(
           Map<String, dynamic>.from(rawEmbeddedStt),
         );
+        // An exhausted-fallback response parses to a valid model with no
+        // results instead of throwing (R0-2). Callers of this method have
+        // always treated a non-null return as "has a usable transcript", so
+        // fold the empty case into null here rather than at every call site.
+        return stt.results.isEmpty ? null : stt;
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,
@@ -356,7 +361,8 @@ class PangeaMessageEvent {
       }
     }
 
-    return _speechToTextRepresentation?.content.speechToText;
+    final repStt = _speechToTextRepresentation?.content.speechToText;
+    return (repStt == null || repStt.results.isEmpty) ? null : repStt;
   }
 
   SttTranslationModel? _getSttTranslationLocal(String langCode) {
@@ -480,8 +486,18 @@ class PangeaMessageEvent {
       throw result.error!;
     }
 
-    _sendSttRepresentationEvent(result.result!);
-    return result.result!;
+    final stt = result.result!;
+    if (stt.results.isEmpty) {
+      // Exhausted-fallback: fromJson no longer throws for `results: []`
+      // (R0-2), but this on-demand request has nothing usable to hand back.
+      // Throw here so the existing AsyncLoader/AsyncError "transcription
+      // failed" UX (select_mode_controller.dart, overlay_message.dart) keeps
+      // working instead of receiving an empty model it doesn't guard for.
+      throw Exception('SpeechToText: no transcript available for audio');
+    }
+
+    _sendSttRepresentationEvent(stt);
+    return stt;
   }
 
   Future<String> requestSttTranslation({

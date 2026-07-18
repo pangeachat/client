@@ -178,48 +178,35 @@ void main() {
   });
 
   group('target contract (R0-2 implements these)', () {
-    test(
-      'word times pass through as true milliseconds',
-      () {
-        final choreo = _loadJson('choreo_response_normal.json');
-        final model = SpeechToTextResponseModel.fromJson(
-          Map<String, dynamic>.from(choreo),
-        );
-        final mundo = model.transcript.sttTokens[1];
-        expect(mundo.startTime!.inMilliseconds, 480);
-        expect(mundo.endTime!.inMilliseconds, 960);
+    test('word times pass through as true milliseconds', () {
+      final choreo = _loadJson('choreo_response_normal.json');
+      final model = SpeechToTextResponseModel.fromJson(
+        Map<String, dynamic>.from(choreo),
+      );
+      final mundo = model.transcript.sttTokens[1];
+      expect(mundo.startTime!.inMilliseconds, 480);
+      expect(mundo.endTime!.inMilliseconds, 960);
 
-        final expectedEmbed =
-            _loadJson('matrix_event_content_target.json')['user_stt']
-                as Map<String, dynamic>;
-        expect(model.toJson()['results'], equals(expectedEmbed['results']));
-      },
-      skip:
-          'R0-2: stop multiplying server milliseconds by 1000 on parse/serialize',
-    );
+      final expectedEmbed =
+          _loadJson('matrix_event_content_target.json')['user_stt']
+              as Map<String, dynamic>;
+      expect(model.toJson()['results'], equals(expectedEmbed['results']));
+    });
 
-    test(
-      'service provenance is preserved end to end',
-      () {
-        final choreo = _loadJson('choreo_response_normal.json');
-        final roundTripped = SpeechToTextResponseModel.fromJson(
-          Map<String, dynamic>.from(choreo),
-        ).toJson();
-        expect(roundTripped['service'], 'google');
-      },
-      skip: 'R0-2: read and re-emit the top-level service field',
-    );
+    test('service provenance is preserved end to end', () {
+      final choreo = _loadJson('choreo_response_normal.json');
+      final roundTripped = SpeechToTextResponseModel.fromJson(
+        Map<String, dynamic>.from(choreo),
+      ).toJson();
+      expect(roundTripped['service'], 'google');
+    });
 
-    test(
-      'empty exhausted-fallback response is handled without throwing',
-      () {
-        final empty = _loadJson('choreo_response_empty.json');
-        final model = SpeechToTextResponseModel.fromJson(
-          Map<String, dynamic>.from(empty),
-        );
-        expect(model.results, isEmpty);
-      },
-      skip: 'R0-2: parse an empty response gracefully instead of throwing',
-    );
+    test('empty exhausted-fallback response is handled without throwing', () {
+      final empty = _loadJson('choreo_response_empty.json');
+      final model = SpeechToTextResponseModel.fromJson(
+        Map<String, dynamic>.from(empty),
+      );
+      expect(model.results, isEmpty);
+    });
   });
 }

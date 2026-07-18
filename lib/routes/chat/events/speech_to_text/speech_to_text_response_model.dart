@@ -11,31 +11,42 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 class SpeechToTextResponseModel extends BaseResponse {
   final List<SpeechToTextResult> results;
 
-  SpeechToTextResponseModel({required this.results});
+  /// The ASR provider that produced this transcript (e.g. `google`,
+  /// `whisper`). Nullable: older persisted events were written before this
+  /// field existed on the wire, so it may be absent on historical reads.
+  final String? service;
+
+  SpeechToTextResponseModel({required this.results, this.service});
 
   Transcript get transcript => results.first.transcripts.first;
 
   String get langCode => results.first.transcripts.first.langCode;
 
   factory SpeechToTextResponseModel.fromJson(Map<String, dynamic> json) {
-    final results = json['results'] as List;
-    if (results.isEmpty) {
-      throw Exception('SpeechToTextModel.fromJson: results is empty');
-    }
+    // An exhausted-fallback choreo response is `{"results": [], ...}` --
+    // HTTP 200, not an error. That's a valid, empty transcript, not a parse
+    // failure, so it must not throw here (R0-2); the caller decides whether
+    // an empty model is usable.
     return SpeechToTextResponseModel(
       results: (json['results'] as List)
           .map((e) => SpeechToTextResult.fromJson(e))
           .toList(),
+      service: json['service'] as String?,
     );
   }
 
   @override
   Map<String, dynamic> toJson() => {
     "results": results.map((e) => e.toJson()).toList(),
+    if (service != null) "service": service,
   };
 
   List<OneConstructUse> constructs(String roomId, String eventId) {
     final List<OneConstructUse> constructs = [];
+    // Exhausted-fallback model: nothing was transcribed, so there are no
+    // constructs to score. `transcript` assumes at least one result and
+    // would throw otherwise.
+    if (results.isEmpty) return constructs;
     final metadata = ConstructUseMetaData(
       roomId: roomId,
       eventId: eventId,
@@ -136,14 +147,16 @@ class STTToken {
   }
 
   factory STTToken.fromJson(Map<String, dynamic> json) {
-    // debugPrint('STTToken.fromJson: $json');
+    // The choreographer already sends start/end time as integer
+    // milliseconds; pass them through as-is (R0-2). Previously this
+    // multiplied by 1000, inflating a true 480ms into 480000ms.
     return STTToken(
       token: PangeaToken.fromJson(json['token']),
       startTime: json['start_time'] != null
-          ? Duration(milliseconds: (json['start_time'] * 1000).round())
+          ? Duration(milliseconds: (json['start_time'] as num).round())
           : null,
       endTime: json['end_time'] != null
-          ? Duration(milliseconds: (json['end_time'] * 1000).round())
+          ? Duration(milliseconds: (json['end_time'] as num).round())
           : null,
       confidence: json[ChoreoConstants.confidence],
     );

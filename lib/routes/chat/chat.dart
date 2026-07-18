@@ -2725,7 +2725,11 @@ class ChatController extends State<ChatPageWithRoom>
     SpeechToTextResponseModel stt,
   ) async {
     try {
-      if (stt.transcript.sttTokens.isEmpty) return;
+      // Exhausted-fallback: fromJson no longer throws for `results: []`
+      // (R0-2), so a voice message can now carry a real-but-empty stt. There
+      // is nothing to score; `transcript` assumes at least one result and
+      // would throw otherwise.
+      if (stt.results.isEmpty || stt.transcript.sttTokens.isEmpty) return;
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 
