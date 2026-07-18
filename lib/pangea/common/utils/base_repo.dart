@@ -68,7 +68,7 @@ abstract class BaseRepo<
     final result = await future;
 
     final response = result.result;
-    if (response != null) {
+    if (response != null && shouldCache(response)) {
       await setCached(request, response);
     }
 
@@ -77,6 +77,26 @@ abstract class BaseRepo<
   }
 
   Future<Response> fetch(Requests req, TRequest request);
+
+  /// Whether [response] should be written to the cache. Defaults to caching
+  /// every successful response; subclasses override to refuse memoizing a
+  /// success that must not be pinned for the whole [cacheDuration] — e.g. an
+  /// exhausted-fallback STT response with empty results, which pre-R0-2 threw
+  /// (and so was never cached) but now parses gracefully and would otherwise
+  /// starve retries. Annotated [visibleForTesting] so the concrete policy can
+  /// be asserted directly.
+  @protected
+  @visibleForTesting
+  bool shouldCache(TResponse response) => true;
+
+  /// Builds the [Requests] carrier for a fetch. Isolated so the Matrix
+  /// god-object token read stays out of the hot path's signature and tests can
+  /// drive [get] without booting [MatrixState].
+  @protected
+  @visibleForTesting
+  Requests createRequests() => Requests(
+    accessToken: MatrixState.pangeaController.userController.accessToken,
+  );
 
   /// Sentry level for a fetch failure. Timeouts and confirmed 404s are
   /// warnings — a 404 means the resource is gone (expected for e.g. removed
@@ -89,9 +109,7 @@ abstract class BaseRepo<
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
-      final Requests req = Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
+      final Requests req = createRequests();
 
       final Response res = await fetch(req, request).timeout(timeout);
       if (res.statusCode >= 400) {

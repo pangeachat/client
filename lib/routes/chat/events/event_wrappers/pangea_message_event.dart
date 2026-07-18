@@ -333,6 +333,23 @@ class PangeaMessageEvent {
     return null;
   }
 
+  /// Selects the usable STT for an audio message. Prefers a non-empty
+  /// embedded transcript; an empty (exhausted-fallback) or unparseable embed
+  /// must fall through to a representation the bot may have re-transcribed
+  /// later, rather than short-circuiting to null. Mirrors the bot's
+  /// `_is_valid_stt_response` fall-through gate (get_audio_stt.py).
+  @visibleForTesting
+  static SpeechToTextResponseModel? selectUsableStt({
+    required SpeechToTextResponseModel? embedded,
+    required SpeechToTextResponseModel? representation,
+  }) {
+    if (embedded != null && embedded.results.isNotEmpty) return embedded;
+    if (representation != null && representation.results.isNotEmpty) {
+      return representation;
+    }
+    return null;
+  }
+
   SpeechToTextResponseModel? getSpeechToTextLocal() {
     // Check for STT embedded directly in the audio event content
     // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
@@ -340,29 +357,28 @@ class PangeaMessageEvent {
         event.content.tryGetMap(MessageConstants.userStt) ??
         event.content.tryGetMap(MessageConstants.botTranscription);
 
+    SpeechToTextResponseModel? embedded;
     if (rawEmbeddedStt != null) {
       try {
-        final stt = SpeechToTextResponseModel.fromJson(
+        embedded = SpeechToTextResponseModel.fromJson(
           Map<String, dynamic>.from(rawEmbeddedStt),
         );
-        // An exhausted-fallback response parses to a valid model with no
-        // results instead of throwing (R0-2). Callers of this method have
-        // always treated a non-null return as "has a usable transcript", so
-        // fold the empty case into null here rather than at every call site.
-        return stt.results.isEmpty ? null : stt;
       } catch (err, s) {
+        // A parse error on the embed is not fatal: fall through to a
+        // representation that may hold a valid transcript.
         ErrorHandler.logError(
           e: err,
           s: s,
           data: {"event": _event.toJson()},
           m: "error parsing embedded stt",
         );
-        return null;
       }
     }
 
-    final repStt = _speechToTextRepresentation?.content.speechToText;
-    return (repStt == null || repStt.results.isEmpty) ? null : repStt;
+    return selectUsableStt(
+      embedded: embedded,
+      representation: _speechToTextRepresentation?.content.speechToText,
+    );
   }
 
   SttTranslationModel? _getSttTranslationLocal(String langCode) {
