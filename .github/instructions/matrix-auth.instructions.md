@@ -67,12 +67,11 @@ echo "$MATRIX_TOKEN"
 
 ### Choreo API
 
-Choreo requires **both** the Matrix token and the API key (from `CHOREO_API_KEY` in `client/.env`):
+Choreo gates on the Matrix token alone — it validates the bearer via Synapse `whoami` plus the RevenueCat entitlement check, and reads no API-key header:
 
 ```sh
 curl -s 'https://api.staging.pangea.chat/choreo/<endpoint>' \
-  -H "Authorization: Bearer $MATRIX_TOKEN" \
-  -H 'api-key: <CHOREO_API_KEY>'
+  -H "Authorization: Bearer $MATRIX_TOKEN"
 ```
 
 ### Synapse Client-Server API
