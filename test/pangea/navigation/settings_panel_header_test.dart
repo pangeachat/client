@@ -71,8 +71,14 @@ void main() {
     });
 
     test('classic pages resolve to themselves', () {
-      expect(SettingsPageEnum.fromString('learning'), SettingsPageEnum.learning);
-      expect(SettingsPageEnum.fromString('security'), SettingsPageEnum.security);
+      expect(
+        SettingsPageEnum.fromString('learning'),
+        SettingsPageEnum.learning,
+      );
+      expect(
+        SettingsPageEnum.fromString('security'),
+        SettingsPageEnum.security,
+      );
       expect(
         SettingsPageEnum.fromString('security/password'),
         SettingsPageEnum.password,
