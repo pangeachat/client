@@ -18,6 +18,14 @@ enum SettingsPageEnum {
     if (path != null && path.contains('security/ignorelist')) {
       return SettingsPageEnum.ignore;
     }
+    // The subscription family is one page family with several leaves
+    // (`subscription/history`, `/discount`, `/selected`); they all render their
+    // own app bar, so every leaf must resolve here rather than falling through
+    // to `menu` — a leaf that resolved to `menu` would take the shared header
+    // AND draw its own (double header).
+    if (path != null && path.startsWith('subscription')) {
+      return SettingsPageEnum.subscription;
+    }
     switch (path) {
       case 'learning':
         return SettingsPageEnum.learning;
@@ -74,8 +82,18 @@ enum SettingsPageEnum {
     }
   }
 
+  /// Whether the panel wraps this page in the shared [PanelCardWithHeader]
+  /// chrome (X/back + title). **The wrapper is the default**: a settings view
+  /// that renders no chrome of its own would otherwise have no title and no way
+  /// out. Opt out ONLY for a page that renders its own header and takes the
+  /// panel's `closeButton` — otherwise it draws two. See
+  /// routing.instructions.md § Closing a panel.
   bool get addHeader => switch (this) {
+    // Own PanelHeader with a trailing add-email action.
     SettingsPageEnum.email => false,
+    // The subscription family: each leaf builds its own AppBar so it can carry
+    // a leaf-specific title (e.g. the selected plan) the token can't express.
+    SettingsPageEnum.subscription => false,
     _ => true,
   };
 }
