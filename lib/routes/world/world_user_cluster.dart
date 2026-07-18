@@ -287,7 +287,7 @@ class _PowerupsPill extends StatelessWidget {
 /// The displayed count abbreviates above 999 ([compactCount]) so the pill
 /// never outgrows the allocator's fixed cluster gutter; the semantics label
 /// carries the exact count.
-class ClusterTrackerButton extends StatelessWidget {
+class ClusterTrackerButton extends StatefulWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
   final VoidCallback onTap;
@@ -307,6 +307,23 @@ class ClusterTrackerButton extends StatelessWidget {
     this.fontSize = 16,
     super.key,
   });
+
+  @override
+  State<ClusterTrackerButton> createState() => _ClusterTrackerButtonState();
+}
+
+class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
+  ProgressIndicatorEnum get indicator => widget.indicator;
+  int get count => widget.count;
+  VoidCallback get onTap => widget.onTap;
+  double get horizontalPadding => widget.horizontalPadding;
+  double get iconSize => widget.iconSize;
+  double get fontSize => widget.fontSize;
+
+  /// Hover feedback for the live-practice badge: the fill brightens to full
+  /// opacity (the gold ink highlight is suppressed there — a translucent gold
+  /// wash over solid primary read as no feedback at all).
+  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -340,7 +357,10 @@ class ClusterTrackerButton extends StatelessWidget {
           excludeFromSemantics: true,
           child: InkWell(
             onTap: onTap,
-            hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
+            onHover: (h) => setState(() => _hovered = h),
+            hoverColor: liveSessionStart != null
+                ? Colors.transparent
+                : AppConfig.goldByTheme(context).withAlpha(50),
             borderRadius: BorderRadius.circular(100),
             child: Semantics(
               button: true,
@@ -348,39 +368,46 @@ class ClusterTrackerButton extends StatelessWidget {
               // abbreviation.
               label: semanticsLabel,
               excludeSemantics: true,
-              child: Padding(
+              // While a session is live the badge takes the button's place:
+              // ONE stadium fill on exactly the hover-highlight geometry
+              // (same radius, same padded bounds), practice icon over the
+              // running timer inside it. Painted as INK (not a Container) so
+              // Material's press splash renders on top of the fill — the same
+              // white flash the sibling trackers give.
+              child: Ink(
+                decoration: liveSessionStart != null
+                    ? BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary.withValues(
+                          alpha: _hovered ? 1.0 : 0.75,
+                        ),
+                        borderRadius: BorderRadius.circular(100),
+                      )
+                    : null,
                 padding: EdgeInsets.symmetric(
                   horizontal: horizontalPadding,
                   vertical: 9,
                 ),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(indicator.icon, size: iconSize),
-                        const SizedBox(height: 3),
-                        Text(
-                          compactCount(count),
-                          style: TextStyle(
-                            fontSize: fontSize,
-                            height: 1.1,
-                            fontWeight: FontWeight.w600,
+                child: liveSessionStart != null
+                    ? PracticeSessionBadge(
+                        startedAt: liveSessionStart,
+                        iconSize: iconSize,
+                        fontSize: fontSize,
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(indicator.icon, size: iconSize),
+                          const SizedBox(height: 3),
+                          Text(
+                            compactCount(count),
+                            style: TextStyle(
+                              fontSize: fontSize,
+                              height: 1.1,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    if (liveSessionStart != null)
-                      Positioned(
-                        top: 0,
-                        child: PracticeSessionBadge(
-                          startedAt: liveSessionStart,
-                        ),
+                        ],
                       ),
-                  ],
-                ),
               ),
             ),
           ),
