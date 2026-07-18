@@ -7,7 +7,7 @@
           "lang_code": "es",
           "stt_tokens": [
             {
-              "confidence": 10000,
+              "confidence": 100,
               "end_time": 480,
               "start_time": 0,
               "token": {
@@ -31,7 +31,7 @@
               }
             },
             {
-              "confidence": 10000,
+              "confidence": 100,
               "end_time": 960,
               "start_time": 480,
               "token": {

@@ -11,7 +11,7 @@ the shared source of truth so the three repos cannot silently drift.
 | File | Producer | What it freezes |
 |---|---|---|
 | `choreo_response_normal.json` | choreographer `SpeechToTextResponse` | Multi-token Google result: integer-millisecond word times, 0-100 word confidences, top-level `service`. |
-| `choreo_response_whisper_fabricated_confidence.json` | choreographer `SpeechToTextResponse` | Whisper path where the fabricated per-word confidence `100` double-scales to `10000` (defect at `word_info_to_stt.py`), while transcript-level confidence stays `100`. |
+| `choreo_response_whisper_fabricated_confidence.json` | choreographer `SpeechToTextResponse` | Whisper path: fabricated per-word confidence `1.0` (0-1 scale, matching Google/Deepgram) converts to a truthful `100` per token; transcript-level confidence stays `100`. Fixed R0-2 — before the fix the fabricated confidence was already 0-100 and double-scaled to `10000` (defect at `word_info_to_stt.py`). |
 | `choreo_response_empty.json` | choreographer `SpeechToTextResponse` | Exhausted-fallback empty response: `{"results": [], "service": ...}`. |
 | `matrix_event_content_current.json` | client (`chat.dart`) | The `m.audio` event content the client builds today. `user_stt` carries word times **inflated x1000** and **no `service`** (`speech_to_text_response_model.dart`). |
 | `matrix_event_content_target.json` | client (target) | Same event with the R0-2 fixes applied: **true integer-millisecond** word times, 0-100 confidence passthrough, and `service` **preserved**. |
@@ -40,7 +40,11 @@ defects).
 
 1. **1000x timestamp inflation** — client parse/serialize multiplies server
    milliseconds by 1000. Target: pass milliseconds through unchanged.
-2. **Confidence 10000 double-scale** — choreo double-scales an already-0-100
-   fabricated word confidence. Target: token confidence stays 0-100.
+2. **Confidence 10000 double-scale — FIXED (R0-2).** The choreographer no
+   longer double-scales word confidence: Whisper's fabricated per-word
+   confidence now matches the Google/Deepgram 0-1 `WordInfo.confidence`
+   contract at the source (`openai_speech_to_text.py`), so the existing 0-1 ->
+   0-100 conversion in `word_info_to_stt.py` is truthful for every provider.
+   Token confidence stays 0-100.
 3. **Dropped `service` provenance** — the client (and bot) models omit the
    top-level `service`. Target: preserve it end to end.
