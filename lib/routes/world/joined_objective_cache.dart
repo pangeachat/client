@@ -110,8 +110,7 @@ class JoinedObjectiveCache {
         pinnedByObjective: modes[uuid]?.pinnedActivitiesByObjective,
       ),
       starsToUnlockOf: (uuid) =>
-          modes[uuid]?.starsToUnlockObjective ??
-          kDefaultStarsToUnlockObjective,
+          modes[uuid]?.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective,
       onError: onError,
     );
   }

@@ -44,8 +44,10 @@ void main() {
     },
   );
 
-  QuestActivity activity(String id, {int goals = 3}) =>
-      QuestActivity(activityId: id, plan: plan(id, goals: goals));
+  QuestActivity activity(String id, {int goals = 3}) => QuestActivity(
+    activityId: id,
+    plan: plan(id, goals: goals),
+  );
 
   QuestOutline outline(Map<String, List<QuestActivity>> activitiesByLo) =>
       QuestOutline(
@@ -65,10 +67,7 @@ void main() {
         groups: [
           for (final entry in activitiesByLo.entries)
             QuestObjectiveGroup(
-              objective: LearningObjective(
-                id: entry.key,
-                objective: entry.key,
-              ),
+              objective: LearningObjective(id: entry.key, objective: entry.key),
               activities: entry.value,
             ),
         ],
@@ -144,11 +143,9 @@ void main() {
       final o = outline({
         'lo-1': [activity('a1', goals: 4), activity('a2', goals: 5)],
       });
-      final projected = o
-          .restrictedTo({
-            'lo-1': ['a1'],
-          })
-          .toCourseLoOutline();
+      final projected = o.restrictedTo({
+        'lo-1': ['a1'],
+      }).toCourseLoOutline();
       expect(projected.activityIdsByLo['lo-1'], {'a1'});
       expect(projected.earnableByActivity.containsKey('a2'), isFalse);
       expect(projected.earnableByActivity['a1'], 4);
@@ -162,11 +159,9 @@ void main() {
       });
       final resolution = resolveProgression(
         outlines: [
-          o
-              .restrictedTo({
-                'lo-1': ['a1'],
-              })
-              .toCourseLoOutline(),
+          o.restrictedTo({
+            'lo-1': ['a1'],
+          }).toCourseLoOutline(),
         ],
         starsByActivity: {'a1': 2, 'a2': 5},
       );
