@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-18 11:06:06.406666",
+    "@@last_modified": "2026-07-18 13:35:13.331470",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9323,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učím sa...",
     "alreadySpeak": "Už hovorím...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10602,5 +10601,12 @@
     "chatAppearanceStyleLabel": "Vzhľad chatu so zvoleným štýlom",
     "volumeLabel": "Hlasitosť",
     "listLabel": "Zoznam {description}",
-    "passwordFormLabel": "Formulár na zmenu hesla"
+    "passwordFormLabel": "Formulár na zmenu hesla",
+    "searchLanguagesHint": "Hľadať jazyky",
+    "searchCountriesHint": "Hľadať krajiny",
+    "searchVocabHint": "Hľadať slovnú zásobu",
+    "searchUsersHint": "Hľadať používateľov",
+    "searchMessagesHint": "Hľadať správy",
+    "searchChatsHint": "Hľadať chaty",
+    "searchActivitiesHint": "Hľadať aktivity"
 }

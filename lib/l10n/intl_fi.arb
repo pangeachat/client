@@ -3548,7 +3548,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-18 11:05:56.677871",
+    "@@last_modified": "2026-07-18 13:35:06.251323",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8409,7 +8409,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Olen oppimassa...",
     "alreadySpeak": "Puhun jo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9688,5 +9687,12 @@
     "chatAppearanceStyleLabel": "Keskustelun ulkoasu valitulla tyylillä",
     "volumeLabel": "Äänenvoimakkuus",
     "listLabel": "{description}-lista",
-    "passwordFormLabel": "Vaihda salasana -lomake"
+    "passwordFormLabel": "Vaihda salasana -lomake",
+    "searchLanguagesHint": "Hae kieliä",
+    "searchCountriesHint": "Hae maita",
+    "searchVocabHint": "Hae sanastoa",
+    "searchUsersHint": "Hae käyttäjiä",
+    "searchMessagesHint": "Hae viestejä",
+    "searchChatsHint": "Hae keskusteluja",
+    "searchActivitiesHint": "Hae aktiviteetteja"
 }

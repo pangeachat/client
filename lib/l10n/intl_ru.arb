@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-18 11:06:06.109765",
+    "@@last_modified": "2026-07-18 13:35:13.227674",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -8990,7 +8990,6 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Какой язык вы изучаете?",
-    "searchLanguagesHint": "Поиск целевых языков",
     "@onboardingLanguagesTitle": {
         "type": "String",
         "placeholders": {}
@@ -10625,5 +10624,12 @@
     "chatAppearanceStyleLabel": "Вид чата с выбранным стилем",
     "volumeLabel": "Громкость",
     "listLabel": "Список {description}",
-    "passwordFormLabel": "Форма смены пароля"
+    "passwordFormLabel": "Форма смены пароля",
+    "searchLanguagesHint": "Поиск языков",
+    "searchCountriesHint": "Поиск стран",
+    "searchVocabHint": "Поиск слов",
+    "searchUsersHint": "Поиск пользователей",
+    "searchMessagesHint": "Поиск сообщений",
+    "searchChatsHint": "Поиск чатов",
+    "searchActivitiesHint": "Поиск активностей"
 }

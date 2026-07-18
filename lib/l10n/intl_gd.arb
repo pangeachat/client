@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-18 11:05:57.577450",
+    "@@last_modified": "2026-07-18 13:35:07.193739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail",
     "selectAudioMessagesOnPlayDescription": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail nuair a thèid an cluich",
     "learningAnalytics": "Anailisean ionnsachaidh",
-    "searchLanguagesHint": "Tha mi ag ionnsachadh...",
     "alreadySpeak": "Tha mi mar-thà a' bruidhinn...",
     "welcomeBackLogin": "Fàilte air ais! Chlàraich thu a-steach roimhe le {platform}.",
     "emailLoginMethod": "post-d",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Coltas cabadaich leis an stoidhle thaghte",
     "volumeLabel": "Meud-fuaim",
     "listLabel": "Liosta {description}",
-    "passwordFormLabel": "Foirm atharrachadh facal-faire"
+    "passwordFormLabel": "Foirm atharrachadh facal-faire",
+    "searchLanguagesHint": "Lorg cànanan",
+    "searchCountriesHint": "Lorg dùthchannan",
+    "searchVocabHint": "Lorg briathrachas",
+    "searchUsersHint": "Lorg luchd-cleachdaidh",
+    "searchMessagesHint": "Lorg teachdaireachdan",
+    "searchChatsHint": "Lorg còmhraidhean",
+    "searchActivitiesHint": "Lorg gnìomhachdan"
 }

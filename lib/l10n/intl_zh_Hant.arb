@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:10.351223",
+    "@@last_modified": "2026-07-18 13:35:16.178295",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8478,7 +8478,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "我正在學習...",
     "alreadySpeak": "我已經會說...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9757,5 +9756,12 @@
     "chatAppearanceStyleLabel": "聊天室外觀樣式",
     "volumeLabel": "音量",
     "listLabel": "{description}列表",
-    "passwordFormLabel": "更改密碼表單"
+    "passwordFormLabel": "更改密碼表單",
+    "searchLanguagesHint": "搜尋語言",
+    "searchCountriesHint": "搜尋國家",
+    "searchVocabHint": "搜尋詞彙",
+    "searchUsersHint": "搜尋使用者",
+    "searchMessagesHint": "搜尋訊息",
+    "searchChatsHint": "搜尋聊天",
+    "searchActivitiesHint": "搜尋活動"
 }

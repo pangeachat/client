@@ -3418,7 +3418,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-18 11:05:56.165756",
+    "@@last_modified": "2026-07-18 13:35:06.174131",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9253,7 +9253,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Μαθαίνω...",
     "alreadySpeak": "Ήδη μιλάω...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10532,5 +10531,12 @@
     "chatAppearanceStyleLabel": "Εμφάνιση συνομιλίας με επιλεγμένο στυλ",
     "volumeLabel": "Ένταση",
     "listLabel": "Λίστα {description}",
-    "passwordFormLabel": "Φόρμα αλλαγής κωδικού πρόσβασης"
+    "passwordFormLabel": "Φόρμα αλλαγής κωδικού πρόσβασης",
+    "searchLanguagesHint": "Αναζήτηση γλωσσών",
+    "searchCountriesHint": "Αναζήτηση χωρών",
+    "searchVocabHint": "Αναζήτηση λεξιλογίου",
+    "searchUsersHint": "Αναζήτηση χρηστών",
+    "searchMessagesHint": "Αναζήτηση μηνυμάτων",
+    "searchChatsHint": "Αναζήτηση συνομιλιών",
+    "searchActivitiesHint": "Αναζήτηση δραστηριοτήτων"
 }

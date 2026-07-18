@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-18 11:06:00.434603",
+    "@@last_modified": "2026-07-18 13:35:09.021918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
     "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik sinau",
-    "searchLanguagesHint": "Aku sinau...",
     "alreadySpeak": "Aku wis bisa ngomong...",
     "welcomeBackLogin": "Sugeng rawuh maneh! Sampeyan sadurunge mlebu nganggo {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Tampilan obrolan kanthi gaya sing dipilih",
     "volumeLabel": "Volume",
     "listLabel": "Dhaftar {description}",
-    "passwordFormLabel": "Formulir ganti sandhi"
+    "passwordFormLabel": "Formulir ganti sandhi",
+    "searchLanguagesHint": "Golèk basa",
+    "searchCountriesHint": "Golèk negara",
+    "searchVocabHint": "Golèk kosakata",
+    "searchUsersHint": "Golèk pangguna",
+    "searchMessagesHint": "Golèk pesen",
+    "searchChatsHint": "Golèk obrolan",
+    "searchActivitiesHint": "Golèk aktivitas"
 }

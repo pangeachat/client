@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-18 11:06:04.211333",
+    "@@last_modified": "2026-07-18 13:35:11.656827",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Awtomatikament enfasizza messaġġi awdjo",
     "selectAudioMessagesOnPlayDescription": "Awtomatikament enfasizza messaġġi awdjo meta jindaqqu",
     "learningAnalytics": "Analiżi tat-tagħlim",
-    "searchLanguagesHint": "Qed nitgħallem...",
     "alreadySpeak": "Diġà nitkellem...",
     "welcomeBackLogin": "Merħba lura! Qabel dħalt b' {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Id-dehra taċ-chat bl-istil magħżul",
     "volumeLabel": "Volum",
     "listLabel": "Lista ta' {description}",
-    "passwordFormLabel": "Formola għall-bidla tal-password"
+    "passwordFormLabel": "Formola għall-bidla tal-password",
+    "searchLanguagesHint": "Fittex lingwi",
+    "searchCountriesHint": "Fittex pajjiżi",
+    "searchVocabHint": "Fittex vokabularju",
+    "searchUsersHint": "Fittex utenti",
+    "searchMessagesHint": "Fittex messaġġi",
+    "searchChatsHint": "Fittex chats",
+    "searchActivitiesHint": "Fittex attivitajiet"
 }

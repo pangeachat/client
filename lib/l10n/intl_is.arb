@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-18 11:05:59.751893",
+    "@@last_modified": "2026-07-18 13:35:08.686485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Sjálfvirk auðkenning hljóðskilaboða",
     "selectAudioMessagesOnPlayDescription": "Auðkenna hljóðskilaboð sjálfkrafa þegar þau eru spiluð",
     "learningAnalytics": "Námsgreiningar",
-    "searchLanguagesHint": "Ég er að læra...",
     "alreadySpeak": "Ég tala nú þegar...",
     "welcomeBackLogin": "Velkomin(n) aftur! Þú skráðir þig inn síðast með {platform}.",
     "emailLoginMethod": "tölvupósti",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Útlit spjalls með völdum stíl",
     "volumeLabel": "Hljóðstyrkur",
     "listLabel": "{description} listi",
-    "passwordFormLabel": "Breyta lykilorði"
+    "passwordFormLabel": "Breyta lykilorði",
+    "searchLanguagesHint": "Leita tungumála",
+    "searchCountriesHint": "Leita landa",
+    "searchVocabHint": "Leita orðaforða",
+    "searchUsersHint": "Leita notenda",
+    "searchMessagesHint": "Leita skilaboða",
+    "searchChatsHint": "Leita spjalla",
+    "searchActivitiesHint": "Leita athafna"
 }

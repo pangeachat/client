@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-18 11:05:58.000877",
+    "@@last_modified": "2026-07-18 13:35:07.569518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Hoʻokāʻoi ʻakomi i nā leka leo",
     "selectAudioMessagesOnPlayDescription": "Hoʻokāʻoi ʻakomi i nā leka leo ke hoʻokani ʻia",
     "learningAnalytics": "Kaʻanalike aʻo",
-    "searchLanguagesHint": "Ke aʻo nei au i ka ʻōlelo...",
     "alreadySpeak": "ʻŌlelo mua wau i ka ʻōlelo...",
     "welcomeBackLogin": "Aloha hou! Ua komo mua ʻoe me {platform}.",
     "emailLoginMethod": "leka uila",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Ke ʻano o ke kamaʻilio me ke ʻano i koho ʻia",
     "volumeLabel": "Leo",
     "listLabel": "Papa inoa {description}",
-    "passwordFormLabel": "Palapala hoʻololi ʻōlelo huna"
+    "passwordFormLabel": "Palapala hoʻololi ʻōlelo huna",
+    "searchLanguagesHint": "Huli ʻōlelo",
+    "searchCountriesHint": "Huli ʻāina",
+    "searchVocabHint": "Huli huaʻōlelo",
+    "searchUsersHint": "Huli mea hoʻohana",
+    "searchMessagesHint": "Huli leka",
+    "searchChatsHint": "Huli kamaʻilio",
+    "searchActivitiesHint": "Huli hana"
 }

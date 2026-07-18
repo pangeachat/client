@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-18 11:06:08.886365",
+    "@@last_modified": "2026-07-18 13:35:15.229693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Паёмҳои аудиоиро ба таври худкор таъкид кунед",
     "selectAudioMessagesOnPlayDescription": "Ҳангоми навохтан паёмҳои аудиоиро ба таври худкор таъкид кунед",
     "learningAnalytics": "Таҳлили омӯзиш",
-    "searchLanguagesHint": "Ман меомӯзам...",
     "alreadySpeak": "Ман аллакай гап мезанам...",
     "welcomeBackLogin": "Хуш омадед! Шумо қаблан бо {platform} ворид шуда будед.",
     "emailLoginMethod": "почтаи электронӣ",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Намуди зоҳирии чат бо услуби интихобшуда",
     "volumeLabel": "Баландӣ",
     "listLabel": "Рӯйхати {description}",
-    "passwordFormLabel": "Шакли тағир додани парол"
+    "passwordFormLabel": "Шакли тағир додани парол",
+    "searchLanguagesHint": "Ҷустуҷӯи забонҳо",
+    "searchCountriesHint": "Ҷустуҷӯи кишварҳо",
+    "searchVocabHint": "Ҷустуҷӯи луғат",
+    "searchUsersHint": "Ҷустуҷӯи корбарон",
+    "searchMessagesHint": "Ҷустуҷӯи паёмҳо",
+    "searchChatsHint": "Ҷустуҷӯи чатҳо",
+    "searchActivitiesHint": "Ҷустуҷӯи фаъолиятҳо"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:05.146323",
+    "@@last_modified": "2026-07-18 13:35:12.635858",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -9322,7 +9322,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estou aprendendo...",
     "alreadySpeak": "Eu já falo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10601,5 +10600,12 @@
     "chatAppearanceStyleLabel": "Aparência do chat com o estilo escolhido",
     "volumeLabel": "Volume",
     "listLabel": "Lista de {description}",
-    "passwordFormLabel": "Formulário de alteração de palavra-passe"
+    "passwordFormLabel": "Formulário de alteração de palavra-passe",
+    "searchLanguagesHint": "Pesquisar idiomas",
+    "searchCountriesHint": "Pesquisar países",
+    "searchVocabHint": "Pesquisar vocabulário",
+    "searchUsersHint": "Pesquisar usuários",
+    "searchMessagesHint": "Pesquisar mensagens",
+    "searchChatsHint": "Pesquisar conversas",
+    "searchActivitiesHint": "Pesquisar atividades"
 }

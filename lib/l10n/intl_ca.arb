@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:54.686438",
+    "@@last_modified": "2026-07-18 13:35:05.196728",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8499,7 +8499,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estic aprenent...",
     "alreadySpeak": "Ja parlo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9778,5 +9777,12 @@
     "chatAppearanceStyleLabel": "Aparença del xat amb l'estil escollit",
     "volumeLabel": "Volum",
     "listLabel": "Llista de {description}",
-    "passwordFormLabel": "Formulari de canvi de contrasenya"
+    "passwordFormLabel": "Formulari de canvi de contrasenya",
+    "searchLanguagesHint": "Cercar idiomes",
+    "searchCountriesHint": "Cercar països",
+    "searchVocabHint": "Cercar vocabulari",
+    "searchUsersHint": "Cercar usuaris",
+    "searchMessagesHint": "Cercar missatges",
+    "searchChatsHint": "Cercar xats",
+    "searchActivitiesHint": "Cercar activitats"
 }

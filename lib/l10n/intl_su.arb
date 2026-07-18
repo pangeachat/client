@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-18 11:06:07.773658",
+    "@@last_modified": "2026-07-18 13:35:14.409382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
     "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik pembelajaran",
-    "searchLanguagesHint": "Abdi diajar...",
     "alreadySpeak": "Abdi parantos tiasa nyarios...",
     "welcomeBackLogin": "Wilujeng sumping deui! Anjeun sateuacanna asup nganggo {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Tampilan obrolan kalayan gaya nu dipilih",
     "volumeLabel": "Sora",
     "listLabel": "Daptar {description}",
-    "passwordFormLabel": "Formulir ganti sandi"
+    "passwordFormLabel": "Formulir ganti sandi",
+    "searchLanguagesHint": "Téang basa",
+    "searchCountriesHint": "Téang nagara",
+    "searchVocabHint": "Téang kosakata",
+    "searchUsersHint": "Téang pangguna",
+    "searchMessagesHint": "Téang talatah",
+    "searchChatsHint": "Téang obrolan",
+    "searchActivitiesHint": "Téang kagiatan"
 }

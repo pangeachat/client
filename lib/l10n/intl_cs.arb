@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-18 11:05:54.665571",
+    "@@last_modified": "2026-07-18 13:35:05.190990",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8866,7 +8866,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učím se...",
     "alreadySpeak": "Už mluvím...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10145,5 +10144,12 @@
     "chatAppearanceStyleLabel": "Vzhled chatu se zvoleným stylem",
     "volumeLabel": "Hlasitost",
     "listLabel": "Seznam {description}",
-    "passwordFormLabel": "Formulář pro změnu hesla"
+    "passwordFormLabel": "Formulář pro změnu hesla",
+    "searchLanguagesHint": "Hledat jazyky",
+    "searchCountriesHint": "Hledat země",
+    "searchVocabHint": "Hledat slovíčka",
+    "searchUsersHint": "Hledat uživatele",
+    "searchMessagesHint": "Hledat zprávy",
+    "searchChatsHint": "Hledat chaty",
+    "searchActivitiesHint": "Hledat aktivity"
 }

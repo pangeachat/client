@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-18 11:05:58.664357",
+    "@@last_modified": "2026-07-18 13:35:08.062974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight cov lus suab",
     "selectAudioMessagesOnPlayDescription": "Automatically highlight cov lus suab thaum ua si",
     "learningAnalytics": "Kev kawm analytics",
-    "searchLanguagesHint": "Kuv tab tom kawm...",
     "alreadySpeak": "Kuv twb hais tau...",
     "welcomeBackLogin": "Zoo siab tos txais rov qab! Koj tau nkag mus nrog {platform} ua ntej.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Kev sib tham zoo li cas nrog tus qauv xaiv",
     "volumeLabel": "Lub suab nrov",
     "listLabel": "{description} cov npe",
-    "passwordFormLabel": "Hloov daim ntawv zais lus"
+    "passwordFormLabel": "Hloov daim ntawv zais lus",
+    "searchLanguagesHint": "Nrhiav hom lus",
+    "searchCountriesHint": "Nrhiav tebchaws",
+    "searchVocabHint": "Nrhiav lus",
+    "searchUsersHint": "Nrhiav neeg siv",
+    "searchMessagesHint": "Nrhiav lus",
+    "searchChatsHint": "Nrhiav kev sib tham",
+    "searchActivitiesHint": "Nrhiav kev ua"
 }

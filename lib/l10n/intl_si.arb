@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-18 11:06:06.619800",
+    "@@last_modified": "2026-07-18 13:35:13.498345",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ශ්‍රව්‍ය පණිවිඩ ස්වයංක්‍රීයව ඉස්මතු කරන්න",
     "selectAudioMessagesOnPlayDescription": "ධාවනය කරන විට ශ්‍රව්‍ය පණිවිඩ ස්වයංක්‍රීයව ඉස්මතු කරන්න",
     "learningAnalytics": "ඉගෙනුම් විශ්ලේෂණ",
-    "searchLanguagesHint": "මම ඉගෙන ගන්නවා...",
     "alreadySpeak": "මම දැනටමත් කතා කරනවා...",
     "welcomeBackLogin": "නැවත සාදරයෙන් පිළිගනිමු! ඔබ මීට පෙර {platform} සමඟින් පුරනය විය.",
     "emailLoginMethod": "විද්‍යුත් තැපෑල",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "තෝරාගත් විලාසය සහිත කතාබස් පෙනුම",
     "volumeLabel": "ශබ්දය",
     "listLabel": "{description} ලැයිස්තුව",
-    "passwordFormLabel": "මුරපද වෙනස් කිරීමේ පෝරමය"
+    "passwordFormLabel": "මුරපද වෙනස් කිරීමේ පෝරමය",
+    "searchLanguagesHint": "භාෂා සොයන්න",
+    "searchCountriesHint": "රටවල් සොයන්න",
+    "searchVocabHint": "වචන සොයන්න",
+    "searchUsersHint": "පරිශීලකයන් සොයන්න",
+    "searchMessagesHint": "පණිවිඩ සොයන්න",
+    "searchChatsHint": "චැට් සොයන්න",
+    "searchActivitiesHint": "ක්‍රියාකාරකම් සොයන්න"
 }

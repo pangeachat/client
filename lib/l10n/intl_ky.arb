@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-18 11:06:01.732314",
+    "@@last_modified": "2026-07-18 13:35:10.117036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
     "selectAudioMessagesOnPlayDescription": "Ойнотулганда аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
     "learningAnalytics": "Окуу аналитикасы",
-    "searchLanguagesHint": "Мен үйрөнүп жатам...",
     "alreadySpeak": "Мен буга чейин сүйлөйм...",
     "welcomeBackLogin": "Кош келиңиз! Сиз мурда {platform} аркылуу киргенсиз.",
     "emailLoginMethod": "электрондук почта",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Тандалган стилдеги чат көрүнүшү",
     "volumeLabel": "Үн",
     "listLabel": "{description} тизмеси",
-    "passwordFormLabel": "Сырсөздү өзгөртүү формасы"
+    "passwordFormLabel": "Сырсөздү өзгөртүү формасы",
+    "searchLanguagesHint": "Тилдерди издөө",
+    "searchCountriesHint": "Өлкөлөрдү издөө",
+    "searchVocabHint": "Сөздөрдү издөө",
+    "searchUsersHint": "Колдонуучуларды издөө",
+    "searchMessagesHint": "Билдирүүлөрдү издөө",
+    "searchChatsHint": "Чаттарды издөө",
+    "searchActivitiesHint": "Иш-аракеттерди издөө"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-18 11:06:10.504816",
+    "@@last_modified": "2026-07-18 13:35:15.975456",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8372,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "我正在学习...",
     "alreadySpeak": "我已经会说...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9651,5 +9650,12 @@
     "chatAppearanceStyleLabel": "聊天界面样式",
     "volumeLabel": "音量",
     "listLabel": "{description}列表",
-    "passwordFormLabel": "更改密码表单"
+    "passwordFormLabel": "更改密码表单",
+    "searchLanguagesHint": "搜索语言",
+    "searchCountriesHint": "搜索国家",
+    "searchVocabHint": "搜索词汇",
+    "searchUsersHint": "搜索用户",
+    "searchMessagesHint": "搜索消息",
+    "searchChatsHint": "搜索聊天",
+    "searchActivitiesHint": "搜索动态"
 }

@@ -1273,7 +1273,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-18 11:06:10.067872",
+    "@@last_modified": "2026-07-18 13:35:16.026557",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -9335,7 +9335,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "我正在學習...",
     "alreadySpeak": "我已經會說...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10614,5 +10613,12 @@
     "chatAppearanceStyleLabel": "聊天室外觀樣式",
     "volumeLabel": "音量",
     "listLabel": "{description} 列表",
-    "passwordFormLabel": "更改密碼表格"
+    "passwordFormLabel": "更改密碼表格",
+    "searchLanguagesHint": "搜尋語言",
+    "searchCountriesHint": "搜尋國家",
+    "searchVocabHint": "搜尋詞彙",
+    "searchUsersHint": "搜尋用戶",
+    "searchMessagesHint": "搜尋訊息",
+    "searchChatsHint": "搜尋聊天",
+    "searchActivitiesHint": "搜尋動態"
 }

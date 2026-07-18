@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:58.328424",
+    "@@last_modified": "2026-07-18 13:35:07.768986",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9292,7 +9292,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "אני לומד...",
     "alreadySpeak": "אני כבר מדבר...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10571,5 +10570,12 @@
     "chatAppearanceStyleLabel": "מראה הצ'אט עם הסגנון הנבחר",
     "volumeLabel": "עוצמת קול",
     "listLabel": "רשימת {description}",
-    "passwordFormLabel": "טופס שינוי סיסמה"
+    "passwordFormLabel": "טופס שינוי סיסמה",
+    "searchLanguagesHint": "חיפוש שפות",
+    "searchCountriesHint": "חיפוש מדינות",
+    "searchVocabHint": "חיפוש אוצר מילים",
+    "searchUsersHint": "חיפוש משתמשים",
+    "searchMessagesHint": "חיפוש הודעות",
+    "searchChatsHint": "חיפוש צ'אטים",
+    "searchActivitiesHint": "חיפוש פעילויות"
 }

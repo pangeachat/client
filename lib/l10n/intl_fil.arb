@@ -2090,7 +2090,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-18 11:05:56.742594",
+    "@@last_modified": "2026-07-18 13:35:06.903117",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9238,7 +9238,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Nag-aaral ako ng...",
     "alreadySpeak": "Nagsasalita na ako ng...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10517,5 +10516,12 @@
     "chatAppearanceStyleLabel": "Hitsura ng chat na may napiling istilo",
     "volumeLabel": "Volume",
     "listLabel": "Listahan ng {description}",
-    "passwordFormLabel": "Form sa pagpapalit ng password"
+    "passwordFormLabel": "Form sa pagpapalit ng password",
+    "searchLanguagesHint": "Maghanap ng mga wika",
+    "searchCountriesHint": "Maghanap ng mga bansa",
+    "searchVocabHint": "Maghanap ng bokabularyo",
+    "searchUsersHint": "Maghanap ng mga user",
+    "searchMessagesHint": "Maghanap ng mga mensahe",
+    "searchChatsHint": "Maghanap ng mga chat",
+    "searchActivitiesHint": "Maghanap ng mga aktibidad"
 }

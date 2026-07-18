@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:59.284059",
+    "@@last_modified": "2026-07-18 13:35:08.516707",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8445,7 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Saya sedang belajar...",
     "alreadySpeak": "Saya sudah bisa berbicara...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9724,5 +9723,12 @@
     "chatAppearanceStyleLabel": "Tampilan obrolan dengan gaya pilihan",
     "volumeLabel": "Volume",
     "listLabel": "Daftar {description}",
-    "passwordFormLabel": "Formulir ganti kata sandi"
+    "passwordFormLabel": "Formulir ganti kata sandi",
+    "searchLanguagesHint": "Cari bahasa",
+    "searchCountriesHint": "Cari negara",
+    "searchVocabHint": "Cari kosakata",
+    "searchUsersHint": "Cari pengguna",
+    "searchMessagesHint": "Cari pesan",
+    "searchChatsHint": "Cari obrolan",
+    "searchActivitiesHint": "Cari aktivitas"
 }

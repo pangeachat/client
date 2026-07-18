@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-18 11:06:01.939116",
+    "@@last_modified": "2026-07-18 13:35:10.182200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Audio-Noriichten automatesch markéieren",
     "selectAudioMessagesOnPlayDescription": "Automatesch Audio-Noriichten markéieren wann se ofgespillt ginn",
     "learningAnalytics": "Léieranalysen",
-    "searchLanguagesHint": "Ech léieren...",
     "alreadySpeak": "Ech schwätze schonn...",
     "welcomeBackLogin": "Wëllkomm zréck! Du hues dech virdrun mat {platform} ugemellt.",
     "emailLoginMethod": "E-Mail",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Chat-Ausgesinn mam gewielte Stil",
     "volumeLabel": "Lautstäerkt",
     "listLabel": "{description} Lëscht",
-    "passwordFormLabel": "Passwuert änneren Formulaire"
+    "passwordFormLabel": "Passwuert änneren Formulaire",
+    "searchLanguagesHint": "Sproochen sichen",
+    "searchCountriesHint": "Länner sichen",
+    "searchVocabHint": "Vokabulär sichen",
+    "searchUsersHint": "Benotzer sichen",
+    "searchMessagesHint": "Messagen sichen",
+    "searchChatsHint": "Chatte sichen",
+    "searchActivitiesHint": "Aktivitéiten sichen"
 }

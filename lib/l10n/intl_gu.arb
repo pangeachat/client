@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-18 11:05:57.587743",
+    "@@last_modified": "2026-07-18 13:35:07.081056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ઑડિઓ સંદેશાઓને ઑટો-હાઇલાઇટ કરો",
     "selectAudioMessagesOnPlayDescription": "જ્યારે ઑડિઓ સંદેશા વગાડવામાં આવે ત્યારે તેને આપમેળે હાઇલાઇટ કરો",
     "learningAnalytics": "શીખવાનું વિશ્લેષણ",
-    "searchLanguagesHint": "હું શીખી રહ્યો/રહી છું...",
     "alreadySpeak": "હું પહેલેથી જ બોલું છું...",
     "welcomeBackLogin": "ફરી સ્વાગત છે! તમે અગાઉ {platform} વડે સાઇન ઇન કર્યું હતું.",
     "emailLoginMethod": "ઇમેઇલ",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "પસંદ કરેલી શૈલી સાથે ચેટ દેખાવ",
     "volumeLabel": "વોલ્યુમ",
     "listLabel": "{description} સૂચિ",
-    "passwordFormLabel": "પાસવર્ડ બદલવાનું ફોર્મ"
+    "passwordFormLabel": "પાસવર્ડ બદલવાનું ફોર્મ",
+    "searchLanguagesHint": "ભાષાઓ શોધો",
+    "searchCountriesHint": "દેશો શોધો",
+    "searchVocabHint": "શબ્દભંડોળ શોધો",
+    "searchUsersHint": "વપરાશકર્તાઓ શોધો",
+    "searchMessagesHint": "સંદેશાઓ શોધો",
+    "searchChatsHint": "ચેટ્સ શોધો",
+    "searchActivitiesHint": "પ્રવૃત્તિઓ શોધો"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-18 11:05:55.978768",
+    "@@last_modified": "2026-07-18 13:35:06.111614",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8369,7 +8369,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ma õpin...",
     "alreadySpeak": "Ma juba räägin...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9648,5 +9647,12 @@
     "chatAppearanceStyleLabel": "Vestluse välimus valitud stiiliga",
     "volumeLabel": "Helitugevus",
     "listLabel": "{description} loend",
-    "passwordFormLabel": "Muuda parooli vorm"
+    "passwordFormLabel": "Muuda parooli vorm",
+    "searchLanguagesHint": "Otsi keeli",
+    "searchCountriesHint": "Otsi riike",
+    "searchVocabHint": "Otsi sõnavara",
+    "searchUsersHint": "Otsi kasutajaid",
+    "searchMessagesHint": "Otsi sõnumeid",
+    "searchChatsHint": "Otsi vestlusi",
+    "searchActivitiesHint": "Otsi tegevusi"
 }

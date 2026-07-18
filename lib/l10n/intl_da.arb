@@ -1344,7 +1344,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-18 11:05:54.921679",
+    "@@last_modified": "2026-07-18 13:35:05.253327",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9298,7 +9298,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg taler allerede...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10577,5 +10576,12 @@
     "chatAppearanceStyleLabel": "Chatudseende med valgt stil",
     "volumeLabel": "Lydstyrke",
     "listLabel": "{description} liste",
-    "passwordFormLabel": "Formular til ændring af adgangskode"
+    "passwordFormLabel": "Formular til ændring af adgangskode",
+    "searchLanguagesHint": "Søg sprog",
+    "searchCountriesHint": "Søg lande",
+    "searchVocabHint": "Søg ordforråd",
+    "searchUsersHint": "Søg brugere",
+    "searchMessagesHint": "Søg beskeder",
+    "searchChatsHint": "Søg chats",
+    "searchActivitiesHint": "Søg aktiviteter"
 }

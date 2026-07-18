@@ -3105,7 +3105,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-18 11:05:59.533574",
+    "@@last_modified": "2026-07-18 13:35:08.874190",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9004,7 +9004,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Taim ag foghlaim...",
     "alreadySpeak": "Labhraím cheana...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10283,5 +10282,12 @@
     "chatAppearanceStyleLabel": "Chat aparition con selectet stile",
     "volumeLabel": "Volúmine",
     "listLabel": "{description} liste",
-    "passwordFormLabel": "Formularie por change de pass-parol"
+    "passwordFormLabel": "Formularie por change de pass-parol",
+    "searchLanguagesHint": "Cuardaigh teangacha",
+    "searchCountriesHint": "Cuardaigh tíortha",
+    "searchVocabHint": "Cuardaigh stór focal",
+    "searchUsersHint": "Cuardaigh úsáideoirí",
+    "searchMessagesHint": "Cuardaigh teachtaireachtaí",
+    "searchChatsHint": "Cuardaigh comhráite",
+    "searchActivitiesHint": "Cuardaigh gníomhaíochtaí"
 }

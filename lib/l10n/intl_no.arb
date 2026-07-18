@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-18 11:06:04.340154",
+    "@@last_modified": "2026-07-18 13:35:11.908196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Fremhev lydmeldinger automatisk",
     "selectAudioMessagesOnPlayDescription": "Fremhev lydmeldinger automatisk når de spilles av",
     "learningAnalytics": "Læringsanalyse",
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg snakker allerede...",
     "welcomeBackLogin": "Velkommen tilbake! Du logget inn tidligere med {platform}.",
     "emailLoginMethod": "e-post",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Chatutseende med valgt stil",
     "volumeLabel": "Volum",
     "listLabel": "{description} liste",
-    "passwordFormLabel": "Skjema for passordendring"
+    "passwordFormLabel": "Skjema for passordendring",
+    "searchLanguagesHint": "Søk språk",
+    "searchCountriesHint": "Søk land",
+    "searchVocabHint": "Søk vokabular",
+    "searchUsersHint": "Søk brukere",
+    "searchMessagesHint": "Søk meldinger",
+    "searchChatsHint": "Søk chatter",
+    "searchActivitiesHint": "Søk aktiviteter"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:08.484625",
+    "@@last_modified": "2026-07-18 13:35:14.780112",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8464,7 +8464,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "நான் கற்றுக்கொள்கிறேன்...",
     "alreadySpeak": "நான் ஏற்கனவே பேசுகிறேன்...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9743,5 +9742,12 @@
     "chatAppearanceStyleLabel": "தேர்ந்தெடுத்த பாணியுடன் அரட்டை தோற்றம்",
     "volumeLabel": "ஒலி அளவு",
     "listLabel": "{description} பட்டியல்",
-    "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்"
+    "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்",
+    "searchLanguagesHint": "மொழிகளைத் தேடு",
+    "searchCountriesHint": "நாடுகளைத் தேடு",
+    "searchVocabHint": "சொற்களஞ்சியத்தைத் தேடு",
+    "searchUsersHint": "பயனர்களைத் தேடு",
+    "searchMessagesHint": "செய்திகளைத் தேடு",
+    "searchChatsHint": "அரட்டைகளைத் தேடு",
+    "searchActivitiesHint": "செயல்பாடுகளைத் தேடு"
 }

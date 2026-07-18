@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-18 11:05:59.488792",
+    "@@last_modified": "2026-07-18 13:35:08.249923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Ավտոմատ ընդգծել ձայնային հաղորդագրությունները",
     "selectAudioMessagesOnPlayDescription": "Ավտոմատ կերպով ընդգծել ձայնային հաղորդագրությունները նվագարկելիս",
     "learningAnalytics": "Ուսուցման վերլուծություն",
-    "searchLanguagesHint": "Ես սովորում եմ...",
     "alreadySpeak": "Ես արդեն խոսում եմ...",
     "welcomeBackLogin": "Բարի վերադարձ։ Դուք նախկինում մուտք եք գործել {platform}-ի միջոցով։",
     "emailLoginMethod": "էլ. փոստ",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Զրույցի տեսքն ընտրված ոճով",
     "volumeLabel": "Ձայն",
     "listLabel": "{description} ցուցակ",
-    "passwordFormLabel": "Գաղտնաբառի փոփոխման ձև"
+    "passwordFormLabel": "Գաղտնաբառի փոփոխման ձև",
+    "searchLanguagesHint": "Որոնել լեզուներ",
+    "searchCountriesHint": "Որոնել երկրներ",
+    "searchVocabHint": "Որոնել բառապաշար",
+    "searchUsersHint": "Որոնել օգտատերեր",
+    "searchMessagesHint": "Որոնել հաղորդագրություններ",
+    "searchChatsHint": "Որոնել զրույցներ",
+    "searchActivitiesHint": "Որոնել գործողություններ"
 }

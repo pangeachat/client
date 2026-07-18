@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-18 11:06:05.199634",
+    "@@last_modified": "2026-07-18 13:35:12.456107",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -8457,7 +8457,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Uczę się...",
     "alreadySpeak": "Już mówię...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9736,5 +9735,12 @@
     "chatAppearanceStyleLabel": "Wygląd czatu z wybranym stylem",
     "volumeLabel": "Głośność",
     "listLabel": "Lista {description}",
-    "passwordFormLabel": "Formularz zmiany hasła"
+    "passwordFormLabel": "Formularz zmiany hasła",
+    "searchLanguagesHint": "Szukaj języków",
+    "searchCountriesHint": "Szukaj krajów",
+    "searchVocabHint": "Szukaj słownictwa",
+    "searchUsersHint": "Szukaj użytkowników",
+    "searchMessagesHint": "Szukaj wiadomości",
+    "searchChatsHint": "Szukaj czatów",
+    "searchActivitiesHint": "Szukaj aktywności"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-18 11:06:05.506074",
+    "@@last_modified": "2026-07-18 13:35:12.551771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "د آډیو پیغامونه په اوتومات ډول روښانه کړئ",
     "selectAudioMessagesOnPlayDescription": "کله چې پلی شي په اوتومات ډول د آډیو پیغامونه روښانه کړئ",
     "learningAnalytics": "د زده کړې تحلیلونه",
-    "searchLanguagesHint": "زه زده کوم...",
     "alreadySpeak": "زه لا دمخه خبرې کوم...",
     "welcomeBackLogin": "ښه راغلاست! تاسو مخکې د {platform} سره ننوتلي یاست.",
     "emailLoginMethod": "بریښنالیک",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "د ټاکل شوي سټایل سره د چیټ بڼه",
     "volumeLabel": "حجم",
     "listLabel": "{description} لیست",
-    "passwordFormLabel": "د پټنوم بدلولو فورمه"
+    "passwordFormLabel": "د پټنوم بدلولو فورمه",
+    "searchLanguagesHint": "ژبې وپلټئ",
+    "searchCountriesHint": "هېوادونه وپلټئ",
+    "searchVocabHint": "لغتونه وپلټئ",
+    "searchUsersHint": "کاروونکي وپلټئ",
+    "searchMessagesHint": "پیغامونه وپلټئ",
+    "searchChatsHint": "چټونه وپلټئ",
+    "searchActivitiesHint": "فعالیتونه وپلټئ"
 }

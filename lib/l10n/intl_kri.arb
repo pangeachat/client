@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-18 11:06:01.390896",
+    "@@last_modified": "2026-07-18 13:35:09.810181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Awtomatikali haylayt ɔdyo mɛsej dɛn",
     "selectAudioMessagesOnPlayDescription": "Awtomatikali haylayt ɔdyo mɛsej dɛn we dɛn de ple",
     "learningAnalytics": "Lɛnin analitiks",
-    "searchLanguagesHint": "Mi de lan...",
     "alreadySpeak": "Mi dɔn sabi tɔk...",
     "welcomeBackLogin": "Wɛlkɔm bak! Yu bin dɔn sayn in wit {platform} bifo.",
     "emailLoginMethod": "imel",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Chat apirɛns wit di chuz stail",
     "volumeLabel": "Vɔlyum",
     "listLabel": "{description} lis",
-    "passwordFormLabel": "Chenj paswɔd fɔm"
+    "passwordFormLabel": "Chenj paswɔd fɔm",
+    "searchLanguagesHint": "Luk fɔ langwej dɛn",
+    "searchCountriesHint": "Luk fɔ kɔntri dɛn",
+    "searchVocabHint": "Luk fɔ wɔd dɛn",
+    "searchUsersHint": "Luk fɔ pipul dɛn",
+    "searchMessagesHint": "Luk fɔ mɛsej dɛn",
+    "searchChatsHint": "Luk fɔ chat dɛn",
+    "searchActivitiesHint": "Luk fɔ wok dɛn"
 }

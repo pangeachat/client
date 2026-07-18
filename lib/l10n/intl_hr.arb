@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-18 11:05:58.656313",
+    "@@last_modified": "2026-07-18 13:35:07.861947",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8808,7 +8808,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učim...",
     "alreadySpeak": "Već govorim...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10087,5 +10086,12 @@
     "chatAppearanceStyleLabel": "Izgled chata s odabranim stilom",
     "volumeLabel": "Glasnoća",
     "listLabel": "Popis {description}",
-    "passwordFormLabel": "Obrazac za promjenu lozinke"
+    "passwordFormLabel": "Obrazac za promjenu lozinke",
+    "searchLanguagesHint": "Pretraži jezike",
+    "searchCountriesHint": "Pretraži zemlje",
+    "searchVocabHint": "Pretraži rječnik",
+    "searchUsersHint": "Pretraži korisnike",
+    "searchMessagesHint": "Pretraži poruke",
+    "searchChatsHint": "Pretraži razgovore",
+    "searchActivitiesHint": "Pretraži aktivnosti"
 }

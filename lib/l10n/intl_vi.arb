@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:09.383279",
+    "@@last_modified": "2026-07-18 13:35:15.568592",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5638,7 +5638,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Tôi đang học...",
     "alreadySpeak": "Tôi đã nói...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -6917,5 +6916,12 @@
     "chatAppearanceStyleLabel": "Giao diện trò chuyện với kiểu đã chọn",
     "volumeLabel": "Âm lượng",
     "listLabel": "Danh sách {description}",
-    "passwordFormLabel": "Mẫu đổi mật khẩu"
+    "passwordFormLabel": "Mẫu đổi mật khẩu",
+    "searchLanguagesHint": "Tìm kiếm ngôn ngữ",
+    "searchCountriesHint": "Tìm kiếm quốc gia",
+    "searchVocabHint": "Tìm kiếm từ vựng",
+    "searchUsersHint": "Tìm kiếm người dùng",
+    "searchMessagesHint": "Tìm kiếm tin nhắn",
+    "searchChatsHint": "Tìm kiếm cuộc trò chuyện",
+    "searchActivitiesHint": "Tìm kiếm hoạt động"
 }

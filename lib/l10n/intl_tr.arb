@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-18 11:06:08.639035",
+    "@@last_modified": "2026-07-18 13:35:15.223181",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8673,7 +8673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ben öğreniyorum...",
     "alreadySpeak": "Ben zaten konuşuyorum...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9952,5 +9951,12 @@
     "chatAppearanceStyleLabel": "Seçilen stille sohbet görünümü",
     "volumeLabel": "Ses",
     "listLabel": "{description} listesi",
-    "passwordFormLabel": "Şifre değiştirme formu"
+    "passwordFormLabel": "Şifre değiştirme formu",
+    "searchLanguagesHint": "Dilleri ara",
+    "searchCountriesHint": "Ülkeleri ara",
+    "searchVocabHint": "Kelime ara",
+    "searchUsersHint": "Kullanıcıları ara",
+    "searchMessagesHint": "Mesajları ara",
+    "searchChatsHint": "Sohbetleri ara",
+    "searchActivitiesHint": "Etkinlikleri ara"
 }

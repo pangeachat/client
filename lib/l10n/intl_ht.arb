@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-18 11:05:58.648025",
+    "@@last_modified": "2026-07-18 13:35:07.878099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Otomatikman make mesaj odyo",
     "selectAudioMessagesOnPlayDescription": "Otomatikman make mesaj odyo lè yo jwe",
     "learningAnalytics": "Analiz aprantisaj",
-    "searchLanguagesHint": "M ap aprann...",
     "alreadySpeak": "Mwen deja pale...",
     "welcomeBackLogin": "Byen retounen! Ou te konekte anvan ak {platform}.",
     "emailLoginMethod": "imèl",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Aparans chat ak stil chwazi a",
     "volumeLabel": "Volim",
     "listLabel": "Lis {description}",
-    "passwordFormLabel": "Fòm pou chanje modpas"
+    "passwordFormLabel": "Fòm pou chanje modpas",
+    "searchLanguagesHint": "Chèche lang",
+    "searchCountriesHint": "Chèche peyi",
+    "searchVocabHint": "Chèche vokabilè",
+    "searchUsersHint": "Chèche itilizatè",
+    "searchMessagesHint": "Chèche mesaj",
+    "searchChatsHint": "Chèche konvèsasyon",
+    "searchActivitiesHint": "Chèche aktivite"
 }

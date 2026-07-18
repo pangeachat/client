@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-18 11:06:09.700623",
+    "@@last_modified": "2026-07-18 13:35:15.717659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ئاۋازلىق ئۇچۇرلارنى ئاپتوماتىك گەۋدىلەندۈرۈش",
     "selectAudioMessagesOnPlayDescription": "ئاۋازلىق ئۇچۇرلارنى قويغاندا ئاپتوماتىك گەۋدىلەندۈرۈش",
     "learningAnalytics": "ئۆگىنىش ئانالىزى",
-    "searchLanguagesHint": "مەن ئۆگىنىۋاتىمەن...",
     "alreadySpeak": "مەن ئاللىبۇرۇن سۆزلەيمەن...",
     "welcomeBackLogin": "قايتىپ كەلگىنىڭىزنى قارشى ئالىمىز! سىز ئىلگىرى {platform} ئارقىلىق كىرگەن ئىدىڭىز.",
     "emailLoginMethod": "ئېلخەت",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "تاللانغان ئۇسلۇبتىكى پاراڭ كۆرۈنۈشى",
     "volumeLabel": "ئاۋاز",
     "listLabel": "{description} تىزىملىكى",
-    "passwordFormLabel": "مۇناسىۋەتلىك پارولنى ئۆزگەرتىش جەدۋىلى"
+    "passwordFormLabel": "مۇناسىۋەتلىك پارولنى ئۆزگەرتىش جەدۋىلى",
+    "searchLanguagesHint": "تىللارنى ئىزدەش",
+    "searchCountriesHint": "دۆلەتلەرنى ئىزدەش",
+    "searchVocabHint": "سۆزلۈكنى ئىزدەش",
+    "searchUsersHint": "ئىشلەتكۈچىلەرنى ئىزدەش",
+    "searchMessagesHint": "ئۇچۇرلارنى ئىزدەش",
+    "searchChatsHint": "پارىڭلارنى ئىزدەش",
+    "searchActivitiesHint": "پائالىيەتلەرنى ئىزدەش"
 }

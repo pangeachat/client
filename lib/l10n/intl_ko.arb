@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:00.597643",
+    "@@last_modified": "2026-07-18 13:35:09.582070",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -8565,7 +8565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "저는 배우고 있습니다...",
     "alreadySpeak": "저는 이미 말할 수 있습니다...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9844,5 +9843,12 @@
     "chatAppearanceStyleLabel": "선택한 스타일로 채팅 모양",
     "volumeLabel": "볼륨",
     "listLabel": "{description} 목록",
-    "passwordFormLabel": "비밀번호 변경 양식"
+    "passwordFormLabel": "비밀번호 변경 양식",
+    "searchLanguagesHint": "언어 검색",
+    "searchCountriesHint": "국가 검색",
+    "searchVocabHint": "어휘 검색",
+    "searchUsersHint": "사용자 검색",
+    "searchMessagesHint": "메시지 검색",
+    "searchChatsHint": "채팅 검색",
+    "searchActivitiesHint": "활동 검색"
 }
