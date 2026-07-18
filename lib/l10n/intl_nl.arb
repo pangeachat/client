@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:18.174249",
+    "@@last_modified": "2026-07-18 10:35:59.936209",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Toestaan",
     "deny": "Weigeren",
     "enabledRenewal": "Abonnementsvernieuwing inschakelen",
-    "subscriptionEndsOn": "Abonnement eindigt op",
-    "subscriptionRenewsOn": "Abonnement vernieuwt op",
     "waitForSubscriptionChanges": "Wijzigingen in uw abonnement kunnen even duren voordat ze in de app zichtbaar zijn.",
     "subscribeReadingAssistance": "Abonneer om berichttools te ontgrendelen",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9649,5 +9639,6 @@
     "starsToUnlockObjectiveTitle": "Sterren per missie",
     "starsToUnlockObjectiveDesc": "Stel het aantal sterren in dat nodig is om elke missie te voltooien",
     "maxStarsPerMissionWarning": "Deze cursus heeft missies waarbij slechts {maxValue} sterren kunnen worden verdiend. Voer een getal in dat kleiner is dan of gelijk is aan {maxValue}.",
-    "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent."
+    "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent.",
+    "endPractice": "Oefening beëindigen"
 }

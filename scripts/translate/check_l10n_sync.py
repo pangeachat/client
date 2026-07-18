@@ -81,7 +81,7 @@ def main() -> None:
         print(
             f"::error title=New strings are untranslated::{len(untranslated)} locale(s) are "
             f"missing {len(added)} newly-added key(s) ({pairs} pairs). Translate them "
-            f"(scripts/translate/backfill_l10n.py, or translate_gemini.py per locale) and "
+            f"(`uv run scripts/translate/translate_new_keys.py`) and "
             f"commit before merging."
         )
         for loc, ks in sorted(untranslated.items())[:20]:

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-16 17:07:35.099535",
+    "@@last_modified": "2026-07-18 10:35:56.797530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Jerin wahala",
     "languageListLabel": "Jerin harsuna",
     "searchedResultsLabel": "Sakamakon bincike na '{search}'",
-    "closeAddCoursePage": "Rufe shafin ƙara kwas"
+    "closeAddCoursePage": "Rufe shafin ƙara kwas",
+    "endPractice": "Kawo karshen atisayen"
 }

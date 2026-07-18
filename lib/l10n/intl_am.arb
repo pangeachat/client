@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-16 16:44:56.217412",
+    "@@last_modified": "2026-07-18 10:35:54.944966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "የችግር ደረጃ ዝርዝር",
     "languageListLabel": "የቋንቋ ዝርዝር",
     "searchedResultsLabel": "ለ'{search}' የተገኙ የፍለጋ ውጤቶች",
-    "closeAddCoursePage": "ኮርስ መጨመሪያ ገጹን ዝጋ"
+    "closeAddCoursePage": "ኮርስ መጨመሪያ ገጹን ዝጋ",
+    "endPractice": "ልምምዱን ጨርስ"
 }

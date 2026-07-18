@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-16 17:23:58.856974",
+    "@@last_modified": "2026-07-18 10:36:01.278694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lisi o faigata",
     "languageListLabel": "Lisi o gagana",
     "searchedResultsLabel": "Su'esu'ega mo '{search}'",
-    "closeAddCoursePage": "Tapuni le itulau fa'aopoopo kosi"
+    "closeAddCoursePage": "Tapuni le itulau fa'aopoopo kosi",
+    "endPractice": "Fa'amuta le fa'ata'ita'iga"
 }

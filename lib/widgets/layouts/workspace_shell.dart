@@ -218,6 +218,7 @@ class WorkspaceShell extends StatelessWidget {
                 key: _persistentWorldMapKey,
                 leftOverlayWidth: l.mapLeftOverlay,
                 rightOverlayWidth: l.allocation.mapRightOverlay,
+                bottomOverlayHeight: l.mapBottomOverlay,
                 availableVisibleMapWidth: l.availableVisibleMapWidth,
                 focus: mapFocusFor(state),
               ),
@@ -297,12 +298,19 @@ class WorkspaceShell extends StatelessWidget {
                       l.allocation.left[i].vis != PanelVis.hidden)
                     Positioned(
                       key: ValueKey(l.leftTokens[i].encode()),
-                      // Respect the top safe-area inset so the panel's close/back control
-                      // isn't cut off under the system top bar (#7143). PanelCard's own 12px
-                      // top margin equals the cluster's chromeMargin, so this aligns the
-                      // panel content with the safe-area-respecting top-right cluster. No-op
-                      // where there is no top inset (desktop/web).
-                      top: MediaQuery.viewPaddingOf(context).top,
+                      // The narrow full-screen focus (a live room / session) is
+                      // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
+                      // app bar absorbs the status-bar inset, and skipping the
+                      // shell's extra safe-area offset removes the doubled top
+                      // padding (#7554). Column-mode / non-focused panels keep
+                      // the card and respect the top inset so their close/back
+                      // control clears the system top bar (#7143); PanelCard's
+                      // 12px top margin aligns them with the top-right cluster.
+                      top:
+                          !l.isColumnMode &&
+                              l.allocation.left[i].vis == PanelVis.full
+                          ? 0.0
+                          : MediaQuery.viewPaddingOf(context).top,
                       bottom: 0,
                       left: l.allocation.left[i].left,
                       width: l.allocation.left[i].width,
@@ -311,6 +319,9 @@ class WorkspaceShell extends StatelessWidget {
                         state: state,
                         foldedOver: l.allocation.left[i].foldedOver,
                         getRoomKey: _roomKeyFor,
+                        bare:
+                            !l.isColumnMode &&
+                            l.allocation.left[i].vis == PanelVis.full,
                       ),
                     ),
               ],
@@ -477,21 +488,21 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     }
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // The bar shows over the bare map AND over map-content cavities (the
-    // course card, the activity plan — the map is still the ground behind
-    // them, per the Figma course frame's minimized icon); section cavities
-    // (chats, the hub) re-target it in the follow-up and mount nothing yet.
-    final mapIsGround =
-        cavityToken == null || isCourseCavity || isActivityCavity;
+    // The bar shows over the bare map and the course card (the map is still
+    // the ground behind it, per the Figma course frame's minimized icon).
+    // NOT over a selected activity: its sheet is the focus and the bar only
+    // crowded the exposed map band the camera centers the pin in (#7640).
+    // Section cavities (chats, the hub) re-target it in the follow-up and
+    // mount nothing yet.
+    final showsSearchBar = cavityToken == null || isCourseCavity;
     // Once a COURSE sheet is pulled to full it covers the map, so the map
     // search is moot: hide the bar entirely and let its reserved strip (dropped
     // from the height reservation below, since searchBar is then null) go to the
-    // course content (#7697). The bar stays over a peeking/half course, the
-    // bare/scoped map, and the chats/courses sections (which re-target it), so
-    // gate strictly on a full course cavity.
+    // course content (#7697). The bar stays over a peeking/half course and the
+    // bare/scoped map, so gate strictly on a full course cavity.
     final hideSearchForFullCourse = isCourseCavity && _cavityAtFull;
     final searchBar =
-        mapIsGround && mapController != null && !hideSearchForFullCourse
+        showsSearchBar && mapController != null && !hideSearchForFullCourse
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
@@ -511,13 +522,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // bottom margin + bottom safe area + one margin of breathing room below
     // the bar. Omitting the rail row here previously let a fully-expanded
     // widget push the search bar under the analytics bar.
-    final reserved =
-        screenPadding.top +
-        _ShellLayout.analyticsBarAllowance +
-        (searchBar != null ? _ShellLayout.searchBarAllowance : 0.0) +
-        MobileNavWidget.railRowHeight +
-        screenPadding.bottom +
-        _ShellLayout.chromeMargin * 2;
+    final reserved = _ShellLayout.navChromeReserved(
+      screenPadding: screenPadding,
+      hasSearchBar: searchBar != null,
+    );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
         : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
@@ -645,15 +653,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
-        // Dismissing the activity plan sheet (drag down / tap the map outside
-        // it) CLOSES the plan — dropping its token clears the map's activity
-        // focus (#7614; world-map.instructions.md: focus is cleared by
-        // "closing the plan" and "tapping the empty map"). Same navigation as
-        // the panel's own back/X. Sections and the course card keep
-        // collapse-not-close.
+        // Dismissing the activity plan sheet (drag down, or its own back/X)
+        // CLOSES the plan — dropping its token clears the map's activity
+        // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
+        // the map stays live around the sheet (mapStaysLive below), so a tap
+        // on another pin moves the selection directly. Sections and the
+        // course card keep collapse-not-close.
         onDismissed: isActivityCavity && cavityToken != null
             ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
             : null,
+        // The map stays interactive around the activity plan and course card
+        // sheets: taps/pans in the exposed map pass through — tap another pin
+        // to select it directly; panning never dismisses. Dismissal is the
+        // drag-down handle or the sheet's own close control (#7742).
+        mapStaysLive: isActivityCavity || isCourseCavity,
         // Latched full-height reports drive the course-sheet search-bar hide
         // above (#7697). Guarded so an unchanged report is not a rebuild.
         onCavityFullChanged: (full) {
@@ -702,6 +715,23 @@ class _ShellLayout {
   /// the widget's full-height bound stops the SEARCH BAR just below the
   /// analytics bar (routing.instructions.md → Single-column search bar).
   static const double searchBarAllowance = 56.0;
+
+  /// The vertical chain around the nav widget's CAVITY that its full-height
+  /// bound must reserve: top safe area + analytics bar + the search-bar
+  /// allowance when one rides the widget + the rail row + bottom margin +
+  /// bottom safe area + one margin of breathing room below the bar. Shared by
+  /// the nav layer's [MobileNavWidget.maxHeightFraction] and the map's
+  /// bottom camera padding ([mapBottomOverlay]) so the two can't drift.
+  static double navChromeReserved({
+    required EdgeInsets screenPadding,
+    required bool hasSearchBar,
+  }) =>
+      screenPadding.top +
+      analyticsBarAllowance +
+      (hasSearchBar ? searchBarAllowance : 0.0) +
+      MobileNavWidget.railRowHeight +
+      screenPadding.bottom +
+      chromeMargin * 2;
 
   /// Whether the nav rail shows (vertical-left in column mode, bottom bar narrow).
   final bool navRail;
@@ -769,6 +799,11 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// Map camera bottom padding: the vertical band the narrow activity-plan
+  /// sheet occupies at its half-rest state, so a focused pin centers in the
+  /// exposed map above the sheet (#7640). 0 everywhere else.
+  final double mapBottomOverlay;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -795,6 +830,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.detailWidth,
     required this.mapLeftOverlay,
+    required this.mapBottomOverlay,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -965,8 +1001,8 @@ class _ShellLayout {
     // padding both begin here so neither can slide under a left panel. Map
     // content on a narrow screen (a course card, an activity plan) rides in a
     // bottom sheet over the FULL map, not a left panel, so the camera uses the
-    // whole width (the sheet covers the bottom, which the left/right overlays
-    // don't model). See `routing.instructions.md`.
+    // whole width; the band the sheet covers is modeled separately as
+    // [mapBottomOverlay]. See `routing.instructions.md`.
     final leftInset = hasCavity
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
@@ -998,6 +1034,37 @@ class _ShellLayout {
         ? 0.0
         : leftInset +
               (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+
+    // The narrow activity-plan sheet covers the bottom of the full-width map —
+    // the band the left/right overlays don't model. Pad the camera's bottom by
+    // the sheet's half-rest state (its default; the height it opens at) so a
+    // focused pin lands in the exposed area ABOVE the sheet instead of behind
+    // it (#7640; activities doc — "the plan keeps its pin visible above", the
+    // Google Maps target UX). The band: half the cavity's growth bound plus
+    // the chrome below/above it (rail row, the search bar the activity cavity
+    // always rides, margins, safe area) — the same [navChromeReserved] chain
+    // the nav layer sizes the cavity with, so the two can't drift. An estimate
+    // of the resting sheet, deliberately not live-tracked: dragging the sheet
+    // must not yank the camera.
+    var mapBottomOverlay = 0.0;
+    if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
+      final screenPadding = MediaQuery.viewPaddingOf(context);
+      final screenHeight = MediaQuery.sizeOf(context).height;
+      // No search bar rides the activity sheet (it hides on selection), so
+      // the reservation and the covered band both exclude its allowance.
+      final reserved = navChromeReserved(
+        screenPadding: screenPadding,
+        hasSearchBar: false,
+      );
+      final maxHeightFraction = screenHeight <= 0
+          ? 0.8
+          : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
+      mapBottomOverlay =
+          0.5 * maxHeightFraction * screenHeight +
+          MobileNavWidget.railRowHeight +
+          screenPadding.bottom +
+          chromeMargin * 2;
+    }
 
     // The map actually visible between the open side panels — drives the pin
     // density budget (world_map_pin_budget). A mobile sheet leaves the map
@@ -1048,6 +1115,7 @@ class _ShellLayout {
       leftInset: leftInset,
       detailWidth: detailWidth,
       mapLeftOverlay: mapLeftOverlay,
+      mapBottomOverlay: mapBottomOverlay,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

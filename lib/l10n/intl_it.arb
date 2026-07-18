@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:42.902939",
+    "@@last_modified": "2026-07-18 10:35:57.550223",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -6485,8 +6485,6 @@
     "allow": "Consenti",
     "deny": "Nega",
     "enabledRenewal": "Abilita il rinnovo dell'abbonamento",
-    "subscriptionEndsOn": "L'abbonamento scade il",
-    "subscriptionRenewsOn": "L'abbonamento si rinnova il",
     "waitForSubscriptionChanges": "Le modifiche al tuo abbonamento potrebbero richiedere un momento per riflettersi nell'app.",
     "subscribeReadingAssistance": "Abbonati per sbloccare gli strumenti di messaggistica",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6759,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9722,5 +9712,6 @@
     "starsToUnlockObjectiveTitle": "Stelle per missione",
     "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
     "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
-    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante."
+    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante.",
+    "endPractice": "Termina pratica"
 }

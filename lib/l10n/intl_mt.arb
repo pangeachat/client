@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-16 17:19:48.775592",
+    "@@last_modified": "2026-07-18 10:35:59.429695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lista ta' diffikultà",
     "languageListLabel": "Lista tal-lingwi",
     "searchedResultsLabel": "Riżultati tat-tfittxija għal '{search}'",
-    "closeAddCoursePage": "Agħlaq il-paġna żid kors"
+    "closeAddCoursePage": "Agħlaq il-paġna żid kors",
+    "endPractice": "Temm il-prattika"
 }

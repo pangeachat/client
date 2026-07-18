@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-16 17:23:35.325110",
+    "@@last_modified": "2026-07-18 10:36:01.219592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lista e vështirësive",
     "languageListLabel": "Lista e gjuhëve",
     "searchedResultsLabel": "Rezultatet e kërkimit për '{search}'",
-    "closeAddCoursePage": "Mbyll faqen e shtimit të kursit"
+    "closeAddCoursePage": "Mbyll faqen e shtimit të kursit",
+    "endPractice": "Përfundo praktikën"
 }

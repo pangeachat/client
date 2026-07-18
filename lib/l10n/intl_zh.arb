@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-13 10:07:31.143106",
+    "@@last_modified": "2026-07-18 10:36:02.767481",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "允许",
     "deny": "拒绝",
     "enabledRenewal": "启用订阅续费",
-    "subscriptionEndsOn": "订阅结束于",
-    "subscriptionRenewsOn": "订阅续费于",
     "waitForSubscriptionChanges": "您的订阅更改可能需要一些时间才能在应用中反映。",
     "subscribeReadingAssistance": "订阅以解锁消息工具",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9649,5 +9639,6 @@
     "starsToUnlockObjectiveTitle": "每个任务的星数",
     "starsToUnlockObjectiveDesc": "设置完成每个任务所需的星数",
     "maxStarsPerMissionWarning": "此课程中的任务最多只能获得 {maxValue} 颗星。请输入一个小于或等于 {maxValue} 的数字。",
-    "removedFromCourseError": "您已被移出此课程。请联系您的老师。"
+    "removedFromCourseError": "您已被移出此课程。请联系您的老师。",
+    "endPractice": "结束练习"
 }

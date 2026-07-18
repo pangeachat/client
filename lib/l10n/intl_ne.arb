@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-16 17:19:21.055202",
+    "@@last_modified": "2026-07-18 10:35:59.961145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "कठिनाई सूची",
     "languageListLabel": "भाषा सूची",
     "searchedResultsLabel": "'{search}' को लागि खोज परिणामहरू",
-    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्"
+    "closeAddCoursePage": "पाठ्यक्रम थप्ने पृष्ठ बन्द गर्नुहोस्",
+    "endPractice": "अभ्यास समाप्त गर्नुहोस्"
 }

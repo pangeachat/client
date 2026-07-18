@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-16 17:07:28.070243",
+    "@@last_modified": "2026-07-18 10:35:55.240876",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lista sa kalisod",
     "languageListLabel": "Lista sa lengguwahe",
     "searchedResultsLabel": "Mga resulta sa pagpangita para sa '{search}'",
-    "closeAddCoursePage": "Isira ang panid sa pagdugang og kurso"
+    "closeAddCoursePage": "Isira ang panid sa pagdugang og kurso",
+    "endPractice": "Tapuson ang pagpraktis"
 }

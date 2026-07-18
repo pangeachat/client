@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-13 10:08:05.857792",
+    "@@last_modified": "2026-07-18 10:35:58.019168",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -7151,8 +7151,6 @@
     "allow": "許可",
     "deny": "拒否",
     "enabledRenewal": "サブスクリプション更新を有効にする",
-    "subscriptionEndsOn": "サブスクリプションの終了日",
-    "subscriptionRenewsOn": "サブスクリプションの更新日",
     "waitForSubscriptionChanges": "サブスクリプションの変更がアプリに反映されるまで少々お待ちください。",
     "subscribeReadingAssistance": "メッセージツールを解除するために購読する",
     "aceDisplayName": "アチネース",
@@ -7427,14 +7425,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10418,5 +10408,6 @@
     "starsToUnlockObjectiveTitle": "ミッションごとのスター数",
     "starsToUnlockObjectiveDesc": "各ミッションを完了するために必要なスター数を設定します",
     "maxStarsPerMissionWarning": "このコースには、獲得できるスターが{maxValue}個までのミッションがあります。{maxValue}以下の数字を入力してください。",
-    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。"
+    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。",
+    "endPractice": "練習を終了"
 }

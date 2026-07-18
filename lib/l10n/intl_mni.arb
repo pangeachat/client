@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-16 17:27:50.003995",
+    "@@last_modified": "2026-07-18 10:35:59.467404",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "অওনবা লিষ্ট",
     "languageListLabel": "লোনগী লিষ্ট",
     "searchedResultsLabel": "'{search}' গী সর্চ রিজল্টশিং",
-    "closeAddCoursePage": "কোর্স পেজ থিংজিনবা"
+    "closeAddCoursePage": "কোর্স পেজ থিংজিনবা",
+    "endPractice": "প্র্যাকটিস লোয়শিনব"
 }

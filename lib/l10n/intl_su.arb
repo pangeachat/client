@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-16 17:23:56.997727",
+    "@@last_modified": "2026-07-18 10:36:01.649980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Daptar kasusah",
     "languageListLabel": "Daptar basa",
     "searchedResultsLabel": "Hasil pamilarian pikeun '{search}'",
-    "closeAddCoursePage": "Tutup halaman tambah kursus"
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "endPractice": "Réngsé latihan"
 }

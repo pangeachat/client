@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:04:33.370976",
+    "@@last_modified": "2026-07-18 10:35:57.519876",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -6485,8 +6485,6 @@
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Berlangganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6759,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9722,5 +9712,6 @@
     "starsToUnlockObjectiveTitle": "Bintang per Misi",
     "starsToUnlockObjectiveDesc": "Tetapkan jumlah bintang yang dibutuhkan untuk menyelesaikan setiap misi",
     "maxStarsPerMissionWarning": "Kursus ini memiliki misi di mana hanya {maxValue} bintang yang dapat diperoleh. Harap masukkan angka kurang dari atau sama dengan {maxValue}.",
-    "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda."
+    "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda.",
+    "endPractice": "Akhiri latihan"
 }

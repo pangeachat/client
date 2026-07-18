@@ -14,9 +14,14 @@ API-key path (its prepaid pool depletes silently). Set:
   VERTEX_LOCATION  Vertex region (default: "global", serves all Gemini GA models)
 
 Usage:
-  python scripts/translate/translate_gemini.py --lang af --name Afrikaans
+  uv run scripts/translate/translate_gemini.py --lang af --name Afrikaans
   # optional: --l10n <dir> (default lib/l10n), --limit N (smoke test), --dry
 """
+
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["google-genai>=1.0", "google-auth"]
+# ///
 
 import argparse
 import json
@@ -84,10 +89,13 @@ def validate(en_val: str, tr_val: str) -> str | None:
 def vertex_client() -> genai.Client:
     import google.auth
 
-    creds, default_project = google.auth.default(
+    creds, _ = google.auth.default(
         scopes=["https://www.googleapis.com/auth/cloud-platform"]
     )
-    project = os.environ.get("VERTEX_PROJECT") or default_project
+    # Default to the dev LLM pool (the project that backs engineers' local
+    # creds) rather than the ADC default — user accounts typically lack
+    # Vertex perms on whatever project gcloud happens to default to.
+    project = os.environ.get("VERTEX_PROJECT") or "pangea-chat-dev-llm"
     location = os.environ.get("VERTEX_LOCATION", "global")
     print(f"Vertex: project={project} location={location}")
     return genai.Client(vertexai=True, project=project, location=location, credentials=creds)

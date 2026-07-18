@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-16 17:14:28.549893",
+    "@@last_modified": "2026-07-18 10:35:58.113014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Қиындықтар тізімі",
     "languageListLabel": "Тілдер тізімі",
     "searchedResultsLabel": "'{search}' үшін іздеу нәтижелері",
-    "closeAddCoursePage": "Курс қосу бетін жабу"
+    "closeAddCoursePage": "Курс қосу бетін жабу",
+    "endPractice": "Жаттығуды аяқтау"
 }

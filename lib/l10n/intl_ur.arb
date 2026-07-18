@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-16 17:25:44.741376",
+    "@@last_modified": "2026-07-18 10:36:02.252374",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "مشکل کی فہرست",
     "languageListLabel": "زبان کی فہرست",
     "searchedResultsLabel": "'{search}' کے لیے تلاش کے نتائج",
-    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں"
+    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں",
+    "endPractice": "مشق ختم کریں"
 }

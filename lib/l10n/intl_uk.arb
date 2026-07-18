@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-13 10:05:49.548162",
+    "@@last_modified": "2026-07-18 10:36:02.175572",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Дозволити",
     "deny": "Відхилити",
     "enabledRenewal": "Увімкнути продовження підписки",
-    "subscriptionEndsOn": "Підписка закінчується",
-    "subscriptionRenewsOn": "Підписка поновлюється",
     "waitForSubscriptionChanges": "Зміни у вашій підписці можуть зайняти деякий час, щоб відобразитися в додатку.",
     "subscribeReadingAssistance": "Підпишіться, щоб розблокувати інструменти повідомлень",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9649,5 +9639,6 @@
     "starsToUnlockObjectiveTitle": "Зірки за місію",
     "starsToUnlockObjectiveDesc": "Встановіть кількість зірок, необхідних для завершення кожної місії",
     "maxStarsPerMissionWarning": "Цей курс містить місії, де можна заробити лише {maxValue} зірок. Будь ласка, введіть число, менше або рівне {maxValue}.",
-    "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя."
+    "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя.",
+    "endPractice": "Завершити практику"
 }

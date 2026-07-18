@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-16 17:08:16.455437",
+    "@@last_modified": "2026-07-18 10:35:56.873364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Papa inoa paʻakikī",
     "languageListLabel": "Papa inoa ʻōlelo",
     "searchedResultsLabel": "Nā hualoaʻa no '{search}'",
-    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa"
+    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa",
+    "endPractice": "Hoʻopau i ka hoʻomaʻamaʻa"
 }

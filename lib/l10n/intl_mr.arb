@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-16 17:17:37.842095",
+    "@@last_modified": "2026-07-18 10:35:59.304026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "कठीण पातळीची यादी",
     "languageListLabel": "भाषेची यादी",
     "searchedResultsLabel": "'{search}' साठी शोध परिणाम",
-    "closeAddCoursePage": "अभ्यासक्रम जोडा पृष्ठ बंद करा"
+    "closeAddCoursePage": "अभ्यासक्रम जोडा पृष्ठ बंद करा",
+    "endPractice": "सराव संपवा"
 }

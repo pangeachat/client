@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-16 17:13:31.770597",
+    "@@last_modified": "2026-07-18 10:35:58.098765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "ಕಷ್ಟದ ಪಟ್ಟಿ",
     "languageListLabel": "ಭಾಷಾ ಪಟ್ಟಿ",
     "searchedResultsLabel": "'{search}' ಗಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",
-    "closeAddCoursePage": "ಕೋರ್ಸ್ ಸೇರಿಸುವ ಪುಟವನ್ನು ಮುಚ್ಚಿ"
+    "closeAddCoursePage": "ಕೋರ್ಸ್ ಸೇರಿಸುವ ಪುಟವನ್ನು ಮುಚ್ಚಿ",
+    "endPractice": "ಅಭ್ಯಾಸ ಮುಗಿಸಿ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-16 17:13:10.884387",
+    "@@last_modified": "2026-07-18 10:35:54.622352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Списък с трудности",
     "languageListLabel": "Списък с езици",
     "searchedResultsLabel": "Резултати от търсене за '{search}'",
-    "closeAddCoursePage": "Затвори страницата за добавяне на курс"
+    "closeAddCoursePage": "Затвори страницата за добавяне на курс",
+    "endPractice": "Край на упражнението"
 }

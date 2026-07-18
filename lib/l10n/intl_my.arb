@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-16 17:21:10.904492",
+    "@@last_modified": "2026-07-18 10:35:59.983013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "အခက်အခဲစာရင်း",
     "languageListLabel": "ဘာသာစကားစာရင်း",
     "searchedResultsLabel": "'{search}' အတွက် ရှာဖွေမှုရလဒ်များ",
-    "closeAddCoursePage": "သင်တန်းထည့်သွင်းခြင်း စာမျက်နှာကို ပိတ်ပါ"
+    "closeAddCoursePage": "သင်တန်းထည့်သွင်းခြင်း စာမျက်နှာကို ပိတ်ပါ",
+    "endPractice": "လေ့ကျင့်မှုပြီးဆုံး"
 }

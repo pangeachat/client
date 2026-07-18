@@ -2929,7 +2929,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-13 10:07:27.268969",
+    "@@last_modified": "2026-07-18 10:35:55.132448",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7757,8 +7757,6 @@
     "allow": "ཆོག",
     "deny": "མི་ཆོག",
     "enabledRenewal": "ཉོ་ཡུན་གསར་བསྐྲུན་སྤྱོད་གཏོང",
-    "subscriptionEndsOn": "ཉོ་ཡུན་མཇུག་འགྲིལ་ཚེས",
-    "subscriptionRenewsOn": "ཉོ་ཡུན་གསར་བསྐྲུན་ཚེས",
     "waitForSubscriptionChanges": "ཁྱེད་ཀྱི་ཉོ་ཡུན་གྱི་བསྒྱུར་བ་མཉེན་ཆས་ནང་མངོན་པར་ཏོག་ཙམ་འགོར་སྲིད།",
     "subscribeReadingAssistance": "འཕྲིན་ཆ་ཤས་ཀྱི་ལག་ཆ་སྤྱོད་པའི་ཆེད་དུ་ཉོ་ཡུན་བྱོས།",
     "aceDisplayName": "ཨ་ཅི་ནིས",
@@ -9252,5 +9250,6 @@
     "starsToUnlockObjectiveTitle": "འགན་འཁྲི་རེར་སྐར་མ།",
     "starsToUnlockObjectiveDesc": "འགན་འཁྲི་རེ་མཇུག་སྒྲིལ་བར་དགོས་པའི་སྐར་གྲངས་གཏན་འབེབས་བྱེད་པ།",
     "maxStarsPerMissionWarning": "སློབ་ཚན་འདིའི་ནང་འགན་འཁྲི་ཁ་ཤས་ལ་སྐར་མ་ {maxValue} ལས་བསྒྲུབ་མི་ཐུབ། གྲངས་ཀ་ {maxValue} དང་མཉམ་པ་ཡང་ན་ཆུང་བ་ཞིག་བཅུག་རོགས།",
-    "removedFromCourseError": "ཁྱེད་རང་སློབ་ཚན་འདི་ནས་ཕྱིར་འབུད་བྱས་འདུག དགེ་རྒན་ལ་འབྲེལ་བ་བྱོས།"
+    "removedFromCourseError": "ཁྱེད་རང་སློབ་ཚན་འདི་ནས་ཕྱིར་འབུད་བྱས་འདུག དགེ་རྒན་ལ་འབྲེལ་བ་བྱོས།",
+    "endPractice": "སྦྱོང་བརྡར་མཇུག་བསྒྲིལ་"
 }

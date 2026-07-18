@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-16 17:28:34.801755",
+    "@@last_modified": "2026-07-18 10:36:01.647410",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Orodha ya ugumu",
     "languageListLabel": "Orodha ya lugha",
     "searchedResultsLabel": "Matokeo ya utafutaji kwa '{search}'",
-    "closeAddCoursePage": "Funga ukurasa wa kuongeza kozi"
+    "closeAddCoursePage": "Funga ukurasa wa kuongeza kozi",
+    "endPractice": "Maliza mazoezi"
 }

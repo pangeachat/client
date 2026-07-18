@@ -664,6 +664,7 @@ abstract class WorkspaceNav {
   static String openSettings(
     Uri current, {
     String? page,
+    String? planId,
     bool closeSections = false,
   }) {
     final String next;
@@ -681,7 +682,9 @@ abstract class WorkspaceNav {
         return result;
       });
     } else {
-      final detail = SettingsPagePanelToken(SettingsTokenParam(subpage: page));
+      final detail = SettingsPagePanelToken(
+        SettingsTokenParam(subpage: page, planId: planId),
+      );
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
             .where(

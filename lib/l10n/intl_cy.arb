@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-16 17:13:59.931842",
+    "@@last_modified": "2026-07-18 10:35:55.309928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Rhestr anhawster",
     "languageListLabel": "Rhestr iaith",
     "searchedResultsLabel": "Canlyniadau chwilio am '{search}'",
-    "closeAddCoursePage": "Cau tudalen ychwanegu cwrs"
+    "closeAddCoursePage": "Cau tudalen ychwanegu cwrs",
+    "endPractice": "Gorffen ymarfer"
 }

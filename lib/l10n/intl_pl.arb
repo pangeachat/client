@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-13 10:07:51.564360",
+    "@@last_modified": "2026-07-18 10:36:00.524867",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -6477,8 +6477,6 @@
     "allow": "Zezwól",
     "deny": "Odmów",
     "enabledRenewal": "Włącz odnowienie subskrypcji",
-    "subscriptionEndsOn": "Subskrypcja kończy się",
-    "subscriptionRenewsOn": "Subskrypcja odnawia się",
     "waitForSubscriptionChanges": "Zmiany w subskrypcji mogą chwilę potrwać, zanim zostaną odzwierciedlone w aplikacji.",
     "subscribeReadingAssistance": "Subskrybuj, aby odblokować narzędzia do wiadomości",
     "aceDisplayName": "Achinese",
@@ -6753,14 +6751,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9734,5 +9724,6 @@
     "starsToUnlockObjectiveTitle": "Gwiazd na misję",
     "starsToUnlockObjectiveDesc": "Ustaw liczbę gwiazdek potrzebnych do ukończenia każdej misji",
     "maxStarsPerMissionWarning": "Ten kurs zawiera misje, w których można zdobyć tylko {maxValue} gwiazdek. Wprowadź liczbę mniejszą lub równą {maxValue}.",
-    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem."
+    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem.",
+    "endPractice": "Zakończ ćwiczenie"
 }

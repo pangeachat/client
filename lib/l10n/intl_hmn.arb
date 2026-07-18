@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-16 17:14:19.327834",
+    "@@last_modified": "2026-07-18 10:35:57.016205",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Cov npe nyuaj",
     "languageListLabel": "Cov npe lus",
     "searchedResultsLabel": "Cov txiaj ntsig tshawb nrhiav rau '{search}'",
-    "closeAddCoursePage": "Kaw nplooj ntawv ntxiv kev kawm"
+    "closeAddCoursePage": "Kaw nplooj ntawv ntxiv kev kawm",
+    "endPractice": "Xaus kev kawm"
 }

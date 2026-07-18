@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:04:40.326066",
+    "@@last_modified": "2026-07-18 10:36:00.591384",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -7114,8 +7114,6 @@
     "allow": "Permite",
     "deny": "Refuză",
     "enabledRenewal": "Activează reînnoirea abonamentului",
-    "subscriptionEndsOn": "Abonamentul se încheie pe",
-    "subscriptionRenewsOn": "Abonamentul se reînnoiește pe",
     "waitForSubscriptionChanges": "Modificările la abonamentul tău pot dura câteva momente pentru a se reflecta în aplicație.",
     "subscribeReadingAssistance": "Abonează-te pentru a debloca instrumentele de mesagerie",
     "aceDisplayName": "Achinese",
@@ -7390,14 +7388,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10381,5 +10371,6 @@
     "starsToUnlockObjectiveTitle": "Stele per Misiune",
     "starsToUnlockObjectiveDesc": "Setează numărul de stele necesare pentru a finaliza fiecare misiune",
     "maxStarsPerMissionWarning": "Acest curs are misiuni în care pot fi câștigate doar {maxValue} stele. Te rugăm să introduci un număr mai mic sau egal cu {maxValue}.",
-    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul."
+    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul.",
+    "endPractice": "Termină exercițiul"
 }

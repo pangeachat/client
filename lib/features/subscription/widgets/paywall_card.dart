@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PaywallCard extends StatelessWidget {
@@ -34,44 +37,86 @@ class PaywallCard extends StatelessWidget {
         maxHeight: 325,
         maxWidth: 325,
         transformTargetId: targetId,
+        addBorder: false,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 12.0,
-      children: [
-        CardHeader(L10n.of(context).clickMessageTitle),
-        Column(
-          spacing: 12.0,
-          children: [
-            Text(
-              L10n.of(context).subscribedToUnlockTools,
-              style: BotStyle.text(context),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  SubscriptionPaywall.show(
-                    context,
-                    userID: Matrix.of(context).client.userID,
-                  );
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withAlpha(25),
+    final theme = Theme.of(context);
+    final gold = AppConfig.goldByTheme(context);
+    final onGold = theme.brightness == Brightness.light
+        ? theme.colorScheme.onSurface
+        : theme.colorScheme.surface;
+
+    return Container(
+      width: 325.0,
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        border: Border.all(color: gold),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        spacing: 10.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Row(
+                  spacing: 8.0,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: BotFace(
+                        width: 40.0,
+                        expression: BotExpression.addled,
+                      ),
+                    ),
+                    Text(
+                      L10n.of(context).clickMessageTitle,
+                      style: BotStyle.text(context, bold: true),
+                    ),
+                  ],
                 ),
-                child: Text(L10n.of(context).getAccess),
               ),
-            ),
-          ],
-        ),
-      ],
+              IconButton(
+                tooltip: L10n.of(context).close,
+                icon: const Icon(Icons.close_outlined),
+                onPressed: MatrixState.pAnyState.closeOverlay,
+              ),
+            ],
+          ),
+          Column(
+            spacing: 12.0,
+            children: [
+              Text(
+                L10n.of(context).subscribedToUnlockTools,
+                style: theme.textTheme.bodyMedium,
+              ),
+              ElevatedButton(
+                onPressed: () => context.go(
+                  WorkspaceNav.openSettings(
+                    GoRouterState.of(context).uri,
+                    page: 'subscription',
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: gold,
+                  foregroundColor: onGold,
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text(L10n.of(context).viewSubscriptionOptions)],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

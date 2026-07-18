@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:01.449402",
+    "@@last_modified": "2026-07-18 10:35:56.841124",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -7302,8 +7302,6 @@
     "allow": "אפשר",
     "deny": "סירב",
     "enabledRenewal": "אפשר חידוש מנוי",
-    "subscriptionEndsOn": "המנוי מסתיים ב",
-    "subscriptionRenewsOn": "המנוי מתחדש ב",
     "waitForSubscriptionChanges": "שינויים במנוי שלך עשויים לקחת רגע להופיע באפליקציה.",
     "subscribeReadingAssistance": "הירשם כדי לפתוח כלים להודעות",
     "aceDisplayName": "אכינזי",
@@ -7578,14 +7576,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10569,5 +10559,6 @@
     "starsToUnlockObjectiveTitle": "כוכבים למשימה",
     "starsToUnlockObjectiveDesc": "קבע את מספר הכוכבים הדרושים להשלמת כל משימה",
     "maxStarsPerMissionWarning": "בקורס זה יש משימות שבהן ניתן לצבור רק {maxValue} כוכבים. אנא הזן מספר קטן או שווה ל-{maxValue}.",
-    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך."
+    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך.",
+    "endPractice": "סיים אימון"
 }
