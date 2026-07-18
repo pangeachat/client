@@ -4659,8 +4659,6 @@
     "contactHasBeenInvitedToTheCourse": "El contacto ha sido invitado al curso",
     "allow": "Permitir",
     "enabledRenewal": "Habilitar renovación de suscripción",
-    "subscriptionEndsOn": "La suscripción termina el",
-    "subscriptionRenewsOn": "La suscripción se renueva el",
     "waitForSubscriptionChanges": "Los cambios en su suscripción pueden tardar un momento en reflejarse en la aplicación.",
     "subscribeReadingAssistance": "Suscríbase para desbloquear herramientas de mensajería",
     "aceDisplayName": "Achinese",
@@ -4935,14 +4933,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

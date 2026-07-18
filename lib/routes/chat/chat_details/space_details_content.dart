@@ -447,9 +447,12 @@ class SpaceDetailsContent extends StatelessWidget {
                           ]),
                           builder: (context, _) => CourseObjectivesList(
                             room: room,
-                            hasCompletedActivity: controller
+                            hasCompletedActivity: (activityId) => controller
                                 .roomSummariesModel
-                                .hasCompletedActivity,
+                                .hasCompletedActivity(
+                                  room.client.userID!,
+                                  activityId,
+                                ),
                             objectivesProvider: controller.objectivesProvider,
                           ),
                         );

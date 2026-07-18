@@ -21,18 +21,21 @@ class ChoreoRecordModel {
   final List<PangeaMatch> openMatches;
   final String originalText;
 
-  final Set<String> pastedStrings = {};
+  final Set<String> _pastedStrings = {};
 
   /// Texts inserted by accepting an orchestrator suggestion chip. Like
   /// [pastedStrings], in-memory only — suggestion tokens must not score as
   /// self-written language (#7665).
-  final Set<String> suggestionStrings = {};
+  final Set<String> _suggestionStrings = {};
 
   ChoreoRecordModel({
     required this.choreoSteps,
     required this.openMatches,
     required this.originalText,
   });
+
+  Set<String> get pastedStrings => _pastedStrings;
+  Set<String> get suggestionStrings => _suggestionStrings;
 
   factory ChoreoRecordModel.fromJson(
     Map<String, dynamic> json, [
@@ -214,6 +217,9 @@ class ChoreoRecordModel {
       ),
     );
   }
+
+  void addPastedString(String value) => _pastedStrings.add(value);
+  void addSuggestionString(String value) => _suggestionStrings.add(value);
 }
 
 /// A new ChoreoRecordStep is saved in the following cases:

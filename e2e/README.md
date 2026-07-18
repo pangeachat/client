@@ -39,7 +39,7 @@ The Playwright config auto-loads `client/.env`. The auth setup needs:
 | `TEST_MATRIX_USERNAME` | Matrix username (localpart, no `@` or domain) |
 | `TEST_MATRIX_PASSWORD` | Password |
 
-Both come from AWS Secrets Manager at `/staging/test-user/matrix-credentials`. `client/.env` is gitignored. Fetch the values one of these ways:
+Both come from AWS Secrets Manager at `/staging/test-user/matrix-credentials`. They belong in `client/.env.staging` (gitignored) — the staging env profile, which the Playwright config reads ahead of `.env` so specs work regardless of which profile is active (see `matrix-auth.instructions.md`). Fetch the values one of these ways:
 
 ```sh
 # A) From AWS Secrets Manager (preferred — requires staging SSO access)
@@ -49,10 +49,10 @@ aws secretsmanager get-secret-value \
   --secret-id /staging/test-user/matrix-credentials \
   --query SecretString --output text \
   | jq -r '"TEST_MATRIX_USERNAME=\(.username)\nTEST_MATRIX_PASSWORD=\(.password)"' \
-  >> .env
+  >> .env.staging
 
 # B) From 2-step-choreographer/.env, which mirrors the same values
-grep -E '^TEST_MATRIX_(USERNAME|PASSWORD)=' ../2-step-choreographer/.env >> .env
+grep -E '^TEST_MATRIX_(USERNAME|PASSWORD)=' ../2-step-choreographer/.env >> .env.staging
 ```
 
 If neither path works, ask Will via a private channel.

@@ -7014,8 +7014,6 @@
     "allow": "अनुमति दें",
     "deny": "अस्वीकृत करें",
     "enabledRenewal": "सदस्यता नवीनीकरण सक्षम करें",
-    "subscriptionEndsOn": "सदस्यता समाप्त होती है",
-    "subscriptionRenewsOn": "सदस्यता नवीनीकरण होती है",
     "waitForSubscriptionChanges": "आपकी सदस्यता में परिवर्तन ऐप में परिलक्षित होने में कुछ समय ले सकते हैं।",
     "subscribeReadingAssistance": "संदेश उपकरणों को अनलॉक करने के लिए सदस्यता लें",
     "aceDisplayName": "अचिनीज़",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

@@ -6562,8 +6562,6 @@
     "allow": "允许",
     "deny": "拒绝",
     "enabledRenewal": "启用订阅续费",
-    "subscriptionEndsOn": "订阅结束于",
-    "subscriptionRenewsOn": "订阅续费于",
     "waitForSubscriptionChanges": "您的订阅更改可能需要一些时间才能在应用中反映。",
     "subscribeReadingAssistance": "订阅以解锁消息工具",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },

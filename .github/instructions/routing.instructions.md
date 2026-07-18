@@ -503,9 +503,13 @@ closed (see [History follows the workspace](#history-follows-the-workspace)).
 The ephemeral expand/collapse of the widget is never a history entry.
 
 **Full-screen surfaces.** A live chat room — including a launched activity
-session — opens full-screen, covering the nav widget: a rounded-corner card
-with a small inset of map visible behind it. The nav widget is not accessible
-while one of these surfaces is focused. (The activity *plan* is not one of
+session — opens full-screen, covering the nav widget: **full-bleed, edge to
+edge** — no card chrome, no map inset — because on a phone every pixel of a
+chat matters (#7554; the surface's own app bar absorbs the status-bar inset,
+and the composer reaches the keyboard with no floating gap below). This is a
+render fact only — the token, allocator slot, and history behave exactly as
+before. The nav widget is not accessible while one of these surfaces is
+focused. (The activity *plan* is not one of
 these — it rides the cavity at half height, its pin visible above.)
 **Route-driven center-detail pages** — a course-wizard step, a public-course
 preview, a chat archive, the new-private-chat form — are full-screen surfaces
