@@ -110,34 +110,36 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
             widget.filtersChild!,
             const SizedBox(height: 8),
           ],
-          Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(99),
-            color: theme.colorScheme.surface,
-            child: PangeaSearchBar(
-              labelText: L10n.of(context).searchActivitiesHint,
-              controller: _controller,
-              onChanged: (value) {
-                widget.onQueryChanged(value);
-                // Rebuild so [searching] tracks the field as the user types and
-                // backspaces — the shell doesn't rebuild this bar per keystroke.
-                setState(() {});
-              },
-              suffixIcon: searching
-                  ? IconButton(
-                      icon: const Icon(Icons.close),
-                      tooltip: l10n.clearSearch,
-                      onPressed: () {
-                        // Clear the field locally too: onQueryChanged only
-                        // reaches the map's State, which won't rebuild this
-                        // shell-built bar to sync the emptied query back in.
-                        _controller.clear();
-                        widget.onQueryChanged('');
-                        setState(() {});
-                      },
-                    )
-                  : null,
-            ),
+          // No Material wrapper here: PangeaSearchBar's own root is a Material
+          // with the same elevation/radius/colour, so wrapping doubled the
+          // floating bar's shadow.
+          PangeaSearchBar(
+            // The scope's hint, not a fixed one: this bar re-targets as the
+            // shell changes scope (map / chats / courses), and the tooltip and
+            // Semantics label above already read from it — a hardcoded label
+            // would disagree with what assistive tech announces.
+            labelText: widget.hintText,
+            controller: _controller,
+            onChanged: (value) {
+              widget.onQueryChanged(value);
+              // Rebuild so [searching] tracks the field as the user types and
+              // backspaces — the shell doesn't rebuild this bar per keystroke.
+              setState(() {});
+            },
+            suffixIcon: searching
+                ? IconButton(
+                    icon: const Icon(Icons.close),
+                    tooltip: l10n.clearSearch,
+                    onPressed: () {
+                      // Clear the field locally too: onQueryChanged only
+                      // reaches the map's State, which won't rebuild this
+                      // shell-built bar to sync the emptied query back in.
+                      _controller.clear();
+                      widget.onQueryChanged('');
+                      setState(() {});
+                    },
+                  )
+                : null,
           ),
         ],
       ),
