@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-16 17:15:16.374822",
+    "@@last_modified": "2026-07-18 10:35:57.450654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Դժվարության ցուցակ",
     "languageListLabel": "Լեզուների ցուցակ",
     "searchedResultsLabel": "Որոնման արդյունքներ՝ '{search}'",
-    "closeAddCoursePage": "Փակել դասընթացի ավելացման էջը"
+    "closeAddCoursePage": "Փակել դասընթացի ավելացման էջը",
+    "endPractice": "Ավարտել պարապմունքը"
 }

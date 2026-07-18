@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-16 17:23:52.152844",
+    "@@last_modified": "2026-07-18 10:36:00.123380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "କଠିନତା ତାଲିକା",
     "languageListLabel": "ଭାଷା ତାଲିକା",
     "searchedResultsLabel": "'{search}' ପାଇଁ ସନ୍ଧାନ ଫଳାଫଳ",
-    "closeAddCoursePage": "କୋର୍ସ ଯୋଗ ପୃଷ୍ଠା ବନ୍ଦ କରନ୍ତୁ"
+    "closeAddCoursePage": "କୋର୍ସ ଯୋଗ ପୃଷ୍ଠା ବନ୍ଦ କରନ୍ତୁ",
+    "endPractice": "ଅଭ୍ୟାସ ଶେଷ କରନ୍ତୁ"
 }

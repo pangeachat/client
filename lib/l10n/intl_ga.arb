@@ -3575,7 +3575,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-13 10:08:35.278726",
+    "@@last_modified": "2026-07-18 10:35:56.455303",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9650,5 +9650,6 @@
     "starsToUnlockObjectiveTitle": "Réaltaí in aghaidh an Mhisean",
     "starsToUnlockObjectiveDesc": "Socraigh an líon réaltaí atá ag teastáil chun gach misean a chríochnú",
     "maxStarsPerMissionWarning": "Tá misin sa chúrsa seo nach féidir ach {maxValue} réalta a thuilleamh iontu. Cuir isteach uimhir atá níos lú ná nó cothrom le {maxValue}.",
-    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir."
+    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir.",
+    "endPractice": "Cuir deireadh leis an gcleachtadh"
 }

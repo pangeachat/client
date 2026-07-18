@@ -3105,7 +3105,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-13 10:04:49.451262",
+    "@@last_modified": "2026-07-18 10:35:57.642450",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10271,5 +10271,6 @@
     "starsToUnlockObjectiveTitle": "Stelles per Mission",
     "starsToUnlockObjectiveDesc": "Fixar li númere de stelles necessari por completar chascun mission",
     "maxStarsPerMissionWarning": "Ti curse have missiones u solmen {maxValue} stelles posse esser ganiat. Ples introducter un númere minor o egal a {maxValue}.",
-    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor."
+    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor.",
+    "endPractice": "Fini li practica"
 }

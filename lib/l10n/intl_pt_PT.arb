@@ -2571,7 +2571,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-13 10:06:22.788726",
+    "@@last_modified": "2026-07-18 10:36:00.658796",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10556,5 +10556,6 @@
     "starsToUnlockObjectiveTitle": "Estrelas por Missão",
     "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
     "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Foi removido deste curso. Contacte o seu professor."
+    "removedFromCourseError": "Foi removido deste curso. Contacte o seu professor.",
+    "endPractice": "Terminar prática"
 }

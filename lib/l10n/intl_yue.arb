@@ -1273,7 +1273,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-13 10:05:38.977247",
+    "@@last_modified": "2026-07-18 10:36:02.771815",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10602,5 +10602,6 @@
     "starsToUnlockObjectiveTitle": "每個任務的星數",
     "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
     "maxStarsPerMissionWarning": "此課程的任務最多只能獲得 {maxValue} 顆星。請輸入一個小於或等於 {maxValue} 的數字。",
-    "removedFromCourseError": "您已被從此課程中移除。請聯絡您的老師。"
+    "removedFromCourseError": "您已被從此課程中移除。請聯絡您的老師。",
+    "endPractice": "結束練習"
 }

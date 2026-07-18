@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-13 10:05:55.093969",
+    "@@last_modified": "2026-07-18 10:35:55.328999",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10133,5 +10133,6 @@
     "starsToUnlockObjectiveTitle": "Hvězdy za misi",
     "starsToUnlockObjectiveDesc": "Nastavte počet hvězd potřebných k dokončení každé mise",
     "maxStarsPerMissionWarning": "Tento kurz obsahuje mise, ve kterých lze získat pouze {maxValue} hvězd. Zadejte prosím číslo menší nebo rovné {maxValue}.",
-    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele."
+    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele.",
+    "endPractice": "Ukončit cvičení"
 }

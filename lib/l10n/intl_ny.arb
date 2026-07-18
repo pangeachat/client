@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-16 17:22:06.839510",
+    "@@last_modified": "2026-07-18 10:36:00.102782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Mndandanda wa zovuta",
     "languageListLabel": "Mndandanda wa zilankhulo",
     "searchedResultsLabel": "Zotsatira zakusaka kwa '{search}'",
-    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro"
+    "closeAddCoursePage": "Tsekani tsamba lowonjezera maphunziro",
+    "endPractice": "Malizitsani zochita"
 }

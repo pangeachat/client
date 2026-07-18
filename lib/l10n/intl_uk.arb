@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-13 10:05:49.548162",
+    "@@last_modified": "2026-07-18 10:36:02.175572",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9639,5 +9639,6 @@
     "starsToUnlockObjectiveTitle": "Зірки за місію",
     "starsToUnlockObjectiveDesc": "Встановіть кількість зірок, необхідних для завершення кожної місії",
     "maxStarsPerMissionWarning": "Цей курс містить місії, де можна заробити лише {maxValue} зірок. Будь ласка, введіть число, менше або рівне {maxValue}.",
-    "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя."
+    "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя.",
+    "endPractice": "Завершити практику"
 }

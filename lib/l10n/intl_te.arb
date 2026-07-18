@@ -1334,7 +1334,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-13 10:06:58.379668",
+    "@@last_modified": "2026-07-18 10:36:01.821242",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10595,5 +10595,6 @@
     "starsToUnlockObjectiveTitle": "మిషన్‌కు నక్షత్రాలు",
     "starsToUnlockObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన నక్షత్రాల సంఖ్యను సెట్ చేయండి",
     "maxStarsPerMissionWarning": "ఈ కోర్సులో {maxValue} నక్షత్రాలు మాత్రమే సంపాదించగల మిషన్లు ఉన్నాయి. దయచేసి {maxValue} లేదా అంతకంటే తక్కువ సంఖ్యను నమోదు చేయండి.",
-    "removedFromCourseError": "మీరు ఈ కోర్సు నుండి తీసివేయబడ్డారు. మీ టీచర్‌ను సంప్రదించండి."
+    "removedFromCourseError": "మీరు ఈ కోర్సు నుండి తీసివేయబడ్డారు. మీ టీచర్‌ను సంప్రదించండి.",
+    "endPractice": "అభ్యాసం ముగించు"
 }

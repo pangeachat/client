@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-16 17:50:43.240295",
+    "@@last_modified": "2026-07-18 10:36:00.122328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "ਕਠਿਨਾਈ ਦੀ ਸੂਚੀ",
     "languageListLabel": "ਭਾਸ਼ਾ ਦੀ ਸੂਚੀ",
     "searchedResultsLabel": "'{search}' ਲਈ ਖੋਜ ਨਤੀਜੇ",
-    "closeAddCoursePage": "ਕੋਰਸ ਸ਼ਾਮਲ ਕਰਨ ਵਾਲਾ ਪੰਨਾ ਬੰਦ ਕਰੋ"
+    "closeAddCoursePage": "ਕੋਰਸ ਸ਼ਾਮਲ ਕਰਨ ਵਾਲਾ ਪੰਨਾ ਬੰਦ ਕਰੋ",
+    "endPractice": "ਅਭਿਆਸ ਖਤਮ ਕਰੋ"
 }

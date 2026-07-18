@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-16 17:14:24.188977",
+    "@@last_modified": "2026-07-18 10:35:58.252251",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Difikult lis",
     "languageListLabel": "Langwej lis",
     "searchedResultsLabel": "Sach rizalt dɛn fɔ '{search}'",
-    "closeAddCoursePage": "Klos ad kos pej"
+    "closeAddCoursePage": "Klos ad kos pej",
+    "endPractice": "Finsih di praktis"
 }

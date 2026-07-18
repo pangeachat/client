@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-16 17:07:49.197550",
+    "@@last_modified": "2026-07-18 10:35:56.926659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "કઠિનતા યાદી",
     "languageListLabel": "ભાષા યાદી",
     "searchedResultsLabel": "'{search}' માટે શોધ પરિણામો",
-    "closeAddCoursePage": "કોર્સ ઉમેરવાનું પેજ બંધ કરો"
+    "closeAddCoursePage": "કોર્સ ઉમેરવાનું પેજ બંધ કરો",
+    "endPractice": "પ્રેક્ટિસ સમાપ્ત કરો"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-16 18:12:26.510417",
+    "@@last_modified": "2026-07-18 10:35:58.721186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Index difficultatum",
     "languageListLabel": "Index linguarum",
     "searchedResultsLabel": "Eventus quaestionis pro '{search}'",
-    "closeAddCoursePage": "Claude paginam additionis cursus"
+    "closeAddCoursePage": "Claude paginam additionis cursus",
+    "endPractice": "Finis exercitationis"
 }

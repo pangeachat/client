@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-16 17:15:08.944059",
+    "@@last_modified": "2026-07-18 10:35:56.516630",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Liosta doirbheadaireachd",
     "languageListLabel": "Liosta chànanan",
     "searchedResultsLabel": "Toraidhean rannsachaidh airson '{search}'",
-    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris"
+    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris",
+    "endPractice": "Cuir crìoch air an trèanadh"
 }

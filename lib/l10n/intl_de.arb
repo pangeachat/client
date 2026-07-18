@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-13 10:05:29.351784",
+    "@@last_modified": "2026-07-18 10:35:55.821950",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9626,5 +9626,6 @@
     "starsToUnlockObjectiveTitle": "Sterne pro Mission",
     "starsToUnlockObjectiveDesc": "Legen Sie die Anzahl der Sterne fest, die zum Abschluss jeder Mission benötigt werden",
     "maxStarsPerMissionWarning": "Dieser Kurs enthält Missionen, in denen nur {maxValue} Sterne verdient werden können. Bitte geben Sie eine Zahl kleiner oder gleich {maxValue} ein.",
-    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer."
+    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer.",
+    "endPractice": "Übung beenden"
 }

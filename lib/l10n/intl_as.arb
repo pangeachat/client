@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-16 16:51:36.883308",
+    "@@last_modified": "2026-07-18 10:35:54.575393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "কঠিনতাৰ তালিকা",
     "languageListLabel": "ভাষাৰ তালিকা",
     "searchedResultsLabel": "'{search}'ৰ বাবে সন্ধানৰ ফলাফল",
-    "closeAddCoursePage": "পাঠ্যক্ৰম যোগ কৰা পৃষ্ঠা বন্ধ কৰক"
+    "closeAddCoursePage": "পাঠ্যক্ৰম যোগ কৰা পৃষ্ঠা বন্ধ কৰক",
+    "endPractice": "অনুশীলন শেষ কৰক"
 }

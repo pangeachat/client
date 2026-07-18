@@ -3548,7 +3548,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-13 10:04:17.126223",
+    "@@last_modified": "2026-07-18 10:35:56.216216",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9676,5 +9676,6 @@
     "starsToUnlockObjectiveTitle": "Tähtiä per tehtävä",
     "starsToUnlockObjectiveDesc": "Aseta tähtien määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "maxStarsPerMissionWarning": "Tällä kurssilla on tehtäviä, joissa voi ansaita vain {maxValue} tähteä. Anna luku, joka on pienempi tai yhtä suuri kuin {maxValue}.",
-    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi."
+    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi.",
+    "endPractice": "Lopeta harjoitus"
 }

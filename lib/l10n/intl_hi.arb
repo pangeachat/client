@@ -3105,7 +3105,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-13 10:08:10.346832",
+    "@@last_modified": "2026-07-18 10:35:57.016987",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10271,5 +10271,6 @@
     "starsToUnlockObjectiveTitle": "प्रति मिशन सितारे",
     "starsToUnlockObjectiveDesc": "प्रत्येक मिशन को पूरा करने के लिए आवश्यक सितारों की संख्या निर्धारित करें",
     "maxStarsPerMissionWarning": "इस कोर्स में ऐसे मिशन हैं जहाँ केवल {maxValue} सितारे ही अर्जित किए जा सकते हैं। कृपया {maxValue} से कम या उसके बराबर संख्या दर्ज करें।",
-    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।"
+    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।",
+    "endPractice": "अभ्यास समाप्त करें"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-16 17:16:23.012978",
+    "@@last_modified": "2026-07-18 10:35:58.722504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Кыйынчылык деңгээлинин тизмеси",
     "languageListLabel": "Тилдердин тизмеси",
     "searchedResultsLabel": "'{search}' үчүн издөө натыйжалары",
-    "closeAddCoursePage": "Курс кошуу барагын жабуу"
+    "closeAddCoursePage": "Курс кошуу барагын жабуу",
+    "endPractice": "Машыгууну аяктоо"
 }

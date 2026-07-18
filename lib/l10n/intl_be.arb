@@ -3560,7 +3560,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-13 10:06:05.770165",
+    "@@last_modified": "2026-07-18 10:35:54.697548",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9653,5 +9653,6 @@
     "starsToUnlockObjectiveTitle": "Зоркі за місію",
     "starsToUnlockObjectiveDesc": "Усталюйце колькасць зорак, неабходных для выканання кожнай місіі",
     "maxStarsPerMissionWarning": "Гэты курс мае місіі, дзе можна зарабіць толькі {maxValue} зорак. Калі ласка, увядзіце лік, меншы або роўны {maxValue}.",
-    "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка."
+    "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка.",
+    "endPractice": "Завяршыць практыкаванне"
 }

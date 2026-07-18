@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-16 17:14:51.757955",
+    "@@last_modified": "2026-07-18 10:35:57.553417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Ndepụta ihe isi ike",
     "languageListLabel": "Ndepụta asụsụ",
     "searchedResultsLabel": "Nsonaazụ ọchụchọ maka '{search}'",
-    "closeAddCoursePage": "Mechie ibe tinye ọmụmụ"
+    "closeAddCoursePage": "Mechie ibe tinye ọmụmụ",
+    "endPractice": "Mechie omume"
 }

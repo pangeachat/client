@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-16 17:18:06.557789",
+    "@@last_modified": "2026-07-18 10:35:59.341654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Листа на тежина",
     "languageListLabel": "Листа на јазици",
     "searchedResultsLabel": "Резултати од пребарување за '{search}'",
-    "closeAddCoursePage": "Затвори ја страницата за додавање курс"
+    "closeAddCoursePage": "Затвори ја страницата за додавање курс",
+    "endPractice": "Заврши вежбање"
 }

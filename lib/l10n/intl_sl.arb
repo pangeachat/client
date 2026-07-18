@@ -1812,7 +1812,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-13 10:05:34.610980",
+    "@@last_modified": "2026-07-18 10:36:01.105422",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10590,5 +10590,6 @@
     "starsToUnlockObjectiveTitle": "Zvezdice na misijo",
     "starsToUnlockObjectiveDesc": "Nastavite število zvezdic, potrebnih za dokončanje vsake misije",
     "maxStarsPerMissionWarning": "Ta tečaj ima misije, kjer je mogoče zaslužiti samo {maxValue} zvezdic. Prosimo, vnesite število, ki je manjše ali enako {maxValue}.",
-    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja."
+    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja.",
+    "endPractice": "Končaj vajo"
 }

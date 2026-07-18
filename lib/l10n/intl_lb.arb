@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-16 17:17:30.017685",
+    "@@last_modified": "2026-07-18 10:35:58.849668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Schwieregkeetslëscht",
     "languageListLabel": "Sproochlëscht",
     "searchedResultsLabel": "Sichresultater fir '{search}'",
-    "closeAddCoursePage": "Säit 'Cours derbäisetzen' zoumaachen"
+    "closeAddCoursePage": "Säit 'Cours derbäisetzen' zoumaachen",
+    "endPractice": "Praxis ophalen"
 }

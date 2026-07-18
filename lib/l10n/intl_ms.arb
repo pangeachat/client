@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-16 17:18:24.549046",
+    "@@last_modified": "2026-07-18 10:35:59.552292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Senarai kesukaran",
     "languageListLabel": "Senarai bahasa",
     "searchedResultsLabel": "Hasil carian untuk '{search}'",
-    "closeAddCoursePage": "Tutup halaman tambah kursus"
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "endPractice": "Tamamatkan latihan"
 }

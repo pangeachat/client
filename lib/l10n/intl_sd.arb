@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-16 17:23:20.890440",
+    "@@last_modified": "2026-07-18 10:36:00.678781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "مشڪل جي فهرست",
     "languageListLabel": "ٻولين جي فهرست",
     "searchedResultsLabel": "'{search}' لاءِ ڳولا جا نتيجا",
-    "closeAddCoursePage": "ڪورس شامل ڪرڻ وارو صفحو بند ڪريو"
+    "closeAddCoursePage": "ڪورس شامل ڪرڻ وارو صفحو بند ڪريو",
+    "endPractice": "مشق ختم ڪريو"
 }

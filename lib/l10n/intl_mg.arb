@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-16 17:19:08.462125",
+    "@@last_modified": "2026-07-18 10:35:58.870634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lisitry ny fahasarotana",
     "languageListLabel": "Lisitry ny fiteny",
     "searchedResultsLabel": "Valin'ny fikarohana ho an'ny '{search}'",
-    "closeAddCoursePage": "Akatona ny pejy fanampiana taranja"
+    "closeAddCoursePage": "Akatona ny pejy fanampiana taranja",
+    "endPractice": "Famaranana ny fampiharana"
 }

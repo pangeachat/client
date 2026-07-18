@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-13 10:07:51.564360",
+    "@@last_modified": "2026-07-18 10:36:00.524867",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9724,5 +9724,6 @@
     "starsToUnlockObjectiveTitle": "Gwiazd na misję",
     "starsToUnlockObjectiveDesc": "Ustaw liczbę gwiazdek potrzebnych do ukończenia każdej misji",
     "maxStarsPerMissionWarning": "Ten kurs zawiera misje, w których można zdobyć tylko {maxValue} gwiazdek. Wprowadź liczbę mniejszą lub równą {maxValue}.",
-    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem."
+    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem.",
+    "endPractice": "Zakończ ćwiczenie"
 }

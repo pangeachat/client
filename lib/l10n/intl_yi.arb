@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-16 17:27:58.007029",
+    "@@last_modified": "2026-07-18 10:36:02.456838",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "שוועריקייט רשימה",
     "languageListLabel": "שפּראַך רשימה",
     "searchedResultsLabel": "זוך רעזולטאַטן פֿאַר '{search}'",
-    "closeAddCoursePage": "פאַרמאַכן צוגעבן קורס בלאַט"
+    "closeAddCoursePage": "פאַרמאַכן צוגעבן קורס בלאַט",
+    "endPractice": "פֿאַרענדיקן פּראַקטיק"
 }

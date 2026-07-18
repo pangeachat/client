@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-13 10:06:46.719731",
+    "@@last_modified": "2026-07-18 10:35:54.599469",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,6 @@
     "starsToUnlockObjectiveTitle": "النجوم لكل مهمة",
     "starsToUnlockObjectiveDesc": "حدد عدد النجوم المطلوبة لإكمال كل مهمة",
     "maxStarsPerMissionWarning": "تحتوي هذه الدورة التدريبية على مهام لا يمكن الحصول فيها إلا على {maxValue} نجوم. يرجى إدخال رقم أقل من أو يساوي {maxValue}.",
-    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك."
+    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك.",
+    "endPractice": "إنهاء التدريب"
 }
