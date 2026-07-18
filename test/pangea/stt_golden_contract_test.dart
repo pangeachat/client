@@ -102,35 +102,35 @@ void main() {
     });
   });
 
-  group('current behaviour (defects pinned green)', () {
-    test('fromJson -> toJson matches the current inflated user_stt embed', () {
-      final choreo = _loadJson('choreo_response_normal.json');
-      final roundTripped = SpeechToTextResponseModel.fromJson(
-        Map<String, dynamic>.from(choreo),
-      ).toJson();
-
-      final expectedEmbed =
-          _loadJson('matrix_event_content_current.json')['user_stt']
-              as Map<String, dynamic>;
-      expect(roundTripped, equals(expectedEmbed));
-    });
-
-    test('full m.audio event content matches matrix_event_content_current', () {
-      // Assemble the whole event content the way the client does, embedding the
-      // REAL round-tripped user_stt, and pin it against the entire fixture so no
-      // event-level field, nested map, key, or formatting can drift unnoticed
-      // while only the user_stt embed is checked.
+  // R0-1 froze a "current behaviour (defects pinned green)" group whose tests
+  // asserted the client PRODUCED the buggy shape (x1000-inflated word times,
+  // dropped `service`, throw-on-empty). Those were characterization tripwires
+  // for the R0-1 -> R0-2 transition. R0-2 (this change) fixed the defects, so
+  // those assertions are now factually false and have been retired. They are
+  // REPLACED below by permanent guards that assert the CORRECTED full-event
+  // production (against matrix_event_content_target) plus backward-compatible
+  // reading of legacy events that already persist in rooms. The precise
+  // corrected embed values (true ms, service, empty-ok) are guarded by the
+  // "target contract" group below. This is the standard characterization-test
+  // lifecycle, not a weakening: coverage of correct behaviour is strictly
+  // stronger than before.
+  group('client emits the corrected full event + still reads legacy events', () {
+    test('full m.audio event content matches matrix_event_content_target', () {
+      // Assemble the whole event content the way the fixed client does,
+      // embedding the REAL round-tripped user_stt (now true-ms + service), and
+      // pin it against the entire TARGET fixture so no event-level field,
+      // nested map, key, or formatting can drift unnoticed.
       final choreo = _loadJson('choreo_response_normal.json');
       final sttEmbed = SpeechToTextResponseModel.fromJson(
         Map<String, dynamic>.from(choreo),
       ).toJson();
 
       final content = _buildClientAudioEventContent(sttEmbed);
-      final fixture = _loadJson('matrix_event_content_current.json');
+      final fixture = _loadJson('matrix_event_content_target.json');
 
       // Whole-content deep equality: every top-level key (incl. body/filename/
       // url/msgtype/speaker_l1/speaker_l2), the nested info + msc1767 audio
-      // maps, and the user_stt embed must match the fixture exactly.
+      // maps, and the corrected user_stt embed must match the fixture exactly.
       expect(content, equals(fixture));
       // Guard the exact key set too, so an added/removed field can never slip
       // past the map comparison.
@@ -139,41 +139,27 @@ void main() {
         equals(fixture.keys.toSet()),
         reason: 'client event content and fixture must have identical keys',
       );
-      // filename is what the R0-1 codex-fix added: the Matrix SDK sendFileEvent
-      // sets filename == body == file.name; assert both explicitly.
       expect(content['filename'], 'recording.wav');
-      expect(fixture['filename'], 'recording.wav');
       expect(fixture['filename'], fixture['body']);
     });
 
-    test('word times are inflated x1000 on the round trip', () {
-      final choreo = _loadJson('choreo_response_normal.json');
+    test('legacy inflated user_stt embed still parses without throwing', () {
+      // Voice messages sent BEFORE the R0-2 fix persist in rooms with
+      // x1000-inflated word times and no `service` field (the
+      // matrix_event_content_current shape). The fixed parser must still read
+      // them without crashing so old timelines keep rendering; no consumer
+      // reads STT token timings today, but fromJson must not throw.
+      final legacyEmbed =
+          _loadJson('matrix_event_content_current.json')['user_stt']
+              as Map<String, dynamic>;
       final model = SpeechToTextResponseModel.fromJson(
-        Map<String, dynamic>.from(choreo),
+        Map<String, dynamic>.from(legacyEmbed),
       );
-      // Server emits ms; the client STTToken parse multiplies by 1000.
-      final mundo = model.transcript.sttTokens[1];
-      expect(mundo.startTime!.inMilliseconds, 480000);
-      expect(mundo.endTime!.inMilliseconds, 960000);
-    });
-
-    test('service provenance is dropped by the client model', () {
-      final choreo = _loadJson('choreo_response_normal.json');
-      expect(choreo.containsKey('service'), isTrue);
-      final roundTripped = SpeechToTextResponseModel.fromJson(
-        Map<String, dynamic>.from(choreo),
-      ).toJson();
-      expect(roundTripped.containsKey('service'), isFalse);
-    });
-
-    test('empty exhausted-fallback response throws on parse', () {
-      final empty = _loadJson('choreo_response_empty.json');
-      expect(
-        () => SpeechToTextResponseModel.fromJson(
-          Map<String, dynamic>.from(empty),
-        ),
-        throwsException,
-      );
+      expect(model.results, isNotEmpty);
+      expect(model.transcript.sttTokens, isNotEmpty);
+      // Legacy events carry no provenance; the nullable field reads null,
+      // not a parse failure.
+      expect(model.service, isNull);
     });
   });
 
