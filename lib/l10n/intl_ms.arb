@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-18 11:06:03.245672",
+    "@@last_modified": "2026-07-18 13:35:11.307350",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Serlahkan mesej audio secara automatik",
     "selectAudioMessagesOnPlayDescription": "Serlahkan mesej audio secara automatik apabila dimainkan",
     "learningAnalytics": "Analitik pembelajaran",
-    "searchLanguagesHint": "Saya sedang belajar...",
     "alreadySpeak": "Saya sudah bertutur...",
     "welcomeBackLogin": "Selamat kembali! Anda sebelum ini log masuk dengan {platform}.",
     "emailLoginMethod": "e-mel",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Penampilan sembang dengan gaya yang dipilih",
     "volumeLabel": "Kelantangan",
     "listLabel": "Senarai {description}",
-    "passwordFormLabel": "Borang tukar kata laluan"
+    "passwordFormLabel": "Borang tukar kata laluan",
+    "searchLanguagesHint": "Cari bahasa",
+    "searchCountriesHint": "Cari negara",
+    "searchVocabHint": "Cari kosa kata",
+    "searchUsersHint": "Cari pengguna",
+    "searchMessagesHint": "Cari mesej",
+    "searchChatsHint": "Cari sembang",
+    "searchActivitiesHint": "Cari aktiviti"
 }

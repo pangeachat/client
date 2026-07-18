@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-18 11:05:55.492683",
+    "@@last_modified": "2026-07-18 13:35:05.969623",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8359,7 +8359,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ich lerne gerade...",
     "alreadySpeak": "Ich spreche bereits...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9638,5 +9637,12 @@
     "chatAppearanceStyleLabel": "Chat-Erscheinungsbild mit gewähltem Stil",
     "volumeLabel": "Lautstärke",
     "listLabel": "{description} Liste",
-    "passwordFormLabel": "Passwort ändern Formular"
+    "passwordFormLabel": "Passwort ändern Formular",
+    "searchLanguagesHint": "Sprachen suchen",
+    "searchCountriesHint": "Länder suchen",
+    "searchVocabHint": "Vokabeln suchen",
+    "searchUsersHint": "Benutzer suchen",
+    "searchMessagesHint": "Nachrichten suchen",
+    "searchChatsHint": "Chats suchen",
+    "searchActivitiesHint": "Aktivitäten suchen"
 }

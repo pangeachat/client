@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-18 11:06:09.447240",
+    "@@last_modified": "2026-07-18 13:35:15.345739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "آڈیو پیغامات کو خودکار طور پر نمایاں کریں",
     "selectAudioMessagesOnPlayDescription": "چلانے پر آڈیو پیغامات کو خودکار طور پر نمایاں کریں",
     "learningAnalytics": "سیکھنے کے تجزیات",
-    "searchLanguagesHint": "میں سیکھ رہا ہوں...",
     "alreadySpeak": "میں پہلے ہی بولتا ہوں...",
     "welcomeBackLogin": "خوش آمدید! آپ نے پہلے {platform} کے ساتھ سائن ان کیا تھا۔",
     "emailLoginMethod": "ای میل",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "منتخب انداز کے ساتھ چیٹ کی ظاہری شکل",
     "volumeLabel": "آواز",
     "listLabel": "{description} فہرست",
-    "passwordFormLabel": "پاس ورڈ تبدیل کرنے کا فارم"
+    "passwordFormLabel": "پاس ورڈ تبدیل کرنے کا فارم",
+    "searchLanguagesHint": "زبانیں تلاش کریں",
+    "searchCountriesHint": "ممالک تلاش کریں",
+    "searchVocabHint": "الفاظ تلاش کریں",
+    "searchUsersHint": "صارفین تلاش کریں",
+    "searchMessagesHint": "پیغامات تلاش کریں",
+    "searchChatsHint": "چیٹس تلاش کریں",
+    "searchActivitiesHint": "سرگرمیاں تلاش کریں"
 }

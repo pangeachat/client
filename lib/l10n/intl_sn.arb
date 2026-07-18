@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-18 11:06:07.283769",
+    "@@last_modified": "2026-07-18 13:35:13.888215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight mameseji earuzha",
     "selectAudioMessagesOnPlayDescription": "Otomatically highlight mameseji earuzha kana achiridzwa",
     "learningAnalytics": "Ongororo yekudzidza",
-    "searchLanguagesHint": "Ndiri kudzidza...",
     "alreadySpeak": "Ndototaura...",
     "welcomeBackLogin": "Tikugashirei! Wakambopinda ne {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Kutaridzika kwechat nemaitiro akasarudzwa",
     "volumeLabel": "Vhoriyamu",
     "listLabel": "Rondedzero ye {description}",
-    "passwordFormLabel": "Fomu rekuchinja password"
+    "passwordFormLabel": "Fomu rekuchinja password",
+    "searchLanguagesHint": "Tsvaga mitauro",
+    "searchCountriesHint": "Tsvaga nyika",
+    "searchVocabHint": "Tsvaga mazwi",
+    "searchUsersHint": "Tsvaga vashandisi",
+    "searchMessagesHint": "Tsvaga mameseji",
+    "searchChatsHint": "Tsvaga chats",
+    "searchActivitiesHint": "Tsvaga zviitiko"
 }

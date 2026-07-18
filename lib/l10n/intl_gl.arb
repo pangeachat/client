@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-18 11:05:57.850276",
+    "@@last_modified": "2026-07-18 13:35:06.910055",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8372,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estou aprendendo...",
     "alreadySpeak": "Xa falo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9651,5 +9650,12 @@
     "chatAppearanceStyleLabel": "Aspecto do chat co estilo elixido",
     "volumeLabel": "Volume",
     "listLabel": "Lista de {description}",
-    "passwordFormLabel": "Formulario para cambiar o contrasinal"
+    "passwordFormLabel": "Formulario para cambiar o contrasinal",
+    "searchLanguagesHint": "Buscar idiomas",
+    "searchCountriesHint": "Buscar países",
+    "searchVocabHint": "Buscar vocabulario",
+    "searchUsersHint": "Buscar usuarios",
+    "searchMessagesHint": "Buscar mensaxes",
+    "searchChatsHint": "Buscar conversas",
+    "searchActivitiesHint": "Buscar actividades"
 }

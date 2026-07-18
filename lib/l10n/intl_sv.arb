@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:07.536237",
+    "@@last_modified": "2026-07-18 13:35:14.404365",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8890,7 +8890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jag lär mig...",
     "alreadySpeak": "Jag talar redan...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10169,5 +10168,12 @@
     "chatAppearanceStyleLabel": "Chattutseende med vald stil",
     "volumeLabel": "Volym",
     "listLabel": "{description} lista",
-    "passwordFormLabel": "Formulär för lösenordsbyte"
+    "passwordFormLabel": "Formulär för lösenordsbyte",
+    "searchLanguagesHint": "Sök språk",
+    "searchCountriesHint": "Sök länder",
+    "searchVocabHint": "Sök ord",
+    "searchUsersHint": "Sök användare",
+    "searchMessagesHint": "Sök meddelanden",
+    "searchChatsHint": "Sök chattar",
+    "searchActivitiesHint": "Sök aktiviteter"
 }

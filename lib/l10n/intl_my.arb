@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-18 11:06:04.821434",
+    "@@last_modified": "2026-07-18 13:35:11.895862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "အသံမက်ဆေ့ချ်များကို အလိုအလျောက် မီးမောင်းထိုးပြရန်",
     "selectAudioMessagesOnPlayDescription": "ဖွင့်သောအခါ အသံမက်ဆေ့ချ်များကို အလိုအလျောက် မီးမောင်းထိုးပြရန်",
     "learningAnalytics": "သင်ယူမှုဆိုင်ရာ ခွဲခြမ်းစိတ်ဖြာချက်များ",
-    "searchLanguagesHint": "ကျွန်ုပ် သင်ယူနေသည်...",
     "alreadySpeak": "ကျွန်ုပ် ပြောပြီးသား ဘာသာစကား...",
     "welcomeBackLogin": "ပြန်ကြိုဆိုပါတယ်။ သင် ယခင်က {platform} ဖြင့် ဝင်ရောက်ခဲ့သည်။",
     "emailLoginMethod": "အီးမေးလ်",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "ရွေးချယ်ထားသော စတိုင်ဖြင့် ချတ်ပုံစံ",
     "volumeLabel": "အသံအတိုးအကျယ်",
     "listLabel": "{description} စာရင်း",
-    "passwordFormLabel": "စကားဝှက်ပြောင်းလဲရန် ဖောင်"
+    "passwordFormLabel": "စကားဝှက်ပြောင်းလဲရန် ဖောင်",
+    "searchLanguagesHint": "ဘာသာစကားများ ရှာဖွေပါ",
+    "searchCountriesHint": "နိုင်ငံများ ရှာဖွေပါ",
+    "searchVocabHint": "ဝေါဟာရများ ရှာဖွေပါ",
+    "searchUsersHint": "အသုံးပြုသူများ ရှာဖွေပါ",
+    "searchMessagesHint": "မက်ဆေ့ချ်များ ရှာဖွေပါ",
+    "searchChatsHint": "ချက်တင်များ ရှာဖွေပါ",
+    "searchActivitiesHint": "လုပ်ဆောင်ချက်များ ရှာဖွေပါ"
 }

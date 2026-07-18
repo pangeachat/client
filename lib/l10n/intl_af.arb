@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-18 11:05:53.557772",
+    "@@last_modified": "2026-07-18 13:35:04.344874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Merk oudioboodskappe outomaties",
     "selectAudioMessagesOnPlayDescription": "Merk oudioboodskappe outomaties wanneer dit gespeel word",
     "learningAnalytics": "Leeranalise",
-    "searchLanguagesHint": "Ek leer...",
     "alreadySpeak": "Ek praat reeds...",
     "welcomeBackLogin": "Welkom terug! Jy het voorheen met {platform} aangemeld.",
     "emailLoginMethod": "e-pos",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Klets voorkoms met gekose styl",
     "volumeLabel": "Volume",
     "listLabel": "{description} lys",
-    "passwordFormLabel": "Verander wagwoordvorm"
+    "passwordFormLabel": "Verander wagwoordvorm",
+    "searchLanguagesHint": "Soek tale",
+    "searchCountriesHint": "Soek lande",
+    "searchVocabHint": "Soek woordeskat",
+    "searchUsersHint": "Soek gebruikers",
+    "searchMessagesHint": "Soek boodskappe",
+    "searchChatsHint": "Soek geselsies",
+    "searchActivitiesHint": "Soek aktiwiteite"
 }

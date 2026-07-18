@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-18 11:06:03.579672",
+    "@@last_modified": "2026-07-18 13:35:11.637238",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ఆడియో మెసేజ్ ఆటో-హైలైట్ తౌబ",
     "selectAudioMessagesOnPlayDescription": "ఆడియో మెసేజ్ సింఘేల్ అదు ప్లే తౌరగా ఆటోమేటిక్‌లీ హైలైట్ తౌయి",
     "learningAnalytics": "లర్నింగ్ అనలిటిక్స్",
-    "searchLanguagesHint": "ఐ నా లర్నింగ్...",
     "alreadySpeak": "ఐ నా ఆల్రెడీ స్పీక్...",
     "welcomeBackLogin": "వెల్కమ్ బ్యాక్! నంగ్నా మమాంగ్దా {platform} గా లోయనా సైన్ ఇన్ తౌరగే.",
     "emailLoginMethod": "ఇమెయిల్",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "খল্লবা স্টাইলগা লোইননা চ্যাটকী মওং",
     "volumeLabel": "ভলিউম",
     "listLabel": "{description} লিষ্ট",
-    "passwordFormLabel": "পাসৱার্ড ফম চেঞ্জ তৌনবা"
+    "passwordFormLabel": "পাসৱার্ড ফম চেঞ্জ তৌনবা",
+    "searchLanguagesHint": "লৌনশিং শিন",
+    "searchCountriesHint": "লৈবাকশিং শিন",
+    "searchVocabHint": "ৱাহৈশিং শিন",
+    "searchUsersHint": "শিনজাকশিং শিন",
+    "searchMessagesHint": "খবরশিং শিন",
+    "searchChatsHint": "চ্যাটশিং শিন",
+    "searchActivitiesHint": "থবকশিং শিন"
 }

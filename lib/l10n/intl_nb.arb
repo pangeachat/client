@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:03.984565",
+    "@@last_modified": "2026-07-18 13:35:11.639795",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8429,7 +8429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg snakker allerede...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9708,5 +9707,12 @@
     "chatAppearanceStyleLabel": "Chat-utseende med valgt stil",
     "volumeLabel": "Volum",
     "listLabel": "{description} liste",
-    "passwordFormLabel": "Skjema for passordendring"
+    "passwordFormLabel": "Skjema for passordendring",
+    "searchLanguagesHint": "Søk språk",
+    "searchCountriesHint": "Søk land",
+    "searchVocabHint": "Søk vokabular",
+    "searchUsersHint": "Søk brukere",
+    "searchMessagesHint": "Søk meldinger",
+    "searchChatsHint": "Søk chatter",
+    "searchActivitiesHint": "Søk aktiviteter"
 }

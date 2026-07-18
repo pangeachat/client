@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-18 11:05:53.625115",
+    "@@last_modified": "2026-07-18 13:35:04.463552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Səsli mesajları avtomatik vurğula",
     "selectAudioMessagesOnPlayDescription": "Səsləndirilərkən səsli mesajları avtomatik olaraq vurğulayın",
     "learningAnalytics": "Öyrənmə analitikası",
-    "searchLanguagesHint": "Mən öyrənirəm...",
     "alreadySpeak": "Mən artıq danışıram...",
     "welcomeBackLogin": "Xoş gəlmisiniz! Siz əvvəllər {platform} ilə daxil olmusunuz.",
     "emailLoginMethod": "e-poçt",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Seçilmiş üslubla çat görünüşü",
     "volumeLabel": "Səs",
     "listLabel": "{description} siyahısı",
-    "passwordFormLabel": "Şifrəni dəyişdirmə forması"
+    "passwordFormLabel": "Şifrəni dəyişdirmə forması",
+    "searchLanguagesHint": "Dilləri axtar",
+    "searchCountriesHint": "Ölkələri axtar",
+    "searchVocabHint": "Lüğəti axtar",
+    "searchUsersHint": "İstifadəçiləri axtar",
+    "searchMessagesHint": "Mesajları axtar",
+    "searchChatsHint": "Söhbətləri axtar",
+    "searchActivitiesHint": "Fəaliyyətləri axtar"
 }

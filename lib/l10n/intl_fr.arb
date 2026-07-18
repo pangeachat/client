@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-18 11:05:56.853189",
+    "@@last_modified": "2026-07-18 13:35:06.715389",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -8727,7 +8727,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "J'apprends...",
     "alreadySpeak": "Je parle déjà...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10006,5 +10005,12 @@
     "chatAppearanceStyleLabel": "Apparence du chat avec le style choisi",
     "volumeLabel": "Volume",
     "listLabel": "Liste {description}",
-    "passwordFormLabel": "Formulaire de changement de mot de passe"
+    "passwordFormLabel": "Formulaire de changement de mot de passe",
+    "searchLanguagesHint": "Rechercher des langues",
+    "searchCountriesHint": "Rechercher des pays",
+    "searchVocabHint": "Rechercher du vocabulaire",
+    "searchUsersHint": "Rechercher des utilisateurs",
+    "searchMessagesHint": "Rechercher des messages",
+    "searchChatsHint": "Rechercher des chats",
+    "searchActivitiesHint": "Rechercher des activités"
 }

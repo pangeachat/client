@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-18 11:06:10.248785",
+    "@@last_modified": "2026-07-18 13:35:16.170623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "אויטאָמאַטיש אונטערשטרײַכן אַודיאָ מעסעדזשעס",
     "selectAudioMessagesOnPlayDescription": "אויטאָמאַטיש אונטערשטרײַכן אַודיאָ מעסעדזשעס ווען זיי ווערן געשפּילט",
     "learningAnalytics": "לערנען אַנאַליטיקס",
-    "searchLanguagesHint": "איך לערן...",
     "alreadySpeak": "איך רעד שוין...",
     "welcomeBackLogin": "ברוך הבא! איר האָט זיך פֿריער אַרײַנגעשריבן מיט {platform}.",
     "emailLoginMethod": "אימעיל",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "טשאַט אויסזען מיט אויסדערוויילטן סטיל",
     "volumeLabel": "באַנד",
     "listLabel": "{description} רשימה",
-    "passwordFormLabel": "ענדערן פּאַראָל פֿאָרעם"
+    "passwordFormLabel": "ענדערן פּאַראָל פֿאָרעם",
+    "searchLanguagesHint": "זוכן שפּראַכן",
+    "searchCountriesHint": "זוכן לענדער",
+    "searchVocabHint": "זוכן וואָקאַבולאַר",
+    "searchUsersHint": "זוכן באַניצערס",
+    "searchMessagesHint": "זוכן מעלדונגען",
+    "searchChatsHint": "זוכן שמועסן",
+    "searchActivitiesHint": "זוכן אַקטיוויטעטן"
 }

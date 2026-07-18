@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-18 11:06:02.865890",
+    "@@last_modified": "2026-07-18 13:35:10.693861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Manasongadina ho azy ny hafatra audio",
     "selectAudioMessagesOnPlayDescription": "Manasongadina ho azy ny hafatra audio rehefa alefa",
     "learningAnalytics": "Fandalinana fianarana",
-    "searchLanguagesHint": "Mianatra aho...",
     "alreadySpeak": "Efa miteny aho...",
     "welcomeBackLogin": "Tongasoa indray! Niditra tamin'ny {platform} ianao teo aloha.",
     "emailLoginMethod": "mailaka",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Fisehon'ny chat miaraka amin'ny fomba voafidy",
     "volumeLabel": "Feo",
     "listLabel": "Lisitry ny {description}",
-    "passwordFormLabel": "Fandrafetana fanovana tenimiafina"
+    "passwordFormLabel": "Fandrafetana fanovana tenimiafina",
+    "searchLanguagesHint": "Tadiavo ny fiteny",
+    "searchCountriesHint": "Tadiavo ny firenena",
+    "searchVocabHint": "Tadiavo ny voambolana",
+    "searchUsersHint": "Tadiavo ny mpampiasa",
+    "searchMessagesHint": "Tadiavo ny hafatra",
+    "searchChatsHint": "Tadiavo ny resaka",
+    "searchActivitiesHint": "Tadiavo ny asa"
 }

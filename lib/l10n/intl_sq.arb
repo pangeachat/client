@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-18 11:06:07.409314",
+    "@@last_modified": "2026-07-18 13:35:14.505426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Auto-thekso mesazhet audio",
     "selectAudioMessagesOnPlayDescription": "Thekson automatikisht mesazhet audio kur luhen",
     "learningAnalytics": "Analiza e të mësuarit",
-    "searchLanguagesHint": "Unë jam duke mësuar...",
     "alreadySpeak": "Unë tashmë flas...",
     "welcomeBackLogin": "Mirë se vini sërish! Ju më parë jeni kyçur me {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Pamja e bisedës me stilin e zgjedhur",
     "volumeLabel": "Volumi",
     "listLabel": "Lista e {description}",
-    "passwordFormLabel": "Formulari për ndryshimin e fjalëkalimit"
+    "passwordFormLabel": "Formulari për ndryshimin e fjalëkalimit",
+    "searchLanguagesHint": "Kërko gjuhë",
+    "searchCountriesHint": "Kërko vende",
+    "searchVocabHint": "Kërko fjalor",
+    "searchUsersHint": "Kërko përdorues",
+    "searchMessagesHint": "Kërko mesazhe",
+    "searchChatsHint": "Kërko biseda",
+    "searchActivitiesHint": "Kërko aktivitete"
 }

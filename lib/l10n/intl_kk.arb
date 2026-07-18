@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-18 11:06:00.761758",
+    "@@last_modified": "2026-07-18 13:35:09.347797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Аудио хабарламаларды автоматты түрде бөлектеу",
     "selectAudioMessagesOnPlayDescription": "Ойнатылған кезде аудио хабарламаларды автоматты түрде бөлектеу",
     "learningAnalytics": "Оқу аналитикасы",
-    "searchLanguagesHint": "Мен үйреніп жатырмын...",
     "alreadySpeak": "Мен қазірдің өзінде сөйлеймін...",
     "welcomeBackLogin": "Қайта қош келдіңіз! Сіз бұрын {platform} арқылы кірдіңіз.",
     "emailLoginMethod": "электрондық пошта",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Таңдалған стильмен чат көрінісі",
     "volumeLabel": "Дыбыс деңгейі",
     "listLabel": "{description} тізімі",
-    "passwordFormLabel": "Құпия сөзді өзгерту формасы"
+    "passwordFormLabel": "Құпия сөзді өзгерту формасы",
+    "searchLanguagesHint": "Тілдерді іздеу",
+    "searchCountriesHint": "Елдерді іздеу",
+    "searchVocabHint": "Сөздік қорды іздеу",
+    "searchUsersHint": "Пайдаланушыларды іздеу",
+    "searchMessagesHint": "Хабарламаларды іздеу",
+    "searchChatsHint": "Чаттарды іздеу",
+    "searchActivitiesHint": "Әрекеттерді іздеу"
 }

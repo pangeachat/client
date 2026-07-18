@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-18 11:06:10.783889",
+    "@@last_modified": "2026-07-18 13:35:16.305563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Ṣe afihan awọn ifiranṣẹ ohun laifọwọyi",
     "selectAudioMessagesOnPlayDescription": "Ṣe afihan awọn ifiranṣẹ ohun laifọwọyi nigbati o ba dun",
     "learningAnalytics": "Awọn atupale ikẹkọ",
-    "searchLanguagesHint": "Mo n kọ ẹkọ...",
     "alreadySpeak": "Mo ti sọ tẹlẹ...",
     "welcomeBackLogin": "Kaabọ pada! O ti wọle tẹlẹ pẹlu {platform}.",
     "emailLoginMethod": "imeeli",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Ìrísí ìjíròrò pẹ̀lú àṣà tí a yàn",
     "volumeLabel": "Ìwọ̀n ohùn",
     "listLabel": "Àtòjọ {description}",
-    "passwordFormLabel": "Fọ́ọ̀mù ìyípadà ọ̀rọ̀ìpamọ́"
+    "passwordFormLabel": "Fọ́ọ̀mù ìyípadà ọ̀rọ̀ìpamọ́",
+    "searchLanguagesHint": "Wa àwọn èdè",
+    "searchCountriesHint": "Wa àwọn orílẹ̀-èdè",
+    "searchVocabHint": "Wa àwọn ọ̀rọ̀",
+    "searchUsersHint": "Wa àwọn olùmúlò",
+    "searchMessagesHint": "Wa àwọn ìfọ̀rọ̀ránṣẹ́",
+    "searchChatsHint": "Wa àwọn ìjíròrò",
+    "searchActivitiesHint": "Wa àwọn ìṣe"
 }

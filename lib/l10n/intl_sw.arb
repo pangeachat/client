@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-18 11:06:08.393444",
+    "@@last_modified": "2026-07-18 13:35:14.569262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Angazia kiotomatiki jumbe za sauti",
     "selectAudioMessagesOnPlayDescription": "Angazia kiotomatiki jumbe za sauti zinapochezwa",
     "learningAnalytics": "Uchanganuzi wa kujifunza",
-    "searchLanguagesHint": "Ninajifunza...",
     "alreadySpeak": "Tayari nazungumza...",
     "welcomeBackLogin": "Karibu tena! Uliingia hapo awali na {platform}.",
     "emailLoginMethod": "barua pepe",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Mwonekano wa gumzo na mtindo uliochaguliwa",
     "volumeLabel": "Sauti",
     "listLabel": "Orodha ya {description}",
-    "passwordFormLabel": "Fomu ya kubadilisha nenosiri"
+    "passwordFormLabel": "Fomu ya kubadilisha nenosiri",
+    "searchLanguagesHint": "Tafuta lugha",
+    "searchCountriesHint": "Tafuta nchi",
+    "searchVocabHint": "Tafuta msamiati",
+    "searchUsersHint": "Tafuta watumiaji",
+    "searchMessagesHint": "Tafuta jumbe",
+    "searchChatsHint": "Tafuta soga",
+    "searchActivitiesHint": "Tafuta shughuli"
 }

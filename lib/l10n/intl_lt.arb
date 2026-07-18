@@ -2979,7 +2979,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-18 11:06:02.111182",
+    "@@last_modified": "2026-07-18 13:35:10.234462",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9153,7 +9153,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Aš mokausi...",
     "alreadySpeak": "Aš jau kalbu...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10432,5 +10431,12 @@
     "chatAppearanceStyleLabel": "Pokalbio išvaizda su pasirinktu stiliumi",
     "volumeLabel": "Garsumas",
     "listLabel": "{description} sąrašas",
-    "passwordFormLabel": "Slaptažodžio keitimo forma"
+    "passwordFormLabel": "Slaptažodžio keitimo forma",
+    "searchLanguagesHint": "Ieškoti kalbų",
+    "searchCountriesHint": "Ieškoti šalių",
+    "searchVocabHint": "Ieškoti žodyno",
+    "searchUsersHint": "Ieškoti vartotojų",
+    "searchMessagesHint": "Ieškoti pranešimų",
+    "searchChatsHint": "Ieškoti pokalbių",
+    "searchActivitiesHint": "Ieškoti veiklų"
 }

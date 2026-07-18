@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:53.421775",
+    "@@last_modified": "2026-07-18 13:35:04.326081",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -9000,7 +9000,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "আমি শিখছি...",
     "alreadySpeak": "আমি ইতিমধ্যে বলি...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10279,5 +10278,12 @@
     "chatAppearanceStyleLabel": "নির্বাচিত শৈলী সহ চ্যাট চেহারা",
     "volumeLabel": "ভলিউম",
     "listLabel": "{description} তালিকা",
-    "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম"
+    "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম",
+    "searchLanguagesHint": "ভাষা খুঁজুন",
+    "searchCountriesHint": "দেশ খুঁজুন",
+    "searchVocabHint": "শব্দভান্ডার খুঁজুন",
+    "searchUsersHint": "ব্যবহারকারীদের খুঁজুন",
+    "searchMessagesHint": "বার্তা খুঁজুন",
+    "searchChatsHint": "চ্যাট খুঁজুন",
+    "searchActivitiesHint": "কার্যকলাপ খুঁজুন"
 }

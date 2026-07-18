@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-18 11:05:56.094700",
+    "@@last_modified": "2026-07-18 13:35:06.170886",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8372,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ikasten ari naiz...",
     "alreadySpeak": "Jada hitz egiten dut...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9651,5 +9650,12 @@
     "chatAppearanceStyleLabel": "Txataren itxura aukeratutako estiloarekin",
     "volumeLabel": "Bolumena",
     "listLabel": "{description} zerrenda",
-    "passwordFormLabel": "Pasahitza aldatzeko inprimakia"
+    "passwordFormLabel": "Pasahitza aldatzeko inprimakia",
+    "searchLanguagesHint": "Bilatu hizkuntzak",
+    "searchCountriesHint": "Bilatu herrialdeak",
+    "searchVocabHint": "Bilatu hiztegia",
+    "searchUsersHint": "Bilatu erabiltzaileak",
+    "searchMessagesHint": "Bilatu mezuak",
+    "searchChatsHint": "Bilatu txatak",
+    "searchActivitiesHint": "Bilatu jarduerak"
 }

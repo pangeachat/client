@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-18 11:06:09.981315",
+    "@@last_modified": "2026-07-18 13:35:15.812851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Gqamisa ngokuzenzekelayo imiyalezo elalelwayo",
     "selectAudioMessagesOnPlayDescription": "Gqamisa ngokuzenzekelayo imiyalezo elalelwayo xa idlala",
     "learningAnalytics": "Uhlalutyo lokufunda",
-    "searchLanguagesHint": "Ndifunda...",
     "alreadySpeak": "Ndikwazi ukuthetha...",
     "welcomeBackLogin": "Wamkelekile kwakhona! Ubungene ngaphambili nge-{platform}.",
     "emailLoginMethod": "i-imeyile",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Inkangeleko yencoko enesitayile esikhethiweyo",
     "volumeLabel": "Umthamo",
     "listLabel": "Uluhlu lwe-{description}",
-    "passwordFormLabel": "Fomu yokutshintsha iphasiwedi"
+    "passwordFormLabel": "Fomu yokutshintsha iphasiwedi",
+    "searchLanguagesHint": "Funa iilwimi",
+    "searchCountriesHint": "Funa amazwe",
+    "searchVocabHint": "Funa isigama",
+    "searchUsersHint": "Funa abasebenzisi",
+    "searchMessagesHint": "Funa imiyalezo",
+    "searchChatsHint": "Funa iingxoxo",
+    "searchActivitiesHint": "Funa imisebenzi"
 }

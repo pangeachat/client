@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-18 11:06:00.879261",
+    "@@last_modified": "2026-07-18 13:35:09.446429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ಆಡಿಯೋ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂ-ಹೈಲೈಟ್ ಮಾಡಿ",
     "selectAudioMessagesOnPlayDescription": "ಪ್ಲೇ ಮಾಡಿದಾಗ ಆಡಿಯೋ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೈಲೈಟ್ ಮಾಡಿ",
     "learningAnalytics": "ಕಲಿಕಾ ವಿಶ್ಲೇಷಣೆಗಳು",
-    "searchLanguagesHint": "ನಾನು ಕಲಿಯುತ್ತಿದ್ದೇನೆ...",
     "alreadySpeak": "ನಾನು ಈಗಾಗಲೇ ಮಾತನಾಡುತ್ತೇನೆ...",
     "welcomeBackLogin": "ಮರಳಿ ಸ್ವಾಗತ! ನೀವು ಈ ಹಿಂದೆ {platform} ಮೂಲಕ ಸೈನ್ ಇನ್ ಮಾಡಿದ್ದೀರಿ.",
     "emailLoginMethod": "ಇಮೇಲ್",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "ಆಯ್ಕೆಮಾಡಿದ ಶೈಲಿಯೊಂದಿಗೆ ಚಾಟ್ ನೋಟ",
     "volumeLabel": "ವಾಲ್ಯೂಮ್",
     "listLabel": "{description} ಪಟ್ಟಿ",
-    "passwordFormLabel": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ ಫಾರ್ಮ್"
+    "passwordFormLabel": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ ಫಾರ್ಮ್",
+    "searchLanguagesHint": "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ",
+    "searchCountriesHint": "ದೇಶಗಳನ್ನು ಹುಡುಕಿ",
+    "searchVocabHint": "ಪದಗಳನ್ನು ಹುಡುಕಿ",
+    "searchUsersHint": "ಬಳಕೆದಾರರನ್ನು ಹುಡುಕಿ",
+    "searchMessagesHint": "ಸಂದೇಶಗಳನ್ನು ಹುಡುಕಿ",
+    "searchChatsHint": "ಚಾಟ್‌ಗಳನ್ನು ಹುಡುಕಿ",
+    "searchActivitiesHint": "ಚಟುವಟಿಕೆಗಳನ್ನು ಹುಡುಕಿ"
 }

@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-18 11:06:09.615643",
+    "@@last_modified": "2026-07-18 13:35:15.696957",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -8376,7 +8376,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Men o'rganayotganim...",
     "alreadySpeak": "Men allaqachon gaplashaman...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9655,5 +9654,12 @@
     "chatAppearanceStyleLabel": "Tanlangan uslubdagi chat koʻrinishi",
     "volumeLabel": "Ovoz balandligi",
     "listLabel": "{description} roʻyxati",
-    "passwordFormLabel": "Parolni oʻzgartirish shakli"
+    "passwordFormLabel": "Parolni oʻzgartirish shakli",
+    "searchLanguagesHint": "Tillar boʻyicha qidirish",
+    "searchCountriesHint": "Davlatlar boʻyicha qidirish",
+    "searchVocabHint": "Lugʻat boʻyicha qidirish",
+    "searchUsersHint": "Foydalanuvchilar boʻyicha qidirish",
+    "searchMessagesHint": "Xabarlar boʻyicha qidirish",
+    "searchChatsHint": "Chatlar boʻyicha qidirish",
+    "searchActivitiesHint": "Faoliyatlar boʻyicha qidirish"
 }

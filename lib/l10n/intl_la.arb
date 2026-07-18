@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-18 11:06:01.736788",
+    "@@last_modified": "2026-07-18 13:35:10.207027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Nuntios audibiles sponte designa",
     "selectAudioMessagesOnPlayDescription": "Nuntios audibiles sponte designa cum canuntur",
     "learningAnalytics": "Analytica discendi",
-    "searchLanguagesHint": "Disco...",
     "alreadySpeak": "Iam loquor...",
     "welcomeBackLogin": "Salvus sis! Antea cum {platform} inivisti.",
     "emailLoginMethod": "epistula",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Aspectus colloquii cum stilo electo",
     "volumeLabel": "Volumen",
     "listLabel": "Index {description}",
-    "passwordFormLabel": "Mutare formulam tesserae"
+    "passwordFormLabel": "Mutare formulam tesserae",
+    "searchLanguagesHint": "Quaere linguas",
+    "searchCountriesHint": "Quaere civitates",
+    "searchVocabHint": "Quaere vocabula",
+    "searchUsersHint": "Quaere usores",
+    "searchMessagesHint": "Quaere nuntios",
+    "searchChatsHint": "Quaere sermones",
+    "searchActivitiesHint": "Quaere actiones"
 }

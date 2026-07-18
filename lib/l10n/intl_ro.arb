@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:06:05.890219",
+    "@@last_modified": "2026-07-18 13:35:13.016768",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9104,7 +9104,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Învăț...",
     "alreadySpeak": "Deja vorbesc...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10383,5 +10382,12 @@
     "chatAppearanceStyleLabel": "Aspectul chatului cu stilul ales",
     "volumeLabel": "Volum",
     "listLabel": "Listă {description}",
-    "passwordFormLabel": "Formular de schimbare a parolei"
+    "passwordFormLabel": "Formular de schimbare a parolei",
+    "searchLanguagesHint": "Căutați limbi",
+    "searchCountriesHint": "Căutați țări",
+    "searchVocabHint": "Căutați vocabular",
+    "searchUsersHint": "Căutați utilizatori",
+    "searchMessagesHint": "Căutați mesaje",
+    "searchChatsHint": "Căutați conversații",
+    "searchActivitiesHint": "Căutați activități"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-18 11:06:00.158685",
+    "@@last_modified": "2026-07-18 13:35:08.715203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Akpaaka-egosipụta ozi ọdịyo",
     "selectAudioMessagesOnPlayDescription": "Na-egosipụta ozi ọdịyo na-akpaghị aka mgbe a na-egwu ya",
     "learningAnalytics": "Nyocha mmụta",
-    "searchLanguagesHint": "M na-amụ...",
     "alreadySpeak": "M na-asụlarị...",
     "welcomeBackLogin": "Nnọọ! Ị banyere na mbụ site na {platform}.",
     "emailLoginMethod": "email",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Ọdịdị nkata nwere ụdị ahọpụtara",
     "volumeLabel": "Olu",
     "listLabel": "Ndepụta {description}",
-    "passwordFormLabel": "Ụdị mgbanwe okwuntụghe"
+    "passwordFormLabel": "Ụdị mgbanwe okwuntụghe",
+    "searchLanguagesHint": "Chọọ asụsụ",
+    "searchCountriesHint": "Chọọ obodo",
+    "searchVocabHint": "Chọọ okwu",
+    "searchUsersHint": "Chọọ ndị ọrụ",
+    "searchMessagesHint": "Chọọ ozi",
+    "searchChatsHint": "Chọọ nkata",
+    "searchActivitiesHint": "Chọọ ihe omume"
 }

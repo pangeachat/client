@@ -4361,7 +4361,7 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
     "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
     "learningAnalytics": "Learning analytics",
-    "searchLanguagesHint": "I am learning...",
+    "searchLanguagesHint": "Search languages",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
@@ -4740,5 +4740,11 @@
             }
         }
     },
-    "passwordFormLabel": "Change password form"
+    "passwordFormLabel": "Change password form",
+    "searchCountriesHint": "Search countries",
+    "searchVocabHint": "Search vocab",
+    "searchUsersHint": "Search users",
+    "searchMessagesHint": "Search messages",
+    "searchChatsHint": "Search chats",
+    "searchActivitiesHint": "Search activities"
 }

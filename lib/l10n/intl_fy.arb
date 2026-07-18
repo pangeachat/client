@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-18 11:05:57.192001",
+    "@@last_modified": "2026-07-18 13:35:07.015700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Audioberjochten automatysk markearje",
     "selectAudioMessagesOnPlayDescription": "Audioberjochten automatysk markearje as se ôfspile wurde",
     "learningAnalytics": "Learanalytics",
-    "searchLanguagesHint": "Ik lear...",
     "alreadySpeak": "Ik praat al...",
     "welcomeBackLogin": "Wolkom werom! Jo hawwe jo earder oanmeld mei {platform}.",
     "emailLoginMethod": "e-mail",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Chat-uterlik mei keazen styl",
     "volumeLabel": "Folume",
     "listLabel": "{description} list",
-    "passwordFormLabel": "Wachtwurd wizigje formulier"
+    "passwordFormLabel": "Wachtwurd wizigje formulier",
+    "searchLanguagesHint": "Sykje talen",
+    "searchCountriesHint": "Sykje lannen",
+    "searchVocabHint": "Sykje wurdskat",
+    "searchUsersHint": "Sykje brûkers",
+    "searchMessagesHint": "Sykje berjochten",
+    "searchChatsHint": "Sykje petearen",
+    "searchActivitiesHint": "Sykje aktiviteiten"
 }

@@ -3560,7 +3560,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-18 11:05:53.554852",
+    "@@last_modified": "2026-07-18 13:35:04.367164",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8386,7 +8386,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Я вывучаю...",
     "alreadySpeak": "Я ўжо размаўляю...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9665,5 +9664,12 @@
     "chatAppearanceStyleLabel": "Выгляд чата з абраным стылем",
     "volumeLabel": "Гучнасць",
     "listLabel": "Спіс {description}",
-    "passwordFormLabel": "Форма змены пароля"
+    "passwordFormLabel": "Форма змены пароля",
+    "searchLanguagesHint": "Пошук моў",
+    "searchCountriesHint": "Пошук краін",
+    "searchVocabHint": "Пошук слоўніка",
+    "searchUsersHint": "Пошук карыстальнікаў",
+    "searchMessagesHint": "Пошук паведамленняў",
+    "searchChatsHint": "Пошук чатаў",
+    "searchActivitiesHint": "Пошук дзеянняў"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:55.740357",
+    "@@last_modified": "2026-07-18 13:35:06.116996",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9323,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi lernas...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10602,5 +10601,12 @@
     "chatAppearanceStyleLabel": "Babileja aspekto kun elektita stilo",
     "volumeLabel": "Volumo",
     "listLabel": "{description} listo",
-    "passwordFormLabel": "Formularo por ŝanĝi pasvorton"
+    "passwordFormLabel": "Formularo por ŝanĝi pasvorton",
+    "searchLanguagesHint": "Serĉi lingvojn",
+    "searchCountriesHint": "Serĉi landojn",
+    "searchVocabHint": "Serĉi vortprovizon",
+    "searchUsersHint": "Serĉi uzantojn",
+    "searchMessagesHint": "Serĉi mesaĝojn",
+    "searchChatsHint": "Serĉi babilejojn",
+    "searchActivitiesHint": "Serĉi agadojn"
 }

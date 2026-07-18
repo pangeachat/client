@@ -4,6 +4,7 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
 /// Public so the map and this overlay share one vocabulary.
@@ -97,35 +98,17 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(99),
-            color: theme.colorScheme.surface,
-            child: Semantics(
-              container: true,
-              child: TextField(
-                controller: _controller,
-                onChanged: widget.updateQuery,
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  fillColor: theme.colorScheme.surface,
-                  labelText: l10n.mapSearchHint,
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: searching
-                      ? IconButton(
-                          icon: const Icon(Icons.close),
-                          tooltip: l10n.clearSearch,
-                          onPressed: () => widget.updateQuery(''),
-                        )
-                      : null,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(99),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-            ),
+          PangeaSearchBar(
+            controller: _controller,
+            onChanged: widget.updateQuery,
+            labelText: l10n.mapSearchHint,
+            suffixIcon: searching
+                ? IconButton(
+                    icon: const Icon(Icons.close),
+                    tooltip: l10n.clearSearch,
+                    onPressed: () => widget.updateQuery(''),
+                  )
+                : null,
           ),
           const SizedBox(height: 8),
           Semantics(

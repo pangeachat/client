@@ -2929,7 +2929,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-18 11:05:55.804721",
+    "@@last_modified": "2026-07-18 13:35:05.444087",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7983,7 +7983,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi estu lernante...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9262,5 +9261,12 @@
     "chatAppearanceStyleLabel": "བདམས་ཟིན་པའི་སྟངས་ཀ་དང་བཅས་པའི་ཁ་བརྡའི་རྣམ་པ།",
     "volumeLabel": "སྒྲ་ཚད།",
     "listLabel": "{description} ཐོ་གཞུང་།",
-    "passwordFormLabel": "གསང་གྲངས་བསྒྱུར་བའི་རེའུ་མིག"
+    "passwordFormLabel": "གསང་གྲངས་བསྒྱུར་བའི་རེའུ་མིག",
+    "searchLanguagesHint": "སྐད་ཡིག་འཚོལ།",
+    "searchCountriesHint": "རྒྱལ་ཁབ་འཚོལ།",
+    "searchVocabHint": "ཚིག་མཛོད་འཚོལ།",
+    "searchUsersHint": "བེད་སྤྱོད་པ་འཚོལ།",
+    "searchMessagesHint": "འཕྲིན་ཡིག་འཚོལ།",
+    "searchChatsHint": "ཁ་བརྡ་འཚོལ།",
+    "searchActivitiesHint": "བྱེད་སྒོ་འཚོལ།"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-18 11:05:59.049040",
+    "@@last_modified": "2026-07-18 13:35:08.055934",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8475,7 +8475,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Tanulok...",
     "alreadySpeak": "Már beszélek...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9754,5 +9753,12 @@
     "chatAppearanceStyleLabel": "Csevegés megjelenése a kiválasztott stílussal",
     "volumeLabel": "Hangerő",
     "listLabel": "{description} lista",
-    "passwordFormLabel": "Jelszó módosítása űrlap"
+    "passwordFormLabel": "Jelszó módosítása űrlap",
+    "searchLanguagesHint": "Nyelvek keresése",
+    "searchCountriesHint": "Országok keresése",
+    "searchVocabHint": "Szavak keresése",
+    "searchUsersHint": "Felhasználók keresése",
+    "searchMessagesHint": "Üzenetek keresése",
+    "searchChatsHint": "Csevegések keresése",
+    "searchActivitiesHint": "Tevékenységek keresése"
 }

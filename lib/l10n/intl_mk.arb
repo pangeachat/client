@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-18 11:06:02.940910",
+    "@@last_modified": "2026-07-18 13:35:10.896398",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Автоматско истакнување аудио пораки",
     "selectAudioMessagesOnPlayDescription": "Автоматски истакнувајте аудио пораки кога се репродуцираат",
     "learningAnalytics": "Аналитика за учење",
-    "searchLanguagesHint": "Учам...",
     "alreadySpeak": "Веќе зборувам...",
     "welcomeBackLogin": "Добредојдовте повторно! Претходно се најавивте со {platform}.",
     "emailLoginMethod": "е-пошта",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Изглед на разговор со избран стил",
     "volumeLabel": "Јачина на звук",
     "listLabel": "{description} листа",
-    "passwordFormLabel": "Формулар за промена на лозинка"
+    "passwordFormLabel": "Формулар за промена на лозинка",
+    "searchLanguagesHint": "Пребарај јазици",
+    "searchCountriesHint": "Пребарај земји",
+    "searchVocabHint": "Пребарај речник",
+    "searchUsersHint": "Пребарај корисници",
+    "searchMessagesHint": "Пребарај пораки",
+    "searchChatsHint": "Пребарај разговори",
+    "searchActivitiesHint": "Пребарај активности"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-18 11:06:02.986857",
+    "@@last_modified": "2026-07-18 13:35:10.985601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
     "selectAudioMessagesOnPlayDescription": "പ്ലേ ചെയ്യുമ്പോൾ ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
     "learningAnalytics": "പഠന വിശകലനം",
-    "searchLanguagesHint": "ഞാൻ പഠിക്കുന്നു...",
     "alreadySpeak": "ഞാൻ ഇതിനകം സംസാരിക്കുന്നു...",
     "welcomeBackLogin": "തിരികെ സ്വാഗതം! നിങ്ങൾ മുമ്പ് {platform} ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്തിരുന്നു.",
     "emailLoginMethod": "ഇമെയിൽ",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "തിരഞ്ഞെടുത്ത ശൈലിയിലുള്ള ചാറ്റ് രൂപം",
     "volumeLabel": "ശബ്ദം",
     "listLabel": "{description} ലിസ്റ്റ്",
-    "passwordFormLabel": "പാസ്‌വേഡ് മാറ്റാനുള്ള ഫോം"
+    "passwordFormLabel": "പാസ്‌വേഡ് മാറ്റാനുള്ള ഫോം",
+    "searchLanguagesHint": "ഭാഷകൾ തിരയുക",
+    "searchCountriesHint": "രാജ്യങ്ങൾ തിരയുക",
+    "searchVocabHint": "പദസമ്പത്ത് തിരയുക",
+    "searchUsersHint": "ഉപയോക്താക്കളെ തിരയുക",
+    "searchMessagesHint": "സന്ദേശങ്ങൾ തിരയുക",
+    "searchChatsHint": "ചാറ്റുകൾ തിരയുക",
+    "searchActivitiesHint": "പ്രവർത്തനങ്ങൾ തിരയുക"
 }

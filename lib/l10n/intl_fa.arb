@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 11:05:56.400686",
+    "@@last_modified": "2026-07-18 13:35:06.232002",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8460,7 +8460,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "من در حال یادگیری هستم...",
     "alreadySpeak": "من قبلاً صحبت می‌کنم...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9739,5 +9738,12 @@
     "chatAppearanceStyleLabel": "ظاهر چت با سبک انتخاب شده",
     "volumeLabel": "صدا",
     "listLabel": "فهرست {description}",
-    "passwordFormLabel": "فرم تغییر رمز عبور"
+    "passwordFormLabel": "فرم تغییر رمز عبور",
+    "searchLanguagesHint": "جستجوی زبان‌ها",
+    "searchCountriesHint": "جستجوی کشورها",
+    "searchVocabHint": "جستجوی واژگان",
+    "searchUsersHint": "جستجوی کاربران",
+    "searchMessagesHint": "جستجوی پیام‌ها",
+    "searchChatsHint": "جستجوی چت‌ها",
+    "searchActivitiesHint": "جستجوی فعالیت‌ها"
 }

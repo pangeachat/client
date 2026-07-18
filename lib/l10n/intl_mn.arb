@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-18 11:06:03.342794",
+    "@@last_modified": "2026-07-18 13:35:11.176919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Дуут мессежийг автоматаар тодруулах",
     "selectAudioMessagesOnPlayDescription": "Дуут мессежийг тоглуулах үед автоматаар тодруулах",
     "learningAnalytics": "Сургалтын аналитик",
-    "searchLanguagesHint": "Би сурч байна...",
     "alreadySpeak": "Би аль хэдийн ярьдаг...",
     "welcomeBackLogin": "Тавтай морил! Та өмнө нь {platform} ашиглан нэвтэрсэн.",
     "emailLoginMethod": "имэйл",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Сонгосон загвараар чат харагдах байдал",
     "volumeLabel": "Дууны хэмжээ",
     "listLabel": "{description} жагсаалт",
-    "passwordFormLabel": "Нууц үг солих маягт"
+    "passwordFormLabel": "Нууц үг солих маягт",
+    "searchLanguagesHint": "Хэл хайх",
+    "searchCountriesHint": "Улс хайх",
+    "searchVocabHint": "Үгийн сан хайх",
+    "searchUsersHint": "Хэрэглэгч хайх",
+    "searchMessagesHint": "Зурвас хайх",
+    "searchChatsHint": "Чат хайх",
+    "searchActivitiesHint": "Үйл ажиллагаа хайх"
 }

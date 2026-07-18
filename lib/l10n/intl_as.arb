@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-18 11:05:53.926041",
+    "@@last_modified": "2026-07-18 13:35:04.531121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "অডিঅ' বাৰ্তাবোৰ স্বয়ংক্ৰিয়ভাৱে হাইলাইট কৰক",
     "selectAudioMessagesOnPlayDescription": "অডিঅ' বাৰ্তাবোৰ প্লে কৰিলে স্বয়ংক্ৰিয়ভাৱে হাইলাইট কৰক",
     "learningAnalytics": "শিকাৰ বিশ্লেষণ",
-    "searchLanguagesHint": "মই শিকি আছোঁ...",
     "alreadySpeak": "মই ইতিমধ্যে কওঁ...",
     "welcomeBackLogin": "পুনৰ স্বাগতম! আপুনি আগতে {platform} ব্যৱহাৰ কৰি ছাইন ইন কৰিছিল।",
     "emailLoginMethod": "ইমেইল",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "নিৰ্বাচিত শৈলীৰে চেটৰ ৰূপ",
     "volumeLabel": "শব্দৰ মাত্ৰা",
     "listLabel": "{description} তালিকা",
-    "passwordFormLabel": "পাছৱৰ্ড সলনি কৰক ফৰ্ম"
+    "passwordFormLabel": "পাছৱৰ্ড সলনি কৰক ফৰ্ম",
+    "searchLanguagesHint": "ভাষা বিচাৰক",
+    "searchCountriesHint": "দেশ বিচাৰক",
+    "searchVocabHint": "শব্দভাণ্ডাৰ বিচাৰক",
+    "searchUsersHint": "ব্যৱহাৰকাৰী বিচাৰক",
+    "searchMessagesHint": "বাৰ্তা বিচাৰক",
+    "searchChatsHint": "আলাপ বিচাৰক",
+    "searchActivitiesHint": "কাৰ্য্যকলাপ বিচাৰক"
 }

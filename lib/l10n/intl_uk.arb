@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-18 11:06:09.188567",
+    "@@last_modified": "2026-07-18 13:35:15.326721",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8372,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Я вивчаю...",
     "alreadySpeak": "Я вже говорю...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9651,5 +9650,12 @@
     "chatAppearanceStyleLabel": "Вигляд чату з обраним стилем",
     "volumeLabel": "Гучність",
     "listLabel": "Список {description}",
-    "passwordFormLabel": "Форма зміни пароля"
+    "passwordFormLabel": "Форма зміни пароля",
+    "searchLanguagesHint": "Пошук мов",
+    "searchCountriesHint": "Пошук країн",
+    "searchVocabHint": "Пошук слів",
+    "searchUsersHint": "Пошук користувачів",
+    "searchMessagesHint": "Пошук повідомлень",
+    "searchChatsHint": "Пошук чатів",
+    "searchActivitiesHint": "Пошук активностей"
 }

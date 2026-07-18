@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-18 11:06:04.937797",
+    "@@last_modified": "2026-07-18 13:35:12.265362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1779,7 +1779,6 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight mauthenga omvera",
     "selectAudioMessagesOnPlayDescription": "Auto-highlight mauthenga omvera akamaseweredwa",
     "learningAnalytics": "Kusanthula kuphunzira",
-    "searchLanguagesHint": "Ndikupfunzira...",
     "alreadySpeak": "Ndikulankhula kale...",
     "welcomeBackLogin": "Takulandiraninso! Munalowa kale ndi {platform}.",
     "emailLoginMethod": "imelo",
@@ -1995,5 +1994,12 @@
     "chatAppearanceStyleLabel": "Maonekedwe a macheza ndi kalembedwe kosankhidwa",
     "volumeLabel": "Voliyumu",
     "listLabel": "Mndandanda wa {description}",
-    "passwordFormLabel": "Sinthani fomu yachinsinsi"
+    "passwordFormLabel": "Sinthani fomu yachinsinsi",
+    "searchLanguagesHint": "Sakani zilankhulo",
+    "searchCountriesHint": "Sakani mayiko",
+    "searchVocabHint": "Sakani mawu",
+    "searchUsersHint": "Sakani ogwiritsa ntchito",
+    "searchMessagesHint": "Sakani mauthenga",
+    "searchChatsHint": "Sakani macheza",
+    "searchActivitiesHint": "Sakani zochitika"
 }
