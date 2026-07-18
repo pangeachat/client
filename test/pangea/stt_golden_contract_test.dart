@@ -7,18 +7,20 @@ import 'package:mime/mime.dart';
 
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
-/// Golden contract tests for the streaming-STT `user_stt` freeze (R0-1).
+/// Golden contract tests for the streaming-STT `user_stt` contract (#264).
 ///
 /// The client parses the choreographer's `SpeechToTextResponse` and
 /// re-serializes it into the Matrix `m.audio` event. These tests run that
 /// round trip against the byte-shared golden fixture pack (identical copies
-/// live in 2-step-choreographer and pangea-bot) and pin today's real
-/// behaviour: word times inflated x1000, the `service` field dropped, and an
-/// empty response throwing.
+/// live in 2-step-choreographer and pangea-bot).
 ///
-/// Current-behaviour tests are GREEN and document those defects. Target tests
-/// are `skip`-labelled `R0-2`: the R0-2 defect-fix wave removes the skip and
-/// makes the round trip match `matrix_event_content_target.json`.
+/// R0-2 fixed the three frozen defects, so the client now emits the corrected
+/// shape (true-millisecond word times, `service` preserved) and parses an
+/// empty exhausted-fallback response without throwing. The R0-1
+/// characterization tripwires that pinned the OLD buggy shape have been
+/// retired; the active groups assert the corrected target envelope
+/// (`matrix_event_content_target.json`) plus a legacy-read guard that the
+/// fixed parser still tolerates old inflated `..._current.json` events.
 const String _goldenDir = 'test/pangea/stt_golden';
 
 Map<String, dynamic> _loadJson(String name) {
