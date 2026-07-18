@@ -34,7 +34,7 @@ from google import genai
 from google.genai import errors as genai_errors
 from google.genai import types
 
-from translate_gemini import display_name_for
+from translate_gemini import CMS_LANGUAGES_URL, fetch_cms_languages, resolve_display_name
 
 MODEL = "gemini-2.5-pro"
 BATCH = 50
@@ -130,7 +130,8 @@ def review_batch(client, name, items: dict) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", required=True)
-    ap.add_argument("--name", required=True)
+    ap.add_argument("--name", help="prompt language name; omit to resolve from the CMS language list")
+    ap.add_argument("--cms-url", default=CMS_LANGUAGES_URL)
     ap.add_argument("--l10n", default="lib/l10n")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--dry", action="store_true", help="report proposed changes, don't write")
@@ -144,7 +145,8 @@ def main() -> None:
         keys = keys[: args.limit]
 
     client = vertex_client()
-    name = display_name_for(args.lang, args.name)
+    docs = [] if args.name else fetch_cms_languages(args.cms_url)
+    name = resolve_display_name(args.lang, docs, explicit=args.name)
     final: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(keys), BATCH):

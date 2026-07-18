@@ -29,12 +29,13 @@ import concurrent.futures
 import glob
 import json
 import os
-import urllib.request
 from datetime import datetime
 from pathlib import Path
 
 from translate_gemini import (
-    display_name_for,
+    CMS_LANGUAGES_URL,
+    fetch_cms_languages,
+    resolve_display_name,
     translate_batch,
     validate,
     vertex_client,
@@ -43,30 +44,7 @@ from translate_gemini import (
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 L10N = REPO / "lib" / "l10n"
-DEFAULT_CMS = "https://api.staging.pangea.chat/cms/api/languages?limit=500"
 BATCH = 80
-
-
-def cms_names(cms_url: str) -> dict:
-    try:
-        docs = json.load(urllib.request.urlopen(cms_url, timeout=30))["docs"]
-    except Exception as e:  # names are prompt sugar only — never fatal
-        print(f"CMS name fetch failed ({e}); using ISO codes in prompts")
-        return {}
-    names = {}
-    for d in docs:
-        base = d["language_code"].split("-")[0]
-        name = (d.get("language_name") or "").strip()
-        if name:
-            names.setdefault(base, name)
-    return names
-
-
-def display_name(code: str, names: dict) -> str:
-    base = code.split("-")[0].split("_")[0]
-    fallback = names.get(base) or f"the language with ISO 639 code '{code}'"
-    # Script-variant locales get an unambiguous name (zh -> Simplified, ...).
-    return display_name_for(code, fallback)
 
 
 def locale_paths() -> list:
@@ -78,7 +56,7 @@ def locale_paths() -> list:
 
 
 def fill_locale(
-    client, model: str, path: Path, en: dict, only: set | None, names: dict, dry: bool
+    client, model: str, path: Path, en: dict, only: set | None, docs: list, dry: bool
 ) -> tuple[str, str, list[str]]:
     """Returns (message, locale code, keys added). Only writes the locale's own
     arb — the shared provenance file is written once by main() after all
@@ -92,7 +70,7 @@ def fill_locale(
     if not missing:
         return f"skip {code} (complete)", code, []
 
-    name = display_name(code, names)
+    name = resolve_display_name(code, docs)
     out: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(missing), BATCH):
@@ -143,7 +121,7 @@ def main() -> None:
     ap.add_argument("--keys", nargs="*", help="only fill these keys (default: all missing)")
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--dry", action="store_true", help="translate + validate, don't write")
-    ap.add_argument("--cms-url", default=DEFAULT_CMS)
+    ap.add_argument("--cms-url", default=CMS_LANGUAGES_URL)
     ap.add_argument(
         "--model", default="gemini-2.5-flash",
         help="Gemini model (default gemini-2.5-flash)",
@@ -157,7 +135,7 @@ def main() -> None:
         if unknown:
             raise SystemExit(f"keys not in intl_en.arb: {sorted(unknown)}")
 
-    names = cms_names(args.cms_url)
+    docs = fetch_cms_languages(args.cms_url)
     client = vertex_client()
 
     paths = [Path(p) for p in locale_paths()]
@@ -165,7 +143,7 @@ def main() -> None:
     added: dict[str, list[str]] = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as ex:
         futs = {
-            ex.submit(fill_locale, client, args.model, p, en, only, names, args.dry): p
+            ex.submit(fill_locale, client, args.model, p, en, only, docs, args.dry): p
             for p in paths
         }
         for fut in concurrent.futures.as_completed(futs):

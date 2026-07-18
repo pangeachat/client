@@ -47,19 +47,68 @@ _THINKING_FLOOR = {"gemini-2.5-pro": 128}
 # ({var, plural, ...} has a comma; =1{...} has spaces/digits inside).
 VAR_RE = re.compile(r"\{(\w+)\}")
 
-# Locales whose bare language name invites the wrong script/orthography from the
-# model (bare "Chinese" sometimes yields Traditional for zh — caught by hand in
-# client#7744). Keyed by arb locale code; wins over any caller-/CMS-supplied name.
-LOCALE_NAME_OVERRIDES = {
-    "zh": "Simplified Chinese (简体中文) — Simplified characters ONLY",
-    "zh_Hant": "Traditional Chinese (繁體中文) — Traditional characters ONLY",
-    "pt_BR": "Brazilian Portuguese (português do Brasil)",
-    "pt_PT": "European Portuguese (português europeu)",
-}
+# Prompt language names come from the CMS `languages` collection — the cross-service
+# source of truth for language metadata (org language-list.instructions.md). Its
+# `language_name` + ISO 15924 `script` fields disambiguate script-variant locales
+# (zh-CN "Chinese (Simplified)" script Hans vs zh-TW "Chinese (Traditional)" script
+# Hant): a bare name like "Chinese" once yielded Traditional characters for the
+# Simplified `zh` arb (caught by hand in client#7744).
+CMS_LANGUAGES_URL = "https://api.staging.pangea.chat/cms/api/languages?limit=500"
+
+# Unicode CLDR likely-subtags, NOT project opinion: the script a bare base code
+# implies when its language family spans multiple scripts (CLDR says bare `zh`
+# is Hans). Only consulted for base-code arbs in multi-script families; extend
+# from CLDR if such a family ever gains a bare-code arb.
+CLDR_LIKELY_SCRIPT = {"zh": "Hans"}
 
 
-def display_name_for(code: str, fallback: str) -> str:
-    return LOCALE_NAME_OVERRIDES.get(code, fallback)
+def fetch_cms_languages(url: str = CMS_LANGUAGES_URL) -> list:
+    """The CMS `languages` docs; [] when unreachable (resolution then falls back
+    to BCP-47 phrasing, which stays unambiguous for script-variant locales)."""
+    import urllib.request
+
+    try:
+        return json.load(urllib.request.urlopen(url, timeout=30))["docs"]
+    except Exception as e:
+        print(f"CMS language fetch failed ({e}); falling back to BCP-47 tags in prompts")
+        return []
+
+
+def resolve_display_name(arb_code: str, docs: list, explicit: str | None = None) -> str:
+    """The prompt name for an arb locale code, from CMS data.
+
+    Order: an explicit operator-supplied name; the family entry matching the
+    code's script (subtag, or CLDR-likely for bare codes in multi-script
+    families); the exact full-code entry; the bare-base entry when the family
+    has one script; else a BCP-47 tag phrase (script-tagged, so still
+    unambiguous with no CMS).
+    """
+    if explicit:
+        return explicit
+    code = arb_code.replace("_", "-")
+    base = code.split("-")[0].lower()
+    family = [d for d in docs if d["language_code"].split("-")[0].lower() == base]
+    regional_scripts = {d.get("script") for d in family if "-" in d["language_code"] and d.get("script")}
+    multi_script = len(regional_scripts) > 1
+
+    script = next((s for s in code.split("-")[1:] if len(s) == 4 and s.isalpha()), None)
+    if script is None and (multi_script or not family):
+        # Unknown family (CMS unreachable) counts as possibly multi-script.
+        script = CLDR_LIKELY_SCRIPT.get(base)
+
+    if script:
+        for d in family:
+            if (d.get("script") or "").lower() == script.lower():
+                return d["language_name"]
+
+    exact = next((d for d in family if d["language_code"].lower() == code.lower()), None)
+    if exact and not (multi_script and "-" not in exact["language_code"]):
+        return exact["language_name"]
+    if family and not multi_script:
+        return family[0]["language_name"]
+
+    tag = code if ("-" in code or not script) else f"{code}-{script}"
+    return f"the locale with BCP-47 tag '{tag}'"
 
 
 PROMPT = """You are a professional software-localization translator. Translate the VALUES of the following JSON object from English into {name}. This is UI text for a language-learning chat app.
@@ -150,7 +199,8 @@ def translate_batch(client: genai.Client, model: str, name: str, batch: dict) ->
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", required=True, help="target locale code, e.g. af")
-    ap.add_argument("--name", required=True, help="English display name, e.g. Afrikaans")
+    ap.add_argument("--name", help="prompt language name; omit to resolve from the CMS language list")
+    ap.add_argument("--cms-url", default=CMS_LANGUAGES_URL, help="CMS languages endpoint for name resolution")
     ap.add_argument("--l10n", default="lib/l10n", help="l10n dir (default lib/l10n)")
     ap.add_argument("--limit", type=int, default=0, help="translate only first N keys (smoke test)")
     ap.add_argument("--dry", action="store_true", help="validate but do not write the arb")
@@ -167,7 +217,9 @@ def main() -> None:
         keys = keys[: args.limit]
 
     client = vertex_client()
-    name = display_name_for(args.lang, args.name)
+    docs = [] if args.name else fetch_cms_languages(args.cms_url)
+    name = resolve_display_name(args.lang, docs, explicit=args.name)
+    print(f"prompt language name: {name}")
     out: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(keys), BATCH):
