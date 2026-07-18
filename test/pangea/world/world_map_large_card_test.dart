@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/widgets/activity_star_row.dart';
 
 /// Covers #7207: every map large card gets a dismiss X (wired to the
 /// controller's demote-to-mid dismissal) that fires **without** opening the
@@ -30,6 +31,7 @@ void main() {
     List<LargeCardParticipant> participants = const [],
     int openSlots = 0,
     int starsEarned = 0,
+    QuestActivityCard? cardOverride,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -43,7 +45,7 @@ void main() {
         home: Scaffold(
           body: Center(
             child: WorldMapLargeCard(
-              card: card,
+              card: cardOverride ?? card,
               state: state,
               pinged: false,
               plan: null,
@@ -109,8 +111,9 @@ void main() {
   group('selected glow (#7349)', () {
     // The focused card haloes in its state hue (here `available`) with no
     // outline — the same treatment as a selected pin.
-    final glowColor =
-        WorldMapSelection.glow(ActivityPinState.available.accent).first.color;
+    final glowColor = WorldMapSelection.glow(
+      ActivityPinState.available.accent,
+    ).first.color;
 
     testWidgets('a focused card casts the state glow around the balloon', (
       tester,
@@ -170,6 +173,42 @@ void main() {
         expect(find.byIcon(Icons.meeting_room), findsNothing);
         expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
         expect(find.byIcon(Icons.person), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'ongoingActive star row totals from the thin goals with no hydrated plan',
+      (tester) async {
+        // #7602: the star total never waits on the full-plan hydration — with
+        // plan: null (and no live room here), the pin's thin goals supply the
+        // denominator (min across roles), so the row renders complete on
+        // first paint instead of popping 0 → N when the plan lands.
+        await pumpCard(
+          tester,
+          state: ActivityPinState.ongoingActive,
+          starsEarned: 2,
+          cardOverride: const QuestActivityCard(
+            activityId: 'a1',
+            title: 'Test Activity',
+            l2: 'es',
+            coordinates: [0, 0],
+            learningObjectiveRefs: [],
+            roleIds: ['r1', 'r2'],
+            goals: [
+              ActivityCardGoal(goalSlug: 's1', roleIds: ['r1']),
+              ActivityCardGoal(goalSlug: 's2', roleIds: ['r1']),
+              ActivityCardGoal(goalSlug: 's3', roleIds: ['r1']),
+              ActivityCardGoal(goalSlug: 's4', roleIds: ['r2']),
+              ActivityCardGoal(goalSlug: 's5', roleIds: ['r2']),
+              ActivityCardGoal(goalSlug: 's6', roleIds: ['r2']),
+            ],
+          ),
+        );
+        final row = tester.widget<ActivityStarRow>(
+          find.byType(ActivityStarRow),
+        );
+        expect(row.total, 3);
+        expect(row.earned, 2);
       },
     );
 

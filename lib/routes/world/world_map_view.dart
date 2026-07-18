@@ -193,10 +193,7 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// largest star (the super star, [PinSize.superStarDotDiameter]).
   static Size _markerBox(ActivityPinState state, PinTier tier) =>
       state == ActivityPinState.inProgress
-      ? const Size(
-          PinSize.superStarDotDiameter,
-          PinSize.superStarDotDiameter,
-        )
+      ? const Size(PinSize.superStarDotDiameter, PinSize.superStarDotDiameter)
       : Size(tier.dotWidth, tier.dotHeight(state));
 
   /// The marker's anchor within its box — where [Marker.point] (the geographic
@@ -611,16 +608,17 @@ class _WorldMapViewState extends State<WorldMapView> {
     final Map<String, ActivityPinState> states = {};
     final Map<String, bool> pings = {};
     final Map<String, ActivityStarLevel> starLevels = {};
-    // Precomputed once (a single rooms pass) so the per-pin star tier is an
-    // O(roles) lookup, not an O(rooms) rescan per pin.
+    // Precomputed once (a single rooms pass each) so the per-pin star tier is
+    // an O(roles) lookup, not an O(rooms) rescan per pin.
+    final ownRoleAwards =
+        widget.controller.client?.ownRoleAwardsByActivity ??
+        const <String, List<OwnRoleAwards>>{};
+    // Room-derived fallback inputs for cards that carry no thin goals (an
+    // older choreo): per-room own-role completion + the role set unioned from
+    // the session rooms' plan snapshots.
     final completedRoles =
         widget.controller.client?.completedRolesByActivity ??
         const <String, Set<String>>{};
-    // The full role set per activity, read from the learner's hydrated session
-    // plans — the room-derived "all roles" so the super-star doesn't depend on
-    // the bbox card projecting `roles` (it may omit them). Same rooms source as
-    // completedRoles, so when a role reads completed the total set is populated
-    // too. Falls back to the card's roleIds when no plan has hydrated yet.
     final allRoles =
         widget.controller.client?.roleIdsByActivity ??
         const <String, Set<String>>{};
@@ -636,11 +634,16 @@ class _WorldMapViewState extends State<WorldMapView> {
       // so a prior completion stays visible even under a joinable/ongoing pin.
       // A gold star appears ONLY once a full role is done — a plain star (≥1
       // role) or a super star (all roles); partial progress is never shown on a
-      // pin (world-map.instructions.md, "Goal Progress").
-      final starLevel = starLevelFor(
-        completedRoles[id] ?? const {},
-        allRoles[id] ?? c.roleIds,
-      );
+      // pin. Resolved against the card's CURRENT thin goals (slug-matched,
+      // hydration-free — #7602), so an owner edit re-derives completion; the
+      // room-derived path is the fallback for cards without thin goals
+      // (world-map.instructions.md, "Goal Progress").
+      final starLevel =
+          starLevelForCard(c, ownRoleAwards[id] ?? const []) ??
+          starLevelFor(
+            completedRoles[id] ?? const {},
+            allRoles[id] ?? c.roleIds,
+          );
       starLevels[id] = starLevel;
 
       final sessionState = signal?.state;
@@ -781,32 +784,32 @@ class _WorldMapViewState extends State<WorldMapView> {
       ...cards.where((c) => render.tierOf(c.activityId) != PinTier.small),
     ];
     return ordered.map((card) {
-        final state = render.stateOf(card.activityId);
-        final tier = render.tierOf(card.activityId);
-        final box = _markerBox(state, tier);
-        final counts = _participantCounts(card.activityId, state);
+      final state = render.stateOf(card.activityId);
+      final tier = render.tierOf(card.activityId);
+      final box = _markerBox(state, tier);
+      final counts = _participantCounts(card.activityId, state);
 
-        return Marker(
+      return Marker(
+        key: ValueKey(card.activityId),
+        point: card.point!,
+        width: box.width,
+        height: box.height,
+        alignment: _markerAlignment(state, tier),
+        child: WorldMapDot(
           key: ValueKey(card.activityId),
-          point: card.point!,
-          width: box.width,
-          height: box.height,
-          alignment: _markerAlignment(state, tier),
-          child: WorldMapDot(
-            key: ValueKey(card.activityId),
-            card: card,
-            state: state,
-            tier: tier,
-            onTap: () => widget.controller.openActivity(card),
-            pinged: render.pingedOf(card.activityId),
-            starLevel: render.starLevelOf(card.activityId),
-            unreadRoom: _unreadRoomFor(card.activityId, state),
-            participantsFilled: counts.filled,
-            participantsTotal: counts.total,
-            isFocused: card.activityId == render.focusedId,
-          ),
-        );
-      }).toList();
+          card: card,
+          state: state,
+          tier: tier,
+          onTap: () => widget.controller.openActivity(card),
+          pinged: render.pingedOf(card.activityId),
+          starLevel: render.starLevelOf(card.activityId),
+          unreadRoom: _unreadRoomFor(card.activityId, state),
+          participantsFilled: counts.filled,
+          participantsTotal: counts.total,
+          isFocused: card.activityId == render.focusedId,
+        ),
+      );
+    }).toList();
   }
 
   /// Dying pins rendered in a separate layer so they animate out without
@@ -842,7 +845,10 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// Ongoing). Shared by [_largeMarkers] (the live layer) and
   /// [_updateExitingLarge] (freezing a snapshot for the card's exit
   /// animation), so both read identical data.
-  _LargeCardSnapshot _snapshotLargeCard(QuestActivityCard card, _PinRenderer render) {
+  _LargeCardSnapshot _snapshotLargeCard(
+    QuestActivityCard card,
+    _PinRenderer render,
+  ) {
     // Hydrate the full plan for this featured card (no-op once cached); the
     // repo listener rebuilds the map when it lands.
     ActivityPlanRepo.instance.ensure(card.activityId);
@@ -1015,7 +1021,8 @@ class _WorldMapViewState extends State<WorldMapView> {
     // Resolve every current large card's data once (shared by the live layer
     // and the exiting-large tracker) and detect newly-gone large cards.
     final currentLarge = {
-      for (final c in render.largeCards) c.activityId: _snapshotLargeCard(c, render),
+      for (final c in render.largeCards)
+        c.activityId: _snapshotLargeCard(c, render),
     };
     _updateExitingLarge(currentLarge);
 

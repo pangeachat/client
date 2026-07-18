@@ -11,9 +11,9 @@ import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -174,10 +174,16 @@ class WorldMapLargeCard extends StatelessWidget {
     this.starLevel = ActivityStarLevel.none,
   });
 
-  /// One player's earnable stars stands in for the activity's star total —
-  /// uniform across roles by generation, min across roles for older plans
-  /// (see ActivityPlanModel.earnableStars).
-  int get _starsTotal => plan?.earnableStars ?? 0;
+  /// The activity's star total, never hydration-gated (#7602): the learner's
+  /// own role in the live session (real-time, and the same source as the
+  /// ongoing row's numerator) → the pin's thin goals (uniform across roles by
+  /// generation, min when they disagree — [QuestActivityCard.thinStarsTotal])
+  /// → the hydrated plan, a last resort for legacy cards without thin goals.
+  int get _starsTotal =>
+      liveRoom?.ownRole?.allGoals.length ??
+      card.thinStarsTotal ??
+      plan?.earnableStars ??
+      0;
 
   @override
   Widget build(BuildContext context) {
@@ -263,10 +269,7 @@ class WorldMapLargeCard extends StatelessWidget {
           offset: const Offset(0, -1.5),
           child: CustomPaint(
             size: const Size(_tailWidth, tailHeight),
-            painter: _CaretPainter(
-              fill: accent,
-              edge: accent,
-            ),
+            painter: _CaretPainter(fill: accent, edge: accent),
           ),
         ),
       ],
@@ -329,7 +332,11 @@ class _CardTitleRow extends StatelessWidget {
   final Color accent;
   final VoidCallback? onClose;
 
-  const _CardTitleRow({required this.title, required this.accent, this.onClose});
+  const _CardTitleRow({
+    required this.title,
+    required this.accent,
+    this.onClose,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -407,8 +414,8 @@ class _CardBody extends StatelessWidget {
       starsTotal: starsTotal,
       starsEarned: starsEarned,
     ),
-    ActivityPinState.available || ActivityPinState.inProgress =>
-      const SizedBox.shrink(),
+    ActivityPinState.available ||
+    ActivityPinState.inProgress => const SizedBox.shrink(),
   };
 }
 
@@ -501,7 +508,11 @@ class _OngoingActiveBody extends StatelessWidget {
         if (preview != null)
           Row(
             children: [
-              Avatar(mxContent: sender?.avatarUrl, name: sender?.calcDisplayname(), size: 24),
+              Avatar(
+                mxContent: sender?.avatarUrl,
+                name: sender?.calcDisplayname(),
+                size: 24,
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(

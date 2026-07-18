@@ -3,6 +3,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_awarded_goals.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
@@ -40,6 +42,63 @@ ActivityStarLevel starLevelFor(
   return ActivityStarLevel.star;
 }
 
+/// One joined session room's own-role award facts: the role the learner held
+/// there and that room's cumulative orchestrator awards. The per-attempt input
+/// [starLevelForCard] joins against a pin's thin goals.
+typedef OwnRoleAwards = ({String roleId, OrchestratorAwardedGoals awards});
+
+/// The learner's star tier for [card], resolved hydration-free against the
+/// pin's **current** thin goals: a role is complete when every card goal
+/// listing it is awarded — matched on `goal_slug` first, then the legacy goal
+/// id ([OrchestratorAwardedGoals.isGoalCompletedForRole]) — with awards
+/// unioned across the learner's attempts ([ownAwards]); Ava's Pins-v6 note's
+/// "through all their attempts". (Star *counts* stay best-single-session per
+/// quests.instructions.md — the tier and the numerals answer different
+/// questions.) Judging against the card rather than each room's frozen plan
+/// snapshot means an owner edit re-derives completion: adding a goal demotes
+/// an earned star/super star until the new goal too is earned (accepted
+/// 2026-07-18 — world-map.instructions.md, "Goal Progress"). Returns null when
+/// the card carries no thin goals (an older choreo) — callers fall back to the
+/// room-derived [starLevelFor] path.
+ActivityStarLevel? starLevelForCard(
+  QuestActivityCard card,
+  List<OwnRoleAwards> ownAwards,
+) {
+  if (card.goals.isEmpty) return null;
+
+  final goalsByRole = <String, List<ActivityCardGoal>>{};
+  for (final g in card.goals) {
+    for (final r in g.roleIds) {
+      (goalsByRole[r] ??= []).add(g);
+    }
+  }
+  // The authoritative role set: the card's thin roles, else the goals' roles.
+  // A role the card lists but no goal covers can never read complete, which
+  // conservatively blocks the super star (matches the room path: a zero-goal
+  // role is never "completed").
+  final allRoles = card.roleIds.isNotEmpty
+      ? card.roleIds.toSet()
+      : goalsByRole.keys.toSet();
+
+  bool roleDone(String roleId) {
+    final roleGoals = goalsByRole[roleId];
+    if (roleGoals == null || roleGoals.isEmpty) return false;
+    return roleGoals.every(
+      (g) => ownAwards.any(
+        (a) =>
+            a.roleId == roleId &&
+            a.awards.isGoalCompletedForRole(
+              roleId,
+              g.id ?? '',
+              goalSlug: g.goalSlug,
+            ),
+      ),
+    );
+  }
+
+  return starLevelFor(allRoles.where(roleDone).toSet(), allRoles);
+}
+
 extension WorldMapClientExtension on Client {
   /// The learner's completed role-ids per activity across their joined sessions,
   /// built in ONE pass over `rooms` — the precomputed source for [starLevelFor]
@@ -75,6 +134,27 @@ extension WorldMapClientExtension on Client {
       final roleIds = room.activityPlan?.roles.keys;
       if (roleIds == null) continue;
       (result[activityId] ??= <String>{}).addAll(roleIds);
+    }
+    return result;
+  }
+
+  /// The learner's own-role award facts per activity across their joined
+  /// session rooms, built in ONE pass over `rooms` (the same discipline as
+  /// [completedRolesByActivity]) — the input [starLevelForCard] joins against
+  /// each pin's thin goals. Every room where the learner held a role
+  /// contributes an entry; the resolver unions awards per goal across them.
+  Map<String, List<OwnRoleAwards>> get ownRoleAwardsByActivity {
+    final result = <String, List<OwnRoleAwards>>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null) continue;
+      if (room.membership != Membership.join) continue;
+      final roleId = room.ownRole?.id;
+      if (roleId == null) continue;
+      (result[activityId] ??= []).add((
+        roleId: roleId,
+        awards: room.orchestratorAwardedGoals,
+      ));
     }
     return result;
   }
