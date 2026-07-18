@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-18 10:35:55.184016",
+    "@@last_modified": "2026-07-18 11:05:54.437502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Lista jezika",
     "searchedResultsLabel": "Rezultati pretrage za '{search}'",
     "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa",
-    "endPractice": "Završi vježbu"
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "{page} opcije",
+    "openDM": "Otvori direktnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Pogledaj profilnu sliku",
+    "profileImageLabel": "Profilna slika",
+    "actionsLabel": "Radnje",
+    "colorListLabel": "Lista boja",
+    "chatAppearanceStyleLabel": "Izgled četa sa odabranim stilom",
+    "volumeLabel": "Jačina zvuka",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Obrazac za promjenu lozinke"
 }

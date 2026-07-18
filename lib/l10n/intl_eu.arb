@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-18 10:35:55.778478",
+    "@@last_modified": "2026-07-18 11:05:56.094700",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9640,5 +9640,16 @@
     "starsToUnlockObjectiveDesc": "Ezarri misio bakoitza osatzeko behar diren izar kopurua",
     "maxStarsPerMissionWarning": "Ikastaro honek misioak ditu, non gehienez {maxValue} izar irabaz daitezkeen. Mesedez, sartu {maxValue} baino txikiagoa edo berdina den zenbaki bat.",
     "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin.",
-    "endPractice": "Praktika amaitu"
+    "endPractice": "Praktika amaitu",
+    "bodyLabel": "{page} aukerak",
+    "openDM": "Zuzeneko mezua ireki",
+    "openNewTab": "Fitxa berrian ireki",
+    "viewProfileImageLabel": "Ikusi profileko irudia",
+    "profileImageLabel": "Profileko irudia",
+    "actionsLabel": "Ekintzak",
+    "colorListLabel": "Kolore-zerrenda",
+    "chatAppearanceStyleLabel": "Txataren itxura aukeratutako estiloarekin",
+    "volumeLabel": "Bolumena",
+    "listLabel": "{description} zerrenda",
+    "passwordFormLabel": "Pasahitza aldatzeko inprimakia"
 }

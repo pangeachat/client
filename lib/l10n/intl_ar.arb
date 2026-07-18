@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-18 10:35:54.599469",
+    "@@last_modified": "2026-07-18 11:05:53.515961",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9946,5 +9946,16 @@
     "starsToUnlockObjectiveDesc": "حدد عدد النجوم المطلوبة لإكمال كل مهمة",
     "maxStarsPerMissionWarning": "تحتوي هذه الدورة التدريبية على مهام لا يمكن الحصول فيها إلا على {maxValue} نجوم. يرجى إدخال رقم أقل من أو يساوي {maxValue}.",
     "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك.",
-    "endPractice": "إنهاء التدريب"
+    "endPractice": "إنهاء التدريب",
+    "bodyLabel": "خيارات {page}",
+    "openDM": "فتح رسالة مباشرة",
+    "openNewTab": "فتح في علامة تبويب جديدة",
+    "viewProfileImageLabel": "عرض صورة الملف الشخصي",
+    "profileImageLabel": "صورة الملف الشخصي",
+    "actionsLabel": "الإجراءات",
+    "colorListLabel": "قائمة الألوان",
+    "chatAppearanceStyleLabel": "مظهر الدردشة بالنمط المختار",
+    "volumeLabel": "مستوى الصوت",
+    "listLabel": "قائمة {description}",
+    "passwordFormLabel": "نموذج تغيير كلمة المرور"
 }

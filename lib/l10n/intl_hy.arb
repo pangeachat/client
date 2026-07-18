@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-18 10:35:57.450654",
+    "@@last_modified": "2026-07-18 11:05:59.488792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Լեզուների ցուցակ",
     "searchedResultsLabel": "Որոնման արդյունքներ՝ '{search}'",
     "closeAddCoursePage": "Փակել դասընթացի ավելացման էջը",
-    "endPractice": "Ավարտել պարապմունքը"
+    "endPractice": "Ավարտել պարապմունքը",
+    "bodyLabel": "{page} ընտրանքներ",
+    "openDM": "Բացել անմիջական հաղորդագրությունը",
+    "openNewTab": "Բացել նոր ներդիրում",
+    "viewProfileImageLabel": "Դիտել պրոֆիլի նկարը",
+    "profileImageLabel": "Պրոֆիլի նկար",
+    "actionsLabel": "Գործողություններ",
+    "colorListLabel": "Գույների ցուցակ",
+    "chatAppearanceStyleLabel": "Զրույցի տեսքն ընտրված ոճով",
+    "volumeLabel": "Ձայն",
+    "listLabel": "{description} ցուցակ",
+    "passwordFormLabel": "Գաղտնաբառի փոփոխման ձև"
 }

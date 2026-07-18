@@ -1947,7 +1947,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-18 10:35:58.054748",
+    "@@last_modified": "2026-07-18 11:06:00.850850",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10546,5 +10546,16 @@
     "starsToUnlockObjectiveDesc": "დააყენეთ ვარსკვლავების რაოდენობა, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
     "maxStarsPerMissionWarning": "ამ კურსს აქვს მისიები, სადაც მხოლოდ {maxValue} ვარსკვლავის მოპოვებაა შესაძლებელი. გთხოვთ, შეიყვანოთ რიცხვი, რომელიც ნაკლებია ან ტოლია {maxValue}-ზე.",
     "removedFromCourseError": "თქვენ მოგაშორეს ამ კურსიდან. დაუკავშირდით თქვენს მასწავლებელს.",
-    "endPractice": "ვარჯიშის დასრულება"
+    "endPractice": "ვარჯიშის დასრულება",
+    "bodyLabel": "{page} პარამეტრები",
+    "openDM": "პირდაპირი შეტყობინების გახსნა",
+    "openNewTab": "გახსნა ახალ ჩანართში",
+    "viewProfileImageLabel": "პროფილის სურათის ნახვა",
+    "profileImageLabel": "პროფილის სურათი",
+    "actionsLabel": "მოქმედებები",
+    "colorListLabel": "ფერთა სია",
+    "chatAppearanceStyleLabel": "ჩეთის იერსახე არჩეული სტილით",
+    "volumeLabel": "ხმა",
+    "listLabel": "{description} სია",
+    "passwordFormLabel": "პაროლის შეცვლის ფორმა"
 }

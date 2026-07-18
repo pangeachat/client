@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-18 10:35:59.341654",
+    "@@last_modified": "2026-07-18 11:06:02.940910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Листа на јазици",
     "searchedResultsLabel": "Резултати од пребарување за '{search}'",
     "closeAddCoursePage": "Затвори ја страницата за додавање курс",
-    "endPractice": "Заврши вежбање"
+    "endPractice": "Заврши вежбање",
+    "bodyLabel": "{page} опции",
+    "openDM": "Отвори директна порака",
+    "openNewTab": "Отвори во нов таб",
+    "viewProfileImageLabel": "Погледни слика на профил",
+    "profileImageLabel": "Слика на профил",
+    "actionsLabel": "Дејства",
+    "colorListLabel": "Листа на бои",
+    "chatAppearanceStyleLabel": "Изглед на разговор со избран стил",
+    "volumeLabel": "Јачина на звук",
+    "listLabel": "{description} листа",
+    "passwordFormLabel": "Формулар за промена на лозинка"
 }

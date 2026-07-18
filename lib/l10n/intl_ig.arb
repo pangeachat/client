@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-18 10:35:57.553417",
+    "@@last_modified": "2026-07-18 11:06:00.158685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Ndepụta asụsụ",
     "searchedResultsLabel": "Nsonaazụ ọchụchọ maka '{search}'",
     "closeAddCoursePage": "Mechie ibe tinye ọmụmụ",
-    "endPractice": "Mechie omume"
+    "endPractice": "Mechie omume",
+    "bodyLabel": "Nhọrọ {page}",
+    "openDM": "Mepee ozi ozugbo",
+    "openNewTab": "Mepee na taabụ ọhụrụ",
+    "viewProfileImageLabel": "Lelee foto profaịlụ",
+    "profileImageLabel": "Foto profaịlụ",
+    "actionsLabel": "Omume",
+    "colorListLabel": "Ndepụta agba",
+    "chatAppearanceStyleLabel": "Ọdịdị nkata nwere ụdị ahọpụtara",
+    "volumeLabel": "Olu",
+    "listLabel": "Ndepụta {description}",
+    "passwordFormLabel": "Ụdị mgbanwe okwuntụghe"
 }

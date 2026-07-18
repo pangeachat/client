@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:55.890719",
+    "@@last_modified": "2026-07-18 11:05:56.400686",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9728,5 +9728,16 @@
     "starsToUnlockObjectiveDesc": "تعداد ستاره‌های مورد نیاز برای تکمیل هر ماموریت را تنظیم کنید",
     "maxStarsPerMissionWarning": "این دوره دارای ماموریت‌هایی است که فقط {maxValue} ستاره می‌توان کسب کرد. لطفاً عددی کمتر یا مساوی با {maxValue} وارد کنید.",
     "removedFromCourseError": "شما از این دوره حذف شده‌اید. با معلم خود تماس بگیرید.",
-    "endPractice": "پایان تمرین"
+    "endPractice": "پایان تمرین",
+    "bodyLabel": "گزینه‌های {page}",
+    "openDM": "باز کردن پیام مستقیم",
+    "openNewTab": "باز کردن در برگه جدید",
+    "viewProfileImageLabel": "مشاهده تصویر نمایه",
+    "profileImageLabel": "تصویر نمایه",
+    "actionsLabel": "اقدامات",
+    "colorListLabel": "فهرست رنگ",
+    "chatAppearanceStyleLabel": "ظاهر چت با سبک انتخاب شده",
+    "volumeLabel": "صدا",
+    "listLabel": "فهرست {description}",
+    "passwordFormLabel": "فرم تغییر رمز عبور"
 }

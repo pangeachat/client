@@ -4715,5 +4715,30 @@
     },
     "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features.",
     "change": "Change",
-    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?"
+    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?",
+    "bodyLabel": "{page} options",
+    "@bodyLabel": {
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
+    "openDM": "Open direct message",
+    "openNewTab": "Open in new tab",
+    "viewProfileImageLabel": "View profile image",
+    "profileImageLabel": "Profile image",
+    "actionsLabel": "Actions",
+    "colorListLabel": "Color list",
+    "chatAppearanceStyleLabel": "Chat appearance with chosen style",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} list",
+    "@listLabel": {
+        "placeholders": {
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordFormLabel": "Change password form"
 }

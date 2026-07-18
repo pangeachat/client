@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-18 10:35:58.851275",
+    "@@last_modified": "2026-07-18 11:06:02.154675",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9640,5 +9640,16 @@
     "starsToUnlockObjectiveDesc": "Iestatiet zvaigžņu skaitu, kas nepieciešams katras misijas pabeigšanai",
     "maxStarsPerMissionWarning": "Šajā kursā ir misijas, kurās var nopelnīt tikai {maxValue} zvaigznes. Lūdzu, ievadiet skaitli, kas ir mazāks vai vienāds ar {maxValue}.",
     "removedFromCourseError": "Jūs esat noņemts no šī kursa. Sazinieties ar savu skolotāju.",
-    "endPractice": "Beigt praksi"
+    "endPractice": "Beigt praksi",
+    "bodyLabel": "{page} opcijas",
+    "openDM": "Atvērt tiešo ziņojumu",
+    "openNewTab": "Atvērt jaunā cilnē",
+    "viewProfileImageLabel": "Skatīt profila attēlu",
+    "profileImageLabel": "Profila attēls",
+    "actionsLabel": "Darbības",
+    "colorListLabel": "Krāsu saraksts",
+    "chatAppearanceStyleLabel": "Tērzēšanas izskats ar izvēlēto stilu",
+    "volumeLabel": "Skaļums",
+    "listLabel": "{description} saraksts",
+    "passwordFormLabel": "Mainīt paroles veidlapu"
 }

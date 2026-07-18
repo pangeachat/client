@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-18 10:36:00.524867",
+    "@@last_modified": "2026-07-18 11:06:05.199634",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9725,5 +9725,16 @@
     "starsToUnlockObjectiveDesc": "Ustaw liczbę gwiazdek potrzebnych do ukończenia każdej misji",
     "maxStarsPerMissionWarning": "Ten kurs zawiera misje, w których można zdobyć tylko {maxValue} gwiazdek. Wprowadź liczbę mniejszą lub równą {maxValue}.",
     "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem.",
-    "endPractice": "Zakończ ćwiczenie"
+    "endPractice": "Zakończ ćwiczenie",
+    "bodyLabel": "Opcje {page}",
+    "openDM": "Otwórz wiadomość prywatną",
+    "openNewTab": "Otwórz w nowej karcie",
+    "viewProfileImageLabel": "Wyświetl zdjęcie profilowe",
+    "profileImageLabel": "Zdjęcie profilowe",
+    "actionsLabel": "Akcje",
+    "colorListLabel": "Lista kolorów",
+    "chatAppearanceStyleLabel": "Wygląd czatu z wybranym stylem",
+    "volumeLabel": "Głośność",
+    "listLabel": "Lista {description}",
+    "passwordFormLabel": "Formularz zmiany hasła"
 }

@@ -3105,7 +3105,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-18 10:35:57.642450",
+    "@@last_modified": "2026-07-18 11:05:59.533574",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10272,5 +10272,16 @@
     "starsToUnlockObjectiveDesc": "Fixar li númere de stelles necessari por completar chascun mission",
     "maxStarsPerMissionWarning": "Ti curse have missiones u solmen {maxValue} stelles posse esser ganiat. Ples introducter un númere minor o egal a {maxValue}.",
     "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor.",
-    "endPractice": "Fini li practica"
+    "endPractice": "Fini li practica",
+    "bodyLabel": "{page} optiones",
+    "openDM": "Aperter direct mesage",
+    "openNewTab": "Aperter in nov tab",
+    "viewProfileImageLabel": "Vider profil imágine",
+    "profileImageLabel": "Profil imágine",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Liste de colores",
+    "chatAppearanceStyleLabel": "Chat aparition con selectet stile",
+    "volumeLabel": "Volúmine",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Formularie por change de pass-parol"
 }

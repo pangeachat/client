@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-18 10:35:59.340371",
+    "@@last_modified": "2026-07-18 11:06:02.986857",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ഭാഷാ ലിസ്റ്റ്",
     "searchedResultsLabel": "'{search}' എന്നതിനായുള്ള തിരയൽ ഫലങ്ങൾ",
     "closeAddCoursePage": "കോഴ്സ് ചേർക്കുന്ന പേജ് അടയ്ക്കുക",
-    "endPractice": "പരിശീലനം അവസാനിപ്പിക്കുക"
+    "endPractice": "പരിശീലനം അവസാനിപ്പിക്കുക",
+    "bodyLabel": "{page} ഓപ്ഷനുകൾ",
+    "openDM": "നേരിട്ടുള്ള സന്ദേശം തുറക്കുക",
+    "openNewTab": "പുതിയ ടാബിൽ തുറക്കുക",
+    "viewProfileImageLabel": "പ്രൊഫൈൽ ചിത്രം കാണുക",
+    "profileImageLabel": "പ്രൊഫൈൽ ചിത്രം",
+    "actionsLabel": "പ്രവർത്തനങ്ങൾ",
+    "colorListLabel": "നിറങ്ങളുടെ പട്ടിക",
+    "chatAppearanceStyleLabel": "തിരഞ്ഞെടുത്ത ശൈലിയിലുള്ള ചാറ്റ് രൂപം",
+    "volumeLabel": "ശബ്ദം",
+    "listLabel": "{description} ലിസ്റ്റ്",
+    "passwordFormLabel": "പാസ്‌വേഡ് മാറ്റാനുള്ള ഫോം"
 }

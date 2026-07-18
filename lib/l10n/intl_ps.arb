@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-18 10:36:00.564166",
+    "@@last_modified": "2026-07-18 11:06:05.506074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "د ژبې لیست",
     "searchedResultsLabel": "د '{search}' لپاره د لټون پایلې",
     "closeAddCoursePage": "د کورس اضافه کولو پاڼه بنده کړئ",
-    "endPractice": "تمرین پای ته ورسوئ"
+    "endPractice": "تمرین پای ته ورسوئ",
+    "bodyLabel": "{page} اختیارونه",
+    "openDM": "مستقیم پیغام خلاص کړئ",
+    "openNewTab": "په نوې ټب کې خلاص کړئ",
+    "viewProfileImageLabel": "د پروفایل انځور وګورئ",
+    "profileImageLabel": "د پروفایل انځور",
+    "actionsLabel": "عملونه",
+    "colorListLabel": "د رنګونو لیست",
+    "chatAppearanceStyleLabel": "د ټاکل شوي سټایل سره د چیټ بڼه",
+    "volumeLabel": "حجم",
+    "listLabel": "{description} لیست",
+    "passwordFormLabel": "د پټنوم بدلولو فورمه"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:36:00.591384",
+    "@@last_modified": "2026-07-18 11:06:05.890219",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10372,5 +10372,16 @@
     "starsToUnlockObjectiveDesc": "Setează numărul de stele necesare pentru a finaliza fiecare misiune",
     "maxStarsPerMissionWarning": "Acest curs are misiuni în care pot fi câștigate doar {maxValue} stele. Te rugăm să introduci un număr mai mic sau egal cu {maxValue}.",
     "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul.",
-    "endPractice": "Termină exercițiul"
+    "endPractice": "Termină exercițiul",
+    "bodyLabel": "Opțiuni {page}",
+    "openDM": "Deschide mesaj direct",
+    "openNewTab": "Deschide într-o filă nouă",
+    "viewProfileImageLabel": "Vizualizează imaginea de profil",
+    "profileImageLabel": "Imagine de profil",
+    "actionsLabel": "Acțiuni",
+    "colorListLabel": "Listă de culori",
+    "chatAppearanceStyleLabel": "Aspectul chatului cu stilul ales",
+    "volumeLabel": "Volum",
+    "listLabel": "Listă {description}",
+    "passwordFormLabel": "Formular de schimbare a parolei"
 }

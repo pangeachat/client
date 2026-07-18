@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-18 10:35:56.426676",
+    "@@last_modified": "2026-07-18 11:05:56.853189",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9995,5 +9995,16 @@
     "starsToUnlockObjectiveDesc": "Définissez le nombre d'étoiles nécessaires pour terminer chaque mission",
     "maxStarsPerMissionWarning": "Ce cours contient des missions où seulement {maxValue} étoiles peuvent être gagnées. Veuillez entrer un nombre inférieur ou égal à {maxValue}.",
     "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur.",
-    "endPractice": "Terminer l'entraînement"
+    "endPractice": "Terminer l'entraînement",
+    "bodyLabel": "Options de {page}",
+    "openDM": "Ouvrir le message direct",
+    "openNewTab": "Ouvrir dans un nouvel onglet",
+    "viewProfileImageLabel": "Afficher l'image de profil",
+    "profileImageLabel": "Image de profil",
+    "actionsLabel": "Actions",
+    "colorListLabel": "Liste des couleurs",
+    "chatAppearanceStyleLabel": "Apparence du chat avec le style choisi",
+    "volumeLabel": "Volume",
+    "listLabel": "Liste {description}",
+    "passwordFormLabel": "Formulaire de changement de mot de passe"
 }

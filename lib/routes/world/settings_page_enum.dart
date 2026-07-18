@@ -48,7 +48,7 @@ enum SettingsPageEnum {
   String title(L10n l10n) {
     switch (this) {
       case SettingsPageEnum.profile:
-        return l10n.home;
+        return l10n.editProfile;
       case SettingsPageEnum.learning:
         return l10n.learningSettings;
       case SettingsPageEnum.style:

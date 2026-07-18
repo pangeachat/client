@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-18 10:35:56.365304",
+    "@@last_modified": "2026-07-18 11:05:57.192001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Talenlist",
     "searchedResultsLabel": "Sykresultaten foar '{search}'",
     "closeAddCoursePage": "Slút de side foar it tafoegjen fan in kursus",
-    "endPractice": "Oefening beëinigje"
+    "endPractice": "Oefening beëinigje",
+    "bodyLabel": "{page} opsjes",
+    "openDM": "Iepenje direkt berjocht",
+    "openNewTab": "Iepenje yn nij ljepblêd",
+    "viewProfileImageLabel": "Besjoch profylôfbylding",
+    "profileImageLabel": "Profylôfbylding",
+    "actionsLabel": "Aksjes",
+    "colorListLabel": "Kleurenlist",
+    "chatAppearanceStyleLabel": "Chat-uterlik mei keazen styl",
+    "volumeLabel": "Folume",
+    "listLabel": "{description} list",
+    "passwordFormLabel": "Wachtwurd wizigje formulier"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-18 10:35:58.762772",
+    "@@last_modified": "2026-07-18 11:06:01.749427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "لیستی زمانەکان",
     "searchedResultsLabel": "ئەنجامەکانی گەڕان بۆ '{search}'",
     "closeAddCoursePage": "داخستنی پەڕەی زیادکردنی خول",
-    "endPractice": "کۆتاییهێنان بە ڕاهێنان"
+    "endPractice": "کۆتاییهێنان بە ڕاهێنان",
+    "bodyLabel": "{page} بژاردەکان",
+    "openDM": "نامەی ڕاستەوخۆ بکەرەوە",
+    "openNewTab": "لە پەنجەرەیەکی نوێدا بیکەرەوە",
+    "viewProfileImageLabel": "وێنەی پڕۆفایل ببینە",
+    "profileImageLabel": "وێنەی پڕۆفایل",
+    "actionsLabel": "کردارەکان",
+    "colorListLabel": "لیستی ڕەنگەکان",
+    "chatAppearanceStyleLabel": "شێوازی دەرکەوتنی چات بە شێوازی هەڵبژێردراو",
+    "volumeLabel": "دەنگ",
+    "listLabel": "لیستی {description}",
+    "passwordFormLabel": "فۆڕمی گۆڕینی وشەی نهێنی"
 }

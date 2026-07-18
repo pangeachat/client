@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-18 10:36:02.767481",
+    "@@last_modified": "2026-07-18 11:06:10.504816",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9640,5 +9640,16 @@
     "starsToUnlockObjectiveDesc": "设置完成每个任务所需的星数",
     "maxStarsPerMissionWarning": "此课程中的任务最多只能获得 {maxValue} 颗星。请输入一个小于或等于 {maxValue} 的数字。",
     "removedFromCourseError": "您已被移出此课程。请联系您的老师。",
-    "endPractice": "结束练习"
+    "endPractice": "结束练习",
+    "bodyLabel": "{page}选项",
+    "openDM": "打开私信",
+    "openNewTab": "在新标签页中打开",
+    "viewProfileImageLabel": "查看个人资料图片",
+    "profileImageLabel": "个人资料图片",
+    "actionsLabel": "操作",
+    "colorListLabel": "颜色列表",
+    "chatAppearanceStyleLabel": "聊天界面样式",
+    "volumeLabel": "音量",
+    "listLabel": "{description}列表",
+    "passwordFormLabel": "更改密码表单"
 }

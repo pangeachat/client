@@ -3560,7 +3560,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-18 10:35:54.697548",
+    "@@last_modified": "2026-07-18 11:05:53.554852",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9654,5 +9654,16 @@
     "starsToUnlockObjectiveDesc": "Усталюйце колькасць зорак, неабходных для выканання кожнай місіі",
     "maxStarsPerMissionWarning": "Гэты курс мае місіі, дзе можна зарабіць толькі {maxValue} зорак. Калі ласка, увядзіце лік, меншы або роўны {maxValue}.",
     "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка.",
-    "endPractice": "Завяршыць практыкаванне"
+    "endPractice": "Завяршыць практыкаванне",
+    "bodyLabel": "Параметры {page}",
+    "openDM": "Адкрыць асабістае паведамленне",
+    "openNewTab": "Адкрыць у новай укладцы",
+    "viewProfileImageLabel": "Праглядзець выяву профілю",
+    "profileImageLabel": "Выява профілю",
+    "actionsLabel": "Дзеянні",
+    "colorListLabel": "Спіс колераў",
+    "chatAppearanceStyleLabel": "Выгляд чата з абраным стылем",
+    "volumeLabel": "Гучнасць",
+    "listLabel": "Спіс {description}",
+    "passwordFormLabel": "Форма змены пароля"
 }

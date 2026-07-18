@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:36:02.295972",
+    "@@last_modified": "2026-07-18 11:06:09.383279",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6906,5 +6906,16 @@
     "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
     "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
     "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn.",
-    "endPractice": "Kết thúc luyện tập"
+    "endPractice": "Kết thúc luyện tập",
+    "bodyLabel": "Tùy chọn {page}",
+    "openDM": "Mở tin nhắn trực tiếp",
+    "openNewTab": "Mở trong tab mới",
+    "viewProfileImageLabel": "Xem ảnh đại diện",
+    "profileImageLabel": "Ảnh đại diện",
+    "actionsLabel": "Hành động",
+    "colorListLabel": "Danh sách màu",
+    "chatAppearanceStyleLabel": "Giao diện trò chuyện với kiểu đã chọn",
+    "volumeLabel": "Âm lượng",
+    "listLabel": "Danh sách {description}",
+    "passwordFormLabel": "Mẫu đổi mật khẩu"
 }

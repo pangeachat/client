@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-18 10:36:00.123380",
+    "@@last_modified": "2026-07-18 11:06:05.374168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ଭାଷା ତାଲିକା",
     "searchedResultsLabel": "'{search}' ପାଇଁ ସନ୍ଧାନ ଫଳାଫଳ",
     "closeAddCoursePage": "କୋର୍ସ ଯୋଗ ପୃଷ୍ଠା ବନ୍ଦ କରନ୍ତୁ",
-    "endPractice": "ଅଭ୍ୟାସ ଶେଷ କରନ୍ତୁ"
+    "endPractice": "ଅଭ୍ୟାସ ଶେଷ କରନ୍ତୁ",
+    "bodyLabel": "{page} ବିକଳ୍ପ",
+    "openDM": "ସିଧାସଳଖ ବାର୍ତ୍ତା ଖୋଲନ୍ତୁ",
+    "openNewTab": "ନୂଆ ଟ୍ୟାବରେ ଖୋଲନ୍ତୁ",
+    "viewProfileImageLabel": "ପ୍ରୋଫାଇଲ୍ ଛବି ଦେଖନ୍ତୁ",
+    "profileImageLabel": "ପ୍ରୋଫାଇଲ୍ ଛବି",
+    "actionsLabel": "କାର୍ଯ୍ୟଗୁଡ଼ିକ",
+    "colorListLabel": "ରଙ୍ଗ ତାଲିକା",
+    "chatAppearanceStyleLabel": "ମନୋନୀତ ଶୈଳୀ ସହିତ ଚାଟ୍ ଦୃଶ୍ୟ",
+    "volumeLabel": "ଭଲ୍ୟୁମ୍",
+    "listLabel": "{description} ତାଲିକା",
+    "passwordFormLabel": "ପାସୱାର୍ଡ ପରିବର୍ତ୍ତନ ଫର୍ମ"
 }

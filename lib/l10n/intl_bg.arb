@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-18 10:35:54.622352",
+    "@@last_modified": "2026-07-18 11:05:53.382583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Списък с езици",
     "searchedResultsLabel": "Резултати от търсене за '{search}'",
     "closeAddCoursePage": "Затвори страницата за добавяне на курс",
-    "endPractice": "Край на упражнението"
+    "endPractice": "Край на упражнението",
+    "bodyLabel": "{page} опции",
+    "openDM": "Отваряне на лично съобщение",
+    "openNewTab": "Отваряне в нов раздел",
+    "viewProfileImageLabel": "Преглед на профилна снимка",
+    "profileImageLabel": "Профилна снимка",
+    "actionsLabel": "Действия",
+    "colorListLabel": "Цветен списък",
+    "chatAppearanceStyleLabel": "Вид на чата с избран стил",
+    "volumeLabel": "Сила на звука",
+    "listLabel": "{description} списък",
+    "passwordFormLabel": "Форма за смяна на парола"
 }

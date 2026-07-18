@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-18 10:35:54.554640",
+    "@@last_modified": "2026-07-18 11:05:53.557772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Taallys",
     "searchedResultsLabel": "Soekresultate vir '{search}'",
     "closeAddCoursePage": "Maak kursus-byvoegbladsy toe",
-    "endPractice": "Beëindig oefening"
+    "endPractice": "Beëindig oefening",
+    "bodyLabel": "{page} opsies",
+    "openDM": "Maak direkte boodskap oop",
+    "openNewTab": "Maak in nuwe oortjie oop",
+    "viewProfileImageLabel": "Bekyk profielfoto",
+    "profileImageLabel": "Profielfoto",
+    "actionsLabel": "Aksies",
+    "colorListLabel": "Kleurelys",
+    "chatAppearanceStyleLabel": "Klets voorkoms met gekose styl",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} lys",
+    "passwordFormLabel": "Verander wagwoordvorm"
 }

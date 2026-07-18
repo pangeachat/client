@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:55.136335",
+    "@@last_modified": "2026-07-18 11:05:54.686438",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9767,5 +9767,16 @@
     "starsToUnlockObjectiveDesc": "Defineix el nombre d'estrelles necessàries per completar cada missió",
     "maxStarsPerMissionWarning": "Aquest curs té missions on només es poden guanyar {maxValue} estrelles. Si us plau, introdueix un número inferior o igual a {maxValue}.",
     "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor.",
-    "endPractice": "Acabar la pràctica"
+    "endPractice": "Acabar la pràctica",
+    "bodyLabel": "Opcions de {page}",
+    "openDM": "Obrir missatge directe",
+    "openNewTab": "Obrir en una pestanya nova",
+    "viewProfileImageLabel": "Veure imatge de perfil",
+    "profileImageLabel": "Imatge de perfil",
+    "actionsLabel": "Accions",
+    "colorListLabel": "Llista de colors",
+    "chatAppearanceStyleLabel": "Aparença del xat amb l'estil escollit",
+    "volumeLabel": "Volum",
+    "listLabel": "Llista de {description}",
+    "passwordFormLabel": "Formulari de canvi de contrasenya"
 }

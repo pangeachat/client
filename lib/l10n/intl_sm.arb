@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-18 10:36:01.278694",
+    "@@last_modified": "2026-07-18 11:06:07.194774",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Lisi o gagana",
     "searchedResultsLabel": "Su'esu'ega mo '{search}'",
     "closeAddCoursePage": "Tapuni le itulau fa'aopoopo kosi",
-    "endPractice": "Fa'amuta le fa'ata'ita'iga"
+    "endPractice": "Fa'amuta le fa'ata'ita'iga",
+    "bodyLabel": "Filifiliga {page}",
+    "openDM": "Tatala feʻau tuusaʻo",
+    "openNewTab": "Tatala i se laupepa fou",
+    "viewProfileImageLabel": "Vaʻai le ata faʻamatalaga",
+    "profileImageLabel": "Ata faʻamatalaga",
+    "actionsLabel": "Gaioiga",
+    "colorListLabel": "Lisi lanu",
+    "chatAppearanceStyleLabel": "Faʻaaliga o talanoaga ma le sitaili filifilia",
+    "volumeLabel": "Leo",
+    "listLabel": "Lisi {description}",
+    "passwordFormLabel": "Suia le pepa faʻatumu o le upu faʻalilolilo"
 }

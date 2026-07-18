@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-18 10:36:01.844101",
+    "@@last_modified": "2026-07-18 11:06:08.886365",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Рӯйхати забонҳо",
     "searchedResultsLabel": "Натиҷаҳои ҷустуҷӯ барои '{search}'",
     "closeAddCoursePage": "Саҳифаи илова кардани курсро пӯшед",
-    "endPractice": "Машқро ба итмом расонед"
+    "endPractice": "Машқро ба итмом расонед",
+    "bodyLabel": "Имконоти {page}",
+    "openDM": "Паёми мустақимро кушоед",
+    "openNewTab": "Дар ҷадвали нав кушоед",
+    "viewProfileImageLabel": "Тасвири профилро бинед",
+    "profileImageLabel": "Тасвири профил",
+    "actionsLabel": "Амалҳо",
+    "colorListLabel": "Рӯйхати рангҳо",
+    "chatAppearanceStyleLabel": "Намуди зоҳирии чат бо услуби интихобшуда",
+    "volumeLabel": "Баландӣ",
+    "listLabel": "Рӯйхати {description}",
+    "passwordFormLabel": "Шакли тағир додани парол"
 }

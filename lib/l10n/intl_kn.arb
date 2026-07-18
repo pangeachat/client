@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-18 10:35:58.098765",
+    "@@last_modified": "2026-07-18 11:06:00.879261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ಭಾಷಾ ಪಟ್ಟಿ",
     "searchedResultsLabel": "'{search}' ಗಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",
     "closeAddCoursePage": "ಕೋರ್ಸ್ ಸೇರಿಸುವ ಪುಟವನ್ನು ಮುಚ್ಚಿ",
-    "endPractice": "ಅಭ್ಯಾಸ ಮುಗಿಸಿ"
+    "endPractice": "ಅಭ್ಯಾಸ ಮುಗಿಸಿ",
+    "bodyLabel": "{page} ಆಯ್ಕೆಗಳು",
+    "openDM": "ನೇರ ಸಂದೇಶ ತೆರೆಯಿರಿ",
+    "openNewTab": "ಹೊಸ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ",
+    "viewProfileImageLabel": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ",
+    "profileImageLabel": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ",
+    "actionsLabel": "ಕ್ರಿಯೆಗಳು",
+    "colorListLabel": "ಬಣ್ಣಗಳ ಪಟ್ಟಿ",
+    "chatAppearanceStyleLabel": "ಆಯ್ಕೆಮಾಡಿದ ಶೈಲಿಯೊಂದಿಗೆ ಚಾಟ್ ನೋಟ",
+    "volumeLabel": "ವಾಲ್ಯೂಮ್",
+    "listLabel": "{description} ಪಟ್ಟಿ",
+    "passwordFormLabel": "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ ಫಾರ್ಮ್"
 }

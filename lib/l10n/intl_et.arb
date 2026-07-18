@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-18 10:35:55.893370",
+    "@@last_modified": "2026-07-18 11:05:55.978768",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9637,5 +9637,16 @@
     "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
     "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
     "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga.",
-    "endPractice": "Lõpeta harjutamine"
+    "endPractice": "Lõpeta harjutamine",
+    "bodyLabel": "{page} valikud",
+    "openDM": "Ava otsesõnum",
+    "openNewTab": "Ava uuel vahelehel",
+    "viewProfileImageLabel": "Vaata profiilipilti",
+    "profileImageLabel": "Profiilipilt",
+    "actionsLabel": "Tegevused",
+    "colorListLabel": "Värviloend",
+    "chatAppearanceStyleLabel": "Vestluse välimus valitud stiiliga",
+    "volumeLabel": "Helitugevus",
+    "listLabel": "{description} loend",
+    "passwordFormLabel": "Muuda parooli vorm"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-18 10:36:00.030587",
+    "@@last_modified": "2026-07-18 11:06:04.340154",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Språkliste",
     "searchedResultsLabel": "Søkeresultater for '{search}'",
     "closeAddCoursePage": "Lukk siden for å legge til kurs",
-    "endPractice": "Avslutt øvelsen"
+    "endPractice": "Avslutt øvelsen",
+    "bodyLabel": "{page} alternativer",
+    "openDM": "Åpne direktemelding",
+    "openNewTab": "Åpne i ny fane",
+    "viewProfileImageLabel": "Vis profilbilde",
+    "profileImageLabel": "Profilbilde",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Fargeliste",
+    "chatAppearanceStyleLabel": "Chatutseende med valgt stil",
+    "volumeLabel": "Volum",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Skjema for passordendring"
 }

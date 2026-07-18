@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-18 10:35:57.446266",
+    "@@last_modified": "2026-07-18 11:05:59.049040",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9743,5 +9743,16 @@
     "starsToUnlockObjectiveDesc": "Állítsa be a küldetések teljesítéséhez szükséges csillagok számát",
     "maxStarsPerMissionWarning": "Ez a kurzus olyan küldetéseket tartalmaz, ahol csak {maxValue} csillag szerezhető. Kérjük, adjon meg egy {maxValue} értékkel egyenlő vagy annál kisebb számot.",
     "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát.",
-    "endPractice": "Gyakorlás befejezése"
+    "endPractice": "Gyakorlás befejezése",
+    "bodyLabel": "{page} beállítások",
+    "openDM": "Közvetlen üzenet megnyitása",
+    "openNewTab": "Megnyitás új lapon",
+    "viewProfileImageLabel": "Profilkép megtekintése",
+    "profileImageLabel": "Profilkép",
+    "actionsLabel": "Műveletek",
+    "colorListLabel": "Színlista",
+    "chatAppearanceStyleLabel": "Csevegés megjelenése a kiválasztott stílussal",
+    "volumeLabel": "Hangerő",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Jelszó módosítása űrlap"
 }

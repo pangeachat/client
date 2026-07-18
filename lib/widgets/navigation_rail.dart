@@ -100,6 +100,7 @@ class SpacesNavigationRail extends StatelessWidget {
         child: WorkspaceDock(
           child: Semantics(
             label: L10n.of(context).navOptionsLabel,
+            container: true,
             child: FocusTraversalGroup(
               policy: OrderedTraversalPolicy(),
               child: StreamBuilder(

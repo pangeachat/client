@@ -51,6 +51,7 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
+          container: true,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: Column(

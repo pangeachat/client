@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-18 10:36:01.219592",
+    "@@last_modified": "2026-07-18 11:06:07.409314",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Lista e gjuhëve",
     "searchedResultsLabel": "Rezultatet e kërkimit për '{search}'",
     "closeAddCoursePage": "Mbyll faqen e shtimit të kursit",
-    "endPractice": "Përfundo praktikën"
+    "endPractice": "Përfundo praktikën",
+    "bodyLabel": "Opsionet e {page}",
+    "openDM": "Hap mesazh të drejtpërdrejtë",
+    "openNewTab": "Hap në skedë të re",
+    "viewProfileImageLabel": "Shiko imazhin e profilit",
+    "profileImageLabel": "Imazhi i profilit",
+    "actionsLabel": "Veprimet",
+    "colorListLabel": "Lista e ngjyrave",
+    "chatAppearanceStyleLabel": "Pamja e bisedës me stilin e zgjedhur",
+    "volumeLabel": "Volumi",
+    "listLabel": "Lista e {description}",
+    "passwordFormLabel": "Formulari për ndryshimin e fjalëkalimit"
 }

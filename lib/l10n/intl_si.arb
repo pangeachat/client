@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-18 10:36:01.141102",
+    "@@last_modified": "2026-07-18 11:06:06.619800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "භාෂා ලැයිස්තුව",
     "searchedResultsLabel": "'{search}' සඳහා සෙවුම් ප්‍රතිඵල",
     "closeAddCoursePage": "පාඨමාලා එකතු කිරීමේ පිටුව වසන්න",
-    "endPractice": "පුහුණුව අවසන් කරන්න"
+    "endPractice": "පුහුණුව අවසන් කරන්න",
+    "bodyLabel": "{page} විකල්ප",
+    "openDM": "සෘජු පණිවිඩය විවෘත කරන්න",
+    "openNewTab": "නව ටැබයකින් විවෘත කරන්න",
+    "viewProfileImageLabel": "පැතිකඩ රූපය බලන්න",
+    "profileImageLabel": "පැතිකඩ රූපය",
+    "actionsLabel": "ක්‍රියා",
+    "colorListLabel": "වර්ණ ලැයිස්තුව",
+    "chatAppearanceStyleLabel": "තෝරාගත් විලාසය සහිත කතාබස් පෙනුම",
+    "volumeLabel": "ශබ්දය",
+    "listLabel": "{description} ලැයිස්තුව",
+    "passwordFormLabel": "මුරපද වෙනස් කිරීමේ පෝරමය"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-18 10:35:55.309928",
+    "@@last_modified": "2026-07-18 11:05:55.281339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Rhestr iaith",
     "searchedResultsLabel": "Canlyniadau chwilio am '{search}'",
     "closeAddCoursePage": "Cau tudalen ychwanegu cwrs",
-    "endPractice": "Gorffen ymarfer"
+    "endPractice": "Gorffen ymarfer",
+    "bodyLabel": "Dewisiadau {page}",
+    "openDM": "Agor neges uniongyrchol",
+    "openNewTab": "Agor mewn tab newydd",
+    "viewProfileImageLabel": "Gweld delwedd proffil",
+    "profileImageLabel": "Delwedd proffil",
+    "actionsLabel": "Gweithrediadau",
+    "colorListLabel": "Rhestr lliwiau",
+    "chatAppearanceStyleLabel": "Ymddangosiad sgwrs gyda'r arddull a ddewiswyd",
+    "volumeLabel": "Cyfaint",
+    "listLabel": "Rhestr {description}",
+    "passwordFormLabel": "Ffurflen newid cyfrinair"
 }

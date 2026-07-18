@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-18 10:36:00.678781",
+    "@@last_modified": "2026-07-18 11:06:06.286326",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ٻولين جي فهرست",
     "searchedResultsLabel": "'{search}' لاءِ ڳولا جا نتيجا",
     "closeAddCoursePage": "ڪورس شامل ڪرڻ وارو صفحو بند ڪريو",
-    "endPractice": "مشق ختم ڪريو"
+    "endPractice": "مشق ختم ڪريو",
+    "bodyLabel": "{page} آپشن",
+    "openDM": "سڌو پيغام کوليو",
+    "openNewTab": "نئين ٽيب ۾ کوليو",
+    "viewProfileImageLabel": "پروفائل تصوير ڏسو",
+    "profileImageLabel": "پروفائل تصوير",
+    "actionsLabel": "عمل",
+    "colorListLabel": "رنگن جي فهرست",
+    "chatAppearanceStyleLabel": "چونڊيل انداز سان چيٽ جي ظاهر",
+    "volumeLabel": "آواز",
+    "listLabel": "{description} فهرست",
+    "passwordFormLabel": "پاسورڊ تبديل ڪرڻ جو فارم"
 }
