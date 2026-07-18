@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:59.936209",
+    "@@last_modified": "2026-07-18 11:06:04.275491",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9640,5 +9640,16 @@
     "starsToUnlockObjectiveDesc": "Stel het aantal sterren in dat nodig is om elke missie te voltooien",
     "maxStarsPerMissionWarning": "Deze cursus heeft missies waarbij slechts {maxValue} sterren kunnen worden verdiend. Voer een getal in dat kleiner is dan of gelijk is aan {maxValue}.",
     "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent.",
-    "endPractice": "Oefening beëindigen"
+    "endPractice": "Oefening beëindigen",
+    "bodyLabel": "{page} opties",
+    "openDM": "Open direct bericht",
+    "openNewTab": "Openen in nieuw tabblad",
+    "viewProfileImageLabel": "Profielafbeelding bekijken",
+    "profileImageLabel": "Profielafbeelding",
+    "actionsLabel": "Acties",
+    "colorListLabel": "Kleurenlijst",
+    "chatAppearanceStyleLabel": "Chatweergave met gekozen stijl",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} lijst",
+    "passwordFormLabel": "Wachtwoord wijzigen formulier"
 }

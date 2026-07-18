@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-18 10:35:56.926659",
+    "@@last_modified": "2026-07-18 11:05:57.587743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ભાષા યાદી",
     "searchedResultsLabel": "'{search}' માટે શોધ પરિણામો",
     "closeAddCoursePage": "કોર્સ ઉમેરવાનું પેજ બંધ કરો",
-    "endPractice": "પ્રેક્ટિસ સમાપ્ત કરો"
+    "endPractice": "પ્રેક્ટિસ સમાપ્ત કરો",
+    "bodyLabel": "{page} વિકલ્પો",
+    "openDM": "સીધો સંદેશ ખોલો",
+    "openNewTab": "નવી ટૅબમાં ખોલો",
+    "viewProfileImageLabel": "પ્રોફાઇલ છબી જુઓ",
+    "profileImageLabel": "પ્રોફાઇલ છબી",
+    "actionsLabel": "કાર્યવાહી",
+    "colorListLabel": "રંગ સૂચિ",
+    "chatAppearanceStyleLabel": "પસંદ કરેલી શૈલી સાથે ચેટ દેખાવ",
+    "volumeLabel": "વોલ્યુમ",
+    "listLabel": "{description} સૂચિ",
+    "passwordFormLabel": "પાસવર્ડ બદલવાનું ફોર્મ"
 }

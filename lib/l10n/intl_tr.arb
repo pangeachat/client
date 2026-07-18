@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-18 10:36:02.248876",
+    "@@last_modified": "2026-07-18 11:06:08.639035",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9941,5 +9941,16 @@
     "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
     "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
     "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin.",
-    "endPractice": "Alıştırmayı bitir"
+    "endPractice": "Alıştırmayı bitir",
+    "bodyLabel": "{page} seçenekleri",
+    "openDM": "Direkt mesajı aç",
+    "openNewTab": "Yeni sekmede aç",
+    "viewProfileImageLabel": "Profil resmini görüntüle",
+    "profileImageLabel": "Profil resmi",
+    "actionsLabel": "Eylemler",
+    "colorListLabel": "Renk listesi",
+    "chatAppearanceStyleLabel": "Seçilen stille sohbet görünümü",
+    "volumeLabel": "Ses",
+    "listLabel": "{description} listesi",
+    "passwordFormLabel": "Şifre değiştirme formu"
 }

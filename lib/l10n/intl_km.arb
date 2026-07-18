@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-18 10:35:58.057127",
+    "@@last_modified": "2026-07-18 11:06:00.800229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "បញ្ជីភាសា",
     "searchedResultsLabel": "លទ្ធផលស្វែងរកសម្រាប់ '{search}'",
     "closeAddCoursePage": "បិទទំព័របន្ថែមវគ្គសិក្សា",
-    "endPractice": "បញ្ចប់ការអនុវត្ត"
+    "endPractice": "បញ្ចប់ការអនុវត្ត",
+    "bodyLabel": "ជម្រើស{page}",
+    "openDM": "បើកសារផ្ទាល់",
+    "openNewTab": "បើកក្នុងផ្ទាំងថ្មី",
+    "viewProfileImageLabel": "មើលរូបភាពប្រវត្តិរូប",
+    "profileImageLabel": "រូបភាពប្រវត្តិរូប",
+    "actionsLabel": "សកម្មភាព",
+    "colorListLabel": "បញ្ជីពណ៌",
+    "chatAppearanceStyleLabel": "រូបរាងការជជែកជាមួយនឹងរចនាប័ទ្មដែលបានជ្រើសរើស",
+    "volumeLabel": "កម្រិតសំឡេង",
+    "listLabel": "បញ្ជី{description}",
+    "passwordFormLabel": "ទម្រង់ផ្លាស់ប្ដូរពាក្យសម្ងាត់"
 }

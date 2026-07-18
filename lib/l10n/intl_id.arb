@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:57.519876",
+    "@@last_modified": "2026-07-18 11:05:59.284059",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9713,5 +9713,16 @@
     "starsToUnlockObjectiveDesc": "Tetapkan jumlah bintang yang dibutuhkan untuk menyelesaikan setiap misi",
     "maxStarsPerMissionWarning": "Kursus ini memiliki misi di mana hanya {maxValue} bintang yang dapat diperoleh. Harap masukkan angka kurang dari atau sama dengan {maxValue}.",
     "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda.",
-    "endPractice": "Akhiri latihan"
+    "endPractice": "Akhiri latihan",
+    "bodyLabel": "Opsi {page}",
+    "openDM": "Buka pesan langsung",
+    "openNewTab": "Buka di tab baru",
+    "viewProfileImageLabel": "Lihat gambar profil",
+    "profileImageLabel": "Gambar profil",
+    "actionsLabel": "Tindakan",
+    "colorListLabel": "Daftar warna",
+    "chatAppearanceStyleLabel": "Tampilan obrolan dengan gaya pilihan",
+    "volumeLabel": "Volume",
+    "listLabel": "Daftar {description}",
+    "passwordFormLabel": "Formulir ganti kata sandi"
 }

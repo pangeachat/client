@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-18 10:36:02.175572",
+    "@@last_modified": "2026-07-18 11:06:09.188567",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9640,5 +9640,16 @@
     "starsToUnlockObjectiveDesc": "Встановіть кількість зірок, необхідних для завершення кожної місії",
     "maxStarsPerMissionWarning": "Цей курс містить місії, де можна заробити лише {maxValue} зірок. Будь ласка, введіть число, менше або рівне {maxValue}.",
     "removedFromCourseError": "Вас вилучено з цього курсу. Зверніться до свого вчителя.",
-    "endPractice": "Завершити практику"
+    "endPractice": "Завершити практику",
+    "bodyLabel": "Параметри {page}",
+    "openDM": "Відкрити приватне повідомлення",
+    "openNewTab": "Відкрити в новій вкладці",
+    "viewProfileImageLabel": "Переглянути зображення профілю",
+    "profileImageLabel": "Зображення профілю",
+    "actionsLabel": "Дії",
+    "colorListLabel": "Список кольорів",
+    "chatAppearanceStyleLabel": "Вигляд чату з обраним стилем",
+    "volumeLabel": "Гучність",
+    "listLabel": "Список {description}",
+    "passwordFormLabel": "Форма зміни пароля"
 }

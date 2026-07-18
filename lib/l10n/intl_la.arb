@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-18 10:35:58.721186",
+    "@@last_modified": "2026-07-18 11:06:01.736788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Index linguarum",
     "searchedResultsLabel": "Eventus quaestionis pro '{search}'",
     "closeAddCoursePage": "Claude paginam additionis cursus",
-    "endPractice": "Finis exercitationis"
+    "endPractice": "Finis exercitationis",
+    "bodyLabel": "{page} optiones",
+    "openDM": "Aperi nuntium directum",
+    "openNewTab": "Aperi in nova scheda",
+    "viewProfileImageLabel": "Vide imaginem profilacticam",
+    "profileImageLabel": "Imago profilactica",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Index colorum",
+    "chatAppearanceStyleLabel": "Aspectus colloquii cum stilo electo",
+    "volumeLabel": "Volumen",
+    "listLabel": "Index {description}",
+    "passwordFormLabel": "Mutare formulam tesserae"
 }

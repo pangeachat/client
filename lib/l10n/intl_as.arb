@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-18 10:35:54.575393",
+    "@@last_modified": "2026-07-18 11:05:53.926041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ভাষাৰ তালিকা",
     "searchedResultsLabel": "'{search}'ৰ বাবে সন্ধানৰ ফলাফল",
     "closeAddCoursePage": "পাঠ্যক্ৰম যোগ কৰা পৃষ্ঠা বন্ধ কৰক",
-    "endPractice": "অনুশীলন শেষ কৰক"
+    "endPractice": "অনুশীলন শেষ কৰক",
+    "bodyLabel": "{page} বিকল্পসমূহ",
+    "openDM": "সোনালী বাৰ্তা খুলক",
+    "openNewTab": "নতুন টেবত খোলক",
+    "viewProfileImageLabel": "প্ৰফাইল ছবি চাওক",
+    "profileImageLabel": "প্ৰফাইল ছবি",
+    "actionsLabel": "কাৰ্য্যসমূহ",
+    "colorListLabel": "ৰঙৰ তালিকা",
+    "chatAppearanceStyleLabel": "নিৰ্বাচিত শৈলীৰে চেটৰ ৰূপ",
+    "volumeLabel": "শব্দৰ মাত্ৰা",
+    "listLabel": "{description} তালিকা",
+    "passwordFormLabel": "পাছৱৰ্ড সলনি কৰক ফৰ্ম"
 }

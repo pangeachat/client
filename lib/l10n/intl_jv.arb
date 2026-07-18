@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-18 10:35:58.178544",
+    "@@last_modified": "2026-07-18 11:06:00.434603",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Daftar basa",
     "searchedResultsLabel": "Asil panelusuran kanggo '{search}'",
     "closeAddCoursePage": "Tutup kaca tambah kursus",
-    "endPractice": "Mungkasi gladhen"
+    "endPractice": "Mungkasi gladhen",
+    "bodyLabel": "Pilihan {page}",
+    "openDM": "Buka pesen langsung",
+    "openNewTab": "Buka ing tab anyar",
+    "viewProfileImageLabel": "Deleng gambar profil",
+    "profileImageLabel": "Gambar profil",
+    "actionsLabel": "Tumindak",
+    "colorListLabel": "Dhaftar werna",
+    "chatAppearanceStyleLabel": "Tampilan obrolan kanthi gaya sing dipilih",
+    "volumeLabel": "Volume",
+    "listLabel": "Dhaftar {description}",
+    "passwordFormLabel": "Formulir ganti sandhi"
 }

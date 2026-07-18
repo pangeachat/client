@@ -2571,7 +2571,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-18 10:36:00.658796",
+    "@@last_modified": "2026-07-18 11:06:05.801797",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10557,5 +10557,16 @@
     "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
     "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
     "removedFromCourseError": "Foi removido deste curso. Contacte o seu professor.",
-    "endPractice": "Terminar prática"
+    "endPractice": "Terminar prática",
+    "bodyLabel": "Opções de {page}",
+    "openDM": "Abrir mensagem direta",
+    "openNewTab": "Abrir num novo separador",
+    "viewProfileImageLabel": "Ver imagem de perfil",
+    "profileImageLabel": "Imagem de perfil",
+    "actionsLabel": "Ações",
+    "colorListLabel": "Lista de cores",
+    "chatAppearanceStyleLabel": "Aspeto do chat com o estilo escolhido",
+    "volumeLabel": "Volume",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulário de alteração de palavra-passe"
 }

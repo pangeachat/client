@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-18 10:35:54.655954",
+    "@@last_modified": "2026-07-18 11:05:53.625115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Dil siyahısı",
     "searchedResultsLabel": "'{search}' üçün axtarış nəticələri",
     "closeAddCoursePage": "Kurs əlavə etmə səhifəsini bağlayın",
-    "endPractice": "Məşqi bitir"
+    "endPractice": "Məşqi bitir",
+    "bodyLabel": "{page} seçimləri",
+    "openDM": "Birbaşa mesajı açın",
+    "openNewTab": "Yeni tabda açın",
+    "viewProfileImageLabel": "Profil şəklinə baxın",
+    "profileImageLabel": "Profil şəkli",
+    "actionsLabel": "Fəaliyyətlər",
+    "colorListLabel": "Rəng siyahısı",
+    "chatAppearanceStyleLabel": "Seçilmiş üslubla çat görünüşü",
+    "volumeLabel": "Səs",
+    "listLabel": "{description} siyahısı",
+    "passwordFormLabel": "Şifrəni dəyişdirmə forması"
 }

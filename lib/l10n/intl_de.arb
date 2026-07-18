@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-18 10:35:55.821950",
+    "@@last_modified": "2026-07-18 11:05:55.492683",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9627,5 +9627,16 @@
     "starsToUnlockObjectiveDesc": "Legen Sie die Anzahl der Sterne fest, die zum Abschluss jeder Mission benötigt werden",
     "maxStarsPerMissionWarning": "Dieser Kurs enthält Missionen, in denen nur {maxValue} Sterne verdient werden können. Bitte geben Sie eine Zahl kleiner oder gleich {maxValue} ein.",
     "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer.",
-    "endPractice": "Übung beenden"
+    "endPractice": "Übung beenden",
+    "bodyLabel": "{page} Optionen",
+    "openDM": "Direktnachricht öffnen",
+    "openNewTab": "In neuem Tab öffnen",
+    "viewProfileImageLabel": "Profilbild ansehen",
+    "profileImageLabel": "Profilbild",
+    "actionsLabel": "Aktionen",
+    "colorListLabel": "Farbliste",
+    "chatAppearanceStyleLabel": "Chat-Erscheinungsbild mit gewähltem Stil",
+    "volumeLabel": "Lautstärke",
+    "listLabel": "{description} Liste",
+    "passwordFormLabel": "Passwort ändern Formular"
 }

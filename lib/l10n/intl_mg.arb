@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-18 10:35:58.870634",
+    "@@last_modified": "2026-07-18 11:06:02.865890",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Lisitry ny fiteny",
     "searchedResultsLabel": "Valin'ny fikarohana ho an'ny '{search}'",
     "closeAddCoursePage": "Akatona ny pejy fanampiana taranja",
-    "endPractice": "Famaranana ny fampiharana"
+    "endPractice": "Famaranana ny fampiharana",
+    "bodyLabel": "Safidy {page}",
+    "openDM": "Sokafy ny hafatra mivantana",
+    "openNewTab": "Sokafy amin'ny tabilao vaovao",
+    "viewProfileImageLabel": "Jereo ny sarin'ny mombamomba",
+    "profileImageLabel": "Sarin'ny mombamomba",
+    "actionsLabel": "Hetsika",
+    "colorListLabel": "Lisitry ny loko",
+    "chatAppearanceStyleLabel": "Fisehon'ny chat miaraka amin'ny fomba voafidy",
+    "volumeLabel": "Feo",
+    "listLabel": "Lisitry ny {description}",
+    "passwordFormLabel": "Fandrafetana fanovana tenimiafina"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:57.550223",
+    "@@last_modified": "2026-07-18 11:05:59.722719",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9713,5 +9713,16 @@
     "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
     "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
     "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante.",
-    "endPractice": "Termina pratica"
+    "endPractice": "Termina pratica",
+    "bodyLabel": "Opzioni {page}",
+    "openDM": "Apri messaggio diretto",
+    "openNewTab": "Apri in una nuova scheda",
+    "viewProfileImageLabel": "Visualizza immagine del profilo",
+    "profileImageLabel": "Immagine del profilo",
+    "actionsLabel": "Azioni",
+    "colorListLabel": "Elenco colori",
+    "chatAppearanceStyleLabel": "Aspetto della chat con lo stile scelto",
+    "volumeLabel": "Volume",
+    "listLabel": "Elenco {description}",
+    "passwordFormLabel": "Modulo cambio password"
 }

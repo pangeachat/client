@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-18 10:35:56.996137",
+    "@@last_modified": "2026-07-18 11:05:58.656313",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10076,5 +10076,16 @@
     "starsToUnlockObjectiveDesc": "Postavite broj zvjezdica potrebnih za dovršetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj tečaj ima misije gdje se može zaraditi samo {maxValue} zvjezdica. Unesite broj manji ili jednak {maxValue}.",
     "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju.",
-    "endPractice": "Završi vježbu"
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "Opcije {page}",
+    "openDM": "Otvori izravnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Prikaži sliku profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Radnje",
+    "colorListLabel": "Popis boja",
+    "chatAppearanceStyleLabel": "Izgled chata s odabranim stilom",
+    "volumeLabel": "Glasnoća",
+    "listLabel": "Popis {description}",
+    "passwordFormLabel": "Obrazac za promjenu lozinke"
 }

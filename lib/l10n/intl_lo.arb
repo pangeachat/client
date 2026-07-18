@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-18 10:35:58.787852",
+    "@@last_modified": "2026-07-18 11:06:02.163186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ລາຍຊື່ພາສາ",
     "searchedResultsLabel": "ຜົນການຄົ້ນຫາສໍາລັບ '{search}'",
     "closeAddCoursePage": "ປິດໜ້າເພີ່ມຫຼັກສູດ",
-    "endPractice": "ສິ້ນສຸດການຝຶກຊ້ອມ"
+    "endPractice": "ສິ້ນສຸດການຝຶກຊ້ອມ",
+    "bodyLabel": "ຕົວເລືອກ {page}",
+    "openDM": "ເປີດຂໍ້ຄວາມໂດຍກົງ",
+    "openNewTab": "ເປີດໃນແຖບໃໝ່",
+    "viewProfileImageLabel": "ເບິ່ງຮູບໂປຣໄຟລ໌",
+    "profileImageLabel": "ຮູບໂປຣໄຟລ໌",
+    "actionsLabel": "ການກະທຳ",
+    "colorListLabel": "ລາຍການສີ",
+    "chatAppearanceStyleLabel": "ຮູບແບບການສະແດງການສົນທະນາ",
+    "volumeLabel": "ລະດັບສຽງ",
+    "listLabel": "ລາຍການ {description}",
+    "passwordFormLabel": "ແບບຟອມປ່ຽນລະຫັດຜ່ານ"
 }

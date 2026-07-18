@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:58.079286",
+    "@@last_modified": "2026-07-18 11:06:00.597643",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9833,5 +9833,16 @@
     "starsToUnlockObjectiveDesc": "각 미션을 완료하는 데 필요한 별 개수를 설정하세요",
     "maxStarsPerMissionWarning": "이 코스에는 {maxValue}개의 별만 획득할 수 있는 미션이 있습니다. {maxValue}보다 작거나 같은 숫자를 입력하세요.",
     "removedFromCourseError": "이 코스에서 삭제되었습니다. 선생님께 문의하세요.",
-    "endPractice": "연습 끝내기"
+    "endPractice": "연습 끝내기",
+    "bodyLabel": "{page} 옵션",
+    "openDM": "다이렉트 메시지 열기",
+    "openNewTab": "새 탭에서 열기",
+    "viewProfileImageLabel": "프로필 이미지 보기",
+    "profileImageLabel": "프로필 이미지",
+    "actionsLabel": "작업",
+    "colorListLabel": "색상 목록",
+    "chatAppearanceStyleLabel": "선택한 스타일로 채팅 모양",
+    "volumeLabel": "볼륨",
+    "listLabel": "{description} 목록",
+    "passwordFormLabel": "비밀번호 변경 양식"
 }

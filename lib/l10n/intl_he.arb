@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:56.841124",
+    "@@last_modified": "2026-07-18 11:05:58.328424",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10560,5 +10560,16 @@
     "starsToUnlockObjectiveDesc": "קבע את מספר הכוכבים הדרושים להשלמת כל משימה",
     "maxStarsPerMissionWarning": "בקורס זה יש משימות שבהן ניתן לצבור רק {maxValue} כוכבים. אנא הזן מספר קטן או שווה ל-{maxValue}.",
     "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך.",
-    "endPractice": "סיים אימון"
+    "endPractice": "סיים אימון",
+    "bodyLabel": "אפשרויות {page}",
+    "openDM": "פתח הודעה פרטית",
+    "openNewTab": "פתח בכרטיסייה חדשה",
+    "viewProfileImageLabel": "הצג תמונת פרופיל",
+    "profileImageLabel": "תמונת פרופיל",
+    "actionsLabel": "פעולות",
+    "colorListLabel": "רשימת צבעים",
+    "chatAppearanceStyleLabel": "מראה הצ'אט עם הסגנון הנבחר",
+    "volumeLabel": "עוצמת קול",
+    "listLabel": "רשימת {description}",
+    "passwordFormLabel": "טופס שינוי סיסמה"
 }

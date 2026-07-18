@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-18 10:35:57.016205",
+    "@@last_modified": "2026-07-18 11:05:58.664357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Cov npe lus",
     "searchedResultsLabel": "Cov txiaj ntsig tshawb nrhiav rau '{search}'",
     "closeAddCoursePage": "Kaw nplooj ntawv ntxiv kev kawm",
-    "endPractice": "Xaus kev kawm"
+    "endPractice": "Xaus kev kawm",
+    "bodyLabel": "{page} qhov kev xaiv",
+    "openDM": "Qhib kev sib tham ncaj qha",
+    "openNewTab": "Qhib rau hauv lub tab tshiab",
+    "viewProfileImageLabel": "Saib daim duab profile",
+    "profileImageLabel": "Daim duab profile",
+    "actionsLabel": "Kev ua",
+    "colorListLabel": "Cov npe xim",
+    "chatAppearanceStyleLabel": "Kev sib tham zoo li cas nrog tus qauv xaiv",
+    "volumeLabel": "Lub suab nrov",
+    "listLabel": "{description} cov npe",
+    "passwordFormLabel": "Hloov daim ntawv zais lus"
 }

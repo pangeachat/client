@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:36:01.643174",
+    "@@last_modified": "2026-07-18 11:06:07.536237",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10158,5 +10158,16 @@
     "starsToUnlockObjectiveDesc": "Ange antalet stjärnor som behövs för att slutföra varje uppdrag",
     "maxStarsPerMissionWarning": "Den här kursen har uppdrag där endast {maxValue} stjärnor kan tjänas. Ange ett nummer som är mindre än eller lika med {maxValue}.",
     "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare.",
-    "endPractice": "Avsluta övning"
+    "endPractice": "Avsluta övning",
+    "bodyLabel": "{page} alternativ",
+    "openDM": "Öppna direktmeddelande",
+    "openNewTab": "Öppna i ny flik",
+    "viewProfileImageLabel": "Visa profilbild",
+    "profileImageLabel": "Profilbild",
+    "actionsLabel": "Åtgärder",
+    "colorListLabel": "Färglista",
+    "chatAppearanceStyleLabel": "Chattutseende med vald stil",
+    "volumeLabel": "Volym",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Formulär för lösenordsbyte"
 }

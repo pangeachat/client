@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-18 10:35:59.983013",
+    "@@last_modified": "2026-07-18 11:06:04.821434",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "ဘာသာစကားစာရင်း",
     "searchedResultsLabel": "'{search}' အတွက် ရှာဖွေမှုရလဒ်များ",
     "closeAddCoursePage": "သင်တန်းထည့်သွင်းခြင်း စာမျက်နှာကို ပိတ်ပါ",
-    "endPractice": "လေ့ကျင့်မှုပြီးဆုံး"
+    "endPractice": "လေ့ကျင့်မှုပြီးဆုံး",
+    "bodyLabel": "{page} ရွေးချယ်စရာများ",
+    "openDM": "တိုက်ရိုက်မက်ဆေ့ချ် ဖွင့်ပါ",
+    "openNewTab": "တက်ဘ်အသစ်တွင် ဖွင့်ပါ",
+    "viewProfileImageLabel": "ပရိုဖိုင်ပုံကို ကြည့်ရန်",
+    "profileImageLabel": "ပရိုဖိုင်ပုံ",
+    "actionsLabel": "လုပ်ဆောင်ချက်များ",
+    "colorListLabel": "အရောင်စာရင်း",
+    "chatAppearanceStyleLabel": "ရွေးချယ်ထားသော စတိုင်ဖြင့် ချတ်ပုံစံ",
+    "volumeLabel": "အသံအတိုးအကျယ်",
+    "listLabel": "{description} စာရင်း",
+    "passwordFormLabel": "စကားဝှက်ပြောင်းလဲရန် ဖောင်"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-18 10:36:02.304149",
+    "@@last_modified": "2026-07-18 11:06:09.700623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "تىل تىزىملىكى",
     "searchedResultsLabel": "'{search}' ئۈچۈن ئىزدەش نەتىجىسى",
     "closeAddCoursePage": "كۇرس قوشۇش بېتىنى تاقاش",
-    "endPractice": "مەشقتىن ئايرىلىش"
+    "endPractice": "مەشقتىن ئايرىلىش",
+    "bodyLabel": "{page} تاللانمىلىرى",
+    "openDM": "بىۋاسىتە ئۇچۇر ئېچىڭ",
+    "openNewTab": "يېڭى بەتكۈچتە ئېچىڭ",
+    "viewProfileImageLabel": "شەخسىي رەسىمنى كۆرۈڭ",
+    "profileImageLabel": "شەخسىي رەسىم",
+    "actionsLabel": "ھەرىكەتلەر",
+    "colorListLabel": "رەڭ تىزىملىكى",
+    "chatAppearanceStyleLabel": "تاللانغان ئۇسلۇبتىكى پاراڭ كۆرۈنۈشى",
+    "volumeLabel": "ئاۋاز",
+    "listLabel": "{description} تىزىملىكى",
+    "passwordFormLabel": "مۇناسىۋەتلىك پارولنى ئۆزگەرتىش جەدۋىلى"
 }

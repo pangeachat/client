@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-18 10:35:58.722504",
+    "@@last_modified": "2026-07-18 11:06:01.732314",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Тилдердин тизмеси",
     "searchedResultsLabel": "'{search}' үчүн издөө натыйжалары",
     "closeAddCoursePage": "Курс кошуу барагын жабуу",
-    "endPractice": "Машыгууну аяктоо"
+    "endPractice": "Машыгууну аяктоо",
+    "bodyLabel": "{page} параметрлери",
+    "openDM": "Түз билдирүүнү ачуу",
+    "openNewTab": "Жаңы өтмөктө ачуу",
+    "viewProfileImageLabel": "Профиль сүрөтүн көрүү",
+    "profileImageLabel": "Профиль сүрөтү",
+    "actionsLabel": "Аракеттер",
+    "colorListLabel": "Түстөр тизмеси",
+    "chatAppearanceStyleLabel": "Тандалган стилдеги чат көрүнүшү",
+    "volumeLabel": "Үн",
+    "listLabel": "{description} тизмеси",
+    "passwordFormLabel": "Сырсөздү өзгөртүү формасы"
 }

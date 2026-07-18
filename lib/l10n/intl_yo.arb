@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-18 10:36:02.825759",
+    "@@last_modified": "2026-07-18 11:06:10.783889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Àtòjọ èdè",
     "searchedResultsLabel": "Àwọn èsì àwárí fún '{search}'",
     "closeAddCoursePage": "Pa ojú-ìwé fi ìkẹ́kọ̀ọ́ kún",
-    "endPractice": "Dopin ìdánilẹ́kọ̀ọ́"
+    "endPractice": "Dopin ìdánilẹ́kọ̀ọ́",
+    "bodyLabel": "Àwọn àṣàyàn {page}",
+    "openDM": "Ṣíṣíṣẹ́ ìránṣẹ́ tààrà",
+    "openNewTab": "Ṣí nínú tábù tuntun",
+    "viewProfileImageLabel": "Wo àwòrán profaili",
+    "profileImageLabel": "Àwòrán profaili",
+    "actionsLabel": "Àwọn iṣẹ́",
+    "colorListLabel": "Àtòjọ àwọn àwọ̀",
+    "chatAppearanceStyleLabel": "Ìrísí ìjíròrò pẹ̀lú àṣà tí a yàn",
+    "volumeLabel": "Ìwọ̀n ohùn",
+    "listLabel": "Àtòjọ {description}",
+    "passwordFormLabel": "Fọ́ọ̀mù ìyípadà ọ̀rọ̀ìpamọ́"
 }

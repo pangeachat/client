@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-18 10:35:59.552292",
+    "@@last_modified": "2026-07-18 11:06:03.245672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Senarai bahasa",
     "searchedResultsLabel": "Hasil carian untuk '{search}'",
     "closeAddCoursePage": "Tutup halaman tambah kursus",
-    "endPractice": "Tamamatkan latihan"
+    "endPractice": "Tamamatkan latihan",
+    "bodyLabel": "Pilihan {page}",
+    "openDM": "Buka mesej langsung",
+    "openNewTab": "Buka dalam tab baharu",
+    "viewProfileImageLabel": "Lihat imej profil",
+    "profileImageLabel": "Imej profil",
+    "actionsLabel": "Tindakan",
+    "colorListLabel": "Senarai warna",
+    "chatAppearanceStyleLabel": "Penampilan sembang dengan gaya yang dipilih",
+    "volumeLabel": "Kelantangan",
+    "listLabel": "Senarai {description}",
+    "passwordFormLabel": "Borang tukar kata laluan"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:59.899005",
+    "@@last_modified": "2026-07-18 11:06:03.984565",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9697,5 +9697,16 @@
     "starsToUnlockObjectiveDesc": "Angi antall stjerner som trengs for å fullføre hvert oppdrag",
     "maxStarsPerMissionWarning": "Dette kurset har oppdrag der bare {maxValue} stjerner kan opptjenes. Angi et tall som er mindre enn eller lik {maxValue}.",
     "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din.",
-    "endPractice": "Avslutt øving"
+    "endPractice": "Avslutt øving",
+    "bodyLabel": "{page} alternativer",
+    "openDM": "Åpne direktemelding",
+    "openNewTab": "Åpne i ny fane",
+    "viewProfileImageLabel": "Vis profilbilde",
+    "profileImageLabel": "Profilbilde",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Fargeliste",
+    "chatAppearanceStyleLabel": "Chat-utseende med valgt stil",
+    "volumeLabel": "Volum",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Skjema for passordendring"
 }

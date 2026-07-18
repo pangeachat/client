@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-18 10:35:58.019168",
+    "@@last_modified": "2026-07-18 11:06:00.053250",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10409,5 +10409,16 @@
     "starsToUnlockObjectiveDesc": "各ミッションを完了するために必要なスター数を設定します",
     "maxStarsPerMissionWarning": "このコースには、獲得できるスターが{maxValue}個までのミッションがあります。{maxValue}以下の数字を入力してください。",
     "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。",
-    "endPractice": "練習を終了"
+    "endPractice": "練習を終了",
+    "bodyLabel": "{page}のオプション",
+    "openDM": "ダイレクトメッセージを開く",
+    "openNewTab": "新しいタブで開く",
+    "viewProfileImageLabel": "プロフィール画像を見る",
+    "profileImageLabel": "プロフィール画像",
+    "actionsLabel": "アクション",
+    "colorListLabel": "色リスト",
+    "chatAppearanceStyleLabel": "選択したスタイルでのチャット表示",
+    "volumeLabel": "音量",
+    "listLabel": "{description}リスト",
+    "passwordFormLabel": "パスワード変更フォーム"
 }

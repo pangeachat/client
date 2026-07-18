@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-18 10:35:58.849668",
+    "@@last_modified": "2026-07-18 11:06:01.939116",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1984,5 +1984,16 @@
     "languageListLabel": "Sproochlëscht",
     "searchedResultsLabel": "Sichresultater fir '{search}'",
     "closeAddCoursePage": "Säit 'Cours derbäisetzen' zoumaachen",
-    "endPractice": "Praxis ophalen"
+    "endPractice": "Praxis ophalen",
+    "bodyLabel": "{page} Optiounen",
+    "openDM": "Direkt Noriicht opmaachen",
+    "openNewTab": "An engem neien Tab opmaachen",
+    "viewProfileImageLabel": "Profilbild ukucken",
+    "profileImageLabel": "Profilbild",
+    "actionsLabel": "Aktiounen",
+    "colorListLabel": "Faarflëscht",
+    "chatAppearanceStyleLabel": "Chat-Ausgesinn mam gewielte Stil",
+    "volumeLabel": "Lautstäerkt",
+    "listLabel": "{description} Lëscht",
+    "passwordFormLabel": "Passwuert änneren Formulaire"
 }

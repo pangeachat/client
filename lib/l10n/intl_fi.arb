@@ -3548,7 +3548,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-18 10:35:56.216216",
+    "@@last_modified": "2026-07-18 11:05:56.677871",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9677,5 +9677,16 @@
     "starsToUnlockObjectiveDesc": "Aseta tähtien määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "maxStarsPerMissionWarning": "Tällä kurssilla on tehtäviä, joissa voi ansaita vain {maxValue} tähteä. Anna luku, joka on pienempi tai yhtä suuri kuin {maxValue}.",
     "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi.",
-    "endPractice": "Lopeta harjoitus"
+    "endPractice": "Lopeta harjoitus",
+    "bodyLabel": "{page}-asetukset",
+    "openDM": "Avaa suora viesti",
+    "openNewTab": "Avaa uudessa välilehdessä",
+    "viewProfileImageLabel": "Näytä profiilikuva",
+    "profileImageLabel": "Profiilikuva",
+    "actionsLabel": "Toiminnot",
+    "colorListLabel": "Värilista",
+    "chatAppearanceStyleLabel": "Keskustelun ulkoasu valitulla tyylillä",
+    "volumeLabel": "Äänenvoimakkuus",
+    "listLabel": "{description}-lista",
+    "passwordFormLabel": "Vaihda salasana -lomake"
 }

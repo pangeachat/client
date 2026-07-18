@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:36:02.844612",
+    "@@last_modified": "2026-07-18 11:06:10.351223",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9746,5 +9746,16 @@
     "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
     "maxStarsPerMissionWarning": "此課程中的任務最多只能獲得 {maxValue} 顆星。請輸入小於或等於 {maxValue} 的數字。",
     "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。",
-    "endPractice": "結束練習"
+    "endPractice": "結束練習",
+    "bodyLabel": "{page}選項",
+    "openDM": "開啟私訊",
+    "openNewTab": "在新分頁中開啟",
+    "viewProfileImageLabel": "檢視個人資料圖片",
+    "profileImageLabel": "個人資料圖片",
+    "actionsLabel": "動作",
+    "colorListLabel": "顏色列表",
+    "chatAppearanceStyleLabel": "聊天室外觀樣式",
+    "volumeLabel": "音量",
+    "listLabel": "{description}列表",
+    "passwordFormLabel": "更改密碼表單"
 }

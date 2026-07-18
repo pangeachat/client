@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-18 10:35:55.741890",
+    "@@last_modified": "2026-07-18 11:05:55.740357",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10591,5 +10591,16 @@
     "starsToUnlockObjectiveDesc": "Agordu la nombron da steloj necesaj por kompletigi ĉiun mision",
     "maxStarsPerMissionWarning": "Ĉi tiu kurso havas misiojn, kie nur {maxValue} steloj povas esti gajnitaj. Bonvolu enigi nombron malpli ol aŭ egala al {maxValue}.",
     "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston.",
-    "endPractice": "Fini ekzercon"
+    "endPractice": "Fini ekzercon",
+    "bodyLabel": "{page} opcioj",
+    "openDM": "Malfermi rektan mesaĝon",
+    "openNewTab": "Malfermi en nova langeto",
+    "viewProfileImageLabel": "Vidi profilbildon",
+    "profileImageLabel": "Profilbildo",
+    "actionsLabel": "Agoj",
+    "colorListLabel": "Kolorlisto",
+    "chatAppearanceStyleLabel": "Babileja aspekto kun elektita stilo",
+    "volumeLabel": "Volumo",
+    "listLabel": "{description} listo",
+    "passwordFormLabel": "Formularo por ŝanĝi pasvorton"
 }
