@@ -18,6 +18,18 @@ class SpeechToTextResponseModel extends BaseResponse {
 
   SpeechToTextResponseModel({required this.results, this.service});
 
+  /// Whether this response actually carries a usable transcript. Mirrors the
+  /// bot's `_is_valid_stt_response` (get_audio_stt.py): a first result with a
+  /// first transcript whose text is non-empty. `transcript`/`langCode` below
+  /// read `results.first.transcripts.first`, so callers MUST gate on this
+  /// before reading them -- an exhausted-fallback (`results: []`) or a
+  /// nested-empty response is parseable but not usable, and reading its
+  /// transcript would throw.
+  bool get hasUsableTranscript =>
+      results.isNotEmpty &&
+      results.first.transcripts.isNotEmpty &&
+      results.first.transcripts.first.text.isNotEmpty;
+
   Transcript get transcript => results.first.transcripts.first;
 
   String get langCode => results.first.transcripts.first.langCode;

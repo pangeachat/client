@@ -19,6 +19,12 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 SpeechToTextResponseModel _empty() =>
     SpeechToTextResponseModel(results: const []);
 
+/// Results present but with NO transcript at all -- parseable, but reading
+/// `.transcript` would throw. Must be treated as not-usable and fall through.
+SpeechToTextResponseModel _nestedEmpty() => SpeechToTextResponseModel(
+  results: [SpeechToTextResult(transcripts: const [])],
+);
+
 SpeechToTextResponseModel _withText(String text) => SpeechToTextResponseModel(
   results: [
     SpeechToTextResult(
@@ -41,7 +47,7 @@ void main() {
       final rep = _withText('hola mundo');
       final selected = PangeaMessageEvent.selectUsableStt(
         embedded: _empty(),
-        representation: rep,
+        representation: () => rep,
       );
       expect(selected, same(rep));
     });
@@ -50,7 +56,7 @@ void main() {
       final rep = _withText('recovered');
       final selected = PangeaMessageEvent.selectUsableStt(
         embedded: null,
-        representation: rep,
+        representation: () => rep,
       );
       expect(selected, same(rep));
     });
@@ -59,7 +65,7 @@ void main() {
       final embed = _withText('embedded');
       final selected = PangeaMessageEvent.selectUsableStt(
         embedded: embed,
-        representation: _withText('representation'),
+        representation: () => _withText('representation'),
       );
       expect(selected, same(embed));
     });
@@ -68,7 +74,7 @@ void main() {
       expect(
         PangeaMessageEvent.selectUsableStt(
           embedded: _empty(),
-          representation: null,
+          representation: () => null,
         ),
         isNull,
       );
@@ -78,10 +84,48 @@ void main() {
       expect(
         PangeaMessageEvent.selectUsableStt(
           embedded: _empty(),
-          representation: _empty(),
+          representation: () => _empty(),
         ),
         isNull,
       );
+    });
+
+    test(
+      'a nested-empty embed (results present, no transcript) is not usable and '
+      'falls through to the representation',
+      () {
+        final rep = _withText('recovered');
+        final selected = PangeaMessageEvent.selectUsableStt(
+          embedded: _nestedEmpty(),
+          representation: () => rep,
+        );
+        expect(selected, same(rep));
+      },
+    );
+
+    test('an empty-text embed is not usable and falls through', () {
+      final rep = _withText('recovered');
+      final selected = PangeaMessageEvent.selectUsableStt(
+        embedded: _withText(''),
+        representation: () => rep,
+      );
+      expect(selected, same(rep));
+    });
+
+    test('a usable embed does NOT evaluate the representation thunk', () {
+      final embed = _withText('embedded');
+      var evaluated = false;
+      final selected = PangeaMessageEvent.selectUsableStt(
+        embedded: embed,
+        representation: () {
+          evaluated = true;
+          throw StateError(
+            'representation must not be read when embed is usable',
+          );
+        },
+      );
+      expect(selected, same(embed));
+      expect(evaluated, isFalse);
     });
   });
 }

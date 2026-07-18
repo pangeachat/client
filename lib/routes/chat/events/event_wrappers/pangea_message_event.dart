@@ -338,16 +338,19 @@ class PangeaMessageEvent {
   /// must fall through to a representation the bot may have re-transcribed
   /// later, rather than short-circuiting to null. Mirrors the bot's
   /// `_is_valid_stt_response` fall-through gate (get_audio_stt.py).
+  /// [representation] is a thunk, evaluated ONLY when the embed is not usable,
+  /// so a valid embed returns without touching a (possibly malformed)
+  /// representation. Usability is the full [hasUsableTranscript] gate, not just
+  /// non-empty results: a nested-empty response is parseable but would crash
+  /// `.transcript`/`.langCode`, so it must fall through, not be selected.
   @visibleForTesting
   static SpeechToTextResponseModel? selectUsableStt({
     required SpeechToTextResponseModel? embedded,
-    required SpeechToTextResponseModel? representation,
+    required SpeechToTextResponseModel? Function() representation,
   }) {
-    if (embedded != null && embedded.results.isNotEmpty) return embedded;
-    if (representation != null && representation.results.isNotEmpty) {
-      return representation;
-    }
-    return null;
+    if (embedded != null && embedded.hasUsableTranscript) return embedded;
+    final rep = representation();
+    return (rep != null && rep.hasUsableTranscript) ? rep : null;
   }
 
   SpeechToTextResponseModel? getSpeechToTextLocal() {
@@ -377,7 +380,22 @@ class PangeaMessageEvent {
 
     return selectUsableStt(
       embedded: embedded,
-      representation: _speechToTextRepresentation?.content.speechToText,
+      // Lazy + guarded: only read when the embed is not usable, and a malformed
+      // related representation must not throw (it is logged and treated as
+      // absent), so a usable embed is never blocked by a broken representation.
+      representation: () {
+        try {
+          return _speechToTextRepresentation?.content.speechToText;
+        } catch (err, s) {
+          ErrorHandler.logError(
+            e: err,
+            s: s,
+            data: {"event": _event.toJson()},
+            m: "error reading stt representation",
+          );
+          return null;
+        }
+      },
     );
   }
 
