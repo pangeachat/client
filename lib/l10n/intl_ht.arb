@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-16 17:13:58.990275",
+    "@@last_modified": "2026-07-18 10:35:57.062604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lis difikilte",
     "languageListLabel": "Lis lang",
     "searchedResultsLabel": "Rezilta rechèch pou '{search}'",
-    "closeAddCoursePage": "Fèmen paj ajoute kou"
+    "closeAddCoursePage": "Fèmen paj ajoute kou",
+    "endPractice": "Fini egzèsis la"
 }

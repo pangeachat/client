@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:56.033267",
+    "@@last_modified": "2026-07-18 10:36:01.643174",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10157,5 +10157,6 @@
     "starsToUnlockObjectiveTitle": "Stjärnor per uppdrag",
     "starsToUnlockObjectiveDesc": "Ange antalet stjärnor som behövs för att slutföra varje uppdrag",
     "maxStarsPerMissionWarning": "Den här kursen har uppdrag där endast {maxValue} stjärnor kan tjänas. Ange ett nummer som är mindre än eller lika med {maxValue}.",
-    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare."
+    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare.",
+    "endPractice": "Avsluta övning"
 }

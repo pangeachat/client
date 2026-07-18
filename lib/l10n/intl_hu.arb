@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-13 10:04:27.855172",
+    "@@last_modified": "2026-07-18 10:35:57.446266",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9742,5 +9742,6 @@
     "starsToUnlockObjectiveTitle": "Csillagok küldetésenként",
     "starsToUnlockObjectiveDesc": "Állítsa be a küldetések teljesítéséhez szükséges csillagok számát",
     "maxStarsPerMissionWarning": "Ez a kurzus olyan küldetéseket tartalmaz, ahol csak {maxValue} csillag szerezhető. Kérjük, adjon meg egy {maxValue} értékkel egyenlő vagy annál kisebb számot.",
-    "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát."
+    "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát.",
+    "endPractice": "Gyakorlás befejezése"
 }

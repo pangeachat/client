@@ -1344,7 +1344,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-13 10:04:22.715587",
+    "@@last_modified": "2026-07-18 10:35:55.448773",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10565,5 +10565,6 @@
     "starsToUnlockObjectiveTitle": "Stjerner pr. mission",
     "starsToUnlockObjectiveDesc": "Angiv antallet af stjerner, der er nødvendige for at gennemføre hver mission",
     "maxStarsPerMissionWarning": "Dette kursus har missioner, hvor der kun kan optjenes {maxValue} stjerner. Indtast venligst et tal, der er mindre end eller lig med {maxValue}.",
-    "removedFromCourseError": "Du er blevet fjernet fra dette kursus. Kontakt din lærer."
+    "removedFromCourseError": "Du er blevet fjernet fra dette kursus. Kontakt din lærer.",
+    "endPractice": "Afslut øvelse"
 }

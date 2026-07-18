@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:20.736862",
+    "@@last_modified": "2026-07-18 10:36:00.517976",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10589,5 +10589,6 @@
     "starsToUnlockObjectiveTitle": "Estrelas por Missão",
     "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
     "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor."
+    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor.",
+    "endPractice": "Terminar prática"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-16 17:22:48.072306",
+    "@@last_modified": "2026-07-18 10:36:00.564166",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "د ستونزو لیست",
     "languageListLabel": "د ژبې لیست",
     "searchedResultsLabel": "د '{search}' لپاره د لټون پایلې",
-    "closeAddCoursePage": "د کورس اضافه کولو پاڼه بنده کړئ"
+    "closeAddCoursePage": "د کورس اضافه کولو پاڼه بنده کړئ",
+    "endPractice": "تمرین پای ته ورسوئ"
 }

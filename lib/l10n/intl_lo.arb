@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-16 17:19:14.745004",
+    "@@last_modified": "2026-07-18 10:35:58.787852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "ລາຍຊື່ຄວາມຍາກ",
     "languageListLabel": "ລາຍຊື່ພາສາ",
     "searchedResultsLabel": "ຜົນການຄົ້ນຫາສໍາລັບ '{search}'",
-    "closeAddCoursePage": "ປິດໜ້າເພີ່ມຫຼັກສູດ"
+    "closeAddCoursePage": "ປິດໜ້າເພີ່ມຫຼັກສູດ",
+    "endPractice": "ສິ້ນສຸດການຝຶກຊ້ອມ"
 }

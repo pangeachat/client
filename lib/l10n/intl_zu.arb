@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-16 17:27:46.136701",
+    "@@last_modified": "2026-07-18 10:36:02.823615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Uhlu lobunzima",
     "languageListLabel": "Uhlu lwezilimi",
     "searchedResultsLabel": "Imiphumela yosesho ye-'{search}'",
-    "closeAddCoursePage": "Vala ikhasi lokungeza isifundo"
+    "closeAddCoursePage": "Vala ikhasi lokungeza isifundo",
+    "endPractice": "Qeda umkhuba"
 }

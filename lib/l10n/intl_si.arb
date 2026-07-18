@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-16 17:23:13.360732",
+    "@@last_modified": "2026-07-18 10:36:01.141102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "දුෂ්කරතා ලැයිස්තුව",
     "languageListLabel": "භාෂා ලැයිස්තුව",
     "searchedResultsLabel": "'{search}' සඳහා සෙවුම් ප්‍රතිඵල",
-    "closeAddCoursePage": "පාඨමාලා එකතු කිරීමේ පිටුව වසන්න"
+    "closeAddCoursePage": "පාඨමාලා එකතු කිරීමේ පිටුව වසන්න",
+    "endPractice": "පුහුණුව අවසන් කරන්න"
 }

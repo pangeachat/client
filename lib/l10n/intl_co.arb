@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-16 17:07:18.641239",
+    "@@last_modified": "2026-07-18 10:35:55.211410",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lista di difficultà",
     "languageListLabel": "Lista di lingue",
     "searchedResultsLabel": "Risultati di a ricerca per '{search}'",
-    "closeAddCoursePage": "Chjode a pagina d'aghjunta di corsu"
+    "closeAddCoursePage": "Chjode a pagina d'aghjunta di corsu",
+    "endPractice": "Finisce a pratica"
 }

@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-13 10:06:32.062450",
+    "@@last_modified": "2026-07-18 10:36:02.298727",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9643,5 +9643,6 @@
     "starsToUnlockObjectiveTitle": "Har bir topshiriq uchun yulduzlar",
     "starsToUnlockObjectiveDesc": "Har bir topshiriqni bajarish uchun zarur bo'lgan yulduzlar sonini belgilang",
     "maxStarsPerMissionWarning": "Ushbu kursda faqat {maxValue} yulduz olish mumkin bo'lgan topshiriqlar mavjud. Iltimos, {maxValue} dan kichik yoki unga teng raqam kiriting.",
-    "removedFromCourseError": "Siz ushbu kursdan olib tashlandingiz. O'qituvchingiz bilan bog'laning."
+    "removedFromCourseError": "Siz ushbu kursdan olib tashlandingiz. O'qituvchingiz bilan bog'laning.",
+    "endPractice": "Mashqni tugatish"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-16 17:27:19.623179",
+    "@@last_modified": "2026-07-18 10:36:02.477045",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Uluhlu lobunzima",
     "languageListLabel": "Uluhlu lweelwimi",
     "searchedResultsLabel": "Iziphumo zokukhangela '{search}'",
-    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi"
+    "closeAddCoursePage": "Vala iphepha lokongeza ikhosi",
+    "endPractice": "Phelisa umthambo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-16 17:39:10.916575",
+    "@@last_modified": "2026-07-18 10:35:55.184016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Lista težina",
     "languageListLabel": "Lista jezika",
     "searchedResultsLabel": "Rezultati pretrage za '{search}'",
-    "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa"
+    "closeAddCoursePage": "Zatvori stranicu za dodavanje kursa",
+    "endPractice": "Završi vježbu"
 }

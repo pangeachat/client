@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:42.902939",
+    "@@last_modified": "2026-07-18 10:35:57.550223",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9712,5 +9712,6 @@
     "starsToUnlockObjectiveTitle": "Stelle per missione",
     "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
     "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
-    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante."
+    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante.",
+    "endPractice": "Termina pratica"
 }

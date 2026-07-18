@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-16 17:15:30.197082",
+    "@@last_modified": "2026-07-18 10:35:58.762772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "لیستی ئاستەکان",
     "languageListLabel": "لیستی زمانەکان",
     "searchedResultsLabel": "ئەنجامەکانی گەڕان بۆ '{search}'",
-    "closeAddCoursePage": "داخستنی پەڕەی زیادکردنی خول"
+    "closeAddCoursePage": "داخستنی پەڕەی زیادکردنی خول",
+    "endPractice": "کۆتاییهێنان بە ڕاهێنان"
 }

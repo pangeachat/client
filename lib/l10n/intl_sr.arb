@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:08:31.049476",
+    "@@last_modified": "2026-07-18 10:36:01.241793",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10594,5 +10594,6 @@
     "starsToUnlockObjectiveTitle": "Zvezdice po misiji",
     "starsToUnlockObjectiveDesc": "Podesite broj zvezdica potrebnih za završetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj kurs ima misije gde se može zaraditi samo {maxValue} zvezdica. Unesite broj manji ili jednak {maxValue}.",
-    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika."
+    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika.",
+    "endPractice": "Završi vježbu"
 }

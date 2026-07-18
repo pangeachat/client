@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-16 17:19:08.415387",
+    "@@last_modified": "2026-07-18 10:35:59.364352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Rārangi taumata uaua",
     "languageListLabel": "Rārangi reo",
     "searchedResultsLabel": "Ngā hua rapu mō '{search}'",
-    "closeAddCoursePage": "Katia te whārangi tāpiri akoranga"
+    "closeAddCoursePage": "Katia te whārangi tāpiri akoranga",
+    "endPractice": "Whakamutua te whakaharatau"
 }

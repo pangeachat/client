@@ -17,6 +17,11 @@ Usage:
   # --dry reports proposed changes without writing; --limit N reviews first N keys
 """
 
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["google-genai>=1.0", "google-auth"]
+# ///
+
 import argparse
 import json
 import os

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-16 16:36:47.919800",
+    "@@last_modified": "2026-07-18 10:35:54.554640",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Moeilikheidsgraadlys",
     "languageListLabel": "Taallys",
     "searchedResultsLabel": "Soekresultate vir '{search}'",
-    "closeAddCoursePage": "Maak kursus-byvoegbladsy toe"
+    "closeAddCoursePage": "Maak kursus-byvoegbladsy toe",
+    "endPractice": "Beëindig oefening"
 }

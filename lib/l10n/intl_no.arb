@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-16 17:19:35.380982",
+    "@@last_modified": "2026-07-18 10:36:00.030587",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Vanskelighetsliste",
     "languageListLabel": "Språkliste",
     "searchedResultsLabel": "Søkeresultater for '{search}'",
-    "closeAddCoursePage": "Lukk siden for å legge til kurs"
+    "closeAddCoursePage": "Lukk siden for å legge til kurs",
+    "endPractice": "Avslutt øvelsen"
 }

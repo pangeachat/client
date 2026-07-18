@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-13 10:08:40.245484",
+    "@@last_modified": "2026-07-18 10:35:56.426676",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9994,5 +9994,6 @@
     "starsToUnlockObjectiveTitle": "Étoiles par mission",
     "starsToUnlockObjectiveDesc": "Définissez le nombre d'étoiles nécessaires pour terminer chaque mission",
     "maxStarsPerMissionWarning": "Ce cours contient des missions où seulement {maxValue} étoiles peuvent être gagnées. Veuillez entrer un nombre inférieur ou égal à {maxValue}.",
-    "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur."
+    "removedFromCourseError": "Vous avez été retiré de ce cours. Contactez votre professeur.",
+    "endPractice": "Terminer l'entraînement"
 }

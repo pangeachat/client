@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-13 10:08:19.663033",
+    "@@last_modified": "2026-07-18 10:36:00.682643",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10613,5 +10613,6 @@
     "starsToUnlockObjectiveTitle": "Звезды за миссию",
     "starsToUnlockObjectiveDesc": "Установите количество звезд, необходимое для выполнения каждой миссии",
     "maxStarsPerMissionWarning": "В этом курсе есть миссии, в которых можно заработать только {maxValue} звезд. Введите число, меньшее или равное {maxValue}.",
-    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем."
+    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем.",
+    "endPractice": "Завершить практику"
 }

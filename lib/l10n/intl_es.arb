@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-13 10:04:04.986476",
+    "@@last_modified": "2026-07-18 10:35:55.780429",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7834,5 +7834,6 @@
     "starsToUnlockObjectiveTitle": "Estrellas por misión",
     "starsToUnlockObjectiveDesc": "Establece el número de estrellas necesarias para completar cada misión",
     "maxStarsPerMissionWarning": "Este curso tiene misiones donde solo se pueden ganar {maxValue} estrellas. Introduce un número menor o igual a {maxValue}.",
-    "removedFromCourseError": "Has sido eliminado de este curso. Contacta con tu profesor."
+    "removedFromCourseError": "Has sido eliminado de este curso. Contacta con tu profesor.",
+    "endPractice": "Terminar práctica"
 }

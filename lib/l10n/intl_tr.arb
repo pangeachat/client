@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-13 10:06:52.051615",
+    "@@last_modified": "2026-07-18 10:36:02.248876",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9940,5 +9940,6 @@
     "starsToUnlockObjectiveTitle": "Görev Başına Yıldız",
     "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
     "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
-    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin."
+    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin.",
+    "endPractice": "Alıştırmayı bitir"
 }

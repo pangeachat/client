@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-13 10:04:55.184201",
+    "@@last_modified": "2026-07-18 10:35:56.996137",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10075,5 +10075,6 @@
     "starsToUnlockObjectiveTitle": "Zvijezde po misiji",
     "starsToUnlockObjectiveDesc": "Postavite broj zvjezdica potrebnih za dovršetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj tečaj ima misije gdje se može zaraditi samo {maxValue} zvjezdica. Unesite broj manji ili jednak {maxValue}.",
-    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju."
+    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju.",
+    "endPractice": "Završi vježbu"
 }

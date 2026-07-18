@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:07.381687",
+    "@@last_modified": "2026-07-18 10:36:02.295972",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6905,5 +6905,6 @@
     "starsToUnlockObjectiveTitle": "Số sao mỗi nhiệm vụ",
     "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
     "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
-    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn."
+    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn.",
+    "endPractice": "Kết thúc luyện tập"
 }

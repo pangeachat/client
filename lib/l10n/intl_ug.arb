@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-16 17:28:02.448883",
+    "@@last_modified": "2026-07-18 10:36:02.304149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "قىيىنلىق دەرىجىسى تىزىملىكى",
     "languageListLabel": "تىل تىزىملىكى",
     "searchedResultsLabel": "'{search}' ئۈچۈن ئىزدەش نەتىجىسى",
-    "closeAddCoursePage": "كۇرس قوشۇش بېتىنى تاقاش"
+    "closeAddCoursePage": "كۇرس قوشۇش بېتىنى تاقاش",
+    "endPractice": "مەشقتىن ئايرىلىش"
 }

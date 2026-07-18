@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-13 10:05:25.179208",
+    "@@last_modified": "2026-07-18 10:35:55.893370",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9636,5 +9636,6 @@
     "starsToUnlockObjectiveTitle": "Tähed missiooni kohta",
     "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
     "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
-    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga."
+    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga.",
+    "endPractice": "Lõpeta harjutamine"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-16 17:14:17.121983",
+    "@@last_modified": "2026-07-18 10:35:57.602830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Erfiðleikalisti",
     "languageListLabel": "Tungumálalisti",
     "searchedResultsLabel": "Leitarniðurstöður fyrir '{search}'",
-    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði"
+    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði",
+    "endPractice": "Ljúka æfingu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-16 17:56:59.933887",
+    "@@last_modified": "2026-07-18 10:36:01.239845",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Liiska heerka adkaanta",
     "languageListLabel": "Liiska luqadaha",
     "searchedResultsLabel": "Natiijooyinka raadinta ee '{search}'",
-    "closeAddCoursePage": "Xir bogga ku darista koorsada"
+    "closeAddCoursePage": "Xir bogga ku darista koorsada",
+    "endPractice": "Jooji tababarka"
 }

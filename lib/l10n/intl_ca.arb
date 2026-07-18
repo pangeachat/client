@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:06:10.807933",
+    "@@last_modified": "2026-07-18 10:35:55.136335",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9766,5 +9766,6 @@
     "starsToUnlockObjectiveTitle": "Estrelles per Missió",
     "starsToUnlockObjectiveDesc": "Defineix el nombre d'estrelles necessàries per completar cada missió",
     "maxStarsPerMissionWarning": "Aquest curs té missions on només es poden guanyar {maxValue} estrelles. Si us plau, introdueix un número inferior o igual a {maxValue}.",
-    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor."
+    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor.",
+    "endPractice": "Acabar la pràctica"
 }

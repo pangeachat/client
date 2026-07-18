@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-16 17:07:42.077177",
+    "@@last_modified": "2026-07-18 10:35:56.365304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Swierrichheidslist",
     "languageListLabel": "Talenlist",
     "searchedResultsLabel": "Sykresultaten foar '{search}'",
-    "closeAddCoursePage": "Slút de side foar it tafoegjen fan in kursus"
+    "closeAddCoursePage": "Slút de side foar it tafoegjen fan in kursus",
+    "endPractice": "Oefening beëinigje"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-16 17:19:49.463068",
+    "@@last_modified": "2026-07-18 10:35:59.404347",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Хүндрэлийн жагсаалт",
     "languageListLabel": "Хэлний жагсаалт",
     "searchedResultsLabel": "'{search}' хайлтын үр дүн",
-    "closeAddCoursePage": "Хичээл нэмэх хуудсыг хаах"
+    "closeAddCoursePage": "Хичээл нэмэх хуудсыг хаах",
+    "endPractice": "Дасгалыг дуусгах"
 }

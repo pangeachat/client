@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-16 17:23:49.218237",
+    "@@last_modified": "2026-07-18 10:36:01.041613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Rondedzero yekuoma",
     "languageListLabel": "Rondedzero yemutauro",
     "searchedResultsLabel": "Mhedzisiro yekutsvaga ye '{search}'",
-    "closeAddCoursePage": "Vhara peji rekuwedzera kosi"
+    "closeAddCoursePage": "Vhara peji rekuwedzera kosi",
+    "endPractice": "Pedzisa kudzidzira"
 }

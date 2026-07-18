@@ -2090,7 +2090,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-13 10:06:35.878567",
+    "@@last_modified": "2026-07-18 10:35:56.323133",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10505,5 +10505,6 @@
     "starsToUnlockObjectiveTitle": "Mga Bituin bawat Misyon",
     "starsToUnlockObjectiveDesc": "Itakda ang bilang ng mga bituin na kailangan upang makumpleto ang bawat misyon",
     "maxStarsPerMissionWarning": "Ang kursong ito ay may mga misyon kung saan {maxValue} na bituin lamang ang maaaring makuha. Mangyaring maglagay ng numero na mas mababa o katumbas ng {maxValue}.",
-    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro."
+    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro.",
+    "endPractice": "Tapusin ang pagsasanay"
 }

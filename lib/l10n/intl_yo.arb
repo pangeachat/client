@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-16 17:27:55.475589",
+    "@@last_modified": "2026-07-18 10:36:02.825759",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1983,5 +1983,6 @@
     "difficultyListLabel": "Àtòjọ ìṣòro",
     "languageListLabel": "Àtòjọ èdè",
     "searchedResultsLabel": "Àwọn èsì àwárí fún '{search}'",
-    "closeAddCoursePage": "Pa ojú-ìwé fi ìkẹ́kọ̀ọ́ kún"
+    "closeAddCoursePage": "Pa ojú-ìwé fi ìkẹ́kọ̀ọ́ kún",
+    "endPractice": "Dopin ìdánilẹ́kọ̀ọ́"
 }
