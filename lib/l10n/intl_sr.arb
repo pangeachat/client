@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:08:31.049476",
+    "@@last_modified": "2026-07-18 11:06:07.259811",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -7337,8 +7337,6 @@
     "allow": "Dozvoli",
     "deny": "Odbij",
     "enabledRenewal": "Omogući obnavljanje pretplate",
-    "subscriptionEndsOn": "Pretplata ističe",
-    "subscriptionRenewsOn": "Pretplata se obnavlja",
     "waitForSubscriptionChanges": "Promene u vašoj pretplati mogu potrajati trenutak da se odraze u aplikaciji.",
     "subscribeReadingAssistance": "Pretplatite se da otključate alate za poruke",
     "aceDisplayName": "Achinese",
@@ -7613,14 +7611,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10604,5 +10594,17 @@
     "starsToUnlockObjectiveTitle": "Zvezdice po misiji",
     "starsToUnlockObjectiveDesc": "Podesite broj zvezdica potrebnih za završetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj kurs ima misije gde se može zaraditi samo {maxValue} zvezdica. Unesite broj manji ili jednak {maxValue}.",
-    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika."
+    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika.",
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "{page} opcije",
+    "openDM": "Otvori direktnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Pogledaj sliku profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Akcije",
+    "colorListLabel": "Lista boja",
+    "chatAppearanceStyleLabel": "Izgled ćaskanja sa odabranim stilom",
+    "volumeLabel": "Jačina zvuka",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Obrazac za promjenu lozinke"
 }

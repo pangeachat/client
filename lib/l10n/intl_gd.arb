@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-16 17:15:08.944059",
+    "@@last_modified": "2026-07-18 11:05:57.577450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Liosta doirbheadaireachd",
     "languageListLabel": "Liosta chànanan",
     "searchedResultsLabel": "Toraidhean rannsachaidh airson '{search}'",
-    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris"
+    "closeAddCoursePage": "Dùin duilleag cuir cùrsa ris",
+    "endPractice": "Cuir crìoch air an trèanadh",
+    "bodyLabel": "{page} roghainnean",
+    "openDM": "Fosgail teachdaireachd dhìreach",
+    "openNewTab": "Fosgail ann an taba ùr",
+    "viewProfileImageLabel": "Seall dealbh pròifil",
+    "profileImageLabel": "Dealbh pròifil",
+    "actionsLabel": "Gnìomhan",
+    "colorListLabel": "Liosta dhathan",
+    "chatAppearanceStyleLabel": "Coltas cabadaich leis an stoidhle thaghte",
+    "volumeLabel": "Meud-fuaim",
+    "listLabel": "Liosta {description}",
+    "passwordFormLabel": "Foirm atharrachadh facal-faire"
 }

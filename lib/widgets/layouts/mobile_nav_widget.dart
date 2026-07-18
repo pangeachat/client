@@ -89,14 +89,24 @@ class MobileNavWidget extends StatefulWidget {
   /// nothing.
   final Widget? topAttachment;
 
-  /// When non-null, a dismissal gesture — dragging the sheet fully down, or
-  /// tapping outside it — CLOSES the hosted surface (the shell navigates its
-  /// token away) instead of the ephemeral collapse. Wired for the activity
-  /// plan sheet, where dismissing must also clear the map's activity focus
-  /// (#7614; world-map.instructions.md — focus is cleared by "closing the
-  /// plan" and "tapping the empty map"). Null keeps collapse-not-close, the
-  /// design for section sheets and the course card.
+  /// When non-null, a dismissal gesture — dragging the sheet fully down (and,
+  /// unless [mapStaysLive], tapping outside it) — CLOSES the hosted surface
+  /// (the shell navigates its token away) instead of the ephemeral collapse.
+  /// Wired for the activity plan sheet, where dismissing must also clear the
+  /// map's activity focus (#7614; world-map.instructions.md — focus is
+  /// cleared by closing the plan or focusing another activity). Null keeps
+  /// collapse-not-close, the design for section sheets and the course card.
   final VoidCallback? onDismissed;
+
+  /// The map stays interactive around this cavity: no tap-outside barrier is
+  /// mounted, so taps, pans, and pinches in the exposed map area fall through
+  /// to the map below — tapping another pin selects it directly, and panning
+  /// never collapses or dismisses the sheet. Wired for the map-ground
+  /// cavities (the activity plan and the course card), where the map is the
+  /// ground the sheet rides over; dismissal is the drag-down handle or the
+  /// sheet's own close control. Section sheets (chats, the hub) keep the
+  /// barrier: tap-outside collapse is their whole dismissal model.
+  final bool mapStaysLive;
 
   /// Fires when the hosted cavity settles at (or leaves) its FULL height, so
   /// the shell can drop the floating search bar over a full course sheet and
@@ -122,6 +132,7 @@ class MobileNavWidget extends StatefulWidget {
     this.preferredCavityHeightPx,
     this.topAttachment,
     this.onDismissed,
+    this.mapStaysLive = false,
     this.onCavityFullChanged,
     super.key,
   });
@@ -435,8 +446,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     return Stack(
       children: [
         // Tap-outside barrier: only present while expanded, so it never
-        // intercepts taps meant for whatever is behind the collapsed widget.
-        if (isExpanded)
+        // intercepts taps meant for whatever is behind the collapsed widget —
+        // and never for a map-ground cavity ([mapStaysLive]), whose exposed
+        // map must keep receiving taps/pans/pinches.
+        if (isExpanded && !widget.mapStaysLive)
           Positioned.fill(
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,

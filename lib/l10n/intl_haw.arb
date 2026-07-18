@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-16 17:08:16.455437",
+    "@@last_modified": "2026-07-18 11:05:58.000877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Papa inoa paʻakikī",
     "languageListLabel": "Papa inoa ʻōlelo",
     "searchedResultsLabel": "Nā hualoaʻa no '{search}'",
-    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa"
+    "closeAddCoursePage": "Pani i ka ʻaoʻao hoʻohui papa",
+    "endPractice": "Hoʻopau i ka hoʻomaʻamaʻa",
+    "bodyLabel": "Nā koho {page}",
+    "openDM": "E wehe i ka leka pololei",
+    "openNewTab": "E wehe ma ka ʻaoʻao hou",
+    "viewProfileImageLabel": "E nānā i ke kiʻi ʻaoʻao",
+    "profileImageLabel": "Kiʻi ʻaoʻao",
+    "actionsLabel": "Nā hana",
+    "colorListLabel": "Papa inoa kala",
+    "chatAppearanceStyleLabel": "Ke ʻano o ke kamaʻilio me ke ʻano i koho ʻia",
+    "volumeLabel": "Leo",
+    "listLabel": "Papa inoa {description}",
+    "passwordFormLabel": "Palapala hoʻololi ʻōlelo huna"
 }

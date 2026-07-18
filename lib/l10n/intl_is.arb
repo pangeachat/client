@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-16 17:14:17.121983",
+    "@@last_modified": "2026-07-18 11:05:59.751893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Erfiðleikalisti",
     "languageListLabel": "Tungumálalisti",
     "searchedResultsLabel": "Leitarniðurstöður fyrir '{search}'",
-    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði"
+    "closeAddCoursePage": "Loka síðu til að bæta við námskeiði",
+    "endPractice": "Ljúka æfingu",
+    "bodyLabel": "{page} valkostir",
+    "openDM": "Opna bein skilaboð",
+    "openNewTab": "Opna í nýjum flipa",
+    "viewProfileImageLabel": "Skoða prófílmynd",
+    "profileImageLabel": "Prófílmynd",
+    "actionsLabel": "Aðgerðir",
+    "colorListLabel": "Litaval",
+    "chatAppearanceStyleLabel": "Útlit spjalls með völdum stíl",
+    "volumeLabel": "Hljóðstyrkur",
+    "listLabel": "{description} listi",
+    "passwordFormLabel": "Breyta lykilorði"
 }

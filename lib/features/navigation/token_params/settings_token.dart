@@ -1,8 +1,10 @@
+import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 
 class SettingsTokenParam extends TokenParam {
   final String subpage;
-  const SettingsTokenParam({required this.subpage});
+  final String? planId;
+  const SettingsTokenParam({required this.subpage, this.planId});
 
   @override
   bool get isPushed => subpage.contains('/');
@@ -15,10 +17,31 @@ class SettingsTokenParam extends TokenParam {
       : null;
 
   @override
-  String build() => subpage;
+  String build() {
+    if (subpage == 'subscription/selected') {
+      final planId = this.planId;
+      return TokenFields.join([
+        subpage,
+        if (planId != null) TokenFields.encode(planId),
+      ]);
+    }
+    return subpage;
+  }
 
-  factory SettingsTokenParam.parse(String param) =>
-      SettingsTokenParam(subpage: param);
+  factory SettingsTokenParam.parse(String param) {
+    if (param.startsWith('subscription/selected')) {
+      final chunks = TokenFields.split(param);
+      if (chunks.length < 2) {
+        return SettingsTokenParam(subpage: 'subscription/selected');
+      }
+      final planId = TokenFields.decode(chunks[1]);
+      return SettingsTokenParam(
+        subpage: 'subscription/selected',
+        planId: planId,
+      );
+    }
+    return SettingsTokenParam(subpage: param);
+  }
 
   @override
   bool operator ==(Object other) =>

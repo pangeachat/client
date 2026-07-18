@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:35.698507",
+    "@@last_modified": "2026-07-18 11:05:53.421775",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -7010,8 +7010,6 @@
     "allow": "অনুমতি দিন",
     "deny": "অস্বীকার করুন",
     "enabledRenewal": "সাবস্ক্রিপশন নবীকরণ সক্ষম করুন",
-    "subscriptionEndsOn": "সাবস্ক্রিপশন শেষ হবে",
-    "subscriptionRenewsOn": "সাবস্ক্রিপশন নবীকরণ হবে",
     "waitForSubscriptionChanges": "আপনার সাবস্ক্রিপশনের পরিবর্তনগুলি অ্যাপে প্রতিফলিত হতে কিছু সময় লাগতে পারে।",
     "subscribeReadingAssistance": "বার্তা সরঞ্জাম আনলক করতে সাবস্ক্রাইব করুন",
     "aceDisplayName": "আচিনিজ",
@@ -7286,14 +7284,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10277,5 +10267,17 @@
     "starsToUnlockObjectiveTitle": "প্রতিটি মিশনে স্টার",
     "starsToUnlockObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করার জন্য প্রয়োজনীয় স্টারের সংখ্যা সেট করুন",
     "maxStarsPerMissionWarning": "এই কোর্সে এমন মিশন রয়েছে যেখানে শুধুমাত্র {maxValue} স্টার অর্জন করা যাবে। অনুগ্রহ করে {maxValue} এর কম বা সমান একটি সংখ্যা লিখুন।",
-    "removedFromCourseError": "আপনাকে এই কোর্স থেকে সরিয়ে দেওয়া হয়েছে। আপনার শিক্ষকের সাথে যোগাযোগ করুন।"
+    "removedFromCourseError": "আপনাকে এই কোর্স থেকে সরিয়ে দেওয়া হয়েছে। আপনার শিক্ষকের সাথে যোগাযোগ করুন।",
+    "endPractice": "অনুশীলন শেষ করুন",
+    "bodyLabel": "{page} বিকল্প",
+    "openDM": "সরাসরি বার্তা খুলুন",
+    "openNewTab": "নতুন ট্যাবে খুলুন",
+    "viewProfileImageLabel": "প্রোফাইল ছবি দেখুন",
+    "profileImageLabel": "প্রোফাইল ছবি",
+    "actionsLabel": "কার্যক্রম",
+    "colorListLabel": "রঙের তালিকা",
+    "chatAppearanceStyleLabel": "নির্বাচিত শৈলী সহ চ্যাট চেহারা",
+    "volumeLabel": "ভলিউম",
+    "listLabel": "{description} তালিকা",
+    "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম"
 }

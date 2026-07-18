@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-16 17:13:58.990275",
+    "@@last_modified": "2026-07-18 11:05:58.648025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Lis difikilte",
     "languageListLabel": "Lis lang",
     "searchedResultsLabel": "Rezilta rechèch pou '{search}'",
-    "closeAddCoursePage": "Fèmen paj ajoute kou"
+    "closeAddCoursePage": "Fèmen paj ajoute kou",
+    "endPractice": "Fini egzèsis la",
+    "bodyLabel": "Opsyon {page}",
+    "openDM": "Louvri mesaj dirèk",
+    "openNewTab": "Louvri nan yon nouvo onglet",
+    "viewProfileImageLabel": "Gade imaj pwofil",
+    "profileImageLabel": "Imaj pwofil",
+    "actionsLabel": "Aksyon",
+    "colorListLabel": "Lis koulè",
+    "chatAppearanceStyleLabel": "Aparans chat ak stil chwazi a",
+    "volumeLabel": "Volim",
+    "listLabel": "Lis {description}",
+    "passwordFormLabel": "Fòm pou chanje modpas"
 }

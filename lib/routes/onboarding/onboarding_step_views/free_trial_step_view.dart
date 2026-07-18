@@ -109,8 +109,8 @@ class FreeTrialStepView extends StatelessWidget {
                                         ),
                                       ),
                                       ProFeaturesCard(
-                                        padding: const EdgeInsets.all(12.0),
                                         titlePadding: const EdgeInsets.all(4.0),
+                                        padding: const EdgeInsets.all(12.0),
                                         borderRadius: 12.0,
                                         frameColor: gold,
                                         borderWidth: 2,

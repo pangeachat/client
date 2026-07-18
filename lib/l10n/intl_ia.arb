@@ -1372,7 +1372,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-13 10:05:06.074350",
+    "@@last_modified": "2026-07-18 11:05:59.410828",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7324,8 +7324,6 @@
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Langganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -7600,14 +7598,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10591,5 +10581,17 @@
     "starsToUnlockObjectiveTitle": "Stellas per Mission",
     "starsToUnlockObjectiveDesc": "Define le numero de stellas necessari pro completar cata mission",
     "maxStarsPerMissionWarning": "Iste curso ha missiones ubi solmente {maxValue} stellas pote esser ganiate. Per favor entra un numero minus que o equal a {maxValue}.",
-    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator."
+    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator.",
+    "endPractice": "Finir le practica",
+    "bodyLabel": "Optiones de {page}",
+    "openDM": "Aperi message directe",
+    "openNewTab": "Aperi in nove scheda",
+    "viewProfileImageLabel": "Vide imagine de profilo",
+    "profileImageLabel": "Imagine de profilo",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Lista de colores",
+    "chatAppearanceStyleLabel": "Apparentia del chat con stilo seligite",
+    "volumeLabel": "Volumine",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario de cambio de contrasigno"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-13 10:05:25.179208",
+    "@@last_modified": "2026-07-18 11:05:55.978768",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -6573,8 +6573,6 @@
     "allow": "Luba",
     "deny": "Keela",
     "enabledRenewal": "Luba tellimuse uuendamine",
-    "subscriptionEndsOn": "Tellimus lõppeb",
-    "subscriptionRenewsOn": "Tellimus uuendatakse",
     "waitForSubscriptionChanges": "Teie tellimuse muudatused võivad rakenduses kajastuda mõne hetke pärast.",
     "subscribeReadingAssistance": "Tellige, et avada sõnumite tööriistad",
     "aceDisplayName": "Achinese",
@@ -6849,14 +6847,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9646,5 +9636,17 @@
     "starsToUnlockObjectiveTitle": "Tähed missiooni kohta",
     "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
     "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
-    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga."
+    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga.",
+    "endPractice": "Lõpeta harjutamine",
+    "bodyLabel": "{page} valikud",
+    "openDM": "Ava otsesõnum",
+    "openNewTab": "Ava uuel vahelehel",
+    "viewProfileImageLabel": "Vaata profiilipilti",
+    "profileImageLabel": "Profiilipilt",
+    "actionsLabel": "Tegevused",
+    "colorListLabel": "Värviloend",
+    "chatAppearanceStyleLabel": "Vestluse välimus valitud stiiliga",
+    "volumeLabel": "Helitugevus",
+    "listLabel": "{description} loend",
+    "passwordFormLabel": "Muuda parooli vorm"
 }

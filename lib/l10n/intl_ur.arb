@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-16 17:25:44.741376",
+    "@@last_modified": "2026-07-18 11:06:09.447240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "مشکل کی فہرست",
     "languageListLabel": "زبان کی فہرست",
     "searchedResultsLabel": "'{search}' کے لیے تلاش کے نتائج",
-    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں"
+    "closeAddCoursePage": "کورس شامل کرنے کا صفحہ بند کریں",
+    "endPractice": "مشق ختم کریں",
+    "bodyLabel": "{page} اختیارات",
+    "openDM": "براہ راست پیغام کھولیں",
+    "openNewTab": "نئے ٹیب میں کھولیں",
+    "viewProfileImageLabel": "پروفائل تصویر دیکھیں",
+    "profileImageLabel": "پروفائل تصویر",
+    "actionsLabel": "کارروائیاں",
+    "colorListLabel": "رنگوں کی فہرست",
+    "chatAppearanceStyleLabel": "منتخب انداز کے ساتھ چیٹ کی ظاہری شکل",
+    "volumeLabel": "آواز",
+    "listLabel": "{description} فہرست",
+    "passwordFormLabel": "پاس ورڈ تبدیل کرنے کا فارم"
 }

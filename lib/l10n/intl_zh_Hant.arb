@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:06:27.424623",
+    "@@last_modified": "2026-07-18 11:06:10.351223",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -6483,8 +6483,6 @@
     "allow": "允許",
     "deny": "拒絕",
     "enabledRenewal": "啟用訂閱續訂",
-    "subscriptionEndsOn": "訂閱結束於",
-    "subscriptionRenewsOn": "訂閱續訂於",
     "waitForSubscriptionChanges": "您的訂閱變更可能需要一些時間才能在應用程式中反映。",
     "subscribeReadingAssistance": "訂閱以解鎖消息工具",
     "aceDisplayName": "阿齊尼語",
@@ -6759,14 +6757,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9755,5 +9745,17 @@
     "starsToUnlockObjectiveTitle": "每個任務的星數",
     "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
     "maxStarsPerMissionWarning": "此課程中的任務最多只能獲得 {maxValue} 顆星。請輸入小於或等於 {maxValue} 的數字。",
-    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。"
+    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。",
+    "endPractice": "結束練習",
+    "bodyLabel": "{page}選項",
+    "openDM": "開啟私訊",
+    "openNewTab": "在新分頁中開啟",
+    "viewProfileImageLabel": "檢視個人資料圖片",
+    "profileImageLabel": "個人資料圖片",
+    "actionsLabel": "動作",
+    "colorListLabel": "顏色列表",
+    "chatAppearanceStyleLabel": "聊天室外觀樣式",
+    "volumeLabel": "音量",
+    "listLabel": "{description}列表",
+    "passwordFormLabel": "更改密碼表單"
 }

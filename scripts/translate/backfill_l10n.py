@@ -12,8 +12,13 @@ Prereqs: Vertex auth as documented in translate_gemini.py. Run `flutter gen-l10n
 afterwards to regenerate the Dart localizations.
 
 Usage:
-  python scripts/translate/backfill_l10n.py [--workers 10] [--cms-url <url>]
+  uv run scripts/translate/backfill_l10n.py [--workers 10] [--cms-url <url>]
 """
+
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["google-genai>=1.0", "google-auth"]
+# ///
 
 import argparse
 import concurrent.futures

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-16 17:23:56.997727",
+    "@@last_modified": "2026-07-18 11:06:07.773658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Daptar kasusah",
     "languageListLabel": "Daptar basa",
     "searchedResultsLabel": "Hasil pamilarian pikeun '{search}'",
-    "closeAddCoursePage": "Tutup halaman tambah kursus"
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "endPractice": "Réngsé latihan",
+    "bodyLabel": "{page} pilihan",
+    "openDM": "Buka talatah langsung",
+    "openNewTab": "Buka dina tab anyar",
+    "viewProfileImageLabel": "Témbongkeun gambar propil",
+    "profileImageLabel": "Gambar propil",
+    "actionsLabel": "Peta",
+    "colorListLabel": "Daptar warna",
+    "chatAppearanceStyleLabel": "Tampilan obrolan kalayan gaya nu dipilih",
+    "volumeLabel": "Sora",
+    "listLabel": "Daptar {description}",
+    "passwordFormLabel": "Formulir ganti sandi"
 }

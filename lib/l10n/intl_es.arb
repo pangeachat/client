@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-13 10:04:04.986476",
+    "@@last_modified": "2026-07-18 11:05:55.909532",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -4659,8 +4659,6 @@
     "contactHasBeenInvitedToTheCourse": "El contacto ha sido invitado al curso",
     "allow": "Permitir",
     "enabledRenewal": "Habilitar renovación de suscripción",
-    "subscriptionEndsOn": "La suscripción termina el",
-    "subscriptionRenewsOn": "La suscripción se renueva el",
     "waitForSubscriptionChanges": "Los cambios en su suscripción pueden tardar un momento en reflejarse en la aplicación.",
     "subscribeReadingAssistance": "Suscríbase para desbloquear herramientas de mensajería",
     "aceDisplayName": "Achinese",
@@ -4935,14 +4933,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -7844,5 +7834,17 @@
     "starsToUnlockObjectiveTitle": "Estrellas por misión",
     "starsToUnlockObjectiveDesc": "Establece el número de estrellas necesarias para completar cada misión",
     "maxStarsPerMissionWarning": "Este curso tiene misiones donde solo se pueden ganar {maxValue} estrellas. Introduce un número menor o igual a {maxValue}.",
-    "removedFromCourseError": "Has sido eliminado de este curso. Contacta con tu profesor."
+    "removedFromCourseError": "Has sido eliminado de este curso. Contacta con tu profesor.",
+    "endPractice": "Terminar práctica",
+    "bodyLabel": "Opciones de {page}",
+    "openDM": "Abrir mensaje directo",
+    "openNewTab": "Abrir en pestaña nueva",
+    "viewProfileImageLabel": "Ver imagen de perfil",
+    "profileImageLabel": "Imagen de perfil",
+    "actionsLabel": "Acciones",
+    "colorListLabel": "Lista de colores",
+    "chatAppearanceStyleLabel": "Apariencia del chat con el estilo elegido",
+    "volumeLabel": "Volumen",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario para cambiar contraseña"
 }

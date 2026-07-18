@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:59.148440",
+    "@@last_modified": "2026-07-18 11:06:03.984565",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -6618,8 +6618,6 @@
     "allow": "Tillat",
     "deny": "Avvis",
     "enabledRenewal": "Aktiver abonnementfornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Endringer i abonnementet ditt kan ta et øyeblikk å gjenspeile i appen.",
     "subscribeReadingAssistance": "Abonner for å låse opp meldingsverktøy",
     "aceDisplayName": "Achinese",
@@ -6894,14 +6892,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9706,5 +9696,17 @@
     "starsToUnlockObjectiveTitle": "Stjerner per oppdrag",
     "starsToUnlockObjectiveDesc": "Angi antall stjerner som trengs for å fullføre hvert oppdrag",
     "maxStarsPerMissionWarning": "Dette kurset har oppdrag der bare {maxValue} stjerner kan opptjenes. Angi et tall som er mindre enn eller lik {maxValue}.",
-    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din."
+    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din.",
+    "endPractice": "Avslutt øving",
+    "bodyLabel": "{page} alternativer",
+    "openDM": "Åpne direktemelding",
+    "openNewTab": "Åpne i ny fane",
+    "viewProfileImageLabel": "Vis profilbilde",
+    "profileImageLabel": "Profilbilde",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Fargeliste",
+    "chatAppearanceStyleLabel": "Chat-utseende med valgt stil",
+    "volumeLabel": "Volum",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Skjema for passordendring"
 }

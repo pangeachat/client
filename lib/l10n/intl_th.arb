@@ -3105,7 +3105,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-13 10:06:17.363303",
+    "@@last_modified": "2026-07-18 11:06:08.477038",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7014,8 +7014,6 @@
     "allow": "อนุญาต",
     "deny": "ปฏิเสธ",
     "enabledRenewal": "เปิดใช้งานการต่ออายุการสมัครสมาชิก",
-    "subscriptionEndsOn": "การสมัครสมาชิกสิ้นสุดในวันที่",
-    "subscriptionRenewsOn": "การสมัครสมาชิกต่ออายุในวันที่",
     "waitForSubscriptionChanges": "การเปลี่ยนแปลงการสมัครสมาชิกของคุณอาจใช้เวลาสักครู่ในการสะท้อนในแอป",
     "subscribeReadingAssistance": "สมัครสมาชิกเพื่อปลดล็อกเครื่องมือข้อความ",
     "aceDisplayName": "Achinese",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10281,5 +10271,17 @@
     "starsToUnlockObjectiveTitle": "ดาวต่อภารกิจ",
     "starsToUnlockObjectiveDesc": "กำหนดจำนวนดาวที่จำเป็นต่อการทำแต่ละภารกิจให้สำเร็จ",
     "maxStarsPerMissionWarning": "คอร์สนี้มีภารกิจที่สามารถได้รับดาวสูงสุดเพียง {maxValue} ดวงเท่านั้น โปรดป้อนตัวเลขที่น้อยกว่าหรือเท่ากับ {maxValue}",
-    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ"
+    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ",
+    "endPractice": "จบการฝึก",
+    "bodyLabel": "ตัวเลือก{page}",
+    "openDM": "เปิดข้อความส่วนตัว",
+    "openNewTab": "เปิดในแท็บใหม่",
+    "viewProfileImageLabel": "ดูรูปโปรไฟล์",
+    "profileImageLabel": "รูปโปรไฟล์",
+    "actionsLabel": "การดำเนินการ",
+    "colorListLabel": "รายการสี",
+    "chatAppearanceStyleLabel": "ลักษณะการแชทด้วยสไตล์ที่เลือก",
+    "volumeLabel": "ระดับเสียง",
+    "listLabel": "รายการ{description}",
+    "passwordFormLabel": "แบบฟอร์มเปลี่ยนรหัสผ่าน"
 }

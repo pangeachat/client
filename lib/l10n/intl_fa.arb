@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:41.405392",
+    "@@last_modified": "2026-07-18 11:05:56.400686",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -6475,8 +6475,6 @@
     "allow": "اجازه دادن",
     "deny": "رد کردن",
     "enabledRenewal": "فعال کردن تمدید اشتراک",
-    "subscriptionEndsOn": "اشتراک در تاریخ پایان می‌یابد",
-    "subscriptionRenewsOn": "اشتراک در تاریخ تمدید می‌شود",
     "waitForSubscriptionChanges": "تغییرات در اشتراک شما ممکن است مدتی طول بکشد تا در برنامه منعکس شود.",
     "subscribeReadingAssistance": "برای باز کردن ابزارهای پیام، اشتراک بگیرید",
     "aceDisplayName": "آچین",
@@ -6751,14 +6749,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9737,5 +9727,17 @@
     "starsToUnlockObjectiveTitle": "ستاره برای هر ماموریت",
     "starsToUnlockObjectiveDesc": "تعداد ستاره‌های مورد نیاز برای تکمیل هر ماموریت را تنظیم کنید",
     "maxStarsPerMissionWarning": "این دوره دارای ماموریت‌هایی است که فقط {maxValue} ستاره می‌توان کسب کرد. لطفاً عددی کمتر یا مساوی با {maxValue} وارد کنید.",
-    "removedFromCourseError": "شما از این دوره حذف شده‌اید. با معلم خود تماس بگیرید."
+    "removedFromCourseError": "شما از این دوره حذف شده‌اید. با معلم خود تماس بگیرید.",
+    "endPractice": "پایان تمرین",
+    "bodyLabel": "گزینه‌های {page}",
+    "openDM": "باز کردن پیام مستقیم",
+    "openNewTab": "باز کردن در برگه جدید",
+    "viewProfileImageLabel": "مشاهده تصویر نمایه",
+    "profileImageLabel": "تصویر نمایه",
+    "actionsLabel": "اقدامات",
+    "colorListLabel": "فهرست رنگ",
+    "chatAppearanceStyleLabel": "ظاهر چت با سبک انتخاب شده",
+    "volumeLabel": "صدا",
+    "listLabel": "فهرست {description}",
+    "passwordFormLabel": "فرم تغییر رمز عبور"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-13 10:04:09.186711",
+    "@@last_modified": "2026-07-18 11:05:57.850276",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Permitir",
     "deny": "Denegar",
     "enabledRenewal": "Activar a renovación da subscrición",
-    "subscriptionEndsOn": "A subscrición finaliza o",
-    "subscriptionRenewsOn": "A subscrición renova o",
     "waitForSubscriptionChanges": "Os cambios na túa subscrición poden tardar un momento en reflectirse na aplicación.",
     "subscribeReadingAssistance": "Subscríbete para desbloquear ferramentas de mensaxes",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9649,5 +9639,17 @@
     "starsToUnlockObjectiveTitle": "Estrelas por misión",
     "starsToUnlockObjectiveDesc": "Define o número de estrelas necesarias para completar cada misión",
     "maxStarsPerMissionWarning": "Este curso ten misións onde só se poden gañar {maxValue} estrelas. Introduce un número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Retiráronche deste curso. Ponte en contacto co teu profesor."
+    "removedFromCourseError": "Retiráronche deste curso. Ponte en contacto co teu profesor.",
+    "endPractice": "Rematar a práctica",
+    "bodyLabel": "Opcións de {page}",
+    "openDM": "Abrir mensaxe directa",
+    "openNewTab": "Abrir nunha nova pestana",
+    "viewProfileImageLabel": "Ver imaxe de perfil",
+    "profileImageLabel": "Imaxe de perfil",
+    "actionsLabel": "Accións",
+    "colorListLabel": "Lista de cores",
+    "chatAppearanceStyleLabel": "Aspecto do chat co estilo elixido",
+    "volumeLabel": "Volume",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario para cambiar o contrasinal"
 }

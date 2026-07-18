@@ -2979,7 +2979,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-13 10:07:03.254497",
+    "@@last_modified": "2026-07-18 11:06:02.111182",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7163,8 +7163,6 @@
     "allow": "Leisti",
     "deny": "Atmesti",
     "enabledRenewal": "Įjungti prenumeratos atnaujinimą",
-    "subscriptionEndsOn": "Prenumerata baigiasi",
-    "subscriptionRenewsOn": "Prenumerata atnaujinama",
     "waitForSubscriptionChanges": "Prenumeratos pakeitimai gali užtrukti, kol atsispindės programėlėje.",
     "subscribeReadingAssistance": "Prenumeruokite, kad atrakintumėte žinučių įrankius",
     "aceDisplayName": "Ačinė",
@@ -7439,14 +7437,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10430,5 +10420,17 @@
     "starsToUnlockObjectiveTitle": "Žvaigždės už misiją",
     "starsToUnlockObjectiveDesc": "Nustatykite žvaigždžių skaičių, reikalingą kiekvienai misijai užbaigti",
     "maxStarsPerMissionWarning": "Šiame kurse yra misijų, kuriose galima uždirbti tik {maxValue} žvaigždutes. Įveskite skaičių, mažesnį arba lygų {maxValue}.",
-    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju."
+    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju.",
+    "endPractice": "Baigti pratybas",
+    "bodyLabel": "{page} parinktys",
+    "openDM": "Atidaryti tiesioginę žinutę",
+    "openNewTab": "Atidaryti naujame skirtuke",
+    "viewProfileImageLabel": "Peržiūrėti profilio nuotrauką",
+    "profileImageLabel": "Profilio nuotrauka",
+    "actionsLabel": "Veiksmai",
+    "colorListLabel": "Spalvų sąrašas",
+    "chatAppearanceStyleLabel": "Pokalbio išvaizda su pasirinktu stiliumi",
+    "volumeLabel": "Garsumas",
+    "listLabel": "{description} sąrašas",
+    "passwordFormLabel": "Slaptažodžio keitimo forma"
 }

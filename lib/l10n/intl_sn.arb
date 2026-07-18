@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-16 17:23:49.218237",
+    "@@last_modified": "2026-07-18 11:06:07.283769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1983,5 +1983,17 @@
     "difficultyListLabel": "Rondedzero yekuoma",
     "languageListLabel": "Rondedzero yemutauro",
     "searchedResultsLabel": "Mhedzisiro yekutsvaga ye '{search}'",
-    "closeAddCoursePage": "Vhara peji rekuwedzera kosi"
+    "closeAddCoursePage": "Vhara peji rekuwedzera kosi",
+    "endPractice": "Pedzisa kudzidzira",
+    "bodyLabel": "Sarudzo dze {page}",
+    "openDM": "Vhura meseji yakananga",
+    "openNewTab": "Vhura mutabo mutsva",
+    "viewProfileImageLabel": "Tarisa mufananidzo weprofile",
+    "profileImageLabel": "Mufananidzo weprofile",
+    "actionsLabel": "Zviito",
+    "colorListLabel": "Rondedzero yemavara",
+    "chatAppearanceStyleLabel": "Kutaridzika kwechat nemaitiro akasarudzwa",
+    "volumeLabel": "Vhoriyamu",
+    "listLabel": "Rondedzero ye {description}",
+    "passwordFormLabel": "Fomu rekuchinja password"
 }
