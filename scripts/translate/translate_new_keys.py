@@ -13,11 +13,16 @@ Prereqs: Vertex auth as documented in translate_gemini.py. Run
 `flutter gen-l10n` afterwards to regenerate the Dart localizations.
 
 Usage:
-  python scripts/translate/translate_new_keys.py [--keys endPractice ...]
+  uv run scripts/translate/translate_new_keys.py [--keys endPractice ...]
       [--workers 10] [--dry] [--cms-url <url>]
 
 With no --keys, fills every template key a locale is missing.
 """
+
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["google-genai>=1.0", "google-auth"]
+# ///
 
 import argparse
 import concurrent.futures
@@ -67,7 +72,10 @@ def locale_paths() -> list:
 
 def fill_locale(
     client, model: str, path: Path, en: dict, only: set | None, names: dict, dry: bool
-) -> str:
+) -> tuple[str, str, list[str]]:
+    """Returns (message, locale code, keys added). Only writes the locale's own
+    arb — the shared provenance file is written once by main() after all
+    workers finish (a per-worker read-modify-write raced)."""
     code = path.name[len("intl_") : -len(".arb")]
     doc = json.loads(path.read_text(encoding="utf-8"))
     template_keys = [k for k in en if not k.startswith("@")]
@@ -75,7 +83,7 @@ def fill_locale(
     if only is not None:
         missing = [k for k in missing if k in only]
     if not missing:
-        return f"skip {code} (complete)"
+        return f"skip {code} (complete)", code, []
 
     name = display_name(code, names)
     out: dict[str, str] = {}
@@ -95,27 +103,32 @@ def fill_locale(
     if errors:
         # Same contract as translate_gemini: never write a locale that failed
         # ICU validation.
-        return f"FAIL {code}: " + "; ".join(errors[:3])
+        return f"FAIL {code}: " + "; ".join(errors[:3]), code, []
     if dry:
-        return f"dry {code}: would add {len(out)} key(s)"
+        return f"dry {code}: would add {len(out)} key(s)", code, []
 
     doc.update(out)
     doc["@@last_modified"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     path.write_text(
         json.dumps(doc, indent=4, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+    return f"OK {code}: added {len(out)} key(s)", code, sorted(out)
 
+
+def record_provenance(added: dict[str, list[str]]) -> None:
+    if not added:
+        return
     prov_path = L10N / "ai-translated-keys.json"
     prov = (
         json.loads(prov_path.read_text(encoding="utf-8"))
         if prov_path.exists()
         else {}
     )
-    prov[code] = sorted(set(prov.get(code, [])) | set(out))
+    for code, keys in added.items():
+        prov[code] = sorted(set(prov.get(code, [])) | set(keys))
     prov_path.write_text(
         json.dumps(prov, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
     )
-    return f"OK {code}: added {len(out)} key(s)"
 
 
 def main() -> None:
@@ -142,6 +155,7 @@ def main() -> None:
 
     paths = [Path(p) for p in locale_paths()]
     failures = 0
+    added: dict[str, list[str]] = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as ex:
         futs = {
             ex.submit(fill_locale, client, args.model, p, en, only, names, args.dry): p
@@ -149,7 +163,9 @@ def main() -> None:
         }
         for fut in concurrent.futures.as_completed(futs):
             try:
-                msg = fut.result()
+                msg, code, keys = fut.result()
+                if keys:
+                    added[code] = keys
             except Exception as e:
                 msg = f"FAIL {futs[fut].name}: {type(e).__name__} {e}"
             if msg.startswith("FAIL"):
@@ -157,8 +173,9 @@ def main() -> None:
             if not msg.startswith("skip"):
                 print(msg)
 
+    record_provenance(added)
     if failures:
-        raise SystemExit(f"{failures} locale(s) failed — nothing written for them; rerun after fixing")
+        raise SystemExit(f"{failures} locale(s) failed — their arbs were not written; rerun (it resumes) after fixing")
     print("done — run `flutter gen-l10n` to regenerate Dart localizations")
 
 

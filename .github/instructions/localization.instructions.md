@@ -24,6 +24,13 @@ Every L1 — every language in the CMS `languages` collection — should get a U
 
 ## Translation tooling
 
+**Running the scripts is self-contained — no choreo env, no venv.** Each script
+declares its own dependencies inline (PEP 723), so the canonical invocation is
+`uv run scripts/translate/<script>.py ...` from the client repo. The only
+other prerequisite is Google auth: `gcloud auth application-default login`
+(Vertex billing follows `VERTEX_PROJECT` when set, else the ADC default
+project).
+
 - **[`translate_gemini.py`](../../scripts/translate/translate_gemini.py)** translates one locale from `intl_en.arb` with **Gemini on Vertex AI** — 2.5 Flash by default (fast, thinking off; the right call for bulk backfill of short UI strings), or `--model gemini-2.5-pro` when a locale warrants higher quality. It is the canonical translator (it replaced the legacy OpenAI / DeepL scripts).
   - **ICU safety is a hard gate.** Placeholders (`{count}`) and plural/select syntax must survive verbatim — the model is instructed to preserve them, and every value is then validated (placeholder set matches English, plural/select structure intact). The script **refuses to write** an arb if any value fails. AI-translated locales are recorded in `ai-translated-keys.json` so native-speaker corrections can layer on later.
   - **Vertex, not AI Studio.** Auth is the service account / ADC on the org's Cloud Billing. The AI Studio API-key path is deprecated — its prepaid credit pool depletes silently.
@@ -43,5 +50,5 @@ When `intl_en.arb` changes, every locale falls behind — and `gen-l10n` only ca
 
 [`check_l10n_sync.py`](../../scripts/translate/check_l10n_sync.py) closes both gaps. On a PR it diffs `intl_en.arb` against the base branch and splits what changed into two tiers, run by the [`l10n_sync_check`](../../.github/workflows/l10n_sync_check.yaml) workflow:
 
-- **Added keys → blocking.** A newly-added English key that isn't translated into every locale ships English-only (the gap that let the immersion toggle merge untranslated). Any locale missing an added key **fails the check** — translate them (`backfill_l10n.py`, or `translate_gemini.py` per locale) and commit before merging.
+- **Added keys → blocking.** A newly-added English key that isn't translated into every locale ships English-only (the gap that let the immersion toggle merge untranslated). Any locale missing an added key **fails the check** — run `uv run scripts/translate/translate_new_keys.py`, then `flutter gen-l10n`, and commit before merging.
 - **Value-changed keys → warning.** When an existing key's English text changes but a locale keeps its old translation, the locale still renders (just slightly stale), so this only **warns** — a copy tweak isn't blocked on re-translating every locale.
