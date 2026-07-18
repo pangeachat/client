@@ -1,0 +1,40 @@
+# DISABLED workflow, kept for future re-enablement.
+#
+# It is disabled by its file EXTENSION, not by commenting: GitHub only parses
+# `.yml`/`.yaml` files in this directory, so the `.disabled` suffix keeps it
+# inert while leaving it readable (`versions.env` sits here as a non-workflow
+# file too). Commenting every line was tried first (#7249) and did NOT work —
+# a `.yaml` file with no valid workflow content still makes GitHub open a run
+# and fail it with "workflow file issue" on every push, on every branch.
+#
+# To re-enable: rename back to `check_duplicates.yaml`.
+
+name: Check duplicates
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  check_duplicates:
+    runs-on: ubuntu-latest
+    env:
+        title: ${{ github.event.issue.title }}
+        author: ${{ github.event.issue.user.login }}
+        number: ${{ github.event.issue.number }}
+        GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check duplicates
+        run: |
+          title=$(printf %q "${{ env.title }}")
+          issues=$(gh issue list --search '${{ title }}' --json number,title,url)
+          number=${{ env.number }}
+          issues_filtered=$(echo "$issues" | jq --arg num "$number" 'map(select(.number != ($num | tonumber)))')
+          if [ "$(echo "$issues_filtered" | jq length)" -eq 0 ]; then
+            echo "No duplicates found."
+          else
+            issues_markdown=$(echo "$issues_filtered" | jq -r '.[] | "- [" + .title + "](" + .url + ")"')
+            formatted_body=$(echo -e "@${{ env.author }}\nPossible duplication of:\n$issues_markdown")
+            gh issue comment ${{ github.event.issue.number }} --body "$formatted_body"
+          fi
