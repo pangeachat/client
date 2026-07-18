@@ -15,9 +15,14 @@ void main() {
     ),
   );
 
-  /// The gold fill: the FractionallySizedBox's DecoratedBox.
+  /// The gold fill: the DecoratedBox inside the LayoutBuilder that measures the
+  /// track and sizes the fill. The gray track is a bare DecoratedBox outside any
+  /// LayoutBuilder, so anchoring on the LayoutBuilder picks out the fill alone.
   Finder fillFinder() => find.descendant(
-    of: find.byType(FractionallySizedBox),
+    of: find.descendant(
+      of: find.byType(ProgressBarRow),
+      matching: find.byType(LayoutBuilder),
+    ),
     matching: find.byType(DecoratedBox),
   );
 
@@ -37,18 +42,36 @@ void main() {
       expect(fillSize.height, greaterThan(0));
       expect(fillSize.width, greaterThan(0));
 
-      // The fill spans the summary's fraction of the track (the row itself —
-      // FractionallySizedBox shrink-wraps its child, so it can't measure it).
+      // The fill spans the summary's fraction of the track. 3/40 of the 400px
+      // track is 30px — comfortably above the minimum-width floor below, so the
+      // fraction is what's asserted here.
       final trackWidth = tester.getSize(find.byType(ProgressBarRow)).width;
       expect(fillSize.width, moreOrLessEquals(trackWidth * 3 / 40, epsilon: 1));
     });
 
-    testWidgets('null summary renders an empty (zero-width) fill', (
+    testWidgets('a sliver of progress is floored to the bar height', (
       tester,
     ) async {
+      // 1/100 of the 400px track is 4px — a gold sliver too thin to read as a
+      // rounded pill. It is floored to the bar height (20px) instead.
+      await tester.pumpWidget(
+        wrap(
+          const ProgressBarRow(
+            summary: QuestStarSummary(earned: 1, total: 100),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(tester.getSize(fillFinder().first).width, 20.0);
+    });
+
+    testWidgets('null summary renders no fill at all', (tester) async {
+      // Zero progress draws the bare gray track: the fill is omitted entirely
+      // rather than rendered at zero width (both are invisible; this is the
+      // cheaper tree).
       await tester.pumpWidget(wrap(const ProgressBarRow(summary: null)));
       await tester.pumpAndSettle();
-      expect(tester.getSize(fillFinder().first).width, 0);
+      expect(fillFinder(), findsNothing);
     });
 
     testWidgets('full progress fills the whole track', (tester) async {
