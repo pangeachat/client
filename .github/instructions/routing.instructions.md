@@ -274,6 +274,20 @@ user came from:
 the other.** If a panel shows the wrong affordance, its tree placement or the
 context handling is wrong — fix that, not the button.
 
+**Every panel shows exactly one header, and the shared chrome is the default.**
+A panel is wrapped in the shared header (the close/back control plus its title)
+unless it explicitly opts out and renders its own — which a page may do when it
+needs chrome the shared header can't express: a leaf-specific title the token
+doesn't carry, or a trailing action. An opting-out page takes the panel's close
+control and places it in its own header, so the affordance rule above still
+holds. Two failure modes this rule exists to prevent, one on each side:
+**no header** (a page that renders none while the wrapper was dropped — the
+learner has no title and no way out, #7763) and **two headers** (a page that
+draws its own *and* gets wrapped). Because "renders its own chrome" is invisible
+to the wrapper, the opt-out is declared per page (settings:
+`SettingsPageEnum.addHeader`) and pinned by tests — a new page that forgets to
+declare gets the default, which is the safe direction.
+
 ### The navigation tree: parent, child, sibling
 
 Every surface declares where it sits in one explicit tree, in the
