@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -109,7 +110,10 @@ class SelectedCourseController extends State<SelectedCourse> {
           initialState: [
             sdk.StateEvent(
               type: PangeaEventTypes.coursePlan,
-              content: {"uuid": courseId},
+              content: CoursePlanEvent(
+                uuid: courseId,
+                l2: course.targetLanguage,
+              ).toJson(),
             ),
             sdk.StateEvent(
               type: PangeaEventTypes.courseSettings,
@@ -145,7 +149,10 @@ class SelectedCourseController extends State<SelectedCourse> {
       throw Exception("Space not found");
     }
 
-    await space.addCourseToSpace(widget.courseId);
+    await space.addCourseToSpace(
+      widget.courseId,
+      targetLanguage: course.targetLanguage,
+    );
 
     if (space.name.isEmpty) {
       await space.setName(course.name);
