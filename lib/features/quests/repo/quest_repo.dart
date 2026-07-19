@@ -19,6 +19,21 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class MissingQuestException implements Exception {}
 
+/// The single home of the per-course activity-pin rule (org quests doc,
+/// client#7748): which of a Mission's [available] activity ids count when the
+/// course pins [pinned] for it. Fail-open by design — no pin, an empty pin, or
+/// a pin whose ids are all stale (no intersection) yields [available]
+/// unchanged, so a pin can never make a Mission unsatisfiable. Consumers:
+/// [QuestOutline.restrictedTo] and the course-scoped map's marker filter.
+Set<String> effectivePinnedActivityIds(
+  Set<String> available,
+  List<String>? pinned,
+) {
+  if (pinned == null || pinned.isEmpty) return available;
+  final intersection = available.intersection(pinned.toSet());
+  return intersection.isEmpty ? available : intersection;
+}
+
 /// An activity in a quest outline: its id plus the full plan, so the card
 /// renders and a session can open without a refetch.
 class QuestActivity {
@@ -44,6 +59,42 @@ class QuestOutline {
   final QuestPlan quest;
   final List<QuestObjectiveGroup> groups;
   const QuestOutline({required this.quest, required this.groups});
+
+  /// A copy with each pinned Mission's activities filtered to its pinned set —
+  /// per-course activity pinning (org quests doc; client#7748). A PURE COPY:
+  /// the outline cache is shared across courses referencing the same quest, so
+  /// the same quest can run restricted in one course and open in another only
+  /// because this never mutates the source.
+  ///
+  /// Fail-open rules (a pin can never make a Mission unsatisfiable): a Mission
+  /// with no pin entry or an empty pinned list is unrestricted; pinned ids are
+  /// intersected with the Mission's actual activities, and an intersection
+  /// that comes up empty (all pins stale) falls back to unrestricted.
+  QuestOutline restrictedTo(Map<String, List<String>>? pinnedByObjective) {
+    if (pinnedByObjective == null || pinnedByObjective.isEmpty) return this;
+    return QuestOutline(
+      quest: quest,
+      groups: [
+        for (final group in groups)
+          _restrictGroup(group, pinnedByObjective[group.objective.id]),
+      ],
+    );
+  }
+
+  static QuestObjectiveGroup _restrictGroup(
+    QuestObjectiveGroup group,
+    List<String>? pinned,
+  ) {
+    final available = group.activities.map((a) => a.activityId).toSet();
+    final allowed = effectivePinnedActivityIds(available, pinned);
+    if (allowed.length == available.length) return group;
+    return QuestObjectiveGroup(
+      objective: group.objective,
+      activities: group.activities
+          .where((a) => allowed.contains(a.activityId))
+          .toList(),
+    );
+  }
 
   /// Project this outline into the pure [CourseLoOutline] the progression gate
   /// consumes: the quest's ordered objective ids, and per objective the set of

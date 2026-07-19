@@ -2,12 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -401,7 +403,18 @@ class WorldMapController extends State<WorldMap>
       case CourseMapContext():
         _ensureScopedCourseOutline(mapContext.coursePlanId);
         try {
-          await _pinsManager.loadCourseScopedPins(mapContext.coursePlanId);
+          // The joined course's per-Mission activity pin scopes this view's
+          // markers (org quests doc, client#7748); not joined / unset → null →
+          // unrestricted.
+          final courseRoom = Matrix.of(context).client.joinedCourseRooms
+              .firstWhereOrNull(
+                (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+              );
+          await _pinsManager.loadCourseScopedPins(
+            mapContext.coursePlanId,
+            pinnedActivitiesByObjective:
+                courseRoom?.teacherMode.pinnedActivitiesByObjective,
+          );
 
           if (!mounted) return;
           setState(() {});

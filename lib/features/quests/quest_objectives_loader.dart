@@ -71,7 +71,14 @@ class QuestObjectivesLoader {
     }
   }
 
-  Future<void> loadOutline(String? questId) async {
+  /// [pinnedActivitiesByObjective] is the course's per-Mission activity pin
+  /// (room.teacherMode) — passed by callers with a joined course room in hand;
+  /// null (previews, no room) means unrestricted, the fail-open default.
+  /// Applied as a pure copy so the shared quest-outline cache is untouched.
+  Future<void> loadOutline(
+    String? questId, {
+    Map<String, List<String>>? pinnedActivitiesByObjective,
+  }) async {
     if (_disposed) return;
 
     _loadGeneration++;
@@ -91,7 +98,9 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoading(), loadGen);
     final outlineResult = await QuestRepo.outline(questId);
-    final outline = outlineResult.result;
+    final outline = outlineResult.result?.restrictedTo(
+      pinnedActivitiesByObjective,
+    );
 
     if (_disposed) return;
 
