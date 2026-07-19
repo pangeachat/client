@@ -93,10 +93,24 @@ class FindCoursePageState extends State<FindCoursePage> {
     super.dispose();
   }
 
+  /// Clears the state that belongs to the previous catalog query.
+  ///
+  /// The language filter is a server-side query parameter, so cached results
+  /// and the pagination cursor are scoped to the language they were fetched
+  /// for. Carrying them across a filter change would re-show courses in the
+  /// old language and resume paging with a cursor from a different query.
+  void _resetQueryState() {
+    _resultsCache.clear();
+    coursePlans.clear();
+    nextBatch = null;
+    fullyLoaded = false;
+  }
+
   void setTargetLanguageFilter(LanguageModel? language) {
     if (targetLanguageFilter.value == language) return;
     targetLanguageFilter.value = language;
     visibleCourses.value = [];
+    _resetQueryState();
     loading.value = false;
     _loadGeneration++;
     if (scrollController.hasClients) {
@@ -127,9 +141,9 @@ class FindCoursePageState extends State<FindCoursePage> {
   /// Get a sorted list of cached courses that:
   /// 1) Are not already in the list of visible courses
   /// 2) Are not a course that the user is already in
-  /// 2) Have a course plan that matches the language filter
-  /// 3) Match the search term, if any exists
-  List<PublicCoursesChunk> _filterCourses(String targetLanguage) {
+  /// 3) Have a resolved plan, so a card can be rendered for them
+  /// 4) Match the search term, if any exists
+  List<PublicCoursesChunk> _filterCourses() {
     final courses = List<PublicCoursesChunk>.from(_resultsCache);
 
     // filter out already visible courses
@@ -144,21 +158,17 @@ class FindCoursePageState extends State<FindCoursePage> {
       ),
     );
 
-    // filter out rooms with 0 members
-    final nonEmptyCourses = unjoinedCourses.where(
-      (c) => c.room.numJoinedMembers > 0,
+    // Eligibility — which rooms are courses, and which language they are in —
+    // belongs to the catalog endpoint, which filters before it paginates. The
+    // only reason a returned course is dropped here is that its plan did not
+    // resolve, so there is no title to render a card with.
+    // See public-courses.instructions.md in synapse-pangea-chat.
+    final renderableCourses = unjoinedCourses.where(
+      (c) => coursePlans[c.courseId] != null,
     );
 
-    // filter out courses without relevant plans
-    final targetLanguageCourses = nonEmptyCourses.where((chunk) {
-      final course = coursePlans[chunk.courseId];
-      if (course == null) return false;
-      if (targetLanguage == "") return true;
-      return course.targetLanguage.split('-').first == targetLanguage;
-    });
-
     // filter by search term
-    List<PublicCoursesChunk> filtered = targetLanguageCourses.toList();
+    List<PublicCoursesChunk> filtered = renderableCourses.toList();
     final searchText = searchController.text.trim().toLowerCase();
     if (searchText.isNotEmpty) {
       filtered = filtered.where((chunk) {
@@ -204,33 +214,39 @@ class FindCoursePageState extends State<FindCoursePage> {
     return filtered;
   }
 
-  Future<void> loadMore({bool loadMore = false}) async {
+  /// How many courses one load should try to add before it stops.
+  static const int _pageTarget = 5;
+
+  /// Safety bound on network round trips per load. This is a guard against a
+  /// pathological catalog, not the stopping condition — stopping on a batch
+  /// count is what made "load more" give up while courses were still available
+  /// (#7542).
+  static const int _maxBatchesPerLoad = 10;
+
+  Future<void> loadMore() async {
     if (loading.value) return;
     loading.value = true;
 
     final int generation = _loadGeneration;
-    final targetLanguage = targetLanguageFilter.value?.langCodeShort ?? "";
+
+    // Measured before anything is shown, so courses surfaced from the cache
+    // count as progress for this load rather than triggering further round
+    // trips for results the user can already see.
+    final int startingCount = visibleCourses.value.length;
 
     // First, get any courses from the cache that should be visible and show
-    visibleCourses.value = [
-      ...visibleCourses.value,
-      ..._filterCourses(targetLanguage),
-    ];
+    visibleCourses.value = [...visibleCourses.value, ..._filterCourses()];
 
-    // Then, load until at least 5 courses are visible, or all courses have been loaded
-    int timesLoaded = 0;
+    int batches = 0;
     while (_loadGeneration == generation &&
         loading.value &&
-        (visibleCourses.value.length < 5 || loadMore) &&
-        timesLoaded < 4 &&
-        !fullyLoaded) {
+        !fullyLoaded &&
+        batches < _maxBatchesPerLoad &&
+        visibleCourses.value.length - startingCount < _pageTarget) {
       await _loadNextBatch();
       if (!mounted || _loadGeneration != generation) return;
-      visibleCourses.value = [
-        ...visibleCourses.value,
-        ..._filterCourses(targetLanguage),
-      ];
-      timesLoaded++;
+      visibleCourses.value = [...visibleCourses.value, ..._filterCourses()];
+      batches++;
     }
 
     // Only update loading state if this load is still the current one.
@@ -280,9 +296,13 @@ class FindCoursePageState extends State<FindCoursePage> {
 
   Future<Result<PublicCoursesResponse>> _requestPublicCourses() async {
     try {
-      final resp = await Matrix.of(
-        context,
-      ).client.requestPublicCourses(since: nextBatch);
+      final targetLanguage = targetLanguageFilter.value?.langCodeShort;
+      final resp = await Matrix.of(context).client.requestPublicCourses(
+        since: nextBatch,
+        targetLanguage: targetLanguage?.isNotEmpty == true
+            ? targetLanguage
+            : null,
+      );
       return Result.value(resp);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'nextBatch': nextBatch});
@@ -294,12 +314,14 @@ class FindCoursePageState extends State<FindCoursePage> {
     List<String> courseIds,
   ) async {
     try {
-      // world_v2: resolve each public-course id from the v3 quest-plans layer.
-      final plans = <String, CoursePlanModel>{};
-      for (final id in courseIds) {
-        final quest = await QuestPlansRepo.get(id);
-        if (quest != null) plans[id] = quest;
-      }
+      // world_v2: resolve the page's public-course ids from the v3 quest-plans
+      // layer in one request. requireMissions is false because a course whose
+      // quest has no missions is still a real course in the catalog — only the
+      // creation picker refuses those (public-courses.instructions.md, #7700).
+      final plans = await QuestPlansRepo.getMany(
+        courseIds,
+        requireMissions: false,
+      );
       return Result.value(plans);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'courseIds': courseIds});
@@ -430,35 +452,39 @@ class FindCoursePageView extends StatelessWidget {
                                   ? CircularProgressIndicator.adaptive()
                                   : !controller.fullyLoaded
                                   ? TextButton(
-                                      onPressed: () =>
-                                          controller.loadMore(loadMore: true),
+                                      onPressed: () => controller.loadMore(),
                                       child: Text(L10n.of(context).loadMore),
                                     )
                                   : SizedBox(),
                             );
                           }
                           final space = courses[index];
-                          if (controller.coursePlans[space.courseId] != null) {
-                            return AddCourseTile(
-                              chunk: space,
-                              coursePlan:
-                                  controller.coursePlans[space.courseId]!,
-                              onTap: () => context.go(
-                                WorkspaceNav.openAddCoursePage(
-                                  GoRouterState.of(context).uri,
-                                  AddCourseSubpageEnum.browse,
-                                  previewRoomId: space.room.roomId,
-                                  initialLanguageFilter: controller
-                                      .targetLanguageFilter
-                                      .value
-                                      ?.langCode,
-                                ),
-                              ),
-                              isKnock:
-                                  space.room.joinRule == JoinRules.knock.name,
-                            );
+                          final coursePlan =
+                              controller.coursePlans[space.courseId];
+                          // Only courses with a resolved plan reach this list,
+                          // so this is a defensive guard, not an expected
+                          // branch — an unrenderable course must never occupy a
+                          // row, or "load more" appears to do nothing.
+                          if (coursePlan == null) {
+                            return const SizedBox.shrink();
                           }
-                          return SizedBox();
+                          return AddCourseTile(
+                            chunk: space,
+                            coursePlan: coursePlan,
+                            onTap: () => context.go(
+                              WorkspaceNav.openAddCoursePage(
+                                GoRouterState.of(context).uri,
+                                AddCourseSubpageEnum.browse,
+                                previewRoomId: space.room.roomId,
+                                initialLanguageFilter: controller
+                                    .targetLanguageFilter
+                                    .value
+                                    ?.langCode,
+                              ),
+                            ),
+                            isKnock:
+                                space.room.joinRule == JoinRules.knock.name,
+                          );
                         },
                       ),
                     );
