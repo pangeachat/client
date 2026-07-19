@@ -14,6 +14,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -543,11 +544,21 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           .length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
-    } else if (cavityToken?.type == PanelTypesEnum.addcourse) {
+    } else if (cavityToken?.type == PanelTypesEnum.addcourse &&
+        cavityToken?.param is! AddCoursePageTokenParam) {
       // The Courses hub opens tall enough to show all joined courses (or the
       // add-course buttons when there are none), capped by maxHeightFraction —
       // no longer defaulting to half (#7692). Same joined-course predicate as
       // the hub list, so the estimate counts exactly what renders.
+      //
+      // Content-fit is the HUB's rule only. Its subpages (browse public
+      // courses, start my own, enter a code) show unrelated content that
+      // arrives asynchronously, so a height derived from the joined-course
+      // count leaves their lists too short to build a single row — browse then
+      // reads as "no courses" until the learner drags the sheet up (#7542).
+      // They fall through to the default (roughly half the screen), which is
+      // what routing.instructions.md specifies for sections other than the
+      // chats sheet and the Courses hub.
       final courseCount = joinedCourses(client, l10n).length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
