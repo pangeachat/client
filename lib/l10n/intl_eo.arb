@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:08:14.568442",
+    "@@last_modified": "2026-07-18 13:35:06.116996",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -7333,8 +7333,6 @@
     "allow": "Permesi",
     "deny": "Malpermesi",
     "enabledRenewal": "Ebligi Abonrenovigon",
-    "subscriptionEndsOn": "Abono Finiĝas Je",
-    "subscriptionRenewsOn": "Abono Renovigas Je",
     "waitForSubscriptionChanges": "Ŝanĝoj al via abono povas preni momenton por reflekti en la aplikaĵo.",
     "subscribeReadingAssistance": "Aboni por malŝlosi mesaĝajn ilojn",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9333,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi lernas...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10600,5 +10589,24 @@
     "starsToUnlockObjectiveTitle": "Steloj por Misio",
     "starsToUnlockObjectiveDesc": "Agordu la nombron da steloj necesaj por kompletigi ĉiun mision",
     "maxStarsPerMissionWarning": "Ĉi tiu kurso havas misiojn, kie nur {maxValue} steloj povas esti gajnitaj. Bonvolu enigi nombron malpli ol aŭ egala al {maxValue}.",
-    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston."
+    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston.",
+    "endPractice": "Fini ekzercon",
+    "bodyLabel": "{page} opcioj",
+    "openDM": "Malfermi rektan mesaĝon",
+    "openNewTab": "Malfermi en nova langeto",
+    "viewProfileImageLabel": "Vidi profilbildon",
+    "profileImageLabel": "Profilbildo",
+    "actionsLabel": "Agoj",
+    "colorListLabel": "Kolorlisto",
+    "chatAppearanceStyleLabel": "Babileja aspekto kun elektita stilo",
+    "volumeLabel": "Volumo",
+    "listLabel": "{description} listo",
+    "passwordFormLabel": "Formularo por ŝanĝi pasvorton",
+    "searchLanguagesHint": "Serĉi lingvojn",
+    "searchCountriesHint": "Serĉi landojn",
+    "searchVocabHint": "Serĉi vortprovizon",
+    "searchUsersHint": "Serĉi uzantojn",
+    "searchMessagesHint": "Serĉi mesaĝojn",
+    "searchChatsHint": "Serĉi babilejojn",
+    "searchActivitiesHint": "Serĉi agadojn"
 }

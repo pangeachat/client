@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-13 10:08:05.857792",
+    "@@last_modified": "2026-07-18 13:35:08.883529",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -7151,8 +7151,6 @@
     "allow": "許可",
     "deny": "拒否",
     "enabledRenewal": "サブスクリプション更新を有効にする",
-    "subscriptionEndsOn": "サブスクリプションの終了日",
-    "subscriptionRenewsOn": "サブスクリプションの更新日",
     "waitForSubscriptionChanges": "サブスクリプションの変更がアプリに反映されるまで少々お待ちください。",
     "subscribeReadingAssistance": "メッセージツールを解除するために購読する",
     "aceDisplayName": "アチネース",
@@ -7427,14 +7425,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9151,7 +9141,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "私は学んでいます...",
     "alreadySpeak": "私はすでに話せます...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10418,5 +10407,24 @@
     "starsToUnlockObjectiveTitle": "ミッションごとのスター数",
     "starsToUnlockObjectiveDesc": "各ミッションを完了するために必要なスター数を設定します",
     "maxStarsPerMissionWarning": "このコースには、獲得できるスターが{maxValue}個までのミッションがあります。{maxValue}以下の数字を入力してください。",
-    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。"
+    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。",
+    "endPractice": "練習を終了",
+    "bodyLabel": "{page}のオプション",
+    "openDM": "ダイレクトメッセージを開く",
+    "openNewTab": "新しいタブで開く",
+    "viewProfileImageLabel": "プロフィール画像を見る",
+    "profileImageLabel": "プロフィール画像",
+    "actionsLabel": "アクション",
+    "colorListLabel": "色リスト",
+    "chatAppearanceStyleLabel": "選択したスタイルでのチャット表示",
+    "volumeLabel": "音量",
+    "listLabel": "{description}リスト",
+    "passwordFormLabel": "パスワード変更フォーム",
+    "searchLanguagesHint": "言語を検索",
+    "searchCountriesHint": "国を検索",
+    "searchVocabHint": "語彙を検索",
+    "searchUsersHint": "ユーザーを検索",
+    "searchMessagesHint": "メッセージを検索",
+    "searchChatsHint": "チャットを検索",
+    "searchActivitiesHint": "アクティビティを検索"
 }

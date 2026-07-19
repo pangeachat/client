@@ -44,25 +44,9 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  ListenableBuilder(
-                    listenable: controller.notifier,
-                    builder: (context, _) {
-                      final enabled =
-                          exercise != null &&
-                          !controller.notifier.exerciseComplete(exercise);
-
-                      return Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          tooltip: L10n.of(context).feedbackButton,
-                          icon: Icon(Icons.flag_outlined),
-                          onPressed: enabled
-                              ? () => controller.flagExercise(exercise)
-                              : null,
-                        ),
-                      );
-                    },
-                  ),
+                  // The feedback flag lives in the practice header
+                  // (AnalyticsPracticeView), right-justified.
+                  const SizedBox(height: 8.0),
                   //Hints counter bar for grammar activities only
                   if (controller.widget.type == ConstructTypeEnum.morph)
                     Padding(

@@ -3548,7 +3548,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-13 10:04:17.126223",
+    "@@last_modified": "2026-07-18 13:35:06.251323",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6550,8 +6550,6 @@
     "allow": "Salli",
     "deny": "Hylkää",
     "enabledRenewal": "Ota käyttöön tilauksen uusiminen",
-    "subscriptionEndsOn": "Tilauksen päättymispäivä",
-    "subscriptionRenewsOn": "Tilauksen uusimispäivä",
     "waitForSubscriptionChanges": "Muutokset tilauksessasi saattavat kestää hetken näkyä sovelluksessa.",
     "subscribeReadingAssistance": "Tilaa avustustyökalujen avaamiseksi",
     "aceDisplayName": "Achinese",
@@ -6826,14 +6824,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8419,7 +8409,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Olen oppimassa...",
     "alreadySpeak": "Puhun jo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9686,5 +9675,24 @@
     "starsToUnlockObjectiveTitle": "Tähtiä per tehtävä",
     "starsToUnlockObjectiveDesc": "Aseta tähtien määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "maxStarsPerMissionWarning": "Tällä kurssilla on tehtäviä, joissa voi ansaita vain {maxValue} tähteä. Anna luku, joka on pienempi tai yhtä suuri kuin {maxValue}.",
-    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi."
+    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi.",
+    "endPractice": "Lopeta harjoitus",
+    "bodyLabel": "{page}-asetukset",
+    "openDM": "Avaa suora viesti",
+    "openNewTab": "Avaa uudessa välilehdessä",
+    "viewProfileImageLabel": "Näytä profiilikuva",
+    "profileImageLabel": "Profiilikuva",
+    "actionsLabel": "Toiminnot",
+    "colorListLabel": "Värilista",
+    "chatAppearanceStyleLabel": "Keskustelun ulkoasu valitulla tyylillä",
+    "volumeLabel": "Äänenvoimakkuus",
+    "listLabel": "{description}-lista",
+    "passwordFormLabel": "Vaihda salasana -lomake",
+    "searchLanguagesHint": "Hae kieliä",
+    "searchCountriesHint": "Hae maita",
+    "searchVocabHint": "Hae sanastoa",
+    "searchUsersHint": "Hae käyttäjiä",
+    "searchMessagesHint": "Hae viestejä",
+    "searchChatsHint": "Hae keskusteluja",
+    "searchActivitiesHint": "Hae aktiviteetteja"
 }

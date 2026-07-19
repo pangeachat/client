@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-13 10:04:45.764465",
+    "@@last_modified": "2026-07-18 13:35:13.331470",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -7333,8 +7333,6 @@
     "allow": "Povoliť",
     "deny": "Odmietnuť",
     "enabledRenewal": "Povoliť obnovenie predplatného",
-    "subscriptionEndsOn": "Predplatné končí dňa",
-    "subscriptionRenewsOn": "Predplatné sa obnoví dňa",
     "waitForSubscriptionChanges": "Zmeny vo vašom predplatnom sa môžu chvíľu odrážať v aplikácii.",
     "subscribeReadingAssistance": "Prihláste sa na odomknutie nástrojov na správu správ",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9333,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učím sa...",
     "alreadySpeak": "Už hovorím...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10600,5 +10589,24 @@
     "starsToUnlockObjectiveTitle": "Hviezdy za misiu",
     "starsToUnlockObjectiveDesc": "Nastavte počet hviezd potrebných na dokončenie každej misie",
     "maxStarsPerMissionWarning": "Tento kurz má misie, kde je možné získať iba {maxValue} hviezd. Zadajte číslo menšie alebo rovné {maxValue}.",
-    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa."
+    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa.",
+    "endPractice": "Ukončiť cvičenie",
+    "bodyLabel": "Možnosti {page}",
+    "openDM": "Otvoriť priamu správu",
+    "openNewTab": "Otvoriť na novej karte",
+    "viewProfileImageLabel": "Zobraziť profilový obrázok",
+    "profileImageLabel": "Profilový obrázok",
+    "actionsLabel": "Akcie",
+    "colorListLabel": "Zoznam farieb",
+    "chatAppearanceStyleLabel": "Vzhľad chatu so zvoleným štýlom",
+    "volumeLabel": "Hlasitosť",
+    "listLabel": "Zoznam {description}",
+    "passwordFormLabel": "Formulár na zmenu hesla",
+    "searchLanguagesHint": "Hľadať jazyky",
+    "searchCountriesHint": "Hľadať krajiny",
+    "searchVocabHint": "Hľadať slovnú zásobu",
+    "searchUsersHint": "Hľadať používateľov",
+    "searchMessagesHint": "Hľadať správy",
+    "searchChatsHint": "Hľadať chaty",
+    "searchActivitiesHint": "Hľadať aktivity"
 }

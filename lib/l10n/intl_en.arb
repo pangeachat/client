@@ -3966,8 +3966,6 @@
     "allow": "Allow",
     "deny": "Deny",
     "enabledRenewal": "Enable Subscription Renewal",
-    "subscriptionEndsOn": "Subscription Ends On",
-    "subscriptionRenewsOn": "Subscription Renews On",
     "waitForSubscriptionChanges": "Changes to your subscription may take a moment to reflect in the app.",
     "subscribeReadingAssistance": "Subscribe to unlock message tools",
     "aceDisplayName": "Achinese",
@@ -4258,6 +4256,7 @@
     "youLeftTheChat": "🚪 You left the chat",
     "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
     "exitPractice": "Your practice session progress won't be saved.",
+    "endPractice": "End practice",
     "practiceGrammar": "Practice grammar",
     "notEnoughToPractice": "Send more messages to unlock practice",
     "constructUseCorGCDesc": "Correct grammar category practice",
@@ -4362,7 +4361,7 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
     "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
     "learningAnalytics": "Learning analytics",
-    "searchLanguagesHint": "I am learning...",
+    "searchLanguagesHint": "Search languages",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
@@ -4645,5 +4644,107 @@
             }
         }
     },
-    "closeAddCoursePage": "Close add course page"
+    "closeAddCoursePage": "Close add course page",
+    "constructUseSugDesc": "Accepted suggestions",
+    "mostPopular": "Most popular",
+    "mostSavings": "Most savings",
+    "enterDiscountCode": "Enter discount code",
+    "yourPlan": "Your plan",
+    "subscriptionRenewsOn": "Renews on {date}",
+    "@subscriptionRenewsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "subscriptionEndsOn": "Ends on {date}",
+    "@subscriptionEndsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "promoSubscription": "Promotional Subscription",
+    "seatSubscription": "Institutional Seat",
+    "lifetimeSubscription": "Lifetime subscription",
+    "freeSubscription": "FREE",
+    "freeTrialDescription": "You have a free trial",
+    "manage": "Manage",
+    "subscriptionHistory": "Subscription History",
+    "history": "History",
+    "noPaymentHistoryFound": "No payment history found",
+    "cancelAnytime": "Cancel at any time in subscription settings",
+    "pricePerMonth": "{price}/month",
+    "@pricePerMonth": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            }
+        }
+    },
+    "pricePerYear": "{price}/year",
+    "@pricePerYear": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            }
+        }
+    },
+    "viewSubscriptionOptions": "View subscription options",
+    "apply": "Apply",
+    "continueToSubscribe": "Continue to subscribe",
+    "invalidDiscountCode": "Invalid discount code",
+    "selectDiscountPlan": "Select discount plan",
+    "discountApplied": "{discount} discount applied",
+    "@discountApplied": {
+        "placeholders": {
+            "discount": {
+                "type": "String"
+            }
+        }
+    },
+    "cancelDescriptionWithRenewalDate": "Your subscription will be active until it’s renewal date ({date}), then deactivate. You’ll retain analytics but be unable to use pro features.",
+    "@cancelDescriptionWithRenewalDate": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features.",
+    "change": "Change",
+    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?",
+    "bodyLabel": "{page} options",
+    "@bodyLabel": {
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
+    "openDM": "Open direct message",
+    "openNewTab": "Open in new tab",
+    "viewProfileImageLabel": "View profile image",
+    "profileImageLabel": "Profile image",
+    "actionsLabel": "Actions",
+    "colorListLabel": "Color list",
+    "chatAppearanceStyleLabel": "Chat appearance with chosen style",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} list",
+    "@listLabel": {
+        "placeholders": {
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordFormLabel": "Change password form",
+    "searchCountriesHint": "Search countries",
+    "searchVocabHint": "Search vocab",
+    "searchUsersHint": "Search users",
+    "searchMessagesHint": "Search messages",
+    "searchChatsHint": "Search chats",
+    "searchActivitiesHint": "Search activities"
 }

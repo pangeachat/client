@@ -214,7 +214,7 @@ scripts/use-env.sh local      # or: staging
 
 **MUST READ** [matrix-auth.instructions.md](../../instructions/matrix-auth.instructions.md) for the profile rules (why `.env` is never edited in place, and the credentials each profile must carry).
 
-Profile contents: `CHOREO_API_KEY` is identical in both. **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the Matrix access token as the CMS bearer and the CMS validates it against *its own* homeserver — a mismatched pair (local `@learner` token against staging CMS, or vice-versa) returns **403** and content silently fails to load.
+Profile contents: **`CMS_API` must match the `SYNAPSE_URL` environment**: the client sends the Matrix access token as the CMS bearer and the CMS validates it against *its own* homeserver — a mismatched pair (local `@learner` token against staging CMS, or vice-versa) returns **403** and content silently fails to load.
 
 | Key | `.env.local` | `.env.staging` |
 |---|---|---|

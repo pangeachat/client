@@ -79,8 +79,10 @@ class WorldMapPinsManager {
   /// networked space-hierarchy + room_preview reads).
   bool _discovering = false;
 
-  /// Epoch ms of the last discovery run — throttles the server reads so an active
-  /// sync stream doesn't re-poll the hierarchy every couple of seconds.
+  /// Epoch ms of the last discovery run — throttles the server reads so the two
+  /// triggers (sync ticks and camera settles while panning) don't re-poll the
+  /// hierarchy on every event. 3s keeps the matrix's live facts feeling current
+  /// while scrolling without multiplying the preview reads.
   int _lastDiscoveryMs = 0;
 
   /// Joinable facts for open sessions others started in the learner's joined
@@ -205,14 +207,15 @@ class WorldMapPinsManager {
   ///
   /// Each candidate is room_preview'd and emits a joinable fact while it is
   /// live, unfinished, and has a free seat. Best-effort, networked, and
-  /// throttled off the sync cadence.
+  /// throttled — triggered off sync ticks AND camera settles (panning to a new
+  /// viewport should rank against current live facts, not wait for a sync).
   Future<void> discoverCoursemateSessions(Client client) async {
     if (_discovering) return;
     final invitedSessionIds = client.invitedActivitySessionRoomIds;
     // Not synced yet — retry on the next trigger without spending the throttle.
     if (client.joinedCourseRooms.isEmpty && invitedSessionIds.isEmpty) return;
     final nowMs = DateTime.now().millisecondsSinceEpoch;
-    if (nowMs - _lastDiscoveryMs < 8000) return;
+    if (nowMs - _lastDiscoveryMs < 3000) return;
     _discovering = true;
     _lastDiscoveryMs = nowMs;
     try {

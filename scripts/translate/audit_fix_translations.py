@@ -17,6 +17,11 @@ Usage:
   # --dry reports proposed changes without writing; --limit N reviews first N keys
 """
 
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["google-genai>=1.0", "google-auth"]
+# ///
+
 import argparse
 import json
 import os
@@ -28,6 +33,8 @@ from pathlib import Path
 from google import genai
 from google.genai import errors as genai_errors
 from google.genai import types
+
+from translate_gemini import CMS_LANGUAGES_URL, fetch_cms_languages, resolve_display_name
 
 MODEL = "gemini-2.5-pro"
 BATCH = 50
@@ -123,7 +130,8 @@ def review_batch(client, name, items: dict) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", required=True)
-    ap.add_argument("--name", required=True)
+    ap.add_argument("--name", help="prompt language name; omit to resolve from the CMS language list")
+    ap.add_argument("--cms-url", default=CMS_LANGUAGES_URL)
     ap.add_argument("--l10n", default="lib/l10n")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--dry", action="store_true", help="report proposed changes, don't write")
@@ -137,12 +145,14 @@ def main() -> None:
         keys = keys[: args.limit]
 
     client = vertex_client()
+    docs = [] if args.name else fetch_cms_languages(args.cms_url)
+    name = resolve_display_name(args.lang, docs, explicit=args.name)
     final: dict[str, str] = {}
     errors: list[str] = []
     for i in range(0, len(keys), BATCH):
         chunk = keys[i : i + BATCH]
         items = {k: {"english": en[k], "current": cur.get(k)} for k in chunk}
-        out = review_batch(client, args.name, items)
+        out = review_batch(client, name, items)
         for k in chunk:
             v = out.get(k)
             err = validate(en[k], v)

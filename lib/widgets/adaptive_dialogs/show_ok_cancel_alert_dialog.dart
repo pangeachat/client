@@ -34,15 +34,19 @@ Future<OkCancelResult?> showOkCancelAlertDialog({
       constraints: const BoxConstraints(maxWidth: 256),
       child: message == null
           ? null
-          : SelectableLinkify(
-              text: message,
-              textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
-              linkStyle: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                decorationColor: Theme.of(context).colorScheme.primary,
+          : Semantics(
+              label: message,
+              container: true,
+              child: SelectableLinkify(
+                text: message,
+                textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
+                linkStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  decorationColor: Theme.of(context).colorScheme.primary,
+                ),
+                options: const LinkifyOptions(humanize: false),
+                onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
               ),
-              options: const LinkifyOptions(humanize: false),
-              onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
             ),
     ),
     actions: [

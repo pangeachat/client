@@ -3418,7 +3418,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-13 10:08:00.885569",
+    "@@last_modified": "2026-07-18 13:35:06.174131",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -7263,8 +7263,6 @@
     "allow": "Επιτρέπω",
     "deny": "Αρνούμαι",
     "enabledRenewal": "Ενεργοποίηση Ανανέωσης Συνδρομής",
-    "subscriptionEndsOn": "Η Συνδρομή Λήγει Στις",
-    "subscriptionRenewsOn": "Η Συνδρομή Ανανεώνεται Στις",
     "waitForSubscriptionChanges": "Οι αλλαγές στη συνδρομή σας μπορεί να χρειαστούν λίγο χρόνο για να εμφανιστούν στην εφαρμογή.",
     "subscribeReadingAssistance": "Εγγραφείτε για να ξεκλειδώσετε τα εργαλεία μηνυμάτων",
     "aceDisplayName": "Αχινέζικα",
@@ -7539,14 +7537,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9263,7 +9253,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Μαθαίνω...",
     "alreadySpeak": "Ήδη μιλάω...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10530,5 +10519,24 @@
     "starsToUnlockObjectiveTitle": "Αστέρια ανά αποστολή",
     "starsToUnlockObjectiveDesc": "Ορίστε τον αριθμό των αστεριών που απαιτούνται για την ολοκλήρωση κάθε αποστολής",
     "maxStarsPerMissionWarning": "Αυτό το μάθημα έχει αποστολές όπου μπορούν να κερδηθούν μόνο {maxValue} αστέρια. Εισαγάγετε έναν αριθμό μικρότερο ή ίσο του {maxValue}.",
-    "removedFromCourseError": "Έχετε αφαιρεθεί από αυτό το μάθημα. Επικοινωνήστε με τον δάσκαλό σας."
+    "removedFromCourseError": "Έχετε αφαιρεθεί από αυτό το μάθημα. Επικοινωνήστε με τον δάσκαλό σας.",
+    "endPractice": "Τερματισμός εξάσκησης",
+    "bodyLabel": "Επιλογές {page}",
+    "openDM": "Άνοιγμα προσωπικού μηνύματος",
+    "openNewTab": "Άνοιγμα σε νέα καρτέλα",
+    "viewProfileImageLabel": "Προβολή εικόνας προφίλ",
+    "profileImageLabel": "Εικόνα προφίλ",
+    "actionsLabel": "Ενέργειες",
+    "colorListLabel": "Λίστα χρωμάτων",
+    "chatAppearanceStyleLabel": "Εμφάνιση συνομιλίας με επιλεγμένο στυλ",
+    "volumeLabel": "Ένταση",
+    "listLabel": "Λίστα {description}",
+    "passwordFormLabel": "Φόρμα αλλαγής κωδικού πρόσβασης",
+    "searchLanguagesHint": "Αναζήτηση γλωσσών",
+    "searchCountriesHint": "Αναζήτηση χωρών",
+    "searchVocabHint": "Αναζήτηση λεξιλογίου",
+    "searchUsersHint": "Αναζήτηση χρηστών",
+    "searchMessagesHint": "Αναζήτηση μηνυμάτων",
+    "searchChatsHint": "Αναζήτηση συνομιλιών",
+    "searchActivitiesHint": "Αναζήτηση δραστηριοτήτων"
 }

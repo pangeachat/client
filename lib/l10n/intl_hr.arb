@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-13 10:04:55.184201",
+    "@@last_modified": "2026-07-18 13:35:07.861947",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -6818,8 +6818,6 @@
     "allow": "Dopusti",
     "deny": "Odbij",
     "enabledRenewal": "Omogući obnavljanje pretplate",
-    "subscriptionEndsOn": "Pretplata završava",
-    "subscriptionRenewsOn": "Pretplata se obnavlja",
     "waitForSubscriptionChanges": "Promjene na vašoj pretplati mogu potrajati trenutak da se odraze u aplikaciji.",
     "subscribeReadingAssistance": "Pretplatite se za otključavanje alata za poruke",
     "aceDisplayName": "Achinese",
@@ -7094,14 +7092,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8818,7 +8808,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učim...",
     "alreadySpeak": "Već govorim...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10085,5 +10074,24 @@
     "starsToUnlockObjectiveTitle": "Zvijezde po misiji",
     "starsToUnlockObjectiveDesc": "Postavite broj zvjezdica potrebnih za dovršetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj tečaj ima misije gdje se može zaraditi samo {maxValue} zvjezdica. Unesite broj manji ili jednak {maxValue}.",
-    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju."
+    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju.",
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "Opcije {page}",
+    "openDM": "Otvori izravnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Prikaži sliku profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Radnje",
+    "colorListLabel": "Popis boja",
+    "chatAppearanceStyleLabel": "Izgled chata s odabranim stilom",
+    "volumeLabel": "Glasnoća",
+    "listLabel": "Popis {description}",
+    "passwordFormLabel": "Obrazac za promjenu lozinke",
+    "searchLanguagesHint": "Pretraži jezike",
+    "searchCountriesHint": "Pretraži zemlje",
+    "searchVocabHint": "Pretraži rječnik",
+    "searchUsersHint": "Pretraži korisnike",
+    "searchMessagesHint": "Pretraži poruke",
+    "searchChatsHint": "Pretraži razgovore",
+    "searchActivitiesHint": "Pretraži aktivnosti"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:42.902939",
+    "@@last_modified": "2026-07-18 13:35:08.878537",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -6485,8 +6485,6 @@
     "allow": "Consenti",
     "deny": "Nega",
     "enabledRenewal": "Abilita il rinnovo dell'abbonamento",
-    "subscriptionEndsOn": "L'abbonamento scade il",
-    "subscriptionRenewsOn": "L'abbonamento si rinnova il",
     "waitForSubscriptionChanges": "Le modifiche al tuo abbonamento potrebbero richiedere un momento per riflettersi nell'app.",
     "subscribeReadingAssistance": "Abbonati per sbloccare gli strumenti di messaggistica",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6759,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8455,7 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Sto imparando...",
     "alreadySpeak": "Parlo già...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9722,5 +9711,24 @@
     "starsToUnlockObjectiveTitle": "Stelle per missione",
     "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
     "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
-    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante."
+    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante.",
+    "endPractice": "Termina pratica",
+    "bodyLabel": "Opzioni {page}",
+    "openDM": "Apri messaggio diretto",
+    "openNewTab": "Apri in una nuova scheda",
+    "viewProfileImageLabel": "Visualizza immagine del profilo",
+    "profileImageLabel": "Immagine del profilo",
+    "actionsLabel": "Azioni",
+    "colorListLabel": "Elenco colori",
+    "chatAppearanceStyleLabel": "Aspetto della chat con lo stile scelto",
+    "volumeLabel": "Volume",
+    "listLabel": "Elenco {description}",
+    "passwordFormLabel": "Modulo cambio password",
+    "searchLanguagesHint": "Cerca lingue",
+    "searchCountriesHint": "Cerca paesi",
+    "searchVocabHint": "Cerca vocaboli",
+    "searchUsersHint": "Cerca utenti",
+    "searchMessagesHint": "Cerca messaggi",
+    "searchChatsHint": "Cerca chat",
+    "searchActivitiesHint": "Cerca attività"
 }

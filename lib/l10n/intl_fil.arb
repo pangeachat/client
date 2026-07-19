@@ -2090,7 +2090,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-13 10:06:35.878567",
+    "@@last_modified": "2026-07-18 13:35:06.903117",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -7243,8 +7243,6 @@
     "allow": "Pahintulutan",
     "deny": "Tanggihan",
     "enabledRenewal": "Paganahin ang Pag-renew ng Subscription",
-    "subscriptionEndsOn": "Nagtatapos ang Subscription Sa",
-    "subscriptionRenewsOn": "Nag-renew ang Subscription Sa",
     "waitForSubscriptionChanges": "Ang mga pagbabago sa iyong subscription ay maaaring magtagal ng kaunti upang magpakita sa app.",
     "subscribeReadingAssistance": "Mag-subscribe upang i-unlock ang mga tool sa mensahe",
     "aceDisplayName": "Achinese",
@@ -7519,14 +7517,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9248,7 +9238,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Nag-aaral ako ng...",
     "alreadySpeak": "Nagsasalita na ako ng...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10515,5 +10504,24 @@
     "starsToUnlockObjectiveTitle": "Mga Bituin bawat Misyon",
     "starsToUnlockObjectiveDesc": "Itakda ang bilang ng mga bituin na kailangan upang makumpleto ang bawat misyon",
     "maxStarsPerMissionWarning": "Ang kursong ito ay may mga misyon kung saan {maxValue} na bituin lamang ang maaaring makuha. Mangyaring maglagay ng numero na mas mababa o katumbas ng {maxValue}.",
-    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro."
+    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro.",
+    "endPractice": "Tapusin ang pagsasanay",
+    "bodyLabel": "{page} na opsyon",
+    "openDM": "Buksan ang direktang mensahe",
+    "openNewTab": "Buksan sa bagong tab",
+    "viewProfileImageLabel": "Tingnan ang larawan sa profile",
+    "profileImageLabel": "Larawan sa profile",
+    "actionsLabel": "Mga Aksyon",
+    "colorListLabel": "Listahan ng kulay",
+    "chatAppearanceStyleLabel": "Hitsura ng chat na may napiling istilo",
+    "volumeLabel": "Volume",
+    "listLabel": "Listahan ng {description}",
+    "passwordFormLabel": "Form sa pagpapalit ng password",
+    "searchLanguagesHint": "Maghanap ng mga wika",
+    "searchCountriesHint": "Maghanap ng mga bansa",
+    "searchVocabHint": "Maghanap ng bokabularyo",
+    "searchUsersHint": "Maghanap ng mga user",
+    "searchMessagesHint": "Maghanap ng mga mensahe",
+    "searchChatsHint": "Maghanap ng mga chat",
+    "searchActivitiesHint": "Maghanap ng mga aktibidad"
 }

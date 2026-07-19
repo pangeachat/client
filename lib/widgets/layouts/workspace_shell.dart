@@ -200,178 +200,192 @@ class WorkspaceShell extends StatelessWidget {
 
     final screenPadding = MediaQuery.viewPaddingOf(context);
 
-    return ScaffoldMessenger(
-      child: Scaffold(
-        // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
-        // widget (rail + expandable cavity) stacked over the map below, so it
-        // can grow upward and let the map show through around it. See
-        // `routing.instructions.md` → Single-column bottom nav.
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            /// Persistent world map — the base layer everything overlays. Overlays pad the
-            /// camera so a course fit lands in the exposed area: left = rail + column +
-            /// detail; right = the panel zone.
-            WorldMap(
-              key: _persistentWorldMapKey,
-              leftOverlayWidth: l.mapLeftOverlay,
-              rightOverlayWidth: l.allocation.mapRightOverlay,
-              availableVisibleMapWidth: l.availableVisibleMapWidth,
-              focus: mapFocusFor(state),
-            ),
-
-            /// The route canvas, as one stable child so the sideView Navigator never
-            /// remounts when the canvas mode changes:
-            ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
-            ///  • detail → capped, bounded by the right panel zone; map peeks (a
-            ///    route-driven page — a course-wizard step, a public-course preview, a
-            ///    chat archive; the activity plan is a left panel now, not here).
-            Positioned(
-              left: l.leftInset,
-              top: 0,
-              bottom: 0,
-              right: l.canvas == CanvasMode.detail ? null : 0,
-              width: l.canvas == CanvasMode.detail ? l.detailWidth : null,
-              child: Offstage(
-                // A map hole shows the full map through (the world root, or an
-                // activity / room / course riding over it as a left panel).
-                // Otherwise the center detail (a course-wizard step, a
-                // public-course preview, a chat archive) gets the same floating-card
-                // chrome as the column panels via [PanelCard].
-                offstage: l.canvas == CanvasMode.mapHole,
-                child: l.canvas == CanvasMode.detail
-                    ? PanelCard(child: l.canvasChild)
-                    : l.canvasChild,
-              ),
-            ),
-
-            /// The narrow floating nav widget: the 4-item rail with the
-            /// expandable cavity above it hosting the focused section surface
-            /// (the chat list, the Courses hub, a course card) bare — the widget
-            /// is the card. Hidden while a map-pin preview sheet is open (the
-            /// map owns that selection; the notifier carries the signal up), and
-            /// entirely absent under a focused full-screen surface. See
-            /// `routing.instructions.md` → Single-column bottom nav.
-            if (l.navWidgetVisible)
-              ValueListenableBuilder<bool>(
-                valueListenable: WorldMapPinsManager.notifier,
-                builder: (context, pinSheetOpen, child) =>
-                    pinSheetOpen ? const SizedBox.shrink() : child!,
-                child: _MobileNavLayer(state: state, layout: l),
+    return Semantics(
+      label: L10n.of(context).home,
+      child: ScaffoldMessenger(
+        child: Scaffold(
+          // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
+          // widget (rail + expandable cavity) stacked over the map below, so it
+          // can grow upward and let the map show through around it. See
+          // `routing.instructions.md` → Single-column bottom nav.
+          body: Stack(
+            fit: StackFit.expand,
+            children: [
+              /// Persistent world map — the base layer everything overlays. Overlays pad the
+              /// camera so a course fit lands in the exposed area: left = rail + column +
+              /// detail; right = the panel zone.
+              WorldMap(
+                key: _persistentWorldMapKey,
+                leftOverlayWidth: l.mapLeftOverlay,
+                rightOverlayWidth: l.allocation.mapRightOverlay,
+                bottomOverlayHeight: l.mapBottomOverlay,
+                availableVisibleMapWidth: l.availableVisibleMapWidth,
+                focus: mapFocusFor(state),
               ),
 
-            /// The nav rail must size to its content, NOT fill the Stack: this Stack is
-            /// StackFit.expand, which forces non-positioned children to full size — and the
-            /// rail's root (opaque-canvas) Material would then paint over the entire
-            /// persistent map below it (blank map; mobile was fine because the rail is
-            /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
-            /// stays full-bleed behind it.
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(_ShellLayout.chromeMargin),
-                child: SpacesNavigationRail(
-                  state: state,
-                  showNavRail: l.navRail,
-                  naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-                  activeSpaceId: activeSpaceIdFor(state.uri),
+              /// The route canvas, as one stable child so the sideView Navigator never
+              /// remounts when the canvas mode changes:
+              ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
+              ///  • detail → capped, bounded by the right panel zone; map peeks (a
+              ///    route-driven page — a course-wizard step, a public-course preview, a
+              ///    chat archive; the activity plan is a left panel now, not here).
+              Positioned(
+                left: l.leftInset,
+                top: 0,
+                bottom: 0,
+                right: l.canvas == CanvasMode.detail ? null : 0,
+                width: l.canvas == CanvasMode.detail ? l.detailWidth : null,
+                child: Offstage(
+                  // A map hole shows the full map through (the world root, or an
+                  // activity / room / course riding over it as a left panel).
+                  // Otherwise the center detail (a course-wizard step, a
+                  // public-course preview, a chat archive) gets the same floating-card
+                  // chrome as the column panels via [PanelCard].
+                  offstage: l.canvas == CanvasMode.mapHole,
+                  child: l.canvas == CanvasMode.detail
+                      ? PanelCard(child: l.canvasChild)
+                      : l.canvasChild,
                 ),
               ),
-            ),
 
-            /// Left-column panels (the chat list, a live room, a course, the
-            /// settings/profile menu) from `?left=`, each at its allocator slot. The
-            /// floating-card chrome AND margin live in [PanelCard] (inside
-            /// WorkspaceLeftPanel), shared with the right column and the center detail.
-            /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
-            /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
-            /// its ChatController repositions rather than remounts when the slot moves.
-            ...[
-              for (var i = 0; i < l.leftTokens.length; i++)
-                // Skip the cavity-hosted surface (the chat list, the Courses
-                // hub, a course card) — it renders inside the nav widget's
-                // cavity, not as a full-screen left panel (no double-render).
-                if (i != l.cavityIndex &&
-                    l.allocation.left[i].vis != PanelVis.hidden)
-                  Positioned(
-                    key: ValueKey(l.leftTokens[i].encode()),
-                    // Respect the top safe-area inset so the panel's close/back control
-                    // isn't cut off under the system top bar (#7143). PanelCard's own 12px
-                    // top margin equals the cluster's chromeMargin, so this aligns the
-                    // panel content with the safe-area-respecting top-right cluster. No-op
-                    // where there is no top inset (desktop/web).
-                    top: MediaQuery.viewPaddingOf(context).top,
-                    bottom: 0,
-                    left: l.allocation.left[i].left,
-                    width: l.allocation.left[i].width,
-                    child: LeftPanelLayer(
-                      token: l.leftTokens[i],
-                      state: state,
-                      foldedOver: l.allocation.left[i].foldedOver,
-                      getRoomKey: _roomKeyFor,
-                    ),
+              /// The narrow floating nav widget: the 4-item rail with the
+              /// expandable cavity above it hosting the focused section surface
+              /// (the chat list, the Courses hub, a course card) bare — the widget
+              /// is the card. Hidden while a map-pin preview sheet is open (the
+              /// map owns that selection; the notifier carries the signal up), and
+              /// entirely absent under a focused full-screen surface. See
+              /// `routing.instructions.md` → Single-column bottom nav.
+              if (l.navWidgetVisible)
+                ValueListenableBuilder<bool>(
+                  valueListenable: WorldMapPinsManager.notifier,
+                  builder: (context, pinSheetOpen, child) =>
+                      pinSheetOpen ? const SizedBox.shrink() : child!,
+                  child: _MobileNavLayer(state: state, layout: l),
+                ),
+
+              /// The nav rail must size to its content, NOT fill the Stack: this Stack is
+              /// StackFit.expand, which forces non-positioned children to full size — and the
+              /// rail's root (opaque-canvas) Material would then paint over the entire
+              /// persistent map below it (blank map; mobile was fine because the rail is
+              /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
+              /// stays full-bleed behind it.
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(_ShellLayout.chromeMargin),
+                  child: SpacesNavigationRail(
+                    state: state,
+                    showNavRail: l.navRail,
+                    naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                    activeSpaceId: activeSpaceIdFor(state.uri),
                   ),
-            ],
+                ),
+              ),
 
-            /// Right-column panels (analytics summary, a vocab/grammar detail, a
-            /// completed-activity review) from `?right=`, each placed at its allocator
-            /// slot. The slots tile and never overlap by construction; a folded slot is
-            /// `hidden` (not drawn), its content one back-step away on the higher-priority
-            /// sibling that stayed.
-            ...[
-              for (var i = 0; i < l.rightTokens.length; i++)
-                if (l.allocation.right[i].vis != PanelVis.hidden)
-                  Positioned(
-                    // Keyed by token so a left-column open/close (which shifts sibling
-                    // indices in this Stack) reconciles the right panel by identity, not
-                    // position — otherwise its stateful content (analytics, a detail) would
-                    // remount and re-fetch.
-                    key: ValueKey(l.rightTokens[i].encode()),
-                    // Respect the top safe-area inset so the close/back control clears the
-                    // system top bar (#7143). On narrow the analytics bar heads the panel
-                    // ("the analytics bar itself remains visible at the top throughout" —
-                    // routing.instructions.md), so the panel starts below it.
-                    top:
-                        MediaQuery.viewPaddingOf(context).top +
-                        (l.isColumnMode
-                            ? 0.0
-                            : _ShellLayout.analyticsBarAllowance),
-                    bottom: 0,
-                    left: l.allocation.right[i].left,
-                    width: l.allocation.right[i].width,
-                    child: FocusTraversalGroup(
-                      policy: OrderedTraversalPolicy(),
-                      child: WorkspaceRightPanel(
-                        token: l.rightTokens[i],
-                        currentUri: state.uri,
-                        foldedOver: l.allocation.right[i].foldedOver,
+              /// Left-column panels (the chat list, a live room, a course, the
+              /// settings/profile menu) from `?left=`, each at its allocator slot. The
+              /// floating-card chrome AND margin live in [PanelCard] (inside
+              /// WorkspaceLeftPanel), shared with the right column and the center detail.
+              /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
+              /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
+              /// its ChatController repositions rather than remounts when the slot moves.
+              ...[
+                for (var i = 0; i < l.leftTokens.length; i++)
+                  // Skip the cavity-hosted surface (the chat list, the Courses
+                  // hub, a course card) — it renders inside the nav widget's
+                  // cavity, not as a full-screen left panel (no double-render).
+                  if (i != l.cavityIndex &&
+                      l.allocation.left[i].vis != PanelVis.hidden)
+                    Positioned(
+                      key: ValueKey(l.leftTokens[i].encode()),
+                      // The narrow full-screen focus (a live room / session) is
+                      // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
+                      // app bar absorbs the status-bar inset, and skipping the
+                      // shell's extra safe-area offset removes the doubled top
+                      // padding (#7554). Column-mode / non-focused panels keep
+                      // the card and respect the top inset so their close/back
+                      // control clears the system top bar (#7143); PanelCard's
+                      // 12px top margin aligns them with the top-right cluster.
+                      top:
+                          !l.isColumnMode &&
+                              l.allocation.left[i].vis == PanelVis.full
+                          ? 0.0
+                          : MediaQuery.viewPaddingOf(context).top,
+                      bottom: 0,
+                      left: l.allocation.left[i].left,
+                      width: l.allocation.left[i].width,
+                      child: LeftPanelLayer(
+                        token: l.leftTokens[i],
+                        state: state,
+                        foldedOver: l.allocation.left[i].foldedOver,
+                        getRoomKey: _roomKeyFor,
+                        bare:
+                            !l.isColumnMode &&
+                            l.allocation.left[i].vis == PanelVis.full,
                       ),
                     ),
-                  ),
-            ],
+              ],
 
-            /// The right column's entry point. In column mode: the persistent
-            /// top-right vertical cluster, in the gutter the allocator reserves.
-            /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
-            /// safe area — full form only, on the surfaces where it IS
-            /// navigation (the map/cavity ground and the right panels it
-            /// heads). A full-screen chat hosts the avatar in its own app bar
-            /// instead, and a route-driven detail page shows nothing. See
-            /// `routing.instructions.md` → Single-column analytics nav bar.
-            if (l.isColumnMode && l.mapVisible && l.allocation.clusterVisible)
-              Positioned(
-                top: _ShellLayout.chromeMargin + screenPadding.top,
-                right: _ShellLayout.chromeMargin + screenPadding.right,
-                child: WorldUserCluster(key: _userClusterKey),
-              )
-            else if (l.analyticsBarVisible)
-              Positioned(
-                top: _ShellLayout.chromeMargin + screenPadding.top,
-                left: _ShellLayout.chromeMargin + screenPadding.left,
-                right: _ShellLayout.chromeMargin + screenPadding.right,
-                child: WorldAnalyticsBar(key: _userClusterKey),
-              ),
-          ],
+              /// Right-column panels (analytics summary, a vocab/grammar detail, a
+              /// completed-activity review) from `?right=`, each placed at its allocator
+              /// slot. The slots tile and never overlap by construction; a folded slot is
+              /// `hidden` (not drawn), its content one back-step away on the higher-priority
+              /// sibling that stayed.
+              ...[
+                for (var i = 0; i < l.rightTokens.length; i++)
+                  if (l.allocation.right[i].vis != PanelVis.hidden)
+                    Positioned(
+                      // Keyed by token so a left-column open/close (which shifts sibling
+                      // indices in this Stack) reconciles the right panel by identity, not
+                      // position — otherwise its stateful content (analytics, a detail) would
+                      // remount and re-fetch.
+                      key: ValueKey(l.rightTokens[i].encode()),
+                      // Respect the top safe-area inset so the close/back control clears the
+                      // system top bar (#7143). On narrow the analytics bar heads the panel
+                      // ("the analytics bar itself remains visible at the top throughout" —
+                      // routing.instructions.md), so the panel starts below it.
+                      top:
+                          MediaQuery.viewPaddingOf(context).top +
+                          (l.isColumnMode
+                              ? 0.0
+                              : _ShellLayout.analyticsBarAllowance),
+                      bottom: 0,
+                      left: l.allocation.right[i].left,
+                      width: l.allocation.right[i].width,
+                      child: FocusTraversalGroup(
+                        policy: OrderedTraversalPolicy(),
+                        child: WorkspaceRightPanel(
+                          token: l.rightTokens[i],
+                          currentUri: state.uri,
+                          foldedOver: l.allocation.right[i].foldedOver,
+                        ),
+                      ),
+                    ),
+              ],
+
+              /// The right column's entry point. In column mode: the persistent
+              /// top-right vertical cluster, in the gutter the allocator reserves.
+              /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
+              /// safe area — full form only, on the surfaces where it IS
+              /// navigation (the map/cavity ground and the right panels it
+              /// heads). A full-screen chat hosts the avatar in its own app bar
+              /// instead, and a route-driven detail page shows nothing. See
+              /// `routing.instructions.md` → Single-column analytics nav bar.
+              if (l.isColumnMode && l.mapVisible && l.allocation.clusterVisible)
+                Positioned(
+                  top: _ShellLayout.chromeMargin + screenPadding.top,
+                  right: _ShellLayout.chromeMargin + screenPadding.right,
+                  child: WorldUserCluster(key: _userClusterKey),
+                )
+              else if (l.analyticsBarVisible)
+                Positioned(
+                  top: _ShellLayout.chromeMargin + screenPadding.top,
+                  left: _ShellLayout.chromeMargin + screenPadding.left,
+                  right: _ShellLayout.chromeMargin + screenPadding.right,
+                  child: WorldAnalyticsBar(key: _userClusterKey),
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -474,21 +488,21 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     }
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // The bar shows over the bare map AND over map-content cavities (the
-    // course card, the activity plan — the map is still the ground behind
-    // them, per the Figma course frame's minimized icon); section cavities
-    // (chats, the hub) re-target it in the follow-up and mount nothing yet.
-    final mapIsGround =
-        cavityToken == null || isCourseCavity || isActivityCavity;
+    // The bar shows over the bare map and the course card (the map is still
+    // the ground behind it, per the Figma course frame's minimized icon).
+    // NOT over a selected activity: its sheet is the focus and the bar only
+    // crowded the exposed map band the camera centers the pin in (#7640).
+    // Section cavities (chats, the hub) re-target it in the follow-up and
+    // mount nothing yet.
+    final showsSearchBar = cavityToken == null || isCourseCavity;
     // Once a COURSE sheet is pulled to full it covers the map, so the map
     // search is moot: hide the bar entirely and let its reserved strip (dropped
     // from the height reservation below, since searchBar is then null) go to the
-    // course content (#7697). The bar stays over a peeking/half course, the
-    // bare/scoped map, and the chats/courses sections (which re-target it), so
-    // gate strictly on a full course cavity.
+    // course content (#7697). The bar stays over a peeking/half course and the
+    // bare/scoped map, so gate strictly on a full course cavity.
     final hideSearchForFullCourse = isCourseCavity && _cavityAtFull;
     final searchBar =
-        mapIsGround && mapController != null && !hideSearchForFullCourse
+        showsSearchBar && mapController != null && !hideSearchForFullCourse
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
@@ -508,13 +522,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // bottom margin + bottom safe area + one margin of breathing room below
     // the bar. Omitting the rail row here previously let a fully-expanded
     // widget push the search bar under the analytics bar.
-    final reserved =
-        screenPadding.top +
-        _ShellLayout.analyticsBarAllowance +
-        (searchBar != null ? _ShellLayout.searchBarAllowance : 0.0) +
-        MobileNavWidget.railRowHeight +
-        screenPadding.bottom +
-        _ShellLayout.chromeMargin * 2;
+    final reserved = _ShellLayout.navChromeReserved(
+      screenPadding: screenPadding,
+      hasSearchBar: searchBar != null,
+    );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
         : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
@@ -642,15 +653,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
         cavityDefaultsToPeek: isCourseCavity,
-        // Dismissing the activity plan sheet (drag down / tap the map outside
-        // it) CLOSES the plan — dropping its token clears the map's activity
-        // focus (#7614; world-map.instructions.md: focus is cleared by
-        // "closing the plan" and "tapping the empty map"). Same navigation as
-        // the panel's own back/X. Sections and the course card keep
-        // collapse-not-close.
+        // Dismissing the activity plan sheet (drag down, or its own back/X)
+        // CLOSES the plan — dropping its token clears the map's activity
+        // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
+        // the map stays live around the sheet (mapStaysLive below), so a tap
+        // on another pin moves the selection directly. Sections and the
+        // course card keep collapse-not-close.
         onDismissed: isActivityCavity && cavityToken != null
             ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
             : null,
+        // The map stays interactive around the activity plan and course card
+        // sheets: taps/pans in the exposed map pass through — tap another pin
+        // to select it directly; panning never dismisses. Dismissal is the
+        // drag-down handle or the sheet's own close control (#7742).
+        mapStaysLive: isActivityCavity || isCourseCavity,
         // Latched full-height reports drive the course-sheet search-bar hide
         // above (#7697). Guarded so an unchanged report is not a rebuild.
         onCavityFullChanged: (full) {
@@ -699,6 +715,23 @@ class _ShellLayout {
   /// the widget's full-height bound stops the SEARCH BAR just below the
   /// analytics bar (routing.instructions.md → Single-column search bar).
   static const double searchBarAllowance = 56.0;
+
+  /// The vertical chain around the nav widget's CAVITY that its full-height
+  /// bound must reserve: top safe area + analytics bar + the search-bar
+  /// allowance when one rides the widget + the rail row + bottom margin +
+  /// bottom safe area + one margin of breathing room below the bar. Shared by
+  /// the nav layer's [MobileNavWidget.maxHeightFraction] and the map's
+  /// bottom camera padding ([mapBottomOverlay]) so the two can't drift.
+  static double navChromeReserved({
+    required EdgeInsets screenPadding,
+    required bool hasSearchBar,
+  }) =>
+      screenPadding.top +
+      analyticsBarAllowance +
+      (hasSearchBar ? searchBarAllowance : 0.0) +
+      MobileNavWidget.railRowHeight +
+      screenPadding.bottom +
+      chromeMargin * 2;
 
   /// Whether the nav rail shows (vertical-left in column mode, bottom bar narrow).
   final bool navRail;
@@ -766,6 +799,11 @@ class _ShellLayout {
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
 
+  /// Map camera bottom padding: the vertical band the narrow activity-plan
+  /// sheet occupies at its half-rest state, so a focused pin centers in the
+  /// exposed map above the sheet (#7640). 0 everywhere else.
+  final double mapBottomOverlay;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -792,6 +830,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.detailWidth,
     required this.mapLeftOverlay,
+    required this.mapBottomOverlay,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -962,8 +1001,8 @@ class _ShellLayout {
     // padding both begin here so neither can slide under a left panel. Map
     // content on a narrow screen (a course card, an activity plan) rides in a
     // bottom sheet over the FULL map, not a left panel, so the camera uses the
-    // whole width (the sheet covers the bottom, which the left/right overlays
-    // don't model). See `routing.instructions.md`.
+    // whole width; the band the sheet covers is modeled separately as
+    // [mapBottomOverlay]. See `routing.instructions.md`.
     final leftInset = hasCavity
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
@@ -995,6 +1034,37 @@ class _ShellLayout {
         ? 0.0
         : leftInset +
               (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+
+    // The narrow activity-plan sheet covers the bottom of the full-width map —
+    // the band the left/right overlays don't model. Pad the camera's bottom by
+    // the sheet's half-rest state (its default; the height it opens at) so a
+    // focused pin lands in the exposed area ABOVE the sheet instead of behind
+    // it (#7640; activities doc — "the plan keeps its pin visible above", the
+    // Google Maps target UX). The band: half the cavity's growth bound plus
+    // the chrome below/above it (rail row, the search bar the activity cavity
+    // always rides, margins, safe area) — the same [navChromeReserved] chain
+    // the nav layer sizes the cavity with, so the two can't drift. An estimate
+    // of the resting sheet, deliberately not live-tracked: dragging the sheet
+    // must not yank the camera.
+    var mapBottomOverlay = 0.0;
+    if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
+      final screenPadding = MediaQuery.viewPaddingOf(context);
+      final screenHeight = MediaQuery.sizeOf(context).height;
+      // No search bar rides the activity sheet (it hides on selection), so
+      // the reservation and the covered band both exclude its allowance.
+      final reserved = navChromeReserved(
+        screenPadding: screenPadding,
+        hasSearchBar: false,
+      );
+      final maxHeightFraction = screenHeight <= 0
+          ? 0.8
+          : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
+      mapBottomOverlay =
+          0.5 * maxHeightFraction * screenHeight +
+          MobileNavWidget.railRowHeight +
+          screenPadding.bottom +
+          chromeMargin * 2;
+    }
 
     // The map actually visible between the open side panels — drives the pin
     // density budget (world_map_pin_budget). A mobile sheet leaves the map
@@ -1045,6 +1115,7 @@ class _ShellLayout {
       leftInset: leftInset,
       detailWidth: detailWidth,
       mapLeftOverlay: mapLeftOverlay,
+      mapBottomOverlay: mapBottomOverlay,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-13 10:05:16.037942",
+    "@@last_modified": "2026-07-18 13:35:06.170886",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Baimendu",
     "deny": "Ukatu",
     "enabledRenewal": "Harpidetzaren Berritzea Aktibatu",
-    "subscriptionEndsOn": "Harpidetzak Amaitzen Da",
-    "subscriptionRenewsOn": "Harpidetzak Berritzen Da",
     "waitForSubscriptionChanges": "Zure harpidetzako aldaketek momentu bat behar izan dezakete aplikazioan islatzeko.",
     "subscribeReadingAssistance": "Mezu tresnak desblokeatzeko harpidetu",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ikasten ari naiz...",
     "alreadySpeak": "Jada hitz egiten dut...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9638,24 @@
     "starsToUnlockObjectiveTitle": "Izarrak misio bakoitzeko",
     "starsToUnlockObjectiveDesc": "Ezarri misio bakoitza osatzeko behar diren izar kopurua",
     "maxStarsPerMissionWarning": "Ikastaro honek misioak ditu, non gehienez {maxValue} izar irabaz daitezkeen. Mesedez, sartu {maxValue} baino txikiagoa edo berdina den zenbaki bat.",
-    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin."
+    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin.",
+    "endPractice": "Praktika amaitu",
+    "bodyLabel": "{page} aukerak",
+    "openDM": "Zuzeneko mezua ireki",
+    "openNewTab": "Fitxa berrian ireki",
+    "viewProfileImageLabel": "Ikusi profileko irudia",
+    "profileImageLabel": "Profileko irudia",
+    "actionsLabel": "Ekintzak",
+    "colorListLabel": "Kolore-zerrenda",
+    "chatAppearanceStyleLabel": "Txataren itxura aukeratutako estiloarekin",
+    "volumeLabel": "Bolumena",
+    "listLabel": "{description} zerrenda",
+    "passwordFormLabel": "Pasahitza aldatzeko inprimakia",
+    "searchLanguagesHint": "Bilatu hizkuntzak",
+    "searchCountriesHint": "Bilatu herrialdeak",
+    "searchVocabHint": "Bilatu hiztegia",
+    "searchUsersHint": "Bilatu erabiltzaileak",
+    "searchMessagesHint": "Bilatu mezuak",
+    "searchChatsHint": "Bilatu txatak",
+    "searchActivitiesHint": "Bilatu jarduerak"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-13 10:05:55.093969",
+    "@@last_modified": "2026-07-18 13:35:05.190990",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -6890,8 +6890,6 @@
     "allow": "Povolit",
     "deny": "Odmítnout",
     "enabledRenewal": "Povolit obnovení předplatného",
-    "subscriptionEndsOn": "Předplatné končí dne",
-    "subscriptionRenewsOn": "Předplatné se obnoví dne",
     "waitForSubscriptionChanges": "Změny ve vašem předplatném mohou chvíli trvat, než se projeví v aplikaci.",
     "subscribeReadingAssistance": "Přihlaste se k odběru pro odemknutí nástrojů pro zprávy",
     "aceDisplayName": "Achinese",
@@ -7166,14 +7164,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8876,7 +8866,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učím se...",
     "alreadySpeak": "Už mluvím...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10143,5 +10132,24 @@
     "starsToUnlockObjectiveTitle": "Hvězdy za misi",
     "starsToUnlockObjectiveDesc": "Nastavte počet hvězd potřebných k dokončení každé mise",
     "maxStarsPerMissionWarning": "Tento kurz obsahuje mise, ve kterých lze získat pouze {maxValue} hvězd. Zadejte prosím číslo menší nebo rovné {maxValue}.",
-    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele."
+    "removedFromCourseError": "Byli jste odstraněni z tohoto kurzu. Kontaktujte svého učitele.",
+    "endPractice": "Ukončit cvičení",
+    "bodyLabel": "Možnosti {page}",
+    "openDM": "Otevřít přímou zprávu",
+    "openNewTab": "Otevřít v nové záložce",
+    "viewProfileImageLabel": "Zobrazit profilový obrázek",
+    "profileImageLabel": "Profilový obrázek",
+    "actionsLabel": "Akce",
+    "colorListLabel": "Seznam barev",
+    "chatAppearanceStyleLabel": "Vzhled chatu se zvoleným stylem",
+    "volumeLabel": "Hlasitost",
+    "listLabel": "Seznam {description}",
+    "passwordFormLabel": "Formulář pro změnu hesla",
+    "searchLanguagesHint": "Hledat jazyky",
+    "searchCountriesHint": "Hledat země",
+    "searchVocabHint": "Hledat slovíčka",
+    "searchUsersHint": "Hledat uživatele",
+    "searchMessagesHint": "Hledat zprávy",
+    "searchChatsHint": "Hledat chaty",
+    "searchActivitiesHint": "Hledat aktivity"
 }

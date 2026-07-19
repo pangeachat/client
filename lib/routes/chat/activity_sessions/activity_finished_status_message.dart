@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_paywall.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -111,12 +113,12 @@ class _SummarySection extends StatelessWidget {
         .showSubscriptionGatedContent) {
       return ErrorIndicator(
         message: L10n.of(context).subscribeToUnlockActivitySummaries,
-        onTap: () {
-          SubscriptionPaywall.show(
-            context,
-            userID: Matrix.of(context).client.userID,
-          );
-        },
+        onTap: () => context.go(
+          WorkspaceNav.openSettings(
+            GoRouterState.of(context).uri,
+            page: 'subscription',
+          ),
+        ),
       );
     }
 

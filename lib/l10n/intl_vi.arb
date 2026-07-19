@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:07.381687",
+    "@@last_modified": "2026-07-18 13:35:15.568592",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3648,8 +3648,6 @@
     "allow": "Cho phép",
     "deny": "Từ chối",
     "enabledRenewal": "Kích hoạt gia hạn đăng ký",
-    "subscriptionEndsOn": "Đăng ký kết thúc vào",
-    "subscriptionRenewsOn": "Đăng ký gia hạn vào",
     "waitForSubscriptionChanges": "Các thay đổi đối với đăng ký của bạn có thể mất một chút thời gian để phản ánh trong ứng dụng.",
     "subscribeReadingAssistance": "Đăng ký để mở khóa công cụ nhắn tin",
     "aceDisplayName": "Achinese",
@@ -3924,14 +3922,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -5648,7 +5638,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Tôi đang học...",
     "alreadySpeak": "Tôi đã nói...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -6915,5 +6904,24 @@
     "starsToUnlockObjectiveTitle": "Số sao mỗi nhiệm vụ",
     "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
     "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
-    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn."
+    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn.",
+    "endPractice": "Kết thúc luyện tập",
+    "bodyLabel": "Tùy chọn {page}",
+    "openDM": "Mở tin nhắn trực tiếp",
+    "openNewTab": "Mở trong tab mới",
+    "viewProfileImageLabel": "Xem ảnh đại diện",
+    "profileImageLabel": "Ảnh đại diện",
+    "actionsLabel": "Hành động",
+    "colorListLabel": "Danh sách màu",
+    "chatAppearanceStyleLabel": "Giao diện trò chuyện với kiểu đã chọn",
+    "volumeLabel": "Âm lượng",
+    "listLabel": "Danh sách {description}",
+    "passwordFormLabel": "Mẫu đổi mật khẩu",
+    "searchLanguagesHint": "Tìm kiếm ngôn ngữ",
+    "searchCountriesHint": "Tìm kiếm quốc gia",
+    "searchVocabHint": "Tìm kiếm từ vựng",
+    "searchUsersHint": "Tìm kiếm người dùng",
+    "searchMessagesHint": "Tìm kiếm tin nhắn",
+    "searchChatsHint": "Tìm kiếm cuộc trò chuyện",
+    "searchActivitiesHint": "Tìm kiếm hoạt động"
 }

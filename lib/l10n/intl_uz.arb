@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-13 10:06:32.062450",
+    "@@last_modified": "2026-07-18 13:35:15.696957",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3604,8 +3604,6 @@
     "allow": "Ruxsat berish",
     "deny": "Rad etish",
     "enabledRenewal": "Obunani yangilashni yoqish",
-    "subscriptionEndsOn": "Obuna tugash sanasi",
-    "subscriptionRenewsOn": "Obuna yangilanish sanasi",
     "waitForSubscriptionChanges": "Obuna o'zgarishlari ilovada aks etishi uchun biroz vaqt talab qilishi mumkin.",
     "subscribeReadingAssistance": "Xabar vositalarini ochish uchun obuna bo'ling",
     "aceDisplayName": "Achinese",
@@ -6966,14 +6964,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waitForSubscriptionChanges": {
         "type": "String",
         "placeholders": {}
@@ -8386,7 +8376,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Men o'rganayotganim...",
     "alreadySpeak": "Men allaqachon gaplashaman...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9653,5 +9642,24 @@
     "starsToUnlockObjectiveTitle": "Har bir topshiriq uchun yulduzlar",
     "starsToUnlockObjectiveDesc": "Har bir topshiriqni bajarish uchun zarur bo'lgan yulduzlar sonini belgilang",
     "maxStarsPerMissionWarning": "Ushbu kursda faqat {maxValue} yulduz olish mumkin bo'lgan topshiriqlar mavjud. Iltimos, {maxValue} dan kichik yoki unga teng raqam kiriting.",
-    "removedFromCourseError": "Siz ushbu kursdan olib tashlandingiz. O'qituvchingiz bilan bog'laning."
+    "removedFromCourseError": "Siz ushbu kursdan olib tashlandingiz. O'qituvchingiz bilan bog'laning.",
+    "endPractice": "Mashqni tugatish",
+    "bodyLabel": "{page} opsiyalari",
+    "openDM": "Toʻgʻridan-toʻgʻri xabarni ochish",
+    "openNewTab": "Yangi yorliqda ochish",
+    "viewProfileImageLabel": "Profil rasmini koʻrish",
+    "profileImageLabel": "Profil rasmi",
+    "actionsLabel": "Amallar",
+    "colorListLabel": "Ranglar roʻyxati",
+    "chatAppearanceStyleLabel": "Tanlangan uslubdagi chat koʻrinishi",
+    "volumeLabel": "Ovoz balandligi",
+    "listLabel": "{description} roʻyxati",
+    "passwordFormLabel": "Parolni oʻzgartirish shakli",
+    "searchLanguagesHint": "Tillar boʻyicha qidirish",
+    "searchCountriesHint": "Davlatlar boʻyicha qidirish",
+    "searchVocabHint": "Lugʻat boʻyicha qidirish",
+    "searchUsersHint": "Foydalanuvchilar boʻyicha qidirish",
+    "searchMessagesHint": "Xabarlar boʻyicha qidirish",
+    "searchChatsHint": "Chatlar boʻyicha qidirish",
+    "searchActivitiesHint": "Faoliyatlar boʻyicha qidirish"
 }

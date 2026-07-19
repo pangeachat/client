@@ -1,1 +1,0 @@
-enum SubscriptionDuration { month, year }

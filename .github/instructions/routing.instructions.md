@@ -274,6 +274,20 @@ user came from:
 the other.** If a panel shows the wrong affordance, its tree placement or the
 context handling is wrong — fix that, not the button.
 
+**Every panel shows exactly one header, and the shared chrome is the default.**
+A panel is wrapped in the shared header (the close/back control plus its title)
+unless it explicitly opts out and renders its own — which a page may do when it
+needs chrome the shared header can't express: a leaf-specific title the token
+doesn't carry, or a trailing action. An opting-out page takes the panel's close
+control and places it in its own header, so the affordance rule above still
+holds. Two failure modes this rule exists to prevent, one on each side:
+**no header** (a page that renders none while the wrapper was dropped — the
+learner has no title and no way out, #7763) and **two headers** (a page that
+draws its own *and* gets wrapped). Because "renders its own chrome" is invisible
+to the wrapper, the opt-out is declared per page (settings:
+`SettingsPageEnum.addHeader`) and pinned by tests — a new page that forgets to
+declare gets the default, which is the safe direction.
+
 ### The navigation tree: parent, child, sibling
 
 Every surface declares where it sits in one explicit tree, in the
@@ -320,6 +334,18 @@ One vocabulary covers how content opens:
   rule applies positionally — the first token folds behind the second — so a
   chat opened in a course folds the course card behind it, and closing the chat
   reveals the card as it was left (#7332).
+
+**Panel widths come in three named families, not per-panel numbers (#7572).**
+Panels that can replace each other in a slot share one min/comfort/ideal
+triple (`PanelWidths` in the registry), so navigating between them never
+resizes the column — the width-jump QA kept catching. The families: **list**
+(the thin index columns — the chat list, the DM-create picker), **wide** (the
+live/content surfaces — a chat, a session, an activity or course card, and the
+course flow pages, which host forms and media and earn the same room), and
+**tool** (the entire right column — settings, analytics and its details,
+practice — one width for every tool panel). The only remaining width step is
+the deliberate list↔wide difference. A new panel type joins a family; it does
+not invent its own widths.
 
 **Opening is a fit test, not a depth count.** A surface opens a new panel when
 the column is under its two-panel budget *and* the budget can grant the newcomer
@@ -503,9 +529,13 @@ closed (see [History follows the workspace](#history-follows-the-workspace)).
 The ephemeral expand/collapse of the widget is never a history entry.
 
 **Full-screen surfaces.** A live chat room — including a launched activity
-session — opens full-screen, covering the nav widget: a rounded-corner card
-with a small inset of map visible behind it. The nav widget is not accessible
-while one of these surfaces is focused. (The activity *plan* is not one of
+session — opens full-screen, covering the nav widget: **full-bleed, edge to
+edge** — no card chrome, no map inset — because on a phone every pixel of a
+chat matters (#7554; the surface's own app bar absorbs the status-bar inset,
+and the composer reaches the keyboard with no floating gap below). This is a
+render fact only — the token, allocator slot, and history behave exactly as
+before. The nav widget is not accessible while one of these surfaces is
+focused. (The activity *plan* is not one of
 these — it rides the cavity at half height, its pin visible above.)
 **Route-driven center-detail pages** — a course-wizard step, a public-course
 preview, a chat archive, the new-private-chat form — are full-screen surfaces
@@ -649,7 +679,7 @@ behaves the same on mobile and desktop.
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
-| Practice session | the **Practice** button on the vocab/grammar analytics panel | right | exclusive detail that folds the analytics master — see [Practice](#practice-is-an-exclusive-detail-of-analytics) below |
+| Practice session | the **Practice** button on the vocab/grammar analytics panel; the live-session badge on that section's cluster tracker (resume) | right | a panel over a persistent background session — see [Practice](#practice-is-a-persistent-background-session) below |
 | Profile + settings menu | the top-right cluster avatar | right | open panel (master) |
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
@@ -674,28 +704,50 @@ chat is independent of that slot and coexists with an open detail. *(Future:
 folding the choreographer controller into the chat controller would give rooms
 their own session state and could lift the one-live-view limit.)*
 
-### Practice is an exclusive detail of analytics
+### Practice is a persistent background session
 
 Practice (the vocab/grammar exercise flow) is a right-column `practice` token —
-a normal bounded panel, **not a route and not fullscreen**. Two rules make it
-feel immersive:
+a normal bounded panel, **not a route and not fullscreen**. Unlike other
+panels, the session it runs is a **background activity that outlives its
+panel**: leaving the panel loses nothing and ends nothing — the session runs
+until it is explicitly ended or finished.
 
-- **It always folds its master.** Practice is a detail of the analytics master,
-  but it folds analytics behind it even when width allows — the one deliberate
-  exception to "fold only under width pressure", because browsing analytics
-  beside a live exercise session would defeat the exercise. The master stays in
-  the URL one back-step away, so **backing out of practice returns to the
-  analytics page it came from, on every width**. (Practice must never *close*
-  its master outright — that is what left `practice:morph` with no way back.)
-- **It shares the cross-column detail slot.** Opening any construct detail or a
-  `session` review closes practice and vice versa, and tapping the cluster's
-  analytics replaces the whole right column. A live chat on the left is
-  independent and stays open.
+- **Leaving is free and silent.** Opening Settings, another analytics surface,
+  or a rail section drops the `practice` panel from the URL but keeps the
+  session alive in memory; re-opening practice resumes exactly where it left
+  off. No confirm dialog on leave. Session state is ephemeral view state, never
+  in the URL — a refresh or app restart starts fresh.
+- **One session at a time.** A single practice session is live across both
+  sections. Starting practice in the other section, or restarting the same
+  one, **replaces** it — confirming first only if the current one is
+  unfinished.
+- **Ending is explicit and confirms.** The panel carries an **End session**
+  control (the same leave affordance as leaving a chat); ending discards
+  in-progress work, so it asks first. The panel's **X is just "leave"** —
+  drops the panel, reveals what's beneath, never prompts.
+- **The timer runs on wall-clock** from session start and keeps counting while
+  the panel is closed. This is itself an anti-cheat mechanism: stepping out
+  mid-session to consult a dictionary or an AI costs the clock, so the speed
+  bonus rewards finishing unaided in one sitting.
 
-Backing out mid-session **confirms first** (unsaved exercise progress); a
-completed or errored session doesn't re-prompt. Abandoning practice by opening
-analytics from the cluster does not prompt — that path just replaces the right
-column.
+**You can't study the answer key mid-exercise.** While a section's session is
+live, that section's analytics is off-limits: its cluster tracker **resumes the
+live practice instead of opening the analytics summary**, and the summary and
+its construct (word/grammar) details don't open. This is why practice is no
+longer modeled as a *detail of* the analytics master — it can't reveal the
+surface it hides. The *other* section's analytics stays available. Definitions
+reachable by other routes (a word card tapped in a chat message) are a known,
+accepted gap, not a guarded path.
+
+**The cluster shows a live session.** While practice is active, the section's
+tracker in the top-right cluster (the horizontal analytics bar's pill on
+narrow) wears a **badge — the practice icon and the running timer** — that
+both signals the session and is the tap target that resumes it. It clears when
+the session ends.
+
+**It shares the cross-column detail slot.** Opening any construct detail or a
+`session` review closes the practice panel (the session stays alive) and vice
+versa; a live chat on the left is independent and stays open.
 
 ## The chrome
 
@@ -732,7 +784,10 @@ Stars count is the learner's stars summed across activities, best per activity
 
 Each element is a labeled control (tooltip + semantic button label, since the
 map is a canvas and gets no implicit labels): a **tracker** opens that metric as
-a right-column panel; the **avatar** opens the profile + settings master; the
+a right-column panel — except while that section has a live practice session,
+when it wears the practice badge and **resumes the session instead** (see
+[Practice](#practice-is-a-persistent-background-session)); the **avatar** opens
+the profile + settings master; the
 **level medal** opens the Level analytics tab; the **flag** is a shortcut to the
 learning-settings page. The flag shows the language's flag image, or its
 uppercased **language code** when the language has no single regional flag (bare

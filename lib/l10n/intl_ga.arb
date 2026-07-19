@@ -3575,7 +3575,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-13 10:08:35.278726",
+    "@@last_modified": "2026-07-18 13:35:07.097534",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -6569,8 +6569,6 @@
     "allow": "Ceadaigh",
     "deny": "Diúltaigh",
     "enabledRenewal": "Cuir Athnuachan Suibscríofa ar Siúl",
-    "subscriptionEndsOn": "Críochnaíonn an Suibscríobh Ar",
-    "subscriptionRenewsOn": "Athnuachan an Suibscríobh Ar",
     "waitForSubscriptionChanges": "D'fhéadfadh go dtógfadh athruithe ar do shuibscríobh nóiméad chun léiriú a fháil sa aip.",
     "subscribeReadingAssistance": "Suibscríobh chun uirlisí teachtaireachta a dhíghlasáil",
     "aceDisplayName": "Achinese",
@@ -6845,14 +6843,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8393,7 +8383,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Táim ag foghlaim...",
     "alreadySpeak": "Labhraím cheana...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9660,5 +9649,24 @@
     "starsToUnlockObjectiveTitle": "Réaltaí in aghaidh an Mhisean",
     "starsToUnlockObjectiveDesc": "Socraigh an líon réaltaí atá ag teastáil chun gach misean a chríochnú",
     "maxStarsPerMissionWarning": "Tá misin sa chúrsa seo nach féidir ach {maxValue} réalta a thuilleamh iontu. Cuir isteach uimhir atá níos lú ná nó cothrom le {maxValue}.",
-    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir."
+    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir.",
+    "endPractice": "Cuir deireadh leis an gcleachtadh",
+    "bodyLabel": "Roghanna {page}",
+    "openDM": "Oscail teachtaireacht dhíreach",
+    "openNewTab": "Oscail i gcluaisín nua",
+    "viewProfileImageLabel": "Féach ar íomhá próifíle",
+    "profileImageLabel": "Íomhá próifíle",
+    "actionsLabel": "Gníomhartha",
+    "colorListLabel": "Liosta dathanna",
+    "chatAppearanceStyleLabel": "Cuma comhrá leis an stíl roghnaithe",
+    "volumeLabel": "Toirt",
+    "listLabel": "Liosta {description}",
+    "passwordFormLabel": "Foirm athraithe pasfhocail",
+    "searchLanguagesHint": "Cuardaigh teangacha",
+    "searchCountriesHint": "Cuardaigh tíortha",
+    "searchVocabHint": "Cuardaigh foclóir",
+    "searchUsersHint": "Cuardaigh úsáideoirí",
+    "searchMessagesHint": "Cuardaigh teachtaireachtaí",
+    "searchChatsHint": "Cuardaigh comhráite",
+    "searchActivitiesHint": "Cuardaigh gníomhaíochtaí"
 }
