@@ -104,6 +104,9 @@ class QuestOutline {
   CourseLoOutline toCourseLoOutline({
     int starsToUnlock = kDefaultStarsToUnlockObjective,
   }) => CourseLoOutline(
+    // v3: the quest-plans id IS the course-plan uuid callers resolved by, so
+    // this is the key a per-course surface looks its own rollup up under.
+    courseId: quest.id,
     orderedLoIds: quest.learningObjectiveIds,
     activityIdsByLo: {
       for (final group in groups)

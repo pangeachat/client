@@ -20,15 +20,27 @@ void main() {
   });
 
   group('ProgressionResolution.questStars', () {
+    // Rollups hang off the quest they were resolved for, so the summary reads
+    // one course's own numbers rather than a cross-course blend (#7771).
     ProgressionResolution resolutionWith(Map<String, MissionProgress> rollup) =>
-        ProgressionResolution(rollup: rollup, quests: const []);
+        ProgressionResolution(
+          quests: [
+            QuestProgress(
+              courseId: 'c1',
+              orderedMissionIds: rollup.keys.toList(),
+              anchorMissionId: null,
+              indexByMission: const {},
+              rollup: rollup,
+            ),
+          ],
+        );
 
     test('sums capped stars over summed thresholds (mockup: 4+1 → ⭐5)', () {
       final resolution = resolutionWith({
         'getting-around': const MissionProgress(stars: 4, threshold: 7),
         'introductions': const MissionProgress(stars: 1, threshold: 7),
       });
-      final summary = resolution.questStars([
+      final summary = resolution.questStars('c1', [
         'getting-around',
         'introductions',
       ]);
@@ -42,7 +54,7 @@ void main() {
         'a': const MissionProgress(stars: 12, threshold: 7),
         'b': const MissionProgress(stars: 0, threshold: 7),
       });
-      final summary = resolution.questStars(['a', 'b']);
+      final summary = resolution.questStars('c1', ['a', 'b']);
       expect(summary.earned, 7);
       expect(summary.total, 14);
     });
@@ -52,13 +64,13 @@ void main() {
       final resolution = resolutionWith({
         'known': const MissionProgress(stars: 3, threshold: 7),
       });
-      final summary = resolution.questStars(['known', 'unknown']);
+      final summary = resolution.questStars('c1', ['known', 'unknown']);
       expect(summary.earned, 3);
       expect(summary.total, 7 + kDefaultStarsToUnlockObjective);
     });
 
     test('empty quest yields zero with a safe fraction', () {
-      final summary = resolutionWith({}).questStars(const []);
+      final summary = resolutionWith({}).questStars('c1', const []);
       expect(summary.earned, 0);
       expect(summary.total, 0);
       expect(summary.fraction, 0);

@@ -28,6 +28,7 @@ ProgressionResolution _progressionWithAnchor(String anchor) =>
     resolveProgression(
       outlines: [
         CourseLoOutline(
+          courseId: 'c1',
           orderedLoIds: [anchor],
           activityIdsByLo: {
             anchor: const {'someActivity'},
@@ -80,12 +81,14 @@ void main() {
       final p = resolveProgression(
         outlines: [
           CourseLoOutline(
+            courseId: 'c1',
             orderedLoIds: ['q1'],
             activityIdsByLo: {
               'q1': const {'x'},
             },
           ),
           CourseLoOutline(
+            courseId: 'c2',
             orderedLoIds: ['q2'],
             activityIdsByLo: {
               'q2': const {'y'},

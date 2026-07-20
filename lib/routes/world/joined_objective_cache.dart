@@ -69,6 +69,9 @@ class JoinedObjectiveCache {
           final o = await resolve(uuid);
           next.add(
             CourseLoOutline(
+              // The uuid the caller asked for, not the resolved outline's own
+              // id: this is the key the course panel scopes its rollup by.
+              courseId: uuid,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
               starsToUnlock:
