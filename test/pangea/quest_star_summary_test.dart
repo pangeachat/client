@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
 /// Star display math (quests.instructions.md, "Star display on the course
@@ -40,10 +39,7 @@ void main() {
         'getting-around': const MissionProgress(stars: 4, threshold: 7),
         'introductions': const MissionProgress(stars: 1, threshold: 7),
       });
-      final summary = resolution.questStars('c1', [
-        'getting-around',
-        'introductions',
-      ]);
+      final summary = resolution.questStars('c1')!;
       expect(summary.earned, 5);
       expect(summary.total, 14);
       expect(summary.fraction, closeTo(5 / 14, 1e-9));
@@ -54,26 +50,38 @@ void main() {
         'a': const MissionProgress(stars: 12, threshold: 7),
         'b': const MissionProgress(stars: 0, threshold: 7),
       });
-      final summary = resolution.questStars('c1', ['a', 'b']);
+      final summary = resolution.questStars('c1')!;
       expect(summary.earned, 7);
       expect(summary.total, 14);
     });
 
-    test('a Mission missing from the rollup keeps a stable denominator '
-        '(default threshold, zero stars)', () {
+    test('a Mission outside the rollup adds nothing to the denominator', () {
+      // #7663: the rollup holds only Missions with activities. An activity-less
+      // Mission is hidden from the panel and offers no stars, so it must not
+      // contribute a threshold — the summary counts what the rollup holds and
+      // nothing else. The old shape took a Mission list and defaulted unknown
+      // ids to the standard threshold, which is how one 4-star activity
+      // displayed as 44.
       final resolution = resolutionWith({
         'known': const MissionProgress(stars: 3, threshold: 7),
       });
-      final summary = resolution.questStars('c1', ['known', 'unknown']);
+      final summary = resolution.questStars('c1')!;
       expect(summary.earned, 3);
-      expect(summary.total, 7 + kDefaultStarsToUnlockObjective);
+      expect(summary.total, 7);
     });
 
     test('empty quest yields zero with a safe fraction', () {
-      final summary = resolutionWith({}).questStars('c1', const []);
+      final summary = resolutionWith({}).questStars('c1')!;
       expect(summary.earned, 0);
       expect(summary.total, 0);
       expect(summary.fraction, 0);
+    });
+
+    test('an unresolved course is null, not an invented denominator', () {
+      // The header renders its muted empty bar on null (ProgressBarRow).
+      expect(ProgressionResolution.empty.questStars('c1'), isNull);
+      expect(resolutionWith({}).questStars('other-course'), isNull);
+      expect(resolutionWith({}).questStars(null), isNull);
     });
   });
 }

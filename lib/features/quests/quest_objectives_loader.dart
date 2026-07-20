@@ -48,13 +48,14 @@ class QuestObjectivesLoader {
   QuestLoader get questLoader => _questLoader;
   ValueNotifier<ProgressionResolution> get progression => _progression;
 
-  QuestStarSummary get questStars {
-    final List<String> objectiveIds = switch (_questLoader.value) {
-      AsyncLoaded(value: final value) => value.quest.learningObjectiveIds,
-      _ => const [],
-    };
-    return progression.value.questStars(_courseId, objectiveIds);
-  }
+  /// The header's star summary, or null before this course's progress resolves
+  /// (the bar then renders its muted empty state).
+  ///
+  /// Deliberately supplies no Mission list: the resolver owns which Missions
+  /// count. Passing `quest.learningObjectiveIds` here used to disagree with the
+  /// panel — which drops activity-less Missions (#7114) — so each hidden
+  /// Mission silently added a default threshold to the denominator (#7663).
+  QuestStarSummary? get questStars => progression.value.questStars(_courseId);
 
   /// This course's resolved quest, or null until the shared resolution lands
   /// (or when the course isn't joined) — the panel then shows no star display,
