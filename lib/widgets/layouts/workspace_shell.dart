@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -34,6 +33,7 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
+import 'package:fluffychat/widgets/layouts/navigation_extras_extension.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
@@ -582,12 +582,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       }
     }
 
-    final courseCreationCompleter =
-        cavityToken?.type == PanelTypesEnum.addcoursepage &&
-            state.extra is Completer<String>
-        ? state.extra as Completer<String>
-        : null;
-
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
     // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
@@ -664,7 +658,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   token: cavityToken,
                   currentUri: uri,
                   bare: true,
-                  courseCreationCompleter: courseCreationCompleter,
+                  shareItems: state.navigatorShareItems(cavityToken),
+                  courseCreationCompleter: state.navigatorCourseCompleter(
+                    cavityToken,
+                  ),
                 ),
               ),
         cavityKey: cavityKey,

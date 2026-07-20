@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -9,7 +7,7 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
-import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:fluffychat/widgets/layouts/navigation_extras_extension.dart';
 
 /// Builds one left-column panel for [token]. A `room` panel is wrapped in a
 /// roomId-keyed [GlobalKey] so the same [ChatController] is reparented (not
@@ -39,29 +37,14 @@ class LeftPanelLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Forward any shared items (carried on the navigation `extra`, not the URL)
-    // to a `room` token — the share sheet opens its target as the sole live
-    // room, so the extra belongs to whichever room renders. See
-    // `routing.instructions.md`.
-    final shareItems =
-        token.type == PanelTypesEnum.room && state.extra is List<ShareItem>
-        ? state.extra as List<ShareItem>
-        : null;
-
-    final courseCreationCompleter =
-        token.type == PanelTypesEnum.addcoursepage &&
-            state.extra is Completer<String>
-        ? state.extra as Completer<String>
-        : null;
-
     final panel = FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
       child: WorkspaceLeftPanel(
         token: token,
         currentUri: state.uri,
         foldedOver: foldedOver,
-        shareItems: shareItems,
-        courseCreationCompleter: courseCreationCompleter,
+        shareItems: state.navigatorShareItems(token),
+        courseCreationCompleter: state.navigatorCourseCompleter(token),
         bare: bare,
       ),
     );
