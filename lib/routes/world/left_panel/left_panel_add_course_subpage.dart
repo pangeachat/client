@@ -58,6 +58,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
         return FindCoursePage(
           closeButton: closeButton,
           initialLanguageCode: param.initialLanguageFilter,
+          showAll: param.allLanguagesFilter,
         );
       case AddCourseSubpageEnum.private:
         return CourseCodePage(
@@ -82,7 +83,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
         return NewCoursePage(
           route: 'rooms',
           initialLanguageCode: param.initialLanguageFilter,
-          showAll: param.initialLanguageFilter == 'all',
+          showAll: param.allLanguagesFilter,
           closeButton: closeButton,
         );
     }
