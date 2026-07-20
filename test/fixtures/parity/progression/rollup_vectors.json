@@ -8,7 +8,8 @@
   "notes": [
     "expect.anchor is a string when the vector resolves exactly one quest, a list (one entry per outline with a non-empty sequence, in input order) when it resolves several, and null when no quest resolves at all.",
     "expect.mission_gradient maps a Mission id to missionGradient({that id}) - a SINGLE-ref probe, so contributions summed across quests and the BAND_CEILING saturation are both observable.",
-    "input.quest_mission_ids is the exact argument passed to questStars(...); it may name a Mission absent from the rollup, which must still contribute the default threshold to the denominator."
+    "input.quest_mission_ids is the exact argument passed to questStars(...); it may name a Mission absent from the rollup, which must still contribute the default threshold to the denominator.",
+    "The threshold clamp is a CEILING ONLY - there is no floor on either side. A configured 0 (legitimate CMS-authored starsToUnlock) yields threshold 0 and a Mission satisfied at 0 stars, and a negative passes through verbatim. The minimum-of-1 sanity rule belongs to the TEACHER-OVERRIDE write boundary (admin-dash-api app/analytics/content/threshold.py), not to the resolver: putting it in the resolver made the dashboard disagree with the learner's own app."
   ],
   "vectors": [
     {
@@ -339,6 +340,97 @@
         "quest_stars": {"earned": 0, "total": 10},
         "anchor": ["lo1", "lo1", "lo1"],
         "mission_gradient": {"lo1": 2.0}
+      }
+    },
+    {
+      "name": "configured-zero-has-no-floor-and-is-satisfied-at-zero-stars",
+      "pins": [
+        "configured == 0 is NOT floored to 1; threshold stays 0 and the Mission is satisfied at 0 stars",
+        "a positive ceiling does not raise a zero threshold (the clamp is a ceiling, never a floor)"
+      ],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2"],
+            "activity_ids_by_lo": {"lo1": ["a1"], "lo2": ["a2"]},
+            "stars_to_unlock": 0,
+            "earnable_by_activity": {"a1": 3, "a2": 3}
+          }
+        ],
+        "stars_by_activity": {"a1": 0, "a2": 2},
+        "quest_mission_ids": ["lo1", "lo2"],
+        "gradient_refs": ["lo1", "lo2"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 0, "threshold": 0, "satisfied": true},
+          "lo2": {"stars": 2, "threshold": 0, "satisfied": true}
+        },
+        "quest_stars": {"earned": 0, "total": 0},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 0.0, "lo2": 0.0}
+      }
+    },
+    {
+      "name": "configured-zero-mission-is-satisfied-while-a-sibling-quest-still-anchors",
+      "pins": [
+        "a zero-threshold Mission is satisfied and drops out of the gradient",
+        "its quest anchors on the lowest-star Mission while a sibling quest still anchors on its first unsatisfied Mission"
+      ],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 0,
+            "earnable_by_activity": {"a1": 2}
+          },
+          {
+            "ordered_lo_ids": ["lo2", "lo3"],
+            "activity_ids_by_lo": {"lo2": ["a2"], "lo3": ["a3"]},
+            "stars_to_unlock": 2,
+            "earnable_by_activity": {"a2": 2, "a3": 2}
+          }
+        ],
+        "stars_by_activity": {"a1": 0, "a2": 0, "a3": 0},
+        "quest_mission_ids": ["lo1", "lo2", "lo3"],
+        "gradient_refs": ["lo1", "lo2", "lo3"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 0, "threshold": 0, "satisfied": true},
+          "lo2": {"stars": 0, "threshold": 2, "satisfied": false},
+          "lo3": {"stars": 0, "threshold": 2, "satisfied": false}
+        },
+        "quest_stars": {"earned": 0, "total": 4},
+        "anchor": ["lo1", "lo2"],
+        "mission_gradient": {"lo1": 0.0, "lo2": 1.0, "lo3": 0.6666666666666667}
+      }
+    },
+    {
+      "name": "negative-configured-threshold-passes-through-unclamped",
+      "pins": [
+        "a negative configured threshold is passed through verbatim - the resolver has no floor at all",
+        "the resulting negative denominator is why a sub-1 threshold must be refused UPSTREAM, at the teacher-override boundary, never inside the resolver"
+      ],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": -5,
+            "earnable_by_activity": {"a1": 4}
+          }
+        ],
+        "stars_by_activity": {"a1": 1},
+        "quest_mission_ids": ["lo1"],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 1, "threshold": -5, "satisfied": true}},
+        "quest_stars": {"earned": -5, "total": -5},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 0.0}
       }
     }
   ]
