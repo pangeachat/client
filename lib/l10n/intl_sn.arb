@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-20 10:58:28.198990",
+    "@@last_modified": "2026-07-20 16:04:31.646419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Zvitsva\n{time}",
     "activityFinishedMessage": "Zvese Zvapera!",
     "endForAll": "Pedzisa kune vese",
-    "newCourse": "Chikamu chitsva",
     "numModules": "{num} zvikamu",
     "coursePlan": "Chirongwa cheChikamu",
     "editCourseLater": "Unogona kugadzirisa zita retemplate, tsanangudzo, uye mufananidzo wechikamu gare gare.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Kunyoresa kwako kuchashanda kusvika pazuva rekuvandudzwa kwayo ({date}), wobva wadzima. Ucharamba uine analytics asi hauzokwanisi kushandisa maficha epamusoro.",
     "cancelDescriptionWithoutRenewalDate": "Kunyoresa kwako kuchashanda kusvika pazuva rekuvandudzwa kwayo, wobva wadzima. Ucharamba uine analytics asi hauzokwanisi kushandisa maficha epamusoro.",
     "change": "Chinja",
-    "deactivateSubscribedAccountWarning": "Izvi zvichadzima account yako yemushandisi uye kukanzura kunyoresa kwako. Izvi hazvigone kudzoserwa! Une chokwadi here?"
+    "deactivateSubscribedAccountWarning": "Izvi zvichadzima account yako yemushandisi uye kukanzura kunyoresa kwako. Izvi hazvigone kudzoserwa! Une chokwadi here?",
+    "newCourseWithoutTitle": "Tanga kosi",
+    "newCourseWithTitle": "Tanga \"{title}\"",
+    "joinCourseWithTitle": "Pinda \"{title}\""
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-20 10:57:58.501313",
+    "@@last_modified": "2026-07-20 16:04:27.732805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "An sabunta\n{time}",
     "activityFinishedMessage": "An Kammala Duka!",
     "endForAll": "Ƙare wa kowa",
-    "newCourse": "Sabon kwas",
     "numModules": "{num} sassa",
     "coursePlan": "Tsarin Kwas",
     "editCourseLater": "Kuna iya gyara taken samfuri, kwatance, da hoton kwas daga baya.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Biyan kuɗin ku zai kasance mai aiki har zuwa ranar sabuntawa ({date}), sannan ya daina aiki. Za ku riƙe nazari amma ba za ku iya amfani da fasalulluka na pro ba.",
     "cancelDescriptionWithoutRenewalDate": "Biyan kuɗin ku zai kasance mai aiki har zuwa ranar sabuntawa, sannan ya daina aiki. Za ku riƙe nazari amma ba za ku iya amfani da fasalulluka na pro ba.",
     "change": "Canja",
-    "deactivateSubscribedAccountWarning": "Wannan zai kashe asusun mai amfani da ku kuma ya soke biyan kuɗin ku. Ba za a iya warware wannan ba! Kun tabbata?"
+    "deactivateSubscribedAccountWarning": "Wannan zai kashe asusun mai amfani da ku kuma ya soke biyan kuɗin ku. Ba za a iya warware wannan ba! Kun tabbata?",
+    "newCourseWithoutTitle": "Fara darasi",
+    "newCourseWithTitle": "Fara \"{title}\"",
+    "joinCourseWithTitle": "Shiga \"{title}\""
 }

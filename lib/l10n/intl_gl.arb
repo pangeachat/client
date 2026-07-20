@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-20 10:57:55.637213",
+    "@@last_modified": "2026-07-20 16:04:27.168018",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "Actualizado\n{time}",
     "activityFinishedMessage": "¡Todo terminado!",
     "endForAll": "Rematar para todos",
-    "newCourse": "Novo curso",
     "numModules": "{num} módulos",
     "coursePlan": "Plan de curso",
     "editCourseLater": "Podes editar o título da plantilla, as descricións e a imaxe do curso máis tarde.",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "A túa subscrición estará activa ata a data de renovación ({date}), despois desactivarase. Manterás as análises pero non poderás usar as funcións pro.",
     "cancelDescriptionWithoutRenewalDate": "A túa subscrición estará activa ata a data de renovación, despois desactivarase. Manterás as análises pero non poderás usar as funcións pro.",
     "change": "Cambiar",
-    "deactivateSubscribedAccountWarning": "Isto desactivará a túa conta de usuario e cancelará a túa subscrición. Non se pode desfacer! Estás seguro?"
+    "deactivateSubscribedAccountWarning": "Isto desactivará a túa conta de usuario e cancelará a túa subscrición. Non se pode desfacer! Estás seguro?",
+    "newCourseWithoutTitle": "Iniciar curso",
+    "newCourseWithTitle": "Iniciar \"{title}\"",
+    "joinCourseWithTitle": "Unirse a \"{title}\""
 }

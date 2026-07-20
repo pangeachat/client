@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-20 10:57:45.139808",
+    "@@last_modified": "2026-07-20 16:04:25.756046",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3303,7 +3303,6 @@
     "lastUpdated": "تم التحديث\n{time}",
     "activityFinishedMessage": "انتهى الجميع!",
     "endForAll": "إنهاء للجميع",
-    "newCourse": "دورة جديدة",
     "numModules": "{num} وحدات",
     "coursePlan": "خطة الدورة",
     "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
@@ -6273,10 +6272,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9995,5 +9990,8 @@
     "cancelDescriptionWithRenewalDate": "سيكون اشتراكك نشطًا حتى تاريخ تجديده ({date})، ثم يتم إلغاء تنشيطه. ستحتفظ بالتحليلات ولكن لن تتمكن من استخدام الميزات الاحترافية.",
     "cancelDescriptionWithoutRenewalDate": "سيكون اشتراكك نشطًا حتى تاريخ تجديده، ثم يتم إلغاء تنشيطه. ستحتفظ بالتحليلات ولكن لن تتمكن من استخدام الميزات الاحترافية.",
     "change": "تغيير",
-    "deactivateSubscribedAccountWarning": "سيؤدي هذا إلى إلغاء تنشيط حساب المستخدم الخاص بك وإلغاء اشتراكك. لا يمكن التراجع عن هذا! هل أنت متأكد؟"
+    "deactivateSubscribedAccountWarning": "سيؤدي هذا إلى إلغاء تنشيط حساب المستخدم الخاص بك وإلغاء اشتراكك. لا يمكن التراجع عن هذا! هل أنت متأكد؟",
+    "newCourseWithoutTitle": "بدء الدورة التدريبية",
+    "newCourseWithTitle": "بدء \"{title}\"",
+    "joinCourseWithTitle": "انضم إلى \"{title}\""
 }

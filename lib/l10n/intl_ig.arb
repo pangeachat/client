@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-20 10:58:10.926874",
+    "@@last_modified": "2026-07-20 16:04:28.455965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Emelitere\n{time}",
     "activityFinishedMessage": "Emechara ihe niile!",
     "endForAll": "Kwụsị maka mmadụ niile",
-    "newCourse": "Kọọsụ ọhụrụ",
     "numModules": "{num} modul",
     "coursePlan": "Atụmatụ Kọọsụ",
     "editCourseLater": "Ị nwere ike dezie aha ndebiri, nkọwa, na onyonyo kọọsụ ma emechaa.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Ndebanye aha gị ga-arụ ọrụ ruo ụbọchị mmeghari ya ({date}), wee kwụsị. Ị ga-ejigide nyocha mana ị gaghị enwe ike iji atụmatụ pro.",
     "cancelDescriptionWithoutRenewalDate": "Ndebanye aha gị ga-arụ ọrụ ruo ụbọchị mmeghari ya, wee kwụsị. Ị ga-ejigide nyocha mana ị gaghị enwe ike iji atụmatụ pro.",
     "change": "Gbanwee",
-    "deactivateSubscribedAccountWarning": "Nke a ga-eme ka akaụntụ onye ọrụ gị ghara ịrụ ọrụ ma kagbuo ndebanye aha gị. Enweghị ike ịkagbu nke a! Ị ji n'aka?"
+    "deactivateSubscribedAccountWarning": "Nke a ga-eme ka akaụntụ onye ọrụ gị ghara ịrụ ọrụ ma kagbuo ndebanye aha gị. Enweghị ike ịkagbu nke a! Ị ji n'aka?",
+    "newCourseWithoutTitle": "Bido ọmụmụ ihe",
+    "newCourseWithTitle": "Bido \"{title}\"",
+    "joinCourseWithTitle": "Sonyere \"{title}\""
 }

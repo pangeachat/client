@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-20 10:58:09.652718",
+    "@@last_modified": "2026-07-20 16:04:28.486057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Dianyari\n{time}",
     "activityFinishedMessage": "Kabeh Rampung!",
     "endForAll": "Rampung kanggo kabeh",
-    "newCourse": "Kursus anyar",
     "numModules": "{num} modul",
     "coursePlan": "Rencana Kursus",
     "editCourseLater": "Sampeyan bisa ngowahi judhul cithakan, deskripsi, lan gambar kursus mengko.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Langgananmu bakal aktif nganti tanggal nganyari maneh ({date}), banjur ora aktif. Sampeyan bakal tetep duwe analitik nanging ora bisa nggunakake fitur pro.",
     "cancelDescriptionWithoutRenewalDate": "Langgananmu bakal aktif nganti tanggal nganyari maneh, banjur ora aktif. Sampeyan bakal tetep duwe analitik nanging ora bisa nggunakake fitur pro.",
     "change": "Ganti",
-    "deactivateSubscribedAccountWarning": "Iki bakal mateni akun pangguna lan mbatalake langgananmu. Iki ora bisa dibatalake! Apa sampeyan yakin?"
+    "deactivateSubscribedAccountWarning": "Iki bakal mateni akun pangguna lan mbatalake langgananmu. Iki ora bisa dibatalake! Apa sampeyan yakin?",
+    "newCourseWithoutTitle": "Mulai kursus",
+    "newCourseWithTitle": "Mulai \"{title}\"",
+    "joinCourseWithTitle": "Gabung \"{title}\""
 }

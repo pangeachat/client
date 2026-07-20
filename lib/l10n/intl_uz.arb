@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-20 10:58:34.646470",
+    "@@last_modified": "2026-07-20 16:04:32.927159",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3500,7 +3500,6 @@
     "lastUpdated": "Yangilangan\n{time}",
     "activityFinishedMessage": "Barchasi tugadi!",
     "endForAll": "Hammasi uchun yakunlash",
-    "newCourse": "Yangi kurs",
     "numModules": "{num} modul",
     "coursePlan": "Kurs rejasi",
     "editCourseLater": "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.",
@@ -6520,10 +6519,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9693,5 +9688,8 @@
     "cancelDescriptionWithRenewalDate": "Obunangiz yangilanish sanasigacha ({date}) faol bo'ladi, keyin o'chiriladi. Siz tahlillarni saqlab qolasiz, ammo pro xususiyatlardan foydalana olmaysiz.",
     "cancelDescriptionWithoutRenewalDate": "Obunangiz yangilanish sanasigacha faol bo'ladi, keyin o'chiriladi. Siz tahlillarni saqlab qolasiz, ammo pro xususiyatlardan foydalana olmaysiz.",
     "change": "O'zgartirish",
-    "deactivateSubscribedAccountWarning": "Bu sizning foydalanuvchi hisobingizni o'chiradi va obunangizni bekor qiladi. Buni bekor qilib bo'lmaydi! Ishonchingiz komilmi?"
+    "deactivateSubscribedAccountWarning": "Bu sizning foydalanuvchi hisobingizni o'chiradi va obunangizni bekor qiladi. Buni bekor qilib bo'lmaydi! Ishonchingiz komilmi?",
+    "newCourseWithoutTitle": "Kursni boshlash",
+    "newCourseWithTitle": "\"{title}\" kursini boshlash",
+    "joinCourseWithTitle": "\"{title}\" kursiga qoʻshilish"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-20 10:57:49.146526",
+    "@@last_modified": "2026-07-20 16:04:26.346369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Aghjurnatu\n{time}",
     "activityFinishedMessage": "Tuttu hè compiu !",
     "endForAll": "Finisce per tutti",
-    "newCourse": "Corsu novu",
     "numModules": "{num} moduli",
     "coursePlan": "Pianu di u corsu",
     "editCourseLater": "Puderete mudificà u titulu di u mudellu, e descrizzioni è l'imagine di u corsu più tardi.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "U vostru abbunamentu serà attivu finu à a so data di rinnuvamentu ({date}), dopu si disattiverà. Mantenerete l'analitiche ma ùn puderete micca aduprà e funziunalità pro.",
     "cancelDescriptionWithoutRenewalDate": "U vostru abbunamentu serà attivu finu à a so data di rinnuvamentu, dopu si disattiverà. Mantenerete l'analitiche ma ùn puderete micca aduprà e funziunalità pro.",
     "change": "Cambia",
-    "deactivateSubscribedAccountWarning": "Questu disattiverà u vostru contu d'utilizatore è annullerà u vostru abbunamentu. Questu ùn pò esse annullatu! Site sicuru?"
+    "deactivateSubscribedAccountWarning": "Questu disattiverà u vostru contu d'utilizatore è annullerà u vostru abbunamentu. Questu ùn pò esse annullatu! Site sicuru?",
+    "newCourseWithoutTitle": "Principià u corsu",
+    "newCourseWithTitle": "Principià \"{title}\"",
+    "joinCourseWithTitle": "Unisce vi à \"{title}\""
 }

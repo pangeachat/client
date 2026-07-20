@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-20 10:58:00.548826",
+    "@@last_modified": "2026-07-20 16:04:28.020962",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3399,7 +3399,6 @@
     "lastUpdated": "Frissítve\n{time}",
     "activityFinishedMessage": "Minden kész!",
     "endForAll": "Vége mindenkinek",
-    "newCourse": "Új tanfolyam",
     "numModules": "{num} modul",
     "coursePlan": "Tanfolyamterv",
     "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
@@ -6066,10 +6065,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9792,5 +9787,8 @@
     "cancelDescriptionWithRenewalDate": "Előfizetése az megújítási dátumig ({date}) aktív marad, majd deaktiválódik. Az elemzéseket megtartja, de a pro funkciókat nem tudja használni.",
     "cancelDescriptionWithoutRenewalDate": "Előfizetése a megújítási dátumig aktív marad, majd deaktiválódik. Az elemzéseket megtartja, de a pro funkciókat nem tudja használni.",
     "change": "Módosítás",
-    "deactivateSubscribedAccountWarning": "Ez deaktiválja a felhasználói fiókját és lemondja az előfizetését. Ez nem vonható vissza! Biztos benne?"
+    "deactivateSubscribedAccountWarning": "Ez deaktiválja a felhasználói fiókját és lemondja az előfizetését. Ez nem vonható vissza! Biztos benne?",
+    "newCourseWithoutTitle": "Tanfolyam indítása",
+    "newCourseWithTitle": "„{title}” indítása",
+    "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz"
 }

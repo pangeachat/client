@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-20 10:58:26.866903",
+    "@@last_modified": "2026-07-20 16:04:31.489739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "යාවත්කාලීන කරන ලදී\n{time}",
     "activityFinishedMessage": "සියල්ල අවසන්!",
     "endForAll": "සියල්ලටම අවසන් කරන්න",
-    "newCourse": "නව පාඨමාලාව",
     "numModules": "{num} මොඩියුල",
     "coursePlan": "පාඨමාලා සැලැස්ම",
     "editCourseLater": "ඔබට පසුව සැකිලි මාතෘකාව, විස්තර සහ පාඨමාලා රූපය සංස්කරණය කළ හැක.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "ඔබගේ දායකත්වය අලුත් කිරීමේ දිනය ({date}) දක්වා සක්‍රියව පවතිනු ඇත, පසුව අක්‍රිය වේ. ඔබට විශ්ලේෂණ රඳවා ගත හැකි නමුත් ප්‍රෝ විශේෂාංග භාවිතා කිරීමට නොහැකි වනු ඇත.",
     "cancelDescriptionWithoutRenewalDate": "ඔබගේ දායකත්වය අලුත් කිරීමේ දිනය දක්වා සක්‍රියව පවතිනු ඇත, පසුව අක්‍රිය වේ. ඔබට විශ්ලේෂණ රඳවා ගත හැකි නමුත් ප්‍රෝ විශේෂාංග භාවිතා කිරීමට නොහැකි වනු ඇත.",
     "change": "වෙනස් කරන්න",
-    "deactivateSubscribedAccountWarning": "මෙය ඔබගේ පරිශීලක ගිණුම අක්‍රිය කර ඔබගේ දායකත්වය අවලංගු කරනු ඇත. මෙය අහෝසි කළ නොහැක! ඔබට විශ්වාසද?"
+    "deactivateSubscribedAccountWarning": "මෙය ඔබගේ පරිශීලක ගිණුම අක්‍රිය කර ඔබගේ දායකත්වය අවලංගු කරනු ඇත. මෙය අහෝසි කළ නොහැක! ඔබට විශ්වාසද?",
+    "newCourseWithoutTitle": "පාඨමාලාව අරඹන්න",
+    "newCourseWithTitle": "\"{title}\" අරඹන්න",
+    "joinCourseWithTitle": "\"{title}\" හා එක්වන්න"
 }

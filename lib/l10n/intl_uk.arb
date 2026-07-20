@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-20 10:58:32.879564",
+    "@@last_modified": "2026-07-20 16:04:32.461283",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "Оновлено\n{time}",
     "activityFinishedMessage": "Все завершено!",
     "endForAll": "Завершити для всіх",
-    "newCourse": "Новий курс",
     "numModules": "{num} модулів",
     "coursePlan": "План курсу",
     "editCourseLater": "Ви можете редагувати назву шаблону, описи та зображення курсу пізніше.",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "Ваша підписка буде активною до дати її поновлення ({date}), потім деактивується. Ви збережете аналітику, але не зможете використовувати професійні функції.",
     "cancelDescriptionWithoutRenewalDate": "Ваша підписка буде активною до дати її поновлення, потім деактивується. Ви збережете аналітику, але не зможете використовувати професійні функції.",
     "change": "Змінити",
-    "deactivateSubscribedAccountWarning": "Це деактивує ваш обліковий запис користувача та скасує вашу підписку. Це неможливо скасувати! Ви впевнені?"
+    "deactivateSubscribedAccountWarning": "Це деактивує ваш обліковий запис користувача та скасує вашу підписку. Це неможливо скасувати! Ви впевнені?",
+    "newCourseWithoutTitle": "Почати курс",
+    "newCourseWithTitle": "Почати «{title}»",
+    "joinCourseWithTitle": "Приєднатися до «{title}»"
 }

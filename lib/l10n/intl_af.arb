@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-20 10:57:45.214258",
+    "@@last_modified": "2026-07-20 16:04:25.728316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Opgedateer\n{time}",
     "activityFinishedMessage": "Alles Klaar!",
     "endForAll": "Beëindig vir almal",
-    "newCourse": "Nuwe kursus",
     "numModules": "{num} modules",
     "coursePlan": "Kursusplan",
     "editCourseLater": "Jy kan die templaattitel, beskrywings en kursusbeeld later wysig.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Jou intekening sal aktief wees tot die hernuwingsdatum ({date}), en dan deaktiveer. Jy sal analise behou, maar sal nie pro-kenmerke kan gebruik nie.",
     "cancelDescriptionWithoutRenewalDate": "Jou intekening sal aktief wees tot die hernuwingsdatum, en dan deaktiveer. Jy sal analise behou, maar sal nie pro-kenmerke kan gebruik nie.",
     "change": "Verander",
-    "deactivateSubscribedAccountWarning": "Dit sal jou gebruikersrekening deaktiveer en jou intekening kanselleer. Dit kan nie ongedaan gemaak word nie! Is jy seker?"
+    "deactivateSubscribedAccountWarning": "Dit sal jou gebruikersrekening deaktiveer en jou intekening kanselleer. Dit kan nie ongedaan gemaak word nie! Is jy seker?",
+    "newCourseWithoutTitle": "Begin kursus",
+    "newCourseWithTitle": "Begin \"{title}\"",
+    "joinCourseWithTitle": "Sluit aan by \"{title}\""
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-20 10:57:49.747615",
+    "@@last_modified": "2026-07-20 16:04:26.339589",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3101,7 +3101,6 @@
     "lastUpdated": "Poslední aktualizace\n{time}",
     "activityFinishedMessage": "Vše hotovo!",
     "endForAll": "Ukončit pro všechny",
-    "newCourse": "Nový kurz",
     "numModules": "{num} modulů",
     "coursePlan": "Plán kurzu",
     "editCourseLater": "Později můžete upravit název šablony, popisy a obrázek kurzu.",
@@ -6471,10 +6470,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10183,5 +10178,8 @@
     "cancelDescriptionWithRenewalDate": "Vaše předplatné bude aktivní do data obnovení ({date}), poté bude deaktivováno. Zachováte si analytiku, ale nebudete moci používat pro funkce.",
     "cancelDescriptionWithoutRenewalDate": "Vaše předplatné bude aktivní do data obnovení, poté bude deaktivováno. Zachováte si analytiku, ale nebudete moci používat pro funkce.",
     "change": "Změnit",
-    "deactivateSubscribedAccountWarning": "Tímto deaktivujete svůj uživatelský účet a zrušíte předplatné. Toto nelze vrátit zpět! Jste si jisti?"
+    "deactivateSubscribedAccountWarning": "Tímto deaktivujete svůj uživatelský účet a zrušíte předplatné. Toto nelze vrátit zpět! Jste si jisti?",
+    "newCourseWithoutTitle": "Spustit kurz",
+    "newCourseWithTitle": "Spustit „{title}“",
+    "joinCourseWithTitle": "Připojit se k „{title}“"
 }

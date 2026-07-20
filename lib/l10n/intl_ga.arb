@@ -3501,7 +3501,6 @@
     "lastUpdated": "Nuashonraithe\n{time}",
     "activityFinishedMessage": "Críochnaíodh go léir!",
     "endForAll": "Críochnaigh do gach duine",
-    "newCourse": "Cúrsa Nua",
     "numModules": "{num} modúl",
     "coursePlan": "Plean Cúrsa",
     "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
@@ -3575,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-20 10:57:57.273260",
+    "@@last_modified": "2026-07-20 16:04:27.203955",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -6150,10 +6149,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9700,5 +9695,8 @@
     "cancelDescriptionWithRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana ({date}), ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
     "cancelDescriptionWithoutRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana, ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
     "change": "Athraigh",
-    "deactivateSubscribedAccountWarning": "Díghníomhóidh sé seo do chuntas úsáideora agus cealóidh sé do shíntiús. Ní féidir é seo a chealú! An bhfuil tú cinnte?"
+    "deactivateSubscribedAccountWarning": "Díghníomhóidh sé seo do chuntas úsáideora agus cealóidh sé do shíntiús. Ní féidir é seo a chealú! An bhfuil tú cinnte?",
+    "newCourseWithoutTitle": "Tosaigh cúrsa",
+    "newCourseWithTitle": "Tosaigh \"{title}\"",
+    "joinCourseWithTitle": "Bí páirteach i \"{title}\""
 }

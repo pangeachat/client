@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-20 10:57:52.565187",
+    "@@last_modified": "2026-07-20 16:04:27.020141",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -5974,7 +5974,6 @@
     "lastUpdated": "Uuendatud\n{time}",
     "activityFinishedMessage": "Kõik valmis!",
     "endForAll": "Lõpeta kõigile",
-    "newCourse": "Uus kursus",
     "numModules": "{num} moodulit",
     "coursePlan": "Kursuse plaan",
     "editCourseLater": "Saate hiljem redigeerida mallide pealkirju, kirjelduid ja kursuse pilti.",
@@ -6154,10 +6153,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9686,5 +9681,8 @@
     "cancelDescriptionWithRenewalDate": "Sinu tellimus on aktiivne kuni uuendamiskuupäevani ({date}), seejärel deaktiveeritakse. Analüütika jääb alles, kuid pro-funktsioone ei saa kasutada.",
     "cancelDescriptionWithoutRenewalDate": "Sinu tellimus on aktiivne kuni uuendamiskuupäevani, seejärel deaktiveeritakse. Analüütika jääb alles, kuid pro-funktsioone ei saa kasutada.",
     "change": "Muuda",
-    "deactivateSubscribedAccountWarning": "See deaktiveerib sinu kasutajakonto ja tühistab sinu tellimuse. Seda ei saa tagasi võtta! Oled sa kindel?"
+    "deactivateSubscribedAccountWarning": "See deaktiveerib sinu kasutajakonto ja tühistab sinu tellimuse. Seda ei saa tagasi võtta! Oled sa kindel?",
+    "newCourseWithoutTitle": "Alusta kursust",
+    "newCourseWithTitle": "Alusta kursust \"{title}\"",
+    "joinCourseWithTitle": "Liitu kursusega \"{title}\""
 }

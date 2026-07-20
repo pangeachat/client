@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-20 10:58:36.975788",
+    "@@last_modified": "2026-07-20 16:04:32.875815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Ihlaziywe\n{time}",
     "activityFinishedMessage": "Konke Kugqityiwe!",
     "endForAll": "Phelisa kubo bonke",
-    "newCourse": "Ikhosi entsha",
     "numModules": "{num} iimodyuli",
     "coursePlan": "Isicwangciso sekhosi",
     "editCourseLater": "Ungahlela isihloko setemplate, iinkcazelo, kunye nomfanekiso wekhosi kamva.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Ubhaliso lwakho luya kusebenza de kube lusuku lokuhlaziya ({date}), emva koko luya kupheliswa. Uya kugcina uhlalutyo kodwa ungakwazi ukusebenzisa iimpawu zobungcali.",
     "cancelDescriptionWithoutRenewalDate": "Ubhaliso lwakho luya kusebenza de kube lusuku lokuhlaziya, emva koko luya kupheliswa. Uya kugcina uhlalutyo kodwa ungakwazi ukusebenzisa iimpawu zobungcali.",
     "change": "Guqula",
-    "deactivateSubscribedAccountWarning": "Oku kuya kuphelisa iakhawunti yakho yomsebenzisi kwaye kurhoxise ubhaliso lwakho. Oku akunakuguqulwa! Uqinisekile?"
+    "deactivateSubscribedAccountWarning": "Oku kuya kuphelisa iakhawunti yakho yomsebenzisi kwaye kurhoxise ubhaliso lwakho. Oku akunakuguqulwa! Uqinisekile?",
+    "newCourseWithoutTitle": "Qalisa ikhosi",
+    "newCourseWithTitle": "Qalisa \"{title}\"",
+    "joinCourseWithTitle": "Joyina \"{title}\""
 }

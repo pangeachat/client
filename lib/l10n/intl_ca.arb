@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:57:49.124337",
+    "@@last_modified": "2026-07-20 16:04:26.281298",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3379,7 +3379,6 @@
     "lastUpdated": "Actualitzat\n{time}",
     "activityFinishedMessage": "Tot finalitzat!",
     "endForAll": "Finalitzar per a tots",
-    "newCourse": "Nou curs",
     "numModules": "{num} mòduls",
     "coursePlan": "Pla de curs",
     "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
@@ -6090,10 +6089,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9816,5 +9811,8 @@
     "cancelDescriptionWithRenewalDate": "La teva subscripció estarà activa fins a la data de renovació ({date}), i després es desactivarà. Conservaràs les analítiques, però no podràs utilitzar les funcions pro.",
     "cancelDescriptionWithoutRenewalDate": "La teva subscripció estarà activa fins a la data de renovació, i després es desactivarà. Conservaràs les analítiques, però no podràs utilitzar les funcions pro.",
     "change": "Canviar",
-    "deactivateSubscribedAccountWarning": "Això desactivarà el teu compte d'usuari i cancel·larà la teva subscripció. Això no es pot desfer! Estàs segur?"
+    "deactivateSubscribedAccountWarning": "Això desactivarà el teu compte d'usuari i cancel·larà la teva subscripció. Això no es pot desfer! Estàs segur?",
+    "newCourseWithoutTitle": "Comença el curs",
+    "newCourseWithTitle": "Comença \"{title}\"",
+    "joinCourseWithTitle": "Uneix-te a \"{title}\""
 }

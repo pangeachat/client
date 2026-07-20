@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-20 10:58:14.365866",
+    "@@last_modified": "2026-07-20 16:04:29.592348",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -3555,7 +3555,6 @@
     "lastUpdated": "Atjaunināts\n{time}",
     "activityFinishedMessage": "Visi pabeigti!",
     "endForAll": "Beigt visiem",
-    "newCourse": "Jauns kurss",
     "numModules": "{num} moduļi",
     "coursePlan": "Kursa plāns",
     "editCourseLater": "Jūs varat vēlāk rediģēt šablona nosaukumu, aprakstus un kursa attēlu.",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "Jūsu abonements būs aktīvs līdz tā atjaunošanas datumam ({date}), pēc tam tiks deaktivizēts. Jūs saglabāsiet analītiku, bet nevarēsiet izmantot pro funkcijas.",
     "cancelDescriptionWithoutRenewalDate": "Jūsu abonements būs aktīvs līdz tā atjaunošanas datumam, pēc tam tiks deaktivizēts. Jūs saglabāsiet analītiku, bet nevarēsiet izmantot pro funkcijas.",
     "change": "Mainīt",
-    "deactivateSubscribedAccountWarning": "Tas deaktivizēs jūsu lietotāja kontu un atcels jūsu abonementu. To nevar atsaukt! Vai esat pārliecināts?"
+    "deactivateSubscribedAccountWarning": "Tas deaktivizēs jūsu lietotāja kontu un atcels jūsu abonementu. To nevar atsaukt! Vai esat pārliecināts?",
+    "newCourseWithoutTitle": "Sākt kursu",
+    "newCourseWithTitle": "Sākt \"{title}\"",
+    "joinCourseWithTitle": "Pievienoties \"{title}\""
 }

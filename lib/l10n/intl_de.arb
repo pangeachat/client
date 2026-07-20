@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-20 10:57:50.230857",
+    "@@last_modified": "2026-07-20 16:04:26.350118",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3517,7 +3517,6 @@
     "lastUpdated": "Aktualisiert\n{time}",
     "activityFinishedMessage": "Alles erledigt!",
     "endForAll": "Für alle beenden",
-    "newCourse": "Neuer Kurs",
     "numModules": "{num} Module",
     "coursePlan": "Kursplan",
     "editCourseLater": "Sie können den Titel, die Beschreibungen und das Kursbild später bearbeiten.",
@@ -6164,10 +6163,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9676,5 +9671,8 @@
     "cancelDescriptionWithRenewalDate": "Ihr Abonnement ist bis zum Verlängerungsdatum ({date}) aktiv und wird dann deaktiviert. Sie behalten die Analysedaten, können aber keine Pro-Funktionen nutzen.",
     "cancelDescriptionWithoutRenewalDate": "Ihr Abonnement ist bis zum Verlängerungsdatum aktiv und wird dann deaktiviert. Sie behalten die Analysedaten, können aber keine Pro-Funktionen nutzen.",
     "change": "Ändern",
-    "deactivateSubscribedAccountWarning": "Dadurch wird Ihr Benutzerkonto deaktiviert und Ihr Abonnement gekündigt. Dies kann nicht rückgängig gemacht werden! Sind Sie sicher?"
+    "deactivateSubscribedAccountWarning": "Dadurch wird Ihr Benutzerkonto deaktiviert und Ihr Abonnement gekündigt. Dies kann nicht rückgängig gemacht werden! Sind Sie sicher?",
+    "newCourseWithoutTitle": "Kurs starten",
+    "newCourseWithTitle": "Kurs „{title}“ starten",
+    "joinCourseWithTitle": "Kurs „{title}“ beitreten"
 }

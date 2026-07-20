@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-20 10:58:23.505126",
+    "@@last_modified": "2026-07-20 16:04:30.964962",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "تازه شوی\n{time}",
     "activityFinishedMessage": "ټول بشپړ شول!",
     "endForAll": "د ټولو لپاره پای",
-    "newCourse": "نوی کورس",
     "numModules": "{num} ماډلونه",
     "coursePlan": "د کورس پلان",
     "editCourseLater": "تاسو کولی شئ وروسته د ټیمپلیټ سرلیک، توضیحات، او د کورس انځور ایډیټ کړئ.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "ستاسو ګډون به تر خپلې نوي کولو نیټې ({date}) پورې فعال وي، بیا به غیر فعال شي. تاسو به تحلیلونه وساتئ مګر د پرو ځانګړتیاو کارولو توان به ونلرئ.",
     "cancelDescriptionWithoutRenewalDate": "ستاسو ګډون به تر خپلې نوي کولو نیټې پورې فعال وي، بیا به غیر فعال شي. تاسو به تحلیلونه وساتئ مګر د پرو ځانګړتیاو کارولو توان به ونلرئ.",
     "change": "بدلول",
-    "deactivateSubscribedAccountWarning": "دا به ستاسو کارن حساب غیر فعال کړي او ستاسو ګډون به لغوه کړي. دا بیرته نشي اخیستل کیدی! ایا تاسو ډاډه یاست؟"
+    "deactivateSubscribedAccountWarning": "دا به ستاسو کارن حساب غیر فعال کړي او ستاسو ګډون به لغوه کړي. دا بیرته نشي اخیستل کیدی! ایا تاسو ډاډه یاست؟",
+    "newCourseWithoutTitle": "کورس پیل کړئ",
+    "newCourseWithTitle": "پیل کړئ \"{title}\"",
+    "joinCourseWithTitle": "ګډون وکړئ \"{title}\""
 }

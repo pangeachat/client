@@ -15,6 +15,8 @@ abstract class AddCourseTileContent {
   String? get courseId => null;
 
   bool get isKnock => false;
+
+  String? get expandedContent => null;
 }
 
 class RoomAddCourseTileContent extends AddCourseTileContent {
@@ -53,6 +55,9 @@ class PreviewAddCourseTileContent extends AddCourseTileContent {
 
   @override
   bool get isKnock => preview.room.joinRule == JoinRules.knock.name;
+
+  @override
+  String? get expandedContent => preview.room.topic;
 }
 
 class CoursePlanAddCourseTileContent extends AddCourseTileContent {
@@ -64,4 +69,48 @@ class CoursePlanAddCourseTileContent extends AddCourseTileContent {
 
   @override
   String? get courseId => course.uuid;
+
+  @override
+  String? get expandedContent => course.description;
+}
+
+class CombinedAddCourseTileContent extends AddCourseTileContent {
+  final String _title;
+  final Uri? _imageUrl;
+  final int? _members;
+  final String? _courseId;
+  final bool _isKnock;
+  final String? _expandedContent;
+
+  CombinedAddCourseTileContent({
+    required String title,
+    Uri? imageUrl,
+    int? members,
+    String? courseId,
+    bool isKnock = false,
+    String? expandedContent,
+  }) : _title = title,
+       _imageUrl = imageUrl,
+       _members = members,
+       _courseId = courseId,
+       _isKnock = isKnock,
+       _expandedContent = expandedContent;
+
+  @override
+  String title(_) => _title;
+
+  @override
+  Uri? get imageUrl => _imageUrl;
+
+  @override
+  int? get members => _members;
+
+  @override
+  String? get courseId => _courseId;
+
+  @override
+  bool get isKnock => _isKnock;
+
+  @override
+  String? get expandedContent => _expandedContent;
 }

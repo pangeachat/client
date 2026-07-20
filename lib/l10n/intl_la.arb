@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-20 10:58:10.910184",
+    "@@last_modified": "2026-07-20 16:04:29.093928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Renovatum\n{time}",
     "activityFinishedMessage": "Omnia perfecta!",
     "endForAll": "Omnibus finire",
-    "newCourse": "Novus cursus",
     "numModules": "{num} moduli",
     "coursePlan": "Ratio Cursus",
     "editCourseLater": "Titulum exemplaris, descriptiones, et imaginem cursus postea mutare potes.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Subscriptio tua activa erit usque ad diem renovationis ({date}), deinde deactivabitur. Analytica retinebis sed pro-lineamentis uti non poteris.",
     "cancelDescriptionWithoutRenewalDate": "Subscriptio tua activa erit usque ad diem renovationis, deinde deactivabitur. Analytica retinebis sed pro-lineamentis uti non poteris.",
     "change": "Muta",
-    "deactivateSubscribedAccountWarning": "Hoc rationem usoris tui deactivabit et subscriptionem tuam cassabit. Hoc revocari non potest! Certus es?"
+    "deactivateSubscribedAccountWarning": "Hoc rationem usoris tui deactivabit et subscriptionem tuam cassabit. Hoc revocari non potest! Certus es?",
+    "newCourseWithoutTitle": "Incipe cursum",
+    "newCourseWithTitle": "Incipe \"{title}\"",
+    "joinCourseWithTitle": "Coniunge \"{title}\""
 }

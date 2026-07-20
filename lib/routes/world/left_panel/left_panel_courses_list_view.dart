@@ -92,42 +92,44 @@ class LeftPanelCoursesListView extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    return AddCourseTileList(
-      padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 16.0),
-      content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
-      onTap: (index) => context.go(
-        WorkspaceNav.openCourse(
-          GoRouterState.of(context).uri,
-          courses[index].id,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: AddCourseTileList(
+        content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
+        onTap: (index) => context.go(
+          WorkspaceNav.openCourse(
+            GoRouterState.of(context).uri,
+            courses[index].id,
+          ),
         ),
-      ),
-      extraContent: courses.isEmpty
-          ? [
-              const SizedBox(height: 4.0),
-              // "Add new course" section divider + the full add-course buttons.
-              Row(
-                children: [
-                  Expanded(
-                    child: Divider(color: theme.colorScheme.outlineVariant),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text(
-                      l10n.addNewCourse,
-                      style: theme.textTheme.labelLarge?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+        extraContent: courses.isEmpty
+            ? [
+                const SizedBox(height: 4.0),
+                // "Add new course" section divider + the full add-course buttons.
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(color: theme.colorScheme.outlineVariant),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        l10n.addNewCourse,
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Divider(color: theme.colorScheme.outlineVariant),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12.0),
-              const AddCourseOptions(),
-            ]
-          : null,
+                    Expanded(
+                      child: Divider(color: theme.colorScheme.outlineVariant),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12.0),
+                const AddCourseOptions(),
+              ]
+            : null,
+      ),
     );
   }
 }

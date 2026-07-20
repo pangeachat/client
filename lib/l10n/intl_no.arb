@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-20 10:58:18.914554",
+    "@@last_modified": "2026-07-20 16:04:30.421228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Oppdatert\n{time}",
     "activityFinishedMessage": "Alt ferdig!",
     "endForAll": "Avslutt for alle",
-    "newCourse": "Nytt kurs",
     "numModules": "{num} moduler",
     "coursePlan": "Kursplan",
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Abonnementet ditt vil være aktivt til fornyelsesdatoen ({date}), deretter deaktiveres. Du beholder analyser, men kan ikke bruke pro-funksjoner.",
     "cancelDescriptionWithoutRenewalDate": "Abonnementet ditt vil være aktivt til fornyelsesdatoen, deretter deaktiveres. Du beholder analyser, men kan ikke bruke pro-funksjoner.",
     "change": "Endre",
-    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?"
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?",
+    "newCourseWithoutTitle": "Start kurs",
+    "newCourseWithTitle": "Start «{title}»",
+    "joinCourseWithTitle": "Bli med i «{title}»"
 }

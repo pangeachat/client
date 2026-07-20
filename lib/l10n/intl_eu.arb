@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-20 10:57:54.479797",
+    "@@last_modified": "2026-07-20 16:04:27.151931",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "Eguneratua\n{time}",
     "activityFinishedMessage": "Bukatu da guztia!",
     "endForAll": "Amaitu guztientzat",
-    "newCourse": "Ikastaro berria",
     "numModules": "{num} modulua",
     "coursePlan": "Ikastaro Plana",
     "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "Zure harpidetza aktibo egongo da berritzeko data ({date}) arte, eta orduan desaktibatu egingo da. Analitikak mantenduko dituzu, baina ezingo dituzu pro ezaugarriak erabili.",
     "cancelDescriptionWithoutRenewalDate": "Zure harpidetza aktibo egongo da berritzeko data arte, eta orduan desaktibatu egingo da. Analitikak mantenduko dituzu, baina ezingo dituzu pro ezaugarriak erabili.",
     "change": "Aldatu",
-    "deactivateSubscribedAccountWarning": "Honek zure erabiltzaile-kontua desaktibatu eta zure harpidetza bertan behera utziko du. Hau ezin da desegin! Ziur zaude?"
+    "deactivateSubscribedAccountWarning": "Honek zure erabiltzaile-kontua desaktibatu eta zure harpidetza bertan behera utziko du. Hau ezin da desegin! Ziur zaude?",
+    "newCourseWithoutTitle": "Ikastaroa hasi",
+    "newCourseWithTitle": "\"{title}\" ikastaroa hasi",
+    "joinCourseWithTitle": "\"{title}\" ikastarora batu"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:57:53.591121",
+    "@@last_modified": "2026-07-20 16:04:27.084642",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3404,7 +3404,6 @@
     "lastUpdated": "به‌روزرسانی شده\n{time}",
     "activityFinishedMessage": "همه تمام شد!",
     "endForAll": "پایان برای همه",
-    "newCourse": "دوره جدید",
     "numModules": "{num} ماژول",
     "coursePlan": "برنامه دوره",
     "editCourseLater": "می‌توانید بعداً عنوان، توضیحات و تصویر دوره را ویرایش کنید.",
@@ -6056,10 +6055,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9777,5 +9772,8 @@
     "cancelDescriptionWithRenewalDate": "اشتراک شما تا تاریخ تمدید ({date}) فعال خواهد بود، سپس غیرفعال می‌شود. شما تحلیل‌ها را حفظ خواهید کرد اما قادر به استفاده از ویژگی‌های حرفه‌ای نخواهید بود.",
     "cancelDescriptionWithoutRenewalDate": "اشتراک شما تا تاریخ تمدید فعال خواهد بود، سپس غیرفعال می‌شود. شما تحلیل‌ها را حفظ خواهید کرد اما قادر به استفاده از ویژگی‌های حرفه‌ای نخواهید بود.",
     "change": "تغییر",
-    "deactivateSubscribedAccountWarning": "این کار حساب کاربری شما را غیرفعال کرده و اشتراک شما را لغو می‌کند. این عمل قابل بازگشت نیست! آیا مطمئن هستید؟"
+    "deactivateSubscribedAccountWarning": "این کار حساب کاربری شما را غیرفعال کرده و اشتراک شما را لغو می‌کند. این عمل قابل بازگشت نیست! آیا مطمئن هستید؟",
+    "newCourseWithoutTitle": "شروع دوره",
+    "newCourseWithTitle": "شروع «{title}»",
+    "joinCourseWithTitle": "پیوستن به «{title}»"
 }

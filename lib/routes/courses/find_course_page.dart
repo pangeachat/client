@@ -390,7 +390,6 @@ class FindCoursePageView extends StatelessWidget {
         child: Center(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
               spacing: 20.0,
               children: [

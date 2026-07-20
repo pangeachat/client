@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-20 10:58:03.127028",
+    "@@last_modified": "2026-07-20 16:04:28.457799",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2887,7 +2887,6 @@
     "lastUpdated": "更新日\n{time}",
     "activityFinishedMessage": "すべて完了！",
     "endForAll": "全員に終了",
-    "newCourse": "新しいコース",
     "numModules": "{num} モジュール",
     "coursePlan": "コースプラン",
     "editCourseLater": "テンプレートのタイトル、説明、コース画像は後で編集できます。",
@@ -6735,10 +6734,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10458,5 +10453,8 @@
     "cancelDescriptionWithRenewalDate": "サブスクリプションは更新日（{date}）まで有効で、その後無効になります。分析データは保持されますが、プロ機能は使用できなくなります。",
     "cancelDescriptionWithoutRenewalDate": "サブスクリプションは更新日まで有効で、その後無効になります。分析データは保持されますが、プロ機能は使用できなくなります。",
     "change": "変更",
-    "deactivateSubscribedAccountWarning": "これにより、ユーザーアカウントが停止され、サブスクリプションがキャンセルされます。この操作は元に戻せません！よろしいですか？"
+    "deactivateSubscribedAccountWarning": "これにより、ユーザーアカウントが停止され、サブスクリプションがキャンセルされます。この操作は元に戻せません！よろしいですか？",
+    "newCourseWithoutTitle": "コースを開始",
+    "newCourseWithTitle": "\"{title}\"を開始",
+    "joinCourseWithTitle": "\"{title}\"に参加"
 }

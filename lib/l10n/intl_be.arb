@@ -3486,7 +3486,6 @@
     "lastUpdated": "Абноўлена\n{time}",
     "activityFinishedMessage": "Усё гатова!",
     "endForAll": "Завяршыць для ўсіх",
-    "newCourse": "Новы курс",
     "numModules": "{num} модулі",
     "coursePlan": "План курса",
     "editCourseLater": "Вы можаце рэдагаваць назву шаблона, апісанні і выяву курса пазней.",
@@ -3560,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-20 10:57:46.110861",
+    "@@last_modified": "2026-07-20 16:04:25.664564",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9703,5 +9698,8 @@
     "cancelDescriptionWithRenewalDate": "Ваша падпіска будзе актыўнай да даты яе абнаўлення ({date}), затым дэактывуецца. Вы захаваеце аналітыку, але не зможаце выкарыстоўваць прафесійныя функцыі.",
     "cancelDescriptionWithoutRenewalDate": "Ваша падпіска будзе актыўнай да даты яе абнаўлення, затым дэактывуецца. Вы захаваеце аналітыку, але не зможаце выкарыстоўваць прафесійныя функцыі.",
     "change": "Змяніць",
-    "deactivateSubscribedAccountWarning": "Гэта дэактывуе ваш уліковы запіс і адменіць вашу падпіску. Гэта нельга адмяніць! Вы ўпэўнены?"
+    "deactivateSubscribedAccountWarning": "Гэта дэактывуе ваш уліковы запіс і адменіць вашу падпіску. Гэта нельга адмяніць! Вы ўпэўнены?",
+    "newCourseWithoutTitle": "Пачаць курс",
+    "newCourseWithTitle": "Пачаць \"{title}\"",
+    "joinCourseWithTitle": "Далучыцца да \"{title}\""
 }

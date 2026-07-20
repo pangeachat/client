@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:21.852081",
+    "@@last_modified": "2026-07-20 16:04:30.823566",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -3495,7 +3495,6 @@
     "lastUpdated": "Atualizado\n{time}",
     "activityFinishedMessage": "Tudo concluído!",
     "endForAll": "Encerrar para todos",
-    "newCourse": "Novo curso",
     "numModules": "{num} módulos",
     "coursePlan": "Plano do curso",
     "editCourseLater": "Você pode editar o título do modelo, descrições e a imagem do curso posteriormente.",
@@ -6154,10 +6153,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "Sua assinatura estará ativa até a data de renovação ({date}), depois será desativada. Você manterá as análises, mas não poderá usar os recursos pro.",
     "cancelDescriptionWithoutRenewalDate": "Sua assinatura estará ativa até a data de renovação, depois será desativada. Você manterá as análises, mas não poderá usar os recursos pro.",
     "change": "Alterar",
-    "deactivateSubscribedAccountWarning": "Isso desativará sua conta de usuário e cancelará sua assinatura. Isso não pode ser desfeito! Tem certeza?"
+    "deactivateSubscribedAccountWarning": "Isso desativará sua conta de usuário e cancelará sua assinatura. Isso não pode ser desfeito! Tem certeza?",
+    "newCourseWithoutTitle": "Iniciar curso",
+    "newCourseWithTitle": "Iniciar \"{title}\"",
+    "joinCourseWithTitle": "Entrar em \"{title}\""
 }

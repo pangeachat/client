@@ -1298,7 +1298,6 @@
     "lastUpdated": "Actualisate\n{time}",
     "activityFinishedMessage": "Tote finite!",
     "endForAll": "Terminar pro tote",
-    "newCourse": "Nove curso",
     "numModules": "{num} modulo(s)",
     "coursePlan": "Plan de curso",
     "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
@@ -1372,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-20 10:58:01.778128",
+    "@@last_modified": "2026-07-20 16:04:28.379570",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6908,10 +6907,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10631,5 +10626,8 @@
     "cancelDescriptionWithRenewalDate": "Tu subscription essera active usque a su data de renovation ({date}), postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
     "cancelDescriptionWithoutRenewalDate": "Tu subscription essera active usque a su data de renovation, postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
     "change": "Cambiar",
-    "deactivateSubscribedAccountWarning": "Isto disactivara tu conto de usator e cancellara tu subscription. Isto non pote esser disfacite! Es tu secur?"
+    "deactivateSubscribedAccountWarning": "Isto disactivara tu conto de usator e cancellara tu subscription. Isto non pote esser disfacite! Es tu secur?",
+    "newCourseWithoutTitle": "Comenciar curso",
+    "newCourseWithTitle": "Comenciar \"{title}\"",
+    "joinCourseWithTitle": "Unir se a \"{title}\""
 }

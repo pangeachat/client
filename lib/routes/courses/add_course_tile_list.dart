@@ -9,7 +9,6 @@ class AddCourseTileList extends StatelessWidget {
 
   final List<Widget>? extraContent;
   final ScrollController? controller;
-  final EdgeInsets? padding;
   final double spacing;
 
   const AddCourseTileList({
@@ -18,7 +17,6 @@ class AddCourseTileList extends StatelessWidget {
     required this.onTap,
     this.extraContent,
     this.controller,
-    this.padding,
     this.spacing = 8.0,
   });
 
@@ -27,7 +25,6 @@ class AddCourseTileList extends StatelessWidget {
     final itemCount = content.length + (extraContent?.length ?? 0);
     return ListView.separated(
       controller: controller,
-      padding: padding,
       separatorBuilder: (_, _) => SizedBox(height: spacing),
       itemCount: itemCount,
       itemBuilder: (context, index) {

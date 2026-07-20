@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-20 10:57:58.724556",
+    "@@last_modified": "2026-07-20 16:04:27.193340",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Ùraichte\n{time}",
     "activityFinishedMessage": "Uile Crìochnaichte!",
     "endForAll": "Crìochnaich dha na h-uile",
-    "newCourse": "Cùrsa ùr",
     "numModules": "{num} modalan",
     "coursePlan": "Plana Cùrsa",
     "editCourseLater": "Faodaidh tu tiotal teamplaid, tuairisgeulan, agus ìomhaigh cùrsa a dheasachadh nas fhaide air adhart.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Bidh an fho-sgrìobhadh agad gnìomhach gus an ceann-latha ùrachaidh aige ({date}), an uairsin thèid a chur à comas. Glèidhidh tu anailisean ach cha bhith e comasach dhut feartan pro a chleachdadh.",
     "cancelDescriptionWithoutRenewalDate": "Bidh an fho-sgrìobhadh agad gnìomhach gus an ceann-latha ùrachaidh aige, an uairsin thèid a chur à comas. Glèidhidh tu anailisean ach cha bhith e comasach dhut feartan pro a chleachdadh.",
     "change": "Atharraich",
-    "deactivateSubscribedAccountWarning": "Cuiridh seo do chunntas cleachdaiche à comas agus cuiridh e dheth an fho-sgrìobhadh agad. Chan urrainnear seo a neo-dhèanamh! A bheil thu cinnteach?"
+    "deactivateSubscribedAccountWarning": "Cuiridh seo do chunntas cleachdaiche à comas agus cuiridh e dheth an fho-sgrìobhadh agad. Chan urrainnear seo a neo-dhèanamh! A bheil thu cinnteach?",
+    "newCourseWithoutTitle": "Tòisich cùrsa",
+    "newCourseWithTitle": "Tòisich \"{title}\"",
+    "joinCourseWithTitle": "Thig a-steach do \"{title}\""
 }

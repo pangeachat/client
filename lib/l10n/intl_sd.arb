@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-20 10:58:26.887765",
+    "@@last_modified": "2026-07-20 16:04:31.382165",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "اپڊيٽ ٿيل\n{time}",
     "activityFinishedMessage": "سڀ ختم ٿيو!",
     "endForAll": "سڀني لاءِ ختم ڪريو",
-    "newCourse": "نئون ڪورس",
     "numModules": "{num} ماڊيول",
     "coursePlan": "ڪورس پلان",
     "editCourseLater": "توهان بعد ۾ ٽيمپليٽ جو عنوان، تفصيل، ۽ ڪورس جي تصوير تبديل ڪري سگهو ٿا.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "توهان جي سبسڪرپشن ان جي تجديد جي تاريخ ({date}) تائين فعال رهندي، پوءِ غير فعال ٿي ويندي. توهان تجزياتي ڊيٽا برقرار رکندؤ پر پرو فيچرز استعمال ڪرڻ جي قابل نه رهندؤ.",
     "cancelDescriptionWithoutRenewalDate": "توهان جي سبسڪرپشن ان جي تجديد جي تاريخ تائين فعال رهندي، پوءِ غير فعال ٿي ويندي. توهان تجزياتي ڊيٽا برقرار رکندؤ پر پرو فيچرز استعمال ڪرڻ جي قابل نه رهندؤ.",
     "change": "تبديل ڪريو",
-    "deactivateSubscribedAccountWarning": "هي توهان جي يوزر اڪائونٽ کي غير فعال ڪري ڇڏيندو ۽ توهان جي سبسڪرپشن کي رد ڪري ڇڏيندو. هي واپس نه ٿو ڪري سگهجي! ڇا توهان پڪ آهيو؟"
+    "deactivateSubscribedAccountWarning": "هي توهان جي يوزر اڪائونٽ کي غير فعال ڪري ڇڏيندو ۽ توهان جي سبسڪرپشن کي رد ڪري ڇڏيندو. هي واپس نه ٿو ڪري سگهجي! ڇا توهان پڪ آهيو؟",
+    "newCourseWithoutTitle": "ڪورس شروع ڪريو",
+    "newCourseWithTitle": "\"{title}\" شروع ڪريو",
+    "joinCourseWithTitle": "\"{title}\" ۾ شامل ٿيو"
 }

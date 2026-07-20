@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-20 10:58:31.167535",
+    "@@last_modified": "2026-07-20 16:04:32.238198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Imesasishwa\n{time}",
     "activityFinishedMessage": "Yote Yamemalizika!",
     "endForAll": "Maliza kwa wote",
-    "newCourse": "Kozi mpya",
     "numModules": "Moduli {num}",
     "coursePlan": "Mpango wa Kozi",
     "editCourseLater": "Unaweza kuhariri jina la kiolezo, maelezo, na picha ya kozi baadaye.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Usajili wako utakuwa amilifu hadi tarehe yake ya kusasishwa ({date}), kisha utazimwa. Utabaki na takwimu lakini hutaweza kutumia vipengele vya pro.",
     "cancelDescriptionWithoutRenewalDate": "Usajili wako utakuwa amilifu hadi tarehe yake ya kusasishwa, kisha utazimwa. Utabaki na takwimu lakini hutaweza kutumia vipengele vya pro.",
     "change": "Badilisha",
-    "deactivateSubscribedAccountWarning": "Hii itazima akaunti yako ya mtumiaji na kughairi usajili wako. Hii haiwezi kutenduliwa! Una uhakika?"
+    "deactivateSubscribedAccountWarning": "Hii itazima akaunti yako ya mtumiaji na kughairi usajili wako. Hii haiwezi kutenduliwa! Una uhakika?",
+    "newCourseWithoutTitle": "Anza kozi",
+    "newCourseWithTitle": "Anza \"{title}\"",
+    "joinCourseWithTitle": "Jiunge na \"{title}\""
 }

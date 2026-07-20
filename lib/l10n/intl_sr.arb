@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:27.275146",
+    "@@last_modified": "2026-07-20 16:04:31.863611",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2670,7 +2670,6 @@
     "lastUpdated": "Ažurirano\n{time}",
     "activityFinishedMessage": "Svi završeni!",
     "endForAll": "Završi za sve",
-    "newCourse": "Novi kurs",
     "numModules": "{num} modula",
     "coursePlan": "Plan kursa",
     "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
@@ -6921,10 +6920,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10644,5 +10639,8 @@
     "cancelDescriptionWithRenewalDate": "Vaša pretplata će biti aktivna do datuma obnove ({date}), a zatim će biti deaktivirana. Zadržaćete analitiku, ali nećete moći da koristite pro funkcije.",
     "cancelDescriptionWithoutRenewalDate": "Vaša pretplata će biti aktivna do datuma obnove, a zatim će biti deaktivirana. Zadržaćete analitiku, ali nećete moći da koristite pro funkcije.",
     "change": "Promeni",
-    "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički nalog i otkazati vašu pretplatu. Ovo se ne može poništiti! Da li ste sigurni?"
+    "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički nalog i otkazati vašu pretplatu. Ovo se ne može poništiti! Da li ste sigurni?",
+    "newCourseWithoutTitle": "Započni kurs",
+    "newCourseWithTitle": "Započni „{title}“",
+    "joinCourseWithTitle": "Pridruži se „{title}“"
 }

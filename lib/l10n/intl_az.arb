@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-20 10:57:45.945620",
+    "@@last_modified": "2026-07-20 16:04:25.621109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Yeniləndi\n{time}",
     "activityFinishedMessage": "Hamısı tamamlandı!",
     "endForAll": "Hamı üçün bitir",
-    "newCourse": "Yeni kurs",
     "numModules": "{num} modul",
     "coursePlan": "Kurs Planı",
     "editCourseLater": "Şablon başlığını, təsvirləri və kurs şəklini daha sonra redaktə edə bilərsiniz.",
@@ -2031,5 +2030,8 @@
     "cancelDescriptionWithRenewalDate": "Abunəliyiniz yenilənmə tarixinə ({date}) qədər aktiv olacaq, sonra deaktiv ediləcək. Analitikaları saxlayacaqsınız, lakin pro xüsusiyyətlərindən istifadə edə bilməyəcəksiniz.",
     "cancelDescriptionWithoutRenewalDate": "Abunəliyiniz yenilənmə tarixinə qədər aktiv olacaq, sonra deaktiv ediləcək. Analitikaları saxlayacaqsınız, lakin pro xüsusiyyətlərindən istifadə edə bilməyəcəksiniz.",
     "change": "Dəyişdir",
-    "deactivateSubscribedAccountWarning": "Bu, istifadəçi hesabınızı deaktiv edəcək və abunəliyinizi ləğv edəcək. Bu geri qaytarıla bilməz! Əminsinizmi?"
+    "deactivateSubscribedAccountWarning": "Bu, istifadəçi hesabınızı deaktiv edəcək və abunəliyinizi ləğv edəcək. Bu geri qaytarıla bilməz! Əminsinizmi?",
+    "newCourseWithoutTitle": "Kursu başla",
+    "newCourseWithTitle": "\"{title}\" kursunu başla",
+    "joinCourseWithTitle": "\"{title}\" kursuna qoşul"
 }

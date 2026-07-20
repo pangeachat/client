@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-20 10:58:35.756004",
+    "@@last_modified": "2026-07-20 16:04:33.045738",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "更新于\n{time}",
     "activityFinishedMessage": "全部完成！",
     "endForAll": "全部结束",
-    "newCourse": "新课程",
     "numModules": "{num} 个模块",
     "coursePlan": "课程计划",
     "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,8 @@
     "cancelDescriptionWithRenewalDate": "您的订阅将持续有效至续订日期 ({date})，然后停用。您将保留分析数据，但无法使用专业功能。",
     "cancelDescriptionWithoutRenewalDate": "您的订阅将持续有效至续订日期，然后停用。您将保留分析数据，但无法使用专业功能。",
     "change": "更改",
-    "deactivateSubscribedAccountWarning": "这将停用您的用户帐户并取消您的订阅。此操作无法撤销！您确定吗？"
+    "deactivateSubscribedAccountWarning": "这将停用您的用户帐户并取消您的订阅。此操作无法撤销！您确定吗？",
+    "newCourseWithoutTitle": "开始课程",
+    "newCourseWithTitle": "开始“{title}”",
+    "joinCourseWithTitle": "加入“{title}”"
 }

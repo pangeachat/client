@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-20 10:58:24.903672",
+    "@@last_modified": "2026-07-20 16:04:31.201152",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4100,7 +4100,6 @@
     "lastUpdated": "Обновлено\n{time}",
     "activityFinishedMessage": "Все завершено!",
     "endForAll": "Завершить для всех",
-    "newCourse": "Новый курс",
     "numModules": "{num} модулей",
     "coursePlan": "План курса",
     "editCourseLater": "Вы сможете отредактировать название шаблона, описания и изображение курса позже.",
@@ -6983,10 +6982,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10663,5 +10658,8 @@
     "cancelDescriptionWithRenewalDate": "Ваша подписка будет активна до даты продления ({date}), затем будет деактивирована. Вы сохраните аналитику, но не сможете использовать Pro-функции.",
     "cancelDescriptionWithoutRenewalDate": "Ваша подписка будет активна до даты продления, затем будет деактивирована. Вы сохраните аналитику, но не сможете использовать Pro-функции.",
     "change": "Изменить",
-    "deactivateSubscribedAccountWarning": "Это деактивирует вашу учетную запись и отменит подписку. Это действие необратимо! Вы уверены?"
+    "deactivateSubscribedAccountWarning": "Это деактивирует вашу учетную запись и отменит подписку. Это действие необратимо! Вы уверены?",
+    "newCourseWithoutTitle": "Начать курс",
+    "newCourseWithTitle": "Начать «{title}»",
+    "joinCourseWithTitle": "Присоединиться к «{title}»"
 }

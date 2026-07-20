@@ -1873,7 +1873,6 @@
     "lastUpdated": "განახლებულია\n{time}",
     "activityFinishedMessage": "ყველაფერი დასრულდა!",
     "endForAll": "დასრულება ყველასთვის",
-    "newCourse": "ახალი კურსი",
     "numModules": "{num} მოდული",
     "coursePlan": "კურსის გეგმა",
     "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
@@ -1947,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-20 10:58:10.170532",
+    "@@last_modified": "2026-07-20 16:04:28.795201",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6872,10 +6871,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10595,5 +10590,8 @@
     "cancelDescriptionWithRenewalDate": "თქვენი გამოწერა აქტიური იქნება განახლების თარიღამდე ({date}), შემდეგ გაუქმდება. თქვენ შეინარჩუნებთ ანალიტიკას, მაგრამ ვერ გამოიყენებთ პრო ფუნქციებს.",
     "cancelDescriptionWithoutRenewalDate": "თქვენი გამოწერა აქტიური იქნება განახლების თარიღამდე, შემდეგ გაუქმდება. თქვენ შეინარჩუნებთ ანალიტიკას, მაგრამ ვერ გამოიყენებთ პრო ფუნქციებს.",
     "change": "შეცვლა",
-    "deactivateSubscribedAccountWarning": "ეს გააუქმებს თქვენს მომხმარებლის ანგარიშს და გააუქმებს თქვენს გამოწერას. ამის გაუქმება შეუძლებელია! დარწმუნებული ხართ?"
+    "deactivateSubscribedAccountWarning": "ეს გააუქმებს თქვენს მომხმარებლის ანგარიშს და გააუქმებს თქვენს გამოწერას. ამის გაუქმება შეუძლებელია! დარწმუნებული ხართ?",
+    "newCourseWithoutTitle": "კურსის დაწყება",
+    "newCourseWithTitle": "დაიწყეთ „{title}“",
+    "joinCourseWithTitle": "შეუერთდით „{title}“-ს"
 }

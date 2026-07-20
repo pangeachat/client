@@ -1188,7 +1188,6 @@
     "lastUpdated": "更新\n{time}",
     "activityFinishedMessage": "全部完成！",
     "endForAll": "結束所有",
-    "newCourse": "新課程",
     "numModules": "{num} 個模組",
     "coursePlan": "課程計劃",
     "editCourseLater": "你可以稍後編輯模板標題、描述同課程圖片。",
@@ -1273,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-20 10:58:34.652564",
+    "@@last_modified": "2026-07-20 16:04:33.015444",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -6560,10 +6559,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10652,5 +10647,8 @@
     "cancelDescriptionWithRenewalDate": "你嘅訂閱會生效直到續訂日期（{date}），之後就會停用。你仍然可以保留分析數據，但無法使用專業版功能。",
     "cancelDescriptionWithoutRenewalDate": "你嘅訂閱會生效直到續訂日期，之後就會停用。你仍然可以保留分析數據，但無法使用專業版功能。",
     "change": "更改",
-    "deactivateSubscribedAccountWarning": "呢個操作會停用你嘅用戶帳戶並取消你嘅訂閱。呢個操作無法復原！你確定嗎？"
+    "deactivateSubscribedAccountWarning": "呢個操作會停用你嘅用戶帳戶並取消你嘅訂閱。呢個操作無法復原！你確定嗎？",
+    "newCourseWithoutTitle": "開始課程",
+    "newCourseWithTitle": "開始「{title}」",
+    "joinCourseWithTitle": "加入「{title}」"
 }

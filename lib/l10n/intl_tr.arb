@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-20 10:58:31.480782",
+    "@@last_modified": "2026-07-20 16:04:32.475444",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3314,7 +3314,6 @@
     "lastUpdated": "Güncellendi\n{time}",
     "activityFinishedMessage": "Hepsi Tamamlandı!",
     "endForAll": "Herkes İçin Sonlandır",
-    "newCourse": "Yeni kurs",
     "numModules": "{num} modül",
     "coursePlan": "Kurs Planı",
     "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
@@ -6264,10 +6263,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9990,5 +9985,8 @@
     "cancelDescriptionWithRenewalDate": "Aboneliğiniz yenileme tarihine ({date}) kadar aktif olacak, ardından devre dışı bırakılacaktır. Analizlerinizi koruyacak ancak profesyonel özellikleri kullanamayacaksınız.",
     "cancelDescriptionWithoutRenewalDate": "Aboneliğiniz yenileme tarihine kadar aktif olacak, ardından devre dışı bırakılacaktır. Analizlerinizi koruyacak ancak profesyonel özellikleri kullanamayacaksınız.",
     "change": "Değiştir",
-    "deactivateSubscribedAccountWarning": "Bu işlem kullanıcı hesabınızı devre dışı bırakacak ve aboneliğinizi iptal edecektir. Bu işlem geri alınamaz! Emin misiniz?"
+    "deactivateSubscribedAccountWarning": "Bu işlem kullanıcı hesabınızı devre dışı bırakacak ve aboneliğinizi iptal edecektir. Bu işlem geri alınamaz! Emin misiniz?",
+    "newCourseWithoutTitle": "Kursu başlat",
+    "newCourseWithTitle": "\"{title}\" kursunu başlat",
+    "joinCourseWithTitle": "\"{title}\" kursuna katıl"
 }

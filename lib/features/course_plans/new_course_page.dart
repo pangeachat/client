@@ -30,9 +30,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewCoursePage extends StatefulWidget {
-  final String route;
   final String? spaceId;
-  final bool showFilters;
   final String? initialLanguageCode;
   final bool showAll;
 
@@ -44,9 +42,7 @@ class NewCoursePage extends StatefulWidget {
 
   const NewCoursePage({
     super.key,
-    required this.route,
     this.spaceId,
-    this.showFilters = true,
     this.initialLanguageCode,
     this.showAll = false,
     required this.closeButton,
@@ -313,34 +309,31 @@ class NewCoursePageState extends State<NewCoursePage> {
         child: Center(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            constraints: const BoxConstraints(maxWidth: 450),
             child: Column(
               children: [
-                if (widget.showFilters) ...[
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Wrap(
-                          spacing: 8.0,
-                          runSpacing: 8.0,
-                          alignment: WrapAlignment.start,
-                          children: [
-                            ValueListenableBuilder(
-                              valueListenable: _targetLanguageFilter,
-                              builder: (context, value, _) {
-                                return CourseLanguageFilter(
-                                  value: _targetLanguageFilter.value,
-                                  onChanged: _setTargetLanguageFilter,
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        spacing: 8.0,
+                        runSpacing: 8.0,
+                        alignment: WrapAlignment.start,
+                        children: [
+                          ValueListenableBuilder(
+                            valueListenable: _targetLanguageFilter,
+                            builder: (context, value, _) {
+                              return CourseLanguageFilter(
+                                value: _targetLanguageFilter.value,
+                                onChanged: _setTargetLanguageFilter,
+                              );
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 20.0),
-                ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20.0),
                 ValueListenableBuilder(
                   valueListenable: _courses,
                   builder: (context, value, _) {

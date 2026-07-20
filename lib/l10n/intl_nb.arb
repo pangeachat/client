@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:17.752980",
+    "@@last_modified": "2026-07-20 16:04:30.296176",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3396,7 +3396,6 @@
     "lastUpdated": "Oppdatert\n{time}",
     "activityFinishedMessage": "Alt ferdig!",
     "endForAll": "Avslutt for alle",
-    "newCourse": "Nytt kurs",
     "numModules": "{num} moduler",
     "coursePlan": "Kursplan",
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
@@ -6199,10 +6198,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9746,5 +9741,8 @@
     "cancelDescriptionWithRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen ({date}), deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
     "cancelDescriptionWithoutRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen, deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
     "change": "Endre",
-    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?"
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?",
+    "newCourseWithoutTitle": "Start kurs",
+    "newCourseWithTitle": "Start «{title}»",
+    "joinCourseWithTitle": "Bli med i «{title}»"
 }
