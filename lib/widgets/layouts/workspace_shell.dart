@@ -33,6 +33,7 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
+import 'package:fluffychat/widgets/layouts/navigation_extras_extension.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
@@ -657,6 +658,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   token: cavityToken,
                   currentUri: uri,
                   bare: true,
+                  shareItems: state.navigatorShareItems(cavityToken),
+                  courseCreationCompleter: state.navigatorCourseCompleter(
+                    cavityToken,
+                  ),
                 ),
               ),
         cavityKey: cavityKey,
