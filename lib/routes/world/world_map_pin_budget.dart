@@ -75,8 +75,8 @@ const List<PinBudgetBreakpoint> kPinBudgetBreakpoints = [
   ), //   N=17 (large appears)
   PinBudgetBreakpoint(
     360,
-    PinBudget(large: 0, mid: 4, small: 30, trail: 8),
-  ), //    N=14 (no large)
+    PinBudget(large: 1, mid: 4, small: 30, trail: 8),
+  ), //    N=14 (one large)
   PinBudgetBreakpoint(
     0,
     PinBudget(large: 0, mid: 0, small: 10, trail: 5),

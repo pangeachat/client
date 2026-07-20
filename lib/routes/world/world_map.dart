@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
@@ -61,6 +62,12 @@ class WorldMap extends StatefulWidget {
   /// the uncovered area to the left of the panel. 0 when nothing docks right.
   final double rightOverlayWidth;
 
+  /// Logical-pixel height of a bottom overlay — the narrow activity-plan
+  /// sheet at its half-rest state. A focus pan adds it as bottom padding so
+  /// the focused pin centers in the exposed map ABOVE the sheet instead of
+  /// behind it (#7640). 0 when nothing covers the bottom.
+  final double bottomOverlayHeight;
+
   /// Logical-pixel width of the map actually visible between the open side panels
   /// (viewport − left overlay − right overlay). Drives the pin-density budget
   /// ([budgetForWidth]) — how many pins show and how many are large cards — so as
@@ -81,6 +88,7 @@ class WorldMap extends StatefulWidget {
     this.controller,
     this.leftOverlayWidth = 0.0,
     this.rightOverlayWidth = 0.0,
+    this.bottomOverlayHeight = 0.0,
     this.availableVisibleMapWidth = 0.0,
     this.focus,
   });
@@ -255,7 +263,8 @@ class WorldMapController extends State<WorldMap>
       _lastFocusedActivityId = resolvedId;
       _fitToContext();
     } else if (oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
-        oldWidget.rightOverlayWidth != widget.rightOverlayWidth) {
+        oldWidget.rightOverlayWidth != widget.rightOverlayWidth ||
+        oldWidget.bottomOverlayHeight != widget.bottomOverlayHeight) {
       _fitToContext(debounce: true);
     }
   }
@@ -426,7 +435,18 @@ class WorldMapController extends State<WorldMap>
       case CourseMapContext():
         _ensureScopedCourseOutline(mapContext.coursePlanId);
         try {
-          await _pinsManager.loadCourseScopedPins(mapContext.coursePlanId);
+          // The joined course's per-Mission activity pin scopes this view's
+          // markers (org quests doc, client#7748); not joined / unset → null →
+          // unrestricted.
+          final courseRoom = Matrix.of(context).client.joinedCourseRooms
+              .firstWhereOrNull(
+                (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+              );
+          await _pinsManager.loadCourseScopedPins(
+            mapContext.coursePlanId,
+            pinnedActivitiesByObjective:
+                courseRoom?.teacherMode.pinnedActivitiesByObjective,
+          );
 
           if (!mounted) return;
           setState(() {});
@@ -625,7 +645,7 @@ class WorldMapController extends State<WorldMap>
     widget.leftOverlayWidth + 64.0,
     64.0,
     widget.rightOverlayWidth + 64.0,
-    64.0,
+    widget.bottomOverlayHeight + 64.0,
   );
 
   /// The focus button (#7616) — the ONE camera path that zooms. A focused
