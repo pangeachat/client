@@ -79,12 +79,19 @@ platform :ios do
     config = File.read("../../pubspec.yaml")
     version_name = config.match(re).captures[0]
     increment_version_number(version_number: version_name)
-    update_code_signing_settings(
-      use_automatic_signing: false,
-      path: "Runner.xcodeproj",
-      code_sign_identity: "Apple Distribution",
-      profile_name: "match AppStore com.talktolearn.chat"
-    )
+    {
+      "Runner" => "com.talktolearn.chat",
+      "FluffyChat Share" => "com.talktolearn.chat.FluffyChatShare",
+      "Notification Service Extension" => "com.talktolearn.chat.Notification-Service-Extension",
+    }.each do |target, bundle_id|
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "Runner.xcodeproj",
+        targets: [target],
+        code_sign_identity: "Apple Distribution",
+        profile_name: "match AppStore #{bundle_id}"
+      )
+    end
     build_app(
       workspace: "Runner.xcworkspace",
       scheme: "Runner",
