@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
-import 'package:fluffychat/routes/courses/course_list_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -92,7 +94,13 @@ class LeftPanelCoursesListView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 16.0),
       children: [
-        for (final space in courses) CourseListTile(space),
+        for (final space in courses)
+          AddCourseTileByRoom(
+            space,
+            onTap: () => context.go(
+              WorkspaceNav.openCourse(GoRouterState.of(context).uri, space.id),
+            ),
+          ),
         if (courses.isEmpty) ...[
           const SizedBox(height: 4.0),
           // "Add new course" section divider + the full add-course buttons.

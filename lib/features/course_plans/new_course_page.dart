@@ -381,8 +381,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                                   return const SizedBox.shrink();
                                 }
                                 return SizedBox(
-                                  height:
-                                      60, // 👈 KEY: fixed height prevents jump
+                                  height: 60,
                                   child: Center(
                                     child: isLoadingMore
                                         ? const CircularProgressIndicator.adaptive()
@@ -403,8 +402,8 @@ class NewCoursePageState extends State<NewCoursePage> {
                           // Tapping the card scopes the map to this plan's
                           // activities (world_v2); the Create button starts
                           // the course.
-                          return AddCourseTile(
-                            coursePlan: course,
+                          return AddCourseTileByCourse(
+                            course,
                             onTap: () => _onSelect(course),
                           );
                         },

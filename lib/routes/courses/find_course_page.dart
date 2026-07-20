@@ -476,9 +476,9 @@ class FindCoursePageView extends StatelessWidget {
 
                           final lang =
                               controller.targetLanguageFilter.value?.langCode;
-                          return AddCourseTile(
-                            chunk: space,
-                            coursePlan: coursePlan,
+
+                          return AddCourseTileByPreview(
+                            space,
                             onTap: () => context.go(
                               WorkspaceNav.openAddCoursePage(
                                 GoRouterState.of(context).uri,
@@ -488,8 +488,6 @@ class FindCoursePageView extends StatelessWidget {
                                 allLanguagesFilter: lang == null,
                               ),
                             ),
-                            isKnock:
-                                space.room.joinRule == JoinRules.knock.name,
                           );
                         },
                       ),
