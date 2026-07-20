@@ -124,24 +124,31 @@ void main() {
       expect(score, 3);
     });
 
-    test('joined contributes 2 (a strong resurface bump, below joinable)', () {
-      final score = pinScore(
+    test('ongoing contributes a strong resurface bump (below joinable), active '
+        'above pending', () {
+      final pending = pinScore(
         band: 0,
-        s: const PinSignals(state: ActivityPinState.joined),
+        s: const PinSignals(state: ActivityPinState.ongoingPending),
       );
-      expect(score, 2);
+      final active = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.ongoingActive),
+      );
+      expect(pending, kOngoingPendingWeight);
+      expect(active, kOngoingActiveWeight);
+      expect(active, greaterThan(pending));
     });
 
-    test('joinable outranks joined (join others over resume your own)', () {
+    test('joinable outranks ongoing (join others over resume your own)', () {
       final joinable = pinScore(
         band: 0,
         s: const PinSignals(state: ActivityPinState.joinable),
       );
-      final joined = pinScore(
+      final ongoing = pinScore(
         band: 0,
-        s: const PinSignals(state: ActivityPinState.joined),
+        s: const PinSignals(state: ActivityPinState.ongoingActive),
       );
-      expect(joinable, greaterThan(joined));
+      expect(joinable, greaterThan(ongoing));
     });
 
     test('the band is added verbatim', () {
@@ -283,7 +290,8 @@ void main() {
     test('a 3+ role activity drops below a 2-role one of equal band', () {
       // Both score band 1.0 (in-L2, level-ok, objective-bearing); role count is
       // the only differentiator. For a new learner the 3-role pin is penalized
-      // into the tail while the solo-viable 2-role pin takes the large card.
+      // to the bottom of the ranking. Neither is live, so the large hard gate
+      // keeps both out of large regardless — both land in mid, 'duo' ahead.
       final pins = [
         _card('multi', refs: ['a'], roleCount: 3),
         _card('duo', refs: ['b'], roleCount: 2),
@@ -295,7 +303,8 @@ void main() {
         midBudget: 10,
         isNewLearner: true,
       );
-      expect(result.largeIds, ['duo']);
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'duo', 'multi'});
       expect(result.ordered.last, 'multi');
     });
 
@@ -320,10 +329,10 @@ void main() {
   });
 
   group('rankPins — large/mid fill by score', () {
-    test('the highest-scoring pins fill large, the next fill mid', () {
-      // No live session in view, so the gate is inert and tiers fill by score.
+    test('with nothing live in view, the highest scorer still never fills '
+        'large (the hard gate) — everyone competes for mid instead', () {
       final pins = [
-        _card('lvl', refs: ['b']), // band 1.0 → top
+        _card('lvl', refs: ['b']), // band 1.0 → top score
         _card('floorA', refs: const []), // band 0.5
         _card('floorB', refs: const []), // band 0.5
       ];
@@ -337,11 +346,11 @@ void main() {
         largeBudget: 1,
         midBudget: 10,
       );
-      expect(result.largeIds, ['lvl']); // top of the score
-      expect(result.midIds, {'floorA', 'floorB'}); // the rest, by score
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'lvl', 'floorA', 'floorB'});
     });
 
-    test('the large budget caps the large set; overflow drops to mid', () {
+    test('live pins fill large up to the budget; overflow drops to mid', () {
       final pins = [
         _card('a', refs: ['k1']),
         _card('b', refs: ['k2']),
@@ -349,7 +358,10 @@ void main() {
       ];
       final result = rank(
         pins,
-        {for (final p in pins) p.activityId: const PinSignals()},
+        {
+          for (final p in pins)
+            p.activityId: const PinSignals(state: ActivityPinState.joinable),
+        },
         largeBudget: 2,
         midBudget: 10,
       );
@@ -371,6 +383,45 @@ void main() {
       );
       expect(result.largeIds, isEmpty);
       expect(result.midIds.length, 2);
+    });
+
+    test('an available (non-live) pin never fills large, however high it '
+        'scores — the hard gate is unconditional', () {
+      // Maximize a single non-live pin's score (saturated multi-quest band +
+      // pinged + full recency) and give it a generous large budget: it still
+      // never earns a large slot, because the gate is state-based, not a
+      // score threshold.
+      final progression = resolveProgression(
+        outlines: [
+          CourseLoOutline(
+            courseId: 'c1',
+            orderedLoIds: ['q1'],
+            activityIdsByLo: {
+              'q1': const {'topAvailable'},
+            },
+          ),
+          CourseLoOutline(
+            courseId: 'c2',
+            orderedLoIds: ['q2'],
+            activityIdsByLo: {
+              'q2': const {'topAvailable'},
+            },
+          ),
+        ],
+        starsByActivity: const {},
+      );
+      final pins = [
+        _card('topAvailable', refs: ['q1', 'q2']),
+      ];
+      final result = rank(
+        pins,
+        {'topAvailable': const PinSignals(pinged: true, recency: 1.0)},
+        progression: progression,
+        largeBudget: 5,
+        midBudget: 10,
+      );
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'topAvailable'});
     });
   });
 
@@ -412,12 +463,15 @@ void main() {
         largeBudget: 1,
         midBudget: 10,
       );
-      // Both are present; the fresher one takes the single large slot.
-      expect(result.largeIds, ['fresh']);
-      expect(result.midIds, contains('done')); // present, just demoted
+      // Neither is live, so the large hard gate keeps both out of large — but
+      // both still appear (in mid), with 'fresh' ranked ahead of the demoted
+      // 'done'.
+      expect(result.largeIds, isEmpty);
+      expect(result.ordered, ['fresh', 'done']);
+      expect(result.midIds, {'fresh', 'done'});
     });
 
-    test('a finished pin is featured when nothing better competes', () {
+    test('a finished pin is featured in mid when nothing better competes', () {
       final result = rank(
         [
           _card('done', refs: ['k1']),
@@ -426,8 +480,10 @@ void main() {
         largeBudget: 1,
         midBudget: 10,
       );
-      // No gate excludes it — it earns the slot when it is all there is.
-      expect(result.largeIds, ['done']);
+      // No gate excludes it from the map — but it's not live, so the large
+      // hard gate still keeps it out of large even alone; it earns mid.
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'done'});
     });
   });
 
@@ -444,7 +500,9 @@ void main() {
         midBudget: 10,
         dismissedIds: {'xed'},
       );
-      expect(result.largeIds, ['kept']);
+      // Neither is live, so both are mid (never large) — 'kept' ranks ahead.
+      expect(result.largeIds, isEmpty);
+      expect(result.ordered, ['kept', 'xed']);
       expect(result.midIds, contains('xed')); // present, just demoted
     });
 
@@ -541,7 +599,7 @@ void main() {
       expect(result.midIds, isEmpty);
     });
 
-    test('a joined session also activates the gate', () {
+    test('an ongoing session also activates the gate', () {
       final pins = [
         _card('mine', refs: ['a']),
         _card('lvl', refs: ['b']),
@@ -549,7 +607,7 @@ void main() {
       final result = rank(
         pins,
         {
-          'mine': const PinSignals(state: ActivityPinState.joined),
+          'mine': const PinSignals(state: ActivityPinState.ongoingActive),
           'lvl': const PinSignals(),
         },
         largeBudget: 3,
@@ -560,21 +618,26 @@ void main() {
       expect(result.midIds, isEmpty);
     });
 
-    test('with nothing live in view the gate is inert (null); all compete', () {
-      final pins = [
-        _card('a', refs: ['k1']),
-        _card('b', refs: ['k2']),
-      ];
-      final result = rank(
-        pins,
-        {for (final p in pins) p.activityId: const PinSignals()},
-        largeBudget: 1,
-        midBudget: 10,
-      );
-      expect(result.heavyEligibleIds, isNull);
-      expect(result.largeIds.length, 1);
-      // Non-live still fills mid when nothing live gates the tier.
-      expect(result.midIds.length, 1);
-    });
+    test(
+      'with nothing live in view, the mid gate is inert (null) but the '
+      'large hard gate still excludes everyone — nothing is live-eligible',
+      () {
+        final pins = [
+          _card('a', refs: ['k1']),
+          _card('b', refs: ['k2']),
+        ];
+        final result = rank(
+          pins,
+          {for (final p in pins) p.activityId: const PinSignals()},
+          largeBudget: 1,
+          midBudget: 10,
+        );
+        expect(result.heavyEligibleIds, isNull);
+        expect(result.largeIds, isEmpty);
+        // Non-live pins fill mid when nothing live gates that tier — but never
+        // large, per the unconditional hard gate.
+        expect(result.midIds.length, 2);
+      },
+    );
   });
 }

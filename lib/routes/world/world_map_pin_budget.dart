@@ -59,27 +59,27 @@ class PinBudgetBreakpoint {
 const List<PinBudgetBreakpoint> kPinBudgetBreakpoints = [
   PinBudgetBreakpoint(
     1500,
-    PinBudget(large: 3, mid: 10, small: 17, trail: 20),
+    PinBudget(large: 3, mid: 10, small: 80, trail: 20),
   ), // N=30
   PinBudgetBreakpoint(
     1100,
-    PinBudget(large: 3, mid: 8, small: 14, trail: 16),
+    PinBudget(large: 3, mid: 8, small: 80, trail: 16),
   ), //  N=25
   PinBudgetBreakpoint(
     800,
-    PinBudget(large: 3, mid: 6, small: 11, trail: 12),
+    PinBudget(large: 3, mid: 6, small: 70, trail: 12),
   ), //   N=20
   PinBudgetBreakpoint(
     600,
-    PinBudget(large: 1, mid: 5, small: 11, trail: 10),
+    PinBudget(large: 1, mid: 5, small: 50, trail: 10),
   ), //   N=17 (large appears)
   PinBudgetBreakpoint(
     360,
-    PinBudget(large: 0, mid: 4, small: 10, trail: 8),
-  ), //    N=14 (no large)
+    PinBudget(large: 1, mid: 4, small: 30, trail: 8),
+  ), //    N=14 (one large)
   PinBudgetBreakpoint(
     0,
-    PinBudget(large: 0, mid: 0, small: 8, trail: 5),
+    PinBudget(large: 0, mid: 0, small: 10, trail: 5),
   ), //       N=8  (dots only)
 ];
 
@@ -99,8 +99,23 @@ abstract class PinSize {
   /// maps-like redesign).
   static const double smallDiameter = 8.0;
 
-  /// Mid pin (activity-type glyph) diameter.
+  /// Mid pin (activity-type glyph) diameter — the circular "head" of the
+  /// teardrop marker.
   static const double midDiameter = 44.0;
+
+  /// Extra height below the mid pin's circular head for the teardrop's
+  /// pointed tip, which sits at the pin's geographic anchor (Figma
+  /// `Activity pin v3`; world-map.instructions.md, "Pin display"). Small pins
+  /// stay a plain circle and don't use this.
+  static const double midPointHeight = 10.0;
+
+  /// No longer a separate reserved row: a mid pin's "num/num" participant
+  /// count (joinable / ongoing-pending only) now stacks inside the circular
+  /// head under its icon glyph (world-map.instructions.md, "Pin display"), so
+  /// the marker box needs no extra height below the teardrop's point. Kept at
+  /// 0 (rather than removed) so the box-height/anchor math in
+  /// `world_map_ranking.dart`/`world_map_view.dart` stays a single formula.
+  static const double midLabelHeight = 0.0;
 
   /// Large card width.
   static const double largeWidth = 260.0;
@@ -109,10 +124,17 @@ abstract class PinSize {
   static const double largeHeight = 150.0;
   static const double largeHeightJoinable = 184.0;
 
-  /// The progress **gold star** drawn on small/mid pins. It optionally grows with
-  /// the fraction of stars earned toward the activity's total, clamped to
-  /// [progressStarMin] .. [progressStarMax]. (The large card shows the full star
-  /// row instead.) See `world-map.instructions.md` ("Goal Progress").
-  static const double progressStarMin = 6.0;
-  static const double progressStarMax = 14.0;
+  /// Diameter of the completed-activity **star dot** — a gold [Icons.star] (one
+  /// role done) or, one size up, a [Icons.hotel_class] **super star** (all roles)
+  /// in a base-colour circle, drawn in place of (or, under a live pin, behind) a
+  /// coloured pin body (world-map.instructions.md, "Goal Progress"). Fixed:
+  /// progress on a pin is binary (a role is complete or it isn't), never a
+  /// partial fraction, so the old grow-with-fill min/max sizing is gone. The
+  /// super star is a touch larger to carry its busier star-on-a-star glyph.
+  static const double starDotDiameter = 20.0;
+  static const double superStarDotDiameter = 24.0;
+
+  /// Glyph size inside the regular / super star circle.
+  static const double starGlyphSize = 16.0;
+  static const double superStarGlyphSize = 20.0;
 }

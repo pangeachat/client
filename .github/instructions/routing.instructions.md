@@ -448,10 +448,15 @@ learner left *that* course at, while a different course still opens at the
 collapsed peek. The memory is scoped to the content, not global, so one
 course's expanded widget never dictates the next course's opening size (#7332).
 
-**Tapping a map pin promotes it; there is no preview popup.** Tapping a small or
-mid pin expands it to its **large card in place** (over the map, the bottom nav
-still showing); tapping a large card opens the activity's **plan page**. Tapping
-the empty map collapses a promoted card. The large-card design lives in
+**Tapping a map pin focuses it directly; there is no preview popup and no
+tap-to-peek.** One tap on any pin — dot, mid, or large card — centers the camera
+on it and opens the activity's **plan page** in the same motion. If the tapped
+pin is `joinable`/`ongoing` (large-eligible), that same tap also raises it to a
+**large card** — even bumping out the current lowest-scoring large card if that
+tier's quota was already full — since focus wins its own slot regardless of
+score. An `available`/`completed` pin still focuses and opens the plan page,
+it just never becomes a large card, at any tap or score. Tapping the
+empty map clears focus. The large-card design lives in
 [world-map.instructions.md](world-map.instructions.md).
 
 ### Single-column bottom nav

@@ -25,17 +25,15 @@ class WorldMapConstants {
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
 
-  // #7245 — the large tier hides while the camera's zoom is actively changing
-  // and re-derives at settle.
+  // #7245 — pin/card tiers freeze at their current size while the camera is
+  // actively moving (pan, zoom, rotate, or a programmatic glide) and re-derive
+  // once it settles, so a gesture never flickers a card between tiers.
 
-  /// How long after the last zoom change the camera counts as settled. Short
-  /// enough that cards return promptly after a pinch or scroll stops; long
-  /// enough that discrete scroll-wheel ticks chain into one continuous hide.
-  static const Duration zoomSettle = Duration(milliseconds: 300);
-
-  /// The smallest camera-zoom delta treated as "zooming" — filters projection
-  /// jitter during pure pans so panning never hides the large cards.
-  static const double zoomChangeEpsilon = 0.01;
+  /// How long after the last camera-movement event the camera counts as
+  /// settled. Short enough that tiers re-derive promptly after a pinch, pan,
+  /// or scroll stops; long enough that a burst of movement events (a drag, a
+  /// chain of scroll-wheel ticks) coalesces into one continuous freeze.
+  static const Duration moveSettle = Duration(milliseconds: 300);
 
   // #7239 — gentler combined pan/zoom glide.
 
