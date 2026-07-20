@@ -12,7 +12,6 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -44,31 +43,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
   void initState() {
     super.initState();
     loadCourse(widget.courseId);
-    // The invite route is single-use: the creation completer only rides in
-    // state.extra during the live wizard. On a reload / browser-back onto
-    // /courses/own/:courseid/invite the completer is null; if there is also no
-    // already-created space for this plan, the page is a dead end (both buttons
-    // would error), so redirect to the start-my-own list instead of stranding.
-    // (When a space DOES exist, getSpaceId resolves it and the page works.)
-    if (widget.courseCreationCompleter == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (!mounted) return;
-        final existing = Matrix.of(
-          context,
-        ).client.getRoomByCourseId(widget.courseId);
-        if (existing != null) return;
-        context.go(
-          WorkspaceNav.openAddCoursePage(
-            GoRouterState.of(context).uri,
-            AddCourseSubpageEnum.own,
-          ),
-        );
-      });
-    }
   }
 
   @override
-  void didUpdateWidget(covariant CourseInvitePage oldWidget) {
+  void didUpdateWidget(CourseInvitePage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
       loadCourse(widget.courseId);

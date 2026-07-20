@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -581,6 +582,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       }
     }
 
+    final courseCreationCompleter =
+        cavityToken?.type == PanelTypesEnum.addcoursepage &&
+            state.extra is Completer<String>
+        ? state.extra as Completer<String>
+        : null;
+
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
     // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
@@ -657,6 +664,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   token: cavityToken,
                   currentUri: uri,
                   bare: true,
+                  courseCreationCompleter: courseCreationCompleter,
                 ),
               ),
         cavityKey: cavityKey,
