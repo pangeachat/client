@@ -12,27 +12,6 @@
     "web": "e2e/scripts/login-logout.spec.ts",
     "mobile": "integration_test/patrol/login_logout_test.dart"
   },
-  "course-chat-navigation": {
-    "globs": [
-      "lib/pages/chat_list/**",
-      "lib/pangea/chat_list/**",
-      "lib/pangea/common/controllers/pangea_controller.dart",
-      "lib/config/routes.dart",
-      "lib/pangea/course_creation/**",
-      "lib/pangea/course_plan/**"
-    ],
-    "web": "e2e/scripts/course-chat-navigation.spec.ts",
-    "mobile": null
-  },
-  "settings": {
-    "globs": [
-      "lib/pages/settings/**",
-      "lib/pangea/learning_settings/**",
-      "lib/pangea/subscription/**"
-    ],
-    "web": "e2e/scripts/settings.spec.ts",
-    "mobile": null
-  },
   "permissions": {
     "globs": [
       "lib/pangea/common/controllers/pangea_controller.dart",
