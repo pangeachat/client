@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/join_codes/**,lib/pangea/chat_list/**,lib/pangea/course_creation/**,lib/pangea/spaces/**,lib/pages/chat_list/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
+applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -27,14 +27,14 @@ All three routes converge on the user becoming a `Membership.join` member of the
 
 ## Route 1 — Class Link
 
-**URL format**: `https://pangea.chat/#/join_with_link?classcode=XYZ`
+**Canonical shape**: a bare short code, `https://app.pangea.chat/<code>` (seven `[a-z0-9]` characters), shared or printed as-is. Two spellings carry it into the app, neither hash-based — the canonical route shapes are the cross-repo contract in [deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md), and the client URL grammar is [routing.instructions.md](routing.instructions.md):
 
-1. User clicks link → GoRouter navigates to `/join_with_link`
-2. Class code is saved to local storage (`SpaceCodeRepo`)
-3. Redirect to `/home`
-4. On home load, `joinCachedSpaceCode()` fires the knock_with_code + join flow (same as Route 2)
+- **Web** — a CloudFront viewer-request 302 rewrites the bare code to `/join_with_link?classcode=<code>`.
+- **Native** (iOS Universal Links / Android App Links) — the incoming-URI listener in [`MatrixState`](../../lib/widgets/matrix.dart) rewrites the bare code to `/join?classcode=<code>`.
 
-**Pre-login persistence**: If not logged in, the code persists on disk. After account creation, `joinCachedSpaceCode()` auto-joins.
+[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) — the router's one inbound rewrite — folds both spellings into the add-course panel's private join-with-code leaf (`left=addcourse:private/<code>`) before anything renders. That leaf ([`CourseCodePage`](../../lib/routes/courses/private/course_code_page.dart)) prefills the code and submits the join once — the same [`SpaceCodeController`](../../lib/features/join_codes/space_code_controller.dart) `joinSpaceWithCode` flow Route 2 runs — then history-replaces itself with the plain join-with-code page so back or refresh never re-fires the join.
+
+**Pre-login**: a logged-out visitor is bounced to login, which drops the destination URL, so the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) caches the code (`SpaceCodeRepo`) first. After login, chat-list init runs `joinCachedSpaceCode` and joins. The cache is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) so a visitor who never logs in can't leave a code that surprise-joins a much later login.
 
 **matrix.to links**: Standard Matrix links (`https://matrix.to/#/...`) go through a separate path. For knock-only rooms, this shows the public room bottom sheet with a code field and "Ask to Join" button.
 
@@ -125,22 +125,12 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 ## Deep Linking — Mobile & Web
 
-Class link URLs (`https://app.pangea.chat/#/join_with_link?classcode=XYZ`) must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the app directly when installed.
-
-### Key design decisions
-
-- **Mobile redirect bypass for class links**: [`web/index.html`](../../web/index.html) has a redirect script that sends mobile users to `pangea://` (custom scheme) → app store fallback. This is **skipped** when the hash contains `join_with_link`, because the custom scheme loses the URL fragment (and thus the class code). Instead, the Flutter web app loads and handles it.
-- **Web as fallback**: When the app isn't installed, the web app processes the class code directly. No deferred deep linking service (Branch.io, etc.) is used.
-- **Hash-based routing**: The class code lives in the URL fragment (`#/join_with_link?classcode=XYZ`). iOS Universal Links deliver the full URL including fragment to the app.
+A class link must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the installed app directly; the bare short code reaches the incoming-URI listener, which rewrites it to `/join?classcode=<code>` (Route 1). When the app is not installed, the web app loads and processes the code directly — there is no deferred deep-linking service (Branch.io, etc.).
 
 ### Infrastructure touchpoints
 
 - **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
-- **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml)
-- **URI listener** — [`MatrixState._processIncomingUris`](../../lib/widgets/matrix.dart) receives incoming URLs via `app_links` package, routes to GoRouter.
-- **Custom scheme** — `pangea://` registered on both platforms as a fallback, but cannot carry the fragment through a store install.
-
----
-
-## Future Work
+- **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml).
+- **Incoming-URI listener** — the listener in [`MatrixState`](../../lib/widgets/matrix.dart) receives inbound URLs via the `app_links` package and routes them into GoRouter.
+- **Custom scheme** — `pangea://` registered on both platforms as a store-install fallback.
 
