@@ -1,0 +1,372 @@
+{
+  "schema": "pangea.parity.progression.star_count/1",
+  "description": "Byte-identical cross-language parity vectors for the per-session own-star count (Phase B spec B.1.2 step 1), the per-activity MAX (step 2), and the earnable-stars ceiling. Inputs are the REAL Matrix/CMS content shapes: `roles` is the `roles` map of `pangea.activity_roles`, `awarded_goals` is the raw `pangea.orchestrator_awarded_goals` content, and `plan_roles` is the activity's CMS-authored role map (the `pangea.activity_plan` state event is a THIN reference and carries no goals). Source of truth: client-dosage-a2 orchestrator_awarded_goals.dart, orchestrator_room_extension.dart (ownCompletedGoals), quests_client_extension.dart (userStarsByActivity), activity_plan_model.dart (allGoals / earnableStars). Vendored byte-identical into client-dosage-a2/test/fixtures/parity/progression/ and verified on each side against that side's own MANIFEST.sha256.",
+  "notes": [
+    "A star IS one orchestrator-awarded goal of the player's OWN role: own_stars = len(ownCompletedGoals), counted by iterating the role's allGoals and testing each for an award (slug first, goal id as fallback). Iterating the canonical goal list is what makes a duplicated award entry count once and what keeps a flat legacy award from crediting a goal the role does not declare.",
+    "The player's role is resolved the way the client resolves it: the `roles` entry whose user_id is the player, then that role_id in `plan_roles`.",
+    "stars_by_activity takes the MAX across sessions of the same activity (never the sum, never the last).",
+    "earnable_by_activity is min(len(allGoals)) across the activity's plan roles, and 0 when the plan carries no roles."
+  ],
+  "vectors": [
+    {
+      "name": "duplicate-awards-counted-once",
+      "pins": ["the same slug awarded twice counts ONCE"],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "shopper",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Shopper",
+                "goal": null,
+                "goals": [
+                  {"id": "g1", "goal_slug": "buy-bread", "description": "Buy bread"}
+                ]
+              }
+            },
+            "awarded_goals": {
+              "awards": {"r1": ["buy-bread", "buy-bread"]},
+              "legacy_flat_goal_ids": []
+            }
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [1],
+        "stars_by_activity": {"a1": 1},
+        "earnable_by_activity": {"a1": 1}
+      }
+    },
+    {
+      "name": "replayed-and-out-of-order-sessions-take-the-max",
+      "pins": [
+        "re-played sessions of one activity take the MAX, not the sum",
+        "the max is order-independent (the higher count arrives FIRST here)"
+      ],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "shopper",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Shopper",
+                "goal": null,
+                "goals": [
+                  {"id": "g1", "goal_slug": "s1", "description": "Greet the baker"},
+                  {"id": "g2", "goal_slug": "s2", "description": "Ask the price"},
+                  {"id": "g3", "goal_slug": "s3", "description": "Pay for the bread"}
+                ]
+              }
+            },
+            "awarded_goals": {"awards": {"r1": ["s1", "s2", "s3"]}, "legacy_flat_goal_ids": []}
+          },
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "shopper",
+                "finished_at": "2026-07-19T09:00:00Z",
+                "archived_at": "2026-07-19T09:01:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Shopper",
+                "goal": null,
+                "goals": [
+                  {"id": "g1", "goal_slug": "s1", "description": "Greet the baker"},
+                  {"id": "g2", "goal_slug": "s2", "description": "Ask the price"},
+                  {"id": "g3", "goal_slug": "s3", "description": "Pay for the bread"}
+                ]
+              }
+            },
+            "awarded_goals": {"awards": {"r1": ["s1"]}, "legacy_flat_goal_ids": []}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [3, 1],
+        "stars_by_activity": {"a1": 3},
+        "earnable_by_activity": {"a1": 3}
+      }
+    },
+    {
+      "name": "award-matches-slug-first-then-falls-back-to-goal-id",
+      "pins": ["slug-first matching, goal-id fallback for awards written before the slug cutover"],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "guide",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Guide",
+                "goal": null,
+                "goals": [
+                  {"id": "ida", "goal_slug": "sa", "description": "Awarded by slug"},
+                  {"id": "idb", "goal_slug": null, "description": "No slug at all, awarded by id"},
+                  {"id": "idc", "goal_slug": "sc", "description": "Has a slug but was awarded by id"},
+                  {"id": "idd", "goal_slug": "sd", "description": "Never awarded"}
+                ]
+              }
+            },
+            "awarded_goals": {"awards": {"r1": ["sa", "idb", "idc"]}, "legacy_flat_goal_ids": []}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [3],
+        "stars_by_activity": {"a1": 3},
+        "earnable_by_activity": {"a1": 4}
+      }
+    },
+    {
+      "name": "legacy-flat-goal-ids-shape-counts-for-any-role",
+      "pins": [
+        "the pre-per-role flat `{goal_ids: [...]}` content parses into legacy_flat_goal_ids with no awards map",
+        "a flat award counts for ANY role that declares the goal (slug or id)"
+      ],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "buyer",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              },
+              "r2": {
+                "id": "r2",
+                "user_id": "@peer:pangea.chat",
+                "role": "seller",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Buyer",
+                "goal": null,
+                "goals": [
+                  {"id": "ida", "goal_slug": "sa", "description": "Shared goal, flat-awarded by slug"},
+                  {"id": "idb", "goal_slug": null, "description": "Flat-awarded by id"}
+                ]
+              },
+              "r2": {
+                "id": "r2",
+                "name": "Seller",
+                "goal": null,
+                "goals": [
+                  {"id": "ida", "goal_slug": "sa", "description": "Shared goal, flat-awarded by slug"},
+                  {"id": "idz", "goal_slug": "sz", "description": "Not awarded"}
+                ]
+              }
+            },
+            "awarded_goals": {"goal_ids": ["sa", "idb"]}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [2],
+        "stars_by_activity": {"a1": 2},
+        "earnable_by_activity": {"a1": 2}
+      }
+    },
+    {
+      "name": "shared-goal-awarded-to-several-roles-credits-only-the-own-role",
+      "pins": ["a goal shared across roles completes independently per role; the player is credited only for THEIR role's awards"],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "buyer",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              },
+              "r2": {
+                "id": "r2",
+                "user_id": "@peer:pangea.chat",
+                "role": "seller",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Buyer",
+                "goal": null,
+                "goals": [
+                  {"id": "idsh", "goal_slug": "shared", "description": "Shared across both roles"},
+                  {"id": "id2", "goal_slug": "own2", "description": "Buyer-only, never awarded"}
+                ]
+              },
+              "r2": {
+                "id": "r2",
+                "name": "Seller",
+                "goal": null,
+                "goals": [
+                  {"id": "idsh", "goal_slug": "shared", "description": "Shared across both roles"},
+                  {"id": "id3", "goal_slug": "other3", "description": "Seller-only, awarded to the SELLER"}
+                ]
+              }
+            },
+            "awarded_goals": {
+              "awards": {"r1": ["shared"], "r2": ["shared", "other3"]},
+              "legacy_flat_goal_ids": []
+            }
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [1],
+        "stars_by_activity": {"a1": 1},
+        "earnable_by_activity": {"a1": 2}
+      }
+    },
+    {
+      "name": "role-with-only-a-flat-goal-synthesizes-a-legacy-goal",
+      "pins": ["a role with no `goals` but a flat `goal` string synthesizes one goal id `{role_id}:legacy`, so earnable == 1"],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a1",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "baker",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {"id": "r1", "name": "Baker", "goal": "Buy bread", "goals": []}
+            },
+            "awarded_goals": {"awards": {"r1": ["r1:legacy"]}, "legacy_flat_goal_ids": []}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [1],
+        "stars_by_activity": {"a1": 1},
+        "earnable_by_activity": {"a1": 1}
+      }
+    },
+    {
+      "name": "plan-with-no-roles-has-zero-earnable-and-zero-stars",
+      "pins": [
+        "earnable_stars is 0 when the plan carries no roles (degraded / unhydratable plan)",
+        "an unhydratable plan yields 0 stars, never null and never an exception"
+      ],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a_empty",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@student:pangea.chat",
+                "role": "shopper",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {},
+            "awarded_goals": {"awards": {"r1": ["anything"]}, "legacy_flat_goal_ids": []}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [0],
+        "stars_by_activity": {"a_empty": 0},
+        "earnable_by_activity": {"a_empty": 0}
+      }
+    },
+    {
+      "name": "player-with-no-role-assignment-earns-zero",
+      "pins": ["no role assignment for the student yields 0 stars, not null"],
+      "input": {
+        "player": "@student:pangea.chat",
+        "sessions": [
+          {
+            "activity_id": "a_norole",
+            "roles": {
+              "r1": {
+                "id": "r1",
+                "user_id": "@someone-else:pangea.chat",
+                "role": "shopper",
+                "finished_at": "2026-07-18T10:05:00Z",
+                "archived_at": "2026-07-18T10:06:00Z"
+              }
+            },
+            "plan_roles": {
+              "r1": {
+                "id": "r1",
+                "name": "Shopper",
+                "goal": null,
+                "goals": [
+                  {"id": "g1", "goal_slug": "s1", "description": "Greet the baker"},
+                  {"id": "g2", "goal_slug": "s2", "description": "Pay for the bread"}
+                ]
+              }
+            },
+            "awarded_goals": {"awards": {"r1": ["s1", "s2"]}, "legacy_flat_goal_ids": []}
+          }
+        ]
+      },
+      "expect": {
+        "own_stars_per_session": [0],
+        "stars_by_activity": {"a_norole": 0},
+        "earnable_by_activity": {"a_norole": 2}
+      }
+    }
+  ]
+}

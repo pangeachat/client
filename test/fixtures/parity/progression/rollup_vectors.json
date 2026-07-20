@@ -1,0 +1,345 @@
+{
+  "schema": "pangea.parity.progression.rollup/1",
+  "description": "Byte-identical cross-language parity vectors for the star/Mission rollup pipeline (Phase B spec B.1.5). Inputs are already-resolved resolver inputs (outlines + stars_by_activity) so room enumeration is never conflated with resolver drift. Source of truth: client-dosage-a2/lib/features/quests/quest_progression_resolver.dart + lo_progression.dart. Vendored byte-identical into client-dosage-a2/test/fixtures/parity/progression/ and verified on each side against that side's own MANIFEST.sha256.",
+  "float_tolerance": 1e-9,
+  "default_stars_to_unlock_objective": 10,
+  "band_falloff_missions": 3,
+  "band_ceiling": 2.0,
+  "notes": [
+    "expect.anchor is a string when the vector resolves exactly one quest, a list (one entry per outline with a non-empty sequence, in input order) when it resolves several, and null when no quest resolves at all.",
+    "expect.mission_gradient maps a Mission id to missionGradient({that id}) - a SINGLE-ref probe, so contributions summed across quests and the BAND_CEILING saturation are both observable.",
+    "input.quest_mission_ids is the exact argument passed to questStars(...); it may name a Mission absent from the rollup, which must still contribute the default threshold to the denominator."
+  ],
+  "vectors": [
+    {
+      "name": "override-above-ceiling-clamps",
+      "pins": ["threshold override > ceiling clamps down to earnable_ceiling"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2"],
+            "activity_ids_by_lo": {"lo1": ["a1", "a2"], "lo2": ["a2"]},
+            "stars_to_unlock": 25,
+            "earnable_by_activity": {"a1": 4, "a2": 3}
+          }
+        ],
+        "stars_by_activity": {"a1": 4, "a2": 2},
+        "quest_mission_ids": ["lo1", "lo2"],
+        "gradient_refs": ["lo1", "lo2"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 6, "threshold": 7, "satisfied": false},
+          "lo2": {"stars": 2, "threshold": 3, "satisfied": false}
+        },
+        "quest_stars": {"earned": 8, "total": 10},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 1.0, "lo2": 0.6666666666666667}
+      }
+    },
+    {
+      "name": "ceiling-zero-does-not-clamp-and-is-not-satisfied-at-zero",
+      "pins": ["ceiling == 0 does NOT clamp; Mission not satisfied at 0"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {}
+          }
+        ],
+        "stars_by_activity": {"a1": 0},
+        "quest_mission_ids": ["lo1"],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 0, "threshold": 10, "satisfied": false}},
+        "quest_stars": {"earned": 0, "total": 10},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 1.0}
+      }
+    },
+    {
+      "name": "ceiling-at-or-above-configured-keeps-configured-and-satisfies-at-exact-threshold",
+      "pins": [
+        "ceiling >= configured keeps configured as-is",
+        "satisfied at exactly threshold (inclusive >=)",
+        "gradient: an already-satisfied ref contributes nothing"
+      ],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1", "a2"]},
+            "stars_to_unlock": 3,
+            "earnable_by_activity": {"a1": 2, "a2": 2}
+          }
+        ],
+        "stars_by_activity": {"a1": 2, "a2": 1},
+        "quest_mission_ids": ["lo1"],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 3, "threshold": 3, "satisfied": true}},
+        "quest_stars": {"earned": 3, "total": 3},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 0.0}
+      }
+    },
+    {
+      "name": "activity-shared-by-two-missions-counts-toward-both-unioned-once",
+      "pins": ["an activity shared by two Missions counts toward both and is unioned once within each"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2"],
+            "activity_ids_by_lo": {"lo1": ["a1", "shared"], "lo2": ["shared"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 5, "shared": 5}
+          }
+        ],
+        "stars_by_activity": {"a1": 3, "shared": 4},
+        "quest_mission_ids": ["lo1", "lo2"],
+        "gradient_refs": ["lo1", "lo2"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 7, "threshold": 10, "satisfied": false},
+          "lo2": {"stars": 4, "threshold": 5, "satisfied": false}
+        },
+        "quest_stars": {"earned": 11, "total": 15},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 1.0, "lo2": 0.6666666666666667}
+      }
+    },
+    {
+      "name": "mission-absent-from-rollup-still-contributes-default-to-denominator",
+      "pins": ["a Mission absent from the rollup contributes the DEFAULT threshold (10) and zero stars to the quest denominator"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 8,
+            "earnable_by_activity": {"a1": 10}
+          }
+        ],
+        "stars_by_activity": {"a1": 5},
+        "quest_mission_ids": ["lo1", "lo_absent"],
+        "gradient_refs": ["lo1", "lo_absent"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 5, "threshold": 8, "satisfied": false}},
+        "quest_stars": {"earned": 5, "total": 18},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 1.0, "lo_absent": 0.0}
+      }
+    },
+    {
+      "name": "threshold-merge-across-outlines-takes-the-min",
+      "pins": ["stars_to_unlock merged across outlines: the MOST LENIENT (min) wins"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 12,
+            "earnable_by_activity": {"a1": 20}
+          },
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 6,
+            "earnable_by_activity": {"a1": 20}
+          }
+        ],
+        "stars_by_activity": {"a1": 8},
+        "quest_mission_ids": ["lo1"],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 8, "threshold": 6, "satisfied": true}},
+        "quest_stars": {"earned": 6, "total": 6},
+        "anchor": ["lo1", "lo1"],
+        "mission_gradient": {"lo1": 0.0}
+      }
+    },
+    {
+      "name": "earnable-merge-across-outlines-takes-the-min",
+      "pins": ["earnable_by_activity merged across outlines: min wins, and the lower ceiling clamps BOTH Missions"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 8}
+          },
+          {
+            "ordered_lo_ids": ["lo2"],
+            "activity_ids_by_lo": {"lo2": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 3}
+          }
+        ],
+        "stars_by_activity": {"a1": 2},
+        "quest_mission_ids": ["lo1", "lo2"],
+        "gradient_refs": ["lo1", "lo2"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 2, "threshold": 3, "satisfied": false},
+          "lo2": {"stars": 2, "threshold": 3, "satisfied": false}
+        },
+        "quest_stars": {"earned": 4, "total": 6},
+        "anchor": ["lo1", "lo2"],
+        "mission_gradient": {"lo1": 1.0, "lo2": 1.0}
+      }
+    },
+    {
+      "name": "all-missions-satisfied-anchor-is-lowest-star",
+      "pins": ["once every Mission is satisfied the anchor is the LOWEST-star Mission, not the first"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2", "lo3"],
+            "activity_ids_by_lo": {"lo1": ["a1"], "lo2": ["a2"], "lo3": ["a3"]},
+            "stars_to_unlock": 2,
+            "earnable_by_activity": {"a1": 5, "a2": 5, "a3": 5}
+          }
+        ],
+        "stars_by_activity": {"a1": 9, "a2": 3, "a3": 7},
+        "quest_mission_ids": ["lo1", "lo2", "lo3"],
+        "gradient_refs": ["lo1", "lo2", "lo3"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 9, "threshold": 2, "satisfied": true},
+          "lo2": {"stars": 3, "threshold": 2, "satisfied": true},
+          "lo3": {"stars": 7, "threshold": 2, "satisfied": true}
+        },
+        "quest_stars": {"earned": 6, "total": 6},
+        "anchor": "lo2",
+        "mission_gradient": {"lo1": 0.0, "lo2": 0.0, "lo3": 0.0}
+      }
+    },
+    {
+      "name": "anchor-tie-earliest-quest-order-wins-strict-less-than",
+      "pins": ["anchor tie on the lowest star count resolves to the EARLIEST quest-order Mission (strict <, not <=)"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2"],
+            "activity_ids_by_lo": {"lo1": ["a1"], "lo2": ["a2"]},
+            "stars_to_unlock": 2,
+            "earnable_by_activity": {"a1": 5, "a2": 5}
+          }
+        ],
+        "stars_by_activity": {"a1": 4, "a2": 4},
+        "quest_mission_ids": ["lo1", "lo2"],
+        "gradient_refs": ["lo1", "lo2"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 4, "threshold": 2, "satisfied": true},
+          "lo2": {"stars": 4, "threshold": 2, "satisfied": true}
+        },
+        "quest_stars": {"earned": 4, "total": 4},
+        "anchor": "lo1",
+        "mission_gradient": {"lo1": 0.0, "lo2": 0.0}
+      }
+    },
+    {
+      "name": "empty-sequence-yields-no-quest-and-no-anchor",
+      "pins": ["an outline with an empty ordered sequence produces NO quest entry and no anchor"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": [],
+            "activity_ids_by_lo": {},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {}
+          }
+        ],
+        "stars_by_activity": {},
+        "quest_mission_ids": [],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {},
+        "quest_stars": {"earned": 0, "total": 0},
+        "anchor": null,
+        "mission_gradient": {"lo1": 0.0}
+      }
+    },
+    {
+      "name": "gradient-decays-and-drops-at-or-beyond-falloff",
+      "pins": ["gradient contribution 1 - distance/BAND_FALLOFF_MISSIONS; at distance >= falloff the contribution is <= 0 and is DROPPED"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1", "lo2", "lo3", "lo4"],
+            "activity_ids_by_lo": {"lo1": ["a1"], "lo2": ["a2"], "lo3": ["a3"], "lo4": ["a4"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 20, "a2": 20, "a3": 20, "a4": 20}
+          }
+        ],
+        "stars_by_activity": {"a1": 0, "a2": 0, "a3": 0, "a4": 0},
+        "quest_mission_ids": ["lo1", "lo2", "lo3", "lo4"],
+        "gradient_refs": ["lo1", "lo2", "lo3", "lo4"]
+      },
+      "expect": {
+        "rollup": {
+          "lo1": {"stars": 0, "threshold": 10, "satisfied": false},
+          "lo2": {"stars": 0, "threshold": 10, "satisfied": false},
+          "lo3": {"stars": 0, "threshold": 10, "satisfied": false},
+          "lo4": {"stars": 0, "threshold": 10, "satisfied": false}
+        },
+        "quest_stars": {"earned": 0, "total": 40},
+        "anchor": "lo1",
+        "mission_gradient": {
+          "lo1": 1.0,
+          "lo2": 0.6666666666666667,
+          "lo3": 0.33333333333333337,
+          "lo4": 0.0
+        }
+      }
+    },
+    {
+      "name": "gradient-sums-across-quests-and-saturates-at-band-ceiling",
+      "pins": ["gradient contributions SUM across every in-scope quest and saturate at BAND_CEILING (2.0)"],
+      "input": {
+        "outlines": [
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 20}
+          },
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 20}
+          },
+          {
+            "ordered_lo_ids": ["lo1"],
+            "activity_ids_by_lo": {"lo1": ["a1"]},
+            "stars_to_unlock": 10,
+            "earnable_by_activity": {"a1": 20}
+          }
+        ],
+        "stars_by_activity": {"a1": 0},
+        "quest_mission_ids": ["lo1"],
+        "gradient_refs": ["lo1"]
+      },
+      "expect": {
+        "rollup": {"lo1": {"stars": 0, "threshold": 10, "satisfied": false}},
+        "quest_stars": {"earned": 0, "total": 10},
+        "anchor": ["lo1", "lo1", "lo1"],
+        "mission_gradient": {"lo1": 2.0}
+      }
+    }
+  ]
+}
