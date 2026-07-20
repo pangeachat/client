@@ -124,23 +124,20 @@ void main() {
       expect(score, 3);
     });
 
-    test(
-      'ongoing contributes a strong resurface bump (below joinable), active '
-      'above pending',
-      () {
-        final pending = pinScore(
-          band: 0,
-          s: const PinSignals(state: ActivityPinState.ongoingPending),
-        );
-        final active = pinScore(
-          band: 0,
-          s: const PinSignals(state: ActivityPinState.ongoingActive),
-        );
-        expect(pending, kOngoingPendingWeight);
-        expect(active, kOngoingActiveWeight);
-        expect(active, greaterThan(pending));
-      },
-    );
+    test('ongoing contributes a strong resurface bump (below joinable), active '
+        'above pending', () {
+      final pending = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.ongoingPending),
+      );
+      final active = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.ongoingActive),
+      );
+      expect(pending, kOngoingPendingWeight);
+      expect(active, kOngoingActiveWeight);
+      expect(active, greaterThan(pending));
+    });
 
     test('joinable outranks ongoing (join others over resume your own)', () {
       final joinable = pinScore(
@@ -332,29 +329,26 @@ void main() {
   });
 
   group('rankPins — large/mid fill by score', () {
-    test(
-      'with nothing live in view, the highest scorer still never fills '
-      'large (the hard gate) — everyone competes for mid instead',
-      () {
-        final pins = [
-          _card('lvl', refs: ['b']), // band 1.0 → top score
-          _card('floorA', refs: const []), // band 0.5
-          _card('floorB', refs: const []), // band 0.5
-        ];
-        final result = rank(
-          pins,
-          {
-            'lvl': const PinSignals(),
-            'floorA': const PinSignals(),
-            'floorB': const PinSignals(),
-          },
-          largeBudget: 1,
-          midBudget: 10,
-        );
-        expect(result.largeIds, isEmpty);
-        expect(result.midIds, {'lvl', 'floorA', 'floorB'});
-      },
-    );
+    test('with nothing live in view, the highest scorer still never fills '
+        'large (the hard gate) — everyone competes for mid instead', () {
+      final pins = [
+        _card('lvl', refs: ['b']), // band 1.0 → top score
+        _card('floorA', refs: const []), // band 0.5
+        _card('floorB', refs: const []), // band 0.5
+      ];
+      final result = rank(
+        pins,
+        {
+          'lvl': const PinSignals(),
+          'floorA': const PinSignals(),
+          'floorB': const PinSignals(),
+        },
+        largeBudget: 1,
+        midBudget: 10,
+      );
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'lvl', 'floorA', 'floorB'});
+    });
 
     test('live pins fill large up to the budget; overflow drops to mid', () {
       final pins = [
@@ -391,45 +385,44 @@ void main() {
       expect(result.midIds.length, 2);
     });
 
-    test(
-      'an available (non-live) pin never fills large, however high it '
-      'scores — the hard gate is unconditional',
-      () {
-        // Maximize a single non-live pin's score (saturated multi-quest band +
-        // pinged + full recency) and give it a generous large budget: it still
-        // never earns a large slot, because the gate is state-based, not a
-        // score threshold.
-        final progression = resolveProgression(
-          outlines: [
-            CourseLoOutline(
-              orderedLoIds: ['q1'],
-              activityIdsByLo: {
-                'q1': const {'topAvailable'},
-              },
-            ),
-            CourseLoOutline(
-              orderedLoIds: ['q2'],
-              activityIdsByLo: {
-                'q2': const {'topAvailable'},
-              },
-            ),
-          ],
-          starsByActivity: const {},
-        );
-        final pins = [_card('topAvailable', refs: ['q1', 'q2'])];
-        final result = rank(
-          pins,
-          {
-            'topAvailable': const PinSignals(pinged: true, recency: 1.0),
-          },
-          progression: progression,
-          largeBudget: 5,
-          midBudget: 10,
-        );
-        expect(result.largeIds, isEmpty);
-        expect(result.midIds, {'topAvailable'});
-      },
-    );
+    test('an available (non-live) pin never fills large, however high it '
+        'scores — the hard gate is unconditional', () {
+      // Maximize a single non-live pin's score (saturated multi-quest band +
+      // pinged + full recency) and give it a generous large budget: it still
+      // never earns a large slot, because the gate is state-based, not a
+      // score threshold.
+      final progression = resolveProgression(
+        outlines: [
+          CourseLoOutline(
+            courseId: 'c1',
+            orderedLoIds: ['q1'],
+            activityIdsByLo: {
+              'q1': const {'topAvailable'},
+            },
+          ),
+          CourseLoOutline(
+            courseId: 'c2',
+            orderedLoIds: ['q2'],
+            activityIdsByLo: {
+              'q2': const {'topAvailable'},
+            },
+          ),
+        ],
+        starsByActivity: const {},
+      );
+      final pins = [
+        _card('topAvailable', refs: ['q1', 'q2']),
+      ];
+      final result = rank(
+        pins,
+        {'topAvailable': const PinSignals(pinged: true, recency: 1.0)},
+        progression: progression,
+        largeBudget: 5,
+        midBudget: 10,
+      );
+      expect(result.largeIds, isEmpty);
+      expect(result.midIds, {'topAvailable'});
+    });
   });
 
   group('rankPins — diversity', () {

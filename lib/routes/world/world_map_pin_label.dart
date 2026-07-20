@@ -27,12 +27,8 @@ class WorldMapPinLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget text(TextStyle style) => Text(
-      title,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: style,
-    );
+    Widget text(TextStyle style) =>
+        Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
     // Theme-dependent halo (stroked) painted behind the coloured fill: the
     // surface colour reads light in light mode and dark in dark mode, so the
     // outline stays legible over the map tiles in either theme (reuses the

@@ -108,8 +108,9 @@ void main() {
     const primary = Color(0xFF112233);
     // The focused pin haloes in its state hue (here `available`), not the theme
     // primary — the treatment is state-coloured now, no outline.
-    final glowColor =
-        WorldMapSelection.glow(ActivityPinState.available.color).first.color;
+    final glowColor = WorldMapSelection.glow(
+      ActivityPinState.available.color,
+    ).first.color;
 
     testWidgets('a focused small dot casts the state glow', (tester) async {
       await pumpDot(
