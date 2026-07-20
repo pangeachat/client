@@ -742,6 +742,7 @@ abstract class WorkspaceNav {
     Uri current,
     AddCourseSubpageEnum page, {
     String? initialLanguageFilter,
+    bool? allLanguagesFilter,
     String? previewRoomId,
     String? createCourseId,
     bool showNewCourseInvitePage = false,
@@ -754,6 +755,9 @@ abstract class WorkspaceNav {
     final carriedLanguageFilter =
         matchingTypePanel.firstOrNull?.param?.initialLanguageFilter;
 
+    final carriedAllLanguagesFilter =
+        matchingTypePanel.firstOrNull?.param?.allLanguagesFilter;
+
     return _mutate(
       current,
       'left',
@@ -764,6 +768,8 @@ abstract class WorkspaceNav {
             subpage: page,
             initialLanguageFilter:
                 initialLanguageFilter ?? carriedLanguageFilter,
+            allLanguagesFilter:
+                allLanguagesFilter ?? carriedAllLanguagesFilter ?? false,
             previewRoomId: previewRoomId,
             createCourseId: createCourseId,
             showNewCourseInvitePage: showNewCourseInvitePage,
