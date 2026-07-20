@@ -1,246 +1,122 @@
-import 'dart:async';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/features/subscription/models/subscription_state.dart';
-import 'package:fluffychat/features/subscription/repo/subscription_management_repo.dart';
-import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/payment_page_mixin.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
-import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class SubscriptionManagement extends StatefulWidget {
-  const SubscriptionManagement({super.key});
+class SettingsSubscription extends StatefulWidget {
+  final Widget closeButton;
+  const SettingsSubscription({super.key, required this.closeButton});
 
   @override
-  SubscriptionManagementController createState() =>
-      SubscriptionManagementController();
+  SettingsSubscriptionState createState() => SettingsSubscriptionState();
 }
 
-class SubscriptionManagementController extends State<SubscriptionManagement>
-    with WidgetsBindingObserver {
-  final SubscriptionController subscriptionController =
-      MatrixState.pangeaController.subscriptionController;
+class SettingsSubscriptionState extends State<SettingsSubscription>
+    with PaymentPageMixin {
+  final SubscriptionStatusProvider _subscriptionStatusProvider =
+      SubscriptionStatusProvider();
 
-  String? _userEmail;
+  final ValueNotifier<ProductPlan?> _selectedSubscription = ValueNotifier(null);
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    _refreshSubscription();
-
-    subscriptionController
-        .initialize(Matrix.of(context).client.userID!)
-        .then((_) => setState(() {}));
-
-    subscriptionController.addListener(_onSubscriptionUpdate);
-    subscriptionController.subscriptionNotifier.addListener(_onSubscribe);
-    subscriptionController.updateCurrentSubscription();
-
-    MatrixState.pangeaController.userController.userEmail.then((email) {
-      if (mounted) {
-        setState(() => _userEmail = email);
-      }
-    });
     super.initState();
+    _loadSubscriptionStatus();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    subscriptionController.subscriptionNotifier.removeListener(_onSubscribe);
-    subscriptionController.removeListener(_onSubscriptionUpdate);
+    _subscriptionStatusProvider.dispose();
+    _selectedSubscription.dispose();
     super.dispose();
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      _refreshSubscription();
-    }
-    super.didChangeAppLifecycleState(state);
-  }
+  Future<void> _loadSubscriptionStatus() => _subscriptionStatusProvider.load(
+    SubscriptionStatusRequest(userID: Matrix.of(context).client.userID!),
+  );
 
-  bool get loading => subscriptionController.loading;
+  Future<void> _onEnterDiscountCode() => FluffyThemes.isColumnMode(context)
+      ? _showDiscountCodePopup()
+      : _goToDiscountCodePage();
 
-  bool get showGatedContent =>
-      subscriptionController.showSubscriptionGatedContent;
+  Future<void> _goToDiscountCodePage() async => context.go(
+    WorkspaceNav.openSettings(
+      GoRouterState.of(context).uri,
+      page: 'subscription/discount',
+    ),
+  );
 
-  bool get hasFreeTrial =>
-      subscriptionController.hasPromotionalSubscription &&
-      subscriptionController.subscription?.appId == "trial";
-
-  bool get currentSubscriptionAvailable =>
-      subscriptionController.subscription != null;
-
-  bool get isLifetimeSubscription =>
-      subscriptionController.hasPromotionalSubscription &&
-      expirationDate != null &&
-      expirationDate!.isAfter(DateTime(2100));
-
-  String? get purchasePlatformDisplayName {
-    final appId = subscriptionController.subscription?.appId;
-    if (appId == null) return null;
-    return subscriptionController.appIds?.appDisplayName(appId);
-  }
-
-  bool get currentSubscriptionIsPromotional =>
-      subscriptionController.hasPromotionalSubscription;
-
-  String get currentSubscriptionTitle =>
-      subscriptionController.subscription?.displayName(context) ?? "";
-
-  String get currentSubscriptionPrice =>
-      subscriptionController.subscription?.displayPrice(context) ?? "";
-
-  bool get showManagementOptions {
-    if (!currentSubscriptionAvailable) {
-      return false;
-    }
-
-    final subscription = subscriptionController.subscription;
-    final appIds = subscriptionController.appIds;
-    final purchasedOnWeb =
-        (subscription != null && appIds != null) &&
-        (subscription.appId == appIds.stripeId);
-
-    if (purchasedOnWeb) {
-      return true;
-    }
-
-    final currentPlatformMatchesPurchasePlatform =
-        (subscription != null && appIds != null) &&
-        (subscription.appId == appIds.currentAppId);
-
-    return currentPlatformMatchesPurchasePlatform;
-  }
-
-  DateTime? get expirationDate => switch (subscriptionController.state) {
-    SubscriptionActive(expirationDate: final exp) => exp,
-    _ => null,
-  };
-
-  DateTime? get _unsubscribeDetectedAt =>
-      switch (subscriptionController.state) {
-        SubscriptionActive(unsubscribeDetectedAt: final detected) => detected,
-        _ => null,
-      };
-
-  DateTime? get subscriptionEndDate =>
-      _unsubscribeDetectedAt == null ? null : expirationDate;
-
-  void _onSubscriptionUpdate() => setState(() {});
-
-  void _onSubscribe() => showSubscribedSnackbar(context);
-
-  Future<void> _refreshSubscription() async {
-    if (!kIsWeb) return;
-
-    // if the user previously clicked cancel, check if the subscription end date has changed
-    final prevEndDate = SubscriptionManagementRepo.getSubscriptionEndDate();
-    final clickedCancel =
-        SubscriptionManagementRepo.getClickedCancelSubscription();
-    if (clickedCancel == null) return;
-
-    await subscriptionController.reinitialize(
-      Matrix.of(context).client.userID!,
+  Future<void> _showDiscountCodePopup() async {
+    final viewModel = DiscountCodeViewModel(
+      userID: Matrix.of(context).client.userID!,
     );
 
-    final newEndDate = subscriptionEndDate;
-
-    if (prevEndDate != newEndDate) {
-      SubscriptionManagementRepo.removeClickedCancelSubscription();
-      SubscriptionManagementRepo.setSubscriptionEndDate(newEndDate);
-      if (mounted) setState(() {});
-      return;
-    }
-
-    // if more than 10 minutes have passed since the user clicked cancel, remove the click flag
-    if (DateTime.now().difference(clickedCancel).inMinutes >= 10) {
-      SubscriptionManagementRepo.removeClickedCancelSubscription();
-      if (mounted) setState(() {});
-    }
-  }
-
-  Future<void> onClickCancelSubscription() async {
-    final uri = await launchMangementUrl(ManagementOption.cancel);
-    if (uri != null) {
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
-        SnackBar(
-          showCloseIcon: true,
-          duration: const Duration(seconds: 30),
-          content: Row(
-            children: [
-              Expanded(child: Text(L10n.of(context).managementSnackbarMessage)),
-              TextButton(
-                child: Text(
-                  L10n.of(context).tryAgain,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                  ),
-                ),
-                onPressed: () {
-                  launchUrl(uri, mode: LaunchMode.externalApplication);
-                },
-              ),
-            ],
-          ),
-        ),
-        announcement: L10n.of(context).managementSnackbarMessage,
+    try {
+      final resp = await showDialog<CheckoutRequest>(
+        context: context,
+        builder: (context) => DiscountCodePopup(viewModel: viewModel),
       );
+
+      if (resp == null || !mounted) return;
+      await processCheckoutRequest(resp);
+    } finally {
+      viewModel.dispose();
     }
-    await SubscriptionManagementRepo.setClickedCancelSubscription();
-    await SubscriptionManagementRepo.setSubscriptionEndDate(
-      subscriptionEndDate,
-    );
-    if (mounted) setState(() {});
   }
 
-  Future<Uri?> launchMangementUrl(ManagementOption option) async {
-    String managementUrl = Environment.stripeManagementUrl;
-    if (_userEmail != null) {
-      managementUrl += "?prefilled_email=${Uri.encodeComponent(_userEmail!)}";
-    }
-    final String? purchaseAppId = subscriptionController.subscription?.appId;
-    if (purchaseAppId == null) return null;
+  Future<void> _onTapSubscription(ProductPlan plan) =>
+      FluffyThemes.isColumnMode(context)
+      ? _showSelectedSubscriptionPopup(plan)
+      : _goToSelectedSubscriptionPage(plan);
 
-    final appIds = subscriptionController.appIds;
+  Future<void> _goToSelectedSubscriptionPage(ProductPlan plan) async =>
+      context.go(
+        WorkspaceNav.openSettings(
+          GoRouterState.of(context).uri,
+          page: 'subscription/selected',
+          planId: plan.planId,
+        ),
+      );
 
-    if (purchaseAppId == appIds?.stripeId) {
-      final uri = Uri.parse(managementUrl);
-      launchUrl(uri, mode: LaunchMode.externalApplication);
-      return uri;
-    }
-    if (purchaseAppId == appIds?.appleId) {
-      final uri = Uri.parse(AppConfig.appleMangementUrl);
-      launchUrl(uri, mode: LaunchMode.externalApplication);
-      return uri;
-    }
-    switch (option) {
-      case ManagementOption.history:
-        final uri = Uri.parse(AppConfig.googlePlayHistoryUrl);
-        launchUrl(uri, mode: LaunchMode.externalApplication);
-        return uri;
-      case ManagementOption.paymentMethod:
-        final uri = Uri.parse(AppConfig.googlePlayPaymentMethodUrl);
-        launchUrl(uri, mode: LaunchMode.externalApplication);
-        return uri;
-      default:
-        final uri = Uri.parse(AppConfig.googlePlayMangementUrl);
-        launchUrl(uri, mode: LaunchMode.externalApplication);
-        return uri;
-    }
+  Future<void> _showSelectedSubscriptionPopup(ProductPlan plan) async {
+    _selectedSubscription.value = plan;
+    final resp = await showDialog<CheckoutRequest>(
+      context: context,
+      builder: (context) => SelectedSubscriptionPopup(plan),
+    );
+    if (mounted) _selectedSubscription.value = null;
+    if (resp == null || !mounted) return;
+    await processCheckoutRequest(resp);
   }
 
   @override
-  Widget build(BuildContext context) => SettingsSubscriptionView(this);
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: _subscriptionStatusProvider.loader,
+      builder: (context, subscriptionStatusState, _) => ProductsBuilder(
+        builder: (context, productsState) => SettingsSubscriptionView(
+          closeButton: widget.closeButton,
+          subscriptionStatusState: subscriptionStatusState,
+          productsState: productsState,
+          reloadStatus: _loadSubscriptionStatus,
+          onEnterDiscountCode: _onEnterDiscountCode,
+          onTapSubscription: _onTapSubscription,
+          selectedSubscription: _selectedSubscription,
+        ),
+      ),
+    );
+  }
 }
-
-enum ManagementOption { cancel, paymentMethod, history }

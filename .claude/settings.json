@@ -33,6 +33,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/intent-gate.py\""
+          },
+          {
+            "type": "command",
             "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\""
           }
         ]

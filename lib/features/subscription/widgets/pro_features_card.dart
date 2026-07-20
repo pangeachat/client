@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -58,22 +59,29 @@ class ProFeaturesCard extends StatelessWidget {
     final gold = theme.brightness == Brightness.light
         ? AppConfig.gold
         : AppConfig.goldLight;
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    final foregroundColor =
+        this.foregroundColor ??
+        (theme.brightness == Brightness.light
+            ? theme.colorScheme.onSurface
+            : theme.colorScheme.surface);
 
     return Semantics(
       label: L10n.of(context).featuresIncludeLabel,
       container: true,
       child: FrameContainer(
         title: L10n.of(context).proFeatures,
+        titleStyle:
+            (isColumnMode
+                    ? theme.textTheme.titleLarge
+                    : theme.textTheme.titleMedium)
+                ?.copyWith(fontWeight: FontWeight.bold, color: foregroundColor),
+        titlePadding: titlePadding,
         frameColor: frameColor ?? gold,
         borderWidth: borderWidth,
         padding: padding,
-        titlePadding: titlePadding,
         backgroundColor: backgroundColor ?? theme.colorScheme.surface,
-        foregroundColor:
-            foregroundColor ??
-            (theme.brightness == Brightness.light
-                ? theme.colorScheme.onSurface
-                : theme.colorScheme.surface),
+        foregroundColor: foregroundColor,
         child: Column(
           spacing: 12.0,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,16 +89,19 @@ class ProFeaturesCard extends StatelessWidget {
             ..._ProFeatureInfo.entries(L10n.of(context)).map(
               (e) => Row(
                 spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(e.icon, color: gold, size: 20.0),
-                  Expanded(
+                  Flexible(
                     child: Semantics(
                       container: true,
                       child: Text(
                         e.text,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: theme.colorScheme.onSurface,
-                        ),
+                        style:
+                            (isColumnMode
+                                    ? theme.textTheme.titleMedium
+                                    : theme.textTheme.titleSmall)
+                                ?.copyWith(color: theme.colorScheme.onSurface),
                       ),
                     ),
                   ),

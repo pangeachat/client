@@ -10,7 +10,11 @@ void main() {
   group('GrammarErrorExampleWidget.splitAroundBlank', () {
     test('blanks exactly the target word, not the next one', () {
       // "El gato come" — target "gato" at grapheme offset 3, length 4.
-      final s = GrammarErrorExampleWidget.splitAroundBlank('El gato come', 3, 4);
+      final s = GrammarErrorExampleWidget.splitAroundBlank(
+        'El gato come',
+        3,
+        4,
+      );
       expect(s.before, 'El ');
       expect(s.after, ' come');
       expect(s.trimmedBefore, isFalse);
@@ -29,16 +33,13 @@ void main() {
       expect(s.after, isEmpty);
     });
 
-    test(
-      'grapheme-based: a multi-code-unit char before the target keeps the '
-      'blank aligned',
-      () {
-        // The emoji is one grapheme but two UTF-16 code units; a code-unit
-        // split would land mid-character. Graphemes: ['🙂',' ','g','a','t','o'].
-        final s = GrammarErrorExampleWidget.splitAroundBlank('🙂 gato', 2, 4);
-        expect(s.before, '🙂 ');
-        expect(s.after, isEmpty);
-      },
-    );
+    test('grapheme-based: a multi-code-unit char before the target keeps the '
+        'blank aligned', () {
+      // The emoji is one grapheme but two UTF-16 code units; a code-unit
+      // split would land mid-character. Graphemes: ['🙂',' ','g','a','t','o'].
+      final s = GrammarErrorExampleWidget.splitAroundBlank('🙂 gato', 2, 4);
+      expect(s.before, '🙂 ');
+      expect(s.after, isEmpty);
+    });
   });
 }

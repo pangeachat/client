@@ -9,94 +9,39 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_analytics_controller.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_data_service.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_notifier.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
 
-class SelectedMorphChoice {
-  final MorphFeaturesEnum feature;
-  final String tag;
-
-  const SelectedMorphChoice({required this.feature, required this.tag});
-}
-
-class AnalyticsPracticeNotifier extends ChangeNotifier {
-  String? _lastSelectedChoice;
-  bool showHint = false;
-  final Set<String> _clickedChoices = {};
-
-  int correctAnswersSelected(MultipleChoicePracticeExerciseModel? exercise) {
-    if (exercise == null) return 0;
-    final allAnswers = exercise.multipleChoiceContent.answers;
-    return _clickedChoices.where((c) => allAnswers.contains(c)).length;
-  }
-
-  bool enableHintPress(
-    MultipleChoicePracticeExerciseModel? exercise,
-    int hintsUsed,
-  ) {
-    if (showHint) return false;
-    return switch (exercise) {
-      VocabAudioPracticeExerciseModel() => true,
-      _ => hintsUsed < AnalyticsPracticeConstants.maxHints,
-    };
-  }
-
-  SelectedMorphChoice? selectedMorphChoice(
-    MultipleChoicePracticeExerciseModel? exercise,
-  ) {
-    if (exercise is! MorphPracticeExerciseModel) return null;
-    if (_lastSelectedChoice == null) return null;
-    return SelectedMorphChoice(
-      feature: exercise.morphFeature,
-      tag: _lastSelectedChoice!,
-    );
-  }
-
-  bool exerciseComplete(MultipleChoicePracticeExerciseModel? exercise) {
-    if (exercise == null) return false;
-    final allAnswers = exercise.multipleChoiceContent.answers;
-    return allAnswers.every((answer) => _clickedChoices.contains(answer));
-  }
-
-  bool hasSelectedChoice(String choice) => _clickedChoices.contains(choice);
-
-  void clearExerciseState() {
-    _lastSelectedChoice = null;
-    _clickedChoices.clear();
-    showHint = false;
-  }
-
-  void toggleShowHint() {
-    showHint = !showHint;
-    notifyListeners();
-  }
-
-  void selectChoice(String choice) {
-    _clickedChoices.add(choice);
-    _lastSelectedChoice = choice;
-    notifyListeners();
-  }
-}
-
-typedef ExerciseNotifier =
-    ValueNotifier<AsyncState<MultipleChoicePracticeExerciseModel>>;
-
 class AnalyticsPractice extends StatefulWidget {
-  static bool bypassExitConfirmation = true;
-
   final ConstructTypeEnum type;
-  const AnalyticsPractice({super.key, required this.type});
+
+  /// The panel's leading close control — leaving is silent and keeps the
+  /// session alive in the [PracticeSessionHolder]; only the explicit End
+  /// control discards it. See routing.instructions.md § Practice is a
+  /// persistent background session.
+  final IconData closeIcon;
+  final String closeTooltip;
+  final VoidCallback close;
+
+  const AnalyticsPractice({
+    super.key,
+    required this.type,
+    required this.closeIcon,
+    required this.closeTooltip,
+    required this.close,
+  });
 
   @override
   AnalyticsPracticeState createState() => AnalyticsPracticeState();
@@ -104,20 +49,12 @@ class AnalyticsPractice extends StatefulWidget {
 
 class AnalyticsPracticeState extends State<AnalyticsPractice>
     with AnalyticsUpdater {
-  final PracticeSessionController _sessionController =
-      PracticeSessionController();
-
-  final AnalyticsPracticeDataService _dataService =
-      AnalyticsPracticeDataService();
+  /// Session state lives in the holder, not this State, so it survives the
+  /// panel closing and re-attaches on reopen.
+  late final PracticeSessionState _holderState;
 
   late final AnalyticsPracticeAnalyticsController _analyticsController;
   StreamSubscription<void>? _languageStreamSubscription;
-
-  final ExerciseNotifier practiceExerciseState = ExerciseNotifier(
-    const AsyncState.idle(),
-  );
-  final AnalyticsPracticeNotifier notifier = AnalyticsPracticeNotifier();
-  final ValueNotifier<double> progress = ValueNotifier<double>(0);
 
   PracticeTarget? _cachedTarget;
   List<InlineSpan>? _cachedExampleMessage;
@@ -133,22 +70,29 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       Matrix.of(context).analyticsDataService,
     );
 
+    _holderState = PracticeSessionHolder.instance.claim(widget.type);
+    PracticeSessionHolder.instance.attachPanel();
+
     _addLanguageSubscription();
-    startSession();
+    _resumeOrStart();
   }
 
   @override
   void dispose() {
+    PracticeSessionHolder.instance.detachPanel();
     _languageStreamSubscription?.cancel();
-    notifier.dispose();
-    practiceExerciseState.dispose();
-    progress.dispose();
     audioPlaybackSpeedController.dispose();
+    // Session notifiers are holder-owned and intentionally NOT disposed here —
+    // the session outlives this panel.
     super.dispose();
   }
 
-  PracticeSessionController get session => _sessionController;
-  AnalyticsPracticeDataService get data => _dataService;
+  PracticeSessionController get session => _holderState.sessionController;
+  AnalyticsPracticeDataService get data => _holderState.dataService;
+  ExerciseNotifier get practiceExerciseState =>
+      _holderState.practiceExerciseState;
+  AnalyticsPracticeNotifier get notifier => _holderState.notifier;
+  ValueNotifier<double> get progress => _holderState.progress;
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
@@ -194,13 +138,24 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   bool _autoLaunchNextExercise(MultipleChoicePracticeExerciseModel exercise) =>
       exercise is! VocabAudioPracticeExerciseModel;
 
+  /// Attach to the held session: start it fresh if it hasn't been started, or
+  /// pick it up wherever it is — an exercise already on screen renders as-is,
+  /// and a load left in flight by a closed panel re-renders through
+  /// [practiceExerciseState] when it lands.
+  void _resumeOrStart() {
+    if (session.session == null &&
+        session.sessionError == null &&
+        !session.isLoadingSession) {
+      startSession();
+    }
+  }
+
   void _clearState() {
     MatrixState.pAnyState.closeOverlay(StarRainWidget.practiceCompleteKey);
-    _dataService.clear();
-    _sessionController.clear();
-    AnalyticsPractice.bypassExitConfirmation = true;
+    data.clear();
+    session.clear();
     _clearExerciseState();
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   void _clearExerciseState({bool loadingExercise = false}) {
@@ -232,7 +187,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   void onHintPressed({bool increment = true}) {
-    if (increment) _sessionController.updateHintsPressed();
+    if (increment) session.updateHintsPressed();
     final currentSpeed = audioPlaybackSpeedController.playbackSpeed.value;
     if (currentSpeed > 0.75 &&
         practiceExercise is VocabAudioPracticeExerciseModel) {
@@ -264,33 +219,68 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await _analyticsController.waitForAnalytics(
         Matrix.of(context).client.userID,
       );
-      await _sessionController.startSession(widget.type);
+      await session.startSession(widget.type);
       if (mounted) setState(() {});
 
-      if (_sessionController.sessionError != null) {
-        AnalyticsPractice.bypassExitConfirmation = true;
+      if (session.sessionError != null) {
+        // Signal through the notifier too, so a panel reopened over this
+        // session (and the cluster badge) rebuild without this State's
+        // setState.
+        practiceExerciseState.value = AsyncState.error(session.sessionError!);
+        PracticeSessionHolder.instance.bump();
       } else {
-        progress.value = _sessionController.progress;
+        PracticeSessionHolder.instance.bump();
+        progress.value = session.progress;
         await _continueSession();
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
-      _sessionController.sessionError = e;
-      AnalyticsPractice.bypassExitConfirmation = true;
+      session.sessionError = e;
+      practiceExerciseState.value = AsyncState.error(e);
+      PracticeSessionHolder.instance.bump();
       if (mounted) setState(() {});
     }
   }
 
   Future<void> _completeSession() async {
-    _sessionController.completeSession();
-    progress.value = _sessionController.progress;
-    setState(() {});
+    // Freeze elapsed at the authoritative wall-clock value (the per-second
+    // ticker may not have fired since the panel was reopened).
+    final startedAt = session.session?.startedAt;
+    if (startedAt != null) {
+      session.updateElapsedTime(DateTime.now().difference(startedAt).inSeconds);
+    }
+    session.completeSession();
+    progress.value = session.progress;
+    // Idle stops the timer and, via the notifier, flips the panel to the
+    // completion view and clears the cluster badge.
+    practiceExerciseState.value = const AsyncState.idle();
+    PracticeSessionHolder.instance.bump();
+    if (mounted) setState(() {});
 
-    final bonus = _sessionController.bonusUses;
+    final bonus = session.bonusUses;
     await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
 
-    AnalyticsPractice.bypassExitConfirmation = true;
-    StarRainWidget.show(context, StarRainWidget.practiceCompleteKey);
+    if (mounted) {
+      StarRainWidget.show(context, StarRainWidget.practiceCompleteKey);
+    }
+  }
+
+  /// The header's explicit End control: confirm, discard the session, close
+  /// the panel. The X never calls this — leaving is silent.
+  Future<void> endSession() async {
+    final l10n = L10n.of(context);
+    final result = await showOkCancelAlertDialog(
+      useRootNavigator: false,
+      context: context,
+      title: l10n.areYouSure,
+      okLabel: l10n.yes,
+      cancelLabel: l10n.cancel,
+      message: l10n.exitPractice,
+    );
+    if (result != OkCancelResult.ok) return;
+
+    PracticeSessionHolder.instance.end();
+    if (mounted) widget.close();
   }
 
   Future<void> _continueSession() async {
@@ -299,7 +289,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       return;
     }
 
-    if (_sessionController.session?.isComplete == true) {
+    if (session.session?.isComplete == true) {
       await _completeSession();
       return;
     }
@@ -307,20 +297,18 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _clearExerciseState(loadingExercise: true);
 
     try {
-      final resp = await _sessionController.getNextExercise(
+      final resp = await session.getNextExercise(
         skipExercise,
-        _dataService.prefetchExerciseInfo,
+        data.prefetchExerciseInfo,
       );
 
       if (resp != null) {
         _playExerciseAudio(resp);
-        AnalyticsPractice.bypassExitConfirmation = false;
         practiceExerciseState.value = AsyncState.loaded(resp);
       } else {
         await _completeSession();
       }
     } catch (e) {
-      AnalyticsPractice.bypassExitConfirmation = true;
       practiceExerciseState.value = AsyncState.error(e);
     }
   }
@@ -334,7 +322,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     notifier.selectChoice(choiceContent);
 
     final uses = exercise.constructUses(choiceContent);
-    _sessionController.submitAnswer(uses);
+    session.submitAnswer(uses);
     await _analyticsController.addCompletedExerciseAnalytics(
       uses,
       AnalyticsPracticeUiController.getChoiceTargetId(
@@ -357,15 +345,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<void> startNextExercise() async {
-    _sessionController.completeExercise();
-    progress.value = _sessionController.progress;
+    session.completeExercise();
+    progress.value = session.progress;
     await _continueSession();
   }
 
   Future<void> skipExercise(PracticeTarget target) async {
     // Record a 0 XP use so that exercise isn't chosen again soon
-    _sessionController.skipExercise();
-    progress.value = _sessionController.progress;
+    session.skipExercise();
+    progress.value = session.progress;
 
     await _analyticsController.addSkippedExerciseAnalytics(
       target,

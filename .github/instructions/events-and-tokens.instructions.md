@@ -47,7 +47,7 @@ Defined in `lib/pangea/events/constants/pangea_event_types.dart`:
 |---|---|---|
 | `pangea.bot_options` | `botOptions` | Bot behavior configuration |
 | `pangea.capacity` | `capacity` | Room capacity limit |
-| `pangea.course_plan` | `coursePlan` | Course plan reference (v1 event type, under v3 review — a quest reference may replace it) |
+| `pangea.course_plan` | `coursePlan` | The quest a course space runs (`uuid`) and the course's target language (`l2`). The public course catalog's eligibility and language filtering read this event — see [public-courses.instructions.md](../../../synapse-pangea-chat/.github/instructions/public-courses.instructions.md). Write it through [`CoursePlanEvent`](../../lib/features/course_plans/courses/course_plan_event.dart), never as a raw map. |
 | `pangea.teacher_mode` | `teacherMode` | Teacher mode toggle |
 | `pangea.course_chat_list` | `courseChatList` | Course chat list default chat settings |
 

@@ -119,10 +119,10 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
         onPressed: () => widget.controller.downloadChatAction(room.id, context),
-        visible:
-            kIsWeb &&
-            MatrixState.pangeaController.userController.showDeveloperOptions,
-        enabled: room.ownPowerLevel >= 50,
+        // Any room member can export the transcript — it only surfaces content
+        // they can already read in the chat. Web/desktop only for now; the
+        // native mobile download path is unvalidated, so mobile is deferred.
+        visible: kIsWeb,
         showInMainView: false,
       ),
       // ButtonDetails(

@@ -90,8 +90,8 @@ void main() async {
       );
 
       expect(record.suggestionStrings, isEmpty);
-      record.suggestionStrings.add("quiero un café");
-      record.pastedStrings.add("hola");
+      record.addSuggestionString("quiero un café");
+      record.addPastedString("hola");
 
       final received = ChoreoRecordModel.fromJson(record.toJson());
       expect(received.suggestionStrings, isEmpty);

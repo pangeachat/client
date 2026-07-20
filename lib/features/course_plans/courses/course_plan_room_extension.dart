@@ -13,7 +13,7 @@ extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {
     final event = getState(PangeaEventTypes.coursePlan);
     if (event == null) return null;
-    return CoursePlanEvent.fromJson(event.content);
+    return CoursePlanEvent.tryParse(event.content);
   }
 
   String? activeActivityRoomId(String activityId) {
@@ -30,7 +30,13 @@ extension CoursePlanRoomExtension on Room {
     return null;
   }
 
-  Future<void> addCourseToSpace(String courseId) async {
+  /// [targetLanguage] is required because the public course catalog filters on
+  /// it: a course space whose plan event carries no `l2` is excluded from every
+  /// language-filtered browse, so attaching a quest without it hides the course.
+  Future<void> addCourseToSpace(
+    String courseId, {
+    required String targetLanguage,
+  }) async {
     // Ensure students in course can launch activity rooms
     final powerLevels = Map<String, dynamic>.from(
       getState(EventTypes.RoomPowerLevels)?.content ?? {},
@@ -48,11 +54,18 @@ extension CoursePlanRoomExtension on Room {
       );
     }
 
-    if (coursePlan?.uuid == courseId) return;
+    final desired = CoursePlanEvent(uuid: courseId, l2: targetLanguage);
+    final current = coursePlan;
+    // Rewrite when the language is missing or stale as well as when the quest
+    // changes, so a space attached before `l2` was recorded is repaired here.
+    if (current?.uuid == courseId && current?.l2 == desired.l2) return;
     final future = waitForRoomInSync();
-    await client.setRoomStateWithKey(id, PangeaEventTypes.coursePlan, "", {
-      "uuid": courseId,
-    });
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.coursePlan,
+      "",
+      desired.toJson(),
+    );
     if (coursePlan?.uuid != courseId) {
       await future;
     }

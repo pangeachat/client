@@ -4,6 +4,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -68,6 +69,9 @@ class JoinedObjectiveCache {
           final o = await resolve(uuid);
           next.add(
             CourseLoOutline(
+              // The uuid the caller asked for, not the resolved outline's own
+              // id: this is the key the course panel scopes its rollup by.
+              courseId: uuid,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
               starsToUnlock:
@@ -88,33 +92,41 @@ class JoinedObjectiveCache {
   }
 
   /// [rebuild] from the client's joined courses — each course's quest uuid with
-  /// its teacher stars-to-unlock override. The single home for that mapping:
-  /// the world map's pins manager and the course panel's star display both
-  /// rebuild through here, so every surface resolves identical outlines.
+  /// its teacher config (stars-to-unlock override + per-Mission activity pins).
+  /// The single home for that mapping: the world map's pins manager and the
+  /// course panel's star display both rebuild through here, so every surface
+  /// resolves identical outlines. Pins are applied as a pure copy per course
+  /// (never to the shared quest-outline cache), so two courses sharing a quest
+  /// can restrict differently.
   Future<void> rebuildFromJoinedCourses(
     Client client, {
     void Function(String uuid, Object error, StackTrace stack)? onError,
   }) {
-    final thresholds = <String, int>{
+    final modes = <String, TeacherModeModel>{
       for (final room in client.joinedCourseRooms)
-        room.coursePlan!.uuid:
-            room.teacherMode.starsToUnlockObjective ??
-            kDefaultStarsToUnlockObjective,
+        room.coursePlan!.uuid: room.teacherMode,
     };
     return rebuild(
-      thresholds.keys.toList(),
+      modes.keys.toList(),
+      outlineOf: (uuid) => _outlineFromQuest(
+        uuid,
+        pinnedByObjective: modes[uuid]?.pinnedActivitiesByObjective,
+      ),
       starsToUnlockOf: (uuid) =>
-          thresholds[uuid] ?? kDefaultStarsToUnlockObjective,
+          modes[uuid]?.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective,
       onError: onError,
     );
   }
 
-  static Future<CourseLoOutline> _outlineFromQuest(String uuid) async {
+  static Future<CourseLoOutline> _outlineFromQuest(
+    String uuid, {
+    Map<String, List<String>>? pinnedByObjective,
+  }) async {
     final outlineResult = await QuestRepo.outline(uuid);
     final outline = outlineResult.result;
     if (outline == null) {
       throw (outlineResult.error ?? MissingQuestException());
     }
-    return outline.toCourseLoOutline();
+    return outline.restrictedTo(pinnedByObjective).toCourseLoOutline();
   }
 }

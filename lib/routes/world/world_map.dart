@@ -8,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -725,7 +726,21 @@ class WorldMapController extends State<WorldMap>
   void onMapPositionChanged(bool hasGesture) {
     if (!isWorld) return;
     _refetchDebounce?.cancel();
-    _refetchDebounce = Timer(const Duration(milliseconds: 500), loadWorldPins);
+    _refetchDebounce = Timer(
+      const Duration(milliseconds: 500),
+      _onCameraSettled,
+    );
+  }
+
+  /// One camera-settle pass: re-fetch the viewport's pins AND kick a (self-
+  /// throttled) live-session discovery + signal recompute. Without the kick the
+  /// matrix's live facts refresh only off sync ticks, so the viewport you pan
+  /// to could rank against several-seconds-stale facts — the sluggish re-rank
+  /// while scrolling around.
+  void _onCameraSettled() {
+    loadWorldPins();
+    final client = _client;
+    if (client != null) _discoverCoursemateSessions(client);
   }
 
   /// Flags [isActivelyMoving] on any camera-movement event (pan, zoom, rotate,

@@ -1,20 +1,26 @@
-sealed class SubscriptionState {}
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+
+sealed class SubscriptionState {
+  const SubscriptionState();
+
+  factory SubscriptionState.fromSubscriptionStatus(
+    SubscriptionStatusResponse status,
+  ) => status.isActive
+      ? SubscriptionActive(status)
+      : SubscriptionInactive(status);
+}
 
 class SubscriptionLoading extends SubscriptionState {}
 
 class SubscriptionActive extends SubscriptionState {
-  final String subscriptionId;
-  final DateTime? expirationDate;
-  final DateTime? unsubscribeDetectedAt;
-
-  SubscriptionActive({
-    required this.subscriptionId,
-    this.expirationDate,
-    this.unsubscribeDetectedAt,
-  });
+  final SubscriptionStatusResponse response;
+  const SubscriptionActive(this.response);
 }
 
-class SubscriptionInactive extends SubscriptionState {}
+class SubscriptionInactive extends SubscriptionState {
+  final SubscriptionStatusResponse response;
+  const SubscriptionInactive(this.response);
+}
 
 class SubscriptionError extends SubscriptionState {
   final Object error;

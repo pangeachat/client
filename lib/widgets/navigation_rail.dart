@@ -100,6 +100,7 @@ class SpacesNavigationRail extends StatelessWidget {
         child: WorkspaceDock(
           child: Semantics(
             label: L10n.of(context).navOptionsLabel,
+            container: true,
             child: FocusTraversalGroup(
               policy: OrderedTraversalPolicy(),
               child: StreamBuilder(
@@ -220,15 +221,19 @@ class SpacesNavigationRail extends StatelessWidget {
                                 toolTip: L10n.of(context).courses,
                                 naviRailWidth: naviRailWidth,
                               ),
+                              // A plain Column, NOT a nested ListView: a
+                              // shrink-wrapped inner list is always fully laid
+                              // out (zero scroll extent of its own) yet still
+                              // claims vertical drags that start on a course
+                              // avatar — on touch devices the drag rubber-bands
+                              // against nothing and the rail never scrolls. The
+                              // outer ListView is the rail's one scrollable.
                               Semantics(
                                 label: L10n.of(context).joinedCourseListLabel,
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
+                                child: Column(
                                   children: [
                                     // 4. The course spaces you're in.
                                     for (final space in allSpaces)
-                                      // _spaceItem(context, space),
                                       _SpaceItem(
                                         space: space,
                                         iconWidth: largeIconWidth,

@@ -110,8 +110,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "addAccount": "Pridėti paskyrą",
-    "@addAccount": {},
     "or": "Arba",
     "@or": {
         "type": "String",
@@ -179,11 +177,6 @@
     },
     "homeserver": "Namų serveris",
     "@homeserver": {},
-    "everythingReady": "Viskas paruošta!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "fontSize": "Šrifto dydis",
     "@fontSize": {
         "type": "String",
@@ -293,11 +286,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "passwordRecovery": "Slaptažodžio atkūrimas",
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pickImage": "Pasirinkite paveiksliuką",
     "@pickImage": {
         "type": "String",
@@ -380,11 +368,6 @@
     },
     "removeAllOtherDevices": "Pašalinti visus kitus įrenginius",
     "@removeAllOtherDevices": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "removeDevice": "Pašalinti įrenginį",
-    "@removeDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -639,11 +622,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "groupIsPublic": "Grupė yra vieša",
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "groups": "Grupės",
     "@groups": {
         "type": "String",
@@ -731,8 +709,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "Jūsų pokalbio atsarginė kopija buvo nustatyta.",
-    "@yourChatBackupHasBeenSetUp": {},
     "chatBackup": "Pokalbio atsargine kopija",
     "@chatBackup": {
         "type": "String",
@@ -868,16 +844,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "spaceIsPublic": "Erdvė yra vieša",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceName": "Erdvės pavadinimas",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "status": "Būsena",
     "@status": {
         "type": "String",
@@ -898,11 +864,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "Perkėlimas iš kito įrenginio",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "verify": "Patvirtinti",
     "@verify": {
         "type": "String",
@@ -920,11 +881,6 @@
     },
     "verifyTitle": "Patvirtinama kita paskyra",
     "@verifyTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Pokalbių istorijos matomumas",
-    "@visibilityOfTheChatHistory": {
         "type": "String",
         "placeholders": {}
     },
@@ -955,8 +911,6 @@
     },
     "messageInfo": "Žinutės informacija",
     "@messageInfo": {},
-    "removeFromSpace": "Pašalinti iš erdvės",
-    "@removeFromSpace": {},
     "security": "Apsauga",
     "@security": {
         "type": "String",
@@ -998,11 +952,6 @@
     },
     "setAsCanonicalAlias": "Nustatyti kaip pagrindinį slapyvardį",
     "@setAsCanonicalAlias": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "setPermissionsLevel": "Nustatyti leidimų lygį",
-    "@setPermissionsLevel": {
         "type": "String",
         "placeholders": {}
     },
@@ -1058,11 +1007,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Vaizdo skambutis",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "yourPublicKey": "Jūsų viešasis raktas",
     "@yourPublicKey": {
         "type": "String",
@@ -1082,11 +1026,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Ar svečiams leidžiama prisijungti",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "channelCorruptedDecryptError": "Šifravimas buvo sugadintas",
     "@channelCorruptedDecryptError": {
         "type": "String",
@@ -1102,18 +1041,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "Kontaktas buvo pakviestas į grupę",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "contentHasBeenReported": "Apie turinį pranešta serverio administratoriams",
     "@contentHasBeenReported": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "createNewSpace": "Nauja erdvė",
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1124,11 +1053,6 @@
     },
     "defaultPermissionLevel": "Numatytasis teisių lygis",
     "@defaultPermissionLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableEncryptionWarning": "Šifravimo nebegalėsite išjungti. Ar jūs tuo tikri?",
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1172,23 +1096,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "Kas gali atlikti kokį veiksmą",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Kam leidžiama prisijungti prie šios grupės",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Kodėl norite apie tai pranešti?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "Ištrinti atsarginę pokalbių kopiją, kad sukurti naują atkūrimo raktą?",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1237,18 +1146,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "noEncryptionForPublicRooms": "Šifravimą galite suaktyvinti tik tada, kai kambarys nebebus viešai pasiekiamas.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noEmotesFound": "Nerasta jaustukų. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "Atrodo, kad jūsų telefone nėra Google Services. Tai geras sprendimas jūsų privatumui! Norėdami gauti tiesioginius pranešimus FluffyChat, rekomenduojame naudoti https://microg.org/ arba https://unifiedpush.org/.",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1478,8 +1377,6 @@
     },
     "unsupportedAndroidVersion": "Nepalaikoma Android versija",
     "@unsupportedAndroidVersion": {},
-    "emailOrUsername": "El. paštas arba vartotojo vardas",
-    "@emailOrUsername": {},
     "widgetVideo": "Video",
     "@widgetVideo": {},
     "widgetNameError": "Pateikite rodomą vardą.",
@@ -1564,11 +1461,6 @@
                 "type": "String"
             }
         }
-    },
-    "chatBackupDescription": "Jūsų senos žinutės yra apsaugotos atkūrimo raktu. Pasirūpinkite, kad jo neprarastumėte.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "commandHint_create": "Sukurti tuščią grupinį pokalbį\nNaudokite --no-encryption kad išjungti šifravimą",
     "@commandHint_create": {
@@ -1711,15 +1603,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteContactToGroup": "Pakviesti kontaktą į {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
     "invitedUser": "📩 {username} pakvietė {targetName}",
     "@invitedUser": {
         "type": "String",
@@ -1782,24 +1665,6 @@
         "type": "String",
         "placeholders": {
             "localizedTimeShort": {
-                "type": "String"
-            }
-        }
-    },
-    "loadCountMoreParticipants": "Įkelti dar {count} dalyvius",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
-    "logInTo": "Prisijungti prie {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
                 "type": "String"
             }
         }
@@ -1944,12 +1809,8 @@
     "@emojis": {},
     "placeCall": "Skambinti",
     "@placeCall": {},
-    "voiceCall": "Balso skambutis",
-    "@voiceCall": {},
     "unsupportedAndroidVersionLong": "Šiai funkcijai reikalinga naujesnė Android versija. Patikrinkite, ar nėra naujinimų arba Lineage OS palaikymo.",
     "@unsupportedAndroidVersionLong": {},
-    "videoCallsBetaWarning": "Atminkite, kad vaizdo skambučiai šiuo metu yra beta versijos. Jie gali neveikti taip kaip tikėtasi, arba iš viso neveikti visose platformose.",
-    "@videoCallsBetaWarning": {},
     "experimentalVideoCalls": "Eksperimentiniai vaizdo skambučiai",
     "@experimentalVideoCalls": {},
     "widgetEtherpad": "Teksto pastaba",
@@ -2060,8 +1921,6 @@
             }
         }
     },
-    "enableMultiAccounts": "(BETA) Įgalinkite kelias paskyras šiame įrenginyje",
-    "@enableMultiAccounts": {},
     "openInMaps": "Atidaryti žemėlapiuose",
     "@openInMaps": {
         "type": "String",
@@ -2110,15 +1969,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "unreadChats": "{unreadCount, plural, =1{1 unread chat} other{{unreadCount} neperskaityti pokalbiai}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
-    },
     "addWidget": "Pridėti programėlę",
     "@addWidget": {},
     "widgetCustom": "Pasirinktinis",
@@ -2141,14 +1991,8 @@
     "@dehydrateWarning": {},
     "commandHint_markasgroup": "Pažymėti kaip grupę",
     "@commandHint_markasgroup": {},
-    "pleaseEnterRecoveryKeyDescription": "Norėdami atrakinti senas žinutes, įveskite atkūrimo raktą, kuris buvo sukurtas ankstesnės sesijos metu. Atkūrimo raktas NĖRA jūsų slaptažodis.",
-    "@pleaseEnterRecoveryKeyDescription": {},
-    "storeInAppleKeyChain": "Saugoti Apple raktų grandinėje",
-    "@storeInAppleKeyChain": {},
     "newSpace": "Nauja erdvė",
     "@newSpace": {},
-    "enterSpace": "Įeiti į erdvę",
-    "@enterSpace": {},
     "allSpaces": "Visos erdvės",
     "@allSpaces": {},
     "user": "Vartotojas",
@@ -2170,12 +2014,6 @@
     "@dehydrate": {},
     "hydrate": "Atkurti iš atsarginės kopijos failo",
     "@hydrate": {},
-    "pleaseEnterRecoveryKey": "Įveskite savo atkūrimo raktą:",
-    "@pleaseEnterRecoveryKey": {},
-    "recoveryKey": "Atkūrimo raktas",
-    "@recoveryKey": {},
-    "recoveryKeyLost": "Pamestas atkūrimo raktas?",
-    "@recoveryKeyLost": {},
     "countFiles": "{count} failai",
     "@countFiles": {
         "placeholders": {
@@ -2184,30 +2022,14 @@
             }
         }
     },
-    "storeInSecureStorageDescription": "Atkūrimo raktą laikyti saugioje šio prietaiso saugykloje.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Įrašykite šį raktą rankiniu būdu, įjungę sistemos bendrinimo dialogo langą arba iškarpinę.",
-    "@saveKeyManuallyDescription": {},
     "users": "Vartotojai",
     "@users": {},
-    "storeSecurlyOnThisDevice": "Saugiai laikyti šiame prietaise",
-    "@storeSecurlyOnThisDevice": {},
-    "unlockOldMessages": "Atrakinti senas žinutes",
-    "@unlockOldMessages": {},
-    "storeInAndroidKeystore": "Saugoti Android raktų saugykloje",
-    "@storeInAndroidKeystore": {},
     "noKeyForThisMessage": "Taip gali atsitikti, jei žinutė buvo išsiųsta prieš prisijungiant prie paskyros šiame prietaise.\n\nTaip pat gali būti, kad siuntėjas užblokavo jūsų prietaisą arba kažkas sutriko su interneto ryšiu.\n\nAr galite perskaityti žinutę kitoje sesijoje? Tada galite perkelti žinutę iš jos! Eikite į Nustatymai > Prietaisai ir įsitikinkite, kad jūsų prietaisai patvirtino vienas kitą. Kai kitą kartą atidarysite kambarį ir abi sesijos bus pirmame plane, raktai bus perduoti automatiškai.\n\nNenorite prarasti raktų atsijungdami arba keisdami įrenginius? Įsitikinkite, kad nustatymuose įjungėte pokalbių atsarginę kopiją.",
     "@noKeyForThisMessage": {},
-    "foregroundServiceRunning": "Šis pranešimas rodomas, kai veikia pirmojo plano paslauga.",
-    "@foregroundServiceRunning": {},
-    "screenSharingTitle": "ekrano bendrinimas",
-    "@screenSharingTitle": {},
     "whyIsThisMessageEncrypted": "Kodėl ši žinutė neperskaitoma?",
     "@whyIsThisMessageEncrypted": {},
     "newGroup": "Nauja grupė",
     "@newGroup": {},
-    "screenSharingDetail": "Bendrinate savo ekraną per FuffyChat",
-    "@screenSharingDetail": {},
     "alwaysUse24HourFormat": "ne",
     "notAnImage": "Nėra vaizdo įrašas.",
     "setCustomPermissionLevel": "Nustatyti pasirinktinį leidimo lygį",
@@ -2237,17 +2059,12 @@
     "space": "Vieta",
     "spaces": "Vietos",
     "checkList": "Patikros sąrašas",
-    "countInvited": "Kviestųjų: {count}",
     "createGroup": "Sukurti grupę",
     "chatPermissions": "Pokalbių leidimai",
     "emoteKeyboardNoRecents": "Neseniai naudoti emocai čia pasirodys...",
-    "globalChatId": "Pasaulinio pokalbio ID",
-    "accessAndVisibility": "Prieiga ir matomumas",
-    "accessAndVisibilityDescription": "Kas gali prisijungti prie šio pokalbio ir kaip jis gali būti atrastas.",
     "calls": "Skambučiai",
     "customEmojisAndStickers": "Individualūs jaustukai ir lipdukai",
     "customEmojisAndStickersBody": "Pridėkite arba bendrinkite individualius jaustukus ar lipdukus, kurie gali būti naudojami bet kuriame pokalbyje.",
-    "chatDescription": "Pokalbio aprašymas",
     "chatDescriptionHasBeenChanged": "Pokalbio aprašymas pakeistas",
     "hideRedactedMessages": "Slėpti redaguotas žinutes",
     "hideRedactedMessagesBody": "Jei kas nors redaguoja žinutę, ši žinutė nebus matoma pokalbyje.",
@@ -2274,16 +2091,10 @@
     "synchronizingPleaseWaitCounter": "Sinchronizuojama… ({percentage}%)",
     "invitedBy": "📩 Pakvietė {user}",
     "hasKnocked": "🚪 {user} pasibeldė",
-    "usersMustKnock": "Vartotojai turi pasibeldži",
-    "noOneCanJoin": "Niekas negali prisijungti",
     "knock": "Klausyti",
     "hidePresences": "Slėpti būsenų sąrašą?",
     "doNotShowAgain": "Nekartoti rodyti",
     "wasDirectChatDisplayName": "Tuščias pokalbis (buvo {oldDisplayName})",
-    "newSpaceDescription": "Erdvės leidžia sujungti jūsų pokalbius ir kurti privačias arba viešas bendruomenes.",
-    "encryptThisChat": "Užšifruoti šį pokalbį",
-    "disableEncryptionWarning": "Dėl saugumo priežasčių jūs negalite išjungti šifravimo pokalbyje, kuriame jis buvo įjungtas anksčiau.",
-    "sorryThatsNotPossible": "Atsiprašome... tai neįmanoma",
     "deviceKeys": "Įrenginio raktai:",
     "reopenChat": "Vėl atidaryti pokalbį",
     "noBackupWarning": "Įspėjimas! Be pokalbio atsarginės kopijos įjungimo prarasite prieigą prie savo šifruotų žinučių. Labai rekomenduojama pirmiausia įjungti pokalbio atsarginę kopiją prieš atsijungiant.",
@@ -2296,7 +2107,6 @@
     "openLinkInBrowser": "Atidaryti nuorodą naršyklėje",
     "reportErrorDescription": "😞 Oi. Įvyko klaida. Jei norite, galite pranešti apie šią klaidą kūrėjams.",
     "report": "Pranešti",
-    "setTheme": "Nustatyti temą:",
     "setColorTheme": "Nustatyti spalvų temą:",
     "invite": "Pakviesti",
     "inviteGroupChat": "📨 Pakviesti grupės pokalbiui",
@@ -2315,12 +2125,8 @@
     "yourGlobalUserIdIs": "Jūsų pasaulinis vartotojo ID yra: ",
     "noUsersFoundWithQuery": "Deja, su užklausa \"{query}\" nerasta vartotojo. Prašome patikrinti, ar nepadarėte rašybos klaidos.",
     "knocking": "Skambinama",
-    "chatCanBeDiscoveredViaSearchOnServer": "Pokalbį galima rasti per paiešką {server}",
-    "searchChatsRooms": "Ieškoti #pokalbių, @vartotojų...",
     "nothingFound": "Nieko nerasta...",
     "groupName": "Grupės pavadinimas",
-    "createGroupAndInviteUsers": "Sukurti grupę ir pakviesti vartotojus",
-    "groupCanBeFoundViaSearch": "Grupę galima rasti per paiešką",
     "wrongRecoveryKey": "Atsiprašome... atrodo, kad tai nėra teisingas atkūrimo raktas.",
     "startConversation": "Pradėti pokalbį",
     "commandHint_sendraw": "Siųsti neapdorotą JSON",
@@ -2334,11 +2140,8 @@
     "pleaseChooseAStrongPassword": "Prašome pasirinkti stiprią slaptažodį",
     "passwordsDoNotMatch": "Slaptažodžiai nesutampa",
     "passwordIsWrong": "Jūsų įvestas slaptažodis yra neteisingas",
-    "publicChatAddresses": "Viešojo pokalbio adresai",
-    "createNewAddress": "Sukurti naują adresą",
     "joinSpace": "Prisijungti prie erdvės",
     "publicSpaces": "Viešosios erdvės",
-    "addChatOrSubSpace": "Pridėti pokalbį arba pogrupį",
     "subspace": "Pogruppis",
     "decline": "Atmesti",
     "thisDevice": "Šis įrenginys:",
@@ -2347,15 +2150,11 @@
     "searchMore": "Ieškoti daugiau...",
     "gallery": "Galerija",
     "files": "Failai",
-    "sessionLostBody": "Jūsų sesija prarasta. Prašome pranešti apie šią klaidą kūrėjams adresu {url}. Klaidos pranešimas yra: {error}",
-    "restoreSessionBody": "Programėlė dabar bando atkurti jūsų sesiją iš atsarginės kopijos. Prašome pranešti apie šią klaidą kūrėjams adresu {url}. Klaidos pranešimas yra: {error}",
     "sendReadReceipts": "Siųsti skaitymo patvirtinimus",
     "sendTypingNotificationsDescription": "Kiti pokalbio dalyviai gali matyti, kada rašote naują žinutę.",
     "sendReadReceiptsDescription": "Kiti pokalbio dalyviai gali matyti, kada perskaitėte žinutę.",
     "formattedMessages": "Formatuotos žinutės",
     "formattedMessagesDescription": "Rodyti turtingą žinučių turinį, pvz., paryškintą tekstą, naudojant markdown.",
-    "verifyOtherUser": "🔐 Patvirtinti kitą vartotoją",
-    "verifyOtherUserDescription": "Jei patvirtinate kitą vartotoją, galite būti tikri, kad tikrai rašote tam tikram asmeniui. 💪\n\nPradėjus patvirtinimą, jūs ir kitas vartotojas matys iššokantį langą programėlėje. Ten pamatysite seriją emocijų ar skaičių, kuriuos turite palyginti tarpusavyje.\n\nGeriausias būdas tai padaryti – susitikti arba pradėti vaizdo skambutį. 👭",
     "verifyOtherDevice": "🔐 Patvirtinti kitą įrenginį",
     "verifyOtherDeviceDescription": "Patvirtinus kitą įrenginį, šie įrenginiai gali keistis raktus, taip padidindami jūsų bendrą saugumą. 💪 Pradėjus patvirtinimą, abiejų įrenginių programėlėse pasirodys iššokantis langas. Ten pamatysite seriją emocijų ar skaičių, kuriuos turite palyginti tarpusavyje. Geriausia turėti abu įrenginius po ranka prieš pradedant patvirtinimą. 🤳",
     "acceptedKeyVerification": "{sender} priėmė raktų patvirtinimą",
@@ -2391,10 +2190,6 @@
     "updateInstalled": "🎉 Įdiegta {version}!",
     "changelog": "Pakeitimų žurnalas",
     "sendCanceled": "Siuntimas atšauktas",
-    "loginWithMatrixId": "Prisijungti naudodami Matrix-ID",
-    "discoverHomeservers": "Atrasti namų serverius",
-    "whatIsAHomeserver": "Kas yra namų serveris?",
-    "homeserverDescription": "Visi jūsų duomenys saugomi namų serveryje, kaip ir el. pašto paslaugos teikėjas. Galite pasirinkti, kurį namų serverį naudoti, tačiau vis tiek galite bendrauti su visais. Sužinokite daugiau adresu https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "Atrodo, kad tai nėra suderinamas namų serveris. Neteisingas URL?",
     "calculatingFileSize": "Skaičiuojama failo dydis...",
     "prepareSendingAttachment": "Ruošiama siųsti priedą...",
@@ -2406,11 +2201,9 @@
     "oneOfYourDevicesIsNotVerified": "Vienas iš jūsų įrenginių nėra patvirtintas",
     "noticeChatBackupDeviceVerification": "Pastaba: Kai prijungiate visus savo įrenginius prie pokalbių atsarginės kopijos, jie automatiškai patvirtinami.",
     "continueText": "Tęsti",
-    "welcomeText": "Sveiki Sveiki 👋 Tai yra FluffyChat. Jūs galite prisijungti prie bet kurio namų serverio, kuris yra suderinamas su https://matrix.org. Ir tada kalbėtis su bet kuo. Tai didelė decentralizuota žinučių tinklas!",
     "blur": "Išsklaidymas:",
     "opacity": " Skaidrumas:",
     "setWallpaper": "Nustatyti foną",
-    "manageAccount": "Tvarkyti paskyrą",
     "noContactInformationProvided": "Serveris nepateikia jokių galiojančių kontaktinės informacijos",
     "contactServerAdmin": "Susisiekti su serverio administratoriumi",
     "contactServerSecurity": "Susisiekti su serverio saugumu",
@@ -2429,11 +2222,8 @@
     "unableToJoinChat": "Negalima prisijungti prie pokalbio. Galbūt kita šalis jau uždarė pokalbį.",
     "previous": "Ankstesnis",
     "otherPartyNotLoggedIn": "Kita šalis šiuo metu neprisijungusi ir todėl negali gauti žinučių!",
-    "appWantsToUseForLogin": "Naudoti '{server}' prisijungimui",
-    "appWantsToUseForLoginDescription": "Jūs šiuo metu leidžiate programai ir svetainei dalintis informacija apie jus.",
     "open": "Atidaryti",
     "waitingForServer": "Laukiama serverio...",
-    "appIntroduction": "FluffyChat leidžia jums kalbėtis su draugais per skirtingus pranešėjų programas. Sužinokite daugiau adresu https://matrix.org arba tiesiog spustelėkite *Tęsti*.",
     "newChatRequest": "📩 Naujas pokalbio užklausimas",
     "contentNotificationSettings": "Turinio pranešimų nustatymai",
     "generalNotificationSettings": "Bendrieji pranešimų nustatymai",
@@ -2508,11 +2298,9 @@
     "taTooltip": "L2 naudojimas su vertimo pagalba",
     "interactiveTranslatorSliderHeader": "Interaktyvus vertėjas",
     "interactiveGrammarSliderHeader": "Interaktyvus gramatikos tikrintuvas",
-    "interactiveTranslatorRequired": "Būtina",
     "waTooltip": "L2 naudojimas be pagalbos",
     "interactiveTranslator": "Vertimo pagalba",
     "noIdenticalLanguages": "Prašome pasirinkti skirtingas pagrindines ir tikslines kalbas",
-    "searchBy": "Ieškoti pagal šalį ir kalbas",
     "joinWithClassCode": "Prisijungti prie kurso",
     "languageLevelPreA1": "Pradedantysis Žemas (Pre A1)",
     "languageLevelA1": "Pradedančiojo vidurinis (A1)",
@@ -2533,19 +2321,14 @@
     "saveChanges": "Išsaugoti pakeitimus",
     "publicProfileTitle": "Leisti mano profilį būti randamam paieškoje",
     "publicProfileDesc": "Įjungus, kiti vartotojai galės rasti jūsų profilį globalioje paieškos juostoje ir siųsti užklausas pokalbiui. Šiuo metu galite pasirinkti priimti arba atmesti užklausą.",
-    "errorDisableIT": "Vertimo pagalba išjungta.",
-    "errorDisableIGC": "Gramatikos pagalba išjungta.",
     "errorDisableITUserDesc": "Spustelėkite čia, norėdami atnaujinti vertimo pagalbos nustatymus",
     "errorDisableIGCUserDesc": "Spustelėkite čia, norėdami atnaujinti gramatikos pagalbos nustatymus",
     "errorDisableITClassDesc": "Vertimo pagalba išjungta kursui, kuriame yra šis pokalbis.",
     "errorDisableIGCClassDesc": "Gramatikos pagalba išjungta kursui, kuriame yra šis pokalbis.",
-    "error405Title": "Kalbos nėra nustatytos",
     "error405Desc": "Prašome nustatyti savo kalbas pagrindiniame meniu > Mokymosi nustatymai.",
     "termsAndConditions": " Paslaugų teikimo sąlygomis",
     "andCertifyIAmAtLeast13YearsOfAge": " ir patvirtinu, kad man yra bent 16 metų.",
-    "error502504Title": "Oho, internete yra daug mokinių!",
     "error502504Desc": "Vertimo ir gramatikos įrankiai gali būti lėti arba neprieinami, kol Pangea robotai pasivys.",
-    "error404Title": "Vertimo klaida!",
     "error404Desc": "Pangea robotas nėra tikras, kaip tai išversti...",
     "errorPleaseRefresh": "Mes tai tikriname! Prašome įkelti dar kartą ir bandyti iš naujo.",
     "connectedToStaging": "Prisijungta prie Staging",
@@ -2583,13 +2366,9 @@
     "definitionsToolName": "Žodžių apibrėžimai",
     "definitionsToolDescription": "Įjungus, žodžiai pažymėti mėlyna spalva gali būti spustelėti norint gauti apibrėžimus. Spustelėkite žinutes, kad pasiektumėte apibrėžimus.",
     "welcomeBack": "Sveiki sugrįžę! Jei buvote 2023-2024 m. bandomojo projekto dalyvis, susisiekite su mumis dėl specialios bandomojo projekto prenumeratos. Jei esate mokytojas, kuris (arba jūsų įstaiga) įsigijo licencijas savo klasei, susisiekite su mumis dėl mokytojo prenumeratos.",
-    "downloadTxtFile": "Parsisiųsti teksto failą",
-    "downloadCSVFile": "Parsisiųsti CSV failą",
     "promotionalSubscriptionDesc": "Šiuo metu turite visam laikui galiojančią reklaminę prenumeratą. Susisiekite su support@pangea.chat dėl pagalbos keičiant prenumeratą.",
     "originalSubscriptionPlatform": "Prenumerata įsigyta per {purchasePlatform}",
     "oneWeekTrial": "Vienos savaitės bandomoji versija",
-    "downloadXLSXFile": "Parsisiųsti Excel failą",
-    "unkDisplayName": "Nežinoma",
     "wwCountryDisplayName": "Pasaulinis",
     "afCountryDisplayName": "Afganistanas",
     "axCountryDisplayName": "Alandų Salos",
@@ -2884,7 +2663,6 @@
     "chatCapacityHasBeenChanged": "Pokalbių talpa pasikeitė",
     "chatCapacitySetTooLow": "Pokalbių talpa turi būti ne mažesnė kaip {count}.",
     "chatCapacityExplanation": "Pokalbių talpa riboja leidžiamų narių skaičių pokalbyje.",
-    "tooManyRequest": "Per daug užklausų, bandykite vėliau.",
     "enterNumber": "Įveskite sveiko skaičiaus reikšmę.",
     "practice": "Praktika",
     "versionNotFound": "Versija nerasta",
@@ -2894,7 +2672,6 @@
     "deleteSubscriptionWarningTitle": "Jūs turite aktyvią prenumeratą",
     "deleteSubscriptionWarningBody": "Ištrynus savo paskyrą, jūsų prenumerata nebus automatiškai atšaukta.",
     "manageSubscription": "Valdyti prenumeratą",
-    "error520Title": "Prašome bandyti dar kartą.",
     "error520Desc": "Atsiprašome, mes nesupratome jūsų žinutės...",
     "wordsUsed": "Naudoti žodžiai",
     "level": "Lygis",
@@ -2912,7 +2689,6 @@
     "other": "Kita",
     "levelShort": "LYGIS {level}",
     "noCapacityLimit": "Nėra talpos limito",
-    "downloadGroupText": "Parsisiųsti grupės tekstą",
     "notificationsOn": "Pranešimai įjungti",
     "notificationsOff": "Pranešimai išjungti",
     "joinWithCode": "Prisijungti su kodu",
@@ -2976,24 +2752,12 @@
     "whatIsTheMorphTag": "Kokia yra '{wordForm}' {morphologicalFeature}?",
     "dataAvailable": "Duomenų prieinamumas",
     "available": "Prieinama",
-    "pangeaBotIsFallible": "Pangea botas taip pat daro klaidų!",
-    "whatIsMeaning": "Ką reiškia '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Suderink reikšmes su žodžiais žinutėje!",
-    "doubleClickToEdit": "Dukart spustelėkite norėdami redaguoti.",
-    "topicLabel": "Tema",
-    "topicPlaceholder": "Pasirinkite temą...",
-    "modePlaceholder": "Pasirinkite režimą...",
-    "learningObjectiveLabel": "Mokymosi tikslas",
-    "learningObjectivePlaceholder": "Pasirinkite mokymosi tikslą...",
-    "targetLanguageLabel": "Tikslo kalba",
     "cefrLevelLabel": "CEFR lygis",
     "image": "Paveikslėlis",
     "video": "Vaizdo įrašas",
     "nan": "Netaikoma",
-    "addVocabulary": "Pridėti žodyną",
     "instructions": "Instrukcijos",
-    "numberOfLearners": "Mokinių skaičius",
-    "mustBeInteger": "Turi būti sveikas skaičius, pvz., 1, 2, 3, ...",
     "constructUsePvmDesc": "Sukurtas balso žinutėje",
     "leaveSpaceDescription": "Palikus kursą, paliksite visus jame esančius pokalbius. Kiti naudotojai matys, kad palikote kursą.",
     "constructUseCorMmDesc": "Teisingas žinutės reikšmė",
@@ -3008,7 +2772,6 @@
     "ttsDisabledBody": "Galite įjungti teksto į kalbą funkciją savo mokymosi nustatymuose",
     "noSpaceDescriptionYet": "Dar nėra sukurta kurso aprašymo.",
     "tooLargeToSend": "Ši žinutė yra per didelė siųsti",
-    "exitWithoutSaving": "Ar tikrai norite išeiti neišsaugojus?",
     "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
     "enableAutocorrectPopupSteps": "  • Nustatymai\n  • Bendra\n  • Klaviatūra\n  • Klaviatūros\n  • Pridėti naują klaviatūrą",
     "enableAutocorrectPopupDescription": "Pasirinkus kalbą, galite spustelėti mažą pasaulio ženklo piktogramą apatinėje kairėje klaviatūros dalyje, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
@@ -3019,11 +2782,8 @@
     "displayName": "Rodomas vardas",
     "leaveRoomDescription": "Jūs ketinate išeiti iš šio pokalbio. Kiti vartotojai matys, kad išėjote iš pokalbio.",
     "confirmUserId": "Patvirtinkite savo Pangea pokalbio vartotojo vardą, kad galėtumėte ištrinti savo paskyrą.",
-    "startingToday": "Nuo šiandien",
-    "oneWeekFreeTrial": "Vienos savaitės nemokama bandomoji versija",
     "paidSubscriptionStarts": "Pradedama {startDate}",
     "cancelInSubscriptionSettings": "• Atšaukite bet kuriuo metu prenumeratos nustatymuose",
-    "cancelToAvoidCharges": "• Atšaukite prieš {trialEnds}, kad išvengtumėte mokesčių",
     "downloadGboard": "Atsisiųsti Gboard",
     "autocorrectNotAvailable": "Deja, jūsų platforma šiuo metu nepalaikoma šiai funkcijai. Sekite naujienas dėl tolimesnio vystymo!",
     "pleaseUpdateApp": "Prašome atnaujinti programėlę, kad galėtumėte tęsti.",
@@ -3033,17 +2793,12 @@
     "knockSpaceSuccess": "Jūs pateikėte užklausą prisijungti prie šio kurso! Administratorius atsakys į jūsų užklausą, kai gaus ją 😊",
     "chooseWordAudioInstructionsBody": "Klausykite viso pranešimo. Tada suderinkite garso įrašus su žodžiais.",
     "chooseMorphsInstructionsBody": "Spustelėkite dėlionės dalis gramatikos klausimams!",
-    "pleaseEnterInt": "Įveskite skaičių",
     "home": "Pradžia",
     "join": "Prisijungti",
     "resetInstructionTooltipsTitle": "Atstatyti instrukcijų patarimus",
     "resetInstructionTooltipsDesc": "Spustelėkite, kad parodytumėte instrukcijų patarimus kaip naujam vartotojui.",
-    "randomize": "Atsitiktinai parinkti",
     "clear": "Išvalyti",
-    "featuredActivities": "Pasiūlytos veiklos",
     "save": "Išsaugoti",
-    "startChat": "Pradėti pokalbį",
-    "translationProblem": "Vertimo problema",
     "askToJoin": "Paprašyti prisijungti",
     "emptyChatWarningTitle": "Pokalbis tuščias",
     "emptyChatWarningDesc": "Niekas nebuvo pakviestas į jūsų pokalbį. Eikite į Pokalbio nustatymus, kad pakviestumėte kontaktus arba Botą. Taip pat galite tai padaryti vėliau.",
@@ -3073,17 +2828,13 @@
     "timesUsedIndependently": "Naudota nepriklausomai kartų",
     "timesUsedWithAssistance": "Naudota su pagalba kartų",
     "shareInviteCode": "Pasidalink kvietimo kodu: {code}",
-    "leaderboard": "Rezultatų lentelė",
     "skipForNow": "Nuošalyje dabar",
     "permissions": "Leidimai",
     "spaceChildPermission": "Kas gali pridėti naujus pokalbius šiam kursui",
-    "addEnvironmentOverride": "Pridėti aplinkos perrašymą",
     "defaultOption": "Numatytasis",
     "deleteChatDesc": "Ar tikrai norite ištrinti šį pokalbį? Jis bus ištrintas visiems dalyviams, o visi pranešimai pokalbyje nebeprieinami praktikai ar mokymosi analitikai.",
     "deleteSpaceDesc": "Kursas ir bet kurie pasirinktini pokalbiai bus ištrinti visiems dalyviams, o visi pranešimai pokalbyje nebeprieinami praktikai ar mokymosi analitikai. Šis veiksmas nėra atšaukiamas.",
     "launch": "Pradėti",
-    "searchChats": "Ieškoti pokalbių",
-    "maxFifty": "Maks. 50",
     "configureSpace": "Konfigūruoti kursą",
     "pinMessages": "Prisegti žinutes",
     "setJoinRules": "Nustatyti prisijungimo taisykles",
@@ -3117,9 +2868,6 @@
     "failedToFetchTranscription": "Nepavyko gauti transkripcijos",
     "deleteEmptySpaceDesc": "Kursas bus ištrintas visiems dalyviams. Šio veiksmo atšaukti neįmanoma.",
     "regenerate": "Atnaujinti",
-    "mySavedActivities": "Mano išsaugotos veiklos",
-    "noSavedActivities": "Nėra išsaugotų veiklų",
-    "saveActivity": "Išsaugoti šią veiklą",
     "failedToPlayVideo": "Nepavyko paleisti vaizdo įrašo",
     "done": "Atlikta",
     "inThisSpace": "Šio kurso metu",
@@ -3130,13 +2878,9 @@
     "numInvited": "{count} pakviesti",
     "saved": "Išsaugota",
     "reset": "Atstatyti",
-    "errorFetchingActivitiesMessage": "Nepavyko gauti veiklų",
     "errorFetchingDefinition": "Nepavyko gauti apibrėžimo",
     "errorProcessAnalytics": "Nepavyko apdoroti analizės",
     "errorDownloading": "Atsisiuntimas nepavyko",
-    "errorLoadingSpaceChildren": "Nepavyko įkelti pokalbių šiame kurse",
-    "unexpectedError": "Nenumatyta klaida.",
-    "pleaseReload": "Prašome perkrauti ir bandyti dar kartą.",
     "translationError": "Vertimo klaida",
     "check": "Patikrinti",
     "unableToFindRoom": "Su šiuo kodu nerasta pokalbio ar kurso. Bandykite dar kartą.",
@@ -3145,19 +2889,14 @@
     "request": "Prašymas",
     "requestAll": "Prašyti viską",
     "confirmMessageUnpin": "Ar tikrai norite atjungti šią žinutę?",
-    "saveAndLaunch": "Išsaugoti ir paleisti",
-    "launchToSpace": "Paleisti į kursą",
     "pending": "Laukiama",
     "inactive": "Nekeičiama",
-    "confirmRole": "Patvirtinti vaidmenį",
     "openRoleLabel": "ATVIRAS",
     "finishedTheActivity": "🎯 {username} užbaigė šią veiklą",
     "activitySummaryError": "Veiklos santraukų nėra",
     "requestSummaries": "Prašyti santraukų",
-    "generatingNewActivities": "Jūs esate pirmasis šios kalbos poros naudotojas! Prašome palaukti minutėlę, ruošiame veiklas būtent jums.",
     "requestAccessTitle": "Prašyti analizės prieigos?",
     "requestAccessDesc": "Ar norėtumėte prašyti prieigos peržiūrėti dalyvių analitiką?\n\nJei dalyviai sutiks, šios kurso administratoriai galės matyti:\n    • bendrą žodyną\n    • bendrus gramatikos konceptus\n    • atliktų veiklos sesijų skaičių\n    • naudotus, teisingus ir neteisingus gramatikos konceptus\n\nJie negalės matyti:\n    • žinučių pokalbiuose už kurso ribų\n    • žodyno sąrašo",
-    "requestAccess": "Prašyti prieigos ({count})",
     "analyticsInactiveTitle": "Užklausų nebuvo galima siųsti neaktyviems vartotojams",
     "analyticsInactiveDesc": "Neaktyvūs vartotojai, kurie nesiregistravo nuo šios funkcijos įdiegimo, nematys jūsų užklausos.\n\nUžklausos mygtukas pasirodys, kai jie sugrįš. Galite iš naujo siųsti užklausą vėliau paspausdami Užklausos mygtuką po jų vardu, kai jis bus prieinamas.",
     "accessRequestedTitle": "Prieigos prie analitikos užklausa",
@@ -3180,8 +2919,6 @@
     "accessDesc": "Galite padaryti savo kursą atvirą visiems! Arba, padaryti jį privačiu ir saugiu.",
     "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
-    "noCourseFound": "O, šis kursas turi būti suplanuotas!\n\nKurso planai yra temų ir pokalbių veiklų seka.",
-    "additionalParticipants": "+ {num} kiti",
     "whatNow": "Kas dabar?",
     "chooseNextActivity": "Pasirinkite savo kitą veiklą!",
     "letsGo": "Pradėkime",
@@ -3194,13 +2931,11 @@
     "waitNotDone": "Palauk, aš dar nesu baigęs!",
     "waitingForOthersToFinish": "Laukiama kitų pabaigos...",
     "generatingSummary": "Analizuojama pokalbis ir generuojami rezultatai",
-    "findCourse": "Rasti kursą",
     "pingParticipantsNotification": "{user} ieško naudotojų prisijungti prie veiklos sesijos {room}",
     "course": "Kursas",
     "courses": "Kursai",
     "goToCourse": "Eiti į kursą: {course}",
     "activityComplete": "Ši veikla buvo užbaigta. Apžvalga turėtų būti prieinama žemiau.",
-    "startNewSession": "Pradėti naują sesiją",
     "joinOpenSession": "Prisijungti prie atviros sesijos",
     "activityNotFound": "Veikla nerasta",
     "myActivities": "Mano veiklos",
@@ -3244,7 +2979,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-13 10:07:03.254497",
+    "@@last_modified": "2026-07-18 13:35:10.234462",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3377,14 +3112,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@createGroup": {
         "type": "String",
         "placeholders": {}
@@ -3397,18 +3124,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@calls": {
         "type": "String",
         "placeholders": {}
@@ -3418,10 +3133,6 @@
         "placeholders": {}
     },
     "@customEmojisAndStickersBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@chatDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3556,14 +3267,6 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
@@ -3583,22 +3286,6 @@
                 "type": "String"
             }
         }
-    },
-    "@newSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@encryptThisChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@disableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@sorryThatsNotPossible": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deviceKeys": {
         "type": "String",
@@ -3653,10 +3340,6 @@
         "placeholders": {}
     },
     "@report": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setTheme": {
         "type": "String",
         "placeholders": {}
     },
@@ -3740,31 +3423,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -3820,23 +3483,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -3876,28 +3527,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -3915,14 +3544,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4115,22 +3736,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4186,10 +3791,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4199,10 +3800,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4278,27 +3875,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4616,10 +4197,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4629,10 +4206,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4720,14 +4293,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4744,10 +4309,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4760,15 +4321,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4920,14 +4473,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4941,14 +4486,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6171,10 +5708,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -6215,10 +5748,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6291,10 +5820,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6564,47 +6089,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6624,19 +6109,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6700,10 +6173,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6744,14 +6213,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6763,14 +6224,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6808,10 +6261,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6828,27 +6277,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6972,10 +6405,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6985,10 +6414,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -7005,14 +6430,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -7152,18 +6569,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -7212,10 +6617,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -7225,18 +6626,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -7279,23 +6668,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -7319,10 +6696,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -7330,14 +6703,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -7442,18 +6807,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -7506,10 +6859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -7536,10 +6885,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7720,7 +7065,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Kitą dieną patikrinkite atnaujinimus apie veiklą.",
-    "activityDropdownDesc": "Kai baigsite šią veiklą, spustelėkite žemiau",
     "languageMismatchTitle": "Kalbos neatitikimas",
     "languageMismatchDesc": "Jūsų tikslinė kalba nesutampa su šios veiklos kalba. Ar norite atnaujinti savo tikslinę kalbą?",
     "reportWordIssueTooltip": "Pranešti apie žodžio informacijos problemą",
@@ -7733,10 +7077,6 @@
     "selectAll": "Pasirinkti viską",
     "deselectAll": "Atšaukti viską",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7785,17 +7125,11 @@
         "placeholders": {}
     },
     "startOwn": "Pradėkite savo",
-    "joinCourseDesc": "Kiekvienas kursas turi 8-10 temų sekų su įvairiomis užduotimis pagrįstomis kalbos mokymosi veiklomis.",
     "newMessageInPangeaChat": "📩 Naujiena žinutė Pangea pokalbyje",
     "shareCourse": "Pasidalinti kursu",
     "addCourse": "Pridėti kursą",
-    "joinPublicCourse": "Prisijungti prie viešo kurso",
     "vocabLevelsDesc": "Čia pateks žodžiai, kai juos pakelsite į aukštesnį lygį!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7808,10 +7142,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7830,12 +7160,9 @@
     "emojiView": "Emodžių peržiūra",
     "feedbackDialogDesc": "Aš taip pat darau klaidų! Ar yra kas nors, kas galėtų man padėti tobulėti?",
     "contactHasBeenInvitedToTheCourse": "Kontaktas buvo pakviestas į kursą",
-    "activityStatsButtonTooltip": "Veiklos informacija",
     "allow": "Leisti",
     "deny": "Atmesti",
     "enabledRenewal": "Įjungti prenumeratos atnaujinimą",
-    "subscriptionEndsOn": "Prenumerata baigiasi",
-    "subscriptionRenewsOn": "Prenumerata atnaujinama",
     "waitForSubscriptionChanges": "Prenumeratos pakeitimai gali užtrukti, kol atsispindės programėlėje.",
     "subscribeReadingAssistance": "Prenumeruokite, kad atrakintumėte žinučių įrankius",
     "aceDisplayName": "Ačinė",
@@ -8101,10 +7428,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -8114,14 +7437,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9157,16 +8472,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Veiklos, kad atrakintumėte kitą temą",
-    "activitiesToUnlockTopicDesc": "Nustatykite veiklų skaičių, kad atrakintumėte kitą kurso temą",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Teisinga žodyno apibrėžimo praktika",
     "constructUseIncLMDesc": "Neteisinga žodyno apibrėžimo praktika",
     "constructUseCorLADesc": "Teisinga žodyno garso praktika",
@@ -9174,7 +8479,6 @@
     "constructUseBonus": "Premija žodyno praktikos metu",
     "practiceVocab": "Praktikuoti žodyną",
     "selectMeaning": "Pasirinkite reikšmę",
-    "selectAudio": "Pasirinkite atitinkamą garsą",
     "anotherRound": "Dar viena raundas",
     "activitySettingsOverrideWarning": "Kalba ir kalbos lygis nustatomi pagal veiklos planą",
     "voice": "Balsas",
@@ -9206,10 +8510,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -9227,12 +8527,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Atsisiuntimas pradėtas",
     "webDownloadPermissionMessage": "Jei jūsų naršyklė blokuoja atsisiuntimus, prašome įgalinti atsisiuntimus šiam tinklalapiui.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -9327,11 +8622,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Kažkas nepavyko, ir mes sunkiai dirbame, kad tai išspręstume. Patikrinkite vėliau.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Įgalinti rašymo pagalbą",
     "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
     "@autoIGCToolName": {
@@ -9387,24 +8677,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Gramatika",
-    "spanTypeWordChoice": "Žodžių pasirinkimas",
     "spanTypeSpelling": "Rašyba",
     "spanTypePunctuation": "Skyryba",
     "spanTypeStyle": "Stilius",
     "spanTypeFluency": "Sklandumas",
     "spanTypeAccents": "Akcentai",
     "spanTypeCapitalization": "Didžiųjų raidžių naudojimas",
-    "spanTypeCorrection": "Korekcija",
     "spanFeedbackTitle": "Pranešti apie korekcijos problemą",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -9429,10 +8708,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -9445,13 +8720,7 @@
     "longPressToRecordVoiceMessage": "Ilgai paspauskite, kad įrašytumėte balso žinutę.",
     "pause": "Sustabdyti",
     "resume": "Tęsti",
-    "newSubSpace": "Naujas sub erdvė",
-    "moveToDifferentSpace": "Perkelti į kitą erdvę",
-    "removeFromSpaceDescription": "Pokalbiai bus pašalinti iš erdvės, bet vis tiek pasirodys jūsų pokalbių sąraše.",
     "countChats": "{chats} pokalbiai",
-    "spaceMemberOf": "Erdvės narys {spaces}",
-    "spaceMemberOfCanKnock": "Erdvės narys {spaces} gali pasibeldti",
-    "donate": "Aukoti",
     "startedAPoll": "{username} pradėjo apklausą.",
     "poll": "Apklausa",
     "startPoll": "Pradėti apklausą",
@@ -9475,23 +8744,15 @@
     "newStickerPack": "Naujas lipdukų paketas",
     "stickerPackName": "Lipdukų paketo pavadinimas",
     "attribution": "Priskyrimas",
-    "skipChatBackup": "Praleisti pokalbio atsarginę kopiją",
-    "skipChatBackupWarning": "Ar tikrai norite? Neįjungus pokalbio atsarginės kopijos, galite prarasti prieigą prie savo žinučių, jei pakeisite įrenginį.",
-    "loadingMessages": "Kraunamos žinutės",
-    "setupChatBackup": "Nustatyti pokalbio atsarginę kopiją",
     "noMoreResultsFound": "Daugiau rezultatų nerasta",
     "chatSearchedUntil": "Pokalbis ieškotas iki {time}",
     "federationBaseUrl": "Federacijos pagrindinis URL",
     "clientWellKnownInformation": "Kliento gerai žinoma informacija:",
     "baseUrl": "Pagrindinis URL",
     "identityServer": "Identiteto serveris:",
-    "versionWithNumber": "Versija: {version}",
     "logs": "Žurnalai",
-    "advancedConfigs": "Išplėstinės konfigūracijos",
     "advancedConfigurations": "Išplėstinės konfigūracijos",
-    "signInWithLabel": "Prisijungti su:",
     "selectAllWords": "Pasirinkite visus žodžius, kuriuos girdite garse",
-    "joinCourseForActivities": "Prisijunkite prie kurso, kad išbandytumėte veiklas.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -9528,18 +8789,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9547,26 +8796,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9672,22 +8901,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9716,19 +8929,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9736,15 +8937,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9945,11 +9138,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "Klasėje? Įrašykite savo prisijungimo kodą čia.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Automatiškai paryškinti garso pranešimus",
     "selectAudioMessagesOnPlayDescription": "Automatiškai paryškinti garso pranešimus, kai jie atkuriami",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9965,7 +9153,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Aš mokausi...",
     "alreadySpeak": "Aš jau kalbu...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9993,18 +9180,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Šiame kurse yra temų, turinčių mažiau nei {input} veiklų. Prašome įvesti skaičių, kuris yra mažesnis arba lygus {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Paspauskite čia, kad vėl prisijungtumėte.",
     "@clickToLogin": {
@@ -10421,17 +9596,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Kartoninis geltonas lokys su pakeltomis rankomis džiaugsmu.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Pasirinkite žodžius, kad sužinotumėte daugiau apie juos",
     "requireAnalyticsAccessTitle": "Reikia analitikos prieigos, kad prisijungtumėte",
     "requireAnalyticsAccessDesc": "Dalyviai turi suteikti prieigą prie savo mokymosi analitikos, kad galėtų prisijungti prie šio kurso",
     "analyticsAccessNoticeTitle": "Reikalinga analitikos prieiga",
     "analyticsAccessNoticeDesc": "Prisijungdami prie šio kurso, sutinkate suteikti administratoriams prieigą prie savo mokymosi analitikos.",
-    "skipOnboardingClassCodeDesc": "Mokotės savarankiškai? Nesijaudinkite, galite:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -10449,10 +9618,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10481,7 +9646,6 @@
     "pickCefrLevelTeacherStepTitle": "Kokį lygį mokote?",
     "pickCefrLevelStudentStepTitle": "Kokio lygio esate?",
     "customCourseStepTitle": "Užpildykite šią formą, kad gautumėte individualų kursą",
-    "aboutYourClass": "Apie jūsų klasę",
     "courseCodeStepErrorMessage": "Prašome patikrinti savo kodą ir bandyti dar kartą",
     "institution": "Institucija",
     "courseGoals": "Kurso tikslai",
@@ -10524,10 +9688,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10644,12 +9804,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Pangea Chat logotipas",
     "introChatDetails": "Pasakykite labas! Pristatykite save savo kursų dalyviams, raskite draugų ir bendraukite už veiklų ribų.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10693,11 +9848,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Veiklos veiksmai",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Tariamojo įrankiai",
     "audioTranscription": "AI garso transkripcija",
     "visualLearnerSupport": "Vizualių mokinių palaikymas",
@@ -10738,7 +9888,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Prisijunkite prie kurso, kuris apima šią veiklą, kad galėtumėte ją žaisti.",
     "resizeCoursePanel": "Pakeisti kurso skydelio dydį",
     "undo": "Atšaukti",
     "unlock": "Atrakinti",
@@ -10752,7 +9901,6 @@
     "addCourseBrowsePublic": "Naršyti viešus kursus",
     "browsePublicCourses": "Naršyti viešus kursus",
     "editProfile": "Redaguoti profilį",
-    "numObjectives": "{count} tikslai",
     "mapSearchHint": "Ieškoti veiklų",
     "mapSearchNoResults": "Nėra atitikmenų",
     "mapFilterAllLanguages": "Visos kalbos",
@@ -10761,7 +9909,6 @@
     "mapFilterCompleted": "Užbaigta",
     "mapFilterReset": "Atstatyti",
     "activityTypeConversation": "Pokalbis",
-    "lockedMissionRequirement": "Baigkite ankstesnę misiją, kad atrakintumėte",
     "playAgain": "Žaisti vėl",
     "reviewActivity": "Peržiūrėti",
     "mapEmptyInView": "Čia nieko nėra jūsų lygyje ar kalba. Išplėskite filtrus arba priartinkite.",
@@ -10776,14 +9923,9 @@
     "scrollToBottom": "Slinkti žemyn",
     "courseImage": "Kurso nuotrauka",
     "avatarPreview": "Avataro peržiūra",
-    "activityPhoto": "Veiklos nuotrauka",
     "emotePreview": "Emocijos peržiūra: {name}",
     "activityLabel": "Veikla: {title}",
     "resetMapView": "Atstatyti žemėlapio vaizdą",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10836,14 +9978,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10873,10 +10007,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10933,10 +10063,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -11288,5 +10414,29 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Kurso leidimai",
+    "starsToUnlockObjectiveTitle": "Žvaigždės už misiją",
+    "starsToUnlockObjectiveDesc": "Nustatykite žvaigždžių skaičių, reikalingą kiekvienai misijai užbaigti",
+    "maxStarsPerMissionWarning": "Šiame kurse yra misijų, kuriose galima uždirbti tik {maxValue} žvaigždutes. Įveskite skaičių, mažesnį arba lygų {maxValue}.",
+    "removedFromCourseError": "Buvote pašalintas iš šio kurso. Susisiekite su savo mokytoju.",
+    "endPractice": "Baigti pratybas",
+    "bodyLabel": "{page} parinktys",
+    "openDM": "Atidaryti tiesioginę žinutę",
+    "openNewTab": "Atidaryti naujame skirtuke",
+    "viewProfileImageLabel": "Peržiūrėti profilio nuotrauką",
+    "profileImageLabel": "Profilio nuotrauka",
+    "actionsLabel": "Veiksmai",
+    "colorListLabel": "Spalvų sąrašas",
+    "chatAppearanceStyleLabel": "Pokalbio išvaizda su pasirinktu stiliumi",
+    "volumeLabel": "Garsumas",
+    "listLabel": "{description} sąrašas",
+    "passwordFormLabel": "Slaptažodžio keitimo forma",
+    "searchLanguagesHint": "Ieškoti kalbų",
+    "searchCountriesHint": "Ieškoti šalių",
+    "searchVocabHint": "Ieškoti žodyno",
+    "searchUsersHint": "Ieškoti vartotojų",
+    "searchMessagesHint": "Ieškoti pranešimų",
+    "searchChatsHint": "Ieškoti pokalbių",
+    "searchActivitiesHint": "Ieškoti veiklų"
 }

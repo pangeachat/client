@@ -150,33 +150,61 @@ class ActivityChatController {
     }
   }
 
+  bool _updatingUsedVocab = false;
+  bool _usedVocabDirty = false;
+
   Future<void> _updateUsedVocab() async {
-    final vocab = room.activityPlan?.vocab;
-    if (vocab == null || _disposed) return;
+    if (room.activityPlan == null || _disposed) return;
 
-    final vocabLemmas = vocab.map((v) => v.lemma.toLowerCase()).toSet();
-    final used = <String>{};
-
-    final timeline = await room.getTimeline();
-    await timeline.requestHistory();
-
-    for (final event in timeline.events) {
-      if (event.type != EventTypes.Message) continue;
-      final uses = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: event.senderId == userID,
-      ).originalSent?.vocabAndMorphUses;
-      if (uses == null) continue;
-      for (final use in uses) {
-        if (use.identifier.type == ConstructTypeEnum.vocab) {
-          final lemma = use.identifier.lemma.toLowerCase();
-          if (vocabLemmas.contains(lemma)) used.add(lemma);
-        }
-      }
+    // Coalesce bursts of construct updates: while one timeline scan is in
+    // flight, later triggers just mark the result dirty and let the running
+    // pass re-run once at the end. Avoids launching concurrent
+    // room.getTimeline() calls (documented as unsafe) and redundant full
+    // re-scans of the timeline on every analytics tick.
+    if (_updatingUsedVocab) {
+      _usedVocabDirty = true;
+      return;
     }
+    _updatingUsedVocab = true;
 
-    usedVocab.value = used;
+    try {
+      final timeline = await room.getTimeline();
+      // requestHistory loads *older* events; new messages arrive via sync and
+      // mutate timeline.events in place, so this only needs to run once per
+      // burst, not per re-scan.
+      await timeline.requestHistory();
+
+      do {
+        _usedVocabDirty = false;
+
+        final vocabLemmas = room.activityPlan?.vocabLemmas;
+        if (vocabLemmas == null) return;
+        final used = <String>{};
+
+        for (final event in timeline.events) {
+          if (event.type != EventTypes.Message) continue;
+          final uses = PangeaMessageEvent(
+            event: event,
+            timeline: timeline,
+            ownMessage: event.senderId == userID,
+          ).constructUses;
+          if (uses == null) continue;
+          for (final use in uses) {
+            if (use.identifier.type == ConstructTypeEnum.vocab) {
+              final lemma = use.identifier.lemma.toLowerCase();
+              if (vocabLemmas.contains(lemma)) used.add(lemma);
+            }
+          }
+          // Every target word already seen — no need to scan further back.
+          if (used.length == vocabLemmas.length) break;
+        }
+
+        if (_disposed) return;
+        usedVocab.value = used;
+      } while (_usedVocabDirty && !_disposed);
+    } finally {
+      _updatingUsedVocab = false;
+    }
   }
 
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {

@@ -168,11 +168,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Ці дазволена карыстальнікам-гасцям далучыцца",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "areYouSure": "Вы ўпэўнены?",
     "@areYouSure": {
         "type": "String",
@@ -464,15 +459,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "Рэзервовае капіраванне чатаў было наладжана.",
-    "@yourChatBackupHasBeenSetUp": {},
     "chatBackup": "Рэзервовае капіраванне чатаў",
     "@chatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "chatBackupDescription": "Вашы паведамленні абаронены ключом аднаўлення. Калі ласка, пераканайцеся ў тым, што вы яго не згубіце.",
-    "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -631,11 +619,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "Кантакт быў запрошаны ў групу",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "contentHasBeenReported": "Пра кантэнт было паведамлена адміністратарам сервера",
     "@contentHasBeenReported": {
         "type": "String",
@@ -676,15 +659,6 @@
             }
         }
     },
-    "countInvited": "Запрошана {count}",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "create": "Стварыць",
     "@create": {
         "type": "String",
@@ -701,11 +675,6 @@
     },
     "createGroup": "Стварыць групу",
     "@createGroup": {},
-    "createNewSpace": "Новая прастора",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "currentlyActive": "Зараз актыўны",
     "@currentlyActive": {
         "type": "String",
@@ -835,12 +804,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "globalChatId": "ID габальнага чату",
-    "@globalChatId": {},
-    "accessAndVisibility": "Даступнасць і бачнасць",
-    "@accessAndVisibility": {},
-    "accessAndVisibilityDescription": "Каму дазволена далучацца да гэтага чату і як ён можа быць знойдзены.",
-    "@accessAndVisibilityDescription": {},
     "calls": "Выклікі",
     "@calls": {},
     "customEmojisAndStickers": "Карыстальніцкія эмодзі і стыкеры",
@@ -864,11 +827,6 @@
     },
     "enableEncryption": "Уключыць шыфраванне",
     "@enableEncryption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableEncryptionWarning": "Вы больш не зможаце адключыць шыфраванне. Вы ўпэўнены?",
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -896,8 +854,6 @@
             }
         }
     },
-    "enableMultiAccounts": "(БЭТА) Уключыць некалькі ўліковых запісаў на гэтай прыладзе",
-    "@enableMultiAccounts": {},
     "enterAnEmailAddress": "Увядзіце электроную пошту (email)",
     "@enterAnEmailAddress": {
         "type": "String",
@@ -913,11 +869,6 @@
                 "type": "String"
             }
         }
-    },
-    "everythingReady": "Усё гатова!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
     },
     "extremeOffensive": "Занадта абражальны",
     "@extremeOffensive": {
@@ -959,15 +910,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatDescription": "Апісанне чату",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "Апісанне чату зменена",
     "@chatDescriptionHasBeenChanged": {},
-    "groupIsPublic": "Група публічная",
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "groups": "Групы",
     "@groups": {
         "type": "String",
@@ -1062,15 +1006,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "Запрасіць кантакт да {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "noChatDescriptionYet": "Апісанне чату яшчэ няма.",
     "@noChatDescriptionYet": {},
@@ -1193,15 +1128,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "Загрузіць яшчэ {count} удзельнікаў",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "dehydrate": "Экспарт сеансу і ачыстка прылады",
     "@dehydrate": {},
     "dehydrateWarning": "Гэта дзеянне не можа быць адменена. Пераканайцеся, што вы бяспечна захавалі файл рэзервовай копіі.",
@@ -1232,15 +1158,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "Увайсці ў {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "Выйсці",
     "@logout": {
@@ -1309,16 +1226,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noEncryptionForPublicRooms": "Вы зможаце актывіраваць шыфраванне як толькі пакой перастане быць агульнадаступным.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "Здаецца, на вашай прыладзе няма ці недаступны Firebase Cloud Messaging. Каб далей атрымліваць паведамленні, мы прапануем усталяваць ntfy ці іншы правайдар паведамленняў, каб атрымліваць іх бяспечна. Вы можаце спампаваць ntfy з PlayStore ці F-Droid.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noMatrixServer": "{server1} не з'яўляецца серверам matrix. Выкарыстоўваць {server2} замест яго?",
     "@noMatrixServer": {
         "type": "String",
@@ -1362,11 +1269,6 @@
     },
     "setChatDescription": "Задаць апісанне чату",
     "@setChatDescription": {},
-    "setPermissionsLevel": "Задаць ўзровееь дазволаў",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "Задаць статус",
     "@setStatus": {
         "type": "String",
@@ -1413,16 +1315,6 @@
     },
     "sourceCode": "Зыходны код",
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "Прастора публічна",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceName": "Назва прасторы",
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1525,23 +1417,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "Хто якія дзеянні можа выконваць",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Каму дазволена далучацца да гэтай группы",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Чаму вы хаціце паскардзіцца?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "Ачысціць рэзервовую копію чата, каб стварыць новы ключ аднаўлення?",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1590,12 +1467,8 @@
     "@sender": {},
     "openGallery": "Адкрыць галерэю",
     "@openGallery": {},
-    "removeFromSpace": "Выдаліць з прасторы",
-    "@removeFromSpace": {},
     "start": "Пачаць",
     "@start": {},
-    "pleaseEnterRecoveryKeyDescription": "Каб разблакіраваць вашы мінулыя паведамленні, калі ласка, увядзіце ключ аднаўлення, што быў згенерыраваны ў мінулай сесіі. Ключ аднаўлення гэта НЕ ваш пароль.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "publish": "Апублікаваць",
     "@publish": {},
     "openChat": "Адкрыць чат",
@@ -1626,18 +1499,12 @@
     "@emojis": {},
     "placeCall": "Здзейсніць выклік",
     "@placeCall": {},
-    "voiceCall": "Галасавы выклік",
-    "@voiceCall": {},
     "unsupportedAndroidVersion": "Непадтрымліваемая версія Android",
     "@unsupportedAndroidVersion": {},
     "unsupportedAndroidVersionLong": "Гэта функцыя патрабуе навейшай версіі Android. Калі ласка, праверце наяўнасць абнаўленняў ці падтрымку Linage OS.",
     "@unsupportedAndroidVersionLong": {},
-    "videoCallsBetaWarning": "Звярніце ўвагу, што відэа выклікі знаходзяцца ў бэце. Яны могуць працаваць некарэктна ці не на ўсіх платформах.",
-    "@videoCallsBetaWarning": {},
     "experimentalVideoCalls": "Эксперыментальныя відэа выклікі",
     "@experimentalVideoCalls": {},
-    "emailOrUsername": "Email ці імя карыстальніка",
-    "@emailOrUsername": {},
     "addWidget": "Дадаць віджэт",
     "@addWidget": {},
     "widgetVideo": "Відэа",
@@ -1734,26 +1601,10 @@
             }
         }
     },
-    "usersMustKnock": "Карыстальнікі абавязаны пагрукацца",
-    "@usersMustKnock": {},
-    "noOneCanJoin": "Ніхто не можа далучыцца",
-    "@noOneCanJoin": {},
     "knock": "Пагрукацца",
     "@knock": {},
     "users": "Карыстальнікі",
     "@users": {},
-    "unlockOldMessages": "Адкрыць старыя паведамленні",
-    "@unlockOldMessages": {},
-    "storeInSecureStorageDescription": "Захаваць код аднаўлення ў бяспечным месцы на прыладзе.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Захаваць гэты ключ самастойна, выклікам сістэмнага акна Падзяліцца ці праз буфер.",
-    "@saveKeyManuallyDescription": {},
-    "storeInAndroidKeystore": "Захаваць у Android KeyStore",
-    "@storeInAndroidKeystore": {},
-    "storeInAppleKeyChain": "Захаваць у Apple KeyChain",
-    "@storeInAppleKeyChain": {},
-    "storeSecurlyOnThisDevice": "Захаваць на гэтай прыладзе",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "{count} файлаў",
     "@countFiles": {
         "placeholders": {
@@ -1766,12 +1617,6 @@
     "@user": {},
     "custom": "Карыстальніцкае",
     "@custom": {},
-    "foregroundServiceRunning": "Гэта паведамленне з'явіцца, калі асноўныя службы запрацуюць.",
-    "@foregroundServiceRunning": {},
-    "screenSharingTitle": "падзяліцца экранам",
-    "@screenSharingTitle": {},
-    "screenSharingDetail": "Вы дзеліцеся экранам у FluffyChat",
-    "@screenSharingDetail": {},
     "whyIsThisMessageEncrypted": "Чаму гэта паведамленне нельга прачытаць?",
     "@whyIsThisMessageEncrypted": {},
     "noKeyForThisMessage": "Гэта можа здарыцца з-за таго, што паведамленне было даслана да таго, як вы увайшлі ў уліковы запіс на гэтай прыладзе.\n\nТаксама верагодна, што адпраўшчык заблакіраваў вашу прыладу ці ў вас хібы з інтэрнэтам.\n\nВы можаце чытаць гэта паведамленне з іншага сеансу? Тад дашліце паведамленне адтуль! Перайдзіце ў Налады > Прылады і пераканайцеся ў тым, што вашы прылады верыфікавалі адна адну. Калі вы адкрыеце пакой наступны раз і абодве сэсіі будуць запушчаны, ключы павінны сінхранізавацца аўтаматычна.\n\nВы не хаціце згубіць клбчы, калі будзеце выходзіць ці змяняць прылады? Пераканайцеся ў тым, што вы уключылі рэзервовае капіраванне чатаў у наладах.",
@@ -1780,8 +1625,6 @@
     "@newGroup": {},
     "newSpace": "Новая прастора",
     "@newSpace": {},
-    "enterSpace": "Увайсці ў прастору",
-    "@enterSpace": {},
     "allSpaces": "Усе прасторы",
     "@allSpaces": {},
     "hidePresences": "Хаваць спіс статусаў?",
@@ -1797,14 +1640,6 @@
             }
         }
     },
-    "newSpaceDescription": "Прасторы дазваляюць аб'ядноўваць вашы чаты і ствараць агульныя ці асобныя супольнасці.",
-    "@newSpaceDescription": {},
-    "encryptThisChat": "Шыфраваць гэты чат",
-    "@encryptThisChat": {},
-    "disableEncryptionWarning": "У мэтах бяспекі, вы не можаце адклбчауь шыфраванне ў гэтым чаце, дзе яно было ўключана.",
-    "@disableEncryptionWarning": {},
-    "sorryThatsNotPossible": "Прабачце... Гэта немагчыма",
-    "@sorryThatsNotPossible": {},
     "deviceKeys": "Ключы прылад:",
     "@deviceKeys": {},
     "reopenChat": "Адкрыць чат зноў",
@@ -1843,8 +1678,6 @@
     "@reportErrorDescription": {},
     "report": "паскардзіцца",
     "@report": {},
-    "manageAccount": "Кіраванне ўліковым запісам",
-    "@manageAccount": {},
     "noContactInformationProvided": "Сервер не мае ніякай вернай кантактнай інфармацыі",
     "@noContactInformationProvided": {},
     "contactServerAdmin": "Звязацца з адміністратарам сервера",
@@ -1881,23 +1714,10 @@
     "@previous": {},
     "otherPartyNotLoggedIn": "Іншы бок зараз не увайшоў, таму не можа атрымліваць паведамленні!",
     "@otherPartyNotLoggedIn": {},
-    "appWantsToUseForLogin": "Выкарыстоўваць '{server}' для ўвахода",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "appWantsToUseForLoginDescription": "Тым самым, вы дазваляеце праграме і сайту дзяліцца інфармацыяй пра вас.",
-    "@appWantsToUseForLoginDescription": {},
     "open": "Адкрыць",
     "@open": {},
     "waitingForServer": "Чаканне сервера...",
     "@waitingForServer": {},
-    "appIntroduction": "FluffyChat дазваляе вам і вашым сябрам размаўляць скрозь розныя мэсэнджары. Даведайцеся болей на https://matrix.org ці націсніце *Працягнуць*.",
-    "@appIntroduction": {},
     "newChatRequest": "📩 Запыт новага чату",
     "@newChatRequest": {},
     "contentNotificationSettings": "Налады паведамленняў кантэнту",
@@ -2028,8 +1848,6 @@
     },
     "oneClientLoggedOut": "Адзін з вашых кліентаў выйшаў",
     "@oneClientLoggedOut": {},
-    "addAccount": "Дадаць уліковы запіс",
-    "@addAccount": {},
     "editBundlesForAccount": "Змяніць пакеты для гэтага ўліковага запісу",
     "@editBundlesForAccount": {},
     "addToBundle": "Дадаць у пакет",
@@ -2081,11 +1899,6 @@
     "@overview": {},
     "passwordRecoverySettings": "Налады скіду пароля",
     "@passwordRecoverySettings": {},
-    "passwordRecovery": "Аднаўленне пароля",
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "people": "Людзі",
     "@people": {
         "type": "String",
@@ -2130,8 +1943,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "pleaseEnterRecoveryKey": "Увядзіце ключ аднаўлення:",
-    "@pleaseEnterRecoveryKey": {},
     "pleaseEnterYourPassword": "Калі ласка, увядзіце ваш пароль",
     "@pleaseEnterYourPassword": {
         "type": "String",
@@ -2247,11 +2058,6 @@
             }
         }
     },
-    "removeDevice": "Выдаліць прыладу",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "unbanFromChat": "Разблакіраваць у чаце",
     "@unbanFromChat": {
         "type": "String",
@@ -2307,10 +2113,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "recoveryKey": "Ключ аднаўлення",
-    "@recoveryKey": {},
-    "recoveryKeyLost": "Ключ абнаўлення страчаны?",
-    "@recoveryKeyLost": {},
     "send": "Даслаць",
     "@send": {
         "type": "String",
@@ -2428,11 +2230,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "Перанесці з іншай прылады",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "Паспрабуйце даслаць зноў",
     "@tryToSendAgain": {
         "type": "String",
@@ -2488,15 +2285,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 непрачытаны чат} other{{unreadCount} непрачытаных чатаў}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} і {count} іншых удзельнікаў пішуць…",
     "@userAndOthersAreTyping": {
@@ -2584,53 +2372,23 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Відэа выклік",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "verifyOtherUserDescription": "Калі вы спраўдзілі іншага карыстальніка, вы можаце быць упэўненым з кім вы сапраўды перапісваецеся.💪\n\nКалі вы пачнеце спраўджванне, вы і іншы карыстальнік, убачыце ўсплывальнае акно ў праграме. У ім вы ўбачыце некалькі эмодзі ці лічб, якія вы павінны параўнаць адзін з адным.\n\nЛепшы метад зрабіць гэта - пачаць відэа выклік. 👭",
-    "@verifyOtherUserDescription": {},
     "pleaseEnterANumber": "Калі ласка, увядзіце лічбу большую за 0",
     "@pleaseEnterANumber": {},
     "verifyOtherDeviceDescription": "Калі вы спраўдзіце другую прыладу, яны абмяняюцца ключамі, якія ўзмоцняць вашу бяспеку. 💪 Калі вы пачнеце спраўджванне, у праграмах прылад з'явіцца ўсплывальнае паведамленне. Потым, вы ўбачыце некалькі эмодзі ці лічбаў, якія вы павінны параўнаць паміж сабой. Прасцей за ўсё гэта зрабіць, маючы дзве прылады побач. 🤳",
     "@verifyOtherDeviceDescription": {},
-    "verifyOtherUser": "🔐 Спраўдзіць іншага карыстальніка",
-    "@verifyOtherUser": {},
     "verifyOtherDevice": "🔐 Спраўдзіць іншую прыладу",
     "@verifyOtherDevice": {},
     "changeTheCanonicalRoomAlias": "Змяніць публічны адрас чату",
     "@changeTheCanonicalRoomAlias": {},
     "wrongRecoveryKey": "Прабачце... гэта не выглядае як ключ аднаўлення.",
     "@wrongRecoveryKey": {},
-    "restoreSessionBody": "Праграма спрабуе аднавіць вашу сесію з рэзервовай копіі. Калі ласка, паведаміце пра памылку распрацоўшчыкам па спасылцы {url}. Паведамленне памылкі: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "homeserverDescription": "Вашыя даныя захоўваюцца на дамашнім серверы, як у правайдара электронай пошты. Вы можаце самастойна абраць дамашні сервер, захоўвая пры тым магчымасць размаўляць. Даведайцеся болей на https://matrix.org.",
-    "@homeserverDescription": {},
     "longPressToRecordVoiceMessage": "Доўга цісніце, каб запісаць галасавое паведамленне.",
     "@longPressToRecordVoiceMessage": {},
-    "visibilityOfTheChatHistory": "Бачнасць гісторыі чату",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "Бачна для ўсіх удзельнікаў",
     "@visibleForAllParticipants": {
         "type": "String",
         "placeholders": {}
     },
-    "setTheme": "Тэма:",
-    "@setTheme": {},
     "setColorTheme": "Каляровая схема:",
     "@setColorTheme": {},
     "invite": "Запрасіць",
@@ -2685,34 +2443,10 @@
     "@knocking": {},
     "knockRestricted": "Грук абмежаваны",
     "@knockRestricted": {},
-    "spaceMemberOfCanKnock": "Удзельнікі прасторы з {spaces} могуць грукацца",
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "chatCanBeDiscoveredViaSearchOnServer": "Чат можа быць знойдзены праз пошук у {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "searchChatsRooms": "Пошук #чатаў, @карыстальнікаў...",
-    "@searchChatsRooms": {},
     "nothingFound": "Нічога не знойдзена...",
     "@nothingFound": {},
     "groupName": "Назва групы",
     "@groupName": {},
-    "createGroupAndInviteUsers": "Стварыць групу і запрасіць карыстальнікаў",
-    "@createGroupAndInviteUsers": {},
-    "groupCanBeFoundViaSearch": "Група можа быць знойдзена праз пошук",
-    "@groupCanBeFoundViaSearch": {},
     "startConversation": "Пачаць размову",
     "@startConversation": {},
     "commandHint_sendraw": "Даслаць толькі json",
@@ -2737,16 +2471,10 @@
     "@passwordsDoNotMatch": {},
     "passwordIsWrong": "Вы ўвялі няверны пароль",
     "@passwordIsWrong": {},
-    "publicChatAddresses": "Публічныя адрасы чату",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Стварыць новы адрас",
-    "@createNewAddress": {},
     "joinSpace": "Далучыцца да прасторы",
     "@joinSpace": {},
     "publicSpaces": "Публічныя прасторы",
     "@publicSpaces": {},
-    "addChatOrSubSpace": "Дадаць чат ці пад-прастору",
-    "@addChatOrSubSpace": {},
     "subspace": "Пад-прастора",
     "@subspace": {},
     "decline": "Адхіліць",
@@ -2770,18 +2498,6 @@
     "@gallery": {},
     "files": "Файлы",
     "@files": {},
-    "sessionLostBody": "Ваш сеанс страчаны. Калі ласка, паведаміце пра гэта распрацоўшчыкам: {url}. Паведамленне памылкі: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "sendReadReceipts": "Дасылаць адзнаку аб чытанні",
     "@sendReadReceipts": {},
     "sendReadReceiptsDescription": "Іншыя карыстальнікі чатаў будуць бачыць, калі вы прачыталі паведамленні.",
@@ -2938,12 +2654,6 @@
     "@changelog": {},
     "sendCanceled": "Адпраўка скасавана",
     "@sendCanceled": {},
-    "loginWithMatrixId": "Увайсці з Matrix-ID",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "Даследаваць дамашнія сервера",
-    "@discoverHomeservers": {},
-    "whatIsAHomeserver": "Што такое дамашні сервер?",
-    "@whatIsAHomeserver": {},
     "doesNotSeemToBeAValidHomeserver": "Гэта не выглядае як дамашні сервер. Няслушны URL?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "calculatingFileSize": "Вылічэнне памеру файла...",
@@ -2981,8 +2691,6 @@
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "Заўвага: Калі вы падключыце ўсе свае прылады да рэзервовага капіравання, яны аўтаматычна спраўдзяцца.",
     "@noticeChatBackupDeviceVerification": {},
-    "welcomeText": "Вітаначкі 👋 Гэта FluffyChat. Вы можаце ўвайсці на любы дамашні сервер, што сумяшчальны з https://matrix.org, а потым паразмаўляць з кім-небудзь. Гэта вялізная дэцэнтралізаваная сетка абмену паведамленнямі!",
-    "@welcomeText": {},
     "blur": "Размыццё:",
     "@blur": {},
     "opacity": "Празрыстасць:",
@@ -3086,12 +2794,6 @@
     "@pause": {},
     "resume": "Працягнуць",
     "@resume": {},
-    "newSubSpace": "Новая пад-прастора",
-    "@newSubSpace": {},
-    "moveToDifferentSpace": "Перамясціцца ў іншую прастору",
-    "@moveToDifferentSpace": {},
-    "removeFromSpaceDescription": "Гэты чат будзе выдалены з прасторы, але з'явіцца ў вашым спісе чатаў.",
-    "@removeFromSpaceDescription": {},
     "countChats": "{chats} чатаў",
     "@countChats": {
         "type": "String",
@@ -3101,17 +2803,6 @@
             }
         }
     },
-    "spaceMemberOf": "Удзельнік прасторы {spaces}",
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "donate": "Даць грошы",
-    "@donate": {},
     "startedAPoll": "{username} пачаў апытанне.",
     "@startedAPoll": {
         "type": "String",
@@ -3181,14 +2872,6 @@
     "@stickerPackName": {},
     "attribution": "Атрыбуцыя",
     "@attribution": {},
-    "skipChatBackup": "Прапусціць рэзервовае капіраванне чатаў",
-    "@skipChatBackup": {},
-    "skipChatBackupWarning": "Вы ўпэўнены? Без наладжвання рэзервовага капіравання чатаў, вы можаце згубіць доступ да ўсіх вашых чатаў, калі вы зменіце прыладу.",
-    "@skipChatBackupWarning": {},
-    "loadingMessages": "Загрузка паведамленняў",
-    "@loadingMessages": {},
-    "setupChatBackup": "Наладзіць рэзервовае капіраванне чатаў",
-    "@setupChatBackup": {},
     "ignore": "Блакаваць",
     "ignoredUsers": "Блакаваные карыстальнікі",
     "writeAMessageLangCodes": "Пішыце на {l1} або {l2}...",
@@ -3197,11 +2880,9 @@
     "taTooltip": "Выкарыстанне L2 з дапамогай перакладчыцкай падтрымкі",
     "interactiveTranslatorSliderHeader": "Інтэрактыўны перакладчык",
     "interactiveGrammarSliderHeader": "Інтэрактыўны праверка граматыкі",
-    "interactiveTranslatorRequired": "Абавязкова",
     "waTooltip": "Выкарыстанне L2 без дапамогі",
     "interactiveTranslator": "Дапамога з перакладам",
     "noIdenticalLanguages": "Калі ласка, выберыце розныя базавыя і мэтавыя мовы",
-    "searchBy": "Пошук па краіне і мовах",
     "joinWithClassCode": "Далучыцца да курса",
     "languageLevelPreA1": "Навічок Нізкі (Папярэдні A1)",
     "languageLevelA1": "Навічок Сярэдні (A1)",
@@ -3221,19 +2902,14 @@
     "whatIsYourBaseLanguage": "Якая ваша асноўная мова?",
     "publicProfileTitle": "Дазволіць знаходзіць мой профіль у пошуку",
     "publicProfileDesc": "Уключыўшы гэта, вы дазваляеце іншым карыстальнікам знаходзіць ваш профіль у глабальнай пошукавай радку і адпраўляць запыты на чат. На гэтым этапе вы можаце выбраць прыняць або адхіліць запыт.",
-    "errorDisableIT": "Дапамога з перакладам выключана.",
-    "errorDisableIGC": "Дапамога з граматыкай выключана.",
     "errorDisableITUserDesc": "Націсніце тут, каб абнавіць налады дапамогі з перакладам",
     "errorDisableIGCUserDesc": "Націсніце тут, каб абнавіць налады дапамогі з граматыкай",
     "errorDisableITClassDesc": "Дапамога з перакладам выключана для курса, у якім знаходзіцца гэты чат.",
     "errorDisableIGCClassDesc": "Дапамога з граматыкай выключана для курса, у якім знаходзіцца гэты чат.",
-    "error405Title": "Мовы не ўсталяваны",
     "error405Desc": "Калі ласка, усталюйце свае мовы ў галоўным меню > Налады навучання.",
     "termsAndConditions": "Умовамі і палажэннямі",
     "andCertifyIAmAtLeast13YearsOfAge": " і пацвярджаю, што мне не менш за 16 гадоў.",
-    "error502504Title": "Вау, шмат студэнтаў у сетцы!",
     "error502504Desc": "Інструменты перакладу і граматыкі могуць працаваць павольна або быць недаступнымі, пакуль боты Pangea не навядуць парадак.",
-    "error404Title": "Памылка перакладу!",
     "error404Desc": "Бот Pangea не ўпэўнены, як гэта перакласці...",
     "errorPleaseRefresh": "Мы разглядаем гэта! Калі ласка, перазагрузіце і паспрабуйце зноў.",
     "connectedToStaging": "Падключана да Staging",
@@ -3271,13 +2947,9 @@
     "definitionsToolName": "Вызначэнні слоў",
     "definitionsToolDescription": "Калі ўключана, падкрэсленыя сінім словы можна націснуць для атрымання вызначэнняў. Націсніце на паведамленні, каб атрымаць доступ да вызначэнняў.",
     "welcomeBack": "Вітаем зноў! Калі вы ўдзельнічалі ў пілотным праекце 2023-2024 гадоў, звяжыцеся з намі для атрымання спецыяльнай пілотнай падпіскі. Калі вы настаўнік, які набыў (або яго ўстанова набыла) ліцэнзіі для вашага класа, звяжыцеся з намі для атрымання настаўніцкай падпіскі.",
-    "downloadTxtFile": "Загрузіць тэкставы файл",
-    "downloadCSVFile": "Загрузіць CSV-файл",
     "promotionalSubscriptionDesc": "У вас цяпер бестэрміновая прамоцыйная падпіска. Пішыце support@pangea.chat для дапамогі ў змене вашай падпіскі.",
     "originalSubscriptionPlatform": "Падпіска, набытая праз {purchasePlatform}",
     "oneWeekTrial": "Прабная пробная версія на адзін тыдзень",
-    "downloadXLSXFile": "Загрузіць файл Excel",
-    "unkDisplayName": "Невядома",
     "wwCountryDisplayName": "Сусвет",
     "afCountryDisplayName": "Афганістан",
     "axCountryDisplayName": "Аленскія астравы",
@@ -3572,7 +3244,6 @@
     "chatCapacityHasBeenChanged": "Ёмістасць чата была зменена",
     "chatCapacitySetTooLow": "Ёмістасць чата павінна быць не менш за {count}.",
     "chatCapacityExplanation": "Ёмістасць чата абмяжоўвае колькасць удзельнікаў у чаце.",
-    "tooManyRequest": "Занадта шмат запытаў, паспрабуйце пазней.",
     "enterNumber": "Калі ласка, увядзіце цэлае лік.",
     "practice": "Практыка",
     "versionNotFound": "Версія не знойдзена",
@@ -3582,7 +3253,6 @@
     "deleteSubscriptionWarningTitle": "У вас ёсць актыўная падпіска",
     "deleteSubscriptionWarningBody": "Выдаленне вашага акаўнта не аўтаматычна адмяняе вашу падпіску.",
     "manageSubscription": "Кіраванне падпіскай",
-    "error520Title": "Паспрабуйце яшчэ раз.",
     "error520Desc": "Прабачце, мы не змаглі зразумець ваша паведамленне...",
     "wordsUsed": "Колькасць слоў",
     "level": "Узровень",
@@ -3600,7 +3270,6 @@
     "other": "Іншае",
     "levelShort": "УЗРОВЕНЬ {level}",
     "noCapacityLimit": "Абмежаванняў па ёмістасці няма",
-    "downloadGroupText": "Загрузіць тэкст групы",
     "notificationsOn": "Паведамленні ўключаны",
     "notificationsOff": "Паведамленні выключаны",
     "joinWithCode": "Далучыцца з кодам",
@@ -3664,24 +3333,12 @@
     "whatIsTheMorphTag": "Што такое {morphologicalFeature} у '{wordForm}'?",
     "dataAvailable": "Даступнасць дадзеных",
     "available": "Даступна",
-    "pangeaBotIsFallible": "Pangea Bot таксама памыляецца!",
-    "whatIsMeaning": "Што азначае '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Згаджайце значэнні з словамі ў паведамленні!",
-    "doubleClickToEdit": "Два разы клікніце, каб рэдагаваць.",
-    "topicLabel": "Тэма",
-    "topicPlaceholder": "Выберыце тэму...",
-    "modePlaceholder": "Выберыце тып...",
-    "learningObjectiveLabel": "Мэта навучання",
-    "learningObjectivePlaceholder": "Выберыце мэту навучання...",
-    "targetLanguageLabel": "Мэтавая мова",
     "cefrLevelLabel": "Узровень CEFR",
     "image": "Выява",
     "video": "Відэа",
     "nan": "Ня прымяняецца",
-    "addVocabulary": "Дадаць слоўнік",
     "instructions": "Інструкцыі",
-    "numberOfLearners": "Колькасць навучэнцаў",
-    "mustBeInteger": "Павінна быць цэлым лікам, напрыклад, 1, 2, 3, ...",
     "constructUsePvmDesc": "Выраблена ў галасавым паведамленні",
     "leaveSpaceDescription": "Пакінуўшы курс, вы пакінеце ўсе чаты ў ім. Іншыя карыстальнікі ўбачаць, што вы пакінулі курс.",
     "constructUseCorMmDesc": "Правільнае значэнне паведамлення",
@@ -3696,7 +3353,6 @@
     "ttsDisabledBody": "Вы можаце ўключыць тэкст у гаварэнне ў наладках навучання",
     "noSpaceDescriptionYet": "Пакуль не створана апісанне курса.",
     "tooLargeToSend": "Гэтае паведамленне занадта вялікае для адпраўкі",
-    "exitWithoutSaving": "Ці ўпэўнены, што хочаце пакінуць без захавання?",
     "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
     "enableAutocorrectPopupSteps": "  • Налады\n  • Агульныя\n  • Клавіятура\n  • Клавіятуры\n  • Дадаць новую клавіятуру",
     "enableAutocorrectPopupDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
@@ -3707,11 +3363,8 @@
     "displayName": "Імя для паказу",
     "leaveRoomDescription": "Вы збіраецеся пакінуць гэты чат. Іншыя карыстальнікі ўбачаць, што вы пакінулі чат.",
     "confirmUserId": "Калі ласка, пацвердзіце імя карыстальніка ў Pangea Chat, каб выдаліць свой рахунак.",
-    "startingToday": "Пачынаючы з сённяшняга дня",
-    "oneWeekFreeTrial": "Бясплатны пробны перыяд на адзін тыдзень",
     "paidSubscriptionStarts": "Пачынаецца {startDate}",
     "cancelInSubscriptionSettings": "• Адмяніць у любы час у наладах падпіскі",
-    "cancelToAvoidCharges": "• Адмяніце перад {trialEnds}, каб пазбегнуць плацяжоў",
     "downloadGboard": "Загрузіце Gboard",
     "autocorrectNotAvailable": "На жаль, ваша платформа ў цяперашні час не падтрымліваецца для гэтай функцыі. Сачыце за навінамі!",
     "pleaseUpdateApp": "Калі ласка, абновіце прыкладанне, каб працягнуць.",
@@ -3721,17 +3374,12 @@
     "knockSpaceSuccess": "Вы запыталі далучыцца да гэтага курса! Адміністратар адказвае на ваш запыт, калі атрымае яго 😀",
     "chooseWordAudioInstructionsBody": "Паслухайце поўнае паведамленне. Потым супастаўце аўдыё з словамі.",
     "chooseMorphsInstructionsBody": "Націсніце на часткі пазаў для граматычных пытанняў!",
-    "pleaseEnterInt": "Калі ласка, увядзіце лік",
     "home": "Галоўная",
     "join": "Далучыцца",
     "resetInstructionTooltipsTitle": "Скінуць падказкі інструкцый",
     "resetInstructionTooltipsDesc": "Націсніце, каб паказаць падказкі інструкцый, як для новага карыстальніка.",
-    "randomize": "Выпадковасць",
     "clear": "Ачысціць",
-    "featuredActivities": "Рэкамендаваныя",
     "save": "Захаваць",
-    "startChat": "Пачаць чат",
-    "translationProblem": "Праблема з перакладам",
     "askToJoin": "Пытацца далучыцца",
     "emptyChatWarningTitle": "Чат пусты",
     "emptyChatWarningDesc": "Вы не запрасілі нікога ў свой чат. Перайдзіце ў налады чата, каб запрасіць кантакты або бота. Таксама можна зрабіць гэта пазней.",
@@ -3761,17 +3409,13 @@
     "timesUsedIndependently": "Колькасць выкарыстанняў самастойна",
     "timesUsedWithAssistance": "Колькасць выкарыстанняў з дапамогай",
     "shareInviteCode": "Падзяліцеся кодам запрашэння: {code}",
-    "leaderboard": "Лідарская дошка",
     "skipForNow": "Прапусціць пакуль",
     "permissions": "Дазволы",
     "spaceChildPermission": "Хто можа дадаваць новыя чаты ў гэты курс",
-    "addEnvironmentOverride": "Дадаць пераключальнік асяроддзя",
     "defaultOption": "Па змаўчанні",
     "deleteChatDesc": "Вы ўпэўнены, што хочаце выдаліць гэты чат? Ён будзе выдалены для ўсіх удзельнікаў, і ўсе паведамленні ў чаце больш не будуць даступныя для практыкі або аналітыкі навучання.",
     "deleteSpaceDesc": "Курс і любыя выбраныя чаты будуць выдалены для ўсіх удзельнікаў, і ўсе паведамленні ў чаце больш не будуць даступныя для практыкі або аналітыкі навучання. Гэту дзею нельга адмяніць.",
     "launch": "Запусціць",
-    "searchChats": "Пошук чатаў",
-    "maxFifty": "Максімум 50",
     "configureSpace": "Налада курса",
     "pinMessages": "Закрэпіць паведамленні",
     "setJoinRules": "Усталяваць правілы далучэння",
@@ -3805,9 +3449,6 @@
     "failedToFetchTranscription": "Не ўдалося атрымаць транскрыпцыю",
     "deleteEmptySpaceDesc": "Курс будзе выдалены для ўсіх удзельнікаў. Гэты дзеянне нельга адмяніць.",
     "regenerate": "Регенераваць",
-    "mySavedActivities": "Мае захаваныя мерапрыемствы",
-    "noSavedActivities": "Захаваныя мерапрыемствы адсутнічаюць",
-    "saveActivity": "Захаваць гэтае мерапрыемства",
     "failedToPlayVideo": "Не ўдалося прайграць відэа",
     "done": "Гатова",
     "inThisSpace": "У гэтым курсе",
@@ -3818,13 +3459,9 @@
     "numInvited": "{count} запрошана",
     "saved": "Захавана",
     "reset": "Скінуць",
-    "errorFetchingActivitiesMessage": "Не ўдалося атрымаць мерапрыемствы",
     "errorFetchingDefinition": "Не ўдалося атрымаць вызначэнне",
     "errorProcessAnalytics": "Не ўдалося апрацаваць аналітыку",
     "errorDownloading": "Немагчыма загрузіць",
-    "errorLoadingSpaceChildren": "Не ўдалося загрузіць чаты ў гэтым курсе",
-    "unexpectedError": "Неспадзяваная памылка.",
-    "pleaseReload": "Калі ласка, перазагрузіце і паспрабуйце зноў.",
     "translationError": "Памылка перакладу",
     "check": "Праверыць",
     "unableToFindRoom": "Чат або курс з гэтым кодам не знойдзены. Калі ласка, паспрабуйце зноў.",
@@ -3833,19 +3470,14 @@
     "request": "Запыт",
     "requestAll": "Запытаць усё",
     "confirmMessageUnpin": "Вы ўпэўнены, што хочаце скасаваць фіксацыю гэтага паведамлення?",
-    "saveAndLaunch": "Захаваць і запусціць",
-    "launchToSpace": "Запусціць у курс",
     "pending": "Чакае",
     "inactive": "Неактыўны",
-    "confirmRole": "Пацвердзіць ролю",
     "openRoleLabel": "АДКРЫТА",
     "finishedTheActivity": "🎯 {username} завяршыў гэтую дзейнасць",
     "activitySummaryError": "Зводкі дзейнасці недаступныя",
     "requestSummaries": "Запытаць зводкі",
-    "generatingNewActivities": "Вы першы карыстальнік гэтай пары моў! Калі ласка, пачакайце хвіліну, мы рыхтуем дзейнасці спецыяльна для вас.",
     "requestAccessTitle": "Запытаць доступ да аналітыкі?",
     "requestAccessDesc": "Ці хацелі б вы папрасіць доступ да прагляду аналітыкі ўдзельнікаў?\n\nКалі ўдзельнікі пагодзяцца, адміністратара гэтага курса змогуць праглядаць іх:\n    • агульны слоўнік\n    • агульныя граматычныя канцэпцыі\n    • агульную колькасць завершаных сесій дзейнасці\n    • канкрэтныя граматычныя канцэпцыі, выкарыстаныя правільна і няправільна\n\nЯны не змогуць праглядаць іх:\n    • паведамленні ў чатах за межамі курса\n    • спіс слоўніка",
-    "requestAccess": "Папрасіць доступ ({count})",
     "analyticsInactiveTitle": "Запыты да неактыўных карыстальнікаў не маглі быць адпраўлены",
     "analyticsInactiveDesc": "Неактыўныя карыстальнікі, якія не ўвайшлі з моманту ўвядзення гэтай функцыі, не ўбачаць ваш запыт.\n\nКнопка Запытаць з'явіцца, калі яны вернуцца. Вы можаце паўторна адпраўляць запыты пазней, націснуўшы кнопку Запытаць пад іх імем, калі яна будзе даступная.",
     "accessRequestedTitle": "Запыт доступу да аналітыкі",
@@ -3868,8 +3500,6 @@
     "accessDesc": "Вы можаце зрабіць свой курс адкрытым для свету! Або зрабіць яго прыватным і бяспечным.",
     "createGroupChatDesc": "У той час як пачынаюцца і заканчваюцца сесіі дзейнасці, групавыя чаты застануцца адкрытымі для звычайнай камунікацыі.",
     "deleteDesc": "Толькі адміністратары могуць выдаліць курс. Гэта деструктыўная дзея, якая выдаляе ўсіх карыстальнікаў і ўсе выбраныя чаты ў межах курса. Выконвайце асцярожна.",
-    "noCourseFound": "О, гэты курс патрабуе плану!\n\nПланы курса — гэта паслядоўнасць тэм і мерапрыемстваў для размовы.",
-    "additionalParticipants": "+ {num} іншых",
     "whatNow": "Што цяпер?",
     "chooseNextActivity": "Выберыце сваю наступную дзейнасць!",
     "letsGo": "Пачнем",
@@ -3882,13 +3512,11 @@
     "waitNotDone": "Пачакай, я яшчэ не скончыў!",
     "waitingForOthersToFinish": "Чакаю, пакуль астатнія скончаць...",
     "generatingSummary": "Аналізуючы чат і генеруючы вынікі",
-    "findCourse": "Знайсці курс",
     "pingParticipantsNotification": "{user} шукае карыстальнікаў для далучэння да сесіі мерапрыемства ў {room}",
     "course": "Курс",
     "courses": "Курсы",
     "goToCourse": "Перайсці да курса: {course}",
     "activityComplete": "Гэтае мерапрыемства завершана. Вынікі мерапрыемства павінны быць даступныя ніжэй.",
-    "startNewSession": "Пачаць новую сесію",
     "joinOpenSession": "Далучыцца да адкрытай сесіі",
     "activityNotFound": "Дзея не знойдзена",
     "myActivities": "Мае дзейнасці",
@@ -3932,7 +3560,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-13 10:06:05.770165",
+    "@@last_modified": "2026-07-18 13:35:04.367164",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -3972,10 +3600,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3985,10 +3609,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4072,14 +3692,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4096,10 +3708,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4112,15 +3720,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4272,14 +3872,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4293,14 +3885,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5523,10 +5107,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5567,10 +5147,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5643,10 +5219,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -5916,47 +5488,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -5976,19 +5508,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6052,10 +5572,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6096,14 +5612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6115,14 +5623,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6160,10 +5660,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6180,27 +5676,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6324,10 +5804,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6337,10 +5813,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6357,14 +5829,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6504,18 +5968,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6564,10 +6016,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6577,18 +6025,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6631,23 +6067,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6671,10 +6095,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6682,14 +6102,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6794,18 +6206,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6858,10 +6258,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6888,10 +6284,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7072,7 +6464,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Паглядзіце заўтра абнаўленні мерапрыемстваў.",
-    "activityDropdownDesc": "Калі вы скончыце з гэтым мерапрыемствам, націсніце ніжэй",
     "languageMismatchTitle": "Несумяшчальнасць моў",
     "languageMismatchDesc": "Мэтавая мова не адпавядае мове гэтага мерапрыемства. Хацелі б абнавіць мэту мовы?",
     "reportWordIssueTooltip": "Паведаміць пра праблему з інфармацыяй пра слова",
@@ -7085,10 +6476,6 @@
     "selectAll": "Выбраць усё",
     "deselectAll": "Адмяніць выбар усяго",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7137,17 +6524,11 @@
         "placeholders": {}
     },
     "startOwn": "Пачніце свой уласны",
-    "joinCourseDesc": "Кожны курс складаецца з 8-10 паслядоўных тэм з рознымі моўнымі заданнямі, заснаванымі на дзейнасці.",
     "newMessageInPangeaChat": "💬 Новае паведамленне ў чатзе Pangea",
     "shareCourse": "Падзяліцца курсам",
     "addCourse": "Дадаць курс",
-    "joinPublicCourse": "Далучыцца да публічнага курса",
     "vocabLevelsDesc": "Тут будуць размяшчацца словы слоўніка, калі вы іх узнясеце ўзровень!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7160,10 +6541,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7182,12 +6559,9 @@
     "emojiView": "Від эмодзі",
     "feedbackDialogDesc": "Я таксама памыляюся! Што-небудзь, што дапаможа мне палепшыцца?",
     "contactHasBeenInvitedToTheCourse": "Кантакт быў запрошаны на курс",
-    "activityStatsButtonTooltip": "Інфармацыя аб актыўнасці",
     "allow": "Дазволіць",
     "deny": "Адмовіць",
     "enabledRenewal": "Уключыць аднаўленне падпіскі",
-    "subscriptionEndsOn": "Падпіска заканчваецца",
-    "subscriptionRenewsOn": "Падпіска аднаўляецца",
     "waitForSubscriptionChanges": "Змены ў вашай падпісцы могуць заняць некаторы час, каб адлюстравацца ў прыкладанні.",
     "subscribeReadingAssistance": "Падпісацца, каб разблакаваць інструменты паведамленняў",
     "aceDisplayName": "Achinese",
@@ -7453,10 +6827,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -7466,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8509,16 +7871,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Дзеянні для адкрыцця наступнай тэмы",
-    "activitiesToUnlockTopicDesc": "Усталюйце колькасць дзеянняў для адкрыцця наступнай тэмы курса",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Правільная практыка вызначэння слоўнікавага запасу",
     "constructUseIncLMDesc": "Неправільная практыка вызначэння слоўнікавага запасу",
     "constructUseCorLADesc": "Правільная практыка аўдыё слоўнікавага запасу",
@@ -8526,7 +7878,6 @@
     "constructUseBonus": "Бонус падчас практыкі слоўнікавага запасу",
     "practiceVocab": "Практыкаваць слоўнік",
     "selectMeaning": "Выберыце значэнне",
-    "selectAudio": "Выберыце адпаведнае аўдыё",
     "anotherRound": "Яшчэ адзін раунд",
     "activitySettingsOverrideWarning": "Мова і ўзровень мовы вызначаюцца планам актыўнасці",
     "voice": "Голас",
@@ -8558,10 +7909,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8579,12 +7926,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Спампоўка ініцыявана",
     "webDownloadPermissionMessage": "Калі ваш браўзер блакуе спампоўкі, калі ласка, уключыце спампоўкі для гэтага сайта.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8679,11 +8021,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Што-то пайшло не так, і мы актыўна працуем над выпраўленнем. Праверце пазней.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Уключыць дапамогу ў напісанні",
     "autoIGCToolDescription": "Аўтаматычна запускаць інструменты Pangea Chat для выпраўлення адпраўленых паведамленняў на мэтавую мову.",
     "@autoIGCToolName": {
@@ -8719,20 +8056,14 @@
     "clientWellKnownInformation": "Інфармацыя, вядомая кліенту:",
     "baseUrl": "Базавы URL",
     "identityServer": "Сервер ідэнтычнасці:",
-    "versionWithNumber": "Версія: {version}",
     "logs": "Журналы",
-    "advancedConfigs": "Пашыраныя налады",
     "advancedConfigurations": "Пашыраныя канфігурацыі",
-    "signInWithLabel": "Увайсці з:",
-    "spanTypeGrammar": "Граматыка",
-    "spanTypeWordChoice": "Выбар слова",
     "spanTypeSpelling": "Правільнасць напісання",
     "spanTypePunctuation": "Пунктацыя",
     "spanTypeStyle": "Стыль",
     "spanTypeFluency": "Бегласць",
     "spanTypeAccents": "Наклонкі",
     "spanTypeCapitalization": "Вялікія літары",
-    "spanTypeCorrection": "Карэкцыя",
     "spanFeedbackTitle": "Звярнуць увагу на выпраўленне памылкі",
     "selectAllWords": "Выберыце ўсе словы, якія вы чулі ў аўдыё",
     "aboutMeHint": "Пра мяне",
@@ -8743,7 +8074,6 @@
     "greatPractice": "Выдатная практыка!",
     "usedNoHints": "Малайцы, што не выкарыстоўвалі падказкі!",
     "youveCompletedPractice": "Вы скончылі практыку, працягвайце, каб палепшыць свае навыкі!",
-    "joinCourseForActivities": "Далучайцеся да курса, каб паспрабаваць дзейнасці.",
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -8772,35 +8102,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
         "type": "String",
         "placeholders": {}
     },
-    "@advancedConfigs": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@advancedConfigurations": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
         "type": "String",
         "placeholders": {}
     },
@@ -8825,10 +8131,6 @@
         "placeholders": {}
     },
     "@spanTypeCapitalization": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeCorrection": {
         "type": "String",
         "placeholders": {}
     },
@@ -8869,10 +8171,6 @@
         "placeholders": {}
     },
     "@youveCompletedPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9073,11 +8371,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "У класе? Увядзіце свой код для далучэння сюды.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "Аўтаматычнае выдзяленне аўдыяпаведамленняў",
     "selectAudioMessagesOnPlayDescription": "Аўтаматычна выдзяляць аўдыяпаведамленні падчас прайгравання",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9093,7 +8386,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Я вывучаю...",
     "alreadySpeak": "Я ўжо размаўляю...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9121,18 +8413,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Гэты курс мае тэмы з менш чым {input} актыўнасцямі. Калі ласка, увядзіце лік, які менш або роўны {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Націсніце тут, каб зноў увайсці.",
     "@clickToLogin": {
@@ -9549,17 +8829,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "Мультфільмны жоўты мядзведзь з паднятымі рукамі ў захапленні.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "Выберыце словы, каб даведацца пра іх больш",
     "requireAnalyticsAccessTitle": "Патрабуецца доступ да аналітыкі для ўдзелу",
     "requireAnalyticsAccessDesc": "Удзельнікі павінны даць доступ да сваёй навучальнай аналітыкі, каб далучыцца да гэтага курса",
     "analyticsAccessNoticeTitle": "Патрабуецца доступ да аналітыкі",
     "analyticsAccessNoticeDesc": "Далучаючыся да гэтага курса, вы згаджаецеся даць адміністратарам доступ да вашай навучальнай аналітыкі.",
-    "skipOnboardingClassCodeDesc": "Навучаецеся самастойна? Не хвалюйцеся, вы можаце:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9577,10 +8851,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9609,7 +8879,6 @@
     "pickCefrLevelTeacherStepTitle": "Які ўзровень вы выкладаеце?",
     "pickCefrLevelStudentStepTitle": "Які ў вас узровень?",
     "customCourseStepTitle": "Запоўніце гэтую форму, каб атрымаць індывідуальны курс",
-    "aboutYourClass": "Пра ваш клас",
     "courseCodeStepErrorMessage": "Калі ласка, праверце свой код і паспрабуйце яшчэ раз",
     "institution": "Установа",
     "courseGoals": "Мэты курса",
@@ -9652,10 +8921,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -9772,12 +9037,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "Лагатып Pangea Chat",
     "introChatDetails": "Скажыце прывітанне! Пазнаёмцеся з вашымі калегамі па курсу, знайдзіце сяброў і размаўляйце па-за межамі мерапрыемстваў.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -9821,11 +9081,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "Дзеянні актыўнасці",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "Інструменты вымаўлення",
     "audioTranscription": "Аўдыё транскрыпцыя AI",
     "visualLearnerSupport": "Падтрымка візуальных вучняў",
@@ -9866,7 +9121,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "Далучайцеся да курса, які ўключае гэтую дзейнасць, каб яе прайграць.",
     "resizeCoursePanel": "Змяніць памер панэлі курса",
     "undo": "Скасаваць",
     "unlock": "Разблакаваць",
@@ -9880,7 +9134,6 @@
     "addCourseBrowsePublic": "Прагляд публічных курсаў",
     "browsePublicCourses": "Прагляд публічных курсаў",
     "editProfile": "Рэдагаваць профіль",
-    "numObjectives": "{count} мэтаў",
     "mapSearchHint": "Шукаць актыўнасці",
     "mapSearchNoResults": "Супадзенняў не знойдзена",
     "mapFilterAllLanguages": "Усе мовы",
@@ -9889,7 +9142,6 @@
     "mapFilterCompleted": "Завершана",
     "mapFilterReset": "Скінуць",
     "activityTypeConversation": "Размова",
-    "lockedMissionRequirement": "Завяршыце папярэднюю місію, каб разблакаваць",
     "playAgain": "Пагуляць яшчэ раз",
     "reviewActivity": "Агляд",
     "mapEmptyInView": "Тут нічога няма на вашым узроўні або мове. Распашыце фільтры або аддаляйцеся.",
@@ -9904,14 +9156,9 @@
     "scrollToBottom": "Пракруціць уніз",
     "courseImage": "Выява курса",
     "avatarPreview": "Папярэдні прагляд аватара",
-    "activityPhoto": "Фота актыўнасці",
     "emotePreview": "Папярэдні прагляд эмоцыі: {name}",
     "activityLabel": "Дзейнасць: {title}",
     "resetMapView": "Скінуць выгляд карты",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -9964,14 +9211,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10001,10 +9240,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10061,10 +9296,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10416,5 +9647,29 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "Дазволы курса",
+    "starsToUnlockObjectiveTitle": "Зоркі за місію",
+    "starsToUnlockObjectiveDesc": "Усталюйце колькасць зорак, неабходных для выканання кожнай місіі",
+    "maxStarsPerMissionWarning": "Гэты курс мае місіі, дзе можна зарабіць толькі {maxValue} зорак. Калі ласка, увядзіце лік, меншы або роўны {maxValue}.",
+    "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка.",
+    "endPractice": "Завяршыць практыкаванне",
+    "bodyLabel": "Параметры {page}",
+    "openDM": "Адкрыць асабістае паведамленне",
+    "openNewTab": "Адкрыць у новай укладцы",
+    "viewProfileImageLabel": "Праглядзець выяву профілю",
+    "profileImageLabel": "Выява профілю",
+    "actionsLabel": "Дзеянні",
+    "colorListLabel": "Спіс колераў",
+    "chatAppearanceStyleLabel": "Выгляд чата з абраным стылем",
+    "volumeLabel": "Гучнасць",
+    "listLabel": "Спіс {description}",
+    "passwordFormLabel": "Форма змены пароля",
+    "searchLanguagesHint": "Пошук моў",
+    "searchCountriesHint": "Пошук краін",
+    "searchVocabHint": "Пошук слоўніка",
+    "searchUsersHint": "Пошук карыстальнікаў",
+    "searchMessagesHint": "Пошук паведамленняў",
+    "searchChatsHint": "Пошук чатаў",
+    "searchActivitiesHint": "Пошук дзеянняў"
 }

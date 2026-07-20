@@ -8,6 +8,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/country_display.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class CountryPickerDropdown extends StatefulWidget {
   final Country? country;
@@ -71,10 +72,10 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
         searchInnerWidgetHeight: 50,
         searchInnerWidget: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: TextField(
+          child: PangeaSearchBar(
+            labelText: L10n.of(context).searchCountriesHint,
             autofocus: true,
             controller: _searchController,
-            decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
           ),
         ),
         searchMatchFn: (item, searchValue) {
@@ -105,9 +106,11 @@ class CountryPickerTile extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
-              CountryDisplayUtil.flagEmoji(country.name),
-              style: const TextStyle(fontSize: 25),
+            ExcludeSemantics(
+              child: Text(
+                CountryDisplayUtil.flagEmoji(country.name),
+                style: const TextStyle(fontSize: 25),
+              ),
             ),
             const SizedBox(width: 10),
             Text(

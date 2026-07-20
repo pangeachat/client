@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-13 10:06:46.719731",
+    "@@last_modified": "2026-07-18 13:35:04.341819",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -60,11 +60,6 @@
     },
     "archive": "الأرشيف",
     "@archive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "areGuestsAllowedToJoin": "هل يُسمح للزوار الدخول",
-    "@areGuestsAllowedToJoin": {
         "type": "String",
         "placeholders": {}
     },
@@ -323,11 +318,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "دعيَ المراسل للمجموعة",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "copiedToClipboard": "نُسخ للحافظة",
     "@copiedToClipboard": {
         "type": "String",
@@ -462,11 +452,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "لن يمكنك تعطيل التشفير أبدا، أمتأكد؟",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encryption": "التشفير",
     "@encryption": {
         "type": "String",
@@ -513,11 +498,6 @@
     },
     "group": "المجموعة",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "المجموعة عامة",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -581,15 +561,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "أدعو مراسلا الى {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "دُعيَ",
     "@invited": {
@@ -697,15 +668,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "حمِّل {count} منتسبًا إضافيًا",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "يحمّل… يرجى الانتظار.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -720,15 +682,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "لِج ل {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "اخرج",
     "@logout": {
@@ -767,11 +720,6 @@
     },
     "noEmotesFound": "لم يُعثر على انفعالة. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "يبدو أن خدمة Firebase Cloud Messaging غير متاحة على جهازك. لمواصلة تلقي الإشعارات، نوصي بتثبيت ntfy. باستخدام ntfy أو أي مزود خدمة Unified Push آخر، يمكنك تلقي إشعارات الدفع بطريقة آمنة للبيانات. يمكنك تنزيل ntfy من PlayStore أو من F-Droid.",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -915,11 +863,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "أزل جهازا",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "فك حجبه من المحادثة",
     "@unbanFromChat": {
@@ -1150,15 +1093,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "unreadChats": "{unreadCount, plural, =1{1 محادثة غير مقروءة} other{{unreadCount} محادثات غير مقروءة}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
-    },
     "userAndOthersAreTyping": "{username} و {count} أخرون يكتبون…",
     "@userAndOthersAreTyping": {
         "type": "String",
@@ -1238,16 +1172,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "مكالمة فيديو",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "مرئية تأريخ المحادثة",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "مرئي لكل المنتسبين",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1285,11 +1209,6 @@
     },
     "warning": "تحذير!",
     "@warning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "من يسمح له الانضمام للمجموعة",
-    "@whoIsAllowedToJoinThisGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1397,11 +1316,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "كل شيء جاهز!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "homeserver": "الخادم",
     "@homeserver": {},
     "enterAnEmailAddress": "أدخل عنوان بريد إلكتروني",
@@ -1446,11 +1360,6 @@
     },
     "deviceId": "معرّف الجهاز",
     "@deviceId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "createNewSpace": "مساحة جديدة",
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1662,11 +1571,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "يتم تأمين رسائلك القديمة باستخدام مفتاح الاسترداد. يرجى التأكد من أنك لا تضيعه.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "shareLocation": "شارك الموقع",
     "@shareLocation": {
         "type": "String",
@@ -1679,11 +1583,6 @@
     },
     "pleaseChoose": "اختر رجاء",
     "@pleaseChoose": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "استعادة كلمة السر",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1711,8 +1610,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableMultiAccounts": "(ميزة تجربية) فعّل تعدد الحسابات",
-    "@enableMultiAccounts": {},
     "bundleName": "اسم الحزمة",
     "@bundleName": {},
     "removeFromBundle": "أزله من الحزمة",
@@ -1721,8 +1618,6 @@
     "@addToBundle": {},
     "editBundlesForAccount": "عدّل حزم هذا الحساب",
     "@editBundlesForAccount": {},
-    "addAccount": "أضف حسابًا",
-    "@addAccount": {},
     "online": "متصل",
     "@online": {
         "type": "String",
@@ -1741,11 +1636,6 @@
                 "type": "int"
             }
         }
-    },
-    "spaceIsPublic": "عام في المساحة",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
     },
     "unavailable": "غير متوفر",
     "@unavailable": {
@@ -1772,11 +1662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "spaceName": "اسم المساحة",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "synchronizingPleaseWait": "يُزامن… يرجى الانتظار.",
     "@synchronizingPleaseWait": {
         "type": "String",
@@ -1799,16 +1684,6 @@
     },
     "status": "الحالة",
     "@status": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "transferFromAnotherDevice": "أنقله من جهاز آخر",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "مسح نسخة المحادثة الاحتياطية لإنشاء مفتاح استرداد جديد؟",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1861,11 +1736,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setPermissionsLevel": "تعيين مستوى الأذونات",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "oneClientLoggedOut": "أُ خرج أحد العملاء الذي تسختدمها",
     "@oneClientLoggedOut": {},
     "pleaseEnter4Digits": "أدخل 4 أرقام أو أتركه فارغ لتعطيل القفل.",
@@ -1890,15 +1760,8 @@
     },
     "repeatPassword": "كرّر كلمة السر",
     "@repeatPassword": {},
-    "removeFromSpace": "أزل من المساحة",
-    "@removeFromSpace": {},
     "unverified": "غير مؤكد",
     "@unverified": {},
-    "whoCanPerformWhichAction": "من يستطيع القيام بأي عمل",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
     "messageInfo": "معلومات الرسالة",
     "@messageInfo": {},
     "messageType": "نوع الرسالة",
@@ -1951,17 +1814,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "تم إعداد النسخ الاحتياطي لمحادثاتك.",
-    "@yourChatBackupHasBeenSetUp": {},
-    "noEncryptionForPublicRooms": "يمكنك فقط تفعيل التشفير عندما تصبح الغرفة غير متاحة للعامة.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "emojis": "إيموجي",
     "@emojis": {},
-    "voiceCall": "مكالمة صوتية",
-    "@voiceCall": {},
     "unsupportedAndroidVersion": "نسخة أندرويد غير مدعومة",
     "@unsupportedAndroidVersion": {},
     "unsupportedAndroidVersionLong": "تتطلب هذه الميزة إصدار Android أحدث. يرجى التحقق من وجود تحديثات أو دعم Lineage OS.",
@@ -1993,12 +1847,8 @@
         "type": "String",
         "description": "Usage hint for the command /myroomavatar"
     },
-    "videoCallsBetaWarning": "يرجى ملاحظة أن مكالمات الفيديو حالياً في مرحلة تجريبية. قد لا تعمل كما هو متوقع أو تعمل على الإطلاق على جميع المنصات.",
-    "@videoCallsBetaWarning": {},
     "placeCall": "إجراء مكالمة",
     "@placeCall": {},
-    "emailOrUsername": "البريد الإلكتروني أو اسم المستخدم",
-    "@emailOrUsername": {},
     "dismiss": "رفض",
     "@dismiss": {},
     "setAsCanonicalAlias": "تعيين كاسم مستعار رئيسي",
@@ -2076,10 +1926,6 @@
     },
     "widgetVideo": "فيديو",
     "@widgetVideo": {},
-    "recoveryKeyLost": "هل فقدت مفتاح الاسترداد؟",
-    "@recoveryKeyLost": {},
-    "pleaseEnterRecoveryKeyDescription": "لإلغاء قفل رسائلك القديمة ، يرجى إدخال مفتاح الاسترداد الذي تم إنشاؤه في جلسة سابقة. مفتاح الاسترداد ليس كلمة المرور الخاصة بك.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "confirmMatrixId": "يرجى تأكيد معرف Matrix الخاص بك من أجل حذف حسابك.",
     "@confirmMatrixId": {},
     "supposedMxid": "يجب أن يكون هذا {mxid}",
@@ -2106,8 +1952,6 @@
             }
         }
     },
-    "unlockOldMessages": "إلغاء قفل الرسائل القديمة",
-    "@unlockOldMessages": {},
     "commandHint_markasdm": "وضع علامة على أنها غرفة رسائل مباشرة لمعرف المصفوفة",
     "@commandHint_markasdm": {},
     "dehydrate": "تصدير الجلسة ومسح الجهاز",
@@ -2116,10 +1960,6 @@
     "@dehydrateWarning": {},
     "hydrate": "استعادة من ملف النسخ الاحتياطي",
     "@hydrate": {},
-    "pleaseEnterRecoveryKey": "الرجاء إدخال مفتاح الاسترداد:",
-    "@pleaseEnterRecoveryKey": {},
-    "recoveryKey": "مفتاح الاسترداد",
-    "@recoveryKey": {},
     "widgetCustom": "مُخصّص",
     "@widgetCustom": {},
     "widgetNameError": "يرجى تقديم اسم العرض.",
@@ -2156,12 +1996,6 @@
             }
         }
     },
-    "storeInAndroidKeystore": "تخزين في سجل مفاتيح اندرويد",
-    "@storeInAndroidKeystore": {},
-    "storeInAppleKeyChain": "تخزين في سلسلة مفاتيح ابل",
-    "@storeInAppleKeyChain": {},
-    "storeSecurlyOnThisDevice": "احفظه بأمان على هذا الجهاز",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "ملفات {count}",
     "@countFiles": {
         "placeholders": {
@@ -2170,20 +2004,10 @@
             }
         }
     },
-    "foregroundServiceRunning": "يظهر هذا الإشعار عند تشغيل الخدمة الأمامية.",
-    "@foregroundServiceRunning": {},
-    "screenSharingTitle": "مشاركة الشاشة",
-    "@screenSharingTitle": {},
-    "enterSpace": "أدخل المساحة",
-    "@enterSpace": {},
     "deviceKeys": "مفاتيح الجهاز:",
     "@deviceKeys": {},
     "whyIsThisMessageEncrypted": "لماذا هذه الرسالة غير قابلة للقراءة؟",
     "@whyIsThisMessageEncrypted": {},
-    "encryptThisChat": "تشفير هذه المحادثة",
-    "@encryptThisChat": {},
-    "screenSharingDetail": "أنت تشارك شاشتك في FuffyChat",
-    "@screenSharingDetail": {},
     "newGroup": "مجموعة جديدة",
     "@newGroup": {},
     "youKicked": "👞 لقد ركلت {user}",
@@ -2234,8 +2058,6 @@
             }
         }
     },
-    "saveKeyManuallyDescription": "احفظ هذا المفتاح يدويا عن طريق تشغيل مربع حوار مشاركة النظام أو الحافظة.",
-    "@saveKeyManuallyDescription": {},
     "widgetJitsi": "اجتماعات جيتسي",
     "@widgetJitsi": {},
     "youInvitedUser": "📩 قمت بدعوة {user}",
@@ -2246,8 +2068,6 @@
             }
         }
     },
-    "storeInSecureStorageDescription": "قم بتخزين مفتاح الاسترداد في التخزين الآمن لهذا الجهاز.",
-    "@storeInSecureStorageDescription": {},
     "widgetName": "الاسم",
     "@widgetName": {},
     "users": "المستخدمون",
@@ -2271,14 +2091,8 @@
             }
         }
     },
-    "disableEncryptionWarning": "لأسباب أمنية ، لا يمكنك تعطيل التشفير في المحادثة ، حيث تم تمكينه من قبل.",
-    "@disableEncryptionWarning": {},
     "reportErrorDescription": "😭 أوه لا. هناك خطأ ما. إذا كنت تريد، يمكنك الإبلاغ عن هذا الخطأ إلى المطورين.",
     "@reportErrorDescription": {},
-    "newSpaceDescription": "يسمح لك تطبيق المساحات بتوحيد دردشاتك وبناء مجتمعات خاصة أو عامة.",
-    "@newSpaceDescription": {},
-    "sorryThatsNotPossible": "معذرة... هذا غير ممكن",
-    "@sorryThatsNotPossible": {},
     "openLinkInBrowser": "فتح الرابط في المتصفح",
     "@openLinkInBrowser": {},
     "reopenChat": "إعادة فتح المحادثة",
@@ -2313,8 +2127,6 @@
     "@messagesStyle": {},
     "shareInviteLink": "شارك رابط الدعوة",
     "@shareInviteLink": {},
-    "setTheme": "تعيين السمة:",
-    "@setTheme": {},
     "setColorTheme": "تعيين لون السمة:",
     "@setColorTheme": {},
     "tryAgain": "أعد المحاولة",
@@ -2348,8 +2160,6 @@
     "@invite": {},
     "chatPermissions": "صلاحيات المحادثة",
     "@chatPermissions": {},
-    "chatDescription": "وصف المحادثة",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "تغير وصف المجموعة",
     "@chatDescriptionHasBeenChanged": {},
     "noChatDescriptionYet": "لم يتم إنشاء وصف للمحادثة حتى الآن.",
@@ -2406,10 +2216,6 @@
     "@roomUpgradeDescription": {},
     "kickUserDescription": "يتم طرد المستخدم من المحادثة ولكن لا يتم حظره. في المحادثات العامة، يمكن للمستخدم الانضمام مرة أخرى في أي وقت.",
     "@kickUserDescription": {},
-    "createGroupAndInviteUsers": "إنشاء مجموعة ودعوة المستخدمين",
-    "@createGroupAndInviteUsers": {},
-    "groupCanBeFoundViaSearch": "يمكن العثور على المجموعة عبر البحث",
-    "@groupCanBeFoundViaSearch": {},
     "noUsersFoundWithQuery": "لسوء الحظ، لا يمكن العثور على مستخدم لديه \"{query}\". يرجى التحقق مما إذا كنت قد ارتكبت خطأ كتابي.",
     "@noUsersFoundWithQuery": {
         "type": "String",
@@ -2423,8 +2229,6 @@
     "@yourGlobalUserIdIs": {},
     "groupName": "أسم المجموعة",
     "@groupName": {},
-    "searchChatsRooms": "ابحث عن #الدردشات، @المستخدمين...",
-    "@searchChatsRooms": {},
     "startConversation": "بدء محادثة",
     "@startConversation": {},
     "commandHint_sendraw": "إرسال جيسون الخام",
@@ -2465,8 +2269,6 @@
     "@select": {},
     "pleaseChooseAStrongPassword": "الرجاء اختيار كلمة مرور قوية",
     "@pleaseChooseAStrongPassword": {},
-    "addChatOrSubSpace": "إضافة دردشة أو مساحة فرعية",
-    "@addChatOrSubSpace": {},
     "leaveEmptyToClearStatus": "اتركه فارغًا لمسح حالتك.",
     "@leaveEmptyToClearStatus": {},
     "joinSpace": "انضم إلى المساحة",
@@ -2475,30 +2277,6 @@
     "@searchForUsers": {},
     "initAppError": "حدث خطأ بداخل التطبيق",
     "@initAppError": {},
-    "sessionLostBody": "جلستك مفقودة يرجى إبلاغ المطورين بهذا الخطأ في {url}. رسالة الخطأ هي: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "restoreSessionBody": "يحاول التطبيق الآن استعادة جلستك من النسخة الاحتياطية. الرجاء الإبلاغ عن هذا الخطأ للمطورين على {url}. رسالة الخطأ هي:{error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "completedKeyVerification": "أكمل {sender} عملية التحقق من المفتاح",
     "@completedKeyVerification": {
         "type": "String",
@@ -2521,8 +2299,6 @@
     "@transparent": {},
     "formattedMessagesDescription": "عرض محتوى الرسالة الغنية مثل النص الغامق باستخدام الماركداون.",
     "@formattedMessagesDescription": {},
-    "verifyOtherUserDescription": "إذا قمت بالتحقق من مستخدم آخر، فيمكنك التأكد من أنك تعرف من تكتب إليه حقًا. 💪\n\nعند بدء عملية التحقق، سترى أنت والمستخدم الآخر نافذة منبثقة في التطبيق. هناك سترى بعد ذلك سلسلة من الرموز التعبيرية أو الأرقام التي يتعين عليك مقارنتها مع بعضها البعض.\n\nأفضل طريقة للقيام بذلك هي الالتقاء أو بدء مكالمة فيديو. 👭",
-    "@verifyOtherUserDescription": {},
     "verifyOtherDeviceDescription": "عند التحقق من جهاز آخر، يمكن لهذه الأجهزة تبادل المفاتيح، مما يزيد من أمانك بشكل عام. 💪 عند بدء عملية التحقق، ستظهر نافذة منبثقة في التطبيق على كلا الجهازين. هناك سترى بعد ذلك سلسلة من الرموز التعبيرية أو الأرقام التي يتعين عليك مقارنتها مع بعضها البعض. من الأفضل أن يكون كلا الجهازين في متناول يديك قبل بدء عملية التحقق. 🤳",
     "@verifyOtherDeviceDescription": {},
     "formattedMessages": "رسائل منسقة",
@@ -2535,8 +2311,6 @@
     "@sendTypingNotificationsDescription": {},
     "sendReadReceiptsDescription": "يمكن للمشاركين الآخرين في المحادثة معرفة متى قرأت الرسالة.",
     "@sendReadReceiptsDescription": {},
-    "verifyOtherUser": "🔐 التحقق من المستخدم الآخر",
-    "@verifyOtherUser": {},
     "acceptedKeyVerification": "وافق {sender} على التحقق من المفتاح",
     "@acceptedKeyVerification": {
         "type": "String",
@@ -2606,8 +2380,6 @@
     "@noDatabaseEncryption": {},
     "appLockDescription": "قفل التطبيق عند عدم استخدامه بالرمز السري",
     "@appLockDescription": {},
-    "accessAndVisibility": "الوصول والرؤية",
-    "@accessAndVisibility": {},
     "calls": "المكالمات",
     "@calls": {},
     "customEmojisAndStickers": "الرموز التعبيرية والملصقات المخصصة",
@@ -2620,27 +2392,10 @@
     "@overview": {},
     "passwordRecoverySettings": "إعدادات استعادة كلمة المرور",
     "@passwordRecoverySettings": {},
-    "globalChatId": "معرف المحادثة العامة",
-    "@globalChatId": {},
-    "accessAndVisibilityDescription": "من المسموح له بالانضمام إلى هذه المحادثة وكيف يمكن اكتشاف المحادثة.",
-    "@accessAndVisibilityDescription": {},
     "customEmojisAndStickersBody": "قم بإضافة أو مشاركة الرموز التعبيرية أو الملصقات المخصصة التي يمكن استخدامها في أي دردشة.",
     "@customEmojisAndStickersBody": {},
     "hideRedactedMessages": "إخفاء الرسائل المكررة",
     "@hideRedactedMessages": {},
-    "usersMustKnock": "المستخدم يجب أن يطرق الباب",
-    "@usersMustKnock": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "يمكن اكتشاف الشات عن طريق البحث في {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "noOneCanJoin": "لا أحد يستطيع الانضمام",
-    "@noOneCanJoin": {},
     "knocking": "طرق",
     "@knocking": {},
     "knock": "دق",
@@ -2650,10 +2405,6 @@
         "type": "String",
         "count": {}
     },
-    "publicChatAddresses": "عناوين المحادثة العامة",
-    "@publicChatAddresses": {},
-    "createNewAddress": "إنشاء عنوان جديد",
-    "@createNewAddress": {},
     "searchIn": "بحث في {chat}...",
     "@searchIn": {
         "type": "String",
@@ -2762,14 +2513,6 @@
     "@sendCanceled": {},
     "noChatsFoundHere": "لم يتم العثور على دردشات هنا حتى الآن. ابدأ محادثة جديدة مع شخص ما باستخدام الزر أدناه. ⤵️",
     "@noChatsFoundHere": {},
-    "loginWithMatrixId": "تسجيل الدخول باستخدام معرف ماتريكس",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "اكتشف الخوادم المنزلية",
-    "@discoverHomeservers": {},
-    "whatIsAHomeserver": "ما هو خادم المنزل ؟",
-    "@whatIsAHomeserver": {},
-    "homeserverDescription": "يتم تخزين جميع بياناتك على خادم المنزل، تمامًا مثل مزود خدمة البريد الإلكتروني. يمكنك اختيار خادم البيت الذي تريد استخدامه، بينما لا يزال بإمكانك التواصل مع الجميع. اعرف المزيد على https://matrix.org.",
-    "@homeserverDescription": {},
     "doesNotSeemToBeAValidHomeserver": "لا يبدو أنه خادم منزلي متوافق. عنوان URL غير صحيح ؟",
     "@doesNotSeemToBeAValidHomeserver": {},
     "calculatingFileSize": "جارٍ حساب حجم الملف...",
@@ -2809,16 +2552,12 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "استمرار",
     "@continueText": {},
-    "welcomeText": "مرحبًا، 👋 معك FluffyChat. يمكنك تسجيل الدخول إلى أي خادم منزلي، وهو متوافق مع https://matrix.org. ثم دردش مع أي شخص. إنها شبكة مراسلة لا مركزية ضخمة!",
-    "@welcomeText": {},
     "blur": "الضبابية:",
     "@blur": {},
     "setWallpaper": "تعيين الخلفية",
     "@setWallpaper": {},
     "opacity": "التعتيم:",
     "@opacity": {},
-    "manageAccount": "‫إدارة الحساب‬",
-    "@manageAccount": {},
     "noContactInformationProvided": "لا يقدم السيرفر أي معلومات اتصال صحيحة",
     "@noContactInformationProvided": {},
     "contactServerAdmin": "اتصل بمسؤول الخادم",
@@ -2880,13 +2619,9 @@
     "normalUser": "مستخدم عادي",
     "commandHint_roomupgrade": "ترقية هذه الغرفة إلى إصدار الغرفة المعطى",
     "checkList": "قائمة التحقق",
-    "countInvited": "{count} مدعو",
     "synchronizingPleaseWaitCounter": "جارٍ المزامنة… ({percentage}%)",
-    "appWantsToUseForLogin": "استخدم '{server}' لتسجيل الدخول",
-    "appWantsToUseForLoginDescription": "تسمح الآن للتطبيق والموقع الإلكتروني بمشاركة معلومات عنك.",
     "open": "افتح",
     "waitingForServer": "انتظار الخادم...",
-    "appIntroduction": "يتيح لك FluffyChat الدردشة مع أصدقائك عبر تطبيقات المراسلة المختلفة. تعرف على المزيد على https://matrix.org أو فقط اضغط على *متابعة*.",
     "newChatRequest": "📩 طلب دردشة جديد",
     "contentNotificationSettings": "إعدادات إشعارات المحتوى",
     "generalNotificationSettings": "إعدادات الإشعارات العامة",
@@ -2961,11 +2696,9 @@
     "taTooltip": "استخدام المستوى 2 مع المساعدة في الترجمة",
     "interactiveTranslatorSliderHeader": "مترجم تفاعلي",
     "interactiveGrammarSliderHeader": "مدقق قواعد تفاعلي",
-    "interactiveTranslatorRequired": "مطلوب",
     "waTooltip": "استخدام المستوى 2 بدون مساعدة",
     "interactiveTranslator": "مساعدة في الترجمة",
     "noIdenticalLanguages": "يرجى اختيار لغتين أساسيتين مختلفتين",
-    "searchBy": "البحث حسب البلد واللغات",
     "joinWithClassCode": "انضم إلى الدورة",
     "languageLevelPreA1": "مبتدئ منخفض (ما قبل A1)",
     "languageLevelA1": "مبتدئ متوسط (A1)",
@@ -2986,19 +2719,14 @@
     "saveChanges": "حفظ التغييرات",
     "publicProfileTitle": "السماح بعثور الآخرين على ملفي الشخصي في البحث",
     "publicProfileDesc": "عن طريق تفعيل ذلك، يمكنك تمكين المستخدمين الآخرين من العثور على ملفك الشخصي في شريط البحث العالمي وإرسال طلبات للدردشة. في هذه المرحلة، يمكنك اختيار قبول أو رفض الطلب.",
-    "errorDisableIT": "تم إيقاف مساعدة الترجمة.",
-    "errorDisableIGC": "تم إيقاف مساعدة القواعد.",
     "errorDisableITUserDesc": "انقر هنا لتحديث إعدادات مساعدة الترجمة",
     "errorDisableIGCUserDesc": "انقر هنا لتحديث إعدادات مساعدة القواعد",
     "errorDisableITClassDesc": "تم إيقاف مساعدة الترجمة للفصل الذي يوجد فيه هذا الدردشة.",
     "errorDisableIGCClassDesc": "تم إيقاف مساعدة القواعد للفصل الذي يوجد فيه هذا الدردشة.",
-    "error405Title": "لم يتم تعيين اللغات",
     "error405Desc": "يرجى تعيين لغاتك في القائمة الرئيسية > إعدادات التعلم.",
     "termsAndConditions": "الشروط والأحكام",
     "andCertifyIAmAtLeast13YearsOfAge": " وأشهد أن عمري لا يقل عن 16 عامًا.",
-    "error502504Title": "واو، هناك الكثير من الطلاب عبر الإنترنت!",
     "error502504Desc": "قد تكون أدوات الترجمة والقواعد بطيئة أو غير متاحة أثناء متابعة بوتات بانجيا.",
-    "error404Title": "خطأ في الترجمة!",
     "error404Desc": "بوت بانجيا غير متأكد من كيفية ترجمة ذلك...",
     "errorPleaseRefresh": "نحن نبحث في الأمر! يرجى إعادة التحميل والمحاولة مرة أخرى.",
     "connectedToStaging": "متصل ببيئة الاختبار",
@@ -3036,13 +2764,9 @@
     "definitionsToolName": "تعريفات الكلمات",
     "definitionsToolDescription": "عند التفعيل، يمكن النقر على الكلمات المسطرة باللون الأزرق للحصول على تعريفاتها. انقر على الرسائل للوصول إلى التعريفات.",
     "welcomeBack": "مرحبًا بعودتك! إذا كنت جزءًا من تجربة 2023-2024، يرجى الاتصال بنا للحصول على اشتراك التجربة الخاص بك. إذا كنت معلمًا قام (أو مؤسستك قامت) بشراء تراخيص لفصلك، اتصل بنا للحصول على اشتراك المعلم.",
-    "downloadTxtFile": "تحميل ملف نصي",
-    "downloadCSVFile": "تحميل ملف CSV",
     "promotionalSubscriptionDesc": "لديك حاليًا اشتراك ترويجي مدى الحياة. راسل support@pangea.chat للمساعدة في تغيير اشتراكك.",
     "originalSubscriptionPlatform": "تم شراء الاشتراك عبر {purchasePlatform}",
     "oneWeekTrial": "تجربة لمدة أسبوع واحد",
-    "downloadXLSXFile": "تحميل ملف إكسل",
-    "unkDisplayName": "غير معروف",
     "wwCountryDisplayName": "عالمياً",
     "afCountryDisplayName": "أفغانستان",
     "axCountryDisplayName": "جزر آلاند",
@@ -3337,7 +3061,6 @@
     "chatCapacityHasBeenChanged": "تم تغيير سعة الدردشة",
     "chatCapacitySetTooLow": "يجب أن تكون سعة الدردشة على الأقل {count}.",
     "chatCapacityExplanation": "تحدد سعة الدردشة عدد الأعضاء المسموح بهم في الدردشة.",
-    "tooManyRequest": "طلبات كثيرة جدًا، يرجى المحاولة مرة أخرى لاحقًا.",
     "enterNumber": "يرجى إدخال قيمة رقم صحيح.",
     "practice": "ممارسة",
     "versionNotFound": "لم يتم العثور على الإصدار",
@@ -3347,7 +3070,6 @@
     "deleteSubscriptionWarningTitle": "لديك اشتراك نشط",
     "deleteSubscriptionWarningBody": "حذف حسابك لن يلغي اشتراكك تلقائيًا.",
     "manageSubscription": "إدارة الاشتراك",
-    "error520Title": "يرجى المحاولة مرة أخرى.",
     "error520Desc": "عذرًا، لم نتمكن من فهم رسالتك...",
     "wordsUsed": "الكلمات المستخدمة",
     "level": "المستوى",
@@ -3365,7 +3087,6 @@
     "other": "آخر",
     "levelShort": "المستوى {level}",
     "noCapacityLimit": "بدون حد سعة",
-    "downloadGroupText": "تحميل نص المجموعة",
     "notificationsOn": "الإشعارات مفعلة",
     "notificationsOff": "إيقاف الإشعارات",
     "joinWithCode": "الانضمام باستخدام رمز",
@@ -3429,24 +3150,12 @@
     "whatIsTheMorphTag": "ما هو {morphologicalFeature} لـ '{wordForm}'؟",
     "dataAvailable": "توفر البيانات",
     "available": "متاح",
-    "pangeaBotIsFallible": "بوت بانجيا يخطئ أيضًا!",
-    "whatIsMeaning": "ماذا يعني '{lemma}'؟",
     "chooseLemmaMeaningInstructionsBody": "طابق المعاني مع الكلمات في الرسالة!",
-    "doubleClickToEdit": "انقر نقرًا مزدوجًا للتحرير.",
-    "topicLabel": "الموضوع",
-    "topicPlaceholder": "اختر موضوعًا...",
-    "modePlaceholder": "اختر وضعًا...",
-    "learningObjectiveLabel": "هدف التعلم",
-    "learningObjectivePlaceholder": "اختر هدف التعلم...",
-    "targetLanguageLabel": "اللغة المستهدفة",
     "cefrLevelLabel": "مستوى CEFR",
     "image": "صورة",
     "video": "فيديو",
     "nan": "غير قابل للتطبيق",
-    "addVocabulary": "إضافة مفردات",
     "instructions": "تعليمات",
-    "numberOfLearners": "عدد المتعلمين",
-    "mustBeInteger": "يجب أن يكون عددًا صحيحًا مثل 1، 2، 3، ...",
     "constructUsePvmDesc": "تم الإنتاج في رسالة صوتية",
     "leaveSpaceDescription": "عند مغادرة الدورة، ستترك جميع الدردشات داخلها. سيلاحظ المستخدمون الآخرون أنك غادرت الدورة.",
     "constructUseCorMmDesc": "تصحيح معنى الرسالة",
@@ -3461,7 +3170,6 @@
     "ttsDisabledBody": "يمكنك تفعيل تحويل النص إلى كلام في إعدادات التعلم الخاصة بك",
     "noSpaceDescriptionYet": "لم يتم إنشاء وصف للدورة بعد.",
     "tooLargeToSend": "هذه الرسالة كبيرة جدًا لإرسالها",
-    "exitWithoutSaving": "هل أنت متأكد أنك تريد الخروج بدون حفظ؟",
     "enableAutocorrectPopupTitle": "أضف لوحة مفاتيح اللغة المستهدفة الخاصة بك عن طريق الذهاب إلى:",
     "enableAutocorrectPopupSteps": "  • الإعدادات\n  • عام\n  • لوحة المفاتيح\n  • لوحات المفاتيح\n  • أضف لوحة مفاتيح جديدة",
     "enableAutocorrectPopupDescription": "بمجرد اختيار اللغة، يمكنك النقر على أيقونة الكرة الأرضية الصغيرة في أسفل يسار لوحة المفاتيح لتفعيل لوحة المفاتيح المثبتة حديثًا.",
@@ -3472,11 +3180,8 @@
     "displayName": "اسم العرض",
     "leaveRoomDescription": "أنت على وشك مغادرة هذه الدردشة. سيرى المستخدمون الآخرون أنك غادرت الدردشة.",
     "confirmUserId": "يرجى تأكيد اسم مستخدم Pangea Chat الخاص بك من أجل حذف حسابك.",
-    "startingToday": "ابتداءً من اليوم",
-    "oneWeekFreeTrial": "تجربة مجانية لمدة أسبوع واحد",
     "paidSubscriptionStarts": "ابتداءً من {startDate}",
     "cancelInSubscriptionSettings": "• إلغاء في أي وقت في إعدادات الاشتراك",
-    "cancelToAvoidCharges": "• إلغاء قبل {trialEnds} لتجنب الرسوم",
     "downloadGboard": "قم بتنزيل Gboard",
     "autocorrectNotAvailable": "للأسف، منصتك غير مدعومة حاليًا لهذه الميزة. ترقب المزيد من التطوير!",
     "pleaseUpdateApp": "يرجى تحديث التطبيق للمتابعة.",
@@ -3486,17 +3191,12 @@
     "knockSpaceSuccess": "لقد طلبت الانضمام إلى هذه الدورة! سيرد مسؤول على طلبك عندما يتلقاه 😊",
     "chooseWordAudioInstructionsBody": "استمع إلى الرسالة الكاملة. ثم قم بمطابقة الأصوات مع الكلمات.",
     "chooseMorphsInstructionsBody": "انقر على قطع الألغاز لأسئلة القواعد!",
-    "pleaseEnterInt": "يرجى إدخال رقم",
     "home": "الصفحة الرئيسية",
     "join": "انضم",
     "resetInstructionTooltipsTitle": "إعادة تعيين تلميحات التعليمات",
     "resetInstructionTooltipsDesc": "انقر لعرض تلميحات التعليمات مثل للمستخدم الجديد تمامًا.",
-    "randomize": "عشوائي",
     "clear": "مسح",
-    "featuredActivities": "المميز",
     "save": "حفظ",
-    "startChat": "ابدأ دردشة",
-    "translationProblem": "مشكلة في الترجمة",
     "askToJoin": "اطلب الانضمام",
     "emptyChatWarningTitle": "الدردشة فارغة",
     "emptyChatWarningDesc": "لم تدعُ أحدًا إلى دردشتك. انتقل إلى إعدادات الدردشة لدعوة جهات الاتصال الخاصة بك أو البوت. يمكنك أيضًا القيام بذلك لاحقًا.",
@@ -3526,17 +3226,13 @@
     "timesUsedIndependently": "مرات الاستخدام بشكل مستقل",
     "timesUsedWithAssistance": "مرات الاستخدام بمساعدة",
     "shareInviteCode": "مشاركة رمز الدعوة: {code}",
-    "leaderboard": "لوحة المتصدرين",
     "skipForNow": "تخطي الآن",
     "permissions": "الأذونات",
     "spaceChildPermission": "من يمكنه إضافة محادثات جديدة إلى هذه الدورة",
-    "addEnvironmentOverride": "إضافة تجاوز البيئة",
     "defaultOption": "افتراضي",
     "deleteChatDesc": "هل أنت متأكد أنك تريد حذف هذه الدردشة؟ سيتم حذفها لجميع المشاركين ولن تتوفر جميع الرسائل داخل الدردشة للممارسة أو تحليلات التعلم.",
     "deleteSpaceDesc": "سيتم حذف الدورة وأي دردشات مختارة لجميع المشاركين ولن تتوفر جميع الرسائل داخل الدردشة للممارسة أو تحليلات التعلم. لا يمكن التراجع عن هذا الإجراء.",
     "launch": "إطلاق",
-    "searchChats": "البحث في الدردشات",
-    "maxFifty": "حد أقصى 50",
     "configureSpace": "تكوين الدورة",
     "pinMessages": "تثبيت الرسائل",
     "setJoinRules": "تحديد قواعد الانضمام",
@@ -3570,9 +3266,6 @@
     "failedToFetchTranscription": "فشل في جلب النسخ النصي",
     "deleteEmptySpaceDesc": "سيتم حذف الدورة لجميع المشاركين. لا يمكن التراجع عن هذا الإجراء.",
     "regenerate": "إعادة الإنشاء",
-    "mySavedActivities": "أنشطتي المحفوظة",
-    "noSavedActivities": "لا توجد أنشطة محفوظة",
-    "saveActivity": "حفظ هذا النشاط",
     "failedToPlayVideo": "فشل في تشغيل الفيديو",
     "done": "تم",
     "inThisSpace": "في هذه الدورة",
@@ -3583,13 +3276,9 @@
     "numInvited": "{count} مدعو",
     "saved": "محفوظ",
     "reset": "إعادة تعيين",
-    "errorFetchingActivitiesMessage": "فشل في جلب الأنشطة",
     "errorFetchingDefinition": "فشل في جلب التعريف",
     "errorProcessAnalytics": "فشل في معالجة التحليلات",
     "errorDownloading": "فشل التنزيل",
-    "errorLoadingSpaceChildren": "فشل في تحميل الدردشات داخل هذه الدورة",
-    "unexpectedError": "خطأ غير متوقع.",
-    "pleaseReload": "يرجى إعادة التحميل والمحاولة مرة أخرى.",
     "translationError": "خطأ في الترجمة",
     "check": "تحقق",
     "unableToFindRoom": "لم يتم العثور على دردشة أو دورة بهذا الرمز. يرجى المحاولة مرة أخرى.",
@@ -3598,19 +3287,14 @@
     "request": "طلب",
     "requestAll": "طلب الكل",
     "confirmMessageUnpin": "هل أنت متأكد من أنك تريد إلغاء تثبيت هذه الرسالة؟",
-    "saveAndLaunch": "حفظ وإطلاق",
-    "launchToSpace": "إطلاق إلى الدورة",
     "pending": "قيد الانتظار",
     "inactive": "غير نشط",
-    "confirmRole": "تأكيد الدور",
     "openRoleLabel": "مفتوح",
     "finishedTheActivity": "🎯 {username} أنهى هذا النشاط",
     "activitySummaryError": "ملخصات النشاط غير متوفرة",
     "requestSummaries": "طلب الملخصات",
-    "generatingNewActivities": "أنت المستخدم الأول لهذا الزوج من اللغات! يرجى الانتظار دقيقة، نحن نعد أنشطة خصيصًا لك.",
     "requestAccessTitle": "طلب الوصول إلى التحليلات؟",
     "requestAccessDesc": "هل تود طلب الوصول لعرض تحليلات المشاركين؟\n\nإذا وافق المشاركون، سيتمكن مسؤولو هذه الدورة من عرض:\n    • إجمالي المفردات\n    • إجمالي مفاهيم القواعد\n    • إجمالي جلسات النشاط المكتملة\n    • المفاهيم النحوية المستخدمة، بشكل صحيح وخاطئ\n\nلن يتمكنوا من عرض:\n    • الرسائل في الدردشات خارج الدورة\n    • قائمة المفردات",
-    "requestAccess": "طلب الوصول ({count})",
     "analyticsInactiveTitle": "لم يمكن إرسال الطلبات للمستخدمين غير النشطين",
     "analyticsInactiveDesc": "المستخدمون غير النشطين الذين لم يسجلوا الدخول منذ تقديم هذه الميزة لن يروا طلبك.\n\nسيظهر زر الطلب بمجرد عودتهم. يمكنك إعادة إرسال الطلب لاحقًا بالنقر على زر الطلب تحت اسمهم عندما يكون متاحًا.",
     "accessRequestedTitle": "طلب الوصول إلى التحليلات",
@@ -3633,8 +3317,6 @@
     "accessDesc": "يمكنك جعل دورتك مفتوحة للعالم! أو، جعل دورتك خاصة وآمنة.",
     "createGroupChatDesc": "بينما تبدأ وتنتهي جلسات النشاط، ستظل الدردشات الجماعية مفتوحة للتواصل الروتيني.",
     "deleteDesc": "يمكن للمسؤولين فقط حذف الدورة. هذا إجراء تدميري يزيل جميع المستخدمين ويحذف جميع الدردشات المختارة داخل الدورة. تابع بحذر.",
-    "noCourseFound": "أوه، هذه الدورة بحاجة إلى خطة!\n\nخطط الدورة هي سلسلة من المواضيع وأنشطة المحادثة.",
-    "additionalParticipants": "+ {num} آخرون",
     "whatNow": "ماذا الآن؟",
     "chooseNextActivity": "اختر نشاطك التالي!",
     "letsGo": "لننطلق",
@@ -3647,13 +3329,11 @@
     "waitNotDone": "انتظر، لم أنتهِ بعد!",
     "waitingForOthersToFinish": "انتظار باقي المشاركين لإنهاء المهمة...",
     "generatingSummary": "تحليل الدردشة وتوليد النتائج",
-    "findCourse": "ابحث عن دورة",
     "pingParticipantsNotification": "{user} يبحث عن مستخدمين للانضمام إلى جلسة النشاط في {room}",
     "course": "دورة",
     "courses": "دورات",
     "goToCourse": "اذهب إلى الدورة: {course}",
     "activityComplete": "تم إكمال هذا النشاط. يجب أن تتوفر ملخص النشاط أدناه.",
-    "startNewSession": "ابدأ جلسة جديدة",
     "joinOpenSession": "انضم إلى جلسة مفتوحة",
     "activityNotFound": "النشاط غير موجود",
     "myActivities": "أنشطتي",
@@ -3716,14 +3396,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@synchronizingPleaseWaitCounter": {
         "type": "String",
         "placeholders": {
@@ -3732,27 +3404,11 @@
             }
         }
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4070,10 +3726,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4083,10 +3735,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4174,14 +3822,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4198,10 +3838,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4214,15 +3850,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4374,14 +4002,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4395,14 +4015,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5625,10 +5237,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
@@ -5669,10 +5277,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5745,10 +5349,6 @@
         }
     },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -6018,47 +5618,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6078,19 +5638,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -6154,10 +5702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -6198,14 +5742,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -6217,14 +5753,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -6262,10 +5790,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
@@ -6282,27 +5806,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -6426,10 +5934,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -6439,10 +5943,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -6459,14 +5959,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -6606,18 +6098,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -6666,10 +6146,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -6679,18 +6155,6 @@
         "placeholders": {}
     },
     "@errorDownloading": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
         "type": "String",
         "placeholders": {}
     },
@@ -6733,23 +6197,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
     },
     "@inactive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@confirmRole": {
         "type": "String",
         "placeholders": {}
     },
@@ -6773,10 +6225,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -6784,14 +6232,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -6896,18 +6336,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -6960,10 +6388,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -6990,10 +6414,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -7174,7 +6594,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "تحقق مرة أخرى غدًا للحصول على تحديثات النشاط.",
-    "activityDropdownDesc": "عندما تنتهي من هذا النشاط، انقر أدناه",
     "languageMismatchTitle": "عدم تطابق اللغة",
     "languageMismatchDesc": "اللغة المستهدفة الخاصة بك لا تتطابق مع لغة هذا النشاط. هل تريد تحديث لغتك المستهدفة؟",
     "reportWordIssueTooltip": "الإبلاغ عن مشكلة في معلومات الكلمة",
@@ -7187,10 +6606,6 @@
     "selectAll": "اختر الكل",
     "deselectAll": "إلغاء تحديد الكل",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7239,17 +6654,11 @@
         "placeholders": {}
     },
     "startOwn": "ابدأ خاصتي",
-    "joinCourseDesc": "كل دورة تحتوي على 8-10 مواضيع متسلسلة مع مجموعة من أنشطة تعلم اللغة القائمة على المهام.",
     "newMessageInPangeaChat": "📩 رسالة جديدة في دردشة بانجيا",
     "shareCourse": "مشاركة الدورة",
     "addCourse": "إضافة دورة",
-    "joinPublicCourse": "الانضمام إلى دورة عامة",
     "vocabLevelsDesc": "هذا هو المكان الذي ستذهب إليه كلمات المفردات بمجرد ترقيتها!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7262,10 +6671,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -7284,12 +6689,9 @@
     "emojiView": "عرض الرموز التعبيرية",
     "feedbackDialogDesc": "أرتكب أخطاء أيضًا! هل هناك أي شيء يمكنني فعله لتحسين نفسي؟",
     "contactHasBeenInvitedToTheCourse": "تمت دعوة جهة الاتصال إلى الدورة",
-    "activityStatsButtonTooltip": "معلومات النشاط",
     "allow": "السماح",
     "deny": "رفض",
     "enabledRenewal": "تفعيل تجديد الاشتراك",
-    "subscriptionEndsOn": "ينتهي الاشتراك في",
-    "subscriptionRenewsOn": "يتجدد الاشتراك في",
     "waitForSubscriptionChanges": "قد تستغرق التغييرات في اشتراكك بعض الوقت لتظهر في التطبيق.",
     "subscribeReadingAssistance": "اشترك لفتح أدوات الرسائل",
     "aceDisplayName": "أكينيس",
@@ -7555,10 +6957,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -7568,14 +6966,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8611,16 +8001,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "الأنشطة لفتح الموضوع التالي",
-    "activitiesToUnlockTopicDesc": "حدد عدد الأنشطة لفتح موضوع الدورة التالي",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "ممارسة تعريف المفردات الصحيحة",
     "constructUseIncLMDesc": "ممارسة تعريف المفردات غير الصحيحة",
     "constructUseCorLADesc": "ممارسة الصوت للمفردات الصحيحة",
@@ -8628,7 +8008,6 @@
     "constructUseBonus": "مكافأة أثناء ممارسة المفردات",
     "practiceVocab": "ممارسة المفردات",
     "selectMeaning": "اختر المعنى",
-    "selectAudio": "اختر الصوت المطابق",
     "anotherRound": "جولة أخرى",
     "activitySettingsOverrideWarning": "اللغة ومستوى اللغة محددان بواسطة خطة النشاط",
     "voice": "صوت",
@@ -8660,10 +8039,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -8681,12 +8056,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "تم بدء التنزيل",
     "webDownloadPermissionMessage": "إذا كان متصفحك يمنع التنزيلات، يرجى تمكين التنزيلات لهذا الموقع.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
@@ -8781,11 +8151,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "حدث خطأ ما، ونحن نعمل بجد على إصلاحه. تحقق مرة أخرى لاحقًا.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "تفعيل مساعدة الكتابة",
     "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
     "@autoIGCToolName": {
@@ -8841,24 +8206,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "قواعد اللغة",
-    "spanTypeWordChoice": "اختيار الكلمات",
     "spanTypeSpelling": "التهجئة",
     "spanTypePunctuation": "علامات الترقيم",
     "spanTypeStyle": "الأسلوب",
     "spanTypeFluency": "الطلاقة",
     "spanTypeAccents": "اللكنات",
     "spanTypeCapitalization": "حروف الجر",
-    "spanTypeCorrection": "تصحيح",
     "spanFeedbackTitle": "الإبلاغ عن مشكلة تصحيح",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -8883,10 +8237,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -8899,13 +8249,7 @@
     "longPressToRecordVoiceMessage": "اضغط مطولاً لتسجيل رسالة صوتية.",
     "pause": "إيقاف مؤقت",
     "resume": "استئناف",
-    "newSubSpace": "مساحة فرعية جديدة",
-    "moveToDifferentSpace": "الانتقال إلى مساحة مختلفة",
-    "removeFromSpaceDescription": "سيتم إزالة الدردشة من المساحة ولكن ستظل تظهر في قائمة الدردشات الخاصة بك.",
     "countChats": "{chats} دردشات",
-    "spaceMemberOf": "عضو في المساحة {spaces}",
-    "spaceMemberOfCanKnock": "عضو في المساحة {spaces} يمكنه الطرق",
-    "donate": "تبرع",
     "startedAPoll": "{username} بدأ استطلاع رأي.",
     "poll": "استطلاع رأي",
     "startPoll": "ابدأ استطلاع رأي",
@@ -8929,23 +8273,15 @@
     "newStickerPack": "حزمة ملصقات جديدة",
     "stickerPackName": "اسم حزمة الملصقات",
     "attribution": "نسبة",
-    "skipChatBackup": "تخطي نسخ الدردشة الاحتياطي",
-    "skipChatBackupWarning": "هل أنت متأكد؟ بدون تفعيل نسخ الدردشة الاحتياطي قد تفقد الوصول إلى رسائلك إذا قمت بتغيير جهازك.",
-    "loadingMessages": "جارٍ تحميل الرسائل",
-    "setupChatBackup": "إعداد نسخ الدردشة الاحتياطي",
     "noMoreResultsFound": "لم يتم العثور على المزيد من النتائج",
     "chatSearchedUntil": "تم البحث في الدردشة حتى {time}",
     "federationBaseUrl": "عنوان URL الأساسي للاتحاد",
     "clientWellKnownInformation": "معلومات العميل المعروفة:",
     "baseUrl": "عنوان URL الأساسي",
     "identityServer": "خادم الهوية:",
-    "versionWithNumber": "الإصدار: {version}",
     "logs": "السجلات",
-    "advancedConfigs": "الإعدادات المتقدمة",
     "advancedConfigurations": "التكوينات المتقدمة",
-    "signInWithLabel": "تسجيل الدخول باستخدام:",
     "selectAllWords": "اختر جميع الكلمات التي تسمعها في الصوت",
-    "joinCourseForActivities": "انضم إلى دورة لتجربة الأنشطة.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -8982,18 +8318,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -9001,26 +8325,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -9126,22 +8430,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -9170,19 +8458,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -9190,15 +8466,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -9399,11 +8667,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinSpaceOnboardingDesc": "في فصل دراسي؟ ضع رمز الانضمام الخاص بك هنا.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "selectAudioMessagesOnPlayToolName": "تمييز الرسائل الصوتية تلقائيًا",
     "selectAudioMessagesOnPlayDescription": "تمييز الرسائل الصوتية تلقائيًا عند تشغيلها",
     "@selectAudioMessagesOnPlayToolName": {
@@ -9419,7 +8682,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "أنا أتعلم...",
     "alreadySpeak": "أنا أتحدث بالفعل...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9447,18 +8709,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "تحتوي هذه الدورة على مواضيع بها أقل من {input} نشاطات. يرجى إدخال رقم أقل من أو يساوي {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "انقر هنا لتسجيل الدخول مرة أخرى.",
     "@clickToLogin": {
@@ -9875,17 +9125,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "bearImageDescription": "دب أصفر كرتوني يرفع ذراعيه في حماس.",
-    "@bearImageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "readingAssistanceTutorialCollectToken": "اختر الكلمات لتتعلم المزيد عنها",
     "requireAnalyticsAccessTitle": "يتطلب الوصول إلى التحليلات للانضمام",
     "requireAnalyticsAccessDesc": "يجب على المشاركين منح الوصول إلى تحليلات التعلم الخاصة بهم للانضمام إلى هذه الدورة",
     "analyticsAccessNoticeTitle": "يتطلب الوصول إلى التحليلات",
     "analyticsAccessNoticeDesc": "من خلال الانضمام إلى هذه الدورة، فإنك توافق على منح المسؤولين الوصول إلى تحليلات التعلم الخاصة بك.",
-    "skipOnboardingClassCodeDesc": "تتعلم بشكل مستقل؟ لا تقلق، يمكنك:",
     "@readingAssistanceTutorialCollectToken": {
         "type": "String",
         "placeholders": {}
@@ -9903,10 +9147,6 @@
         "placeholders": {}
     },
     "@analyticsAccessNoticeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipOnboardingClassCodeDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9935,7 +9175,6 @@
     "pickCefrLevelTeacherStepTitle": "ما المستوى الذي تقوم بتعليمه؟",
     "pickCefrLevelStudentStepTitle": "ما مستواك؟",
     "customCourseStepTitle": "املأ هذا النموذج للحصول على دورة مخصصة",
-    "aboutYourClass": "حول صفك",
     "courseCodeStepErrorMessage": "يرجى التحقق من الرمز الخاص بك والمحاولة مرة أخرى",
     "institution": "المؤسسة",
     "courseGoals": "أهداف الدورة",
@@ -9978,10 +9217,6 @@
         "placeholders": {}
     },
     "@customCourseStepTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@aboutYourClass": {
         "type": "String",
         "placeholders": {}
     },
@@ -10098,12 +9333,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pangeaChatLogo": "شعار دردشة بانجيا",
     "introChatDetails": "قل مرحبًا! قدم نفسك لمشاركي الدورة الآخرين، وابحث عن أصدقاء، وتحدث خارج الأنشطة.",
-    "@pangeaChatLogo": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@introChatDetails": {
         "type": "String",
         "placeholders": {}
@@ -10147,11 +9377,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activityActions": "إجراءات النشاط",
-    "@activityActions": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pronunciationTools": "أدوات النطق",
     "audioTranscription": "نسخ صوتي بالذكاء الاصطناعي",
     "visualLearnerSupport": "دعم المتعلمين البصريين",
@@ -10192,7 +9417,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "joinTheCourseToPlay": "انضم إلى دورة تتضمن هذا النشاط للعبه.",
     "resizeCoursePanel": "تغيير حجم لوحة الدورة",
     "undo": "تراجع",
     "unlock": "فتح",
@@ -10206,7 +9430,6 @@
     "addCourseBrowsePublic": "تصفح الدورات العامة",
     "browsePublicCourses": "تصفح الدورات العامة",
     "editProfile": "تعديل الملف الشخصي",
-    "numObjectives": "{count} أهداف",
     "mapSearchHint": "ابحث عن الأنشطة",
     "mapSearchNoResults": "لا توجد تطابقات في العرض",
     "mapFilterAllLanguages": "جميع اللغات",
@@ -10215,7 +9438,6 @@
     "mapFilterCompleted": "مكتمل",
     "mapFilterReset": "إعادة تعيين",
     "activityTypeConversation": "محادثة",
-    "lockedMissionRequirement": "أكمل المهمة السابقة لفتحها",
     "playAgain": "العب مرة أخرى",
     "reviewActivity": "مراجعة",
     "mapEmptyInView": "لا شيء هنا بمستواك أو لغتك. قم بتوسيع الفلاتر أو قم بالتكبير للخارج.",
@@ -10230,14 +9452,9 @@
     "scrollToBottom": "التمرير إلى الأسفل",
     "courseImage": "صورة الدورة",
     "avatarPreview": "معاينة الصورة الرمزية",
-    "activityPhoto": "صورة النشاط",
     "emotePreview": "معاينة الإيموجي: {name}",
     "activityLabel": "النشاط: {title}",
     "resetMapView": "إعادة تعيين عرض الخريطة",
-    "@joinTheCourseToPlay": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@resizeCoursePanel": {
         "type": "String",
         "placeholders": {}
@@ -10290,14 +9507,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@numObjectives": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@mapSearchHint": {
         "type": "String",
         "placeholders": {}
@@ -10327,10 +9536,6 @@
         "placeholders": {}
     },
     "@activityTypeConversation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@lockedMissionRequirement": {
         "type": "String",
         "placeholders": {}
     },
@@ -10387,10 +9592,6 @@
         "placeholders": {}
     },
     "@avatarPreview": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPhoto": {
         "type": "String",
         "placeholders": {}
     },
@@ -10738,5 +9939,29 @@
         "placeholders": {
             "search": {}
         }
-    }
+    },
+    "coursePermissions": "أذونات الدورة التدريبية",
+    "starsToUnlockObjectiveTitle": "النجوم لكل مهمة",
+    "starsToUnlockObjectiveDesc": "حدد عدد النجوم المطلوبة لإكمال كل مهمة",
+    "maxStarsPerMissionWarning": "تحتوي هذه الدورة التدريبية على مهام لا يمكن الحصول فيها إلا على {maxValue} نجوم. يرجى إدخال رقم أقل من أو يساوي {maxValue}.",
+    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك.",
+    "endPractice": "إنهاء التدريب",
+    "bodyLabel": "خيارات {page}",
+    "openDM": "فتح رسالة مباشرة",
+    "openNewTab": "فتح في علامة تبويب جديدة",
+    "viewProfileImageLabel": "عرض صورة الملف الشخصي",
+    "profileImageLabel": "صورة الملف الشخصي",
+    "actionsLabel": "الإجراءات",
+    "colorListLabel": "قائمة الألوان",
+    "chatAppearanceStyleLabel": "مظهر الدردشة بالنمط المختار",
+    "volumeLabel": "مستوى الصوت",
+    "listLabel": "قائمة {description}",
+    "passwordFormLabel": "نموذج تغيير كلمة المرور",
+    "searchLanguagesHint": "البحث عن اللغات",
+    "searchCountriesHint": "البحث عن البلدان",
+    "searchVocabHint": "البحث عن المفردات",
+    "searchUsersHint": "البحث عن المستخدمين",
+    "searchMessagesHint": "البحث عن الرسائل",
+    "searchChatsHint": "البحث عن الدردشات",
+    "searchActivitiesHint": "البحث عن الأنشطة"
 }

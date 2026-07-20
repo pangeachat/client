@@ -34,6 +34,11 @@ class QuestObjectivesLoader {
   int _loadGeneration = 0;
   bool _disposed = false;
 
+  /// The course this loader is showing. The shared resolution spans every
+  /// joined course, so every progress read below scopes through it — a course
+  /// panel must never show another course's star totals (#7771).
+  String? _courseId;
+
   void dispose() {
     _questLoader.dispose();
     _progression.dispose();
@@ -48,8 +53,22 @@ class QuestObjectivesLoader {
       AsyncLoaded(value: final value) => value.quest.learningObjectiveIds,
       _ => const [],
     };
-    return progression.value.questStars(objectiveIds);
+    return progression.value.questStars(_courseId, objectiveIds);
   }
+
+  /// This course's resolved quest, or null until the shared resolution lands
+  /// (or when the course isn't joined) — the panel then shows no star display,
+  /// per quests.instructions.md.
+  QuestProgress? get _scopedQuest => progression.value.forCourse(_courseId);
+
+  /// Whether this course's progress has resolved, so the panel knows to render
+  /// the star display at all.
+  bool get hasResolvedProgress => _scopedQuest != null;
+
+  /// This course's rollup for [missionId]. Null means "not resolved", never
+  /// "zero" — the caller renders no star display rather than a false 0.
+  MissionProgress? missionProgress(String missionId) =>
+      _scopedQuest?.rollup[missionId];
 
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
       switch (_questLoader.value) {
@@ -71,11 +90,19 @@ class QuestObjectivesLoader {
     }
   }
 
-  Future<void> loadOutline(String? questId) async {
+  /// [pinnedActivitiesByObjective] is the course's per-Mission activity pin
+  /// (room.teacherMode) — passed by callers with a joined course room in hand;
+  /// null (previews, no room) means unrestricted, the fail-open default.
+  /// Applied as a pure copy so the shared quest-outline cache is untouched.
+  Future<void> loadOutline(
+    String? questId, {
+    Map<String, List<String>>? pinnedActivitiesByObjective,
+  }) async {
     if (_disposed) return;
 
     _loadGeneration++;
     final loadGen = _loadGeneration;
+    _courseId = questId;
     _updateProgression(ProgressionResolution.empty, loadGen);
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
@@ -91,7 +118,9 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoading(), loadGen);
     final outlineResult = await QuestRepo.outline(questId);
-    final outline = outlineResult.result;
+    final outline = outlineResult.result?.restrictedTo(
+      pinnedActivitiesByObjective,
+    );
 
     if (_disposed) return;
 

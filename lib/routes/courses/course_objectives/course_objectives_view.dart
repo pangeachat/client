@@ -1,23 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
-import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
@@ -38,7 +34,7 @@ class CourseObjectivesList extends StatefulWidget {
 
   /// Per-activity completion, e.g. `controller.roomSummariesModel
   /// .hasCompletedActivity`. Null in a preview → no completion overlay.
-  final bool Function(String userId, String activityId)? hasCompletedActivity;
+  final bool Function(String activityId)? hasCompletedActivity;
 
   /// Shrink-wrap the objective list instead of filling/scrolling its own
   /// viewport. Set true when embedded inside another scroll view (the
@@ -125,8 +121,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             return ValueListenableBuilder(
               valueListenable: widget.objectivesProvider.progression,
               builder: (context, progression, _) {
+                // Scoped to THIS course: the shared resolution spans every
+                // joined course, and Missions are reused across quests (#7771).
                 final hasProgress =
-                    widget.room != null && progression.rollup.isNotEmpty;
+                    widget.room != null &&
+                    widget.objectivesProvider.hasResolvedProgress;
                 final list = ListView.separated(
                   controller: widget.shrinkWrap ? null : _scrollController,
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -138,14 +137,45 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                   separatorBuilder: (_, _) => const SizedBox(height: 24.0),
                   itemBuilder: (context, i) {
                     final group = groups[i];
-                    return _ObjectiveSection(
+                    return ObjectiveSection(
                       index: i,
                       group: group,
-                      room: widget.room,
                       hasCompletedActivity: widget.hasCompletedActivity,
                       progress: hasProgress
-                          ? progression.rollup[group.objective.id]
+                          ? widget.objectivesProvider.missionProgress(
+                              group.objective.id,
+                            )
                           : null,
+                      onTap: (ref) {
+                        final room = widget.room;
+                        if (room == null) {
+                          // Token-native open; the course context (if any) is kept,
+                          // so the plan closes back to it. See routing.instructions.md.
+                          context.go(
+                            WorkspaceNav.openActivity(
+                              GoRouterState.of(context).uri,
+                              ref.activityId,
+                            ),
+                          );
+                          return;
+                        }
+                        // Immersive in-course open: the token producer drops the
+                        // `left=course` card (and any right panel) and keeps the
+                        // `?m=course:` scope, so the plan takes the card's slot and
+                        // backs out to it. A video hero autostarts (muted).
+                        context.go(
+                          WorkspaceNav.openCourseActivity(
+                            room.id,
+                            ref.activityId,
+                            autoplay:
+                                ref.plan.heroBlock?.isVideo == true ||
+                                ref.plan.heroBlock?.isYoutube == true,
+                          ),
+                        );
+                      },
+                      userStarsByActivity: (activityId) =>
+                          widget.room?.client.userStarsByActivity[activityId] ??
+                          0,
                     );
                   },
                 );
@@ -165,206 +195,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             );
         }
       },
-    );
-  }
-}
-
-class _ObjectiveSection extends StatelessWidget {
-  final int index;
-  final QuestObjectiveGroup group;
-
-  /// Null in a preview (unjoined plan): no completion overlay, and tapping an
-  /// activity opens it standalone rather than as an in-course `?activity=`
-  /// overlay.
-  final Room? room;
-  final bool Function(String userId, String activityId)? hasCompletedActivity;
-
-  /// The Mission's rollup from the shared resolver, or null when there is
-  /// nothing to show (preview, or the rollup hasn't resolved yet).
-  final MissionProgress? progress;
-
-  const _ObjectiveSection({
-    required this.index,
-    required this.group,
-    required this.room,
-    required this.hasCompletedActivity,
-    required this.progress,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-    final cardWidth = isColumnMode ? 160.0 : 120.0;
-    final cardHeight = isColumnMode ? 280.0 : 200.0;
-    final userId = room?.client.userID;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Objective header: placeholder icon + the can-do statement, with the
-        // Mission's earned/threshold stars when the shared rollup is in.
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _ObjectivePlaceholderIcon(index: index),
-            const SizedBox(width: 12.0),
-            Expanded(
-              child: Text(
-                group.objective.objective,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            if (progress != null) ...[
-              const SizedBox(width: 8.0),
-              Semantics(
-                label: L10n.of(
-                  context,
-                ).starsEarnedOfTotal(progress!.stars, progress!.threshold),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.star,
-                      size: 18.0,
-                      color: AppConfig.goldByTheme(context),
-                    ),
-                    const SizedBox(width: 4.0),
-                    Text(
-                      // Raw stars over the satisfaction threshold — surplus
-                      // shows (12/7); only the quest header caps.
-                      '${progress!.stars}/${progress!.threshold}',
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ],
-        ),
-        // No per-Mission progress bar — only the overall course has a bar (in
-        // the header). A Mission shows just its star count above (#7597).
-        const SizedBox(height: 12.0),
-        // The activities that satisfy this objective.
-        SizedBox(
-          height: cardHeight,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: group.activities.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 16.0),
-            itemBuilder: (context, i) {
-              final ref = group.activities[i];
-              final complete =
-                  userId != null &&
-                  (hasCompletedActivity?.call(userId, ref.activityId) ?? false);
-              final starsEarned =
-                  room?.client.userStarsByActivity[ref.activityId] ?? 0;
-              return MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  // In a preview (no room), open the activity as a standalone
-                  // world object (`/<activityId>`). In a joined course, open it
-                  // as the focused detail over the map: DROP the `left=course`
-                  // card (so it isn't left blank beside the activity) but KEEP
-                  // the `?m=course:` filter. That surviving course scope is what
-                  // marks this plan as the card's child: its close is a back-arrow
-                  // that reopens the card (a pin-opened plan drops the scope and so
-                  // closes with an X). The map stays course-scoped and zooms to
-                  // this activity (`mapFocusFor` → `ActivityFocus`). See
-                  // routing.instructions.md.
-                  onTap: () {
-                    if (room == null) {
-                      // Token-native open; the course context (if any) is kept,
-                      // so the plan closes back to it. See routing.instructions.md.
-                      context.go(
-                        WorkspaceNav.openActivity(
-                          GoRouterState.of(context).uri,
-                          ref.activityId,
-                        ),
-                      );
-                      return;
-                    }
-                    // Immersive in-course open: the token producer drops the
-                    // `left=course` card (and any right panel) and keeps the
-                    // `?m=course:` scope, so the plan takes the card's slot and
-                    // backs out to it. A video hero autostarts (muted).
-                    context.go(
-                      WorkspaceNav.openCourseActivity(
-                        room!.id,
-                        ref.activityId,
-                        autoplay:
-                            ref.plan.heroBlock?.isVideo == true ||
-                            ref.plan.heroBlock?.isYoutube == true,
-                      ),
-                    );
-                  },
-                  child: Stack(
-                    children: [
-                      ActivitySuggestionCard(
-                        activity: ref.plan,
-                        width: cardWidth,
-                        height: cardHeight,
-                        fontSize: isColumnMode ? 16.0 : 12.0,
-                        fontSizeSmall: isColumnMode ? 12.0 : 8.0,
-                        iconSize: isColumnMode ? 12.0 : 8.0,
-                        starsEarned: starsEarned,
-                      ),
-                      if (complete)
-                        Container(
-                          width: cardWidth,
-                          height: cardHeight,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: theme.colorScheme.surface.withAlpha(180),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              'assets/pangea/check.svg',
-                              width: 48.0,
-                              height: 48.0,
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// Placeholder objective icon until real learning-objective icons exist.
-/// Deterministic color per position so the list reads as distinct items.
-class _ObjectivePlaceholderIcon extends StatelessWidget {
-  final int index;
-  const _ObjectivePlaceholderIcon({required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final palette = [
-      scheme.primaryContainer,
-      scheme.secondaryContainer,
-      scheme.tertiaryContainer,
-    ];
-    return Container(
-      width: 40.0,
-      height: 40.0,
-      decoration: BoxDecoration(
-        color: palette[index % palette.length],
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Icon(Icons.flag_outlined, size: 22.0, color: scheme.onSurface),
     );
   }
 }

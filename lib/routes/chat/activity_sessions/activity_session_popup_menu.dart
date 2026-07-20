@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
@@ -5,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/chat_download_provider.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 enum ActivityPopupMenuActions { invite, leave, download }
 
@@ -13,7 +13,16 @@ class ActivitySessionPopupMenu extends StatefulWidget {
   final Room room;
   final VoidCallback onLeave;
 
-  const ActivitySessionPopupMenu(this.room, {required this.onLeave, super.key});
+  /// A completed session (own role archived): only Download applies; leave and
+  /// invite are hidden.
+  final bool isCompleted;
+
+  const ActivitySessionPopupMenu(
+    this.room, {
+    required this.onLeave,
+    this.isCompleted = false,
+    super.key,
+  });
 
   @override
   ActivitySessionPopupMenuState createState() =>
@@ -40,17 +49,20 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
         }
       },
       itemBuilder: (BuildContext context) => [
-        PopupMenuItem<ActivityPopupMenuActions>(
-          value: ActivityPopupMenuActions.invite,
-          child: Row(
-            children: [
-              const Icon(Icons.person_add_outlined),
-              const SizedBox(width: 12),
-              Text(L10n.of(context).invite),
-            ],
+        if (!widget.isCompleted)
+          PopupMenuItem<ActivityPopupMenuActions>(
+            value: ActivityPopupMenuActions.invite,
+            child: Row(
+              children: [
+                const Icon(Icons.person_add_outlined),
+                const SizedBox(width: 12),
+                Text(L10n.of(context).invite),
+              ],
+            ),
           ),
-        ),
-        if (MatrixState.pangeaController.userController.showDeveloperOptions)
+        // Any room member can download the transcript; web/desktop only for now
+        // (the native mobile download path is unvalidated).
+        if (kIsWeb)
           PopupMenuItem<ActivityPopupMenuActions>(
             value: ActivityPopupMenuActions.download,
             child: Row(
@@ -61,16 +73,17 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
               ],
             ),
           ),
-        PopupMenuItem<ActivityPopupMenuActions>(
-          value: ActivityPopupMenuActions.leave,
-          child: Row(
-            children: [
-              const Icon(Icons.logout_outlined),
-              const SizedBox(width: 12),
-              Text(L10n.of(context).leave),
-            ],
+        if (!widget.isCompleted)
+          PopupMenuItem<ActivityPopupMenuActions>(
+            value: ActivityPopupMenuActions.leave,
+            child: Row(
+              children: [
+                const Icon(Icons.logout_outlined),
+                const SizedBox(width: 12),
+                Text(L10n.of(context).leave),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }

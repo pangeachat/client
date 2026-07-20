@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
@@ -139,9 +142,34 @@ class RoomSummaryResponse {
       .where((membership) => membership == Membership.join.name)
       .length;
 
+  /// Resolves a thin activity ref to its hydrated plan. Defaults to the
+  /// [ActivityPlanRepo] lookup (kicking off hydration on first read — the same
+  /// pattern as `Room.activityPlan`); replaceable in tests, where the repo's
+  /// storage/app context doesn't exist.
+  @visibleForTesting
+  static ActivityPlanModel? Function(String activityId) referencePlanResolver =
+      defaultReferencePlanResolver;
+
+  static ActivityPlanModel? defaultReferencePlanResolver(String activityId) {
+    ActivityPlanRepo.instance.ensure(activityId);
+    return ActivityPlanRepo.instance.cachedPlan(activityId);
+  }
+
+  /// The plan for seat math: the embedded plan when present, else the hydrated
+  /// reference plan. Null while hydration is pending, in which case seats are
+  /// unknown and the joinable gate stays permissive.
+  ActivityPlanModel? get resolvedActivityPlan {
+    if (activityPlan != null) return activityPlan;
+    final id = activityId;
+    if (id == null) return null;
+    return referencePlanResolver(id);
+  }
+
   bool get isStarted {
     if (isFinished) return true;
-    final activityPlan = this.activityPlan;
+    // Resolve thin v3 references so a full session stops reading as joinable
+    // once its plan hydrates (#7645); an unresolved plan stays permissive.
+    final activityPlan = resolvedActivityPlan;
     if (activityPlan == null) return false;
     return activityPlan.roles.length - joinedUsersWithRoles.length <= 0;
   }
@@ -227,7 +255,7 @@ class RoomSummaryResponse {
         json[PangeaEventTypes.coursePlan]?["default"]?["content"];
     CoursePlanEvent? coursePlan;
     if (coursePlanEntry != null && coursePlanEntry is Map<String, dynamic>) {
-      coursePlan = CoursePlanEvent.fromJson(coursePlanEntry);
+      coursePlan = CoursePlanEvent.tryParse(coursePlanEntry);
     }
 
     final powerLevelsEntry =
