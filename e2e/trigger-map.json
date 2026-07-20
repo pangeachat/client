@@ -33,15 +33,6 @@
     "web": "e2e/scripts/settings.spec.ts",
     "mobile": null
   },
-  "analytics": {
-    "globs": [
-      "lib/pangea/analytics_page/**",
-      "lib/pangea/analytics_practice/**",
-      "lib/pangea/analytics_misc/**"
-    ],
-    "web": "e2e/scripts/analytics.spec.ts",
-    "mobile": null
-  },
   "permissions": {
     "globs": [
       "lib/pangea/common/controllers/pangea_controller.dart",
