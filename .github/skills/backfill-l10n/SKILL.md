@@ -15,12 +15,27 @@ description: Use when adding or refreshing client UI translations — filling ne
 | A language has **no `intl_<lang>.arb` at all** (new L1s) | `uv run scripts/translate/backfill_l10n.py --workers 10` |
 | Translate or fully re-translate **one locale** | `uv run scripts/translate/translate_gemini.py --lang sw --name Swahili` (smoke test: `--limit 40 --dry`) |
 
-Prereq: `gcloud auth application-default login` once per ~week (tokens expire).
+## Prereqs (check before running any script)
+
+1. **Locate `uv` and `gcloud` before installing anything.** A missing command on `PATH` often means installed-but-not-wired, not absent — installing again just stacks a second copy. Check the usual homes first:
+
+   ```sh
+   for bin in uv gcloud; do
+     command -v "$bin" && continue
+     for dir in /opt/homebrew/bin /usr/local/bin "$HOME/.local/bin" "$HOME/google-cloud-sdk/bin"; do
+       [ -x "$dir/$bin" ] && echo "$bin found at $dir/$bin — add $dir to PATH, don't reinstall" && continue 2
+     done
+     echo "$bin: not found anywhere — install it"
+   done
+   ```
+
+   Only if genuinely absent: `brew install uv` / `brew install --cask google-cloud-sdk` (macOS). One install; if a copy exists off-PATH, fix `PATH` (or use the full path) instead.
+2. **Google auth**: `gcloud auth application-default login` once per ~week (tokens expire). The scripts print exact remediation on auth failures, including whose access to request.
 
 ## After translating (required)
 
 ```sh
-flutter gen-l10n                                                 # regenerate L10n Dart
+fvm flutter gen-l10n                                             # regenerate L10n Dart (fvm, NOT bare flutter — wrong SDK churns pubspec.lock)
 uv run scripts/translate/check_l10n_sync.py --base origin/main   # the CI gate, locally
 ```
 
