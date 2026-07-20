@@ -151,6 +151,20 @@ jobs:
           asset_name: pangeachat.apk
           asset_content_type: application/vnd.android.package-archive
 
+  build_ios:
+    needs: create_release
+    uses: ./.github/workflows/ios-testflight.yml
+    with:
+      environment: production
+    secrets: inherit
+
+  deploy_playstore:
+    needs: create_release
+    uses: ./.github/workflows/android-playstore.yml
+    with:
+      environment: production
+    secrets: inherit
+
   build_linux:
     strategy:
       matrix:

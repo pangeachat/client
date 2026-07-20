@@ -26,10 +26,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class FindCoursePage extends StatefulWidget {
   final Widget closeButton;
   final String? initialLanguageCode;
+  final bool showAll;
   const FindCoursePage({
     super.key,
     required this.closeButton,
     this.initialLanguageCode,
+    this.showAll = false,
   });
 
   @override
@@ -68,7 +70,9 @@ class FindCoursePageState extends State<FindCoursePage> {
         ? PLanguageStore.byLangCode(initialLangCode)
         : null;
 
-    final targetLang = availableLanguages.contains(initialLang)
+    final targetLang = (initialLang == null && widget.showAll)
+        ? null
+        : availableLanguages.contains(initialLang)
         ? initialLang
         : availableLanguages.contains(initialLang?.unlocalized)
         ? initialLang?.unlocalized
@@ -340,6 +344,7 @@ class FindCoursePageState extends State<FindCoursePage> {
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
         initialLanguageFilter: targetLanguage,
+        allLanguagesFilter: targetLanguage == null,
       ),
     );
   }
@@ -468,6 +473,9 @@ class FindCoursePageView extends StatelessWidget {
                           if (coursePlan == null) {
                             return const SizedBox.shrink();
                           }
+
+                          final lang =
+                              controller.targetLanguageFilter.value?.langCode;
                           return AddCourseTile(
                             chunk: space,
                             coursePlan: coursePlan,
@@ -476,10 +484,8 @@ class FindCoursePageView extends StatelessWidget {
                                 GoRouterState.of(context).uri,
                                 AddCourseSubpageEnum.browse,
                                 previewRoomId: space.room.roomId,
-                                initialLanguageFilter: controller
-                                    .targetLanguageFilter
-                                    .value
-                                    ?.langCode,
+                                initialLanguageFilter: lang,
+                                allLanguagesFilter: lang == null,
                               ),
                             ),
                             isKnock:
