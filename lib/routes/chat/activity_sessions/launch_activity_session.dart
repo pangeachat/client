@@ -97,6 +97,27 @@ extension LaunchActivitySession on Client {
             spaces.isEmpty ? JoinRules.knock : JoinRules.knockRestricted,
             allowRoomIds: spaces.keys.toList(),
           ),
+          // Pin history visibility to `shared` at creation rather than relying
+          // on the server default. A session room is a shared, course-scoped
+          // conversation: a teacher who joins to review it — or a coursemate who
+          // knocks in partway through — must be able to read what was said
+          // BEFORE they joined, which the `joined`/`invited` defaults forbid.
+          // Sending it as INITIAL state also means it is set atomically at
+          // creation, so there is no window in which early messages land under a
+          // stricter rule and stay unreadable forever.
+          //
+          // `shared` (not `world_readable`): history is open to room members,
+          // never to non-members, and the room is created `private` with a
+          // knock/knock-restricted join rule, so membership stays the gate.
+          //
+          // Rooms created before this shipped keep whatever default they got;
+          // history visibility is not retroactive, so this fixes the future
+          // only, and readers must still degrade gracefully to post-join-only
+          // history for older sessions.
+          StateEvent(
+            type: EventTypes.HistoryVisibility,
+            content: {'history_visibility': HistoryVisibility.shared.text},
+          ),
         ],
         // Seeds the bot at PL 50 so it can write its state events without
         // the self-promotion dance that overloaded staging Synapse
