@@ -153,10 +153,18 @@ def validate(en_val: str, tr_val: str) -> str | None:
 
 def vertex_client() -> genai.Client:
     import google.auth
+    import google.auth.exceptions
 
-    creds, _ = google.auth.default(
-        scopes=["https://www.googleapis.com/auth/cloud-platform"]
-    )
+    try:
+        creds, _ = google.auth.default(
+            scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        )
+    except google.auth.exceptions.DefaultCredentialsError:
+        sys.exit(
+            "No Google credentials found. Run:\n"
+            "    gcloud auth application-default login\n"
+            "(ADC tokens expire roughly weekly — re-run it if this worked before.)"
+        )
     # Default to the dev LLM pool (the project that backs engineers' local
     # creds) rather than the ADC default — user accounts typically lack
     # Vertex perms on whatever project gcloud happens to default to.
@@ -181,7 +189,16 @@ def translate_batch(client: genai.Client, model: str, name: str, batch: dict) ->
                 ),
             )
         except genai_errors.APIError as e:
-            if getattr(e, "code", None) in (429, 500, 503) and attempt < 5:
+            code = getattr(e, "code", None)
+            if code in (401, 403):
+                sys.exit(
+                    f"Vertex AI rejected the request ({code}). Either your ADC token "
+                    "expired — re-run `gcloud auth application-default login` — or your "
+                    "Google account lacks roles/aiplatform.user on the target project "
+                    "(default: pangea-chat-dev-llm). Ask Will to add you as a "
+                    "vertex_operator in devops/terraform/gcp/dev/llm."
+                )
+            if code in (429, 500, 503) and attempt < 5:
                 time.sleep(2 ** attempt)
                 continue
             raise
