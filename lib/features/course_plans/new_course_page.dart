@@ -20,7 +20,8 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -368,45 +369,37 @@ class NewCoursePageState extends State<NewCoursePage> {
                         onPressed: () => context.go(PRoutes.chatsList),
                       );
                     }
+
+                    final loadingIndicator = ValueListenableBuilder(
+                      valueListenable: _loadingMore,
+                      builder: (context, isLoadingMore, _) {
+                        if (!isLoadingMore && _fullyLoaded) {
+                          return const SizedBox.shrink();
+                        }
+                        return SizedBox(
+                          height: 60,
+                          child: Center(
+                            child: isLoadingMore
+                                ? const CircularProgressIndicator.adaptive()
+                                : !_fullyLoaded
+                                ? TextButton(
+                                    onPressed: _loadMore,
+                                    child: Text(L10n.of(context).loadMore),
+                                  )
+                                : const SizedBox(),
+                          ),
+                        );
+                      },
+                    );
+
                     return Expanded(
-                      child: ListView.builder(
+                      child: AddCourseTileList(
+                        content: courses
+                            .map((c) => CoursePlanAddCourseTileContent(c))
+                            .toList(),
+                        onTap: (index) => _onSelect(courses[index]),
+                        extraContent: [loadingIndicator],
                         controller: _scrollController,
-                        itemCount: courses.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == courses.length) {
-                            return ValueListenableBuilder(
-                              valueListenable: _loadingMore,
-                              builder: (context, isLoadingMore, _) {
-                                if (!isLoadingMore && _fullyLoaded) {
-                                  return const SizedBox.shrink();
-                                }
-                                return SizedBox(
-                                  height: 60,
-                                  child: Center(
-                                    child: isLoadingMore
-                                        ? const CircularProgressIndicator.adaptive()
-                                        : !_fullyLoaded
-                                        ? TextButton(
-                                            onPressed: _loadMore,
-                                            child: Text(
-                                              L10n.of(context).loadMore,
-                                            ),
-                                          )
-                                        : const SizedBox(),
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                          final course = courses[index];
-                          // Tapping the card scopes the map to this plan's
-                          // activities (world_v2); the Create button starts
-                          // the course.
-                          return AddCourseTileByCourse(
-                            course,
-                            onTap: () => _onSelect(course),
-                          );
-                        },
                       ),
                     );
                   },

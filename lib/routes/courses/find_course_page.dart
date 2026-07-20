@@ -17,7 +17,8 @@ import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
-import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -410,8 +411,17 @@ class FindCoursePageView extends StatelessWidget {
                   ]),
                   builder: (context, _) {
                     final courses = controller.visibleCourses.value;
+                    final filteredCourses = courses
+                        .where(
+                          (c) => controller.coursePlans.containsKey(c.courseId),
+                        )
+                        .toList();
+
                     final loading = controller.loading.value;
-                    if (courses.isEmpty &&
+                    final lang =
+                        controller.targetLanguageFilter.value?.langCode;
+
+                    if (filteredCourses.isEmpty &&
                         !loading &&
                         controller.nextBatch == null) {
                       return Padding(
@@ -447,49 +457,32 @@ class FindCoursePageView extends StatelessWidget {
                     }
 
                     return Expanded(
-                      child: ListView.builder(
+                      child: AddCourseTileList(
+                        content: filteredCourses
+                            .map((c) => PreviewAddCourseTileContent(c))
+                            .toList(),
+                        onTap: (index) => context.go(
+                          WorkspaceNav.openAddCoursePage(
+                            GoRouterState.of(context).uri,
+                            AddCourseSubpageEnum.browse,
+                            previewRoomId: filteredCourses[index].room.roomId,
+                            initialLanguageFilter: lang,
+                            allLanguagesFilter: lang == null,
+                          ),
+                        ),
+                        extraContent: [
+                          Center(
+                            child: loading
+                                ? CircularProgressIndicator.adaptive()
+                                : !controller.fullyLoaded
+                                ? TextButton(
+                                    onPressed: () => controller.loadMore(),
+                                    child: Text(L10n.of(context).loadMore),
+                                  )
+                                : SizedBox(),
+                          ),
+                        ],
                         controller: controller.scrollController,
-                        itemCount: courses.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == courses.length) {
-                            return Center(
-                              child: loading
-                                  ? CircularProgressIndicator.adaptive()
-                                  : !controller.fullyLoaded
-                                  ? TextButton(
-                                      onPressed: () => controller.loadMore(),
-                                      child: Text(L10n.of(context).loadMore),
-                                    )
-                                  : SizedBox(),
-                            );
-                          }
-                          final space = courses[index];
-                          final coursePlan =
-                              controller.coursePlans[space.courseId];
-                          // Only courses with a resolved plan reach this list,
-                          // so this is a defensive guard, not an expected
-                          // branch — an unrenderable course must never occupy a
-                          // row, or "load more" appears to do nothing.
-                          if (coursePlan == null) {
-                            return const SizedBox.shrink();
-                          }
-
-                          final lang =
-                              controller.targetLanguageFilter.value?.langCode;
-
-                          return AddCourseTileByPreview(
-                            space,
-                            onTap: () => context.go(
-                              WorkspaceNav.openAddCoursePage(
-                                GoRouterState.of(context).uri,
-                                AddCourseSubpageEnum.browse,
-                                previewRoomId: space.room.roomId,
-                                initialLanguageFilter: lang,
-                                allLanguagesFilter: lang == null,
-                              ),
-                            ),
-                          );
-                        },
                       ),
                     );
                   },

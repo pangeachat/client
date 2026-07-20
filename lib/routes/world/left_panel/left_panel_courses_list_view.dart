@@ -7,7 +7,8 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
-import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -91,38 +92,42 @@ class LeftPanelCoursesListView extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    return ListView(
+    return AddCourseTileList(
       padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 16.0),
-      children: [
-        for (final space in courses)
-          AddCourseTileByRoom(
-            space,
-            onTap: () => context.go(
-              WorkspaceNav.openCourse(GoRouterState.of(context).uri, space.id),
-            ),
-          ),
-        if (courses.isEmpty) ...[
-          const SizedBox(height: 4.0),
-          // "Add new course" section divider + the full add-course buttons.
-          Row(
-            children: [
-              Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  l10n.addNewCourse,
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
+      content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
+      onTap: (index) => context.go(
+        WorkspaceNav.openCourse(
+          GoRouterState.of(context).uri,
+          courses[index].id,
+        ),
+      ),
+      extraContent: courses.isEmpty
+          ? [
+              const SizedBox(height: 4.0),
+              // "Add new course" section divider + the full add-course buttons.
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(color: theme.colorScheme.outlineVariant),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      l10n.addNewCourse,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(color: theme.colorScheme.outlineVariant),
+                  ),
+                ],
               ),
-              Expanded(child: Divider(color: theme.colorScheme.outlineVariant)),
-            ],
-          ),
-          const SizedBox(height: 12.0),
-          const AddCourseOptions(),
-        ],
-      ],
+              const SizedBox(height: 12.0),
+              const AddCourseOptions(),
+            ]
+          : null,
     );
   }
 }
