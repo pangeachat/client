@@ -68,7 +68,7 @@ The design — what a pin means, why it lives in course state and never the ques
 
 ## Future Work
 
-File GitHub issues for these and link them here (use the `update-future-work` skill).
+File GitHub issues for these and link them here.
 
 - A persisted per-Mission star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
 - Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities satisfy*, not *when Missions are reachable*.
