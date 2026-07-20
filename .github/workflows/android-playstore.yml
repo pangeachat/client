@@ -1,5 +1,19 @@
-name: Deploy test to Android play store
+name: Build Android and upload to Play Store internal track
+# Signed appbundle uploaded to the Play Store internal track.
+# - Called from release.yaml with environment=production on every release.
+# - Manually dispatchable for staging (or production) test builds.
+# Promotion beyond the internal track happens by hand in the Play Console,
+# mirroring the TestFlight -> App Store human step on iOS.
 on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
   workflow_dispatch:
     inputs:
      environment:

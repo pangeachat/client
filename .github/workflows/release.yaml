@@ -158,6 +158,13 @@ jobs:
       environment: production
     secrets: inherit
 
+  deploy_playstore:
+    needs: create_release
+    uses: ./.github/workflows/android-playstore.yml
+    with:
+      environment: production
+    secrets: inherit
+
   build_linux:
     strategy:
       matrix:
