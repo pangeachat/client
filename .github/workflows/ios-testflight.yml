@@ -1,0 +1,79 @@
+name: Build iOS and upload to TestFlight
+# Signed iOS build via fastlane match, uploaded to TestFlight.
+# - Called from release.yaml with environment=production on every release.
+# - Manually dispatchable for staging (or production) test builds — replaces
+#   the laptop fastlane beta flow. The selected GitHub Environment supplies
+#   GOOGLE_SERVICES_PLIST and WEB_APP_ENV, so the Firebase project always
+#   matches the target environment (see deployment.instructions.md).
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Select the environment
+        options:
+          - staging
+          - production
+        default: "staging"
+
+permissions:
+  contents: read
+
+jobs:
+  build_ios_testflight:
+    runs-on: macos-15
+    environment: ${{ inputs.environment }}
+    env:
+      WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Use Xcode 16.4
+        run: sudo xcode-select --switch /Applications/Xcode_16.4.app
+      - run: brew install sqlcipher
+      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
+        with:
+          ruby-version: "3.3"
+      - name: Install Fastlane
+        run: gem install fastlane -NV
+      - name: Add Firebase Messaging
+        env:
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
+      - name: Update env files to selected environment
+        run: |
+          rm -f .env
+          echo "$WEB_APP_ENV" > .env
+      - name: Apply .env patch
+        run: git apply ./scripts/enable_mobile_env.patch
+      - name: Remove Emoji Font
+        run: |
+          rm -rf fonts/NotoEmoji
+          yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
+      - run: flutter pub get
+      - name: Build iOS (unsigned)
+        run: flutter build ios --release --no-codesign
+      - name: Load match repo deploy key
+        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd # v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.MATCH_GIT_SSH_KEY }}
+      - name: Sign and upload to TestFlight
+        working-directory: ios
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+          APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64 }}
+        run: fastlane ios release_candidate
