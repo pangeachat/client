@@ -73,7 +73,7 @@ void main() {
       'num_joined_members': 3,
       'world_readable': true,
       'guest_can_join': false,
-      if (courseId != null) 'course_id': courseId,
+      'course_id': ?courseId,
     };
 
     test('parses entries that carry a course id', () {
