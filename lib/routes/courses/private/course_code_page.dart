@@ -170,56 +170,55 @@ class CourseCodePageState extends State<CourseCodePage> {
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              padding: const EdgeInsets.all(20.0),
-              constraints: const BoxConstraints(maxWidth: 350),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
-                spacing: 16.0,
-                mainAxisSize: MainAxisSize.min,
+                spacing: 36.0,
                 children: [
-                  SvgPicture.network(
-                    "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                    width: 100.0,
-                    height: 100.0,
-                    colorFilter: ColorFilter.mode(
-                      theme.colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-
                   FocusTraversalGroup(
                     policy: OrderedTraversalPolicy(),
                     child: Column(
                       spacing: 16.0,
                       children: [
-                        Text(
-                          L10n.of(context).enterCodeToJoin,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         TextFormField(
                           controller: _codeController,
                           decoration: InputDecoration(
                             hintText: L10n.of(context).courseCodeHint,
+                            prefixIcon: Icon(Icons.key_outlined),
                           ),
                           onFieldSubmitted: (_) => _submit(),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                           ],
                         ),
-                        ElevatedButton(
-                          onPressed: _code.isNotEmpty ? _submit : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [Text(L10n.of(context).submit)],
+                        SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.tonalIcon(
+                            onPressed: _code.isNotEmpty ? _submit : null,
+                            label: Text(L10n.of(context).submit),
+                            style: FilledButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 14.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  SvgPicture.network(
+                    "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                    width: 120.0,
+                    height: 120.0,
+                    colorFilter: ColorFilter.mode(
+                      theme.colorScheme.onSurface,
+                      BlendMode.srcIn,
                     ),
                   ),
                 ],
