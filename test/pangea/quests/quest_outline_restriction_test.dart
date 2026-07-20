@@ -165,7 +165,7 @@ void main() {
         ],
         starsByActivity: {'a1': 2, 'a2': 5},
       );
-      expect(resolution.rollup['lo-1']!.stars, 2);
+      expect(resolution.forCourse('q1')!.rollup['lo-1']!.stars, 2);
     });
 
     test('the effective threshold clamps to the pinned set', () {
@@ -183,7 +183,7 @@ void main() {
         starsByActivity: const {},
       );
       // Unrestricted the ceiling would be 10 (4+6 = 10); pinned it is 4.
-      expect(resolution.rollup['lo-1']!.threshold, 4);
+      expect(resolution.forCourse('q1')!.rollup['lo-1']!.threshold, 4);
     });
   });
 }
