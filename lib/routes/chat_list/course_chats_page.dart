@@ -26,6 +26,7 @@ import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
 import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
+import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -58,7 +59,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     return room?.isSpace == true ? room : null;
   }
 
-  List<SpaceRoomsChunk$2>? discoveredChildren;
+  List<SpaceRoomsChunk$2>? _discoveredChildren;
   StreamSubscription? _roomSubscription;
   String? _nextBatch;
   bool noMoreRooms = false;
@@ -70,14 +71,13 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   void initState() {
     super.initState();
 
-    loadHierarchy(reload: true).then((_) => _joinDefaultChats());
+    final courseId = space?.coursePlan?.uuid;
+    if (courseId != null) {
+      loadCourse(courseId);
+    }
 
-    // Listen for changes to the activeSpace's hierarchy,
-    // and reload the hierarchy when they come through
-    _roomSubscription?.cancel();
-    _roomSubscription = widget.client.onSync.stream
-        .where(_hasHierarchyUpdate)
-        .listen((update) => loadHierarchy(reload: true, background: true));
+    loadHierarchy(reload: true).then((_) => _joinDefaultChats());
+    _setRoomSubscription();
   }
 
   @override
@@ -86,15 +86,15 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     // via the navigation rail, so this accounts for that
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
-      _roomSubscription?.cancel();
-      _roomSubscription = widget.client.onSync.stream
-          .where(_hasHierarchyUpdate)
-          .listen((update) => loadHierarchy(reload: true, background: true));
+      final courseId = space?.coursePlan?.uuid;
+      if (courseId != null) {
+        loadCourse(courseId);
+      }
 
-      discoveredChildren = null;
+      _setRoomSubscription();
+      _discoveredChildren = null;
       _nextBatch = null;
       noMoreRooms = false;
-
       loadHierarchy(reload: true);
     }
   }
@@ -117,32 +117,32 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   List<Room> joinedActivities() =>
       joinedRooms.where((r) => r.isActivitySession).toList();
 
-  List<SpaceRoomsChunk$2> get discoveredGroupChats => (discoveredChildren ?? [])
-      .where(
-        (chunk) =>
-            chunk.roomType == null ||
-            !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
-      )
-      .toList();
+  List<SpaceRoomsChunk$2> get discoveredGroupChats =>
+      (_discoveredChildren ?? [])
+          .where(
+            (chunk) =>
+                chunk.roomType == null ||
+                !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
+          )
+          .toList();
 
-  Map<String, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
+  Map<String, List<ExtendedSpaceRoomsChunk>> get discoveredActivities {
+    final discoveredChildren = _discoveredChildren;
     if (discoveredChildren == null) return {};
+
     final Map<String, List<ExtendedSpaceRoomsChunk>> sessionsMap = {};
 
     // world_v2: the discovered children are already scoped to this course
     // space, so any activity-session room here is a course activity — there is
     // no v1 course-plan activity-id set to filter against anymore.
-    for (final chunk in discoveredChildren!) {
-      if (chunk.roomType?.startsWith(PangeaRoomTypes.activitySession) != true) {
-        continue;
-      }
-
+    for (final chunk in discoveredChildren) {
       final summary = _roomSummaries[chunk.roomId];
+      Logs().w("Summary: $summary");
       if (summary == null) {
         continue;
       }
 
-      final activity = summary.activityPlan;
+      final activity = summary.resolvedActivityPlan;
       final roles = summary.activityRoles;
       final users = summary.joinedUsersWithRoles;
 
@@ -179,9 +179,27 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   List<Room> get joinedChats =>
       joinedRooms.where((room) => !room.isActivitySession).toList();
 
+  bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
+    if (space == null || !space!.isRoomAdmin) return false;
+    return !space!.dismissedDefaultChat(type) && !space!.hasDefaultChat(type);
+  }
+
+  void _setRoomSubscription() {
+    _roomSubscription?.cancel();
+    _roomSubscription = widget.client.onSync.stream
+        .where(
+          (u) => u.hasHierarchyUpdate(
+            roomId: widget.roomId,
+            userID: widget.client.userID,
+            childrenIds: childrenIds,
+          ),
+        )
+        .listen((update) => loadHierarchy(reload: true, background: true));
+  }
+
   Future<void> _joinDefaultChats() async {
-    if (discoveredChildren == null) return;
-    final found = List<SpaceRoomsChunk$2>.from(discoveredChildren!);
+    if (_discoveredChildren == null) return;
+    final found = List<SpaceRoomsChunk$2>.from(_discoveredChildren!);
 
     final List<Future> joinFutures = [];
     for (final chunk in found) {
@@ -202,7 +220,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
         widget.client
             .joinRoom(alias)
             .then((_) {
-              discoveredChildren?.remove(chunk);
+              _discoveredChildren?.remove(chunk);
             })
             .catchError((e, s) {
               ErrorHandler.logError(
@@ -231,15 +249,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
     try {
       await _loadHierarchy(activeSpace: space, reload: reload);
-
-      if (mounted) {
-        final futures = [
-          _loadRoomSummaries(),
-          if (space.coursePlan?.uuid != null)
-            loadCourse(space.coursePlan!.uuid),
-        ];
-        await Future.wait(futures);
-      }
+      await _loadRoomSummaries();
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (mounted) {
@@ -271,13 +281,8 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     final space = this.space;
     if (space == null) return;
 
-    final roomIds = space.spaceChildren
-        .map((c) => c.roomId)
-        .whereType<String>()
-        .toList();
-
     final roomSummariesResponse = await client.loadRoomSummaries(
-      roomIds,
+      childrenIds.toList(),
       l1Code: MatrixState.pangeaController.userController.userL1Code,
     );
     _roomSummaries = roomSummariesResponse;
@@ -298,15 +303,15 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     await activeSpace.postLoad();
 
     // The current number of rooms loaded for this space that are visible in the UI
-    final int prevLength = !reload ? (discoveredChildren?.length ?? 0) : 0;
+    final int prevLength = !reload ? (_discoveredChildren?.length ?? 0) : 0;
 
     // Failsafe to prevent too many calls to the server in a row
     int callsToServer = 0;
 
     List<SpaceRoomsChunk$2>? currentHierarchy =
-        discoveredChildren == null || reload
+        _discoveredChildren == null || reload
         ? null
-        : List.from(discoveredChildren!);
+        : List.from(_discoveredChildren!);
     String? currentNextBatch = reload ? null : _nextBatch;
 
     // Makes repeated calls to the server until 10 new visible rooms have
@@ -361,12 +366,68 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
       return;
     }
 
-    discoveredChildren = currentHierarchy;
-    discoveredChildren?.sort(_sortSpaceChildren);
+    _discoveredChildren = currentHierarchy;
+    _discoveredChildren?.sort(_sortSpaceChildren);
     _nextBatch = currentNextBatch;
   }
 
-  void onChatTap(Room room) async {
+  List<SpaceRoomsChunk$2> _filterHierarchyResponse(
+    Room space,
+    List<SpaceRoomsChunk$2> hierarchyResponse,
+  ) {
+    final List<SpaceRoomsChunk$2> filteredChildren = [];
+    for (final child in hierarchyResponse) {
+      if (child.roomId == widget.roomId) {
+        continue;
+      }
+
+      final room = space.client.getRoomById(child.roomId);
+      if (room != null && room.membership != Membership.leave) {
+        // If the room is already joined or invited, skip it
+        continue;
+      }
+
+      final isDuplicate = filteredChildren.any(
+        (filtered) => filtered.roomId == child.roomId,
+      );
+      if (isDuplicate) continue;
+
+      if (_includeSpaceChild(space, child)) {
+        filteredChildren.add(child);
+      }
+    }
+    return filteredChildren;
+  }
+
+  bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
+    if (!mounted) return false;
+    final bool isAnalyticsRoom =
+        hierarchyMember.roomType == PangeaRoomTypes.analytics;
+
+    final bool isMember = [
+      Membership.join,
+      Membership.invite,
+    ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
+
+    final bool isSuggested =
+        space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
+
+    return !isAnalyticsRoom && (isMember || isSuggested);
+  }
+
+  int _sortSpaceChildren(SpaceRoomsChunk$2 a, SpaceRoomsChunk$2 b) {
+    final bool aIsSpace = a.roomType == 'm.space';
+    final bool bIsSpace = b.roomType == 'm.space';
+
+    if (aIsSpace && !bIsSpace) {
+      return -1;
+    } else if (!aIsSpace && bIsSpace) {
+      return 1;
+    }
+    return 0;
+  }
+
+  Future<void> onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
       if (room.hasKnocked) {
         if (!mounted) return;
@@ -481,7 +542,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     NavigationUtil.goToSpaceRoute(room.id, [], context);
   }
 
-  void joinChildRoom(SpaceRoomsChunk$2 item) async {
+  Future<void> joinChildRoom(SpaceRoomsChunk$2 item) async {
     final space = this.space;
     final joinResp = await PublicRoomBottomSheet.show(
       context: context,
@@ -499,7 +560,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     final joinedRoomId = await handler.handle(context);
     if (mounted && joinedRoomId != null) {
       setState(() {
-        discoveredChildren?.remove(item);
+        _discoveredChildren?.remove(item);
       });
       NavigationUtil.goToSpaceRoute(joinedRoomId, [], context);
     }
@@ -543,149 +604,22 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     NavigationUtil.goToSpaceRoute(roomId, const [], context);
   }
 
-  bool _includeSpaceChild(Room space, SpaceRoomsChunk$2 hierarchyMember) {
-    if (!mounted) return false;
-    final bool isAnalyticsRoom =
-        hierarchyMember.roomType == PangeaRoomTypes.analytics;
-
-    final bool isMember = [
-      Membership.join,
-      Membership.invite,
-    ].contains(widget.client.getRoomById(hierarchyMember.roomId)?.membership);
-
-    final bool isSuggested =
-        space.spaceChildSuggestionStatus[hierarchyMember.roomId] ?? true;
-
-    return !isAnalyticsRoom && (isMember || isSuggested);
-  }
-
-  List<SpaceRoomsChunk$2> _filterHierarchyResponse(
-    Room space,
-    List<SpaceRoomsChunk$2> hierarchyResponse,
-  ) {
-    final List<SpaceRoomsChunk$2> filteredChildren = [];
-    for (final child in hierarchyResponse) {
-      if (child.roomId == widget.roomId) {
-        continue;
-      }
-
-      final room = space.client.getRoomById(child.roomId);
-      if (room != null && room.membership != Membership.leave) {
-        // If the room is already joined or invited, skip it
-        continue;
-      }
-
-      final isDuplicate = filteredChildren.any(
-        (filtered) => filtered.roomId == child.roomId,
-      );
-      if (isDuplicate) continue;
-
-      if (_includeSpaceChild(space, child)) {
-        filteredChildren.add(child);
-      }
-    }
-    return filteredChildren;
-  }
-
-  /// Used to filter out sync updates with hierarchy updates for the active
-  /// space so that the view can be auto-reloaded in the room subscription
-  bool _hasHierarchyUpdate(SyncUpdate update) {
-    final joinUpdate = update.rooms?.join;
-    final inviteUpdate = update.rooms?.invite;
-    final leaveUpdate = update.rooms?.leave;
-    if (joinUpdate == null && leaveUpdate == null && inviteUpdate == null) {
-      return false;
-    }
-
-    final joinedRooms = joinUpdate?.entries
-        .where((e) => childrenIds.contains(e.key))
-        .map((e) => e.value.timeline?.events)
-        .whereType<List<MatrixEvent>>();
-
-    final invitedRooms = inviteUpdate?.entries
-        .where((e) => childrenIds.contains(e.key))
-        .map((e) => e.value.inviteState)
-        .whereType<List<StrippedStateEvent>>();
-
-    final leftRooms = leaveUpdate?.entries
-        .where((e) => childrenIds.contains(e.key))
-        .map((e) => e.value.timeline?.events)
-        .whereType<List<MatrixEvent>>();
-
-    final bool hasJoinedRoom =
-        joinedRooms?.any(
-          (events) => events.any(
-            (e) =>
-                e.senderId == widget.client.userID &&
-                e.type == EventTypes.RoomMember,
-          ),
-        ) ??
-        false;
-
-    final bool hasLeftRoom =
-        leftRooms?.any(
-          (events) => events.any(
-            (e) =>
-                e.senderId == widget.client.userID &&
-                e.type == EventTypes.RoomMember,
-          ),
-        ) ??
-        false;
-
-    if (hasJoinedRoom || hasLeftRoom || (invitedRooms?.isNotEmpty ?? false)) {
-      return true;
-    }
-
-    final joinTimeline = joinUpdate?[widget.roomId]?.timeline?.events;
-    final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
-    if (joinTimeline == null && leaveTimeline == null) return false;
-
-    final bool hasJoinUpdate =
-        joinTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
-        false;
-    final bool hasLeaveUpdate =
-        leaveTimeline?.any((event) => event.type == EventTypes.SpaceChild) ??
-        false;
-    return hasJoinUpdate || hasLeaveUpdate;
-  }
-
-  int _sortSpaceChildren(SpaceRoomsChunk$2 a, SpaceRoomsChunk$2 b) {
-    final bool aIsSpace = a.roomType == 'm.space';
-    final bool bIsSpace = b.roomType == 'm.space';
-
-    if (aIsSpace && !bIsSpace) {
-      return -1;
-    } else if (!aIsSpace && bIsSpace) {
-      return 1;
-    }
-    return 0;
-  }
-
-  bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
-    if (space == null || !space!.isRoomAdmin) return false;
-    return !space!.dismissedDefaultChat(type) && !space!.hasDefaultChat(type);
-  }
-
   Future<void> dismissDefaultChatCreation(CourseDefaultChatsEnum type) async {
-    if (space == null) {
-      throw Exception("Room is null");
-    }
-
-    await space!.dismissDefaultChatCreation(type);
+    final space = this.space;
+    if (space == null) throw Exception("Room is null");
+    await space.dismissDefaultChatCreation(type);
   }
 
   Future<void> createDefaultChat(CourseDefaultChatsEnum type) async {
-    if (space == null) {
-      throw Exception("Room is null");
-    }
-
-    final roomId = await space!.addDefaultChat(
+    final space = this.space;
+    if (space == null) throw Exception("Room is null");
+    final roomId = await space.addDefaultChat(
       type: type,
       name: type.title(L10n.of(context)),
     );
 
     GoogleAnalytics.createChat(roomId);
-    final classCode = space!.joinCode;
+    final classCode = space.joinCode;
     if (classCode != null) {
       GoogleAnalytics.addParent(roomId, classCode);
     }
