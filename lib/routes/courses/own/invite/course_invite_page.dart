@@ -207,242 +207,239 @@ class CourseInvitePageController extends State<CourseInvitePage>
     final client = Matrix.of(context).client;
 
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(maxWidth: 750),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                course != null
-                    ? Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppConfig.gold),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          spacing: 16.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              spacing: 10.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.map_outlined, size: 40.0),
-                                Flexible(
-                                  child: Text(
-                                    course!.title,
-                                    style: theme.textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            CourseInfoChips(
-                              widget.courseId,
-                              fontSize: 12.0,
-                              iconSize: 12.0,
-                            ),
-                          ],
-                        ),
-                      )
-                    : loadingCourse
-                    ? const CircularProgressIndicator.adaptive()
-                    : const SizedBox(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    spacing: 16.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          const avatarSpace = avatarSize + 8.0;
-                          final availableSpace = constraints.maxWidth - 24.0;
-
-                          final visibleAvatars = min(
-                            3,
-                            (availableSpace / avatarSpace).floor() - 2,
-                          );
-
-                          return Row(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          constraints: const BoxConstraints(maxWidth: 750),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              course != null
+                  ? Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppConfig.gold),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        spacing: 16.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            spacing: 10.0,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FutureBuilder(
-                                future: client.getProfileFromUserId(
-                                  client.userID!,
+                              const Icon(Icons.map_outlined, size: 40.0),
+                              Flexible(
+                                child: Text(
+                                  course!.title,
+                                  style: theme.textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                builder: (context, snapshot) {
-                                  return Avatar(
-                                    size: avatarSize,
-                                    mxContent: snapshot.data?.avatarUrl,
-                                    name:
-                                        snapshot.data?.displayName ??
-                                        client.userID!.localpart,
-                                    userId: client.userID!,
-                                  );
-                                },
                               ),
-                              Avatar(
-                                userId: BotName.byEnvironment,
-                                size: avatarSize,
-                              ),
-                              ...List.generate(visibleAvatars, (index) {
-                                return CircleAvatar(
-                                  radius: avatarSize / 2,
-                                  backgroundColor: AppConfig.gold.withAlpha(80),
-                                  child: const Icon(Icons.person, size: 20.0),
-                                );
-                              }),
-                              const Icon(Icons.more_horiz, size: 24.0),
                             ],
-                          );
-                        },
+                          ),
+                          CourseInfoChips(
+                            widget.courseId,
+                            fontSize: 12.0,
+                            iconSize: 12.0,
+                          ),
+                        ],
                       ),
-                      Text(
-                        L10n.of(context).courseStartDesc,
-                        style: theme.textTheme.titleMedium,
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  spacing: 24.0,
+                    )
+                  : loadingCourse
+                  ? const CircularProgressIndicator.adaptive()
+                  : const SizedBox(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  spacing: 16.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      constraints: BoxConstraints(maxWidth: 400.0),
-                      child: Column(
-                        spacing: 8.0,
-                        children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).visibilityToggleTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _isPublic,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => _setVisibility(v),
-                                    ),
-                                    activeThumbColor: AppConfig.success,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).requireAnalyticsAccessTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _requireAnalyticsAccess,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () =>
-                                          _setRequireAnalyticsAccess(v),
-                                    ),
-                                    activeThumbColor: AppConfig.success,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        final resp = await showFutureLoadingDialog(
-                          context: context,
-                          future: getSpaceId,
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        const avatarSpace = avatarSize + 8.0;
+                        final availableSpace = constraints.maxWidth - 24.0;
+
+                        final visibleAvatars = min(
+                          3,
+                          (availableSpace / avatarSpace).floor() - 2,
                         );
-                        if (mounted && !resp.isError) {
-                          // world_v2: token nav, not the legacy /rooms/spaces
-                          // path. go_router runs the legacy redirect once, but
-                          // that path needs two passes to reach its token form,
-                          // so it stranded on a blank /courses/:id page (#7082).
-                          context.go(
-                            WorkspaceNav.openCoursePageFor(
-                              GoRouterState.of(context).uri,
-                              resp.result!,
-                              RoomSubpageEnum.invite,
+
+                        return Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            FutureBuilder(
+                              future: client.getProfileFromUserId(
+                                client.userID!,
+                              ),
+                              builder: (context, snapshot) {
+                                return Avatar(
+                                  size: avatarSize,
+                                  mxContent: snapshot.data?.avatarUrl,
+                                  name:
+                                      snapshot.data?.displayName ??
+                                      client.userID!.localpart,
+                                  userId: client.userID!,
+                                );
+                              },
                             ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.upload_file),
-                          Text(L10n.of(context).inviteYourFriends),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        final resp = await showFutureLoadingDialog(
-                          context: context,
-                          future: getSpaceId,
+                            Avatar(
+                              userId: BotName.byEnvironment,
+                              size: avatarSize,
+                            ),
+                            ...List.generate(visibleAvatars, (index) {
+                              return CircleAvatar(
+                                radius: avatarSize / 2,
+                                backgroundColor: AppConfig.gold.withAlpha(80),
+                                child: const Icon(Icons.person, size: 20.0),
+                              );
+                            }),
+                            const Icon(Icons.more_horiz, size: 24.0),
+                          ],
                         );
-                        if (mounted && !resp.isError) {
-                          // world_v2: token nav to the course card (see #7082).
-                          context.go(
-                            WorkspaceNav.openCourse(
-                              GoRouterState.of(context).uri,
-                              resp.result!,
-                              tab: SpaceSettingsTabs.course,
-                            ),
-                          );
-                        }
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).playWithAI)],
-                      ),
+                    ),
+                    Text(
+                      L10n.of(context).courseStartDesc,
+                      style: theme.textTheme.titleMedium,
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Column(
+                spacing: 24.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    constraints: BoxConstraints(maxWidth: 400.0),
+                    child: Column(
+                      spacing: 8.0,
+                      children: [
+                        Row(
+                          spacing: 8.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                L10n.of(context).visibilityToggleTitle,
+                                style: theme.textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            FutureBuilder(
+                              future: _isPublic,
+                              builder: (context, snapshot) {
+                                final value = snapshot.data ?? true;
+                                return Switch(
+                                  value: value,
+                                  onChanged: (v) => showFutureLoadingDialog(
+                                    context: context,
+                                    future: () => _setVisibility(v),
+                                  ),
+                                  activeThumbColor: AppConfig.success,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                        Row(
+                          spacing: 8.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                L10n.of(context).requireAnalyticsAccessTitle,
+                                style: theme.textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            FutureBuilder(
+                              future: _requireAnalyticsAccess,
+                              builder: (context, snapshot) {
+                                final value = snapshot.data ?? true;
+                                return Switch(
+                                  value: value,
+                                  onChanged: (v) => showFutureLoadingDialog(
+                                    context: context,
+                                    future: () => _setRequireAnalyticsAccess(v),
+                                  ),
+                                  activeThumbColor: AppConfig.success,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final resp = await showFutureLoadingDialog(
+                        context: context,
+                        future: getSpaceId,
+                      );
+                      if (mounted && !resp.isError) {
+                        // world_v2: token nav, not the legacy /rooms/spaces
+                        // path. go_router runs the legacy redirect once, but
+                        // that path needs two passes to reach its token form,
+                        // so it stranded on a blank /courses/:id page (#7082).
+                        context.go(
+                          WorkspaceNav.openCoursePageFor(
+                            GoRouterState.of(context).uri,
+                            resp.result!,
+                            RoomSubpageEnum.invite,
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.upload_file),
+                        Text(L10n.of(context).inviteYourFriends),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final resp = await showFutureLoadingDialog(
+                        context: context,
+                        future: getSpaceId,
+                      );
+                      if (mounted && !resp.isError) {
+                        // world_v2: token nav to the course card (see #7082).
+                        context.go(
+                          WorkspaceNav.openCourse(
+                            GoRouterState.of(context).uri,
+                            resp.result!,
+                            tab: SpaceSettingsTabs.course,
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text(L10n.of(context).playWithAI)],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

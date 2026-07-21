@@ -358,114 +358,111 @@ class FindCoursePageView extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            constraints: const BoxConstraints(maxWidth: 450),
-            child: Column(
-              spacing: 20.0,
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: controller.targetLanguageFilter,
-                  builder: (context, value, _) {
-                    return CourseLanguageFilter(
-                      value: controller.targetLanguageFilter.value,
-                      onChanged: controller.setTargetLanguageFilter,
-                    );
-                  },
-                ),
-                ListenableBuilder(
-                  listenable: Listenable.merge([
-                    controller.visibleCourses,
-                    controller.loading,
-                    controller.searchController,
-                  ]),
-                  builder: (context, _) {
-                    final courses = controller.visibleCourses.value;
-                    final loading = controller.loading.value;
-                    if (courses.isEmpty &&
-                        !loading &&
-                        controller.nextBatch == null) {
-                      return Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: Column(
-                          spacing: 12.0,
-                          children: [
-                            const BotFace(
-                              expression: BotExpression.addled,
-                              width: Avatar.defaultSize * 1.5,
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          constraints: const BoxConstraints(maxWidth: 450),
+          child: Column(
+            spacing: 20.0,
+            children: [
+              ValueListenableBuilder(
+                valueListenable: controller.targetLanguageFilter,
+                builder: (context, value, _) {
+                  return CourseLanguageFilter(
+                    value: controller.targetLanguageFilter.value,
+                    onChanged: controller.setTargetLanguageFilter,
+                  );
+                },
+              ),
+              ListenableBuilder(
+                listenable: Listenable.merge([
+                  controller.visibleCourses,
+                  controller.loading,
+                  controller.searchController,
+                ]),
+                builder: (context, _) {
+                  final courses = controller.visibleCourses.value;
+                  final loading = controller.loading.value;
+                  if (courses.isEmpty &&
+                      !loading &&
+                      controller.nextBatch == null) {
+                    return Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Column(
+                        spacing: 12.0,
+                        children: [
+                          const BotFace(
+                            expression: BotExpression.addled,
+                            width: Avatar.defaultSize * 1.5,
+                          ),
+                          Text(
+                            L10n.of(context).noPublicCoursesFound,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                          ElevatedButton(
+                            onPressed: controller.startNewCourse,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
                             ),
-                            Text(
-                              L10n.of(context).noPublicCoursesFound,
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.bodyLarge,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text(L10n.of(context).startOwn)],
                             ),
-                            ElevatedButton(
-                              onPressed: controller.startNewCourse,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [Text(L10n.of(context).startOwn)],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-
-                    return Expanded(
-                      child: ListView.builder(
-                        controller: controller.scrollController,
-                        itemCount: courses.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == courses.length) {
-                            return Center(
-                              child: loading
-                                  ? CircularProgressIndicator.adaptive()
-                                  : !controller.fullyLoaded
-                                  ? TextButton(
-                                      onPressed: () =>
-                                          controller.loadMore(loadMore: true),
-                                      child: Text(L10n.of(context).loadMore),
-                                    )
-                                  : SizedBox(),
-                            );
-                          }
-                          final space = courses[index];
-                          if (controller.coursePlans[space.courseId] != null) {
-                            return AddCourseTile(
-                              chunk: space,
-                              coursePlan:
-                                  controller.coursePlans[space.courseId]!,
-                              onTap: () => context.go(
-                                WorkspaceNav.openAddCoursePage(
-                                  GoRouterState.of(context).uri,
-                                  AddCourseSubpageEnum.browse,
-                                  previewRoomId: space.room.roomId,
-                                  initialLanguageFilter: controller
-                                      .targetLanguageFilter
-                                      .value
-                                      ?.langCode,
-                                ),
-                              ),
-                              isKnock:
-                                  space.room.joinRule == JoinRules.knock.name,
-                            );
-                          }
-                          return SizedBox();
-                        },
+                          ),
+                        ],
                       ),
                     );
-                  },
-                ),
-              ],
-            ),
+                  }
+
+                  return Expanded(
+                    child: ListView.builder(
+                      controller: controller.scrollController,
+                      itemCount: courses.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == courses.length) {
+                          return Center(
+                            child: loading
+                                ? CircularProgressIndicator.adaptive()
+                                : !controller.fullyLoaded
+                                ? TextButton(
+                                    onPressed: () =>
+                                        controller.loadMore(loadMore: true),
+                                    child: Text(L10n.of(context).loadMore),
+                                  )
+                                : SizedBox(),
+                          );
+                        }
+                        final space = courses[index];
+                        if (controller.coursePlans[space.courseId] != null) {
+                          return AddCourseTile(
+                            chunk: space,
+                            coursePlan: controller.coursePlans[space.courseId]!,
+                            onTap: () => context.go(
+                              WorkspaceNav.openAddCoursePage(
+                                GoRouterState.of(context).uri,
+                                AddCourseSubpageEnum.browse,
+                                previewRoomId: space.room.roomId,
+                                initialLanguageFilter: controller
+                                    .targetLanguageFilter
+                                    .value
+                                    ?.langCode,
+                              ),
+                            ),
+                            isKnock:
+                                space.room.joinRule == JoinRules.knock.name,
+                          );
+                        }
+                        return SizedBox();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -459,127 +459,122 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
           ),
         Align(
           alignment: Alignment.bottomCenter,
-          child: SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  // The floating search bar rides here, above the rounded box,
-                  // keeping its gap at every cavity height (the doc's "rides
-                  // upward as the widget expands").
-                  if (widget.topAttachment != null) ...[
-                    widget.topAttachment!,
-                    const SizedBox(height: 8.0),
-                  ],
-                  Material(
-                    color: theme.colorScheme.surface,
-                    elevation: 4,
-                    shadowColor: Colors.black26,
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    clipBehavior: Clip.antiAlias,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          AppConfig.borderRadius,
-                        ),
-                        border: Border.all(
-                          color: theme.colorScheme.outlineVariant,
-                          width: 1,
-                        ),
+          // child: SafeArea(
+          //   top: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // The floating search bar rides here, above the rounded box,
+                // keeping its gap at every cavity height (the doc's "rides
+                // upward as the widget expands").
+                if (widget.topAttachment != null) ...[
+                  widget.topAttachment!,
+                  const SizedBox(height: 8.0),
+                ],
+                Material(
+                  color: theme.colorScheme.surface,
+                  elevation: 4,
+                  shadowColor: Colors.black26,
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                  clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (widget.cavityChild != null)
-                            AnimatedContainer(
-                              duration: _animationDuration,
-                              curve: Curves.easeOut,
-                              height: cavityHeightPx,
-                              child: cavityHeightPx <= 0
-                                  ? null
-                                  : ClipRect(
-                                      child: _NavCavity(
-                                        onHandleTap: _toggleHandle,
-                                        // At peek, a tap anywhere on the sheet
-                                        // (not claimed by an inner button)
-                                        // expands to full — the peek is an
-                                        // entry point, not a surface to
-                                        // interact with (#7609).
-                                        onBodyTap:
-                                            widget.cavityDefaultsToPeek &&
-                                                _restState ==
-                                                    NavCavityHeight.collapsed
-                                            ? () =>
-                                                  _openAt(NavCavityHeight.full)
-                                            : null,
-                                        onDragStart: _onDragStart,
-                                        onDragUpdate: _onDragUpdate,
-                                        onDragEnd: _onDragEnd,
-                                        child: widget.cavityChild!,
-                                      ),
-                                    ),
-                            ),
-                          SizedBox(
-                            height: _railHeight,
-                            child: Semantics(
-                              label: l10n.navOptionsLabel,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  PangeaIconButton(
-                                    selected:
-                                        widget.activeSection ==
-                                        AppSection.world,
-                                    tooltip: l10n.world,
-                                    onPressed: () =>
-                                        _onRailItemTap(AppSection.world),
-                                  ),
-                                  _RailButton(
-                                    icon: Icons.forum_outlined,
-                                    selectedIcon: Icons.forum,
-                                    selected:
-                                        widget.activeSection ==
-                                        AppSection.chats,
-                                    tooltip: l10n.allChats,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.chats),
-                                  ),
-                                  _RailButton(
-                                    icon: Icons.map_outlined,
-                                    selectedIcon: Icons.map,
-                                    // The specific course's highlight (the
-                                    // shortcut) outranks the section icon.
-                                    selected:
-                                        widget.activeSection ==
-                                            AppSection.courses &&
-                                        !widget.courseShortcutSelected,
-                                    tooltip: l10n.courses,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.courses),
-                                  ),
-                                  _CourseShortcutButton(
-                                    icon: widget.courseShortcutIcon,
-                                    label: widget.courseShortcutLabel,
-                                    selected: widget.courseShortcutSelected,
-                                    onTap: _onCourseShortcutTap,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      border: Border.all(
+                        color: theme.colorScheme.outlineVariant,
+                        width: 1,
                       ),
                     ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (widget.cavityChild != null)
+                          AnimatedContainer(
+                            duration: _animationDuration,
+                            curve: Curves.easeOut,
+                            height: cavityHeightPx,
+                            child: cavityHeightPx <= 0
+                                ? null
+                                : ClipRect(
+                                    child: _NavCavity(
+                                      onHandleTap: _toggleHandle,
+                                      // At peek, a tap anywhere on the sheet
+                                      // (not claimed by an inner button)
+                                      // expands to full — the peek is an
+                                      // entry point, not a surface to
+                                      // interact with (#7609).
+                                      onBodyTap:
+                                          widget.cavityDefaultsToPeek &&
+                                              _restState ==
+                                                  NavCavityHeight.collapsed
+                                          ? () => _openAt(NavCavityHeight.full)
+                                          : null,
+                                      onDragStart: _onDragStart,
+                                      onDragUpdate: _onDragUpdate,
+                                      onDragEnd: _onDragEnd,
+                                      child: widget.cavityChild!,
+                                    ),
+                                  ),
+                          ),
+                        SizedBox(
+                          height: _railHeight,
+                          child: Semantics(
+                            label: l10n.navOptionsLabel,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                PangeaIconButton(
+                                  selected:
+                                      widget.activeSection == AppSection.world,
+                                  tooltip: l10n.world,
+                                  onPressed: () =>
+                                      _onRailItemTap(AppSection.world),
+                                ),
+                                _RailButton(
+                                  icon: Icons.forum_outlined,
+                                  selectedIcon: Icons.forum,
+                                  selected:
+                                      widget.activeSection == AppSection.chats,
+                                  tooltip: l10n.allChats,
+                                  onTap: () => _onRailItemTap(AppSection.chats),
+                                ),
+                                _RailButton(
+                                  icon: Icons.map_outlined,
+                                  selectedIcon: Icons.map,
+                                  // The specific course's highlight (the
+                                  // shortcut) outranks the section icon.
+                                  selected:
+                                      widget.activeSection ==
+                                          AppSection.courses &&
+                                      !widget.courseShortcutSelected,
+                                  tooltip: l10n.courses,
+                                  onTap: () =>
+                                      _onRailItemTap(AppSection.courses),
+                                ),
+                                _CourseShortcutButton(
+                                  icon: widget.courseShortcutIcon,
+                                  label: widget.courseShortcutLabel,
+                                  selected: widget.courseShortcutSelected,
+                                  onTap: _onCourseShortcutTap,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
+        // ),
       ],
     );
   }

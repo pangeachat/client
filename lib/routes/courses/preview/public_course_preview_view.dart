@@ -51,253 +51,244 @@ class PublicCoursePreviewView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
       ),
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500.0),
-            child: ValueListenableBuilder(
-              valueListenable: controller.objectivesProvider.questLoader,
-              builder: (context, state, _) {
-                if (controller.loading) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  );
-                }
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 500.0),
+          child: ValueListenableBuilder(
+            valueListenable: controller.objectivesProvider.questLoader,
+            builder: (context, state, _) {
+              if (controller.loading) {
+                return const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                );
+              }
 
-                if (controller.hasError) {
-                  return Center(
-                    child: ErrorIndicator(
-                      message: L10n.of(context).oopsSomethingWentWrong,
-                    ),
-                  );
-                }
+              if (controller.hasError) {
+                return Center(
+                  child: ErrorIndicator(
+                    message: L10n.of(context).oopsSomethingWentWrong,
+                  ),
+                );
+              }
 
-                final course = controller.course!;
-                final summary = controller.roomSummary!;
+              final course = controller.course!;
+              final summary = controller.roomSummary!;
 
-                final roomAvatar = summary.avatarUrl;
-                final avatarUrl = roomAvatar != null
-                    ? Uri.tryParse(roomAvatar)
-                    : null;
+              final roomAvatar = summary.avatarUrl;
+              final avatarUrl = roomAvatar != null
+                  ? Uri.tryParse(roomAvatar)
+                  : null;
 
-                final displayname = summary.displayName ?? course.name;
+              final displayname = summary.displayName ?? course.name;
 
-                final userController =
-                    MatrixState.pangeaController.userController;
+              final userController =
+                  MatrixState.pangeaController.userController;
 
-                final cefrEntry = course.targetCefr;
-                final courseCefr = cefrEntry != null
-                    ? LanguageLevelTypeEnum.fromString(cefrEntry)
-                    : null;
+              final cefrEntry = course.targetCefr;
+              final courseCefr = cefrEntry != null
+                  ? LanguageLevelTypeEnum.fromString(cefrEntry)
+                  : null;
 
-                final cefrMatch = courseCefr == null
-                    ? CefrMatchResult.none
-                    : computeCefrMatch(
-                        context: context,
-                        userLevel: userController.userCefrLevel,
-                        courseLevel: courseCefr,
-                        courseLanguage: course.targetLanguage,
-                        userLanguage: userController.userL2Code,
-                      );
+              final cefrMatch = courseCefr == null
+                  ? CefrMatchResult.none
+                  : computeCefrMatch(
+                      context: context,
+                      userLevel: userController.userCefrLevel,
+                      courseLevel: courseCefr,
+                      courseLanguage: course.targetLanguage,
+                      userLanguage: userController.userL2Code,
+                    );
 
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 12.0,
-                          left: 12.0,
-                          right: 12.0,
-                        ),
-                        child: ListView.builder(
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            if (index == 0) {
-                              return Column(
-                                spacing: 8.0,
-                                children: [
-                                  ClipPath(
-                                    clipper: MapClipper(),
-                                    child: ImageByUrl(
-                                      imageUrl: avatarUrl,
-                                      width: 100.0,
+              return Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 12.0,
+                        left: 12.0,
+                        right: 12.0,
+                      ),
+                      child: ListView.builder(
+                        itemCount: 2,
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return Column(
+                              spacing: 8.0,
+                              children: [
+                                ClipPath(
+                                  clipper: MapClipper(),
+                                  child: ImageByUrl(
+                                    imageUrl: avatarUrl,
+                                    width: 100.0,
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    replacement: Avatar(
+                                      name: displayname,
+                                      size: 100.0,
                                       borderRadius: BorderRadius.circular(0.0),
-                                      replacement: Avatar(
-                                        name: displayname,
-                                        size: 100.0,
-                                        borderRadius: BorderRadius.circular(
-                                          0.0,
-                                        ),
-                                      ),
                                     ),
                                   ),
-                                  Text(
-                                    displayname,
-                                    style: const TextStyle(
-                                      fontSize: titleFontSize,
-                                    ),
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  displayname,
+                                  style: const TextStyle(
+                                    fontSize: titleFontSize,
                                   ),
-                                  if (summary.adminUserIDs.isNotEmpty)
-                                    _CourseAdminDisplay(summary),
-                                  Text(
-                                    course.description,
-                                    style: const TextStyle(
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                if (summary.adminUserIDs.isNotEmpty)
+                                  _CourseAdminDisplay(summary),
+                                Text(
+                                  course.description,
+                                  style: const TextStyle(
+                                    fontSize: descFontSize,
+                                  ),
+                                ),
+                                Wrap(
+                                  spacing: 8.0,
+                                  runSpacing: 8.0,
+                                  alignment: WrapAlignment.center,
+                                  children: [
+                                    CourseInfoChip(
+                                      icon: Icons.language,
+                                      text: course.targetLanguage.toUpperCase(),
                                       fontSize: descFontSize,
+                                      iconSize: smallIconSize,
                                     ),
+                                    if (courseCefr != null)
+                                      CourseInfoChip(
+                                        icon: Icons.school,
+                                        text: courseCefr.title(context),
+                                        fontSize: descFontSize,
+                                        iconSize: smallIconSize,
+                                        highlightColor: cefrMatch.chipColor,
+                                      ),
+                                    CourseInfoChip(
+                                      icon: Icons.location_on,
+                                      text: L10n.of(
+                                        context,
+                                      ).numModules(course.sequence.length),
+                                      fontSize: descFontSize,
+                                      iconSize: smallIconSize,
+                                    ),
+                                    CourseInfoChip(
+                                      icon: Icons.person,
+                                      text: L10n.of(context).countParticipants(
+                                        summary.joinedMemberCount,
+                                      ),
+                                      fontSize: descFontSize,
+                                      iconSize: smallIconSize,
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 4.0,
+                                    bottom: 8.0,
                                   ),
-                                  Wrap(
-                                    spacing: 8.0,
-                                    runSpacing: 8.0,
-                                    alignment: WrapAlignment.center,
+                                  child: Row(
+                                    spacing: 4.0,
                                     children: [
-                                      CourseInfoChip(
-                                        icon: Icons.language,
-                                        text: course.targetLanguage
-                                            .toUpperCase(),
-                                        fontSize: descFontSize,
-                                        iconSize: smallIconSize,
+                                      const Icon(
+                                        Icons.map,
+                                        size: largeIconSize,
                                       ),
-                                      if (courseCefr != null)
-                                        CourseInfoChip(
-                                          icon: Icons.school,
-                                          text: courseCefr.title(context),
-                                          fontSize: descFontSize,
-                                          iconSize: smallIconSize,
-                                          highlightColor: cefrMatch.chipColor,
+                                      Text(
+                                        L10n.of(context).coursePlan,
+                                        style: const TextStyle(
+                                          fontSize: titleFontSize,
                                         ),
-                                      CourseInfoChip(
-                                        icon: Icons.location_on,
-                                        text: L10n.of(
-                                          context,
-                                        ).numModules(course.sequence.length),
-                                        fontSize: descFontSize,
-                                        iconSize: smallIconSize,
-                                      ),
-                                      CourseInfoChip(
-                                        icon: Icons.person,
-                                        text: L10n.of(context)
-                                            .countParticipants(
-                                              summary.joinedMemberCount,
-                                            ),
-                                        fontSize: descFontSize,
-                                        iconSize: smallIconSize,
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 4.0,
-                                      bottom: 8.0,
-                                    ),
-                                    child: Row(
-                                      spacing: 4.0,
-                                      children: [
-                                        const Icon(
-                                          Icons.map,
-                                          size: largeIconSize,
-                                        ),
-                                        Text(
-                                          L10n.of(context).coursePlan,
-                                          style: const TextStyle(
-                                            fontSize: titleFontSize,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }
-
-                            // world_v2: render the plan from the v3 quest
-                            // outline (read-only preview, no room). shrinkWrap:
-                            // embedded in the page's outer scroll view.
-                            return CourseObjectivesList(
-                              questId: course.id,
-                              shrinkWrap: true,
-                              objectivesProvider: controller.objectivesProvider,
+                                ),
+                              ],
                             );
-                          },
-                        ),
+                          }
+
+                          // world_v2: render the plan from the v3 quest
+                          // outline (read-only preview, no room). shrinkWrap:
+                          // embedded in the page's outer scroll view.
+                          return CourseObjectivesList(
+                            questId: course.id,
+                            shrinkWrap: true,
+                            objectivesProvider: controller.objectivesProvider,
+                          );
+                        },
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        border: Border(
-                          top: BorderSide(
-                            color: theme.dividerColor,
-                            width: 1.0,
-                          ),
-                        ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surface,
+                      border: Border(
+                        top: BorderSide(color: theme.dividerColor, width: 1.0),
                       ),
-                      padding: const EdgeInsets.all(12.0),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Column(
-                          spacing: 8.0,
-                          children: [
-                            if (cefrMatch.message != null)
-                              InlineTooltip(
-                                message: cefrMatch.message!,
-                                isClosed: false,
-                                backgroundColor: cefrMatch.chipColor,
-                                icon: cefrMatch.icon,
+                    ),
+                    padding: const EdgeInsets.all(12.0),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Column(
+                        spacing: 8.0,
+                        children: [
+                          if (cefrMatch.message != null)
+                            InlineTooltip(
+                              message: cefrMatch.message!,
+                              isClosed: false,
+                              backgroundColor: cefrMatch.chipColor,
+                              icon: cefrMatch.icon,
+                            ),
+                          if (summary.joinRule == JoinRules.knock) ...[
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: L10n.of(context).enterCodeToJoin,
                               ),
-                            if (summary.joinRule == JoinRules.knock) ...[
-                              TextField(
-                                decoration: InputDecoration(
-                                  hintText: L10n.of(context).enterCodeToJoin,
-                                ),
-                                onSubmitted: controller.joinWithCode,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(10),
-                                ],
-                              ),
-                              Row(
-                                spacing: 8.0,
-                                children: [
-                                  const Expanded(child: Divider()),
-                                  Text(L10n.of(context).or),
-                                  const Expanded(child: Divider()),
-                                ],
-                              ),
-                            ],
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
-                              ),
-                              onPressed: controller.joinCourse,
-                              child: Row(
-                                spacing: 8.0,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(Icons.map_outlined),
-                                  Text(
-                                    summary.joinRule == JoinRules.knock
-                                        ? L10n.of(context).knock
-                                        : L10n.of(context).join,
-                                    style: const TextStyle(
-                                      fontSize: titleFontSize,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              onSubmitted: controller.joinWithCode,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(10),
+                              ],
+                            ),
+                            Row(
+                              spacing: 8.0,
+                              children: [
+                                const Expanded(child: Divider()),
+                                Text(L10n.of(context).or),
+                                const Expanded(child: Divider()),
+                              ],
                             ),
                           ],
-                        ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            onPressed: controller.joinCourse,
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.map_outlined),
+                                Text(
+                                  summary.joinRule == JoinRules.knock
+                                      ? L10n.of(context).knock
+                                      : L10n.of(context).join,
+                                  style: const TextStyle(
+                                    fontSize: titleFontSize,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

@@ -63,79 +63,77 @@ class LoginOptionsViewState extends State<LoginOptionsView> {
           ),
           automaticallyImplyLeading: false,
         ),
-        body: SafeArea(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
-              child: Column(
-                spacing: 16.0,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
+            child: Column(
+              spacing: 16.0,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Semantics(
+                  container: true,
+                  child: Text(
+                    L10n.of(context).loginToAccount,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                if (_prevInfo != null)
                   Semantics(
                     container: true,
                     child: Text(
-                      L10n.of(context).loginToAccount,
+                      L10n.of(context).welcomeBackLogin(
+                        _prevInfo!.method.label(L10n.of(context)),
+                      ),
                       textAlign: TextAlign.center,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
-                  if (_prevInfo != null)
-                    Semantics(
-                      container: true,
-                      child: Text(
-                        L10n.of(context).welcomeBackLogin(
-                          _prevInfo!.method.label(L10n.of(context)),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  Opacity(
-                    opacity: _buttonOpacity(LoginMethod.apple),
-                    child: PangeaSsoButton(
-                      provider: SSOProvider.apple,
-                      title: "Apple",
-                    ),
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.apple),
+                  child: PangeaSsoButton(
+                    provider: SSOProvider.apple,
+                    title: "Apple",
                   ),
-                  Opacity(
-                    opacity: _buttonOpacity(LoginMethod.google),
-                    child: PangeaSsoButton(
-                      provider: SSOProvider.google,
-                      title: "Google",
-                    ),
+                ),
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.google),
+                  child: PangeaSsoButton(
+                    provider: SSOProvider.google,
+                    title: "Google",
                   ),
-                  Opacity(
-                    opacity: _buttonOpacity(LoginMethod.email),
-                    child: ElevatedButton(
-                      onPressed: () => context.go('/home/login/email'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: 20,
-                              forceColor: Theme.of(
-                                context,
-                              ).colorScheme.onPrimaryContainer,
-                            ),
+                ),
+                Opacity(
+                  opacity: _buttonOpacity(LoginMethod.email),
+                  child: ElevatedButton(
+                    onPressed: () => context.go('/home/login/email'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ExcludeSemantics(
+                          child: PangeaLogoSvg(
+                            width: 20,
+                            forceColor: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
                           ),
-                          Text(L10n.of(context).email),
-                        ],
-                      ),
+                        ),
+                        Text(L10n.of(context).email),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: TOSIndicator(),
-                  ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TOSIndicator(),
+                ),
+              ],
             ),
           ),
         ),

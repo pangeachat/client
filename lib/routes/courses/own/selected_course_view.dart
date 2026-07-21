@@ -44,230 +44,125 @@ class SelectedCourseView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
       ),
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500.0),
-            child: ValueListenableBuilder(
-              valueListenable: controller.objectivesProvider.questLoader,
-              builder: (context, state, _) {
-                return switch (state) {
-                  AsyncLoading() || AsyncIdle() => const Center(
-                    child: CircularProgressIndicator.adaptive(),
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 500.0),
+          child: ValueListenableBuilder(
+            valueListenable: controller.objectivesProvider.questLoader,
+            builder: (context, state, _) {
+              return switch (state) {
+                AsyncLoading() || AsyncIdle() => const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+                AsyncError() => Center(
+                  child: ErrorIndicator(
+                    message: L10n.of(context).oopsSomethingWentWrong,
                   ),
-                  AsyncError() => Center(
-                    child: ErrorIndicator(
-                      message: L10n.of(context).oopsSomethingWentWrong,
-                    ),
-                  ),
-                  AsyncLoaded(value: final outline) => () {
-                    final course = outline.quest;
-                    final cefrEntry = course.targetCefr;
-                    final courseCefr = cefrEntry != null
-                        ? LanguageLevelTypeEnum.fromString(cefrEntry)
-                        : null;
+                ),
+                AsyncLoaded(value: final outline) => () {
+                  final course = outline.quest;
+                  final cefrEntry = course.targetCefr;
+                  final courseCefr = cefrEntry != null
+                      ? LanguageLevelTypeEnum.fromString(cefrEntry)
+                      : null;
 
-                    final userController =
-                        MatrixState.pangeaController.userController;
+                  final userController =
+                      MatrixState.pangeaController.userController;
 
-                    final cefrMatch = courseCefr == null
-                        ? CefrMatchResult.none
-                        : computeCefrMatch(
-                            context: context,
-                            userLevel: userController.userCefrLevel,
-                            courseLevel: courseCefr,
-                            courseLanguage: course.targetLanguage,
-                            userLanguage: userController.userL2Code,
-                          );
+                  final cefrMatch = courseCefr == null
+                      ? CefrMatchResult.none
+                      : computeCefrMatch(
+                          context: context,
+                          userLevel: userController.userCefrLevel,
+                          courseLevel: courseCefr,
+                          courseLanguage: course.targetLanguage,
+                          userLanguage: userController.userL2Code,
+                        );
 
-                    final String displayname = course.name;
+                  final String displayname = course.name;
 
-                    return Column(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 12.0,
-                              left: 12.0,
-                              right: 12.0,
-                            ),
-                            child: ListView.builder(
-                              itemCount: 2,
-                              itemBuilder: (context, index) {
-                                if (index == 0) {
-                                  return Column(
-                                    spacing: 8.0,
-                                    children: [
-                                      ClipPath(
-                                        clipper: MapClipper(),
-                                        child: Avatar(
-                                          name: displayname,
-                                          size: 100.0,
-                                          borderRadius: BorderRadius.circular(
-                                            0.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        displayname,
-                                        style: const TextStyle(
-                                          fontSize: titleFontSize,
-                                        ),
-                                      ),
-                                      Text(
-                                        course.description,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
-                                        ),
-                                      ),
-                                      Wrap(
-                                        spacing: 8.0,
-                                        runSpacing: 8.0,
-                                        children: [
-                                          CourseInfoChip(
-                                            icon: Icons.language,
-                                            text: course.targetLanguage
-                                                .toUpperCase(),
-                                            fontSize: descFontSize,
-                                            iconSize: smallIconSize,
-                                          ),
-                                          if (courseCefr != null)
-                                            CourseInfoChip(
-                                              icon: Icons.school,
-                                              text: courseCefr.title(context),
-                                              fontSize: descFontSize,
-                                              iconSize: smallIconSize,
-                                              highlightColor:
-                                                  cefrMatch.chipColor,
-                                            ),
-                                          CourseInfoChip(
-                                            icon: Icons.location_on,
-                                            text: L10n.of(context).numModules(
-                                              course.sequence.length,
-                                            ),
-                                            fontSize: descFontSize,
-                                            iconSize: smallIconSize,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 4.0,
-                                          bottom: 8.0,
-                                        ),
-                                        child: Row(
-                                          spacing: 4.0,
-                                          children: [
-                                            const Icon(
-                                              Icons.map,
-                                              size: largeIconSize,
-                                            ),
-                                            Text(
-                                              L10n.of(context).coursePlan,
-                                              style: const TextStyle(
-                                                fontSize: titleFontSize,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                }
-
-                                // world_v2: all courses are v3 quests — render the
-                                // plan from the quest outline (no room yet, so a
-                                // read-only preview). shrinkWrap: this sits inside
-                                // the page's outer ListView. See routing.instructions.md.
-                                return CourseObjectivesList(
-                                  questId: course.id,
-                                  shrinkWrap: true,
-                                  objectivesProvider:
-                                      controller.objectivesProvider,
-                                );
-                              },
-                            ),
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 12.0,
+                            left: 12.0,
+                            right: 12.0,
                           ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.surface,
-                            border: Border(
-                              top: BorderSide(
-                                color: theme.dividerColor,
-                                width: 1.0,
-                              ),
-                            ),
-                          ),
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (cefrMatch.message != null)
-                                InlineTooltip(
-                                  message: cefrMatch.message!,
-                                  isClosed: false,
-                                  backgroundColor: cefrMatch.chipColor,
-                                  icon: cefrMatch.icon,
-                                ),
-                              Row(
-                                spacing: 12.0,
-                                children: [
-                                  const Icon(Icons.edit, size: mediumIconSize),
-                                  Flexible(
-                                    child: Text(
-                                      L10n.of(context).editCourseLater,
-                                      style: const TextStyle(
-                                        fontSize: descFontSize,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                spacing: 12.0,
-                                children: [
-                                  const Icon(
-                                    Icons.shield,
-                                    size: mediumIconSize,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      L10n.of(context).newCourseAccess,
-                                      style: const TextStyle(
-                                        fontSize: descFontSize,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Column(
+                          child: ListView.builder(
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return Column(
                                   spacing: 8.0,
                                   children: [
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme
-                                            .onPrimaryContainer,
+                                    ClipPath(
+                                      clipper: MapClipper(),
+                                      child: Avatar(
+                                        name: displayname,
+                                        size: 100.0,
+                                        borderRadius: BorderRadius.circular(
+                                          0.0,
+                                        ),
                                       ),
-                                      onPressed: () => showFutureLoadingDialog(
-                                        context: context,
-                                        future: () => controller.submit(course),
+                                    ),
+                                    Text(
+                                      displayname,
+                                      style: const TextStyle(
+                                        fontSize: titleFontSize,
+                                      ),
+                                    ),
+                                    Text(
+                                      course.description,
+                                      style: const TextStyle(
+                                        fontSize: descFontSize,
+                                      ),
+                                    ),
+                                    Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 8.0,
+                                      children: [
+                                        CourseInfoChip(
+                                          icon: Icons.language,
+                                          text: course.targetLanguage
+                                              .toUpperCase(),
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                        ),
+                                        if (courseCefr != null)
+                                          CourseInfoChip(
+                                            icon: Icons.school,
+                                            text: courseCefr.title(context),
+                                            fontSize: descFontSize,
+                                            iconSize: smallIconSize,
+                                            highlightColor: cefrMatch.chipColor,
+                                          ),
+                                        CourseInfoChip(
+                                          icon: Icons.location_on,
+                                          text: L10n.of(
+                                            context,
+                                          ).numModules(course.sequence.length),
+                                          fontSize: descFontSize,
+                                          iconSize: smallIconSize,
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 4.0,
+                                        bottom: 8.0,
                                       ),
                                       child: Row(
-                                        spacing: 8.0,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        spacing: 4.0,
                                         children: [
-                                          const Icon(Icons.map_outlined),
+                                          const Icon(
+                                            Icons.map,
+                                            size: largeIconSize,
+                                          ),
                                           Text(
-                                            controller.buttonText,
+                                            L10n.of(context).coursePlan,
                                             style: const TextStyle(
                                               fontSize: titleFontSize,
                                             ),
@@ -276,17 +171,115 @@ class SelectedCourseView extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                ),
-                              ),
-                            ],
+                                );
+                              }
+
+                              // world_v2: all courses are v3 quests — render the
+                              // plan from the quest outline (no room yet, so a
+                              // read-only preview). shrinkWrap: this sits inside
+                              // the page's outer ListView. See routing.instructions.md.
+                              return CourseObjectivesList(
+                                questId: course.id,
+                                shrinkWrap: true,
+                                objectivesProvider:
+                                    controller.objectivesProvider,
+                              );
+                            },
                           ),
                         ),
-                      ],
-                    );
-                  }(),
-                };
-              },
-            ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surface,
+                          border: Border(
+                            top: BorderSide(
+                              color: theme.dividerColor,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (cefrMatch.message != null)
+                              InlineTooltip(
+                                message: cefrMatch.message!,
+                                isClosed: false,
+                                backgroundColor: cefrMatch.chipColor,
+                                icon: cefrMatch.icon,
+                              ),
+                            Row(
+                              spacing: 12.0,
+                              children: [
+                                const Icon(Icons.edit, size: mediumIconSize),
+                                Flexible(
+                                  child: Text(
+                                    L10n.of(context).editCourseLater,
+                                    style: const TextStyle(
+                                      fontSize: descFontSize,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              spacing: 12.0,
+                              children: [
+                                const Icon(Icons.shield, size: mediumIconSize),
+                                Flexible(
+                                  child: Text(
+                                    L10n.of(context).newCourseAccess,
+                                    style: const TextStyle(
+                                      fontSize: descFontSize,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Column(
+                                spacing: 8.0,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          theme.colorScheme.primaryContainer,
+                                      foregroundColor:
+                                          theme.colorScheme.onPrimaryContainer,
+                                    ),
+                                    onPressed: () => showFutureLoadingDialog(
+                                      context: context,
+                                      future: () => controller.submit(course),
+                                    ),
+                                    child: Row(
+                                      spacing: 8.0,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Icon(Icons.map_outlined),
+                                        Text(
+                                          controller.buttonText,
+                                          style: const TextStyle(
+                                            fontSize: titleFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }(),
+              };
+            },
           ),
         ),
       ),

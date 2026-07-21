@@ -304,112 +304,110 @@ class NewCoursePageState extends State<NewCoursePage> {
               ]
             : null,
       ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            constraints: const BoxConstraints(maxWidth: 450),
-            child: Column(
-              children: [
-                if (widget.showFilters) ...[
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Wrap(
-                          spacing: 8.0,
-                          runSpacing: 8.0,
-                          alignment: WrapAlignment.start,
-                          children: [
-                            ValueListenableBuilder(
-                              valueListenable: _targetLanguageFilter,
-                              builder: (context, value, _) {
-                                return CourseLanguageFilter(
-                                  value: _targetLanguageFilter.value,
-                                  onChanged: _setTargetLanguageFilter,
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          constraints: const BoxConstraints(maxWidth: 450),
+          child: Column(
+            children: [
+              if (widget.showFilters) ...[
+                Row(
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        spacing: 8.0,
+                        runSpacing: 8.0,
+                        alignment: WrapAlignment.start,
+                        children: [
+                          ValueListenableBuilder(
+                            valueListenable: _targetLanguageFilter,
+                            builder: (context, value, _) {
+                              return CourseLanguageFilter(
+                                value: _targetLanguageFilter.value,
+                                onChanged: _setTargetLanguageFilter,
+                              );
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 20.0),
-                ],
-                ValueListenableBuilder(
-                  valueListenable: _courses,
-                  builder: (context, value, _) {
-                    if (value == null) {
-                      return const Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(32.0),
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
-                      );
-                    }
-
-                    if (value.isError) {
-                      return _CoursePickerMessage(
-                        message: L10n.of(context).oopsSomethingWentWrong,
-                        buttonLabel: L10n.of(context).tryAgain,
-                        onPressed: _loadCourses,
-                      );
-                    }
-
-                    final courses = value.result!;
-                    if (courses.isEmpty) {
-                      return _CoursePickerMessage(
-                        message: L10n.of(context).noCourseTemplatesFound,
-                        buttonLabel: L10n.of(context).continueText,
-                        onPressed: () => context.go(PRoutes.chatsList),
-                      );
-                    }
-                    return Expanded(
-                      child: ListView.builder(
-                        controller: _scrollController,
-                        itemCount: courses.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == courses.length) {
-                            return ValueListenableBuilder(
-                              valueListenable: _loadingMore,
-                              builder: (context, isLoadingMore, _) {
-                                if (!isLoadingMore && _fullyLoaded) {
-                                  return const SizedBox.shrink();
-                                }
-                                return SizedBox(
-                                  height:
-                                      60, // 👈 KEY: fixed height prevents jump
-                                  child: Center(
-                                    child: isLoadingMore
-                                        ? const CircularProgressIndicator.adaptive()
-                                        : !_fullyLoaded
-                                        ? TextButton(
-                                            onPressed: _loadMore,
-                                            child: Text(
-                                              L10n.of(context).loadMore,
-                                            ),
-                                          )
-                                        : const SizedBox(),
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                          final course = courses[index];
-                          // Tapping the card scopes the map to this plan's
-                          // activities (world_v2); the Create button starts
-                          // the course.
-                          return AddCourseTile(
-                            coursePlan: course,
-                            onTap: () => _onSelect(course),
-                          );
-                        },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20.0),
+              ],
+              ValueListenableBuilder(
+                valueListenable: _courses,
+                builder: (context, value, _) {
+                  if (value == null) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(32.0),
+                        child: CircularProgressIndicator.adaptive(),
                       ),
                     );
-                  },
-                ),
-              ],
-            ),
+                  }
+
+                  if (value.isError) {
+                    return _CoursePickerMessage(
+                      message: L10n.of(context).oopsSomethingWentWrong,
+                      buttonLabel: L10n.of(context).tryAgain,
+                      onPressed: _loadCourses,
+                    );
+                  }
+
+                  final courses = value.result!;
+                  if (courses.isEmpty) {
+                    return _CoursePickerMessage(
+                      message: L10n.of(context).noCourseTemplatesFound,
+                      buttonLabel: L10n.of(context).continueText,
+                      onPressed: () => context.go(PRoutes.chatsList),
+                    );
+                  }
+                  return Expanded(
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: courses.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == courses.length) {
+                          return ValueListenableBuilder(
+                            valueListenable: _loadingMore,
+                            builder: (context, isLoadingMore, _) {
+                              if (!isLoadingMore && _fullyLoaded) {
+                                return const SizedBox.shrink();
+                              }
+                              return SizedBox(
+                                height:
+                                    60, // 👈 KEY: fixed height prevents jump
+                                child: Center(
+                                  child: isLoadingMore
+                                      ? const CircularProgressIndicator.adaptive()
+                                      : !_fullyLoaded
+                                      ? TextButton(
+                                          onPressed: _loadMore,
+                                          child: Text(
+                                            L10n.of(context).loadMore,
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                        final course = courses[index];
+                        // Tapping the card scopes the map to this plan's
+                        // activities (world_v2); the Create button starts
+                        // the course.
+                        return AddCourseTile(
+                          coursePlan: course,
+                          onTap: () => _onSelect(course),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -166,59 +166,57 @@ class CourseCodePageState extends State<CourseCodePage> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(maxWidth: 350, maxHeight: 600),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.network(
-                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                  width: 100.0,
-                  height: 100.0,
-                  colorFilter: ColorFilter.mode(
-                    theme.colorScheme.onSurface,
-                    BlendMode.srcIn,
-                  ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          constraints: const BoxConstraints(maxWidth: 350, maxHeight: 600),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SvgPicture.network(
+                "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                width: 100.0,
+                height: 100.0,
+                colorFilter: ColorFilter.mode(
+                  theme.colorScheme.onSurface,
+                  BlendMode.srcIn,
                 ),
+              ),
 
-                FocusTraversalGroup(
-                  policy: OrderedTraversalPolicy(),
-                  child: Column(
-                    spacing: 16.0,
-                    children: [
-                      Text(
-                        L10n.of(context).enterCodeToJoin,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+              FocusTraversalGroup(
+                policy: OrderedTraversalPolicy(),
+                child: Column(
+                  spacing: 16.0,
+                  children: [
+                    Text(
+                      L10n.of(context).enterCodeToJoin,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      TextFormField(
-                        controller: _codeController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).courseCodeHint,
-                        ),
-                        onFieldSubmitted: (_) => _submit(),
-                        inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                    ),
+                    TextFormField(
+                      controller: _codeController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).courseCodeHint,
                       ),
-                      ElevatedButton(
-                        onPressed: _code.isNotEmpty ? _submit : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(L10n.of(context).submit)],
-                        ),
+                      onFieldSubmitted: (_) => _submit(),
+                      inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                    ),
+                    ElevatedButton(
+                      onPressed: _code.isNotEmpty ? _submit : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primaryContainer,
+                        foregroundColor: theme.colorScheme.onPrimaryContainer,
                       ),
-                    ],
-                  ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text(L10n.of(context).submit)],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

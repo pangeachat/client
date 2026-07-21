@@ -58,113 +58,110 @@ class FreeTrialStepView extends StatelessWidget {
                 ),
               ),
             ),
-            SafeArea(
-              child: Center(
-                child: Container(
-                  width: 350,
-                  padding: const EdgeInsets.only(bottom: 20.0),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Center(
-                          child: Semantics(
-                            label:
-                                '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
-                            container: true,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Column(
-                                    spacing: 16.0,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.all(2.0),
-                                        decoration: BoxDecoration(
-                                          color: theme.colorScheme.surface,
-                                          borderRadius: BorderRadius.circular(
-                                            AppConfig.borderRadius,
-                                          ),
+            Center(
+              child: Container(
+                width: 350,
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Semantics(
+                          label:
+                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
+                          container: true,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Column(
+                                  spacing: 16.0,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(2.0),
+                                      decoration: BoxDecoration(
+                                        color: theme.colorScheme.surface,
+                                        borderRadius: BorderRadius.circular(
+                                          AppConfig.borderRadius,
                                         ),
-                                        child: ExcludeSemantics(
-                                          child: Column(
-                                            spacing: 8.0,
-                                            children: [
-                                              Text(
-                                                L10n.of(
-                                                  context,
-                                                ).thanksForSigningUp,
-                                                style: mediumTextStyle,
-                                                textAlign: TextAlign.center,
+                                      ),
+                                      child: ExcludeSemantics(
+                                        child: Column(
+                                          spacing: 8.0,
+                                          children: [
+                                            Text(
+                                              L10n.of(
+                                                context,
+                                              ).thanksForSigningUp,
+                                              style: mediumTextStyle,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              L10n.of(context).sevenDaysFree,
+                                              style: largeTextStyle?.copyWith(
+                                                color: gold,
+                                                fontWeight: FontWeight.w900,
                                               ),
-                                              Text(
-                                                L10n.of(context).sevenDaysFree,
-                                                style: largeTextStyle?.copyWith(
-                                                  color: gold,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ],
-                                          ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      ProFeaturesCard(
-                                        padding: const EdgeInsets.all(12.0),
-                                        titlePadding: const EdgeInsets.all(4.0),
-                                        borderRadius: 12.0,
-                                        frameColor: gold,
-                                        borderWidth: 2,
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.all(2.0),
-                                        decoration: BoxDecoration(
-                                          color: theme.colorScheme.surface,
-                                          borderRadius: BorderRadius.circular(
-                                            AppConfig.borderRadius,
-                                          ),
-                                        ),
-                                        child: Semantics(
-                                          container: true,
-                                          child: Text(
-                                            L10n.of(
-                                              context,
-                                            ).manageTrialInSettings,
-                                            textAlign: TextAlign.center,
-                                            style: mediumTextStyle,
-                                          ),
+                                    ),
+                                    ProFeaturesCard(
+                                      padding: const EdgeInsets.all(12.0),
+                                      titlePadding: const EdgeInsets.all(4.0),
+                                      borderRadius: 12.0,
+                                      frameColor: gold,
+                                      borderWidth: 2,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(2.0),
+                                      decoration: BoxDecoration(
+                                        color: theme.colorScheme.surface,
+                                        borderRadius: BorderRadius.circular(
+                                          AppConfig.borderRadius,
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                      child: Semantics(
+                                        container: true,
+                                        child: Text(
+                                          L10n.of(
+                                            context,
+                                          ).manageTrialInSettings,
+                                          textAlign: TextAlign.center,
+                                          style: mediumTextStyle,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      Semantics(
-                        container: true,
-                        child: ElevatedButton(
-                          onPressed: forward,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            minimumSize: const Size.fromHeight(48),
-                          ),
-                          child: Text(L10n.of(context).claimTrial),
+                    ),
+                    Semantics(
+                      container: true,
+                      child: ElevatedButton(
+                        onPressed: forward,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          minimumSize: const Size.fromHeight(48),
                         ),
+                        child: Text(L10n.of(context).claimTrial),
                       ),
-                      const SizedBox(height: 8),
-                      Semantics(
-                        container: true,
-                        child: Text(
-                          L10n.of(context).noCreditCardRequired,
-                          style: mediumTextStyle,
-                        ),
+                    ),
+                    const SizedBox(height: 8),
+                    Semantics(
+                      container: true,
+                      child: Text(
+                        L10n.of(context).noCreditCardRequired,
+                        style: mediumTextStyle,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
