@@ -263,6 +263,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
           ? SystemMouseCursors.click
           : SystemMouseCursors.basic,
       child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: step != null && _visible ? () => _next(step) : null,
         child: Stack(
           children: [
