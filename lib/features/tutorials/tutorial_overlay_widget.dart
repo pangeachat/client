@@ -213,11 +213,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       widget.setTutorialTransitioning(true);
 
       final onTap = step.data.onTap;
+      final canShowNextStep = step.data.canShowNextStep;
       if (onTap != null) {
         await Future.wait([onTap.call(), Future.delayed(_duration)]);
       } else {
         await Future.delayed(_duration);
       }
+
+      if (!canShowNextStep()) return false;
     } catch (e, s) {
       ErrorHandler.logError(
         e: "Error executing tutorial step callback",
