@@ -6,8 +6,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -78,10 +80,20 @@ class PAuthGaurd {
   /// at completion.
   static Future<String?> consumeCachedJoinCode(Uri current) async {
     final joinCode = SpaceCodeRepo.spaceCode;
-    if (joinCode == null) return null;
-    // Already on the coded URL: stay put and let its page submit.
-    if (joinCodeFor(current) == joinCode) return null;
-    return PRoutes.joinWithCode(joinCode);
+    if (joinCode != null) {
+      // Already on the coded URL: stay put and let its page submit.
+      if (joinCodeFor(current) == joinCode) return null;
+      return PRoutes.joinWithCode(joinCode);
+    }
+
+    // The same ferry carries a shared activity link (`/<uuid>`, #7821): a
+    // pending join outranks it, mirroring the caching side. Consumption is
+    // anchored where the activity panel actually opens
+    // (LeftPanelActivityDetailsSubpage).
+    final activityId = SpaceCodeRepo.activityId;
+    if (activityId == null) return null;
+    if (activityInfoFor(current)?.activityId == activityId) return null;
+    return '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
   }
 
   /// Bounce a logged-out user to /home. The bounce drops the destination URL,
@@ -96,6 +108,13 @@ class PAuthGaurd {
     final joinCode = joinCodeFor(state.uri);
     if (joinCode != null) {
       await SpaceCodeController.cacheRoomCodeToJoin(joinCode);
+    }
+    // A shared activity link (`/<uuid>`, folded to its `activity` token by
+    // LegacyRedirects) rides the same ferry: cached here, re-entered by
+    // [consumeCachedJoinCode] on the post-login landing (#7821).
+    final activityId = activityInfoFor(state.uri)?.activityId;
+    if (activityId != null) {
+      await SpaceCodeRepo.setActivityId(activityId);
     }
     return '/home';
   }

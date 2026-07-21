@@ -102,4 +102,60 @@ void main() {
       expect(storage.read(PLocalKey.cachedSpaceCodeToJoin), isNull);
     });
   });
+
+  // A shared activity link (`/<uuid>`) rides the same ferry (#7821): cached
+  // across the bounce, redirected on the logged-in landing, consumed only
+  // when the activity panel opens (LeftPanelActivityDetailsSubpage).
+  group('PAuthGaurd.consumeCachedJoinCode — activity links', () {
+    const uuid = 'a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b';
+    final world = Uri.parse('/');
+
+    setUp(() async {
+      await SpaceCodeRepo.clearActivityId();
+    });
+
+    test(
+      'a fresh cached activity redirects to its token URL, cache kept',
+      () async {
+        await SpaceCodeRepo.setActivityId(uuid);
+
+        final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
+        expect(redirect, isNotNull);
+        expect(redirect, contains(uuid));
+        expect(SpaceCodeRepo.activityId, uuid);
+        // Landing on the redirected-to URL stays put (the panel consumes).
+        expect(
+          await PAuthGaurd.consumeCachedJoinCode(Uri.parse(redirect!)),
+          isNull,
+        );
+        expect(SpaceCodeRepo.activityId, uuid);
+      },
+    );
+
+    test('a pending join code outranks a cached activity', () async {
+      await SpaceCodeRepo.setSpaceCode('vj3pc8b');
+      await SpaceCodeRepo.setActivityId(uuid);
+
+      final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
+      expect(redirect, contains('vj3pc8b'));
+      expect(redirect, isNot(contains(uuid)));
+    });
+
+    test(
+      'a stale cached activity (past the TTL) is ignored and cleared',
+      () async {
+        final storage = GetStorage('class_storage');
+        await storage.write(PLocalKey.cachedActivityToOpen, uuid);
+        await storage.write(
+          PLocalKey.cachedActivityToOpenAt,
+          DateTime.now()
+              .subtract(SpaceCodeRepo.cacheTTL + const Duration(minutes: 1))
+              .millisecondsSinceEpoch,
+        );
+
+        expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
+        expect(storage.read(PLocalKey.cachedActivityToOpen), isNull);
+      },
+    );
+  });
 }

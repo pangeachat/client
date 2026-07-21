@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
@@ -48,6 +49,14 @@ class _LeftPanelActivityDetailsSubpageState
   @override
   void initState() {
     super.initState();
+    // The panel opening is what consumes an activity id ferried across the
+    // login bounce — the auth-guard redirect that got here never clears, so
+    // an attempt preempted by a competing boot-time navigation retries on
+    // the next logged-in landing (PAuthGaurd.consumeCachedJoinCode, #7821).
+    // Fire-and-forget; a plain in-app open finds no cache and this no-ops.
+    if (SpaceCodeRepo.activityId == widget.param.activityId) {
+      SpaceCodeRepo.clearActivityId();
+    }
     _resolveParent();
   }
 
