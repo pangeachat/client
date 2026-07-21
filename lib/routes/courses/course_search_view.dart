@@ -15,7 +15,7 @@ class CourseSearchView<T> extends StatelessWidget {
   final String notFoundMessage;
   final String notFoundButtonLabel;
   final String hintText;
-  final CourseSearchController courseSearch;
+  final CourseSearchController<T> courseSearch;
   const CourseSearchView({
     super.key,
     required this.title,
@@ -102,7 +102,7 @@ class CourseSearchView<T> extends StatelessWidget {
                         return AddCourseErrorMessage(
                           message: L10n.of(context).oopsSomethingWentWrong,
                           buttonLabel: L10n.of(context).tryAgain,
-                          onPressed: courseSearch.loadCourses,
+                          onPressed: courseSearch.loadMore,
                         );
                       case AsyncLoaded(value: final courses):
                         return ValueListenableBuilder(

@@ -181,6 +181,6 @@ class SelectedCourseController extends State<SelectedCourse>
     loading: loadingCourse,
     hasError: courseError != null,
     onTapCta: submit,
-    ctaButtonText: L10n.of(context).create,
+    ctaButtonText: buttonText,
   );
 }

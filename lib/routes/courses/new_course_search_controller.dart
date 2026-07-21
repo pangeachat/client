@@ -62,16 +62,7 @@ class NewCourseSearchController
     }
 
     if (existingRoom == null) {
-      final lang = targetLanguageFilter.value?.langCode;
-      context.go(
-        WorkspaceNav.openAddCoursePage(
-          GoRouterState.of(context).uri,
-          AddCourseSubpageEnum.own,
-          createCourseId: course.uuid,
-          initialLanguageFilter: lang,
-          allLanguagesFilter: lang == null,
-        ),
-      );
+      _openCreateCourse(course.uuid, context);
       return;
     }
 
@@ -110,17 +101,10 @@ class NewCourseSearchController
       ),
     );
 
+    if (!context.mounted) return;
+
     if (action == 0) {
-      final lang = targetLanguageFilter.value?.langCode;
-      context.go(
-        WorkspaceNav.openAddCoursePage(
-          GoRouterState.of(context).uri,
-          AddCourseSubpageEnum.own,
-          createCourseId: course.uuid,
-          initialLanguageFilter: lang,
-          allLanguagesFilter: lang == null,
-        ),
-      );
+      _openCreateCourse(course.uuid, context);
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
@@ -144,6 +128,19 @@ class NewCourseSearchController
         );
       }
     }
+  }
+
+  void _openCreateCourse(String courseId, BuildContext context) {
+    final lang = targetLanguageFilter.value?.langCode;
+    context.go(
+      WorkspaceNav.openAddCoursePage(
+        GoRouterState.of(context).uri,
+        AddCourseSubpageEnum.own,
+        createCourseId: courseId,
+        initialLanguageFilter: lang,
+        allLanguagesFilter: lang == null,
+      ),
+    );
   }
 
   @override

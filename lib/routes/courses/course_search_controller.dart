@@ -37,7 +37,7 @@ abstract class CourseSearchController<T> {
 
   void initCourseSearch() {
     _searchController.addListener(_onSearch);
-    loadCourses();
+    loadMore();
   }
 
   void disposeCourseSearch() {
@@ -83,11 +83,11 @@ abstract class CourseSearchController<T> {
     filtered.sort((a, b) {
       final normalizedA = removeDiacritics(getCourseName(a).toLowerCase());
       final normalizedB = removeDiacritics(getCourseName(b).toLowerCase());
-      return normalizedA.startsWith(query)
-          ? -1
-          : normalizedB.startsWith(query)
-          ? 1
-          : 0;
+      final aStarts = normalizedA.startsWith(query);
+      final bStarts = normalizedB.startsWith(query);
+      if (aStarts && !bStarts) return -1;
+      if (!aStarts && bStarts) return 1;
+      return 0;
     });
 
     return filtered;
@@ -104,7 +104,9 @@ abstract class CourseSearchController<T> {
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
     }
-    loadCourses();
+
+    _reset();
+    loadMore();
   }
 
   void stopSearching() {
@@ -153,23 +155,6 @@ abstract class CourseSearchController<T> {
 
   void onNotFound(BuildContext context);
 
-  Future<void> loadCourses() async {
-    final int generation = _loadGeneration;
-    _reset();
-    await fetchAndAppend(generation);
-
-    if (_disposed) return;
-
-    if (_loadGeneration == generation &&
-        _loadedCourses.isEmpty &&
-        _filteredCoursesLoader is AsyncLoaded) {
-      ErrorHandler.logError(
-        e: "No courses found",
-        data: {'filter': _targetLanguageFilter.value?.toJson()},
-      );
-    }
-  }
-
   Future<void> loadMore() async {
     if (_fullyLoaded || _loadingMore.value) return;
     final int generation = _loadGeneration;
@@ -180,6 +165,15 @@ abstract class CourseSearchController<T> {
       if (!_disposed && _loadGeneration == generation) {
         _loadingMore.value = false;
       }
+    }
+
+    if (_loadGeneration == generation &&
+        _loadedCourses.isEmpty &&
+        _filteredCoursesLoader.value is AsyncLoaded) {
+      ErrorHandler.logError(
+        e: "No courses found",
+        data: {'filter': _targetLanguageFilter.value?.toJson()},
+      );
     }
   }
 
