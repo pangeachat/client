@@ -41,9 +41,7 @@ class CourseChatsView extends StatelessWidget {
         final joinedSessions = controller.joinedActivities();
 
         final discoveredGroupChats = controller.discoveredGroupChats;
-        final discoveredSessions = controller
-            .discoveredActivities()
-            .entries
+        final discoveredSessions = controller.discoveredActivities.entries
             .toList();
 
         final isColumnMode = FluffyThemes.isColumnMode(context);

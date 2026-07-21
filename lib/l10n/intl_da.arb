@@ -1270,7 +1270,6 @@
     "lastUpdated": "Opdateret\n{time}",
     "activityFinishedMessage": "Alt færdigt!",
     "endForAll": "Afslut for alle",
-    "newCourse": "Nyt kursus",
     "numModules": "{num} moduler",
     "coursePlan": "Kursusplan",
     "editCourseLater": "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.",
@@ -1344,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-20 10:57:49.779904",
+    "@@last_modified": "2026-07-21 13:05:29.706827",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6892,10 +6891,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10615,5 +10610,11 @@
     "cancelDescriptionWithRenewalDate": "Dit abonnement vil være aktivt indtil fornyelsesdatoen ({date}) og derefter deaktiveres. Du beholder analyser, men kan ikke bruge pro-funktioner.",
     "cancelDescriptionWithoutRenewalDate": "Dit abonnement vil være aktivt indtil fornyelsesdatoen og derefter deaktiveres. Du beholder analyser, men kan ikke bruge pro-funktioner.",
     "change": "Skift",
-    "deactivateSubscribedAccountWarning": "Dette vil deaktivere din brugerkonto og annullere dit abonnement. Dette kan ikke fortrydes! Er du sikker?"
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere din brugerkonto og annullere dit abonnement. Dette kan ikke fortrydes! Er du sikker?",
+    "newCourseWithoutTitle": "Start kursus",
+    "newCourseWithTitle": "Start \"{title}\"",
+    "joinCourseWithTitle": "Tilmeld dig \"{title}\"",
+    "searchCoursePlans": "Søg i kursusplaner",
+    "searchPublicCourses": "Søg i offentlige kurser",
+    "closeSearch": "Luk søgning"
 }

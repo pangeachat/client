@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-20 10:57:49.695551",
+    "@@last_modified": "2026-07-21 13:05:29.664518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Gi-update\n{time}",
     "activityFinishedMessage": "Nahuman na Tanan!",
     "endForAll": "Tapuson para sa tanan",
-    "newCourse": "Bag-ong kurso",
     "numModules": "{num} ka modyul",
     "coursePlan": "Plano sa Kurso",
     "editCourseLater": "Mahimo nimong i-edit ang titulo sa template, mga deskripsyon, ug hulagway sa kurso sa ulahi.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Ang imong suskrisyon aktibo hangtod sa petsa sa pag-renew ({date}), unya ma-deactivate. Magpabilin ang imong analytics apan dili na magamit ang pro features.",
     "cancelDescriptionWithoutRenewalDate": "Ang imong suskrisyon aktibo hangtod sa petsa sa pag-renew niini, unya ma-deactivate. Magpabilin ang imong analytics apan dili na magamit ang pro features.",
     "change": "Usba",
-    "deactivateSubscribedAccountWarning": "Kini mag-deactivate sa imong user account ug magkansela sa imong suskrisyon. Dili kini mahimong balihon! Sigurado ka ba?"
+    "deactivateSubscribedAccountWarning": "Kini mag-deactivate sa imong user account ug magkansela sa imong suskrisyon. Dili kini mahimong balihon! Sigurado ka ba?",
+    "newCourseWithoutTitle": "Sugdi ang kurso",
+    "newCourseWithTitle": "Sugdi ang \"{title}\"",
+    "joinCourseWithTitle": "Apil sa \"{title}\"",
+    "searchCoursePlans": "Pangitaa ang mga plano sa kurso",
+    "searchPublicCourses": "Pangitaa ang mga publikong kurso",
+    "closeSearch": "Isira ang pagpangita"
 }

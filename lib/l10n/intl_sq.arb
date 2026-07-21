@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-20 10:58:27.581969",
+    "@@last_modified": "2026-07-21 13:05:36.421607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Përditësuar\n{time}",
     "activityFinishedMessage": "Gjithçka u përfundua!",
     "endForAll": "Përfundo për të gjithë",
-    "newCourse": "Kurs i ri",
     "numModules": "{num} module",
     "coursePlan": "Plani i kursit",
     "editCourseLater": "Mund të ndryshoni titullin e shabllonit, përshkrimet dhe imazhin e kursit më vonë.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Abonimi juaj do të jetë aktiv deri në datën e rinovimit ({date}), pastaj do të çaktivizohet. Do të ruani analitikën, por nuk do të mund të përdorni veçoritë pro.",
     "cancelDescriptionWithoutRenewalDate": "Abonimi juaj do të jetë aktiv deri në datën e rinovimit, pastaj do të çaktivizohet. Do të ruani analitikën, por nuk do të mund të përdorni veçoritë pro.",
     "change": "Ndrysho",
-    "deactivateSubscribedAccountWarning": "Kjo do të çaktivizojë llogarinë tuaj të përdoruesit dhe do të anulojë abonimin tuaj. Kjo nuk mund të zhbëhet! Jeni i sigurt?"
+    "deactivateSubscribedAccountWarning": "Kjo do të çaktivizojë llogarinë tuaj të përdoruesit dhe do të anulojë abonimin tuaj. Kjo nuk mund të zhbëhet! Jeni i sigurt?",
+    "newCourseWithoutTitle": "Fillo kursin",
+    "newCourseWithTitle": "Fillo \"{title}\"",
+    "joinCourseWithTitle": "Bashkohu me \"{title}\"",
+    "searchCoursePlans": "Kërko plane kursesh",
+    "searchPublicCourses": "Kërko kurse publike",
+    "closeSearch": "Mbyll kërkimin"
 }

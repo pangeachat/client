@@ -2905,7 +2905,6 @@
     "lastUpdated": "Atnaujinta\n{time}",
     "activityFinishedMessage": "Viskas baigta!",
     "endForAll": "Uždaryti visiems",
-    "newCourse": "Naujas kursas",
     "numModules": "{num} moduliai",
     "coursePlan": "Kurso planas",
     "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
@@ -2979,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-20 10:58:13.967122",
+    "@@last_modified": "2026-07-21 13:05:33.657283",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6747,10 +6746,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10470,5 +10465,11 @@
     "cancelDescriptionWithRenewalDate": "Jūsų prenumerata bus aktyvi iki atnaujinimo datos ({date}), tada bus deaktyvuota. Išsaugosite analizę, bet negalėsite naudotis profesionaliomis funkcijomis.",
     "cancelDescriptionWithoutRenewalDate": "Jūsų prenumerata bus aktyvi iki atnaujinimo datos, tada bus deaktyvuota. Išsaugosite analizę, bet negalėsite naudotis profesionaliomis funkcijomis.",
     "change": "Keisti",
-    "deactivateSubscribedAccountWarning": "Tai deaktyvuos jūsų vartotojo paskyrą ir atšauks prenumeratą. To negalima anuliuoti! Ar esate tikri?"
+    "deactivateSubscribedAccountWarning": "Tai deaktyvuos jūsų vartotojo paskyrą ir atšauks prenumeratą. To negalima anuliuoti! Ar esate tikri?",
+    "newCourseWithoutTitle": "Pradėti kursą",
+    "newCourseWithTitle": "Pradėti „{title}“",
+    "joinCourseWithTitle": "Prisijungti prie „{title}“",
+    "searchCoursePlans": "Ieškoti kursų planų",
+    "searchPublicCourses": "Ieškoti viešųjų kursų",
+    "closeSearch": "Uždaryti paiešką"
 }

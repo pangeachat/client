@@ -81,7 +81,6 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
           );
         }
         return NewCoursePage(
-          route: 'rooms',
           initialLanguageCode: param.initialLanguageFilter,
           showAll: param.allLanguagesFilter,
           closeButton: closeButton,

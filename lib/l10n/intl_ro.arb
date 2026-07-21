@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:22.879503",
+    "@@last_modified": "2026-07-21 13:05:36.210998",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2961,7 +2961,6 @@
     "lastUpdated": "Actualizat\n{time}",
     "activityFinishedMessage": "Totul finalizat!",
     "endForAll": "Se încheie pentru toți",
-    "newCourse": "Curs nou",
     "numModules": "{num} module",
     "coursePlan": "Plan de curs",
     "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
@@ -6698,10 +6697,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10421,5 +10416,11 @@
     "cancelDescriptionWithRenewalDate": "Abonamentul dvs. va fi activ până la data reînnoirii ({date}), apoi se va dezactiva. Veți păstra analizele, dar nu veți putea utiliza funcțiile pro.",
     "cancelDescriptionWithoutRenewalDate": "Abonamentul dvs. va fi activ până la data reînnoirii, apoi se va dezactiva. Veți păstra analizele, dar nu veți putea utiliza funcțiile pro.",
     "change": "Schimbă",
-    "deactivateSubscribedAccountWarning": "Aceasta va dezactiva contul dvs. de utilizator și va anula abonamentul. Această acțiune nu poate fi anulată! Sunteți sigur?"
+    "deactivateSubscribedAccountWarning": "Aceasta va dezactiva contul dvs. de utilizator și va anula abonamentul. Această acțiune nu poate fi anulată! Sunteți sigur?",
+    "newCourseWithoutTitle": "Începe cursul",
+    "newCourseWithTitle": "Începe „{title}”",
+    "joinCourseWithTitle": "Alătură-te „{title}”",
+    "searchCoursePlans": "Căutați planuri de curs",
+    "searchPublicCourses": "Căutați cursuri publice",
+    "closeSearch": "Închide căutarea"
 }

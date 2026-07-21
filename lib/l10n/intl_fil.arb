@@ -2005,7 +2005,6 @@
     "lastUpdated": "Na-update\n{time}",
     "activityFinishedMessage": "Lahat ay Natapos na!",
     "endForAll": "Tapos na para sa lahat",
-    "newCourse": "Bagong kurso",
     "numModules": "{num} mga module",
     "coursePlan": "Plano ng Kurso",
     "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
@@ -2090,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-20 10:57:54.181929",
+    "@@last_modified": "2026-07-21 13:05:31.631095",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6843,10 +6842,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10555,5 +10550,11 @@
     "cancelDescriptionWithRenewalDate": "Ang iyong subscription ay magiging aktibo hanggang sa petsa ng pag-renew nito ({date}), pagkatapos ay made-deactivate. Mananatili ang iyong analytics ngunit hindi mo magagamit ang mga pro feature.",
     "cancelDescriptionWithoutRenewalDate": "Ang iyong subscription ay magiging aktibo hanggang sa petsa ng pag-renew nito, pagkatapos ay made-deactivate. Mananatili ang iyong analytics ngunit hindi mo magagamit ang mga pro feature.",
     "change": "Baguhin",
-    "deactivateSubscribedAccountWarning": "Ito ay magde-deactivate ng iyong user account at magkakansela ng iyong subscription. Hindi ito maaaring i-undo! Sigurado ka ba?"
+    "deactivateSubscribedAccountWarning": "Ito ay magde-deactivate ng iyong user account at magkakansela ng iyong subscription. Hindi ito maaaring i-undo! Sigurado ka ba?",
+    "newCourseWithoutTitle": "Simulan ang kurso",
+    "newCourseWithTitle": "Simulan ang \"{title}\"",
+    "joinCourseWithTitle": "Sumali sa \"{title}\"",
+    "searchCoursePlans": "Maghanap ng mga plano ng kurso",
+    "searchPublicCourses": "Maghanap ng mga pampublikong kurso",
+    "closeSearch": "Isara ang paghahanap"
 }

@@ -225,6 +225,26 @@ class AddCoursePagePanelToken extends PanelToken<AddCoursePageTokenParam> {
     : super(PanelTypesEnum.addcoursepage, param);
 
   @override
+  String get screenName {
+    final param = this.param;
+    if (param is! AddCoursePageTokenParam) return type.name;
+    // Identity (course id, room id, join code) and filters stay out of the
+    // name; only the subpage and the pushed leaf are navigational.
+    final leaf = switch (param.subpage) {
+      AddCourseSubpageEnum.browse =>
+        param.previewRoomId != null ? 'browse/preview' : 'browse',
+      AddCourseSubpageEnum.private => 'private',
+      AddCourseSubpageEnum.own =>
+        param.createCourseId == null
+            ? 'own'
+            : param.showNewCourseInvitePage
+            ? 'own/invite'
+            : 'own/preview',
+    };
+    return '${type.name}:$leaf';
+  }
+
+  @override
   AddCoursePagePanelToken? get popped {
     final param = this.param;
     if (param == null || !param.isPushed) return null;

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:19.288965",
+    "@@last_modified": "2026-07-21 13:05:34.826350",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3495,7 +3495,6 @@
     "lastUpdated": "Bijgewerkt\n{time}",
     "activityFinishedMessage": "Alles voltooid!",
     "endForAll": "Einde voor iedereen",
-    "newCourse": "Nieuwe cursus",
     "numModules": "{num} modules",
     "coursePlan": "Cursusplan",
     "editCourseLater": "U kunt de titel, beschrijvingen en cursusafbeelding later bewerken.",
@@ -6143,10 +6142,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9689,5 +9684,11 @@
     "cancelDescriptionWithRenewalDate": "Je abonnement is actief tot de verlengingsdatum ({date}) en wordt dan gedeactiveerd. Je behoudt analyses, maar kunt geen pro-functies gebruiken.",
     "cancelDescriptionWithoutRenewalDate": "Je abonnement is actief tot de verlengingsdatum en wordt dan gedeactiveerd. Je behoudt analyses, maar kunt geen pro-functies gebruiken.",
     "change": "Wijzigen",
-    "deactivateSubscribedAccountWarning": "Dit deactiveert je gebruikersaccount en annuleert je abonnement. Dit kan niet ongedaan worden gemaakt! Weet je het zeker?"
+    "deactivateSubscribedAccountWarning": "Dit deactiveert je gebruikersaccount en annuleert je abonnement. Dit kan niet ongedaan worden gemaakt! Weet je het zeker?",
+    "newCourseWithoutTitle": "Start cursus",
+    "newCourseWithTitle": "Start \"{title}\"",
+    "joinCourseWithTitle": "Deelnemen aan \"{title}\"",
+    "searchCoursePlans": "Zoek cursusplannen",
+    "searchPublicCourses": "Zoek openbare cursussen",
+    "closeSearch": "Zoeken sluiten"
 }

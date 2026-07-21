@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-20 10:57:46.642262",
+    "@@last_modified": "2026-07-21 13:05:29.212119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "የታደሰው\n{time}",
     "activityFinishedMessage": "ሁሉም ተጠናቋል!",
     "endForAll": "ለሁሉም አጠናቅ",
-    "newCourse": "አዲስ ኮርስ",
     "numModules": "{num} ሞጁሎች",
     "coursePlan": "የኮርስ እቅድ",
     "editCourseLater": "የአብነት ርዕስ፣ መግለጫዎች እና የኮርስ ምስል በኋላ ማርትዕ ይችላሉ።",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "የእርስዎ ምዝገባ እስከ እድሳት ቀኑ ({date}) ድረስ ንቁ ይሆናል፣ ከዚያም ይሰረዛል። ትንታኔዎችን ይዘው ይቆያሉ ነገር ግን የፕሮ ባህሪያትን መጠቀም አይችሉም።",
     "cancelDescriptionWithoutRenewalDate": "የእርስዎ ምዝገባ እስከ እድሳት ቀኑ ድረስ ንቁ ይሆናል፣ ከዚያም ይሰረዛል። ትንታኔዎችን ይዘው ይቆያሉ ነገር ግን የፕሮ ባህሪያትን መጠቀም አይችሉም።",
     "change": "ቀይር",
-    "deactivateSubscribedAccountWarning": "ይህ የተጠቃሚ መለያዎን ያሰናክላል እና ምዝገባዎን ይሰርዛል። ይህ ሊቀለበስ አይችልም! እርግጠኛ ነዎት?"
+    "deactivateSubscribedAccountWarning": "ይህ የተጠቃሚ መለያዎን ያሰናክላል እና ምዝገባዎን ይሰርዛል። ይህ ሊቀለበስ አይችልም! እርግጠኛ ነዎት?",
+    "newCourseWithoutTitle": "ኮርስ ጀምር",
+    "newCourseWithTitle": "\"{title}\" ጀምር",
+    "joinCourseWithTitle": "\"{title}\" ተቀላቀል",
+    "searchCoursePlans": "የኮርስ እቅዶችን ፈልግ",
+    "searchPublicCourses": "የህዝብ ኮርሶችን ፈልግ",
+    "closeSearch": "ፍለጋ ዝጋ"
 }

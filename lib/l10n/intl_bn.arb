@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:57:46.518810",
+    "@@last_modified": "2026-07-21 13:05:29.129077",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3035,7 +3035,6 @@
     "lastUpdated": "আপডেট হয়েছে\n{time}",
     "activityFinishedMessage": "সব শেষ!",
     "endForAll": "সবার জন্য শেষ করুন",
-    "newCourse": "নতুন কোর্স",
     "numModules": "{num} মডিউল",
     "coursePlan": "কোর্স পরিকল্পনা",
     "editCourseLater": "আপনি পরে টেমপ্লেট শিরোনাম, বিবরণ, এবং কোর্স ছবি সম্পাদনা করতে পারেন।",
@@ -6591,10 +6590,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10317,5 +10312,11 @@
     "cancelDescriptionWithRenewalDate": "আপনার সাবস্ক্রিপশন নবায়নের তারিখ ({date}) পর্যন্ত সক্রিয় থাকবে, তারপর নিষ্ক্রিয় হয়ে যাবে। আপনি অ্যানালিটিক্স ধরে রাখবেন কিন্তু প্রো বৈশিষ্ট্যগুলি ব্যবহার করতে পারবেন না।",
     "cancelDescriptionWithoutRenewalDate": "আপনার সাবস্ক্রিপশন নবায়নের তারিখ পর্যন্ত সক্রিয় থাকবে, তারপর নিষ্ক্রিয় হয়ে যাবে। আপনি অ্যানালিটিক্স ধরে রাখবেন কিন্তু প্রো বৈশিষ্ট্যগুলি ব্যবহার করতে পারবেন না।",
     "change": "পরিবর্তন করুন",
-    "deactivateSubscribedAccountWarning": "এটি আপনার ব্যবহারকারী অ্যাকাউন্ট নিষ্ক্রিয় করবে এবং আপনার সাবস্ক্রিপশন বাতিল করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না! আপনি কি নিশ্চিত?"
+    "deactivateSubscribedAccountWarning": "এটি আপনার ব্যবহারকারী অ্যাকাউন্ট নিষ্ক্রিয় করবে এবং আপনার সাবস্ক্রিপশন বাতিল করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না! আপনি কি নিশ্চিত?",
+    "newCourseWithoutTitle": "কোর্স শুরু করুন",
+    "newCourseWithTitle": "\"{title}\" শুরু করুন",
+    "joinCourseWithTitle": "\"{title}\" এ যোগ দিন",
+    "searchCoursePlans": "কোর্স প্ল্যান খুঁজুন",
+    "searchPublicCourses": "পাবলিক কোর্স খুঁজুন",
+    "closeSearch": "অনুসন্ধান বন্ধ করুন"
 }

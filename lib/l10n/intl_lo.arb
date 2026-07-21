@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-20 10:58:12.918713",
+    "@@last_modified": "2026-07-21 13:05:33.958909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "ອັບເດດ\n{time}",
     "activityFinishedMessage": "ສຳເລັດແລ້ວ!",
     "endForAll": "ສິ້ນສຸດສຳລັບທຸກຄົນ",
-    "newCourse": "ຫຼັກສູດໃໝ່",
     "numModules": "{num} ໂມດູນ",
     "coursePlan": "ແຜນການຫຼັກສູດ",
     "editCourseLater": "ທ່ານສາມາດແກ້ໄຂຫົວຂໍ້ແມ່ແບບ, ຄຳອະທິບາຍ, ແລະຮູບພາບຫຼັກສູດໄດ້ພາຍຫຼັງ.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "ການສະໝັກຂອງທ່ານຈະໃຊ້ງານໄດ້ຈົນຮອດວັນທີຕໍ່ອາຍຸ ({date}), ຈາກນັ້ນຈະຖືກປິດໃຊ້ງານ. ທ່ານຈະຍັງຄົງເກັບຂໍ້ມູນການວິເຄາະໄວ້ ແຕ່ຈະບໍ່ສາມາດໃຊ້ຄຸນສົມບັດແບບມືອາຊີບໄດ້.",
     "cancelDescriptionWithoutRenewalDate": "ການສະໝັກຂອງທ່ານຈະໃຊ້ງານໄດ້ຈົນຮອດວັນທີຕໍ່ອາຍຸ, ຈາກນັ້ນຈະຖືກປິດໃຊ້ງານ. ທ່ານຈະຍັງຄົງເກັບຂໍ້ມູນການວິເຄາະໄວ້ ແຕ່ຈະບໍ່ສາມາດໃຊ້ຄຸນສົມບັດແບບມືອາຊີບໄດ້.",
     "change": "ປ່ຽນ",
-    "deactivateSubscribedAccountWarning": "ນີ້ຈະປິດໃຊ້ງານບັນຊີຜູ້ໃຊ້ຂອງທ່ານ ແລະ ຍົກເລີກການສະໝັກຂອງທ່ານ. ບໍ່ສາມາດຍົກເລີກໄດ້! ທ່ານແນ່ໃຈບໍ?"
+    "deactivateSubscribedAccountWarning": "ນີ້ຈະປິດໃຊ້ງານບັນຊີຜູ້ໃຊ້ຂອງທ່ານ ແລະ ຍົກເລີກການສະໝັກຂອງທ່ານ. ບໍ່ສາມາດຍົກເລີກໄດ້! ທ່ານແນ່ໃຈບໍ?",
+    "newCourseWithoutTitle": "ເລີ່ມຕົ້ນຫຼັກສູດ",
+    "newCourseWithTitle": "ເລີ່ມຕົ້ນ \"{title}\"",
+    "joinCourseWithTitle": "ເຂົ້າຮ່ວມ \"{title}\"",
+    "searchCoursePlans": "ຊອກຫາແຜນການຮຽນ",
+    "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ",
+    "closeSearch": "ປິດການຊອກຫາ"
 }

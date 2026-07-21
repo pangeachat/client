@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-20 10:58:28.229138",
+    "@@last_modified": "2026-07-21 13:05:36.000357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Faʻafouina\n{time}",
     "activityFinishedMessage": "Ua Maeʻa Uma!",
     "endForAll": "Faʻamuta mo tagata uma",
-    "newCourse": "Kosi fou",
     "numModules": "{num} modules",
     "coursePlan": "Fuafuaga o le Kosi",
     "editCourseLater": "E mafai ona e faʻasaʻo le ulutala o le template, faʻamatalaga, ma le ata o le kosi mulimuli ane.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "O lau saofaga o le a aoga se'ia o'o i le aso toe fa'afouina ({date}), ona fa'agata lea. O le a e taofia au au'ili'iliga ae le mafai ona fa'aoga galuega fa'apitoa.",
     "cancelDescriptionWithoutRenewalDate": "O lau saofaga o le a aoga se'ia o'o i le aso toe fa'afouina, ona fa'agata lea. O le a e taofia au au'ili'iliga ae le mafai ona fa'aoga galuega fa'apitoa.",
     "change": "Suia",
-    "deactivateSubscribedAccountWarning": "O le a fa'agata ai lau teugatupe fa'aoga ma fa'aleaogaina lau saofaga. E le mafai ona toe fa'afo'i! E te mautinoa?"
+    "deactivateSubscribedAccountWarning": "O le a fa'agata ai lau teugatupe fa'aoga ma fa'aleaogaina lau saofaga. E le mafai ona toe fa'afo'i! E te mautinoa?",
+    "newCourseWithoutTitle": "Amata le kosi",
+    "newCourseWithTitle": "Amata \"{title}\"",
+    "joinCourseWithTitle": "Auai i le \"{title}\"",
+    "searchCoursePlans": "Su'e fuafuaga o kosi",
+    "searchPublicCourses": "Su'e kosi lautele",
+    "closeSearch": "Tapuni le su'esu'ega"
 }

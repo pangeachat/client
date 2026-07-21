@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:34.447067",
+    "@@last_modified": "2026-07-21 13:05:37.397498",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2926,7 +2926,6 @@
     "lastUpdated": "Cập nhật\n{time}",
     "activityFinishedMessage": "Hoàn tất!",
     "endForAll": "Kết thúc cho tất cả",
-    "newCourse": "Khóa học mới",
     "numModules": "{num} mô-đun",
     "coursePlan": "Kế hoạch khóa học",
     "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
@@ -3201,10 +3200,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -6955,5 +6950,11 @@
     "cancelDescriptionWithRenewalDate": "Gói đăng ký của bạn sẽ hoạt động cho đến ngày gia hạn ({date}), sau đó sẽ bị hủy kích hoạt. Bạn sẽ giữ lại phân tích nhưng không thể sử dụng các tính năng chuyên nghiệp.",
     "cancelDescriptionWithoutRenewalDate": "Gói đăng ký của bạn sẽ hoạt động cho đến ngày gia hạn, sau đó sẽ bị hủy kích hoạt. Bạn sẽ giữ lại phân tích nhưng không thể sử dụng các tính năng chuyên nghiệp.",
     "change": "Thay đổi",
-    "deactivateSubscribedAccountWarning": "Thao tác này sẽ hủy kích hoạt tài khoản người dùng của bạn và hủy gói đăng ký của bạn. Không thể hoàn tác! Bạn có chắc chắn không?"
+    "deactivateSubscribedAccountWarning": "Thao tác này sẽ hủy kích hoạt tài khoản người dùng của bạn và hủy gói đăng ký của bạn. Không thể hoàn tác! Bạn có chắc chắn không?",
+    "newCourseWithoutTitle": "Bắt đầu khóa học",
+    "newCourseWithTitle": "Bắt đầu \"{title}\"",
+    "joinCourseWithTitle": "Tham gia \"{title}\"",
+    "searchCoursePlans": "Tìm kiếm giáo trình",
+    "searchPublicCourses": "Tìm kiếm khóa học công khai",
+    "closeSearch": "Đóng tìm kiếm"
 }

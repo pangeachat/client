@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:36.012466",
+    "@@last_modified": "2026-07-21 13:05:38.007196",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3386,7 +3386,6 @@
     "lastUpdated": "更新\n{time}",
     "activityFinishedMessage": "全部完成！",
     "endForAll": "結束所有",
-    "newCourse": "新課程",
     "numModules": "{num} 模組",
     "coursePlan": "課程計劃",
     "editCourseLater": "您可以稍後編輯課程標題、描述和課程圖片。",
@@ -6080,10 +6079,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9795,5 +9790,11 @@
     "cancelDescriptionWithRenewalDate": "您的訂閱將在續訂日期 ({date}) 之前有效，然後停用。您將保留分析數據，但無法使用專業版功能。",
     "cancelDescriptionWithoutRenewalDate": "您的訂閱將在續訂日期之前有效，然後停用。您將保留分析數據，但無法使用專業版功能。",
     "change": "更改",
-    "deactivateSubscribedAccountWarning": "這將停用您的使用者帳戶並取消您的訂閱。此操作無法復原！您確定嗎？"
+    "deactivateSubscribedAccountWarning": "這將停用您的使用者帳戶並取消您的訂閱。此操作無法復原！您確定嗎？",
+    "newCourseWithoutTitle": "開始課程",
+    "newCourseWithTitle": "開始「{title}」",
+    "joinCourseWithTitle": "加入「{title}」",
+    "searchCoursePlans": "搜尋課程計畫",
+    "searchPublicCourses": "搜尋公開課程",
+    "closeSearch": "關閉搜尋"
 }

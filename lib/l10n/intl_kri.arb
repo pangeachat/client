@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-20 10:58:10.591275",
+    "@@last_modified": "2026-07-21 13:05:33.014704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Dɔn apdet\n{time}",
     "activityFinishedMessage": "Ɔl Dɔn!",
     "endForAll": "End fɔ ɔlman",
-    "newCourse": "Nyu kos",
     "numModules": "{num} mɔdyul dɛn",
     "coursePlan": "Kos Plan",
     "editCourseLater": "Yu go ebul fɔ ɛdit tɛmplet taytul, diskripshɔn dɛn, ɛn kos pikchɔ léta.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Yu sɔbskripshɔn go de wok te i rich i rinyuwal det ({date}), dɛn i go stɔp. Yu go stil gɛt yu analitiks bɔt yu nɔ go ebul yuz pro fichɔ dɛn.",
     "cancelDescriptionWithoutRenewalDate": "Yu sɔbskripshɔn go de wok te i rich i rinyuwal det, dɛn i go stɔp. Yu go stil gɛt yu analitiks bɔt yu nɔ go ebul yuz pro fichɔ dɛn.",
     "change": "Chenj",
-    "deactivateSubscribedAccountWarning": "Dis go stɔp yu yuzɛ akawnt ɛn kansul yu sɔbskripshɔn. Yu nɔ go ebul du dis bak! Yu shɔ?"
+    "deactivateSubscribedAccountWarning": "Dis go stɔp yu yuzɛ akawnt ɛn kansul yu sɔbskripshɔn. Yu nɔ go ebul du dis bak! Yu shɔ?",
+    "newCourseWithoutTitle": "Bigin kõs",
+    "newCourseWithTitle": "Bigin \"{title}\"",
+    "joinCourseWithTitle": "Jɔyn \"{title}\"",
+    "searchCoursePlans": "Luk fɔ kɔs plan dɛn",
+    "searchPublicCourses": "Luk fɔ pɔblik kɔs dɛn",
+    "closeSearch": "Kolos di patapata"
 }
