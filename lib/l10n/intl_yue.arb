@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-20 16:04:33.015444",
+    "@@last_modified": "2026-07-21 13:02:11.309487",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10650,5 +10650,7 @@
     "deactivateSubscribedAccountWarning": "呢個操作會停用你嘅用戶帳戶並取消你嘅訂閱。呢個操作無法復原！你確定嗎？",
     "newCourseWithoutTitle": "開始課程",
     "newCourseWithTitle": "開始「{title}」",
-    "joinCourseWithTitle": "加入「{title}」"
+    "joinCourseWithTitle": "加入「{title}」",
+    "searchCoursePlans": "搜尋課程計劃",
+    "searchPublicCourses": "搜尋公開課程"
 }

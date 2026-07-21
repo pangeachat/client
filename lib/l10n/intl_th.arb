@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-20 16:04:32.316499",
+    "@@last_modified": "2026-07-21 13:02:10.474817",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10319,5 +10319,7 @@
     "deactivateSubscribedAccountWarning": "การดำเนินการนี้จะปิดใช้งานบัญชีผู้ใช้ของคุณและยกเลิกการสมัครสมาชิกของคุณ ไม่สามารถย้อนกลับได้! คุณแน่ใจหรือไม่?",
     "newCourseWithoutTitle": "เริ่มคอร์ส",
     "newCourseWithTitle": "เริ่ม \"{title}\"",
-    "joinCourseWithTitle": "เข้าร่วม \"{title}\""
+    "joinCourseWithTitle": "เข้าร่วม \"{title}\"",
+    "searchCoursePlans": "ค้นหาแผนการเรียน",
+    "searchPublicCourses": "ค้นหาคอร์สสาธารณะ"
 }

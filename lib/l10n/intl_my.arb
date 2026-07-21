@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-20 16:04:30.304019",
+    "@@last_modified": "2026-07-21 13:02:07.312648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "၎င်းသည် သင်၏အသုံးပြုသူအကောင့်ကို ပိတ်ပြီး သင်၏စာရင်းသွင်းမှုကို ပယ်ဖျက်ပါမည်။ ၎င်းကို ပြန်ဖျက်၍မရပါ။ သင်သေချာပါသလား။",
     "newCourseWithoutTitle": "သင်တန်းစတင်ရန်",
     "newCourseWithTitle": "\"{title}\" ကို စတင်ပါ",
-    "joinCourseWithTitle": "\"{title}\" ကို ပူးပေါင်းပါ"
+    "joinCourseWithTitle": "\"{title}\" ကို ပူးပေါင်းပါ",
+    "searchCoursePlans": "သင်တန်းအစီအစဉ်များကို ရှာဖွေပါ",
+    "searchPublicCourses": "အများသုံးသင်တန်းများကို ရှာဖွေပါ"
 }

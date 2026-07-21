@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-20 16:04:32.437418",
+    "@@last_modified": "2026-07-21 13:02:10.308923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Ин ҳисоби корбарии шуморо ғайрифаъол мекунад ва обунаи шуморо бекор мекунад. Инро бекор кардан мумкин нест! Оё шумо мутмаин ҳастед?",
     "newCourseWithoutTitle": "Курсро оғоз кунед",
     "newCourseWithTitle": "\"{title}\"-ро оғоз кунед",
-    "joinCourseWithTitle": "Ба \"{title}\" ҳамроҳ шавед"
+    "joinCourseWithTitle": "Ба \"{title}\" ҳамроҳ шавед",
+    "searchCoursePlans": "Ҷустуҷӯи нақшаҳои курсӣ",
+    "searchPublicCourses": "Ҷустуҷӯи курсҳои оммавӣ"
 }

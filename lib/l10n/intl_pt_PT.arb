@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-20 16:04:30.956931",
+    "@@last_modified": "2026-07-21 13:02:08.758282",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10604,5 +10604,7 @@
     "deactivateSubscribedAccountWarning": "Isto irá desativar a sua conta de utilizador e cancelar a sua subscrição. Isto não pode ser desfeito! Tem a certeza?",
     "newCourseWithoutTitle": "Iniciar curso",
     "newCourseWithTitle": "Iniciar \"{title}\"",
-    "joinCourseWithTitle": "Aderir a \"{title}\""
+    "joinCourseWithTitle": "Aderir a \"{title}\"",
+    "searchCoursePlans": "Procurar planos de curso",
+    "searchPublicCourses": "Procurar cursos públicos"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:28.978250",
+    "@@last_modified": "2026-07-21 13:02:05.737044",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9880,5 +9880,7 @@
     "deactivateSubscribedAccountWarning": "사용자 계정이 비활성화되고 구독이 취소됩니다. 이 작업은 되돌릴 수 없습니다! 계속하시겠습니까?",
     "newCourseWithoutTitle": "코스 시작",
     "newCourseWithTitle": "\"{title}\" 시작",
-    "joinCourseWithTitle": "\"{title}\" 참여"
+    "joinCourseWithTitle": "\"{title}\" 참여",
+    "searchCoursePlans": "강의 계획 검색",
+    "searchPublicCourses": "공개 강의 검색"
 }

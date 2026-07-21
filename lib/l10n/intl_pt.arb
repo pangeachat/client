@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:30.888291",
+    "@@last_modified": "2026-07-21 13:02:07.985916",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10637,5 +10637,7 @@
     "deactivateSubscribedAccountWarning": "Isso desativará sua conta de usuário e cancelará sua assinatura. Isso não pode ser desfeito! Tem certeza?",
     "newCourseWithoutTitle": "Iniciar curso",
     "newCourseWithTitle": "Iniciar \"{title}\"",
-    "joinCourseWithTitle": "Entrar em \"{title}\""
+    "joinCourseWithTitle": "Entrar em \"{title}\"",
+    "searchCoursePlans": "Procurar planos de curso",
+    "searchPublicCourses": "Procurar cursos públicos"
 }

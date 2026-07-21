@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-20 16:04:33.011879",
+    "@@last_modified": "2026-07-21 13:02:11.166413",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "דאָס וועט דעאַקטיווירן דיין באַניצער חשבון און קאַנסאַלזירן דיין אַבאָנעמענט. דאָס קען נישט צוריקגעקערט ווערן! זענט איר זיכער?",
     "newCourseWithoutTitle": "אָנהייבן קורס",
     "newCourseWithTitle": "אָנהייבן \"{title}\"",
-    "joinCourseWithTitle": "בייטרעטן \"{title}\""
+    "joinCourseWithTitle": "בייטרעטן \"{title}\"",
+    "searchCoursePlans": "זוכן קורס פּלענער",
+    "searchPublicCourses": "זוכן עפֿנטלעכע קורסן"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-20 16:04:29.723560",
+    "@@last_modified": "2026-07-21 13:02:07.309334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Ова ќе ја деактивира вашата корисничка сметка и ќе ја откаже вашата претплата. Ова не може да се врати! Дали сте сигурни?",
     "newCourseWithoutTitle": "Започни курс",
     "newCourseWithTitle": "Започни „{title}“",
-    "joinCourseWithTitle": "Приклучи се на „{title}“"
+    "joinCourseWithTitle": "Приклучи се на „{title}“",
+    "searchCoursePlans": "Пребарај планови за курсеви",
+    "searchPublicCourses": "Пребарај јавни курсеви"
 }

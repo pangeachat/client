@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-20 16:04:32.238198",
+    "@@last_modified": "2026-07-21 13:02:10.003092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Hii itazima akaunti yako ya mtumiaji na kughairi usajili wako. Hii haiwezi kutenduliwa! Una uhakika?",
     "newCourseWithoutTitle": "Anza kozi",
     "newCourseWithTitle": "Anza \"{title}\"",
-    "joinCourseWithTitle": "Jiunge na \"{title}\""
+    "joinCourseWithTitle": "Jiunge na \"{title}\"",
+    "searchCoursePlans": "Tafuta mipango ya kozi",
+    "searchPublicCourses": "Tafuta kozi za umma"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-20 16:04:30.421228",
+    "@@last_modified": "2026-07-21 13:02:08.449903",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?",
     "newCourseWithoutTitle": "Start kurs",
     "newCourseWithTitle": "Start «{title}»",
-    "joinCourseWithTitle": "Bli med i «{title}»"
+    "joinCourseWithTitle": "Bli med i «{title}»",
+    "searchCoursePlans": "Søk i kursplaner",
+    "searchPublicCourses": "Søk i offentlige kurs"
 }

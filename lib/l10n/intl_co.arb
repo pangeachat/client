@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-20 16:04:26.346369",
+    "@@last_modified": "2026-07-21 13:02:01.037458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Questu disattiverà u vostru contu d'utilizatore è annullerà u vostru abbunamentu. Questu ùn pò esse annullatu! Site sicuru?",
     "newCourseWithoutTitle": "Principià u corsu",
     "newCourseWithTitle": "Principià \"{title}\"",
-    "joinCourseWithTitle": "Unisce vi à \"{title}\""
+    "joinCourseWithTitle": "Unisce vi à \"{title}\"",
+    "searchCoursePlans": "Circà i piani di corsu",
+    "searchPublicCourses": "Circà i corsi publichi"
 }

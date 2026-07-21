@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-20 16:04:26.339589",
+    "@@last_modified": "2026-07-21 13:02:01.022224",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10181,5 +10181,7 @@
     "deactivateSubscribedAccountWarning": "Tímto deaktivujete svůj uživatelský účet a zrušíte předplatné. Toto nelze vrátit zpět! Jste si jisti?",
     "newCourseWithoutTitle": "Spustit kurz",
     "newCourseWithTitle": "Spustit „{title}“",
-    "joinCourseWithTitle": "Připojit se k „{title}“"
+    "joinCourseWithTitle": "Připojit se k „{title}“",
+    "searchCoursePlans": "Hledat plány kurzů",
+    "searchPublicCourses": "Hledat veřejné kurzy"
 }

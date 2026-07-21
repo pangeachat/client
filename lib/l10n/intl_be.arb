@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-20 16:04:25.664564",
+    "@@last_modified": "2026-07-21 13:02:00.056401",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9701,5 +9701,7 @@
     "deactivateSubscribedAccountWarning": "Гэта дэактывуе ваш уліковы запіс і адменіць вашу падпіску. Гэта нельга адмяніць! Вы ўпэўнены?",
     "newCourseWithoutTitle": "Пачаць курс",
     "newCourseWithTitle": "Пачаць \"{title}\"",
-    "joinCourseWithTitle": "Далучыцца да \"{title}\""
+    "joinCourseWithTitle": "Далучыцца да \"{title}\"",
+    "searchCoursePlans": "Пошук планаў курсаў",
+    "searchPublicCourses": "Пошук публічных курсаў"
 }

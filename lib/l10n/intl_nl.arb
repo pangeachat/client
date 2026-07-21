@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:30.423110",
+    "@@last_modified": "2026-07-21 13:02:07.204831",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9687,5 +9687,7 @@
     "deactivateSubscribedAccountWarning": "Dit deactiveert je gebruikersaccount en annuleert je abonnement. Dit kan niet ongedaan worden gemaakt! Weet je het zeker?",
     "newCourseWithoutTitle": "Start cursus",
     "newCourseWithTitle": "Start \"{title}\"",
-    "joinCourseWithTitle": "Deelnemen aan \"{title}\""
+    "joinCourseWithTitle": "Deelnemen aan \"{title}\"",
+    "searchCoursePlans": "Zoek cursusplannen",
+    "searchPublicCourses": "Zoek openbare cursussen"
 }

@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-20 16:04:32.927159",
+    "@@last_modified": "2026-07-21 13:02:11.505100",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9691,5 +9691,7 @@
     "deactivateSubscribedAccountWarning": "Bu sizning foydalanuvchi hisobingizni o'chiradi va obunangizni bekor qiladi. Buni bekor qilib bo'lmaydi! Ishonchingiz komilmi?",
     "newCourseWithoutTitle": "Kursni boshlash",
     "newCourseWithTitle": "\"{title}\" kursini boshlash",
-    "joinCourseWithTitle": "\"{title}\" kursiga qoʻshilish"
+    "joinCourseWithTitle": "\"{title}\" kursiga qoʻshilish",
+    "searchCoursePlans": "Kurs rejalarini qidirish",
+    "searchPublicCourses": "Ommaviy kurslarni qidirish"
 }

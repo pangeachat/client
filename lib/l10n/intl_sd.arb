@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-20 16:04:31.382165",
+    "@@last_modified": "2026-07-21 13:02:08.688394",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "هي توهان جي يوزر اڪائونٽ کي غير فعال ڪري ڇڏيندو ۽ توهان جي سبسڪرپشن کي رد ڪري ڇڏيندو. هي واپس نه ٿو ڪري سگهجي! ڇا توهان پڪ آهيو؟",
     "newCourseWithoutTitle": "ڪورس شروع ڪريو",
     "newCourseWithTitle": "\"{title}\" شروع ڪريو",
-    "joinCourseWithTitle": "\"{title}\" ۾ شامل ٿيو"
+    "joinCourseWithTitle": "\"{title}\" ۾ شامل ٿيو",
+    "searchCoursePlans": "ڪورس پلان ڳوليو",
+    "searchPublicCourses": "عوامي ڪورس ڳوليو"
 }

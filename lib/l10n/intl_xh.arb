@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-20 16:04:32.875815",
+    "@@last_modified": "2026-07-21 13:02:11.576791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Oku kuya kuphelisa iakhawunti yakho yomsebenzisi kwaye kurhoxise ubhaliso lwakho. Oku akunakuguqulwa! Uqinisekile?",
     "newCourseWithoutTitle": "Qalisa ikhosi",
     "newCourseWithTitle": "Qalisa \"{title}\"",
-    "joinCourseWithTitle": "Joyina \"{title}\""
+    "joinCourseWithTitle": "Joyina \"{title}\"",
+    "searchCoursePlans": "Khangela izicwangciso zezifundo",
+    "searchPublicCourses": "Khangela izifundo zikawonke-wonke"
 }

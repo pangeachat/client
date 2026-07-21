@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-20 16:04:30.790559",
+    "@@last_modified": "2026-07-21 13:02:07.670720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Izi zidzathetsa akaunti yanu ya ogwiritsa ntchito ndikuletsa kulembetsa kwanu. Izi sizingasinthidwe! Kodi mukutsimikiza?",
     "newCourseWithoutTitle": "Yambani maphunziro",
     "newCourseWithTitle": "Yambani \"{title}\"",
-    "joinCourseWithTitle": "Lowani \"{title}\""
+    "joinCourseWithTitle": "Lowani \"{title}\"",
+    "searchCoursePlans": "Sakani mapulani amaphunziro",
+    "searchPublicCourses": "Sakani maphunziro a anthu onse"
 }

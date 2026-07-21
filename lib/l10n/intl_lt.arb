@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-20 16:04:29.516808",
+    "@@last_modified": "2026-07-21 13:02:06.161584",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10468,5 +10468,7 @@
     "deactivateSubscribedAccountWarning": "Tai deaktyvuos jūsų vartotojo paskyrą ir atšauks prenumeratą. To negalima anuliuoti! Ar esate tikri?",
     "newCourseWithoutTitle": "Pradėti kursą",
     "newCourseWithTitle": "Pradėti „{title}“",
-    "joinCourseWithTitle": "Prisijungti prie „{title}“"
+    "joinCourseWithTitle": "Prisijungti prie „{title}“",
+    "searchCoursePlans": "Ieškoti kursų planų",
+    "searchPublicCourses": "Ieškoti viešųjų kursų"
 }

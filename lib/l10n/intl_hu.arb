@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-20 16:04:28.020962",
+    "@@last_modified": "2026-07-21 13:02:03.641697",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9790,5 +9790,7 @@
     "deactivateSubscribedAccountWarning": "Ez deaktiválja a felhasználói fiókját és lemondja az előfizetését. Ez nem vonható vissza! Biztos benne?",
     "newCourseWithoutTitle": "Tanfolyam indítása",
     "newCourseWithTitle": "„{title}” indítása",
-    "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz"
+    "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz",
+    "searchCoursePlans": "Keresés a tantervek között",
+    "searchPublicCourses": "Nyilvános kurzusok keresése"
 }

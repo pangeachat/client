@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-20 16:04:25.703502",
+    "@@last_modified": "2026-07-21 13:02:00.509046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "এইটোৱে আপোনাৰ ব্যৱহাৰকাৰী একাউণ্ট নিষ্ক্ৰিয় কৰিব আৰু আপোনাৰ সদস্যতা বাতিল কৰিব। এইটো ওলোটাই কৰিব নোৱাৰি! আপুনি নিশ্চিতনে?",
     "newCourseWithoutTitle": "কোর্স আৰম্ভ কৰক",
     "newCourseWithTitle": "\"{title}\" আৰম্ভ কৰক",
-    "joinCourseWithTitle": "\"{title}\"ত যোগদান কৰক"
+    "joinCourseWithTitle": "\"{title}\"ত যোগদান কৰক",
+    "searchCoursePlans": "কোর্স পৰিকল্পনা বিচাৰক",
+    "searchPublicCourses": "ৰাজহুৱা পাঠ্যক্ৰম বিচাৰক"
 }

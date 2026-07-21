@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-20 16:04:26.568219",
+    "@@last_modified": "2026-07-21 13:02:03.113970",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7882,5 +7882,7 @@
     "deactivateSubscribedAccountWarning": "Esto desactivará tu cuenta de usuario y cancelará tu suscripción. ¡Esto no se puede deshacer! ¿Estás seguro?",
     "newCourseWithoutTitle": "Iniciar curso",
     "newCourseWithTitle": "Iniciar \"{title}\"",
-    "joinCourseWithTitle": "Unirse a \"{title}\""
+    "joinCourseWithTitle": "Unirse a \"{title}\"",
+    "searchCoursePlans": "Buscar planes de cursos",
+    "searchPublicCourses": "Buscar cursos públicos"
 }

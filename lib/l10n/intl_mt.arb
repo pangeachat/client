@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-20 16:04:30.279268",
+    "@@last_modified": "2026-07-21 13:02:07.111133",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Dan se jiddiżattiva l-kont tal-utent tiegħek u jikkanċella l-abbonament tiegħek. Dan ma jistax jitneħħa! Inti żgur?",
     "newCourseWithoutTitle": "Ibda kors",
     "newCourseWithTitle": "Ibda \"{title}\"",
-    "joinCourseWithTitle": "Ingħaqad ma' \"{title}\""
+    "joinCourseWithTitle": "Ingħaqad ma' \"{title}\"",
+    "searchCoursePlans": "Fittex pjanijiet tal-kors",
+    "searchPublicCourses": "Fittex korsijiet pubbliċi"
 }

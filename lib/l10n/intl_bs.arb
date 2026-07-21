@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-20 16:04:25.655195",
+    "@@last_modified": "2026-07-21 13:02:00.038331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički račun i otkazati vašu pretplatu. Ovo se ne može poništiti! Jeste li sigurni?",
     "newCourseWithoutTitle": "Započni kurs",
     "newCourseWithTitle": "Započni \"{title}\"",
-    "joinCourseWithTitle": "Pridruži se \"{title}\""
+    "joinCourseWithTitle": "Pridruži se \"{title}\"",
+    "searchCoursePlans": "Pretražite planove kurseva",
+    "searchPublicCourses": "Pretražite javne kurseve"
 }

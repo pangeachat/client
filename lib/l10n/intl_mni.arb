@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-20 16:04:30.255415",
+    "@@last_modified": "2026-07-21 13:02:06.865428",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "অসিনা নহাক্কী ইউজার একাউন্ট অদু দিএক্টিভেট তৌগনি অমসুং নহাক্কী সাবস্ক্রিপশন অদু কেন্সেল তৌগনি। অসি হিংহন্দবা ঙম্লোই! নহাক্না থাজবা লৈব্রা?",
     "newCourseWithoutTitle": "কোর্স হৌরকউ",
     "newCourseWithTitle": "\"{title}\" হৌরকউ",
-    "joinCourseWithTitle": "\"{title}\"দা শরুক য়াদুনা"
+    "joinCourseWithTitle": "\"{title}\"দা শরুক য়াদুনা",
+    "searchCoursePlans": "কোর্স প্লানশিং থিজিনবা",
+    "searchPublicCourses": "পাবলিক কোর্সশিং থিজিনবা"
 }

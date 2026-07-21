@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-20 16:04:27.732805",
+    "@@last_modified": "2026-07-21 13:02:03.651921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Wannan zai kashe asusun mai amfani da ku kuma ya soke biyan kuɗin ku. Ba za a iya warware wannan ba! Kun tabbata?",
     "newCourseWithoutTitle": "Fara darasi",
     "newCourseWithTitle": "Fara \"{title}\"",
-    "joinCourseWithTitle": "Shiga \"{title}\""
+    "joinCourseWithTitle": "Shiga \"{title}\"",
+    "searchCoursePlans": "Neman tsare-tsaren darasi",
+    "searchPublicCourses": "Neman darussan jama'a"
 }

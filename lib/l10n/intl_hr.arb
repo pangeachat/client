@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-20 16:04:27.866472",
+    "@@last_modified": "2026-07-21 13:02:05.837345",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10123,5 +10123,7 @@
     "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički račun i otkazati vašu pretplatu. Ovo se ne može poništiti! Jeste li sigurni?",
     "newCourseWithoutTitle": "Započni tečaj",
     "newCourseWithTitle": "Započni \"{title}\"",
-    "joinCourseWithTitle": "Pridruži se \"{title}\""
+    "joinCourseWithTitle": "Pridruži se \"{title}\"",
+    "searchCoursePlans": "Pretražite planove tečajeva",
+    "searchPublicCourses": "Pretražite javne tečajeve"
 }

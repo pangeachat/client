@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-20 16:04:31.201152",
+    "@@last_modified": "2026-07-21 13:02:08.883935",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10661,5 +10661,7 @@
     "deactivateSubscribedAccountWarning": "Это деактивирует вашу учетную запись и отменит подписку. Это действие необратимо! Вы уверены?",
     "newCourseWithoutTitle": "Начать курс",
     "newCourseWithTitle": "Начать «{title}»",
-    "joinCourseWithTitle": "Присоединиться к «{title}»"
+    "joinCourseWithTitle": "Присоединиться к «{title}»",
+    "searchCoursePlans": "Искать планы курсов",
+    "searchPublicCourses": "Искать публичные курсы"
 }

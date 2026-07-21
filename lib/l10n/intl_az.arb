@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-20 16:04:25.621109",
+    "@@last_modified": "2026-07-21 13:02:01.383272",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Bu, istifadəçi hesabınızı deaktiv edəcək və abunəliyinizi ləğv edəcək. Bu geri qaytarıla bilməz! Əminsinizmi?",
     "newCourseWithoutTitle": "Kursu başla",
     "newCourseWithTitle": "\"{title}\" kursunu başla",
-    "joinCourseWithTitle": "\"{title}\" kursuna qoşul"
+    "joinCourseWithTitle": "\"{title}\" kursuna qoşul",
+    "searchCoursePlans": "Kurs planlarını axtar",
+    "searchPublicCourses": "İctimai kursları axtar"
 }

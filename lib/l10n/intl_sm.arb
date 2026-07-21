@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-20 16:04:31.640720",
+    "@@last_modified": "2026-07-21 13:02:09.029124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "O le a fa'agata ai lau teugatupe fa'aoga ma fa'aleaogaina lau saofaga. E le mafai ona toe fa'afo'i! E te mautinoa?",
     "newCourseWithoutTitle": "Amata le kosi",
     "newCourseWithTitle": "Amata \"{title}\"",
-    "joinCourseWithTitle": "Auai i le \"{title}\""
+    "joinCourseWithTitle": "Auai i le \"{title}\"",
+    "searchCoursePlans": "Su'e fuafuaga o kosi",
+    "searchPublicCourses": "Su'e kosi lautele"
 }

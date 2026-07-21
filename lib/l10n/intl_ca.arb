@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:26.281298",
+    "@@last_modified": "2026-07-21 13:02:01.595466",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9814,5 +9814,7 @@
     "deactivateSubscribedAccountWarning": "Això desactivarà el teu compte d'usuari i cancel·larà la teva subscripció. Això no es pot desfer! Estàs segur?",
     "newCourseWithoutTitle": "Comença el curs",
     "newCourseWithTitle": "Comença \"{title}\"",
-    "joinCourseWithTitle": "Uneix-te a \"{title}\""
+    "joinCourseWithTitle": "Uneix-te a \"{title}\"",
+    "searchCoursePlans": "Cercar plans de curs",
+    "searchPublicCourses": "Cercar cursos públics"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:31.213670",
+    "@@last_modified": "2026-07-21 13:02:08.746237",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10419,5 +10419,7 @@
     "deactivateSubscribedAccountWarning": "Aceasta va dezactiva contul dvs. de utilizator și va anula abonamentul. Această acțiune nu poate fi anulată! Sunteți sigur?",
     "newCourseWithoutTitle": "Începe cursul",
     "newCourseWithTitle": "Începe „{title}”",
-    "joinCourseWithTitle": "Alătură-te „{title}”"
+    "joinCourseWithTitle": "Alătură-te „{title}”",
+    "searchCoursePlans": "Căutați planuri de curs",
+    "searchPublicCourses": "Căutați cursuri publice"
 }

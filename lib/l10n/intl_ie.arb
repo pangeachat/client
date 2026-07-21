@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-20 16:04:28.264563",
+    "@@last_modified": "2026-07-21 13:02:04.372734",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10319,5 +10319,7 @@
     "deactivateSubscribedAccountWarning": "Díghníomhóidh sé seo do chuntas úsáideora agus cealóidh sé do shíntiús. Ní féidir é seo a chealú! An bhfuil tú cinnte?",
     "newCourseWithoutTitle": "Tosaigh cúrsa",
     "newCourseWithTitle": "Tosaigh \"{title}\"",
-    "joinCourseWithTitle": "Glac páirt i \"{title}\""
+    "joinCourseWithTitle": "Glac páirt i \"{title}\"",
+    "searchCoursePlans": "Cuardaigh pleananna cúrsa",
+    "searchPublicCourses": "Cuardaigh cúrsaí poiblí"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-20 16:04:29.093928",
+    "@@last_modified": "2026-07-21 13:02:06.640339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Hoc rationem usoris tui deactivabit et subscriptionem tuam cassabit. Hoc revocari non potest! Certus es?",
     "newCourseWithoutTitle": "Incipe cursum",
     "newCourseWithTitle": "Incipe \"{title}\"",
-    "joinCourseWithTitle": "Coniunge \"{title}\""
+    "joinCourseWithTitle": "Coniunge \"{title}\"",
+    "searchCoursePlans": "Quaere consilia studiorum",
+    "searchPublicCourses": "Quaere cursus publicos"
 }

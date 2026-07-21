@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:32.267906",
+    "@@last_modified": "2026-07-21 13:02:09.929354",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9779,5 +9779,7 @@
     "deactivateSubscribedAccountWarning": "இது உங்கள் பயனர் கணக்கை செயலிழக்கச் செய்து உங்கள் சந்தாவை ரத்து செய்யும். இதைச் செயல்தவிர்க்க முடியாது! நீங்கள் உறுதியாக இருக்கிறீர்களா?",
     "newCourseWithoutTitle": "பாடத்தைத் தொடங்கு",
     "newCourseWithTitle": "\"{title}\" என்பதைத் தொடங்கு",
-    "joinCourseWithTitle": "\"{title}\" இல் சேர்"
+    "joinCourseWithTitle": "\"{title}\" இல் சேர்",
+    "searchCoursePlans": "பாடத்திட்டங்களைத் தேடு",
+    "searchPublicCourses": "பொதுப் பாடங்களைத் தேடு"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:25.604278",
+    "@@last_modified": "2026-07-21 13:02:00.307672",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10315,5 +10315,7 @@
     "deactivateSubscribedAccountWarning": "এটি আপনার ব্যবহারকারী অ্যাকাউন্ট নিষ্ক্রিয় করবে এবং আপনার সাবস্ক্রিপশন বাতিল করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না! আপনি কি নিশ্চিত?",
     "newCourseWithoutTitle": "কোর্স শুরু করুন",
     "newCourseWithTitle": "\"{title}\" শুরু করুন",
-    "joinCourseWithTitle": "\"{title}\" এ যোগ দিন"
+    "joinCourseWithTitle": "\"{title}\" এ যোগ দিন",
+    "searchCoursePlans": "কোর্স প্ল্যান খুঁজুন",
+    "searchPublicCourses": "পাবলিক কোর্স খুঁজুন"
 }

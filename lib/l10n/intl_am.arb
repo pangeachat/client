@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-20 16:04:25.705063",
+    "@@last_modified": "2026-07-21 13:02:00.317440",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "ይህ የተጠቃሚ መለያዎን ያሰናክላል እና ምዝገባዎን ይሰርዛል። ይህ ሊቀለበስ አይችልም! እርግጠኛ ነዎት?",
     "newCourseWithoutTitle": "ኮርስ ጀምር",
     "newCourseWithTitle": "\"{title}\" ጀምር",
-    "joinCourseWithTitle": "\"{title}\" ተቀላቀል"
+    "joinCourseWithTitle": "\"{title}\" ተቀላቀል",
+    "searchCoursePlans": "የኮርስ እቅዶችን ፈልግ",
+    "searchPublicCourses": "የህዝብ ኮርሶችን ፈልግ"
 }

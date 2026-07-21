@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-20 16:04:27.091294",
+    "@@last_modified": "2026-07-21 13:02:02.275965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Dit sil dyn brûkersaccount deaktivearje en dyn abonnemint annulearje. Dit kin net ûngedien makke wurde! Bisto wis?",
     "newCourseWithoutTitle": "Start kursus",
     "newCourseWithTitle": "Start \"{title}\"",
-    "joinCourseWithTitle": "Doch mei oan \"{title}\""
+    "joinCourseWithTitle": "Doch mei oan \"{title}\"",
+    "searchCoursePlans": "Sykje kursusplannen",
+    "searchPublicCourses": "Sykje iepenbiere kursussen"
 }

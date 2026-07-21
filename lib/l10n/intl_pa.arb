@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-20 16:04:30.857897",
+    "@@last_modified": "2026-07-21 13:02:07.893346",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "ਇਹ ਤੁਹਾਡੇ ਉਪਭੋਗਤਾ ਖਾਤੇ ਨੂੰ ਅਕਿਰਿਆਸ਼ੀਲ ਕਰ ਦੇਵੇਗਾ ਅਤੇ ਤੁਹਾਡੀ ਗਾਹਕੀ ਨੂੰ ਰੱਦ ਕਰ ਦੇਵੇਗਾ। ਇਸਨੂੰ ਅਣਡਿੱਠਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ! ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਹੋ?",
     "newCourseWithoutTitle": "ਕੋਰਸ ਸ਼ੁਰੂ ਕਰੋ",
     "newCourseWithTitle": "\"{title}\" ਸ਼ੁਰੂ ਕਰੋ",
-    "joinCourseWithTitle": "\"{title}\" ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ"
+    "joinCourseWithTitle": "\"{title}\" ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "searchCoursePlans": "ਕੋਰਸ ਯੋਜਨਾਵਾਂ ਖੋਜੋ",
+    "searchPublicCourses": "ਜਨਤਕ ਕੋਰਸ ਖੋਜੋ"
 }

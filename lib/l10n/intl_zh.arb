@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-20 16:04:33.045738",
+    "@@last_modified": "2026-07-21 13:02:11.114651",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9687,5 +9687,7 @@
     "deactivateSubscribedAccountWarning": "这将停用您的用户帐户并取消您的订阅。此操作无法撤销！您确定吗？",
     "newCourseWithoutTitle": "开始课程",
     "newCourseWithTitle": "开始“{title}”",
-    "joinCourseWithTitle": "加入“{title}”"
+    "joinCourseWithTitle": "加入“{title}”",
+    "searchCoursePlans": "搜索课程计划",
+    "searchPublicCourses": "搜索公共课程"
 }

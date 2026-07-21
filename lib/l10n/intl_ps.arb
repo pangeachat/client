@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-20 16:04:30.964962",
+    "@@last_modified": "2026-07-21 13:02:08.355050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "دا به ستاسو کارن حساب غیر فعال کړي او ستاسو ګډون به لغوه کړي. دا بیرته نشي اخیستل کیدی! ایا تاسو ډاډه یاست؟",
     "newCourseWithoutTitle": "کورس پیل کړئ",
     "newCourseWithTitle": "پیل کړئ \"{title}\"",
-    "joinCourseWithTitle": "ګډون وکړئ \"{title}\""
+    "joinCourseWithTitle": "ګډون وکړئ \"{title}\"",
+    "searchCoursePlans": "د کورس پلانونو لټون",
+    "searchPublicCourses": "د عامه کورسونو لټون"
 }

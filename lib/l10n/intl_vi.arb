@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:32.848782",
+    "@@last_modified": "2026-07-21 13:02:11.834567",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6953,5 +6953,7 @@
     "deactivateSubscribedAccountWarning": "Thao tác này sẽ hủy kích hoạt tài khoản người dùng của bạn và hủy gói đăng ký của bạn. Không thể hoàn tác! Bạn có chắc chắn không?",
     "newCourseWithoutTitle": "Bắt đầu khóa học",
     "newCourseWithTitle": "Bắt đầu \"{title}\"",
-    "joinCourseWithTitle": "Tham gia \"{title}\""
+    "joinCourseWithTitle": "Tham gia \"{title}\"",
+    "searchCoursePlans": "Tìm kiếm giáo trình",
+    "searchPublicCourses": "Tìm kiếm khóa học công khai"
 }

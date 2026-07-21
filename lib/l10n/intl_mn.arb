@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-20 16:04:30.074573",
+    "@@last_modified": "2026-07-21 13:02:06.964887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Энэ нь таны хэрэглэгчийн бүртгэлийг идэвхгүй болгож, захиалгыг цуцлах болно. Үүнийг буцаах боломжгүй! Та итгэлтэй байна уу?",
     "newCourseWithoutTitle": "Хичээл эхлүүлэх",
     "newCourseWithTitle": "\"{title}\" хичээлийг эхлүүлэх",
-    "joinCourseWithTitle": "\"{title}\" хичээлд нэгдэх"
+    "joinCourseWithTitle": "\"{title}\" хичээлд нэгдэх",
+    "searchCoursePlans": "Сургалтын төлөвлөгөө хайх",
+    "searchPublicCourses": "Нийтийн сургалтууд хайх"
 }

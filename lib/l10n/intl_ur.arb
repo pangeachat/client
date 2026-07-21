@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-20 16:04:32.554501",
+    "@@last_modified": "2026-07-21 13:02:10.471796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "یہ آپ کے صارف اکاؤنٹ کو غیر فعال کر دے گا اور آپ کی سبسکرپشن کو منسوخ کر دے گا۔ اسے واپس نہیں لیا جا سکتا! کیا آپ کو یقین ہے؟",
     "newCourseWithoutTitle": "کورس شروع کریں",
     "newCourseWithTitle": "\"{title}\" شروع کریں",
-    "joinCourseWithTitle": "\"{title}\" میں شامل ہوں"
+    "joinCourseWithTitle": "\"{title}\" میں شامل ہوں",
+    "searchCoursePlans": "کورس کے منصوبے تلاش کریں",
+    "searchPublicCourses": "عوامی کورسز تلاش کریں"
 }

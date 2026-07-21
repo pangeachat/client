@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:32.224624",
+    "@@last_modified": "2026-07-21 13:02:10.510336",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10205,5 +10205,7 @@
     "deactivateSubscribedAccountWarning": "Detta kommer att avaktivera ditt användarkonto och avbryta din prenumeration. Detta kan inte ångras! Är du säker?",
     "newCourseWithoutTitle": "Starta kurs",
     "newCourseWithTitle": "Starta \"{title}\"",
-    "joinCourseWithTitle": "Gå med i \"{title}\""
+    "joinCourseWithTitle": "Gå med i \"{title}\"",
+    "searchCoursePlans": "Sök kursplaner",
+    "searchPublicCourses": "Sök offentliga kurser"
 }

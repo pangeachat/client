@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-20 16:04:25.756046",
+    "@@last_modified": "2026-07-21 13:02:01.040564",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9993,5 +9993,7 @@
     "deactivateSubscribedAccountWarning": "سيؤدي هذا إلى إلغاء تنشيط حساب المستخدم الخاص بك وإلغاء اشتراكك. لا يمكن التراجع عن هذا! هل أنت متأكد؟",
     "newCourseWithoutTitle": "بدء الدورة التدريبية",
     "newCourseWithTitle": "بدء \"{title}\"",
-    "joinCourseWithTitle": "انضم إلى \"{title}\""
+    "joinCourseWithTitle": "انضم إلى \"{title}\"",
+    "searchCoursePlans": "البحث في خطط الدورة التدريبية",
+    "searchPublicCourses": "البحث في الدورات التدريبية العامة"
 }

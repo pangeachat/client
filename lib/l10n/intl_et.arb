@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-20 16:04:27.020141",
+    "@@last_modified": "2026-07-21 13:02:01.744742",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9684,5 +9684,7 @@
     "deactivateSubscribedAccountWarning": "See deaktiveerib sinu kasutajakonto ja tühistab sinu tellimuse. Seda ei saa tagasi võtta! Oled sa kindel?",
     "newCourseWithoutTitle": "Alusta kursust",
     "newCourseWithTitle": "Alusta kursust \"{title}\"",
-    "joinCourseWithTitle": "Liitu kursusega \"{title}\""
+    "joinCourseWithTitle": "Liitu kursusega \"{title}\"",
+    "searchCoursePlans": "Otsi kursuseplaane",
+    "searchPublicCourses": "Otsi avalikke kursuseid"
 }

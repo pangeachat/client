@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-20 16:04:25.618102",
+    "@@last_modified": "2026-07-21 13:02:00.305356",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Това ще деактивира потребителския ви акаунт и ще анулира абонамента ви. Това не може да бъде отменено! Сигурни ли сте?",
     "newCourseWithoutTitle": "Започни курс",
     "newCourseWithTitle": "Започни „{title}“",
-    "joinCourseWithTitle": "Присъедини се към „{title}“"
+    "joinCourseWithTitle": "Присъедини се към „{title}“",
+    "searchCoursePlans": "Търсене на учебни планове",
+    "searchPublicCourses": "Търсене на публични курсове"
 }

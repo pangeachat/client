@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-20 16:04:32.461283",
+    "@@last_modified": "2026-07-21 13:02:10.459055",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9687,5 +9687,7 @@
     "deactivateSubscribedAccountWarning": "Це деактивує ваш обліковий запис користувача та скасує вашу підписку. Це неможливо скасувати! Ви впевнені?",
     "newCourseWithoutTitle": "Почати курс",
     "newCourseWithTitle": "Почати «{title}»",
-    "joinCourseWithTitle": "Приєднатися до «{title}»"
+    "joinCourseWithTitle": "Приєднатися до «{title}»",
+    "searchCoursePlans": "Шукати плани курсів",
+    "searchPublicCourses": "Шукати публічні курси"
 }

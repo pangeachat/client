@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-20 16:04:27.004297",
+    "@@last_modified": "2026-07-21 13:02:02.090107",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10553,5 +10553,7 @@
     "deactivateSubscribedAccountWarning": "Ito ay magde-deactivate ng iyong user account at magkakansela ng iyong subscription. Hindi ito maaaring i-undo! Sigurado ka ba?",
     "newCourseWithoutTitle": "Simulan ang kurso",
     "newCourseWithTitle": "Simulan ang \"{title}\"",
-    "joinCourseWithTitle": "Sumali sa \"{title}\""
+    "joinCourseWithTitle": "Sumali sa \"{title}\"",
+    "searchCoursePlans": "Maghanap ng mga plano ng kurso",
+    "searchPublicCourses": "Maghanap ng mga pampublikong kurso"
 }

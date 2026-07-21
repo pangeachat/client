@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:33.060666",
+    "@@last_modified": "2026-07-21 13:02:11.102568",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9793,5 +9793,7 @@
     "deactivateSubscribedAccountWarning": "這將停用您的使用者帳戶並取消您的訂閱。此操作無法復原！您確定嗎？",
     "newCourseWithoutTitle": "開始課程",
     "newCourseWithTitle": "開始「{title}」",
-    "joinCourseWithTitle": "加入「{title}」"
+    "joinCourseWithTitle": "加入「{title}」",
+    "searchCoursePlans": "搜尋課程計畫",
+    "searchPublicCourses": "搜尋公開課程"
 }

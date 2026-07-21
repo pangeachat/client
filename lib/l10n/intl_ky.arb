@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-20 16:04:29.068371",
+    "@@last_modified": "2026-07-21 13:02:05.543364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Бул сиздин колдонуучу аккаунтуңузду өчүрүп, жазылууңузду жокко чыгарат. Муну артка кайтаруу мүмкүн эмес! Ишенимдүүсүзбү?",
     "newCourseWithoutTitle": "Курсту баштоо",
     "newCourseWithTitle": "\"{title}\" курсун баштоо",
-    "joinCourseWithTitle": "\"{title}\" курсуна кошулуу"
+    "joinCourseWithTitle": "\"{title}\" курсуна кошулуу",
+    "searchCoursePlans": "Курс пландарын издөө",
+    "searchPublicCourses": "Коомдук курстарды издөө"
 }

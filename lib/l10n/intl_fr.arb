@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-20 16:04:27.040553",
+    "@@last_modified": "2026-07-21 13:02:02.462363",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10042,5 +10042,7 @@
     "deactivateSubscribedAccountWarning": "Ceci désactivera votre compte utilisateur et annulera votre abonnement. Cette action est irréversible ! Êtes-vous sûr ?",
     "newCourseWithoutTitle": "Démarrer le cours",
     "newCourseWithTitle": "Démarrer « {title} »",
-    "joinCourseWithTitle": "Rejoindre « {title} »"
+    "joinCourseWithTitle": "Rejoindre « {title} »",
+    "searchCoursePlans": "Rechercher des plans de cours",
+    "searchPublicCourses": "Rechercher des cours publics"
 }

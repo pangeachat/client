@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-20 16:04:29.319191",
+    "@@last_modified": "2026-07-21 13:02:05.784965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Dëst desaktivéiert däi Benotzerkont an annuléiert däin Abonnement. Dëst kann net réckgängeg gemaach ginn! Bass du sécher?",
     "newCourseWithoutTitle": "Cours starten",
     "newCourseWithTitle": "„{title}“ starten",
-    "joinCourseWithTitle": "„{title}“ bäitrieden"
+    "joinCourseWithTitle": "„{title}“ bäitrieden",
+    "searchCoursePlans": "Courspläng sichen",
+    "searchPublicCourses": "Ëffentlech Coursen sichen"
 }

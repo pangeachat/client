@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-20 16:04:33.235543",
+    "@@last_modified": "2026-07-21 13:02:11.324333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Lokhu kuzokwenza i-akhawunti yakho yomsebenzisi ingasebenzi futhi kukhanselwe ukubhalisa kwakho. Lokhu akukwazi ukuhlehliswa! Uqinisekile?",
     "newCourseWithoutTitle": "Qala isifundo",
     "newCourseWithTitle": "Qala \"{title}\"",
-    "joinCourseWithTitle": "Joyina \"{title}\""
+    "joinCourseWithTitle": "Joyina \"{title}\"",
+    "searchCoursePlans": "Sesha izinhlelo zezifundo",
+    "searchPublicCourses": "Sesha izifundo zomphakathi"
 }

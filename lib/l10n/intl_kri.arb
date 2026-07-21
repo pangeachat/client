@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-20 16:04:29.108253",
+    "@@last_modified": "2026-07-21 13:02:05.310093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Dis go stɔp yu yuzɛ akawnt ɛn kansul yu sɔbskripshɔn. Yu nɔ go ebul du dis bak! Yu shɔ?",
     "newCourseWithoutTitle": "Bigin kõs",
     "newCourseWithTitle": "Bigin \"{title}\"",
-    "joinCourseWithTitle": "Jɔyn \"{title}\""
+    "joinCourseWithTitle": "Jɔyn \"{title}\"",
+    "searchCoursePlans": "Luk fɔ kɔs plan dɛn",
+    "searchPublicCourses": "Luk fɔ pɔblik kɔs dɛn"
 }

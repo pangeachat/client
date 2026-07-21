@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-20 16:04:31.943754",
+    "@@last_modified": "2026-07-21 13:02:09.794937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Sena se tla tima akhaonto ya hao ya mosebedisi le ho hlakola ngoliso ya hao. Sena se ke ke sa hlakolwa! O na le bonnete?",
     "newCourseWithoutTitle": "Qala thupelo",
     "newCourseWithTitle": "Qala \"{title}\"",
-    "joinCourseWithTitle": "Kena ho \"{title}\""
+    "joinCourseWithTitle": "Kena ho \"{title}\"",
+    "searchCoursePlans": "Batla merero ea thupelo",
+    "searchPublicCourses": "Batla lithupelo tsa sechaba"
 }

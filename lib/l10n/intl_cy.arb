@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-20 16:04:26.345021",
+    "@@last_modified": "2026-07-21 13:02:01.075515",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Bydd hyn yn dadactifadu eich cyfrif defnyddiwr ac yn canslo eich tanysgrifiad. Ni ellir dadwneud hyn! Ydych chi'n siŵr?",
     "newCourseWithoutTitle": "Dechrau cwrs",
     "newCourseWithTitle": "Dechrau \"{title}\"",
-    "joinCourseWithTitle": "Ymuno â \"{title}\""
+    "joinCourseWithTitle": "Ymuno â \"{title}\"",
+    "searchCoursePlans": "Chwilio cynlluniau cwrs",
+    "searchPublicCourses": "Chwilio cyrsiau cyhoeddus"
 }

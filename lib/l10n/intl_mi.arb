@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-20 16:04:29.674030",
+    "@@last_modified": "2026-07-21 13:02:06.650909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Mā tēnei e whakakore i tō pūkete kaiwhakamahi, ā, ka whakakore hoki i tō ohaurunga. Kāore e taea te whakahoki! Kei te tino hiahia koe?",
     "newCourseWithoutTitle": "Tīmata akoranga",
     "newCourseWithTitle": "Tīmata \"{title}\"",
-    "joinCourseWithTitle": "Hono atu ki \"{title}\""
+    "joinCourseWithTitle": "Hono atu ki \"{title}\"",
+    "searchCoursePlans": "Rapua ngā mahere akoranga",
+    "searchPublicCourses": "Rapua ngā akoranga tūmatanui"
 }

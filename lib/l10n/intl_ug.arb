@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-20 16:04:32.646335",
+    "@@last_modified": "2026-07-21 13:02:10.590207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "بۇ سىزنىڭ ئىشلەتكۈچى ھېساباتىڭىزنى توختىتىدۇ ۋە ئابونتلۇقىڭىزنى بىكار قىلىدۇ. بۇنى بىكار قىلغىلى بولمايدۇ! جەزملەشتۈرەمسىز؟",
     "newCourseWithoutTitle": "دەرس باشلاڭ",
     "newCourseWithTitle": "\"{title}\" نى باشلاڭ",
-    "joinCourseWithTitle": "\"{title}\" گە قاتناش"
+    "joinCourseWithTitle": "\"{title}\" گە قاتناش",
+    "searchCoursePlans": "دەرس پىلانلىرىنى ئىزدەش",
+    "searchPublicCourses": "ئاممىۋى دەرسلەرنى ئىزدەش"
 }

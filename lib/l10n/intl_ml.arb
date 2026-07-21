@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-20 16:04:29.855557",
+    "@@last_modified": "2026-07-21 13:02:06.413831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "ഇത് നിങ്ങളുടെ ഉപയോക്തൃ അക്കൗണ്ട് നിർജ്ജീവമാക്കുകയും നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ റദ്ദാക്കുകയും ചെയ്യും. ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല! നിങ്ങൾക്ക് ഉറപ്പാണോ?",
     "newCourseWithoutTitle": "കോഴ്സ് ആരംഭിക്കുക",
     "newCourseWithTitle": "\"{title}\" ആരംഭിക്കുക",
-    "joinCourseWithTitle": "\"{title}\" എന്നതിൽ ചേരുക"
+    "joinCourseWithTitle": "\"{title}\" എന്നതിൽ ചേരുക",
+    "searchCoursePlans": "കോഴ്സ് പ്ലാനുകൾ തിരയുക",
+    "searchPublicCourses": "പൊതു കോഴ്സുകൾ തിരയുക"
 }

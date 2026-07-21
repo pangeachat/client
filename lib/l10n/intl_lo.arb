@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-20 16:04:29.530109",
+    "@@last_modified": "2026-07-21 13:02:06.060524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "ນີ້ຈະປິດໃຊ້ງານບັນຊີຜູ້ໃຊ້ຂອງທ່ານ ແລະ ຍົກເລີກການສະໝັກຂອງທ່ານ. ບໍ່ສາມາດຍົກເລີກໄດ້! ທ່ານແນ່ໃຈບໍ?",
     "newCourseWithoutTitle": "ເລີ່ມຕົ້ນຫຼັກສູດ",
     "newCourseWithTitle": "ເລີ່ມຕົ້ນ \"{title}\"",
-    "joinCourseWithTitle": "ເຂົ້າຮ່ວມ \"{title}\""
+    "joinCourseWithTitle": "ເຂົ້າຮ່ວມ \"{title}\"",
+    "searchCoursePlans": "ຊອກຫາແຜນການຮຽນ",
+    "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ"
 }

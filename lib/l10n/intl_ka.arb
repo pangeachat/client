@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-20 16:04:28.795201",
+    "@@last_modified": "2026-07-21 13:02:05.026661",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10593,5 +10593,7 @@
     "deactivateSubscribedAccountWarning": "ეს გააუქმებს თქვენს მომხმარებლის ანგარიშს და გააუქმებს თქვენს გამოწერას. ამის გაუქმება შეუძლებელია! დარწმუნებული ხართ?",
     "newCourseWithoutTitle": "კურსის დაწყება",
     "newCourseWithTitle": "დაიწყეთ „{title}“",
-    "joinCourseWithTitle": "შეუერთდით „{title}“-ს"
+    "joinCourseWithTitle": "შეუერთდით „{title}“-ს",
+    "searchCoursePlans": "მოძებნეთ კურსის გეგმები",
+    "searchPublicCourses": "მოძებნეთ საჯარო კურსები"
 }

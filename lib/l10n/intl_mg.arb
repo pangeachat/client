@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-20 16:04:29.729201",
+    "@@last_modified": "2026-07-21 13:02:06.397714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Hanafoana ny kaontinao mpampiasa sy hanafoana ny fisoratana anaranao izany. Tsy azo averina izany! Azonao antoka ve?",
     "newCourseWithoutTitle": "Atombohy ny taranja",
     "newCourseWithTitle": "Atombohy ny \"{title}\"",
-    "joinCourseWithTitle": "Midira amin'ny \"{title}\""
+    "joinCourseWithTitle": "Midira amin'ny \"{title}\"",
+    "searchCoursePlans": "Tadiavo ny drafitry ny taranja",
+    "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe"
 }

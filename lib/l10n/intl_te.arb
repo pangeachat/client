@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-20 16:04:32.375984",
+    "@@last_modified": "2026-07-21 13:02:09.779906",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10643,5 +10643,7 @@
     "deactivateSubscribedAccountWarning": "ఇది మీ వినియోగదారు ఖాతాను నిష్క్రియం చేస్తుంది మరియు మీ సబ్‌స్క్రిప్షన్‌ను రద్దు చేస్తుంది. ఇది రద్దు చేయబడదు! మీరు ఖచ్చితంగా ఉన్నారా?",
     "newCourseWithoutTitle": "కోర్సును ప్రారంభించండి",
     "newCourseWithTitle": "\"{title}\" ప్రారంభించండి",
-    "joinCourseWithTitle": "\"{title}\"లో చేరండి"
+    "joinCourseWithTitle": "\"{title}\"లో చేరండి",
+    "searchCoursePlans": "కోర్సు ప్లాన్‌లను శోధించండి",
+    "searchPublicCourses": "పబ్లిక్ కోర్సులను శోధించండి"
 }

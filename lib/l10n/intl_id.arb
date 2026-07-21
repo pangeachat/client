@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 16:04:28.396735",
+    "@@last_modified": "2026-07-21 13:02:03.966437",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9760,5 +9760,7 @@
     "deactivateSubscribedAccountWarning": "Ini akan menonaktifkan akun pengguna Anda dan membatalkan langganan Anda. Ini tidak dapat dibatalkan! Apakah Anda yakin?",
     "newCourseWithoutTitle": "Mulai kursus",
     "newCourseWithTitle": "Mulai \"{title}\"",
-    "joinCourseWithTitle": "Gabung \"{title}\""
+    "joinCourseWithTitle": "Gabung \"{title}\"",
+    "searchCoursePlans": "Cari rencana kursus",
+    "searchPublicCourses": "Cari kursus publik"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-20 16:04:31.664690",
+    "@@last_modified": "2026-07-21 13:02:08.775862",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10638,5 +10638,7 @@
     "deactivateSubscribedAccountWarning": "Týmto sa deaktivuje váš používateľský účet a zruší sa vaše predplatné. Toto nemožno vrátiť späť! Ste si istí?",
     "newCourseWithoutTitle": "Spustiť kurz",
     "newCourseWithTitle": "Spustiť „{title}“",
-    "joinCourseWithTitle": "Pripojiť sa k „{title}“"
+    "joinCourseWithTitle": "Pripojiť sa k „{title}“",
+    "searchCoursePlans": "Hľadať študijné plány",
+    "searchPublicCourses": "Hľadať verejné kurzy"
 }

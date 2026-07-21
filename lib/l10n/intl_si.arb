@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-20 16:04:31.489739",
+    "@@last_modified": "2026-07-21 13:02:08.782657",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "මෙය ඔබගේ පරිශීලක ගිණුම අක්‍රිය කර ඔබගේ දායකත්වය අවලංගු කරනු ඇත. මෙය අහෝසි කළ නොහැක! ඔබට විශ්වාසද?",
     "newCourseWithoutTitle": "පාඨමාලාව අරඹන්න",
     "newCourseWithTitle": "\"{title}\" අරඹන්න",
-    "joinCourseWithTitle": "\"{title}\" හා එක්වන්න"
+    "joinCourseWithTitle": "\"{title}\" හා එක්වන්න",
+    "searchCoursePlans": "පාඨමාලා සැලසුම් සොයන්න",
+    "searchPublicCourses": "පොදු පාඨමාලා සොයන්න"
 }

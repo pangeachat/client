@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-20 16:04:27.718872",
+    "@@last_modified": "2026-07-21 13:02:03.529614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "E hoʻopau kēia i kāu moʻokāki mea hoʻohana a hoʻopau i kāu kau inoa. ʻAʻole hiki ke hoʻihoʻi ʻia kēia! Maopopo anei iā ʻoe?",
     "newCourseWithoutTitle": "E hoʻomaka i ka papa",
     "newCourseWithTitle": "E hoʻomaka i ka \"{title}\"",
-    "joinCourseWithTitle": "E hui pū me \"{title}\""
+    "joinCourseWithTitle": "E hui pū me \"{title}\"",
+    "searchCoursePlans": "Huli i nā papa haʻawina",
+    "searchPublicCourses": "Huli i nā papa aʻo lehulehu"
 }

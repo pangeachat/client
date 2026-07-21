@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-20 16:04:31.913273",
+    "@@last_modified": "2026-07-21 13:02:10.165093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Ieu bakal nganonaktipkeun akun pangguna anjeun sareng ngabatalkeun langganan anjeun. Ieu teu tiasa dibatalkeun! Naha anjeun yakin?",
     "newCourseWithoutTitle": "Mimitian kursus",
     "newCourseWithTitle": "Mimitian \"{title}\"",
-    "joinCourseWithTitle": "Gabung \"{title}\""
+    "joinCourseWithTitle": "Gabung \"{title}\"",
+    "searchCoursePlans": "Téangan rencana kursus",
+    "searchPublicCourses": "Téangan kursus umum"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-20 16:04:29.307185",
+    "@@last_modified": "2026-07-21 13:02:05.435741",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "ئەمە هەژماری بەکارهێنەرەکەت ناچالاک دەکات و بەشدارییەکەت هەڵدەوەشێنێتەوە. ئەمە ناتوانرێت هەڵبوەشێنرێتەوە! دڵنیایت؟",
     "newCourseWithoutTitle": "دەستپێکردنی خول",
     "newCourseWithTitle": "دەستپێکردنی \"{title}\"",
-    "joinCourseWithTitle": "بەژداریکردن لە \"{title}\""
+    "joinCourseWithTitle": "بەژداریکردن لە \"{title}\"",
+    "searchCoursePlans": "پلانی خولەکان بگەڕێ",
+    "searchPublicCourses": "خولە گشتییەکان بگەڕێ"
 }

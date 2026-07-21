@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-20 16:04:31.662364",
+    "@@last_modified": "2026-07-21 13:02:09.443108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Tani waxay joojin doontaa akoonkaaga isticmaale waxayna burin doontaa rukumashadaada. Tan dib looma celin karo! Ma hubtaa?",
     "newCourseWithoutTitle": "Bilow koorsada",
     "newCourseWithTitle": "Bilow \"{title}\"",
-    "joinCourseWithTitle": "Ku biir \"{title}\""
+    "joinCourseWithTitle": "Ku biir \"{title}\"",
+    "searchCoursePlans": "Raadi qorshayaasha koorsada",
+    "searchPublicCourses": "Raadi koorsooyinka dadweynaha"
 }

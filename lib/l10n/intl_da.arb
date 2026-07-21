@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-20 16:04:26.390864",
+    "@@last_modified": "2026-07-21 13:02:01.233196",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10613,5 +10613,7 @@
     "deactivateSubscribedAccountWarning": "Dette vil deaktivere din brugerkonto og annullere dit abonnement. Dette kan ikke fortrydes! Er du sikker?",
     "newCourseWithoutTitle": "Start kursus",
     "newCourseWithTitle": "Start \"{title}\"",
-    "joinCourseWithTitle": "Tilmeld dig \"{title}\""
+    "joinCourseWithTitle": "Tilmeld dig \"{title}\"",
+    "searchCoursePlans": "Søg i kursusplaner",
+    "searchPublicCourses": "Søg i offentlige kurser"
 }

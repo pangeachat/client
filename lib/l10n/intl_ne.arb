@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-20 16:04:30.406934",
+    "@@last_modified": "2026-07-21 13:02:08.595506",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "यसले तपाईंको प्रयोगकर्ता खाता निष्क्रिय गर्नेछ र तपाईंको सदस्यता रद्द गर्नेछ। यो पूर्ववत गर्न सकिँदैन! के तपाईं निश्चित हुनुहुन्छ?",
     "newCourseWithoutTitle": "कोर्स सुरु गर्नुहोस्",
     "newCourseWithTitle": "\"{title}\" सुरु गर्नुहोस्",
-    "joinCourseWithTitle": "\"{title}\" मा सामेल हुनुहोस्"
+    "joinCourseWithTitle": "\"{title}\" मा सामेल हुनुहोस्",
+    "searchCoursePlans": "पाठ्यक्रम योजनाहरू खोज्नुहोस्",
+    "searchPublicCourses": "सार्वजनिक पाठ्यक्रमहरू खोज्नुहोस्"
 }

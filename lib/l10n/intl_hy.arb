@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-20 16:04:28.150287",
+    "@@last_modified": "2026-07-21 13:02:03.977528",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Սա կապաակտիվացնի ձեր օգտատիրոջ հաշիվը և կչեղարկի ձեր բաժանորդագրությունը։ Սա հնարավոր չէ չեղարկել։ Վստա՞հ եք։",
     "newCourseWithoutTitle": "Սկսել դասընթացը",
     "newCourseWithTitle": "Սկսել «{title}»-ը",
-    "joinCourseWithTitle": "Միանալ «{title}»-ին"
+    "joinCourseWithTitle": "Միանալ «{title}»-ին",
+    "searchCoursePlans": "Որոնել դասընթացի պլաններ",
+    "searchPublicCourses": "Որոնել հանրային դասընթացներ"
 }

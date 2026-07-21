@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-20 16:04:30.151404",
+    "@@last_modified": "2026-07-21 13:02:07.476807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Ini akan menyahaktifkan akaun pengguna anda dan membatalkan langganan anda. Ini tidak boleh dibatalkan! Adakah anda pasti?",
     "newCourseWithoutTitle": "Mula kursus",
     "newCourseWithTitle": "Mula \"{title}\"",
-    "joinCourseWithTitle": "Sertai \"{title}\""
+    "joinCourseWithTitle": "Sertai \"{title}\"",
+    "searchCoursePlans": "Cari rancangan kursus",
+    "searchPublicCourses": "Cari kursus awam"
 }

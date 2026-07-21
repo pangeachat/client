@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-20 16:04:31.883993",
+    "@@last_modified": "2026-07-21 13:02:09.798359",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2033,5 +2033,7 @@
     "deactivateSubscribedAccountWarning": "Kjo do të çaktivizojë llogarinë tuaj të përdoruesit dhe do të anulojë abonimin tuaj. Kjo nuk mund të zhbëhet! Jeni i sigurt?",
     "newCourseWithoutTitle": "Fillo kursin",
     "newCourseWithTitle": "Fillo \"{title}\"",
-    "joinCourseWithTitle": "Bashkohu me \"{title}\""
+    "joinCourseWithTitle": "Bashkohu me \"{title}\"",
+    "searchCoursePlans": "Kërko plane kursesh",
+    "searchPublicCourses": "Kërko kurse publike"
 }
