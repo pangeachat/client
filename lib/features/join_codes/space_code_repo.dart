@@ -33,6 +33,35 @@ class SpaceCodeRepo {
     return code;
   }
 
+  /// The activity id of a shared `/<uuid>` link ferried across the login
+  /// bounce — same box, same TTL, same landing-retries-until-consumed
+  /// contract as the join code above; consumed when the activity panel
+  /// actually opens (LeftPanelActivityDetailsSubpage).
+  static String? get activityId {
+    final String? id = _spaceStorage.read(PLocalKey.cachedActivityToOpen);
+    if (id == null) return null;
+    final int? writtenAt = _spaceStorage.read(PLocalKey.cachedActivityToOpenAt);
+    if (!isFresh(writtenAt, DateTime.now())) {
+      clearActivityId();
+      return null;
+    }
+    return id;
+  }
+
+  static Future<void> setActivityId(String id) async {
+    if (id.isEmpty) return;
+    await _spaceStorage.write(PLocalKey.cachedActivityToOpen, id);
+    await _spaceStorage.write(
+      PLocalKey.cachedActivityToOpenAt,
+      DateTime.now().millisecondsSinceEpoch,
+    );
+  }
+
+  static Future<void> clearActivityId() async {
+    await _spaceStorage.remove(PLocalKey.cachedActivityToOpen);
+    await _spaceStorage.remove(PLocalKey.cachedActivityToOpenAt);
+  }
+
   static String? get recentCode =>
       _spaceStorage.read(PLocalKey.justInputtedCode);
 

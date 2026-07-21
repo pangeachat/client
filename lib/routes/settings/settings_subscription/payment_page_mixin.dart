@@ -14,7 +14,7 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     _recordBeganPayment(request.planId, request.promoCode);
     final paymentLink = await _requestPaymentLink(request);
     if (paymentLink == null) return;
-    await _launchPaymentLink(paymentLink);
+    await _launchPaymentLink(paymentLink, request.planId);
   }
 
   void _recordBeganPayment(String planId, [String? promoCode]) {
@@ -49,8 +49,8 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     return checkoutResult.result;
   }
 
-  Future<void> _launchPaymentLink(String paymentLink) async {
-    await SubscriptionManagementRepo.setBeganPayment();
+  Future<void> _launchPaymentLink(String paymentLink, String planId) async {
+    await SubscriptionManagementRepo.setBeganPayment(planId);
     final success = await launchUrlString(
       paymentLink,
       webOnlyWindowName: "_self",
