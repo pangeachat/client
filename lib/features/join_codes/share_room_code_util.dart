@@ -21,9 +21,9 @@ class ShareRoomCodeUtil {
           ? html.window.origin!
           : Environment.frontendURL;
 
-      // CloudFront viewer-request fn at app.{staging.,}pangea.chat 302s
-      // bare 7-char codes to /#/join_with_link?classcode=<code>. See
-      // pangeachat/devops#105.
+      // The shareable link is just the bare short code. The SPA serves any
+      // path (index.html fallback) and the client's LegacyRedirects folds
+      // `/<code>` into the join-with-code leaf — no redirect hop.
       return "$initialUrl/$code";
     } else {
       return code;

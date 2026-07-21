@@ -42,47 +42,24 @@ void main() {
     });
   });
 
-  group('the inbound course join link (#7524)', () {
-    test('rewrites to the join-with-code leaf of the addcourse token', () {
-      expect(
-        resolve('/join_with_link?classcode=vj3pc8b'),
-        '/?left=addcoursepage:private.jvj3pc8b',
-      );
-    });
-
-    test('the native /join spelling folds to the same target', () {
-      expect(
-        resolve('/join?classcode=vj3pc8b'),
-        '/?left=addcoursepage:private.jvj3pc8b',
-      );
-    });
-
-    test('a code with unusual-but-valid characters round-trips losslessly', () {
-      const code = 'AB.1-ç 8';
-      final out = resolve(
-        '/join_with_link?classcode=${Uri.encodeComponent(code)}',
-      );
-      expect(joinCodeFor(Uri.parse(out!)), code);
-    });
-
-    test('a missing or empty code degrades to the manual join page', () {
-      expect(resolve('/join_with_link'), '/?left=addcoursepage:private');
-      expect(
-        resolve('/join_with_link?classcode='),
-        '/?left=addcoursepage:private',
-      );
+  group('the inbound course join link (bare short code)', () {
+    test('a bare /<code> folds to the join-with-code leaf', () {
+      expect(resolve('/vj3pc8b'), '/?left=addcoursepage:private.jvj3pc8b');
     });
 
     test('prior panels and context are dropped — this link IS the join', () {
       expect(
-        resolve('/join_with_link?classcode=vj3pc8b&c=!s&left=chats'),
+        resolve('/vj3pc8b?c=!s&left=chats'),
         '/?left=addcoursepage:private.jvj3pc8b',
       );
     });
 
+    test('a seven-char segment with no digit is not a code — left alone', () {
+      expect(resolve('/abcdefg'), isNull);
+    });
+
     test('idempotent: the token form never re-fires', () {
-      expect(resolve(resolve('/join_with_link?classcode=vj3pc8b')!), isNull);
-      expect(resolve(resolve('/join_with_link')!), isNull);
+      expect(resolve(resolve('/vj3pc8b')!), isNull);
     });
   });
 
@@ -97,6 +74,9 @@ void main() {
         '/rooms/!abc',
         '/rooms/!abc/details',
         '/rooms/spaces/!s/!room',
+        // The retired join-link spellings: the code is now the bare path.
+        '/join_with_link?classcode=vj3pc8b',
+        '/join?classcode=vj3pc8b',
       ]) {
         expect(resolve(dead), isNull, reason: dead);
       }
