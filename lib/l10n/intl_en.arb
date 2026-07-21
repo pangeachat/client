@@ -4762,5 +4762,7 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "searchCoursePlans": "Search course plans",
+    "searchPublicCourses": "Search public courses"
 }
