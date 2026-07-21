@@ -27,12 +27,9 @@ All three routes converge on the user becoming a `Membership.join` member of the
 
 ## Route 1 — Class Link
 
-**Canonical shape**: a bare short code, `https://app.pangea.chat/<code>` (seven `[a-z0-9]` characters), shared or printed as-is. Two spellings carry it into the app, neither hash-based — the canonical route shapes are the cross-repo contract in [deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md), and the client URL grammar is [routing.instructions.md](routing.instructions.md):
+**The link is the bare short code**: `https://app.pangea.chat/<code>` — seven `[a-z0-9]` characters with at least one digit (the [`generate_room_code`](../../../synapse-pangea-chat/synapse_pangea_chat/room_code/generate_room_code.py) format), shared or printed as-is. That bare path **is** the app URL on both web and native: no redirect hop, no `?classcode=` query, no `#` hash. On web the SPA serves any path (the CloudFront index.html fallback); on native the app-link listener in [`MatrixState`](../../lib/widgets/matrix.dart) delivers the same path. The digit requirement is what tells a code apart from a literal route (`/chats`), which never carries one — so the route grammar in [routing.instructions.md](routing.instructions.md) stays unambiguous.
 
-- **Web** — a CloudFront viewer-request 302 rewrites the bare code to `/join_with_link?classcode=<code>`.
-- **Native** (iOS Universal Links / Android App Links) — the incoming-URI listener in [`MatrixState`](../../lib/widgets/matrix.dart) rewrites the bare code to `/join?classcode=<code>`.
-
-[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) — the router's one inbound rewrite — folds both spellings into the add-course panel's private join-with-code leaf (`left=addcourse:private/<code>`) before anything renders. That leaf ([`CourseCodePage`](../../lib/routes/courses/private/course_code_page.dart)) prefills the code and submits the join once — the same [`SpaceCodeController`](../../lib/features/join_codes/space_code_controller.dart) `joinSpaceWithCode` flow Route 2 runs — then history-replaces itself with the plain join-with-code page so back or refresh never re-fires the join.
+[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) — the router's one inbound rewrite — recognizes the bare `/<code>` and folds it into the add-course panel's private join-with-code leaf (`left=addcourse:private/<code>`) before anything renders. That leaf ([`CourseCodePage`](../../lib/routes/courses/private/course_code_page.dart)) prefills the code and submits the join once — the same [`SpaceCodeController`](../../lib/features/join_codes/space_code_controller.dart) `joinSpaceWithCode` flow Route 2 runs — then history-replaces itself with the plain join-with-code page so back or refresh never re-fires the join. The older `/join_with_link?classcode=` and `/join?classcode=` spellings are retired, not redirected — the bare code is the one inbound shape.
 
 **Pre-login**: a logged-out visitor is bounced to login, which drops the destination URL, so the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) caches the code (`SpaceCodeRepo`) first. After login, chat-list init runs `joinCachedSpaceCode` and joins. The cache is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) so a visitor who never logs in can't leave a code that surprise-joins a much later login.
 
@@ -125,10 +122,11 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 ## Deep Linking — Mobile & Web
 
-A class link must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the installed app directly; the bare short code reaches the incoming-URI listener, which rewrites it to `/join?classcode=<code>` (Route 1). When the app is not installed, the web app loads and processes the code directly — there is no deferred deep-linking service (Branch.io, etc.).
+A class link must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the installed app directly; the bare `/<code>` path reaches the incoming-URI listener, which passes it straight to the router (Route 1 — no per-shape rewrite). When the app is not installed, the web app loads and processes the same path — there is no deferred deep-linking service (Branch.io, etc.).
 
 ### Infrastructure touchpoints
 
+- **Web SPA fallback** — the webapp CloudFront distribution serves `index.html` for any path (a 403/404 → `/index.html` mapping), so a bare `/<code>` (or a `/<uuid>` activity link) loads the app instead of hitting an S3 not-found. This replaces the retired short-code 302; it lives in the `pangeachat/devops` `static-web` module.
 - **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
 - **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml).
 - **Incoming-URI listener** — the listener in [`MatrixState`](../../lib/widgets/matrix.dart) receives inbound URLs via the `app_links` package and routes them into GoRouter.
