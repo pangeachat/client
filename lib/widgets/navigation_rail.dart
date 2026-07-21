@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
@@ -294,37 +295,75 @@ class _SpaceItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(0),
       onTap: onTap,
       unreadBadgeFilter: (room) => spaceChildrenIds.contains(room.id),
-      icon: b.Badge(
-        showBadge: space.membership == Membership.invite,
-        badgeStyle: b.BadgeStyle(
-          badgeColor: Theme.of(context).colorScheme.error,
-          elevation: 4,
-          borderSide: BorderSide.none,
-          padding: const EdgeInsetsGeometry.all(0),
-        ),
-        badgeContent: Icon(
-          Icons.error_outline,
-          color: Theme.of(context).colorScheme.onPrimary,
-          size: 16,
-        ),
-        position: b.BadgePosition.topEnd(top: -5, end: -7),
-        child: ClipPath(
-          clipper: MapClipper(),
-          // The course name is already announced by NaviRailItem's toolTip, so
-          // exclude the avatar's own name label to avoid a double-read (#7185).
-          child: ExcludeSemantics(
-            child: Avatar(
-              mxContent: space.avatar,
-              name: displayname,
-              border: BorderSide(
-                width: 1,
-                color: Theme.of(context).dividerColor,
+      icon: Builder(
+        builder: (context) {
+          final position = b.BadgePosition.topEnd(top: -5, end: -7);
+          final child = ClipPath(
+            clipper: MapClipper(),
+            // The course name is already announced by NaviRailItem's toolTip, so
+            // exclude the avatar's own name label to avoid a double-read (#7185).
+            child: ExcludeSemantics(
+              child: Avatar(
+                mxContent: space.avatar,
+                name: displayname,
+                border: BorderSide(
+                  width: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
+                borderRadius: BorderRadius.circular(0),
+                size: iconWidth,
               ),
-              borderRadius: BorderRadius.circular(0),
-              size: iconWidth,
             ),
-          ),
-        ),
+          );
+
+          if (space.membership == Membership.invite) {
+            return b.Badge(
+              badgeStyle: b.BadgeStyle(
+                badgeColor: Theme.of(context).colorScheme.error,
+                elevation: 4,
+                borderSide: BorderSide.none,
+                padding: const EdgeInsetsGeometry.all(0),
+              ),
+              badgeContent: Icon(
+                Icons.error_outline,
+                color: Theme.of(context).colorScheme.onPrimary,
+                size: 16,
+              ),
+              position: position,
+              child: child,
+            );
+          }
+
+          return FutureBuilder(
+            future: space.unreadCoursePingEventID,
+            builder: (context, snapshot) {
+              final eventId = snapshot.data;
+              if (eventId != null) {
+                return b.Badge(
+                  badgeStyle: b.BadgeStyle(
+                    badgeColor: Theme.of(context).colorScheme.primaryContainer,
+                    elevation: 4,
+                    borderSide: BorderSide.none,
+                    padding: const EdgeInsetsGeometry.all(2),
+                  ),
+                  badgeContent: Icon(
+                    Icons.notifications_outlined,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    size: 12,
+                  ),
+                  position: position,
+                  child: child,
+                );
+              }
+
+              return b.Badge(
+                showBadge: false,
+                position: position,
+                child: child,
+              );
+            },
+          );
+        },
       ),
       naviRailWidth: naviRailWidth,
     );

@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
@@ -88,9 +89,17 @@ class ChatDetailsController extends State<ChatDetails>
     );
     _loadSummaries();
 
-    if (room?.isSpace == true) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) Matrix.of(context).showEnableNotificationsDialog(context);
+    if (room != null && room.isSpace) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        final eventId = await room.unreadCoursePingEventID;
+        if (eventId != null) {
+          try {
+            await room.setReadMarker(eventId);
+          } catch (_) {}
+        }
+
+        if (!mounted) return;
+        Matrix.of(context).showEnableNotificationsDialog(context);
       });
     }
   }
