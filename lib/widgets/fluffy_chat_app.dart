@@ -13,6 +13,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
@@ -63,8 +64,17 @@ class FluffyChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
-      builder: (context, themeMode, primaryColor) => MaterialApp.router(
-        title: AppSettings.applicationName.value,
+      // #Pangea
+      // builder: (context, themeMode, primaryColor) => MaterialApp.router(
+      //   title: AppSettings.applicationName.value,
+      builder: (context, themeMode, primaryColor) => ValueListenableBuilder(
+        valueListenable: WorkspaceScreenTracker.webTitle,
+        builder: (context, webTitle, _) => MaterialApp.router(
+          // On web the GA screen name doubles as document.title so panel
+          // screens report by title (workspace_screen_tracker.dart); off the
+          // workspace (and on mobile) it is null and the app name applies.
+          title: webTitle ?? AppSettings.applicationName.value,
+          // Pangea#
         themeMode: themeMode,
         theme: FluffyThemes.buildTheme(context, Brightness.light, primaryColor),
         darkTheme: FluffyThemes.buildTheme(
@@ -103,6 +113,7 @@ class FluffyChatApp extends StatelessWidget {
           ),
         ),
         // Pangea#
+        ),
       ),
     );
   }
