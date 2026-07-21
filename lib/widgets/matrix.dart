@@ -668,26 +668,29 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
+  /// The in-app location an OS-delivered link maps to — pure and unit-tested
+  /// (incoming_uri_path_test.dart): a bare `/<code>` course join link and the
+  /// `/<uuid>` activity link flow straight through to the router's
+  /// LegacyRedirects, which folds them into their tokens — no per-shape
+  /// rewrite here.
+  static String incomingUriToPath(Uri uri) {
+    if (uri.fragment.isNotEmpty) {
+      return uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+    }
+    final query = uri.queryParameters;
+    final queryString = query.entries
+        .map((e) => '${e.key}=${e.value}')
+        .join('&');
+    var path = '/${uri.pathSegments.join('/')}';
+    if (queryString.isNotEmpty) {
+      path = '$path?$queryString';
+    }
+    return path;
+  }
+
   Future<void> _processIncomingUris(Uri? uri) async {
     if (uri == null) return;
-
-    String path;
-    if (uri.fragment.isNotEmpty) {
-      path = uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
-    } else {
-      final query = uri.queryParameters;
-      final queryString = query.entries
-          .map((e) => '${e.key}=${e.value}')
-          .join('&');
-      path = '/${uri.pathSegments.join('/')}';
-      if (queryString.isNotEmpty) {
-        path = '$path?$queryString';
-      }
-    }
-
-    // A bare `/<code>` course join link (and the `/<uuid>` activity link) flow
-    // straight through to the router's LegacyRedirects, which folds them into
-    // their tokens — no per-shape rewrite here.
+    final path = incomingUriToPath(uri);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);
     });

@@ -2,6 +2,23 @@
 <html>
 
 <head>
+  <!-- #Pangea -->
+  <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
+       app-argument carries the CURRENT URL, so a shared link (`/<code>`
+       course join, `/<uuid>` activity) opened in Safari or an in-app browser
+       hops into the installed app with the link intact; "View" goes to the
+       App Store. Injected via script because the argument must be the live
+       URL (joining-courses.instructions.md, Deep Linking). -->
+  <script>
+    (function () {
+      const meta = document.createElement('meta');
+      meta.name = 'apple-itunes-app';
+      meta.content =
+        'app-id=1445118630, app-argument=' + window.location.href;
+      document.head.appendChild(meta);
+    })();
+  </script>
+  <!-- Pangea# -->
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -221,6 +238,15 @@
       const isMobile = isAndroid || isIOS;
 
       if (!isMobile) return; // Exit if not a mobile device
+
+      // A deep path is an inbound link (`/<code>` course join, `/<uuid>`
+      // activity — joining-courses.instructions.md). The web app is the
+      // documented fallback for those: when the app is installed the OS
+      // intercepts the link BEFORE this page loads (Universal/App Links), so
+      // reaching here means no app or an in-app browser — the store bounce
+      // would drop the link payload, and there is no deferred deep-linking
+      // service to recover it. Only bare-root visits steer to the store.
+      if (window.location.pathname !== '/') return;
 
       const appScheme = 'pangea://'; // Replace with your app's scheme
       const fallbackURL = isIOS
