@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:04.690836",
+    "@@last_modified": "2026-07-21 13:05:32.946203",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,6 @@
     "newCourseWithTitle": "Inizia \"{title}\"",
     "joinCourseWithTitle": "Unisciti a \"{title}\"",
     "searchCoursePlans": "Cerca piani di corso",
-    "searchPublicCourses": "Cerca corsi pubblici"
+    "searchPublicCourses": "Cerca corsi pubblici",
+    "closeSearch": "Chiudi ricerca"
 }

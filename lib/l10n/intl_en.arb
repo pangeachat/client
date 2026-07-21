@@ -4764,5 +4764,6 @@
         }
     },
     "searchCoursePlans": "Search course plans",
-    "searchPublicCourses": "Search public courses"
+    "searchPublicCourses": "Search public courses",
+    "closeSearch": "Close search"
 }

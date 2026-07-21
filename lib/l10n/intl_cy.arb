@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-21 13:02:01.075515",
+    "@@last_modified": "2026-07-21 13:05:29.908411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Dechrau \"{title}\"",
     "joinCourseWithTitle": "Ymuno â \"{title}\"",
     "searchCoursePlans": "Chwilio cynlluniau cwrs",
-    "searchPublicCourses": "Chwilio cyrsiau cyhoeddus"
+    "searchPublicCourses": "Chwilio cyrsiau cyhoeddus",
+    "closeSearch": "Cau'r chwiliad"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:01.758645",
+    "@@last_modified": "2026-07-21 13:05:30.279445",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10640,5 +10640,6 @@
     "newCourseWithTitle": "Komenci \"{title}\"",
     "joinCourseWithTitle": "Aliĝi al \"{title}\"",
     "searchCoursePlans": "Serĉi kursplanojn",
-    "searchPublicCourses": "Serĉi publikajn kursojn"
+    "searchPublicCourses": "Serĉi publikajn kursojn",
+    "closeSearch": "Fermi serĉon"
 }

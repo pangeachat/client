@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-21 13:02:00.038331",
+    "@@last_modified": "2026-07-21 13:05:29.096283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Započni \"{title}\"",
     "joinCourseWithTitle": "Pridruži se \"{title}\"",
     "searchCoursePlans": "Pretražite planove kurseva",
-    "searchPublicCourses": "Pretražite javne kurseve"
+    "searchPublicCourses": "Pretražite javne kurseve",
+    "closeSearch": "Zatvori pretragu"
 }

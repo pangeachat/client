@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-21 13:02:06.650909",
+    "@@last_modified": "2026-07-21 13:05:33.853329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Tīmata \"{title}\"",
     "joinCourseWithTitle": "Hono atu ki \"{title}\"",
     "searchCoursePlans": "Rapua ngā mahere akoranga",
-    "searchPublicCourses": "Rapua ngā akoranga tūmatanui"
+    "searchPublicCourses": "Rapua ngā akoranga tūmatanui",
+    "closeSearch": "Katia te rapu"
 }

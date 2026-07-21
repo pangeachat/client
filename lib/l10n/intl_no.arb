@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-21 13:02:08.449903",
+    "@@last_modified": "2026-07-21 13:05:34.466085",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Start «{title}»",
     "joinCourseWithTitle": "Bli med i «{title}»",
     "searchCoursePlans": "Søk i kursplaner",
-    "searchPublicCourses": "Søk i offentlige kurs"
+    "searchPublicCourses": "Søk i offentlige kurs",
+    "closeSearch": "Lukk søk"
 }

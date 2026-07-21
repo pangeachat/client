@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:01.595466",
+    "@@last_modified": "2026-07-21 13:05:30.295986",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9816,5 +9816,6 @@
     "newCourseWithTitle": "Comença \"{title}\"",
     "joinCourseWithTitle": "Uneix-te a \"{title}\"",
     "searchCoursePlans": "Cercar plans de curs",
-    "searchPublicCourses": "Cercar cursos públics"
+    "searchPublicCourses": "Cercar cursos públics",
+    "closeSearch": "Tancar cerca"
 }

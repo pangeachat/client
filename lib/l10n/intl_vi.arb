@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:11.834567",
+    "@@last_modified": "2026-07-21 13:05:37.397498",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6955,5 +6955,6 @@
     "newCourseWithTitle": "Bắt đầu \"{title}\"",
     "joinCourseWithTitle": "Tham gia \"{title}\"",
     "searchCoursePlans": "Tìm kiếm giáo trình",
-    "searchPublicCourses": "Tìm kiếm khóa học công khai"
+    "searchPublicCourses": "Tìm kiếm khóa học công khai",
+    "closeSearch": "Đóng tìm kiếm"
 }

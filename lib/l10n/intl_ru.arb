@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-21 13:02:08.883935",
+    "@@last_modified": "2026-07-21 13:05:36.151394",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10663,5 +10663,6 @@
     "newCourseWithTitle": "Начать «{title}»",
     "joinCourseWithTitle": "Присоединиться к «{title}»",
     "searchCoursePlans": "Искать планы курсов",
-    "searchPublicCourses": "Искать публичные курсы"
+    "searchPublicCourses": "Искать публичные курсы",
+    "closeSearch": "Закрыть поиск"
 }

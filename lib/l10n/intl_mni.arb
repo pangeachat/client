@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-21 13:02:06.865428",
+    "@@last_modified": "2026-07-21 13:05:33.985331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" হৌরকউ",
     "joinCourseWithTitle": "\"{title}\"দা শরুক য়াদুনা",
     "searchCoursePlans": "কোর্স প্লানশিং থিজিনবা",
-    "searchPublicCourses": "পাবলিক কোর্সশিং থিজিনবা"
+    "searchPublicCourses": "পাবলিক কোর্সশিং থিজিনবা",
+    "closeSearch": "থিজিনবা থমজিনবা"
 }

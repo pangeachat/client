@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-21 13:02:03.113970",
+    "@@last_modified": "2026-07-21 13:05:30.239084",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7884,5 +7884,6 @@
     "newCourseWithTitle": "Iniciar \"{title}\"",
     "joinCourseWithTitle": "Unirse a \"{title}\"",
     "searchCoursePlans": "Buscar planes de cursos",
-    "searchPublicCourses": "Buscar cursos públicos"
+    "searchPublicCourses": "Buscar cursos públicos",
+    "closeSearch": "Cerrar búsqueda"
 }

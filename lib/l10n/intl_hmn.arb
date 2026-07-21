@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-21 13:02:03.289736",
+    "@@last_modified": "2026-07-21 13:05:31.659536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Pib kawm \"{title}\"",
     "joinCourseWithTitle": "Koom \"{title}\"",
     "searchCoursePlans": "Nrhiav kev kawm",
-    "searchPublicCourses": "Nrhiav cov kev kawm pej xeem"
+    "searchPublicCourses": "Nrhiav cov kev kawm pej xeem",
+    "closeSearch": "Kaw kev tshawb nrhiav"
 }

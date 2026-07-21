@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-21 13:02:06.060524",
+    "@@last_modified": "2026-07-21 13:05:33.958909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "ເລີ່ມຕົ້ນ \"{title}\"",
     "joinCourseWithTitle": "ເຂົ້າຮ່ວມ \"{title}\"",
     "searchCoursePlans": "ຊອກຫາແຜນການຮຽນ",
-    "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ"
+    "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ",
+    "closeSearch": "ປິດການຊອກຫາ"
 }

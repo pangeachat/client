@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-21 13:02:10.165093",
+    "@@last_modified": "2026-07-21 13:05:36.628572",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Mimitian \"{title}\"",
     "joinCourseWithTitle": "Gabung \"{title}\"",
     "searchCoursePlans": "Téangan rencana kursus",
-    "searchPublicCourses": "Téangan kursus umum"
+    "searchPublicCourses": "Téangan kursus umum",
+    "closeSearch": "Tutup pamilarian"
 }

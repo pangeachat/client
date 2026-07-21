@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-21 13:02:00.317440",
+    "@@last_modified": "2026-07-21 13:05:29.212119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" ጀምር",
     "joinCourseWithTitle": "\"{title}\" ተቀላቀል",
     "searchCoursePlans": "የኮርስ እቅዶችን ፈልግ",
-    "searchPublicCourses": "የህዝብ ኮርሶችን ፈልግ"
+    "searchPublicCourses": "የህዝብ ኮርሶችን ፈልግ",
+    "closeSearch": "ፍለጋ ዝጋ"
 }

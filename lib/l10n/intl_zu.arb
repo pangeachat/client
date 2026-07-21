@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-21 13:02:11.324333",
+    "@@last_modified": "2026-07-21 13:05:38.684746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Qala \"{title}\"",
     "joinCourseWithTitle": "Joyina \"{title}\"",
     "searchCoursePlans": "Sesha izinhlelo zezifundo",
-    "searchPublicCourses": "Sesha izifundo zomphakathi"
+    "searchPublicCourses": "Sesha izifundo zomphakathi",
+    "closeSearch": "Vala usesho"
 }

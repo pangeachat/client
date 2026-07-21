@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-21 13:02:04.372734",
+    "@@last_modified": "2026-07-21 13:05:32.659077",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10321,5 +10321,6 @@
     "newCourseWithTitle": "Tosaigh \"{title}\"",
     "joinCourseWithTitle": "Glac páirt i \"{title}\"",
     "searchCoursePlans": "Cuardaigh pleananna cúrsa",
-    "searchPublicCourses": "Cuardaigh cúrsaí poiblí"
+    "searchPublicCourses": "Cuardaigh cúrsaí poiblí",
+    "closeSearch": "Dún cuardach"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-21 13:02:02.782869",
+    "@@last_modified": "2026-07-21 13:05:30.936247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Tòisich \"{title}\"",
     "joinCourseWithTitle": "Thig a-steach do \"{title}\"",
     "searchCoursePlans": "Rannsaich planaichean cùrsa",
-    "searchPublicCourses": "Rannsaich cùrsaichean poblach"
+    "searchPublicCourses": "Rannsaich cùrsaichean poblach",
+    "closeSearch": "Dùin an rannsachadh"
 }

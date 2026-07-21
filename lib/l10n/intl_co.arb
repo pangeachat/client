@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-21 13:02:01.037458",
+    "@@last_modified": "2026-07-21 13:05:30.256404",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Principià \"{title}\"",
     "joinCourseWithTitle": "Unisce vi à \"{title}\"",
     "searchCoursePlans": "Circà i piani di corsu",
-    "searchPublicCourses": "Circà i corsi publichi"
+    "searchPublicCourses": "Circà i corsi publichi",
+    "closeSearch": "Chjode a ricerca"
 }

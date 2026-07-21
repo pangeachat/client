@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-21 13:02:00.620208",
+    "@@last_modified": "2026-07-21 13:05:29.276429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Begin \"{title}\"",
     "joinCourseWithTitle": "Sluit aan by \"{title}\"",
     "searchCoursePlans": "Soek kursusplanne",
-    "searchPublicCourses": "Soek publieke kursusse"
+    "searchPublicCourses": "Soek publieke kursusse",
+    "closeSearch": "Sluit soektog"
 }

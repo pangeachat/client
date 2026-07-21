@@ -79,6 +79,9 @@ class CourseSearchView<T> extends StatelessWidget {
                       ),
                       IconButton(
                         icon: Icon(searching ? Icons.close : Icons.search),
+                        tooltip: searching
+                            ? L10n.of(context).closeSearch
+                            : L10n.of(context).search,
                         onPressed: searching
                             ? courseSearch.stopSearching
                             : courseSearch.startSearching,

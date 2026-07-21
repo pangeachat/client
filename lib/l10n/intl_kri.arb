@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-21 13:02:05.310093",
+    "@@last_modified": "2026-07-21 13:05:33.014704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Bigin \"{title}\"",
     "joinCourseWithTitle": "Jɔyn \"{title}\"",
     "searchCoursePlans": "Luk fɔ kɔs plan dɛn",
-    "searchPublicCourses": "Luk fɔ pɔblik kɔs dɛn"
+    "searchPublicCourses": "Luk fɔ pɔblik kɔs dɛn",
+    "closeSearch": "Kolos di patapata"
 }

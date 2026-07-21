@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-21 13:02:02.258555",
+    "@@last_modified": "2026-07-21 13:05:30.981096",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "newCourseWithTitle": "\"{title}\" ikastaroa hasi",
     "joinCourseWithTitle": "\"{title}\" ikastarora batu",
     "searchCoursePlans": "Ikastaro-planak bilatu",
-    "searchPublicCourses": "Ikastaro publikoak bilatu"
+    "searchPublicCourses": "Ikastaro publikoak bilatu",
+    "closeSearch": "Bilaketa itxi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-21 13:02:10.471796",
+    "@@last_modified": "2026-07-21 13:05:37.539551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" شروع کریں",
     "joinCourseWithTitle": "\"{title}\" میں شامل ہوں",
     "searchCoursePlans": "کورس کے منصوبے تلاش کریں",
-    "searchPublicCourses": "عوامی کورسز تلاش کریں"
+    "searchPublicCourses": "عوامی کورسز تلاش کریں",
+    "closeSearch": "تلاش بند کریں"
 }

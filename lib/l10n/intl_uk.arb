@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-21 13:02:10.459055",
+    "@@last_modified": "2026-07-21 13:05:37.409565",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "newCourseWithTitle": "Почати «{title}»",
     "joinCourseWithTitle": "Приєднатися до «{title}»",
     "searchCoursePlans": "Шукати плани курсів",
-    "searchPublicCourses": "Шукати публічні курси"
+    "searchPublicCourses": "Шукати публічні курси",
+    "closeSearch": "Закрити пошук"
 }

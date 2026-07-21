@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-21 13:02:03.977528",
+    "@@last_modified": "2026-07-21 13:05:31.818857",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Սկսել «{title}»-ը",
     "joinCourseWithTitle": "Միանալ «{title}»-ին",
     "searchCoursePlans": "Որոնել դասընթացի պլաններ",
-    "searchPublicCourses": "Որոնել հանրային դասընթացներ"
+    "searchPublicCourses": "Որոնել հանրային դասընթացներ",
+    "closeSearch": "Փակել որոնումը"
 }

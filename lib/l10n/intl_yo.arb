@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-21 13:02:11.696311",
+    "@@last_modified": "2026-07-21 13:05:37.658247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Bẹrẹ \"{title}\"",
     "joinCourseWithTitle": "Darapọ mọ \"{title}\"",
     "searchCoursePlans": "Wa àwọn ètò ìkẹ́kọ̀ọ́",
-    "searchPublicCourses": "Wa àwọn ìkẹ́kọ̀ọ́ gbogbo gbò"
+    "searchPublicCourses": "Wa àwọn ìkẹ́kọ̀ọ́ gbogbo gbò",
+    "closeSearch": "Pa àwárí"
 }

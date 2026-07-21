@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-21 13:02:11.114651",
+    "@@last_modified": "2026-07-21 13:05:38.055638",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "newCourseWithTitle": "开始“{title}”",
     "joinCourseWithTitle": "加入“{title}”",
     "searchCoursePlans": "搜索课程计划",
-    "searchPublicCourses": "搜索公共课程"
+    "searchPublicCourses": "搜索公共课程",
+    "closeSearch": "关闭搜索"
 }

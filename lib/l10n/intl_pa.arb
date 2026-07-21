@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-21 13:02:07.893346",
+    "@@last_modified": "2026-07-21 13:05:34.917366",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" ਸ਼ੁਰੂ ਕਰੋ",
     "joinCourseWithTitle": "\"{title}\" ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
     "searchCoursePlans": "ਕੋਰਸ ਯੋਜਨਾਵਾਂ ਖੋਜੋ",
-    "searchPublicCourses": "ਜਨਤਕ ਕੋਰਸ ਖੋਜੋ"
+    "searchPublicCourses": "ਜਨਤਕ ਕੋਰਸ ਖੋਜੋ",
+    "closeSearch": "ਖੋਜ ਬੰਦ ਕਰੋ"
 }

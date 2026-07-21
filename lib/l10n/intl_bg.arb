@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-21 13:02:00.305356",
+    "@@last_modified": "2026-07-21 13:05:29.056343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Започни „{title}“",
     "joinCourseWithTitle": "Присъедини се към „{title}“",
     "searchCoursePlans": "Търсене на учебни планове",
-    "searchPublicCourses": "Търсене на публични курсове"
+    "searchPublicCourses": "Търсене на публични курсове",
+    "closeSearch": "Затваряне на търсенето"
 }

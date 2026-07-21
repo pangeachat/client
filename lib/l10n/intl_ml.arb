@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-21 13:02:06.413831",
+    "@@last_modified": "2026-07-21 13:05:33.936714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" ആരംഭിക്കുക",
     "joinCourseWithTitle": "\"{title}\" എന്നതിൽ ചേരുക",
     "searchCoursePlans": "കോഴ്സ് പ്ലാനുകൾ തിരയുക",
-    "searchPublicCourses": "പൊതു കോഴ്സുകൾ തിരയുക"
+    "searchPublicCourses": "പൊതു കോഴ്സുകൾ തിരയുക",
+    "closeSearch": "തിരയൽ അടയ്ക്കുക"
 }

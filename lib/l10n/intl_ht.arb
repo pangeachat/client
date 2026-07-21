@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-21 13:02:03.527430",
+    "@@last_modified": "2026-07-21 13:05:31.917430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Kòmanse \"{title}\"",
     "joinCourseWithTitle": "Antre nan \"{title}\"",
     "searchCoursePlans": "Chèche plan kou",
-    "searchPublicCourses": "Chèche kou piblik"
+    "searchPublicCourses": "Chèche kou piblik",
+    "closeSearch": "Fèmen rechèch"
 }

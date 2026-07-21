@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-21 13:02:05.084792",
+    "@@last_modified": "2026-07-21 13:05:32.407406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Mulai \"{title}\"",
     "joinCourseWithTitle": "Gabung \"{title}\"",
     "searchCoursePlans": "Golèk rencana kursus",
-    "searchPublicCourses": "Golèk kursus umum"
+    "searchPublicCourses": "Golèk kursus umum",
+    "closeSearch": "Tutup panelusuran"
 }

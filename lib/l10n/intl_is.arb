@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-21 13:02:06.106753",
+    "@@last_modified": "2026-07-21 13:05:32.629851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Hefja „{title}“",
     "joinCourseWithTitle": "Skrá sig í „{title}“",
     "searchCoursePlans": "Leita að námsáætlunum",
-    "searchPublicCourses": "Leita að opnum námskeiðum"
+    "searchPublicCourses": "Leita að opnum námskeiðum",
+    "closeSearch": "Loka leit"
 }

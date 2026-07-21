@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:07.985916",
+    "@@last_modified": "2026-07-21 13:05:35.333224",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10639,5 +10639,6 @@
     "newCourseWithTitle": "Iniciar \"{title}\"",
     "joinCourseWithTitle": "Entrar em \"{title}\"",
     "searchCoursePlans": "Procurar planos de curso",
-    "searchPublicCourses": "Procurar cursos públicos"
+    "searchPublicCourses": "Procurar cursos públicos",
+    "closeSearch": "Fechar pesquisa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-21 13:02:06.358954",
+    "@@last_modified": "2026-07-21 13:05:33.367493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" ಪ್ರಾರಂಭಿಸಿ",
     "joinCourseWithTitle": "\"{title}\" ಸೇರಿಕೊಳ್ಳಿ",
     "searchCoursePlans": "ಕೋರ್ಸ್ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ",
-    "searchPublicCourses": "ಸಾರ್ವಜನಿಕ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ"
+    "searchPublicCourses": "ಸಾರ್ವಜನಿಕ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
+    "closeSearch": "ಹುಡುಕಾಟವನ್ನು ಮುಚ್ಚಿ"
 }

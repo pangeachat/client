@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-21 13:02:10.576344",
+    "@@last_modified": "2026-07-21 13:05:37.118192",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9990,5 +9990,6 @@
     "newCourseWithTitle": "\"{title}\" kursunu başlat",
     "joinCourseWithTitle": "\"{title}\" kursuna katıl",
     "searchCoursePlans": "Ders planlarını ara",
-    "searchPublicCourses": "Herkese açık dersleri ara"
+    "searchPublicCourses": "Herkese açık dersleri ara",
+    "closeSearch": "Aramayı kapat"
 }

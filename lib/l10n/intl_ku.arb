@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-21 13:02:05.435741",
+    "@@last_modified": "2026-07-21 13:05:33.274613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "دەستپێکردنی \"{title}\"",
     "joinCourseWithTitle": "بەژداریکردن لە \"{title}\"",
     "searchCoursePlans": "پلانی خولەکان بگەڕێ",
-    "searchPublicCourses": "خولە گشتییەکان بگەڕێ"
+    "searchPublicCourses": "خولە گشتییەکان بگەڕێ",
+    "closeSearch": "گەڕان دابخە"
 }

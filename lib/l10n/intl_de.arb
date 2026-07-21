@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-21 13:02:01.070173",
+    "@@last_modified": "2026-07-21 13:05:29.712251",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9676,5 +9676,6 @@
     "newCourseWithTitle": "Kurs „{title}“ starten",
     "joinCourseWithTitle": "Kurs „{title}“ beitreten",
     "searchCoursePlans": "Kurspläne durchsuchen",
-    "searchPublicCourses": "Öffentliche Kurse durchsuchen"
+    "searchPublicCourses": "Öffentliche Kurse durchsuchen",
+    "closeSearch": "Suche schließen"
 }

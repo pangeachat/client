@@ -2928,7 +2928,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-21 13:02:00.495596",
+    "@@last_modified": "2026-07-21 13:05:29.193152",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9300,5 +9300,6 @@
     "newCourseWithTitle": "“{title}” འགོ་འཛུགས།",
     "joinCourseWithTitle": "“{title}” ནང་ཞུགས།",
     "searchCoursePlans": "སློབ་ཚན་འཆར་གཞི་འཚོལ་བཤེར་བྱེད་པ།",
-    "searchPublicCourses": "སྤྱི་བའི་སློབ་ཚན་འཚོལ་བཤེར་བྱེད་པ།"
+    "searchPublicCourses": "སྤྱི་བའི་སློབ་ཚན་འཚོལ་བཤེར་བྱེད་པ།",
+    "closeSearch": "འཚོལ་བཤེར་སྒོ་རྒྱོབས།"
 }

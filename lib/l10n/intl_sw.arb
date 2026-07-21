@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-21 13:02:10.003092",
+    "@@last_modified": "2026-07-21 13:05:36.801002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Anza \"{title}\"",
     "joinCourseWithTitle": "Jiunge na \"{title}\"",
     "searchCoursePlans": "Tafuta mipango ya kozi",
-    "searchPublicCourses": "Tafuta kozi za umma"
+    "searchPublicCourses": "Tafuta kozi za umma",
+    "closeSearch": "Funga utafutaji"
 }

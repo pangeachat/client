@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-21 13:02:06.640339",
+    "@@last_modified": "2026-07-21 13:05:33.227956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Incipe \"{title}\"",
     "joinCourseWithTitle": "Coniunge \"{title}\"",
     "searchCoursePlans": "Quaere consilia studiorum",
-    "searchPublicCourses": "Quaere cursus publicos"
+    "searchPublicCourses": "Quaere cursus publicos",
+    "closeSearch": "Claudere quaestionem"
 }

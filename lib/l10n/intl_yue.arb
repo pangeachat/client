@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-21 13:02:11.309487",
+    "@@last_modified": "2026-07-21 13:05:37.885735",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10652,6 @@
     "newCourseWithTitle": "開始「{title}」",
     "joinCourseWithTitle": "加入「{title}」",
     "searchCoursePlans": "搜尋課程計劃",
-    "searchPublicCourses": "搜尋公開課程"
+    "searchPublicCourses": "搜尋公開課程",
+    "closeSearch": "關閉搜尋"
 }

@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-21 13:02:03.532131",
+    "@@last_modified": "2026-07-21 13:05:30.848753",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9700,5 +9700,6 @@
     "newCourseWithTitle": "Tosaigh \"{title}\"",
     "joinCourseWithTitle": "Bí páirteach i \"{title}\"",
     "searchCoursePlans": "Cuardaigh pleananna cúrsaí",
-    "searchPublicCourses": "Cuardaigh cúrsaí poiblí"
+    "searchPublicCourses": "Cuardaigh cúrsaí poiblí",
+    "closeSearch": "Dún an cuardach"
 }

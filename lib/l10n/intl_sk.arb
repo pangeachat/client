@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-21 13:02:08.775862",
+    "@@last_modified": "2026-07-21 13:05:35.873959",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10640,5 +10640,6 @@
     "newCourseWithTitle": "Spustiť „{title}“",
     "joinCourseWithTitle": "Pripojiť sa k „{title}“",
     "searchCoursePlans": "Hľadať študijné plány",
-    "searchPublicCourses": "Hľadať verejné kurzy"
+    "searchPublicCourses": "Hľadať verejné kurzy",
+    "closeSearch": "Zavrieť vyhľadávanie"
 }

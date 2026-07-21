@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-21 13:02:08.355050",
+    "@@last_modified": "2026-07-21 13:05:35.294369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "پیل کړئ \"{title}\"",
     "joinCourseWithTitle": "ګډون وکړئ \"{title}\"",
     "searchCoursePlans": "د کورس پلانونو لټون",
-    "searchPublicCourses": "د عامه کورسونو لټون"
+    "searchPublicCourses": "د عامه کورسونو لټون",
+    "closeSearch": "لټون بند کړئ"
 }

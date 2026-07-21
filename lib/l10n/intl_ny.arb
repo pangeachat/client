@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-21 13:02:07.670720",
+    "@@last_modified": "2026-07-21 13:05:34.596896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Yambani \"{title}\"",
     "joinCourseWithTitle": "Lowani \"{title}\"",
     "searchCoursePlans": "Sakani mapulani amaphunziro",
-    "searchPublicCourses": "Sakani maphunziro a anthu onse"
+    "searchPublicCourses": "Sakani maphunziro a anthu onse",
+    "closeSearch": "Tsekani kusaka"
 }

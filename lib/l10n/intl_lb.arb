@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-21 13:02:05.784965",
+    "@@last_modified": "2026-07-21 13:05:33.671867",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "„{title}“ starten",
     "joinCourseWithTitle": "„{title}“ bäitrieden",
     "searchCoursePlans": "Courspläng sichen",
-    "searchPublicCourses": "Ëffentlech Coursen sichen"
+    "searchPublicCourses": "Ëffentlech Coursen sichen",
+    "closeSearch": "Sich zoumaachen"
 }

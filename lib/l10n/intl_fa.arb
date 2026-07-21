@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:01.871337",
+    "@@last_modified": "2026-07-21 13:05:30.365585",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9777,5 +9777,6 @@
     "newCourseWithTitle": "شروع «{title}»",
     "joinCourseWithTitle": "پیوستن به «{title}»",
     "searchCoursePlans": "جستجوی برنامه‌های درسی",
-    "searchPublicCourses": "جستجوی دوره‌های عمومی"
+    "searchPublicCourses": "جستجوی دوره‌های عمومی",
+    "closeSearch": "بستن جستجو"
 }

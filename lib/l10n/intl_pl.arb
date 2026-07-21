@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-21 13:02:07.878669",
+    "@@last_modified": "2026-07-21 13:05:35.360239",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9774,5 +9774,6 @@
     "newCourseWithTitle": "Rozpocznij „{title}”",
     "joinCourseWithTitle": "Dołącz do „{title}”",
     "searchCoursePlans": "Szukaj planów kursów",
-    "searchPublicCourses": "Szukaj kursów publicznych"
+    "searchPublicCourses": "Szukaj kursów publicznych",
+    "closeSearch": "Zamknij wyszukiwanie"
 }

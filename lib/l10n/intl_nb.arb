@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:07.314939",
+    "@@last_modified": "2026-07-21 13:05:34.348101",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9746,5 +9746,6 @@
     "newCourseWithTitle": "Start «{title}»",
     "joinCourseWithTitle": "Bli med i «{title}»",
     "searchCoursePlans": "Søk i kursplaner",
-    "searchPublicCourses": "Søk i offentlige kurs"
+    "searchPublicCourses": "Søk i offentlige kurs",
+    "closeSearch": "Lukk søk"
 }

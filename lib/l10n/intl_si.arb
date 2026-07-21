@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-21 13:02:08.782657",
+    "@@last_modified": "2026-07-21 13:05:36.196689",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" අරඹන්න",
     "joinCourseWithTitle": "\"{title}\" හා එක්වන්න",
     "searchCoursePlans": "පාඨමාලා සැලසුම් සොයන්න",
-    "searchPublicCourses": "පොදු පාඨමාලා සොයන්න"
+    "searchPublicCourses": "පොදු පාඨමාලා සොයන්න",
+    "closeSearch": "සෙවීම වසන්න"
 }

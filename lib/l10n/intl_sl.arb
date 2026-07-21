@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-21 13:02:08.893743",
+    "@@last_modified": "2026-07-21 13:05:36.632130",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10640,5 +10640,6 @@
     "newCourseWithTitle": "Začni »{title}«",
     "joinCourseWithTitle": "Pridruži se »{title}«",
     "searchCoursePlans": "Iskanje učnih načrtov",
-    "searchPublicCourses": "Iskanje javnih tečajev"
+    "searchPublicCourses": "Iskanje javnih tečajev",
+    "closeSearch": "Zapri iskanje"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-21 13:02:10.308923",
+    "@@last_modified": "2026-07-21 13:05:37.822201",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\"-ро оғоз кунед",
     "joinCourseWithTitle": "Ба \"{title}\" ҳамроҳ шавед",
     "searchCoursePlans": "Ҷустуҷӯи нақшаҳои курсӣ",
-    "searchPublicCourses": "Ҷустуҷӯи курсҳои оммавӣ"
+    "searchPublicCourses": "Ҷустуҷӯи курсҳои оммавӣ",
+    "closeSearch": "Ҷустуҷӯро пӯшед"
 }

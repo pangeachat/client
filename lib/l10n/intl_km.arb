@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-21 13:02:05.547439",
+    "@@last_modified": "2026-07-21 13:05:33.022893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "ចាប់ផ្ដើម \"{title}\"",
     "joinCourseWithTitle": "ចូលរួម \"{title}\"",
     "searchCoursePlans": "ស្វែងរកផែនការវគ្គសិក្សា",
-    "searchPublicCourses": "ស្វែងរកវគ្គសិក្សាសាធារណៈ"
+    "searchPublicCourses": "ស្វែងរកវគ្គសិក្សាសាធារណៈ",
+    "closeSearch": "បិទការស្វែងរក"
 }

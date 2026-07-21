@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-21 13:02:01.233196",
+    "@@last_modified": "2026-07-21 13:05:29.706827",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10615,5 +10615,6 @@
     "newCourseWithTitle": "Start \"{title}\"",
     "joinCourseWithTitle": "Tilmeld dig \"{title}\"",
     "searchCoursePlans": "Søg i kursusplaner",
-    "searchPublicCourses": "Søg i offentlige kurser"
+    "searchPublicCourses": "Søg i offentlige kurser",
+    "closeSearch": "Luk søgning"
 }

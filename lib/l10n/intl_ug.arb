@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-21 13:02:10.590207",
+    "@@last_modified": "2026-07-21 13:05:37.222659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" نى باشلاڭ",
     "joinCourseWithTitle": "\"{title}\" گە قاتناش",
     "searchCoursePlans": "دەرس پىلانلىرىنى ئىزدەش",
-    "searchPublicCourses": "ئاممىۋى دەرسلەرنى ئىزدەش"
+    "searchPublicCourses": "ئاممىۋى دەرسلەرنى ئىزدەش",
+    "closeSearch": "ئىزدەشنى تاقا"
 }

@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-21 13:02:03.787051",
+    "@@last_modified": "2026-07-21 13:05:32.325831",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10631,5 +10631,6 @@
     "newCourseWithTitle": "Comenciar \"{title}\"",
     "joinCourseWithTitle": "Unir se a \"{title}\"",
     "searchCoursePlans": "Cercar planos de curso",
-    "searchPublicCourses": "Cercar cursos public"
+    "searchPublicCourses": "Cercar cursos public",
+    "closeSearch": "Clauder recerca"
 }

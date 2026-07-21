@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-21 13:02:06.868159",
+    "@@last_modified": "2026-07-21 13:05:34.788636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" सुरू करा",
     "joinCourseWithTitle": "\"{title}\" मध्ये सामील व्हा",
     "searchCoursePlans": "अभ्यासक्रम योजना शोधा",
-    "searchPublicCourses": "सार्वजनिक अभ्यासक्रम शोधा"
+    "searchPublicCourses": "सार्वजनिक अभ्यासक्रम शोधा",
+    "closeSearch": "शोध बंद करा"
 }

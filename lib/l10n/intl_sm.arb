@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-21 13:02:09.029124",
+    "@@last_modified": "2026-07-21 13:05:36.000357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Amata \"{title}\"",
     "joinCourseWithTitle": "Auai i le \"{title}\"",
     "searchCoursePlans": "Su'e fuafuaga o kosi",
-    "searchPublicCourses": "Su'e kosi lautele"
+    "searchPublicCourses": "Su'e kosi lautele",
+    "closeSearch": "Tapuni le su'esu'ega"
 }

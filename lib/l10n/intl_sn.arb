@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-21 13:02:09.814527",
+    "@@last_modified": "2026-07-21 13:05:36.250523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Tanga \"{title}\"",
     "joinCourseWithTitle": "Pinda \"{title}\"",
     "searchCoursePlans": "Tsvaga zvirongwa zvedzidzo",
-    "searchPublicCourses": "Tsvaga zvidzidzo zvevanhu vose"
+    "searchPublicCourses": "Tsvaga zvidzidzo zvevanhu vose",
+    "closeSearch": "Vhara kutsvaga"
 }

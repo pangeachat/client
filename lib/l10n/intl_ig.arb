@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-21 13:02:04.255448",
+    "@@last_modified": "2026-07-21 13:05:32.633193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Bido \"{title}\"",
     "joinCourseWithTitle": "Sonyere \"{title}\"",
     "searchCoursePlans": "Chọọ atụmatụ ọmụmụ",
-    "searchPublicCourses": "Chọọ ọmụmụ ọha"
+    "searchPublicCourses": "Chọọ ọmụmụ ọha",
+    "closeSearch": "Mechie nchọta"
 }

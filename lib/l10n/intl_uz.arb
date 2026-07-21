@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-21 13:02:11.505100",
+    "@@last_modified": "2026-07-21 13:05:38.156298",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9693,5 +9693,6 @@
     "newCourseWithTitle": "\"{title}\" kursini boshlash",
     "joinCourseWithTitle": "\"{title}\" kursiga qoʻshilish",
     "searchCoursePlans": "Kurs rejalarini qidirish",
-    "searchPublicCourses": "Ommaviy kurslarni qidirish"
+    "searchPublicCourses": "Ommaviy kurslarni qidirish",
+    "closeSearch": "Qidiruvni yopish"
 }

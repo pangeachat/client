@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-21 13:02:06.964887",
+    "@@last_modified": "2026-07-21 13:05:34.648500",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" хичээлийг эхлүүлэх",
     "joinCourseWithTitle": "\"{title}\" хичээлд нэгдэх",
     "searchCoursePlans": "Сургалтын төлөвлөгөө хайх",
-    "searchPublicCourses": "Нийтийн сургалтууд хайх"
+    "searchPublicCourses": "Нийтийн сургалтууд хайх",
+    "closeSearch": "Хайлтыг хаах"
 }

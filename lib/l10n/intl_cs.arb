@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-21 13:02:01.022224",
+    "@@last_modified": "2026-07-21 13:05:30.168706",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10183,5 +10183,6 @@
     "newCourseWithTitle": "Spustit „{title}“",
     "joinCourseWithTitle": "Připojit se k „{title}“",
     "searchCoursePlans": "Hledat plány kurzů",
-    "searchPublicCourses": "Hledat veřejné kurzy"
+    "searchPublicCourses": "Hledat veřejné kurzy",
+    "closeSearch": "Zavřít hledání"
 }

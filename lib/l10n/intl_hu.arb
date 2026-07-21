@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-21 13:02:03.641697",
+    "@@last_modified": "2026-07-21 13:05:31.838516",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9792,5 +9792,6 @@
     "newCourseWithTitle": "„{title}” indítása",
     "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz",
     "searchCoursePlans": "Keresés a tantervek között",
-    "searchPublicCourses": "Nyilvános kurzusok keresése"
+    "searchPublicCourses": "Nyilvános kurzusok keresése",
+    "closeSearch": "Keresés bezárása"
 }

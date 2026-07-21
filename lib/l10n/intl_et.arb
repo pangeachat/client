@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-21 13:02:01.744742",
+    "@@last_modified": "2026-07-21 13:05:30.305724",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9686,5 +9686,6 @@
     "newCourseWithTitle": "Alusta kursust \"{title}\"",
     "joinCourseWithTitle": "Liitu kursusega \"{title}\"",
     "searchCoursePlans": "Otsi kursuseplaane",
-    "searchPublicCourses": "Otsi avalikke kursuseid"
+    "searchPublicCourses": "Otsi avalikke kursuseid",
+    "closeSearch": "Sulge otsing"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-21 13:02:09.443108",
+    "@@last_modified": "2026-07-21 13:05:37.160935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Bilow \"{title}\"",
     "joinCourseWithTitle": "Ku biir \"{title}\"",
     "searchCoursePlans": "Raadi qorshayaasha koorsada",
-    "searchPublicCourses": "Raadi koorsooyinka dadweynaha"
+    "searchPublicCourses": "Raadi koorsooyinka dadweynaha",
+    "closeSearch": "Xidh raadinta"
 }

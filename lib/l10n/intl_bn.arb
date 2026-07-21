@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:00.307672",
+    "@@last_modified": "2026-07-21 13:05:29.129077",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10317,5 +10317,6 @@
     "newCourseWithTitle": "\"{title}\" শুরু করুন",
     "joinCourseWithTitle": "\"{title}\" এ যোগ দিন",
     "searchCoursePlans": "কোর্স প্ল্যান খুঁজুন",
-    "searchPublicCourses": "পাবলিক কোর্স খুঁজুন"
+    "searchPublicCourses": "পাবলিক কোর্স খুঁজুন",
+    "closeSearch": "অনুসন্ধান বন্ধ করুন"
 }

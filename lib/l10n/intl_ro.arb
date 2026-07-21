@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:08.746237",
+    "@@last_modified": "2026-07-21 13:05:36.210998",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10421,5 +10421,6 @@
     "newCourseWithTitle": "Începe „{title}”",
     "joinCourseWithTitle": "Alătură-te „{title}”",
     "searchCoursePlans": "Căutați planuri de curs",
-    "searchPublicCourses": "Căutați cursuri publice"
+    "searchPublicCourses": "Căutați cursuri publice",
+    "closeSearch": "Închide căutarea"
 }

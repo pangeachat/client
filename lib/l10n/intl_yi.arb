@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-21 13:02:11.166413",
+    "@@last_modified": "2026-07-21 13:05:38.184844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "אָנהייבן \"{title}\"",
     "joinCourseWithTitle": "בייטרעטן \"{title}\"",
     "searchCoursePlans": "זוכן קורס פּלענער",
-    "searchPublicCourses": "זוכן עפֿנטלעכע קורסן"
+    "searchPublicCourses": "זוכן עפֿנטלעכע קורסן",
+    "closeSearch": "שליסן זוכן"
 }

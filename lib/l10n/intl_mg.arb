@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-21 13:02:06.397714",
+    "@@last_modified": "2026-07-21 13:05:33.821887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Atombohy ny \"{title}\"",
     "joinCourseWithTitle": "Midira amin'ny \"{title}\"",
     "searchCoursePlans": "Tadiavo ny drafitry ny taranja",
-    "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe"
+    "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe",
+    "closeSearch": "Akatona ny fikarohana"
 }

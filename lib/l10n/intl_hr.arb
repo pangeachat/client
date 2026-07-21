@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-21 13:02:05.837345",
+    "@@last_modified": "2026-07-21 13:05:31.605596",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10125,5 +10125,6 @@
     "newCourseWithTitle": "Započni \"{title}\"",
     "joinCourseWithTitle": "Pridruži se \"{title}\"",
     "searchCoursePlans": "Pretražite planove tečajeva",
-    "searchPublicCourses": "Pretražite javne tečajeve"
+    "searchPublicCourses": "Pretražite javne tečajeve",
+    "closeSearch": "Zatvori pretraživanje"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:09.407556",
+    "@@last_modified": "2026-07-21 13:05:36.447151",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "newCourseWithTitle": "Započni „{title}“",
     "joinCourseWithTitle": "Pridruži se „{title}“",
     "searchCoursePlans": "Pretražite planove kurseva",
-    "searchPublicCourses": "Pretražite javne kurseve"
+    "searchPublicCourses": "Pretražite javne kurseve",
+    "closeSearch": "Zatvori pretragu"
 }

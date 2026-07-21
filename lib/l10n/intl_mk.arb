@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-21 13:02:07.309334",
+    "@@last_modified": "2026-07-21 13:05:33.751159",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Започни „{title}“",
     "joinCourseWithTitle": "Приклучи се на „{title}“",
     "searchCoursePlans": "Пребарај планови за курсеви",
-    "searchPublicCourses": "Пребарај јавни курсеви"
+    "searchPublicCourses": "Пребарај јавни курсеви",
+    "closeSearch": "Затвори пребарување"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-21 13:02:09.794937",
+    "@@last_modified": "2026-07-21 13:05:36.796843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "Qala \"{title}\"",
     "joinCourseWithTitle": "Kena ho \"{title}\"",
     "searchCoursePlans": "Batla merero ea thupelo",
-    "searchPublicCourses": "Batla lithupelo tsa sechaba"
+    "searchPublicCourses": "Batla lithupelo tsa sechaba",
+    "closeSearch": "Koala patlisiso"
 }

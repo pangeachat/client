@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:09.929354",
+    "@@last_modified": "2026-07-21 13:05:36.857163",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9781,5 +9781,6 @@
     "newCourseWithTitle": "\"{title}\" என்பதைத் தொடங்கு",
     "joinCourseWithTitle": "\"{title}\" இல் சேர்",
     "searchCoursePlans": "பாடத்திட்டங்களைத் தேடு",
-    "searchPublicCourses": "பொதுப் பாடங்களைத் தேடு"
+    "searchPublicCourses": "பொதுப் பாடங்களைத் தேடு",
+    "closeSearch": "தேடலை மூடு"
 }

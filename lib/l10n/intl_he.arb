@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:03.706166",
+    "@@last_modified": "2026-07-21 13:05:31.651054",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10609,5 +10609,6 @@
     "newCourseWithTitle": "התחל את \"{title}\"",
     "joinCourseWithTitle": "הצטרף ל-\"{title}\"",
     "searchCoursePlans": "חיפוש תוכניות קורסים",
-    "searchPublicCourses": "חיפוש קורסים ציבוריים"
+    "searchPublicCourses": "חיפוש קורסים ציבוריים",
+    "closeSearch": "סגור חיפוש"
 }

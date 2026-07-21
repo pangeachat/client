@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-21 13:02:01.383272",
+    "@@last_modified": "2026-07-21 13:05:29.059705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" kursunu başla",
     "joinCourseWithTitle": "\"{title}\" kursuna qoşul",
     "searchCoursePlans": "Kurs planlarını axtar",
-    "searchPublicCourses": "İctimai kursları axtar"
+    "searchPublicCourses": "İctimai kursları axtar",
+    "closeSearch": "Axtarışı bağla"
 }

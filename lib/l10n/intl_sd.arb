@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-21 13:02:08.688394",
+    "@@last_modified": "2026-07-21 13:05:35.803003",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" شروع ڪريو",
     "joinCourseWithTitle": "\"{title}\" ۾ شامل ٿيو",
     "searchCoursePlans": "ڪورس پلان ڳوليو",
-    "searchPublicCourses": "عوامي ڪورس ڳوليو"
+    "searchPublicCourses": "عوامي ڪورس ڳوليو",
+    "closeSearch": "ڳولا بند ڪريو"
 }

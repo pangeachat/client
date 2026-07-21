@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:02:07.204831",
+    "@@last_modified": "2026-07-21 13:05:34.826350",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "newCourseWithTitle": "Start \"{title}\"",
     "joinCourseWithTitle": "Deelnemen aan \"{title}\"",
     "searchCoursePlans": "Zoek cursusplannen",
-    "searchPublicCourses": "Zoek openbare cursussen"
+    "searchPublicCourses": "Zoek openbare cursussen",
+    "closeSearch": "Zoeken sluiten"
 }

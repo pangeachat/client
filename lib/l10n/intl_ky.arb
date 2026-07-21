@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-21 13:02:05.543364",
+    "@@last_modified": "2026-07-21 13:05:33.266998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2035,5 +2035,6 @@
     "newCourseWithTitle": "\"{title}\" курсун баштоо",
     "joinCourseWithTitle": "\"{title}\" курсуна кошулуу",
     "searchCoursePlans": "Курс пландарын издөө",
-    "searchPublicCourses": "Коомдук курстарды издөө"
+    "searchPublicCourses": "Коомдук курстарды издөө",
+    "closeSearch": "Издөөнү жабуу"
 }

@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-21 13:02:02.090107",
+    "@@last_modified": "2026-07-21 13:05:31.631095",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10555,5 +10555,6 @@
     "newCourseWithTitle": "Simulan ang \"{title}\"",
     "joinCourseWithTitle": "Sumali sa \"{title}\"",
     "searchCoursePlans": "Maghanap ng mga plano ng kurso",
-    "searchPublicCourses": "Maghanap ng mga pampublikong kurso"
+    "searchPublicCourses": "Maghanap ng mga pampublikong kurso",
+    "closeSearch": "Isara ang paghahanap"
 }
