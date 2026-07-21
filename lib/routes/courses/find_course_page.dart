@@ -445,61 +445,59 @@ class FindCoursePageView extends StatelessWidget {
                     );
                   }
 
-                    return Expanded(
-                      child: ListView.builder(
-                        controller: controller.scrollController,
-                        itemCount: courses.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index == courses.length) {
-                            return Center(
-                              child: loading
-                                  ? CircularProgressIndicator.adaptive()
-                                  : !controller.fullyLoaded
-                                  ? TextButton(
-                                      onPressed: () => controller.loadMore(),
-                                      child: Text(L10n.of(context).loadMore),
-                                    )
-                                  : SizedBox(),
-                            );
-                          }
-                          final space = courses[index];
-                          final coursePlan =
-                              controller.coursePlans[space.courseId];
-                          // Only courses with a resolved plan reach this list,
-                          // so this is a defensive guard, not an expected
-                          // branch — an unrenderable course must never occupy a
-                          // row, or "load more" appears to do nothing.
-                          if (coursePlan == null) {
-                            return const SizedBox.shrink();
-                          }
-
-                          final lang =
-                              controller.targetLanguageFilter.value?.langCode;
-                          return AddCourseTile(
-                            chunk: space,
-                            coursePlan: coursePlan,
-                            onTap: () => context.go(
-                              WorkspaceNav.openAddCoursePage(
-                                GoRouterState.of(context).uri,
-                                AddCourseSubpageEnum.browse,
-                                previewRoomId: space.room.roomId,
-                                initialLanguageFilter: lang,
-                                allLanguagesFilter: lang == null,
-                              ),
-                            ),
-                            isKnock:
-                                space.room.joinRule == JoinRules.knock.name,
+                  return Expanded(
+                    child: ListView.builder(
+                      controller: controller.scrollController,
+                      itemCount: courses.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == courses.length) {
+                          return Center(
+                            child: loading
+                                ? CircularProgressIndicator.adaptive()
+                                : !controller.fullyLoaded
+                                ? TextButton(
+                                    onPressed: () => controller.loadMore(),
+                                    child: Text(L10n.of(context).loadMore),
+                                  )
+                                : SizedBox(),
                           );
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+                        }
+                        final space = courses[index];
+                        final coursePlan =
+                            controller.coursePlans[space.courseId];
+                        // Only courses with a resolved plan reach this list,
+                        // so this is a defensive guard, not an expected
+                        // branch — an unrenderable course must never occupy a
+                        // row, or "load more" appears to do nothing.
+                        if (coursePlan == null) {
+                          return const SizedBox.shrink();
+                        }
+
+                        final lang =
+                            controller.targetLanguageFilter.value?.langCode;
+                        return AddCourseTile(
+                          chunk: space,
+                          coursePlan: coursePlan,
+                          onTap: () => context.go(
+                            WorkspaceNav.openAddCoursePage(
+                              GoRouterState.of(context).uri,
+                              AddCourseSubpageEnum.browse,
+                              previewRoomId: space.room.roomId,
+                              initialLanguageFilter: lang,
+                              allLanguagesFilter: lang == null,
+                            ),
+                          ),
+                          isKnock: space.room.joinRule == JoinRules.knock.name,
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),
-    )
+    );
   }
 }
