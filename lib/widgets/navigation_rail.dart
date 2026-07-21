@@ -37,39 +37,6 @@ class SpacesNavigationRail extends StatelessWidget {
     super.key,
   });
 
-  Future<void> _onTapSpace(BuildContext context, String roomId) async {
-    final uri = GoRouterState.of(context).uri;
-    final client = Matrix.of(context).client;
-    final room = client.getRoomById(roomId);
-    final membership = room?.membership;
-
-    if (!{Membership.invite, Membership.leave}.contains(membership)) {
-      context.go(
-        // A left-nav click replaces the open left panels rather than stacking
-        // beside them (drop any open room/section). See routing.instructions.md.
-        WorkspaceNav.openCourseSection(uri, roomId, keepRoom: false),
-      );
-      return;
-    }
-
-    final joinResp = room?.membership == Membership.invite
-        ? await SpaceTapUtil.onInviteTap(context, room!)
-        : await SpaceTapUtil.autoJoin(context, room!);
-
-    if (joinResp == null) return;
-    final joinedRoom = client.getRoomById(joinResp.roomId);
-    if (joinedRoom == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    context.go(
-      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
-    );
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
@@ -245,8 +212,6 @@ class SpacesNavigationRail extends StatelessWidget {
                                         selected:
                                             section == AppSection.courses &&
                                             activeSpaceId == space.id,
-                                        onTap: () =>
-                                            _onTapSpace(context, space.id),
                                       ),
                                   ],
                                 ),
@@ -272,15 +237,45 @@ class _SpaceItem extends StatelessWidget {
   final double iconWidth;
   final double naviRailWidth;
   final bool selected;
-  final VoidCallback onTap;
 
   const _SpaceItem({
     required this.space,
     required this.iconWidth,
     required this.naviRailWidth,
     required this.selected,
-    required this.onTap,
   });
+
+  Future<void> _onTapSpace(BuildContext context) async {
+    final uri = GoRouterState.of(context).uri;
+    final client = Matrix.of(context).client;
+    final membership = space.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go(
+        // A left-nav click replaces the open left panels rather than stacking
+        // beside them (drop any open room/section). See routing.instructions.md.
+        WorkspaceNav.openCourseSection(uri, space.id, keepRoom: false),
+      );
+      return;
+    }
+
+    final joinResp = space.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, space)
+        : await SpaceTapUtil.autoJoin(context, space);
+
+    if (joinResp == null) return;
+    final joinedRoom = client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go(
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
+    );
+    return;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -293,7 +288,7 @@ class _SpaceItem extends StatelessWidget {
       isSelected: selected,
       backgroundColor: Colors.transparent,
       borderRadius: BorderRadius.circular(0),
-      onTap: onTap,
+      onTap: () => _onTapSpace(context),
       unreadBadgeFilter: (room) => spaceChildrenIds.contains(room.id),
       icon: Builder(
         builder: (context) {
@@ -335,7 +330,7 @@ class _SpaceItem extends StatelessWidget {
           }
 
           return FutureBuilder(
-            future: space.unreadCoursePingEventID,
+            future: space.unreadCoursePingEvent,
             builder: (context, snapshot) {
               final eventId = snapshot.data;
               if (eventId != null) {

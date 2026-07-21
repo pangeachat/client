@@ -3,8 +3,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
 
-extension CoursePingExtension on Room {
-  Future<String?> get unreadCoursePingEventID async {
+extension CoursePingRoomExtension on Room {
+  Future<Event?> get unreadCoursePingEvent async {
     try {
       final timeline = await getTimeline();
       final lastCoursePing = timeline.events.firstWhereOrNull(
@@ -13,12 +13,12 @@ extension CoursePingExtension on Room {
       if (lastCoursePing == null) return null;
 
       final lastRead = fullyRead;
-      if (lastRead.isEmpty) return lastCoursePing.eventId;
+      if (lastRead.isEmpty) return lastCoursePing;
 
       final event = await getEventById(lastRead);
       if (event == null ||
           lastCoursePing.originServerTs.isAfter(event.originServerTs)) {
-        return lastCoursePing.eventId;
+        return lastCoursePing;
       }
       return null;
     } catch (_) {
@@ -39,6 +39,6 @@ extension on Event {
   bool get isCoursePing =>
       type == EventTypes.Message &&
       messageType == MessageTypes.Text &&
-      content.containsKey(CoursePingConstants.coursePingRoomId) &&
-      content.containsKey(CoursePingConstants.coursePingActivityId);
+      content[CoursePingConstants.coursePingRoomId] is String &&
+      content[CoursePingConstants.coursePingActivityId] is String;
 }

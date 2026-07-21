@@ -91,12 +91,7 @@ class ChatDetailsController extends State<ChatDetails>
 
     if (room != null && room.isSpace) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        final eventId = await room.unreadCoursePingEventID;
-        if (eventId != null) {
-          try {
-            await room.setReadMarker(eventId);
-          } catch (_) {}
-        }
+        _handleCoursePing();
 
         if (!mounted) return;
         Matrix.of(context).showEnableNotificationsDialog(context);
@@ -108,6 +103,7 @@ class ChatDetailsController extends State<ChatDetails>
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
+      _handleCoursePing();
       _objectivesProvider.loadOutline(
         _questId,
         pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
@@ -270,6 +266,18 @@ class ChatDetailsController extends State<ChatDetails>
       context: context,
       future: () => room!.setAvatar(file),
     );
+  }
+
+  Future<void> _handleCoursePing() async {
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    if (room == null) return;
+
+    final event = await room.unreadCoursePingEvent;
+    if (event != null) {
+      try {
+        await room.setReadMarker(event.eventId);
+      } catch (_) {}
+    }
   }
 
   // #Pangea
