@@ -124,7 +124,13 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 ## Deep Linking — Mobile & Web
 
-A class link must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the installed app directly; the bare `/<code>` path reaches the incoming-URI listener, which passes it straight to the router (Route 1 — no per-shape rewrite). When the app is not installed, the web app loads and processes the same path — there is no deferred deep-linking service (Branch.io, etc.).
+A shared link (`/<code>` course join, `/<uuid>` activity) must reach the app on mobile. Three legs, in the order a tap resolves:
+
+1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. Both platforms claim the whole host (Android intent filters have no path restriction; the iOS AASA declares `paths: ["*"]`), so every link shape is covered. The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested).
+2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.) — a store install cannot carry the link, so the web IS the fallback.
+3. **In-app browsers** (Instagram, Gmail webview, …) — Universal/App Links often don't fire there; the user stays on the web fallback, which works.
+
+The store steer in [`web/index.html`](../../web/index.html) exists for plain visitors, and fires ONLY on a bare-root mobile load: a deep path is an inbound link, and bouncing it to the store (or the pathless `pangea://` scheme) would drop the payload — the failure that silently broke mobile-web links in the past.
 
 ### Infrastructure touchpoints
 

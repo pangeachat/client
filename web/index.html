@@ -222,6 +222,15 @@
 
       if (!isMobile) return; // Exit if not a mobile device
 
+      // A deep path is an inbound link (`/<code>` course join, `/<uuid>`
+      // activity — joining-courses.instructions.md). The web app is the
+      // documented fallback for those: when the app is installed the OS
+      // intercepts the link BEFORE this page loads (Universal/App Links), so
+      // reaching here means no app or an in-app browser — the store bounce
+      // would drop the link payload, and there is no deferred deep-linking
+      // service to recover it. Only bare-root visits steer to the store.
+      if (window.location.pathname !== '/') return;
+
       const appScheme = 'pangea://'; // Replace with your app's scheme
       const fallbackURL = isIOS
         ? 'https://apps.apple.com/app/pangea-chat/id1445118630'
