@@ -141,9 +141,36 @@ class CourseCodePageState extends State<CourseCodePage> {
     }
   }
 
+  /// Whether this mount is an inbound-link join in flight: the code rides the
+  /// URL until the one-shot submit consumes it, so while it is present the
+  /// page shows a neutral joining state instead of flashing the manual entry
+  /// form on its way to the course. A failed join consumes the code (the
+  /// history replace), which remounts this page code-less — the manual form,
+  /// with the error dialog already up.
+  bool get _isInboundJoin => widget.initialCode?.trim().isNotEmpty ?? false;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    if (_isInboundJoin) {
+      return Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 16.0,
+              children: [
+                const CircularProgressIndicator.adaptive(),
+                Text(
+                  L10n.of(context).loadingPleaseWait,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         // world_v2: back returns to the Add-course hub, close to the map.
