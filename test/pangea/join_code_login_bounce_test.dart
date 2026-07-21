@@ -42,16 +42,19 @@ void main() {
     final world = Uri.parse('/');
     final codedUrl = Uri.parse('/?left=addcoursepage:private.jvj3pc8b');
 
-    test('a fresh cached code redirects into its join flow, cache kept', () async {
-      await SpaceCodeRepo.setSpaceCode('vj3pc8b');
+    test(
+      'a fresh cached code redirects into its join flow, cache kept',
+      () async {
+        await SpaceCodeRepo.setSpaceCode('vj3pc8b');
 
-      final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
-      expect(redirect, isNotNull);
-      expect(redirect, contains('vj3pc8b'));
-      // The cache survives the redirect: a preempted navigation retries on
-      // the next logged-in landing instead of losing the code.
-      expect(SpaceCodeRepo.spaceCode, 'vj3pc8b');
-    });
+        final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
+        expect(redirect, isNotNull);
+        expect(redirect, contains('vj3pc8b'));
+        // The cache survives the redirect: a preempted navigation retries on
+        // the next logged-in landing instead of losing the code.
+        expect(SpaceCodeRepo.spaceCode, 'vj3pc8b');
+      },
+    );
 
     test('landing on the coded URL stays put; the cache survives for the '
         'page submit to consume', () async {
@@ -61,19 +64,25 @@ void main() {
       expect(SpaceCodeRepo.spaceCode, 'vj3pc8b');
     });
 
-    test('a preempted landing retries until the submit clears the cache', () async {
-      await SpaceCodeRepo.setSpaceCode('vj3pc8b');
+    test(
+      'a preempted landing retries until the submit clears the cache',
+      () async {
+        await SpaceCodeRepo.setSpaceCode('vj3pc8b');
 
-      final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
-      expect(redirect, isNotNull);
-      // The landing renders but a competing navigation returns to the world
-      // before the submit fires: the guard redirects again.
-      expect(await PAuthGaurd.consumeCachedJoinCode(Uri.parse(redirect!)), isNull);
-      expect(await PAuthGaurd.consumeCachedJoinCode(world), redirect);
-      // The submit firing (CourseCodePage) is what consumes.
-      await SpaceCodeRepo.clearSpaceCode();
-      expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
-    });
+        final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
+        expect(redirect, isNotNull);
+        // The landing renders but a competing navigation returns to the world
+        // before the submit fires: the guard redirects again.
+        expect(
+          await PAuthGaurd.consumeCachedJoinCode(Uri.parse(redirect!)),
+          isNull,
+        );
+        expect(await PAuthGaurd.consumeCachedJoinCode(world), redirect);
+        // The submit firing (CourseCodePage) is what consumes.
+        await SpaceCodeRepo.clearSpaceCode();
+        expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
+      },
+    );
 
     test('no cached code means no redirect', () async {
       expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
