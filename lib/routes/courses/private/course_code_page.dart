@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -110,6 +111,15 @@ class CourseCodePageState extends State<CourseCodePage> {
     if (_code.isEmpty) {
       return;
     }
+
+    // A firing submit is what consumes the login-bounce cache — not the
+    // auth-guard redirect and not the page landing: both proved lossy when a
+    // competing boot-time navigation disposed this page before the
+    // post-frame submit ran (PAuthGaurd.consumeCachedJoinCode). From here
+    // the join proceeds even if this page unmounts (the in-flight join
+    // future is page-independent). Fire-and-forget; the cache is simply
+    // absent for a logged-in link click.
+    if (consumeInboundCode) SpaceCodeRepo.clearSpaceCode();
 
     final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
