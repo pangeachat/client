@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-20 10:57:59.920915",
+    "@@last_modified": "2026-07-21 13:05:31.917430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Mete ajou\n{time}",
     "activityFinishedMessage": "Tout Fini!",
     "endForAll": "Fini pou tout moun",
-    "newCourse": "Nouvo kou",
     "numModules": "{num} modil",
     "coursePlan": "Plan Kou",
     "editCourseLater": "Ou ka edite tit modèl, deskripsyon, ak imaj kou a pita.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Abonman ou ap aktif jiskaske dat renouvèlman li ({date}), apresa li ap dezaktive. Ou ap kenbe analiz men ou pap kapab itilize fonksyon pro yo.",
     "cancelDescriptionWithoutRenewalDate": "Abonman ou ap aktif jiskaske dat renouvèlman li, apresa li ap dezaktive. Ou ap kenbe analiz men ou pap kapab itilize fonksyon pro yo.",
     "change": "Chanje",
-    "deactivateSubscribedAccountWarning": "Sa ap dezaktive kont itilizatè ou an epi anile abònman ou. Sa pa ka defèt! Èske ou sèten?"
+    "deactivateSubscribedAccountWarning": "Sa ap dezaktive kont itilizatè ou an epi anile abònman ou. Sa pa ka defèt! Èske ou sèten?",
+    "newCourseWithoutTitle": "Kòmanse kou",
+    "newCourseWithTitle": "Kòmanse \"{title}\"",
+    "joinCourseWithTitle": "Antre nan \"{title}\"",
+    "searchCoursePlans": "Chèche plan kou",
+    "searchPublicCourses": "Chèche kou piblik",
+    "closeSearch": "Fèmen rechèch"
 }

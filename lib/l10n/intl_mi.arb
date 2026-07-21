@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-20 10:58:16.169179",
+    "@@last_modified": "2026-07-21 13:05:33.853329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Whakahou\n{time}",
     "activityFinishedMessage": "Kua Oti Katoa!",
     "endForAll": "Whakamutua mō te katoa",
-    "newCourse": "Akoranga hou",
     "numModules": "{num} kōwae",
     "coursePlan": "Mahere Akoranga",
     "editCourseLater": "Ka taea e koe te whakatika i te taitara tauira, ngā whakaahuatanga, me te ahua akoranga ā muri ake.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Ka hohe tonu tō ohaurunga tae noa ki tōna rā whakahou ({date}), katahi ka whakakorehia. Ka mau tonu i a koe ngā tātaritanga engari e kore e taea te whakamahi i ngā āhuatanga pro.",
     "cancelDescriptionWithoutRenewalDate": "Ka hohe tonu tō ohaurunga tae noa ki tōna rā whakahou, katahi ka whakakorehia. Ka mau tonu i a koe ngā tātaritanga engari e kore e taea te whakamahi i ngā āhuatanga pro.",
     "change": "Huria",
-    "deactivateSubscribedAccountWarning": "Mā tēnei e whakakore i tō pūkete kaiwhakamahi, ā, ka whakakore hoki i tō ohaurunga. Kāore e taea te whakahoki! Kei te tino hiahia koe?"
+    "deactivateSubscribedAccountWarning": "Mā tēnei e whakakore i tō pūkete kaiwhakamahi, ā, ka whakakore hoki i tō ohaurunga. Kāore e taea te whakahoki! Kei te tino hiahia koe?",
+    "newCourseWithoutTitle": "Tīmata akoranga",
+    "newCourseWithTitle": "Tīmata \"{title}\"",
+    "joinCourseWithTitle": "Hono atu ki \"{title}\"",
+    "searchCoursePlans": "Rapua ngā mahere akoranga",
+    "searchPublicCourses": "Rapua ngā akoranga tūmatanui",
+    "closeSearch": "Katia te rapu"
 }

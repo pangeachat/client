@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-20 10:58:33.760128",
+    "@@last_modified": "2026-07-21 13:05:37.539551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "اپ ڈیٹ کیا گیا\n{time}",
     "activityFinishedMessage": "سب مکمل ہو گیا!",
     "endForAll": "سب کے لیے ختم کریں",
-    "newCourse": "نیا کورس",
     "numModules": "{num} ماڈیولز",
     "coursePlan": "کورس کا منصوبہ",
     "editCourseLater": "آپ بعد میں ٹیمپلیٹ کا عنوان، تفصیلات اور کورس کی تصویر میں ترمیم کر سکتے ہیں۔",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "آپ کی سبسکرپشن اس کی تجدید کی تاریخ ({date}) تک فعال رہے گی، پھر غیر فعال ہو جائے گی۔ آپ تجزیات برقرار رکھیں گے لیکن پرو خصوصیات استعمال نہیں کر پائیں گے۔",
     "cancelDescriptionWithoutRenewalDate": "آپ کی سبسکرپشن اس کی تجدید کی تاریخ تک فعال رہے گی، پھر غیر فعال ہو جائے گی۔ آپ تجزیات برقرار رکھیں گے لیکن پرو خصوصیات استعمال نہیں کر پائیں گے۔",
     "change": "تبدیل کریں",
-    "deactivateSubscribedAccountWarning": "یہ آپ کے صارف اکاؤنٹ کو غیر فعال کر دے گا اور آپ کی سبسکرپشن کو منسوخ کر دے گا۔ اسے واپس نہیں لیا جا سکتا! کیا آپ کو یقین ہے؟"
+    "deactivateSubscribedAccountWarning": "یہ آپ کے صارف اکاؤنٹ کو غیر فعال کر دے گا اور آپ کی سبسکرپشن کو منسوخ کر دے گا۔ اسے واپس نہیں لیا جا سکتا! کیا آپ کو یقین ہے؟",
+    "newCourseWithoutTitle": "کورس شروع کریں",
+    "newCourseWithTitle": "\"{title}\" شروع کریں",
+    "joinCourseWithTitle": "\"{title}\" میں شامل ہوں",
+    "searchCoursePlans": "کورس کے منصوبے تلاش کریں",
+    "searchPublicCourses": "عوامی کورسز تلاش کریں",
+    "closeSearch": "تلاش بند کریں"
 }

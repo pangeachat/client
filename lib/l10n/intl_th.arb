@@ -3031,7 +3031,6 @@
     "lastUpdated": "อัปเดต\n{time}",
     "activityFinishedMessage": "เสร็จสิ้นทั้งหมด!",
     "endForAll": "สิ้นสุดสำหรับทุกคน",
-    "newCourse": "หลักสูตรใหม่",
     "numModules": "{num} โมดูล",
     "coursePlan": "แผนหลักสูตร",
     "editCourseLater": "คุณสามารถแก้ไขชื่อเทมเพลต คำอธิบาย และภาพหลักสูตรในภายหลัง",
@@ -3105,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-20 10:58:31.474105",
+    "@@last_modified": "2026-07-21 13:05:37.098619",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6595,10 +6594,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10321,5 +10316,11 @@
     "cancelDescriptionWithRenewalDate": "การสมัครสมาชิกของคุณจะใช้งานได้จนถึงวันต่ออายุ ({date}) จากนั้นจะถูกปิดใช้งาน คุณจะยังคงเก็บข้อมูลวิเคราะห์ไว้ได้ แต่จะไม่สามารถใช้คุณสมบัติโปรได้",
     "cancelDescriptionWithoutRenewalDate": "การสมัครสมาชิกของคุณจะใช้งานได้จนถึงวันต่ออายุ จากนั้นจะถูกปิดใช้งาน คุณจะยังคงเก็บข้อมูลวิเคราะห์ไว้ได้ แต่จะไม่สามารถใช้คุณสมบัติโปรได้",
     "change": "เปลี่ยน",
-    "deactivateSubscribedAccountWarning": "การดำเนินการนี้จะปิดใช้งานบัญชีผู้ใช้ของคุณและยกเลิกการสมัครสมาชิกของคุณ ไม่สามารถย้อนกลับได้! คุณแน่ใจหรือไม่?"
+    "deactivateSubscribedAccountWarning": "การดำเนินการนี้จะปิดใช้งานบัญชีผู้ใช้ของคุณและยกเลิกการสมัครสมาชิกของคุณ ไม่สามารถย้อนกลับได้! คุณแน่ใจหรือไม่?",
+    "newCourseWithoutTitle": "เริ่มคอร์ส",
+    "newCourseWithTitle": "เริ่ม \"{title}\"",
+    "joinCourseWithTitle": "เข้าร่วม \"{title}\"",
+    "searchCoursePlans": "ค้นหาแผนการเรียน",
+    "searchPublicCourses": "ค้นหาคอร์สสาธารณะ",
+    "closeSearch": "ปิดการค้นหา"
 }

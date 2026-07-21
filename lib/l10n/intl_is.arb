@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-20 10:58:04.905872",
+    "@@last_modified": "2026-07-21 13:05:32.629851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Uppfært\n{time}",
     "activityFinishedMessage": "Allt búið!",
     "endForAll": "Ljúka fyrir alla",
-    "newCourse": "Nýtt námskeið",
     "numModules": "{num} einingar",
     "coursePlan": "Námskeiðsáætlun",
     "editCourseLater": "Þú getur breytt titli sniðmáts, lýsingum og námskeiðsmynd síðar.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Áskriftin þín verður virk þar til endurnýjunardagur hennar ({date}), þá verður hún óvirk. Þú munt halda aðgangi að greiningum en getur ekki notað pro eiginleika.",
     "cancelDescriptionWithoutRenewalDate": "Áskriftin þín verður virk þar til endurnýjunardagur hennar, þá verður hún óvirk. Þú munt halda aðgangi að greiningum en getur ekki notað pro eiginleika.",
     "change": "Breyta",
-    "deactivateSubscribedAccountWarning": "Þetta mun gera notandareikninginn þinn óvirkan og hætta við áskriftina þína. Þessu er ekki hægt að snúa við! Ertu viss?"
+    "deactivateSubscribedAccountWarning": "Þetta mun gera notandareikninginn þinn óvirkan og hætta við áskriftina þína. Þessu er ekki hægt að snúa við! Ertu viss?",
+    "newCourseWithoutTitle": "Hefja námskeið",
+    "newCourseWithTitle": "Hefja „{title}“",
+    "joinCourseWithTitle": "Skrá sig í „{title}“",
+    "searchCoursePlans": "Leita að námsáætlunum",
+    "searchPublicCourses": "Leita að opnum námskeiðum",
+    "closeSearch": "Loka leit"
 }

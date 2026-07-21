@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:57:51.948043",
+    "@@last_modified": "2026-07-21 13:05:30.279445",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2741,7 +2741,6 @@
     "lastUpdated": "Ĝisdatigita\n{time}",
     "activityFinishedMessage": "Ĉio Finita!",
     "endForAll": "Fini por ĉiuj",
-    "newCourse": "Nova kurso",
     "numModules": "{num} moduloj",
     "coursePlan": "Kurso Plano",
     "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
@@ -6917,10 +6916,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10640,5 +10635,11 @@
     "cancelDescriptionWithRenewalDate": "Via abono estos aktiva ĝis ĝia renoviga dato ({date}), poste malaktiviĝos. Vi konservos analizojn sed ne povos uzi profesiajn funkciojn.",
     "cancelDescriptionWithoutRenewalDate": "Via abono estos aktiva ĝis ĝia renoviga dato, poste malaktiviĝos. Vi konservos analizojn sed ne povos uzi profesiajn funkciojn.",
     "change": "Ŝanĝi",
-    "deactivateSubscribedAccountWarning": "Ĉi tio malaktivigos vian uzantkonton kaj nuligos vian abonon. Ĉi tio ne estas malfarebla! Ĉu vi certas?"
+    "deactivateSubscribedAccountWarning": "Ĉi tio malaktivigos vian uzantkonton kaj nuligos vian abonon. Ĉi tio ne estas malfarebla! Ĉu vi certas?",
+    "newCourseWithoutTitle": "Komenci kurson",
+    "newCourseWithTitle": "Komenci \"{title}\"",
+    "joinCourseWithTitle": "Aliĝi al \"{title}\"",
+    "searchCoursePlans": "Serĉi kursplanojn",
+    "searchPublicCourses": "Serĉi publikajn kursojn",
+    "closeSearch": "Fermi serĉon"
 }

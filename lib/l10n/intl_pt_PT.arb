@@ -2486,7 +2486,6 @@
     "lastUpdated": "Atualizado\n{time}",
     "activityFinishedMessage": "Tudo Concluído!",
     "endForAll": "Terminar para todos",
-    "newCourse": "Novo curso",
     "numModules": "{num} módulos",
     "coursePlan": "Plano do Curso",
     "editCourseLater": "Pode editar o título do modelo, descrições e imagem do curso mais tarde.",
@@ -2571,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-20 10:58:22.053533",
+    "@@last_modified": "2026-07-21 13:05:35.300384",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6894,10 +6893,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10606,5 +10601,11 @@
     "cancelDescriptionWithRenewalDate": "A sua subscrição estará ativa até à data de renovação ({date}), depois será desativada. Manterá as análises, mas não poderá usar as funcionalidades pro.",
     "cancelDescriptionWithoutRenewalDate": "A sua subscrição estará ativa até à data de renovação, depois será desativada. Manterá as análises, mas não poderá usar as funcionalidades pro.",
     "change": "Alterar",
-    "deactivateSubscribedAccountWarning": "Isto irá desativar a sua conta de utilizador e cancelar a sua subscrição. Isto não pode ser desfeito! Tem a certeza?"
+    "deactivateSubscribedAccountWarning": "Isto irá desativar a sua conta de utilizador e cancelar a sua subscrição. Isto não pode ser desfeito! Tem a certeza?",
+    "newCourseWithoutTitle": "Iniciar curso",
+    "newCourseWithTitle": "Iniciar \"{title}\"",
+    "joinCourseWithTitle": "Aderir a \"{title}\"",
+    "searchCoursePlans": "Procurar planos de curso",
+    "searchPublicCourses": "Procurar cursos públicos",
+    "closeSearch": "Fechar pesquisa"
 }

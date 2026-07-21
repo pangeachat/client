@@ -3031,7 +3031,6 @@
     "lastUpdated": "अद्यतन\n{time}",
     "activityFinishedMessage": "सभी समाप्त!",
     "endForAll": "सभी के लिए समाप्त करें",
-    "newCourse": "नई कोर्स",
     "numModules": "{num} मॉड्यूल",
     "coursePlan": "कोर्स योजना",
     "editCourseLater": "आप बाद में टेम्पलेट का शीर्षक, विवरण और कोर्स छवि संपादित कर सकते हैं।",
@@ -3105,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-20 10:57:57.327582",
+    "@@last_modified": "2026-07-21 13:05:31.620602",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6595,10 +6594,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10321,5 +10316,11 @@
     "cancelDescriptionWithRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि ({date}) तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
     "cancelDescriptionWithoutRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
     "change": "बदलें",
-    "deactivateSubscribedAccountWarning": "इससे आपका उपयोगकर्ता खाता निष्क्रिय हो जाएगा और आपकी सदस्यता रद्द हो जाएगी। इसे पूर्ववत नहीं किया जा सकता! क्या आप निश्चित हैं?"
+    "deactivateSubscribedAccountWarning": "इससे आपका उपयोगकर्ता खाता निष्क्रिय हो जाएगा और आपकी सदस्यता रद्द हो जाएगी। इसे पूर्ववत नहीं किया जा सकता! क्या आप निश्चित हैं?",
+    "newCourseWithoutTitle": "कोर्स शुरू करें",
+    "newCourseWithTitle": "\"{title}\" शुरू करें",
+    "joinCourseWithTitle": "\"{title}\" से जुड़ें",
+    "searchCoursePlans": "कोर्स प्लान खोजें",
+    "searchPublicCourses": "सार्वजनिक कोर्स खोजें",
+    "closeSearch": "खोज बंद करें"
 }

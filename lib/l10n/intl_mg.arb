@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-20 10:58:15.808835",
+    "@@last_modified": "2026-07-21 13:05:33.821887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Nohavaozina\n{time}",
     "activityFinishedMessage": "Vita avokoa!",
     "endForAll": "Faranana ho an'ny rehetra",
-    "newCourse": "Taranja vaovao",
     "numModules": "{num} modules",
     "coursePlan": "Drafitry ny taranja",
     "editCourseLater": "Afaka manova ny lohatenin'ny môdely, ny famaritana, ary ny sarin'ny taranja ianao any aoriana.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Ho mavitrika ny fisoratana anaranao mandra-pahatongan'ny daty fanavaozana azy ({date}), dia ho tapaka. Hahazo ny fanadihadiana ianao fa tsy afaka mampiasa ny endri-javatra pro.",
     "cancelDescriptionWithoutRenewalDate": "Ho mavitrika ny fisoratana anaranao mandra-pahatongan'ny daty fanavaozana azy, dia ho tapaka. Hahazo ny fanadihadiana ianao fa tsy afaka mampiasa ny endri-javatra pro.",
     "change": "Hanova",
-    "deactivateSubscribedAccountWarning": "Hanafoana ny kaontinao mpampiasa sy hanafoana ny fisoratana anaranao izany. Tsy azo averina izany! Azonao antoka ve?"
+    "deactivateSubscribedAccountWarning": "Hanafoana ny kaontinao mpampiasa sy hanafoana ny fisoratana anaranao izany. Tsy azo averina izany! Azonao antoka ve?",
+    "newCourseWithoutTitle": "Atombohy ny taranja",
+    "newCourseWithTitle": "Atombohy ny \"{title}\"",
+    "joinCourseWithTitle": "Midira amin'ny \"{title}\"",
+    "searchCoursePlans": "Tadiavo ny drafitry ny taranja",
+    "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe",
+    "closeSearch": "Akatona ny fikarohana"
 }

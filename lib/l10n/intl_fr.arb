@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-20 10:57:53.586846",
+    "@@last_modified": "2026-07-21 13:05:32.012581",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3299,7 +3299,6 @@
     "lastUpdated": "Mis à jour\n{time}",
     "activityFinishedMessage": "Tout est terminé !",
     "endForAll": "Terminer pour tous",
-    "newCourse": "Nouveau cours",
     "numModules": "{num} modules",
     "coursePlan": "Plan de cours",
     "editCourseLater": "Vous pouvez modifier le titre du modèle, les descriptions et l'image du cours plus tard.",
@@ -6333,10 +6332,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -10044,5 +10039,11 @@
     "cancelDescriptionWithRenewalDate": "Votre abonnement sera actif jusqu'à sa date de renouvellement ({date}), puis il sera désactivé. Vous conserverez les analyses mais ne pourrez plus utiliser les fonctionnalités pro.",
     "cancelDescriptionWithoutRenewalDate": "Votre abonnement sera actif jusqu'à sa date de renouvellement, puis il sera désactivé. Vous conserverez les analyses mais ne pourrez plus utiliser les fonctionnalités pro.",
     "change": "Modifier",
-    "deactivateSubscribedAccountWarning": "Ceci désactivera votre compte utilisateur et annulera votre abonnement. Cette action est irréversible ! Êtes-vous sûr ?"
+    "deactivateSubscribedAccountWarning": "Ceci désactivera votre compte utilisateur et annulera votre abonnement. Cette action est irréversible ! Êtes-vous sûr ?",
+    "newCourseWithoutTitle": "Démarrer le cours",
+    "newCourseWithTitle": "Démarrer « {title} »",
+    "joinCourseWithTitle": "Rejoindre « {title} »",
+    "searchCoursePlans": "Rechercher des plans de cours",
+    "searchPublicCourses": "Rechercher des cours publics",
+    "closeSearch": "Fermer la recherche"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:07.002737",
+    "@@last_modified": "2026-07-21 13:05:32.935442",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3349,7 +3349,6 @@
     "lastUpdated": "업데이트됨\n{time}",
     "activityFinishedMessage": "모든 작업이 완료되었습니다!",
     "endForAll": "모두 종료",
-    "newCourse": "새 과정",
     "numModules": "{num}개 모듈",
     "coursePlan": "과정 계획",
     "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
@@ -6156,10 +6155,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9882,5 +9877,11 @@
     "cancelDescriptionWithRenewalDate": "구독은 갱신일({date})까지 활성 상태를 유지한 후 비활성화됩니다. 분석 데이터는 유지되지만 프로 기능을 사용할 수 없게 됩니다.",
     "cancelDescriptionWithoutRenewalDate": "구독은 갱신일까지 활성 상태를 유지한 후 비활성화됩니다. 분석 데이터는 유지되지만 프로 기능을 사용할 수 없게 됩니다.",
     "change": "변경",
-    "deactivateSubscribedAccountWarning": "사용자 계정이 비활성화되고 구독이 취소됩니다. 이 작업은 되돌릴 수 없습니다! 계속하시겠습니까?"
+    "deactivateSubscribedAccountWarning": "사용자 계정이 비활성화되고 구독이 취소됩니다. 이 작업은 되돌릴 수 없습니다! 계속하시겠습니까?",
+    "newCourseWithoutTitle": "코스 시작",
+    "newCourseWithTitle": "\"{title}\" 시작",
+    "joinCourseWithTitle": "\"{title}\" 참여",
+    "searchCoursePlans": "강의 계획 검색",
+    "searchPublicCourses": "공개 강의 검색",
+    "closeSearch": "검색 닫기"
 }

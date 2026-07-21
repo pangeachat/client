@@ -3474,7 +3474,6 @@
     "lastUpdated": "Päivitetty\n{time}",
     "activityFinishedMessage": "Kaikki valmiina!",
     "endForAll": "Lopeta kaikille",
-    "newCourse": "Uusi kurssi",
     "numModules": "{num} moduulia",
     "coursePlan": "Kurssisuunnitelma",
     "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
@@ -3548,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-20 10:57:53.618823",
+    "@@last_modified": "2026-07-21 13:05:30.456335",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6131,10 +6130,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9726,5 +9721,11 @@
     "cancelDescriptionWithRenewalDate": "Tilauksesi on voimassa sen uusimispäivään ({date}) asti, jonka jälkeen se deaktivoituu. Säilytät analytiikan, mutta et voi käyttää pro-ominaisuuksia.",
     "cancelDescriptionWithoutRenewalDate": "Tilauksesi on voimassa sen uusimispäivään asti, jonka jälkeen se deaktivoituu. Säilytät analytiikan, mutta et voi käyttää pro-ominaisuuksia.",
     "change": "Muuta",
-    "deactivateSubscribedAccountWarning": "Tämä deaktivoi käyttäjätilisi ja peruuttaa tilauksesi. Tätä ei voi kumota! Oletko varma?"
+    "deactivateSubscribedAccountWarning": "Tämä deaktivoi käyttäjätilisi ja peruuttaa tilauksesi. Tätä ei voi kumota! Oletko varma?",
+    "newCourseWithoutTitle": "Aloita kurssi",
+    "newCourseWithTitle": "Aloita \"{title}\"",
+    "joinCourseWithTitle": "Liity kurssille \"{title}\"",
+    "searchCoursePlans": "Hae kurssisuunnitelmia",
+    "searchPublicCourses": "Hae julkisia kursseja",
+    "closeSearch": "Sulje haku"
 }

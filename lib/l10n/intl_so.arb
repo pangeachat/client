@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-20 10:58:28.620015",
+    "@@last_modified": "2026-07-21 13:05:37.160935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "La cusboonaysiiyay\n{time}",
     "activityFinishedMessage": "Dhammaan waa la Dhammeeyay!",
     "endForAll": "U Dhammee Dhammaan",
-    "newCourse": "Koorso cusub",
     "numModules": "{num} cutub",
     "coursePlan": "Qorshaha Koorsada",
     "editCourseLater": "Waad sixi kartaa cinwaanka template-ka, sharraxaadaha, iyo sawirka koorsada hadhow.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Rukumashadaadu waxay shaqayn doontaa ilaa taariikhda cusboonaysiinta ({date}), ka dibna way joogsan doontaa. Waxaad haysan doontaa falanqaynta laakiin ma isticmaali doontid astaamaha pro.",
     "cancelDescriptionWithoutRenewalDate": "Rukumashadaadu waxay shaqayn doontaa ilaa taariikhda cusboonaysiinta, ka dibna way joogsan doontaa. Waxaad haysan doontaa falanqaynta laakiin ma isticmaali doontid astaamaha pro.",
     "change": "Beddel",
-    "deactivateSubscribedAccountWarning": "Tani waxay joojin doontaa akoonkaaga isticmaale waxayna burin doontaa rukumashadaada. Tan dib looma celin karo! Ma hubtaa?"
+    "deactivateSubscribedAccountWarning": "Tani waxay joojin doontaa akoonkaaga isticmaale waxayna burin doontaa rukumashadaada. Tan dib looma celin karo! Ma hubtaa?",
+    "newCourseWithoutTitle": "Bilow koorsada",
+    "newCourseWithTitle": "Bilow \"{title}\"",
+    "joinCourseWithTitle": "Ku biir \"{title}\"",
+    "searchCoursePlans": "Raadi qorshayaasha koorsada",
+    "searchPublicCourses": "Raadi koorsooyinka dadweynaha",
+    "closeSearch": "Xidh raadinta"
 }

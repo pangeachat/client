@@ -71,7 +71,6 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
           );
         }
         return NewCoursePage(
-          route: 'rooms',
           spaceId: roomId,
           closeButton: closeButton,
           initialLanguageCode: param.initialLanguageFilter,

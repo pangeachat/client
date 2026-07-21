@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-20 10:58:21.564123",
+    "@@last_modified": "2026-07-21 13:05:34.596896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Zasinthidwa\n{time}",
     "activityFinishedMessage": "Zonse Zatha!",
     "endForAll": "Malizitsani kwa onse",
-    "newCourse": "Kosi yatsopano",
     "numModules": "Ma module {num}",
     "coursePlan": "Ndondomeko ya Kosi",
     "editCourseLater": "Mutha kusintha mutu wa template, mafotokozedwe, ndi chithunzi cha kosi pambuyo pake.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Kulembetsa kwanu kudzakhala kogwira ntchito mpaka tsiku lake lokonzanso ({date}), kenako kudzayimitsidwa. Mudzasunga zowunikira koma simudzatha kugwiritsa ntchito zinthu zapamwamba.",
     "cancelDescriptionWithoutRenewalDate": "Kulembetsa kwanu kudzakhala kogwira ntchito mpaka tsiku lake lokonzanso, kenako kudzayimitsidwa. Mudzasunga zowunikira koma simudzatha kugwiritsa ntchito zinthu zapamwamba.",
     "change": "Sinthani",
-    "deactivateSubscribedAccountWarning": "Izi zidzathetsa akaunti yanu ya ogwiritsa ntchito ndikuletsa kulembetsa kwanu. Izi sizingasinthidwe! Kodi mukutsimikiza?"
+    "deactivateSubscribedAccountWarning": "Izi zidzathetsa akaunti yanu ya ogwiritsa ntchito ndikuletsa kulembetsa kwanu. Izi sizingasinthidwe! Kodi mukutsimikiza?",
+    "newCourseWithoutTitle": "Yambani maphunziro",
+    "newCourseWithTitle": "Yambani \"{title}\"",
+    "joinCourseWithTitle": "Lowani \"{title}\"",
+    "searchCoursePlans": "Sakani mapulani amaphunziro",
+    "searchPublicCourses": "Sakani maphunziro a anthu onse",
+    "closeSearch": "Tsekani kusaka"
 }

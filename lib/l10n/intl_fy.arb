@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-20 10:57:56.091544",
+    "@@last_modified": "2026-07-21 13:05:30.978762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Bywurke\n{time}",
     "activityFinishedMessage": "Hielendal klear!",
     "endForAll": "Foar elkenien beëinigje",
-    "newCourse": "Nije kursus",
     "numModules": "{num} modules",
     "coursePlan": "Kursusplan",
     "editCourseLater": "Jo kinne de titel, beskriuwingen en kursusôfbylding fan it sjabloan letter bewurkje.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Dyn abonnemint bliuwt aktyf oant de fernijingsdatum ({date}), dêrnei wurdt it deaktivearre. Do behâldst de analytics, mar kinst gjin pro-funksjes brûke.",
     "cancelDescriptionWithoutRenewalDate": "Dyn abonnemint bliuwt aktyf oant de fernijingsdatum, dêrnei wurdt it deaktivearre. Do behâldst de analytics, mar kinst gjin pro-funksjes brûke.",
     "change": "Feroarje",
-    "deactivateSubscribedAccountWarning": "Dit sil dyn brûkersaccount deaktivearje en dyn abonnemint annulearje. Dit kin net ûngedien makke wurde! Bisto wis?"
+    "deactivateSubscribedAccountWarning": "Dit sil dyn brûkersaccount deaktivearje en dyn abonnemint annulearje. Dit kin net ûngedien makke wurde! Bisto wis?",
+    "newCourseWithoutTitle": "Start kursus",
+    "newCourseWithTitle": "Start \"{title}\"",
+    "joinCourseWithTitle": "Doch mei oan \"{title}\"",
+    "searchCoursePlans": "Sykje kursusplannen",
+    "searchPublicCourses": "Sykje iepenbiere kursussen",
+    "closeSearch": "Sykje slute"
 }

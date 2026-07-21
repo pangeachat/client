@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-20 10:58:39.715170",
+    "@@last_modified": "2026-07-21 13:05:38.684746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Kubuyekezwe\n{time}",
     "activityFinishedMessage": "Konke Kuqediwe!",
     "endForAll": "Qeda bonke",
-    "newCourse": "Ikhosi elisha",
     "numModules": "{num} amamojula",
     "coursePlan": "Uhlelo Lwekhosi",
     "editCourseLater": "Ungahlela isihloko sethempulethi, izincazelo, nesithombe sekhosi kamuva.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Ukubhalisa kwakho kuzosebenza kuze kube usuku lokuvuselela ({date}), bese kukhanselwa. Uzogcina izibalo kodwa ungakwazi ukusebenzisa izici ze-pro.",
     "cancelDescriptionWithoutRenewalDate": "Ukubhalisa kwakho kuzosebenza kuze kube usuku lokuvuselela, bese kukhanselwa. Uzogcina izibalo kodwa ungakwazi ukusebenzisa izici ze-pro.",
     "change": "Shintsha",
-    "deactivateSubscribedAccountWarning": "Lokhu kuzokwenza i-akhawunti yakho yomsebenzisi ingasebenzi futhi kukhanselwe ukubhalisa kwakho. Lokhu akukwazi ukuhlehliswa! Uqinisekile?"
+    "deactivateSubscribedAccountWarning": "Lokhu kuzokwenza i-akhawunti yakho yomsebenzisi ingasebenzi futhi kukhanselwe ukubhalisa kwakho. Lokhu akukwazi ukuhlehliswa! Uqinisekile?",
+    "newCourseWithoutTitle": "Qala isifundo",
+    "newCourseWithTitle": "Qala \"{title}\"",
+    "joinCourseWithTitle": "Joyina \"{title}\"",
+    "searchCoursePlans": "Sesha izinhlelo zezifundo",
+    "searchPublicCourses": "Sesha izifundo zomphakathi",
+    "closeSearch": "Vala usesho"
 }
