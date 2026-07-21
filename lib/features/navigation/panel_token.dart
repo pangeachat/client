@@ -234,11 +234,12 @@ class AddCoursePagePanelToken extends PanelToken<AddCoursePageTokenParam> {
       AddCourseSubpageEnum.browse =>
         param.previewRoomId != null ? 'browse/preview' : 'browse',
       AddCourseSubpageEnum.private => 'private',
-      AddCourseSubpageEnum.own => param.createCourseId == null
-          ? 'own'
-          : param.showNewCourseInvitePage
-          ? 'own/invite'
-          : 'own/preview',
+      AddCourseSubpageEnum.own =>
+        param.createCourseId == null
+            ? 'own'
+            : param.showNewCourseInvitePage
+            ? 'own/invite'
+            : 'own/preview',
     };
     return '${type.name}:$leaf';
   }
