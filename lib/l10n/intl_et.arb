@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-13 10:05:25.179208",
+    "@@last_modified": "2026-07-20 10:57:52.565187",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -6573,8 +6573,6 @@
     "allow": "Luba",
     "deny": "Keela",
     "enabledRenewal": "Luba tellimuse uuendamine",
-    "subscriptionEndsOn": "Tellimus lõppeb",
-    "subscriptionRenewsOn": "Tellimus uuendatakse",
     "waitForSubscriptionChanges": "Teie tellimuse muudatused võivad rakenduses kajastuda mõne hetke pärast.",
     "subscribeReadingAssistance": "Tellige, et avada sõnumite tööriistad",
     "aceDisplayName": "Achinese",
@@ -6849,14 +6847,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8379,7 +8369,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ma õpin...",
     "alreadySpeak": "Ma juba räägin...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9646,5 +9635,56 @@
     "starsToUnlockObjectiveTitle": "Tähed missiooni kohta",
     "starsToUnlockObjectiveDesc": "Määra iga missiooni läbimiseks vajalike tähtede arv",
     "maxStarsPerMissionWarning": "Sellel kursusel on missioone, kus saab teenida ainult {maxValue} tähte. Palun sisestage arv, mis on väiksem või võrdne {maxValue}.",
-    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga."
+    "removedFromCourseError": "Teid on sellelt kursuselt eemaldatud. Võtke ühendust oma õpetajaga.",
+    "endPractice": "Lõpeta harjutamine",
+    "bodyLabel": "{page} valikud",
+    "openDM": "Ava otsesõnum",
+    "openNewTab": "Ava uuel vahelehel",
+    "viewProfileImageLabel": "Vaata profiilipilti",
+    "profileImageLabel": "Profiilipilt",
+    "actionsLabel": "Tegevused",
+    "colorListLabel": "Värviloend",
+    "chatAppearanceStyleLabel": "Vestluse välimus valitud stiiliga",
+    "volumeLabel": "Helitugevus",
+    "listLabel": "{description} loend",
+    "passwordFormLabel": "Muuda parooli vorm",
+    "searchLanguagesHint": "Otsi keeli",
+    "searchCountriesHint": "Otsi riike",
+    "searchVocabHint": "Otsi sõnavara",
+    "searchUsersHint": "Otsi kasutajaid",
+    "searchMessagesHint": "Otsi sõnumeid",
+    "searchChatsHint": "Otsi vestlusi",
+    "searchActivitiesHint": "Otsi tegevusi",
+    "appInTargetLanguageTitle": "Näita rakendust keeles, mida õpin",
+    "appInTargetLanguageDesc": "Menüüd, nupud ja sildid kuvatakse keeles, mida õpid. Tõlkimata tekst kuvatakse inglise keeles.",
+    "changePasswordSessionExpired": "Sinu seanss on aegunud. Palun logi uuesti sisse.",
+    "constructUseSugDesc": "Aktsepteeritud soovitused",
+    "mostPopular": "Kõige populaarsem",
+    "mostSavings": "Suurim sääst",
+    "enterDiscountCode": "Sisesta sooduskood",
+    "yourPlan": "Sinu pakett",
+    "subscriptionRenewsOn": "Uuendatakse {date}",
+    "subscriptionEndsOn": "Lõpeb {date}",
+    "promoSubscription": "Promotsiooniline tellimus",
+    "seatSubscription": "Institutsionaalne koht",
+    "lifetimeSubscription": "Eluaegne tellimus",
+    "freeSubscription": "TASUTA",
+    "freeTrialDescription": "Sul on tasuta prooviperiood",
+    "manage": "Halda",
+    "subscriptionHistory": "Tellimuste ajalugu",
+    "history": "Ajalugu",
+    "noPaymentHistoryFound": "Maksete ajalugu ei leitud",
+    "cancelAnytime": "Tühista igal ajal tellimuse seadetes",
+    "pricePerMonth": "{price}/kuu",
+    "pricePerYear": "{price}/aasta",
+    "viewSubscriptionOptions": "Vaata tellimuse valikuid",
+    "apply": "Rakenda",
+    "continueToSubscribe": "Jätka tellimisega",
+    "invalidDiscountCode": "Kehtetu sooduskood",
+    "selectDiscountPlan": "Vali soodusplaan",
+    "discountApplied": "{discount} soodustus rakendatud",
+    "cancelDescriptionWithRenewalDate": "Sinu tellimus on aktiivne kuni uuendamiskuupäevani ({date}), seejärel deaktiveeritakse. Analüütika jääb alles, kuid pro-funktsioone ei saa kasutada.",
+    "cancelDescriptionWithoutRenewalDate": "Sinu tellimus on aktiivne kuni uuendamiskuupäevani, seejärel deaktiveeritakse. Analüütika jääb alles, kuid pro-funktsioone ei saa kasutada.",
+    "change": "Muuda",
+    "deactivateSubscribedAccountWarning": "See deaktiveerib sinu kasutajakonto ja tühistab sinu tellimuse. Seda ei saa tagasi võtta! Oled sa kindel?"
 }

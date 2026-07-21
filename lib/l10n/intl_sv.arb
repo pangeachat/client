@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:56.033267",
+    "@@last_modified": "2026-07-20 10:58:29.117305",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -6900,8 +6900,6 @@
     "allow": "Tillåt",
     "deny": "Neka",
     "enabledRenewal": "Aktivera prenumerationsförnyelse",
-    "subscriptionEndsOn": "Prenumerationen slutar den",
-    "subscriptionRenewsOn": "Prenumerationen förnyas den",
     "waitForSubscriptionChanges": "Ändringar i din prenumeration kan ta en stund att återspeglas i appen.",
     "subscribeReadingAssistance": "Prenumerera för att låsa upp meddelandeverktyg",
     "aceDisplayName": "Achinese",
@@ -7176,14 +7174,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8900,7 +8890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jag lär mig...",
     "alreadySpeak": "Jag talar redan...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10167,5 +10156,56 @@
     "starsToUnlockObjectiveTitle": "Stjärnor per uppdrag",
     "starsToUnlockObjectiveDesc": "Ange antalet stjärnor som behövs för att slutföra varje uppdrag",
     "maxStarsPerMissionWarning": "Den här kursen har uppdrag där endast {maxValue} stjärnor kan tjänas. Ange ett nummer som är mindre än eller lika med {maxValue}.",
-    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare."
+    "removedFromCourseError": "Du har tagits bort från den här kursen. Kontakta din lärare.",
+    "endPractice": "Avsluta övning",
+    "bodyLabel": "{page} alternativ",
+    "openDM": "Öppna direktmeddelande",
+    "openNewTab": "Öppna i ny flik",
+    "viewProfileImageLabel": "Visa profilbild",
+    "profileImageLabel": "Profilbild",
+    "actionsLabel": "Åtgärder",
+    "colorListLabel": "Färglista",
+    "chatAppearanceStyleLabel": "Chattutseende med vald stil",
+    "volumeLabel": "Volym",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Formulär för lösenordsbyte",
+    "searchLanguagesHint": "Sök språk",
+    "searchCountriesHint": "Sök länder",
+    "searchVocabHint": "Sök ord",
+    "searchUsersHint": "Sök användare",
+    "searchMessagesHint": "Sök meddelanden",
+    "searchChatsHint": "Sök chattar",
+    "searchActivitiesHint": "Sök aktiviteter",
+    "appInTargetLanguageTitle": "Visa appen på språket jag lär mig",
+    "appInTargetLanguageDesc": "Menyer, knappar och etiketter visas på ditt målspråk för immersion. Oöversatt text återgår till engelska.",
+    "changePasswordSessionExpired": "Din session har upphört. Logga in igen.",
+    "constructUseSugDesc": "Accepterade förslag",
+    "mostPopular": "Mest populära",
+    "mostSavings": "Mest besparingar",
+    "enterDiscountCode": "Ange rabattkod",
+    "yourPlan": "Din plan",
+    "subscriptionRenewsOn": "Förnyas den {date}",
+    "subscriptionEndsOn": "Slutar den {date}",
+    "promoSubscription": "Kampanjprenumeration",
+    "seatSubscription": "Institutionsplats",
+    "lifetimeSubscription": "Livstidsprenumeration",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Du har en gratis provperiod",
+    "manage": "Hantera",
+    "subscriptionHistory": "Prenumerationshistorik",
+    "history": "Historik",
+    "noPaymentHistoryFound": "Ingen betalningshistorik hittades",
+    "cancelAnytime": "Avbryt när som helst i prenumerationsinställningarna",
+    "pricePerMonth": "{price}/månad",
+    "pricePerYear": "{price}/år",
+    "viewSubscriptionOptions": "Visa prenumerationsalternativ",
+    "apply": "Tillämpa",
+    "continueToSubscribe": "Fortsätt att prenumerera",
+    "invalidDiscountCode": "Ogiltig rabattkod",
+    "selectDiscountPlan": "Välj rabattplan",
+    "discountApplied": "{discount} rabatt tillämpad",
+    "cancelDescriptionWithRenewalDate": "Din prenumeration kommer att vara aktiv fram till förnyelsedatumet ({date}) och sedan avaktiveras. Du behåller analysdata men kan inte använda pro-funktioner.",
+    "cancelDescriptionWithoutRenewalDate": "Din prenumeration kommer att vara aktiv fram till förnyelsedatumet och sedan avaktiveras. Du behåller analysdata men kan inte använda pro-funktioner.",
+    "change": "Ändra",
+    "deactivateSubscribedAccountWarning": "Detta kommer att avaktivera ditt användarkonto och avbryta din prenumeration. Detta kan inte ångras! Är du säker?"
 }

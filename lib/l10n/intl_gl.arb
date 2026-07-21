@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-13 10:04:09.186711",
+    "@@last_modified": "2026-07-20 10:57:55.637213",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Permitir",
     "deny": "Denegar",
     "enabledRenewal": "Activar a renovación da subscrición",
-    "subscriptionEndsOn": "A subscrición finaliza o",
-    "subscriptionRenewsOn": "A subscrición renova o",
     "waitForSubscriptionChanges": "Os cambios na túa subscrición poden tardar un momento en reflectirse na aplicación.",
     "subscribeReadingAssistance": "Subscríbete para desbloquear ferramentas de mensaxes",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estou aprendendo...",
     "alreadySpeak": "Xa falo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9638,56 @@
     "starsToUnlockObjectiveTitle": "Estrelas por misión",
     "starsToUnlockObjectiveDesc": "Define o número de estrelas necesarias para completar cada misión",
     "maxStarsPerMissionWarning": "Este curso ten misións onde só se poden gañar {maxValue} estrelas. Introduce un número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Retiráronche deste curso. Ponte en contacto co teu profesor."
+    "removedFromCourseError": "Retiráronche deste curso. Ponte en contacto co teu profesor.",
+    "endPractice": "Rematar a práctica",
+    "bodyLabel": "Opcións de {page}",
+    "openDM": "Abrir mensaxe directa",
+    "openNewTab": "Abrir nunha nova pestana",
+    "viewProfileImageLabel": "Ver imaxe de perfil",
+    "profileImageLabel": "Imaxe de perfil",
+    "actionsLabel": "Accións",
+    "colorListLabel": "Lista de cores",
+    "chatAppearanceStyleLabel": "Aspecto do chat co estilo elixido",
+    "volumeLabel": "Volume",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario para cambiar o contrasinal",
+    "searchLanguagesHint": "Buscar idiomas",
+    "searchCountriesHint": "Buscar países",
+    "searchVocabHint": "Buscar vocabulario",
+    "searchUsersHint": "Buscar usuarios",
+    "searchMessagesHint": "Buscar mensaxes",
+    "searchChatsHint": "Buscar conversas",
+    "searchActivitiesHint": "Buscar actividades",
+    "appInTargetLanguageTitle": "Mostrar a aplicación na lingua que estou a aprender",
+    "appInTargetLanguageDesc": "Os menús, botóns e etiquetas aparecen na túa lingua meta para unha inmersión total. O texto non traducido volve ao inglés.",
+    "changePasswordSessionExpired": "A túa sesión caducou. Inicia sesión de novo.",
+    "constructUseSugDesc": "Suxestións aceptadas",
+    "mostPopular": "Máis popular",
+    "mostSavings": "Maiores aforros",
+    "enterDiscountCode": "Introducir código de desconto",
+    "yourPlan": "O teu plan",
+    "subscriptionRenewsOn": "Renóvase o {date}",
+    "subscriptionEndsOn": "Remata o {date}",
+    "promoSubscription": "Subscrición promocional",
+    "seatSubscription": "Praza institucional",
+    "lifetimeSubscription": "Subscrición de por vida",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Tes unha proba gratuíta",
+    "manage": "Xestionar",
+    "subscriptionHistory": "Historial de subscricións",
+    "history": "Historial",
+    "noPaymentHistoryFound": "Non se atopou historial de pagamentos",
+    "cancelAnytime": "Cancela en calquera momento na configuración da subscrición",
+    "pricePerMonth": "{price}/mes",
+    "pricePerYear": "{price}/ano",
+    "viewSubscriptionOptions": "Ver opcións de subscrición",
+    "apply": "Aplicar",
+    "continueToSubscribe": "Continuar para subscribirse",
+    "invalidDiscountCode": "Código de desconto non válido",
+    "selectDiscountPlan": "Seleccionar plan de desconto",
+    "discountApplied": "Desconto de {discount} aplicado",
+    "cancelDescriptionWithRenewalDate": "A túa subscrición estará activa ata a data de renovación ({date}), despois desactivarase. Manterás as análises pero non poderás usar as funcións pro.",
+    "cancelDescriptionWithoutRenewalDate": "A túa subscrición estará activa ata a data de renovación, despois desactivarase. Manterás as análises pero non poderás usar as funcións pro.",
+    "change": "Cambiar",
+    "deactivateSubscribedAccountWarning": "Isto desactivará a túa conta de usuario e cancelará a túa subscrición. Non se pode desfacer! Estás seguro?"
 }

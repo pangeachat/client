@@ -13,127 +13,150 @@ class DevicesSettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: MaxWidthBody(
-        child: FutureBuilder<bool>(
-          future: controller.loadUserDevices(context),
-          builder: (BuildContext context, snapshot) {
-            final theme = Theme.of(context);
-            if (snapshot.hasError) {
-              return Center(
-                child: Column(
-                  mainAxisSize: .min,
-                  children: <Widget>[
-                    const Icon(Icons.error_outlined),
-                    // #Pangea
-                    // Text(snapshot.error.toString()),
-                    Text(snapshot.error!.toLocalizedString(context)),
-                    // Pangea#
-                  ],
-                ),
-              );
-            }
-            if (!snapshot.hasData || controller.devices == null) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-              );
-            }
-            return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: controller.notThisDevice.length + 1,
-              itemBuilder: (BuildContext context, int i) {
-                if (i == 0) {
-                  return Column(
+    return Semantics(
+      label: L10n.of(context).listLabel(L10n.of(context).devices),
+      container: true,
+      child: Scaffold(
+        body: MaxWidthBody(
+          child: FutureBuilder<bool>(
+            future: controller.loadUserDevices(context),
+            builder: (BuildContext context, snapshot) {
+              final theme = Theme.of(context);
+              if (snapshot.hasError) {
+                return Center(
+                  child: Column(
                     mainAxisSize: .min,
-                    children: [
-                      if (controller.chatBackupEnabled == false)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              child: Icon(Icons.info_outlined),
-                            ),
-                            subtitle: Text(
-                              L10n.of(
-                                context,
-                              ).noticeChatBackupDeviceVerification,
-                            ),
-                          ),
-                        ),
-                      if (controller.thisDevice != null) ...[
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 8.0,
-                          ),
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            L10n.of(context).thisDevice,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: theme.colorScheme.primary,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                        UserDeviceListItem(
-                          controller.thisDevice!,
-                          rename: controller.renameDeviceAction,
-                          remove: (d) => controller.removeDevicesAction([d]),
-                          verify: controller.verifyDeviceAction,
-                          block: controller.blockDeviceAction,
-                          unblock: controller.unblockDeviceAction,
-                        ),
-                      ],
-                      if (controller.notThisDevice.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 8.0,
-                          ),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: TextButton.icon(
-                              label: Text(
-                                L10n.of(context).removeAllOtherDevices,
-                              ),
-                              style: TextButton.styleFrom(
-                                iconColor: theme.colorScheme.onErrorContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onErrorContainer,
-                                backgroundColor:
-                                    theme.colorScheme.errorContainer,
-                              ),
-                              icon: const Icon(Icons.delete_outline),
-                              onPressed: () => controller.removeDevicesAction(
-                                controller.notThisDevice,
-                              ),
-                            ),
-                          ),
-                        )
-                      else
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(L10n.of(context).noOtherDevicesFound),
-                          ),
-                        ),
+                    children: <Widget>[
+                      const Icon(Icons.error_outlined),
+                      // #Pangea
+                      // Text(snapshot.error.toString()),
+                      Text(snapshot.error!.toLocalizedString(context)),
+                      // Pangea#
                     ],
-                  );
-                }
-                i--;
-                return UserDeviceListItem(
-                  controller.notThisDevice[i],
-                  rename: controller.renameDeviceAction,
-                  remove: (d) => controller.removeDevicesAction([d]),
-                  verify: controller.verifyDeviceAction,
-                  block: controller.blockDeviceAction,
-                  unblock: controller.unblockDeviceAction,
+                  ),
                 );
-              },
-            );
-          },
+              }
+              if (!snapshot.hasData || controller.devices == null) {
+                return const Center(
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                );
+              }
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: controller.notThisDevice.length + 1,
+                itemBuilder: (BuildContext context, int i) {
+                  if (i == 0) {
+                    return Semantics(
+                      label: L10n.of(context).thisDevice,
+                      container: true,
+                      child: Column(
+                        mainAxisSize: .min,
+                        children: [
+                          if (controller.chatBackupEnabled == false)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: ListTile(
+                                leading: const CircleAvatar(
+                                  child: Icon(Icons.info_outlined),
+                                ),
+                                subtitle: Text(
+                                  L10n.of(
+                                    context,
+                                  ).noticeChatBackupDeviceVerification,
+                                ),
+                              ),
+                            ),
+                          if (controller.thisDevice != null) ...[
+                            ExcludeSemantics(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 8.0,
+                                ),
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  L10n.of(context).thisDevice,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ),
+                            Semantics(
+                              container: true,
+                              child: UserDeviceListItem(
+                                controller.thisDevice!,
+                                rename: controller.renameDeviceAction,
+                                remove: (d) =>
+                                    controller.removeDevicesAction([d]),
+                                verify: controller.verifyDeviceAction,
+                                block: controller.blockDeviceAction,
+                                unblock: controller.unblockDeviceAction,
+                              ),
+                            ),
+                          ],
+                          if (controller.notThisDevice.isNotEmpty)
+                            Semantics(
+                              container: true,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 8.0,
+                                ),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: TextButton.icon(
+                                    label: Text(
+                                      L10n.of(context).removeAllOtherDevices,
+                                    ),
+                                    style: TextButton.styleFrom(
+                                      iconColor:
+                                          theme.colorScheme.onErrorContainer,
+                                      foregroundColor:
+                                          theme.colorScheme.onErrorContainer,
+                                      backgroundColor:
+                                          theme.colorScheme.errorContainer,
+                                    ),
+                                    icon: const Icon(Icons.delete_outline),
+                                    onPressed: () =>
+                                        controller.removeDevicesAction(
+                                          controller.notThisDevice,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          else
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Text(
+                                  L10n.of(context).noOtherDevicesFound,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  }
+                  i--;
+                  return UserDeviceListItem(
+                    controller.notThisDevice[i],
+                    rename: controller.renameDeviceAction,
+                    remove: (d) => controller.removeDevicesAction([d]),
+                    verify: controller.verifyDeviceAction,
+                    block: controller.blockDeviceAction,
+                    unblock: controller.unblockDeviceAction,
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

@@ -1344,7 +1344,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-13 10:04:22.715587",
+    "@@last_modified": "2026-07-20 10:57:49.779904",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -7308,8 +7308,6 @@
     "allow": "Tillad",
     "deny": "Afvis",
     "enabledRenewal": "Aktiver abonnement fornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Ændringer til dit abonnement kan tage et øjeblik at afspejle i appen.",
     "subscribeReadingAssistance": "Abonner for at låse op for beskedværktøjer",
     "aceDisplayName": "Achinese",
@@ -7584,14 +7582,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9308,7 +9298,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg taler allerede...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10575,5 +10564,56 @@
     "starsToUnlockObjectiveTitle": "Stjerner pr. mission",
     "starsToUnlockObjectiveDesc": "Angiv antallet af stjerner, der er nødvendige for at gennemføre hver mission",
     "maxStarsPerMissionWarning": "Dette kursus har missioner, hvor der kun kan optjenes {maxValue} stjerner. Indtast venligst et tal, der er mindre end eller lig med {maxValue}.",
-    "removedFromCourseError": "Du er blevet fjernet fra dette kursus. Kontakt din lærer."
+    "removedFromCourseError": "Du er blevet fjernet fra dette kursus. Kontakt din lærer.",
+    "endPractice": "Afslut øvelse",
+    "bodyLabel": "{page} indstillinger",
+    "openDM": "Åbn direkte besked",
+    "openNewTab": "Åbn i ny fane",
+    "viewProfileImageLabel": "Se profilbillede",
+    "profileImageLabel": "Profilbillede",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Farveliste",
+    "chatAppearanceStyleLabel": "Chatudseende med valgt stil",
+    "volumeLabel": "Lydstyrke",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Formular til ændring af adgangskode",
+    "searchLanguagesHint": "Søg sprog",
+    "searchCountriesHint": "Søg lande",
+    "searchVocabHint": "Søg ordforråd",
+    "searchUsersHint": "Søg brugere",
+    "searchMessagesHint": "Søg beskeder",
+    "searchChatsHint": "Søg chats",
+    "searchActivitiesHint": "Søg aktiviteter",
+    "appInTargetLanguageTitle": "Vis appen på det sprog, jeg lærer",
+    "appInTargetLanguageDesc": "Menuer, knapper og etiketter vises på dit målsprog for fordybelse. Ikke-oversat tekst falder tilbage til engelsk.",
+    "changePasswordSessionExpired": "Din session er udløbet. Log venligst ind igen.",
+    "constructUseSugDesc": "Accepterede forslag",
+    "mostPopular": "Mest populære",
+    "mostSavings": "Størst besparelse",
+    "enterDiscountCode": "Indtast rabatkode",
+    "yourPlan": "Din plan",
+    "subscriptionRenewsOn": "Fornyes den {date}",
+    "subscriptionEndsOn": "Slutter den {date}",
+    "promoSubscription": "Kampagneabonnement",
+    "seatSubscription": "Institutionel plads",
+    "lifetimeSubscription": "Livstidsabonnement",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Du har en gratis prøveperiode",
+    "manage": "Administrer",
+    "subscriptionHistory": "Abonnementshistorik",
+    "history": "Historik",
+    "noPaymentHistoryFound": "Ingen betalingshistorik fundet",
+    "cancelAnytime": "Annuller når som helst i abonnementsindstillinger",
+    "pricePerMonth": "{price}/måned",
+    "pricePerYear": "{price}/år",
+    "viewSubscriptionOptions": "Se abonnementsmuligheder",
+    "apply": "Anvend",
+    "continueToSubscribe": "Fortsæt til abonnement",
+    "invalidDiscountCode": "Ugyldig rabatkode",
+    "selectDiscountPlan": "Vælg rabatplan",
+    "discountApplied": "{discount} rabat anvendt",
+    "cancelDescriptionWithRenewalDate": "Dit abonnement vil være aktivt indtil fornyelsesdatoen ({date}) og derefter deaktiveres. Du beholder analyser, men kan ikke bruge pro-funktioner.",
+    "cancelDescriptionWithoutRenewalDate": "Dit abonnement vil være aktivt indtil fornyelsesdatoen og derefter deaktiveres. Du beholder analyser, men kan ikke bruge pro-funktioner.",
+    "change": "Skift",
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere din brugerkonto og annullere dit abonnement. Dette kan ikke fortrydes! Er du sikker?"
 }

@@ -1334,7 +1334,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-13 10:06:58.379668",
+    "@@last_modified": "2026-07-20 10:58:31.526486",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -7338,8 +7338,6 @@
     "allow": "అనుమతించు",
     "deny": "అంగీకరించు",
     "enabledRenewal": "సబ్‌స్క్రిప్షన్ పునరుద్ధరణను ప్రారంభించు",
-    "subscriptionEndsOn": "సబ్‌స్క్రిప్షన్ ముగుస్తుంది",
-    "subscriptionRenewsOn": "సబ్‌స్క్రిప్షన్ పునరుద్ధరించబడుతుంది",
     "waitForSubscriptionChanges": "మీ సబ్‌స్క్రిప్షన్‌లో మార్పులు యాప్‌లో ప్రతిబింబించడానికి కొంత సమయం పడవచ్చు.",
     "subscribeReadingAssistance": "సందేశం సాధనాలను అన్లాక్ చేయడానికి సబ్‌స్క్రైబ్ చేయండి",
     "aceDisplayName": "అచినీస్",
@@ -7614,14 +7612,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9338,7 +9328,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "నేను నేర్చుకుంటున్నాను...",
     "alreadySpeak": "నేను ఇప్పటికే మాట్లాడుతున్నాను...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10605,5 +10594,56 @@
     "starsToUnlockObjectiveTitle": "మిషన్‌కు నక్షత్రాలు",
     "starsToUnlockObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన నక్షత్రాల సంఖ్యను సెట్ చేయండి",
     "maxStarsPerMissionWarning": "ఈ కోర్సులో {maxValue} నక్షత్రాలు మాత్రమే సంపాదించగల మిషన్లు ఉన్నాయి. దయచేసి {maxValue} లేదా అంతకంటే తక్కువ సంఖ్యను నమోదు చేయండి.",
-    "removedFromCourseError": "మీరు ఈ కోర్సు నుండి తీసివేయబడ్డారు. మీ టీచర్‌ను సంప్రదించండి."
+    "removedFromCourseError": "మీరు ఈ కోర్సు నుండి తీసివేయబడ్డారు. మీ టీచర్‌ను సంప్రదించండి.",
+    "endPractice": "అభ్యాసం ముగించు",
+    "bodyLabel": "{page} ఎంపికలు",
+    "openDM": "ప్రత్యక్ష సందేశాన్ని తెరవండి",
+    "openNewTab": "కొత్త ట్యాబ్‌లో తెరవండి",
+    "viewProfileImageLabel": "ప్రొఫైల్ చిత్రాన్ని వీక్షించండి",
+    "profileImageLabel": "ప్రొఫైల్ చిత్రం",
+    "actionsLabel": "చర్యలు",
+    "colorListLabel": "రంగుల జాబితా",
+    "chatAppearanceStyleLabel": "ఎంచుకున్న శైలితో చాట్ ప్రదర్శన",
+    "volumeLabel": "వాల్యూమ్",
+    "listLabel": "{description} జాబితా",
+    "passwordFormLabel": "పాస్‌వర్డ్ మార్చు ఫారం",
+    "searchLanguagesHint": "భాషలను వెతకండి",
+    "searchCountriesHint": "దేశాలను వెతకండి",
+    "searchVocabHint": "పదజాలాన్ని వెతకండి",
+    "searchUsersHint": "వినియోగదారులను వెతకండి",
+    "searchMessagesHint": "సందేశాలను వెతకండి",
+    "searchChatsHint": "చాట్‌లను వెతకండి",
+    "searchActivitiesHint": "కార్యకలాపాలను వెతకండి",
+    "appInTargetLanguageTitle": "నేను నేర్చుకుంటున్న భాషలో యాప్‌ను చూపించు",
+    "appInTargetLanguageDesc": "మెనూలు, బటన్‌లు మరియు లేబుల్‌లు లీనం అవ్వడానికి మీరు నేర్చుకుంటున్న భాషలో కనిపిస్తాయి. అనువదించబడని వచనం ఇంగ్లీషుకు తిరిగి వస్తుంది.",
+    "changePasswordSessionExpired": "మీ సెషన్ గడువు ముగిసింది. దయచేసి మళ్ళీ లాగిన్ అవ్వండి.",
+    "constructUseSugDesc": "ఆమోదించబడిన సూచనలు",
+    "mostPopular": "అత్యంత ప్రజాదరణ పొందినవి",
+    "mostSavings": "అత్యధిక పొదుపు",
+    "enterDiscountCode": "డిస్కౌంట్ కోడ్‌ను నమోదు చేయండి",
+    "yourPlan": "మీ ప్లాన్",
+    "subscriptionRenewsOn": "{date}న పునరుద్ధరించబడుతుంది",
+    "subscriptionEndsOn": "{date}న ముగుస్తుంది",
+    "promoSubscription": "ప్రచార సబ్‌స్క్రిప్షన్",
+    "seatSubscription": "సంస్థాగత సీటు",
+    "lifetimeSubscription": "జీవితకాల సబ్‌స్క్రిప్షన్",
+    "freeSubscription": "ఉచితం",
+    "freeTrialDescription": "మీకు ఉచిత ట్రయల్ ఉంది",
+    "manage": "నిర్వహించు",
+    "subscriptionHistory": "సబ్‌స్క్రిప్షన్ చరిత్ర",
+    "history": "చరిత్ర",
+    "noPaymentHistoryFound": "చెల్లింపు చరిత్ర కనుగొనబడలేదు",
+    "cancelAnytime": "సబ్‌స్క్రిప్షన్ సెట్టింగ్‌లలో ఎప్పుడైనా రద్దు చేయండి",
+    "pricePerMonth": "{price}/నెల",
+    "pricePerYear": "{price}/సంవత్సరం",
+    "viewSubscriptionOptions": "సబ్‌స్క్రిప్షన్ ఎంపికలను వీక్షించండి",
+    "apply": "వర్తించు",
+    "continueToSubscribe": "సబ్‌స్క్రైబ్ చేయడానికి కొనసాగించు",
+    "invalidDiscountCode": "చెల్లని డిస్కౌంట్ కోడ్",
+    "selectDiscountPlan": "డిస్కౌంట్ ప్లాన్‌ను ఎంచుకోండి",
+    "discountApplied": "{discount} డిస్కౌంట్ వర్తించబడింది",
+    "cancelDescriptionWithRenewalDate": "మీ సబ్‌స్క్రిప్షన్ పునరుద్ధరణ తేదీ ({date}) వరకు సక్రియంగా ఉంటుంది, ఆపై నిష్క్రియం అవుతుంది. మీరు విశ్లేషణలను నిలుపుకుంటారు కానీ ప్రో ఫీచర్‌లను ఉపయోగించలేరు.",
+    "cancelDescriptionWithoutRenewalDate": "మీ సబ్‌స్క్రిప్షన్ పునరుద్ధరణ తేదీ వరకు సక్రియంగా ఉంటుంది, ఆపై నిష్క్రియం అవుతుంది. మీరు విశ్లేషణలను నిలుపుకుంటారు కానీ ప్రో ఫీచర్‌లను ఉపయోగించలేరు.",
+    "change": "మార్చు",
+    "deactivateSubscribedAccountWarning": "ఇది మీ వినియోగదారు ఖాతాను నిష్క్రియం చేస్తుంది మరియు మీ సబ్‌స్క్రిప్షన్‌ను రద్దు చేస్తుంది. ఇది రద్దు చేయబడదు! మీరు ఖచ్చితంగా ఉన్నారా?"
 }

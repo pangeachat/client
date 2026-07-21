@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:14.084787",
+    "@@last_modified": "2026-07-20 10:58:30.858706",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -6484,8 +6484,6 @@
     "allow": "அனுமதிக்கவும்",
     "deny": "மறுக்கவும்",
     "enabledRenewal": "சந்தா புதுப்பிப்பை செயல்படுத்தவும்",
-    "subscriptionEndsOn": "சந்தா முடிவடைகிறது",
-    "subscriptionRenewsOn": "சந்தா புதுப்பிக்கப்படுகிறது",
     "waitForSubscriptionChanges": "உங்கள் சந்தாவிற்கு மாற்றங்கள் செயலியில் பிரதிபலிக்க சில நேரம் ஆகலாம்.",
     "subscribeReadingAssistance": "செய்தி கருவிகளை திறக்க சந்தா செய்யவும்",
     "aceDisplayName": "அசினீஸ்",
@@ -6760,14 +6758,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8474,7 +8464,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "நான் கற்றுக்கொள்கிறேன்...",
     "alreadySpeak": "நான் ஏற்கனவே பேசுகிறேன்...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9741,5 +9730,56 @@
     "starsToUnlockObjectiveTitle": "ஒரு பணிக்கு நட்சத்திரங்கள்",
     "starsToUnlockObjectiveDesc": "ஒவ்வொரு பணியையும் முடிக்கத் தேவையான நட்சத்திரங்களின் எண்ணிக்கையை அமைக்கவும்",
     "maxStarsPerMissionWarning": "இந்த பாடத்திட்டத்தில் {maxValue} நட்சத்திரங்கள் மட்டுமே பெறக்கூடிய பணிகள் உள்ளன. தயவுசெய்து {maxValue} அல்லது அதற்குக் குறைவான எண்ணை உள்ளிடவும்.",
-    "removedFromCourseError": "நீங்கள் இந்தப் பாடத்திட்டத்திலிருந்து நீக்கப்பட்டுள்ளீர்கள். உங்கள் ஆசிரியரைத் தொடர்பு கொள்ளவும்."
+    "removedFromCourseError": "நீங்கள் இந்தப் பாடத்திட்டத்திலிருந்து நீக்கப்பட்டுள்ளீர்கள். உங்கள் ஆசிரியரைத் தொடர்பு கொள்ளவும்.",
+    "endPractice": "பயிற்சியை முடி",
+    "bodyLabel": "{page} விருப்பங்கள்",
+    "openDM": "நேரடி செய்தியைத் திற",
+    "openNewTab": "புதிய தாவலில் திற",
+    "viewProfileImageLabel": "சுயவிவரப் படத்தைப் பார்",
+    "profileImageLabel": "சுயவிவரப் படம்",
+    "actionsLabel": "செயல்கள்",
+    "colorListLabel": "வண்ணப் பட்டியல்",
+    "chatAppearanceStyleLabel": "தேர்ந்தெடுத்த பாணியுடன் அரட்டை தோற்றம்",
+    "volumeLabel": "ஒலி அளவு",
+    "listLabel": "{description} பட்டியல்",
+    "passwordFormLabel": "கடவுச்சொல் மாற்றப் படிவம்",
+    "searchLanguagesHint": "மொழிகளைத் தேடு",
+    "searchCountriesHint": "நாடுகளைத் தேடு",
+    "searchVocabHint": "சொற்களஞ்சியத்தைத் தேடு",
+    "searchUsersHint": "பயனர்களைத் தேடு",
+    "searchMessagesHint": "செய்திகளைத் தேடு",
+    "searchChatsHint": "அரட்டைகளைத் தேடு",
+    "searchActivitiesHint": "செயல்பாடுகளைத் தேடு",
+    "appInTargetLanguageTitle": "நான் கற்கும் மொழியில் பயன்பாட்டைக் காட்டு",
+    "appInTargetLanguageDesc": "மெனுக்கள், பொத்தான்கள் மற்றும் லேபிள்கள் நீங்கள் கற்கும் மொழியில் தோன்றும். மொழிபெயர்க்கப்படாத உரை ஆங்கிலத்திற்குத் திரும்பும்.",
+    "changePasswordSessionExpired": "உங்கள் அமர்வு காலாவதியாகிவிட்டது. மீண்டும் உள்நுழையவும்.",
+    "constructUseSugDesc": "ஏற்றுக்கொள்ளப்பட்ட பரிந்துரைகள்",
+    "mostPopular": "மிகவும் பிரபலமானது",
+    "mostSavings": "அதிக சேமிப்புகள்",
+    "enterDiscountCode": "தள்ளுபடி குறியீட்டை உள்ளிடவும்",
+    "yourPlan": "உங்கள் திட்டம்",
+    "subscriptionRenewsOn": "{date} அன்று புதுப்பிக்கப்படும்",
+    "subscriptionEndsOn": "{date} அன்று முடிவடையும்",
+    "promoSubscription": "விளம்பரச் சந்தா",
+    "seatSubscription": "நிறுவன இருக்கை",
+    "lifetimeSubscription": "வாழ்நாள் சந்தா",
+    "freeSubscription": "இலவசம்",
+    "freeTrialDescription": "உங்களுக்கு இலவச சோதனை உள்ளது",
+    "manage": "நிர்வகி",
+    "subscriptionHistory": "சந்தா வரலாறு",
+    "history": "வரலாறு",
+    "noPaymentHistoryFound": "கட்டண வரலாறு எதுவும் கண்டறியப்படவில்லை",
+    "cancelAnytime": "சந்தா அமைப்புகளில் எந்த நேரத்திலும் ரத்துசெய்",
+    "pricePerMonth": "{price}/மாதம்",
+    "pricePerYear": "{price}/ஆண்டு",
+    "viewSubscriptionOptions": "சந்தா விருப்பங்களைப் பார்க்கவும்",
+    "apply": "பயன்படுத்து",
+    "continueToSubscribe": "சந்தா பெற தொடரவும்",
+    "invalidDiscountCode": "தவறான தள்ளுபடி குறியீடு",
+    "selectDiscountPlan": "தள்ளுபடி திட்டத்தைத் தேர்ந்தெடுக்கவும்",
+    "discountApplied": "{discount} தள்ளுபடி பயன்படுத்தப்பட்டது",
+    "cancelDescriptionWithRenewalDate": "உங்கள் சந்தா புதுப்பிக்கும் தேதி ({date}) வரை செயலில் இருக்கும், பின்னர் செயலிழக்கப்படும். நீங்கள் பகுப்பாய்வுகளைத் தக்கவைத்துக்கொள்வீர்கள், ஆனால் புரோ அம்சங்களைப் பயன்படுத்த முடியாது.",
+    "cancelDescriptionWithoutRenewalDate": "உங்கள் சந்தா புதுப்பிக்கும் தேதி வரை செயலில் இருக்கும், பின்னர் செயலிழக்கப்படும். நீங்கள் பகுப்பாய்வுகளைத் தக்கவைத்துக்கொள்வீர்கள், ஆனால் புரோ அம்சங்களைப் பயன்படுத்த முடியாது.",
+    "change": "மாற்று",
+    "deactivateSubscribedAccountWarning": "இது உங்கள் பயனர் கணக்கை செயலிழக்கச் செய்து உங்கள் சந்தாவை ரத்து செய்யும். இதைச் செயல்தவிர்க்க முடியாது! நீங்கள் உறுதியாக இருக்கிறீர்களா?"
 }

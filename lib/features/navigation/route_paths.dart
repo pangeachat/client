@@ -94,4 +94,14 @@ abstract class PRoutes {
 
   /// Whether [segment] is a world-object id rather than a literal route.
   static bool isWorldObjectId(String segment) => _uuidRegExp.hasMatch(segment);
+
+  /// A course join code — seven lowercase-alphanumeric characters with at
+  /// least one digit, the shape the server's `generate_room_code` produces.
+  /// The digit requirement is what lets a bare `/<code>` be told apart from a
+  /// literal single-segment route (`/chats`, `/world`), which never carries a
+  /// digit — so the inbound course link is just `app.pangea.chat/<code>`.
+  static final RegExp _joinCodeRegExp = RegExp(r'^(?=.*\d)[a-z0-9]{7}$');
+
+  /// Whether [segment] is a course join code rather than a literal route.
+  static bool isJoinCode(String segment) => _joinCodeRegExp.hasMatch(segment);
 }

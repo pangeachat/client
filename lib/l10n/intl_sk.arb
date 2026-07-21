@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-13 10:04:45.764465",
+    "@@last_modified": "2026-07-20 10:58:25.918126",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -7333,8 +7333,6 @@
     "allow": "Povoliť",
     "deny": "Odmietnuť",
     "enabledRenewal": "Povoliť obnovenie predplatného",
-    "subscriptionEndsOn": "Predplatné končí dňa",
-    "subscriptionRenewsOn": "Predplatné sa obnoví dňa",
     "waitForSubscriptionChanges": "Zmeny vo vašom predplatnom sa môžu chvíľu odrážať v aplikácii.",
     "subscribeReadingAssistance": "Prihláste sa na odomknutie nástrojov na správu správ",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9333,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učím sa...",
     "alreadySpeak": "Už hovorím...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10600,5 +10589,56 @@
     "starsToUnlockObjectiveTitle": "Hviezdy za misiu",
     "starsToUnlockObjectiveDesc": "Nastavte počet hviezd potrebných na dokončenie každej misie",
     "maxStarsPerMissionWarning": "Tento kurz má misie, kde je možné získať iba {maxValue} hviezd. Zadajte číslo menšie alebo rovné {maxValue}.",
-    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa."
+    "removedFromCourseError": "Boli ste odstránení z tohto kurzu. Kontaktujte svojho učiteľa.",
+    "endPractice": "Ukončiť cvičenie",
+    "bodyLabel": "Možnosti {page}",
+    "openDM": "Otvoriť priamu správu",
+    "openNewTab": "Otvoriť na novej karte",
+    "viewProfileImageLabel": "Zobraziť profilový obrázok",
+    "profileImageLabel": "Profilový obrázok",
+    "actionsLabel": "Akcie",
+    "colorListLabel": "Zoznam farieb",
+    "chatAppearanceStyleLabel": "Vzhľad chatu so zvoleným štýlom",
+    "volumeLabel": "Hlasitosť",
+    "listLabel": "Zoznam {description}",
+    "passwordFormLabel": "Formulár na zmenu hesla",
+    "searchLanguagesHint": "Hľadať jazyky",
+    "searchCountriesHint": "Hľadať krajiny",
+    "searchVocabHint": "Hľadať slovnú zásobu",
+    "searchUsersHint": "Hľadať používateľov",
+    "searchMessagesHint": "Hľadať správy",
+    "searchChatsHint": "Hľadať chaty",
+    "searchActivitiesHint": "Hľadať aktivity",
+    "appInTargetLanguageTitle": "Zobraziť aplikáciu v jazyku, ktorý sa učím",
+    "appInTargetLanguageDesc": "Ponuky, tlačidlá a štítky sa zobrazia vo vašom cieľovom jazyku pre lepšie ponorenie. Nepreložený text sa vráti do angličtiny.",
+    "changePasswordSessionExpired": "Vaša relácia vypršala. Prihláste sa znova.",
+    "constructUseSugDesc": "Prijaté návrhy",
+    "mostPopular": "Najpopulárnejšie",
+    "mostSavings": "Najväčšie úspory",
+    "enterDiscountCode": "Zadajte zľavový kód",
+    "yourPlan": "Váš plán",
+    "subscriptionRenewsOn": "Obnovuje sa dňa {date}",
+    "subscriptionEndsOn": "Končí dňa {date}",
+    "promoSubscription": "Propagačné predplatné",
+    "seatSubscription": "Inštitucionálne miesto",
+    "lifetimeSubscription": "Doživotné predplatné",
+    "freeSubscription": "ZDARMA",
+    "freeTrialDescription": "Máte bezplatnú skúšobnú verziu",
+    "manage": "Spravovať",
+    "subscriptionHistory": "História predplatného",
+    "history": "História",
+    "noPaymentHistoryFound": "Nenašla sa žiadna história platieb",
+    "cancelAnytime": "Zrušiť kedykoľvek v nastaveniach predplatného",
+    "pricePerMonth": "{price}/mesiac",
+    "pricePerYear": "{price}/rok",
+    "viewSubscriptionOptions": "Zobraziť možnosti predplatného",
+    "apply": "Použiť",
+    "continueToSubscribe": "Pokračovať v predplatení",
+    "invalidDiscountCode": "Neplatný zľavový kód",
+    "selectDiscountPlan": "Vybrať zľavový plán",
+    "discountApplied": "Zľava {discount} uplatnená",
+    "cancelDescriptionWithRenewalDate": "Vaše predplatné bude aktívne do dátumu obnovenia ({date}), potom sa deaktivuje. Analytické údaje si ponecháte, ale nebudete môcť používať profesionálne funkcie.",
+    "cancelDescriptionWithoutRenewalDate": "Vaše predplatné bude aktívne do dátumu obnovenia, potom sa deaktivuje. Analytické údaje si ponecháte, ale nebudete môcť používať profesionálne funkcie.",
+    "change": "Zmeniť",
+    "deactivateSubscribedAccountWarning": "Týmto sa deaktivuje váš používateľský účet a zruší sa vaše predplatné. Toto nemožno vrátiť späť! Ste si istí?"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-13 10:06:46.719731",
+    "@@last_modified": "2026-07-20 10:57:45.139808",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -6692,8 +6692,6 @@
     "allow": "السماح",
     "deny": "رفض",
     "enabledRenewal": "تفعيل تجديد الاشتراك",
-    "subscriptionEndsOn": "ينتهي الاشتراك في",
-    "subscriptionRenewsOn": "يتجدد الاشتراك في",
     "waitForSubscriptionChanges": "قد تستغرق التغييرات في اشتراكك بعض الوقت لتظهر في التطبيق.",
     "subscribeReadingAssistance": "اشترك لفتح أدوات الرسائل",
     "aceDisplayName": "أكينيس",
@@ -6968,14 +6966,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8692,7 +8682,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "أنا أتعلم...",
     "alreadySpeak": "أنا أتحدث بالفعل...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9955,5 +9944,56 @@
     "starsToUnlockObjectiveTitle": "النجوم لكل مهمة",
     "starsToUnlockObjectiveDesc": "حدد عدد النجوم المطلوبة لإكمال كل مهمة",
     "maxStarsPerMissionWarning": "تحتوي هذه الدورة التدريبية على مهام لا يمكن الحصول فيها إلا على {maxValue} نجوم. يرجى إدخال رقم أقل من أو يساوي {maxValue}.",
-    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك."
+    "removedFromCourseError": "لقد تمت إزالتك من هذه الدورة التدريبية. اتصل بمعلمك.",
+    "endPractice": "إنهاء التدريب",
+    "bodyLabel": "خيارات {page}",
+    "openDM": "فتح رسالة مباشرة",
+    "openNewTab": "فتح في علامة تبويب جديدة",
+    "viewProfileImageLabel": "عرض صورة الملف الشخصي",
+    "profileImageLabel": "صورة الملف الشخصي",
+    "actionsLabel": "الإجراءات",
+    "colorListLabel": "قائمة الألوان",
+    "chatAppearanceStyleLabel": "مظهر الدردشة بالنمط المختار",
+    "volumeLabel": "مستوى الصوت",
+    "listLabel": "قائمة {description}",
+    "passwordFormLabel": "نموذج تغيير كلمة المرور",
+    "searchLanguagesHint": "البحث عن اللغات",
+    "searchCountriesHint": "البحث عن البلدان",
+    "searchVocabHint": "البحث عن المفردات",
+    "searchUsersHint": "البحث عن المستخدمين",
+    "searchMessagesHint": "البحث عن الرسائل",
+    "searchChatsHint": "البحث عن الدردشات",
+    "searchActivitiesHint": "البحث عن الأنشطة",
+    "appInTargetLanguageTitle": "عرض التطبيق باللغة التي أتعلمها",
+    "appInTargetLanguageDesc": "تظهر القوائم والأزرار والتسميات بلغتك المستهدفة للانغماس. يعود النص غير المترجم إلى اللغة الإنجليزية.",
+    "changePasswordSessionExpired": "انتهت صلاحية جلستك. الرجاء تسجيل الدخول مرة أخرى.",
+    "constructUseSugDesc": "الاقتراحات المقبولة",
+    "mostPopular": "الأكثر شعبية",
+    "mostSavings": "أكبر توفير",
+    "enterDiscountCode": "أدخل رمز الخصم",
+    "yourPlan": "خطتك",
+    "subscriptionRenewsOn": "يتجدد في {date}",
+    "subscriptionEndsOn": "ينتهي في {date}",
+    "promoSubscription": "اشتراك ترويجي",
+    "seatSubscription": "مقعد مؤسسي",
+    "lifetimeSubscription": "اشتراك مدى الحياة",
+    "freeSubscription": "مجاني",
+    "freeTrialDescription": "لديك فترة تجريبية مجانية",
+    "manage": "إدارة",
+    "subscriptionHistory": "سجل الاشتراك",
+    "history": "السجل",
+    "noPaymentHistoryFound": "لم يتم العثور على سجل دفع",
+    "cancelAnytime": "يمكن الإلغاء في أي وقت من إعدادات الاشتراك",
+    "pricePerMonth": "{price}/الشهر",
+    "pricePerYear": "{price}/السنة",
+    "viewSubscriptionOptions": "عرض خيارات الاشتراك",
+    "apply": "تطبيق",
+    "continueToSubscribe": "متابعة الاشتراك",
+    "invalidDiscountCode": "رمز خصم غير صالح",
+    "selectDiscountPlan": "اختر خطة الخصم",
+    "discountApplied": "تم تطبيق خصم {discount}",
+    "cancelDescriptionWithRenewalDate": "سيكون اشتراكك نشطًا حتى تاريخ تجديده ({date})، ثم يتم إلغاء تنشيطه. ستحتفظ بالتحليلات ولكن لن تتمكن من استخدام الميزات الاحترافية.",
+    "cancelDescriptionWithoutRenewalDate": "سيكون اشتراكك نشطًا حتى تاريخ تجديده، ثم يتم إلغاء تنشيطه. ستحتفظ بالتحليلات ولكن لن تتمكن من استخدام الميزات الاحترافية.",
+    "change": "تغيير",
+    "deactivateSubscribedAccountWarning": "سيؤدي هذا إلى إلغاء تنشيط حساب المستخدم الخاص بك وإلغاء اشتراكك. لا يمكن التراجع عن هذا! هل أنت متأكد؟"
 }

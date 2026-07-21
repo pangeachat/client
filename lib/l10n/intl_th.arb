@@ -3105,7 +3105,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-13 10:06:17.363303",
+    "@@last_modified": "2026-07-20 10:58:31.474105",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7014,8 +7014,6 @@
     "allow": "อนุญาต",
     "deny": "ปฏิเสธ",
     "enabledRenewal": "เปิดใช้งานการต่ออายุการสมัครสมาชิก",
-    "subscriptionEndsOn": "การสมัครสมาชิกสิ้นสุดในวันที่",
-    "subscriptionRenewsOn": "การสมัครสมาชิกต่ออายุในวันที่",
     "waitForSubscriptionChanges": "การเปลี่ยนแปลงการสมัครสมาชิกของคุณอาจใช้เวลาสักครู่ในการสะท้อนในแอป",
     "subscribeReadingAssistance": "สมัครสมาชิกเพื่อปลดล็อกเครื่องมือข้อความ",
     "aceDisplayName": "Achinese",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9014,7 +9004,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "ฉันกำลังเรียนรู้...",
     "alreadySpeak": "ฉันพูดได้แล้ว...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10281,5 +10270,56 @@
     "starsToUnlockObjectiveTitle": "ดาวต่อภารกิจ",
     "starsToUnlockObjectiveDesc": "กำหนดจำนวนดาวที่จำเป็นต่อการทำแต่ละภารกิจให้สำเร็จ",
     "maxStarsPerMissionWarning": "คอร์สนี้มีภารกิจที่สามารถได้รับดาวสูงสุดเพียง {maxValue} ดวงเท่านั้น โปรดป้อนตัวเลขที่น้อยกว่าหรือเท่ากับ {maxValue}",
-    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ"
+    "removedFromCourseError": "คุณถูกนำออกจากคอร์สนี้แล้ว โปรดติดต่อครูผู้สอนของคุณ",
+    "endPractice": "จบการฝึก",
+    "bodyLabel": "ตัวเลือก{page}",
+    "openDM": "เปิดข้อความส่วนตัว",
+    "openNewTab": "เปิดในแท็บใหม่",
+    "viewProfileImageLabel": "ดูรูปโปรไฟล์",
+    "profileImageLabel": "รูปโปรไฟล์",
+    "actionsLabel": "การดำเนินการ",
+    "colorListLabel": "รายการสี",
+    "chatAppearanceStyleLabel": "ลักษณะการแชทด้วยสไตล์ที่เลือก",
+    "volumeLabel": "ระดับเสียง",
+    "listLabel": "รายการ{description}",
+    "passwordFormLabel": "แบบฟอร์มเปลี่ยนรหัสผ่าน",
+    "searchLanguagesHint": "ค้นหาภาษา",
+    "searchCountriesHint": "ค้นหาประเทศ",
+    "searchVocabHint": "ค้นหาคำศัพท์",
+    "searchUsersHint": "ค้นหาผู้ใช้",
+    "searchMessagesHint": "ค้นหาข้อความ",
+    "searchChatsHint": "ค้นหาแชท",
+    "searchActivitiesHint": "ค้นหากิจกรรม",
+    "appInTargetLanguageTitle": "แสดงแอปในภาษาที่ฉันกำลังเรียนรู้",
+    "appInTargetLanguageDesc": "เมนู ปุ่ม และป้ายกำกับจะแสดงเป็นภาษาเป้าหมายของคุณเพื่อการดื่มด่ำ ข้อความที่ไม่ได้แปลจะกลับไปเป็นภาษาอังกฤษ",
+    "changePasswordSessionExpired": "เซสชันของคุณหมดอายุแล้ว โปรดเข้าสู่ระบบอีกครั้ง",
+    "constructUseSugDesc": "คำแนะนำที่ยอมรับ",
+    "mostPopular": "เป็นที่นิยมมากที่สุด",
+    "mostSavings": "ประหยัดที่สุด",
+    "enterDiscountCode": "กรอกรหัสส่วนลด",
+    "yourPlan": "แผนของคุณ",
+    "subscriptionRenewsOn": "ต่ออายุในวันที่ {date}",
+    "subscriptionEndsOn": "สิ้นสุดในวันที่ {date}",
+    "promoSubscription": "การสมัครสมาชิกโปรโมชัน",
+    "seatSubscription": "ที่นั่งสถาบัน",
+    "lifetimeSubscription": "การสมัครสมาชิกตลอดชีพ",
+    "freeSubscription": "ฟรี",
+    "freeTrialDescription": "คุณมีการทดลองใช้ฟรี",
+    "manage": "จัดการ",
+    "subscriptionHistory": "ประวัติการสมัครสมาชิก",
+    "history": "ประวัติ",
+    "noPaymentHistoryFound": "ไม่พบประวัติการชำระเงิน",
+    "cancelAnytime": "ยกเลิกได้ตลอดเวลาในการตั้งค่าการสมัครสมาชิก",
+    "pricePerMonth": "{price}/เดือน",
+    "pricePerYear": "{price}/ปี",
+    "viewSubscriptionOptions": "ดูตัวเลือกการสมัครสมาชิก",
+    "apply": "ใช้",
+    "continueToSubscribe": "ดำเนินการสมัครสมาชิกต่อ",
+    "invalidDiscountCode": "รหัสส่วนลดไม่ถูกต้อง",
+    "selectDiscountPlan": "เลือกแผนส่วนลด",
+    "discountApplied": "ใช้ส่วนลด {discount} แล้ว",
+    "cancelDescriptionWithRenewalDate": "การสมัครสมาชิกของคุณจะใช้งานได้จนถึงวันต่ออายุ ({date}) จากนั้นจะถูกปิดใช้งาน คุณจะยังคงเก็บข้อมูลวิเคราะห์ไว้ได้ แต่จะไม่สามารถใช้คุณสมบัติโปรได้",
+    "cancelDescriptionWithoutRenewalDate": "การสมัครสมาชิกของคุณจะใช้งานได้จนถึงวันต่ออายุ จากนั้นจะถูกปิดใช้งาน คุณจะยังคงเก็บข้อมูลวิเคราะห์ไว้ได้ แต่จะไม่สามารถใช้คุณสมบัติโปรได้",
+    "change": "เปลี่ยน",
+    "deactivateSubscribedAccountWarning": "การดำเนินการนี้จะปิดใช้งานบัญชีผู้ใช้ของคุณและยกเลิกการสมัครสมาชิกของคุณ ไม่สามารถย้อนกลับได้! คุณแน่ใจหรือไม่?"
 }

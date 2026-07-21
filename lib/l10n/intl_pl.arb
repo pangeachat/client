@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-13 10:07:51.564360",
+    "@@last_modified": "2026-07-20 10:58:21.752096",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -6477,8 +6477,6 @@
     "allow": "Zezwól",
     "deny": "Odmów",
     "enabledRenewal": "Włącz odnowienie subskrypcji",
-    "subscriptionEndsOn": "Subskrypcja kończy się",
-    "subscriptionRenewsOn": "Subskrypcja odnawia się",
     "waitForSubscriptionChanges": "Zmiany w subskrypcji mogą chwilę potrwać, zanim zostaną odzwierciedlone w aplikacji.",
     "subscribeReadingAssistance": "Subskrybuj, aby odblokować narzędzia do wiadomości",
     "aceDisplayName": "Achinese",
@@ -6753,14 +6751,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8467,7 +8457,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Uczę się...",
     "alreadySpeak": "Już mówię...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9734,5 +9723,56 @@
     "starsToUnlockObjectiveTitle": "Gwiazd na misję",
     "starsToUnlockObjectiveDesc": "Ustaw liczbę gwiazdek potrzebnych do ukończenia każdej misji",
     "maxStarsPerMissionWarning": "Ten kurs zawiera misje, w których można zdobyć tylko {maxValue} gwiazdek. Wprowadź liczbę mniejszą lub równą {maxValue}.",
-    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem."
+    "removedFromCourseError": "Zostałeś usunięty z tego kursu. Skontaktuj się ze swoim nauczycielem.",
+    "endPractice": "Zakończ ćwiczenie",
+    "bodyLabel": "Opcje {page}",
+    "openDM": "Otwórz wiadomość prywatną",
+    "openNewTab": "Otwórz w nowej karcie",
+    "viewProfileImageLabel": "Wyświetl zdjęcie profilowe",
+    "profileImageLabel": "Zdjęcie profilowe",
+    "actionsLabel": "Akcje",
+    "colorListLabel": "Lista kolorów",
+    "chatAppearanceStyleLabel": "Wygląd czatu z wybranym stylem",
+    "volumeLabel": "Głośność",
+    "listLabel": "Lista {description}",
+    "passwordFormLabel": "Formularz zmiany hasła",
+    "searchLanguagesHint": "Szukaj języków",
+    "searchCountriesHint": "Szukaj krajów",
+    "searchVocabHint": "Szukaj słownictwa",
+    "searchUsersHint": "Szukaj użytkowników",
+    "searchMessagesHint": "Szukaj wiadomości",
+    "searchChatsHint": "Szukaj czatów",
+    "searchActivitiesHint": "Szukaj aktywności",
+    "appInTargetLanguageTitle": "Pokaż aplikację w języku, którego się uczę",
+    "appInTargetLanguageDesc": "Menu, przyciski i etykiety wyświetlają się w Twoim języku docelowym, aby zapewnić pełne zanurzenie. Nieprzetłumaczony tekst zostanie wyświetlony w języku angielskim.",
+    "changePasswordSessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
+    "constructUseSugDesc": "Zaakceptowane sugestie",
+    "mostPopular": "Najpopularniejsze",
+    "mostSavings": "Największe oszczędności",
+    "enterDiscountCode": "Wprowadź kod rabatowy",
+    "yourPlan": "Twój plan",
+    "subscriptionRenewsOn": "Odnowienie {date}",
+    "subscriptionEndsOn": "Kończy się {date}",
+    "promoSubscription": "Subskrypcja promocyjna",
+    "seatSubscription": "Miejsce instytucjonalne",
+    "lifetimeSubscription": "Subskrypcja dożywotnia",
+    "freeSubscription": "BEZPŁATNIE",
+    "freeTrialDescription": "Masz bezpłatny okres próbny",
+    "manage": "Zarządzaj",
+    "subscriptionHistory": "Historia subskrypcji",
+    "history": "Historia",
+    "noPaymentHistoryFound": "Nie znaleziono historii płatności",
+    "cancelAnytime": "Anuluj w dowolnym momencie w ustawieniach subskrypcji",
+    "pricePerMonth": "{price}/miesiąc",
+    "pricePerYear": "{price}/rok",
+    "viewSubscriptionOptions": "Wyświetl opcje subskrypcji",
+    "apply": "Zastosuj",
+    "continueToSubscribe": "Kontynuuj subskrypcję",
+    "invalidDiscountCode": "Nieprawidłowy kod rabatowy",
+    "selectDiscountPlan": "Wybierz plan rabatowy",
+    "discountApplied": "Zastosowano zniżkę {discount}",
+    "cancelDescriptionWithRenewalDate": "Twoja subskrypcja będzie aktywna do daty jej odnowienia ({date}), a następnie zostanie dezaktywowana. Zachowasz dostęp do analityki, ale nie będziesz mógł korzystać z funkcji pro.",
+    "cancelDescriptionWithoutRenewalDate": "Twoja subskrypcja będzie aktywna do daty jej odnowienia, a następnie zostanie dezaktywowana. Zachowasz dostęp do analityki, ale nie będziesz mógł korzystać z funkcji pro.",
+    "change": "Zmień",
+    "deactivateSubscribedAccountWarning": "Spowoduje to dezaktywację Twojego konta użytkownika i anulowanie subskrypcji. Tej operacji nie można cofnąć! Czy na pewno chcesz to zrobić?"
 }

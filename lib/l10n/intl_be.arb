@@ -3560,7 +3560,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-13 10:06:05.770165",
+    "@@last_modified": "2026-07-20 10:57:46.110861",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6562,8 +6562,6 @@
     "allow": "Дазволіць",
     "deny": "Адмовіць",
     "enabledRenewal": "Уключыць аднаўленне падпіскі",
-    "subscriptionEndsOn": "Падпіска заканчваецца",
-    "subscriptionRenewsOn": "Падпіска аднаўляецца",
     "waitForSubscriptionChanges": "Змены ў вашай падпісцы могуць заняць некаторы час, каб адлюстравацца ў прыкладанні.",
     "subscribeReadingAssistance": "Падпісацца, каб разблакаваць інструменты паведамленняў",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8396,7 +8386,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Я вывучаю...",
     "alreadySpeak": "Я ўжо размаўляю...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9663,5 +9652,56 @@
     "starsToUnlockObjectiveTitle": "Зоркі за місію",
     "starsToUnlockObjectiveDesc": "Усталюйце колькасць зорак, неабходных для выканання кожнай місіі",
     "maxStarsPerMissionWarning": "Гэты курс мае місіі, дзе можна зарабіць толькі {maxValue} зорак. Калі ласка, увядзіце лік, меншы або роўны {maxValue}.",
-    "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка."
+    "removedFromCourseError": "Вы былі выдалены з гэтага курса. Звярніцеся да свайго настаўніка.",
+    "endPractice": "Завяршыць практыкаванне",
+    "bodyLabel": "Параметры {page}",
+    "openDM": "Адкрыць асабістае паведамленне",
+    "openNewTab": "Адкрыць у новай укладцы",
+    "viewProfileImageLabel": "Праглядзець выяву профілю",
+    "profileImageLabel": "Выява профілю",
+    "actionsLabel": "Дзеянні",
+    "colorListLabel": "Спіс колераў",
+    "chatAppearanceStyleLabel": "Выгляд чата з абраным стылем",
+    "volumeLabel": "Гучнасць",
+    "listLabel": "Спіс {description}",
+    "passwordFormLabel": "Форма змены пароля",
+    "searchLanguagesHint": "Пошук моў",
+    "searchCountriesHint": "Пошук краін",
+    "searchVocabHint": "Пошук слоўніка",
+    "searchUsersHint": "Пошук карыстальнікаў",
+    "searchMessagesHint": "Пошук паведамленняў",
+    "searchChatsHint": "Пошук чатаў",
+    "searchActivitiesHint": "Пошук дзеянняў",
+    "appInTargetLanguageTitle": "Паказваць праграму на мове, якую я вывучаю",
+    "appInTargetLanguageDesc": "Меню, кнопкі і надпісы адлюстроўваюцца на вашай мэтавай мове для паглыблення. Неперакладзены тэкст вяртаецца да англійскай мовы.",
+    "changePasswordSessionExpired": "Ваша сесія скончылася. Калі ласка, увайдзіце зноў.",
+    "constructUseSugDesc": "Прынятыя прапановы",
+    "mostPopular": "Самы папулярны",
+    "mostSavings": "Найбольшая эканомія",
+    "enterDiscountCode": "Увядзіце код зніжкі",
+    "yourPlan": "Ваш план",
+    "subscriptionRenewsOn": "Абнаўляецца {date}",
+    "subscriptionEndsOn": "Заканчваецца {date}",
+    "promoSubscription": "Рэкламная падпіска",
+    "seatSubscription": "Інстытуцыянальнае месца",
+    "lifetimeSubscription": "Пажыццёвая падпіска",
+    "freeSubscription": "БЯСПЛАТНА",
+    "freeTrialDescription": "У вас ёсць бясплатны пробны перыяд",
+    "manage": "Кіраваць",
+    "subscriptionHistory": "Гісторыя падпісак",
+    "history": "Гісторыя",
+    "noPaymentHistoryFound": "Гісторыя плацяжоў не знойдзена",
+    "cancelAnytime": "Адмяніць у любы час у наладах падпіскі",
+    "pricePerMonth": "{price}/месяц",
+    "pricePerYear": "{price}/год",
+    "viewSubscriptionOptions": "Праглядзець варыянты падпіскі",
+    "apply": "Ужыць",
+    "continueToSubscribe": "Працягнуць падпіску",
+    "invalidDiscountCode": "Няправільны код зніжкі",
+    "selectDiscountPlan": "Выберыце план са зніжкай",
+    "discountApplied": "Зніжка {discount} прыменена",
+    "cancelDescriptionWithRenewalDate": "Ваша падпіска будзе актыўнай да даты яе абнаўлення ({date}), затым дэактывуецца. Вы захаваеце аналітыку, але не зможаце выкарыстоўваць прафесійныя функцыі.",
+    "cancelDescriptionWithoutRenewalDate": "Ваша падпіска будзе актыўнай да даты яе абнаўлення, затым дэактывуецца. Вы захаваеце аналітыку, але не зможаце выкарыстоўваць прафесійныя функцыі.",
+    "change": "Змяніць",
+    "deactivateSubscribedAccountWarning": "Гэта дэактывуе ваш уліковы запіс і адменіць вашу падпіску. Гэта нельга адмяніць! Вы ўпэўнены?"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:42.902939",
+    "@@last_modified": "2026-07-20 10:58:03.108598",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -6485,8 +6485,6 @@
     "allow": "Consenti",
     "deny": "Nega",
     "enabledRenewal": "Abilita il rinnovo dell'abbonamento",
-    "subscriptionEndsOn": "L'abbonamento scade il",
-    "subscriptionRenewsOn": "L'abbonamento si rinnova il",
     "waitForSubscriptionChanges": "Le modifiche al tuo abbonamento potrebbero richiedere un momento per riflettersi nell'app.",
     "subscribeReadingAssistance": "Abbonati per sbloccare gli strumenti di messaggistica",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6759,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8455,7 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Sto imparando...",
     "alreadySpeak": "Parlo già...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9722,5 +9711,56 @@
     "starsToUnlockObjectiveTitle": "Stelle per missione",
     "starsToUnlockObjectiveDesc": "Imposta il numero di stelle necessarie per completare ogni missione",
     "maxStarsPerMissionWarning": "Questo corso ha missioni in cui è possibile guadagnare solo {maxValue} stelle. Inserisci un numero minore o uguale a {maxValue}.",
-    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante."
+    "removedFromCourseError": "Sei stato rimosso da questo corso. Contatta il tuo insegnante.",
+    "endPractice": "Termina pratica",
+    "bodyLabel": "Opzioni {page}",
+    "openDM": "Apri messaggio diretto",
+    "openNewTab": "Apri in una nuova scheda",
+    "viewProfileImageLabel": "Visualizza immagine del profilo",
+    "profileImageLabel": "Immagine del profilo",
+    "actionsLabel": "Azioni",
+    "colorListLabel": "Elenco colori",
+    "chatAppearanceStyleLabel": "Aspetto della chat con lo stile scelto",
+    "volumeLabel": "Volume",
+    "listLabel": "Elenco {description}",
+    "passwordFormLabel": "Modulo cambio password",
+    "searchLanguagesHint": "Cerca lingue",
+    "searchCountriesHint": "Cerca paesi",
+    "searchVocabHint": "Cerca vocaboli",
+    "searchUsersHint": "Cerca utenti",
+    "searchMessagesHint": "Cerca messaggi",
+    "searchChatsHint": "Cerca chat",
+    "searchActivitiesHint": "Cerca attività",
+    "appInTargetLanguageTitle": "Mostra l'app nella lingua che sto imparando",
+    "appInTargetLanguageDesc": "Menu, pulsanti ed etichette appaiono nella tua lingua di destinazione per l'immersione. Il testo non tradotto torna all'inglese.",
+    "changePasswordSessionExpired": "La tua sessione è scaduta. Effettua nuovamente l'accesso.",
+    "constructUseSugDesc": "Suggerimenti accettati",
+    "mostPopular": "Più popolare",
+    "mostSavings": "Più risparmi",
+    "enterDiscountCode": "Inserisci codice sconto",
+    "yourPlan": "Il tuo piano",
+    "subscriptionRenewsOn": "Si rinnova il {date}",
+    "subscriptionEndsOn": "Termina il {date}",
+    "promoSubscription": "Abbonamento promozionale",
+    "seatSubscription": "Posto istituzionale",
+    "lifetimeSubscription": "Abbonamento a vita",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Hai una prova gratuita",
+    "manage": "Gestisci",
+    "subscriptionHistory": "Cronologia abbonamenti",
+    "history": "Cronologia",
+    "noPaymentHistoryFound": "Nessuna cronologia pagamenti trovata",
+    "cancelAnytime": "Annulla in qualsiasi momento nelle impostazioni dell'abbonamento",
+    "pricePerMonth": "{price}/mese",
+    "pricePerYear": "{price}/anno",
+    "viewSubscriptionOptions": "Visualizza opzioni di abbonamento",
+    "apply": "Applica",
+    "continueToSubscribe": "Continua ad abbonarti",
+    "invalidDiscountCode": "Codice sconto non valido",
+    "selectDiscountPlan": "Seleziona piano sconto",
+    "discountApplied": "Sconto {discount} applicato",
+    "cancelDescriptionWithRenewalDate": "Il tuo abbonamento sarà attivo fino alla data di rinnovo ({date}), poi si disattiverà. Manterrai l'analisi ma non potrai usare le funzionalità pro.",
+    "cancelDescriptionWithoutRenewalDate": "Il tuo abbonamento sarà attivo fino alla data di rinnovo, poi si disattiverà. Manterrai l'analisi ma non potrai usare le funzionalità pro.",
+    "change": "Cambia",
+    "deactivateSubscribedAccountWarning": "Questo disattiverà il tuo account utente e annullerà l'abbonamento. Non può essere annullato! Sei sicuro?"
 }

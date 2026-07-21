@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:59.148440",
+    "@@last_modified": "2026-07-20 10:58:17.752980",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -6618,8 +6618,6 @@
     "allow": "Tillat",
     "deny": "Avvis",
     "enabledRenewal": "Aktiver abonnementfornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Endringer i abonnementet ditt kan ta et øyeblikk å gjenspeile i appen.",
     "subscribeReadingAssistance": "Abonner for å låse opp meldingsverktøy",
     "aceDisplayName": "Achinese",
@@ -6894,14 +6892,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8439,7 +8429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg snakker allerede...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9706,5 +9695,56 @@
     "starsToUnlockObjectiveTitle": "Stjerner per oppdrag",
     "starsToUnlockObjectiveDesc": "Angi antall stjerner som trengs for å fullføre hvert oppdrag",
     "maxStarsPerMissionWarning": "Dette kurset har oppdrag der bare {maxValue} stjerner kan opptjenes. Angi et tall som er mindre enn eller lik {maxValue}.",
-    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din."
+    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din.",
+    "endPractice": "Avslutt øving",
+    "bodyLabel": "{page} alternativer",
+    "openDM": "Åpne direktemelding",
+    "openNewTab": "Åpne i ny fane",
+    "viewProfileImageLabel": "Vis profilbilde",
+    "profileImageLabel": "Profilbilde",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Fargeliste",
+    "chatAppearanceStyleLabel": "Chat-utseende med valgt stil",
+    "volumeLabel": "Volum",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Skjema for passordendring",
+    "searchLanguagesHint": "Søk språk",
+    "searchCountriesHint": "Søk land",
+    "searchVocabHint": "Søk vokabular",
+    "searchUsersHint": "Søk brukere",
+    "searchMessagesHint": "Søk meldinger",
+    "searchChatsHint": "Søk chatter",
+    "searchActivitiesHint": "Søk aktiviteter",
+    "appInTargetLanguageTitle": "Vis appen på språket jeg lærer",
+    "appInTargetLanguageDesc": "Menyer, knapper og etiketter vises på målspråket ditt for fordypning. Uoversatt tekst faller tilbake til engelsk.",
+    "changePasswordSessionExpired": "Økten din har utløpt. Logg inn på nytt.",
+    "constructUseSugDesc": "Godkjente forslag",
+    "mostPopular": "Mest populær",
+    "mostSavings": "Mest besparelse",
+    "enterDiscountCode": "Skriv inn rabattkode",
+    "yourPlan": "Din plan",
+    "subscriptionRenewsOn": "Fornyes {date}",
+    "subscriptionEndsOn": "Avsluttes {date}",
+    "promoSubscription": "Kampanjeabonnement",
+    "seatSubscription": "Institusjonell plass",
+    "lifetimeSubscription": "Livstidsabonnement",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Du har en gratis prøveperiode",
+    "manage": "Administrer",
+    "subscriptionHistory": "Abonnementshistorikk",
+    "history": "Historikk",
+    "noPaymentHistoryFound": "Ingen betalingshistorikk funnet",
+    "cancelAnytime": "Avbryt når som helst i abonnementsinnstillingene",
+    "pricePerMonth": "{price}/måned",
+    "pricePerYear": "{price}/år",
+    "viewSubscriptionOptions": "Se abonnementsalternativer",
+    "apply": "Bruk",
+    "continueToSubscribe": "Fortsett å abonnere",
+    "invalidDiscountCode": "Ugyldig rabattkode",
+    "selectDiscountPlan": "Velg rabattplan",
+    "discountApplied": "{discount} rabatt brukt",
+    "cancelDescriptionWithRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen ({date}), deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
+    "cancelDescriptionWithoutRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen, deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
+    "change": "Endre",
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?"
 }

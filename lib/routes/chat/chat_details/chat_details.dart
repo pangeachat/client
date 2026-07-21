@@ -82,7 +82,10 @@ class ChatDetailsController extends State<ChatDetails>
       activitiesToCompleteOverride: room?.teacherMode.activitiesToUnlockTopic,
     );
 
-    _objectivesProvider.loadOutline(_questId);
+    _objectivesProvider.loadOutline(
+      _questId,
+      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+    );
     _loadSummaries();
 
     if (room?.isSpace == true) {
@@ -96,7 +99,10 @@ class ChatDetailsController extends State<ChatDetails>
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
-      _objectivesProvider.loadOutline(_questId);
+      _objectivesProvider.loadOutline(
+        _questId,
+        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+      );
       _loadSummaries();
     }
 
@@ -121,6 +127,12 @@ class ChatDetailsController extends State<ChatDetails>
 
   String? get _questId =>
       Matrix.of(context).client.getRoomById(widget.roomId)?.coursePlan?.uuid;
+
+  /// The course's per-Mission activity pin (org quests doc, client#7748) —
+  /// null when unset, which is the unrestricted default.
+  Map<String, List<String>>? get _pinnedActivitiesByObjective => Matrix.of(
+    context,
+  ).client.getRoomById(widget.roomId)?.teacherMode.pinnedActivitiesByObjective;
 
   QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 

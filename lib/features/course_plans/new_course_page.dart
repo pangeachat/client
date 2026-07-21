@@ -192,12 +192,14 @@ class NewCoursePageState extends State<NewCoursePage> {
     }
 
     if (existingRoom == null) {
+      final lang = _targetLanguageFilter.value?.langCode;
       context.go(
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
           createCourseId: course.uuid,
-          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
+          initialLanguageFilter: lang,
+          allLanguagesFilter: lang == null,
         ),
       );
       return;
@@ -239,12 +241,14 @@ class NewCoursePageState extends State<NewCoursePage> {
     );
 
     if (action == 0) {
+      final lang = _targetLanguageFilter.value?.langCode;
       context.go(
         WorkspaceNav.openAddCoursePage(
           GoRouterState.of(context).uri,
           AddCourseSubpageEnum.own,
           createCourseId: course.uuid,
-          initialLanguageFilter: _targetLanguageFilter.value?.langCode,
+          initialLanguageFilter: lang,
+          allLanguagesFilter: lang == null,
         ),
       );
     } else if (action == 1) {

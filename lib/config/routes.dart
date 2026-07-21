@@ -105,12 +105,12 @@ abstract class AppRoutes {
           defaultPageBuilder(context, state, const CreatePangeaAccountPage()),
       redirect: PAuthGaurd.onboardingRedirect,
     ),
-    // world_v2: the inbound course join links `/join_with_link?classcode=` (the
-    // CloudFront short-code 302 target) and `/join?classcode=` (native app
-    // links) are NOT render routes. `LegacyRedirects` folds both into the
-    // `left=addcourse:private/<code>` token before anything renders (#7524), so
-    // the join-with-code page performs the join. Logged out, the code is
-    // cached across the login bounce (PAuthGaurd.roomsRedirect).
+    // world_v2: the inbound course join link is the bare short code
+    // `app.pangea.chat/<code>` (served by the SPA on web and delivered as a
+    // path by native app links); it is NOT a render route. `LegacyRedirects`
+    // folds `/<code>` into the `left=addcourse:private/<code>` token before
+    // anything renders, so the join-with-code page performs the join. Logged
+    // out, the code is cached across the login bounce (PAuthGaurd.roomsRedirect).
     GoRoute(
       path: '/invite_user/:userID',
       pageBuilder: (context, state) => defaultPageBuilder(

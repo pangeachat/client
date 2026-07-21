@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-13 10:05:29.351784",
+    "@@last_modified": "2026-07-20 10:57:50.230857",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -6583,8 +6583,6 @@
     "allow": "Erlauben",
     "deny": "Ablehnen",
     "enabledRenewal": "Abonnementverlängerung aktivieren",
-    "subscriptionEndsOn": "Abonnement endet am",
-    "subscriptionRenewsOn": "Abonnement erneuert sich am",
     "waitForSubscriptionChanges": "Änderungen an Ihrem Abonnement können einen Moment dauern, um in der App angezeigt zu werden.",
     "subscribeReadingAssistance": "Abonnieren, um Nachrichtentools freizuschalten",
     "aceDisplayName": "Achinese",
@@ -6859,14 +6857,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8369,7 +8359,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ich lerne gerade...",
     "alreadySpeak": "Ich spreche bereits...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9636,5 +9625,56 @@
     "starsToUnlockObjectiveTitle": "Sterne pro Mission",
     "starsToUnlockObjectiveDesc": "Legen Sie die Anzahl der Sterne fest, die zum Abschluss jeder Mission benötigt werden",
     "maxStarsPerMissionWarning": "Dieser Kurs enthält Missionen, in denen nur {maxValue} Sterne verdient werden können. Bitte geben Sie eine Zahl kleiner oder gleich {maxValue} ein.",
-    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer."
+    "removedFromCourseError": "Sie wurden aus diesem Kurs entfernt. Kontaktieren Sie Ihren Lehrer.",
+    "endPractice": "Übung beenden",
+    "bodyLabel": "{page} Optionen",
+    "openDM": "Direktnachricht öffnen",
+    "openNewTab": "In neuem Tab öffnen",
+    "viewProfileImageLabel": "Profilbild ansehen",
+    "profileImageLabel": "Profilbild",
+    "actionsLabel": "Aktionen",
+    "colorListLabel": "Farbliste",
+    "chatAppearanceStyleLabel": "Chat-Erscheinungsbild mit gewähltem Stil",
+    "volumeLabel": "Lautstärke",
+    "listLabel": "{description} Liste",
+    "passwordFormLabel": "Passwort ändern Formular",
+    "searchLanguagesHint": "Sprachen suchen",
+    "searchCountriesHint": "Länder suchen",
+    "searchVocabHint": "Vokabeln suchen",
+    "searchUsersHint": "Benutzer suchen",
+    "searchMessagesHint": "Nachrichten suchen",
+    "searchChatsHint": "Chats suchen",
+    "searchActivitiesHint": "Aktivitäten suchen",
+    "appInTargetLanguageTitle": "App in Lernsprache anzeigen",
+    "appInTargetLanguageDesc": "Menüs, Schaltflächen und Beschriftungen werden zur Immersion in Ihrer Zielsprache angezeigt. Nicht übersetzter Text wird auf Englisch zurückgesetzt.",
+    "changePasswordSessionExpired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+    "constructUseSugDesc": "Akzeptierte Vorschläge",
+    "mostPopular": "Am beliebtesten",
+    "mostSavings": "Größte Ersparnisse",
+    "enterDiscountCode": "Rabattcode eingeben",
+    "yourPlan": "Ihr Plan",
+    "subscriptionRenewsOn": "Verlängert sich am {date}",
+    "subscriptionEndsOn": "Endet am {date}",
+    "promoSubscription": "Abonnement (Aktion)",
+    "seatSubscription": "Institutioneller Platz",
+    "lifetimeSubscription": "Lebenslanges Abonnement",
+    "freeSubscription": "KOSTENLOS",
+    "freeTrialDescription": "Sie haben eine kostenlose Testphase",
+    "manage": "Verwalten",
+    "subscriptionHistory": "Abonnement-Verlauf",
+    "history": "Verlauf",
+    "noPaymentHistoryFound": "Kein Zahlungsverlauf gefunden",
+    "cancelAnytime": "Jederzeit in den Abonnementeinstellungen kündigen",
+    "pricePerMonth": "{price}/Monat",
+    "pricePerYear": "{price}/Jahr",
+    "viewSubscriptionOptions": "Abonnementoptionen anzeigen",
+    "apply": "Anwenden",
+    "continueToSubscribe": "Mit dem Abonnement fortfahren",
+    "invalidDiscountCode": "Ungültiger Rabattcode",
+    "selectDiscountPlan": "Rabattplan auswählen",
+    "discountApplied": "{discount} Rabatt angewendet",
+    "cancelDescriptionWithRenewalDate": "Ihr Abonnement ist bis zum Verlängerungsdatum ({date}) aktiv und wird dann deaktiviert. Sie behalten die Analysedaten, können aber keine Pro-Funktionen nutzen.",
+    "cancelDescriptionWithoutRenewalDate": "Ihr Abonnement ist bis zum Verlängerungsdatum aktiv und wird dann deaktiviert. Sie behalten die Analysedaten, können aber keine Pro-Funktionen nutzen.",
+    "change": "Ändern",
+    "deactivateSubscribedAccountWarning": "Dadurch wird Ihr Benutzerkonto deaktiviert und Ihr Abonnement gekündigt. Dies kann nicht rückgängig gemacht werden! Sind Sie sicher?"
 }

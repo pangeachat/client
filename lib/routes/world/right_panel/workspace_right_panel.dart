@@ -115,29 +115,42 @@ class WorkspaceRightPanel extends StatelessWidget {
             ),
           ),
           tooltip: leadingTooltip,
-          child: RightPanelSettingsSubpage(),
+          child: RightPanelSettingsSubpage(
+            closeButton: IconButton(
+              tooltip: leadingTooltip,
+              icon: Icon(leadingIcon),
+              onPressed: onLeading,
+            ),
+          ),
         );
       case SettingsPagePanelToken(param: final param):
-        final settingsPage = param != null
-            ? SettingsPageEnum.fromString(param.subpage)
-            : null;
+        final settingsPage = SettingsPageEnum.fromString(param?.subpage);
+        final settingsCloseButton = IconButton(
+          tooltip: leadingTooltip,
+          icon: Icon(leadingIcon),
+          onPressed: onLeading,
+        );
 
-        return settingsPage != null && settingsPage.addHeader
+        // The shared header is the DEFAULT for a settings detail; only a page
+        // that draws its own chrome opts out (SettingsPageEnum.addHeader).
+        // Dropping the wrapper wholesale left every classic page (learning,
+        // style, notifications, devices, chat, security, password, profile)
+        // with no title and no way out (#7763).
+        return settingsPage.addHeader
             ? PanelCardWithHeader(
                 title: settingsPage.title(l10n),
                 icon: leadingIcon,
                 onLeading: onLeading,
                 tooltip: leadingTooltip,
-                child: RightPanelSettingsSubpage(param: param),
+                child: RightPanelSettingsSubpage(
+                  param: param,
+                  closeButton: settingsCloseButton,
+                ),
               )
             : PanelCard(
                 child: RightPanelSettingsSubpage(
                   param: param,
-                  closeButton: IconButton(
-                    tooltip: leadingTooltip,
-                    icon: Icon(leadingIcon),
-                    onPressed: onLeading,
-                  ),
+                  closeButton: settingsCloseButton,
                 ),
               );
       case VocabAnalyticsPanelToken(param: final param):

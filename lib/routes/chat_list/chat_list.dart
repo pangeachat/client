@@ -16,7 +16,6 @@ import 'package:fluffychat/features/analytics_access/join_room_analytics_access_
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -544,7 +543,6 @@ class ChatListController extends State<ChatList>
   }
 
   //#Pangea
-  StreamSubscription? _spaceCodeSubscription;
   StreamSubscription? _userInviteSubscription;
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _roomCapacitySubscription;
@@ -585,17 +583,6 @@ class ChatListController extends State<ChatList>
     });
 
     //#Pangea
-    _spaceCodeSubscription?.cancel();
-    _spaceCodeSubscription = SpaceCodeController.spaceCodeStream.stream.listen((
-      code,
-    ) {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        if (!mounted) return;
-        final client = MatrixState.pangeaController.matrixState.client;
-        await _joinCachedSpaceCode(client);
-      });
-    });
-
     _userInviteSubscription?.cancel();
     _userInviteSubscription = UserInviteController.userInviteStream.stream
         .listen((userID) {
@@ -615,9 +602,6 @@ class ChatListController extends State<ChatList>
         .addListener(_onSubscribe);
 
     final client = Matrix.of(context).client;
-    MatrixState.pangeaController.initControllers(client.userID);
-
-    _joinCachedSpaceCode(client);
     _startDMWithCachedUserId(client);
     _handlePendingCourseAnalyticsAccessRequests(client);
 
@@ -756,7 +740,6 @@ class ChatListController extends State<ChatList>
     _intentFileStreamSubscription?.cancel();
     //#Pangea
     // _intentUriStreamSubscription?.cancel();
-    _spaceCodeSubscription?.cancel();
     _userInviteSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
@@ -1150,17 +1133,6 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
-  Future<void> _joinCachedSpaceCode(Client client) async {
-    final result = await SpaceCodeController.joinCachedSpaceCode(
-      context: context,
-      client: client,
-    );
-    final joinResp = result.result;
-    if (joinResp == null) return;
-
-    await SpaceCodeController.navigateAfterJoin(context, client, joinResp);
-  }
-
   Future<void> _startDMWithCachedUserId(Client client) async {
     final userId = UserInviteLinkRepo.inviteUser;
     await UserInviteLinkRepo.clearInviteUser();

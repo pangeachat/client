@@ -21,7 +21,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
@@ -30,7 +29,6 @@ import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -236,19 +234,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   // (user_type_onboarding_step.dart).
                   FluffyChatApp.router.go('/registration');
                 } else {
-                  // A join code cached across the login bounce
-                  // (PAuthGaurd.roomsRedirect, #7524) re-enters the same
-                  // addcourse:private/<code> token flow a logged-in join link
-                  // takes. The read is TTL-guarded (SpaceCodeRepo) and the
-                  // cache cleared here, so a stale code never surprise-joins
-                  // a later login.
-                  final joinCode = SpaceCodeRepo.spaceCode;
-                  if (joinCode != null) await SpaceCodeRepo.clearSpaceCode();
-                  FluffyChatApp.router.go(
-                    joinCode != null
-                        ? PRoutes.joinWithCode(joinCode)
-                        : PRoutes.world,
-                  );
+                  // A join code cached across the login bounce is consumed by
+                  // the world route's auth guard on this landing
+                  // (PAuthGaurd._consumeCachedJoinCode) — the one consumption
+                  // point shared with logins that never pass through this
+                  // listener (web SSO's full-reload return, a restored
+                  // session).
+                  FluffyChatApp.router.go(PRoutes.world);
                 }
                 // Pangea#
               });
@@ -330,6 +322,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           scope.setUser(SentryUser(id: client.userID, name: client.userID)),
     );
     pangeaController = PangeaController(matrixState: this);
+    pangeaController.initControllers(client.userID);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
@@ -692,12 +685,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       }
     }
 
-    final joinCodePattern = RegExp(r'^\/([a-z0-9]{7})$');
-    if (joinCodePattern.hasMatch(path)) {
-      final code = joinCodePattern.firstMatch(path)!.group(1)!;
-      path = '/join?${SpaceConstants.classCode}=$code';
-    }
-
+    // A bare `/<code>` course join link (and the `/<uuid>` activity link) flow
+    // straight through to the router's LegacyRedirects, which folds them into
+    // their tokens — no per-shape rewrite here.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);
     });

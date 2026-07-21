@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:06:10.807933",
+    "@@last_modified": "2026-07-20 10:57:49.124337",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -6509,8 +6509,6 @@
     "allow": "Permetre",
     "deny": "Denegar",
     "enabledRenewal": "Habilitar la renovació de la subscripció",
-    "subscriptionEndsOn": "La subscripció acaba el",
-    "subscriptionRenewsOn": "La subscripció es renova el",
     "waitForSubscriptionChanges": "Els canvis a la teva subscripció poden trigar un moment a reflectir-se a l'aplicació.",
     "subscribeReadingAssistance": "Subscriu-te per desbloquejar eines de missatge",
     "aceDisplayName": "Achinese",
@@ -6785,14 +6783,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8509,7 +8499,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estic aprenent...",
     "alreadySpeak": "Ja parlo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9776,5 +9765,56 @@
     "starsToUnlockObjectiveTitle": "Estrelles per Missió",
     "starsToUnlockObjectiveDesc": "Defineix el nombre d'estrelles necessàries per completar cada missió",
     "maxStarsPerMissionWarning": "Aquest curs té missions on només es poden guanyar {maxValue} estrelles. Si us plau, introdueix un número inferior o igual a {maxValue}.",
-    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor."
+    "removedFromCourseError": "Has estat eliminat d'aquest curs. Contacta amb el teu professor.",
+    "endPractice": "Acabar la pràctica",
+    "bodyLabel": "Opcions de {page}",
+    "openDM": "Obrir missatge directe",
+    "openNewTab": "Obrir en una pestanya nova",
+    "viewProfileImageLabel": "Veure imatge de perfil",
+    "profileImageLabel": "Imatge de perfil",
+    "actionsLabel": "Accions",
+    "colorListLabel": "Llista de colors",
+    "chatAppearanceStyleLabel": "Aparença del xat amb l'estil escollit",
+    "volumeLabel": "Volum",
+    "listLabel": "Llista de {description}",
+    "passwordFormLabel": "Formulari de canvi de contrasenya",
+    "searchLanguagesHint": "Cercar idiomes",
+    "searchCountriesHint": "Cercar països",
+    "searchVocabHint": "Cercar vocabulari",
+    "searchUsersHint": "Cercar usuaris",
+    "searchMessagesHint": "Cercar missatges",
+    "searchChatsHint": "Cercar xats",
+    "searchActivitiesHint": "Cercar activitats",
+    "appInTargetLanguageTitle": "Mostra l'aplicació en l'idioma que estic aprenent",
+    "appInTargetLanguageDesc": "Els menús, botons i etiquetes apareixen en el teu idioma objectiu per a la immersió. El text no traduït torna a l'anglès.",
+    "changePasswordSessionExpired": "La teva sessió ha caducat. Torna a iniciar sessió.",
+    "constructUseSugDesc": "Suggeriments acceptats",
+    "mostPopular": "Més popular",
+    "mostSavings": "Més estalvis",
+    "enterDiscountCode": "Introdueix el codi de descompte",
+    "yourPlan": "El teu pla",
+    "subscriptionRenewsOn": "Es renova el {date}",
+    "subscriptionEndsOn": "Finalitza el {date}",
+    "promoSubscription": "Subscripció promocional",
+    "seatSubscription": "Lloc institucional",
+    "lifetimeSubscription": "Subscripció de per vida",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Tens una prova gratuïta",
+    "manage": "Gestionar",
+    "subscriptionHistory": "Historial de subscripcions",
+    "history": "Historial",
+    "noPaymentHistoryFound": "No s'ha trobat historial de pagaments",
+    "cancelAnytime": "Cancel·la en qualsevol moment a la configuració de la subscripció",
+    "pricePerMonth": "{price}/mes",
+    "pricePerYear": "{price}/any",
+    "viewSubscriptionOptions": "Veure opcions de subscripció",
+    "apply": "Aplicar",
+    "continueToSubscribe": "Continuar per subscriure's",
+    "invalidDiscountCode": "Codi de descompte no vàlid",
+    "selectDiscountPlan": "Selecciona el pla de descompte",
+    "discountApplied": "Descompte de {discount} aplicat",
+    "cancelDescriptionWithRenewalDate": "La teva subscripció estarà activa fins a la data de renovació ({date}), i després es desactivarà. Conservaràs les analítiques, però no podràs utilitzar les funcions pro.",
+    "cancelDescriptionWithoutRenewalDate": "La teva subscripció estarà activa fins a la data de renovació, i després es desactivarà. Conservaràs les analítiques, però no podràs utilitzar les funcions pro.",
+    "change": "Canviar",
+    "deactivateSubscribedAccountWarning": "Això desactivarà el teu compte d'usuari i cancel·larà la teva subscripció. Això no es pot desfer! Estàs segur?"
 }

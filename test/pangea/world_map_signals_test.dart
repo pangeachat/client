@@ -14,6 +14,8 @@ ActivitySessionFacts _session(
   int totalGoals = 0,
   bool joinable = false,
   int lastEventMs = 0,
+  int numRemainingRoles = 0,
+  bool ownRoleFinished = false,
 }) => ActivitySessionFacts(
   activityId: activityId,
   holdsRole: holdsRole,
@@ -21,6 +23,8 @@ ActivitySessionFacts _session(
   totalGoals: totalGoals,
   joinable: joinable,
   lastEventMs: lastEventMs,
+  numRemainingRoles: numRemainingRoles,
+  ownRoleFinished: ownRoleFinished,
 );
 
 ActivityCompletionFacts _completion(
@@ -35,14 +39,43 @@ ActivityCompletionFacts _completion(
 
 void main() {
   group('reduceActivitySignals', () {
-    test('a held role in an open session reads joined, with the fraction', () {
+    test(
+      'a held role in a full-roster session reads ongoingActive, with the fraction',
+      () {
+        final s = WorldMapSignalUtils.reduceActivitySignals(
+          [
+            _session(
+              'a',
+              holdsRole: true,
+              collectedGoals: 3,
+              totalGoals: 4,
+              numRemainingRoles: 0,
+            ),
+          ],
+          pingedActivityIds: const {},
+          nowMs: 0,
+        );
+        expect(s['a']!.state, ActivityPinState.ongoingActive);
+        expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
+      },
+    );
+
+    test('a held role in a not-yet-full session reads ongoingPending', () {
       final s = WorldMapSignalUtils.reduceActivitySignals(
-        [_session('a', holdsRole: true, collectedGoals: 3, totalGoals: 4)],
+        [
+          _session(
+            'a',
+            holdsRole: true,
+            collectedGoals: 1,
+            totalGoals: 4,
+            numRemainingRoles: 2,
+          ),
+        ],
         pingedActivityIds: const {},
         nowMs: 0,
       );
-      expect(s['a']!.state, ActivityPinState.joined);
-      expect(s['a']!.completionFraction, closeTo(0.75, 1e-9));
+      expect(s['a']!.state, ActivityPinState.ongoingPending);
+      expect(s['a']!.completionFraction, closeTo(0.25, 1e-9));
     });
 
     test('a completed held role emits no colour state (falls to stars)', () {
@@ -56,6 +89,31 @@ void main() {
       );
       expect(s.containsKey('a'), isFalse);
     });
+
+    test(
+      'a finished-but-archived held role emits no colour state, even with an '
+      'incomplete star row',
+      () {
+        // Finished (and possibly archived) without collecting every star: not
+        // a live "resume it" session, so it must not read ongoingActive
+        // forever — same outcome as a fully-starred completion above.
+        final s = WorldMapSignalUtils.reduceActivitySignals(
+          [
+            _session(
+              'a',
+              holdsRole: true,
+              collectedGoals: 1,
+              totalGoals: 4,
+              numRemainingRoles: 0,
+              ownRoleFinished: true,
+            ),
+          ],
+          pingedActivityIds: const {},
+          nowMs: 0,
+        );
+        expect(s.containsKey('a'), isFalse);
+      },
+    );
 
     test('keeps the BEST fraction across sessions of the same activity', () {
       final s = WorldMapSignalUtils.reduceActivitySignals(
@@ -78,19 +136,25 @@ void main() {
       expect(s['a']!.completionFraction, 0);
     });
 
-    test('joined beats joinable on the colour ladder, fraction preserved', () {
+    test('ongoing beats joinable on the colour ladder, fraction preserved', () {
       final s = WorldMapSignalUtils.reduceActivitySignals(
         [
-          // one session where the user holds a role (joined, half done)…
-          _session('a', holdsRole: true, collectedGoals: 1, totalGoals: 2),
+          // one session where the user holds a role (ongoing, half done)…
+          _session(
+            'a',
+            holdsRole: true,
+            collectedGoals: 1,
+            totalGoals: 2,
+            numRemainingRoles: 0,
+          ),
           // …and another, open, session of the same activity (joinable). The
-          // learner's own live session wins the colour (joined > joinable).
+          // learner's own live session wins the colour (ongoing > joinable).
           _session('a', joinable: true, lastEventMs: _dayMs),
         ],
         pingedActivityIds: const {},
         nowMs: _dayMs,
       );
-      expect(s['a']!.state, ActivityPinState.joined);
+      expect(s['a']!.state, ActivityPinState.ongoingActive);
       expect(s['a']!.completionFraction, closeTo(0.5, 1e-9));
     });
 

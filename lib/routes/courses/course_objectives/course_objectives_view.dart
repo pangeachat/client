@@ -121,8 +121,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             return ValueListenableBuilder(
               valueListenable: widget.objectivesProvider.progression,
               builder: (context, progression, _) {
+                // Scoped to THIS course: the shared resolution spans every
+                // joined course, and Missions are reused across quests (#7771).
                 final hasProgress =
-                    widget.room != null && progression.rollup.isNotEmpty;
+                    widget.room != null &&
+                    widget.objectivesProvider.hasResolvedProgress;
                 final list = ListView.separated(
                   controller: widget.shrinkWrap ? null : _scrollController,
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -139,7 +142,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       group: group,
                       hasCompletedActivity: widget.hasCompletedActivity,
                       progress: hasProgress
-                          ? progression.rollup[group.objective.id]
+                          ? widget.objectivesProvider.missionProgress(
+                              group.objective.id,
+                            )
                           : null,
                       onTap: (ref) {
                         final room = widget.room;

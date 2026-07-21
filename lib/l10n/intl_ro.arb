@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:04:40.326066",
+    "@@last_modified": "2026-07-20 10:58:22.879503",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -7114,8 +7114,6 @@
     "allow": "Permite",
     "deny": "Refuză",
     "enabledRenewal": "Activează reînnoirea abonamentului",
-    "subscriptionEndsOn": "Abonamentul se încheie pe",
-    "subscriptionRenewsOn": "Abonamentul se reînnoiește pe",
     "waitForSubscriptionChanges": "Modificările la abonamentul tău pot dura câteva momente pentru a se reflecta în aplicație.",
     "subscribeReadingAssistance": "Abonează-te pentru a debloca instrumentele de mesagerie",
     "aceDisplayName": "Achinese",
@@ -7390,14 +7388,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9114,7 +9104,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Învăț...",
     "alreadySpeak": "Deja vorbesc...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10381,5 +10370,56 @@
     "starsToUnlockObjectiveTitle": "Stele per Misiune",
     "starsToUnlockObjectiveDesc": "Setează numărul de stele necesare pentru a finaliza fiecare misiune",
     "maxStarsPerMissionWarning": "Acest curs are misiuni în care pot fi câștigate doar {maxValue} stele. Te rugăm să introduci un număr mai mic sau egal cu {maxValue}.",
-    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul."
+    "removedFromCourseError": "Ai fost eliminat din acest curs. Contactează-ți profesorul.",
+    "endPractice": "Termină exercițiul",
+    "bodyLabel": "Opțiuni {page}",
+    "openDM": "Deschide mesaj direct",
+    "openNewTab": "Deschide într-o filă nouă",
+    "viewProfileImageLabel": "Vizualizează imaginea de profil",
+    "profileImageLabel": "Imagine de profil",
+    "actionsLabel": "Acțiuni",
+    "colorListLabel": "Listă de culori",
+    "chatAppearanceStyleLabel": "Aspectul chatului cu stilul ales",
+    "volumeLabel": "Volum",
+    "listLabel": "Listă {description}",
+    "passwordFormLabel": "Formular de schimbare a parolei",
+    "searchLanguagesHint": "Căutați limbi",
+    "searchCountriesHint": "Căutați țări",
+    "searchVocabHint": "Căutați vocabular",
+    "searchUsersHint": "Căutați utilizatori",
+    "searchMessagesHint": "Căutați mesaje",
+    "searchChatsHint": "Căutați conversații",
+    "searchActivitiesHint": "Căutați activități",
+    "appInTargetLanguageTitle": "Afișează aplicația în limba pe care o învăț",
+    "appInTargetLanguageDesc": "Meniurile, butoanele și etichetele apar în limba țintă pentru imersiune. Textul netradus revine la engleză.",
+    "changePasswordSessionExpired": "Sesiunea dvs. a expirat. Vă rugăm să vă autentificați din nou.",
+    "constructUseSugDesc": "Sugestii acceptate",
+    "mostPopular": "Cel mai popular",
+    "mostSavings": "Cele mai mari economii",
+    "enterDiscountCode": "Introduceți codul de reducere",
+    "yourPlan": "Planul dvs.",
+    "subscriptionRenewsOn": "Se reînnoiește pe {date}",
+    "subscriptionEndsOn": "Se termină pe {date}",
+    "promoSubscription": "Abonament promoțional",
+    "seatSubscription": "Loc instituțional",
+    "lifetimeSubscription": "Abonament pe viață",
+    "freeSubscription": "GRATUIT",
+    "freeTrialDescription": "Aveți o perioadă de încercare gratuită",
+    "manage": "Gestionează",
+    "subscriptionHistory": "Istoricul abonamentelor",
+    "history": "Istoric",
+    "noPaymentHistoryFound": "Nu a fost găsit niciun istoric de plăți",
+    "cancelAnytime": "Anulați oricând din setările abonamentului",
+    "pricePerMonth": "{price}/lună",
+    "pricePerYear": "{price}/an",
+    "viewSubscriptionOptions": "Vizualizați opțiunile de abonament",
+    "apply": "Aplică",
+    "continueToSubscribe": "Continuă pentru a te abona",
+    "invalidDiscountCode": "Cod de reducere invalid",
+    "selectDiscountPlan": "Selectați planul de reducere",
+    "discountApplied": "Reducere de {discount} aplicată",
+    "cancelDescriptionWithRenewalDate": "Abonamentul dvs. va fi activ până la data reînnoirii ({date}), apoi se va dezactiva. Veți păstra analizele, dar nu veți putea utiliza funcțiile pro.",
+    "cancelDescriptionWithoutRenewalDate": "Abonamentul dvs. va fi activ până la data reînnoirii, apoi se va dezactiva. Veți păstra analizele, dar nu veți putea utiliza funcțiile pro.",
+    "change": "Schimbă",
+    "deactivateSubscribedAccountWarning": "Aceasta va dezactiva contul dvs. de utilizator și va anula abonamentul. Această acțiune nu poate fi anulată! Sunteți sigur?"
 }

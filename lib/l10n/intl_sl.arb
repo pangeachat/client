@@ -1812,7 +1812,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-13 10:05:34.610980",
+    "@@last_modified": "2026-07-20 10:58:25.795123",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7333,8 +7333,6 @@
     "allow": "Dovoli",
     "deny": "Zavrni",
     "enabledRenewal": "Omogoči obnavljanje naročnine",
-    "subscriptionEndsOn": "Naročnina se konča",
-    "subscriptionRenewsOn": "Naročnina se obnavlja",
     "waitForSubscriptionChanges": "Spremembe vaše naročnine lahko trajajo trenutek, da se odražajo v aplikaciji.",
     "subscribeReadingAssistance": "Naročite se za odklepanje orodij za sporočanje",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7607,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9333,7 +9323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učim se...",
     "alreadySpeak": "Že govorim...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10600,5 +10589,56 @@
     "starsToUnlockObjectiveTitle": "Zvezdice na misijo",
     "starsToUnlockObjectiveDesc": "Nastavite število zvezdic, potrebnih za dokončanje vsake misije",
     "maxStarsPerMissionWarning": "Ta tečaj ima misije, kjer je mogoče zaslužiti samo {maxValue} zvezdic. Prosimo, vnesite število, ki je manjše ali enako {maxValue}.",
-    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja."
+    "removedFromCourseError": "Odstranjeni ste bili iz tega tečaja. Obrnite se na svojega učitelja.",
+    "endPractice": "Končaj vajo",
+    "bodyLabel": "Možnosti {page}",
+    "openDM": "Odpri neposredno sporočilo",
+    "openNewTab": "Odpri v novem zavihku",
+    "viewProfileImageLabel": "Ogled slike profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Dejanja",
+    "colorListLabel": "Seznam barv",
+    "chatAppearanceStyleLabel": "Videz klepeta z izbranim slogom",
+    "volumeLabel": "Glasnost",
+    "listLabel": "Seznam {description}",
+    "passwordFormLabel": "Obrazec za spremembo gesla",
+    "searchLanguagesHint": "Iskanje jezikov",
+    "searchCountriesHint": "Iskanje držav",
+    "searchVocabHint": "Iskanje besedišča",
+    "searchUsersHint": "Iskanje uporabnikov",
+    "searchMessagesHint": "Iskanje sporočil",
+    "searchChatsHint": "Iskanje klepetov",
+    "searchActivitiesHint": "Iskanje dejavnosti",
+    "appInTargetLanguageTitle": "Prikaži aplikacijo v jeziku, ki se ga učim",
+    "appInTargetLanguageDesc": "Meniji, gumbi in oznake se prikažejo v vašem ciljnem jeziku za potopitev. Neprevedeno besedilo se prikaže v angleščini.",
+    "changePasswordSessionExpired": "Vaša seja je potekla. Prosimo, prijavite se ponovno.",
+    "constructUseSugDesc": "Sprejeti predlogi",
+    "mostPopular": "Najbolj priljubljeno",
+    "mostSavings": "Največ prihrankov",
+    "enterDiscountCode": "Vnesite kodo za popust",
+    "yourPlan": "Vaš načrt",
+    "subscriptionRenewsOn": "Obnovi se {date}",
+    "subscriptionEndsOn": "Konča se {date}",
+    "promoSubscription": "Promocijska naročnina",
+    "seatSubscription": "Institucionalno mesto",
+    "lifetimeSubscription": "Doživljenjska naročnina",
+    "freeSubscription": "BREZPLAČNO",
+    "freeTrialDescription": "Imate brezplačno preizkusno obdobje",
+    "manage": "Upravljaj",
+    "subscriptionHistory": "Zgodovina naročnin",
+    "history": "Zgodovina",
+    "noPaymentHistoryFound": "Zgodovina plačil ni najdena",
+    "cancelAnytime": "Prekliči kadar koli v nastavitvah naročnine",
+    "pricePerMonth": "{price}/mesec",
+    "pricePerYear": "{price}/leto",
+    "viewSubscriptionOptions": "Oglejte si možnosti naročnine",
+    "apply": "Uporabi",
+    "continueToSubscribe": "Nadaljuj z naročnino",
+    "invalidDiscountCode": "Neveljavna koda za popust",
+    "selectDiscountPlan": "Izberite načrt popusta",
+    "discountApplied": "{discount} popust uporabljen",
+    "cancelDescriptionWithRenewalDate": "Vaša naročnina bo aktivna do datuma podaljšanja ({date}), nato se bo deaktivirala. Analitika bo ostala, vendar ne boste mogli uporabljati profesionalnih funkcij.",
+    "cancelDescriptionWithoutRenewalDate": "Vaša naročnina bo aktivna do datuma podaljšanja, nato se bo deaktivirala. Analitika bo ostala, vendar ne boste mogli uporabljati profesionalnih funkcij.",
+    "change": "Spremeni",
+    "deactivateSubscribedAccountWarning": "To bo deaktiviralo vaš uporabniški račun in preklicalo vašo naročnino. Tega ni mogoče razveljaviti! Ste prepričani?"
 }

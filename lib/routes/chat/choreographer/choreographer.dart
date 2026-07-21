@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/features/subscription/utils/subscription_status_enum.dart';
+import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/assistance_state_enum.dart';
@@ -154,7 +154,7 @@ class Choreographer extends ChangeNotifier {
     super.dispose();
   }
 
-  void onPaste(String value) => _record.pastedStrings.add(value);
+  void onPaste(String value) => _record.addPastedString(value);
 
   void _resetDebounceTimer() {
     if (_debounceTimer != null) {
@@ -221,10 +221,10 @@ class Choreographer extends ChangeNotifier {
 
   Future<void> requestWritingAssistance({bool manual = false}) async {
     if (assistanceState != AssistanceStateEnum.notFetched) return;
-    final SubscriptionStatus canSendStatus =
+    final SubscriptionPaywallStatus canSendStatus =
         MatrixState.pangeaController.subscriptionController.paywallStatus;
 
-    if (canSendStatus != SubscriptionStatus.subscribed) {
+    if (canSendStatus != SubscriptionPaywallStatus.subscribed) {
       Logs().w("User is not subscribed to a plan that allows IGC");
       return;
     }
@@ -377,7 +377,7 @@ class Choreographer extends ChangeNotifier {
       // Record BEFORE setSystemText so the lazily-created record snapshots
       // pre-suggestion input as originalText; excluded from XP like pastes
       // (#7665).
-      _record.suggestionStrings.add(acceptedChoice.text);
+      _record.addSuggestionString(acceptedChoice.text);
       textController.setSystemText(
         acceptedChoice.text,
         EditTypeEnum.suggestion,

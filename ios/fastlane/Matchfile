@@ -1,0 +1,9 @@
+git_url("git@github.com:pangeachat/ios-certificates.git")
+storage_mode("git")
+type("appstore")
+app_identifier([
+  "com.talktolearn.chat",
+  "com.talktolearn.chat.FluffyChatShare",
+  "com.talktolearn.chat.Notification-Service-Extension",
+])
+username("wcjord@email.wm.edu")

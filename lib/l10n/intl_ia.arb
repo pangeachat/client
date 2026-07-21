@@ -1372,7 +1372,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-13 10:05:06.074350",
+    "@@last_modified": "2026-07-20 10:58:01.778128",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7324,8 +7324,6 @@
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Langganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -7600,14 +7598,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9324,7 +9314,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi estu lernante...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10591,5 +10580,56 @@
     "starsToUnlockObjectiveTitle": "Stellas per Mission",
     "starsToUnlockObjectiveDesc": "Define le numero de stellas necessari pro completar cata mission",
     "maxStarsPerMissionWarning": "Iste curso ha missiones ubi solmente {maxValue} stellas pote esser ganiate. Per favor entra un numero minus que o equal a {maxValue}.",
-    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator."
+    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator.",
+    "endPractice": "Finir le practica",
+    "bodyLabel": "Optiones de {page}",
+    "openDM": "Aperi message directe",
+    "openNewTab": "Aperi in nove scheda",
+    "viewProfileImageLabel": "Vide imagine de profilo",
+    "profileImageLabel": "Imagine de profilo",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Lista de colores",
+    "chatAppearanceStyleLabel": "Apparentia del chat con stilo seligite",
+    "volumeLabel": "Volumine",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario de cambio de contrasigno",
+    "searchLanguagesHint": "Cercar linguas",
+    "searchCountriesHint": "Cercar paises",
+    "searchVocabHint": "Cercar vocabulario",
+    "searchUsersHint": "Cercar usatores",
+    "searchMessagesHint": "Cercar messages",
+    "searchChatsHint": "Cercar conversas",
+    "searchActivitiesHint": "Cercar activitates",
+    "appInTargetLanguageTitle": "Monstra le app in le lingua que io apprende",
+    "appInTargetLanguageDesc": "Menus, buttones e etiquettas appare in tu lingua de scopo pro immersion. Texto non traducite retorna al anglese.",
+    "changePasswordSessionExpired": "Tu session ha expirate. Per favor, aperi de nove.",
+    "constructUseSugDesc": "Suggestiones acceptate",
+    "mostPopular": "Le plus popular",
+    "mostSavings": "Le plus grande sparnios",
+    "enterDiscountCode": "Introduce codice de sconto",
+    "yourPlan": "Tu plano",
+    "subscriptionRenewsOn": "Renova le {date}",
+    "subscriptionEndsOn": "Termina le {date}",
+    "promoSubscription": "Subscription Promotional",
+    "seatSubscription": "Sede Institutional",
+    "lifetimeSubscription": "Subscription a vita",
+    "freeSubscription": "GRATUITE",
+    "freeTrialDescription": "Tu ha un prova gratuite",
+    "manage": "Gerer",
+    "subscriptionHistory": "Historico de Subscription",
+    "history": "Historico",
+    "noPaymentHistoryFound": "Nulle historico de pagamento trovate",
+    "cancelAnytime": "Cancella a qualcunque momento in le configurationes de subscription",
+    "pricePerMonth": "{price}/menese",
+    "pricePerYear": "{price}/anno",
+    "viewSubscriptionOptions": "Vider optiones de subscription",
+    "apply": "Applicar",
+    "continueToSubscribe": "Continuar a subscribir",
+    "invalidDiscountCode": "Codice de sconto invalide",
+    "selectDiscountPlan": "Selige plano de sconto",
+    "discountApplied": "{discount} sconto applicate",
+    "cancelDescriptionWithRenewalDate": "Tu subscription essera active usque a su data de renovation ({date}), postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
+    "cancelDescriptionWithoutRenewalDate": "Tu subscription essera active usque a su data de renovation, postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
+    "change": "Cambiar",
+    "deactivateSubscribedAccountWarning": "Isto disactivara tu conto de usator e cancellara tu subscription. Isto non pote esser disfacite! Es tu secur?"
 }

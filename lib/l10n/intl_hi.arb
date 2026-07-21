@@ -3105,7 +3105,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-13 10:08:10.346832",
+    "@@last_modified": "2026-07-20 10:57:57.327582",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7014,8 +7014,6 @@
     "allow": "अनुमति दें",
     "deny": "अस्वीकृत करें",
     "enabledRenewal": "सदस्यता नवीनीकरण सक्षम करें",
-    "subscriptionEndsOn": "सदस्यता समाप्त होती है",
-    "subscriptionRenewsOn": "सदस्यता नवीनीकरण होती है",
     "waitForSubscriptionChanges": "आपकी सदस्यता में परिवर्तन ऐप में परिलक्षित होने में कुछ समय ले सकते हैं।",
     "subscribeReadingAssistance": "संदेश उपकरणों को अनलॉक करने के लिए सदस्यता लें",
     "aceDisplayName": "अचिनीज़",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9014,7 +9004,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "मैं सीख रहा हूँ...",
     "alreadySpeak": "मैं पहले से ही बोलता हूँ...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10281,5 +10270,56 @@
     "starsToUnlockObjectiveTitle": "प्रति मिशन सितारे",
     "starsToUnlockObjectiveDesc": "प्रत्येक मिशन को पूरा करने के लिए आवश्यक सितारों की संख्या निर्धारित करें",
     "maxStarsPerMissionWarning": "इस कोर्स में ऐसे मिशन हैं जहाँ केवल {maxValue} सितारे ही अर्जित किए जा सकते हैं। कृपया {maxValue} से कम या उसके बराबर संख्या दर्ज करें।",
-    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।"
+    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।",
+    "endPractice": "अभ्यास समाप्त करें",
+    "bodyLabel": "{page} विकल्प",
+    "openDM": "सीधा संदेश खोलें",
+    "openNewTab": "नए टैब में खोलें",
+    "viewProfileImageLabel": "प्रोफ़ाइल छवि देखें",
+    "profileImageLabel": "प्रोफ़ाइल छवि",
+    "actionsLabel": "कार्य",
+    "colorListLabel": "रंग सूची",
+    "chatAppearanceStyleLabel": "चुनी गई शैली के साथ चैट का स्वरूप",
+    "volumeLabel": "वॉल्यूम",
+    "listLabel": "{description} सूची",
+    "passwordFormLabel": "पासवर्ड बदलें फ़ॉर्म",
+    "searchLanguagesHint": "भाषाएँ खोजें",
+    "searchCountriesHint": "देश खोजें",
+    "searchVocabHint": "शब्दावली खोजें",
+    "searchUsersHint": "उपयोगकर्ता खोजें",
+    "searchMessagesHint": "संदेश खोजें",
+    "searchChatsHint": "चैट खोजें",
+    "searchActivitiesHint": "गतिविधियाँ खोजें",
+    "appInTargetLanguageTitle": "ऐप को उस भाषा में दिखाएं जो मैं सीख रहा हूँ",
+    "appInTargetLanguageDesc": "इमर्शन के लिए मेन्यू, बटन और लेबल आपकी लक्ष्य भाषा में दिखेंगे। अनुवाद न किया गया टेक्स्ट अंग्रेज़ी में दिखेगा।",
+    "changePasswordSessionExpired": "आपका सत्र समाप्त हो गया है। कृपया फिर से लॉग इन करें।",
+    "constructUseSugDesc": "स्वीकृत सुझाव",
+    "mostPopular": "सबसे लोकप्रिय",
+    "mostSavings": "सबसे ज़्यादा बचत",
+    "enterDiscountCode": "छूट कोड दर्ज करें",
+    "yourPlan": "आपकी योजना",
+    "subscriptionRenewsOn": "{date} को नवीनीकृत होगा",
+    "subscriptionEndsOn": "{date} को समाप्त होगा",
+    "promoSubscription": "प्रचार सदस्यता",
+    "seatSubscription": "संस्थागत सीट",
+    "lifetimeSubscription": "आजीवन सदस्यता",
+    "freeSubscription": "मुफ़्त",
+    "freeTrialDescription": "आपके पास एक मुफ़्त ट्रायल है",
+    "manage": "प्रबंधित करें",
+    "subscriptionHistory": "सदस्यता इतिहास",
+    "history": "इतिहास",
+    "noPaymentHistoryFound": "कोई भुगतान इतिहास नहीं मिला",
+    "cancelAnytime": "सदस्यता सेटिंग में कभी भी रद्द करें",
+    "pricePerMonth": "{price}/माह",
+    "pricePerYear": "{price}/वर्ष",
+    "viewSubscriptionOptions": "सदस्यता विकल्प देखें",
+    "apply": "लागू करें",
+    "continueToSubscribe": "सदस्यता लेने के लिए जारी रखें",
+    "invalidDiscountCode": "अमान्य छूट कोड",
+    "selectDiscountPlan": "छूट योजना चुनें",
+    "discountApplied": "{discount} छूट लागू की गई",
+    "cancelDescriptionWithRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि ({date}) तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
+    "cancelDescriptionWithoutRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
+    "change": "बदलें",
+    "deactivateSubscribedAccountWarning": "इससे आपका उपयोगकर्ता खाता निष्क्रिय हो जाएगा और आपकी सदस्यता रद्द हो जाएगी। इसे पूर्ववत नहीं किया जा सकता! क्या आप निश्चित हैं?"
 }

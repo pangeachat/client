@@ -397,7 +397,10 @@ class WorldMapPinsManager {
     resolveProgression();
   }
 
-  Future<void> loadCourseScopedPins(String courseId) async {
+  Future<void> loadCourseScopedPins(
+    String courseId, {
+    Map<String, List<String>>? pinnedActivitiesByObjective,
+  }) async {
     final questResult = await QuestRepo.quest(courseId);
     final quest = questResult.result;
     if (quest == null) {
@@ -415,7 +418,39 @@ class WorldMapPinsManager {
       return;
     }
 
-    _pins = activityCards;
+    _pins = _restrictCards(activityCards, pinnedActivitiesByObjective);
+  }
+
+  /// Course-scoped marker filter for per-course activity pinning (org quests
+  /// doc, client#7748): a card stays when at least one of its Mission refs
+  /// allows it — the same fail-open rule as the outline restriction, via the
+  /// shared [effectivePinnedActivityIds]. Null pins (not joined / unset) show
+  /// everything; the WORLD-scoped map is deliberately never filtered.
+  static List<QuestActivityCard> _restrictCards(
+    List<QuestActivityCard> cards,
+    Map<String, List<String>>? pinnedByObjective,
+  ) {
+    if (pinnedByObjective == null || pinnedByObjective.isEmpty) return cards;
+    final availableByLo = <String, Set<String>>{};
+    for (final card in cards) {
+      for (final loId in card.learningObjectiveRefs) {
+        (availableByLo[loId] ??= <String>{}).add(card.activityId);
+      }
+    }
+    final allowedByLo = {
+      for (final entry in availableByLo.entries)
+        entry.key: effectivePinnedActivityIds(
+          entry.value,
+          pinnedByObjective[entry.key],
+        ),
+    };
+    return cards
+        .where(
+          (card) => card.learningObjectiveRefs.any(
+            (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
+          ),
+        )
+        .toList();
   }
 
   Future<void> loadWorldScopedPins({

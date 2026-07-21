@@ -3105,7 +3105,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-13 10:04:49.451262",
+    "@@last_modified": "2026-07-20 10:58:10.232775",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7014,8 +7014,6 @@
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Berlangganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -7290,14 +7288,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9014,7 +9004,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Taim ag foghlaim...",
     "alreadySpeak": "Labhraím cheana...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10281,5 +10270,56 @@
     "starsToUnlockObjectiveTitle": "Stelles per Mission",
     "starsToUnlockObjectiveDesc": "Fixar li númere de stelles necessari por completar chascun mission",
     "maxStarsPerMissionWarning": "Ti curse have missiones u solmen {maxValue} stelles posse esser ganiat. Ples introducter un númere minor o egal a {maxValue}.",
-    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor."
+    "removedFromCourseError": "Vu ha esset removet de ti curse. Contacter vor instructor.",
+    "endPractice": "Fini li practica",
+    "bodyLabel": "{page} optiones",
+    "openDM": "Aperter direct mesage",
+    "openNewTab": "Aperter in nov tab",
+    "viewProfileImageLabel": "Vider profil imágine",
+    "profileImageLabel": "Profil imágine",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Liste de colores",
+    "chatAppearanceStyleLabel": "Chat aparition con selectet stile",
+    "volumeLabel": "Volúmine",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Formularie por change de pass-parol",
+    "searchLanguagesHint": "Cuardaigh teangacha",
+    "searchCountriesHint": "Cuardaigh tíortha",
+    "searchVocabHint": "Cuardaigh stór focal",
+    "searchUsersHint": "Cuardaigh úsáideoirí",
+    "searchMessagesHint": "Cuardaigh teachtaireachtaí",
+    "searchChatsHint": "Cuardaigh comhráite",
+    "searchActivitiesHint": "Cuardaigh gníomhaíochtaí",
+    "appInTargetLanguageTitle": "Taispeáin an aip sa teanga atáim ag foghlaim",
+    "appInTargetLanguageDesc": "Bíonn biachláir, cnaipí, agus lipéid i do sprioc-theanga le haghaidh tumoideachais. Titeann téacs neamh-aistrithe ar ais go Béarla.",
+    "changePasswordSessionExpired": "Tá do sheisiún imithe in éag. Logáil isteach arís, le do thoil.",
+    "constructUseSugDesc": "Moltaí glactha",
+    "mostPopular": "Is mó a bhfuil tóir air",
+    "mostSavings": "An coigiltis is mó",
+    "enterDiscountCode": "Iontráil cód lascaine",
+    "yourPlan": "Do phlean",
+    "subscriptionRenewsOn": "Athnuaitear ar {date}",
+    "subscriptionEndsOn": "Críochnaíonn ar {date}",
+    "promoSubscription": "Síntiús Cur Chun Cinn",
+    "seatSubscription": "Suíochán Institiúideach",
+    "lifetimeSubscription": "Síntiús saoil",
+    "freeSubscription": "SAOR IN AISCE",
+    "freeTrialDescription": "Tá triail saor in aisce agat",
+    "manage": "Bainistigh",
+    "subscriptionHistory": "Stair Síntiúis",
+    "history": "Stair",
+    "noPaymentHistoryFound": "Níor aimsíodh aon stair íocaíochta",
+    "cancelAnytime": "Cealaigh am ar bith i socruithe an tsíntiúis",
+    "pricePerMonth": "{price}/mí",
+    "pricePerYear": "{price}/bliain",
+    "viewSubscriptionOptions": "Féach ar roghanna síntiúis",
+    "apply": "Cuir i bhfeidhm",
+    "continueToSubscribe": "Lean ar aghaidh le síntiús a ghlacadh",
+    "invalidDiscountCode": "Cód lascaine neamhbhailí",
+    "selectDiscountPlan": "Roghnaigh plean lascaine",
+    "discountApplied": "Lascaine {discount} curtha i bhfeidhm",
+    "cancelDescriptionWithRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana ({date}), ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
+    "cancelDescriptionWithoutRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana, ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
+    "change": "Athraigh",
+    "deactivateSubscribedAccountWarning": "Díghníomhóidh sé seo do chuntas úsáideora agus cealóidh sé do shíntiús. Ní féidir é seo a chealú! An bhfuil tú cinnte?"
 }

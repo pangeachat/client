@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:35.698507",
+    "@@last_modified": "2026-07-20 10:57:46.518810",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -7010,8 +7010,6 @@
     "allow": "অনুমতি দিন",
     "deny": "অস্বীকার করুন",
     "enabledRenewal": "সাবস্ক্রিপশন নবীকরণ সক্ষম করুন",
-    "subscriptionEndsOn": "সাবস্ক্রিপশন শেষ হবে",
-    "subscriptionRenewsOn": "সাবস্ক্রিপশন নবীকরণ হবে",
     "waitForSubscriptionChanges": "আপনার সাবস্ক্রিপশনের পরিবর্তনগুলি অ্যাপে প্রতিফলিত হতে কিছু সময় লাগতে পারে।",
     "subscribeReadingAssistance": "বার্তা সরঞ্জাম আনলক করতে সাবস্ক্রাইব করুন",
     "aceDisplayName": "আচিনিজ",
@@ -7286,14 +7284,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9010,7 +9000,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "আমি শিখছি...",
     "alreadySpeak": "আমি ইতিমধ্যে বলি...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10277,5 +10266,56 @@
     "starsToUnlockObjectiveTitle": "প্রতিটি মিশনে স্টার",
     "starsToUnlockObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করার জন্য প্রয়োজনীয় স্টারের সংখ্যা সেট করুন",
     "maxStarsPerMissionWarning": "এই কোর্সে এমন মিশন রয়েছে যেখানে শুধুমাত্র {maxValue} স্টার অর্জন করা যাবে। অনুগ্রহ করে {maxValue} এর কম বা সমান একটি সংখ্যা লিখুন।",
-    "removedFromCourseError": "আপনাকে এই কোর্স থেকে সরিয়ে দেওয়া হয়েছে। আপনার শিক্ষকের সাথে যোগাযোগ করুন।"
+    "removedFromCourseError": "আপনাকে এই কোর্স থেকে সরিয়ে দেওয়া হয়েছে। আপনার শিক্ষকের সাথে যোগাযোগ করুন।",
+    "endPractice": "অনুশীলন শেষ করুন",
+    "bodyLabel": "{page} বিকল্প",
+    "openDM": "সরাসরি বার্তা খুলুন",
+    "openNewTab": "নতুন ট্যাবে খুলুন",
+    "viewProfileImageLabel": "প্রোফাইল ছবি দেখুন",
+    "profileImageLabel": "প্রোফাইল ছবি",
+    "actionsLabel": "কার্যক্রম",
+    "colorListLabel": "রঙের তালিকা",
+    "chatAppearanceStyleLabel": "নির্বাচিত শৈলী সহ চ্যাট চেহারা",
+    "volumeLabel": "ভলিউম",
+    "listLabel": "{description} তালিকা",
+    "passwordFormLabel": "পাসওয়ার্ড পরিবর্তন ফর্ম",
+    "searchLanguagesHint": "ভাষা খুঁজুন",
+    "searchCountriesHint": "দেশ খুঁজুন",
+    "searchVocabHint": "শব্দভান্ডার খুঁজুন",
+    "searchUsersHint": "ব্যবহারকারীদের খুঁজুন",
+    "searchMessagesHint": "বার্তা খুঁজুন",
+    "searchChatsHint": "চ্যাট খুঁজুন",
+    "searchActivitiesHint": "কার্যকলাপ খুঁজুন",
+    "appInTargetLanguageTitle": "আমি যে ভাষা শিখছি সেই ভাষায় অ্যাপটি দেখান",
+    "appInTargetLanguageDesc": "নিমজ্জনের জন্য মেনু, বোতাম এবং লেবেলগুলি আপনার লক্ষ্য ভাষায় প্রদর্শিত হবে। অনুবাদ না করা টেক্সট ইংরেজিতে ফিরে যাবে।",
+    "changePasswordSessionExpired": "আপনার সেশন শেষ হয়ে গেছে। অনুগ্রহ করে আবার লগ ইন করুন।",
+    "constructUseSugDesc": "গৃহীত পরামর্শ",
+    "mostPopular": "সবচেয়ে জনপ্রিয়",
+    "mostSavings": "সবচেয়ে বেশি সঞ্চয়",
+    "enterDiscountCode": "ডিসকাউন্ট কোড লিখুন",
+    "yourPlan": "আপনার প্ল্যান",
+    "subscriptionRenewsOn": "{date} তারিখে নবায়ন হবে",
+    "subscriptionEndsOn": "{date} তারিখে শেষ হবে",
+    "promoSubscription": "প্রচারমূলক সাবস্ক্রিপশন",
+    "seatSubscription": "প্রাতিষ্ঠানিক আসন",
+    "lifetimeSubscription": "আজীবন সাবস্ক্রিপশন",
+    "freeSubscription": "বিনামূল্যে",
+    "freeTrialDescription": "আপনার একটি বিনামূল্যে ট্রায়াল আছে",
+    "manage": "পরিচালনা করুন",
+    "subscriptionHistory": "সাবস্ক্রিপশন ইতিহাস",
+    "history": "ইতিহাস",
+    "noPaymentHistoryFound": "কোনো পেমেন্টের ইতিহাস পাওয়া যায়নি",
+    "cancelAnytime": "সাবস্ক্রিপশন সেটিংসে যেকোনো সময় বাতিল করুন",
+    "pricePerMonth": "{price}/মাস",
+    "pricePerYear": "{price}/বছর",
+    "viewSubscriptionOptions": "সাবস্ক্রিপশন বিকল্পগুলি দেখুন",
+    "apply": "প্রয়োগ করুন",
+    "continueToSubscribe": "সাবস্ক্রাইব করতে চালিয়ে যান",
+    "invalidDiscountCode": "অবৈধ ডিসকাউন্ট কোড",
+    "selectDiscountPlan": "ডিসকাউন্ট প্ল্যান নির্বাচন করুন",
+    "discountApplied": "{discount} ডিসকাউন্ট প্রয়োগ করা হয়েছে",
+    "cancelDescriptionWithRenewalDate": "আপনার সাবস্ক্রিপশন নবায়নের তারিখ ({date}) পর্যন্ত সক্রিয় থাকবে, তারপর নিষ্ক্রিয় হয়ে যাবে। আপনি অ্যানালিটিক্স ধরে রাখবেন কিন্তু প্রো বৈশিষ্ট্যগুলি ব্যবহার করতে পারবেন না।",
+    "cancelDescriptionWithoutRenewalDate": "আপনার সাবস্ক্রিপশন নবায়নের তারিখ পর্যন্ত সক্রিয় থাকবে, তারপর নিষ্ক্রিয় হয়ে যাবে। আপনি অ্যানালিটিক্স ধরে রাখবেন কিন্তু প্রো বৈশিষ্ট্যগুলি ব্যবহার করতে পারবেন না।",
+    "change": "পরিবর্তন করুন",
+    "deactivateSubscribedAccountWarning": "এটি আপনার ব্যবহারকারী অ্যাকাউন্ট নিষ্ক্রিয় করবে এবং আপনার সাবস্ক্রিপশন বাতিল করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না! আপনি কি নিশ্চিত?"
 }

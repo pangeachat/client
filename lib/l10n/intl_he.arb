@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:01.449402",
+    "@@last_modified": "2026-07-20 10:57:57.418094",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -7302,8 +7302,6 @@
     "allow": "אפשר",
     "deny": "סירב",
     "enabledRenewal": "אפשר חידוש מנוי",
-    "subscriptionEndsOn": "המנוי מסתיים ב",
-    "subscriptionRenewsOn": "המנוי מתחדש ב",
     "waitForSubscriptionChanges": "שינויים במנוי שלך עשויים לקחת רגע להופיע באפליקציה.",
     "subscribeReadingAssistance": "הירשם כדי לפתוח כלים להודעות",
     "aceDisplayName": "אכינזי",
@@ -7578,14 +7576,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9302,7 +9292,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "אני לומד...",
     "alreadySpeak": "אני כבר מדבר...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10569,5 +10558,56 @@
     "starsToUnlockObjectiveTitle": "כוכבים למשימה",
     "starsToUnlockObjectiveDesc": "קבע את מספר הכוכבים הדרושים להשלמת כל משימה",
     "maxStarsPerMissionWarning": "בקורס זה יש משימות שבהן ניתן לצבור רק {maxValue} כוכבים. אנא הזן מספר קטן או שווה ל-{maxValue}.",
-    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך."
+    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך.",
+    "endPractice": "סיים אימון",
+    "bodyLabel": "אפשרויות {page}",
+    "openDM": "פתח הודעה פרטית",
+    "openNewTab": "פתח בכרטיסייה חדשה",
+    "viewProfileImageLabel": "הצג תמונת פרופיל",
+    "profileImageLabel": "תמונת פרופיל",
+    "actionsLabel": "פעולות",
+    "colorListLabel": "רשימת צבעים",
+    "chatAppearanceStyleLabel": "מראה הצ'אט עם הסגנון הנבחר",
+    "volumeLabel": "עוצמת קול",
+    "listLabel": "רשימת {description}",
+    "passwordFormLabel": "טופס שינוי סיסמה",
+    "searchLanguagesHint": "חיפוש שפות",
+    "searchCountriesHint": "חיפוש מדינות",
+    "searchVocabHint": "חיפוש אוצר מילים",
+    "searchUsersHint": "חיפוש משתמשים",
+    "searchMessagesHint": "חיפוש הודעות",
+    "searchChatsHint": "חיפוש צ'אטים",
+    "searchActivitiesHint": "חיפוש פעילויות",
+    "appInTargetLanguageTitle": "הצג את האפליקציה בשפה שאני לומד",
+    "appInTargetLanguageDesc": "תפריטים, כפתורים ותוויות יופיעו בשפת היעד שלך לטבילה. טקסט שלא תורגם יחזור לאנגלית.",
+    "changePasswordSessionExpired": "ההתחברות שלך פגה. אנא התחבר מחדש.",
+    "constructUseSugDesc": "הצעות שהתקבלו",
+    "mostPopular": "הפופולרי ביותר",
+    "mostSavings": "החיסכון הגדול ביותר",
+    "enterDiscountCode": "הזן קוד הנחה",
+    "yourPlan": "התוכנית שלך",
+    "subscriptionRenewsOn": "מתחדש ב-{date}",
+    "subscriptionEndsOn": "מסתיים ב-{date}",
+    "promoSubscription": "מנוי קידום מכירות",
+    "seatSubscription": "מושב מוסדי",
+    "lifetimeSubscription": "מנוי לכל החיים",
+    "freeSubscription": "חינם",
+    "freeTrialDescription": "יש לך תקופת ניסיון בחינם",
+    "manage": "נהל",
+    "subscriptionHistory": "היסטוריית מנויים",
+    "history": "היסטוריה",
+    "noPaymentHistoryFound": "לא נמצאה היסטוריית תשלומים",
+    "cancelAnytime": "בטל בכל עת בהגדרות המנוי",
+    "pricePerMonth": "{price}/חודש",
+    "pricePerYear": "{price}/שנה",
+    "viewSubscriptionOptions": "הצג אפשרויות מנוי",
+    "apply": "החל",
+    "continueToSubscribe": "המשך להירשם",
+    "invalidDiscountCode": "קוד הנחה לא חוקי",
+    "selectDiscountPlan": "בחר תוכנית הנחה",
+    "discountApplied": "הנחת {discount} הוחלה",
+    "cancelDescriptionWithRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו ({date}), ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
+    "cancelDescriptionWithoutRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו, ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
+    "change": "שנה",
+    "deactivateSubscribedAccountWarning": "פעולה זו תבטל את חשבון המשתמש שלך ותבטל את המנוי שלך. לא ניתן לבטל פעולה זו! האם אתה בטוח?"
 }

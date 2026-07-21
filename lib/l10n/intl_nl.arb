@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:18.174249",
+    "@@last_modified": "2026-07-20 10:58:19.288965",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -6562,8 +6562,6 @@
     "allow": "Toestaan",
     "deny": "Weigeren",
     "enabledRenewal": "Abonnementsvernieuwing inschakelen",
-    "subscriptionEndsOn": "Abonnement eindigt op",
-    "subscriptionRenewsOn": "Abonnement vernieuwt op",
     "waitForSubscriptionChanges": "Wijzigingen in uw abonnement kunnen even duren voordat ze in de app zichtbaar zijn.",
     "subscribeReadingAssistance": "Abonneer om berichttools te ontgrendelen",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6836,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ik ben aan het leren...",
     "alreadySpeak": "Ik spreek al...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9638,56 @@
     "starsToUnlockObjectiveTitle": "Sterren per missie",
     "starsToUnlockObjectiveDesc": "Stel het aantal sterren in dat nodig is om elke missie te voltooien",
     "maxStarsPerMissionWarning": "Deze cursus heeft missies waarbij slechts {maxValue} sterren kunnen worden verdiend. Voer een getal in dat kleiner is dan of gelijk is aan {maxValue}.",
-    "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent."
+    "removedFromCourseError": "Je bent uit deze cursus verwijderd. Neem contact op met je docent.",
+    "endPractice": "Oefening beëindigen",
+    "bodyLabel": "{page} opties",
+    "openDM": "Open direct bericht",
+    "openNewTab": "Openen in nieuw tabblad",
+    "viewProfileImageLabel": "Profielafbeelding bekijken",
+    "profileImageLabel": "Profielafbeelding",
+    "actionsLabel": "Acties",
+    "colorListLabel": "Kleurenlijst",
+    "chatAppearanceStyleLabel": "Chatweergave met gekozen stijl",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} lijst",
+    "passwordFormLabel": "Wachtwoord wijzigen formulier",
+    "searchLanguagesHint": "Talen zoeken",
+    "searchCountriesHint": "Landen zoeken",
+    "searchVocabHint": "Woordenschat zoeken",
+    "searchUsersHint": "Gebruikers zoeken",
+    "searchMessagesHint": "Berichten zoeken",
+    "searchChatsHint": "Chats zoeken",
+    "searchActivitiesHint": "Activiteiten zoeken",
+    "appInTargetLanguageTitle": "Toon de app in de taal die ik leer",
+    "appInTargetLanguageDesc": "Menu's, knoppen en labels verschijnen in je doeltaal voor onderdompeling. Niet-vertaalde tekst valt terug op Engels.",
+    "changePasswordSessionExpired": "Je sessie is verlopen. Log opnieuw in.",
+    "constructUseSugDesc": "Geaccepteerde suggesties",
+    "mostPopular": "Meest populair",
+    "mostSavings": "Meeste besparingen",
+    "enterDiscountCode": "Voer kortingscode in",
+    "yourPlan": "Je abonnement",
+    "subscriptionRenewsOn": "Verlengt op {date}",
+    "subscriptionEndsOn": "Eindigt op {date}",
+    "promoSubscription": "Promotioneel abonnement",
+    "seatSubscription": "Institutionele licentie",
+    "lifetimeSubscription": "Levenslang abonnement",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Je hebt een gratis proefperiode",
+    "manage": "Beheren",
+    "subscriptionHistory": "Abonnementsgeschiedenis",
+    "history": "Geschiedenis",
+    "noPaymentHistoryFound": "Geen betalingsgeschiedenis gevonden",
+    "cancelAnytime": "Annuleer op elk moment in de abonnementsinstellingen",
+    "pricePerMonth": "{price}/maand",
+    "pricePerYear": "{price}/jaar",
+    "viewSubscriptionOptions": "Bekijk abonnementsopties",
+    "apply": "Toepassen",
+    "continueToSubscribe": "Doorgaan met abonneren",
+    "invalidDiscountCode": "Ongeldige kortingscode",
+    "selectDiscountPlan": "Selecteer kortingsplan",
+    "discountApplied": "{discount} korting toegepast",
+    "cancelDescriptionWithRenewalDate": "Je abonnement is actief tot de verlengingsdatum ({date}) en wordt dan gedeactiveerd. Je behoudt analyses, maar kunt geen pro-functies gebruiken.",
+    "cancelDescriptionWithoutRenewalDate": "Je abonnement is actief tot de verlengingsdatum en wordt dan gedeactiveerd. Je behoudt analyses, maar kunt geen pro-functies gebruiken.",
+    "change": "Wijzigen",
+    "deactivateSubscribedAccountWarning": "Dit deactiveert je gebruikersaccount en annuleert je abonnement. Dit kan niet ongedaan worden gemaakt! Weet je het zeker?"
 }
