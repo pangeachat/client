@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/screen_names.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
@@ -55,6 +56,59 @@ void main() {
           AnalyticsPracticeTokenParam.parse('grammar'),
         ).screenName,
         'practice:grammar',
+      );
+    });
+
+    test('addcoursepage keeps subpage and leaf, drops ids and filters', () {
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse('own'),
+        ).screenName,
+        'addcoursepage:own',
+      );
+      // Language filter and all-languages flag are dropped.
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse('own.les-ES.a'),
+        ).screenName,
+        'addcoursepage:own',
+      );
+      // The created course's id is identity; the pushed page keeps its leaf.
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse(
+            'own/30dbdcfc-0f8c-4b7f-bdf8-f15d86c8cb24.les',
+          ),
+        ).screenName,
+        'addcoursepage:own/preview',
+      );
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse(
+            'own/30dbdcfc-0f8c-4b7f-bdf8-f15d86c8cb24/invite',
+          ),
+        ).screenName,
+        'addcoursepage:own/invite',
+      );
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse('browse'),
+        ).screenName,
+        'addcoursepage:browse',
+      );
+      // The previewed room's id is identity.
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse('browse/!abc.les'),
+        ).screenName,
+        'addcoursepage:browse/preview',
+      );
+      // The private join code is identity (and secret) — never in a name.
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse('private.jABC123'),
+        ).screenName,
+        'addcoursepage:private',
       );
     });
 

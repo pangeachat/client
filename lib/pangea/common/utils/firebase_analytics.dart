@@ -325,6 +325,12 @@ class GoogleAnalytics {
           return false;
         }
 
+        // The workspace route ('/') is tracked by WorkspaceScreenTracker with
+        // token-derived names; logging it here would double-count it as '/'.
+        if (name == '/') {
+          return false;
+        }
+
         debugPrint("navigating to route: $name");
         return true;
       },
