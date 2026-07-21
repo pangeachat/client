@@ -2,6 +2,23 @@
 <html>
 
 <head>
+  <!-- #Pangea -->
+  <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
+       app-argument carries the CURRENT URL, so a shared link (`/<code>`
+       course join, `/<uuid>` activity) opened in Safari or an in-app browser
+       hops into the installed app with the link intact; "View" goes to the
+       App Store. Injected via script because the argument must be the live
+       URL (joining-courses.instructions.md, Deep Linking). -->
+  <script>
+    (function () {
+      const meta = document.createElement('meta');
+      meta.name = 'apple-itunes-app';
+      meta.content =
+        'app-id=1445118630, app-argument=' + window.location.href;
+      document.head.appendChild(meta);
+    })();
+  </script>
+  <!-- Pangea# -->
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
