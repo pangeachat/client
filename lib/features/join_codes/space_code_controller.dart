@@ -32,18 +32,16 @@ class SpaceCodeController {
   /// (#7579).
   static final Map<String, Future<Result<JoinResponse>>> _inFlightJoins = {};
 
-  static StreamController spaceCodeStream = StreamController.broadcast();
-
   /// The one post-join hop, shared by every code entry point (the coded-link
-  /// page, the public course preview, the legacy cached-code path): run the
-  /// analytics-consent step where the room is available locally, then open
-  /// the course. When sync hasn't surfaced the room yet the join is STILL
-  /// done (the join API call succeeded), so navigate to the course anyway —
-  /// its panel renders a loading state until sync catches up — instead of
-  /// silently stranding the user on the join page as a secret member of the
-  /// course (#7579). Class codes only attach to course spaces, so the course
-  /// route is the right target for the not-yet-local case; the consent
-  /// notice, skipped here, resurfaces through the course-settings listener.
+  /// page, the public course preview): run the analytics-consent step where
+  /// the room is available locally, then open the course. When sync hasn't
+  /// surfaced the room yet the join is STILL done (the join API call
+  /// succeeded), so navigate to the course anyway — its panel renders a
+  /// loading state until sync catches up — instead of silently stranding the
+  /// user on the join page as a secret member of the course (#7579). The
+  /// course route is the right default for the not-yet-local case; the
+  /// consent notice, skipped here, resurfaces through the course-settings
+  /// listener.
   static Future<void> navigateAfterJoin(
     BuildContext context,
     Client client,
@@ -55,15 +53,15 @@ class SpaceCodeController {
   }
 
   /// The async half of the post-join hop: run the analytics-consent step where
-  /// the room is available locally, and resolve where to land. Null means the
-  /// learner declined consent — don't navigate. When sync hasn't surfaced the
-  /// room yet the join is STILL done (the join API call succeeded), so resolve
-  /// to the course anyway — its panel renders a loading state until sync
-  /// catches up — instead of silently stranding the user on the join page as a
-  /// secret member of the course (#7579). Class codes only attach to course
-  /// spaces, so the course route is the right default for the not-yet-local
-  /// case; the consent notice, skipped there, resurfaces through the
-  /// course-settings listener.
+  /// the room is available locally, and resolve where to land — the course
+  /// plan page, also when the code's room is a child of a course (see below).
+  /// Null means the learner declined consent — don't navigate. When sync
+  /// hasn't surfaced the room yet the join is STILL done (the join API call
+  /// succeeded), so resolve to the course anyway — its panel renders a
+  /// loading state until sync catches up — instead of silently stranding the
+  /// user on the join page as a secret member of the course (#7579); the
+  /// consent notice, skipped there, resurfaces through the course-settings
+  /// listener.
   static Future<({String roomId, bool isSpace})?> resolveJoinedTarget(
     BuildContext context,
     Client client,
@@ -85,7 +83,21 @@ class SpaceCodeController {
     );
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return null;
-    return (roomId: joinedRoomId, isSpace: room.isSpace);
+    if (room.isSpace) return (roomId: joinedRoomId, isSpace: true);
+
+    // A code can attach to a room WITHIN a course (an activity session, an
+    // announcements chat). A join still lands on the course plan page, not
+    // inside that room: resolve to the room's joined parent course when one
+    // exists. Only without any joined parent (a standalone coded chat) does
+    // the join open the room itself.
+    final parentCourse = room.spaceParents
+        .map((p) => p.roomId == null ? null : client.getRoomById(p.roomId!))
+        .whereType<Room>()
+        .firstWhereOrNull(
+          (parent) => parent.isSpace && parent.membership == Membership.join,
+        );
+    if (parentCourse != null) return (roomId: parentCourse.id, isSpace: true);
+    return (roomId: joinedRoomId, isSpace: false);
   }
 
   /// The synchronous half of the post-join hop, split from
@@ -106,30 +118,8 @@ class SpaceCodeController {
         : NavigationUtil.goToSpaceRoute(target.roomId, const [], context);
   }
 
-  static Future<void> cacheRoomCodeToJoin(String code) async {
-    await SpaceCodeRepo.setSpaceCode(code);
-    spaceCodeStream.add(code);
-  }
-
-  static Future<Result<JoinResponse>> joinCachedSpaceCode({
-    required BuildContext context,
-    required Client client,
-    String? notFoundError,
-    bool showLoading = true,
-  }) async {
-    final String? spaceCode = SpaceCodeRepo.spaceCode;
-    if (spaceCode == null) {
-      return Result.error(Exception('No space code found'), null);
-    }
-    await SpaceCodeRepo.clearSpaceCode();
-    return joinSpaceWithCode(
-      spaceCode,
-      context: context,
-      client: client,
-      notFoundError: notFoundError,
-      showLoading: showLoading,
-    );
-  }
+  static Future<void> cacheRoomCodeToJoin(String code) =>
+      SpaceCodeRepo.setSpaceCode(code);
 
   static Future<Result<JoinResponse>> joinSpaceWithCode(
     String spaceCode, {

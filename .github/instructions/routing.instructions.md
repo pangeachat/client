@@ -89,11 +89,13 @@ relate. That is the whole compatibility story: **the client is the only
 producer of its URLs, so retired shapes and spellings are simply deleted, not
 redirected** — old bookmarks and stale tabs from earlier releases are not
 maintained (a deliberate call at current scale, #7467). The inbound URL
-contracts are the shareable standalone activity link (`/<uuid>`) and the course
-join link (`/join_with_link?classcode=<code>`, the CloudFront short-code 302
-target, plus its native `/join` spelling — #7524), which
+contracts are two bare single-segment links — the shareable standalone activity
+link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join
+code) — which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into their `activity` / `addcourse:private/<code>` tokens before render.
+into their `activity` / `addcourse:private/<code>` tokens before render. Both
+are just app URLs the SPA serves directly; the older `/join_with_link` and
+`/join` join-link spellings are retired.
 
 ## The core model
 
@@ -110,9 +112,9 @@ resolves through its structured content keys and a `matrix.to` link through the
 in-app link handler — both emit token URLs in code
 ([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
 The URLs that arrive from outside — the shareable standalone activity link
-(`/<uuid>`) and the course join link (`/join_with_link?classcode=<code>`) — are
-rewritten to their tokens at the router redirect before anything renders — so
-there is exactly one representation by the time the shell builds.
+(`/<uuid>`) and the course join link (`/<code>`) — are rewritten to their tokens
+at the router redirect before anything renders — so there is exactly one
+representation by the time the shell builds.
 
 ### The course context
 
