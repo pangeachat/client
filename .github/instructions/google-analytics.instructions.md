@@ -34,15 +34,19 @@ GA exists to answer a short list of named product questions, each mapped to
 its instrument — a report that cannot answer its question is a bug, and a
 new product event must state which question it serves or it doesn't ship:
 
-1. **Are new users activating?** — the Activation funnel
+1. **Are new users activating?** — the Activation funnel:
+   [activation.sql](https://github.com/pangeachat/devops/blob/main/analytics/funnels/activation.sql)
    (`sign_up → sent_message → start_activity`).
-2. **Which panels do learners actually use, per platform?** — Pages and
-   screens by "Page title and screen name" (see Screen tracking below).
+2. **Which panels do learners actually use, per platform?** —
+   [Pages and screens by "Page title and screen name"](https://analytics.google.com/analytics/web/#/p323613034/reports/explorer?params=_r.explorerCard..seldim%3D%5B%22unifiedScreenName%22%5D&r=all-pages-and-screens)
+   (prod; swap the property id for staging, see Screen tracking below).
 3. **Does anyone reach and convert on the subscription page?** — screen
-   `settingspage:subscription` plus the Subscription conversion funnel
+   `settingspage:subscription` plus the Subscription conversion funnel:
+   [subscription_conversion.sql](https://github.com/pangeachat/devops/blob/main/analytics/funnels/subscription_conversion.sql)
    (`begin_checkout → purchase`).
-4. **Do learners come back?** — GA4 retention cohorts keyed on the
-   pseudonymous user id.
+4. **Do learners come back?** — GA4
+   [retention cohorts](https://analytics.google.com/analytics/web/#/p323613034/reports/reportinghub)
+   keyed on the pseudonymous user id.
 5. **Are practice and teacher surfaces adopted?** — screen-based funnels,
    once title data accrues.
 
