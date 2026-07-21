@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
@@ -35,39 +36,6 @@ class SpacesNavigationRail extends StatelessWidget {
     required this.showNavRail,
     super.key,
   });
-
-  Future<void> _onTapSpace(BuildContext context, String roomId) async {
-    final uri = GoRouterState.of(context).uri;
-    final client = Matrix.of(context).client;
-    final room = client.getRoomById(roomId);
-    final membership = room?.membership;
-
-    if (!{Membership.invite, Membership.leave}.contains(membership)) {
-      context.go(
-        // A left-nav click replaces the open left panels rather than stacking
-        // beside them (drop any open room/section). See routing.instructions.md.
-        WorkspaceNav.openCourseSection(uri, roomId, keepRoom: false),
-      );
-      return;
-    }
-
-    final joinResp = room?.membership == Membership.invite
-        ? await SpaceTapUtil.onInviteTap(context, room!)
-        : await SpaceTapUtil.autoJoin(context, room!);
-
-    if (joinResp == null) return;
-    final joinedRoom = client.getRoomById(joinResp.roomId);
-    if (joinedRoom == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return;
-
-    context.go(
-      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
-    );
-    return;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -244,8 +212,6 @@ class SpacesNavigationRail extends StatelessWidget {
                                         selected:
                                             section == AppSection.courses &&
                                             activeSpaceId == space.id,
-                                        onTap: () =>
-                                            _onTapSpace(context, space.id),
                                       ),
                                   ],
                                 ),
@@ -271,15 +237,45 @@ class _SpaceItem extends StatelessWidget {
   final double iconWidth;
   final double naviRailWidth;
   final bool selected;
-  final VoidCallback onTap;
 
   const _SpaceItem({
     required this.space,
     required this.iconWidth,
     required this.naviRailWidth,
     required this.selected,
-    required this.onTap,
   });
+
+  Future<void> _onTapSpace(BuildContext context) async {
+    final uri = GoRouterState.of(context).uri;
+    final client = Matrix.of(context).client;
+    final membership = space.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go(
+        // A left-nav click replaces the open left panels rather than stacking
+        // beside them (drop any open room/section). See routing.instructions.md.
+        WorkspaceNav.openCourseSection(uri, space.id, keepRoom: false),
+      );
+      return;
+    }
+
+    final joinResp = space.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, space)
+        : await SpaceTapUtil.autoJoin(context, space);
+
+    if (joinResp == null) return;
+    final joinedRoom = client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go(
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
+    );
+    return;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -292,39 +288,77 @@ class _SpaceItem extends StatelessWidget {
       isSelected: selected,
       backgroundColor: Colors.transparent,
       borderRadius: BorderRadius.circular(0),
-      onTap: onTap,
+      onTap: () => _onTapSpace(context),
       unreadBadgeFilter: (room) => spaceChildrenIds.contains(room.id),
-      icon: b.Badge(
-        showBadge: space.membership == Membership.invite,
-        badgeStyle: b.BadgeStyle(
-          badgeColor: Theme.of(context).colorScheme.error,
-          elevation: 4,
-          borderSide: BorderSide.none,
-          padding: const EdgeInsetsGeometry.all(0),
-        ),
-        badgeContent: Icon(
-          Icons.error_outline,
-          color: Theme.of(context).colorScheme.onPrimary,
-          size: 16,
-        ),
-        position: b.BadgePosition.topEnd(top: -5, end: -7),
-        child: ClipPath(
-          clipper: MapClipper(),
-          // The course name is already announced by NaviRailItem's toolTip, so
-          // exclude the avatar's own name label to avoid a double-read (#7185).
-          child: ExcludeSemantics(
-            child: Avatar(
-              mxContent: space.avatar,
-              name: displayname,
-              border: BorderSide(
-                width: 1,
-                color: Theme.of(context).dividerColor,
+      icon: Builder(
+        builder: (context) {
+          final position = b.BadgePosition.topEnd(top: -5, end: -7);
+          final child = ClipPath(
+            clipper: MapClipper(),
+            // The course name is already announced by NaviRailItem's toolTip, so
+            // exclude the avatar's own name label to avoid a double-read (#7185).
+            child: ExcludeSemantics(
+              child: Avatar(
+                mxContent: space.avatar,
+                name: displayname,
+                border: BorderSide(
+                  width: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
+                borderRadius: BorderRadius.circular(0),
+                size: iconWidth,
               ),
-              borderRadius: BorderRadius.circular(0),
-              size: iconWidth,
             ),
-          ),
-        ),
+          );
+
+          if (space.membership == Membership.invite) {
+            return b.Badge(
+              badgeStyle: b.BadgeStyle(
+                badgeColor: Theme.of(context).colorScheme.error,
+                elevation: 4,
+                borderSide: BorderSide.none,
+                padding: const EdgeInsetsGeometry.all(0),
+              ),
+              badgeContent: Icon(
+                Icons.error_outline,
+                color: Theme.of(context).colorScheme.onPrimary,
+                size: 16,
+              ),
+              position: position,
+              child: child,
+            );
+          }
+
+          return FutureBuilder(
+            future: space.unreadCoursePingEvent,
+            builder: (context, snapshot) {
+              final eventId = snapshot.data;
+              if (eventId != null) {
+                return b.Badge(
+                  badgeStyle: b.BadgeStyle(
+                    badgeColor: Theme.of(context).colorScheme.primaryContainer,
+                    elevation: 4,
+                    borderSide: BorderSide.none,
+                    padding: const EdgeInsetsGeometry.all(2),
+                  ),
+                  badgeContent: Icon(
+                    Icons.notifications_outlined,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    size: 12,
+                  ),
+                  position: position,
+                  child: child,
+                );
+              }
+
+              return b.Badge(
+                showBadge: false,
+                position: position,
+                child: child,
+              );
+            },
+          );
+        },
       ),
       naviRailWidth: naviRailWidth,
     );

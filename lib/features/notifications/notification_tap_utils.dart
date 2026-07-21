@@ -11,10 +11,13 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
 
 class NotificationTapUtil {
-  static const _sessionIdKey = 'content_pangea.activity.session_room_id';
-  static const _activityIdKey = 'content_pangea.activity.id';
+  static const _sessionIdKey =
+      'content_${CoursePingConstants.coursePingRoomId}';
+  static const _activityIdKey =
+      'content_${CoursePingConstants.coursePingActivityId}';
 
   static const _targetEventKey = 'content_pangea.analytics.target_event_name';
   static const _variantKey = 'content_pangea.analytics.variant';
