@@ -194,13 +194,11 @@ class OnboardingController extends State<Onboarding> {
               ),
               automaticallyImplyLeading: false,
             ),
-            body: SafeArea(
-              child: Center(
-                child: Container(
-                  width: 350.0,
-                  padding: EdgeInsets.symmetric(vertical: 48.0),
-                  child: content,
-                ),
+            body: Center(
+              child: Container(
+                width: 350.0,
+                padding: EdgeInsets.symmetric(vertical: 48.0),
+                child: content,
               ),
             ),
           ),

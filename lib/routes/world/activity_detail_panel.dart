@@ -157,19 +157,17 @@ class _LeftPanelActivityDetailsSubpageState
     final courseScoped = activeSpaceIdFor(uri) != null;
     final showBack = embedded && courseScoped;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            ActivityLoadingHeader(
-              showBack: showBack,
-              onBack: _back,
-              onClose: _close,
-            ),
-            const Expanded(
-              child: Center(child: CircularProgressIndicator.adaptive()),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          ActivityLoadingHeader(
+            showBack: showBack,
+            onBack: _back,
+            onClose: _close,
+          ),
+          const Expanded(
+            child: Center(child: CircularProgressIndicator.adaptive()),
+          ),
+        ],
       ),
     );
   }

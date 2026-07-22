@@ -43,87 +43,80 @@ class SignupPageView extends StatelessWidget {
             ),
             automaticallyImplyLeading: false,
           ),
-          body: SafeArea(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 300,
-                  maxHeight: 600,
-                ),
-                child: Column(
-                  spacing: 16.0,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      L10n.of(context).signupOption,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+          body: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
+              child: Column(
+                spacing: 16.0,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    L10n.of(context).signupOption,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    if (controller.prevInfo != null)
-                      MergeSemantics(
-                        child: RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              color: theme.colorScheme.onSurface,
+                  ),
+                  if (controller.prevInfo != null)
+                    MergeSemantics(
+                      child: RichText(
+                        text: TextSpan(
+                          style: TextStyle(color: theme.colorScheme.onSurface),
+                          children: [
+                            TextSpan(
+                              text: L10n.of(context).welcomeBackLogin(
+                                controller.prevInfo!.method.label(
+                                  L10n.of(context),
+                                ),
+                              ),
                             ),
-                            children: [
-                              TextSpan(
-                                text: L10n.of(context).welcomeBackLogin(
-                                  controller.prevInfo!.method.label(
-                                    L10n.of(context),
-                                  ),
-                                ),
+                            TextSpan(text: ' '),
+                            TextSpan(
+                              text: L10n.of(context).clickToLogin,
+                              style: TextStyle(
+                                color: theme.colorScheme.primary,
+                                decoration: TextDecoration.underline,
                               ),
-                              TextSpan(text: ' '),
-                              TextSpan(
-                                text: L10n.of(context).clickToLogin,
-                                style: TextStyle(
-                                  color: theme.colorScheme.primary,
-                                  decoration: TextDecoration.underline,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    context.go('/home/login');
-                                  },
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.center,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  context.go('/home/login');
+                                },
+                            ),
+                          ],
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    PangeaSsoButton(provider: SSOProvider.apple),
-                    PangeaSsoButton(provider: SSOProvider.google),
-                    ElevatedButton(
-                      onPressed: () => context.go('/home/signup/email'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: 20,
-                              forceColor: Theme.of(
-                                context,
-                              ).colorScheme.onPrimaryContainer,
-                            ),
+                    ),
+                  PangeaSsoButton(provider: SSOProvider.apple),
+                  PangeaSsoButton(provider: SSOProvider.google),
+                  ElevatedButton(
+                    onPressed: () => context.go('/home/signup/email'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
+                    ),
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ExcludeSemantics(
+                          child: PangeaLogoSvg(
+                            width: 20,
+                            forceColor: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
                           ),
-                          Text(L10n.of(context).withEmail),
-                        ],
-                      ),
+                        ),
+                        Text(L10n.of(context).withEmail),
+                      ],
                     ),
+                  ),
 
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: TOSIndicator(),
-                    ),
-                  ],
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: TOSIndicator(),
+                  ),
+                ],
               ),
             ),
           ),

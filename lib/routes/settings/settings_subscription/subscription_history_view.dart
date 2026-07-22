@@ -73,103 +73,97 @@ class SubscriptionHistoryView extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(
-            child: SingleChildScrollView(
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.topCenter,
               child: Container(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                  constraints: BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    spacing: 16.0,
-                    children: [
-                      ValueListenableBuilder(
-                        valueListenable: subscriptionStatusNotifier,
-                        builder: (context, subscriptionStatusState, _) =>
-                            switch (subscriptionStatusState) {
-                              AsyncLoading() || AsyncIdle() => Center(
-                                child: CircularProgressIndicator.adaptive(),
-                              ),
-                              AsyncError() => SizedBox.shrink(),
-                              AsyncLoaded(value: final subscriptionStatus) =>
-                                () {
-                                  return ValueListenableBuilder(
-                                    valueListenable: subscriptionPlanNotifier,
-                                    builder: (context, subscriptionPlan, _) {
-                                      final displayEntitlement =
-                                          subscriptionStatus
-                                              .cardDisplayEntitlement;
+                padding: EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+                constraints: BoxConstraints(maxWidth: 400),
+                child: Column(
+                  spacing: 16.0,
+                  children: [
+                    ValueListenableBuilder(
+                      valueListenable: subscriptionStatusNotifier,
+                      builder: (context, subscriptionStatusState, _) =>
+                          switch (subscriptionStatusState) {
+                            AsyncLoading() || AsyncIdle() => Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            ),
+                            AsyncError() => SizedBox.shrink(),
+                            AsyncLoaded(value: final subscriptionStatus) => () {
+                              return ValueListenableBuilder(
+                                valueListenable: subscriptionPlanNotifier,
+                                builder: (context, subscriptionPlan, _) {
+                                  final displayEntitlement =
+                                      subscriptionStatus.cardDisplayEntitlement;
 
-                                      final activeTrial =
-                                          subscriptionStatus.activeTrial;
+                                  final activeTrial =
+                                      subscriptionStatus.activeTrial;
 
-                                      final trialDescription = activeTrial
-                                          ?.paymentPeriodDescription(l10n);
+                                  final trialDescription = activeTrial
+                                      ?.paymentPeriodDescription(l10n);
 
-                                      return Column(
-                                        spacing: 20.0,
-                                        children: [
-                                          if (activeTrial != null &&
-                                              trialDescription != null)
-                                            Text(
-                                              trialDescription,
-                                              style: isColumnMode
-                                                  ? theme.textTheme.titleMedium
-                                                  : theme.textTheme.titleSmall,
+                                  return Column(
+                                    spacing: 20.0,
+                                    children: [
+                                      if (activeTrial != null &&
+                                          trialDescription != null)
+                                        Text(
+                                          trialDescription,
+                                          style: isColumnMode
+                                              ? theme.textTheme.titleMedium
+                                              : theme.textTheme.titleSmall,
+                                        ),
+                                      UserSubscriptionPlanCard(
+                                        subscriptionTitle:
+                                            displayEntitlement
+                                                ?.subscriptionTitle(l10n) ??
+                                            l10n.currentSubscription,
+                                        paymentPeriodDescription:
+                                            displayEntitlement
+                                                ?.paymentPeriodDescription(
+                                                  l10n,
+                                                ),
+                                        priceDisplay:
+                                            subscriptionPlan?.priceDisplay ??
+                                            displayEntitlement?.priceDisplay(
+                                              l10n,
                                             ),
-                                          UserSubscriptionPlanCard(
-                                            subscriptionTitle:
-                                                displayEntitlement
-                                                    ?.subscriptionTitle(l10n) ??
-                                                l10n.currentSubscription,
-                                            paymentPeriodDescription:
-                                                displayEntitlement
-                                                    ?.paymentPeriodDescription(
-                                                      l10n,
-                                                    ),
-                                            priceDisplay:
-                                                subscriptionPlan
-                                                    ?.priceDisplay ??
-                                                displayEntitlement
-                                                    ?.priceDisplay(l10n),
-                                            showCancel: true,
-                                            canCancelNotifier:
-                                                canCancelSubscriptionNotifier,
-                                            onCancel: onCancelSubscription,
-                                            showManage: true,
-                                            canManageNotifier:
-                                                canManageSubscriptionNotifier,
-                                            onManage: onManageSubscription,
-                                          ),
-                                        ],
-                                      );
-                                    },
+                                        showCancel: true,
+                                        canCancelNotifier:
+                                            canCancelSubscriptionNotifier,
+                                        onCancel: onCancelSubscription,
+                                        showManage: true,
+                                        canManageNotifier:
+                                            canManageSubscriptionNotifier,
+                                        onManage: onManageSubscription,
+                                      ),
+                                    ],
                                   );
-                                }(),
-                            },
-                      ),
-                      ValueListenableBuilder(
-                        valueListenable: invoiceHistoryNotifier,
-                        builder: (context, invoiceHistoryState, _) =>
-                            switch (invoiceHistoryState) {
-                              AsyncLoading() || AsyncIdle() => Center(
-                                child: CircularProgressIndicator.adaptive(),
-                              ),
-                              AsyncError() => SizedBox.shrink(),
-                              AsyncLoaded(value: final invoices) =>
-                                invoices.isEmpty
-                                    ? Text(
-                                        L10n.of(context).noPaymentHistoryFound,
-                                      )
-                                    : _InvoiceHistoryList(invoices),
-                            },
-                      ),
-                    ],
-                  ),
+                                },
+                              );
+                            }(),
+                          },
+                    ),
+                    ValueListenableBuilder(
+                      valueListenable: invoiceHistoryNotifier,
+                      builder: (context, invoiceHistoryState, _) =>
+                          switch (invoiceHistoryState) {
+                            AsyncLoading() || AsyncIdle() => Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            ),
+                            AsyncError() => SizedBox.shrink(),
+                            AsyncLoaded(value: final invoices) =>
+                              invoices.isEmpty
+                                  ? Text(L10n.of(context).noPaymentHistoryFound)
+                                  : _InvoiceHistoryList(invoices),
+                          },
+                    ),
+                  ],
                 ),
               ),
             ),
