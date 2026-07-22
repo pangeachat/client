@@ -44,6 +44,12 @@ class ActivityAutoSaveService {
 
   StreamSubscription? _roleStateSub;
   final Set<String> _saving = {};
+
+  /// Session rooms whose dosage outcome has already been emitted this app run.
+  /// The auto-save gate can re-open before the archive write syncs back, so a
+  /// second racing pass would otherwise emit the outcome again — this holds it
+  /// to exactly once per session room.
+  final Set<String> _emittedOutcomes = {};
   bool _disposed = false;
 
   Future<void> start() async {
@@ -105,11 +111,15 @@ class ActivityAutoSaveService {
       // Analytics room first: if this write fails, archived_at stays unset and
       // the save retries on the next role-state event or sweep.
       await analyticsService.updateService.sendActivityAnalytics(room.id, lang);
-      await room.archiveActivity();
+      // archiveActivity returns the canonical archived-at it persisted, so the
+      // outcome below uses it directly instead of re-reading room state the
+      // archive write may not have synced back yet — a race that would skip the
+      // emit permanently once the gate closes on the archived role.
+      final archivedAt = await room.archiveActivity();
 
       // Best-effort dosage session outcome at the archive moment (stars bank
       // here). Fire-and-forget; never blocks or fails the save.
-      _emitDosageSessionOutcome(room, plan);
+      _emitDosageSessionOutcome(room, plan, archivedAt);
 
       GoogleAnalytics.completeActivity(
         plan.activityId,
@@ -128,34 +138,71 @@ class ActivityAutoSaveService {
   /// archive moment. Every field is a client-side HINT the server re-verifies
   /// against the room's bot-authored state; stars are the learner's own
   /// completed goals (one star each), keyed by goal slug with an id fallback.
-  void _emitDosageSessionOutcome(Room room, ActivityPlanModel plan) {
-    final activityId = room.activityId;
-    if (activityId == null) return;
-
-    // completed_at must be the canonical archived-at marker. If the role state
-    // isn't hydrated yet, SKIP rather than send a synthetic now() — A.3.2
-    // backfills a missing outcome, but a wrong timestamp is not recoverable.
-    final archivedAt = room.ownRoleState?.archivedAt;
-    if (archivedAt == null) return;
-
+  ///
+  /// [archivedAt] is the canonical marker archiveActivity persisted (never a
+  /// re-read of racy room state); a null means the archive did not happen, so
+  /// there is nothing to emit.
+  void _emitDosageSessionOutcome(
+    Room room,
+    ActivityPlanModel plan,
+    DateTime? archivedAt,
+  ) {
     final starsByGoalSlug = <String, int>{
       for (final goal in room.ownCompletedGoals) (goal.goalSlug ?? goal.id): 1,
     };
 
-    final outcome = DosageSessionOutcome(
+    final outcome = buildSessionOutcome(
       sessionRoomId: room.id,
-      activityId: activityId,
+      activityId: room.activityId,
+      archivedAt: archivedAt,
       sourceCourseId: room.courseParent?.coursePlan?.uuid,
       loRefs: plan.learningObjective.isEmpty ? [] : [plan.learningObjective],
       starsByGoalSlug: starsByGoalSlug,
-      completedAt: archivedAt,
     );
+    // Nothing to attribute (no activity id or no archived-at): don't burn the
+    // dedupe slot, so a later valid pass can still emit.
+    if (outcome == null) return;
+
+    // Exactly once per session room: the gate can re-open before `/sync`
+    // reflects the archive, so a second pass must not double-emit.
+    if (!shouldEmitOutcome(room.id, _emittedOutcomes)) return;
 
     unawaited(
       DosageSignalsRepo.postSessionOutcomes(
         outcomes: [outcome],
         accessToken: client.accessToken,
       ).catchError((_) {}),
+    );
+  }
+
+  /// Whether the session outcome for [roomId] should still be emitted: true the
+  /// first time, false after (deduped into [alreadyEmitted]). The exactly-once
+  /// gate that keeps a re-opened auto-save pass from double-emitting.
+  @visibleForTesting
+  static bool shouldEmitOutcome(String roomId, Set<String> alreadyEmitted) =>
+      alreadyEmitted.add(roomId);
+
+  /// Builds the dosage session-outcome, or null when it cannot be attributed:
+  /// no activity id, or no archived-at (the archive did not happen). Pure so the
+  /// canonical-timestamp + attribution wiring is unit-testable without a Matrix
+  /// room; `completed_at` is exactly the passed [archivedAt].
+  @visibleForTesting
+  static DosageSessionOutcome? buildSessionOutcome({
+    required String sessionRoomId,
+    required String? activityId,
+    required DateTime? archivedAt,
+    required String? sourceCourseId,
+    required List<String> loRefs,
+    required Map<String, int> starsByGoalSlug,
+  }) {
+    if (activityId == null || archivedAt == null) return null;
+    return DosageSessionOutcome(
+      sessionRoomId: sessionRoomId,
+      activityId: activityId,
+      sourceCourseId: sourceCourseId,
+      loRefs: loRefs,
+      starsByGoalSlug: starsByGoalSlug,
+      completedAt: archivedAt,
     );
   }
 }

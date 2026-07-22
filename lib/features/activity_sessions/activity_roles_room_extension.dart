@@ -186,12 +186,20 @@ extension ActivityRolesRoomExtension on Room {
     );
   }
 
-  Future<void> archiveActivity() async {
+  /// Archives this user's finished role and returns the canonical archived-at
+  /// marker it persisted — the SAME value the room state carries once the write
+  /// syncs back, so a caller gets it WITHOUT racing `/sync` (reading
+  /// `ownRoleState.archivedAt` right after this races the sync echo and can read
+  /// null). Returns the existing archived-at when the role is already archived
+  /// (no re-write), or null when there is no finished role to archive.
+  Future<DateTime?> archiveActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
-    if (role == null || !role.isFinished || role.isArchived) return;
+    if (role == null || !role.isFinished) return null;
+    if (role.isArchived) return role.archivedAt;
 
-    role.archivedAt = DateTime.now();
+    final archivedAt = DateTime.now();
+    role.archivedAt = archivedAt;
     currentRoles.updateRole(role);
     await client.setRoomStateWithKey(
       id,
@@ -199,5 +207,6 @@ extension ActivityRolesRoomExtension on Room {
       "",
       currentRoles.toJson(),
     );
+    return archivedAt;
   }
 }
