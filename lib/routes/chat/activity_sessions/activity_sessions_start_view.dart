@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -22,6 +23,7 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -210,9 +212,26 @@ class ActivitySessionStartView extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       spacing: 12.0,
                                       children: [
-                                        Text(
-                                          activity.description,
+                                        Linkify(
+                                          text: activity.description,
+                                          options: const LinkifyOptions(
+                                            humanize: false,
+                                          ),
+                                          useMouseRegion: true,
                                           style: theme.textTheme.bodyLarge,
+                                          linkStyle: theme.textTheme.bodyLarge
+                                              ?.copyWith(
+                                                color:
+                                                    theme.colorScheme.primary,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationColor:
+                                                    theme.colorScheme.primary,
+                                              ),
+                                          onOpen: (link) => UrlLauncher(
+                                            context,
+                                            link.url,
+                                          ).launchUrl(),
                                         ),
                                         if (activity.vocab.isNotEmpty)
                                           ActivityVocabWidget(
