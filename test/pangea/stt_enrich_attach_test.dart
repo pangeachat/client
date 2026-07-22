@@ -86,6 +86,34 @@ void main() {
       },
     );
 
+    test(
+      'defensive no-op on a non-usable (exhausted-fallback) baseStt: returns it '
+      'unchanged, never tokenizes, never dereferences the missing transcript',
+      () async {
+        final empty = SpeechToTextResponseModel(results: const []);
+        var fetchCalls = 0;
+
+        final result = await enrichSttWithTokens(
+          empty,
+          const SttLangSnapshot(
+            fullText: '',
+            langCode: 'es',
+            senderL1: 'en',
+            senderL2: 'es',
+          ),
+          tokenFetcher: (_) async {
+            fetchCalls++;
+            return Result.value(_tokensResponse([_token('hola', 0)]));
+          },
+        );
+
+        // Teeth: without the hasUsableTranscript guard this either tokenizes
+        // empty text or throws on results.first.transcripts.first.
+        expect(result, same(empty));
+        expect(fetchCalls, 0);
+      },
+    );
+
     test('tokens are attached with null timings', () async {
       final base = _skipTokenizeBase();
       final rich = await enrichSttWithTokens(

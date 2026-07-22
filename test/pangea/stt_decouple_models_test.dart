@@ -21,7 +21,12 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 ///    byte-identical to today; `hasUsableTokens` is true only with non-empty
 ///    tokens.
 
-SpeechToTextAudioConfigModel _config() => SpeechToTextAudioConfigModel(
+/// A SINGLE shared config instance. Held constant across the identity tests so
+/// that when two requests differ only in `skipTokenize`, equality/hash cannot
+/// pass "by accident" via two distinct config objects -- the ONLY difference is
+/// the flag under test (SpeechToTextAudioConfigModel has no value-equality, so a
+/// fresh config per request would make requests unequal regardless of the flag).
+final _sharedConfig = SpeechToTextAudioConfigModel(
   encoding: AudioEncodingEnum.linear16,
   userL1: 'en',
   userL2: 'es',
@@ -30,7 +35,7 @@ SpeechToTextAudioConfigModel _config() => SpeechToTextAudioConfigModel(
 SpeechToTextRequestModel _req(Uint8List audio, {bool skipTokenize = false}) =>
     SpeechToTextRequestModel(
       audioContent: audio,
-      config: _config(),
+      config: _sharedConfig,
       skipTokenize: skipTokenize,
     );
 
@@ -38,17 +43,36 @@ void main() {
   group('SpeechToTextRequestModel — skip_tokenize + sha256 identity', () {
     final audio = Uint8List.fromList(List<int>.generate(64, (i) => i));
 
-    test('skip_tokenize is sent on the wire only when true is set', () {
-      expect(_req(audio, skipTokenize: true).toJson()['skip_tokenize'], isTrue);
-      expect(
-        _req(audio, skipTokenize: false).toJson()['skip_tokenize'],
-        isFalse,
-      );
-    });
+    test(
+      'skip_tokenize is ALWAYS sent on the wire, carrying the flag value',
+      () {
+        expect(
+          _req(audio, skipTokenize: true).toJson()['skip_tokenize'],
+          isTrue,
+        );
+        expect(
+          _req(audio, skipTokenize: false).toJson()['skip_tokenize'],
+          isFalse,
+        );
+        // Deployment-safe: the key is always present (choreo ignores extras) and
+        // simply reflects the flag; it never omits it.
+        expect(
+          _req(
+            audio,
+            skipTokenize: false,
+          ).toJson().containsKey('skip_tokenize'),
+          isTrue,
+        );
+      },
+    );
 
-    test('skip_tokenize namespaces distinct cache/storage slots', () {
+    test('with config + audio held CONSTANT, ONLY skipTokenize distinguishes the '
+        'cache slot / equality / hash / set membership', () {
+      // Same audio instance, same shared config -> the sole difference is the
+      // flag. Removing skipTokenize from storageKey/==/hashCode turns this RED.
       final full = _req(audio, skipTokenize: false);
       final skip = _req(audio, skipTokenize: true);
+
       expect(
         full.storageKey,
         isNot(skip.storageKey),
@@ -58,6 +82,7 @@ void main() {
       );
       expect(full == skip, isFalse);
       expect(full.hashCode == skip.hashCode, isFalse);
+      expect({full, skip, _req(audio, skipTokenize: false)}, hasLength(2));
     });
 
     test('storageKey uses a full sha256 content digest of the audio', () {
