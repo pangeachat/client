@@ -535,6 +535,17 @@ class PangeaMessageEvent {
     return file;
   }
 
+  /// Test seam: the single tokenize step used by the display-only token repair
+  /// in [requestSpeechToText]. Overridable so a caller-level test can assert
+  /// WHETHER the tokenizer is reached (e.g. that [requestSttTranslation] never
+  /// tokenizes) without hitting the network. Defaults to the real helper.
+  @visibleForTesting
+  static Future<SpeechToTextResponseModel> Function(
+    SpeechToTextResponseModel base,
+    SttLangSnapshot snapshot,
+  )
+  enrichSttHook = enrichSttWithTokens;
+
   /// Snapshots the tokenizer inputs from THIS audio event (see [SttLangSnapshot]
   /// -- lang from the transcript, `sender_l1` from the event's `speaker_l1`), so
   /// a token repair uses the message's own language, not the reader's settings.
@@ -566,7 +577,7 @@ class PangeaMessageEvent {
         local: speechToTextLocal,
         requireTokens: requireTokens,
         snapshot: _sttLangSnapshot(speechToTextLocal),
-        enrich: enrichSttWithTokens,
+        enrich: enrichSttHook,
         attach: (rich) => attachSttRepresentation(
           send: room.sendPangeaEvent,
           parentEventId: eventId,

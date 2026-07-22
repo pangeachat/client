@@ -202,20 +202,25 @@ class WordTiming {
   final String word;
   final int? startTimeMs;
   final int? endTimeMs;
-  final int? confidence;
+
+  /// Integer 0..100, NEVER null -- the choreographer normalizes every
+  /// provider's 0-1 float to this scale (a valid `0` is preserved), so the
+  /// frozen §5 contract makes it required. Only the timestamps are nullable
+  /// (some providers omit them; they are never fabricated).
+  final int confidence;
 
   WordTiming({
     required this.word,
+    required this.confidence,
     this.startTimeMs,
     this.endTimeMs,
-    this.confidence,
   });
 
   factory WordTiming.fromJson(Map<String, dynamic> json) => WordTiming(
     word: json['word'] as String,
     startTimeMs: (json['start_time_ms'] as num?)?.toInt(),
     endTimeMs: (json['end_time_ms'] as num?)?.toInt(),
-    confidence: (json['confidence'] as num?)?.toInt(),
+    confidence: (json['confidence'] as num).toInt(),
   );
 
   Map<String, dynamic> toJson() => {

@@ -1,6 +1,7 @@
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
@@ -82,6 +83,11 @@ Future<SpeechToTextResponseModel> enrichSttWithTokens(
   SttLangSnapshot snapshot, {
   TokenFetcher? tokenFetcher,
 }) async {
+  // Defensive no-op: an exhausted-fallback / non-usable response has no
+  // transcript to tokenize, so there is nothing to enrich. Return it unchanged
+  // rather than tokenizing empty text or dereferencing a missing transcript.
+  if (!baseStt.hasUsableTranscript) return baseStt;
+
   final fetch = tokenFetcher ?? TokensRepo.instance.get;
   final result = await fetch(snapshot.toRequest());
 
@@ -155,6 +161,51 @@ Future<SpeechToTextResponseModel> repairSttTokens({
   return rich;
 }
 
+/// Whether an audio event was sent by the local user -- the analytics-record
+/// gate (D7): recording fires only for the sender's OWN message, never for a
+/// viewed other-sender or bot message. Bound to the real identity path
+/// ([senderId] from the event, [clientUserId] from the Matrix client), never a
+/// hardcoded bool, so if the record primitive is ever reached for a foreign
+/// sender it correctly does NOT record.
+bool isOwnSender(String? senderId, String? clientUserId) =>
+    senderId != null && clientUserId != null && senderId == clientUserId;
+
+/// The analytics record call, injectable so the recorder can be driven without
+/// a live `AnalyticsUpdateService`. The real caller passes
+/// `analyticsService.addAnalytics`.
+typedef VoiceAnalyticsSink =
+    Future<void> Function(
+      String eventId,
+      List<OneConstructUse> constructs,
+      String langCode,
+    );
+
+/// Builds the LIFECYCLE-INDEPENDENT voice-analytics recorder. It CAPTURES
+/// [sink] (the analytics service's `addAnalytics`, already bound to a service
+/// resolved while the widget was live) plus [roomId]/[eventId] as plain values,
+/// so the returned closure records regardless of whether the originating widget
+/// is later disposed -- it never reads a `BuildContext`. [onFeedback] is the
+/// context-dependent visual overlay; the caller guards it on `mounted`, and it
+/// is best-effort and independent of the recording below.
+Future<void> Function(SpeechToTextResponseModel richStt)
+buildVoiceAnalyticsRecorder({
+  required String roomId,
+  required String eventId,
+  required VoiceAnalyticsSink sink,
+  void Function(List<OneConstructUse> constructs, String langCode)? onFeedback,
+}) {
+  return (SpeechToTextResponseModel richStt) async {
+    if (!richStt.hasUsableTranscript || richStt.transcript.sttTokens.isEmpty) {
+      return;
+    }
+    final constructs = richStt.constructs(roomId, eventId);
+    if (constructs.isEmpty) return;
+    final langCode = richStt.langCode.split('-').first;
+    onFeedback?.call(constructs, langCode);
+    await sink(eventId, constructs, langCode);
+  };
+}
+
 /// The background half of a decoupled voice send, run fire-and-forget AFTER
 /// `sendFileEvent` resolves (so the caller returns and the bot replies without
 /// waiting for the tokenizer).
@@ -166,18 +217,23 @@ Future<SpeechToTextResponseModel> repairSttTokens({
 /// await, not the disposable context).
 ///
 /// Ordering (PHASE1-SPEC D7):
+///  0. If [baseStt] has no usable transcript (exhausted-fallback), there is
+///     nothing to tokenize -- no-op entirely (no enrich, no analytics, no
+///     attach, no crash).
 ///  1. [enrich] -- the single tokenize step. On failure, nothing else runs
 ///     (no analytics, no attach): the same best-effort, no-backfill loss as
 ///     today, just deferred, no crash.
-///  2. [recordAnalytics] fires ONCE, only when [isOwnMessage], gated on ENRICH
-///     success -- NOT attach, because `sendPangeaEvent` can return null AFTER
-///     actually delivering, so gating on attach would drop valid analytics.
+///  2. [recordAnalytics] fires ONCE, only when [isOwnSender] of [senderId] vs
+///     [clientUserId], gated on ENRICH success -- NOT attach, because
+///     `sendPangeaEvent` can return null AFTER actually delivering, so gating
+///     on attach would drop valid analytics.
 ///  3. [attach] best-effort; its null/failed return only affects later display
 ///     repair, never analytics.
 Future<void> runVoiceTranscriptEnrichment({
   required SpeechToTextResponseModel baseStt,
   required SttLangSnapshot snapshot,
-  required bool isOwnMessage,
+  required String? senderId,
+  required String? clientUserId,
   required Future<SpeechToTextResponseModel> Function(
     SpeechToTextResponseModel base,
     SttLangSnapshot snapshot,
@@ -188,6 +244,10 @@ Future<void> runVoiceTranscriptEnrichment({
   required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
   void Function(Object error, StackTrace stack)? onError,
 }) async {
+  // Nothing to tokenize on an exhausted-fallback/non-usable transcript: skip
+  // all background work rather than crashing on the missing transcript.
+  if (!baseStt.hasUsableTranscript) return;
+
   final SpeechToTextResponseModel richStt;
   try {
     richStt = await enrich(baseStt, snapshot);
@@ -196,7 +256,7 @@ Future<void> runVoiceTranscriptEnrichment({
     return;
   }
 
-  if (isOwnMessage) {
+  if (isOwnSender(senderId, clientUserId)) {
     try {
       await recordAnalytics(richStt);
     } catch (e, s) {

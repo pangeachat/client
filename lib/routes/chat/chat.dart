@@ -1693,6 +1693,20 @@ class ChatController extends State<ChatPageWithRoom>
       skipTokenize: decoupleTokenizer,
     );
     final stt = transcriptResult.result;
+
+    // Capture the speaker language embedded below and the background tokenize
+    // snapshot BEFORE the send await, so the snapshot is EVENT-sourced (D6):
+    // full_text/lang_code/sender_l2 come from the embed, sender_l1 from the
+    // embedded speaker_l1 -- it cannot drift if the user changes their L1/L2
+    // while the send is in flight, and the background never re-reads current
+    // settings. A non-usable (exhausted-fallback) transcript has nothing to
+    // tokenize, so no snapshot / no background work is scheduled.
+    final speakerL1 = pangeaController.userController.userL1Code;
+    final speakerL2 = pangeaController.userController.userL2Code;
+    final decoupleSnapshot =
+        decoupleTokenizer && stt != null && stt.hasUsableTranscript
+        ? SttLangSnapshot.fromBaseStt(stt, speakerL1: speakerL1)
+        : null;
     // Pangea#
 
     // #Pangea
@@ -1714,8 +1728,8 @@ class ChatController extends State<ChatPageWithRoom>
               'waveform': waveform,
             },
             // #Pangea
-            'speaker_l1': pangeaController.userController.userL1Code,
-            'speaker_l2': pangeaController.userController.userL2Code,
+            'speaker_l1': speakerL1,
+            'speaker_l2': speakerL2,
             if (stt != null) MessageConstants.userStt: stt.toJson(),
             // Pangea#
           },
@@ -1752,11 +1766,13 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (stt != null) {
       if (decoupleTokenizer) {
-        // Send is done and the bot can reply from the embedded text. Tokenize +
-        // attach + record analytics in the BACKGROUND (fire-and-forget): this
-        // returns to the caller immediately so the send is not blocked on the
-        // tokenizer.
-        _scheduleVoiceTranscriptEnrichment(eventId, stt);
+        // Send is done and the bot can reply from the embedded text. Only
+        // schedule background work when there is a usable transcript to
+        // tokenize (an exhausted-fallback has none -- the message stands, no
+        // background work, no crash). Fire-and-forget so send is not blocked.
+        if (decoupleSnapshot != null) {
+          _scheduleVoiceTranscriptEnrichment(eventId, stt, decoupleSnapshot);
+        }
       } else {
         _sendVoiceMessageAnalytics(eventId, stt);
       }
@@ -1768,44 +1784,48 @@ class ChatController extends State<ChatPageWithRoom>
   /// Schedules the background token enrichment for a decoupled voice send.
   /// Fire-and-forget: it does NOT await, so [onVoiceMessageSend] returns as soon
   /// as the audio event is sent. It captures LIFECYCLE-INDEPENDENT references
-  /// (the analytics service, the Matrix room, the room id) BEFORE the background
-  /// await, never the disposable widget `context`, so navigating away from the
-  /// chat before the tokenize resolves STILL records analytics.
+  /// (the analytics service via [buildVoiceAnalyticsRecorder], the Matrix room,
+  /// the room id, and the sender/client identity) BEFORE the background await,
+  /// never the disposable widget `context`, so navigating away from the chat
+  /// before the tokenize resolves STILL records analytics. [snapshot] is the
+  /// EVENT-sourced tokenizer input captured at send time (D6).
   void _scheduleVoiceTranscriptEnrichment(
     String eventId,
     SpeechToTextResponseModel baseStt,
+    SttLangSnapshot snapshot,
   ) {
     final analyticsUpdateService = Matrix.of(
       context,
     ).analyticsDataService.updateService;
     final capturedRoom = room;
     final capturedRoomId = roomId;
-    final snapshot = SttLangSnapshot.fromBaseStt(
-      baseStt,
-      speakerL1: pangeaController.userController.userL1Code,
-    );
+    // Own-ness bound to the real identity path (never a hardcoded bool): the
+    // sender of a message THIS client just sent is this client's own user. The
+    // coordinator re-checks `senderId == clientUserId` via `isOwnSender`, so if
+    // the record primitive is ever reached for a foreign sender it correctly
+    // does NOT record.
+    final clientUserId = capturedRoom.client.userID;
+    final senderId = clientUserId;
 
-    Future<void> recordAnalytics(SpeechToTextResponseModel richStt) async {
-      if (richStt.results.isEmpty || richStt.transcript.sttTokens.isEmpty) {
-        return;
-      }
-      final constructs = richStt.constructs(capturedRoomId, eventId);
-      if (constructs.isEmpty) return;
-      final langCode = richStt.langCode.split('-').first;
-      // Visual feedback needs a live widget; the recording below does not.
-      if (mounted) {
-        _showAnalyticsFeedback(constructs, eventId, langCode);
-      }
-      await analyticsUpdateService.addAnalytics(eventId, constructs, langCode);
-    }
+    final recordAnalytics = buildVoiceAnalyticsRecorder(
+      roomId: capturedRoomId,
+      eventId: eventId,
+      sink: analyticsUpdateService.addAnalytics,
+      // Visual feedback needs a live widget; the recording itself does not, so
+      // it is guarded on `mounted` while the recording stays unconditional.
+      onFeedback: (constructs, langCode) {
+        if (mounted) {
+          _showAnalyticsFeedback(constructs, eventId, langCode);
+        }
+      },
+    );
 
     unawaited(
       runVoiceTranscriptEnrichment(
         baseStt: baseStt,
         snapshot: snapshot,
-        // The just-sent message is always the sender's own; recording is gated
-        // on this per D7 (a viewed other-sender message never records).
-        isOwnMessage: true,
+        senderId: senderId,
+        clientUserId: clientUserId,
         enrich: enrichSttWithTokens,
         recordAnalytics: recordAnalytics,
         attach: (richStt) => attachSttRepresentation(
