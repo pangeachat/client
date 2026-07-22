@@ -144,6 +144,33 @@ void main() {
     },
   );
 
+  test(
+    'skips the envelope and engagement tick for an edit (editEventId set)',
+    () async {
+      final tracker = buildTracker();
+      DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        deviceId: deviceId,
+        accessToken: token,
+        // A Matrix edit is a NEW event id, but the same learner turn.
+        msgEventId: '\$edit-replacement:example.org',
+        body: 'hola mundo (edited)',
+        tokenCount: 3,
+        langCode: 'es',
+        editEventId: '\$original:example.org',
+        ts: base,
+        client: mock,
+        tracker: tracker,
+      );
+      // No new envelope, and the tracker never opened a span — one turn stays
+      // one envelope + one engagement tick.
+      clock = base.add(const Duration(minutes: 5));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, isEmpty);
+    },
+  );
+
   test('is a no-op when the dosage flag is off', () async {
     dotenv.testLoad(
       mergeWith: {

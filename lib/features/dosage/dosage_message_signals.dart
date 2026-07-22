@@ -26,10 +26,17 @@ class DosageMessageSignals {
     required String body,
     int? tokenCount,
     String? langCode,
+    String? editEventId,
     DateTime? ts,
     http.Client? client,
     DosageEngagementTracker? tracker,
   }) {
+    // An edit is a Matrix replacement event with a NEW event id but the SAME
+    // learner turn. Emitting for it would add a second message envelope and a
+    // second engagement tick for one turn, so a send that targets an edit
+    // ([editEventId] set) counts nothing here.
+    if (editEventId != null) return;
+
     // The server rejects placeholder ids, so an unresolved send counts nothing —
     // neither the envelope nor the engagement tick. Matches the repo's blank-id
     // guard (trim) so a whitespace-only id records nothing either.

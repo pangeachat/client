@@ -1537,10 +1537,13 @@ class ChatController extends State<ChatPageWithRoom>
             choreo: content.choreo,
           );
 
-          // Best-effort dosage signals: a message envelope for EVERY sent
+          // Best-effort dosage signals: a message envelope for EVERY new sent
           // message (incl. ones with no construct) + engagement activity. Fires
           // send-then-POST like the analytics dual-write, guarded on a resolved
           // event id, and is a no-op unless the dosage flags are enabled.
+          // Passing editEventId makes an edit (a replacement of an existing
+          // turn) count nothing — the emitter skips it so one turn stays one
+          // envelope + one tick.
           DosageMessageSignals.emitForSentMessage(
             roomId: room.id,
             deviceId: room.client.deviceID,
@@ -1549,6 +1552,7 @@ class ChatController extends State<ChatPageWithRoom>
             body: message,
             tokenCount: content.tokensSent?.tokens.length,
             langCode: content.tokensSent?.detections?.firstOrNull?.langCode,
+            editEventId: edit?.eventId,
           );
 
           if (previousEdit != null) {
