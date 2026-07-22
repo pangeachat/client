@@ -41,7 +41,7 @@ class CircularXpRingPainter extends CustomPainter {
     if (p <= 0) return;
     canvas.drawArc(
       rect,
-      -math.pi / 2,
+      -2 * math.pi / 3,
       2 * math.pi * p,
       false,
       Paint()
