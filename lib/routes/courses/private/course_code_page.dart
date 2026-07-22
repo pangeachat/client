@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -111,6 +112,15 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
+    // A firing submit is what consumes the login-bounce cache — not the
+    // auth-guard redirect and not the page landing: both proved lossy when a
+    // competing boot-time navigation disposed this page before the
+    // post-frame submit ran (PAuthGaurd.consumeCachedJoinCode). From here
+    // the join proceeds even if this page unmounts (the in-flight join
+    // future is page-independent). Fire-and-forget; the cache is simply
+    // absent for a logged-in link click.
+    if (consumeInboundCode) SpaceCodeRepo.clearSpaceCode();
+
     final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       _code,
@@ -197,56 +207,55 @@ class CourseCodePageState extends State<CourseCodePage> {
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              padding: const EdgeInsets.all(20.0),
-              constraints: const BoxConstraints(maxWidth: 350),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
-                spacing: 16.0,
-                mainAxisSize: MainAxisSize.min,
+                spacing: 36.0,
                 children: [
-                  SvgPicture.network(
-                    "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                    width: 100.0,
-                    height: 100.0,
-                    colorFilter: ColorFilter.mode(
-                      theme.colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-
                   FocusTraversalGroup(
                     policy: OrderedTraversalPolicy(),
                     child: Column(
                       spacing: 16.0,
                       children: [
-                        Text(
-                          L10n.of(context).enterCodeToJoin,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         TextFormField(
                           controller: _codeController,
                           decoration: InputDecoration(
                             hintText: L10n.of(context).courseCodeHint,
+                            prefixIcon: Icon(Icons.key_outlined),
                           ),
                           onFieldSubmitted: (_) => _submit(),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                           ],
                         ),
-                        ElevatedButton(
-                          onPressed: _code.isNotEmpty ? _submit : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [Text(L10n.of(context).submit)],
+                        SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.tonalIcon(
+                            onPressed: _code.isNotEmpty ? _submit : null,
+                            label: Text(L10n.of(context).submit),
+                            style: FilledButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 14.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  SvgPicture.network(
+                    "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                    width: 120.0,
+                    height: 120.0,
+                    colorFilter: ColorFilter.mode(
+                      theme.colorScheme.onSurface,
+                      BlendMode.srcIn,
                     ),
                   ),
                 ],

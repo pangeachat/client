@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-20 10:58:16.115615",
+    "@@last_modified": "2026-07-21 13:05:34.150546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Dikemas kini\n{time}",
     "activityFinishedMessage": "Semua Selesai!",
     "endForAll": "Tamatkan untuk semua",
-    "newCourse": "Kursus baharu",
     "numModules": "{num} modul",
     "coursePlan": "Pelan Kursus",
     "editCourseLater": "Anda boleh mengedit tajuk templat, penerangan dan imej kursus kemudian.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Langganan anda akan aktif sehingga tarikh pembaharuan ({date}), kemudian dinyahaktifkan. Anda akan mengekalkan analitik tetapi tidak dapat menggunakan ciri pro.",
     "cancelDescriptionWithoutRenewalDate": "Langganan anda akan aktif sehingga tarikh pembaharuan, kemudian dinyahaktifkan. Anda akan mengekalkan analitik tetapi tidak dapat menggunakan ciri pro.",
     "change": "Tukar",
-    "deactivateSubscribedAccountWarning": "Ini akan menyahaktifkan akaun pengguna anda dan membatalkan langganan anda. Ini tidak boleh dibatalkan! Adakah anda pasti?"
+    "deactivateSubscribedAccountWarning": "Ini akan menyahaktifkan akaun pengguna anda dan membatalkan langganan anda. Ini tidak boleh dibatalkan! Adakah anda pasti?",
+    "newCourseWithoutTitle": "Mula kursus",
+    "newCourseWithTitle": "Mula \"{title}\"",
+    "joinCourseWithTitle": "Sertai \"{title}\"",
+    "searchCoursePlans": "Cari rancangan kursus",
+    "searchPublicCourses": "Cari kursus awam",
+    "closeSearch": "Tutup carian"
 }

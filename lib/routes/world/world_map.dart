@@ -566,7 +566,18 @@ class WorldMapController extends State<WorldMap>
   /// everything" affordance (#7086). Camera-only: the course scope, focus, and
   /// open panels are untouched.
   void resetToWorld() {
-    _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
+    _animateCameraTo(const LatLng(20, 0), minZoom);
+  }
+
+  /// The viewport-derived zoom-out floor (#7813, [WorldMapConstants.minZoomFor])
+  /// for the map's current size, or the safe fallback before the map has laid
+  /// out (reading the camera throws until then).
+  double get minZoom {
+    try {
+      return WorldMapConstants.minZoomFor(mapController.camera.nonRotatedSize);
+    } catch (_) {
+      return WorldMapConstants.fallbackMinZoom;
+    }
   }
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
@@ -574,6 +585,8 @@ class WorldMapController extends State<WorldMap>
   /// zooms IN (#7086). Accumulates toward the in-flight glide target (not the
   /// mid-glide live zoom), so rapid clicks each advance a full level instead of
   /// under-shooting, and snaps to integer levels so the steps land crisply.
+  /// Rounds BEFORE clamping: the floor is fractional (#7813), and rounding a
+  /// clamped value could land back below it.
   void zoomBy(double delta) {
     final base = _cameraAnimationController.isAnimating
         ? _camTargetZoom
@@ -581,9 +594,7 @@ class WorldMapController extends State<WorldMap>
 
     _animateCameraTo(
       mapController.camera.center,
-      (base + delta)
-          .clamp(WorldMapConstants.minZoom, WorldMapConstants.maxZoom)
-          .roundToDouble(),
+      (base + delta).roundToDouble().clamp(minZoom, WorldMapConstants.maxZoom),
     );
   }
 

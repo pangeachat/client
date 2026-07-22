@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:03.108598",
+    "@@last_modified": "2026-07-21 13:05:32.946203",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3414,7 +3414,6 @@
     "lastUpdated": "Aggiornato\n{time}",
     "activityFinishedMessage": "Tutto finito!",
     "endForAll": "Termina per tutti",
-    "newCourse": "Nuovo corso",
     "numModules": "{num} moduli",
     "coursePlan": "Piano del corso",
     "editCourseLater": "Puoi modificare in seguito il titolo del corso, le descrizioni e l'immagine del corso.",
@@ -6066,10 +6065,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9762,5 +9757,11 @@
     "cancelDescriptionWithRenewalDate": "Il tuo abbonamento sarà attivo fino alla data di rinnovo ({date}), poi si disattiverà. Manterrai l'analisi ma non potrai usare le funzionalità pro.",
     "cancelDescriptionWithoutRenewalDate": "Il tuo abbonamento sarà attivo fino alla data di rinnovo, poi si disattiverà. Manterrai l'analisi ma non potrai usare le funzionalità pro.",
     "change": "Cambia",
-    "deactivateSubscribedAccountWarning": "Questo disattiverà il tuo account utente e annullerà l'abbonamento. Non può essere annullato! Sei sicuro?"
+    "deactivateSubscribedAccountWarning": "Questo disattiverà il tuo account utente e annullerà l'abbonamento. Non può essere annullato! Sei sicuro?",
+    "newCourseWithoutTitle": "Inizia corso",
+    "newCourseWithTitle": "Inizia \"{title}\"",
+    "joinCourseWithTitle": "Unisciti a \"{title}\"",
+    "searchCoursePlans": "Cerca piani di corso",
+    "searchPublicCourses": "Cerca corsi pubblici",
+    "closeSearch": "Chiudi ricerca"
 }

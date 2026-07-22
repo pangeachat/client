@@ -3790,7 +3790,6 @@
     },
     "activityFinishedMessage": "All Finished!",
     "endForAll": "End for all",
-    "newCourse": "New course",
     "numModules": "{num} modules",
     "@numModules": {
         "type": "int",
@@ -4747,5 +4746,25 @@
     "searchUsersHint": "Search users",
     "searchMessagesHint": "Search messages",
     "searchChatsHint": "Search chats",
-    "searchActivitiesHint": "Search activities"
+    "searchActivitiesHint": "Search activities",
+    "newCourseWithoutTitle": "Start course",
+    "newCourseWithTitle": "Start \"{title}\"",
+    "@newCourseWithTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "joinCourseWithTitle": "Join \"{title}\"",
+    "@joinCourseWithTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "searchCoursePlans": "Search course plans",
+    "searchPublicCourses": "Search public courses",
+    "closeSearch": "Close search"
 }

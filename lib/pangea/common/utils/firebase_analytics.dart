@@ -225,6 +225,21 @@ class GoogleAnalytics {
     );
   }
 
+  /// Checkout completed: the subscription turned active after a begun payment
+  /// (detected on return from Stripe). Closes the begin_checkout funnel with
+  /// GA4's recommended `purchase` event.
+  static void purchaseSubscription(String? planId) {
+    logEvent(
+      'purchase',
+      parameters: {
+        'currency': 'USD',
+        'item_id': ?planId,
+        'item_category': 'subscription',
+        'quantity': 1,
+      },
+    );
+  }
+
   static void startActivity(
     String activityId,
     String roomId, {
@@ -322,6 +337,12 @@ class GoogleAnalytics {
 
         final name = route.settings.name?.trim();
         if (name == null || name.isEmpty) {
+          return false;
+        }
+
+        // The workspace route ('/') is tracked by WorkspaceScreenTracker with
+        // token-derived names; logging it here would double-count it as '/'.
+        if (name == '/') {
           return false;
         }
 

@@ -9,12 +9,22 @@ class SubscriptionManagementRepo {
     return _cache.read(PLocalKey.beganPayment) ?? false;
   }
 
-  static Future<void> setBeganPayment() async {
+  /// [planId] rides along so the purchase event on the post-checkout return
+  /// can name the plan (the Stripe redirect loses all client state).
+  static Future<void> setBeganPayment([String? planId]) async {
     await _cache.write(PLocalKey.beganPayment, true);
+    if (planId != null) {
+      await _cache.write(PLocalKey.beganPaymentPlanId, planId);
+    }
+  }
+
+  static String? getBeganPaymentPlanId() {
+    return _cache.read(PLocalKey.beganPaymentPlanId);
   }
 
   static Future<void> removeBeganPayment() async {
     await _cache.remove(PLocalKey.beganPayment);
+    await _cache.remove(PLocalKey.beganPaymentPlanId);
   }
 
   static bool getDismissedPaywall() {

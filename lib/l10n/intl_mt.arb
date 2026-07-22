@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-20 10:58:18.879612",
+    "@@last_modified": "2026-07-21 13:05:34.321730",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Aġġornat\n{time}",
     "activityFinishedMessage": "Kollox Lest!",
     "endForAll": "Temm għal kulħadd",
-    "newCourse": "Kors ġdid",
     "numModules": "{num} moduli",
     "coursePlan": "Pjan tal-Kors",
     "editCourseLater": "Tista' teditja t-titlu tal-mudell, id-deskrizzjonijiet, u l-immaġni tal-kors aktar tard.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "L-abbonament tiegħek se jkun attiv sad-data tat-tiġdid tiegħu ({date}), imbagħad jiġi diżattivat. Inti żżomm l-analitika iżda ma tkunx tista' tuża l-karatteristiċi pro.",
     "cancelDescriptionWithoutRenewalDate": "L-abbonament tiegħek se jkun attiv sad-data tat-tiġdid tiegħu, imbagħad jiġi diżattivat. Inti żżomm l-analitika iżda ma tkunx tista' tuża l-karatteristiċi pro.",
     "change": "Ibdel",
-    "deactivateSubscribedAccountWarning": "Dan se jiddiżattiva l-kont tal-utent tiegħek u jikkanċella l-abbonament tiegħek. Dan ma jistax jitneħħa! Inti żgur?"
+    "deactivateSubscribedAccountWarning": "Dan se jiddiżattiva l-kont tal-utent tiegħek u jikkanċella l-abbonament tiegħek. Dan ma jistax jitneħħa! Inti żgur?",
+    "newCourseWithoutTitle": "Ibda kors",
+    "newCourseWithTitle": "Ibda \"{title}\"",
+    "joinCourseWithTitle": "Ingħaqad ma' \"{title}\"",
+    "searchCoursePlans": "Fittex pjanijiet tal-kors",
+    "searchPublicCourses": "Fittex korsijiet pubbliċi",
+    "closeSearch": "Agħlaq it-tfittxija"
 }

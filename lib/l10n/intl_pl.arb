@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-20 10:58:21.752096",
+    "@@last_modified": "2026-07-21 13:05:35.360239",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3407,7 +3407,6 @@
     "lastUpdated": "Ostatnia aktualizacja\n{time}",
     "activityFinishedMessage": "Wszystko zakończone!",
     "endForAll": "Zakończ dla wszystkich",
-    "newCourse": "Nowy kurs",
     "numModules": "{num} modułów",
     "coursePlan": "Plan kursu",
     "editCourseLater": "Możesz edytować tytuł szablonu, opisy i obraz kursu później.",
@@ -6058,10 +6057,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9774,5 +9769,11 @@
     "cancelDescriptionWithRenewalDate": "Twoja subskrypcja będzie aktywna do daty jej odnowienia ({date}), a następnie zostanie dezaktywowana. Zachowasz dostęp do analityki, ale nie będziesz mógł korzystać z funkcji pro.",
     "cancelDescriptionWithoutRenewalDate": "Twoja subskrypcja będzie aktywna do daty jej odnowienia, a następnie zostanie dezaktywowana. Zachowasz dostęp do analityki, ale nie będziesz mógł korzystać z funkcji pro.",
     "change": "Zmień",
-    "deactivateSubscribedAccountWarning": "Spowoduje to dezaktywację Twojego konta użytkownika i anulowanie subskrypcji. Tej operacji nie można cofnąć! Czy na pewno chcesz to zrobić?"
+    "deactivateSubscribedAccountWarning": "Spowoduje to dezaktywację Twojego konta użytkownika i anulowanie subskrypcji. Tej operacji nie można cofnąć! Czy na pewno chcesz to zrobić?",
+    "newCourseWithoutTitle": "Rozpocznij kurs",
+    "newCourseWithTitle": "Rozpocznij „{title}”",
+    "joinCourseWithTitle": "Dołącz do „{title}”",
+    "searchCoursePlans": "Szukaj planów kursów",
+    "searchPublicCourses": "Szukaj kursów publicznych",
+    "closeSearch": "Zamknij wyszukiwanie"
 }

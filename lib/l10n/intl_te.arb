@@ -1260,7 +1260,6 @@
     "lastUpdated": "అప్డేట్ చేయబడింది\n{time}",
     "activityFinishedMessage": "అన్ని ముగిసాయి!",
     "endForAll": "అందరికీ ముగించు",
-    "newCourse": "కొత్త కోర్సు",
     "numModules": "{num} మాడ్యూల్స్",
     "coursePlan": "కోర్సు ప్రణాళిక",
     "editCourseLater": "మీరు టెంప్లేట్ శీర్షిక, వివరణలు, మరియు కోర్సు చిత్రాన్ని తర్వాత సవరించవచ్చు.",
@@ -1334,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-20 10:58:31.526486",
+    "@@last_modified": "2026-07-21 13:05:38.669348",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6922,10 +6921,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10645,5 +10640,11 @@
     "cancelDescriptionWithRenewalDate": "మీ సబ్‌స్క్రిప్షన్ పునరుద్ధరణ తేదీ ({date}) వరకు సక్రియంగా ఉంటుంది, ఆపై నిష్క్రియం అవుతుంది. మీరు విశ్లేషణలను నిలుపుకుంటారు కానీ ప్రో ఫీచర్‌లను ఉపయోగించలేరు.",
     "cancelDescriptionWithoutRenewalDate": "మీ సబ్‌స్క్రిప్షన్ పునరుద్ధరణ తేదీ వరకు సక్రియంగా ఉంటుంది, ఆపై నిష్క్రియం అవుతుంది. మీరు విశ్లేషణలను నిలుపుకుంటారు కానీ ప్రో ఫీచర్‌లను ఉపయోగించలేరు.",
     "change": "మార్చు",
-    "deactivateSubscribedAccountWarning": "ఇది మీ వినియోగదారు ఖాతాను నిష్క్రియం చేస్తుంది మరియు మీ సబ్‌స్క్రిప్షన్‌ను రద్దు చేస్తుంది. ఇది రద్దు చేయబడదు! మీరు ఖచ్చితంగా ఉన్నారా?"
+    "deactivateSubscribedAccountWarning": "ఇది మీ వినియోగదారు ఖాతాను నిష్క్రియం చేస్తుంది మరియు మీ సబ్‌స్క్రిప్షన్‌ను రద్దు చేస్తుంది. ఇది రద్దు చేయబడదు! మీరు ఖచ్చితంగా ఉన్నారా?",
+    "newCourseWithoutTitle": "కోర్సును ప్రారంభించండి",
+    "newCourseWithTitle": "\"{title}\" ప్రారంభించండి",
+    "joinCourseWithTitle": "\"{title}\"లో చేరండి",
+    "searchCoursePlans": "కోర్సు ప్లాన్‌లను శోధించండి",
+    "searchPublicCourses": "పబ్లిక్ కోర్సులను శోధించండి",
+    "closeSearch": "శోధనను మూసివేయండి"
 }

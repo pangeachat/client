@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-20 10:58:36.905170",
+    "@@last_modified": "2026-07-21 13:05:37.658247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Ti ṣe imudojuiwọn\n{time}",
     "activityFinishedMessage": "Gbogbo rẹ ti pari!",
     "endForAll": "Pari fun gbogbo eniyan",
-    "newCourse": "Ikẹkọ tuntun",
     "numModules": "{num} awọn modulu",
     "coursePlan": "Eto Ikẹkọ",
     "editCourseLater": "O le ṣatunkọ akọle awoṣe, awọn apejuwe, ati aworan ikẹkọ nigbamii.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Alabapin rẹ yoo ṣiṣẹ titi di ọjọ isọdọtun rẹ ({date}), lẹhinna yoo di alaabo. Iwọ yoo tọju awọn atupale ṣugbọn iwọ kii yoo ni anfani lati lo awọn ẹya pro.",
     "cancelDescriptionWithoutRenewalDate": "Alabapin rẹ yoo ṣiṣẹ titi di ọjọ isọdọtun rẹ, lẹhinna yoo di alaabo. Iwọ yoo tọju awọn atupale ṣugbọn iwọ kii yoo ni anfani lati lo awọn ẹya pro.",
     "change": "Yipada",
-    "deactivateSubscribedAccountWarning": "Eyi yoo mu akọọlẹ olumulo rẹ ṣiṣẹ ati fagilee alabapin rẹ. Eyi ko le yipada! Ṣe o da ọ loju?"
+    "deactivateSubscribedAccountWarning": "Eyi yoo mu akọọlẹ olumulo rẹ ṣiṣẹ ati fagilee alabapin rẹ. Eyi ko le yipada! Ṣe o da ọ loju?",
+    "newCourseWithoutTitle": "Bẹrẹ ikẹkọ",
+    "newCourseWithTitle": "Bẹrẹ \"{title}\"",
+    "joinCourseWithTitle": "Darapọ mọ \"{title}\"",
+    "searchCoursePlans": "Wa àwọn ètò ìkẹ́kọ̀ọ́",
+    "searchPublicCourses": "Wa àwọn ìkẹ́kọ̀ọ́ gbogbo gbò",
+    "closeSearch": "Pa àwárí"
 }

@@ -1,17 +1,51 @@
+import 'dart:math' as math;
+
 import 'package:flutter/animation.dart';
 
 class WorldMapConstants {
-  /// The camera zoom range — the single source for FlutterMap's MapOptions, the
-  /// +/- step clamp in [zoomBy], the World reset in [resetToWorld], and the
-  /// on-map control disabled states (#7171). minZoom 3 is the whole world.
-  static const double minZoom = 3.0;
+  /// The camera zoom ceiling — the single source for FlutterMap's MapOptions,
+  /// the +/- step clamp in [zoomBy], and the on-map control disabled states
+  /// (#7171). The FLOOR is viewport-derived: see [minZoomFor].
   static const double maxZoom = 18.0;
+
+  /// The zoom-out floor before the map has laid out (the camera's size is
+  /// unknown until then). Safe for viewports up to ~2048px in either dimension
+  /// — the pre-#7813 fixed floor.
+  static const double fallbackMinZoom = 3.0;
+
+  /// One copy of the world is `256 · 2^z` logical px wide/tall (Epsg3857,
+  /// 256px tiles — flutter_map's defaults, used by our TileLayer).
+  static const double _worldSideAtZoomZero = 256.0;
+
+  /// Keeps the floor strictly above the exact world-fits-viewport zoom:
+  /// containLatitude REJECTS every camera move (freezing all panning) once the
+  /// ±90 band is shorter than the viewport, so we never sit on the boundary
+  /// where float error could tip past it.
+  static const double _minZoomMargin = 0.01;
+
+  /// The viewport-derived zoom-out floor (#7813): zooming out stops where one
+  /// world copy would become smaller than the viewport's height (binds on
+  /// phones) or width (binds on wide desktops), whichever comes first. Zoom is
+  /// an absolute scale, so the old fixed floor of 3 left a phone seeing <20%
+  /// of the world while desktop saw most of it; deriving from the viewport
+  /// lets every screen pull back to (nearly) the whole world. The height term
+  /// is also exactly what keeps containLatitude from freezing panning — see
+  /// [_minZoomMargin] — including on >2048px-tall windows the fixed floor
+  /// didn't cover.
+  static double minZoomFor(Size viewport) {
+    final h = math.max(viewport.height, _worldSideAtZoomZero);
+    final w = math.max(viewport.width, _worldSideAtZoomZero);
+    final fitHeight = math.log(h / _worldSideAtZoomZero) / math.ln2;
+    final fitWidth = math.log(w / _worldSideAtZoomZero) / math.ln2;
+    return math.max(fitHeight, fitWidth) + _minZoomMargin;
+  }
 
   /// Whether a zoom-in / zoom-out step would still change the camera, i.e. the
   /// on-map + / - button should be enabled. At a limit the matching button is
-  /// disabled so it can't no-op (#7171).
+  /// disabled so it can't no-op (#7171). [minZoom] is the caller's
+  /// viewport-derived floor ([minZoomFor]).
   static bool canZoomIn(double zoom) => zoom < maxZoom;
-  static bool canZoomOut(double zoom) => zoom > minZoom;
+  static bool canZoomOut(double zoom, double minZoom) => zoom > minZoom;
 
   /// The zoom the DELIBERATE focus button glides to for an activity (#7616) —
   /// close enough to read it as "this specific spot" (neighborhood/building

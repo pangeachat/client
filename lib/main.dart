@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,17 @@ void main() async {
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
   // widget bindings are initialized already.
   WidgetsFlutterBinding.ensureInitialized();
+
+  // #Pangea
+  // Path URLs, not hash URLs. The router must read the real path at boot:
+  // the inbound contracts (`/<code>` join links, `/<uuid>` activity links —
+  // routing.instructions.md) arrive as paths, and under the default hash
+  // strategy the initial route is always `/`, leaving external links to a
+  // post-frame app_links replay that RACES the logged-out login bounce
+  // (joining-courses.instructions.md). CloudFront serves the SPA shell for
+  // every path (the SPA index fallback), so a direct path load always boots.
+  // No-op off web.
+  usePathUrlStrategy();
 
   // #Pangea
   try {

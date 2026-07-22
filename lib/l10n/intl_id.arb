@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:58:00.753326",
+    "@@last_modified": "2026-07-21 13:05:32.110877",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3414,7 +3414,6 @@
     "lastUpdated": "Diperbarui\n{time}",
     "activityFinishedMessage": "Semua Selesai!",
     "endForAll": "Akhiri untuk semua",
-    "newCourse": "Kursus Baru",
     "numModules": "{num} modul",
     "coursePlan": "Rencana Kursus",
     "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
@@ -6066,10 +6065,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9762,5 +9757,11 @@
     "cancelDescriptionWithRenewalDate": "Langganan Anda akan aktif hingga tanggal perpanjangan ({date}), lalu dinonaktifkan. Anda akan tetap memiliki analitik tetapi tidak dapat menggunakan fitur pro.",
     "cancelDescriptionWithoutRenewalDate": "Langganan Anda akan aktif hingga tanggal perpanjangan, lalu dinonaktifkan. Anda akan tetap memiliki analitik tetapi tidak dapat menggunakan fitur pro.",
     "change": "Ubah",
-    "deactivateSubscribedAccountWarning": "Ini akan menonaktifkan akun pengguna Anda dan membatalkan langganan Anda. Ini tidak dapat dibatalkan! Apakah Anda yakin?"
+    "deactivateSubscribedAccountWarning": "Ini akan menonaktifkan akun pengguna Anda dan membatalkan langganan Anda. Ini tidak dapat dibatalkan! Apakah Anda yakin?",
+    "newCourseWithoutTitle": "Mulai kursus",
+    "newCourseWithTitle": "Mulai \"{title}\"",
+    "joinCourseWithTitle": "Gabung \"{title}\"",
+    "searchCoursePlans": "Cari rencana kursus",
+    "searchPublicCourses": "Cari kursus publik",
+    "closeSearch": "Tutup pencarian"
 }

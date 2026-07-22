@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-20 10:58:29.937914",
+    "@@last_modified": "2026-07-21 13:05:36.628572",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Diropéa\n{time}",
     "activityFinishedMessage": "Sadayana Rengse!",
     "endForAll": "Rengse pikeun sadayana",
-    "newCourse": "Kursus anyar",
     "numModules": "{num} modul",
     "coursePlan": "Rencana Kursus",
     "editCourseLater": "Anjeun tiasa ngédit judul témplat, déskripsi, sareng gambar kursus engké.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Langganan anjeun bakal aktip dugi ka tanggal perpanjanganana ({date}), teras dinonaktipkeun. Anjeun bakal nahan analitik tapi moal tiasa nganggo fitur pro.",
     "cancelDescriptionWithoutRenewalDate": "Langganan anjeun bakal aktip dugi ka tanggal perpanjanganana, teras dinonaktipkeun. Anjeun bakal nahan analitik tapi moal tiasa nganggo fitur pro.",
     "change": "Robah",
-    "deactivateSubscribedAccountWarning": "Ieu bakal nganonaktipkeun akun pangguna anjeun sareng ngabatalkeun langganan anjeun. Ieu teu tiasa dibatalkeun! Naha anjeun yakin?"
+    "deactivateSubscribedAccountWarning": "Ieu bakal nganonaktipkeun akun pangguna anjeun sareng ngabatalkeun langganan anjeun. Ieu teu tiasa dibatalkeun! Naha anjeun yakin?",
+    "newCourseWithoutTitle": "Mimitian kursus",
+    "newCourseWithTitle": "Mimitian \"{title}\"",
+    "joinCourseWithTitle": "Gabung \"{title}\"",
+    "searchCoursePlans": "Téangan rencana kursus",
+    "searchPublicCourses": "Téangan kursus umum",
+    "closeSearch": "Tutup pamilarian"
 }

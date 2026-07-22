@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-20 10:57:57.418094",
+    "@@last_modified": "2026-07-21 13:05:31.651054",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2294,7 +2294,6 @@
     "lastUpdated": "עודכן\n{time}",
     "activityFinishedMessage": "הכל מוכן!",
     "endForAll": "סיום לכולם",
-    "newCourse": "קורס חדש",
     "numModules": "{num} מודולים",
     "coursePlan": "תכנית קורס",
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
@@ -6886,10 +6885,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -10609,5 +10604,11 @@
     "cancelDescriptionWithRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו ({date}), ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
     "cancelDescriptionWithoutRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו, ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
     "change": "שנה",
-    "deactivateSubscribedAccountWarning": "פעולה זו תבטל את חשבון המשתמש שלך ותבטל את המנוי שלך. לא ניתן לבטל פעולה זו! האם אתה בטוח?"
+    "deactivateSubscribedAccountWarning": "פעולה זו תבטל את חשבון המשתמש שלך ותבטל את המנוי שלך. לא ניתן לבטל פעולה זו! האם אתה בטוח?",
+    "newCourseWithoutTitle": "התחל קורס",
+    "newCourseWithTitle": "התחל את \"{title}\"",
+    "joinCourseWithTitle": "הצטרף ל-\"{title}\"",
+    "searchCoursePlans": "חיפוש תוכניות קורסים",
+    "searchPublicCourses": "חיפוש קורסים ציבוריים",
+    "closeSearch": "סגור חיפוש"
 }

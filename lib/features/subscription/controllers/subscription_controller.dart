@@ -96,7 +96,9 @@ class SubscriptionController with ChangeNotifier {
       final isSubscribed = _state is SubscriptionActive;
       final beganPayment = SubscriptionManagementRepo.getBeganPayment();
       if (beganPayment && isSubscribed) {
+        final planId = SubscriptionManagementRepo.getBeganPaymentPlanId();
         await SubscriptionManagementRepo.removeBeganPayment();
+        GoogleAnalytics.purchaseSubscription(planId);
         _onSubscribe();
       }
     } catch (e, s) {

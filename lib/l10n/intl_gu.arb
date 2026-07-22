@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-20 10:57:56.340208",
+    "@@last_modified": "2026-07-21 13:05:32.023688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "અપડેટ કર્યું\n{time}",
     "activityFinishedMessage": "બધું પૂરું થયું!",
     "endForAll": "બધા માટે સમાપ્ત કરો",
-    "newCourse": "નવો કોર્સ",
     "numModules": "{num} મોડ્યુલ્સ",
     "coursePlan": "કોર્સ પ્લાન",
     "editCourseLater": "તમે પછીથી ટેમ્પલેટ શીર્ષક, વર્ણનો અને કોર્સની છબીમાં ફેરફાર કરી શકો છો.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "તમારું સબ્સ્ક્રિપ્શન તેની નવીકરણ તારીખ ({date}) સુધી સક્રિય રહેશે, પછી નિષ્ક્રિય થઈ જશે. તમે એનાલિટિક્સ જાળવી રાખશો પરંતુ પ્રો સુવિધાઓનો ઉપયોગ કરી શકશો નહીં.",
     "cancelDescriptionWithoutRenewalDate": "તમારું સબ્સ્ક્રિપ્શન તેની નવીકરણ તારીખ સુધી સક્રિય રહેશે, પછી નિષ્ક્રિય થઈ જશે. તમે એનાલિટિક્સ જાળવી રાખશો પરંતુ પ્રો સુવિધાઓનો ઉપયોગ કરી શકશો નહીં.",
     "change": "બદલો",
-    "deactivateSubscribedAccountWarning": "આ તમારા વપરાશકર્તા ખાતાને નિષ્ક્રિય કરશે અને તમારું સબ્સ્ક્રિપ્શન રદ કરશે. આ પૂર્વવત્ કરી શકાતું નથી! શું તમે ચોક્કસ છો?"
+    "deactivateSubscribedAccountWarning": "આ તમારા વપરાશકર્તા ખાતાને નિષ્ક્રિય કરશે અને તમારું સબ્સ્ક્રિપ્શન રદ કરશે. આ પૂર્વવત્ કરી શકાતું નથી! શું તમે ચોક્કસ છો?",
+    "newCourseWithoutTitle": "કોર્સ શરૂ કરો",
+    "newCourseWithTitle": "\"{title}\" શરૂ કરો",
+    "joinCourseWithTitle": "\"{title}\" માં જોડાઓ",
+    "searchCoursePlans": "કોર્સ પ્લાન શોધો",
+    "searchPublicCourses": "જાહેર કોર્સ શોધો",
+    "closeSearch": "શોધ બંધ કરો"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-20 10:58:30.448840",
+    "@@last_modified": "2026-07-21 13:05:36.796843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "E ntlafalitsoe\n{time}",
     "activityFinishedMessage": "Kaofela ho phethiloe!",
     "endForAll": "Qetella bakeng sa bohle",
-    "newCourse": "Thuto e ncha",
     "numModules": "{num} modules",
     "coursePlan": "Moralo oa Thuto",
     "editCourseLater": "U ka fetola sehlooho sa thempleite, litlhaloso, le setšoantšo sa thuto hamorao.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Ngoliso ya hao e tla sebetsa ho fihlela letsatsing la yona la ntjhafatso ({date}), ebe e tima. O tla boloka dipalopalo empa o ke ke wa kgona ho sebedisa disebediswa tsa pro.",
     "cancelDescriptionWithoutRenewalDate": "Ngoliso ya hao e tla sebetsa ho fihlela letsatsing la yona la ntjhafatso, ebe e tima. O tla boloka dipalopalo empa o ke ke wa kgona ho sebedisa disebediswa tsa pro.",
     "change": "Fetola",
-    "deactivateSubscribedAccountWarning": "Sena se tla tima akhaonto ya hao ya mosebedisi le ho hlakola ngoliso ya hao. Sena se ke ke sa hlakolwa! O na le bonnete?"
+    "deactivateSubscribedAccountWarning": "Sena se tla tima akhaonto ya hao ya mosebedisi le ho hlakola ngoliso ya hao. Sena se ke ke sa hlakolwa! O na le bonnete?",
+    "newCourseWithoutTitle": "Qala thupelo",
+    "newCourseWithTitle": "Qala \"{title}\"",
+    "joinCourseWithTitle": "Kena ho \"{title}\"",
+    "searchCoursePlans": "Batla merero ea thupelo",
+    "searchPublicCourses": "Batla lithupelo tsa sechaba",
+    "closeSearch": "Koala patlisiso"
 }

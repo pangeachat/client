@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-20 10:58:00.620172",
+    "@@last_modified": "2026-07-21 13:05:31.659536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Hloov tshiab\n{time}",
     "activityFinishedMessage": "Ua tiav tag nrho!",
     "endForAll": "Xaus rau txhua tus",
-    "newCourse": "Chav kawm tshiab",
     "numModules": "{num} lub tshooj",
     "coursePlan": "Txoj Kev Kawm",
     "editCourseLater": "Koj tuaj yeem hloov kho lub npe, cov lus piav qhia, thiab daim duab chav kawm tom qab.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Koj qhov kev sau npe yuav ua haujlwm mus txog hnub rov qab ({date}), ces nws yuav tsis ua haujlwm. Koj yuav khaws tau cov ntaub ntawv tshuaj ntsuam tab sis yuav tsis siv tau cov yam ntxwv pro.",
     "cancelDescriptionWithoutRenewalDate": "Koj qhov kev sau npe yuav ua haujlwm mus txog hnub rov qab, ces nws yuav tsis ua haujlwm. Koj yuav khaws tau cov ntaub ntawv tshuaj ntsuam tab sis yuav tsis siv tau cov yam ntxwv pro.",
     "change": "Hloov",
-    "deactivateSubscribedAccountWarning": "Qhov no yuav ua rau koj tus account tsis ua haujlwm thiab tso tseg koj qhov kev sau npe. Qhov no tsis tuaj yeem thim rov qab! Koj puas paub tseeb?"
+    "deactivateSubscribedAccountWarning": "Qhov no yuav ua rau koj tus account tsis ua haujlwm thiab tso tseg koj qhov kev sau npe. Qhov no tsis tuaj yeem thim rov qab! Koj puas paub tseeb?",
+    "newCourseWithoutTitle": "Pib kawm",
+    "newCourseWithTitle": "Pib kawm \"{title}\"",
+    "joinCourseWithTitle": "Koom \"{title}\"",
+    "searchCoursePlans": "Nrhiav kev kawm",
+    "searchPublicCourses": "Nrhiav cov kev kawm pej xeem",
+    "closeSearch": "Kaw kev tshawb nrhiav"
 }

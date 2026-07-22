@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-20 10:57:51.536841",
+    "@@last_modified": "2026-07-21 13:05:29.908411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Diweddarwyd\n{time}",
     "activityFinishedMessage": "Wedi Gorffen!",
     "endForAll": "Gorffen i bawb",
-    "newCourse": "Cwrs newydd",
     "numModules": "{num} modiwl",
     "coursePlan": "Cynllun Cwrs",
     "editCourseLater": "Gallwch olygu teitl y templed, disgrifiadau, a delwedd y cwrs yn ddiweddarach.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "Bydd eich tanysgrifiad yn weithredol tan ei ddyddiad adnewyddu ({date}), yna bydd yn dadactifadu. Byddwch yn cadw dadansoddeg ond ni fyddwch yn gallu defnyddio nodweddion pro.",
     "cancelDescriptionWithoutRenewalDate": "Bydd eich tanysgrifiad yn weithredol tan ei ddyddiad adnewyddu, yna bydd yn dadactifadu. Byddwch yn cadw dadansoddeg ond ni fyddwch yn gallu defnyddio nodweddion pro.",
     "change": "Newid",
-    "deactivateSubscribedAccountWarning": "Bydd hyn yn dadactifadu eich cyfrif defnyddiwr ac yn canslo eich tanysgrifiad. Ni ellir dadwneud hyn! Ydych chi'n siŵr?"
+    "deactivateSubscribedAccountWarning": "Bydd hyn yn dadactifadu eich cyfrif defnyddiwr ac yn canslo eich tanysgrifiad. Ni ellir dadwneud hyn! Ydych chi'n siŵr?",
+    "newCourseWithoutTitle": "Dechrau cwrs",
+    "newCourseWithTitle": "Dechrau \"{title}\"",
+    "joinCourseWithTitle": "Ymuno â \"{title}\"",
+    "searchCoursePlans": "Chwilio cynlluniau cwrs",
+    "searchPublicCourses": "Chwilio cyrsiau cyhoeddus",
+    "closeSearch": "Cau'r chwiliad"
 }

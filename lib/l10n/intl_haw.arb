@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-20 10:57:59.627081",
+    "@@last_modified": "2026-07-21 13:05:31.086259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1315,7 +1315,6 @@
     "lastUpdated": "Hōʻano hou ʻia\n{time}",
     "activityFinishedMessage": "Pau loa!",
     "endForAll": "Hoʻopau no nā mea a pau",
-    "newCourse": "Papa hou",
     "numModules": "{num} mau māhele",
     "coursePlan": "Papa Hoʻolālā",
     "editCourseLater": "Hiki iā ʻoe ke hoʻoponopono i ka inoa laʻana, nā wehewehe, a me ke kiʻi papa ma hope.",
@@ -2031,5 +2030,11 @@
     "cancelDescriptionWithRenewalDate": "E hoʻoikaika ana kāu kau inoa a hiki i kona lā hoʻohou ({date}), a laila e hoʻopau. E mālama ʻoe i nā analytics akā ʻaʻole hiki ke hoʻohana i nā hiʻohiʻona pro.",
     "cancelDescriptionWithoutRenewalDate": "E hoʻoikaika ana kāu kau inoa a hiki i kona lā hoʻohou, a laila e hoʻopau. E mālama ʻoe i nā analytics akā ʻaʻole hiki ke hoʻohana i nā hiʻohiʻona pro.",
     "change": "Hoʻololi",
-    "deactivateSubscribedAccountWarning": "E hoʻopau kēia i kāu moʻokāki mea hoʻohana a hoʻopau i kāu kau inoa. ʻAʻole hiki ke hoʻihoʻi ʻia kēia! Maopopo anei iā ʻoe?"
+    "deactivateSubscribedAccountWarning": "E hoʻopau kēia i kāu moʻokāki mea hoʻohana a hoʻopau i kāu kau inoa. ʻAʻole hiki ke hoʻihoʻi ʻia kēia! Maopopo anei iā ʻoe?",
+    "newCourseWithoutTitle": "E hoʻomaka i ka papa",
+    "newCourseWithTitle": "E hoʻomaka i ka \"{title}\"",
+    "joinCourseWithTitle": "E hui pū me \"{title}\"",
+    "searchCoursePlans": "Huli i nā papa haʻawina",
+    "searchPublicCourses": "Huli i nā papa aʻo lehulehu",
+    "closeSearch": "Hoʻopau huli"
 }
