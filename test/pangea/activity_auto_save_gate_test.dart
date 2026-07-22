@@ -34,6 +34,23 @@ void main() {
       );
     });
 
+    test('after a restart, the synced archived_at keeps the gate closed', () {
+      // A restart starts with EMPTY in-memory dedupe sets, so durable
+      // idempotency must come from server-authoritative state: the archived_at
+      // synced back before the sweep runs makes hasArchivedActivity true, so
+      // the gate stays closed and the session is never re-saved / re-emitted —
+      // no double-emit across a process restart.
+      expect(
+        activityAutoSaveGate(
+          isActivityFinished: true,
+          hasCompletedRole: true,
+          hasArchivedActivity: true,
+        ),
+        isFalse,
+        reason: 'durable idempotency is the synced archived_at, not the sets',
+      );
+    });
+
     test('session still in progress does not save', () {
       expect(
         activityAutoSaveGate(

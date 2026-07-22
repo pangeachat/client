@@ -8,6 +8,14 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// to. Used to share new activity sessions into matching course spaces
 /// and to scope completion lookups for the world-map popup.
 class ActivityCourseResolver {
+  /// The genuinely-pinned course-space id for an activity opened WITHOUT a
+  /// selected course: the single eligible match, or null when the choice is
+  /// ambiguous (0 or >1 matches). Never an arbitrary `firstOrNull` pick — an
+  /// arbitrary space would mis-attribute the session's `source_course_id`, so a
+  /// tie is left UNSCOPED rather than guessed.
+  static String? unambiguousCourseId(List<Room> matches) =>
+      matches.length == 1 ? matches.single.id : null;
+
   /// Joined course spaces the activity is **eligible** for: those whose quest
   /// Learning Objectives intersect the activity's own LO refs, at a matching
   /// target language ([activityL2], region-insensitive, e.g. `es` matches

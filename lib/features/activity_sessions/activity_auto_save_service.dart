@@ -49,17 +49,22 @@ class ActivityAutoSaveService {
   StreamSubscription? _roleStateSub;
   final Set<String> _saving = {};
 
-  /// Session rooms this run has already SAVED (analytics + archive). The gate
-  /// (`!hasArchivedActivity`) re-opens until the archive write syncs back, so a
-  /// pre-sync sweep would otherwise re-archive and stamp a NEWER `archived_at`,
+  /// DURABLE idempotency (across process restarts) is NOT these in-memory sets —
+  /// it is the SERVER-AUTHORITATIVE `archived_at` in the role state: [start]
+  /// waits for the first `/sync` before sweeping, so a restart sees the archived
+  /// role, `hasArchivedActivity` is true, the gate (`!hasArchivedActivity`) is
+  /// closed, and the session is never re-saved or re-emitted. The two sets below
+  /// only close the INTRA-RUN pre-sync window (before that first sync echoes the
+  /// archive back), and a restart resets them harmlessly.
+  ///
+  /// Session rooms this run has already SAVED (analytics + archive). Without
+  /// this, a pre-sync sweep would re-archive and stamp a NEWER `archived_at`,
   /// leaving the already-emitted outcome's timestamp stale. Once saved, the
-  /// first archive is authoritative and the room is never saved again.
+  /// first archive is authoritative and the room is never re-saved this run.
   final Set<String> _saved = {};
 
-  /// Session rooms whose dosage outcome has already been emitted this app run.
-  /// The auto-save gate can re-open before the archive write syncs back, so a
-  /// second racing pass would otherwise emit the outcome again — this holds it
-  /// to exactly once per session room.
+  /// Session rooms whose dosage outcome has already been emitted this run (the
+  /// intra-run outcome guard; see [_saved] for why a restart can't double-emit).
   final Set<String> _emittedOutcomes = {};
   bool _disposed = false;
 

@@ -132,13 +132,35 @@ void main() {
       );
     });
 
-    test('does not disturb the join rules already set at creation', () async {
-      await client.launchActivitySession(plan(), null);
+    test(
+      'pins the actual knock join rule alongside history visibility',
+      () async {
+        await client.launchActivitySession(plan(), null);
 
-      final types = initialState().map((e) => e['type']).toList();
-      expect(types, contains(EventTypes.RoomJoinRules));
-      expect(types, contains(EventTypes.HistoryVisibility));
-    });
+        final events = initialState();
+        final joinRules = events.firstWhere(
+          (e) => e['type'] == EventTypes.RoomJoinRules,
+          orElse: () => throw StateError('no join_rules event at creation'),
+        );
+        // No matching course spaces in this test → a plain `knock` rule (a room
+        // members-only shared history is only safe because membership stays the
+        // gate). Assert the REAL value, not merely that a join-rules event exists.
+        expect(
+          (joinRules['content'] as Map)['join_rule'],
+          JoinRules.knock.text,
+          reason:
+              'membership must remain the gate — knock, never public/invite',
+        );
+        expect(
+          (joinRules['content'] as Map)['join_rule'],
+          isNot(JoinRules.public.text),
+        );
+        expect(
+          initialState().map((e) => e['type']),
+          contains(EventTypes.HistoryVisibility),
+        );
+      },
+    );
 
     test('the room is still created private', () async {
       await client.launchActivitySession(plan(), null);

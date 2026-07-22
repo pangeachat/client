@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -89,7 +88,9 @@ class _LeftPanelActivityDetailsSubpageState
       ).timeout(const Duration(seconds: 10));
       if (!mounted) return;
       setState(() {
-        _parentId = spaces.firstOrNull?.id;
+        // Only pin when exactly one course matches; a tie is left unscoped
+        // rather than attributing source_course_id to an arbitrary space.
+        _parentId = ActivityCourseResolver.unambiguousCourseId(spaces);
         _loading = false;
       });
     } catch (e, s) {
