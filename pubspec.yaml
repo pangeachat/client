@@ -129,12 +129,12 @@ dependencies:
   youtube_player_iframe: ^6.0.2
   xml: ^6.6.1
   flutter_map_marker_cluster: ^8.2.2
+  # SHA-256 content digest for the STT request cache key
+  # (speech_to_text_request_model.dart) and the golden fixture checksum test.
+  crypto: ^3.0.6
   # Pangea#
 
 dev_dependencies:
-  # Test-only: SHA-256 for the streaming-STT golden fixture checksum test
-  # (test/pangea/stt_golden_contract_test.dart). Already resolved transitively.
-  crypto: ^3.0.6
   flutter_lints: ^6.0.0
   flutter_native_splash: ^2.4.7
   flutter_test:

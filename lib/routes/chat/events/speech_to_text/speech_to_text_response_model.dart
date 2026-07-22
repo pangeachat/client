@@ -30,7 +30,42 @@ class SpeechToTextResponseModel extends BaseResponse {
       results.first.transcripts.isNotEmpty &&
       results.first.transcripts.first.text.isNotEmpty;
 
+  /// Whether this response carries a usable transcript AND non-empty tokens.
+  /// The tokenizer-decouple send path embeds a text-usable transcript with
+  /// `stt_tokens: []`; the token consumers (analytics, toolbar selection) need
+  /// this stronger gate so they prefer a later token-rich representation over
+  /// the provisional empty-token embed (see `selectUsableStt(preferTokens:)`).
+  bool get hasUsableTokens =>
+      hasUsableTranscript &&
+      results.first.transcripts.first.sttTokens.isNotEmpty;
+
   Transcript get transcript => results.first.transcripts.first;
+
+  /// Returns a copy identical to this response EXCEPT the first transcript's
+  /// `stt_tokens`, replaced by [sttTokens]. The single mutation the background
+  /// tokenize performs on the skip-tokenize base response: every other field
+  /// (service, confidence, wordsPerHr, word_timings, langCode) is preserved so
+  /// the enriched result is byte-identical to the base apart from its tokens.
+  SpeechToTextResponseModel withFirstTranscriptTokens(
+    List<STTToken> sttTokens,
+  ) {
+    if (results.isEmpty || results.first.transcripts.isEmpty) {
+      throw StateError(
+        'withFirstTranscriptTokens requires a usable transcript',
+      );
+    }
+    final firstResult = results.first;
+    final newFirstTranscript = firstResult.transcripts.first.copyWith(
+      sttTokens: sttTokens,
+    );
+    final newResults = [
+      SpeechToTextResult(
+        transcripts: [newFirstTranscript, ...firstResult.transcripts.skip(1)],
+      ),
+      ...results.skip(1),
+    ];
+    return SpeechToTextResponseModel(results: newResults, service: service);
+  }
 
   String get langCode => results.first.transcripts.first.langCode;
 
@@ -103,12 +138,19 @@ class Transcript {
   final String langCode;
   final int? wordsPerHr;
 
+  /// Provider word-level timings, carried through on the skip-tokenize path
+  /// (tokens get null timings, so the raw ASR timings are the only ones kept).
+  /// Nullable and OMIT-WHEN-NULL in [toJson] so a normal (non-decoupled)
+  /// response serializes byte-identically to before this field existed.
+  final List<WordTiming>? wordTimings;
+
   Transcript({
     required this.text,
     required this.confidence,
     required this.sttTokens,
     required this.langCode,
     required this.wordsPerHr,
+    this.wordTimings,
   });
 
   /// Returns the number of words per minute rounded to one decimal place.
@@ -124,6 +166,18 @@ class Transcript {
         .toList(),
     langCode: json[ModelKey.langCode],
     wordsPerHr: json['words_per_hr'],
+    wordTimings: (json['word_timings'] as List?)
+        ?.map((e) => WordTiming.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+
+  Transcript copyWith({List<STTToken>? sttTokens}) => Transcript(
+    text: text,
+    confidence: confidence,
+    sttTokens: sttTokens ?? this.sttTokens,
+    langCode: langCode,
+    wordsPerHr: wordsPerHr,
+    wordTimings: wordTimings,
   );
 
   Map<String, dynamic> toJson() => {
@@ -132,9 +186,57 @@ class Transcript {
     "stt_tokens": sttTokens.map((e) => e.toJson()).toList(),
     "lang_code": langCode,
     "words_per_hr": wordsPerHr,
+    if (wordTimings != null)
+      "word_timings": wordTimings!.map((e) => e.toJson()).toList(),
   };
 
   Color get color => confidence > 80 ? AppConfig.success : AppConfig.warning;
+}
+
+/// Raw ASR word timing carried on the skip-tokenize path. Timestamps are
+/// nullable (never fabricated -- some providers omit them); confidence is an
+/// integer 0..100 the choreographer normalizes from the provider's 0-1 float
+/// (a valid `0` is preserved, not nulled). Contract frozen with the choreo
+/// `WordTiming` schema (see PHASE1-SPEC D3).
+class WordTiming {
+  final String word;
+  final int? startTimeMs;
+  final int? endTimeMs;
+  final int? confidence;
+
+  WordTiming({
+    required this.word,
+    this.startTimeMs,
+    this.endTimeMs,
+    this.confidence,
+  });
+
+  factory WordTiming.fromJson(Map<String, dynamic> json) => WordTiming(
+    word: json['word'] as String,
+    startTimeMs: (json['start_time_ms'] as num?)?.toInt(),
+    endTimeMs: (json['end_time_ms'] as num?)?.toInt(),
+    confidence: (json['confidence'] as num?)?.toInt(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "word": word,
+    "start_time_ms": startTimeMs,
+    "end_time_ms": endTimeMs,
+    "confidence": confidence,
+  };
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is WordTiming &&
+        other.word == word &&
+        other.startTimeMs == startTimeMs &&
+        other.endTimeMs == endTimeMs &&
+        other.confidence == confidence;
+  }
+
+  @override
+  int get hashCode => Object.hash(word, startTimeMs, endTimeMs, confidence);
 }
 
 class STTToken {

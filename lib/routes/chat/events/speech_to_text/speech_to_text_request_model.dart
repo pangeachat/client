@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:crypto/crypto.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -14,26 +15,37 @@ class SpeechToTextRequestModel extends BaseRequest {
   final Event? audioEvent;
   final bool? mock;
 
+  /// When true, the choreographer returns the ASR transcript text (+ word
+  /// timings) WITHOUT running the LLM tokenizer -- the voice-send fast path.
+  /// A skip-tokenize response is a distinct cache slot (see [storageKey]) and
+  /// must never share one with a full tokenized response for the same audio.
+  final bool skipTokenize;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
     this.audioEvent,
     this.mock,
+    this.skipTokenize = false,
   });
 
+  /// A full sha256 digest of the audio content. The R0 key sampled only the
+  /// length + first 10 bytes, which collide across different short recordings
+  /// that share a fixed codec header (WAV/OGG magic bytes) -- firing STT at
+  /// record-stop could then serve a stale transcript for a different take.
+  /// A content digest keys on the whole recording, mirroring choreo's
+  /// `sha256_signature`.
+  String get _audioDigest => sha256.convert(audioContent).toString();
+
   @override
-  String get storageKey {
-    final bytesSample = audioContent.length > 10
-        ? audioContent.sublist(0, 10)
-        : audioContent;
-    return '${audioContent.length}|${base64Encode(bytesSample)}|'
-        '${jsonEncode(config.toJson())}';
-  }
+  String get storageKey =>
+      '$_audioDigest|${jsonEncode(config.toJson())}|$skipTokenize';
 
   @override
   Map<String, dynamic> toJson() => {
     "config": config.toJson(),
     "audio_content": base64Encode(audioContent),
+    "skip_tokenize": skipTokenize,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -43,16 +55,12 @@ class SpeechToTextRequestModel extends BaseRequest {
     if (other is! SpeechToTextRequestModel) return false;
 
     return listEquals(audioContent, other.audioContent) &&
-        config == other.config;
+        config == other.config &&
+        skipTokenize == other.skipTokenize;
   }
 
   @override
-  int get hashCode {
-    final bytesSample = audioContent.length > 10
-        ? audioContent.sublist(0, 10)
-        : audioContent;
-    return Object.hashAll([Object.hashAll(bytesSample), config.hashCode]);
-  }
+  int get hashCode => Object.hash(_audioDigest, config.hashCode, skipTokenize);
 }
 
 class SpeechToTextAudioConfigModel {
