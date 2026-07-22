@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content_container.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
 
+/// Read-only goal header for the start page and the summary
 class ActivityGoalsDropdown extends StatefulWidget {
   final List<ActivityRoleGoal>? goals;
   final Set<String> completedGoalIds;
@@ -41,6 +42,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
     if (old.goals != widget.goals) {
       final hasGoals = widget.goals != null && widget.goals!.isNotEmpty;
       if (hasGoals) {
+        // Selecting (or switching) a role opens the goals automatically.
         setState(() {
           _displayGoals = widget.goals;
           _visible = true;
@@ -57,18 +59,22 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
 
   void _toggleShowDropdown() => setState(() => showDropdown = !showDropdown);
 
-  void setShowDropdown(bool value) => setState(() => showDropdown = value);
-
   bool _isGoalCompleted(ActivityRoleGoal goal) =>
       widget.completedGoalIds.contains(goal.id);
 
   @override
   Widget build(BuildContext context) {
-    final goals = _displayGoals ?? [];
-    final visibleGoal = goals.isNotEmpty ? goals.first : null;
-    final remainingGoals = goals.length > 1
-        ? goals.skip(1).toList()
-        : <ActivityRoleGoal>[];
+    final goals = _displayGoals ?? const <ActivityRoleGoal>[];
+    final allComplete = goals.isNotEmpty && goals.every(_isGoalCompleted);
+    ActivityRoleGoal? active;
+    if (!allComplete) {
+      for (final goal in goals) {
+        if (!_isGoalCompleted(goal)) {
+          active = goal;
+          break;
+        }
+      }
+    }
 
     return ClipRect(
       child: AnimatedAlign(
@@ -76,30 +82,34 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
         curve: Curves.easeInOut,
         heightFactor: _visible ? 1.0 : 0.0,
         alignment: Alignment.topCenter,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (visibleGoal != null)
-              ActivityDropdownHeader(
-                goal: visibleGoal,
-                isGoalCompleted: _isGoalCompleted(visibleGoal),
-                toggleShowDropdown: _toggleShowDropdown,
-                trailing: remainingGoals.isNotEmpty
-                    ? Icon(showDropdown ? Icons.expand_less : Icons.expand_more)
-                    : null,
-                animateGoalTransitions: false,
-              ),
-            if (remainingGoals.isNotEmpty)
-              ActivityDropdownContentContainer(
+        child: goals.isEmpty
+            ? const SizedBox(width: double.infinity)
+            : ActivityGoalHeaderCard(
                 showDropdown: showDropdown,
-                setShowDropdown: setShowDropdown,
-                child: ActivityDropdownContent(
-                  goals: remainingGoals,
+                isComplete: allComplete,
+                collapsed: ActivityDropdownHeader(
+                  goals: goals,
                   isGoalCompleted: _isGoalCompleted,
+                  onToggle: _toggleShowDropdown,
+                  activeGoalId: active?.id,
+                  subtitle: allComplete
+                      ? null
+                      : Text(
+                          active?.description ?? '',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                ),
+                expanded: ActivityDropdownContent(
+                  goals: goals,
+                  isGoalCompleted: _isGoalCompleted,
+                  onToggle: _toggleShowDropdown,
+                  activeGoalId: active?.id,
                 ),
               ),
-          ],
-        ),
       ),
     );
   }

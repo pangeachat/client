@@ -147,13 +147,6 @@ class ChatAppBarTitle extends StatelessWidget {
                     );
                   },
                 ),
-                if (goals.isNotEmpty)
-                  ActivityStarRow(
-                    total: goals.length,
-                    earned: starsEarned.clamp(0, goals.length),
-                    iconSize: 16.0,
-                    condensed: goals.length > 7,
-                  ),
               ],
             ),
           ),
