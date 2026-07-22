@@ -668,7 +668,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
-        cavityDefaultsToPeek: isCourseCavity,
+        cavityDefaultsToPeek: cavityToken?.type == PanelTypesEnum.course,
         // Dismissing the activity plan sheet (drag down, or its own back/X)
         // CLOSES the plan — dropping its token clears the map's activity
         // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
