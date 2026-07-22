@@ -59,7 +59,13 @@ class PangeaInvitationSelectionView extends StatelessWidget {
         ),
         centerTitle: false,
         actions: [
-          ShareRoomButton(room: room, child: const Icon(Icons.share_outlined)),
+          Padding(
+            padding: .only(right: FluffyThemes.isColumnMode(context) ? 0 : 16),
+            child: ShareRoomButton(
+              room: room,
+              child: const Icon(Icons.share_outlined),
+            ),
+          ),
         ],
       ),
       body: MaxWidthBody(
