@@ -154,3 +154,59 @@ Future<SpeechToTextResponseModel> repairSttTokens({
   await attach(rich);
   return rich;
 }
+
+/// The background half of a decoupled voice send, run fire-and-forget AFTER
+/// `sendFileEvent` resolves (so the caller returns and the bot replies without
+/// waiting for the tokenizer).
+///
+/// CRITICAL: every dependency is injected and this never touches a widget
+/// `BuildContext`, so it is LIFECYCLE-INDEPENDENT -- if the user navigates away
+/// from the chat before [enrich] resolves, analytics is STILL recorded (the
+/// caller must capture the analytics service + Matrix room/client BEFORE the
+/// await, not the disposable context).
+///
+/// Ordering (PHASE1-SPEC D7):
+///  1. [enrich] -- the single tokenize step. On failure, nothing else runs
+///     (no analytics, no attach): the same best-effort, no-backfill loss as
+///     today, just deferred, no crash.
+///  2. [recordAnalytics] fires ONCE, only when [isOwnMessage], gated on ENRICH
+///     success -- NOT attach, because `sendPangeaEvent` can return null AFTER
+///     actually delivering, so gating on attach would drop valid analytics.
+///  3. [attach] best-effort; its null/failed return only affects later display
+///     repair, never analytics.
+Future<void> runVoiceTranscriptEnrichment({
+  required SpeechToTextResponseModel baseStt,
+  required SttLangSnapshot snapshot,
+  required bool isOwnMessage,
+  required Future<SpeechToTextResponseModel> Function(
+    SpeechToTextResponseModel base,
+    SttLangSnapshot snapshot,
+  )
+  enrich,
+  required Future<void> Function(SpeechToTextResponseModel richStt)
+  recordAnalytics,
+  required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
+  void Function(Object error, StackTrace stack)? onError,
+}) async {
+  final SpeechToTextResponseModel richStt;
+  try {
+    richStt = await enrich(baseStt, snapshot);
+  } catch (e, s) {
+    onError?.call(e, s);
+    return;
+  }
+
+  if (isOwnMessage) {
+    try {
+      await recordAnalytics(richStt);
+    } catch (e, s) {
+      onError?.call(e, s);
+    }
+  }
+
+  try {
+    await attach(richStt);
+  } catch (e, s) {
+    onError?.call(e, s);
+  }
+}

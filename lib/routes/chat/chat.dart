@@ -56,6 +56,7 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -94,6 +95,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
@@ -1681,8 +1683,15 @@ class ChatController extends State<ChatPageWithRoom>
 
     // Get transcript first so we can embed it in the audio event,
     // allowing the bot (and other clients) to read it immediately
-    // without waiting for a separate representation event.
-    final transcriptResult = await _getVoiceMessageTranscript(file);
+    // without waiting for a separate representation event. When the
+    // tokenizer-decouple flag is on, fetch TEXT-ONLY (skip_tokenize) so the
+    // send does not block on the LLM tokenizer; the tokens are computed and
+    // attached in the background after send (_scheduleVoiceTranscriptEnrichment).
+    final decoupleTokenizer = Environment.voiceTranscriptDecoupleEnabled;
+    final transcriptResult = await _getVoiceMessageTranscript(
+      file,
+      skipTokenize: decoupleTokenizer,
+    );
     final stt = transcriptResult.result;
     // Pangea#
 
@@ -1742,10 +1751,75 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (stt != null) {
-      _sendVoiceMessageAnalytics(eventId, stt);
+      if (decoupleTokenizer) {
+        // Send is done and the bot can reply from the embedded text. Tokenize +
+        // attach + record analytics in the BACKGROUND (fire-and-forget): this
+        // returns to the caller immediately so the send is not blocked on the
+        // tokenizer.
+        _scheduleVoiceTranscriptEnrichment(eventId, stt);
+      } else {
+        _sendVoiceMessageAnalytics(eventId, stt);
+      }
     }
     // Pangea#
     return;
+  }
+
+  /// Schedules the background token enrichment for a decoupled voice send.
+  /// Fire-and-forget: it does NOT await, so [onVoiceMessageSend] returns as soon
+  /// as the audio event is sent. It captures LIFECYCLE-INDEPENDENT references
+  /// (the analytics service, the Matrix room, the room id) BEFORE the background
+  /// await, never the disposable widget `context`, so navigating away from the
+  /// chat before the tokenize resolves STILL records analytics.
+  void _scheduleVoiceTranscriptEnrichment(
+    String eventId,
+    SpeechToTextResponseModel baseStt,
+  ) {
+    final analyticsUpdateService = Matrix.of(
+      context,
+    ).analyticsDataService.updateService;
+    final capturedRoom = room;
+    final capturedRoomId = roomId;
+    final snapshot = SttLangSnapshot.fromBaseStt(
+      baseStt,
+      speakerL1: pangeaController.userController.userL1Code,
+    );
+
+    Future<void> recordAnalytics(SpeechToTextResponseModel richStt) async {
+      if (richStt.results.isEmpty || richStt.transcript.sttTokens.isEmpty) {
+        return;
+      }
+      final constructs = richStt.constructs(capturedRoomId, eventId);
+      if (constructs.isEmpty) return;
+      final langCode = richStt.langCode.split('-').first;
+      // Visual feedback needs a live widget; the recording below does not.
+      if (mounted) {
+        _showAnalyticsFeedback(constructs, eventId, langCode);
+      }
+      await analyticsUpdateService.addAnalytics(eventId, constructs, langCode);
+    }
+
+    unawaited(
+      runVoiceTranscriptEnrichment(
+        baseStt: baseStt,
+        snapshot: snapshot,
+        // The just-sent message is always the sender's own; recording is gated
+        // on this per D7 (a viewed other-sender message never records).
+        isOwnMessage: true,
+        enrich: enrichSttWithTokens,
+        recordAnalytics: recordAnalytics,
+        attach: (richStt) => attachSttRepresentation(
+          send: capturedRoom.sendPangeaEvent,
+          parentEventId: eventId,
+          richStt: richStt,
+        ),
+        onError: (e, s) => ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'roomId': capturedRoomId, 'eventId': eventId},
+        ),
+      ),
+    );
   }
 
   void hideEmojiPicker() {
@@ -2750,11 +2824,13 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
-    MatrixAudioFile file,
-  ) async {
+    MatrixAudioFile file, {
+    bool skipTokenize = false,
+  }) async {
     return SpeechToTextRepo.instance.get(
       SpeechToTextRequestModel(
         audioContent: file.bytes,
+        skipTokenize: skipTokenize,
         config: SpeechToTextAudioConfigModel(
           encoding: mimeTypeToAudioEncoding(file.mimeType),
           sampleRateHertz: 22050,
