@@ -74,4 +74,29 @@ void main() {
       );
     });
   });
+
+  group('guardFeedbackDispatch (H2: flag-OFF feedback cannot escape)', () {
+    test('a throwing feedback is swallowed + logged; the future completes '
+        'normally', () async {
+      Object? logged;
+      // Must NOT throw (a bare fire-and-forget would otherwise become an
+      // unhandled async error on the flag-OFF analytics path).
+      await guardFeedbackDispatch(
+        () async => throw Exception('overlay/count failed'),
+        (e, _) => logged = e,
+      );
+      expect(logged, isA<Exception>());
+    });
+
+    test('a successful feedback runs and does not log', () async {
+      var shown = false;
+      var logged = false;
+      await guardFeedbackDispatch(
+        () async => shown = true,
+        (_, _) => logged = true,
+      );
+      expect(shown, isTrue);
+      expect(logged, isFalse);
+    });
+  });
 }

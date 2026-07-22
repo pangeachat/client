@@ -6,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'get_test_client.dart';
 
@@ -77,8 +79,10 @@ void main() {
   });
 
   tearDown(() async {
-    // Restore the real tokenizer so state never leaks between tests.
+    // Restore the real tokenizer + clear the in-memory repair so state never
+    // leaks between tests.
     PangeaMessageEvent.enrichSttHook = enrichSttWithTokens;
+    PangeaMessageEvent.clearRepairedSttCache();
     timeline.cancelSubscriptions();
     await client.dispose();
   });
@@ -92,6 +96,38 @@ void main() {
       expect(local.hasUsableTokens, isFalse);
     },
   );
+
+  test('H4: with attach failed (no persisted token-rich rep), selection reads the '
+      'in-memory repaired tokens -- getSpeechToTextLocal(preferTokens:true) '
+      'resolves tokens where it returned none before', () {
+    // Before: the token-less embed yields no tokens, so a tap resolves null.
+    expect(
+      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
+      isFalse,
+    );
+
+    // The display loader's repair enriched in-memory but the attach never
+    // persisted a representation; it cached the token-rich result by event id.
+    final rich = SpeechToTextResponseModel.fromJson(_tokenLessEmbed())
+        .withFirstTranscriptTokens([
+          STTToken(
+            token: PangeaToken.fromJson({
+              'text': {'content': 'hola', 'offset': 0, 'length': 4},
+              'lemma': {'text': 'hola', 'save_vocab': true, 'form': 'hola'},
+              'pos': 'NOUN',
+              'morph': <String, dynamic>{},
+            }),
+          ),
+        ]);
+    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, rich);
+
+    // After: selection now sees the SAME repaired tokens the display shows.
+    // Teeth: without the in-memory cache fallback in getSpeechToTextLocal, this
+    // stays the token-less embed (hasUsableTokens false) -> RED.
+    final selected = audioMessage.getSpeechToTextLocal(preferTokens: true);
+    expect(selected!.hasUsableTokens, isTrue);
+    expect(selected.transcript.sttTokens, isNotEmpty);
+  });
 
   test(
     'requestSpeechToText(requireTokens: true) tokenizes the token-less embed '

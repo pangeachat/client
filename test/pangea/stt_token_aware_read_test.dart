@@ -283,5 +283,53 @@ void main() {
       expect(result, same(rich));
       expect(enrichCalls, 0);
     });
+
+    test(
+      'H4: onEnriched fires with the token-rich result BEFORE attach, so a '
+      'caller can cache it even if attach never persists a representation',
+      () async {
+        final order = <String>[];
+        SpeechToTextResponseModel? enrichedSeen;
+        final rich = _withTokens('hola');
+
+        await repairSttTokens(
+          local: _textOnly('hola'),
+          requireTokens: true,
+          snapshot: snapshot(),
+          enrich: (base, snap) async => rich,
+          onEnriched: (r) {
+            enrichedSeen = r;
+            order.add('enriched');
+          },
+          attach: (r) async {
+            order.add('attach');
+            return null; // attach fails to persist
+          },
+        );
+
+        expect(enrichedSeen, same(rich));
+        expect(enrichedSeen!.hasUsableTokens, isTrue);
+        // onEnriched must run BEFORE attach (so the cache is populated even if
+        // attach later fails/returns null).
+        expect(order, ['enriched', 'attach']);
+      },
+    );
+
+    test(
+      'onEnriched does NOT fire when no tokenize happens (requireTokens:false '
+      'or already token-rich)',
+      () async {
+        var enrichedCalls = 0;
+        await repairSttTokens(
+          local: _textOnly('hola'),
+          requireTokens: false,
+          snapshot: snapshot(),
+          enrich: (base, snap) async => base,
+          onEnriched: (_) => enrichedCalls++,
+          attach: (r) async => null,
+        );
+        expect(enrichedCalls, 0);
+      },
+    );
   });
 }

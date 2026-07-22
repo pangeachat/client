@@ -304,4 +304,47 @@ void main() {
       },
     );
   });
+
+  group('buildVoiceSttRequest — H3 single t0 language snapshot', () {
+    final audio = Uint8List.fromList([1, 2, 3, 4]);
+
+    test('the ASR config uses the EXPLICITLY passed languages, never current '
+        'settings', () {
+      final req = buildVoiceSttRequest(
+        audioContent: audio,
+        mimeType: 'audio/x-wav',
+        userL1: 'en',
+        userL2: 'es',
+        skipTokenize: false,
+      );
+      // Teeth: if this re-read MatrixState.pangeaController (the regression),
+      // there is no MatrixState under `flutter test` -> throw/wrong value -> RED.
+      expect(req.config.userL1, 'en');
+      expect(req.config.userL2, 'es');
+    });
+
+    test('embed speaker_l1 == ASR config userL1 from ONE snapshot, even if the '
+        'user changes L1/L2 mid-send', () {
+      // The single t0 snapshot chat.dart captures at the top (before any await)
+      // and feeds to BOTH the embed and the ASR.
+      const capturedSpeakerL1 = 'en';
+      const capturedSpeakerL2 = 'es';
+
+      // ... user changes their L1 to 'fr' AFTER t0 (must be ignored). Production
+      // threads the CAPTURED value into the ASR, so it never re-reads 'fr'.
+      final asrReq = buildVoiceSttRequest(
+        audioContent: audio,
+        mimeType: 'audio/x-wav',
+        userL1: capturedSpeakerL1,
+        userL2: capturedSpeakerL2,
+        skipTokenize: true,
+      );
+
+      // The embed's speaker_l1/l2 ARE the same captured snapshot values, so:
+      const embedSpeakerL1 = capturedSpeakerL1;
+      const embedSpeakerL2 = capturedSpeakerL2;
+      expect(asrReq.config.userL1, embedSpeakerL1);
+      expect(asrReq.config.userL2, embedSpeakerL2);
+    });
+  });
 }

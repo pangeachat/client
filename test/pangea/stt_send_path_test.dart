@@ -308,6 +308,31 @@ void main() {
         expect(loggedError, isA<Exception>());
       },
     );
+
+    test('SF: a THROWING onError logger does not reject the fire-and-forget '
+        'coordinator (its future still completes normally)', () async {
+      var attachCalls = 0;
+
+      // The coordinator must complete without throwing even though enrich
+      // fails AND the onError logger itself throws.
+      await runVoiceTranscriptEnrichment(
+        baseStt: _skipTokenizeBase(),
+        snapshot: _snapshot,
+        resolveSenderId: _ownSender,
+        clientUserId: _me,
+        enrich: (_, _) async => throw Exception('tokenize failed'),
+        recordAnalytics: (_) async {},
+        attach: (_) async {
+          attachCalls++;
+          return null;
+        },
+        // Teeth: unguarded, this rejects the unawaited coordinator.
+        onError: (_, _) => throw Exception('logger blew up'),
+      );
+
+      // Enrich failed -> no attach; the point is simply that we got here.
+      expect(attachCalls, 0);
+    });
   });
 
   group('isOwnSender (analytics gate identity)', () {
