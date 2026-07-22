@@ -6,14 +6,12 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/payment_page_mixin.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/products_builder.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/selected_subscription_popup.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SettingsSubscription extends StatefulWidget {
@@ -26,27 +24,13 @@ class SettingsSubscription extends StatefulWidget {
 
 class SettingsSubscriptionState extends State<SettingsSubscription>
     with PaymentPageMixin {
-  final SubscriptionStatusProvider _subscriptionStatusProvider =
-      SubscriptionStatusProvider();
-
   final ValueNotifier<ProductPlan?> _selectedSubscription = ValueNotifier(null);
 
   @override
-  void initState() {
-    super.initState();
-    _loadSubscriptionStatus();
-  }
-
-  @override
   void dispose() {
-    _subscriptionStatusProvider.dispose();
     _selectedSubscription.dispose();
     super.dispose();
   }
-
-  Future<void> _loadSubscriptionStatus() => _subscriptionStatusProvider.load(
-    SubscriptionStatusRequest(userID: Matrix.of(context).client.userID!),
-  );
 
   Future<void> _onEnterDiscountCode() => FluffyThemes.isColumnMode(context)
       ? _showDiscountCodePopup()
@@ -105,13 +89,17 @@ class SettingsSubscriptionState extends State<SettingsSubscription>
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _subscriptionStatusProvider.loader,
+      valueListenable:
+          MatrixState.pangeaController.subscriptionController.state,
       builder: (context, subscriptionStatusState, _) => ProductsBuilder(
         builder: (context, productsState) => SettingsSubscriptionView(
           closeButton: widget.closeButton,
-          subscriptionStatusState: subscriptionStatusState,
+          subscriptionState: subscriptionStatusState,
           productsState: productsState,
-          reloadStatus: _loadSubscriptionStatus,
+          reloadStatus: () => MatrixState
+              .pangeaController
+              .subscriptionController
+              .reinitialize(Matrix.of(context).client.userID!),
           onEnterDiscountCode: _onEnterDiscountCode,
           onTapSubscription: _onTapSubscription,
           selectedSubscription: _selectedSubscription,

@@ -58,7 +58,7 @@ void main() {
           home: Scaffold(
             body: SettingsSubscriptionView(
               closeButton: CloseButton(),
-              subscriptionStatusState: AsyncState.loaded(status),
+              subscriptionState: SubscriptionActive(status),
               productsState: AsyncLoaded([]),
               reloadStatus: () {},
               onEnterDiscountCode: () async {},
