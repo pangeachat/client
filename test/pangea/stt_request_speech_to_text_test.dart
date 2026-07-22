@@ -14,22 +14,30 @@ import 'get_test_client.dart';
 /// than the `repairSttTokens` seam in isolation.
 ///
 /// The tokenizer is stubbed via `PangeaMessageEvent.enrichSttHook` so we can
-/// assert deterministically WHETHER each path reaches it:
+/// assert deterministically WHETHER each path reaches it, without any HTTP:
 ///  - `requestSpeechToText(requireTokens: true)`  -> tokenizes (toolbar).
 ///  - `requestSpeechToText(requireTokens: false)` -> does NOT tokenize.
-///  - `requestSttTranslation(...)`                -> does NOT tokenize (proves
-///    the text-only path is never dragged through the tokenizer; flipping it to
-///    require tokens turns this RED).
+///  - `requestSttTranslation(...)`                -> does NOT tokenize (flipping
+///    it to require tokens turns the sentinel assertion RED).
 ///
-/// The token-repair attach + the translation call reach the network; since the
-/// tokenizer decision is settled BEFORE either, those paths are raced against a
-/// short timeout and we assert on the (already-settled) tokenizer counters.
+/// The audio event deliberately uses languages (speaker_l1 = `de`, embed
+/// lang_code = `fr`) that DIFFER from the l1/l2 the caller passes (`en`/`es`),
+/// so the snapshot assertions prove the tokenizer inputs are EVENT-sourced (D6)
+/// and never taken from the caller's/current language.
+
+const _eventSpeakerL1 = 'de'; // on the audio event, != the caller's l1 (`en`)
+const _embedLangCode = 'fr'; // inside the embed, != the caller's l2 (`es`)
 
 Map<String, dynamic> _tokenLessEmbed() {
   final raw = File(
     'test/pangea/stt_golden/choreo_response_skip_tokenize.json',
   ).readAsStringSync();
-  return jsonDecode(raw) as Map<String, dynamic>;
+  final embed = jsonDecode(raw) as Map<String, dynamic>;
+  // Force a distinctive event language so the snapshot cannot accidentally
+  // match the caller's l1/l2 (en/es) and still look "event-sourced".
+  (embed['results'][0]['transcripts'][0] as Map<String, dynamic>)['lang_code'] =
+      _embedLangCode;
+  return embed;
 }
 
 void main() {
@@ -51,7 +59,7 @@ void main() {
         'body': 'recording.wav',
         // Event-sourced tokenizer inputs (D6): speaker_l1 lives on the event,
         // lang_code lives inside the embed. Neither comes from user settings.
-        'speaker_l1': 'en',
+        'speaker_l1': _eventSpeakerL1,
         'user_stt': _tokenLessEmbed(),
       },
       room: room,
@@ -86,7 +94,7 @@ void main() {
 
   test(
     'requestSpeechToText(requireTokens: true) tokenizes the token-less embed '
-    'with an EVENT-sourced snapshot (D6)',
+    'with a snapshot sourced from the EVENT language, not the caller args',
     () async {
       var enrichCalls = 0;
       SttLangSnapshot? seenSnapshot;
@@ -99,16 +107,21 @@ void main() {
         throw stopBeforeAttach;
       };
 
+      // Caller passes en/es (the "current" languages) -- DIFFERENT from the
+      // event's de/fr. The snapshot must ignore these and use the event.
       await expectLater(
         audioMessage.requestSpeechToText('en', 'es', requireTokens: true),
         throwsA(same(stopBeforeAttach)),
       );
 
       expect(enrichCalls, 1);
-      // D6: the snapshot is sourced from the AUDIO EVENT, not current settings.
-      expect(seenSnapshot!.senderL1, 'en'); // from the event's speaker_l1
-      expect(seenSnapshot!.langCode, 'es'); // from the embed's lang_code
-      expect(seenSnapshot!.senderL2, 'es');
+      // D6: EVENT-sourced, proven by the distinctive de/fr (not the en/es args).
+      expect(seenSnapshot!.senderL1, _eventSpeakerL1); // event's speaker_l1
+      expect(seenSnapshot!.langCode, _embedLangCode); // embed's lang_code
+      expect(
+        seenSnapshot!.senderL2,
+        _embedLangCode,
+      ); // == the L2 (message lang)
     },
   );
 
@@ -130,26 +143,27 @@ void main() {
 
   test('requestSttTranslation NEVER tokenizes the token-less embed (text-only '
       'path is not dragged through the tokenizer)', () async {
-    var enrichCalls = 0;
+    var enrichReached = false;
     PangeaMessageEvent.enrichSttHook = (base, snapshot) async {
-      enrichCalls++;
+      enrichReached = true; // the reached-decision sentinel
       return base;
     };
 
-    // requestSttTranslation calls requestSpeechToText (no requireTokens), which
-    // returns the token-less embed WITHOUT tokenizing, then the translation
-    // repo -- which errors fast with no live backend. The tokenizer decision is
-    // settled before that error.
-    await expectLater(
-      audioMessage.requestSttTranslation(
-        langCode: 'en',
-        l1Code: 'en',
-        l2Code: 'es',
-      ),
-      throwsA(anything),
-    );
+    // requestSttTranslation calls requestSpeechToText (no requireTokens),
+    // which returns the token-less embed WITHOUT tokenizing, then a downstream
+    // translation fetch that has no live backend here. We assert on the
+    // SENTINEL (was the tokenizer reached?) -- settled before that fetch -- and
+    // never depend on the downstream error. A timeout guards against any hang.
+    try {
+      await audioMessage
+          .requestSttTranslation(langCode: 'en', l1Code: 'en', l2Code: 'es')
+          .timeout(const Duration(seconds: 5));
+    } catch (_) {
+      // Downstream translation fetch (no backend) is irrelevant to the
+      // tokenizer decision asserted below.
+    }
 
-    // Teeth: if requestSttTranslation asked for tokens, this would be 1 -> RED.
-    expect(enrichCalls, 0);
+    // Teeth: if requestSttTranslation required tokens, this would be true.
+    expect(enrichReached, isFalse);
   });
 }

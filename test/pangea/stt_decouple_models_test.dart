@@ -228,6 +228,27 @@ void main() {
       expect(wt.confidence, 0);
     });
 
+    test('WordTiming.confidence is normalized to a bounded 0..100 int '
+        '(fractions rounded, out-of-range clamped)', () {
+      WordTiming parse(Object confidence) => WordTiming.fromJson({
+        'word': 'hola',
+        'start_time_ms': 0,
+        'end_time_ms': 100,
+        'confidence': confidence,
+      });
+
+      // Fraction -> rounded int (never a fractional confidence).
+      expect(parse(98.6).confidence, 99);
+      expect(parse(0.4).confidence, 0);
+      // Out of range -> clamped to the frozen 0..100 contract.
+      expect(parse(150).confidence, 100);
+      expect(parse(-5).confidence, 0);
+      expect(parse(250.9).confidence, 100);
+      // In-range values pass through unchanged, incl. a valid 0.
+      expect(parse(0).confidence, 0);
+      expect(parse(73).confidence, 73);
+    });
+
     test('hasUsableTokens is false when tokens are empty, true otherwise', () {
       final skip = SpeechToTextResponseModel.fromJson(normalJson());
       expect(skip.hasUsableTranscript, isTrue);

@@ -151,6 +151,38 @@ void main() {
     );
 
     test(
+      'SttLangSnapshot.fromBaseStt is a pure function of the EVENT (baseStt '
+      'language + the embedded speakerL1), independent of any current setting',
+      () {
+        // Build an embed whose language differs from any en/es default, and a
+        // speakerL1 that also differs, to prove neither is taken from ambient
+        // state -- the send path passes these EVENT-derived values.
+        final base = SpeechToTextResponseModel.fromJson({
+          'results': [
+            {
+              'transcripts': [
+                {
+                  'confidence': 90,
+                  'lang_code': 'fr',
+                  'stt_tokens': <Map<String, dynamic>>[],
+                  'transcript': 'bonjour le monde',
+                  'words_per_hr': 100,
+                },
+              ],
+            },
+          ],
+          'service': 'google',
+        });
+
+        final snapshot = SttLangSnapshot.fromBaseStt(base, speakerL1: 'de');
+        expect(snapshot.langCode, 'fr'); // from the embed
+        expect(snapshot.senderL2, 'fr'); // == the L2 (message language)
+        expect(snapshot.senderL1, 'de'); // the explicit speaker_l1
+        expect(snapshot.fullText, 'bonjour le monde');
+      },
+    );
+
+    test(
       'a tokenizer error is surfaced without dereferencing result!',
       () async {
         final base = _skipTokenizeBase();
