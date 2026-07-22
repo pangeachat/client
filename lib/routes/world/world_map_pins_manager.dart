@@ -4,7 +4,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -158,25 +157,6 @@ class WorldMapPinsManager {
           if (id is String && id.isNotEmpty) pinged.add(id);
         }
         timeline.cancelSubscriptions();
-
-        // A recruit ping is an `m.text` posted to the course space, so it bumps
-        // the space's unread count — but the world UI has no course-space
-        // timeline to open and read it, leaving the badge stuck (#7366). The map
-        // is where the ping actually surfaces (the pinned pin, which *does* show
-        // which activity), so the raw badge is redundant: clear it once we've
-        // consumed the ping here. Course spaces carry only structural events and
-        // pings (nothing else writes to them), so this never hides real content.
-        // `markedUnread` (a manual mark) is left alone.
-        if (space.notificationCount > 0) {
-          final last = space.lastEvent;
-          if (last != null) {
-            await space.setReadMarker(
-              last.eventId,
-              mRead: last.eventId,
-              public: AppSettings.sendPublicReadReceipts.value,
-            );
-          }
-        }
       } catch (_) {
         // A space whose timeline won't load just contributes no pings.
       }

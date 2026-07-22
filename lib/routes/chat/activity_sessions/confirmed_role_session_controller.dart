@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -167,15 +168,13 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       if (mounted) setState(() {});
     });
 
-    await widget.room.courseParent!.sendEvent({
-      "body": L10n.of(context).pingParticipantsNotification(
+    await widget.room.courseParent!.sendActivityPing(
+      L10n.of(context).pingParticipantsNotification(
         widget.room.client.userID!.localpart ?? widget.room.client.userID!,
         widget.room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
       ),
-      "msgtype": "m.text",
-      "pangea.activity.session_room_id": widget.room.id,
-      "pangea.activity.id": widget.activityId,
-    });
+      activityId: widget.activityId,
+    );
 
     if (mounted) {
       setState(() {});

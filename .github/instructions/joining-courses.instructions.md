@@ -130,7 +130,7 @@ A shared link (`/<code>` course join, `/<uuid>` activity) must reach the app on 
 2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.) — a store install cannot carry the link, so the web IS the fallback.
 3. **In-app browsers** (Instagram, Gmail webview, …) — Universal/App Links often don't fire there; the user stays on the web fallback, which works.
 
-The store steer in [`web/index.html`](../../web/index.html) exists for plain visitors, and fires ONLY on a bare-root mobile load: a deep path is an inbound link, and bouncing it to the store (or the pathless `pangea://` scheme) would drop the payload — the failure that silently broke mobile-web links in the past.
+There is deliberately NO automatic store or `pangea://` bounce anywhere: modern mobile browsers block JS-initiated custom-scheme navigations without a user tap (and can swallow a queued store redirect with them), so the old auto-bounce failed silently — and on deep paths it dropped the link payload outright. Install prompts are tappable instead, and appear only where they don't cost a link: on iOS, the Smart App Banner (`apple-itunes-app`, `app-argument` = the live URL) renders natively on every page — "Open" hops an installed app in with the link intact, "View" goes to the App Store; on Android, [`web/index.html`](../../web/index.html) shows a small dismissible "Get the app" bar on bare-root visits only (dismissal remembered for two weeks).
 
 ### Infrastructure touchpoints
 

@@ -19,8 +19,13 @@ class TutorialStep {
 class TutorialStepData {
   final String targetKey;
   final Future<void> Function()? onTap;
+  final bool Function() canShowNextStep;
 
-  TutorialStepData({required this.targetKey, this.onTap});
+  TutorialStepData({
+    required this.targetKey,
+    this.onTap,
+    required this.canShowNextStep,
+  });
 }
 
 class TutorialStepStyle {

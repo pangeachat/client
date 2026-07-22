@@ -266,6 +266,7 @@ class TutorialOverlayController {
   }) {
     if (!isFocused) {
       Logs().w("Tutorial ${tutorial.tutorialType} is not locally enabled");
+      _closeOverlay();
       return;
     }
 
@@ -273,6 +274,7 @@ class TutorialOverlayController {
       Logs().w(
         "Tutorial ${tutorial.tutorialType} is not queued to launch next",
       );
+      _closeOverlay();
       return;
     }
 
@@ -280,6 +282,7 @@ class TutorialOverlayController {
       Logs().w(
         "Another tutorial is already active: ${_state.model.activeTutorial!.tutorialType}",
       );
+      _closeOverlay();
       return;
     }
 
@@ -287,11 +290,13 @@ class TutorialOverlayController {
       Logs().w(
         "Tutorial ${tutorial.tutorialType} blocked because another route/dialog is on top.",
       );
+      _closeOverlay();
       return;
     }
 
     final opened = _openTutorialOverlay(context);
     if (!opened) {
+      _closeOverlay();
       return;
     }
 

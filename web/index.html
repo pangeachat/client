@@ -2,6 +2,23 @@
 <html>
 
 <head>
+  <!-- #Pangea -->
+  <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
+       app-argument carries the CURRENT URL, so a shared link (`/<code>`
+       course join, `/<uuid>` activity) opened in Safari or an in-app browser
+       hops into the installed app with the link intact; "View" goes to the
+       App Store. Injected via script because the argument must be the live
+       URL (joining-courses.instructions.md, Deep Linking). -->
+  <script>
+    (function () {
+      const meta = document.createElement('meta');
+      meta.name = 'apple-itunes-app';
+      meta.content =
+        'app-id=1445118630, app-argument=' + window.location.href;
+      document.head.appendChild(meta);
+    })();
+  </script>
+  <!-- Pangea# -->
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -213,36 +230,44 @@
   </script>
 
   <!-- #Pangea -->
+  <!-- Android "Get the app" banner. There is deliberately NO automatic
+       store/scheme bounce anywhere: modern mobile browsers block
+       JS-initiated custom-scheme navigations without a user tap (and can
+       swallow the queued store redirect with them), so the old
+       `pangea://` + timer pattern failed silently (#7830). Instead, install
+       prompts are tappable: iOS gets the native Smart App Banner (the meta
+       in <head>); Android gets this small dismissible bar on BARE-ROOT
+       visits only — a deep path is an inbound link and the web app is its
+       documented fallback (joining-courses.instructions.md). -->
   <script>
-    (function() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const isAndroid = /android/i.test(userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-      const isMobile = isAndroid || isIOS;
-
-      if (!isMobile) return; // Exit if not a mobile device
-
-      // A deep path is an inbound link (`/<code>` course join, `/<uuid>`
-      // activity — joining-courses.instructions.md). The web app is the
-      // documented fallback for those: when the app is installed the OS
-      // intercepts the link BEFORE this page loads (Universal/App Links), so
-      // reaching here means no app or an in-app browser — the store bounce
-      // would drop the link payload, and there is no deferred deep-linking
-      // service to recover it. Only bare-root visits steer to the store.
+    (function () {
+      const ua = navigator.userAgent || '';
+      if (!/android/i.test(ua)) return;
       if (window.location.pathname !== '/') return;
+      const KEY = 'pangea-play-banner-dismissed-at';
+      try {
+        const dismissedAt = parseInt(localStorage.getItem(KEY) || '0', 10);
+        if (Date.now() - dismissedAt < 14 * 24 * 3600 * 1000) return;
+      } catch (e) { /* storage unavailable: just show the banner */ }
 
-      const appScheme = 'pangea://'; // Replace with your app's scheme
-      const fallbackURL = isIOS
-        ? 'https://apps.apple.com/app/pangea-chat/id1445118630'
-        : 'https://play.google.com/store/apps/details?id=com.talktolearn.chat';
-
-      // Try opening the app
-      window.location = appScheme;
-
-      // Fallback to App Store / Play Store if not installed
-      setTimeout(() => {
-        window.location = fallbackURL;
-      }, 1500);
+      const bar = document.createElement('div');
+      bar.setAttribute('style',
+        'position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;' +
+        'align-items:center;gap:12px;padding:10px 12px;background:#1f1a2e;' +
+        'color:#fff;font-family:Roboto,sans-serif;font-size:14px;' +
+        'box-shadow:0 1px 4px rgba(0,0,0,.3);');
+      bar.innerHTML =
+        '<span style="flex:1">Pangea Chat is better in the app</span>' +
+        '<a href="https://play.google.com/store/apps/details?id=com.talktolearn.chat"' +
+        ' style="background:#7761d6;color:#fff;text-decoration:none;' +
+        'padding:8px 14px;border-radius:20px;font-weight:600">Get the app</a>' +
+        '<button aria-label="Dismiss" style="background:none;border:none;' +
+        'color:#fff;font-size:18px;padding:4px 8px;cursor:pointer">×</button>';
+      bar.querySelector('button').addEventListener('click', function () {
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+        bar.remove();
+      });
+      document.body.appendChild(bar);
     })();
   </script>
   <!-- Pangea# -->

@@ -256,6 +256,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               widget.overlayController.updateSelectedSpan(null);
               _shimmerTranslateButton.value = true;
             },
+            canShowNextStep: () =>
+                mounted && controller.selectedMode.value == null,
           ),
           TutorialStepData(
             targetKey: translateTarget,
@@ -263,6 +265,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               await updateMode(SelectMode.translate);
               await Future.delayed(Duration(milliseconds: 4000));
             },
+            canShowNextStep: () =>
+                mounted &&
+                controller.selectedMode.value == SelectMode.translate,
           ),
           TutorialStepData(
             targetKey: audioTarget,
@@ -270,10 +275,13 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               await updateMode(SelectMode.audio);
               await Future.delayed(Duration(milliseconds: 1000));
             },
+            canShowNextStep: () =>
+                mounted && controller.selectedMode.value == SelectMode.audio,
           ),
           TutorialStepData(
             targetKey: msgTarget,
             onTap: () async => widget.controller.clearSelectedEvents(),
+            canShowNextStep: () => true,
           ),
         ],
       ),

@@ -16,7 +16,8 @@ const _full = [
   TutorialEnum.writingAssistance,
 ];
 
-TutorialStepData _stepData() => TutorialStepData(targetKey: 'test_key');
+TutorialStepData _stepData() =>
+    TutorialStepData(targetKey: 'test_key', canShowNextStep: () => true);
 
 ReadingAssistantTutorialModel _readingModel() =>
     ReadingAssistantTutorialModel(data: [_stepData()]);

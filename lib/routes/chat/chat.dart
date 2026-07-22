@@ -762,6 +762,7 @@ class ChatController extends State<ChatPageWithRoom>
             onTap: () async {
               showToolbar(event, bypassBlockingOverlays: true);
             },
+            canShowNextStep: () => isToolbarOpen,
           ),
         ],
       ),
@@ -777,6 +778,7 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetKey: ChoreoConstants.inputTransformTargetKey,
             onTap: () async => inputFocus.requestFocus(),
+            canShowNextStep: () => true,
           ),
         ],
       ),
