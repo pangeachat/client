@@ -110,7 +110,9 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    uses: pangeachat/.github/.github/workflows/notify-matrix-deploy.yaml@9aca4dce4faf90cf72371d1bd6618b87eecde409 # main
+    # Local workflow — this public repo can't call the private org-wide
+    # notify-matrix-deploy.yaml (see header of notify-matrix-build.yml).
+    uses: ./.github/workflows/notify-matrix-build.yml
     with:
       service_name: "Pangea Chat Android"
       version: ${{ needs.deploy_playstore_internal.outputs.version }}
