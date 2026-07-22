@@ -258,7 +258,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   PangeaToken? get selectedToken {
     if (pangeaMessageEvent.isAudioMessage == true) {
-      final stt = pangeaMessageEvent.getSpeechToTextLocal();
+      // TOKEN consumer: tap-to-select needs spans, so prefer a token-rich
+      // representation over the provisional empty-token embed.
+      final stt = pangeaMessageEvent.getSpeechToTextLocal(preferTokens: true);
       if (stt == null || stt.transcript.sttTokens.isEmpty) return null;
       return stt.transcript.sttTokens
           .firstWhereOrNull((t) => isTokenSelected(t.token))

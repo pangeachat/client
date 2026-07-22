@@ -27,6 +27,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
@@ -241,7 +242,10 @@ class PangeaMessageEvent {
   /// shape (spoken words score as `pvm`), so callers don't special-case audio
   /// (issue #7659).
   List<OneConstructUse>? get constructUses => isAudioMessage
-      ? getSpeechToTextLocal()?.constructs(room.id, eventId)
+      // A TOKEN consumer: analytics needs the tokens, so prefer a token-rich
+      // representation over the provisional empty-token embed a decoupled send
+      // leaves behind (D5).
+      ? getSpeechToTextLocal(preferTokens: true)?.constructs(room.id, eventId)
       : originalSent?.vocabAndMorphUses;
 
   RepresentationEvent? get originalWritten => representations.firstWhereOrNull(
@@ -302,8 +306,26 @@ class PangeaMessageEvent {
         (filter?.call(element) ?? true),
   );
 
-  RepresentationEvent? get _speechToTextRepresentation => representations
-      .firstWhereOrNull((element) => element.content.speechToText != null);
+  /// The newest representation carrying a `speechToText` payload. When
+  /// [preferTokens] is set, a token-rich representation (usable transcript AND
+  /// non-empty tokens) is preferred over an earlier text-only one, so token
+  /// consumers surface the attached tokens instead of the provisional empty
+  /// embed; without it the first STT representation (reps are newest-first)
+  /// wins, matching the R0 behaviour.
+  RepresentationEvent? _speechToTextRepresentation({
+    bool preferTokens = false,
+  }) {
+    if (preferTokens) {
+      final tokenRich = representations.firstWhereOrNull((element) {
+        final stt = element.content.speechToText;
+        return stt != null && stt.hasUsableTranscript && stt.hasUsableTokens;
+      });
+      if (tokenRich != null) return tokenRich;
+    }
+    return representations.firstWhereOrNull(
+      (element) => element.content.speechToText != null,
+    );
+  }
 
   Event? _getTextToSpeechLocal(String langCode, String text, String? voice) {
     for (final audio in ttsEvents) {
@@ -343,17 +365,37 @@ class PangeaMessageEvent {
   /// representation. Usability is the full [hasUsableTranscript] gate, not just
   /// non-empty results: a nested-empty response is parseable but would crash
   /// `.transcript`/`.langCode`, so it must fall through, not be selected.
+  /// [preferTokens] (default false) is byte-identical to R0: the first
+  /// text-usable source wins (embed before representation) and the
+  /// representation thunk is never evaluated when the embed is usable. When set,
+  /// a token-rich source (usable transcript AND non-empty tokens) is preferred
+  /// -- so a token consumer surfaces the attached tokens rather than the
+  /// provisional empty-token embed a decoupled send leaves -- falling back to
+  /// any text-usable source (embed first) and never returning null while a
+  /// text-usable embed exists (D5).
   @visibleForTesting
   static SpeechToTextResponseModel? selectUsableStt({
     required SpeechToTextResponseModel? embedded,
     required SpeechToTextResponseModel? Function() representation,
+    bool preferTokens = false,
   }) {
-    if (embedded != null && embedded.hasUsableTranscript) return embedded;
+    final embedUsable = embedded != null && embedded.hasUsableTranscript;
+    // Fast path: a usable embed wins unless we need tokens it lacks. In the
+    // default mode this returns before the representation thunk is touched.
+    if (embedUsable && (!preferTokens || embedded.hasUsableTokens)) {
+      return embedded;
+    }
     final rep = representation();
-    return (rep != null && rep.hasUsableTranscript) ? rep : null;
+    final repUsable = rep != null && rep.hasUsableTranscript;
+    if (preferTokens) {
+      if (repUsable && rep.hasUsableTokens) return rep;
+      if (embedUsable) return embedded;
+      return repUsable ? rep : null;
+    }
+    return repUsable ? rep : null;
   }
 
-  SpeechToTextResponseModel? getSpeechToTextLocal() {
+  SpeechToTextResponseModel? getSpeechToTextLocal({bool preferTokens = false}) {
     // Check for STT embedded directly in the audio event content
     // (user-sent audio embeds under userStt, bot-sent audio under botTranscription)
     final rawEmbeddedStt =
@@ -380,12 +422,16 @@ class PangeaMessageEvent {
 
     return selectUsableStt(
       embedded: embedded,
-      // Lazy + guarded: only read when the embed is not usable, and a malformed
-      // related representation must not throw (it is logged and treated as
-      // absent), so a usable embed is never blocked by a broken representation.
+      preferTokens: preferTokens,
+      // Lazy + guarded: only read when the embed is not usable (or lacks tokens
+      // a token consumer needs), and a malformed related representation must not
+      // throw (it is logged and treated as absent), so a usable embed is never
+      // blocked by a broken representation.
       representation: () {
         try {
-          return _speechToTextRepresentation?.content.speechToText;
+          return _speechToTextRepresentation(
+            preferTokens: preferTokens,
+          )?.content.speechToText;
         } catch (err, s) {
           ErrorHandler.logError(
             e: err,
@@ -489,17 +535,44 @@ class PangeaMessageEvent {
     return file;
   }
 
+  /// Snapshots the tokenizer inputs from THIS audio event (see [SttLangSnapshot]
+  /// -- lang from the transcript, `sender_l1` from the event's `speaker_l1`), so
+  /// a token repair uses the message's own language, not the reader's settings.
+  SttLangSnapshot _sttLangSnapshot(SpeechToTextResponseModel baseStt) =>
+      SttLangSnapshot.fromBaseStt(
+        baseStt,
+        speakerL1: _event.content.tryGet<String>('speaker_l1'),
+      );
+
+  /// [requireTokens] turns this into the shared TOKEN-REPAIR primitive (display
+  /// only -- it never records analytics). Only when the caller requires tokens
+  /// AND the local embed lacks them does it tokenize the embedded text, attach
+  /// the `pangea.representation` best-effort, and return the token-rich result.
+  /// The toolbar loader passes `requireTokens: true`; text-only callers
+  /// (e.g. [requestSttTranslation]) leave the default `false` so a usable
+  /// token-less embed is served fast, never dragged through the tokenizer.
   Future<SpeechToTextResponseModel> requestSpeechToText(
     String l1Code,
-    String l2Code,
-  ) async {
+    String l2Code, {
+    bool requireTokens = false,
+  }) async {
     if (!isAudioMessage) {
       throw 'Calling getSpeechToText on non-audio message';
     }
 
-    final speechToTextLocal = getSpeechToTextLocal();
+    final speechToTextLocal = getSpeechToTextLocal(preferTokens: requireTokens);
     if (speechToTextLocal != null) {
-      return speechToTextLocal;
+      return repairSttTokens(
+        local: speechToTextLocal,
+        requireTokens: requireTokens,
+        snapshot: _sttLangSnapshot(speechToTextLocal),
+        enrich: enrichSttWithTokens,
+        attach: (rich) => attachSttRepresentation(
+          send: room.sendPangeaEvent,
+          parentEventId: eventId,
+          richStt: rich,
+        ),
+      );
     }
 
     final matrixFile = await _event.downloadAndDecryptAttachment();

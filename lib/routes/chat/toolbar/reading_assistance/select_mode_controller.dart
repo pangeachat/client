@@ -25,6 +25,9 @@ class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
   Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
     MatrixState.pangeaController.userController.userL1!.langCodeShort,
     MatrixState.pangeaController.userController.userL2!.langCodeShort,
+    // Tap-to-select needs token spans, so this loader repairs a token-less
+    // (decoupled-send) embed by tokenizing + attaching before returning.
+    requireTokens: true,
   );
 }
 

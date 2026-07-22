@@ -127,3 +127,30 @@ Future<Event?> attachSttRepresentation({
   parentEventId: parentEventId,
   type: PangeaEventTypes.representation,
 );
+
+/// DISPLAY-ONLY token repair (never records analytics). Returns [local]
+/// unchanged -- and NEVER tokenizes -- when the caller does not [requireTokens]
+/// or [local] already has usable tokens; otherwise it [enrich]es (the single
+/// tokenize step) and [attach]es best-effort, returning the token-rich result.
+///
+/// This is the shared repair primitive: the toolbar loader calls it with
+/// `requireTokens: true` (tap-to-select needs spans); the text-only translation
+/// path leaves the default `false` so it is NOT dragged through the tokenizer
+/// despite a usable text embed.
+Future<SpeechToTextResponseModel> repairSttTokens({
+  required SpeechToTextResponseModel local,
+  required bool requireTokens,
+  required SttLangSnapshot snapshot,
+  required Future<SpeechToTextResponseModel> Function(
+    SpeechToTextResponseModel base,
+    SttLangSnapshot snapshot,
+  )
+  enrich,
+  required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
+}) async {
+  if (!requireTokens || local.hasUsableTokens) return local;
+  final rich = await enrich(local, snapshot);
+  // Best-effort: a null/failed attach only affects display-repair eligibility.
+  await attach(rich);
+  return rich;
+}
