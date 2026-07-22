@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -59,13 +60,6 @@ class ActivityStatsMenu extends StatelessWidget {
   bool _isGoalCompleted(ActivityRoleGoal goal) =>
       room.isOwnGoalCompleted(goal.id, goalSlug: goal.goalSlug);
 
-  ActivityRoleGoal? _firstIncomplete(List<ActivityRoleGoal> goals) {
-    for (final goal in goals) {
-      if (!_isGoalCompleted(goal)) return goal;
-    }
-    return null;
-  }
-
   void _toggleShowDropdown() => setShowDropdown(!visibilityNotifier.value);
 
   Future<void> _finishActivityForMe(BuildContext context) async {
@@ -92,6 +86,7 @@ class ActivityStatsMenu extends StatelessWidget {
 
   Widget _doneButton(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
     return ElevatedButton(
       onPressed: () => _finishActivityForMe(context),
       style: ElevatedButton.styleFrom(
@@ -100,7 +95,16 @@ class ActivityStatsMenu extends StatelessWidget {
             ? null
             : theme.colorScheme.surface,
       ),
-      child: Text(L10n.of(context).completeActivityButton),
+      // Mirror the expanded "I'm done!" button
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            L10n.of(context).completeActivityButton,
+            style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
+          ),
+        ],
+      ),
     );
   }
 
@@ -117,7 +121,7 @@ class ActivityStatsMenu extends StatelessWidget {
         final allComplete = goals.isNotEmpty && room.hasCompletedOwnGoals;
         final active = allComplete
             ? null
-            : (activeGoal ?? _firstIncomplete(goals));
+            : (activeGoal ?? firstIncompleteGoal(goals, _isGoalCompleted));
         final hasActions = _showEndForMe || _showEndForAll || _showWaitNotDone;
 
         // A role with no goals — a role-less admin, or a legacy/unresolved plan —
@@ -127,6 +131,15 @@ class ActivityStatsMenu extends StatelessWidget {
         return ValueListenableBuilder(
           valueListenable: visibilityNotifier,
           builder: (context, showDropdown, _) {
+            final ownRoleDone = room.hasCompletedRole || _activityComplete;
+            final Widget? subtitle = ownRoleDone
+                ? null
+                : _showDoneButtonHint
+                ? _doneButton(context)
+                : active != null
+                ? goalHeaderLabel(active.description)
+                : null;
+
             final collapsed = goals.isEmpty
                 ? ActivityDropdownHeader(
                     goals: goals,
@@ -138,20 +151,8 @@ class ActivityStatsMenu extends StatelessWidget {
                     goals: goals,
                     isGoalCompleted: _isGoalCompleted,
                     onToggle: _toggleShowDropdown,
-                    activeGoalId: active?.id,
-                    subtitle: _showDoneButtonHint
-                        ? _doneButton(context)
-                        : Text(
-                            active?.description ??
-                                (goals.isNotEmpty
-                                    ? goals.last.description
-                                    : ''),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                    activeGoalId: ownRoleDone ? null : active?.id,
+                    subtitle: subtitle,
                   );
 
             return Positioned(

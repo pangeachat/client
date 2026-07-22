@@ -9,7 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 /// When [isComplete] the whole card turns gold.
 ///
 /// Toggling is owned by the faces themselves — only their top row opens/closes
-/// the menu — so this card carries no tap handler.
+/// the menu.
 class ActivityGoalHeaderCard extends StatelessWidget {
   final Widget collapsed;
   final Widget expanded;
@@ -63,17 +63,37 @@ class ActivityGoalHeaderCard extends StatelessWidget {
             ),
             child: Material(
               type: MaterialType.transparency,
-              child: AnimatedCrossFade(
-                duration: FluffyThemes.animationDuration,
-                sizeCurve: Curves.easeInOut,
-                firstCurve: Curves.easeInOut,
-                secondCurve: Curves.easeInOut,
-                alignment: Alignment.topCenter,
-                crossFadeState: showDropdown
-                    ? CrossFadeState.showSecond
-                    : CrossFadeState.showFirst,
-                firstChild: SizedBox(width: double.infinity, child: collapsed),
-                secondChild: SizedBox(width: double.infinity, child: expanded),
+              child: Stack(
+                children: [
+                  // Behind the content: swallow taps that land on the card's own
+                  // footprint but miss a real control (the padding between the
+                  // top row and subtitle, the gaps between goal rows, the border).
+                  Positioned.fill(
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {},
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                  AnimatedCrossFade(
+                    duration: FluffyThemes.animationDuration,
+                    sizeCurve: Curves.easeInOut,
+                    firstCurve: Curves.easeInOut,
+                    secondCurve: Curves.easeInOut,
+                    alignment: Alignment.topCenter,
+                    crossFadeState: showDropdown
+                        ? CrossFadeState.showSecond
+                        : CrossFadeState.showFirst,
+                    firstChild: SizedBox(
+                      width: double.infinity,
+                      child: collapsed,
+                    ),
+                    secondChild: SizedBox(
+                      width: double.infinity,
+                      child: expanded,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

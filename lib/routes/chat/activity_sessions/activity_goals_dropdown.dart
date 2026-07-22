@@ -65,16 +65,8 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
   @override
   Widget build(BuildContext context) {
     final goals = _displayGoals ?? const <ActivityRoleGoal>[];
-    final allComplete = goals.isNotEmpty && goals.every(_isGoalCompleted);
-    ActivityRoleGoal? active;
-    if (!allComplete) {
-      for (final goal in goals) {
-        if (!_isGoalCompleted(goal)) {
-          active = goal;
-          break;
-        }
-      }
-    }
+    final active = firstIncompleteGoal(goals, _isGoalCompleted);
+    final allComplete = goals.isNotEmpty && active == null;
 
     return ClipRect(
       child: AnimatedAlign(
@@ -94,14 +86,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
                   activeGoalId: active?.id,
                   subtitle: allComplete
                       ? null
-                      : Text(
-                          active?.description ?? '',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                      : goalHeaderLabel(active?.description ?? ''),
                 ),
                 expanded: ActivityDropdownContent(
                   goals: goals,

@@ -7,11 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 
-/// Max height of the scrolling portion of the goal list (the goals below the
-/// pinned top row). Sized to hold ~3 two-line rows, so a 4-goal list — one
-/// pinned plus three here — never scrolls however long each goal is
-const double _goalsScrollMaxHeight = 190.0;
-
 class ActivityDropdownContent extends StatelessWidget {
   final List<ActivityRoleGoal> goals;
   final bool Function(ActivityRoleGoal) isGoalCompleted;
@@ -76,7 +71,7 @@ class ActivityDropdownContent extends StatelessWidget {
         // Only the top row leaves room for the chevron; the rest run to the edge.
         if (isTop)
           const SizedBox(
-            width: kGoalHeaderChevronSlot,
+            width: GoalHeaderConstants.chevronSlot,
             child: Icon(Icons.expand_less),
           ),
       ],
@@ -94,21 +89,10 @@ class ActivityDropdownContent extends StatelessWidget {
     final Widget topRow = goals.isEmpty
         ? Row(
             children: [
-              const SizedBox(width: kGoalHeaderChevronSlot),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    title ?? '',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
+              const SizedBox(width: GoalHeaderConstants.chevronSlot),
+              Expanded(child: Center(child: goalHeaderLabel(title ?? ''))),
               const SizedBox(
-                width: kGoalHeaderChevronSlot,
+                width: GoalHeaderConstants.chevronSlot,
                 child: Icon(Icons.expand_less),
               ),
             ],
@@ -208,7 +192,7 @@ class ActivityDropdownContent extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 12.0,
-                kGoalHeaderTopPadding,
+                GoalHeaderConstants.topPadding,
                 12.0,
                 0.0,
               ),
@@ -220,7 +204,7 @@ class ActivityDropdownContent extends StatelessWidget {
           if (restGoals.isNotEmpty)
             ConstrainedBox(
               constraints: const BoxConstraints(
-                maxHeight: _goalsScrollMaxHeight,
+                maxHeight: GoalHeaderConstants.goalsScrollMaxHeight,
               ),
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
