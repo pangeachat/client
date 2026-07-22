@@ -20,14 +20,12 @@ class SettingsLearningView extends StatelessWidget {
             );
       }),
       builder: (context, _) {
-        return SafeArea(
-          child: Scaffold(
-            body: MaxWidthBody(
-              scrollController: controller.scrollController,
-              child: LearningSettingsTiles(
-                viewModel: controller.viewModel,
-                languageErrorNotifier: controller.languageMatchError,
-              ),
+        return Scaffold(
+          body: MaxWidthBody(
+            scrollController: controller.scrollController,
+            child: LearningSettingsTiles(
+              viewModel: controller.viewModel,
+              languageErrorNotifier: controller.languageMatchError,
             ),
           ),
         );
