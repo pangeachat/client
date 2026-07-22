@@ -358,6 +358,124 @@ void main() {
     });
   });
 
+  group('authoritativeStt (embed, else newest STT representation) — R6', () {
+    test('the embed wins when it has a usable transcript', () {
+      final embed = _textOnly('hola');
+      final rep = _withTokens('goodbye');
+      expect(
+        PangeaMessageEvent.authoritativeStt(embed: embed, newestRepStt: rep),
+        same(embed),
+      );
+    });
+
+    test(
+      'the newest STT representation is authoritative when no usable embed',
+      () {
+        final rep = _withTokens('hola');
+        expect(
+          PangeaMessageEvent.authoritativeStt(embed: null, newestRepStt: rep),
+          same(rep),
+        );
+        // An empty (unusable) embed also falls through to the representation.
+        expect(
+          PangeaMessageEvent.authoritativeStt(
+            embed: SpeechToTextResponseModel(results: const []),
+            newestRepStt: rep,
+          ),
+          same(rep),
+        );
+      },
+    );
+
+    test(
+      'null when neither an embed nor a representation transcript exists',
+      () {
+        expect(
+          PangeaMessageEvent.authoritativeStt(embed: null, newestRepStt: null),
+          isNull,
+        );
+      },
+    );
+  });
+
+  group('surfaceableRepairedStt — R6 staleness invariant', () {
+    test('(a) a cache entry whose transcript DIFFERS from the current embed is '
+        'NOT surfaceable; a matching one IS', () {
+      final cached = _withTokens('goodbye');
+      // Authoritative = the current embed "hola".
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: cached,
+          authoritative: _textOnly('hola'),
+        ),
+        isNull,
+      );
+      final matching = _withTokens('hola');
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: matching,
+          authoritative: _textOnly('hola'),
+        ),
+        same(matching),
+      );
+    });
+
+    test('(b) with NO embed, validated against the newest representation: '
+        'non-matching -> not surfaceable, matching -> surfaceable', () {
+      // Authoritative here is the newest representation transcript.
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: _withTokens('goodbye'),
+          authoritative: _textOnly('hello'), // newest rep
+        ),
+        isNull,
+      );
+      final match = _withTokens('hello');
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: match,
+          authoritative: _textOnly('hello'),
+        ),
+        same(match),
+      );
+    });
+
+    test('(c) post-edit race: the current transcript changed, so the stale '
+        'cached tokens are NOT surfaceable', () {
+      final stalePreEdit = _withTokens('original');
+      // Post-edit authoritative transcript differs.
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: stalePreEdit,
+          authoritative: _textOnly('edited'),
+        ),
+        isNull,
+      );
+    });
+
+    test('only when there is NO authoritative transcript anywhere may an '
+        'unmatched entry be returned (nothing to diverge from)', () {
+      final cached = _withTokens('hola');
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: cached,
+          authoritative: null,
+        ),
+        same(cached),
+      );
+    });
+
+    test('a token-less cache entry is never surfaceable', () {
+      expect(
+        PangeaMessageEvent.surfaceableRepairedStt(
+          cached: _textOnly('hola'),
+          authoritative: null,
+        ),
+        isNull,
+      );
+    });
+  });
+
   group('_repairedSttCache is bounded (should-fix)', () {
     setUp(PangeaMessageEvent.clearRepairedSttCache);
     tearDown(PangeaMessageEvent.clearRepairedSttCache);

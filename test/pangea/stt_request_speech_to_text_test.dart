@@ -129,6 +129,49 @@ void main() {
     expect(selected.transcript.sttTokens, isNotEmpty);
   });
 
+  test('R6 read-invariant (real getSpeechToTextLocal): a cached repair whose '
+      'transcript DIFFERS from the current embed is NOT surfaced -- staleness is '
+      'gated at READ, not by write/invalidation timing', () {
+    // Cache a token-rich entry for a DIFFERENT utterance than the embed
+    // ("adios ...", vs the embed's "hola mundo").
+    final stale = SpeechToTextResponseModel.fromJson({
+      'results': [
+        {
+          'transcripts': [
+            {
+              'confidence': 90,
+              'lang_code': _embedLangCode,
+              'transcript': 'adios amigo',
+              'words_per_hr': 100,
+              'stt_tokens': [
+                {
+                  'token': {
+                    'text': {'content': 'adios', 'offset': 0, 'length': 5},
+                    'lemma': {
+                      'text': 'adios',
+                      'save_vocab': true,
+                      'form': 'adios',
+                    },
+                    'pos': 'NOUN',
+                    'morph': <String, dynamic>{},
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, stale);
+
+    // The read-time invariant validates the cache against the current embed
+    // transcript; the stale "adios" entry does not match "hola mundo".
+    // Teeth: without the authoritative-transcript match at read, this stale
+    // entry would surface (hasUsableTokens true) -> RED.
+    final selected = audioMessage.getSpeechToTextLocal(preferTokens: true);
+    expect(selected!.hasUsableTokens, isFalse);
+  });
+
   test('HIGH: editing the message INVALIDATES the cached repair -- post-edit '
       'selection does NOT return the stale pre-edit tokens', () {
     final rich = SpeechToTextResponseModel.fromJson(_tokenLessEmbed())
