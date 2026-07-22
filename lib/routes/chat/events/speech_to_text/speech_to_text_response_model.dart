@@ -205,8 +205,8 @@ class WordTiming {
 
   /// Integer 0..100, NEVER null -- the choreographer normalizes every
   /// provider's 0-1 float to this scale (a valid `0` is preserved), so the
-  /// frozen §5 contract makes it required. Only the timestamps are nullable
-  /// (some providers omit them; they are never fabricated).
+  /// frozen §5 contract makes it required and bounded. Only the timestamps are
+  /// nullable (some providers omit them; they are never fabricated).
   final int confidence;
 
   WordTiming({
@@ -216,11 +216,16 @@ class WordTiming {
     this.endTimeMs,
   });
 
+  /// Normalizes any incoming confidence to the frozen contract: a rounded int
+  /// clamped to 0..100. Guards against a malformed upstream value (a fraction,
+  /// or an out-of-range number) ever leaking a contract violation into the app.
+  static int _normalizeConfidence(num raw) => raw.round().clamp(0, 100);
+
   factory WordTiming.fromJson(Map<String, dynamic> json) => WordTiming(
     word: json['word'] as String,
     startTimeMs: (json['start_time_ms'] as num?)?.toInt(),
     endTimeMs: (json['end_time_ms'] as num?)?.toInt(),
-    confidence: (json['confidence'] as num).toInt(),
+    confidence: _normalizeConfidence(json['confidence'] as num),
   );
 
   Map<String, dynamic> toJson() => {
