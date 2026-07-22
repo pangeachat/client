@@ -561,14 +561,23 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
-    _activityAutoSaveServices[name]?.dispose();
-    _activityAutoSaveServices.remove(name);
-    // Await the analytics teardown so this account's final dosage flush POST
-    // completes before we drop the service — the flush is awaited end-to-end
-    // (AnalyticsDataService.dispose → AnalyticsUpdateService.dispose).
-    await _analyticsServices[name]?.dispose();
-    _analyticsServices.remove(name);
+    await disposeAccountServices(name);
     // Pangea#
+  }
+
+  /// Flushes + disposes THIS account's dosage/analytics services (awaited), so
+  /// its final engagement-span POST is sent under a still-valid bearer. Wired
+  /// into EVERY teardown path: the logout flows (called BEFORE `client.logout()`
+  /// invalidates the bearer), the `loggedOut` listener ([_cancelSubs]), and
+  /// widget [dispose]. Idempotent — a second call finds the maps empty and is a
+  /// no-op, so the logout flow and the loggedOut listener don't double-flush.
+  Future<void> disposeAccountServices(String clientName) async {
+    _activityAutoSaveServices[clientName]?.dispose();
+    _activityAutoSaveServices.remove(clientName);
+    // Awaits AnalyticsUpdateService.dispose → the account's engagement-span
+    // flush, so the last span is POSTed before we return (and before logout).
+    await _analyticsServices[clientName]?.dispose();
+    _analyticsServices.remove(clientName);
   }
 
   void initMatrix() {
@@ -638,6 +647,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     linuxNotifications?.close();
     // #Pangea
+    // Flush + dispose every account's dosage/analytics on widget teardown so the
+    // last open engagement span isn't dropped. dispose() can't be async; the
+    // teardown is awaited internally and each flush POSTs on its own client, and
+    // the bearer isn't invalidated by widget teardown.
+    for (final name in {
+      ..._analyticsServices.keys,
+      ..._activityAutoSaveServices.keys,
+    }) {
+      unawaited(disposeAccountServices(name));
+    }
     _languageListener?.cancel();
     _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();

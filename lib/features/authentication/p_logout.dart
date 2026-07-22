@@ -39,13 +39,31 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
 
   await showFutureLoadingDialog(
     context: context,
-    future: () async {
+    future: () => saveFlushAndLogout(
       // before wiping out locally cached construct data, save it to the server
-      await matrix.analyticsDataService.updateService
-          .sendLocalAnalyticsToAnalyticsRoom();
-      await client.logout();
-    },
+      saveAnalytics: () => matrix.analyticsDataService.updateService
+          .sendLocalAnalyticsToAnalyticsRoom(),
+      flushAndDispose: () => matrix.disposeAccountServices(client.clientName),
+      logout: () => client.logout(),
+    ),
   );
 
   await redirect;
+}
+
+/// The logout ordering: save cached analytics, then FLUSH + dispose this
+/// account's dosage/analytics, and only THEN log out. The flush must run while
+/// the bearer is still valid — logout invalidates it, so a flush after logout
+/// would POST with a dead token (the `loggedOut` listener's teardown is the
+/// backstop, but it fires too late for the final span). Extracted so the
+/// ordering is unit-testable.
+@visibleForTesting
+Future<void> saveFlushAndLogout({
+  required Future<void> Function() saveAnalytics,
+  required Future<void> Function() flushAndDispose,
+  required Future<void> Function() logout,
+}) async {
+  await saveAnalytics();
+  await flushAndDispose();
+  await logout();
 }

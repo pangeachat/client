@@ -145,7 +145,13 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (!resp.isError) {
       await showFutureLoadingDialog(
         context: context,
-        future: () => Matrix.of(context).client.logout(),
+        future: () async {
+          final matrix = Matrix.of(context);
+          // Flush + dispose the account's dosage/analytics BEFORE logout
+          // invalidates the bearer, consistent with the normal logout path.
+          await matrix.disposeAccountServices(matrix.client.clientName);
+          await matrix.client.logout();
+        },
       );
     }
   }
