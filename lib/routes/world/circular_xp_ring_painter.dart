@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 /// Paints the collapsed avatar's XP ring: a full gray circular track with a
-/// gold arc filling clockwise from the top for [progress] (0-1) of the way to
+/// gold arc filling clockwise from the level badge for [progress] (0-1) of the way to
 /// the next level. The cluster's `XpBorderPainter` traces the powerups pill's
 /// rounded-rect outline instead, so the circular avatar needs this simpler
 /// circular counterpart rather than reusing it as-is.
