@@ -68,6 +68,7 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     await SubscriptionManagementRepo.setBeganPayment(planId);
     final success = await launchUrlString(
       paymentLink,
+      mode: LaunchMode.externalApplication,
       webOnlyWindowName: "_self",
     );
     if (!success) {
