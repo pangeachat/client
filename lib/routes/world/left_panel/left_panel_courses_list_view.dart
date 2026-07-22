@@ -21,14 +21,14 @@ List<Room> sortedCourses(Client client, L10n l10n) =>
     client.rooms
         .where(
           (r) =>
-              r.isSpace &
+              r.isSpace &&
               (r.membership == Membership.join ||
                   r.membership == Membership.invite),
         )
         .toList()
       ..sort((a, b) {
-        if (priority(a) != priority(b)) {
-          return priority(a).compareTo(priority(b));
+        if (_priority(a) != _priority(b)) {
+          return _priority(a).compareTo(_priority(b));
         }
         return a
             .getLocalizedDisplayname(MatrixLocals(l10n))
@@ -38,7 +38,7 @@ List<Room> sortedCourses(Client client, L10n l10n) =>
             );
       });
 
-int priority(Room room) => room.membership == Membership.invite ? 1 : 2;
+int _priority(Room room) => room.membership == Membership.invite ? 1 : 2;
 
 /// The **Courses** left-column panel (world_v2): the "Courses" header plus the
 /// scrollable list of joined courses.
@@ -83,9 +83,10 @@ class CoursesHubPanel extends StatelessWidget {
   }
 }
 
-/// The scrollable body of [CoursesHubPanel],
-/// containing a tile for each invited or joined course.
-/// Matches nav rail course behavior on course selection.
+/// The scrollable body of [CoursesHubPanel]: a tile per invited or joined
+/// course (matching nav rail behavior on course selection), and — only when the
+/// learner has none yet — the "Add new course" divider and the full-width
+/// add-course buttons as the empty state (#7172).
 class LeftPanelCoursesListView extends StatelessWidget {
   final List<Room> courses;
 
@@ -124,11 +125,44 @@ class LeftPanelCoursesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: AddCourseTileList(
         content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
         onTap: (index) => _onTapCourse(context, courses[index]),
+        // Only when the learner is in no courses yet (none joined, none
+        // invited): the "Add new course" divider + the full-width add-course
+        // buttons as the empty state (#7172). With at least one course, the
+        // add-course actions ride the header instead (see [CoursesHubPanel]).
+        extraContent: courses.isEmpty
+            ? [
+                const SizedBox(height: 4.0),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(color: theme.colorScheme.outlineVariant),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        l10n.addNewCourse,
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(color: theme.colorScheme.outlineVariant),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12.0),
+                const AddCourseOptions(),
+              ]
+            : null,
       ),
     );
   }
