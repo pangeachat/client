@@ -60,18 +60,18 @@ void main() {
       expect(counts, isNull);
     });
 
-    test(
-      'a fetch that throws propagates (best-effort caller catches)',
-      () async {
-        await expectLater(
-          guardedAnalyticsFeedbackCounts(
-            isMounted: () => true,
-            fetchGrammar: () async => throw Exception('boom'),
-            fetchVocab: () async => 5,
-          ),
-          throwsA(isA<Exception>()),
-        );
-      },
-    );
+    test('a fetch that throws PROPAGATES from the guard -- the real production '
+        'caller (runVoiceTranscriptEnrichment) wraps showFeedback in its own catch '
+        'and swallows+logs it (see stt_send_path_test HIGH-3), so it never '
+        'escapes the fire-and-forget nor affects recording', () async {
+      await expectLater(
+        guardedAnalyticsFeedbackCounts(
+          isMounted: () => true,
+          fetchGrammar: () async => throw Exception('boom'),
+          fetchVocab: () async => 5,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
   });
 }

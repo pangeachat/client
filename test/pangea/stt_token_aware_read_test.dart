@@ -97,6 +97,114 @@ void main() {
     );
   });
 
+  group('selectUsableStt(preferTokens:) transcript-match guard (SF-2)', () {
+    test(
+      'a token-rich rep with DIFFERENT text is NOT preferred; falls back to the '
+      'trusted token-less embed (no stale/foreign contamination)',
+      () {
+        final embed = _textOnly('hola mundo');
+        final staleRep = _withTokens('adios amigo'); // token-rich, foreign text
+        final selected = PangeaMessageEvent.selectUsableStt(
+          embedded: embed,
+          representation: () => staleRep,
+          preferTokens: true,
+        );
+        // Teeth: without the transcript-match gate this returns staleRep.
+        expect(selected, same(embed));
+      },
+    );
+
+    test('a token-rich rep whose text MATCHES the embed IS preferred', () {
+      final embed = _textOnly('hola mundo');
+      final matchingRep = _withTokens('hola mundo');
+      final selected = PangeaMessageEvent.selectUsableStt(
+        embedded: embed,
+        representation: () => matchingRep,
+        preferTokens: true,
+      );
+      expect(selected, same(matchingRep));
+    });
+
+    test('with no usable embed to match, any token-rich rep is acceptable', () {
+      final rep = _withTokens('hola');
+      final selected = PangeaMessageEvent.selectUsableStt(
+        embedded: null,
+        representation: () => rep,
+        preferTokens: true,
+      );
+      expect(selected, same(rep));
+    });
+  });
+
+  group('sttTranscriptsMatch', () {
+    SpeechToTextResponseModel richLang(String text, String lang) =>
+        SpeechToTextResponseModel(
+          results: [
+            SpeechToTextResult(
+              transcripts: [
+                Transcript(
+                  text: text,
+                  confidence: 90,
+                  sttTokens: [STTToken(token: _token(text, 0))],
+                  langCode: lang,
+                  wordsPerHr: null,
+                ),
+              ],
+            ),
+          ],
+        );
+
+    test('same text + same short language matches', () {
+      expect(
+        PangeaMessageEvent.sttTranscriptsMatch(
+          _textOnly('hola'),
+          _withTokens('hola'),
+        ),
+        isTrue,
+      );
+    });
+
+    test('different text does not match', () {
+      expect(
+        PangeaMessageEvent.sttTranscriptsMatch(
+          _textOnly('hola'),
+          _withTokens('adios'),
+        ),
+        isFalse,
+      );
+    });
+
+    test('different language does not match', () {
+      expect(
+        PangeaMessageEvent.sttTranscriptsMatch(
+          _textOnly('hola'), // es
+          richLang('hola', 'fr'),
+        ),
+        isFalse,
+      );
+    });
+
+    test('region variants of the same language match (es vs es-ES)', () {
+      expect(
+        PangeaMessageEvent.sttTranscriptsMatch(
+          _textOnly('hola'), // es
+          richLang('hola', 'es-ES'),
+        ),
+        isTrue,
+      );
+    });
+
+    test('an empty (non-usable) response never matches', () {
+      expect(
+        PangeaMessageEvent.sttTranscriptsMatch(
+          SpeechToTextResponseModel(results: const []),
+          _withTokens('hola'),
+        ),
+        isFalse,
+      );
+    });
+  });
+
   group('repairSttTokens', () {
     SttLangSnapshot snapshot() => const SttLangSnapshot(
       fullText: 'hola',

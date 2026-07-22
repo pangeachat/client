@@ -44,24 +44,21 @@ void main() {
     final audio = Uint8List.fromList(List<int>.generate(64, (i) => i));
 
     test(
-      'skip_tokenize is ALWAYS sent on the wire, carrying the flag value',
+      'skip_tokenize is sent ONLY when true; flag-OFF omits it so the request '
+      'bytes are byte-identical to today',
       () {
         expect(
           _req(audio, skipTokenize: true).toJson()['skip_tokenize'],
           isTrue,
         );
-        expect(
-          _req(audio, skipTokenize: false).toJson()['skip_tokenize'],
-          isFalse,
-        );
-        // Deployment-safe: the key is always present (choreo ignores extras) and
-        // simply reflects the flag; it never omits it.
+        // Flag OFF: the key is absent entirely (not `false`), so a decouple-OFF
+        // request serializes exactly as it did before this feature existed.
         expect(
           _req(
             audio,
             skipTokenize: false,
           ).toJson().containsKey('skip_tokenize'),
-          isTrue,
+          isFalse,
         );
       },
     );

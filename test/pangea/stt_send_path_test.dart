@@ -12,10 +12,11 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichmen
 /// P1b.4 — the flag-gated send path's background coordinator, analytics
 /// recorder, and interim embed.
 ///
-/// The coordinator (`runVoiceTranscriptEnrichment`) carries all of D7's
-/// analytics semantics; it is fully injectable so these run deterministically
-/// with no Matrix/widget harness (mirroring R0's isolation of the Matrix
-/// plumbing behind a pure seam).
+/// The coordinator (`runVoiceTranscriptEnrichment`) OWNS the orchestration
+/// (real-event sender lookup, record, feedback dispatch, attach) and ALL
+/// error-wrapping, so it is unit-tested with teeth here; chat.dart is left as
+/// thin wiring. Every dependency is injected, so these run deterministically
+/// with no Matrix/widget harness.
 
 PangeaToken _token(String content, int offset) => PangeaToken.fromJson({
   'text': {'content': content, 'offset': offset, 'length': content.length},
@@ -48,6 +49,8 @@ const _snapshot = SttLangSnapshot(
 
 const _me = '@me:server';
 
+Future<String?> _ownSender() async => _me;
+
 void main() {
   group('interim user_stt embed (flag ON)', () {
     test('built from the skip_tokenize response: text + word_timings + '
@@ -77,7 +80,7 @@ void main() {
       final future = runVoiceTranscriptEnrichment(
         baseStt: _skipTokenizeBase(),
         snapshot: _snapshot,
-        senderId: _me,
+        resolveSenderId: _ownSender,
         clientUserId: _me,
         enrich: (_, _) => enrichGate.future,
         recordAnalytics: (_) async => analyticsCalls++,
@@ -94,8 +97,9 @@ void main() {
 
     test(
       'BLOCKER guard: an exhausted-fallback (empty results) baseStt is a total '
-      'no-op -- no enrich, no analytics, no attach, no crash',
+      'no-op -- no lookup, no enrich, no analytics, no attach, no crash',
       () async {
+        var lookupCalls = 0;
         var enrichCalls = 0;
         var analyticsCalls = 0;
         var attachCalls = 0;
@@ -104,7 +108,10 @@ void main() {
           // results: [] -> no usable transcript; reading .transcript would throw.
           baseStt: SpeechToTextResponseModel(results: const []),
           snapshot: _snapshot,
-          senderId: _me,
+          resolveSenderId: () async {
+            lookupCalls++;
+            return _me;
+          },
           clientUserId: _me,
           enrich: (_, _) async {
             enrichCalls++;
@@ -117,6 +124,7 @@ void main() {
           },
         );
 
+        expect(lookupCalls, 0);
         expect(enrichCalls, 0);
         expect(analyticsCalls, 0);
         expect(attachCalls, 0);
@@ -132,7 +140,7 @@ void main() {
         await runVoiceTranscriptEnrichment(
           baseStt: _skipTokenizeBase(),
           snapshot: _snapshot,
-          senderId: _me,
+          resolveSenderId: _ownSender,
           clientUserId: _me,
           enrich: (b, _) async =>
               b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
@@ -152,28 +160,127 @@ void main() {
       },
     );
 
-    test('own-ness is bound to identity: a FOREIGN senderId does NOT record '
-        '(and attach still runs, best-effort display repair)', () async {
-      var analyticsCalls = 0;
-      var attachCalls = 0;
+    test(
+      'own-ness is bound to the RESOLVED event sender: a FOREIGN senderId does '
+      'NOT record (attach still runs)',
+      () async {
+        var analyticsCalls = 0;
+        var attachCalls = 0;
 
-      await runVoiceTranscriptEnrichment(
-        baseStt: _skipTokenizeBase(),
-        snapshot: _snapshot,
-        senderId: '@someone-else:server',
-        clientUserId: _me,
-        enrich: (b, _) async =>
-            b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
-        recordAnalytics: (_) async => analyticsCalls++,
-        attach: (_) async {
-          attachCalls++;
-          return null;
-        },
-      );
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: () async => '@someone-else:server',
+          clientUserId: _me,
+          enrich: (b, _) async =>
+              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
+          recordAnalytics: (_) async => analyticsCalls++,
+          attach: (_) async {
+            attachCalls++;
+            return null;
+          },
+        );
 
-      expect(analyticsCalls, 0, reason: 'never record a foreign sender');
-      expect(attachCalls, 1);
-    });
+        expect(analyticsCalls, 0, reason: 'never record a foreign sender');
+        expect(attachCalls, 1);
+      },
+    );
+
+    test(
+      'HIGH-2: a THROWING sender lookup is caught (routed to onError), the '
+      'future completes normally, and nothing records (senderId null -> not own)',
+      () async {
+        var analyticsCalls = 0;
+        var attachCalls = 0;
+        Object? loggedError;
+
+        // Must complete without throwing (no unhandled async error escapes).
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: () async => throw Exception('getEventById failed'),
+          clientUserId: _me,
+          enrich: (b, _) async =>
+              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
+          recordAnalytics: (_) async => analyticsCalls++,
+          attach: (_) async {
+            attachCalls++;
+            return null;
+          },
+          onError: (e, _) => loggedError = e,
+        );
+
+        expect(loggedError, isA<Exception>());
+        expect(analyticsCalls, 0, reason: 'lookup failed -> senderId null');
+        // Enrich + attach are independent of the lookup; attach still runs.
+        expect(attachCalls, 1);
+      },
+    );
+
+    test(
+      'HIGH-3: a THROWING feedback is swallowed (routed to onError); recording '
+      'STILL happened and the future completes normally',
+      () async {
+        var analyticsCalls = 0;
+        var attachCalls = 0;
+        Object? loggedError;
+
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: _ownSender,
+          clientUserId: _me,
+          enrich: (b, _) async =>
+              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
+          recordAnalytics: (_) async => analyticsCalls++,
+          showFeedback: (_) async => throw Exception('overlay/count failed'),
+          attach: (_) async {
+            attachCalls++;
+            return null;
+          },
+          onError: (e, _) => loggedError = e,
+        );
+
+        expect(analyticsCalls, 1, reason: 'feedback failure must not abort it');
+        expect(loggedError, isA<Exception>());
+        expect(attachCalls, 1);
+      },
+    );
+
+    test(
+      'feedback runs for an own message AFTER recording, and NOT for a foreign '
+      'one',
+      () async {
+        final order = <String>[];
+
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: _ownSender,
+          clientUserId: _me,
+          enrich: (b, _) async =>
+              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
+          recordAnalytics: (_) async => order.add('record'),
+          showFeedback: (_) async => order.add('feedback'),
+          attach: (_) async => null,
+        );
+        expect(order, ['record', 'feedback']);
+
+        final foreign = <String>[];
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: () async => '@other:server',
+          clientUserId: _me,
+          enrich: (b, _) async =>
+              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
+          recordAnalytics: (_) async => foreign.add('record'),
+          showFeedback: (_) async => foreign.add('feedback'),
+          attach: (_) async => null,
+        );
+        expect(foreign, isEmpty);
+      },
+    );
 
     test(
       'a tokenizer error is caught: no analytics, no attach, no crash',
@@ -185,7 +292,7 @@ void main() {
         await runVoiceTranscriptEnrichment(
           baseStt: _skipTokenizeBase(),
           snapshot: _snapshot,
-          senderId: _me,
+          resolveSenderId: _ownSender,
           clientUserId: _me,
           enrich: (_, _) async => throw Exception('tokenize failed'),
           recordAnalytics: (_) async => analyticsCalls++,

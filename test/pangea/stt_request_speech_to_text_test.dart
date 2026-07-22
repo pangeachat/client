@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -141,29 +142,44 @@ void main() {
     expect(result.hasUsableTokens, isFalse);
   });
 
-  test('requestSttTranslation NEVER tokenizes the token-less embed (text-only '
-      'path is not dragged through the tokenizer)', () async {
+  test('requestSttTranslation reaches the decision and DECLINES tokenizing '
+      '(text-only path is not dragged through the tokenizer)', () async {
     var enrichReached = false;
     PangeaMessageEvent.enrichSttHook = (base, snapshot) async {
-      enrichReached = true; // the reached-decision sentinel
+      enrichReached = true; // flipped ONLY if the tokenizer is invoked
       return base;
     };
 
-    // requestSttTranslation calls requestSpeechToText (no requireTokens),
-    // which returns the token-less embed WITHOUT tokenizing, then a downstream
-    // translation fetch that has no live backend here. We assert on the
-    // SENTINEL (was the tokenizer reached?) -- settled before that fetch -- and
-    // never depend on the downstream error. A timeout guards against any hang.
+    // requestSttTranslation calls requestSpeechToText (no requireTokens), which
+    // returns the token-less embed WITHOUT tokenizing, THEN progresses to the
+    // translation fetch. That fetch fails deterministically here (createRequests
+    // reads an uninitialized MatrixState -> LateInitializationError mentioning
+    // `pangeaController`) -- a SPECIFIC, non-network, non-timeout signal that the
+    // flow reached PAST the tokenizer decision. A hang or a pre-decision failure
+    // would NOT carry this signature and would FAIL below, so a "never reached"
+    // false-green is impossible.
+    Object? error;
     try {
       await audioMessage
           .requestSttTranslation(langCode: 'en', l1Code: 'en', l2Code: 'es')
-          .timeout(const Duration(seconds: 5));
-    } catch (_) {
-      // Downstream translation fetch (no backend) is irrelevant to the
-      // tokenizer decision asserted below.
+          .timeout(
+            const Duration(seconds: 5),
+            onTimeout: () =>
+                throw TimeoutException('requestSttTranslation hung'),
+          );
+    } catch (e) {
+      error = e;
     }
 
-    // Teeth: if requestSttTranslation required tokens, this would be true.
-    expect(enrichReached, isFalse);
+    // Declined tokenizing:
+    expect(enrichReached, isFalse, reason: 'text-only path must not tokenize');
+    // Positively reached-then-declined (not never-reached, not hung):
+    expect(error, isNotNull);
+    expect(error, isNot(isA<TimeoutException>()), reason: 'must not hang');
+    expect(
+      error.toString(),
+      contains('pangeaController'),
+      reason: 'reached the translation step past the tokenizer decision',
+    );
   });
 }
