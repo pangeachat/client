@@ -14,7 +14,6 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
-import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -545,8 +544,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           .length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
-    } else if (cavityToken?.type == PanelTypesEnum.addcourse &&
-        cavityToken?.param is! AddCoursePageTokenParam) {
+    } else if (cavityToken?.type == PanelTypesEnum.addcourse ||
+        cavityToken?.type == PanelTypesEnum.addcoursepage) {
       // The Courses hub opens tall enough to show all joined courses (or the
       // add-course buttons when there are none), capped by maxHeightFraction —
       // no longer defaulting to half (#7692). Same joined-course predicate as
