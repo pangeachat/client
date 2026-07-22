@@ -14,6 +14,7 @@ import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -59,6 +60,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     DosageEngagementTracker.instance.flushOpenSpan();
+    // Release the dosage signals' shared HTTP client on teardown so its
+    // connection pool isn't held open for the app's lifetime.
+    DosageSignalsRepo.dispose();
     _periodicTimer?.cancel();
   }
 

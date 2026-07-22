@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -32,8 +34,42 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 ///    no injected `cefr`/`gender`/`mock` — we deliberately do NOT route through
 ///    `Requests.post`, which would add those and 422.
 class DosageSignalsRepo {
+  /// A best-effort signal is disposable, so a POST is abandoned after this
+  /// window rather than pinning a pending future (and the awaiting isolate)
+  /// indefinitely on a stuck or half-open connection. On timeout the future
+  /// errors and is swallowed like any other failure.
+  static Duration _requestTimeout = const Duration(seconds: 10);
+
+  static Duration get requestTimeout => _requestTimeout;
+
+  /// Test seam: shorten the timeout so its path is exercised without a real
+  /// multi-second wait. Production never sets this.
+  @visibleForTesting
+  static set requestTimeout(Duration value) => _requestTimeout = value;
+
   /// A single shared client reuses connections across the frequent small posts.
-  static final http.Client _defaultClient = http.Client();
+  /// Lazily created so [dispose] can close and release it — an always-final
+  /// client could never be shut down, leaking its connection pool for the app's
+  /// lifetime.
+  static http.Client? _sharedClient;
+
+  static http.Client get _defaultClient => _sharedClient ??= http.Client();
+
+  /// Closes and releases the shared client (best-effort); the next post lazily
+  /// recreates it. Wire into app/analytics teardown so no socket is left open.
+  static void dispose() {
+    try {
+      _sharedClient?.close();
+    } catch (_) {
+      // Closing a best-effort client must itself never throw into a caller.
+    }
+    _sharedClient = null;
+  }
+
+  /// The shared client, for tests to assert [dispose] released it. Never used by
+  /// production code, which reads [_defaultClient].
+  @visibleForTesting
+  static http.Client get debugDefaultClient => _defaultClient;
 
   /// Whether dosage signals are active. Requires BOTH flags AND a configured
   /// BFF base URL — any of the three missing makes every post a no-op.
@@ -132,15 +168,17 @@ class DosageSignalsRepo {
   }) async {
     try {
       final http.Client httpClient = client ?? _defaultClient;
-      await httpClient.post(
-        Uri.parse(url),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Authorization": "Bearer $accessToken",
-        },
-        body: jsonEncode(body),
-      );
+      await httpClient
+          .post(
+            Uri.parse(url),
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+              "Authorization": "Bearer $accessToken",
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(requestTimeout);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,

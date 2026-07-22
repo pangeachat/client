@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -262,6 +263,46 @@ void main() {
       );
       expect(fired, isFalse, reason: 'gate $env should suppress every POST');
     }
+  });
+
+  test('abandons a POST that never responds at the request timeout '
+      '(no indefinite hang)', () async {
+    DosageSignalsRepo.requestTimeout = const Duration(milliseconds: 50);
+    addTearDown(
+      () => DosageSignalsRepo.requestTimeout = const Duration(seconds: 10),
+    );
+    // A client whose response future never completes.
+    final hang = MockClient((req) => Completer<http.Response>().future);
+
+    // The internal timeout resolves the future; the outer guard fails the
+    // test (rather than hanging it) if the timeout is missing.
+    await DosageSignalsRepo.postMessageEvents(
+      events: [messageEvent()],
+      accessToken: token,
+      client: hang,
+    ).timeout(
+      const Duration(seconds: 5),
+      onTimeout: () => fail('postMessageEvents hung past the request timeout'),
+    );
+  });
+
+  test('dispose() closes and releases the shared client (lazy recreate)', () {
+    final first = DosageSignalsRepo.debugDefaultClient;
+    expect(
+      identical(first, DosageSignalsRepo.debugDefaultClient),
+      isTrue,
+      reason: 'the shared client is reused across posts',
+    );
+
+    DosageSignalsRepo.dispose();
+
+    expect(
+      identical(first, DosageSignalsRepo.debugDefaultClient),
+      isFalse,
+      reason:
+          'dispose released the shared client; the next access recreates it',
+    );
+    DosageSignalsRepo.dispose();
   });
 
   test('never throws and never blocks on a failing/erroring client', () async {
