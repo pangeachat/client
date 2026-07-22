@@ -11,6 +11,10 @@ on:
       environment:
         required: true
         type: string
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
   workflow_dispatch:
     inputs:
       environment:
@@ -20,6 +24,11 @@ on:
           - staging
           - production
         default: "staging"
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
+        description: "Posted to Release Announcements as the build's Summary (plain text; or paste '## Summary' / '## To Test' markdown sections)"
 
 permissions:
   contents: read
@@ -28,11 +37,18 @@ jobs:
   build_ios_testflight:
     runs-on: macos-15
     environment: ${{ inputs.environment }}
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     env:
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - name: Capture build version
+        id: version
+        # Semantic version only — fastlane assigns the iOS build number itself
+        # (latest TestFlight build + 1), so pubspec's +N is not meaningful here.
+        run: echo "version=$(grep -m1 '^version:' pubspec.yaml | awk '{print $2}' | cut -d+ -f1)" >> $GITHUB_OUTPUT
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
@@ -79,3 +95,19 @@ jobs:
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
           APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64 }}
         run: fastlane ios release_candidate
+
+  notify:
+    needs: build_ios_testflight
+    permissions:
+      id-token: write
+      contents: read
+    # Local workflow — this public repo can't call the private org-wide
+    # notify-matrix-deploy.yaml (see header of notify-matrix-build.yml).
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat iOS"
+      version: ${{ needs.build_ios_testflight.outputs.version }}
+      headline: "(${{ inputs.environment }}) is on TestFlight"
+      release_body: ${{ inputs.new_release_notes }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

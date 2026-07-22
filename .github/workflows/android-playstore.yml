@@ -26,15 +26,17 @@ on:
      new_release_notes:
         required: true
         type: string
-        description: "The release notes for the new release (Unused atm)"
+        description: "Posted to Release Announcements as the build's Summary (plain text; or paste '## Summary' / '## To Test' markdown sections)"
 
 permissions:
   contents: read
 
 jobs:
   deploy_playstore_internal:
-    environment: 
+    environment:
       name: ${{ inputs.environment }}
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     env:
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
       ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
@@ -84,6 +86,11 @@ jobs:
           PLAY_STORE_KEYSTORE_KEY_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_PASSWORD }}
           PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
         run: ./scripts/prepare-android-release.sh
+      - name: Capture build version
+        id: version
+        # prepare-android-release.sh (set_build_code_internal) rewrites pubspec
+        # with the Play Store build code, so this reads e.g. "5.0.0+3828".
+        run: echo "version=$(grep -m1 '^version:' pubspec.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
       - name: Build Android Release
         run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64
       - name: Deploy Android Release
@@ -97,3 +104,19 @@ jobs:
           bundle update fastlane
           bundle exec fastlane deploy_internal_test
           cd ..
+
+  notify:
+    needs: deploy_playstore_internal
+    permissions:
+      id-token: write
+      contents: read
+    # Local workflow — this public repo can't call the private org-wide
+    # notify-matrix-deploy.yaml (see header of notify-matrix-build.yml).
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat Android"
+      version: ${{ needs.deploy_playstore_internal.outputs.version }}
+      headline: "(${{ inputs.environment }}) is on the Play Store internal track"
+      release_body: ${{ inputs.new_release_notes }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}
