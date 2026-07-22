@@ -269,6 +269,7 @@ Future<void> runVoiceTranscriptEnrichment({
   required Future<void> Function(SpeechToTextResponseModel richStt)
   recordAnalytics,
   required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
+  void Function(SpeechToTextResponseModel richStt)? recordRepaired,
   Future<void> Function(SpeechToTextResponseModel richStt)? showFeedback,
   FutureOr<void> Function(Object error, StackTrace stack)? onError,
 }) async {
@@ -295,6 +296,18 @@ Future<void> runVoiceTranscriptEnrichment({
   } catch (e, s) {
     safeOnError(e, s);
     return;
+  }
+
+  // Seed the in-memory repair cache right after enrich -- BEFORE and INDEPENDENT
+  // of the best-effort attach -- so the sender's own later SELECTION reads the
+  // same tokens analytics recorded, even when the attach fails to persist a
+  // representation (R6 #1). Guarded so a cache write can never reject.
+  if (recordRepaired != null) {
+    try {
+      recordRepaired(richStt);
+    } catch (e, s) {
+      safeOnError(e, s);
+    }
   }
 
   if (isOwnSender(senderId, clientUserId)) {
