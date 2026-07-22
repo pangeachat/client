@@ -12,6 +12,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
+import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 
 /// Unit tests for the shared learner-message emitter ([DosageMessageSignals]) —
 /// the single place every learner-text send path emits the envelope + an
@@ -218,5 +219,71 @@ void main() {
         );
       }
     });
+  });
+
+  group('strippedLearnerText (reply-fallback removal)', () {
+    test('strips the rich-reply quoted fallback, keeping only the reply', () {
+      const body =
+          '> <@bob:example.org> the original message\n\nmy actual reply';
+      expect(DosageMessageSignals.strippedLearnerText(body), 'my actual reply');
+    });
+
+    test('strips a multi-line quoted fallback', () {
+      const body =
+          '> <@bob:example.org> line one\n> line two\n> line three\n\nreply';
+      expect(DosageMessageSignals.strippedLearnerText(body), 'reply');
+    });
+
+    test('leaves a plain (non-reply) message unchanged', () {
+      expect(
+        DosageMessageSignals.strippedLearnerText('just a normal message'),
+        'just a normal message',
+      );
+      // A user line that merely starts with ">" but is not a reply fallback.
+      expect(
+        DosageMessageSignals.strippedLearnerText('> not really a reply'),
+        '> not really a reply',
+      );
+    });
+  });
+
+  test('a notification-style emit (no injected client) POSTs the reply envelope '
+      'via a per-request client', () async {
+    // The notification handler emits WITHOUT injecting a client, so the POST
+    // must go through the per-request clientFactory. Capture it there.
+    final posts = <http.Request>[];
+    DosageSignalsRepo.clientFactory = () => MockClient((req) async {
+      posts.add(req);
+      return http.Response('', 202);
+    });
+    addTearDown(() => DosageSignalsRepo.clientFactory = http.Client.new);
+
+    // Exactly as the notification reply path calls it: body-only, resolved id,
+    // no injected client, no editEventId. The injected tracker keeps the span
+    // POST off the factory so `posts` holds only the envelope.
+    DosageMessageSignals.emitForSentMessage(
+      roomId: roomId,
+      deviceId: deviceId,
+      accessToken: token,
+      msgEventId: msgId,
+      body: 'hola mundo',
+      tracker: buildTracker(),
+    );
+    await pumpEventQueue();
+
+    final envelopes = posts
+        .where((r) => r.url.path.contains('/dosage/message-events'))
+        .toList();
+    expect(
+      envelopes,
+      hasLength(1),
+      reason: 'the enabled notification reply must actually POST the envelope',
+    );
+    final event =
+        (jsonDecode(envelopes.single.body)['events'] as List).single
+            as Map<String, dynamic>;
+    expect(event['msg_id'], msgId);
+    expect(event['room_id'], roomId);
+    expect(event['char_count'], 'hola mundo'.length);
   });
 }

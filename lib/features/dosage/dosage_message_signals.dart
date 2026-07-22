@@ -74,4 +74,49 @@ class DosageMessageSignals {
   /// [emitForSentMessage]'s edit guard.
   static bool isResendableLearnerText(String messageType) =>
       messageType == MessageTypes.Text;
+
+  /// The learner's own text for a message, with any rich-reply fallback removed.
+  /// A reply's `body` is prefixed with the referenced message's quoted
+  /// `> <@user> …` lines; counting those would inflate the envelope with text
+  /// the learner did not write (the composer counts only the typed text).
+  /// Mirrors the SDK's `hideReply` crop.
+  static String strippedLearnerText(String body) => body.replaceFirst(
+    RegExp(r'^>( \*)? <[^>]+>[^\n\r]+\r?\n(> [^\n]*\r?\n)*\r?\n'),
+    '',
+  );
+
+  /// Emits the learner-message signals for a resend of a failed send
+  /// ([Event.sendAgain], which resends then resolves the new event id).
+  /// Fire-and-forget; returns the future so tests can await it. It uses the
+  /// RESOLVED (post-resend) event id, counts only the learner's own text (reply
+  /// fallback stripped), and skips a file/media resend and an edit replacement —
+  /// neither is a new learner turn.
+  static Future<void> emitForResend(
+    Event event, {
+    http.Client? client,
+    DosageEngagementTracker? tracker,
+  }) async {
+    final String? resolvedId;
+    try {
+      resolvedId = await event.sendAgain();
+    } catch (_) {
+      // The resend itself failed (e.g. a file whose bytes are no longer cached
+      // makes sendAgain throw); nothing to emit, and this best-effort path must
+      // never throw into its fire-and-forget caller.
+      return;
+    }
+    if (!isResendableLearnerText(event.messageType)) return;
+    emitForSentMessage(
+      roomId: event.room.id,
+      deviceId: event.room.client.deviceID,
+      accessToken: event.room.client.accessToken,
+      msgEventId: resolvedId,
+      body: strippedLearnerText(event.body),
+      editEventId: event.relationshipType == RelationshipTypes.edit
+          ? event.eventId
+          : null,
+      client: client,
+      tracker: tracker,
+    );
+  }
 }

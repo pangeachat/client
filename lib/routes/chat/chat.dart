@@ -2080,33 +2080,11 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
     // Pangea#
     if (event.status.isError) {
-      // A successful resend is that failed learner turn finally landing, so it
-      // emits the dosage envelope with the RESOLVED (post-resend) event id —
-      // send-then-POST, fire-and-forget. Only a text resend is a learner turn
-      // (a file resend carries no learner text); the edit events below are the
-      // same turn, so they never emit.
-      unawaited(
-        event
-            .sendAgain()
-            .then((resolvedId) {
-              if (!DosageMessageSignals.isResendableLearnerText(
-                event.messageType,
-              )) {
-                return;
-              }
-              DosageMessageSignals.emitForSentMessage(
-                roomId: event.room.id,
-                deviceId: event.room.client.deviceID,
-                accessToken: event.room.client.accessToken,
-                msgEventId: resolvedId,
-                body: event.body,
-                editEventId: event.relationshipType == RelationshipTypes.edit
-                    ? event.eventId
-                    : null,
-              );
-            })
-            .catchError((_) {}),
-      );
+      // Resend the failed send AND emit the dosage envelope for it once it
+      // lands: emitForResend resends, then counts the learner's own text (reply
+      // fallback stripped) under the RESOLVED event id — skipping file/media
+      // resends and edit replacements. Fire-and-forget, never blocks the retry.
+      unawaited(DosageMessageSignals.emitForResend(event).catchError((_) {}));
     }
     final allEditEvents = event
         .aggregatedEvents(timeline!, RelationshipTypes.edit)
