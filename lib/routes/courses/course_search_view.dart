@@ -7,6 +7,7 @@ import 'package:fluffychat/routes/courses/add_course_error_message.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/courses/course_language_filter.dart';
 import 'package:fluffychat/routes/courses/course_search_controller.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class CourseSearchView<T> extends StatelessWidget {
   final String title;
@@ -14,7 +15,7 @@ class CourseSearchView<T> extends StatelessWidget {
   final Widget? closeButton;
   final String notFoundMessage;
   final String notFoundButtonLabel;
-  final String hintText;
+  final String labelText;
   final CourseSearchController<T> courseSearch;
   const CourseSearchView({
     super.key,
@@ -23,7 +24,7 @@ class CourseSearchView<T> extends StatelessWidget {
     required this.closeButton,
     required this.notFoundMessage,
     required this.notFoundButtonLabel,
-    required this.hintText,
+    required this.labelText,
     required this.courseSearch,
   });
 
@@ -59,10 +60,15 @@ class CourseSearchView<T> extends StatelessWidget {
                     children: [
                       Expanded(
                         child: searching
-                            ? TextField(
+                            ? PangeaSearchBar(
                                 controller: courseSearch.searchController,
-                                decoration: InputDecoration(hintText: hintText),
+                                labelText: labelText,
                                 focusNode: courseSearch.focusNode,
+                                suffixIcon: IconButton(
+                                  icon: Icon(Icons.close),
+                                  tooltip: L10n.of(context).closeSearch,
+                                  onPressed: courseSearch.stopSearching,
+                                ),
                               )
                             : ValueListenableBuilder(
                                 valueListenable:
@@ -77,15 +83,12 @@ class CourseSearchView<T> extends StatelessWidget {
                                 },
                               ),
                       ),
-                      IconButton(
-                        icon: Icon(searching ? Icons.close : Icons.search),
-                        tooltip: searching
-                            ? L10n.of(context).closeSearch
-                            : L10n.of(context).search,
-                        onPressed: searching
-                            ? courseSearch.stopSearching
-                            : courseSearch.startSearching,
-                      ),
+                      if (!searching)
+                        IconButton(
+                          icon: Icon(Icons.search),
+                          tooltip: L10n.of(context).search,
+                          onPressed: courseSearch.startSearching,
+                        ),
                     ],
                   ),
                 ),

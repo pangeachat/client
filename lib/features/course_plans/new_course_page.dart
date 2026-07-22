@@ -76,7 +76,7 @@ class NewCoursePageState extends State<NewCoursePage> {
               ),
             ]
           : null,
-      hintText: L10n.of(context).searchCoursePlans,
+      labelText: L10n.of(context).searchCoursePlans,
       notFoundMessage: L10n.of(context).noCourseTemplatesFound,
       notFoundButtonLabel: L10n.of(context).continueText,
       closeButton: widget.closeButton,
