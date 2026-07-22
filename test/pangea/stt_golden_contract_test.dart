@@ -90,8 +90,8 @@ void main() {
       }
       expect(
         expected.length,
-        5,
-        reason: 'manifest must pin exactly the 5 data fixtures',
+        6,
+        reason: 'manifest must pin exactly the 6 data fixtures',
       );
       expected.forEach((name, digest) {
         final bytes = File('$_goldenDir/$name').readAsBytesSync();

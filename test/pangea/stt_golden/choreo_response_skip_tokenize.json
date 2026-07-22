@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "transcripts": [
+        {
+          "confidence": 94,
+          "lang_code": "es",
+          "stt_tokens": [],
+          "transcript": "hola mundo",
+          "word_timings": [
+            {
+              "confidence": 98,
+              "end_time_ms": 480,
+              "start_time_ms": 0,
+              "word": "hola"
+            },
+            {
+              "confidence": 91,
+              "end_time_ms": 960,
+              "start_time_ms": 480,
+              "word": "mundo"
+            }
+          ],
+          "words_per_hr": 120
+        }
+      ]
+    }
+  ],
+  "service": "google"
+}
