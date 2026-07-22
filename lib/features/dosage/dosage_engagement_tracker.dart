@@ -64,6 +64,21 @@ class DosageEngagementTracker {
       return;
     }
 
+    // Idle-gap rollover: the time since the last activity is idle, not
+    // engagement. If this activity lands after the idle threshold, close the
+    // prior span at its honest end (the last activity, floored) and start a
+    // FRESH span here — never bridge the idle gap into one span. Checked before
+    // the cap so a lone activity followed much later by another rolls over
+    // (a short span + a new span) instead of reporting a full capped span of
+    // mostly-idle time.
+    if (t.difference(_lastActivity ?? _spanStart!) >= idleGap) {
+      _emit(_computeEnd(t));
+      _openSpan(t, deviceId, accessToken);
+      return;
+    }
+
+    // Cap rollover: a CONTINUOUSLY active span (gaps under the idle threshold)
+    // must not exceed the server max — close it at the cap and roll over.
     if (t.difference(_spanStart!) >= DosageEngagementSpan.maxSpan) {
       _emit(_spanStart!.add(DosageEngagementSpan.maxSpan));
       _openSpan(t, deviceId, accessToken);

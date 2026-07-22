@@ -70,37 +70,33 @@ void main() {
     clock = base;
   });
 
-  test(
-    'opens on activity, extends, flushes a UUIDv4 span on heartbeat',
-    () async {
-      final tracker = buildTracker();
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
-      clock = base.add(const Duration(minutes: 3));
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
-      clock = base.add(const Duration(minutes: 3, seconds: 30));
-      tracker.flushOpenSpan();
-      await settle();
+  test('opens on activity, extends, flushes a UUIDv4 span on heartbeat', () async {
+    final tracker = buildTracker();
+    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    // A second activity WITHIN the idle gap extends the same span.
+    clock = base.add(const Duration(seconds: 90));
+    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    clock = base.add(const Duration(minutes: 2));
+    tracker.flushOpenSpan();
+    await settle();
 
-      expect(requests, hasLength(1));
-      final span = postedSpans().single;
-      expect(span['device_id'], deviceId);
-      expect(span['platform'], isNotEmpty);
-      expect(
-        span['span_id'] as String,
-        matches(
-          RegExp(
-            r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
-          ),
+    expect(requests, hasLength(1));
+    final span = postedSpans().single;
+    expect(span['device_id'], deviceId);
+    expect(span['platform'], isNotEmpty);
+    expect(
+      span['span_id'] as String,
+      matches(
+        RegExp(
+          r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
         ),
-      );
-      // Active at flush => the span ends at the flush time.
-      expect(spanStartOf(span), base);
-      expect(
-        spanEndOf(span),
-        base.add(const Duration(minutes: 3, seconds: 30)),
-      );
-    },
-  );
+      ),
+    );
+    // Active at flush (last activity 30s ago, within the idle gap) => the span
+    // ends at the flush time.
+    expect(spanStartOf(span), base);
+    expect(spanEndOf(span), base.add(const Duration(minutes: 2)));
+  });
 
   test('is dark: opens no span and posts nothing when a gate is off', () async {
     dotenv.testLoad(
@@ -172,11 +168,14 @@ void main() {
     },
   );
 
-  test('rolls over before exceeding the 30-minute server cap', () async {
+  test('a continuously active span rolls over at the 30-minute cap', () async {
     final tracker = buildTracker();
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
-    clock = base.add(const Duration(minutes: 31));
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    // Activity every 90s (inside the 2-min idle gap) keeps ONE span open and
+    // accumulating; at 30 minutes it hits the server cap and flushes there.
+    for (var i = 0; i <= 20; i++) {
+      clock = base.add(Duration(seconds: 90 * i)); // 0 .. 1800s (30 min)
+      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    }
     await settle();
 
     expect(
@@ -184,20 +183,77 @@ void main() {
       hasLength(1),
       reason: 'the capped span flushed on rollover',
     );
-    expect(
-      spanEndOf(postedSpans().single),
-      base.add(const Duration(minutes: 30)),
-    );
+    final capped = postedSpans().single;
+    expect(spanStartOf(capped), base);
+    expect(spanEndOf(capped), base.add(const Duration(minutes: 30)));
 
-    clock = base.add(const Duration(minutes: 32));
+    // The rollover opened a fresh span at the cap moment; a later flush reports
+    // only post-cap time, never a second counted 30 minutes.
+    clock = base.add(const Duration(minutes: 31));
     tracker.flushOpenSpan();
     await settle();
     expect(requests, hasLength(2));
     expect(
       spanStartOf(postedSpans()[1]),
-      base.add(const Duration(minutes: 31)),
+      base.add(const Duration(minutes: 30)),
     );
   });
+
+  test(
+    'a gap beyond the idle threshold rolls the span over instead of bridging',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:00
+      clock = base.add(const Duration(minutes: 1));
+      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:01
+      // 10 minutes of silence (>> the 2-min idle gap), then a new message.
+      clock = base.add(const Duration(minutes: 11));
+      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:11
+      await settle();
+
+      // The prior span closed at its last real activity (12:01): the idle gap is
+      // NOT bridged into it.
+      expect(
+        requests,
+        hasLength(1),
+        reason: 'the idle gap rolled the prior span over on the new activity',
+      );
+      final first = postedSpans().single;
+      expect(spanStartOf(first), base);
+      expect(spanEndOf(first), base.add(const Duration(minutes: 1)));
+
+      // The new message opened a fresh span; flushing it counts only post-gap
+      // time, never the idle minutes.
+      clock = base.add(const Duration(minutes: 12));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
+      final second = postedSpans()[1];
+      expect(spanStartOf(second), base.add(const Duration(minutes: 11)));
+      expect(spanEndOf(second), base.add(const Duration(minutes: 12)));
+    },
+  );
+
+  test(
+    'a lone activity then one far later reports a short span, not a capped 30 '
+    'minutes',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:00
+      // A single message, then silence past the cap distance, then one more: the
+      // gap is idle, not a 30-minute engaged span.
+      clock = base.add(const Duration(minutes: 31));
+      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:31
+      await settle();
+
+      expect(requests, hasLength(1));
+      final first = postedSpans().single;
+      expect(spanStartOf(first), base);
+      // Floored to minEngagement — NOT the 30-minute cap the old cap-first path
+      // would have reported.
+      expect(spanEndOf(first), base.add(DosageEngagementTracker.minEngagement));
+    },
+  );
 
   test('flushing with no open span, or twice, sends nothing extra', () async {
     final tracker = buildTracker();
