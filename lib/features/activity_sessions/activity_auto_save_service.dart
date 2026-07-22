@@ -4,15 +4,14 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
@@ -37,10 +36,15 @@ class ActivityAutoSaveService {
   final Client client;
   final AnalyticsDataService analyticsService;
 
+  /// Resolves an activity's LO reference ids (see [defaultLoRefsResolver]);
+  /// injectable so the outcome attribution is testable without a live CMS.
+  final Future<List<String>> Function(String activityId) _loRefsResolver;
+
   ActivityAutoSaveService({
     required this.client,
     required this.analyticsService,
-  });
+    Future<List<String>> Function(String activityId)? loRefsResolver,
+  }) : _loRefsResolver = loRefsResolver ?? defaultLoRefsResolver;
 
   StreamSubscription? _roleStateSub;
   final Set<String> _saving = {};
@@ -119,7 +123,7 @@ class ActivityAutoSaveService {
 
       // Best-effort dosage session outcome at the archive moment (stars bank
       // here). Fire-and-forget; never blocks or fails the save.
-      _emitDosageSessionOutcome(room, plan, archivedAt);
+      _emitDosageSessionOutcome(room, archivedAt);
 
       GoogleAnalytics.completeActivity(
         plan.activityId,
@@ -142,37 +146,74 @@ class ActivityAutoSaveService {
   /// [archivedAt] is the canonical marker archiveActivity persisted (never a
   /// re-read of racy room state); a null means the archive did not happen, so
   /// there is nothing to emit.
-  void _emitDosageSessionOutcome(
-    Room room,
-    ActivityPlanModel plan,
-    DateTime? archivedAt,
-  ) {
+  void _emitDosageSessionOutcome(Room room, DateTime? archivedAt) {
+    // Guard + dedupe synchronously BEFORE the async LO-ref read so a racing
+    // second pass can't start a second resolve/post. Nothing to attribute (no
+    // activity id / no archived-at) doesn't burn the dedupe slot.
+    if (room.activityId == null || archivedAt == null) return;
+    if (!shouldEmitOutcome(room.id, _emittedOutcomes)) return;
+
+    unawaited(
+      () async {
+        final outcome = await resolveSessionOutcome(
+          room: room,
+          archivedAt: archivedAt,
+          loRefsResolver: _loRefsResolver,
+        );
+        if (outcome == null) return;
+        await DosageSignalsRepo.postSessionOutcomes(
+          outcomes: [outcome],
+          accessToken: client.accessToken,
+        );
+      }().catchError((_) {}),
+    );
+  }
+
+  /// Resolves the dosage session-outcome for [room] at [archivedAt], or null
+  /// when it cannot be attributed. Attribution is data-minimized: the pinned
+  /// course-space id ([Room.pinnedSourceCourseId], the SPECIFIC launching course
+  /// — not an arbitrary course-plan parent), and LO REFERENCE IDS from
+  /// [loRefsResolver] — never the free-form learning-objective display text,
+  /// which is persisted server-side and can carry authored content/PII.
+  ///
+  /// Static + injectable resolver so the attribution is unit-testable without a
+  /// live CMS.
+  @visibleForTesting
+  static Future<DosageSessionOutcome?> resolveSessionOutcome({
+    required Room room,
+    required DateTime? archivedAt,
+    required Future<List<String>> Function(String activityId) loRefsResolver,
+  }) async {
+    final activityId = room.activityId;
+    if (activityId == null || archivedAt == null) return null;
+
+    final loRefs = await loRefsResolver(activityId);
+
     final starsByGoalSlug = <String, int>{
       for (final goal in room.ownCompletedGoals) (goal.goalSlug ?? goal.id): 1,
     };
 
-    final outcome = buildSessionOutcome(
+    return buildSessionOutcome(
       sessionRoomId: room.id,
-      activityId: room.activityId,
+      activityId: activityId,
       archivedAt: archivedAt,
-      sourceCourseId: room.courseParent?.coursePlan?.uuid,
-      loRefs: plan.learningObjective.isEmpty ? [] : [plan.learningObjective],
+      sourceCourseId: room.pinnedSourceCourseId,
+      loRefs: loRefs,
       starsByGoalSlug: starsByGoalSlug,
     );
-    // Nothing to attribute (no activity id or no archived-at): don't burn the
-    // dedupe slot, so a later valid pass can still emit.
-    if (outcome == null) return;
+  }
 
-    // Exactly once per session room: the gate can re-open before `/sync`
-    // reflects the archive, so a second pass must not double-emit.
-    if (!shouldEmitOutcome(room.id, _emittedOutcomes)) return;
-
-    unawaited(
-      DosageSignalsRepo.postSessionOutcomes(
-        outcomes: [outcome],
-        accessToken: client.accessToken,
-      ).catchError((_) {}),
-    );
+  /// An activity's LO reference ids (the CMS `learningObjectiveRefs`), the
+  /// PII-safe attribution for `lo_refs`. Best-effort: an empty list on any
+  /// failure — the server re-derives LO attribution regardless.
+  @visibleForTesting
+  static Future<List<String>> defaultLoRefsResolver(String activityId) async {
+    try {
+      final result = await QuestRepo.activityLearningObjectiveRefs(activityId);
+      return result.asValue?.value ?? const [];
+    } catch (_) {
+      return const [];
+    }
   }
 
   /// Whether the session outcome for [roomId] should still be emitted: true the
