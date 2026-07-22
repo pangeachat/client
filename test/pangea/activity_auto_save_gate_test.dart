@@ -130,6 +130,31 @@ void main() {
     });
   });
 
+  group('shouldSave (first archive authoritative)', () {
+    test('saves the first time; a saved room is never re-saved', () {
+      final saved = <String>{};
+      expect(
+        ActivityAutoSaveService.shouldSave('!s:x', saved),
+        isTrue,
+        reason: 'first pass saves and archives',
+      );
+      saved.add('!s:x'); // the service marks it saved on success
+      expect(
+        ActivityAutoSaveService.shouldSave('!s:x', saved),
+        isFalse,
+        reason:
+            'the gate re-opens until the archive syncs back; a pre-sync sweep '
+            'must NOT re-archive with a newer timestamp — first archive wins',
+      );
+    });
+
+    test('tracks each session room independently', () {
+      final saved = <String>{'!a:x'};
+      expect(ActivityAutoSaveService.shouldSave('!a:x', saved), isFalse);
+      expect(ActivityAutoSaveService.shouldSave('!b:x', saved), isTrue);
+    });
+  });
+
   group('buildSessionOutcome (canonical archived-at + attribution)', () {
     final archivedAt = DateTime.utc(2026, 1, 1, 12, 30);
 

@@ -49,6 +49,13 @@ class ActivityAutoSaveService {
   StreamSubscription? _roleStateSub;
   final Set<String> _saving = {};
 
+  /// Session rooms this run has already SAVED (analytics + archive). The gate
+  /// (`!hasArchivedActivity`) re-opens until the archive write syncs back, so a
+  /// pre-sync sweep would otherwise re-archive and stamp a NEWER `archived_at`,
+  /// leaving the already-emitted outcome's timestamp stale. Once saved, the
+  /// first archive is authoritative and the room is never saved again.
+  final Set<String> _saved = {};
+
   /// Session rooms whose dosage outcome has already been emitted this app run.
   /// The auto-save gate can re-open before the archive write syncs back, so a
   /// second racing pass would otherwise emit the outcome again — this holds it
@@ -99,6 +106,11 @@ class ActivityAutoSaveService {
       return;
     }
 
+    // Already saved this run: the first archive is authoritative. The gate above
+    // stays open until the archive syncs back, so without this a pre-sync sweep
+    // would re-archive with a newer timestamp.
+    if (!shouldSave(room.id, _saved)) return;
+
     // Reading the plan triggers hydration for reference rooms; a null here is
     // retried via the repo listener. A room with no resolvable plan at all
     // can't determine its target language and is skipped.
@@ -125,6 +137,11 @@ class ActivityAutoSaveService {
       // here). Fire-and-forget; never blocks or fails the save.
       _emitDosageSessionOutcome(room, archivedAt);
 
+      // Saved successfully: mark authoritative so a pre-sync sweep can't
+      // re-archive with a newer timestamp. On failure it stays unmarked and
+      // retries on the next role-state event or sweep.
+      _saved.add(room.id);
+
       GoogleAnalytics.completeActivity(
         plan.activityId,
         room.id,
@@ -137,6 +154,13 @@ class ActivityAutoSaveService {
       _saving.remove(room.id);
     }
   }
+
+  /// Whether a session room still needs saving: false once it has been saved
+  /// this run (the first archive is authoritative). The gate that keeps a
+  /// pre-sync sweep from re-archiving with a newer timestamp.
+  @visibleForTesting
+  static bool shouldSave(String roomId, Set<String> saved) =>
+      !saved.contains(roomId);
 
   /// Fire-and-forget the best-effort dosage session-outcome signal at the
   /// archive moment. Every field is a client-side HINT the server re-verifies
