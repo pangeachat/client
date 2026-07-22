@@ -26,7 +26,13 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   final AnalyticsDataService dataService;
 
-  AnalyticsUpdateService(this.dataService);
+  /// The engagement tracker this service drives (heartbeat/background/dispose
+  /// flush). Defaults to the app-global singleton; injectable so teardown's
+  /// awaited final flush is unit-testable.
+  final DosageEngagementTracker _tracker;
+
+  AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
+    : _tracker = tracker ?? DosageEngagementTracker.instance;
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
@@ -41,7 +47,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
-      unawaited(DosageEngagementTracker.instance.flushOpenSpan());
+      unawaited(_tracker.flushOpenSpan());
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -63,7 +69,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // not dropped on teardown. Each dosage POST owns its own HTTP client, so
     // there is no shared client to release here (or to close out from under
     // another account that is still posting).
-    await DosageEngagementTracker.instance.flushOpenSpan();
+    await _tracker.flushOpenSpan();
   }
 
   @override
@@ -72,7 +78,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // (inactive/paused/detached/hidden) closes and flushes it; it reopens on
     // the next learner activity.
     if (state != AppLifecycleState.resumed) {
-      unawaited(DosageEngagementTracker.instance.flushOpenSpan());
+      unawaited(_tracker.flushOpenSpan());
     }
   }
 

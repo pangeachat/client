@@ -81,13 +81,13 @@ class AnalyticsDataService {
   Future<Room?> getAnalyticsRoom(LanguageModel lang) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(lang);
 
-  void dispose() {
+  Future<void> dispose() async {
     _syncController?.dispose();
     updateDispatcher.dispose();
-    // Async: it awaits the final dosage engagement-span flush internally. This
-    // service's own teardown does not block on it (the flush POSTs on its own
-    // HTTP client, independent of the analytics DB closed just below).
-    unawaited(updateService.dispose());
+    // Await the final dosage engagement-span flush BEFORE releasing this
+    // account's resources, so its last span actually POSTs (isolated to this
+    // account) rather than being dropped on teardown.
+    await updateService.dispose();
     _closeDatabase();
   }
 

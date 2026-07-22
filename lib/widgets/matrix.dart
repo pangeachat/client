@@ -494,7 +494,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
-        _cancelSubs(c.clientName);
+        await _cancelSubs(c.clientName);
         widget.clients.remove(c);
         ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
@@ -549,7 +549,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
   }
 
-  void _cancelSubs(String name) {
+  Future<void> _cancelSubs(String name) async {
     onRoomKeyRequestSub[name]?.cancel();
     onRoomKeyRequestSub.remove(name);
     onKeyVerificationRequestSub[name]?.cancel();
@@ -563,7 +563,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     onUiaRequest.remove(name);
     _activityAutoSaveServices[name]?.dispose();
     _activityAutoSaveServices.remove(name);
-    _analyticsServices[name]?.dispose();
+    // Await the analytics teardown so this account's final dosage flush POST
+    // completes before we drop the service — the flush is awaited end-to-end
+    // (AnalyticsDataService.dispose → AnalyticsUpdateService.dispose).
+    await _analyticsServices[name]?.dispose();
     _analyticsServices.remove(name);
     // Pangea#
   }
