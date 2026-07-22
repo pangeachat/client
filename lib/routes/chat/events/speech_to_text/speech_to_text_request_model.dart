@@ -9,6 +9,28 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 
+/// Builds the voice ASR request from EXPLICIT language values (never re-read
+/// from current settings). The caller threads a SINGLE t0 language snapshot to
+/// both this ASR config and the embedded `speaker_l1/l2`, so the embed language,
+/// the ASR language, and the tokenize language are equal by construction and
+/// cannot drift if the user changes their L1/L2 mid-send (H3).
+SpeechToTextRequestModel buildVoiceSttRequest({
+  required Uint8List audioContent,
+  required String mimeType,
+  required String userL1,
+  required String userL2,
+  bool skipTokenize = false,
+}) => SpeechToTextRequestModel(
+  audioContent: audioContent,
+  skipTokenize: skipTokenize,
+  config: SpeechToTextAudioConfigModel(
+    encoding: mimeTypeToAudioEncoding(mimeType),
+    sampleRateHertz: 22050,
+    userL1: userL1,
+    userL2: userL2,
+  ),
+);
+
 class SpeechToTextRequestModel extends BaseRequest {
   final Uint8List audioContent;
   final SpeechToTextAudioConfigModel config;

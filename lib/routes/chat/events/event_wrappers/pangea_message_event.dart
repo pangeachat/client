@@ -451,7 +451,7 @@ class PangeaMessageEvent {
       }
     }
 
-    return selectUsableStt(
+    final selected = selectUsableStt(
       embedded: embedded,
       preferTokens: preferTokens,
       // Lazy + guarded: only read when the embed is not usable (or lacks tokens
@@ -475,6 +475,16 @@ class PangeaMessageEvent {
         }
       },
     );
+
+    // When a token consumer still has no tokens (the embed is provisional and
+    // no token-rich representation ever landed -- e.g. attach failed), fall back
+    // to the in-memory repaired STT so SELECTION reads the SAME tokens the
+    // display loader produced. Never overrides a persisted token-rich result.
+    if (preferTokens && (selected == null || !selected.hasUsableTokens)) {
+      final repaired = _matchingRepairedStt(embedded);
+      if (repaired != null) return repaired;
+    }
+    return selected;
   }
 
   SttTranslationModel? _getSttTranslationLocal(String langCode) {
@@ -578,6 +588,40 @@ class PangeaMessageEvent {
   )
   enrichSttHook = enrichSttWithTokens;
 
+  /// In-memory, session-scoped cache of token-rich STT keyed by audio event id.
+  /// Populated by [requestSpeechToText]'s repair AFTER a successful tokenize but
+  /// BEFORE the best-effort attach, so display and SELECTION read the SAME
+  /// tokens even when the attach never persists a `pangea.representation`
+  /// (H4). Small (one entry per repaired audio message tapped this session).
+  static final Map<String, SpeechToTextResponseModel> _repairedSttCache = {};
+
+  /// Stores [richStt] as the in-memory repair for [eventId]. Only a token-rich
+  /// result is cached; a token-less result is ignored so a stale rich entry is
+  /// never downgraded.
+  @visibleForTesting
+  static void cacheRepairedStt(
+    String eventId,
+    SpeechToTextResponseModel richStt,
+  ) {
+    if (richStt.hasUsableTokens) _repairedSttCache[eventId] = richStt;
+  }
+
+  @visibleForTesting
+  static void clearRepairedSttCache() => _repairedSttCache.clear();
+
+  /// The in-memory repaired STT for [eventId] that matches [embed]'s transcript
+  /// (or any repair when there is no usable embed to match), else null. The
+  /// transcript-match gate mirrors [sttTranscriptsMatch] so a stale entry from
+  /// an edited/re-sent message can never surface foreign tokens.
+  SpeechToTextResponseModel? _matchingRepairedStt(
+    SpeechToTextResponseModel? embed,
+  ) {
+    final cached = _repairedSttCache[eventId];
+    if (cached == null || !cached.hasUsableTokens) return null;
+    if (embed == null || !embed.hasUsableTranscript) return cached;
+    return sttTranscriptsMatch(embed, cached) ? cached : null;
+  }
+
   /// Snapshots the tokenizer inputs from THIS audio event (see [SttLangSnapshot]
   /// -- lang from the transcript, `sender_l1` from the event's `speaker_l1`), so
   /// a token repair uses the message's own language, not the reader's settings.
@@ -615,6 +659,10 @@ class PangeaMessageEvent {
           parentEventId: eventId,
           richStt: rich,
         ),
+        // Cache the enriched tokens in-memory BEFORE the best-effort attach, so
+        // selection (getSpeechToTextLocal) reads the SAME tokens display shows
+        // even when attach never persists a representation (H4).
+        onEnriched: (rich) => cacheRepairedStt(eventId, rich),
       );
     }
 

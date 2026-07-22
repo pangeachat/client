@@ -91,7 +91,6 @@ import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -1708,6 +1707,10 @@ class ChatController extends State<ChatPageWithRoom>
     final transcriptResult = await _getVoiceMessageTranscript(
       file,
       skipTokenize: decoupleTokenizer,
+      // Thread the SAME t0 snapshot the embed uses, so embed langs == ASR langs
+      // == tokenize langs by construction, even across a mid-send change (H3).
+      userL1: capturedSpeakerL1 ?? LanguageKeys.unknownLanguage,
+      userL2: capturedSpeakerL2 ?? LanguageKeys.unknownLanguage,
     );
     final stt = transcriptResult.result;
 
@@ -2851,7 +2854,20 @@ class ChatController extends State<ChatPageWithRoom>
       if (constructs.isEmpty) return;
 
       final langCode = stt.langCode.split('-').first;
-      _showAnalyticsFeedback(constructs, eventId, langCode);
+      // Fire-and-forget the visual feedback, but wrap it so a fetch/overlay
+      // throw can never escape as an unhandled async error -- P1b made
+      // `_showAnalyticsFeedback` async/heavier, so the flag-OFF path needs the
+      // same swallow the decouple coordinator applies (H2, ON/OFF symmetric).
+      unawaited(
+        guardFeedbackDispatch(
+          () => _showAnalyticsFeedback(constructs, eventId, langCode),
+          (e, s) => ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'roomId': roomId, 'eventId': eventId},
+          ),
+        ),
+      );
       Matrix.of(context).analyticsDataService.updateService.addAnalytics(
         eventId,
         constructs,
@@ -2868,30 +2884,20 @@ class ChatController extends State<ChatPageWithRoom>
 
   Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
     MatrixAudioFile file, {
+    required String userL1,
+    required String userL2,
     bool skipTokenize = false,
   }) async {
+    // Use the CAPTURED t0 languages (threaded in), never re-read current
+    // settings -- so the ASR language matches the embed's speaker_l1/l2 even if
+    // the user changes their L1/L2 mid-send (H3).
     return SpeechToTextRepo.instance.get(
-      SpeechToTextRequestModel(
+      buildVoiceSttRequest(
         audioContent: file.bytes,
+        mimeType: file.mimeType,
+        userL1: userL1,
+        userL2: userL2,
         skipTokenize: skipTokenize,
-        config: SpeechToTextAudioConfigModel(
-          encoding: mimeTypeToAudioEncoding(file.mimeType),
-          sampleRateHertz: 22050,
-          userL1:
-              MatrixState
-                  .pangeaController
-                  .userController
-                  .userL1
-                  ?.langCodeShort ??
-              LanguageKeys.unknownLanguage,
-          userL2:
-              MatrixState
-                  .pangeaController
-                  .userController
-                  .userL2
-                  ?.langCodeShort ??
-              LanguageKeys.unknownLanguage,
-        ),
       ),
     );
   }

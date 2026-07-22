@@ -19,3 +19,20 @@ Future<AnalyticsFeedbackCounts?> guardedAnalyticsFeedbackCounts({
   if (!isMounted()) return null;
   return (grammar: grammar, vocab: vocab);
 }
+
+/// Runs the best-effort feedback [show] and SWALLOWS any failure (routing it to
+/// [onError]) so a fire-and-forget feedback dispatch can NEVER escape as an
+/// unhandled async error. Used symmetrically by both the flag-OFF analytics
+/// path and (via the coordinator's own catch) the decouple path, since P1b made
+/// `_showAnalyticsFeedback` async/heavier (H2). The returned future always
+/// completes normally.
+Future<void> guardFeedbackDispatch(
+  Future<void> Function() show,
+  void Function(Object error, StackTrace stack) onError,
+) async {
+  try {
+    await show();
+  } catch (e, s) {
+    onError(e, s);
+  }
+}

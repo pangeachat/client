@@ -153,9 +153,14 @@ Future<SpeechToTextResponseModel> repairSttTokens({
   )
   enrich,
   required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
+  void Function(SpeechToTextResponseModel richStt)? onEnriched,
 }) async {
   if (!requireTokens || local.hasUsableTokens) return local;
   final rich = await enrich(local, snapshot);
+  // Surface the enriched result BEFORE attach so callers can cache it in-memory
+  // -- selection must read the SAME tokens display shows even when the
+  // best-effort attach never persists a representation (H4).
+  onEnriched?.call(rich);
   // Best-effort: a null/failed attach only affects display-repair eligibility.
   await attach(rich);
   return rich;
@@ -243,6 +248,17 @@ Future<void> runVoiceTranscriptEnrichment({
   Future<void> Function(SpeechToTextResponseModel richStt)? showFeedback,
   void Function(Object error, StackTrace stack)? onError,
 }) async {
+  // A logger must NEVER reject this fire-and-forget coordinator: guard the
+  // onError invocation so a throwing/failing logger callback cannot escape.
+  void safeOnError(Object e, StackTrace s) {
+    try {
+      onError?.call(e, s);
+    } catch (_) {
+      // Deliberately swallowed: the logger itself failed; there is nowhere
+      // safe left to report it, and it must not reject the coordinator.
+    }
+  }
+
   // Nothing to tokenize on an exhausted-fallback/non-usable transcript: skip
   // all background work rather than crashing on the missing transcript.
   if (!baseStt.hasUsableTranscript) return;
@@ -253,14 +269,14 @@ Future<void> runVoiceTranscriptEnrichment({
   try {
     senderId = await resolveSenderId();
   } catch (e, s) {
-    onError?.call(e, s);
+    safeOnError(e, s);
   }
 
   final SpeechToTextResponseModel richStt;
   try {
     richStt = await enrich(baseStt, snapshot);
   } catch (e, s) {
-    onError?.call(e, s);
+    safeOnError(e, s);
     return;
   }
 
@@ -268,7 +284,7 @@ Future<void> runVoiceTranscriptEnrichment({
     try {
       await recordAnalytics(richStt);
     } catch (e, s) {
-      onError?.call(e, s);
+      safeOnError(e, s);
     }
     // Feedback is best-effort and INDEPENDENT of the record above: its own
     // catch swallows+logs any overlay/count failure so it never affects the
@@ -277,7 +293,7 @@ Future<void> runVoiceTranscriptEnrichment({
       try {
         await showFeedback(richStt);
       } catch (e, s) {
-        onError?.call(e, s);
+        safeOnError(e, s);
       }
     }
   }
@@ -285,6 +301,6 @@ Future<void> runVoiceTranscriptEnrichment({
   try {
     await attach(richStt);
   } catch (e, s) {
-    onError?.call(e, s);
+    safeOnError(e, s);
   }
 }
