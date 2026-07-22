@@ -16,6 +16,16 @@ import 'package:fluffychat/routes/home/store_login_method_repo.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// The web SSO callback URL — the static `auth.html` shipped at the WEB
+/// ROOT, resolved from the page's origin. Never resolve it relative to the
+/// current page URL: with path URLs the login page lives at `/home/login`,
+/// so a relative resolve produced `/home/auth.html` — no such file, the SPA
+/// fallback boots the app there, and the homeserver's `loginToken` dies on
+/// a routerless page (the post-path-strategy SSO breakage). Pure —
+/// unit-tested (sso_redirect_url_test.dart).
+String webSsoRedirectUrl(String href) =>
+    Uri.parse(href).resolve('/auth.html').toString();
+
 class PangeaSsoButton extends StatelessWidget {
   final SSOProvider provider;
   final String? title;
@@ -64,9 +74,7 @@ class PangeaSsoButton extends StatelessWidget {
         PlatformInfos.isWeb ||
         PlatformInfos.isMacOS);
     final redirectUrl = kIsWeb
-        ? Uri.parse(
-            html.window.location.href,
-          ).resolveUri(Uri(pathSegments: ['auth.html'])).toString()
+        ? webSsoRedirectUrl(html.window.location.href)
         : isDefaultPlatform
         ? '${AppConfig.appOpenUrlScheme.toLowerCase()}://login'
         : 'http://localhost:3001//login';
