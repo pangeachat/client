@@ -7,8 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -20,7 +20,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
   final Widget closeButton;
-  final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
+  final SubscriptionState subscriptionState;
   final AsyncState<List<ProductPlan>> productsState;
 
   final VoidCallback reloadStatus;
@@ -31,7 +31,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   const SettingsSubscriptionView({
     super.key,
     required this.closeButton,
-    required this.subscriptionStatusState,
+    required this.subscriptionState,
     required this.productsState,
     required this.reloadStatus,
     required this.onEnterDiscountCode,
@@ -82,11 +82,11 @@ class SettingsSubscriptionView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24.0),
                 ),
                 constraints: BoxConstraints(maxWidth: 400),
-                child: switch (subscriptionStatusState) {
-                  AsyncLoading() || AsyncIdle() => Center(
+                child: switch (subscriptionState) {
+                  SubscriptionLoading() => Center(
                     child: CircularProgressIndicator.adaptive(),
                   ),
-                  AsyncError(error: final error) => Center(
+                  SubscriptionError(error: final error) => Center(
                     child: Row(
                       spacing: 8.0,
                       mainAxisSize: MainAxisSize.min,
@@ -102,7 +102,10 @@ class SettingsSubscriptionView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  AsyncLoaded(value: final subscriptionStatus) => () {
+                  SubscriptionActive(response: final subscriptionStatus) ||
+                  SubscriptionInactive(
+                    response: final subscriptionStatus,
+                  ) => () {
                     final products = switch (productsState) {
                       AsyncLoaded(value: final products) => products,
                       _ => const <ProductPlan>[],

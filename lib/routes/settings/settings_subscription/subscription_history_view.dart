@@ -4,9 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/invoice_history_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -16,8 +16,7 @@ import 'package:fluffychat/routes/settings/settings_subscription/user_subscripti
 
 class SubscriptionHistoryView extends StatelessWidget {
   final Widget closeButton;
-  final ValueNotifier<AsyncState<SubscriptionStatusResponse>>
-  subscriptionStatusNotifier;
+  final ValueNotifier<SubscriptionState> subscriptionStatusNotifier;
   final ValueNotifier<AsyncState<List<Invoice>>> invoiceHistoryNotifier;
   final ValueNotifier<ProductPlan?> subscriptionPlanNotifier;
 
@@ -90,11 +89,16 @@ class SubscriptionHistoryView extends StatelessWidget {
                       valueListenable: subscriptionStatusNotifier,
                       builder: (context, subscriptionStatusState, _) =>
                           switch (subscriptionStatusState) {
-                            AsyncLoading() || AsyncIdle() => Center(
+                            SubscriptionLoading() => Center(
                               child: CircularProgressIndicator.adaptive(),
                             ),
-                            AsyncError() => SizedBox.shrink(),
-                            AsyncLoaded(value: final subscriptionStatus) => () {
+                            SubscriptionError() => SizedBox.shrink(),
+                            SubscriptionActive(
+                              response: final subscriptionStatus,
+                            ) ||
+                            SubscriptionInactive(
+                              response: final subscriptionStatus,
+                            ) => () {
                               return ValueListenableBuilder(
                                 valueListenable: subscriptionPlanNotifier,
                                 builder: (context, subscriptionPlan, _) {

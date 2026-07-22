@@ -1,6 +1,7 @@
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/features/subscription/repo_v2/checkout_error_response_parser.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_response.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -16,6 +17,7 @@ class CheckoutRepo extends BaseRepo<CheckoutRequest, CheckoutResponse> {
         responseFromJson: CheckoutResponse.fromJson,
         cacheDuration: Duration(seconds: 10),
         timeout: Duration(seconds: 10),
+        errorResponseParser: CheckoutErrorResponseParser(),
       );
 
   static final CheckoutRepo _instance = CheckoutRepo._internal();
@@ -26,6 +28,7 @@ class CheckoutRepo extends BaseRepo<CheckoutRequest, CheckoutResponse> {
     url: PApiUrls.subscriptionCheckout,
     body: request.toJson(),
     enrichBody: false,
+    errorResponseParser: errorResponseParser,
   );
 
   Future<Result<String>> getPaymentLink(CheckoutRequest request) async {
