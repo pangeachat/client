@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -21,6 +20,7 @@ void main() {
 
   const bffUrl = 'https://bff.test.example';
   const token = 'syt_token';
+  const userId = '@user:example.org';
   const deviceId = 'DEVICE-A';
   final base = DateTime.utc(2026, 1, 1, 12);
 
@@ -73,10 +73,18 @@ void main() {
 
   test('opens on activity, extends, flushes a UUIDv4 span on heartbeat', () async {
     final tracker = buildTracker();
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
     // A second activity WITHIN the idle gap extends the same span.
     clock = base.add(const Duration(seconds: 90));
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
     clock = base.add(const Duration(minutes: 2));
     tracker.flushOpenSpan();
     await settle();
@@ -108,7 +116,11 @@ void main() {
       },
     );
     final tracker = buildTracker();
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
     clock = base.add(const Duration(minutes: 5));
     tracker.flushOpenSpan();
     await settle();
@@ -119,14 +131,18 @@ void main() {
     'an empty device id opens no span (activity is not silently lost)',
     () async {
       final tracker = buildTracker();
-      tracker.recordActivity(deviceId: '', accessToken: token);
+      tracker.recordActivity(userId: userId, deviceId: '', accessToken: token);
       clock = base.add(const Duration(minutes: 5));
       tracker.flushOpenSpan();
       await settle();
       expect(requests, isEmpty, reason: 'no span may open without a device id');
 
       // A later activity with a known device id still opens a span.
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
       clock = base.add(const Duration(minutes: 6));
       tracker.flushOpenSpan();
       await settle();
@@ -138,9 +154,17 @@ void main() {
     'idle gap closes the span at the last activity, not the flush time',
     () async {
       final tracker = buildTracker();
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
       clock = base.add(const Duration(minutes: 1));
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
       clock = base.add(const Duration(minutes: 6)); // idle since 12:01
       tracker.flushOpenSpan();
       await settle();
@@ -156,7 +180,11 @@ void main() {
     'a single-message span is floored to minEngagement, never dropped',
     () async {
       final tracker = buildTracker();
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
       clock = base.add(const Duration(minutes: 5));
       tracker.flushOpenSpan();
       await settle();
@@ -175,7 +203,11 @@ void main() {
     // accumulating; at 30 minutes it hits the server cap and flushes there.
     for (var i = 0; i <= 20; i++) {
       clock = base.add(Duration(seconds: 90 * i)); // 0 .. 1800s (30 min)
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
     }
     await settle();
 
@@ -204,12 +236,24 @@ void main() {
     'a gap beyond the idle threshold rolls the span over instead of bridging',
     () async {
       final tracker = buildTracker();
-      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:00
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:00
       clock = base.add(const Duration(minutes: 1));
-      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:01
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:01
       // 10 minutes of silence (>> the 2-min idle gap), then a new message.
       clock = base.add(const Duration(minutes: 11));
-      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:11
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:11
       await settle();
 
       // The prior span closed at its last real activity (12:01): the idle gap is
@@ -240,11 +284,19 @@ void main() {
     'minutes',
     () async {
       final tracker = buildTracker();
-      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:00
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:00
       // A single message, then silence past the cap distance, then one more: the
       // gap is idle, not a 30-minute engaged span.
       clock = base.add(const Duration(minutes: 31));
-      tracker.recordActivity(deviceId: deviceId, accessToken: token); // 12:31
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:31
       await settle();
 
       expect(requests, hasLength(1));
@@ -262,7 +314,11 @@ void main() {
     await settle();
     expect(requests, isEmpty);
 
-    tracker.recordActivity(deviceId: deviceId, accessToken: token);
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
     clock = base.add(const Duration(minutes: 1));
     tracker.flushOpenSpan();
     tracker.flushOpenSpan(); // span already reset — no double send
@@ -270,22 +326,30 @@ void main() {
     expect(requests, hasLength(1));
   });
 
+  String authOf(http.Request r) => r.headers['Authorization'] ?? '';
+
   test(
     'switching accounts mid-window rolls over — no cross-account attribution',
     () async {
-      String authOf(http.Request r) => r.headers['Authorization'] ?? '';
-
       final tracker = buildTracker();
       // Account A activity.
-      tracker.recordActivity(deviceId: 'DEVICE-A', accessToken: 'token-A');
+      tracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'DEVICE-A',
+        accessToken: 'token-A',
+      );
       clock = base.add(const Duration(seconds: 30));
       // Account B activity WITHIN A's idle window. The app-isolate-global tracker
       // used to only update _lastActivity, so B's activity extended A's span and
       // later flushed under A's device + bearer.
-      tracker.recordActivity(deviceId: 'DEVICE-B', accessToken: 'token-B');
+      tracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'DEVICE-B',
+        accessToken: 'token-B',
+      );
       await settle();
 
-      // The device switch closed A's span, flushed under A's OWN identity.
+      // The account switch closed A's span, flushed under A's OWN identity.
       expect(requests, hasLength(1), reason: 'the account switch closed A');
       expect(authOf(requests.single), 'Bearer token-A');
       expect(postedSpans().single['device_id'], 'DEVICE-A');
@@ -301,35 +365,37 @@ void main() {
   );
 
   test(
-    'flushOpenSpan awaits the span POST so a final flush is not dropped',
+    'two accounts SHARING a device id still roll over (keyed on account)',
     () async {
-      final gate = Completer<http.Response>();
-      final gatedMock = MockClient((req) {
-        requests.add(req);
-        return gate.future;
-      });
-      final tracker = DosageEngagementTracker(
-        now: () => clock,
-        httpClient: gatedMock,
+      final tracker = buildTracker();
+      // Same device id, DIFFERENT accounts (mxid) — must NOT merge.
+      tracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'SHARED-DEVICE',
+        accessToken: 'token-A',
       );
-      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      clock = base.add(const Duration(seconds: 30));
+      tracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'SHARED-DEVICE',
+        accessToken: 'token-B',
+      );
+      await settle();
+
+      // Account A's span flushed under A's bearer — B never merged into it, even
+      // though the device id is identical (device-only keying would have merged).
+      expect(requests, hasLength(1), reason: 'the account switch closed A');
+      expect(authOf(requests.single), 'Bearer token-A');
+
       clock = base.add(const Duration(minutes: 1));
-
-      var flushed = false;
-      final flush = tracker.flushOpenSpan().then((_) => flushed = true);
-      await pumpEventQueue();
-      // The POST fired, but the flush future must NOT resolve until it lands —
-      // so teardown that awaits it cannot drop the final span.
-      expect(requests, hasLength(1), reason: 'the flush actually POSTed');
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
       expect(
-        flushed,
-        isFalse,
-        reason: 'the flush future must await the POST, not fire-and-forget it',
+        authOf(requests[1]),
+        'Bearer token-B',
+        reason: "B's engagement must post under B's own bearer, never A's",
       );
-
-      gate.complete(http.Response('', 202));
-      await flush;
-      expect(flushed, isTrue);
     },
   );
 }

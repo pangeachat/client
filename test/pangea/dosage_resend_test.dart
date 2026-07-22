@@ -137,4 +137,48 @@ void main() {
 
     expect(envelopes(), isEmpty, reason: 'a file resend is not a learner turn');
   });
+
+  test('a forwarded text emits the envelope under the resolved id', () async {
+    final room = Room(id: roomId, client: client);
+    final tracker = DosageEngagementTracker(
+      now: () => DateTime.utc(2026),
+      httpClient: mock,
+    );
+
+    await DosageMessageSignals.emitForForwardedContent(
+      room,
+      {'msgtype': 'm.text', 'body': 'shared learner text'},
+      client: mock,
+      tracker: tracker,
+    );
+    await pumpEventQueue();
+
+    expect(envelopes(), hasLength(1), reason: 'forwarded text is a send');
+    final envelope = envelopes().single;
+    expect(envelope['room_id'], roomId);
+    expect(envelope['msg_id'], isNotEmpty);
+    expect(envelope['char_count'], 'shared learner text'.length);
+  });
+
+  test('a forwarded image carries no learner text — nothing emitted', () async {
+    final room = Room(id: roomId, client: client);
+    final tracker = DosageEngagementTracker(
+      now: () => DateTime.utc(2026),
+      httpClient: mock,
+    );
+
+    await DosageMessageSignals.emitForForwardedContent(
+      room,
+      {'msgtype': 'm.image', 'body': 'photo.jpg', 'url': 'mxc://x/y'},
+      client: mock,
+      tracker: tracker,
+    );
+    await pumpEventQueue();
+
+    expect(
+      envelopes(),
+      isEmpty,
+      reason: 'a forwarded image is not learner text',
+    );
+  });
 }

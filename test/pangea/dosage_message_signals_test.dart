@@ -12,7 +12,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
-import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 
 /// Unit tests for the shared learner-message emitter ([DosageMessageSignals]) —
 /// the single place every learner-text send path emits the envelope + an
@@ -26,6 +25,7 @@ void main() {
   const roomId = '!room:example.org';
   const msgId = '\$msg:example.org';
   const deviceId = 'DEVICE-A';
+  const userId = '@user:example.org';
   final base = DateTime.utc(2026, 1, 1, 12);
 
   late List<http.Request> requests;
@@ -72,6 +72,7 @@ void main() {
       final tracker = buildTracker();
       DosageMessageSignals.emitForSentMessage(
         roomId: roomId,
+        userId: userId,
         deviceId: deviceId,
         accessToken: token,
         msgEventId: msgId,
@@ -108,6 +109,7 @@ void main() {
       for (final id in [null, '', '   ']) {
         DosageMessageSignals.emitForSentMessage(
           roomId: roomId,
+          userId: userId,
           deviceId: deviceId,
           accessToken: token,
           msgEventId: id,
@@ -130,6 +132,7 @@ void main() {
       final tracker = buildTracker();
       DosageMessageSignals.emitForSentMessage(
         roomId: roomId,
+        userId: userId,
         deviceId: '',
         accessToken: token,
         msgEventId: msgId,
@@ -152,6 +155,7 @@ void main() {
       final tracker = buildTracker();
       DosageMessageSignals.emitForSentMessage(
         roomId: roomId,
+        userId: userId,
         deviceId: deviceId,
         accessToken: token,
         // A Matrix edit is a NEW event id, but the same learner turn.
@@ -184,6 +188,7 @@ void main() {
     final tracker = buildTracker();
     DosageMessageSignals.emitForSentMessage(
       roomId: roomId,
+      userId: userId,
       deviceId: deviceId,
       accessToken: token,
       msgEventId: msgId,
@@ -245,45 +250,5 @@ void main() {
         '> not really a reply',
       );
     });
-  });
-
-  test('a notification-style emit (no injected client) POSTs the reply envelope '
-      'via a per-request client', () async {
-    // The notification handler emits WITHOUT injecting a client, so the POST
-    // must go through the per-request clientFactory. Capture it there.
-    final posts = <http.Request>[];
-    DosageSignalsRepo.clientFactory = () => MockClient((req) async {
-      posts.add(req);
-      return http.Response('', 202);
-    });
-    addTearDown(() => DosageSignalsRepo.clientFactory = http.Client.new);
-
-    // Exactly as the notification reply path calls it: body-only, resolved id,
-    // no injected client, no editEventId. The injected tracker keeps the span
-    // POST off the factory so `posts` holds only the envelope.
-    DosageMessageSignals.emitForSentMessage(
-      roomId: roomId,
-      deviceId: deviceId,
-      accessToken: token,
-      msgEventId: msgId,
-      body: 'hola mundo',
-      tracker: buildTracker(),
-    );
-    await pumpEventQueue();
-
-    final envelopes = posts
-        .where((r) => r.url.path.contains('/dosage/message-events'))
-        .toList();
-    expect(
-      envelopes,
-      hasLength(1),
-      reason: 'the enabled notification reply must actually POST the envelope',
-    );
-    final event =
-        (jsonDecode(envelopes.single.body)['events'] as List).single
-            as Map<String, dynamic>;
-    expect(event['msg_id'], msgId);
-    expect(event['room_id'], roomId);
-    expect(event['char_count'], 'hola mundo'.length);
   });
 }

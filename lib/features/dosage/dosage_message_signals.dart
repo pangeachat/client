@@ -21,6 +21,7 @@ class DosageMessageSignals {
 
   static void emitForSentMessage({
     required String roomId,
+    required String? userId,
     required String? deviceId,
     required String? accessToken,
     required String? msgEventId,
@@ -61,8 +62,10 @@ class DosageMessageSignals {
     );
 
     // The tracker guards an empty device id; passing it through keeps the
-    // engagement decision in one place.
+    // engagement decision in one place. The userId scopes the span to the
+    // right account so the app-global tracker never merges two accounts.
     (tracker ?? DosageEngagementTracker.instance).recordActivity(
+      userId: userId ?? "",
       deviceId: deviceId ?? "",
       accessToken: accessToken,
     );
@@ -108,6 +111,7 @@ class DosageMessageSignals {
     if (!isResendableLearnerText(event.messageType)) return;
     emitForSentMessage(
       roomId: event.room.id,
+      userId: event.room.client.userID,
       deviceId: event.room.client.deviceID,
       accessToken: event.room.client.accessToken,
       msgEventId: resolvedId,
@@ -115,6 +119,37 @@ class DosageMessageSignals {
       editEventId: event.relationshipType == RelationshipTypes.edit
           ? event.eventId
           : null,
+      client: client,
+      tracker: tracker,
+    );
+  }
+
+  /// Emits the message envelope for a FORWARDED message's content (a
+  /// `ContentShareItem`): it sends [content] into [room], then — for text only —
+  /// emits under the RESOLVED event id, counting only the learner's own text.
+  /// Non-text forwards send but emit nothing. Fire-and-forget; returns the
+  /// future so tests can await it, and never throws.
+  static Future<void> emitForForwardedContent(
+    Room room,
+    Map<String, dynamic> content, {
+    http.Client? client,
+    DosageEngagementTracker? tracker,
+  }) async {
+    final String? resolvedId;
+    try {
+      resolvedId = await room.sendEvent(content);
+    } catch (_) {
+      return;
+    }
+    if (content['msgtype'] != MessageTypes.Text) return;
+    final Object? body = content['body'];
+    emitForSentMessage(
+      roomId: room.id,
+      userId: room.client.userID,
+      deviceId: room.client.deviceID,
+      accessToken: room.client.accessToken,
+      msgEventId: resolvedId,
+      body: strippedLearnerText(body is String ? body : ''),
       client: client,
       tracker: tracker,
     );

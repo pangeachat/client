@@ -504,6 +504,7 @@ class ChatController extends State<ChatPageWithRoom>
               .then((eventId) {
                 DosageMessageSignals.emitForSentMessage(
                   roomId: room.id,
+                  userId: room.client.userID,
                   deviceId: room.client.deviceID,
                   accessToken: room.client.accessToken,
                   msgEventId: eventId,
@@ -513,7 +514,17 @@ class ChatController extends State<ChatPageWithRoom>
               .catchError((_) {}),
         );
       }
-      if (item is ContentShareItem) room.sendEvent(item.value);
+      // A forwarded text item is a genuine learner text send: emitForForwardedContent
+      // sends the content and (for text only) emits the envelope with the resolved
+      // id, so forwards aren't invisible to the live emitter.
+      if (item is ContentShareItem) {
+        unawaited(
+          DosageMessageSignals.emitForForwardedContent(
+            room,
+            item.value,
+          ).catchError((_) {}),
+        );
+      }
     }
     final files = shareItems
         .whereType<FileShareItem>()
@@ -1546,6 +1557,7 @@ class ChatController extends State<ChatPageWithRoom>
           // envelope + one tick.
           DosageMessageSignals.emitForSentMessage(
             roomId: room.id,
+            userId: room.client.userID,
             deviceId: room.client.deviceID,
             accessToken: room.client.accessToken,
             msgEventId: msgEventId,

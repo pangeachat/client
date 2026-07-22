@@ -46,6 +46,7 @@ void main() {
     expect(
       () => DosageMessageSignals.emitForSentMessage(
         roomId: '!room:example.org',
+        userId: '@user:example.org',
         deviceId: 'DEVICE-A',
         accessToken: 'syt_token',
         msgEventId: '\$evt:example.org',

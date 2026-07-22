@@ -199,6 +199,7 @@ Future<void> notificationTap(
           // background-isolate case where a live emit can't be sent.
           DosageMessageSignals.emitForSentMessage(
             roomId: room.id,
+            userId: room.client.userID,
             deviceId: room.client.deviceID,
             accessToken: room.client.accessToken,
             msgEventId: eventId,

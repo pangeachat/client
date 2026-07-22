@@ -42,13 +42,21 @@ class DosageEngagementTracker {
   String? _spanId;
   DateTime? _spanStart;
   DateTime? _lastActivity;
+  String? _userId;
   String? _deviceId;
   String? _accessToken;
 
   /// Records one unit of learner activity (a sent message). Opens a span if
   /// none is open, extends the current one otherwise, and rolls over into a new
   /// span if the open one would exceed the server cap. No-op when disabled.
+  ///
+  /// [userId] is the account (mxid) whose activity this is; the tracker is an
+  /// app-isolate-global singleton shared across every logged-in account, so it
+  /// keys spans on the ACCOUNT identity — two accounts that happen to share a
+  /// device id must not merge, and a span must flush under its own account's
+  /// bearer, never a later account's.
   void recordActivity({
+    required String userId,
     required String deviceId,
     required String? accessToken,
   }) {
@@ -60,19 +68,19 @@ class DosageEngagementTracker {
     final DateTime t = _now().toUtc();
 
     if (_spanStart == null) {
-      _openSpan(t, deviceId, accessToken);
+      _openSpan(t, userId, deviceId, accessToken);
       return;
     }
 
-    // Account/device switch: a span is attributed to ONE account (its device id
-    // + bearer token). If this activity is from a DIFFERENT device, close the
-    // prior span under ITS OWN account and open a fresh one here — never let
-    // account B's activity extend account A's span or flush under A's token
-    // (the app-isolate-global tracker would otherwise retain the first
-    // account's device/token for the whole span).
-    if (deviceId != _deviceId) {
+    // Account switch: a span is attributed to ONE account (its userId + device
+    // + bearer token). If this activity is from a DIFFERENT account or device,
+    // close the prior span under ITS OWN account and open a fresh one here —
+    // never let account B's activity extend account A's span or flush under A's
+    // token. Keyed on userId (not device alone), so two accounts sharing a
+    // per-user device id still roll over.
+    if (userId != _userId || deviceId != _deviceId) {
       unawaited(_emit(_computeEnd(t)));
-      _openSpan(t, deviceId, accessToken);
+      _openSpan(t, userId, deviceId, accessToken);
       return;
     }
 
@@ -90,7 +98,7 @@ class DosageEngagementTracker {
     // mostly-idle time.
     if (t.difference(_lastActivity ?? _spanStart!) >= idleGap) {
       unawaited(_emit(_computeEnd(t)));
-      _openSpan(t, deviceId, accessToken);
+      _openSpan(t, userId, deviceId, accessToken);
       return;
     }
 
@@ -98,7 +106,7 @@ class DosageEngagementTracker {
     // must not exceed the server max — close it at the cap and roll over.
     if (t.difference(_spanStart!) >= DosageEngagementSpan.maxSpan) {
       unawaited(_emit(_spanStart!.add(DosageEngagementSpan.maxSpan)));
-      _openSpan(t, deviceId, accessToken);
+      _openSpan(t, userId, deviceId, accessToken);
       return;
     }
 
@@ -113,10 +121,16 @@ class DosageEngagementTracker {
     return _emit(_computeEnd(_now().toUtc()));
   }
 
-  void _openSpan(DateTime t, String deviceId, String? accessToken) {
+  void _openSpan(
+    DateTime t,
+    String userId,
+    String deviceId,
+    String? accessToken,
+  ) {
     _spanId = DosageSignalIdentity.uuidV4();
     _spanStart = t;
     _lastActivity = t;
+    _userId = userId;
     _deviceId = deviceId;
     _accessToken = accessToken;
   }
@@ -150,6 +164,7 @@ class DosageEngagementTracker {
     _spanId = null;
     _spanStart = null;
     _lastActivity = null;
+    _userId = null;
     _deviceId = null;
     _accessToken = null;
 
