@@ -1,9 +1,10 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/ga_page_title/ga_page_title_stub.dart'
-    if (dart.library.js_interop) 'package:fluffychat/features/navigation/ga_page_title/ga_page_title_web.dart';
 import 'package:fluffychat/features/navigation/screen_names.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+
+import 'package:fluffychat/features/navigation/ga_page_title/ga_page_title_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/features/navigation/ga_page_title/ga_page_title_web.dart';
 
 /// Emits a GA4 screen view whenever the workspace screen changes, keyed on the
 /// token-derived name from [ScreenNames] (google-analytics.instructions.md).
