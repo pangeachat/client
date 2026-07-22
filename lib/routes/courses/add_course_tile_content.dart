@@ -16,6 +16,8 @@ abstract class AddCourseTileContent {
 
   bool get isKnock => false;
 
+  bool? get invited => null;
+
   String? get expandedContent => null;
 }
 
@@ -31,6 +33,9 @@ class RoomAddCourseTileContent extends AddCourseTileContent {
 
   @override
   int? get members => space.summary.mJoinedMemberCount ?? 1;
+
+  @override
+  bool get invited => space.membership == Membership.invite;
 
   @override
   String? get courseId => space.coursePlan?.uuid;

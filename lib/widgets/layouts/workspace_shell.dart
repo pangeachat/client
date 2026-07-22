@@ -560,7 +560,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = joinedCourses(client, l10n).length;
+      final courseCount = sortedCourses(client, l10n).length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
           (courseCount == 0

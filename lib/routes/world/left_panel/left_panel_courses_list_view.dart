@@ -3,37 +3,42 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
+import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The courses the learner is in — spaces they've joined that carry a course
-/// plan — sorted by localized display name. Shared so the panel body and the
-/// shell's content-fit height estimate count exactly the same rooms.
-List<Room> joinedCourses(Client client, L10n l10n) =>
+/// Sort invited courses to the top of the course list
+/// Courses within categories are sorted by localized display name.
+List<Room> sortedCourses(Client client, L10n l10n) =>
     client.rooms
         .where(
           (r) =>
-              r.isSpace &&
-              r.membership == Membership.join &&
-              r.coursePlan != null,
+              r.isSpace &
+              (r.membership == Membership.join ||
+                  r.membership == Membership.invite),
         )
         .toList()
-      ..sort(
-        (a, b) => a
+      ..sort((a, b) {
+        if (priority(a) != priority(b)) {
+          return priority(a).compareTo(priority(b));
+        }
+        return a
             .getLocalizedDisplayname(MatrixLocals(l10n))
             .toLowerCase()
             .compareTo(
               b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
-            ),
-      );
+            );
+      });
+
+int priority(Room room) => room.membership == Membership.invite ? 1 : 2;
 
 /// The **Courses** left-column panel (world_v2): the "Courses" header plus the
 /// scrollable list of joined courses.
@@ -59,7 +64,7 @@ class CoursesHubPanel extends StatelessWidget {
           .where((s) => s.hasRoomUpdate)
           .rateLimit(const Duration(seconds: 1)),
       builder: (context, _) {
-        final courses = joinedCourses(client, l10n);
+        final courses = sortedCourses(client, l10n);
         return Column(
           children: [
             PanelHeader(
@@ -78,57 +83,52 @@ class CoursesHubPanel extends StatelessWidget {
   }
 }
 
-/// The scrollable body of [CoursesHubPanel]: a tile per joined course, and —
-/// only when the learner has none yet — the "Add new course" divider and the
-/// full-width add-course buttons as the empty state (#7172: an empty list isn't
-/// a plan-less course, so no "needs a plan" message here).
+/// The scrollable body of [CoursesHubPanel],
+/// containing a tile for each invited or joined course.
+/// Matches nav rail course behavior on course selection.
 class LeftPanelCoursesListView extends StatelessWidget {
   final List<Room> courses;
 
   const LeftPanelCoursesListView({super.key, required this.courses});
 
+  // Open joined courses, or open popup for invited courses
+  Future<void> _onTapCourse(BuildContext context, Room course) async {
+    final uri = GoRouterState.of(context).uri;
+    final client = Matrix.of(context).client;
+    final membership = course.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go(
+        WorkspaceNav.openCourseSection(uri, course.id, keepRoom: false),
+      );
+      return;
+    }
+
+    final joinResp = course.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, course)
+        : await SpaceTapUtil.autoJoin(context, course);
+
+    if (joinResp == null) return;
+    final joinedRoom = client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go(
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
+    );
+    return;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
-    final theme = Theme.of(context);
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: AddCourseTileList(
         content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
-        onTap: (index) => context.go(
-          WorkspaceNav.openCourse(
-            GoRouterState.of(context).uri,
-            courses[index].id,
-          ),
-        ),
-        extraContent: courses.isEmpty
-            ? [
-                const SizedBox(height: 4.0),
-                // "Add new course" section divider + the full add-course buttons.
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(color: theme.colorScheme.outlineVariant),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Text(
-                        l10n.addNewCourse,
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(color: theme.colorScheme.outlineVariant),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12.0),
-                const AddCourseOptions(),
-              ]
-            : null,
+        onTap: (index) => _onTapCourse(context, courses[index]),
       ),
     );
   }
