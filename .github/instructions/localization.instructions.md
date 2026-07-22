@@ -18,6 +18,8 @@ How the Flutter client's UI strings are stored, translated, and kept in sync. Fo
 
 By default the app UI is shown in the user's **source/native language (L1)**. A learner can opt into **immersion** — showing the UI in their **target language (L2)** — via the `appLanguageIsTarget` flag in `UserSettings` (toggle on the learning settings page). [`MatrixState._setAppLanguage`](../../lib/widgets/matrix.dart) resolves the locale from that flag, falling back to L1 (then system) when L2 isn't set. Because it's a non-language setting, the change propagates on `settingsUpdateStream`, which `_setAppLanguage` also listens to so the toggle takes effect immediately. Untranslated L2 keys fall back to English like any other locale.
 
+CMS language codes are BCP-47 with `-` (`es-MX`, `zh-TW`). [`LocaleProvider.setLocale`](../../lib/features/languages/locale_provider.dart) resolves them to a translation by **language** (dropping region, which doesn't change the UI copy), with one exception: Traditional Chinese (`zh-TW`/`zh-HK`/`zh-Hant`) maps to the separate `intl_zh_Hant` translation. So a regional dialect renders its base language's translation rather than falling back to English.
+
 ## L1 coverage principle
 
 Every L1 — every language in the CMS `languages` collection — should get a UI translation. A language is offered as an L1 only if an LLM we route to supports it (the L1 gate in the language-list doc), so offering it while showing English UI is the mismatch we're closing. Until a locale is translated it falls back to English; the backfill tooling below exists to drive that gap to zero.
