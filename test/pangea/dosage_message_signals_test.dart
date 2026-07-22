@@ -8,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
@@ -193,5 +194,29 @@ void main() {
     tracker.flushOpenSpan();
     await settle();
     expect(requests, isEmpty);
+  });
+
+  group('isResendableLearnerText (resend emit gate)', () {
+    test('a text resend is a learner turn', () {
+      expect(
+        DosageMessageSignals.isResendableLearnerText(MessageTypes.Text),
+        isTrue,
+      );
+    });
+
+    test('a file/image/audio/video resend is not (no learner text)', () {
+      for (final type in [
+        MessageTypes.Image,
+        MessageTypes.File,
+        MessageTypes.Audio,
+        MessageTypes.Video,
+      ]) {
+        expect(
+          DosageMessageSignals.isResendableLearnerText(type),
+          isFalse,
+          reason: '$type carries no learner text',
+        );
+      }
+    });
   });
 }

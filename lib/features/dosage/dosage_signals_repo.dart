@@ -73,10 +73,21 @@ class DosageSignalsRepo {
 
   /// Whether dosage signals are active. Requires BOTH flags AND a configured
   /// BFF base URL — any of the three missing makes every post a no-op.
-  static bool get isEnabled =>
-      Environment.analyticsDualWriteEnabled &&
-      Environment.dosageSignalsEnabled &&
-      Environment.teacherBffApi.isNotEmpty;
+  ///
+  /// Reading the flags can throw before Environment/dotenv is initialized — e.g.
+  /// in the notification background isolate, which boots a bare client without
+  /// loading the env. If the gate can't even be read the feature is off, and
+  /// this must never throw into a (fire-and-forget) caller, so an unreadable
+  /// environment resolves to disabled rather than an exception.
+  static bool get isEnabled {
+    try {
+      return Environment.analyticsDualWriteEnabled &&
+          Environment.dosageSignalsEnabled &&
+          Environment.teacherBffApi.isNotEmpty;
+    } catch (_) {
+      return false;
+    }
+  }
 
   /// Best-effort POST of one or more message-envelope signals. Skips silently
   /// when disabled, when there is no access token, or when every event is

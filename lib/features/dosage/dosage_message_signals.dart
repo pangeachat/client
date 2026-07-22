@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
@@ -66,4 +67,11 @@ class DosageMessageSignals {
       accessToken: accessToken,
     );
   }
+
+  /// Whether a successful resend ([Event.sendAgain]) is a learner text turn that
+  /// should emit an envelope. Only a text resend counts — a file/media resend
+  /// carries no learner text. An edit resend is filtered separately by
+  /// [emitForSentMessage]'s edit guard.
+  static bool isResendableLearnerText(String messageType) =>
+      messageType == MessageTypes.Text;
 }

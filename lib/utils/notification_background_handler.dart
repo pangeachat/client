@@ -8,6 +8,7 @@ import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
@@ -181,15 +182,27 @@ Future<void> notificationTap(
             );
           }
 
-          // No dosage message-envelope emit here: this runs in the
-          // notification background isolate (vm:entry-point) where dotenv /
-          // Environment / the dosage flags are NOT initialized, so an emit would
-          // throw NotInitializedError, not count anything. A.3 backfill counts
-          // this turn from the reconciled event_log regardless of send path.
           final eventId = await room.sendTextEvent(
             input,
             parseCommands: false,
             displayPendingEvent: false,
+          );
+
+          // A notification quick-reply is a genuine learner text turn, so it
+          // emits the dosage message-envelope + engagement signals once the
+          // event id resolves — same send-then-POST as the composer. Safe in
+          // this handler either isolate: when the main isolate is down and this
+          // runs in the notification background isolate (vm:entry-point), the
+          // dosage flags aren't initialized, so isEnabled reads the gate as OFF
+          // and the emitter no-ops WITHOUT throwing; in the main isolate it
+          // lands live. The A.3 server backfill remains the net for the
+          // background-isolate case where a live emit can't be sent.
+          DosageMessageSignals.emitForSentMessage(
+            roomId: room.id,
+            deviceId: room.client.deviceID,
+            accessToken: room.client.accessToken,
+            msgEventId: eventId,
+            body: input,
           );
 
           if (PlatformInfos.isAndroid) {
