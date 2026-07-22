@@ -94,16 +94,18 @@ per the engagement-analytics contract above.
   is a real screen view even though it replaces the history entry.
 - **Event vocabulary matches the token grammar**: `vocab` / `grammar`, never
   `morph`.
-- **On web, the page title mirrors the screen name — exactly, no prefix.**
-  GA's web layer reports by page title, and the web SDK's `screen_name`
-  param is invisible to GA's built-in dimensions (verified empirically: with
-  a Platform=web comparison, every screen-name row reads zero). So
-  `MaterialApp.title` follows the workspace screen name, making web rows
-  merge with app rows under "Page title and screen name". Off the workspace
-  (page routes) and on mobile, the title stays the application name. The
-  registered `screen_name` custom dimension ("Screen name web", declared in
-  the devops `analytics/ga-config.yaml` spec for both properties) remains
-  the event-grain key for Explorations and BigQuery.
+- **On web, GA's page_title field mirrors the screen name — exactly, no
+  prefix — while the visible tab title stays the application name.** GA's
+  web layer reports by page title, and the web SDK's `screen_name` param is
+  invisible to GA's built-in dimensions (verified empirically: with a
+  Platform=web comparison, every screen-name row reads zero). So the tracker
+  overrides the GA tag's `page_title` via `gtag('set')` on each screen
+  change, making web rows merge with app rows under "Page title and screen
+  name" — but `document.title` is never touched: the browser tab reads
+  "Pangea Chat" throughout. The registered `screen_name` custom dimension
+  ("Screen name web", declared in the devops `analytics/ga-config.yaml`
+  spec for both properties) remains the event-grain key for Explorations
+  and BigQuery.
 
 ## Event shape
 
