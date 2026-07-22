@@ -11,6 +11,10 @@ on:
       environment:
         required: true
         type: string
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
   workflow_dispatch:
     inputs:
       environment:
@@ -20,6 +24,11 @@ on:
           - staging
           - production
         default: "staging"
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
+        description: "Posted to Release Announcements as the build's Summary (plain text; or paste '## Summary' / '## To Test' markdown sections)"
 
 permissions:
   contents: read
@@ -98,6 +107,7 @@ jobs:
     with:
       service_name: "Pangea Chat iOS"
       version: ${{ needs.build_ios_testflight.outputs.version }}
-      headline: "(${{ inputs.environment }}) is on TestFlight — internal testers get it automatically"
+      headline: "(${{ inputs.environment }}) is on TestFlight"
+      release_body: ${{ inputs.new_release_notes }}
     secrets:
       aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

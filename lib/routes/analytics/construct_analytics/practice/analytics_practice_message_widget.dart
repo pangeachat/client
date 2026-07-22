@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/config/themes.dart';
 
 class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
   final Future<List<InlineSpan>?> future;
@@ -10,6 +9,10 @@ class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = FluffyThemes.isColumnMode(context)
+        ? Theme.of(context).textTheme.titleMedium
+        : Theme.of(context).textTheme.titleSmall;
+
     return FutureBuilder<List<InlineSpan>?>(
       future: future,
       builder: (context, snapshot) {
@@ -25,11 +28,8 @@ class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
           ),
           child: RichText(
             text: TextSpan(
-              style: TextStyle(
+              style: textStyle?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
-                fontSize:
-                    AppSettings.fontSizeFactor.value *
-                    AppConfig.messageFontSize,
               ),
               children: snapshot.data!,
             ),
