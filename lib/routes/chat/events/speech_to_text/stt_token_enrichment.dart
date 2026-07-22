@@ -184,15 +184,14 @@ typedef VoiceAnalyticsSink =
 /// [sink] (the analytics service's `addAnalytics`, already bound to a service
 /// resolved while the widget was live) plus [roomId]/[eventId] as plain values,
 /// so the returned closure records regardless of whether the originating widget
-/// is later disposed -- it never reads a `BuildContext`. [onFeedback] is the
-/// context-dependent visual overlay; the caller guards it on `mounted`, and it
-/// is best-effort and independent of the recording below.
+/// is later disposed -- it never reads a `BuildContext`. It records ONLY (the
+/// visual feedback is a separate best-effort `showFeedback` the coordinator
+/// owns and guards, so a feedback failure can never abort the record).
 Future<void> Function(SpeechToTextResponseModel richStt)
 buildVoiceAnalyticsRecorder({
   required String roomId,
   required String eventId,
   required VoiceAnalyticsSink sink,
-  void Function(List<OneConstructUse> constructs, String langCode)? onFeedback,
 }) {
   return (SpeechToTextResponseModel richStt) async {
     if (!richStt.hasUsableTranscript || richStt.transcript.sttTokens.isEmpty) {
@@ -201,7 +200,6 @@ buildVoiceAnalyticsRecorder({
     final constructs = richStt.constructs(roomId, eventId);
     if (constructs.isEmpty) return;
     final langCode = richStt.langCode.split('-').first;
-    onFeedback?.call(constructs, langCode);
     await sink(eventId, constructs, langCode);
   };
 }
@@ -210,29 +208,29 @@ buildVoiceAnalyticsRecorder({
 /// `sendFileEvent` resolves (so the caller returns and the bot replies without
 /// waiting for the tokenizer).
 ///
-/// CRITICAL: every dependency is injected and this never touches a widget
-/// `BuildContext`, so it is LIFECYCLE-INDEPENDENT -- if the user navigates away
-/// from the chat before [enrich] resolves, analytics is STILL recorded (the
-/// caller must capture the analytics service + Matrix room/client BEFORE the
-/// await, not the disposable context).
+/// This owns ALL the orchestration + error-wrapping so the caller stays thin
+/// wiring: the real-event sender lookup ([resolveSenderId]), the record, the
+/// visual feedback dispatch, and the attach are each guarded here so NOTHING
+/// escapes the fire-and-forget. Every dependency is injected and this never
+/// touches a widget `BuildContext`, so it is LIFECYCLE-INDEPENDENT -- navigating
+/// away before [enrich] resolves still records analytics.
 ///
 /// Ordering (PHASE1-SPEC D7):
-///  0. If [baseStt] has no usable transcript (exhausted-fallback), there is
-///     nothing to tokenize -- no-op entirely (no enrich, no analytics, no
-///     attach, no crash).
-///  1. [enrich] -- the single tokenize step. On failure, nothing else runs
-///     (no analytics, no attach): the same best-effort, no-backfill loss as
-///     today, just deferred, no crash.
-///  2. [recordAnalytics] fires ONCE, only when [isOwnSender] of [senderId] vs
-///     [clientUserId], gated on ENRICH success -- NOT attach, because
-///     `sendPangeaEvent` can return null AFTER actually delivering, so gating
-///     on attach would drop valid analytics.
-///  3. [attach] best-effort; its null/failed return only affects later display
+///  0. If [baseStt] has no usable transcript (exhausted-fallback): no-op.
+///  1. [resolveSenderId] -- the sent event's real sender, looked up here inside
+///     a catch: a DB/network/decryption throw routes to [onError] and leaves
+///     senderId null (-> not own -> no record), never escaping.
+///  2. [enrich] -- the single tokenize step. On failure nothing else runs.
+///  3. [recordAnalytics] fires ONCE, only when [isOwnSender]([senderId],
+///     [clientUserId]), gated on ENRICH success -- NOT attach.
+///  4. [showFeedback] (optional) -- best-effort visual, own catch, NEVER
+///     affects the record above and never escapes.
+///  5. [attach] best-effort; a null/failed return only affects later display
 ///     repair, never analytics.
 Future<void> runVoiceTranscriptEnrichment({
   required SpeechToTextResponseModel baseStt,
   required SttLangSnapshot snapshot,
-  required String? senderId,
+  required Future<String?> Function() resolveSenderId,
   required String? clientUserId,
   required Future<SpeechToTextResponseModel> Function(
     SpeechToTextResponseModel base,
@@ -242,11 +240,21 @@ Future<void> runVoiceTranscriptEnrichment({
   required Future<void> Function(SpeechToTextResponseModel richStt)
   recordAnalytics,
   required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
+  Future<void> Function(SpeechToTextResponseModel richStt)? showFeedback,
   void Function(Object error, StackTrace stack)? onError,
 }) async {
   // Nothing to tokenize on an exhausted-fallback/non-usable transcript: skip
   // all background work rather than crashing on the missing transcript.
   if (!baseStt.hasUsableTranscript) return;
+
+  // Real-event sender lookup, owned + guarded here: a throw must not escape the
+  // fire-and-forget. On failure senderId stays null -> not own -> no record.
+  String? senderId;
+  try {
+    senderId = await resolveSenderId();
+  } catch (e, s) {
+    onError?.call(e, s);
+  }
 
   final SpeechToTextResponseModel richStt;
   try {
@@ -261,6 +269,16 @@ Future<void> runVoiceTranscriptEnrichment({
       await recordAnalytics(richStt);
     } catch (e, s) {
       onError?.call(e, s);
+    }
+    // Feedback is best-effort and INDEPENDENT of the record above: its own
+    // catch swallows+logs any overlay/count failure so it never affects the
+    // record and never escapes the fire-and-forget.
+    if (showFeedback != null) {
+      try {
+        await showFeedback(richStt);
+      } catch (e, s) {
+        onError?.call(e, s);
+      }
     }
   }
 

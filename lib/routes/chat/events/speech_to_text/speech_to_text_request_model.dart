@@ -45,7 +45,10 @@ class SpeechToTextRequestModel extends BaseRequest {
   Map<String, dynamic> toJson() => {
     "config": config.toJson(),
     "audio_content": base64Encode(audioContent),
-    "skip_tokenize": skipTokenize,
+    // OMIT when false so the flag-OFF request bytes are byte-identical to
+    // today's (choreo defaults skip_tokenize to false); it is still part of
+    // storageKey/==/hashCode so the cache never mixes the two paths.
+    if (skipTokenize) "skip_tokenize": true,
     if (mock != null) ModelKey.mock: mock,
   };
 

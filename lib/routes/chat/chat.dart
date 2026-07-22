@@ -1649,6 +1649,23 @@ class ChatController extends State<ChatPageWithRoom>
     String? fileName,
   ) async {
     // #Pangea
+    // Capture EVERYTHING context-derived at the ABSOLUTE TOP -- before
+    // `stopMediaStream.add` and before the FIRST await (the Android sdkInt
+    // check) -- while the context is GUARANTEED alive. Nothing context-derived
+    // is resolved after ANY await, so navigation during the send can never
+    // leave a capture (esp. `Matrix.of(context)` for the analytics sink)
+    // reading a deactivated context.
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final decoupleTokenizer = Environment.voiceTranscriptDecoupleEnabled;
+    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupleTokenizer
+        ? Matrix.of(context).analyticsDataService.updateService.addAnalytics
+        : null;
+    final capturedRoom = room;
+    final capturedRoomId = roomId;
+    final capturedClientUserId = sendingClient.userID;
+    final capturedSpeakerL1 = pangeaController.userController.userL1Code;
+    final capturedSpeakerL2 = pangeaController.userController.userL2Code;
+
     stopMediaStream.add(null);
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
@@ -1662,25 +1679,6 @@ class ChatController extends State<ChatPageWithRoom>
         return;
       }
     }
-    // Pangea#
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
-
-    // #Pangea
-    // Capture EVERYTHING the background enrichment needs WHILE THE CONTEXT IS
-    // GUARANTEED ALIVE -- at the very top, before the STT fetch and the send
-    // await. If the user navigates away DURING the send, the background work
-    // still records analytics against these captured refs and never reads a
-    // defunct context. The analytics sink is resolved here (not after the send
-    // await), so a mid-send disposal cannot leave it unresolved.
-    final decoupleTokenizer = Environment.voiceTranscriptDecoupleEnabled;
-    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupleTokenizer
-        ? Matrix.of(context).analyticsDataService.updateService.addAnalytics
-        : null;
-    final capturedRoom = room;
-    final capturedRoomId = roomId;
-    final capturedClientUserId = sendingClient.userID;
-    final capturedSpeakerL1 = pangeaController.userController.userL1Code;
-    final capturedSpeakerL2 = pangeaController.userController.userL2Code;
     // Pangea#
 
     final audioFile = XFile(path);
@@ -1788,16 +1786,14 @@ class ChatController extends State<ChatPageWithRoom>
         // tokenize (an exhausted-fallback has none -- the message stands, no
         // background work, no crash). Fire-and-forget so send is not blocked.
         if (decoupleSnapshot != null && voiceAnalyticsSink != null) {
-          unawaited(
-            _scheduleVoiceTranscriptEnrichment(
-              eventId: eventId,
-              baseStt: stt,
-              snapshot: decoupleSnapshot,
-              analyticsSink: voiceAnalyticsSink,
-              room: capturedRoom,
-              roomId: capturedRoomId,
-              clientUserId: capturedClientUserId,
-            ),
+          _scheduleVoiceTranscriptEnrichment(
+            eventId: eventId,
+            baseStt: stt,
+            snapshot: decoupleSnapshot,
+            analyticsSink: voiceAnalyticsSink,
+            room: capturedRoom,
+            roomId: capturedRoomId,
+            clientUserId: capturedClientUserId,
           );
         }
       } else {
@@ -1808,15 +1804,12 @@ class ChatController extends State<ChatPageWithRoom>
     return;
   }
 
-  /// The background half of a decoupled voice send. Called fire-and-forget
-  /// (`unawaited`) so [onVoiceMessageSend] returns immediately. Every dependency
-  /// it needs was captured at the TOP of [onVoiceMessageSend] while the context
-  /// was guaranteed alive and is passed in here -- this method NEVER reads the
-  /// widget `context`, so navigating away mid-send still records analytics.
-  /// [snapshot] is the EVENT-sourced tokenizer input captured at send time (D6);
-  /// [analyticsSink] is the pre-resolved analytics service; own-ness is bound to
-  /// the REAL sent event's sender, not a hardcoded bool.
-  Future<void> _scheduleVoiceTranscriptEnrichment({
+  /// Thin wiring for the decoupled voice send's background half: builds the
+  /// injected dependencies from the refs captured at the top of
+  /// [onVoiceMessageSend] and fires the coordinator. The coordinator owns the
+  /// real-event lookup, the feedback dispatch, and ALL error-wrapping, so this
+  /// returns immediately, reads NO widget `context`, and nothing escapes.
+  void _scheduleVoiceTranscriptEnrichment({
     required String eventId,
     required SpeechToTextResponseModel baseStt,
     required SttLangSnapshot snapshot,
@@ -1824,47 +1817,52 @@ class ChatController extends State<ChatPageWithRoom>
     required Room room,
     required String roomId,
     required String? clientUserId,
-  }) async {
-    // Bind own-ness to the REAL sent event: read the local echo we just sent and
-    // pass its senderId, so the coordinator's `isOwnSender` compares real
-    // identities and correctly does NOT record if ever reached for a foreign
-    // sender. (`null` -> not own -> no record, best-effort.)
-    final sentEvent = await room.getEventById(eventId);
-    final senderId = sentEvent?.senderId;
-
-    final recordAnalytics = buildVoiceAnalyticsRecorder(
-      roomId: roomId,
-      eventId: eventId,
-      sink: analyticsSink,
-      // Visual feedback is best-effort and context-dependent: guard on
-      // `mounted` here, and `_showAnalyticsFeedback` re-checks after its own
-      // awaits so it can never throw on navigation. It never affects the
-      // (lifecycle-independent) recording above.
-      onFeedback: (constructs, langCode) {
-        if (mounted) {
-          unawaited(_showAnalyticsFeedback(constructs, eventId, langCode));
-        }
-      },
-    );
-
-    await runVoiceTranscriptEnrichment(
-      baseStt: baseStt,
-      snapshot: snapshot,
-      senderId: senderId,
-      clientUserId: clientUserId,
-      enrich: enrichSttWithTokens,
-      recordAnalytics: recordAnalytics,
-      attach: (richStt) => attachSttRepresentation(
-        send: room.sendPangeaEvent,
-        parentEventId: eventId,
-        richStt: richStt,
-      ),
-      onError: (e, s) => ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomId, 'eventId': eventId},
+  }) {
+    unawaited(
+      runVoiceTranscriptEnrichment(
+        baseStt: baseStt,
+        snapshot: snapshot,
+        clientUserId: clientUserId,
+        // Real-event sender lookup deferred INTO the coordinator's guarded scope
+        // (a DB/decryption throw there is caught, not an unhandled async error).
+        // Own-ness is thus bound to the REAL sent event, never a hardcoded bool.
+        resolveSenderId: () async =>
+            (await room.getEventById(eventId))?.senderId,
+        enrich: enrichSttWithTokens,
+        recordAnalytics: buildVoiceAnalyticsRecorder(
+          roomId: roomId,
+          eventId: eventId,
+          sink: analyticsSink,
+        ),
+        showFeedback: (richStt) =>
+            _showVoiceAnalyticsFeedback(richStt, roomId, eventId),
+        attach: (richStt) => attachSttRepresentation(
+          send: room.sendPangeaEvent,
+          parentEventId: eventId,
+          richStt: richStt,
+        ),
+        onError: (e, s) => ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'roomId': roomId, 'eventId': eventId},
+        ),
       ),
     );
+  }
+
+  /// Thin visual-feedback dispatch for the decoupled path: compute the
+  /// constructs from [richStt] and show the (mounted-safe) overlay. The
+  /// coordinator wraps this in its own catch, so a throw here is swallowed +
+  /// logged and never affects the analytics recording.
+  Future<void> _showVoiceAnalyticsFeedback(
+    SpeechToTextResponseModel richStt,
+    String roomId,
+    String eventId,
+  ) async {
+    final constructs = richStt.constructs(roomId, eventId);
+    if (constructs.isEmpty) return;
+    final langCode = richStt.langCode.split('-').first;
+    await _showAnalyticsFeedback(constructs, eventId, langCode);
   }
 
   void hideEmojiPicker() {

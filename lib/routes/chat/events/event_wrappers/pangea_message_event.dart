@@ -314,17 +314,41 @@ class PangeaMessageEvent {
   /// wins, matching the R0 behaviour.
   RepresentationEvent? _speechToTextRepresentation({
     bool preferTokens = false,
+    SpeechToTextResponseModel? matchEmbed,
   }) {
     if (preferTokens) {
       final tokenRich = representations.firstWhereOrNull((element) {
         final stt = element.content.speechToText;
-        return stt != null && stt.hasUsableTranscript && stt.hasUsableTokens;
+        if (stt == null || !stt.hasUsableTranscript || !stt.hasUsableTokens) {
+          return false;
+        }
+        // Only trust a token-rich rep whose transcript MATCHES the provisional
+        // embed (text + language) -- a stale or foreign representation must not
+        // replace the embed's trusted content. With no usable embed to match
+        // against, any token-rich rep is acceptable.
+        return matchEmbed == null ||
+            !matchEmbed.hasUsableTranscript ||
+            sttTranscriptsMatch(matchEmbed, stt);
       });
       if (tokenRich != null) return tokenRich;
     }
     return representations.firstWhereOrNull(
       (element) => element.content.speechToText != null,
     );
+  }
+
+  /// Whether two STT responses describe the SAME utterance: identical usable
+  /// transcript text and the same short language code. Used to gate whether a
+  /// token-rich representation may replace the provisional embed's tokens, so a
+  /// stale/foreign representation can never contaminate display or analytics.
+  @visibleForTesting
+  static bool sttTranscriptsMatch(
+    SpeechToTextResponseModel a,
+    SpeechToTextResponseModel b,
+  ) {
+    if (!a.hasUsableTranscript || !b.hasUsableTranscript) return false;
+    return a.transcript.text == b.transcript.text &&
+        a.langCode.split('-').first == b.langCode.split('-').first;
   }
 
   Event? _getTextToSpeechLocal(String langCode, String text, String? voice) {
@@ -388,7 +412,14 @@ class PangeaMessageEvent {
     final rep = representation();
     final repUsable = rep != null && rep.hasUsableTranscript;
     if (preferTokens) {
-      if (repUsable && rep.hasUsableTokens) return rep;
+      // Only prefer a token-rich rep that MATCHES the provisional embed's
+      // transcript (text + language); a stale/foreign rep must not replace the
+      // embed's trusted content. With no usable embed, any token-rich rep wins.
+      if (repUsable &&
+          rep.hasUsableTokens &&
+          (!embedUsable || sttTranscriptsMatch(embedded, rep))) {
+        return rep;
+      }
       if (embedUsable) return embedded;
       return repUsable ? rep : null;
     }
@@ -431,6 +462,7 @@ class PangeaMessageEvent {
         try {
           return _speechToTextRepresentation(
             preferTokens: preferTokens,
+            matchEmbed: embedded,
           )?.content.speechToText;
         } catch (err, s) {
           ErrorHandler.logError(
