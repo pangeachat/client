@@ -1,11 +1,17 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
+import 'package:fluffychat/pangea/common/config/env_loader.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// The single place the "a learner sent a chat message" dosage signals are
 /// emitted: the message envelope (for EVERY sent message) plus a tick of
@@ -18,6 +24,23 @@ import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 /// event id; a null/blank id means the send didn't land, so nothing counts.
 class DosageMessageSignals {
   DosageMessageSignals._();
+
+  /// Loads the dosage env (`.env`) into THIS isolate. Overridable in tests.
+  @visibleForTesting
+  static Future<void> Function() envLoader = EnvLoader.load;
+
+  /// Ensures the dosage env flags are loaded in this isolate before an emit.
+  /// dotenv is PER-ISOLATE, so the notification background isolate — which boots
+  /// a bare client without loading `.env` — would otherwise read the flags as
+  /// unloaded and no-op every emit. Idempotent (no-op once loaded, e.g. in the
+  /// main isolate) and best-effort: a load failure just leaves the emit a no-op,
+  /// never breaks the notification reply.
+  static Future<void> ensureDosageEnvLoaded() async {
+    try {
+      if (dotenv.isInitialized) return;
+      await envLoader();
+    } catch (_) {}
+  }
 
   static void emitForSentMessage({
     required String roomId,
@@ -33,42 +56,56 @@ class DosageMessageSignals {
     http.Client? client,
     DosageEngagementTracker? tracker,
   }) {
-    // An edit is a Matrix replacement event with a NEW event id but the SAME
-    // learner turn. Emitting for it would add a second message envelope and a
-    // second engagement tick for one turn, so a send that targets an edit
-    // ([editEventId] set) counts nothing here.
-    if (editEventId != null) return;
+    // Best-effort BOUNDARY: nothing in the dosage emit — including the
+    // synchronous envelope build and the engagement tick — may ever escape into
+    // the caller's send/save flow. The whole body is guarded and swallowed.
+    try {
+      // An edit is a Matrix replacement event with a NEW event id but the SAME
+      // learner turn. Emitting for it would add a second message envelope and a
+      // second engagement tick for one turn, so a send that targets an edit
+      // ([editEventId] set) counts nothing here.
+      if (editEventId != null) return;
 
-    // The server rejects placeholder ids, so an unresolved send counts nothing —
-    // neither the envelope nor the engagement tick. Matches the repo's blank-id
-    // guard (trim) so a whitespace-only id records nothing either.
-    if (msgEventId == null || msgEventId.trim().isEmpty) return;
+      // The server rejects placeholder ids, so an unresolved send counts nothing
+      // — neither the envelope nor the engagement tick. Matches the repo's
+      // blank-id guard (trim) so a whitespace-only id records nothing either.
+      if (msgEventId == null || msgEventId.trim().isEmpty) return;
 
-    unawaited(
-      DosageSignalsRepo.postMessageEvents(
-        events: [
-          DosageMessageEvent.fromSentMessage(
-            roomId: roomId,
-            msgId: msgEventId,
-            ts: ts ?? DateTime.now(),
-            body: body,
-            tokenCount: tokenCount,
-            langCode: langCode,
-          ),
-        ],
+      unawaited(
+        DosageSignalsRepo.postMessageEvents(
+          events: [
+            DosageMessageEvent.fromSentMessage(
+              roomId: roomId,
+              msgId: msgEventId,
+              ts: ts ?? DateTime.now(),
+              body: body,
+              tokenCount: tokenCount,
+              langCode: langCode,
+            ),
+          ],
+          accessToken: accessToken,
+          client: client,
+        ).catchError((_) {}),
+      );
+
+      // Resolve the ACCOUNT's tracker (per-account, so accounts never merge);
+      // an unknown account (empty userId) records no engagement tick. The
+      // tracker itself guards an empty device id.
+      final t = tracker ?? DosageEngagementTracker.forAccount(userId ?? "");
+      t?.recordActivity(
+        userId: userId ?? "",
+        deviceId: deviceId ?? "",
         accessToken: accessToken,
-        client: client,
-      ).catchError((_) {}),
-    );
-
-    // The tracker guards an empty device id; passing it through keeps the
-    // engagement decision in one place. The userId scopes the span to the
-    // right account so the app-global tracker never merges two accounts.
-    (tracker ?? DosageEngagementTracker.instance).recordActivity(
-      userId: userId ?? "",
-      deviceId: deviceId ?? "",
-      accessToken: accessToken,
-    );
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        m: "Best-effort dosage emit failed (swallowed)",
+        data: {"roomId": roomId},
+      );
+    }
   }
 
   /// Whether a successful resend ([Event.sendAgain]) is a learner text turn that
@@ -78,12 +115,22 @@ class DosageMessageSignals {
   static bool isResendableLearnerText(String messageType) =>
       messageType == MessageTypes.Text;
 
-  /// The learner's own text for a message, with any rich-reply fallback removed.
-  /// A reply's `body` is prefixed with the referenced message's quoted
-  /// `> <@user> …` lines; counting those would inflate the envelope with text
-  /// the learner did not write (the composer counts only the typed text).
-  /// Mirrors the SDK's `hideReply` crop.
-  static String strippedLearnerText(String body) => body.replaceFirst(
+  /// The learner's own text for a message [content]. Only strips the rich-reply
+  /// quoted fallback when the message actually IS a reply — keyed on the reply
+  /// RELATION (`m.relates_to.m.in_reply_to`), NOT on the body shape. So ordinary
+  /// learner text that merely begins with a `> <@…>`-looking line is counted in
+  /// full, and a forward (whose `m.relates_to` was removed) is never stripped.
+  static String learnerText(Map<String, dynamic> content) {
+    final body = content['body'];
+    final bodyStr = body is String ? body : '';
+    final relatesTo = content['m.relates_to'];
+    final isReply = relatesTo is Map && relatesTo['m.in_reply_to'] != null;
+    return isReply ? _stripReplyFallback(bodyStr) : bodyStr;
+  }
+
+  /// Crops the leading `> <@user> …` reply fallback block. Mirrors the SDK's
+  /// `hideReply` crop; only ever applied to a genuine reply (see [learnerText]).
+  static String _stripReplyFallback(String body) => body.replaceFirst(
     RegExp(r'^>( \*)? <[^>]+>[^\n\r]+\r?\n(> [^\n]*\r?\n)*\r?\n'),
     '',
   );
@@ -115,7 +162,7 @@ class DosageMessageSignals {
       deviceId: event.room.client.deviceID,
       accessToken: event.room.client.accessToken,
       msgEventId: resolvedId,
-      body: strippedLearnerText(event.body),
+      body: learnerText(event.content),
       editEventId: event.relationshipType == RelationshipTypes.edit
           ? event.eventId
           : null,
@@ -142,14 +189,13 @@ class DosageMessageSignals {
       return;
     }
     if (content['msgtype'] != MessageTypes.Text) return;
-    final Object? body = content['body'];
     emitForSentMessage(
       roomId: room.id,
       userId: room.client.userID,
       deviceId: room.client.deviceID,
       accessToken: room.client.accessToken,
       msgEventId: resolvedId,
-      body: strippedLearnerText(body is String ? body : ''),
+      body: learnerText(content),
       client: client,
       tracker: tracker,
     );

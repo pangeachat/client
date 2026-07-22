@@ -11,7 +11,9 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
+import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'get_test_client.dart';
 
@@ -38,13 +40,17 @@ void main() {
   });
 
   setUp(() async {
-    dotenv.testLoad(
+    // COLD isolate: do NOT pre-load the env. The reply path must load it itself
+    // (via ensureDosageEnvLoaded) or the emit no-ops — modelling the background
+    // notification isolate. The loader is injected to load the flags.
+    DosageMessageSignals.envLoader = () async => dotenv.testLoad(
       mergeWith: {
         'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
         'DOSAGE_SIGNALS_ENABLED': 'true',
         'TEACHER_BFF_API': 'https://bff.test.example',
       },
     );
+    addTearDown(() => DosageMessageSignals.envLoader = EnvLoader.load);
     posts = [];
     // The reply path emits WITHOUT injecting a client, so the POST goes through
     // the per-request factory — capture it there.
@@ -102,6 +108,13 @@ void main() {
         client.getRoomById(roomId),
         isNotNull,
         reason: 'precondition: the reply room is known to the client',
+      );
+      expect(
+        dotenv.isInitialized,
+        isFalse,
+        reason:
+            'precondition: cold isolate — the reply path must load the env '
+            'itself for the emit to fire',
       );
 
       await notificationTap(replyResponse('hola mundo'), client: client);

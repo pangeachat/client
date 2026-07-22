@@ -197,6 +197,11 @@ Future<void> notificationTap(
           // and the emitter no-ops WITHOUT throwing; in the main isolate it
           // lands live. The A.3 server backfill remains the net for the
           // background-isolate case where a live emit can't be sent.
+          // Load the dosage env into this isolate first: the background
+          // notification isolate boots without `.env`, so without this the emit
+          // below would read the flags as unloaded and no-op. Idempotent in the
+          // main isolate; best-effort, never blocks the reply.
+          await DosageMessageSignals.ensureDosageEnvLoaded();
           DosageMessageSignals.emitForSentMessage(
             roomId: room.id,
             userId: room.client.userID,

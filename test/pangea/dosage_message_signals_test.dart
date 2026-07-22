@@ -17,6 +17,18 @@ import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 /// the single place every learner-text send path emits the envelope + an
 /// engagement tick. Driven with an injected clock, HTTP client, and tracker so
 /// no Matrix boot is needed.
+
+/// A tracker whose synchronous [recordActivity] throws, to prove the emit's
+/// best-effort boundary swallows it and never lets it escape into the send flow.
+class _ThrowingTracker extends DosageEngagementTracker {
+  @override
+  void recordActivity({
+    required String userId,
+    required String deviceId,
+    required String? accessToken,
+  }) => throw StateError('boom in the engagement tick');
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -64,6 +76,8 @@ void main() {
       return http.Response('', 202);
     });
     clock = base;
+    // Isolate the per-account tracker registry between tests.
+    DosageEngagementTracker.debugResetAccounts();
   });
 
   test(
@@ -202,6 +216,30 @@ void main() {
     expect(requests, isEmpty);
   });
 
+  test('a throwing engagement tick never escapes the emit boundary', () async {
+    // A tracker whose synchronous recordActivity throws must NOT surface into
+    // the send flow — the whole emit is inside a best-effort guard.
+    expect(
+      () => DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+        msgEventId: msgId,
+        body: 'hola',
+        client: mock,
+        tracker: _ThrowingTracker(),
+      ),
+      returnsNormally,
+      reason:
+          'a tracker/serialization throw must be swallowed, never thrown '
+          'into the caller (the send/save flow)',
+    );
+    await settle();
+    // The envelope POST still fired (it runs before the tracker tick).
+    expect(reqsFor('/dosage/message-events'), hasLength(1));
+  });
+
   group('isResendableLearnerText (resend emit gate)', () {
     test('a text resend is a learner turn', () {
       expect(
@@ -226,28 +264,55 @@ void main() {
     });
   });
 
-  group('strippedLearnerText (reply-fallback removal)', () {
-    test('strips the rich-reply quoted fallback, keeping only the reply', () {
-      const body =
-          '> <@bob:example.org> the original message\n\nmy actual reply';
-      expect(DosageMessageSignals.strippedLearnerText(body), 'my actual reply');
-    });
+  group('learnerText (reply-RELATION strip, not body shape)', () {
+    Map<String, dynamic> reply(String body) => {
+      'msgtype': 'm.text',
+      'body': body,
+      'm.relates_to': {
+        'm.in_reply_to': {'event_id': '\$orig'},
+      },
+    };
 
-    test('strips a multi-line quoted fallback', () {
-      const body =
-          '> <@bob:example.org> line one\n> line two\n> line three\n\nreply';
-      expect(DosageMessageSignals.strippedLearnerText(body), 'reply');
-    });
-
-    test('leaves a plain (non-reply) message unchanged', () {
+    test('strips the quoted fallback when the message IS a reply', () {
       expect(
-        DosageMessageSignals.strippedLearnerText('just a normal message'),
-        'just a normal message',
+        DosageMessageSignals.learnerText(
+          reply('> <@bob:example.org> the original\n\nmy actual reply'),
+        ),
+        'my actual reply',
       );
-      // A user line that merely starts with ">" but is not a reply fallback.
+    });
+
+    test('strips a multi-line quoted fallback (reply)', () {
       expect(
-        DosageMessageSignals.strippedLearnerText('> not really a reply'),
-        '> not really a reply',
+        DosageMessageSignals.learnerText(
+          reply('> <@bob:example.org> line one\n> line two\n\nreply'),
+        ),
+        'reply',
+      );
+    });
+
+    test(
+      'does NOT strip ordinary text that merely LOOKS like a quote (no reply '
+      'relation)',
+      () {
+        // Same body shape as a reply fallback, but no m.in_reply_to — this is
+        // the learner's own text and must be counted in full.
+        const body = '> <@bob:example.org> quoting a friend\n\nmy point';
+        expect(
+          DosageMessageSignals.learnerText({'msgtype': 'm.text', 'body': body}),
+          body,
+          reason: 'strip keys on the reply relation, not the body shape',
+        );
+      },
+    );
+
+    test('leaves a plain message unchanged', () {
+      expect(
+        DosageMessageSignals.learnerText({
+          'msgtype': 'm.text',
+          'body': 'just a normal message',
+        }),
+        'just a normal message',
       );
     });
   });

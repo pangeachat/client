@@ -69,6 +69,94 @@ void main() {
       return http.Response('', 202);
     });
     clock = base;
+    DosageEngagementTracker.debugResetAccounts();
+  });
+
+  tearDown(DosageEngagementTracker.debugResetAccounts);
+
+  group('per-account registry (isolation)', () {
+    test(
+      'each account gets its own tracker; disposeAccount touches only it',
+      () async {
+        final a = DosageEngagementTracker.forAccount('@a:example.org');
+        final b = DosageEngagementTracker.forAccount('@b:example.org');
+        expect(a, isNotNull);
+        expect(b, isNotNull);
+        expect(
+          identical(a, b),
+          isFalse,
+          reason: 'two accounts must NOT share a tracker',
+        );
+        expect(
+          identical(a, DosageEngagementTracker.forAccount('@a:example.org')),
+          isTrue,
+          reason: 'the same account resolves the same tracker',
+        );
+        expect(
+          DosageEngagementTracker.forAccount(''),
+          isNull,
+          reason: 'an unknown (empty) account gets no tracker',
+        );
+      },
+    );
+
+    test('disposeAccount(A) flushes A only and leaves B untouched', () async {
+      // Two per-account trackers, each with its own MockClient + an open span.
+      final aReqs = <http.Request>[];
+      final bReqs = <http.Request>[];
+      final aTracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: MockClient((r) async {
+          aReqs.add(r);
+          return http.Response('', 202);
+        }),
+      );
+      final bTracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: MockClient((r) async {
+          bReqs.add(r);
+          return http.Response('', 202);
+        }),
+      );
+      DosageEngagementTracker.debugPutAccount('@a:example.org', aTracker);
+      DosageEngagementTracker.debugPutAccount('@b:example.org', bTracker);
+      aTracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'DEV-A',
+        accessToken: 'tok-A',
+      );
+      bTracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'DEV-B',
+        accessToken: 'tok-B',
+      );
+      clock = base.add(const Duration(minutes: 1));
+
+      // Tear down account A ONLY.
+      await DosageEngagementTracker.disposeAccount('@a:example.org');
+
+      expect(aReqs, hasLength(1), reason: "A's span flushed on its teardown");
+      expect(
+        aReqs.single.headers['Authorization'],
+        'Bearer tok-A',
+        reason: "flushed under A's own bearer",
+      );
+      expect(
+        bReqs,
+        isEmpty,
+        reason: "B's tracker must be untouched by A's teardown",
+      );
+
+      // B's span is still open and flushes independently later.
+      await bTracker.flushOpenSpan();
+      expect(bReqs, hasLength(1));
+      expect(bReqs.single.headers['Authorization'], 'Bearer tok-B');
+    });
+
+    test('disposeAccount is idempotent (a second call is a no-op)', () async {
+      await DosageEngagementTracker.disposeAccount('@gone:example.org');
+      await DosageEngagementTracker.disposeAccount('@gone:example.org');
+    });
   });
 
   test('opens on activity, extends, flushes a UUIDv4 span on heartbeat', () async {

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/features/dosage/dosage_engagement_span.dart';
@@ -16,9 +18,11 @@ import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 /// [DosageSignalsRepo] (itself best-effort, never-throw) without awaiting, and
 /// the whole tracker is a no-op until [DosageSignalsRepo.isEnabled].
 ///
-/// The single [instance] is driven by the analytics update service (heartbeat +
-/// app-lifecycle) and by the chat send path ([recordActivity]). It is also
-/// constructable with an injected clock + http client for tests.
+/// PER-ACCOUNT: one tracker per logged-in account, resolved via [forAccount] and
+/// disposed via [disposeAccount]. The app runs multiple Matrix accounts, so a
+/// single shared tracker would let one account's teardown flush/attribute
+/// another's span; keeping a tracker per account isolates them. Each account's
+/// analytics service drives + disposes ITS tracker.
 class DosageEngagementTracker {
   /// Idle threshold: if no activity arrived within this window before a flush,
   /// the span closes at the last real activity rather than the flush time, so
@@ -36,8 +40,37 @@ class DosageEngagementTracker {
     : _now = now ?? DateTime.now,
       _httpClient = httpClient;
 
-  /// Shared tracker used by the running app.
-  static final DosageEngagementTracker instance = DosageEngagementTracker();
+  /// Per-account trackers, keyed by account (mxid). Each account gets its own so
+  /// one account's teardown never flushes or attributes another's spans.
+  static final Map<String, DosageEngagementTracker> _byAccount = {};
+
+  /// The tracker for [userId], created on first use. An empty userId (unknown
+  /// account) gets none — the caller then records no engagement (the envelope
+  /// still posts) rather than attributing a span to an unknown account.
+  static DosageEngagementTracker? forAccount(String userId) {
+    if (userId.isEmpty) return null;
+    return _byAccount.putIfAbsent(userId, DosageEngagementTracker.new);
+  }
+
+  /// Flushes + drops [userId]'s tracker on that account's teardown. Returns the
+  /// final flush's POST future so teardown can AWAIT it — so the last span is
+  /// sent (under the still-valid bearer) BEFORE logout invalidates it, and one
+  /// account's teardown can't touch another's tracker. Idempotent.
+  static Future<void> disposeAccount(String userId) {
+    final tracker = _byAccount.remove(userId);
+    return tracker?.flushOpenSpan() ?? Future.value();
+  }
+
+  /// Seeds a tracker for [userId] (tests only), so a teardown path can be driven
+  /// against a controllable tracker.
+  @visibleForTesting
+  static void debugPutAccount(String userId, DosageEngagementTracker tracker) =>
+      _byAccount[userId] = tracker;
+
+  /// Clears the per-account registry (tests only) so the app-global map doesn't
+  /// leak between tests.
+  @visibleForTesting
+  static void debugResetAccounts() => _byAccount.clear();
 
   String? _spanId;
   DateTime? _spanStart;

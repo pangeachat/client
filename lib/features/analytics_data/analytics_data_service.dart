@@ -56,7 +56,9 @@ class AnalyticsDataService {
 
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
-    updateService = AnalyticsUpdateService(this);
+    // Pass the account (mxid) so the update service resolves + disposes THIS
+    // account's dosage tracker, never another account's.
+    updateService = AnalyticsUpdateService(this, accountUserId: client.userID);
     _initDatabase(client);
   }
 

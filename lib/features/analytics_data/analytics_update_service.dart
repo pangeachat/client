@@ -26,13 +26,26 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   final AnalyticsDataService dataService;
 
-  /// The engagement tracker this service drives (heartbeat/background/dispose
-  /// flush). Defaults to the app-global singleton; injectable so teardown's
-  /// awaited final flush is unit-testable.
-  final DosageEngagementTracker _tracker;
+  /// The account (mxid) this per-account service belongs to. Its dosage tracker
+  /// is resolved/disposed per-account so one account's teardown never touches
+  /// another's.
+  final String? _accountUserId;
 
-  AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
-    : _tracker = tracker ?? DosageEngagementTracker.instance;
+  /// Test-only injected tracker; when set, [dispose] flushes it directly instead
+  /// of the per-account registry.
+  final DosageEngagementTracker? _injectedTracker;
+
+  AnalyticsUpdateService(
+    this.dataService, {
+    String? accountUserId,
+    DosageEngagementTracker? tracker,
+  }) : _accountUserId = accountUserId,
+       _injectedTracker = tracker;
+
+  /// This account's engagement tracker (heartbeat/background flush target).
+  DosageEngagementTracker? get _tracker =>
+      _injectedTracker ??
+      DosageEngagementTracker.forAccount(_accountUserId ?? '');
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
@@ -47,7 +60,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
-      unawaited(_tracker.flushOpenSpan());
+      unawaited(_tracker?.flushOpenSpan() ?? Future.value());
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -65,11 +78,16 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Future<void> dispose() async {
     WidgetsBinding.instance.removeObserver(this);
     _periodicTimer?.cancel();
-    // Await the final flush so the last open engagement span is actually sent,
-    // not dropped on teardown. Each dosage POST owns its own HTTP client, so
-    // there is no shared client to release here (or to close out from under
-    // another account that is still posting).
-    await _tracker.flushOpenSpan();
+    // Await the final flush so the last open engagement span is actually sent —
+    // callers dispose BEFORE invalidating the bearer, so the POST uses a valid
+    // token. Dispose the account's tracker via the registry (isolated to this
+    // account); a test-injected tracker is flushed directly.
+    final injected = _injectedTracker;
+    if (injected != null) {
+      await injected.flushOpenSpan();
+    } else {
+      await DosageEngagementTracker.disposeAccount(_accountUserId ?? '');
+    }
   }
 
   @override
@@ -78,7 +96,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // (inactive/paused/detached/hidden) closes and flushes it; it reopens on
     // the next learner activity.
     if (state != AppLifecycleState.resumed) {
-      unawaited(_tracker.flushOpenSpan());
+      unawaited(_tracker?.flushOpenSpan() ?? Future.value());
     }
   }
 
