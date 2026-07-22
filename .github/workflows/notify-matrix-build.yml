@@ -3,7 +3,8 @@ name: Notify Matrix — Build/Deploy
 # public, and GitHub does not allow public repos to call reusable workflows
 # from private repos, so the org workflow can't be referenced here (same
 # constraint as sygnal, which inlines these steps). Keep in sync with the org
-# workflow when it changes.
+# workflow when it changes. One deliberate divergence: a release_body with no
+# template sections is treated entirely as the Summary (see parse step).
 
 on:
   workflow_call:
@@ -92,6 +93,12 @@ jobs:
 
           summary = extract_section(body, "Summary")
           to_test = extract_section(body, "To Test")
+
+          # Local divergence from the org workflow: a non-empty body with no
+          # template sections (e.g. the free-text notes field on manual
+          # mobile-build dispatches) is treated as the Summary.
+          if body.strip() and not summary and not to_test:
+              summary = body.strip()
 
           # Plain text (markdown) — fallback for clients without HTML support
           plain = f"\U0001f680 **{service} {version}** {headline}"
