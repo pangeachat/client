@@ -84,7 +84,10 @@ class AnalyticsDataService {
   void dispose() {
     _syncController?.dispose();
     updateDispatcher.dispose();
-    updateService.dispose();
+    // Async: it awaits the final dosage engagement-span flush internally. This
+    // service's own teardown does not block on it (the flush POSTs on its own
+    // HTTP client, independent of the analytics DB closed just below).
+    unawaited(updateService.dispose());
     _closeDatabase();
   }
 

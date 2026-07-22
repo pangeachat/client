@@ -47,29 +47,15 @@ class DosageSignalsRepo {
   @visibleForTesting
   static set requestTimeout(Duration value) => _requestTimeout = value;
 
-  /// A single shared client reuses connections across the frequent small posts.
-  /// Lazily created so [dispose] can close and release it — an always-final
-  /// client could never be shut down, leaking its connection pool for the app's
-  /// lifetime.
-  static http.Client? _sharedClient;
-
-  static http.Client get _defaultClient => _sharedClient ??= http.Client();
-
-  /// Closes and releases the shared client (best-effort); the next post lazily
-  /// recreates it. Wire into app/analytics teardown so no socket is left open.
-  static void dispose() {
-    try {
-      _sharedClient?.close();
-    } catch (_) {
-      // Closing a best-effort client must itself never throw into a caller.
-    }
-    _sharedClient = null;
-  }
-
-  /// The shared client, for tests to assert [dispose] released it. Never used by
-  /// production code, which reads [_defaultClient].
+  /// Creates the HTTP client for a single best-effort POST. Production returns a
+  /// FRESH client per request, for two reasons a shared global client can't
+  /// give: a timeout can [http.Client.close] it to abort the in-flight socket
+  /// (true cancellation, not just a stopped wait), and each request owns its
+  /// client — so one request's (or one account's) teardown never closes a client
+  /// another is still using, and no pool is left open. Overridable in tests to
+  /// inject a spy.
   @visibleForTesting
-  static http.Client get debugDefaultClient => _defaultClient;
+  static http.Client Function() clientFactory = http.Client.new;
 
   /// Whether dosage signals are active. Requires BOTH flags AND a configured
   /// BFF base URL — any of the three missing makes every post a no-op.
@@ -177,8 +163,13 @@ class DosageSignalsRepo {
     required String signal,
     required int count,
   }) async {
+    // A caller-injected client is the caller's to manage; otherwise create a
+    // per-request client we own and MUST close in `finally`. On the timeout path
+    // that close tears down the still-in-flight socket (true cancellation); on
+    // success it releases the connection.
+    final http.Client httpClient = client ?? clientFactory();
+    final bool ownsClient = client == null;
     try {
-      final http.Client httpClient = client ?? _defaultClient;
       await httpClient
           .post(
             Uri.parse(url),
@@ -198,6 +189,8 @@ class DosageSignalsRepo {
         m: "Best-effort dosage signal POST failed (swallowed)",
         data: {"signal": signal, "count": count},
       );
+    } finally {
+      if (ownsClient) httpClient.close();
     }
   }
 }

@@ -64,6 +64,23 @@ class DosageEngagementTracker {
       return;
     }
 
+    // Account/device switch: a span is attributed to ONE account (its device id
+    // + bearer token). If this activity is from a DIFFERENT device, close the
+    // prior span under ITS OWN account and open a fresh one here — never let
+    // account B's activity extend account A's span or flush under A's token
+    // (the app-isolate-global tracker would otherwise retain the first
+    // account's device/token for the whole span).
+    if (deviceId != _deviceId) {
+      unawaited(_emit(_computeEnd(t)));
+      _openSpan(t, deviceId, accessToken);
+      return;
+    }
+
+    // Same account: keep the freshest token for the eventual flush. Tokens
+    // refresh mid-span, and a stale one would post the span under an expired
+    // bearer.
+    _accessToken = accessToken;
+
     // Idle-gap rollover: the time since the last activity is idle, not
     // engagement. If this activity lands after the idle threshold, close the
     // prior span at its honest end (the last activity, floored) and start a
@@ -72,7 +89,7 @@ class DosageEngagementTracker {
     // (a short span + a new span) instead of reporting a full capped span of
     // mostly-idle time.
     if (t.difference(_lastActivity ?? _spanStart!) >= idleGap) {
-      _emit(_computeEnd(t));
+      unawaited(_emit(_computeEnd(t)));
       _openSpan(t, deviceId, accessToken);
       return;
     }
@@ -80,7 +97,7 @@ class DosageEngagementTracker {
     // Cap rollover: a CONTINUOUSLY active span (gaps under the idle threshold)
     // must not exceed the server max — close it at the cap and roll over.
     if (t.difference(_spanStart!) >= DosageEngagementSpan.maxSpan) {
-      _emit(_spanStart!.add(DosageEngagementSpan.maxSpan));
+      unawaited(_emit(_spanStart!.add(DosageEngagementSpan.maxSpan)));
       _openSpan(t, deviceId, accessToken);
       return;
     }
@@ -89,9 +106,11 @@ class DosageEngagementTracker {
   }
 
   /// Closes and flushes the open span, if any (heartbeat, background, dispose).
-  void flushOpenSpan() {
-    if (_spanStart == null) return;
-    _emit(_computeEnd(_now().toUtc()));
+  /// Returns the flush's POST future so teardown can AWAIT the final flush
+  /// rather than drop it; heartbeat/background callers fire-and-forget.
+  Future<void> flushOpenSpan() {
+    if (_spanStart == null) return Future.value();
+    return _emit(_computeEnd(_now().toUtc()));
   }
 
   void _openSpan(DateTime t, String deviceId, String? accessToken) {
@@ -119,9 +138,11 @@ class DosageEngagementTracker {
     return end;
   }
 
-  /// Snapshots and resets span state, then fire-and-forgets the POST. Resetting
-  /// first makes a re-entrant flush a no-op and prevents any double-send.
-  void _emit(DateTime end) {
+  /// Snapshots and resets span state, then POSTs the span. Resetting first makes
+  /// a re-entrant flush a no-op and prevents any double-send. Returns the POST
+  /// future (already error-swallowing) so a caller can await it; rollover
+  /// callers discard it (fire-and-forget).
+  Future<void> _emit(DateTime end) {
     final String? spanId = _spanId;
     final DateTime? start = _spanStart;
     final String? deviceId = _deviceId;
@@ -132,23 +153,23 @@ class DosageEngagementTracker {
     _deviceId = null;
     _accessToken = null;
 
-    if (spanId == null || start == null || deviceId == null) return;
-    if (!end.isAfter(start)) return;
+    if (spanId == null || start == null || deviceId == null) {
+      return Future.value();
+    }
+    if (!end.isAfter(start)) return Future.value();
 
-    unawaited(
-      DosageSignalsRepo.postEngagementSpans(
-        spans: [
-          DosageEngagementSpan(
-            deviceId: deviceId,
-            spanId: spanId,
-            spanStart: start,
-            spanEnd: end,
-            platform: DosageSignalIdentity.platform(),
-          ),
-        ],
-        accessToken: accessToken,
-        client: _httpClient,
-      ).catchError((_) {}),
-    );
+    return DosageSignalsRepo.postEngagementSpans(
+      spans: [
+        DosageEngagementSpan(
+          deviceId: deviceId,
+          spanId: spanId,
+          spanStart: start,
+          spanEnd: end,
+          platform: DosageSignalIdentity.platform(),
+        ),
+      ],
+      accessToken: accessToken,
+      client: _httpClient,
+    ).catchError((_) {});
   }
 }

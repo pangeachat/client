@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -268,4 +269,67 @@ void main() {
     await settle();
     expect(requests, hasLength(1));
   });
+
+  test(
+    'switching accounts mid-window rolls over — no cross-account attribution',
+    () async {
+      String authOf(http.Request r) => r.headers['Authorization'] ?? '';
+
+      final tracker = buildTracker();
+      // Account A activity.
+      tracker.recordActivity(deviceId: 'DEVICE-A', accessToken: 'token-A');
+      clock = base.add(const Duration(seconds: 30));
+      // Account B activity WITHIN A's idle window. The app-isolate-global tracker
+      // used to only update _lastActivity, so B's activity extended A's span and
+      // later flushed under A's device + bearer.
+      tracker.recordActivity(deviceId: 'DEVICE-B', accessToken: 'token-B');
+      await settle();
+
+      // The device switch closed A's span, flushed under A's OWN identity.
+      expect(requests, hasLength(1), reason: 'the account switch closed A');
+      expect(authOf(requests.single), 'Bearer token-A');
+      expect(postedSpans().single['device_id'], 'DEVICE-A');
+
+      // B's span reports under B's identity, never A's.
+      clock = base.add(const Duration(minutes: 1));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
+      expect(authOf(requests[1]), 'Bearer token-B');
+      expect(postedSpans()[1]['device_id'], 'DEVICE-B');
+    },
+  );
+
+  test(
+    'flushOpenSpan awaits the span POST so a final flush is not dropped',
+    () async {
+      final gate = Completer<http.Response>();
+      final gatedMock = MockClient((req) {
+        requests.add(req);
+        return gate.future;
+      });
+      final tracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: gatedMock,
+      );
+      tracker.recordActivity(deviceId: deviceId, accessToken: token);
+      clock = base.add(const Duration(minutes: 1));
+
+      var flushed = false;
+      final flush = tracker.flushOpenSpan().then((_) => flushed = true);
+      await pumpEventQueue();
+      // The POST fired, but the flush future must NOT resolve until it lands —
+      // so teardown that awaits it cannot drop the final span.
+      expect(requests, hasLength(1), reason: 'the flush actually POSTed');
+      expect(
+        flushed,
+        isFalse,
+        reason: 'the flush future must await the POST, not fire-and-forget it',
+      );
+
+      gate.complete(http.Response('', 202));
+      await flush;
+      expect(flushed, isTrue);
+    },
+  );
 }

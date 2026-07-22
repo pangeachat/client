@@ -15,6 +15,54 @@ import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 
+/// A per-request client whose response never resolves on its own, so a POST can
+/// only finish via the timeout. [close] tears down the in-flight request by
+/// erroring its pending send — modelling a real socket abort — so a test can
+/// assert the timeout ACTUALLY aborted (not merely stopped waiting).
+class _AbortSpyClient extends http.BaseClient {
+  bool closed = false;
+  bool sendAborted = false;
+  final List<Completer<http.StreamedResponse>> _pending = [];
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) {
+    final completer = Completer<http.StreamedResponse>();
+    _pending.add(completer);
+    return completer.future;
+  }
+
+  @override
+  void close() {
+    closed = true;
+    for (final completer in _pending) {
+      if (!completer.isCompleted) {
+        sendAborted = true;
+        completer.completeError(const _SocketAborted());
+      }
+    }
+  }
+}
+
+class _SocketAborted implements Exception {
+  const _SocketAborted();
+}
+
+/// A per-request client that completes normally and records send/close counts,
+/// to assert each POST owns and closes its own client (no shared client).
+class _CloseTrackingClient extends http.BaseClient {
+  int sendCount = 0;
+  int closeCount = 0;
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    sendCount++;
+    return http.StreamedResponse(const Stream<List<int>>.empty(), 202);
+  }
+
+  @override
+  void close() => closeCount++;
+}
+
 /// Unit tests for the best-effort dosage signals ([DosageSignalsRepo]), mirroring
 /// the analytics dual-write suite: the repo takes plain arguments and an
 /// injectable HTTP client, so no Matrix boot is needed — only a [MockClient] and
@@ -265,45 +313,80 @@ void main() {
     }
   });
 
-  test('abandons a POST that never responds at the request timeout '
-      '(no indefinite hang)', () async {
-    DosageSignalsRepo.requestTimeout = const Duration(milliseconds: 50);
-    addTearDown(
-      () => DosageSignalsRepo.requestTimeout = const Duration(seconds: 10),
-    );
-    // A client whose response future never completes.
-    final hang = MockClient((req) => Completer<http.Response>().future);
+  test(
+    'a timed-out POST closes its per-request client to abort the socket',
+    () async {
+      DosageSignalsRepo.requestTimeout = const Duration(milliseconds: 50);
+      final spy = _AbortSpyClient();
+      DosageSignalsRepo.clientFactory = () => spy;
+      addTearDown(() {
+        DosageSignalsRepo.requestTimeout = const Duration(seconds: 10);
+        DosageSignalsRepo.clientFactory = http.Client.new;
+      });
 
-    // The internal timeout resolves the future; the outer guard fails the
-    // test (rather than hanging it) if the timeout is missing.
-    await DosageSignalsRepo.postMessageEvents(
-      events: [messageEvent()],
-      accessToken: token,
-      client: hang,
-    ).timeout(
-      const Duration(seconds: 5),
-      onTimeout: () => fail('postMessageEvents hung past the request timeout'),
-    );
-  });
+      // No injected client -> _post uses the factory (spy) and OWNS it. The outer
+      // guard fails (rather than hangs) the test if the internal timeout is gone.
+      await DosageSignalsRepo.postMessageEvents(
+        events: [messageEvent()],
+        accessToken: token,
+      ).timeout(
+        const Duration(seconds: 5),
+        onTimeout: () =>
+            fail('postMessageEvents hung past the request timeout'),
+      );
 
-  test('dispose() closes and releases the shared client (lazy recreate)', () {
-    final first = DosageSignalsRepo.debugDefaultClient;
-    expect(
-      identical(first, DosageSignalsRepo.debugDefaultClient),
-      isTrue,
-      reason: 'the shared client is reused across posts',
-    );
+      expect(
+        spy.closed,
+        isTrue,
+        reason: 'the timeout must CLOSE the per-request client',
+      );
+      expect(
+        spy.sendAborted,
+        isTrue,
+        reason:
+            'closing tore down the still-in-flight request — true cancellation, '
+            'not just a stopped wait',
+      );
+    },
+  );
 
-    DosageSignalsRepo.dispose();
+  test(
+    'each POST owns and closes a fresh client (no shared client to disrupt)',
+    () async {
+      final clients = <_CloseTrackingClient>[];
+      DosageSignalsRepo.clientFactory = () {
+        final c = _CloseTrackingClient();
+        clients.add(c);
+        return c;
+      };
+      addTearDown(() => DosageSignalsRepo.clientFactory = http.Client.new);
 
-    expect(
-      identical(first, DosageSignalsRepo.debugDefaultClient),
-      isFalse,
-      reason:
-          'dispose released the shared client; the next access recreates it',
-    );
-    DosageSignalsRepo.dispose();
-  });
+      await DosageSignalsRepo.postMessageEvents(
+        events: [messageEvent()],
+        accessToken: token,
+      );
+      await DosageSignalsRepo.postEngagementSpans(
+        spans: [engagementSpan()],
+        accessToken: token,
+      );
+
+      expect(
+        clients,
+        hasLength(2),
+        reason: 'a fresh client per request — there is no shared global client',
+      );
+      for (final c in clients) {
+        expect(c.sendCount, 1);
+        expect(
+          c.closeCount,
+          1,
+          reason:
+              'each request closes its OWN client — none is left open, and '
+              'no shared client can be closed out from under another account',
+        );
+      }
+    },
+  );
 
   test('never throws and never blocks on a failing/erroring client', () async {
     final throwing = MockClient((req) async {

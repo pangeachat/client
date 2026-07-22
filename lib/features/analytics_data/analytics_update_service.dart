@@ -14,7 +14,6 @@ import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
-import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -42,7 +41,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
-      DosageEngagementTracker.instance.flushOpenSpan();
+      unawaited(DosageEngagementTracker.instance.flushOpenSpan());
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -57,13 +56,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     });
   }
 
-  void dispose() {
+  Future<void> dispose() async {
     WidgetsBinding.instance.removeObserver(this);
-    DosageEngagementTracker.instance.flushOpenSpan();
-    // Release the dosage signals' shared HTTP client on teardown so its
-    // connection pool isn't held open for the app's lifetime.
-    DosageSignalsRepo.dispose();
     _periodicTimer?.cancel();
+    // Await the final flush so the last open engagement span is actually sent,
+    // not dropped on teardown. Each dosage POST owns its own HTTP client, so
+    // there is no shared client to release here (or to close out from under
+    // another account that is still posting).
+    await DosageEngagementTracker.instance.flushOpenSpan();
   }
 
   @override
@@ -72,7 +72,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // (inactive/paused/detached/hidden) closes and flushes it; it reopens on
     // the next learner activity.
     if (state != AppLifecycleState.resumed) {
-      DosageEngagementTracker.instance.flushOpenSpan();
+      unawaited(DosageEngagementTracker.instance.flushOpenSpan());
     }
   }
 
