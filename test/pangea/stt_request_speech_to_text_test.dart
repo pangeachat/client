@@ -129,6 +129,36 @@ void main() {
     expect(selected.transcript.sttTokens, isNotEmpty);
   });
 
+  test('HIGH: editing the message INVALIDATES the cached repair -- post-edit '
+      'selection does NOT return the stale pre-edit tokens', () {
+    final rich = SpeechToTextResponseModel.fromJson(_tokenLessEmbed())
+        .withFirstTranscriptTokens([
+          STTToken(
+            token: PangeaToken.fromJson({
+              'text': {'content': 'hola', 'offset': 0, 'length': 4},
+              'lemma': {'text': 'hola', 'save_vocab': true, 'form': 'hola'},
+              'pos': 'NOUN',
+              'morph': <String, dynamic>{},
+            }),
+          ),
+        ]);
+    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, rich);
+    expect(
+      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
+      isTrue,
+    );
+
+    // The message was edited -> the pre-edit repair is now stale.
+    audioMessage.updateLatestEdit();
+
+    // Teeth: without the cache-invalidation in updateLatestEdit, selection
+    // would still surface the stale token-rich entry -> hasUsableTokens true.
+    expect(
+      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
+      isFalse,
+    );
+  });
+
   test(
     'requestSpeechToText(requireTokens: true) tokenizes the token-less embed '
     'with a snapshot sourced from the EVENT language, not the caller args',

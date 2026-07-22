@@ -323,28 +323,53 @@ void main() {
       expect(req.config.userL2, 'es');
     });
 
-    test('embed speaker_l1 == ASR config userL1 from ONE snapshot, even if the '
-        'user changes L1/L2 mid-send', () {
-      // The single t0 snapshot chat.dart captures at the top (before any await)
-      // and feeds to BOTH the embed and the ASR.
-      const capturedSpeakerL1 = 'en';
-      const capturedSpeakerL2 = 'es';
+    test('BLOCKER: VoiceSendLanguages captures the EMBED raw locale AND the ASR '
+        'short code from one t0 read -> ASR carries the short code (flag-OFF '
+        'byte-equivalent), NOT the full locale', () {
+      // A user whose source setting is a full locale (es-MX) whose language
+      // model short-code is `es` -- the baseline ASR built its config from the
+      // SHORT code, so the ASR must carry `es`, not `es-MX`.
+      final langs = VoiceSendLanguages.capture(
+        sourceCode: 'es-MX', // userL1Code (embed)
+        targetCode: 'en-US', // userL2Code (embed)
+        sourceShort: 'es', // userL1?.langCodeShort (ASR)
+        targetShort: 'en', // userL2?.langCodeShort (ASR)
+      );
 
-      // ... user changes their L1 to 'fr' AFTER t0 (must be ignored). Production
-      // threads the CAPTURED value into the ASR, so it never re-reads 'fr'.
+      // The EMBED keeps the raw locale (baseline speaker_l1/l2).
+      expect(langs.speakerL1, 'es-MX');
+      expect(langs.speakerL2, 'en-US');
+      // The ASR uses the SHORT code (baseline ASR hint). Teeth: sourcing asrL1
+      // from sourceCode (the R4 regression) makes this `es-MX` -> RED.
+      expect(langs.asrL1, 'es');
+      expect(langs.asrL2, 'en');
+
+      // And the ASR request built from it carries the short code.
       final asrReq = buildVoiceSttRequest(
         audioContent: audio,
         mimeType: 'audio/x-wav',
-        userL1: capturedSpeakerL1,
-        userL2: capturedSpeakerL2,
-        skipTokenize: true,
+        userL1: langs.asrL1,
+        userL2: langs.asrL2,
+        skipTokenize: false,
       );
-
-      // The embed's speaker_l1/l2 ARE the same captured snapshot values, so:
-      const embedSpeakerL1 = capturedSpeakerL1;
-      const embedSpeakerL2 = capturedSpeakerL2;
-      expect(asrReq.config.userL1, embedSpeakerL1);
-      expect(asrReq.config.userL2, embedSpeakerL2);
+      expect(asrReq.config.userL1, 'es');
+      expect(asrReq.config.userL2, 'en');
     });
+
+    test(
+      'VoiceSendLanguages falls back to unknownLanguage for the ASR when the '
+      'short code is null (no language model)',
+      () {
+        final langs = VoiceSendLanguages.capture(
+          sourceCode: 'xx',
+          targetCode: null,
+          sourceShort: null,
+          targetShort: null,
+        );
+        expect(langs.speakerL1, 'xx'); // embed keeps the raw code
+        expect(langs.asrL1, isNotNull); // ASR never null
+        expect(langs.asrL1, isNot('xx'));
+      },
+    );
   });
 }

@@ -332,4 +332,50 @@ void main() {
       },
     );
   });
+
+  group('reAsrLanguages (from-scratch re-ASR is EVENT-sourced)', () {
+    test('prefers the event speaker langs over the reader fallback', () {
+      final langs = PangeaMessageEvent.reAsrLanguages(
+        eventSpeakerL1: 'de',
+        eventSpeakerL2: 'fr',
+        fallbackL1: 'en', // reader's (possibly changed) current settings
+        fallbackL2: 'es',
+      );
+      // Teeth: using the fallback when the event has langs makes these en/es.
+      expect(langs.userL1, 'de');
+      expect(langs.userL2, 'fr');
+    });
+
+    test('falls back to the reader langs only when the event has none', () {
+      final langs = PangeaMessageEvent.reAsrLanguages(
+        eventSpeakerL1: null,
+        eventSpeakerL2: null,
+        fallbackL1: 'en',
+        fallbackL2: 'es',
+      );
+      expect(langs.userL1, 'en');
+      expect(langs.userL2, 'es');
+    });
+  });
+
+  group('_repairedSttCache is bounded (should-fix)', () {
+    setUp(PangeaMessageEvent.clearRepairedSttCache);
+    tearDown(PangeaMessageEvent.clearRepairedSttCache);
+
+    test('inserting > cap keeps size <= cap and evicts the OLDEST', () {
+      // Insert 40 distinct token-rich entries (cap is 32).
+      for (var i = 0; i < 40; i++) {
+        PangeaMessageEvent.cacheRepairedStt('\$e$i', _withTokens('t$i'));
+      }
+      expect(PangeaMessageEvent.repairedSttCacheSize(), lessThanOrEqualTo(32));
+      // Oldest (0..7) evicted; newest (39) retained.
+      expect(PangeaMessageEvent.peekRepairedStt(r'$e0'), isNull);
+      expect(PangeaMessageEvent.peekRepairedStt(r'$e39'), isNotNull);
+    });
+
+    test('a token-less STT is never cached', () {
+      PangeaMessageEvent.cacheRepairedStt(r'$x', _textOnly('hola'));
+      expect(PangeaMessageEvent.peekRepairedStt(r'$x'), isNull);
+    });
+  });
 }

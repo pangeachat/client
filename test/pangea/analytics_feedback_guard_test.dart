@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
@@ -97,6 +99,24 @@ void main() {
       );
       expect(shown, isTrue);
       expect(logged, isFalse);
+    });
+
+    test('a throwing feedback with an ASYNC-throwing logger (Future.error, like '
+        'ErrorHandler.logError) leaks NO unhandled async error', () async {
+      final unhandled = <Object>[];
+
+      await runZonedGuarded(() async {
+        await guardFeedbackDispatch(
+          () async => throw Exception('overlay/count failed'),
+          // Returns a Future that rejects -- must be contained, not discarded.
+          (_, _) => Future<void>.error(Exception('async logger')),
+        );
+      }, (e, s) => unhandled.add(e));
+
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      // Teeth: without `if (r is Future) unawaited(r.catchError(...))` in the
+      // guard, the logger's rejection escapes to the zone -> RED.
+      expect(unhandled, isEmpty);
     });
   });
 }

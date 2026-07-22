@@ -309,29 +309,48 @@ void main() {
       },
     );
 
-    test('SF: a THROWING onError logger does not reject the fire-and-forget '
-        'coordinator (its future still completes normally)', () async {
-      var attachCalls = 0;
+    test(
+      'SF: a SYNC-throwing onError logger does not reject the coordinator',
+      () async {
+        // Must complete without throwing even though enrich fails AND the
+        // logger itself throws synchronously.
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: _ownSender,
+          clientUserId: _me,
+          enrich: (_, _) async => throw Exception('tokenize failed'),
+          recordAnalytics: (_) async {},
+          attach: (_) async => null,
+          onError: (_, _) => throw Exception('logger blew up'),
+        );
+        expect(true, isTrue); // reaching here == no rethrow
+      },
+    );
 
-      // The coordinator must complete without throwing even though enrich
-      // fails AND the onError logger itself throws.
-      await runVoiceTranscriptEnrichment(
-        baseStt: _skipTokenizeBase(),
-        snapshot: _snapshot,
-        resolveSenderId: _ownSender,
-        clientUserId: _me,
-        enrich: (_, _) async => throw Exception('tokenize failed'),
-        recordAnalytics: (_) async {},
-        attach: (_) async {
-          attachCalls++;
-          return null;
-        },
-        // Teeth: unguarded, this rejects the unawaited coordinator.
-        onError: (_, _) => throw Exception('logger blew up'),
-      );
+    test('SF: an ASYNC-throwing onError logger (returns Future.error, like '
+        'ErrorHandler.logError) leaks NO unhandled async error', () async {
+      final unhandled = <Object>[];
 
-      // Enrich failed -> no attach; the point is simply that we got here.
-      expect(attachCalls, 0);
+      await runZonedGuarded(() async {
+        await runVoiceTranscriptEnrichment(
+          baseStt: _skipTokenizeBase(),
+          snapshot: _snapshot,
+          resolveSenderId: _ownSender,
+          clientUserId: _me,
+          enrich: (_, _) async => throw Exception('tokenize failed'),
+          recordAnalytics: (_) async {},
+          attach: (_) async => null,
+          // Mirrors production `(e,s) => ErrorHandler.logError(...)` which
+          // returns a Future<void>. Teeth: without the `if (r is Future)`
+          // containment this rejection escapes to the zone -> RED.
+          onError: (_, _) => Future<void>.error(Exception('async logger')),
+        );
+      }, (e, s) => unhandled.add(e));
+
+      // Drain microtasks so any leaked rejection would have surfaced.
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(unhandled, isEmpty);
     });
   });
 
