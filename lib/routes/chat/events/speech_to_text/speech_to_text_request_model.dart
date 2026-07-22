@@ -5,9 +5,45 @@ import 'package:flutter/foundation.dart';
 import 'package:crypto/crypto.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+
+/// The languages a voice send needs, captured from a SINGLE t0 read so the two
+/// baseline representations stay consistent yet each byte-identical to their
+/// source: the EMBED's `speaker_l1/l2` use the raw setting codes (e.g. `es-MX`),
+/// while the ASR request hint uses the normalized short codes (e.g. `es`, with
+/// an unknown-language fallback). Keeping them distinct is what preserves
+/// flag-OFF ASR byte-equivalence (the baseline built the ASR config from
+/// `userL1?.langCodeShort`, not the full locale).
+class VoiceSendLanguages {
+  final String? speakerL1;
+  final String? speakerL2;
+  final String asrL1;
+  final String asrL2;
+
+  const VoiceSendLanguages({
+    required this.speakerL1,
+    required this.speakerL2,
+    required this.asrL1,
+    required this.asrL2,
+  });
+
+  /// [sourceCode]/[targetCode] are `userL1Code`/`userL2Code` (embed);
+  /// [sourceShort]/[targetShort] are `userL1?.langCodeShort`/`userL2?...` (ASR).
+  factory VoiceSendLanguages.capture({
+    required String? sourceCode,
+    required String? targetCode,
+    required String? sourceShort,
+    required String? targetShort,
+  }) => VoiceSendLanguages(
+    speakerL1: sourceCode,
+    speakerL2: targetCode,
+    asrL1: sourceShort ?? LanguageKeys.unknownLanguage,
+    asrL2: targetShort ?? LanguageKeys.unknownLanguage,
+  );
+}
 
 /// Builds the voice ASR request from EXPLICIT language values (never re-read
 /// from current settings). The caller threads a SINGLE t0 language snapshot to

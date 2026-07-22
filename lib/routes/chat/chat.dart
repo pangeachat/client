@@ -1662,8 +1662,16 @@ class ChatController extends State<ChatPageWithRoom>
     final capturedRoom = room;
     final capturedRoomId = roomId;
     final capturedClientUserId = sendingClient.userID;
-    final capturedSpeakerL1 = pangeaController.userController.userL1Code;
-    final capturedSpeakerL2 = pangeaController.userController.userL2Code;
+    // BOTH forms from the SAME t0 read: the embed uses the raw setting codes
+    // (baseline speaker_l1/l2), the ASR uses the normalized short codes
+    // (baseline ASR hint). Distinct representations -> flag-OFF ASR bytes stay
+    // byte-identical to baseline; single read -> no mid-send drift (H3/BLOCKER).
+    final voiceLangs = VoiceSendLanguages.capture(
+      sourceCode: pangeaController.userController.userL1Code,
+      targetCode: pangeaController.userController.userL2Code,
+      sourceShort: pangeaController.userController.userL1?.langCodeShort,
+      targetShort: pangeaController.userController.userL2?.langCodeShort,
+    );
 
     stopMediaStream.add(null);
     if (PlatformInfos.isAndroid) {
@@ -1707,10 +1715,11 @@ class ChatController extends State<ChatPageWithRoom>
     final transcriptResult = await _getVoiceMessageTranscript(
       file,
       skipTokenize: decoupleTokenizer,
-      // Thread the SAME t0 snapshot the embed uses, so embed langs == ASR langs
-      // == tokenize langs by construction, even across a mid-send change (H3).
-      userL1: capturedSpeakerL1 ?? LanguageKeys.unknownLanguage,
-      userL2: capturedSpeakerL2 ?? LanguageKeys.unknownLanguage,
+      // Thread the ASR short codes captured at t0 (baseline representation),
+      // never re-read current settings -- byte-identical to baseline yet
+      // drift-free across a mid-send change (BLOCKER/H3).
+      userL1: voiceLangs.asrL1,
+      userL2: voiceLangs.asrL2,
     );
     final stt = transcriptResult.result;
 
@@ -1723,7 +1732,7 @@ class ChatController extends State<ChatPageWithRoom>
     // no background work.
     final decoupleSnapshot =
         decoupleTokenizer && stt != null && stt.hasUsableTranscript
-        ? SttLangSnapshot.fromBaseStt(stt, speakerL1: capturedSpeakerL1)
+        ? SttLangSnapshot.fromBaseStt(stt, speakerL1: voiceLangs.speakerL1)
         : null;
     // Pangea#
 
@@ -1746,8 +1755,8 @@ class ChatController extends State<ChatPageWithRoom>
               'waveform': waveform,
             },
             // #Pangea
-            'speaker_l1': capturedSpeakerL1,
-            'speaker_l2': capturedSpeakerL2,
+            'speaker_l1': voiceLangs.speakerL1,
+            'speaker_l2': voiceLangs.speakerL2,
             if (stt != null) MessageConstants.userStt: stt.toJson(),
             // Pangea#
           },

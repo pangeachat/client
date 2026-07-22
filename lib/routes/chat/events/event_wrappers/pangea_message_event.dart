@@ -295,6 +295,13 @@ class PangeaMessageEvent {
 
   void updateLatestEdit() {
     _representations = null;
+    // Invalidate any in-memory repair for this message on edit -- the transcript
+    // changed, so a pre-edit token-rich entry is stale. This is what makes the
+    // "no usable embed -> return cached" branch of [_matchingRepairedStt] sound
+    // (the match-gate protects the embed-present case; edit-invalidation the
+    // no-embed case). Both the display-event id and the original id are cleared.
+    _repairedSttCache.remove(eventId);
+    _repairedSttCache.remove(_event.eventId);
   }
 
   RepresentationEvent? _representationByLanguage(
@@ -595,19 +602,36 @@ class PangeaMessageEvent {
   /// (H4). Small (one entry per repaired audio message tapped this session).
   static final Map<String, SpeechToTextResponseModel> _repairedSttCache = {};
 
+  /// Insertion-order bound so the cache cannot grow unboundedly over a long
+  /// session (each entry holds a full transcript).
+  static const int _repairedSttCacheMax = 32;
+
   /// Stores [richStt] as the in-memory repair for [eventId]. Only a token-rich
   /// result is cached; a token-less result is ignored so a stale rich entry is
-  /// never downgraded.
+  /// never downgraded. Evicts the OLDEST entry once the bound is exceeded.
   @visibleForTesting
   static void cacheRepairedStt(
     String eventId,
     SpeechToTextResponseModel richStt,
   ) {
-    if (richStt.hasUsableTokens) _repairedSttCache[eventId] = richStt;
+    if (!richStt.hasUsableTokens) return;
+    // Re-insert at the end (freshest) so eviction is insertion-order LRU-ish.
+    _repairedSttCache.remove(eventId);
+    _repairedSttCache[eventId] = richStt;
+    while (_repairedSttCache.length > _repairedSttCacheMax) {
+      _repairedSttCache.remove(_repairedSttCache.keys.first);
+    }
   }
 
   @visibleForTesting
   static void clearRepairedSttCache() => _repairedSttCache.clear();
+
+  @visibleForTesting
+  static int repairedSttCacheSize() => _repairedSttCache.length;
+
+  @visibleForTesting
+  static SpeechToTextResponseModel? peekRepairedStt(String eventId) =>
+      _repairedSttCache[eventId];
 
   /// The in-memory repaired STT for [eventId] that matches [embed]'s transcript
   /// (or any repair when there is no usable embed to match), else null. The
@@ -630,6 +654,21 @@ class PangeaMessageEvent {
         baseStt,
         speakerL1: _event.content.tryGet<String>('speaker_l1'),
       );
+
+  /// Languages for a FROM-SCRATCH re-ASR (no embed to snapshot): prefer the
+  /// event's own embedded sender languages so a later READER language change can
+  /// never bypass the message's snapshot; fall back to the passed reader
+  /// languages only when the event carries none. Pure + testable.
+  @visibleForTesting
+  static ({String userL1, String userL2}) reAsrLanguages({
+    required String? eventSpeakerL1,
+    required String? eventSpeakerL2,
+    required String fallbackL1,
+    required String fallbackL2,
+  }) => (
+    userL1: eventSpeakerL1 ?? fallbackL1,
+    userL2: eventSpeakerL2 ?? fallbackL2,
+  );
 
   /// [requireTokens] turns this into the shared TOKEN-REPAIR primitive (display
   /// only -- it never records analytics). Only when the caller requires tokens
@@ -667,6 +706,14 @@ class PangeaMessageEvent {
     }
 
     final matrixFile = await _event.downloadAndDecryptAttachment();
+    // Event-sourced languages: prefer the message's own speaker_l1/l2 over the
+    // reader's live settings, so a language change never bypasses the snapshot.
+    final reAsrLangs = reAsrLanguages(
+      eventSpeakerL1: _event.content.tryGet<String>('speaker_l1'),
+      eventSpeakerL2: _event.content.tryGet<String>('speaker_l2'),
+      fallbackL1: l1Code,
+      fallbackL2: l2Code,
+    );
     final result = await SpeechToTextRepo.instance.get(
       SpeechToTextRequestModel(
         audioContent: matrixFile.bytes,
@@ -674,8 +721,8 @@ class PangeaMessageEvent {
         config: SpeechToTextAudioConfigModel(
           encoding: mimeTypeToAudioEncoding(matrixFile.mimeType),
           sampleRateHertz: 22050,
-          userL1: l1Code,
-          userL2: l2Code,
+          userL1: reAsrLangs.userL1,
+          userL2: reAsrLangs.userL2,
         ),
       ),
     );
@@ -694,6 +741,10 @@ class PangeaMessageEvent {
       throw Exception('SpeechToText: no transcript available for audio');
     }
 
+    // Cache the freshly ASR'd tokens too, so SELECTION reads them even if the
+    // representation send lags/fails -- ALL token-producing paths populate the
+    // same cache selection reads (H4).
+    cacheRepairedStt(eventId, stt);
     _sendSttRepresentationEvent(stt);
     return stt;
   }

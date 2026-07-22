@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
@@ -166,6 +168,28 @@ Future<SpeechToTextResponseModel> repairSttTokens({
   return rich;
 }
 
+/// Invokes [report] and CONTAINS both failure modes so a failing logger can
+/// never escape as an unhandled error: a SYNCHRONOUS throw is caught, and an
+/// ASYNC rejection (production's `onError` is `(e,s) => ErrorHandler.logError`,
+/// which returns a `Future<void>`) is swallowed via `catchError`. Used at EVERY
+/// error-callback site (the coordinator's `safeOnError`, the flag-OFF feedback
+/// dispatch), so a throwing/rejecting logger cannot reject the fire-and-forget.
+void reportErrorSafely(
+  FutureOr<void> Function(Object error, StackTrace stack)? report,
+  Object error,
+  StackTrace stack,
+) {
+  try {
+    final result = report?.call(error, stack);
+    if (result is Future) {
+      unawaited(result.catchError((Object _) {}));
+    }
+  } catch (_) {
+    // The logger itself threw synchronously; there is nowhere safe left to
+    // report it, and it must not reject the caller.
+  }
+}
+
 /// Whether an audio event was sent by the local user -- the analytics-record
 /// gate (D7): recording fires only for the sender's OWN message, never for a
 /// viewed other-sender or bot message. Bound to the real identity path
@@ -246,18 +270,11 @@ Future<void> runVoiceTranscriptEnrichment({
   recordAnalytics,
   required Future<Event?> Function(SpeechToTextResponseModel richStt) attach,
   Future<void> Function(SpeechToTextResponseModel richStt)? showFeedback,
-  void Function(Object error, StackTrace stack)? onError,
+  FutureOr<void> Function(Object error, StackTrace stack)? onError,
 }) async {
-  // A logger must NEVER reject this fire-and-forget coordinator: guard the
-  // onError invocation so a throwing/failing logger callback cannot escape.
-  void safeOnError(Object e, StackTrace s) {
-    try {
-      onError?.call(e, s);
-    } catch (_) {
-      // Deliberately swallowed: the logger itself failed; there is nowhere
-      // safe left to report it, and it must not reject the coordinator.
-    }
-  }
+  // A logger must NEVER reject this fire-and-forget coordinator: contain BOTH a
+  // synchronous throw AND an async rejection of the logger's returned Future.
+  void safeOnError(Object e, StackTrace s) => reportErrorSafely(onError, e, s);
 
   // Nothing to tokenize on an exhausted-fallback/non-usable transcript: skip
   // all background work rather than crashing on the missing transcript.

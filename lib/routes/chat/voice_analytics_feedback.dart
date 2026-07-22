@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+
 /// The grammar + vocab counts shown in the transient analytics-feedback overlay.
 typedef AnalyticsFeedbackCounts = ({int grammar, int vocab});
 
@@ -28,11 +32,14 @@ Future<AnalyticsFeedbackCounts?> guardedAnalyticsFeedbackCounts({
 /// completes normally.
 Future<void> guardFeedbackDispatch(
   Future<void> Function() show,
-  void Function(Object error, StackTrace stack) onError,
+  FutureOr<void> Function(Object error, StackTrace stack) onError,
 ) async {
   try {
     await show();
   } catch (e, s) {
-    onError(e, s);
+    // Contain BOTH a synchronous throw and an async rejection of the logger's
+    // returned Future (ErrorHandler.logError returns Future<void>), so a failing
+    // logger can never escape as an unhandled async error.
+    reportErrorSafely(onError, e, s);
   }
 }
