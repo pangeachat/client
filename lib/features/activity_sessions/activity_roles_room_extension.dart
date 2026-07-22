@@ -198,7 +198,10 @@ extension ActivityRolesRoomExtension on Room {
     if (role == null || !role.isFinished) return null;
     if (role.isArchived) return role.archivedAt;
 
-    final archivedAt = DateTime.now();
+    // UTC so the persisted archived_at (and the dosage completed_at derived from
+    // it) is an unambiguous instant with an offset, never a bare local
+    // wall-clock the server would have to guess a zone for.
+    final archivedAt = DateTime.now().toUtc();
     role.archivedAt = archivedAt;
     currentRoles.updateRole(role);
     await client.setRoomStateWithKey(

@@ -89,8 +89,16 @@ void main() {
       final body = lastRolePutBody();
       expect(body, isNotNull, reason: 'the archive was persisted');
       final persisted =
-          ((body!['roles'] as Map)['role-1'] as Map)['archived_at'];
+          ((body!['roles'] as Map)['role-1'] as Map)['archived_at'] as String;
       expect(persisted, returned!.toIso8601String());
+      // Canonical + unambiguous: the persisted timestamp is UTC (trailing 'Z'),
+      // not a bare local wall-clock without an offset.
+      expect(returned.isUtc, isTrue, reason: 'archived-at is a UTC instant');
+      expect(
+        persisted.endsWith('Z'),
+        isTrue,
+        reason: 'archived_at is serialized as UTC/ISO-8601 with offset',
+      );
     },
   );
 
