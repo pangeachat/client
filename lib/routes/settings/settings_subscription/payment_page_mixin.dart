@@ -17,6 +17,8 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     _recordBeganPayment(request.planId, request.promoCode);
 
     final paymentLinkResult = await _requestPaymentLink(request);
+    if (!mounted) return;
+
     final paymentLink = paymentLinkResult.result;
 
     final error = paymentLinkResult.error;

@@ -11,6 +11,8 @@ import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
@@ -157,6 +159,7 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   }
 
   Future<void> _cancelSubscription() async {
+    final userID = Matrix.of(context).client.userID!;
     final entitlementRef = _cancelableEntitlement?.entitlementRef;
     if (entitlementRef == null) {
       throw "Cannot cancel subscription without entitlement";
@@ -165,7 +168,7 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     final cancelResult = await SubscriptionCancelRepo.instance
         .cancelSubscription(
           SubscriptionCancelRequest(
-            userID: Matrix.of(context).client.userID!,
+            userID: userID,
             entitlementRef: entitlementRef,
           ),
         );
@@ -173,9 +176,16 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     final error = cancelResult.error;
     if (error != null) throw error;
 
-    // Account for short delay between cancel request going through
-    // and /status returning with cancel_at_period_end true
-    await Future.delayed(Duration(seconds: 1));
+    // Poll subscription status until the cancelation request is reflected
+    await SubscriptionStatusRepo.instance.pollSubscriptionStatus(
+      SubscriptionStatusRequest(userID: userID),
+      (r) {
+        final canceledEntitlement = r.entitlements.firstWhereOrNull(
+          (e) => e.entitlementRef == entitlementRef,
+        );
+        return canceledEntitlement?.cancelAtPeriodEnd == true;
+      },
+    );
   }
 
   Future<void> _onManageSubscription() =>
