@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:07:07.381687",
+    "@@last_modified": "2026-07-23 11:49:01.596097",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2926,7 +2926,6 @@
     "lastUpdated": "Cập nhật\n{time}",
     "activityFinishedMessage": "Hoàn tất!",
     "endForAll": "Kết thúc cho tất cả",
-    "newCourse": "Khóa học mới",
     "numModules": "{num} mô-đun",
     "coursePlan": "Kế hoạch khóa học",
     "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
@@ -3201,10 +3200,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -3648,8 +3643,6 @@
     "allow": "Cho phép",
     "deny": "Từ chối",
     "enabledRenewal": "Kích hoạt gia hạn đăng ký",
-    "subscriptionEndsOn": "Đăng ký kết thúc vào",
-    "subscriptionRenewsOn": "Đăng ký gia hạn vào",
     "waitForSubscriptionChanges": "Các thay đổi đối với đăng ký của bạn có thể mất một chút thời gian để phản ánh trong ứng dụng.",
     "subscribeReadingAssistance": "Đăng ký để mở khóa công cụ nhắn tin",
     "aceDisplayName": "Achinese",
@@ -3924,14 +3917,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -5648,7 +5633,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Tôi đang học...",
     "alreadySpeak": "Tôi đã nói...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -6915,5 +6899,64 @@
     "starsToUnlockObjectiveTitle": "Số sao mỗi nhiệm vụ",
     "starsToUnlockObjectiveDesc": "Đặt số sao cần thiết để hoàn thành mỗi nhiệm vụ",
     "maxStarsPerMissionWarning": "Khóa học này có các nhiệm vụ mà chỉ có thể kiếm được {maxValue} sao. Vui lòng nhập một số nhỏ hơn hoặc bằng {maxValue}.",
-    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn."
+    "removedFromCourseError": "Bạn đã bị xóa khỏi khóa học này. Hãy liên hệ với giáo viên của bạn.",
+    "endPractice": "Kết thúc luyện tập",
+    "bodyLabel": "Tùy chọn {page}",
+    "openDM": "Mở tin nhắn trực tiếp",
+    "openNewTab": "Mở trong tab mới",
+    "viewProfileImageLabel": "Xem ảnh đại diện",
+    "profileImageLabel": "Ảnh đại diện",
+    "actionsLabel": "Hành động",
+    "colorListLabel": "Danh sách màu",
+    "chatAppearanceStyleLabel": "Giao diện trò chuyện với kiểu đã chọn",
+    "volumeLabel": "Âm lượng",
+    "listLabel": "Danh sách {description}",
+    "passwordFormLabel": "Mẫu đổi mật khẩu",
+    "searchLanguagesHint": "Tìm kiếm ngôn ngữ",
+    "searchCountriesHint": "Tìm kiếm quốc gia",
+    "searchVocabHint": "Tìm kiếm từ vựng",
+    "searchUsersHint": "Tìm kiếm người dùng",
+    "searchMessagesHint": "Tìm kiếm tin nhắn",
+    "searchChatsHint": "Tìm kiếm cuộc trò chuyện",
+    "searchActivitiesHint": "Tìm kiếm hoạt động",
+    "appInTargetLanguageTitle": "Hiển thị ứng dụng bằng ngôn ngữ tôi đang học",
+    "appInTargetLanguageDesc": "Các menu, nút và nhãn sẽ hiển thị bằng ngôn ngữ bạn đang học để bạn đắm chìm vào ngôn ngữ đó. Văn bản chưa được dịch sẽ hiển thị bằng tiếng Anh.",
+    "changePasswordSessionExpired": "Phiên của bạn đã hết hạn. Vui lòng đăng nhập lại.",
+    "constructUseSugDesc": "Các gợi ý đã chấp nhận",
+    "mostPopular": "Phổ biến nhất",
+    "mostSavings": "Tiết kiệm nhất",
+    "enterDiscountCode": "Nhập mã giảm giá",
+    "yourPlan": "Gói của bạn",
+    "subscriptionRenewsOn": "Gia hạn vào {date}",
+    "subscriptionEndsOn": "Kết thúc vào {date}",
+    "promoSubscription": "Gói đăng ký khuyến mãi",
+    "seatSubscription": "Chỗ ngồi tổ chức",
+    "lifetimeSubscription": "Gói đăng ký trọn đời",
+    "freeSubscription": "MIỄN PHÍ",
+    "freeTrialDescription": "Bạn có một bản dùng thử miễn phí",
+    "manage": "Quản lý",
+    "subscriptionHistory": "Lịch sử đăng ký",
+    "history": "Lịch sử",
+    "noPaymentHistoryFound": "Không tìm thấy lịch sử thanh toán",
+    "cancelAnytime": "Hủy bất cứ lúc nào trong cài đặt đăng ký",
+    "pricePerMonth": "{price}/tháng",
+    "pricePerYear": "{price}/năm",
+    "viewSubscriptionOptions": "Xem các tùy chọn đăng ký",
+    "apply": "Áp dụng",
+    "continueToSubscribe": "Tiếp tục đăng ký",
+    "invalidDiscountCode": "Mã giảm giá không hợp lệ",
+    "selectDiscountPlan": "Chọn gói giảm giá",
+    "discountApplied": "Đã áp dụng giảm giá {discount}",
+    "cancelDescriptionWithRenewalDate": "Gói đăng ký của bạn sẽ hoạt động cho đến ngày gia hạn ({date}), sau đó sẽ bị hủy kích hoạt. Bạn sẽ giữ lại phân tích nhưng không thể sử dụng các tính năng chuyên nghiệp.",
+    "cancelDescriptionWithoutRenewalDate": "Gói đăng ký của bạn sẽ hoạt động cho đến ngày gia hạn, sau đó sẽ bị hủy kích hoạt. Bạn sẽ giữ lại phân tích nhưng không thể sử dụng các tính năng chuyên nghiệp.",
+    "change": "Thay đổi",
+    "deactivateSubscribedAccountWarning": "Thao tác này sẽ hủy kích hoạt tài khoản người dùng của bạn và hủy gói đăng ký của bạn. Không thể hoàn tác! Bạn có chắc chắn không?",
+    "newCourseWithoutTitle": "Bắt đầu khóa học",
+    "newCourseWithTitle": "Bắt đầu \"{title}\"",
+    "joinCourseWithTitle": "Tham gia \"{title}\"",
+    "searchCoursePlans": "Tìm kiếm giáo trình",
+    "searchPublicCourses": "Tìm kiếm khóa học công khai",
+    "closeSearch": "Đóng tìm kiếm",
+    "subscriptionsNotAvailableInApp": "Không thể mua gói đăng ký trong ứng dụng",
+    "subscribeOnTheWeb": "Bạn có thể đăng ký trên web tại pangea.chat"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:08:31.049476",
+    "@@last_modified": "2026-07-23 11:49:00.631313",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2670,7 +2670,6 @@
     "lastUpdated": "Ažurirano\n{time}",
     "activityFinishedMessage": "Svi završeni!",
     "endForAll": "Završi za sve",
-    "newCourse": "Novi kurs",
     "numModules": "{num} modula",
     "coursePlan": "Plan kursa",
     "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
@@ -6921,10 +6920,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7337,8 +7332,6 @@
     "allow": "Dozvoli",
     "deny": "Odbij",
     "enabledRenewal": "Omogući obnavljanje pretplate",
-    "subscriptionEndsOn": "Pretplata ističe",
-    "subscriptionRenewsOn": "Pretplata se obnavlja",
     "waitForSubscriptionChanges": "Promene u vašoj pretplati mogu potrajati trenutak da se odraze u aplikaciji.",
     "subscribeReadingAssistance": "Pretplatite se da otključate alate za poruke",
     "aceDisplayName": "Achinese",
@@ -7613,14 +7606,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9337,7 +9322,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učim...",
     "alreadySpeak": "Već govorim...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10604,5 +10588,64 @@
     "starsToUnlockObjectiveTitle": "Zvezdice po misiji",
     "starsToUnlockObjectiveDesc": "Podesite broj zvezdica potrebnih za završetak svake misije",
     "maxStarsPerMissionWarning": "Ovaj kurs ima misije gde se može zaraditi samo {maxValue} zvezdica. Unesite broj manji ili jednak {maxValue}.",
-    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika."
+    "removedFromCourseError": "Uklonjeni ste sa ovog kursa. Kontaktirajte svog nastavnika.",
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "{page} opcije",
+    "openDM": "Otvori direktnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Pogledaj sliku profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Akcije",
+    "colorListLabel": "Lista boja",
+    "chatAppearanceStyleLabel": "Izgled ćaskanja sa odabranim stilom",
+    "volumeLabel": "Jačina zvuka",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Obrazac za promjenu lozinke",
+    "searchLanguagesHint": "Pretražite jezike",
+    "searchCountriesHint": "Pretražite zemlje",
+    "searchVocabHint": "Pretražite rečnik",
+    "searchUsersHint": "Pretražite korisnike",
+    "searchMessagesHint": "Pretražite poruke",
+    "searchChatsHint": "Pretražite ćaskanja",
+    "searchActivitiesHint": "Pretražite aktivnosti",
+    "appInTargetLanguageTitle": "Prikaži aplikaciju na jeziku koji učim",
+    "appInTargetLanguageDesc": "Meniji, dugmad i oznake se prikazuju na vašem ciljnom jeziku radi potpunog uranjanja. Neprevedeni tekst se vraća na engleski.",
+    "changePasswordSessionExpired": "Vaša sesija je istekla. Molimo prijavite se ponovo.",
+    "constructUseSugDesc": "Prihvaćeni predlozi",
+    "mostPopular": "Najpopularnije",
+    "mostSavings": "Najveće uštede",
+    "enterDiscountCode": "Unesite kod za popust",
+    "yourPlan": "Vaš plan",
+    "subscriptionRenewsOn": "Obnavlja se {date}",
+    "subscriptionEndsOn": "Ističe {date}",
+    "promoSubscription": "Promotivna pretplata",
+    "seatSubscription": "Institucionalno mesto",
+    "lifetimeSubscription": "Doživotna pretplata",
+    "freeSubscription": "BESPLATNO",
+    "freeTrialDescription": "Imate besplatan probni period",
+    "manage": "Upravljaj",
+    "subscriptionHistory": "Istorija pretplata",
+    "history": "Istorija",
+    "noPaymentHistoryFound": "Nije pronađena istorija plaćanja",
+    "cancelAnytime": "Otkažite bilo kada u podešavanjima pretplate",
+    "pricePerMonth": "{price}/mesec",
+    "pricePerYear": "{price}/godina",
+    "viewSubscriptionOptions": "Pogledajte opcije pretplate",
+    "apply": "Primeni",
+    "continueToSubscribe": "Nastavi sa pretplatom",
+    "invalidDiscountCode": "Nevažeći kod za popust",
+    "selectDiscountPlan": "Izaberite plan popusta",
+    "discountApplied": "Popust od {discount} primenjen",
+    "cancelDescriptionWithRenewalDate": "Vaša pretplata će biti aktivna do datuma obnove ({date}), a zatim će biti deaktivirana. Zadržaćete analitiku, ali nećete moći da koristite pro funkcije.",
+    "cancelDescriptionWithoutRenewalDate": "Vaša pretplata će biti aktivna do datuma obnove, a zatim će biti deaktivirana. Zadržaćete analitiku, ali nećete moći da koristite pro funkcije.",
+    "change": "Promeni",
+    "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički nalog i otkazati vašu pretplatu. Ovo se ne može poništiti! Da li ste sigurni?",
+    "newCourseWithoutTitle": "Započni kurs",
+    "newCourseWithTitle": "Započni „{title}“",
+    "joinCourseWithTitle": "Pridruži se „{title}“",
+    "searchCoursePlans": "Pretražite planove kurseva",
+    "searchPublicCourses": "Pretražite javne kurseve",
+    "closeSearch": "Zatvori pretragu",
+    "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
+    "subscribeOnTheWeb": "Možete se pretplatiti na vebu na pangea.chat"
 }

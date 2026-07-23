@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 abstract class ShareItem {}
 
@@ -105,33 +106,10 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
             scrolledUnderElevation: 0,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            title: TextField(
+            title: PangeaSearchBar(
+              labelText: L10n.of(context).searchChatsHint,
               controller: _filterController,
               onChanged: (_) => setState(() {}),
-              textInputAction: TextInputAction.search,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: theme.colorScheme.secondaryContainer,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                contentPadding: EdgeInsets.zero,
-                hintText: L10n.of(context).search,
-                hintStyle: TextStyle(
-                  color: theme.colorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.normal,
-                ),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                prefixIcon: IconButton(
-                  tooltip: L10n.of(context).search,
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search_outlined,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  ),
-                ),
-              ),
             ),
           ),
           SliverList.builder(

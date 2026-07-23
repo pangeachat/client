@@ -255,7 +255,7 @@ class RoomSummaryResponse {
         json[PangeaEventTypes.coursePlan]?["default"]?["content"];
     CoursePlanEvent? coursePlan;
     if (coursePlanEntry != null && coursePlanEntry is Map<String, dynamic>) {
-      coursePlan = CoursePlanEvent.fromJson(coursePlanEntry);
+      coursePlan = CoursePlanEvent.tryParse(coursePlanEntry);
     }
 
     final powerLevelsEntry =

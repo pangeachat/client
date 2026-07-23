@@ -34,13 +34,7 @@ void showMemberActionsPopupMenu({
   final dmRoomId = user.room.client.getDirectChatFromUserId(user.id);
   // Pangea#
 
-  // #Pangea
-  // final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
-  final overlay =
-      Overlay.of(context, rootOverlay: true).context.findRenderObject()
-          as RenderBox;
-  // Pangea#
-
+  final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
   final button = context.findRenderObject() as RenderBox;
 
   final position = RelativeRect.fromRect(
@@ -58,9 +52,6 @@ void showMemberActionsPopupMenu({
       user.id == BotName.byEnvironment && room?.showActivityChatUI == true;
 
   final action = await showMenu<_MemberActions>(
-    // #Pangea
-    useRootNavigator: true,
-    // Pangea#
     context: context,
     position: position,
     items: <PopupMenuEntry<_MemberActions>>[

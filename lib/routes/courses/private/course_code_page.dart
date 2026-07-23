@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -111,6 +112,15 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
+    // A firing submit is what consumes the login-bounce cache — not the
+    // auth-guard redirect and not the page landing: both proved lossy when a
+    // competing boot-time navigation disposed this page before the
+    // post-frame submit ran (PAuthGaurd.consumeCachedJoinCode). From here
+    // the join proceeds even if this page unmounts (the in-flight join
+    // future is page-independent). Fire-and-forget; the cache is simply
+    // absent for a logged-in link click.
+    if (consumeInboundCode) SpaceCodeRepo.clearSpaceCode();
+
     final client = Matrix.of(context).client;
     final result = await SpaceCodeController.joinSpaceWithCode(
       _code,
@@ -141,9 +151,34 @@ class CourseCodePageState extends State<CourseCodePage> {
     }
   }
 
+  /// Whether this mount is an inbound-link join in flight: the code rides the
+  /// URL until the one-shot submit consumes it, so while it is present the
+  /// page shows a neutral joining state instead of flashing the manual entry
+  /// form on its way to the course. A failed join consumes the code (the
+  /// history replace), which remounts this page code-less — the manual form,
+  /// with the error dialog already up.
+  bool get _isInboundJoin => widget.initialCode?.trim().isNotEmpty ?? false;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    if (_isInboundJoin) {
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 16.0,
+            children: [
+              const CircularProgressIndicator.adaptive(),
+              Text(
+                L10n.of(context).loadingPleaseWait,
+                style: theme.textTheme.titleMedium,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         // world_v2: back returns to the Add-course hub, close to the map.
@@ -166,55 +201,53 @@ class CourseCodePageState extends State<CourseCodePage> {
           ),
         ],
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(maxWidth: 350, maxHeight: 600),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 36.0,
               children: [
-                SvgPicture.network(
-                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                  width: 100.0,
-                  height: 100.0,
-                  colorFilter: ColorFilter.mode(
-                    theme.colorScheme.onSurface,
-                    BlendMode.srcIn,
-                  ),
-                ),
-
                 FocusTraversalGroup(
                   policy: OrderedTraversalPolicy(),
                   child: Column(
                     spacing: 16.0,
                     children: [
-                      Text(
-                        L10n.of(context).enterCodeToJoin,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       TextFormField(
                         controller: _codeController,
                         decoration: InputDecoration(
                           hintText: L10n.of(context).courseCodeHint,
+                          prefixIcon: Icon(Icons.key_outlined),
                         ),
                         onFieldSubmitted: (_) => _submit(),
                         inputFormatters: [LengthLimitingTextInputFormatter(10)],
                       ),
-                      ElevatedButton(
-                        onPressed: _code.isNotEmpty ? _submit : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text(L10n.of(context).submit)],
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton.tonalIcon(
+                          onPressed: _code.isNotEmpty ? _submit : null,
+                          label: Text(L10n.of(context).submit),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            padding: const EdgeInsets.symmetric(vertical: 14.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
                         ),
                       ),
                     ],
+                  ),
+                ),
+                SvgPicture.network(
+                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                  width: 120.0,
+                  height: 120.0,
+                  colorFilter: ColorFilter.mode(
+                    theme.colorScheme.onSurface,
+                    BlendMode.srcIn,
                   ),
                 ),
               ],

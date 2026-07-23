@@ -55,10 +55,7 @@ class SpaceDetailsContent extends StatelessWidget {
   const SpaceDetailsContent(this.controller, this.room, {super.key});
 
   SpaceSettingsTabs tab(BuildContext context) {
-    final defaultTab = FluffyThemes.isColumnMode(context)
-        ? SpaceSettingsTabs.course
-        : SpaceSettingsTabs.chat;
-
+    final defaultTab = SpaceSettingsTabs.chat;
     final activeTab = controller.widget.activeTab;
     if (activeTab != null) {
       return activeTab;
@@ -447,9 +444,12 @@ class SpaceDetailsContent extends StatelessWidget {
                           ]),
                           builder: (context, _) => CourseObjectivesList(
                             room: room,
-                            hasCompletedActivity: controller
+                            hasCompletedActivity: (activityId) => controller
                                 .roomSummariesModel
-                                .hasCompletedActivity,
+                                .hasCompletedActivity(
+                                  room.client.userID!,
+                                  activityId,
+                                ),
                             objectivesProvider: controller.objectivesProvider,
                           ),
                         );

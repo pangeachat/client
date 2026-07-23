@@ -144,7 +144,12 @@ test.describe("Accessibility (axe-core)", () => {
       await gotoSurface(
         page,
         "/#/?right=settingspage:security,settings",
-        page.getByRole("textbox", { name: intl.yourPublicKey }).first(),
+        // Gate on a control the page actually renders. The old sentinel was the
+        // "your public key" field, which #7502 commented out — so this waited 90s
+        // for an element that no longer exists. settings.spec.ts already drives
+        // this button, so if it ever disappears both tests fail loudly instead of
+        // one silently timing out.
+        page.getByRole("button", { name: intl.changePassword }).first(),
       );
       const violations = await auditPage(page);
       expect(violations, formatViolations(violations)).toHaveLength(0);

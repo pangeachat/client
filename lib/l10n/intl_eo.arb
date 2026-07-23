@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:08:14.568442",
+    "@@last_modified": "2026-07-23 11:48:53.700481",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2741,7 +2741,6 @@
     "lastUpdated": "Ĝisdatigita\n{time}",
     "activityFinishedMessage": "Ĉio Finita!",
     "endForAll": "Fini por ĉiuj",
-    "newCourse": "Nova kurso",
     "numModules": "{num} moduloj",
     "coursePlan": "Kurso Plano",
     "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
@@ -6917,10 +6916,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7333,8 +7328,6 @@
     "allow": "Permesi",
     "deny": "Malpermesi",
     "enabledRenewal": "Ebligi Abonrenovigon",
-    "subscriptionEndsOn": "Abono Finiĝas Je",
-    "subscriptionRenewsOn": "Abono Renovigas Je",
     "waitForSubscriptionChanges": "Ŝanĝoj al via abono povas preni momenton por reflekti en la aplikaĵo.",
     "subscribeReadingAssistance": "Aboni por malŝlosi mesaĝajn ilojn",
     "aceDisplayName": "Achinese",
@@ -7609,14 +7602,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9333,7 +9318,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi lernas...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10600,5 +10584,64 @@
     "starsToUnlockObjectiveTitle": "Steloj por Misio",
     "starsToUnlockObjectiveDesc": "Agordu la nombron da steloj necesaj por kompletigi ĉiun mision",
     "maxStarsPerMissionWarning": "Ĉi tiu kurso havas misiojn, kie nur {maxValue} steloj povas esti gajnitaj. Bonvolu enigi nombron malpli ol aŭ egala al {maxValue}.",
-    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston."
+    "removedFromCourseError": "Vi estis forigita de ĉi tiu kurso. Kontaktu vian instruiston.",
+    "endPractice": "Fini ekzercon",
+    "bodyLabel": "{page} opcioj",
+    "openDM": "Malfermi rektan mesaĝon",
+    "openNewTab": "Malfermi en nova langeto",
+    "viewProfileImageLabel": "Vidi profilbildon",
+    "profileImageLabel": "Profilbildo",
+    "actionsLabel": "Agoj",
+    "colorListLabel": "Kolorlisto",
+    "chatAppearanceStyleLabel": "Babileja aspekto kun elektita stilo",
+    "volumeLabel": "Volumo",
+    "listLabel": "{description} listo",
+    "passwordFormLabel": "Formularo por ŝanĝi pasvorton",
+    "searchLanguagesHint": "Serĉi lingvojn",
+    "searchCountriesHint": "Serĉi landojn",
+    "searchVocabHint": "Serĉi vortprovizon",
+    "searchUsersHint": "Serĉi uzantojn",
+    "searchMessagesHint": "Serĉi mesaĝojn",
+    "searchChatsHint": "Serĉi babilejojn",
+    "searchActivitiesHint": "Serĉi agadojn",
+    "appInTargetLanguageTitle": "Montru la apon en la lingvo, kiun mi lernas",
+    "appInTargetLanguageDesc": "Menuoj, butonoj kaj etikedoj aperas en via cellingvo por mergiĝo. Netradukita teksto reiras al la angla.",
+    "changePasswordSessionExpired": "Via sesio eksvalidiĝis. Bonvolu denove ensaluti.",
+    "constructUseSugDesc": "Akceptitaj sugestoj",
+    "mostPopular": "Plej populara",
+    "mostSavings": "Plej grandaj ŝparoj",
+    "enterDiscountCode": "Enigu rabatan kodon",
+    "yourPlan": "Via plano",
+    "subscriptionRenewsOn": "Renoviĝas je la {date}",
+    "subscriptionEndsOn": "Finiĝas je la {date}",
+    "promoSubscription": "Promocia Abono",
+    "seatSubscription": "Institucia Sidloko",
+    "lifetimeSubscription": "Dumviva abono",
+    "freeSubscription": "SENPAGA",
+    "freeTrialDescription": "Vi havas senpagan provon",
+    "manage": "Administri",
+    "subscriptionHistory": "Abonhistorio",
+    "history": "Historio",
+    "noPaymentHistoryFound": "Neniu paghistorio trovita",
+    "cancelAnytime": "Nuligu iam ajn en abonaj agordoj",
+    "pricePerMonth": "{price}/monato",
+    "pricePerYear": "{price}/jaro",
+    "viewSubscriptionOptions": "Vidi abonopciojn",
+    "apply": "Apliki",
+    "continueToSubscribe": "Daŭrigi aboni",
+    "invalidDiscountCode": "Nevalida rabatkodo",
+    "selectDiscountPlan": "Elektu rabatan planon",
+    "discountApplied": "{discount} rabato aplikita",
+    "cancelDescriptionWithRenewalDate": "Via abono estos aktiva ĝis ĝia renoviga dato ({date}), poste malaktiviĝos. Vi konservos analizojn sed ne povos uzi profesiajn funkciojn.",
+    "cancelDescriptionWithoutRenewalDate": "Via abono estos aktiva ĝis ĝia renoviga dato, poste malaktiviĝos. Vi konservos analizojn sed ne povos uzi profesiajn funkciojn.",
+    "change": "Ŝanĝi",
+    "deactivateSubscribedAccountWarning": "Ĉi tio malaktivigos vian uzantkonton kaj nuligos vian abonon. Ĉi tio ne estas malfarebla! Ĉu vi certas?",
+    "newCourseWithoutTitle": "Komenci kurson",
+    "newCourseWithTitle": "Komenci \"{title}\"",
+    "joinCourseWithTitle": "Aliĝi al \"{title}\"",
+    "searchCoursePlans": "Serĉi kursplanojn",
+    "searchPublicCourses": "Serĉi publikajn kursojn",
+    "closeSearch": "Fermi serĉon",
+    "subscriptionsNotAvailableInApp": "Abonoj ne aĉeteblas en la aplikaĵo",
+    "subscribeOnTheWeb": "Vi povas aboni per la retejo ĉe pangea.chat"
 }

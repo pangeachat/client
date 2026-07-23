@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-13 10:08:05.857792",
+    "@@last_modified": "2026-07-23 11:48:56.495742",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2887,7 +2887,6 @@
     "lastUpdated": "更新日\n{time}",
     "activityFinishedMessage": "すべて完了！",
     "endForAll": "全員に終了",
-    "newCourse": "新しいコース",
     "numModules": "{num} モジュール",
     "coursePlan": "コースプラン",
     "editCourseLater": "テンプレートのタイトル、説明、コース画像は後で編集できます。",
@@ -6735,10 +6734,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7151,8 +7146,6 @@
     "allow": "許可",
     "deny": "拒否",
     "enabledRenewal": "サブスクリプション更新を有効にする",
-    "subscriptionEndsOn": "サブスクリプションの終了日",
-    "subscriptionRenewsOn": "サブスクリプションの更新日",
     "waitForSubscriptionChanges": "サブスクリプションの変更がアプリに反映されるまで少々お待ちください。",
     "subscribeReadingAssistance": "メッセージツールを解除するために購読する",
     "aceDisplayName": "アチネース",
@@ -7427,14 +7420,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9151,7 +9136,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "私は学んでいます...",
     "alreadySpeak": "私はすでに話せます...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10418,5 +10402,64 @@
     "starsToUnlockObjectiveTitle": "ミッションごとのスター数",
     "starsToUnlockObjectiveDesc": "各ミッションを完了するために必要なスター数を設定します",
     "maxStarsPerMissionWarning": "このコースには、獲得できるスターが{maxValue}個までのミッションがあります。{maxValue}以下の数字を入力してください。",
-    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。"
+    "removedFromCourseError": "このコースから削除されました。担当の先生に連絡してください。",
+    "endPractice": "練習を終了",
+    "bodyLabel": "{page}のオプション",
+    "openDM": "ダイレクトメッセージを開く",
+    "openNewTab": "新しいタブで開く",
+    "viewProfileImageLabel": "プロフィール画像を見る",
+    "profileImageLabel": "プロフィール画像",
+    "actionsLabel": "アクション",
+    "colorListLabel": "色リスト",
+    "chatAppearanceStyleLabel": "選択したスタイルでのチャット表示",
+    "volumeLabel": "音量",
+    "listLabel": "{description}リスト",
+    "passwordFormLabel": "パスワード変更フォーム",
+    "searchLanguagesHint": "言語を検索",
+    "searchCountriesHint": "国を検索",
+    "searchVocabHint": "語彙を検索",
+    "searchUsersHint": "ユーザーを検索",
+    "searchMessagesHint": "メッセージを検索",
+    "searchChatsHint": "チャットを検索",
+    "searchActivitiesHint": "アクティビティを検索",
+    "appInTargetLanguageTitle": "学習中の言語でアプリを表示",
+    "appInTargetLanguageDesc": "メニュー、ボタン、ラベルが学習中の言語で表示され、没入感を高めます。未翻訳のテキストは英語で表示されます。",
+    "changePasswordSessionExpired": "セッションの有効期限が切れました。もう一度ログインしてください。",
+    "constructUseSugDesc": "承認された提案",
+    "mostPopular": "最も人気",
+    "mostSavings": "最もお得",
+    "enterDiscountCode": "割引コードを入力",
+    "yourPlan": "あなたのプラン",
+    "subscriptionRenewsOn": "{date}に更新",
+    "subscriptionEndsOn": "{date}に終了",
+    "promoSubscription": "プロモーションサブスクリプション",
+    "seatSubscription": "教育機関シート",
+    "lifetimeSubscription": "永久サブスクリプション",
+    "freeSubscription": "無料",
+    "freeTrialDescription": "無料トライアルをご利用いただけます",
+    "manage": "管理",
+    "subscriptionHistory": "サブスクリプション履歴",
+    "history": "履歴",
+    "noPaymentHistoryFound": "支払い履歴が見つかりません",
+    "cancelAnytime": "サブスクリプション設定でいつでもキャンセルできます",
+    "pricePerMonth": "{price}/月",
+    "pricePerYear": "{price}/年",
+    "viewSubscriptionOptions": "サブスクリプションオプションを表示",
+    "apply": "適用",
+    "continueToSubscribe": "購読を続ける",
+    "invalidDiscountCode": "無効な割引コード",
+    "selectDiscountPlan": "割引プランを選択",
+    "discountApplied": "{discount}割引が適用されました",
+    "cancelDescriptionWithRenewalDate": "サブスクリプションは更新日（{date}）まで有効で、その後無効になります。分析データは保持されますが、プロ機能は使用できなくなります。",
+    "cancelDescriptionWithoutRenewalDate": "サブスクリプションは更新日まで有効で、その後無効になります。分析データは保持されますが、プロ機能は使用できなくなります。",
+    "change": "変更",
+    "deactivateSubscribedAccountWarning": "これにより、ユーザーアカウントが停止され、サブスクリプションがキャンセルされます。この操作は元に戻せません！よろしいですか？",
+    "newCourseWithoutTitle": "コースを開始",
+    "newCourseWithTitle": "\"{title}\"を開始",
+    "joinCourseWithTitle": "\"{title}\"に参加",
+    "searchCoursePlans": "コースプランを検索",
+    "searchPublicCourses": "公開コースを検索",
+    "closeSearch": "検索を閉じる",
+    "subscriptionsNotAvailableInApp": "アプリ内ではサブスクリプションを購入できません",
+    "subscribeOnTheWeb": "pangea.chatでウェブから購読できます"
 }

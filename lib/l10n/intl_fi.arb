@@ -3474,7 +3474,6 @@
     "lastUpdated": "Päivitetty\n{time}",
     "activityFinishedMessage": "Kaikki valmiina!",
     "endForAll": "Lopeta kaikille",
-    "newCourse": "Uusi kurssi",
     "numModules": "{num} moduulia",
     "coursePlan": "Kurssisuunnitelma",
     "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
@@ -3548,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-13 10:04:17.126223",
+    "@@last_modified": "2026-07-23 11:48:55.074800",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6134,10 +6133,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6550,8 +6545,6 @@
     "allow": "Salli",
     "deny": "Hylkää",
     "enabledRenewal": "Ota käyttöön tilauksen uusiminen",
-    "subscriptionEndsOn": "Tilauksen päättymispäivä",
-    "subscriptionRenewsOn": "Tilauksen uusimispäivä",
     "waitForSubscriptionChanges": "Muutokset tilauksessasi saattavat kestää hetken näkyä sovelluksessa.",
     "subscribeReadingAssistance": "Tilaa avustustyökalujen avaamiseksi",
     "aceDisplayName": "Achinese",
@@ -6826,14 +6819,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8419,7 +8404,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Olen oppimassa...",
     "alreadySpeak": "Puhun jo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9686,5 +9670,64 @@
     "starsToUnlockObjectiveTitle": "Tähtiä per tehtävä",
     "starsToUnlockObjectiveDesc": "Aseta tähtien määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "maxStarsPerMissionWarning": "Tällä kurssilla on tehtäviä, joissa voi ansaita vain {maxValue} tähteä. Anna luku, joka on pienempi tai yhtä suuri kuin {maxValue}.",
-    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi."
+    "removedFromCourseError": "Sinut on poistettu tältä kurssilta. Ota yhteyttä opettajaasi.",
+    "endPractice": "Lopeta harjoitus",
+    "bodyLabel": "{page}-asetukset",
+    "openDM": "Avaa suora viesti",
+    "openNewTab": "Avaa uudessa välilehdessä",
+    "viewProfileImageLabel": "Näytä profiilikuva",
+    "profileImageLabel": "Profiilikuva",
+    "actionsLabel": "Toiminnot",
+    "colorListLabel": "Värilista",
+    "chatAppearanceStyleLabel": "Keskustelun ulkoasu valitulla tyylillä",
+    "volumeLabel": "Äänenvoimakkuus",
+    "listLabel": "{description}-lista",
+    "passwordFormLabel": "Vaihda salasana -lomake",
+    "searchLanguagesHint": "Hae kieliä",
+    "searchCountriesHint": "Hae maita",
+    "searchVocabHint": "Hae sanastoa",
+    "searchUsersHint": "Hae käyttäjiä",
+    "searchMessagesHint": "Hae viestejä",
+    "searchChatsHint": "Hae keskusteluja",
+    "searchActivitiesHint": "Hae aktiviteetteja",
+    "appInTargetLanguageTitle": "Näytä sovellus opiskelemallani kielellä",
+    "appInTargetLanguageDesc": "Valikot, painikkeet ja otsikot näkyvät kohdekielelläsi immersiota varten. Kääntämätön teksti näkyy englanniksi.",
+    "changePasswordSessionExpired": "Istuntosi on vanhentunut. Kirjaudu sisään uudelleen.",
+    "constructUseSugDesc": "Hyväksytyt ehdotukset",
+    "mostPopular": "Suosituin",
+    "mostSavings": "Suurimmat säästöt",
+    "enterDiscountCode": "Anna alennuskoodi",
+    "yourPlan": "Tilauksesi",
+    "subscriptionRenewsOn": "Uusiutuu {date}",
+    "subscriptionEndsOn": "Päättyy {date}",
+    "promoSubscription": "Kampanjatilaus",
+    "seatSubscription": "Oppilaitospaikka",
+    "lifetimeSubscription": "Elinikäinen tilaus",
+    "freeSubscription": "ILMAINEN",
+    "freeTrialDescription": "Sinulla on ilmainen kokeilujakso",
+    "manage": "Hallinnoi",
+    "subscriptionHistory": "Tilaushistoria",
+    "history": "Historia",
+    "noPaymentHistoryFound": "Maksushistoriaa ei löytynyt",
+    "cancelAnytime": "Peruuta milloin tahansa tilausasetuksista",
+    "pricePerMonth": "{price}/kuukausi",
+    "pricePerYear": "{price}/vuosi",
+    "viewSubscriptionOptions": "Näytä tilausvaihtoehdot",
+    "apply": "Käytä",
+    "continueToSubscribe": "Jatka tilaamista",
+    "invalidDiscountCode": "Virheellinen alennuskoodi",
+    "selectDiscountPlan": "Valitse alennussuunnitelma",
+    "discountApplied": "{discount} alennus käytetty",
+    "cancelDescriptionWithRenewalDate": "Tilauksesi on voimassa sen uusimispäivään ({date}) asti, jonka jälkeen se deaktivoituu. Säilytät analytiikan, mutta et voi käyttää pro-ominaisuuksia.",
+    "cancelDescriptionWithoutRenewalDate": "Tilauksesi on voimassa sen uusimispäivään asti, jonka jälkeen se deaktivoituu. Säilytät analytiikan, mutta et voi käyttää pro-ominaisuuksia.",
+    "change": "Muuta",
+    "deactivateSubscribedAccountWarning": "Tämä deaktivoi käyttäjätilisi ja peruuttaa tilauksesi. Tätä ei voi kumota! Oletko varma?",
+    "newCourseWithoutTitle": "Aloita kurssi",
+    "newCourseWithTitle": "Aloita \"{title}\"",
+    "joinCourseWithTitle": "Liity kurssille \"{title}\"",
+    "searchCoursePlans": "Hae kurssisuunnitelmia",
+    "searchPublicCourses": "Hae julkisia kursseja",
+    "closeSearch": "Sulje haku",
+    "subscriptionsNotAvailableInApp": "Tilauksia ei voi ostaa sovelluksesta",
+    "subscribeOnTheWeb": "Voit tilata palvelun verkossa osoitteessa pangea.chat"
 }

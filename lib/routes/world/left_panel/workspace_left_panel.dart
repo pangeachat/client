@@ -120,14 +120,16 @@ class WorkspaceLeftPanel extends StatelessWidget {
           closeButton: closeButton,
         );
       }(),
-      NewPrivateChatPanelToken() => Column(
-        children: [
-          PanelHeader(
-            leading: closeButton,
-            title: L10n.of(context).newDirectMessage,
-          ),
-          Expanded(child: NewPrivateChat()),
-        ],
+      NewPrivateChatPanelToken() => PanelCard(
+        child: Column(
+          children: [
+            PanelHeader(
+              leading: closeButton,
+              title: L10n.of(context).newDirectMessage,
+            ),
+            Expanded(child: NewPrivateChat()),
+          ],
+        ),
       ),
       _ => const SizedBox.shrink(),
     };

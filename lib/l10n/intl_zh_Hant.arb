@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:06:27.424623",
+    "@@last_modified": "2026-07-23 11:49:02.689015",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3386,7 +3386,6 @@
     "lastUpdated": "更新\n{time}",
     "activityFinishedMessage": "全部完成！",
     "endForAll": "結束所有",
-    "newCourse": "新課程",
     "numModules": "{num} 模組",
     "coursePlan": "課程計劃",
     "editCourseLater": "您可以稍後編輯課程標題、描述和課程圖片。",
@@ -6083,10 +6082,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6483,8 +6478,6 @@
     "allow": "允許",
     "deny": "拒絕",
     "enabledRenewal": "啟用訂閱續訂",
-    "subscriptionEndsOn": "訂閱結束於",
-    "subscriptionRenewsOn": "訂閱續訂於",
     "waitForSubscriptionChanges": "您的訂閱變更可能需要一些時間才能在應用程式中反映。",
     "subscribeReadingAssistance": "訂閱以解鎖消息工具",
     "aceDisplayName": "阿齊尼語",
@@ -6759,14 +6752,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8488,7 +8473,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "我正在學習...",
     "alreadySpeak": "我已經會說...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9755,5 +9739,64 @@
     "starsToUnlockObjectiveTitle": "每個任務的星數",
     "starsToUnlockObjectiveDesc": "設定完成每個任務所需的星數",
     "maxStarsPerMissionWarning": "此課程中的任務最多只能獲得 {maxValue} 顆星。請輸入小於或等於 {maxValue} 的數字。",
-    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。"
+    "removedFromCourseError": "您已從此課程中移除。請聯絡您的老師。",
+    "endPractice": "結束練習",
+    "bodyLabel": "{page}選項",
+    "openDM": "開啟私訊",
+    "openNewTab": "在新分頁中開啟",
+    "viewProfileImageLabel": "檢視個人資料圖片",
+    "profileImageLabel": "個人資料圖片",
+    "actionsLabel": "動作",
+    "colorListLabel": "顏色列表",
+    "chatAppearanceStyleLabel": "聊天室外觀樣式",
+    "volumeLabel": "音量",
+    "listLabel": "{description}列表",
+    "passwordFormLabel": "更改密碼表單",
+    "searchLanguagesHint": "搜尋語言",
+    "searchCountriesHint": "搜尋國家",
+    "searchVocabHint": "搜尋詞彙",
+    "searchUsersHint": "搜尋使用者",
+    "searchMessagesHint": "搜尋訊息",
+    "searchChatsHint": "搜尋聊天",
+    "searchActivitiesHint": "搜尋活動",
+    "appInTargetLanguageTitle": "以我正在學習的語言顯示應用程式",
+    "appInTargetLanguageDesc": "選單、按鈕和標籤會以您的目標語言顯示，讓您沉浸其中。未翻譯的文字會恢復為英文。",
+    "changePasswordSessionExpired": "您的會話已過期。請重新登入。",
+    "constructUseSugDesc": "已接受的建議",
+    "mostPopular": "最熱門",
+    "mostSavings": "最省錢",
+    "enterDiscountCode": "輸入折扣碼",
+    "yourPlan": "您的方案",
+    "subscriptionRenewsOn": "續訂於 {date}",
+    "subscriptionEndsOn": "結束於 {date}",
+    "promoSubscription": "促銷訂閱",
+    "seatSubscription": "機構席位",
+    "lifetimeSubscription": "終身訂閱",
+    "freeSubscription": "免費",
+    "freeTrialDescription": "您有免費試用",
+    "manage": "管理",
+    "subscriptionHistory": "訂閱歷史",
+    "history": "歷史",
+    "noPaymentHistoryFound": "找不到付款歷史記錄",
+    "cancelAnytime": "隨時在訂閱設定中取消",
+    "pricePerMonth": "{price}/月",
+    "pricePerYear": "{price}/年",
+    "viewSubscriptionOptions": "查看訂閱選項",
+    "apply": "應用",
+    "continueToSubscribe": "繼續訂閱",
+    "invalidDiscountCode": "無效的折扣碼",
+    "selectDiscountPlan": "選擇折扣方案",
+    "discountApplied": "已應用 {discount} 折扣",
+    "cancelDescriptionWithRenewalDate": "您的訂閱將在續訂日期 ({date}) 之前有效，然後停用。您將保留分析數據，但無法使用專業版功能。",
+    "cancelDescriptionWithoutRenewalDate": "您的訂閱將在續訂日期之前有效，然後停用。您將保留分析數據，但無法使用專業版功能。",
+    "change": "更改",
+    "deactivateSubscribedAccountWarning": "這將停用您的使用者帳戶並取消您的訂閱。此操作無法復原！您確定嗎？",
+    "newCourseWithoutTitle": "開始課程",
+    "newCourseWithTitle": "開始「{title}」",
+    "joinCourseWithTitle": "加入「{title}」",
+    "searchCoursePlans": "搜尋課程計畫",
+    "searchPublicCourses": "搜尋公開課程",
+    "closeSearch": "關閉搜尋",
+    "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
+    "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱"
 }

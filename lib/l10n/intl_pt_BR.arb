@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-13 10:05:11.282868",
+    "@@last_modified": "2026-07-23 11:48:59.487177",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -3495,7 +3495,6 @@
     "lastUpdated": "Atualizado\n{time}",
     "activityFinishedMessage": "Tudo concluído!",
     "endForAll": "Encerrar para todos",
-    "newCourse": "Novo curso",
     "numModules": "{num} módulos",
     "coursePlan": "Plano do curso",
     "editCourseLater": "Você pode editar o título do modelo, descrições e a imagem do curso posteriormente.",
@@ -6157,10 +6156,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6557,8 +6552,6 @@
     "allow": "Permitir",
     "deny": "Negar",
     "enabledRenewal": "Ativar Renovação de Assinatura",
-    "subscriptionEndsOn": "A assinatura termina em",
-    "subscriptionRenewsOn": "A assinatura renova em",
     "waitForSubscriptionChanges": "As alterações na sua assinatura podem levar um momento para refletir no aplicativo.",
     "subscribeReadingAssistance": "Assine para desbloquear ferramentas de mensagem",
     "aceDisplayName": "Achinese",
@@ -6833,14 +6826,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8367,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Estou aprendendo...",
     "alreadySpeak": "Eu já falo...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9633,64 @@
     "starsToUnlockObjectiveTitle": "Estrelas por Missão",
     "starsToUnlockObjectiveDesc": "Defina o número de estrelas necessárias para completar cada missão",
     "maxStarsPerMissionWarning": "Este curso tem missões onde apenas {maxValue} estrelas podem ser ganhas. Por favor, insira um número menor ou igual a {maxValue}.",
-    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor."
+    "removedFromCourseError": "Você foi removido deste curso. Entre em contato com seu professor.",
+    "endPractice": "Terminar prática",
+    "bodyLabel": "Opções de {page}",
+    "openDM": "Abrir mensagem direta",
+    "openNewTab": "Abrir num novo separador",
+    "viewProfileImageLabel": "Ver imagem de perfil",
+    "profileImageLabel": "Imagem de perfil",
+    "actionsLabel": "Ações",
+    "colorListLabel": "Lista de cores",
+    "chatAppearanceStyleLabel": "Aspeto do chat com o estilo escolhido",
+    "volumeLabel": "Volume",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulário de alteração de palavra-passe",
+    "searchLanguagesHint": "Pesquisar idiomas",
+    "searchCountriesHint": "Pesquisar países",
+    "searchVocabHint": "Pesquisar vocabulário",
+    "searchUsersHint": "Pesquisar usuários",
+    "searchMessagesHint": "Pesquisar mensagens",
+    "searchChatsHint": "Pesquisar conversas",
+    "searchActivitiesHint": "Pesquisar atividades",
+    "appInTargetLanguageTitle": "Mostrar o aplicativo no idioma que estou aprendendo",
+    "appInTargetLanguageDesc": "Menus, botões e rótulos aparecem no seu idioma de destino para imersão. O texto não traduzido volta para o inglês.",
+    "changePasswordSessionExpired": "Sua sessão expirou. Faça login novamente.",
+    "constructUseSugDesc": "Sugestões aceitas",
+    "mostPopular": "Mais popular",
+    "mostSavings": "Mais economia",
+    "enterDiscountCode": "Inserir código de desconto",
+    "yourPlan": "Seu plano",
+    "subscriptionRenewsOn": "Renova em {date}",
+    "subscriptionEndsOn": "Termina em {date}",
+    "promoSubscription": "Assinatura Promocional",
+    "seatSubscription": "Assento Institucional",
+    "lifetimeSubscription": "Assinatura vitalícia",
+    "freeSubscription": "GRÁTIS",
+    "freeTrialDescription": "Você tem um teste gratuito",
+    "manage": "Gerenciar",
+    "subscriptionHistory": "Histórico de Assinaturas",
+    "history": "Histórico",
+    "noPaymentHistoryFound": "Nenhum histórico de pagamento encontrado",
+    "cancelAnytime": "Cancele a qualquer momento nas configurações de assinatura",
+    "pricePerMonth": "{price}/mês",
+    "pricePerYear": "{price}/ano",
+    "viewSubscriptionOptions": "Ver opções de assinatura",
+    "apply": "Aplicar",
+    "continueToSubscribe": "Continuar para assinar",
+    "invalidDiscountCode": "Código de desconto inválido",
+    "selectDiscountPlan": "Selecionar plano de desconto",
+    "discountApplied": "{discount} de desconto aplicado",
+    "cancelDescriptionWithRenewalDate": "Sua assinatura estará ativa até a data de renovação ({date}), depois será desativada. Você manterá as análises, mas não poderá usar os recursos pro.",
+    "cancelDescriptionWithoutRenewalDate": "Sua assinatura estará ativa até a data de renovação, depois será desativada. Você manterá as análises, mas não poderá usar os recursos pro.",
+    "change": "Alterar",
+    "deactivateSubscribedAccountWarning": "Isso desativará sua conta de usuário e cancelará sua assinatura. Isso não pode ser desfeito! Tem certeza?",
+    "newCourseWithoutTitle": "Iniciar curso",
+    "newCourseWithTitle": "Iniciar \"{title}\"",
+    "joinCourseWithTitle": "Entrar em \"{title}\"",
+    "searchCoursePlans": "Buscar planos de curso",
+    "searchPublicCourses": "Buscar cursos públicos",
+    "closeSearch": "Fechar pesquisa",
+    "subscriptionsNotAvailableInApp": "Assinaturas não podem ser compradas no aplicativo",
+    "subscribeOnTheWeb": "Você pode assinar pela web em pangea.chat"
 }

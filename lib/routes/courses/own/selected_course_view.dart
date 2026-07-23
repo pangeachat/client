@@ -1,40 +1,52 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/course_plans/map_clipper.dart';
-import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/routes/courses/cefr_level_match.dart';
-import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/own/selected_course_page.dart';
-import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/courses/add_course_tile.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SelectedCourseView extends StatelessWidget {
-  final SelectedCourseController controller;
-  const SelectedCourseView(this.controller, {super.key});
+  final Widget? closeButton;
+  final String title;
+
+  final RoomSummaryResponse? summary;
+  final CoursePlanModel? course;
+  final AddCourseTileContent? content;
+  final bool loading;
+  final bool hasError;
+  final VoidCallback onTapCta;
+  final String ctaButtonText;
+
+  const SelectedCourseView({
+    super.key,
+    this.closeButton,
+    required this.title,
+    this.summary,
+    this.course,
+    this.content,
+    this.loading = false,
+    this.hasError = false,
+    required this.onTapCta,
+    required this.ctaButtonText,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    const double titleFontSize = 16.0;
-    const double descFontSize = 12.0;
-
-    const double largeIconSize = 24.0;
-    const double mediumIconSize = 16.0;
-    const double smallIconSize = 12.0;
-
     return Scaffold(
       appBar: AppBar(
-        leading: controller.widget.closeButton,
+        leading: closeButton,
         title: Text(
-          controller.title,
+          title,
           style: FluffyThemes.isColumnMode(context)
               ? theme.textTheme.titleLarge
               : theme.textTheme.titleMedium?.copyWith(
@@ -44,251 +56,119 @@ class SelectedCourseView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
       ),
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500.0),
-            child: ValueListenableBuilder(
-              valueListenable: controller.objectivesProvider.questLoader,
-              builder: (context, state, _) {
-                return switch (state) {
-                  AsyncLoading() || AsyncIdle() => const Center(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Builder(
+              builder: (context) {
+                final course = this.course;
+                final summary = this.summary;
+                final hasError = this.hasError;
+                final loading = this.loading;
+                final content = this.content;
+
+                if (loading) {
+                  return const Center(
                     child: CircularProgressIndicator.adaptive(),
-                  ),
-                  AsyncError() => Center(
+                  );
+                }
+
+                if (hasError || course == null) {
+                  return Center(
                     child: ErrorIndicator(
                       message: L10n.of(context).oopsSomethingWentWrong,
                     ),
-                  ),
-                  AsyncLoaded(value: final outline) => () {
-                    final course = outline.quest;
-                    final cefrEntry = course.targetCefr;
-                    final courseCefr = cefrEntry != null
-                        ? LanguageLevelTypeEnum.fromString(cefrEntry)
-                        : null;
+                  );
+                }
 
-                    final userController =
-                        MatrixState.pangeaController.userController;
-
-                    final cefrMatch = courseCefr == null
-                        ? CefrMatchResult.none
-                        : computeCefrMatch(
-                            context: context,
-                            userLevel: userController.userCefrLevel,
-                            courseLevel: courseCefr,
-                            courseLanguage: course.targetLanguage,
-                            userLanguage: userController.userL2Code,
-                          );
-
-                    final String displayname = course.name;
-
-                    return Column(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 12.0,
-                              left: 12.0,
-                              right: 12.0,
-                            ),
-                            child: ListView.builder(
-                              itemCount: 2,
-                              itemBuilder: (context, index) {
-                                if (index == 0) {
-                                  return Column(
-                                    spacing: 8.0,
-                                    children: [
-                                      ClipPath(
-                                        clipper: MapClipper(),
-                                        child: Avatar(
-                                          name: displayname,
-                                          size: 100.0,
-                                          borderRadius: BorderRadius.circular(
-                                            0.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        displayname,
-                                        style: const TextStyle(
-                                          fontSize: titleFontSize,
-                                        ),
-                                      ),
-                                      Text(
-                                        course.description,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
-                                        ),
-                                      ),
-                                      Wrap(
-                                        spacing: 8.0,
-                                        runSpacing: 8.0,
-                                        children: [
-                                          CourseInfoChip(
-                                            icon: Icons.language,
-                                            text: course.targetLanguage
-                                                .toUpperCase(),
-                                            fontSize: descFontSize,
-                                            iconSize: smallIconSize,
-                                          ),
-                                          if (courseCefr != null)
-                                            CourseInfoChip(
-                                              icon: Icons.school,
-                                              text: courseCefr.title(context),
-                                              fontSize: descFontSize,
-                                              iconSize: smallIconSize,
-                                              highlightColor:
-                                                  cefrMatch.chipColor,
-                                            ),
-                                          CourseInfoChip(
-                                            icon: Icons.location_on,
-                                            text: L10n.of(context).numModules(
-                                              course.sequence.length,
-                                            ),
-                                            fontSize: descFontSize,
-                                            iconSize: smallIconSize,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 4.0,
-                                          bottom: 8.0,
-                                        ),
-                                        child: Row(
-                                          spacing: 4.0,
-                                          children: [
-                                            const Icon(
-                                              Icons.map,
-                                              size: largeIconSize,
-                                            ),
-                                            Text(
-                                              L10n.of(context).coursePlan,
-                                              style: const TextStyle(
-                                                fontSize: titleFontSize,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                }
-
-                                // world_v2: all courses are v3 quests — render the
-                                // plan from the quest outline (no room yet, so a
-                                // read-only preview). shrinkWrap: this sits inside
-                                // the page's outer ListView. See routing.instructions.md.
-                                return CourseObjectivesList(
-                                  questId: course.id,
-                                  shrinkWrap: true,
-                                  objectivesProvider:
-                                      controller.objectivesProvider,
-                                );
-                              },
-                            ),
+                final adminIds = summary?.adminUserIDs ?? [];
+                return Column(
+                  spacing: 20.0,
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.tonalIcon(
+                        onPressed: onTapCta,
+                        label: Text(ctaButtonText),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          padding: const EdgeInsets.symmetric(vertical: 14.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.surface,
-                            border: Border(
-                              top: BorderSide(
-                                color: theme.dividerColor,
-                                width: 1.0,
-                              ),
-                            ),
-                          ),
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (cefrMatch.message != null)
-                                InlineTooltip(
-                                  message: cefrMatch.message!,
-                                  isClosed: false,
-                                  backgroundColor: cefrMatch.chipColor,
-                                  icon: cefrMatch.icon,
-                                ),
-                              Row(
-                                spacing: 12.0,
-                                children: [
-                                  const Icon(Icons.edit, size: mediumIconSize),
-                                  Flexible(
-                                    child: Text(
-                                      L10n.of(context).editCourseLater,
-                                      style: const TextStyle(
-                                        fontSize: descFontSize,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                spacing: 12.0,
-                                children: [
-                                  const Icon(
-                                    Icons.shield,
-                                    size: mediumIconSize,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      L10n.of(context).newCourseAccess,
-                                      style: const TextStyle(
-                                        fontSize: descFontSize,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Column(
-                                  spacing: 8.0,
-                                  children: [
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme
-                                            .onPrimaryContainer,
-                                      ),
-                                      onPressed: () => showFutureLoadingDialog(
-                                        context: context,
-                                        future: () => controller.submit(course),
-                                      ),
-                                      child: Row(
-                                        spacing: 8.0,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Icon(Icons.map_outlined),
-                                          Text(
-                                            controller.buttonText,
-                                            style: const TextStyle(
-                                              fontSize: titleFontSize,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    );
-                  }(),
-                };
+                      ),
+                    ),
+                    if (content != null)
+                      AddCourseTile(content: content, expanded: true),
+                    if (adminIds.isNotEmpty) _CourseAdminDisplay(adminIds),
+                  ],
+                );
               },
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _CourseAdminDisplay extends StatelessWidget {
+  final List<String> adminIds;
+  const _CourseAdminDisplay(this.adminIds);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: theme.colorScheme.primary),
+      ),
+      child: Column(
+        children: [
+          ...adminIds.map(
+            (id) => FutureBuilder(
+              future: Matrix.of(context).client.getProfileFromUserId(id),
+              builder: (context, snapshot) {
+                final profile = snapshot.data;
+                final displayName = profile?.displayName ?? id.localpart ?? id;
+                return InkWell(
+                  onTap: profile != null
+                      ? () => UserDialog.show(
+                          context: context,
+                          profile: profile,
+                          uri: GoRouterState.of(context).uri,
+                        )
+                      : null,
+                  child: Row(
+                    spacing: 8.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Avatar(
+                        size: 40.0,
+                        mxContent: profile?.avatarUrl,
+                        name: displayName,
+                        userId: id,
+                      ),
+                      Expanded(
+                        child: Text(
+                          displayName,
+                          style: theme.textTheme.bodyMedium,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-13 10:04:27.855172",
+    "@@last_modified": "2026-07-23 11:48:55.640912",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3399,7 +3399,6 @@
     "lastUpdated": "Frissítve\n{time}",
     "activityFinishedMessage": "Minden kész!",
     "endForAll": "Vége mindenkinek",
-    "newCourse": "Új tanfolyam",
     "numModules": "{num} modul",
     "coursePlan": "Tanfolyamterv",
     "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
@@ -6069,10 +6068,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6485,8 +6480,6 @@
     "allow": "Engedélyez",
     "deny": "Elutasít",
     "enabledRenewal": "Előfizetés megújításának engedélyezése",
-    "subscriptionEndsOn": "Az előfizetés vége",
-    "subscriptionRenewsOn": "Az előfizetés megújul",
     "waitForSubscriptionChanges": "Az előfizetésed változásai egy pillanatot igénybe vehetnek, hogy megjelenjenek az alkalmazásban.",
     "subscribeReadingAssistance": "Iratkozz fel az üzenetkezelő eszközök feloldásához",
     "aceDisplayName": "Achinese",
@@ -6761,14 +6754,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8485,7 +8470,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Tanulok...",
     "alreadySpeak": "Már beszélek...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9752,5 +9736,64 @@
     "starsToUnlockObjectiveTitle": "Csillagok küldetésenként",
     "starsToUnlockObjectiveDesc": "Állítsa be a küldetések teljesítéséhez szükséges csillagok számát",
     "maxStarsPerMissionWarning": "Ez a kurzus olyan küldetéseket tartalmaz, ahol csak {maxValue} csillag szerezhető. Kérjük, adjon meg egy {maxValue} értékkel egyenlő vagy annál kisebb számot.",
-    "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát."
+    "removedFromCourseError": "Eltávolítottak a kurzusból. Keresse fel a tanárát.",
+    "endPractice": "Gyakorlás befejezése",
+    "bodyLabel": "{page} beállítások",
+    "openDM": "Közvetlen üzenet megnyitása",
+    "openNewTab": "Megnyitás új lapon",
+    "viewProfileImageLabel": "Profilkép megtekintése",
+    "profileImageLabel": "Profilkép",
+    "actionsLabel": "Műveletek",
+    "colorListLabel": "Színlista",
+    "chatAppearanceStyleLabel": "Csevegés megjelenése a kiválasztott stílussal",
+    "volumeLabel": "Hangerő",
+    "listLabel": "{description} lista",
+    "passwordFormLabel": "Jelszó módosítása űrlap",
+    "searchLanguagesHint": "Nyelvek keresése",
+    "searchCountriesHint": "Országok keresése",
+    "searchVocabHint": "Szavak keresése",
+    "searchUsersHint": "Felhasználók keresése",
+    "searchMessagesHint": "Üzenetek keresése",
+    "searchChatsHint": "Csevegések keresése",
+    "searchActivitiesHint": "Tevékenységek keresése",
+    "appInTargetLanguageTitle": "Az alkalmazás megjelenítése a tanult nyelven",
+    "appInTargetLanguageDesc": "A menük, gombok és feliratok a célnyelven jelennek meg a bemerülés érdekében. A lefordítatlan szöveg angolra vált vissza.",
+    "changePasswordSessionExpired": "A munkamenet lejárt. Kérjük, jelentkezzen be újra.",
+    "constructUseSugDesc": "Elfogadott javaslatok",
+    "mostPopular": "Legnépszerűbb",
+    "mostSavings": "Legnagyobb megtakarítás",
+    "enterDiscountCode": "Adja meg a kedvezménykódot",
+    "yourPlan": "Az Ön csomagja",
+    "subscriptionRenewsOn": "Megújul ekkor: {date}",
+    "subscriptionEndsOn": "Lejár ekkor: {date}",
+    "promoSubscription": "Promóciós előfizetés",
+    "seatSubscription": "Intézményi hely",
+    "lifetimeSubscription": "Életre szóló előfizetés",
+    "freeSubscription": "INGYENES",
+    "freeTrialDescription": "Ingyenes próbaidőszaka van",
+    "manage": "Kezelés",
+    "subscriptionHistory": "Előfizetési előzmények",
+    "history": "Előzmények",
+    "noPaymentHistoryFound": "Nincs fizetési előzmény",
+    "cancelAnytime": "Bármikor lemondhatja az előfizetési beállításokban",
+    "pricePerMonth": "{price}/hónap",
+    "pricePerYear": "{price}/év",
+    "viewSubscriptionOptions": "Előfizetési lehetőségek megtekintése",
+    "apply": "Alkalmaz",
+    "continueToSubscribe": "Folytatás az előfizetéshez",
+    "invalidDiscountCode": "Érvénytelen kedvezménykód",
+    "selectDiscountPlan": "Válasszon kedvezményes csomagot",
+    "discountApplied": "{discount} kedvezmény alkalmazva",
+    "cancelDescriptionWithRenewalDate": "Előfizetése az megújítási dátumig ({date}) aktív marad, majd deaktiválódik. Az elemzéseket megtartja, de a pro funkciókat nem tudja használni.",
+    "cancelDescriptionWithoutRenewalDate": "Előfizetése a megújítási dátumig aktív marad, majd deaktiválódik. Az elemzéseket megtartja, de a pro funkciókat nem tudja használni.",
+    "change": "Módosítás",
+    "deactivateSubscribedAccountWarning": "Ez deaktiválja a felhasználói fiókját és lemondja az előfizetését. Ez nem vonható vissza! Biztos benne?",
+    "newCourseWithoutTitle": "Tanfolyam indítása",
+    "newCourseWithTitle": "„{title}” indítása",
+    "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz",
+    "searchCoursePlans": "Keresés a tantervek között",
+    "searchPublicCourses": "Nyilvános kurzusok keresése",
+    "closeSearch": "Keresés bezárása",
+    "subscriptionsNotAvailableInApp": "Az előfizetések nem vásárolhatók meg az alkalmazásban",
+    "subscribeOnTheWeb": "Feliratkozhatsz a pangea.chat weboldalon"
 }

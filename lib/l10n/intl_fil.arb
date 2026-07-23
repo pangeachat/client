@@ -2005,7 +2005,6 @@
     "lastUpdated": "Na-update\n{time}",
     "activityFinishedMessage": "Lahat ay Natapos na!",
     "endForAll": "Tapos na para sa lahat",
-    "newCourse": "Bagong kurso",
     "numModules": "{num} mga module",
     "coursePlan": "Plano ng Kurso",
     "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
@@ -2090,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-13 10:06:35.878567",
+    "@@last_modified": "2026-07-23 11:48:54.415887",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6843,10 +6842,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7243,8 +7238,6 @@
     "allow": "Pahintulutan",
     "deny": "Tanggihan",
     "enabledRenewal": "Paganahin ang Pag-renew ng Subscription",
-    "subscriptionEndsOn": "Nagtatapos ang Subscription Sa",
-    "subscriptionRenewsOn": "Nag-renew ang Subscription Sa",
     "waitForSubscriptionChanges": "Ang mga pagbabago sa iyong subscription ay maaaring magtagal ng kaunti upang magpakita sa app.",
     "subscribeReadingAssistance": "Mag-subscribe upang i-unlock ang mga tool sa mensahe",
     "aceDisplayName": "Achinese",
@@ -7519,14 +7512,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9248,7 +9233,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Nag-aaral ako ng...",
     "alreadySpeak": "Nagsasalita na ako ng...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10515,5 +10499,64 @@
     "starsToUnlockObjectiveTitle": "Mga Bituin bawat Misyon",
     "starsToUnlockObjectiveDesc": "Itakda ang bilang ng mga bituin na kailangan upang makumpleto ang bawat misyon",
     "maxStarsPerMissionWarning": "Ang kursong ito ay may mga misyon kung saan {maxValue} na bituin lamang ang maaaring makuha. Mangyaring maglagay ng numero na mas mababa o katumbas ng {maxValue}.",
-    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro."
+    "removedFromCourseError": "Ikaw ay inalis sa kursong ito. Makipag-ugnayan sa iyong guro.",
+    "endPractice": "Tapusin ang pagsasanay",
+    "bodyLabel": "{page} na opsyon",
+    "openDM": "Buksan ang direktang mensahe",
+    "openNewTab": "Buksan sa bagong tab",
+    "viewProfileImageLabel": "Tingnan ang larawan sa profile",
+    "profileImageLabel": "Larawan sa profile",
+    "actionsLabel": "Mga Aksyon",
+    "colorListLabel": "Listahan ng kulay",
+    "chatAppearanceStyleLabel": "Hitsura ng chat na may napiling istilo",
+    "volumeLabel": "Volume",
+    "listLabel": "Listahan ng {description}",
+    "passwordFormLabel": "Form sa pagpapalit ng password",
+    "searchLanguagesHint": "Maghanap ng mga wika",
+    "searchCountriesHint": "Maghanap ng mga bansa",
+    "searchVocabHint": "Maghanap ng bokabularyo",
+    "searchUsersHint": "Maghanap ng mga user",
+    "searchMessagesHint": "Maghanap ng mga mensahe",
+    "searchChatsHint": "Maghanap ng mga chat",
+    "searchActivitiesHint": "Maghanap ng mga aktibidad",
+    "appInTargetLanguageTitle": "Ipakita ang app sa wikang aking pinag-aaralan",
+    "appInTargetLanguageDesc": "Ang mga menu, button, at label ay lalabas sa iyong target na wika para sa immersion. Ang mga hindi naisaling text ay babalik sa English.",
+    "changePasswordSessionExpired": "Nag-expire ang iyong session. Mangyaring mag-log in muli.",
+    "constructUseSugDesc": "Mga tinanggap na suhestiyon",
+    "mostPopular": "Pinakapopular",
+    "mostSavings": "Pinakamalaking matitipid",
+    "enterDiscountCode": "Ilagay ang discount code",
+    "yourPlan": "Ang iyong plano",
+    "subscriptionRenewsOn": "Magre-renew sa {date}",
+    "subscriptionEndsOn": "Magtatapos sa {date}",
+    "promoSubscription": "Pang-promosyon na Subscription",
+    "seatSubscription": "Institutional na Upuan",
+    "lifetimeSubscription": "Panghabambuhay na subscription",
+    "freeSubscription": "LIBRE",
+    "freeTrialDescription": "Mayroon kang libreng trial",
+    "manage": "Pamahalaan",
+    "subscriptionHistory": "Kasaysayan ng Subscription",
+    "history": "Kasaysayan",
+    "noPaymentHistoryFound": "Walang nakitang kasaysayan ng pagbabayad",
+    "cancelAnytime": "Kanselahin anumang oras sa mga setting ng subscription",
+    "pricePerMonth": "{price}/buwan",
+    "pricePerYear": "{price}/taon",
+    "viewSubscriptionOptions": "Tingnan ang mga opsyon sa subscription",
+    "apply": "Ilapat",
+    "continueToSubscribe": "Magpatuloy sa pag-subscribe",
+    "invalidDiscountCode": "Di-wastong discount code",
+    "selectDiscountPlan": "Pumili ng discount plan",
+    "discountApplied": "Na-apply ang {discount} diskwento",
+    "cancelDescriptionWithRenewalDate": "Ang iyong subscription ay magiging aktibo hanggang sa petsa ng pag-renew nito ({date}), pagkatapos ay made-deactivate. Mananatili ang iyong analytics ngunit hindi mo magagamit ang mga pro feature.",
+    "cancelDescriptionWithoutRenewalDate": "Ang iyong subscription ay magiging aktibo hanggang sa petsa ng pag-renew nito, pagkatapos ay made-deactivate. Mananatili ang iyong analytics ngunit hindi mo magagamit ang mga pro feature.",
+    "change": "Baguhin",
+    "deactivateSubscribedAccountWarning": "Ito ay magde-deactivate ng iyong user account at magkakansela ng iyong subscription. Hindi ito maaaring i-undo! Sigurado ka ba?",
+    "newCourseWithoutTitle": "Simulan ang kurso",
+    "newCourseWithTitle": "Simulan ang \"{title}\"",
+    "joinCourseWithTitle": "Sumali sa \"{title}\"",
+    "searchCoursePlans": "Maghanap ng mga plano ng kurso",
+    "searchPublicCourses": "Maghanap ng mga pampublikong kurso",
+    "closeSearch": "Isara ang paghahanap",
+    "subscriptionsNotAvailableInApp": "Hindi mabibili ang mga subscription sa app",
+    "subscribeOnTheWeb": "Maaari kang mag-subscribe sa web sa pangea.chat"
 }

@@ -1,17 +1,51 @@
+import 'dart:math' as math;
+
 import 'package:flutter/animation.dart';
 
 class WorldMapConstants {
-  /// The camera zoom range — the single source for FlutterMap's MapOptions, the
-  /// +/- step clamp in [zoomBy], the World reset in [resetToWorld], and the
-  /// on-map control disabled states (#7171). minZoom 3 is the whole world.
-  static const double minZoom = 3.0;
+  /// The camera zoom ceiling — the single source for FlutterMap's MapOptions,
+  /// the +/- step clamp in [zoomBy], and the on-map control disabled states
+  /// (#7171). The FLOOR is viewport-derived: see [minZoomFor].
   static const double maxZoom = 18.0;
+
+  /// The zoom-out floor before the map has laid out (the camera's size is
+  /// unknown until then). Safe for viewports up to ~2048px in either dimension
+  /// — the pre-#7813 fixed floor.
+  static const double fallbackMinZoom = 3.0;
+
+  /// One copy of the world is `256 · 2^z` logical px wide/tall (Epsg3857,
+  /// 256px tiles — flutter_map's defaults, used by our TileLayer).
+  static const double _worldSideAtZoomZero = 256.0;
+
+  /// Keeps the floor strictly above the exact world-fits-viewport zoom:
+  /// containLatitude REJECTS every camera move (freezing all panning) once the
+  /// ±90 band is shorter than the viewport, so we never sit on the boundary
+  /// where float error could tip past it.
+  static const double _minZoomMargin = 0.01;
+
+  /// The viewport-derived zoom-out floor (#7813): zooming out stops where one
+  /// world copy would become smaller than the viewport's height (binds on
+  /// phones) or width (binds on wide desktops), whichever comes first. Zoom is
+  /// an absolute scale, so the old fixed floor of 3 left a phone seeing <20%
+  /// of the world while desktop saw most of it; deriving from the viewport
+  /// lets every screen pull back to (nearly) the whole world. The height term
+  /// is also exactly what keeps containLatitude from freezing panning — see
+  /// [_minZoomMargin] — including on >2048px-tall windows the fixed floor
+  /// didn't cover.
+  static double minZoomFor(Size viewport) {
+    final h = math.max(viewport.height, _worldSideAtZoomZero);
+    final w = math.max(viewport.width, _worldSideAtZoomZero);
+    final fitHeight = math.log(h / _worldSideAtZoomZero) / math.ln2;
+    final fitWidth = math.log(w / _worldSideAtZoomZero) / math.ln2;
+    return math.max(fitHeight, fitWidth) + _minZoomMargin;
+  }
 
   /// Whether a zoom-in / zoom-out step would still change the camera, i.e. the
   /// on-map + / - button should be enabled. At a limit the matching button is
-  /// disabled so it can't no-op (#7171).
+  /// disabled so it can't no-op (#7171). [minZoom] is the caller's
+  /// viewport-derived floor ([minZoomFor]).
   static bool canZoomIn(double zoom) => zoom < maxZoom;
-  static bool canZoomOut(double zoom) => zoom > minZoom;
+  static bool canZoomOut(double zoom, double minZoom) => zoom > minZoom;
 
   /// The zoom the DELIBERATE focus button glides to for an activity (#7616) —
   /// close enough to read it as "this specific spot" (neighborhood/building
@@ -25,17 +59,15 @@ class WorldMapConstants {
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
 
-  // #7245 — the large tier hides while the camera's zoom is actively changing
-  // and re-derives at settle.
+  // #7245 — pin/card tiers freeze at their current size while the camera is
+  // actively moving (pan, zoom, rotate, or a programmatic glide) and re-derive
+  // once it settles, so a gesture never flickers a card between tiers.
 
-  /// How long after the last zoom change the camera counts as settled. Short
-  /// enough that cards return promptly after a pinch or scroll stops; long
-  /// enough that discrete scroll-wheel ticks chain into one continuous hide.
-  static const Duration zoomSettle = Duration(milliseconds: 300);
-
-  /// The smallest camera-zoom delta treated as "zooming" — filters projection
-  /// jitter during pure pans so panning never hides the large cards.
-  static const double zoomChangeEpsilon = 0.01;
+  /// How long after the last camera-movement event the camera counts as
+  /// settled. Short enough that tiers re-derive promptly after a pinch, pan,
+  /// or scroll stops; long enough that a burst of movement events (a drag, a
+  /// chain of scroll-wheel ticks) coalesces into one continuous freeze.
+  static const Duration moveSettle = Duration(milliseconds: 300);
 
   // #7239 — gentler combined pan/zoom glide.
 
@@ -67,6 +99,21 @@ class WorldMapConstants {
     1.0,
     curve: Curves.easeInOut,
   );
+
+  /// Interpolate longitude from [start] to [end] at pan progress [t] along the
+  /// SHORTEST angular direction (#7880). A raw linear tween of longitude values
+  /// sweeps the long way around whenever start/end straddle the antimeridian
+  /// numerically (e.g. 175 -> -179 tweens down through 0, a 354deg spin), even
+  /// though the target pin is only a few degrees away on screen. Wrapping the
+  /// delta into (-180, 180] pans toward the pin's visible on-screen direction.
+  /// The returned value may fall slightly outside [-180, 180] mid-tween (e.g.
+  /// 181, i.e. -179); flutter_map's `move` normalizes it, and the tile layer
+  /// wraps, so the sweep stays continuous across the seam.
+  static double lerpLongitude(double start, double end, double t) {
+    var delta = (end - start) % 360;
+    if (delta > 180) delta -= 360;
+    return start + delta * t;
+  }
 
   /// The (pan, zoom) progress at raw glide value [t] for a move from [startZoom]
   /// to [targetZoom]. Split out so the directional staggering is unit-testable.

@@ -57,56 +57,54 @@ class ActivityArchive extends StatelessWidget {
             centerTitle: false,
             titleSpacing: 0,
           ),
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsetsGeometry.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (!analyticsService.hasInitError)
-                    MaxWidthBody(
-                      showBorder: false,
-                      withScrolling: false,
-                      padding: .only(top: 48),
-                      addVerticalPadding: false,
-                      child: InstructionsInlineTooltip(
-                        instructionsEnum: archive.isEmpty
-                            ? InstructionsEnum.noSavedActivitiesYet
-                            : InstructionsEnum.activityAnalyticsList,
-                        padding: const EdgeInsets.all(8.0),
-                      ),
+          body: Padding(
+            padding: const EdgeInsetsGeometry.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (!analyticsService.hasInitError)
+                  MaxWidthBody(
+                    showBorder: false,
+                    withScrolling: false,
+                    padding: .only(top: 48),
+                    addVerticalPadding: false,
+                    child: InstructionsInlineTooltip(
+                      instructionsEnum: archive.isEmpty
+                          ? InstructionsEnum.noSavedActivitiesYet
+                          : InstructionsEnum.activityAnalyticsList,
+                      padding: const EdgeInsets.all(8.0),
                     ),
-                  Expanded(
-                    child: analyticsService.hasInitError
-                        ? AnalyticsInitErrorIndicator(
-                            reinitialize: analyticsService.reinitialize,
-                          )
-                        : MaxWidthBody(
-                            showBorder: false,
-                            withScrolling: false,
-                            padding: .fromLTRB(32, 0, 32, 48),
-                            addVerticalPadding: false,
-                            child: Semantics(
-                              label: L10n.of(context).starListLabel,
-                              container: true,
-                              child: ListView.builder(
-                                key: const PageStorageKey<String>(
-                                  'activity-archive',
-                                ),
-                                physics: const ClampingScrollPhysics(),
-                                itemCount: archive.length,
-                                itemBuilder: (BuildContext context, int i) {
-                                  return AnalyticsActivityItem(
-                                    room: archive[i],
-                                    selected: archive[i].id == selectedRoomId,
-                                  );
-                                },
+                  ),
+                Expanded(
+                  child: analyticsService.hasInitError
+                      ? AnalyticsInitErrorIndicator(
+                          reinitialize: analyticsService.reinitialize,
+                        )
+                      : MaxWidthBody(
+                          showBorder: false,
+                          withScrolling: false,
+                          padding: .fromLTRB(32, 0, 32, 48),
+                          addVerticalPadding: false,
+                          child: Semantics(
+                            label: L10n.of(context).starListLabel,
+                            container: true,
+                            child: ListView.builder(
+                              key: const PageStorageKey<String>(
+                                'activity-archive',
                               ),
+                              physics: const ClampingScrollPhysics(),
+                              itemCount: archive.length,
+                              itemBuilder: (BuildContext context, int i) {
+                                return AnalyticsActivityItem(
+                                  room: archive[i],
+                                  selected: archive[i].id == selectedRoomId,
+                                );
+                              },
                             ),
                           ),
-                  ),
-                ],
-              ),
+                        ),
+                ),
+              ],
             ),
           ),
         );

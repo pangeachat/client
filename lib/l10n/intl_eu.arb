@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-13 10:05:16.037942",
+    "@@last_modified": "2026-07-23 11:48:54.092698",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "Eguneratua\n{time}",
     "activityFinishedMessage": "Bukatu da guztia!",
     "endForAll": "Amaitu guztientzat",
-    "newCourse": "Ikastaro berria",
     "numModules": "{num} modulua",
     "coursePlan": "Ikastaro Plana",
     "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
@@ -6146,10 +6145,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6562,8 +6557,6 @@
     "allow": "Baimendu",
     "deny": "Ukatu",
     "enabledRenewal": "Harpidetzaren Berritzea Aktibatu",
-    "subscriptionEndsOn": "Harpidetzak Amaitzen Da",
-    "subscriptionRenewsOn": "Harpidetzak Berritzen Da",
     "waitForSubscriptionChanges": "Zure harpidetzako aldaketek momentu bat behar izan dezakete aplikazioan islatzeko.",
     "subscribeReadingAssistance": "Mezu tresnak desblokeatzeko harpidetu",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6831,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8367,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ikasten ari naiz...",
     "alreadySpeak": "Jada hitz egiten dut...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9633,64 @@
     "starsToUnlockObjectiveTitle": "Izarrak misio bakoitzeko",
     "starsToUnlockObjectiveDesc": "Ezarri misio bakoitza osatzeko behar diren izar kopurua",
     "maxStarsPerMissionWarning": "Ikastaro honek misioak ditu, non gehienez {maxValue} izar irabaz daitezkeen. Mesedez, sartu {maxValue} baino txikiagoa edo berdina den zenbaki bat.",
-    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin."
+    "removedFromCourseError": "Ikastaro honetatik kendu zaituzte. Jarri harremanetan zure irakaslearekin.",
+    "endPractice": "Praktika amaitu",
+    "bodyLabel": "{page} aukerak",
+    "openDM": "Zuzeneko mezua ireki",
+    "openNewTab": "Fitxa berrian ireki",
+    "viewProfileImageLabel": "Ikusi profileko irudia",
+    "profileImageLabel": "Profileko irudia",
+    "actionsLabel": "Ekintzak",
+    "colorListLabel": "Kolore-zerrenda",
+    "chatAppearanceStyleLabel": "Txataren itxura aukeratutako estiloarekin",
+    "volumeLabel": "Bolumena",
+    "listLabel": "{description} zerrenda",
+    "passwordFormLabel": "Pasahitza aldatzeko inprimakia",
+    "searchLanguagesHint": "Bilatu hizkuntzak",
+    "searchCountriesHint": "Bilatu herrialdeak",
+    "searchVocabHint": "Bilatu hiztegia",
+    "searchUsersHint": "Bilatu erabiltzaileak",
+    "searchMessagesHint": "Bilatu mezuak",
+    "searchChatsHint": "Bilatu txatak",
+    "searchActivitiesHint": "Bilatu jarduerak",
+    "appInTargetLanguageTitle": "Erakutsi aplikazioa ikasten ari naizen hizkuntzan",
+    "appInTargetLanguageDesc": "Menuak, botoiak eta etiketak zure xede-hizkuntzan agertuko dira murgiltzeko. Itzuli gabeko testua ingelesera itzuliko da.",
+    "changePasswordSessionExpired": "Zure saioa iraungi egin da. Mesedez, hasi saioa berriro.",
+    "constructUseSugDesc": "Onartutako iradokizunak",
+    "mostPopular": "Ezagunena",
+    "mostSavings": "Aurreztu gehien",
+    "enterDiscountCode": "Sartu deskontu kodea",
+    "yourPlan": "Zure plana",
+    "subscriptionRenewsOn": "{date}an berrituko da",
+    "subscriptionEndsOn": "{date}an amaituko da",
+    "promoSubscription": "Promozio-harpidetza",
+    "seatSubscription": "Erakunde-eserlekua",
+    "lifetimeSubscription": "Bizitza osorako harpidetza",
+    "freeSubscription": "DOAN",
+    "freeTrialDescription": "Doako proba duzu",
+    "manage": "Kudeatu",
+    "subscriptionHistory": "Harpidetzaren historia",
+    "history": "Historia",
+    "noPaymentHistoryFound": "Ez da ordainketa-historikorik aurkitu",
+    "cancelAnytime": "Utzi edonoiz harpidetza-ezarpenetan",
+    "pricePerMonth": "{price}/hileko",
+    "pricePerYear": "{price}/urteko",
+    "viewSubscriptionOptions": "Ikusi harpidetza-aukerak",
+    "apply": "Aplikatu",
+    "continueToSubscribe": "Jarraitu harpidetzen",
+    "invalidDiscountCode": "Deskontu kode baliogabea",
+    "selectDiscountPlan": "Hautatu deskontu plana",
+    "discountApplied": "{discount} deskontua aplikatuta",
+    "cancelDescriptionWithRenewalDate": "Zure harpidetza aktibo egongo da berritzeko data ({date}) arte, eta orduan desaktibatu egingo da. Analitikak mantenduko dituzu, baina ezingo dituzu pro ezaugarriak erabili.",
+    "cancelDescriptionWithoutRenewalDate": "Zure harpidetza aktibo egongo da berritzeko data arte, eta orduan desaktibatu egingo da. Analitikak mantenduko dituzu, baina ezingo dituzu pro ezaugarriak erabili.",
+    "change": "Aldatu",
+    "deactivateSubscribedAccountWarning": "Honek zure erabiltzaile-kontua desaktibatu eta zure harpidetza bertan behera utziko du. Hau ezin da desegin! Ziur zaude?",
+    "newCourseWithoutTitle": "Ikastaroa hasi",
+    "newCourseWithTitle": "\"{title}\" ikastaroa hasi",
+    "joinCourseWithTitle": "\"{title}\" ikastarora batu",
+    "searchCoursePlans": "Ikastaro-planak bilatu",
+    "searchPublicCourses": "Ikastaro publikoak bilatu",
+    "closeSearch": "Bilaketa itxi",
+    "subscriptionsNotAvailableInApp": "Harpidetzak ezin dira aplikazioan erosi",
+    "subscribeOnTheWeb": "pangea.chat webgunean harpidetu zaitezke"
 }

@@ -213,11 +213,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       widget.setTutorialTransitioning(true);
 
       final onTap = step.data.onTap;
+      final canShowNextStep = step.data.canShowNextStep;
       if (onTap != null) {
         await Future.wait([onTap.call(), Future.delayed(_duration)]);
       } else {
         await Future.delayed(_duration);
       }
+
+      if (!canShowNextStep()) return false;
     } catch (e, s) {
       ErrorHandler.logError(
         e: "Error executing tutorial step callback",
@@ -255,92 +258,96 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     final hasTargetPosition =
         _lastTargetOffset != null && _lastTargetSize != null;
 
-    return MouseRegion(
-      cursor: step != null && _visible
-          ? SystemMouseCursors.click
-          : SystemMouseCursors.basic,
-      child: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: step != null && _visible ? () => _next(step) : null,
-        child: Stack(
-          children: [
-            AnimatedOpacity(
-              opacity: _visible && step != null && hasTargetPosition
-                  ? 1.0
-                  : 0.0,
-              duration: _duration,
-              child: step != null
-                  ? ColorFiltered(
-                      colorFilter: const ColorFilter.mode(
-                        Colors.black,
-                        BlendMode.srcOut,
-                      ),
-                      child: Stack(
-                        children: [
-                          /// Overlay + layer
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black.withAlpha(100),
-                            ),
+    return BlockSemantics(
+      child: MouseRegion(
+        cursor: step != null && _visible
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: step != null && _visible ? () => _next(step) : null,
+          child: Stack(
+            children: [
+              AnimatedOpacity(
+                opacity: _visible && step != null && hasTargetPosition
+                    ? 1.0
+                    : 0.0,
+                duration: _duration,
+                child: step != null
+                    ? ExcludeSemantics(
+                        child: ColorFiltered(
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black,
+                            BlendMode.srcOut,
                           ),
-
-                          /// The "hole"
-                          CompositedTransformFollower(
-                            link: MatrixState.pAnyState
-                                .layerLinkAndKey(step.data.targetKey)
-                                .link,
-                            showWhenUnlinked: false,
-                            targetAnchor: Alignment.center,
-                            followerAnchor: Alignment.center,
-                            child: Container(
-                              width: holeWidth,
-                              height: holeHeight,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                  step.style.borderRadius ?? 16,
+                          child: Stack(
+                            children: [
+                              /// Overlay + layer
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withAlpha(100),
                                 ),
                               ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-            ),
 
-            if (_visible && step != null && hasTargetPosition)
-              CompositedTransformFollower(
-                link: MatrixState.pAnyState
-                    .layerLinkAndKey(step.data.targetKey)
-                    .link,
-                showWhenUnlinked: false,
-                targetAnchor: showAbove
-                    ? Alignment.topCenter
-                    : Alignment.bottomCenter,
-                followerAnchor: showAbove
-                    ? Alignment.bottomCenter
-                    : Alignment.topCenter,
-                offset: Offset(
-                  _tooltipHorizontalOffset(stepSize) ?? 0,
-                  showAbove
-                      ? -_tooltipPadding
-                      : _tooltipPadding, // gap between target and tooltip
-                ),
-                child: TutorialTooltipContainerWidget(
-                  width: step.style.tooltipSize.width,
-                  height: step.style.tooltipSize.height,
-                  padding: _tooltipPadding,
-                  onNext: () => _next(step),
-                  onPrevious: _previous,
-                  showNext: showNavigation && widget.enabledForward,
-                  showPrevious: showNavigation && widget.enabledBack,
-                  currentStep: widget.completedSteps,
-                  totalSteps: widget.totalSteps,
-                  text: step.style.tooltip,
-                ),
+                              /// The "hole"
+                              CompositedTransformFollower(
+                                link: MatrixState.pAnyState
+                                    .layerLinkAndKey(step.data.targetKey)
+                                    .link,
+                                showWhenUnlinked: false,
+                                targetAnchor: Alignment.center,
+                                followerAnchor: Alignment.center,
+                                child: Container(
+                                  width: holeWidth,
+                                  height: holeHeight,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                      step.style.borderRadius ?? 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
-          ],
+
+              if (_visible && step != null && hasTargetPosition)
+                CompositedTransformFollower(
+                  link: MatrixState.pAnyState
+                      .layerLinkAndKey(step.data.targetKey)
+                      .link,
+                  showWhenUnlinked: false,
+                  targetAnchor: showAbove
+                      ? Alignment.topCenter
+                      : Alignment.bottomCenter,
+                  followerAnchor: showAbove
+                      ? Alignment.bottomCenter
+                      : Alignment.topCenter,
+                  offset: Offset(
+                    _tooltipHorizontalOffset(stepSize) ?? 0,
+                    showAbove
+                        ? -_tooltipPadding
+                        : _tooltipPadding, // gap between target and tooltip
+                  ),
+                  child: TutorialTooltipContainerWidget(
+                    width: step.style.tooltipSize.width,
+                    height: step.style.tooltipSize.height,
+                    padding: _tooltipPadding,
+                    onNext: () => _next(step),
+                    onPrevious: _previous,
+                    showNext: showNavigation && widget.enabledForward,
+                    showPrevious: showNavigation && widget.enabledBack,
+                    currentStep: widget.completedSteps,
+                    totalSteps: widget.totalSteps,
+                    text: step.style.tooltip,
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

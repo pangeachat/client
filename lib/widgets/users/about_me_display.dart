@@ -24,7 +24,7 @@ class AboutMeDisplay extends StatelessWidget {
         ),
         builder: (context, snapshot) {
           final about = snapshot.data?.about;
-          return about == null
+          return about == null || about.trim().isEmpty
               ? const SizedBox.shrink()
               : AboutMeText(about: about, textSize: textSize);
         },

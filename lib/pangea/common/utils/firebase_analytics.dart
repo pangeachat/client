@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
-import 'package:fluffychat/features/subscription/models/subscription_details.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -211,19 +210,31 @@ class GoogleAnalytics {
   }
 
   static void beginPurchaseSubscription(
-    SubscriptionDetails details,
+    String planId,
+    String? promoCode,
     BuildContext context,
   ) {
     logEvent(
       'begin_checkout',
       parameters: {
         "currency": "USD",
-        'value': details.price,
-        'transaction_id': details.id,
-        if (details.package != null) 'item_id': details.package!.identifier,
-        'item_name': details.displayName(context),
-        'price': details.price,
+        'item_id': planId,
         'item_category': "subscription",
+        'quantity': 1,
+      },
+    );
+  }
+
+  /// Checkout completed: the subscription turned active after a begun payment
+  /// (detected on return from Stripe). Closes the begin_checkout funnel with
+  /// GA4's recommended `purchase` event.
+  static void purchaseSubscription(String? planId) {
+    logEvent(
+      'purchase',
+      parameters: {
+        'currency': 'USD',
+        'item_id': ?planId,
+        'item_category': 'subscription',
         'quantity': 1,
       },
     );
@@ -326,6 +337,12 @@ class GoogleAnalytics {
 
         final name = route.settings.name?.trim();
         if (name == null || name.isEmpty) {
+          return false;
+        }
+
+        // The workspace route ('/') is tracked by WorkspaceScreenTracker with
+        // token-derived names; logging it here would double-count it as '/'.
+        if (name == '/') {
           return false;
         }
 

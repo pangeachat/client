@@ -6,15 +6,17 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
-import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -42,38 +44,29 @@ class SelectedCourse extends StatefulWidget {
   SelectedCourseController createState() => SelectedCourseController();
 }
 
-class SelectedCourseController extends State<SelectedCourse> {
-  late final QuestObjectivesLoader _objectivesProvider;
-
+class SelectedCourseController extends State<SelectedCourse>
+    with CoursePlanProvider {
   @override
   initState() {
     super.initState();
-    _objectivesProvider = QuestObjectivesLoader(
-      client: Matrix.of(context).client,
-    );
-    _objectivesProvider.loadOutline(widget.courseId);
+    loadCourse(widget.courseId);
   }
 
   @override
   void didUpdateWidget(covariant SelectedCourse oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.courseId != widget.courseId) {
-      _objectivesProvider.loadOutline(widget.courseId);
+      loadCourse(widget.courseId);
     }
   }
-
-  @override
-  void dispose() {
-    _objectivesProvider.dispose();
-    super.dispose();
-  }
-
-  QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 
   String get title {
     switch (widget.mode) {
       case SelectedCourseMode.launch:
-        return L10n.of(context).newCourse;
+        final quest = course;
+        return quest != null
+            ? L10n.of(context).newCourseWithTitle(quest.title)
+            : L10n.of(context).newCourseWithoutTitle;
       case SelectedCourseMode.addToSpace:
         return L10n.of(context).addCoursePlan;
     }
@@ -88,7 +81,14 @@ class SelectedCourseController extends State<SelectedCourse> {
     }
   }
 
-  Future<void> submit(QuestPlan course) async {
+  AddCourseTileContent? get content {
+    final course = this.course;
+    if (course == null) return null;
+    return CoursePlanAddCourseTileContent(course);
+  }
+
+  Future<void> submit() async {
+    final course = this.course!;
     switch (widget.mode) {
       case SelectedCourseMode.launch:
         return launchCourse(widget.courseId, course);
@@ -97,19 +97,22 @@ class SelectedCourseController extends State<SelectedCourse> {
     }
   }
 
-  Future<void> launchCourse(String courseId, QuestPlan course) async {
+  Future<void> launchCourse(String courseId, CoursePlanModel course) async {
     final client = Matrix.of(context).client;
     final Completer<String> completer = Completer<String>();
     client
         .createPangeaSpace(
-          name: course.name,
+          name: course.title,
           topic: course.description,
           visibility: sdk.Visibility.public,
           joinRules: sdk.JoinRules.knock,
           initialState: [
             sdk.StateEvent(
               type: PangeaEventTypes.coursePlan,
-              content: {"uuid": courseId},
+              content: CoursePlanEvent(
+                uuid: courseId,
+                l2: course.targetLanguage,
+              ).toJson(),
             ),
             sdk.StateEvent(
               type: PangeaEventTypes.courseSettings,
@@ -134,7 +137,7 @@ class SelectedCourseController extends State<SelectedCourse> {
     );
   }
 
-  Future<void> addCourseToSpace(QuestPlan course) async {
+  Future<void> addCourseToSpace(CoursePlanModel course) async {
     if (widget.spaceId == null) {
       throw Exception("Space ID is null");
     }
@@ -145,10 +148,13 @@ class SelectedCourseController extends State<SelectedCourse> {
       throw Exception("Space not found");
     }
 
-    await space.addCourseToSpace(widget.courseId);
+    await space.addCourseToSpace(
+      widget.courseId,
+      targetLanguage: course.targetLanguage,
+    );
 
     if (space.name.isEmpty) {
-      await space.setName(course.name);
+      await space.setName(course.title);
     }
 
     if (space.topic.isEmpty) {
@@ -166,5 +172,15 @@ class SelectedCourseController extends State<SelectedCourse> {
   }
 
   @override
-  Widget build(BuildContext context) => SelectedCourseView(this);
+  Widget build(BuildContext context) => SelectedCourseView(
+    closeButton: widget.closeButton,
+    title: title,
+    summary: null,
+    course: course,
+    content: content,
+    loading: loadingCourse,
+    hasError: courseError != null,
+    onTapCta: submit,
+    ctaButtonText: buttonText,
+  );
 }

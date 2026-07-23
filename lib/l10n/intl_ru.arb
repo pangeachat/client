@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-13 10:08:19.663033",
+    "@@last_modified": "2026-07-23 11:48:59.883187",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4100,7 +4100,6 @@
     "lastUpdated": "Обновлено\n{time}",
     "activityFinishedMessage": "Все завершено!",
     "endForAll": "Завершить для всех",
-    "newCourse": "Новый курс",
     "numModules": "{num} модулей",
     "coursePlan": "План курса",
     "editCourseLater": "Вы сможете отредактировать название шаблона, описания и изображение курса позже.",
@@ -6986,10 +6985,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7467,8 +7462,6 @@
     "allow": "Разрешить",
     "deny": "Запретить",
     "enabledRenewal": "Включить автоматическое продление подписки",
-    "subscriptionEndsOn": "Подписка заканчивается",
-    "subscriptionRenewsOn": "Подписка продлевается",
     "waitForSubscriptionChanges": "Изменения в вашей подписке могут отобразиться в приложении с небольшой задержкой.",
     "subscribeReadingAssistance": "Подпишитесь, чтобы разблокировать инструменты сообщений",
     "aceDisplayName": "Ачехский",
@@ -7743,14 +7736,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9000,7 +8985,6 @@
         "placeholders": {}
     },
     "onboardingLanguagesTitle": "Какой язык вы изучаете?",
-    "searchLanguagesHint": "Поиск целевых языков",
     "@onboardingLanguagesTitle": {
         "type": "String",
         "placeholders": {}
@@ -10623,5 +10607,64 @@
     "starsToUnlockObjectiveTitle": "Звезды за миссию",
     "starsToUnlockObjectiveDesc": "Установите количество звезд, необходимое для выполнения каждой миссии",
     "maxStarsPerMissionWarning": "В этом курсе есть миссии, в которых можно заработать только {maxValue} звезд. Введите число, меньшее или равное {maxValue}.",
-    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем."
+    "removedFromCourseError": "Вы были удалены из этого курса. Свяжитесь со своим учителем.",
+    "endPractice": "Завершить практику",
+    "bodyLabel": "Настройки {page}",
+    "openDM": "Открыть личное сообщение",
+    "openNewTab": "Открыть в новой вкладке",
+    "viewProfileImageLabel": "Посмотреть изображение профиля",
+    "profileImageLabel": "Изображение профиля",
+    "actionsLabel": "Действия",
+    "colorListLabel": "Список цветов",
+    "chatAppearanceStyleLabel": "Вид чата с выбранным стилем",
+    "volumeLabel": "Громкость",
+    "listLabel": "Список {description}",
+    "passwordFormLabel": "Форма смены пароля",
+    "searchLanguagesHint": "Поиск языков",
+    "searchCountriesHint": "Поиск стран",
+    "searchVocabHint": "Поиск слов",
+    "searchUsersHint": "Поиск пользователей",
+    "searchMessagesHint": "Поиск сообщений",
+    "searchChatsHint": "Поиск чатов",
+    "searchActivitiesHint": "Поиск активностей",
+    "appInTargetLanguageTitle": "Показывать приложение на изучаемом языке",
+    "appInTargetLanguageDesc": "Меню, кнопки и подписи будут отображаться на вашем целевом языке для полного погружения. Непереведенный текст будет отображаться на английском языке.",
+    "changePasswordSessionExpired": "Срок вашей сессии истек. Пожалуйста, войдите снова.",
+    "constructUseSugDesc": "Принятые предложения",
+    "mostPopular": "Самые популярные",
+    "mostSavings": "Самая большая экономия",
+    "enterDiscountCode": "Введите промокод",
+    "yourPlan": "Ваш план",
+    "subscriptionRenewsOn": "Продление {date}",
+    "subscriptionEndsOn": "Заканчивается {date}",
+    "promoSubscription": "Пробная подписка",
+    "seatSubscription": "Корпоративная лицензия",
+    "lifetimeSubscription": "Пожизненная подписка",
+    "freeSubscription": "БЕСПЛАТНО",
+    "freeTrialDescription": "У вас есть бесплатный пробный период",
+    "manage": "Управлять",
+    "subscriptionHistory": "История подписок",
+    "history": "История",
+    "noPaymentHistoryFound": "История платежей не найдена",
+    "cancelAnytime": "Отменить в любое время в настройках подписки",
+    "pricePerMonth": "{price}/месяц",
+    "pricePerYear": "{price}/год",
+    "viewSubscriptionOptions": "Посмотреть варианты подписки",
+    "apply": "Применить",
+    "continueToSubscribe": "Продолжить подписку",
+    "invalidDiscountCode": "Неверный промокод",
+    "selectDiscountPlan": "Выберите план со скидкой",
+    "discountApplied": "Скидка {discount} применена",
+    "cancelDescriptionWithRenewalDate": "Ваша подписка будет активна до даты продления ({date}), затем будет деактивирована. Вы сохраните аналитику, но не сможете использовать Pro-функции.",
+    "cancelDescriptionWithoutRenewalDate": "Ваша подписка будет активна до даты продления, затем будет деактивирована. Вы сохраните аналитику, но не сможете использовать Pro-функции.",
+    "change": "Изменить",
+    "deactivateSubscribedAccountWarning": "Это деактивирует вашу учетную запись и отменит подписку. Это действие необратимо! Вы уверены?",
+    "newCourseWithoutTitle": "Начать курс",
+    "newCourseWithTitle": "Начать «{title}»",
+    "joinCourseWithTitle": "Присоединиться к «{title}»",
+    "searchCoursePlans": "Искать планы курсов",
+    "searchPublicCourses": "Искать публичные курсы",
+    "closeSearch": "Закрыть поиск",
+    "subscriptionsNotAvailableInApp": "Подписки нельзя приобрести в приложении",
+    "subscribeOnTheWeb": "Вы можете подписаться на сайте pangea.chat"
 }

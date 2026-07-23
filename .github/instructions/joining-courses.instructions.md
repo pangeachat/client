@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/join_codes/**,lib/pangea/chat_list/**,lib/pangea/course_creation/**,lib/pangea/spaces/**,lib/pages/chat_list/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
+applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -27,14 +27,13 @@ All three routes converge on the user becoming a `Membership.join` member of the
 
 ## Route 1 — Class Link
 
-**URL format**: `https://pangea.chat/#/join_with_link?classcode=XYZ`
+**The link is the bare short code**: `https://app.pangea.chat/<code>` — seven `[a-z0-9]` characters with at least one digit (the [`generate_room_code`](../../../synapse-pangea-chat/synapse_pangea_chat/room_code/generate_room_code.py) format), shared or printed as-is. That bare path **is** the app URL on both web and native: no redirect hop, no `?classcode=` query, no `#` hash. On web the SPA serves any path (the CloudFront index.html fallback); on native the app-link listener in [`MatrixState`](../../lib/widgets/matrix.dart) delivers the same path. The digit requirement is what tells a code apart from a literal route (`/chats`), which never carries one — so the route grammar in [routing.instructions.md](routing.instructions.md) stays unambiguous.
 
-1. User clicks link → GoRouter navigates to `/join_with_link`
-2. Class code is saved to local storage (`SpaceCodeRepo`)
-3. Redirect to `/home`
-4. On home load, `joinCachedSpaceCode()` fires the knock_with_code + join flow (same as Route 2)
+[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) — the router's one inbound rewrite — recognizes the bare `/<code>` and folds it into the add-course panel's private join-with-code leaf (`left=addcourse:private/<code>`) before anything renders. That leaf ([`CourseCodePage`](../../lib/routes/courses/private/course_code_page.dart)) submits the join once — the same [`SpaceCodeController`](../../lib/features/join_codes/space_code_controller.dart) `joinSpaceWithCode` flow Route 2 runs — showing a neutral joining indicator (never the manual entry form) while it runs, then history-replaces itself with the plain join-with-code page so back or refresh never re-fires the join; a failed join lands on that manual form with the error shown. The older `/join_with_link?classcode=` and `/join?classcode=` spellings are retired, not redirected — the bare code is the one inbound shape.
 
-**Pre-login persistence**: If not logged in, the code persists on disk. After account creation, `joinCachedSpaceCode()` auto-joins.
+**Where a code join lands**: the course plan page. A code can attach to a room *inside* a course (an activity session, an announcements chat); joining still resolves to that room's joined parent course rather than dropping the learner into the room. Only a coded room with no joined parent course opens directly.
+
+**Pre-login**: a logged-out visitor is bounced to login, which drops the destination URL, so the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) caches the code (`SpaceCodeRepo`) first. After login, the SAME guard's logged-in branch redirects the landing into the join flow — the guard rather than a login-state listener, because it is the one place every login transport passes through (a web SSO login returns via a full page reload, and a restored session boots straight in; a listener never fires for those). Only the join page's actually-firing submit consumes the cache — anything earlier proved lossy under competing boot-time navigations, and an interrupted attempt just retries on the next logged-in landing. A brand-new user's onboarding joins with the cached code instead. The same ferry carries a shared activity link (`/<uuid>`): its activity id is cached across the bounce, the guard redirects the logged-in landing into the activity token, and opening the activity panel consumes it; a pending join code outranks a pending activity. Nothing else replays the cache — a stale code must never re-fire a join from an unrelated screen — and it is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) so a visitor who never logs in can't leave a code that surprise-joins a much later login.
 
 **matrix.to links**: Standard Matrix links (`https://matrix.to/#/...`) go through a separate path. For knock-only rooms, this shows the public room bottom sheet with a code field and "Ask to Join" button.
 
@@ -125,22 +124,19 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 ## Deep Linking — Mobile & Web
 
-Class link URLs (`https://app.pangea.chat/#/join_with_link?classcode=XYZ`) must reach the app on mobile. iOS Universal Links and Android App Links are configured so the OS intercepts `app.pangea.chat` and opens the app directly when installed.
+A shared link (`/<code>` course join, `/<uuid>` activity) must reach the app on mobile. Three legs, in the order a tap resolves:
 
-### Key design decisions
+1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. Both platforms claim the whole host (Android intent filters have no path restriction; the iOS AASA declares `paths: ["*"]`), so every link shape is covered. The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested).
+2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.) — a store install cannot carry the link, so the web IS the fallback.
+3. **In-app browsers** (Instagram, Gmail webview, …) — Universal/App Links often don't fire there; the user stays on the web fallback, which works.
 
-- **Mobile redirect bypass for class links**: [`web/index.html`](../../web/index.html) has a redirect script that sends mobile users to `pangea://` (custom scheme) → app store fallback. This is **skipped** when the hash contains `join_with_link`, because the custom scheme loses the URL fragment (and thus the class code). Instead, the Flutter web app loads and handles it.
-- **Web as fallback**: When the app isn't installed, the web app processes the class code directly. No deferred deep linking service (Branch.io, etc.) is used.
-- **Hash-based routing**: The class code lives in the URL fragment (`#/join_with_link?classcode=XYZ`). iOS Universal Links deliver the full URL including fragment to the app.
+There is deliberately NO automatic store or `pangea://` bounce anywhere: modern mobile browsers block JS-initiated custom-scheme navigations without a user tap (and can swallow a queued store redirect with them), so the old auto-bounce failed silently — and on deep paths it dropped the link payload outright. Install prompts are tappable instead, and appear only where they don't cost a link: on iOS, the Smart App Banner (`apple-itunes-app`, `app-argument` = the live URL) renders natively on every page — "Open" hops an installed app in with the link intact, "View" goes to the App Store; on Android, [`web/index.html`](../../web/index.html) shows a small dismissible "Get the app" bar on bare-root visits only (dismissal remembered for two weeks).
 
 ### Infrastructure touchpoints
 
+- **Web SPA fallback** — the webapp CloudFront distribution serves `index.html` for any path (a 403/404 → `/index.html` mapping), so a bare `/<code>` (or a `/<uuid>` activity link) loads the app instead of hitting an S3 not-found. This replaces the retired short-code 302; it lives in the `pangeachat/devops` `static-web` module.
 - **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
-- **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml)
-- **URI listener** — [`MatrixState._processIncomingUris`](../../lib/widgets/matrix.dart) receives incoming URLs via `app_links` package, routes to GoRouter.
-- **Custom scheme** — `pangea://` registered on both platforms as a fallback, but cannot carry the fragment through a store install.
-
----
-
-## Future Work
+- **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml).
+- **Incoming-URI listener** — the listener in [`MatrixState`](../../lib/widgets/matrix.dart) receives inbound URLs via the `app_links` package and routes them into GoRouter.
+- **Custom scheme** — `pangea://` registered on both platforms as a store-install fallback.
 

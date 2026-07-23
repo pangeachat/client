@@ -59,6 +59,10 @@ class QuestStarSummary {
 /// One in-scope quest: its ordered Mission sequence, the resolved anchor (the
 /// Mission the learner most needs next), and a position lookup for the gradient.
 class QuestProgress {
+  /// The course-plan uuid this quest was resolved from — the key a per-course
+  /// surface looks itself up by ([ProgressionResolution.forCourse]).
+  final String courseId;
+
   final List<String> orderedMissionIds;
 
   /// The anchor (next) Mission: the first Mission in order whose star total is
@@ -69,32 +73,85 @@ class QuestProgress {
 
   final Map<String, int> indexByMission;
 
+  /// This quest's OWN per-Mission rollup, scoped to the activities its outline
+  /// lists — which, for a course that pins, is the pinned set.
+  ///
+  /// Scoping is the whole point. Missions are a shared catalog reused across
+  /// quests, so two joined courses routinely carry the same Mission with
+  /// different activities; rolling them up globally would clamp this course's
+  /// effective threshold against another course's content and credit its stars
+  /// (#7771). Where two courses genuinely list the SAME activity, each still
+  /// counts it — that case needs no union, since both outlines carry it.
+  ///
+  /// Holds only the quest's **scored** Missions — those the outline gives at
+  /// least one activity. A Mission with no activities offers no stars and the
+  /// panel doesn't render it at all (#7114), so counting it would break the
+  /// doc's denominator invariant (#7663). [orderedMissionIds] still carries the
+  /// full sequence, so gradient distances are unaffected.
+  final Map<String, MissionProgress> rollup;
+
   const QuestProgress({
+    required this.courseId,
     required this.orderedMissionIds,
     required this.anchorMissionId,
     required this.indexByMission,
+    required this.rollup,
   });
+
+  /// This quest's star summary: each scored Mission's stars capped at its
+  /// threshold, over the summed thresholds.
+  ///
+  /// Computed here, from [rollup], on purpose — callers do NOT pass a Mission
+  /// list. When they did, the course panel filtered to Missions with activities
+  /// while the header summed every LO in the quest, so hidden activity-less
+  /// Missions each added the default threshold to the denominator: one 4-star
+  /// activity displayed as 44 (#7663). One owner for "which Missions count"
+  /// means a caller can no longer disagree with the panel.
+  QuestStarSummary get starSummary {
+    var earned = 0;
+    var total = 0;
+    for (final progress in rollup.values) {
+      earned += progress.cappedStars;
+      total += progress.threshold;
+    }
+    return QuestStarSummary(earned: earned, total: total);
+  }
 }
 
-/// The shared resolution: the global per-Mission star rollup plus one
-/// [QuestProgress] per in-scope quest. Consumers read [missionGradient] to score
-/// an activity's relevance toward the learner's frontier.
+/// The shared resolution: one [QuestProgress] per in-scope quest, each with its
+/// own Mission rollup. Consumers read [missionGradient] to score an activity's
+/// relevance toward the learner's frontier, or [forCourse] to read a single
+/// course's star numbers.
 class ProgressionResolution {
-  /// Global per-Mission star rollup, summed across every in-scope quest's
-  /// activities (a Mission shared by several quests is counted once).
-  final Map<String, MissionProgress> rollup;
-
-  /// One entry per in-scope quest, each carrying its resolved anchor.
+  /// One entry per in-scope quest, each carrying its resolved anchor and its
+  /// own per-Mission rollup. There is deliberately no cross-quest rollup: a
+  /// star total only means something within the course whose activities it was
+  /// summed over (see [QuestProgress.rollup]).
   final List<QuestProgress> quests;
 
-  const ProgressionResolution({required this.rollup, required this.quests});
+  const ProgressionResolution({required this.quests});
 
   /// Fail-soft: a surface that asks before the resolver is built (or a learner
   /// with no in-scope quest) gets a neutral band, never a wall.
-  static const ProgressionResolution empty = ProgressionResolution(
-    rollup: {},
-    quests: [],
-  );
+  static const ProgressionResolution empty = ProgressionResolution(quests: []);
+
+  /// This course's resolved quest, or null when it isn't in scope (not joined,
+  /// or the resolution hasn't landed). Callers fail soft on null rather than
+  /// falling back to another course's numbers.
+  QuestProgress? forCourse(String? courseId) {
+    if (courseId == null) return null;
+    for (final quest in quests) {
+      if (quest.courseId == courseId) return quest;
+    }
+    return null;
+  }
+
+  /// [courseId]'s star summary, from that course's own rollup — never a
+  /// cross-course blend. Null when the course isn't in scope (a preview, or
+  /// before the resolution lands); the header then renders its muted empty bar
+  /// rather than a denominator invented from default thresholds.
+  QuestStarSummary? questStars(String? courseId) =>
+      forCourse(courseId)?.starSummary;
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity carrying
   /// [objectiveRefs]: 1.0 at a quest's anchor Mission, decaying linearly to 0
@@ -104,22 +161,6 @@ class ProgressionResolution {
   /// Missions ranks higher) and saturate at the ceiling. Outside any quest the
   /// activity's refs match nothing and this is 0 — the consumer then ranks it on
   /// plain level/L2 fit. See world-map.instructions.md Priority matrix.
-  /// The star summary for a quest given its ordered [missionIds]: per-Mission
-  /// stars capped at each threshold, summed, over the summed thresholds. A
-  /// Mission the rollup doesn't know (an outline not in scope) contributes its
-  /// default threshold and zero stars, so a partially-resolved panel still
-  /// shows a stable denominator.
-  QuestStarSummary questStars(Iterable<String> missionIds) {
-    var earned = 0;
-    var total = 0;
-    for (final id in missionIds) {
-      final progress = rollup[id];
-      earned += progress?.cappedStars ?? 0;
-      total += progress?.threshold ?? kDefaultStarsToUnlockObjective;
-    }
-    return QuestStarSummary(earned: earned, total: total);
-  }
-
   double missionGradient(Iterable<String> objectiveRefs) {
     if (quests.isEmpty) return 0;
     final refs = objectiveRefs.toSet();
@@ -134,7 +175,9 @@ class ProgressionResolution {
       for (final ref in refs) {
         final idx = quest.indexByMission[ref];
         if (idx == null) continue; // ref not part of this quest
-        if (rollup[ref]?.satisfied ?? false) continue; // satisfied → ~0
+        // Satisfied → ~0, judged against THIS quest's own rollup: a Mission
+        // finished in one course must not silence it in another.
+        if (quest.rollup[ref]?.satisfied ?? false) continue;
         final distance = idx - anchorIdx;
         if (distance < 0) continue; // a Mission before the anchor
         final contribution = 1.0 - distance / kBandFalloffMissions;
@@ -175,91 +218,88 @@ ProgressionResolution resolveProgression({
   required Iterable<CourseLoOutline> outlines,
   required Map<String, int> starsByActivity,
 }) {
-  // Global per-Mission view: union each Mission's activities across quests (so a
-  // star is never double-counted) and take the most lenient threshold when a
-  // Mission is shared.
-  final activitiesByMission = <String, Set<String>>{};
-  final thresholdByMission = <String, int>{};
-  final earnableByActivity = <String, int>{};
-  final sequences = <List<String>>[];
+  // Resolved per outline, NOT unioned across them. A Mission's star total is
+  // only meaningful against the activity set it was summed over, and Missions
+  // are a shared catalog: two joined courses commonly carry the same Mission
+  // with different activities, so a global rollup would clamp one course's
+  // threshold against the other's content and credit its stars (#7771). An
+  // activity two courses genuinely share still counts in both — each outline
+  // lists it, so nothing needs merging.
+  final quests = <QuestProgress>[];
 
   for (final outline in outlines) {
     final seq = outline.orderedLoIds;
     if (seq.isEmpty) continue;
-    sequences.add(seq);
-    outline.earnableByActivity.forEach((activityId, earnable) {
-      // Outlines carry the same plan, so values agree; min keeps a
-      // disagreement permissive (the lower ceiling clamps the threshold lower).
-      final existing = earnableByActivity[activityId];
-      earnableByActivity[activityId] = existing == null || earnable < existing
-          ? earnable
-          : existing;
-    });
+
+    final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
-      (activitiesByMission[missionId] ??= <String>{}).addAll(
-        outline.activityIdsByLo[missionId] ?? const <String>{},
+      final activities = outline.activityIdsByLo[missionId] ?? const <String>{};
+      // A Mission the outline gives NO activities offers no stars, and the
+      // panel doesn't render it (#7114). Leave it out of the rollup entirely
+      // rather than scoring it: counting it would add a full threshold to a
+      // denominator no content backs, which is how one 4-star activity came to
+      // display as 44 (#7663). Distinct from the zero-CEILING case below, where
+      // the Mission has activities whose plans carry no goal data.
+      if (activities.isEmpty) continue;
+
+      var stars = 0;
+      var earnableCeiling = 0;
+      for (final activityId in activities) {
+        stars += starsByActivity[activityId] ?? 0;
+        earnableCeiling += outline.earnableByActivity[activityId] ?? 0;
+      }
+      final configured = outline.starsToUnlock;
+      // Effective threshold: the configured stars-to-unlock clamped to the sum
+      // of earnable stars across the Mission's activities, so a Mission is
+      // always satisfiable from its content and displays never advertise stars
+      // the learner cannot earn (org quests doc invariant; #7663). A ceiling of
+      // 0 means no goal data reached the outline (degraded/legacy plans) —
+      // leave the configured threshold rather than marking it satisfied at 0.
+      rollup[missionId] = MissionProgress(
+        stars: stars,
+        threshold: earnableCeiling > 0 && earnableCeiling < configured
+            ? earnableCeiling
+            : configured,
       );
-      final existing = thresholdByMission[missionId];
-      thresholdByMission[missionId] = existing == null
-          ? outline.starsToUnlock
-          : (outline.starsToUnlock < existing
-                ? outline.starsToUnlock
-                : existing);
     }
+
+    quests.add(
+      QuestProgress(
+        courseId: outline.courseId,
+        orderedMissionIds: seq,
+        anchorMissionId: _anchorFor(seq, rollup),
+        indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
+        rollup: rollup,
+      ),
+    );
   }
 
-  final rollup = <String, MissionProgress>{};
-  activitiesByMission.forEach((missionId, activities) {
-    var stars = 0;
-    var earnableCeiling = 0;
-    for (final activityId in activities) {
-      stars += starsByActivity[activityId] ?? 0;
-      earnableCeiling += earnableByActivity[activityId] ?? 0;
-    }
-    final configured =
-        thresholdByMission[missionId] ?? kDefaultStarsToUnlockObjective;
-    // Effective threshold: the configured stars-to-unlock clamped to the sum of
-    // earnable stars across the Mission's activities, so a Mission is always
-    // satisfiable from its content and displays never advertise stars the
-    // learner cannot earn (org quests doc invariant; #7663). A ceiling of 0
-    // means no goal data reached the outline (degraded/legacy plans) — leave
-    // the configured threshold rather than marking the Mission satisfied at 0.
-    rollup[missionId] = MissionProgress(
-      stars: stars,
-      threshold: earnableCeiling > 0 && earnableCeiling < configured
-          ? earnableCeiling
-          : configured,
-    );
-  });
-
-  final quests = sequences
-      .map(
-        (seq) => QuestProgress(
-          orderedMissionIds: seq,
-          anchorMissionId: _anchorFor(seq, rollup),
-          indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
-        ),
-      )
-      .toList();
-
-  return ProgressionResolution(rollup: rollup, quests: quests);
+  return ProgressionResolution(quests: quests);
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission
 /// whose rollup is below threshold; once all are satisfied, the lowest-star
 /// Mission, tie-broken by earliest quest order (deterministic, so the anchor
 /// does not flicker between equal-star frames).
+///
+/// Missions absent from [rollup] are unscored — the outline gives them no
+/// activities — so they are skipped. Anchoring one would point the learner at a
+/// Mission with nothing to play and, being unsatisfiable, would pin the anchor
+/// there permanently. Null when the quest has no scored Mission at all.
 String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
   for (final missionId in seq) {
-    if (!(rollup[missionId]?.satisfied ?? false)) return missionId;
+    final progress = rollup[missionId];
+    if (progress == null) continue;
+    if (!progress.satisfied) return missionId;
   }
   String? lowest;
   int? lowestStars;
   for (final missionId in seq) {
-    final stars = rollup[missionId]?.stars ?? 0;
-    if (lowestStars == null || stars < lowestStars) {
+    final progress = rollup[missionId];
+    if (progress == null) continue;
+    if (lowestStars == null || progress.stars < lowestStars) {
       lowest = missionId;
-      lowestStars = stars;
+      lowestStars = progress.stars;
     }
   }
   return lowest;

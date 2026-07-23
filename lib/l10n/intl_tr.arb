@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-13 10:06:52.051615",
+    "@@last_modified": "2026-07-23 11:49:01.385800",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3314,7 +3314,6 @@
     "lastUpdated": "Güncellendi\n{time}",
     "activityFinishedMessage": "Hepsi Tamamlandı!",
     "endForAll": "Herkes İçin Sonlandır",
-    "newCourse": "Yeni kurs",
     "numModules": "{num} modül",
     "coursePlan": "Kurs Planı",
     "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
@@ -6267,10 +6266,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6683,8 +6678,6 @@
     "allow": "İzin ver",
     "deny": "Reddet",
     "enabledRenewal": "Abonelik Yenilemeyi Etkinleştir",
-    "subscriptionEndsOn": "Abonelik Şu Tarihte Sona Eriyor",
-    "subscriptionRenewsOn": "Abonelik Şu Tarihte Yenileniyor",
     "waitForSubscriptionChanges": "Aboneliğinizdeki değişikliklerin uygulamada yansıması biraz zaman alabilir.",
     "subscribeReadingAssistance": "Mesaj araçlarını açmak için abone olun",
     "aceDisplayName": "Achinese",
@@ -6959,14 +6952,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8683,7 +8668,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Ben öğreniyorum...",
     "alreadySpeak": "Ben zaten konuşuyorum...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9950,5 +9934,64 @@
     "starsToUnlockObjectiveTitle": "Görev Başına Yıldız",
     "starsToUnlockObjectiveDesc": "Her görevi tamamlamak için gereken yıldız sayısını ayarlayın",
     "maxStarsPerMissionWarning": "Bu kursta, yalnızca {maxValue} yıldız kazanılabilecek görevler bulunmaktadır. Lütfen {maxValue} sayısına eşit veya daha küçük bir sayı girin.",
-    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin."
+    "removedFromCourseError": "Bu dersten çıkarıldınız. Öğretmeninizle iletişime geçin.",
+    "endPractice": "Alıştırmayı bitir",
+    "bodyLabel": "{page} seçenekleri",
+    "openDM": "Direkt mesajı aç",
+    "openNewTab": "Yeni sekmede aç",
+    "viewProfileImageLabel": "Profil resmini görüntüle",
+    "profileImageLabel": "Profil resmi",
+    "actionsLabel": "Eylemler",
+    "colorListLabel": "Renk listesi",
+    "chatAppearanceStyleLabel": "Seçilen stille sohbet görünümü",
+    "volumeLabel": "Ses",
+    "listLabel": "{description} listesi",
+    "passwordFormLabel": "Şifre değiştirme formu",
+    "searchLanguagesHint": "Dilleri ara",
+    "searchCountriesHint": "Ülkeleri ara",
+    "searchVocabHint": "Kelime ara",
+    "searchUsersHint": "Kullanıcıları ara",
+    "searchMessagesHint": "Mesajları ara",
+    "searchChatsHint": "Sohbetleri ara",
+    "searchActivitiesHint": "Etkinlikleri ara",
+    "appInTargetLanguageTitle": "Uygulamayı öğrendiğim dilde göster",
+    "appInTargetLanguageDesc": "Menüler, düğmeler ve etiketler, kendinizi dile kaptırmanız için hedef dilinizde görünür. Çevrilmemiş metinler İngilizce olarak gösterilir.",
+    "changePasswordSessionExpired": "Oturumunuzun süresi doldu. Lütfen tekrar giriş yapın.",
+    "constructUseSugDesc": "Kabul edilen öneriler",
+    "mostPopular": "En popüler",
+    "mostSavings": "En çok tasarruf",
+    "enterDiscountCode": "İndirim kodunu girin",
+    "yourPlan": "Planınız",
+    "subscriptionRenewsOn": "{date} tarihinde yenilenir",
+    "subscriptionEndsOn": "{date} tarihinde sona erer",
+    "promoSubscription": "Promosyon Aboneliği",
+    "seatSubscription": "Kurumsal Koltuk",
+    "lifetimeSubscription": "Ömür boyu abonelik",
+    "freeSubscription": "ÜCRETSİZ",
+    "freeTrialDescription": "Ücretsiz deneme sürümünüz var",
+    "manage": "Yönet",
+    "subscriptionHistory": "Abonelik Geçmişi",
+    "history": "Geçmiş",
+    "noPaymentHistoryFound": "Ödeme geçmişi bulunamadı",
+    "cancelAnytime": "Abonelik ayarlarından istediğiniz zaman iptal edin",
+    "pricePerMonth": "{price}/ay",
+    "pricePerYear": "{price}/yıl",
+    "viewSubscriptionOptions": "Abonelik seçeneklerini görüntüle",
+    "apply": "Uygula",
+    "continueToSubscribe": "Abone olmaya devam et",
+    "invalidDiscountCode": "Geçersiz indirim kodu",
+    "selectDiscountPlan": "İndirim planı seçin",
+    "discountApplied": "{discount} indirim uygulandı",
+    "cancelDescriptionWithRenewalDate": "Aboneliğiniz yenileme tarihine ({date}) kadar aktif olacak, ardından devre dışı bırakılacaktır. Analizlerinizi koruyacak ancak profesyonel özellikleri kullanamayacaksınız.",
+    "cancelDescriptionWithoutRenewalDate": "Aboneliğiniz yenileme tarihine kadar aktif olacak, ardından devre dışı bırakılacaktır. Analizlerinizi koruyacak ancak profesyonel özellikleri kullanamayacaksınız.",
+    "change": "Değiştir",
+    "deactivateSubscribedAccountWarning": "Bu işlem kullanıcı hesabınızı devre dışı bırakacak ve aboneliğinizi iptal edecektir. Bu işlem geri alınamaz! Emin misiniz?",
+    "newCourseWithoutTitle": "Kursu başlat",
+    "newCourseWithTitle": "\"{title}\" kursunu başlat",
+    "joinCourseWithTitle": "\"{title}\" kursuna katıl",
+    "searchCoursePlans": "Ders planlarını ara",
+    "searchPublicCourses": "Herkese açık dersleri ara",
+    "closeSearch": "Aramayı kapat",
+    "subscriptionsNotAvailableInApp": "Uygulama içinden abonelik satın alınamaz",
+    "subscribeOnTheWeb": "pangea.chat adresinden web üzerinden abone olabilirsiniz"
 }

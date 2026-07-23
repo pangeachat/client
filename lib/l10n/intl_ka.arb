@@ -1873,7 +1873,6 @@
     "lastUpdated": "განახლებულია\n{time}",
     "activityFinishedMessage": "ყველაფერი დასრულდა!",
     "endForAll": "დასრულება ყველასთვის",
-    "newCourse": "ახალი კურსი",
     "numModules": "{num} მოდული",
     "coursePlan": "კურსის გეგმა",
     "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
@@ -1947,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-13 10:08:26.000408",
+    "@@last_modified": "2026-07-23 11:48:56.488142",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6872,10 +6871,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -7288,8 +7283,6 @@
     "allow": "დაშვება",
     "deny": "უარყოფა",
     "enabledRenewal": "გამოწერის განახლების გაწვდვა",
-    "subscriptionEndsOn": "გამოწერა მთავრდება",
-    "subscriptionRenewsOn": "გამოწერა განახლდება",
     "waitForSubscriptionChanges": "თქვენი გამოწერის ცვლილებებს შეიძლება რამდენიმე წუთი დასჭირდეს აპლიკაციაში ასახვისთვის.",
     "subscribeReadingAssistance": "გამოწერა მესიჯების ინსტრუმენტების გასახსნელად",
     "aceDisplayName": "აჩინეზი",
@@ -7564,14 +7557,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9288,7 +9273,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "მე ვსწავლობ...",
     "alreadySpeak": "მე უკვე ვსაუბრობ...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10555,5 +10539,64 @@
     "starsToUnlockObjectiveTitle": "ვარსკვლავები თითო მისიაზე",
     "starsToUnlockObjectiveDesc": "დააყენეთ ვარსკვლავების რაოდენობა, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
     "maxStarsPerMissionWarning": "ამ კურსს აქვს მისიები, სადაც მხოლოდ {maxValue} ვარსკვლავის მოპოვებაა შესაძლებელი. გთხოვთ, შეიყვანოთ რიცხვი, რომელიც ნაკლებია ან ტოლია {maxValue}-ზე.",
-    "removedFromCourseError": "თქვენ მოგაშორეს ამ კურსიდან. დაუკავშირდით თქვენს მასწავლებელს."
+    "removedFromCourseError": "თქვენ მოგაშორეს ამ კურსიდან. დაუკავშირდით თქვენს მასწავლებელს.",
+    "endPractice": "ვარჯიშის დასრულება",
+    "bodyLabel": "{page} პარამეტრები",
+    "openDM": "პირდაპირი შეტყობინების გახსნა",
+    "openNewTab": "გახსნა ახალ ჩანართში",
+    "viewProfileImageLabel": "პროფილის სურათის ნახვა",
+    "profileImageLabel": "პროფილის სურათი",
+    "actionsLabel": "მოქმედებები",
+    "colorListLabel": "ფერთა სია",
+    "chatAppearanceStyleLabel": "ჩეთის იერსახე არჩეული სტილით",
+    "volumeLabel": "ხმა",
+    "listLabel": "{description} სია",
+    "passwordFormLabel": "პაროლის შეცვლის ფორმა",
+    "searchLanguagesHint": "ენების ძიება",
+    "searchCountriesHint": "ქვეყნების ძიება",
+    "searchVocabHint": "ლექსიკის ძიება",
+    "searchUsersHint": "მომხმარებლების ძიება",
+    "searchMessagesHint": "შეტყობინებების ძიება",
+    "searchChatsHint": "ჩეთების ძიება",
+    "searchActivitiesHint": "აქტივობების ძიება",
+    "appInTargetLanguageTitle": "აპლიკაციის ჩვენება იმ ენაზე, რომელსაც ვსწავლობ",
+    "appInTargetLanguageDesc": "მენიუები, ღილაკები და ეტიკეტები გამოჩნდება თქვენს სამიზნე ენაზე ჩაძირვისთვის. გადაუთარგმნელი ტექსტი ინგლისურზე დაბრუნდება.",
+    "changePasswordSessionExpired": "თქვენი სესია ამოიწურა. გთხოვთ, ხელახლა შეხვიდეთ სისტემაში.",
+    "constructUseSugDesc": "მიღებული შემოთავაზებები",
+    "mostPopular": "ყველაზე პოპულარული",
+    "mostSavings": "ყველაზე მეტი დანაზოგი",
+    "enterDiscountCode": "შეიყვანეთ ფასდაკლების კოდი",
+    "yourPlan": "თქვენი გეგმა",
+    "subscriptionRenewsOn": "განახლდება {date}-ზე",
+    "subscriptionEndsOn": "მთავრდება {date}-ზე",
+    "promoSubscription": "სარეკლამო გამოწერა",
+    "seatSubscription": "ინსტიტუციური ადგილი",
+    "lifetimeSubscription": "უვადო გამოწერა",
+    "freeSubscription": "უფასო",
+    "freeTrialDescription": "თქვენ გაქვთ უფასო საცდელი პერიოდი",
+    "manage": "მართვა",
+    "subscriptionHistory": "გამოწერის ისტორია",
+    "history": "ისტორია",
+    "noPaymentHistoryFound": "გადახდის ისტორია ვერ მოიძებნა",
+    "cancelAnytime": "გაუქმება ნებისმიერ დროს გამოწერის პარამეტრებში",
+    "pricePerMonth": "{price}/თვე",
+    "pricePerYear": "{price}/წელი",
+    "viewSubscriptionOptions": "გამოწერის ვარიანტების ნახვა",
+    "apply": "გამოყენება",
+    "continueToSubscribe": "გამოწერის გასაგრძელებლად",
+    "invalidDiscountCode": "არასწორი ფასდაკლების კოდი",
+    "selectDiscountPlan": "აირჩიეთ ფასდაკლების გეგმა",
+    "discountApplied": "{discount} ფასდაკლება გამოყენებულია",
+    "cancelDescriptionWithRenewalDate": "თქვენი გამოწერა აქტიური იქნება განახლების თარიღამდე ({date}), შემდეგ გაუქმდება. თქვენ შეინარჩუნებთ ანალიტიკას, მაგრამ ვერ გამოიყენებთ პრო ფუნქციებს.",
+    "cancelDescriptionWithoutRenewalDate": "თქვენი გამოწერა აქტიური იქნება განახლების თარიღამდე, შემდეგ გაუქმდება. თქვენ შეინარჩუნებთ ანალიტიკას, მაგრამ ვერ გამოიყენებთ პრო ფუნქციებს.",
+    "change": "შეცვლა",
+    "deactivateSubscribedAccountWarning": "ეს გააუქმებს თქვენს მომხმარებლის ანგარიშს და გააუქმებს თქვენს გამოწერას. ამის გაუქმება შეუძლებელია! დარწმუნებული ხართ?",
+    "newCourseWithoutTitle": "კურსის დაწყება",
+    "newCourseWithTitle": "დაიწყეთ „{title}“",
+    "joinCourseWithTitle": "შეუერთდით „{title}“-ს",
+    "searchCoursePlans": "მოძებნეთ კურსის გეგმები",
+    "searchPublicCourses": "მოძებნეთ საჯარო კურსები",
+    "closeSearch": "ძიების დახურვა",
+    "subscriptionsNotAvailableInApp": "აპში გამოწერა შეუძლებელია",
+    "subscribeOnTheWeb": "შეგიძლიათ გამოიწეროთ ვებგვერდზე pangea.chat"
 }

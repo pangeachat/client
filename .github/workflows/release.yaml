@@ -151,6 +151,20 @@ jobs:
           asset_name: pangeachat.apk
           asset_content_type: application/vnd.android.package-archive
 
+  build_ios:
+    needs: create_release
+    uses: ./.github/workflows/ios-testflight.yml
+    with:
+      environment: production
+    secrets: inherit
+
+  deploy_playstore:
+    needs: create_release
+    uses: ./.github/workflows/android-playstore.yml
+    with:
+      environment: production
+    secrets: inherit
+
   build_linux:
     strategy:
       matrix:
@@ -268,7 +282,41 @@ jobs:
           done
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths "/*"
+          INVALIDATION_ID=$(aws cloudfront create-invalidation \
+            --distribution-id $CF_DISTRIBUTION_ID --paths "/*" \
+            --query 'Invalidation.Id' --output text)
+          echo "INVALIDATION_ID=$INVALIDATION_ID" >> "$GITHUB_ENV"
+      - name: Post-deploy smoke — deep-link files and served scripts
+        # The SPA index fallback serves index.html with a 200 for ANY missing
+        # path (deep-link design, joining-courses.instructions.md), which
+        # turns two loud failures silent: a dropped .well-known file breaks
+        # installed-app links invisibly, and a missing build artifact
+        # presents as a white screen instead of a 404. This step makes them
+        # loud again at deploy time (#7862).
+        run: |
+          set -e
+          BASE="https://app.pangea.chat"
+          aws cloudfront wait invalidation-completed \
+            --distribution-id $CF_DISTRIBUTION_ID --id "$INVALIDATION_ID"
+
+          # 1. .well-known files are real JSON carrying the app id — not the
+          #    SPA fallback's HTML.
+          for f in apple-app-site-association assetlinks.json; do
+            curl -sf "$BASE/.well-known/$f" \
+              | python3 -c "import sys,json; assert 'com.talktolearn.chat' in json.dumps(json.load(sys.stdin))" \
+              || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
+          done
+
+          # 2. Runtime entry scripts serve as JavaScript, not the SPA shell.
+          for f in flutter.js main.dart.js; do
+            head=$(curl -sf "$BASE/$f" | head -c 1)
+            [ "$head" != "<" ] && [ -n "$head" ] \
+              || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
+          done
+
+          # 3. A deep path serves the SPA shell (the fallback is alive).
+          curl -sf "$BASE/zz9smoke" | grep -qi "<html\|<base\|flutter" \
+            || { echo "::error::deep path did not serve the SPA shell — fallback broken?"; exit 1; }
 
   update_sentry:
     runs-on: ubuntu-latest

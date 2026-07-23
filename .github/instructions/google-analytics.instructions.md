@@ -28,6 +28,34 @@ and rationale live in the
 Event names, params, and screen names are still a cross-service contract: the
 measurement mirror must stay joinable by name with those first-party facts.
 
+## What GA answers (the product questions)
+
+GA exists to answer a short list of named product questions, each mapped to
+its instrument — a report that cannot answer its question is a bug, and a
+new product event must state which question it serves or it doesn't ship:
+
+1. **Are new users activating?** — the Activation funnel:
+   [activation.sql](https://github.com/pangeachat/devops/blob/main/analytics/funnels/activation.sql)
+   (`sign_up → sent_message → start_activity`).
+2. **Which panels do learners actually use, per platform?** —
+   [Pages and screens by "Page title and screen name"](https://analytics.google.com/analytics/web/#/p323613034/reports/explorer?params=_r.explorerCard..seldim%3D%5B%22unifiedScreenName%22%5D&r=all-pages-and-screens)
+   (prod; swap the property id for staging, see Screen tracking below).
+3. **Does anyone reach and convert on the subscription page?** — screen
+   `settingspage:subscription` plus the Subscription conversion funnel:
+   [subscription_conversion.sql](https://github.com/pangeachat/devops/blob/main/analytics/funnels/subscription_conversion.sql)
+   (`begin_checkout → purchase`).
+4. **Do learners come back?** — GA4
+   [retention cohorts](https://analytics.google.com/analytics/web/#/p323613034/reports/reportinghub)
+   keyed on the pseudonymous user id.
+5. **Are practice and teacher surfaces adopted?** — screen-based funnels,
+   once title data accrues.
+
+Canonical funnel definitions are SQL over the BigQuery export in the devops
+repo (`analytics/funnels/` — see its ga-analytics-sync doc); GA UI
+explorations are non-canonical convenience views. At current MAU these
+reads are directional, not statistical; per-learner truth stays first-party
+per the engagement-analytics contract above.
+
 ## Screen tracking
 
 - **A screen name is the focused panel's token with identity stripped — token
@@ -66,6 +94,18 @@ measurement mirror must stay joinable by name with those first-party facts.
   is a real screen view even though it replaces the history entry.
 - **Event vocabulary matches the token grammar**: `vocab` / `grammar`, never
   `morph`.
+- **On web, GA's page_title field mirrors the screen name — exactly, no
+  prefix — while the visible tab title stays the application name.** GA's
+  web layer reports by page title, and the web SDK's `screen_name` param is
+  invisible to GA's built-in dimensions (verified empirically: with a
+  Platform=web comparison, every screen-name row reads zero). So the tracker
+  overrides the GA tag's `page_title` via `gtag('set')` on each screen
+  change, making web rows merge with app rows under "Page title and screen
+  name" — but `document.title` is never touched: the browser tab reads
+  "Pangea Chat" throughout. The registered `screen_name` custom dimension
+  ("Screen name web", declared in the devops `analytics/ga-config.yaml`
+  spec for both properties) remains the event-grain key for Explorations
+  and BigQuery.
 
 ## Event shape
 

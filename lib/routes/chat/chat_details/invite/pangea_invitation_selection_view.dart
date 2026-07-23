@@ -17,6 +17,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
@@ -58,7 +59,13 @@ class PangeaInvitationSelectionView extends StatelessWidget {
         ),
         centerTitle: false,
         actions: [
-          ShareRoomButton(room: room, child: const Icon(Icons.share_outlined)),
+          Padding(
+            padding: .only(right: FluffyThemes.isColumnMode(context) ? 0 : 16),
+            child: ShareRoomButton(
+              room: room,
+              child: const Icon(Icons.share_outlined),
+            ),
+          ),
         ],
       ),
       body: MaxWidthBody(
@@ -71,37 +78,24 @@ class PangeaInvitationSelectionView extends StatelessWidget {
           child: Column(
             spacing: 12.0,
             children: [
-              TextField(
+              PangeaSearchBar(
+                labelText: L10n.of(context).searchUsersHint,
                 controller: controller.controller,
-                textInputAction: TextInputAction.search,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: theme.colorScheme.secondaryContainer,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  hintStyle: TextStyle(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  hintText: L10n.of(context).search,
-                  prefixIcon: controller.loading
-                      ? const Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 12,
-                          ),
-                          child: SizedBox.square(
-                            dimension: 24,
-                            child: CircularProgressIndicator.adaptive(
-                              strokeWidth: 2,
-                            ),
-                          ),
-                        )
-                      : const Icon(Icons.search_outlined),
-                ),
                 onChanged: controller.searchUserWithCoolDown,
+                prefixIcon: controller.loading
+                    ? const Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 12,
+                        ),
+                        child: SizedBox.square(
+                          dimension: 24,
+                          child: CircularProgressIndicator.adaptive(
+                            strokeWidth: 2,
+                          ),
+                        ),
+                      )
+                    : null,
               ),
               Align(
                 alignment: Alignment.centerLeft,

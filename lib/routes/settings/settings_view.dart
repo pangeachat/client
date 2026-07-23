@@ -65,9 +65,9 @@ class SettingsView extends StatelessWidget {
             // Pangea#
             body: ListTileTheme(
               iconColor: theme.colorScheme.onSurface,
-              // #Pangea
-              child: SafeArea(
-                // Pangea#
+              child: Semantics(
+                label: L10n.of(context).bodyLabel(L10n.of(context).settings),
+                container: true,
                 child: ListView(
                   key: const Key('SettingsListViewContent'),
                   children: [
@@ -193,7 +193,10 @@ class SettingsView extends StatelessWidget {
                       leading: const Icon(Icons.shield_outlined),
                       title: Text(L10n.of(context).termsAndConditions),
                       onTap: () => launchUrlString(AppConfig.termsOfServiceUrl),
-                      trailing: const Icon(Icons.open_in_new_outlined),
+                      trailing: Semantics(
+                        label: L10n.of(context).openNewTab,
+                        child: const Icon(Icons.open_in_new_outlined),
+                      ),
                     ),
                     if (MatrixState
                         .pangeaController
@@ -206,7 +209,10 @@ class SettingsView extends StatelessWidget {
                               ConnectionState.done) {
                             return ListTile(
                               leading: const Icon(Icons.info_outline),
-                              trailing: const Icon(Icons.copy_outlined),
+                              trailing: Semantics(
+                                label: L10n.of(context).copy,
+                                child: const Icon(Icons.copy_outlined),
+                              ),
                               onTap: () async {
                                 if (snapshot.data == null) return;
                                 await Clipboard.setData(

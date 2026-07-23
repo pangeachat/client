@@ -3501,7 +3501,6 @@
     "lastUpdated": "Nuashonraithe\n{time}",
     "activityFinishedMessage": "Críochnaíodh go léir!",
     "endForAll": "Críochnaigh do gach duine",
-    "newCourse": "Cúrsa Nua",
     "numModules": "{num} modúl",
     "coursePlan": "Plean Cúrsa",
     "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
@@ -3575,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-13 10:08:35.278726",
+    "@@last_modified": "2026-07-23 11:48:54.840236",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -6153,10 +6152,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6569,8 +6564,6 @@
     "allow": "Ceadaigh",
     "deny": "Diúltaigh",
     "enabledRenewal": "Cuir Athnuachan Suibscríofa ar Siúl",
-    "subscriptionEndsOn": "Críochnaíonn an Suibscríobh Ar",
-    "subscriptionRenewsOn": "Athnuachan an Suibscríobh Ar",
     "waitForSubscriptionChanges": "D'fhéadfadh go dtógfadh athruithe ar do shuibscríobh nóiméad chun léiriú a fháil sa aip.",
     "subscribeReadingAssistance": "Suibscríobh chun uirlisí teachtaireachta a dhíghlasáil",
     "aceDisplayName": "Achinese",
@@ -6845,14 +6838,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8393,7 +8378,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Táim ag foghlaim...",
     "alreadySpeak": "Labhraím cheana...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9660,5 +9644,64 @@
     "starsToUnlockObjectiveTitle": "Réaltaí in aghaidh an Mhisean",
     "starsToUnlockObjectiveDesc": "Socraigh an líon réaltaí atá ag teastáil chun gach misean a chríochnú",
     "maxStarsPerMissionWarning": "Tá misin sa chúrsa seo nach féidir ach {maxValue} réalta a thuilleamh iontu. Cuir isteach uimhir atá níos lú ná nó cothrom le {maxValue}.",
-    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir."
+    "removedFromCourseError": "Baineadh den chúrsa seo thú. Déan teagmháil le do mhúinteoir.",
+    "endPractice": "Cuir deireadh leis an gcleachtadh",
+    "bodyLabel": "Roghanna {page}",
+    "openDM": "Oscail teachtaireacht dhíreach",
+    "openNewTab": "Oscail i gcluaisín nua",
+    "viewProfileImageLabel": "Féach ar íomhá próifíle",
+    "profileImageLabel": "Íomhá próifíle",
+    "actionsLabel": "Gníomhartha",
+    "colorListLabel": "Liosta dathanna",
+    "chatAppearanceStyleLabel": "Cuma comhrá leis an stíl roghnaithe",
+    "volumeLabel": "Toirt",
+    "listLabel": "Liosta {description}",
+    "passwordFormLabel": "Foirm athraithe pasfhocail",
+    "searchLanguagesHint": "Cuardaigh teangacha",
+    "searchCountriesHint": "Cuardaigh tíortha",
+    "searchVocabHint": "Cuardaigh foclóir",
+    "searchUsersHint": "Cuardaigh úsáideoirí",
+    "searchMessagesHint": "Cuardaigh teachtaireachtaí",
+    "searchChatsHint": "Cuardaigh comhráite",
+    "searchActivitiesHint": "Cuardaigh gníomhaíochtaí",
+    "appInTargetLanguageTitle": "Taispeáin an aip sa teanga atáim ag foghlaim",
+    "appInTargetLanguageDesc": "Beidh biachláir, cnaipí, agus lipéid le feiceáil i do sprioc-theanga le haghaidh tumoideachais. Tiocfaidh téacs neamh-aistrithe ar ais go Béarla.",
+    "changePasswordSessionExpired": "Tá do sheisiún imithe in éag. Logáil isteach arís, le do thoil.",
+    "constructUseSugDesc": "Moltaí glactha",
+    "mostPopular": "Is mó a bhfuil tóir air",
+    "mostSavings": "An coigilteas is mó",
+    "enterDiscountCode": "Cuir isteach cód lascaine",
+    "yourPlan": "Do phlean",
+    "subscriptionRenewsOn": "Athnuaitear ar an {date}",
+    "subscriptionEndsOn": "Críochnaíonn ar an {date}",
+    "promoSubscription": "Síntiús Promóisin",
+    "seatSubscription": "Suíochán Institiúideach",
+    "lifetimeSubscription": "Síntiús saoil",
+    "freeSubscription": "SAOR IN AISCE",
+    "freeTrialDescription": "Tá triail saor in aisce agat",
+    "manage": "Bainistigh",
+    "subscriptionHistory": "Stair an tSíntiúis",
+    "history": "Stair",
+    "noPaymentHistoryFound": "Níor aimsíodh aon stair íocaíochta",
+    "cancelAnytime": "Cealaigh am ar bith i socruithe an tsíntiúis",
+    "pricePerMonth": "{price}/mí",
+    "pricePerYear": "{price}/bliain",
+    "viewSubscriptionOptions": "Féach ar roghanna síntiúis",
+    "apply": "Cuir i bhfeidhm",
+    "continueToSubscribe": "Lean ar aghaidh le síntiús a ghlacadh",
+    "invalidDiscountCode": "Cód lascaine neamhbhailí",
+    "selectDiscountPlan": "Roghnaigh plean lascaine",
+    "discountApplied": "Lascaine {discount} curtha i bhfeidhm",
+    "cancelDescriptionWithRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana ({date}), ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
+    "cancelDescriptionWithoutRenewalDate": "Beidh do shíntiús gníomhach go dtí dáta a athnuachana, ansin díghníomhófar é. Coinneoidh tú anailísíocht ach ní bheidh tú in ann gnéithe pro a úsáid.",
+    "change": "Athraigh",
+    "deactivateSubscribedAccountWarning": "Díghníomhóidh sé seo do chuntas úsáideora agus cealóidh sé do shíntiús. Ní féidir é seo a chealú! An bhfuil tú cinnte?",
+    "newCourseWithoutTitle": "Tosaigh cúrsa",
+    "newCourseWithTitle": "Tosaigh \"{title}\"",
+    "joinCourseWithTitle": "Bí páirteach i \"{title}\"",
+    "searchCoursePlans": "Cuardaigh pleananna cúrsaí",
+    "searchPublicCourses": "Cuardaigh cúrsaí poiblí",
+    "closeSearch": "Dún an cuardach",
+    "subscriptionsNotAvailableInApp": "Ní féidir síntiúis a cheannach san aip",
+    "subscribeOnTheWeb": "Is féidir leat síntiús a ghlacadh ar an ngréasán ag pangea.chat"
 }

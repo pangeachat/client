@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-13 10:07:31.143106",
+    "@@last_modified": "2026-07-23 11:49:02.122822",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3496,7 +3496,6 @@
     "lastUpdated": "更新于\n{time}",
     "activityFinishedMessage": "全部完成！",
     "endForAll": "全部结束",
-    "newCourse": "新课程",
     "numModules": "{num} 个模块",
     "coursePlan": "课程计划",
     "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
@@ -6146,10 +6145,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@numModules": {
         "type": "int",
         "placeholders": {
@@ -6562,8 +6557,6 @@
     "allow": "允许",
     "deny": "拒绝",
     "enabledRenewal": "启用订阅续费",
-    "subscriptionEndsOn": "订阅结束于",
-    "subscriptionRenewsOn": "订阅续费于",
     "waitForSubscriptionChanges": "您的订阅更改可能需要一些时间才能在应用中反映。",
     "subscribeReadingAssistance": "订阅以解锁消息工具",
     "aceDisplayName": "Achinese",
@@ -6838,14 +6831,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -8382,7 +8367,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "我正在学习...",
     "alreadySpeak": "我已经会说...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -9649,5 +9633,64 @@
     "starsToUnlockObjectiveTitle": "每个任务的星数",
     "starsToUnlockObjectiveDesc": "设置完成每个任务所需的星数",
     "maxStarsPerMissionWarning": "此课程中的任务最多只能获得 {maxValue} 颗星。请输入一个小于或等于 {maxValue} 的数字。",
-    "removedFromCourseError": "您已被移出此课程。请联系您的老师。"
+    "removedFromCourseError": "您已被移出此课程。请联系您的老师。",
+    "endPractice": "结束练习",
+    "bodyLabel": "{page}选项",
+    "openDM": "打开私信",
+    "openNewTab": "在新标签页中打开",
+    "viewProfileImageLabel": "查看个人资料图片",
+    "profileImageLabel": "个人资料图片",
+    "actionsLabel": "操作",
+    "colorListLabel": "颜色列表",
+    "chatAppearanceStyleLabel": "聊天界面样式",
+    "volumeLabel": "音量",
+    "listLabel": "{description}列表",
+    "passwordFormLabel": "更改密码表单",
+    "searchLanguagesHint": "搜索语言",
+    "searchCountriesHint": "搜索国家",
+    "searchVocabHint": "搜索词汇",
+    "searchUsersHint": "搜索用户",
+    "searchMessagesHint": "搜索消息",
+    "searchChatsHint": "搜索聊天",
+    "searchActivitiesHint": "搜索动态",
+    "appInTargetLanguageTitle": "以我正在学习的语言显示应用",
+    "appInTargetLanguageDesc": "菜单、按钮和标签将以您的目标语言显示，以实现沉浸式体验。未翻译的文本将回退到英语。",
+    "changePasswordSessionExpired": "您的会话已过期。请重新登录。",
+    "constructUseSugDesc": "已接受的建议",
+    "mostPopular": "最受欢迎",
+    "mostSavings": "最省钱",
+    "enterDiscountCode": "输入折扣码",
+    "yourPlan": "您的计划",
+    "subscriptionRenewsOn": "续订日期：{date}",
+    "subscriptionEndsOn": "结束日期：{date}",
+    "promoSubscription": "促销订阅",
+    "seatSubscription": "机构席位",
+    "lifetimeSubscription": "终身订阅",
+    "freeSubscription": "免费",
+    "freeTrialDescription": "您有一个免费试用",
+    "manage": "管理",
+    "subscriptionHistory": "订阅历史",
+    "history": "历史",
+    "noPaymentHistoryFound": "未找到付款历史",
+    "cancelAnytime": "随时可在订阅设置中取消",
+    "pricePerMonth": "{price}/月",
+    "pricePerYear": "{price}/年",
+    "viewSubscriptionOptions": "查看订阅选项",
+    "apply": "应用",
+    "continueToSubscribe": "继续订阅",
+    "invalidDiscountCode": "无效的折扣码",
+    "selectDiscountPlan": "选择折扣计划",
+    "discountApplied": "已应用{discount}折扣",
+    "cancelDescriptionWithRenewalDate": "您的订阅将持续有效至续订日期 ({date})，然后停用。您将保留分析数据，但无法使用专业功能。",
+    "cancelDescriptionWithoutRenewalDate": "您的订阅将持续有效至续订日期，然后停用。您将保留分析数据，但无法使用专业功能。",
+    "change": "更改",
+    "deactivateSubscribedAccountWarning": "这将停用您的用户帐户并取消您的订阅。此操作无法撤销！您确定吗？",
+    "newCourseWithoutTitle": "开始课程",
+    "newCourseWithTitle": "开始“{title}”",
+    "joinCourseWithTitle": "加入“{title}”",
+    "searchCoursePlans": "搜索课程计划",
+    "searchPublicCourses": "搜索公共课程",
+    "closeSearch": "关闭搜索",
+    "subscriptionsNotAvailableInApp": "无法在应用内购买订阅",
+    "subscribeOnTheWeb": "您可以在 pangea.chat 网站上订阅"
 }

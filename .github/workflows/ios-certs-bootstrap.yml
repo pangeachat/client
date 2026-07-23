@@ -1,0 +1,37 @@
+name: Bootstrap iOS signing certs (one-time)
+# Mints the Apple Distribution certificate + App Store provisioning profile via
+# fastlane match and stores them encrypted in pangeachat/ios-certificates.
+# Run once (and again only to rotate). Requires secrets: MATCH_PASSWORD,
+# MATCH_GIT_SSH_KEY (write deploy key on ios-certificates), and the
+# APP_STORE_CONNECT_API_KEY_* set.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap_certs:
+    runs-on: macos-15
+    environment: production
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
+        with:
+          ruby-version: "3.3"
+      - name: Install Fastlane
+        run: gem install fastlane -NV
+      - name: Load match repo deploy key
+        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd # v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.MATCH_GIT_SSH_KEY }}
+      - name: Mint certs into match repo
+        working-directory: ios
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+          APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64 }}
+        run: fastlane ios bootstrap_certs
