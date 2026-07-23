@@ -15,12 +15,20 @@ class MorphMeaningWidget extends StatefulWidget {
   final TextStyle? style;
   final bool blankErrorFeedback;
 
+  /// Bumped by an ancestor when the cached meaning for this (feature, tag) is
+  /// regenerated in place — e.g. after grammar-meaning feedback is applied
+  /// (#7676). The (feature, tag) identity is unchanged, so `didUpdateWidget`'s
+  /// identity check can't catch it; listening to this notifier re-fetches the
+  /// now-updated copy. Mirrors LemmaMeaningBuilder / PhoneticTranscriptionBuilder.
+  final ValueNotifier<int>? reloadNotifier;
+
   const MorphMeaningWidget({
     super.key,
     required this.feature,
     required this.tag,
     this.style,
     this.blankErrorFeedback = false,
+    this.reloadNotifier,
   });
 
   @override
@@ -38,18 +46,24 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
   void initState() {
     super.initState();
     _loadMorphMeaning();
+    widget.reloadNotifier?.addListener(_loadMorphMeaning);
   }
 
   @override
   void didUpdateWidget(covariant MorphMeaningWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.reloadNotifier != widget.reloadNotifier) {
+      oldWidget.reloadNotifier?.removeListener(_loadMorphMeaning);
+      widget.reloadNotifier?.addListener(_loadMorphMeaning);
+    }
     if (oldWidget.tag != widget.tag || oldWidget.feature != widget.feature) {
       _loadMorphMeaning();
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
+    widget.reloadNotifier?.removeListener(_loadMorphMeaning);
     _loader.dispose();
     super.dispose();
   }
@@ -86,18 +100,21 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return switch (_loader.value) {
-      AsyncLoading() || AsyncIdle() => const TextLoadingShimmer(),
-      AsyncError() => Text(
-        textAlign: TextAlign.center,
-        L10n.of(context).meaningNotFound,
-        style: widget.style,
-      ),
-      AsyncLoaded(value: final tag) => Text(
-        textAlign: TextAlign.center,
-        tag.description,
-        style: widget.style,
-      ),
-    };
+    return ValueListenableBuilder(
+      valueListenable: _loader,
+      builder: (context, loaderState, _) => switch (loaderState) {
+        AsyncLoading() || AsyncIdle() => const TextLoadingShimmer(),
+        AsyncError() => Text(
+          textAlign: TextAlign.center,
+          L10n.of(context).meaningNotFound,
+          style: widget.style,
+        ),
+        AsyncLoaded(value: final tag) => Text(
+          textAlign: TextAlign.center,
+          tag.description,
+          style: widget.style,
+        ),
+      },
+    );
   }
 }
