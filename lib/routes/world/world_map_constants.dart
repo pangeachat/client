@@ -100,19 +100,46 @@ class WorldMapConstants {
     curve: Curves.easeInOut,
   );
 
-  /// Interpolate longitude from [start] to [end] at pan progress [t] along the
-  /// SHORTEST angular direction (#7880). A raw linear tween of longitude values
-  /// sweeps the long way around whenever start/end straddle the antimeridian
-  /// numerically (e.g. 175 -> -179 tweens down through 0, a 354deg spin), even
-  /// though the target pin is only a few degrees away on screen. Wrapping the
-  /// delta into (-180, 180] pans toward the pin's visible on-screen direction.
-  /// The returned value may fall slightly outside [-180, 180] mid-tween (e.g.
-  /// 181, i.e. -179); flutter_map's `move` normalizes it, and the tile layer
-  /// wraps, so the sweep stays continuous across the seam.
-  static double lerpLongitude(double start, double end, double t) {
-    var delta = (end - start) % 360;
-    if (delta > 180) delta -= 360;
-    return start + delta * t;
+  /// Wrap an angular delta into (-180, 180] degrees.
+  static double _wrapDelta(double degrees) {
+    final m = degrees % 360; // Dart % is non-negative for a positive divisor.
+    return m > 180 ? m - 360 : m;
+  }
+
+  /// The UNWRAPPED longitude a camera glide should tween to, so the glide's
+  /// direction keeps the focused pin on screen the whole flight (#7880). The
+  /// returned value is `start + delta` with delta possibly beyond +-180; the
+  /// tick tweens to it linearly, and flutter_map's `move` re-normalizes each
+  /// frame (its seamless-scrolling adjustment), so the sweep is continuous
+  /// across the antimeridian.
+  ///
+  /// Choosing the direction is a choice of which world-copy of [target] to fly
+  /// to, and neither naive rule is right:
+  /// - RAW linear (`target - start`) sweeps the long way whenever the two
+  ///   values straddle the antimeridian numerically (175 -> -179 spins -354deg
+  ///   through 0) — the issue's original video.
+  /// - SHORTEST center-to-center path breaks when a wide side panel pushes the
+  ///   target CENTER far past the pin: pin near the left edge, panel covering
+  ///   the left half, resting spot right-of-center -> the correct camera sweep
+  ///   exceeds 180deg, so "shortest" flips direction and throws the pin off
+  ///   screen — the QA reopen.
+  ///
+  /// The rule that matches the issue ("keep the spot on screen the whole
+  /// time") anchors the direction to the PIN, not the center: the pin's
+  /// on-screen offset must travel directly from where it is now
+  /// (`wrap(anchor - start)`) to where it rests (`wrap(anchor - target)`), so
+  /// the camera delta is the difference of the two — monotonic pin motion by
+  /// construction, wherever the centers sit. Without an [anchor] (world reset,
+  /// zoom steps, course-bounds fits) it falls back to the shortest path.
+  static double panTargetLongitude({
+    required double start,
+    required double target,
+    double? anchor,
+  }) {
+    if (anchor == null) return start + _wrapDelta(target - start);
+    final offsetNow = _wrapDelta(anchor - start);
+    final offsetDest = _wrapDelta(anchor - target);
+    return start + (offsetNow - offsetDest);
   }
 
   /// The (pan, zoom) progress at raw glide value [t] for a move from [startZoom]
