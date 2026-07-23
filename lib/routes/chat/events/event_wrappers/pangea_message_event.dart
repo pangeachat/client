@@ -316,25 +316,54 @@ class PangeaMessageEvent {
     bool preferTokens = false,
     SpeechToTextResponseModel? matchEmbed,
   }) {
-    if (preferTokens) {
-      final tokenRich = representations.firstWhereOrNull((element) {
-        final stt = element.content.speechToText;
-        if (stt == null || !stt.hasUsableTranscript || !stt.hasUsableTokens) {
-          return false;
-        }
-        // A token-rich rep is trusted ONLY when it matches the provisional
-        // embed's transcript (text + language) -- a stale or foreign persisted
-        // representation must not replace the embed's trusted content. With no
-        // usable embed to match against, any token-rich rep is acceptable.
-        return matchEmbed == null ||
-            !matchEmbed.hasUsableTranscript ||
-            sttTranscriptsMatch(matchEmbed, stt);
-      });
-      if (tokenRich != null) return tokenRich;
+    // The persisted STT representations, NEWEST-first, paired with their
+    // payload (`representations` is already sorted newest-first).
+    final sttReps = <(RepresentationEvent, SpeechToTextResponseModel)>[];
+    for (final rep in representations) {
+      final stt = rep.content.speechToText;
+      if (stt != null) sttReps.add((rep, stt));
     }
-    return representations.firstWhereOrNull(
-      (element) => element.content.speechToText != null,
-    );
+    if (sttReps.isEmpty) return null;
+
+    if (preferTokens) {
+      // Trust a token-rich rep ONLY when it matches the CURRENT authoritative
+      // transcript, so an OLDER token-rich rep never beats a NEWER text-only rep
+      // (stale utterance). Computed FRESH from live reps -- no cache.
+      final chosen = pickTokenRichRepStt(
+        sttReps.map((p) => p.$2).toList(),
+        matchEmbed,
+      );
+      if (chosen != null) {
+        return sttReps.firstWhereOrNull((p) => identical(p.$2, chosen))?.$1;
+      }
+    }
+    // Fall back to the newest STT representation (text-only if that is newest).
+    return sttReps.first.$1;
+  }
+
+  /// From the persisted STT representation payloads [repStts] (NEWEST-first),
+  /// picks the token-rich one that matches the CURRENT authoritative transcript:
+  /// [embed] if it has a usable transcript, ELSE the newest rep's transcript.
+  /// So an OLDER token-rich rep can never beat a NEWER text-only rep (a stale
+  /// utterance): (a) newest rep token-rich -> matches itself -> returned;
+  /// (b) newest text-only + older token-rich SAME utterance -> matches ->
+  /// returned (tokens); (c) newest text-only + older token-rich DIFFERENT
+  /// utterance -> no match -> null (caller falls back to the newest text-only
+  /// rep). With no authoritative transcript anywhere, any token-rich rep is
+  /// acceptable (nothing to diverge from). Computed FRESH each read from live
+  /// reps -- no cache, no static/parallel state. Pure -> unit-testable.
+  @visibleForTesting
+  static SpeechToTextResponseModel? pickTokenRichRepStt(
+    List<SpeechToTextResponseModel> repStts,
+    SpeechToTextResponseModel? embed,
+  ) {
+    final authoritative = (embed != null && embed.hasUsableTranscript)
+        ? embed
+        : repStts.firstWhereOrNull((s) => s.hasUsableTranscript);
+    return repStts.firstWhereOrNull((stt) {
+      if (!stt.hasUsableTranscript || !stt.hasUsableTokens) return false;
+      return authoritative == null || sttTranscriptsMatch(authoritative, stt);
+    });
   }
 
   /// Whether two STT responses describe the SAME utterance: identical usable

@@ -24,13 +24,12 @@ class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
   _TranscriptionLoader(this.messageEvent) : super();
 
   @override
-  Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
-    MatrixState.pangeaController.userController.userL1!.langCodeShort,
-    MatrixState.pangeaController.userController.userL2!.langCodeShort,
-    // Tap-to-select needs token spans, so this loader repairs a token-less
-    // (decoupled-send) embed by tokenizing + attaching before returning.
-    requireTokens: true,
-  );
+  Future<SpeechToTextResponseModel> fetch() =>
+      SelectModeController.requestTokenizedTranscription(
+        messageEvent,
+        MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        MatrixState.pangeaController.userController.userL2!.langCodeShort,
+      );
 }
 
 class _STTTranslationLoader extends AsyncLoader<String> {
@@ -111,6 +110,16 @@ class SelectModeController with LemmaEmojiSetter {
   /// selection share EXACTLY ONE token source for the open toolbar -- there is
   /// no parallel cache to go stale.
   SpeechToTextResponseModel? get loadedTranscription => _transcriptLoader.value;
+
+  /// The transcription loader's fetch: tap-to-select needs token spans, so it
+  /// ALWAYS requires tokens (repairing a token-less decoupled-send embed by
+  /// tokenizing before returning). Extracted so the `requireTokens: true` wiring
+  /// is bound by test -- reverting it makes taps dead, and the test goes RED.
+  static Future<SpeechToTextResponseModel> requestTokenizedTranscription(
+    PangeaMessageEvent messageEvent,
+    String l1Code,
+    String l2Code,
+  ) => messageEvent.requestSpeechToText(l1Code, l2Code, requireTokens: true);
 
   /// Resolves the currently-selected audio token from the loader's [loadedStt]
   /// (the ONE token source the display also renders). Null when nothing is
