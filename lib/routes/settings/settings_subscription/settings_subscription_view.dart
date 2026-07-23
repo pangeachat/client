@@ -165,20 +165,15 @@ class SettingsSubscriptionView extends StatelessWidget {
                                 onEnterDiscountCode: onEnterDiscountCode,
                                 showSubscriptionOptions: subscriptionStatus
                                     .onlyActiveEntitlementIsTrial,
+                                purchasePresentation: purchasePresentation,
                               )
-                            : switch (purchasePresentation) {
-                                PurchasePresentation.full =>
-                                  SubscriptionOptions(
-                                    onEnterDiscountCode: onEnterDiscountCode,
-                                    onTapSubscription: onTapSubscription,
-                                    productsState: productsState,
-                                    selectedSubscription: selectedSubscription,
-                                  ),
-                                PurchasePresentation.webInfo =>
-                                  const _WebPurchaseNotice(),
-                                PurchasePresentation.hidden =>
-                                  const _PurchaseUnavailableNotice(),
-                              },
+                            : _SubscriptionOptionsByPurchasePresentation(
+                                purchasePresentation,
+                                onEnterDiscountCode: onEnterDiscountCode,
+                                onTapSubscription: onTapSubscription,
+                                productsState: productsState,
+                                selectedSubscription: selectedSubscription,
+                              ),
                       ],
                     );
                   }(),
@@ -209,6 +204,8 @@ class FullAccessContent extends StatelessWidget {
   final AsyncState<List<ProductPlan>> productsState;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
+  final PurchasePresentation purchasePresentation;
+
   const FullAccessContent({
     super.key,
     this.showTrialInfo = false,
@@ -223,6 +220,7 @@ class FullAccessContent extends StatelessWidget {
     required this.onTapSubscription,
     required this.productsState,
     required this.selectedSubscription,
+    required this.purchasePresentation,
   });
 
   @override
@@ -283,7 +281,8 @@ class FullAccessContent extends StatelessWidget {
             ),
           ),
         if (showSubscriptionOptions)
-          SubscriptionOptions(
+          _SubscriptionOptionsByPurchasePresentation(
+            purchasePresentation,
             onEnterDiscountCode: onEnterDiscountCode,
             onTapSubscription: onTapSubscription,
             productsState: productsState,
@@ -320,5 +319,37 @@ class _PurchaseUnavailableNotice extends StatelessWidget {
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.bodyLarge,
     );
+  }
+}
+
+class _SubscriptionOptionsByPurchasePresentation extends StatelessWidget {
+  final PurchasePresentation purchasePresentation;
+
+  final Future<void> Function() onEnterDiscountCode;
+  final Future<void> Function(ProductPlan) onTapSubscription;
+
+  final AsyncState<List<ProductPlan>> productsState;
+  final ValueNotifier<ProductPlan?> selectedSubscription;
+
+  const _SubscriptionOptionsByPurchasePresentation(
+    this.purchasePresentation, {
+    required this.onEnterDiscountCode,
+    required this.onTapSubscription,
+    required this.productsState,
+    required this.selectedSubscription,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return switch (purchasePresentation) {
+      PurchasePresentation.full => SubscriptionOptions(
+        onEnterDiscountCode: onEnterDiscountCode,
+        onTapSubscription: onTapSubscription,
+        productsState: productsState,
+        selectedSubscription: selectedSubscription,
+      ),
+      PurchasePresentation.webInfo => const _WebPurchaseNotice(),
+      PurchasePresentation.hidden => const _PurchaseUnavailableNotice(),
+    };
   }
 }
