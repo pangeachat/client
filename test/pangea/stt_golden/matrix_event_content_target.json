@@ -1,0 +1,83 @@
+{
+  "body": "recording.wav",
+  "filename": "recording.wav",
+  "info": {
+    "duration": 2000,
+    "mimetype": "audio/x-wav",
+    "size": 20480
+  },
+  "msgtype": "m.audio",
+  "org.matrix.msc1767.audio": {
+    "duration": 2000,
+    "waveform": [
+      0,
+      256,
+      512,
+      256,
+      0
+    ]
+  },
+  "org.matrix.msc3245.voice": {},
+  "speaker_l1": "en",
+  "speaker_l2": "es",
+  "url": "mxc://staging.pangea.chat/EXAMPLESTTGOLDENfixture0001",
+  "user_stt": {
+    "results": [
+      {
+        "transcripts": [
+          {
+            "confidence": 94,
+            "lang_code": "es",
+            "stt_tokens": [
+              {
+                "confidence": 98,
+                "end_time": 480,
+                "start_time": 0,
+                "token": {
+                  "lemma": [
+                    {
+                      "save_vocab": true,
+                      "text": "hola"
+                    }
+                  ],
+                  "morph": {
+                    "Pos": "INTJ"
+                  },
+                  "text": {
+                    "content": "hola",
+                    "offset": 0
+                  }
+                }
+              },
+              {
+                "confidence": 91,
+                "end_time": 960,
+                "start_time": 480,
+                "token": {
+                  "lemma": [
+                    {
+                      "save_vocab": true,
+                      "text": "mundo"
+                    }
+                  ],
+                  "morph": {
+                    "Gender": "Masc",
+                    "Number": "Sing",
+                    "Pos": "NOUN"
+                  },
+                  "text": {
+                    "content": "mundo",
+                    "offset": 5
+                  }
+                }
+              }
+            ],
+            "transcript": "hola mundo",
+            "words_per_hr": 120
+          }
+        ]
+      }
+    ],
+    "service": "google"
+  }
+}
