@@ -285,6 +285,70 @@ void main() {
     });
   });
 
+  group(
+    'pickTokenRichRepStt — newest-first authoritative match (R8 BLOCKER)',
+    () {
+      test(
+        'newest text-only "B" + older token-rich "A" (no embed) -> null so the '
+        'caller falls back to the newest "B", NOT the stale token-rich "A"',
+        () {
+          // Teeth: the old "any token-rich acceptable" form returns the stale "A".
+          expect(
+            PangeaMessageEvent.pickTokenRichRepStt(
+              [_textOnly('B'), _withTokens('A')], // newest-first
+              null,
+            ),
+            isNull,
+          );
+        },
+      );
+
+      test(
+        'newest token-rich "B" + older token-rich "A" (no embed) -> "B"',
+        () {
+          final b = _withTokens('B');
+          expect(
+            PangeaMessageEvent.pickTokenRichRepStt([b, _withTokens('A')], null),
+            same(b),
+          );
+        },
+      );
+
+      test(
+        'newest text-only "A" + older token-rich "A" SAME utterance (no embed) '
+        '-> the token-rich "A" (tokens, correct)',
+        () {
+          final tokenA = _withTokens('A');
+          expect(
+            PangeaMessageEvent.pickTokenRichRepStt([
+              _textOnly('A'),
+              tokenA,
+            ], null),
+            same(tokenA),
+          );
+        },
+      );
+
+      test(
+        'with a usable embed, only a token-rich rep MATCHING it is picked',
+        () {
+          final match = _withTokens('hola');
+          expect(
+            PangeaMessageEvent.pickTokenRichRepStt([match], _textOnly('hola')),
+            same(match),
+          );
+          // A foreign token-rich rep is rejected.
+          expect(
+            PangeaMessageEvent.pickTokenRichRepStt([
+              _withTokens('adios'),
+            ], _textOnly('hola')),
+            isNull,
+          );
+        },
+      );
+    },
+  );
+
   group('reAsrLanguages (from-scratch re-ASR is EVENT-sourced)', () {
     test('prefers the event speaker langs over the reader fallback', () {
       final langs = PangeaMessageEvent.reAsrLanguages(

@@ -6,8 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
@@ -180,6 +182,73 @@ void main() {
 
       // Teeth: if requestSpeechToText re-tokenized a token-rich local, this
       // would be 1 -> RED.
+      expect(enrichCalls, 0);
+      expect(result.hasUsableTokens, isTrue);
+    },
+  );
+
+  test('R8 HIGH: the transcription LOADER fetch requires tokens -- '
+      'SelectModeController.requestTokenizedTranscription reaches the tokenizer '
+      'on a token-less embed (so tap-to-select gets spans)', () async {
+    final sentinel = Exception('tokenizer-reached');
+    PangeaMessageEvent.enrichSttHook = (base, snapshot) async => throw sentinel;
+
+    // requireTokens:true -> the token-less embed is repaired -> the tokenizer
+    // is reached (throws the sentinel before the backend-less attach). Teeth:
+    // reverting requireTokens:true returns the token-less embed WITHOUT
+    // tokenizing -> no throw -> RED (dead taps).
+    await expectLater(
+      SelectModeController.requestTokenizedTranscription(
+        audioMessage,
+        'en',
+        'es',
+      ),
+      throwsA(same(sentinel)),
+    );
+  });
+
+  test(
+    'R8 HIGH: a PERSISTED token-rich pangea.representation prevents re-tokenize '
+    '(attach-success common case), with a token-LESS embed',
+    () async {
+      var enrichCalls = 0;
+      PangeaMessageEvent.enrichSttHook = (base, snapshot) async {
+        enrichCalls++;
+        return base;
+      };
+
+      // A persisted token-rich representation whose transcript matches the
+      // token-less embed ("hola mundo"/fr), aggregated to the audio event.
+      final richStt = _tokenRich('hola mundo');
+      final repEvent = Event(
+        type: PangeaEventTypes.representation,
+        eventId: r'$rep1:fakeServer.notExisting',
+        senderId: client.userID!,
+        originServerTs: DateTime.now(),
+        content: {
+          PangeaEventTypes.representation: PangeaRepresentation(
+            langCode: _embedLangCode,
+            text: 'hola mundo',
+            originalSent: false,
+            originalWritten: false,
+            speechToText: richStt,
+          ).toJson(),
+        },
+        room: room,
+      );
+      timeline.aggregatedEvents[audioMessage.eventId] = {
+        PangeaEventTypes.representation: {repEvent},
+      };
+
+      final result = await audioMessage.requestSpeechToText(
+        'en',
+        'es',
+        requireTokens: true,
+      );
+
+      // getSpeechToTextLocal(preferTokens) finds the PERSISTED token-rich rep,
+      // so repairSttTokens sees a token-rich local and does NOT tokenize.
+      // Teeth: reverting the persisted-rep preference -> re-tokenizes -> RED.
       expect(enrichCalls, 0);
       expect(result.hasUsableTokens, isTrue);
     },
