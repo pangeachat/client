@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:32.946203",
+    "@@last_modified": "2026-07-23 11:48:56.347677",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9763,5 +9763,7 @@
     "joinCourseWithTitle": "Unisciti a \"{title}\"",
     "searchCoursePlans": "Cerca piani di corso",
     "searchPublicCourses": "Cerca corsi pubblici",
-    "closeSearch": "Chiudi ricerca"
+    "closeSearch": "Chiudi ricerca",
+    "subscriptionsNotAvailableInApp": "Gli abbonamenti non possono essere acquistati nell'app",
+    "subscribeOnTheWeb": "Puoi abbonarti sul web all'indirizzo pangea.chat"
 }

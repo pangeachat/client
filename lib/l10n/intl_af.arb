@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-21 13:05:29.276429",
+    "@@last_modified": "2026-07-23 11:48:52.499587",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Sluit aan by \"{title}\"",
     "searchCoursePlans": "Soek kursusplanne",
     "searchPublicCourses": "Soek publieke kursusse",
-    "closeSearch": "Sluit soektog"
+    "closeSearch": "Sluit soektog",
+    "subscriptionsNotAvailableInApp": "Intekeninge kan nie in die toepassing gekoop word nie",
+    "subscribeOnTheWeb": "Jy kan op die web inteken by pangea.chat"
 }

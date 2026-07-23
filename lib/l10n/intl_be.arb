@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-21 13:05:29.084940",
+    "@@last_modified": "2026-07-23 11:48:52.794523",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9704,5 +9704,7 @@
     "joinCourseWithTitle": "Далучыцца да \"{title}\"",
     "searchCoursePlans": "Пошук планаў курсаў",
     "searchPublicCourses": "Пошук публічных курсаў",
-    "closeSearch": "Закрыць пошук"
+    "closeSearch": "Закрыць пошук",
+    "subscriptionsNotAvailableInApp": "Падпіскі нельга набыць у праграме",
+    "subscribeOnTheWeb": "Вы можаце падпісацца ў інтэрнэце на pangea.chat"
 }

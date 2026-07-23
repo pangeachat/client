@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-21 13:05:37.118192",
+    "@@last_modified": "2026-07-23 11:49:01.385800",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9991,5 +9991,7 @@
     "joinCourseWithTitle": "\"{title}\" kursuna katıl",
     "searchCoursePlans": "Ders planlarını ara",
     "searchPublicCourses": "Herkese açık dersleri ara",
-    "closeSearch": "Aramayı kapat"
+    "closeSearch": "Aramayı kapat",
+    "subscriptionsNotAvailableInApp": "Uygulama içinden abonelik satın alınamaz",
+    "subscribeOnTheWeb": "pangea.chat adresinden web üzerinden abone olabilirsiniz"
 }

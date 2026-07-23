@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:31.651054",
+    "@@last_modified": "2026-07-23 11:48:55.253628",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10610,5 +10610,7 @@
     "joinCourseWithTitle": "הצטרף ל-\"{title}\"",
     "searchCoursePlans": "חיפוש תוכניות קורסים",
     "searchPublicCourses": "חיפוש קורסים ציבוריים",
-    "closeSearch": "סגור חיפוש"
+    "closeSearch": "סגור חיפוש",
+    "subscriptionsNotAvailableInApp": "לא ניתן לרכוש מנויים בתוך האפליקציה",
+    "subscribeOnTheWeb": "ניתן להירשם כמנוי דרך האתר בכתובת pangea.chat"
 }

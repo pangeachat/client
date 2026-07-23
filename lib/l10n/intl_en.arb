@@ -3027,6 +3027,8 @@
     "getAccess": "Subscribe now!",
     "subscriptionDesc": "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.",
     "subscriptionManagement": "Subscription Management",
+    "subscriptionsNotAvailableInApp": "Subscriptions can't be purchased in the app",
+    "subscribeOnTheWeb": "You can subscribe on the web at pangea.chat",
     "currentSubscription": "Current Subscription",
     "cancelSubscription": "Cancel your subscription",
     "selectYourPlan": "Select Your Plan",

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-21 13:05:30.968735",
+    "@@last_modified": "2026-07-23 11:48:54.707283",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,7 @@
     "joinCourseWithTitle": "Unirse a \"{title}\"",
     "searchCoursePlans": "Buscar plans de curso",
     "searchPublicCourses": "Buscar cursos públicos",
-    "closeSearch": "Pechar busca"
+    "closeSearch": "Pechar busca",
+    "subscriptionsNotAvailableInApp": "As subscricións non se poden mercar na aplicación",
+    "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat"
 }

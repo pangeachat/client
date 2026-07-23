@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-21 13:05:38.032471",
+    "@@last_modified": "2026-07-23 11:49:01.895158",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Joyina \"{title}\"",
     "searchCoursePlans": "Khangela izicwangciso zezifundo",
     "searchPublicCourses": "Khangela izifundo zikawonke-wonke",
-    "closeSearch": "Vala ukukhangela"
+    "closeSearch": "Vala ukukhangela",
+    "subscriptionsNotAvailableInApp": "Ukubhalisa akufumaneki kule app",
+    "subscribeOnTheWeb": "Ungabhalisa kwiwebhu ku-pangea.chat"
 }

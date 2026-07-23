@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-21 13:05:33.274613",
+    "@@last_modified": "2026-07-23 11:48:57.275846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "بەژداریکردن لە \"{title}\"",
     "searchCoursePlans": "پلانی خولەکان بگەڕێ",
     "searchPublicCourses": "خولە گشتییەکان بگەڕێ",
-    "closeSearch": "گەڕان دابخە"
+    "closeSearch": "گەڕان دابخە",
+    "subscriptionsNotAvailableInApp": "بەشدارییەکان ناتوانرێت لەناو ئەپەکەدا بکڕدرێن",
+    "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat"
 }

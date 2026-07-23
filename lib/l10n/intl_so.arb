@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-21 13:05:37.160935",
+    "@@last_modified": "2026-07-23 11:49:00.735220",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Ku biir \"{title}\"",
     "searchCoursePlans": "Raadi qorshayaasha koorsada",
     "searchPublicCourses": "Raadi koorsooyinka dadweynaha",
-    "closeSearch": "Xidh raadinta"
+    "closeSearch": "Xidh raadinta",
+    "subscriptionsNotAvailableInApp": "Rukummada laguma iibsan karo app-ka",
+    "subscribeOnTheWeb": "Waxaad iska diiwaan gelin kartaa shabakadda pangea.chat"
 }

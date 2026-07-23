@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-21 13:05:32.012581",
+    "@@last_modified": "2026-07-23 11:48:54.589102",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,7 @@
     "joinCourseWithTitle": "Rejoindre « {title} »",
     "searchCoursePlans": "Rechercher des plans de cours",
     "searchPublicCourses": "Rechercher des cours publics",
-    "closeSearch": "Fermer la recherche"
+    "closeSearch": "Fermer la recherche",
+    "subscriptionsNotAvailableInApp": "Les abonnements ne peuvent pas être achetés dans l'application",
+    "subscribeOnTheWeb": "Vous pouvez vous abonner sur le web à pangea.chat"
 }

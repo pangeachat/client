@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-21 13:05:33.227956",
+    "@@last_modified": "2026-07-23 11:48:57.452855",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Coniunge \"{title}\"",
     "searchCoursePlans": "Quaere consilia studiorum",
     "searchPublicCourses": "Quaere cursus publicos",
-    "closeSearch": "Claudere quaestionem"
+    "closeSearch": "Claudere quaestionem",
+    "subscriptionsNotAvailableInApp": "Subscriptiones in app emi non possunt",
+    "subscribeOnTheWeb": "Subscribere potes in interrete apud pangea.chat"
 }

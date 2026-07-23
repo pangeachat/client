@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-21 13:05:31.132023",
+    "@@last_modified": "2026-07-23 11:48:55.033833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Shiga \"{title}\"",
     "searchCoursePlans": "Neman tsare-tsaren darasi",
     "searchPublicCourses": "Neman darussan jama'a",
-    "closeSearch": "Rufe bincike"
+    "closeSearch": "Rufe bincike",
+    "subscriptionsNotAvailableInApp": "Ba za a iya siyan biyan kuɗi a cikin app ba",
+    "subscribeOnTheWeb": "Kuna iya biyan kuɗi a yanar gizo a pangea.chat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-21 13:05:35.873959",
+    "@@last_modified": "2026-07-23 11:49:00.141962",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10641,5 +10641,7 @@
     "joinCourseWithTitle": "Pripojiť sa k „{title}“",
     "searchCoursePlans": "Hľadať študijné plány",
     "searchPublicCourses": "Hľadať verejné kurzy",
-    "closeSearch": "Zavrieť vyhľadávanie"
+    "closeSearch": "Zavrieť vyhľadávanie",
+    "subscriptionsNotAvailableInApp": "Predplatné nie je možné zakúpiť v aplikácii",
+    "subscribeOnTheWeb": "Môžete sa prihlásiť na odber na webe na adrese pangea.chat"
 }

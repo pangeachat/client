@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-21 13:05:30.978762",
+    "@@last_modified": "2026-07-23 11:48:54.959491",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Doch mei oan \"{title}\"",
     "searchCoursePlans": "Sykje kursusplannen",
     "searchPublicCourses": "Sykje iepenbiere kursussen",
-    "closeSearch": "Sykje slute"
+    "closeSearch": "Sykje slute",
+    "subscriptionsNotAvailableInApp": "Abonneminten kinne net yn 'e app kocht wurde",
+    "subscribeOnTheWeb": "Jo kinne abonnearje op it web op pangea.chat"
 }

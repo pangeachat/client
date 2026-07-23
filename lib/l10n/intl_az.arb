@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-21 13:05:29.059705",
+    "@@last_modified": "2026-07-23 11:48:52.809971",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "\"{title}\" kursuna qoşul",
     "searchCoursePlans": "Kurs planlarını axtar",
     "searchPublicCourses": "İctimai kursları axtar",
-    "closeSearch": "Axtarışı bağla"
+    "closeSearch": "Axtarışı bağla",
+    "subscriptionsNotAvailableInApp": "Abunəliklər tətbiqdə əldə edilə bilməz",
+    "subscribeOnTheWeb": "pangea.chat saytında abunə ola bilərsiniz"
 }

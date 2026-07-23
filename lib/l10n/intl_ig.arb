@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-21 13:05:32.633193",
+    "@@last_modified": "2026-07-23 11:48:56.222916",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Sonyere \"{title}\"",
     "searchCoursePlans": "Chọọ atụmatụ ọmụmụ",
     "searchPublicCourses": "Chọọ ọmụmụ ọha",
-    "closeSearch": "Mechie nchọta"
+    "closeSearch": "Mechie nchọta",
+    "subscriptionsNotAvailableInApp": "Enweghị ike ịzụta ndebanye aha n'ime ngwa",
+    "subscribeOnTheWeb": "Ị nwere ike denye aha na webụsaịtị na pangea.chat"
 }

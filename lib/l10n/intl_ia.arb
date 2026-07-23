@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-21 13:05:32.325831",
+    "@@last_modified": "2026-07-23 11:48:55.884036",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10632,5 +10632,7 @@
     "joinCourseWithTitle": "Unir se a \"{title}\"",
     "searchCoursePlans": "Cercar planos de curso",
     "searchPublicCourses": "Cercar cursos public",
-    "closeSearch": "Clauder recerca"
+    "closeSearch": "Clauder recerca",
+    "subscriptionsNotAvailableInApp": "Le subscriptiones non pote esser mercate in le app",
+    "subscribeOnTheWeb": "Tu pote subscribere in le web a pangea.chat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-21 13:05:36.628572",
+    "@@last_modified": "2026-07-23 11:49:00.873003",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Gabung \"{title}\"",
     "searchCoursePlans": "Téangan rencana kursus",
     "searchPublicCourses": "Téangan kursus umum",
-    "closeSearch": "Tutup pamilarian"
+    "closeSearch": "Tutup pamilarian",
+    "subscriptionsNotAvailableInApp": "Langganan teu tiasa dipésér dina aplikasi",
+    "subscribeOnTheWeb": "Anjeun tiasa langganan dina wéb di pangea.chat"
 }

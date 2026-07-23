@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-21 13:05:33.821887",
+    "@@last_modified": "2026-07-23 11:48:57.767115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Midira amin'ny \"{title}\"",
     "searchCoursePlans": "Tadiavo ny drafitry ny taranja",
     "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe",
-    "closeSearch": "Akatona ny fikarohana"
+    "closeSearch": "Akatona ny fikarohana",
+    "subscriptionsNotAvailableInApp": "Tsy azo vidiana ao anatin'ny app ny famandrihana",
+    "subscribeOnTheWeb": "Afaka misoratra anarana amin'ny tranonkala ianao ao amin'ny pangea.chat"
 }

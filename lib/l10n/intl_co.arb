@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-21 13:05:30.256404",
+    "@@last_modified": "2026-07-23 11:48:53.377109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Unisce vi à \"{title}\"",
     "searchCoursePlans": "Circà i piani di corsu",
     "searchPublicCourses": "Circà i corsi publichi",
-    "closeSearch": "Chjode a ricerca"
+    "closeSearch": "Chjode a ricerca",
+    "subscriptionsNotAvailableInApp": "L'abbunamenti ùn ponu esse acquistati in l'app",
+    "subscribeOnTheWeb": "Pudete abbunà vi nant'à u web à pangea.chat"
 }

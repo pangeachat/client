@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-21 13:05:34.596896",
+    "@@last_modified": "2026-07-23 11:48:58.983002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Lowani \"{title}\"",
     "searchCoursePlans": "Sakani mapulani amaphunziro",
     "searchPublicCourses": "Sakani maphunziro a anthu onse",
-    "closeSearch": "Tsekani kusaka"
+    "closeSearch": "Tsekani kusaka",
+    "subscriptionsNotAvailableInApp": "Zolembetsa sizingagulidwe mu pulogalamu",
+    "subscribeOnTheWeb": "Mutha kulembetsa pa intaneti pa pangea.chat"
 }

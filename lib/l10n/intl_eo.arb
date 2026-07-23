@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:30.279445",
+    "@@last_modified": "2026-07-23 11:48:53.700481",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10641,5 +10641,7 @@
     "joinCourseWithTitle": "Aliĝi al \"{title}\"",
     "searchCoursePlans": "Serĉi kursplanojn",
     "searchPublicCourses": "Serĉi publikajn kursojn",
-    "closeSearch": "Fermi serĉon"
+    "closeSearch": "Fermi serĉon",
+    "subscriptionsNotAvailableInApp": "Abonoj ne aĉeteblas en la aplikaĵo",
+    "subscribeOnTheWeb": "Vi povas aboni per la retejo ĉe pangea.chat"
 }

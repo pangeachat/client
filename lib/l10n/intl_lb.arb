@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-21 13:05:33.671867",
+    "@@last_modified": "2026-07-23 11:48:57.248526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "„{title}“ bäitrieden",
     "searchCoursePlans": "Courspläng sichen",
     "searchPublicCourses": "Ëffentlech Coursen sichen",
-    "closeSearch": "Sich zoumaachen"
+    "closeSearch": "Sich zoumaachen",
+    "subscriptionsNotAvailableInApp": "Abonnementer kënnen net an der App kaaft ginn",
+    "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren"
 }
