@@ -73,7 +73,10 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     final matrix = Matrix.of(context);
     final client = matrix.client;
     final clientName = client.clientName;
-    final capturedUserId = client.userID!;
+    // Nullable capture: a soft-logout race could leave userID null, and an
+    // async-void action can't surface a `!` failure as a dialog error.
+    final capturedUserId = client.userID;
+    if (capturedUserId == null) return;
     // Pangea#
     final entitlementResult = await showFutureLoadingDialog(
       context: context,
@@ -118,12 +121,6 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (mxid == null || mxid.isEmpty || mxid != supposedMxid) {
       return;
     }
-    // #Pangea
-    // Revalidate the captured identity right before the destructive call: if the
-    // active account switched during the dialogs above, abort rather than delete
-    // the wrong account.
-    if (matrix.client != client || client.userID != capturedUserId) return;
-    // Pangea#
     final resp = await showFutureLoadingDialog(
       context: context,
       delay: false,
@@ -138,11 +135,17 @@ class SettingsSecurityController extends State<SettingsSecurity> {
         // Flush the final dosage span while the bearer is still valid, BEFORE
         // deletion invalidates it (best-effort, never blocks the deletion).
         await matrix.flushAccountTelemetry(clientName);
+        // Revalidate the captured identity immediately before the destructive
+        // calls (after the flush await): if the active account switched during
+        // the dialogs/flush, abort rather than delete the wrong account.
+        if (matrix.client != client || client.userID != capturedUserId) {
+          throw Exception('Active account changed; aborting account deletion');
+        }
         if (entitlementRef != null) {
           final result = await SubscriptionCancelRepo.instance
               .cancelSubscription(
                 SubscriptionCancelRequest(
-                  userID: client.userID!,
+                  userID: capturedUserId,
                   entitlementRef: entitlementRef,
                 ),
               );

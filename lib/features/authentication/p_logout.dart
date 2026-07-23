@@ -12,6 +12,14 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
+  // Capture THE account being logged out AND its analytics service up front —
+  // BEFORE the confirmation dialog and any other await — so save/flush/logout
+  // all target this account even if the active client switches during the flow
+  // (never the wrong account's analytics via the active getter).
+  final matrix = Matrix.of(context);
+  final client = matrix.client;
+  final analytics = matrix.analyticsServiceFor(client.clientName);
+
   if (await showOkCancelAlertDialog(
         useRootNavigator: false,
         context: context,
@@ -24,13 +32,6 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
     return;
   }
 
-  final matrix = Matrix.of(context);
-  // Capture THE account being logged out AND its analytics service up front —
-  // BEFORE any await — so save/flush/logout all target this account even if the
-  // active client switches during the teardown (never the wrong account's
-  // analytics via the active getter).
-  final client = matrix.client;
-  final analytics = matrix.analyticsServiceFor(client.clientName);
   await matrix.backgroundPush?.cancelAllNotifications();
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
