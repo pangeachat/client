@@ -35,7 +35,10 @@ class LeftPanelRoomSubpage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
+          child: Text(
+            L10n.of(context).youAreNoLongerParticipatingInThisChat,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
