@@ -104,13 +104,22 @@ class PangeaMessageEvent {
 
   List<RepresentationEvent> get _repEvents => _latestEdit
       .aggregatedEvents(timeline, PangeaEventTypes.representation)
-      .map(
-        (e) => RepresentationEvent(
-          event: e,
-          parentMessageEvent: _latestEdit,
-          timeline: timeline,
-        ),
-      )
+      .map((e) {
+        try {
+          return RepresentationEvent(
+            event: e,
+            parentMessageEvent: _latestEdit,
+            timeline: timeline,
+          );
+        } catch (_) {
+          // A malformed relation (e.g. a wrong-type event aggregated under the
+          // representation relation) throws in RepresentationEvent's
+          // constructor. Skip it so a single bad relation can never abort the
+          // whole representation-list build and hide valid persisted tokens.
+          return null;
+        }
+      })
+      .whereType<RepresentationEvent>()
       .sorted((a, b) {
         if (a.event == null) return -1;
         if (b.event == null) return 1;

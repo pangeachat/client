@@ -1792,23 +1792,29 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (stt != null) {
-      if (decoupleTokenizer) {
-        // Send is done and the bot can reply from the embedded text. Only
-        // schedule background work when there is a usable transcript to
-        // tokenize (an exhausted-fallback has none -- the message stands, no
-        // background work, no crash). Fire-and-forget so send is not blocked.
-        if (decoupleSnapshot != null && voiceAnalyticsSink != null) {
-          _scheduleVoiceTranscriptEnrichment(
-            eventId: eventId,
-            baseStt: stt,
-            snapshot: decoupleSnapshot,
-            analyticsSink: voiceAnalyticsSink,
-            room: capturedRoom,
-            roomId: capturedRoomId,
-            clientUserId: capturedClientUserId,
-          );
-        }
-      } else {
+      // Route through the pure predicate so the flag-gated decision is
+      // unit-tested (see shouldScheduleDecoupledEnrichment).
+      if (shouldScheduleDecoupledEnrichment(
+        decoupleFlag: decoupleTokenizer,
+        snapshot: decoupleSnapshot,
+        sink: voiceAnalyticsSink,
+      )) {
+        // Send is done and the bot can reply from the embedded text; only a
+        // usable transcript reaches here (an exhausted-fallback yields a null
+        // snapshot -> the message stands, no background work, no crash).
+        // Fire-and-forget so send is not blocked. The predicate above
+        // guarantees both are non-null.
+        _scheduleVoiceTranscriptEnrichment(
+          eventId: eventId,
+          baseStt: stt,
+          snapshot: decoupleSnapshot!,
+          analyticsSink: voiceAnalyticsSink!,
+          room: capturedRoom,
+          roomId: capturedRoomId,
+          clientUserId: capturedClientUserId,
+        );
+      } else if (!decoupleTokenizer) {
+        // Flag OFF: unchanged legacy inline analytics path (byte-parity).
         _sendVoiceMessageAnalytics(eventId, stt);
       }
     }

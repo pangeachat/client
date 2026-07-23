@@ -194,6 +194,19 @@ void reportErrorSafely(
 bool isOwnSender(String? senderId, String? clientUserId) =>
     senderId != null && clientUserId != null && senderId == clientUserId;
 
+/// The voice-send routing decision: whether to schedule the BACKGROUND tokenize
+/// + analytics coordinator (vs. the legacy inline `_sendVoiceMessageAnalytics`).
+/// The decoupled background path is taken ONLY when the flag is on AND both the
+/// event-sourced language [snapshot] and the analytics [sink] were captured
+/// (both are null when the flag is off, and [snapshot] is null when the
+/// transcript is non-usable -- nothing to tokenize). Pure so the flag-routing
+/// decision is testable without a `ChatController` widget harness.
+bool shouldScheduleDecoupledEnrichment({
+  required bool decoupleFlag,
+  required SttLangSnapshot? snapshot,
+  required VoiceAnalyticsSink? sink,
+}) => decoupleFlag && snapshot != null && sink != null;
+
 /// The analytics record call, injectable so the recorder can be driven without
 /// a live `AnalyticsUpdateService`. The real caller passes
 /// `analyticsService.addAnalytics`.
@@ -292,6 +305,17 @@ Future<void> runVoiceTranscriptEnrichment({
     return;
   }
 
+  // Persist the tokens FIRST -- this is the user-facing result. Attach must NOT
+  // be gated on the best-effort analytics/feedback below: a slow recorder would
+  // delay token persistence, and a hanging one would prevent it entirely.
+  // recordAnalytics/showFeedback take richStt and are independent of attach, so
+  // running them AFTER the attach is safe.
+  try {
+    await attach(richStt);
+  } catch (e, s) {
+    safeOnError(e, s);
+  }
+
   if (isOwnSender(senderId, clientUserId)) {
     try {
       await recordAnalytics(richStt);
@@ -308,11 +332,5 @@ Future<void> runVoiceTranscriptEnrichment({
         safeOnError(e, s);
       }
     }
-  }
-
-  try {
-    await attach(richStt);
-  } catch (e, s) {
-    safeOnError(e, s);
   }
 }
