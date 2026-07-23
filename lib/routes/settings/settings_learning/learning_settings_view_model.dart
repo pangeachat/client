@@ -23,12 +23,15 @@ class LearningSettingsViewModel extends ChangeNotifier {
   }
 
   Timer? _textDebounce;
+  bool _hasResetTooltips = false;
 
   @override
   void dispose() {
     _textDebounce?.cancel();
     super.dispose();
   }
+
+  bool get hasResetTooltips => _hasResetTooltips;
 
   bool get haveSettingsChanged {
     final originalProfile = MatrixState.pangeaController.userController.profile;
@@ -169,6 +172,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
     final updated = _updatedProfile.copyWith(
       instructionSettings: InstructionSettings(),
     );
+    _hasResetTooltips = true;
     _updateProfile(updated);
   }
 
