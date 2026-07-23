@@ -49,15 +49,25 @@ class _LeftPanelActivityDetailsSubpageState
   @override
   void initState() {
     super.initState();
-    // The panel opening is what consumes an activity id ferried across the
-    // login bounce — the auth-guard redirect that got here never clears, so
-    // an attempt preempted by a competing boot-time navigation retries on
-    // the next logged-in landing (PAuthGaurd.consumeCachedJoinCode, #7821).
-    // Fire-and-forget; a plain in-app open finds no cache and this no-ops.
+    _resolveParent();
+  }
+
+  /// Consume an activity id ferried across the login bounce
+  /// (PAuthGaurd.consumeCachedJoinCode, #7821). Called from exactly two
+  /// places, NOT from initState: a mount alone proved lossy — a competing
+  /// boot-time navigation can dispose this panel right after initState, and
+  /// clearing there consumed the ferry without the activity ever being seen
+  /// (the "landed in the world, no activity" QA report). Instead the cache
+  /// clears when a rendered frame SURVIVES (the panel is really on screen —
+  /// an interrupted attempt retries on the next logged-in landing), and
+  /// unconditionally on an explicit close/back — a deliberate dismissal must
+  /// never be resurrected by the ferry (the "uncloseable activity" QA
+  /// report). Fire-and-forget; a plain in-app open finds no cache and this
+  /// no-ops.
+  void _consumeFerriedActivity() {
     if (SpaceCodeRepo.activityId == widget.param.activityId) {
       SpaceCodeRepo.clearActivityId();
     }
-    _resolveParent();
   }
 
   @override
@@ -112,6 +122,7 @@ class _LeftPanelActivityDetailsSubpageState
   }
 
   void _close() {
+    _consumeFerriedActivity();
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Drop the activity token (and any legacy loose activity params) via the
     // one shared sweeper — the course context survives a close.
@@ -122,6 +133,7 @@ class _LeftPanelActivityDetailsSubpageState
   /// otherwise just drop the activity token. Either way the course context stays
   /// (the `?m=course:` scope survives) — this never leaves for a standalone open.
   void _back() {
+    _consumeFerriedActivity();
     if (context.canPop()) {
       context.pop();
     } else {
@@ -136,6 +148,13 @@ class _LeftPanelActivityDetailsSubpageState
     // is fine; the session launches standalone. The activity view brings its
     // own AppBar (the back/X nav row when embedded), so it renders directly.
     if (!_loading) {
+      // A CONTENT frame survived on screen: consume the ferried id (see
+      // _consumeFerriedActivity — consuming any earlier lost interrupted
+      // opens). Post-frame + mounted so a build torn down before painting
+      // doesn't count as landed; idempotent across rebuilds.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _consumeFerriedActivity();
+      });
       return ActivitySessionStartPage(
         activityId: widget.param.activityId,
         parentId: _parentId,
