@@ -170,11 +170,14 @@ class ChatView extends StatelessWidget {
         : const AnalyticsHeaderAvatar();
 
     if (controller.room.showActivityChatUI) {
-      // A completed session (own role archived) keeps its "More" menu, but only
-      // to download the transcript — leave/invite no longer apply. Download is
-      // web/desktop only for now, so on native a completed session has no menu
-      // items; omit the button entirely there.
-      final bool isCompleted = controller.room.hasArchivedActivity;
+      // A completed session (finished for everyone) keeps its "More" menu, but
+      // only to download the transcript — leave/invite no longer apply once the
+      // session is over. Gate on isActivityFinished, not the learner's own
+      // archived role: an observer with no role, or a learner who finished while
+      // others played on, is still looking at a session that has ended for all.
+      // Download is web/desktop only for now, so on native a completed session
+      // has no menu items; omit the button entirely there.
+      final bool isCompleted = controller.room.isActivityFinished;
       return [
         if (!isCompleted || kIsWeb)
           ActivitySessionPopupMenu(
