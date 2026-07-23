@@ -15,16 +15,7 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 ## Purchase surface
 
-What the paywall may show is gated by storefront and device, because the legality of purchase steering differs per store — the rules and their rationale live in the org doc's Platform policy. The client owns rendering the matrix; it does not decide the law.
-
-| Surface | Paywall (plans, prices, discount field) | Checkout |
-|---|---|---|
-| Web | Full | Redirect, same tab |
-| US mobile (iOS & Android) | Full | System browser |
-| Non-US Android | Names the web as the purchase channel, no link | None |
-| Non-US iOS | Nothing (at most "Subscriptions can't be purchased in the app") | None |
-
-Storefront country comes from the store APIs, never device locale. The matrix is configuration — tier boundaries move as markets and settlements change.
+Which purchase surface the client renders is gated by storefront and platform; the presentation matrix, the per-store rules, and their legal rationale live in the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client owns rendering that design — it does not decide the law — and never shows a purchase call to action before the storefront confirms steering is allowed there.
 
 ## Purchase flow
 
