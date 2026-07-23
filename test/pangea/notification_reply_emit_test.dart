@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
@@ -89,6 +90,7 @@ void main() {
 
   tearDown(() async {
     DosageSignalsRepo.clientFactory = http.Client.new;
+    DosageEngagementTracker.debugResetAccounts();
     await client.dispose();
   });
 
@@ -118,7 +120,11 @@ void main() {
             'itself for the emit to fire',
       );
 
-      await notificationTap(replyResponse('hola mundo'), client: client);
+      await notificationTap(
+        replyResponse('hola mundo'),
+        client: client,
+        background: true,
+      );
       await pumpEventQueue();
 
       final envelopes = posts
@@ -140,11 +146,11 @@ void main() {
     },
   );
 
-  test('notificationTap AWAITS the envelope POST before returning', () async {
+  test('a BACKGROUND reply AWAITS the envelope POST before returning', () async {
     // The background notification isolate disposes its client the instant
     // notificationTap returns, so a fire-and-forget emit would be dropped
-    // before the POST lands. Gate the POST open and prove notificationTap does
-    // NOT return while it is still in flight.
+    // before the POST lands. Gate the POST open and prove the background
+    // reply does NOT return while it is still in flight.
     final gate = Completer<void>();
     var postSeen = false;
     DosageSignalsRepo.clientFactory = () => MockClient((req) async {
@@ -156,7 +162,11 @@ void main() {
       return http.Response('', 202);
     });
 
-    final tap = notificationTap(replyResponse('hola mundo'), client: client);
+    final tap = notificationTap(
+      replyResponse('hola mundo'),
+      client: client,
+      background: true,
+    );
     var tapDone = false;
     unawaited(tap.then((_) => tapDone = true));
 
@@ -171,8 +181,8 @@ void main() {
       tapDone,
       isFalse,
       reason:
-          'notificationTap must AWAIT the POST — it must not return while '
-          'the POST is still in flight (a bg isolate would tear down first)',
+          'a background reply must AWAIT the POST — it must not return while '
+          'the POST is still in flight (the bg isolate would tear down first)',
     );
 
     gate.complete();
@@ -183,4 +193,44 @@ void main() {
       reason: 'once the POST completes, notificationTap returns',
     );
   });
+
+  test(
+    'a MAIN-isolate reply fire-and-forgets the emit (never blocks on the POST)',
+    () async {
+      // In the main isolate the client stays alive, so the reply must NOT wait
+      // on the telemetry POST. Gate the POST open and prove notificationTap
+      // still returns; the envelope lands afterward off the fire-and-forget emit.
+      final gate = Completer<void>();
+      var postSeen = false;
+      DosageSignalsRepo.clientFactory = () => MockClient((req) async {
+        if (req.url.path.contains('/dosage/message-events')) {
+          postSeen = true;
+          posts.add(req);
+          await gate.future;
+        }
+        return http.Response('', 202);
+      });
+
+      // background defaults to false → main-isolate path.
+      await notificationTap(replyResponse('hola mundo'), client: client);
+      // Returned WITHOUT the POST having to complete (it is still gated).
+      await pumpEventQueue();
+      expect(
+        postSeen,
+        isTrue,
+        reason: 'the main-isolate reply still issues the envelope POST',
+      );
+
+      gate.complete();
+      await pumpEventQueue();
+      final envelopes = posts
+          .where((r) => r.url.path.contains('/dosage/message-events'))
+          .toList();
+      expect(
+        envelopes,
+        hasLength(1),
+        reason: 'the fire-and-forget envelope lands once the POST is released',
+      );
+    },
+  );
 }

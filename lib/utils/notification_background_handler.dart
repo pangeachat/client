@@ -81,10 +81,29 @@ void notificationTapBackground(
     _vodInitialized = true;
   }
   final store = await AppSettings.init();
-  final client = (await ClientManager.getClients(
+  final clients = await ClientManager.getClients(
     initialize: false,
     store: store,
-  )).first;
+  );
+  // Select the account the notification is FOR — its payload carries the
+  // clientName — never blindly the first client. With multiple accounts, a
+  // notification for B must not be sent (or dosage-attributed) as A, or produce
+  // no reply at all. Fall back to the sole client only when there is exactly
+  // one (unambiguous); otherwise ignore rather than act as the wrong account.
+  final payloadClientName = FluffyChatPushPayload.fromString(
+    notificationResponse.payload ?? '',
+  ).clientName;
+  final client =
+      clients.firstWhereOrNull((c) => c.clientName == payloadClientName) ??
+      (clients.length == 1 ? clients.first : null);
+  if (client == null) {
+    Logs().w(
+      'Notification tap for unknown/mismatched account "$payloadClientName"; '
+      'ignoring rather than acting as another account.',
+    );
+    IsolateNameServer.removePortNameMapping(AppConfig.pushIsolatePortName);
+    return;
+  }
   await client.abortSync();
   await client.init(
     waitForFirstSync: false,
@@ -95,7 +114,11 @@ void notificationTapBackground(
     throw Exception('Notification tab in background but not logged in!');
   }
   try {
-    await notificationTap(notificationResponse, client: client);
+    await notificationTap(
+      notificationResponse,
+      client: client,
+      background: true,
+    );
   } finally {
     await client.dispose(closeDatabase: false);
     pushIsolateReceivePort.sendPort.send('DONE');
@@ -109,6 +132,13 @@ Future<void> notificationTap(
   GoRouter? router,
   required Client client,
   L10n? l10n,
+  // True only on the vm:entry-point background isolate (main isolate down),
+  // which disposes its client the instant this returns. It changes ONLY the
+  // dosage emit: background AWAITS an envelope-only POST (so it lands before
+  // teardown); the main isolate fire-and-forgets the normal envelope +
+  // engagement tick (its analytics lifecycle flushes the span) and is never
+  // delayed by the POST.
+  bool background = false,
 }) async {
   Logs().d(
     'Notification action handler started',
@@ -189,26 +219,37 @@ Future<void> notificationTap(
           );
 
           // A notification quick-reply is a genuine learner text turn, so it
-          // emits the dosage message-envelope once the event id resolves.
-          // Load the dosage env into this isolate first: the background
-          // notification isolate boots without `.env`, so without this the emit
-          // below would read the flags as unloaded and no-op. Idempotent in the
-          // main isolate; best-effort, never blocks the reply.
+          // emits dosage signals once the event id resolves. Load the dosage env
+          // into this isolate first: the background notification isolate boots
+          // without `.env`, so without this the emit would read the flags as
+          // unloaded and no-op. Idempotent in the main isolate; best-effort,
+          // never blocks the reply. When the flags are off (or uninitialised),
+          // the repo gate no-ops WITHOUT throwing.
           await DosageMessageSignals.ensureDosageEnvLoaded();
-          // AWAIT the envelope POST. When the main isolate is down this runs in
-          // the notification background isolate (vm:entry-point), which disposes
-          // its client in the `finally` right after this returns — a
-          // fire-and-forget emit would be dropped before the POST lands, so the
-          // POST is awaited (bounded by the repo timeout, fully swallowed) to
-          // complete first. Envelope only: the background isolate has no
-          // lifecycle to flush an engagement span. When the dosage flags are
-          // off (or uninitialised), the repo gate no-ops WITHOUT throwing.
-          await DosageMessageSignals.emitReplyEnvelope(
-            roomId: room.id,
-            accessToken: room.client.accessToken,
-            msgEventId: eventId,
-            body: input,
-          );
+          if (background) {
+            // Background isolate: it disposes its client in the `finally` right
+            // after this returns, so a fire-and-forget emit would be dropped.
+            // AWAIT an envelope-only POST (bounded, swallowed); the isolate has
+            // no lifecycle to flush an engagement span.
+            await DosageMessageSignals.emitReplyEnvelope(
+              roomId: room.id,
+              accessToken: room.client.accessToken,
+              msgEventId: eventId,
+              body: input,
+            );
+          } else {
+            // Main isolate: fire-and-forget the normal envelope + engagement
+            // tick (the analytics lifecycle flushes the span). Do NOT await —
+            // the notification flow must not wait on a telemetry POST.
+            DosageMessageSignals.emitForSentMessage(
+              roomId: room.id,
+              userId: room.client.userID,
+              deviceId: room.client.deviceID,
+              accessToken: room.client.accessToken,
+              msgEventId: eventId,
+              body: input,
+            );
+          }
 
           if (PlatformInfos.isAndroid) {
             final ownProfile = await room.client.fetchOwnProfile();
