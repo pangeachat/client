@@ -100,6 +100,21 @@ class WorldMapConstants {
     curve: Curves.easeInOut,
   );
 
+  /// Interpolate longitude from [start] to [end] at pan progress [t] along the
+  /// SHORTEST angular direction (#7880). A raw linear tween of longitude values
+  /// sweeps the long way around whenever start/end straddle the antimeridian
+  /// numerically (e.g. 175 -> -179 tweens down through 0, a 354deg spin), even
+  /// though the target pin is only a few degrees away on screen. Wrapping the
+  /// delta into (-180, 180] pans toward the pin's visible on-screen direction.
+  /// The returned value may fall slightly outside [-180, 180] mid-tween (e.g.
+  /// 181, i.e. -179); flutter_map's `move` normalizes it, and the tile layer
+  /// wraps, so the sweep stays continuous across the seam.
+  static double lerpLongitude(double start, double end, double t) {
+    var delta = (end - start) % 360;
+    if (delta > 180) delta -= 360;
+    return start + delta * t;
+  }
+
   /// The (pan, zoom) progress at raw glide value [t] for a move from [startZoom]
   /// to [targetZoom]. Split out so the directional staggering is unit-testable.
   static ({double pan, double zoom}) glideProgress(
