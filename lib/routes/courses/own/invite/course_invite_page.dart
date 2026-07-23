@@ -80,7 +80,12 @@ class CourseInvitePageController extends State<CourseInvitePage>
               e.roomId == spaceId &&
               e.state.type == PangeaEventTypes.coursePlan,
         ),
-      if (room?.requireAnalyticsAccess != true)
+      // Wait for the courseSettings state event to be PRESENT, not for its
+      // value to be true. Keying on requireAnalyticsAccess conflates "state
+      // synced" with "analytics enabled": once the user toggles analytics off,
+      // every getSpaceId() call would otherwise hang 10s waiting for a
+      // courseSettings event that never comes, then throw (#7799).
+      if (room?.getState(PangeaEventTypes.courseSettings) == null)
         roomStateStream.firstWhere(
           (e) =>
               e.roomId == spaceId &&
