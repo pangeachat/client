@@ -634,6 +634,7 @@ class WorldMapController extends State<WorldMap>
               padding: _exposedCanvasPadding,
               maxZoom: mapController.camera.zoom,
             ),
+            anchor: point,
           );
           return;
         }
@@ -677,6 +678,7 @@ class WorldMapController extends State<WorldMap>
                 ? mapController.camera.zoom
                 : WorldMapConstants.focusZoom,
           ),
+          anchor: point,
         );
         return;
       }
@@ -698,17 +700,24 @@ class WorldMapController extends State<WorldMap>
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
   /// `fitCamera`). [CameraFit.fit] resolves the target center+zoom without
-  /// moving; we tween to it.
-  void _animateFit(CameraFit fit) {
+  /// moving; we tween to it. [anchor] is the pin the fit is centering (if any);
+  /// it steers the pan's east/west direction so the pin stays on screen for
+  /// the whole glide (#7880, [WorldMapConstants.panTargetLongitude]).
+  void _animateFit(CameraFit fit, {LatLng? anchor}) {
     final target = fit.fit(mapController.camera);
-    _animateCameraTo(target.center, target.zoom);
+    _animateCameraTo(target.center, target.zoom, anchor: anchor);
   }
 
   /// Tween the camera center + zoom to the target. The glide length scales with
   /// the zoom distance ([WorldMapConstants.glideDurationFor]) and pan/zoom are
   /// staggered so the pan runs at the wider zoom (#7239). Re-targets cleanly if
   /// called mid-flight (the glide restarts from the current position).
-  void _animateCameraTo(LatLng center, double zoom) {
+  ///
+  /// [anchor]: the pin being brought into view, if the move is about one. The
+  /// stored target longitude is UNWRAPPED so the tween's direction carries the
+  /// anchor's on-screen copy directly to its resting spot instead of taking a
+  /// path that throws it off screen (#7880).
+  void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
@@ -716,9 +725,17 @@ class WorldMapController extends State<WorldMap>
       } catch (_) {}
       return;
     }
-    _camStart = mapController.camera.center;
+    final start = mapController.camera.center;
+    _camStart = start;
     _camStartZoom = mapController.camera.zoom;
-    _camTarget = center;
+    _camTarget = LatLng(
+      center.latitude,
+      WorldMapConstants.panTargetLongitude(
+        start: start.longitude,
+        target: center.longitude,
+        anchor: anchor?.longitude,
+      ),
+    );
     _camTargetZoom = zoom;
     anim
       ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
@@ -738,13 +755,11 @@ class WorldMapController extends State<WorldMap>
       _camTargetZoom,
     );
     final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
-    // Pan longitude along the shortest angular direction so a pin near the
-    // antimeridian glides toward its visible on-screen position (#7880).
-    final lng = WorldMapConstants.lerpLongitude(
-      start.longitude,
-      end.longitude,
-      p.pan,
-    );
+    // A plain linear tween: the direction decision (which world-copy of the
+    // target to fly to, so the focused pin stays on screen) was already baked
+    // into the UNWRAPPED target longitude by [_animateCameraTo] (#7880).
+    // Mid-tween values may exceed +-180; `move` re-normalizes each frame.
+    final lng = start.longitude + (end.longitude - start.longitude) * p.pan;
     final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * p.zoom;
     try {
       mapController.move(LatLng(lat, lng), zoom);

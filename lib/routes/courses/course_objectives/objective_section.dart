@@ -43,6 +43,8 @@ class ObjectiveSection extends StatefulWidget {
 
 class ObjectiveSectionState extends State<ObjectiveSection> {
   final ScrollController _scrollController = ScrollController();
+  final ValueNotifier<bool> _showBackArrowNotifier = ValueNotifier(false);
+  final ValueNotifier<bool> _showForwardArrowNotifier = ValueNotifier(false);
 
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
   double get _cardWidth => widget.cardWidth ?? (_isColumnMode ? 160.0 : 120.0);
@@ -51,10 +53,43 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
 
   double get _cardScrollDistance => _cardWidth + widget.spacing;
 
+  bool get _showBackArrow {
+    try {
+      return _scrollController.hasClients && _scrollController.offset > 0;
+    } catch (_) {}
+    return false;
+  }
+
+  bool get _showForwardArrow {
+    try {
+      if (_scrollController.hasClients) {
+        final position = _scrollController.position;
+        if (position.hasContentDimensions) {
+          return position.pixels < position.maxScrollExtent;
+        }
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_updateArrowVisibility);
+  }
+
   @override
   void dispose() {
+    _scrollController.removeListener(_updateArrowVisibility);
     _scrollController.dispose();
+    _showBackArrowNotifier.dispose();
+    _showForwardArrowNotifier.dispose();
     super.dispose();
+  }
+
+  void _updateArrowVisibility() {
+    _showBackArrowNotifier.value = _showBackArrow;
+    _showForwardArrowNotifier.value = _showForwardArrow;
   }
 
   void _scrollByArrow(ArrowDirection direction) {
@@ -144,133 +179,122 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
           height: _cardHeight,
           child: Stack(
             children: [
-              ListView.separated(
-                controller: _scrollController,
-                scrollDirection: Axis.horizontal,
-                itemCount: activities.length,
-                separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
-                padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
-                itemBuilder: (context, i) {
-                  final ref = activities[i];
-                  final complete =
-                      (widget.hasCompletedActivity?.call(ref.activityId) ??
-                      false);
-                  final starsEarned = widget.userStarsByActivity(
-                    ref.activityId,
-                  );
-                  return MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      // In a preview (no room), open the activity as a standalone
-                      // world object (`/<activityId>`). In a joined course, open it
-                      // as the focused detail over the map: DROP the `left=course`
-                      // card (so it isn't left blank beside the activity) but KEEP
-                      // the `?m=course:` filter. That surviving course scope is what
-                      // marks this plan as the card's child: its close is a back-arrow
-                      // that reopens the card (a pin-opened plan drops the scope and so
-                      // closes with an X). The map stays course-scoped and zooms to
-                      // this activity (`mapFocusFor` → `ActivityFocus`). See
-                      // routing.instructions.md.
-                      onTap: () => widget.onTap(ref),
-                      child: Stack(
-                        children: [
-                          ActivitySuggestionCard(
-                            activity: ref.plan,
-                            width: _cardWidth,
-                            height: _cardHeight,
-                            fontSize: _isColumnMode ? 16.0 : 12.0,
-                            fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                            iconSize: _isColumnMode ? 12.0 : 8.0,
-                            starsEarned: starsEarned,
-                          ),
-                          if (complete)
-                            Container(
+              NotificationListener<ScrollMetricsNotification>(
+                onNotification: (ScrollMetricsNotification notification) {
+                  _updateArrowVisibility();
+                  return true;
+                },
+                child: ListView.separated(
+                  controller: _scrollController,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: activities.length,
+                  separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
+                  padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
+                  itemBuilder: (context, i) {
+                    final ref = activities[i];
+                    final complete =
+                        (widget.hasCompletedActivity?.call(ref.activityId) ??
+                        false);
+                    final starsEarned = widget.userStarsByActivity(
+                      ref.activityId,
+                    );
+                    return MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        // In a preview (no room), open the activity as a standalone
+                        // world object (`/<activityId>`). In a joined course, open it
+                        // as the focused detail over the map: DROP the `left=course`
+                        // card (so it isn't left blank beside the activity) but KEEP
+                        // the `?m=course:` filter. That surviving course scope is what
+                        // marks this plan as the card's child: its close is a back-arrow
+                        // that reopens the card (a pin-opened plan drops the scope and so
+                        // closes with an X). The map stays course-scoped and zooms to
+                        // this activity (`mapFocusFor` → `ActivityFocus`). See
+                        // routing.instructions.md.
+                        onTap: () => widget.onTap(ref),
+                        child: Stack(
+                          children: [
+                            ActivitySuggestionCard(
+                              activity: ref.plan,
                               width: _cardWidth,
                               height: _cardHeight,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: theme.colorScheme.surface.withAlpha(180),
-                              ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  'assets/pangea/check.svg',
-                                  width: 48.0,
-                                  height: 48.0,
+                              fontSize: _isColumnMode ? 16.0 : 12.0,
+                              fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                              iconSize: _isColumnMode ? 12.0 : 8.0,
+                              starsEarned: starsEarned,
+                            ),
+                            if (complete)
+                              Container(
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: theme.colorScheme.surface.withAlpha(
+                                    180,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    'assets/pangea/check.svg',
+                                    width: 48.0,
+                                    height: 48.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-              ListenableBuilder(
-                listenable: _scrollController,
-                builder: (context, _) {
-                  bool showArrow = false;
-                  try {
-                    showArrow =
-                        _scrollController.hasClients &&
-                        _scrollController.offset > 0;
-                  } catch (_) {}
-
-                  return Positioned(
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: IgnorePointer(
-                      ignoring: !showArrow,
-                      child: AnimatedSlide(
-                        duration: const Duration(milliseconds: 250),
-                        curve: Curves.easeOut,
-                        offset: showArrow ? Offset.zero : const Offset(-1, 0),
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 150),
-                          opacity: showArrow ? 1 : 0,
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.back,
-                            onTap: () => _scrollByArrow(ArrowDirection.back),
-                          ),
+              ValueListenableBuilder(
+                valueListenable: _showBackArrowNotifier,
+                builder: (context, showArrow, _) => Positioned(
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: IgnorePointer(
+                    ignoring: !showArrow,
+                    child: AnimatedSlide(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                      offset: showArrow ? Offset.zero : const Offset(-1, 0),
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 150),
+                        opacity: showArrow ? 1 : 0,
+                        child: ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.back,
+                          onTap: () => _scrollByArrow(ArrowDirection.back),
                         ),
                       ),
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
-              ListenableBuilder(
-                listenable: _scrollController,
-                builder: (context, _) {
-                  bool showArrow = false;
-                  try {
-                    showArrow =
-                        _scrollController.hasClients &&
-                        _scrollController.position.pixels <
-                            _scrollController.position.maxScrollExtent;
-                  } catch (_) {}
-
-                  return Positioned(
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: IgnorePointer(
-                      ignoring: !showArrow,
-                      child: AnimatedSlide(
-                        duration: const Duration(milliseconds: 250),
-                        curve: Curves.easeOut,
-                        offset: showArrow ? Offset.zero : const Offset(1, 0),
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 150),
-                          opacity: showArrow ? 1 : 0,
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.forward,
-                            onTap: () => _scrollByArrow(ArrowDirection.forward),
-                          ),
+              ValueListenableBuilder(
+                valueListenable: _showForwardArrowNotifier,
+                builder: (context, showArrow, _) => Positioned(
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: IgnorePointer(
+                    ignoring: !showArrow,
+                    child: AnimatedSlide(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                      offset: showArrow ? Offset.zero : const Offset(1, 0),
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 150),
+                        opacity: showArrow ? 1 : 0,
+                        child: ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.forward,
+                          onTap: () => _scrollByArrow(ArrowDirection.forward),
                         ),
                       ),
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
             ],
           ),

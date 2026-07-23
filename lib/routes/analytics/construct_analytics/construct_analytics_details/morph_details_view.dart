@@ -15,7 +15,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
-  const MorphDetailsView({required this.constructId, super.key});
+
+  /// Bumped when the meaning copy is regenerated in place (grammar feedback,
+  /// #7676) so the meaning widget re-fetches without a construct change.
+  final ValueNotifier<int>? reloadNotifier;
+
+  const MorphDetailsView({
+    required this.constructId,
+    this.reloadNotifier,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +110,7 @@ class MorphDetailsView extends StatelessWidget {
                 feature: feature,
                 tag: tag,
                 style: Theme.of(context).textTheme.bodyLarge,
+                reloadNotifier: reloadNotifier,
               ),
               if (localizedTag != null)
                 GrammarConstructExample(tag: localizedTag),
