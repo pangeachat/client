@@ -59,6 +59,29 @@ SpeechToTextResponseModel _tokenRich(String content) =>
       _tokenLessEmbed(),
     ).withFirstTranscriptTokens([STTToken(token: _token(content))]);
 
+/// A text-only STT with an explicit [transcript] (for rep-staleness tests).
+SpeechToTextResponseModel _sttTextOnly(String transcript) =>
+    SpeechToTextResponseModel.fromJson({
+      'results': [
+        {
+          'transcripts': [
+            {
+              'confidence': 90,
+              'lang_code': _embedLangCode,
+              'transcript': transcript,
+              'words_per_hr': 100,
+              'stt_tokens': <Map<String, dynamic>>[],
+            },
+          ],
+        },
+      ],
+    });
+
+/// A token-rich STT with an explicit [transcript].
+SpeechToTextResponseModel _sttTokenRich(String transcript) => _sttTextOnly(
+  transcript,
+).withFirstTranscriptTokens([STTToken(token: _token(transcript))]);
+
 void main() {
   late Client client;
   late Room room;
@@ -95,11 +118,56 @@ void main() {
   });
 
   tearDown(() async {
-    // Restore the real tokenizer so state never leaks between tests.
+    // Restore the real tokenizer + loader language reader so state never leaks
+    // between tests.
     PangeaMessageEvent.enrichSttHook = enrichSttWithTokens;
+    TranscriptionLoader.resetReaderLanguages();
     timeline.cancelSubscriptions();
     await client.dispose();
   });
+
+  // A persisted `pangea.representation` event carrying [stt], with [ts] driving
+  // newest-first ordering. Built via the same timeline.aggregatedEvents seam the
+  // no-retokenize test uses.
+  Event repEventFor(
+    String eventId,
+    SpeechToTextResponseModel stt,
+    DateTime ts,
+  ) => Event(
+    type: PangeaEventTypes.representation,
+    eventId: eventId,
+    senderId: client.userID!,
+    originServerTs: ts,
+    content: {
+      PangeaEventTypes.representation: PangeaRepresentation(
+        langCode: _embedLangCode,
+        text: stt.hasUsableTranscript ? stt.transcript.text : '',
+        originalSent: false,
+        originalWritten: false,
+        speechToText: stt,
+      ).toJson(),
+    },
+    room: room,
+  );
+
+  // An audio event with NO usable embed (no user_stt), so selection/display fall
+  // through to the persisted representations.
+  PangeaMessageEvent noEmbedMessage(String eventId) => PangeaMessageEvent(
+    event: Event(
+      type: EventTypes.Message,
+      eventId: eventId,
+      senderId: client.userID!,
+      originServerTs: DateTime.now(),
+      content: {
+        'msgtype': 'm.audio',
+        'body': 'recording.wav',
+        'speaker_l1': _eventSpeakerL1,
+      },
+      room: room,
+    ),
+    timeline: timeline,
+    ownMessage: true,
+  );
 
   test(
     'the embed alone is text-usable but token-less (the decoupled-send shape)',
@@ -251,6 +319,127 @@ void main() {
       // Teeth: reverting the persisted-rep preference -> re-tokenizes -> RED.
       expect(enrichCalls, 0);
       expect(result.hasUsableTokens, isTrue);
+    },
+  );
+
+  test('R9 HIGH (production path): getSpeechToTextLocal(preferTokens:true) with NO '
+      'usable embed + reps [newest text-only "B", older token-rich "A"] returns '
+      'the newest "B" (NO stale "A" tokens)', () {
+    final noEmbed = noEmbedMessage(r'$audio-noembed-a:fakeServer.notExisting');
+    final now = DateTime.now();
+    timeline.aggregatedEvents[noEmbed.eventId] = {
+      PangeaEventTypes.representation: {
+        repEventFor(r'$repB:s', _sttTextOnly('B'), now), // newest, text-only
+        repEventFor(
+          r'$repA:s',
+          _sttTokenRich('A'),
+          now.subtract(const Duration(minutes: 1)), // older, token-rich
+        ),
+      },
+    };
+
+    // The real production read (getSpeechToTextLocal -> _speechToTextRepresentation
+    // -> pickTokenRichRepStt) must surface the newest "B", not the stale "A".
+    // Teeth: reverting _speechToTextRepresentation to "any token-rich" surfaces
+    // "A" (hasUsableTokens true, transcript "A") -> RED.
+    final selected = noEmbed.getSpeechToTextLocal(preferTokens: true);
+    expect(selected, isNotNull);
+    expect(selected!.hasUsableTokens, isFalse);
+    expect(selected.transcript.text, 'B');
+  });
+
+  test('R9 HIGH (production path): with reps [newest token-rich "B", older '
+      'token-rich "A"] getSpeechToTextLocal returns "B"', () {
+    final noEmbed = noEmbedMessage(r'$audio-noembed-b:fakeServer.notExisting');
+    final now = DateTime.now();
+    timeline.aggregatedEvents[noEmbed.eventId] = {
+      PangeaEventTypes.representation: {
+        repEventFor(r'$repB2:s', _sttTokenRich('B'), now),
+        repEventFor(
+          r'$repA2:s',
+          _sttTokenRich('A'),
+          now.subtract(const Duration(minutes: 1)),
+        ),
+      },
+    };
+
+    final selected = noEmbed.getSpeechToTextLocal(preferTokens: true);
+    expect(selected!.hasUsableTokens, isTrue);
+    expect(selected.transcript.text, 'B');
+  });
+
+  test('R9 SHOULD-FIX (production path): a MALFORMED representation is skipped so '
+      'the valid token-rich rep is still found (no re-tokenize)', () async {
+    // If the malformed rep aborts the scan, the flow re-tokenizes and calls
+    // the hook -> throw so the RED case fails FAST (deterministic) instead of
+    // reaching the unsynced-room attach path and hanging ("did not complete").
+    var enrichCalls = 0;
+    final reTokenizeSentinel = Exception(
+      'malformed rep hid the valid token-rich rep -> re-tokenized',
+    );
+    PangeaMessageEvent.enrichSttHook = (base, snapshot) async {
+      enrichCalls++;
+      throw reTokenizeSentinel;
+    };
+
+    // A malformed rep event whose `pangea.representation` content is present
+    // but missing the required `txt` field, so `PangeaRepresentation.fromJson`
+    // THROWS on read (a null content[type] would instead hit the read path's
+    // `debugger(when: kDebugMode)` and pause the test). NEWER than a valid
+    // token-rich rep matching the token-less embed.
+    final now = DateTime.now();
+    final malformed = Event(
+      type: PangeaEventTypes.representation,
+      eventId: r'$rep-malformed:fakeServer.notExisting',
+      senderId: client.userID!,
+      originServerTs: now,
+      content: <String, dynamic>{
+        PangeaEventTypes.representation: <String, dynamic>{'lang': 'fr'},
+      },
+      room: room,
+    );
+    final valid = repEventFor(
+      r'$rep-valid:fakeServer.notExisting',
+      _tokenRich('hola mundo'), // matches the embed 'hola mundo'/fr
+      now.subtract(const Duration(minutes: 1)),
+    );
+    timeline.aggregatedEvents[audioMessage.eventId] = {
+      PangeaEventTypes.representation: {malformed, valid},
+    };
+
+    final result = await audioMessage.requestSpeechToText(
+      'en',
+      'es',
+      requireTokens: true,
+    );
+
+    // The guard skips the malformed rep and finds the valid token-rich one, so
+    // the hook is never called. Teeth: without the per-rep try/catch, the
+    // malformed rep aborts the scan -> the valid tokens are hidden -> the flow
+    // re-tokenizes -> the hook throws `reTokenizeSentinel` -> this await throws
+    // -> RED.
+    expect(enrichCalls, 0);
+    expect(result.hasUsableTokens, isTrue);
+  });
+
+  test(
+    'R9 HIGH (loader wiring): TranscriptionLoader.fetch requires tokens -- '
+    'driving the REAL loader fetch on a token-less embed reaches the tokenizer',
+    () async {
+      TranscriptionLoader.readerLanguages = () => ('en', 'es');
+      final loader = TranscriptionLoader(audioMessage);
+      addTearDown(loader.dispose);
+
+      final sentinel = Exception('tokenizer-reached');
+      PangeaMessageEvent.enrichSttHook = (base, snapshot) async =>
+          throw sentinel;
+
+      // The loader's fetch -> requestTokenizedTranscription ->
+      // requestSpeechToText(requireTokens:true) -> repair -> tokenizer (throws
+      // the sentinel before the backend-less attach). Teeth: reverting the
+      // loader's delegation OR requireTokens:true -> the token-less embed is
+      // returned WITHOUT tokenizing -> no throw -> RED (dead taps).
+      await expectLater(loader.fetch(), throwsA(same(sentinel)));
     },
   );
 
