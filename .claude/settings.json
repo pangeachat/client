@@ -33,6 +33,14 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-merge-gate.sh\""
+          },
+          {
+            "type": "command",
             "command": "python3 \"$HOME/PangeaChat/.github/scripts/intent-gate.py\""
           },
           {
