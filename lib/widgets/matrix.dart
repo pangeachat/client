@@ -21,6 +21,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -565,19 +566,32 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
   }
 
-  /// Flushes + disposes THIS account's dosage/analytics services (awaited), so
-  /// its final engagement-span POST is sent under a still-valid bearer. Wired
-  /// into EVERY teardown path: the logout flows (called BEFORE `client.logout()`
-  /// invalidates the bearer), the `loggedOut` listener ([_cancelSubs]), and
-  /// widget [dispose]. Idempotent — a second call finds the maps empty and is a
-  /// no-op, so the logout flow and the loggedOut listener don't double-flush.
+  /// Best-effort, bounded, NON-destructive flush of an account's open engagement
+  /// span. Called BEFORE `client.logout()` so the final POST uses a still-valid
+  /// bearer WITHOUT tearing the services down — if logout then fails, they are
+  /// intact and the `loggedOut` listener disposes them once logout is confirmed.
+  /// Never throws or blocks the logout.
+  Future<void> flushAccountTelemetry(String clientName) async {
+    try {
+      final userId = _analyticsServices[clientName]?.accountUserId;
+      if (userId == null || userId.isEmpty) return;
+      final tracker = DosageEngagementTracker.forAccount(userId);
+      if (tracker != null) {
+        await tracker.flushOpenSpan().timeout(const Duration(seconds: 5));
+      }
+    } catch (_) {
+      // Telemetry is best-effort; a flush failure must never block logout.
+    }
+  }
+
+  /// DISPOSES THIS account's dosage/analytics services (awaited). The final span
+  /// is flushed by [flushAccountTelemetry] BEFORE logout; this destructive
+  /// teardown runs on the `loggedOut` listener ([_cancelSubs]) and widget
+  /// [dispose]. Removes each entry SYNCHRONOUSLY (before awaiting) so a
+  /// concurrent second call can't dispose the same service/database twice.
   Future<void> disposeAccountServices(String clientName) async {
-    _activityAutoSaveServices[clientName]?.dispose();
-    _activityAutoSaveServices.remove(clientName);
-    // Awaits AnalyticsUpdateService.dispose → the account's engagement-span
-    // flush, so the last span is POSTed before we return (and before logout).
-    await _analyticsServices[clientName]?.dispose();
-    _analyticsServices.remove(clientName);
+    _activityAutoSaveServices.remove(clientName)?.dispose();
+    await _analyticsServices.remove(clientName)?.dispose();
   }
 
   void initMatrix() {

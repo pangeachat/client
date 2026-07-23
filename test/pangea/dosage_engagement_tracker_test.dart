@@ -153,9 +153,59 @@ void main() {
       expect(bReqs.single.headers['Authorization'], 'Bearer tok-B');
     });
 
-    test('disposeAccount is idempotent (a second call is a no-op)', () async {
-      await DosageEngagementTracker.disposeAccount('@gone:example.org');
-      await DosageEngagementTracker.disposeAccount('@gone:example.org');
+    test(
+      'disposeAccount flushes once, a second call re-flushes nothing, and the '
+      'tracker is dropped from the registry',
+      () async {
+        final reqs = <http.Request>[];
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return http.Response('', 202);
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@gone:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@gone:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        await DosageEngagementTracker.disposeAccount('@gone:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the open span flushes on the first teardown',
+        );
+
+        // A second teardown of the same account is a no-op: the tracker is
+        // already gone, so nothing re-flushes and it must not throw.
+        await DosageEngagementTracker.disposeAccount('@gone:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'a second teardown re-flushes nothing (idempotent)',
+        );
+
+        // The registry entry was removed (no leak); a later resolve builds a
+        // FRESH tracker rather than handing back the disposed one.
+        final revived = DosageEngagementTracker.forAccount('@gone:example.org');
+        expect(revived, isNotNull);
+        expect(
+          identical(revived, tracker),
+          isFalse,
+          reason: 'the disposed tracker was dropped from the registry',
+        );
+      },
+    );
+
+    test('disposing an unknown or empty account is a safe no-op', () async {
+      // No tracker registered — must not throw and must post nothing.
+      await DosageEngagementTracker.disposeAccount('@never:example.org');
+      await DosageEngagementTracker.disposeAccount('');
+      expect(requests, isEmpty);
     });
   });
 

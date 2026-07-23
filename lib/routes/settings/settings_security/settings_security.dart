@@ -108,6 +108,14 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (mxid == null || mxid.isEmpty || mxid != supposedMxid) {
       return;
     }
+    // #Pangea
+    // Capture THE account being deactivated up front and never re-read
+    // Matrix.of(context).client below: removing this account makes that getter
+    // return the NEXT account, and we would tear down / log out the wrong one.
+    final matrix = Matrix.of(context);
+    final client = matrix.client;
+    final clientName = client.clientName;
+    // Pangea#
     final resp = await showFutureLoadingDialog(
       context: context,
       delay: false,
@@ -119,7 +127,9 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       //       ).client.deactivateAccount(auth: auth, erase: true),
       //     ),
       future: () async {
-        final client = Matrix.of(context).client;
+        // Flush the final dosage span while the bearer is still valid, BEFORE
+        // deletion invalidates it (best-effort, never blocks the deletion).
+        await matrix.flushAccountTelemetry(clientName);
         if (entitlementRef != null) {
           final result = await SubscriptionCancelRepo.instance
               .cancelSubscription(
@@ -134,9 +144,7 @@ class SettingsSecurityController extends State<SettingsSecurity> {
 
         await client.deleteAccount();
         await client.uiaRequestBackground<IdServerUnbindResult?>(
-          (auth) => Matrix.of(
-            context,
-          ).client.deactivateAccount(auth: auth, erase: true),
+          (auth) => client.deactivateAccount(auth: auth, erase: true),
         );
       },
       // Pangea#
@@ -145,13 +153,8 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (!resp.isError) {
       await showFutureLoadingDialog(
         context: context,
-        future: () async {
-          final matrix = Matrix.of(context);
-          // Flush + dispose the account's dosage/analytics BEFORE logout
-          // invalidates the bearer, consistent with the normal logout path.
-          await matrix.disposeAccountServices(matrix.client.clientName);
-          await matrix.client.logout();
-        },
+        // The CAPTURED client — its loggedOut listener disposes its services.
+        future: () => client.logout(),
       );
     }
   }

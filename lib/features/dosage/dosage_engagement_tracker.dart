@@ -44,21 +44,33 @@ class DosageEngagementTracker {
   /// one account's teardown never flushes or attributes another's spans.
   static final Map<String, DosageEngagementTracker> _byAccount = {};
 
-  /// The tracker for [userId], created on first use. An empty userId (unknown
-  /// account) gets none — the caller then records no engagement (the envelope
-  /// still posts) rather than attributing a span to an unknown account.
+  /// Accounts whose teardown is in flight. While closing, [forAccount] must not
+  /// recreate a tracker — otherwise a send resolving concurrently with logout
+  /// would open a fresh span that no one ever flushes (its bearer is about to be
+  /// invalidated).
+  static final Set<String> _closing = {};
+
+  /// The tracker for [userId], created on first use. Returns none for an unknown
+  /// account (empty userId) or one whose teardown is in flight — the caller then
+  /// records no engagement (the envelope still posts) rather than attributing a
+  /// span to an unknown or closing account.
   static DosageEngagementTracker? forAccount(String userId) {
-    if (userId.isEmpty) return null;
+    if (userId.isEmpty || _closing.contains(userId)) return null;
     return _byAccount.putIfAbsent(userId, DosageEngagementTracker.new);
   }
 
-  /// Flushes + drops [userId]'s tracker on that account's teardown. Returns the
-  /// final flush's POST future so teardown can AWAIT it — so the last span is
-  /// sent (under the still-valid bearer) BEFORE logout invalidates it, and one
-  /// account's teardown can't touch another's tracker. Idempotent.
-  static Future<void> disposeAccount(String userId) {
-    final tracker = _byAccount.remove(userId);
-    return tracker?.flushOpenSpan() ?? Future.value();
+  /// Flushes + drops [userId]'s tracker on that account's teardown. Awaited so
+  /// the last span is sent (under the still-valid bearer) BEFORE logout
+  /// invalidates it; one account's teardown can't touch another's tracker;
+  /// tombstoned throughout so a concurrent send can't recreate it. Idempotent.
+  static Future<void> disposeAccount(String userId) async {
+    if (userId.isEmpty) return;
+    _closing.add(userId);
+    try {
+      await _byAccount.remove(userId)?.flushOpenSpan();
+    } finally {
+      _closing.remove(userId);
+    }
   }
 
   /// Seeds a tracker for [userId] (tests only), so a teardown path can be driven
@@ -70,7 +82,10 @@ class DosageEngagementTracker {
   /// Clears the per-account registry (tests only) so the app-global map doesn't
   /// leak between tests.
   @visibleForTesting
-  static void debugResetAccounts() => _byAccount.clear();
+  static void debugResetAccounts() {
+    _byAccount.clear();
+    _closing.clear();
+  }
 
   String? _spanId;
   DateTime? _spanStart;

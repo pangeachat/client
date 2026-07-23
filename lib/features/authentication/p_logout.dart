@@ -43,7 +43,9 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
       // before wiping out locally cached construct data, save it to the server
       saveAnalytics: () => matrix.analyticsDataService.updateService
           .sendLocalAnalyticsToAnalyticsRoom(),
-      flushAndDispose: () => matrix.disposeAccountServices(client.clientName),
+      // NON-destructive flush of the final dosage span while the bearer is still
+      // valid; the loggedOut listener disposes the services once logout lands.
+      flushTelemetry: () => matrix.flushAccountTelemetry(client.clientName),
       logout: () => client.logout(),
     ),
   );
@@ -51,19 +53,24 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
   await redirect;
 }
 
-/// The logout ordering: save cached analytics, then FLUSH + dispose this
-/// account's dosage/analytics, and only THEN log out. The flush must run while
-/// the bearer is still valid — logout invalidates it, so a flush after logout
-/// would POST with a dead token (the `loggedOut` listener's teardown is the
-/// backstop, but it fires too late for the final span). Extracted so the
-/// ordering is unit-testable.
+/// The logout ordering: save cached analytics, then NON-DESTRUCTIVELY flush this
+/// account's final dosage span, and only THEN log out — the flush must run while
+/// the bearer is still valid (logout invalidates it). Save + flush are
+/// best-effort and MUST NOT block or fail the logout, so they are swallowed and
+/// logout always runs; the actual service disposal happens on the `loggedOut`
+/// listener once logout is confirmed (so a failed logout doesn't tear down a
+/// still-live account). Extracted so the ordering is unit-testable.
 @visibleForTesting
 Future<void> saveFlushAndLogout({
   required Future<void> Function() saveAnalytics,
-  required Future<void> Function() flushAndDispose,
+  required Future<void> Function() flushTelemetry,
   required Future<void> Function() logout,
 }) async {
-  await saveAnalytics();
-  await flushAndDispose();
+  try {
+    await saveAnalytics();
+    await flushTelemetry();
+  } catch (_) {
+    // Best-effort — never block or fail the logout on telemetry.
+  }
   await logout();
 }

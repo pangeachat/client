@@ -26,26 +26,20 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   final AnalyticsDataService dataService;
 
-  /// The account (mxid) this per-account service belongs to. Its dosage tracker
-  /// is resolved/disposed per-account so one account's teardown never touches
-  /// another's.
-  final String? _accountUserId;
-
   /// Test-only injected tracker; when set, [dispose] flushes it directly instead
   /// of the per-account registry.
   final DosageEngagementTracker? _injectedTracker;
 
-  AnalyticsUpdateService(
-    this.dataService, {
-    String? accountUserId,
-    DosageEngagementTracker? tracker,
-  }) : _accountUserId = accountUserId,
-       _injectedTracker = tracker;
+  AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
+    : _injectedTracker = tracker;
+
+  /// The account (mxid), read LAZILY (not snapshotted at construction, which can
+  /// be before login) so it matches the mxid the send path uses post-login.
+  String get _accountUserId => dataService.accountUserId ?? '';
 
   /// This account's engagement tracker (heartbeat/background flush target).
   DosageEngagementTracker? get _tracker =>
-      _injectedTracker ??
-      DosageEngagementTracker.forAccount(_accountUserId ?? '');
+      _injectedTracker ?? DosageEngagementTracker.forAccount(_accountUserId);
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
@@ -86,7 +80,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     if (injected != null) {
       await injected.flushOpenSpan();
     } else {
-      await DosageEngagementTracker.disposeAccount(_accountUserId ?? '');
+      await DosageEngagementTracker.disposeAccount(_accountUserId);
     }
   }
 

@@ -46,6 +46,14 @@ class AnalyticsStreamUpdate {
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
+  /// The account's client, kept so [accountUserId] can be resolved LAZILY: this
+  /// service may be constructed BEFORE login (userID null then), and the dosage
+  /// tracker must key on the SAME mxid the send path uses once logged in.
+  final Client _accountClient;
+
+  /// The account (mxid), resolved lazily (see [_accountClient]).
+  String? get accountUserId => _accountClient.userID;
+
   late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
   AnalyticsSyncController? _syncController;
@@ -54,12 +62,10 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
-  AnalyticsDataService(Client client) {
+  AnalyticsDataService(this._accountClient) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
-    // Pass the account (mxid) so the update service resolves + disposes THIS
-    // account's dosage tracker, never another account's.
-    updateService = AnalyticsUpdateService(this, accountUserId: client.userID);
-    _initDatabase(client);
+    updateService = AnalyticsUpdateService(this);
+    _initDatabase(_accountClient);
   }
 
   static const int _morphUnlockXP = AnalyticsConstants.xpForGreens;
