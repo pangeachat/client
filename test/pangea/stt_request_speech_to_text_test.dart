@@ -423,6 +423,48 @@ void main() {
   });
 
   test(
+    'R10 SHOULD-FIX (production path): a WRONG-TYPE relation event is skipped '
+    'while BUILDING the representations list, so the valid token-rich rep is '
+    'still found',
+    () {
+      final noEmbed = noEmbedMessage(
+        r'$audio-noembed-wrongtype:fakeServer.notExisting',
+      );
+      final now = DateTime.now();
+
+      // A relation event aggregated under the representation relation whose
+      // event TYPE is NOT pangea.representation. RepresentationEvent's
+      // constructor THROWS on such an event -- and that happens while the
+      // `representations` getter BUILDS the list (the `.map(...)` in
+      // `_repEvents`), OUTSIDE the per-rep read guard inside the scan loop.
+      final wrongType = Event(
+        type: EventTypes.Message,
+        eventId: r'$rep-wrongtype:fakeServer.notExisting',
+        senderId: client.userID!,
+        originServerTs: now,
+        content: const <String, dynamic>{'body': 'not a representation'},
+        room: room,
+      );
+      final valid = repEventFor(
+        r'$rep-valid-wt:fakeServer.notExisting',
+        _sttTokenRich('B'),
+        now.subtract(const Duration(minutes: 1)),
+      );
+      timeline.aggregatedEvents[noEmbed.eventId] = {
+        PangeaEventTypes.representation: {wrongType, valid},
+      };
+
+      // Teeth: without guarding the per-relation mapping in `_repEvents`, the
+      // wrong-type event makes RepresentationEvent's constructor throw -> the
+      // whole representations build aborts -> the valid rep is hidden -> null.
+      final selected = noEmbed.getSpeechToTextLocal(preferTokens: true);
+      expect(selected, isNotNull);
+      expect(selected!.hasUsableTokens, isTrue);
+      expect(selected.transcript.text, 'B');
+    },
+  );
+
+  test(
     'R9 HIGH (loader wiring): TranscriptionLoader.fetch requires tokens -- '
     'driving the REAL loader fetch on a token-less embed reaches the tokenizer',
     () async {
