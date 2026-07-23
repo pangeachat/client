@@ -13,13 +13,9 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class NewPrivateChatView extends StatelessWidget {
   final NewPrivateChatController controller;
-  final Widget closeButton;
+  final Widget? closeButton;
 
-  const NewPrivateChatView(
-    this.controller, {
-    super.key,
-    required this.closeButton,
-  });
+  const NewPrivateChatView(this.controller, {super.key, this.closeButton});
 
   @override
   Widget build(BuildContext context) {

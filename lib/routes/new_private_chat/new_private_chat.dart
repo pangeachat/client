@@ -18,9 +18,9 @@ import '../../widgets/adaptive_dialogs/user_dialog.dart';
 // Pangea#
 
 class NewPrivateChat extends StatefulWidget {
-  final Widget closeButton;
+  final Widget? closeButton;
 
-  const NewPrivateChat({super.key, required this.closeButton});
+  const NewPrivateChat({super.key, this.closeButton});
 
   @override
   NewPrivateChatController createState() => NewPrivateChatController();
