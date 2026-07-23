@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/authentication/p_logout.dart';
@@ -27,22 +29,39 @@ void main() {
     expect(order, ['save', 'flush', 'logout']);
   });
 
-  test(
-    'a failing save still logs out (telemetry never blocks logout)',
-    () async {
-      var loggedOut = false;
-      await saveFlushAndLogout(
-        saveAnalytics: () async => throw Exception('save boom'),
-        flushTelemetry: () async {},
-        logout: () async => loggedOut = true,
-      );
-      expect(
-        loggedOut,
-        isTrue,
-        reason: 'a save failure must be swallowed and logout must still run',
-      );
-    },
-  );
+  test('a failing save still FLUSHES then logs out', () async {
+    final order = <String>[];
+    await saveFlushAndLogout(
+      saveAnalytics: () async => throw Exception('save boom'),
+      flushTelemetry: () async => order.add('flush'),
+      logout: () async => order.add('logout'),
+    );
+    expect(
+      order,
+      ['flush', 'logout'],
+      reason:
+          'a save failure must be swallowed WITHOUT skipping the flush; the '
+          'independently-guarded flush still runs before logout',
+    );
+  });
+
+  test('a hung save times out but flush + logout still run', () async {
+    final order = <String>[];
+    await saveFlushAndLogout(
+      // Never completes — models an unbounded analytics network write.
+      saveAnalytics: () => Completer<void>().future,
+      flushTelemetry: () async => order.add('flush'),
+      logout: () async => order.add('logout'),
+      saveTimeout: const Duration(milliseconds: 50),
+    );
+    expect(
+      order,
+      ['flush', 'logout'],
+      reason:
+          'a hung save must not block logout forever — it is time-boxed, '
+          'then flush and logout proceed',
+    );
+  });
 
   test(
     'a failing flush still logs out (telemetry never blocks logout)',
