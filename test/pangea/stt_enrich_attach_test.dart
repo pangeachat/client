@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:async/async.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
