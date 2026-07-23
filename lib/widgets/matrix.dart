@@ -86,6 +86,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
+
+  /// Accounts whose services are being torn down, mapped to the in-flight
+  /// disposal. Concurrent teardowns coalesce onto ONE disposal (no double-
+  /// dispose), and [analyticsDataService] refuses to resurrect a service while
+  /// its account is closing — the entries stay in their maps until disposal
+  /// finishes, so a queued rebuild reads the closing service rather than
+  /// creating a fresh one that would outlive the account and leak.
+  final Map<String, Future<void>> _disposingServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -114,14 +122,29 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   AnalyticsDataService get analyticsDataService {
-    if (_analyticsServices[client.clientName] == null) {
-      Logs().w(
-        'Tried to access AnalyticsDataService for client ${client.clientName}, but it does not exist.',
-      );
-      _analyticsServices[client.clientName] = AnalyticsDataService(client);
-    }
-    return _analyticsServices[client.clientName]!;
+    final name = client.clientName;
+    // A service being torn down stays in its map until disposal finishes (see
+    // [disposeAccountServices]), so an access mid-teardown returns the SAME
+    // closing service — never a fresh one that would boot a DB, wait forever for
+    // a login that isn't coming, and outlive the account. Only create when the
+    // account is genuinely present and NOT closing.
+    final existing = _analyticsServices[name];
+    if (existing != null) return existing;
+    Logs().w(
+      'Tried to access AnalyticsDataService for client $name, but it does not exist.',
+    );
+    final created = AnalyticsDataService(client);
+    _analyticsServices[name] = created;
+    return created;
   }
+
+  /// The EXISTING analytics service for a SPECIFIC account (or null), without the
+  /// active-client getter's create-on-miss. Callers that captured one account up
+  /// front (e.g. the logout path) use this so they save/flush that account's
+  /// analytics even if the active client switched mid-flow — never the wrong
+  /// account's, and never resurrecting a service for a closing one.
+  AnalyticsDataService? analyticsServiceFor(String clientName) =>
+      _analyticsServices[clientName];
   // Pangea#
 
   bool get isMultiAccount => widget.clients.length > 1;
@@ -487,11 +510,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
-      await MatrixState.pangeaController.handleLoginStateChange(
-        state,
-        c.userID,
-        context,
-      );
+      // A failure reporting the state change (e.g. Firebase analytics) must NOT
+      // skip the loggedOut teardown below — otherwise the account's services +
+      // subscriptions (and its dosage tracker) leak on logout.
+      try {
+        await MatrixState.pangeaController.handleLoginStateChange(
+          state,
+          c.userID,
+          context,
+        );
+      } catch (e, s) {
+        Logs().e('handleLoginStateChange failed', e, s);
+      }
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
@@ -575,10 +605,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     try {
       final userId = _analyticsServices[clientName]?.accountUserId;
       if (userId == null || userId.isEmpty) return;
-      final tracker = DosageEngagementTracker.forAccount(userId);
-      if (tracker != null) {
-        await tracker.flushOpenSpan().timeout(const Duration(seconds: 5));
-      }
+      // Tombstoned, non-destructive flush: KEEPS the tracker (so a failed logout
+      // leaves it live) but blocks a new span from opening during the awaited
+      // POST — which would otherwise flush only after logout kills the bearer.
+      await DosageEngagementTracker.flushForLogout(
+        userId,
+      ).timeout(const Duration(seconds: 5));
     } catch (_) {
       // Telemetry is best-effort; a flush failure must never block logout.
     }
@@ -587,11 +619,22 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// DISPOSES THIS account's dosage/analytics services (awaited). The final span
   /// is flushed by [flushAccountTelemetry] BEFORE logout; this destructive
   /// teardown runs on the `loggedOut` listener ([_cancelSubs]) and widget
-  /// [dispose]. Removes each entry SYNCHRONOUSLY (before awaiting) so a
-  /// concurrent second call can't dispose the same service/database twice.
-  Future<void> disposeAccountServices(String clientName) async {
-    _activityAutoSaveServices.remove(clientName)?.dispose();
-    await _analyticsServices.remove(clientName)?.dispose();
+  /// [dispose]. Concurrent teardowns for the same account COALESCE onto one
+  /// disposal (a second caller awaits the first, never double-disposing the
+  /// service/database), and the map entries are removed only AFTER disposal
+  /// completes — so [analyticsDataService] returns the still-closing service
+  /// mid-teardown instead of resurrecting a fresh one for a logged-out account.
+  Future<void> disposeAccountServices(String clientName) {
+    return _disposingServices[clientName] ??= () async {
+      try {
+        _activityAutoSaveServices[clientName]?.dispose();
+        await _analyticsServices[clientName]?.dispose();
+      } finally {
+        _activityAutoSaveServices.remove(clientName);
+        _analyticsServices.remove(clientName);
+        _disposingServices.remove(clientName);
+      }
+    }();
   }
 
   void initMatrix() {

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -207,6 +208,86 @@ void main() {
       await DosageEngagementTracker.disposeAccount('');
       expect(requests, isEmpty);
     });
+
+    test(
+      'flushForLogout flushes the open span but KEEPS the tracker',
+      () async {
+        final reqs = <http.Request>[];
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return http.Response('', 202);
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@u:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@u:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        await DosageEngagementTracker.flushForLogout('@u:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the open span is flushed pre-logout',
+        );
+        expect(
+          identical(
+            DosageEngagementTracker.forAccount('@u:example.org'),
+            tracker,
+          ),
+          isTrue,
+          reason:
+              'the tracker is KEPT (a failed logout leaves it live); only '
+              'disposeAccount removes it',
+        );
+      },
+    );
+
+    test(
+      'concurrent disposeAccount coalesce onto one flush; closing is tombstoned',
+      () async {
+        final reqs = <http.Request>[];
+        final gate = Completer<http.Response>();
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return gate.future; // hold the flush POST open
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@u:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@u:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        // Two teardowns race (e.g. loggedOut listener + widget dispose).
+        final d1 = DosageEngagementTracker.disposeAccount('@u:example.org');
+        final d2 = DosageEngagementTracker.disposeAccount('@u:example.org');
+
+        // While the close is in flight, the account is tombstoned: a racing
+        // send must NOT recreate a tracker whose span would never flush.
+        expect(
+          DosageEngagementTracker.forAccount('@u:example.org'),
+          isNull,
+          reason: 'a closing account is tombstoned across the whole flush',
+        );
+
+        gate.complete(http.Response('', 202));
+        await Future.wait([d1, d2]);
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the span is flushed EXACTLY once despite two disposals',
+        );
+      },
+    );
   });
 
   test('opens on activity, extends, flushes a UUIDv4 span on heartbeat', () async {

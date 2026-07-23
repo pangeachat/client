@@ -33,9 +33,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
     : _injectedTracker = tracker;
 
-  /// The account (mxid), read LAZILY (not snapshotted at construction, which can
-  /// be before login) so it matches the mxid the send path uses post-login.
-  String get _accountUserId => dataService.accountUserId ?? '';
+  /// The account mxid, PINNED at [start] (which runs post-login) and retained,
+  /// so teardown resolves it even after the SDK nulls userID in `clear()` ahead
+  /// of `loggedOut`. Not snapshotted at construction (that can precede login);
+  /// falls back to a live read until the pin is set (e.g. a heartbeat before
+  /// start, or a test that drives dispose without start).
+  String? _pinnedAccountId;
+  String get _accountUserId =>
+      _pinnedAccountId ?? dataService.accountUserId ?? '';
 
   /// This account's engagement tracker (heartbeat/background flush target).
   DosageEngagementTracker? get _tracker =>
@@ -45,6 +50,12 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Timer? _periodicTimer;
 
   void start() {
+    // Pin the account mxid now (start runs post-login inside _initAnalytics), so
+    // teardown can still resolve it after the SDK nulls userID in clear() ahead
+    // of the loggedOut event — otherwise an automatic logout with no pre-flush
+    // would hand disposeAccount('') and leak the tracker.
+    final live = dataService.accountUserId;
+    if (live != null && live.isNotEmpty) _pinnedAccountId = live;
     // Piggyback app-lifecycle hooks for the dosage engagement tracker; the
     // 5-minute tick below is its heartbeat flush. Idempotent re-registration
     // so a restart can't stack observers.

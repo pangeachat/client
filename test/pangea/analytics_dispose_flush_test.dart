@@ -21,6 +21,19 @@ class _FakeDataService implements AnalyticsDataService {
   dynamic noSuchMethod(Invocation invocation) => null;
 }
 
+/// A data service whose reported mxid can be flipped to null — mirroring the
+/// Matrix SDK nulling userID in `clear()` BEFORE it emits `loggedOut`, so the
+/// non-injected teardown must dispose by the mxid PINNED at start(), not the
+/// (now null) live read.
+class _MutableUserIdDataService implements AnalyticsDataService {
+  _MutableUserIdDataService(this.userId);
+  String? userId;
+  @override
+  String? get accountUserId => userId;
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
 /// The teardown chain (matrix `_cancelSubs` → AnalyticsDataService.dispose →
 /// AnalyticsUpdateService.dispose → tracker flush) must AWAIT the final
 /// engagement-span flush so the last span is actually POSTed on logout, not
@@ -46,7 +59,10 @@ void main() {
         'TEACHER_BFF_API': 'https://bff.test.example',
       },
     );
+    DosageEngagementTracker.debugResetAccounts();
   });
+
+  tearDown(DosageEngagementTracker.debugResetAccounts);
 
   test('dispose awaits the final flush POST before resolving', () async {
     final gate = Completer<http.Response>();
@@ -88,4 +104,53 @@ void main() {
     await dispose;
     expect(disposed, isTrue);
   });
+
+  test(
+    'start() pins the mxid so teardown disposes it after the SDK nulls userID',
+    () async {
+      const mxid = '@u:example.org';
+      // A real registry tracker for the account, with an open span to flush.
+      final reqs = <http.Request>[];
+      var clock = DateTime.utc(2026, 1, 1, 12);
+      final tracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: MockClient((r) async {
+          reqs.add(r);
+          return http.Response('', 202);
+        }),
+      );
+      DosageEngagementTracker.debugPutAccount(mxid, tracker);
+      tracker.recordActivity(
+        userId: mxid,
+        deviceId: 'DEVICE-A',
+        accessToken: 'token-A',
+      );
+      clock = clock.add(const Duration(minutes: 1));
+
+      // NON-injected service: dispose() resolves the tracker via the registry
+      // using the account mxid, exactly the teardown path that broke.
+      final dataService = _MutableUserIdDataService(mxid);
+      final svc = AnalyticsUpdateService(dataService);
+      svc.start(); // pins the mxid while "logged in"
+
+      // The SDK clears userID before emitting loggedOut — the live read is now
+      // null, so ONLY the start()-pinned id can key the disposal.
+      dataService.userId = null;
+
+      await svc.dispose();
+
+      expect(
+        reqs,
+        hasLength(1),
+        reason:
+            'the pinned account is still flushed on teardown after the SDK '
+            'nulled userID — not disposeAccount(\'\') which would leak it',
+      );
+      expect(
+        DosageEngagementTracker.forAccount(mxid),
+        isNot(same(tracker)),
+        reason: 'the pinned account tracker was removed from the registry',
+      );
+    },
+  );
 }

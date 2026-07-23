@@ -46,12 +46,18 @@ class AnalyticsStreamUpdate {
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
-  /// The account's client, kept so [accountUserId] can be resolved LAZILY: this
+  /// The account's client, kept so [accountUserId] can be read from it: this
   /// service may be constructed BEFORE login (userID null then), and the dosage
   /// tracker must key on the SAME mxid the send path uses once logged in.
   final Client _accountClient;
 
-  /// The account (mxid), resolved lazily (see [_accountClient]).
+  /// The account (mxid) as the client currently reports it. Read live for
+  /// PRE-logout callers (e.g. the pre-logout telemetry flush). It goes null once
+  /// the SDK's `logout()` runs `clear()`, which nulls userID BEFORE it emits
+  /// `loggedOut` (client.dart) — so the POST-logout teardown must NOT rely on
+  /// this: [AnalyticsUpdateService] pins the id at start() and disposes by that
+  /// pinned value instead (otherwise disposeAccount would be handed '' and leak
+  /// the account's open span + tracker).
   String? get accountUserId => _accountClient.userID;
 
   late final AnalyticsUpdateDispatcher updateDispatcher;

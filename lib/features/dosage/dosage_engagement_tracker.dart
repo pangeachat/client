@@ -44,33 +44,67 @@ class DosageEngagementTracker {
   /// one account's teardown never flushes or attributes another's spans.
   static final Map<String, DosageEngagementTracker> _byAccount = {};
 
-  /// Accounts whose teardown is in flight. While closing, [forAccount] must not
-  /// recreate a tracker — otherwise a send resolving concurrently with logout
-  /// would open a fresh span that no one ever flushes (its bearer is about to be
-  /// invalidated).
-  static final Set<String> _closing = {};
+  /// Accounts whose flush/teardown is in flight, mapped to that close future.
+  /// While an account is closing, [forAccount] must not recreate a tracker
+  /// (otherwise a send resolving concurrently with logout would open a fresh
+  /// span that flushes only after the bearer is invalidated), and a SECOND
+  /// disposer AWAITS the same future rather than racing it — a race could clear
+  /// the tombstone while the first close's POST is still pending. Keying on the
+  /// future (not a bare Set) is what makes the tombstone cover the whole flush
+  /// and lets concurrent closes coalesce.
+  static final Map<String, Future<void>> _closing = {};
 
   /// The tracker for [userId], created on first use. Returns none for an unknown
   /// account (empty userId) or one whose teardown is in flight — the caller then
   /// records no engagement (the envelope still posts) rather than attributing a
   /// span to an unknown or closing account.
   static DosageEngagementTracker? forAccount(String userId) {
-    if (userId.isEmpty || _closing.contains(userId)) return null;
+    if (userId.isEmpty || _closing.containsKey(userId)) return null;
     return _byAccount.putIfAbsent(userId, DosageEngagementTracker.new);
+  }
+
+  /// NON-destructive pre-logout flush of the open span, KEEPING the tracker (so a
+  /// FAILED logout leaves a live, usable tracker; the loggedOut listener's
+  /// [disposeAccount] removes it). Tombstoned for the flush duration so a send
+  /// resolving during the awaited POST can't open a new span that would then
+  /// flush only after logout invalidates the bearer. Coalesces with any
+  /// in-flight close.
+  static Future<void> flushForLogout(String userId) {
+    if (userId.isEmpty) return Future.value();
+    return _closing[userId] ??= () async {
+      try {
+        await _byAccount[userId]?.flushOpenSpan();
+      } finally {
+        _closing.remove(userId);
+      }
+    }();
   }
 
   /// Flushes + drops [userId]'s tracker on that account's teardown. Awaited so
   /// the last span is sent (under the still-valid bearer) BEFORE logout
-  /// invalidates it; one account's teardown can't touch another's tracker;
-  /// tombstoned throughout so a concurrent send can't recreate it. Idempotent.
+  /// invalidates it; one account's teardown can't touch another's tracker.
+  /// Tombstoned across the WHOLE flush, and concurrent disposals coalesce onto
+  /// one close (a second caller awaits the first rather than clearing the
+  /// tombstone mid-POST). If a non-destructive [flushForLogout] is already in
+  /// flight, its flush is awaited first and then the tracker is removed.
+  /// Idempotent.
   static Future<void> disposeAccount(String userId) async {
     if (userId.isEmpty) return;
-    _closing.add(userId);
-    try {
-      await _byAccount.remove(userId)?.flushOpenSpan();
-    } finally {
-      _closing.remove(userId);
+    // Don't race an in-flight non-destructive preflush; let it finish (it clears
+    // its own tombstone) before we take over the destructive removal.
+    final inFlight = _closing[userId];
+    if (inFlight != null) {
+      try {
+        await inFlight;
+      } catch (_) {}
     }
+    await (_closing[userId] ??= () async {
+      try {
+        await _byAccount.remove(userId)?.flushOpenSpan();
+      } finally {
+        _closing.remove(userId);
+      }
+    }());
   }
 
   /// Seeds a tracker for [userId] (tests only), so a teardown path can be driven
