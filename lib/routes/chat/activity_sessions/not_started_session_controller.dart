@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -172,21 +171,8 @@ class NotStartedSessionController extends State<NotStartedSession>
     // extra course participants are required.
     final course = widget.course;
     if (course == null) return 0;
-    final courseParticipants = await course.requestParticipants(
-      const [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    );
-
-    final botInCourse = courseParticipants.any(
-      (p) => p.id == BotName.byEnvironment,
-    );
-
-    final addBotToAvailableUsers = !botInCourse;
+    final availableParticipants = await course.availableActivityParticipants();
     final numParticipants = widget.activity?.req.numberOfParticipants ?? 0;
-    final availableParticipants =
-        courseParticipants.length + (addBotToAvailableUsers ? 1 : 0);
-
     if (availableParticipants >= numParticipants) return 0;
     return numParticipants - availableParticipants;
   }

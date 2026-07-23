@@ -9,6 +9,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 class ObjectiveSection extends StatefulWidget {
   final int index;
@@ -16,6 +17,19 @@ class ObjectiveSection extends StatefulWidget {
   final void Function(QuestActivity) onTap;
   final int Function(String) userStarsByActivity;
   final bool Function(String activityId)? hasCompletedActivity;
+
+  /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
+  /// count, resolved by the parent which holds the course room. See
+  /// [CourseObjectivesList].
+  final ({ActivityPinState? state, int openSessions}) Function(
+    String activityId,
+  )
+  liveStateByActivity;
+
+  /// Course members available to fill activity roles (start-page invite math),
+  /// or null until it loads. An activity needing more than this — and not
+  /// already live — renders dimmed. See [CourseObjectivesList].
+  final int? availableParticipants;
   final double spacing;
   final double? cardWidth;
   final double? cardHeight;
@@ -31,6 +45,8 @@ class ObjectiveSection extends StatefulWidget {
     required this.onTap,
     required this.userStarsByActivity,
     required this.hasCompletedActivity,
+    required this.liveStateByActivity,
+    required this.availableParticipants,
     required this.progress,
     this.spacing = 16.0,
     this.cardWidth,
@@ -158,6 +174,18 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   final starsEarned = widget.userStarsByActivity(
                     ref.activityId,
                   );
+                  final liveState = widget.liveStateByActivity(ref.activityId);
+                  // Dim activities that can't be started yet: the course lacks
+                  // enough members for their roles (tapping opens the start page's
+                  // Invite CTA). A live (ongoing/joinable) session already filled
+                  // its seats so it never dims; completed cards carry the grey
+                  // checkmark overlay instead. Undimmed until the count loads.
+                  final available = widget.availableParticipants;
+                  final canStart =
+                      available == null ||
+                      complete ||
+                      liveState.state != null ||
+                      ref.plan.req.numberOfParticipants <= available;
                   return MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
@@ -173,15 +201,26 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                       // routing.instructions.md.
                       onTap: () => widget.onTap(ref),
                       child: Stack(
+                        // The card's state banner peeks past its top-left
+                        // corner, so this wrapping Stack must not clip it.
+                        clipBehavior: Clip.none,
                         children: [
-                          ActivitySuggestionCard(
-                            activity: ref.plan,
-                            width: _cardWidth,
-                            height: _cardHeight,
-                            fontSize: _isColumnMode ? 16.0 : 12.0,
-                            fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                            iconSize: _isColumnMode ? 12.0 : 8.0,
-                            starsEarned: starsEarned,
+                          Opacity(
+                            opacity: canStart ? 1.0 : 0.5,
+                            child: ActivitySuggestionCard(
+                              activity: ref.plan,
+                              width: _cardWidth,
+                              height: _cardHeight,
+                              fontSize: _isColumnMode ? 16.0 : 12.0,
+                              fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                              iconSize: _isColumnMode ? 12.0 : 8.0,
+                              starsEarned: starsEarned,
+                              // A completed card shows the grey checkmark overlay
+                              // instead of a state fill/banner (and is never
+                              // ongoing), so suppress the pin state when complete.
+                              pinState: complete ? null : liveState.state,
+                              openSessions: liveState.openSessions,
+                            ),
                           ),
                           if (complete)
                             Container(

@@ -228,6 +228,10 @@ class WorldMapController extends State<WorldMap>
             _maybeRebuildObjectiveCache(client);
             _recomputePinged(client);
             _discoverCoursemateSessions(client);
+            // Keep the "can't start" count live: a new invite/join changes the
+            // members available to fill roles, so re-fetch (rate-limited by this
+            // handler) — a dimmed pin un-dims once enough people are in.
+            _refreshCourseAvailableParticipants();
           });
     }
 
@@ -344,6 +348,8 @@ class WorldMapController extends State<WorldMap>
 
   WorldMapFilter get filter => _filterState.filter;
   Map<String, PinSignals> get signals => _pinsManager.signals;
+  int? get courseAvailableParticipants =>
+      _pinsManager.courseAvailableParticipants;
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
@@ -384,6 +390,30 @@ class WorldMapController extends State<WorldMap>
     if (client == null) return;
     _pinsManager.recomputeProgress(client);
     if (mounted) setState(() {});
+  }
+
+  /// Refresh the course participant count that dims `available` pins: course
+  /// scope with a joined room → fetch it; otherwise clear. Rebuilds only when
+  /// the count actually changes, so it's cheap to call on every sync — a new
+  /// invite/join updates it within the sync rate-limit window.
+  Future<void> _refreshCourseAvailableParticipants() async {
+    final client = _client;
+    if (client == null) return;
+    final mapContext = MapContextController.notifier.value;
+    final courseRoom = mapContext is CourseMapContext
+        ? client.joinedCourseRooms.firstWhereOrNull(
+            (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+          )
+        : null;
+    final before = _pinsManager.courseAvailableParticipants;
+    if (courseRoom == null) {
+      _pinsManager.clearCourseAvailableParticipants();
+    } else {
+      await _pinsManager.loadCourseAvailableParticipants(courseRoom);
+    }
+    if (mounted && _pinsManager.courseAvailableParticipants != before) {
+      setState(() {});
+    }
   }
 
   Future<void> _rebuildObjectiveCache(Client client) async {
@@ -452,12 +482,17 @@ class WorldMapController extends State<WorldMap>
           setState(() {});
 
           _fitToContext(debounce: debounceFit);
+
+          // The "not enough members to start" count that dims available pins
+          // (course-only; also refreshed on room sync — see the onSync handler).
+          await _refreshCourseAvailableParticipants();
         } catch (_) {
           // Map stays usable without activity pins.
         }
         return;
       case WorldMapContext():
         _pinsManager.resetScopedCourseOutline();
+        _pinsManager.clearCourseAvailableParticipants();
         loadWorldPins();
         return;
     }

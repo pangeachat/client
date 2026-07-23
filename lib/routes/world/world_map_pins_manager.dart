@@ -90,7 +90,16 @@ class WorldMapPinsManager {
   /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
   List<ActivitySessionFacts> _discoveredSessionFacts = const [];
 
+  /// Course members available to fill activity roles in the currently
+  /// course-scoped map (the start page's invite math via
+  /// [CoursePlanRoomExtension.availableActivityParticipants]), or null on the
+  /// world map / an unjoined course. Drives dimming of `available` pins whose
+  /// role count exceeds it; course-only, so cleared when leaving course scope.
+  int? _courseAvailableParticipants;
+
   Map<String, PinSignals> get signals => _signals;
+
+  int? get courseAvailableParticipants => _courseAvailableParticipants;
 
   ProgressionResolution get progression => _progression;
 
@@ -134,6 +143,18 @@ class WorldMapPinsManager {
       _scopedCourseOutlineId = null;
       resolveProgression();
     }
+  }
+
+  /// Refresh [courseAvailableParticipants] from the scoped joined [courseRoom]
+  /// (the count that dims `available` pins the learner can't yet start).
+  Future<void> loadCourseAvailableParticipants(Room courseRoom) async {
+    _courseAvailableParticipants = await courseRoom
+        .availableActivityParticipants();
+  }
+
+  /// Clear the participant count (world map, or an unjoined course) so no pins dim.
+  void clearCourseAvailableParticipants() {
+    _courseAvailableParticipants = null;
   }
 
   /// Best-effort pinged detection: scan joined course spaces' recent messages
@@ -215,6 +236,9 @@ class WorldMapPinsManager {
         if (_discoveredSessionFacts.isNotEmpty) {
           _discoveredSessionFacts = const [];
         }
+        // No session rooms left in any joined course → drop stale previews so a
+        // card whose open session vanished stops reading it as Open.
+        DiscoveredSessionsCache.instance.clear();
         return;
       }
 

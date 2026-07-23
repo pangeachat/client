@@ -1,20 +1,27 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -61,10 +68,59 @@ class CourseObjectivesList extends StatefulWidget {
 class _CourseObjectivesListState extends State<CourseObjectivesList> {
   final ScrollController _scrollController = ScrollController();
 
+  /// Course members available to fill activity roles (the start page's invite
+  /// math), or null until first loaded. Course-wide (not per-activity), so it's
+  /// fetched once then refreshed on room sync; drives dimming of activities that
+  /// need more people.
+  int? _availableParticipants;
+  StreamSubscription? _availableParticipantsSub;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAvailableParticipants();
+    // Open state is read off the map's discovery cache, which discovery updates
+    // out-of-band (async, throttled). Rebuild the instant it changes — a session
+    // discovered or removed — so a card turns Open / back to plain live, not only
+    // on the next room-update sync or a tab re-entry.
+    DiscoveredSessionsCache.instance.addListener(_onLiveStateSourcesChanged);
+    // Ongoing state ([activeActivityRoomId]) and the dimming count both derive
+    // from Matrix room state, so also refresh on room sync (rate-limited). A
+    // coursemate opening a session doesn't change our member count, so the
+    // rebuild must NOT hinge on it — rebuild every tick (matches the map).
+    final client = widget.room?.client;
+    if (client != null) {
+      _availableParticipantsSub = client.onSync.stream
+          .where((s) => s.hasRoomUpdate)
+          .rateLimit(const Duration(seconds: 2))
+          .listen((_) {
+            if (!mounted) return;
+            setState(() {});
+            // setStates again only if the count actually changed.
+            _loadAvailableParticipants();
+          });
+    }
+  }
+
   @override
   void dispose() {
+    DiscoveredSessionsCache.instance.removeListener(_onLiveStateSourcesChanged);
+    _availableParticipantsSub?.cancel();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _onLiveStateSourcesChanged() {
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _loadAvailableParticipants() async {
+    final room = widget.room;
+    if (room == null) return; // A preview has no members — nothing to dim.
+    final available = await room.availableActivityParticipants();
+    // Rebuild only on a real change — the sync handler calls this frequently.
+    if (!mounted || available == _availableParticipants) return;
+    setState(() => _availableParticipants = available);
   }
 
   /// Scroll this list from a vertical mouse wheel anywhere over the panel —
@@ -88,6 +144,41 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       );
       _scrollController.jumpTo(target);
     });
+  }
+
+  /// The activity's live map-pin state for the card's colour fill + banner, and
+  /// the "Open (N)" count. Mirrors the world map's pins, reusing the same
+  /// resolvers so both surfaces agree:
+  ///  * Ongoing wins over Open (the pin ladder). The course-scoped, first-joined
+  ///    resume resolver ([Room.activeActivityRoomId]) already collapses multiple
+  ///    ongoing rooms to one, so there is at most one Ongoing and it needs no
+  ///    count. Either ongoing sub-state renders identically (same colour, no
+  ///    count), so [ActivityPinState.ongoingActive] stands in for both.
+  ///  * Otherwise, open sessions others started that the learner can join —
+  ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
+  ///    persistent map behind this panel keeps it fresh), the same source the
+  ///    activity start page seeds its join list from.
+  /// A preview (no joined [room]) has no live sessions, so cards stay plain.
+  ({ActivityPinState? state, int openSessions}) _liveStateFor(
+    String activityId,
+  ) {
+    final room = widget.room;
+    if (room == null) return (state: null, openSessions: 0);
+
+    if (room.activeActivityRoomId(activityId) != null) {
+      return (state: ActivityPinState.ongoingActive, openSessions: 0);
+    }
+
+    final cached = DiscoveredSessionsCache.instance.forActivity(activityId);
+    final open = cached == null
+        ? 0
+        : ActivitySessionSummariesModel(
+            cached,
+            activityId: activityId,
+          ).openSessions.length;
+    return open > 0
+        ? (state: ActivityPinState.joinable, openSessions: open)
+        : (state: null, openSessions: 0);
   }
 
   @override
@@ -176,6 +267,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       userStarsByActivity: (activityId) =>
                           widget.room?.client.userStarsByActivity[activityId] ??
                           0,
+                      liveStateByActivity: _liveStateFor,
+                      availableParticipants: _availableParticipants,
                     );
                   },
                 );

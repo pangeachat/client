@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
@@ -14,6 +15,22 @@ extension CoursePlanRoomExtension on Room {
     final event = getState(PangeaEventTypes.coursePlan);
     if (event == null) return null;
     return CoursePlanEvent.tryParse(event.content);
+  }
+
+  /// Course members available to fill an activity's roles, mirroring the start
+  /// page's invite math: joined/invited/knocking members, plus the bot when it
+  /// is not already a member (it fills one seat). Course-only — independent of
+  /// any single activity — so callers compare it against each activity's
+  /// `req.numberOfParticipants`. See
+  /// `NotStartedSessionController.neededCourseParticipants`.
+  Future<int> availableActivityParticipants() async {
+    final participants = await requestParticipants(
+      const [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    );
+    final hasBot = participants.any((p) => p.id == BotName.byEnvironment);
+    return participants.length + (hasBot ? 0 : 1);
   }
 
   String? activeActivityRoomId(String activityId) {
