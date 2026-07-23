@@ -20,7 +20,6 @@ import 'package:fluffychat/routes/settings/settings_subscription/billing_portal_
 import 'package:fluffychat/routes/settings/settings_subscription/invoice_history_provider.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/products_provider.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_history_view.dart';
-import 'package:fluffychat/routes/settings/settings_subscription/subscription_status_provider.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -34,7 +33,6 @@ class SubscriptionHistory extends StatefulWidget {
 }
 
 class SubscriptionHistoryState extends State<SubscriptionHistory> {
-  final _subscriptionStatusProvider = SubscriptionStatusProvider();
   final _billingPortalProvider = BillingPortalProvider();
   final _productsProvider = ProductsProvider();
   final _invoiceHistoryProvider = InvoiceHistoryProvider();
@@ -55,13 +53,15 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     if (_loaded) return;
     _loaded = true;
 
+    final subscriptionStateNotifier =
+        MatrixState.pangeaController.subscriptionController.state;
+
     _productsProvider.loader.addListener(_updateSubscriptionPlan);
-    _subscriptionStatusProvider.loader.addListener(_updateSubscriptionPlan);
-    _subscriptionStatusProvider.loader.addListener(_updateManagementNotifiers);
+    subscriptionStateNotifier.addListener(_updateSubscriptionPlan);
+    subscriptionStateNotifier.addListener(_updateManagementNotifiers);
     _billingPortalProvider.loader.addListener(_updateManagementNotifiers);
 
     final userID = Matrix.of(context).client.userID!;
-    _subscriptionStatusProvider.load(SubscriptionStatusRequest(userID: userID));
     _billingPortalProvider.load(BillingPortalRequest(userID: userID));
     _productsProvider.load(ProductsRequest(userID: userID));
     _invoiceHistoryProvider.load(InvoiceHistoryRequest(userID: userID));
@@ -70,13 +70,14 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   @override
   void dispose() {
     _productsProvider.loader.removeListener(_updateSubscriptionPlan);
-    _subscriptionStatusProvider.loader.removeListener(_updateSubscriptionPlan);
-    _subscriptionStatusProvider.loader.removeListener(
-      _updateManagementNotifiers,
-    );
+
+    final subscriptionStateNotifier =
+        MatrixState.pangeaController.subscriptionController.state;
+
+    subscriptionStateNotifier.removeListener(_updateSubscriptionPlan);
+    subscriptionStateNotifier.removeListener(_updateManagementNotifiers);
     _billingPortalProvider.loader.removeListener(_updateManagementNotifiers);
 
-    _subscriptionStatusProvider.dispose();
     _billingPortalProvider.dispose();
     _productsProvider.dispose();
     _invoiceHistoryProvider.dispose();
@@ -91,16 +92,18 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
 
   bool get _canCancelSubscription => _cancelableEntitlement != null;
 
+  SubscriptionStatusResponse? get _subscriptionStatus =>
+      MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+
   bool get _canManageSubscription =>
-      _subscriptionStatusProvider.response?.manageEligible == true &&
-      _billingPortal != null;
+      _subscriptionStatus?.manageEligible == true && _billingPortal != null;
 
   SubscriptionEntitlement? get _cancelableEntitlement =>
-      _subscriptionStatusProvider.response?.cancelableEntitlement;
+      _subscriptionStatus?.cancelableEntitlement;
 
   void _updateSubscriptionPlan() {
     final products = _productsProvider.response ?? [];
-    final planId = _subscriptionStatusProvider.response?.winning?.planId;
+    final planId = _subscriptionStatus?.winning?.planId;
     if (planId == null) {
       _subscriptionPlanNotifier.value = null;
       return;
@@ -126,7 +129,10 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     );
     if (result.isError) return;
 
-    await SubscriptionStatusRepo.instance.clearCache();
+    await MatrixState.pangeaController.subscriptionController.reinitialize(
+      Matrix.of(context).client.userID!,
+    );
+
     if (mounted) {
       context.go(
         WorkspaceNav.openSettings(
@@ -153,6 +159,7 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   }
 
   Future<void> _cancelSubscription() async {
+    final userID = Matrix.of(context).client.userID!;
     final entitlementRef = _cancelableEntitlement?.entitlementRef;
     if (entitlementRef == null) {
       throw "Cannot cancel subscription without entitlement";
@@ -161,13 +168,24 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
     final cancelResult = await SubscriptionCancelRepo.instance
         .cancelSubscription(
           SubscriptionCancelRequest(
-            userID: Matrix.of(context).client.userID!,
+            userID: userID,
             entitlementRef: entitlementRef,
           ),
         );
 
     final error = cancelResult.error;
     if (error != null) throw error;
+
+    // Poll subscription status until the cancelation request is reflected
+    await SubscriptionStatusRepo.instance.pollSubscriptionStatus(
+      SubscriptionStatusRequest(userID: userID),
+      (r) {
+        final canceledEntitlement = r.entitlements.firstWhereOrNull(
+          (e) => e.entitlementRef == entitlementRef,
+        );
+        return canceledEntitlement?.cancelAtPeriodEnd == true;
+      },
+    );
   }
 
   Future<void> _onManageSubscription() =>
@@ -185,7 +203,8 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
   @override
   Widget build(BuildContext context) => SubscriptionHistoryView(
     closeButton: widget.closeButton,
-    subscriptionStatusNotifier: _subscriptionStatusProvider.loader,
+    subscriptionStatusNotifier:
+        MatrixState.pangeaController.subscriptionController.state,
     subscriptionPlanNotifier: _subscriptionPlanNotifier,
     invoiceHistoryNotifier: _invoiceHistoryProvider.loader,
     canCancelSubscriptionNotifier: _canCancelNotifier,

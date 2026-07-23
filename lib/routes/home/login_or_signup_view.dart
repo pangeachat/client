@@ -75,131 +75,129 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     return Semantics(
       label: L10n.of(context).pageLabel(L10n.of(context).welcome),
       child: Scaffold(
-        body: SafeArea(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final size = MediaQuery.sizeOf(context);
-              final ratio = size.height / size.width;
-              final isMobile = ratio > _mobileRatioBreakpoint;
-              final imageUrls = _imageFileNames
-                  .map((name) => '${AppConfig.assetsBaseURL}/$name')
-                  .toList();
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            final size = MediaQuery.sizeOf(context);
+            final ratio = size.height / size.width;
+            final isMobile = ratio > _mobileRatioBreakpoint;
+            final imageUrls = _imageFileNames
+                .map((name) => '${AppConfig.assetsBaseURL}/$name')
+                .toList();
 
-              return Column(
-                children: [
-                  if (!isMobile)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
-                      child: Row(
-                        spacing: 12.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: 48.0,
-                              forceColor: theme.colorScheme.onSurface,
-                            ),
+            return Column(
+              children: [
+                if (!isMobile)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
+                    child: Row(
+                      spacing: 12.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ExcludeSemantics(
+                          child: PangeaLogoSvg(
+                            width: 48.0,
+                            forceColor: theme.colorScheme.onSurface,
                           ),
-                          Text(
-                            AppSettings.applicationName.value,
-                            style: theme.textTheme.displayMedium?.copyWith(
-                              color: theme.colorScheme.onSurface,
-                              fontWeight: FontWeight.w800,
-                            ),
+                        ),
+                        Text(
+                          AppSettings.applicationName.value,
+                          style: theme.textTheme.displayMedium?.copyWith(
+                            color: theme.colorScheme.onSurface,
+                            fontWeight: FontWeight.w800,
                           ),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+                _LoginCarousel(
+                  isMobile: isMobile,
+                  imageUrls: imageUrls,
+                  labels: _labels,
+                  onPageChange: (index) {
+                    if (mounted) {
+                      setState(() => _currentIndex = index);
+                    }
+                  },
+                  controller: _carouselController,
+                ),
+                const SizedBox(height: 24.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    imageUrls.length,
+                    (index) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      height: 8,
+                      width: 8,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == index
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.outlineVariant,
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                  _LoginCarousel(
-                    isMobile: isMobile,
-                    imageUrls: imageUrls,
-                    labels: _labels,
-                    onPageChange: (index) {
-                      if (mounted) {
-                        setState(() => _currentIndex = index);
-                      }
-                    },
-                    controller: _carouselController,
                   ),
-                  const SizedBox(height: 24.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      imageUrls.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        height: 8,
-                        width: 8,
-                        decoration: BoxDecoration(
-                          color: _currentIndex == index
-                              ? theme.colorScheme.primary
-                              : theme.colorScheme.outlineVariant,
-                          borderRadius: BorderRadius.circular(12),
+                ),
+                const SizedBox(height: 24.0),
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 300),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(
+                          spacing: 8.0,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () => context.go('/home/signup'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).getStarted,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: theme.colorScheme.onSurface,
+                                backgroundColor: theme.colorScheme.surface,
+                              ),
+                              onPressed: () => context.go('/home/login'),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).loginToAccount,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24.0),
-                  Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: Container(
-                        constraints: const BoxConstraints(maxWidth: 300),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Column(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () => context.go('/home/signup'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      theme.colorScheme.primaryContainer,
-                                  foregroundColor:
-                                      theme.colorScheme.onPrimaryContainer,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      L10n.of(context).getStarted,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: theme.colorScheme.onSurface,
-                                  backgroundColor: theme.colorScheme.surface,
-                                ),
-                                onPressed: () => context.go('/home/login'),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      L10n.of(context).loginToAccount,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

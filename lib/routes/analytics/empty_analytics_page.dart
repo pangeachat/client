@@ -11,17 +11,15 @@ class EmptyAnalyticsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SizedBox(
-            width: 250.0,
-            child: CachedNetworkImage(
-              imageUrl:
-                  "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
-              errorWidget: (context, url, error) => const SizedBox(),
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator.adaptive()),
-            ),
+      body: Center(
+        child: SizedBox(
+          width: 250.0,
+          child: CachedNetworkImage(
+            imageUrl:
+                "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
+            errorWidget: (context, url, error) => const SizedBox(),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator.adaptive()),
           ),
         ),
       ),

@@ -46,124 +46,121 @@ class CourseSearchView<T> extends StatelessWidget {
         titleSpacing: 0,
         actions: actions,
       ),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Column(
-              spacing: 20.0,
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: courseSearch.searchingNotifier,
-                  builder: (context, searching, _) => Row(
-                    spacing: 4.0,
-                    children: [
-                      Expanded(
-                        child: searching
-                            ? PangeaSearchBar(
-                                controller: courseSearch.searchController,
-                                labelText: labelText,
-                                focusNode: courseSearch.focusNode,
-                                suffixIcon: IconButton(
-                                  icon: Icon(Icons.close),
-                                  tooltip: L10n.of(context).closeSearch,
-                                  onPressed: courseSearch.stopSearching,
-                                ),
-                              )
-                            : ValueListenableBuilder(
-                                valueListenable:
-                                    courseSearch.targetLanguageFilter,
-                                builder: (context, value, _) {
-                                  return CourseLanguageFilter(
-                                    value:
-                                        courseSearch.targetLanguageFilter.value,
-                                    onChanged:
-                                        courseSearch.setTargetLanguageFilter,
-                                  );
-                                },
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+            spacing: 20.0,
+            children: [
+              ValueListenableBuilder(
+                valueListenable: courseSearch.searchingNotifier,
+                builder: (context, searching, _) => Row(
+                  spacing: 4.0,
+                  children: [
+                    Expanded(
+                      child: searching
+                          ? PangeaSearchBar(
+                              controller: courseSearch.searchController,
+                              labelText: labelText,
+                              focusNode: courseSearch.focusNode,
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.close),
+                                tooltip: L10n.of(context).closeSearch,
+                                onPressed: courseSearch.stopSearching,
                               ),
+                            )
+                          : ValueListenableBuilder(
+                              valueListenable:
+                                  courseSearch.targetLanguageFilter,
+                              builder: (context, value, _) {
+                                return CourseLanguageFilter(
+                                  value:
+                                      courseSearch.targetLanguageFilter.value,
+                                  onChanged:
+                                      courseSearch.setTargetLanguageFilter,
+                                );
+                              },
+                            ),
+                    ),
+                    if (!searching)
+                      IconButton(
+                        icon: Icon(Icons.search),
+                        tooltip: L10n.of(context).search,
+                        onPressed: courseSearch.startSearching,
                       ),
-                      if (!searching)
-                        IconButton(
-                          icon: Icon(Icons.search),
-                          tooltip: L10n.of(context).search,
-                          onPressed: courseSearch.startSearching,
+                  ],
+                ),
+              ),
+              ValueListenableBuilder(
+                valueListenable: courseSearch.filteredCoursesLoader,
+                builder: (context, state, _) {
+                  switch (state) {
+                    case AsyncLoading():
+                    case AsyncIdle():
+                      return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(32.0),
+                          child: CircularProgressIndicator.adaptive(),
                         ),
-                    ],
-                  ),
-                ),
-                ValueListenableBuilder(
-                  valueListenable: courseSearch.filteredCoursesLoader,
-                  builder: (context, state, _) {
-                    switch (state) {
-                      case AsyncLoading():
-                      case AsyncIdle():
-                        return const Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(32.0),
-                            child: CircularProgressIndicator.adaptive(),
-                          ),
-                        );
-                      case AsyncError():
-                        return AddCourseErrorMessage(
-                          message: L10n.of(context).oopsSomethingWentWrong,
-                          buttonLabel: L10n.of(context).tryAgain,
-                          onPressed: courseSearch.loadMore,
-                        );
-                      case AsyncLoaded(value: final courses):
-                        return ValueListenableBuilder(
-                          valueListenable: courseSearch.loadingMore,
-                          builder: (context, isLoadingMore, _) {
-                            if (courses.isEmpty &&
-                                !isLoadingMore &&
-                                courseSearch.fullyLoaded) {
-                              return AddCourseErrorMessage(
-                                message: notFoundMessage,
-                                buttonLabel: notFoundButtonLabel,
-                                onPressed: () =>
-                                    courseSearch.onNotFound(context),
-                              );
-                            }
-
-                            final loadingIndicator =
-                                !isLoadingMore && courseSearch.fullyLoaded
-                                ? SizedBox.shrink()
-                                : SizedBox(
-                                    height: 60,
-                                    child: Center(
-                                      child: isLoadingMore
-                                          ? const CircularProgressIndicator.adaptive()
-                                          : !courseSearch.fullyLoaded
-                                          ? TextButton(
-                                              onPressed: courseSearch.loadMore,
-                                              child: Text(
-                                                L10n.of(context).loadMore,
-                                              ),
-                                            )
-                                          : const SizedBox(),
-                                    ),
-                                  );
-
-                            return Expanded(
-                              child: AddCourseTileList(
-                                content: courses
-                                    .map(courseSearch.courseToTileContent)
-                                    .toList(),
-                                onTap: (index) => courseSearch.onSelect(
-                                  courses[index],
-                                  context,
-                                ),
-                                extraContent: [loadingIndicator],
-                                controller: courseSearch.scrollController,
-                              ),
+                      );
+                    case AsyncError():
+                      return AddCourseErrorMessage(
+                        message: L10n.of(context).oopsSomethingWentWrong,
+                        buttonLabel: L10n.of(context).tryAgain,
+                        onPressed: courseSearch.loadMore,
+                      );
+                    case AsyncLoaded(value: final courses):
+                      return ValueListenableBuilder(
+                        valueListenable: courseSearch.loadingMore,
+                        builder: (context, isLoadingMore, _) {
+                          if (courses.isEmpty &&
+                              !isLoadingMore &&
+                              courseSearch.fullyLoaded) {
+                            return AddCourseErrorMessage(
+                              message: notFoundMessage,
+                              buttonLabel: notFoundButtonLabel,
+                              onPressed: () => courseSearch.onNotFound(context),
                             );
-                          },
-                        );
-                    }
-                  },
-                ),
-              ],
-            ),
+                          }
+
+                          final loadingIndicator =
+                              !isLoadingMore && courseSearch.fullyLoaded
+                              ? SizedBox.shrink()
+                              : SizedBox(
+                                  height: 60,
+                                  child: Center(
+                                    child: isLoadingMore
+                                        ? const CircularProgressIndicator.adaptive()
+                                        : !courseSearch.fullyLoaded
+                                        ? TextButton(
+                                            onPressed: courseSearch.loadMore,
+                                            child: Text(
+                                              L10n.of(context).loadMore,
+                                            ),
+                                          )
+                                        : const SizedBox(),
+                                  ),
+                                );
+
+                          return Expanded(
+                            child: AddCourseTileList(
+                              content: courses
+                                  .map(courseSearch.courseToTileContent)
+                                  .toList(),
+                              onTap: (index) => courseSearch.onSelect(
+                                courses[index],
+                                context,
+                              ),
+                              extraContent: [loadingIndicator],
+                              controller: courseSearch.scrollController,
+                            ),
+                          );
+                        },
+                      );
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ),
