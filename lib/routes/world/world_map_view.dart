@@ -25,6 +25,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -164,7 +165,7 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// Height of the narrow-mode bottom chrome (the floating nav rail + the
   /// search bar riding above it, with their gaps) that on-map overlays must
   /// clear (#7218). Update alongside the chrome if its heights change.
-  static const double _narrowBottomChromeInset = 150.0;
+  static const double _narrowBottomChromeInset = 140.0;
 
   /// Pins that have left the active set and are animating to scale 0.
   final Map<String, _PinSnapshot> _exiting = {};
@@ -1134,14 +1135,17 @@ class _WorldMapViewState extends State<WorldMapView> {
                 MarkerLayer(markers: _largeMarkers(render, currentLarge)),
                 // Make a background, so attributions stand out in dark mode
                 Positioned(
-                  left: attributionsLeft + 8,
-                  bottom: attributionsBottom + 8,
-                  child: Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(130, 135, 135, 135),
-                      shape: BoxShape.circle,
+                  left: attributionsLeft,
+                  bottom: attributionsBottom,
+                  child: Padding(
+                    padding: .all(PlatformInfos.isMobile ? 12 : 8),
+                    child: Container(
+                      height: 32,
+                      width: 32,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(130, 135, 135, 135),
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ),

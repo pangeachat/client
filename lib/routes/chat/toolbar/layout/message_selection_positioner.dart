@@ -363,93 +363,91 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     widget.overlayController.maxWidth = _toolbarMaxWidth;
-    return SafeArea(
-      child: Column(
-        children: [
-          SizedBox(
-            width: parentRendexBox.size.width,
-            height: _adjustedParentHeight,
-            child: Stack(
-              alignment: ownMessage
-                  ? Alignment.centerRight
-                  : Alignment.centerLeft,
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: _startedTransition,
-                  builder: (context, started, _) {
-                    return !started
-                        ? OverMessageOverlay(controller: this)
-                        : const SizedBox();
-                  },
+    return Column(
+      children: [
+        SizedBox(
+          width: parentRendexBox.size.width,
+          height: _adjustedParentHeight,
+          child: Stack(
+            alignment: ownMessage
+                ? Alignment.centerRight
+                : Alignment.centerLeft,
+            children: [
+              ValueListenableBuilder(
+                valueListenable: _startedTransition,
+                builder: (context, started, _) {
+                  return !started
+                      ? OverMessageOverlay(controller: this)
+                      : const SizedBox();
+                },
+              ),
+              ValueListenableBuilder(
+                valueListenable: _startedTransition,
+                builder: (context, started, _) {
+                  return !started && shouldScroll
+                      ? Positioned(
+                          top: 0,
+                          left: messageLeftOffset,
+                          right: messageRightOffset,
+                          child: WordCardSwitcher(controller: this),
+                        )
+                      : const SizedBox();
+                },
+              ),
+              if (readingAssistanceMode ==
+                  ReadingAssistanceMode.practiceMode) ...[
+                CenteredMessage(controller: this),
+                PracticeModeTransitionAnimation(
+                  targetId: "overlay_center_message_${widget.event.eventId}",
+                  controller: this,
                 ),
-                ValueListenableBuilder(
-                  valueListenable: _startedTransition,
-                  builder: (context, started, _) {
-                    return !started && shouldScroll
-                        ? Positioned(
-                            top: 0,
-                            left: messageLeftOffset,
-                            right: messageRightOffset,
-                            child: WordCardSwitcher(controller: this),
-                          )
-                        : const SizedBox();
-                  },
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 20,
+                  child: ReadingAssistanceInputBar(
+                    widget.overlayController.practiceController,
+                    maxWidth: widget.overlayController.maxWidth,
+                    selectedToken: widget.overlayController.selectedToken,
+                  ),
                 ),
-                if (readingAssistanceMode ==
-                    ReadingAssistanceMode.practiceMode) ...[
-                  CenteredMessage(controller: this),
-                  PracticeModeTransitionAnimation(
-                    targetId: "overlay_center_message_${widget.event.eventId}",
-                    controller: this,
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 20,
-                    child: ReadingAssistanceInputBar(
-                      widget.overlayController.practiceController,
-                      maxWidth: widget.overlayController.maxWidth,
-                      selectedToken: widget.overlayController.selectedToken,
-                    ),
-                  ),
-                  Positioned(
-                    top: FluffyThemes.isColumnMode(context)
-                        ? switch (MediaQuery.heightOf(context)) {
-                            < 700 => 0,
-                            > 900 => 160,
-                            _ => 80,
-                          }
-                        : 0,
-                    left: 0,
-                    right: 0,
-                    child: ListenableBuilder(
-                      listenable: widget.overlayController.practiceController,
-                      builder: (context, _) {
-                        final practice =
-                            widget.overlayController.practiceController;
-
-                        final practiceMode = practice.practiceMode;
-                        final instruction = practiceMode.instruction;
-                        final complete = practice.isCurrentPracticeSessionDone;
-
-                        if (instruction != null && !complete) {
-                          return InstructionsInlineTooltip(
-                            instructionsEnum: practiceMode.instruction!,
-                            padding: const EdgeInsets.all(16.0),
-                            animate: false,
-                          );
+                Positioned(
+                  top: FluffyThemes.isColumnMode(context)
+                      ? switch (MediaQuery.heightOf(context)) {
+                          < 700 => 0,
+                          > 900 => 160,
+                          _ => 80,
                         }
+                      : 0,
+                  left: 0,
+                  right: 0,
+                  child: ListenableBuilder(
+                    listenable: widget.overlayController.practiceController,
+                    builder: (context, _) {
+                      final practice =
+                          widget.overlayController.practiceController;
 
-                        return const SizedBox();
-                      },
-                    ),
+                      final practiceMode = practice.practiceMode;
+                      final instruction = practiceMode.instruction;
+                      final complete = practice.isCurrentPracticeSessionDone;
+
+                      if (instruction != null && !complete) {
+                        return InstructionsInlineTooltip(
+                          instructionsEnum: practiceMode.instruction!,
+                          padding: const EdgeInsets.all(16.0),
+                          animate: false,
+                        );
+                      }
+
+                      return const SizedBox();
+                    },
                   ),
-                ],
+                ),
               ],
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

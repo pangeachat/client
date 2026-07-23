@@ -56,60 +56,57 @@ class SelectedCourseView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Builder(
-                builder: (context) {
-                  final course = this.course;
-                  final summary = this.summary;
-                  final hasError = this.hasError;
-                  final loading = this.loading;
-                  final content = this.content;
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Builder(
+              builder: (context) {
+                final course = this.course;
+                final summary = this.summary;
+                final hasError = this.hasError;
+                final loading = this.loading;
+                final content = this.content;
 
-                  if (loading) {
-                    return const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    );
-                  }
+                if (loading) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
 
-                  if (hasError || course == null) {
-                    return Center(
-                      child: ErrorIndicator(
-                        message: L10n.of(context).oopsSomethingWentWrong,
-                      ),
-                    );
-                  }
+                if (hasError || course == null) {
+                  return Center(
+                    child: ErrorIndicator(
+                      message: L10n.of(context).oopsSomethingWentWrong,
+                    ),
+                  );
+                }
 
-                  final adminIds = summary?.adminUserIDs ?? [];
-                  return Column(
-                    spacing: 20.0,
-                    children: [
-                      SizedBox(
-                        width: double.infinity,
-                        child: FilledButton.tonalIcon(
-                          onPressed: onTapCta,
-                          label: Text(ctaButtonText),
-                          style: FilledButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            padding: const EdgeInsets.symmetric(vertical: 14.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
+                final adminIds = summary?.adminUserIDs ?? [];
+                return Column(
+                  spacing: 20.0,
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.tonalIcon(
+                        onPressed: onTapCta,
+                        label: Text(ctaButtonText),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primaryContainer,
+                          foregroundColor: theme.colorScheme.onPrimaryContainer,
+                          padding: const EdgeInsets.symmetric(vertical: 14.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
                       ),
-                      if (content != null)
-                        AddCourseTile(content: content, expanded: true),
-                      if (adminIds.isNotEmpty) _CourseAdminDisplay(adminIds),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                    if (content != null)
+                      AddCourseTile(content: content, expanded: true),
+                    if (adminIds.isNotEmpty) _CourseAdminDisplay(adminIds),
+                  ],
+                );
+              },
             ),
           ),
         ),

@@ -164,19 +164,17 @@ class CourseCodePageState extends State<CourseCodePage> {
     final theme = Theme.of(context);
     if (_isInboundJoin) {
       return Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 16.0,
-              children: [
-                const CircularProgressIndicator.adaptive(),
-                Text(
-                  L10n.of(context).loadingPleaseWait,
-                  style: theme.textTheme.titleMedium,
-                ),
-              ],
-            ),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 16.0,
+            children: [
+              const CircularProgressIndicator.adaptive(),
+              Text(
+                L10n.of(context).loadingPleaseWait,
+                style: theme.textTheme.titleMedium,
+              ),
+            ],
           ),
         ),
       );
@@ -203,63 +201,56 @@ class CourseCodePageState extends State<CourseCodePage> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Column(
-                spacing: 36.0,
-                children: [
-                  FocusTraversalGroup(
-                    policy: OrderedTraversalPolicy(),
-                    child: Column(
-                      spacing: 16.0,
-                      children: [
-                        TextFormField(
-                          controller: _codeController,
-                          decoration: InputDecoration(
-                            hintText: L10n.of(context).courseCodeHint,
-                            prefixIcon: Icon(Icons.key_outlined),
-                          ),
-                          onFieldSubmitted: (_) => _submit(),
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(10),
-                          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Column(
+              spacing: 36.0,
+              children: [
+                FocusTraversalGroup(
+                  policy: OrderedTraversalPolicy(),
+                  child: Column(
+                    spacing: 16.0,
+                    children: [
+                      TextFormField(
+                        controller: _codeController,
+                        decoration: InputDecoration(
+                          hintText: L10n.of(context).courseCodeHint,
+                          prefixIcon: Icon(Icons.key_outlined),
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.tonalIcon(
-                            onPressed: _code.isNotEmpty ? _submit : null,
-                            label: Text(L10n.of(context).submit),
-                            style: FilledButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onPrimaryContainer,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 14.0,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                        onFieldSubmitted: (_) => _submit(),
+                        inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton.tonalIcon(
+                          onPressed: _code.isNotEmpty ? _submit : null,
+                          label: Text(L10n.of(context).submit),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            padding: const EdgeInsets.symmetric(vertical: 14.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SvgPicture.network(
-                    "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                    width: 120.0,
-                    height: 120.0,
-                    colorFilter: ColorFilter.mode(
-                      theme.colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
+                ),
+                SvgPicture.network(
+                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                  width: 120.0,
+                  height: 120.0,
+                  colorFilter: ColorFilter.mode(
+                    theme.colorScheme.onSurface,
+                    BlendMode.srcIn,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
