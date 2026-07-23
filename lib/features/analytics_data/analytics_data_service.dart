@@ -102,7 +102,11 @@ class AnalyticsDataService {
     // account's resources, so its last span actually POSTs (isolated to this
     // account) rather than being dropped on teardown.
     await updateService.dispose();
-    _closeDatabase();
+    // AWAIT the database close/delete so dispose() doesn't resolve — and the
+    // matrix teardown doesn't drop the service from its map — until the DB is
+    // actually closed. Otherwise a rebuild could recreate the service and reopen
+    // the SAME database while deletion is still running.
+    await _closeDatabase();
   }
 
   void _invalidateCaches() {

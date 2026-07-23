@@ -31,16 +31,29 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   final DosageEngagementTracker? _injectedTracker;
 
   AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
-    : _injectedTracker = tracker;
+    : _injectedTracker = tracker {
+    // Pin the account mxid AT CONSTRUCTION when the client is already logged in
+    // — this service is built post-login (matrix `_registerSubs`), so this runs
+    // BEFORE the fallible analytics init (getUserProfile etc). If that init
+    // throws, [start] is never reached, but the pin already happened here, so
+    // teardown still resolves the real mxid instead of disposeAccount('').
+    _pinAccountId();
+  }
 
-  /// The account mxid, PINNED at [start] (which runs post-login) and retained,
-  /// so teardown resolves it even after the SDK nulls userID in `clear()` ahead
-  /// of `loggedOut`. Not snapshotted at construction (that can precede login);
-  /// falls back to a live read until the pin is set (e.g. a heartbeat before
-  /// start, or a test that drives dispose without start).
+  /// The account mxid, PINNED as soon as the client is logged in (at construction
+  /// if already logged in, else at [start]) and retained — so teardown resolves
+  /// it even after the SDK nulls userID in `clear()` ahead of `loggedOut`, and
+  /// even when the analytics init fails before `start`. Not a raw constructor
+  /// snapshot (that can precede login); falls back to a live read until pinned.
   String? _pinnedAccountId;
   String get _accountUserId =>
       _pinnedAccountId ?? dataService.accountUserId ?? '';
+
+  /// Latches [_pinnedAccountId] from the live account id when one is available.
+  void _pinAccountId() {
+    final live = dataService.accountUserId;
+    if (live != null && live.isNotEmpty) _pinnedAccountId = live;
+  }
 
   /// This account's engagement tracker (heartbeat/background flush target).
   DosageEngagementTracker? get _tracker =>
@@ -50,12 +63,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Timer? _periodicTimer;
 
   void start() {
-    // Pin the account mxid now (start runs post-login inside _initAnalytics), so
-    // teardown can still resolve it after the SDK nulls userID in clear() ahead
-    // of the loggedOut event — otherwise an automatic logout with no pre-flush
-    // would hand disposeAccount('') and leak the tracker.
-    final live = dataService.accountUserId;
-    if (live != null && live.isNotEmpty) _pinnedAccountId = live;
+    // Backstop pin (the constructor already pins when built post-login): covers a
+    // service constructed BEFORE login, now that start runs post-login.
+    _pinAccountId();
     // Piggyback app-lifecycle hooks for the dosage engagement tracker; the
     // 5-minute tick below is its heartbeat flush. Idempotent re-registration
     // so a restart can't stack observers.

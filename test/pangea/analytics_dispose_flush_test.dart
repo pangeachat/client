@@ -128,13 +128,15 @@ void main() {
       clock = clock.add(const Duration(minutes: 1));
 
       // NON-injected service: dispose() resolves the tracker via the registry
-      // using the account mxid, exactly the teardown path that broke.
+      // using the account mxid, exactly the teardown path that broke. The
+      // service is constructed while "logged in" and start() is NEVER called —
+      // modelling analytics init failing before start(), where only the
+      // CONSTRUCTOR pin can save the teardown.
       final dataService = _MutableUserIdDataService(mxid);
-      final svc = AnalyticsUpdateService(dataService);
-      svc.start(); // pins the mxid while "logged in"
+      final svc = AnalyticsUpdateService(dataService); // constructor pins mxid
 
       // The SDK clears userID before emitting loggedOut — the live read is now
-      // null, so ONLY the start()-pinned id can key the disposal.
+      // null, so ONLY the pinned id can key the disposal.
       dataService.userId = null;
 
       await svc.dispose();
