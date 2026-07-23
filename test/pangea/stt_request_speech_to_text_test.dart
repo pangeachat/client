@@ -5,10 +5,12 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'get_test_client.dart';
 
 /// P1b.2/P1b.4 caller-level coverage of the REAL toolbar seams on a live
@@ -42,6 +44,18 @@ Map<String, dynamic> _tokenLessEmbed() {
       _embedLangCode;
   return embed;
 }
+
+PangeaToken _token(String content) => PangeaToken.fromJson({
+  'text': {'content': content, 'offset': 0, 'length': content.length},
+  'lemma': {'text': content, 'save_vocab': true, 'form': content},
+  'pos': 'NOUN',
+  'morph': <String, dynamic>{},
+});
+
+SpeechToTextResponseModel _tokenRich(String content) =>
+    SpeechToTextResponseModel.fromJson(
+      _tokenLessEmbed(),
+    ).withFirstTranscriptTokens([STTToken(token: _token(content))]);
 
 void main() {
   late Client client;
@@ -79,10 +93,8 @@ void main() {
   });
 
   tearDown(() async {
-    // Restore the real tokenizer + clear the in-memory repair so state never
-    // leaks between tests.
+    // Restore the real tokenizer so state never leaks between tests.
     PangeaMessageEvent.enrichSttHook = enrichSttWithTokens;
-    PangeaMessageEvent.clearRepairedSttCache();
     timeline.cancelSubscriptions();
     await client.dispose();
   });
@@ -97,110 +109,81 @@ void main() {
     },
   );
 
-  test('H4: with attach failed (no persisted token-rich rep), selection reads the '
-      'in-memory repaired tokens -- getSpeechToTextLocal(preferTokens:true) '
-      'resolves tokens where it returned none before', () {
-    // Before: the token-less embed yields no tokens, so a tap resolves null.
+  test('R7 (a): selection resolves a token from the LOADER'
+      's loaded token-rich '
+      'STT (the SAME source the display shows); with the loader unloaded, no '
+      'token is selectable', () {
+    final controller = SelectModeController(audioMessage);
+    addTearDown(controller.dispose);
+
+    // Loader unloaded -> loadedTranscription null -> nothing selectable.
+    expect(controller.loadedTranscription, isNull);
     expect(
-      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
-      isFalse,
+      SelectModeController.selectedAudioToken(
+        controller.loadedTranscription,
+        (_) => true,
+      ),
+      isNull,
     );
 
-    // The display loader's repair enriched in-memory but the attach never
-    // persisted a representation; it cached the token-rich result by event id.
-    final rich = SpeechToTextResponseModel.fromJson(_tokenLessEmbed())
-        .withFirstTranscriptTokens([
-          STTToken(
-            token: PangeaToken.fromJson({
-              'text': {'content': 'hola', 'offset': 0, 'length': 4},
-              'lemma': {'text': 'hola', 'save_vocab': true, 'form': 'hola'},
-              'pos': 'NOUN',
-              'morph': <String, dynamic>{},
-            }),
-          ),
-        ]);
-    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, rich);
+    // The DISPLAY loads a token-rich STT; SELECTION reads the SAME value.
+    final loaded = _tokenRich('hola');
+    controller.transcriptionState.value = AsyncLoaded(loaded);
 
-    // After: selection now sees the SAME repaired tokens the display shows.
-    // Teeth: without the in-memory cache fallback in getSpeechToTextLocal, this
-    // stays the token-less embed (hasUsableTokens false) -> RED.
-    final selected = audioMessage.getSpeechToTextLocal(preferTokens: true);
-    expect(selected!.hasUsableTokens, isTrue);
-    expect(selected.transcript.sttTokens, isNotEmpty);
+    expect(controller.loadedTranscription, same(loaded));
+    final token = SelectModeController.selectedAudioToken(
+      controller.loadedTranscription,
+      (t) => t.text.content == 'hola',
+    );
+    // Teeth: reading a parallel source (or null) instead of the loader here
+    // makes the resolved token null -> RED.
+    expect(token, isNotNull);
+    expect(token!.text.content, 'hola');
   });
 
-  test('R6 read-invariant (real getSpeechToTextLocal): a cached repair whose '
-      'transcript DIFFERS from the current embed is NOT surfaced -- staleness is '
-      'gated at READ, not by write/invalidation timing', () {
-    // Cache a token-rich entry for a DIFFERENT utterance than the embed
-    // ("adios ...", vs the embed's "hola mundo").
-    final stale = SpeechToTextResponseModel.fromJson({
-      'results': [
-        {
-          'transcripts': [
-            {
-              'confidence': 90,
-              'lang_code': _embedLangCode,
-              'transcript': 'adios amigo',
-              'words_per_hr': 100,
-              'stt_tokens': [
-                {
-                  'token': {
-                    'text': {'content': 'adios', 'offset': 0, 'length': 5},
-                    'lemma': {
-                      'text': 'adios',
-                      'save_vocab': true,
-                      'form': 'adios',
-                    },
-                    'pos': 'NOUN',
-                    'morph': <String, dynamic>{},
-                  },
-                },
-              ],
-            },
-          ],
+  test(
+    'R7 (c): requestSpeechToText(requireTokens:true) does NOT re-tokenize when '
+    'the local STT already has tokens (attach-success common case)',
+    () async {
+      var enrichCalls = 0;
+      PangeaMessageEvent.enrichSttHook = (base, snapshot) async {
+        enrichCalls++;
+        return base;
+      };
+
+      // An event whose embed is ALREADY token-rich (as if the attached
+      // token-rich representation is present / the send carried tokens).
+      final richEvent = Event(
+        type: EventTypes.Message,
+        eventId: r'$audio-rich:fakeServer.notExisting',
+        senderId: client.userID!,
+        originServerTs: DateTime.now(),
+        content: {
+          'msgtype': 'm.audio',
+          'body': 'recording.wav',
+          'speaker_l1': _eventSpeakerL1,
+          'user_stt': _tokenRich('hola').toJson(),
         },
-      ],
-    });
-    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, stale);
+        room: room,
+      );
+      final richMessage = PangeaMessageEvent(
+        event: richEvent,
+        timeline: timeline,
+        ownMessage: true,
+      );
 
-    // The read-time invariant validates the cache against the current embed
-    // transcript; the stale "adios" entry does not match "hola mundo".
-    // Teeth: without the authoritative-transcript match at read, this stale
-    // entry would surface (hasUsableTokens true) -> RED.
-    final selected = audioMessage.getSpeechToTextLocal(preferTokens: true);
-    expect(selected!.hasUsableTokens, isFalse);
-  });
+      final result = await richMessage.requestSpeechToText(
+        'en',
+        'es',
+        requireTokens: true,
+      );
 
-  test('HIGH: editing the message INVALIDATES the cached repair -- post-edit '
-      'selection does NOT return the stale pre-edit tokens', () {
-    final rich = SpeechToTextResponseModel.fromJson(_tokenLessEmbed())
-        .withFirstTranscriptTokens([
-          STTToken(
-            token: PangeaToken.fromJson({
-              'text': {'content': 'hola', 'offset': 0, 'length': 4},
-              'lemma': {'text': 'hola', 'save_vocab': true, 'form': 'hola'},
-              'pos': 'NOUN',
-              'morph': <String, dynamic>{},
-            }),
-          ),
-        ]);
-    PangeaMessageEvent.cacheRepairedStt(audioMessage.eventId, rich);
-    expect(
-      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
-      isTrue,
-    );
-
-    // The message was edited -> the pre-edit repair is now stale.
-    audioMessage.updateLatestEdit();
-
-    // Teeth: without the cache-invalidation in updateLatestEdit, selection
-    // would still surface the stale token-rich entry -> hasUsableTokens true.
-    expect(
-      audioMessage.getSpeechToTextLocal(preferTokens: true)!.hasUsableTokens,
-      isFalse,
-    );
-  });
+      // Teeth: if requestSpeechToText re-tokenized a token-rich local, this
+      // would be 1 -> RED.
+      expect(enrichCalls, 0);
+      expect(result.hasUsableTokens, isTrue);
+    },
+  );
 
   test(
     'requestSpeechToText(requireTokens: true) tokenizes the token-less embed '

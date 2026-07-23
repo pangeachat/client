@@ -161,31 +161,6 @@ void main() {
     );
 
     test(
-      'R6 #1: recordRepaired fires with the enriched STT right after enrich, '
-      'EVEN when attach fails (seeds the shared selection cache)',
-      () async {
-        SpeechToTextResponseModel? recorded;
-
-        await runVoiceTranscriptEnrichment(
-          baseStt: _skipTokenizeBase(),
-          snapshot: _snapshot,
-          resolveSenderId: _ownSender,
-          clientUserId: _me,
-          enrich: (b, _) async =>
-              b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
-          recordRepaired: (rich) => recorded = rich,
-          recordAnalytics: (_) async {},
-          // Attach FAILS to persist -- recordRepaired must have fired first.
-          attach: (_) async => null,
-        );
-
-        // Teeth: without the coordinator's recordRepaired call, this is null.
-        expect(recorded, isNotNull);
-        expect(recorded!.hasUsableTokens, isTrue);
-      },
-    );
-
-    test(
       'own-ness is bound to the RESOLVED event sender: a FOREIGN senderId does '
       'NOT record (attach still runs)',
       () async {
