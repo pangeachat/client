@@ -86,16 +86,17 @@ void notificationTapBackground(
     store: store,
   );
   // Select the account the notification is FOR — its payload carries the
-  // clientName — never blindly the first client. With multiple accounts, a
-  // notification for B must not be sent (or dosage-attributed) as A, or produce
-  // no reply at all. Fall back to the sole client only when there is exactly
-  // one (unambiguous); otherwise ignore rather than act as the wrong account.
+  // clientName — by EXACT match only. Never fall back to the first (or sole)
+  // client: a stale notification for a logged-out account A must not be sent (or
+  // dosage-attributed) as the remaining account B when B happens to know the
+  // room. A missing/blank/mismatched clientName is ignored rather than acting as
+  // another account.
   final payloadClientName = FluffyChatPushPayload.fromString(
     notificationResponse.payload ?? '',
   ).clientName;
-  final client =
-      clients.firstWhereOrNull((c) => c.clientName == payloadClientName) ??
-      (clients.length == 1 ? clients.first : null);
+  final client = (payloadClientName == null || payloadClientName.isEmpty)
+      ? null
+      : clients.firstWhereOrNull((c) => c.clientName == payloadClientName);
   if (client == null) {
     Logs().w(
       'Notification tap for unknown/mismatched account "$payloadClientName"; '
