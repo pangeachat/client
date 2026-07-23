@@ -7,7 +7,7 @@ description: "Client subscription module — entitlement display from the choreo
 
 Client-side subscription UI and purchase flow. For the cross-repo architecture — the web-only rationale, the entitlement model, and the platform policy — see [subscriptions.instructions.md](../../../.github/.github/instructions/subscriptions.instructions.md).
 
-The client holds no payment state. It reads entitlement status from the choreographer, renders the right purchase surface for the device's storefront, and hands off to Stripe on the web for the actual payment.
+The client holds no payment state. It reads entitlement status from the choreographer, renders the purchase surface defined by the subscription design, and hands off to Stripe on the web for the actual payment.
 
 ## Entitlement state
 
@@ -15,7 +15,7 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 ## Purchase surface
 
-Which purchase surface the client renders is gated by storefront and platform; the presentation matrix, the per-store rules, and their legal rationale live in the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client owns rendering that design — it does not decide the law — and never shows a purchase call to action before the storefront confirms steering is allowed there.
+Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
 
 ## Purchase flow
 
