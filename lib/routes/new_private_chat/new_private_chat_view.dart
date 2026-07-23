@@ -13,8 +13,13 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class NewPrivateChatView extends StatelessWidget {
   final NewPrivateChatController controller;
+  final Widget closeButton;
 
-  const NewPrivateChatView(this.controller, {super.key});
+  const NewPrivateChatView(
+    this.controller, {
+    super.key,
+    required this.closeButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,19 @@ class NewPrivateChatView extends StatelessWidget {
 
     final searchResponse = controller.searchResponse;
     return Scaffold(
+      appBar: AppBar(
+        leading: closeButton,
+        titleSpacing: 0,
+        title: Text(
+          L10n.of(context).newDirectMessage,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+      ),
       body: MaxWidthBody(
         withScrolling: false,
         innerPadding: const EdgeInsets.symmetric(vertical: 8),
