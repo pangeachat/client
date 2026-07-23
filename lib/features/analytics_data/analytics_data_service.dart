@@ -105,8 +105,14 @@ class AnalyticsDataService {
     // AWAIT the database close/delete so dispose() doesn't resolve — and the
     // matrix teardown doesn't drop the service from its map — until the DB is
     // actually closed. Otherwise a rebuild could recreate the service and reopen
-    // the SAME database while deletion is still running.
-    await _closeDatabase();
+    // the SAME database while deletion is still running. A close/delete FAILURE
+    // must not abort the account teardown (the loggedOut listener awaits this
+    // before removing the client/store), so it is swallowed here.
+    try {
+      await _closeDatabase();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   void _invalidateCaches() {
@@ -123,11 +129,16 @@ class AnalyticsDataService {
     _analyticsClient = _AnalyticsClient(client: client, database: database);
 
     if (client.isLogged()) {
+      // Pin the dosage account mxid the moment we know we are logged in, BEFORE
+      // the fallible analytics init below — otherwise an init failure would
+      // leave the id unpinned and teardown would resolve '' and leak the tracker.
+      updateService.pinAccountId();
       await _initAnalytics();
     } else {
       await client.onLoginStateChanged.stream.firstWhere(
         (state) => state == LoginState.loggedIn,
       );
+      updateService.pinAccountId();
       await _initAnalytics();
     }
   }

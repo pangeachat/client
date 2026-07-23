@@ -32,25 +32,27 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
     : _injectedTracker = tracker {
-    // Pin the account mxid AT CONSTRUCTION when the client is already logged in
-    // — this service is built post-login (matrix `_registerSubs`), so this runs
-    // BEFORE the fallible analytics init (getUserProfile etc). If that init
-    // throws, [start] is never reached, but the pin already happened here, so
-    // teardown still resolves the real mxid instead of disposeAccount('').
-    _pinAccountId();
+    // Pin the account mxid AT CONSTRUCTION when the client is already logged in.
+    // The authoritative pin is [pinAccountId] called from
+    // [AnalyticsDataService._initDatabase] the moment `loggedIn` is observed
+    // (before the fallible analytics init); this and [start] are backstops.
+    pinAccountId();
   }
 
-  /// The account mxid, PINNED as soon as the client is logged in (at construction
-  /// if already logged in, else at [start]) and retained — so teardown resolves
-  /// it even after the SDK nulls userID in `clear()` ahead of `loggedOut`, and
-  /// even when the analytics init fails before `start`. Not a raw constructor
-  /// snapshot (that can precede login); falls back to a live read until pinned.
+  /// The account mxid, PINNED the moment the client is logged in (from
+  /// [AnalyticsDataService._initDatabase], before the fallible analytics init;
+  /// with construction + [start] as backstops) and retained — so teardown
+  /// resolves it even after the SDK nulls userID in `clear()` ahead of
+  /// `loggedOut`, and even when the analytics init fails before `start`. Not a
+  /// raw constructor snapshot (that can precede login on a fresh startup with an
+  /// unlogged default client); falls back to a live read until pinned.
   String? _pinnedAccountId;
   String get _accountUserId =>
       _pinnedAccountId ?? dataService.accountUserId ?? '';
 
-  /// Latches [_pinnedAccountId] from the live account id when one is available.
-  void _pinAccountId() {
+  /// Latches the account mxid from the live account id when one is available.
+  /// Idempotent; a no-op before login. Called at the earliest logged-in point.
+  void pinAccountId() {
     final live = dataService.accountUserId;
     if (live != null && live.isNotEmpty) _pinnedAccountId = live;
   }
@@ -63,9 +65,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Timer? _periodicTimer;
 
   void start() {
-    // Backstop pin (the constructor already pins when built post-login): covers a
-    // service constructed BEFORE login, now that start runs post-login.
-    _pinAccountId();
+    // Backstop pin (the authoritative pin is at the loggedIn observation in
+    // _initDatabase): covers any path where that didn't run before start.
+    pinAccountId();
     // Piggyback app-lifecycle hooks for the dosage engagement tracker; the
     // 5-minute tick below is its heartbeat flush. Idempotent re-registration
     // so a restart can't stack observers.
