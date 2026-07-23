@@ -81,16 +81,18 @@ class _LeftPanelActivityDetailsSubpageState
     // unscoped, so cap the whole resolve and fall through on timeout. Mirrors
     // launch_activity_session's bound on the same call.
     try {
-      final spaces = await ActivityCourseResolver.matchingCourseSpaces(
+      final matches = await ActivityCourseResolver.matchingCourseSpaces(
         Matrix.of(context).client,
         widget.param.activityId,
         null,
       ).timeout(const Duration(seconds: 10));
       if (!mounted) return;
       setState(() {
-        // Only pin when exactly one course matches; a tie is left unscoped
-        // rather than attributing source_course_id to an arbitrary space.
-        _parentId = ActivityCourseResolver.unambiguousCourseId(spaces);
+        // Only pin when exactly one course matches AND the match set is
+        // complete; a tie — or a lone survivor of a batch where another
+        // course's eligibility couldn't be resolved — is left unscoped rather
+        // than attributing source_course_id to a possibly-wrong space.
+        _parentId = ActivityCourseResolver.unambiguousCourseId(matches);
         _loading = false;
       });
     } catch (e, s) {

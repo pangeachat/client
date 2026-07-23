@@ -34,12 +34,13 @@ extension LaunchActivitySession on Client {
     List<Room> matching = [];
     try {
       // Bounded: this runs inside a blocking loading dialog; a slow or
-      // hung backend must not lock the UI.
-      matching = await ActivityCourseResolver.matchingCourseSpaces(
+      // hung backend must not lock the UI. Sharing uses whatever courses DID
+      // resolve; completeness only gates the source_course_id pin elsewhere.
+      matching = (await ActivityCourseResolver.matchingCourseSpaces(
         this,
         activity.activityId,
         activity.req.targetLanguage,
-      ).timeout(const Duration(seconds: 10));
+      ).timeout(const Duration(seconds: 10))).matches;
     } catch (e, s) {
       // Sharing is best-effort; session creation must not fail on it.
       ErrorHandler.logError(

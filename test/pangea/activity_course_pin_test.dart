@@ -21,22 +21,43 @@ void main() {
 
   test('pins only when exactly one course matches; a tie is unscoped', () {
     expect(
-      ActivityCourseResolver.unambiguousCourseId([]),
+      ActivityCourseResolver.unambiguousCourseId((
+        matches: const [],
+        complete: true,
+      )),
       isNull,
       reason: 'no match → unscoped',
     );
     expect(
-      ActivityCourseResolver.unambiguousCourseId([room('!c1:example.org')]),
+      ActivityCourseResolver.unambiguousCourseId((
+        matches: [room('!c1:example.org')],
+        complete: true,
+      )),
       '!c1:example.org',
-      reason: 'exactly one match → that course',
+      reason: 'exactly one match, set complete → that course',
     );
     expect(
-      ActivityCourseResolver.unambiguousCourseId([
-        room('!c1:example.org'),
-        room('!c2:example.org'),
-      ]),
+      ActivityCourseResolver.unambiguousCourseId((
+        matches: [room('!c1:example.org'), room('!c2:example.org')],
+        complete: true,
+      )),
       isNull,
       reason: 'ambiguous → unscoped, never an arbitrary firstOrNull pick',
+    );
+  });
+
+  test('a lone match from an INCOMPLETE set is not pinned', () {
+    // Another joined course failed to resolve its quest, so this single
+    // surviving match might not actually be unique — do not pin it.
+    expect(
+      ActivityCourseResolver.unambiguousCourseId((
+        matches: [room('!c1:example.org')],
+        complete: false,
+      )),
+      isNull,
+      reason:
+          'a lone survivor of a batch with an unresolved course must stay '
+          'unscoped — it could mis-attribute source_course_id',
     );
   });
 }
