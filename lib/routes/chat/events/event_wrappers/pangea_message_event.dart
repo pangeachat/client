@@ -317,11 +317,17 @@ class PangeaMessageEvent {
     SpeechToTextResponseModel? matchEmbed,
   }) {
     // The persisted STT representations, NEWEST-first, paired with their
-    // payload (`representations` is already sorted newest-first).
+    // payload (`representations` is already sorted newest-first). Reading a
+    // malformed rep can THROW; a bad rep is treated as absent and skipped so it
+    // can never hide the valid persisted tokens or force a network repair.
     final sttReps = <(RepresentationEvent, SpeechToTextResponseModel)>[];
     for (final rep in representations) {
-      final stt = rep.content.speechToText;
-      if (stt != null) sttReps.add((rep, stt));
+      try {
+        final stt = rep.content.speechToText;
+        if (stt != null) sttReps.add((rep, stt));
+      } catch (_) {
+        // Malformed representation -> treat as absent; continue the scan.
+      }
     }
     if (sttReps.isEmpty) return null;
 

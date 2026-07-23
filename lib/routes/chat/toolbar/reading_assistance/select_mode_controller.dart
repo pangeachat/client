@@ -19,17 +19,35 @@ import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_bu
 import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
+@visibleForTesting
+class TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
   final PangeaMessageEvent messageEvent;
-  _TranscriptionLoader(this.messageEvent) : super();
+  TranscriptionLoader(this.messageEvent) : super();
+
+  /// The reader's (L1, L2) short codes for the transcription fetch. A test seam
+  /// so the loader's `fetch` (which requires tokens) can be driven WITHOUT a
+  /// full MatrixState / PangeaController bootstrap; defaults to the live user
+  /// settings. Reset in tests via [resetReaderLanguages].
+  @visibleForTesting
+  static (String, String) Function() readerLanguages = _liveReaderLanguages;
+
+  static (String, String) _liveReaderLanguages() => (
+    MatrixState.pangeaController.userController.userL1!.langCodeShort,
+    MatrixState.pangeaController.userController.userL2!.langCodeShort,
+  );
+
+  @visibleForTesting
+  static void resetReaderLanguages() => readerLanguages = _liveReaderLanguages;
 
   @override
-  Future<SpeechToTextResponseModel> fetch() =>
-      SelectModeController.requestTokenizedTranscription(
-        messageEvent,
-        MatrixState.pangeaController.userController.userL1!.langCodeShort,
-        MatrixState.pangeaController.userController.userL2!.langCodeShort,
-      );
+  Future<SpeechToTextResponseModel> fetch() {
+    final (l1, l2) = readerLanguages();
+    return SelectModeController.requestTokenizedTranscription(
+      messageEvent,
+      l1,
+      l2,
+    );
+  }
 }
 
 class _STTTranslationLoader extends AsyncLoader<String> {
@@ -61,14 +79,14 @@ typedef _TranslationLoader = ValueNotifier<AsyncState<String>>;
 
 class SelectModeController with LemmaEmojiSetter {
   final PangeaMessageEvent messageEvent;
-  final _TranscriptionLoader _transcriptLoader;
+  final TranscriptionLoader _transcriptLoader;
   final _TranslationLoader _translationLoader;
 
   final _AudioLoader _audioLoader;
   final _STTTranslationLoader _sttTranslationLoader;
 
   SelectModeController(this.messageEvent)
-    : _transcriptLoader = _TranscriptionLoader(messageEvent),
+    : _transcriptLoader = TranscriptionLoader(messageEvent),
       _translationLoader = _TranslationLoader(AsyncIdle<String>()),
       _audioLoader = _AudioLoader(messageEvent),
       _sttTranslationLoader = _STTTranslationLoader(messageEvent);
