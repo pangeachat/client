@@ -116,7 +116,6 @@ import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -1815,55 +1814,6 @@ class ChatController extends State<ChatPageWithRoom>
     //   selectedEvents.clear();
     // });
     clearSelectedEvents();
-    // Pangea#
-  }
-
-  void reportEventAction() async {
-    final event = selectedEvents.single;
-    final score = await showModalActionPopup<int>(
-      context: context,
-      title: L10n.of(context).reportMessage,
-      message: L10n.of(context).howOffensiveIsThisContent,
-      cancelLabel: L10n.of(context).cancel,
-      actions: [
-        AdaptiveModalAction(
-          value: -100,
-          label: L10n.of(context).extremeOffensive,
-        ),
-        AdaptiveModalAction(value: -50, label: L10n.of(context).offensive),
-        AdaptiveModalAction(value: 0, label: L10n.of(context).inoffensive),
-      ],
-    );
-    if (score == null) return;
-    final reason = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).whyDoYouWantToReportThis,
-      okLabel: L10n.of(context).ok,
-      cancelLabel: L10n.of(context).cancel,
-      hintText: L10n.of(context).reason,
-    );
-    if (reason == null || reason.isEmpty) return;
-    final result = await showFutureLoadingDialog(
-      context: context,
-      future: () => Matrix.of(context).client.reportEvent(
-        event.roomId!,
-        event.eventId,
-        reason: reason,
-        score: score,
-      ),
-    );
-    if (result.error != null) return;
-    // #Pangea
-    // setState(() {
-    //   showEmojiPicker = false;
-    //   selectedEvents.clear();
-    // });
-    clearSelectedEvents();
-    // Pangea#
-    // #Pangea
-    ScaffoldMessenger.of(context).showSnackBarAnnounced(
-      SnackBar(content: Text(L10n.of(context).contentHasBeenReported)),
-    );
     // Pangea#
   }
 
