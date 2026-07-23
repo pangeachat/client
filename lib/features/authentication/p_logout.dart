@@ -25,13 +25,13 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
   }
 
   final matrix = Matrix.of(context);
-  await matrix.backgroundPush?.cancelAllNotifications();
-
-  // Capture THE account being logged out AND its analytics service up front, so
-  // save/flush/logout all target this account even if the active client switches
-  // during the flow — never the wrong account's analytics via the active getter.
+  // Capture THE account being logged out AND its analytics service up front —
+  // BEFORE any await — so save/flush/logout all target this account even if the
+  // active client switches during the teardown (never the wrong account's
+  // analytics via the active getter).
   final client = matrix.client;
   final analytics = matrix.analyticsServiceFor(client.clientName);
+  await matrix.backgroundPush?.cancelAllNotifications();
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
       .first
@@ -80,7 +80,9 @@ Future<void> saveFlushAndLogout({
   required Future<void> Function() logout,
   Duration saveTimeout = const Duration(seconds: 8),
 }) async {
-  final save = saveAnalytics();
+  // Future.sync so a SYNCHRONOUS throw from saveAnalytics is also captured (and
+  // can't skip the flush + logout), not just an async rejection.
+  final save = Future.sync(saveAnalytics);
   try {
     await save.timeout(saveTimeout);
   } catch (_) {

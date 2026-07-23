@@ -51,8 +51,7 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     }
   }
 
-  Future<String?> _entitlementToCancel() async {
-    final userID = Matrix.of(context).client.userID!;
+  Future<String?> _entitlementToCancel(String userID) async {
     final statusResult = await SubscriptionStatusRepo.instance.get(
       SubscriptionStatusRequest(userID: userID),
     );
@@ -65,9 +64,20 @@ class SettingsSecurityController extends State<SettingsSecurity> {
   }
 
   void deleteAccountAction() async {
+    // #Pangea
+    // Capture THE account being deleted at action entry — before any await —
+    // and thread it through entitlement lookup, the confirm dialog, and the
+    // destructive calls. Never re-read Matrix.of(context).client after an await
+    // (an account switch mid-flow would otherwise confirm A but delete B); the
+    // identity is revalidated immediately before the destructive call.
+    final matrix = Matrix.of(context);
+    final client = matrix.client;
+    final clientName = client.clientName;
+    final capturedUserId = client.userID!;
+    // Pangea#
     final entitlementResult = await showFutureLoadingDialog(
       context: context,
-      future: _entitlementToCancel,
+      future: () => _entitlementToCancel(capturedUserId),
       onError: (_, _) => L10n.of(context).errorTryAgainLater,
     );
     if (entitlementResult.isError) return;
@@ -87,7 +97,7 @@ class SettingsSecurityController extends State<SettingsSecurity> {
         OkCancelResult.cancel) {
       return;
     }
-    final supposedMxid = Matrix.of(context).client.userID!;
+    final supposedMxid = capturedUserId;
     final mxid = await showTextInputDialog(
       useRootNavigator: false,
       context: context,
@@ -109,12 +119,10 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       return;
     }
     // #Pangea
-    // Capture THE account being deactivated up front and never re-read
-    // Matrix.of(context).client below: removing this account makes that getter
-    // return the NEXT account, and we would tear down / log out the wrong one.
-    final matrix = Matrix.of(context);
-    final client = matrix.client;
-    final clientName = client.clientName;
+    // Revalidate the captured identity right before the destructive call: if the
+    // active account switched during the dialogs above, abort rather than delete
+    // the wrong account.
+    if (matrix.client != client || client.userID != capturedUserId) return;
     // Pangea#
     final resp = await showFutureLoadingDialog(
       context: context,
