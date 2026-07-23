@@ -1846,11 +1846,6 @@ class ChatController extends State<ChatPageWithRoom>
           eventId: eventId,
           sink: analyticsSink,
         ),
-        // Seed the same in-memory repair cache the toolbar repair + fallback
-        // re-ASR use, so the sender's own later selection reads these tokens
-        // even if attach fails to persist a representation (R6 #1).
-        recordRepaired: (richStt) =>
-            PangeaMessageEvent.cacheRepairedStt(eventId, richStt),
         showFeedback: (richStt) =>
             _showVoiceAnalyticsFeedback(richStt, roomId, eventId),
         attach: (richStt) => attachSttRepresentation(

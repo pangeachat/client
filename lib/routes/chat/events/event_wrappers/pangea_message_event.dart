@@ -295,13 +295,6 @@ class PangeaMessageEvent {
 
   void updateLatestEdit() {
     _representations = null;
-    // Invalidate any in-memory repair for this message on edit -- the transcript
-    // changed, so a pre-edit token-rich entry is stale. This is what makes the
-    // "no usable embed -> return cached" branch of [_matchingRepairedStt] sound
-    // (the match-gate protects the embed-present case; edit-invalidation the
-    // no-embed case). Both the display-event id and the original id are cleared.
-    _repairedSttCache.remove(eventId);
-    _repairedSttCache.remove(_event.eventId);
   }
 
   RepresentationEvent? _representationByLanguage(
@@ -321,7 +314,7 @@ class PangeaMessageEvent {
   /// wins, matching the R0 behaviour.
   RepresentationEvent? _speechToTextRepresentation({
     bool preferTokens = false,
-    SpeechToTextResponseModel? matchAgainst,
+    SpeechToTextResponseModel? matchEmbed,
   }) {
     if (preferTokens) {
       final tokenRich = representations.firstWhereOrNull((element) {
@@ -329,12 +322,13 @@ class PangeaMessageEvent {
         if (stt == null || !stt.hasUsableTranscript || !stt.hasUsableTokens) {
           return false;
         }
-        // A token-rich rep is trusted ONLY when it matches the CURRENT
-        // authoritative transcript -- a stale or foreign representation must not
-        // replace trusted content. When there is no authoritative transcript
-        // anywhere (nothing to display), any token-rich rep is acceptable
-        // (nothing to diverge from).
-        return matchAgainst == null || sttTranscriptsMatch(matchAgainst, stt);
+        // A token-rich rep is trusted ONLY when it matches the provisional
+        // embed's transcript (text + language) -- a stale or foreign persisted
+        // representation must not replace the embed's trusted content. With no
+        // usable embed to match against, any token-rich rep is acceptable.
+        return matchEmbed == null ||
+            !matchEmbed.hasUsableTranscript ||
+            sttTranscriptsMatch(matchEmbed, stt);
       });
       if (tokenRich != null) return tokenRich;
     }
@@ -356,58 +350,6 @@ class PangeaMessageEvent {
     return a.transcript.text == b.transcript.text &&
         a.langCode.split('-').first == b.langCode.split('-').first;
   }
-
-  /// The CURRENT authoritative transcript to validate token-rich sources
-  /// against: the [embed] if it has a usable transcript, ELSE the newest
-  /// persisted STT representation's transcript ([newestRepStt]), ELSE null
-  /// (nothing to display anywhere). Pure -> unit-testable.
-  @visibleForTesting
-  static SpeechToTextResponseModel? authoritativeStt({
-    required SpeechToTextResponseModel? embed,
-    required SpeechToTextResponseModel? newestRepStt,
-  }) {
-    if (embed != null && embed.hasUsableTranscript) return embed;
-    if (newestRepStt != null && newestRepStt.hasUsableTranscript) {
-      return newestRepStt;
-    }
-    return null;
-  }
-
-  /// A token-rich [cached] repair is SURFACEABLE (may be shown/selected) ONLY
-  /// when it matches the current [authoritative] transcript -- so a stale entry
-  /// (re-populated by a pre-edit enrichment finishing after invalidation, or
-  /// lingering from a prior take) is unsurfaceable regardless of write timing.
-  /// Only when there is NO authoritative transcript anywhere (nothing to
-  /// display) may an unmatched entry be returned (nothing to diverge from).
-  /// Pure -> unit-testable.
-  @visibleForTesting
-  static SpeechToTextResponseModel? surfaceableRepairedStt({
-    required SpeechToTextResponseModel? cached,
-    required SpeechToTextResponseModel? authoritative,
-  }) {
-    if (cached == null || !cached.hasUsableTokens) return null;
-    if (authoritative == null) return cached;
-    return sttTranscriptsMatch(authoritative, cached) ? cached : null;
-  }
-
-  /// The newest persisted STT representation's payload (any -- token-rich or
-  /// text-only), used as the authoritative transcript when there is no usable
-  /// embed. A malformed representation is treated as absent.
-  SpeechToTextResponseModel? _newestSttRepStt() {
-    try {
-      return representations
-          .firstWhereOrNull((e) => e.content.speechToText != null)
-          ?.content
-          .speechToText;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  /// Instance authoritative transcript (see [authoritativeStt]).
-  SpeechToTextResponseModel? _authoritativeStt(
-    SpeechToTextResponseModel? embed,
-  ) => authoritativeStt(embed: embed, newestRepStt: _newestSttRepStt());
 
   Event? _getTextToSpeechLocal(String langCode, String text, String? voice) {
     for (final audio in ttsEvents) {
@@ -509,24 +451,19 @@ class PangeaMessageEvent {
       }
     }
 
-    // The CURRENT authoritative transcript (embed, else newest STT rep),
-    // computed ONCE and used to validate EVERY token-rich source at read time.
-    // `late` so the default (preferTokens:false) path never scans reps -- it is
-    // only accessed on the token-preferring branches below.
-    late final authoritative = _authoritativeStt(embedded);
-
-    final selected = selectUsableStt(
+    return selectUsableStt(
       embedded: embedded,
       preferTokens: preferTokens,
       // Lazy + guarded: only read when the embed is not usable (or lacks tokens
       // a token consumer needs), and a malformed related representation must not
       // throw (it is logged and treated as absent), so a usable embed is never
-      // blocked by a broken representation.
+      // blocked by a broken representation. A token-rich representation is only
+      // trusted when its transcript matches the embed (persisted-data guard).
       representation: () {
         try {
           return _speechToTextRepresentation(
             preferTokens: preferTokens,
-            matchAgainst: preferTokens ? authoritative : null,
+            matchEmbed: embedded,
           )?.content.speechToText;
         } catch (err, s) {
           ErrorHandler.logError(
@@ -539,17 +476,6 @@ class PangeaMessageEvent {
         }
       },
     );
-
-    // When a token consumer still has no tokens (the embed is provisional and
-    // no token-rich representation ever landed -- e.g. attach failed), fall back
-    // to the in-memory repaired STT -- but ONLY when it matches the current
-    // authoritative transcript, so a stale entry is unsurfaceable regardless of
-    // invalidation timing (R6). Never overrides a persisted token-rich result.
-    if (preferTokens && (selected == null || !selected.hasUsableTokens)) {
-      final repaired = _matchingRepairedStt(authoritative);
-      if (repaired != null) return repaired;
-    }
-    return selected;
   }
 
   SttTranslationModel? _getSttTranslationLocal(String langCode) {
@@ -653,56 +579,6 @@ class PangeaMessageEvent {
   )
   enrichSttHook = enrichSttWithTokens;
 
-  /// In-memory, session-scoped cache of token-rich STT keyed by audio event id.
-  /// Seeded by EVERY token-producing path -- the toolbar repair (`onEnriched`),
-  /// the from-scratch fallback re-ASR, and the send-path background coordinator
-  /// (`recordRepaired`) -- AFTER a successful tokenize but BEFORE/independent of
-  /// the best-effort attach, so display and SELECTION read the SAME tokens even
-  /// when the attach never persists a `pangea.representation` (H4/R6). Small
-  /// (one entry per repaired audio message this session), bounded + evicted.
-  static final Map<String, SpeechToTextResponseModel> _repairedSttCache = {};
-
-  /// Insertion-order bound so the cache cannot grow unboundedly over a long
-  /// session (each entry holds a full transcript).
-  static const int _repairedSttCacheMax = 32;
-
-  /// Stores [richStt] as the in-memory repair for [eventId]. Only a token-rich
-  /// result is cached; a token-less result is ignored so a stale rich entry is
-  /// never downgraded. Evicts the OLDEST entry once the bound is exceeded.
-  static void cacheRepairedStt(
-    String eventId,
-    SpeechToTextResponseModel richStt,
-  ) {
-    if (!richStt.hasUsableTokens) return;
-    // Re-insert at the end (freshest) so eviction is insertion-order LRU-ish.
-    _repairedSttCache.remove(eventId);
-    _repairedSttCache[eventId] = richStt;
-    while (_repairedSttCache.length > _repairedSttCacheMax) {
-      _repairedSttCache.remove(_repairedSttCache.keys.first);
-    }
-  }
-
-  @visibleForTesting
-  static void clearRepairedSttCache() => _repairedSttCache.clear();
-
-  @visibleForTesting
-  static int repairedSttCacheSize() => _repairedSttCache.length;
-
-  @visibleForTesting
-  static SpeechToTextResponseModel? peekRepairedStt(String eventId) =>
-      _repairedSttCache[eventId];
-
-  /// The in-memory repaired STT for [eventId] that is SURFACEABLE against the
-  /// current [authoritative] transcript (see [surfaceableRepairedStt]) -- a
-  /// stale entry that no longer matches the message's current transcript is
-  /// never returned, so correctness does not depend on invalidation timing.
-  SpeechToTextResponseModel? _matchingRepairedStt(
-    SpeechToTextResponseModel? authoritative,
-  ) => surfaceableRepairedStt(
-    cached: _repairedSttCache[eventId],
-    authoritative: authoritative,
-  );
-
   /// Snapshots the tokenizer inputs from THIS audio event (see [SttLangSnapshot]
   /// -- lang from the transcript, `sender_l1` from the event's `speaker_l1`), so
   /// a token repair uses the message's own language, not the reader's settings.
@@ -755,10 +631,6 @@ class PangeaMessageEvent {
           parentEventId: eventId,
           richStt: rich,
         ),
-        // Cache the enriched tokens in-memory BEFORE the best-effort attach, so
-        // selection (getSpeechToTextLocal) reads the SAME tokens display shows
-        // even when attach never persists a representation (H4).
-        onEnriched: (rich) => cacheRepairedStt(eventId, rich),
       );
     }
 
@@ -798,10 +670,6 @@ class PangeaMessageEvent {
       throw Exception('SpeechToText: no transcript available for audio');
     }
 
-    // Cache the freshly ASR'd tokens too, so SELECTION reads them even if the
-    // representation send lags/fails -- ALL token-producing paths populate the
-    // same cache selection reads (H4).
-    cacheRepairedStt(eventId, stt);
     _sendSttRepresentationEvent(stt);
     return stt;
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
@@ -103,6 +105,28 @@ class SelectModeController with LemmaEmojiSetter {
 
   ValueNotifier<AsyncState<SpeechToTextResponseModel>> get transcriptionState =>
       _transcriptLoader.state;
+
+  /// The loaded transcription STT the toolbar DISPLAY shows (null until the
+  /// transcription loader has loaded). SELECTION reads THIS so display and
+  /// selection share EXACTLY ONE token source for the open toolbar -- there is
+  /// no parallel cache to go stale.
+  SpeechToTextResponseModel? get loadedTranscription => _transcriptLoader.value;
+
+  /// Resolves the currently-selected audio token from the loader's [loadedStt]
+  /// (the ONE token source the display also renders). Null when nothing is
+  /// loaded yet (tokens are only tappable once the display has loaded them) or
+  /// when no loaded token is currently selected.
+  static PangeaToken? selectedAudioToken(
+    SpeechToTextResponseModel? loadedStt,
+    bool Function(PangeaToken) isSelected,
+  ) {
+    if (loadedStt == null || loadedStt.transcript.sttTokens.isEmpty) {
+      return null;
+    }
+    return loadedStt.transcript.sttTokens
+        .firstWhereOrNull((t) => isSelected(t.token))
+        ?.token;
+  }
 
   ValueNotifier<AsyncState<String>> get speechTranslationState =>
       _sttTranslationLoader.state;
