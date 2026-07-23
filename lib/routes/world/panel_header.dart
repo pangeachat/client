@@ -34,7 +34,7 @@ class PanelHeader extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 8.0,
-        vertical: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+        vertical: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
       ),
       child: Row(
         children: [

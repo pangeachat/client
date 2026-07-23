@@ -738,7 +738,13 @@ class WorldMapController extends State<WorldMap>
       _camTargetZoom,
     );
     final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
-    final lng = start.longitude + (end.longitude - start.longitude) * p.pan;
+    // Pan longitude along the shortest angular direction so a pin near the
+    // antimeridian glides toward its visible on-screen position (#7880).
+    final lng = WorldMapConstants.lerpLongitude(
+      start.longitude,
+      end.longitude,
+      p.pan,
+    );
     final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * p.zoom;
     try {
       mapController.move(LatLng(lat, lng), zoom);

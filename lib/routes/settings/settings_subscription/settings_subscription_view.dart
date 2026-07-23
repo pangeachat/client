@@ -7,8 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -20,7 +20,7 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
   final Widget closeButton;
-  final AsyncState<SubscriptionStatusResponse> subscriptionStatusState;
+  final SubscriptionState subscriptionState;
   final AsyncState<List<ProductPlan>> productsState;
 
   final VoidCallback reloadStatus;
@@ -31,7 +31,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   const SettingsSubscriptionView({
     super.key,
     required this.closeButton,
-    required this.subscriptionStatusState,
+    required this.subscriptionState,
     required this.productsState,
     required this.reloadStatus,
     required this.onEnterDiscountCode,
@@ -72,106 +72,103 @@ class SettingsSubscriptionView extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(
-            child: SingleChildScrollView(
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.topCenter,
               child: Container(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: 16.0,
-                    right: 16.0,
-                    bottom: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                  constraints: BoxConstraints(maxWidth: 400),
-                  child: switch (subscriptionStatusState) {
-                    AsyncLoading() || AsyncIdle() => Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                    AsyncError(error: final error) => Center(
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ErrorIndicator(
-                            message: error.toLocalizedString(context),
-                          ),
-                          IconButton(
-                            tooltip: L10n.of(context).refresh,
-                            icon: Icon(Icons.refresh),
-                            onPressed: reloadStatus,
-                          ),
-                        ],
-                      ),
-                    ),
-                    AsyncLoaded(value: final subscriptionStatus) => () {
-                      final products = switch (productsState) {
-                        AsyncLoaded(value: final products) => products,
-                        _ => const <ProductPlan>[],
-                      };
-
-                      final activeTrial = subscriptionStatus.activeTrial;
-
-                      final displayEntitlement =
-                          subscriptionStatus.cardDisplayEntitlement;
-
-                      final displayPlan = displayEntitlement?.planId != null
-                          ? products.firstWhereOrNull(
-                              (p) => p.planId == displayEntitlement?.planId,
-                            )
-                          : null;
-
-                      return Column(
-                        spacing: 20.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ProFeaturesCard(
-                            titlePadding: isColumnMode
-                                ? const EdgeInsets.all(12.0)
-                                : const EdgeInsets.all(4.0),
-                            padding: isColumnMode
-                                ? const EdgeInsets.all(24)
-                                : const EdgeInsets.symmetric(
-                                    vertical: 16,
-                                    horizontal: 24,
-                                  ),
-                          ),
-                          subscriptionStatus.isActive
-                              ? FullAccessContent(
-                                  showTrialInfo: activeTrial != null,
-                                  trialDescription: activeTrial
-                                      ?.paymentPeriodDescription(l10n),
-                                  subscriptionTitle:
-                                      displayEntitlement?.subscriptionTitle(
-                                        l10n,
-                                      ) ??
-                                      l10n.currentSubscription,
-                                  paymentPeriodDescription: displayEntitlement
-                                      ?.paymentPeriodDescription(l10n),
-                                  priceDisplay:
-                                      displayPlan?.priceDisplay ??
-                                      displayEntitlement?.priceDisplay(l10n),
-                                  manageEligible:
-                                      subscriptionStatus.manageEligible,
-                                  onTapSubscription: onTapSubscription,
-                                  productsState: productsState,
-                                  selectedSubscription: selectedSubscription,
-                                  onEnterDiscountCode: onEnterDiscountCode,
-                                )
-                              : SubscriptionOptions(
-                                  onEnterDiscountCode: onEnterDiscountCode,
-                                  onTapSubscription: onTapSubscription,
-                                  productsState: productsState,
-                                  selectedSubscription: selectedSubscription,
-                                ),
-                        ],
-                      );
-                    }(),
-                  },
+                padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  borderRadius: BorderRadius.circular(24.0),
                 ),
+                constraints: BoxConstraints(maxWidth: 400),
+                child: switch (subscriptionState) {
+                  SubscriptionLoading() => Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+                  SubscriptionError(error: final error) => Center(
+                    child: Row(
+                      spacing: 8.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ErrorIndicator(
+                          message: error.toLocalizedString(context),
+                        ),
+                        IconButton(
+                          tooltip: L10n.of(context).refresh,
+                          icon: Icon(Icons.refresh),
+                          onPressed: reloadStatus,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SubscriptionActive(response: final subscriptionStatus) ||
+                  SubscriptionInactive(
+                    response: final subscriptionStatus,
+                  ) => () {
+                    final products = switch (productsState) {
+                      AsyncLoaded(value: final products) => products,
+                      _ => const <ProductPlan>[],
+                    };
+
+                    final activeTrial = subscriptionStatus.activeTrial;
+
+                    final displayEntitlement =
+                        subscriptionStatus.cardDisplayEntitlement;
+
+                    final displayPlan = displayEntitlement?.planId != null
+                        ? products.firstWhereOrNull(
+                            (p) => p.planId == displayEntitlement?.planId,
+                          )
+                        : null;
+
+                    return Column(
+                      spacing: 20.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ProFeaturesCard(
+                          titlePadding: isColumnMode
+                              ? const EdgeInsets.all(12.0)
+                              : const EdgeInsets.all(4.0),
+                          padding: isColumnMode
+                              ? const EdgeInsets.all(24)
+                              : const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                  horizontal: 24,
+                                ),
+                        ),
+                        subscriptionStatus.isActive
+                            ? FullAccessContent(
+                                showTrialInfo: activeTrial != null,
+                                trialDescription: activeTrial
+                                    ?.paymentPeriodDescription(l10n),
+                                subscriptionTitle:
+                                    displayEntitlement?.subscriptionTitle(
+                                      l10n,
+                                    ) ??
+                                    l10n.currentSubscription,
+                                paymentPeriodDescription: displayEntitlement
+                                    ?.paymentPeriodDescription(l10n),
+                                priceDisplay:
+                                    displayPlan?.priceDisplay ??
+                                    displayEntitlement?.priceDisplay(l10n),
+                                manageEligible:
+                                    subscriptionStatus.manageEligible,
+                                onTapSubscription: onTapSubscription,
+                                productsState: productsState,
+                                selectedSubscription: selectedSubscription,
+                                onEnterDiscountCode: onEnterDiscountCode,
+                              )
+                            : SubscriptionOptions(
+                                onEnterDiscountCode: onEnterDiscountCode,
+                                onTapSubscription: onTapSubscription,
+                                productsState: productsState,
+                                selectedSubscription: selectedSubscription,
+                              ),
+                      ],
+                    );
+                  }(),
+                },
               ),
             ),
           ),
