@@ -44,6 +44,12 @@ class _LeftPanelActivityDetailsSubpageState
   String? _parentId;
   bool _loading = true;
 
+  /// Monotonic id for the in-flight parent resolve. Bumped on every
+  /// [_resolveParent]; a completion whose captured generation no longer matches
+  /// is STALE (the widget moved to a different activity) and must not write its
+  /// result, or a slow resolve for activity A could overwrite activity B's pin.
+  int _resolveGeneration = 0;
+
   @override
   void initState() {
     super.initState();
@@ -64,6 +70,11 @@ class _LeftPanelActivityDetailsSubpageState
   }
 
   Future<void> _resolveParent() async {
+    // Capture this resolve's generation + the activity it is for; a later resolve
+    // (widget changed activities) bumps the generation and any stale completion
+    // below is dropped rather than pinning the wrong activity's course.
+    final generation = ++_resolveGeneration;
+    final activityId = widget.param.activityId;
     if (widget.parentSpaceId != null) {
       setState(() {
         _parentId = widget.parentSpaceId;
@@ -83,10 +94,12 @@ class _LeftPanelActivityDetailsSubpageState
     try {
       final matches = await ActivityCourseResolver.matchingCourseSpaces(
         Matrix.of(context).client,
-        widget.param.activityId,
+        activityId,
         null,
       ).timeout(const Duration(seconds: 10));
-      if (!mounted) return;
+      // Drop a STALE completion: a newer resolve (different activity) has
+      // superseded this one, so its match must not overwrite the current pin.
+      if (!mounted || generation != _resolveGeneration) return;
       setState(() {
         // Only pin when exactly one course matches AND the match set is
         // complete; a tie — or a lone survivor of a batch where another
@@ -96,12 +109,10 @@ class _LeftPanelActivityDetailsSubpageState
         _loading = false;
       });
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'activityId': widget.param.activityId},
-      );
-      if (mounted) setState(() => _loading = false);
+      ErrorHandler.logError(e: e, s: s, data: {'activityId': activityId});
+      if (mounted && generation == _resolveGeneration) {
+        setState(() => _loading = false);
+      }
     }
   }
 

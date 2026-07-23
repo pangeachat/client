@@ -138,14 +138,16 @@ class ActivityAutoSaveService {
       // emit permanently once the gate closes on the archived role.
       final archivedAt = await room.archiveActivity();
 
-      // Best-effort dosage session outcome at the archive moment (stars bank
-      // here). Fire-and-forget; never blocks or fails the save.
-      _emitDosageSessionOutcome(room, archivedAt);
-
-      // Saved successfully: mark authoritative so a pre-sync sweep can't
-      // re-archive with a newer timestamp. On failure it stays unmarked and
-      // retries on the next role-state event or sweep.
+      // Saved successfully: mark authoritative FIRST — BEFORE any best-effort
+      // telemetry — so a pre-sync sweep can't re-archive with a newer timestamp,
+      // and a throw from the emit below can never leave a completed archive
+      // unmarked. On archive failure this line isn't reached and it retries on
+      // the next role-state event or sweep.
       _saved.add(room.id);
+
+      // Best-effort dosage session outcome at the archive moment (stars bank
+      // here). Fire-and-forget + fully guarded; never blocks or fails the save.
+      _emitDosageSessionOutcome(room, archivedAt);
 
       GoogleAnalytics.completeActivity(
         plan.activityId,
@@ -176,26 +178,34 @@ class ActivityAutoSaveService {
   /// re-read of racy room state); a null means the archive did not happen, so
   /// there is nothing to emit.
   void _emitDosageSessionOutcome(Room room, DateTime? archivedAt) {
-    // Guard + dedupe synchronously BEFORE the async LO-ref read so a racing
-    // second pass can't start a second resolve/post. Nothing to attribute (no
-    // activity id / no archived-at) doesn't burn the dedupe slot.
-    if (room.activityId == null || archivedAt == null) return;
-    if (!shouldEmitOutcome(room.id, _emittedOutcomes)) return;
+    // WHOLE body guarded: this is best-effort telemetry invoked from the save
+    // path AFTER the archive is marked, so even its synchronous setup (room
+    // field reads, dedupe) must never throw into the save flow.
+    try {
+      // Guard + dedupe synchronously BEFORE the async LO-ref read so a racing
+      // second pass can't start a second resolve/post. Nothing to attribute (no
+      // activity id / no archived-at) doesn't burn the dedupe slot.
+      if (room.activityId == null || archivedAt == null) return;
+      if (!shouldEmitOutcome(room.id, _emittedOutcomes)) return;
 
-    unawaited(
-      () async {
-        final outcome = await resolveSessionOutcome(
-          room: room,
-          archivedAt: archivedAt,
-          loRefsResolver: _loRefsResolver,
-        );
-        if (outcome == null) return;
-        await DosageSignalsRepo.postSessionOutcomes(
-          outcomes: [outcome],
-          accessToken: client.accessToken,
-        );
-      }().catchError((_) {}),
-    );
+      unawaited(
+        () async {
+          final outcome = await resolveSessionOutcome(
+            room: room,
+            archivedAt: archivedAt,
+            loRefsResolver: _loRefsResolver,
+          );
+          if (outcome == null) return;
+          await DosageSignalsRepo.postSessionOutcomes(
+            outcomes: [outcome],
+            accessToken: client.accessToken,
+          );
+        }().catchError((_) {}),
+      );
+    } catch (e, s) {
+      // Best-effort telemetry — never disturb the save that already committed.
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
+    }
   }
 
   /// Resolves the dosage session-outcome for [room] at [archivedAt], or null
