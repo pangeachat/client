@@ -1028,11 +1028,6 @@ class _WorldMapViewState extends State<WorldMapView> {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
 
-    final attributionsLeft = 0.0;
-    final attributionsBottom = FluffyThemes.isColumnMode(context)
-        ? 0.0
-        : _narrowBottomChromeInset;
-
     // Resolve which pins to draw and each one's tier/state/pinged/star-tier once
     // per frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
@@ -1133,41 +1128,48 @@ class _WorldMapViewState extends State<WorldMapView> {
                 MarkerLayer(markers: _exitingLargeMarkers()),
                 // Large cards (always visible): the featured cards the width affords.
                 MarkerLayer(markers: _largeMarkers(render, currentLarge)),
-                // Make a background, so attributions stand out in dark mode
-                Positioned(
-                  left: attributionsLeft,
-                  bottom: attributionsBottom,
-                  child: Padding(
-                    padding: .all(PlatformInfos.isMobile ? 12 : 8),
-                    child: Container(
-                      height: 32,
-                      width: 32,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(130, 135, 135, 135),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
                 Positioned(
                   // On a narrow screen the bottom chrome (nav widget + the search bar
                   // riding above it) owns the bottom edge, so lift the attribution
                   // above it — otherwise it sits unreadable UNDER the floating rail
                   // (#7218 on narrow).
-                  left: attributionsLeft,
-                  bottom: attributionsBottom,
-                  child: RichAttributionWidget(
-                    // #7218: bottom-LEFT so the attribution and its expand popup don't
-                    // sit under the bottom-right zoom/World controls (where it was
-                    // covered and hard to read, especially in dark mode).
-                    alignment: AttributionAlignment.bottomLeft,
-                    attributions: [
-                      TextSourceAttribution(
-                        'OpenStreetMap contributors',
-                        onTap: () {},
-                      ),
-                      if (dark) TextSourceAttribution('CARTO', onTap: () {}),
-                    ],
+                  left: 0,
+                  bottom: FluffyThemes.isColumnMode(context)
+                      ? 0.0
+                      : _narrowBottomChromeInset,
+                  child: SafeArea(
+                    child: Stack(
+                      children: [
+                        // Background so attributions button
+                        // is visible in dark mode
+                        Positioned(
+                          left: PlatformInfos.isMobile ? 12 : 8,
+                          bottom: PlatformInfos.isMobile ? 12 : 8,
+                          child: Container(
+                            height: 32,
+                            width: 32,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(130, 135, 135, 135),
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                        RichAttributionWidget(
+                          // #7218: bottom-LEFT so the attribution and its expand popup don't
+                          // sit under the bottom-right zoom/World controls (where it was
+                          // covered and hard to read, especially in dark mode).
+                          alignment: AttributionAlignment.bottomLeft,
+                          attributions: [
+                            TextSourceAttribution(
+                              'OpenStreetMap contributors',
+                              onTap: () {},
+                            ),
+                            if (dark)
+                              TextSourceAttribution('CARTO', onTap: () {}),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
