@@ -1137,14 +1137,16 @@ class _WorldMapViewState extends State<WorldMapView> {
                 Positioned(
                   left: attributionsLeft,
                   bottom: attributionsBottom,
-                  child: Padding(
-                    padding: .all(PlatformInfos.isMobile ? 12 : 8),
-                    child: Container(
-                      height: 32,
-                      width: 32,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(130, 135, 135, 135),
-                        shape: BoxShape.circle,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: .all(PlatformInfos.isMobile ? 12 : 8),
+                      child: Container(
+                        height: 32,
+                        width: 32,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(130, 135, 135, 135),
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ),
                   ),
