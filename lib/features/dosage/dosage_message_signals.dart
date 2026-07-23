@@ -44,15 +44,25 @@ class DosageMessageSignals {
   /// no-op.
   static Future<void> ensureDosageEnvLoaded() {
     if (dotenv.isInitialized) return Future.value();
-    return _envLoad ??= () async {
+    // Single-flight on the RAW loader: coalesce concurrent callers onto ONE
+    // underlying load and clear the latch only when that raw load actually
+    // SETTLES. The per-caller timeout is applied as a separate VIEW below, never
+    // to the latched future itself — otherwise a timed-out view would clear the
+    // latch while the real load is still running and let a second caller kick
+    // off a duplicate concurrent load.
+    final raw = _envLoad ??= () async {
       try {
-        await envLoader().timeout(const Duration(seconds: 5));
+        await envLoader();
       } catch (_) {
-        // Best-effort: a failed/slow load just leaves the flags unloaded.
+        // Best-effort: a failed load just leaves the flags unloaded.
       } finally {
         _envLoad = null;
       }
     }();
+    // Each caller awaits its OWN 5s-bounded view of the shared load, so a slow
+    // `.env` read never hangs a caller (e.g. a notification reply) while still
+    // running exactly one real load.
+    return raw.timeout(const Duration(seconds: 5), onTimeout: () {});
   }
 
   /// Clears the single-flight env latch (tests only).
@@ -115,17 +125,20 @@ class DosageMessageSignals {
         accessToken: accessToken,
       );
     } catch (e, s) {
-      // Even the error report is best-effort: Sentry may be uninitialised in a
-      // bare background isolate, so logging must not throw into the send flow.
-      try {
+      // Even the error report is best-effort. ErrorHandler.logError is async, so
+      // a Sentry failure (e.g. uninitialised in a bare background isolate)
+      // surfaces as a REJECTED future, which a synchronous try/catch can't
+      // observe — attach catchError and detach it so it can never reach the
+      // send flow as an unhandled error.
+      unawaited(
         ErrorHandler.logError(
           e: e,
           s: s,
           level: SentryLevel.warning,
           m: "Best-effort dosage emit failed (swallowed)",
           data: {"roomId": roomId},
-        );
-      } catch (_) {}
+        ).catchError((_) {}),
+      );
     }
   }
 
