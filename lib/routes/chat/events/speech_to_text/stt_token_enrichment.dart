@@ -252,18 +252,24 @@ buildVoiceAnalyticsRecorder({
 /// touches a widget `BuildContext`, so it is LIFECYCLE-INDEPENDENT -- navigating
 /// away before [enrich] resolves still records analytics.
 ///
-/// Ordering (PHASE1-SPEC D7):
+/// Flow (PHASE1-SPEC D7):
 ///  0. If [baseStt] has no usable transcript (exhausted-fallback): no-op.
-///  1. [resolveSenderId] -- the sent event's real sender, looked up here inside
-///     a catch: a DB/network/decryption throw routes to [onError] and leaves
-///     senderId null (-> not own -> no record), never escaping.
-///  2. [enrich] -- the single tokenize step. On failure nothing else runs.
-///  3. [recordAnalytics] fires ONCE, only when [isOwnSender]([senderId],
-///     [clientUserId]), gated on ENRICH success -- NOT attach.
-///  4. [showFeedback] (optional) -- best-effort visual, own catch, NEVER
-///     affects the record above and never escapes.
-///  5. [attach] best-effort; a null/failed return only affects later display
-///     repair, never analytics.
+///  1. [enrich] -- the SINGLE hard dependency; it produces richStt. On failure
+///     nothing else runs (no attach, no analytics).
+///  2. After enrich, TWO INDEPENDENT branches run CONCURRENTLY, each fully
+///     self-guarded so neither can reject and NEITHER GATES THE OTHER:
+///     (A) [attach] -- persist the tokens (the user-facing result). A null/
+///         failed return only affects later display repair, never analytics.
+///     (B) the own-message analytics chain: [resolveSenderId] is resolved HERE
+///         (its only consumer is the own-ness gate, so a stalled lookup can't
+///         affect (A)); a DB/network/decryption throw routes to [onError] and
+///         leaves senderId null (-> not own -> no record). Then, only when
+///         [isOwnSender]([senderId], [clientUserId]), [recordAnalytics] fires
+///         ONCE, followed by the optional best-effort [showFeedback] (own catch,
+///         never affects the record).
+/// A hung [attach] cannot block (B); a stalled [resolveSenderId]/
+/// [recordAnalytics] cannot block (A). The coordinator is fire-and-forget
+/// (called unawaited), so a single hung branch only leaves that branch pending.
 Future<void> runVoiceTranscriptEnrichment({
   required SpeechToTextResponseModel baseStt,
   required SttLangSnapshot snapshot,
@@ -288,15 +294,8 @@ Future<void> runVoiceTranscriptEnrichment({
   // all background work rather than crashing on the missing transcript.
   if (!baseStt.hasUsableTranscript) return;
 
-  // Real-event sender lookup, owned + guarded here: a throw must not escape the
-  // fire-and-forget. On failure senderId stays null -> not own -> no record.
-  String? senderId;
-  try {
-    senderId = await resolveSenderId();
-  } catch (e, s) {
-    safeOnError(e, s);
-  }
-
+  // enrich is the SINGLE hard dependency: it produces richStt. On failure,
+  // nothing else runs (no attach, no analytics).
   final SpeechToTextResponseModel richStt;
   try {
     richStt = await enrich(baseStt, snapshot);
@@ -305,18 +304,27 @@ Future<void> runVoiceTranscriptEnrichment({
     return;
   }
 
-  // Persist the tokens FIRST -- this is the user-facing result. Attach must NOT
-  // be gated on the best-effort analytics/feedback below: a slow recorder would
-  // delay token persistence, and a hanging one would prevent it entirely.
-  // recordAnalytics/showFeedback take richStt and are independent of attach, so
-  // running them AFTER the attach is safe.
-  try {
-    await attach(richStt);
-  } catch (e, s) {
-    safeOnError(e, s);
+  // (A) Persist the tokens -- the user-facing result. Fully self-guarded so it
+  // cannot reject; runs independently of the analytics chain below.
+  Future<void> guardedAttach() async {
+    try {
+      await attach(richStt);
+    } catch (e, s) {
+      safeOnError(e, s);
+    }
   }
 
-  if (isOwnSender(senderId, clientUserId)) {
+  // (B) The own-message analytics chain. The real-event sender lookup lives HERE
+  // (its only consumer is the own-ness gate), so a stalled/hanging lookup can
+  // never affect (A). Fully self-guarded so it cannot reject.
+  Future<void> guardedAnalyticsChain() async {
+    String? senderId;
+    try {
+      senderId = await resolveSenderId();
+    } catch (e, s) {
+      safeOnError(e, s);
+    }
+    if (!isOwnSender(senderId, clientUserId)) return;
     try {
       await recordAnalytics(richStt);
     } catch (e, s) {
@@ -333,4 +341,11 @@ Future<void> runVoiceTranscriptEnrichment({
       }
     }
   }
+
+  // Launch both branches CONCURRENTLY so neither gates the other: a hung attach
+  // cannot block the analytics chain, and a stalled sender-lookup/recorder
+  // cannot block token persistence. Each branch is self-guarded, so this wait
+  // can never reject; when a branch hangs the coordinator's own future stays
+  // pending, which is fine -- it is called unawaited (fire-and-forget).
+  await Future.wait([guardedAttach(), guardedAnalyticsChain()]);
 }
