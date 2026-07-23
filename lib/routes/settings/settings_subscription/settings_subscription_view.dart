@@ -145,6 +145,8 @@ class SettingsSubscriptionView extends StatelessWidget {
                                 showTrialInfo: activeTrial != null,
                                 trialDescription: activeTrial
                                     ?.paymentPeriodDescription(l10n),
+                                showSubscriptionCard: !subscriptionStatus
+                                    .onlyActiveEntitlementIsTrial,
                                 subscriptionTitle:
                                     displayEntitlement?.subscriptionTitle(
                                       l10n,
@@ -161,6 +163,8 @@ class SettingsSubscriptionView extends StatelessWidget {
                                 productsState: productsState,
                                 selectedSubscription: selectedSubscription,
                                 onEnterDiscountCode: onEnterDiscountCode,
+                                showSubscriptionOptions: subscriptionStatus
+                                    .onlyActiveEntitlementIsTrial,
                               )
                             : switch (purchasePresentation) {
                                 PurchasePresentation.full =>
