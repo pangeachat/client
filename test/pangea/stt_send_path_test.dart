@@ -101,41 +101,80 @@ void main() {
       expect(analyticsCalls, 1);
     });
 
-    test('SHOULD-FIX (order): attach persists tokens BEFORE the best-effort '
-        'recordAnalytics, so a slow/hanging recorder cannot delay or block token '
-        'persistence', () async {
-      final attachDone = Completer<void>();
-      final releaseRecord = Completer<void>();
+    test(
+      'INDEPENDENCE (i): a never-completing ATTACH does NOT block the analytics '
+      'chain -- record still runs to completion',
+      () async {
+        final neverAttach = Completer<void>(); // gate: attach hangs forever
+        final recorded = Completer<void>();
 
-      // recordAnalytics blocks until we release it -- and we only release it
-      // AFTER observing attach completed. If the coordinator ran record
-      // BEFORE attach, this deadlocks (attach never runs) -> the timeout below
-      // fails -> RED. With attach FIRST, attachDone completes promptly.
-      final future = runVoiceTranscriptEnrichment(
-        baseStt: _skipTokenizeBase(),
-        snapshot: _snapshot,
-        resolveSenderId: _ownSender,
-        clientUserId: _me,
-        enrich: (b, _) async =>
-            b.withFirstTranscriptTokens([STTToken(token: _token('hola', 0))]),
-        recordAnalytics: (_) => releaseRecord.future,
-        attach: (_) async {
-          attachDone.complete();
-          return null;
-        },
-      );
+        // Fire-and-forget: do NOT await the coordinator (it stays pending on the
+        // hung attach branch). We assert only that the OTHER branch completed.
+        unawaited(
+          runVoiceTranscriptEnrichment(
+            baseStt: _skipTokenizeBase(),
+            snapshot: _snapshot,
+            resolveSenderId: _ownSender,
+            clientUserId: _me,
+            enrich: (b, _) async => b.withFirstTranscriptTokens([
+              STTToken(token: _token('hola', 0)),
+            ]),
+            recordAnalytics: (_) async => recorded.complete(),
+            attach: (_) async {
+              await neverAttach.future;
+              return null;
+            },
+          ),
+        );
 
-      await attachDone.future.timeout(
-        const Duration(seconds: 5),
-        onTimeout: () =>
-            fail('attach was gated on the hung recordAnalytics (wrong order)'),
-      );
-      expect(attachDone.isCompleted, isTrue);
+        // Teeth: a sequential attach-then-analytics chain would gate record on
+        // the hung attach -> recorded never completes -> timeout -> RED.
+        await recorded.future.timeout(
+          const Duration(seconds: 5),
+          onTimeout: () => fail(
+            'analytics was gated on the hung attach (branches not independent)',
+          ),
+        );
+        expect(recorded.isCompleted, isTrue);
+      },
+    );
 
-      // Release so the coordinator future completes cleanly (no dangling).
-      releaseRecord.complete();
-      await future;
-    });
+    test(
+      'INDEPENDENCE (ii): a never-completing SENDER LOOKUP does NOT block attach '
+      '-- token persistence still completes',
+      () async {
+        final neverLookup = Completer<String?>(); // resolveSenderId hangs
+        final attached = Completer<void>();
+
+        unawaited(
+          runVoiceTranscriptEnrichment(
+            baseStt: _skipTokenizeBase(),
+            snapshot: _snapshot,
+            resolveSenderId: () => neverLookup.future,
+            clientUserId: _me,
+            enrich: (b, _) async => b.withFirstTranscriptTokens([
+              STTToken(token: _token('hola', 0)),
+            ]),
+            recordAnalytics: (_) async {},
+            attach: (_) async {
+              attached.complete();
+              return null;
+            },
+          ),
+        );
+
+        // Teeth: a sender lookup that gates enrich/attach (or an analytics-first
+        // chain) would leave attach unrun -> attached never completes -> RED.
+        await attached.future.timeout(
+          const Duration(seconds: 5),
+          onTimeout: () => fail(
+            'attach was gated on the hung sender lookup (branches not '
+            'independent)',
+          ),
+        );
+        expect(attached.isCompleted, isTrue);
+      },
+    );
 
     test(
       'BLOCKER guard: an exhausted-fallback (empty results) baseStt is a total '
