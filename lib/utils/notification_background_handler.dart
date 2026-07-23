@@ -189,23 +189,22 @@ Future<void> notificationTap(
           );
 
           // A notification quick-reply is a genuine learner text turn, so it
-          // emits the dosage message-envelope + engagement signals once the
-          // event id resolves — same send-then-POST as the composer. Safe in
-          // this handler either isolate: when the main isolate is down and this
-          // runs in the notification background isolate (vm:entry-point), the
-          // dosage flags aren't initialized, so isEnabled reads the gate as OFF
-          // and the emitter no-ops WITHOUT throwing; in the main isolate it
-          // lands live. The A.3 server backfill remains the net for the
-          // background-isolate case where a live emit can't be sent.
+          // emits the dosage message-envelope once the event id resolves.
           // Load the dosage env into this isolate first: the background
           // notification isolate boots without `.env`, so without this the emit
           // below would read the flags as unloaded and no-op. Idempotent in the
           // main isolate; best-effort, never blocks the reply.
           await DosageMessageSignals.ensureDosageEnvLoaded();
-          DosageMessageSignals.emitForSentMessage(
+          // AWAIT the envelope POST. When the main isolate is down this runs in
+          // the notification background isolate (vm:entry-point), which disposes
+          // its client in the `finally` right after this returns — a
+          // fire-and-forget emit would be dropped before the POST lands, so the
+          // POST is awaited (bounded by the repo timeout, fully swallowed) to
+          // complete first. Envelope only: the background isolate has no
+          // lifecycle to flush an engagement span. When the dosage flags are
+          // off (or uninitialised), the repo gate no-ops WITHOUT throwing.
+          await DosageMessageSignals.emitReplyEnvelope(
             roomId: room.id,
-            userId: room.client.userID,
-            deviceId: room.client.deviceID,
             accessToken: room.client.accessToken,
             msgEventId: eventId,
             body: input,

@@ -29,18 +29,35 @@ class DosageMessageSignals {
   @visibleForTesting
   static Future<void> Function() envLoader = EnvLoader.load;
 
+  /// The single in-flight env load for this isolate, so concurrent first-emits
+  /// coalesce onto ONE load instead of racing N parallel `.env` reads. Cleared
+  /// once the load settles, so a failed load can be retried by a later emit.
+  static Future<void>? _envLoad;
+
   /// Ensures the dosage env flags are loaded in this isolate before an emit.
   /// dotenv is PER-ISOLATE, so the notification background isolate — which boots
   /// a bare client without loading `.env` — would otherwise read the flags as
   /// unloaded and no-op every emit. Idempotent (no-op once loaded, e.g. in the
-  /// main isolate) and best-effort: a load failure just leaves the emit a no-op,
-  /// never breaks the notification reply.
-  static Future<void> ensureDosageEnvLoaded() async {
-    try {
-      if (dotenv.isInitialized) return;
-      await envLoader();
-    } catch (_) {}
+  /// main isolate), single-flight (coalesced), and best-effort: the load is
+  /// TIME-BOXED and swallowed so a slow or failing `.env` read can never hang or
+  /// throw into the caller (a notification reply) — it just leaves the emit a
+  /// no-op.
+  static Future<void> ensureDosageEnvLoaded() {
+    if (dotenv.isInitialized) return Future.value();
+    return _envLoad ??= () async {
+      try {
+        await envLoader().timeout(const Duration(seconds: 5));
+      } catch (_) {
+        // Best-effort: a failed/slow load just leaves the flags unloaded.
+      } finally {
+        _envLoad = null;
+      }
+    }();
   }
+
+  /// Clears the single-flight env latch (tests only).
+  @visibleForTesting
+  static void debugResetEnvLoad() => _envLoad = null;
 
   static void emitForSentMessage({
     required String roomId,
@@ -98,13 +115,56 @@ class DosageMessageSignals {
         accessToken: accessToken,
       );
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        level: SentryLevel.warning,
-        m: "Best-effort dosage emit failed (swallowed)",
-        data: {"roomId": roomId},
+      // Even the error report is best-effort: Sentry may be uninitialised in a
+      // bare background isolate, so logging must not throw into the send flow.
+      try {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          level: SentryLevel.warning,
+          m: "Best-effort dosage emit failed (swallowed)",
+          data: {"roomId": roomId},
+        );
+      } catch (_) {}
+    }
+  }
+
+  /// AWAITABLE, bounded, never-throw emit of JUST the message envelope for a
+  /// notification reply. The notification handler AWAITS this so a short-lived
+  /// background isolate — which tears down its client right after the reply —
+  /// doesn't finish before the POST lands (a fire-and-forget emit there is
+  /// silently dropped when the isolate ends).
+  ///
+  /// Envelope only, no engagement tick: the background isolate has its own
+  /// (isolate-local) tracker registry with no lifecycle to flush a span, and a
+  /// single reply's engagement is negligible against the message envelope. The
+  /// POST is bounded by the repo's per-request timeout and fully swallowed, so
+  /// this never blocks or breaks the reply.
+  static Future<void> emitReplyEnvelope({
+    required String roomId,
+    required String? accessToken,
+    required String? msgEventId,
+    required String body,
+    http.Client? client,
+  }) async {
+    try {
+      // A blank/placeholder id means the reply send didn't resolve; count
+      // nothing (mirrors [emitForSentMessage]'s id guard).
+      if (msgEventId == null || msgEventId.trim().isEmpty) return;
+      await DosageSignalsRepo.postMessageEvents(
+        events: [
+          DosageMessageEvent.fromSentMessage(
+            roomId: roomId,
+            msgId: msgEventId,
+            ts: DateTime.now(),
+            body: body,
+          ),
+        ],
+        accessToken: accessToken,
+        client: client,
       );
+    } catch (_) {
+      // Best-effort — never block or break the notification reply.
     }
   }
 
@@ -155,20 +215,25 @@ class DosageMessageSignals {
       // never throw into its fire-and-forget caller.
       return;
     }
-    if (!isResendableLearnerText(event.messageType)) return;
-    emitForSentMessage(
-      roomId: event.room.id,
-      userId: event.room.client.userID,
-      deviceId: event.room.client.deviceID,
-      accessToken: event.room.client.accessToken,
-      msgEventId: resolvedId,
-      body: learnerText(event.content),
-      editEventId: event.relationshipType == RelationshipTypes.edit
-          ? event.eventId
-          : null,
-      client: client,
-      tracker: tracker,
-    );
+    // The resend already succeeded above; the dosage emit is pure telemetry and
+    // must never disturb it, so the whole emit (argument reads included) is
+    // guarded and swallowed.
+    try {
+      if (!isResendableLearnerText(event.messageType)) return;
+      emitForSentMessage(
+        roomId: event.room.id,
+        userId: event.room.client.userID,
+        deviceId: event.room.client.deviceID,
+        accessToken: event.room.client.accessToken,
+        msgEventId: resolvedId,
+        body: learnerText(event.content),
+        editEventId: event.relationshipType == RelationshipTypes.edit
+            ? event.eventId
+            : null,
+        client: client,
+        tracker: tracker,
+      );
+    } catch (_) {}
   }
 
   /// Emits the message envelope for a FORWARDED message's content (a
@@ -188,16 +253,20 @@ class DosageMessageSignals {
     } catch (_) {
       return;
     }
-    if (content['msgtype'] != MessageTypes.Text) return;
-    emitForSentMessage(
-      roomId: room.id,
-      userId: room.client.userID,
-      deviceId: room.client.deviceID,
-      accessToken: room.client.accessToken,
-      msgEventId: resolvedId,
-      body: learnerText(content),
-      client: client,
-      tracker: tracker,
-    );
+    // The forward already sent above; the dosage emit is pure telemetry and must
+    // never disturb it, so the whole emit is guarded and swallowed.
+    try {
+      if (content['msgtype'] != MessageTypes.Text) return;
+      emitForSentMessage(
+        roomId: room.id,
+        userId: room.client.userID,
+        deviceId: room.client.deviceID,
+        accessToken: room.client.accessToken,
+        msgEventId: resolvedId,
+        body: learnerText(content),
+        client: client,
+        tracker: tracker,
+      );
+    } catch (_) {}
   }
 }

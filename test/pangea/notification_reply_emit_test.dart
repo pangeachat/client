@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -138,4 +139,48 @@ void main() {
       expect((envelopes.single['msg_id'] as String), isNotEmpty);
     },
   );
+
+  test('notificationTap AWAITS the envelope POST before returning', () async {
+    // The background notification isolate disposes its client the instant
+    // notificationTap returns, so a fire-and-forget emit would be dropped
+    // before the POST lands. Gate the POST open and prove notificationTap does
+    // NOT return while it is still in flight.
+    final gate = Completer<void>();
+    var postSeen = false;
+    DosageSignalsRepo.clientFactory = () => MockClient((req) async {
+      if (req.url.path.contains('/dosage/message-events')) {
+        postSeen = true;
+        posts.add(req);
+        await gate.future; // hold the response open
+      }
+      return http.Response('', 202);
+    });
+
+    final tap = notificationTap(replyResponse('hola mundo'), client: client);
+    var tapDone = false;
+    unawaited(tap.then((_) => tapDone = true));
+
+    // Let the send + the emit's POST get issued, but keep the POST open.
+    await pumpEventQueue();
+    expect(
+      postSeen,
+      isTrue,
+      reason: 'the reply must have issued the envelope POST',
+    );
+    expect(
+      tapDone,
+      isFalse,
+      reason:
+          'notificationTap must AWAIT the POST — it must not return while '
+          'the POST is still in flight (a bg isolate would tear down first)',
+    );
+
+    gate.complete();
+    await tap;
+    expect(
+      tapDone,
+      isTrue,
+      reason: 'once the POST completes, notificationTap returns',
+    );
+  });
 }
