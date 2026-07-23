@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:38.007196",
+    "@@last_modified": "2026-07-23 11:49:02.689015",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9796,5 +9796,7 @@
     "joinCourseWithTitle": "加入「{title}」",
     "searchCoursePlans": "搜尋課程計畫",
     "searchPublicCourses": "搜尋公開課程",
-    "closeSearch": "關閉搜尋"
+    "closeSearch": "關閉搜尋",
+    "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
+    "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱"
 }

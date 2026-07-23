@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-21 13:05:36.000357",
+    "@@last_modified": "2026-07-23 11:49:00.454788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Auai i le \"{title}\"",
     "searchCoursePlans": "Su'e fuafuaga o kosi",
     "searchPublicCourses": "Su'e kosi lautele",
-    "closeSearch": "Tapuni le su'esu'ega"
+    "closeSearch": "Tapuni le su'esu'ega",
+    "subscriptionsNotAvailableInApp": "E le mafai ona fa'atau saofaga i totonu o le app",
+    "subscribeOnTheWeb": "E mafai ona e lesitala i luga o le upega tafa'ilagi i le pangea.chat"
 }

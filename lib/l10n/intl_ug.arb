@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-21 13:05:37.222659",
+    "@@last_modified": "2026-07-23 11:49:01.957342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "\"{title}\" گە قاتناش",
     "searchCoursePlans": "دەرس پىلانلىرىنى ئىزدەش",
     "searchPublicCourses": "ئاممىۋى دەرسلەرنى ئىزدەش",
-    "closeSearch": "ئىزدەشنى تاقا"
+    "closeSearch": "ئىزدەشنى تاقا",
+    "subscriptionsNotAvailableInApp": "ئەپ ئىچىدە مۇشتەرىلىك سېتىۋالغىلى بولمايدۇ",
+    "subscribeOnTheWeb": "pangea.chat تور بېتى ئارقىلىق مۇشتەرى بولالايسىز"
 }

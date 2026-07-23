@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-21 13:05:37.822201",
+    "@@last_modified": "2026-07-23 11:49:01.415427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Ба \"{title}\" ҳамроҳ шавед",
     "searchCoursePlans": "Ҷустуҷӯи нақшаҳои курсӣ",
     "searchPublicCourses": "Ҷустуҷӯи курсҳои оммавӣ",
-    "closeSearch": "Ҷустуҷӯро пӯшед"
+    "closeSearch": "Ҷустуҷӯро пӯшед",
+    "subscriptionsNotAvailableInApp": "Обунаҳоро дар дохили барнома харидан мумкин нест",
+    "subscribeOnTheWeb": "Шумо метавонед дар вебсайт дар pangea.chat обуна шавед"
 }

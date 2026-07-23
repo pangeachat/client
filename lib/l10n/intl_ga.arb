@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-21 13:05:30.848753",
+    "@@last_modified": "2026-07-23 11:48:54.840236",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9701,5 +9701,7 @@
     "joinCourseWithTitle": "Bí páirteach i \"{title}\"",
     "searchCoursePlans": "Cuardaigh pleananna cúrsaí",
     "searchPublicCourses": "Cuardaigh cúrsaí poiblí",
-    "closeSearch": "Dún an cuardach"
+    "closeSearch": "Dún an cuardach",
+    "subscriptionsNotAvailableInApp": "Ní féidir síntiúis a cheannach san aip",
+    "subscribeOnTheWeb": "Is féidir leat síntiús a ghlacadh ar an ngréasán ag pangea.chat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-21 13:05:37.409565",
+    "@@last_modified": "2026-07-23 11:49:01.553791",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,7 @@
     "joinCourseWithTitle": "Приєднатися до «{title}»",
     "searchCoursePlans": "Шукати плани курсів",
     "searchPublicCourses": "Шукати публічні курси",
-    "closeSearch": "Закрити пошук"
+    "closeSearch": "Закрити пошук",
+    "subscriptionsNotAvailableInApp": "Підписки недоступні в застосунку",
+    "subscribeOnTheWeb": "Ви можете підписатися на сайті pangea.chat"
 }

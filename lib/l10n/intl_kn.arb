@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-21 13:05:33.367493",
+    "@@last_modified": "2026-07-23 11:48:56.845057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "\"{title}\" ಸೇರಿಕೊಳ್ಳಿ",
     "searchCoursePlans": "ಕೋರ್ಸ್ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ",
     "searchPublicCourses": "ಸಾರ್ವಜನಿಕ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
-    "closeSearch": "ಹುಡುಕಾಟವನ್ನು ಮುಚ್ಚಿ"
+    "closeSearch": "ಹುಡುಕಾಟವನ್ನು ಮುಚ್ಚಿ",
+    "subscriptionsNotAvailableInApp": "ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಚಂದಾದಾರಿಕೆಗಳನ್ನು ಖರೀದಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ",
+    "subscribeOnTheWeb": "ನೀವು pangea.chat ನಲ್ಲಿ ವೆಬ್‌ನಲ್ಲಿ ಚಂದಾದಾರರಾಗಬಹುದು"
 }

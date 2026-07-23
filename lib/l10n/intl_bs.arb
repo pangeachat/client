@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-21 13:05:29.096283",
+    "@@last_modified": "2026-07-23 11:48:52.573841",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Pridruži se \"{title}\"",
     "searchCoursePlans": "Pretražite planove kurseva",
     "searchPublicCourses": "Pretražite javne kurseve",
-    "closeSearch": "Zatvori pretragu"
+    "closeSearch": "Zatvori pretragu",
+    "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
+    "subscribeOnTheWeb": "Možete se pretplatiti na webu na pangea.chat"
 }

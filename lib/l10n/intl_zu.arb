@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-21 13:05:38.684746",
+    "@@last_modified": "2026-07-23 11:49:02.413261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Joyina \"{title}\"",
     "searchCoursePlans": "Sesha izinhlelo zezifundo",
     "searchPublicCourses": "Sesha izifundo zomphakathi",
-    "closeSearch": "Vala usesho"
+    "closeSearch": "Vala usesho",
+    "subscriptionsNotAvailableInApp": "Okubhaliselwe akutholakali kuhlelo lokusebenza",
+    "subscribeOnTheWeb": "Ungabhalisa kuwebhu ku-pangea.chat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-21 13:05:29.908411",
+    "@@last_modified": "2026-07-23 11:48:54.049813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "Ymuno â \"{title}\"",
     "searchCoursePlans": "Chwilio cynlluniau cwrs",
     "searchPublicCourses": "Chwilio cyrsiau cyhoeddus",
-    "closeSearch": "Cau'r chwiliad"
+    "closeSearch": "Cau'r chwiliad",
+    "subscriptionsNotAvailableInApp": "Ni ellir prynu tanysgrifiadau yn yr ap",
+    "subscribeOnTheWeb": "Gallwch danysgrifio ar y we yn pangea.chat"
 }

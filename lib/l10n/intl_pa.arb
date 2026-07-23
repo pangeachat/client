@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-21 13:05:34.917366",
+    "@@last_modified": "2026-07-23 11:48:59.515531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "\"{title}\" ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
     "searchCoursePlans": "ਕੋਰਸ ਯੋਜਨਾਵਾਂ ਖੋਜੋ",
     "searchPublicCourses": "ਜਨਤਕ ਕੋਰਸ ਖੋਜੋ",
-    "closeSearch": "ਖੋਜ ਬੰਦ ਕਰੋ"
+    "closeSearch": "ਖੋਜ ਬੰਦ ਕਰੋ",
+    "subscriptionsNotAvailableInApp": "ਐਪ ਵਿੱਚ ਗਾਹਕੀ ਖਰੀਦੀ ਨਹੀਂ ਜਾ ਸਕਦੀ",
+    "subscribeOnTheWeb": "ਤੁਸੀਂ pangea.chat 'ਤੇ ਵੈੱਬ 'ਤੇ ਗਾਹਕੀ ਲੈ ਸਕਦੇ ਹੋ"
 }

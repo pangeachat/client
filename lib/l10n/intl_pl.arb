@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-21 13:05:35.360239",
+    "@@last_modified": "2026-07-23 11:48:59.127087",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9775,5 +9775,7 @@
     "joinCourseWithTitle": "Dołącz do „{title}”",
     "searchCoursePlans": "Szukaj planów kursów",
     "searchPublicCourses": "Szukaj kursów publicznych",
-    "closeSearch": "Zamknij wyszukiwanie"
+    "closeSearch": "Zamknij wyszukiwanie",
+    "subscriptionsNotAvailableInApp": "Subskrypcje nie są dostępne w aplikacji",
+    "subscribeOnTheWeb": "Możesz subskrybować w sieci pod adresem pangea.chat"
 }

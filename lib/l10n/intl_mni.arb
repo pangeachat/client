@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-21 13:05:33.985331",
+    "@@last_modified": "2026-07-23 11:48:59.482033",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2036,5 +2036,7 @@
     "joinCourseWithTitle": "\"{title}\"দা শরুক য়াদুনা",
     "searchCoursePlans": "কোর্স প্লানশিং থিজিনবা",
     "searchPublicCourses": "পাবলিক কোর্সশিং থিজিনবা",
-    "closeSearch": "থিজিনবা থমজিনবা"
+    "closeSearch": "থিজিনবা থমজিনবা",
+    "subscriptionsNotAvailableInApp": "ꯁꯕꯁꯛꯔꯤꯞꯁꯟꯁ ꯑꯦꯞ ꯑꯁꯤꯗ ꯂꯩꯕ ꯉꯃꯗꯦ",
+    "subscribeOnTheWeb": "ꯅꯍꯥꯛꯅ pangea.chat ꯇ ꯋꯦꯕ ꯑꯁꯤꯗ ꯁꯕꯁꯛꯔꯥꯏꯕ ꯇꯧꯕ ꯌꯥꯏ"
 }

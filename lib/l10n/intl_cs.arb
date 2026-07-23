@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-21 13:05:30.168706",
+    "@@last_modified": "2026-07-23 11:48:53.669583",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10184,5 +10184,7 @@
     "joinCourseWithTitle": "Připojit se k „{title}“",
     "searchCoursePlans": "Hledat plány kurzů",
     "searchPublicCourses": "Hledat veřejné kurzy",
-    "closeSearch": "Zavřít hledání"
+    "closeSearch": "Zavřít hledání",
+    "subscriptionsNotAvailableInApp": "Předplatné nelze zakoupit v aplikaci",
+    "subscribeOnTheWeb": "Předplatit si můžete na webu pangea.chat"
 }
