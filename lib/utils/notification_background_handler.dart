@@ -76,52 +76,56 @@ void notificationTapBackground(
     AppConfig.pushIsolatePortName,
   );
 
-  if (!_vodInitialized) {
-    await vod.init();
-    _vodInitialized = true;
-  }
-  final store = await AppSettings.init();
-  final clients = await ClientManager.getClients(
-    initialize: false,
-    store: store,
-  );
-  // Select the account the notification is FOR — its payload carries the
-  // clientName — by EXACT match only. Never fall back to the first (or sole)
-  // client: a stale notification for a logged-out account A must not be sent (or
-  // dosage-attributed) as the remaining account B when B happens to know the
-  // room. A missing/blank/mismatched clientName is ignored rather than acting as
-  // another account.
-  final payloadClientName = FluffyChatPushPayload.fromString(
-    notificationResponse.payload ?? '',
-  ).clientName;
-  final client = (payloadClientName == null || payloadClientName.isEmpty)
-      ? null
-      : clients.firstWhereOrNull((c) => c.clientName == payloadClientName);
-  if (client == null) {
-    Logs().w(
-      'Notification tap for unknown/mismatched account "$payloadClientName"; '
-      'ignoring rather than acting as another account.',
-    );
-    IsolateNameServer.removePortNameMapping(AppConfig.pushIsolatePortName);
-    return;
-  }
-  await client.abortSync();
-  await client.init(
-    waitForFirstSync: false,
-    waitUntilLoadCompletedLoaded: false,
-  );
-
-  if (!client.isLogged()) {
-    throw Exception('Notification tab in background but not logged in!');
-  }
+  // One encompassing try/finally: EVERY exit (including an ignored mismatch or a
+  // thrown error) must dispose the temporary clients this isolate created, send
+  // DONE, and remove the port mapping — otherwise a bare `return` leaks them.
+  List<Client> clients = const [];
   try {
+    if (!_vodInitialized) {
+      await vod.init();
+      _vodInitialized = true;
+    }
+    final store = await AppSettings.init();
+    clients = await ClientManager.getClients(initialize: false, store: store);
+    // Select the account the notification is FOR — its payload carries the
+    // clientName — by EXACT match only. Never fall back to the first (or sole)
+    // client: a stale notification for a logged-out account A must not be sent
+    // (or dosage-attributed) as the remaining account B when B happens to know
+    // the room. A missing/blank/mismatched clientName is ignored rather than
+    // acting as another account.
+    final payloadClientName = FluffyChatPushPayload.fromString(
+      notificationResponse.payload ?? '',
+    ).clientName;
+    final client = (payloadClientName == null || payloadClientName.isEmpty)
+        ? null
+        : clients.firstWhereOrNull((c) => c.clientName == payloadClientName);
+    if (client == null) {
+      Logs().w(
+        'Notification tap for unknown/mismatched account "$payloadClientName"; '
+        'ignoring rather than acting as another account.',
+      );
+      return;
+    }
+    await client.abortSync();
+    await client.init(
+      waitForFirstSync: false,
+      waitUntilLoadCompletedLoaded: false,
+    );
+
+    if (!client.isLogged()) {
+      throw Exception('Notification tab in background but not logged in!');
+    }
     await notificationTap(
       notificationResponse,
       client: client,
       background: true,
     );
   } finally {
-    await client.dispose(closeDatabase: false);
+    for (final c in clients) {
+      try {
+        await c.dispose(closeDatabase: false);
+      } catch (_) {}
+    }
     pushIsolateReceivePort.sendPort.send('DONE');
     IsolateNameServer.removePortNameMapping(AppConfig.pushIsolatePortName);
   }
