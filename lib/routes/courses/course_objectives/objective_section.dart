@@ -178,8 +178,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   // Dim activities that can't be started yet: the course lacks
                   // enough members for their roles (tapping opens the start page's
                   // Invite CTA). A live (ongoing/joinable) session already filled
-                  // its seats so it never dims; completed cards carry the grey
-                  // checkmark overlay instead. Undimmed until the count loads.
+                  // its seats so it never dims
                   final available = widget.availableParticipants;
                   final canStart =
                       available == null ||
@@ -215,9 +214,6 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                               fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
                               iconSize: _isColumnMode ? 12.0 : 8.0,
                               starsEarned: starsEarned,
-                              // A completed card shows the grey checkmark overlay
-                              // instead of a state fill/banner (and is never
-                              // ongoing), so suppress the pin state when complete.
                               pinState: complete ? null : liveState.state,
                               openSessions: liveState.openSessions,
                             ),

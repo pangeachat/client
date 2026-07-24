@@ -27,6 +27,9 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// Ongoing (dark purple) or Open/joinable (green). See [ActivityPinState].
   final ActivityPinState? pinState;
 
+  /// How far the banner's straight right edge pokes past the card's right edge.
+  static const double _bannerPoke = 8.0;
+
   const ActivitySuggestionCard({
     super.key,
     required this.activity,
@@ -58,6 +61,11 @@ class ActivitySuggestionCard extends StatelessWidget {
     // bookmark banner, both in the pin's state hue
     final stateColor = pinState?.color;
     final onState = stateColor != null ? Colors.white : null;
+
+    // Shared style for the mode + participant-count labels
+    final labelStyle = fontSizeSmall != null
+        ? TextStyle(fontSize: fontSizeSmall, color: onState)
+        : theme.textTheme.labelSmall?.copyWith(color: onState);
 
     return SizedBox(
       height: height,
@@ -144,13 +152,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                     padding: const EdgeInsets.all(4.0),
                                     child: Text(
                                       activity.req.mode,
-                                      style: fontSizeSmall != null
-                                          ? TextStyle(
-                                              fontSize: fontSizeSmall,
-                                              color: onState,
-                                            )
-                                          : theme.textTheme.labelSmall
-                                                ?.copyWith(color: onState),
+                                      style: labelStyle,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
@@ -168,13 +170,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                     ),
                                     Text(
                                       "${activity.req.numberOfParticipants}",
-                                      style: fontSizeSmall != null
-                                          ? TextStyle(
-                                              fontSize: fontSizeSmall,
-                                              color: onState,
-                                            )
-                                          : theme.textTheme.labelSmall
-                                                ?.copyWith(color: onState),
+                                      style: labelStyle,
                                     ),
                                   ],
                                 ),
@@ -192,16 +188,14 @@ class ActivitySuggestionCard extends StatelessWidget {
           if (pinState != null && stateColor != null)
             Positioned(
               top: 8.0,
-              // The straight right edge pokes 8px past the card; the banner spans
-              // from ~mid-card (its bookmark notch) to there.
-              right: -8.0,
+              right: -_bannerPoke,
               child: _ActivityStateBanner(
                 color: stateColor,
                 label: pinState!.isOngoing
                     ? L10n.of(context).ongoing
                     : "${L10n.of(context).open} (${openSessions ?? 0})",
                 fontSize: fontSizeSmall,
-                width: width / 2 + 8.0,
+                width: width / 2 + _bannerPoke,
               ),
             ),
         ],
@@ -231,7 +225,7 @@ class _ActivityStateBanner extends StatelessWidget {
     // PhysicalShape clips to the bookmark path AND casts a soft elevation
     // shadow that follows it.
     return PhysicalShape(
-      clipper: _BookmarkBannerClipper(),
+      clipper: const _BookmarkBannerClipper(),
       clipBehavior: Clip.antiAlias,
       color: color,
       elevation: 3.0,
@@ -256,6 +250,8 @@ class _ActivityStateBanner extends StatelessWidget {
 }
 
 class _BookmarkBannerClipper extends CustomClipper<Path> {
+  const _BookmarkBannerClipper();
+
   /// How far the middle of the left edge caves in toward the text.
   static const double _notch = 7.0;
 

@@ -686,8 +686,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       }
 
       // Dim only plain `available` pins whose role count outruns the course's
-      // members (mirrors the course-plan cards; live/inProgress pins keep full
-      // opacity, matching "available pins and not joinable or ongoing").
+      // members
       if (available != null &&
           states[id] == ActivityPinState.available &&
           (c.roleCount ?? 0) > available) {
