@@ -24,13 +24,13 @@ enum PanelTypesEnum {
   review,
   practice;
 
-  Set<PanelTypesEnum> get _roomPanels => {
+  static const Set<PanelTypesEnum> _roomPanels = {
     PanelTypesEnum.room,
     PanelTypesEnum.session,
     PanelTypesEnum.archivedroom,
   };
 
-  Set<PanelTypesEnum> get _analyticsPanels => {
+  static const Set<PanelTypesEnum> _analyticsPanels = {
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,
@@ -38,38 +38,38 @@ enum PanelTypesEnum {
     PanelTypesEnum.review,
   };
 
-  Set<PanelTypesEnum> get _nonPracticeAnalyticsPanels => {
+  static const Set<PanelTypesEnum> _nonPracticeAnalyticsPanels = {
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,
   };
 
-  Set<PanelTypesEnum> get _settingsPanels => {
+  static const Set<PanelTypesEnum> _settingsPanels = {
     PanelTypesEnum.settings,
     PanelTypesEnum.settingspage,
   };
 
-  Set<PanelTypesEnum> get _addCoursePanels => {
+  static const Set<PanelTypesEnum> _addCoursePanels = {
     PanelTypesEnum.addcourse,
     PanelTypesEnum.addcoursepage,
   };
 
-  Set<PanelTypesEnum> get _coursePanels => {
+  static const Set<PanelTypesEnum> _coursePanels = {
     PanelTypesEnum.course,
     PanelTypesEnum.coursepage,
   };
 
-  Set<PanelTypesEnum> get _courseRelatedPanels => {
+  static const Set<PanelTypesEnum> _courseRelatedPanels = {
     ..._coursePanels,
     ..._addCoursePanels,
   };
 
-  Set<PanelTypesEnum> get _leftChatListPanels => {
+  static const Set<PanelTypesEnum> _leftChatListPanels = {
     PanelTypesEnum.chats,
     PanelTypesEnum.archive,
   };
 
-  Set<PanelTypesEnum> get _leftChatPanels => {
+  static const Set<PanelTypesEnum> _leftChatPanels = {
     PanelTypesEnum.room,
     PanelTypesEnum.archivedroom,
   };

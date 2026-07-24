@@ -860,6 +860,8 @@ abstract class WorkspaceNav {
     }).toList(),
   );
 
-  static String openArchivedRoom(Uri current, String roomId) =>
-      openLeft(current, ArchivedRoomPanelToken(RoomTokenParam(id: roomId)));
+  static String openArchivedRoom(Uri current, String roomId) => openLeft(
+    current,
+    ArchivedRoomPanelToken(RoomTokenParam(id: shortRoomId(roomId))),
+  );
 }

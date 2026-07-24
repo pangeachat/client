@@ -232,12 +232,7 @@ class WorkspaceShell extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      /// The route canvas, as one stable child so the sideView Navigator never
-                      /// remounts when the canvas mode changes:
-                      ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
-                      ///  • detail → capped, bounded by the right panel zone; map peeks (a
-                      ///    route-driven page — a course-wizard step, a public-course preview, a
-                      ///    chat archive; the activity plan is a left panel now, not here).
+                      /// The route canvas, as one stable child
                       Positioned(
                         left: l.leftInset,
                         top: 0,
@@ -761,8 +756,7 @@ class _ShellLayout {
   /// padding) from [PanelAllocator].
   final WorkspaceLayout allocation;
 
-  /// The route-driven center detail child (a course-wizard step, a public-course
-  /// preview, a chat archive), else the route [sideView]. The activity plan is no
+  /// The route [sideView]. The activity plan is no
   /// longer rendered here — it is a left panel hosted by [WorkspaceLeftPanel].
   final Widget canvasChild;
 
@@ -982,7 +976,7 @@ class _ShellLayout {
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    final mapLeftOverlay = hasCavity ? 0.0 : leftInset;
+    final mapLeftOverlay = leftInset;
 
     // The narrow activity-plan sheet covers the bottom of the full-width map —
     // the band the left/right overlays don't model. Pad the camera's bottom by
