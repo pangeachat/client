@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:badges/badges.dart' as b;
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/invited_course_badge.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class AddCourseTile extends StatelessWidget {
@@ -23,6 +26,7 @@ class AddCourseTile extends StatelessWidget {
     final theme = Theme.of(context);
     final courseId = content.courseId;
     final members = content.members;
+    final invited = content.invited ?? false;
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
@@ -59,11 +63,23 @@ class AddCourseTile extends StatelessWidget {
                           imageUrl: content.imageUrl,
                           width: 48.0,
                           borderRadius: BorderRadius.circular(10.0),
-                          replacement: Avatar(
-                            name: title,
-                            borderRadius: BorderRadius.circular(10.0),
-                            size: 48.0,
-                          ),
+                          replacement: invited
+                              ? InvitedCourseBadge(
+                                  position: b.BadgePosition.topEnd(
+                                    top: -5,
+                                    end: -7,
+                                  ),
+                                  child: Avatar(
+                                    name: title,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    size: 48.0,
+                                  ),
+                                )
+                              : Avatar(
+                                  name: title,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  size: 48.0,
+                                ),
                         ),
                       ),
                     ),
@@ -101,14 +117,14 @@ class AddCourseTile extends StatelessWidget {
                             runSpacing: 8.0,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              if (members != null)
+                              if (members != null && !invited)
                                 CourseInfoChip(
                                   icon: Icons.group,
                                   text: '$members',
                                   fontSize: 12.0,
                                   iconSize: 12.0,
                                 ),
-                              if (courseId != null)
+                              if (courseId != null && !invited)
                                 CourseInfoChips(
                                   courseId,
                                   fontSize: 12.0,

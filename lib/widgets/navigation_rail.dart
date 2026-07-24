@@ -20,6 +20,7 @@ import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/invited_course_badge.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 
@@ -310,21 +311,7 @@ class _SpaceItem extends StatelessWidget {
           );
 
           if (space.membership == Membership.invite) {
-            return b.Badge(
-              badgeStyle: b.BadgeStyle(
-                badgeColor: Theme.of(context).colorScheme.error,
-                elevation: 4,
-                borderSide: BorderSide.none,
-                padding: const EdgeInsetsGeometry.all(0),
-              ),
-              badgeContent: Icon(
-                Icons.error_outline,
-                color: Theme.of(context).colorScheme.onPrimary,
-                size: 16,
-              ),
-              position: position,
-              child: child,
-            );
+            return InvitedCourseBadge(position: position, child: child);
           }
 
           return FutureBuilder(
