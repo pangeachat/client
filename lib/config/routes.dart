@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
@@ -116,7 +117,11 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        UserInviteLink(userID: state.pathParameters['userID']!),
+        UserInviteLink(
+          userID: fullUserId(
+            Uri.decodeComponent(state.pathParameters['userID']!),
+          ),
+        ),
       ),
     ),
     // Pangea#
