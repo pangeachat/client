@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-24 11:42:16.480601",
+    "@@last_modified": "2026-07-24 11:59:34.732929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Katia te rapu",
     "subscriptionsNotAvailableInApp": "Kāore e taea te hoko ohaurunga i roto i te taupānga",
     "subscribeOnTheWeb": "Ka taea e koe te ohauru ki te paetukutuku i pangea.chat",
-    "waitingToFillOneRole": "E tatari ana kia whakakīa kia 1 te tūranga..."
+    "waitingToFillOneRole": "E tatari ana kia whakakīa kia 1 te tūranga...",
+    "closeArchive": "Katia te pūranga"
 }

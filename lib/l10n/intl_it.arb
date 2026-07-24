@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:42:15.478714",
+    "@@last_modified": "2026-07-24 11:59:33.374689",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9766,5 +9766,6 @@
     "closeSearch": "Chiudi ricerca",
     "subscriptionsNotAvailableInApp": "Gli abbonamenti non possono essere acquistati nell'app",
     "subscribeOnTheWeb": "Puoi abbonarti sul web all'indirizzo pangea.chat",
-    "waitingToFillOneRole": "In attesa di ricoprire 1 ruolo..."
+    "waitingToFillOneRole": "In attesa di ricoprire 1 ruolo...",
+    "closeArchive": "Chiudi archivio"
 }

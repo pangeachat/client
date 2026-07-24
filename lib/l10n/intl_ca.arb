@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:42:11.000747",
+    "@@last_modified": "2026-07-24 11:59:31.761319",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,6 @@
     "closeSearch": "Tancar cerca",
     "subscriptionsNotAvailableInApp": "Les subscripcions no es poden comprar a l'aplicació",
     "subscribeOnTheWeb": "Pots subscriure't al web a pangea.chat",
-    "waitingToFillOneRole": "Esperant per cobrir 1 rol..."
+    "waitingToFillOneRole": "Esperant per cobrir 1 rol...",
+    "closeArchive": "Tanca l'arxiu"
 }

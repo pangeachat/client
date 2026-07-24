@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:42:20.374408",
+    "@@last_modified": "2026-07-24 11:59:36.984511",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6959,5 +6959,6 @@
     "closeSearch": "Đóng tìm kiếm",
     "subscriptionsNotAvailableInApp": "Không thể mua gói đăng ký trong ứng dụng",
     "subscribeOnTheWeb": "Bạn có thể đăng ký trên web tại pangea.chat",
-    "waitingToFillOneRole": "Đang chờ điền 1 vai trò..."
+    "waitingToFillOneRole": "Đang chờ điền 1 vai trò...",
+    "closeArchive": "Đóng kho lưu trữ"
 }

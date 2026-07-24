@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-24 11:42:15.946519",
+    "@@last_modified": "2026-07-24 11:59:34.510739",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9693,5 +9693,6 @@
     "closeSearch": "Aizvērt meklēšanu",
     "subscriptionsNotAvailableInApp": "Abonementus nevar iegādāties lietotnē",
     "subscribeOnTheWeb": "Jūs varat abonēt tīmeklī vietnē pangea.chat",
-    "waitingToFillOneRole": "Gaida, lai aizpildītu 1 lomu..."
+    "waitingToFillOneRole": "Gaida, lai aizpildītu 1 lomu...",
+    "closeArchive": "Aizvērt arhīvu"
 }

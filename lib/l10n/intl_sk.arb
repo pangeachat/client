@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-24 11:42:18.615790",
+    "@@last_modified": "2026-07-24 11:59:35.894057",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "closeSearch": "Zavrieť vyhľadávanie",
     "subscriptionsNotAvailableInApp": "Predplatné nie je možné zakúpiť v aplikácii",
     "subscribeOnTheWeb": "Môžete sa prihlásiť na odber na webe na adrese pangea.chat",
-    "waitingToFillOneRole": "Čaká sa na obsadenie 1 roly..."
+    "waitingToFillOneRole": "Čaká sa na obsadenie 1 roly...",
+    "closeArchive": "Zavrieť archív"
 }

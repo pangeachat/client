@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-24 11:42:16.856743",
+    "@@last_modified": "2026-07-24 11:59:34.739891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Хайлтыг хаах",
     "subscriptionsNotAvailableInApp": "Апп дотор захиалга хийх боломжгүй",
     "subscribeOnTheWeb": "Та pangea.chat хаягаар орж вэбээс захиалга хийх боломжтой",
-    "waitingToFillOneRole": "1 үүргийг гүйцэтгэхийг хүлээж байна..."
+    "waitingToFillOneRole": "1 үүргийг гүйцэтгэхийг хүлээж байна...",
+    "closeArchive": "Архивыг хаах"
 }

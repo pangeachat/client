@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-24 11:42:15.477302",
+    "@@last_modified": "2026-07-24 11:59:34.312907",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "ປິດການຊອກຫາ",
     "subscriptionsNotAvailableInApp": "ບໍ່ສາມາດຊື້ການສະໝັກໃຊ້ໃນແອັບໄດ້",
     "subscribeOnTheWeb": "ທ່ານສາມາດສະໝັກໃຊ້ຜ່ານເວັບໄດ້ທີ່ pangea.chat",
-    "waitingToFillOneRole": "ລໍຖ້າການຕື່ມ 1 ບົດບາດ..."
+    "waitingToFillOneRole": "ລໍຖ້າການຕື່ມ 1 ບົດບາດ...",
+    "closeArchive": "ປິດບ່ອນເກັບມ້ຽນ"
 }

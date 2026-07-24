@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-24 11:42:13.781820",
+    "@@last_modified": "2026-07-24 11:59:33.207426",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10635,5 +10635,6 @@
     "closeSearch": "Clauder recerca",
     "subscriptionsNotAvailableInApp": "Le subscriptiones non pote esser mercate in le app",
     "subscribeOnTheWeb": "Tu pote subscribere in le web a pangea.chat",
-    "waitingToFillOneRole": "In attesa de plenar 1 rolo..."
+    "waitingToFillOneRole": "In attesa de plenar 1 rolo...",
+    "closeArchive": "Clauder archivo"
 }

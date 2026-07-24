@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-24 11:42:12.310891",
+    "@@last_modified": "2026-07-24 11:59:32.304475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Sykje slute",
     "subscriptionsNotAvailableInApp": "Abonneminten kinne net yn 'e app kocht wurde",
     "subscribeOnTheWeb": "Jo kinne abonnearje op it web op pangea.chat",
-    "waitingToFillOneRole": "Wachtsje op it ynfoljen fan 1 rol ..."
+    "waitingToFillOneRole": "Wachtsje op it ynfoljen fan 1 rol ...",
+    "closeArchive": "Argyf slute"
 }

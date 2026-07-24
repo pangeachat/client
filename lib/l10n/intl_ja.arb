@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-24 11:42:14.055829",
+    "@@last_modified": "2026-07-24 11:59:33.559966",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10462,5 +10462,6 @@
     "closeSearch": "検索を閉じる",
     "subscriptionsNotAvailableInApp": "アプリ内ではサブスクリプションを購入できません",
     "subscribeOnTheWeb": "pangea.chatでウェブから購読できます",
-    "waitingToFillOneRole": "1つの役割を埋めるのを待っています..."
+    "waitingToFillOneRole": "1つの役割を埋めるのを待っています...",
+    "closeArchive": "アーカイブを閉じる"
 }

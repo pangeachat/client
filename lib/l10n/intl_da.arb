@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-24 11:42:11.520779",
+    "@@last_modified": "2026-07-24 11:59:31.646301",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10619,5 +10619,6 @@
     "closeSearch": "Luk søgning",
     "subscriptionsNotAvailableInApp": "Abonnementer kan ikke købes i appen",
     "subscribeOnTheWeb": "Du kan abonnere på nettet på pangea.chat",
-    "waitingToFillOneRole": "Venter på at besætte 1 rolle..."
+    "waitingToFillOneRole": "Venter på at besætte 1 rolle...",
+    "closeArchive": "Luk arkiv"
 }

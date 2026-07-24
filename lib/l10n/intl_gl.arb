@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-24 11:42:13.405919",
+    "@@last_modified": "2026-07-24 11:59:32.432058",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "closeSearch": "Pechar busca",
     "subscriptionsNotAvailableInApp": "As subscricións non se poden mercar na aplicación",
     "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat",
-    "waitingToFillOneRole": "Agardando para cubrir 1 posto..."
+    "waitingToFillOneRole": "Agardando para cubrir 1 posto...",
+    "closeArchive": "Pechar arquivo"
 }

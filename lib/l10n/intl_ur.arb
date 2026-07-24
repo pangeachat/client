@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-24 11:42:20.295666",
+    "@@last_modified": "2026-07-24 11:59:36.815621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2039,5 +2039,6 @@
     "closeSearch": "تلاش بند کریں",
     "subscriptionsNotAvailableInApp": "ایپ میں سبسکرپشنز خریدی نہیں جا سکتیں",
     "subscribeOnTheWeb": "آپ pangea.chat پر ویب پر سبسکرائب کر سکتے ہیں",
-    "waitingToFillOneRole": "1 کردار پُر ہونے کا انتظار ہے..."
+    "waitingToFillOneRole": "1 کردار پُر ہونے کا انتظار ہے...",
+    "closeArchive": "آرکائیو بند کریں"
 }

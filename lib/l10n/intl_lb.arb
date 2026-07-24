@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-24 11:42:15.793331",
+    "@@last_modified": "2026-07-24 11:59:34.150461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Sich zoumaachen",
     "subscriptionsNotAvailableInApp": "Abonnementer kënnen net an der App kaaft ginn",
     "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren",
-    "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen..."
+    "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen...",
+    "closeArchive": "Archiv zoumaachen"
 }

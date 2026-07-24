@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-24 11:42:20.062316",
+    "@@last_modified": "2026-07-24 11:59:36.804525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "ئىزدەشنى تاقا",
     "subscriptionsNotAvailableInApp": "ئەپ ئىچىدە مۇشتەرىلىك سېتىۋالغىلى بولمايدۇ",
     "subscribeOnTheWeb": "pangea.chat تور بېتى ئارقىلىق مۇشتەرى بولالايسىز",
-    "waitingToFillOneRole": "1 رولنى تولدۇرۇشنى ساقلاۋاتىدۇ..."
+    "waitingToFillOneRole": "1 رولنى تولدۇرۇشنى ساقلاۋاتىدۇ...",
+    "closeArchive": "ئارخىپنى تاقا"
 }

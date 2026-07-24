@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-24 11:42:18.548691",
+    "@@last_modified": "2026-07-24 11:59:36.038312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Tapuni le su'esu'ega",
     "subscriptionsNotAvailableInApp": "E le mafai ona fa'atau saofaga i totonu o le app",
     "subscribeOnTheWeb": "E mafai ona e lesitala i luga o le upega tafa'ilagi i le pangea.chat",
-    "waitingToFillOneRole": "Faatali e faatumu le 1 matafaioi..."
+    "waitingToFillOneRole": "Faatali e faatumu le 1 matafaioi...",
+    "closeArchive": "Tapuni le fa'amaumauga"
 }

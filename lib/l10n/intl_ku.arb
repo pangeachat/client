@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-24 11:42:15.593027",
+    "@@last_modified": "2026-07-24 11:59:33.904322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "گەڕان دابخە",
     "subscriptionsNotAvailableInApp": "بەشدارییەکان ناتوانرێت لەناو ئەپەکەدا بکڕدرێن",
     "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat",
-    "waitingToFillOneRole": "چاوەڕێی پڕکردنەوەی 1 ڕۆڵ دەکەین..."
+    "waitingToFillOneRole": "چاوەڕێی پڕکردنەوەی 1 ڕۆڵ دەکەین...",
+    "closeArchive": "ئەرشیڤ دابخە"
 }

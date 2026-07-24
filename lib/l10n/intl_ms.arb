@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-24 11:42:16.695807",
+    "@@last_modified": "2026-07-24 11:59:34.747685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Tutup carian",
     "subscriptionsNotAvailableInApp": "Langganan tidak boleh dibeli dalam aplikasi",
     "subscribeOnTheWeb": "Anda boleh melanggan di web di pangea.chat",
-    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peranan..."
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peranan...",
+    "closeArchive": "Tutup arkib"
 }

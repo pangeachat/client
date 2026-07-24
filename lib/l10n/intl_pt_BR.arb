@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:42:18.631517",
+    "@@last_modified": "2026-07-24 11:59:35.555310",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "closeSearch": "Fechar pesquisa",
     "subscriptionsNotAvailableInApp": "Assinaturas não podem ser compradas no aplicativo",
     "subscribeOnTheWeb": "Você pode assinar pela web em pangea.chat",
-    "waitingToFillOneRole": "Aguardando preencher 1 função..."
+    "waitingToFillOneRole": "Aguardando preencher 1 função...",
+    "closeArchive": "Fechar arquivo"
 }

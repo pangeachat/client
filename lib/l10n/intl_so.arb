@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-24 11:42:19.878911",
+    "@@last_modified": "2026-07-24 11:59:36.152004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Xidh raadinta",
     "subscriptionsNotAvailableInApp": "Rukummada laguma iibsan karo app-ka",
     "subscribeOnTheWeb": "Waxaad iska diiwaan gelin kartaa shabakadda pangea.chat",
-    "waitingToFillOneRole": "Waxaa la sugayaa in la buuxiyo 1 door..."
+    "waitingToFillOneRole": "Waxaa la sugayaa in la buuxiyo 1 door...",
+    "closeArchive": "Xidh kaydka"
 }

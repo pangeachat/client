@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-24 11:42:20.898240",
+    "@@last_modified": "2026-07-24 11:59:37.495585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "שליסן זוכן",
     "subscriptionsNotAvailableInApp": "סובסקריפּציעס קענען ניט זיין געקויפט אין דער אַפּ",
     "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat",
-    "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע..."
+    "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע...",
+    "closeArchive": "פֿאַרמאַכן אַרכיוו"
 }

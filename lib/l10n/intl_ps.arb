@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-24 11:42:17.457811",
+    "@@last_modified": "2026-07-24 11:59:35.542122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "لټون بند کړئ",
     "subscriptionsNotAvailableInApp": "پیرودنې په اپلیکیشن کې نشي اخیستل کیدی",
     "subscribeOnTheWeb": "تاسو کولی شئ په pangea.chat کې په ویب پاڼه کې ګډون وکړئ",
-    "waitingToFillOneRole": "د 1 رول ډکولو ته انتظار باسو..."
+    "waitingToFillOneRole": "د 1 رول ډکولو ته انتظار باسو...",
+    "closeArchive": "آرشيف بندول"
 }
