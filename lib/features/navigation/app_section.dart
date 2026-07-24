@@ -32,29 +32,8 @@ enum AppSection {
     selectedIcon: Icons.forum,
   ),
 
-  /// Learning analytics. Root: `/analytics`.
-  analytics(
-    rootPath: PRoutes.analytics,
-    icon: Icons.analytics_outlined,
-    selectedIcon: Icons.analytics,
-  ),
-
   /// Courses — find/browse, plus joined courses at `/courses/:spaceid`.
-  courses(rootPath: PRoutes.courses, icon: Icons.add, selectedIcon: Icons.add),
-
-  /// Profile (formerly user_home). Root: `/profile`.
-  profile(
-    rootPath: PRoutes.profile,
-    icon: Icons.account_circle_outlined,
-    selectedIcon: Icons.account_circle,
-  ),
-
-  /// Settings. Root: `/settings`.
-  settings(
-    rootPath: PRoutes.settings,
-    icon: Icons.settings_outlined,
-    selectedIcon: Icons.settings,
-  );
+  courses(rootPath: PRoutes.courses, icon: Icons.add, selectedIcon: Icons.add);
 
   const AppSection({
     required this.rootPath,

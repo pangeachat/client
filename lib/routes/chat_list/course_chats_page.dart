@@ -528,7 +528,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
     }
 
     if (room.membership == Membership.leave) {
-      context.go('/rooms/archive/${room.id}');
+      context.go(
+        WorkspaceNav.openArchivedRoom(GoRouterState.of(context).uri, room.id),
+      );
       return;
     }
 

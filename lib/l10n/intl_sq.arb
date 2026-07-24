@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-21 13:05:36.421607",
+    "@@last_modified": "2026-07-24 11:59:36.122795",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Bashkohu me \"{title}\"",
     "searchCoursePlans": "Kërko plane kursesh",
     "searchPublicCourses": "Kërko kurse publike",
-    "closeSearch": "Mbyll kërkimin"
+    "closeSearch": "Mbyll kërkimin",
+    "subscriptionsNotAvailableInApp": "Abonimet nuk mund të blihen në aplikacion",
+    "subscribeOnTheWeb": "Mund të abonoheni në ueb në pangea.chat",
+    "waitingToFillOneRole": "Duke pritur të plotësohet 1 rol...",
+    "closeArchive": "Mbyll arkivin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-21 13:05:34.150546",
+    "@@last_modified": "2026-07-24 11:59:34.747685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Sertai \"{title}\"",
     "searchCoursePlans": "Cari rancangan kursus",
     "searchPublicCourses": "Cari kursus awam",
-    "closeSearch": "Tutup carian"
+    "closeSearch": "Tutup carian",
+    "subscriptionsNotAvailableInApp": "Langganan tidak boleh dibeli dalam aplikasi",
+    "subscribeOnTheWeb": "Anda boleh melanggan di web di pangea.chat",
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peranan...",
+    "closeArchive": "Tutup arkib"
 }

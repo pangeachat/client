@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-21 13:05:38.184844",
+    "@@last_modified": "2026-07-24 11:59:37.495585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "בייטרעטן \"{title}\"",
     "searchCoursePlans": "זוכן קורס פּלענער",
     "searchPublicCourses": "זוכן עפֿנטלעכע קורסן",
-    "closeSearch": "שליסן זוכן"
+    "closeSearch": "שליסן זוכן",
+    "subscriptionsNotAvailableInApp": "סובסקריפּציעס קענען ניט זיין געקויפט אין דער אַפּ",
+    "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat",
+    "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע...",
+    "closeArchive": "פֿאַרמאַכן אַרכיוו"
 }

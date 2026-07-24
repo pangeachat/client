@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-21 13:05:36.796843",
+    "@@last_modified": "2026-07-24 11:59:36.274696",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Kena ho \"{title}\"",
     "searchCoursePlans": "Batla merero ea thupelo",
     "searchPublicCourses": "Batla lithupelo tsa sechaba",
-    "closeSearch": "Koala patlisiso"
+    "closeSearch": "Koala patlisiso",
+    "subscriptionsNotAvailableInApp": "Ngoliso ha e fumanehe ka har'a app",
+    "subscribeOnTheWeb": "O ka ingolisa webosaeteng ho pangea.chat",
+    "waitingToFillOneRole": "Ho letetsoe ho tlatsa karolo e le 'ngoe...",
+    "closeArchive": "Koala polokelo"
 }

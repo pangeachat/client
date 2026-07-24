@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-21 13:05:30.239084",
+    "@@last_modified": "2026-07-24 11:59:31.905291",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7885,5 +7885,9 @@
     "joinCourseWithTitle": "Unirse a \"{title}\"",
     "searchCoursePlans": "Buscar planes de cursos",
     "searchPublicCourses": "Buscar cursos públicos",
-    "closeSearch": "Cerrar búsqueda"
+    "closeSearch": "Cerrar búsqueda",
+    "subscriptionsNotAvailableInApp": "Las suscripciones no se pueden comprar en la aplicación",
+    "subscribeOnTheWeb": "Puedes suscribirte en la web en pangea.chat",
+    "waitingToFillOneRole": "Esperando a cubrir 1 puesto...",
+    "closeArchive": "Cerrar archivo"
 }

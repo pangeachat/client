@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-21 13:05:37.098619",
+    "@@last_modified": "2026-07-24 11:59:36.615128",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10322,5 +10322,9 @@
     "joinCourseWithTitle": "เข้าร่วม \"{title}\"",
     "searchCoursePlans": "ค้นหาแผนการเรียน",
     "searchPublicCourses": "ค้นหาคอร์สสาธารณะ",
-    "closeSearch": "ปิดการค้นหา"
+    "closeSearch": "ปิดการค้นหา",
+    "subscriptionsNotAvailableInApp": "ไม่สามารถซื้อการสมัครสมาชิกในแอปได้",
+    "subscribeOnTheWeb": "คุณสามารถสมัครสมาชิกได้ทางเว็บไซต์ที่ pangea.chat",
+    "waitingToFillOneRole": "กำลังรอเติม 1 บทบาท...",
+    "closeArchive": "ปิดคลังเก็บ"
 }

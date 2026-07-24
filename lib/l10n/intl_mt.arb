@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-21 13:05:34.321730",
+    "@@last_modified": "2026-07-24 11:59:34.938578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Ingħaqad ma' \"{title}\"",
     "searchCoursePlans": "Fittex pjanijiet tal-kors",
     "searchPublicCourses": "Fittex korsijiet pubbliċi",
-    "closeSearch": "Agħlaq it-tfittxija"
+    "closeSearch": "Agħlaq it-tfittxija",
+    "subscriptionsNotAvailableInApp": "L-abbonamenti ma jistgħux jinxtraw fl-app",
+    "subscribeOnTheWeb": "Tista' tabbona fuq il-web fuq pangea.chat",
+    "waitingToFillOneRole": "Qed nistennew biex nimlew rwol 1...",
+    "closeArchive": "Agħlaq l-arkivju"
 }

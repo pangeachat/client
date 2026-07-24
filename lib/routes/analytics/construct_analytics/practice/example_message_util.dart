@@ -114,7 +114,9 @@ class ExampleMessageUtil {
     int targetTokenIndex = -1;
 
     if (messageEvent.isAudioMessage) {
-      final stt = messageEvent.getSpeechToTextLocal();
+      // TOKEN consumer: the example needs per-token spans, so prefer a
+      // token-rich representation over the provisional empty-token embed.
+      final stt = messageEvent.getSpeechToTextLocal(preferTokens: true);
       if (stt == null) return null;
 
       tokens = stt.transcript.sttTokens.map((t) => t.token).toList();

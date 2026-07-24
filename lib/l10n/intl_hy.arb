@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-21 13:05:31.818857",
+    "@@last_modified": "2026-07-24 11:59:33.151198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Միանալ «{title}»-ին",
     "searchCoursePlans": "Որոնել դասընթացի պլաններ",
     "searchPublicCourses": "Որոնել հանրային դասընթացներ",
-    "closeSearch": "Փակել որոնումը"
+    "closeSearch": "Փակել որոնումը",
+    "subscriptionsNotAvailableInApp": "Բաժանորդագրությունները հնարավոր չէ գնել հավելվածում",
+    "subscribeOnTheWeb": "Կարող եք բաժանորդագրվել pangea.chat կայքում",
+    "waitingToFillOneRole": "Սպասում ենք 1 դեր լրացնելուն...",
+    "closeArchive": "Փակել արխիվը"
 }

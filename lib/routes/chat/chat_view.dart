@@ -35,128 +35,12 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
 
-// #Pangea
-// enum _EventContextAction { info, report }
-// Pangea#
-
 class ChatView extends StatelessWidget {
   final ChatController controller;
 
   const ChatView(this.controller, {super.key});
 
   List<Widget> _appBarActions(BuildContext context) {
-    // #Pangea
-    // if (controller.selectMode) {
-    //   return [
-    //     if (controller.canEditSelectedEvents)
-    //       IconButton(
-    //         icon: const Icon(Icons.edit_outlined),
-    //         tooltip: L10n.of(context).edit,
-    //         onPressed: controller.editSelectedEventAction,
-    //       ),
-    //     if (controller.selectedEvents.length == 1 &&
-    //         controller.activeThreadId == null &&
-    //         controller.room.canSendDefaultMessages)
-    //       IconButton(
-    //         icon: const Icon(Icons.message_outlined),
-    //         tooltip: L10n.of(context).replyInThread,
-    //         onPressed: () => controller.enterThread(
-    //           controller.selectedEvents.single.eventId,
-    //         ),
-    //       ),
-    //     IconButton(
-    //       icon: const Icon(Icons.copy_outlined),
-    //       tooltip: L10n.of(context).copyToClipboard,
-    //       onPressed: controller.copyEventsAction,
-    //     ),
-    //     if (controller.canRedactSelectedEvents)
-    //       IconButton(
-    //         icon: const Icon(Icons.delete_outlined),
-    //         tooltip: L10n.of(context).redactMessage,
-    //         onPressed: controller.redactEventsAction,
-    //       ),
-    //     if (controller.selectedEvents.length == 1)
-    //       PopupMenuButton<_EventContextAction>(
-    //         useRootNavigator: true,
-    //         onSelected: (action) {
-    //           switch (action) {
-    //             case _EventContextAction.info:
-    //               controller.showEventInfo();
-    //               controller.clearSelectedEvents();
-    //               break;
-    //             case _EventContextAction.report:
-    //               controller.reportEventAction();
-    //               break;
-    //           }
-    //         },
-    //         itemBuilder: (context) => [
-    //           if (controller.canPinSelectedEvents)
-    //             PopupMenuItem(
-    //               onTap: controller.pinEvent,
-    //               value: null,
-    //               child: Row(
-    //                 mainAxisSize: .min,
-    //                 children: [
-    //                   const Icon(Icons.push_pin_outlined),
-    //                   const SizedBox(width: 12),
-    //                   Text(L10n.of(context).pinMessage),
-    //                 ],
-    //               ),
-    //             ),
-    //           if (controller.canSaveSelectedEvent)
-    //             PopupMenuItem(
-    //               onTap: () => controller.saveSelectedEvent(context),
-    //               value: null,
-    //               child: Row(
-    //                 mainAxisSize: .min,
-    //                 children: [
-    //                   const Icon(Icons.download_outlined),
-    //                   const SizedBox(width: 12),
-    //                   Text(L10n.of(context).downloadFile),
-    //                 ],
-    //               ),
-    //             ),
-    //           PopupMenuItem(
-    //             value: _EventContextAction.info,
-    //             child: Row(
-    //               mainAxisSize: .min,
-    //               children: [
-    //                 const Icon(Icons.info_outlined),
-    //                 const SizedBox(width: 12),
-    //                 Text(L10n.of(context).messageInfo),
-    //               ],
-    //             ),
-    //           ),
-    //           if (controller.selectedEvents.single.status.isSent)
-    //             PopupMenuItem(
-    //               value: _EventContextAction.report,
-    //               child: Row(
-    //                 mainAxisSize: .min,
-    //                 children: [
-    //                   const Icon(Icons.shield_outlined, color: Colors.red),
-    //                   const SizedBox(width: 12),
-    //                   Text(L10n.of(context).reportMessage),
-    //                 ],
-    //               ),
-    //             ),
-    //         ],
-    //       ),
-    //   ];
-    // } else if (!controller.room.isArchived) {
-    //   return [
-    //     if (AppSettings.experimentalVoip.value &&
-    //         Matrix.of(context).voipPlugin != null &&
-    //         controller.room.isDirectChat)
-    //       IconButton(
-    //         onPressed: controller.onPhoneButtonTap,
-    //         icon: const Icon(Icons.call_outlined),
-    //         tooltip: L10n.of(context).placeCall,
-    //       ),
-    //     EncryptionButton(controller.room),
-    //     ChatSettingsPopupMenu(controller.room, true),
-    //   ];
-    // }
-    // return [];
     if (controller.room.isArchived) {
       return [];
     }
@@ -214,7 +98,6 @@ class ChatView extends StatelessWidget {
       ),
       ?analyticsAvatar,
     ];
-    // Pangea#
   }
 
   @override

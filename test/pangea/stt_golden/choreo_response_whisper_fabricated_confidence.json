@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "transcripts": [
+        {
+          "confidence": 100,
+          "lang_code": "es",
+          "stt_tokens": [
+            {
+              "confidence": 100,
+              "end_time": 480,
+              "start_time": 0,
+              "token": {
+                "lemma": [
+                  {
+                    "form": null,
+                    "lang": "es",
+                    "save_vocab": true,
+                    "text": "hola"
+                  }
+                ],
+                "morph": {
+                  "Pos": "INTJ"
+                },
+                "pos": "INTJ",
+                "text": {
+                  "content": "hola",
+                  "length": 4,
+                  "offset": 0
+                }
+              }
+            },
+            {
+              "confidence": 100,
+              "end_time": 960,
+              "start_time": 480,
+              "token": {
+                "lemma": [
+                  {
+                    "form": null,
+                    "lang": "es",
+                    "save_vocab": true,
+                    "text": "mundo"
+                  }
+                ],
+                "morph": {
+                  "Gender": "Masc",
+                  "Number": "Sing",
+                  "Pos": "NOUN"
+                },
+                "pos": "NOUN",
+                "text": {
+                  "content": "mundo",
+                  "length": 5,
+                  "offset": 5
+                }
+              }
+            }
+          ],
+          "transcript": "hola mundo",
+          "words_per_hr": 120
+        }
+      ]
+    }
+  ],
+  "service": "openai-whisper-1"
+}

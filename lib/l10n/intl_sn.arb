@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-21 13:05:36.250523",
+    "@@last_modified": "2026-07-24 11:59:36.205226",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Pinda \"{title}\"",
     "searchCoursePlans": "Tsvaga zvirongwa zvedzidzo",
     "searchPublicCourses": "Tsvaga zvidzidzo zvevanhu vose",
-    "closeSearch": "Vhara kutsvaga"
+    "closeSearch": "Vhara kutsvaga",
+    "subscriptionsNotAvailableInApp": "Zvinonyoreswa hazvigone kutengwa muapp",
+    "subscribeOnTheWeb": "Unogona kunyoresa pawebhu pa pangea.chat",
+    "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete...",
+    "closeArchive": "Vhara dura"
 }

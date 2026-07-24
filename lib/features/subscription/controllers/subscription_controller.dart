@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
@@ -10,6 +10,8 @@ import 'package:fluffychat/features/subscription/repo_v2/subscription_management
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_country_repo.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -23,6 +25,18 @@ class SubscriptionController {
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
   ValueNotifier<SubscriptionState> get state => _state;
+
+  /// How the purchase surface may be presented on this device and storefront.
+  /// Starts at the conservative tier and upgrades once the storefront country
+  /// resolves during initialization, so a paywall is never shown before the
+  /// storefront confirms steering is allowed there.
+  PurchasePresentation _purchasePresentation = resolvePurchasePresentation(
+    isWeb: kIsWeb,
+    platform: defaultTargetPlatform,
+    storefrontCountry: null,
+  );
+
+  PurchasePresentation get purchasePresentation => _purchasePresentation;
 
   bool get showSubscriptionGatedContent => switch (_state.value) {
     SubscriptionInactive() => _inTrialWindow,
@@ -94,6 +108,7 @@ class SubscriptionController {
   Future<void> _initialize(String userID) async {
     try {
       await MatrixState.pangeaController.userController.initCompleter.future;
+      await _resolvePurchasePresentation();
       await _updateCurrentSubscription(userID);
 
       final state = _state.value;
@@ -124,6 +139,15 @@ class SubscriptionController {
     final activated = !result.isError;
     if (!activated) return;
     await _updateCurrentSubscription(userID);
+  }
+
+  Future<void> _resolvePurchasePresentation() async {
+    final country = await StorefrontCountryRepo.resolve();
+    _purchasePresentation = resolvePurchasePresentation(
+      isWeb: kIsWeb,
+      platform: defaultTargetPlatform,
+      storefrontCountry: country,
+    );
   }
 
   Future<void> _updateCurrentSubscription(String userID) async {

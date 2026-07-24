@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:36.210998",
+    "@@last_modified": "2026-07-24 11:59:35.743102",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10422,5 +10422,9 @@
     "joinCourseWithTitle": "Alătură-te „{title}”",
     "searchCoursePlans": "Căutați planuri de curs",
     "searchPublicCourses": "Căutați cursuri publice",
-    "closeSearch": "Închide căutarea"
+    "closeSearch": "Închide căutarea",
+    "subscriptionsNotAvailableInApp": "Abonamentele nu pot fi achiziționate în aplicație",
+    "subscribeOnTheWeb": "Te poți abona pe web la pangea.chat",
+    "waitingToFillOneRole": "Se așteaptă ocuparea unui rol...",
+    "closeArchive": "Închide arhiva"
 }

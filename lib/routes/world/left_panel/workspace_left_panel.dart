@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_add_course_subpage.dart';
@@ -16,7 +16,6 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
-import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
 /// Renders one left-column panel token (the chat list, a live room, a course,
@@ -78,7 +77,8 @@ class WorkspaceLeftPanel extends StatelessWidget {
     final Widget surface = switch (token) {
       ChatsPanelToken() => LeftPanelChatListSubpage(closeButton: closeButton),
       RoomPanelToken(param: final param) ||
-      SessionPanelToken(param: final param) => LeftPanelRoomSubpage(
+      SessionPanelToken(param: final param) ||
+      ArchivedRoomPanelToken(param: final param) => LeftPanelRoomSubpage(
         param: param,
         shareItems: shareItems,
         closeButton: closeButton,
@@ -120,17 +120,8 @@ class WorkspaceLeftPanel extends StatelessWidget {
           closeButton: closeButton,
         );
       }(),
-      NewPrivateChatPanelToken() => PanelCard(
-        child: Column(
-          children: [
-            PanelHeader(
-              leading: closeButton,
-              title: L10n.of(context).newDirectMessage,
-            ),
-            Expanded(child: NewPrivateChat()),
-          ],
-        ),
-      ),
+      NewPrivateChatPanelToken() => NewPrivateChat(closeButton: closeButton),
+      ArchivePanelToken() => Archive(closeButton: closeButton),
       _ => const SizedBox.shrink(),
     };
 

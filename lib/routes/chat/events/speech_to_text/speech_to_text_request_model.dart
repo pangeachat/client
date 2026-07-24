@@ -2,11 +2,70 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:crypto/crypto.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+
+/// The languages a voice send needs, captured from a SINGLE t0 read so the two
+/// baseline representations stay consistent yet each byte-identical to their
+/// source: the EMBED's `speaker_l1/l2` use the raw setting codes (e.g. `es-MX`),
+/// while the ASR request hint uses the normalized short codes (e.g. `es`, with
+/// an unknown-language fallback). Keeping them distinct is what preserves
+/// flag-OFF ASR byte-equivalence (the baseline built the ASR config from
+/// `userL1?.langCodeShort`, not the full locale).
+class VoiceSendLanguages {
+  final String? speakerL1;
+  final String? speakerL2;
+  final String asrL1;
+  final String asrL2;
+
+  const VoiceSendLanguages({
+    required this.speakerL1,
+    required this.speakerL2,
+    required this.asrL1,
+    required this.asrL2,
+  });
+
+  /// [sourceCode]/[targetCode] are `userL1Code`/`userL2Code` (embed);
+  /// [sourceShort]/[targetShort] are `userL1?.langCodeShort`/`userL2?...` (ASR).
+  factory VoiceSendLanguages.capture({
+    required String? sourceCode,
+    required String? targetCode,
+    required String? sourceShort,
+    required String? targetShort,
+  }) => VoiceSendLanguages(
+    speakerL1: sourceCode,
+    speakerL2: targetCode,
+    asrL1: sourceShort ?? LanguageKeys.unknownLanguage,
+    asrL2: targetShort ?? LanguageKeys.unknownLanguage,
+  );
+}
+
+/// Builds the voice ASR request from EXPLICIT language values (never re-read
+/// from current settings). The caller threads a SINGLE t0 language snapshot to
+/// both this ASR config and the embedded `speaker_l1/l2`, so the embed language,
+/// the ASR language, and the tokenize language are equal by construction and
+/// cannot drift if the user changes their L1/L2 mid-send (H3).
+SpeechToTextRequestModel buildVoiceSttRequest({
+  required Uint8List audioContent,
+  required String mimeType,
+  required String userL1,
+  required String userL2,
+  bool skipTokenize = false,
+}) => SpeechToTextRequestModel(
+  audioContent: audioContent,
+  skipTokenize: skipTokenize,
+  config: SpeechToTextAudioConfigModel(
+    encoding: mimeTypeToAudioEncoding(mimeType),
+    sampleRateHertz: 22050,
+    userL1: userL1,
+    userL2: userL2,
+  ),
+);
 
 class SpeechToTextRequestModel extends BaseRequest {
   final Uint8List audioContent;
@@ -14,26 +73,40 @@ class SpeechToTextRequestModel extends BaseRequest {
   final Event? audioEvent;
   final bool? mock;
 
+  /// When true, the choreographer returns the ASR transcript text (+ word
+  /// timings) WITHOUT running the LLM tokenizer -- the voice-send fast path.
+  /// A skip-tokenize response is a distinct cache slot (see [storageKey]) and
+  /// must never share one with a full tokenized response for the same audio.
+  final bool skipTokenize;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
     this.audioEvent,
     this.mock,
+    this.skipTokenize = false,
   });
 
+  /// A full sha256 digest of the audio content. The R0 key sampled only the
+  /// length + first 10 bytes, which collide across different short recordings
+  /// that share a fixed codec header (WAV/OGG magic bytes) -- firing STT at
+  /// record-stop could then serve a stale transcript for a different take.
+  /// A content digest keys on the whole recording, mirroring choreo's
+  /// `sha256_signature`.
+  String get _audioDigest => sha256.convert(audioContent).toString();
+
   @override
-  String get storageKey {
-    final bytesSample = audioContent.length > 10
-        ? audioContent.sublist(0, 10)
-        : audioContent;
-    return '${audioContent.length}|${base64Encode(bytesSample)}|'
-        '${jsonEncode(config.toJson())}';
-  }
+  String get storageKey =>
+      '$_audioDigest|${jsonEncode(config.toJson())}|$skipTokenize';
 
   @override
   Map<String, dynamic> toJson() => {
     "config": config.toJson(),
     "audio_content": base64Encode(audioContent),
+    // OMIT when false so the flag-OFF request bytes are byte-identical to
+    // today's (choreo defaults skip_tokenize to false); it is still part of
+    // storageKey/==/hashCode so the cache never mixes the two paths.
+    if (skipTokenize) "skip_tokenize": true,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -43,16 +116,12 @@ class SpeechToTextRequestModel extends BaseRequest {
     if (other is! SpeechToTextRequestModel) return false;
 
     return listEquals(audioContent, other.audioContent) &&
-        config == other.config;
+        config == other.config &&
+        skipTokenize == other.skipTokenize;
   }
 
   @override
-  int get hashCode {
-    final bytesSample = audioContent.length > 10
-        ? audioContent.sublist(0, 10)
-        : audioContent;
-    return Object.hashAll([Object.hashAll(bytesSample), config.hashCode]);
-  }
+  int get hashCode => Object.hash(_audioDigest, config.hashCode, skipTokenize);
 }
 
 class SpeechToTextAudioConfigModel {

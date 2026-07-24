@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-21 13:05:33.751159",
+    "@@last_modified": "2026-07-24 11:59:34.937656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Приклучи се на „{title}“",
     "searchCoursePlans": "Пребарај планови за курсеви",
     "searchPublicCourses": "Пребарај јавни курсеви",
-    "closeSearch": "Затвори пребарување"
+    "closeSearch": "Затвори пребарување",
+    "subscriptionsNotAvailableInApp": "Претплатите не може да се купат во апликацијата",
+    "subscribeOnTheWeb": "Може да се претплатите на веб-страницата на pangea.chat",
+    "waitingToFillOneRole": "Се чека да се пополни 1 улога...",
+    "closeArchive": "Затвори ја архивата"
 }
