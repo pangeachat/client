@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:35.318470",
+    "@@last_modified": "2026-07-24 11:59:35.555310",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,9 @@
     "joinCourseWithTitle": "Entrar em \"{title}\"",
     "searchCoursePlans": "Buscar planos de curso",
     "searchPublicCourses": "Buscar cursos públicos",
-    "closeSearch": "Fechar pesquisa"
+    "closeSearch": "Fechar pesquisa",
+    "subscriptionsNotAvailableInApp": "Assinaturas não podem ser compradas no aplicativo",
+    "subscribeOnTheWeb": "Você pode assinar pela web em pangea.chat",
+    "waitingToFillOneRole": "Aguardando preencher 1 função...",
+    "closeArchive": "Fechar arquivo"
 }

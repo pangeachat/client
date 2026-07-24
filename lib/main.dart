@@ -147,6 +147,20 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
 
   // Preload first client
   final firstClient = clients.firstOrNull;
+
+  // #Pangea
+  // Stamp the GA user id as early as possible — before the rooms/account-data
+  // sync awaits below, which can be slow on a cold start. Otherwise
+  // early-session events (session_start, first screen views) fire with only
+  // the pseudonymous device id, which GA4 surfaces as a bare number (#7789).
+  // userID is restored from local storage by getClients(), so it is already
+  // known here. The post-sync call further down re-affirms it and clears it if
+  // the staging/prod mismatch check logs the client out.
+  await GoogleAnalytics.analyticsUserUpdate(
+    clients.firstWhereOrNull((c) => c.isLogged())?.userID,
+  );
+  // Pangea#
+
   await firstClient?.roomsLoading;
   await firstClient?.accountDataLoading;
 

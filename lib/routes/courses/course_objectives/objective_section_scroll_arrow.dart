@@ -25,9 +25,10 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(color: theme.colorScheme.surface),
-      child: Material(
-        type: MaterialType.transparency,
-        child: InkWell(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: Center(child: Icon(direction.icon)),
         ),

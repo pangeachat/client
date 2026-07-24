@@ -304,9 +304,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           );
           if (!mounted || result.isError) return;
           final response = result.result;
-          // Only remount when the gate actually regenerated the copy;
-          // a declined feedback leaves the card untouched (#7676).
-          if (response?.appliedEdits ?? true) setState(() {});
+          // Only refresh when the gate actually regenerated the copy; a
+          // declined feedback leaves the card untouched (#7676). setState
+          // refreshes the synchronously-read titles; the notifier bump makes
+          // the async meaning widget re-fetch the merged description.
+          if (response?.appliedEdits ?? true) {
+            reloadNotifier.value++;
+            setState(() {});
+          }
           await showDialog(
             context: context,
             builder: (context) => FeedbackResponseDialog(
@@ -363,30 +368,32 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsetsGeometry.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: analyticsService.isInitializing || loadingAnalytics
-                    ? Center(child: CircularProgressIndicator.adaptive())
-                    : widget.view == ConstructTypeEnum.morph
-                    ? widget.construct == null
-                          ? MorphAnalyticsListView(controller: this)
-                          : MorphDetailsView(constructId: widget.construct!)
-                    : widget.construct == null
-                    ? VocabAnalyticsListView(controller: this)
-                    : VocabDetailsView(
-                        constructId: widget.construct!,
-                        controller: this,
-                      ),
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsetsGeometry.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: analyticsService.isInitializing || loadingAnalytics
+                  ? Center(child: CircularProgressIndicator.adaptive())
+                  : widget.view == ConstructTypeEnum.morph
+                  ? widget.construct == null
+                        ? MorphAnalyticsListView(controller: this)
+                        : MorphDetailsView(
+                            constructId: widget.construct!,
+                            reloadNotifier: reloadNotifier,
+                          )
+                  : widget.construct == null
+                  ? VocabAnalyticsListView(controller: this)
+                  : VocabDetailsView(
+                      constructId: widget.construct!,
+                      controller: this,
+                    ),
+            ),
+          ],
         ),
       ),
+
       floatingActionButton:
           widget.construct == null && widget.showPracticeButton
           ? _PracticeButton(view: widget.view)

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-21 13:05:29.056343",
+    "@@last_modified": "2026-07-24 11:59:31.157877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Присъедини се към „{title}“",
     "searchCoursePlans": "Търсене на учебни планове",
     "searchPublicCourses": "Търсене на публични курсове",
-    "closeSearch": "Затваряне на търсенето"
+    "closeSearch": "Затваряне на търсенето",
+    "subscriptionsNotAvailableInApp": "Абонаменти не могат да бъдат закупени в приложението",
+    "subscribeOnTheWeb": "Можете да се абонирате в уебсайта на pangea.chat",
+    "waitingToFillOneRole": "Изчакване за попълване на 1 роля...",
+    "closeArchive": "Затваряне на архива"
 }

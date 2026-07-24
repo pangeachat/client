@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-21 13:05:34.887653",
+    "@@last_modified": "2026-07-24 11:59:35.057078",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "\"{title}\" ကို ပူးပေါင်းပါ",
     "searchCoursePlans": "သင်တန်းအစီအစဉ်များကို ရှာဖွေပါ",
     "searchPublicCourses": "အများသုံးသင်တန်းများကို ရှာဖွေပါ",
-    "closeSearch": "ရှာဖွေမှုကို ပိတ်ရန်"
+    "closeSearch": "ရှာဖွေမှုကို ပိတ်ရန်",
+    "subscriptionsNotAvailableInApp": "အက်ပ်တွင် စာရင်းသွင်းမှုများကို ဝယ်ယူ၍မရပါ",
+    "subscribeOnTheWeb": "pangea.chat တွင် ဝဘ်မှတစ်ဆင့် စာရင်းသွင်းနိုင်သည်",
+    "waitingToFillOneRole": "အခန်းကဏ္ဍ ၁ ခု ဖြည့်ရန် စောင့်ဆိုင်းနေသည်...",
+    "closeArchive": "မှတ်တမ်းပိတ်ရန်"
 }

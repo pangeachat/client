@@ -61,4 +61,70 @@ void main() {
       expect(p.pan, moreOrLessEquals(p.zoom));
     });
   });
+
+  group('panTargetLongitude — pin-anchored pan direction (#7880)', () {
+    double to(double start, double target, [double? anchor]) =>
+        WorldMapConstants.panTargetLongitude(
+          start: start,
+          target: target,
+          anchor: anchor,
+        );
+
+    test('the result is always the target modulo a full turn', () {
+      for (final (s, t, a) in <(double, double, double?)>[
+        (145, -81, 10),
+        (175, -170, -179),
+        (10, 40, 12),
+        (163, 30, null),
+        (-150, 170, null),
+      ]) {
+        expect(
+          (to(s, t, a) - t) % 360,
+          moreOrLessEquals(0),
+          reason: 'start=$s target=$t anchor=$a',
+        );
+      }
+    });
+
+    test('QA reopen geometry: a wide left panel demands a >180deg westward '
+        'sweep, and the anchor keeps it westward', () {
+      // Camera over the Pacific (~145E), pin at ~10E visible near the LEFT
+      // edge (offset -135). The activity panel covers the left half, so the
+      // pin's resting spot is right-of-center: target center ~ -81 (91deg
+      // WEST of the pin). Correct sweep: 226deg west, pin slides left-edge ->
+      // right-of-center, on screen throughout. Shortest center-to-center
+      // wraps that to +134 EAST and hurls the pin off the left edge.
+      final unwrapped = to(145, -81, 10);
+      expect(unwrapped, moreOrLessEquals(-81)); // west: 145 -> -81, no wrap
+      expect(unwrapped - 145, moreOrLessEquals(-226)); // > 180, deliberately
+    });
+
+    test('original-video geometry: seam-straddling values take the short way '
+        'toward the visible pin', () {
+      // Camera at 175, pin at -179 visible +6 east across the seam, panel
+      // shift puts the target center at -170. RAW linear would sweep -345
+      // through 0; the anchor unwraps the target to 190 (= -170), a short
+      // +15 eastward glide past the seam.
+      expect(to(175, -170, -179), moreOrLessEquals(190));
+    });
+
+    test('an anchored ordinary move (no seam, no wide panel) is linear', () {
+      expect(to(10, 40, 12), moreOrLessEquals(40));
+      expect(to(-20, -50, -22), moreOrLessEquals(-50));
+    });
+
+    test('without an anchor, falls back to the shortest angular path', () {
+      // 175 -> -179 is +6 across the seam (unwrapped 181), not -354.
+      expect(to(175, -179), moreOrLessEquals(181));
+      // -179 -> 175 is -6 across the seam (unwrapped -185), not +354.
+      expect(to(-179, 175), moreOrLessEquals(-185));
+      // Ordinary moves stay put.
+      expect(to(10, 40), moreOrLessEquals(40));
+    });
+
+    test('a no-op move stays put, anchored or not', () {
+      expect(to(42, 42, 42), moreOrLessEquals(42));
+      expect(to(42, 42), moreOrLessEquals(42));
+    });
+  });
 }

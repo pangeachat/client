@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-21 13:05:33.022893",
+    "@@last_modified": "2026-07-24 11:59:33.751107",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "ចូលរួម \"{title}\"",
     "searchCoursePlans": "ស្វែងរកផែនការវគ្គសិក្សា",
     "searchPublicCourses": "ស្វែងរកវគ្គសិក្សាសាធារណៈ",
-    "closeSearch": "បិទការស្វែងរក"
+    "closeSearch": "បិទការស្វែងរក",
+    "subscriptionsNotAvailableInApp": "ការជាវមិនអាចទិញបាននៅក្នុងកម្មវិធី",
+    "subscribeOnTheWeb": "អ្នកអាចជាវនៅលើគេហទំព័រ pangea.chat",
+    "waitingToFillOneRole": "កំពុងរង់ចាំបំពេញតួនាទី ១...",
+    "closeArchive": "បិទបណ្ណសារ"
 }

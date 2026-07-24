@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:29.129077",
+    "@@last_modified": "2026-07-24 11:59:31.103989",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10318,5 +10318,9 @@
     "joinCourseWithTitle": "\"{title}\" এ যোগ দিন",
     "searchCoursePlans": "কোর্স প্ল্যান খুঁজুন",
     "searchPublicCourses": "পাবলিক কোর্স খুঁজুন",
-    "closeSearch": "অনুসন্ধান বন্ধ করুন"
+    "closeSearch": "অনুসন্ধান বন্ধ করুন",
+    "subscriptionsNotAvailableInApp": "অ্যাপে সাবস্ক্রিপশন কেনা যাবে না",
+    "subscribeOnTheWeb": "আপনি pangea.chat-এ ওয়েবে সাবস্ক্রাইব করতে পারেন",
+    "waitingToFillOneRole": "১টি ভূমিকা পূরণের জন্য অপেক্ষা করা হচ্ছে...",
+    "closeArchive": "আর্কাইভ বন্ধ করুন"
 }

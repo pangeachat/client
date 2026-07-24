@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:30.295986",
+    "@@last_modified": "2026-07-24 11:59:31.761319",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9817,5 +9817,9 @@
     "joinCourseWithTitle": "Uneix-te a \"{title}\"",
     "searchCoursePlans": "Cercar plans de curs",
     "searchPublicCourses": "Cercar cursos públics",
-    "closeSearch": "Tancar cerca"
+    "closeSearch": "Tancar cerca",
+    "subscriptionsNotAvailableInApp": "Les subscripcions no es poden comprar a l'aplicació",
+    "subscribeOnTheWeb": "Pots subscriure't al web a pangea.chat",
+    "waitingToFillOneRole": "Esperant per cobrir 1 rol...",
+    "closeArchive": "Tanca l'arxiu"
 }

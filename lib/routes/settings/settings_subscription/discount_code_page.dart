@@ -63,25 +63,19 @@ class DiscountCodePageState extends State<DiscountCodePage>
               ),
             ),
           ),
-          SafeArea(
-            child: SingleChildScrollView(
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.topCenter,
               child: Container(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: 16.0,
-                    right: 16.0,
-                    bottom: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                  constraints: BoxConstraints(maxWidth: 400),
-                  child: DiscountCodeViewContent(
-                    viewModel: _viewModel,
-                    onSubscribe: processCheckoutRequest,
-                  ),
+                padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+                constraints: BoxConstraints(maxWidth: 400),
+                child: DiscountCodeViewContent(
+                  viewModel: _viewModel,
+                  onSubscribe: processCheckoutRequest,
                 ),
               ),
             ),

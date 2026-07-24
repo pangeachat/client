@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:37.397498",
+    "@@last_modified": "2026-07-24 11:59:36.984511",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6956,5 +6956,9 @@
     "joinCourseWithTitle": "Tham gia \"{title}\"",
     "searchCoursePlans": "Tìm kiếm giáo trình",
     "searchPublicCourses": "Tìm kiếm khóa học công khai",
-    "closeSearch": "Đóng tìm kiếm"
+    "closeSearch": "Đóng tìm kiếm",
+    "subscriptionsNotAvailableInApp": "Không thể mua gói đăng ký trong ứng dụng",
+    "subscribeOnTheWeb": "Bạn có thể đăng ký trên web tại pangea.chat",
+    "waitingToFillOneRole": "Đang chờ điền 1 vai trò...",
+    "closeArchive": "Đóng kho lưu trữ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-21 13:05:31.838516",
+    "@@last_modified": "2026-07-24 11:59:33.009033",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9793,5 +9793,9 @@
     "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz",
     "searchCoursePlans": "Keresés a tantervek között",
     "searchPublicCourses": "Nyilvános kurzusok keresése",
-    "closeSearch": "Keresés bezárása"
+    "closeSearch": "Keresés bezárása",
+    "subscriptionsNotAvailableInApp": "Az előfizetések nem vásárolhatók meg az alkalmazásban",
+    "subscribeOnTheWeb": "Feliratkozhatsz a pangea.chat weboldalon",
+    "waitingToFillOneRole": "Várakozás 1 szerep betöltésére...",
+    "closeArchive": "Archívum bezárása"
 }

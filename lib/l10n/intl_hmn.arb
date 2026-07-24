@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-21 13:05:31.659536",
+    "@@last_modified": "2026-07-24 11:59:33.113263",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Koom \"{title}\"",
     "searchCoursePlans": "Nrhiav kev kawm",
     "searchPublicCourses": "Nrhiav cov kev kawm pej xeem",
-    "closeSearch": "Kaw kev tshawb nrhiav"
+    "closeSearch": "Kaw kev tshawb nrhiav",
+    "subscriptionsNotAvailableInApp": "Tsis tuaj yeem yuav cov nyiaj them hauv app",
+    "subscribeOnTheWeb": "Koj tuaj yeem sau npe hauv lub vev xaib ntawm pangea.chat",
+    "waitingToFillOneRole": "Tos kom tau ib txoj haujlwm...",
+    "closeArchive": "Kaw qhov chaw khaws cia"
 }

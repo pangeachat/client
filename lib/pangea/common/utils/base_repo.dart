@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
+
 import 'package:async/async.dart';
 import 'package:http/http.dart' hide BaseRequest, BaseResponse;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
-import 'package:meta/meta.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/error_response_parser.dart';
 import 'package:fluffychat/pangea/common/utils/repo_cache.dart';
 import 'package:fluffychat/pangea/common/utils/repo_cache_item.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -27,6 +29,7 @@ abstract class BaseRepo<
   final Duration cacheDuration;
   final Duration timeout;
   final TResponse Function(Map<String, dynamic>) responseFromJson;
+  final ErrorResponseParser? errorResponseParser;
 
   late final Future<void> _cacheInit = cache.init();
 
@@ -35,6 +38,7 @@ abstract class BaseRepo<
     required this.responseFromJson,
     required this.cacheDuration,
     this.timeout = const Duration(seconds: 60),
+    this.errorResponseParser,
   });
 
   /// Fetch [request], cached: a fresh cached value when present, else fetches
@@ -68,7 +72,7 @@ abstract class BaseRepo<
     final result = await future;
 
     final response = result.result;
-    if (response != null) {
+    if (response != null && shouldCache(response)) {
       await setCached(request, response);
     }
 
@@ -77,6 +81,26 @@ abstract class BaseRepo<
   }
 
   Future<Response> fetch(Requests req, TRequest request);
+
+  /// Whether [response] should be written to the cache. Defaults to caching
+  /// every successful response; subclasses override to refuse memoizing a
+  /// success that must not be pinned for the whole [cacheDuration] — e.g. an
+  /// exhausted-fallback STT response with empty results, which pre-R0-2 threw
+  /// (and so was never cached) but now parses gracefully and would otherwise
+  /// starve retries. Annotated [visibleForTesting] so the concrete policy can
+  /// be asserted directly.
+  @protected
+  @visibleForTesting
+  bool shouldCache(TResponse response) => true;
+
+  /// Builds the [Requests] carrier for a fetch. Isolated so the Matrix
+  /// god-object token read stays out of the hot path's signature and tests can
+  /// drive [get] without booting [MatrixState].
+  @protected
+  @visibleForTesting
+  Requests createRequests() => Requests(
+    accessToken: MatrixState.pangeaController.userController.accessToken,
+  );
 
   /// Sentry level for a fetch failure. Timeouts and confirmed 404s are
   /// warnings — a 404 means the resource is gone (expected for e.g. removed
@@ -89,13 +113,11 @@ abstract class BaseRepo<
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
-      final Requests req = Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
+      final Requests req = createRequests();
 
       final Response res = await fetch(req, request).timeout(timeout);
       if (res.statusCode >= 400) {
-        throw res;
+        throw errorResponseParser?.parse(res) ?? res;
       }
 
       final Map<String, dynamic> json = jsonDecode(

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-21 13:05:36.801002",
+    "@@last_modified": "2026-07-24 11:59:36.443327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Jiunge na \"{title}\"",
     "searchCoursePlans": "Tafuta mipango ya kozi",
     "searchPublicCourses": "Tafuta kozi za umma",
-    "closeSearch": "Funga utafutaji"
+    "closeSearch": "Funga utafutaji",
+    "subscriptionsNotAvailableInApp": "Usajili haupatikani ndani ya programu",
+    "subscribeOnTheWeb": "Unaweza kujiandikisha kwenye tovuti ya pangea.chat",
+    "waitingToFillOneRole": "Inasubiri kujaza nafasi 1...",
+    "closeArchive": "Funga kumbukumbu"
 }

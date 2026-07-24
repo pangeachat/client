@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-21 13:05:29.712251",
+    "@@last_modified": "2026-07-24 11:59:31.704119",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9677,5 +9677,9 @@
     "joinCourseWithTitle": "Kurs „{title}“ beitreten",
     "searchCoursePlans": "Kurspläne durchsuchen",
     "searchPublicCourses": "Öffentliche Kurse durchsuchen",
-    "closeSearch": "Suche schließen"
+    "closeSearch": "Suche schließen",
+    "subscriptionsNotAvailableInApp": "Abonnements können nicht in der App gekauft werden",
+    "subscribeOnTheWeb": "Du kannst dich im Web unter pangea.chat anmelden",
+    "waitingToFillOneRole": "Warten auf Besetzung von 1 Rolle ...",
+    "closeArchive": "Archiv schließen"
 }

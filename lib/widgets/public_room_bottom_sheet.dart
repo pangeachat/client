@@ -154,190 +154,186 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final roomAlias = this.roomAlias ?? chunk?.canonicalAlias;
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(
-            chunk?.name ?? roomAlias ?? chunk?.roomId ?? 'Unknown',
-            overflow: TextOverflow.fade,
-          ),
-          actions: [
-            Center(
-              child: CloseButton(
-                onPressed: Navigator.of(context, rootNavigator: false).pop,
-              ),
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(
+          chunk?.name ?? roomAlias ?? chunk?.roomId ?? 'Unknown',
+          overflow: TextOverflow.fade,
         ),
-        body: FutureBuilder<PublishedRoomsChunk>(
-          future: search(),
-          builder: (context, snapshot) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                spacing: 32.0,
-                children: [
-                  Row(
-                    spacing: 16.0,
-                    children: [
-                      (chunk?.avatarUrl != null || chunk?.roomType != 'm.space')
-                          ? Avatar(
-                              mxContent: chunk?.avatarUrl,
-                              name: chunk?.name,
-                              size: 160.0,
-                              borderRadius: BorderRadius.circular(
-                                chunk?.roomType != 'm.space' ? 80 : 24.0,
-                              ),
-                            )
-                          : ClipRRect(
-                              borderRadius: BorderRadius.circular(24.0),
-                              child: CachedNetworkImage(
-                                imageUrl: chunk!.defaultAvatar(),
-                                width: 160.0,
-                                height: 160.0,
-                                fit: BoxFit.cover,
-                              ),
+        actions: [
+          Center(
+            child: CloseButton(
+              onPressed: Navigator.of(context, rootNavigator: false).pop,
+            ),
+          ),
+        ],
+      ),
+      body: FutureBuilder<PublishedRoomsChunk>(
+        future: search(),
+        builder: (context, snapshot) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              spacing: 32.0,
+              children: [
+                Row(
+                  spacing: 16.0,
+                  children: [
+                    (chunk?.avatarUrl != null || chunk?.roomType != 'm.space')
+                        ? Avatar(
+                            mxContent: chunk?.avatarUrl,
+                            name: chunk?.name,
+                            size: 160.0,
+                            borderRadius: BorderRadius.circular(
+                              chunk?.roomType != 'm.space' ? 80 : 24.0,
                             ),
-                      Expanded(
-                        child: SizedBox(
-                          height: 160.0,
-                          child: Column(
-                            spacing: 16.0,
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Row(
-                                spacing: 8.0,
-                                children: [
-                                  const Icon(Icons.group),
-                                  Text(
-                                    L10n.of(context).countParticipants(
-                                      chunk?.numJoinedMembers ?? 1,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Flexible(
-                                child: SingleChildScrollView(
-                                  child: Text(
-                                    chunk?.topic ??
-                                        (chunk?.roomType != 'm.space'
-                                            ? L10n.of(
-                                                context,
-                                              ).noChatDescriptionYet
-                                            : L10n.of(
-                                                context,
-                                              ).noSpaceDescriptionYet),
-                                    softWrap: true,
-                                    textAlign: TextAlign.start,
-                                    maxLines: null,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(24.0),
+                            child: CachedNetworkImage(
+                              imageUrl: chunk!.defaultAvatar(),
+                              width: 160.0,
+                              height: 160.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    spacing: 8.0,
-                    children: _isKnockRoom
-                        ? [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Theme.of(context).colorScheme.outline,
+                    Expanded(
+                      child: SizedBox(
+                        height: 160.0,
+                        child: Column(
+                          spacing: 16.0,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Row(
+                              spacing: 8.0,
+                              children: [
+                                const Icon(Icons.group),
+                                Text(
+                                  L10n.of(context).countParticipants(
+                                    chunk?.numJoinedMembers ?? 1,
+                                  ),
                                 ),
-                                borderRadius: BorderRadius.circular(24),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: TextField(
-                                      controller: _codeController,
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                        hintText: L10n.of(
-                                          context,
-                                        ).enterSpaceCode,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                              horizontal: 16.0,
-                                            ),
-                                        hintStyle: TextStyle(
-                                          color: Theme.of(context).hintColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        left: BorderSide(
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.outline,
-                                        ),
-                                      ),
-                                    ),
-                                    child: ElevatedButton(
-                                      onPressed: _joinWithCode,
-                                      style: ElevatedButton.styleFrom(
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.zero,
-                                            bottomLeft: Radius.zero,
-                                            topRight: Radius.circular(24),
-                                            bottomRight: Radius.circular(24),
-                                          ),
-                                        ),
-                                      ),
-                                      child: Text(L10n.of(context).join),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
-                            ElevatedButton(
-                              onPressed: _knockRoom,
-                              child: Row(
-                                spacing: 8.0,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(Symbols.door_open, size: 20.0),
-                                  Text(L10n.of(context).askToJoin),
-                                ],
-                              ),
-                            ),
-                          ]
-                        : [
-                            ElevatedButton(
-                              onPressed: _joinRoom,
-                              child: Row(
-                                spacing: 8.0,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.join_full_outlined,
-                                    size: 20.0,
-                                  ),
-                                  Text(L10n.of(context).join),
-                                ],
+                            Flexible(
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  chunk?.topic ??
+                                      (chunk?.roomType != 'm.space'
+                                          ? L10n.of(
+                                              context,
+                                            ).noChatDescriptionYet
+                                          : L10n.of(
+                                              context,
+                                            ).noSpaceDescriptionYet),
+                                  softWrap: true,
+                                  textAlign: TextAlign.start,
+                                  maxLines: null,
+                                ),
                               ),
                             ),
                           ],
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  spacing: 8.0,
+                  children: _isKnockRoom
+                      ? [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.outline,
+                              ),
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    controller: _codeController,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      hintText: L10n.of(context).enterSpaceCode,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                            horizontal: 16.0,
+                                          ),
+                                      hintStyle: TextStyle(
+                                        color: Theme.of(context).hintColor,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.outline,
+                                      ),
+                                    ),
+                                  ),
+                                  child: ElevatedButton(
+                                    onPressed: _joinWithCode,
+                                    style: ElevatedButton.styleFrom(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.zero,
+                                          bottomLeft: Radius.zero,
+                                          topRight: Radius.circular(24),
+                                          bottomRight: Radius.circular(24),
+                                        ),
+                                      ),
+                                    ),
+                                    child: Text(L10n.of(context).join),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: _knockRoom,
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Symbols.door_open, size: 20.0),
+                                Text(L10n.of(context).askToJoin),
+                              ],
+                            ),
+                          ),
+                        ]
+                      : [
+                          ElevatedButton(
+                            onPressed: _joinRoom,
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.join_full_outlined,
+                                  size: 20.0,
+                                ),
+                                Text(L10n.of(context).join),
+                              ],
+                            ),
+                          ),
+                        ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

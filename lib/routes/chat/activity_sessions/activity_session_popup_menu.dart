@@ -13,8 +13,8 @@ class ActivitySessionPopupMenu extends StatefulWidget {
   final Room room;
   final VoidCallback onLeave;
 
-  /// A completed session (own role archived): only Download applies; leave and
-  /// invite are hidden.
+  /// A completed session (finished for everyone): only Download applies; leave
+  /// and invite are hidden.
   final bool isCompleted;
 
   const ActivitySessionPopupMenu(

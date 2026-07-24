@@ -75,7 +75,7 @@ class FindCoursePageState extends State<FindCoursePage> {
           onPressed: () => context.go('/'),
         ),
       ],
-      hintText: L10n.of(context).searchPublicCourses,
+      labelText: L10n.of(context).searchPublicCourses,
       notFoundMessage: L10n.of(context).noPublicCoursesFound,
       notFoundButtonLabel: L10n.of(context).startOwn,
       closeButton: widget.closeButton,

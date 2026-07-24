@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-21 13:05:32.407406",
+    "@@last_modified": "2026-07-24 11:59:33.676173",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Gabung \"{title}\"",
     "searchCoursePlans": "Golèk rencana kursus",
     "searchPublicCourses": "Golèk kursus umum",
-    "closeSearch": "Tutup panelusuran"
+    "closeSearch": "Tutup panelusuran",
+    "subscriptionsNotAvailableInApp": "Langganan ora bisa dituku ing aplikasi",
+    "subscribeOnTheWeb": "Sampeyan bisa langganan ing web ing pangea.chat",
+    "waitingToFillOneRole": "Ngenteni ngisi 1 peran...",
+    "closeArchive": "Tutup arsip"
 }

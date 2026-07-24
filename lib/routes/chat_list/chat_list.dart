@@ -245,7 +245,9 @@ class ChatListController extends State<ChatList>
     }
 
     if (room.membership == Membership.leave) {
-      context.go('/rooms/archive/${room.id}');
+      context.go(
+        WorkspaceNav.openArchivedRoom(GoRouterState.of(context).uri, room.id),
+      );
       return;
     }
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-21 13:05:29.664518",
+    "@@last_modified": "2026-07-24 11:59:31.708604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2036,5 +2036,9 @@
     "joinCourseWithTitle": "Apil sa \"{title}\"",
     "searchCoursePlans": "Pangitaa ang mga plano sa kurso",
     "searchPublicCourses": "Pangitaa ang mga publikong kurso",
-    "closeSearch": "Isira ang pagpangita"
+    "closeSearch": "Isira ang pagpangita",
+    "subscriptionsNotAvailableInApp": "Dili mapalit ang mga suskrisyon sulod sa app",
+    "subscribeOnTheWeb": "Mahimo kang mag-subscribe sa web sa pangea.chat",
+    "waitingToFillOneRole": "Naghuwat nga mapuno ang 1 ka tahas...",
+    "closeArchive": "Isira ang archive"
 }

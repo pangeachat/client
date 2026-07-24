@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:36.872484",
+    "@@last_modified": "2026-07-24 11:59:36.351086",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10208,5 +10208,9 @@
     "joinCourseWithTitle": "Gå med i \"{title}\"",
     "searchCoursePlans": "Sök kursplaner",
     "searchPublicCourses": "Sök offentliga kurser",
-    "closeSearch": "Stäng sökning"
+    "closeSearch": "Stäng sökning",
+    "subscriptionsNotAvailableInApp": "Prenumerationer kan inte köpas i appen",
+    "subscribeOnTheWeb": "Du kan prenumerera på webben på pangea.chat",
+    "waitingToFillOneRole": "Väntar på att fylla 1 roll...",
+    "closeArchive": "Stäng arkiv"
 }
