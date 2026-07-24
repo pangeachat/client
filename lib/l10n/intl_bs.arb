@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-24 11:42:10.616796",
+    "@@last_modified": "2026-07-24 11:59:31.179087",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Zatvori pretragu",
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
     "subscribeOnTheWeb": "Možete se pretplatiti na webu na pangea.chat",
-    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge..."
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
+    "closeArchive": "Zatvori arhivu"
 }

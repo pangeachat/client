@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-24 11:42:22.235658",
+    "@@last_modified": "2026-07-24 11:59:36.686476",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9994,5 +9994,6 @@
     "closeSearch": "Aramayı kapat",
     "subscriptionsNotAvailableInApp": "Uygulama içinden abonelik satın alınamaz",
     "subscribeOnTheWeb": "pangea.chat adresinden web üzerinden abone olabilirsiniz",
-    "waitingToFillOneRole": "1 rolün doldurulması bekleniyor..."
+    "waitingToFillOneRole": "1 rolün doldurulması bekleniyor...",
+    "closeArchive": "Arşivi kapat"
 }

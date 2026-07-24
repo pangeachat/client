@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-24 11:42:20.291691",
+    "@@last_modified": "2026-07-24 11:59:36.691369",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "closeSearch": "Закрити пошук",
     "subscriptionsNotAvailableInApp": "Підписки недоступні в застосунку",
     "subscribeOnTheWeb": "Ви можете підписатися на сайті pangea.chat",
-    "waitingToFillOneRole": "Очікування заповнення 1 ролі..."
+    "waitingToFillOneRole": "Очікування заповнення 1 ролі...",
+    "closeArchive": "Закрити архів"
 }

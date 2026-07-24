@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-24 11:42:16.196193",
+    "@@last_modified": "2026-07-24 11:59:34.509782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "തിരയൽ അടയ്ക്കുക",
     "subscriptionsNotAvailableInApp": "ആപ്പിൽ സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ വാങ്ങാൻ കഴിയില്ല",
     "subscribeOnTheWeb": "നിങ്ങൾക്ക് pangea.chat എന്ന വെബ്സൈറ്റിൽ സബ്‌സ്‌ക്രൈബ് ചെയ്യാം",
-    "waitingToFillOneRole": "ഒരു റോൾ നിറയ്ക്കാൻ കാത്തിരിക്കുന്നു..."
+    "waitingToFillOneRole": "ഒരു റോൾ നിറയ്ക്കാൻ കാത്തിരിക്കുന്നു...",
+    "closeArchive": "ആർക്കൈവ് അടയ്ക്കുക"
 }

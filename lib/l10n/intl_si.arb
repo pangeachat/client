@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-24 11:42:19.448357",
+    "@@last_modified": "2026-07-24 11:59:35.847332",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "සෙවීම වසන්න",
     "subscriptionsNotAvailableInApp": "යෙදුම තුළ දායකත්වයන් මිලදී ගත නොහැක",
     "subscribeOnTheWeb": "ඔබට pangea.chat වෙබ් අඩවියෙන් දායක විය හැක",
-    "waitingToFillOneRole": "1 භූමිකාවක් පිරවීමට බලා සිටී..."
+    "waitingToFillOneRole": "1 භූමිකාවක් පිරවීමට බලා සිටී...",
+    "closeArchive": "ලේඛනාගාරය වසන්න"
 }

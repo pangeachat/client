@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-24 11:42:17.375717",
+    "@@last_modified": "2026-07-24 11:59:35.372337",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9778,5 +9778,6 @@
     "closeSearch": "Zamknij wyszukiwanie",
     "subscriptionsNotAvailableInApp": "Subskrypcje nie są dostępne w aplikacji",
     "subscribeOnTheWeb": "Możesz subskrybować w sieci pod adresem pangea.chat",
-    "waitingToFillOneRole": "Oczekiwanie na obsadzenie 1 roli..."
+    "waitingToFillOneRole": "Oczekiwanie na obsadzenie 1 roli...",
+    "closeArchive": "Zamknij archiwum"
 }

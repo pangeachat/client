@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-24 11:42:10.175939",
+    "@@last_modified": "2026-07-24 11:59:31.134043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Sluit soektog",
     "subscriptionsNotAvailableInApp": "Intekeninge kan nie in die toepassing gekoop word nie",
     "subscribeOnTheWeb": "Jy kan op die web inteken by pangea.chat",
-    "waitingToFillOneRole": "Wag om 1 rol te vul ..."
+    "waitingToFillOneRole": "Wag om 1 rol te vul ...",
+    "closeArchive": "Maak argief toe"
 }

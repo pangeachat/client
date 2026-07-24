@@ -180,15 +180,18 @@ class ChatPage extends StatelessWidget {
       NavigationUtil.goToSpaceRoute(null, [], context);
     }
 
-    if (room == null || room.membership == Membership.leave) {
+    if (room == null) {
       // if (room == null) {
       // Pangea#
       return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+        appBar: AppBar(leading: backButton),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
+            child: Text(
+              L10n.of(context).youAreNoLongerParticipatingInThisChat,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       );
@@ -3257,7 +3260,10 @@ class ChatController extends State<ChatPageWithRoom>
       room: room,
       builder: (context, participants) {
         if (!room.participantListComplete && participants.loading) {
-          return const Center(child: CircularProgressIndicator.adaptive());
+          return Scaffold(
+            appBar: AppBar(leading: widget.backButton),
+            body: Center(child: CircularProgressIndicator.adaptive()),
+          );
         }
         // Pangea#
         final theme = Theme.of(context);

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-24 11:42:13.301996",
+    "@@last_modified": "2026-07-24 11:59:32.927015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Fèmen rechèch",
     "subscriptionsNotAvailableInApp": "Ou pa ka achte abònman nan app a",
     "subscribeOnTheWeb": "Ou ka abòne sou sit entènèt la nan pangea.chat",
-    "waitingToFillOneRole": "Nap tann pou nou ranpli 1 wòl..."
+    "waitingToFillOneRole": "Nap tann pou nou ranpli 1 wòl...",
+    "closeArchive": "Fèmen achiv la"
 }

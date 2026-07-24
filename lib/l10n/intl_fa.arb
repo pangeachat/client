@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:42:11.995112",
+    "@@last_modified": "2026-07-24 11:59:32.398303",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9781,5 +9781,6 @@
     "closeSearch": "بستن جستجو",
     "subscriptionsNotAvailableInApp": "اشتراک‌ها را نمی‌توان در برنامه خرید",
     "subscribeOnTheWeb": "می‌توانید در وب در pangea.chat مشترک شوید",
-    "waitingToFillOneRole": "در انتظار پر کردن ۱ نقش..."
+    "waitingToFillOneRole": "در انتظار پر کردن ۱ نقش...",
+    "closeArchive": "بستن بایگانی"
 }

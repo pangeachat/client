@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-24 11:42:18.635865",
+    "@@last_modified": "2026-07-24 11:59:36.205226",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Vhara kutsvaga",
     "subscriptionsNotAvailableInApp": "Zvinonyoreswa hazvigone kutengwa muapp",
     "subscribeOnTheWeb": "Unogona kunyoresa pawebhu pa pangea.chat",
-    "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete..."
+    "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete...",
+    "closeArchive": "Vhara dura"
 }

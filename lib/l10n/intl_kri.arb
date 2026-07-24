@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-24 11:42:15.066841",
+    "@@last_modified": "2026-07-24 11:59:33.990402",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Kolos di patapata",
     "subscriptionsNotAvailableInApp": "Yu nɔ go ebul bay sɔbskripshɔn insay di app",
     "subscribeOnTheWeb": "Yu go ebul sɔbskrayb pan di wɛb na pangea.chat",
-    "waitingToFillOneRole": "De wet fɔ fil wan rol..."
+    "waitingToFillOneRole": "De wet fɔ fil wan rol...",
+    "closeArchive": "Klos achiv"
 }

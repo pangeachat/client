@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-24 11:42:14.701235",
+    "@@last_modified": "2026-07-24 11:59:32.852314",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10129,5 +10129,6 @@
     "closeSearch": "Zatvori pretraživanje",
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
     "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat",
-    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge..."
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
+    "closeArchive": "Zatvori arhivu"
 }

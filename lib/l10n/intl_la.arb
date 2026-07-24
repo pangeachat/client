@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-24 11:42:18.958114",
+    "@@last_modified": "2026-07-24 11:59:34.007163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2039,5 +2039,6 @@
     "closeSearch": "Claudere quaestionem",
     "subscriptionsNotAvailableInApp": "Subscriptiones in app emi non possunt",
     "subscribeOnTheWeb": "Subscribere potes in interrete apud pangea.chat",
-    "waitingToFillOneRole": "Exspectans ad implendum 1 munus..."
+    "waitingToFillOneRole": "Exspectans ad implendum 1 munus...",
+    "closeArchive": "Claudere archivum"
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
@@ -39,13 +38,9 @@ class AnalyticsNavigationUtil {
       }
     }
 
-    final panelOpen = parseOpenPanels(uri).right.any(
-      (t) => const {
-        PanelTypesEnum.analytics,
-        PanelTypesEnum.vocab,
-        PanelTypesEnum.grammar,
-      }.contains(t.type),
-    );
+    final panelOpen = parseOpenPanels(
+      uri,
+    ).right.any((t) => t.type.isNonPracticeAnalyticsPanel);
 
     // A completed activity session is a real (locked) chat whose summary is
     // posted as a message in its own timeline (not a separate card). Open the

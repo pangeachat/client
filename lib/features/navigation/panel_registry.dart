@@ -359,3 +359,27 @@ class NewPrivateChatPanelDef extends PanelDef {
          priority: 10,
        );
 }
+
+class ArchivePanelDef extends PanelDef {
+  const ArchivePanelDef({
+    super.minWidth = PanelWidths.listMin,
+    super.reasonableMinWidth = PanelWidths.listComfort,
+    super.idealWidth = PanelWidths.listIdeal,
+    super.priority = 10,
+  }) : super(type: PanelTypesEnum.archive, column: PanelColumn.left);
+}
+
+class ArchivedRoomPanelDef extends PanelDef {
+  const ArchivedRoomPanelDef({
+    super.minWidth = PanelWidths.wideMin,
+    super.reasonableMinWidth = PanelWidths.wideComfort,
+    super.idealWidth = PanelWidths.wideIdeal,
+    super.priority = 30,
+  }) : super(
+         type: PanelTypesEnum.archivedroom,
+         column: PanelColumn.left,
+         parent: PanelTypesEnum.archive,
+         siblingGroups: const {'liveView'},
+         pushable: true, // chat → members / search / invite
+       );
+}

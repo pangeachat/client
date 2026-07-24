@@ -23,7 +23,6 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
-import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -233,31 +232,14 @@ class WorkspaceShell extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      /// The route canvas, as one stable child so the sideView Navigator never
-                      /// remounts when the canvas mode changes:
-                      ///  • mapHole → Offstage so pan/zoom/tap reach the map below.
-                      ///  • detail → capped, bounded by the right panel zone; map peeks (a
-                      ///    route-driven page — a course-wizard step, a public-course preview, a
-                      ///    chat archive; the activity plan is a left panel now, not here).
+                      /// The route canvas, as one stable child
                       Positioned(
                         left: l.leftInset,
                         top: 0,
                         bottom: 0,
-                        right: l.canvas == CanvasMode.detail ? null : 0,
-                        width: l.canvas == CanvasMode.detail
-                            ? l.detailWidth
-                            : null,
-                        child: Offstage(
-                          // A map hole shows the full map through (the world root, or an
-                          // activity / room / course riding over it as a left panel).
-                          // Otherwise the center detail (a course-wizard step, a
-                          // public-course preview, a chat archive) gets the same floating-card
-                          // chrome as the column panels via [PanelCard].
-                          offstage: l.canvas == CanvasMode.mapHole,
-                          child: l.canvas == CanvasMode.detail
-                              ? PanelCard(child: l.canvasChild)
-                              : l.canvasChild,
-                        ),
+                        right: 0,
+                        width: null,
+                        child: Offstage(child: l.canvasChild),
                       ),
 
                       /// The narrow floating nav widget: the 4-item rail with the
@@ -383,9 +365,7 @@ class WorkspaceShell extends StatelessWidget {
                       /// heads). A full-screen chat hosts the avatar in its own app bar
                       /// instead, and a route-driven detail page shows nothing. See
                       /// `routing.instructions.md` → Single-column analytics nav bar.
-                      if (l.isColumnMode &&
-                          l.mapVisible &&
-                          l.allocation.clusterVisible)
+                      if (l.isColumnMode && l.allocation.clusterVisible)
                         Positioned(
                           top: _ShellLayout.chromeMargin,
                           right: _ShellLayout.chromeMargin,
@@ -491,9 +471,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final cavityToken = layout.cavityIndex == null
         ? null
         : layout.leftTokens[layout.cavityIndex!];
-    final isCourseCavity =
-        cavityToken?.type == PanelTypesEnum.course ||
-        cavityToken?.type == PanelTypesEnum.coursepage;
+    final isCourseCavity = cavityToken?.type.isCoursePanel == true;
     final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
     final cavitySection = cavityToken?.type.cavitySection;
 
@@ -659,9 +637,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             keepRoom: false,
             clearRight: true,
           ),
-          // The rail only emits the three sections above; any other AppSection
-          // value falls back to home.
-          _ => WorkspaceNav.clearAll(),
         }),
         cavitySection: cavitySection,
         // The shortcut hosts the cavity when the hosted course sheet IS the
@@ -688,7 +663,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
-        cavityDefaultsToPeek: cavityToken?.type == PanelTypesEnum.course,
+        cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
         // Dismissing the activity plan sheet (drag down, or its own back/X)
         // CLOSES the plan — dropping its token clears the map's activity
         // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
@@ -781,14 +756,7 @@ class _ShellLayout {
   /// padding) from [PanelAllocator].
   final WorkspaceLayout allocation;
 
-  /// The effective center canvas. An open activity is NOT a canvas mode anymore
-  /// (#7385) — it rides as a left panel; this is `detail` only for route-driven
-  /// pages (a course-wizard step, a public-course preview, a chat archive), else
-  /// `mapHole`.
-  final CanvasMode canvas;
-
-  /// The route-driven center detail child (a course-wizard step, a public-course
-  /// preview, a chat archive), else the route [sideView]. The activity plan is no
+  /// The route [sideView]. The activity plan is no
   /// longer rendered here — it is a left panel hosted by [WorkspaceLeftPanel].
   final Widget canvasChild;
 
@@ -820,17 +788,9 @@ class _ShellLayout {
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
   final bool isColumnMode;
 
-  /// The map shows behind as a map hole (full) or, in column mode, alongside a
-  /// detail; this gates the cluster.
-  final bool mapVisible;
-
   /// Where the left column ends — the center detail and the map's left camera
   /// padding both begin here so neither slides under a left panel.
   final double leftInset;
-
-  /// The route-driven center detail width, bounded so it can never slide under a
-  /// panel (null when there is no bounded center detail).
-  final double? detailWidth;
 
   /// Map camera left padding (the left inset plus any center detail width).
   final double mapLeftOverlay;
@@ -855,16 +815,13 @@ class _ShellLayout {
     required this.leftTokens,
     required this.rightTokens,
     required this.allocation,
-    required this.canvas,
     required this.canvasChild,
     required this.cavityIndex,
     required this.hasCavity,
     required this.navWidgetVisible,
     required this.analyticsBarVisible,
     required this.isColumnMode,
-    required this.mapVisible,
     required this.leftInset,
-    required this.detailWidth,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
     required this.availableVisibleMapWidth,
@@ -915,10 +872,6 @@ class _ShellLayout {
     // it.
     final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
 
-    // The effective canvas: `detail` only for route-driven pages (a course-wizard
-    // step, a public-course preview, a chat archive); `mapHole` otherwise. An open
-    // activity rides as a left panel, not a canvas (#7385).
-    final canvas = canvasFor(state, isColumnMode);
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
     final viewport = MediaQuery.sizeOf(context).width;
@@ -981,18 +934,8 @@ class _ShellLayout {
       }
     }
 
-    // A route-driven center-detail page on a narrow screen (a course-wizard
-    // step, a public-course preview, a chat archive, the new-private-chat
-    // form) is a FULL-SCREEN surface (routing.instructions.md → Full-screen
-    // surfaces): it carries its own app-bar navigation, so the nav widget
-    // hides, no cavity seats over it, and the analytics bar collapses —
-    // instead of the chrome painting over the page's controls.
-    final narrowDetail = !isColumnMode && canvas == CanvasMode.detail;
     int? cavityIndex;
-    if (!isColumnMode &&
-        !narrowDetail &&
-        focusedNarrowType != null &&
-        !focusedIsRight) {
+    if (!isColumnMode && focusedNarrowType != null && !focusedIsRight) {
       for (var i = 0; i < leftTokens.length; i++) {
         if (leftTokens[i].type.isCavity &&
             layout.left[i].vis == PanelVis.full) {
@@ -1008,10 +951,7 @@ class _ShellLayout {
     // sheet, #7530) — and is covered by a focused full-screen surface (a
     // room/session, a center-detail page, or a right panel expanding over it).
     final navWidgetVisible =
-        !isColumnMode &&
-        navRail &&
-        !narrowDetail &&
-        (focusedNarrowType == null || hasCavity);
+        !isColumnMode && navRail && (focusedNarrowType == null || hasCavity);
 
     // The analytics NAV BAR mounts only where it is navigation: over the map,
     // a cavity (including the activity plan's sheet), and an open right panel
@@ -1022,14 +962,7 @@ class _ShellLayout {
     final analyticsBarVisible =
         !isColumnMode &&
         navRail &&
-        !narrowDetail &&
         (focusedNarrowType == null || hasCavity || focusedIsRight);
-
-    // The map shows behind as a map hole (full) or — in column mode — alongside
-    // a detail; this gates the cluster.
-    final mapVisible =
-        canvas == CanvasMode.mapHole ||
-        (isColumnMode && canvas == CanvasMode.detail);
 
     // Where the left column ends. With `?left=` panels the allocator computes
     // it (the right edge of the last left panel, `leftCovered`); otherwise it's
@@ -1043,33 +976,7 @@ class _ShellLayout {
         ? 0.0
         : (hasLeftTokens ? layout.mapLeftOverlay : columnWidth);
 
-    // Bound the route-driven center detail by the left inset and the right-covered
-    // width so it can never slide under a panel (the non-overlap guarantee). Only
-    // route-driven pages use the center detail now — the activity is a left panel.
-    //
-    // The right reservation is the larger of the right column's coverage (which
-    // already contains the cluster gutter when right panels are open) and the
-    // bare gutter when the column is empty but the cluster still shows — the
-    // allocator's empty-panel early return never computes the gutter, so a
-    // detail route with no panels open (a course-wizard step, a public-course
-    // preview, a chat archive) must reserve it here. Narrow mode draws no
-    // cluster, so it reserves nothing.
-    final detailRightReserved = math.max(
-      layout.mapRightOverlay,
-      isColumnMode && layout.clusterVisible
-          ? PanelAllocator.clusterGutter
-          : 0.0,
-    );
-    final detailWidth = canvas == CanvasMode.detail
-        ? math.min(
-            PanelAllocator.detailMax,
-            math.max(0.0, viewport - leftInset - detailRightReserved),
-          )
-        : null;
-    final mapLeftOverlay = hasCavity
-        ? 0.0
-        : leftInset +
-              (canvas == CanvasMode.detail ? (detailWidth ?? 0.0) : 0.0);
+    final mapLeftOverlay = leftInset;
 
     // The narrow activity-plan sheet covers the bottom of the full-width map —
     // the band the left/right overlays don't model. Pad the camera's bottom by
@@ -1125,8 +1032,7 @@ class _ShellLayout {
     // above it, so it does not clear the pin. The map clears its own selection
     // in response. See `routing.instructions.md`.
     final mapCoveredByPanel =
-        !isColumnMode &&
-        ((focusedNarrowType != null && !hasCavity) || narrowDetail);
+        !isColumnMode && (focusedNarrowType != null && !hasCavity);
 
     // Route-driven center detail only (a course-wizard step, a public-course
     // preview, a chat archive). The activity plan is a left panel now, not a canvas
@@ -1138,16 +1044,13 @@ class _ShellLayout {
       leftTokens: leftTokens,
       rightTokens: rightTokens,
       allocation: layout,
-      canvas: canvas,
       canvasChild: canvasChild,
       cavityIndex: cavityIndex,
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
       analyticsBarVisible: analyticsBarVisible,
       isColumnMode: isColumnMode,
-      mapVisible: mapVisible,
       leftInset: leftInset,
-      detailWidth: detailWidth,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
       availableVisibleMapWidth: availableVisibleMapWidth,
