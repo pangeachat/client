@@ -11,7 +11,6 @@ import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
-import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -29,24 +28,19 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Give the empty state the panel's close control (#7746): without a header
-    // the "no longer participating" message stranded the user with no way to
-    // dismiss the panel back to the map. Mirrors the chrome of sibling subpages.
-    final emptyPage = Column(
-      children: [
-        PanelHeader(leading: closeButton, title: ''),
-        Expanded(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                L10n.of(context).youAreNoLongerParticipatingInThisChat,
-                textAlign: TextAlign.center,
-              ),
-            ),
+    // Give the empty state the panel's close control (#7746)
+    // to avoid stranding the user
+    final emptyPage = Scaffold(
+      appBar: AppBar(leading: closeButton),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            L10n.of(context).youAreNoLongerParticipatingInThisChat,
+            textAlign: TextAlign.center,
           ),
         ),
-      ],
+      ),
     );
 
     final id = param?.id;

@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
-import 'package:fluffychat/routes/world/panel_header.dart';
 
 void main() {
   testWidgets(
@@ -43,9 +42,8 @@ void main() {
         find.text(l10n.youAreNoLongerParticipatingInThisChat),
         findsOneWidget,
       );
-      // The empty state now carries the panel header + the injected close
+      // The empty state now carries the injected close
       // control, so the user can dismiss it back to the map.
-      expect(find.byType(PanelHeader), findsOneWidget);
       expect(find.byKey(closeKey), findsOneWidget);
     },
   );
