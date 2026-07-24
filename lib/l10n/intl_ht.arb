@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-23 11:48:55.712766",
+    "@@last_modified": "2026-07-24 11:42:13.301996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Chèche kou piblik",
     "closeSearch": "Fèmen rechèch",
     "subscriptionsNotAvailableInApp": "Ou pa ka achte abònman nan app a",
-    "subscribeOnTheWeb": "Ou ka abòne sou sit entènèt la nan pangea.chat"
+    "subscribeOnTheWeb": "Ou ka abòne sou sit entènèt la nan pangea.chat",
+    "waitingToFillOneRole": "Nap tann pou nou ranpli 1 wòl..."
 }

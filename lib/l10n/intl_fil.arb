@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-23 11:48:54.415887",
+    "@@last_modified": "2026-07-24 11:42:11.999336",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10558,5 +10558,6 @@
     "searchPublicCourses": "Maghanap ng mga pampublikong kurso",
     "closeSearch": "Isara ang paghahanap",
     "subscriptionsNotAvailableInApp": "Hindi mabibili ang mga subscription sa app",
-    "subscribeOnTheWeb": "Maaari kang mag-subscribe sa web sa pangea.chat"
+    "subscribeOnTheWeb": "Maaari kang mag-subscribe sa web sa pangea.chat",
+    "waitingToFillOneRole": "Naghihintay na mapunan ang 1 role..."
 }

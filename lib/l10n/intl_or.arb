@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-23 11:48:59.638849",
+    "@@last_modified": "2026-07-24 11:42:17.597543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "ସାର୍ବଜନୀନ କୋର୍ସଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ",
     "closeSearch": "ସର୍ଚ୍ଚ ବନ୍ଦ କରନ୍ତୁ",
     "subscriptionsNotAvailableInApp": "ଆପ୍‌ରେ ସବ୍‌ସ୍କ୍ରିପ୍ସନ୍ କିଣାଯାଇପାରିବ ନାହିଁ",
-    "subscribeOnTheWeb": "ଆପଣ pangea.chat ୱେବ୍‌ସାଇଟ୍‌ରେ ସବ୍‌ସ୍କ୍ରାଇବ୍ କରିପାରିବେ"
+    "subscribeOnTheWeb": "ଆପଣ pangea.chat ୱେବ୍‌ସାଇଟ୍‌ରେ ସବ୍‌ସ୍କ୍ରାଇବ୍ କରିପାରିବେ",
+    "waitingToFillOneRole": "ଗୋଟିଏ ଭୂମିକା ପୂରଣ କରିବାକୁ ଅପେକ୍ଷା କରାଯାଉଛି..."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-23 11:48:52.818406",
+    "@@last_modified": "2026-07-24 11:42:10.343712",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9998,5 +9998,6 @@
     "searchPublicCourses": "البحث في الدورات التدريبية العامة",
     "closeSearch": "إغلاق البحث",
     "subscriptionsNotAvailableInApp": "لا يمكن شراء الاشتراكات من داخل التطبيق",
-    "subscribeOnTheWeb": "يمكنك الاشتراك عبر الويب على pangea.chat"
+    "subscribeOnTheWeb": "يمكنك الاشتراك عبر الويب على pangea.chat",
+    "waitingToFillOneRole": "في انتظار شغل وظيفة واحدة..."
 }

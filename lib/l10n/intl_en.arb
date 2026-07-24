@@ -4768,5 +4768,6 @@
     "searchCoursePlans": "Search course plans",
     "searchPublicCourses": "Search public courses",
     "closeSearch": "Close search",
-    "closeArchive": "Close archive"
+    "closeArchive": "Close archive",
+    "waitingToFillOneRole": "Waiting to fill 1 role..."
 }

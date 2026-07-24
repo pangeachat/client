@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-23 11:48:58.983002",
+    "@@last_modified": "2026-07-24 11:42:17.738971",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Sakani maphunziro a anthu onse",
     "closeSearch": "Tsekani kusaka",
     "subscriptionsNotAvailableInApp": "Zolembetsa sizingagulidwe mu pulogalamu",
-    "subscribeOnTheWeb": "Mutha kulembetsa pa intaneti pa pangea.chat"
+    "subscribeOnTheWeb": "Mutha kulembetsa pa intaneti pa pangea.chat",
+    "waitingToFillOneRole": "Tikudikira kuti tigwiritse ntchito udindo umodzi..."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:55.738267",
+    "@@last_modified": "2026-07-24 11:42:14.133530",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9765,5 +9765,6 @@
     "searchPublicCourses": "Cari kursus publik",
     "closeSearch": "Tutup pencarian",
     "subscriptionsNotAvailableInApp": "Langganan tidak dapat dibeli di aplikasi",
-    "subscribeOnTheWeb": "Anda dapat berlangganan di web di pangea.chat"
+    "subscribeOnTheWeb": "Anda dapat berlangganan di web di pangea.chat",
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peran..."
 }

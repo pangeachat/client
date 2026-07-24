@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-23 11:48:56.222916",
+    "@@last_modified": "2026-07-24 11:42:14.502245",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Chọọ ọmụmụ ọha",
     "closeSearch": "Mechie nchọta",
     "subscriptionsNotAvailableInApp": "Enweghị ike ịzụta ndebanye aha n'ime ngwa",
-    "subscribeOnTheWeb": "Ị nwere ike denye aha na webụsaịtị na pangea.chat"
+    "subscribeOnTheWeb": "Ị nwere ike denye aha na webụsaịtị na pangea.chat",
+    "waitingToFillOneRole": "Na-eche ka mmadụ mejupụta otu ọrụ..."
 }

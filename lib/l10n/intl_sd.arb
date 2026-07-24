@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-23 11:49:00.174021",
+    "@@last_modified": "2026-07-24 11:42:18.677623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "عوامي ڪورس ڳوليو",
     "closeSearch": "ڳولا بند ڪريو",
     "subscriptionsNotAvailableInApp": "رڪنيت ايپ ۾ خريد نه ٿي ڪري سگهجي",
-    "subscribeOnTheWeb": "توهان pangea.chat تي ويب تي رڪنيت حاصل ڪري سگهو ٿا"
+    "subscribeOnTheWeb": "توهان pangea.chat تي ويب تي رڪنيت حاصل ڪري سگهو ٿا",
+    "waitingToFillOneRole": "هڪ ڪردار ڀرڻ جو انتظار آهي..."
 }

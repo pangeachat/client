@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-23 11:48:59.544140",
+    "@@last_modified": "2026-07-24 11:42:17.457811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "د عامه کورسونو لټون",
     "closeSearch": "لټون بند کړئ",
     "subscriptionsNotAvailableInApp": "پیرودنې په اپلیکیشن کې نشي اخیستل کیدی",
-    "subscribeOnTheWeb": "تاسو کولی شئ په pangea.chat کې په ویب پاڼه کې ګډون وکړئ"
+    "subscribeOnTheWeb": "تاسو کولی شئ په pangea.chat کې په ویب پاڼه کې ګډون وکړئ",
+    "waitingToFillOneRole": "د 1 رول ډکولو ته انتظار باسو..."
 }

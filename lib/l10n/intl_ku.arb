@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-23 11:48:57.275846",
+    "@@last_modified": "2026-07-24 11:42:15.593027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "خولە گشتییەکان بگەڕێ",
     "closeSearch": "گەڕان دابخە",
     "subscriptionsNotAvailableInApp": "بەشدارییەکان ناتوانرێت لەناو ئەپەکەدا بکڕدرێن",
-    "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat"
+    "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat",
+    "waitingToFillOneRole": "چاوەڕێی پڕکردنەوەی 1 ڕۆڵ دەکەین..."
 }

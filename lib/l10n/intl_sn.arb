@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-23 11:49:00.306780",
+    "@@last_modified": "2026-07-24 11:42:18.635865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Tsvaga zvidzidzo zvevanhu vose",
     "closeSearch": "Vhara kutsvaga",
     "subscriptionsNotAvailableInApp": "Zvinonyoreswa hazvigone kutengwa muapp",
-    "subscribeOnTheWeb": "Unogona kunyoresa pawebhu pa pangea.chat"
+    "subscribeOnTheWeb": "Unogona kunyoresa pawebhu pa pangea.chat",
+    "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete..."
 }

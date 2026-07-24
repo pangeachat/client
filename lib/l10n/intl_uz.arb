@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-23 11:49:01.731574",
+    "@@last_modified": "2026-07-24 11:42:20.633999",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9696,5 +9696,6 @@
     "searchPublicCourses": "Ommaviy kurslarni qidirish",
     "closeSearch": "Qidiruvni yopish",
     "subscriptionsNotAvailableInApp": "Obunalar ilovada mavjud emas",
-    "subscribeOnTheWeb": "pangea.chat veb-saytida obuna boʻlishingiz mumkin"
+    "subscribeOnTheWeb": "pangea.chat veb-saytida obuna boʻlishingiz mumkin",
+    "waitingToFillOneRole": "1 ta rolni to'ldirish kutilmoqda..."
 }

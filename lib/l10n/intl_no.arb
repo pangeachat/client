@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-23 11:48:58.721840",
+    "@@last_modified": "2026-07-24 11:42:17.399836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Søk i offentlige kurs",
     "closeSearch": "Lukk søk",
     "subscriptionsNotAvailableInApp": "Abonnement kan ikke kjøpes i appen",
-    "subscribeOnTheWeb": "Du kan abonnere på nettstedet pangea.chat"
+    "subscribeOnTheWeb": "Du kan abonnere på nettstedet pangea.chat",
+    "waitingToFillOneRole": "Venter på å fylle 1 rolle ..."
 }

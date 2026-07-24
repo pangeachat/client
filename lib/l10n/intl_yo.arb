@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-23 11:49:02.594837",
+    "@@last_modified": "2026-07-24 11:42:20.791503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Wa àwọn ìkẹ́kọ̀ọ́ gbogbo gbò",
     "closeSearch": "Pa àwárí",
     "subscriptionsNotAvailableInApp": "Ko le ra àbáwọlé nínú app",
-    "subscribeOnTheWeb": "O le ṣe àbáwọlé lórí ayélujára ní pangea.chat"
+    "subscribeOnTheWeb": "O le ṣe àbáwọlé lórí ayélujára ní pangea.chat",
+    "waitingToFillOneRole": "Nduro lati kun ipa 1..."
 }
