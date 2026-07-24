@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-23 11:48:56.498913",
+    "@@last_modified": "2026-07-24 11:42:14.160770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Golèk kursus umum",
     "closeSearch": "Tutup panelusuran",
     "subscriptionsNotAvailableInApp": "Langganan ora bisa dituku ing aplikasi",
-    "subscribeOnTheWeb": "Sampeyan bisa langganan ing web ing pangea.chat"
+    "subscribeOnTheWeb": "Sampeyan bisa langganan ing web ing pangea.chat",
+    "waitingToFillOneRole": "Ngenteni ngisi 1 peran..."
 }

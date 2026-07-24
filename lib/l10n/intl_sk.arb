@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-23 11:49:00.141962",
+    "@@last_modified": "2026-07-24 11:42:18.615790",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,6 @@
     "searchPublicCourses": "Hľadať verejné kurzy",
     "closeSearch": "Zavrieť vyhľadávanie",
     "subscriptionsNotAvailableInApp": "Predplatné nie je možné zakúpiť v aplikácii",
-    "subscribeOnTheWeb": "Môžete sa prihlásiť na odber na webe na adrese pangea.chat"
+    "subscribeOnTheWeb": "Môžete sa prihlásiť na odber na webe na adrese pangea.chat",
+    "waitingToFillOneRole": "Čaká sa na obsadenie 1 roly..."
 }

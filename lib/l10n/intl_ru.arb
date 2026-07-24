@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-23 11:48:59.883187",
+    "@@last_modified": "2026-07-24 11:42:18.241496",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10666,5 +10666,6 @@
     "searchPublicCourses": "Искать публичные курсы",
     "closeSearch": "Закрыть поиск",
     "subscriptionsNotAvailableInApp": "Подписки нельзя приобрести в приложении",
-    "subscribeOnTheWeb": "Вы можете подписаться на сайте pangea.chat"
+    "subscribeOnTheWeb": "Вы можете подписаться на сайте pangea.chat",
+    "waitingToFillOneRole": "Ожидание заполнения 1 роли..."
 }

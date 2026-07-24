@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:49:02.689015",
+    "@@last_modified": "2026-07-24 11:42:21.098550",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,6 @@
     "searchPublicCourses": "搜尋公開課程",
     "closeSearch": "關閉搜尋",
     "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
-    "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱"
+    "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱",
+    "waitingToFillOneRole": "正在等待填補 1 個職位…"
 }

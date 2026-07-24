@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:49:00.631313",
+    "@@last_modified": "2026-07-24 11:42:19.193590",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10647,5 +10647,6 @@
     "searchPublicCourses": "Pretražite javne kurseve",
     "closeSearch": "Zatvori pretragu",
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
-    "subscribeOnTheWeb": "Možete se pretplatiti na vebu na pangea.chat"
+    "subscribeOnTheWeb": "Možete se pretplatiti na vebu na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge..."
 }

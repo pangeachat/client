@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-23 11:48:55.584525",
+    "@@last_modified": "2026-07-24 11:42:13.513543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Nrhiav cov kev kawm pej xeem",
     "closeSearch": "Kaw kev tshawb nrhiav",
     "subscriptionsNotAvailableInApp": "Tsis tuaj yeem yuav cov nyiaj them hauv app",
-    "subscribeOnTheWeb": "Koj tuaj yeem sau npe hauv lub vev xaib ntawm pangea.chat"
+    "subscribeOnTheWeb": "Koj tuaj yeem sau npe hauv lub vev xaib ntawm pangea.chat",
+    "waitingToFillOneRole": "Tos kom tau ib txoj haujlwm..."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-23 11:48:58.114454",
+    "@@last_modified": "2026-07-24 11:42:16.695807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Cari kursus awam",
     "closeSearch": "Tutup carian",
     "subscriptionsNotAvailableInApp": "Langganan tidak boleh dibeli dalam aplikasi",
-    "subscribeOnTheWeb": "Anda boleh melanggan di web di pangea.chat"
+    "subscribeOnTheWeb": "Anda boleh melanggan di web di pangea.chat",
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peranan..."
 }

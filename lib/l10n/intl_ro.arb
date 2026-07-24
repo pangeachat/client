@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:59.935830",
+    "@@last_modified": "2026-07-24 11:42:21.723877",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10424,5 +10424,6 @@
     "searchPublicCourses": "Căutați cursuri publice",
     "closeSearch": "Închide căutarea",
     "subscriptionsNotAvailableInApp": "Abonamentele nu pot fi achiziționate în aplicație",
-    "subscribeOnTheWeb": "Te poți abona pe web la pangea.chat"
+    "subscribeOnTheWeb": "Te poți abona pe web la pangea.chat",
+    "waitingToFillOneRole": "Se așteaptă ocuparea unui rol..."
 }

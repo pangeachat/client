@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-23 11:49:01.749093",
+    "@@last_modified": "2026-07-24 11:42:20.295666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "عوامی کورسز تلاش کریں",
     "closeSearch": "تلاش بند کریں",
     "subscriptionsNotAvailableInApp": "ایپ میں سبسکرپشنز خریدی نہیں جا سکتیں",
-    "subscribeOnTheWeb": "آپ pangea.chat پر ویب پر سبسکرائب کر سکتے ہیں"
+    "subscribeOnTheWeb": "آپ pangea.chat پر ویب پر سبسکرائب کر سکتے ہیں",
+    "waitingToFillOneRole": "1 کردار پُر ہونے کا انتظار ہے..."
 }

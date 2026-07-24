@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-23 11:49:01.415427",
+    "@@last_modified": "2026-07-24 11:42:20.464034",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Ҷустуҷӯи курсҳои оммавӣ",
     "closeSearch": "Ҷустуҷӯро пӯшед",
     "subscriptionsNotAvailableInApp": "Обунаҳоро дар дохили барнома харидан мумкин нест",
-    "subscribeOnTheWeb": "Шумо метавонед дар вебсайт дар pangea.chat обуна шавед"
+    "subscribeOnTheWeb": "Шумо метавонед дар вебсайт дар pangea.chat обуна шавед",
+    "waitingToFillOneRole": "Интизори пур кардани 1 нақш..."
 }

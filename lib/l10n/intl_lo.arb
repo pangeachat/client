@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-23 11:48:57.351639",
+    "@@last_modified": "2026-07-24 11:42:15.477302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ",
     "closeSearch": "ປິດການຊອກຫາ",
     "subscriptionsNotAvailableInApp": "ບໍ່ສາມາດຊື້ການສະໝັກໃຊ້ໃນແອັບໄດ້",
-    "subscribeOnTheWeb": "ທ່ານສາມາດສະໝັກໃຊ້ຜ່ານເວັບໄດ້ທີ່ pangea.chat"
+    "subscribeOnTheWeb": "ທ່ານສາມາດສະໝັກໃຊ້ຜ່ານເວັບໄດ້ທີ່ pangea.chat",
+    "waitingToFillOneRole": "ລໍຖ້າການຕື່ມ 1 ບົດບາດ..."
 }

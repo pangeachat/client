@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:49:00.934642",
+    "@@last_modified": "2026-07-24 11:42:19.659192",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9784,5 +9784,6 @@
     "searchPublicCourses": "பொதுப் பாடங்களைத் தேடு",
     "closeSearch": "தேடலை மூடு",
     "subscriptionsNotAvailableInApp": "பயன்பாட்டில் சந்தாக்களை வாங்க முடியாது",
-    "subscribeOnTheWeb": "pangea.chat என்ற இணையதளத்தில் நீங்கள் குழுசேரலாம்"
+    "subscribeOnTheWeb": "pangea.chat என்ற இணையதளத்தில் நீங்கள் குழுசேரலாம்",
+    "waitingToFillOneRole": "1 பாத்திரத்தை நிரப்ப காத்திருக்கிறது..."
 }

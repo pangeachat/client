@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:53.215283",
+    "@@last_modified": "2026-07-24 11:42:11.000747",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9819,5 +9819,6 @@
     "searchPublicCourses": "Cercar cursos públics",
     "closeSearch": "Tancar cerca",
     "subscriptionsNotAvailableInApp": "Les subscripcions no es poden comprar a l'aplicació",
-    "subscribeOnTheWeb": "Pots subscriure't al web a pangea.chat"
+    "subscribeOnTheWeb": "Pots subscriure't al web a pangea.chat",
+    "waitingToFillOneRole": "Esperant per cobrir 1 rol..."
 }

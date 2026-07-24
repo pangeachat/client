@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-23 11:48:54.092698",
+    "@@last_modified": "2026-07-24 11:42:13.019541",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "searchPublicCourses": "Ikastaro publikoak bilatu",
     "closeSearch": "Bilaketa itxi",
     "subscriptionsNotAvailableInApp": "Harpidetzak ezin dira aplikazioan erosi",
-    "subscribeOnTheWeb": "pangea.chat webgunean harpidetu zaitezke"
+    "subscribeOnTheWeb": "pangea.chat webgunean harpidetu zaitezke",
+    "waitingToFillOneRole": "Rol 1 betetzeko zain..."
 }

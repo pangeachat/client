@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:56.704267",
+    "@@last_modified": "2026-07-24 11:42:14.875849",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9885,5 +9885,6 @@
     "searchPublicCourses": "공개 강의 검색",
     "closeSearch": "검색 닫기",
     "subscriptionsNotAvailableInApp": "앱에서 구독을 구매할 수 없습니다",
-    "subscribeOnTheWeb": "pangea.chat 웹사이트에서 구독할 수 있습니다"
+    "subscribeOnTheWeb": "pangea.chat 웹사이트에서 구독할 수 있습니다",
+    "waitingToFillOneRole": "1개의 역할이 채워지기를 기다리는 중..."
 }

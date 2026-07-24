@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-23 11:48:52.573841",
+    "@@last_modified": "2026-07-24 11:42:10.616796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Pretražite javne kurseve",
     "closeSearch": "Zatvori pretragu",
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
-    "subscribeOnTheWeb": "Možete se pretplatiti na webu na pangea.chat"
+    "subscribeOnTheWeb": "Možete se pretplatiti na webu na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge..."
 }
