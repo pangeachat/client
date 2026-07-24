@@ -52,7 +52,6 @@ class ActivitySuggestionCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(color: theme.colorScheme.surfaceContainer),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Stack(
@@ -107,7 +106,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                           condensed: _starsTotal > 7,
                         ),
                       Row(
-                        mainAxisSize: MainAxisSize.min,
                         spacing: 8.0,
                         children: [
                           if (activity.req.mode.isNotEmpty)
@@ -126,7 +124,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Row(
-                              mainAxisSize: MainAxisSize.min,
                               spacing: 4.0,
                               children: [
                                 Icon(
@@ -146,7 +143,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Row(
-                                mainAxisSize: MainAxisSize.min,
                                 spacing: 4.0,
                                 children: [
                                   Icon(

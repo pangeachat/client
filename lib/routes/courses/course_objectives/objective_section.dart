@@ -49,7 +49,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
   double get _cardWidth => widget.cardWidth ?? (_isColumnMode ? 160.0 : 120.0);
   double get _cardHeight =>
-      widget.cardHeight ?? (_isColumnMode ? 280.0 : 200.0);
+      widget.cardHeight ?? (_isColumnMode ? 280.0 : 225.0);
 
   double get _cardScrollDistance => _cardWidth + widget.spacing;
 
