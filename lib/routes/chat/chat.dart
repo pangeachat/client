@@ -125,6 +125,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
+import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -3252,6 +3253,19 @@ class ChatController extends State<ChatPageWithRoom>
     );
     _displayChatDetailsColumn.value = !_displayChatDetailsColumn.value;
   }
+
+  void showActionsPopup({
+    required User user,
+    required Event event,
+    required BuildContext positionContext,
+  }) => showMemberActionsPopupMenu(
+    context: context,
+    positionContext: positionContext,
+    user: user,
+    onMention: () =>
+        sendController.text += '${event.senderFromMemoryOrFallback.mention} ',
+    room: room,
+  );
 
   @override
   Widget build(BuildContext context) {

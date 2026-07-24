@@ -27,7 +27,6 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 import '../../config/app_config.dart';
 import 'message_content.dart';
 import 'reply_content.dart';
@@ -494,13 +493,10 @@ class Message extends StatelessWidget {
                                           mxContent: user.avatarUrl,
                                           name: user.calcDisplayname(),
                                           onTap: () =>
-                                              showMemberActionsPopupMenu(
-                                                context: context,
+                                              controller.showActionsPopup(
                                                 user: user,
-                                                onMention: onMention,
-                                                // #Pangea
-                                                room: controller.room,
-                                                // Pangea#
+                                                event: event,
+                                                positionContext: context,
                                               ),
                                           presenceUserId: user.stateKey,
                                           presenceBackgroundColor: wallpaperMode
