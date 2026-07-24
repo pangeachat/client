@@ -22,14 +22,14 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(color: theme.colorScheme.surface),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: onTap,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(8.0),
+          decoration: BoxDecoration(color: theme.colorScheme.surface),
           child: Center(child: Icon(direction.icon)),
         ),
       ),
