@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-23 11:48:54.707283",
+    "@@last_modified": "2026-07-24 11:42:13.405919",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "searchPublicCourses": "Buscar cursos públicos",
     "closeSearch": "Pechar busca",
     "subscriptionsNotAvailableInApp": "As subscricións non se poden mercar na aplicación",
-    "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat"
+    "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat",
+    "waitingToFillOneRole": "Agardando para cubrir 1 posto..."
 }

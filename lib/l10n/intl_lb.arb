@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-23 11:48:57.248526",
+    "@@last_modified": "2026-07-24 11:42:15.793331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Ëffentlech Coursen sichen",
     "closeSearch": "Sich zoumaachen",
     "subscriptionsNotAvailableInApp": "Abonnementer kënnen net an der App kaaft ginn",
-    "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren"
+    "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren",
+    "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen..."
 }

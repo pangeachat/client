@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-23 11:49:01.997815",
+    "@@last_modified": "2026-07-24 11:42:20.898240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "זוכן עפֿנטלעכע קורסן",
     "closeSearch": "שליסן זוכן",
     "subscriptionsNotAvailableInApp": "סובסקריפּציעס קענען ניט זיין געקויפט אין דער אַפּ",
-    "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat"
+    "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat",
+    "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע..."
 }

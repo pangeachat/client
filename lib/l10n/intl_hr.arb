@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-23 11:48:56.035429",
+    "@@last_modified": "2026-07-24 11:42:14.701235",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10128,5 +10128,6 @@
     "searchPublicCourses": "Pretražite javne tečajeve",
     "closeSearch": "Zatvori pretraživanje",
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
-    "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat"
+    "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge..."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-23 11:48:59.482033",
+    "@@last_modified": "2026-07-24 11:42:16.473691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "পাবলিক কোর্সশিং থিজিনবা",
     "closeSearch": "থিজিনবা থমজিনবা",
     "subscriptionsNotAvailableInApp": "ꯁꯕꯁꯛꯔꯤꯞꯁꯟꯁ ꯑꯦꯞ ꯑꯁꯤꯗ ꯂꯩꯕ ꯉꯃꯗꯦ",
-    "subscribeOnTheWeb": "ꯅꯍꯥꯛꯅ pangea.chat ꯇ ꯋꯦꯕ ꯑꯁꯤꯗ ꯁꯕꯁꯛꯔꯥꯏꯕ ꯇꯧꯕ ꯌꯥꯏ"
+    "subscribeOnTheWeb": "ꯅꯍꯥꯛꯅ pangea.chat ꯇ ꯋꯦꯕ ꯑꯁꯤꯗ ꯁꯕꯁꯛꯔꯥꯏꯕ ꯇꯧꯕ ꯌꯥꯏ",
+    "waitingToFillOneRole": "1 role fill তৌনবা ঙাইরি..."
 }

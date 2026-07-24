@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:56.347677",
+    "@@last_modified": "2026-07-24 11:42:15.478714",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,6 @@
     "searchPublicCourses": "Cerca corsi pubblici",
     "closeSearch": "Chiudi ricerca",
     "subscriptionsNotAvailableInApp": "Gli abbonamenti non possono essere acquistati nell'app",
-    "subscribeOnTheWeb": "Puoi abbonarti sul web all'indirizzo pangea.chat"
+    "subscribeOnTheWeb": "Puoi abbonarti sul web all'indirizzo pangea.chat",
+    "waitingToFillOneRole": "In attesa di ricoprire 1 ruolo..."
 }

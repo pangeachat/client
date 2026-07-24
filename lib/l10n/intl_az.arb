@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-23 11:48:52.809971",
+    "@@last_modified": "2026-07-24 11:42:10.978648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "İctimai kursları axtar",
     "closeSearch": "Axtarışı bağla",
     "subscriptionsNotAvailableInApp": "Abunəliklər tətbiqdə əldə edilə bilməz",
-    "subscribeOnTheWeb": "pangea.chat saytında abunə ola bilərsiniz"
+    "subscribeOnTheWeb": "pangea.chat saytında abunə ola bilərsiniz",
+    "waitingToFillOneRole": "1 rolun doldurulması gözlənilir..."
 }

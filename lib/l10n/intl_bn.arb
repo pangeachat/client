@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-23 11:48:52.519689",
+    "@@last_modified": "2026-07-24 11:42:10.285347",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10320,5 +10320,6 @@
     "searchPublicCourses": "পাবলিক কোর্স খুঁজুন",
     "closeSearch": "অনুসন্ধান বন্ধ করুন",
     "subscriptionsNotAvailableInApp": "অ্যাপে সাবস্ক্রিপশন কেনা যাবে না",
-    "subscribeOnTheWeb": "আপনি pangea.chat-এ ওয়েবে সাবস্ক্রাইব করতে পারেন"
+    "subscribeOnTheWeb": "আপনি pangea.chat-এ ওয়েবে সাবস্ক্রাইব করতে পারেন",
+    "waitingToFillOneRole": "১টি ভূমিকা পূরণের জন্য অপেক্ষা করা হচ্ছে..."
 }

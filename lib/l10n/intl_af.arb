@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-23 11:48:52.499587",
+    "@@last_modified": "2026-07-24 11:42:10.175939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Soek publieke kursusse",
     "closeSearch": "Sluit soektog",
     "subscriptionsNotAvailableInApp": "Intekeninge kan nie in die toepassing gekoop word nie",
-    "subscribeOnTheWeb": "Jy kan op die web inteken by pangea.chat"
+    "subscribeOnTheWeb": "Jy kan op die web inteken by pangea.chat",
+    "waitingToFillOneRole": "Wag om 1 rol te vul ..."
 }

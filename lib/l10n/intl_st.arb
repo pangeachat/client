@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-23 11:49:00.874478",
+    "@@last_modified": "2026-07-24 11:42:19.599488",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Batla lithupelo tsa sechaba",
     "closeSearch": "Koala patlisiso",
     "subscriptionsNotAvailableInApp": "Ngoliso ha e fumanehe ka har'a app",
-    "subscribeOnTheWeb": "O ka ingolisa webosaeteng ho pangea.chat"
+    "subscribeOnTheWeb": "O ka ingolisa webosaeteng ho pangea.chat",
+    "waitingToFillOneRole": "Ho letetsoe ho tlatsa karolo e le 'ngoe..."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-23 11:48:54.049813",
+    "@@last_modified": "2026-07-24 11:42:11.322305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Chwilio cyrsiau cyhoeddus",
     "closeSearch": "Cau'r chwiliad",
     "subscriptionsNotAvailableInApp": "Ni ellir prynu tanysgrifiadau yn yr ap",
-    "subscribeOnTheWeb": "Gallwch danysgrifio ar y we yn pangea.chat"
+    "subscribeOnTheWeb": "Gallwch danysgrifio ar y we yn pangea.chat",
+    "waitingToFillOneRole": "Yn aros i lenwi 1 rôl..."
 }

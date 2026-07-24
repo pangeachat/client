@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-23 11:48:57.138214",
+    "@@last_modified": "2026-07-24 11:42:15.700595",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Коомдук курстарды издөө",
     "closeSearch": "Издөөнү жабуу",
     "subscriptionsNotAvailableInApp": "Колдонмодо жазылууларды сатып алуу мүмкүн эмес",
-    "subscribeOnTheWeb": "Сиз pangea.chat сайтынан жазылсаңыз болот"
+    "subscribeOnTheWeb": "Сиз pangea.chat сайтынан жазылсаңыз болот",
+    "waitingToFillOneRole": "1 ролду толтуруу күтүлүүдө..."
 }

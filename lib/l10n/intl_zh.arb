@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-23 11:49:02.122822",
+    "@@last_modified": "2026-07-24 11:42:21.044739",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "searchPublicCourses": "搜索公共课程",
     "closeSearch": "关闭搜索",
     "subscriptionsNotAvailableInApp": "无法在应用内购买订阅",
-    "subscribeOnTheWeb": "您可以在 pangea.chat 网站上订阅"
+    "subscribeOnTheWeb": "您可以在 pangea.chat 网站上订阅",
+    "waitingToFillOneRole": "正在等待填补 1 个职位..."
 }

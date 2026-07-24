@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-23 11:48:55.033833",
+    "@@last_modified": "2026-07-24 11:42:13.105715",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Neman darussan jama'a",
     "closeSearch": "Rufe bincike",
     "subscriptionsNotAvailableInApp": "Ba za a iya siyan biyan kuɗi a cikin app ba",
-    "subscribeOnTheWeb": "Kuna iya biyan kuɗi a yanar gizo a pangea.chat"
+    "subscribeOnTheWeb": "Kuna iya biyan kuɗi a yanar gizo a pangea.chat",
+    "waitingToFillOneRole": "Ana jiran cike matsayi 1..."
 }

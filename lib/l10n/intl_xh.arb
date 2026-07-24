@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-23 11:49:01.895158",
+    "@@last_modified": "2026-07-24 11:42:20.663450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Khangela izifundo zikawonke-wonke",
     "closeSearch": "Vala ukukhangela",
     "subscriptionsNotAvailableInApp": "Ukubhalisa akufumaneki kule app",
-    "subscribeOnTheWeb": "Ungabhalisa kwiwebhu ku-pangea.chat"
+    "subscribeOnTheWeb": "Ungabhalisa kwiwebhu ku-pangea.chat",
+    "waitingToFillOneRole": "Kulindwe ukuba kuzaliswe indima e-1..."
 }

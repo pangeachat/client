@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-23 11:48:55.088028",
+    "@@last_modified": "2026-07-24 11:42:13.514652",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "જાહેર કોર્સ શોધો",
     "closeSearch": "શોધ બંધ કરો",
     "subscriptionsNotAvailableInApp": "એપ્લિકેશનમાં સબ્સ્ક્રિપ્શન્સ ખરીદી શકાતા નથી",
-    "subscribeOnTheWeb": "તમે pangea.chat પર વેબ પર સબ્સ્ક્રાઇબ કરી શકો છો"
+    "subscribeOnTheWeb": "તમે pangea.chat પર વેબ પર સબ્સ્ક્રાઇબ કરી શકો છો",
+    "waitingToFillOneRole": "1 ભૂમિકા ભરવાની રાહ જોવાઈ રહી છે..."
 }

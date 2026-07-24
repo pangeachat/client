@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-23 11:48:54.117241",
+    "@@last_modified": "2026-07-24 11:42:11.876879",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "searchPublicCourses": "Otsi avalikke kursuseid",
     "closeSearch": "Sulge otsing",
     "subscriptionsNotAvailableInApp": "Tellimusi ei saa rakenduses osta",
-    "subscribeOnTheWeb": "Saate tellida veebis aadressil pangea.chat"
+    "subscribeOnTheWeb": "Saate tellida veebis aadressil pangea.chat",
+    "waitingToFillOneRole": "Ootab 1 rolli täitmist..."
 }

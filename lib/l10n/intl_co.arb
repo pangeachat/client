@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-23 11:48:53.377109",
+    "@@last_modified": "2026-07-24 11:42:10.973287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Circà i corsi publichi",
     "closeSearch": "Chjode a ricerca",
     "subscriptionsNotAvailableInApp": "L'abbunamenti ùn ponu esse acquistati in l'app",
-    "subscribeOnTheWeb": "Pudete abbunà vi nant'à u web à pangea.chat"
+    "subscribeOnTheWeb": "Pudete abbunà vi nant'à u web à pangea.chat",
+    "waitingToFillOneRole": "Aspittendu di riempie 1 rolu..."
 }

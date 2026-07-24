@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-23 11:49:02.413261",
+    "@@last_modified": "2026-07-24 11:42:21.192328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "Sesha izifundo zomphakathi",
     "closeSearch": "Vala usesho",
     "subscriptionsNotAvailableInApp": "Okubhaliselwe akutholakali kuhlelo lokusebenza",
-    "subscribeOnTheWeb": "Ungabhalisa kuwebhu ku-pangea.chat"
+    "subscribeOnTheWeb": "Ungabhalisa kuwebhu ku-pangea.chat",
+    "waitingToFillOneRole": "Ilindele ukugcwalisa indima eyi-1..."
 }

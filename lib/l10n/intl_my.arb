@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-23 11:48:58.565593",
+    "@@last_modified": "2026-07-24 11:42:17.220292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2038,5 +2038,6 @@
     "searchPublicCourses": "အများသုံးသင်တန်းများကို ရှာဖွေပါ",
     "closeSearch": "ရှာဖွေမှုကို ပိတ်ရန်",
     "subscriptionsNotAvailableInApp": "အက်ပ်တွင် စာရင်းသွင်းမှုများကို ဝယ်ယူ၍မရပါ",
-    "subscribeOnTheWeb": "pangea.chat တွင် ဝဘ်မှတစ်ဆင့် စာရင်းသွင်းနိုင်သည်"
+    "subscribeOnTheWeb": "pangea.chat တွင် ဝဘ်မှတစ်ဆင့် စာရင်းသွင်းနိုင်သည်",
+    "waitingToFillOneRole": "အခန်းကဏ္ဍ ၁ ခု ဖြည့်ရန် စောင့်ဆိုင်းနေသည်..."
 }
