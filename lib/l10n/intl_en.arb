@@ -4492,6 +4492,7 @@
     },
     "suggestion": "Pick the best Suggestion",
     "completeActivityButton": "I'm done!",
+    "activityActions": "Activity actions",
     "shorterName": "Please limit name length to 50 characters or fewer.",
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
