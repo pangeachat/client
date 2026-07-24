@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix_api_lite/generated/model.dart';
-
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -52,7 +50,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
-    if (room == null || room.isSpace || room.membership == Membership.leave) {
+    if (room == null || room.isSpace) {
       return emptyPage;
     }
 

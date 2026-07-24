@@ -182,10 +182,7 @@ abstract class WorkspaceNav {
       final next = left
           .where(
             (t) =>
-                t != token &&
-                !_areSiblings(token, t) &&
-                t.type != PanelTypesEnum.course &&
-                t.type != PanelTypesEnum.coursepage,
+                t != token && !_areSiblings(token, t) && !t.type.isCoursePanel,
           )
           .toList();
       next.add(token);
@@ -281,7 +278,7 @@ abstract class WorkspaceNav {
       // in-course "Pick different activity" / "Return to course" buttons route
       // here), so the live-view activity must not co-render beside the card
       // (#7385). A live `room` is kept (a course can scope a chat).
-      ...lists.left.where((t) => !t.type.isCoursePanel),
+      ...lists.left.where((t) => !t.type.shouldDropOnOpenCourse),
     ];
     final parts = WorkspaceQuery.parts(current.query);
     WorkspaceQuery.removeKeys(parts, {'c', 'left'});
@@ -671,12 +668,7 @@ abstract class WorkspaceNav {
     if (page == null || page.isEmpty) {
       next = _mutate(current, 'right', (tokens) {
         final result = tokens
-            .where(
-              (t) =>
-                  t.type != PanelTypesEnum.settings &&
-                  t.type != PanelTypesEnum.settingspage &&
-                  !t.type.isAnalyticsPanel,
-            )
+            .where((t) => !t.type.isSettingsPanel && !t.type.isAnalyticsPanel)
             .toList();
         result.add(const SettingsPanelToken());
         return result;
@@ -867,4 +859,7 @@ abstract class WorkspaceNav {
       return param.subpage != page;
     }).toList(),
   );
+
+  static String openArchivedRoom(Uri current, String roomId) =>
+      openLeft(current, ArchivedRoomPanelToken(RoomTokenParam(id: roomId)));
 }

@@ -10,7 +10,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class Archive extends StatefulWidget {
-  const Archive({super.key});
+  final Widget? closeButton;
+  const Archive({super.key, this.closeButton});
 
   @override
   ArchiveController createState() => ArchiveController();
@@ -73,5 +74,6 @@ class ArchiveController extends State<Archive> {
   }
 
   @override
-  Widget build(BuildContext context) => ArchiveView(this);
+  Widget build(BuildContext context) =>
+      ArchiveView(this, closeButton: widget.closeButton);
 }
