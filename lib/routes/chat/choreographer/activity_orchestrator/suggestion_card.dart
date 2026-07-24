@@ -144,30 +144,35 @@ class SuggestionCardState extends State<SuggestionCard> {
                 SizedBox(height: 40.0, width: 40.0),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 12.0,
-                horizontal: 24.0,
-              ),
-              child: ChoicesArray<OrchestratorSuggestion>(
-                choices: suggestionsModel.shuffledChoices.map((e) {
-                  final isBest = e.type == OrchestratorSuggestionType.best;
-                  final isSelected = e == selected;
-                  return Choice(
-                    value: e,
-                    // Match the IGC SpanCard scheme: green for the correct
-                    // (best) option, red for a distractor.
-                    color: isSelected
-                        ? (isBest ? Colors.green : Colors.red)
-                        : null,
-                    isGold: isBest,
-                  );
-                }).toList(),
-                onPressed: (value, index) => _onChoiceSelected(value),
-                selectedChoiceIndex: selected == null
-                    ? null
-                    : suggestionsModel.shuffledChoices.indexOf(selected),
-                getDisplayCopy: (value) => value.text,
+            ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 250.0),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12.0,
+                    horizontal: 24.0,
+                  ),
+                  child: ChoicesArray<OrchestratorSuggestion>(
+                    choices: suggestionsModel.shuffledChoices.map((e) {
+                      final isBest = e.type == OrchestratorSuggestionType.best;
+                      final isSelected = e == selected;
+                      return Choice(
+                        value: e,
+                        // Match the IGC SpanCard scheme: green for the correct
+                        // (best) option, red for a distractor.
+                        color: isSelected
+                            ? (isBest ? Colors.green : Colors.red)
+                            : null,
+                        isGold: isBest,
+                      );
+                    }).toList(),
+                    onPressed: (value, index) => _onChoiceSelected(value),
+                    selectedChoiceIndex: selected == null
+                        ? null
+                        : suggestionsModel.shuffledChoices.indexOf(selected),
+                    getDisplayCopy: (value) => value.text,
+                  ),
+                ),
               ),
             ),
           ],

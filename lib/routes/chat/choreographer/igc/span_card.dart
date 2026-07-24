@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_mode
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -262,10 +263,10 @@ class _MatchContent extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               isOpen
-                  ? ChoicesArray(
+                  ? ChoicesArray<SpanChoice>(
                       choices: currentMatch.choices?.map((e) {
-                        return Choice(
-                          value: e.value,
+                        return Choice<SpanChoice>(
+                          value: e,
                           color: e.selected ? e.type.color : null,
                           isGold: e.type.isSuggestion,
                         );
@@ -282,6 +283,7 @@ class _MatchContent extends StatelessWidget {
                           .userController
                           .userL2Code!,
                       enabled: !currentMatch.isSelectedChoiceCorrection,
+                      getDisplayCopy: (choice) => choice.value,
                     )
                   : Row(
                       spacing: 16.0,
