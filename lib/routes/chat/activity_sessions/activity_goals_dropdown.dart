@@ -23,7 +23,8 @@ class ActivityGoalsDropdown extends StatefulWidget {
   State<ActivityGoalsDropdown> createState() => _ActivityGoalsDropdownState();
 }
 
-class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
+class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
+    with GoalProgressMixin {
   bool _visible = false;
   bool showDropdown = true;
   List<ActivityRoleGoal>? _displayGoals;
@@ -86,7 +87,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown> {
                   activeGoalId: active?.id,
                   subtitle: allComplete
                       ? null
-                      : goalHeaderLabel(active?.description ?? ''),
+                      : GoalHeaderLabel(active?.description ?? ''),
                 ),
                 expanded: ActivityDropdownContent(
                   goals: goals,

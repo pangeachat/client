@@ -18,7 +18,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_ca
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-class ActivityStatsMenu extends StatelessWidget {
+class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
   final ValueNotifier<bool> visibilityNotifier;
   final void Function(bool) setShowDropdown;
   final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
@@ -84,30 +84,6 @@ class ActivityStatsMenu extends StatelessWidget {
     }
   }
 
-  Widget _doneButton(BuildContext context) {
-    final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-    return ElevatedButton(
-      onPressed: () => _finishActivityForMe(context),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppConfig.goldByTheme(context),
-        foregroundColor: theme.brightness == Brightness.light
-            ? null
-            : theme.colorScheme.surface,
-      ),
-      // Mirror the expanded "I'm done!" button
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            L10n.of(context).completeActivityButton,
-            style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     if (!room.showActivityChatUI) {
@@ -135,9 +111,9 @@ class ActivityStatsMenu extends StatelessWidget {
             final Widget? subtitle = ownRoleDone
                 ? null
                 : _showDoneButtonHint
-                ? _doneButton(context)
+                ? _DoneButton(onPressed: () => _finishActivityForMe(context))
                 : active != null
-                ? goalHeaderLabel(active.description)
+                ? GoalHeaderLabel(active.description)
                 : null;
 
             final collapsed = goals.isEmpty
@@ -200,6 +176,36 @@ class ActivityStatsMenu extends StatelessWidget {
           },
         );
       },
+    );
+  }
+}
+
+class _DoneButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _DoneButton({required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppConfig.goldByTheme(context),
+        foregroundColor: theme.brightness == Brightness.light
+            ? null
+            : theme.colorScheme.surface,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            L10n.of(context).completeActivityButton,
+            style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
+          ),
+        ],
+      ),
     );
   }
 }

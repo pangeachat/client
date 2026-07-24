@@ -44,40 +44,6 @@ class ActivityDropdownContent extends StatelessWidget {
     this.continueActivity,
   });
 
-  Widget _goalRow(ActivityRoleGoal g, {required bool isTop}) {
-    return Row(
-      children: [
-        GoalStatusWidget(
-          goal: g,
-          complete: isGoalCompleted(g),
-          isActive: g.id == activeGoalId,
-          showLabel: false,
-        ),
-        const SizedBox(width: 12.0),
-        Expanded(
-          child: Text(
-            g.description,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15.0,
-              height: 1.2,
-              fontWeight: g.id == activeGoalId
-                  ? FontWeight.w600
-                  : FontWeight.normal,
-            ),
-          ),
-        ),
-        // Only the top row leaves room for the chevron; the rest run to the edge.
-        if (isTop)
-          const SizedBox(
-            width: GoalHeaderConstants.chevronSlot,
-            child: Icon(Icons.expand_less),
-          ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -90,14 +56,19 @@ class ActivityDropdownContent extends StatelessWidget {
         ? Row(
             children: [
               const SizedBox(width: GoalHeaderConstants.chevronSlot),
-              Expanded(child: Center(child: goalHeaderLabel(title ?? ''))),
+              Expanded(child: Center(child: GoalHeaderLabel(title ?? ''))),
               const SizedBox(
                 width: GoalHeaderConstants.chevronSlot,
                 child: Icon(Icons.expand_less),
               ),
             ],
           )
-        : _goalRow(goals.first, isTop: true);
+        : _GoalRow(
+            goal: goals.first,
+            complete: isGoalCompleted(goals.first),
+            isActive: goals.first.id == activeGoalId,
+            isTop: true,
+          );
 
     final restGoals = goals.length > 1
         ? goals.skip(1).toList()
@@ -213,7 +184,12 @@ class ActivityDropdownContent extends StatelessWidget {
                   children: [
                     for (final g in restGoals) ...[
                       const SizedBox(height: 10.0),
-                      _goalRow(g, isTop: false),
+                      _GoalRow(
+                        goal: g,
+                        complete: isGoalCompleted(g),
+                        isActive: g.id == activeGoalId,
+                        isTop: false,
+                      ),
                     ],
                   ],
                 ),
@@ -234,6 +210,56 @@ class ActivityDropdownContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// A single goal line: its star, its description, and — on the pinned top row
+/// only — room for the collapse chevron.
+class _GoalRow extends StatelessWidget {
+  final ActivityRoleGoal goal;
+  final bool complete;
+  final bool isActive;
+
+  /// Only the top row leaves room for the chevron; the rest run to the edge.
+  final bool isTop;
+
+  const _GoalRow({
+    required this.goal,
+    required this.complete,
+    required this.isActive,
+    required this.isTop,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        GoalStatusWidget(
+          goal: goal,
+          complete: complete,
+          isActive: isActive,
+          showLabel: false,
+        ),
+        const SizedBox(width: 12.0),
+        Expanded(
+          child: Text(
+            goal.description,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 15.0,
+              height: 1.2,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+            ),
+          ),
+        ),
+        if (isTop)
+          const SizedBox(
+            width: GoalHeaderConstants.chevronSlot,
+            child: Icon(Icons.expand_less),
+          ),
+      ],
     );
   }
 }

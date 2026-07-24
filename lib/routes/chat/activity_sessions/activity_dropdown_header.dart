@@ -30,21 +30,31 @@ class GoalHeaderConstants {
 }
 
 /// A centered [GoalHeaderConstants.labelStyle] label
-Text goalHeaderLabel(String text) => Text(
-  text,
-  textAlign: TextAlign.center,
-  style: GoalHeaderConstants.labelStyle,
-);
+class GoalHeaderLabel extends StatelessWidget {
+  final String text;
 
-/// The first goal not yet completed, or null when every goal is done.
-ActivityRoleGoal? firstIncompleteGoal(
-  List<ActivityRoleGoal> goals,
-  bool Function(ActivityRoleGoal) isComplete,
-) {
-  for (final goal in goals) {
-    if (!isComplete(goal)) return goal;
+  const GoalHeaderLabel(this.text, {super.key});
+
+  @override
+  Widget build(BuildContext context) => Text(
+    text,
+    textAlign: TextAlign.center,
+    style: GoalHeaderConstants.labelStyle,
+  );
+}
+
+/// Shared goal-progress lookups for the widgets that drive the goal header.
+mixin GoalProgressMixin {
+  /// The first goal not yet completed, or null when every goal is done.
+  ActivityRoleGoal? firstIncompleteGoal(
+    List<ActivityRoleGoal> goals,
+    bool Function(ActivityRoleGoal) isComplete,
+  ) {
+    for (final goal in goals) {
+      if (!isComplete(goal)) return goal;
+    }
+    return null;
   }
-  return null;
 }
 
 /// The collapsed face of the goal header. Its top row — the star summary (or a
@@ -80,7 +90,7 @@ class ActivityDropdownHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = this.title;
     final Widget center = title != null
-        ? goalHeaderLabel(title)
+        ? GoalHeaderLabel(title)
         : LayoutBuilder(
             builder: (context, constraints) {
               // Shrink the gap between stars (down to nearly touching) to keep
