@@ -30,19 +30,21 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
-    return BlockSemantics(
-      child: Semantics(
-        button: true,
-        label: direction.label(l10n),
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            onTap: onTap,
-            child: Container(
-              width: 40.0,
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(color: theme.colorScheme.surface),
-              child: Center(child: Icon(direction.icon)),
+    return SizedBox(
+      width: 40.0,
+      child: BlockSemantics(
+        child: Semantics(
+          button: true,
+          label: direction.label(l10n),
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: onTap,
+              child: Container(
+                padding: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(color: theme.colorScheme.surface),
+                child: Center(child: Icon(direction.icon)),
+              ),
             ),
           ),
         ),
