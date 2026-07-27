@@ -56,6 +56,12 @@ enum ActivityPinState {
 
   /// The accent used for a large card's border / foreground — the state hue.
   Color get accent => color;
+
+  /// The label text colour: the pin's state colour, except `available` — whose
+  /// light-purple fill is too low-contrast for light-purple text, so its label
+  /// uses dark purple instead (world-map.instructions.md, "Pin state").
+  Color get labelColor =>
+      this == ActivityPinState.available ? AppConfig.primaryColor : color;
 }
 
 /// The visual weight a pin renders at, filled from the top of the score. The
