@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:share_plus/share_plus.dart';
 
+import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -48,7 +49,7 @@ abstract class FluffyShare {
       //   ownProfile.displayName ?? client.userID!,
       //   'https://matrix.to/#/${client.userID}?client=im.fluffychat',
       // ),
-      "${Environment.frontendURL}/#/invite_user/${Uri.encodeComponent(client.userID!)}",
+      "${Environment.frontendURL}/#/invite_user/${Uri.encodeComponent(shortUserId(client.userID!))}",
       // Pangea#
       context,
     );

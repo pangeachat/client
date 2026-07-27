@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
@@ -107,7 +108,9 @@ abstract class AppRoutes {
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        UserInviteLink(userID: state.pathParameters['userID']!),
+        UserInviteLink(
+          userID: userIdFromUrlParam(state.pathParameters['userID']!),
+        ),
       ),
     ),
     // Pangea#

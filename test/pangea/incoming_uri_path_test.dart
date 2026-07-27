@@ -57,5 +57,17 @@ void main() {
         '/world',
       );
     });
+
+    test('an invite_user fragment link maps to the fragment path with its '
+        'percent-encoding intact (single-decoded by the router, not here)', () {
+      expect(
+        MatrixState.incomingUriToPath(
+          Uri.parse(
+            'https://app.pangea.chat/#/invite_user/%40william11%3Astaging.pangea.chat',
+          ),
+        ),
+        '/invite_user/%40william11%3Astaging.pangea.chat',
+      );
+    });
   });
 }
