@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-27 09:33:36.488421",
+    "@@last_modified": "2026-07-27 10:07:02.064393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Anjeun tiasa langganan dina wéb di pangea.chat",
     "waitingToFillOneRole": "Ngantosan ngeusian 1 peran...",
     "closeArchive": "Tutup arsip",
-    "activityActions": "Peta kagiatan"
+    "activityActions": "Peta kagiatan",
+    "ongoing": "Lumangsung"
 }

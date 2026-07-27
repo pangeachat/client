@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:34.809226",
+    "@@last_modified": "2026-07-27 10:06:59.929670",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,6 @@
     "subscribeOnTheWeb": "Du kan abonnere på nett på pangea.chat",
     "waitingToFillOneRole": "Venter på å fylle 1 rolle...",
     "closeArchive": "Lukk arkiv",
-    "activityActions": "Aktivitetshandlinger"
+    "activityActions": "Aktivitetshandlinger",
+    "ongoing": "Pågående"
 }

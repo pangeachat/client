@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-27 09:33:37.096469",
+    "@@last_modified": "2026-07-27 10:07:03.009586",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Unaweza kujiandikisha kwenye tovuti ya pangea.chat",
     "waitingToFillOneRole": "Inasubiri kujaza nafasi 1...",
     "closeArchive": "Funga kumbukumbu",
-    "activityActions": "Vitendo vya shughuli"
+    "activityActions": "Vitendo vya shughuli",
+    "ongoing": "Inaendelea"
 }

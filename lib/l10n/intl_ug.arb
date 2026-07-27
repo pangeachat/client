@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-27 09:33:37.193325",
+    "@@last_modified": "2026-07-27 10:07:03.674819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "pangea.chat تور بېتى ئارقىلىق مۇشتەرى بولالايسىز",
     "waitingToFillOneRole": "1 رولنى تولدۇرۇشنى ساقلاۋاتىدۇ...",
     "closeArchive": "ئارخىپنى تاقا",
-    "activityActions": "پائالىيەت ھەرىكەتلىرى"
+    "activityActions": "پائالىيەت ھەرىكەتلىرى",
+    "ongoing": "داۋاملىق"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:35.305921",
+    "@@last_modified": "2026-07-27 10:06:59.846255",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,6 @@
     "subscribeOnTheWeb": "Je kunt je abonneren via de website op pangea.chat",
     "waitingToFillOneRole": "Wachten op invulling van 1 rol...",
     "closeArchive": "Archief sluiten",
-    "activityActions": "Activiteitsacties"
+    "activityActions": "Activiteitsacties",
+    "ongoing": "Lopend"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-27 09:33:32.509579",
+    "@@last_modified": "2026-07-27 10:06:54.369152",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Ou ka abòne sou sit entènèt la nan pangea.chat",
     "waitingToFillOneRole": "Nap tann pou nou ranpli 1 wòl...",
     "closeArchive": "Fèmen achiv la",
-    "activityActions": "Aksyon aktivite"
+    "activityActions": "Aksyon aktivite",
+    "ongoing": "Kontinyèl"
 }

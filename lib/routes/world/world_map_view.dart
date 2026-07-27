@@ -61,6 +61,12 @@ class _PinRenderer {
   /// re-measuring.
   final Map<String, Size> labelSizes;
 
+  /// Ids of `available` pins the learner can't start yet — their role count
+  /// exceeds the course's available members (course-scoped map only). These
+  /// pins and their labels render at half opacity. Never holds joinable /
+  /// ongoing / inProgress ids, and is empty on the world map.
+  final Set<String> nonStartableIds;
+
   const _PinRenderer({
     required this.visible,
     required this.activityIdToStarLevel,
@@ -70,6 +76,7 @@ class _PinRenderer {
     required this.focusedId,
     this.labels = const LabelPlacementResult(),
     this.labelSizes = const {},
+    this.nonStartableIds = const {},
   });
 
   List<QuestActivityCard> get largeCards => visible
@@ -94,6 +101,10 @@ class _PinRenderer {
 
   ActivityPinState stateOf(String id) =>
       activityIdToState[id] ?? ActivityPinState.available;
+
+  /// True when [id] is an `available` pin the learner can't start yet — its
+  /// pin and label render at half opacity (course-scoped map only).
+  bool nonStartableOf(String id) => nonStartableIds.contains(id);
 
   bool pingedOf(String id) => activityIdToPingStatus[id] ?? false;
 
@@ -350,10 +361,14 @@ class _WorldMapViewState extends State<WorldMapView> {
           width: size.width,
           height: size.height,
           alignment: _labelAlignment(side, size),
-          child: IgnorePointer(
-            child: WorldMapPinLabel(
-              title: card.title,
-              color: _labelColor(render.stateOf(id)),
+          child: Opacity(
+            // Match the pin: a non-startable available pin's label dims too.
+            opacity: render.nonStartableOf(id) ? 0.5 : 1.0,
+            child: IgnorePointer(
+              child: WorldMapPinLabel(
+                title: card.title,
+                color: _labelColor(render.stateOf(id)),
+              ),
             ),
           ),
         ),
@@ -584,7 +599,11 @@ class _WorldMapViewState extends State<WorldMapView> {
       smallBudget: budget.small,
       trailBudget: budget.trail,
       progressedIds: widget.controller.progressedActivityIds,
-      isNewLearner: widget.controller.isNewLearner,
+      // The multi-person "first map" deprioritize is a WORLD-map affordance:
+      // in a course, the author chose those activities, so a 3+ person one
+      // shouldn't be ranked down for a new learner. Gating to world also keeps
+      // the pre-existing behavior now that course pins carry a real roleCount.
+      isNewLearner: widget.controller.isNewLearner && widget.controller.isWorld,
       dismissedIds: widget.controller.dismissedLargeIds,
     );
   }
@@ -612,6 +631,10 @@ class _WorldMapViewState extends State<WorldMapView> {
     final Map<String, ActivityPinState> states = {};
     final Map<String, bool> pings = {};
     final Map<String, ActivityStarLevel> starLevels = {};
+    // `available` pins the course lacks the members to start (course-scoped
+    // only; null on the world map or an unjoined course → nothing dims).
+    final int? available = widget.controller.courseAvailableParticipants;
+    final Set<String> nonStartableIds = {};
     // Precomputed once (a single rooms pass each) so the per-pin star tier is
     // an O(roles) lookup, not an O(rooms) rescan per pin.
     final ownRoleAwards =
@@ -662,6 +685,14 @@ class _WorldMapViewState extends State<WorldMapView> {
             ? ActivityPinState.available
             : ActivityPinState.inProgress;
       }
+
+      // Dim only plain `available` pins whose role count outruns the course's
+      // members
+      if (available != null &&
+          states[id] == ActivityPinState.available &&
+          (c.roleCount ?? 0) > available) {
+        nonStartableIds.add(id);
+      }
     }
 
     // Mid pins carry a Google-Maps-style activity-name label; small dots and
@@ -696,6 +727,7 @@ class _WorldMapViewState extends State<WorldMapView> {
       focusedId: focusedId,
       labels: labels,
       labelSizes: labelSizes,
+      nonStartableIds: nonStartableIds,
     );
   }
 
@@ -799,18 +831,21 @@ class _WorldMapViewState extends State<WorldMapView> {
         width: box.width,
         height: box.height,
         alignment: _markerAlignment(state, tier),
-        child: WorldMapDot(
-          key: ValueKey(card.activityId),
-          card: card,
-          state: state,
-          tier: tier,
-          onTap: () => widget.controller.openActivity(card),
-          pinged: render.pingedOf(card.activityId),
-          starLevel: render.starLevelOf(card.activityId),
-          unreadRoom: _unreadRoomFor(card.activityId, state),
-          participantsFilled: counts.filled,
-          participantsTotal: counts.total,
-          isFocused: card.activityId == render.focusedId,
+        child: Opacity(
+          opacity: render.nonStartableOf(card.activityId) ? 0.5 : 1.0,
+          child: WorldMapDot(
+            key: ValueKey(card.activityId),
+            card: card,
+            state: state,
+            tier: tier,
+            onTap: () => widget.controller.openActivity(card),
+            pinged: render.pingedOf(card.activityId),
+            starLevel: render.starLevelOf(card.activityId),
+            unreadRoom: _unreadRoomFor(card.activityId, state),
+            participantsFilled: counts.filled,
+            participantsTotal: counts.total,
+            isFocused: card.activityId == render.focusedId,
+          ),
         ),
       );
     }).toList();

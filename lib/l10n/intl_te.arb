@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-27 09:33:36.996494",
+    "@@last_modified": "2026-07-27 10:07:02.649026",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10651,5 +10651,6 @@
     "subscribeOnTheWeb": "మీరు pangea.chatలో వెబ్‌లో సబ్‌స్క్రైబ్ చేయవచ్చు",
     "waitingToFillOneRole": "ఒక పాత్రను పూరించడానికి వేచి ఉంది...",
     "closeArchive": "ఆర్కైవ్‌ను మూసివేయండి",
-    "activityActions": "కార్యకలాప చర్యలు"
+    "activityActions": "కార్యకలాప చర్యలు",
+    "ongoing": "కొనసాగుతోంది"
 }

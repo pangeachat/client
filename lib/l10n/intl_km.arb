@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-27 09:33:33.425088",
+    "@@last_modified": "2026-07-27 10:06:56.607550",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "អ្នកអាចជាវនៅលើគេហទំព័រ pangea.chat",
     "waitingToFillOneRole": "កំពុងរង់ចាំបំពេញតួនាទី ១...",
     "closeArchive": "បិទបណ្ណសារ",
-    "activityActions": "សកម្មភាព"
+    "activityActions": "សកម្មភាព",
+    "ongoing": "កំពុងដំណើរការ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-27 09:33:34.383539",
+    "@@last_modified": "2026-07-27 10:06:58.921228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Ka taea e koe te ohauru ki te paetukutuku i pangea.chat",
     "waitingToFillOneRole": "E tatari ana kia whakakīa kia 1 te tūranga...",
     "closeArchive": "Katia te pūranga",
-    "activityActions": "Ngā mahi hohe"
+    "activityActions": "Ngā mahi hohe",
+    "ongoing": "Haere Tonu"
 }

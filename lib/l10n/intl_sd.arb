@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-27 09:33:37.362894",
+    "@@last_modified": "2026-07-27 10:07:01.423421",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "توهان pangea.chat تي ويب تي رڪنيت حاصل ڪري سگهو ٿا",
     "waitingToFillOneRole": "هڪ ڪردار ڀرڻ جو انتظار آهي...",
     "closeArchive": "آرڪائيو بند ڪريو",
-    "activityActions": "سرگرميءَ جون ڪارروايون"
+    "activityActions": "سرگرميءَ جون ڪارروايون",
+    "ongoing": "جاري"
 }

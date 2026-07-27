@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-27 09:33:35.505045",
+    "@@last_modified": "2026-07-27 10:07:00.277735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "ਤੁਸੀਂ pangea.chat 'ਤੇ ਵੈੱਬ 'ਤੇ ਗਾਹਕੀ ਲੈ ਸਕਦੇ ਹੋ",
     "waitingToFillOneRole": "1 ਭੂਮਿਕਾ ਭਰਨ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ...",
     "closeArchive": "ਪੁਰਾਲੇਖ ਬੰਦ ਕਰੋ",
-    "activityActions": "ਗਤੀਵਿਧੀ ਕਿਰਿਆਵਾਂ"
+    "activityActions": "ਗਤੀਵਿਧੀ ਕਿਰਿਆਵਾਂ",
+    "ongoing": "ਜਾਰੀ"
 }

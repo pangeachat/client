@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -14,18 +16,21 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 /// staleness window is bounded by the map's discovery cadence, and the join
 /// action re-validates against the server anyway. See world-map.instructions.md
 /// ("Discovering joinable sessions").
-class DiscoveredSessionsCache {
+class DiscoveredSessionsCache extends ChangeNotifier {
   DiscoveredSessionsCache._();
   static final DiscoveredSessionsCache instance = DiscoveredSessionsCache._();
 
   final Map<String, Map<String, RoomSummaryResponse>> _byActivityId = {};
 
   /// Replace the cache with the latest discovery pass (activity id → roomId →
-  /// previewed summary).
+  /// previewed summary). Notifies listeners so views that render off the cache
+  /// (the course-plan cards' Open state) refresh the moment discovery lands,
+  /// rather than waiting for the next room-update sync.
   void replaceAll(Map<String, Map<String, RoomSummaryResponse>> byActivityId) {
     _byActivityId
       ..clear()
       ..addAll(byActivityId);
+    notifyListeners();
   }
 
   /// The previewed sessions for [activityId] (roomId → summary), or null on a
@@ -42,5 +47,9 @@ class DiscoveredSessionsCache {
         (s) => s.isActivityOpenToJoin,
       );
 
-  void clear() => _byActivityId.clear();
+  void clear() {
+    if (_byActivityId.isEmpty) return;
+    _byActivityId.clear();
+    notifyListeners();
+  }
 }

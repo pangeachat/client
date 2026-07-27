@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-27 09:33:34.387470",
+    "@@last_modified": "2026-07-27 10:06:58.760024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Afaka misoratra anarana amin'ny tranonkala ianao ao amin'ny pangea.chat",
     "waitingToFillOneRole": "Miandry ny hamenoana toerana 1...",
     "closeArchive": "Akatona ny tahiry",
-    "activityActions": "Hetsika atao"
+    "activityActions": "Hetsika atao",
+    "ongoing": "Mitohy"
 }

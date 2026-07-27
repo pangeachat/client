@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:35.850279",
+    "@@last_modified": "2026-07-27 10:07:00.859395",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10427,5 +10427,6 @@
     "subscribeOnTheWeb": "Te poți abona pe web la pangea.chat",
     "waitingToFillOneRole": "Se așteaptă ocuparea unui rol...",
     "closeArchive": "Închide arhiva",
-    "activityActions": "Acțiuni de activitate"
+    "activityActions": "Acțiuni de activitate",
+    "ongoing": "În desfășurare"
 }

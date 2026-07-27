@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-27 09:33:36.506059",
+    "@@last_modified": "2026-07-27 10:07:04.400264",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "O ka ingolisa webosaeteng ho pangea.chat",
     "waitingToFillOneRole": "Ho letetsoe ho tlatsa karolo e le 'ngoe...",
     "closeArchive": "Koala polokelo",
-    "activityActions": "Liketso tsa ts'ebetso"
+    "activityActions": "Liketso tsa ts'ebetso",
+    "ongoing": "E tswela pele"
 }

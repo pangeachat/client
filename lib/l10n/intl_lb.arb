@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-27 09:33:33.855619",
+    "@@last_modified": "2026-07-27 10:06:58.446420",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren",
     "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen...",
     "closeArchive": "Archiv zoumaachen",
-    "activityActions": "Aktivitéitsaktiounen"
+    "activityActions": "Aktivitéitsaktiounen",
+    "ongoing": "Am Gaang"
 }

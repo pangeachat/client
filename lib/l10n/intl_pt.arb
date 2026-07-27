@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:35.666019",
+    "@@last_modified": "2026-07-27 10:07:00.603311",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10645,5 +10645,6 @@
     "subscribeOnTheWeb": "Pode subscrever na web em pangea.chat",
     "waitingToFillOneRole": "Aguardando preencher 1 função...",
     "closeArchive": "Fechar arquivo",
-    "activityActions": "Ações de atividade"
+    "activityActions": "Ações de atividade",
+    "ongoing": "Em andamento"
 }

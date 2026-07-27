@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-27 09:33:30.885655",
+    "@@last_modified": "2026-07-27 10:06:51.694338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Gallwch danysgrifio ar y we yn pangea.chat",
     "waitingToFillOneRole": "Yn aros i lenwi 1 rôl...",
     "closeArchive": "Cau archif",
-    "activityActions": "Gweithredoedd gweithgaredd"
+    "activityActions": "Gweithredoedd gweithgaredd",
+    "ongoing": "Yn parhau"
 }

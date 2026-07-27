@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-27 09:33:36.694969",
+    "@@last_modified": "2026-07-27 10:07:01.424601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Unogona kunyoresa pawebhu pa pangea.chat",
     "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete...",
     "closeArchive": "Vhara dura",
-    "activityActions": "Zviito zvechiitiko"
+    "activityActions": "Zviito zvechiitiko",
+    "ongoing": "Kuenderera"
 }

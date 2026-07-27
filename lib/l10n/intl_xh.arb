@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-27 09:33:37.638925",
+    "@@last_modified": "2026-07-27 10:07:03.860692",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Ungabhalisa kwiwebhu ku-pangea.chat",
     "waitingToFillOneRole": "Kulindwe ukuba kuzaliswe indima e-1...",
     "closeArchive": "Vala indawo yokugcina",
-    "activityActions": "Iintshukumo zomsebenzi"
+    "activityActions": "Iintshukumo zomsebenzi",
+    "ongoing": "Iyaqhubeka"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-27 09:33:33.238044",
+    "@@last_modified": "2026-07-27 10:06:55.918330",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Sampeyan bisa langganan ing web ing pangea.chat",
     "waitingToFillOneRole": "Ngenteni ngisi 1 peran...",
     "closeArchive": "Tutup arsip",
-    "activityActions": "Tindakan aktivitas"
+    "activityActions": "Tindakan aktivitas",
+    "ongoing": "Lagi lumaku"
 }

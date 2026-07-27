@@ -145,6 +145,11 @@ class QuestRepo {
         'title': true,
         'l2': true,
         'coordinates': true,
+        // The plan's roles, so a course-scoped pin knows its participant count
+        // (== roles.length, the same value activityPlanFromV2 derives and the
+        // card shows) and can dim when the course lacks enough members to start
+        // it. Embedded array — returned inline at depth 0.
+        'roles': true,
       },
     },
     'learningObjectiveRefs': true,

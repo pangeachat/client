@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-27 09:33:36.717745",
+    "@@last_modified": "2026-07-27 10:07:01.857429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "E mafai ona e lesitala i luga o le upega tafa'ilagi i le pangea.chat",
     "waitingToFillOneRole": "Faatali e faatumu le 1 matafaioi...",
     "closeArchive": "Tapuni le fa'amaumauga",
-    "activityActions": "Gaioiga o gaoioiga"
+    "activityActions": "Gaioiga o gaoioiga",
+    "ongoing": "Fa'aauau"
 }

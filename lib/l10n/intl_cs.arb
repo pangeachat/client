@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-27 09:33:31.122436",
+    "@@last_modified": "2026-07-27 10:06:51.932831",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10189,5 +10189,6 @@
     "subscribeOnTheWeb": "Předplatit si můžete na webu pangea.chat",
     "waitingToFillOneRole": "Čeká se na obsazení 1 role...",
     "closeArchive": "Zavřít archiv",
-    "activityActions": "Akce aktivity"
+    "activityActions": "Akce aktivity",
+    "ongoing": "Probíhá"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-27 09:33:35.220701",
+    "@@last_modified": "2026-07-27 10:06:57.529212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat",
     "waitingToFillOneRole": "چاوەڕێی پڕکردنەوەی 1 ڕۆڵ دەکەین...",
     "closeArchive": "ئەرشیڤ دابخە",
-    "activityActions": "کردارەکانی چالاکی"
+    "activityActions": "کردارەکانی چالاکی",
+    "ongoing": "بەردەوامە"
 }

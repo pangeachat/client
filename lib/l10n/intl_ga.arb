@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-27 09:33:31.798784",
+    "@@last_modified": "2026-07-27 10:06:52.928511",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9706,5 +9706,6 @@
     "subscribeOnTheWeb": "Is féidir leat síntiús a ghlacadh ar an ngréasán ag pangea.chat",
     "waitingToFillOneRole": "Ag fanacht le 1 ról a líonadh...",
     "closeArchive": "Dún an chartlann",
-    "activityActions": "Gníomhartha gníomhaíochta"
+    "activityActions": "Gníomhartha gníomhaíochta",
+    "ongoing": "Ar siúl"
 }

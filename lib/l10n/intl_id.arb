@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:32.773766",
+    "@@last_modified": "2026-07-27 10:06:59.129676",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9768,5 +9768,6 @@
     "subscribeOnTheWeb": "Anda dapat berlangganan di web di pangea.chat",
     "waitingToFillOneRole": "Menunggu untuk mengisi 1 peran...",
     "closeArchive": "Tutup arsip",
-    "activityActions": "Tindakan aktivitas"
+    "activityActions": "Tindakan aktivitas",
+    "ongoing": "Sedang Berlangsung"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-27 09:33:33.237114",
+    "@@last_modified": "2026-07-27 10:06:54.933446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Ị nwere ike denye aha na webụsaịtị na pangea.chat",
     "waitingToFillOneRole": "Na-eche ka mmadụ mejupụta otu ọrụ...",
     "closeArchive": "Mechie ebe nchekwa",
-    "activityActions": "Omume ọrụ"
+    "activityActions": "Omume ọrụ",
+    "ongoing": "Na-aga n'ihu"
 }

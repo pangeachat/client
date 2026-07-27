@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-27 09:33:30.932259",
+    "@@last_modified": "2026-07-27 10:06:51.333751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Mahimo kang mag-subscribe sa web sa pangea.chat",
     "waitingToFillOneRole": "Naghuwat nga mapuno ang 1 ka tahas...",
     "closeArchive": "Isira ang archive",
-    "activityActions": "Mga aksyon sa kalihokan"
+    "activityActions": "Mga aksyon sa kalihokan",
+    "ongoing": "Nagpadayon"
 }

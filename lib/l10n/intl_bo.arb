@@ -2928,7 +2928,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-27 09:33:30.362724",
+    "@@last_modified": "2026-07-27 10:06:51.337918",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9306,5 +9306,6 @@
     "subscribeOnTheWeb": "ཁྱེད་ཀྱིས་དྲ་རྒྱ་བརྒྱུད་ནས་མཉམ་ཞུགས་བྱེད་ཐུབ། pangea.chat",
     "waitingToFillOneRole": "འགན་གཅིག་བསྐང་བར་སྒུག་བཞིན་ཡོད།",
     "closeArchive": "ཡིག་མཛོད་སྒོ་རྒྱོབ།",
-    "activityActions": "བྱེད་སྒོའི་བྱ་བ"
+    "activityActions": "བྱེད་སྒོའི་བྱ་བ",
+    "ongoing": "མུ་མཐུད་ནས་"
 }

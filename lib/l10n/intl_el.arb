@@ -3417,7 +3417,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-27 09:33:31.553294",
+    "@@last_modified": "2026-07-27 10:06:52.162633",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10576,5 +10576,6 @@
     "subscribeOnTheWeb": "Μπορείτε να εγγραφείτε στον ιστότοπο pangea.chat",
     "waitingToFillOneRole": "Αναμονή για την πλήρωση 1 ρόλου...",
     "closeArchive": "Κλείσιμο αρχείου",
-    "activityActions": "Ενέργειες δραστηριότητας"
+    "activityActions": "Ενέργειες δραστηριότητας",
+    "ongoing": "Σε εξέλιξη"
 }

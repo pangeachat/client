@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-27 09:33:32.154481",
+    "@@last_modified": "2026-07-27 10:06:53.324535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Faodaidh tu fo-sgrìobhadh air an lìon aig pangea.chat",
     "waitingToFillOneRole": "A’ feitheamh ri 1 dreuchd a lìonadh...",
     "closeArchive": "Dùin an tasglann",
-    "activityActions": "Gnìomhan-gnìomhachd"
+    "activityActions": "Gnìomhan-gnìomhachd",
+    "ongoing": "A’ dol air adhart"
 }

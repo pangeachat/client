@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-27 09:33:36.363287",
+    "@@last_modified": "2026-07-27 10:07:02.367971",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Waxaad iska diiwaan gelin kartaa shabakadda pangea.chat",
     "waitingToFillOneRole": "Waxaa la sugayaa in la buuxiyo 1 door...",
     "closeArchive": "Xidh kaydka",
-    "activityActions": "Ficilada waxqabadka"
+    "activityActions": "Ficilada waxqabadka",
+    "ongoing": "Socda"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-27 09:33:33.853456",
+    "@@last_modified": "2026-07-27 10:06:58.243449",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Subscribere potes in interrete apud pangea.chat",
     "waitingToFillOneRole": "Exspectans ad implendum 1 munus...",
     "closeArchive": "Claudere archivum",
-    "activityActions": "Actiones activitatis"
+    "activityActions": "Actiones activitatis",
+    "ongoing": "In progressu"
 }

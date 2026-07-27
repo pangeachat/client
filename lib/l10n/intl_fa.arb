@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:31.462381",
+    "@@last_modified": "2026-07-27 10:06:58.936664",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9783,5 +9783,6 @@
     "subscribeOnTheWeb": "می‌توانید در وب در pangea.chat مشترک شوید",
     "waitingToFillOneRole": "در انتظار پر کردن ۱ نقش...",
     "closeArchive": "بستن بایگانی",
-    "activityActions": "اقدامات فعالیت"
+    "activityActions": "اقدامات فعالیت",
+    "ongoing": "در حال انجام"
 }
