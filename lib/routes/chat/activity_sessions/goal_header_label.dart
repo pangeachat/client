@@ -6,12 +6,16 @@ import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.d
 class GoalHeaderLabel extends StatelessWidget {
   final String text;
 
-  const GoalHeaderLabel(this.text, {super.key});
+  final int? maxLines;
+
+  const GoalHeaderLabel(this.text, {this.maxLines, super.key});
 
   @override
   Widget build(BuildContext context) => Text(
     text,
     textAlign: TextAlign.center,
     style: GoalHeaderConstants.labelStyle,
+    maxLines: maxLines,
+    overflow: maxLines != null ? TextOverflow.ellipsis : null,
   );
 }

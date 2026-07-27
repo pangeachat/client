@@ -115,7 +115,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                 : _showDoneButtonHint
                 ? _DoneButton(onPressed: () => _finishActivityForMe(context))
                 : active != null
-                ? GoalHeaderLabel(active.description)
+                ? GoalHeaderLabel(active.description, maxLines: 4)
                 : null;
 
             final collapsed = goals.isEmpty
