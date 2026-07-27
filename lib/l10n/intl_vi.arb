@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:37.478047",
+    "@@last_modified": "2026-07-27 10:07:03.501190",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6961,5 +6961,6 @@
     "subscribeOnTheWeb": "Bạn có thể đăng ký trên web tại pangea.chat",
     "waitingToFillOneRole": "Đang chờ điền 1 vai trò...",
     "closeArchive": "Đóng kho lưu trữ",
-    "activityActions": "Hành động hoạt động"
+    "activityActions": "Hành động hoạt động",
+    "ongoing": "Đang diễn ra"
 }

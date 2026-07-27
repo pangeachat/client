@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-27 09:33:31.403999",
+    "@@last_modified": "2026-07-27 10:06:52.805787",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10561,5 +10561,6 @@
     "subscribeOnTheWeb": "Maaari kang mag-subscribe sa web sa pangea.chat",
     "waitingToFillOneRole": "Naghihintay na mapunan ang 1 role...",
     "closeArchive": "Isara ang archive",
-    "activityActions": "Mga aksyon sa aktibidad"
+    "activityActions": "Mga aksyon sa aktibidad",
+    "ongoing": "Kasalukuyan"
 }

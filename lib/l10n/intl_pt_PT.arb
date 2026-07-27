@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-27 09:33:35.879992",
+    "@@last_modified": "2026-07-27 10:07:01.231443",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,6 @@
     "subscribeOnTheWeb": "Pode subscrever na web em pangea.chat",
     "waitingToFillOneRole": "À espera de preencher 1 função...",
     "closeArchive": "Fechar arquivo",
-    "activityActions": "Ações de atividade"
+    "activityActions": "Ações de atividade",
+    "ongoing": "Em curso"
 }

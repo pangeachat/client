@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-27 09:33:36.421363",
+    "@@last_modified": "2026-07-27 10:07:01.829855",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Mund të abonoheni në ueb në pangea.chat",
     "waitingToFillOneRole": "Duke pritur të plotësohet 1 rol...",
     "closeArchive": "Mbyll arkivin",
-    "activityActions": "Veprimet e aktivitetit"
+    "activityActions": "Veprimet e aktivitetit",
+    "ongoing": "Në vazhdim"
 }

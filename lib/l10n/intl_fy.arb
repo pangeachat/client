@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-27 09:33:31.695050",
+    "@@last_modified": "2026-07-27 10:06:55.686106",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Jo kinne abonnearje op it web op pangea.chat",
     "waitingToFillOneRole": "Wachtsje op it ynfoljen fan 1 rol ...",
     "closeArchive": "Argyf slute",
-    "activityActions": "Aktiviteitsaksjes"
+    "activityActions": "Aktiviteitsaksjes",
+    "ongoing": "Oanhâldend"
 }

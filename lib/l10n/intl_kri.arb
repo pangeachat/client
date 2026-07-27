@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-27 09:33:33.558587",
+    "@@last_modified": "2026-07-27 10:06:58.598771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Yu go ebul sɔbskrayb pan di wɛb na pangea.chat",
     "waitingToFillOneRole": "De wet fɔ fil wan rol...",
     "closeArchive": "Klos achiv",
-    "activityActions": "Wok we yu kin du"
+    "activityActions": "Wok we yu kin du",
+    "ongoing": "De Go"
 }

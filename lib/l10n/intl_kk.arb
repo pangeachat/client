@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-27 09:33:33.313285",
+    "@@last_modified": "2026-07-27 10:06:56.620053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "pangea.chat сайтында жазыла аласыз",
     "waitingToFillOneRole": "1 рөлді толтыруды күтудеміз...",
     "closeArchive": "Мұрағатты жабу",
-    "activityActions": "Әрекет әрекеттері"
+    "activityActions": "Әрекет әрекеттері",
+    "ongoing": "Жалғасуда"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-27 09:33:32.115923",
+    "@@last_modified": "2026-07-27 10:06:53.433668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Kuna iya biyan kuɗi a yanar gizo a pangea.chat",
     "waitingToFillOneRole": "Ana jiran cike matsayi 1...",
     "closeArchive": "Rufe adana",
-    "activityActions": "Ayyukan aiki"
+    "activityActions": "Ayyukan aiki",
+    "ongoing": "Ana Ci Gaba"
 }

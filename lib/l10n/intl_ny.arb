@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-27 09:33:35.387992",
+    "@@last_modified": "2026-07-27 10:07:00.086351",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Mutha kulembetsa pa intaneti pa pangea.chat",
     "waitingToFillOneRole": "Tikudikira kuti tigwiritse ntchito udindo umodzi...",
     "closeArchive": "Tsekani zosungidwa",
-    "activityActions": "Zochita"
+    "activityActions": "Zochita",
+    "ongoing": "Ikuchitika"
 }

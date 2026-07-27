@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-27 09:33:33.485318",
+    "@@last_modified": "2026-07-27 10:06:57.594871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "ನೀವು pangea.chat ನಲ್ಲಿ ವೆಬ್‌ನಲ್ಲಿ ಚಂದಾದಾರರಾಗಬಹುದು",
     "waitingToFillOneRole": "1 ಪಾತ್ರವನ್ನು ತುಂಬಲು ಕಾಯಲಾಗುತ್ತಿದೆ...",
     "closeArchive": "ಆರ್ಕೈವ್ ಮುಚ್ಚಿ",
-    "activityActions": "ಚಟುವಟಿಕೆ ಕ್ರಿಯೆಗಳು"
+    "activityActions": "ಚಟುವಟಿಕೆ ಕ್ರಿಯೆಗಳು",
+    "ongoing": "ಪ್ರಗತಿಯಲ್ಲಿದೆ"
 }

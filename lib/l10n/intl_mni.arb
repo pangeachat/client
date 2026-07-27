@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-27 09:33:35.304015",
+    "@@last_modified": "2026-07-27 10:07:02.744138",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "ꯅꯍꯥꯛꯅ pangea.chat ꯇ ꯋꯦꯕ ꯑꯁꯤꯗ ꯁꯕꯁꯛꯔꯥꯏꯕ ꯇꯧꯕ ꯌꯥꯏ",
     "waitingToFillOneRole": "1 role fill তৌনবা ঙাইরি...",
     "closeArchive": "আর্কাইভ থমজিনবা",
-    "activityActions": "থবকশিংগী থবক"
+    "activityActions": "থবকশিংগী থবক",
+    "ongoing": "চত্থরিবা"
 }

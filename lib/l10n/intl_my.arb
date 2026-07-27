@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-27 09:33:35.317276",
+    "@@last_modified": "2026-07-27 10:06:59.819278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "pangea.chat တွင် ဝဘ်မှတစ်ဆင့် စာရင်းသွင်းနိုင်သည်",
     "waitingToFillOneRole": "အခန်းကဏ္ဍ ၁ ခု ဖြည့်ရန် စောင့်ဆိုင်းနေသည်...",
     "closeArchive": "မှတ်တမ်းပိတ်ရန်",
-    "activityActions": "လုပ်ဆောင်ချက်များ"
+    "activityActions": "လုပ်ဆောင်ချက်များ",
+    "ongoing": "ဆက်လက်လုပ်ဆောင်နေသည်"
 }

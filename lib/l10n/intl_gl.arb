@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-27 09:33:32.111889",
+    "@@last_modified": "2026-07-27 10:07:00.737336",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,6 @@
     "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat",
     "waitingToFillOneRole": "Agardando para cubrir 1 posto...",
     "closeArchive": "Pechar arquivo",
-    "activityActions": "Accións de actividade"
+    "activityActions": "Accións de actividade",
+    "ongoing": "En curso"
 }

@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-27 09:33:34.222217",
+    "@@last_modified": "2026-07-27 10:06:56.402860",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10601,5 +10601,6 @@
     "subscribeOnTheWeb": "შეგიძლიათ გამოიწეროთ ვებგვერდზე pangea.chat",
     "waitingToFillOneRole": "ველოდებით 1 როლის შევსებას...",
     "closeArchive": "არქივის დახურვა",
-    "activityActions": "აქტივობის მოქმედებები"
+    "activityActions": "აქტივობის მოქმედებები",
+    "ongoing": "მიმდინარე"
 }

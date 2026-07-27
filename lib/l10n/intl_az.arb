@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-27 09:33:30.352743",
+    "@@last_modified": "2026-07-27 10:06:52.627604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "pangea.chat saytında abunə ola bilərsiniz",
     "waitingToFillOneRole": "1 rolun doldurulması gözlənilir...",
     "closeArchive": "Arxivi bağla",
-    "activityActions": "Fəaliyyət hərəkətləri"
+    "activityActions": "Fəaliyyət hərəkətləri",
+    "ongoing": "Davam edir"
 }

@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-27 09:33:36.358932",
+    "@@last_modified": "2026-07-27 10:07:02.090085",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10646,5 +10646,6 @@
     "subscribeOnTheWeb": "Naročite se lahko na spletu na pangea.chat",
     "waitingToFillOneRole": "Čakam na zapolnitev 1 vloge...",
     "closeArchive": "Zapri arhiv",
-    "activityActions": "Dejanja dejavnosti"
+    "activityActions": "Dejanja dejavnosti",
+    "ongoing": "V teku"
 }

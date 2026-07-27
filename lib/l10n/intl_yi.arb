@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-27 09:33:37.670725",
+    "@@last_modified": "2026-07-27 10:07:04.195778",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat",
     "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע...",
     "closeArchive": "פֿאַרמאַכן אַרכיוו",
-    "activityActions": "אַקטיוויטעט אַקשאַנז"
+    "activityActions": "אַקטיוויטעט אַקשאַנז",
+    "ongoing": "אָנגייענדיק"
 }

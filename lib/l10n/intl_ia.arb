@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-27 09:33:32.960717",
+    "@@last_modified": "2026-07-27 10:06:56.140263",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10637,5 +10637,6 @@
     "subscribeOnTheWeb": "Tu pote subscribere in le web a pangea.chat",
     "waitingToFillOneRole": "In attesa de plenar 1 rolo...",
     "closeArchive": "Clauder archivo",
-    "activityActions": "Actiones de activitate"
+    "activityActions": "Actiones de activitate",
+    "ongoing": "In curso"
 }

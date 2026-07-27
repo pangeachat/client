@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-27 09:33:34.999044",
+    "@@last_modified": "2026-07-27 10:06:59.531433",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "Tista' tabbona fuq il-web fuq pangea.chat",
     "waitingToFillOneRole": "Qed nistennew biex nimlew rwol 1...",
     "closeArchive": "Agħlaq l-arkivju",
-    "activityActions": "Azzjonijiet tal-attività"
+    "activityActions": "Azzjonijiet tal-attività",
+    "ongoing": "Għaddej"
 }

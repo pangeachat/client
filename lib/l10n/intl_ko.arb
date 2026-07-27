@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:34.085784",
+    "@@last_modified": "2026-07-27 10:06:57.554004",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9888,5 +9888,6 @@
     "subscribeOnTheWeb": "pangea.chat 웹사이트에서 구독할 수 있습니다",
     "waitingToFillOneRole": "1개의 역할이 채워지기를 기다리는 중...",
     "closeArchive": "보관함 닫기",
-    "activityActions": "활동 작업"
+    "activityActions": "활동 작업",
+    "ongoing": "진행 중"
 }

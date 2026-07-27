@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-27 09:33:32.309795",
+    "@@last_modified": "2026-07-27 10:06:54.150801",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10131,5 +10131,6 @@
     "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat",
     "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
     "closeArchive": "Zatvori arhivu",
-    "activityActions": "Radnje aktivnosti"
+    "activityActions": "Radnje aktivnosti",
+    "ongoing": "U tijeku"
 }

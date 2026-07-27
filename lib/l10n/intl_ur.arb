@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-27 09:33:37.259104",
+    "@@last_modified": "2026-07-27 10:07:03.363824",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2041,5 +2041,6 @@
     "subscribeOnTheWeb": "آپ pangea.chat پر ویب پر سبسکرائب کر سکتے ہیں",
     "waitingToFillOneRole": "1 کردار پُر ہونے کا انتظار ہے...",
     "closeArchive": "آرکائیو بند کریں",
-    "activityActions": "سرگرمی کے اعمال"
+    "activityActions": "سرگرمی کے اعمال",
+    "ongoing": "جاری ہے"
 }

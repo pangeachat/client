@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:32.117803",
+    "@@last_modified": "2026-07-27 10:06:53.659481",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10615,5 +10615,6 @@
     "subscribeOnTheWeb": "ניתן להירשם כמנוי דרך האתר בכתובת pangea.chat",
     "waitingToFillOneRole": "ממתין למילוי תפקיד אחד...",
     "closeArchive": "סגור ארכיון",
-    "activityActions": "פעולות פעילות"
+    "activityActions": "פעולות פעילות",
+    "ongoing": "מתבצע"
 }

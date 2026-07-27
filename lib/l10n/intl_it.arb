@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 09:33:32.829342",
+    "@@last_modified": "2026-07-27 10:06:55.378670",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9768,5 +9768,6 @@
     "subscribeOnTheWeb": "Puoi abbonarti sul web all'indirizzo pangea.chat",
     "waitingToFillOneRole": "In attesa di ricoprire 1 ruolo...",
     "closeArchive": "Chiudi archivio",
-    "activityActions": "Azioni attività"
+    "activityActions": "Azioni attività",
+    "ongoing": "In corso"
 }

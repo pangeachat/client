@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-27 09:33:37.099362",
+    "@@last_modified": "2026-07-27 10:07:04.187137",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10327,5 +10327,6 @@
     "subscribeOnTheWeb": "คุณสามารถสมัครสมาชิกได้ทางเว็บไซต์ที่ pangea.chat",
     "waitingToFillOneRole": "กำลังรอเติม 1 บทบาท...",
     "closeArchive": "ปิดคลังเก็บ",
-    "activityActions": "การดำเนินการกิจกรรม"
+    "activityActions": "การดำเนินการกิจกรรม",
+    "ongoing": "กำลังดำเนินการ"
 }

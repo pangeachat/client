@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-27 09:33:35.794393",
+    "@@last_modified": "2026-07-27 10:07:00.853347",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9780,5 +9780,6 @@
     "subscribeOnTheWeb": "Możesz subskrybować w sieci pod adresem pangea.chat",
     "waitingToFillOneRole": "Oczekiwanie na obsadzenie 1 roli...",
     "closeArchive": "Zamknij archiwum",
-    "activityActions": "Działania aktywności"
+    "activityActions": "Działania aktywności",
+    "ongoing": "W toku"
 }

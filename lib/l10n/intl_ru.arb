@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-27 09:33:36.115343",
+    "@@last_modified": "2026-07-27 10:07:06.131279",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10669,5 +10669,6 @@
     "subscribeOnTheWeb": "Вы можете подписаться на сайте pangea.chat",
     "waitingToFillOneRole": "Ожидание заполнения 1 роли...",
     "closeArchive": "Закрыть архив",
-    "activityActions": "Действия активности"
+    "activityActions": "Действия активности",
+    "ongoing": "Продолжается"
 }
