@@ -8,8 +8,8 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 /// shortened and never get the home domain attached.
 ///
 /// [shortUserId] is used where the invite link is built (`fluffy_share.dart`);
-/// [fullUserId] where the URL's `userID` param is read back (routes.dart page
-/// builder for `/invite_user/:userID`).
+/// [userIdFromUrlParam] where the URL's `userID` param is read back
+/// (routes.dart page builder for `/invite_user/:userID`).
 
 /// Drop the home server_name so an id can ride a URL as a bare localpart. Ids
 /// from another homeserver, or any id whose domain isn't the home domain, are
@@ -23,3 +23,25 @@ String shortUserId(String id, {String? domain}) =>
 /// is returned unchanged. [domain] overrides the home domain (for tests).
 String fullUserId(String segment, {String? domain}) =>
     fullRoomId(segment, domain: domain);
+
+/// Read the `/invite_user/:userID` path param into the full mxid to open a DM
+/// with. The router percent-decodes a path param once on its own, but a shared
+/// link can reach us encoded twice — the share text encodes the id, and a chat
+/// client that linkifies the message can encode it again — which leaves the id
+/// still encoded after that first decode and reads to the homeserver as an
+/// invalid mxid. Decode the leftover layer when one is present, keeping the
+/// value as given if it isn't valid percent-encoding, so a malformed link
+/// reaches the normal invalid-id message instead of throwing out of the route
+/// builder. [domain] overrides the home domain (for tests).
+String userIdFromUrlParam(String param, {String? domain}) {
+  var value = param;
+  if (value.contains('%')) {
+    try {
+      value = Uri.decodeComponent(value);
+    } on ArgumentError {
+      // Not valid percent-encoding; treat it as a literal and let the id fail
+      // validation downstream rather than breaking route creation.
+    }
+  }
+  return fullUserId(value, domain: domain);
+}

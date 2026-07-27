@@ -109,9 +109,7 @@ abstract class AppRoutes {
         context,
         state,
         UserInviteLink(
-          userID: fullUserId(
-            Uri.decodeComponent(state.pathParameters['userID']!),
-          ),
+          userID: userIdFromUrlParam(state.pathParameters['userID']!),
         ),
       ),
     ),
