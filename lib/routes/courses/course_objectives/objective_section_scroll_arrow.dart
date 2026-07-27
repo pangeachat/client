@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+
 enum ArrowDirection {
   back,
   forward;
@@ -7,6 +9,11 @@ enum ArrowDirection {
   IconData get icon => switch (this) {
     ArrowDirection.back => Icons.chevron_left,
     ArrowDirection.forward => Icons.chevron_right,
+  };
+
+  String label(L10n l10n) => switch (this) {
+    ArrowDirection.back => l10n.back,
+    ArrowDirection.forward => l10n.forward,
   };
 }
 
@@ -22,15 +29,20 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(color: theme.colorScheme.surface),
+    final l10n = L10n.of(context);
+    return Semantics(
+      button: true,
+      label: direction.label(l10n),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
-          child: Center(child: Icon(direction.icon)),
+          child: Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(color: theme.colorScheme.surface),
+            child: Center(child: Icon(direction.icon)),
+          ),
         ),
       ),
     );

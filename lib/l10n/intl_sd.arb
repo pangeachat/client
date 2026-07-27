@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-24 11:59:35.770036",
+    "@@last_modified": "2026-07-27 09:33:37.362894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "رڪنيت ايپ ۾ خريد نه ٿي ڪري سگهجي",
     "subscribeOnTheWeb": "توهان pangea.chat تي ويب تي رڪنيت حاصل ڪري سگهو ٿا",
     "waitingToFillOneRole": "هڪ ڪردار ڀرڻ جو انتظار آهي...",
-    "closeArchive": "آرڪائيو بند ڪريو"
+    "closeArchive": "آرڪائيو بند ڪريو",
+    "activityActions": "سرگرميءَ جون ڪارروايون"
 }

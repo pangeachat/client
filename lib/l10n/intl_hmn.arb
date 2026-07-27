@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-24 11:59:33.113263",
+    "@@last_modified": "2026-07-27 09:33:32.558770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Tsis tuaj yeem yuav cov nyiaj them hauv app",
     "subscribeOnTheWeb": "Koj tuaj yeem sau npe hauv lub vev xaib ntawm pangea.chat",
     "waitingToFillOneRole": "Tos kom tau ib txoj haujlwm...",
-    "closeArchive": "Kaw qhov chaw khaws cia"
+    "closeArchive": "Kaw qhov chaw khaws cia",
+    "activityActions": "Kev ua ub no"
 }

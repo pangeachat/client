@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-24 11:59:37.478356",
+    "@@last_modified": "2026-07-27 09:33:37.837369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Okubhaliselwe akutholakali kuhlelo lokusebenza",
     "subscribeOnTheWeb": "Ungabhalisa kuwebhu ku-pangea.chat",
     "waitingToFillOneRole": "Ilindele ukugcwalisa indima eyi-1...",
-    "closeArchive": "Vala ingobo yomlando"
+    "closeArchive": "Vala ingobo yomlando",
+    "activityActions": "Izenzo zomsebenzi"
 }

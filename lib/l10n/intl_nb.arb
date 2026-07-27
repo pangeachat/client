@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:35.003561",
+    "@@last_modified": "2026-07-27 09:33:34.809226",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9751,5 +9751,6 @@
     "subscriptionsNotAvailableInApp": "Abonnement kan ikke kjøpes i appen",
     "subscribeOnTheWeb": "Du kan abonnere på nett på pangea.chat",
     "waitingToFillOneRole": "Venter på å fylle 1 rolle...",
-    "closeArchive": "Lukk arkiv"
+    "closeArchive": "Lukk arkiv",
+    "activityActions": "Aktivitetshandlinger"
 }

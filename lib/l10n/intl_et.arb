@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-24 11:59:32.187851",
+    "@@last_modified": "2026-07-27 09:33:31.400046",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9691,5 +9691,6 @@
     "subscriptionsNotAvailableInApp": "Tellimusi ei saa rakenduses osta",
     "subscribeOnTheWeb": "Saate tellida veebis aadressil pangea.chat",
     "waitingToFillOneRole": "Ootab 1 rolli täitmist...",
-    "closeArchive": "Sulge arhiiv"
+    "closeArchive": "Sulge arhiiv",
+    "activityActions": "Tegevuse toimingud"
 }

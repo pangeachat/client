@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-24 11:59:31.274236",
+    "@@last_modified": "2026-07-27 09:33:30.475960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "এপৰ ভিতৰত ছাবস্ক্ৰিপশ্বন ক্ৰয় কৰিব নোৱাৰি",
     "subscribeOnTheWeb": "আপুনি pangea.chat ৱেবছাইটত ছাবস্ক্ৰাইব কৰিব পাৰে",
     "waitingToFillOneRole": "এটা ভূমিকা পূৰণ কৰিবলৈ অপেক্ষা কৰি আছে...",
-    "closeArchive": "আৰ্কাইভ বন্ধ কৰক"
+    "closeArchive": "আৰ্কাইভ বন্ধ কৰক",
+    "activityActions": "কাৰ্য্যকলাপৰ কাৰ্য্যসমূহ"
 }

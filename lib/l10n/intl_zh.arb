@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-24 11:59:37.213994",
+    "@@last_modified": "2026-07-27 09:33:37.725425",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9694,5 +9694,6 @@
     "subscriptionsNotAvailableInApp": "无法在应用内购买订阅",
     "subscribeOnTheWeb": "您可以在 pangea.chat 网站上订阅",
     "waitingToFillOneRole": "正在等待填补 1 个职位...",
-    "closeArchive": "关闭存档"
+    "closeArchive": "关闭存档",
+    "activityActions": "活动操作"
 }

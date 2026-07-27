@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-24 11:59:32.153208",
+    "@@last_modified": "2026-07-27 09:33:31.410825",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9694,5 +9694,6 @@
     "subscriptionsNotAvailableInApp": "Harpidetzak ezin dira aplikazioan erosi",
     "subscribeOnTheWeb": "pangea.chat webgunean harpidetu zaitezke",
     "waitingToFillOneRole": "Rol 1 betetzeko zain...",
-    "closeArchive": "Artxiboa itxi"
+    "closeArchive": "Artxiboa itxi",
+    "activityActions": "Jarduera-ekintzak"
 }

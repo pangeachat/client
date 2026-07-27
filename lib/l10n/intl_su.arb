@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-24 11:59:36.264252",
+    "@@last_modified": "2026-07-27 09:33:36.488421",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Langganan teu tiasa dipésér dina aplikasi",
     "subscribeOnTheWeb": "Anjeun tiasa langganan dina wéb di pangea.chat",
     "waitingToFillOneRole": "Ngantosan ngeusian 1 peran...",
-    "closeArchive": "Tutup arsip"
+    "closeArchive": "Tutup arsip",
+    "activityActions": "Peta kagiatan"
 }

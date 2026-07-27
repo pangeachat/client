@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-24 11:59:37.190358",
+    "@@last_modified": "2026-07-27 09:33:37.639925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Ko le ra àbáwọlé nínú app",
     "subscribeOnTheWeb": "O le ṣe àbáwọlé lórí ayélujára ní pangea.chat",
     "waitingToFillOneRole": "Nduro lati kun ipa 1...",
-    "closeArchive": "Pa àpamọ́"
+    "closeArchive": "Pa àpamọ́",
+    "activityActions": "Àwọn iṣẹ́ ṣíṣe"
 }

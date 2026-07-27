@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-24 11:59:34.515317",
+    "@@last_modified": "2026-07-27 09:33:34.387470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Tsy azo vidiana ao anatin'ny app ny famandrihana",
     "subscribeOnTheWeb": "Afaka misoratra anarana amin'ny tranonkala ianao ao amin'ny pangea.chat",
     "waitingToFillOneRole": "Miandry ny hamenoana toerana 1...",
-    "closeArchive": "Akatona ny tahiry"
+    "closeArchive": "Akatona ny tahiry",
+    "activityActions": "Hetsika atao"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-24 11:59:32.779292",
+    "@@last_modified": "2026-07-27 09:33:31.997183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "ʻAʻole hiki ke kūʻai i nā kau inoa ma ka polokalamu",
     "subscribeOnTheWeb": "Hiki iā ʻoe ke kau inoa ma ka pūnaewele ma pangea.chat",
     "waitingToFillOneRole": "Ke kali nei e hoʻopiha i 1 kuleana...",
-    "closeArchive": "Hoʻopau i ka waihona"
+    "closeArchive": "Hoʻopau i ka waihona",
+    "activityActions": "Nā hana hana"
 }

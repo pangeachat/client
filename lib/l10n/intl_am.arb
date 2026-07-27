@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-24 11:59:31.188803",
+    "@@last_modified": "2026-07-27 09:33:30.540191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "የደንበኝነት ምዝገባዎች በመተግበሪያው ውስጥ ሊገዙ አይችሉም",
     "subscribeOnTheWeb": "በ pangea.chat ድህረ ገጽ ላይ መመዝገብ ይችላሉ",
     "waitingToFillOneRole": "1 ሚና ለመሙላት በመጠበቅ ላይ...",
-    "closeArchive": "ማህደር ዝጋ"
+    "closeArchive": "ማህደር ዝጋ",
+    "activityActions": "የእንቅስቃሴ ድርጊቶች"
 }

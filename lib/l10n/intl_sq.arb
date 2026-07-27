@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-24 11:59:36.122795",
+    "@@last_modified": "2026-07-27 09:33:36.421363",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Abonimet nuk mund të blihen në aplikacion",
     "subscribeOnTheWeb": "Mund të abonoheni në ueb në pangea.chat",
     "waitingToFillOneRole": "Duke pritur të plotësohet 1 rol...",
-    "closeArchive": "Mbyll arkivin"
+    "closeArchive": "Mbyll arkivin",
+    "activityActions": "Veprimet e aktivitetit"
 }
