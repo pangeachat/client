@@ -291,14 +291,19 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   left: 0,
                   top: 0,
                   bottom: 0,
-                  child: IgnorePointer(
-                    ignoring: !showArrow,
+                  child: AnimatedSize(
+                    duration: const Duration(milliseconds: 150),
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 150),
                       opacity: showArrow ? 1 : 0,
-                      child: ObjectiveSectionScrollArrow(
-                        direction: ArrowDirection.back,
-                        onTap: () => _scrollByArrow(ArrowDirection.back),
+                      child: ClipRect(
+                        child: SizedBox(
+                          width: showArrow ? 40.0 : 0.0,
+                          child: ObjectiveSectionScrollArrow(
+                            direction: ArrowDirection.back,
+                            onTap: () => _scrollByArrow(ArrowDirection.back),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -310,14 +315,19 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   right: 0,
                   top: 0,
                   bottom: 0,
-                  child: IgnorePointer(
-                    ignoring: !showArrow,
+                  child: AnimatedSize(
+                    duration: const Duration(milliseconds: 150),
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 150),
                       opacity: showArrow ? 1 : 0,
-                      child: ObjectiveSectionScrollArrow(
-                        direction: ArrowDirection.forward,
-                        onTap: () => _scrollByArrow(ArrowDirection.forward),
+                      child: ClipRect(
+                        child: SizedBox(
+                          width: showArrow ? 40.0 : 0.0,
+                          child: ObjectiveSectionScrollArrow(
+                            direction: ArrowDirection.forward,
+                            onTap: () => _scrollByArrow(ArrowDirection.forward),
+                          ),
+                        ),
                       ),
                     ),
                   ),
