@@ -4763,6 +4763,18 @@
             }
         }
     },
+    "activityPreviewLabel": "Activity preview: ",
+    "participantRowLabel": "{joined} out of {total} participants have joined",
+    "@participantRowLabel": {
+        "placeholders": {
+            "joined": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
     "searchCoursePlans": "Search course plans",
     "searchPublicCourses": "Search public courses",
     "closeSearch": "Close search"

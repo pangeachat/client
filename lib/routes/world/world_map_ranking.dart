@@ -54,6 +54,14 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
+  String get label => switch (this) {
+    ActivityPinState.ongoingPending => "Waiting for others to join",
+    ActivityPinState.ongoingActive => "Ongoing",
+    ActivityPinState.joinable => "Joinable",
+    ActivityPinState.inProgress => "Previously completed",
+    ActivityPinState.available => "Create activity",
+  };
+
   /// The accent used for a large card's border / foreground — the state hue.
   Color get accent => color;
 }
