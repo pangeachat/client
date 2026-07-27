@@ -87,16 +87,19 @@ String sha256Hex(List<int> message) {
   for (var chunk = 0; chunk < padded.length; chunk += 64) {
     for (var i = 0; i < 16; i++) {
       final j = chunk + i * 4;
-      w[i] = (padded[j] << 24) |
+      w[i] =
+          (padded[j] << 24) |
           (padded[j + 1] << 16) |
           (padded[j + 2] << 8) |
           padded[j + 3];
     }
     for (var i = 16; i < 64; i++) {
-      final s0 = _rotr(w[i - 15] & 0xffffffff, 7) ^
+      final s0 =
+          _rotr(w[i - 15] & 0xffffffff, 7) ^
           _rotr(w[i - 15] & 0xffffffff, 18) ^
           ((w[i - 15] & 0xffffffff) >> 3);
-      final s1 = _rotr(w[i - 2] & 0xffffffff, 17) ^
+      final s1 =
+          _rotr(w[i - 2] & 0xffffffff, 17) ^
           _rotr(w[i - 2] & 0xffffffff, 19) ^
           ((w[i - 2] & 0xffffffff) >> 10);
       w[i] = (w[i - 16] + s0 + w[i - 7] + s1) & 0xffffffff;
@@ -155,8 +158,9 @@ Map<String, String> parseManifest(String text) {
 }
 
 void main() {
-  final progressionDir =
-      Directory(p.join('test', 'fixtures', 'parity', 'progression'));
+  final progressionDir = Directory(
+    p.join('test', 'fixtures', 'parity', 'progression'),
+  );
   final manifestFile = File(p.join(progressionDir.path, 'MANIFEST.sha256'));
 
   const regenerate =
@@ -164,12 +168,13 @@ void main() {
       'back into client/test/fixtures/parity/:\n'
       '  python tests/fixtures/parity/gen_progression_manifest.py';
 
-  List<File> vectorFiles() => progressionDir
-      .listSync()
-      .whereType<File>()
-      .where((f) => p.extension(f.path) == '.json')
-      .toList()
-    ..sort((a, b) => p.basename(a.path).compareTo(p.basename(b.path)));
+  List<File> vectorFiles() =>
+      progressionDir
+          .listSync()
+          .whereType<File>()
+          .where((f) => p.extension(f.path) == '.json')
+          .toList()
+        ..sort((a, b) => p.basename(a.path).compareTo(p.basename(b.path)));
 
   group('progression parity fixtures', () {
     test('the sha256 implementation matches known FIPS 180-4 vectors', () {
@@ -183,27 +188,41 @@ void main() {
         'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
       );
       expect(
-        sha256Hex(utf8.encode(
-          'abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq',
-        )),
+        sha256Hex(
+          utf8.encode(
+            'abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq',
+          ),
+        ),
         '248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1',
       );
     });
 
     test('the manifest exists and is parseable', () {
-      expect(manifestFile.existsSync(), isTrue,
-          reason: 'missing ${manifestFile.path}\n$regenerate');
-      expect(parseManifest(manifestFile.readAsStringSync()), isNotEmpty,
-          reason: '${manifestFile.path} lists no vector files\n$regenerate');
+      expect(
+        manifestFile.existsSync(),
+        isTrue,
+        reason: 'missing ${manifestFile.path}\n$regenerate',
+      );
+      expect(
+        parseManifest(manifestFile.readAsStringSync()),
+        isNotEmpty,
+        reason: '${manifestFile.path} lists no vector files\n$regenerate',
+      );
     });
 
     test('the manifest covers exactly the vector files present', () {
-      final listed = parseManifest(manifestFile.readAsStringSync()).keys.toSet();
+      final listed = parseManifest(
+        manifestFile.readAsStringSync(),
+      ).keys.toSet();
       final onDisk = vectorFiles().map((f) => p.basename(f.path)).toSet();
 
-      expect(onDisk, equals(listed),
-          reason: 'progression/ and MANIFEST.sha256 disagree on which vectors '
-              'exist\n$regenerate');
+      expect(
+        onDisk,
+        equals(listed),
+        reason:
+            'progression/ and MANIFEST.sha256 disagree on which vectors '
+            'exist\n$regenerate',
+      );
     });
 
     test('every vector file matches its committed digest', () {
@@ -211,21 +230,30 @@ void main() {
 
       for (final file in vectorFiles()) {
         final name = p.basename(file.path);
-        expect(sha256Hex(file.readAsBytesSync()), manifest[name],
-            reason: '$name does not match its committed sha256\n$regenerate');
+        expect(
+          sha256Hex(file.readAsBytesSync()),
+          manifest[name],
+          reason: '$name does not match its committed sha256\n$regenerate',
+        );
       }
     });
 
     test('the vectors are readable and carry the expected vector families', () {
       // Byte-identity is worthless if the bytes are not the fixture we think.
-      final rollup = jsonDecode(
-        File(p.join(progressionDir.path, 'rollup_vectors.json'))
-            .readAsStringSync(),
-      ) as Map<String, dynamic>;
-      final starCount = jsonDecode(
-        File(p.join(progressionDir.path, 'star_count_vectors.json'))
-            .readAsStringSync(),
-      ) as Map<String, dynamic>;
+      final rollup =
+          jsonDecode(
+                File(
+                  p.join(progressionDir.path, 'rollup_vectors.json'),
+                ).readAsStringSync(),
+              )
+              as Map<String, dynamic>;
+      final starCount =
+          jsonDecode(
+                File(
+                  p.join(progressionDir.path, 'star_count_vectors.json'),
+                ).readAsStringSync(),
+              )
+              as Map<String, dynamic>;
 
       expect(rollup['vectors'], isNotEmpty);
       expect(starCount['vectors'], isNotEmpty);

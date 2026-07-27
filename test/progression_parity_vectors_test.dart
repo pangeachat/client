@@ -50,80 +50,80 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 
 import 'pangea/get_test_client.dart';
 
-Map<String, dynamic> _loadVectorFile(String basename) => jsonDecode(
-      File(p.join('test', 'fixtures', 'parity', 'progression', basename))
-          .readAsStringSync(),
-    ) as Map<String, dynamic>;
+Map<String, dynamic> _loadVectorFile(String basename) =>
+    jsonDecode(
+          File(
+            p.join('test', 'fixtures', 'parity', 'progression', basename),
+          ).readAsStringSync(),
+        )
+        as Map<String, dynamic>;
 
 /// One vector's `input.outlines` entry as the resolver's own input type. Pure
 /// marshalling — every value is copied through verbatim.
 CourseLoOutline _outlineFrom(Map<String, dynamic> json) => CourseLoOutline(
-      orderedLoIds: List<String>.from(json['ordered_lo_ids'] as List),
-      activityIdsByLo:
-          (json['activity_ids_by_lo'] as Map<String, dynamic>).map(
-        (loId, activityIds) => MapEntry(loId, Set<String>.from(
-          activityIds as List,
-        )),
-      ),
-      starsToUnlock: json['stars_to_unlock'] as int,
-      earnableByActivity:
-          Map<String, int>.from(json['earnable_by_activity'] as Map),
-    );
+  orderedLoIds: List<String>.from(json['ordered_lo_ids'] as List),
+  activityIdsByLo: (json['activity_ids_by_lo'] as Map<String, dynamic>).map(
+    (loId, activityIds) =>
+        MapEntry(loId, Set<String>.from(activityIds as List)),
+  ),
+  starsToUnlock: json['stars_to_unlock'] as int,
+  earnableByActivity: Map<String, int>.from(
+    json['earnable_by_activity'] as Map,
+  ),
+);
 
 /// A plan carrying the vector's CMS-authored role map. Everything except
 /// `roles` is inert filler the plan model requires but no assertion reads.
 ActivityPlanModel _planFrom(
   String activityId,
   Map<String, dynamic> planRoles,
-) =>
-    ActivityPlanModel(
-      req: ActivityPlanRequest(
-        topic: 'parity',
-        mode: 'Roleplay',
-        objective: 'parity',
-        media: MediaEnum.nan,
-        cefrLevel: LanguageLevelTypeEnum.a1,
-        languageOfInstructions: 'en',
-        targetLanguage: 'es',
-        numberOfParticipants: 2,
-      ),
-      title: 'parity',
-      learningObjective: 'lo',
-      instructions: 'i',
-      vocab: const [],
-      activityId: activityId,
-      // The real CMS role parser, fed the vector's role JSON unmodified.
-      roles: planRoles.map(
-        (roleId, role) => MapEntry(
-          roleId,
-          ActivityRole.fromJson(Map<String, dynamic>.from(role as Map)),
-        ),
-      ),
-    );
+) => ActivityPlanModel(
+  req: ActivityPlanRequest(
+    topic: 'parity',
+    mode: 'Roleplay',
+    objective: 'parity',
+    media: MediaEnum.nan,
+    cefrLevel: LanguageLevelTypeEnum.a1,
+    languageOfInstructions: 'en',
+    targetLanguage: 'es',
+    numberOfParticipants: 2,
+  ),
+  title: 'parity',
+  learningObjective: 'lo',
+  instructions: 'i',
+  vocab: const [],
+  activityId: activityId,
+  // The real CMS role parser, fed the vector's role JSON unmodified.
+  roles: planRoles.map(
+    (roleId, role) => MapEntry(
+      roleId,
+      ActivityRole.fromJson(Map<String, dynamic>.from(role as Map)),
+    ),
+  ),
+);
 
 /// A session room carrying the three real state events a live activity session
 /// holds: the plan (`pangea.activity_plan`), the role assignments
 /// (`pangea.activity_roles`) and the orchestrator's awards
 /// (`pangea.orchestrator_awarded_goals`).
-Room _sessionRoom(
-  Client client,
-  int index,
-  Map<String, dynamic> session,
-) {
+Room _sessionRoom(Client client, int index, Map<String, dynamic> session) {
   final activityId = session['activity_id'] as String;
-  final room = Room(id: '!parity-$index:fakeServer.notExisting', client: client);
+  final room = Room(
+    id: '!parity-$index:fakeServer.notExisting',
+    client: client,
+  );
 
   void state(String type, Map<String, dynamic> content) => room.setState(
-        Event(
-          type: type,
-          content: content,
-          senderId: '@parity:fakeServer.notExisting',
-          eventId: '\$parity-$index-$type',
-          originServerTs: DateTime.utc(2026, 7, 18),
-          stateKey: '',
-          room: room,
-        ),
-      );
+    Event(
+      type: type,
+      content: content,
+      senderId: '@parity:fakeServer.notExisting',
+      eventId: '\$parity-$index-$type',
+      originServerTs: DateTime.utc(2026, 7, 18),
+      stateKey: '',
+      room: room,
+    ),
+  );
 
   // The room type is authoritative for the activity id (activity_room_extension).
   state(EventTypes.RoomCreate, {
@@ -131,8 +131,10 @@ Room _sessionRoom(
   });
   state(
     PangeaEventTypes.activityPlan,
-    _planFrom(activityId, session['plan_roles'] as Map<String, dynamic>)
-        .toJson(),
+    _planFrom(
+      activityId,
+      session['plan_roles'] as Map<String, dynamic>,
+    ).toJson(),
   );
   state(PangeaEventTypes.activityRole, {'roles': session['roles']});
   state(
@@ -153,22 +155,23 @@ void main() {
   // (looser) one — a test that picks its own tolerance can hide real drift.
   final tolerance = (rollupFile['float_tolerance'] as num).toDouble();
 
-  final rollupVectors =
-      (rollupFile['vectors'] as List).cast<Map<String, dynamic>>();
-  final starCountVectors =
-      (starCountFile['vectors'] as List).cast<Map<String, dynamic>>();
+  final rollupVectors = (rollupFile['vectors'] as List)
+      .cast<Map<String, dynamic>>();
+  final starCountVectors = (starCountFile['vectors'] as List)
+      .cast<Map<String, dynamic>>();
 
   final executedRollup = <String>{};
   final executedStarCount = <String>{};
 
-  group('progression parity vectors — rollup (executed against the resolver)',
-      () {
+  group('progression parity vectors — rollup (executed against the resolver)', () {
     test('the resolver constants match the vector header', () {
       // The header's constants are the ones the Python port mirrors. If the
       // Dart moved, every expectation below is being compared against a
       // different resolver than the one the vectors describe.
-      expect(kDefaultStarsToUnlockObjective,
-          rollupFile['default_stars_to_unlock_objective']);
+      expect(
+        kDefaultStarsToUnlockObjective,
+        rollupFile['default_stars_to_unlock_objective'],
+      );
       expect(kBandFalloffMissions, rollupFile['band_falloff_missions']);
       expect(kBandCeiling, rollupFile['band_ceiling']);
       expect(tolerance, 1e-9);
@@ -187,8 +190,9 @@ void main() {
           outlines: (input['outlines'] as List)
               .cast<Map<String, dynamic>>()
               .map(_outlineFrom),
-          starsByActivity:
-              Map<String, int>.from(input['stars_by_activity'] as Map),
+          starsByActivity: Map<String, int>.from(
+            input['stars_by_activity'] as Map,
+          ),
         );
 
         // --- rollup: stars / threshold / satisfied, per Mission -------------
@@ -196,18 +200,28 @@ void main() {
         expect(
           resolution.rollup.keys.toSet(),
           expectedRollup.keys.toSet(),
-          reason: '$name: the rollup covers different Missions than the '
+          reason:
+              '$name: the rollup covers different Missions than the '
               'vector records — $pins',
         );
         expectedRollup.forEach((missionId, raw) {
           final want = raw as Map<String, dynamic>;
           final got = resolution.rollup[missionId]!;
-          expect(got.stars, want['stars'],
-              reason: '$name / $missionId stars — $pins');
-          expect(got.threshold, want['threshold'],
-              reason: '$name / $missionId threshold — $pins');
-          expect(got.satisfied, want['satisfied'],
-              reason: '$name / $missionId satisfied — $pins');
+          expect(
+            got.stars,
+            want['stars'],
+            reason: '$name / $missionId stars — $pins',
+          );
+          expect(
+            got.threshold,
+            want['threshold'],
+            reason: '$name / $missionId threshold — $pins',
+          );
+          expect(
+            got.satisfied,
+            want['satisfied'],
+            reason: '$name / $missionId satisfied — $pins',
+          );
         });
 
         // --- quest_stars: the earned/total the quest header renders ---------
@@ -215,35 +229,49 @@ void main() {
         final gotStars = resolution.questStars(
           List<String>.from(input['quest_mission_ids'] as List),
         );
-        expect(gotStars.earned, wantStars['earned'],
-            reason: '$name quest stars earned — $pins');
-        expect(gotStars.total, wantStars['total'],
-            reason: '$name quest stars total — $pins');
+        expect(
+          gotStars.earned,
+          wantStars['earned'],
+          reason: '$name quest stars earned — $pins',
+        );
+        expect(
+          gotStars.total,
+          wantStars['total'],
+          reason: '$name quest stars total — $pins',
+        );
 
         // --- anchor: string for one quest, list for several, null for none --
         final wantAnchor = expected['anchor'];
-        final gotAnchors =
-            resolution.quests.map((q) => q.anchorMissionId).toList();
+        final gotAnchors = resolution.quests
+            .map((q) => q.anchorMissionId)
+            .toList();
         if (wantAnchor == null) {
-          expect(resolution.quests, isEmpty,
-              reason: '$name expects no resolved quest — $pins');
+          expect(
+            resolution.quests,
+            isEmpty,
+            reason: '$name expects no resolved quest — $pins',
+          );
         } else if (wantAnchor is List) {
-          expect(gotAnchors, List<String?>.from(wantAnchor),
-              reason: '$name anchors — $pins');
+          expect(
+            gotAnchors,
+            List<String?>.from(wantAnchor),
+            reason: '$name anchors — $pins',
+          );
         } else {
           expect(gotAnchors, [wantAnchor], reason: '$name anchor — $pins');
         }
 
         // --- mission_gradient: a SINGLE-ref probe per recorded Mission ------
-        (expected['mission_gradient'] as Map<String, dynamic>).forEach(
-          (missionId, want) {
-            expect(
-              resolution.missionGradient({missionId}),
-              closeTo((want as num).toDouble(), tolerance),
-              reason: '$name / $missionId gradient — $pins',
-            );
-          },
-        );
+        (expected['mission_gradient'] as Map<String, dynamic>).forEach((
+          missionId,
+          want,
+        ) {
+          expect(
+            resolution.missionGradient({missionId}),
+            closeTo((want as num).toDouble(), tolerance),
+            reason: '$name / $missionId gradient — $pins',
+          );
+        });
       });
     }
 
@@ -256,8 +284,7 @@ void main() {
     });
   });
 
-  group(
-      'progression parity vectors — star count (executed against the real '
+  group('progression parity vectors — star count (executed against the real '
       'award path)', () {
     for (final vector in starCountVectors) {
       final name = vector['name'] as String;
@@ -274,8 +301,8 @@ void main() {
           // because the own-role lookup keys on `client.userID`.
           client.setUserId(input['player'] as String);
 
-          final sessions =
-              (input['sessions'] as List).cast<Map<String, dynamic>>();
+          final sessions = (input['sessions'] as List)
+              .cast<Map<String, dynamic>>();
           final rooms = [
             for (var i = 0; i < sessions.length; i++)
               _sessionRoom(client, i, sessions[i]),
@@ -301,8 +328,9 @@ void main() {
           // `earnableByActivity`, once per session room, so a disagreement
           // between two sessions of one activity cannot hide behind a
           // last-write-wins map.
-          final wantEarnable =
-              Map<String, int>.from(expected['earnable_by_activity'] as Map);
+          final wantEarnable = Map<String, int>.from(
+            expected['earnable_by_activity'] as Map,
+          );
           expect(
             {for (final room in rooms) room.activityId},
             wantEarnable.keys.toSet(),
