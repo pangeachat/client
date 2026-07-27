@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-27 10:06:54.149806",
+    "@@last_modified": "2026-07-27 15:35:57.711677",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Koj tau ntxiv ib txoj kev npaj ua haujlwm",
     "userSentActivitySummary": "{username} tau xa ib daim ntawv qhia txog kev ua haujlwm",
     "youSentActivitySummary": "Koj tau xa ib daim ntawv qhia txog kev ua haujlwm",
-    "emptyInviteSearchHint": "Tsis pom tus neeg koj tab tom nrhiav? Tej zaum lawv yuav tsum teeb tsa lawv tus kheej rau pej xeem hauv Kev Kawm Ntawv Chaw",
     "clickOnEmailLinkDesc": "Thov nyem rau ntawm qhov txuas hauv email thiab tom qab ntawd mus ntxiv. Tshawb xyuas koj lub spam folder yog tias email tsis tau tuaj txog.",
     "didntReceiveEmail": "Tsis tau txais email?",
     "resend": "Xa dua",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Tos kom tau ib txoj haujlwm...",
     "closeArchive": "Kaw qhov chaw khaws cia",
     "activityActions": "Kev ua ub no",
-    "ongoing": "Tabtom"
+    "ongoing": "Tabtom",
+    "emptyInviteSearchHint": "Nrhiav tsis tau tus koj xav tau? Tej zaum lawv yuav tsum tso cai rau lawv tus kheej kom pom hauv kev tshawb nrhiav. Mus saib Kho Tus Kheej Hauv Chaw."
 }

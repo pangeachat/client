@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-27 10:07:02.649026",
+    "@@last_modified": "2026-07-27 15:36:04.942965",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9253,12 +9253,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "మీరు చూస్తున్న వ్యక్తిని చూడడం లేదు? వారు లెర్నింగ్ సెట్టింగ్స్‌లో వారి ప్రొఫైల్‌ను పబ్లిక్‌గా సెట్ చేయవచ్చు",
     "suggestedVocab": "సూచించిన పదకోశం",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10647,6 @@
     "waitingToFillOneRole": "ఒక పాత్రను పూరించడానికి వేచి ఉంది...",
     "closeArchive": "ఆర్కైవ్‌ను మూసివేయండి",
     "activityActions": "కార్యకలాప చర్యలు",
-    "ongoing": "కొనసాగుతోంది"
+    "ongoing": "కొనసాగుతోంది",
+    "emptyInviteSearchHint": "మీరు వెతుకుతున్న వ్యక్తిని కనుగొనలేదా? వారి ప్రొఫైల్‌ను శోధనలో కనుగొనడానికి వారు అనుమతించాల్సి రావచ్చు. సెట్టింగ్‌లలో ప్రొఫైల్‌ను సవరించండిని తనిఖీ చేయండి."
 }

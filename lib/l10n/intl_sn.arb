@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-27 10:07:01.424601",
+    "@@last_modified": "2026-07-27 15:36:04.094774",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Wakawedzera chirongwa chechiitiko",
     "userSentActivitySummary": "{username} akatumira pfupiso yechiitiko",
     "youSentActivitySummary": "Watumira pfupiso yechiitiko",
-    "emptyInviteSearchHint": "Haumuoni waunotsvaga? Anogona kuda kuisa profile yake pachena muZvirongwa zveKudzidza",
     "clickOnEmailLinkDesc": "Ndapota tinya pane link iri muemail wobva waenderera mberi. Tarisa spam folder yako kana email isati yasvika.",
     "didntReceiveEmail": "Hauana kugamuchira email?",
     "resend": "Tumira zvakare",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Kwakakamirirwa kuzadzwa basa rimwe chete...",
     "closeArchive": "Vhara dura",
     "activityActions": "Zviito zvechiitiko",
-    "ongoing": "Kuenderera"
+    "ongoing": "Kuenderera",
+    "emptyInviteSearchHint": "Haukwanise kuwana waunotsvaga? Zvinogona kunge zvichidikanwa kuti vatendere profile yavo kuti iwanikwe mukutsvaga. Tarisa paEdit Profile muSettings."
 }

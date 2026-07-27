@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-27 10:07:02.064393",
+    "@@last_modified": "2026-07-27 15:36:04.707081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Anjeun nambihan rencana kagiatan",
     "userSentActivitySummary": "{username} ngirimkeun ringkesan kagiatan",
     "youSentActivitySummary": "Anjeun ngirimkeun ringkesan kagiatan",
-    "emptyInviteSearchHint": "Teu mendakan anu dipilarian? Aranjeunna panginten kedah nyetel profilna janten umum dina Setelan Pembelajaran",
     "clickOnEmailLinkDesc": "Punten klik tautan dina email teras teraskeun. Pariksa folder spam anjeun upami emailna teu acan dugi.",
     "didntReceiveEmail": "Teu nampi emailna?",
     "resend": "Kirim deui",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ngantosan ngeusian 1 peran...",
     "closeArchive": "Tutup arsip",
     "activityActions": "Peta kagiatan",
-    "ongoing": "Lumangsung"
+    "ongoing": "Lumangsung",
+    "emptyInviteSearchHint": "Teu tiasa mendakan anu anjeun milarian? Aranjeunna panginten kedah ngijinkeun profilna dipendakan dina pamilarian. Pariksa Édit Profil dina Setélan."
 }

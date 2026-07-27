@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-27 10:07:00.086351",
+    "@@last_modified": "2026-07-27 15:36:11.665968",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Mwaonjezera dongosolo la zochitika",
     "userSentActivitySummary": "{username} watumiza chidule cha zochitika",
     "youSentActivitySummary": "Mwatumiza chidule cha zochitika",
-    "emptyInviteSearchHint": "Simukuona amene mukufuna? Ayenera kuyika mbiri yawo kukhala yapagulu mu Zokonda pa Kuphunzira",
     "clickOnEmailLinkDesc": "Chonde dinani ulalo womwe uli mu imelo kenako pitirizani. Yang'anani mu spam ngati imelo sinabwere.",
     "didntReceiveEmail": "Simunalandire imelo?",
     "resend": "Tumizanso",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Tikudikira kuti tigwiritse ntchito udindo umodzi...",
     "closeArchive": "Tsekani zosungidwa",
     "activityActions": "Zochita",
-    "ongoing": "Ikuchitika"
+    "ongoing": "Ikuchitika",
+    "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-27 10:06:53.526726",
+    "@@last_modified": "2026-07-27 15:35:57.537382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Ua hoʻohui ʻoe i kekahi papa hana",
     "userSentActivitySummary": "Ua hoʻouna mai ʻo {username} i kekahi hōʻuluʻulu hana",
     "youSentActivitySummary": "Ua hoʻouna aku ʻoe i kekahi hōʻuluʻulu hana",
-    "emptyInviteSearchHint": "ʻAʻole ʻoe i ʻike i ka mea āu e ʻimi nei? Pono paha lākou e hoʻololi i ko lākou ʻikepili i ka lehulehu ma nā Hoʻonohonoho Aʻo",
     "clickOnEmailLinkDesc": "E ʻoluʻolu, e kaomi i ka loulou ma ka leka uila a laila e hoʻomau. E nānā i kāu waihona leka ʻōpala inā ʻaʻole i hiki mai ka leka uila.",
     "didntReceiveEmail": "ʻAʻole i loaʻa ka leka uila?",
     "resend": "Hoʻouna hou",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ke kali nei e hoʻopiha i 1 kuleana...",
     "closeArchive": "Hoʻopau i ka waihona",
     "activityActions": "Nā hana hana",
-    "ongoing": "Ke hoʻomau nei"
+    "ongoing": "Ke hoʻomau nei",
+    "emptyInviteSearchHint": "ʻAʻole hiki ke loaʻa ka mea āu e ʻimi nei? Pono paha lākou e ʻae i ko lākou ʻaoʻao e loaʻa ma ka huli. E nānā i ka Hoʻoponopono ʻAoʻao ma nā Koho."
 }

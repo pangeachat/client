@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-27 10:07:03.860692",
+    "@@last_modified": "2026-07-27 15:36:06.241789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Uyongeze isicwangciso somsebenzi",
     "userSentActivitySummary": "U-{username} uthumele isishwankathelo somsebenzi",
     "youSentActivitySummary": "Uthumele isishwankathelo somsebenzi",
-    "emptyInviteSearchHint": "Akumboni omfunayo? Kusenokufuneka abeke iprofayile yakhe esidlangalaleni kwiiSetingi zokuFunda",
     "clickOnEmailLinkDesc": "Nceda ucofe kwi-link ekwi-imeyile uze uqhubeke. Jonga kwifolda yakho yogaxekile ukuba i-imeyile ayikafiki.",
     "didntReceiveEmail": "Ayikafiki i-imeyile?",
     "resend": "Thumela kwakhona",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Kulindwe ukuba kuzaliswe indima e-1...",
     "closeArchive": "Vala indawo yokugcina",
     "activityActions": "Iintshukumo zomsebenzi",
-    "ongoing": "Iyaqhubeka"
+    "ongoing": "Iyaqhubeka",
+    "emptyInviteSearchHint": "Awumfumani omfunayo? Kusenokwenzeka ukuba kufuneka avumele iprofayile yakhe ukuba ifumaneke ekukhangeleni. Jonga Hlela Iprofayile kuseto."
 }

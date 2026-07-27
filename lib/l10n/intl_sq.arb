@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-27 10:07:01.829855",
+    "@@last_modified": "2026-07-27 15:36:04.303175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Ju shtuat një plan aktiviteti",
     "userSentActivitySummary": "{username} dërgoi një përmbledhje aktiviteti",
     "youSentActivitySummary": "Ju dërguat një përmbledhje aktiviteti",
-    "emptyInviteSearchHint": "Nuk e gjeni atë që kërkoni? Ata mund të kenë nevojë të vendosin profilin e tyre publik në Cilësimet e Mësimit",
     "clickOnEmailLinkDesc": "Ju lutemi klikoni në lidhjen në email dhe më pas vazhdoni. Kontrolloni dosjen e spam-it nëse emaili nuk ka mbërritur.",
     "didntReceiveEmail": "Nuk e morët emailin?",
     "resend": "Ridërgo",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Duke pritur të plotësohet 1 rol...",
     "closeArchive": "Mbyll arkivin",
     "activityActions": "Veprimet e aktivitetit",
-    "ongoing": "Në vazhdim"
+    "ongoing": "Në vazhdim",
+    "emptyInviteSearchHint": "Nuk e gjen dot atë që kërkon? Mund të jetë e nevojshme që ata të lejojnë gjetjen e profilit të tyre në kërkim. Kontrollo \"Ndrysho profilin\" te Cilësimet."
 }

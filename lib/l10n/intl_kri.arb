@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-27 10:06:58.598771",
+    "@@last_modified": "2026-07-27 15:36:02.840399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Yu ad wan aktiviti plan",
     "userSentActivitySummary": "{username} sen wan aktiviti samari",
     "youSentActivitySummary": "Yu sen wan aktiviti samari",
-    "emptyInviteSearchHint": "Nɔ de si pɔsin we yu de luk fɔ? Dɛn go nid fɔ set dɛn pɔfil to pɔblik insay Lɛnin Sɛtin dɛn",
     "clickOnEmailLinkDesc": "Duya klik pan di link insay di imel ɛn dɛn kɔntinyu. Chɛk yu spam fɔlda if di imel nɔ rich.",
     "didntReceiveEmail": "Nɔ gɛt di imel?",
     "resend": "Sen bak",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "De wet fɔ fil wan rol...",
     "closeArchive": "Klos achiv",
     "activityActions": "Wok we yu kin du",
-    "ongoing": "De Go"
+    "ongoing": "De Go",
+    "emptyInviteSearchHint": "Yu nɔ de fɛn di pɔsin we yu want? Sɔntɛm dɛn nid fɔ alaw dɛn prɔfayl fɔ de insay di sɛch. Chɛk Edit Profile insay Sɛtin."
 }

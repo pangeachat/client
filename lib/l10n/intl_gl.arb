@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-27 10:07:00.737336",
+    "@@last_modified": "2026-07-27 15:35:57.077654",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Non ves a quen buscas? Pode que necesiten configurar o seu perfil como público nas Configuracións de Aprendizaxe",
     "suggestedVocab": "Vocabulario suxerido",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9696,5 +9691,6 @@
     "waitingToFillOneRole": "Agardando para cubrir 1 posto...",
     "closeArchive": "Pechar arquivo",
     "activityActions": "Accións de actividade",
-    "ongoing": "En curso"
+    "ongoing": "En curso",
+    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración."
 }

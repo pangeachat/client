@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-27 10:06:52.409131",
+    "@@last_modified": "2026-07-27 15:35:56.557506",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan",
     "suggestedVocab": "Proposatutako hiztegia",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9696,5 +9691,6 @@
     "waitingToFillOneRole": "Rol 1 betetzeko zain...",
     "closeArchive": "Artxiboa itxi",
     "activityActions": "Jarduera-ekintzak",
-    "ongoing": "Abian"
+    "ongoing": "Abian",
+    "emptyInviteSearchHint": "Ez duzu aurkitzen bilatzen ari zarena? Baliteke haien profilak bilaketan aurkitzea baimendu behar izatea. Egiaztatu Editatu profila Ezarpenetan."
 }

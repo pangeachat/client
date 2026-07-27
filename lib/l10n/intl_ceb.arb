@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-27 10:06:51.333751",
+    "@@last_modified": "2026-07-27 15:35:55.552437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Nagdugang ka og plano sa kalihokan",
     "userSentActivitySummary": "Si {username} nagpadala og summary sa kalihokan",
     "youSentActivitySummary": "Nagpadala ka og summary sa kalihokan",
-    "emptyInviteSearchHint": "Dili makita ang imong gipangita? Tingali kinahanglan nila i-public ang ilang profile sa Learning Settings",
     "clickOnEmailLinkDesc": "Palihug i-klik ang link sa email ug dayon ipadayon. Susiha ang imong spam folder kung wala pa moabot ang email.",
     "didntReceiveEmail": "Wala nakadawat sa email?",
     "resend": "Ipadala pag-usab",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Naghuwat nga mapuno ang 1 ka tahas...",
     "closeArchive": "Isira ang archive",
     "activityActions": "Mga aksyon sa kalihokan",
-    "ongoing": "Nagpadayon"
+    "ongoing": "Nagpadayon",
+    "emptyInviteSearchHint": "Dili makit-an ang imong gipangita? Tingali kinahanglan nilang tugutan nga makit-an ang ilang profile sa pagpangita. Tan-awa ang Edit Profile sa Settings."
 }

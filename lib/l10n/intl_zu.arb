@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-27 10:07:04.807987",
+    "@@last_modified": "2026-07-27 15:36:07.448568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Wengeze uhlelo lomsebenzi",
     "userSentActivitySummary": "U-{username} uthumele isifinyezo somsebenzi",
     "youSentActivitySummary": "Uthumele isifinyezo somsebenzi",
-    "emptyInviteSearchHint": "Awumboni omfunayo? Kungenzeka kudingeke ukuthi abeke iphrofayela yakhe ibe sesidlangalaleni kuzilungiselelo zokufunda",
     "clickOnEmailLinkDesc": "Sicela uchofoze kusixhumanisi esikwi-imeyili bese uqhubeka. Hlola ifolda yakho yogaxekile uma i-imeyili ingakafiki.",
     "didntReceiveEmail": "Awuyitholanga i-imeyili?",
     "resend": "Thumela futhi",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ilindele ukugcwalisa indima eyi-1...",
     "closeArchive": "Vala ingobo yomlando",
     "activityActions": "Izenzo zomsebenzi",
-    "ongoing": "Iyaqhubeka"
+    "ongoing": "Iyaqhubeka",
+    "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo."
 }

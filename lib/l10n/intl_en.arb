@@ -4349,7 +4349,6 @@
         }
     },
     "youSentActivitySummary": "You sent an activity summary",
-    "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
@@ -4772,5 +4771,6 @@
     "searchPublicCourses": "Search public courses",
     "closeSearch": "Close search",
     "closeArchive": "Close archive",
-    "waitingToFillOneRole": "Waiting to fill 1 role..."
+    "waitingToFillOneRole": "Waiting to fill 1 role...",
+    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }

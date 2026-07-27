@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-27 10:06:58.446420",
+    "@@last_modified": "2026-07-27 15:35:59.720831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Du hues en Aktivitéitsplang derbäigesat",
     "userSentActivitySummary": "{username} huet eng Aktivitéitszesummefaassung geschéckt",
     "youSentActivitySummary": "Du hues eng Aktivitéitszesummefaassung geschéckt",
-    "emptyInviteSearchHint": "Fënns du net, deen's du sichts? Et kann sinn, datt hien säi Profil an de Léierastellungen ëffentlech muss maachen.",
     "clickOnEmailLinkDesc": "Klick w.e.g. op de Link an der E-Mail an da fuhr weider. Kuck an dengem Spam-Dossier no, wann d'E-Mail net ukomm ass.",
     "didntReceiveEmail": "Hues du d'E-Mail net kritt?",
     "resend": "Nei schécken",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen...",
     "closeArchive": "Archiv zoumaachen",
     "activityActions": "Aktivitéitsaktiounen",
-    "ongoing": "Am Gaang"
+    "ongoing": "Am Gaang",
+    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen."
 }

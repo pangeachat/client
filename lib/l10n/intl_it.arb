@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:55.378670",
+    "@@last_modified": "2026-07-27 15:35:58.565488",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -8370,12 +8370,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Non vedi chi stai cercando? Potrebbero dover impostare il loro profilo su pubblico nelle Impostazioni di Apprendimento",
     "suggestedVocab": "Vocabolario suggerito",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9769,5 +9764,6 @@
     "waitingToFillOneRole": "In attesa di ricoprire 1 ruolo...",
     "closeArchive": "Chiudi archivio",
     "activityActions": "Azioni attività",
-    "ongoing": "In corso"
+    "ongoing": "In corso",
+    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni."
 }

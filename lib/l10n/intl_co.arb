@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-27 10:06:51.381402",
+    "@@last_modified": "2026-07-27 15:35:55.713824",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Avete aghjuntu un pianu d'attività",
     "userSentActivitySummary": "{username} hà mandatu un riassuntu d'attività",
     "youSentActivitySummary": "Avete mandatu un riassuntu d'attività",
-    "emptyInviteSearchHint": "Ùn truvate micca à quellu chì vo circate ? Forse deve rende u so prufilu publicu in i paràmetri d'amparera",
     "clickOnEmailLinkDesc": "Per piacè, cliccate nant'à u ligame in u currieru elettronicu è dopu cuntinuate. Verificate u vostru cartulare di puzziche s'è u currieru ùn hè micca ghjuntu.",
     "didntReceiveEmail": "Ùn avete micca ricevutu u currieru elettronicu ?",
     "resend": "Rimandà",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Aspittendu di riempie 1 rolu...",
     "closeArchive": "Chjode l'archiviu",
     "activityActions": "Azzioni d'attività",
-    "ongoing": "In corsu"
+    "ongoing": "In corsu",
+    "emptyInviteSearchHint": "Ùn truvate micca quellu chì cercate? Pò esse ch'elli anu bisognu di permette à u so prufilu d'esse trovu in a ricerca. Verificate Modificà u Prufilu in i Paràmetri."
 }

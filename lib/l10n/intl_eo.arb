@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:57.647058",
+    "@@last_modified": "2026-07-27 15:35:55.925614",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9248,12 +9248,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidas, kion vi serĉas? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj",
     "suggestedVocab": "Sugerita vortaro",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10647,5 +10642,6 @@
     "waitingToFillOneRole": "Atendante plenigi 1 rolon...",
     "closeArchive": "Fermi arkivon",
     "activityActions": "Agadoj",
-    "ongoing": "Daŭranta"
+    "ongoing": "Daŭranta",
+    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj."
 }
