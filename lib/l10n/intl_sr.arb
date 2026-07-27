@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:07:02.549582",
+    "@@last_modified": "2026-07-27 15:36:04.177605",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -9252,12 +9252,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidite koga tražite? Možda treba da postave svoj profil na javno u podešavanjima učenja",
     "suggestedVocab": "Predloženi rečnik",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10651,5 +10646,6 @@
     "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
-    "ongoing": "U toku"
+    "ongoing": "U toku",
+    "emptyInviteSearchHint": "Ne možete da pronađete koga tražite? Možda treba da dozvole da se njihov profil pronađe u pretrazi. Proverite Uredi profil u Podešavanjima."
 }

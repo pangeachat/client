@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-27 10:06:58.664308",
+    "@@last_modified": "2026-07-27 15:36:00.213607",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Neredzat, ko meklējat? Viņiem var būt nepieciešams iestatīt savu profilu uz publisku Mācību iestatījumos",
     "suggestedVocab": "Ieteiktā vārdu krājums",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9696,5 +9691,6 @@
     "waitingToFillOneRole": "Gaida, lai aizpildītu 1 lomu...",
     "closeArchive": "Aizvērt arhīvu",
     "activityActions": "Darbības",
-    "ongoing": "Notiek"
+    "ongoing": "Notiek",
+    "emptyInviteSearchHint": "Nevarat atrast meklēto personu? Iespējams, viņiem ir jāatļauj sava profila atrašana meklēšanā. Pārbaudiet sadaļu Rediģēt profilu iestatījumos."
 }

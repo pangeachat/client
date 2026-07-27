@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-27 10:07:00.853347",
+    "@@last_modified": "2026-07-27 15:36:02.245116",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -8382,12 +8382,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nie widzisz kogo szukasz? Mogą potrzebować ustawić swój profil na publiczny w Ustawieniach nauki",
     "suggestedVocab": "Sugerowane słownictwo",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9781,5 +9776,6 @@
     "waitingToFillOneRole": "Oczekiwanie na obsadzenie 1 roli...",
     "closeArchive": "Zamknij archiwum",
     "activityActions": "Działania aktywności",
-    "ongoing": "W toku"
+    "ongoing": "W toku",
+    "emptyInviteSearchHint": "Nie możesz znaleźć osoby, której szukasz? Być może musi ona zezwolić na odnalezienie jej profilu w wyszukiwarce. Sprawdź opcję Edytuj profil w Ustawieniach."
 }

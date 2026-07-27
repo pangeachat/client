@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-27 10:07:03.504125",
+    "@@last_modified": "2026-07-27 15:36:05.729966",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Не бачите, кого шукаєте? Можливо, їм потрібно налаштувати свій профіль на публічний у Налаштуваннях навчання",
     "suggestedVocab": "Рекомендований словник",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9696,5 +9691,6 @@
     "waitingToFillOneRole": "Очікування заповнення 1 ролі...",
     "closeArchive": "Закрити архів",
     "activityActions": "Дії активності",
-    "ongoing": "Триває"
+    "ongoing": "Триває",
+    "emptyInviteSearchHint": "Не можете знайти потрібну людину? Можливо, їй потрібно дозволити знаходити свій профіль у пошуку. Перевірте «Редагувати профіль» у налаштуваннях."
 }

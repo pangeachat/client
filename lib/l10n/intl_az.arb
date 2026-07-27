@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-27 10:06:52.627604",
+    "@@last_modified": "2026-07-27 15:35:54.872248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Siz fəaliyyət planı əlavə etdiniz",
     "userSentActivitySummary": "{username} fəaliyyət xülasəsi göndərdi",
     "youSentActivitySummary": "Siz fəaliyyət xülasəsi göndərdiniz",
-    "emptyInviteSearchHint": "Axtardığınız şəxsi görmürsünüz? Ola bilsin ki, onlar Öyrənmə Parametrlərində profillərini ictimai etməlidirlər",
     "clickOnEmailLinkDesc": "Lütfən, e-poçtdakı linkə klikləyin və sonra davam edin. E-poçt gəlməyibsə, spam qovluğunuzu yoxlayın.",
     "didntReceiveEmail": "E-poçtu almadınız?",
     "resend": "Yenidən göndər",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "1 rolun doldurulması gözlənilir...",
     "closeArchive": "Arxivi bağla",
     "activityActions": "Fəaliyyət hərəkətləri",
-    "ongoing": "Davam edir"
+    "ongoing": "Davam edir",
+    "emptyInviteSearchHint": "Axtardığınız şəxsi tapa bilmirsiniz? Ola bilsin ki, onlar profilinin axtarışda tapılmasına icazə verməlidirlər. Parametrlərdə Profili Redaktə Et bölməsini yoxlayın."
 }

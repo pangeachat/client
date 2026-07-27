@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:50.592580",
+    "@@last_modified": "2026-07-27 15:35:54.571894",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8925,12 +8925,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "আপনি যাকে খুঁজছেন তাকে দেখতে পাচ্ছেন না? তাদের হয়তো লার্নিং সেটিংসে তাদের প্রোফাইল পাবলিক করতে হবে",
     "suggestedVocab": "প্রস্তাবিত শব্দভান্ডার",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10324,5 +10319,6 @@
     "waitingToFillOneRole": "১টি ভূমিকা পূরণের জন্য অপেক্ষা করা হচ্ছে...",
     "closeArchive": "আর্কাইভ বন্ধ করুন",
     "activityActions": "ক্রিয়াকলাপের ক্রিয়া",
-    "ongoing": "চলমান"
+    "ongoing": "চলমান",
+    "emptyInviteSearchHint": "যাকে খুঁজছেন তাকে খুঁজে পাচ্ছেন না? তাদের প্রোফাইল সার্চে খুঁজে পাওয়ার অনুমতি দিতে হতে পারে। সেটিংস-এ এডিট প্রোফাইল চেক করুন।"
 }

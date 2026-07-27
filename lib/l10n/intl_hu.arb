@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-27 10:06:54.326846",
+    "@@last_modified": "2026-07-27 15:35:57.798532",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8400,12 +8400,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nem látod, akit keresel? Lehet, hogy nyilvánosra kell állítaniuk a profiljukat a Tanulási beállításokban",
     "suggestedVocab": "Javasolt szókincs",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9799,5 +9794,6 @@
     "waitingToFillOneRole": "Várakozás 1 szerep betöltésére...",
     "closeArchive": "Archívum bezárása",
     "activityActions": "Tevékenységműveletek",
-    "ongoing": "Folyamatban"
+    "ongoing": "Folyamatban",
+    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot."
 }

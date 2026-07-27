@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-27 10:06:56.402860",
+    "@@last_modified": "2026-07-27 15:35:59.175931",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9203,12 +9203,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "არ გხედავთ იმას, ვინც გსურთ? მათ შესაძლოა უნდა დააყენონ მათი პროფილი საჯაროდ სწავლის პარამეტრებში",
     "suggestedVocab": "შეთავაზებული ლექსიკა",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10602,5 +10597,6 @@
     "waitingToFillOneRole": "ველოდებით 1 როლის შევსებას...",
     "closeArchive": "არქივის დახურვა",
     "activityActions": "აქტივობის მოქმედებები",
-    "ongoing": "მიმდინარე"
+    "ongoing": "მიმდინარე",
+    "emptyInviteSearchHint": "ვერ პოულობთ ვისაც ეძებთ? შესაძლოა, მათ უნდა დაუშვან თავიანთი პროფილის მოძებნა. შეამოწმეთ „პროფილის რედაქტირება“ პარამეტრებში."
 }

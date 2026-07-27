@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-27 10:06:54.933446",
+    "@@last_modified": "2026-07-27 15:35:58.765687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Ị gbakwunyere atụmatụ ọrụ",
     "userSentActivitySummary": "{username} zigara nchịkọta ọrụ",
     "youSentActivitySummary": "Ị zigara nchịkọta ọrụ",
-    "emptyInviteSearchHint": "Ị hụghị onye ị na-achọ? Ha nwere ike ịtọ profaịlụ ha ka ọ bụrụ ọha na ntọala mmụta",
     "clickOnEmailLinkDesc": "Biko pịa njikọ dị na email wee gaa n'ihu. Lelee nchekwa spam gị ma ọ bụrụ na email ahụ abịabeghị.",
     "didntReceiveEmail": "Ị nataghị email ahụ?",
     "resend": "Zighachi",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Na-eche ka mmadụ mejupụta otu ọrụ...",
     "closeArchive": "Mechie ebe nchekwa",
     "activityActions": "Omume ọrụ",
-    "ongoing": "Na-aga n'ihu"
+    "ongoing": "Na-aga n'ihu",
+    "emptyInviteSearchHint": "Ị chọtaghị onye ị na-achọ? Ha nwere ike ịkwesịrị ikwe ka a chọta profaịlụ ha na nchọta. Lelee Dezie Profaịlụ na Ntọala."
 }

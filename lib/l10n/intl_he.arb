@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:53.659481",
+    "@@last_modified": "2026-07-27 15:35:57.280328",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9217,12 +9217,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "לא רואים את מי שאתם מחפשים? ייתכן שהם צריכים להגדיר את הפרופיל שלהם לציבורי בהגדרות הלמידה",
     "suggestedVocab": "אוצר מילים מוצע",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10616,5 +10611,6 @@
     "waitingToFillOneRole": "ממתין למילוי תפקיד אחד...",
     "closeArchive": "סגור ארכיון",
     "activityActions": "פעולות פעילות",
-    "ongoing": "מתבצע"
+    "ongoing": "מתבצע",
+    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות."
 }

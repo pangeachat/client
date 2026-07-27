@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:07:00.603311",
+    "@@last_modified": "2026-07-27 15:36:02.452110",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -9247,12 +9247,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Não vê quem está procurando? Eles podem precisar definir o perfil como público nas Configurações de Aprendizado",
     "suggestedVocab": "Vocabulário sugerido",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10646,5 +10641,6 @@
     "waitingToFillOneRole": "Aguardando preencher 1 função...",
     "closeArchive": "Fechar arquivo",
     "activityActions": "Ações de atividade",
-    "ongoing": "Em andamento"
+    "ongoing": "Em andamento",
+    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que precisem de permitir que o perfil seja encontrado na pesquisa. Verifique Editar Perfil em Definições."
 }

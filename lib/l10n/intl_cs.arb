@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-27 10:06:51.932831",
+    "@@last_modified": "2026-07-27 15:35:55.594328",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8791,12 +8791,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nevidíte, koho hledáte? Možná si musí nastavit svůj profil na veřejný v Nastavení učení",
     "suggestedVocab": "Navrhovaná slovní zásoba",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10190,5 +10185,6 @@
     "waitingToFillOneRole": "Čeká se na obsazení 1 role...",
     "closeArchive": "Zavřít archiv",
     "activityActions": "Akce aktivity",
-    "ongoing": "Probíhá"
+    "ongoing": "Probíhá",
+    "emptyInviteSearchHint": "Nemůžete najít, koho hledáte? Možná budou muset povolit, aby jejich profil bylo možné najít ve vyhledávání. Zkontrolujte Upravit profil v Nastavení."
 }

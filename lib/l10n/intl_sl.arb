@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-27 10:07:02.090085",
+    "@@last_modified": "2026-07-27 15:36:03.489644",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9248,12 +9248,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidite, koga iščete? Morda morajo nastaviti svoj profil na javno v nastavitvah učenja.",
     "suggestedVocab": "Predlagani besednjak",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10647,5 +10642,6 @@
     "waitingToFillOneRole": "Čakam na zapolnitev 1 vloge...",
     "closeArchive": "Zapri arhiv",
     "activityActions": "Dejanja dejavnosti",
-    "ongoing": "V teku"
+    "ongoing": "V teku",
+    "emptyInviteSearchHint": "Ne najdete, koga iščete? Morda bodo morali omogočiti, da se njihov profil najde v iskanju. Preverite Uredi profil v Nastavitvah."
 }

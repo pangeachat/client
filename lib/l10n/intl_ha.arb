@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-27 10:06:53.433668",
+    "@@last_modified": "2026-07-27 15:35:57.563723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Ka ƙara shirin ayyuka",
     "userSentActivitySummary": "{username} ya aiko da taƙaitaccen bayanin ayyuka",
     "youSentActivitySummary": "Ka aiko da taƙaitaccen bayanin ayyuka",
-    "emptyInviteSearchHint": "Ba ka ga wanda kake nema ba? Wataƙila suna buƙatar saita bayanan su a bayyane a cikin Saitunan Koyarwa",
     "clickOnEmailLinkDesc": "Da fatan za a danna mahaɗin da ke cikin imel ɗin sannan ka ci gaba. Duba babban fayil ɗin spam ɗinka idan imel ɗin bai iso ba.",
     "didntReceiveEmail": "Ba ka karɓi imel ɗin ba?",
     "resend": "Sake aikawa",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ana jiran cike matsayi 1...",
     "closeArchive": "Rufe adana",
     "activityActions": "Ayyukan aiki",
-    "ongoing": "Ana Ci Gaba"
+    "ongoing": "Ana Ci Gaba",
+    "emptyInviteSearchHint": "Ba za a iya samun wanda kake nema ba? Wataƙila suna buƙatar ba da izinin samun bayanin martabarsu a bincike. Duba Shirya Bayanin martaba a Saituna."
 }

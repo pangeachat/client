@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:51.146321",
+    "@@last_modified": "2026-07-27 15:35:55.489466",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8424,12 +8424,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "No veus qui estàs buscant? Potser necessiten configurar el seu perfil com a públic a la Configuració d'Aprenentatge",
     "suggestedVocab": "Vocab suggerit",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9823,5 +9818,6 @@
     "waitingToFillOneRole": "Esperant per cobrir 1 rol...",
     "closeArchive": "Tanca l'arxiu",
     "activityActions": "Accions d'activitat",
-    "ongoing": "En curs"
+    "ongoing": "En curs",
+    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració."
 }

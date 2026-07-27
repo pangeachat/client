@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:07:00.859395",
+    "@@last_modified": "2026-07-27 15:36:03.055520",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9029,12 +9029,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nu vezi pe cine cauți? Poate că trebuie să își seteze profilul pe public în Setările de Învățare",
     "suggestedVocab": "Vocabular sugerat",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10428,5 +10423,6 @@
     "waitingToFillOneRole": "Se așteaptă ocuparea unui rol...",
     "closeArchive": "Închide arhiva",
     "activityActions": "Acțiuni de activitate",
-    "ongoing": "În desfășurare"
+    "ongoing": "În desfășurare",
+    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări."
 }

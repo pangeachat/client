@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-27 10:06:59.940739",
+    "@@last_modified": "2026-07-27 15:36:01.942812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Du la til en aktivitetsplan",
     "userSentActivitySummary": "{username} sendte et aktivitetssammendrag",
     "youSentActivitySummary": "Du sendte et aktivitetssammendrag",
-    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje sette profilen sin til offentlig i læringsinnstillingene",
     "clickOnEmailLinkDesc": "Vennligst klikk på lenken i e-posten og fortsett deretter. Sjekk søppelpostmappen din hvis e-posten ikke har kommet.",
     "didntReceiveEmail": "Mottok du ikke e-posten?",
     "resend": "Send på nytt",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Venter på å fylle 1 rolle ...",
     "closeArchive": "Lukk arkiv",
     "activityActions": "Aktivitetshandlinger",
-    "ongoing": "Pågående"
+    "ongoing": "Pågående",
+    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger."
 }

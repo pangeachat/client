@@ -3104,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-27 10:06:57.219844",
+    "@@last_modified": "2026-07-27 15:35:57.231735",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8929,12 +8929,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "क्या आप जिस व्यक्ति को ढूंढ रहे हैं, उसे नहीं देख पा रहे हैं? उन्हें लर्निंग सेटिंग्स में अपना प्रोफ़ाइल सार्वजनिक करने की आवश्यकता हो सकती है",
     "suggestedVocab": "सुझाए गए शब्दावली",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10328,5 +10323,6 @@
     "waitingToFillOneRole": "1 भूमिका भरने की प्रतीक्षा कर रहा है...",
     "closeArchive": "संग्रह बंद करें",
     "activityActions": "गतिविधि क्रियाएँ",
-    "ongoing": "जारी है"
+    "ongoing": "जारी है",
+    "emptyInviteSearchHint": "आप जिसे ढूंढ रहे हैं वह नहीं मिल रहा है? उन्हें अपनी प्रोफ़ाइल को खोज में पाए जाने की अनुमति देनी पड़ सकती है। सेटिंग में प्रोफ़ाइल संपादित करें देखें।"
 }
