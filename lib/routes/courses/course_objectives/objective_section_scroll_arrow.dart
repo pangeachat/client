@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum ArrowDirection {
@@ -31,13 +33,20 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
     final theme = Theme.of(context);
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: onTap,
+      child: Listener(
         behavior: HitTestBehavior.opaque,
-        child: Container(
-          padding: EdgeInsets.all(8.0),
-          decoration: BoxDecoration(color: theme.colorScheme.surface),
-          child: Center(child: Icon(direction.icon)),
+        onPointerDown: (_) => Logs().w('pointer down ${direction.name}'),
+        child: GestureDetector(
+          onTap: () {
+            Logs().w('tap ${direction.name}');
+            onTap();
+          },
+          behavior: HitTestBehavior.opaque,
+          child: Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(color: theme.colorScheme.surface),
+            child: Center(child: Icon(direction.icon)),
+          ),
         ),
       ),
     );
