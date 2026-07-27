@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-24 11:59:31.905291",
+    "@@last_modified": "2026-07-27 09:33:31.077800",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7889,5 +7889,6 @@
     "subscriptionsNotAvailableInApp": "Las suscripciones no se pueden comprar en la aplicación",
     "subscribeOnTheWeb": "Puedes suscribirte en la web en pangea.chat",
     "waitingToFillOneRole": "Esperando a cubrir 1 puesto...",
-    "closeArchive": "Cerrar archivo"
+    "closeArchive": "Cerrar archivo",
+    "activityActions": "Acciones de actividad"
 }

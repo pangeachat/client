@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-24 11:59:37.106731",
+    "@@last_modified": "2026-07-27 09:33:37.720462",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10657,5 +10657,6 @@
     "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
     "subscribeOnTheWeb": "你可以在 pangea.chat 網站上訂閱",
     "waitingToFillOneRole": "正在等候填補 1 個職位空缺...",
-    "closeArchive": "關閉存檔"
+    "closeArchive": "關閉存檔",
+    "activityActions": "活動動作"
 }

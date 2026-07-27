@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:37.156554",
+    "@@last_modified": "2026-07-27 09:33:37.828443",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9800,5 +9800,6 @@
     "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
     "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱",
     "waitingToFillOneRole": "正在等待填補 1 個職位…",
-    "closeArchive": "關閉存檔"
+    "closeArchive": "關閉存檔",
+    "activityActions": "活動動作"
 }

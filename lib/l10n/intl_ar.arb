@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-24 11:59:31.161915",
+    "@@last_modified": "2026-07-27 09:33:30.240944",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10000,5 +10000,6 @@
     "subscriptionsNotAvailableInApp": "لا يمكن شراء الاشتراكات من داخل التطبيق",
     "subscribeOnTheWeb": "يمكنك الاشتراك عبر الويب على pangea.chat",
     "waitingToFillOneRole": "في انتظار شغل وظيفة واحدة...",
-    "closeArchive": "إغلاق الأرشيف"
+    "closeArchive": "إغلاق الأرشيف",
+    "activityActions": "إجراءات النشاط"
 }

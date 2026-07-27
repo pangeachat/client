@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-24 11:59:33.334104",
+    "@@last_modified": "2026-07-27 09:33:32.925430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Ekki er hægt að kaupa áskriftir í appinu",
     "subscribeOnTheWeb": "Þú getur gerst áskrifandi á vefnum á pangea.chat",
     "waitingToFillOneRole": "Bíður eftir að fylla 1 hlutverk...",
-    "closeArchive": "Loka skjalasafni"
+    "closeArchive": "Loka skjalasafni",
+    "activityActions": "Aðgerðir virkni"
 }

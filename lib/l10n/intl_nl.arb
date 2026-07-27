@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:35.125895",
+    "@@last_modified": "2026-07-27 09:33:35.305921",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9694,5 +9694,6 @@
     "subscriptionsNotAvailableInApp": "Abonnementen kunnen niet in de app worden gekocht",
     "subscribeOnTheWeb": "Je kunt je abonneren via de website op pangea.chat",
     "waitingToFillOneRole": "Wachten op invulling van 1 rol...",
-    "closeArchive": "Archief sluiten"
+    "closeArchive": "Archief sluiten",
+    "activityActions": "Activiteitsacties"
 }

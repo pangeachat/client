@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:31.103989",
+    "@@last_modified": "2026-07-27 09:33:30.388268",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10322,5 +10322,6 @@
     "subscriptionsNotAvailableInApp": "অ্যাপে সাবস্ক্রিপশন কেনা যাবে না",
     "subscribeOnTheWeb": "আপনি pangea.chat-এ ওয়েবে সাবস্ক্রাইব করতে পারেন",
     "waitingToFillOneRole": "১টি ভূমিকা পূরণের জন্য অপেক্ষা করা হচ্ছে...",
-    "closeArchive": "আর্কাইভ বন্ধ করুন"
+    "closeArchive": "আর্কাইভ বন্ধ করুন",
+    "activityActions": "ক্রিয়াকলাপের ক্রিয়া"
 }

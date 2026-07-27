@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-24 11:59:34.938578",
+    "@@last_modified": "2026-07-27 09:33:34.999044",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "L-abbonamenti ma jistgħux jinxtraw fl-app",
     "subscribeOnTheWeb": "Tista' tabbona fuq il-web fuq pangea.chat",
     "waitingToFillOneRole": "Qed nistennew biex nimlew rwol 1...",
-    "closeArchive": "Agħlaq l-arkivju"
+    "closeArchive": "Agħlaq l-arkivju",
+    "activityActions": "Azzjonijiet tal-attività"
 }

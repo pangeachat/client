@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-24 11:59:33.009033",
+    "@@last_modified": "2026-07-27 09:33:32.707861",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9797,5 +9797,6 @@
     "subscriptionsNotAvailableInApp": "Az előfizetések nem vásárolhatók meg az alkalmazásban",
     "subscribeOnTheWeb": "Feliratkozhatsz a pangea.chat weboldalon",
     "waitingToFillOneRole": "Várakozás 1 szerep betöltésére...",
-    "closeArchive": "Archívum bezárása"
+    "closeArchive": "Archívum bezárása",
+    "activityActions": "Tevékenységműveletek"
 }

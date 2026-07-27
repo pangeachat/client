@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-24 11:59:35.356672",
+    "@@last_modified": "2026-07-27 09:33:35.505045",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "ਐਪ ਵਿੱਚ ਗਾਹਕੀ ਖਰੀਦੀ ਨਹੀਂ ਜਾ ਸਕਦੀ",
     "subscribeOnTheWeb": "ਤੁਸੀਂ pangea.chat 'ਤੇ ਵੈੱਬ 'ਤੇ ਗਾਹਕੀ ਲੈ ਸਕਦੇ ਹੋ",
     "waitingToFillOneRole": "1 ਭੂਮਿਕਾ ਭਰਨ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ...",
-    "closeArchive": "ਪੁਰਾਲੇਖ ਬੰਦ ਕਰੋ"
+    "closeArchive": "ਪੁਰਾਲੇਖ ਬੰਦ ਕਰੋ",
+    "activityActions": "ਗਤੀਵਿਧੀ ਕਿਰਿਆਵਾਂ"
 }

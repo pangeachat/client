@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-24 11:59:34.937656",
+    "@@last_modified": "2026-07-27 09:33:34.388862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Претплатите не може да се купат во апликацијата",
     "subscribeOnTheWeb": "Може да се претплатите на веб-страницата на pangea.chat",
     "waitingToFillOneRole": "Се чека да се пополни 1 улога...",
-    "closeArchive": "Затвори ја архивата"
+    "closeArchive": "Затвори ја архивата",
+    "activityActions": "Дејства на активност"
 }

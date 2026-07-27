@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-24 11:59:36.947533",
+    "@@last_modified": "2026-07-27 09:33:37.638925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Ukubhalisa akufumaneki kule app",
     "subscribeOnTheWeb": "Ungabhalisa kwiwebhu ku-pangea.chat",
     "waitingToFillOneRole": "Kulindwe ukuba kuzaliswe indima e-1...",
-    "closeArchive": "Vala indawo yokugcina"
+    "closeArchive": "Vala indawo yokugcina",
+    "activityActions": "Iintshukumo zomsebenzi"
 }

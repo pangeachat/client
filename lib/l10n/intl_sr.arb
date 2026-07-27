@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:36.200423",
+    "@@last_modified": "2026-07-27 09:33:36.425919",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10649,5 +10649,6 @@
     "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
     "subscribeOnTheWeb": "Možete se pretplatiti na vebu na pangea.chat",
     "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
-    "closeArchive": "Zatvori arhivu"
+    "closeArchive": "Zatvori arhivu",
+    "activityActions": "Radnje aktivnosti"
 }

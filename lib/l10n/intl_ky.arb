@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-24 11:59:34.004292",
+    "@@last_modified": "2026-07-27 09:33:33.854385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Колдонмодо жазылууларды сатып алуу мүмкүн эмес",
     "subscribeOnTheWeb": "Сиз pangea.chat сайтынан жазылсаңыз болот",
     "waitingToFillOneRole": "1 ролду толтуруу күтүлүүдө...",
-    "closeArchive": "Архивди жабуу"
+    "closeArchive": "Архивди жабуу",
+    "activityActions": "Аракеттер"
 }

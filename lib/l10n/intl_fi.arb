@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-24 11:59:32.159381",
+    "@@last_modified": "2026-07-27 09:33:31.839271",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9731,5 +9731,6 @@
     "subscriptionsNotAvailableInApp": "Tilauksia ei voi ostaa sovelluksesta",
     "subscribeOnTheWeb": "Voit tilata palvelun verkossa osoitteessa pangea.chat",
     "waitingToFillOneRole": "Odotetaan 1 roolin täyttämistä...",
-    "closeArchive": "Sulje arkisto"
+    "closeArchive": "Sulje arkisto",
+    "activityActions": "Toimintojen toiminnot"
 }

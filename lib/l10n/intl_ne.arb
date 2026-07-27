@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-24 11:59:35.232875",
+    "@@last_modified": "2026-07-27 09:33:34.910525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "एपमा सदस्यताहरू खरिद गर्न सकिँदैन",
     "subscribeOnTheWeb": "तपाईं pangea.chat मा वेबमा सदस्यता लिन सक्नुहुन्छ",
     "waitingToFillOneRole": "एउटा भूमिका भर्न पर्खँदै...",
-    "closeArchive": "अभिलेख बन्द गर्नुहोस्"
+    "closeArchive": "अभिलेख बन्द गर्नुहोस्",
+    "activityActions": "गतिविधि कार्यहरू"
 }
