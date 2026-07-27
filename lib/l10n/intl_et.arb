@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-27 10:06:52.780098",
+    "@@last_modified": "2026-07-27 15:35:56.445023",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8294,12 +8294,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ei näe, keda otsite? Nad võivad vajada oma profiili seadistamist avalikuks Õppimise seadetes",
     "suggestedVocab": "Soovitatud sõnavara",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9693,5 +9688,6 @@
     "waitingToFillOneRole": "Ootab 1 rolli täitmist...",
     "closeArchive": "Sulge arhiiv",
     "activityActions": "Tegevuse toimingud",
-    "ongoing": "Käimas"
+    "ongoing": "Käimas",
+    "emptyInviteSearchHint": "Ei leia otsitavat? Võimalik, et nad peavad lubama oma profiili otsingus leidmise. Kontrollige seadete jaotist „Muuda profiili”."
 }

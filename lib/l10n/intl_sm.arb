@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-27 10:07:01.857429",
+    "@@last_modified": "2026-07-27 15:36:04.093724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Na e faʻaopoopoina se fuafuaga o gaioiga",
     "userSentActivitySummary": "Na auina mai e {username} se aotelega o gaioiga",
     "youSentActivitySummary": "Na e auina atu se aotelega o gaioiga",
-    "emptyInviteSearchHint": "E te le o vaʻai i le tagata o loʻo e suʻeina? Atonu e manaʻomia ona latou faʻatulaga la latou talaaga i le lautele i Tulaga Aʻoaʻoga",
     "clickOnEmailLinkDesc": "Faʻamolemole kiliki i luga o le fesoʻotaʻiga i le imeli ona faʻaauau lea. Siaki lau pusa spam pe afai e leʻi taunuʻu mai le imeli.",
     "didntReceiveEmail": "E leʻi maua le imeli?",
     "resend": "Toe auina atu",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Faatali e faatumu le 1 matafaioi...",
     "closeArchive": "Tapuni le fa'amaumauga",
     "activityActions": "Gaioiga o gaoioiga",
-    "ongoing": "Fa'aauau"
+    "ongoing": "Fa'aauau",
+    "emptyInviteSearchHint": "E le mafai ona maua le tagata o lo'o e su'eina? Atonu e mana'omia ona latou fa'ataga lo latou talaaga e maua i le su'esu'ega. Siaki le Fa'asa'o Talaaga i Fa'atonuga."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:59.846255",
+    "@@last_modified": "2026-07-27 15:36:01.685471",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Zie je niet wie je zoekt? Ze moeten mogelijk hun profiel openbaar maken in de Leerinstellingen",
     "suggestedVocab": "Voorgestelde vocabulaire",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9696,5 +9691,6 @@
     "waitingToFillOneRole": "Wachten op invulling van 1 rol...",
     "closeArchive": "Archief sluiten",
     "activityActions": "Activiteitsacties",
-    "ongoing": "Lopend"
+    "ongoing": "Lopend",
+    "emptyInviteSearchHint": "Kun je niet vinden wie je zoekt? Ze moeten mogelijk toestaan dat hun profiel wordt gevonden in zoekopdrachten. Controleer Profiel bewerken in Instellingen."
 }

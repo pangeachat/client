@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-27 10:06:58.921228",
+    "@@last_modified": "2026-07-27 15:36:00.451635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Kua tāpiri koe i tētahi mahere mahi",
     "userSentActivitySummary": "I tukuna e {username} tētahi whakarāpopototanga mahi",
     "youSentActivitySummary": "I tukuna e koe tētahi whakarāpopototanga mahi",
-    "emptyInviteSearchHint": "Kāore koe e kite i tō tangata e rapu ana? Me whakatūwhera pea e rātou tō rātou kōtaha ki te tūmatanui i ngā Tautuhinga Akoranga",
     "clickOnEmailLinkDesc": "Tēnā pāwhiritia te hono i roto i te īmēra ka haere tonu. Tirohia tō kōpaki mokowhiti mēnā kāore anō kia tae mai te īmēra.",
     "didntReceiveEmail": "Kāore i tae mai te īmēra?",
     "resend": "Tukua anō",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "E tatari ana kia whakakīa kia 1 te tūranga...",
     "closeArchive": "Katia te pūranga",
     "activityActions": "Ngā mahi hohe",
-    "ongoing": "Haere Tonu"
+    "ongoing": "Haere Tonu",
+    "emptyInviteSearchHint": "Kāore i kitea te tangata e rapu ana koe? Me whakaae pea rātou kia kitea tō rātou kōtaha i te rapunga. Tirohia te Whakatika Kōtaha i ngā Tautuhinga."
 }

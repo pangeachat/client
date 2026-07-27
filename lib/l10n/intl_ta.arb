@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:07:02.915332",
+    "@@last_modified": "2026-07-27 15:36:04.950319",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8389,12 +8389,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "நீங்கள் தேடுகிறவரை காணவில்லை என்றால்? அவர்கள் கற்றல் அமைப்புகளில் தங்கள் சுயவிவரத்தை பொது அமைப்பாக அமைக்க வேண்டியிருக்கலாம்",
     "suggestedVocab": "எடுத்துக்காட்டிய சொற்கள்",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9788,5 +9783,6 @@
     "waitingToFillOneRole": "1 பாத்திரத்தை நிரப்ப காத்திருக்கிறது...",
     "closeArchive": "காப்பகத்தை மூடு",
     "activityActions": "செயல்பாட்டுச் செயல்கள்",
-    "ongoing": "தொடர்கிறது"
+    "ongoing": "தொடர்கிறது",
+    "emptyInviteSearchHint": "நீங்கள் தேடுபவரைக் கண்டுபிடிக்க முடியவில்லையா? தேடலில் அவர்களின் சுயவிவரத்தைக் கண்டறிய அவர்கள் அனுமதிக்க வேண்டியிருக்கலாம். அமைப்புகளில் சுயவிவரத்தைத் திருத்து என்பதைச் சரிபார்க்கவும்."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-27 10:07:02.367971",
+    "@@last_modified": "2026-07-27 15:36:04.095860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Waxaad ku dartay qorshe hawleed",
     "userSentActivitySummary": "{username} wuxuu soo diray kooban hawleed",
     "youSentActivitySummary": "Waxaad soo dirtay kooban hawleed",
-    "emptyInviteSearchHint": "Ma aragtid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay astaantooda ka dhigaan mid guud oo ku jirta Dejinta Barashada",
     "clickOnEmailLinkDesc": "Fadlan guji xiriiriyaha ku jira iimaylka ka dibna sii wad. Hubi galka spam-kaaga haddii iimaylku uusan imaan.",
     "didntReceiveEmail": "Miyaadan helin iimaylka?",
     "resend": "Dib u dir",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Waxaa la sugayaa in la buuxiyo 1 door...",
     "closeArchive": "Xidh kaydka",
     "activityActions": "Ficilada waxqabadka",
-    "ongoing": "Socda"
+    "ongoing": "Socda",
+    "emptyInviteSearchHint": "Ma heli kartid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay oggolaadaan in astaantooda laga helo raadinta. Ka eeg Tafatirka Astaanta ee Dejinta."
 }

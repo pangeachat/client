@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-27 10:07:04.400264",
+    "@@last_modified": "2026-07-27 15:36:07.879284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "O kentse moralo oa mosebetsi",
     "userSentActivitySummary": "{username} o rometse kakaretso ea mosebetsi",
     "youSentActivitySummary": "O rometse kakaretso ea mosebetsi",
-    "emptyInviteSearchHint": "Ha o bone eo o mmatlang? Ho ka etsahala hore ba hloka ho etsa hore boemo ba bona bo bonahale ho bohle ho Litlhophiso tsa ho Ithuta",
     "clickOnEmailLinkDesc": "Ka kopo, tobetsa sehokelo se leng ho imeile ebe o tsoela pele. Sheba foldara ea hau ea spam haeba imeile e sa fihla.",
     "didntReceiveEmail": "Ha oa fumana imeile?",
     "resend": "Romela hape",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ho letetsoe ho tlatsa karolo e le 'ngoe...",
     "closeArchive": "Koala polokelo",
     "activityActions": "Liketso tsa ts'ebetso",
-    "ongoing": "E tswela pele"
+    "ongoing": "E tswela pele",
+    "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso."
 }

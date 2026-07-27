@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 10:06:58.936664",
+    "@@last_modified": "2026-07-27 15:35:56.441054",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8385,12 +8385,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "آیا کسی را که دنبالش هستید نمی‌بینید؟ ممکن است آنها نیاز داشته باشند تا پروفایل خود را در تنظیمات یادگیری به حالت عمومی تغییر دهند",
     "suggestedVocab": "واژگان پیشنهادی",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9784,5 +9779,6 @@
     "waitingToFillOneRole": "در انتظار پر کردن ۱ نقش...",
     "closeArchive": "بستن بایگانی",
     "activityActions": "اقدامات فعالیت",
-    "ongoing": "در حال انجام"
+    "ongoing": "در حال انجام",
+    "emptyInviteSearchHint": "نمی‌توانید کسی را که دنبالش هستید پیدا کنید؟ ممکن است لازم باشد به آن‌ها اجازه دهید نمایه‌شان در جستجو پیدا شود. «ویرایش نمایه» را در تنظیمات بررسی کنید."
 }

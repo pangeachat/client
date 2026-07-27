@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-27 10:06:59.594883",
+    "@@last_modified": "2026-07-27 15:36:01.018917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Anda telah menambah pelan aktiviti",
     "userSentActivitySummary": "{username} menghantar ringkasan aktiviti",
     "youSentActivitySummary": "Anda menghantar ringkasan aktiviti",
-    "emptyInviteSearchHint": "Tidak nampak siapa yang anda cari? Mereka mungkin perlu menetapkan profil mereka kepada awam dalam Tetapan Pembelajaran",
     "clickOnEmailLinkDesc": "Sila klik pada pautan dalam e-mel dan kemudian teruskan. Semak folder spam anda jika e-mel belum tiba.",
     "didntReceiveEmail": "Tidak menerima e-mel?",
     "resend": "Hantar semula",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Menunggu untuk mengisi 1 peranan...",
     "closeArchive": "Tutup arkib",
     "activityActions": "Tindakan aktiviti",
-    "ongoing": "Sedang berlangsung"
+    "ongoing": "Sedang berlangsung",
+    "emptyInviteSearchHint": "Tidak dapat mencari orang yang anda cari? Mereka mungkin perlu membenarkan profil mereka ditemui dalam carian. Semak Edit Profil dalam Tetapan."
 }

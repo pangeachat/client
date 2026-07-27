@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-27 10:06:55.918330",
+    "@@last_modified": "2026-07-27 15:35:58.633067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Sampeyan nambah rencana aktivitas",
     "userSentActivitySummary": "{username} ngirim ringkesan aktivitas",
     "youSentActivitySummary": "Sampeyan ngirim ringkesan aktivitas",
-    "emptyInviteSearchHint": "Ora nemokake sing digoleki? Bisa uga kudu nyetel profil dadi umum ing Setelan Sinau",
     "clickOnEmailLinkDesc": "Mangga klik link ing email banjur terusake. Priksa folder spam yen email durung teka.",
     "didntReceiveEmail": "Durung nampa email?",
     "resend": "Kirim maneh",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Ngenteni ngisi 1 peran...",
     "closeArchive": "Tutup arsip",
     "activityActions": "Tindakan aktivitas",
-    "ongoing": "Lagi lumaku"
+    "ongoing": "Lagi lumaku",
+    "emptyInviteSearchHint": "Ora nemokake sing digoleki? Bisa uga dheweke kudu ngidini profil ditemokake ing panelusuran. Priksa Owahi Profil ing Setelan."
 }

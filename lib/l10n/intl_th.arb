@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-27 10:07:04.187137",
+    "@@last_modified": "2026-07-27 15:36:05.245815",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8929,12 +8929,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "ไม่เห็นคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องตั้งค่าโปรไฟล์ให้เป็นสาธารณะในการตั้งค่าเรียนรู้",
     "suggestedVocab": "คำศัพท์ที่แนะนำ",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10328,5 +10323,6 @@
     "waitingToFillOneRole": "กำลังรอเติม 1 บทบาท...",
     "closeArchive": "ปิดคลังเก็บ",
     "activityActions": "การดำเนินการกิจกรรม",
-    "ongoing": "กำลังดำเนินการ"
+    "ongoing": "กำลังดำเนินการ",
+    "emptyInviteSearchHint": "ไม่พบคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องอนุญาตให้โปรไฟล์ของพวกเขาถูกค้นพบในการค้นหา ตรวจสอบแก้ไขโปรไฟล์ในการตั้งค่า"
 }

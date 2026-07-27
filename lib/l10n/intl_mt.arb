@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-27 10:06:59.531433",
+    "@@last_modified": "2026-07-27 15:36:01.430258",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Żidt pjan ta' attività",
     "userSentActivitySummary": "{username} bagħat sommarju tal-attività",
     "youSentActivitySummary": "Int bgħatt sommarju tal-attività",
-    "emptyInviteSearchHint": "Ma tarax lil min qed tfittex? Jista' jkun li jeħtieġu li jistabbilixxu l-profil tagħhom bħala pubbliku fis-Settings tat-Tagħlim",
     "clickOnEmailLinkDesc": "Jekk jogħġbok ikklikkja fuq il-link fl-email u mbagħad ipproċedi. Iċċekkja l-folder tal-ispam tiegħek jekk l-email ma tkunx waslet.",
     "didntReceiveEmail": "Ma rċevejtx l-email?",
     "resend": "Erġa' ibgħat",
@@ -2042,5 +2041,6 @@
     "waitingToFillOneRole": "Qed nistennew biex nimlew rwol 1...",
     "closeArchive": "Agħlaq l-arkivju",
     "activityActions": "Azzjonijiet tal-attività",
-    "ongoing": "Għaddej"
+    "ongoing": "Għaddej",
+    "emptyInviteSearchHint": "Ma tistax issib lil min qed tfittex? Jista' jkun li jeħtieġu li jippermettu l-profil tagħhom jinstab fit-tfittxija. Iċċekkja Editja Profil fis-Settings."
 }

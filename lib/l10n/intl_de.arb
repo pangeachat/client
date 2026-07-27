@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-27 10:06:51.695396",
+    "@@last_modified": "2026-07-27 15:35:55.921389",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8284,12 +8284,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Sie sehen nicht, wonach Sie suchen? Möglicherweise müssen sie ihr Profil in den Lern-Einstellungen auf öffentlich setzen.",
     "suggestedVocab": "Vorgeschlagener Wortschatz",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9683,5 +9678,6 @@
     "waitingToFillOneRole": "Warten auf Besetzung von 1 Rolle ...",
     "closeArchive": "Archiv schließen",
     "activityActions": "Aktivitätsaktionen",
-    "ongoing": "Laufend"
+    "ongoing": "Laufend",
+    "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen."
 }

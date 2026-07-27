@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-27 10:06:59.222734",
+    "@@last_modified": "2026-07-27 15:35:58.561280",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9066,12 +9066,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "探している人が見つかりませんか？彼らは学習設定でプロフィールを公開に設定する必要があるかもしれません。",
     "suggestedVocab": "提案された語彙",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10465,5 +10460,6 @@
     "waitingToFillOneRole": "1つの役割を埋めるのを待っています...",
     "closeArchive": "アーカイブを閉じる",
     "activityActions": "アクティビティのアクション",
-    "ongoing": "進行中"
+    "ongoing": "進行中",
+    "emptyInviteSearchHint": "お探しのユーザーが見つかりませんか？プロフィールが検索で見つけられるように設定されていない可能性があります。設定の「プロフィールを編集」をご確認ください。"
 }

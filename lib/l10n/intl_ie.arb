@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-27 10:06:54.957837",
+    "@@last_modified": "2026-07-27 15:35:58.569825",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8929,12 +8929,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Níl tú ag feiceáil cé atá á lorg agat? B'fhéidir go gcaithfidh siad a bpróifíl a shocrú go poiblí i Socruithe Foghlama",
     "suggestedVocab": "Vocab molta",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10328,5 +10323,6 @@
     "waitingToFillOneRole": "Ag feitheamh le 1 ról a líonadh...",
     "closeArchive": "Dún an chartlann",
     "activityActions": "Gníomhartha gníomhaíochta",
-    "ongoing": "Ar Siúl"
+    "ongoing": "Ar Siúl",
+    "emptyInviteSearchHint": "Ní féidir leat an duine atá uait a aimsiú? B'fhéidir go gcaithfidh siad a bpróifíl a cheadú le fáil i gcuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe."
 }
