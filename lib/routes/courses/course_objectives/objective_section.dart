@@ -293,17 +293,12 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   bottom: 0,
                   child: IgnorePointer(
                     ignoring: !showArrow,
-                    child: AnimatedSlide(
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.easeOut,
-                      offset: showArrow ? Offset.zero : const Offset(-1, 0),
-                      child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 150),
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
-                          direction: ArrowDirection.back,
-                          onTap: () => _scrollByArrow(ArrowDirection.back),
-                        ),
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 150),
+                      opacity: showArrow ? 1 : 0,
+                      child: ObjectiveSectionScrollArrow(
+                        direction: ArrowDirection.back,
+                        onTap: () => _scrollByArrow(ArrowDirection.back),
                       ),
                     ),
                   ),
@@ -317,17 +312,12 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   bottom: 0,
                   child: IgnorePointer(
                     ignoring: !showArrow,
-                    child: AnimatedSlide(
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.easeOut,
-                      offset: showArrow ? Offset.zero : const Offset(1, 0),
-                      child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 150),
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
-                          direction: ArrowDirection.forward,
-                          onTap: () => _scrollByArrow(ArrowDirection.forward),
-                        ),
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 150),
+                      opacity: showArrow ? 1 : 0,
+                      child: ObjectiveSectionScrollArrow(
+                        direction: ArrowDirection.forward,
+                        onTap: () => _scrollByArrow(ArrowDirection.forward),
                       ),
                     ),
                   ),
