@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-24 11:59:31.704119",
+    "@@last_modified": "2026-07-27 09:33:31.158463",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9681,5 +9681,6 @@
     "subscriptionsNotAvailableInApp": "Abonnements können nicht in der App gekauft werden",
     "subscribeOnTheWeb": "Du kannst dich im Web unter pangea.chat anmelden",
     "waitingToFillOneRole": "Warten auf Besetzung von 1 Rolle ...",
-    "closeArchive": "Archiv schließen"
+    "closeArchive": "Archiv schließen",
+    "activityActions": "Aktivitätsaktionen"
 }

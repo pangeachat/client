@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-24 11:59:35.626219",
+    "@@last_modified": "2026-07-27 09:33:35.666019",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "subscriptionsNotAvailableInApp": "As assinaturas não podem ser compradas na aplicação",
     "subscribeOnTheWeb": "Pode subscrever na web em pangea.chat",
     "waitingToFillOneRole": "Aguardando preencher 1 função...",
-    "closeArchive": "Fechar arquivo"
+    "closeArchive": "Fechar arquivo",
+    "activityActions": "Ações de atividade"
 }

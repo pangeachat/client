@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-24 11:59:35.571475",
+    "@@last_modified": "2026-07-27 09:33:35.879992",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10611,5 +10611,6 @@
     "subscriptionsNotAvailableInApp": "As subscrições não podem ser compradas na aplicação",
     "subscribeOnTheWeb": "Pode subscrever na web em pangea.chat",
     "waitingToFillOneRole": "À espera de preencher 1 função...",
-    "closeArchive": "Fechar arquivo"
+    "closeArchive": "Fechar arquivo",
+    "activityActions": "Ações de atividade"
 }

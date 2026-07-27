@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-24 11:59:35.154835",
+    "@@last_modified": "2026-07-27 09:33:35.182226",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Abonnement kan ikke kjøpes i appen",
     "subscribeOnTheWeb": "Du kan abonnere på nettstedet pangea.chat",
     "waitingToFillOneRole": "Venter på å fylle 1 rolle ...",
-    "closeArchive": "Lukk arkiv"
+    "closeArchive": "Lukk arkiv",
+    "activityActions": "Aktivitetshandlinger"
 }

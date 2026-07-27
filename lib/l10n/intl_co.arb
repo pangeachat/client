@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-24 11:59:31.650779",
+    "@@last_modified": "2026-07-27 09:33:30.838376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "L'abbunamenti ùn ponu esse acquistati in l'app",
     "subscribeOnTheWeb": "Pudete abbunà vi nant'à u web à pangea.chat",
     "waitingToFillOneRole": "Aspittendu di riempie 1 rolu...",
-    "closeArchive": "Chjode l'archiviu"
+    "closeArchive": "Chjode l'archiviu",
+    "activityActions": "Azzioni d'attività"
 }

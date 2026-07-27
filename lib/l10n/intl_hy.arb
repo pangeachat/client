@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-24 11:59:33.151198",
+    "@@last_modified": "2026-07-27 09:33:32.780341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2040,5 +2040,6 @@
     "subscriptionsNotAvailableInApp": "Բաժանորդագրությունները հնարավոր չէ գնել հավելվածում",
     "subscribeOnTheWeb": "Կարող եք բաժանորդագրվել pangea.chat կայքում",
     "waitingToFillOneRole": "Սպասում ենք 1 դեր լրացնելուն...",
-    "closeArchive": "Փակել արխիվը"
+    "closeArchive": "Փակել արխիվը",
+    "activityActions": "Գործողություններ"
 }
