@@ -51,11 +51,14 @@ class MxcImageViewer extends StatelessWidget {
               //   isThumbnail: false,
               //   animated: true,
               // ),
-              child: ImageByUrl(
-                key: ValueKey(mxContent.toString()),
-                imageUrl: mxContent,
-                fit: BoxFit.contain,
-                isThumbnail: false,
+              child: Semantics(
+                label: L10n.of(context).profileImageLabel,
+                child: ImageByUrl(
+                  key: ValueKey(mxContent.toString()),
+                  imageUrl: mxContent,
+                  fit: BoxFit.contain,
+                  isThumbnail: false,
+                ),
               ),
               // Pangea#
             ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -14,6 +15,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_carousel.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/utils/url_launcher.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;
@@ -139,9 +141,18 @@ class ActivitySummary extends StatelessWidget {
                   crossAxisAlignment: .start,
                   spacing: 16.0,
                   children: [
-                    Text(
-                      activity.description,
+                    Linkify(
+                      text: activity.description,
+                      options: const LinkifyOptions(humanize: false),
+                      useMouseRegion: true,
                       style: TextStyle(fontSize: AppConfig.messageFontSize),
+                      linkStyle: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor: theme.colorScheme.primary,
+                      ),
+                      onOpen: (link) =>
+                          UrlLauncher(context, link.url).launchUrl(),
                     ),
                     const Divider(height: 1),
                     ActivityVocabWidget(

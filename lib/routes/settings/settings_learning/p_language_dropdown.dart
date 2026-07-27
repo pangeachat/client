@@ -11,6 +11,7 @@ import 'package:fluffychat/features/languages/language_display_name_postfix_widg
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class PLanguageDropdown extends StatefulWidget {
   final List<LanguageModel> languages;
@@ -167,18 +168,10 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   horizontal: 14,
                   vertical: 10,
                 ),
-                child: Semantics(
-                  label: widget.isL2List
-                      ? L10n.of(context).searchLanguagesHint
-                      : L10n.of(context).alreadySpeak,
-                  container: true,
-                  child: TextField(
-                    autofocus: true,
-                    controller: _searchController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                  ),
+                child: PangeaSearchBar(
+                  labelText: L10n.of(context).searchLanguagesHint,
+                  autofocus: true,
+                  controller: _searchController,
                 ),
               ),
               searchMatchFn: (item, searchValue) =>

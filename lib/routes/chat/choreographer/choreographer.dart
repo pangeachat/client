@@ -154,7 +154,7 @@ class Choreographer extends ChangeNotifier {
     super.dispose();
   }
 
-  void onPaste(String value) => _record.pastedStrings.add(value);
+  void onPaste(String value) => _record.addPastedString(value);
 
   void _resetDebounceTimer() {
     if (_debounceTimer != null) {
@@ -377,7 +377,7 @@ class Choreographer extends ChangeNotifier {
       // Record BEFORE setSystemText so the lazily-created record snapshots
       // pre-suggestion input as originalText; excluded from XP like pastes
       // (#7665).
-      _record.suggestionStrings.add(acceptedChoice.text);
+      _record.addSuggestionString(acceptedChoice.text);
       textController.setSystemText(
         acceptedChoice.text,
         EditTypeEnum.suggestion,

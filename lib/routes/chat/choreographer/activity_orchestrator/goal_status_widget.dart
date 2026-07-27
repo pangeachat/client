@@ -7,12 +7,18 @@ import 'package:fluffychat/widgets/matrix.dart';
 class GoalStatusWidget extends StatelessWidget {
   final ActivityRoleGoal goal;
   final bool complete;
+
+  final bool isActive;
+  final bool showLabel;
+
   final TextStyle textStyle;
   final String? starTarget;
 
   const GoalStatusWidget({
     required this.goal,
     required this.complete,
+    this.isActive = false,
+    this.showLabel = true,
     this.textStyle = const TextStyle(fontSize: 15),
     this.starTarget,
     super.key,
@@ -21,16 +27,24 @@ class GoalStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final gold = AppConfig.goldByTheme(context);
 
-    Widget icon = complete
-        ? Icon(
-            Icons.star,
-            color: theme.brightness == Brightness.light
-                ? AppConfig.gold
-                : AppConfig.goldLight,
-            size: 30.0,
-          )
-        : Icon(Icons.star_border, size: 30.0);
+    Widget icon = Icon(
+      complete ? Icons.star : Icons.star_border,
+      color: complete ? gold : null,
+      size: 28.0,
+    );
+
+    // Every star sits in the same padded box so active and inactive stars line
+    // up with each other; only the active one fills its box with a highlight.
+    icon = Container(
+      padding: const EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isActive ? theme.colorScheme.onSurface.withAlpha(26) : null,
+      ),
+      child: icon,
+    );
 
     final starTarget = this.starTarget;
     if (starTarget != null) {
@@ -42,6 +56,8 @@ class GoalStatusWidget extends StatelessWidget {
         ),
       );
     }
+
+    if (!showLabel) return icon;
 
     return Row(
       spacing: 12.0,

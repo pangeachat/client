@@ -35,31 +35,37 @@ void main() {
     timeStamp: DateTime(2026, 7, 15),
   );
 
+  List<OneConstructUse> vocabAndMorphUses({
+    required List<PangeaToken> tokens,
+    ChoreoRecordModel? choreo,
+  }) => representation.vocabAndMorphUses(
+    tokens: tokens,
+    choreo: choreo,
+    metadata: metadata,
+  );
+
   test('without choreo, tokens score as written-active (wa)', () {
-    final uses = representation.vocabAndMorphUses(
-      tokens: [_token('hola', 0)],
-      metadata: metadata,
-    );
+    final uses = vocabAndMorphUses(tokens: [_token('hola', 0)]);
     expect(uses, isNotEmpty);
     expect(uses.every((u) => u.useType == ConstructUseTypeEnum.wa), isTrue);
     expect(uses.first.xp, ConstructUseTypeEnum.wa.pointValue);
   });
 
   test(
-    'accepted-suggestion tokens produce zero uses; typed tokens still score',
+    'accepted-suggestion tokens produce suggestion uses; typed tokens still score',
     () {
-      final choreo = _record()..suggestionStrings.add('quiero un café');
-
-      final suggestionUses = representation.vocabAndMorphUses(
+      final choreo = _record()..addSuggestionString('quiero un café');
+      final suggestionUses = vocabAndMorphUses(
         tokens: [_token('quiero', 5), _token('café', 15)],
-        metadata: metadata,
         choreo: choreo,
       );
-      expect(suggestionUses, isEmpty);
+      expect(
+        suggestionUses.every((u) => u.useType == ConstructUseTypeEnum.sug),
+        isTrue,
+      );
 
-      final typedUses = representation.vocabAndMorphUses(
+      final typedUses = vocabAndMorphUses(
         tokens: [_token('hola', 0)],
-        metadata: metadata,
         choreo: choreo,
       );
       expect(typedUses, isNotEmpty);
@@ -71,11 +77,9 @@ void main() {
   );
 
   test('pasted tokens stay excluded (regression pin)', () {
-    final choreo = _record()..pastedStrings.add('quiero un café');
-
-    final uses = representation.vocabAndMorphUses(
+    final choreo = _record()..addPastedString('quiero un café');
+    final uses = vocabAndMorphUses(
       tokens: [_token('quiero', 5)],
-      metadata: metadata,
       choreo: choreo,
     );
     expect(uses, isEmpty);

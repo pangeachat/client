@@ -23,7 +23,36 @@ class PLanguageStore {
   List<LanguageModel> get targetOptions =>
       _langList.where((element) => element.l2).toList();
 
-  List<LanguageModel> get baseOptions => _langList.toList();
+  /// L1 (native language) options. Shows one entry per language plus genuinely
+  /// distinct writing systems (Traditional Chinese, Jawi Malay, Shahmukhi
+  /// Punjabi). Regional variants that write the same way as their base language
+  /// — English (US/UK), Spanish (Mexico), Cantonese (HK), etc. — are dropped:
+  /// they don't belong in native-language selection and the app UI is
+  /// translated by language + script, not by region.
+  List<LanguageModel> get baseOptions {
+    // Collapse near-identical scripts so a variant isn't kept for a trivial
+    // difference (generic Han `Hani` vs Simplified `Hans`; Arabic `Arab` vs
+    // Nastaliq `Aran`).
+    String scriptClass(String s) {
+      if (s == 'Hans' || s == 'Hani') return 'Hans';
+      if (s == 'Arab' || s == 'Aran') return 'Arab';
+      return s;
+    }
+
+    final baseScript = <String, String>{};
+    for (final lang in _langList) {
+      if (lang.langCode == lang.langCodeShort) {
+        baseScript[lang.langCodeShort] = scriptClass(lang.script);
+      }
+    }
+
+    return _langList.where((lang) {
+      if (lang.langCode == lang.langCodeShort) return true; // base language
+      final base = baseScript[lang.langCodeShort];
+      if (base == null) return true; // no base row — don't drop the language
+      return scriptClass(lang.script) != base; // keep only a distinct script
+    }).toList();
+  }
 
   List<LanguageModel> get unlocalizedTargetOptions {
     final unlocalized = _langList

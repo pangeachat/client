@@ -57,8 +57,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
   void onPusherTap(Pusher pusher) async {
     final delete = await showModalActionPopup<bool>(
       context: context,
-      title: pusher.deviceDisplayName,
-      message: '${pusher.appDisplayName} (${pusher.appId})',
+      title: '${pusher.appDisplayName} (${pusher.appId})',
       cancelLabel: L10n.of(context).cancel,
       actions: [
         AdaptiveModalAction(

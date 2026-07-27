@@ -7,14 +7,22 @@ void main() {
   CourseLoOutline outline(
     List<String> seq,
     Map<String, Set<String>> acts, {
+    String courseId = 'c1',
     int threshold = kDefaultStarsToUnlockObjective,
     Map<String, int> earnable = const {},
   }) => CourseLoOutline(
+    courseId: courseId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
     starsToUnlock: threshold,
     earnableByActivity: earnable,
   );
+
+  /// Rollups are per course (#7771); these single-course cases read 'c1'.
+  Map<String, MissionProgress> rollupOf(
+    ProgressionResolution r, [
+    String courseId = 'c1',
+  ]) => r.forCourse(courseId)!.rollup;
 
   group('resolveProgression — rollup', () {
     test("sums a Mission's stars across its activities", () {
@@ -29,9 +37,9 @@ void main() {
         ],
         starsByActivity: {'a': 3, 'b': 4},
       );
-      expect(r.rollup['m1']!.stars, 7);
-      expect(r.rollup['m1']!.threshold, 10);
-      expect(r.rollup['m1']!.satisfied, isFalse);
+      expect(rollupOf(r)['m1']!.stars, 7);
+      expect(rollupOf(r)['m1']!.threshold, 10);
+      expect(rollupOf(r)['m1']!.satisfied, isFalse);
     });
 
     test('an activity serving two Missions counts toward each', () {
@@ -47,11 +55,11 @@ void main() {
         ],
         starsByActivity: {'a': 5},
       );
-      expect(r.rollup['m1']!.stars, 5);
-      expect(r.rollup['m2']!.stars, 5);
+      expect(rollupOf(r)['m1']!.stars, 5);
+      expect(rollupOf(r)['m2']!.stars, 5);
     });
 
-    test('a shared activity across quests is unioned, not double-counted', () {
+    test('an activity shared by two quests is never double-counted', () {
       final r = resolveProgression(
         outlines: [
           outline(
@@ -59,17 +67,22 @@ void main() {
             {
               'm1': {'a'},
             },
+            courseId: 'c1',
           ),
           outline(
             ['m1'],
             {
               'm1': {'a'},
             },
+            courseId: 'c2',
           ),
         ],
         starsByActivity: {'a': 6},
       );
-      expect(r.rollup['m1']!.stars, 6); // unioned, not 12
+      // Each course counts the shared activity once, in its own rollup — 6,
+      // never 12. Per-course resolution gets this without a union (#7771).
+      expect(rollupOf(r, 'c1')['m1']!.stars, 6);
+      expect(rollupOf(r, 'c2')['m1']!.stars, 6);
     });
   });
 
@@ -88,7 +101,7 @@ void main() {
         starsByActivity: {},
       );
       // configured 10, content offers 3 + 4 = 7
-      expect(r.rollup['m1']!.threshold, 7);
+      expect(rollupOf(r)['m1']!.threshold, 7);
     });
 
     test('a configured threshold below the ceiling is kept as-is', () {
@@ -105,7 +118,7 @@ void main() {
         ],
         starsByActivity: {},
       );
-      expect(r.rollup['m1']!.threshold, 5);
+      expect(rollupOf(r)['m1']!.threshold, 5);
     });
 
     test('a zero ceiling (no goal data) leaves the configured threshold', () {
@@ -122,8 +135,8 @@ void main() {
       );
       // no earnable data — do NOT clamp to 0 (a Mission must not read
       // satisfied-at-zero off degraded/legacy plans)
-      expect(r.rollup['m1']!.threshold, kDefaultStarsToUnlockObjective);
-      expect(r.rollup['m1']!.satisfied, isFalse);
+      expect(rollupOf(r)['m1']!.threshold, kDefaultStarsToUnlockObjective);
+      expect(rollupOf(r)['m1']!.satisfied, isFalse);
     });
 
     test('a Mission satisfiable only via the clamp reads satisfied', () {
@@ -140,12 +153,15 @@ void main() {
         ],
         starsByActivity: {'a': 4}, // full marks on m1's only activity
       );
-      expect(r.rollup['m1']!.satisfied, isTrue);
+      expect(rollupOf(r)['m1']!.satisfied, isTrue);
       // and the anchor advances past it
       expect(r.quests.single.anchorMissionId, 'm2');
     });
 
-    test('disagreeing earnable values across outlines take the min', () {
+    test('each course clamps against its own earnable data', () {
+      // Outlines carry the same plan, so earnable values should agree; if they
+      // ever disagree, each course clamps against what its OWN outline says
+      // rather than inheriting the other's ceiling (#7771).
       final r = resolveProgression(
         outlines: [
           outline(
@@ -153,6 +169,7 @@ void main() {
             {
               'm1': {'a'},
             },
+            courseId: 'c1',
             earnable: {'a': 4},
           ),
           outline(
@@ -160,12 +177,14 @@ void main() {
             {
               'm1': {'a'},
             },
+            courseId: 'c2',
             earnable: {'a': 3},
           ),
         ],
         starsByActivity: {},
       );
-      expect(r.rollup['m1']!.threshold, 3);
+      expect(rollupOf(r, 'c1')['m1']!.threshold, 4);
+      expect(rollupOf(r, 'c2')['m1']!.threshold, 3);
     });
   });
 
@@ -264,18 +283,21 @@ void main() {
             {
               'q1m1': {'x'},
             },
+            courseId: 'c1',
           ),
           outline(
             ['q2m1'],
             {
               'q2m1': {'y'},
             },
+            courseId: 'c2',
           ),
           outline(
             ['q3m1'],
             {
               'q3m1': {'z'},
             },
+            courseId: 'c3',
           ),
         ],
         starsByActivity: {},

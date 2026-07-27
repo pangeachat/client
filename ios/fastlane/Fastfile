@@ -44,6 +44,66 @@ platform :ios do
       changelog: "This is a release candidate for Pangea Chat. Please test if the app is overall in a good condition before we push this to production.",
     )
   end
+
+  desc "One-time: mint the App Store distribution cert + profile into the match repo"
+  lane :bootstrap_certs do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY_KEY"],
+      is_key_content_base64: ENV["APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64"],
+      duration: 500,
+      in_house: false
+    )
+    setup_ci if ENV["CI"]
+    match(type: "appstore", api_key: api_key, readonly: false)
+  end
+
+  desc "CI release: sign with match, build IPA, upload to TestFlight"
+  lane :release_candidate do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY_KEY"],
+      is_key_content_base64: ENV["APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64"],
+      duration: 500,
+      in_house: false
+    )
+    setup_ci if ENV["CI"]
+    match(type: "appstore", api_key: api_key, readonly: true)
+    increment_build_number(
+      xcodeproj: "Runner.xcodeproj",
+      build_number: latest_testflight_build_number(api_key: api_key) + 1
+    )
+    re = /version:\s([0-9]*\.[0-9]*\.[0-9]*)\+[0-9]*/i
+    config = File.read("../../pubspec.yaml")
+    version_name = config.match(re).captures[0]
+    increment_version_number(version_number: version_name)
+    {
+      "Runner" => "com.talktolearn.chat",
+      "FluffyChat Share" => "com.talktolearn.chat.FluffyChatShare",
+      "Notification Service Extension" => "com.talktolearn.chat.Notification-Service-Extension",
+    }.each do |target, bundle_id|
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "Runner.xcodeproj",
+        targets: [target],
+        code_sign_identity: "Apple Distribution",
+        profile_name: "match AppStore #{bundle_id}"
+      )
+    end
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store"
+    )
+    upload_to_testflight(
+      api_key: api_key,
+      distribute_external: true,
+      groups: "App Store Connect Users",
+      changelog: "Automated release candidate build. Verify overall app condition before promoting to the App Store.",
+    )
+  end
 end
 
 lane :release do

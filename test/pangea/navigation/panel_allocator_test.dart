@@ -38,9 +38,11 @@ void main() {
       'a single right summary docks at the right edge behind the gutter',
       () {
         final l = run(right: [PanelTypesEnum.analytics]);
-        expect(l.right.single.width, 488);
-        expect(l.right.single.left, 1600 - 88 - 488); // 1024
-        expect(l.mapRightOverlay, 576); // 488 + gutter 88
+        // The tool-family ideal (#7572) — one width for the whole right column.
+        const w = PanelWidths.toolIdeal;
+        expect(l.right.single.width, w);
+        expect(l.right.single.left, 1600 - 88 - w);
+        expect(l.mapRightOverlay, w + 88); // card + gutter
         expect(l.mapLeftOverlay, 73); // rail only, no left panel
         expect(l.clusterVisible, isTrue);
       },
@@ -61,12 +63,13 @@ void main() {
       final l = run(
         right: [PanelTypesEnum.analytics, PanelTypesEnum.vocab],
       ); // master-first [summary, detail]
-      expect(l.right[0].width, 488);
-      expect(l.right[1].width, 488);
-      expect(l.right[0].left, 1600 - 88 - 488); // summary (master) at the edge
-      expect(l.right[1].left, 1600 - 88 - 488 - 16 - 488); // detail to its left
+      const w = PanelWidths.toolIdeal;
+      expect(l.right[0].width, w);
+      expect(l.right[1].width, w);
+      expect(l.right[0].left, 1600 - 88 - w); // summary (master) at the edge
+      expect(l.right[1].left, 1600 - 88 - w - 16 - w); // detail to its left
       expectNoOverlap(l);
-      expect(l.mapRightOverlay, 488 * 2 + 16 + 88); // both cards + gap + gutter
+      expect(l.mapRightOverlay, w * 2 + 16 + 88); // both cards + gap + gutter
     });
   });
 

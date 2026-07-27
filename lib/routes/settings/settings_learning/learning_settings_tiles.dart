@@ -161,7 +161,10 @@ class LearningSettingsTiles extends StatelessWidget {
                   leading: const Icon(Icons.lightbulb),
                   title: Text(L10n.of(context).resetInstructionTooltipsTitle),
                   subtitle: Text(L10n.of(context).resetInstructionTooltipsDesc),
-                  onTap: viewModel.resetInstructionTooltips,
+                  selected: viewModel.hasResetTooltips,
+                  onTap: viewModel.hasResetTooltips
+                      ? null
+                      : viewModel.resetInstructionTooltips,
                 ),
               ],
             ),

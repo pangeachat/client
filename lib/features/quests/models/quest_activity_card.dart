@@ -129,12 +129,38 @@ class QuestActivityCard {
       ? LatLng(coordinates![1], coordinates![0])
       : null;
 
+  /// Per-role goal counts from the thin [goals] (a goal shared across roles
+  /// counts once for each). Empty when the card carries no thin goals.
+  Map<String, int> get goalCountByRole {
+    final counts = <String, int>{};
+    for (final g in goals) {
+      for (final r in g.roleIds) {
+        counts[r] = (counts[r] ?? 0) + 1;
+      }
+    }
+    return counts;
+  }
+
+  /// The activity's display star total from the thin [goals] — no plan
+  /// hydration. Generation keeps per-role goal counts uniform; when they
+  /// disagree this falls back to the **min** across roles, mirroring
+  /// [ActivityPlanModel.earnableStars] (decided 2026-07-18 — supersedes the
+  /// "fallback to average/greatest" line in the Figma Pins-v6 annotation; see
+  /// world-map.instructions.md, "Goal Progress"). Null when the card carries
+  /// no thin goals (an older choreo) — callers fall back to the hydrated plan.
+  int? get thinStarsTotal {
+    final counts = goalCountByRole.values;
+    if (counts.isEmpty) return null;
+    return counts.reduce((a, b) => b < a ? b : a);
+  }
+
   factory QuestActivityCard.fromJson(Map<String, dynamic> json) {
     final plan =
         ((json['res'] as Map?)?['plan'] as Map?)?.cast<String, dynamic>() ??
         const {};
     final coords = plan['coordinates'];
     final refs = (json['learningObjectiveRefs'] as List?) ?? const [];
+    final rolesJson = plan['roles'] as List?;
     return QuestActivityCard(
       activityId: (plan['activity_id'] ?? json['id']) as String,
       title: (plan['title'] ?? '') as String,
@@ -145,6 +171,10 @@ class QuestActivityCard {
       learningObjectiveRefs: refs
           .map((e) => e is Map ? e['id'] as String : e as String)
           .toList(),
+      // Participant count == role count (the value activityPlanFromV2 derives
+      // and the card shows), so a course-scoped pin can dim when the course
+      // lacks enough members to start it. Null when roles weren't projected.
+      roleCount: rolesJson?.length,
     );
   }
 

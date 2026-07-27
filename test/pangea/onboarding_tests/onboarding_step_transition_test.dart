@@ -16,90 +16,80 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
 
-void main() async {
+void main() {
   late final Client client;
-  late final OnboardingNavigationController studentWithCode;
-  late final OnboardingNavigationController studentWithoutCode;
-  late final OnboardingNavigationController teacherWithCode;
-  late final OnboardingNavigationController teacherWithoutCode;
 
   setUpAll(() async {
     client = await getTestClient();
-    studentWithCode = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client),
-    );
-
-    studentWithoutCode = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client),
-    );
-
-    teacherWithCode = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client),
-    );
-
-    teacherWithoutCode = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client),
-    );
   });
 
-  void testForwardNavigationWithCode(
+  // Each test builds its own controller and drives it to the state it needs, so
+  // tests stay independent under any ordering. Helpers return Futures that the
+  // test bodies await — an un-awaited navigation chain outlives its test and
+  // races the next one (the source of the old CI flake).
+  OnboardingNavigationController createController() =>
+      OnboardingNavigationController(
+        initialStep: getInitialOnboardingStep(client),
+      );
+
+  Future<void> testForwardNavigationWithCode(
     OnboardingNavigationController state,
     UserType type,
   ) async {
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is UserTypeOnboardingStep);
-    assert(await state.forward() is ErrorNavigationResult);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<UserTypeOnboardingStep>());
+    expect(await state.forward(), isA<ErrorNavigationResult>());
 
     final userTypeStep = state.step as UserTypeOnboardingStep;
     userTypeStep.setUserType(type);
 
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is CourseCodeOnboardingStep);
-    assert(await state.forward() is ErrorNavigationResult);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<CourseCodeOnboardingStep>());
+    expect(await state.forward(), isA<ErrorNavigationResult>());
 
     final courseCodeStep = state.step as CourseCodeOnboardingStep;
     courseCodeStep.setCourseCode('as12d45');
 
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is JoinedCourseOnboardingStep);
-    assert(await state.forward() is ReachedEndNavigationResult);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<JoinedCourseOnboardingStep>());
+    expect(await state.forward(), isA<ReachedEndNavigationResult>());
   }
 
   void testBackwardNavigationWithCode(OnboardingNavigationController state) {
-    assert(state.step is JoinedCourseOnboardingStep);
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is CourseCodeOnboardingStep);
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is UserTypeOnboardingStep);
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is ProfileSetupOnboardingStep);
-    assert(state.back() is ReachedBeginningNavigationResult);
+    expect(state.step, isA<JoinedCourseOnboardingStep>());
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<CourseCodeOnboardingStep>());
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<UserTypeOnboardingStep>());
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<ProfileSetupOnboardingStep>());
+    expect(state.back(), isA<ReachedBeginningNavigationResult>());
   }
 
-  void testForwardNavigationWithoutCode(
+  Future<void> testForwardNavigationWithoutCode(
     OnboardingNavigationController state,
     UserType type,
   ) async {
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is UserTypeOnboardingStep);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<UserTypeOnboardingStep>());
 
-    assert(await state.forward() is ErrorNavigationResult);
-    assert(state.step is UserTypeOnboardingStep);
+    expect(await state.forward(), isA<ErrorNavigationResult>());
+    expect(state.step, isA<UserTypeOnboardingStep>());
 
     final userTypeStep = state.step as UserTypeOnboardingStep;
     userTypeStep.setUserType(type);
 
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is CourseCodeOnboardingStep);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<CourseCodeOnboardingStep>());
 
-    assert(await state.forward() is ErrorNavigationResult);
-    assert(state.step is CourseCodeOnboardingStep);
+    expect(await state.forward(), isA<ErrorNavigationResult>());
+    expect(state.step, isA<CourseCodeOnboardingStep>());
 
-    assert(state.skip() is SuccessNavigationResult);
-    assert(state.step is PickLanguageOnboardingStep);
+    expect(state.skip(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<PickLanguageOnboardingStep>());
 
-    assert(await state.forward() is ErrorNavigationResult);
-    assert(state.step is PickLanguageOnboardingStep);
+    expect(await state.forward(), isA<ErrorNavigationResult>());
+    expect(state.step, isA<PickLanguageOnboardingStep>());
 
     final languageStep = state.step as PickLanguageOnboardingStep;
     languageStep.selectBaseLanguage(
@@ -109,28 +99,28 @@ void main() async {
       LanguageModel(langCode: "es", displayName: "Spanish"),
     );
 
-    assert(await state.forward() is SuccessNavigationResult);
-    assert(state.step is PickCefrLevelOnboardingStep);
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<PickCefrLevelOnboardingStep>());
 
-    assert(await state.forward() is ErrorNavigationResult);
-    assert(state.step is PickCefrLevelOnboardingStep);
+    expect(await state.forward(), isA<ErrorNavigationResult>());
+    expect(state.step, isA<PickCefrLevelOnboardingStep>());
     final levelStep = state.step as PickCefrLevelOnboardingStep;
     levelStep.selectCefrLevel(LanguageLevelTypeEnum.a1);
 
     switch (type) {
       case UserType.student:
-        assert(await state.forward() is ReachedEndNavigationResult);
+        expect(await state.forward(), isA<ReachedEndNavigationResult>());
         return;
       case UserType.teacher:
-        assert(await state.forward() is SuccessNavigationResult);
-        assert(state.step is CustomCourseOnboardingStep);
-        assert(await state.forward() is ErrorNavigationResult);
-        assert(state.step is CustomCourseOnboardingStep);
+        expect(await state.forward(), isA<SuccessNavigationResult>());
+        expect(state.step, isA<CustomCourseOnboardingStep>());
+        expect(await state.forward(), isA<ErrorNavigationResult>());
+        expect(state.step, isA<CustomCourseOnboardingStep>());
         final step = state.step as CustomCourseOnboardingStep;
         step.setName("Course Name");
         step.setInstitution("Test University");
         step.setGoals("Test goals");
-        assert(await state.forward() is ReachedEndNavigationResult);
+        expect(await state.forward(), isA<ReachedEndNavigationResult>());
         return;
     }
   }
@@ -140,56 +130,76 @@ void main() async {
     UserType type,
   ) {
     if (type == UserType.teacher) {
-      assert(state.back() is SuccessNavigationResult);
-      assert(state.step is PickCefrLevelOnboardingStep);
+      expect(state.back(), isA<SuccessNavigationResult>());
+      expect(state.step, isA<PickCefrLevelOnboardingStep>());
     }
 
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is PickLanguageOnboardingStep);
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<PickLanguageOnboardingStep>());
 
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is CourseCodeOnboardingStep);
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<CourseCodeOnboardingStep>());
 
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is UserTypeOnboardingStep);
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<UserTypeOnboardingStep>());
 
-    assert(state.back() is SuccessNavigationResult);
-    assert(state.step is ProfileSetupOnboardingStep);
+    expect(state.back(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<ProfileSetupOnboardingStep>());
 
-    assert(state.back() is ReachedBeginningNavigationResult);
+    expect(state.back(), isA<ReachedBeginningNavigationResult>());
   }
 
-  test("Test forward navigation for student with code", () {
-    testForwardNavigationWithCode(studentWithCode, UserType.student);
+  test("Test forward navigation for student with code", () async {
+    await testForwardNavigationWithCode(createController(), UserType.student);
   });
 
-  test("Test backward navigation for student with code", () {
-    testBackwardNavigationWithCode(studentWithCode);
+  test("Test backward navigation for student with code", () async {
+    final state = createController();
+    await testForwardNavigationWithCode(state, UserType.student);
+    testBackwardNavigationWithCode(state);
   });
 
-  test("Test forward navigation through student without course path", () {
-    testForwardNavigationWithoutCode(studentWithoutCode, UserType.student);
+  test("Test forward navigation through student without course path", () async {
+    await testForwardNavigationWithoutCode(
+      createController(),
+      UserType.student,
+    );
   });
 
-  test("Test backward navigation through student without course path", () {
-    testBackwardNavigationWithoutCode(studentWithoutCode, UserType.student);
+  test(
+    "Test backward navigation through student without course path",
+    () async {
+      final state = createController();
+      await testForwardNavigationWithoutCode(state, UserType.student);
+      testBackwardNavigationWithoutCode(state, UserType.student);
+    },
+  );
+
+  test("Test forward navigation through teacher with course code", () async {
+    await testForwardNavigationWithCode(createController(), UserType.teacher);
   });
 
-  test("Test forward navigation through teacher with course code", () {
-    testForwardNavigationWithCode(teacherWithCode, UserType.teacher);
+  test("Test backward navigation through teacher with course code", () async {
+    final state = createController();
+    await testForwardNavigationWithCode(state, UserType.teacher);
+    testBackwardNavigationWithCode(state);
   });
 
-  test("Test backward navigation through teacher with course code", () {
-    testBackwardNavigationWithCode(teacherWithCode);
+  test("Test forward navigation through teacher without course code", () async {
+    await testForwardNavigationWithoutCode(
+      createController(),
+      UserType.teacher,
+    );
   });
 
-  test("Test forward navigation through teacher without course code", () {
-    testForwardNavigationWithoutCode(teacherWithoutCode, UserType.teacher);
-  });
-
-  test("Test backward navigation through teacher without course code", () {
-    testBackwardNavigationWithoutCode(teacherWithoutCode, UserType.teacher);
-  });
+  test(
+    "Test backward navigation through teacher without course code",
+    () async {
+      final state = createController();
+      await testForwardNavigationWithoutCode(state, UserType.teacher);
+      testBackwardNavigationWithoutCode(state, UserType.teacher);
+    },
+  );
 
   test("Switching role clears a stale CEFR selection (#7583)", () {
     final state = getInitialOnboardingStep(client).state;

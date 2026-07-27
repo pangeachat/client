@@ -123,7 +123,7 @@ class PangeaRepresentation {
     final tokensToSave = _filterTokensToSave(tokens, choreo);
 
     final List<OneConstructUse> uses = [];
-    if (choreo == null || choreo.choreoSteps.isEmpty) {
+    if (choreo == null) {
       for (final token in tokensToSave) {
         uses.addAll(
           token.allUses(
@@ -138,7 +138,9 @@ class PangeaRepresentation {
 
     for (final token in tokensToSave) {
       final step = _getStepForToken(token, choreo);
-      uses.addAll(_getUsesForToken(token, metadata, step));
+      uses.addAll(
+        _getUsesForToken(token, metadata, step, choreo.suggestionStrings),
+      );
     }
 
     return uses;
@@ -152,12 +154,7 @@ class PangeaRepresentation {
         .where((token) => token.lemma.saveVocab)
         .toList();
 
-    // Accepted-suggestion text is excluded like pasted text — neither is
-    // self-written language, so neither generates construct uses (#7665).
-    final excludedStrings = {
-      ...?choreo?.pastedStrings,
-      ...?choreo?.suggestionStrings,
-    };
+    final excludedStrings = choreo?.pastedStrings ?? {};
 
     final openMatches = choreo?.openMatches ?? [];
 
@@ -217,7 +214,18 @@ class PangeaRepresentation {
     PangeaToken token,
     ConstructUseMetaData metadata,
     ChoreoRecordStepModel? tokenStep,
+    Set<String> suggestionStrings,
   ) {
+    if (suggestionStrings.any(
+      (s) => s.toLowerCase().contains(token.text.content.toLowerCase()),
+    )) {
+      return token.allUses(
+        ConstructUseTypeEnum.sug,
+        metadata,
+        ConstructUseTypeEnum.sug.pointValue,
+      );
+    }
+
     if (tokenStep == null ||
         tokenStep.acceptedOrIgnoredMatch?.status ==
             PangeaMatchStatusEnum.automatic) {

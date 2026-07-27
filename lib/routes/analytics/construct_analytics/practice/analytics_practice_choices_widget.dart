@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_choice_card_widget.dart';
@@ -119,15 +117,10 @@ class _AudioCompletionWidget extends StatelessWidget {
     required this.showHint,
   });
 
-  String _extractTextFromSpans(List<InlineSpan> spans) {
-    final buffer = StringBuffer();
-    for (final span in spans) {
-      if (span is TextSpan && span.text != null) {
-        buffer.write(span.text);
-      }
-    }
-    return buffer.toString();
-  }
+  String _extractTextFromSpans(List<InlineSpan> spans) => spans
+      .map((s) => s is TextSpan ? s.text : null)
+      .whereType<String>()
+      .join();
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +129,9 @@ class _AudioCompletionWidget extends StatelessWidget {
     }
 
     final exampleText = _extractTextFromSpans(exampleMessage);
+    final textStyle = FluffyThemes.isColumnMode(context)
+        ? Theme.of(context).textTheme.titleMedium
+        : Theme.of(context).textTheme.titleSmall;
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -160,12 +156,8 @@ class _AudioCompletionWidget extends StatelessWidget {
                         textLanguage:
                             MatrixState.pangeaController.userController.userL2!,
                         textOnly: true,
-                        style: TextStyle(
+                        style: textStyle?.copyWith(
                           color: Theme.of(context).colorScheme.onPrimary,
-                          fontSize:
-                              (AppSettings.fontSizeFactor.value *
-                                  AppConfig.messageFontSize) *
-                              0.85,
                           fontStyle: FontStyle.italic,
                         ),
                         maxLines: 2,
@@ -173,46 +165,27 @@ class _AudioCompletionWidget extends StatelessWidget {
                     )
                   : const SizedBox.shrink(),
             ),
-
             // Main example message
             RichText(
               text: TextSpan(
-                style: TextStyle(
+                style: textStyle?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
-                  fontSize:
-                      AppSettings.fontSizeFactor.value *
-                      AppConfig.messageFontSize,
                 ),
                 children: exampleMessage,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: _AudioCompletionTranslation(translation: translation),
+              child: Text(
+                translation,
+                style: textStyle?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-/// Widget to show translation for audio completion message
-class _AudioCompletionTranslation extends StatelessWidget {
-  final String translation;
-
-  const _AudioCompletionTranslation({required this.translation});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      translation,
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.onPrimary,
-        fontSize:
-            (AppSettings.fontSizeFactor.value * AppConfig.messageFontSize) *
-            0.9,
-        fontStyle: FontStyle.italic,
       ),
     );
   }

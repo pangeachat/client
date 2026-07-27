@@ -9,11 +9,13 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class NewPrivateChatView extends StatelessWidget {
   final NewPrivateChatController controller;
+  final Widget? closeButton;
 
-  const NewPrivateChatView(this.controller, {super.key});
+  const NewPrivateChatView(this.controller, {super.key, this.closeButton});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,19 @@ class NewPrivateChatView extends StatelessWidget {
 
     final searchResponse = controller.searchResponse;
     return Scaffold(
+      appBar: AppBar(
+        leading: closeButton,
+        titleSpacing: 0,
+        title: Text(
+          L10n.of(context).newDirectMessage,
+          style: FluffyThemes.isColumnMode(context)
+              ? theme.textTheme.titleLarge
+              : theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+        ),
+        centerTitle: false,
+      ),
       body: MaxWidthBody(
         withScrolling: false,
         innerPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -31,52 +46,40 @@ class NewPrivateChatView extends StatelessWidget {
                 horizontal: 16.0,
                 vertical: 8.0,
               ),
-              child: TextField(
+              child: PangeaSearchBar(
                 controller: controller.controller,
                 onChanged: controller.searchUsers,
-                decoration: InputDecoration(
-                  hintText: L10n.of(context).searchForUsers,
-                  filled: true,
-                  fillColor: theme.colorScheme.secondaryContainer,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  hintStyle: TextStyle(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  prefixIcon: searchResponse == null
-                      ? const Icon(Icons.search_outlined)
-                      : FutureBuilder(
-                          future: searchResponse,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState !=
-                                ConnectionState.done) {
-                              return const Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: SizedBox.square(
-                                  dimension: 24,
-                                  child: CircularProgressIndicator.adaptive(
-                                    strokeWidth: 1,
-                                  ),
+                labelText: L10n.of(context).searchUsersHint,
+                suffixIcon: controller.controller.text.isEmpty
+                    ? null
+                    : IconButton(
+                        tooltip: L10n.of(context).clear,
+                        icon: const Icon(Icons.clear_outlined),
+                        onPressed: () {
+                          controller.controller.clear();
+                          controller.searchUsers();
+                        },
+                      ),
+                prefixIcon: controller.controller.text.isEmpty
+                    ? null
+                    : FutureBuilder(
+                        future: searchResponse,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState !=
+                              ConnectionState.done) {
+                            return const Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: SizedBox.square(
+                                dimension: 24,
+                                child: CircularProgressIndicator.adaptive(
+                                  strokeWidth: 1,
                                 ),
-                              );
-                            }
-                            return const Icon(Icons.search_outlined);
-                          },
-                        ),
-                  suffixIcon: controller.controller.text.isEmpty
-                      ? null
-                      : IconButton(
-                          tooltip: L10n.of(context).clear,
-                          icon: const Icon(Icons.clear_outlined),
-                          onPressed: () {
-                            controller.controller.clear();
-                            controller.searchUsers();
-                          },
-                        ),
-                ),
+                              ),
+                            );
+                          }
+                          return const Icon(Icons.search);
+                        },
+                      ),
               ),
             ),
             Expanded(

@@ -25,29 +25,37 @@ class SuggestMobileDialog extends StatelessWidget {
                 horizontal: 16.0,
                 vertical: 24.0,
               ),
-              child: Semantics(
-                container: true,
-                child: Column(
-                  spacing: 12.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CachedNetworkImage(
+              child: Column(
+                spacing: 12.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ExcludeSemantics(
+                    child: CachedNetworkImage(
                       imageUrl:
                           "${AppConfig.assetsBaseURL}/${NotificationsConstants.notifRequestImage}",
                       errorWidget: (_, _, _) => SizedBox.shrink(),
                     ),
-                    Text(
+                  ),
+                  Semantics(
+                    container: true,
+                    child: Text(
                       l10n.enableNotificationsTitle,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    Text(
+                  ),
+                  Semantics(
+                    container: true,
+                    child: Text(
                       l10n.suggestMobileDesc,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                    ElevatedButton(
+                  ),
+                  Semantics(
+                    container: true,
+                    child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(
                           context,
@@ -69,8 +77,8 @@ class SuggestMobileDialog extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 

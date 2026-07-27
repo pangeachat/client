@@ -8,7 +8,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_
 import 'get_test_client.dart';
 
 /// The activity-session "More" (⋮) menu is shared between a live session and a
-/// completed one (own role archived). A live session offers Invite / Leave /
+/// completed one (finished for everyone). A live session offers Invite / Leave /
 /// Download; a completed session only offers Download — Invite and Leave no
 /// longer apply once the session is over.
 ///

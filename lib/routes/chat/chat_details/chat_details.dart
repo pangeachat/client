@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
@@ -82,12 +83,18 @@ class ChatDetailsController extends State<ChatDetails>
       activitiesToCompleteOverride: room?.teacherMode.activitiesToUnlockTopic,
     );
 
-    _objectivesProvider.loadOutline(_questId);
+    _objectivesProvider.loadOutline(
+      _questId,
+      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+    );
     _loadSummaries();
 
-    if (room?.isSpace == true) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) Matrix.of(context).showEnableNotificationsDialog(context);
+    if (room != null && room.isSpace) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        _handleCoursePing();
+
+        if (!mounted) return;
+        Matrix.of(context).showEnableNotificationsDialog(context);
       });
     }
   }
@@ -96,7 +103,11 @@ class ChatDetailsController extends State<ChatDetails>
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
-      _objectivesProvider.loadOutline(_questId);
+      _handleCoursePing();
+      _objectivesProvider.loadOutline(
+        _questId,
+        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+      );
       _loadSummaries();
     }
 
@@ -121,6 +132,12 @@ class ChatDetailsController extends State<ChatDetails>
 
   String? get _questId =>
       Matrix.of(context).client.getRoomById(widget.roomId)?.coursePlan?.uuid;
+
+  /// The course's per-Mission activity pin (org quests doc, client#7748) —
+  /// null when unset, which is the unrestricted default.
+  Map<String, List<String>>? get _pinnedActivitiesByObjective => Matrix.of(
+    context,
+  ).client.getRoomById(widget.roomId)?.teacherMode.pinnedActivitiesByObjective;
 
   QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 
@@ -249,6 +266,18 @@ class ChatDetailsController extends State<ChatDetails>
       context: context,
       future: () => room!.setAvatar(file),
     );
+  }
+
+  Future<void> _handleCoursePing() async {
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    if (room == null) return;
+
+    final event = await room.unreadCoursePingEvent;
+    if (event != null) {
+      try {
+        await room.setReadMarker(event.eventId);
+      } catch (_) {}
+    }
   }
 
   // #Pangea

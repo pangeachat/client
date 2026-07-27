@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class PickLanguageStepView extends StatefulWidget {
   final PickLanguageOnboardingStep step;
@@ -162,18 +163,9 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                   ),
                 ),
                 SizedBox(height: 12.0),
-                Semantics(
-                  label: L10n.of(context).search,
-                  container: true,
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
+                PangeaSearchBar(
+                  labelText: L10n.of(context).searchLanguagesHint,
+                  controller: _searchController,
                 ),
                 SizedBox(height: 12.0),
                 Expanded(
@@ -193,7 +185,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                               padding: const EdgeInsets.only(
                                 left: 16.0,
                                 right: 16.0,
-                                bottom: 60.0,
                               ),
                               sliver: ValueListenableBuilder(
                                 valueListenable: _selectedTargetLanguage,

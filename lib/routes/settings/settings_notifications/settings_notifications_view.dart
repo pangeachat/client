@@ -36,209 +36,228 @@ class SettingsNotificationsView extends StatelessWidget {
       if (pushRules?.underride?.isNotEmpty ?? false)
         (rules: pushRules?.underride ?? [], kind: PushRuleKind.underride),
     ];
-    return Scaffold(
-      body: MaxWidthBody(
-        child: StreamBuilder(
-          stream: Matrix.of(context).client.onSync.stream.where(
-            (syncUpdate) =>
-                syncUpdate.accountData?.any(
-                  (accountData) => accountData.type == 'm.push_rules',
-                ) ??
-                false,
-          ),
-          builder: (BuildContext context, _) {
-            final theme = Theme.of(context);
-            return SelectionArea(
-              child: Column(
-                children: [
-                  // #Pangea
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.volume_up),
-                        Expanded(
-                          child: ValueListenableBuilder(
-                            valueListenable: controller.volumeNotifier,
-                            builder: (context, volume, _) {
-                              return Slider(
-                                value: volume,
-                                max: 1.0,
-                                onChanged: controller.updateVolume,
-                              );
-                            },
+    return Semantics(
+      label: L10n.of(context).bodyLabel(L10n.of(context).notifications),
+      container: true,
+      child: Scaffold(
+        body: MaxWidthBody(
+          child: StreamBuilder(
+            stream: Matrix.of(context).client.onSync.stream.where(
+              (syncUpdate) =>
+                  syncUpdate.accountData?.any(
+                    (accountData) => accountData.type == 'm.push_rules',
+                  ) ??
+                  false,
+            ),
+            builder: (BuildContext context, _) {
+              final theme = Theme.of(context);
+              return SelectionArea(
+                child: Column(
+                  children: [
+                    // #Pangea
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          Semantics(
+                            label: L10n.of(context).volumeLabel,
+                            child: Icon(Icons.volume_up),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Pangea#
-                  if (pushRules != null)
-                    for (final category in pushCategories) ...[
-                      ListTile(
-                        title: Text(
-                          category.kind.localized(L10n.of(context)),
-                          style: TextStyle(
-                            color: theme.colorScheme.secondary,
-                            fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: ValueListenableBuilder(
+                              valueListenable: controller.volumeNotifier,
+                              builder: (context, volume, _) {
+                                return Slider(
+                                  value: volume,
+                                  max: 1.0,
+                                  onChanged: controller.updateVolume,
+                                );
+                              },
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                      // #Pangea
-                      // for (final rule in category.rules)
-                      for (final rule in category.rules.where(
-                        (rule) => PushRuleExtension.defaultPushRuleIds.contains(
-                          rule.ruleId,
-                        ),
-                      ))
-                        // Pangea#
+                    ),
+                    // Pangea#
+                    if (pushRules != null)
+                      for (final category in pushCategories) ...[
                         ListTile(
-                          title: Text(rule.getPushRuleName(L10n.of(context))),
-                          subtitle: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: rule.getPushRuleDescription(
-                                    L10n.of(context),
+                          title: Text(
+                            category.kind.localized(L10n.of(context)),
+                            style: TextStyle(
+                              color: theme.colorScheme.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        // #Pangea
+                        // for (final rule in category.rules)
+                        for (final rule in category.rules.where(
+                          (rule) => PushRuleExtension.defaultPushRuleIds
+                              .contains(rule.ruleId),
+                        ))
+                          // Pangea#
+                          ListTile(
+                            title: Text(rule.getPushRuleName(L10n.of(context))),
+                            subtitle: Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: rule.getPushRuleDescription(
+                                      L10n.of(context),
+                                    ),
                                   ),
-                                ),
-                                // #Pangea
-                                if (MatrixState
-                                    .pangeaController
-                                    .userController
-                                    .showDeveloperOptions) ...[
-                                  // Pangea#
-                                  const TextSpan(text: ' '),
-                                  WidgetSpan(
-                                    child: InkWell(
-                                      onTap: () => controller.editPushRule(
-                                        rule,
-                                        category.kind,
-                                      ),
-                                      child: Text(
-                                        L10n.of(context).more,
-                                        style: TextStyle(
-                                          color: theme.colorScheme.primary,
-                                          decoration: TextDecoration.underline,
-                                          decorationColor:
-                                              theme.colorScheme.primary,
+                                  // #Pangea
+                                  if (MatrixState
+                                      .pangeaController
+                                      .userController
+                                      .showDeveloperOptions) ...[
+                                    // Pangea#
+                                    const TextSpan(text: ' '),
+                                    WidgetSpan(
+                                      child: InkWell(
+                                        onTap: () => controller.editPushRule(
+                                          rule,
+                                          category.kind,
+                                        ),
+                                        child: Text(
+                                          L10n.of(context).more,
+                                          style: TextStyle(
+                                            color: theme.colorScheme.primary,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            decorationColor:
+                                                theme.colorScheme.primary,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ],
-                              ],
+                              ),
+                            ),
+                            trailing: Switch.adaptive(
+                              value: rule.enabled,
+                              onChanged: controller.isLoading
+                                  ? null
+                                  : rule.ruleId != '.m.rule.master' &&
+                                        Matrix.of(
+                                          context,
+                                        ).client.allPushNotificationsMuted
+                                  ? null
+                                  : (_) => controller.togglePushRule(
+                                      category.kind,
+                                      rule,
+                                    ),
                             ),
                           ),
-                          trailing: Switch.adaptive(
-                            value: rule.enabled,
-                            onChanged: controller.isLoading
-                                ? null
-                                : rule.ruleId != '.m.rule.master' &&
-                                      Matrix.of(
-                                        context,
-                                      ).client.allPushNotificationsMuted
-                                ? null
-                                : (_) => controller.togglePushRule(
-                                    category.kind,
-                                    rule,
-                                  ),
-                          ),
+                        Divider(color: theme.dividerColor),
+                      ],
+                    ListTile(
+                      title: Text(
+                        L10n.of(context).devices,
+                        style: TextStyle(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
                         ),
-                      Divider(color: theme.dividerColor),
-                    ],
-                  ListTile(
-                    title: Text(
-                      L10n.of(context).devices,
-                      style: TextStyle(
-                        color: theme.colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
+                      ),
+                      subtitle: Text(
+                        L10n.of(context).notificationDeviceSubtitle,
                       ),
                     ),
-                    subtitle: Text(L10n.of(context).notificationDeviceSubtitle),
-                  ),
-                  // #Pangea
-                  FutureBuilder<EmailNotificationsStatus>(
-                    future: Matrix.of(context).client.emailNotificationsStatus,
-                    builder: (context, snapshot) {
-                      return GestureDetector(
-                        onTap: snapshot.data != null
-                            ? snapshot.data!.canEnable
-                                  ? null
-                                  : controller.showNoEmailSnackbar
-                            : null,
-                        child: ListTile(
-                          title: Text(
-                            L10n.of(context).enableEmailNotifications,
-                          ),
-                          trailing: Switch.adaptive(
-                            value: snapshot.data?.enabled ?? false,
-                            onChanged: snapshot.data?.canEnable ?? false
-                                ? controller.setEmailNotificationsEnabled
-                                : null,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  if (MatrixState
-                      .pangeaController
-                      .userController
-                      .showDeveloperOptions)
-                    // Pangea#
-                    FutureBuilder<List<Pusher>?>(
-                      future: controller.pusherFuture ??= Matrix.of(
+                    // #Pangea
+                    FutureBuilder<EmailNotificationsStatus>(
+                      future: Matrix.of(
                         context,
-                      ).client.getPushers(),
+                      ).client.emailNotificationsStatus,
                       builder: (context, snapshot) {
-                        if (snapshot.hasError) {
-                          Center(
-                            child: Text(
-                              snapshot.error!.toLocalizedString(context),
+                        return GestureDetector(
+                          onTap: snapshot.data != null
+                              ? snapshot.data!.canEnable
+                                    ? null
+                                    : controller.showNoEmailSnackbar
+                              : null,
+                          child: ListTile(
+                            title: ExcludeSemantics(
+                              child: Text(
+                                L10n.of(context).enableEmailNotifications,
+                              ),
                             ),
-                          );
-                        }
-                        if (snapshot.connectionState != ConnectionState.done) {
-                          const Center(
-                            child: CircularProgressIndicator.adaptive(
-                              strokeWidth: 2,
+                            trailing: Semantics(
+                              label: L10n.of(context).enableEmailNotifications,
+                              child: Switch.adaptive(
+                                value: snapshot.data?.enabled ?? false,
+                                onChanged: snapshot.data?.canEnable ?? false
+                                    ? controller.setEmailNotificationsEnabled
+                                    : null,
+                              ),
                             ),
-                          );
-                        }
-                        // #Pangea
-                        // final pushers = snapshot.data ?? [];
-                        final pushers =
-                            snapshot.data
-                                ?.where((p) => p.kind != 'email')
-                                .toList() ??
-                            [];
-                        // Pangea#
-                        if (pushers.isEmpty) {
-                          return Center(
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 16.0),
-                              child: Text(L10n.of(context).noOtherDevicesFound),
-                            ),
-                          );
-                        }
-                        return ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: pushers.length,
-                          itemBuilder: (_, i) => ListTile(
-                            title: Text(
-                              '${pushers[i].appDisplayName} - ${pushers[i].appId}',
-                            ),
-                            subtitle: Text(pushers[i].data.url.toString()),
-                            onTap: () => controller.onPusherTap(pushers[i]),
                           ),
                         );
                       },
                     ),
-                ],
-              ),
-            );
-          },
+                    if (MatrixState
+                        .pangeaController
+                        .userController
+                        .showDeveloperOptions)
+                      // Pangea#
+                      FutureBuilder<List<Pusher>?>(
+                        future: controller.pusherFuture ??= Matrix.of(
+                          context,
+                        ).client.getPushers(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            Center(
+                              child: Text(
+                                snapshot.error!.toLocalizedString(context),
+                              ),
+                            );
+                          }
+                          if (snapshot.connectionState !=
+                              ConnectionState.done) {
+                            const Center(
+                              child: CircularProgressIndicator.adaptive(
+                                strokeWidth: 2,
+                              ),
+                            );
+                          }
+                          // #Pangea
+                          // final pushers = snapshot.data ?? [];
+                          final pushers =
+                              snapshot.data
+                                  ?.where((p) => p.kind != 'email')
+                                  .toList() ??
+                              [];
+                          // Pangea#
+                          if (pushers.isEmpty) {
+                            return Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: Text(
+                                  L10n.of(context).noOtherDevicesFound,
+                                ),
+                              ),
+                            );
+                          }
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: pushers.length,
+                            itemBuilder: (_, i) => ListTile(
+                              title: Text(
+                                '${pushers[i].appDisplayName} - ${pushers[i].appId}',
+                              ),
+                              subtitle: Text(pushers[i].data.url.toString()),
+                              onTap: () => controller.onPusherTap(pushers[i]),
+                            ),
+                          );
+                        },
+                      ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

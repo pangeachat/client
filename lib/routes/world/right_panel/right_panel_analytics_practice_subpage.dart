@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
-import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// The practice panel. Its ONE header (close + progress + timer + flag + End)
+/// is rendered by [AnalyticsPractice]'s own view, so no [PanelCardWithHeader]
+/// here. The close control leaves SILENTLY — the session survives in the
+/// [PracticeSessionHolder]; only the header's explicit End control confirms
+/// and discards. See routing.instructions.md § Practice is a persistent
+/// background session.
 class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
   final AnalyticsPracticeTokenParam param;
   final IconData icon;
@@ -21,38 +26,26 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
     required this.close,
   });
 
-  Future<void> _onLeading(BuildContext context) async {
-    if (!AnalyticsPractice.bypassExitConfirmation) {
-      final l10n = L10n.of(context);
-      final result = await showOkCancelAlertDialog(
-        useRootNavigator: false,
-        context: context,
-        title: l10n.areYouSure,
-        okLabel: l10n.yes,
-        cancelLabel: l10n.cancel,
-        message: l10n.exitPractice,
-      );
-      if (result != OkCancelResult.ok) return;
-    }
-    AnalyticsPractice.bypassExitConfirmation = true;
-    if (context.mounted) close();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
     final type = param.constructType;
-    return PanelCardWithHeader(
-      title: l10n.practice,
-      icon: icon,
-      onLeading: () => _onLeading(context),
-      tooltip: tooltip,
-      child: Navigator(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey("${type.name}_analytics_practice_page")
-            .key,
-        onGenerateRoute: (_) =>
-            MaterialPageRoute(builder: (_) => AnalyticsPractice(type: type)),
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).practice),
+      container: true,
+      child: PanelCard(
+        child: Navigator(
+          key: MatrixState.pAnyState
+              .layerLinkAndKey("${type.name}_analytics_practice_page")
+              .key,
+          onGenerateRoute: (_) => MaterialPageRoute(
+            builder: (_) => AnalyticsPractice(
+              type: type,
+              closeIcon: icon,
+              closeTooltip: tooltip,
+              close: close,
+            ),
+          ),
+        ),
       ),
     );
   }

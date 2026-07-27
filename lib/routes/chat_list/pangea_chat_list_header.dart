@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The chat list's search FIELD row, extracted so two hosts can render it:
 /// the legacy [PangeaChatListHeader] (always-on when the list is long) and
@@ -35,53 +36,28 @@ class PangeaChatListSearchField extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: AnimatedSize(
         duration: FluffyThemes.animationDuration,
-        child: TextField(
+        child: PangeaSearchBar(
           controller: controller.searchController,
-          focusNode: controller.searchFocusNode,
-          autofocus: autofocus,
-          textInputAction: TextInputAction.search,
           onChanged: (text) =>
               controller.onSearchEnter(text, globalSearch: globalSearch),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: theme.colorScheme.secondaryContainer,
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(99),
-            ),
-            contentPadding: EdgeInsets.zero,
-            hintText: L10n.of(context).search,
-            hintStyle: TextStyle(
-              color: theme.colorScheme.onPrimaryContainer,
-              fontWeight: FontWeight.normal,
-            ),
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            // With a host-owned close ([onClose]) the leading control always
-            // dismisses: it clears any active search AND collapses the row.
-            // Legacy hosts keep the search-vs-cancel toggle.
-            prefixIcon: onClose != null
-                ? IconButton(
-                    tooltip: L10n.of(context).cancel,
-                    icon: const Icon(Icons.close_outlined),
-                    onPressed: _close,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  )
-                : controller.isSearchMode
-                ? IconButton(
-                    tooltip: L10n.of(context).cancel,
-                    icon: const Icon(Icons.close_outlined),
-                    onPressed: controller.cancelSearch,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  )
-                : IconButton(
-                    tooltip: L10n.of(context).search,
-                    onPressed: controller.startSearch,
-                    icon: Icon(
-                      Icons.search_outlined,
-                      color: theme.colorScheme.onPrimaryContainer,
-                    ),
-                  ),
-          ),
+          labelText: L10n.of(context).searchChatsHint,
+          focusNode: controller.searchFocusNode,
+          autofocus: autofocus,
+          suffixIcon: onClose != null
+              ? IconButton(
+                  tooltip: L10n.of(context).cancel,
+                  icon: const Icon(Icons.close_outlined),
+                  onPressed: _close,
+                  color: theme.colorScheme.onPrimaryContainer,
+                )
+              : controller.isSearchMode
+              ? IconButton(
+                  tooltip: L10n.of(context).cancel,
+                  icon: const Icon(Icons.close_outlined),
+                  onPressed: controller.cancelSearch,
+                  color: theme.colorScheme.onPrimaryContainer,
+                )
+              : null,
         ),
       ),
     );

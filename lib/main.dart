@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,17 @@ void main() async {
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
   // widget bindings are initialized already.
   WidgetsFlutterBinding.ensureInitialized();
+
+  // #Pangea
+  // Path URLs, not hash URLs. The router must read the real path at boot:
+  // the inbound contracts (`/<code>` join links, `/<uuid>` activity links —
+  // routing.instructions.md) arrive as paths, and under the default hash
+  // strategy the initial route is always `/`, leaving external links to a
+  // post-frame app_links replay that RACES the logged-out login bounce
+  // (joining-courses.instructions.md). CloudFront serves the SPA shell for
+  // every path (the SPA index fallback), so a direct path load always boots.
+  // No-op off web.
+  usePathUrlStrategy();
 
   // #Pangea
   try {
@@ -135,6 +147,20 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
 
   // Preload first client
   final firstClient = clients.firstOrNull;
+
+  // #Pangea
+  // Stamp the GA user id as early as possible — before the rooms/account-data
+  // sync awaits below, which can be slow on a cold start. Otherwise
+  // early-session events (session_start, first screen views) fire with only
+  // the pseudonymous device id, which GA4 surfaces as a bare number (#7789).
+  // userID is restored from local storage by getClients(), so it is already
+  // known here. The post-sync call further down re-affirms it and clears it if
+  // the staging/prod mismatch check logs the client out.
+  await GoogleAnalytics.analyticsUserUpdate(
+    clients.firstWhereOrNull((c) => c.isLogged())?.userID,
+  );
+  // Pangea#
+
   await firstClient?.roomsLoading;
   await firstClient?.accountDataLoading;
 

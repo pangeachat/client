@@ -1,0 +1,201 @@
+name: Notify Matrix — Build/Deploy
+# Local copy of pangeachat/.github's notify-matrix-deploy.yaml. This repo is
+# public, and GitHub does not allow public repos to call reusable workflows
+# from private repos, so the org workflow can't be referenced here (same
+# constraint as sygnal, which inlines these steps). Keep in sync with the org
+# workflow when it changes. One deliberate divergence: a release_body with no
+# template sections is treated entirely as the Summary (see parse step).
+
+on:
+  workflow_call:
+    inputs:
+      service_name:
+        description: "Human-readable service name (e.g., '2-Step Choreographer')"
+        required: true
+        type: string
+      version:
+        description: "Version tag (e.g., 'v1.32.0')"
+        required: true
+        type: string
+      release_body:
+        description: "Full release notes body (markdown). Summary and To Test sections are extracted."
+        required: false
+        type: string
+        default: ""
+      headline:
+        description: "Phrase following '<service> <version>' in the message (e.g., 'uploaded to the Play Store internal track')"
+        required: false
+        type: string
+        default: "deployed to production"
+    secrets:
+      aws_role_arn:
+        description: "IAM role ARN to assume via OIDC for fetching Matrix credentials from Secrets Manager"
+        required: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Extract Summary and To Test sections
+        id: parse
+        env:
+          RELEASE_BODY: ${{ inputs.release_body }}
+          SERVICE_NAME: ${{ inputs.service_name }}
+          VERSION: ${{ inputs.version }}
+          HEADLINE: ${{ inputs.headline }}
+        shell: bash
+        run: |
+          python3 << 'PYEOF'
+          import html, os, re
+
+          body = os.environ.get("RELEASE_BODY", "")
+          service = os.environ["SERVICE_NAME"]
+          version = os.environ["VERSION"]
+          headline = os.environ.get("HEADLINE") or "deployed to production"
+
+          def extract_section(text, heading):
+              pattern = rf"^## {re.escape(heading)}\s*\n(.*?)(?=^## |\Z)"
+              match = re.search(pattern, text, re.MULTILINE | re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def md_to_html(text):
+              """Minimal markdown-to-HTML for release notes."""
+              h = html.escape(text)
+              # Convert **bold** to <strong>
+              h = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', h)
+              # Convert task list checkboxes: "- [ ] item" → task list HTML
+              def replace_tasklist(m):
+                  items = re.findall(r'^[-*]\s+\[[ x]\]\s+(.+)$', m.group(0), re.MULTILINE)
+                  li = "".join(f'<li class="task-list-item"><input type="checkbox"></input>{i}</li>' for i in items)
+                  return f'<ul class="contains-task-list">{li}</ul>'
+              h = re.sub(r'(?:^[-*]\s+\[[ x]\]\s+.+$\n?)+', replace_tasklist, h, flags=re.MULTILINE)
+              # Convert numbered lists: "1. item" → "<ol><li>item</li></ol>"
+              def replace_ol(m):
+                  items = re.findall(r'^\d+\.\s+(.+)$', m.group(0), re.MULTILINE)
+                  li = "".join(f"<li>{i}</li>" for i in items)
+                  return f"<ol>{li}</ol>"
+              h = re.sub(r'(?:^\d+\.\s+.+$\n?)+', replace_ol, h, flags=re.MULTILINE)
+              # Convert bullet lists: "- item" → "<ul><li>item</li></ul>"
+              def replace_ul(m):
+                  items = re.findall(r'^[-*]\s+(.+)$', m.group(0), re.MULTILINE)
+                  li = "".join(f"<li>{i}</li>" for i in items)
+                  return f"<ul>{li}</ul>"
+              h = re.sub(r'(?:^[-*]\s+.+$\n?)+', replace_ul, h, flags=re.MULTILINE)
+              # Paragraphs: double newline → <br/><br/>
+              h = h.replace("\n\n", "<br/><br/>")
+              # Single newline → <br/>
+              h = h.replace("\n", "<br/>")
+              return h
+
+          summary = extract_section(body, "Summary")
+          to_test = extract_section(body, "To Test")
+
+          # Local divergence from the org workflow: a non-empty body with no
+          # template sections (e.g. the free-text notes field on manual
+          # mobile-build dispatches) is treated as the Summary.
+          if body.strip() and not summary and not to_test:
+              summary = body.strip()
+
+          # Plain text (markdown) — fallback for clients without HTML support
+          plain = f"\U0001f680 **{service} {version}** {headline}"
+          if summary:
+              plain += f"\n\n**Summary**\n{summary}"
+          if to_test:
+              # Convert numbered items to markdown checkboxes for plain text
+              to_test_plain = re.sub(r'^\d+\.\s+', '- [ ] ', to_test, flags=re.MULTILINE)
+              plain += f"\n\n**To Test**\n{to_test_plain}"
+
+          # HTML — what Matrix clients actually render
+          h = f"\U0001f680 <strong>{html.escape(service)} {html.escape(version)}</strong> {html.escape(headline)}"
+          if summary:
+              h += f"<br/><br/><strong>Summary</strong><br/>{md_to_html(summary)}"
+          if to_test:
+              h += f"<br/><br/><strong>To Test</strong><br/>{md_to_html(to_test)}"
+
+          with open("/tmp/matrix_message.txt", "w") as f:
+              f.write(plain)
+          with open("/tmp/matrix_message.html", "w") as f:
+              f.write(h)
+          PYEOF
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ secrets.aws_role_arn }}
+          aws-region: us-east-1
+
+      - name: Login to Matrix
+        id: login
+        shell: bash
+        run: |
+          # Fetch credentials from Secrets Manager and login in one Python call (avoids shell interpolation)
+          RESPONSE=$(python3 -c "
+          import json, subprocess
+          creds = json.loads(subprocess.check_output([
+              'aws', 'secretsmanager', 'get-secret-value',
+              '--secret-id', '/deployment-alerts/matrix-credentials',
+              '--query', 'SecretString', '--output', 'text'
+          ]))
+          payload = json.dumps({
+              'type': 'm.login.password',
+              'identifier': {'type': 'm.id.user', 'user': creds['username']},
+              'password': creds['password']
+          })
+          print(payload)
+          " | curl -s -X POST "https://matrix-client.matrix.org/_matrix/client/v3/login" \
+            -H "Content-Type: application/json" \
+            -d @-)
+
+          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token // empty')
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Matrix login failed: $RESPONSE"
+            exit 1
+          fi
+
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Matrix room
+        shell: bash
+        run: |
+          # Build JSON payload with separate plain-text body and HTML formatted_body
+          python3 -c "
+          import json
+          plain = open('/tmp/matrix_message.txt').read().strip()
+          html = open('/tmp/matrix_message.html').read().strip()
+          payload = {
+              'msgtype': 'm.text',
+              'body': plain,
+              'format': 'org.matrix.custom.html',
+              'formatted_body': html
+          }
+          with open('/tmp/matrix_payload.json', 'w') as f:
+              json.dump(payload, f)
+          "
+
+          # Generate a unique transaction ID
+          TXN_ID="deploy-$(date +%s%N)"
+
+          HTTP_CODE=$(curl -s -o /tmp/matrix_response.txt -w "%{http_code}" \
+            -X PUT "https://matrix-client.matrix.org/_matrix/client/v3/rooms/!puIqvGlZFhnkcBNgmd:matrix.org/send/m.room.message/$TXN_ID" \
+            -H "Authorization: Bearer ${{ steps.login.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d @/tmp/matrix_payload.json)
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "Message posted to Matrix room (HTTP $HTTP_CODE)"
+          else
+            echo "::error::Failed to post to Matrix (HTTP $HTTP_CODE): $(cat /tmp/matrix_response.txt)"
+            exit 1
+          fi
+
+      - name: Logout
+        if: always() && steps.login.outputs.token
+        shell: bash
+        run: |
+          curl -s -X POST "https://matrix-client.matrix.org/_matrix/client/v3/logout" \
+            -H "Authorization: Bearer ${{ steps.login.outputs.token }}" || true

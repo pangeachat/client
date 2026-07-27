@@ -2712,6 +2712,8 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Open",
     "@open": {},
+    "ongoing": "Ongoing",
+    "@ongoing": {},
     "waitingForServer": "Waiting for server...",
     "@waitingForServer": {},
     "newChatRequest": "📩 New chat request",
@@ -3027,6 +3029,8 @@
     "getAccess": "Subscribe now!",
     "subscriptionDesc": "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.",
     "subscriptionManagement": "Subscription Management",
+    "subscriptionsNotAvailableInApp": "Subscriptions can't be purchased in the app",
+    "subscribeOnTheWeb": "You can subscribe on the web at pangea.chat",
     "currentSubscription": "Current Subscription",
     "cancelSubscription": "Cancel your subscription",
     "selectYourPlan": "Select Your Plan",
@@ -3790,7 +3794,6 @@
     },
     "activityFinishedMessage": "All Finished!",
     "endForAll": "End for all",
-    "newCourse": "New course",
     "numModules": "{num} modules",
     "@numModules": {
         "type": "int",
@@ -4256,6 +4259,7 @@
     "youLeftTheChat": "🚪 You left the chat",
     "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
     "exitPractice": "Your practice session progress won't be saved.",
+    "endPractice": "End practice",
     "practiceGrammar": "Practice grammar",
     "notEnoughToPractice": "Send more messages to unlock practice",
     "constructUseCorGCDesc": "Correct grammar category practice",
@@ -4360,7 +4364,7 @@
     "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
     "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
     "learningAnalytics": "Learning analytics",
-    "searchLanguagesHint": "I am learning...",
+    "searchLanguagesHint": "Search languages",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
@@ -4490,6 +4494,7 @@
     },
     "suggestion": "Pick the best Suggestion",
     "completeActivityButton": "I'm done!",
+    "activityActions": "Activity actions",
     "shorterName": "Please limit name length to 50 characters or fewer.",
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
@@ -4644,6 +4649,7 @@
         }
     },
     "closeAddCoursePage": "Close add course page",
+    "constructUseSugDesc": "Accepted suggestions",
     "mostPopular": "Most popular",
     "mostSavings": "Most savings",
     "enterDiscountCode": "Enter discount code",
@@ -4713,5 +4719,58 @@
     },
     "cancelDescriptionWithoutRenewalDate": "Your subscription will be active until it’s renewal date, then deactivate. You’ll retain analytics but be unable to use pro features.",
     "change": "Change",
-    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?"
+    "deactivateSubscribedAccountWarning": "This will deactivate your user account and cancel your subscription. This can not be undone! Are you sure?",
+    "bodyLabel": "{page} options",
+    "@bodyLabel": {
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
+    "openDM": "Open direct message",
+    "openNewTab": "Open in new tab",
+    "viewProfileImageLabel": "View profile image",
+    "profileImageLabel": "Profile image",
+    "actionsLabel": "Actions",
+    "colorListLabel": "Color list",
+    "chatAppearanceStyleLabel": "Chat appearance with chosen style",
+    "volumeLabel": "Volume",
+    "listLabel": "{description} list",
+    "@listLabel": {
+        "placeholders": {
+            "description": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordFormLabel": "Change password form",
+    "searchCountriesHint": "Search countries",
+    "searchVocabHint": "Search vocab",
+    "searchUsersHint": "Search users",
+    "searchMessagesHint": "Search messages",
+    "searchChatsHint": "Search chats",
+    "searchActivitiesHint": "Search activities",
+    "newCourseWithoutTitle": "Start course",
+    "newCourseWithTitle": "Start \"{title}\"",
+    "@newCourseWithTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "joinCourseWithTitle": "Join \"{title}\"",
+    "@joinCourseWithTitle": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "searchCoursePlans": "Search course plans",
+    "searchPublicCourses": "Search public courses",
+    "closeSearch": "Close search",
+    "closeArchive": "Close archive",
+    "waitingToFillOneRole": "Waiting to fill 1 role..."
 }

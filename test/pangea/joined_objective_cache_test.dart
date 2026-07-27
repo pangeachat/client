@@ -3,8 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
-CourseLoOutline _outline(List<String> los) =>
-    CourseLoOutline(orderedLoIds: los, activityIdsByLo: const {});
+CourseLoOutline _outline(List<String> los, {String courseId = 'c1'}) =>
+    CourseLoOutline(
+      courseId: courseId,
+      orderedLoIds: los,
+      activityIdsByLo: const {},
+    );
 
 void main() {
   group('JoinedObjectiveCache.rebuild', () {

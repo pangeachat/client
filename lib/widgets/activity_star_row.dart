@@ -9,12 +9,18 @@ class ActivityStarRow extends StatelessWidget {
   final double iconSize;
   final bool condensed;
 
+  /// Colour for the empty (unearned) star borders and the condensed count text.
+  /// Defaults to [AppConfig.grayText]; pass white when the row sits on a
+  /// coloured (Ongoing/Open) card so the borders read against the fill.
+  final Color? emptyColor;
+
   const ActivityStarRow({
     super.key,
     required this.total,
     required this.earned,
     this.iconSize = 16,
     this.condensed = false,
+    this.emptyColor,
   });
 
   @override
@@ -26,7 +32,10 @@ class ActivityStarRow extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 2.0,
         children: [
-          Text("$filled/$total", style: TextStyle(fontSize: iconSize)),
+          Text(
+            "$filled/$total",
+            style: TextStyle(fontSize: iconSize, color: emptyColor),
+          ),
           Icon(Icons.star, size: iconSize, color: AppConfig.gold),
         ],
       );
@@ -41,7 +50,9 @@ class ActivityStarRow extends StatelessWidget {
           (i) => Icon(
             i < filled ? Icons.star : Icons.star_border,
             size: iconSize,
-            color: i < filled ? AppConfig.gold : AppConfig.grayText,
+            color: i < filled
+                ? AppConfig.gold
+                : (emptyColor ?? AppConfig.grayText),
           ),
         ),
       ),

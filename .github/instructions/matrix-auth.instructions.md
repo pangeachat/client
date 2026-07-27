@@ -67,12 +67,11 @@ echo "$MATRIX_TOKEN"
 
 ### Choreo API
 
-Choreo requires **both** the Matrix token and the API key (from `CHOREO_API_KEY` in `client/.env`):
+Choreo gates on the Matrix token alone — it validates the bearer via Synapse `whoami` plus the RevenueCat entitlement check, and reads no API-key header:
 
 ```sh
 curl -s 'https://api.staging.pangea.chat/choreo/<endpoint>' \
-  -H "Authorization: Bearer $MATRIX_TOKEN" \
-  -H 'api-key: <CHOREO_API_KEY>'
+  -H "Authorization: Bearer $MATRIX_TOKEN"
 ```
 
 ### Synapse Client-Server API
@@ -92,5 +91,5 @@ The test account is **not** a server admin. For admin endpoints, use the bot acc
 |-------|-------|-----|
 | `M_FORBIDDEN` | Token expired or invalidated | Re-run the login curl to get a fresh token |
 | `M_UNKNOWN_TOKEN` | Token from a different homeserver or old session | Confirm you're hitting `matrix.staging.pangea.chat` |
-| `Could not validate Matrix token` from choreo | Missing `api-key` header | Add both `Authorization` and `api-key` headers |
+| `Could not validate Matrix token` from choreo | Choreo's homeserver rejected the bearer — wrong environment's token, or expired | Confirm the token's homeserver matches the choreo you're calling, then re-run the login curl |
 | `M_USER_DEACTIVATED` | Test account was deactivated | Re-register or use a different test account |

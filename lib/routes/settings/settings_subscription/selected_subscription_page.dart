@@ -74,57 +74,53 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
                   ),
                 ),
               ),
-              SafeArea(
-                child: SingleChildScrollView(
+              SingleChildScrollView(
+                child: Container(
+                  alignment: Alignment.topCenter,
                   child: Container(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      padding: EdgeInsets.only(
-                        left: 16.0,
-                        right: 16.0,
-                        bottom: 16.0,
+                    padding: EdgeInsets.only(
+                      left: 16.0,
+                      right: 16.0,
+                      bottom: 16.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surface,
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    constraints: BoxConstraints(maxWidth: 400),
+                    child: switch (productsState) {
+                      AsyncLoading() || AsyncIdle() => Center(
+                        child: CircularProgressIndicator.adaptive(),
                       ),
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        borderRadius: BorderRadius.circular(24.0),
+                      AsyncError() => Center(
+                        child: ErrorIndicator(
+                          message: L10n.of(context).oopsSomethingWentWrong,
+                        ),
                       ),
-                      constraints: BoxConstraints(maxWidth: 400),
-                      child: switch (productsState) {
-                        AsyncLoading() || AsyncIdle() => Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
-                        AsyncError() => Center(
-                          child: ErrorIndicator(
-                            message: L10n.of(context).oopsSomethingWentWrong,
-                          ),
-                        ),
-                        AsyncLoaded(value: final products) => () {
-                          final plan = products.firstWhereOrNull(
-                            (p) => p.planId == widget.planId,
-                          );
+                      AsyncLoaded(value: final products) => () {
+                        final plan = products.firstWhereOrNull(
+                          (p) => p.planId == widget.planId,
+                        );
 
-                          if (plan == null) {
-                            return Center(
-                              child: ErrorIndicator(
-                                message: L10n.of(
-                                  context,
-                                ).oopsSomethingWentWrong,
-                              ),
-                            );
-                          }
-
-                          return SelectedSubscriptionView(
-                            plan,
-                            onSubscribe: () => processCheckoutRequest(
-                              CheckoutRequest(
-                                userID: Matrix.of(context).client.userID!,
-                                planId: widget.planId,
-                              ),
+                        if (plan == null) {
+                          return Center(
+                            child: ErrorIndicator(
+                              message: L10n.of(context).oopsSomethingWentWrong,
                             ),
                           );
-                        }(),
-                      },
-                    ),
+                        }
+
+                        return SelectedSubscriptionView(
+                          plan,
+                          onSubscribe: () => processCheckoutRequest(
+                            CheckoutRequest(
+                              userID: Matrix.of(context).client.userID!,
+                              planId: widget.planId,
+                            ),
+                          ),
+                        );
+                      }(),
+                    },
                   ),
                 ),
               ),

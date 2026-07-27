@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -22,6 +23,7 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -156,101 +158,114 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ],
           ),
-          body: SafeArea(
-            child: controller.loading
-                ? const Center(child: CircularProgressIndicator.adaptive())
-                // Transient fetch failure — retryable, never the archived view
-                // or the "no longer supported" notice (the fallback ladder in
-                // activities.instructions.md engages only on a confirmed 404).
-                : controller.error != null
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: ErrorIndicator(
-                        message: L10n.of(context).activityLoadFailed,
-                      ),
-                    ),
-                  )
-                // Confirmed removed with no plan recoverable from room state:
-                // archived body from role/goal state alone.
-                : activity == null && controller.activityRemoved
-                ? _ArchivedSessionFallbackBody(controller)
-                : activity == null
-                ? Center(
+          body: controller.loading
+              ? const Center(child: CircularProgressIndicator.adaptive())
+              // Transient fetch failure — retryable, never the archived view
+              // or the "no longer supported" notice (the fallback ladder in
+              // activities.instructions.md engages only on a confirmed 404).
+              : controller.error != null
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
                     child: ErrorIndicator(
-                      message: L10n.of(context).activityNotFound,
+                      message: L10n.of(context).activityLoadFailed,
                     ),
-                  )
-                : Column(
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          controller: controller.scrollController,
-                          child: Column(
-                            children: [
-                              ActivityStartHero(
-                                controller: controller,
-                                sessionController: sessionController,
-                                activity: activity,
-                              ),
-                              if (sessionController.showDescriptionSection)
-                                Center(
-                                  child: Container(
-                                    constraints: const BoxConstraints(
-                                      maxWidth: 600.0,
-                                    ),
-                                    padding: const EdgeInsets.fromLTRB(
-                                      16.0,
-                                      50.0,
-                                      16.0,
-                                      0.0,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      spacing: 12.0,
-                                      children: [
-                                        Text(
-                                          activity.description,
-                                          style: theme.textTheme.bodyLarge,
+                  ),
+                )
+              // Confirmed removed with no plan recoverable from room state:
+              // archived body from role/goal state alone.
+              : activity == null && controller.activityRemoved
+              ? _ArchivedSessionFallbackBody(controller)
+              : activity == null
+              ? Center(
+                  child: ErrorIndicator(
+                    message: L10n.of(context).activityNotFound,
+                  ),
+                )
+              : Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        controller: controller.scrollController,
+                        child: Column(
+                          children: [
+                            ActivityStartHero(
+                              controller: controller,
+                              sessionController: sessionController,
+                              activity: activity,
+                            ),
+                            if (sessionController.showDescriptionSection)
+                              Center(
+                                child: Container(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 600.0,
+                                  ),
+                                  padding: const EdgeInsets.fromLTRB(
+                                    16.0,
+                                    50.0,
+                                    16.0,
+                                    0.0,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    spacing: 12.0,
+                                    children: [
+                                      Linkify(
+                                        text: activity.description,
+                                        options: const LinkifyOptions(
+                                          humanize: false,
                                         ),
-                                        if (activity.vocab.isNotEmpty)
-                                          ActivityVocabWidget(
-                                            key: ValueKey(
-                                              'activity-start-vocab-${activity.activityId}',
+                                        useMouseRegion: true,
+                                        style: theme.textTheme.bodyLarge,
+                                        linkStyle: theme.textTheme.bodyLarge
+                                            ?.copyWith(
+                                              color: theme.colorScheme.primary,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              decorationColor:
+                                                  theme.colorScheme.primary,
                                             ),
-                                            vocab: activity.vocab,
-                                            langCode:
-                                                activity.req.targetLanguage,
-                                            targetId: 'activity-start-vocab',
-                                            usedVocab: null,
-                                            activityLangCode:
-                                                activity.req.targetLanguage,
+                                        onOpen: (link) => UrlLauncher(
+                                          context,
+                                          link.url,
+                                        ).launchUrl(),
+                                      ),
+                                      if (activity.vocab.isNotEmpty)
+                                        ActivityVocabWidget(
+                                          key: ValueKey(
+                                            'activity-start-vocab-${activity.activityId}',
                                           ),
-                                      ],
-                                    ),
+                                          vocab: activity.vocab,
+                                          langCode: activity.req.targetLanguage,
+                                          targetId: 'activity-start-vocab',
+                                          usedVocab: null,
+                                          activityLangCode:
+                                              activity.req.targetLanguage,
+                                        ),
+                                    ],
                                   ),
                                 ),
-                              Container(
-                                constraints: const BoxConstraints(
-                                  maxWidth: 600.0,
-                                ),
-                                padding: const EdgeInsets.all(12.0),
-                                child: ActivitySessionBottomContent(
-                                  sessionController,
-                                ),
                               ),
-                            ],
-                          ),
+                            Container(
+                              constraints: const BoxConstraints(
+                                maxWidth: 600.0,
+                              ),
+                              padding: const EdgeInsets.all(12.0),
+                              child: ActivitySessionBottomContent(
+                                sessionController,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      ActivitySessionButtons(
-                        controller: controller,
-                        sessionController: sessionController,
-                      ),
-                    ],
-                  ),
-          ),
+                    ),
+                    ActivitySessionButtons(
+                      controller: controller,
+                      sessionController: sessionController,
+                    ),
+                  ],
+                ),
         );
       },
     );

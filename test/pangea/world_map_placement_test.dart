@@ -19,6 +19,10 @@ void main() {
     Rect safeArea = viewport,
     int largeBudget = 3,
     Set<String> dismissedIds = const {},
+    // Defaults to "everyone eligible" so the fit/overlap/focus/dismissal tests
+    // below (which aren't testing state gating) are unaffected by the
+    // large-tier hard gate; tests of the gate itself pass a narrower set.
+    Set<String>? largeEligibleIds,
   }) => placeLargeCards(
     orderedCandidates: ordered ?? offsets.keys.toList(),
     focusedId: focusedId,
@@ -27,6 +31,7 @@ void main() {
     safeArea: safeArea,
     largeBudget: largeBudget,
     dismissedIds: dismissedIds,
+    largeEligibleIds: largeEligibleIds ?? offsets.keys.toSet(),
   );
 
   group('placeLargeCards — fit and overlap', () {
@@ -170,4 +175,42 @@ void main() {
       expect(r.largeIds, isEmpty);
     });
   });
+
+  group(
+    'placeLargeCards — large-tier hard gate (available/completed never large)',
+    () {
+      test('a non-eligible id is never placed large, however well it fits', () {
+        // 'a' fits fine geometrically and is even first in ranked order, but it's
+        // not in largeEligibleIds (e.g. an available/completed pin) — it must
+        // never place large. 'b' is eligible and back-fills the slot.
+        final r = place(
+          offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
+          largeEligibleIds: {'b'},
+        );
+        expect(r.largeIds, ['b']);
+      });
+
+      test('an empty eligible set places nothing regardless of fit/budget', () {
+        final r = place(
+          offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
+          largeBudget: 5,
+          largeEligibleIds: const {},
+        );
+        expect(r.largeIds, isEmpty);
+      });
+
+      test(
+        'a non-eligible focused pin is not placed despite focused-first',
+        () {
+          final r = place(
+            offsets: {'s': const Offset(200, 300), 'a': const Offset(600, 300)},
+            ordered: ['s', 'a'],
+            focusedId: 's',
+            largeEligibleIds: {'a'},
+          );
+          expect(r.largeIds, ['a']);
+        },
+      );
+    },
+  );
 }

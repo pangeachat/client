@@ -28,7 +28,10 @@ class SupportChatListTileState extends State<SupportChatListTile> {
 
     return ListTile(
       leading: Icon(Icons.help_outline_outlined),
-      trailing: const Icon(Icons.chat_bubble_outline),
+      trailing: Semantics(
+        label: L10n.of(context).openDM,
+        child: const Icon(Icons.chat_bubble_outline),
+      ),
       title: Text(L10n.of(context).chatWithSupport),
       onTap: _loading
           ? null

@@ -18,7 +18,7 @@ For the cross-service language list architecture, L1/L2 definitions, and CMS sch
 
 | Getter | Filter | Used for |
 |---|---|---|
-| `baseOptions` | All languages (no filter) | L1 / source / native language selection |
+| `baseOptions` | All languages minus same-script **regional** variants — English (US/UK), Spanish (Mexico), etc. are dropped; a genuinely different **writing system** (Traditional Chinese, Jawi Malay, Shahmukhi Punjabi) is kept | L1 / source / native language selection |
 | `targetOptions` | `element.l2` (i.e., `l2Support != L2SupportEnum.na`) | L2 / target / learning language selection |
 | `unlocalizedTargetOptions` | L2 filter + excludes regional variants (e.g., keeps "Portuguese" but not "Portuguese (Brazil)") | Course creation language filter |
 

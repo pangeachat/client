@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
+
 class CoursePlanFilter<T> extends StatefulWidget {
   final T? value;
   final List<T> items;
@@ -139,25 +142,15 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             ? DropdownSearchData(
                 searchController: _searchController,
                 searchInnerWidgetHeight: 50,
-                searchInnerWidget: Material(
-                  elevation: 4,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(14),
-                    topRight: Radius.circular(14),
+                searchInnerWidget: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 10,
-                    ),
-                    child: TextField(
-                      autofocus: true,
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: widget.searchHint,
-                      ),
-                    ),
+                  child: PangeaSearchBar(
+                    labelText: L10n.of(context).searchLanguagesHint,
+                    autofocus: true,
+                    controller: _searchController,
                   ),
                 ),
                 searchMatchFn: widget.searchMatchFn,

@@ -14,7 +14,9 @@ Nothing is locked, so the question is not "is this allowed?" but "where should t
 - **The ordered Mission sequences** of the learner's in-scope quests — their joined courses by default, or whatever the world map's quest filter selects — each quest's outline (ordered Mission ids + the activities under each), cached and rebuilt on course join/leave.
 - **The per-Mission star rollup** — a **star** is one orchestrator-awarded activity goal, read from awarded-goal state on the learner's own session rooms. Per activity, the learner's stars are their **best single session** (the most goals awarded to them in any one session of it — repeat sessions do not accumulate); the Mission total sums those per-activity bests across the Mission's distinct activities. Both rules are the org doc's satisfaction model. No server-side progression endpoint is needed: every session that earned a star is a room the client can read. (Same collectible pattern as vocab/grammar — see [analytics-system.instructions.md](analytics-system.instructions.md).)
 
-From those, the resolver finds each quest's **anchor (next) Mission**: the **first Mission in quest order whose star total is below the satisfaction threshold**; once every Mission is satisfied, the anchor falls back to the **lowest-star Mission**, so a completed quest keeps pointing at the learner's weakest area instead of going silent. When several quests are in scope it yields an anchor **per quest** plus the global per-Mission star totals; consumers preference still-unsatisfied Missions and **accumulate** across quests (so an activity advancing several quests' unfinished Missions ranks higher) — the resolver just supplies the anchors and totals, the weighting lives in the consumer (see the [world map](world-map.instructions.md) Priority matrix).
+From those, the resolver finds each quest's **anchor (next) Mission**: the **first Mission in quest order whose star total is below the satisfaction threshold**; once every Mission is satisfied, the anchor falls back to the **lowest-star Mission**, so a completed quest keeps pointing at the learner's weakest area instead of going silent. When several quests are in scope it yields, **per quest**, an anchor and that quest's own per-Mission star totals; consumers preference still-unsatisfied Missions and **accumulate** across quests (so an activity advancing several quests' unfinished Missions ranks higher) — the resolver just supplies the anchors and totals, the weighting lives in the consumer (see the [world map](world-map.instructions.md) Priority matrix).
+
+**Star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
 
 **Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
 
@@ -31,7 +33,7 @@ The teacher-overridable star threshold is part of the cross-repo rule (org doc);
 
 ## Star display on the course panel
 
-The course panel tells the learner how far along they are, at two grains, computed from the same resolver inputs (joined-course outlines + per-activity stars from session rooms) so the numbers can never disagree with the map.
+The course panel tells the learner how far along they are, at two grains, read from the same shared resolver the map uses — one answer, never re-derived per surface — **scoped to the course being viewed** (above). A course it can't resolve (a preview, or before the resolution lands) shows no star display rather than another course's numbers.
 
 Every displayed threshold is the **effective threshold**: the configured stars-to-unlock (teacher-overridable, default 10) clamped to the sum of earnable stars across the Mission's activities — the org doc's invariant that a Mission is always satisfiable from its content ([client#7663](https://github.com/pangeachat/client/issues/7663)). Earnable per activity is its goals-per-role count, falling back to the min across roles for plans predating the uniform-count generation invariant (org [`activities`](../../../.github/.github/instructions/activities.instructions.md) doc). The resolver computes the clamp; displays never re-derive it.
 
@@ -53,11 +55,22 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 3. **Ongoing** — 🟣 purple card with an "Ongoing" overlay tag on the top right in white text; same text-not-color-only rationale; the purple matches the ongoing map pin (V6).
 4. **Needs more participants to start** — 🔘 light gray card at 30% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
 
+## Per-course activity pinning
+
+The design — what a pin means, why it lives in course state and never the quest plan, attribution-level semantics — is the org doc's [Per-course activity pinning](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#per-course-activity-pinning). This doc records the client mechanics ([client#7748](https://github.com/pangeachat/client/issues/7748)):
+
+- The pin travels on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Mission id → pinned `activity_id` content ids). Null, a missing Mission key, or an empty list all mean unrestricted.
+- Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
+- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission unsatisfiable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
+- The resolver is **pin-unaware by construction**: star attribution and the effective-threshold clamp both derive from the outline's per-Mission activity sets, so a filtered outline scopes attribution and clamps against the pinned set with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
+- Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
+- The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
+
 ## Future Work
 
-File GitHub issues for these and link them here (use the `update-future-work` skill).
+File GitHub issues for these and link them here.
 
 - A persisted per-Mission star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc).
+- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities satisfy*, not *when Missions are reachable*.
 - Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
 - Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).

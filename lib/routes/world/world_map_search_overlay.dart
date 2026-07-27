@@ -4,6 +4,7 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
 /// Public so the map and this overlay share one vocabulary.
@@ -93,165 +94,149 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
     return Semantics(
       label: l10n.searchActivitiesLabel,
       container: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(99),
-            color: theme.colorScheme.surface,
-            child: Semantics(
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            PangeaSearchBar(
+              controller: _controller,
+              onChanged: widget.updateQuery,
+              labelText: l10n.mapSearchHint,
+              suffixIcon: searching
+                  ? IconButton(
+                      icon: const Icon(Icons.close),
+                      tooltip: l10n.clearSearch,
+                      onPressed: () => widget.updateQuery(''),
+                    )
+                  : null,
+            ),
+            const SizedBox(height: 8),
+            Semantics(
+              label: l10n.activityFilterButtonsLabel,
               container: true,
-              child: TextField(
-                controller: _controller,
-                onChanged: widget.updateQuery,
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  fillColor: theme.colorScheme.surface,
-                  labelText: l10n.mapSearchHint,
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: searching
-                      ? IconButton(
-                          icon: const Icon(Icons.close),
-                          tooltip: l10n.clearSearch,
-                          onPressed: () => widget.updateQuery(''),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    if (widget.l2Label != null) ...[
+                      FilterChip(
+                        selected: widget.filter.l2Only,
+                        label: Text(
+                          widget.filter.l2Only
+                              ? widget.l2Label!
+                              : l10n.mapFilterAllLanguages,
+                        ),
+                        avatar: const Icon(Icons.translate, size: 16),
+                        onSelected: (_) => widget.onToggleL2(),
+                      ),
+                      const SizedBox(width: 6),
+                    ],
+                    for (final level in LanguageLevelTypeEnum.values) ...[
+                      FilterChip(
+                        selected: widget.filter.cefrFilter.contains(level),
+                        label: Text(level.title(context)),
+                        onSelected: (_) => widget.toggleCefr(level),
+                      ),
+                      const SizedBox(width: 6),
+                    ],
+                    for (final c in MapCompletionFilter.values) ...[
+                      FilterChip(
+                        selected: widget.filter.completionFilter.contains(c),
+                        label: Text(_completionLabel(l10n, c)),
+                        onSelected: (_) => widget.toggleCompletion(c),
+                      ),
+                      const SizedBox(width: 6),
+                    ],
+                    if (widget.filter.canReset)
+                      ActionChip(
+                        avatar: const Icon(Icons.restart_alt, size: 16),
+                        label: Text(l10n.mapFilterReset),
+                        onPressed: widget.onReset,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            if (searching) ...[
+              const SizedBox(height: 8),
+              Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(12),
+                color: theme.colorScheme.surface,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxHeight: 320),
+                  child: widget.results.isEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Text(
+                            l10n.mapSearchNoResults,
+                            style: theme.textTheme.bodyMedium,
+                          ),
                         )
-                      : null,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(99),
-                    borderSide: BorderSide.none,
+                      : Semantics(
+                          label: l10n.filteredActivitiesLabel,
+                          container: true,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            itemCount: widget.results.length > _maxResults
+                                ? _maxResults
+                                : widget.results.length,
+                            itemBuilder: (context, i) {
+                              final card = widget.results[i];
+                              return ListTile(
+                                dense: true,
+                                leading: const Icon(Icons.star, size: 18),
+                                title: Text(
+                                  card.title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                subtitle: Text(
+                                  [card.l2, card.cefr]
+                                      .where((s) => s != null && s.isNotEmpty)
+                                      .join(' · '),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                onTap: () => widget.onResultTap(card),
+                              );
+                            },
+                          ),
+                        ),
+                ),
+              ),
+            ] else if (widget.emptyInView) ...[
+              const SizedBox(height: 8),
+              Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(12),
+                color: theme.colorScheme.surface,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        l10n.mapEmptyInView,
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                      const SizedBox(height: 8),
+                      if (widget.filter.l2Only && widget.l2Label != null)
+                        FilledButton.tonalIcon(
+                          icon: const Icon(Icons.translate, size: 16),
+                          label: Text(l10n.widenSearch),
+                          onPressed: widget.onWidenSearch,
+                        ),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Semantics(
-            label: l10n.activityFilterButtonsLabel,
-            container: true,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  if (widget.l2Label != null) ...[
-                    FilterChip(
-                      selected: widget.filter.l2Only,
-                      label: Text(
-                        widget.filter.l2Only
-                            ? widget.l2Label!
-                            : l10n.mapFilterAllLanguages,
-                      ),
-                      avatar: const Icon(Icons.translate, size: 16),
-                      onSelected: (_) => widget.onToggleL2(),
-                    ),
-                    const SizedBox(width: 6),
-                  ],
-                  for (final level in LanguageLevelTypeEnum.values) ...[
-                    FilterChip(
-                      selected: widget.filter.cefrFilter.contains(level),
-                      label: Text(level.title(context)),
-                      onSelected: (_) => widget.toggleCefr(level),
-                    ),
-                    const SizedBox(width: 6),
-                  ],
-                  for (final c in MapCompletionFilter.values) ...[
-                    FilterChip(
-                      selected: widget.filter.completionFilter.contains(c),
-                      label: Text(_completionLabel(l10n, c)),
-                      onSelected: (_) => widget.toggleCompletion(c),
-                    ),
-                    const SizedBox(width: 6),
-                  ],
-                  if (widget.filter.canReset)
-                    ActionChip(
-                      avatar: const Icon(Icons.restart_alt, size: 16),
-                      label: Text(l10n.mapFilterReset),
-                      onPressed: widget.onReset,
-                    ),
-                ],
-              ),
-            ),
-          ),
-          if (searching) ...[
-            const SizedBox(height: 8),
-            Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(12),
-              color: theme.colorScheme.surface,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 320),
-                child: widget.results.isEmpty
-                    ? Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Text(
-                          l10n.mapSearchNoResults,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      )
-                    : Semantics(
-                        label: l10n.filteredActivitiesLabel,
-                        container: true,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          itemCount: widget.results.length > _maxResults
-                              ? _maxResults
-                              : widget.results.length,
-                          itemBuilder: (context, i) {
-                            final card = widget.results[i];
-                            return ListTile(
-                              dense: true,
-                              leading: const Icon(Icons.star, size: 18),
-                              title: Text(
-                                card.title,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              subtitle: Text(
-                                [card.l2, card.cefr]
-                                    .where((s) => s != null && s.isNotEmpty)
-                                    .join(' · '),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              onTap: () => widget.onResultTap(card),
-                            );
-                          },
-                        ),
-                      ),
-              ),
-            ),
-          ] else if (widget.emptyInView) ...[
-            const SizedBox(height: 8),
-            Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(12),
-              color: theme.colorScheme.surface,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      l10n.mapEmptyInView,
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 8),
-                    if (widget.filter.l2Only && widget.l2Label != null)
-                      FilledButton.tonalIcon(
-                        icon: const Icon(Icons.translate, size: 16),
-                        label: Text(l10n.widenSearch),
-                        onPressed: widget.onWidenSearch,
-                      ),
-                  ],
-                ),
-              ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

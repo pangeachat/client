@@ -24,7 +24,7 @@ platform :android do
         track: "internal",
         json_key: "./keys.json"
       )
-    last_version = versions[0].to_i
+    last_version = versions.map(&:to_i).max
     Dir.chdir("../..") do
       re = /version:\s([0-9]*\.[0-9]*\.[0-9]*)\+[0-9]*/i
       config = File.read("./pubspec.yaml")
@@ -43,7 +43,7 @@ platform :android do
         track: "internal",
         json_key: "./keys.json"
       )
-    last_version = versions[0].to_i
+    last_version = versions.map(&:to_i).max
     upload_to_play_store(
       track: 'internal',
       aab: '../build/app/outputs/bundle/release/app-release.aab',

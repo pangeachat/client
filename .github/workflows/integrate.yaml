@@ -72,6 +72,20 @@ jobs:
       - name: Accessible names floor-check
         run: python3 scripts/a11y_floor_check.py
 
+  # An e2e spec addresses widgets by their accessible name, read from intl_en.arb.
+  # Nothing ties that key back to a widget, so deleting the widget leaves the key —
+  # and the spec — compiling but unmatchable. Rot then surfaces weeks later as a red
+  # nightly run against deployed staging, un-attributable to the commit that caused
+  # it. This fails on the PR that removes the widget, where it is cheap to fix.
+  # Static and partial by nature: it catches a key with no live renderer, not a key
+  # rendered under a different role. Pure Node, no Flutter, no browser, no staging.
+  e2e_locator_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: e2e locator keys still render
+        run: node e2e/check-locator-keys.js
+
   build_debug_apk:
     environment: staging
     runs-on: ubuntu-latest

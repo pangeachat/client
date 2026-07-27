@@ -4,7 +4,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -91,7 +90,16 @@ class WorldMapPinsManager {
   /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
   List<ActivitySessionFacts> _discoveredSessionFacts = const [];
 
+  /// Course members available to fill activity roles in the currently
+  /// course-scoped map (the start page's invite math via
+  /// [CoursePlanRoomExtension.availableActivityParticipants]), or null on the
+  /// world map / an unjoined course. Drives dimming of `available` pins whose
+  /// role count exceeds it; course-only, so cleared when leaving course scope.
+  int? _courseAvailableParticipants;
+
   Map<String, PinSignals> get signals => _signals;
+
+  int? get courseAvailableParticipants => _courseAvailableParticipants;
 
   ProgressionResolution get progression => _progression;
 
@@ -137,6 +145,18 @@ class WorldMapPinsManager {
     }
   }
 
+  /// Refresh [courseAvailableParticipants] from the scoped joined [courseRoom]
+  /// (the count that dims `available` pins the learner can't yet start).
+  Future<void> loadCourseAvailableParticipants(Room courseRoom) async {
+    _courseAvailableParticipants = await courseRoom
+        .availableActivityParticipants();
+  }
+
+  /// Clear the participant count (world map, or an unjoined course) so no pins dim.
+  void clearCourseAvailableParticipants() {
+    _courseAvailableParticipants = null;
+  }
+
   /// Best-effort pinged detection: scan joined course spaces' recent messages
   /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
   /// A ping leaves no persistent room state, so this proxy is intentionally
@@ -158,25 +178,6 @@ class WorldMapPinsManager {
           if (id is String && id.isNotEmpty) pinged.add(id);
         }
         timeline.cancelSubscriptions();
-
-        // A recruit ping is an `m.text` posted to the course space, so it bumps
-        // the space's unread count — but the world UI has no course-space
-        // timeline to open and read it, leaving the badge stuck (#7366). The map
-        // is where the ping actually surfaces (the pinned pin, which *does* show
-        // which activity), so the raw badge is redundant: clear it once we've
-        // consumed the ping here. Course spaces carry only structural events and
-        // pings (nothing else writes to them), so this never hides real content.
-        // `markedUnread` (a manual mark) is left alone.
-        if (space.notificationCount > 0) {
-          final last = space.lastEvent;
-          if (last != null) {
-            await space.setReadMarker(
-              last.eventId,
-              mRead: last.eventId,
-              public: AppSettings.sendPublicReadReceipts.value,
-            );
-          }
-        }
       } catch (_) {
         // A space whose timeline won't load just contributes no pings.
       }
@@ -235,6 +236,9 @@ class WorldMapPinsManager {
         if (_discoveredSessionFacts.isNotEmpty) {
           _discoveredSessionFacts = const [];
         }
+        // No session rooms left in any joined course → drop stale previews so a
+        // card whose open session vanished stops reading it as Open.
+        DiscoveredSessionsCache.instance.clear();
         return;
       }
 
@@ -397,7 +401,10 @@ class WorldMapPinsManager {
     resolveProgression();
   }
 
-  Future<void> loadCourseScopedPins(String courseId) async {
+  Future<void> loadCourseScopedPins(
+    String courseId, {
+    Map<String, List<String>>? pinnedActivitiesByObjective,
+  }) async {
     final questResult = await QuestRepo.quest(courseId);
     final quest = questResult.result;
     if (quest == null) {
@@ -415,7 +422,39 @@ class WorldMapPinsManager {
       return;
     }
 
-    _pins = activityCards;
+    _pins = _restrictCards(activityCards, pinnedActivitiesByObjective);
+  }
+
+  /// Course-scoped marker filter for per-course activity pinning (org quests
+  /// doc, client#7748): a card stays when at least one of its Mission refs
+  /// allows it — the same fail-open rule as the outline restriction, via the
+  /// shared [effectivePinnedActivityIds]. Null pins (not joined / unset) show
+  /// everything; the WORLD-scoped map is deliberately never filtered.
+  static List<QuestActivityCard> _restrictCards(
+    List<QuestActivityCard> cards,
+    Map<String, List<String>>? pinnedByObjective,
+  ) {
+    if (pinnedByObjective == null || pinnedByObjective.isEmpty) return cards;
+    final availableByLo = <String, Set<String>>{};
+    for (final card in cards) {
+      for (final loId in card.learningObjectiveRefs) {
+        (availableByLo[loId] ??= <String>{}).add(card.activityId);
+      }
+    }
+    final allowedByLo = {
+      for (final entry in availableByLo.entries)
+        entry.key: effectivePinnedActivityIds(
+          entry.value,
+          pinnedByObjective[entry.key],
+        ),
+    };
+    return cards
+        .where(
+          (card) => card.learningObjectiveRefs.any(
+            (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
+          ),
+        )
+        .toList();
   }
 
   Future<void> loadWorldScopedPins({

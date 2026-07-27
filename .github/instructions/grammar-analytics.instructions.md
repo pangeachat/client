@@ -52,7 +52,7 @@ L1-language titles and descriptions come from the server, not from client-side l
 - per-value `title` in user_l1 (e.g. "현재 시제" for Pres)
 - per-value `description` in user_l1 (2–3 sentence pedagogical explanation)
 
-Cache-miss translation rows are generated on demand via the panel-eval cascade (canonical doc score gates publication at ≥ 8; translation score gates per-L1 visibility independently — low-score Korean falls back to source_l1 text). The legacy `get_grammar_copy.dart` hardcoded copy and matching `grammarCopy*` L10n keys are obsolete under the new model and slated for removal (Phase 3 of #6660).
+Cache-miss translation rows are generated on demand via the panel-eval cascade (canonical doc score gates publication at ≥ 8; translation score gates per-L1 visibility independently — low-score Korean falls back to source_l1 text). That ≥ 8 publication bar is an **async_eval** rubric score. The structural `synchronous_eval` gate tops out at 7 ("Clean") and never publishes on its own; a server-side change that lets sync_eval emit 8 would silently publish structurally-valid but un-reviewed content. See the choreo audit scale in [`llm-base-handler-audit-collection.instructions.md`](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/llm-base-handler-audit-collection.instructions.md). The legacy `get_grammar_copy.dart` hardcoded copy and matching `grammarCopy*` L10n keys are obsolete under the new model and slated for removal (Phase 3 of #6660).
 
 ## UI Structure
 

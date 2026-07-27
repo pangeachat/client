@@ -1,49 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_chat_settings_dialog.dart';
-import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'package:fluffychat/widgets/users/about_me_display.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
-import '../adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import '../adaptive_dialogs/user_dialog.dart';
-import '../future_loading_dialog.dart';
+import 'package:fluffychat/widgets/users/member_actions.dart';
 
-void showMemberActionsPopupMenu({
-  required BuildContext context,
-  required User user,
-  void Function()? onMention,
-  // #Pangea
-  Room? room,
-  // Pangea#
-}) async {
-  final theme = Theme.of(context);
-  final displayname = user.calcDisplayname();
-  // #Pangea
-  // final isMe = user.room.client.userID == user.id;
-  final dmRoomId = user.room.client.getDirectChatFromUserId(user.id);
-  // Pangea#
-
-  // #Pangea
-  // final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+RelativeRect _position(BuildContext positionContext) {
   final overlay =
-      Overlay.of(context, rootOverlay: true).context.findRenderObject()
-          as RenderBox;
-  // Pangea#
-
-  final button = context.findRenderObject() as RenderBox;
-
-  final position = RelativeRect.fromRect(
+      Overlay.of(positionContext).context.findRenderObject() as RenderBox;
+  final button = positionContext.findRenderObject() as RenderBox;
+  return RelativeRect.fromRect(
     Rect.fromPoints(
       button.localToGlobal(const Offset(0, -65), ancestor: overlay),
       button.localToGlobal(
@@ -53,160 +26,134 @@ void showMemberActionsPopupMenu({
     ),
     Offset.zero & overlay.size,
   );
+}
 
-  final bool isBotInActivity =
-      user.id == BotName.byEnvironment && room?.showActivityChatUI == true;
+Future<MemberAction?> _getAction(
+  BuildContext context, {
+  BuildContext? positionContext,
+  required User user,
+  Room? room,
+  VoidCallback? onMention,
+}) {
+  final theme = Theme.of(context);
+  final l10n = L10n.of(context);
 
-  final action = await showMenu<_MemberActions>(
-    // #Pangea
-    useRootNavigator: true,
-    // Pangea#
-    context: context,
-    position: position,
-    items: <PopupMenuEntry<_MemberActions>>[
-      PopupMenuItem(
-        value: _MemberActions.info,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+  PopupMenuItem<MemberAction> actionPopupMenuItem(MemberAction action) =>
+      PopupMenuItem<MemberAction>(
+        value: action,
+        child: Row(
           children: [
-            Row(
-              // Pangea#
-              spacing: 12.0,
-              children: [
-                Avatar(
-                  name: displayname,
-                  mxContent: user.avatarUrl,
-                  presenceUserId: user.id,
-                  presenceBackgroundColor: theme.colorScheme.surfaceContainer,
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 128),
-                      child: Text(
-                        displayname,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.labelLarge,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 128),
-                      child: Text(
-                        user.id,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 10),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    // #Pangea
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [LevelDisplayName(userId: user.id)],
-                      ),
-                    ),
-                    // Pangea#
-                  ],
-                ),
-              ],
-            ),
-            // #Pangea
-            AboutMeDisplay(userId: user.id),
-            // Pangea#
+            Icon(action.icon, color: action.iconColor(theme)),
+            const SizedBox(width: 18),
+            Text(action.text(l10n), style: action.textStyle(theme)),
           ],
         ),
-      ),
+      );
+
+  final popupContext = positionContext ?? context;
+  final position = _position(popupContext);
+
+  final displayname = user.calcDisplayname();
+  final dmRoomId = user.room.client.getDirectChatFromUserId(user.id);
+  final isBotInActivity =
+      user.id == BotName.byEnvironment && room?.showActivityChatUI == true;
+
+  final infoAction = InfoMemberAction(user: user);
+  final chatAction = ChatMemberAction(user: user, dmRoomId: dmRoomId);
+  final mentionAction = MentionMemberAction(onMention: onMention);
+  final approveAction = ApproveMemberAction(user: user);
+  final kickAction = KickMemberAction(
+    user: user,
+    isBotInActivity: isBotInActivity,
+  );
+  final setRoleAction = SetRoleMemberAction(user: user);
+  final banAction = BanMemberAction(
+    user: user,
+    isBotInActivity: isBotInActivity,
+  );
+  final unbanAction = UnbanMemberAction(user: user);
+
+  return showMenu<MemberAction>(
+    context: context,
+    position: position,
+    items: <PopupMenuEntry<MemberAction>>[
+      if (infoAction.visible())
+        PopupMenuItem(
+          value: infoAction,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                spacing: 12.0,
+                children: [
+                  Avatar(
+                    name: displayname,
+                    mxContent: user.avatarUrl,
+                    presenceUserId: user.id,
+                    presenceBackgroundColor: theme.colorScheme.surfaceContainer,
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 128),
+                        child: Text(
+                          displayname,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.labelLarge,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 128),
+                        child: Text(
+                          user.id,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 10),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [LevelDisplayName(userId: user.id)],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              AboutMeDisplay(userId: user.id),
+            ],
+          ),
+        ),
       if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
         PopupMenuItem(
           enabled: false,
           padding: const EdgeInsets.only(left: 12.0, right: 12.0),
           child: BotChatSettingsDialog(room: room),
         ),
-      // #Pangea
-      if (user.room.client.userID != user.id)
-        // Pangea#
-        const PopupMenuDivider(),
-      // #Pangea
-      if (user.room.client.userID != user.id)
+      if (user.room.client.userID != user.id) const PopupMenuDivider(),
+      if (chatAction.visible()) actionPopupMenuItem(chatAction),
+      if (mentionAction.visible()) actionPopupMenuItem(mentionAction),
+      if (approveAction.visible()) actionPopupMenuItem(approveAction),
+      if (setRoleAction.visible())
         PopupMenuItem(
-          value: _MemberActions.chat,
+          enabled: setRoleAction.enabled(),
+          value: setRoleAction,
           child: Row(
             children: [
-              const Icon(Icons.forum_outlined),
-              const SizedBox(width: 18),
-              Text(
-                dmRoomId == null
-                    ? L10n.of(context).startConversation
-                    : L10n.of(context).sendAMessage,
-              ),
-            ],
-          ),
-        ),
-      // Pangea#
-      if (onMention != null)
-        PopupMenuItem(
-          value: _MemberActions.mention,
-          child: Row(
-            children: [
-              const Icon(Icons.alternate_email_outlined),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).mention),
-            ],
-          ),
-        ),
-      if (user.membership == Membership.knock)
-        PopupMenuItem(
-          value: _MemberActions.approve,
-          child: Row(
-            children: [
-              const Icon(Icons.how_to_reg_outlined),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).approve),
-            ],
-          ),
-        ),
-      // #Pangea
-      if (user.canKick && user.membership == Membership.knock)
-        PopupMenuItem(
-          value: _MemberActions.kick,
-          child: Row(
-            children: [
-              Icon(Icons.person_remove_outlined),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).deny),
-            ],
-          ),
-        ),
-      // Pangea#
-      // #Pangea
-      if (user.membership == Membership.join && room?.isDirectChat != true)
-        // Pangea#
-        PopupMenuItem(
-          enabled:
-              user.room.canChangePowerLevel && user.canChangeUserPowerLevel,
-          value: _MemberActions.setRole,
-          child: Row(
-            children: [
-              const Icon(Icons.admin_panel_settings_outlined),
+              Icon(setRoleAction.icon),
               const SizedBox(width: 18),
               Column(
                 mainAxisSize: .min,
                 crossAxisAlignment: .start,
                 children: [
-                  // #Pangea
-                  // Text(L10n.of(context).chatPermissions),
-                  Text(
-                    user.room.isSpace
-                        ? L10n.of(context).coursePermissions
-                        : L10n.of(context).chatPermissions,
-                  ),
-                  // Pangea#
+                  Text(setRoleAction.text(l10n)),
                   Text(
                     user.powerLevel < 50
                         ? L10n.of(context).userLevel(user.powerLevel)
@@ -220,241 +167,27 @@ void showMemberActionsPopupMenu({
             ],
           ),
         ),
-      // #Pangea
-      // if (user.canKick)
-      if (user.canKick &&
-          user.membership != Membership.knock &&
-          !isBotInActivity)
-        // Pangea#
-        PopupMenuItem(
-          value: _MemberActions.kick,
-          child: Row(
-            children: [
-              Icon(
-                Icons.person_remove_outlined,
-                color: theme.colorScheme.onErrorContainer,
-              ),
-              const SizedBox(width: 18),
-              Text(
-                L10n.of(context).kick,
-                style: TextStyle(color: theme.colorScheme.onErrorContainer),
-              ),
-            ],
-          ),
-        ),
-      if (user.canBan && user.membership != Membership.ban && !isBotInActivity)
-        PopupMenuItem(
-          value: _MemberActions.ban,
-          child: Row(
-            children: [
-              Icon(
-                Icons.block_outlined,
-                color: theme.colorScheme.onErrorContainer,
-              ),
-              const SizedBox(width: 18),
-              Text(
-                // #Pangea
-                // L10n.of(context).ban,
-                user.room.isSpace
-                    ? L10n.of(context).banFromSpace
-                    : L10n.of(context).ban,
-                // Pangea#
-                style: TextStyle(color: theme.colorScheme.onErrorContainer),
-              ),
-            ],
-          ),
-        ),
-      if (user.canBan && user.membership == Membership.ban)
-        PopupMenuItem(
-          value: _MemberActions.unban,
-          child: Row(
-            children: [
-              const Icon(Icons.warning),
-              const SizedBox(width: 18),
-              // #Pangea
-              // Text(L10n.of(context).unbanFromChat),
-              Text(
-                user.room.isSpace
-                    ? L10n.of(context).unbanFromSpace
-                    : L10n.of(context).unbanFromChat,
-              ),
-              // Pangea#
-            ],
-          ),
-        ),
-      // #Pangea
-      // if (!isMe)
-      //   PopupMenuItem(
-      //     value: _MemberActions.report,
-      //     child: Row(
-      //       children: [
-      //         Icon(
-      //           Icons.gavel_outlined,
-      //           color: theme.colorScheme.onErrorContainer,
-      //         ),
-      //         const SizedBox(width: 18),
-      //         Text(
-      //           L10n.of(context).reportUser,
-      //           style: TextStyle(color: theme.colorScheme.onErrorContainer),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // Pangea#
+      if (kickAction.visible()) actionPopupMenuItem(kickAction),
+      if (banAction.visible()) actionPopupMenuItem(banAction),
+      if (unbanAction.visible()) actionPopupMenuItem(unbanAction),
     ],
   );
-  if (action == null) return;
-  if (!context.mounted) return;
-
-  switch (action) {
-    case _MemberActions.mention:
-      onMention?.call();
-      return;
-    case _MemberActions.setRole:
-      final power = await showPermissionChooser(
-        context,
-        currentLevel: user.powerLevel,
-        maxLevel: user.room.ownPowerLevel,
-        // #Pangea
-        isCourse: user.room.isSpace,
-        // Pangea#
-      );
-      if (power == null) return;
-      if (!context.mounted) return;
-      if (power >= 100) {
-        final consent = await showOkCancelAlertDialog(
-          context: context,
-          title: L10n.of(context).areYouSure,
-          message: L10n.of(context).makeAdminDescription,
-        );
-        if (consent != OkCancelResult.ok) return;
-        if (!context.mounted) return;
-      } // #Pangea
-      if (power < 100 && user.powerLevel >= 100) {
-        // If the user is already admin, we are demoting them, so we want to show a different message and get different consent
-        final consent = await showOkCancelAlertDialog(
-          context: context,
-          title: L10n.of(context).areYouSure,
-          message: L10n.of(context).removeAdminDescription,
-        );
-        if (consent != OkCancelResult.ok) return;
-        if (!context.mounted) return;
-      }
-      // Pangea#
-      await showFutureLoadingDialog(
-        context: context,
-        future: () => user.setPower(power),
-      );
-      return;
-    case _MemberActions.approve:
-      await showFutureLoadingDialog(
-        context: context,
-        // #Pangea
-        // future: () => user.room.invite(user.id),
-        future: () => user.room.acceptKnock(user.id),
-        // Pangea#
-      );
-      return;
-    case _MemberActions.kick:
-      if (await showOkCancelAlertDialog(
-            context: context,
-            title: L10n.of(context).areYouSure,
-            okLabel: L10n.of(context).yes,
-            cancelLabel: L10n.of(context).no,
-            // #Pangea
-            // message: L10n.of(context).kickUserDescription,
-            message:
-                user.id == BotName.byEnvironment &&
-                    !user.room.isSpace &&
-                    !user.room.isDirectChat
-                ? L10n.of(context).kickBotWarning
-                : user.membership == Membership.knock
-                ? user.room.isSpace
-                      ? L10n.of(context).denyKnockSpace
-                      : L10n.of(context).denyKnockChat
-                : L10n.of(context).kickUserDescription,
-            // Pangea#
-          ) ==
-          OkCancelResult.ok) {
-        await showFutureLoadingDialog(
-          context: context,
-          future: () => user.kick(),
-        );
-      }
-      return;
-    case _MemberActions.ban:
-      if (await showOkCancelAlertDialog(
-            context: context,
-            title: L10n.of(context).areYouSure,
-            okLabel: L10n.of(context).yes,
-            cancelLabel: L10n.of(context).no,
-            message: L10n.of(context).banUserDescription,
-          ) ==
-          OkCancelResult.ok) {
-        await showFutureLoadingDialog(
-          context: context,
-          future: () => user.ban(),
-        );
-      }
-      return;
-    // #Pangea
-    // case _MemberActions.report:
-    //   final reason = await showTextInputDialog(
-    //     context: context,
-    //     title: L10n.of(context).whyDoYouWantToReportThis,
-    //     okLabel: L10n.of(context).report,
-    //     cancelLabel: L10n.of(context).cancel,
-    //     hintText: L10n.of(context).reason,
-    //   );
-    //   if (reason == null || reason.isEmpty) return;
-
-    //   final result = await showFutureLoadingDialog(
-    //     context: context,
-    //     future: () => user.room.client.reportUser(user.id, reason),
-    //   );
-    //   if (result.error != null) return;
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text(L10n.of(context).contentHasBeenReported)),
-    //   );
-    //   return;
-    case _MemberActions.chat:
-      final router = GoRouter.of(context);
-      final roomIdResult = await showFutureLoadingDialog(
-        context: context,
-        future: () => user.room.client.createPangeaDirectChat(user.id),
-      );
-      final roomId = roomIdResult.result;
-      if (roomId == null) return;
-      if (!context.mounted) return;
-      final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-      router.go(WorkspaceNav.openRoomById(uri, roomId));
-    // Pangea#
-    case _MemberActions.info:
-      await UserDialog.show(
-        context: context,
-        profile: Profile(
-          userId: user.id,
-          displayName: user.displayName,
-          avatarUrl: user.avatarUrl,
-        ),
-        uri: GoRouterState.of(context).uri,
-      );
-      return;
-    case _MemberActions.unban:
-      if (await showOkCancelAlertDialog(
-            context: context,
-            title: L10n.of(context).areYouSure,
-            okLabel: L10n.of(context).yes,
-            cancelLabel: L10n.of(context).no,
-            message: L10n.of(context).unbanUserDescription,
-          ) ==
-          OkCancelResult.ok) {
-        await showFutureLoadingDialog(
-          context: context,
-          future: () => user.unban(),
-        );
-      }
-  }
 }
 
-enum _MemberActions { info, mention, setRole, kick, ban, approve, unban, chat }
+Future<void> showMemberActionsPopupMenu({
+  required BuildContext context,
+  BuildContext? positionContext,
+  required User user,
+  Room? room,
+  VoidCallback? onMention,
+}) async {
+  final action = await _getAction(
+    context,
+    positionContext: positionContext,
+    user: user,
+    room: room,
+    onMention: onMention,
+  );
+  if (action == null || !context.mounted) return;
+  await action.execute(context);
+}

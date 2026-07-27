@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -45,44 +46,54 @@ class SettingsIgnoreListView extends StatelessWidget {
                         valueListenable: controller.ignoring,
                         builder: (context, ignoring, _) =>
                             // Pangea#
-                            TextField(
-                              controller: controller.controller,
-                              autocorrect: false,
-                              textInputAction: TextInputAction.done,
-                              // #Pangea
-                              // onSubmitted: (_) =>
-                              //     controller.ignoreUser(context),
-                              onSubmitted: ignoring
-                                  ? null
-                                  : (_) => controller.ignoreUser(context),
-                              // Pangea#
-                              decoration: InputDecoration(
-                                errorText: controller.errorText,
-                                hintText: '@bad_guy:domain.abc',
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
+                            Semantics(
+                              container: true,
+                              child: TextField(
+                                controller: controller.controller,
+                                autocorrect: false,
+                                textInputAction: TextInputAction.done,
                                 // #Pangea
-                                // labelText: L10n.of(context).blockUsername,
-                                labelText: L10n.of(context).blockUsernameHint,
+                                // onSubmitted: (_) =>
+                                //     controller.ignoreUser(context),
+                                onSubmitted: ignoring
+                                    ? null
+                                    : (_) => controller.ignoreUser(context),
                                 // Pangea#
-                                suffixIcon: IconButton(
-                                  tooltip: L10n.of(context).block,
-                                  icon: const Icon(Icons.add),
+                                decoration: InputDecoration(
+                                  errorText: controller.errorText,
+                                  hintText: '@bad_guy:domain.abc',
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
                                   // #Pangea
-                                  // onPressed: () =>
-                                  //     controller.ignoreUser(context),
-                                  onPressed: ignoring
-                                      ? null
-                                      : () => controller.ignoreUser(context),
+                                  // labelText: L10n.of(context).blockUsername,
+                                  labelText: L10n.of(context).blockUsernameHint,
                                   // Pangea#
+                                  suffixIcon: Semantics(
+                                    sortKey: OrdinalSortKey(4),
+                                    child: IconButton(
+                                      tooltip: L10n.of(context).block,
+                                      icon: const Icon(Icons.add),
+                                      // #Pangea
+                                      // onPressed: () =>
+                                      //     controller.ignoreUser(context),
+                                      onPressed: ignoring
+                                          ? null
+                                          : () =>
+                                                controller.ignoreUser(context),
+                                      // Pangea#
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                       ),
                       const SizedBox(height: 16),
-                      Text(
-                        L10n.of(context).blockListDescription,
-                        style: const TextStyle(color: Colors.orange),
+                      Semantics(
+                        container: true,
+                        child: Text(
+                          L10n.of(context).blockListDescription,
+                          style: const TextStyle(color: Colors.orange),
+                        ),
                       ),
                     ],
                   ),

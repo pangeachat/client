@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/chat/chat_search/chat_search_message_tab.dart'
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class ChatSearchView extends StatelessWidget {
   final ChatSearchController controller;
@@ -57,25 +58,12 @@ class ChatSearchView extends StatelessWidget {
               const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TextField(
+              child: PangeaSearchBar(
+                labelText: L10n.of(context).searchMessagesHint,
+                autofocus: true,
                 controller: controller.searchController,
                 onSubmitted: (_) => controller.restartSearch(),
-                autofocus: true,
                 enabled: controller.tabController.index == 0,
-                decoration: InputDecoration(
-                  hintText: L10n.of(context).search,
-                  prefixIcon: const Icon(Icons.search_outlined),
-                  filled: true,
-                  fillColor: theme.colorScheme.secondaryContainer,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  hintStyle: TextStyle(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
               ),
             ),
             TabBar(

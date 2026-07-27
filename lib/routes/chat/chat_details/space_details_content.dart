@@ -55,10 +55,7 @@ class SpaceDetailsContent extends StatelessWidget {
   const SpaceDetailsContent(this.controller, this.room, {super.key});
 
   SpaceSettingsTabs tab(BuildContext context) {
-    final defaultTab = FluffyThemes.isColumnMode(context)
-        ? SpaceSettingsTabs.course
-        : SpaceSettingsTabs.chat;
-
+    final defaultTab = SpaceSettingsTabs.chat;
     final activeTab = controller.widget.activeTab;
     if (activeTab != null) {
       return activeTab;

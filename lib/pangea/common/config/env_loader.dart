@@ -26,7 +26,10 @@ class EnvLoader {
   static Future<bool> tryLoadFromWebRoot({http.Client? client}) async {
     final httpClient = client ?? http.Client();
     try {
-      final response = await httpClient.get(Uri.base.resolve('.env'));
+      // Root-absolute: with path URLs the app can boot on any nested path
+      // (`/home/login`), and a RELATIVE resolve fetched `/home/.env` — which
+      // the SPA fallback answers with index.html, silently failing the load.
+      final response = await httpClient.get(Uri.base.resolve('/.env'));
       if (response.statusCode != 200 || !looksLikeEnvFile(response.body)) {
         return false;
       }

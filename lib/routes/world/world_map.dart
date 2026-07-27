@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -146,14 +149,14 @@ class WorldMapController extends State<WorldMap>
   /// and carry the `dismissed` score penalty while their TTL runs.
   Set<String> get dismissedLargeIds => _dismissals.activeIds(DateTime.now());
 
-  /// True while the camera's zoom is actively changing (a pinch, scroll-wheel,
-  /// double-tap, or programmatic glide). The view empties the large tier for
-  /// the duration so cards never slide around mid-gesture or block the target
-  /// of a zoom; at settle the re-rank re-derives whatever tops the priority
-  /// matrix at the new camera (#7245). Pure pans don't trip this — only zoom.
-  bool get isActivelyZooming => _zoomSettleTimer?.isActive ?? false;
-  Timer? _zoomSettleTimer;
-  double? _lastSeenZoom;
+  /// True while the camera is actively moving — a pan, pinch, scroll-wheel,
+  /// double-tap, rotate, or a programmatic glide. The view freezes every pin/
+  /// card's tier and size for the duration instead of recomputing against the
+  /// live, still-moving camera bounds, so nothing flickers between tiers
+  /// mid-gesture
+  bool get isActivelyMoving => _moveSettleTimer?.isActive ?? false;
+  Timer? _moveSettleTimer;
+  StreamSubscription<MapEvent>? _mapEventSub;
 
   bool _loadingPins = false;
   Timer? _refetchDebounce;
@@ -165,6 +168,8 @@ class WorldMapController extends State<WorldMap>
       vsync: this,
       duration: WorldMapConstants.camGlideDuration,
     )..addListener(_onCamGlideTick);
+
+    _mapEventSub = mapController.mapEventStream.listen(_onMapEvent);
 
     _loadForContext();
 
@@ -216,13 +221,17 @@ class WorldMapController extends State<WorldMap>
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
-          .rateLimit(const Duration(seconds: 1))
+          .rateLimit(const Duration(seconds: 2))
           .listen((_) {
             if (!mounted) return;
             _recomputeProgress();
             _maybeRebuildObjectiveCache(client);
             _recomputePinged(client);
             _discoverCoursemateSessions(client);
+            // Keep the "can't start" count live: a new invite/join changes the
+            // members available to fill roles, so re-fetch (rate-limited by this
+            // handler) — a dimmed pin un-dims once enough people are in.
+            _refreshCourseAvailableParticipants();
           });
     }
 
@@ -235,16 +244,27 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
+  /// The last activity the camera centred on ([focusedActivityId])
+  String? _lastFocusedActivityId;
+
   @override
   void didUpdateWidget(covariant WorldMap oldWidget) {
     super.didUpdateWidget(oldWidget);
     // Re-center when the focused activity changes or the exposed canvas resizes
     // (a panel opened/closed), so the selection stays in the visible map area.
-    // A focus change is a deliberate target move (an activity opened) and glides
-    // immediately; an overlay-width change is layout-driven (panels opening or
-    // closing), so it debounces — rapid open/close coalesces into one settled
-    // glide instead of jerking on every step. See routing.instructions.md.
-    if (oldWidget.focus != widget.focus) {
+    // A focus change is a deliberate target move (an activity opened, or a
+    // session resumed into its room) and glides immediately; an overlay-width
+    // change is layout-driven (panels opening or closing), so it debounces —
+    // rapid open/close coalesces into one settled glide instead of jerking on
+    // every step. See routing.instructions.md.
+    //
+    // The focus token stays null when resuming into a live room (a `room:`
+    // token, #7257), so compare the *resolved* focused id ([focusedActivityId],
+    // which reads that room back to its activity) — not just [widget.focus].
+    final resolvedId = focusedActivityId;
+    if (oldWidget.focus != widget.focus ||
+        resolvedId != _lastFocusedActivityId) {
+      _lastFocusedActivityId = resolvedId;
       _fitToContext();
     } else if (oldWidget.leftOverlayWidth != widget.leftOverlayWidth ||
         oldWidget.rightOverlayWidth != widget.rightOverlayWidth ||
@@ -262,7 +282,8 @@ class WorldMapController extends State<WorldMap>
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
-    _zoomSettleTimer?.cancel();
+    _moveSettleTimer?.cancel();
+    _mapEventSub?.cancel();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
@@ -282,11 +303,35 @@ class WorldMapController extends State<WorldMap>
   /// the persistent "I'm working with this one" state (its panel is open and the
   /// camera settled on it); it drives a distinct focus marker on the pin at
   /// whatever tier it sits, and survives zoom/pan, clearing only when the panel
-  /// closes or another activity is focused. Derived purely from [widget.focus]
-  /// (the `?activity=` token via `mapFocusFor`), so no extra state is needed and
-  /// it auto-clears when the focus signal changes. See world-map.instructions.md
-  /// ("Focus").
-  String? get focusedActivityId => focusedActivityIdOf(widget.focus);
+  /// closes or another activity is focused. Derived from [widget.focus] (the
+  /// `?activity=` token via `mapFocusFor`), falling back to [_roomPanelActivityId]
+  /// for a resumed session, so it auto-clears when the focus signal changes. See
+  /// world-map.instructions.md ("Focus").
+  String? get focusedActivityId =>
+      focusedActivityIdOf(widget.focus) ?? _roomPanelActivityId;
+
+  /// The activity behind an open room panel, when that room is one of the
+  /// learner's own activity sessions — the "resume" path opens the live
+  /// chat as a `room:` token, not an `activity:` one, so [widget.focus] is null
+  /// there. Resolving the room back to its activity keeps the pin focused (glow)
+  /// and the camera centred on it, so a resumed session behaves like any other
+  /// selection. Null when no room panel is open or the room isn't an activity session / isn't known to the client yet.
+  String? get _roomPanelActivityId {
+    try {
+      final roomId = activeRoomIdFromPanels(
+        GoRouter.of(context).routeInformationProvider.value.uri,
+      );
+      if (roomId == null) return null;
+      return client?.getRoomById(roomId)?.activityId;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  MapFocus? get _focusForCamera {
+    final id = focusedActivityId;
+    return id == null ? null : ActivityFocus(id);
+  }
 
   /// The activity id a [MapFocus] focuses, or null for a non-activity / absent
   /// focus. Pure so the focus-marker resolution is unit-testable without pumping
@@ -303,6 +348,8 @@ class WorldMapController extends State<WorldMap>
 
   WorldMapFilter get filter => _filterState.filter;
   Map<String, PinSignals> get signals => _pinsManager.signals;
+  int? get courseAvailableParticipants =>
+      _pinsManager.courseAvailableParticipants;
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
@@ -327,13 +374,6 @@ class WorldMapController extends State<WorldMap>
   /// re-rank. Null client → false (no penalty).
   bool get isNewLearner => _client?.hasAnyActivitySession == false;
 
-  /// Whether the learner has fully completed [activityId] (a full star row). The
-  /// inProgress gold star renders at full size when done, smaller when partially
-  /// progressed (world-map.instructions.md, "Goal Progress").
-  bool isActivityCompleted(String activityId) =>
-      _pinsManager.activityCompletionStatus(activityId) ==
-      MapCompletionFilter.completed;
-
   void _onPlanHydrate() {
     // A plan landing from CMS fires no room sync, so the sync-driven recompute
     // never re-derives seats for it — why an invited session (its role count
@@ -350,6 +390,30 @@ class WorldMapController extends State<WorldMap>
     if (client == null) return;
     _pinsManager.recomputeProgress(client);
     if (mounted) setState(() {});
+  }
+
+  /// Refresh the course participant count that dims `available` pins: course
+  /// scope with a joined room → fetch it; otherwise clear. Rebuilds only when
+  /// the count actually changes, so it's cheap to call on every sync — a new
+  /// invite/join updates it within the sync rate-limit window.
+  Future<void> _refreshCourseAvailableParticipants() async {
+    final client = _client;
+    if (client == null) return;
+    final mapContext = MapContextController.notifier.value;
+    final courseRoom = mapContext is CourseMapContext
+        ? client.joinedCourseRooms.firstWhereOrNull(
+            (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+          )
+        : null;
+    final before = _pinsManager.courseAvailableParticipants;
+    if (courseRoom == null) {
+      _pinsManager.clearCourseAvailableParticipants();
+    } else {
+      await _pinsManager.loadCourseAvailableParticipants(courseRoom);
+    }
+    if (mounted && _pinsManager.courseAvailableParticipants != before) {
+      setState(() {});
+    }
   }
 
   Future<void> _rebuildObjectiveCache(Client client) async {
@@ -401,18 +465,34 @@ class WorldMapController extends State<WorldMap>
       case CourseMapContext():
         _ensureScopedCourseOutline(mapContext.coursePlanId);
         try {
-          await _pinsManager.loadCourseScopedPins(mapContext.coursePlanId);
+          // The joined course's per-Mission activity pin scopes this view's
+          // markers (org quests doc, client#7748); not joined / unset → null →
+          // unrestricted.
+          final courseRoom = Matrix.of(context).client.joinedCourseRooms
+              .firstWhereOrNull(
+                (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+              );
+          await _pinsManager.loadCourseScopedPins(
+            mapContext.coursePlanId,
+            pinnedActivitiesByObjective:
+                courseRoom?.teacherMode.pinnedActivitiesByObjective,
+          );
 
           if (!mounted) return;
           setState(() {});
 
           _fitToContext(debounce: debounceFit);
+
+          // The "not enough members to start" count that dims available pins
+          // (course-only; also refreshed on room sync — see the onSync handler).
+          await _refreshCourseAvailableParticipants();
         } catch (_) {
           // Map stays usable without activity pins.
         }
         return;
       case WorldMapContext():
         _pinsManager.resetScopedCourseOutline();
+        _pinsManager.clearCourseAvailableParticipants();
         loadWorldPins();
         return;
     }
@@ -521,7 +601,18 @@ class WorldMapController extends State<WorldMap>
   /// everything" affordance (#7086). Camera-only: the course scope, focus, and
   /// open panels are untouched.
   void resetToWorld() {
-    _animateCameraTo(const LatLng(20, 0), WorldMapConstants.minZoom);
+    _animateCameraTo(const LatLng(20, 0), minZoom);
+  }
+
+  /// The viewport-derived zoom-out floor (#7813, [WorldMapConstants.minZoomFor])
+  /// for the map's current size, or the safe fallback before the map has laid
+  /// out (reading the camera throws until then).
+  double get minZoom {
+    try {
+      return WorldMapConstants.minZoomFor(mapController.camera.nonRotatedSize);
+    } catch (_) {
+      return WorldMapConstants.fallbackMinZoom;
+    }
   }
 
   /// Step the zoom by [delta] levels around the current center, clamped to the
@@ -529,6 +620,8 @@ class WorldMapController extends State<WorldMap>
   /// zooms IN (#7086). Accumulates toward the in-flight glide target (not the
   /// mid-glide live zoom), so rapid clicks each advance a full level instead of
   /// under-shooting, and snaps to integer levels so the steps land crisply.
+  /// Rounds BEFORE clamping: the floor is fractional (#7813), and rounding a
+  /// clamped value could land back below it.
   void zoomBy(double delta) {
     final base = _cameraAnimationController.isAnimating
         ? _camTargetZoom
@@ -536,9 +629,7 @@ class WorldMapController extends State<WorldMap>
 
     _animateCameraTo(
       mapController.camera.center,
-      (base + delta)
-          .clamp(WorldMapConstants.minZoom, WorldMapConstants.maxZoom)
-          .roundToDouble(),
+      (base + delta).roundToDouble().clamp(minZoom, WorldMapConstants.maxZoom),
     );
   }
 
@@ -570,7 +661,7 @@ class WorldMapController extends State<WorldMap>
         // center within the padded area; capping maxZoom at the current zoom
         // pins the zoom in place. Today that is an activity; new focus kinds
         // resolve in [_focusPoint].
-        final point = _pinsManager.focusPoint(widget.focus);
+        final point = _pinsManager.focusPoint(_focusForCamera);
         if (point != null) {
           _animateFit(
             CameraFit.coordinates(
@@ -578,6 +669,7 @@ class WorldMapController extends State<WorldMap>
               padding: _exposedCanvasPadding,
               maxZoom: mapController.camera.zoom,
             ),
+            anchor: point,
           );
           return;
         }
@@ -594,9 +686,8 @@ class WorldMapController extends State<WorldMap>
     });
   }
 
-  /// Inset the edges by the overlays so camera targets land in the uncovered
-  /// map area beside the column/panel — and, on narrow, above the half-open
-  /// activity sheet — not behind them.
+  /// Inset the left/right edges by the overlays so camera targets land in the
+  /// uncovered map area beside the column/panel, not behind it.
   EdgeInsets get _exposedCanvasPadding => EdgeInsets.fromLTRB(
     widget.leftOverlayWidth + 64.0,
     64.0,
@@ -612,7 +703,7 @@ class WorldMapController extends State<WorldMap>
   void _onCameraFocusRequest() {
     if (!mounted) return;
     try {
-      final point = _pinsManager.focusPoint(widget.focus);
+      final point = _pinsManager.focusPoint(_focusForCamera);
       if (point != null) {
         _animateFit(
           CameraFit.coordinates(
@@ -622,6 +713,7 @@ class WorldMapController extends State<WorldMap>
                 ? mapController.camera.zoom
                 : WorldMapConstants.focusZoom,
           ),
+          anchor: point,
         );
         return;
       }
@@ -643,17 +735,24 @@ class WorldMapController extends State<WorldMap>
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
   /// `fitCamera`). [CameraFit.fit] resolves the target center+zoom without
-  /// moving; we tween to it.
-  void _animateFit(CameraFit fit) {
+  /// moving; we tween to it. [anchor] is the pin the fit is centering (if any);
+  /// it steers the pan's east/west direction so the pin stays on screen for
+  /// the whole glide (#7880, [WorldMapConstants.panTargetLongitude]).
+  void _animateFit(CameraFit fit, {LatLng? anchor}) {
     final target = fit.fit(mapController.camera);
-    _animateCameraTo(target.center, target.zoom);
+    _animateCameraTo(target.center, target.zoom, anchor: anchor);
   }
 
   /// Tween the camera center + zoom to the target. The glide length scales with
   /// the zoom distance ([WorldMapConstants.glideDurationFor]) and pan/zoom are
   /// staggered so the pan runs at the wider zoom (#7239). Re-targets cleanly if
   /// called mid-flight (the glide restarts from the current position).
-  void _animateCameraTo(LatLng center, double zoom) {
+  ///
+  /// [anchor]: the pin being brought into view, if the move is about one. The
+  /// stored target longitude is UNWRAPPED so the tween's direction carries the
+  /// anchor's on-screen copy directly to its resting spot instead of taking a
+  /// path that throws it off screen (#7880).
+  void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
@@ -661,9 +760,17 @@ class WorldMapController extends State<WorldMap>
       } catch (_) {}
       return;
     }
-    _camStart = mapController.camera.center;
+    final start = mapController.camera.center;
+    _camStart = start;
     _camStartZoom = mapController.camera.zoom;
-    _camTarget = center;
+    _camTarget = LatLng(
+      center.latitude,
+      WorldMapConstants.panTargetLongitude(
+        start: start.longitude,
+        target: center.longitude,
+        anchor: anchor?.longitude,
+      ),
+    );
     _camTargetZoom = zoom;
     anim
       ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
@@ -683,6 +790,10 @@ class WorldMapController extends State<WorldMap>
       _camTargetZoom,
     );
     final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
+    // A plain linear tween: the direction decision (which world-copy of the
+    // target to fly to, so the focused pin stays on screen) was already baked
+    // into the UNWRAPPED target longitude by [_animateCameraTo] (#7880).
+    // Mid-tween values may exceed +-180; `move` re-normalizes each frame.
     final lng = start.longitude + (end.longitude - start.longitude) * p.pan;
     final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * p.zoom;
     try {
@@ -695,8 +806,11 @@ class WorldMapController extends State<WorldMap>
   /// Called by the view as the camera moves. World pins re-fetch for the new
   /// viewport (debounced); course pins are context-bound. Focus is unaffected by
   /// pan/zoom — it persists until the panel closes (world-map.instructions.md).
+  /// Movement-freeze tracking ([isActivelyMoving]) is driven separately by
+  /// [_onMapEvent], not this callback, so it also covers a fling's coasting
+  /// frames and programmatic glides (which fire `MapEventMove` without a
+  /// matching `hasGesture`).
   void onMapPositionChanged(bool hasGesture) {
-    _trackZoomActivity();
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(
@@ -716,30 +830,19 @@ class WorldMapController extends State<WorldMap>
     if (client != null) _discoverCoursemateSessions(client);
   }
 
-  /// Flags [isActivelyZooming] while the camera's zoom is changing, clearing it
-  /// one settle interval after the last change — at which point the rebuild
-  /// re-derives the large tier for the new camera (#7245). Compares zoom
-  /// values, so pure pans never hide the cards. Applies in every map context
-  /// (world and course), unlike the world-only re-fetch above.
-  void _trackZoomActivity() {
-    final double zoom;
-    try {
-      zoom = mapController.camera.zoom;
-    } catch (_) {
-      return; // Camera not laid out yet.
-    }
-    final last = _lastSeenZoom;
-    _lastSeenZoom = zoom;
-    if (last == null ||
-        (zoom - last).abs() < WorldMapConstants.zoomChangeEpsilon) {
-      return;
-    }
-    final wasZooming = isActivelyZooming;
-    _zoomSettleTimer?.cancel();
-    _zoomSettleTimer = Timer(WorldMapConstants.zoomSettle, () {
+  /// Flags [isActivelyMoving] on any camera-movement event (pan, zoom, rotate,
+  /// gesture or programmatic), clearing it one settle interval after the last
+  /// one — at which point the rebuild re-derives every pin/card's tier for the
+  /// new camera instead of the frozen last-settled one (#7245). Applies in
+  /// every map context (world and course), unlike the world-only re-fetch
+  /// above.
+  void _onMapEvent(MapEvent event) {
+    final wasMoving = isActivelyMoving;
+    _moveSettleTimer?.cancel();
+    _moveSettleTimer = Timer(WorldMapConstants.moveSettle, () {
       if (mounted) setState(() {});
     });
-    if (!wasZooming && mounted) setState(() {});
+    if (!wasMoving && mounted) setState(() {});
   }
 
   /// Open the activity detail in-place, preserving the current route (map stays

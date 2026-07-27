@@ -22,7 +22,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
-import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
@@ -31,7 +30,6 @@ import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
-import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -260,19 +258,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   // (user_type_onboarding_step.dart).
                   FluffyChatApp.router.go('/registration');
                 } else {
-                  // A join code cached across the login bounce
-                  // (PAuthGaurd.roomsRedirect, #7524) re-enters the same
-                  // addcourse:private/<code> token flow a logged-in join link
-                  // takes. The read is TTL-guarded (SpaceCodeRepo) and the
-                  // cache cleared here, so a stale code never surprise-joins
-                  // a later login.
-                  final joinCode = SpaceCodeRepo.spaceCode;
-                  if (joinCode != null) await SpaceCodeRepo.clearSpaceCode();
-                  FluffyChatApp.router.go(
-                    joinCode != null
-                        ? PRoutes.joinWithCode(joinCode)
-                        : PRoutes.world,
-                  );
+                  // A join code cached across the login bounce is consumed by
+                  // the world route's auth guard on this landing
+                  // (PAuthGaurd._consumeCachedJoinCode) — the one consumption
+                  // point shared with logins that never pass through this
+                  // listener (web SSO's full-reload return, a restored
+                  // session).
+                  FluffyChatApp.router.go(PRoutes.world);
                 }
                 // Pangea#
               });
@@ -755,29 +747,29 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
+  /// The in-app location an OS-delivered link maps to — pure and unit-tested
+  /// (incoming_uri_path_test.dart): a bare `/<code>` course join link and the
+  /// `/<uuid>` activity link flow straight through to the router's
+  /// LegacyRedirects, which folds them into their tokens — no per-shape
+  /// rewrite here.
+  static String incomingUriToPath(Uri uri) {
+    if (uri.fragment.isNotEmpty) {
+      return uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+    }
+    final query = uri.queryParameters;
+    final queryString = query.entries
+        .map((e) => '${e.key}=${e.value}')
+        .join('&');
+    var path = '/${uri.pathSegments.join('/')}';
+    if (queryString.isNotEmpty) {
+      path = '$path?$queryString';
+    }
+    return path;
+  }
+
   Future<void> _processIncomingUris(Uri? uri) async {
     if (uri == null) return;
-
-    String path;
-    if (uri.fragment.isNotEmpty) {
-      path = uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
-    } else {
-      final query = uri.queryParameters;
-      final queryString = query.entries
-          .map((e) => '${e.key}=${e.value}')
-          .join('&');
-      path = '/${uri.pathSegments.join('/')}';
-      if (queryString.isNotEmpty) {
-        path = '$path?$queryString';
-      }
-    }
-
-    final joinCodePattern = RegExp(r'^\/([a-z0-9]{7})$');
-    if (joinCodePattern.hasMatch(path)) {
-      final code = joinCodePattern.firstMatch(path)!.group(1)!;
-      path = '/join?${SpaceConstants.classCode}=$code';
-    }
-
+    final path = incomingUriToPath(uri);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);
     });

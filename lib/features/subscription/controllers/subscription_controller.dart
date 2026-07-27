@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
@@ -9,24 +9,41 @@ import 'package:fluffychat/features/subscription/repo_v2/free_trial_request.dart
 import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_country_repo.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class SubscriptionController with ChangeNotifier {
-  SubscriptionState _state = SubscriptionLoading();
+class SubscriptionController {
+  final ValueNotifier<SubscriptionState> _state = ValueNotifier(
+    SubscriptionLoading(),
+  );
   Completer<void>? _initCompleter;
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
-  SubscriptionState get state => _state;
+  ValueNotifier<SubscriptionState> get state => _state;
 
-  bool get showSubscriptionGatedContent => switch (_state) {
+  /// How the purchase surface may be presented on this device and storefront.
+  /// Starts at the conservative tier and upgrades once the storefront country
+  /// resolves during initialization, so a paywall is never shown before the
+  /// storefront confirms steering is allowed there.
+  PurchasePresentation _purchasePresentation = resolvePurchasePresentation(
+    isWeb: kIsWeb,
+    platform: defaultTargetPlatform,
+    storefrontCountry: null,
+  );
+
+  PurchasePresentation get purchasePresentation => _purchasePresentation;
+
+  bool get showSubscriptionGatedContent => switch (_state.value) {
     SubscriptionInactive() => _inTrialWindow,
     _ => true,
   };
 
-  SubscriptionPaywallStatus get paywallStatus => switch (_state) {
+  SubscriptionPaywallStatus get paywallStatus => switch (_state.value) {
     SubscriptionActive() => SubscriptionPaywallStatus.subscribed,
     _ =>
       shouldShowPaywall
@@ -34,7 +51,7 @@ class SubscriptionController with ChangeNotifier {
           : SubscriptionPaywallStatus.dimissedPaywall,
   };
 
-  bool get shouldShowPaywall => switch (_state) {
+  bool get shouldShowPaywall => switch (_state.value) {
     SubscriptionInactive() => !SubscriptionManagementRepo.getDismissedPaywall(),
     _ => false,
   };
@@ -42,10 +59,17 @@ class SubscriptionController with ChangeNotifier {
   bool get _inTrialWindow =>
       MatrixState.pangeaController.userController.inTrialWindow();
 
-  @override
+  SubscriptionStatusResponse? get subscriptionStatus {
+    return switch (_state.value) {
+      SubscriptionActive(response: final response) ||
+      SubscriptionInactive(response: final response) => response,
+      _ => null,
+    };
+  }
+
   void dispose() {
+    _state.dispose();
     subscriptionNotifier.dispose();
-    super.dispose();
   }
 
   void _onSubscribe() {
@@ -77,33 +101,34 @@ class SubscriptionController with ChangeNotifier {
     }
 
     _initCompleter = null;
-    _state = SubscriptionLoading();
+    _state.value = SubscriptionLoading();
     await initialize(userID);
   }
 
   Future<void> _initialize(String userID) async {
     try {
       await MatrixState.pangeaController.userController.initCompleter.future;
+      await _resolvePurchasePresentation();
       await _updateCurrentSubscription(userID);
 
-      final state = _state;
+      final state = _state.value;
       if (state is SubscriptionInactive &&
           state.response.isTrialOfferable &&
           _inTrialWindow) {
         await _activateNewUserTrial(userID);
       }
 
-      final isSubscribed = _state is SubscriptionActive;
+      final isSubscribed = _state.value is SubscriptionActive;
       final beganPayment = SubscriptionManagementRepo.getBeganPayment();
       if (beganPayment && isSubscribed) {
+        final planId = SubscriptionManagementRepo.getBeganPaymentPlanId();
         await SubscriptionManagementRepo.removeBeganPayment();
+        GoogleAnalytics.purchaseSubscription(planId);
         _onSubscribe();
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
-      _state = SubscriptionError(error: e);
-    } finally {
-      notifyListeners();
+      _state.value = SubscriptionError(error: e);
     }
   }
 
@@ -116,17 +141,26 @@ class SubscriptionController with ChangeNotifier {
     await _updateCurrentSubscription(userID);
   }
 
+  Future<void> _resolvePurchasePresentation() async {
+    final country = await StorefrontCountryRepo.resolve();
+    _purchasePresentation = resolvePurchasePresentation(
+      isWeb: kIsWeb,
+      platform: defaultTargetPlatform,
+      storefrontCountry: country,
+    );
+  }
+
   Future<void> _updateCurrentSubscription(String userID) async {
     final result = await SubscriptionStatusRepo.instance.get(
       SubscriptionStatusRequest(userID: userID),
+      forceRefresh: true,
     );
 
     final response = result.result;
     if (response == null) {
-      _state = SubscriptionError(
+      _state.value = SubscriptionError(
         error: result.error ?? "Failed to fetch subscription status",
       );
-      notifyListeners();
       return;
     }
 
@@ -142,7 +176,6 @@ class SubscriptionController with ChangeNotifier {
       );
     }
 
-    _state = SubscriptionState.fromSubscriptionStatus(response);
-    notifyListeners();
+    _state.value = SubscriptionState.fromSubscriptionStatus(response);
   }
 }

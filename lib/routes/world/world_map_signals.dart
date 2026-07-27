@@ -27,6 +27,21 @@ class ActivitySessionFacts {
   final bool joinable;
   final int lastEventMs;
 
+  /// How many roles the activity's plan still needs filled (0 once the roster
+  /// is full). Only meaningful when [holdsRole] is true — it's what
+  /// distinguishes Ongoing/Pending (>0, the chat hasn't started) from
+  /// Ongoing/Active (0, the room is full) — the same "is the room full" check
+  /// [joinable] already uses (`Room.numRemainingRoles`). See
+  /// world-map.instructions.md ("Pin state").
+  final int numRemainingRoles;
+
+  /// Whether the learner's own role in this session is finished
+  /// (`Room.hasCompletedRole`) — true once they've finished the activity,
+  /// whether or not every star was collected and whether or not they've since
+  /// archived it. A finished role is "done", never a live "resume it" state,
+  /// even if [completedOwnGoals] is false (finished without a full star row).
+  final bool ownRoleFinished;
+
   const ActivitySessionFacts({
     required this.activityId,
     required this.holdsRole,
@@ -34,6 +49,8 @@ class ActivitySessionFacts {
     required this.totalGoals,
     required this.joinable,
     required this.lastEventMs,
+    this.numRemainingRoles = 0,
+    this.ownRoleFinished = false,
   });
 
   double? get fractionGoalsCompleted {
@@ -47,17 +64,24 @@ class ActivitySessionFacts {
   bool get completedOwnGoals => totalGoals > 0 && collectedGoals >= totalGoals;
 
   /// The live-session colour state: a free role the user can take → `joinable`;
-  /// else a role the user holds in a session they have **not yet finished** →
-  /// `joined` (resume it). A session whose own goals are already complete is not
-  /// a live state, so it returns null and the view layers `inProgress` (the gold
-  /// trail star) from the learner's stars — otherwise a completed activity the
-  /// learner still belongs to would read `joined` forever and never show its
-  /// progress. The `inProgress` / `available` states are not live-session facts.
-  /// See world-map.instructions.md ("Pin state").
+  /// else a role the user holds in a session they have **not yet finished**
+  /// (resume it) → Ongoing, split by whether the roster is full yet:
+  /// [numRemainingRoles] `> 0` → `ongoingPending` (waiting for other
+  /// participants, the chat hasn't started); `== 0` → `ongoingActive` (the room
+  /// is full, the chat has started). A session whose own goals are already
+  /// complete, OR whose own role is already finished ([ownRoleFinished] —
+  /// covers finishing without collecting every star, then archiving), is not a
+  /// live state, so it returns null and the view layers `inProgress` (the gold
+  /// trail star) from the learner's stars — otherwise a completed/archived
+  /// activity the learner still belongs to would read Ongoing forever and
+  /// never show its progress. The `inProgress` / `available` states are not
+  /// live-session facts. See world-map.instructions.md ("Pin state").
   ActivityPinState? get state => joinable
       ? ActivityPinState.joinable
-      : (holdsRole && !completedOwnGoals)
-      ? ActivityPinState.joined
+      : (holdsRole && !ownRoleFinished && !completedOwnGoals)
+      ? (numRemainingRoles > 0
+            ? ActivityPinState.ongoingPending
+            : ActivityPinState.ongoingActive)
       : null;
 }
 

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -60,20 +62,31 @@ class ProgressBarRow extends StatelessWidget {
             ),
             child: const SizedBox.expand(),
           ),
-          // Gold fill — the learner's progress toward the goal. The
-          // SizedBox.expand child is load-bearing: a childless DecoratedBox in
-          // a loose Stack sizes to constraints.smallest (zero height) and
-          // paints nothing (#7603).
-          FractionallySizedBox(
-            widthFactor: fraction,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: gold,
-                borderRadius: BorderRadius.circular(_barHeight / 2),
-              ),
-              child: const SizedBox.expand(),
+          if (fraction != 0)
+            LayoutBuilder(
+              builder: (context, constraints) {
+                // Too little progress can make gold bar look strange
+                final double maxWidth = constraints.maxWidth;
+                final containerWidth = math.max(
+                  _barHeight,
+                  maxWidth * fraction,
+                );
+                // Gold fill — the learner's progress toward the goal. The
+                // SizedBox.expand child is load-bearing: a childless DecoratedBox in
+                // a loose Stack sizes to constraints.smallest (zero height) and
+                // paints nothing (#7603).
+                return SizedBox(
+                  width: containerWidth,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: gold,
+                      borderRadius: BorderRadius.circular(_barHeight / 2),
+                    ),
+                    child: const SizedBox.expand(),
+                  ),
+                );
+              },
             ),
-          ),
           // The goal star, inside the bar at the right end. A surface-coloured
           // outline star sits behind it so it reads on both the gold fill (full
           // progress) and the gray track.

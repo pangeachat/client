@@ -31,30 +31,28 @@ class PangeaRoomDetailsView extends StatelessWidget {
         (update) => update.roomId == room.id,
       ),
       builder: (context, snapshot) {
-        return SafeArea(
-          child: Scaffold(
-            appBar: room.isSpace
-                ? null
-                : AppBar(
-                    leading:
-                        controller.widget.embeddedCloseButton ??
-                        const Center(child: BackButton()),
-                  ),
-            body: Padding(
-              padding: const EdgeInsetsGeometry.only(
-                top: 16.0,
-                left: 16.0,
-                right: 16.0,
-              ),
-              child: MaxWidthBody(
-                maxWidth: 900,
-                showBorder: false,
-                innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                withScrolling: !room.isSpace,
-                child: room.isSpace
-                    ? SpaceDetailsContent(controller, room)
-                    : ChatDetailsContent(controller, room),
-              ),
+        return Scaffold(
+          appBar: room.isSpace
+              ? null
+              : AppBar(
+                  leading:
+                      controller.widget.embeddedCloseButton ??
+                      const Center(child: BackButton()),
+                ),
+          body: Padding(
+            padding: const EdgeInsetsGeometry.only(
+              top: 16.0,
+              left: 16.0,
+              right: 16.0,
+            ),
+            child: MaxWidthBody(
+              maxWidth: 900,
+              showBorder: false,
+              innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+              withScrolling: !room.isSpace,
+              child: room.isSpace
+                  ? SpaceDetailsContent(controller, room)
+                  : ChatDetailsContent(controller, room),
             ),
           ),
         );

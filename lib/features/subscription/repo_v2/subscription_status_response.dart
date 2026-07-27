@@ -87,6 +87,12 @@ class SubscriptionStatusResponse extends BaseResponse {
         winning.type?.isBillable == true;
   }
 
+  bool get onlyActiveEntitlementIsTrial {
+    final activeEntitlements = entitlements.where((e) => e.isActive);
+    return activeEntitlements.length == 1 &&
+        activeEntitlements.single.type == SubscriptionType.trial;
+  }
+
   SubscriptionEntitlement? get activeTrial => entitlements.firstWhereOrNull(
     (e) => e.type == SubscriptionType.trial && e.isActive,
   );

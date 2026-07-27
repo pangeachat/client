@@ -127,6 +127,20 @@ class Environment {
         (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// Feature flag for the voice-transcript tokenizer-decouple send path.
+  /// Defaults to `false` so it ships dark: when OFF, `onVoiceMessageSend` uses
+  /// today's blocking tokenized path byte-for-byte. When ON, the send awaits
+  /// only the ASR transcript text (skip_tokenize), embeds it with
+  /// `stt_tokens: []`, sends, and tokenizes + attaches + records analytics in
+  /// the background. Gates the NEW SEND PATH only -- the token-aware read and
+  /// the compatibility token-repair stay active for already-sent token-less
+  /// messages regardless of this flag.
+  static bool get voiceTranscriptDecoupleEnabled {
+    return appConfigOverride?.voiceTranscriptDecoupleEnabled ??
+        (dotenv.env["VOICE_TRANSCRIPT_DECOUPLE_ENABLED"]?.toLowerCase() ==
+            'true');
+  }
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
@@ -243,6 +257,7 @@ class AppConfigOverride {
   final String? teacherBffApi;
   final bool? analyticsDualWriteEnabled;
   final bool? dosageSignalsEnabled;
+  final bool? voiceTranscriptDecoupleEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
@@ -260,6 +275,7 @@ class AppConfigOverride {
     this.teacherBffApi,
     this.analyticsDualWriteEnabled,
     this.dosageSignalsEnabled,
+    this.voiceTranscriptDecoupleEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
@@ -279,6 +295,8 @@ class AppConfigOverride {
       teacherBffApi: json['teacherBffApi'] as String?,
       analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
       dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
+      voiceTranscriptDecoupleEnabled:
+          json['voiceTranscriptDecoupleEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
@@ -300,6 +318,7 @@ class AppConfigOverride {
       'teacherBffApi': teacherBffApi,
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
       'dosageSignalsEnabled': dosageSignalsEnabled,
+      'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
@@ -321,6 +340,7 @@ class AppConfigOverride {
         teacherBffApi.hashCode ^
         analyticsDualWriteEnabled.hashCode ^
         dosageSignalsEnabled.hashCode ^
+        voiceTranscriptDecoupleEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
@@ -342,6 +362,8 @@ class AppConfigOverride {
         teacherBffApi == other.teacherBffApi &&
         analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
         dosageSignalsEnabled == other.dosageSignalsEnabled &&
+        voiceTranscriptDecoupleEnabled ==
+            other.voiceTranscriptDecoupleEnabled &&
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&

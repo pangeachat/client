@@ -11,26 +11,6 @@ import 'package:fluffychat/features/navigation/token_params/add_course_token.dar
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
-/// World_v2 routing facts — the single place navigation/layout decisions are
-/// derived from a [GoRouterState]. Every consumer (the shell layout, the
-/// left-column switcher, the nav rail, the bottom nav, the map) calls these
-/// instead of re-deriving from path segments, so they cannot disagree.
-///
-/// See `routing.instructions.md` for the model and `deep-linking.instructions.md`
-/// for the cross-repo contract.
-
-/// How a route's canvas relates to the persistent world map. Two modes today:
-/// the map shows through, or a bounded detail sits over it with the map peeking.
-/// (There is no full-screen takeover — even an activity plan is a bounded detail
-/// / a mobile sheet; see `routing.instructions.md`.)
-enum CanvasMode {
-  /// Paints nothing; the persistent map shows through (section roots).
-  mapHole,
-
-  /// Opaque panel capped at the detail width; the map peeks alongside.
-  detail,
-}
-
 /// A target the map should bring into the exposed canvas. Sealed so adding a
 /// new focusable content kind (a location, a course region, a world object)
 /// is a compile-checked new subclass plus one `switch` arm in the map — the
@@ -79,18 +59,6 @@ enum AnalyticsPanelTab {
 /// matching anyway). The shell reads this via [canvasFor].
 bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 
-/// The effective canvas for the current route's sideView. The world root `/` is a
-/// map hole (sideView offstage, full map shows); everything reached by a real
-/// route — a course-wizard step, a public-course preview, a chat archive — is a
-/// bounded `detail` with the map peeking beside it. An open activity is **not** a
-/// canvas exception anymore (#7385): it rides as a first-class `left=activity:`
-/// panel over the map hole (sized by the allocator like a `room`, a bottom sheet
-/// on narrow), not a floorless center detail. See `routing.instructions.md`.
-CanvasMode canvasFor(GoRouterState state, bool isColumnMode) {
-  if (isMapHole(state.fullPath)) return CanvasMode.mapHole;
-  return CanvasMode.detail;
-}
-
 /// The active top-level section. `/rooms/...` belongs to chats; first-class
 /// world-object uuids render over the map (world). Unknown → world (a sane
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
@@ -108,18 +76,12 @@ AppSection sectionFor(Uri uri) {
   //     reads as its course, not as the global chat list.
   //  3. Only a lone room with no course context is a direct chat → Chats.
   final left = parseOpenPanels(uri).left;
-  if (left.any((t) => t.type == PanelTypesEnum.chats)) return AppSection.chats;
-  if (left.any(
-        (t) =>
-            t.type == PanelTypesEnum.course ||
-            t.type == PanelTypesEnum.coursepage ||
-            t.type == PanelTypesEnum.addcourse ||
-            t.type == PanelTypesEnum.addcoursepage,
-      ) ||
+  if (left.any((t) => t.type.isLeftChatList)) return AppSection.chats;
+  if (left.any((t) => t.type.isCourseRelated) ||
       activeSpaceIdFor(uri) != null) {
     return AppSection.courses;
   }
-  if (left.any((t) => t.type == PanelTypesEnum.room)) return AppSection.chats;
+  if (left.any((t) => t.type.isLeftChat)) return AppSection.chats;
   // The few real route-driven paths (fork `/rooms/...` pages, the course
   // Completer flows and public preview) highlight by first segment.
   final first = uri.pathSegments.isEmpty ? '' : uri.pathSegments.first;
@@ -322,11 +284,7 @@ List<PanelToken> _parsePanelList(Uri uri, String key) {
   // openCourseFilter sheds the previous course's page only because it re-targets
   // the context to a different course. See `routing.instructions.md`.
   if (column == PanelColumn.left && activeSpaceIdFor(uri) == null) {
-    tokens.removeWhere(
-      (t) =>
-          t.type == PanelTypesEnum.course ||
-          t.type == PanelTypesEnum.coursepage,
-    );
+    tokens.removeWhere((t) => t.type.isCoursePanel);
   }
   return _masterFirst(tokens);
 }

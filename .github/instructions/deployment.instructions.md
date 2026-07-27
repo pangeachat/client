@@ -20,7 +20,7 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 ## Deploy Mechanism
 
 - Flutter web build → S3 upload via GitHub Actions
-- Mobile builds: manual app store builds and releases
+- Mobile builds: both platforms follow the same shape — a staging build is a button (manual `workflow_dispatch`), a production build happens automatically on every release, and promotion to end users stays a human step in the store console. Android: [`android-playstore.yml`](../../.github/workflows/android-playstore.yml) uploads a signed appbundle to the Play Store internal track (release also attaches an APK to the GitHub release). iOS: [`ios-testflight.yml`](../../.github/workflows/ios-testflight.yml) uploads a signed IPA to TestFlight (fastlane match signing; certs live encrypted in the private `pangeachat/ios-certificates` repo). CI is the only sanctioned path for store builds because the checked-in Firebase config files are the staging ones — only env-secret-driven CI builds are guaranteed to carry the right Firebase project (FCM tokens are project-scoped; a mismatch kills push).
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
 

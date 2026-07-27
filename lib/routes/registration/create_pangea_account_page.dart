@@ -74,36 +74,34 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: _loading
-              ? const CircularProgressIndicator.adaptive()
-              : _profileError != null
-              ? Column(
-                  spacing: 8.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ErrorIndicator(
-                      message: L10n.of(context).oopsSomethingWentWrong,
-                    ),
-                    Row(
-                      spacing: 8.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: _createUserInPangea,
-                          child: Text(L10n.of(context).tryAgain),
-                        ),
-                        TextButton(
-                          onPressed: Navigator.of(context).pop,
-                          child: Text(L10n.of(context).cancel),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
-              : null,
-        ),
+      body: Center(
+        child: _loading
+            ? const CircularProgressIndicator.adaptive()
+            : _profileError != null
+            ? Column(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ErrorIndicator(
+                    message: L10n.of(context).oopsSomethingWentWrong,
+                  ),
+                  Row(
+                    spacing: 8.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextButton(
+                        onPressed: _createUserInPangea,
+                        child: Text(L10n.of(context).tryAgain),
+                      ),
+                      TextButton(
+                        onPressed: Navigator.of(context).pop,
+                        child: Text(L10n.of(context).cancel),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : null,
       ),
     );
   }

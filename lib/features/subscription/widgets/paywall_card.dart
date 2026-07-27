@@ -9,6 +9,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -20,11 +21,14 @@ class PaywallCard extends StatelessWidget {
     String targetId, {
     bool force = false,
   }) async {
-    if (!force &&
-        !MatrixState
-            .pangeaController
-            .subscriptionController
-            .shouldShowPaywall) {
+    final subscription = MatrixState.pangeaController.subscriptionController;
+    // A purchase call to action may appear only on the full-paywall tier; where
+    // the storefront doesn't allow steering the upsell stays hidden (the
+    // subscription settings page shows the compliant per-tier message instead).
+    if (subscription.purchasePresentation != PurchasePresentation.full) {
+      return;
+    }
+    if (!force && !subscription.shouldShowPaywall) {
       return;
     }
 

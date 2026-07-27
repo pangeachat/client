@@ -34,121 +34,114 @@ class PasswordLoginView extends StatelessWidget {
             ),
             automaticallyImplyLeading: false,
           ),
-          body: SafeArea(
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                constraints: const BoxConstraints(
-                  maxWidth: 300,
-                  maxHeight: 600,
-                ),
-                child: Column(
-                  spacing: 16.0,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    AutofillGroup(
-                      child: Column(
-                        spacing: 16.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TextFormField(
-                            autofocus: true,
-                            decoration: InputDecoration(
-                              labelText: L10n.of(context).usernameOrEmail,
+          body: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
+              child: Column(
+                spacing: 16.0,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AutofillGroup(
+                    child: Column(
+                      spacing: 16.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextFormField(
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            labelText: L10n.of(context).usernameOrEmail,
+                          ),
+                          autofillHints: const [AutofillHints.username],
+                          textInputAction: TextInputAction.next,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return L10n.of(context).pleaseEnterYourUsername;
+                            }
+                            return null;
+                          },
+                          controller: controller.usernameController,
+                          onTapOutside: (_) =>
+                              FocusManager.instance.primaryFocus?.unfocus(),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(128),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFormField(
+                              autofillHints: const [AutofillHints.password],
+                              obscureText: !controller.showPassword,
+                              textInputAction: TextInputAction.go,
+                              onFieldSubmitted: (_) {
+                                controller.enabledSignIn
+                                    ? controller.login()
+                                    : null;
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return L10n.of(
+                                    context,
+                                  ).pleaseEnterYourPassword;
+                                }
+                                return null;
+                              },
+                              controller: controller.passwordController,
+                              decoration: InputDecoration(
+                                labelText: L10n.of(context).password,
+                                suffixIcon: IconButton(
+                                  tooltip: L10n.of(context).showPassword,
+                                  icon: Icon(
+                                    controller.showPassword
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
+                                  onPressed: controller.toggleShowPassword,
+                                ),
+                              ),
+                              onTapOutside: (_) =>
+                                  FocusManager.instance.primaryFocus?.unfocus(),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(128),
+                              ],
                             ),
-                            autofillHints: const [AutofillHints.username],
-                            textInputAction: TextInputAction.next,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return L10n.of(context).pleaseEnterYourUsername;
-                              }
-                              return null;
-                            },
-                            controller: controller.usernameController,
-                            onTapOutside: (_) =>
-                                FocusManager.instance.primaryFocus?.unfocus(),
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(128),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextFormField(
-                                autofillHints: const [AutofillHints.password],
-                                obscureText: !controller.showPassword,
-                                textInputAction: TextInputAction.go,
-                                onFieldSubmitted: (_) {
-                                  controller.enabledSignIn
-                                      ? controller.login()
-                                      : null;
-                                },
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return L10n.of(
-                                      context,
-                                    ).pleaseEnterYourPassword;
-                                  }
-                                  return null;
-                                },
-                                controller: controller.passwordController,
-                                decoration: InputDecoration(
-                                  labelText: L10n.of(context).password,
-                                  suffixIcon: IconButton(
-                                    tooltip: L10n.of(context).showPassword,
-                                    icon: Icon(
-                                      controller.showPassword
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                    ),
-                                    onPressed: controller.toggleShowPassword,
+                            MergeSemantics(
+                              child: TextButton(
+                                onPressed:
+                                    controller.loadingSignIn ||
+                                        controller.client == null
+                                    ? () {}
+                                    : controller.passwordForgotten,
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0,
+                                    vertical: 4.0,
                                   ),
+                                  minimumSize: const Size(0, 0),
                                 ),
-                                onTapOutside: (_) => FocusManager
-                                    .instance
-                                    .primaryFocus
-                                    ?.unfocus(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(128),
-                                ],
+                                child: Text(L10n.of(context).forgotPassword),
                               ),
-                              MergeSemantics(
-                                child: TextButton(
-                                  onPressed:
-                                      controller.loadingSignIn ||
-                                          controller.client == null
-                                      ? () {}
-                                      : controller.passwordForgotten,
-                                  style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0,
-                                      vertical: 4.0,
-                                    ),
-                                    minimumSize: const Size(0, 0),
-                                  ),
-                                  child: Text(L10n.of(context).forgotPassword),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    ElevatedButton(
-                      onPressed: controller.enabledSignIn
-                          ? controller.login
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).login)],
-                      ),
+                  ),
+                  ElevatedButton(
+                    onPressed: controller.enabledSignIn
+                        ? controller.login
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      foregroundColor: theme.colorScheme.onPrimaryContainer,
                     ),
-                  ],
-                ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text(L10n.of(context).login)],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
