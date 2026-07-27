@@ -32,6 +32,7 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -497,8 +498,38 @@ class ChatController extends State<ChatPageWithRoom>
     }
     for (final item in shareItems) {
       if (item is FileShareItem) continue;
-      if (item is TextShareItem) room.sendTextEvent(item.value);
-      if (item is ContentShareItem) room.sendEvent(item.value);
+      // A shared text item is a genuine learner text send into this chat, so it
+      // emits the dosage message-envelope + engagement signals once its event
+      // id resolves — same send-then-POST as the composer path.
+      if (item is TextShareItem) {
+        final String text = item.value;
+        unawaited(
+          room
+              .sendTextEvent(text)
+              .then((eventId) {
+                DosageMessageSignals.emitForSentMessage(
+                  roomId: room.id,
+                  userId: room.client.userID,
+                  deviceId: room.client.deviceID,
+                  accessToken: room.client.accessToken,
+                  msgEventId: eventId,
+                  body: text,
+                );
+              })
+              .catchError((_) {}),
+        );
+      }
+      // A forwarded text item is a genuine learner text send: emitForForwardedContent
+      // sends the content and (for text only) emits the envelope with the resolved
+      // id, so forwards aren't invisible to the live emitter.
+      if (item is ContentShareItem) {
+        unawaited(
+          DosageMessageSignals.emitForForwardedContent(
+            room,
+            item.value,
+          ).catchError((_) {}),
+        );
+      }
     }
     final files = shareItems
         .whereType<FileShareItem>()
@@ -1524,6 +1555,25 @@ class ChatController extends State<ChatPageWithRoom>
             choreo: content.choreo,
           );
 
+          // Best-effort dosage signals: a message envelope for EVERY new sent
+          // message (incl. ones with no construct) + engagement activity. Fires
+          // send-then-POST like the analytics dual-write, guarded on a resolved
+          // event id, and is a no-op unless the dosage flags are enabled.
+          // Passing editEventId makes an edit (a replacement of an existing
+          // turn) count nothing — the emitter skips it so one turn stays one
+          // envelope + one tick.
+          DosageMessageSignals.emitForSentMessage(
+            roomId: room.id,
+            userId: room.client.userID,
+            deviceId: room.client.deviceID,
+            accessToken: room.client.accessToken,
+            msgEventId: msgEventId,
+            body: message,
+            tokenCount: content.tokensSent?.tokens.length,
+            langCode: content.tokensSent?.detections?.firstOrNull?.langCode,
+            editEventId: edit?.eventId,
+          );
+
           if (previousEdit != null) {
             pangeaEditingEvent = previousEdit;
           }
@@ -2133,12 +2183,18 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
     // Pangea#
     if (event.status.isError) {
-      event.sendAgain();
+      // Resend the failed send AND emit the dosage envelope for it once it
+      // lands: emitForResend resends, then counts the learner's own text (reply
+      // fallback stripped) under the RESOLVED event id — skipping file/media
+      // resends and edit replacements. Fire-and-forget, never blocks the retry.
+      unawaited(DosageMessageSignals.emitForResend(event).catchError((_) {}));
     }
     final allEditEvents = event
         .aggregatedEvents(timeline!, RelationshipTypes.edit)
         .where((e) => e.status.isError);
     for (final e in allEditEvents) {
+      // An edit is the same learner turn (see the dosage edit guard), so a
+      // resent edit never emits a new envelope/tick.
       e.sendAgain();
     }
     // #Pangea

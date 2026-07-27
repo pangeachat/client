@@ -12,7 +12,11 @@ abstract class PlatformInfos {
   static bool get isLinux => !kIsWeb && Platform.isLinux;
   // #Pangea
   // static bool get isWindows => !kIsWeb && Platform.isWindows;
-  static bool get isWindows => getOperatingSystem() == 'Windows';
+  // Detect BOTH native Windows (dart:io) and web-on-Windows (navigator); the
+  // web-only check alone left native Windows undetected (e.g. dosage spans
+  // reported an `unknown` platform).
+  static bool get isWindows =>
+      (!kIsWeb && Platform.isWindows) || getOperatingSystem() == 'Windows';
   // Pangea#
   static bool get isMacOS => !kIsWeb && Platform.isMacOS;
   static bool get isIOS => !kIsWeb && Platform.isIOS;

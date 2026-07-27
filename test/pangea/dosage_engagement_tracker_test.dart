@@ -1,0 +1,620 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/services.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+
+/// Unit tests for the engagement span lifecycle ([DosageEngagementTracker]).
+/// The tracker takes an injectable clock + HTTP client, so span open / extend /
+/// idle-close / cap-rollover / flush are all driven deterministically with no
+/// Matrix boot — the POSTed spans are read back off a [MockClient].
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  const bffUrl = 'https://bff.test.example';
+  const token = 'syt_token';
+  const userId = '@user:example.org';
+  const deviceId = 'DEVICE-A';
+  final base = DateTime.utc(2026, 1, 1, 12);
+
+  late List<http.Request> requests;
+  late http.Client mock;
+  late DateTime clock;
+
+  DosageEngagementTracker buildTracker() =>
+      DosageEngagementTracker(now: () => clock, httpClient: mock);
+
+  Future<void> settle() => Future<void>.delayed(Duration.zero);
+
+  List<Map<String, dynamic>> postedSpans() => requests
+      .expand(
+        (r) =>
+            (jsonDecode(r.body)['spans'] as List).cast<Map<String, dynamic>>(),
+      )
+      .toList();
+
+  DateTime spanEndOf(Map<String, dynamic> span) =>
+      DateTime.parse(span['span_end'] as String).toUtc();
+  DateTime spanStartOf(Map<String, dynamic> span) =>
+      DateTime.parse(span['span_start'] as String).toUtc();
+
+  setUpAll(() async {
+    final tempDir = await Directory.systemTemp.createTemp('dosage_track_test');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          const MethodChannel('plugins.flutter.io/path_provider'),
+          (methodCall) async => tempDir.path,
+        );
+    await GetStorage.init('env_override');
+  });
+
+  setUp(() {
+    dotenv.testLoad(
+      mergeWith: {
+        'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
+        'DOSAGE_SIGNALS_ENABLED': 'true',
+        'TEACHER_BFF_API': bffUrl,
+      },
+    );
+    requests = [];
+    mock = MockClient((req) async {
+      requests.add(req);
+      return http.Response('', 202);
+    });
+    clock = base;
+    DosageEngagementTracker.debugResetAccounts();
+  });
+
+  tearDown(DosageEngagementTracker.debugResetAccounts);
+
+  group('per-account registry (isolation)', () {
+    test(
+      'each account gets its own tracker; disposeAccount touches only it',
+      () async {
+        final a = DosageEngagementTracker.forAccount('@a:example.org');
+        final b = DosageEngagementTracker.forAccount('@b:example.org');
+        expect(a, isNotNull);
+        expect(b, isNotNull);
+        expect(
+          identical(a, b),
+          isFalse,
+          reason: 'two accounts must NOT share a tracker',
+        );
+        expect(
+          identical(a, DosageEngagementTracker.forAccount('@a:example.org')),
+          isTrue,
+          reason: 'the same account resolves the same tracker',
+        );
+        expect(
+          DosageEngagementTracker.forAccount(''),
+          isNull,
+          reason: 'an unknown (empty) account gets no tracker',
+        );
+      },
+    );
+
+    test('disposeAccount(A) flushes A only and leaves B untouched', () async {
+      // Two per-account trackers, each with its own MockClient + an open span.
+      final aReqs = <http.Request>[];
+      final bReqs = <http.Request>[];
+      final aTracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: MockClient((r) async {
+          aReqs.add(r);
+          return http.Response('', 202);
+        }),
+      );
+      final bTracker = DosageEngagementTracker(
+        now: () => clock,
+        httpClient: MockClient((r) async {
+          bReqs.add(r);
+          return http.Response('', 202);
+        }),
+      );
+      DosageEngagementTracker.debugPutAccount('@a:example.org', aTracker);
+      DosageEngagementTracker.debugPutAccount('@b:example.org', bTracker);
+      aTracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'DEV-A',
+        accessToken: 'tok-A',
+      );
+      bTracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'DEV-B',
+        accessToken: 'tok-B',
+      );
+      clock = base.add(const Duration(minutes: 1));
+
+      // Tear down account A ONLY.
+      await DosageEngagementTracker.disposeAccount('@a:example.org');
+
+      expect(aReqs, hasLength(1), reason: "A's span flushed on its teardown");
+      expect(
+        aReqs.single.headers['Authorization'],
+        'Bearer tok-A',
+        reason: "flushed under A's own bearer",
+      );
+      expect(
+        bReqs,
+        isEmpty,
+        reason: "B's tracker must be untouched by A's teardown",
+      );
+
+      // B's span is still open and flushes independently later.
+      await bTracker.flushOpenSpan();
+      expect(bReqs, hasLength(1));
+      expect(bReqs.single.headers['Authorization'], 'Bearer tok-B');
+    });
+
+    test(
+      'disposeAccount flushes once, a second call re-flushes nothing, and the '
+      'tracker is dropped from the registry',
+      () async {
+        final reqs = <http.Request>[];
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return http.Response('', 202);
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@gone:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@gone:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        await DosageEngagementTracker.disposeAccount('@gone:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the open span flushes on the first teardown',
+        );
+
+        // A second teardown of the same account is a no-op: the tracker is
+        // already gone, so nothing re-flushes and it must not throw.
+        await DosageEngagementTracker.disposeAccount('@gone:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'a second teardown re-flushes nothing (idempotent)',
+        );
+
+        // The registry entry was removed (no leak); a later resolve builds a
+        // FRESH tracker rather than handing back the disposed one.
+        final revived = DosageEngagementTracker.forAccount('@gone:example.org');
+        expect(revived, isNotNull);
+        expect(
+          identical(revived, tracker),
+          isFalse,
+          reason: 'the disposed tracker was dropped from the registry',
+        );
+      },
+    );
+
+    test('disposing an unknown or empty account is a safe no-op', () async {
+      // No tracker registered — must not throw and must post nothing.
+      await DosageEngagementTracker.disposeAccount('@never:example.org');
+      await DosageEngagementTracker.disposeAccount('');
+      expect(requests, isEmpty);
+    });
+
+    test(
+      'flushForLogout flushes the open span but KEEPS the tracker',
+      () async {
+        final reqs = <http.Request>[];
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return http.Response('', 202);
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@u:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@u:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        await DosageEngagementTracker.flushForLogout('@u:example.org');
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the open span is flushed pre-logout',
+        );
+        expect(
+          identical(
+            DosageEngagementTracker.forAccount('@u:example.org'),
+            tracker,
+          ),
+          isTrue,
+          reason:
+              'the tracker is KEPT (a failed logout leaves it live); only '
+              'disposeAccount removes it',
+        );
+      },
+    );
+
+    test(
+      'concurrent disposeAccount coalesce onto one flush; closing is tombstoned',
+      () async {
+        final reqs = <http.Request>[];
+        final gate = Completer<http.Response>();
+        final tracker = DosageEngagementTracker(
+          now: () => clock,
+          httpClient: MockClient((r) async {
+            reqs.add(r);
+            return gate.future; // hold the flush POST open
+          }),
+        );
+        DosageEngagementTracker.debugPutAccount('@u:example.org', tracker);
+        tracker.recordActivity(
+          userId: '@u:example.org',
+          deviceId: 'DEV',
+          accessToken: 'tok',
+        );
+        clock = base.add(const Duration(minutes: 1));
+
+        // Two teardowns race (e.g. loggedOut listener + widget dispose).
+        final d1 = DosageEngagementTracker.disposeAccount('@u:example.org');
+        final d2 = DosageEngagementTracker.disposeAccount('@u:example.org');
+
+        // While the close is in flight, the account is tombstoned: a racing
+        // send must NOT recreate a tracker whose span would never flush.
+        expect(
+          DosageEngagementTracker.forAccount('@u:example.org'),
+          isNull,
+          reason: 'a closing account is tombstoned across the whole flush',
+        );
+
+        gate.complete(http.Response('', 202));
+        await Future.wait([d1, d2]);
+        expect(
+          reqs,
+          hasLength(1),
+          reason: 'the span is flushed EXACTLY once despite two disposals',
+        );
+      },
+    );
+  });
+
+  test('opens on activity, extends, flushes a UUIDv4 span on heartbeat', () async {
+    final tracker = buildTracker();
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
+    // A second activity WITHIN the idle gap extends the same span.
+    clock = base.add(const Duration(seconds: 90));
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
+    clock = base.add(const Duration(minutes: 2));
+    tracker.flushOpenSpan();
+    await settle();
+
+    expect(requests, hasLength(1));
+    final span = postedSpans().single;
+    expect(span['device_id'], deviceId);
+    expect(span['platform'], isNotEmpty);
+    expect(
+      span['span_id'] as String,
+      matches(
+        RegExp(
+          r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+        ),
+      ),
+    );
+    // Active at flush (last activity 30s ago, within the idle gap) => the span
+    // ends at the flush time.
+    expect(spanStartOf(span), base);
+    expect(spanEndOf(span), base.add(const Duration(minutes: 2)));
+  });
+
+  test('is dark: opens no span and posts nothing when a gate is off', () async {
+    dotenv.testLoad(
+      mergeWith: {
+        'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
+        'DOSAGE_SIGNALS_ENABLED': 'false',
+        'TEACHER_BFF_API': bffUrl,
+      },
+    );
+    final tracker = buildTracker();
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
+    clock = base.add(const Duration(minutes: 5));
+    tracker.flushOpenSpan();
+    await settle();
+    expect(requests, isEmpty);
+  });
+
+  test(
+    'an empty device id opens no span (activity is not silently lost)',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(userId: userId, deviceId: '', accessToken: token);
+      clock = base.add(const Duration(minutes: 5));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, isEmpty, reason: 'no span may open without a device id');
+
+      // A later activity with a known device id still opens a span.
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
+      clock = base.add(const Duration(minutes: 6));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(1));
+    },
+  );
+
+  test(
+    'idle gap closes the span at the last activity, not the flush time',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
+      clock = base.add(const Duration(minutes: 1));
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
+      clock = base.add(const Duration(minutes: 6)); // idle since 12:01
+      tracker.flushOpenSpan();
+      await settle();
+
+      expect(
+        spanEndOf(postedSpans().single),
+        base.add(const Duration(minutes: 1)),
+      );
+    },
+  );
+
+  test(
+    'a single-message span is floored to minEngagement, never dropped',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
+      clock = base.add(const Duration(minutes: 5));
+      tracker.flushOpenSpan();
+      await settle();
+
+      expect(requests, hasLength(1));
+      expect(
+        spanEndOf(postedSpans().single),
+        base.add(DosageEngagementTracker.minEngagement),
+      );
+    },
+  );
+
+  test('a continuously active span rolls over at the 30-minute cap', () async {
+    final tracker = buildTracker();
+    // Activity every 90s (inside the 2-min idle gap) keeps ONE span open and
+    // accumulating; at 30 minutes it hits the server cap and flushes there.
+    for (var i = 0; i <= 20; i++) {
+      clock = base.add(Duration(seconds: 90 * i)); // 0 .. 1800s (30 min)
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      );
+    }
+    await settle();
+
+    expect(
+      requests,
+      hasLength(1),
+      reason: 'the capped span flushed on rollover',
+    );
+    final capped = postedSpans().single;
+    expect(spanStartOf(capped), base);
+    expect(spanEndOf(capped), base.add(const Duration(minutes: 30)));
+
+    // The rollover opened a fresh span at the cap moment; a later flush reports
+    // only post-cap time, never a second counted 30 minutes.
+    clock = base.add(const Duration(minutes: 31));
+    tracker.flushOpenSpan();
+    await settle();
+    expect(requests, hasLength(2));
+    expect(
+      spanStartOf(postedSpans()[1]),
+      base.add(const Duration(minutes: 30)),
+    );
+  });
+
+  test(
+    'a gap beyond the idle threshold rolls the span over instead of bridging',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:00
+      clock = base.add(const Duration(minutes: 1));
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:01
+      // 10 minutes of silence (>> the 2-min idle gap), then a new message.
+      clock = base.add(const Duration(minutes: 11));
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:11
+      await settle();
+
+      // The prior span closed at its last real activity (12:01): the idle gap is
+      // NOT bridged into it.
+      expect(
+        requests,
+        hasLength(1),
+        reason: 'the idle gap rolled the prior span over on the new activity',
+      );
+      final first = postedSpans().single;
+      expect(spanStartOf(first), base);
+      expect(spanEndOf(first), base.add(const Duration(minutes: 1)));
+
+      // The new message opened a fresh span; flushing it counts only post-gap
+      // time, never the idle minutes.
+      clock = base.add(const Duration(minutes: 12));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
+      final second = postedSpans()[1];
+      expect(spanStartOf(second), base.add(const Duration(minutes: 11)));
+      expect(spanEndOf(second), base.add(const Duration(minutes: 12)));
+    },
+  );
+
+  test(
+    'a lone activity then one far later reports a short span, not a capped 30 '
+    'minutes',
+    () async {
+      final tracker = buildTracker();
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:00
+      // A single message, then silence past the cap distance, then one more: the
+      // gap is idle, not a 30-minute engaged span.
+      clock = base.add(const Duration(minutes: 31));
+      tracker.recordActivity(
+        userId: userId,
+        deviceId: deviceId,
+        accessToken: token,
+      ); // 12:31
+      await settle();
+
+      expect(requests, hasLength(1));
+      final first = postedSpans().single;
+      expect(spanStartOf(first), base);
+      // Floored to minEngagement — NOT the 30-minute cap the old cap-first path
+      // would have reported.
+      expect(spanEndOf(first), base.add(DosageEngagementTracker.minEngagement));
+    },
+  );
+
+  test('flushing with no open span, or twice, sends nothing extra', () async {
+    final tracker = buildTracker();
+    tracker.flushOpenSpan();
+    await settle();
+    expect(requests, isEmpty);
+
+    tracker.recordActivity(
+      userId: userId,
+      deviceId: deviceId,
+      accessToken: token,
+    );
+    clock = base.add(const Duration(minutes: 1));
+    tracker.flushOpenSpan();
+    tracker.flushOpenSpan(); // span already reset — no double send
+    await settle();
+    expect(requests, hasLength(1));
+  });
+
+  String authOf(http.Request r) => r.headers['Authorization'] ?? '';
+
+  test(
+    'switching accounts mid-window rolls over — no cross-account attribution',
+    () async {
+      final tracker = buildTracker();
+      // Account A activity.
+      tracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'DEVICE-A',
+        accessToken: 'token-A',
+      );
+      clock = base.add(const Duration(seconds: 30));
+      // Account B activity WITHIN A's idle window. The app-isolate-global tracker
+      // used to only update _lastActivity, so B's activity extended A's span and
+      // later flushed under A's device + bearer.
+      tracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'DEVICE-B',
+        accessToken: 'token-B',
+      );
+      await settle();
+
+      // The account switch closed A's span, flushed under A's OWN identity.
+      expect(requests, hasLength(1), reason: 'the account switch closed A');
+      expect(authOf(requests.single), 'Bearer token-A');
+      expect(postedSpans().single['device_id'], 'DEVICE-A');
+
+      // B's span reports under B's identity, never A's.
+      clock = base.add(const Duration(minutes: 1));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
+      expect(authOf(requests[1]), 'Bearer token-B');
+      expect(postedSpans()[1]['device_id'], 'DEVICE-B');
+    },
+  );
+
+  test(
+    'two accounts SHARING a device id still roll over (keyed on account)',
+    () async {
+      final tracker = buildTracker();
+      // Same device id, DIFFERENT accounts (mxid) — must NOT merge.
+      tracker.recordActivity(
+        userId: '@a:example.org',
+        deviceId: 'SHARED-DEVICE',
+        accessToken: 'token-A',
+      );
+      clock = base.add(const Duration(seconds: 30));
+      tracker.recordActivity(
+        userId: '@b:example.org',
+        deviceId: 'SHARED-DEVICE',
+        accessToken: 'token-B',
+      );
+      await settle();
+
+      // Account A's span flushed under A's bearer — B never merged into it, even
+      // though the device id is identical (device-only keying would have merged).
+      expect(requests, hasLength(1), reason: 'the account switch closed A');
+      expect(authOf(requests.single), 'Bearer token-A');
+
+      clock = base.add(const Duration(minutes: 1));
+      tracker.flushOpenSpan();
+      await settle();
+      expect(requests, hasLength(2));
+      expect(
+        authOf(requests[1]),
+        'Bearer token-B',
+        reason: "B's engagement must post under B's own bearer, never A's",
+      );
+    },
+  );
+}

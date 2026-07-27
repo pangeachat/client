@@ -99,6 +99,12 @@ jobs:
           # task_definition_staging.json CORS_ORIGINS.
           echo "ANALYTICS_DUAL_WRITE_ENABLED=true" >> build/web/.env
           echo "TEACHER_BFF_API=https://admin-dash-api.staging.pangea.chat" >> build/web/.env
+          # Staging only: enable the best-effort DOSAGE signals — the third gate on top
+          # of the dual-write + BFF above (all three must be set). Turns on the client ->
+          # admin-dash-api dosage ingest; requires DOSAGE_INGEST_ENABLED=true on the BFF
+          # (task_definition_staging.json). NOT set on production (release.yaml) until
+          # validated on staging.
+          echo "DOSAGE_SIGNALS_ENABLED=true" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known
