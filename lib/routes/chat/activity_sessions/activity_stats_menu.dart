@@ -15,6 +15,8 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 

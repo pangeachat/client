@@ -4,7 +4,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 
 class ActivityDropdownContent extends StatelessWidget {

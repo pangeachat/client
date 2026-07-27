@@ -5,6 +5,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
 
 /// Read-only goal header for the start page and the summary
 class ActivityGoalsDropdown extends StatefulWidget {
