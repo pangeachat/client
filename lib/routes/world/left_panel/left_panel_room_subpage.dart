@@ -28,14 +28,17 @@ class LeftPanelRoomSubpage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Give the empty state the panel's close control (#7746)
     // to avoid stranding the user
-    final emptyPage = Scaffold(
-      appBar: AppBar(leading: closeButton),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            L10n.of(context).youAreNoLongerParticipatingInThisChat,
-            textAlign: TextAlign.center,
+    final emptyPage = Semantics(
+      container: true,
+      child: Scaffold(
+        appBar: AppBar(leading: closeButton),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              L10n.of(context).youAreNoLongerParticipatingInThisChat,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       ),
