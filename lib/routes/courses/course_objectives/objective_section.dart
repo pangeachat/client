@@ -287,51 +287,33 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               ),
               ValueListenableBuilder(
                 valueListenable: _showBackArrowNotifier,
-                builder: (context, showArrow, _) => Positioned(
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  child: AnimatedSize(
-                    duration: const Duration(milliseconds: 150),
-                    child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 150),
-                      opacity: showArrow ? 1 : 0,
-                      child: ClipRect(
-                        child: SizedBox(
-                          width: showArrow ? 40.0 : 0.0,
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.back,
-                            onTap: () => _scrollByArrow(ArrowDirection.back),
-                          ),
+                builder: (context, showArrow, _) => showArrow
+                    ? Positioned(
+                        left: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: 40,
+                        child: ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.back,
+                          onTap: () => _scrollByArrow(ArrowDirection.back),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
+                      )
+                    : SizedBox(),
               ),
               ValueListenableBuilder(
                 valueListenable: _showForwardArrowNotifier,
-                builder: (context, showArrow, _) => Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  child: AnimatedSize(
-                    duration: const Duration(milliseconds: 150),
-                    child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 150),
-                      opacity: showArrow ? 1 : 0,
-                      child: ClipRect(
-                        child: SizedBox(
-                          width: showArrow ? 40.0 : 0.0,
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.forward,
-                            onTap: () => _scrollByArrow(ArrowDirection.forward),
-                          ),
+                builder: (context, showArrow, _) => showArrow
+                    ? Positioned(
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: 40,
+                        child: ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.forward,
+                          onTap: () => _scrollByArrow(ArrowDirection.forward),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
+                      )
+                    : SizedBox(),
               ),
             ],
           ),
