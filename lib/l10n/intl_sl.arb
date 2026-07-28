@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-21 13:05:36.632130",
+    "@@last_modified": "2026-07-27 15:36:03.489644",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9248,12 +9248,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidite, koga iščete? Morda morajo nastaviti svoj profil na javno v nastavitvah učenja.",
     "suggestedVocab": "Predlagani besednjak",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10641,5 +10636,12 @@
     "joinCourseWithTitle": "Pridruži se »{title}«",
     "searchCoursePlans": "Iskanje učnih načrtov",
     "searchPublicCourses": "Iskanje javnih tečajev",
-    "closeSearch": "Zapri iskanje"
+    "closeSearch": "Zapri iskanje",
+    "subscriptionsNotAvailableInApp": "Naročnin ni mogoče kupiti v aplikaciji",
+    "subscribeOnTheWeb": "Naročite se lahko na spletu na pangea.chat",
+    "waitingToFillOneRole": "Čakam na zapolnitev 1 vloge...",
+    "closeArchive": "Zapri arhiv",
+    "activityActions": "Dejanja dejavnosti",
+    "ongoing": "V teku",
+    "emptyInviteSearchHint": "Ne najdete, koga iščete? Morda bodo morali omogočiti, da se njihov profil najde v iskanju. Preverite Uredi profil v Nastavitvah."
 }

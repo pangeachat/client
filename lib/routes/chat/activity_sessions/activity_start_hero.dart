@@ -143,7 +143,7 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
           // fades with the cards and doesn't tint the video or hide its
           // controls.
           Positioned.fill(
-            top: 250.0,
+            top: 300.0,
             child: _overlay(
               Container(
                 decoration: BoxDecoration(
@@ -161,7 +161,7 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
           ),
           if (_session.showRoleCards)
             Padding(
-              padding: const EdgeInsets.only(top: 250.0),
+              padding: const EdgeInsets.only(top: 300.0),
               child: Center(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),

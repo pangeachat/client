@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-21 13:05:37.409565",
+    "@@last_modified": "2026-07-27 15:36:05.729966",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Не бачите, кого шукаєте? Можливо, їм потрібно налаштувати свій профіль на публічний у Налаштуваннях навчання",
     "suggestedVocab": "Рекомендований словник",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9690,5 +9685,12 @@
     "joinCourseWithTitle": "Приєднатися до «{title}»",
     "searchCoursePlans": "Шукати плани курсів",
     "searchPublicCourses": "Шукати публічні курси",
-    "closeSearch": "Закрити пошук"
+    "closeSearch": "Закрити пошук",
+    "subscriptionsNotAvailableInApp": "Підписки недоступні в застосунку",
+    "subscribeOnTheWeb": "Ви можете підписатися на сайті pangea.chat",
+    "waitingToFillOneRole": "Очікування заповнення 1 ролі...",
+    "closeArchive": "Закрити архів",
+    "activityActions": "Дії активності",
+    "ongoing": "Триває",
+    "emptyInviteSearchHint": "Не можете знайти потрібну людину? Можливо, їй потрібно дозволити знаходити свій профіль у пошуку. Перевірте «Редагувати профіль» у налаштуваннях."
 }

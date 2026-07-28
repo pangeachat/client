@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:32.110877",
+    "@@last_modified": "2026-07-27 15:35:58.165903",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8370,12 +8370,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran",
     "suggestedVocab": "Kosakata yang Disarankan",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9763,5 +9758,12 @@
     "joinCourseWithTitle": "Gabung \"{title}\"",
     "searchCoursePlans": "Cari rencana kursus",
     "searchPublicCourses": "Cari kursus publik",
-    "closeSearch": "Tutup pencarian"
+    "closeSearch": "Tutup pencarian",
+    "subscriptionsNotAvailableInApp": "Langganan tidak dapat dibeli di aplikasi",
+    "subscribeOnTheWeb": "Anda dapat berlangganan di web di pangea.chat",
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peran...",
+    "closeArchive": "Tutup arsip",
+    "activityActions": "Tindakan aktivitas",
+    "ongoing": "Sedang Berlangsung",
+    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan."
 }

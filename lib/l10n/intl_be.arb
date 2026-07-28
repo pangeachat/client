@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-21 13:05:29.084940",
+    "@@last_modified": "2026-07-27 15:35:54.867917",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8311,12 +8311,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Не бачыце таго, каго шукаеце? Магчыма, ім трэба наладзіць свой профіль на агульны ў Наладах навучання",
     "suggestedVocab": "Рэкамендаваны слоўнік",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9704,5 +9699,12 @@
     "joinCourseWithTitle": "Далучыцца да \"{title}\"",
     "searchCoursePlans": "Пошук планаў курсаў",
     "searchPublicCourses": "Пошук публічных курсаў",
-    "closeSearch": "Закрыць пошук"
+    "closeSearch": "Закрыць пошук",
+    "subscriptionsNotAvailableInApp": "Падпіскі нельга набыць у праграме",
+    "subscribeOnTheWeb": "Вы можаце падпісацца ў інтэрнэце на pangea.chat",
+    "waitingToFillOneRole": "Чакаем запаўнення 1 ролі...",
+    "closeArchive": "Закрыць архіў",
+    "activityActions": "Дзеянні актыўнасці",
+    "ongoing": "Працягваецца",
+    "emptyInviteSearchHint": "Не можаце знайсці таго, каго шукаеце? Магчыма, ім трэба дазволіць знаходзіць свой профіль у пошуку. Праверце «Рэдагаваць профіль» у наладах."
 }

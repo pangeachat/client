@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-21 13:05:35.300384",
+    "@@last_modified": "2026-07-27 15:36:02.771277",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9214,12 +9214,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Não vê quem está procurando? Eles podem precisar definir o perfil como público nas Configurações de Aprendizado",
     "suggestedVocab": "Vocabulário sugerido",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10607,5 +10602,12 @@
     "joinCourseWithTitle": "Aderir a \"{title}\"",
     "searchCoursePlans": "Procurar planos de curso",
     "searchPublicCourses": "Procurar cursos públicos",
-    "closeSearch": "Fechar pesquisa"
+    "closeSearch": "Fechar pesquisa",
+    "subscriptionsNotAvailableInApp": "As subscrições não podem ser compradas na aplicação",
+    "subscribeOnTheWeb": "Pode subscrever na web em pangea.chat",
+    "waitingToFillOneRole": "À espera de preencher 1 função...",
+    "closeArchive": "Fechar arquivo",
+    "activityActions": "Ações de atividade",
+    "ongoing": "Em curso",
+    "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições."
 }

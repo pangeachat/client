@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:30.295986",
+    "@@last_modified": "2026-07-27 15:35:55.489466",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8424,12 +8424,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "No veus qui estàs buscant? Potser necessiten configurar el seu perfil com a públic a la Configuració d'Aprenentatge",
     "suggestedVocab": "Vocab suggerit",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9817,5 +9812,12 @@
     "joinCourseWithTitle": "Uneix-te a \"{title}\"",
     "searchCoursePlans": "Cercar plans de curs",
     "searchPublicCourses": "Cercar cursos públics",
-    "closeSearch": "Tancar cerca"
+    "closeSearch": "Tancar cerca",
+    "subscriptionsNotAvailableInApp": "Les subscripcions no es poden comprar a l'aplicació",
+    "subscribeOnTheWeb": "Pots subscriure't al web a pangea.chat",
+    "waitingToFillOneRole": "Esperant per cobrir 1 rol...",
+    "closeArchive": "Tanca l'arxiu",
+    "activityActions": "Accions d'activitat",
+    "ongoing": "En curs",
+    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració."
 }

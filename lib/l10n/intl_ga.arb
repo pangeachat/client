@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-21 13:05:30.848753",
+    "@@last_modified": "2026-07-27 15:35:57.104830",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -8308,12 +8308,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Níl tú ag feiceáil cé atá á lorg agat? B'fhéidir go gcaithfidh siad a bpróifíl a shocrú go poiblí i Socruithe Foghlama",
     "suggestedVocab": "Vocab molta",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9701,5 +9696,12 @@
     "joinCourseWithTitle": "Bí páirteach i \"{title}\"",
     "searchCoursePlans": "Cuardaigh pleananna cúrsaí",
     "searchPublicCourses": "Cuardaigh cúrsaí poiblí",
-    "closeSearch": "Dún an cuardach"
+    "closeSearch": "Dún an cuardach",
+    "subscriptionsNotAvailableInApp": "Ní féidir síntiúis a cheannach san aip",
+    "subscribeOnTheWeb": "Is féidir leat síntiús a ghlacadh ar an ngréasán ag pangea.chat",
+    "waitingToFillOneRole": "Ag fanacht le 1 ról a líonadh...",
+    "closeArchive": "Dún an chartlann",
+    "activityActions": "Gníomhartha gníomhaíochta",
+    "ongoing": "Ar siúl",
+    "emptyInviteSearchHint": "Ní féidir leat teacht ar an duine atá uait? Seans go gcaithfidh siad a bpróifíl a cheadú le go bhfaighfear í sa chuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe."
 }

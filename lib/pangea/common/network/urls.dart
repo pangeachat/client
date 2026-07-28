@@ -31,6 +31,18 @@ class PApiUrls {
   static String get analyticsEvents =>
       "${Environment.teacherBffApi}/api/internal/analytics-events";
 
+  ///   ---------------------- Dosage signals ----------------------------------
+  /// Teacher-BFF (admin-dash-api) student-authenticated ingest for the
+  /// best-effort dosage signals (see [DosageSignalsRepo]). All three live on
+  /// [Environment.teacherBffApi], NOT the choreo endpoint. Empty base => the
+  /// signal POST is skipped.
+  static String get dosageMessageEvents =>
+      "${Environment.teacherBffApi}/api/internal/dosage/message-events";
+  static String get dosageEngagementSpans =>
+      "${Environment.teacherBffApi}/api/internal/dosage/engagement-spans";
+  static String get dosageSessionOutcomes =>
+      "${Environment.teacherBffApi}/api/internal/dosage/session-outcomes";
+
   ///   ---------------------- Users --------------------------------------
   static String languageDetection =
       "${PApiUrls._choreoRoute}/language_detection";

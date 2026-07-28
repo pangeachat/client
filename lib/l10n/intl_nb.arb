@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:34.348101",
+    "@@last_modified": "2026-07-27 15:36:01.467467",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8354,12 +8354,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ser du ikke etter den du leter etter? De må kanskje sette profilen sin til offentlig i Læringsinnstillinger",
     "suggestedVocab": "Foreslått ordforråd",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9747,5 +9742,12 @@
     "joinCourseWithTitle": "Bli med i «{title}»",
     "searchCoursePlans": "Søk i kursplaner",
     "searchPublicCourses": "Søk i offentlige kurs",
-    "closeSearch": "Lukk søk"
+    "closeSearch": "Lukk søk",
+    "subscriptionsNotAvailableInApp": "Abonnement kan ikke kjøpes i appen",
+    "subscribeOnTheWeb": "Du kan abonnere på nett på pangea.chat",
+    "waitingToFillOneRole": "Venter på å fylle 1 rolle...",
+    "closeArchive": "Lukk arkiv",
+    "activityActions": "Aktivitetshandlinger",
+    "ongoing": "Pågående",
+    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger."
 }

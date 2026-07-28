@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-21 13:05:36.151394",
+    "@@last_modified": "2026-07-27 15:36:03.046400",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9280,12 +9280,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Не видите, кого ищете? Возможно, им нужно установить свой профиль в открытый режим в Настройках обучения",
     "suggestedVocab": "Предложенный словарь",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10664,5 +10659,12 @@
     "joinCourseWithTitle": "Присоединиться к «{title}»",
     "searchCoursePlans": "Искать планы курсов",
     "searchPublicCourses": "Искать публичные курсы",
-    "closeSearch": "Закрыть поиск"
+    "closeSearch": "Закрыть поиск",
+    "subscriptionsNotAvailableInApp": "Подписки нельзя приобрести в приложении",
+    "subscribeOnTheWeb": "Вы можете подписаться на сайте pangea.chat",
+    "waitingToFillOneRole": "Ожидание заполнения 1 роли...",
+    "closeArchive": "Закрыть архив",
+    "activityActions": "Действия активности",
+    "ongoing": "Продолжается",
+    "emptyInviteSearchHint": "Не можете найти того, кого ищете? Возможно, им нужно разрешить поиск своего профиля. Проверьте «Изменить профиль» в настройках."
 }

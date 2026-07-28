@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-21 13:05:31.838516",
+    "@@last_modified": "2026-07-27 15:35:57.798532",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8400,12 +8400,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nem látod, akit keresel? Lehet, hogy nyilvánosra kell állítaniuk a profiljukat a Tanulási beállításokban",
     "suggestedVocab": "Javasolt szókincs",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9793,5 +9788,12 @@
     "joinCourseWithTitle": "Csatlakozás a „{title}” tanfolyamhoz",
     "searchCoursePlans": "Keresés a tantervek között",
     "searchPublicCourses": "Nyilvános kurzusok keresése",
-    "closeSearch": "Keresés bezárása"
+    "closeSearch": "Keresés bezárása",
+    "subscriptionsNotAvailableInApp": "Az előfizetések nem vásárolhatók meg az alkalmazásban",
+    "subscribeOnTheWeb": "Feliratkozhatsz a pangea.chat weboldalon",
+    "waitingToFillOneRole": "Várakozás 1 szerep betöltésére...",
+    "closeArchive": "Archívum bezárása",
+    "activityActions": "Tevékenységműveletek",
+    "ongoing": "Folyamatban",
+    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot."
 }

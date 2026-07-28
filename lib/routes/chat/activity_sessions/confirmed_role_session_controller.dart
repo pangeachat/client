@@ -68,8 +68,12 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       showInviteOptions && !widget.room.botAddedToActivity;
 
   @override
-  String get descriptionText =>
-      L10n.of(context).waitingToFillRole(widget.room.numRemainingRoles);
+  String get descriptionText {
+    final roles = widget.room.numRemainingRoles;
+    return roles > 1
+        ? L10n.of(context).waitingToFillRole(roles)
+        : L10n.of(context).waitingToFillOneRole;
+  }
 
   @override
   bool get goalsStartCollapsed => true;

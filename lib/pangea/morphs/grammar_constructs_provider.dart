@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -127,17 +129,48 @@ class GrammarConstructsProvider {
       return regen;
     }
 
-    final features = constructs.features;
-    final featureIndex = features.indexWhere((f) => f.value == feature);
-    if (featureIndex == -1) {
+    final updatedConstructs = mergeFeedbackIntoConstructs(
+      constructs,
+      feature,
+      regen,
+    );
+    if (updatedConstructs == null) {
       Logs().w("Feature $feature not found in submitTagFeedback");
       return regen;
     }
 
+    await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
+    MorphFeaturesAndTags.clearLookupCache();
+    return regen;
+  }
+
+  /// Merge a regenerated meaning bundle [regen] into the cached joined
+  /// [constructs], matching by feature and tag value. Matching is
+  /// case-insensitive: the feedback [feature] is the analytics construct
+  /// category (a lowercase UD key, e.g. "aspect"), while the cached feature
+  /// and tag values are canonical-cased ("Aspect", "Perf"). A case-sensitive
+  /// match silently no-ops the merge, leaving the card showing the old copy
+  /// even though the reload fires — the bug behind #7676. Canonical-only
+  /// fields (display, example, sequence) are untouched. Returns null when the
+  /// feature isn't present, so the caller leaves the cache untouched.
+  @visibleForTesting
+  static GrammarConstructsResponse? mergeFeedbackIntoConstructs(
+    GrammarConstructsResponse constructs,
+    String feature,
+    GrammarMeaningFeedbackResponse regen,
+  ) {
+    final features = constructs.features;
+    final featureIndex = features.indexWhere(
+      (f) => f.value.toLowerCase() == feature.toLowerCase(),
+    );
+    if (featureIndex == -1) return null;
+
     final currentFeature = features[featureIndex];
-    final updatesByValue = {for (final v in regen.values) v.value: v};
+    final updatesByValue = {
+      for (final v in regen.values) v.value.toLowerCase(): v,
+    };
     final updatedTags = currentFeature.tags.map((tag) {
-      final update = updatesByValue[tag.value];
+      final update = updatesByValue[tag.value.toLowerCase()];
       if (update == null) return tag;
       return tag.copyWith(title: update.title, description: update.description);
     }).toList();
@@ -147,10 +180,6 @@ class GrammarConstructsProvider {
       title: regen.featureTitle,
       tags: updatedTags,
     );
-
-    final updatedConstructs = constructs.copyWith(features: updatedFeatures);
-    await GrammarConstructsRepo.instance.setCached(request, updatedConstructs);
-    MorphFeaturesAndTags.clearLookupCache();
-    return regen;
+    return constructs.copyWith(features: updatedFeatures);
   }
 }

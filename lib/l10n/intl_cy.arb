@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-21 13:05:29.908411",
+    "@@last_modified": "2026-07-27 15:35:56.026120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Rydych wedi ychwanegu cynllun gweithgaredd",
     "userSentActivitySummary": "Anfonodd {username} grynodeb gweithgaredd",
     "youSentActivitySummary": "Anfonoch grynodeb gweithgaredd",
-    "emptyInviteSearchHint": "Ddim yn gweld pwy rydych chi'n chwilio amdano? Efallai bod angen iddynt osod eu proffil yn gyhoeddus yn Gosodiadau Dysgu",
     "clickOnEmailLinkDesc": "Cliciwch ar y ddolen yn yr e-bost ac yna ewch ymlaen. Gwiriwch eich ffolder sbam os nad yw'r e-bost wedi cyrraedd.",
     "didntReceiveEmail": "Heb dderbyn yr e-bost?",
     "resend": "Ail-anfon",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Ymuno â \"{title}\"",
     "searchCoursePlans": "Chwilio cynlluniau cwrs",
     "searchPublicCourses": "Chwilio cyrsiau cyhoeddus",
-    "closeSearch": "Cau'r chwiliad"
+    "closeSearch": "Cau'r chwiliad",
+    "subscriptionsNotAvailableInApp": "Ni ellir prynu tanysgrifiadau yn yr ap",
+    "subscribeOnTheWeb": "Gallwch danysgrifio ar y we yn pangea.chat",
+    "waitingToFillOneRole": "Yn aros i lenwi 1 rôl...",
+    "closeArchive": "Cau archif",
+    "activityActions": "Gweithredoedd gweithgaredd",
+    "ongoing": "Yn parhau",
+    "emptyInviteSearchHint": "Methu dod o hyd i'r person rydych chi'n chwilio amdano? Efallai bod angen iddynt ganiatáu i'w proffil gael ei ddarganfod mewn chwiliad. Gwiriwch Golygu Proffil yn Gosodiadau."
 }

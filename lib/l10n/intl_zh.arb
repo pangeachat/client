@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-21 13:05:38.055638",
+    "@@last_modified": "2026-07-27 15:36:06.548135",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "没有找到您要找的人？他们可能需要在学习设置中将其个人资料设置为公开",
     "suggestedVocab": "建议词汇",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9690,5 +9685,12 @@
     "joinCourseWithTitle": "加入“{title}”",
     "searchCoursePlans": "搜索课程计划",
     "searchPublicCourses": "搜索公共课程",
-    "closeSearch": "关闭搜索"
+    "closeSearch": "关闭搜索",
+    "subscriptionsNotAvailableInApp": "无法在应用内购买订阅",
+    "subscribeOnTheWeb": "您可以在 pangea.chat 网站上订阅",
+    "waitingToFillOneRole": "正在等待填补 1 个职位...",
+    "closeArchive": "关闭存档",
+    "activityActions": "活动操作",
+    "ongoing": "进行中",
+    "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。"
 }

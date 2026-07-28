@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-21 13:05:30.936247",
+    "@@last_modified": "2026-07-27 15:35:57.658467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Chuir thu plana gnìomhachd ris",
     "userSentActivitySummary": "Chuir {username} geàrr-chunntas gnìomhachd",
     "youSentActivitySummary": "Chuir thu geàrr-chunntas gnìomhachd",
-    "emptyInviteSearchHint": "Nach fhaic thu cò tha thu a' sireadh? Is dòcha gum feum iad am pròifil aca a shuidheachadh gu poblach ann an Roghainnean Ionnsachaidh",
     "clickOnEmailLinkDesc": "Feuch an cliog thu air a' cheangal sa phost-d agus an uairsin lean ort. Thoir sùil air a' phasgan spama agad mura h-eil am post-d air ruighinn.",
     "didntReceiveEmail": "Nach d'fhuair thu am post-d?",
     "resend": "Ath-chuir",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Thig a-steach do \"{title}\"",
     "searchCoursePlans": "Rannsaich planaichean cùrsa",
     "searchPublicCourses": "Rannsaich cùrsaichean poblach",
-    "closeSearch": "Dùin an rannsachadh"
+    "closeSearch": "Dùin an rannsachadh",
+    "subscriptionsNotAvailableInApp": "Chan urrainnear fo-sgrìobhaidhean a cheannach san aplacaid",
+    "subscribeOnTheWeb": "Faodaidh tu fo-sgrìobhadh air an lìon aig pangea.chat",
+    "waitingToFillOneRole": "A’ feitheamh ri 1 dreuchd a lìonadh...",
+    "closeArchive": "Dùin an tasglann",
+    "activityActions": "Gnìomhan-gnìomhachd",
+    "ongoing": "A’ dol air adhart",
+    "emptyInviteSearchHint": "Nach urrainn dhut an neach a tha thu a’ sireadh a lorg? Dh’fhaodadh gum feum iad leigeil leis a’ phròifil aca a bhith ri lorg ann an rannsachadh. Thoir sùil air Deasaich Pròifil ann an Roghainnean."
 }

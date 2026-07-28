@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-21 13:05:37.098619",
+    "@@last_modified": "2026-07-27 15:36:05.245815",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8929,12 +8929,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "ไม่เห็นคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องตั้งค่าโปรไฟล์ให้เป็นสาธารณะในการตั้งค่าเรียนรู้",
     "suggestedVocab": "คำศัพท์ที่แนะนำ",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10322,5 +10317,12 @@
     "joinCourseWithTitle": "เข้าร่วม \"{title}\"",
     "searchCoursePlans": "ค้นหาแผนการเรียน",
     "searchPublicCourses": "ค้นหาคอร์สสาธารณะ",
-    "closeSearch": "ปิดการค้นหา"
+    "closeSearch": "ปิดการค้นหา",
+    "subscriptionsNotAvailableInApp": "ไม่สามารถซื้อการสมัครสมาชิกในแอปได้",
+    "subscribeOnTheWeb": "คุณสามารถสมัครสมาชิกได้ทางเว็บไซต์ที่ pangea.chat",
+    "waitingToFillOneRole": "กำลังรอเติม 1 บทบาท...",
+    "closeArchive": "ปิดคลังเก็บ",
+    "activityActions": "การดำเนินการกิจกรรม",
+    "ongoing": "กำลังดำเนินการ",
+    "emptyInviteSearchHint": "ไม่พบคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องอนุญาตให้โปรไฟล์ของพวกเขาถูกค้นพบในการค้นหา ตรวจสอบแก้ไขโปรไฟล์ในการตั้งค่า"
 }

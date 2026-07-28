@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-21 13:05:29.249740",
+    "@@last_modified": "2026-07-27 15:35:54.706234",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8607,12 +8607,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "لا ترى من تبحث عنه؟ قد يحتاجون إلى ضبط ملفهم الشخصي ليكون عامًا في إعدادات التعلم",
     "suggestedVocab": "المفردات المقترحة",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9996,5 +9991,12 @@
     "joinCourseWithTitle": "انضم إلى \"{title}\"",
     "searchCoursePlans": "البحث في خطط الدورة التدريبية",
     "searchPublicCourses": "البحث في الدورات التدريبية العامة",
-    "closeSearch": "إغلاق البحث"
+    "closeSearch": "إغلاق البحث",
+    "subscriptionsNotAvailableInApp": "لا يمكن شراء الاشتراكات من داخل التطبيق",
+    "subscribeOnTheWeb": "يمكنك الاشتراك عبر الويب على pangea.chat",
+    "waitingToFillOneRole": "في انتظار شغل وظيفة واحدة...",
+    "closeArchive": "إغلاق الأرشيف",
+    "activityActions": "إجراءات النشاط",
+    "ongoing": "جارٍ",
+    "emptyInviteSearchHint": "لا يمكنك العثور على من تبحث عنه؟ قد يحتاجون إلى السماح بالعثور على ملفهم الشخصي في البحث. تحقق من تعديل الملف الشخصي في الإعدادات."
 }

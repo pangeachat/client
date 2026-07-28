@@ -2712,6 +2712,8 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Open",
     "@open": {},
+    "ongoing": "Ongoing",
+    "@ongoing": {},
     "waitingForServer": "Waiting for server...",
     "@waitingForServer": {},
     "newChatRequest": "📩 New chat request",
@@ -3027,6 +3029,8 @@
     "getAccess": "Subscribe now!",
     "subscriptionDesc": "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.",
     "subscriptionManagement": "Subscription Management",
+    "subscriptionsNotAvailableInApp": "Subscriptions can't be purchased in the app",
+    "subscribeOnTheWeb": "You can subscribe on the web at pangea.chat",
     "currentSubscription": "Current Subscription",
     "cancelSubscription": "Cancel your subscription",
     "selectYourPlan": "Select Your Plan",
@@ -4345,7 +4349,6 @@
         }
     },
     "youSentActivitySummary": "You sent an activity summary",
-    "emptyInviteSearchHint": "Don't see who you're looking for? They may need to set their profile to public in Learning Settings",
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
@@ -4490,6 +4493,7 @@
     },
     "suggestion": "Pick the best Suggestion",
     "completeActivityButton": "I'm done!",
+    "activityActions": "Activity actions",
     "shorterName": "Please limit name length to 50 characters or fewer.",
     "enterAName": "Please enter a name.",
     "writingAssistanceNoSub": "Writing assistance",
@@ -4777,5 +4781,8 @@
     },
     "searchCoursePlans": "Search course plans",
     "searchPublicCourses": "Search public courses",
-    "closeSearch": "Close search"
+    "closeSearch": "Close search",
+    "closeArchive": "Close archive",
+    "waitingToFillOneRole": "Waiting to fill 1 role...",
+    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }

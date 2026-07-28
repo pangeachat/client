@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-21 13:05:33.657283",
+    "@@last_modified": "2026-07-27 15:35:59.867645",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9078,12 +9078,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nematai, ko ieškai? Galbūt jie turi nustatyti savo profilį kaip viešą Mokymosi nustatymuose",
     "suggestedVocab": "Siūlomas žodynas",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10471,5 +10466,12 @@
     "joinCourseWithTitle": "Prisijungti prie „{title}“",
     "searchCoursePlans": "Ieškoti kursų planų",
     "searchPublicCourses": "Ieškoti viešųjų kursų",
-    "closeSearch": "Uždaryti paiešką"
+    "closeSearch": "Uždaryti paiešką",
+    "subscriptionsNotAvailableInApp": "Prenumeratų negalima įsigyti programėlėje",
+    "subscribeOnTheWeb": "Galite prenumeruoti internetu adresu pangea.chat",
+    "waitingToFillOneRole": "Laukiama, kol bus užimta 1 rolė...",
+    "closeArchive": "Uždaryti archyvą",
+    "activityActions": "Veiklos veiksmai",
+    "ongoing": "Vykdoma",
+    "emptyInviteSearchHint": "Nerandate, ko ieškote? Gali būti, kad jie turi leisti savo profilį rasti paieškoje. Patikrinkite „Redaguoti profilį“ nustatymuose."
 }

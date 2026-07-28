@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:35.318470",
+    "@@last_modified": "2026-07-27 15:36:02.759008",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Não vê quem está procurando? Eles podem precisar definir o perfil como público nas Configurações de Aprendizado",
     "suggestedVocab": "Vocabulário sugerido",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9690,5 +9685,12 @@
     "joinCourseWithTitle": "Entrar em \"{title}\"",
     "searchCoursePlans": "Buscar planos de curso",
     "searchPublicCourses": "Buscar cursos públicos",
-    "closeSearch": "Fechar pesquisa"
+    "closeSearch": "Fechar pesquisa",
+    "subscriptionsNotAvailableInApp": "Assinaturas não podem ser compradas no aplicativo",
+    "subscribeOnTheWeb": "Você pode assinar pela web em pangea.chat",
+    "waitingToFillOneRole": "Aguardando preencher 1 função...",
+    "closeArchive": "Fechar arquivo",
+    "activityActions": "Ações de atividade",
+    "ongoing": "Em andamento",
+    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que a pessoa precise permitir que o perfil dela seja encontrado na busca. Verifique Editar Perfil em Configurações."
 }

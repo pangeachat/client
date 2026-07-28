@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:38.007196",
+    "@@last_modified": "2026-07-27 15:36:06.927518",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8403,12 +8403,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要在學習設置中將其個人資料設置為公開",
     "suggestedVocab": "建議詞彙",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9796,5 +9791,12 @@
     "joinCourseWithTitle": "加入「{title}」",
     "searchCoursePlans": "搜尋課程計畫",
     "searchPublicCourses": "搜尋公開課程",
-    "closeSearch": "關閉搜尋"
+    "closeSearch": "關閉搜尋",
+    "subscriptionsNotAvailableInApp": "無法在應用程式內購買訂閱",
+    "subscribeOnTheWeb": "您可以在 pangea.chat 網站上訂閱",
+    "waitingToFillOneRole": "正在等待填補 1 個職位…",
+    "closeArchive": "關閉存檔",
+    "activityActions": "活動動作",
+    "ongoing": "進行中",
+    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。"
 }

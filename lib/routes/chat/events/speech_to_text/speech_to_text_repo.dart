@@ -25,4 +25,12 @@ class SpeechToTextRepo
   @override
   Future<Response> fetch(Requests req, SpeechToTextRequestModel request) =>
       req.post(url: PApiUrls.speechToText, body: request.toJson());
+
+  /// Never memoize an exhausted-fallback response (`results: []`, HTTP 200).
+  /// It parses to a valid-but-empty model since R0-2; caching it would pin a
+  /// "no transcript" answer for the full 10-minute `cacheDuration` and starve
+  /// the retry the next tap would otherwise make.
+  @override
+  bool shouldCache(SpeechToTextResponseModel response) =>
+      response.results.isNotEmpty;
 }

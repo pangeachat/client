@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-21 13:05:38.184844",
+    "@@last_modified": "2026-07-27 15:36:06.926324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "איר האָט צוגעלייגט אַן אַקטיוויטעט פּלאַן",
     "userSentActivitySummary": "{username} האָט געשיקט אַן אַקטיוויטעט קיצער",
     "youSentActivitySummary": "איר האָט געשיקט אַן אַקטיוויטעט קיצער",
-    "emptyInviteSearchHint": "זעט איר נישט וועמען איר זוכט? זיי דאַרפֿן אפֿשר צו שטעלן זייער פּראָפיל צו עפֿנטלעך אין לערנען סעטטינגס",
     "clickOnEmailLinkDesc": "ביטע קליקט אויפֿן לינק אין דער אימעיל און דערנאָך גייט ווײַטער. קאָנטראָלירט אייער ספּאַם טעקע אויב די אימעיל איז נישט אָנגעקומען.",
     "didntReceiveEmail": "האָט איר נישט באַקומען די אימעיל?",
     "resend": "שיקן ווידער",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "בייטרעטן \"{title}\"",
     "searchCoursePlans": "זוכן קורס פּלענער",
     "searchPublicCourses": "זוכן עפֿנטלעכע קורסן",
-    "closeSearch": "שליסן זוכן"
+    "closeSearch": "שליסן זוכן",
+    "subscriptionsNotAvailableInApp": "סובסקריפּציעס קענען ניט זיין געקויפט אין דער אַפּ",
+    "subscribeOnTheWeb": "איר קענט זיך סובסקריבירן אויפן וועב ביי pangea.chat",
+    "waitingToFillOneRole": "וואַרטן צו פֿאַרענדיקן 1 ראָלע...",
+    "closeArchive": "פֿאַרמאַכן אַרכיוו",
+    "activityActions": "אַקטיוויטעט אַקשאַנז",
+    "ongoing": "אָנגייענדיק",
+    "emptyInviteSearchHint": "קענסט נישט געפֿינען וועמען דו זוכסט? זיי דאַרפֿן אפֿשר דערלויבן זייער פּראָפֿיל צו ווערן געפֿונען אין זוך. קוק אין רעדאַקטירן פּראָפֿיל אין סעטטינגס."
 }

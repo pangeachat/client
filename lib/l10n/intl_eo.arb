@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:30.279445",
+    "@@last_modified": "2026-07-27 15:35:55.925614",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9248,12 +9248,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidas, kion vi serĉas? Ili eble bezonas agordi sian profilon al publika en Lernaj Agordoj",
     "suggestedVocab": "Sugerita vortaro",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10641,5 +10636,12 @@
     "joinCourseWithTitle": "Aliĝi al \"{title}\"",
     "searchCoursePlans": "Serĉi kursplanojn",
     "searchPublicCourses": "Serĉi publikajn kursojn",
-    "closeSearch": "Fermi serĉon"
+    "closeSearch": "Fermi serĉon",
+    "subscriptionsNotAvailableInApp": "Abonoj ne aĉeteblas en la aplikaĵo",
+    "subscribeOnTheWeb": "Vi povas aboni per la retejo ĉe pangea.chat",
+    "waitingToFillOneRole": "Atendante plenigi 1 rolon...",
+    "closeArchive": "Fermi arkivon",
+    "activityActions": "Agadoj",
+    "ongoing": "Daŭranta",
+    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj."
 }

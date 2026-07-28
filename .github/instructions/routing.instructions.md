@@ -88,14 +88,31 @@ type is whose master) and keeps the given order for pairs the registry does not
 relate. That is the whole compatibility story: **the client is the only
 producer of its URLs, so retired shapes and spellings are simply deleted, not
 redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). The inbound URL
-contracts are two bare single-segment links — the shareable standalone activity
-link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join
-code) — which
+maintained (a deliberate call at current scale, #7467). Three inbound URL
+contracts arrive from outside the client. Two are bare single-segment links —
+the shareable standalone activity link (`/<uuid>`) and the course join link
+(`/<code>`, a seven-character join code) — which
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into their `activity` / `addcourse:private/<code>` tokens before render. Both
-are just app URLs the SPA serves directly; the older `/join_with_link` and
-`/join` join-link spellings are retired.
+into their `activity` / `addcourse:private/<code>` tokens before render. The
+third, the DM invite link (`/invite_user/<id>`), resolves through its own route
+rather than a fold — see [Ids in URLs](#ids-in-urls). All are just app URLs the
+SPA serves directly; the older `/join_with_link` and `/join` join-link
+spellings are retired.
+
+## Ids in URLs
+
+Room ids (`!abc:domain`) and user ids (`@abc:domain`) both ride URLs as bare
+localparts when they're on the home server — shorter, more legible links — and
+in full when they're not, so a foreign-homeserver id stays resolvable without
+guessing which domain to attach.
+[`shortRoomId`/`fullRoomId`](../../lib/features/navigation/room_id_url.dart)
+and [`shortUserId`/`fullUserId`](../../lib/features/navigation/user_id_url.dart)
+are the shared pair for this: short on write, full on read, a no-op on ids that
+already carry a foreign domain. `shortenHomeRoomIdsInUrl` applies the room-id
+form across an entire location string (path and query) as part of the
+top-level redirect, so a room id is shortened regardless of how it ends up in a
+URL; user ids only ride the one DM invite link today, so `shortUserId` /
+`fullUserId` apply directly at that link's write and read sites.
 
 ## The core model
 
@@ -544,13 +561,6 @@ render fact only — the token, allocator slot, and history behave exactly as
 before. The nav widget is not accessible while one of these surfaces is
 focused. (The activity *plan* is not one of
 these — it rides the cavity at half height, its pin visible above.)
-**Route-driven center-detail pages** — a course-wizard step, a public-course
-preview, a chat archive, the new-private-chat form — are full-screen surfaces
-too: they are task flows carrying their own app-bar navigation, so the nav
-widget hides and no analytics chrome shows at all (they neither inset below
-the bar the way right panels do, nor share the screen with floating chrome —
-see the surface table under
-[Single-column analytics nav bar](#single-column-analytics-nav-bar)).
 
 **The 4 rail items, opened (Figma):**
 - [World default state](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515&t=NJSsG23tsR9Kdwlz-0)
@@ -594,7 +604,6 @@ button that opens the analytics summary panel — whose header is the full bar).
 | Map pin preview sheet | Full |
 | Right panels (analytics summary/tabs, word/grammar details, settings) | Full — the bar IS their navigation and heads them |
 | Live chat room / launched activity session / session review | Avatar, in the chat's app bar |
-| Route-driven detail pages (course wizard, public-course preview, chat archive, new DM form) | None — they carry their own app-bar navigation |
 
 **Single-column mutual close.** Sibling-closing is per-column on web, but on
 one column a SECTION sheet (the chat list, the Courses hub, a course card, an

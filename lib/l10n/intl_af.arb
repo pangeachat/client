@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-21 13:05:29.276429",
+    "@@last_modified": "2026-07-27 15:35:54.613178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Jy het 'n aktiwiteitsplan bygevoeg",
     "userSentActivitySummary": "{username} het 'n aktiwiteitsopsomming gestuur",
     "youSentActivitySummary": "Jy het 'n aktiwiteitsopsomming gestuur",
-    "emptyInviteSearchHint": "Sien jy nie wie jy soek nie? Hulle moet dalk hul profiel op publiek stel in Leerinstellings",
     "clickOnEmailLinkDesc": "Klik asseblief op die skakel in die e-pos en gaan dan voort. Gaan jou gemorsposlêer na as die e-pos nie opgedaag het nie.",
     "didntReceiveEmail": "Het jy nie die e-pos ontvang nie?",
     "resend": "Stuur weer",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Sluit aan by \"{title}\"",
     "searchCoursePlans": "Soek kursusplanne",
     "searchPublicCourses": "Soek publieke kursusse",
-    "closeSearch": "Sluit soektog"
+    "closeSearch": "Sluit soektog",
+    "subscriptionsNotAvailableInApp": "Intekeninge kan nie in die toepassing gekoop word nie",
+    "subscribeOnTheWeb": "Jy kan op die web inteken by pangea.chat",
+    "waitingToFillOneRole": "Wag om 1 rol te vul ...",
+    "closeArchive": "Maak argief toe",
+    "activityActions": "Aktiwiteitaksies",
+    "ongoing": "Deurlopend",
+    "emptyInviteSearchHint": "Kan jy nie vind wie jy soek nie? Hulle moet dalk toelaat dat hul profiel in soektogte gevind word. Gaan na Wysig Profiel in Instellings."
 }

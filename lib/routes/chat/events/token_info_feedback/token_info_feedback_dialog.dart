@@ -86,6 +86,10 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     );
 
     if (requestData.fullText != null && event != null) {
+      // No dosage message-envelope emit here: this is an EDIT/re-send of an
+      // already-counted message (token-feedback correction), not a new learner
+      // turn — emitting would double-count. A.3 reconciles turns from the
+      // event_log by distinct message, so the original send already counts.
       await event!.room.pangeaSendTextEvent(
         requestData.fullText!,
         editEventId: event!.eventId,

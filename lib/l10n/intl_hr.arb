@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-21 13:05:31.605596",
+    "@@last_modified": "2026-07-27 15:35:57.754773",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8733,12 +8733,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidite koga tražite? Možda trebaju postaviti svoj profil na javno u postavkama učenja",
     "suggestedVocab": "Preporučena vokabular",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10126,5 +10121,12 @@
     "joinCourseWithTitle": "Pridruži se \"{title}\"",
     "searchCoursePlans": "Pretražite planove tečajeva",
     "searchPublicCourses": "Pretražite javne tečajeve",
-    "closeSearch": "Zatvori pretraživanje"
+    "closeSearch": "Zatvori pretraživanje",
+    "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
+    "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
+    "closeArchive": "Zatvori arhivu",
+    "activityActions": "Radnje aktivnosti",
+    "ongoing": "U tijeku",
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama."
 }

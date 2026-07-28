@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-21 13:05:35.873959",
+    "@@last_modified": "2026-07-27 15:36:03.601911",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9248,12 +9248,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nevidíte, koho hľadáte? Možno si musia nastaviť svoj profil na verejný v nastaveniach učenia",
     "suggestedVocab": "Navrhovaná slovná zásoba",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10641,5 +10636,12 @@
     "joinCourseWithTitle": "Pripojiť sa k „{title}“",
     "searchCoursePlans": "Hľadať študijné plány",
     "searchPublicCourses": "Hľadať verejné kurzy",
-    "closeSearch": "Zavrieť vyhľadávanie"
+    "closeSearch": "Zavrieť vyhľadávanie",
+    "subscriptionsNotAvailableInApp": "Predplatné nie je možné zakúpiť v aplikácii",
+    "subscribeOnTheWeb": "Môžete sa prihlásiť na odber na webe na adrese pangea.chat",
+    "waitingToFillOneRole": "Čaká sa na obsadenie 1 roly...",
+    "closeArchive": "Zavrieť archív",
+    "activityActions": "Akcie aktivity",
+    "ongoing": "Prebieha",
+    "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach."
 }

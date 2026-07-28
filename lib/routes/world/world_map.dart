@@ -228,6 +228,10 @@ class WorldMapController extends State<WorldMap>
             _maybeRebuildObjectiveCache(client);
             _recomputePinged(client);
             _discoverCoursemateSessions(client);
+            // Keep the "can't start" count live: a new invite/join changes the
+            // members available to fill roles, so re-fetch (rate-limited by this
+            // handler) — a dimmed pin un-dims once enough people are in.
+            _refreshCourseAvailableParticipants();
           });
     }
 
@@ -344,6 +348,8 @@ class WorldMapController extends State<WorldMap>
 
   WorldMapFilter get filter => _filterState.filter;
   Map<String, PinSignals> get signals => _pinsManager.signals;
+  int? get courseAvailableParticipants =>
+      _pinsManager.courseAvailableParticipants;
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
@@ -384,6 +390,30 @@ class WorldMapController extends State<WorldMap>
     if (client == null) return;
     _pinsManager.recomputeProgress(client);
     if (mounted) setState(() {});
+  }
+
+  /// Refresh the course participant count that dims `available` pins: course
+  /// scope with a joined room → fetch it; otherwise clear. Rebuilds only when
+  /// the count actually changes, so it's cheap to call on every sync — a new
+  /// invite/join updates it within the sync rate-limit window.
+  Future<void> _refreshCourseAvailableParticipants() async {
+    final client = _client;
+    if (client == null) return;
+    final mapContext = MapContextController.notifier.value;
+    final courseRoom = mapContext is CourseMapContext
+        ? client.joinedCourseRooms.firstWhereOrNull(
+            (r) => r.coursePlan?.uuid == mapContext.coursePlanId,
+          )
+        : null;
+    final before = _pinsManager.courseAvailableParticipants;
+    if (courseRoom == null) {
+      _pinsManager.clearCourseAvailableParticipants();
+    } else {
+      await _pinsManager.loadCourseAvailableParticipants(courseRoom);
+    }
+    if (mounted && _pinsManager.courseAvailableParticipants != before) {
+      setState(() {});
+    }
   }
 
   Future<void> _rebuildObjectiveCache(Client client) async {
@@ -452,12 +482,17 @@ class WorldMapController extends State<WorldMap>
           setState(() {});
 
           _fitToContext(debounce: debounceFit);
+
+          // The "not enough members to start" count that dims available pins
+          // (course-only; also refreshed on room sync — see the onSync handler).
+          await _refreshCourseAvailableParticipants();
         } catch (_) {
           // Map stays usable without activity pins.
         }
         return;
       case WorldMapContext():
         _pinsManager.resetScopedCourseOutline();
+        _pinsManager.clearCourseAvailableParticipants();
         loadWorldPins();
         return;
     }
@@ -634,6 +669,7 @@ class WorldMapController extends State<WorldMap>
               padding: _exposedCanvasPadding,
               maxZoom: mapController.camera.zoom,
             ),
+            anchor: point,
           );
           return;
         }
@@ -677,6 +713,7 @@ class WorldMapController extends State<WorldMap>
                 ? mapController.camera.zoom
                 : WorldMapConstants.focusZoom,
           ),
+          anchor: point,
         );
         return;
       }
@@ -698,17 +735,24 @@ class WorldMapController extends State<WorldMap>
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
   /// `fitCamera`). [CameraFit.fit] resolves the target center+zoom without
-  /// moving; we tween to it.
-  void _animateFit(CameraFit fit) {
+  /// moving; we tween to it. [anchor] is the pin the fit is centering (if any);
+  /// it steers the pan's east/west direction so the pin stays on screen for
+  /// the whole glide (#7880, [WorldMapConstants.panTargetLongitude]).
+  void _animateFit(CameraFit fit, {LatLng? anchor}) {
     final target = fit.fit(mapController.camera);
-    _animateCameraTo(target.center, target.zoom);
+    _animateCameraTo(target.center, target.zoom, anchor: anchor);
   }
 
   /// Tween the camera center + zoom to the target. The glide length scales with
   /// the zoom distance ([WorldMapConstants.glideDurationFor]) and pan/zoom are
   /// staggered so the pan runs at the wider zoom (#7239). Re-targets cleanly if
   /// called mid-flight (the glide restarts from the current position).
-  void _animateCameraTo(LatLng center, double zoom) {
+  ///
+  /// [anchor]: the pin being brought into view, if the move is about one. The
+  /// stored target longitude is UNWRAPPED so the tween's direction carries the
+  /// anchor's on-screen copy directly to its resting spot instead of taking a
+  /// path that throws it off screen (#7880).
+  void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
@@ -716,9 +760,17 @@ class WorldMapController extends State<WorldMap>
       } catch (_) {}
       return;
     }
-    _camStart = mapController.camera.center;
+    final start = mapController.camera.center;
+    _camStart = start;
     _camStartZoom = mapController.camera.zoom;
-    _camTarget = center;
+    _camTarget = LatLng(
+      center.latitude,
+      WorldMapConstants.panTargetLongitude(
+        start: start.longitude,
+        target: center.longitude,
+        anchor: anchor?.longitude,
+      ),
+    );
     _camTargetZoom = zoom;
     anim
       ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
@@ -738,13 +790,11 @@ class WorldMapController extends State<WorldMap>
       _camTargetZoom,
     );
     final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
-    // Pan longitude along the shortest angular direction so a pin near the
-    // antimeridian glides toward its visible on-screen position (#7880).
-    final lng = WorldMapConstants.lerpLongitude(
-      start.longitude,
-      end.longitude,
-      p.pan,
-    );
+    // A plain linear tween: the direction decision (which world-copy of the
+    // target to fly to, so the focused pin stays on screen) was already baked
+    // into the UNWRAPPED target longitude by [_animateCameraTo] (#7880).
+    // Mid-tween values may exceed +-180; `move` re-normalizes each frame.
+    final lng = start.longitude + (end.longitude - start.longitude) * p.pan;
     final zoom = _camStartZoom + (_camTargetZoom - _camStartZoom) * p.zoom;
     try {
       mapController.move(LatLng(lat, lng), zoom);

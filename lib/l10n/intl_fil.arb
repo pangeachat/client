@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-21 13:05:31.631095",
+    "@@last_modified": "2026-07-27 15:35:56.514347",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9163,12 +9163,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Hindi mo makita ang hinahanap mo? Maaaring kailanganin nilang itakda ang kanilang profile sa pampubliko sa Mga Setting ng Pagkatuto",
     "suggestedVocab": "Inirerekomendang bokabularyo",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10556,5 +10551,12 @@
     "joinCourseWithTitle": "Sumali sa \"{title}\"",
     "searchCoursePlans": "Maghanap ng mga plano ng kurso",
     "searchPublicCourses": "Maghanap ng mga pampublikong kurso",
-    "closeSearch": "Isara ang paghahanap"
+    "closeSearch": "Isara ang paghahanap",
+    "subscriptionsNotAvailableInApp": "Hindi mabibili ang mga subscription sa app",
+    "subscribeOnTheWeb": "Maaari kang mag-subscribe sa web sa pangea.chat",
+    "waitingToFillOneRole": "Naghihintay na mapunan ang 1 role...",
+    "closeArchive": "Isara ang archive",
+    "activityActions": "Mga aksyon sa aktibidad",
+    "ongoing": "Kasalukuyan",
+    "emptyInviteSearchHint": "Hindi mahanap ang hinahanap mo? Maaaring kailangan nilang payagan na makita ang kanilang profile sa paghahanap. Tingnan ang I-edit ang Profile sa Mga Setting."
 }

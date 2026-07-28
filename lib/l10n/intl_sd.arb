@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-21 13:05:35.803003",
+    "@@last_modified": "2026-07-27 15:36:03.627354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "توهان هڪ سرگرمي جو منصوبو شامل ڪيو",
     "userSentActivitySummary": "{username} هڪ سرگرمي جو خلاصو موڪليو",
     "youSentActivitySummary": "توهان هڪ سرگرمي جو خلاصو موڪليو",
-    "emptyInviteSearchHint": "جنهن کي توهان ڳولي رهيا آهيو، اهو نه مليو؟ انهن کي شايد پنهنجي پروفائيل کي سکيا جي سيٽنگن ۾ عوامي ڪرڻ جي ضرورت پوي.",
     "clickOnEmailLinkDesc": "مهرباني ڪري اي ميل ۾ ڏنل لنڪ تي ڪلڪ ڪريو ۽ پوءِ اڳتي وڌو. جيڪڏهن اي ميل نه پهتي آهي ته پنهنجو اسپام فولڊر چيڪ ڪريو.",
     "didntReceiveEmail": "اي ميل نه ملي؟",
     "resend": "ٻيهر موڪليو",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "\"{title}\" ۾ شامل ٿيو",
     "searchCoursePlans": "ڪورس پلان ڳوليو",
     "searchPublicCourses": "عوامي ڪورس ڳوليو",
-    "closeSearch": "ڳولا بند ڪريو"
+    "closeSearch": "ڳولا بند ڪريو",
+    "subscriptionsNotAvailableInApp": "رڪنيت ايپ ۾ خريد نه ٿي ڪري سگهجي",
+    "subscribeOnTheWeb": "توهان pangea.chat تي ويب تي رڪنيت حاصل ڪري سگهو ٿا",
+    "waitingToFillOneRole": "هڪ ڪردار ڀرڻ جو انتظار آهي...",
+    "closeArchive": "آرڪائيو بند ڪريو",
+    "activityActions": "سرگرميءَ جون ڪارروايون",
+    "ongoing": "جاري",
+    "emptyInviteSearchHint": "جنهن کي ڳولي رهيا آهيو، اهو نه ملي رهيو آهي؟ ٿي سگهي ٿو انهن کي پنهنجي پروفائيل کي ڳولڻ جي اجازت ڏيڻ جي ضرورت پوي. سيٽنگز ۾ پروفائيل ايڊٽ ڪريو چيڪ ڪريو."
 }

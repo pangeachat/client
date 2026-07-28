@@ -42,7 +42,9 @@ class AddCourseTile extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: theme.colorScheme.primary),
+              border: onTap != null
+                  ? Border.all(color: theme.colorScheme.primary)
+                  : null,
             ),
             child: Column(
               spacing: 12.0,

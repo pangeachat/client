@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-21 13:05:30.978762",
+    "@@last_modified": "2026-07-27 15:35:57.112045",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Jo hawwe in aktiviteitsplan tafoege",
     "userSentActivitySummary": "{username} hat in aktiviteitsoersjoch stjoerd",
     "youSentActivitySummary": "Jo hawwe in aktiviteitsoersjoch stjoerd",
-    "emptyInviteSearchHint": "Kinne jo net fine wa't jo sykje? It kin wêze dat se har profyl iepenbier sette moatte yn Learynstellingen",
     "clickOnEmailLinkDesc": "Klikje asjebleaft op de keppeling yn de e-mail en gean dan fierder. Kontrolearje jo spamboks as de e-mail net oankommen is.",
     "didntReceiveEmail": "De e-mail net ûntfongen?",
     "resend": "Op 'e nij ferstjoere",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Doch mei oan \"{title}\"",
     "searchCoursePlans": "Sykje kursusplannen",
     "searchPublicCourses": "Sykje iepenbiere kursussen",
-    "closeSearch": "Sykje slute"
+    "closeSearch": "Sykje slute",
+    "subscriptionsNotAvailableInApp": "Abonneminten kinne net yn 'e app kocht wurde",
+    "subscribeOnTheWeb": "Jo kinne abonnearje op it web op pangea.chat",
+    "waitingToFillOneRole": "Wachtsje op it ynfoljen fan 1 rol ...",
+    "closeArchive": "Argyf slute",
+    "activityActions": "Aktiviteitsaksjes",
+    "ongoing": "Oanhâldend",
+    "emptyInviteSearchHint": "Kinst net fine wa'tst sykst? Se moatte miskien harren profyl tastien hawwe om fûn te wurden yn sykopdrachten. Kontrolearje Profyl Bewurkje yn Ynstellings."
 }

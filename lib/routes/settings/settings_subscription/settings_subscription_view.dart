@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -27,6 +28,7 @@ class SettingsSubscriptionView extends StatelessWidget {
   final Future<void> Function() onEnterDiscountCode;
   final Future<void> Function(ProductPlan) onTapSubscription;
   final ValueNotifier<ProductPlan?> selectedSubscription;
+  final PurchasePresentation purchasePresentation;
 
   const SettingsSubscriptionView({
     super.key,
@@ -37,6 +39,7 @@ class SettingsSubscriptionView extends StatelessWidget {
     required this.onEnterDiscountCode,
     required this.onTapSubscription,
     required this.selectedSubscription,
+    required this.purchasePresentation,
   });
 
   @override
@@ -142,6 +145,8 @@ class SettingsSubscriptionView extends StatelessWidget {
                                 showTrialInfo: activeTrial != null,
                                 trialDescription: activeTrial
                                     ?.paymentPeriodDescription(l10n),
+                                showSubscriptionCard: !subscriptionStatus
+                                    .onlyActiveEntitlementIsTrial,
                                 subscriptionTitle:
                                     displayEntitlement?.subscriptionTitle(
                                       l10n,
@@ -158,8 +163,12 @@ class SettingsSubscriptionView extends StatelessWidget {
                                 productsState: productsState,
                                 selectedSubscription: selectedSubscription,
                                 onEnterDiscountCode: onEnterDiscountCode,
+                                showSubscriptionOptions: subscriptionStatus
+                                    .onlyActiveEntitlementIsTrial,
+                                purchasePresentation: purchasePresentation,
                               )
-                            : SubscriptionOptions(
+                            : _SubscriptionOptionsByPurchasePresentation(
+                                purchasePresentation,
                                 onEnterDiscountCode: onEnterDiscountCode,
                                 onTapSubscription: onTapSubscription,
                                 productsState: productsState,
@@ -195,6 +204,8 @@ class FullAccessContent extends StatelessWidget {
   final AsyncState<List<ProductPlan>> productsState;
   final ValueNotifier<ProductPlan?> selectedSubscription;
 
+  final PurchasePresentation purchasePresentation;
+
   const FullAccessContent({
     super.key,
     this.showTrialInfo = false,
@@ -209,6 +220,7 @@ class FullAccessContent extends StatelessWidget {
     required this.onTapSubscription,
     required this.productsState,
     required this.selectedSubscription,
+    required this.purchasePresentation,
   });
 
   @override
@@ -269,7 +281,8 @@ class FullAccessContent extends StatelessWidget {
             ),
           ),
         if (showSubscriptionOptions)
-          SubscriptionOptions(
+          _SubscriptionOptionsByPurchasePresentation(
+            purchasePresentation,
             onEnterDiscountCode: onEnterDiscountCode,
             onTapSubscription: onTapSubscription,
             productsState: productsState,
@@ -277,5 +290,66 @@ class FullAccessContent extends StatelessWidget {
           ),
       ],
     );
+  }
+}
+
+/// Non-US Android: names the web as the place to subscribe, with no tappable
+/// link and no in-app checkout (Play's linkless-information allowance).
+class _WebPurchaseNotice extends StatelessWidget {
+  const _WebPurchaseNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      L10n.of(context).subscribeOnTheWeb,
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.bodyLarge,
+    );
+  }
+}
+
+/// Non-US iOS: a neutral notice that names no destination (Apple 3.1.1).
+class _PurchaseUnavailableNotice extends StatelessWidget {
+  const _PurchaseUnavailableNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      L10n.of(context).subscriptionsNotAvailableInApp,
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.bodyLarge,
+    );
+  }
+}
+
+class _SubscriptionOptionsByPurchasePresentation extends StatelessWidget {
+  final PurchasePresentation purchasePresentation;
+
+  final Future<void> Function() onEnterDiscountCode;
+  final Future<void> Function(ProductPlan) onTapSubscription;
+
+  final AsyncState<List<ProductPlan>> productsState;
+  final ValueNotifier<ProductPlan?> selectedSubscription;
+
+  const _SubscriptionOptionsByPurchasePresentation(
+    this.purchasePresentation, {
+    required this.onEnterDiscountCode,
+    required this.onTapSubscription,
+    required this.productsState,
+    required this.selectedSubscription,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return switch (purchasePresentation) {
+      PurchasePresentation.full => SubscriptionOptions(
+        onEnterDiscountCode: onEnterDiscountCode,
+        onTapSubscription: onTapSubscription,
+        productsState: productsState,
+        selectedSubscription: selectedSubscription,
+      ),
+      PurchasePresentation.webInfo => const _WebPurchaseNotice(),
+      PurchasePresentation.hidden => const _PurchaseUnavailableNotice(),
+    };
   }
 }

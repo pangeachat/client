@@ -2928,7 +2928,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-21 13:05:29.193152",
+    "@@last_modified": "2026-07-27 15:35:55.525874",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7640,12 +7640,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Nuk e shihni atë që po kërkoni? Ata mund të kenë nevojë të vendosin profilin e tyre në publik në Cilësimet e Mësimit",
     "suggestedVocab": "Vokabular i sugjeruar",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9301,5 +9296,12 @@
     "joinCourseWithTitle": "“{title}” ནང་ཞུགས།",
     "searchCoursePlans": "སློབ་ཚན་འཆར་གཞི་འཚོལ་བཤེར་བྱེད་པ།",
     "searchPublicCourses": "སྤྱི་བའི་སློབ་ཚན་འཚོལ་བཤེར་བྱེད་པ།",
-    "closeSearch": "འཚོལ་བཤེར་སྒོ་རྒྱོབས།"
+    "closeSearch": "འཚོལ་བཤེར་སྒོ་རྒྱོབས།",
+    "subscriptionsNotAvailableInApp": "མཉམ་ཞུགས་འདི་ཉིད་ཉེར་སྤྱོད་ནང་ཉོ་མི་ཐུབ།",
+    "subscribeOnTheWeb": "ཁྱེད་ཀྱིས་དྲ་རྒྱ་བརྒྱུད་ནས་མཉམ་ཞུགས་བྱེད་ཐུབ། pangea.chat",
+    "waitingToFillOneRole": "འགན་གཅིག་བསྐང་བར་སྒུག་བཞིན་ཡོད།",
+    "closeArchive": "ཡིག་མཛོད་སྒོ་རྒྱོབ།",
+    "activityActions": "བྱེད་སྒོའི་བྱ་བ",
+    "ongoing": "མུ་མཐུད་ནས་",
+    "emptyInviteSearchHint": "ཁྱེད་ཀྱིས་འཚོལ་བཞིན་པའི་མི་དེ་རྙེད་མ་སོང་ངམ། ཁོང་ཚོས་རང་ཉིད་ཀྱི་མི་སྒེར་གྱི་གནས་ཚུལ་འཚོལ་བཤེར་ནང་རྙེད་ཐུབ་པ་བྱེད་དགོས་ངེས་རེད། སྒྲིག་འགོད་ནང་ཡོད་པའི་མི་སྒེར་གྱི་གནས་ཚུལ་བཟོ་བཅོས་བྱེད་ས་ནས་ཞིབ་བཤེར་བྱོས།"
 }

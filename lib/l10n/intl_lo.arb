@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-21 13:05:33.958909",
+    "@@last_modified": "2026-07-27 15:36:00.252942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "ທ່ານໄດ້ເພີ່ມແຜນກິດຈະກຳ",
     "userSentActivitySummary": "{username} ໄດ້ສົ່ງບົດສະຫຼຸບກິດຈະກຳ",
     "youSentActivitySummary": "ທ່ານໄດ້ສົ່ງບົດສະຫຼຸບກິດຈະກຳ",
-    "emptyInviteSearchHint": "ບໍ່ເຫັນຄົນທີ່ທ່ານກຳລັງຊອກຫາບໍ? ພວກເຂົາອາດຈະຕ້ອງຕັ້ງຄ່າໂປຣໄຟລ໌ຂອງພວກເຂົາໃຫ້ເປັນສາທາລະນະໃນການຕັ້ງຄ່າການຮຽນຮູ້",
     "clickOnEmailLinkDesc": "ກະລຸນາກົດທີ່ລິ້ງໃນອີເມວ ແລ້ວສືບຕໍ່. ກວດເບິ່ງໂຟນເດີສະແປມຂອງທ່ານ ຖ້າອີເມວບໍ່ມາຮອດ.",
     "didntReceiveEmail": "ບໍ່ໄດ້ຮັບອີເມວບໍ?",
     "resend": "ສົ່ງຄືນ",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "ເຂົ້າຮ່ວມ \"{title}\"",
     "searchCoursePlans": "ຊອກຫາແຜນການຮຽນ",
     "searchPublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ",
-    "closeSearch": "ປິດການຊອກຫາ"
+    "closeSearch": "ປິດການຊອກຫາ",
+    "subscriptionsNotAvailableInApp": "ບໍ່ສາມາດຊື້ການສະໝັກໃຊ້ໃນແອັບໄດ້",
+    "subscribeOnTheWeb": "ທ່ານສາມາດສະໝັກໃຊ້ຜ່ານເວັບໄດ້ທີ່ pangea.chat",
+    "waitingToFillOneRole": "ລໍຖ້າການຕື່ມ 1 ບົດບາດ...",
+    "closeArchive": "ປິດບ່ອນເກັບມ້ຽນ",
+    "activityActions": "ການກະທຳຂອງກິດຈະກຳ",
+    "ongoing": "ກຳລັງດຳເນີນ",
+    "emptyInviteSearchHint": "ຊອກຫາຄົນທີ່ທ່ານຕ້ອງການບໍ່ພົບ? ພວກເຂົາອາດຈະຕ້ອງອະນຸຍາດໃຫ້ໂປຣໄຟລ໌ຂອງພວກເຂົາຖືກຄົ້ນພົບໃນການຊອກຫາ. ກວດເບິ່ງແກ້ໄຂໂປຣໄຟລ໌ໃນການຕັ້ງຄ່າ."
 }

@@ -103,6 +103,10 @@ class SettingsSubscriptionState extends State<SettingsSubscription>
           onEnterDiscountCode: _onEnterDiscountCode,
           onTapSubscription: _onTapSubscription,
           selectedSubscription: _selectedSubscription,
+          purchasePresentation: MatrixState
+              .pangeaController
+              .subscriptionController
+              .purchasePresentation,
         ),
       ),
     );

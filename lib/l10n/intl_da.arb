@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-21 13:05:29.706827",
+    "@@last_modified": "2026-07-27 15:35:55.498139",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9223,12 +9223,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ser du ikke den, du leder efter? De skal muligvis indstille deres profil til offentlig i Læringsindstillinger",
     "suggestedVocab": "Foreslået ordforråd",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10616,5 +10611,12 @@
     "joinCourseWithTitle": "Tilmeld dig \"{title}\"",
     "searchCoursePlans": "Søg i kursusplaner",
     "searchPublicCourses": "Søg i offentlige kurser",
-    "closeSearch": "Luk søgning"
+    "closeSearch": "Luk søgning",
+    "subscriptionsNotAvailableInApp": "Abonnementer kan ikke købes i appen",
+    "subscribeOnTheWeb": "Du kan abonnere på nettet på pangea.chat",
+    "waitingToFillOneRole": "Venter på at besætte 1 rolle...",
+    "closeArchive": "Luk arkiv",
+    "activityActions": "Aktivitetshandlinger",
+    "ongoing": "I gang",
+    "emptyInviteSearchHint": "Kan du ikke finde den, du leder efter? De skal muligvis tillade, at deres profil kan findes i søgningen. Tjek Rediger profil i Indstillinger."
 }

@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-21 13:05:30.456335",
+    "@@last_modified": "2026-07-27 15:35:56.499173",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8334,12 +8334,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Etkö näe etsimääsi? Heidän on ehkä asetettava profiilinsa julkiseksi Oppimisasetuksissa",
     "suggestedVocab": "Ehdotettu sanasto",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9727,5 +9722,12 @@
     "joinCourseWithTitle": "Liity kurssille \"{title}\"",
     "searchCoursePlans": "Hae kurssisuunnitelmia",
     "searchPublicCourses": "Hae julkisia kursseja",
-    "closeSearch": "Sulje haku"
+    "closeSearch": "Sulje haku",
+    "subscriptionsNotAvailableInApp": "Tilauksia ei voi ostaa sovelluksesta",
+    "subscribeOnTheWeb": "Voit tilata palvelun verkossa osoitteessa pangea.chat",
+    "waitingToFillOneRole": "Odotetaan 1 roolin täyttämistä...",
+    "closeArchive": "Sulje arkisto",
+    "activityActions": "Toimintojen toiminnot",
+    "ongoing": "Käynnissä",
+    "emptyInviteSearchHint": "Etkö löydä etsimääsi henkilöä? Hänen on ehkä sallittava profiilinsa löytyminen hausta. Tarkista Asetukset-kohdasta Muokkaa profiilia."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-21 13:05:30.968735",
+    "@@last_modified": "2026-07-27 15:35:57.077654",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Non ves a quen buscas? Pode que necesiten configurar o seu perfil como público nas Configuracións de Aprendizaxe",
     "suggestedVocab": "Vocabulario suxerido",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9690,5 +9685,12 @@
     "joinCourseWithTitle": "Unirse a \"{title}\"",
     "searchCoursePlans": "Buscar plans de curso",
     "searchPublicCourses": "Buscar cursos públicos",
-    "closeSearch": "Pechar busca"
+    "closeSearch": "Pechar busca",
+    "subscriptionsNotAvailableInApp": "As subscricións non se poden mercar na aplicación",
+    "subscribeOnTheWeb": "Podes subscribirte na web en pangea.chat",
+    "waitingToFillOneRole": "Agardando para cubrir 1 posto...",
+    "closeArchive": "Pechar arquivo",
+    "activityActions": "Accións de actividade",
+    "ongoing": "En curso",
+    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración."
 }

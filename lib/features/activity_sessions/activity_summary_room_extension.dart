@@ -18,7 +18,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension ActivitySummaryRoomExtension on Room {
-  ActivitySummaryModel? activitySummary(String langCode) {
+  ActivitySummaryModel? _activitySummary(String langCode) {
     final stateEvent = getState(PangeaEventTypes.activitySummary, langCode);
     if (stateEvent == null) return null;
 
@@ -37,7 +37,16 @@ extension ActivitySummaryRoomExtension on Room {
   ActivitySummaryModel? get activitySummaryByL1 {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
     if (l1 == null) return null;
-    return activitySummary(l1);
+    return _activitySummary(l1);
+  }
+
+  ActivitySummaryModel? get visibleActivitySummaryByL1 {
+    // account for edge case of activity summary in non-finished activity
+    if (!isActivityFinished) return null;
+
+    final l1 = MatrixState.pangeaController.userController.userL1Code;
+    if (l1 == null) return null;
+    return _activitySummary(l1);
   }
 
   Future<void> _setActivitySummary(
@@ -95,7 +104,7 @@ extension ActivitySummaryRoomExtension on Room {
 
     final List<ContentFeedbackModel> contentFeedback = [];
     if (feedback != null) {
-      final prevSummary = activitySummary(langCode);
+      final prevSummary = _activitySummary(langCode);
       if (prevSummary?.summary != null) {
         contentFeedback.add(
           ContentFeedbackModel(
@@ -120,7 +129,8 @@ extension ActivitySummaryRoomExtension on Room {
     String langCode,
   ) {
     final ActivitySummaryAnalyticsModel analytics =
-        activitySummary(langCode)?.analytics ?? ActivitySummaryAnalyticsModel();
+        _activitySummary(langCode)?.analytics ??
+        ActivitySummaryAnalyticsModel();
     for (final messageEvent in messageEvents) {
       analytics.addMessageConstructs(messageEvent);
     }
@@ -151,7 +161,7 @@ extension ActivitySummaryRoomExtension on Room {
   );
 
   Future<void> fetchSummaries(String langCode, {String? feedback}) async {
-    if (activitySummary(langCode)?.summary != null && feedback == null) return;
+    if (_activitySummary(langCode)?.summary != null && feedback == null) return;
     await _startRequestingActivitySummary(langCode);
 
     final events = await getAllEvents();
@@ -181,7 +191,7 @@ extension ActivitySummaryRoomExtension on Room {
 
     final result = await ActivitySummaryRepo.get(id, req);
     if (result.isError) {
-      if (activitySummary(langCode)?.summary == null) {
+      if (_activitySummary(langCode)?.summary == null) {
         await _stopRequestingActivitySummaryOnError(analytics, langCode);
       }
     } else {

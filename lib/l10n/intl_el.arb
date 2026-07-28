@@ -3417,7 +3417,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-21 13:05:30.096304",
+    "@@last_modified": "2026-07-27 15:35:55.916802",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9178,12 +9178,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Δεν βλέπετε αυτόν που ψάχνετε; Ίσως χρειαστεί να ρυθμίσουν το προφίλ τους σε δημόσιο στις Ρυθμίσεις Μάθησης",
     "suggestedVocab": "Προτεινόμενη λεξιλογία",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10571,5 +10566,12 @@
     "joinCourseWithTitle": "Συμμετοχή στο \"{title}\"",
     "searchCoursePlans": "Αναζήτηση προγραμμάτων μαθημάτων",
     "searchPublicCourses": "Αναζήτηση δημόσιων μαθημάτων",
-    "closeSearch": "Κλείσιμο αναζήτησης"
+    "closeSearch": "Κλείσιμο αναζήτησης",
+    "subscriptionsNotAvailableInApp": "Οι συνδρομές δεν μπορούν να αγοραστούν εντός της εφαρμογής",
+    "subscribeOnTheWeb": "Μπορείτε να εγγραφείτε στον ιστότοπο pangea.chat",
+    "waitingToFillOneRole": "Αναμονή για την πλήρωση 1 ρόλου...",
+    "closeArchive": "Κλείσιμο αρχείου",
+    "activityActions": "Ενέργειες δραστηριότητας",
+    "ongoing": "Σε εξέλιξη",
+    "emptyInviteSearchHint": "Δεν μπορείτε να βρείτε αυτόν που ψάχνετε; Ίσως χρειαστεί να επιτρέψει να βρεθεί το προφίλ του στην αναζήτηση. Ελέγξτε την Επεξεργασία Προφίλ στις Ρυθμίσεις."
 }

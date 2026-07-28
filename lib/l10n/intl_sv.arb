@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:36.872484",
+    "@@last_modified": "2026-07-27 15:36:04.340258",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8815,12 +8815,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ser du inte den du letar efter? De kanske behöver ställa in sin profil till offentlig i Lärandeinställningar",
     "suggestedVocab": "Föreslagen vokabulär",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10208,5 +10203,12 @@
     "joinCourseWithTitle": "Gå med i \"{title}\"",
     "searchCoursePlans": "Sök kursplaner",
     "searchPublicCourses": "Sök offentliga kurser",
-    "closeSearch": "Stäng sökning"
+    "closeSearch": "Stäng sökning",
+    "subscriptionsNotAvailableInApp": "Prenumerationer kan inte köpas i appen",
+    "subscribeOnTheWeb": "Du kan prenumerera på webben på pangea.chat",
+    "waitingToFillOneRole": "Väntar på att fylla 1 roll...",
+    "closeArchive": "Stäng arkiv",
+    "activityActions": "Aktivitetshändelser",
+    "ongoing": "Pågående",
+    "emptyInviteSearchHint": "Hittar du inte den du söker? De kanske måste tillåta att deras profil hittas i sökningar. Kontrollera Redigera profil i Inställningar."
 }

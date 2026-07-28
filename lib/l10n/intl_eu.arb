@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-21 13:05:30.981096",
+    "@@last_modified": "2026-07-27 15:35:56.557506",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8297,12 +8297,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ez al duzu bilatzen ari zaren pertsona ikusten? Agian, euren profila publiko ezarri behar dute Ikaskuntza Ezarpenetan",
     "suggestedVocab": "Proposatutako hiztegia",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -9690,5 +9685,12 @@
     "joinCourseWithTitle": "\"{title}\" ikastarora batu",
     "searchCoursePlans": "Ikastaro-planak bilatu",
     "searchPublicCourses": "Ikastaro publikoak bilatu",
-    "closeSearch": "Bilaketa itxi"
+    "closeSearch": "Bilaketa itxi",
+    "subscriptionsNotAvailableInApp": "Harpidetzak ezin dira aplikazioan erosi",
+    "subscribeOnTheWeb": "pangea.chat webgunean harpidetu zaitezke",
+    "waitingToFillOneRole": "Rol 1 betetzeko zain...",
+    "closeArchive": "Artxiboa itxi",
+    "activityActions": "Jarduera-ekintzak",
+    "ongoing": "Abian",
+    "emptyInviteSearchHint": "Ez duzu aurkitzen bilatzen ari zarena? Baliteke haien profilak bilaketan aurkitzea baimendu behar izatea. Egiaztatu Editatu profila Ezarpenetan."
 }

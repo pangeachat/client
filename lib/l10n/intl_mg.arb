@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-21 13:05:33.821887",
+    "@@last_modified": "2026-07-27 15:36:00.280463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Nampianao drafitra hetsika",
     "userSentActivitySummary": "Nandefa famintinana hetsika i {username}",
     "youSentActivitySummary": "Nandefa famintinana hetsika ianao",
-    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila ataony ho an'ny daholobe ny mombamomba azy ao amin'ny Fikirana Fianarana",
     "clickOnEmailLinkDesc": "Tsindrio azafady ny rohy ao amin'ny mailaka dia manohiza. Jereo ny lahatahiry spam raha toa ka tsy tonga ny mailaka.",
     "didntReceiveEmail": "Tsy nahazo mailaka?",
     "resend": "Alefaso indray",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Midira amin'ny \"{title}\"",
     "searchCoursePlans": "Tadiavo ny drafitry ny taranja",
     "searchPublicCourses": "Tadiavo ny taranja ho an'ny daholobe",
-    "closeSearch": "Akatona ny fikarohana"
+    "closeSearch": "Akatona ny fikarohana",
+    "subscriptionsNotAvailableInApp": "Tsy azo vidiana ao anatin'ny app ny famandrihana",
+    "subscribeOnTheWeb": "Afaka misoratra anarana amin'ny tranonkala ianao ao amin'ny pangea.chat",
+    "waitingToFillOneRole": "Miandry ny hamenoana toerana 1...",
+    "closeArchive": "Akatona ny tahiry",
+    "activityActions": "Hetsika atao",
+    "ongoing": "Mitohy",
+    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila mamela ny mombamomba azy ho hita amin'ny fikarohana izy. Jereo ny \"Edit Profile\" ao amin'ny \"Settings\"."
 }

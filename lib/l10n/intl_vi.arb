@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-21 13:05:37.397498",
+    "@@last_modified": "2026-07-27 15:36:05.719095",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5563,12 +5563,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Không thấy người bạn đang tìm kiếm? Họ có thể cần đặt hồ sơ của mình thành công khai trong Cài đặt Học tập",
     "suggestedVocab": "Từ vựng gợi ý",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -6956,5 +6951,12 @@
     "joinCourseWithTitle": "Tham gia \"{title}\"",
     "searchCoursePlans": "Tìm kiếm giáo trình",
     "searchPublicCourses": "Tìm kiếm khóa học công khai",
-    "closeSearch": "Đóng tìm kiếm"
+    "closeSearch": "Đóng tìm kiếm",
+    "subscriptionsNotAvailableInApp": "Không thể mua gói đăng ký trong ứng dụng",
+    "subscribeOnTheWeb": "Bạn có thể đăng ký trên web tại pangea.chat",
+    "waitingToFillOneRole": "Đang chờ điền 1 vai trò...",
+    "closeArchive": "Đóng kho lưu trữ",
+    "activityActions": "Hành động hoạt động",
+    "ongoing": "Đang diễn ra",
+    "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt."
 }

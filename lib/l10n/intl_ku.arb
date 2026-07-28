@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-21 13:05:33.274613",
+    "@@last_modified": "2026-07-27 15:36:00.150639",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "پلانی چالاکیت زیاد کرد",
     "userSentActivitySummary": "{username} پوختەی چالاکیی نارد",
     "youSentActivitySummary": "تۆ پوختەی چالاکیت نارد",
-    "emptyInviteSearchHint": "ئەو کەسە نادۆزیتەوە کە بەدوایدا دەگەڕێیت؟ لەوانەیە پێویست بکات پرۆفایلەکەیان گشتی بکەن لە ڕێکخستنەکانی فێربووندا",
     "clickOnEmailLinkDesc": "تکایە کرتە لەسەر بەستەرەکەی ناو ئیمەیڵەکە بکە و پاشان بەردەوام بە. سەیری فۆڵدەری سپامەکەت بکە ئەگەر ئیمەیڵەکە نەگەیشتبێت.",
     "didntReceiveEmail": "ئیمەیڵەکەت پێنەگەیشت؟",
     "resend": "دووبارە بنێرەوە",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "بەژداریکردن لە \"{title}\"",
     "searchCoursePlans": "پلانی خولەکان بگەڕێ",
     "searchPublicCourses": "خولە گشتییەکان بگەڕێ",
-    "closeSearch": "گەڕان دابخە"
+    "closeSearch": "گەڕان دابخە",
+    "subscriptionsNotAvailableInApp": "بەشدارییەکان ناتوانرێت لەناو ئەپەکەدا بکڕدرێن",
+    "subscribeOnTheWeb": "دەتوانیت لە ڕێگەی وێبەوە بەشداری بکەیت لە pangea.chat",
+    "waitingToFillOneRole": "چاوەڕێی پڕکردنەوەی 1 ڕۆڵ دەکەین...",
+    "closeArchive": "ئەرشیڤ دابخە",
+    "activityActions": "کردارەکانی چالاکی",
+    "ongoing": "بەردەوامە",
+    "emptyInviteSearchHint": "ناتوانیت ئەو کەسە بدۆزیتەوە کە بەدوایدا دەگەڕێیت؟ لەوانەیە پێویست بێت ڕێگە بدەن بە دۆزینەوەی پرۆفایلەکەیان لە گەڕاندا. لە دەستکاریکردنی پرۆفایل لە ڕێکخستنەکاندا بپشکنە."
 }

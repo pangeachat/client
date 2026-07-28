@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/settings_subscription_view.dart';
@@ -66,6 +67,7 @@ void main() {
               onEnterDiscountCode: () async {},
               onTapSubscription: (_) async {},
               selectedSubscription: ValueNotifier(null),
+              purchasePresentation: PurchasePresentation.full,
             ),
           ),
         ),

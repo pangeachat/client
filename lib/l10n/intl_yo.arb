@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-21 13:05:37.658247",
+    "@@last_modified": "2026-07-27 15:36:06.931826",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "O ṣafikun eto iṣẹ-ṣiṣe kan",
     "userSentActivitySummary": "{username} fi akopọ iṣẹ-ṣiṣe ranṣẹ",
     "youSentActivitySummary": "O fi akopọ iṣẹ-ṣiṣe ranṣẹ",
-    "emptyInviteSearchHint": "Ko ri ẹniti o n wa? Wọn le nilo lati ṣeto profaili wọn si gbangba ni Eto Ikẹkọ",
     "clickOnEmailLinkDesc": "Jọwọ tẹ ọna asopọ ninu imeeli lẹhinna tẹsiwaju. Ṣayẹwo folda àwúrúju rẹ ti imeeli ko ba de.",
     "didntReceiveEmail": "Ko gba imeeli naa?",
     "resend": "Tun firanṣẹ",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Darapọ mọ \"{title}\"",
     "searchCoursePlans": "Wa àwọn ètò ìkẹ́kọ̀ọ́",
     "searchPublicCourses": "Wa àwọn ìkẹ́kọ̀ọ́ gbogbo gbò",
-    "closeSearch": "Pa àwárí"
+    "closeSearch": "Pa àwárí",
+    "subscriptionsNotAvailableInApp": "Ko le ra àbáwọlé nínú app",
+    "subscribeOnTheWeb": "O le ṣe àbáwọlé lórí ayélujára ní pangea.chat",
+    "waitingToFillOneRole": "Nduro lati kun ipa 1...",
+    "closeArchive": "Pa àpamọ́",
+    "activityActions": "Àwọn iṣẹ́ ṣíṣe",
+    "ongoing": "Lọwọlọwọ",
+    "emptyInviteSearchHint": "Ṣe o ko le ri ẹni ti o n wa? Wọn le nilo lati gba laaye lati ri profaili wọn ninu wiwa. Ṣayẹwo Ṣatunṣe Profaili ninu Eto."
 }

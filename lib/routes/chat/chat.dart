@@ -32,6 +32,7 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -56,6 +57,7 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -90,10 +92,10 @@ import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
@@ -102,6 +104,7 @@ import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
@@ -123,6 +126,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
+import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -178,15 +182,18 @@ class ChatPage extends StatelessWidget {
       NavigationUtil.goToSpaceRoute(null, [], context);
     }
 
-    if (room == null || room.membership == Membership.leave) {
+    if (room == null) {
       // if (room == null) {
       // Pangea#
       return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+        appBar: AppBar(leading: backButton),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
+            child: Text(
+              L10n.of(context).youAreNoLongerParticipatingInThisChat,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       );
@@ -491,8 +498,38 @@ class ChatController extends State<ChatPageWithRoom>
     }
     for (final item in shareItems) {
       if (item is FileShareItem) continue;
-      if (item is TextShareItem) room.sendTextEvent(item.value);
-      if (item is ContentShareItem) room.sendEvent(item.value);
+      // A shared text item is a genuine learner text send into this chat, so it
+      // emits the dosage message-envelope + engagement signals once its event
+      // id resolves — same send-then-POST as the composer path.
+      if (item is TextShareItem) {
+        final String text = item.value;
+        unawaited(
+          room
+              .sendTextEvent(text)
+              .then((eventId) {
+                DosageMessageSignals.emitForSentMessage(
+                  roomId: room.id,
+                  userId: room.client.userID,
+                  deviceId: room.client.deviceID,
+                  accessToken: room.client.accessToken,
+                  msgEventId: eventId,
+                  body: text,
+                );
+              })
+              .catchError((_) {}),
+        );
+      }
+      // A forwarded text item is a genuine learner text send: emitForForwardedContent
+      // sends the content and (for text only) emits the envelope with the resolved
+      // id, so forwards aren't invisible to the live emitter.
+      if (item is ContentShareItem) {
+        unawaited(
+          DosageMessageSignals.emitForForwardedContent(
+            room,
+            item.value,
+          ).catchError((_) {}),
+        );
+      }
     }
     final files = shareItems
         .whereType<FileShareItem>()
@@ -1518,6 +1555,25 @@ class ChatController extends State<ChatPageWithRoom>
             choreo: content.choreo,
           );
 
+          // Best-effort dosage signals: a message envelope for EVERY new sent
+          // message (incl. ones with no construct) + engagement activity. Fires
+          // send-then-POST like the analytics dual-write, guarded on a resolved
+          // event id, and is a no-op unless the dosage flags are enabled.
+          // Passing editEventId makes an edit (a replacement of an existing
+          // turn) count nothing — the emitter skips it so one turn stays one
+          // envelope + one tick.
+          DosageMessageSignals.emitForSentMessage(
+            roomId: room.id,
+            userId: room.client.userID,
+            deviceId: room.client.deviceID,
+            accessToken: room.client.accessToken,
+            msgEventId: msgEventId,
+            body: message,
+            tokenCount: content.tokensSent?.tokens.length,
+            langCode: content.tokensSent?.detections?.firstOrNull?.langCode,
+            editEventId: edit?.eventId,
+          );
+
           if (previousEdit != null) {
             pangeaEditingEvent = previousEdit;
           }
@@ -1647,6 +1703,31 @@ class ChatController extends State<ChatPageWithRoom>
     String? fileName,
   ) async {
     // #Pangea
+    // Capture EVERYTHING context-derived at the ABSOLUTE TOP -- before
+    // `stopMediaStream.add` and before the FIRST await (the Android sdkInt
+    // check) -- while the context is GUARANTEED alive. Nothing context-derived
+    // is resolved after ANY await, so navigation during the send can never
+    // leave a capture (esp. `Matrix.of(context)` for the analytics sink)
+    // reading a deactivated context.
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final decoupleTokenizer = Environment.voiceTranscriptDecoupleEnabled;
+    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupleTokenizer
+        ? Matrix.of(context).analyticsDataService.updateService.addAnalytics
+        : null;
+    final capturedRoom = room;
+    final capturedRoomId = roomId;
+    final capturedClientUserId = sendingClient.userID;
+    // BOTH forms from the SAME t0 read: the embed uses the raw setting codes
+    // (baseline speaker_l1/l2), the ASR uses the normalized short codes
+    // (baseline ASR hint). Distinct representations -> flag-OFF ASR bytes stay
+    // byte-identical to baseline; single read -> no mid-send drift (H3/BLOCKER).
+    final voiceLangs = VoiceSendLanguages.capture(
+      sourceCode: pangeaController.userController.userL1Code,
+      targetCode: pangeaController.userController.userL2Code,
+      sourceShort: pangeaController.userController.userL1?.langCodeShort,
+      targetShort: pangeaController.userController.userL2?.langCodeShort,
+    );
+
     stopMediaStream.add(null);
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
@@ -1661,7 +1742,7 @@ class ChatController extends State<ChatPageWithRoom>
       }
     }
     // Pangea#
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
+
     final audioFile = XFile(path);
 
     final bytesResult = await showFutureLoadingDialog(
@@ -1682,9 +1763,32 @@ class ChatController extends State<ChatPageWithRoom>
 
     // Get transcript first so we can embed it in the audio event,
     // allowing the bot (and other clients) to read it immediately
-    // without waiting for a separate representation event.
-    final transcriptResult = await _getVoiceMessageTranscript(file);
+    // without waiting for a separate representation event. When the
+    // tokenizer-decouple flag is on, fetch TEXT-ONLY (skip_tokenize) so the
+    // send does not block on the LLM tokenizer; the tokens are computed and
+    // attached in the background after send (_scheduleVoiceTranscriptEnrichment).
+    final transcriptResult = await _getVoiceMessageTranscript(
+      file,
+      skipTokenize: decoupleTokenizer,
+      // Thread the ASR short codes captured at t0 (baseline representation),
+      // never re-read current settings -- byte-identical to baseline yet
+      // drift-free across a mid-send change (BLOCKER/H3).
+      userL1: voiceLangs.asrL1,
+      userL2: voiceLangs.asrL2,
+    );
     final stt = transcriptResult.result;
+
+    // The background tokenize snapshot is EVENT-sourced (D6): full_text /
+    // lang_code / sender_l2 come from the embed, sender_l1 from the speaker_l1
+    // captured at the top (before any await) and embedded below. It cannot
+    // drift if the user changes their L1/L2 while the send is in flight, and
+    // the background never re-reads current settings. A non-usable
+    // (exhausted-fallback) transcript has nothing to tokenize -> no snapshot,
+    // no background work.
+    final decoupleSnapshot =
+        decoupleTokenizer && stt != null && stt.hasUsableTranscript
+        ? SttLangSnapshot.fromBaseStt(stt, speakerL1: voiceLangs.speakerL1)
+        : null;
     // Pangea#
 
     // #Pangea
@@ -1706,8 +1810,8 @@ class ChatController extends State<ChatPageWithRoom>
               'waveform': waveform,
             },
             // #Pangea
-            'speaker_l1': pangeaController.userController.userL1Code,
-            'speaker_l2': pangeaController.userController.userL2Code,
+            'speaker_l1': voiceLangs.speakerL1,
+            'speaker_l2': voiceLangs.speakerL2,
             if (stt != null) MessageConstants.userStt: stt.toJson(),
             // Pangea#
           },
@@ -1743,10 +1847,95 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (stt != null) {
-      _sendVoiceMessageAnalytics(eventId, stt);
+      // Route through the pure predicate so the flag-gated decision is
+      // unit-tested (see shouldScheduleDecoupledEnrichment).
+      if (shouldScheduleDecoupledEnrichment(
+        decoupleFlag: decoupleTokenizer,
+        snapshot: decoupleSnapshot,
+        sink: voiceAnalyticsSink,
+      )) {
+        // Send is done and the bot can reply from the embedded text; only a
+        // usable transcript reaches here (an exhausted-fallback yields a null
+        // snapshot -> the message stands, no background work, no crash).
+        // Fire-and-forget so send is not blocked. The predicate above
+        // guarantees both are non-null.
+        _scheduleVoiceTranscriptEnrichment(
+          eventId: eventId,
+          baseStt: stt,
+          snapshot: decoupleSnapshot!,
+          analyticsSink: voiceAnalyticsSink!,
+          room: capturedRoom,
+          roomId: capturedRoomId,
+          clientUserId: capturedClientUserId,
+        );
+      } else if (!decoupleTokenizer) {
+        // Flag OFF: unchanged legacy inline analytics path (byte-parity).
+        _sendVoiceMessageAnalytics(eventId, stt);
+      }
     }
     // Pangea#
     return;
+  }
+
+  /// Thin wiring for the decoupled voice send's background half: builds the
+  /// injected dependencies from the refs captured at the top of
+  /// [onVoiceMessageSend] and fires the coordinator. The coordinator owns the
+  /// real-event lookup, the feedback dispatch, and ALL error-wrapping, so this
+  /// returns immediately, reads NO widget `context`, and nothing escapes.
+  void _scheduleVoiceTranscriptEnrichment({
+    required String eventId,
+    required SpeechToTextResponseModel baseStt,
+    required SttLangSnapshot snapshot,
+    required VoiceAnalyticsSink analyticsSink,
+    required Room room,
+    required String roomId,
+    required String? clientUserId,
+  }) {
+    unawaited(
+      runVoiceTranscriptEnrichment(
+        baseStt: baseStt,
+        snapshot: snapshot,
+        clientUserId: clientUserId,
+        // Real-event sender lookup deferred INTO the coordinator's guarded scope
+        // (a DB/decryption throw there is caught, not an unhandled async error).
+        // Own-ness is thus bound to the REAL sent event, never a hardcoded bool.
+        resolveSenderId: () async =>
+            (await room.getEventById(eventId))?.senderId,
+        enrich: enrichSttWithTokens,
+        recordAnalytics: buildVoiceAnalyticsRecorder(
+          roomId: roomId,
+          eventId: eventId,
+          sink: analyticsSink,
+        ),
+        showFeedback: (richStt) =>
+            _showVoiceAnalyticsFeedback(richStt, roomId, eventId),
+        attach: (richStt) => attachSttRepresentation(
+          send: room.sendPangeaEvent,
+          parentEventId: eventId,
+          richStt: richStt,
+        ),
+        onError: (e, s) => ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'roomId': roomId, 'eventId': eventId},
+        ),
+      ),
+    );
+  }
+
+  /// Thin visual-feedback dispatch for the decoupled path: compute the
+  /// constructs from [richStt] and show the (mounted-safe) overlay. The
+  /// coordinator wraps this in its own catch, so a throw here is swallowed +
+  /// logged and never affects the analytics recording.
+  Future<void> _showVoiceAnalyticsFeedback(
+    SpeechToTextResponseModel richStt,
+    String roomId,
+    String eventId,
+  ) async {
+    final constructs = richStt.constructs(roomId, eventId);
+    if (constructs.isEmpty) return;
+    final langCode = richStt.langCode.split('-').first;
+    await _showAnalyticsFeedback(constructs, eventId, langCode);
   }
 
   void hideEmojiPicker() {
@@ -1994,12 +2183,18 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
     // Pangea#
     if (event.status.isError) {
-      event.sendAgain();
+      // Resend the failed send AND emit the dosage envelope for it once it
+      // lands: emitForResend resends, then counts the learner's own text (reply
+      // fallback stripped) under the RESOLVED event id — skipping file/media
+      // resends and edit replacements. Fire-and-forget, never blocks the retry.
+      unawaited(DosageMessageSignals.emitForResend(event).catchError((_) {}));
     }
     final allEditEvents = event
         .aggregatedEvents(timeline!, RelationshipTypes.edit)
         .where((e) => e.status.isError);
     for (final e in allEditEvents) {
+      // An edit is the same learner turn (see the dosage edit guard), so a
+      // resent edit never emits a new envelope/tick.
       e.sendAgain();
     }
     // #Pangea
@@ -2677,12 +2872,29 @@ class ChatController extends State<ChatPageWithRoom>
     SpeechToTextResponseModel stt,
   ) async {
     try {
-      if (stt.transcript.sttTokens.isEmpty) return;
+      // Exhausted-fallback: fromJson no longer throws for `results: []`
+      // (R0-2), so a voice message can now carry a real-but-empty stt. There
+      // is nothing to score; `transcript` assumes at least one result and
+      // would throw otherwise.
+      if (stt.results.isEmpty || stt.transcript.sttTokens.isEmpty) return;
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 
       final langCode = stt.langCode.split('-').first;
-      _showAnalyticsFeedback(constructs, eventId, langCode);
+      // Fire-and-forget the visual feedback, but wrap it so a fetch/overlay
+      // throw can never escape as an unhandled async error -- P1b made
+      // `_showAnalyticsFeedback` async/heavier, so the flag-OFF path needs the
+      // same swallow the decouple coordinator applies (H2, ON/OFF symmetric).
+      unawaited(
+        guardFeedbackDispatch(
+          () => _showAnalyticsFeedback(constructs, eventId, langCode),
+          (e, s) => ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'roomId': roomId, 'eventId': eventId},
+          ),
+        ),
+      );
       Matrix.of(context).analyticsDataService.updateService.addAnalytics(
         eventId,
         constructs,
@@ -2698,29 +2910,21 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
-    MatrixAudioFile file,
-  ) async {
+    MatrixAudioFile file, {
+    required String userL1,
+    required String userL2,
+    bool skipTokenize = false,
+  }) async {
+    // Use the CAPTURED t0 languages (threaded in), never re-read current
+    // settings -- so the ASR language matches the embed's speaker_l1/l2 even if
+    // the user changes their L1/L2 mid-send (H3).
     return SpeechToTextRepo.instance.get(
-      SpeechToTextRequestModel(
+      buildVoiceSttRequest(
         audioContent: file.bytes,
-        config: SpeechToTextAudioConfigModel(
-          encoding: mimeTypeToAudioEncoding(file.mimeType),
-          sampleRateHertz: 22050,
-          userL1:
-              MatrixState
-                  .pangeaController
-                  .userController
-                  .userL1
-                  ?.langCodeShort ??
-              LanguageKeys.unknownLanguage,
-          userL2:
-              MatrixState
-                  .pangeaController
-                  .userController
-                  .userL2
-                  ?.langCodeShort ??
-              LanguageKeys.unknownLanguage,
-        ),
+        mimeType: file.mimeType,
+        userL1: userL1,
+        userL2: userL2,
+        skipTokenize: skipTokenize,
       ),
     );
   }
@@ -2985,24 +3189,34 @@ class ChatController extends State<ChatPageWithRoom>
     String eventId,
     String language,
   ) async {
+    // Visual-only, best-effort. Because this now also runs from the background
+    // decoupled-send path, the widget can be disposed mid-await; never touch
+    // `context` after an await. `guardedAnalyticsFeedbackCounts` re-checks
+    // `mounted` after each fetch and bails (null) cleanly, and we re-check once
+    // more before rendering the overlay -- so navigation during the awaits can
+    // never throw a late-context error (and never affects the recording).
+    if (!mounted) return;
     final analyticsService = Matrix.of(context).analyticsDataService;
-    final newGrammarConstructs = await analyticsService.getNewConstructCount(
-      constructs,
-      ConstructTypeEnum.morph,
-      language,
+    final counts = await guardedAnalyticsFeedbackCounts(
+      isMounted: () => mounted,
+      fetchGrammar: () => analyticsService.getNewConstructCount(
+        constructs,
+        ConstructTypeEnum.morph,
+        language,
+      ),
+      fetchVocab: () => analyticsService.getNewConstructCount(
+        constructs,
+        ConstructTypeEnum.vocab,
+        language,
+      ),
     );
-
-    final newVocabConstructs = await analyticsService.getNewConstructCount(
-      constructs,
-      ConstructTypeEnum.vocab,
-      language,
-    );
+    if (counts == null || !mounted) return;
 
     OverlayUtil.showOverlay(
       context: context,
       child: MessageAnalyticsFeedback(
-        newGrammarConstructs: newGrammarConstructs,
-        newVocabConstructs: newVocabConstructs,
+        newGrammarConstructs: counts.grammar,
+        newVocabConstructs: counts.vocab,
         close: () => MatrixState.pAnyState.closeOverlay(
           "msg_analytics_feedback_$eventId",
         ),
@@ -3096,6 +3310,19 @@ class ChatController extends State<ChatPageWithRoom>
     _displayChatDetailsColumn.value = !_displayChatDetailsColumn.value;
   }
 
+  void showActionsPopup({
+    required User user,
+    required Event event,
+    required BuildContext positionContext,
+  }) => showMemberActionsPopupMenu(
+    context: context,
+    positionContext: positionContext,
+    user: user,
+    onMention: () =>
+        sendController.text += '${event.senderFromMemoryOrFallback.mention} ',
+    room: room,
+  );
+
   @override
   Widget build(BuildContext context) {
     // #Pangea
@@ -3103,7 +3330,10 @@ class ChatController extends State<ChatPageWithRoom>
       room: room,
       builder: (context, participants) {
         if (!room.participantListComplete && participants.loading) {
-          return const Center(child: CircularProgressIndicator.adaptive());
+          return Scaffold(
+            appBar: AppBar(leading: widget.backButton),
+            body: Center(child: CircularProgressIndicator.adaptive()),
+          );
         }
         // Pangea#
         final theme = Theme.of(context);

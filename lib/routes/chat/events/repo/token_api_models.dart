@@ -39,15 +39,21 @@ class TokensRequestModel extends BaseRequest {
     this.mock,
   });
 
+  /// [langCode] IS sent on the wire and selects the tokenizer model, so it must
+  /// be part of the cache identity -- otherwise two messages with the same text
+  /// but different languages (e.g. an es vs fr "no") collide onto one cached
+  /// tokenization. The `??` normalizes null to the same sentinel the wire uses.
+  String get _langCodeKey => langCode ?? LanguageKeys.unknownLanguage;
+
   @override
-  String get storageKey => '$fullText|$senderL1|$senderL2';
+  String get storageKey => '$fullText|$senderL1|$senderL2|$_langCodeKey';
 
   @override
   Map<String, dynamic> toJson() => {
     ModelKey.fullText: fullText,
     ModelKey.userL1: senderL1,
     ModelKey.userL2: senderL2,
-    ModelKey.langCode: langCode ?? LanguageKeys.unknownLanguage,
+    ModelKey.langCode: _langCodeKey,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -59,11 +65,12 @@ class TokensRequestModel extends BaseRequest {
     return other is TokensRequestModel &&
         other.fullText == fullText &&
         other.senderL1 == senderL1 &&
-        other.senderL2 == senderL2;
+        other.senderL2 == senderL2 &&
+        other._langCodeKey == _langCodeKey;
   }
 
   @override
-  int get hashCode => fullText.hashCode ^ senderL1.hashCode ^ senderL2.hashCode;
+  int get hashCode => Object.hash(fullText, senderL1, senderL2, _langCodeKey);
 }
 
 class TokensResponseModel extends BaseResponse {

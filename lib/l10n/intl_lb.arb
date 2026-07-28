@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-21 13:05:33.671867",
+    "@@last_modified": "2026-07-27 15:35:59.720831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Du hues en Aktivitéitsplang derbäigesat",
     "userSentActivitySummary": "{username} huet eng Aktivitéitszesummefaassung geschéckt",
     "youSentActivitySummary": "Du hues eng Aktivitéitszesummefaassung geschéckt",
-    "emptyInviteSearchHint": "Fënns du net, deen's du sichts? Et kann sinn, datt hien säi Profil an de Léierastellungen ëffentlech muss maachen.",
     "clickOnEmailLinkDesc": "Klick w.e.g. op de Link an der E-Mail an da fuhr weider. Kuck an dengem Spam-Dossier no, wann d'E-Mail net ukomm ass.",
     "didntReceiveEmail": "Hues du d'E-Mail net kritt?",
     "resend": "Nei schécken",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "„{title}“ bäitrieden",
     "searchCoursePlans": "Courspläng sichen",
     "searchPublicCourses": "Ëffentlech Coursen sichen",
-    "closeSearch": "Sich zoumaachen"
+    "closeSearch": "Sich zoumaachen",
+    "subscriptionsNotAvailableInApp": "Abonnementer kënnen net an der App kaaft ginn",
+    "subscribeOnTheWeb": "Dir kënnt Iech um Internet op pangea.chat abonnéieren",
+    "waitingToFillOneRole": "Waarden op 1 Roll fir ze besetzen...",
+    "closeArchive": "Archiv zoumaachen",
+    "activityActions": "Aktivitéitsaktiounen",
+    "ongoing": "Am Gaang",
+    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-21 13:05:32.012581",
+    "@@last_modified": "2026-07-27 15:35:56.645323",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -8652,12 +8652,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Vous ne voyez pas la personne que vous cherchez ? Elle doit peut-être rendre son profil public dans les paramètres d'apprentissage.",
     "suggestedVocab": "Vocabulaire suggéré",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
@@ -10045,5 +10040,12 @@
     "joinCourseWithTitle": "Rejoindre « {title} »",
     "searchCoursePlans": "Rechercher des plans de cours",
     "searchPublicCourses": "Rechercher des cours publics",
-    "closeSearch": "Fermer la recherche"
+    "closeSearch": "Fermer la recherche",
+    "subscriptionsNotAvailableInApp": "Les abonnements ne peuvent pas être achetés dans l'application",
+    "subscribeOnTheWeb": "Vous pouvez vous abonner sur le web à pangea.chat",
+    "waitingToFillOneRole": "En attente de pourvoir 1 poste...",
+    "closeArchive": "Fermer l'archive",
+    "activityActions": "Actions d'activité",
+    "ongoing": "En cours",
+    "emptyInviteSearchHint": "Vous ne trouvez pas la personne que vous cherchez ? Il se peut qu'elle doive autoriser la recherche de son profil. Vérifiez la section Modifier le profil dans les paramètres."
 }

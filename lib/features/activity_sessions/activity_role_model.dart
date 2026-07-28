@@ -48,8 +48,10 @@ class ActivityRoleModel {
       'id': id,
       ModelKey.userId: userId,
       'role': role,
-      'finished_at': finishedAt?.toIso8601String(),
-      'archived_at': archivedAt?.toIso8601String(),
+      // Serialize as UTC (with the trailing 'Z') so the persisted timestamps are
+      // unambiguous instants, not bare local wall-clocks without an offset.
+      'finished_at': finishedAt?.toUtc().toIso8601String(),
+      'archived_at': archivedAt?.toUtc().toIso8601String(),
     };
   }
 

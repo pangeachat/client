@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-21 13:05:29.212119",
+    "@@last_modified": "2026-07-27 15:35:54.711239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "የእንቅስቃሴ ዕቅድ አክለዋል",
     "userSentActivitySummary": "{username} የእንቅስቃሴ ማጠቃለያ ልኳል",
     "youSentActivitySummary": "የእንቅስቃሴ ማጠቃለያ ልከዋል",
-    "emptyInviteSearchHint": "የሚፈልጉትን ሰው አላገኙም? በመማሪያ ቅንብሮች ውስጥ መገለጫቸውን ይፋዊ ማድረግ ሊያስፈልጋቸው ይችላል።",
     "clickOnEmailLinkDesc": "እባክዎ በኢሜይሉ ውስጥ ያለውን ሊንክ ጠቅ ያድርጉ እና ከዚያ ይቀጥሉ። ኢሜይሉ ካልደረሰዎት የአይፈለጌ መልእክት ማህደርዎን ያረጋግጡ።",
     "didntReceiveEmail": "ኢሜይሉ አልደረሰዎትም?",
     "resend": "እንደገና ላክ",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "\"{title}\" ተቀላቀል",
     "searchCoursePlans": "የኮርስ እቅዶችን ፈልግ",
     "searchPublicCourses": "የህዝብ ኮርሶችን ፈልግ",
-    "closeSearch": "ፍለጋ ዝጋ"
+    "closeSearch": "ፍለጋ ዝጋ",
+    "subscriptionsNotAvailableInApp": "የደንበኝነት ምዝገባዎች በመተግበሪያው ውስጥ ሊገዙ አይችሉም",
+    "subscribeOnTheWeb": "በ pangea.chat ድህረ ገጽ ላይ መመዝገብ ይችላሉ",
+    "waitingToFillOneRole": "1 ሚና ለመሙላት በመጠበቅ ላይ...",
+    "closeArchive": "ማህደር ዝጋ",
+    "activityActions": "የእንቅስቃሴ ድርጊቶች",
+    "ongoing": "በሂደት ላይ",
+    "emptyInviteSearchHint": "የሚፈልጉትን ሰው ማግኘት አልቻሉም? መገለጫቸው በፍለጋ ውስጥ እንዲገኝ መፍቀድ ሊያስፈልጋቸው ይችላል። በቅንብሮች ውስጥ መገለጫ አርትዕን ይመልከቱ።"
 }

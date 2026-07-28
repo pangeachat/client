@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-21 13:05:33.121255",
+    "@@last_modified": "2026-07-27 15:35:59.182696",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Сіз әрекет жоспарын қостыңыз",
     "userSentActivitySummary": "{username} әрекеттер қорытындысын жіберді",
     "youSentActivitySummary": "Сіз әрекеттер қорытындысын жібердіңіз",
-    "emptyInviteSearchHint": "Іздеген адамыңызды таппадыңыз ба? Олар оқу параметрлерінде профилін жалпыға қолжетімді етуі қажет болуы мүмкін",
     "clickOnEmailLinkDesc": "Электрондық поштадағы сілтемені басып, әрі қарай жалғастырыңыз. Егер электрондық пошта келмесе, спам қалтаңызды тексеріңіз.",
     "didntReceiveEmail": "Электрондық поштаны алмадыңыз ба?",
     "resend": "Қайта жіберу",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "\"{title}\" курсына қосылу",
     "searchCoursePlans": "Курс жоспарларын іздеу",
     "searchPublicCourses": "Жалпыға қолжетімді курстарды іздеу",
-    "closeSearch": "Іздеуді жабу"
+    "closeSearch": "Іздеуді жабу",
+    "subscriptionsNotAvailableInApp": "Қолданбада жазылымдарды сатып алу мүмкін емес",
+    "subscribeOnTheWeb": "pangea.chat сайтында жазыла аласыз",
+    "waitingToFillOneRole": "1 рөлді толтыруды күтудеміз...",
+    "closeArchive": "Мұрағатты жабу",
+    "activityActions": "Әрекет әрекеттері",
+    "ongoing": "Жалғасуда",
+    "emptyInviteSearchHint": "Іздеген адамыңызды таба алмай жатырсыз ба? Олар профилін іздеуде табуға рұқсат беруі керек болуы мүмкін. Параметрлердегі Профильді өңдеу бөлімін тексеріңіз."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-21 13:05:32.629851",
+    "@@last_modified": "2026-07-27 15:35:58.699110",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Þú bættir við æfingaáætlun",
     "userSentActivitySummary": "{username} sendi yfirlit yfir virkni",
     "youSentActivitySummary": "Þú sendir yfirlit yfir virkni",
-    "emptyInviteSearchHint": "Finnurðu ekki þann sem þú leitar að? Hugsanlega þarf viðkomandi að stilla prófílinn sinn á opinberan í námsstillingum.",
     "clickOnEmailLinkDesc": "Vinsamlegast smelltu á hlekkinn í tölvupóstinum og haltu síðan áfram. Athugaðu ruslpóstmöppuna þína ef tölvupósturinn hefur ekki borist.",
     "didntReceiveEmail": "Fékkstu ekki tölvupóstinn?",
     "resend": "Endursenda",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Skrá sig í „{title}“",
     "searchCoursePlans": "Leita að námsáætlunum",
     "searchPublicCourses": "Leita að opnum námskeiðum",
-    "closeSearch": "Loka leit"
+    "closeSearch": "Loka leit",
+    "subscriptionsNotAvailableInApp": "Ekki er hægt að kaupa áskriftir í appinu",
+    "subscribeOnTheWeb": "Þú getur gerst áskrifandi á vefnum á pangea.chat",
+    "waitingToFillOneRole": "Bíður eftir að fylla 1 hlutverk...",
+    "closeArchive": "Loka skjalasafni",
+    "activityActions": "Aðgerðir virkni",
+    "ongoing": "Í gangi",
+    "emptyInviteSearchHint": "Finnurðu ekki þann sem þú ert að leita að? Það gæti verið að viðkomandi þurfi að leyfa að prófíllinn hans finnist í leit. Athugaðu Breyta prófíl í Stillingum."
 }

@@ -117,8 +117,10 @@ class ChatEventList extends StatelessWidget {
               // Request history button or progress indicator:
               // #Pangea
               if (i == events.length + 3) {
+                // Extra top spacer on activities so all content can scroll
+                // above the floating activity goals header.
                 return controller.room.ownRole?.allGoals.isNotEmpty == true
-                    ? SizedBox(height: 50)
+                    ? SizedBox(height: 170)
                     : SizedBox.shrink();
               }
 

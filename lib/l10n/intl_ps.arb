@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-21 13:05:35.294369",
+    "@@last_modified": "2026-07-27 15:36:02.798287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "تاسو د فعالیت پلان اضافه کړ",
     "userSentActivitySummary": "{username} د فعالیت لنډیز واستول",
     "youSentActivitySummary": "تاسو د فعالیت لنډیز واستول",
-    "emptyInviteSearchHint": "هغه څوک نه وینئ چې تاسو یې په لټه کې یاست؟ دوی ممکن اړتیا ولري چې خپل پروفایل په زده کړې ترتیباتو کې عامه کړي",
     "clickOnEmailLinkDesc": "مهرباني وکړئ په بریښنالیک کې لینک باندې کلیک وکړئ او بیا پرمخ لاړ شئ. خپل سپیم فولډر وګورئ که بریښنالیک نه وي رسیدلی.",
     "didntReceiveEmail": "بریښنالیک مو ترلاسه نه کړ؟",
     "resend": "بیا واستوئ",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "ګډون وکړئ \"{title}\"",
     "searchCoursePlans": "د کورس پلانونو لټون",
     "searchPublicCourses": "د عامه کورسونو لټون",
-    "closeSearch": "لټون بند کړئ"
+    "closeSearch": "لټون بند کړئ",
+    "subscriptionsNotAvailableInApp": "پیرودنې په اپلیکیشن کې نشي اخیستل کیدی",
+    "subscribeOnTheWeb": "تاسو کولی شئ په pangea.chat کې په ویب پاڼه کې ګډون وکړئ",
+    "waitingToFillOneRole": "د 1 رول ډکولو ته انتظار باسو...",
+    "closeArchive": "آرشيف بندول",
+    "activityActions": "د فعالیت کړنې",
+    "ongoing": "روان",
+    "emptyInviteSearchHint": "هغه څوک نه شئ موندلی چې تاسو یې په لټه کې یاست؟ دوی ممکن اړتیا ولري چې خپل پروفایل په لټون کې وموندل شي. په ترتیباتو کې د پروفایل سمون وګورئ."
 }

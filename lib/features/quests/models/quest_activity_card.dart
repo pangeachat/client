@@ -160,6 +160,7 @@ class QuestActivityCard {
         const {};
     final coords = plan['coordinates'];
     final refs = (json['learningObjectiveRefs'] as List?) ?? const [];
+    final rolesJson = plan['roles'] as List?;
     return QuestActivityCard(
       activityId: (plan['activity_id'] ?? json['id']) as String,
       title: (plan['title'] ?? '') as String,
@@ -170,6 +171,10 @@ class QuestActivityCard {
       learningObjectiveRefs: refs
           .map((e) => e is Map ? e['id'] as String : e as String)
           .toList(),
+      // Participant count == role count (the value activityPlanFromV2 derives
+      // and the card shows), so a course-scoped pin can dim when the course
+      // lacks enough members to start it. Null when roles weren't projected.
+      roleCount: rolesJson?.length,
     );
   }
 

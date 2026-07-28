@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-21 13:05:33.266998",
+    "@@last_modified": "2026-07-27 15:35:59.689673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Сиз иш-аракет планын коштуңуз",
     "userSentActivitySummary": "{username} иш-аракеттердин корутундусун жөнөттү",
     "youSentActivitySummary": "Сиз иш-аракеттердин корутундусун жөнөттүңүз",
-    "emptyInviteSearchHint": "Издегениңизди таппай жатасызбы? Алар Окуу Жөндөөлөрүндө профилин жалпыга ачык кылып коюшу мүмкүн",
     "clickOnEmailLinkDesc": "Сураныч, электрондук почтадагы шилтемени басып, андан кийин улантыңыз. Эгер электрондук кат келбесе, спам папкаңызды текшериңиз.",
     "didntReceiveEmail": "Электрондук кат келген жокпу?",
     "resend": "Кайра жөнөтүү",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "\"{title}\" курсуна кошулуу",
     "searchCoursePlans": "Курс пландарын издөө",
     "searchPublicCourses": "Коомдук курстарды издөө",
-    "closeSearch": "Издөөнү жабуу"
+    "closeSearch": "Издөөнү жабуу",
+    "subscriptionsNotAvailableInApp": "Колдонмодо жазылууларды сатып алуу мүмкүн эмес",
+    "subscribeOnTheWeb": "Сиз pangea.chat сайтынан жазылсаңыз болот",
+    "waitingToFillOneRole": "1 ролду толтуруу күтүлүүдө...",
+    "closeArchive": "Архивди жабуу",
+    "activityActions": "Аракеттер",
+    "ongoing": "Уланып жатат",
+    "emptyInviteSearchHint": "Издеген адамыңызды таба албай жатасызбы? Алар профилин издөөдө табылышына уруксат бериши керек болушу мүмкүн. Жөндөөлөрдөн Профилди түзөтүүнү текшериңиз."
 }

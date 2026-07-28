@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-21 13:05:33.227956",
+    "@@last_modified": "2026-07-27 15:36:09.108397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Rationem actuosam addidisti",
     "userSentActivitySummary": "{username} summarium actuosum misit",
     "youSentActivitySummary": "Summarium actuosum misisti",
-    "emptyInviteSearchHint": "Quem quaeris non invenis? Fortasse necesse est ei rationem suam publicam facere in Optionibus Discendi",
     "clickOnEmailLinkDesc": "Quaesumus, preme nexum in epistula et deinde procede. Sarcina epistularum inutilium inspice si epistula non pervenit.",
     "didntReceiveEmail": "Epistulam non accepisti?",
     "resend": "Mitte iterum",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Coniunge \"{title}\"",
     "searchCoursePlans": "Quaere consilia studiorum",
     "searchPublicCourses": "Quaere cursus publicos",
-    "closeSearch": "Claudere quaestionem"
+    "closeSearch": "Claudere quaestionem",
+    "subscriptionsNotAvailableInApp": "Subscriptiones in app emi non possunt",
+    "subscribeOnTheWeb": "Subscribere potes in interrete apud pangea.chat",
+    "waitingToFillOneRole": "Exspectans ad implendum 1 munus...",
+    "closeArchive": "Claudere archivum",
+    "activityActions": "Actiones activitatis",
+    "ongoing": "In progressu",
+    "emptyInviteSearchHint": "Nonne invenis quem quaeris? Fortasse necesse est ut profile suum inquisitioni patefaciat. Reprehendere \"Recensere Profile\" in \"Optionibus\"."
 }

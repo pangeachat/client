@@ -78,7 +78,7 @@ class ActivityChatController {
     await _onLeaveActivitySession();
   }
 
-  ActivitySummaryModel? get _summaryEvent => room.activitySummaryByL1;
+  ActivitySummaryModel? get _summaryEvent => room.visibleActivitySummaryByL1;
   ActivitySummaryResponseModel? get _summary => _summaryEvent?.summary;
 
   bool get hasSummary => _summary != null;

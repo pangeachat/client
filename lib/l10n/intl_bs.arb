@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-21 13:05:29.096283",
+    "@@last_modified": "2026-07-27 15:35:54.570883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Dodali ste plan aktivnosti",
     "userSentActivitySummary": "{username} je poslao/la sažetak aktivnosti",
     "youSentActivitySummary": "Poslali ste sažetak aktivnosti",
-    "emptyInviteSearchHint": "Ne vidite koga tražite? Možda trebaju postaviti svoj profil na javno u Postavkama učenja",
     "clickOnEmailLinkDesc": "Molimo kliknite na link u e-mailu i nastavite. Provjerite folder za neželjenu poštu ako e-mail nije stigao.",
     "didntReceiveEmail": "Niste primili e-mail?",
     "resend": "Pošalji ponovo",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Pridruži se \"{title}\"",
     "searchCoursePlans": "Pretražite planove kurseva",
     "searchPublicCourses": "Pretražite javne kurseve",
-    "closeSearch": "Zatvori pretragu"
+    "closeSearch": "Zatvori pretragu",
+    "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
+    "subscribeOnTheWeb": "Možete se pretplatiti na webu na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
+    "closeArchive": "Zatvori arhivu",
+    "activityActions": "Radnje aktivnosti",
+    "ongoing": "U toku",
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dozvoliti da se njihov profil pronađe u pretrazi. Provjerite Uredi profil u Postavkama."
 }

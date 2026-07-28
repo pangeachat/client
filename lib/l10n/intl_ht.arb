@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-21 13:05:31.917430",
+    "@@last_modified": "2026-07-27 15:35:58.041002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1763,7 +1763,6 @@
     "youAddedActivityPlan": "Ou te ajoute yon plan aktivite",
     "userSentActivitySummary": "{username} te voye yon rezime aktivite",
     "youSentActivitySummary": "Ou te voye yon rezime aktivite",
-    "emptyInviteSearchHint": "Ou pa wè moun w ap chèche a? Yo ka bezwen mete pwofil yo piblik nan Anviwònman Aprantisaj yo",
     "clickOnEmailLinkDesc": "Tanpri klike sou lyen ki nan imèl la epi kontinye. Tcheke katab spam ou si imèl la poko rive.",
     "didntReceiveEmail": "Ou pa t resevwa imèl la?",
     "resend": "Voye ankò",
@@ -2036,5 +2035,12 @@
     "joinCourseWithTitle": "Antre nan \"{title}\"",
     "searchCoursePlans": "Chèche plan kou",
     "searchPublicCourses": "Chèche kou piblik",
-    "closeSearch": "Fèmen rechèch"
+    "closeSearch": "Fèmen rechèch",
+    "subscriptionsNotAvailableInApp": "Ou pa ka achte abònman nan app a",
+    "subscribeOnTheWeb": "Ou ka abòne sou sit entènèt la nan pangea.chat",
+    "waitingToFillOneRole": "Nap tann pou nou ranpli 1 wòl...",
+    "closeArchive": "Fèmen achiv la",
+    "activityActions": "Aksyon aktivite",
+    "ongoing": "Kontinyèl",
+    "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman."
 }
