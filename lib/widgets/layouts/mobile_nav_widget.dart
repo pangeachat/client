@@ -116,11 +116,13 @@ class MobileNavWidget extends StatefulWidget {
   /// the finger moves.
   final ValueChanged<bool>? onCavityFullChanged;
 
-  /// Keyboard height, passed from the shell (which reads it above its Scaffold —
-  /// a resizing Scaffold hides `viewInsets` from its body). Trimmed from the
-  /// cavity — INSTANTLY, not through the rest-height animation — so the top
-  /// stays clear of the analytics bar the whole time the keyboard opens,
-  /// without a jump-then-readjust (#7754). Zero when no keyboard is up.
+  /// The keyboard's overlap BEYOND the bottom safe area, computed by the shell
+  /// (which reads `viewInsets` above its Scaffold — a resizing Scaffold hides it
+  /// from the body — and nets out the home-indicator inset the SafeArea stops
+  /// reserving once the keyboard covers it). Trimmed from the cavity —
+  /// INSTANTLY, not through the rest-height animation — so the top holds its
+  /// position the whole time the keyboard opens: no jump-then-readjust, and no
+  /// settle a few pt low (#7754). Zero when no keyboard is up.
   final double keyboardInset;
 
   const MobileNavWidget({

@@ -258,11 +258,18 @@ class WorkspaceShell extends StatelessWidget {
                             state: state,
                             layout: l,
                             screenPadding: MediaQuery.viewPaddingOf(context),
-                            // Read above the Scaffold, where `viewInsets` is
-                            // still intact (the Scaffold zeroes it below). #7754
-                            keyboardInset: MediaQuery.viewInsetsOf(
-                              context,
-                            ).bottom,
+                            // Only the keyboard's overlap BEYOND the bottom safe
+                            // area (home indicator) should trim the cavity: once
+                            // the keyboard covers that strip, the SafeArea stops
+                            // reserving it and the bottom-anchored nav layer
+                            // already drops by that much. Trimming by the raw
+                            // inset would double-count it and settle the cavity
+                            // top ~34pt low. Read above the Scaffold, where
+                            // `viewInsets` is still intact (#7754).
+                            keyboardInset:
+                                (MediaQuery.viewInsetsOf(context).bottom -
+                                        MediaQuery.viewPaddingOf(context).bottom)
+                                    .clamp(0.0, double.infinity),
                           ),
                         ),
 
