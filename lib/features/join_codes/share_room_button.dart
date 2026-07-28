@@ -62,30 +62,27 @@ class ShareRoomButton extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return Semantics(
-      label: L10n.of(context).share,
-      child: PopupMenuButton<ShareCodeType>(
-        useRootNavigator: true,
-        tooltip: tooltip,
-        child: child,
-        onSelected: (t) => _copyShareCode(context, t),
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<ShareCodeType>>[
-          PopupMenuItem<ShareCodeType>(
-            value: ShareCodeType.link,
-            child: ListTile(
-              title: Text(L10n.of(context).shareSpaceLink),
-              contentPadding: const EdgeInsets.all(0),
-            ),
+    return PopupMenuButton<ShareCodeType>(
+      useRootNavigator: true,
+      tooltip: tooltip,
+      child: child,
+      onSelected: (t) => _copyShareCode(context, t),
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<ShareCodeType>>[
+        PopupMenuItem<ShareCodeType>(
+          value: ShareCodeType.link,
+          child: ListTile(
+            title: Text(L10n.of(context).shareSpaceLink),
+            contentPadding: const EdgeInsets.all(0),
           ),
-          PopupMenuItem<ShareCodeType>(
-            value: ShareCodeType.code,
-            child: ListTile(
-              title: Text(L10n.of(context).shareInviteCode(joinCode)),
-              contentPadding: const EdgeInsets.all(0),
-            ),
+        ),
+        PopupMenuItem<ShareCodeType>(
+          value: ShareCodeType.code,
+          child: ListTile(
+            title: Text(L10n.of(context).shareInviteCode(joinCode)),
+            contentPadding: const EdgeInsets.all(0),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -4775,5 +4775,7 @@
     "chatSearchPageLabel": "Chat search page",
     "selectImageLabel": "Select image", 
     "userSearchTagsLabel": "Search in...",
+    "courseDetails": "Course details",
+    "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }

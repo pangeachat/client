@@ -168,9 +168,15 @@ class ActivitySuggestionCard extends StatelessWidget {
                                       size: iconSize ?? 12.0,
                                       color: onState,
                                     ),
-                                    Text(
-                                      "${activity.req.numberOfParticipants}",
-                                      style: labelStyle,
+                                    Semantics(
+                                      label:
+                                          "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
+                                      child: ExcludeSemantics(
+                                        child: Text(
+                                          "${activity.req.numberOfParticipants}",
+                                          style: labelStyle,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),

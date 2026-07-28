@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 
 class UnreadBubble extends StatelessWidget {
   final Room room;
@@ -47,18 +48,25 @@ class UnreadBubble extends StatelessWidget {
             : null,
       ),
       child: hasNotifications
-          ? Text(
-              room.notificationCount.toString(),
-              style: TextStyle(
-                color: room.highlightCount > 0
-                    ? theme.colorScheme.onError
-                    : hasNotifications
-                    ? theme.colorScheme.onPrimary
-                    : theme.colorScheme.onPrimaryContainer,
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
+          ? Semantics(
+              label: L10n.of(
+                context,
+              ).unreadLabel(room.notificationCount.toString()),
+              child: ExcludeSemantics(
+                child: Text(
+                  room.notificationCount.toString(),
+                  style: TextStyle(
+                    color: room.highlightCount > 0
+                        ? theme.colorScheme.onError
+                        : hasNotifications
+                        ? theme.colorScheme.onPrimary
+                        : theme.colorScheme.onPrimaryContainer,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              textAlign: TextAlign.center,
             )
           : const SizedBox.shrink(),
     );

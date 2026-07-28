@@ -68,6 +68,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
               ),
               child: ShareRoomButton(
                 room: room,
+                tooltip: L10n.of(context).share,
                 child: const Icon(Icons.share_outlined),
               ),
             ),

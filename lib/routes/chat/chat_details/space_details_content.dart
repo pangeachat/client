@@ -479,71 +479,79 @@ class SpaceDetailsContent extends StatelessWidget {
                           context,
                         ).where((b) => !b.showInMainView && b.visible).toList();
 
-                        return SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Course meta at the top of More: the description, then
-                              // the language/level/module chips in a row beneath it
-                              // (moved out of the header, #7597).
-                              if (room.topic.isNotEmpty)
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 12.0),
-                                  child: Text(
-                                    room.topic,
-                                    style: TextStyle(
-                                      fontSize: isColumnMode ? 16.0 : 12.0,
+                        return Semantics(
+                          label: L10n.of(
+                            context,
+                          ).bodyLabel(L10n.of(context).more),
+                          container: true,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Course meta at the top of More: the description, then
+                                // the language/level/module chips in a row beneath it
+                                // (moved out of the header, #7597).
+                                if (room.topic.isNotEmpty)
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      bottom: 12.0,
+                                    ),
+                                    child: Text(
+                                      room.topic,
+                                      style: TextStyle(
+                                        fontSize: isColumnMode ? 16.0 : 12.0,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              if (room.coursePlan != null)
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    bottom: isColumnMode ? 30.0 : 14.0,
+                                if (room.coursePlan != null)
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      bottom: isColumnMode ? 30.0 : 14.0,
+                                    ),
+                                    child: CourseInfoChips(
+                                      room.coursePlan!.uuid,
+                                      fontSize: 12.0,
+                                      iconSize: 12.0,
+                                    ),
                                   ),
-                                  child: CourseInfoChips(
-                                    room.coursePlan!.uuid,
-                                    fontSize: 12.0,
-                                    iconSize: 12.0,
-                                  ),
+                                Column(
+                                  spacing: 10.0,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: buttons.map((b) {
+                                    return Opacity(
+                                      opacity: b.enabled ? 1.0 : 0.5,
+                                      child: b.isToggle
+                                          ? SwitchListTile(
+                                              title: Text(b.title),
+                                              subtitle: b.description != null
+                                                  ? Text(b.description!)
+                                                  : null,
+                                              secondary: b.icon,
+                                              value: b.value,
+                                              onChanged: b.enabled
+                                                  ? (value) {
+                                                      b.onPressed?.call();
+                                                    }
+                                                  : null,
+                                              activeThumbColor:
+                                                  AppConfig.activeToggleColor,
+                                            )
+                                          : ListTile(
+                                              title: Text(b.title),
+                                              subtitle: b.description != null
+                                                  ? Text(b.description!)
+                                                  : null,
+                                              leading: b.icon,
+                                              onTap: b.enabled
+                                                  ? () => b.onPressed?.call()
+                                                  : null,
+                                              trailing: b.trailing,
+                                            ),
+                                    );
+                                  }).toList(),
                                 ),
-                              Column(
-                                spacing: 10.0,
-                                mainAxisSize: MainAxisSize.min,
-                                children: buttons.map((b) {
-                                  return Opacity(
-                                    opacity: b.enabled ? 1.0 : 0.5,
-                                    child: b.isToggle
-                                        ? SwitchListTile(
-                                            title: Text(b.title),
-                                            subtitle: b.description != null
-                                                ? Text(b.description!)
-                                                : null,
-                                            secondary: b.icon,
-                                            value: b.value,
-                                            onChanged: b.enabled
-                                                ? (value) {
-                                                    b.onPressed?.call();
-                                                  }
-                                                : null,
-                                            activeThumbColor:
-                                                AppConfig.activeToggleColor,
-                                          )
-                                        : ListTile(
-                                            title: Text(b.title),
-                                            subtitle: b.description != null
-                                                ? Text(b.description!)
-                                                : null,
-                                            leading: b.icon,
-                                            onTap: b.enabled
-                                                ? () => b.onPressed?.call()
-                                                : null,
-                                            trailing: b.trailing,
-                                          ),
-                                  );
-                                }).toList(),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                     }
