@@ -198,7 +198,7 @@ class WorldMapLargeCard extends StatelessWidget {
 
     final cardButton = Semantics(
       label:
-          "${L10n.of(context).activityLabel(plan?.title ?? card.title)}, ${state.label}",
+          "${L10n.of(context).activityLabel(plan?.title ?? card.title)}, ${state.label(context)}",
       container: true,
       child: GestureDetector(
         onTap: onTap,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
@@ -54,12 +55,12 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  String get label => switch (this) {
-    ActivityPinState.ongoingPending => "Waiting for others to join",
-    ActivityPinState.ongoingActive => "Ongoing",
-    ActivityPinState.joinable => "Joinable",
-    ActivityPinState.inProgress => "Previously completed",
-    ActivityPinState.available => "Create activity",
+  String label(BuildContext context) => switch (this) {
+    ActivityPinState.ongoingPending => L10n.of(context).ongoingPendingLabel,
+    ActivityPinState.ongoingActive => L10n.of(context).ongoing,
+    ActivityPinState.joinable => L10n.of(context).joinableLabel,
+    ActivityPinState.inProgress => L10n.of(context).inProgressLabel,
+    ActivityPinState.available => L10n.of(context).availableLabel,
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
