@@ -3834,6 +3834,22 @@
     "waitNotDone": "Wait, I’m not done!",
     "waitingForOthersToFinish": "Waiting for the rest to finish up...",
     "generatingSummary": "Analyzing chat and generating results",
+    "rateActivityTitle": "How was this activity?",
+    "rateActivityCommentHint": "Add a comment (optional)",
+    "rateActivityCommentRejected": "Your comment couldn't be posted. Try rewording it, or submit your rating without a comment.",
+    "rateActivityThanks": "Thanks for your feedback!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 rating} other{{count} ratings}})",
+    "@activityRatingMeterLabel": {
+        "type": "String",
+        "placeholders": {
+            "percent": {
+                "type": "int"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "pingParticipantsNotification": "{user} is looking for users to join the activity session in {room}",
     "@pingParticipantsNotification": {
         "type": "String",
