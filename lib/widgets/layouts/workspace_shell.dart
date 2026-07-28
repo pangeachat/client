@@ -268,7 +268,9 @@ class WorkspaceShell extends StatelessWidget {
                             // `viewInsets` is still intact (#7754).
                             keyboardInset:
                                 (MediaQuery.viewInsetsOf(context).bottom -
-                                        MediaQuery.viewPaddingOf(context).bottom)
+                                        MediaQuery.viewPaddingOf(
+                                          context,
+                                        ).bottom)
                                     .clamp(0.0, double.infinity),
                           ),
                         ),
