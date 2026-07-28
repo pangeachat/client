@@ -84,14 +84,13 @@ void main() {
         w.onTap != null,
   );
 
+  // The cavity's rendered height = its animated rest height minus the (instant)
+  // keyboard trim. It lives on the SizedBox keyed 'navCavityBox' inside the
+  // cavity's TweenAnimationBuilder; absent (0) when there is no cavity.
   double cavityHeightOf(WidgetTester tester) {
-    final container = tester.widget<AnimatedContainer>(
-      find.byType(AnimatedContainer),
-    );
-    final constraints = container.constraints;
-    return container.decoration == null && constraints == null
-        ? 0.0
-        : (container.constraints?.maxHeight ?? 0.0);
+    final finder = find.byKey(const ValueKey('navCavityBox'));
+    if (finder.evaluate().isEmpty) return 0.0;
+    return tester.getSize(finder).height;
   }
 
   group('rail', () {
