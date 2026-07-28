@@ -755,7 +755,24 @@ class _NavCavity extends StatelessWidget {
         // Grab handle: drag to resize, tap to toggle half/full. Exposed to
         // assistive tech as a single named button that runs the toggle (the
         // drag is pointer-only) — mirrors `MobileCourseSheet`'s handle (#7128).
+        //
+        // `container: true` forces the handle into its OWN semantics node
+        // instead of merging into the cavity's node. It matters because the
+        // enclosing cavity GestureDetector carries the vertical-drag (scroll)
+        // actions but, for a non-peek cavity (the activity plan), NO tap of its
+        // own (`onBodyTap` is null unless it's a course at peek). Without this,
+        // the handle's tap action merged INTO that scrollable node, producing a
+        // single node that was both scrollable and tappable. On Flutter web
+        // with the accessibility layer active, pointer events dispatch through
+        // the semantics DOM, and a scrollable node does not reliably deliver a
+        // tap — so clicking the handle did nothing (only manual dragging
+        // worked), but only on browsers/OSes that turn the a11y layer on
+        // (#7927; the sibling web-semantics fall-through of #7803). A course at
+        // peek was unaffected only because its cavity node had its own
+        // `onBodyTap`, which kept the handle a separate child node. Forcing the
+        // container makes the handle that separate button in every cavity.
         Semantics(
+          container: true,
           button: true,
           label: l10n.resizeCoursePanel,
           onTap: onHandleTap,

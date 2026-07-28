@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -399,6 +400,78 @@ void main() {
           greaterThan(100.0),
           reason: 'reopening after a drag-to-zero must restore a real height',
         );
+      },
+    );
+
+    testWidgets(
+      'the handle is its own tappable semantics node, not merged into the '
+      'scrollable cavity (#7927)',
+      (tester) async {
+        // The activity-plan cavity (non-peek, dismiss-on-close): its outer
+        // cavity GestureDetector carries the vertical-drag (scroll) actions but
+        // no tap of its own. The handle must still surface as its OWN button
+        // node. If it merges into the scrollable cavity node — inheriting
+        // scrollUp/scrollDown — Flutter web's accessibility layer stops
+        // delivering the tap, so clicking the handle does nothing and the sheet
+        // can only be dragged (the #7927 report: reproduced on Opera/Windows,
+        // where the a11y layer is active, but not on Chrome, where it isn't).
+        final semantics = tester.ensureSemantics();
+        await pumpNav(
+          tester,
+          cavityChild: const Text('Activity plan'),
+          cavityKey: 'activity-a',
+          onDismissed: () {},
+        );
+
+        final l10n = L10n.of(tester.element(find.byType(MobileNavWidget)));
+
+        // Walk to the semantics root from any node, then collect every node
+        // carrying the handle label.
+        SemanticsNode root = tester.getSemantics(find.byType(MobileNavWidget));
+        while (root.parent != null) {
+          root = root.parent!;
+        }
+
+        final labelled = <SemanticsData>[];
+        void collect(SemanticsNode node) {
+          final data = node.getSemanticsData();
+          if (data.label.contains(l10n.resizeCoursePanel)) labelled.add(data);
+          node.visitChildren((child) {
+            collect(child);
+            return true;
+          });
+        }
+
+        collect(root);
+
+        expect(
+          labelled,
+          hasLength(1),
+          reason: 'the handle must surface as exactly one semantics node',
+        );
+        final handle = labelled.single;
+
+        expect(
+          handle.hasAction(SemanticsAction.tap),
+          isTrue,
+          reason: 'the handle node must run the resize toggle on tap',
+        );
+        // The crux of #7927: a handle merged into the scrollable cavity node
+        // would inherit its scroll actions (and the hosted content's label),
+        // and that scrollable+tappable node drops the tap on Flutter web.
+        expect(
+          handle.hasAction(SemanticsAction.scrollUp),
+          isFalse,
+          reason: 'the handle must be its own node, not the scrollable cavity',
+        );
+        expect(handle.hasAction(SemanticsAction.scrollDown), isFalse);
+        expect(
+          handle.label,
+          l10n.resizeCoursePanel,
+          reason: 'a merged node would also carry the cavity content label',
+        );
+
+        semantics.dispose();
       },
     );
   });
