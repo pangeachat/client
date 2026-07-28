@@ -32,7 +32,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
 
     final finished = controller.room.isActivityFinished;
-    final summary = controller.room.activitySummaryByL1;
+    final summary = controller.room.visibleActivitySummaryByL1;
 
     final hasContent =
         !finished || (summary != null && summary.summary == null);

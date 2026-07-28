@@ -26,7 +26,7 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final summaryModel = room.activitySummaryByL1;
+    final summaryModel = room.visibleActivitySummaryByL1;
     if (summaryModel == null || summaryModel.hasError) {
       return const SizedBox();
     }
