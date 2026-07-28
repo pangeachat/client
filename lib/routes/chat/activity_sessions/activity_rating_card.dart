@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_rating_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_rating_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_rating_store.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
