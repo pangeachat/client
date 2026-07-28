@@ -286,12 +286,31 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   },
                 ),
               ),
+              // Drop the card semantics beneath the arrows so a tap on an arrow
+              // can't fall through to a card on Flutter web (#7803). A single
+              // blocker painted after the ListView but before the arrows keeps
+              // the two arrows from clobbering each other's semantics: a
+              // per-arrow BlockSemantics would also drop the sibling arrow
+              // painted before it, routing its taps to the wrong arrow.
+              ListenableBuilder(
+                listenable: Listenable.merge([
+                  _showBackArrowNotifier,
+                  _showForwardArrowNotifier,
+                ]),
+                builder: (context, _) {
+                  final blocking =
+                      _showBackArrowNotifier.value ||
+                      _showForwardArrowNotifier.value;
+                  return blocking
+                      ? const BlockSemantics()
+                      : const SizedBox.shrink();
+                },
+              ),
               // The scroll arrows overlay the ends of the ListView. Only mount
               // the arrow that is currently usable — a hidden-but-present arrow
               // (IgnorePointer / opacity 0) still leaves a semantics node at the
               // edge that, on Flutter web, lets a tap fall through to the card
-              // beneath it. Wrapping the live arrow in BlockSemantics drops the
-              // card semantics underneath so the tap lands on the arrow (#7803).
+              // beneath it.
               Positioned(
                 left: 0,
                 top: 0,
@@ -299,11 +318,9 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                 child: ValueListenableBuilder<bool>(
                   valueListenable: _showBackArrowNotifier,
                   builder: (context, showArrow, _) => showArrow
-                      ? BlockSemantics(
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.back,
-                            onTap: () => _scrollByArrow(ArrowDirection.back),
-                          ),
+                      ? ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.back,
+                          onTap: () => _scrollByArrow(ArrowDirection.back),
                         )
                       : const SizedBox.shrink(),
                 ),
@@ -315,11 +332,9 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                 child: ValueListenableBuilder<bool>(
                   valueListenable: _showForwardArrowNotifier,
                   builder: (context, showArrow, _) => showArrow
-                      ? BlockSemantics(
-                          child: ObjectiveSectionScrollArrow(
-                            direction: ArrowDirection.forward,
-                            onTap: () => _scrollByArrow(ArrowDirection.forward),
-                          ),
+                      ? ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.forward,
+                          onTap: () => _scrollByArrow(ArrowDirection.forward),
                         )
                       : const SizedBox.shrink(),
                 ),
