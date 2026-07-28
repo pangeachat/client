@@ -198,19 +198,13 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             children: [
               ValueListenableBuilder(
                 valueListenable: _showBackArrowNotifier,
-                builder: (context, showArrow, _) => Positioned(
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 40,
-                  child: IgnorePointer(
-                    ignoring: !showArrow,
-                    child: Opacity(
-                      opacity: showArrow ? 1 : 0,
-                      child: ObjectiveSectionScrollArrow(
-                        direction: ArrowDirection.back,
-                        onTap: () => _scrollByArrow(ArrowDirection.back),
-                      ),
+                builder: (context, showArrow, _) => IgnorePointer(
+                  ignoring: !showArrow,
+                  child: Opacity(
+                    opacity: showArrow ? 1 : 0,
+                    child: ObjectiveSectionScrollArrow(
+                      direction: ArrowDirection.back,
+                      onTap: () => _scrollByArrow(ArrowDirection.back),
                     ),
                   ),
                 ),
@@ -318,15 +312,9 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   ignoring: !showArrow,
                   child: Opacity(
                     opacity: showArrow ? 1 : 0,
-                    child: Positioned(
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      width: 40,
-                      child: ObjectiveSectionScrollArrow(
-                        direction: ArrowDirection.forward,
-                        onTap: () => _scrollByArrow(ArrowDirection.forward),
-                      ),
+                    child: ObjectiveSectionScrollArrow(
+                      direction: ArrowDirection.forward,
+                      onTap: () => _scrollByArrow(ArrowDirection.forward),
                     ),
                   ),
                 ),
