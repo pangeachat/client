@@ -118,6 +118,15 @@ class Environment {
         (dotenv.env["ANALYTICS_DUAL_WRITE_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// Feature flag for the best-effort dosage signals (see [DosageSignalsRepo]).
+  /// Defaults to `false` so the behavior ships dark. This is the third gate on
+  /// top of [analyticsDualWriteEnabled] + [teacherBffApi]: dosage signals ride
+  /// the same BFF door as the analytics dual-write, so all three must be set.
+  static bool get dosageSignalsEnabled {
+    return appConfigOverride?.dosageSignalsEnabled ??
+        (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   /// Feature flag for the voice-transcript tokenizer-decouple send path.
   /// Defaults to `false` so it ships dark: when OFF, `onVoiceMessageSend` uses
   /// today's blocking tokenized path byte-for-byte. When ON, the send awaits
@@ -247,6 +256,7 @@ class AppConfigOverride {
   final String? choreoApi;
   final String? teacherBffApi;
   final bool? analyticsDualWriteEnabled;
+  final bool? dosageSignalsEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
@@ -264,6 +274,7 @@ class AppConfigOverride {
     this.choreoApi,
     this.teacherBffApi,
     this.analyticsDualWriteEnabled,
+    this.dosageSignalsEnabled,
     this.voiceTranscriptDecoupleEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
@@ -283,6 +294,7 @@ class AppConfigOverride {
       choreoApi: json['choreoApi'] as String?,
       teacherBffApi: json['teacherBffApi'] as String?,
       analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
+      dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
@@ -305,6 +317,7 @@ class AppConfigOverride {
       'choreoApi': choreoApi,
       'teacherBffApi': teacherBffApi,
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
+      'dosageSignalsEnabled': dosageSignalsEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
@@ -326,6 +339,7 @@ class AppConfigOverride {
         choreoApi.hashCode ^
         teacherBffApi.hashCode ^
         analyticsDualWriteEnabled.hashCode ^
+        dosageSignalsEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
@@ -347,6 +361,7 @@ class AppConfigOverride {
         choreoApi == other.choreoApi &&
         teacherBffApi == other.teacherBffApi &&
         analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
+        dosageSignalsEnabled == other.dosageSignalsEnabled &&
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         sentryDsn == other.sentryDsn &&

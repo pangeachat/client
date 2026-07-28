@@ -46,6 +46,20 @@ class AnalyticsStreamUpdate {
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
+  /// The account's client, kept so [accountUserId] can be read from it: this
+  /// service may be constructed BEFORE login (userID null then), and the dosage
+  /// tracker must key on the SAME mxid the send path uses once logged in.
+  final Client _accountClient;
+
+  /// The account (mxid) as the client currently reports it. Read live for
+  /// PRE-logout callers (e.g. the pre-logout telemetry flush). It goes null once
+  /// the SDK's `logout()` runs `clear()`, which nulls userID BEFORE it emits
+  /// `loggedOut` (client.dart) — so the POST-logout teardown must NOT rely on
+  /// this: [AnalyticsUpdateService] pins the id at start() and disposes by that
+  /// pinned value instead (otherwise disposeAccount would be handed '' and leak
+  /// the account's open span + tracker).
+  String? get accountUserId => _accountClient.userID;
+
   late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
   AnalyticsSyncController? _syncController;
@@ -54,10 +68,10 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
-  AnalyticsDataService(Client client) {
+  AnalyticsDataService(this._accountClient) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
-    _initDatabase(client);
+    _initDatabase(_accountClient);
   }
 
   static const int _morphUnlockXP = AnalyticsConstants.xpForGreens;
@@ -81,11 +95,24 @@ class AnalyticsDataService {
   Future<Room?> getAnalyticsRoom(LanguageModel lang) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(lang);
 
-  void dispose() {
+  Future<void> dispose() async {
     _syncController?.dispose();
     updateDispatcher.dispose();
-    updateService.dispose();
-    _closeDatabase();
+    // Await the final dosage engagement-span flush BEFORE releasing this
+    // account's resources, so its last span actually POSTs (isolated to this
+    // account) rather than being dropped on teardown.
+    await updateService.dispose();
+    // AWAIT the database close/delete so dispose() doesn't resolve — and the
+    // matrix teardown doesn't drop the service from its map — until the DB is
+    // actually closed. Otherwise a rebuild could recreate the service and reopen
+    // the SAME database while deletion is still running. A close/delete FAILURE
+    // must not abort the account teardown (the loggedOut listener awaits this
+    // before removing the client/store), so it is swallowed here.
+    try {
+      await _closeDatabase();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   void _invalidateCaches() {
@@ -102,11 +129,16 @@ class AnalyticsDataService {
     _analyticsClient = _AnalyticsClient(client: client, database: database);
 
     if (client.isLogged()) {
+      // Pin the dosage account mxid the moment we know we are logged in, BEFORE
+      // the fallible analytics init below — otherwise an init failure would
+      // leave the id unpinned and teardown would resolve '' and leak the tracker.
+      updateService.pinAccountId();
       await _initAnalytics();
     } else {
       await client.onLoginStateChanged.stream.firstWhere(
         (state) => state == LoginState.loggedIn,
       );
+      updateService.pinAccountId();
       await _initAnalytics();
     }
   }

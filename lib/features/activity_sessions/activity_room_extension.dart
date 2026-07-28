@@ -57,6 +57,16 @@ extension ActivityRoomExtension on Room {
           )?.content[ActivitySessionConstants.versionId]
           as String?;
 
+  /// The course-space id this session pinned at creation (the `source_course_id`
+  /// on the `pangea.activity_plan` state event), or null when it was launched
+  /// outside a course. The SPECIFIC launching course space — not an arbitrary
+  /// space parent that merely carries a course plan (contrast [courseParent]).
+  String? get pinnedSourceCourseId =>
+      getState(
+            PangeaEventTypes.activityPlan,
+          )?.content[ActivitySessionConstants.sourceCourseId]
+          as String?;
+
   /// activity_id of a reference plan: the room-type suffix
   /// (`PangeaRoomTypes.activitySession:<activity_id>`) is authoritative, with
   /// the state field as fallback. Read inline (not via [activityId]) to avoid

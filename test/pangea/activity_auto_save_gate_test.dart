@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
+import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 
 /// The gate ActivityAutoSaveService uses to decide whether a session is due
@@ -32,6 +33,14 @@ void main() {
         isFalse,
       );
     });
+
+    // NOTE: durable cross-restart idempotency is NOT a property of this pure
+    // gate (a restart with empty in-memory sets still closes the gate purely
+    // because the server-synced archived_at makes hasArchivedActivity true,
+    // which is the already-saved case above). It is exercised where it actually
+    // lives — the empty-set first pass in the shouldSave / shouldEmitOutcome
+    // groups below — so no vacuous restart-flavoured duplicate of the
+    // already-saved assertion is kept here.
 
     test('session still in progress does not save', () {
       expect(
@@ -97,6 +106,106 @@ void main() {
         ]),
         2,
       );
+    });
+  });
+
+  group('shouldEmitOutcome (dosage outcome exactly-once)', () {
+    test('emits the first time, never again for the same room', () {
+      final emitted = <String>{};
+      expect(
+        ActivityAutoSaveService.shouldEmitOutcome('!s:x', emitted),
+        isTrue,
+      );
+      expect(
+        ActivityAutoSaveService.shouldEmitOutcome('!s:x', emitted),
+        isFalse,
+        reason:
+            'the auto-save gate re-opens before the archive syncs back; a '
+            'racing second pass must not double-emit the outcome',
+      );
+    });
+
+    test('tracks each session room independently', () {
+      final emitted = <String>{};
+      expect(
+        ActivityAutoSaveService.shouldEmitOutcome('!a:x', emitted),
+        isTrue,
+      );
+      expect(
+        ActivityAutoSaveService.shouldEmitOutcome('!b:x', emitted),
+        isTrue,
+      );
+    });
+  });
+
+  group('shouldSave (first archive authoritative)', () {
+    test('saves the first time; a saved room is never re-saved', () {
+      final saved = <String>{};
+      expect(
+        ActivityAutoSaveService.shouldSave('!s:x', saved),
+        isTrue,
+        reason: 'first pass saves and archives',
+      );
+      saved.add('!s:x'); // the service marks it saved on success
+      expect(
+        ActivityAutoSaveService.shouldSave('!s:x', saved),
+        isFalse,
+        reason:
+            'the gate re-opens until the archive syncs back; a pre-sync sweep '
+            'must NOT re-archive with a newer timestamp — first archive wins',
+      );
+    });
+
+    test('tracks each session room independently', () {
+      final saved = <String>{'!a:x'};
+      expect(ActivityAutoSaveService.shouldSave('!a:x', saved), isFalse);
+      expect(ActivityAutoSaveService.shouldSave('!b:x', saved), isTrue);
+    });
+  });
+
+  group('buildSessionOutcome (canonical archived-at + attribution)', () {
+    final archivedAt = DateTime.utc(2026, 1, 1, 12, 30);
+
+    DosageSessionOutcome? build({
+      String? activityId = 'act-1',
+      DateTime? archived,
+      String? sourceCourseId = '!course:x',
+      List<String> loRefs = const ['lo-1'],
+    }) => ActivityAutoSaveService.buildSessionOutcome(
+      sessionRoomId: '!s:x',
+      activityId: activityId,
+      archivedAt: archived ?? archivedAt,
+      sourceCourseId: sourceCourseId,
+      loRefs: loRefs,
+      starsByGoalSlug: const {'greet': 1},
+    );
+
+    test('completed_at is exactly the passed canonical archived-at', () {
+      final outcome = build();
+      expect(outcome, isNotNull);
+      expect(outcome!.completedAt, archivedAt);
+      expect(outcome.activityId, 'act-1');
+      expect(outcome.sourceCourseId, '!course:x');
+      expect(outcome.loRefs, ['lo-1']);
+      expect(outcome.starsByGoalSlug, {'greet': 1});
+    });
+
+    test('is null when the archive did not happen (archivedAt null)', () {
+      expect(
+        ActivityAutoSaveService.buildSessionOutcome(
+          sessionRoomId: '!s:x',
+          activityId: 'act-1',
+          archivedAt: null,
+          sourceCourseId: null,
+          loRefs: const [],
+          starsByGoalSlug: const {},
+        ),
+        isNull,
+      );
+    });
+
+    test('is null when there is no activity id', () {
+      expect(build(activityId: null), isNull);
     });
   });
 }

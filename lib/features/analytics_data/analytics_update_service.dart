@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -12,6 +13,7 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,19 +21,63 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/user_lemma_info_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class AnalyticsUpdateService {
+class AnalyticsUpdateService with WidgetsBindingObserver {
   static const int _maxMessagesCached = 10;
 
   final AnalyticsDataService dataService;
 
-  AnalyticsUpdateService(this.dataService);
+  /// Test-only injected tracker; when set, [dispose] flushes it directly instead
+  /// of the per-account registry.
+  final DosageEngagementTracker? _injectedTracker;
+
+  AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
+    : _injectedTracker = tracker {
+    // Pin the account mxid AT CONSTRUCTION when the client is already logged in.
+    // The authoritative pin is [pinAccountId] called from
+    // [AnalyticsDataService._initDatabase] the moment `loggedIn` is observed
+    // (before the fallible analytics init); this and [start] are backstops.
+    pinAccountId();
+  }
+
+  /// The account mxid, PINNED the moment the client is logged in (from
+  /// [AnalyticsDataService._initDatabase], before the fallible analytics init;
+  /// with construction + [start] as backstops) and retained — so teardown
+  /// resolves it even after the SDK nulls userID in `clear()` ahead of
+  /// `loggedOut`, and even when the analytics init fails before `start`. Not a
+  /// raw constructor snapshot (that can precede login on a fresh startup with an
+  /// unlogged default client); falls back to a live read until pinned.
+  String? _pinnedAccountId;
+  String get _accountUserId =>
+      _pinnedAccountId ?? dataService.accountUserId ?? '';
+
+  /// Latches the account mxid from the live account id when one is available.
+  /// Idempotent; a no-op before login. Called at the earliest logged-in point.
+  void pinAccountId() {
+    final live = dataService.accountUserId;
+    if (live != null && live.isNotEmpty) _pinnedAccountId = live;
+  }
+
+  /// This account's engagement tracker (heartbeat/background flush target).
+  DosageEngagementTracker? get _tracker =>
+      _injectedTracker ?? DosageEngagementTracker.forAccount(_accountUserId);
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
 
   void start() {
+    // Backstop pin (the authoritative pin is at the loggedIn observation in
+    // _initDatabase): covers any path where that didn't run before start.
+    pinAccountId();
+    // Piggyback app-lifecycle hooks for the dosage engagement tracker; the
+    // 5-minute tick below is its heartbeat flush. Idempotent re-registration
+    // so a restart can't stack observers.
+    WidgetsBinding.instance
+      ..removeObserver(this)
+      ..addObserver(this);
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
+      // Heartbeat flush of any open engagement span (no-op when none / dark).
+      unawaited(_tracker?.flushOpenSpan() ?? Future.value());
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -46,8 +92,29 @@ class AnalyticsUpdateService {
     });
   }
 
-  void dispose() {
+  Future<void> dispose() async {
+    WidgetsBinding.instance.removeObserver(this);
     _periodicTimer?.cancel();
+    // Await the final flush so the last open engagement span is actually sent —
+    // callers dispose BEFORE invalidating the bearer, so the POST uses a valid
+    // token. Dispose the account's tracker via the registry (isolated to this
+    // account); a test-injected tracker is flushed directly.
+    final injected = _injectedTracker;
+    if (injected != null) {
+      await injected.flushOpenSpan();
+    } else {
+      await DosageEngagementTracker.disposeAccount(_accountUserId);
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // A span represents FOREGROUND engagement, so any move off `resumed`
+    // (inactive/paused/detached/hidden) closes and flushes it; it reopens on
+    // the next learner activity.
+    if (state != AppLifecycleState.resumed) {
+      unawaited(_tracker?.flushOpenSpan() ?? Future.value());
+    }
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
