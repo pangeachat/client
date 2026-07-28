@@ -4,6 +4,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 
 abstract class AddCourseTileContent {
   String title(L10n l10n);
@@ -17,6 +18,10 @@ abstract class AddCourseTileContent {
   bool get isKnock => false;
 
   bool? get invited => null;
+
+  Future<Event?>? get unreadCoursePingEvent => null;
+
+  Set<String?>? get courseChildrenIds => null;
 
   String? get expandedContent => null;
 }
@@ -36,6 +41,13 @@ class RoomAddCourseTileContent extends AddCourseTileContent {
 
   @override
   bool get invited => space.membership == Membership.invite;
+
+  @override
+  Future<Event?>? get unreadCoursePingEvent => space.unreadCoursePingEvent;
+
+  @override
+  Set<String?> get courseChildrenIds =>
+      space.spaceChildren.map((c) => c.roomId).toSet();
 
   @override
   String? get courseId => space.coursePlan?.uuid;

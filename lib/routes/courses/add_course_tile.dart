@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:badges/badges.dart' as b;
-
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
+import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class AddCourseTile extends StatelessWidget {
   final AddCourseTileContent content;
@@ -27,6 +23,8 @@ class AddCourseTile extends StatelessWidget {
     final courseId = content.courseId;
     final members = content.members;
     final invited = content.invited ?? false;
+    final unreadCoursePingEvent = content.unreadCoursePingEvent;
+    final courseChildrenIds = content.courseChildrenIds;
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
@@ -57,33 +55,13 @@ class AddCourseTile extends StatelessWidget {
                 Row(
                   spacing: 12.0,
                   children: [
-                    ExcludeSemantics(
-                      child: SizedBox(
-                        width: 48.0,
-                        height: 48.0,
-                        child: ImageByUrl(
-                          imageUrl: content.imageUrl,
-                          width: 48.0,
-                          borderRadius: BorderRadius.circular(10.0),
-                          replacement: invited
-                              ? InvitedCourseBadge(
-                                  position: b.BadgePosition.topEnd(
-                                    top: -5,
-                                    end: -7,
-                                  ),
-                                  child: Avatar(
-                                    name: title,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    size: 48.0,
-                                  ),
-                                )
-                              : Avatar(
-                                  name: title,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  size: 48.0,
-                                ),
-                        ),
-                      ),
+                    CourseAvatar(
+                      avatar: content.imageUrl,
+                      displayname: title,
+                      size: 48.0,
+                      unreadCoursePingEvent: unreadCoursePingEvent!,
+                      courseChildrenIds: courseChildrenIds!,
+                      invite: invited,
                     ),
                     Expanded(
                       child: Column(

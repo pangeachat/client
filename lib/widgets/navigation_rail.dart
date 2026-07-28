@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:badges/badges.dart' as b;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
-import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
+import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
@@ -21,7 +19,6 @@ import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 
@@ -280,69 +277,20 @@ class _SpaceItem extends StatelessWidget {
     final displayname = space.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    final spaceChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
+    final courseChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
     return NaviRailItem(
       toolTip: displayname,
       isSelected: selected,
       backgroundColor: Colors.transparent,
       borderRadius: BorderRadius.circular(0),
       onTap: () => _onTapSpace(context),
-      unreadBadgeFilter: (room) => spaceChildrenIds.contains(room.id),
-      icon: Builder(
-        builder: (context) {
-          final position = b.BadgePosition.topEnd(top: -5, end: -7);
-          final child = ClipPath(
-            clipper: MapClipper(),
-            // The course name is already announced by NaviRailItem's toolTip, so
-            // exclude the avatar's own name label to avoid a double-read (#7185).
-            child: ExcludeSemantics(
-              child: Avatar(
-                mxContent: space.avatar,
-                name: displayname,
-                border: BorderSide(
-                  width: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
-                borderRadius: BorderRadius.circular(0),
-                size: iconWidth,
-              ),
-            ),
-          );
-
-          if (space.membership == Membership.invite) {
-            return InvitedCourseBadge(position: position, child: child);
-          }
-
-          return FutureBuilder(
-            future: space.unreadCoursePingEvent,
-            builder: (context, snapshot) {
-              final eventId = snapshot.data;
-              if (eventId != null) {
-                return b.Badge(
-                  badgeStyle: b.BadgeStyle(
-                    badgeColor: Theme.of(context).colorScheme.primaryContainer,
-                    elevation: 4,
-                    borderSide: BorderSide.none,
-                    padding: const EdgeInsetsGeometry.all(2),
-                  ),
-                  badgeContent: Icon(
-                    Icons.notifications_outlined,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    size: 12,
-                  ),
-                  position: position,
-                  child: child,
-                );
-              }
-
-              return b.Badge(
-                showBadge: false,
-                position: position,
-                child: child,
-              );
-            },
-          );
-        },
+      icon: CourseAvatar(
+        avatar: space.avatar,
+        displayname: displayname,
+        size: iconWidth,
+        unreadCoursePingEvent: space.unreadCoursePingEvent,
+        courseChildrenIds: courseChildrenIds,
+        invite: space.membership == .invite,
       ),
       naviRailWidth: naviRailWidth,
     );
