@@ -551,7 +551,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                               // collapsing sheet squeezes its content into a
                               // few pixels mid-animation and the inner
                               // RenderFlex overflows.
-                              final showContent = baseCavityPx > 0 && visible > 0;
+                              final showContent =
+                                  baseCavityPx > 0 && visible > 0;
                               return SizedBox(
                                 key: _cavityBoxKey,
                                 height: visible,
