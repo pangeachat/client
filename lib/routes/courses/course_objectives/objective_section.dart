@@ -297,12 +297,20 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                 bottom: 0,
                 child: ValueListenableBuilder(
                   valueListenable: _showBackArrowNotifier,
-                  builder: (context, showArrow, _) => showArrow
-                      ? ObjectiveSectionScrollArrow(
+                  builder: (context, showArrow, _) => BlockSemantics(
+                    blocking: showArrow,
+                    child: IgnorePointer(
+                      ignoring: !showArrow,
+                      child: AnimatedOpacity(
+                        duration: Duration(milliseconds: 150),
+                        opacity: showArrow ? 1 : 0,
+                        child: ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.back,
                           onTap: () => _scrollByArrow(ArrowDirection.back),
-                        )
-                      : SizedBox(),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Positioned(
@@ -311,12 +319,20 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                 bottom: 0,
                 child: ValueListenableBuilder(
                   valueListenable: _showForwardArrowNotifier,
-                  builder: (context, showArrow, _) => showArrow
-                      ? ObjectiveSectionScrollArrow(
+                  builder: (context, showArrow, _) => BlockSemantics(
+                    blocking: showArrow,
+                    child: IgnorePointer(
+                      ignoring: !showArrow,
+                      child: AnimatedOpacity(
+                        duration: Duration(milliseconds: 150),
+                        opacity: showArrow ? 1 : 0,
+                        child: ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.forward,
                           onTap: () => _scrollByArrow(ArrowDirection.forward),
-                        )
-                      : SizedBox(),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
