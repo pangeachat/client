@@ -12,7 +12,9 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/workspace_dock.dart';
@@ -76,9 +78,7 @@ class SpacesNavigationRail extends StatelessWidget {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
-                final allSpaces = client.rooms
-                    .where((room) => room.isSpace)
-                    .toList();
+                final allSpaces = client.sortedCourses(L10n.of(context));
 
                 return AnimatedContainer(
                   width: naviRailWidth,
@@ -310,21 +310,7 @@ class _SpaceItem extends StatelessWidget {
           );
 
           if (space.membership == Membership.invite) {
-            return b.Badge(
-              badgeStyle: b.BadgeStyle(
-                badgeColor: Theme.of(context).colorScheme.error,
-                elevation: 4,
-                borderSide: BorderSide.none,
-                padding: const EdgeInsetsGeometry.all(0),
-              ),
-              badgeContent: Icon(
-                Icons.error_outline,
-                color: Theme.of(context).colorScheme.onPrimary,
-                size: 16,
-              ),
-              position: position,
-              child: child,
-            );
+            return InvitedCourseBadge(position: position, child: child);
           }
 
           return FutureBuilder(
