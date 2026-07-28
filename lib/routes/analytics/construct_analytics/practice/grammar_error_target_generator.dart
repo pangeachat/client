@@ -22,6 +22,10 @@ class GrammarErrorTargetGenerator {
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> seenEventIDs = {};
 
+    // Enforce the 24-hour rule at the sentence (event) level: any message
+    // practiced within the cooldown is excluded (see [recentlyPracticedEventIDs]).
+    final recentlyPracticedIDs = recentlyPracticedEventIDs(constructs);
+
     final targets = <AnalyticsPracticeTarget>[];
     for (final construct in constructs) {
       if (construct.shouldSkipForRecentPractice(exerciseType)) {
@@ -41,6 +45,9 @@ class GrammarErrorTargetGenerator {
       for (final use in errorUses) {
         final eventID = use.metadata.eventId;
         if (eventID == null) continue;
+        if (recentlyPracticedIDs.contains(eventID)) {
+          continue; // Practiced this sentence within the last 24 hours.
+        }
         if (seenEventIDs.containsKey(eventID) &&
             seenEventIDs[eventID] == null) {
           continue; // Already checked this event and it had no valid grammar error match
@@ -63,6 +70,35 @@ class GrammarErrorTargetGenerator {
     }
 
     return targets;
+  }
+
+  /// The set of source-message eventIDs practiced within the last 24 hours,
+  /// read off the eventID that [GrammarErrorPracticeExerciseModel] stamps onto
+  /// each grammar-error practice use (correct or incorrect). Selection excludes
+  /// these so a sentence the user just practiced is not shown again within the
+  /// cooldown — a per-sentence dedup that per-construct skipping cannot provide,
+  /// because ignored errors and messages with multiple grammar errors never
+  /// clear their gating construct (#7360).
+  @visibleForTesting
+  static Set<String> recentlyPracticedEventIDs(
+    List<ConstructUses> constructs, {
+    DateTime? now,
+  }) {
+    final cutoff = (now ?? DateTime.now()).subtract(
+      AnalyticsPracticeConstants.recentPracticeCooldown,
+    );
+    final eventIDs = <String>{};
+    for (final construct in constructs) {
+      for (final use in construct.uses) {
+        if (!exerciseType.associatedUseTypes.contains(use.useType)) continue;
+        if (!use.timeStamp.isAfter(cutoff)) continue;
+        final practicedEventID = use.metadata.eventId;
+        if (practicedEventID != null) {
+          eventIDs.add(practicedEventID);
+        }
+      }
+    }
+    return eventIDs;
   }
 
   static Future<List<AnalyticsPracticeTarget>> _getTargetFromEvent(

@@ -56,8 +56,8 @@ score = daysSinceLastUsed × (isContentWord ? 10 : 7)
 [`AnalyticsPracticeSessionRepo._fetchVocab`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) and `_fetchAudio` sort by `lastUsed` ascending with nulls first (never-practiced words come first). There is **no scoring formula** and **no content-word bonus**.
 
 Grammar targets use a different strategy:
-- **`_fetchErrors`**: selects recent grammar mistakes, skipping any construct practiced in the last 24 hours.
-- **`_fetchMorphs`**: sorts morph constructs by `lastUsed` ascending (same as vocab).
+- **`GrammarErrorTargetGenerator`** (fill-in-the-blank sentences): pulls the messages behind the user's recent grammar errors, then applies the 24-hour rule at the **sentence (event) level** — any message practiced within the last 24 hours, correct or incorrect, is excluded. This is tracked via the source `eventID` that `GrammarErrorPracticeExerciseModel` stamps onto each grammar-error practice use, and read back by `GrammarErrorTargetGenerator.recentlyPracticedEventIDs`. A per-construct recency skip (`ConstructUses.shouldSkipForRecentPractice`) still runs as well. The per-sentence rule is required because per-construct skipping alone never clears **ignored** errors (the sent message keeps the erroneous surface form, so the practiced `corGE` lands on a different construct) or messages with **multiple** grammar errors — both of which caused the same sentences to repeat every session (#7360).
+- **`GrammarMatchTargetGenerator`** (`grammarCategory` multiple-choice): sorts morph constructs by recency and fills any slots left over after the error sentences — so multiple-choice questions appear once the fill-in-the-blank pool is exhausted (e.g. once the 24-hour rule has thinned it).
 
 ### ⚠️ Divergence note
 

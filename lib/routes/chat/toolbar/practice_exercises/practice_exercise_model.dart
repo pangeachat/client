@@ -241,10 +241,7 @@ sealed class MultipleChoicePracticeExerciseModel extends PracticeExerciseModel {
           (token) => OneConstructUse(
             useType: useType,
             constructType: exerciseType.constructUsesType,
-            metadata: ConstructUseMetaData(
-              roomId: null,
-              timeStamp: DateTime.now(),
-            ),
+            metadata: constructUseMetadata,
             category: token.pos,
             lemma: token.lemma.text,
             form: token.lemma.text,
@@ -253,6 +250,12 @@ sealed class MultipleChoicePracticeExerciseModel extends PracticeExerciseModel {
         )
         .toList();
   }
+
+  /// Metadata stamped onto each recorded practice use. Subclasses override to
+  /// attach identifying context (e.g. the source [GrammarErrorPracticeExerciseModel]
+  /// stamps its `eventID` so the 24-hour rotation rule can dedup by sentence).
+  ConstructUseMetaData get constructUseMetadata =>
+      ConstructUseMetaData(roomId: null, timeStamp: DateTime.now());
 
   @override
   Map<String, dynamic> toJson() {
@@ -444,6 +447,18 @@ class GrammarErrorPracticeExerciseModel
     required this.eventID,
     required this.translation,
   });
+
+  /// Stamp the source message's [eventID] onto each recorded practice use so
+  /// [GrammarErrorTargetGenerator] can enforce the 24-hour rule by skipping any
+  /// sentence (event) practiced within the cooldown, rather than relying on
+  /// per-construct identity — which fails for ignored errors and multi-error
+  /// messages (#7360).
+  @override
+  ConstructUseMetaData get constructUseMetadata => ConstructUseMetaData(
+    roomId: null,
+    timeStamp: DateTime.now(),
+    eventId: eventID,
+  );
 
   @override
   Map<String, dynamic> toJson() {
