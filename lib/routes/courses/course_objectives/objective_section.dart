@@ -295,42 +295,28 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                 left: 0,
                 top: 0,
                 bottom: 0,
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: ValueListenableBuilder(
-                    valueListenable: _showBackArrowNotifier,
-                    builder: (context, showArrow, _) => IgnorePointer(
-                      ignoring: !showArrow,
-                      child: Opacity(
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
+                child: ValueListenableBuilder(
+                  valueListenable: _showBackArrowNotifier,
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.back,
                           onTap: () => _scrollByArrow(ArrowDirection.back),
-                        ),
-                      ),
-                    ),
-                  ),
+                        )
+                      : SizedBox(),
                 ),
               ),
               Positioned(
                 right: 0,
                 top: 0,
                 bottom: 0,
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: ValueListenableBuilder(
-                    valueListenable: _showForwardArrowNotifier,
-                    builder: (context, showArrow, _) => IgnorePointer(
-                      ignoring: !showArrow,
-                      child: Opacity(
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
+                child: ValueListenableBuilder(
+                  valueListenable: _showForwardArrowNotifier,
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.forward,
                           onTap: () => _scrollByArrow(ArrowDirection.forward),
-                        ),
-                      ),
-                    ),
-                  ),
+                        )
+                      : SizedBox(),
                 ),
               ),
             ],
