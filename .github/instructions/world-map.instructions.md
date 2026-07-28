@@ -38,7 +38,7 @@ Before any search or filter, the map shows **my L2, at or below my CEFR, in the 
 
 - Preferences joinable sessions across the learner's languages — their L1 and L2. (Support for multiple L1s and L2s is future work.)
 - Changing or clearing those filters and searching refine it; a one-tap **reset** returns to it.
-- When the view is empty, offer a **widen** affordance (all languages, or zoom out) so personalization never dead-ends.
+- When the view is empty, offer a **widen** affordance (zoom out, or broaden the level band to _All levels_) so personalization never dead-ends. Language is fixed by the learner's settings, so it is never a widen lever.
 
 ## Pin display
 
@@ -149,11 +149,29 @@ Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is)
 
 [`WorldMapFilter`](../../lib/routes/world/world_map_filter.dart) is the single mechanism that defines the candidate set; the [Priority matrix](#priority-matrix) then ranks within it. The set is:
 
-- **Viewport (lat/long bbox)** — the one **constant** filter: always applied, never removable, driven by the map camera. Its role in tiering is in the Priority matrix above.
-- **Selected quests**, **target language (L2)**, **CEFR level**, and **a set of Missions** — optional, all-via-a-dropdown. Selecting a quest also sets the next-Mission anchor that the band ranks toward.
+- **Viewport (lat/long bbox)** and **target language** — the two **constant** filters, always applied and never removable: the viewport is driven by the map camera, and the language is driven by the **learner's own language settings** (their L1/L2), _not_ the map — there is **no language pill**. A learner only ever wants to discover content in a language they are studying, so language is fixed by settings rather than offered as something to change or clear on the map. The viewport's role in tiering is in the Priority matrix above.
+- **CEFR level**, **party size**, and **status** — the three **dropdown pills** rendered under the search bar (below). Each is optional and set independently.
+- **Selected quests** and **a set of Missions** — part of the same candidate-defining filter set, but **not surfaced as pills today** (the pill row is only the three above for now). A quest still enters scope through the `?c=` course context ([routing.instructions.md](routing.instructions.md)), and selecting one sets the next-Mission anchor the band ranks toward.
 - **Free text** — typed in the search bar ([Search](#search)).
 
-The optional filters are seeded from the personalized default (my L2, my CEFR, my joined quests) and a one-tap **reset** restores them; each active one shows below the search bar as an **X-able pill**. This replaces the always-on toggles that previously sat under the bar. **Completion state, theme, and interests** come later, once the content model carries them and a captured-interests signal exists; interests are a deliberate captured preference, never proxied from free text.
+### The pill row — one pill per category, not per value
+
+Under the search bar sits one horizontally-scrollable row with **a single pill per filter category** (Level, Party size, Status), each opening a **dropdown** of that category's options. This replaces the previous row, where every _value_ (each CEFR level, each completion state) was its own always-visible chip toggled on and off. Behavior:
+
+- **Default-selected and "on."** On first load **Level** is pre-seeded from the [personalized default](#the-personalized-default) — my CEFR band (my level and below) — so it starts **on**: light-purple/light-brand fill with a **check on the left** and the value as the label (`✓ B1 and below`). **Party size** and **Status** default to their **"All …"** option (off/white): the map preferences breadth over pre-narrowing, so it does not restrict by group size or state until the learner asks.
+- **Tapping opens the dropdown; it never toggles off.** A tap opens the pill's option list — the category's values plus a leading **"All …"** option (All levels / All players / All statuses) — anchored under the pill. Picking a specific value keeps the pill **on** (light purple, leading check, label updates to the chosen value).
+- **"All …" is the off state.** Choosing the leading "All …" option clears that dimension — the equivalent of the old toggle-off: the pill turns **white** with no check and reads "All levels" / "All players" / "All statuses", and that facet stops narrowing the candidate set.
+- **Single-select per pill.** Each pill holds one choice at a time (or "All"). The **Level** pill is single-select too, but a chosen level is a **band, not a single rung**: picking a level selects it as a **ceiling** and keeps everything at or below it, so the options above A1 spell that out — `A1`, `A2 and below`, `B1 and below`, `B2 and below`, `C1 and below`, `C2 and below` — plus `All levels`.
+
+The three pills:
+
+- **Level (CEFR).** A single-select dropdown of **bands**: `All levels`, then `A1` and each higher level labeled `… and below` (`A2 and below` … `C2 and below`); picking one keeps activities **at or below** that ceiling ([`bandAtOrBelow`](../../lib/routes/world/world_map_filter.dart); an unknown-level card is always kept, as today). Default = **my CEFR band** (my level and below). "All levels" removes the level filter.
+- **Party size.** Options **2 / 3 / 4+**, filtering by the activity's **designed role count** — read straight off the pin's thin **`roleCount`** ([Priority matrix](#priority-matrix); no new server field, the count already rides the bbox card). **Default = "All players" (off)**: the map **preferences connection over solo play**, so it does not pre-narrow by party size. A learner who specifically wants to play alone selects **2** — the solo-viable size (the bot fills one seat, so a 2-role activity needs no second human — the same reasoning behind `multi_person_first_map` and [Understaffed pins](#understaffed-pins)).
+- **Status.** A single-select dropdown: `All statuses`, `Available`, `Ongoing`, `Open to Join`, `Waiting`, `Completed` — filtering by the activity's [display state](#pin-state) (its [`ActivityPinState`](../../lib/routes/world/world_map_ranking.dart) plus the ongoing sub-state): **Available** = the plain default state — playable, with nothing live and no stars yet; **Ongoing** = a live session the learner holds a role in whose chat has **started** (ongoing/active); **Open to Join** = a live, [joinable](#discovering-joinable-sessions) open session; **Waiting** = a session the learner holds a role in that has **not** started yet (ongoing/pending — same copy as an ongoing pending pin); **Completed** = an activity the learner has earned a star / super-star on. **Default = "All statuses" (off)**: the map preferences surfacing every kind of activity over pre-filtering by state.
+
+**Reset.** A leading **reset control** (the ↻ swirl) appears at the **left of the row the moment any pill differs from its personalized default**, resets **every** pill to its default in one press, and **disappears once everything is back at default** ([`WorldMapFilter.canReset`](../../lib/routes/world/world_map_filter.dart)). It is the row-wide reset, not a per-pill affordance — an individual pill is cleared by choosing its own "All …" option.
+
+**Status supersedes the old completion filter.** The Status pill is the one **state** filter, backed by the pin's [`ActivityPinState`](../../lib/routes/world/world_map_ranking.dart); the earlier per-activity completion enum ([`MapCompletionFilter`](../../lib/routes/world/world_map_search_overlay.dart) — notStarted / inProgress / completed) is **retired as a filter mechanism**, replaced by the four richer statuses above. The completed-state _derivation_ itself remains — it still drives the star / super-star tier ([Goal Progress](#goal-progress)), independent of any filter. **Theme and interests** come later, once the content model carries them and a captured-interests signal exists; interests are a deliberate captured preference, never proxied from free text.
 
 Design intent: a change to _which_ items exist widens or narrows the candidate set (a re-query); a change that only hides already-loaded items refines in place. Keep the cheap, indexed dimensions as set-changers and the rest as in-view refinements so the map stays responsive.
 
