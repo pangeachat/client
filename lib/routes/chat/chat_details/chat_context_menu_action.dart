@@ -30,8 +30,9 @@ extension on ChatContextAction {
       case ChatContextAction.mute:
         return room.membership == Membership.join;
       case ChatContextAction.leave:
-        return room.membership == Membership.join &&
-            (!room.isActivitySession || !room.isActivityStarted);
+        if (room.membership != Membership.join) return false;
+        if (!room.isActivitySession) return true;
+        return !room.isActivityStarted || !room.hasPickedRole;
       case ChatContextAction.delete:
         return room.isRoomAdmin && !room.isDirectChat;
       case ChatContextAction.endActivity:
