@@ -258,6 +258,18 @@ class WorkspaceShell extends StatelessWidget {
                             state: state,
                             layout: l,
                             screenPadding: MediaQuery.viewPaddingOf(context),
+                            // Only the keyboard's overlap BEYOND the bottom safe
+                            // area (home indicator) should trim the cavity: once
+                            // the keyboard covers that strip, the SafeArea stops
+                            // reserving it and the bottom-anchored nav layer
+                            // already drops by that much. Trimming by the raw
+                            // inset would double-count it and settle the cavity
+                            // top ~34pt low. Read above the Scaffold, where
+                            // `viewInsets` is still intact (#7754).
+                            keyboardInset:
+                                (MediaQuery.viewInsetsOf(context).bottom -
+                                        MediaQuery.viewPaddingOf(context).bottom)
+                                    .clamp(0.0, double.infinity),
                           ),
                         ),
 
@@ -399,10 +411,15 @@ class _MobileNavLayer extends StatefulWidget {
   final GoRouterState state;
   final _ShellLayout layout;
   final EdgeInsets screenPadding;
+
+  /// Keyboard height, read above the Scaffold and forwarded to
+  /// [MobileNavWidget] (see its `keyboardInset`). #7754.
+  final double keyboardInset;
   const _MobileNavLayer({
     required this.state,
     required this.layout,
     required this.screenPadding,
+    required this.keyboardInset,
   });
 
   @override
@@ -688,6 +705,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
+        keyboardInset: widget.keyboardInset,
       ),
     );
   }
