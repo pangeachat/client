@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/svg.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -10,6 +6,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ObjectiveSection extends StatefulWidget {
   final int index;
@@ -137,206 +135,216 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
       ),
     );
 
-    return Semantics(
+    return  Semantics(
       label: L10n.of(context).objective,
       container: true,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Objective header: placeholder icon + the can-do statement, with the
-          // Mission's earned/threshold stars when the shared rollup is in.
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _ObjectivePlaceholderIcon(index: widget.index),
-              const SizedBox(width: 12.0),
-              Expanded(
-                child: Text(
-                  widget.group.objective.objective,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                  ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Objective header: placeholder icon + the can-do statement, with the
+        // Mission's earned/threshold stars when the shared rollup is in.
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _ObjectivePlaceholderIcon(index: widget.index),
+            const SizedBox(width: 12.0),
+            Expanded(
+              child: Text(
+                widget.group.objective.objective,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              if (widget.progress != null) ...[
-                const SizedBox(width: 8.0),
-                Semantics(
-                  label: L10n.of(context).starsEarnedOfTotal(
-                    widget.progress!.stars,
-                    widget.progress!.threshold,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 18.0,
-                        color: AppConfig.goldByTheme(context),
-                      ),
-                      const SizedBox(width: 4.0),
+            ),
+            if (widget.progress != null) ...[
+              const SizedBox(width: 8.0),
+              Semantics(
+                label: L10n.of(context).starsEarnedOfTotal(
+                  widget.progress!.stars,
+                  widget.progress!.threshold,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      size: 18.0,
+                      color: AppConfig.goldByTheme(context),
+                    ),
+                    const SizedBox(width: 4.0),
                       ExcludeSemantics(
                         child: Text(
-                          // Raw stars over the satisfaction threshold — surplus
-                          // shows (12/7); only the quest header caps.
-                          '${widget.progress!.stars}/${widget.progress!.threshold}',
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                      // Raw stars over the satisfaction threshold — surplus
+                      // shows (12/7); only the quest header caps.
+                      '${widget.progress!.stars}/${widget.progress!.threshold}',
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
                       ),
-                    ],
-                  ),
+                    ),),
+                  ],
                 ),
-              ],
+              ),
             ],
-          ),
-          // No per-Mission progress bar — only the overall course has a bar (in
-          // the header). A Mission shows just its star count above (#7597).
-          const SizedBox(height: 12.0),
-          // The activities that satisfy this objective.
-          SizedBox(
-            height: _cardHeight,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                NotificationListener<ScrollMetricsNotification>(
-                  onNotification: (ScrollMetricsNotification notification) {
-                    _updateArrowVisibility();
-                    return true;
-                  },
-                  child: ListView.separated(
-                    controller: _scrollController,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: activities.length,
-                    separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
-                    padding: EdgeInsets.symmetric(
-                      vertical: widget.spacing / 2.0,
-                    ),
-                    itemBuilder: (context, i) {
-                      final ref = activities[i];
-                      final complete =
-                          (widget.hasCompletedActivity?.call(ref.activityId) ??
-                          false);
-                      final starsEarned = widget.userStarsByActivity(
-                        ref.activityId,
-                      );
-                      final liveState = widget.liveStateByActivity(
-                        ref.activityId,
-                      );
-                      // Dim activities that can't be started yet: the course lacks
-                      // enough members for their roles (tapping opens the start page's
-                      // Invite CTA). A live (ongoing/joinable) session already filled
-                      // its seats so it never dims
-                      final available = widget.availableParticipants;
-                      final canStart =
-                          available == null ||
-                          complete ||
-                          liveState.state != null ||
-                          ref.plan.req.numberOfParticipants <= available;
-                      return MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          // In a preview (no room), open the activity as a standalone
-                          // world object (`/<activityId>`). In a joined course, open it
-                          // as the focused detail over the map: DROP the `left=course`
-                          // card (so it isn't left blank beside the activity) but KEEP
-                          // the `?m=course:` filter. That surviving course scope is what
-                          // marks this plan as the card's child: its close is a back-arrow
-                          // that reopens the card (a pin-opened plan drops the scope and so
-                          // closes with an X). The map stays course-scoped and zooms to
-                          // this activity (`mapFocusFor` → `ActivityFocus`). See
-                          // routing.instructions.md.
-                          onTap: () => widget.onTap(ref),
-                          child: Stack(
-                            // The card's state banner peeks past its top-left
-                            // corner, so this wrapping Stack must not clip it.
-                            clipBehavior: Clip.hardEdge,
-                            children: [
-                              Opacity(
-                                opacity: canStart ? 1.0 : 0.5,
-                                child: ActivitySuggestionCard(
-                                  activity: ref.plan,
-                                  width: _cardWidth,
-                                  height: _cardHeight,
-                                  fontSize: _isColumnMode ? 16.0 : 12.0,
-                                  fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                                  iconSize: _isColumnMode ? 12.0 : 8.0,
-                                  starsEarned: starsEarned,
-                                  pinState: complete ? null : liveState.state,
-                                  openSessions: liveState.openSessions,
+          ],
+        ),
+        // No per-Mission progress bar — only the overall course has a bar (in
+        // the header). A Mission shows just its star count above (#7597).
+        const SizedBox(height: 12.0),
+        // The activities that satisfy this objective.
+        SizedBox(
+          height: _cardHeight,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              NotificationListener<ScrollMetricsNotification>(
+                onNotification: (ScrollMetricsNotification notification) {
+                  _updateArrowVisibility();
+                  return true;
+                },
+                child: ListView.separated(
+                  controller: _scrollController,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: activities.length,
+                  separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
+                  padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
+                  itemBuilder: (context, i) {
+                    final ref = activities[i];
+                    final complete =
+                        (widget.hasCompletedActivity?.call(ref.activityId) ??
+                        false);
+                    final starsEarned = widget.userStarsByActivity(
+                      ref.activityId,
+                    );
+                    final liveState = widget.liveStateByActivity(
+                      ref.activityId,
+                    );
+                    // Dim activities that can't be started yet: the course lacks
+                    // enough members for their roles (tapping opens the start page's
+                    // Invite CTA). A live (ongoing/joinable) session already filled
+                    // its seats so it never dims
+                    final available = widget.availableParticipants;
+                    final canStart =
+                        available == null ||
+                        complete ||
+                        liveState.state != null ||
+                        ref.plan.req.numberOfParticipants <= available;
+                    return MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        // In a preview (no room), open the activity as a standalone
+                        // world object (`/<activityId>`). In a joined course, open it
+                        // as the focused detail over the map: DROP the `left=course`
+                        // card (so it isn't left blank beside the activity) but KEEP
+                        // the `?m=course:` filter. That surviving course scope is what
+                        // marks this plan as the card's child: its close is a back-arrow
+                        // that reopens the card (a pin-opened plan drops the scope and so
+                        // closes with an X). The map stays course-scoped and zooms to
+                        // this activity (`mapFocusFor` → `ActivityFocus`). See
+                        // routing.instructions.md.
+                        onTap: () => widget.onTap(ref),
+                        child: Stack(
+                          // The card's state banner peeks past its top-left
+                          // corner, so this wrapping Stack must not clip it.
+                          clipBehavior: Clip.hardEdge,
+                          children: [
+                            Opacity(
+                              opacity: canStart ? 1.0 : 0.5,
+                              child: ActivitySuggestionCard(
+                                activity: ref.plan,
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                fontSize: _isColumnMode ? 16.0 : 12.0,
+                                fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                                iconSize: _isColumnMode ? 12.0 : 8.0,
+                                starsEarned: starsEarned,
+                                pinState: complete ? null : liveState.state,
+                                openSessions: liveState.openSessions,
+                              ),
+                            ),
+                            if (complete)
+                              Container(
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: theme.colorScheme.surface.withAlpha(
+                                    180,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    'assets/pangea/check.svg',
+                                    width: 48.0,
+                                    height: 48.0,
+                                  ),
                                 ),
                               ),
-                              if (complete)
-                                Container(
-                                  width: _cardWidth,
-                                  height: _cardHeight,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    color: theme.colorScheme.surface.withAlpha(
-                                      180,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      'assets/pangea/check.svg',
-                                      width: 48.0,
-                                      height: 48.0,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
+                          ],
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-                // The scroll arrows overlay the ends of the ListView. Only mount
-                // the arrow that is currently usable — a hidden-but-present arrow
-                // (IgnorePointer / opacity 0) still leaves a semantics node at the
-                // edge that, on Flutter web, lets a tap fall through to the card
-                // beneath it. Wrapping the live arrow in BlockSemantics drops the
-                // card semantics underneath so the tap lands on the arrow (#7803).
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  child: ValueListenableBuilder<bool>(
-                    valueListenable: _showBackArrowNotifier,
-                    builder: (context, showArrow, _) => showArrow
-                        ? BlockSemantics(
-                            child: ObjectiveSectionScrollArrow(
-                              direction: ArrowDirection.back,
-                              onTap: () => _scrollByArrow(ArrowDirection.back),
-                            ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
+              ),
+              // Drop the card semantics beneath the arrows so a tap on an arrow
+              // can't fall through to a card on Flutter web (#7803). A single
+              // blocker painted after the ListView but before the arrows keeps
+              // the two arrows from clobbering each other's semantics: a
+              // per-arrow BlockSemantics would also drop the sibling arrow
+              // painted before it, routing its taps to the wrong arrow.
+              ListenableBuilder(
+                listenable: Listenable.merge([
+                  _showBackArrowNotifier,
+                  _showForwardArrowNotifier,
+                ]),
+                builder: (context, _) {
+                  final blocking =
+                      _showBackArrowNotifier.value ||
+                      _showForwardArrowNotifier.value;
+                  return blocking
+                      ? const BlockSemantics()
+                      : const SizedBox.shrink();
+                },
+              ),
+              // The scroll arrows overlay the ends of the ListView. Only mount
+              // the arrow that is currently usable — a hidden-but-present arrow
+              // (IgnorePointer / opacity 0) still leaves a semantics node at the
+              // edge that, on Flutter web, lets a tap fall through to the card
+              // beneath it.
+              Positioned(
+                left: 0,
+                top: 0,
+                bottom: 0,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: _showBackArrowNotifier,
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.back,
+                          onTap: () => _scrollByArrow(ArrowDirection.back),
+                        )
+                      : const SizedBox.shrink(),
                 ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  child: ValueListenableBuilder<bool>(
-                    valueListenable: _showForwardArrowNotifier,
-                    builder: (context, showArrow, _) => showArrow
-                        ? BlockSemantics(
-                            child: ObjectiveSectionScrollArrow(
-                              direction: ArrowDirection.forward,
-                              onTap: () =>
-                                  _scrollByArrow(ArrowDirection.forward),
-                            ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
+              ),
+              Positioned(
+                right: 0,
+                top: 0,
+                bottom: 0,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: _showForwardArrowNotifier,
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
+                          direction: ArrowDirection.forward,
+                          onTap: () => _scrollByArrow(ArrowDirection.forward),
+                        )
+                      : const SizedBox.shrink(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],),
     );
   }
 }
