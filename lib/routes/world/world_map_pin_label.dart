@@ -8,8 +8,9 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// chosen by the [placePinLabels] geometry pass; this widget is pure
 /// presentation. It's sized by its enclosing marker box (measured to match
 /// [kPinLabelTextStyle]), so the text already fits — [kPinLabelMaxWidth] caps
-/// it upstream and it ellipsizes if ever over. Non-interactive: the caller
-/// wraps it in an [IgnorePointer] so the wide box never intercepts pin/map taps.
+/// it upstream and it ellipsizes if ever over. The caller wraps it in a
+/// tap target that opens the label's own activity (the box is measured tight to
+/// the text, so the tappable area matches the visible label — #7920).
 class WorldMapPinLabel extends StatelessWidget {
   final String title;
   final Color color;

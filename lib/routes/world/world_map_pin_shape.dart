@@ -63,6 +63,20 @@ class TeardropPainter extends CustomPainter {
     return path;
   }
 
+  /// Absorb taps only within the visible teardrop silhouette, not the whole
+  /// rectangular box — otherwise the transparent corners/gutters steal taps
+  /// meant for an overlapping neighbour pin or its name label (#7920). Mirrors
+  /// how a small dot's [BoxDecoration] already clips its tap area to the circle.
+  ///
+  /// [_shapePath] is built around `x=0` and [paint] draws it after translating
+  /// by `size.width / 2`; the marker box width equals [headDiameter], so shift
+  /// the incoming local position back by `headDiameter / 2` into path space
+  /// before testing. Reuses the exact painted path, so the hit region is
+  /// pixel-identical to the silhouette.
+  @override
+  bool? hitTest(Offset position) =>
+      _shapePath().contains(position.translate(-headDiameter / 2, 0));
+
   @override
   void paint(Canvas canvas, Size size) {
     // Center the shape (built around x=0) in the painter's width.
