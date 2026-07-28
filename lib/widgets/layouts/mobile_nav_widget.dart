@@ -116,6 +116,12 @@ class MobileNavWidget extends StatefulWidget {
   /// the finger moves.
   final ValueChanged<bool>? onCavityFullChanged;
 
+  /// Keyboard height, passed from the shell (which reads it above its Scaffold —
+  /// a resizing Scaffold hides `viewInsets` from its body). Shrinks the cavity
+  /// so its top stays clear of the analytics bar when the keyboard opens
+  /// (#7754). Zero when no keyboard is up.
+  final double keyboardInset;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -134,6 +140,7 @@ class MobileNavWidget extends StatefulWidget {
     this.onDismissed,
     this.mapStaysLive = false,
     this.onCavityFullChanged,
+    this.keyboardInset = 0.0,
     super.key,
   });
 
@@ -434,9 +441,14 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final maxHeightPx = screenHeight * widget.maxHeightFraction;
     _lastMaxHeightPx = maxHeightPx;
 
+    // Trim by the keyboard height so the cavity's top (and the search field
+    // above it) stays put instead of rising into the analytics bar (#7754).
     final cavityHeightPx = widget.cavityChild == null
         ? 0.0
-        : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
+        : (maxHeightPx * _currentFraction - widget.keyboardInset).clamp(
+            0.0,
+            maxHeightPx,
+          );
 
     final isExpanded = widget.cavityChild != null && _currentFraction > 0.01;
 
