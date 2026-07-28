@@ -4772,5 +4772,7 @@
     "closeSearch": "Close search",
     "closeArchive": "Close archive",
     "waitingToFillOneRole": "Waiting to fill 1 role...",
+    "chatSearchPageLabel": "Chat search page",
+    "selectImageLabel": "Select image", 
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }
