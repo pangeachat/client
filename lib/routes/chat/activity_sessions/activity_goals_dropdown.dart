@@ -89,7 +89,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
                   activeGoalId: active?.id,
                   subtitle: allComplete
                       ? null
-                      : GoalHeaderLabel(active?.description ?? ''),
+                      : GoalHeaderLabel(active?.description ?? '', maxLines: 4),
                 ),
                 expanded: ActivityDropdownContent(
                   goals: goals,
