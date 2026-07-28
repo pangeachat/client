@@ -116,6 +116,15 @@ class MobileNavWidget extends StatefulWidget {
   /// the finger moves.
   final ValueChanged<bool>? onCavityFullChanged;
 
+  /// The keyboard's overlap BEYOND the bottom safe area, computed by the shell
+  /// (which reads `viewInsets` above its Scaffold — a resizing Scaffold hides it
+  /// from the body — and nets out the home-indicator inset the SafeArea stops
+  /// reserving once the keyboard covers it). Trimmed from the cavity —
+  /// INSTANTLY, not through the rest-height animation — so the top holds its
+  /// position the whole time the keyboard opens: no jump-then-readjust, and no
+  /// settle a few pt low (#7754). Zero when no keyboard is up.
+  final double keyboardInset;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -134,6 +143,7 @@ class MobileNavWidget extends StatefulWidget {
     this.onDismissed,
     this.mapStaysLive = false,
     this.onCavityFullChanged,
+    this.keyboardInset = 0.0,
     super.key,
   });
 
@@ -158,6 +168,11 @@ class MobileNavWidget extends StatefulWidget {
 
 class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _railHeight = MobileNavWidget.railRowHeight;
+
+  /// Anchors the cavity's outer sizing box — the box whose height is the
+  /// animated rest height MINUS the (instant) keyboard trim. Tests read its
+  /// rendered height to assert the keyboard behaviour (#7754).
+  static const Key _cavityBoxKey = ValueKey('navCavityBox');
 
   /// The collapsed peek height for a course sheet (the only cavity that peeks).
   /// Sized to the course card's compact header — the drag handle plus the
@@ -434,7 +449,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final maxHeightPx = screenHeight * widget.maxHeightFraction;
     _lastMaxHeightPx = maxHeightPx;
 
-    final cavityHeightPx = widget.cavityChild == null
+    // The cavity's rest/drag height, WITHOUT the keyboard. This is the value
+    // that animates on section snaps. The keyboard trim is applied separately,
+    // instantly, in the builder below (#7754) — see [_cavityBox].
+    final baseCavityPx = widget.cavityChild == null
         ? 0.0
         : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
 
@@ -494,32 +512,54 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (widget.cavityChild != null)
-                          AnimatedContainer(
+                          // Only `baseCavityPx` (the rest/drag height) drives
+                          // the tween, so section snaps still animate. The
+                          // keyboard inset is subtracted from the ANIMATED
+                          // value inside the builder with a plain SizedBox —
+                          // instant, in lockstep with the Scaffold's keyboard
+                          // lift — so the widget's top never jumps up and
+                          // readjusts when the keyboard opens (#7754).
+                          TweenAnimationBuilder<double>(
                             duration: _animationDuration,
                             curve: Curves.easeOut,
-                            height: cavityHeightPx,
-                            child: cavityHeightPx <= 0
-                                ? null
-                                : ClipRect(
-                                    child: _NavCavity(
-                                      onHandleTap: _toggleHandle,
-                                      // At peek, a tap anywhere on the sheet
-                                      // (not claimed by an inner button)
-                                      // expands to full — the peek is an
-                                      // entry point, not a surface to
-                                      // interact with (#7609).
-                                      onBodyTap:
-                                          widget.cavityDefaultsToPeek &&
-                                              _restState ==
-                                                  NavCavityHeight.collapsed
-                                          ? () => _openAt(NavCavityHeight.full)
-                                          : null,
-                                      onDragStart: _onDragStart,
-                                      onDragUpdate: _onDragUpdate,
-                                      onDragEnd: _onDragEnd,
-                                      child: widget.cavityChild!,
-                                    ),
-                                  ),
+                            tween: Tween<double>(end: baseCavityPx),
+                            child: _NavCavity(
+                              onHandleTap: _toggleHandle,
+                              // At peek, a tap anywhere on the sheet (not
+                              // claimed by an inner button) expands to full —
+                              // the peek is an entry point, not a surface to
+                              // interact with (#7609).
+                              onBodyTap:
+                                  widget.cavityDefaultsToPeek &&
+                                      _restState == NavCavityHeight.collapsed
+                                  ? () => _openAt(NavCavityHeight.full)
+                                  : null,
+                              onDragStart: _onDragStart,
+                              onDragUpdate: _onDragUpdate,
+                              onDragEnd: _onDragEnd,
+                              child: widget.cavityChild!,
+                            ),
+                            builder: (context, animatedHeight, child) {
+                              final visible =
+                                  (animatedHeight - widget.keyboardInset).clamp(
+                                    0.0,
+                                    animatedHeight,
+                                  );
+                              // Drop the content the instant the cavity is
+                              // TARGETED shut (baseCavityPx), not when the
+                              // ANIMATED height reaches 0 — otherwise a
+                              // collapsing sheet squeezes its content into a
+                              // few pixels mid-animation and the inner
+                              // RenderFlex overflows.
+                              final showContent = baseCavityPx > 0 && visible > 0;
+                              return SizedBox(
+                                key: _cavityBoxKey,
+                                height: visible,
+                                child: showContent
+                                    ? ClipRect(child: child)
+                                    : null,
+                              );
+                            },
                           ),
                         SizedBox(
                           height: _railHeight,

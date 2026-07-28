@@ -31,6 +31,7 @@ void main() {
     bool courseShortcutHostsCavity = false,
     VoidCallback? onDismissed,
     ValueChanged<bool>? onCavityFullChanged,
+    double keyboardInset = 0.0,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -55,6 +56,7 @@ void main() {
             courseShortcutHostsCavity: courseShortcutHostsCavity,
             onDismissed: onDismissed,
             onCavityFullChanged: onCavityFullChanged,
+            keyboardInset: keyboardInset,
           ),
         ),
       ),
@@ -82,14 +84,13 @@ void main() {
         w.onTap != null,
   );
 
+  // The cavity's rendered height = its animated rest height minus the (instant)
+  // keyboard trim. It lives on the SizedBox keyed 'navCavityBox' inside the
+  // cavity's TweenAnimationBuilder; absent (0) when there is no cavity.
   double cavityHeightOf(WidgetTester tester) {
-    final container = tester.widget<AnimatedContainer>(
-      find.byType(AnimatedContainer),
-    );
-    final constraints = container.constraints;
-    return container.decoration == null && constraints == null
-        ? 0.0
-        : (container.constraints?.maxHeight ?? 0.0);
+    final finder = find.byKey(const ValueKey('navCavityBox'));
+    if (finder.evaluate().isEmpty) return 0.0;
+    return tester.getSize(finder).height;
   }
 
   group('rail', () {
@@ -689,6 +690,47 @@ void main() {
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));
+    });
+  });
+
+  group('keyboard inset (#7754)', () {
+    // The cavity shrinks by the keyboard height so its top (and the search
+    // field above it) stays clear of the analytics bar (#7754).
+    testWidgets('shrinks the cavity by the keyboard height', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+      );
+      final maxHeightPx = 800.0 * 0.75;
+      // Baseline: opens at half with no keyboard.
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5, 1.0));
+
+      // Remount with a 200px keyboard up: the half-height cavity is trimmed
+      // by exactly that inset.
+      await unmountNav(tester);
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        keyboardInset: 200.0,
+      );
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5 - 200.0, 1.0));
+    });
+
+    testWidgets('a keyboard taller than the cavity clamps to zero, not '
+        'negative', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        // Half height is 300px; a 500px inset would drive it negative.
+        keyboardInset: 500.0,
+      );
+      expect(cavityHeightOf(tester), 0.0);
     });
   });
 
