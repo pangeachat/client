@@ -98,39 +98,40 @@ class NewPrivateChatView extends StatelessWidget {
                     child: searchResponse == null
                         ? ListView(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 18.0,
-                                ),
-                                child: Semantics(
-                                  label:
-                                      "${L10n.of(context).yourGlobalUserIdIs} ${Matrix.of(context).client.userID}",
-                                  container: true,
-                                  child: SelectableText.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: L10n.of(
-                                            context,
-                                          ).yourGlobalUserIdIs,
-                                        ),
-                                        TextSpan(
-                                          text: Matrix.of(
-                                            context,
-                                          ).client.userID,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w600,
+                              if (Matrix.of(context).client.userID != null)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0,
+                                  ),
+                                  child: Semantics(
+                                    label:
+                                        "${L10n.of(context).yourGlobalUserIdIs} ${Matrix.of(context).client.userID}",
+                                    container: true,
+                                    child: SelectableText.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: L10n.of(
+                                              context,
+                                            ).yourGlobalUserIdIs,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    style: TextStyle(
-                                      color: theme.colorScheme.onSurface,
-                                      fontSize: 12,
+                                          TextSpan(
+                                            text: Matrix.of(
+                                              context,
+                                            ).client.userID,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
                               const SizedBox(height: 8),
                               ListTile(
                                 leading: CircleAvatar(
