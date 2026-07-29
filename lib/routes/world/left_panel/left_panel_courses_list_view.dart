@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
+import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -63,6 +67,35 @@ class LeftPanelCoursesListView extends StatelessWidget {
 
   const LeftPanelCoursesListView({super.key, required this.courses});
 
+  /// Open joined courses, or open popup for invited courses
+  Future<void> onTapCourse(BuildContext context, Room course) async {
+    final uri = GoRouterState.of(context).uri;
+    final membership = course.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go(
+        WorkspaceNav.openCourseSection(uri, course.id, keepRoom: false),
+      );
+      return;
+    }
+
+    final joinResp = course.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, course)
+        : await SpaceTapUtil.autoJoin(context, course);
+
+    if (joinResp == null) return;
+    final joinedRoom = course.client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go(
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -72,8 +105,7 @@ class LeftPanelCoursesListView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: AddCourseTileList(
         content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
-        onTap: (index) =>
-            Matrix.of(context).client.onTapCourse(context, courses[index]),
+        onTap: (index) => onTapCourse(context, courses[index]),
         extraContent: courses.isEmpty
             ? [
                 const SizedBox(height: 4.0),
