@@ -12,6 +12,10 @@ class CourseInfoChip extends StatelessWidget {
   final EdgeInsets? padding;
   final Color? highlightColor;
 
+  /// Ink for the icon and text. Needed when [highlightColor] is dark or
+  /// saturated enough that the ambient text color stops being legible on it.
+  final Color? foregroundColor;
+
   const CourseInfoChip({
     super.key,
     required this.icon,
@@ -20,6 +24,7 @@ class CourseInfoChip extends StatelessWidget {
     required this.iconSize,
     this.padding,
     this.highlightColor,
+    this.foregroundColor,
   });
 
   @override
@@ -28,8 +33,11 @@ class CourseInfoChip extends StatelessWidget {
       spacing: 4.0,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: iconSize),
-        Text(text, style: TextStyle(fontSize: fontSize)),
+        Icon(icon, size: iconSize, color: foregroundColor),
+        Text(
+          text,
+          style: TextStyle(fontSize: fontSize, color: foregroundColor),
+        ),
       ],
     );
 
