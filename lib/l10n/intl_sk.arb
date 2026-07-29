@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-27 15:36:03.601911",
+    "@@last_modified": "2026-07-29 10:55:26.566533",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,6 @@
     "closeArchive": "Zavrieť archív",
     "activityActions": "Akcie aktivity",
     "ongoing": "Prebieha",
-    "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach."
+    "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach.",
+    "newActivityBadge": "NOVÉ"
 }

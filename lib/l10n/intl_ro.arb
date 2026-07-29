@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:03.055520",
+    "@@last_modified": "2026-07-29 10:55:26.233827",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10424,5 +10424,6 @@
     "closeArchive": "Închide arhiva",
     "activityActions": "Acțiuni de activitate",
     "ongoing": "În desfășurare",
-    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări."
+    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări.",
+    "newActivityBadge": "NOU"
 }

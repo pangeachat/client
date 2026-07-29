@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-27 15:36:03.489644",
+    "@@last_modified": "2026-07-29 10:55:26.524252",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10643,5 +10643,6 @@
     "closeArchive": "Zapri arhiv",
     "activityActions": "Dejanja dejavnosti",
     "ongoing": "V teku",
-    "emptyInviteSearchHint": "Ne najdete, koga iščete? Morda bodo morali omogočiti, da se njihov profil najde v iskanju. Preverite Uredi profil v Nastavitvah."
+    "emptyInviteSearchHint": "Ne najdete, koga iščete? Morda bodo morali omogočiti, da se njihov profil najde v iskanju. Preverite Uredi profil v Nastavitvah.",
+    "newActivityBadge": "NOVO"
 }

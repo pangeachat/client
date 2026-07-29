@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-27 15:35:57.798532",
+    "@@last_modified": "2026-07-29 10:55:21.649549",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9795,5 +9795,6 @@
     "closeArchive": "Archívum bezárása",
     "activityActions": "Tevékenységműveletek",
     "ongoing": "Folyamatban",
-    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot."
+    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot.",
+    "newActivityBadge": "ÚJ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-27 15:36:00.280463",
+    "@@last_modified": "2026-07-29 10:55:24.507259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Akatona ny tahiry",
     "activityActions": "Hetsika atao",
     "ongoing": "Mitohy",
-    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila mamela ny mombamomba azy ho hita amin'ny fikarohana izy. Jereo ny \"Edit Profile\" ao amin'ny \"Settings\"."
+    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila mamela ny mombamomba azy ho hita amin'ny fikarohana izy. Jereo ny \"Edit Profile\" ao amin'ny \"Settings\".",
+    "newActivityBadge": "VAOVAO"
 }

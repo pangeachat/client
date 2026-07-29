@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-27 15:35:57.077654",
+    "@@last_modified": "2026-07-29 10:55:21.699864",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "closeArchive": "Pechar arquivo",
     "activityActions": "Accións de actividade",
     "ongoing": "En curso",
-    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración."
+    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración.",
+    "newActivityBadge": "NOVO"
 }

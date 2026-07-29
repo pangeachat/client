@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-27 15:36:00.451635",
+    "@@last_modified": "2026-07-29 10:55:23.481975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Katia te pūranga",
     "activityActions": "Ngā mahi hohe",
     "ongoing": "Haere Tonu",
-    "emptyInviteSearchHint": "Kāore i kitea te tangata e rapu ana koe? Me whakaae pea rātou kia kitea tō rātou kōtaha i te rapunga. Tirohia te Whakatika Kōtaha i ngā Tautuhinga."
+    "emptyInviteSearchHint": "Kāore i kitea te tangata e rapu ana koe? Me whakaae pea rātou kia kitea tō rātou kōtaha i te rapunga. Tirohia te Whakatika Kōtaha i ngā Tautuhinga.",
+    "newActivityBadge": "HOU"
 }

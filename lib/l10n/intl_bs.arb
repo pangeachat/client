@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-27 15:35:54.570883",
+    "@@last_modified": "2026-07-29 10:55:19.123903",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U toku",
-    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dozvoliti da se njihov profil pronađe u pretrazi. Provjerite Uredi profil u Postavkama."
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dozvoliti da se njihov profil pronađe u pretrazi. Provjerite Uredi profil u Postavkama.",
+    "newActivityBadge": "NOVO"
 }

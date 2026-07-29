@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-27 15:36:02.840399",
+    "@@last_modified": "2026-07-29 10:55:23.060999",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Klos achiv",
     "activityActions": "Wok we yu kin du",
     "ongoing": "De Go",
-    "emptyInviteSearchHint": "Yu nɔ de fɛn di pɔsin we yu want? Sɔntɛm dɛn nid fɔ alaw dɛn prɔfayl fɔ de insay di sɛch. Chɛk Edit Profile insay Sɛtin."
+    "emptyInviteSearchHint": "Yu nɔ de fɛn di pɔsin we yu want? Sɔntɛm dɛn nid fɔ alaw dɛn prɔfayl fɔ de insay di sɛch. Chɛk Edit Profile insay Sɛtin.",
+    "newActivityBadge": "FƆNƆN"
 }

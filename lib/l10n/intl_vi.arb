@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:05.719095",
+    "@@last_modified": "2026-07-29 10:55:28.330881",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6958,5 +6958,6 @@
     "closeArchive": "Đóng kho lưu trữ",
     "activityActions": "Hành động hoạt động",
     "ongoing": "Đang diễn ra",
-    "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt."
+    "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt.",
+    "newActivityBadge": "MỚI"
 }

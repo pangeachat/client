@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:06.927518",
+    "@@last_modified": "2026-07-29 10:55:29.696834",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,6 @@
     "closeArchive": "關閉存檔",
     "activityActions": "活動動作",
     "ongoing": "進行中",
-    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。"
+    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。",
+    "newActivityBadge": "新活動"
 }

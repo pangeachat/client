@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-27 15:35:56.645323",
+    "@@last_modified": "2026-07-29 10:55:19.943523",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,6 @@
     "closeArchive": "Fermer l'archive",
     "activityActions": "Actions d'activité",
     "ongoing": "En cours",
-    "emptyInviteSearchHint": "Vous ne trouvez pas la personne que vous cherchez ? Il se peut qu'elle doive autoriser la recherche de son profil. Vérifiez la section Modifier le profil dans les paramètres."
+    "emptyInviteSearchHint": "Vous ne trouvez pas la personne que vous cherchez ? Il se peut qu'elle doive autoriser la recherche de son profil. Vérifiez la section Modifier le profil dans les paramètres.",
+    "newActivityBadge": "NOUVEAU"
 }

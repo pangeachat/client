@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-27 15:35:59.720831",
+    "@@last_modified": "2026-07-29 10:55:23.327111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Archiv zoumaachen",
     "activityActions": "Aktivitéitsaktiounen",
     "ongoing": "Am Gaang",
-    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen."
+    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen.",
+    "newActivityBadge": "NEI"
 }

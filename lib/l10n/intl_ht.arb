@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-27 15:35:58.041002",
+    "@@last_modified": "2026-07-29 10:55:22.939501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Fèmen achiv la",
     "activityActions": "Aksyon aktivite",
     "ongoing": "Kontinyèl",
-    "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman."
+    "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman.",
+    "newActivityBadge": "NOUVO"
 }

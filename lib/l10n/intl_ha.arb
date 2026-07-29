@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-27 15:35:57.563723",
+    "@@last_modified": "2026-07-29 10:55:20.894709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Rufe adana",
     "activityActions": "Ayyukan aiki",
     "ongoing": "Ana Ci Gaba",
-    "emptyInviteSearchHint": "Ba za a iya samun wanda kake nema ba? Wataƙila suna buƙatar ba da izinin samun bayanin martabarsu a bincike. Duba Shirya Bayanin martaba a Saituna."
+    "emptyInviteSearchHint": "Ba za a iya samun wanda kake nema ba? Wataƙila suna buƙatar ba da izinin samun bayanin martabarsu a bincike. Duba Shirya Bayanin martaba a Saituna.",
+    "newActivityBadge": "SABO"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-27 15:36:04.303175",
+    "@@last_modified": "2026-07-29 10:55:27.481125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Mbyll arkivin",
     "activityActions": "Veprimet e aktivitetit",
     "ongoing": "Në vazhdim",
-    "emptyInviteSearchHint": "Nuk e gjen dot atë që kërkon? Mund të jetë e nevojshme që ata të lejojnë gjetjen e profilit të tyre në kërkim. Kontrollo \"Ndrysho profilin\" te Cilësimet."
+    "emptyInviteSearchHint": "Nuk e gjen dot atë që kërkon? Mund të jetë e nevojshme që ata të lejojnë gjetjen e profilit të tyre në kërkim. Kontrollo \"Ndrysho profilin\" te Cilësimet.",
+    "newActivityBadge": "E RE"
 }

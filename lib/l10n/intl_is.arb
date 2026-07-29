@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-27 15:35:58.699110",
+    "@@last_modified": "2026-07-29 10:55:23.386619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Loka skjalasafni",
     "activityActions": "Aðgerðir virkni",
     "ongoing": "Í gangi",
-    "emptyInviteSearchHint": "Finnurðu ekki þann sem þú ert að leita að? Það gæti verið að viðkomandi þurfi að leyfa að prófíllinn hans finnist í leit. Athugaðu Breyta prófíl í Stillingum."
+    "emptyInviteSearchHint": "Finnurðu ekki þann sem þú ert að leita að? Það gæti verið að viðkomandi þurfi að leyfa að prófíllinn hans finnist í leit. Athugaðu Breyta prófíl í Stillingum.",
+    "newActivityBadge": "NÝTT"
 }

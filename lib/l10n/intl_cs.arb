@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-27 15:35:55.594328",
+    "@@last_modified": "2026-07-29 10:55:19.111502",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10186,5 +10186,6 @@
     "closeArchive": "Zavřít archiv",
     "activityActions": "Akce aktivity",
     "ongoing": "Probíhá",
-    "emptyInviteSearchHint": "Nemůžete najít, koho hledáte? Možná budou muset povolit, aby jejich profil bylo možné najít ve vyhledávání. Zkontrolujte Upravit profil v Nastavení."
+    "emptyInviteSearchHint": "Nemůžete najít, koho hledáte? Možná budou muset povolit, aby jejich profil bylo možné najít ve vyhledávání. Zkontrolujte Upravit profil v Nastavení.",
+    "newActivityBadge": "NOVÉ"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:58.565488",
+    "@@last_modified": "2026-07-29 10:55:22.197843",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,6 @@
     "closeArchive": "Chiudi archivio",
     "activityActions": "Azioni attività",
     "ongoing": "In corso",
-    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni."
+    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni.",
+    "newActivityBadge": "NOVITÀ"
 }

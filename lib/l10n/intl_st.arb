@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-27 15:36:07.879284",
+    "@@last_modified": "2026-07-29 10:55:28.235849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Koala polokelo",
     "activityActions": "Liketso tsa ts'ebetso",
     "ongoing": "E tswela pele",
-    "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso."
+    "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso.",
+    "newActivityBadge": "E NCHA"
 }

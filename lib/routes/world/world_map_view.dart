@@ -24,6 +24,7 @@ import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
+import 'package:fluffychat/routes/world/world_map_pin_label.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
@@ -649,8 +650,17 @@ class _WorldMapViewState extends State<WorldMapView> {
           id,
     ];
     final labelSizes = {
+      // Measure the SAME string the label renders — pinLabelText appends the
+      // NEW badge (#7993) — so placement collisions match the painted size.
       for (final id in labelableIds)
-        id: _measureLabel(context, cardById[id]!.title),
+        id: _measureLabel(
+          context,
+          pinLabelText(
+            title: cardById[id]!.title,
+            isNew: isNewActivity(cardById[id]!.ratingCount),
+            l10n: L10n.of(context),
+          ),
+        ),
     };
     final labels = _placeLabels(
       orderedIds: labelableIds,

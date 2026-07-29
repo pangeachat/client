@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:04.177605",
+    "@@last_modified": "2026-07-29 10:55:27.489602",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10647,5 +10647,6 @@
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U toku",
-    "emptyInviteSearchHint": "Ne možete da pronađete koga tražite? Možda treba da dozvole da se njihov profil pronađe u pretrazi. Proverite Uredi profil u Podešavanjima."
+    "emptyInviteSearchHint": "Ne možete da pronađete koga tražite? Možda treba da dozvole da se njihov profil pronađe u pretrazi. Proverite Uredi profil u Podešavanjima.",
+    "newActivityBadge": "NOVO"
 }

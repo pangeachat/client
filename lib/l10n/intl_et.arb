@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-27 15:35:56.445023",
+    "@@last_modified": "2026-07-29 10:55:20.634222",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9689,5 +9689,6 @@
     "closeArchive": "Sulge arhiiv",
     "activityActions": "Tegevuse toimingud",
     "ongoing": "Käimas",
-    "emptyInviteSearchHint": "Ei leia otsitavat? Võimalik, et nad peavad lubama oma profiili otsingus leidmise. Kontrollige seadete jaotist „Muuda profiili”."
+    "emptyInviteSearchHint": "Ei leia otsitavat? Võimalik, et nad peavad lubama oma profiili otsingus leidmise. Kontrollige seadete jaotist „Muuda profiili”.",
+    "newActivityBadge": "UUS"
 }

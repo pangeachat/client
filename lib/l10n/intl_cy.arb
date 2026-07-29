@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-27 15:35:56.026120",
+    "@@last_modified": "2026-07-29 10:55:19.236622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Cau archif",
     "activityActions": "Gweithredoedd gweithgaredd",
     "ongoing": "Yn parhau",
-    "emptyInviteSearchHint": "Methu dod o hyd i'r person rydych chi'n chwilio amdano? Efallai bod angen iddynt ganiatáu i'w proffil gael ei ddarganfod mewn chwiliad. Gwiriwch Golygu Proffil yn Gosodiadau."
+    "emptyInviteSearchHint": "Methu dod o hyd i'r person rydych chi'n chwilio amdano? Efallai bod angen iddynt ganiatáu i'w proffil gael ei ddarganfod mewn chwiliad. Gwiriwch Golygu Proffil yn Gosodiadau.",
+    "newActivityBadge": "NEWYDD"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-27 15:36:04.095860",
+    "@@last_modified": "2026-07-29 10:55:27.317396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Xidh kaydka",
     "activityActions": "Ficilada waxqabadka",
     "ongoing": "Socda",
-    "emptyInviteSearchHint": "Ma heli kartid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay oggolaadaan in astaantooda laga helo raadinta. Ka eeg Tafatirka Astaanta ee Dejinta."
+    "emptyInviteSearchHint": "Ma heli kartid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay oggolaadaan in astaantooda laga helo raadinta. Ka eeg Tafatirka Astaanta ee Dejinta.",
+    "newActivityBadge": "CUSUB"
 }

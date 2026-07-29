@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:02.452110",
+    "@@last_modified": "2026-07-29 10:55:26.257254",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10642,5 +10642,6 @@
     "closeArchive": "Fechar arquivo",
     "activityActions": "Ações de atividade",
     "ongoing": "Em andamento",
-    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que precisem de permitir que o perfil seja encontrado na pesquisa. Verifique Editar Perfil em Definições."
+    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que precisem de permitir que o perfil seja encontrado na pesquisa. Verifique Editar Perfil em Definições.",
+    "newActivityBadge": "NOVO"
 }

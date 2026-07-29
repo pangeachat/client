@@ -118,6 +118,8 @@ void main() {
   group('pinScore — each term in isolation', () {
     test('joinable contributes 3', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.joinable),
       );
@@ -127,10 +129,14 @@ void main() {
     test('ongoing contributes a strong resurface bump (below joinable), active '
         'above pending', () {
       final pending = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.ongoingPending),
       );
       final active = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.ongoingActive),
       );
@@ -141,10 +147,14 @@ void main() {
 
     test('joinable outranks ongoing (join others over resume your own)', () {
       final joinable = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.joinable),
       );
       final ongoing = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.ongoingActive),
       );
@@ -152,22 +162,39 @@ void main() {
     });
 
     test('the band is added verbatim', () {
-      final score = pinScore(band: 1.5, s: const PinSignals());
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 1.5,
+        s: const PinSignals(),
+      );
       expect(score, 1.5);
     });
 
     test('pinged contributes 0.6', () {
-      final score = pinScore(band: 0, s: const PinSignals(pinged: true));
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 0,
+        s: const PinSignals(pinged: true),
+      );
       expect(score, closeTo(0.6, 1e-9));
     });
 
     test('recency contributes 0.3 at full recency', () {
-      final score = pinScore(band: 0, s: const PinSignals(recency: 1.0));
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 0,
+        s: const PinSignals(recency: 1.0),
+      );
       expect(score, closeTo(0.3, 1e-9));
     });
 
     test('a finished activity subtracts 0.5', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(completionFraction: 1.0),
       );
@@ -176,6 +203,8 @@ void main() {
 
     test('a partial fill does not subtract', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(completionFraction: 0.9),
       );
@@ -183,7 +212,13 @@ void main() {
     });
 
     test('a dismissed activity subtracts 0.5 (#7207/#7245)', () {
-      final score = pinScore(band: 0, s: const PinSignals(), isDismissed: true);
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 0,
+        s: const PinSignals(),
+        isDismissed: true,
+      );
       expect(score, closeTo(-kDismissedPenalty, 1e-9));
     });
   });
@@ -191,6 +226,8 @@ void main() {
   group('pinScore — multi-person first-map deprioritize (#7435)', () {
     test('a new learner\'s 3+ role available activity takes the penalty', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 2,
         s: const PinSignals(),
         roleCount: 3,
@@ -201,6 +238,8 @@ void main() {
 
     test('a 2-role activity is not penalized (solo-viable with the bot)', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 2,
         s: const PinSignals(),
         roleCount: 2,
@@ -211,6 +250,8 @@ void main() {
 
     test('a returning learner (has a prior activity) is not penalized', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 2,
         s: const PinSignals(),
         roleCount: 3,
@@ -221,6 +262,8 @@ void main() {
 
     test('a live joinable 3+ session is never penalized (humans present)', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 0,
         s: const PinSignals(state: ActivityPinState.joinable),
         roleCount: 3,
@@ -231,6 +274,8 @@ void main() {
 
     test('unknown role count (older choreo pin) is not penalized', () {
       final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
         band: 2,
         s: const PinSignals(),
         roleCount: null,
@@ -240,15 +285,91 @@ void main() {
     });
   });
 
+  group('pinScore — ratings tiebreaker (#7993)', () {
+    test('unrated (NEW) takes the top of the range (+2)', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(),
+        ratingAverage: null,
+        ratingCount: 0,
+      );
+      expect(score, closeTo(kRatingWeight, 1e-9));
+    });
+
+    test('all-up rating also scores +2; all-down scores -2', () {
+      final up = pinScore(
+        band: 0,
+        s: const PinSignals(),
+        ratingAverage: 1.0,
+        ratingCount: 3,
+      );
+      final down = pinScore(
+        band: 0,
+        s: const PinSignals(),
+        ratingAverage: 0.0,
+        ratingCount: 3,
+      );
+      expect(up, closeTo(kRatingWeight, 1e-9));
+      expect(down, closeTo(-kRatingWeight, 1e-9));
+    });
+
+    test('a 50/50 rating is neutral (0)', () {
+      final score = pinScore(
+        band: 0,
+        s: const PinSignals(),
+        ratingAverage: 0.5,
+        ratingCount: 2,
+      );
+      expect(score, closeTo(0, 1e-9));
+    });
+
+    test('ratings reorder within a tier but never outweigh a live session', () {
+      final downRatedJoinable = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+        ratingAverage: 0.0,
+        ratingCount: 5,
+      );
+      final newAvailable = pinScore(
+        band: 0,
+        s: const PinSignals(),
+        ratingAverage: null,
+        ratingCount: 0,
+      );
+      // 3 - 2 = 1 vs 0 + 2 = 2: a NEW available pin CAN out-score a down-rated
+      // joinable in raw score — but the large/mid tier gates are state-based,
+      // so the live session still owns the heavy tiers. Within the same state,
+      // ratings order cleanly:
+      final upJoinable = pinScore(
+        band: 0,
+        s: const PinSignals(state: ActivityPinState.joinable),
+        ratingAverage: 1.0,
+        ratingCount: 5,
+      );
+      expect(upJoinable, greaterThan(downRatedJoinable));
+      expect(newAvailable, greaterThan(downRatedJoinable - 3));
+    });
+
+    test('isNewActivity honors the threshold', () {
+      expect(isNewActivity(null), isTrue);
+      expect(isNewActivity(0), isTrue);
+      expect(isNewActivity(kNewRatingThreshold), isFalse);
+    });
+  });
+
   group('pinScore — joinable dominates', () {
     test(
       'a joinable band-0 pin outscores a saturated, pinged, recent non-joinable',
       () {
         final joinable = pinScore(
+          ratingAverage: 0.5,
+          ratingCount: kNewRatingThreshold,
           band: 0,
           s: const PinSignals(state: ActivityPinState.joinable),
         );
         final loaded = pinScore(
+          ratingAverage: 0.5,
+          ratingCount: kNewRatingThreshold,
           band: kBandCeiling, // 2.0, the saturated band
           s: const PinSignals(pinged: true, recency: 1.0),
         );

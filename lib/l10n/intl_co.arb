@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-27 15:35:55.713824",
+    "@@last_modified": "2026-07-29 10:55:20.628323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Chjode l'archiviu",
     "activityActions": "Azzioni d'attività",
     "ongoing": "In corsu",
-    "emptyInviteSearchHint": "Ùn truvate micca quellu chì cercate? Pò esse ch'elli anu bisognu di permette à u so prufilu d'esse trovu in a ricerca. Verificate Modificà u Prufilu in i Paràmetri."
+    "emptyInviteSearchHint": "Ùn truvate micca quellu chì cercate? Pò esse ch'elli anu bisognu di permette à u so prufilu d'esse trovu in a ricerca. Verificate Modificà u Prufilu in i Paràmetri.",
+    "newActivityBadge": "NOVU"
 }

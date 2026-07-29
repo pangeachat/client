@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-27 15:36:02.771277",
+    "@@last_modified": "2026-07-29 10:55:27.913501",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10609,5 +10609,6 @@
     "closeArchive": "Fechar arquivo",
     "activityActions": "Ações de atividade",
     "ongoing": "Em curso",
-    "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições."
+    "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições.",
+    "newActivityBadge": "NOVO"
 }

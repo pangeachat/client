@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-27 15:36:01.942812",
+    "@@last_modified": "2026-07-29 10:55:24.918485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Lukk arkiv",
     "activityActions": "Aktivitetshandlinger",
     "ongoing": "Pågående",
-    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger."
+    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger.",
+    "newActivityBadge": "NY"
 }

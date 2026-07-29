@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-27 15:36:04.093724",
+    "@@last_modified": "2026-07-29 10:55:28.383273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Tapuni le fa'amaumauga",
     "activityActions": "Gaioiga o gaoioiga",
     "ongoing": "Fa'aauau",
-    "emptyInviteSearchHint": "E le mafai ona maua le tagata o lo'o e su'eina? Atonu e mana'omia ona latou fa'ataga lo latou talaaga e maua i le su'esu'ega. Siaki le Fa'asa'o Talaaga i Fa'atonuga."
+    "emptyInviteSearchHint": "E le mafai ona maua le tagata o lo'o e su'eina? Atonu e mana'omia ona latou fa'ataga lo latou talaaga e maua i le su'esu'ega. Siaki le Fa'asa'o Talaaga i Fa'atonuga.",
+    "newActivityBadge": "FOU"
 }

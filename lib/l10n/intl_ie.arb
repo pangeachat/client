@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-27 15:35:58.569825",
+    "@@last_modified": "2026-07-29 10:55:22.615554",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10324,5 +10324,6 @@
     "closeArchive": "Dún an chartlann",
     "activityActions": "Gníomhartha gníomhaíochta",
     "ongoing": "Ar Siúl",
-    "emptyInviteSearchHint": "Ní féidir leat an duine atá uait a aimsiú? B'fhéidir go gcaithfidh siad a bpróifíl a cheadú le fáil i gcuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe."
+    "emptyInviteSearchHint": "Ní féidir leat an duine atá uait a aimsiú? B'fhéidir go gcaithfidh siad a bpróifíl a cheadú le fáil i gcuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe.",
+    "newActivityBadge": "NUA"
 }

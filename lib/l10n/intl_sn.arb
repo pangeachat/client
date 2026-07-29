@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-27 15:36:04.094774",
+    "@@last_modified": "2026-07-29 10:55:27.065814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Vhara dura",
     "activityActions": "Zviito zvechiitiko",
     "ongoing": "Kuenderera",
-    "emptyInviteSearchHint": "Haukwanise kuwana waunotsvaga? Zvinogona kunge zvichidikanwa kuti vatendere profile yavo kuti iwanikwe mukutsvaga. Tarisa paEdit Profile muSettings."
+    "emptyInviteSearchHint": "Haukwanise kuwana waunotsvaga? Zvinogona kunge zvichidikanwa kuti vatendere profile yavo kuti iwanikwe mukutsvaga. Tarisa paEdit Profile muSettings.",
+    "newActivityBadge": "ITSVA"
 }

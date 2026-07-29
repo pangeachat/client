@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-27 15:36:09.108397",
+    "@@last_modified": "2026-07-29 10:55:23.783685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Claudere archivum",
     "activityActions": "Actiones activitatis",
     "ongoing": "In progressu",
-    "emptyInviteSearchHint": "Nonne invenis quem quaeris? Fortasse necesse est ut profile suum inquisitioni patefaciat. Reprehendere \"Recensere Profile\" in \"Optionibus\"."
+    "emptyInviteSearchHint": "Nonne invenis quem quaeris? Fortasse necesse est ut profile suum inquisitioni patefaciat. Reprehendere \"Recensere Profile\" in \"Optionibus\".",
+    "newActivityBadge": "NOVUM"
 }

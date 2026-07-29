@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-27 15:36:07.448568",
+    "@@last_modified": "2026-07-29 10:55:29.031581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2042,5 +2042,6 @@
     "closeArchive": "Vala ingobo yomlando",
     "activityActions": "Izenzo zomsebenzi",
     "ongoing": "Iyaqhubeka",
-    "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo."
+    "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo.",
+    "newActivityBadge": "OKUSHA"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:55.489466",
+    "@@last_modified": "2026-07-29 10:55:19.337726",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9819,5 +9819,6 @@
     "closeArchive": "Tanca l'arxiu",
     "activityActions": "Accions d'activitat",
     "ongoing": "En curs",
-    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració."
+    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració.",
+    "newActivityBadge": "NOU"
 }

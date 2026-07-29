@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-27 15:36:06.548135",
+    "@@last_modified": "2026-07-29 10:55:28.899054",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "closeArchive": "关闭存档",
     "activityActions": "活动操作",
     "ongoing": "进行中",
-    "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。"
+    "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。",
+    "newActivityBadge": "新"
 }

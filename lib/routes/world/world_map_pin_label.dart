@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+
+/// The label string a mid pin measures AND renders — the single home for the
+/// NEW-badge suffix (#7993) so the placement pass's measured size always
+/// matches the painted text.
+String pinLabelText({
+  required String title,
+  required bool isNew,
+  required L10n l10n,
+}) => isNew ? '$title · ${l10n.newActivityBadge}' : title;
 
 /// A Google-Maps-style activity-name label for a mid map pin: [title] in the
 /// pin's state [color] with a thin white halo so it stays legible over the map
@@ -15,6 +25,10 @@ class WorldMapPinLabel extends StatelessWidget {
   final String title;
   final Color color;
 
+  /// Whether this pin's activity is NEW (fewer than [kNewRatingThreshold]
+  /// ratings, #7993) — appends the NEW badge via [pinLabelText].
+  final bool isNew;
+
   /// 0..1 — dims an understaffed `available` pin's label to match its pin
   /// (world-map.instructions.md, "Understaffed pins"). 1.0 = fully opaque.
   final double opacity;
@@ -22,14 +36,24 @@ class WorldMapPinLabel extends StatelessWidget {
   const WorldMapPinLabel({
     required this.title,
     required this.color,
+    this.isNew = false,
     this.opacity = 1.0,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    Widget text(TextStyle style) =>
-        Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
+    final labelText = pinLabelText(
+      title: title,
+      isNew: isNew,
+      l10n: L10n.of(context),
+    );
+    Widget text(TextStyle style) => Text(
+      labelText,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: style,
+    );
     // Theme-dependent halo (stroked) painted behind the coloured fill: the
     // surface colour reads light in light mode and dark in dark mode, so the
     // outline stays legible over the map tiles in either theme (reuses the
