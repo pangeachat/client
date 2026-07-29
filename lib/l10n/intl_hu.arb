@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 11:54:24.881593",
+    "@@last_modified": "2026-07-29 12:08:18.639659",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9806,5 +9806,6 @@
     "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
     "rateActivityThanks": "Köszönjük visszajelzésedet!",
-    "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})"
+    "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})",
+    "newActivityBadge": "ÚJ"
 }

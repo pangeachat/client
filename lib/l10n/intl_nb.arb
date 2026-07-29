@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:31.079305",
+    "@@last_modified": "2026-07-29 12:08:21.282162",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9760,5 +9760,6 @@
     "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
     "rateActivityThanks": "Takk for tilbakemeldingen din!",
-    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})"
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
+    "newActivityBadge": "NY"
 }

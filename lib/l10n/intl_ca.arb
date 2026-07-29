@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:21.602771",
+    "@@last_modified": "2026-07-29 12:08:16.801074",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9830,5 +9830,6 @@
     "rateActivityCommentHint": "Afegeix un comentari (opcional)",
     "rateActivityCommentRejected": "No s'ha pogut publicar el teu comentari. Prova de reformular-lo o envia la teva valoració sense comentari.",
     "rateActivityThanks": "Gràcies pels teus comentaris!",
-    "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})"
+    "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})",
+    "newActivityBadge": "NOU"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-29 11:54:21.924473",
+    "@@last_modified": "2026-07-29 12:08:17.422964",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7898,5 +7898,6 @@
     "rateActivityCommentHint": "Añade un comentario (opcional)",
     "rateActivityCommentRejected": "No se pudo publicar tu comentario. Intenta reformularlo o envía tu calificación sin un comentario.",
     "rateActivityThanks": "¡Gracias por tus comentarios!",
-    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 calificación} other{{count} calificaciones}})"
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 calificación} other{{count} calificaciones}})",
+    "newActivityBadge": "NUEVO"
 }

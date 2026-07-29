@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-29 11:54:36.540781",
+    "@@last_modified": "2026-07-29 12:08:24.249168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "ایک تبصرہ شامل کریں (اختیاری)",
     "rateActivityCommentRejected": "آپ کا تبصرہ پوسٹ نہیں ہو سکا۔ اسے دوبارہ لکھنے کی کوشش کریں، یا تبصرے کے بغیر اپنی درجہ بندی جمع کروائیں۔",
     "rateActivityThanks": "آپ کے تاثرات کا شکریہ!",
-    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجہ بندی} other{{count} درجہ بندیاں}})"
+    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجہ بندی} other{{count} درجہ بندیاں}})",
+    "newActivityBadge": "نیا"
 }

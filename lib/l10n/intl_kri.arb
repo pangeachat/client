@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-29 11:54:27.564330",
+    "@@last_modified": "2026-07-29 12:08:19.770115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Put komɛnt (nɔ fɔs)",
     "rateActivityCommentRejected": "Yu komɛnt nɔ bin ebul fɔ post. Tray fɔ chenj di wɔd dɛn, ɔ sɛn yu reting witɔt komɛnt.",
     "rateActivityThanks": "Tɛnki fɔ yu fidbak!",
-    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 reting} other{{count} reting dɛn}})"
+    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 reting} other{{count} reting dɛn}})",
+    "newActivityBadge": "FƆNƆN"
 }

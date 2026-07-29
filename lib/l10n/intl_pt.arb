@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:31.698389",
+    "@@last_modified": "2026-07-29 12:08:24.200993",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10653,5 +10653,6 @@
     "rateActivityCommentHint": "Adicione um comentário (opcional)",
     "rateActivityCommentRejected": "Não foi possível publicar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado pelo seu feedback!",
-    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})"
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
+    "newActivityBadge": "NOVO"
 }

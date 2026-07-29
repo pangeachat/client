@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:19.545220",
+    "@@last_modified": "2026-07-29 12:08:16.384354",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10331,5 +10331,6 @@
     "rateActivityCommentHint": "একটি মন্তব্য যোগ করুন (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপনার মন্তব্য পোস্ট করা যায়নি। এটি অন্যভাবে লেখার চেষ্টা করুন, অথবা মন্তব্য ছাড়াই আপনার রেটিং জমা দিন।",
     "rateActivityThanks": "আপনার মতামতের জন্য ধন্যবাদ!",
-    "activityRatingMeterLabel": "{percent}% ইতিবাচক ({count, plural, =1{১টি রেটিং} other{{count}টি রেটিং}})"
+    "activityRatingMeterLabel": "{percent}% ইতিবাচক ({count, plural, =1{১টি রেটিং} other{{count}টি রেটিং}})",
+    "newActivityBadge": "নতুন"
 }

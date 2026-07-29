@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-29 11:54:23.695116",
+    "@@last_modified": "2026-07-29 12:08:18.064123",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9703,5 +9703,6 @@
     "rateActivityCommentHint": "Engadir un comentario (opcional)",
     "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
     "rateActivityThanks": "Grazas polos teus comentarios!",
-    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})"
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})",
+    "newActivityBadge": "NOVO"
 }

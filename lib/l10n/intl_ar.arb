@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-29 11:54:19.776019",
+    "@@last_modified": "2026-07-29 12:08:16.869712",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10009,5 +10009,6 @@
     "rateActivityCommentHint": "أضف تعليقًا (اختياري)",
     "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
     "rateActivityThanks": "شكرًا لملاحظاتك!",
-    "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})"
+    "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})",
+    "newActivityBadge": "جديد"
 }

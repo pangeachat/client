@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-29 11:54:32.545888",
+    "@@last_modified": "2026-07-29 12:08:22.131349",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10620,5 +10620,6 @@
     "rateActivityCommentHint": "Adicionar um comentário (opcional)",
     "rateActivityCommentRejected": "O seu comentário não pôde ser publicado. Tente reformulá-lo ou envie a sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado pelo seu feedback!",
-    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})"
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
+    "newActivityBadge": "NOVO"
 }

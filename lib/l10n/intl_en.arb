@@ -3964,6 +3964,7 @@
         "type": "String",
         "placeholders": {}
     },
+    "newActivityBadge": "NEW",
     "addCourse": "Add a course",
     "addNewCourse": "Add new course",
     "world": "World",

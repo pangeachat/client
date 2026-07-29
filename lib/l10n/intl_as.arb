@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-29 11:54:20.873752",
+    "@@last_modified": "2026-07-29 12:08:17.158328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "এটা মন্তব্য যোগ কৰক (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপোনাৰ মন্তব্য পোষ্ট কৰিব পৰা নগ'ল। ইয়াক পুনৰ লিখিবলৈ চেষ্টা কৰক, অথবা মন্তব্য অবিহনে আপোনাৰ ৰেটিং দাখিল কৰক।",
     "rateActivityThanks": "আপোনাৰ মতামতৰ বাবে ধন্যবাদ!",
-    "activityRatingMeterLabel": "{percent}% ধনাত্মক ({count, plural, =1{1 ৰেটিং} other{{count} ৰেটিং}})"
+    "activityRatingMeterLabel": "{percent}% ধনাত্মক ({count, plural, =1{1 ৰেটিং} other{{count} ৰেটিং}})",
+    "newActivityBadge": "নতুন"
 }

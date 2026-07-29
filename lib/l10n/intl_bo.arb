@@ -2928,7 +2928,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-29 11:54:20.940358",
+    "@@last_modified": "2026-07-29 12:08:16.477248",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9314,5 +9314,6 @@
     "rateActivityCommentHint": "མཆན་ཞིག་འབྲི་ (འདེམས་གཞི་ཡིན།)",
     "rateActivityCommentRejected": "ཁྱེད་ཀྱི་མཆན་འགོད་མ་ཐུབ། ཚིག་སྒྱུར་བཅོས་བྱེད་རོགས། ཡང་ན་མཆན་མེད་པར་དཔྱད་མཆན་འགོད་རོགས།",
     "rateActivityThanks": "ཁྱེད་ཀྱི་བསམ་འཆར་ལ་ཐུགས་རྗེ་ཆེ།",
-    "activityRatingMeterLabel": "{percent}% གུས་པོ་ ({count, plural, =1{དཔྱད་མཆན་ 1} other{དཔྱད་མཆན་ {count}}})"
+    "activityRatingMeterLabel": "{percent}% གུས་པོ་ ({count, plural, =1{དཔྱད་མཆན་ 1} other{དཔྱད་མཆན་ {count}}})",
+    "newActivityBadge": "གསར་པ།"
 }

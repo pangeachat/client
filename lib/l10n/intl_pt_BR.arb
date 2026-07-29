@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:31.837469",
+    "@@last_modified": "2026-07-29 12:08:25.582003",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9703,5 +9703,6 @@
     "rateActivityCommentHint": "Adicione um comentário (opcional)",
     "rateActivityCommentRejected": "Não foi possível postar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado(a) pelo seu feedback!",
-    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})"
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
+    "newActivityBadge": "NOVO"
 }

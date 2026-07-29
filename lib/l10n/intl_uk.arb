@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-29 11:54:36.368562",
+    "@@last_modified": "2026-07-29 12:08:26.696865",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9703,5 +9703,6 @@
     "rateActivityCommentHint": "Додати коментар (необов’язково)",
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
     "rateActivityThanks": "Дякуємо за ваш відгук!",
-    "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})"
+    "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
+    "newActivityBadge": "НОВЕ"
 }

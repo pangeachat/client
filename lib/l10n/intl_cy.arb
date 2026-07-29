@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-29 11:54:21.363567",
+    "@@last_modified": "2026-07-29 12:08:16.955955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Ychwanegu sylw (dewisol)",
     "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
     "rateActivityThanks": "Diolch am eich adborth!",
-    "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})"
+    "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})",
+    "newActivityBadge": "NEWYDD"
 }

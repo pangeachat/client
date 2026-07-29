@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-29 11:54:28.989203",
+    "@@last_modified": "2026-07-29 12:08:20.304798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Ampio fanehoan-kevitra (tsy voatery)",
     "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
     "rateActivityThanks": "Misaotra anao tamin'ny fanehoan-kevitrao!",
-    "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})"
+    "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})",
+    "newActivityBadge": "VAOVAO"
 }

@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-29 11:54:22.892882",
+    "@@last_modified": "2026-07-29 12:08:17.621198",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10569,5 +10569,6 @@
     "rateActivityCommentHint": "Magdagdag ng komento (opsyonal)",
     "rateActivityCommentRejected": "Hindi maipaskil ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
     "rateActivityThanks": "Salamat sa iyong feedback!",
-    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
+    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
+    "newActivityBadge": "BAGO"
 }

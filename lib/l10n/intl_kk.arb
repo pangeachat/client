@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-29 11:54:27.588090",
+    "@@last_modified": "2026-07-29 12:08:19.855120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Пікір қосу (міндетті емес)",
     "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
     "rateActivityThanks": "Пікіріңіз үшін рахмет!",
-    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})"
+    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})",
+    "newActivityBadge": "ЖАҢА"
 }

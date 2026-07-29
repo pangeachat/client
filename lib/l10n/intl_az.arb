@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-29 11:54:20.189563",
+    "@@last_modified": "2026-07-29 12:08:16.251970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
     "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
     "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
-    "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})"
+    "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
+    "newActivityBadge": "YENİ"
 }

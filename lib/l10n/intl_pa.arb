@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-29 11:54:31.599754",
+    "@@last_modified": "2026-07-29 12:08:22.194248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "ਇੱਕ ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ (ਵਿਕਲਪਿਕ)",
     "rateActivityCommentRejected": "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਪੋਸਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬਿਨਾਂ ਟਿੱਪਣੀ ਦੇ ਆਪਣੀ ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰੋ।",
     "rateActivityThanks": "ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਲਈ ਧੰਨਵਾਦ!",
-    "activityRatingMeterLabel": "{percent}% ਸਕਾਰਾਤਮਕ ({count, plural, =1{1 ਰੇਟਿੰਗ} other{{count} ਰੇਟਿੰਗਾਂ}})"
+    "activityRatingMeterLabel": "{percent}% ਸਕਾਰਾਤਮਕ ({count, plural, =1{1 ਰੇਟਿੰਗ} other{{count} ਰੇਟਿੰਗਾਂ}})",
+    "newActivityBadge": "ਨਵਾਂ"
 }

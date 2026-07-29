@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:32.206412",
+    "@@last_modified": "2026-07-29 12:08:22.941956",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10435,5 +10435,6 @@
     "rateActivityCommentHint": "Adaugă un comentariu (opțional)",
     "rateActivityCommentRejected": "Comentariul tău nu a putut fi postat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
     "rateActivityThanks": "Mulțumim pentru feedback!",
-    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})"
+    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})",
+    "newActivityBadge": "NOU"
 }

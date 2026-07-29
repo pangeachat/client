@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-29 11:54:32.953227",
+    "@@last_modified": "2026-07-29 12:08:21.617470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "یو نظر اضافه کړئ (اختیاري)",
     "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
     "rateActivityThanks": "ستاسو د نظر لپاره مننه!",
-    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بندۍ}})"
+    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بندۍ}})",
+    "newActivityBadge": "نوی"
 }

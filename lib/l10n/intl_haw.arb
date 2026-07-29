@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-29 11:54:25.334174",
+    "@@last_modified": "2026-07-29 12:08:17.954090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Hoʻohui i manaʻo (koho)",
     "rateActivityCommentRejected": "ʻAʻole hiki ke kau ʻia kāu manaʻo. E hoʻāʻo e hoʻoponopono hou, a i ʻole e waiho i kāu helu me ka manaʻo ʻole.",
     "rateActivityThanks": "Mahalo no kou manaʻo!",
-    "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})"
+    "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})",
+    "newActivityBadge": "HOU"
 }

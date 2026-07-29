@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-29 11:54:30.908167",
+    "@@last_modified": "2026-07-29 12:08:21.371322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "မှတ်ချက်တစ်ခု ထည့်ပါ (ရွေးချယ်နိုင်သည်)",
     "rateActivityCommentRejected": "သင့်မှတ်ချက်ကို ပို့စ်တင်၍မရပါ။ စကားလုံးများကို ပြန်လည်ပြင်ဆင်ကြည့်ပါ၊ သို့မဟုတ် မှတ်ချက်မပါဘဲ သင့်အဆင့်သတ်မှတ်ချက်ကို တင်သွင်းပါ။",
     "rateActivityThanks": "သင့်တုံ့ပြန်ချက်အတွက် ကျေးဇူးတင်ပါသည်။",
-    "activityRatingMeterLabel": "{percent}% အပြုသဘောဆောင်သည် ({count, plural, =1{1 အဆင့်သတ်မှတ်ချက်} other{{count} အဆင့်သတ်မှတ်ချက်များ}})"
+    "activityRatingMeterLabel": "{percent}% အပြုသဘောဆောင်သည် ({count, plural, =1{1 အဆင့်သတ်မှတ်ချက်} other{{count} အဆင့်သတ်မှတ်ချက်များ}})",
+    "newActivityBadge": "အသစ်"
 }

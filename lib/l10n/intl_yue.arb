@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-29 11:54:37.655922",
+    "@@last_modified": "2026-07-29 12:08:25.438295",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10666,5 +10666,6 @@
     "rateActivityCommentHint": "新增評論（可選）",
     "rateActivityCommentRejected": "無法發佈你的評論。請嘗試重新措辭，或不帶評論提交你的評分。",
     "rateActivityThanks": "感謝你的意見！",
-    "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 個評分} other{{count} 個評分}}）"
+    "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 個評分} other{{count} 個評分}}）",
+    "newActivityBadge": "新"
 }

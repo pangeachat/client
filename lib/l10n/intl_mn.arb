@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-29 11:54:29.872843",
+    "@@last_modified": "2026-07-29 12:08:21.053900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Сэтгэгдэл нэмэх (заавал биш)",
     "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
     "rateActivityThanks": "Таны санал хүсэлтэд баярлалаа!",
-    "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})"
+    "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})",
+    "newActivityBadge": "ШИНЭ"
 }

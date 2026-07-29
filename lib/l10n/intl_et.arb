@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-29 11:54:22.141998",
+    "@@last_modified": "2026-07-29 12:08:17.499276",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,6 @@
     "rateActivityCommentHint": "Lisa kommentaar (valikuline)",
     "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
     "rateActivityThanks": "Täname tagasiside eest!",
-    "activityRatingMeterLabel": "{percent}% positiivne ({count, plural, =1{1 hinnang} other{{count} hinnangut}})"
+    "activityRatingMeterLabel": "{percent}% positiivne ({count, plural, =1{1 hinnang} other{{count} hinnangut}})",
+    "newActivityBadge": "UUS"
 }

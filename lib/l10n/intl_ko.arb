@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:27.214899",
+    "@@last_modified": "2026-07-29 12:08:19.538155",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9896,5 +9896,6 @@
     "rateActivityCommentHint": "댓글 추가 (선택 사항)",
     "rateActivityCommentRejected": "댓글을 게시할 수 없습니다. 다시 작성하거나 댓글 없이 평가를 제출해 주세요.",
     "rateActivityThanks": "피드백 감사합니다!",
-    "activityRatingMeterLabel": "{percent}% 긍정적 ({count, plural, =1{1개 평가} other{{count}개 평가}})"
+    "activityRatingMeterLabel": "{percent}% 긍정적 ({count, plural, =1{1개 평가} other{{count}개 평가}})",
+    "newActivityBadge": "새로운 활동"
 }

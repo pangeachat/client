@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-29 11:54:38.972104",
+    "@@last_modified": "2026-07-29 12:08:26.026062",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
     "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
     "rateActivityThanks": "Siyabonga ngempendulo yakho!",
-    "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})"
+    "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})",
+    "newActivityBadge": "OKUSHA"
 }

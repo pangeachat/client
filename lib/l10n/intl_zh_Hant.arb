@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 11:54:38.771324",
+    "@@last_modified": "2026-07-29 12:08:25.387954",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9809,5 +9809,6 @@
     "rateActivityCommentHint": "新增評論（可選）",
     "rateActivityCommentRejected": "您的評論無法發佈。請嘗試重新措辭，或不帶評論提交您的評分。",
     "rateActivityThanks": "感謝您的回饋！",
-    "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 評分} other{{count} 評分}}）"
+    "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 評分} other{{count} 評分}}）",
+    "newActivityBadge": "新活動"
 }

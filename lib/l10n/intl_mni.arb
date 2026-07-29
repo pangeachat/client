@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-29 11:54:32.417788",
+    "@@last_modified": "2026-07-29 12:08:20.865740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "ꯑꯦꯗꯤꯁꯅꯦꯜ ꯀꯃꯦꯟꯇ ꯑꯃ ꯍꯥꯞꯄꯤꯌꯨ (ꯑꯣꯞꯁꯅꯦꯜ)",
     "rateActivityCommentRejected": "ꯅꯍꯥꯛꯀꯤ ꯀꯃꯦꯟꯇ ꯑꯗꯨ ꯄꯣꯁ꯭ꯠ ꯇꯧꯕ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯥꯏꯗꯣꯛꯄ ꯍꯣꯠꯅꯧ, ꯅꯠꯠꯔꯒ ꯀꯃꯦꯟꯇ ꯂꯩꯇꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯇꯤꯡ ꯑꯗꯨ ꯁꯕꯃꯤꯠ ꯇꯧ꯫",
     "rateActivityThanks": "ꯅꯍꯥꯛꯀꯤ ꯐꯤꯗꯕꯦꯛꯀꯤꯗꯃꯛ ꯊꯥꯒꯠꯆꯔꯤ!",
-    "activityRatingMeterLabel": "{percent}% ꯄꯣꯖꯤꯇꯤꯕ ({count, plural, =1{1 ꯔꯦꯇꯤꯡ} other{{count} ꯔꯦꯇꯤꯡꯁ}})"
+    "activityRatingMeterLabel": "{percent}% ꯄꯣꯖꯤꯇꯤꯕ ({count, plural, =1{1 ꯔꯦꯇꯤꯡ} other{{count} ꯔꯦꯇꯤꯡꯁ}})",
+    "newActivityBadge": "ꯊꯧꯔꯥꯡ ꯑꯃꯥ"
 }

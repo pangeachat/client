@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-29 11:54:27.480278",
+    "@@last_modified": "2026-07-29 12:08:20.057941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Adde commentarium (libitum)",
     "rateActivityCommentRejected": "Commentarium tuum affigi non potuit. Conare verba mutare, aut aestimationem tuam sine commentario submittere.",
     "rateActivityThanks": "Gratias pro sententia tua!",
-    "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})"
+    "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})",
+    "newActivityBadge": "NOVUM"
 }

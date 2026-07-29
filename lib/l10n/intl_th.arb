@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-29 11:54:35.834346",
+    "@@last_modified": "2026-07-29 12:08:24.562031",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10335,5 +10335,6 @@
     "rateActivityCommentHint": "เพิ่มความคิดเห็น (ไม่บังคับ)",
     "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
     "rateActivityThanks": "ขอบคุณสำหรับความคิดเห็นของคุณ!",
-    "activityRatingMeterLabel": "{percent}% เป็นบวก ({count, plural, =1{1 การให้คะแนน} other{{count} การให้คะแนน}})"
+    "activityRatingMeterLabel": "{percent}% เป็นบวก ({count, plural, =1{1 การให้คะแนน} other{{count} การให้คะแนน}})",
+    "newActivityBadge": "ใหม่"
 }

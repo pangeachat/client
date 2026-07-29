@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-29 11:54:20.312164",
+    "@@last_modified": "2026-07-29 12:08:16.201306",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "አስተያየት ያክሉ (አማራጭ)",
     "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
     "rateActivityThanks": "ለአስተያየትዎ እናመሰግናለን!",
-    "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})"
+    "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
+    "newActivityBadge": "አዲስ"
 }

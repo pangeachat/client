@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-29 11:54:36.147406",
+    "@@last_modified": "2026-07-29 12:08:24.323661",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10004,5 +10004,6 @@
     "rateActivityCommentHint": "Yorum ekle (isteğe bağlı)",
     "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
     "rateActivityThanks": "Geri bildiriminiz için teşekkürler!",
-    "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})"
+    "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})",
+    "newActivityBadge": "YENİ"
 }

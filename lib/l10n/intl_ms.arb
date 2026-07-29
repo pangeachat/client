@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-29 11:54:29.647626",
+    "@@last_modified": "2026-07-29 12:08:21.255720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Tambah komen (pilihan)",
     "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
     "rateActivityThanks": "Terima kasih atas maklum balas anda!",
-    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})"
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
+    "newActivityBadge": "BAHARU"
 }

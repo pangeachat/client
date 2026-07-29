@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-29 11:54:44.880988",
+    "@@last_modified": "2026-07-29 12:08:22.901049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "අදහසක් එක් කරන්න (විකල්ප)",
     "rateActivityCommentRejected": "ඔබගේ අදහස පළ කිරීමට නොහැකි විය. එය නැවත සකස් කිරීමට උත්සාහ කරන්න, නැතහොත් අදහසක් නොමැතිව ඔබගේ ශ්‍රේණිගත කිරීම ඉදිරිපත් කරන්න.",
     "rateActivityThanks": "ඔබගේ ප්‍රතිචාරයට ස්තූතියි!",
-    "activityRatingMeterLabel": "{percent}% ධනාත්මක ({count, plural, =1{1 ශ්‍රේණිගත කිරීම} other{{count} ශ්‍රේණිගත කිරීම්}})"
+    "activityRatingMeterLabel": "{percent}% ධනාත්මක ({count, plural, =1{1 ශ්‍රේණිගත කිරීම} other{{count} ශ්‍රේණිගත කිරීම්}})",
+    "newActivityBadge": "නව"
 }

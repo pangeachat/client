@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-29 11:54:29.782859",
+    "@@last_modified": "2026-07-29 12:08:20.595366",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "एक टिप्पणी जोडा (पर्यायी)",
     "rateActivityCommentRejected": "तुमची टिप्पणी पोस्ट केली जाऊ शकली नाही. कृपया ती पुन्हा लिहा किंवा टिप्पणीशिवाय तुमचे रेटिंग सबमिट करा.",
     "rateActivityThanks": "तुमच्या प्रतिसादाबद्दल धन्यवाद!",
-    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्ज}})"
+    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्ज}})",
+    "newActivityBadge": "नवीन"
 }

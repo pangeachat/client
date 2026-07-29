@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-29 11:54:21.040377",
+    "@@last_modified": "2026-07-29 12:08:17.036057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Pagdugang og komento (opsyonal)",
     "rateActivityCommentRejected": "Dili ma-post ang imong komento. Sulayi pag-usab ang pag-phrase niini, o isumite ang imong rating nga walay komento.",
     "rateActivityThanks": "Salamat sa imong feedback!",
-    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
+    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
+    "newActivityBadge": "BAG-O"
 }

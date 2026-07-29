@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-29 11:54:24.859805",
+    "@@last_modified": "2026-07-29 12:08:19.175115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Ajoute yon kòmantè (opsyonèl)",
     "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab poste. Eseye reformule li, oswa soumèt evalyasyon ou san yon kòmantè.",
     "rateActivityThanks": "Mèsi pou fidbak ou!",
-    "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})"
+    "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})",
+    "newActivityBadge": "NOUVO"
 }

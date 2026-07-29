@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-29 11:54:19.683044",
+    "@@last_modified": "2026-07-29 12:08:16.369777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Dodajte komentar (opcionalno)",
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulisati ili pošaljite svoju ocjenu bez komentara.",
     "rateActivityThanks": "Hvala na povratnim informacijama!",
-    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})"
+    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
+    "newActivityBadge": "NOVO"
 }

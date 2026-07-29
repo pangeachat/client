@@ -237,6 +237,7 @@ class WorldMapLargeCard extends StatelessWidget {
                     title: plan?.title ?? card.title,
                     accent: accent,
                     onClose: onClose,
+                    isNew: isNewActivity(card.ratingCount),
                   ),
                   _CardBody(
                     state: state,
@@ -330,10 +331,14 @@ class _CardTitleRow extends StatelessWidget {
   final Color accent;
   final VoidCallback? onClose;
 
+  /// NEW badge chip after the title for an unrated activity (#7993).
+  final bool isNew;
+
   const _CardTitleRow({
     required this.title,
     required this.accent,
     this.onClose,
+    this.isNew = false,
   });
 
   @override
@@ -363,6 +368,24 @@ class _CardTitleRow extends StatelessWidget {
             ),
           ),
         ),
+        if (isNew) ...[
+          const SizedBox(width: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+            decoration: BoxDecoration(
+              color: accent,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              L10n.of(context).newActivityBadge,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 9,
+                color: Theme.of(context).colorScheme.surface,
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }

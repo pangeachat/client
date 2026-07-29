@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-29 11:54:19.789868",
+    "@@last_modified": "2026-07-29 12:08:16.340893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Добавете коментар (по избор)",
     "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
     "rateActivityThanks": "Благодарим за обратната връзка!",
-    "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})"
+    "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})",
+    "newActivityBadge": "НОВО"
 }

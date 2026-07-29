@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-29 11:54:28.773185",
+    "@@last_modified": "2026-07-29 12:08:20.996186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "ഒരു അഭിപ്രായം ചേർക്കുക (ഓപ്ഷണൽ)",
     "rateActivityCommentRejected": "നിങ്ങളുടെ അഭിപ്രായം പോസ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി മാറ്റിയെഴുതുക, അല്ലെങ്കിൽ അഭിപ്രായമില്ലാതെ നിങ്ങളുടെ റേറ്റിംഗ് സമർപ്പിക്കുക.",
     "rateActivityThanks": "നിങ്ങളുടെ പ്രതികരണത്തിന് നന്ദി!",
-    "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})"
+    "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})",
+    "newActivityBadge": "പുതിയത്"
 }

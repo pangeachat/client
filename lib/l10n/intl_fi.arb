@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-29 11:54:22.429759",
+    "@@last_modified": "2026-07-29 12:08:17.762686",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9740,5 +9740,6 @@
     "rateActivityCommentHint": "Lisää kommentti (valinnainen)",
     "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
     "rateActivityThanks": "Kiitos palautteestasi!",
-    "activityRatingMeterLabel": "{percent}% positiivisia ({count, plural, =1{1 arvio} other{{count} arviota}})"
+    "activityRatingMeterLabel": "{percent}% positiivisia ({count, plural, =1{1 arvio} other{{count} arviota}})",
+    "newActivityBadge": "UUSI"
 }

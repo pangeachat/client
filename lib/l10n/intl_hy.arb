@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-29 11:54:26.119690",
+    "@@last_modified": "2026-07-29 12:08:18.824989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Ավելացնել մեկնաբանություն (ըստ ցանկության)",
     "rateActivityCommentRejected": "Ձեր մեկնաբանությունը չհաջողվեց հրապարակել։ Փորձեք վերաձևակերպել այն կամ ուղարկեք Ձեր գնահատականն առանց մեկնաբանության։",
     "rateActivityThanks": "Շնորհակալություն Ձեր կարծիքի համար։",
-    "activityRatingMeterLabel": "{percent}% դրական ({count, plural, =1{1 գնահատական} other{{count} գնահատական}})"
+    "activityRatingMeterLabel": "{percent}% դրական ({count, plural, =1{1 գնահատական} other{{count} գնահատական}})",
+    "newActivityBadge": "ՆՈՐ"
 }

@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-29 11:54:23.493289",
+    "@@last_modified": "2026-07-29 12:08:17.844119",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9714,5 +9714,6 @@
     "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
     "rateActivityThanks": "Go raibh maith agat as d'aiseolas!",
-    "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})"
+    "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})",
+    "newActivityBadge": "NUA"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-29 11:54:31.746766",
+    "@@last_modified": "2026-07-29 12:08:22.092752",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9788,5 +9788,6 @@
     "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
     "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
     "rateActivityThanks": "Dziękujemy za Twoją opinię!",
-    "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})"
+    "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})",
+    "newActivityBadge": "NOWOŚĆ"
 }

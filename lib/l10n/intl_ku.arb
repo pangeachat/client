@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-29 11:55:49.119097",
+    "@@last_modified": "2026-07-29 12:08:20.081361",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆت)",
     "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
     "rateActivityThanks": "سوپاس بۆ فیدباکەکەت!",
-    "activityRatingMeterLabel": "{percent}% ئەرێنی ({count, plural, =1{1 هەڵسەنگاندن} other{{count} هەڵسەنگاندن}})"
+    "activityRatingMeterLabel": "{percent}% ئەرێنی ({count, plural, =1{1 هەڵسەنگاندن} other{{count} هەڵسەنگاندن}})",
+    "newActivityBadge": "نوێ"
 }

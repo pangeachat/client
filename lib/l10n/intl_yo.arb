@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-29 11:54:38.101551",
+    "@@last_modified": "2026-07-29 12:08:25.223257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2053,5 +2053,6 @@
     "rateActivityCommentHint": "Fi àlàyé kún un (ìyàn)",
     "rateActivityCommentRejected": "A kò lè fi àlàyé rẹ sílẹ̀. Gbìyànjú láti tún un ṣe, tàbí fi ìwọ̀n rẹ sílẹ̀ láìsí àlàyé.",
     "rateActivityThanks": "O ṣeun fún èsì rẹ!",
-    "activityRatingMeterLabel": "{percent}% rere ({count, plural, =1{ìwọ̀n 1} other{ìwọ̀n {count}}})"
+    "activityRatingMeterLabel": "{percent}% rere ({count, plural, =1{ìwọ̀n 1} other{ìwọ̀n {count}}})",
+    "newActivityBadge": "TITUN"
 }
