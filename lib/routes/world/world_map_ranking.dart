@@ -55,12 +55,12 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  String label(BuildContext context) => switch (this) {
-    ActivityPinState.ongoingPending => L10n.of(context).ongoingPendingLabel,
-    ActivityPinState.ongoingActive => L10n.of(context).ongoing,
-    ActivityPinState.joinable => L10n.of(context).joinableLabel,
-    ActivityPinState.inProgress => L10n.of(context).inProgressLabel,
-    ActivityPinState.available => L10n.of(context).availableLabel,
+  String label(L10n l10n) => switch (this) {
+    ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
+    ActivityPinState.ongoingActive => l10n.ongoing,
+    ActivityPinState.joinable => l10n.joinableLabel,
+    ActivityPinState.inProgress => l10n.inProgressLabel,
+    ActivityPinState.available => l10n.availableLabel,
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
