@@ -52,20 +52,24 @@ extension RoomUnreadContextActions on Room {
   /// that flag ever being set.
   bool get showsUnreadIndicator => isUnread || hasNewMessages;
 
-  /// Clears the unread indicator: sends a read receipt for the latest event
-  /// (what actually drops `notificationCount`, and with it the badge count)
-  /// and clears the explicit unread flag. [markUnread] alone does **not** set
-  /// a read marker, so on its own it leaves the count untouched.
+  /// Clears the unread indicator: sends a read receipt (what actually drops
+  /// `notificationCount`, and with it the badge count) and clears the explicit
+  /// unread flag. [markUnread] alone does **not** set a read marker, so on its
+  /// own it leaves the count untouched.
+  ///
+  /// Receipt targeting is delegated to the timeline, which picks the newest
+  /// *synced* event. That skips an unsent local echo — whose id is a
+  /// transaction id the server would reject a receipt for — and still marks
+  /// the confirmed messages beneath it read. Same path the chat view takes on
+  /// open.
   Future<void> clearUnread() async {
-    final lastEventId = lastEvent?.eventId;
-    // A pending local echo carries a transaction id, not an event id; sending
-    // a receipt for one would fail server-side.
-    if (lastEventId != null && lastEventId.isValidMatrixId) {
-      await setReadMarker(
-        lastEventId,
-        mRead: lastEventId,
+    final timeline = await getTimeline();
+    try {
+      await timeline.setReadMarker(
         public: AppSettings.sendPublicReadReceipts.value,
       );
+    } finally {
+      timeline.cancelSubscriptions();
     }
     if (markedUnread) await markUnread(false);
   }

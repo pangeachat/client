@@ -15,141 +15,191 @@ import 'get_test_client.dart';
 void main() {
   sqfliteFfiInit();
 
-  late Client client;
+  // read_markers is only stubbed for a handful of room ids in FakeMatrixApi.
+  const roomId = '!1234:example.com';
 
-  setUpAll(() async {
+  late Client client;
+  late String confirmedEventId;
+  late String pendingTxId;
+
+  // sqflite's ':memory:' database is shared process-wide, so room and event
+  // rows outlive a client. Fresh event ids per test keep handleSync from
+  // deduping against an earlier test's copy and keeping its sender.
+  var testCounter = 0;
+
+  setUp(() async {
     client = await getTestClient();
-    // Lets the fake API answer the room-scoped account_data PUT that clearing
-    // the unread flag performs.
     FakeMatrixApi.client = client;
+    testCounter++;
+    confirmedEventId = '\$confirmed$testCounter:example.com';
+    pendingTxId = 'web170000000000$testCounter';
   });
 
-  setUp(() => FakeMatrixApi.calledEndpoints.clear());
-
-  Room room({
+  /// Builds the room through a sync so it has a real timeline, which is what
+  /// receipt targeting reads from.
+  Future<Room> syncRoom({
     int notificationCount = 0,
     bool markedUnread = false,
-    Event? lastEvent,
-  }) => Room(
-    id: '!1234:example.com',
-    client: client,
-    notificationCount: notificationCount,
-    lastEvent: lastEvent,
-    roomAccountData: markedUnread
-        ? {
-            'm.marked_unread': BasicEvent(
-              type: 'm.marked_unread',
-              content: {'unread': true},
+    bool lastMessageFromSelf = false,
+  }) async {
+    await client.handleSync(
+      SyncUpdate(
+        nextBatch: 'batch1',
+        rooms: RoomsUpdate(
+          join: {
+            roomId: JoinedRoomUpdate(
+              unreadNotifications: UnreadNotificationCounts(
+                notificationCount: notificationCount,
+                highlightCount: 0,
+              ),
+              // Always sent, so a leaked flag from an earlier test can't
+              // linger as an implicit true.
+              accountData: [
+                BasicEvent(
+                  type: 'm.marked_unread',
+                  content: {'unread': markedUnread},
+                ),
+              ],
+              timeline: TimelineUpdate(
+                prevBatch: 'prev1',
+                events: [
+                  MatrixEvent(
+                    eventId: confirmedEventId,
+                    type: EventTypes.Message,
+                    content: {'msgtype': 'm.text', 'body': 'a message'},
+                    senderId: lastMessageFromSelf
+                        ? client.userID!
+                        : '@other:example.com',
+                    originServerTs: DateTime.now(),
+                  ),
+                ],
+              ),
             ),
-          }
-        : {},
-  );
+          },
+        ),
+      ),
+    );
+    return client.getRoomById(roomId)!;
+  }
+
+  /// Stacks an unsent local echo on top, mirroring the fake sync the SDK emits
+  /// from `sendEvent`. Its id is a transaction id, not an event id.
+  Future<Room> addPendingEcho() async {
+    await client.handleSync(
+      SyncUpdate(
+        nextBatch: 'batch2',
+        rooms: RoomsUpdate(
+          join: {
+            roomId: JoinedRoomUpdate(
+              timeline: TimelineUpdate(
+                events: [
+                  MatrixEvent(
+                    eventId: pendingTxId,
+                    type: EventTypes.Message,
+                    content: {'msgtype': 'm.text', 'body': 'my pending reply'},
+                    senderId: client.userID!,
+                    originServerTs: DateTime.now(),
+                    unsigned: {
+                      messageSendingStatusKey: EventStatus.sending.intValue,
+                      'transaction_id': pendingTxId,
+                    },
+                  ),
+                ],
+              ),
+            ),
+          },
+        ),
+      ),
+    );
+    return client.getRoomById(roomId)!;
+  }
+
+  Iterable<String> callsMatching(String fragment) => FakeMatrixApi
+      .calledEndpoints
+      .entries
+      .where((e) => e.key.contains(fragment))
+      .expand((e) => e.value)
+      .map((body) => body.toString());
 
   group('showsUnreadIndicator', () {
-    test('is true for a room with an unread notification count', () {
+    test('is true for a room with an unread notification count', () async {
       // The #8009 case: unread count, no explicit flag. Keying off
       // markedUnread here is what produced the wrong "Mark as unread" label.
-      final r = room(notificationCount: 3);
+      final room = await syncRoom(notificationCount: 3);
 
-      expect(r.markedUnread, isFalse);
-      expect(r.showsUnreadIndicator, isTrue);
+      expect(room.markedUnread, isFalse);
+      expect(room.showsUnreadIndicator, isTrue);
     });
 
-    test('is true for a room flagged unread with no notification count', () {
-      final r = room(markedUnread: true);
+    test('is true for a room flagged unread with no count', () async {
+      final room = await syncRoom(markedUnread: true);
 
-      expect(r.notificationCount, 0);
-      expect(r.showsUnreadIndicator, isTrue);
+      expect(room.notificationCount, 0);
+      expect(room.showsUnreadIndicator, isTrue);
     });
 
-    test('is true when both the count and the flag are set', () {
-      expect(
-        room(notificationCount: 1, markedUnread: true).showsUnreadIndicator,
-        isTrue,
-      );
+    test('is true when both the count and the flag are set', () async {
+      final room = await syncRoom(notificationCount: 1, markedUnread: true);
+
+      expect(room.showsUnreadIndicator, isTrue);
     });
 
-    test('is false for a room with no count, no flag and no new messages', () {
-      final r = room();
+    test('is false for a read chat whose newest message is your own', () async {
+      final room = await syncRoom(lastMessageFromSelf: true);
 
-      expect(r.hasNewMessages, isFalse);
-      expect(r.showsUnreadIndicator, isFalse);
+      expect(room.hasNewMessages, isFalse);
+      expect(room.showsUnreadIndicator, isFalse);
     });
   });
 
   group('clearUnread', () {
-    Event message({required String eventId, String? senderId}) => Event(
-      eventId: eventId,
-      type: EventTypes.Message,
-      content: {'msgtype': 'm.text', 'body': 'hi'},
-      senderId: senderId ?? '@other:example.com',
-      originServerTs: DateTime.now(),
-      room: Room(id: '!1234:example.com', client: client),
-    );
-
-    bool calledMatching(String fragment) =>
-        FakeMatrixApi.calledEndpoints.keys.any((e) => e.contains(fragment));
-
     test('sends a read receipt for the latest event', () async {
       // markUnread() alone never sets a read marker, which is why the badge
       // count survived a mark-unread/mark-read round trip before the fix. The
       // receipt is what actually zeroes notificationCount on the server.
-      final r = room(
-        notificationCount: 2,
-        lastEvent: message(eventId: '\$1234:example.com'),
-      );
+      final room = await syncRoom(notificationCount: 2);
+      FakeMatrixApi.calledEndpoints.clear();
 
-      await r.clearUnread();
+      await room.clearUnread();
 
-      expect(calledMatching('read_markers'), isTrue);
+      expect(callsMatching('read_markers').single, contains(confirmedEventId));
     });
 
     test('also clears the explicit unread flag when it is set', () async {
-      final r = room(
-        markedUnread: true,
-        lastEvent: message(eventId: '\$1234:example.com'),
-      );
+      final room = await syncRoom(notificationCount: 1, markedUnread: true);
+      FakeMatrixApi.calledEndpoints.clear();
 
-      await r.clearUnread();
+      await room.clearUnread();
 
-      expect(calledMatching('read_markers'), isTrue);
-      expect(calledMatching('m.marked_unread'), isTrue);
+      expect(callsMatching('read_markers'), isNotEmpty);
+      expect(callsMatching('m.marked_unread'), isNotEmpty);
     });
 
     test('does not touch the unread flag when it was never set', () async {
-      final r = room(
-        notificationCount: 1,
-        lastEvent: message(eventId: '\$1234:example.com'),
-      );
+      final room = await syncRoom(notificationCount: 1);
+      FakeMatrixApi.calledEndpoints.clear();
 
-      await r.clearUnread();
+      await room.clearUnread();
 
-      expect(calledMatching('m.marked_unread'), isFalse);
+      expect(callsMatching('m.marked_unread'), isEmpty);
     });
 
-    test(
-      'skips the receipt when the last event is a pending local echo',
-      () async {
-        // A pending event carries a transaction id, not a valid event id, so
-        // sending a receipt for it would fail server-side.
-        final r = room(
-          notificationCount: 1,
-          lastEvent: message(
-            eventId: 'web1700000000000',
-            senderId: client.userID!,
-          ),
-        );
+    test('still marks read when an unsent echo is the newest event', () async {
+      // Reachable by replying from a notification, or when a send is queued
+      // offline. The echo's id is a transaction id, so a receipt aimed at it
+      // would be rejected — but the confirmed messages beneath it must still
+      // be marked read rather than the whole action silently no-opping.
+      await syncRoom(notificationCount: 2);
+      final room = await addPendingEcho();
+      expect(room.lastEvent?.eventId, pendingTxId);
+      expect(room.lastEvent!.eventId.isValidMatrixId, isFalse);
+      FakeMatrixApi.calledEndpoints.clear();
 
-        await r.clearUnread();
+      await room.clearUnread();
 
-        expect(calledMatching('read_markers'), isFalse);
-      },
-    );
-
-    test('is a no-op on a room with nothing to clear', () async {
-      await room().clearUnread();
-
-      expect(FakeMatrixApi.calledEndpoints, isEmpty);
+      final receipt = callsMatching('read_markers').single;
+      expect(receipt, contains(confirmedEventId));
+      expect(receipt, isNot(contains(pendingTxId)));
     });
   });
 }
