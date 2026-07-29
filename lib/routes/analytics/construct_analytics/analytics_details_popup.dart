@@ -456,15 +456,27 @@ class _PracticeButton extends StatelessWidget {
     // App-bar-friendly pill (was a bottom FAB, #7979). The enabled colors
     // match the old FAB default — a `primaryContainer` pill — so relocating it
     // to the top-right doesn't change its look.
+    //
+    // Visible label is the short "Practice" (not "Practice vocabulary" /
+    // "Practice grammar"): the panel title already says Vocab/Grammar, so the
+    // long phrase was redundant and wide enough to squeeze that title out of
+    // the app bar. Keeping the button narrow lets the title stay fully visible
+    // (#7979). The full phrase rides along as the tooltip / accessible name.
+    final label = L10n.of(context).practice;
+    final tooltip = view.practiceButtonText(context);
+
     if (analyticsService.isInitializing) {
-      return FilledButton.icon(
-        onPressed: () =>
-            _showSnackbar(context, L10n.of(context).loadingPleaseWait),
-        icon: const Icon(Symbols.fitness_center, size: 18),
-        label: Text(view.practiceButtonText(context)),
-        style: FilledButton.styleFrom(
-          backgroundColor: colorScheme.surface,
-          foregroundColor: colorScheme.onSurface.withValues(alpha: 0.5),
+      return Tooltip(
+        message: tooltip,
+        child: FilledButton.icon(
+          onPressed: () =>
+              _showSnackbar(context, L10n.of(context).loadingPleaseWait),
+          icon: const Icon(Symbols.fitness_center, size: 18),
+          label: Text(label),
+          style: FilledButton.styleFrom(
+            backgroundColor: colorScheme.surface,
+            foregroundColor: colorScheme.onSurface.withValues(alpha: 0.5),
+          ),
         ),
       );
     }
@@ -472,19 +484,26 @@ class _PracticeButton extends StatelessWidget {
     final count = analyticsService.numConstructs(view);
     final enabled = count >= 10;
 
-    return FilledButton.icon(
-      onPressed: enabled
-          ? () => _startPractice(context)
-          : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
-      icon: Icon(enabled ? Symbols.fitness_center : Icons.lock_outline, size: 18),
-      label: Text(view.practiceButtonText(context)),
-      style: FilledButton.styleFrom(
-        backgroundColor: enabled
-            ? colorScheme.primaryContainer
-            : colorScheme.surfaceContainer,
-        foregroundColor: enabled
-            ? colorScheme.onPrimaryContainer
-            : colorScheme.onSurface.withValues(alpha: 0.5),
+    return Tooltip(
+      message: tooltip,
+      child: FilledButton.icon(
+        onPressed: enabled
+            ? () => _startPractice(context)
+            : () =>
+                  _showSnackbar(context, L10n.of(context).notEnoughToPractice),
+        icon: Icon(
+          enabled ? Symbols.fitness_center : Icons.lock_outline,
+          size: 18,
+        ),
+        label: Text(label),
+        style: FilledButton.styleFrom(
+          backgroundColor: enabled
+              ? colorScheme.primaryContainer
+              : colorScheme.surfaceContainer,
+          foregroundColor: enabled
+              ? colorScheme.onPrimaryContainer
+              : colorScheme.onSurface.withValues(alpha: 0.5),
+        ),
       ),
     );
   }
