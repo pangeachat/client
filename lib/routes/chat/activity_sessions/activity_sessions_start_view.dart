@@ -145,15 +145,14 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // Aggregate learner rating (#7194) — top-right per design; only
-              // once the activity has ratings.
-              if (activity?.ratingAverage != null &&
-                  (activity?.ratingCount ?? 0) > 0)
+              // Rating indicator (#7194/#7993) — top-right per design: a NEW
+              // pill until the activity has ratings, then the aggregate meter.
+              if (activity != null)
                 Padding(
                   padding: const EdgeInsets.only(right: 4.0),
                   child: ActivityRatingMeter(
-                    average: activity!.ratingAverage!,
-                    count: activity.ratingCount!,
+                    average: activity.ratingAverage,
+                    count: activity.ratingCount,
                   ),
                 ),
               // The one camera path that zooms (#7616): selection only pans,
