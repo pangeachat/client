@@ -22,263 +22,287 @@ class NewPrivateChatView extends StatelessWidget {
     final theme = Theme.of(context);
 
     final searchResponse = controller.searchResponse;
-    return Scaffold(
-      appBar: AppBar(
-        leading: closeButton,
-        titleSpacing: 0,
-        title: Text(
-          L10n.of(context).newDirectMessage,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-        ),
-        centerTitle: false,
-      ),
-      body: MaxWidthBody(
-        withScrolling: false,
-        innerPadding: const EdgeInsets.symmetric(vertical: 8),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
-              ),
-              child: PangeaSearchBar(
-                controller: controller.controller,
-                onChanged: controller.searchUsers,
-                labelText: L10n.of(context).searchUsersHint,
-                suffixIcon: controller.controller.text.isEmpty
-                    ? null
-                    : IconButton(
-                        tooltip: L10n.of(context).clear,
-                        icon: const Icon(Icons.clear_outlined),
-                        onPressed: () {
-                          controller.controller.clear();
-                          controller.searchUsers();
-                        },
-                      ),
-                prefixIcon: controller.controller.text.isEmpty
-                    ? null
-                    : FutureBuilder(
-                        future: searchResponse,
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState !=
-                              ConnectionState.done) {
-                            return const Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: SizedBox.square(
-                                dimension: 24,
-                                child: CircularProgressIndicator.adaptive(
-                                  strokeWidth: 1,
-                                ),
-                              ),
-                            );
-                          }
-                          return const Icon(Icons.search);
-                        },
-                      ),
-              ),
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).newDirectMessage),
+      container: true,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: closeButton,
+          titleSpacing: 0,
+          title: ExcludeSemantics(
+            child: Text(
+              L10n.of(context).newDirectMessage,
+              style: FluffyThemes.isColumnMode(context)
+                  ? theme.textTheme.titleLarge
+                  : theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
             ),
-            Expanded(
-              child: AnimatedSwitcher(
-                duration: FluffyThemes.animationDuration,
-                child: searchResponse == null
-                    ? ListView(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18.0,
-                            ),
-                            child: SelectableText.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: L10n.of(context).yourGlobalUserIdIs,
+          ),
+          centerTitle: false,
+        ),
+        body: MaxWidthBody(
+          withScrolling: false,
+          innerPadding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
+                child: PangeaSearchBar(
+                  controller: controller.controller,
+                  onChanged: controller.searchUsers,
+                  labelText: L10n.of(context).searchUsersHint,
+                  suffixIcon: controller.controller.text.isEmpty
+                      ? null
+                      : IconButton(
+                          tooltip: L10n.of(context).clear,
+                          icon: const Icon(Icons.clear_outlined),
+                          onPressed: () {
+                            controller.controller.clear();
+                            controller.searchUsers();
+                          },
+                        ),
+                  prefixIcon: controller.controller.text.isEmpty
+                      ? null
+                      : FutureBuilder(
+                          future: searchResponse,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState !=
+                                ConnectionState.done) {
+                              return const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: SizedBox.square(
+                                  dimension: 24,
+                                  child: CircularProgressIndicator.adaptive(
+                                    strokeWidth: 1,
                                   ),
-                                  TextSpan(
-                                    text: Matrix.of(context).client.userID,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                ),
+                              );
+                            }
+                            return const Icon(Icons.search);
+                          },
+                        ),
+                ),
+              ),
+              Expanded(
+                child: Semantics(
+                  label: searchResponse == null
+                      ? L10n.of(context).bodyLabel(L10n.of(context).invite)
+                      : L10n.of(context).results,
+                  container: true,
+                  child: AnimatedSwitcher(
+                    duration: FluffyThemes.animationDuration,
+                    child: searchResponse == null
+                        ? ListView(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 18.0,
+                                ),
+                                child: Semantics(
+                                  label:
+                                      "${L10n.of(context).yourGlobalUserIdIs} ${Matrix.of(context).client.userID}",
+                                  container: true,
+                                  child: SelectableText.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: L10n.of(
+                                            context,
+                                          ).yourGlobalUserIdIs,
+                                        ),
+                                        TextSpan(
+                                          text: Matrix.of(
+                                            context,
+                                          ).client.userID,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              style: TextStyle(
-                                color: theme.colorScheme.onSurface,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor:
-                                  theme.colorScheme.secondaryContainer,
-                              foregroundColor:
-                                  theme.colorScheme.onSecondaryContainer,
-                              child: Icon(Icons.adaptive.share_outlined),
-                            ),
-                            title: Text(L10n.of(context).shareInviteLink),
-                            onTap: controller.inviteAction,
-                          ),
-                          // #Pangea
-                          // ListTile(
-                          //   leading: CircleAvatar(
-                          //     backgroundColor:
-                          //         theme.colorScheme.tertiaryContainer,
-                          //     foregroundColor:
-                          //         theme.colorScheme.onTertiaryContainer,
-                          //     child: const Icon(Icons.group_add_outlined),
-                          //   ),
-                          //   title: Text(L10n.of(context).createGroup),
-                          //   onTap: () => context.go('/rooms/newgroup'),
-                          // ),
-                          // if (PlatformInfos.isMobile)
-                          //   ListTile(
-                          //     leading: CircleAvatar(
-                          //       backgroundColor:
-                          //           theme.colorScheme.primaryContainer,
-                          //       foregroundColor:
-                          //           theme.colorScheme.onPrimaryContainer,
-                          //       child: const Icon(
-                          //         Icons.qr_code_scanner_outlined,
-                          //       ),
-                          //     ),
-                          //     title: Text(L10n.of(context).scanQrCode),
-                          //     onTap: controller.openScannerAction,
-                          //   ),
-                          // Center(
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.symmetric(
-                          //       horizontal: 64.0,
-                          //       vertical: 24.0,
-                          //     ),
-                          //     child: Material(
-                          //       shape: RoundedRectangleBorder(
-                          //         borderRadius: BorderRadius.circular(
-                          //           AppConfig.borderRadius,
-                          //         ),
-                          //         side: BorderSide(
-                          //           width: 3,
-                          //           color: theme.colorScheme.primary,
-                          //         ),
-                          //       ),
-                          //       color: Colors.transparent,
-                          //       clipBehavior: Clip.hardEdge,
-                          //       child: InkWell(
-                          //         borderRadius: BorderRadius.circular(
-                          //           AppConfig.borderRadius,
-                          //         ),
-                          //         onTap: () =>
-                          //             showQrCodeViewer(context, userId),
-                          //         child: Padding(
-                          //           padding: const EdgeInsets.all(16.0),
-                          //           child: ConstrainedBox(
-                          //             constraints: const BoxConstraints(
-                          //               maxWidth: 200,
-                          //             ),
-                          //             child: PrettyQrView.data(
-                          //               // #Pangea
-                          //               // data: 'https://matrix.to/#/$userId',
-                          //               data: Environment.frontendURL,
-                          //               // Pangea#
-                          //               decoration: PrettyQrDecoration(
-                          //                 shape: PrettyQrSmoothSymbol(
-                          //                   roundFactor: 1,
-                          //                   color: theme.colorScheme.primary,
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                          // Pangea#
-                        ],
-                      )
-                    : FutureBuilder(
-                        future: searchResponse,
-                        builder: (context, snapshot) {
-                          final result = snapshot.data;
-                          final error = snapshot.error;
-                          if (error != null) {
-                            return Column(
-                              mainAxisAlignment: .center,
-                              children: [
-                                Text(
-                                  error.toLocalizedString(context),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: theme.colorScheme.error,
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                OutlinedButton.icon(
-                                  onPressed: controller.searchUsers,
-                                  icon: const Icon(Icons.refresh_outlined),
-                                  label: Text(L10n.of(context).tryAgain),
-                                ),
-                              ],
-                            );
-                          }
-                          if (result == null) {
-                            return const Center(
-                              child: CircularProgressIndicator.adaptive(),
-                            );
-                          }
-                          if (result.isEmpty) {
-                            return Column(
-                              mainAxisAlignment: .center,
-                              children: [
-                                const Icon(Icons.search_outlined, size: 86),
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Text(
-                                    // #Pangea
-                                    // L10n.of(context).noUsersFoundWithQuery(
-                                    //   controller.controller.text,
-                                    // ),
-                                    L10n.of(context).emptyInviteSearchHint,
-                                    // Pangea#
                                     style: TextStyle(
-                                      color: theme.colorScheme.primary,
+                                      color: theme.colorScheme.onSurface,
+                                      fontSize: 12,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
-                              ],
-                            );
-                          }
-                          return ListView.builder(
-                            itemCount: result.length,
-                            itemBuilder: (context, i) {
-                              final contact = result[i];
-                              final displayname =
-                                  contact.displayName ??
-                                  contact.userId.localpart ??
-                                  contact.userId;
-                              return ListTile(
-                                leading: Avatar(
-                                  name: displayname,
-                                  mxContent: contact.avatarUrl,
-                                  presenceUserId: contact.userId,
+                              ),
+                              const SizedBox(height: 8),
+                              ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor:
+                                      theme.colorScheme.secondaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onSecondaryContainer,
+                                  child: Icon(Icons.adaptive.share_outlined),
                                 ),
-                                title: Text(displayname),
-                                subtitle: Text(contact.userId),
-                                onTap: () => controller.openUserModal(contact),
+                                title: Text(L10n.of(context).shareInviteLink),
+                                onTap: controller.inviteAction,
+                              ),
+                              // #Pangea
+                              // ListTile(
+                              //   leading: CircleAvatar(
+                              //     backgroundColor:
+                              //         theme.colorScheme.tertiaryContainer,
+                              //     foregroundColor:
+                              //         theme.colorScheme.onTertiaryContainer,
+                              //     child: const Icon(Icons.group_add_outlined),
+                              //   ),
+                              //   title: Text(L10n.of(context).createGroup),
+                              //   onTap: () => context.go('/rooms/newgroup'),
+                              // ),
+                              // if (PlatformInfos.isMobile)
+                              //   ListTile(
+                              //     leading: CircleAvatar(
+                              //       backgroundColor:
+                              //           theme.colorScheme.primaryContainer,
+                              //       foregroundColor:
+                              //           theme.colorScheme.onPrimaryContainer,
+                              //       child: const Icon(
+                              //         Icons.qr_code_scanner_outlined,
+                              //       ),
+                              //     ),
+                              //     title: Text(L10n.of(context).scanQrCode),
+                              //     onTap: controller.openScannerAction,
+                              //   ),
+                              // Center(
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.symmetric(
+                              //       horizontal: 64.0,
+                              //       vertical: 24.0,
+                              //     ),
+                              //     child: Material(
+                              //       shape: RoundedRectangleBorder(
+                              //         borderRadius: BorderRadius.circular(
+                              //           AppConfig.borderRadius,
+                              //         ),
+                              //         side: BorderSide(
+                              //           width: 3,
+                              //           color: theme.colorScheme.primary,
+                              //         ),
+                              //       ),
+                              //       color: Colors.transparent,
+                              //       clipBehavior: Clip.hardEdge,
+                              //       child: InkWell(
+                              //         borderRadius: BorderRadius.circular(
+                              //           AppConfig.borderRadius,
+                              //         ),
+                              //         onTap: () =>
+                              //             showQrCodeViewer(context, userId),
+                              //         child: Padding(
+                              //           padding: const EdgeInsets.all(16.0),
+                              //           child: ConstrainedBox(
+                              //             constraints: const BoxConstraints(
+                              //               maxWidth: 200,
+                              //             ),
+                              //             child: PrettyQrView.data(
+                              //               // #Pangea
+                              //               // data: 'https://matrix.to/#/$userId',
+                              //               data: Environment.frontendURL,
+                              //               // Pangea#
+                              //               decoration: PrettyQrDecoration(
+                              //                 shape: PrettyQrSmoothSymbol(
+                              //                   roundFactor: 1,
+                              //                   color: theme.colorScheme.primary,
+                              //                 ),
+                              //               ),
+                              //             ),
+                              //           ),
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // Pangea#
+                            ],
+                          )
+                        : FutureBuilder(
+                            future: searchResponse,
+                            builder: (context, snapshot) {
+                              final result = snapshot.data;
+                              final error = snapshot.error;
+                              if (error != null) {
+                                return Column(
+                                  mainAxisAlignment: .center,
+                                  children: [
+                                    Text(
+                                      error.toLocalizedString(context),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: theme.colorScheme.error,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    OutlinedButton.icon(
+                                      onPressed: controller.searchUsers,
+                                      icon: const Icon(Icons.refresh_outlined),
+                                      label: Text(L10n.of(context).tryAgain),
+                                    ),
+                                  ],
+                                );
+                              }
+                              if (result == null) {
+                                return const Center(
+                                  child: CircularProgressIndicator.adaptive(),
+                                );
+                              }
+                              if (result.isEmpty) {
+                                return Column(
+                                  mainAxisAlignment: .center,
+                                  children: [
+                                    const Icon(Icons.search_outlined, size: 86),
+                                    Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Text(
+                                        // #Pangea
+                                        // L10n.of(context).noUsersFoundWithQuery(
+                                        //   controller.controller.text,
+                                        // ),
+                                        L10n.of(context).emptyInviteSearchHint,
+                                        // Pangea#
+                                        style: TextStyle(
+                                          color: theme.colorScheme.primary,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
+                              return ListView.builder(
+                                itemCount: result.length,
+                                itemBuilder: (context, i) {
+                                  final contact = result[i];
+                                  final displayname =
+                                      contact.displayName ??
+                                      contact.userId.localpart ??
+                                      contact.userId;
+                                  return ListTile(
+                                    leading: ExcludeSemantics(
+                                      child: Avatar(
+                                        name: displayname,
+                                        mxContent: contact.avatarUrl,
+                                        presenceUserId: contact.userId,
+                                      ),
+                                    ),
+                                    title: Text(displayname),
+                                    subtitle: Text(contact.userId),
+                                    onTap: () =>
+                                        controller.openUserModal(contact),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                      ),
+                          ),
+                  ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
