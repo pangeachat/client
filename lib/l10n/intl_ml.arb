@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-29 10:55:23.767416",
+    "@@last_modified": "2026-07-29 12:08:20.996186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2043,5 +2043,16 @@
     "activityActions": "പ്രവർത്തന പ്രവർത്തനങ്ങൾ",
     "ongoing": "പുരോഗമിക്കുന്നു",
     "emptyInviteSearchHint": "നിങ്ങൾ തിരയുന്നയാളെ കണ്ടെത്താൻ കഴിയുന്നില്ലേ? തിരയലിൽ അവരുടെ പ്രൊഫൈൽ കണ്ടെത്താൻ അവർ അനുമതി നൽകേണ്ടതുണ്ട്. ക്രമീകരണങ്ങളിലെ പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക എന്നതിൽ പരിശോധിക്കുക.",
+    "activityPreviewLabel": "പ്രവർത്തന പ്രിവ്യൂ: ",
+    "participantRowLabel": "{total} പങ്കാളികളിൽ {joined} പേർ ചേർന്നു",
+    "ongoingPendingLabel": "മറ്റുള്ളവർ ചേരുന്നതിനായി കാത്തിരിക്കുന്നു",
+    "joinableLabel": "ചേരാവുന്നതാണ്",
+    "inProgressLabel": "മുമ്പ് പൂർത്തിയാക്കിയത്",
+    "availableLabel": "പ്രവർത്തനം സൃഷ്ടിക്കുക",
+    "rateActivityTitle": "ഈ പ്രവർത്തനം എങ്ങനെ ഉണ്ടായിരുന്നു?",
+    "rateActivityCommentHint": "ഒരു അഭിപ്രായം ചേർക്കുക (ഓപ്ഷണൽ)",
+    "rateActivityCommentRejected": "നിങ്ങളുടെ അഭിപ്രായം പോസ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി മാറ്റിയെഴുതുക, അല്ലെങ്കിൽ അഭിപ്രായമില്ലാതെ നിങ്ങളുടെ റേറ്റിംഗ് സമർപ്പിക്കുക.",
+    "rateActivityThanks": "നിങ്ങളുടെ പ്രതികരണത്തിന് നന്ദി!",
+    "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})",
     "newActivityBadge": "പുതിയത്"
 }

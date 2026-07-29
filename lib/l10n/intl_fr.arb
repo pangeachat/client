@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-29 10:55:19.943523",
+    "@@last_modified": "2026-07-29 12:08:17.820393",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,16 @@
     "activityActions": "Actions d'activité",
     "ongoing": "En cours",
     "emptyInviteSearchHint": "Vous ne trouvez pas la personne que vous cherchez ? Il se peut qu'elle doive autoriser la recherche de son profil. Vérifiez la section Modifier le profil dans les paramètres.",
+    "activityPreviewLabel": "Aperçu de l'activité : ",
+    "participantRowLabel": "{joined} participants sur {total} ont rejoint",
+    "ongoingPendingLabel": "En attente que d'autres rejoignent",
+    "joinableLabel": "Rejoignable",
+    "inProgressLabel": "Précédemment terminé",
+    "availableLabel": "Créer une activité",
+    "rateActivityTitle": "Comment s'est passée cette activité ?",
+    "rateActivityCommentHint": "Ajouter un commentaire (facultatif)",
+    "rateActivityCommentRejected": "Votre commentaire n'a pas pu être publié. Essayez de le reformuler ou soumettez votre évaluation sans commentaire.",
+    "rateActivityThanks": "Merci pour votre avis !",
+    "activityRatingMeterLabel": "{percent} % positif ({count, plural, =1{1 évaluation} other{{count} évaluations}})",
     "newActivityBadge": "NOUVEAU"
 }

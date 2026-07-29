@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:55:28.330881",
+    "@@last_modified": "2026-07-29 12:08:24.905448",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6959,5 +6959,16 @@
     "activityActions": "Hành động hoạt động",
     "ongoing": "Đang diễn ra",
     "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt.",
+    "activityPreviewLabel": "Xem trước hoạt động: ",
+    "participantRowLabel": "{joined} trên {total} người tham gia đã vào",
+    "ongoingPendingLabel": "Đang chờ những người khác tham gia",
+    "joinableLabel": "Có thể tham gia",
+    "inProgressLabel": "Đã hoàn thành trước đó",
+    "availableLabel": "Tạo hoạt động",
+    "rateActivityTitle": "Hoạt động này thế nào?",
+    "rateActivityCommentHint": "Thêm bình luận (không bắt buộc)",
+    "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
+    "rateActivityThanks": "Cảm ơn phản hồi của bạn!",
+    "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})",
     "newActivityBadge": "MỚI"
 }

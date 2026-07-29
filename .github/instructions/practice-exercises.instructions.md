@@ -51,13 +51,20 @@ score = daysSinceLastUsed × (isContentWord ? 10 : 7)
 - **Content word bonus**: nouns, verbs, and adjectives get a 10× multiplier; function words (articles, prepositions) get 7×. This meaningfully favors content words when recency is equal.
 - Tokens are sorted by score descending, top 8 taken, then shuffled.
 
-### Standalone Practice — simple recency sort
+### Standalone Practice — practice sorting
 
-[`AnalyticsPracticeSessionRepo._fetchVocab`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) and `_fetchAudio` sort by `lastUsed` ascending with nulls first (never-practiced words come first). There is **no scoring formula** and **no content-word bonus**.
+Each standable practice type has its own practice target generator.
 
-Grammar targets use a different strategy:
-- **`_fetchErrors`**: selects recent grammar mistakes, skipping any construct practiced in the last 24 hours.
-- **`_fetchMorphs`**: sorts morph constructs by `lastUsed` ascending (same as vocab).
+| Type | Generator |
+| --- | --- |
+| PracticeExerciseTypeEnum.grammarCategory | [GrammarMatchTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_match_target_generator.dart) |
+| PracticeExerciseTypeEnum.grammarError | [GrammarErrorTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart) |
+| PracticeExerciseTypeEnum.lemmaAudio | [VocabAudioTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/vocab_audio_target_generator.dart) |
+| PracticeExerciseTypeEnum.lemmaMeaning | [VocabMeaningTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart) |
+
+Each of these is passed a full list of the user's construct data for the relevant type (vocab or grammar) and uses [practiceSort](../../lib/routes/analytics/construct_analytics/practice/construct_practice_extension.dart) to order them by relevance for the given type.  
+
+[GrammarErrorTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart) acts differently. Because constructs from grammar error practice exercises have an eventID attached, these eventIDs are used to filter out constructs from events that happened in the last 24 hours to prevent users from [getting exercies for the same messages too many times in a row.](https://github.com/pangeachat/client/issues/7360)
 
 ### ⚠️ Divergence note
 

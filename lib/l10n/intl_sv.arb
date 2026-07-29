@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:55:28.245237",
+    "@@last_modified": "2026-07-29 12:08:23.639784",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10211,5 +10211,16 @@
     "activityActions": "Aktivitetshändelser",
     "ongoing": "Pågående",
     "emptyInviteSearchHint": "Hittar du inte den du söker? De kanske måste tillåta att deras profil hittas i sökningar. Kontrollera Redigera profil i Inställningar.",
-    "newActivityBadge": "NYTT"
+    "activityPreviewLabel": "Förhandsvisning av aktivitet: ",
+    "participantRowLabel": "{joined} av {total} deltagare har anslutit",
+    "ongoingPendingLabel": "Väntar på att andra ska ansluta",
+    "joinableLabel": "Gå med",
+    "inProgressLabel": "Tidigare slutförd",
+    "availableLabel": "Skapa aktivitet",
+    "rateActivityTitle": "Hur var den här aktiviteten?",
+    "rateActivityCommentHint": "Lägg till en kommentar (valfritt)",
+    "rateActivityCommentRejected": "Din kommentar kunde inte publiceras. Försök att omformulera den, eller skicka in ditt betyg utan en kommentar.",
+    "rateActivityThanks": "Tack för din feedback!",
+    "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})",
+    "newActivityBadge": "NY"
 }

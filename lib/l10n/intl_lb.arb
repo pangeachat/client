@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-29 10:55:23.327111",
+    "@@last_modified": "2026-07-29 12:08:20.139390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Aktivitéitsaktiounen",
     "ongoing": "Am Gaang",
     "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen.",
+    "activityPreviewLabel": "Aktivitéitsvirschau: ",
+    "participantRowLabel": "{joined} vun {total} Participanten hu matgemaach",
+    "ongoingPendingLabel": "Waarden op anerer fir matzemaachen",
+    "joinableLabel": "Kann matgemaach ginn",
+    "inProgressLabel": "Virdru fäerdeg",
+    "availableLabel": "Aktivitéit erstellen",
+    "rateActivityTitle": "Wéi war dës Aktivitéit?",
+    "rateActivityCommentHint": "Kommentar derbäisetzen (fakultativ)",
+    "rateActivityCommentRejected": "Äre Kommentar konnt net gepost ginn. Probéiert en ëmzeschreiwen, oder schéckt Är Bewäertung ouni Kommentar of.",
+    "rateActivityThanks": "Merci fir Äre Feedback!",
+    "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewäertung} other{{count} Bewäertungen}})",
     "newActivityBadge": "NEI"
 }

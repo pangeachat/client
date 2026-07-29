@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-29 10:55:29.844240",
+    "@@last_modified": "2026-07-29 12:08:25.438295",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10656,5 +10656,16 @@
     "activityActions": "活動動作",
     "ongoing": "進行中",
     "emptyInviteSearchHint": "搵唔到你要搵嘅人？佢哋可能需要喺設定中允許佢哋嘅個人檔案被搜尋。請檢查設定中嘅「編輯個人檔案」。",
+    "activityPreviewLabel": "活動預覽：",
+    "participantRowLabel": "{total} 位參加者中已有 {joined} 位加入",
+    "ongoingPendingLabel": "正在等候其他人加入",
+    "joinableLabel": "可加入",
+    "inProgressLabel": "之前已完成",
+    "availableLabel": "建立活動",
+    "rateActivityTitle": "今次活動點樣？",
+    "rateActivityCommentHint": "新增評論（可選）",
+    "rateActivityCommentRejected": "無法發佈你的評論。請嘗試重新措辭，或不帶評論提交你的評分。",
+    "rateActivityThanks": "感謝你的意見！",
+    "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 個評分} other{{count} 個評分}}）",
     "newActivityBadge": "新"
 }

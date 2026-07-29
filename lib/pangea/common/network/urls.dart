@@ -80,6 +80,11 @@ class PApiUrls {
   /// Query: min_lat, min_lng, max_lat, max_lng, l2?, cefr_level?, l1?, limit?.
   static String activitiesBbox = "${PApiUrls._choreoRoute}/v2/activities/bbox";
 
+  /// Thumbs up/down on an activity (one opinion per user; server upserts).
+  /// `POST /choreo/v2/activity/rate` — not paywalled. 403 = self-rating,
+  /// 422 = comment rejected by moderation.
+  static String activityRate = "${PApiUrls._choreoRoute}/v2/activity/rate";
+
   static String tokenFeedback = "${PApiUrls._choreoRoute}/token/feedback";
   static String tokenFeedbackV2 = "${PApiUrls._choreoRoute}/token/feedback_v2";
 

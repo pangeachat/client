@@ -43,6 +43,16 @@ Saving a completed session is automatic — the design (what saving means, when 
 
 The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart)) counts saved sessions only. In-session star displays and per-activity progress on cards stay live — only the profile total waits for the save.
 
+## Rating an activity
+
+Once a learner's own role is finished ("I'm done!", or an admin's "End for all"), a rating card pins to the bottom of the chat, above the finished-status bar: thumbs up/down, an optional comment, submit, and a dismiss X ([`ActivityRatingCard`](../../lib/routes/chat/activity_sessions/activity_rating_card.dart)). The "must have played" gate is client-trusted for v1 — a finished role is the evidence of play. Three rules govern when it shows ([#7194](https://github.com/pangeachat/client/issues/7194)):
+
+- **A submitted rating is final for that version.** The device remembers the (activity, pinned version) it rated ([`ActivityRatingStore`](../../lib/features/activity_sessions/activity_rating_store.dart)) and the card never reappears for it. Dismissing with the X hides it for the current view only — reopening the finished, unrated session brings it back.
+- **A newer version re-prompts.** The server keeps ONE opinion per (user, activity) and upserts, so re-rating a changed activity overwrites the learner's previous opinion — the aggregate reflects each rater's latest take, not per-version scores. The session's pinned `version_id` travels with the rating as analytics metadata only.
+- **Failures degrade softly.** A comment rejected by post-time moderation (422) keeps the card open to reword or submit rating-only — the rating was not recorded. An owner rating their own activity (403) hides the card quietly and doesn't re-prompt.
+
+The aggregate — an up-fraction and rater count served with the single-activity fetch — renders as a small meter in the start page's top-right app-bar corner, tinted from light red (all down) to light purple (all up), and is hidden until the activity has at least one rating ([`ActivityRatingMeter`](../../lib/routes/chat/activity_sessions/activity_rating_meter.dart)). Cards deliberately don't show it: the thin-card fields exist (`QuestActivityCard`), but the signal isn't important at card altitude.
+
 ## Downloading the transcript
 
 The session's app bar carries a "More" (⋮) menu ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)). A **live** session offers Invite, Leave, and Download; a **completed** session — finished for everyone (`isActivityFinished`) — keeps the menu but offers **Download only**, since Invite and Leave no longer apply once the session is over. The gate is the session ending for all, _not_ the learner's own role archiving (`hasArchivedActivity`): an observer who never took a role, or a learner who finished while others played on, is still looking at a session that has ended, and the archived-role state is both narrower and reached only after auto-save. Completing a session must not strip the menu: a learner returning to a finished session still needs to export it. (Regular, non-activity chats expose the same export from the chat-details button row, not this menu.)

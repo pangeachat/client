@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-29 10:55:23.009891",
+    "@@last_modified": "2026-07-29 12:08:20.263606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Аракеттер",
     "ongoing": "Уланып жатат",
     "emptyInviteSearchHint": "Издеген адамыңызды таба албай жатасызбы? Алар профилин издөөдө табылышына уруксат бериши керек болушу мүмкүн. Жөндөөлөрдөн Профилди түзөтүүнү текшериңиз.",
+    "activityPreviewLabel": "Иш-аракетти алдын ала көрүү: ",
+    "participantRowLabel": "{total} катышуучунун {joined} кошулду",
+    "ongoingPendingLabel": "Башкалардын кошулушун күтүүдө",
+    "joinableLabel": "Кошулууга болот",
+    "inProgressLabel": "Буга чейин аяктаган",
+    "availableLabel": "Иш-аракет түзүү",
+    "rateActivityTitle": "Бул иш-аракет кандай болду?",
+    "rateActivityCommentHint": "Комментарий кошуу (милдеттүү эмес)",
+    "rateActivityCommentRejected": "Комментарийиңиз жарыяланган жок. Кайра жазып көрүңүз же комментарийсиз баа бериңиз.",
+    "rateActivityThanks": "Пикириңиз үчүн рахмат!",
+    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баа} other{{count} баа}})",
     "newActivityBadge": "ЖАҢЫ"
 }

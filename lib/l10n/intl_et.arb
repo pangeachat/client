@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-29 10:55:20.634222",
+    "@@last_modified": "2026-07-29 12:08:17.499276",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,16 @@
     "activityActions": "Tegevuse toimingud",
     "ongoing": "Käimas",
     "emptyInviteSearchHint": "Ei leia otsitavat? Võimalik, et nad peavad lubama oma profiili otsingus leidmise. Kontrollige seadete jaotist „Muuda profiili”.",
+    "activityPreviewLabel": "Tegevuse eelvaade: ",
+    "participantRowLabel": "{joined} osalejat {total}-st on liitunud",
+    "ongoingPendingLabel": "Ootan teiste liitumist",
+    "joinableLabel": "Liitutav",
+    "inProgressLabel": "Varem lõpetatud",
+    "availableLabel": "Loo tegevus",
+    "rateActivityTitle": "Kuidas see tegevus oli?",
+    "rateActivityCommentHint": "Lisa kommentaar (valikuline)",
+    "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
+    "rateActivityThanks": "Täname tagasiside eest!",
+    "activityRatingMeterLabel": "{percent}% positiivne ({count, plural, =1{1 hinnang} other{{count} hinnangut}})",
     "newActivityBadge": "UUS"
 }

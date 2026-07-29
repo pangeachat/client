@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_rating_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
@@ -78,6 +79,7 @@ void main() async {
     GetStorage.init("subscription_storage"),
     GetStorage.init('class_storage'),
     GetStorage.init('user_invite_storage'),
+    GetStorage.init(ActivityRatingStore.storageKey),
   ];
   await Future.wait(initFutures);
   // Pangea#

@@ -1,16 +1,14 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
@@ -126,20 +124,14 @@ class VocabAnalyticsListView extends StatelessWidget {
         .cast<Widget>()
         .toList();
 
-    final constructParam = GoRouterState.of(
-      context,
-    ).pathParameters['construct'];
-
-    ConstructIdentifier? selectedConstruct;
-    if (constructParam != null) {
-      try {
-        selectedConstruct = ConstructIdentifier.fromJson(
-          jsonDecode(constructParam),
-        );
-      } catch (e) {
-        debugPrint("Invalid construct ID format in route: $constructParam");
-      }
-    }
+    // Highlight the tile whose construct detail is open, derived from the open
+    // `vocab:` token in the workspace URL — the same way the chat list reads
+    // its active room (routing.instructions.md; #7977). The list is the detail's
+    // registry master, so it reads what is open rather than storing a second
+    // copy of the construct in its own token.
+    final selectedConstruct = activeConstructDetailFor(
+      GoRouterState.of(context).uri,
+    );
 
     final filteredByLevel = _filterByLevel(vocab);
     final filteredBySearch = _filterBySearch(filteredByLevel);

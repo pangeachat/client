@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-29 10:55:28.925874",
+    "@@last_modified": "2026-07-29 12:08:24.389924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2043,5 +2043,16 @@
     "activityActions": "پائالىيەت ھەرىكەتلىرى",
     "ongoing": "داۋاملىق",
     "emptyInviteSearchHint": "ئىزدەۋاتقان ئادىمىڭىزنى تاپالمىدىڭىزمۇ؟ ئۇلار ئۆزىنىڭ پروفىلىنى ئىزدەش نەتىجىسىدە كۆرۈنۈشكە رۇخسەت قىلمىغان بولۇشى مۇمكىن. تەڭشەكلەردىكى پروفىلنى تەھرىرلەش بۆلىكىنى تەكشۈرۈڭ.",
+    "activityPreviewLabel": "پائالىيەت ئالدىن كۆرۈش: ",
+    "participantRowLabel": "{total} قاتناشقۇچىدىن {joined} كىشى قاتناشتى",
+    "ongoingPendingLabel": "باشقىلارنىڭ قاتنىشىشىنى كۈتۈۋاتىدۇ",
+    "joinableLabel": "قاتنىشالايدۇ",
+    "inProgressLabel": "ئىلگىرى تاماملىنىپ بولغان",
+    "availableLabel": "پائالىيەت قۇرۇش",
+    "rateActivityTitle": "بۇ پائالىيەت قانداقراق بولدى؟",
+    "rateActivityCommentHint": "ئىزاھات قوشۇش (ئىختىيارىي)",
+    "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
+    "rateActivityThanks": "پىكىر-تەكلىپىڭىزگە رەھمەت!",
+    "activityRatingMeterLabel": "{percent}% ئىجابىي ({count, plural, =1{1 باھا} other{{count} باھا}})",
     "newActivityBadge": "يېڭى"
 }

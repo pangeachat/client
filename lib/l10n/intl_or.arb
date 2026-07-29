@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-29 10:55:25.579598",
+    "@@last_modified": "2026-07-29 12:08:21.585248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2043,5 +2043,16 @@
     "activityActions": "କାର୍ଯ୍ୟକଳାପ କାର୍ଯ୍ୟଗୁଡ଼ିକ",
     "ongoing": "ଚାଲୁଅଛି",
     "emptyInviteSearchHint": "ଆପଣ ଯାହାଙ୍କୁ ଖୋଜୁଛନ୍ତି ତାଙ୍କୁ ପାଉ ନାହାଁନ୍ତି? ସେମାନଙ୍କୁ ସେମାନଙ୍କର ପ୍ରୋଫାଇଲ୍ ସର୍ଚ୍ଚରେ ମିଳିବାକୁ ଅନୁମତି ଦେବାକୁ ପଡିପାରେ। ସେଟିଂସରେ ପ୍ରୋଫାଇଲ୍ ଏଡିଟ୍ କରନ୍ତୁ ଯାଞ୍ଚ କରନ୍ତୁ।",
+    "activityPreviewLabel": "କାର୍ଯ୍ୟକଳାପର ପୂର୍ବାବଲୋକନ: ",
+    "participantRowLabel": "{total} ଜଣ ଅଂଶଗ୍ରହଣକାରୀଙ୍କ ମଧ୍ୟରୁ {joined} ଜଣ ଯୋଗ ଦେଇଛନ୍ତି",
+    "ongoingPendingLabel": "ଅନ୍ୟମାନଙ୍କ ଯୋଗଦାନକୁ ଅପେକ୍ଷା କରାଯାଇଛି",
+    "joinableLabel": "ଯୋଗଦାନଯୋଗ୍ୟ",
+    "inProgressLabel": "ପୂର୍ବରୁ ସମାପ୍ତ ହୋଇଛି",
+    "availableLabel": "କାର୍ଯ୍ୟକଳାପ ତିଆରି କରନ୍ତୁ",
+    "rateActivityTitle": "ଏହି କାର୍ଯ୍ୟକଳାପଟି କିପରି ଥିଲା?",
+    "rateActivityCommentHint": "ଏକ ମନ୍ତବ୍ୟ ଯୋଗ କରନ୍ତୁ (ବୈକଳ୍ପିକ)",
+    "rateActivityCommentRejected": "ଆପଣଙ୍କ ମନ୍ତବ୍ୟ ପୋଷ୍ଟ ହୋଇପାରିଲା ନାହିଁ। ଏହାକୁ ଅନ୍ୟ ଶବ୍ଦରେ ଲେଖିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ମନ୍ତବ୍ୟ ବିନା ଆପଣଙ୍କ ମୂଲ୍ୟାଙ୍କନ ଦାଖଲ କରନ୍ତୁ।",
+    "rateActivityThanks": "ଆପଣଙ୍କ ମତାମତ ପାଇଁ ଧନ୍ୟବାଦ!",
+    "activityRatingMeterLabel": "{percent}% ସକାରାତ୍ମକ ({count, plural, =1{1 ମୂଲ୍ୟାଙ୍କନ} other{{count} ମୂଲ୍ୟାଙ୍କନ}})",
     "newActivityBadge": "ନୂଆ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-29 10:55:27.072576",
+    "@@last_modified": "2026-07-29 12:08:22.580569",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10667,5 +10667,16 @@
     "activityActions": "Действия активности",
     "ongoing": "Продолжается",
     "emptyInviteSearchHint": "Не можете найти того, кого ищете? Возможно, им нужно разрешить поиск своего профиля. Проверьте «Изменить профиль» в настройках.",
+    "activityPreviewLabel": "Предварительный просмотр активности: ",
+    "participantRowLabel": "{joined} из {total} участников присоединились",
+    "ongoingPendingLabel": "Ожидание присоединения других",
+    "joinableLabel": "Можно присоединиться",
+    "inProgressLabel": "Ранее завершено",
+    "availableLabel": "Создать активность",
+    "rateActivityTitle": "Как вам это занятие?",
+    "rateActivityCommentHint": "Добавить комментарий (необязательно)",
+    "rateActivityCommentRejected": "Ваш комментарий не удалось опубликовать. Попробуйте перефразировать его или отправьте оценку без комментария.",
+    "rateActivityThanks": "Спасибо за ваш отзыв!",
+    "activityRatingMeterLabel": "{percent}% положительных ({count, plural, =1{1 оценка} other{{count} оценок}})",
     "newActivityBadge": "НОВОЕ"
 }

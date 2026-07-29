@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-29 10:55:23.386619",
+    "@@last_modified": "2026-07-29 12:08:18.936077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Aðgerðir virkni",
     "ongoing": "Í gangi",
     "emptyInviteSearchHint": "Finnurðu ekki þann sem þú ert að leita að? Það gæti verið að viðkomandi þurfi að leyfa að prófíllinn hans finnist í leit. Athugaðu Breyta prófíl í Stillingum.",
+    "activityPreviewLabel": "Forskoðun virkni: ",
+    "participantRowLabel": "{joined} af {total} þátttakendum hafa gengið til liðs",
+    "ongoingPendingLabel": "Bíð eftir að aðrir gangi til liðs",
+    "joinableLabel": "Hægt að taka þátt",
+    "inProgressLabel": "Lokið áður",
+    "availableLabel": "Búa til virkni",
+    "rateActivityTitle": "Hvernig fannst þér þessi æfing?",
+    "rateActivityCommentHint": "Bæta við athugasemd (valfrjálst)",
+    "rateActivityCommentRejected": "Ekki tókst að birta athugasemdina þína. Reyndu að orða hana upp á nýtt, eða sendu inn einkunnina þína án athugasemdar.",
+    "rateActivityThanks": "Takk fyrir álit þitt!",
+    "activityRatingMeterLabel": "{percent}% jákvætt ({count, plural, =1{1 einkunn} other{{count} einkunnir}})",
     "newActivityBadge": "NÝTT"
 }

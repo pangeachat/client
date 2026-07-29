@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-29 10:55:21.150874",
+    "@@last_modified": "2026-07-29 12:08:17.954090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Nā hana hana",
     "ongoing": "Ke hoʻomau nei",
     "emptyInviteSearchHint": "ʻAʻole hiki ke loaʻa ka mea āu e ʻimi nei? Pono paha lākou e ʻae i ko lākou ʻaoʻao e loaʻa ma ka huli. E nānā i ka Hoʻoponopono ʻAoʻao ma nā Koho.",
+    "activityPreviewLabel": "Nānā mua hana: ",
+    "participantRowLabel": "{joined} mai loko mai o {total} mau mea komo i hui pū",
+    "ongoingPendingLabel": "Ke kali nei i nā mea ʻē aʻe e hui pū",
+    "joinableLabel": "Hiki ke hui pū",
+    "inProgressLabel": "Ua hoʻopau ʻia ma mua",
+    "availableLabel": "Hana i ka hana",
+    "rateActivityTitle": "Pehea kēia hana?",
+    "rateActivityCommentHint": "Hoʻohui i manaʻo (koho)",
+    "rateActivityCommentRejected": "ʻAʻole hiki ke kau ʻia kāu manaʻo. E hoʻāʻo e hoʻoponopono hou, a i ʻole e waiho i kāu helu me ka manaʻo ʻole.",
+    "rateActivityThanks": "Mahalo no kou manaʻo!",
+    "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})",
     "newActivityBadge": "HOU"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -33,15 +34,32 @@ class WorldUserCluster extends StatelessWidget {
   const WorldUserCluster({super.key});
 
   @override
-  Widget build(BuildContext context) => UserClusterViewModelBuilder(
-    builder: (context, viewModel) =>
-        WorldUserClusterInternal(viewModel: viewModel),
-  );
+  Widget build(BuildContext context) {
+    // Which analytics panel is open — chrome-level derivation from the URL, so
+    // the tracker whose panel is showing stays highlighted (#7977). Read here
+    // (not below) so the plain-values internals stay route-free and testable.
+    final selectedTab = activeAnalyticsTabFor(GoRouterState.of(context).uri);
+    return UserClusterViewModelBuilder(
+      builder: (context, viewModel) => WorldUserClusterInternal(
+        viewModel: viewModel,
+        selectedTab: selectedTab,
+      ),
+    );
+  }
 }
 
 class WorldUserClusterInternal extends StatelessWidget {
   final UserClusterViewModel viewModel;
-  const WorldUserClusterInternal({super.key, required this.viewModel});
+
+  /// The analytics metric whose panel is open, highlighted in the pill; null
+  /// when none is open ([activeAnalyticsTabFor]).
+  final ProgressIndicatorEnum? selectedTab;
+
+  const WorldUserClusterInternal({
+    super.key,
+    required this.viewModel,
+    this.selectedTab,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +88,7 @@ class WorldUserClusterInternal extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                _PowerupsPill(viewModel: viewModel),
+                _PowerupsPill(viewModel: viewModel, selectedTab: selectedTab),
                 if (l2 != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -152,7 +170,8 @@ class ClusterAvatar extends StatelessWidget {
 /// level medal overhanging its base. Follows Figma `AvatarLangFlags`.
 class _PowerupsPill extends StatelessWidget {
   final UserClusterViewModel viewModel;
-  const _PowerupsPill({required this.viewModel});
+  final ProgressIndicatorEnum? selectedTab;
+  const _PowerupsPill({required this.viewModel, this.selectedTab});
 
   static const double _xpStroke = 5.0;
   static const double _innerRadius = 20.0;
@@ -217,6 +236,9 @@ class _PowerupsPill extends StatelessWidget {
                                     return ClusterTrackerButton(
                                       indicator: ProgressIndicatorEnum.stars,
                                       count: stars,
+                                      selected:
+                                          selectedTab ==
+                                          ProgressIndicatorEnum.stars,
                                       onTap: () => viewModel.openAnalytics(
                                         context,
                                         AnalyticsPanelTab.sessions,
@@ -227,6 +249,9 @@ class _PowerupsPill extends StatelessWidget {
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.morphsUsed,
                                   count: grammar,
+                                  selected:
+                                      selectedTab ==
+                                      ProgressIndicatorEnum.morphsUsed,
                                   onTap: () => viewModel.openAnalytics(
                                     context,
                                     AnalyticsPanelTab.grammar,
@@ -235,6 +260,9 @@ class _PowerupsPill extends StatelessWidget {
                                 ClusterTrackerButton(
                                   indicator: ProgressIndicatorEnum.wordsUsed,
                                   count: vocab,
+                                  selected:
+                                      selectedTab ==
+                                      ProgressIndicatorEnum.wordsUsed,
                                   onTap: () => viewModel.openAnalytics(
                                     context,
                                     AnalyticsPanelTab.vocab,
@@ -257,6 +285,7 @@ class _PowerupsPill extends StatelessWidget {
                       levelUpdates: viewModel.levelUpdates,
                       child: ClusterLevelMedal(
                         level: level,
+                        selected: selectedTab == ProgressIndicatorEnum.level,
                         onTap: () => viewModel.openLevel(context),
                       ),
                     ),
@@ -292,6 +321,12 @@ class ClusterTrackerButton extends StatefulWidget {
   final int count;
   final VoidCallback onTap;
 
+  /// Whether this tracker's analytics panel is the one currently open — then it
+  /// wears a persistent highlight (a sticky version of its hover wash) so the
+  /// pill shows what is on screen (#7977). Ignored while a live practice badge
+  /// occupies the tracker.
+  final bool selected;
+
   /// Sizing knobs so the narrow analytics bar can render the compact variant
   /// (the Figma mobile pill); web keeps these defaults.
   final double horizontalPadding;
@@ -302,6 +337,7 @@ class ClusterTrackerButton extends StatefulWidget {
     required this.indicator,
     required this.count,
     required this.onTap,
+    this.selected = false,
     this.horizontalPadding = 16,
     this.iconSize = 24,
     this.fontSize = 16,
@@ -316,6 +352,7 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
   ProgressIndicatorEnum get indicator => widget.indicator;
   int get count => widget.count;
   VoidCallback get onTap => widget.onTap;
+  bool get selected => widget.selected;
   double get horizontalPadding => widget.horizontalPadding;
   double get iconSize => widget.iconSize;
   double get fontSize => widget.fontSize;
@@ -382,6 +419,14 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
                         ),
                         borderRadius: BorderRadius.circular(100),
                       )
+                    // Open-panel highlight: a persistent version of the hover
+                    // wash on the same padded geometry, so the tracker whose
+                    // analytics is showing stays lit (#7977).
+                    : selected
+                    ? BoxDecoration(
+                        color: AppConfig.goldByTheme(context).withAlpha(50),
+                        borderRadius: BorderRadius.circular(100),
+                      )
                     : null,
                 padding: EdgeInsets.symmetric(
                   horizontal: horizontalPadding,
@@ -423,9 +468,14 @@ class ClusterLevelMedal extends StatelessWidget {
   final int level;
   final VoidCallback onTap;
 
+  /// Whether the Level analytics tab is open — then the medal wears the same
+  /// persistent highlight the trackers use (#7977).
+  final bool selected;
+
   const ClusterLevelMedal({
     required this.level,
     required this.onTap,
+    this.selected = false,
     super.key,
   });
 
@@ -446,9 +496,17 @@ class ClusterLevelMedal extends StatelessWidget {
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: LevelRibbon(height: 44, level: level),
+          child: Ink(
+            decoration: selected
+                ? BoxDecoration(
+                    color: AppConfig.goldByTheme(context).withAlpha(50),
+                    borderRadius: BorderRadius.circular(100.0),
+                  )
+                : null,
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: LevelRibbon(height: 44, level: level),
+            ),
           ),
         ),
       ),

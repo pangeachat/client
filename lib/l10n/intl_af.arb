@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-29 10:55:19.006232",
+    "@@last_modified": "2026-07-29 12:08:16.409542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Aktiwiteitaksies",
     "ongoing": "Deurlopend",
     "emptyInviteSearchHint": "Kan jy nie vind wie jy soek nie? Hulle moet dalk toelaat dat hul profiel in soektogte gevind word. Gaan na Wysig Profiel in Instellings.",
+    "activityPreviewLabel": "Aktiwiteitvoorskou: ",
+    "participantRowLabel": "{joined} uit {total} deelnemers het aangesluit",
+    "ongoingPendingLabel": "Wag vir ander om aan te sluit",
+    "joinableLabel": "Aansluitbaar",
+    "inProgressLabel": "Voorheen voltooi",
+    "availableLabel": "Skep aktiwiteit",
+    "rateActivityTitle": "Hoe was hierdie aktiwiteit?",
+    "rateActivityCommentHint": "Voeg 'n opmerking by (opsioneel)",
+    "rateActivityCommentRejected": "Jou opmerking kon nie geplaas word nie. Probeer dit herformuleer, of dien jou gradering sonder 'n opmerking in.",
+    "rateActivityThanks": "Dankie vir jou terugvoer!",
+    "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 gradering} other{{count} graderings}})",
     "newActivityBadge": "NUUT"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-29 10:55:22.149671",
+    "@@last_modified": "2026-07-29 12:08:18.904202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Omume ọrụ",
     "ongoing": "Na-aga n'ihu",
     "emptyInviteSearchHint": "Ị chọtaghị onye ị na-achọ? Ha nwere ike ịkwesịrị ikwe ka a chọta profaịlụ ha na nchọta. Lelee Dezie Profaịlụ na Ntọala.",
+    "activityPreviewLabel": "Nlele ọrụ: ",
+    "participantRowLabel": "Ndị sonyere {joined} n'ime {total} esonyela",
+    "ongoingPendingLabel": "Na-eche ka ndị ọzọ sonye",
+    "joinableLabel": "Enwere ike isonye",
+    "inProgressLabel": "Emechara na mbụ",
+    "availableLabel": "Mepụta ọrụ",
+    "rateActivityTitle": "Kedu ka ihe omume a siri dị?",
+    "rateActivityCommentHint": "Tinye okwu (nhọrọ)",
+    "rateActivityCommentRejected": "Enweghị ike izipu okwu gị. Gbalịa ịgbanwe ya, ma ọ bụ ziga ọkwa gị na-enweghị okwu.",
+    "rateActivityThanks": "Daalụ maka nzaghachi gị!",
+    "activityRatingMeterLabel": "{percent}% dị mma ({count, plural, =1{1 ọkwa} other{{count} ọkwa}})",
     "newActivityBadge": "ỌHỤRỤ"
 }

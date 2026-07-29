@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-29 10:55:24.966066",
+    "@@last_modified": "2026-07-29 12:08:21.903302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Zochita",
     "ongoing": "Ikuchitika",
     "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda.",
-    "newActivityBadge": "CHATSO"
+    "activityPreviewLabel": "Chithunzithunzi cha zochitika: ",
+    "participantRowLabel": "{joined} mwa {total} omwe atenga nawo mbali alowa",
+    "ongoingPendingLabel": "Kudikirira ena kuti alowe",
+    "joinableLabel": "Olowa",
+    "inProgressLabel": "Zamalizidwa kale",
+    "availableLabel": "Pangani zochitika",
+    "rateActivityTitle": "Zimene munachita zinali bwanji?",
+    "rateActivityCommentHint": "Onjezani ndemanga (ngati mukufuna)",
+    "rateActivityCommentRejected": "Ndemanga yanu sinathe kutumizidwa. Yesani kusintha mawu, kapena tumizani ndemanga yanu popanda ndemanga.",
+    "rateActivityThanks": "Zikomo chifukwa cha malingaliro anu!",
+    "activityRatingMeterLabel": "{percent}% yabwino ({count, plural, =1{1 ndemanga} other{{count} ndemanga}})",
+    "newActivityBadge": "CHATSWOPANO"
 }

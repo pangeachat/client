@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-29 10:55:21.699864",
+    "@@last_modified": "2026-07-29 12:08:18.064123",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,16 @@
     "activityActions": "Accións de actividade",
     "ongoing": "En curso",
     "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración.",
+    "activityPreviewLabel": "Vista previa da actividade: ",
+    "participantRowLabel": "{joined} de {total} participantes uníronse",
+    "ongoingPendingLabel": "Agardando a que se unan outros",
+    "joinableLabel": "Dispoñible para unirse",
+    "inProgressLabel": "Completado previamente",
+    "availableLabel": "Crear actividade",
+    "rateActivityTitle": "Que che pareceu esta actividade?",
+    "rateActivityCommentHint": "Engadir un comentario (opcional)",
+    "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
+    "rateActivityThanks": "Grazas polos teus comentarios!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})",
     "newActivityBadge": "NOVO"
 }

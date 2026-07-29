@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-29 10:55:18.135123",
+    "@@last_modified": "2026-07-29 12:08:16.340893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2043,5 +2043,16 @@
     "activityActions": "Действия по активността",
     "ongoing": "Продължава",
     "emptyInviteSearchHint": "Не можете да намерите човека, когото търсите? Може да се наложи да разреши профилът му да бъде намиран при търсене. Проверете „Редактиране на профил“ в „Настройки“.",
+    "activityPreviewLabel": "Преглед на дейността: ",
+    "participantRowLabel": "{joined} от {total} участници се присъединиха",
+    "ongoingPendingLabel": "Изчакване на други да се присъединят",
+    "joinableLabel": "Може да се присъедините",
+    "inProgressLabel": "Предишно завършени",
+    "availableLabel": "Създаване на дейност",
+    "rateActivityTitle": "Как беше това занимание?",
+    "rateActivityCommentHint": "Добавете коментар (по избор)",
+    "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
+    "rateActivityThanks": "Благодарим за обратната връзка!",
+    "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})",
     "newActivityBadge": "НОВО"
 }
