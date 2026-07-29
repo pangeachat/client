@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-27 15:35:57.537382",
+    "@@last_modified": "2026-07-29 10:04:00.533006",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Hoʻopau i ka waihona",
     "activityActions": "Nā hana hana",
     "ongoing": "Ke hoʻomau nei",
-    "emptyInviteSearchHint": "ʻAʻole hiki ke loaʻa ka mea āu e ʻimi nei? Pono paha lākou e ʻae i ko lākou ʻaoʻao e loaʻa ma ka huli. E nānā i ka Hoʻoponopono ʻAoʻao ma nā Koho."
+    "emptyInviteSearchHint": "ʻAʻole hiki ke loaʻa ka mea āu e ʻimi nei? Pono paha lākou e ʻae i ko lākou ʻaoʻao e loaʻa ma ka huli. E nānā i ka Hoʻoponopono ʻAoʻao ma nā Koho.",
+    "activityPreviewLabel": "Nānā mua hana: ",
+    "participantRowLabel": "{joined} mai loko mai o {total} mau mea komo i hui pū",
+    "ongoingPendingLabel": "Ke kali nei i nā mea ʻē aʻe e hui pū",
+    "joinableLabel": "Hiki ke hui pū",
+    "inProgressLabel": "Ua hoʻopau ʻia ma mua",
+    "availableLabel": "Hana i ka hana"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-27 15:36:01.942812",
+    "@@last_modified": "2026-07-29 10:04:06.620355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Lukk arkiv",
     "activityActions": "Aktivitetshandlinger",
     "ongoing": "Pågående",
-    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger."
+    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger.",
+    "activityPreviewLabel": "Forhåndsvisning av aktivitet: ",
+    "participantRowLabel": "{joined} av {total} deltakere har blitt med",
+    "ongoingPendingLabel": "Venter på at andre skal bli med",
+    "joinableLabel": "Kan bli med",
+    "inProgressLabel": "Tidligere fullført",
+    "availableLabel": "Opprett aktivitet"
 }

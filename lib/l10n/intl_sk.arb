@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-27 15:36:03.601911",
+    "@@last_modified": "2026-07-29 10:04:08.382119",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,11 @@
     "closeArchive": "Zavrieť archív",
     "activityActions": "Akcie aktivity",
     "ongoing": "Prebieha",
-    "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach."
+    "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach.",
+    "activityPreviewLabel": "Ukážka aktivity: ",
+    "participantRowLabel": "Pripojilo sa {joined} z {total} účastníkov",
+    "ongoingPendingLabel": "Čaká sa na pripojenie ostatných",
+    "joinableLabel": "Dostupné na pripojenie",
+    "inProgressLabel": "Predtým dokončené",
+    "availableLabel": "Vytvoriť aktivitu"
 }

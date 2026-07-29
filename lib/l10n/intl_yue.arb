@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-27 15:36:06.552992",
+    "@@last_modified": "2026-07-29 10:04:12.838296",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10655,5 +10655,11 @@
     "closeArchive": "關閉存檔",
     "activityActions": "活動動作",
     "ongoing": "進行中",
-    "emptyInviteSearchHint": "搵唔到你要搵嘅人？佢哋可能需要喺設定中允許佢哋嘅個人檔案被搜尋。請檢查設定中嘅「編輯個人檔案」。"
+    "emptyInviteSearchHint": "搵唔到你要搵嘅人？佢哋可能需要喺設定中允許佢哋嘅個人檔案被搜尋。請檢查設定中嘅「編輯個人檔案」。",
+    "activityPreviewLabel": "活動預覽：",
+    "participantRowLabel": "{total} 位參加者中已有 {joined} 位加入",
+    "ongoingPendingLabel": "正在等候其他人加入",
+    "joinableLabel": "可加入",
+    "inProgressLabel": "之前已完成",
+    "availableLabel": "建立活動"
 }

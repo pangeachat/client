@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-27 15:36:05.900209",
+    "@@last_modified": "2026-07-29 10:04:11.235287",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9696,5 +9696,11 @@
     "closeArchive": "Arxivni yopish",
     "activityActions": "Faoliyat harakatlari",
     "ongoing": "Davom etmoqda",
-    "emptyInviteSearchHint": "Qidirayotganingizni topa olmayapsizmi? Ular oʻz profillarini qidiruvda topishga ruxsat berishlari kerak boʻlishi mumkin. Sozlamalardagi Profilni tahrirlash boʻlimini tekshiring."
+    "emptyInviteSearchHint": "Qidirayotganingizni topa olmayapsizmi? Ular oʻz profillarini qidiruvda topishga ruxsat berishlari kerak boʻlishi mumkin. Sozlamalardagi Profilni tahrirlash boʻlimini tekshiring.",
+    "activityPreviewLabel": "Faoliyatni oldindan ko'rish: ",
+    "participantRowLabel": "{total} ishtirokchidan {joined} nafari qo'shildi",
+    "ongoingPendingLabel": "Boshqalarning qo'shilishini kuting",
+    "joinableLabel": "Qo'shilish mumkin",
+    "inProgressLabel": "Avvalroq yakunlangan",
+    "availableLabel": "Faoliyat yaratish"
 }
