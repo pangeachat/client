@@ -19,15 +19,13 @@ class _StubCourseTileContent extends AddCourseTileContent {
   @override
   final bool invited;
 
-  final int? memberCount;
-
-  _StubCourseTileContent({required this.invited, this.memberCount = 12});
+  _StubCourseTileContent({required this.invited});
 
   @override
   String title(L10n l10n) => 'Elementary German I';
 
   @override
-  int? get members => memberCount;
+  int? get members => 12;
 
   @override
   Future<Event?>? get unreadCoursePingEvent => Future.value(null);
@@ -88,30 +86,31 @@ void main() {
     );
   });
 
-  testWidgets('invited course badge is gold and envelope-shaped, not an error', (
-    tester,
-  ) async {
-    await pumpTile(tester, invited: true);
+  testWidgets(
+    'invited course badge is gold and envelope-shaped, not an error',
+    (tester) async {
+      await pumpTile(tester, invited: true);
 
-    expect(find.byType(InvitedCourseBadge), findsOneWidget);
+      expect(find.byType(InvitedCourseBadge), findsOneWidget);
 
-    final context = tester.element(find.byType(AddCourseTile));
-    final icon = tester.widget<Icon>(
-      find.descendant(
-        of: find.byType(InvitedCourseBadge),
-        matching: find.byType(Icon),
-      ),
-    );
+      final context = tester.element(find.byType(AddCourseTile));
+      final icon = tester.widget<Icon>(
+        find.descendant(
+          of: find.byType(InvitedCourseBadge),
+          matching: find.byType(Icon),
+        ),
+      );
 
-    expect(icon.icon, Icons.mail);
-    expect(icon.icon, isNot(Icons.error_outline));
-    expect(icon.color, AppConfig.onGoldByTheme(context));
-    expect(
-      icon.color,
-      isNot(Theme.of(context).colorScheme.error),
-      reason: 'an invitation is an opportunity, not a problem (#7636)',
-    );
-  });
+      expect(icon.icon, Icons.mail);
+      expect(icon.icon, isNot(Icons.error_outline));
+      expect(icon.color, AppConfig.onGoldByTheme(context));
+      expect(
+        icon.color,
+        isNot(Theme.of(context).colorScheme.error),
+        reason: 'an invitation is an opportunity, not a problem (#7636)',
+      );
+    },
+  );
 
   testWidgets('invited state is announced instead of the participant count', (
     tester,
