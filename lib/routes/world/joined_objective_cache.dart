@@ -106,11 +106,20 @@ class JoinedObjectiveCache {
       for (final room in client.joinedCourseRooms)
         room.coursePlan!.uuid: room.teacherMode,
     };
+    // A joined member's outline read carries the course room id, so the quest
+    // owner's private activities are included (membership-verified
+    // server-side; activities.instructions.md § Ownership, visibility, and
+    // removal).
+    final roomIds = <String, String>{
+      for (final room in client.joinedCourseRooms)
+        room.coursePlan!.uuid: room.id,
+    };
     return rebuild(
       modes.keys.toList(),
       outlineOf: (uuid) => _outlineFromQuest(
         uuid,
         pinnedByObjective: modes[uuid]?.pinnedActivitiesByObjective,
+        courseRoomId: roomIds[uuid],
       ),
       starsToUnlockOf: (uuid) =>
           modes[uuid]?.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective,
@@ -121,8 +130,12 @@ class JoinedObjectiveCache {
   static Future<CourseLoOutline> _outlineFromQuest(
     String uuid, {
     Map<String, List<String>>? pinnedByObjective,
+    String? courseRoomId,
   }) async {
-    final outlineResult = await QuestRepo.outline(uuid);
+    final outlineResult = await QuestRepo.outline(
+      uuid,
+      courseRoomId: courseRoomId,
+    );
     final outline = outlineResult.result;
     if (outline == null) {
       throw (outlineResult.error ?? MissingQuestException());

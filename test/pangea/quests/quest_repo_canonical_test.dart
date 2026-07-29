@@ -1,50 +1,88 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 
 void main() {
-  group('QuestRepo.loAtL2Where', () {
-    test('selects canonical rows only (#7604)', () {
-      final where = QuestRepo.loAtL2Where(['lo-1', 'lo-2'], 'es');
-      final clauses = where['and'] as List;
+  // The choreo `GET /choreo/quests/{id}/activities` entry shape. Canonical-only
+  // filtering and hidden/private gating are server-side now (org activities
+  // doc § Ownership, visibility, and removal) — these tests pin the client's
+  // parse of that response into cards and plans.
+  Map<String, dynamic> entry(String activityId, {List<String>? refs}) => {
+    'plan': {
+      'activity_id': activityId,
+      'title': 'En el Mercado',
+      'description': 'A visitor orders fruit at a market.',
+      'learning_objective': 'Greet politely and ask for prices.',
+      'mode': 'Roleplay',
+      'cefr_level': 'A2',
+      'l2': 'es',
+      'original_l1': 'en',
+      'coordinates': [-99.1332, 19.4326],
+      'user_id': '@teacher:pangea.chat',
+      'roles': [
+        {'role_id': 'cliente', 'name': 'Cliente'},
+        {'role_id': 'vendedor', 'name': 'Vendedor'},
+      ],
+      'goals': [
+        {
+          'goal': 'Saludar al vendedor',
+          'role_ids': ['cliente', 'vendedor'],
+          'phase': 'opener',
+        },
+      ],
+      'vocab': [
+        {'lemma': 'fruta', 'pos': 'NOUN'},
+      ],
+      'media': [],
+    },
+    'version_id': 'sig-$activityId',
+    'learning_objective_refs': refs ?? ['lo-1'],
+  };
 
-      // activities-v2 is a shared canonical+translation collection; without
-      // this clause every translation row of an activity matches too and each
-      // renders as its own card/pin. The contract requires `exists`, not
-      // equals-null (llm-base-handler-localization.instructions.md).
-      expect(
-        clauses,
-        anyElement(
-          equals({
-            'req.source_request_hash': {'exists': false},
-          }),
-        ),
-      );
+  group('QuestRepo.questActivityEntriesFromJson', () {
+    test('parses the activities list from the response body', () {
+      final entries = QuestRepo.questActivityEntriesFromJson({
+        'activities': [entry('act-1'), entry('act-2')],
+        'private_included': true,
+      });
+      expect(entries, hasLength(2));
+      expect((entries.first['plan'] as Map)['activity_id'], 'act-1');
     });
 
-    test('keeps the LO and l2 constraints', () {
-      final where = QuestRepo.loAtL2Where(['lo-1'], 'es');
-      final clauses = where['and'] as List;
+    test('tolerates malformed bodies', () {
+      expect(QuestRepo.questActivityEntriesFromJson(null), isEmpty);
+      expect(QuestRepo.questActivityEntriesFromJson([]), isEmpty);
       expect(
-        clauses,
-        anyElement(
-          equals({
-            'or': [
-              {
-                'learningObjectiveRefs': {'contains': 'lo-1'},
-              },
-            ],
-          }),
-        ),
+        QuestRepo.questActivityEntriesFromJson({'activities': 'x'}),
+        isEmpty,
       );
-      expect(
-        clauses,
-        anyElement(
-          equals({
-            'res.plan.l2': {'equals': 'es'},
-          }),
-        ),
+    });
+  });
+
+  group('QuestRepo.cmsDocShapeFromEntry', () {
+    test('adapts an entry to the shared card parser', () {
+      final card = QuestActivityCard.fromJson(
+        QuestRepo.cmsDocShapeFromEntry(entry('act-1', refs: ['lo-1', 'lo-2'])),
       );
+      expect(card.activityId, 'act-1');
+      expect(card.l2, 'es');
+      expect(card.learningObjectiveRefs, ['lo-1', 'lo-2']);
+      expect(card.point, isNotNull);
+      expect(card.roleCount, 2);
+    });
+
+    test('adapts an entry to the shared plan parser with a version pin', () {
+      final plan = activityPlanFromV2(
+        QuestRepo.cmsDocShapeFromEntry(entry('act-1')),
+      );
+      expect(plan.activityId, 'act-1');
+      // The choreo content-signature rides through so a session opened from
+      // the outline pins its version without a refetch.
+      expect(plan.versionId, 'sig-act-1');
+      expect(plan.roles, isNotNull);
+      expect(plan.roles?.length, 2);
     });
   });
 
