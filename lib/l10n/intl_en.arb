@@ -4788,5 +4788,13 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
+    "formLabel": "{name} form",
+    "@formLabel": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }
