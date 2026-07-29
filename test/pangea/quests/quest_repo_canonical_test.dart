@@ -82,7 +82,7 @@ void main() {
       // the outline pins its version without a refetch.
       expect(plan.versionId, 'sig-act-1');
       expect(plan.roles, isNotNull);
-      expect(plan.roles?.length, 2);
+      expect(plan.roles.length, 2);
     });
   });
 
