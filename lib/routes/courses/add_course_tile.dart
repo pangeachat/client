@@ -59,8 +59,8 @@ class AddCourseTile extends StatelessWidget {
                       avatar: content.imageUrl,
                       displayname: title,
                       size: 48.0,
-                      unreadCoursePingEvent: unreadCoursePingEvent!,
-                      courseChildrenIds: courseChildrenIds!,
+                      unreadCoursePingEvent: unreadCoursePingEvent,
+                      courseChildrenIds: courseChildrenIds,
                       invite: invited,
                     ),
                     Expanded(
