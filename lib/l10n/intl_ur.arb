@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-29 08:48:39.531088",
+    "@@last_modified": "2026-07-29 11:54:36.540781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2043,9 +2043,15 @@
     "activityActions": "سرگرمی کے اعمال",
     "ongoing": "جاری ہے",
     "emptyInviteSearchHint": "جسے آپ تلاش کر رہے ہیں وہ نہیں مل رہا؟ ہو سکتا ہے انہیں اپنی پروفائل کو تلاش میں دکھانے کی اجازت دینی پڑے۔ سیٹنگز میں 'پروفائل میں ترمیم کریں' کو چیک کریں۔",
+    "activityPreviewLabel": "سرگرمی کا پیش منظر: ",
+    "participantRowLabel": "{total} شرکاء میں سے {joined} شامل ہو چکے ہیں",
+    "ongoingPendingLabel": "دوسروں کے شامل ہونے کا انتظار ہے",
+    "joinableLabel": "شامل ہونے کے قابل",
+    "inProgressLabel": "پہلے مکمل ہو چکا ہے",
+    "availableLabel": "سرگرمی بنائیں",
     "rateActivityTitle": "یہ سرگرمی کیسی تھی؟",
     "rateActivityCommentHint": "ایک تبصرہ شامل کریں (اختیاری)",
-    "rateActivityCommentRejected": "آپ کا تبصرہ پوسٹ نہیں ہو سکا۔ اسے دوبارہ ترتیب دینے کی کوشش کریں، یا تبصرے کے بغیر اپنی درجہ بندی جمع کروائیں۔",
+    "rateActivityCommentRejected": "آپ کا تبصرہ پوسٹ نہیں ہو سکا۔ اسے دوبارہ لکھنے کی کوشش کریں، یا تبصرے کے بغیر اپنی درجہ بندی جمع کروائیں۔",
     "rateActivityThanks": "آپ کے تاثرات کا شکریہ!",
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجہ بندی} other{{count} درجہ بندیاں}})"
 }

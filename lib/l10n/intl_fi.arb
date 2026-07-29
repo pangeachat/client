@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-29 08:48:27.807780",
+    "@@last_modified": "2026-07-29 11:54:22.429759",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9730,9 +9730,15 @@
     "activityActions": "Toimintojen toiminnot",
     "ongoing": "Käynnissä",
     "emptyInviteSearchHint": "Etkö löydä etsimääsi henkilöä? Hänen on ehkä sallittava profiilinsa löytyminen hausta. Tarkista Asetukset-kohdasta Muokkaa profiilia.",
+    "activityPreviewLabel": "Toiminnon esikatselu: ",
+    "participantRowLabel": "{joined} / {total} osallistujaa on liittynyt",
+    "ongoingPendingLabel": "Odotetaan muiden liittymistä",
+    "joinableLabel": "Liityttävissä",
+    "inProgressLabel": "Aiemmin suoritettu",
+    "availableLabel": "Luo toiminto",
     "rateActivityTitle": "Miten tämä aktiviteetti sujui?",
     "rateActivityCommentHint": "Lisää kommentti (valinnainen)",
-    "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arvio ilman kommenttia.",
+    "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
     "rateActivityThanks": "Kiitos palautteestasi!",
     "activityRatingMeterLabel": "{percent}% positiivisia ({count, plural, =1{1 arvio} other{{count} arviota}})"
 }

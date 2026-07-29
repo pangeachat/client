@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-29 08:48:26.676894",
+    "@@last_modified": "2026-07-29 11:54:21.339727",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10619,9 +10619,15 @@
     "activityActions": "Aktivitetshandlinger",
     "ongoing": "I gang",
     "emptyInviteSearchHint": "Kan du ikke finde den, du leder efter? De skal muligvis tillade, at deres profil kan findes i søgningen. Tjek Rediger profil i Indstillinger.",
+    "activityPreviewLabel": "Aktivitetsforhåndsvisning: ",
+    "participantRowLabel": "{joined} ud af {total} deltagere er med",
+    "ongoingPendingLabel": "Venter på, at andre deltager",
+    "joinableLabel": "Kan deltages i",
+    "inProgressLabel": "Tidligere gennemført",
+    "availableLabel": "Opret aktivitet",
     "rateActivityTitle": "Hvordan var denne aktivitet?",
     "rateActivityCommentHint": "Tilføj en kommentar (valgfrit)",
     "rateActivityCommentRejected": "Din kommentar kunne ikke slås op. Prøv at omformulere den, eller send din vurdering uden en kommentar.",
     "rateActivityThanks": "Tak for din feedback!",
-    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})"
+    "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 vurdering} other{{count} vurderinger}})"
 }

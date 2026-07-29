@@ -19,7 +19,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -577,7 +577,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = joinedCourses(client, l10n).length;
+      final courseCount = client.sortedCourses(l10n).length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
           (courseCount == 0

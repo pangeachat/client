@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-29 08:48:30.827927",
+    "@@last_modified": "2026-07-29 11:54:26.078735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Omume ọrụ",
     "ongoing": "Na-aga n'ihu",
     "emptyInviteSearchHint": "Ị chọtaghị onye ị na-achọ? Ha nwere ike ịkwesịrị ikwe ka a chọta profaịlụ ha na nchọta. Lelee Dezie Profaịlụ na Ntọala.",
+    "activityPreviewLabel": "Nlele ọrụ: ",
+    "participantRowLabel": "Ndị sonyere {joined} n'ime {total} esonyela",
+    "ongoingPendingLabel": "Na-eche ka ndị ọzọ sonye",
+    "joinableLabel": "Enwere ike isonye",
+    "inProgressLabel": "Emechara na mbụ",
+    "availableLabel": "Mepụta ọrụ",
     "rateActivityTitle": "Kedu ka ihe omume a siri dị?",
     "rateActivityCommentHint": "Tinye okwu (nhọrọ)",
-    "rateActivityCommentRejected": "E nweghị ike bipụta okwu gị. Gbalịa gbanwee ya, ma ọ bụ nyefee ọkwa gị na-enweghị okwu.",
+    "rateActivityCommentRejected": "Enweghị ike izipu okwu gị. Gbalịa ịgbanwe ya, ma ọ bụ ziga ọkwa gị na-enweghị okwu.",
     "rateActivityThanks": "Daalụ maka nzaghachi gị!",
     "activityRatingMeterLabel": "{percent}% dị mma ({count, plural, =1{1 ọkwa} other{{count} ọkwa}})"
 }

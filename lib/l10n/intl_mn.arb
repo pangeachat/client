@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-29 08:48:34.119561",
+    "@@last_modified": "2026-07-29 11:54:29.872843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Үйлдлийн үйлдлүүд",
     "ongoing": "Үргэлжилж байна",
     "emptyInviteSearchHint": "Хайж буй хүнээ олж чадахгүй байна уу? Тэд өөрсдийн профайлыг хайлтад ил харагдахаар тохируулах шаардлагатай байж магадгүй. Тохиргоо доторх Профайл засах хэсгийг шалгана уу.",
+    "activityPreviewLabel": "Үйлдлийн урьдчилсан харах: ",
+    "participantRowLabel": "Нийт {total} оролцогчоос {joined} нь нэгдсэн",
+    "ongoingPendingLabel": "Бусдыг нэгдэхийг хүлээж байна",
+    "joinableLabel": "Нэгдэх боломжтой",
+    "inProgressLabel": "Өмнө нь дууссан",
+    "availableLabel": "Үйлдэл үүсгэх",
     "rateActivityTitle": "Энэ дасгал ямар байсан бэ?",
     "rateActivityCommentHint": "Сэтгэгдэл нэмэх (заавал биш)",
-    "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчилж үзээрэй, эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
-    "rateActivityThanks": "Санал хүсэлтээ өгсөнд баярлалаа!",
+    "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
+    "rateActivityThanks": "Таны санал хүсэлтэд баярлалаа!",
     "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})"
 }

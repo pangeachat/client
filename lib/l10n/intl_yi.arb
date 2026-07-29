@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-29 08:48:41.017080",
+    "@@last_modified": "2026-07-29 11:54:38.198015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2043,9 +2043,15 @@
     "activityActions": "אַקטיוויטעט אַקשאַנז",
     "ongoing": "אָנגייענדיק",
     "emptyInviteSearchHint": "קענסט נישט געפֿינען וועמען דו זוכסט? זיי דאַרפֿן אפֿשר דערלויבן זייער פּראָפֿיל צו ווערן געפֿונען אין זוך. קוק אין רעדאַקטירן פּראָפֿיל אין סעטטינגס.",
+    "activityPreviewLabel": "אַקטיוויטעט פֿאָרויסיקע ווייַזונג: ",
+    "participantRowLabel": "{joined} פֿון {total} באַטייליקטע האָבן זיך צוגעשלאָסן",
+    "ongoingPendingLabel": "וואַרטן אויף אַנדערע צו קומען",
+    "joinableLabel": "מעגלעך זיך צו באַהעפֿטן",
+    "inProgressLabel": "פֿריִער פֿאַרענדיקט",
+    "availableLabel": "שאַפֿן אַקטיוויטעט",
     "rateActivityTitle": "ווי איז געווען די אַקטיוויטעט?",
     "rateActivityCommentHint": "לייג צו אַ קאָמענטאַר (אָפּציאָנעל)",
-    "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רײַטינג אָן אַ קאָמענטאַר.",
+    "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רייטינג אָן אַ קאָמענטאַר.",
     "rateActivityThanks": "אַ דאַנק פֿאַר אײַער פֿידבעק!",
-    "activityRatingMeterLabel": "{percent}% פּאָזיטיוו ({count, plural, =1{1 רײַטינג} other{{count} רײַטינגען}})"
+    "activityRatingMeterLabel": "{percent}% פּאָזיטיוו ({count, plural, =1{1 רייטינג} other{{count} רייטינגען}})"
 }

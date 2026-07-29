@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-29 08:48:32.790414",
+    "@@last_modified": "2026-07-29 11:55:49.119097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2043,8 +2043,14 @@
     "activityActions": "کردارەکانی چالاکی",
     "ongoing": "بەردەوامە",
     "emptyInviteSearchHint": "ناتوانیت ئەو کەسە بدۆزیتەوە کە بەدوایدا دەگەڕێیت؟ لەوانەیە پێویست بێت ڕێگە بدەن بە دۆزینەوەی پرۆفایلەکەیان لە گەڕاندا. لە دەستکاریکردنی پرۆفایل لە ڕێکخستنەکاندا بپشکنە.",
+    "activityPreviewLabel": "پێشبینی چالاکی:",
+    "participantRowLabel": "{total} بەشداربوو، {joined}یان بەشداربوون",
+    "ongoingPendingLabel": "چاوەڕێی ئەوانی تر دەکەین بۆ بەشداریکردن",
+    "joinableLabel": "بەشداریکردن",
+    "inProgressLabel": "پێشتر تەواوکراوە",
+    "availableLabel": "چالاکی دروست بکە",
     "rateActivityTitle": "ئەم چالاکییە چۆن بوو؟",
-    "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆتە)",
+    "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆت)",
     "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
     "rateActivityThanks": "سوپاس بۆ فیدباکەکەت!",
     "activityRatingMeterLabel": "{percent}% ئەرێنی ({count, plural, =1{1 هەڵسەنگاندن} other{{count} هەڵسەنگاندن}})"

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-29 08:48:29.957551",
+    "@@last_modified": "2026-07-29 11:54:24.859805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Aksyon aktivite",
     "ongoing": "Kontinyèl",
     "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman.",
+    "activityPreviewLabel": "Aperçu aktivite: ",
+    "participantRowLabel": "{joined} sou {total} patisipan yo rantre",
+    "ongoingPendingLabel": "Ap tann lòt moun rantre",
+    "joinableLabel": "Ou ka rantre",
+    "inProgressLabel": "Deja fini",
+    "availableLabel": "Kreye aktivite",
     "rateActivityTitle": "Kijan aktivite sa a te ye?",
     "rateActivityCommentHint": "Ajoute yon kòmantè (opsyonèl)",
-    "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab afiche. Eseye refòmile li, oswa soumèt evalyasyon ou san yon kòmantè.",
+    "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab poste. Eseye reformule li, oswa soumèt evalyasyon ou san yon kòmantè.",
     "rateActivityThanks": "Mèsi pou fidbak ou!",
     "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})"
 }

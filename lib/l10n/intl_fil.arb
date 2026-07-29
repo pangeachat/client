@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-29 08:48:28.025522",
+    "@@last_modified": "2026-07-29 11:54:22.892882",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10559,9 +10559,15 @@
     "activityActions": "Mga aksyon sa aktibidad",
     "ongoing": "Kasalukuyan",
     "emptyInviteSearchHint": "Hindi mahanap ang hinahanap mo? Maaaring kailangan nilang payagan na makita ang kanilang profile sa paghahanap. Tingnan ang I-edit ang Profile sa Mga Setting.",
+    "activityPreviewLabel": "Preview ng aktibidad: ",
+    "participantRowLabel": "{joined} sa {total} na kalahok ang nakasali",
+    "ongoingPendingLabel": "Naghihintay sa iba na sumali",
+    "joinableLabel": "Pwedeng salihan",
+    "inProgressLabel": "Nakumpleto na",
+    "availableLabel": "Gumawa ng aktibidad",
     "rateActivityTitle": "Kumusta ang aktibidad na ito?",
     "rateActivityCommentHint": "Magdagdag ng komento (opsyonal)",
-    "rateActivityCommentRejected": "Hindi ma-post ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
+    "rateActivityCommentRejected": "Hindi maipaskil ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
     "rateActivityThanks": "Salamat sa iyong feedback!",
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
 }

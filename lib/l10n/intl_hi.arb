@@ -3104,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-29 08:48:28.947532",
+    "@@last_modified": "2026-07-29 11:54:25.461754",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10325,8 +10325,14 @@
     "activityActions": "गतिविधि क्रियाएँ",
     "ongoing": "जारी है",
     "emptyInviteSearchHint": "आप जिसे ढूंढ रहे हैं वह नहीं मिल रहा है? उन्हें अपनी प्रोफ़ाइल को खोज में पाए जाने की अनुमति देनी पड़ सकती है। सेटिंग में प्रोफ़ाइल संपादित करें देखें।",
+    "activityPreviewLabel": "गतिविधि का पूर्वावलोकन:",
+    "participantRowLabel": "{total} प्रतिभागियों में से {joined} शामिल हो गए हैं",
+    "ongoingPendingLabel": "दूसरों के शामिल होने की प्रतीक्षा है",
+    "joinableLabel": "शामिल होने योग्य",
+    "inProgressLabel": "पहले पूरा किया गया",
+    "availableLabel": "गतिविधि बनाएँ",
     "rateActivityTitle": "यह गतिविधि कैसी रही?",
-    "rateActivityCommentHint": "कोई टिप्पणी जोड़ें (वैकल्पिक)",
+    "rateActivityCommentHint": "एक टिप्पणी जोड़ें (वैकल्पिक)",
     "rateActivityCommentRejected": "आपकी टिप्पणी पोस्ट नहीं की जा सकी। इसे फिर से लिखने का प्रयास करें, या बिना टिप्पणी के अपनी रेटिंग सबमिट करें।",
     "rateActivityThanks": "आपकी प्रतिक्रिया के लिए धन्यवाद!",
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग}})"

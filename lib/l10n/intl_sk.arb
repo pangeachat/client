@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-29 08:48:37.139699",
+    "@@last_modified": "2026-07-29 11:54:33.004502",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10644,6 +10644,12 @@
     "activityActions": "Akcie aktivity",
     "ongoing": "Prebieha",
     "emptyInviteSearchHint": "Neviete nájsť, koho hľadáte? Možno budú musieť povoliť, aby sa ich profil dal nájsť vo vyhľadávaní. Skontrolujte Upraviť profil v Nastaveniach.",
+    "activityPreviewLabel": "Ukážka aktivity: ",
+    "participantRowLabel": "Pripojilo sa {joined} z {total} účastníkov",
+    "ongoingPendingLabel": "Čaká sa na pripojenie ostatných",
+    "joinableLabel": "Dostupné na pripojenie",
+    "inProgressLabel": "Predtým dokončené",
+    "availableLabel": "Vytvoriť aktivitu",
     "rateActivityTitle": "Aká bola táto aktivita?",
     "rateActivityCommentHint": "Pridať komentár (voliteľné)",
     "rateActivityCommentRejected": "Váš komentár sa nepodarilo uverejniť. Skúste ho preformulovať alebo odošlite hodnotenie bez komentára.",

@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-29 08:48:31.671769",
+    "@@last_modified": "2026-07-29 11:54:26.906009",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10599,9 +10599,15 @@
     "activityActions": "აქტივობის მოქმედებები",
     "ongoing": "მიმდინარე",
     "emptyInviteSearchHint": "ვერ პოულობთ ვისაც ეძებთ? შესაძლოა, მათ უნდა დაუშვან თავიანთი პროფილის მოძებნა. შეამოწმეთ „პროფილის რედაქტირება“ პარამეტრებში.",
+    "activityPreviewLabel": "აქტივობის გადახედვა: ",
+    "participantRowLabel": "{joined} მონაწილე შეუერთდა {total}-დან",
+    "ongoingPendingLabel": "სხვების შემოერთებას ელოდება",
+    "joinableLabel": "შესაერთებელი",
+    "inProgressLabel": "ადრე დასრულებული",
+    "availableLabel": "აქტივობის შექმნა",
     "rateActivityTitle": "როგორი იყო ეს აქტივობა?",
     "rateActivityCommentHint": "კომენტარის დამატება (სურვილისამებრ)",
-    "rateActivityCommentRejected": "თქვენი კომენტარის გამოქვეყნება ვერ მოხერხდა. სცადეთ მისი გადაფორმება, ან გამოაგზავნეთ თქვენი შეფასება კომენტარის გარეშე.",
+    "rateActivityCommentRejected": "თქვენი კომენტარის გამოქვეყნება ვერ მოხერხდა. სცადეთ მისი გადაფორმება, ან გამოაქვეყნეთ თქვენი შეფასება კომენტარის გარეშე.",
     "rateActivityThanks": "გმადლობთ გამოხმაურებისთვის!",
     "activityRatingMeterLabel": "{percent}% დადებითი ({count, plural, =1{1 შეფასება} other{{count} შეფასება}})"
 }

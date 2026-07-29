@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 08:48:29.228402",
+    "@@last_modified": "2026-07-29 11:54:24.256927",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10613,6 +10613,12 @@
     "activityActions": "פעולות פעילות",
     "ongoing": "מתבצע",
     "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות.",
+    "activityPreviewLabel": "תצוגה מקדימה של פעילות: ",
+    "participantRowLabel": "{joined} מתוך {total} משתתפים הצטרפו",
+    "ongoingPendingLabel": "ממתין לאחרים להצטרף",
+    "joinableLabel": "ניתן להצטרף",
+    "inProgressLabel": "הושלם בעבר",
+    "availableLabel": "צור פעילות",
     "rateActivityTitle": "איך הייתה הפעילות?",
     "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
     "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",

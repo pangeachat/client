@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-29 08:48:33.456948",
+    "@@last_modified": "2026-07-29 11:54:29.193461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Дејства на активност",
     "ongoing": "Во тек",
     "emptyInviteSearchHint": "Не можете да го најдете тој што го барате? Можеби треба да дозволи неговиот профил да биде пронајден во пребарувањето. Проверете го Уреди профил во Поставки.",
+    "activityPreviewLabel": "Преглед на активност: ",
+    "participantRowLabel": "{joined} од {total} учесници се приклучија",
+    "ongoingPendingLabel": "Се чекаат други да се приклучат",
+    "joinableLabel": "Приклучи се",
+    "inProgressLabel": "Претходно завршено",
+    "availableLabel": "Креирај активност",
     "rateActivityTitle": "Како беше оваа активност?",
-    "rateActivityCommentHint": "Додадете коментар (изборно)",
-    "rateActivityCommentRejected": "Вашиот коментар не може да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
+    "rateActivityCommentHint": "Додајте коментар (изборно)",
+    "rateActivityCommentRejected": "Вашиот коментар не можеше да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
     "rateActivityThanks": "Ви благодариме за повратните информации!",
     "activityRatingMeterLabel": "{percent}% позитивни ({count, plural, =1{1 оцена} other{{count} оцени}})"
 }

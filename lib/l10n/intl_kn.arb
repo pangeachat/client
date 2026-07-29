@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-29 08:48:31.892217",
+    "@@last_modified": "2026-07-29 11:54:27.185183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2043,9 +2043,15 @@
     "activityActions": "ಚಟುವಟಿಕೆ ಕ್ರಿಯೆಗಳು",
     "ongoing": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
     "emptyInviteSearchHint": "ನೀವು ಹುಡುಕುತ್ತಿರುವವರು ಸಿಗುತ್ತಿಲ್ಲವೇ? ಅವರು ತಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಹುಡುಕಾಟದಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳಲು ಅನುಮತಿಸಬೇಕಾಗಬಹುದು. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ ಪರಿಶೀಲಿಸಿ.",
+    "activityPreviewLabel": "ಚಟುವಟಿಕೆಯ ಮುನ್ನೋಟ: ",
+    "participantRowLabel": "{total} ಭಾಗವಹಿಸುವವರಲ್ಲಿ {joined} ಸೇರಿಕೊಂಡಿದ್ದಾರೆ",
+    "ongoingPendingLabel": "ಇತರರು ಸೇರಿಕೊಳ್ಳಲು ಕಾಯಲಾಗುತ್ತಿದೆ",
+    "joinableLabel": "ಸೇರಬಹುದು",
+    "inProgressLabel": "ಹಿಂದೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "availableLabel": "ಚಟುವಟಿಕೆ ರಚಿಸಿ",
     "rateActivityTitle": "ಈ ಚಟುವಟಿಕೆ ಹೇಗಿತ್ತು?",
-    "rateActivityCommentHint": "ಪ್ರತಿಕ್ರಿಯೆ ಸೇರಿಸಿ (ಐಚ್ಛಿಕ)",
-    "rateActivityCommentRejected": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಅದನ್ನು ಮರುರೂಪಿಸಲು ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲದೆ ನಿಮ್ಮ ರೇಟಿಂಗ್ ಅನ್ನು ಸಲ್ಲಿಸಿ.",
+    "rateActivityCommentHint": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ (ಐಚ್ಛಿಕ)",
+    "rateActivityCommentRejected": "ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಪೋಸ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಅದನ್ನು ಮರುರೂಪಿಸಲು ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಕಾಮೆಂಟ್ ಇಲ್ಲದೆ ನಿಮ್ಮ ರೇಟಿಂಗ್ ಅನ್ನು ಸಲ್ಲಿಸಿ.",
     "rateActivityThanks": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಗೆ ಧನ್ಯವಾದಗಳು!",
     "activityRatingMeterLabel": "{percent}% ಸಕಾರಾತ್ಮಕ ({count, plural, =1{1 ರೇಟಿಂಗ್} other{{count} ರೇಟಿಂಗ್‌ಗಳು}})"
 }

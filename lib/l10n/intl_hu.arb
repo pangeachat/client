@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 08:48:30.000255",
+    "@@last_modified": "2026-07-29 11:54:24.881593",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9796,9 +9796,15 @@
     "activityActions": "Tevékenységműveletek",
     "ongoing": "Folyamatban",
     "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot.",
+    "activityPreviewLabel": "Tevékenység előnézete: ",
+    "participantRowLabel": "{total} résztvevőből {joined} csatlakozott",
+    "ongoingPendingLabel": "Várakozás a többiekre",
+    "joinableLabel": "Csatlakozható",
+    "inProgressLabel": "Korábban befejezett",
+    "availableLabel": "Tevékenység létrehozása",
     "rateActivityTitle": "Milyen volt ez a tevékenység?",
     "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
-    "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd el az értékelésedet megjegyzés nélkül.",
+    "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
     "rateActivityThanks": "Köszönjük visszajelzésedet!",
     "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})"
 }

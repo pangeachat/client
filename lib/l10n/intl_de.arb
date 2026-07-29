@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-29 08:48:26.542909",
+    "@@last_modified": "2026-07-29 11:54:21.248057",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9680,6 +9680,12 @@
     "activityActions": "Aktivitätsaktionen",
     "ongoing": "Laufend",
     "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen.",
+    "activityPreviewLabel": "Aktivitätsvorschau: ",
+    "participantRowLabel": "{joined} von {total} Teilnehmern sind beigetreten",
+    "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
+    "joinableLabel": "Beitretbar",
+    "inProgressLabel": "Zuvor abgeschlossen",
+    "availableLabel": "Aktivität erstellen",
     "rateActivityTitle": "Wie war diese Aktivität?",
     "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",

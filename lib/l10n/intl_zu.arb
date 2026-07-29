@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-29 08:48:41.110812",
+    "@@last_modified": "2026-07-29 11:54:38.972104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Izenzo zomsebenzi",
     "ongoing": "Iyaqhubeka",
     "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo.",
+    "activityPreviewLabel": "Ukubuka kuqala komsebenzi: ",
+    "participantRowLabel": "Abahlanganyeli abangu-{joined} kwabangu-{total} sebajoyine",
+    "ongoingPendingLabel": "Kulindwe abanye ukuthi bajoyine",
+    "joinableLabel": "Kuyajoyineka",
+    "inProgressLabel": "Kuqedwe ngaphambilini",
+    "availableLabel": "Dala umsebenzi",
     "rateActivityTitle": "Lunjani lolu hlelo?",
     "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
-    "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwabhala kabusha, noma uthumele isilinganiso sakho ngaphandle kwamazwana.",
+    "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
     "rateActivityThanks": "Siyabonga ngempendulo yakho!",
     "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})"
 }

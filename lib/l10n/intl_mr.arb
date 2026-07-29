@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-29 08:48:34.053006",
+    "@@last_modified": "2026-07-29 11:54:29.782859",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2043,9 +2043,15 @@
     "activityActions": "क्रियाकलाप क्रिया",
     "ongoing": "सुरू आहे",
     "emptyInviteSearchHint": "तुम्ही ज्याला शोधत आहात तो सापडत नाहीये? त्यांना त्यांचे प्रोफाइल शोधामध्ये सापडण्याची परवानगी द्यावी लागेल. सेटिंग्जमधील 'प्रोफाइल संपादित करा' तपासा.",
+    "activityPreviewLabel": "गतिविधी पूर्वावलोकन: ",
+    "participantRowLabel": "{total} पैकी {joined} सहभागी सामील झाले आहेत",
+    "ongoingPendingLabel": "इतरांच्या सामील होण्याची प्रतीक्षा करत आहे",
+    "joinableLabel": "सामील होण्यायोग्य",
+    "inProgressLabel": "पूर्वी पूर्ण झाले",
+    "availableLabel": "गतिविधी तयार करा",
     "rateActivityTitle": "हा उपक्रम कसा होता?",
-    "rateActivityCommentHint": "एक टिप्पणी जोडा (ऐच्छिक)",
+    "rateActivityCommentHint": "एक टिप्पणी जोडा (पर्यायी)",
     "rateActivityCommentRejected": "तुमची टिप्पणी पोस्ट केली जाऊ शकली नाही. कृपया ती पुन्हा लिहा किंवा टिप्पणीशिवाय तुमचे रेटिंग सबमिट करा.",
     "rateActivityThanks": "तुमच्या प्रतिसादाबद्दल धन्यवाद!",
-    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्स}})"
+    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्ज}})"
 }

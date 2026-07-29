@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -8,7 +9,10 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 /// A target the map should bring into the exposed canvas. Sealed so adding a
@@ -113,6 +117,57 @@ String? activeRoomIdFromPanels(Uri uri) {
     final param = token.param;
     if (param is RoomTokenParam) {
       return fullRoomId(param.id);
+    }
+  }
+  return null;
+}
+
+/// The construct whose detail panel is currently open (a `vocab:` / `grammar:`
+/// token in the workspace URL), or null. The analytics summary list highlights
+/// this construct's tile as active — the construct-detail analogue of
+/// [activeRoomIdFromPanels] for the chat list (#7977). One construct detail
+/// opens at a time (the registry `detail` sibling group), so there is at most
+/// one; a `ConstructIdentifier` carries its own type, so the vocab and grammar
+/// lists compare against the same value and only the matching-type tile lights.
+ConstructIdentifier? activeConstructDetailFor(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  for (final token in [...panels.right, ...panels.left]) {
+    final param = token.param;
+    if (param is VocabAnalyticsTokenParam) return param.constructId;
+    if (param is GrammarAnalyticsTokenParam) return param.constructId;
+  }
+  return null;
+}
+
+/// The analytics metric whose panel is currently open — what the top-right
+/// cluster / analytics bar highlights as active (#7977). Returned in the
+/// cluster's own vocabulary: [ProgressIndicatorEnum.wordsUsed] / [morphsUsed]
+/// for a vocab or grammar summary or construct detail, [stars] for the sessions
+/// summary or a `session` review, [level] for the level tab; null when no
+/// analytics surface is open. Chrome-level derivation from the URL tokens, like
+/// [sectionFor] — the cluster is chrome with no token of its own, so it reads
+/// what is open. A live practice session is deliberately excluded: its tracker
+/// wears the running-timer badge instead of the open-panel highlight (see
+/// `routing.instructions.md` § Practice is a persistent background session).
+ProgressIndicatorEnum? activeAnalyticsTabFor(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  for (final token in [...panels.right, ...panels.left]) {
+    if (token.type == PanelTypesEnum.session) {
+      return ProgressIndicatorEnum.stars;
+    }
+    final param = token.param;
+    if (param is VocabAnalyticsTokenParam) {
+      return ProgressIndicatorEnum.wordsUsed;
+    }
+    if (param is GrammarAnalyticsTokenParam) {
+      return ProgressIndicatorEnum.morphsUsed;
+    }
+    if (param is AnalyticsTokenParam) {
+      // The sessions summary rides `activities`, but the cluster's tracker for
+      // it is `stars` — map it across so the right button lights.
+      return param.subpage == ProgressIndicatorEnum.activities
+          ? ProgressIndicatorEnum.stars
+          : param.subpage;
     }
   }
   return null;

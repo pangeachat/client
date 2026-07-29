@@ -4783,10 +4783,26 @@
             }
         }
     },
+    "activityPreviewLabel": "Activity preview: ",
+    "participantRowLabel": "{joined} out of {total} participants have joined",
+    "@participantRowLabel": {
+        "placeholders": {
+            "joined": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
     "searchCoursePlans": "Search course plans",
     "searchPublicCourses": "Search public courses",
     "closeSearch": "Close search",
     "closeArchive": "Close archive",
     "waitingToFillOneRole": "Waiting to fill 1 role...",
+    "ongoingPendingLabel": "Waiting for others to join",
+    "joinableLabel": "Joinable",
+    "inProgressLabel": "Previously completed",
+    "availableLabel": "Create activity",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-29 08:48:34.918255",
+    "@@last_modified": "2026-07-29 11:54:30.675298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Aktivitetshandlinger",
     "ongoing": "Pågående",
     "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger.",
+    "activityPreviewLabel": "Forhåndsvisning av aktivitet: ",
+    "participantRowLabel": "{joined} av {total} deltakere har blitt med",
+    "ongoingPendingLabel": "Venter på at andre skal bli med",
+    "joinableLabel": "Kan bli med",
+    "inProgressLabel": "Tidligere fullført",
+    "availableLabel": "Opprett aktivitet",
     "rateActivityTitle": "Hvordan var denne aktiviteten?",
     "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
-    "rateActivityThanks": "Takk for tilbakemeldingen!",
+    "rateActivityThanks": "Takk for tilbakemeldingen din!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})"
 }

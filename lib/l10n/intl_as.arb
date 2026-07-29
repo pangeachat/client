@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-29 08:48:25.657419",
+    "@@last_modified": "2026-07-29 11:54:20.873752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2043,9 +2043,15 @@
     "activityActions": "কাৰ্য্যকলাপৰ কাৰ্য্যসমূহ",
     "ongoing": "চলমান",
     "emptyInviteSearchHint": "আপুনি বিচৰা ব্যক্তিক বিচাৰি পোৱা নাই? তেওঁলোকে তেওঁলোকৰ প্ৰ'ফাইলটো ছাৰ্চত বিচাৰি পোৱাৰ অনুমতি দিব লাগিব পাৰে। ছেটিংছত থকা প্ৰ'ফাইল সম্পাদনা কৰক পৰীক্ষা কৰক।",
+    "activityPreviewLabel": "কাৰ্যকলাপৰ পূৰ্বদৰ্শন: ",
+    "participantRowLabel": "{total} জন অংশগ্ৰহণকাৰীৰ ভিতৰত {joined} জন যোগদান কৰিছে",
+    "ongoingPendingLabel": "আনসকলৰ যোগদানৰ বাবে অপেক্ষা কৰি আছে",
+    "joinableLabel": "যোগদান কৰিব পৰা",
+    "inProgressLabel": "পূৰ্বে সম্পূৰ্ণ কৰা হৈছে",
+    "availableLabel": "কাৰ্যকলাপ সৃষ্টি কৰক",
     "rateActivityTitle": "এই কাৰ্যকলাপটো কেনেকুৱা আছিল?",
     "rateActivityCommentHint": "এটা মন্তব্য যোগ কৰক (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপোনাৰ মন্তব্য পোষ্ট কৰিব পৰা নগ'ল। ইয়াক পুনৰ লিখিবলৈ চেষ্টা কৰক, অথবা মন্তব্য অবিহনে আপোনাৰ ৰেটিং দাখিল কৰক।",
     "rateActivityThanks": "আপোনাৰ মতামতৰ বাবে ধন্যবাদ!",
-    "activityRatingMeterLabel": "{percent}% ধনাত্মক ({count, plural, =1{১টা ৰেটিং} other{{count}টা ৰেটিং}})"
+    "activityRatingMeterLabel": "{percent}% ধনাত্মক ({count, plural, =1{1 ৰেটিং} other{{count} ৰেটিং}})"
 }

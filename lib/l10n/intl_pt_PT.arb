@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-29 08:48:35.885717",
+    "@@last_modified": "2026-07-29 11:54:32.545888",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10610,6 +10610,12 @@
     "activityActions": "Ações de atividade",
     "ongoing": "Em curso",
     "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições.",
+    "activityPreviewLabel": "Pré-visualização da atividade: ",
+    "participantRowLabel": "{joined} de {total} participantes aderiram",
+    "ongoingPendingLabel": "À espera que outros se juntem",
+    "joinableLabel": "Aderível",
+    "inProgressLabel": "Concluído anteriormente",
+    "availableLabel": "Criar atividade",
     "rateActivityTitle": "Como foi esta atividade?",
     "rateActivityCommentHint": "Adicionar um comentário (opcional)",
     "rateActivityCommentRejected": "O seu comentário não pôde ser publicado. Tente reformulá-lo ou envie a sua avaliação sem um comentário.",

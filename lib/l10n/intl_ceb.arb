@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-29 08:48:27.545581",
+    "@@last_modified": "2026-07-29 11:54:21.040377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Mga aksyon sa kalihokan",
     "ongoing": "Nagpadayon",
     "emptyInviteSearchHint": "Dili makit-an ang imong gipangita? Tingali kinahanglan nilang tugutan nga makit-an ang ilang profile sa pagpangita. Tan-awa ang Edit Profile sa Settings.",
+    "activityPreviewLabel": "Preview sa kalihokan: ",
+    "participantRowLabel": "{joined} sa {total} ka partisipante ang miapil",
+    "ongoingPendingLabel": "Naghuwat sa uban nga moapil",
+    "joinableLabel": "Mahimong apilan",
+    "inProgressLabel": "Nahuman na kaniadto",
+    "availableLabel": "Paghimo og kalihokan",
     "rateActivityTitle": "Kumusta kini nga kalihokan?",
     "rateActivityCommentHint": "Pagdugang og komento (opsyonal)",
     "rateActivityCommentRejected": "Dili ma-post ang imong komento. Sulayi pag-usab ang pag-phrase niini, o isumite ang imong rating nga walay komento.",
     "rateActivityThanks": "Salamat sa imong feedback!",
-    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ka ratings}})"
+    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 08:48:37.725400",
+    "@@last_modified": "2026-07-29 11:54:35.059101",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10648,6 +10648,12 @@
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U toku",
     "emptyInviteSearchHint": "Ne možete da pronađete koga tražite? Možda treba da dozvole da se njihov profil pronađe u pretrazi. Proverite Uredi profil u Podešavanjima.",
+    "activityPreviewLabel": "Pregled aktivnosti: ",
+    "participantRowLabel": "{joined} od {total} učesnika se pridružilo",
+    "ongoingPendingLabel": "Čekanje da se drugi pridruže",
+    "joinableLabel": "Moguće pridruživanje",
+    "inProgressLabel": "Prethodno završeno",
+    "availableLabel": "Kreiraj aktivnost",
     "rateActivityTitle": "Kako vam se svidela ova aktivnost?",
     "rateActivityCommentHint": "Dodajte komentar (opciono)",
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",

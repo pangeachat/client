@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-29 08:48:38.674215",
+    "@@last_modified": "2026-07-29 11:54:34.764055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Liketso tsa ts'ebetso",
     "ongoing": "E tswela pele",
     "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso.",
+    "activityPreviewLabel": "Kakaretso ea ts'ebetso: ",
+    "participantRowLabel": "{joined} ho ba {total} ba nkang karolo ba kene",
+    "ongoingPendingLabel": "Ho letetsoe hore ba bang ba kene",
+    "joinableLabel": "E ka kopaneloa",
+    "inProgressLabel": "E phethiloe pejana",
+    "availableLabel": "Theha ts'ebetso",
     "rateActivityTitle": "Ketsahalo ee e bile jwang?",
     "rateActivityCommentHint": "Kenya maikutlo (ka boikhethelo)",
-    "rateActivityCommentRejected": "Maikutlo a hao a sitilwe ho romelwa. Leka ho a ngola botjha, kapa o romele tekanyetso ya hao ntle le maikutlo.",
+    "rateActivityCommentRejected": "Maikutlo a hao ha a kgone ho romelwa. Leka ho a ngola botjha, kapa o romelle tekanyetso ya hao ntle le maikutlo.",
     "rateActivityThanks": "Re leboha maikutlo a hao!",
-    "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditlhakisetso tse {count}}})"
+    "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditekanyetso tse {count}}})"
 }

@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-29 08:48:25.569981",
+    "@@last_modified": "2026-07-29 11:54:20.754548",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9707,9 +9707,15 @@
     "activityActions": "Дзеянні актыўнасці",
     "ongoing": "Працягваецца",
     "emptyInviteSearchHint": "Не можаце знайсці таго, каго шукаеце? Магчыма, ім трэба дазволіць знаходзіць свой профіль у пошуку. Праверце «Рэдагаваць профіль» у наладах.",
+    "activityPreviewLabel": "Папярэдні прагляд актыўнасці: ",
+    "participantRowLabel": "Далучыліся {joined} з {total} удзельнікаў",
+    "ongoingPendingLabel": "Чакаем, пакуль далучацца іншыя",
+    "joinableLabel": "Можна далучыцца",
+    "inProgressLabel": "Раней завершана",
+    "availableLabel": "Стварыць актыўнасць",
     "rateActivityTitle": "Як вам гэтае заданне?",
-    "rateActivityCommentHint": "Дадаць каментар (неабавязкова)",
-    "rateActivityCommentRejected": "Ваш каментар не быў апублікаваны. Паспрабуйце перафразаваць яго або адправіць ацэнку без каментара.",
+    "rateActivityCommentHint": "Дадаць каментарый (неабавязкова)",
+    "rateActivityCommentRejected": "Ваш каментарый не быў апублікаваны. Паспрабуйце перафразаваць яго або адправіць ацэнку без каментарыя.",
     "rateActivityThanks": "Дзякуй за ваш водгук!",
-    "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнкі}})"
+    "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнак}})"
 }

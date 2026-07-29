@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-29 08:48:37.922391",
+    "@@last_modified": "2026-07-29 11:54:34.225879",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Gaioiga o gaoioiga",
     "ongoing": "Fa'aauau",
     "emptyInviteSearchHint": "E le mafai ona maua le tagata o lo'o e su'eina? Atonu e mana'omia ona latou fa'ataga lo latou talaaga e maua i le su'esu'ega. Siaki le Fa'asa'o Talaaga i Fa'atonuga.",
-    "rateActivityTitle": "Na fa'apefea lenei gaioiga?",
+    "activityPreviewLabel": "Vaʻaiga muamua o le gaioiga: ",
+    "participantRowLabel": "{joined} mai le {total} tagata auai ua auai",
+    "ongoingPendingLabel": "Faʻatali mo isi e auai",
+    "joinableLabel": "Mafai ona auai",
+    "inProgressLabel": "Ua maeʻa muamua",
+    "availableLabel": "Fausia se gaioiga",
+    "rateActivityTitle": "Na fa'afefea lenei gaioiga?",
     "rateActivityCommentHint": "Fa'aopoopo se fa'amatalaga (filifiliga)",
-    "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aupu, pe lafo lau fa'ailoga e aunoa ma se fa'amatalaga.",
+    "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aleleia, pe lafo lau fua faatatau e aunoa ma se fa'amatalaga.",
     "rateActivityThanks": "Fa'afetai mo lau tali mai!",
-    "activityRatingMeterLabel": "{percent}% lelei ({count, plural, =1{1 fa'ailoga} other{{count} fa'ailoga}})"
+    "activityRatingMeterLabel": "{percent}% lelei ({count, plural, =1{1 fua faatatau} other{{count} fua faatatau}})"
 }

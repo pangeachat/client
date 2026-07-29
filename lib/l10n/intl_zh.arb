@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-29 08:48:40.510400",
+    "@@last_modified": "2026-07-29 11:54:37.604644",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9693,6 +9693,12 @@
     "activityActions": "活动操作",
     "ongoing": "进行中",
     "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。",
+    "activityPreviewLabel": "活动预览：",
+    "participantRowLabel": "{joined} 位参与者已加入（共 {total} 位）",
+    "ongoingPendingLabel": "正在等待其他人加入",
+    "joinableLabel": "可加入",
+    "inProgressLabel": "已完成",
+    "availableLabel": "创建活动",
     "rateActivityTitle": "这个活动怎么样？",
     "rateActivityCommentHint": "添加评论（可选）",
     "rateActivityCommentRejected": "您的评论无法发布。请尝试重新措辞，或不带评论提交您的评分。",

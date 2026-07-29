@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-29 08:48:29.443088",
+    "@@last_modified": "2026-07-29 11:54:24.151976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Ayyukan aiki",
     "ongoing": "Ana Ci Gaba",
     "emptyInviteSearchHint": "Ba za a iya samun wanda kake nema ba? Wataƙila suna buƙatar ba da izinin samun bayanin martabarsu a bincike. Duba Shirya Bayanin martaba a Saituna.",
+    "activityPreviewLabel": "Samfoti na aiki: ",
+    "participantRowLabel": "{joined} cikin {total} mahalarta sun shiga",
+    "ongoingPendingLabel": "Ana jiran wasu su shiga",
+    "joinableLabel": "Mai shiga",
+    "inProgressLabel": "An kammala a baya",
+    "availableLabel": "Ƙirƙiri aiki",
     "rateActivityTitle": "Yaya wannan aikin ya kasance?",
     "rateActivityCommentHint": "Ƙara sharhi (na zaɓi)",
     "rateActivityCommentRejected": "Ba a iya wallafa sharhinka ba. Gwada sake tsarawa, ko aika ƙimar ka ba tare da sharhi ba.",
-    "rateActivityThanks": "Godiya ga ra'ayinka!",
+    "rateActivityThanks": "Godiya da ra'ayinka!",
     "activityRatingMeterLabel": "{percent}% mai kyau ({count, plural, =1{ƙima 1} other{ƙididdiga {count}}})"
 }

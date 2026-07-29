@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-29 08:48:28.788568",
+    "@@last_modified": "2026-07-29 11:54:23.493289",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9704,9 +9704,15 @@
     "activityActions": "Gníomhartha gníomhaíochta",
     "ongoing": "Ar siúl",
     "emptyInviteSearchHint": "Ní féidir leat teacht ar an duine atá uait? Seans go gcaithfidh siad a bpróifíl a cheadú le go bhfaighfear í sa chuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe.",
+    "activityPreviewLabel": "Réamhamharc ar an ngníomhaíocht: ",
+    "participantRowLabel": "Tá {joined} as {total} rannpháirtí páirteach",
+    "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
+    "joinableLabel": "Inscortha",
+    "inProgressLabel": "Críochnaithe roimhe seo",
+    "availableLabel": "Cruthaigh gníomhaíocht",
     "rateActivityTitle": "Cén chaoi a raibh an ghníomhaíocht seo?",
     "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
-    "rateActivityThanks": "Go raibh maith agat as do chuid aiseolais!",
+    "rateActivityThanks": "Go raibh maith agat as d'aiseolas!",
     "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})"
 }

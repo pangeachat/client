@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-29 08:48:31.595644",
+    "@@last_modified": "2026-07-29 11:54:27.588090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2043,9 +2043,15 @@
     "activityActions": "Әрекет әрекеттері",
     "ongoing": "Жалғасуда",
     "emptyInviteSearchHint": "Іздеген адамыңызды таба алмай жатырсыз ба? Олар профилін іздеуде табуға рұқсат беруі керек болуы мүмкін. Параметрлердегі Профильді өңдеу бөлімін тексеріңіз.",
+    "activityPreviewLabel": "Әрекетті алдын ала қарау: ",
+    "participantRowLabel": "{total} қатысушының {joined} қосылды",
+    "ongoingPendingLabel": "Басқалардың қосылуын күтуде",
+    "joinableLabel": "Қосылуға болады",
+    "inProgressLabel": "Бұрын аяқталған",
+    "availableLabel": "Әрекет жасау",
     "rateActivityTitle": "Бұл әрекет қалай болды?",
     "rateActivityCommentHint": "Пікір қосу (міндетті емес)",
-    "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Қайта жазып көріңіз немесе пікірсіз бағалаңыз.",
-    "rateActivityThanks": "Пікіріңізге рахмет!",
-    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 рейтинг} other{{count} рейтинг}})"
+    "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
+    "rateActivityThanks": "Пікіріңіз үшін рахмет!",
+    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 08:48:27.229143",
+    "@@last_modified": "2026-07-29 11:54:22.164211",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10644,6 +10644,12 @@
     "activityActions": "Agadoj",
     "ongoing": "Daŭranta",
     "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj.",
+    "activityPreviewLabel": "Antaŭvido de agado: ",
+    "participantRowLabel": "{joined} el {total} partoprenantoj aliĝis",
+    "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
+    "joinableLabel": "Aliĝebla",
+    "inProgressLabel": "Antaŭe kompletigita",
+    "availableLabel": "Krei agadon",
     "rateActivityTitle": "Kiel estis ĉi tiu agado?",
     "rateActivityCommentHint": "Aldonu komenton (nedeviga)",
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
