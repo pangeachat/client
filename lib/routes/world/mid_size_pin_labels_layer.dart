@@ -75,7 +75,6 @@ class MidSizePinLabelsLayer {
                   child: WorldMapPinLabel(
                     title: card.title,
                     color: stateOf(id).labelColor,
-                    isNew: isNewActivity(card.ratingCount),
                   ),
                 ),
               ),

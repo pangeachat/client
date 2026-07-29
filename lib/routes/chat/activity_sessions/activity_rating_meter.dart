@@ -2,37 +2,55 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// Compact aggregate-rating meter for an activity (issue #7194): a small ring
-/// filled to the up-fraction with the percentage beside it, tinted between
-/// light red (all thumbs down) and light purple (all thumbs up) per Ava's
-/// design. Callers hide it while there are no ratings; it renders nothing for
-/// a zero count so no surface ever shows a meaningless 0%.
+/// The activity plan page's rating indicator, top-right of the header per the
+/// #7194/#7993 designs: a NEW pill while the activity has fewer than
+/// [kNewRatingThreshold] ratings, then a small ring filled to the up-fraction
+/// with the percentage beside it, tinted between light red (all thumbs down)
+/// and light purple (all thumbs up). This is the ONLY surface that shows the
+/// badge/meter — map pins and cards carry neither (the rating enters the map
+/// solely as a score term; world-map.instructions.md).
 class ActivityRatingMeter extends StatelessWidget {
-  /// Up-fraction 0..1.
-  final double average;
-  final int count;
+  /// Up-fraction 0..1, null when the read path didn't carry it.
+  final double? average;
+  final int? count;
 
-  const ActivityRatingMeter({
-    super.key,
-    required this.average,
-    required this.count,
-  });
+  const ActivityRatingMeter({super.key, this.average, this.count});
 
   static const Color _downColor = Color(0xFFEFB8B8); // light red
   static const Color _upColor = AppConfig.primaryColorLight; // light purple
 
   @override
   Widget build(BuildContext context) {
-    if (count <= 0) return const SizedBox.shrink();
-
     final theme = Theme.of(context);
-    final clamped = average.clamp(0.0, 1.0);
+
+    if (isNewActivity(count)) {
+      return Tooltip(
+        message: L10n.of(context).newActivityBadge,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          decoration: BoxDecoration(
+            color: AppConfig.primaryColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            L10n.of(context).newActivityBadge,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
+
+    final clamped = (average ?? 0.0).clamp(0.0, 1.0);
     final percent = (clamped * 100).round();
     final color = Color.lerp(_downColor, _upColor, clamped)!;
 
     return Tooltip(
-      message: L10n.of(context).activityRatingMeterLabel(percent, count),
+      message: L10n.of(context).activityRatingMeterLabel(percent, count!),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         spacing: 4.0,
