@@ -577,6 +577,84 @@ void main() {
     );
   });
 
+  group('course shortcut is its own semantics node (#7944)', () {
+    testWidgets(
+      'the course shortcut surfaces as a standalone tappable node, not merged '
+      'into the rail container',
+      (tester) async {
+        // The other three rail items are IconButtons, which stand alone. The
+        // course shortcut is a custom InkWell; without `container: true` its
+        // tap + selected state merged UP into the rail's "Navigation options"
+        // node, leaving it with no node of its own. On Flutter web with the
+        // accessibility layer active (Firefox / release builds), a tap on that
+        // merged rail node dispatched to the live map behind and fell through —
+        // so a collapsed course could never be re-expanded by the shortcut
+        // (#7944; the sibling web-semantics tap loss of #7927 / #7803). Forcing
+        // the shortcut into its own container node fixes it.
+        final semantics = tester.ensureSemantics();
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavitySection: null,
+          courseShortcutHostsCavity: true,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+
+        final l10n = L10n.of(tester.element(find.byType(MobileNavWidget)));
+
+        SemanticsNode root = tester.getSemantics(find.byType(MobileNavWidget));
+        while (root.parent != null) {
+          root = root.parent!;
+        }
+
+        SemanticsData? shortcut;
+        SemanticsData? railContainer;
+        void collect(SemanticsNode node) {
+          final data = node.getSemanticsData();
+          if (data.label == 'Add a course') shortcut = data;
+          if (data.label == l10n.navOptionsLabel) railContainer = data;
+          node.visitChildren((child) {
+            collect(child);
+            return true;
+          });
+        }
+
+        collect(root);
+
+        expect(
+          shortcut,
+          isNotNull,
+          reason:
+              'the course shortcut must surface as its own labelled node, not '
+              'be absorbed into the rail container',
+        );
+        expect(
+          shortcut!.hasAction(SemanticsAction.tap),
+          isTrue,
+          reason: 'the standalone shortcut node must carry its own tap action',
+        );
+
+        // The crux of #7944: the rail container must NOT carry the shortcut's
+        // tap — a merged tap on the wide rail node is what Firefox dropped to
+        // the map.
+        expect(
+          railContainer,
+          isNotNull,
+          reason: 'the rail container node should still exist',
+        );
+        expect(
+          railContainer!.hasAction(SemanticsAction.tap),
+          isFalse,
+          reason: 'the rail container must not absorb the shortcut tap',
+        );
+
+        semantics.dispose();
+      },
+    );
+  });
+
   group('tap-outside collapse', () {
     testWidgets(
       'tapping outside collapses (ephemeral — no navigation), and the rail '
