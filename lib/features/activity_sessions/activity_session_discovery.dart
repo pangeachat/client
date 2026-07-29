@@ -59,12 +59,8 @@ extension ActivitySessionDiscovery on Client {
       if (sessions == null) {
         sessions = await paginateActivitySessionRooms(
           spaceId: space.id,
-          fetchPage: (from) => getSpaceHierarchy(
-            space.id,
-            maxDepth: 1,
-            from: from,
-            limit: 100,
-          ),
+          fetchPage: (from) =>
+              getSpaceHierarchy(space.id, maxDepth: 1, from: from, limit: 100),
         );
         if (sessions == null) continue; // failed read — retry next cycle
         _CourseSessionScanCache.instance.store(space.id, sessions, nowMs);
@@ -120,8 +116,7 @@ Future<Map<String, String>?> paginateActivitySessionRooms({
       for (final child in page.rooms) {
         if (child.roomId == spaceId) continue; // the space root itself
         final type = child.roomType;
-        if (type == null ||
-            !type.startsWith(PangeaRoomTypes.activitySession)) {
+        if (type == null || !type.startsWith(PangeaRoomTypes.activitySession)) {
           continue; // only activity-session rooms
         }
         found[child.roomId] = type;
@@ -203,8 +198,7 @@ void debugStoreActivitySessionScan(
   String spaceId,
   Map<String, String> sessions,
   int nowMs,
-) =>
-    _CourseSessionScanCache.instance.store(spaceId, sessions, nowMs);
+) => _CourseSessionScanCache.instance.store(spaceId, sessions, nowMs);
 
 @visibleForTesting
 Duration get debugActivitySessionScanTtl => _CourseSessionScanCache.ttl;

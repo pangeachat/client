@@ -366,6 +366,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
               tooltip: L10n.of(context).reportGrammarIssueTooltip,
               onPressed: onFlagGrammarDetails,
             ),
+          // Practice lives top-right in the app bar (not a bottom FAB) so
+          // playtesters actually notice it (#7979). Only on the summary
+          // (construct == null); a construct detail shows the report flag
+          // instead, so the two never collide.
+          if (widget.construct == null && widget.showPracticeButton) ...[
+            _PracticeButton(view: widget.view),
+            const SizedBox(width: 8.0),
+          ],
         ],
       ),
       body: Padding(
@@ -393,11 +401,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ],
         ),
       ),
-
-      floatingActionButton:
-          widget.construct == null && widget.showPracticeButton
-          ? _PracticeButton(view: widget.view)
-          : null,
     );
   }
 }
@@ -447,39 +450,60 @@ class _PracticeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final analyticsService = Matrix.of(context).analyticsDataService;
+
+    // App-bar-friendly pill (was a bottom FAB, #7979). The enabled colors
+    // match the old FAB default — a `primaryContainer` pill — so relocating it
+    // to the top-right doesn't change its look.
+    //
+    // Visible label is the short "Practice" (not "Practice vocabulary" /
+    // "Practice grammar"): the panel title already says Vocab/Grammar, so the
+    // long phrase was redundant and wide enough to squeeze that title out of
+    // the app bar. Keeping the button narrow lets the title stay fully visible
+    // (#7979). The full phrase rides along as the tooltip / accessible name.
+    final label = L10n.of(context).practice;
+    final tooltip = view.practiceButtonText(context);
+
     if (analyticsService.isInitializing) {
-      return FloatingActionButton.extended(
-        onPressed: () =>
-            _showSnackbar(context, L10n.of(context).loadingPleaseWait),
-        label: Text(view.practiceButtonText(context)),
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        foregroundColor: Theme.of(
-          context,
-        ).colorScheme.onSurface.withValues(alpha: 0.5),
+      return Tooltip(
+        message: tooltip,
+        child: FilledButton.icon(
+          onPressed: () =>
+              _showSnackbar(context, L10n.of(context).loadingPleaseWait),
+          icon: const Icon(Symbols.fitness_center, size: 18),
+          label: Text(label),
+          style: FilledButton.styleFrom(
+            backgroundColor: colorScheme.surface,
+            foregroundColor: colorScheme.onSurface.withValues(alpha: 0.5),
+          ),
+        ),
       );
     }
 
     final count = analyticsService.numConstructs(view);
     final enabled = count >= 10;
 
-    return FloatingActionButton.extended(
-      onPressed: enabled
-          ? () => _startPractice(context)
-          : () => _showSnackbar(context, L10n.of(context).notEnoughToPractice),
-      backgroundColor: enabled
-          ? null
-          : Theme.of(context).colorScheme.surfaceContainer,
-      foregroundColor: enabled
-          ? null
-          : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-      label: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(enabled ? Symbols.fitness_center : Icons.lock_outline, size: 18),
-          const SizedBox(width: 4),
-          Text(view.practiceButtonText(context)),
-        ],
+    return Tooltip(
+      message: tooltip,
+      child: FilledButton.icon(
+        onPressed: enabled
+            ? () => _startPractice(context)
+            : () =>
+                  _showSnackbar(context, L10n.of(context).notEnoughToPractice),
+        icon: Icon(
+          enabled ? Symbols.fitness_center : Icons.lock_outline,
+          size: 18,
+        ),
+        label: Text(label),
+        style: FilledButton.styleFrom(
+          backgroundColor: enabled
+              ? colorScheme.primaryContainer
+              : colorScheme.surfaceContainer,
+          foregroundColor: enabled
+              ? colorScheme.onPrimaryContainer
+              : colorScheme.onSurface.withValues(alpha: 0.5),
+        ),
       ),
     );
   }

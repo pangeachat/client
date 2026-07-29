@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:06.927518",
+    "@@last_modified": "2026-07-29 10:04:12.542596",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,11 @@
     "closeArchive": "關閉存檔",
     "activityActions": "活動動作",
     "ongoing": "進行中",
-    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。"
+    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。",
+    "activityPreviewLabel": "活動預覽：",
+    "participantRowLabel": "{joined} 位參與者已加入 (共 {total} 位)",
+    "ongoingPendingLabel": "正在等待其他人加入",
+    "joinableLabel": "可加入",
+    "inProgressLabel": "已完成",
+    "availableLabel": "建立活動"
 }

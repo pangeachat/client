@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:58.565488",
+    "@@last_modified": "2026-07-29 10:04:01.918175",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,11 @@
     "closeArchive": "Chiudi archivio",
     "activityActions": "Azioni attività",
     "ongoing": "In corso",
-    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni."
+    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni.",
+    "activityPreviewLabel": "Anteprima attività: ",
+    "participantRowLabel": "{joined} di {total} partecipanti si sono uniti",
+    "ongoingPendingLabel": "In attesa che altri si uniscano",
+    "joinableLabel": "Partecipabile",
+    "inProgressLabel": "Completato in precedenza",
+    "availableLabel": "Crea attività"
 }

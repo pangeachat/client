@@ -33,8 +33,7 @@ void main() {
   GetSpaceHierarchyResponse page(
     List<SpaceRoomsChunk$2> rooms, {
     String? nextBatch,
-  }) =>
-      GetSpaceHierarchyResponse(rooms: rooms, nextBatch: nextBatch);
+  }) => GetSpaceHierarchyResponse(rooms: rooms, nextBatch: nextBatch);
 
   group('paginateActivitySessionRooms', () {
     test('finds a session on page 2 (the #7982 regression)', () async {
@@ -42,15 +41,14 @@ void main() {
       // continuation token; the session room only appears on page 2. The old
       // single-page read stopped at page 1 and never saw it.
       final pages = <GetSpaceHierarchyResponse>[
-        page(
-          [
-            chunk(spaceId), // the space root itself — skipped
-            chunk('!analytics:fakeServer.notExisting',
-                roomType: PangeaRoomTypes.analytics),
-            chunk('!chat:fakeServer.notExisting'),
-          ],
-          nextBatch: 'token-1',
-        ),
+        page([
+          chunk(spaceId), // the space root itself — skipped
+          chunk(
+            '!analytics:fakeServer.notExisting',
+            roomType: PangeaRoomTypes.analytics,
+          ),
+          chunk('!chat:fakeServer.notExisting'),
+        ], nextBatch: 'token-1'),
         page([chunk('!session:fakeServer.notExisting', roomType: sessionType)]),
       ];
 
@@ -68,43 +66,49 @@ void main() {
       expect(result, {'!session:fakeServer.notExisting': sessionType});
     });
 
-    test('keeps only activity-session rooms, dropping others and the root',
-        () async {
-      final result = await paginateActivitySessionRooms(
-        spaceId: spaceId,
-        fetchPage: (from) async => page([
-          chunk(spaceId, roomType: 'm.space'),
-          chunk('!analytics:x', roomType: PangeaRoomTypes.analytics),
-          chunk('!plainchat:x'), // no room type
-          chunk('!s1:x', roomType: sessionType),
-          chunk('!s2:x', roomType: '${PangeaRoomTypes.activitySession}:other'),
-        ]),
-      );
-      expect(result, {
-        '!s1:x': sessionType,
-        '!s2:x': '${PangeaRoomTypes.activitySession}:other',
-      });
-    });
+    test(
+      'keeps only activity-session rooms, dropping others and the root',
+      () async {
+        final result = await paginateActivitySessionRooms(
+          spaceId: spaceId,
+          fetchPage: (from) async => page([
+            chunk(spaceId, roomType: 'm.space'),
+            chunk('!analytics:x', roomType: PangeaRoomTypes.analytics),
+            chunk('!plainchat:x'), // no room type
+            chunk('!s1:x', roomType: sessionType),
+            chunk(
+              '!s2:x',
+              roomType: '${PangeaRoomTypes.activitySession}:other',
+            ),
+          ]),
+        );
+        expect(result, {
+          '!s1:x': sessionType,
+          '!s2:x': '${PangeaRoomTypes.activitySession}:other',
+        });
+      },
+    );
 
-    test('stops at the page cap and logs rather than looping forever',
-        () async {
-      // A pathological server that always returns another page. The cap must
-      // bound the number of reads; we assert it stopped at maxCalls.
-      var calls = 0;
-      final result = await paginateActivitySessionRooms(
-        spaceId: spaceId,
-        maxCalls: 3,
-        fetchPage: (from) async {
-          calls++;
-          return page(
-            [chunk('!s$calls:x', roomType: sessionType)],
-            nextBatch: 'always-more',
-          );
-        },
-      );
-      expect(calls, 3);
-      expect(result, hasLength(3));
-    });
+    test(
+      'stops at the page cap and logs rather than looping forever',
+      () async {
+        // A pathological server that always returns another page. The cap must
+        // bound the number of reads; we assert it stopped at maxCalls.
+        var calls = 0;
+        final result = await paginateActivitySessionRooms(
+          spaceId: spaceId,
+          maxCalls: 3,
+          fetchPage: (from) async {
+            calls++;
+            return page([
+              chunk('!s$calls:x', roomType: sessionType),
+            ], nextBatch: 'always-more');
+          },
+        );
+        expect(calls, 3);
+        expect(result, hasLength(3));
+      },
+    );
 
     test('returns null on a failed read so the caller retries', () async {
       final result = await paginateActivitySessionRooms(
@@ -140,10 +144,9 @@ void main() {
       debugStoreActivitySessionScan(spaceId, {'!a:x': sessionType}, t0);
 
       // Within the TTL: reused (so the ~3s loop skips a re-scan).
-      expect(
-        debugFreshActivitySessionScan(spaceId, t0 + ttlMs),
-        {'!a:x': sessionType},
-      );
+      expect(debugFreshActivitySessionScan(spaceId, t0 + ttlMs), {
+        '!a:x': sessionType,
+      });
       // Past the TTL: a miss, so the caller re-paginates.
       expect(debugFreshActivitySessionScan(spaceId, t0 + ttlMs + 1), isNull);
     });

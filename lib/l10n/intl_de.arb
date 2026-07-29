@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-27 15:35:55.921389",
+    "@@last_modified": "2026-07-29 10:03:58.739173",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9679,5 +9679,11 @@
     "closeArchive": "Archiv schließen",
     "activityActions": "Aktivitätsaktionen",
     "ongoing": "Laufend",
-    "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen."
+    "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen.",
+    "activityPreviewLabel": "Aktivitätsvorschau: ",
+    "participantRowLabel": "{joined} von {total} Teilnehmern sind beigetreten",
+    "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
+    "joinableLabel": "Beitretbar",
+    "inProgressLabel": "Zuvor abgeschlossen",
+    "availableLabel": "Aktivität erstellen"
 }

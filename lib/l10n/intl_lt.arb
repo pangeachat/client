@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-27 15:35:59.867645",
+    "@@last_modified": "2026-07-29 10:04:04.298196",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10473,5 +10473,11 @@
     "closeArchive": "Uždaryti archyvą",
     "activityActions": "Veiklos veiksmai",
     "ongoing": "Vykdoma",
-    "emptyInviteSearchHint": "Nerandate, ko ieškote? Gali būti, kad jie turi leisti savo profilį rasti paieškoje. Patikrinkite „Redaguoti profilį“ nustatymuose."
+    "emptyInviteSearchHint": "Nerandate, ko ieškote? Gali būti, kad jie turi leisti savo profilį rasti paieškoje. Patikrinkite „Redaguoti profilį“ nustatymuose.",
+    "activityPreviewLabel": "Veiklos peržiūra: ",
+    "participantRowLabel": "Prisijungė {joined} iš {total} dalyvių",
+    "ongoingPendingLabel": "Laukiama, kol prisijungs kiti",
+    "joinableLabel": "Galima prisijungti",
+    "inProgressLabel": "Anksčiau baigta",
+    "availableLabel": "Sukurti veiklą"
 }
