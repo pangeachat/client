@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-27 15:36:11.665968",
+    "@@last_modified": "2026-07-29 10:04:07.177531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Tsekani zosungidwa",
     "activityActions": "Zochita",
     "ongoing": "Ikuchitika",
-    "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda."
+    "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda.",
+    "activityPreviewLabel": "Chithunzithunzi cha zochitika: ",
+    "participantRowLabel": "{joined} mwa {total} omwe atenga nawo mbali alowa",
+    "ongoingPendingLabel": "Kudikirira ena kuti alowe",
+    "joinableLabel": "Olowa",
+    "inProgressLabel": "Zamalizidwa kale",
+    "availableLabel": "Pangani zochitika"
 }

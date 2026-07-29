@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-27 15:35:54.613178",
+    "@@last_modified": "2026-07-29 10:03:57.100695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Maak argief toe",
     "activityActions": "Aktiwiteitaksies",
     "ongoing": "Deurlopend",
-    "emptyInviteSearchHint": "Kan jy nie vind wie jy soek nie? Hulle moet dalk toelaat dat hul profiel in soektogte gevind word. Gaan na Wysig Profiel in Instellings."
+    "emptyInviteSearchHint": "Kan jy nie vind wie jy soek nie? Hulle moet dalk toelaat dat hul profiel in soektogte gevind word. Gaan na Wysig Profiel in Instellings.",
+    "activityPreviewLabel": "Aktiwiteitvoorskou: ",
+    "participantRowLabel": "{joined} uit {total} deelnemers het aangesluit",
+    "ongoingPendingLabel": "Wag vir ander om aan te sluit",
+    "joinableLabel": "Aansluitbaar",
+    "inProgressLabel": "Voorheen voltooi",
+    "availableLabel": "Skep aktiwiteit"
 }

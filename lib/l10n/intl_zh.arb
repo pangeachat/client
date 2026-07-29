@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-27 15:36:06.548135",
+    "@@last_modified": "2026-07-29 10:04:12.057238",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,11 @@
     "closeArchive": "关闭存档",
     "activityActions": "活动操作",
     "ongoing": "进行中",
-    "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。"
+    "emptyInviteSearchHint": "找不到您要找的人？他们可能需要在设置中允许其个人资料被搜索到。请检查“编辑个人资料”。",
+    "activityPreviewLabel": "活动预览：",
+    "participantRowLabel": "{joined} 位参与者已加入（共 {total} 位）",
+    "ongoingPendingLabel": "正在等待其他人加入",
+    "joinableLabel": "可加入",
+    "inProgressLabel": "已完成",
+    "availableLabel": "创建活动"
 }

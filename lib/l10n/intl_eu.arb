@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-27 15:35:56.557506",
+    "@@last_modified": "2026-07-29 10:03:59.061499",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,11 @@
     "closeArchive": "Artxiboa itxi",
     "activityActions": "Jarduera-ekintzak",
     "ongoing": "Abian",
-    "emptyInviteSearchHint": "Ez duzu aurkitzen bilatzen ari zarena? Baliteke haien profilak bilaketan aurkitzea baimendu behar izatea. Egiaztatu Editatu profila Ezarpenetan."
+    "emptyInviteSearchHint": "Ez duzu aurkitzen bilatzen ari zarena? Baliteke haien profilak bilaketan aurkitzea baimendu behar izatea. Egiaztatu Editatu profila Ezarpenetan.",
+    "activityPreviewLabel": "Jardueraren aurrebista: ",
+    "participantRowLabel": "{total} parte-hartzaileetatik {joined} batu dira",
+    "ongoingPendingLabel": "Besteak batzeko zain",
+    "joinableLabel": "Batu daiteke",
+    "inProgressLabel": "Aurretik osatua",
+    "availableLabel": "Sortu jarduera"
 }

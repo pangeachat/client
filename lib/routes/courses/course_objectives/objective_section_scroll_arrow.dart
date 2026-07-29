@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 
 enum ArrowDirection {
@@ -31,19 +29,24 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Listener(
-        behavior: HitTestBehavior.opaque,
-        onPointerDown: (_) => Logs().w('pointer down ${direction.name}'),
+    // Expose the arrow as an explicit button. On Flutter web, when the
+    // accessibility layer is active, pointer events are dispatched through the
+    // semantics DOM tree rather than the render tree, so the arrow needs its own
+    // tappable semantics node that sits on top of the activity cards beneath it.
+    // The caller drops the card semantics underneath (a sibling BlockSemantics)
+    // so the cards can't intercept the tap (#7803). Do NOT wrap this in an
+    // AbsorbPointer / IgnorePointer: those strip this node's semantics and
+    // reintroduce the click-through.
+    return Semantics(
+      button: true,
+      label: direction.label(L10n.of(context)),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: () {
-            Logs().w('tap ${direction.name}');
-            onTap();
-          },
           behavior: HitTestBehavior.opaque,
+          onTap: onTap,
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(color: theme.colorScheme.surface),
             child: Center(child: Icon(direction.icon)),
           ),

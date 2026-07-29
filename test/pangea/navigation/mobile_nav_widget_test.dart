@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -31,6 +32,7 @@ void main() {
     bool courseShortcutHostsCavity = false,
     VoidCallback? onDismissed,
     ValueChanged<bool>? onCavityFullChanged,
+    double keyboardInset = 0.0,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -55,6 +57,7 @@ void main() {
             courseShortcutHostsCavity: courseShortcutHostsCavity,
             onDismissed: onDismissed,
             onCavityFullChanged: onCavityFullChanged,
+            keyboardInset: keyboardInset,
           ),
         ),
       ),
@@ -82,14 +85,13 @@ void main() {
         w.onTap != null,
   );
 
+  // The cavity's rendered height = its animated rest height minus the (instant)
+  // keyboard trim. It lives on the SizedBox keyed 'navCavityBox' inside the
+  // cavity's TweenAnimationBuilder; absent (0) when there is no cavity.
   double cavityHeightOf(WidgetTester tester) {
-    final container = tester.widget<AnimatedContainer>(
-      find.byType(AnimatedContainer),
-    );
-    final constraints = container.constraints;
-    return container.decoration == null && constraints == null
-        ? 0.0
-        : (container.constraints?.maxHeight ?? 0.0);
+    final finder = find.byKey(const ValueKey('navCavityBox'));
+    if (finder.evaluate().isEmpty) return 0.0;
+    return tester.getSize(finder).height;
   }
 
   group('rail', () {
@@ -400,6 +402,78 @@ void main() {
         );
       },
     );
+
+    testWidgets(
+      'the handle is its own tappable semantics node, not merged into the '
+      'scrollable cavity (#7927)',
+      (tester) async {
+        // The activity-plan cavity (non-peek, dismiss-on-close): its outer
+        // cavity GestureDetector carries the vertical-drag (scroll) actions but
+        // no tap of its own. The handle must still surface as its OWN button
+        // node. If it merges into the scrollable cavity node — inheriting
+        // scrollUp/scrollDown — Flutter web's accessibility layer stops
+        // delivering the tap, so clicking the handle does nothing and the sheet
+        // can only be dragged (the #7927 report: reproduced on Opera/Windows,
+        // where the a11y layer is active, but not on Chrome, where it isn't).
+        final semantics = tester.ensureSemantics();
+        await pumpNav(
+          tester,
+          cavityChild: const Text('Activity plan'),
+          cavityKey: 'activity-a',
+          onDismissed: () {},
+        );
+
+        final l10n = L10n.of(tester.element(find.byType(MobileNavWidget)));
+
+        // Walk to the semantics root from any node, then collect every node
+        // carrying the handle label.
+        SemanticsNode root = tester.getSemantics(find.byType(MobileNavWidget));
+        while (root.parent != null) {
+          root = root.parent!;
+        }
+
+        final labelled = <SemanticsData>[];
+        void collect(SemanticsNode node) {
+          final data = node.getSemanticsData();
+          if (data.label.contains(l10n.resizeCoursePanel)) labelled.add(data);
+          node.visitChildren((child) {
+            collect(child);
+            return true;
+          });
+        }
+
+        collect(root);
+
+        expect(
+          labelled,
+          hasLength(1),
+          reason: 'the handle must surface as exactly one semantics node',
+        );
+        final handle = labelled.single;
+
+        expect(
+          handle.hasAction(SemanticsAction.tap),
+          isTrue,
+          reason: 'the handle node must run the resize toggle on tap',
+        );
+        // The crux of #7927: a handle merged into the scrollable cavity node
+        // would inherit its scroll actions (and the hosted content's label),
+        // and that scrollable+tappable node drops the tap on Flutter web.
+        expect(
+          handle.hasAction(SemanticsAction.scrollUp),
+          isFalse,
+          reason: 'the handle must be its own node, not the scrollable cavity',
+        );
+        expect(handle.hasAction(SemanticsAction.scrollDown), isFalse);
+        expect(
+          handle.label,
+          l10n.resizeCoursePanel,
+          reason: 'a merged node would also carry the cavity content label',
+        );
+
+        semantics.dispose();
+      },
+    );
   });
 
   group('the toggle keys on what the cavity hosts (#7537)', () {
@@ -689,6 +763,47 @@ void main() {
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));
+    });
+  });
+
+  group('keyboard inset (#7754)', () {
+    // The cavity shrinks by the keyboard height so its top (and the search
+    // field above it) stays clear of the analytics bar (#7754).
+    testWidgets('shrinks the cavity by the keyboard height', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+      );
+      final maxHeightPx = 800.0 * 0.75;
+      // Baseline: opens at half with no keyboard.
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5, 1.0));
+
+      // Remount with a 200px keyboard up: the half-height cavity is trimmed
+      // by exactly that inset.
+      await unmountNav(tester);
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        keyboardInset: 200.0,
+      );
+      expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5 - 200.0, 1.0));
+    });
+
+    testWidgets('a keyboard taller than the cavity clamps to zero, not '
+        'negative', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Chat list'),
+        cavityKey: 'chats',
+        maxHeightFraction: 0.75,
+        // Half height is 300px; a 500px inset would drive it negative.
+        keyboardInset: 500.0,
+      );
+      expect(cavityHeightOf(tester), 0.0);
     });
   });
 

@@ -8,8 +8,9 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// chosen by the [placePinLabels] geometry pass; this widget is pure
 /// presentation. It's sized by its enclosing marker box (measured to match
 /// [kPinLabelTextStyle]), so the text already fits — [kPinLabelMaxWidth] caps
-/// it upstream and it ellipsizes if ever over. Non-interactive: the caller
-/// wraps it in an [IgnorePointer] so the wide box never intercepts pin/map taps.
+/// it upstream and it ellipsizes if ever over. The caller wraps it in a
+/// tap target that opens the label's own activity (the box is measured tight to
+/// the text, so the tappable area matches the visible label — #7920).
 class WorldMapPinLabel extends StatelessWidget {
   final String title;
   final Color color;
@@ -35,20 +36,22 @@ class WorldMapPinLabel extends StatelessWidget {
     // same colorScheme.surface the star dot / large card already halo against
     // — world_map_state_dot.dart, world_map_large_card.dart).
     final haloColor = Theme.of(context).colorScheme.surface;
-    final label = Stack(
-      alignment: Alignment.center,
-      children: [
-        text(
-          kPinLabelTextStyle.copyWith(
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 3
-              ..strokeJoin = StrokeJoin.round
-              ..color = haloColor,
+    final label = ExcludeSemantics(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          text(
+            kPinLabelTextStyle.copyWith(
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 3
+                ..strokeJoin = StrokeJoin.round
+                ..color = haloColor,
+            ),
           ),
-        ),
-        text(kPinLabelTextStyle.copyWith(color: color)),
-      ],
+          text(kPinLabelTextStyle.copyWith(color: color)),
+        ],
+      ),
     );
     return opacity >= 1.0 ? label : Opacity(opacity: opacity, child: label);
   }

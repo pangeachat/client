@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-27 15:36:01.018917",
+    "@@last_modified": "2026-07-29 10:04:05.723688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Tutup arkib",
     "activityActions": "Tindakan aktiviti",
     "ongoing": "Sedang berlangsung",
-    "emptyInviteSearchHint": "Tidak dapat mencari orang yang anda cari? Mereka mungkin perlu membenarkan profil mereka ditemui dalam carian. Semak Edit Profil dalam Tetapan."
+    "emptyInviteSearchHint": "Tidak dapat mencari orang yang anda cari? Mereka mungkin perlu membenarkan profil mereka ditemui dalam carian. Semak Edit Profil dalam Tetapan.",
+    "activityPreviewLabel": "Pratonton aktiviti: ",
+    "participantRowLabel": "{joined} daripada {total} peserta telah menyertai",
+    "ongoingPendingLabel": "Menunggu orang lain untuk menyertai",
+    "joinableLabel": "Boleh disertai",
+    "inProgressLabel": "Selesai sebelumnya",
+    "availableLabel": "Cipta aktiviti"
 }

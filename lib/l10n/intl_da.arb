@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-27 15:35:55.498139",
+    "@@last_modified": "2026-07-29 10:03:58.328936",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10618,5 +10618,11 @@
     "closeArchive": "Luk arkiv",
     "activityActions": "Aktivitetshandlinger",
     "ongoing": "I gang",
-    "emptyInviteSearchHint": "Kan du ikke finde den, du leder efter? De skal muligvis tillade, at deres profil kan findes i søgningen. Tjek Rediger profil i Indstillinger."
+    "emptyInviteSearchHint": "Kan du ikke finde den, du leder efter? De skal muligvis tillade, at deres profil kan findes i søgningen. Tjek Rediger profil i Indstillinger.",
+    "activityPreviewLabel": "Aktivitetsforhåndsvisning: ",
+    "participantRowLabel": "{joined} ud af {total} deltagere er med",
+    "ongoingPendingLabel": "Venter på, at andre deltager",
+    "joinableLabel": "Kan deltages i",
+    "inProgressLabel": "Tidligere gennemført",
+    "availableLabel": "Opret aktivitet"
 }

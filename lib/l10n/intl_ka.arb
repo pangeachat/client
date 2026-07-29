@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-27 15:35:59.175931",
+    "@@last_modified": "2026-07-29 10:04:02.573388",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10598,5 +10598,11 @@
     "closeArchive": "არქივის დახურვა",
     "activityActions": "აქტივობის მოქმედებები",
     "ongoing": "მიმდინარე",
-    "emptyInviteSearchHint": "ვერ პოულობთ ვისაც ეძებთ? შესაძლოა, მათ უნდა დაუშვან თავიანთი პროფილის მოძებნა. შეამოწმეთ „პროფილის რედაქტირება“ პარამეტრებში."
+    "emptyInviteSearchHint": "ვერ პოულობთ ვისაც ეძებთ? შესაძლოა, მათ უნდა დაუშვან თავიანთი პროფილის მოძებნა. შეამოწმეთ „პროფილის რედაქტირება“ პარამეტრებში.",
+    "activityPreviewLabel": "აქტივობის გადახედვა: ",
+    "participantRowLabel": "{joined} მონაწილე შეუერთდა {total}-დან",
+    "ongoingPendingLabel": "სხვების შემოერთებას ელოდება",
+    "joinableLabel": "შესაერთებელი",
+    "inProgressLabel": "ადრე დასრულებული",
+    "availableLabel": "აქტივობის შექმნა"
 }
