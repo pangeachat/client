@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:03.055520",
+    "@@last_modified": "2026-07-29 10:04:08.272957",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10424,5 +10424,11 @@
     "closeArchive": "Închide arhiva",
     "activityActions": "Acțiuni de activitate",
     "ongoing": "În desfășurare",
-    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări."
+    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări.",
+    "activityPreviewLabel": "Previzualizare activitate:",
+    "participantRowLabel": "{joined} din {total} participanți s-au alăturat",
+    "ongoingPendingLabel": "Se așteaptă ca alții să se alăture",
+    "joinableLabel": "Disponibil pentru alăturare",
+    "inProgressLabel": "Finalizat anterior",
+    "availableLabel": "Creează activitate"
 }

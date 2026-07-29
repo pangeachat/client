@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-27 15:35:57.104830",
+    "@@last_modified": "2026-07-29 10:03:59.965114",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9703,5 +9703,11 @@
     "closeArchive": "Dún an chartlann",
     "activityActions": "Gníomhartha gníomhaíochta",
     "ongoing": "Ar siúl",
-    "emptyInviteSearchHint": "Ní féidir leat teacht ar an duine atá uait? Seans go gcaithfidh siad a bpróifíl a cheadú le go bhfaighfear í sa chuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe."
+    "emptyInviteSearchHint": "Ní féidir leat teacht ar an duine atá uait? Seans go gcaithfidh siad a bpróifíl a cheadú le go bhfaighfear í sa chuardach. Seiceáil Cuir Próifíl in Eagar sna Socruithe.",
+    "activityPreviewLabel": "Réamhamharc ar an ngníomhaíocht: ",
+    "participantRowLabel": "Tá {joined} as {total} rannpháirtí páirteach",
+    "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
+    "joinableLabel": "Inscortha",
+    "inProgressLabel": "Críochnaithe roimhe seo",
+    "availableLabel": "Cruthaigh gníomhaíocht"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-27 15:35:57.754773",
+    "@@last_modified": "2026-07-29 10:04:00.724310",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10128,5 +10128,11 @@
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U tijeku",
-    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama."
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama.",
+    "activityPreviewLabel": "Pregled aktivnosti: ",
+    "participantRowLabel": "{joined} od {total} sudionika pridružilo se",
+    "ongoingPendingLabel": "Čekanje da se drugi pridruže",
+    "joinableLabel": "Pridruživo",
+    "inProgressLabel": "Prethodno dovršeno",
+    "availableLabel": "Stvori aktivnost"
 }

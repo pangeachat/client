@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:58.165903",
+    "@@last_modified": "2026-07-29 10:04:01.249382",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9765,5 +9765,11 @@
     "closeArchive": "Tutup arsip",
     "activityActions": "Tindakan aktivitas",
     "ongoing": "Sedang Berlangsung",
-    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan."
+    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan.",
+    "activityPreviewLabel": "Pratinjau aktivitas: ",
+    "participantRowLabel": "{joined} dari {total} peserta telah bergabung",
+    "ongoingPendingLabel": "Menunggu yang lain bergabung",
+    "joinableLabel": "Dapat bergabung",
+    "inProgressLabel": "Telah selesai",
+    "availableLabel": "Buat aktivitas"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-27 15:35:57.798532",
+    "@@last_modified": "2026-07-29 10:04:00.987182",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9795,5 +9795,11 @@
     "closeArchive": "Archívum bezárása",
     "activityActions": "Tevékenységműveletek",
     "ongoing": "Folyamatban",
-    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot."
+    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot.",
+    "activityPreviewLabel": "Tevékenység előnézete: ",
+    "participantRowLabel": "{total} résztvevőből {joined} csatlakozott",
+    "ongoingPendingLabel": "Várakozás a többiekre",
+    "joinableLabel": "Csatlakozható",
+    "inProgressLabel": "Korábban befejezett",
+    "availableLabel": "Tevékenység létrehozása"
 }

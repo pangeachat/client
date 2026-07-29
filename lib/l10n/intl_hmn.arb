@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-27 15:35:57.711677",
+    "@@last_modified": "2026-07-29 10:04:01.538257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Kaw qhov chaw khaws cia",
     "activityActions": "Kev ua ub no",
     "ongoing": "Tabtom",
-    "emptyInviteSearchHint": "Nrhiav tsis tau tus koj xav tau? Tej zaum lawv yuav tsum tso cai rau lawv tus kheej kom pom hauv kev tshawb nrhiav. Mus saib Kho Tus Kheej Hauv Chaw."
+    "emptyInviteSearchHint": "Nrhiav tsis tau tus koj xav tau? Tej zaum lawv yuav tsum tso cai rau lawv tus kheej kom pom hauv kev tshawb nrhiav. Mus saib Kho Tus Kheej Hauv Chaw.",
+    "activityPreviewLabel": "Saib ua ntej kev ua si: ",
+    "participantRowLabel": "{joined} ntawm {total} tus neeg koom tau koom lawm",
+    "ongoingPendingLabel": "Tos lwm tus tuaj koom",
+    "joinableLabel": "Koom tau",
+    "inProgressLabel": "Ua tiav lawm",
+    "availableLabel": "Tsim kev ua si"
 }

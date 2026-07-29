@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-27 15:35:58.765687",
+    "@@last_modified": "2026-07-29 10:04:02.559649",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Mechie ebe nchekwa",
     "activityActions": "Omume ọrụ",
     "ongoing": "Na-aga n'ihu",
-    "emptyInviteSearchHint": "Ị chọtaghị onye ị na-achọ? Ha nwere ike ịkwesịrị ikwe ka a chọta profaịlụ ha na nchọta. Lelee Dezie Profaịlụ na Ntọala."
+    "emptyInviteSearchHint": "Ị chọtaghị onye ị na-achọ? Ha nwere ike ịkwesịrị ikwe ka a chọta profaịlụ ha na nchọta. Lelee Dezie Profaịlụ na Ntọala.",
+    "activityPreviewLabel": "Nlele ọrụ: ",
+    "participantRowLabel": "Ndị sonyere {joined} n'ime {total} esonyela",
+    "ongoingPendingLabel": "Na-eche ka ndị ọzọ sonye",
+    "joinableLabel": "Enwere ike isonye",
+    "inProgressLabel": "Emechara na mbụ",
+    "availableLabel": "Mepụta ọrụ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-27 15:35:54.570883",
+    "@@last_modified": "2026-07-29 10:03:56.386188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U toku",
-    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dozvoliti da se njihov profil pronađe u pretrazi. Provjerite Uredi profil u Postavkama."
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dozvoliti da se njihov profil pronađe u pretrazi. Provjerite Uredi profil u Postavkama.",
+    "activityPreviewLabel": "Pregled aktivnosti: ",
+    "participantRowLabel": "{joined} od {total} učesnika se pridružilo",
+    "ongoingPendingLabel": "Čekanje da se drugi pridruže",
+    "joinableLabel": "Moguće pridružiti se",
+    "inProgressLabel": "Prethodno završeno",
+    "availableLabel": "Kreiraj aktivnost"
 }

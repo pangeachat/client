@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:57.280328",
+    "@@last_modified": "2026-07-29 10:04:00.258468",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10612,5 +10612,11 @@
     "closeArchive": "סגור ארכיון",
     "activityActions": "פעולות פעילות",
     "ongoing": "מתבצע",
-    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות."
+    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות.",
+    "activityPreviewLabel": "תצוגה מקדימה של פעילות: ",
+    "participantRowLabel": "{joined} מתוך {total} משתתפים הצטרפו",
+    "ongoingPendingLabel": "ממתין לאחרים להצטרף",
+    "joinableLabel": "ניתן להצטרף",
+    "inProgressLabel": "הושלם בעבר",
+    "availableLabel": "צור פעילות"
 }

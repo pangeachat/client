@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-27 15:35:56.308449",
+    "@@last_modified": "2026-07-29 10:03:58.386911",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7887,5 +7887,11 @@
     "closeArchive": "Cerrar archivo",
     "activityActions": "Acciones de actividad",
     "ongoing": "En curso",
-    "emptyInviteSearchHint": "¿No encuentras a quien buscas? Es posible que tengan que permitir que su perfil sea encontrado en la búsqueda. Comprueba Editar perfil en Ajustes."
+    "emptyInviteSearchHint": "¿No encuentras a quien buscas? Es posible que tengan que permitir que su perfil sea encontrado en la búsqueda. Comprueba Editar perfil en Ajustes.",
+    "activityPreviewLabel": "Vista previa de la actividad: ",
+    "participantRowLabel": "{joined} de {total} participantes se han unido",
+    "ongoingPendingLabel": "Esperando que se unan otros",
+    "joinableLabel": "Unirse",
+    "inProgressLabel": "Completado anteriormente",
+    "availableLabel": "Crear actividad"
 }
