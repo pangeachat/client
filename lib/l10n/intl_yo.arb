@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-27 15:36:06.931826",
+    "@@last_modified": "2026-07-29 12:08:25.223257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Pa àpamọ́",
     "activityActions": "Àwọn iṣẹ́ ṣíṣe",
     "ongoing": "Lọwọlọwọ",
-    "emptyInviteSearchHint": "Ṣe o ko le ri ẹni ti o n wa? Wọn le nilo lati gba laaye lati ri profaili wọn ninu wiwa. Ṣayẹwo Ṣatunṣe Profaili ninu Eto."
+    "emptyInviteSearchHint": "Ṣe o ko le ri ẹni ti o n wa? Wọn le nilo lati gba laaye lati ri profaili wọn ninu wiwa. Ṣayẹwo Ṣatunṣe Profaili ninu Eto.",
+    "activityPreviewLabel": "Aṣaaju iṣẹ́: ",
+    "participantRowLabel": "{joined} ninu {total} àwọn olùkópa ti darapọ̀",
+    "ongoingPendingLabel": "Nduro de awọn miiran lati darapọ mọ",
+    "joinableLabel": "Le darapọ mọ",
+    "inProgressLabel": "Ti pari tẹlẹ",
+    "availableLabel": "Ṣẹda iṣẹ́",
+    "rateActivityTitle": "Báwo ni ìṣesí yìí?",
+    "rateActivityCommentHint": "Fi àlàyé kún un (ìyàn)",
+    "rateActivityCommentRejected": "A kò lè fi àlàyé rẹ sílẹ̀. Gbìyànjú láti tún un ṣe, tàbí fi ìwọ̀n rẹ sílẹ̀ láìsí àlàyé.",
+    "rateActivityThanks": "O ṣeun fún èsì rẹ!",
+    "activityRatingMeterLabel": "{percent}% rere ({count, plural, =1{ìwọ̀n 1} other{ìwọ̀n {count}}})",
+    "newActivityBadge": "TITUN"
 }

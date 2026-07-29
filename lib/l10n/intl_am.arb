@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-27 15:35:54.711239",
+    "@@last_modified": "2026-07-29 12:08:16.201306",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2042,5 +2042,17 @@
     "closeArchive": "ማህደር ዝጋ",
     "activityActions": "የእንቅስቃሴ ድርጊቶች",
     "ongoing": "በሂደት ላይ",
-    "emptyInviteSearchHint": "የሚፈልጉትን ሰው ማግኘት አልቻሉም? መገለጫቸው በፍለጋ ውስጥ እንዲገኝ መፍቀድ ሊያስፈልጋቸው ይችላል። በቅንብሮች ውስጥ መገለጫ አርትዕን ይመልከቱ።"
+    "emptyInviteSearchHint": "የሚፈልጉትን ሰው ማግኘት አልቻሉም? መገለጫቸው በፍለጋ ውስጥ እንዲገኝ መፍቀድ ሊያስፈልጋቸው ይችላል። በቅንብሮች ውስጥ መገለጫ አርትዕን ይመልከቱ።",
+    "activityPreviewLabel": "የእንቅስቃሴ ቅድመ እይታ: ",
+    "participantRowLabel": "ከ{total} ተሳታፊዎች ውስጥ {joined} ተቀላቅለዋል",
+    "ongoingPendingLabel": "ሌሎች እስኪቀላቀሉ በመጠበቅ ላይ",
+    "joinableLabel": "መቀላቀል የሚቻል",
+    "inProgressLabel": "ቀደም ሲል የተጠናቀቀ",
+    "availableLabel": "እንቅስቃሴ ይፍጠሩ",
+    "rateActivityTitle": "ይህ እንቅስቃሴ እንዴት ነበር?",
+    "rateActivityCommentHint": "አስተያየት ያክሉ (አማራጭ)",
+    "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
+    "rateActivityThanks": "ለአስተያየትዎ እናመሰግናለን!",
+    "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
+    "newActivityBadge": "አዲስ"
 }

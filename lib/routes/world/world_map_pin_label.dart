@@ -36,20 +36,22 @@ class WorldMapPinLabel extends StatelessWidget {
     // same colorScheme.surface the star dot / large card already halo against
     // — world_map_state_dot.dart, world_map_large_card.dart).
     final haloColor = Theme.of(context).colorScheme.surface;
-    final label = Stack(
-      alignment: Alignment.center,
-      children: [
-        text(
-          kPinLabelTextStyle.copyWith(
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 3
-              ..strokeJoin = StrokeJoin.round
-              ..color = haloColor,
+    final label = ExcludeSemantics(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          text(
+            kPinLabelTextStyle.copyWith(
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 3
+                ..strokeJoin = StrokeJoin.round
+                ..color = haloColor,
+            ),
           ),
-        ),
-        text(kPinLabelTextStyle.copyWith(color: color)),
-      ],
+          text(kPinLabelTextStyle.copyWith(color: color)),
+        ],
+      ),
     );
     return opacity >= 1.0 ? label : Opacity(opacity: opacity, child: label);
   }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-27 15:36:02.840399",
+    "@@last_modified": "2026-07-29 12:08:19.770115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Klos achiv",
     "activityActions": "Wok we yu kin du",
     "ongoing": "De Go",
-    "emptyInviteSearchHint": "Yu nɔ de fɛn di pɔsin we yu want? Sɔntɛm dɛn nid fɔ alaw dɛn prɔfayl fɔ de insay di sɛch. Chɛk Edit Profile insay Sɛtin."
+    "emptyInviteSearchHint": "Yu nɔ de fɛn di pɔsin we yu want? Sɔntɛm dɛn nid fɔ alaw dɛn prɔfayl fɔ de insay di sɛch. Chɛk Edit Profile insay Sɛtin.",
+    "activityPreviewLabel": "Wok we go du: ",
+    "participantRowLabel": "{joined} insai {total} pɔsin dɛn dɔn jɔyn",
+    "ongoingPendingLabel": "De wet ɔda pɔsin dɛn fɔ jɔyn",
+    "joinableLabel": "Yu go ebul jɔyn",
+    "inProgressLabel": "Dɔn dɔn bifo",
+    "availableLabel": "Mek wok",
+    "rateActivityTitle": "Aw dis aktiviti bin bi?",
+    "rateActivityCommentHint": "Put komɛnt (nɔ fɔs)",
+    "rateActivityCommentRejected": "Yu komɛnt nɔ bin ebul fɔ post. Tray fɔ chenj di wɔd dɛn, ɔ sɛn yu reting witɔt komɛnt.",
+    "rateActivityThanks": "Tɛnki fɔ yu fidbak!",
+    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 reting} other{{count} reting dɛn}})",
+    "newActivityBadge": "FƆNƆN"
 }

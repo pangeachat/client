@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-27 15:36:04.095860",
+    "@@last_modified": "2026-07-29 12:08:23.393906",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Xidh kaydka",
     "activityActions": "Ficilada waxqabadka",
     "ongoing": "Socda",
-    "emptyInviteSearchHint": "Ma heli kartid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay oggolaadaan in astaantooda laga helo raadinta. Ka eeg Tafatirka Astaanta ee Dejinta."
+    "emptyInviteSearchHint": "Ma heli kartid qofka aad raadinayso? Waxaa laga yaabaa inay u baahan yihiin inay oggolaadaan in astaantooda laga helo raadinta. Ka eeg Tafatirka Astaanta ee Dejinta.",
+    "activityPreviewLabel": "Hordhaca hawsha: ",
+    "participantRowLabel": "{joined} ka mid ah {total} ka qaybgalayaasha ayaa soo biiray",
+    "ongoingPendingLabel": "Waxaa la sugayaa kuwa kale inay soo biiraan",
+    "joinableLabel": "La soo biiri karo",
+    "inProgressLabel": "Horey loo dhammaystiray",
+    "availableLabel": "Samee hawl",
+    "rateActivityTitle": "Sidee buu ahaa hawshan?",
+    "rateActivityCommentHint": "Ku dar faallo (ikhtiyaari)",
+    "rateActivityCommentRejected": "Faalladaada lama soo dhejin karin. Isku day inaad dib u habayso, ama soo gudbi qiimayntaada faallo la'aan.",
+    "rateActivityThanks": "Waad ku mahadsan tahay jawaab celintaada!",
+    "activityRatingMeterLabel": "{percent}% mid wanaagsan ({count, plural, =1{1 qiimayn} other{{count} qiimayn}})",
+    "newActivityBadge": "CUSUB"
 }

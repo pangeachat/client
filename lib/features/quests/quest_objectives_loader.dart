@@ -95,9 +95,13 @@ class QuestObjectivesLoader {
   /// (room.teacherMode) — passed by callers with a joined course room in hand;
   /// null (previews, no room) means unrestricted, the fail-open default.
   /// Applied as a pure copy so the shared quest-outline cache is untouched.
+  /// [courseRoomId] (same callers) lets the outline include the quest owner's
+  /// private activities — membership is verified server-side, so passing it
+  /// for a non-member is harmless.
   Future<void> loadOutline(
     String? questId, {
     Map<String, List<String>>? pinnedActivitiesByObjective,
+    String? courseRoomId,
   }) async {
     if (_disposed) return;
 
@@ -118,7 +122,10 @@ class QuestObjectivesLoader {
     }
 
     _updateQuest(AsyncLoading(), loadGen);
-    final outlineResult = await QuestRepo.outline(questId);
+    final outlineResult = await QuestRepo.outline(
+      questId,
+      courseRoomId: courseRoomId,
+    );
     final outline = outlineResult.result?.restrictedTo(
       pinnedActivitiesByObjective,
     );

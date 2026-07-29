@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:58.165903",
+    "@@last_modified": "2026-07-29 12:08:18.963652",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9765,5 +9765,17 @@
     "closeArchive": "Tutup arsip",
     "activityActions": "Tindakan aktivitas",
     "ongoing": "Sedang Berlangsung",
-    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan."
+    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan.",
+    "activityPreviewLabel": "Pratinjau aktivitas: ",
+    "participantRowLabel": "{joined} dari {total} peserta telah bergabung",
+    "ongoingPendingLabel": "Menunggu yang lain bergabung",
+    "joinableLabel": "Dapat bergabung",
+    "inProgressLabel": "Telah selesai",
+    "availableLabel": "Buat aktivitas",
+    "rateActivityTitle": "Bagaimana aktivitas ini?",
+    "rateActivityCommentHint": "Tambahkan komentar (opsional)",
+    "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
+    "rateActivityThanks": "Terima kasih atas masukan Anda!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
+    "newActivityBadge": "BARU"
 }

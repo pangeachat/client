@@ -17,14 +17,6 @@ import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.da
 /// perform the real [SemanticsAction.tap] (what a screen-reader double-tap
 /// sends), not a pointer tap.
 void main() {
-  const card = QuestActivityCard(
-    activityId: 'a1',
-    title: 'Test Activity',
-    l2: 'es',
-    coordinates: [0, 0],
-    learningObjectiveRefs: [],
-  );
-
   Future<void> pump(WidgetTester tester, Widget child) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -55,6 +47,15 @@ void main() {
     ) async {
       final semantics = tester.ensureSemantics();
       var tapped = false;
+
+      const card = QuestActivityCard(
+        activityId: 'a1',
+        title: 'Test Activity',
+        l2: 'es',
+        coordinates: [0, 0],
+        learningObjectiveRefs: [],
+      );
+
       await pump(
         tester,
         WorldMapDot(
@@ -66,7 +67,11 @@ void main() {
         ),
       );
 
-      performSemanticsTap(tester, 'Activity: Test Activity');
+      final l10n = L10n.of(tester.element(find.byType(Scaffold)));
+      performSemanticsTap(
+        tester,
+        'Activity: Test Activity, ${ActivityPinState.available.label(l10n)}',
+      );
       expect(
         tapped,
         isTrue,

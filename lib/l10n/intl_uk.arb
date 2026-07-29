@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-27 15:36:05.729966",
+    "@@last_modified": "2026-07-29 12:08:26.696865",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,17 @@
     "closeArchive": "Закрити архів",
     "activityActions": "Дії активності",
     "ongoing": "Триває",
-    "emptyInviteSearchHint": "Не можете знайти потрібну людину? Можливо, їй потрібно дозволити знаходити свій профіль у пошуку. Перевірте «Редагувати профіль» у налаштуваннях."
+    "emptyInviteSearchHint": "Не можете знайти потрібну людину? Можливо, їй потрібно дозволити знаходити свій профіль у пошуку. Перевірте «Редагувати профіль» у налаштуваннях.",
+    "activityPreviewLabel": "Попередній перегляд активності: ",
+    "participantRowLabel": "{joined} з {total} учасників приєдналися",
+    "ongoingPendingLabel": "Очікування на приєднання інших",
+    "joinableLabel": "Можна приєднатися",
+    "inProgressLabel": "Раніше завершено",
+    "availableLabel": "Створити активність",
+    "rateActivityTitle": "Як вам ця вправа?",
+    "rateActivityCommentHint": "Додати коментар (необов’язково)",
+    "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
+    "rateActivityThanks": "Дякуємо за ваш відгук!",
+    "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
+    "newActivityBadge": "НОВЕ"
 }

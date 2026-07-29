@@ -80,6 +80,20 @@ class PApiUrls {
   /// Query: min_lat, min_lng, max_lat, max_lng, l2?, cefr_level?, l1?, limit?.
   static String activitiesBbox = "${PApiUrls._choreoRoute}/v2/activities/bbox";
 
+  /// The quest's activities (full canonical plans + LO refs) in one read —
+  /// the membership-aware course listing. Query: course_room_id? — when it
+  /// names a course the caller is a joined member of, the quest owner's
+  /// private activities are included. Replaces the direct CMS activity list
+  /// for course scope. See activities.instructions.md § Ownership,
+  /// visibility, and removal.
+  static String questActivities(String questId) =>
+      "${PApiUrls._choreoRoute}/quests/$questId/activities";
+
+  /// Thumbs up/down on an activity (one opinion per user; server upserts).
+  /// `POST /choreo/v2/activity/rate` — not paywalled. 403 = self-rating,
+  /// 422 = comment rejected by moderation.
+  static String activityRate = "${PApiUrls._choreoRoute}/v2/activity/rate";
+
   static String tokenFeedback = "${PApiUrls._choreoRoute}/token/feedback";
   static String tokenFeedbackV2 = "${PApiUrls._choreoRoute}/token/feedback_v2";
 

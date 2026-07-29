@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-27 15:36:04.094774",
+    "@@last_modified": "2026-07-29 12:08:22.691196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Vhara dura",
     "activityActions": "Zviito zvechiitiko",
     "ongoing": "Kuenderera",
-    "emptyInviteSearchHint": "Haukwanise kuwana waunotsvaga? Zvinogona kunge zvichidikanwa kuti vatendere profile yavo kuti iwanikwe mukutsvaga. Tarisa paEdit Profile muSettings."
+    "emptyInviteSearchHint": "Haukwanise kuwana waunotsvaga? Zvinogona kunge zvichidikanwa kuti vatendere profile yavo kuti iwanikwe mukutsvaga. Tarisa paEdit Profile muSettings.",
+    "activityPreviewLabel": "Taridza chiitiko: ",
+    "participantRowLabel": "{joined} kubva pa{total} vatori vechikamu vabatana",
+    "ongoingPendingLabel": "Kwakumirirwa vamwe kuti vabatane",
+    "joinableLabel": "Inobatika",
+    "inProgressLabel": "Yakapedzwa kare",
+    "availableLabel": "Gadzira chiitiko",
+    "rateActivityTitle": "Chiitiko ichi chaive sei?",
+    "rateActivityCommentHint": "Wedzera chirevo (sarudzo)",
+    "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
+    "rateActivityThanks": "Ndatenda nemhinduro yako!",
+    "activityRatingMeterLabel": "{percent}% yakanaka ({count, plural, =1{1 chiyero} other{{count} zviero}})",
+    "newActivityBadge": "CHITSVA"
 }

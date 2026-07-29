@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-27 15:36:05.245815",
+    "@@last_modified": "2026-07-29 12:08:24.562031",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10324,5 +10324,17 @@
     "closeArchive": "ปิดคลังเก็บ",
     "activityActions": "การดำเนินการกิจกรรม",
     "ongoing": "กำลังดำเนินการ",
-    "emptyInviteSearchHint": "ไม่พบคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องอนุญาตให้โปรไฟล์ของพวกเขาถูกค้นพบในการค้นหา ตรวจสอบแก้ไขโปรไฟล์ในการตั้งค่า"
+    "emptyInviteSearchHint": "ไม่พบคนที่คุณกำลังมองหาใช่ไหม? พวกเขาอาจต้องอนุญาตให้โปรไฟล์ของพวกเขาถูกค้นพบในการค้นหา ตรวจสอบแก้ไขโปรไฟล์ในการตั้งค่า",
+    "activityPreviewLabel": "ตัวอย่างกิจกรรม: ",
+    "participantRowLabel": "{joined} จาก {total} ผู้เข้าร่วมได้เข้าร่วมแล้ว",
+    "ongoingPendingLabel": "กำลังรอผู้เข้าร่วมคนอื่น",
+    "joinableLabel": "เข้าร่วมได้",
+    "inProgressLabel": "เสร็จสิ้นไปแล้ว",
+    "availableLabel": "สร้างกิจกรรม",
+    "rateActivityTitle": "กิจกรรมนี้เป็นอย่างไรบ้าง",
+    "rateActivityCommentHint": "เพิ่มความคิดเห็น (ไม่บังคับ)",
+    "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
+    "rateActivityThanks": "ขอบคุณสำหรับความคิดเห็นของคุณ!",
+    "activityRatingMeterLabel": "{percent}% เป็นบวก ({count, plural, =1{1 การให้คะแนน} other{{count} การให้คะแนน}})",
+    "newActivityBadge": "ใหม่"
 }

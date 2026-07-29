@@ -120,5 +120,9 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     vocab: vocab,
     media: media,
     roles: roles.isEmpty ? null : roles,
+    // Aggregate learner rating, merged onto the served plan by the choreo
+    // fetch (up-fraction 0..1 + rater count).
+    ratingAverage: (plan['rating_average'] as num?)?.toDouble(),
+    ratingCount: (plan['rating_count'] as num?)?.toInt(),
   );
 }

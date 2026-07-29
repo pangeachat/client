@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-27 15:36:05.162137",
+    "@@last_modified": "2026-07-29 12:08:23.769745",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Бойгониро пӯшед",
     "activityActions": "Амалҳои фаъолият",
     "ongoing": "Дар ҳоли иҷро",
-    "emptyInviteSearchHint": "Наметавонед шахси дилхоҳатонро пайдо кунед? Шояд онҳо бояд иҷозат диҳанд, ки профилашон дар ҷустуҷӯ пайдо шавад. \"Таҳрири профил\"-ро дар Танзимот санҷед."
+    "emptyInviteSearchHint": "Наметавонед шахси дилхоҳатонро пайдо кунед? Шояд онҳо бояд иҷозат диҳанд, ки профилашон дар ҷустуҷӯ пайдо шавад. \"Таҳрири профил\"-ро дар Танзимот санҷед.",
+    "activityPreviewLabel": "Пешнамоиши фаъолият: ",
+    "participantRowLabel": "{joined} аз {total} иштирокчиён ҳамроҳ шуданд",
+    "ongoingPendingLabel": "Интизори ҳамроҳшавии дигарон",
+    "joinableLabel": "Ҳамроҳ шудан мумкин аст",
+    "inProgressLabel": "Қаблан анҷом ёфтааст",
+    "availableLabel": "Фаъолият эҷод кунед",
+    "rateActivityTitle": "Ин машқ чӣ гуна буд?",
+    "rateActivityCommentHint": "Шарҳ илова кунед (ихтиёрӣ)",
+    "rateActivityCommentRejected": "Шарҳи шумо нашр нашуд. Кӯшиш кунед, ки онро аз нав нависед ё баҳои худро бе шарҳ пешниҳод кунед.",
+    "rateActivityThanks": "Ташаккур барои фикру мулоҳизаи шумо!",
+    "activityRatingMeterLabel": "{percent}% мусбат ({count, plural, =1{1 баҳо} other{{count} баҳо}})",
+    "newActivityBadge": "НАВ"
 }

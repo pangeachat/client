@@ -404,17 +404,14 @@ class WorldMapPinsManager {
   Future<void> loadCourseScopedPins(
     String courseId, {
     Map<String, List<String>>? pinnedActivitiesByObjective,
+    String? courseRoomId,
   }) async {
-    final questResult = await QuestRepo.quest(courseId);
-    final quest = questResult.result;
-    if (quest == null) {
-      _pins = [];
-      return;
-    }
-
+    // One choreo read: the quest's activities at its own L2, LO-grouped
+    // server-side. [courseRoomId] admits the quest owner's private activities
+    // when this learner is a joined member of the course.
     final activityCardsResult = await QuestRepo.questActivityCards(
-      quest.learningObjectiveIds,
-      quest.targetLanguage,
+      courseId,
+      courseRoomId: courseRoomId,
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {

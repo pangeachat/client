@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:02.452110",
+    "@@last_modified": "2026-07-29 12:08:24.200993",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10642,5 +10642,17 @@
     "closeArchive": "Fechar arquivo",
     "activityActions": "Ações de atividade",
     "ongoing": "Em andamento",
-    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que precisem de permitir que o perfil seja encontrado na pesquisa. Verifique Editar Perfil em Definições."
+    "emptyInviteSearchHint": "Não consegue encontrar quem procura? Pode ser que precisem de permitir que o perfil seja encontrado na pesquisa. Verifique Editar Perfil em Definições.",
+    "activityPreviewLabel": "Prévia da atividade: ",
+    "participantRowLabel": "{joined} de {total} participantes entraram",
+    "ongoingPendingLabel": "Aguardando outros entrarem",
+    "joinableLabel": "Disponível para entrar",
+    "inProgressLabel": "Concluído anteriormente",
+    "availableLabel": "Criar atividade",
+    "rateActivityTitle": "O que achou desta atividade?",
+    "rateActivityCommentHint": "Adicione um comentário (opcional)",
+    "rateActivityCommentRejected": "Não foi possível publicar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
+    "rateActivityThanks": "Obrigado pelo seu feedback!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
+    "newActivityBadge": "NOVO"
 }

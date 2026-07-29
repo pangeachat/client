@@ -192,7 +192,12 @@ class SpaceDetailsContent extends StatelessWidget {
             final resp = await showFutureLoadingDialog(
               context: context,
               future: () async {
-                final outline = await QuestRepo.outline(room.coursePlan!.uuid);
+                final outline = await QuestRepo.outline(
+                  room.coursePlan!.uuid,
+                  // Course-admin read from inside the space: include the
+                  // owner's private activities so the star cap counts them.
+                  courseRoomId: room.id,
+                );
                 return outline.result?.groups
                     .map(
                       (g) => g.activities.fold(

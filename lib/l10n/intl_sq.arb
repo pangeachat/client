@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-27 15:36:04.303175",
+    "@@last_modified": "2026-07-29 12:08:23.085408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Mbyll arkivin",
     "activityActions": "Veprimet e aktivitetit",
     "ongoing": "Në vazhdim",
-    "emptyInviteSearchHint": "Nuk e gjen dot atë që kërkon? Mund të jetë e nevojshme që ata të lejojnë gjetjen e profilit të tyre në kërkim. Kontrollo \"Ndrysho profilin\" te Cilësimet."
+    "emptyInviteSearchHint": "Nuk e gjen dot atë që kërkon? Mund të jetë e nevojshme që ata të lejojnë gjetjen e profilit të tyre në kërkim. Kontrollo \"Ndrysho profilin\" te Cilësimet.",
+    "activityPreviewLabel": "Parashikim aktiviteti: ",
+    "participantRowLabel": "{joined} nga {total} pjesëmarrës janë bashkuar",
+    "ongoingPendingLabel": "Duke pritur që të tjerët të bashkohen",
+    "joinableLabel": "Mund të bashkohesh",
+    "inProgressLabel": "Përfunduar më parë",
+    "availableLabel": "Krijo aktivitet",
+    "rateActivityTitle": "Si ishte ky aktivitet?",
+    "rateActivityCommentHint": "Shto një koment (opsionale)",
+    "rateActivityCommentRejected": "Komenti juaj nuk mund të postohej. Provoni ta riformuloni, ose dërgoni vlerësimin tuaj pa koment.",
+    "rateActivityThanks": "Faleminderit për reagimin tuaj!",
+    "activityRatingMeterLabel": "{percent}% pozitive ({count, plural, =1{1 vlerësim} other{{count} vlerësime}})",
+    "newActivityBadge": "E RE"
 }

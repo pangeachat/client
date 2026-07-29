@@ -767,8 +767,22 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     return path;
   }
 
+  /// Whether an `app_links` emission should be navigated to.
+  ///
+  /// Only OS-delivered links are real inbound navigations. On **web** the
+  /// plugin has no OS channel: its stream is a single value captured at
+  /// construction — the URL the page was LOADED with — so every emission is a
+  /// replay of the boot location the router already consumed (path URL
+  /// strategy, see main.dart). Acting on that replay re-navigates the user
+  /// back to the link they may already have moved on from: it arrives one
+  /// post-frame AFTER the app's first frame, so closing a deep-linked
+  /// activity or course in that window snapped straight back into it — the
+  /// "uncloseable activity" trap (#7821). Pure, so it is unit-tested.
+  static bool shouldNavigateToIncomingUri({required bool isWeb}) => !isWeb;
+
   Future<void> _processIncomingUris(Uri? uri) async {
     if (uri == null) return;
+    if (!shouldNavigateToIncomingUri(isWeb: kIsWeb)) return;
     final path = incomingUriToPath(uri);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);
