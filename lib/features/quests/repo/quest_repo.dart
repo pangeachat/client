@@ -285,17 +285,13 @@ class QuestRepo {
       // CMS-direct empty-find behavior.
       if (response.statusCode == 404) return Result.value(const []);
       if (response.statusCode != 200) {
-        return Result.error(
-          'activity fetch failed (${response.statusCode})',
-        );
+        return Result.error('activity fetch failed (${response.statusCode})');
       }
       final decoded = jsonDecode(response.body);
       final refs = decoded is Map
           ? decoded['learning_objective_refs'] as List?
           : null;
-      return Result.value(
-        (refs ?? const []).map((e) => e as String).toList(),
-      );
+      return Result.value((refs ?? const []).map((e) => e as String).toList());
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {"activity_id": activityId});
       return Result.error(e);
