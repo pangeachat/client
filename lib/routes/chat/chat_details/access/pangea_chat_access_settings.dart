@@ -71,6 +71,7 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
                           ),
                           Semantics(
                             checked: snapshot.data == Visibility.private,
+                            inMutuallyExclusiveGroup: true,
                             child: ChatAccessTile(
                               emoji: "🏡",
                               title: L10n.of(context).private,
@@ -86,6 +87,7 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
                           ),
                           Semantics(
                             checked: snapshot.data == Visibility.public,
+                            inMutuallyExclusiveGroup: true,
                             child: ChatAccessTile(
                               emoji: "🌏",
                               title: L10n.of(context).public,
@@ -107,6 +109,7 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
                           ),
                           Semantics(
                             checked: room.joinRules == JoinRules.knock,
+                            inMutuallyExclusiveGroup: true,
                             child: ChatAccessTile(
                               emoji: "🤝",
                               title: L10n.of(context).restricted,
@@ -130,6 +133,7 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
                           ),
                           Semantics(
                             checked: room.joinRules == JoinRules.public,
+                            inMutuallyExclusiveGroup: true,
                             child: ChatAccessTile(
                               emoji: "👐",
                               title: L10n.of(context).open,
