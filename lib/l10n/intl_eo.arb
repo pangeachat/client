@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:55.925614",
+    "@@last_modified": "2026-07-29 10:03:59.361854",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,11 @@
     "closeArchive": "Fermi arkivon",
     "activityActions": "Agadoj",
     "ongoing": "Daŭranta",
-    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj."
+    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj.",
+    "activityPreviewLabel": "Antaŭvido de agado: ",
+    "participantRowLabel": "{joined} el {total} partoprenantoj aliĝis",
+    "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
+    "joinableLabel": "Aliĝebla",
+    "inProgressLabel": "Antaŭe kompletigita",
+    "availableLabel": "Krei agadon"
 }

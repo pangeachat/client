@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-27 15:36:02.771277",
+    "@@last_modified": "2026-07-29 10:04:08.242883",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10609,5 +10609,11 @@
     "closeArchive": "Fechar arquivo",
     "activityActions": "Ações de atividade",
     "ongoing": "Em curso",
-    "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições."
+    "emptyInviteSearchHint": "Não encontra quem procura? Pode ser necessário que permitam que o perfil seja encontrado na pesquisa. Verifique Editar Perfil nas Definições.",
+    "activityPreviewLabel": "Pré-visualização da atividade: ",
+    "participantRowLabel": "{joined} de {total} participantes aderiram",
+    "ongoingPendingLabel": "À espera que outros se juntem",
+    "joinableLabel": "Aderível",
+    "inProgressLabel": "Concluído anteriormente",
+    "availableLabel": "Criar atividade"
 }

@@ -922,6 +922,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                   sizeOf: (id) => render.labelSizes[id],
                   stateOf: render.stateOf,
                   nonStartableOf: render.nonStartableOf,
+                  onTap: widget.controller.openActivity,
                 ).layer(),
                 // Dying pins (a separate layer) so they don't disturb the live pins
                 // while animating out.

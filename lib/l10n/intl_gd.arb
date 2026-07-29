@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-27 15:35:57.658467",
+    "@@last_modified": "2026-07-29 10:04:00.133711",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Dùin an tasglann",
     "activityActions": "Gnìomhan-gnìomhachd",
     "ongoing": "A’ dol air adhart",
-    "emptyInviteSearchHint": "Nach urrainn dhut an neach a tha thu a’ sireadh a lorg? Dh’fhaodadh gum feum iad leigeil leis a’ phròifil aca a bhith ri lorg ann an rannsachadh. Thoir sùil air Deasaich Pròifil ann an Roghainnean."
+    "emptyInviteSearchHint": "Nach urrainn dhut an neach a tha thu a’ sireadh a lorg? Dh’fhaodadh gum feum iad leigeil leis a’ phròifil aca a bhith ri lorg ann an rannsachadh. Thoir sùil air Deasaich Pròifil ann an Roghainnean.",
+    "activityPreviewLabel": "Ro-shealladh gnìomhachd: ",
+    "participantRowLabel": "Tha {joined} de {total} com-pàirtichean air tighinn a-steach",
+    "ongoingPendingLabel": "A' feitheamh ri daoine eile tighinn a-steach",
+    "joinableLabel": "So-cheangailte",
+    "inProgressLabel": "Air a chrìochnachadh roimhe",
+    "availableLabel": "Cruthaich gnìomhachd"
 }

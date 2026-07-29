@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -42,12 +43,19 @@ class WorldAnalyticsBar extends StatelessWidget {
   static const double expandedHeight = 90.0;
 
   @override
-  Widget build(BuildContext context) => UserClusterViewModelBuilder(
-    builder: (context, viewModel) => WorldAnalyticsBarInternal(
-      viewModel: viewModel,
-      flagBuilder: flagBuilder,
-    ),
-  );
+  Widget build(BuildContext context) {
+    // Which analytics panel is open, so the matching tracker stays lit (#7977).
+    // Read here in the plumbing layer — the internals stay route-free (values
+    // and callbacks only) per this file's testability contract.
+    final selectedTab = activeAnalyticsTabFor(GoRouterState.of(context).uri);
+    return UserClusterViewModelBuilder(
+      builder: (context, viewModel) => WorldAnalyticsBarInternal(
+        viewModel: viewModel,
+        flagBuilder: flagBuilder,
+        selectedTab: selectedTab,
+      ),
+    );
+  }
 }
 
 class WorldAnalyticsBarInternal extends StatelessWidget {
@@ -61,10 +69,15 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
   )?
   flagBuilder;
 
+  /// The analytics metric whose panel is open, highlighted in the pill; null
+  /// when none is open ([activeAnalyticsTabFor]).
+  final ProgressIndicatorEnum? selectedTab;
+
   const WorldAnalyticsBarInternal({
     super.key,
     required this.viewModel,
     required this.flagBuilder,
+    this.selectedTab,
   });
 
   static const double _avatarSize = 56.0;
@@ -100,7 +113,10 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
                   // (gold growing from the badge's top, clockwise, meeting at its
                   // bottom) and the level medal overhangs the pill's LEFT end —
                   // the mirror of web's bottom-center overhang.
-                  child: _PowerupsRow(viewModel: viewModel),
+                  child: _PowerupsRow(
+                    viewModel: viewModel,
+                    selectedTab: selectedTab,
+                  ),
                 ),
               ),
               const SizedBox(width: _pillAvatarGap),
@@ -155,8 +171,9 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
 /// surfaces never disagree — but all values arrive as plain fields.
 class _PowerupsRow extends StatelessWidget {
   final UserClusterViewModel viewModel;
+  final ProgressIndicatorEnum? selectedTab;
 
-  const _PowerupsRow({required this.viewModel});
+  const _PowerupsRow({required this.viewModel, this.selectedTab});
 
   static const double _xpStroke = 5.0;
   static const double _innerRadius = 20.0;
@@ -247,6 +264,9 @@ class _PowerupsRow extends StatelessWidget {
                                       return ClusterTrackerButton(
                                         indicator: ProgressIndicatorEnum.stars,
                                         count: stars,
+                                        selected:
+                                            selectedTab ==
+                                            ProgressIndicatorEnum.stars,
                                         onTap: () => viewModel.openAnalytics(
                                           context,
                                           AnalyticsPanelTab.sessions,
@@ -257,6 +277,9 @@ class _PowerupsRow extends StatelessWidget {
                                   ClusterTrackerButton(
                                     indicator: ProgressIndicatorEnum.morphsUsed,
                                     count: grammar,
+                                    selected:
+                                        selectedTab ==
+                                        ProgressIndicatorEnum.morphsUsed,
                                     onTap: () => viewModel.openAnalytics(
                                       context,
                                       AnalyticsPanelTab.grammar,
@@ -265,6 +288,9 @@ class _PowerupsRow extends StatelessWidget {
                                   ClusterTrackerButton(
                                     indicator: ProgressIndicatorEnum.wordsUsed,
                                     count: vocab,
+                                    selected:
+                                        selectedTab ==
+                                        ProgressIndicatorEnum.wordsUsed,
                                     onTap: () => viewModel.openAnalytics(
                                       context,
                                       AnalyticsPanelTab.vocab,

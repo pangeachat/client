@@ -13,6 +13,7 @@ class MidSizePinLabelsLayer {
   final Size? Function(String) sizeOf;
   final ActivityPinState Function(String) stateOf;
   final bool Function(String) nonStartableOf;
+  final void Function(QuestActivityCard) onTap;
 
   const MidSizePinLabelsLayer({
     required this.nonLargeCards,
@@ -20,6 +21,7 @@ class MidSizePinLabelsLayer {
     required this.sizeOf,
     required this.stateOf,
     required this.nonStartableOf,
+    required this.onTap,
   });
 
   /// The marker alignment that seats a label of [size] on [side] of a mid pin
@@ -43,9 +45,10 @@ class MidSizePinLabelsLayer {
 
   MarkerLayer layer() {
     /// The activity-name labels for the mid pins the placement pass kept — each a
-    /// marker anchored at the pin's point, offset to its chosen side, and
-    /// non-interactive (an [IgnorePointer]) so the wide box never swallows a
-    /// pin/map tap.
+    /// marker anchored at the pin's point, offset to its chosen side. The label
+    /// box is measured tight to its text, so it opens ITS OWN activity on tap
+    /// (not the neighbour pin it may sit over — #7920); it paints above the dot
+    /// layer, so this tap wins over any pin beneath.
     final markers = nonLargeCards
         .map((card) {
           final id = card.activityId;
@@ -60,10 +63,19 @@ class MidSizePinLabelsLayer {
             child: Opacity(
               // Match the pin: a non-startable available pin's label dims too.
               opacity: nonStartableOf(id) ? 0.5 : 1.0,
-              child: IgnorePointer(
-                child: WorldMapPinLabel(
-                  title: card.title,
-                  color: stateOf(id).labelColor,
+              // ExcludeSemantics: the pin's own Semantics(button) node stays the
+              // single a11y activation target, so the label adds no duplicate
+              // node. Opaque so the whole (text-tight) box is tappable, not just
+              // painted glyph pixels; the tap-only recognizer still yields to
+              // the map's drag recognizer, so panning from a label is unaffected.
+              child: ExcludeSemantics(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () => onTap(card),
+                  child: WorldMapPinLabel(
+                    title: card.title,
+                    color: stateOf(id).labelColor,
+                  ),
                 ),
               ),
             ),

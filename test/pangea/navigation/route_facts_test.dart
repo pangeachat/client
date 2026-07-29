@@ -1,11 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 void main() {
   AppSection section(String location) => sectionFor(Uri.parse(location));
@@ -222,6 +225,75 @@ void main() {
       // Opening an activity claims the single live view (a chat can\'t coexist).
       expect(leftTypes('/?left=activity:a,room:!r'), [PanelTypesEnum.activity]);
       expect(leftTypes('/?left=room:!r,activity:a'), [PanelTypesEnum.room]);
+    });
+  });
+
+  group('activeConstructDetailFor', () {
+    ConstructIdentifier? detail(String location) =>
+        activeConstructDetailFor(Uri.parse(location));
+
+    test('reads the open vocab detail token (the list highlights it)', () {
+      final c = detail('/?right=analytics:vocab,vocab:admirer.verb');
+      expect(c, isNotNull);
+      expect(c!.lemma, 'admirer');
+      expect(c.type, ConstructTypeEnum.vocab);
+      expect(c.category, 'verb');
+    });
+
+    test('reads the open grammar detail token', () {
+      final c = detail('/?right=analytics:grammar,grammar:plur.number');
+      expect(c, isNotNull);
+      expect(c!.lemma, 'plur');
+      expect(c.type, ConstructTypeEnum.morph);
+      expect(c.category, 'number');
+    });
+
+    test('null when only the summary (no detail) is open, or nothing', () {
+      expect(detail('/?right=analytics:vocab'), isNull);
+      expect(detail('/'), isNull);
+    });
+  });
+
+  group('activeAnalyticsTabFor', () {
+    ProgressIndicatorEnum? tab(String location) =>
+        activeAnalyticsTabFor(Uri.parse(location));
+
+    test('maps each open analytics summary to its cluster tracker', () {
+      expect(tab('/?right=analytics:vocab'), ProgressIndicatorEnum.wordsUsed);
+      expect(
+        tab('/?right=analytics:grammar'),
+        ProgressIndicatorEnum.morphsUsed,
+      );
+      expect(tab('/?right=analytics:level'), ProgressIndicatorEnum.level);
+      // The sessions summary rides `activities` but lights the `stars` tracker.
+      expect(tab('/?right=analytics:sessions'), ProgressIndicatorEnum.stars);
+    });
+
+    test('a construct detail lights its section tracker (summary present)', () {
+      expect(
+        tab('/?right=analytics:vocab,vocab:admirer.verb'),
+        ProgressIndicatorEnum.wordsUsed,
+      );
+      expect(
+        tab('/?right=analytics:grammar,grammar:plur.number'),
+        ProgressIndicatorEnum.morphsUsed,
+      );
+    });
+
+    test('a session review lights the stars tracker', () {
+      expect(tab('/?left=session:!r'), ProgressIndicatorEnum.stars);
+    });
+
+    test(
+      'a live practice session is excluded (its tracker wears the badge)',
+      () {
+        expect(tab('/?right=practice:vocab'), isNull);
+      },
+    );
+
+    test('null when no analytics surface is open', () {
+      expect(tab('/'), isNull);
+      expect(tab('/?left=chats,room:!r'), isNull);
     });
   });
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-27 15:35:59.720831",
+    "@@last_modified": "2026-07-29 10:04:03.831285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Archiv zoumaachen",
     "activityActions": "Aktivitéitsaktiounen",
     "ongoing": "Am Gaang",
-    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen."
+    "emptyInviteSearchHint": "Fannt Dir net, wie Dir sicht? Si musse vläicht erlaben, datt hire Profil an der Sich fonnt gëtt. Kuckt \"Profil änneren\" an den Astellungen.",
+    "activityPreviewLabel": "Aktivitéitsvirschau: ",
+    "participantRowLabel": "{joined} vun {total} Participanten hu matgemaach",
+    "ongoingPendingLabel": "Waarden op anerer fir matzemaachen",
+    "joinableLabel": "Kann matgemaach ginn",
+    "inProgressLabel": "Virdru fäerdeg",
+    "availableLabel": "Aktivitéit erstellen"
 }

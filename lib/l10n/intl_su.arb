@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-27 15:36:04.707081",
+    "@@last_modified": "2026-07-29 10:04:11.481089",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Tutup arsip",
     "activityActions": "Peta kagiatan",
     "ongoing": "Lumangsung",
-    "emptyInviteSearchHint": "Teu tiasa mendakan anu anjeun milarian? Aranjeunna panginten kedah ngijinkeun profilna dipendakan dina pamilarian. Pariksa Édit Profil dina Setélan."
+    "emptyInviteSearchHint": "Teu tiasa mendakan anu anjeun milarian? Aranjeunna panginten kedah ngijinkeun profilna dipendakan dina pamilarian. Pariksa Édit Profil dina Setélan.",
+    "activityPreviewLabel": "Pratinjau kagiatan: ",
+    "participantRowLabel": "{joined} tina {total} pamilon geus ngagabung",
+    "ongoingPendingLabel": "Ngantosan nu sanés ngagabung",
+    "joinableLabel": "Bisa ngagabung",
+    "inProgressLabel": "Saméméhna réngsé",
+    "availableLabel": "Jieun kagiatan"
 }

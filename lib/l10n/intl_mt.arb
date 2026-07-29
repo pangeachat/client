@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-27 15:36:01.430258",
+    "@@last_modified": "2026-07-29 10:04:06.246959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Agħlaq l-arkivju",
     "activityActions": "Azzjonijiet tal-attività",
     "ongoing": "Għaddej",
-    "emptyInviteSearchHint": "Ma tistax issib lil min qed tfittex? Jista' jkun li jeħtieġu li jippermettu l-profil tagħhom jinstab fit-tfittxija. Iċċekkja Editja Profil fis-Settings."
+    "emptyInviteSearchHint": "Ma tistax issib lil min qed tfittex? Jista' jkun li jeħtieġu li jippermettu l-profil tagħhom jinstab fit-tfittxija. Iċċekkja Editja Profil fis-Settings.",
+    "activityPreviewLabel": "Preview tal-attività: ",
+    "participantRowLabel": "{joined} minn {total} parteċipanti ngħaqdu",
+    "ongoingPendingLabel": "Qed tistenna li jingħaqdu oħrajn",
+    "joinableLabel": "Tista' tingħaqad",
+    "inProgressLabel": "Tlestiet qabel",
+    "availableLabel": "Oħloq attività"
 }

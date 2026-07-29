@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-27 15:36:01.431323",
+    "@@last_modified": "2026-07-29 10:04:05.846136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2042,5 +2042,11 @@
     "closeArchive": "আর্কাইভ থমজিনবা",
     "activityActions": "থবকশিংগী থবক",
     "ongoing": "চত্থরিবা",
-    "emptyInviteSearchHint": "নাক্কী পাম্বা মীদু ফংদ্রে? মখোয়না মখোয়গী প্রোফাইল সার্চতা ফংনবা অয়াবা পীনবা তাই। সেটিংস্তা এডিট প্রোফাইল চেক তৌবীয়ু।"
+    "emptyInviteSearchHint": "নাক্কী পাম্বা মীদু ফংদ্রে? মখোয়না মখোয়গী প্রোফাইল সার্চতা ফংনবা অয়াবা পীনবা তাই। সেটিংস্তা এডিট প্রোফাইল চেক তৌবীয়ু।",
+    "activityPreviewLabel": "থবক মমাংদা উবা: ",
+    "participantRowLabel": "{total} ফাওবগী মনুংদ {joined} শরুক য়াওবশিংনা য়াওখ্রে",
+    "ongoingPendingLabel": "অথেনবশিং য়াওনবা ঙাইরি",
+    "joinableLabel": "য়াওবা য়াবা",
+    "inProgressLabel": "মমাংদা লোইশিনখ্রে",
+    "availableLabel": "থবক শেম্মু"
 }

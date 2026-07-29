@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-27 15:35:58.633067",
+    "@@last_modified": "2026-07-29 10:04:04.052413",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Tutup arsip",
     "activityActions": "Tindakan aktivitas",
     "ongoing": "Lagi lumaku",
-    "emptyInviteSearchHint": "Ora nemokake sing digoleki? Bisa uga dheweke kudu ngidini profil ditemokake ing panelusuran. Priksa Owahi Profil ing Setelan."
+    "emptyInviteSearchHint": "Ora nemokake sing digoleki? Bisa uga dheweke kudu ngidini profil ditemokake ing panelusuran. Priksa Owahi Profil ing Setelan.",
+    "activityPreviewLabel": "Pratinjau aktivitas: ",
+    "participantRowLabel": "{joined} saka {total} peserta wis gabung",
+    "ongoingPendingLabel": "Ngenteni liyane gabung",
+    "joinableLabel": "Bisa digabung",
+    "inProgressLabel": "Wis rampung sadurunge",
+    "availableLabel": "Gawe aktivitas"
 }

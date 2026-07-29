@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-27 15:35:57.112045",
+    "@@last_modified": "2026-07-29 10:03:59.412401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2042,5 +2042,11 @@
     "closeArchive": "Argyf slute",
     "activityActions": "Aktiviteitsaksjes",
     "ongoing": "Oanhâldend",
-    "emptyInviteSearchHint": "Kinst net fine wa'tst sykst? Se moatte miskien harren profyl tastien hawwe om fûn te wurden yn sykopdrachten. Kontrolearje Profyl Bewurkje yn Ynstellings."
+    "emptyInviteSearchHint": "Kinst net fine wa'tst sykst? Se moatte miskien harren profyl tastien hawwe om fûn te wurden yn sykopdrachten. Kontrolearje Profyl Bewurkje yn Ynstellings.",
+    "activityPreviewLabel": "Foarbyld aktiviteit: ",
+    "participantRowLabel": "{joined} fan {total} dielnimmers hawwe meidien",
+    "ongoingPendingLabel": "Wachtsje op oaren om mei te dwaan",
+    "joinableLabel": "Meidwaanber",
+    "inProgressLabel": "Earder foltôge",
+    "availableLabel": "Aktiviteit oanmeitsje"
 }

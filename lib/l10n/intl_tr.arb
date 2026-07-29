@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-27 15:36:07.024649",
+    "@@last_modified": "2026-07-29 10:04:12.044118",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9993,5 +9993,11 @@
     "closeArchive": "Arşivi kapat",
     "activityActions": "Etkinlik eylemleri",
     "ongoing": "Devam Ediyor",
-    "emptyInviteSearchHint": "Aradığınız kişiyi bulamıyor musunuz? Profilinin aramada bulunmasına izin vermesi gerekebilir. Ayarlar'daki Profili Düzenle bölümünü kontrol edin."
+    "emptyInviteSearchHint": "Aradığınız kişiyi bulamıyor musunuz? Profilinin aramada bulunmasına izin vermesi gerekebilir. Ayarlar'daki Profili Düzenle bölümünü kontrol edin.",
+    "activityPreviewLabel": "Etkinlik önizlemesi: ",
+    "participantRowLabel": "{total} katılımcıdan {joined} tanesi katıldı",
+    "ongoingPendingLabel": "Diğerlerinin katılması bekleniyor",
+    "joinableLabel": "Katılabilir",
+    "inProgressLabel": "Daha önce tamamlandı",
+    "availableLabel": "Etkinlik oluştur"
 }
