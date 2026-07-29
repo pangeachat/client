@@ -17,16 +17,18 @@ void main() {
       expect(length, 12); // grapheme length of "¿Dónde están"
     });
 
-    test('agrees with an already-consistent stored length (post-fix record)',
-        () {
-      final length = GrammarErrorPracticeGenerator.targetBlankLength(
-        baseText: '¿Dónde están las fiesta? Mis amigos se gustan ir.',
-        offset: 0,
-        correctChoice: '¿Dónde están',
-        storedLength: 12,
-      );
-      expect(length, 12);
-    });
+    test(
+      'agrees with an already-consistent stored length (post-fix record)',
+      () {
+        final length = GrammarErrorPracticeGenerator.targetBlankLength(
+          baseText: '¿Dónde están las fiesta? Mis amigos se gustan ir.',
+          offset: 0,
+          correctChoice: '¿Dónde están',
+          storedLength: 12,
+        );
+        expect(length, 12);
+      },
+    );
 
     test('handles a target span that does not start at offset 0', () {
       // "Yo creo que " is 12 graphemes; the target "están" starts at 12.

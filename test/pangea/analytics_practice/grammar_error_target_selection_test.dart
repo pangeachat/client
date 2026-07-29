@@ -42,46 +42,51 @@ void main() {
   final over24h = DateTime(2026, 1, 1, 6); // 30h ago — before cutoff
 
   group('GrammarErrorTargetGenerator.recentlyPracticedEventIDs (#7360)', () {
-    test('collects the eventID of a sentence practiced correctly within 24h',
-        () {
-      final constructs = [
-        _construct('hablar', [
-          _use(
-            type: ConstructUseTypeEnum.corGE,
-            eventId: r'$evt1',
-            timeStamp: within24h,
+    test(
+      'collects the eventID of a sentence practiced correctly within 24h',
+      () {
+        final constructs = [
+          _construct('hablar', [
+            _use(
+              type: ConstructUseTypeEnum.corGE,
+              eventId: r'$evt1',
+              timeStamp: within24h,
+            ),
+          ]),
+        ];
+
+        expect(
+          GrammarErrorTargetGenerator.recentlyPracticedEventIDs(
+            constructs,
+            now: now,
           ),
-        ]),
-      ];
+          {r'$evt1'},
+        );
+      },
+    );
 
-      expect(
-        GrammarErrorTargetGenerator.recentlyPracticedEventIDs(
-          constructs,
-          now: now,
-        ),
-        {r'$evt1'},
-      );
-    });
+    test(
+      'collects incorrect (incGE) practice too — practiced is practiced',
+      () {
+        final constructs = [
+          _construct('hablar', [
+            _use(
+              type: ConstructUseTypeEnum.incGE,
+              eventId: r'$evt2',
+              timeStamp: within24h,
+            ),
+          ]),
+        ];
 
-    test('collects incorrect (incGE) practice too — practiced is practiced', () {
-      final constructs = [
-        _construct('hablar', [
-          _use(
-            type: ConstructUseTypeEnum.incGE,
-            eventId: r'$evt2',
-            timeStamp: within24h,
+        expect(
+          GrammarErrorTargetGenerator.recentlyPracticedEventIDs(
+            constructs,
+            now: now,
           ),
-        ]),
-      ];
-
-      expect(
-        GrammarErrorTargetGenerator.recentlyPracticedEventIDs(
-          constructs,
-          now: now,
-        ),
-        {r'$evt2'},
-      );
-    });
+          {r'$evt2'},
+        );
+      },
+    );
 
     test('excludes practice older than the 24h cooldown', () {
       final constructs = [
