@@ -12,8 +12,13 @@ class CourseAvatar extends StatelessWidget {
   final Uri? avatar;
   final String displayname;
   final double size;
-  final Future<Event?> unreadCoursePingEvent;
-  final Set<String?> courseChildrenIds;
+
+  /// The unread course-ping future and the course's child-room ids drive the
+  /// notification badge. They are only available for real course rooms (nav
+  /// rail, joined-courses list); for add-course previews and course-plan
+  /// suggestions there is no room yet, so both are null and no badge shows.
+  final Future<Event?>? unreadCoursePingEvent;
+  final Set<String?>? courseChildrenIds;
   final bool invite;
 
   final Widget? child;
@@ -23,8 +28,8 @@ class CourseAvatar extends StatelessWidget {
     this.avatar,
     required this.displayname,
     required this.size,
-    required this.unreadCoursePingEvent,
-    required this.courseChildrenIds,
+    this.unreadCoursePingEvent,
+    this.courseChildrenIds,
     this.invite = false,
     this.child,
   });
@@ -47,6 +52,14 @@ class CourseAvatar extends StatelessWidget {
 
     if (invite) {
       return InvitedCourseBadge(position: position, child: child);
+    }
+
+    // No underlying room (add-course preview or course-plan suggestion): show
+    // the plain avatar without the unread-notification badge.
+    final unreadCoursePingEvent = this.unreadCoursePingEvent;
+    final courseChildrenIds = this.courseChildrenIds;
+    if (unreadCoursePingEvent == null || courseChildrenIds == null) {
+      return child;
     }
 
     return UnreadRoomsBadge(

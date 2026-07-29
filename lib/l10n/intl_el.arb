@@ -3417,7 +3417,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-29 10:03:58.301043",
+    "@@last_modified": "2026-07-29 12:08:16.888341",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10579,5 +10579,11 @@
     "ongoingPendingLabel": "Αναμονή για να συνδεθούν οι άλλοι",
     "joinableLabel": "Διαθέσιμο για συμμετοχή",
     "inProgressLabel": "Ολοκληρώθηκε προηγουμένως",
-    "availableLabel": "Δημιουργία δραστηριότητας"
+    "availableLabel": "Δημιουργία δραστηριότητας",
+    "rateActivityTitle": "Πώς ήταν αυτή η δραστηριότητα;",
+    "rateActivityCommentHint": "Προσθέστε ένα σχόλιο (προαιρετικό)",
+    "rateActivityCommentRejected": "Το σχόλιό σας δεν μπόρεσε να δημοσιευτεί. Δοκιμάστε να το αναδιατυπώσετε ή υποβάλετε την αξιολόγησή σας χωρίς σχόλιο.",
+    "rateActivityThanks": "Ευχαριστούμε για τα σχόλιά σας!",
+    "activityRatingMeterLabel": "{percent}% θετικά ({count, plural, =1{1 αξιολόγηση} other{{count} αξιολογήσεις}})",
+    "newActivityBadge": "ΝΕΟ"
 }

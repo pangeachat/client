@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-29 10:03:59.854170",
+    "@@last_modified": "2026-07-29 12:08:17.820393",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,11 @@
     "ongoingPendingLabel": "En attente que d'autres rejoignent",
     "joinableLabel": "Rejoignable",
     "inProgressLabel": "Précédemment terminé",
-    "availableLabel": "Créer une activité"
+    "availableLabel": "Créer une activité",
+    "rateActivityTitle": "Comment s'est passée cette activité ?",
+    "rateActivityCommentHint": "Ajouter un commentaire (facultatif)",
+    "rateActivityCommentRejected": "Votre commentaire n'a pas pu être publié. Essayez de le reformuler ou soumettez votre évaluation sans commentaire.",
+    "rateActivityThanks": "Merci pour votre avis !",
+    "activityRatingMeterLabel": "{percent} % positif ({count, plural, =1{1 évaluation} other{{count} évaluations}})",
+    "newActivityBadge": "NOUVEAU"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-29 10:04:09.420154",
+    "@@last_modified": "2026-07-29 12:08:23.085408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Duke pritur që të tjerët të bashkohen",
     "joinableLabel": "Mund të bashkohesh",
     "inProgressLabel": "Përfunduar më parë",
-    "availableLabel": "Krijo aktivitet"
+    "availableLabel": "Krijo aktivitet",
+    "rateActivityTitle": "Si ishte ky aktivitet?",
+    "rateActivityCommentHint": "Shto një koment (opsionale)",
+    "rateActivityCommentRejected": "Komenti juaj nuk mund të postohej. Provoni ta riformuloni, ose dërgoni vlerësimin tuaj pa koment.",
+    "rateActivityThanks": "Faleminderit për reagimin tuaj!",
+    "activityRatingMeterLabel": "{percent}% pozitive ({count, plural, =1{1 vlerësim} other{{count} vlerësime}})",
+    "newActivityBadge": "E RE"
 }

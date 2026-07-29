@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-29 10:04:13.023071",
+    "@@last_modified": "2026-07-29 12:08:25.466925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "וואַרטן אויף אַנדערע צו קומען",
     "joinableLabel": "מעגלעך זיך צו באַהעפֿטן",
     "inProgressLabel": "פֿריִער פֿאַרענדיקט",
-    "availableLabel": "שאַפֿן אַקטיוויטעט"
+    "availableLabel": "שאַפֿן אַקטיוויטעט",
+    "rateActivityTitle": "ווי איז געווען די אַקטיוויטעט?",
+    "rateActivityCommentHint": "לייג צו אַ קאָמענטאַר (אָפּציאָנעל)",
+    "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רייטינג אָן אַ קאָמענטאַר.",
+    "rateActivityThanks": "אַ דאַנק פֿאַר אײַער פֿידבעק!",
+    "activityRatingMeterLabel": "{percent}% פּאָזיטיוו ({count, plural, =1{1 רייטינג} other{{count} רייטינגען}})",
+    "newActivityBadge": "נײַ"
 }

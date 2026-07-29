@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-29 10:04:08.382119",
+    "@@last_modified": "2026-07-29 12:08:22.710179",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10649,5 +10649,11 @@
     "ongoingPendingLabel": "Čaká sa na pripojenie ostatných",
     "joinableLabel": "Dostupné na pripojenie",
     "inProgressLabel": "Predtým dokončené",
-    "availableLabel": "Vytvoriť aktivitu"
+    "availableLabel": "Vytvoriť aktivitu",
+    "rateActivityTitle": "Aká bola táto aktivita?",
+    "rateActivityCommentHint": "Pridať komentár (voliteľné)",
+    "rateActivityCommentRejected": "Váš komentár sa nepodarilo uverejniť. Skúste ho preformulovať alebo odošlite hodnotenie bez komentára.",
+    "rateActivityThanks": "Ďakujeme za vašu spätnú väzbu!",
+    "activityRatingMeterLabel": "{percent}% pozitívnych ({count, plural, =1{1 hodnotenie} other{{count} hodnotení}})",
+    "newActivityBadge": "NOVÉ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-29 10:04:07.177531",
+    "@@last_modified": "2026-07-29 12:08:21.903302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Kudikirira ena kuti alowe",
     "joinableLabel": "Olowa",
     "inProgressLabel": "Zamalizidwa kale",
-    "availableLabel": "Pangani zochitika"
+    "availableLabel": "Pangani zochitika",
+    "rateActivityTitle": "Zimene munachita zinali bwanji?",
+    "rateActivityCommentHint": "Onjezani ndemanga (ngati mukufuna)",
+    "rateActivityCommentRejected": "Ndemanga yanu sinathe kutumizidwa. Yesani kusintha mawu, kapena tumizani ndemanga yanu popanda ndemanga.",
+    "rateActivityThanks": "Zikomo chifukwa cha malingaliro anu!",
+    "activityRatingMeterLabel": "{percent}% yabwino ({count, plural, =1{1 ndemanga} other{{count} ndemanga}})",
+    "newActivityBadge": "CHATSWOPANO"
 }

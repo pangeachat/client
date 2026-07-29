@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-29 10:03:57.122961",
+    "@@last_modified": "2026-07-29 12:08:16.316537",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9712,5 +9712,11 @@
     "ongoingPendingLabel": "Чакаем, пакуль далучацца іншыя",
     "joinableLabel": "Можна далучыцца",
     "inProgressLabel": "Раней завершана",
-    "availableLabel": "Стварыць актыўнасць"
+    "availableLabel": "Стварыць актыўнасць",
+    "rateActivityTitle": "Як вам гэтае заданне?",
+    "rateActivityCommentHint": "Дадаць каментарый (неабавязкова)",
+    "rateActivityCommentRejected": "Ваш каментарый не быў апублікаваны. Паспрабуйце перафразаваць яго або адправіць ацэнку без каментарыя.",
+    "rateActivityThanks": "Дзякуй за ваш водгук!",
+    "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнак}})",
+    "newActivityBadge": "НОВАЕ"
 }

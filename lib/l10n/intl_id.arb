@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:01.249382",
+    "@@last_modified": "2026-07-29 12:08:18.963652",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9771,5 +9771,11 @@
     "ongoingPendingLabel": "Menunggu yang lain bergabung",
     "joinableLabel": "Dapat bergabung",
     "inProgressLabel": "Telah selesai",
-    "availableLabel": "Buat aktivitas"
+    "availableLabel": "Buat aktivitas",
+    "rateActivityTitle": "Bagaimana aktivitas ini?",
+    "rateActivityCommentHint": "Tambahkan komentar (opsional)",
+    "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
+    "rateActivityThanks": "Terima kasih atas masukan Anda!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
+    "newActivityBadge": "BARU"
 }

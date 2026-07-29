@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-29 10:03:56.935295",
+    "@@last_modified": "2026-07-29 12:08:16.251970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Başqalarının qoşulması gözlənilir",
     "joinableLabel": "Qoşula bilər",
     "inProgressLabel": "Əvvəllər tamamlanıb",
-    "availableLabel": "Fəaliyyət yarat"
+    "availableLabel": "Fəaliyyət yarat",
+    "rateActivityTitle": "Bu fəaliyyət necə idi?",
+    "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
+    "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
+    "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
+    "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
+    "newActivityBadge": "YENİ"
 }

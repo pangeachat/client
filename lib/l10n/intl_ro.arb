@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:08.272957",
+    "@@last_modified": "2026-07-29 12:08:22.941956",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10430,5 +10430,11 @@
     "ongoingPendingLabel": "Se așteaptă ca alții să se alăture",
     "joinableLabel": "Disponibil pentru alăturare",
     "inProgressLabel": "Finalizat anterior",
-    "availableLabel": "Creează activitate"
+    "availableLabel": "Creează activitate",
+    "rateActivityTitle": "Cum a fost această activitate?",
+    "rateActivityCommentHint": "Adaugă un comentariu (opțional)",
+    "rateActivityCommentRejected": "Comentariul tău nu a putut fi postat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
+    "rateActivityThanks": "Mulțumim pentru feedback!",
+    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})",
+    "newActivityBadge": "NOU"
 }

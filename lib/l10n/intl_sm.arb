@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-29 10:04:08.944762",
+    "@@last_modified": "2026-07-29 12:08:22.697186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Faʻatali mo isi e auai",
     "joinableLabel": "Mafai ona auai",
     "inProgressLabel": "Ua maeʻa muamua",
-    "availableLabel": "Fausia se gaioiga"
+    "availableLabel": "Fausia se gaioiga",
+    "rateActivityTitle": "Na fa'afefea lenei gaioiga?",
+    "rateActivityCommentHint": "Fa'aopoopo se fa'amatalaga (filifiliga)",
+    "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aleleia, pe lafo lau fua faatatau e aunoa ma se fa'amatalaga.",
+    "rateActivityThanks": "Fa'afetai mo lau tali mai!",
+    "activityRatingMeterLabel": "{percent}% lelei ({count, plural, =1{1 fua faatatau} other{{count} fua faatatau}})",
+    "newActivityBadge": "FOU"
 }

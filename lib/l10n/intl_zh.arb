@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-29 10:04:12.057238",
+    "@@last_modified": "2026-07-29 12:08:25.836944",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9698,5 +9698,11 @@
     "ongoingPendingLabel": "正在等待其他人加入",
     "joinableLabel": "可加入",
     "inProgressLabel": "已完成",
-    "availableLabel": "创建活动"
+    "availableLabel": "创建活动",
+    "rateActivityTitle": "这个活动怎么样？",
+    "rateActivityCommentHint": "添加评论（可选）",
+    "rateActivityCommentRejected": "您的评论无法发布。请尝试重新措辞，或不带评论提交您的评分。",
+    "rateActivityThanks": "感谢您的反馈！",
+    "activityRatingMeterLabel": "{percent}% 好评（{count, plural, =1{1 条评分} other{{count} 条评分}}）",
+    "newActivityBadge": "新"
 }

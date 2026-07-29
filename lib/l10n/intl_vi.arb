@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:11.510106",
+    "@@last_modified": "2026-07-29 12:08:24.905448",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6964,5 +6964,11 @@
     "ongoingPendingLabel": "Đang chờ những người khác tham gia",
     "joinableLabel": "Có thể tham gia",
     "inProgressLabel": "Đã hoàn thành trước đó",
-    "availableLabel": "Tạo hoạt động"
+    "availableLabel": "Tạo hoạt động",
+    "rateActivityTitle": "Hoạt động này thế nào?",
+    "rateActivityCommentHint": "Thêm bình luận (không bắt buộc)",
+    "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
+    "rateActivityThanks": "Cảm ơn phản hồi của bạn!",
+    "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})",
+    "newActivityBadge": "MỚI"
 }

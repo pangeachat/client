@@ -55,12 +55,12 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  String label(BuildContext context) => switch (this) {
-    ActivityPinState.ongoingPending => L10n.of(context).ongoingPendingLabel,
-    ActivityPinState.ongoingActive => L10n.of(context).ongoing,
-    ActivityPinState.joinable => L10n.of(context).joinableLabel,
-    ActivityPinState.inProgress => L10n.of(context).inProgressLabel,
-    ActivityPinState.available => L10n.of(context).availableLabel,
+  String label(L10n l10n) => switch (this) {
+    ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
+    ActivityPinState.ongoingActive => l10n.ongoing,
+    ActivityPinState.joinable => l10n.joinableLabel,
+    ActivityPinState.inProgress => l10n.inProgressLabel,
+    ActivityPinState.available => l10n.availableLabel,
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
@@ -224,6 +224,31 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 /// ([placeLargeCards]'s `dismissedIds`), like the live-session heavy-tier gate.
 const double kDismissedPenalty = 0.5;
 
+/// Rating-count threshold below which an activity counts as NEW (#7993): it
+/// takes the TOP of the ratings range (+[kRatingWeight]) and renders a NEW
+/// badge — new content gets the benefit of the doubt, not a cold-start
+/// penalty. A hand-set lever (world-map.instructions.md).
+const int kNewRatingThreshold = 1;
+
+/// Magnitude of the `ratings` term in [pinScore]: the term spans
+/// −[kRatingWeight]…+[kRatingWeight] (world-map.instructions.md).
+const double kRatingWeight = 2.0;
+
+/// True when this pin has too few ratings to score on them — it renders a NEW
+/// badge and [ratingsTerm] gives it the top of the range.
+bool isNewActivity(int? ratingCount) =>
+    (ratingCount ?? 0) < kNewRatingThreshold;
+
+/// The `ratings` score term (−2…+2): linear in the aggregate up-fraction
+/// (`4·avg − 2` at the default weight), except a NEW pin (fewer than
+/// [kNewRatingThreshold] ratings) takes +[kRatingWeight]. Ratings only
+/// reorder, never hide (world-map.instructions.md).
+double ratingsTerm({double? ratingAverage, int? ratingCount}) {
+  if (isNewActivity(ratingCount)) return kRatingWeight;
+  final avg = (ratingAverage ?? 0.0).clamp(0.0, 1.0);
+  return 2 * kRatingWeight * avg - kRatingWeight;
+}
+
 /// Weight of the `ongoingActive` state in [pinScore] — strictly above
 /// [kOngoingPendingWeight] (both below the `joinable` weight of `3`, so
 /// `joinable` still wins the top slot): an active chat with real history
@@ -247,7 +272,7 @@ bool isMultiPersonFirstMap({
 
 /// score = 3*joinable + 2.4*ongoingActive + 1.6*ongoingPending + relevance_band
 /// + 0.6*pinged + 0.3*recency - 0.5*finished - 0.5*dismissed -
-/// 2*multi_person_first_map. A live session is the heaviest signal: +3 if the
+/// 2*multi_person_first_map + ratings. A live session is the heaviest signal: +3 if the
 /// learner can join it (open, someone else's); if they are already in it
 /// (ongoing), an active chat (+2.4) outweighs a still-pending one (+1.6) — real
 /// history should win a contested large-card slot. `joinable` and `ongoing` are
@@ -263,7 +288,10 @@ double pinScore({
   int? roleCount,
   bool isNewLearner = false,
   bool isDismissed = false,
+  double? ratingAverage,
+  int? ratingCount,
 }) =>
+    ratingsTerm(ratingAverage: ratingAverage, ratingCount: ratingCount) +
     3 * (s.state == ActivityPinState.joinable ? 1 : 0) +
     (switch (s.state) {
       ActivityPinState.ongoingActive => kOngoingActiveWeight,
@@ -332,6 +360,8 @@ RankingResult rankPins({
         roleCount: p.roleCount,
         isNewLearner: isNewLearner,
         isDismissed: dismissedIds.contains(p.activityId),
+        ratingAverage: p.ratingAverage,
+        ratingCount: p.ratingCount,
       ),
     );
   }).toList()..sort((a, b) => b.score.compareTo(a.score));

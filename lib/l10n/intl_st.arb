@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-29 10:04:09.809283",
+    "@@last_modified": "2026-07-29 12:08:23.095204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Ho letetsoe hore ba bang ba kene",
     "joinableLabel": "E ka kopaneloa",
     "inProgressLabel": "E phethiloe pejana",
-    "availableLabel": "Theha ts'ebetso"
+    "availableLabel": "Theha ts'ebetso",
+    "rateActivityTitle": "Ketsahalo ee e bile jwang?",
+    "rateActivityCommentHint": "Kenya maikutlo (ka boikhethelo)",
+    "rateActivityCommentRejected": "Maikutlo a hao ha a kgone ho romelwa. Leka ho a ngola botjha, kapa o romelle tekanyetso ya hao ntle le maikutlo.",
+    "rateActivityThanks": "Re leboha maikutlo a hao!",
+    "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditekanyetso tse {count}}})",
+    "newActivityBadge": "E NCHA"
 }

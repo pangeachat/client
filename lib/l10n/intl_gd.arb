@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-29 10:04:00.133711",
+    "@@last_modified": "2026-07-29 12:08:18.034367",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "A' feitheamh ri daoine eile tighinn a-steach",
     "joinableLabel": "So-cheangailte",
     "inProgressLabel": "Air a chrìochnachadh roimhe",
-    "availableLabel": "Cruthaich gnìomhachd"
+    "availableLabel": "Cruthaich gnìomhachd",
+    "rateActivityTitle": "Ciamar a bha an gnìomhachd seo?",
+    "rateActivityCommentHint": "Cuir beachd ris (roghainneil)",
+    "rateActivityCommentRejected": "Cha b' urrainn do bheachd a bhith air a phostadh. Feuch ri ath-sgrìobhadh, no cuir a-steach do rangachadh gun bheachd.",
+    "rateActivityThanks": "Tapadh leat airson do fhios air ais!",
+    "activityRatingMeterLabel": "{percent}% dearbhach ({count, plural, =1{1 rangachadh} other{{count} rangachadh}})",
+    "newActivityBadge": "ÙR"
 }

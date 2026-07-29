@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-29 10:04:05.390176",
+    "@@last_modified": "2026-07-29 12:08:21.053900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Бусдыг нэгдэхийг хүлээж байна",
     "joinableLabel": "Нэгдэх боломжтой",
     "inProgressLabel": "Өмнө нь дууссан",
-    "availableLabel": "Үйлдэл үүсгэх"
+    "availableLabel": "Үйлдэл үүсгэх",
+    "rateActivityTitle": "Энэ дасгал ямар байсан бэ?",
+    "rateActivityCommentHint": "Сэтгэгдэл нэмэх (заавал биш)",
+    "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
+    "rateActivityThanks": "Таны санал хүсэлтэд баярлалаа!",
+    "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})",
+    "newActivityBadge": "ШИНЭ"
 }

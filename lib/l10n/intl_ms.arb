@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-29 10:04:05.723688",
+    "@@last_modified": "2026-07-29 12:08:21.255720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Menunggu orang lain untuk menyertai",
     "joinableLabel": "Boleh disertai",
     "inProgressLabel": "Selesai sebelumnya",
-    "availableLabel": "Cipta aktiviti"
+    "availableLabel": "Cipta aktiviti",
+    "rateActivityTitle": "Bagaimana aktiviti ini?",
+    "rateActivityCommentHint": "Tambah komen (pilihan)",
+    "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
+    "rateActivityThanks": "Terima kasih atas maklum balas anda!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
+    "newActivityBadge": "BAHARU"
 }

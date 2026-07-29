@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:00.258468",
+    "@@last_modified": "2026-07-29 12:08:18.067216",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10618,5 +10618,11 @@
     "ongoingPendingLabel": "ממתין לאחרים להצטרף",
     "joinableLabel": "ניתן להצטרף",
     "inProgressLabel": "הושלם בעבר",
-    "availableLabel": "צור פעילות"
+    "availableLabel": "צור פעילות",
+    "rateActivityTitle": "איך הייתה הפעילות?",
+    "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
+    "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
+    "rateActivityThanks": "תודה על המשוב!",
+    "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})",
+    "newActivityBadge": "חדש"
 }

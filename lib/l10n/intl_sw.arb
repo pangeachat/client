@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-29 10:04:10.682660",
+    "@@last_modified": "2026-07-29 12:08:24.056169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Inasubiri wengine wajiunge",
     "joinableLabel": "Inaweza kujiungwa",
     "inProgressLabel": "Imekamilika hapo awali",
-    "availableLabel": "Unda shughuli"
+    "availableLabel": "Unda shughuli",
+    "rateActivityTitle": "Shughuli hii ilikuwaje?",
+    "rateActivityCommentHint": "Ongeza maoni (si lazima)",
+    "rateActivityCommentRejected": "Maoni yako hayakuweza kuchapishwa. Jaribu kuyarekebisha, au wasilisha ukadiriaji wako bila maoni.",
+    "rateActivityThanks": "Asante kwa maoni yako!",
+    "activityRatingMeterLabel": "{percent}% chanya ({count, plural, =1{ukadiriaji 1} other{ukadiriaji {count}}})",
+    "newActivityBadge": "MPYA"
 }

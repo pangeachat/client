@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-29 10:03:57.100695",
+    "@@last_modified": "2026-07-29 12:08:16.409542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Wag vir ander om aan te sluit",
     "joinableLabel": "Aansluitbaar",
     "inProgressLabel": "Voorheen voltooi",
-    "availableLabel": "Skep aktiwiteit"
+    "availableLabel": "Skep aktiwiteit",
+    "rateActivityTitle": "Hoe was hierdie aktiwiteit?",
+    "rateActivityCommentHint": "Voeg 'n opmerking by (opsioneel)",
+    "rateActivityCommentRejected": "Jou opmerking kon nie geplaas word nie. Probeer dit herformuleer, of dien jou gradering sonder 'n opmerking in.",
+    "rateActivityThanks": "Dankie vir jou terugvoer!",
+    "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 gradering} other{{count} graderings}})",
+    "newActivityBadge": "NUUT"
 }

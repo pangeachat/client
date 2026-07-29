@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-29 10:04:04.052413",
+    "@@last_modified": "2026-07-29 12:08:21.896450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Ngenteni liyane gabung",
     "joinableLabel": "Bisa digabung",
     "inProgressLabel": "Wis rampung sadurunge",
-    "availableLabel": "Gawe aktivitas"
+    "availableLabel": "Gawe aktivitas",
+    "rateActivityTitle": "Piye kegiyatan iki?",
+    "rateActivityCommentHint": "Tambah komentar (opsional)",
+    "rateActivityCommentRejected": "Komentarmu ora bisa dikirim. Coba ganti tembung, utawa kirim ratingmu tanpa komentar.",
+    "rateActivityThanks": "Matur nuwun kanggo tanggapanmu!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 rating} other{{count} rating}})",
+    "newActivityBadge": "ANYAR"
 }
