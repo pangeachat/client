@@ -147,10 +147,10 @@ extension ActivityRolesRoomExtension on Room {
   /// Loaded membership of [userId] straight from room state — not
   /// [getParticipants], whose default filter drops leave/ban members, which
   /// would erase exactly the evidence [roleHolderVacated] needs.
-  String? _membershipOf(String userId) =>
-      getState(EventTypes.RoomMember, userId)?.content.tryGet<String>(
-        'membership',
-      );
+  String? _membershipOf(String userId) => getState(
+    EventTypes.RoomMember,
+    userId,
+  )?.content.tryGet<String>('membership');
 
   Map<String, ActivityRoleModel>? get assignedRoles {
     final roles = activityRoles?.roles;
