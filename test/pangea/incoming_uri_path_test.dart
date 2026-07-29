@@ -58,6 +58,16 @@ void main() {
       );
     });
 
+    test('web replays are never navigated to; native links are', () {
+      // app_links has no OS channel on web: its stream is a single value
+      // captured at construction — the URL the page was loaded with — which
+      // the router already consumed via the path URL strategy. Acting on that
+      // replay yanked users back into a deep-linked activity they had just
+      // closed (#7821). Native genuinely delivers inbound links here.
+      expect(MatrixState.shouldNavigateToIncomingUri(isWeb: true), isFalse);
+      expect(MatrixState.shouldNavigateToIncomingUri(isWeb: false), isTrue);
+    });
+
     test('an invite_user fragment link maps to the fragment path with its '
         'percent-encoding intact (single-decoded by the router, not here)', () {
       expect(
