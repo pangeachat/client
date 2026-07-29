@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-27 15:35:54.872248",
+    "@@last_modified": "2026-07-29 08:48:25.799987",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Arxivi bağla",
     "activityActions": "Fəaliyyət hərəkətləri",
     "ongoing": "Davam edir",
-    "emptyInviteSearchHint": "Axtardığınız şəxsi tapa bilmirsiniz? Ola bilsin ki, onlar profilinin axtarışda tapılmasına icazə verməlidirlər. Parametrlərdə Profili Redaktə Et bölməsini yoxlayın."
+    "emptyInviteSearchHint": "Axtardığınız şəxsi tapa bilmirsiniz? Ola bilsin ki, onlar profilinin axtarışda tapılmasına icazə verməlidirlər. Parametrlərdə Profili Redaktə Et bölməsini yoxlayın.",
+    "rateActivityTitle": "Bu fəaliyyət necə idi?",
+    "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
+    "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa cəhd edin və ya şərhi olmadan reytinqinizi göndərin.",
+    "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
+    "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 reytinq} other{{count} reytinq}})"
 }

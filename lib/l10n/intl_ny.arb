@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-27 15:36:11.665968",
+    "@@last_modified": "2026-07-29 08:48:35.623050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Tsekani zosungidwa",
     "activityActions": "Zochita",
     "ongoing": "Ikuchitika",
-    "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda."
+    "emptyInviteSearchHint": "Simukupeza amene mukufuna? Ayenera kulola kuti mbiri yawo ipezeke pakufufuza. Onani Sinthani Mbiri mu Zokonda.",
+    "rateActivityTitle": "Zimene munachita zinali bwanji?",
+    "rateActivityCommentHint": "Onjezani ndemanga (ngati mukufuna)",
+    "rateActivityCommentRejected": "Ndemanga yanu sinathe kutumizidwa. Yesani kusintha mawu, kapena tumizani ndemanga yanu popanda ndemanga.",
+    "rateActivityThanks": "Zikomo chifukwa cha malingaliro anu!",
+    "activityRatingMeterLabel": "{percent}% yabwino ({count, plural, =1{1 ndemanga} other{{count} ndemanga}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-27 15:36:00.451635",
+    "@@last_modified": "2026-07-29 08:48:33.663807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Katia te pūranga",
     "activityActions": "Ngā mahi hohe",
     "ongoing": "Haere Tonu",
-    "emptyInviteSearchHint": "Kāore i kitea te tangata e rapu ana koe? Me whakaae pea rātou kia kitea tō rātou kōtaha i te rapunga. Tirohia te Whakatika Kōtaha i ngā Tautuhinga."
+    "emptyInviteSearchHint": "Kāore i kitea te tangata e rapu ana koe? Me whakaae pea rātou kia kitea tō rātou kōtaha i te rapunga. Tirohia te Whakatika Kōtaha i ngā Tautuhinga.",
+    "rateActivityTitle": "Pēhea tēnei mahi?",
+    "rateActivityCommentHint": "Tāpirihia he kōrero (kōwhiringa)",
+    "rateActivityCommentRejected": "Kāore i taea te tuku i tō kōrero. Whakamātauria te whakahou, te tuku rānei i tō whakatauranga me te kore he kōrero.",
+    "rateActivityThanks": "Ngā mihi mō tō urupare!",
+    "activityRatingMeterLabel": "{percent}% pai ({count, plural, =1{1 whakatauranga} other{{count} whakatauranga}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-27 15:36:07.879284",
+    "@@last_modified": "2026-07-29 08:48:38.674215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Koala polokelo",
     "activityActions": "Liketso tsa ts'ebetso",
     "ongoing": "E tswela pele",
-    "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso."
+    "emptyInviteSearchHint": "Ha o fumane eo o mo batlang? Mohlomong ba hloka ho lumella profil ea bona hore e fumanehe ha ho batlisisoa. Sheba Fetola Profil ho Litlhophiso.",
+    "rateActivityTitle": "Ketsahalo ee e bile jwang?",
+    "rateActivityCommentHint": "Kenya maikutlo (ka boikhethelo)",
+    "rateActivityCommentRejected": "Maikutlo a hao a sitilwe ho romelwa. Leka ho a ngola botjha, kapa o romele tekanyetso ya hao ntle le maikutlo.",
+    "rateActivityThanks": "Re leboha maikutlo a hao!",
+    "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditlhakisetso tse {count}}})"
 }

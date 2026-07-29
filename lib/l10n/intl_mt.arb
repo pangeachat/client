@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-27 15:36:01.430258",
+    "@@last_modified": "2026-07-29 08:48:34.773622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Agħlaq l-arkivju",
     "activityActions": "Azzjonijiet tal-attività",
     "ongoing": "Għaddej",
-    "emptyInviteSearchHint": "Ma tistax issib lil min qed tfittex? Jista' jkun li jeħtieġu li jippermettu l-profil tagħhom jinstab fit-tfittxija. Iċċekkja Editja Profil fis-Settings."
+    "emptyInviteSearchHint": "Ma tistax issib lil min qed tfittex? Jista' jkun li jeħtieġu li jippermettu l-profil tagħhom jinstab fit-tfittxija. Iċċekkja Editja Profil fis-Settings.",
+    "rateActivityTitle": "Kif kienet din l-attività?",
+    "rateActivityCommentHint": "Żid kumment (mhux obbligatorju)",
+    "rateActivityCommentRejected": "Il-kumment tiegħek ma setax jitpoġġa. Ipprova ifformulah mill-ġdid, jew issottometti l-klassifikazzjoni tiegħek mingħajr kumment.",
+    "rateActivityThanks": "Grazzi tal-feedback tiegħek!",
+    "activityRatingMeterLabel": "{percent}% pożittiv ({count, plural, =1{1 klassifikazzjoni} other{{count} klassifikazzjonijiet}})"
 }

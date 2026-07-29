@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-27 15:36:00.213607",
+    "@@last_modified": "2026-07-29 08:48:33.072148",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9692,5 +9692,10 @@
     "closeArchive": "Aizvērt arhīvu",
     "activityActions": "Darbības",
     "ongoing": "Notiek",
-    "emptyInviteSearchHint": "Nevarat atrast meklēto personu? Iespējams, viņiem ir jāatļauj sava profila atrašana meklēšanā. Pārbaudiet sadaļu Rediģēt profilu iestatījumos."
+    "emptyInviteSearchHint": "Nevarat atrast meklēto personu? Iespējams, viņiem ir jāatļauj sava profila atrašana meklēšanā. Pārbaudiet sadaļu Rediģēt profilu iestatījumos.",
+    "rateActivityTitle": "Kā patika šī aktivitāte?",
+    "rateActivityCommentHint": "Pievienot komentāru (nav obligāti)",
+    "rateActivityCommentRejected": "Jūsu komentāru nevarēja publicēt. Mēģiniet to pārformulēt vai iesniedziet savu vērtējumu bez komentāra.",
+    "rateActivityThanks": "Paldies par jūsu atsauksmēm!",
+    "activityRatingMeterLabel": "{percent}% pozitīvi ({count, plural, =1{1 vērtējums} other{{count} vērtējumi}})"
 }

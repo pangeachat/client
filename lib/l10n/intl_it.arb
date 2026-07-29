@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:58.565488",
+    "@@last_modified": "2026-07-29 08:48:30.923164",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9765,5 +9765,10 @@
     "closeArchive": "Chiudi archivio",
     "activityActions": "Azioni attività",
     "ongoing": "In corso",
-    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni."
+    "emptyInviteSearchHint": "Non trovi chi cerchi? Potrebbe essere necessario che consentano la ricerca del loro profilo. Controlla Modifica profilo in Impostazioni.",
+    "rateActivityTitle": "Com'è andata questa attività?",
+    "rateActivityCommentHint": "Aggiungi un commento (facoltativo)",
+    "rateActivityCommentRejected": "Impossibile pubblicare il tuo commento. Prova a riformularlo o invia la tua valutazione senza un commento.",
+    "rateActivityThanks": "Grazie per il tuo feedback!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valutazione} other{{count} valutazioni}})"
 }

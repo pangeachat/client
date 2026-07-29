@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-27 15:35:55.594328",
+    "@@last_modified": "2026-07-29 08:48:26.748721",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10186,5 +10186,10 @@
     "closeArchive": "Zavřít archiv",
     "activityActions": "Akce aktivity",
     "ongoing": "Probíhá",
-    "emptyInviteSearchHint": "Nemůžete najít, koho hledáte? Možná budou muset povolit, aby jejich profil bylo možné najít ve vyhledávání. Zkontrolujte Upravit profil v Nastavení."
+    "emptyInviteSearchHint": "Nemůžete najít, koho hledáte? Možná budou muset povolit, aby jejich profil bylo možné najít ve vyhledávání. Zkontrolujte Upravit profil v Nastavení.",
+    "rateActivityTitle": "Jaká byla tato aktivita?",
+    "rateActivityCommentHint": "Přidat komentář (volitelné)",
+    "rateActivityCommentRejected": "Váš komentář nemohl být zveřejněn. Zkuste ho přeformulovat, nebo odešlete hodnocení bez komentáře.",
+    "rateActivityThanks": "Děkujeme za vaši zpětnou vazbu!",
+    "activityRatingMeterLabel": "{percent}% pozitivních ({count, plural, =1{1 hodnocení} other{{count} hodnocení}})"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:04.340258",
+    "@@last_modified": "2026-07-29 08:48:38.293768",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10210,5 +10210,10 @@
     "closeArchive": "Stäng arkiv",
     "activityActions": "Aktivitetshändelser",
     "ongoing": "Pågående",
-    "emptyInviteSearchHint": "Hittar du inte den du söker? De kanske måste tillåta att deras profil hittas i sökningar. Kontrollera Redigera profil i Inställningar."
+    "emptyInviteSearchHint": "Hittar du inte den du söker? De kanske måste tillåta att deras profil hittas i sökningar. Kontrollera Redigera profil i Inställningar.",
+    "rateActivityTitle": "Hur var den här aktiviteten?",
+    "rateActivityCommentHint": "Lägg till en kommentar (valfritt)",
+    "rateActivityCommentRejected": "Din kommentar kunde inte publiceras. Försök att omformulera den, eller skicka in ditt betyg utan en kommentar.",
+    "rateActivityThanks": "Tack för din feedback!",
+    "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})"
 }

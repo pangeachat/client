@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-27 15:36:07.448568",
+    "@@last_modified": "2026-07-29 08:48:41.110812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Vala ingobo yomlando",
     "activityActions": "Izenzo zomsebenzi",
     "ongoing": "Iyaqhubeka",
-    "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo."
+    "emptyInviteSearchHint": "Awumtholi omfunayo? Kungenzeka badinga ukuvumela iphrofayela yabo ukuthi itholakale ekusesheni. Hlola Hlela Iphrofayela kuzilungiselelo.",
+    "rateActivityTitle": "Lunjani lolu hlelo?",
+    "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
+    "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwabhala kabusha, noma uthumele isilinganiso sakho ngaphandle kwamazwana.",
+    "rateActivityThanks": "Siyabonga ngempendulo yakho!",
+    "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})"
 }

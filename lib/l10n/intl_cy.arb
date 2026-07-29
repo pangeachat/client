@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-27 15:35:56.026120",
+    "@@last_modified": "2026-07-29 08:48:26.953453",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Cau archif",
     "activityActions": "Gweithredoedd gweithgaredd",
     "ongoing": "Yn parhau",
-    "emptyInviteSearchHint": "Methu dod o hyd i'r person rydych chi'n chwilio amdano? Efallai bod angen iddynt ganiatáu i'w proffil gael ei ddarganfod mewn chwiliad. Gwiriwch Golygu Proffil yn Gosodiadau."
+    "emptyInviteSearchHint": "Methu dod o hyd i'r person rydych chi'n chwilio amdano? Efallai bod angen iddynt ganiatáu i'w proffil gael ei ddarganfod mewn chwiliad. Gwiriwch Golygu Proffil yn Gosodiadau.",
+    "rateActivityTitle": "Sut oedd y gweithgaredd hwn?",
+    "rateActivityCommentHint": "Ychwanegu sylw (dewisol)",
+    "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
+    "rateActivityThanks": "Diolch am eich adborth!",
+    "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-27 15:36:01.018917",
+    "@@last_modified": "2026-07-29 08:48:33.977179",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Tutup arkib",
     "activityActions": "Tindakan aktiviti",
     "ongoing": "Sedang berlangsung",
-    "emptyInviteSearchHint": "Tidak dapat mencari orang yang anda cari? Mereka mungkin perlu membenarkan profil mereka ditemui dalam carian. Semak Edit Profil dalam Tetapan."
+    "emptyInviteSearchHint": "Tidak dapat mencari orang yang anda cari? Mereka mungkin perlu membenarkan profil mereka ditemui dalam carian. Semak Edit Profil dalam Tetapan.",
+    "rateActivityTitle": "Bagaimana aktiviti ini?",
+    "rateActivityCommentHint": "Tambah komen (pilihan)",
+    "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
+    "rateActivityThanks": "Terima kasih atas maklum balas anda!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})"
 }

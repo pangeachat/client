@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-27 15:35:57.754773",
+    "@@last_modified": "2026-07-29 08:48:29.986266",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10128,5 +10128,10 @@
     "closeArchive": "Zatvori arhivu",
     "activityActions": "Radnje aktivnosti",
     "ongoing": "U tijeku",
-    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama."
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama.",
+    "rateActivityTitle": "Kako je bilo u ovoj aktivnosti?",
+    "rateActivityCommentHint": "Dodajte komentar (opcionalno)",
+    "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulirati ili pošaljite svoju ocjenu bez komentara.",
+    "rateActivityThanks": "Hvala na povratnim informacijama!",
+    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})"
 }

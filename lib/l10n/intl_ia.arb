@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-27 15:35:58.183841",
+    "@@last_modified": "2026-07-29 08:48:30.180225",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10634,5 +10634,10 @@
     "closeArchive": "Clauder archivo",
     "activityActions": "Actiones de activitate",
     "ongoing": "In curso",
-    "emptyInviteSearchHint": "Non pote tu trovar qui tu cerca? Illes forsan debe permitter que lor profilo sia trovate in recerca. Verifica \"Modificar profilo\" in \"Configurationes\"."
+    "emptyInviteSearchHint": "Non pote tu trovar qui tu cerca? Illes forsan debe permitter que lor profilo sia trovate in recerca. Verifica \"Modificar profilo\" in \"Configurationes\".",
+    "rateActivityTitle": "Como esse activitate esseva?",
+    "rateActivityCommentHint": "Adde un commento (optional)",
+    "rateActivityCommentRejected": "Vostre commento non poteva esser publicate. Essaya reformular lo, o submitte tu evalutation sin un commento.",
+    "rateActivityThanks": "Gratias pro tu feedback!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 evalutation} other{{count} evalutationes}})"
 }

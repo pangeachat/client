@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:06.927518",
+    "@@last_modified": "2026-07-29 08:48:40.730836",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,10 @@
     "closeArchive": "關閉存檔",
     "activityActions": "活動動作",
     "ongoing": "進行中",
-    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。"
+    "emptyInviteSearchHint": "找不到您要找的人？他們可能需要允許在搜尋中找到他們的個人資料。請檢查「設定」中的「編輯個人資料」。",
+    "rateActivityTitle": "這個活動如何？",
+    "rateActivityCommentHint": "新增評論（可選）",
+    "rateActivityCommentRejected": "您的評論無法發佈。請嘗試重新措辭，或不帶評論提交您的評分。",
+    "rateActivityThanks": "感謝您的回饋！",
+    "activityRatingMeterLabel": "{percent}% 正面評價 ({count, plural, =1{1 評分} other{{count} 評分}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-27 15:36:04.934410",
+    "@@last_modified": "2026-07-29 08:48:38.415202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Funga kumbukumbu",
     "activityActions": "Vitendo vya shughuli",
     "ongoing": "Inaendelea",
-    "emptyInviteSearchHint": "Huwezi kumpata unayemtafuta? Huenda akahitaji kuruhusu wasifu wake upatikane kwenye utafutaji. Angalia Hariri Wasifu kwenye Mipangilio."
+    "emptyInviteSearchHint": "Huwezi kumpata unayemtafuta? Huenda akahitaji kuruhusu wasifu wake upatikane kwenye utafutaji. Angalia Hariri Wasifu kwenye Mipangilio.",
+    "rateActivityTitle": "Shughuli hii ilikuwaje?",
+    "rateActivityCommentHint": "Ongeza maoni (si lazima)",
+    "rateActivityCommentRejected": "Maoni yako hayakuweza kuchapishwa. Jaribu kuyarekebisha, au wasilisha ukadiriaji wako bila maoni.",
+    "rateActivityThanks": "Asante kwa maoni yako!",
+    "activityRatingMeterLabel": "{percent}% chanya ({count, plural, =1{ukadiriaji 1} other{ukadiriaji {count}}})"
 }

@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-27 15:35:56.514347",
+    "@@last_modified": "2026-07-29 08:48:28.025522",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10558,5 +10558,10 @@
     "closeArchive": "Isara ang archive",
     "activityActions": "Mga aksyon sa aktibidad",
     "ongoing": "Kasalukuyan",
-    "emptyInviteSearchHint": "Hindi mahanap ang hinahanap mo? Maaaring kailangan nilang payagan na makita ang kanilang profile sa paghahanap. Tingnan ang I-edit ang Profile sa Mga Setting."
+    "emptyInviteSearchHint": "Hindi mahanap ang hinahanap mo? Maaaring kailangan nilang payagan na makita ang kanilang profile sa paghahanap. Tingnan ang I-edit ang Profile sa Mga Setting.",
+    "rateActivityTitle": "Kumusta ang aktibidad na ito?",
+    "rateActivityCommentHint": "Magdagdag ng komento (opsyonal)",
+    "rateActivityCommentRejected": "Hindi ma-post ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
+    "rateActivityThanks": "Salamat sa iyong feedback!",
+    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
 }

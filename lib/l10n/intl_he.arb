@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:57.280328",
+    "@@last_modified": "2026-07-29 08:48:29.228402",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10612,5 +10612,10 @@
     "closeArchive": "סגור ארכיון",
     "activityActions": "פעולות פעילות",
     "ongoing": "מתבצע",
-    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות."
+    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות.",
+    "rateActivityTitle": "איך הייתה הפעילות?",
+    "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
+    "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
+    "rateActivityThanks": "תודה על המשוב!",
+    "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-27 15:36:00.280463",
+    "@@last_modified": "2026-07-29 08:48:33.644792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Akatona ny tahiry",
     "activityActions": "Hetsika atao",
     "ongoing": "Mitohy",
-    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila mamela ny mombamomba azy ho hita amin'ny fikarohana izy. Jereo ny \"Edit Profile\" ao amin'ny \"Settings\"."
+    "emptyInviteSearchHint": "Tsy hitanao ve ilay olona tadiavinao? Mety mila mamela ny mombamomba azy ho hita amin'ny fikarohana izy. Jereo ny \"Edit Profile\" ao amin'ny \"Settings\".",
+    "rateActivityTitle": "Ahoana ity hetsika ity?",
+    "rateActivityCommentHint": "Ampio fanehoan-kevitra (tsy voatery)",
+    "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
+    "rateActivityThanks": "Misaotra anao tamin'ny fanehoan-kevitrao!",
+    "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})"
 }

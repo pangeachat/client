@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-27 15:35:58.041002",
+    "@@last_modified": "2026-07-29 08:48:29.957551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Fèmen achiv la",
     "activityActions": "Aksyon aktivite",
     "ongoing": "Kontinyèl",
-    "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman."
+    "emptyInviteSearchHint": "Ou pa ka jwenn moun w ap chèche a? Yo ka bezwen pèmèt pwofil yo parèt nan rechèch. Tcheke Edit Profile nan Anviwònman.",
+    "rateActivityTitle": "Kijan aktivite sa a te ye?",
+    "rateActivityCommentHint": "Ajoute yon kòmantè (opsyonèl)",
+    "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab afiche. Eseye refòmile li, oswa soumèt evalyasyon ou san yon kòmantè.",
+    "rateActivityThanks": "Mèsi pou fidbak ou!",
+    "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})"
 }

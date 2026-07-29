@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:03.055520",
+    "@@last_modified": "2026-07-29 08:48:36.348793",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10424,5 +10424,10 @@
     "closeArchive": "Închide arhiva",
     "activityActions": "Acțiuni de activitate",
     "ongoing": "În desfășurare",
-    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări."
+    "emptyInviteSearchHint": "Nu găsești pe cine cauți? Este posibil să fie nevoie să-și permită ca profilul lor să fie găsit în căutare. Verifică Editează profilul în Setări.",
+    "rateActivityTitle": "Cum a fost această activitate?",
+    "rateActivityCommentHint": "Adaugă un comentariu (opțional)",
+    "rateActivityCommentRejected": "Comentariul tău nu a putut fi publicat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
+    "rateActivityThanks": "Mulțumim pentru feedback!",
+    "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})"
 }

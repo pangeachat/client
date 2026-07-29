@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:36:05.719095",
+    "@@last_modified": "2026-07-29 08:48:39.540248",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6958,5 +6958,10 @@
     "closeArchive": "Đóng kho lưu trữ",
     "activityActions": "Hành động hoạt động",
     "ongoing": "Đang diễn ra",
-    "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt."
+    "emptyInviteSearchHint": "Không tìm thấy người bạn đang tìm kiếm? Họ có thể cần cho phép tìm thấy hồ sơ của mình trong tìm kiếm. Kiểm tra Chỉnh sửa hồ sơ trong Cài đặt.",
+    "rateActivityTitle": "Hoạt động này thế nào?",
+    "rateActivityCommentHint": "Thêm nhận xét (tùy chọn)",
+    "rateActivityCommentRejected": "Không thể đăng nhận xét của bạn. Hãy thử diễn đạt lại, hoặc gửi đánh giá mà không có nhận xét.",
+    "rateActivityThanks": "Cảm ơn phản hồi của bạn!",
+    "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})"
 }

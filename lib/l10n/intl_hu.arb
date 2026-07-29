@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-27 15:35:57.798532",
+    "@@last_modified": "2026-07-29 08:48:30.000255",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9795,5 +9795,10 @@
     "closeArchive": "Archívum bezárása",
     "activityActions": "Tevékenységműveletek",
     "ongoing": "Folyamatban",
-    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot."
+    "emptyInviteSearchHint": "Nem találja, akit keres? Lehet, hogy engedélyeznie kell a profilja kereshetőségét. Ellenőrizze a Beállítások szerkesztése menüpontot.",
+    "rateActivityTitle": "Milyen volt ez a tevékenység?",
+    "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
+    "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd el az értékelésedet megjegyzés nélkül.",
+    "rateActivityThanks": "Köszönjük visszajelzésedet!",
+    "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})"
 }

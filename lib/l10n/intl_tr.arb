@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-27 15:36:07.024649",
+    "@@last_modified": "2026-07-29 08:48:39.124770",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9993,5 +9993,10 @@
     "closeArchive": "Arşivi kapat",
     "activityActions": "Etkinlik eylemleri",
     "ongoing": "Devam Ediyor",
-    "emptyInviteSearchHint": "Aradığınız kişiyi bulamıyor musunuz? Profilinin aramada bulunmasına izin vermesi gerekebilir. Ayarlar'daki Profili Düzenle bölümünü kontrol edin."
+    "emptyInviteSearchHint": "Aradığınız kişiyi bulamıyor musunuz? Profilinin aramada bulunmasına izin vermesi gerekebilir. Ayarlar'daki Profili Düzenle bölümünü kontrol edin.",
+    "rateActivityTitle": "Bu aktivite nasıldı?",
+    "rateActivityCommentHint": "Yorum ekle (isteğe bağlı)",
+    "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
+    "rateActivityThanks": "Geri bildiriminiz için teşekkürler!",
+    "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})"
 }

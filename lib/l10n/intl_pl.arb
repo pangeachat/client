@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-27 15:36:02.245116",
+    "@@last_modified": "2026-07-29 08:48:35.792371",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9777,5 +9777,10 @@
     "closeArchive": "Zamknij archiwum",
     "activityActions": "Działania aktywności",
     "ongoing": "W toku",
-    "emptyInviteSearchHint": "Nie możesz znaleźć osoby, której szukasz? Być może musi ona zezwolić na odnalezienie jej profilu w wyszukiwarce. Sprawdź opcję Edytuj profil w Ustawieniach."
+    "emptyInviteSearchHint": "Nie możesz znaleźć osoby, której szukasz? Być może musi ona zezwolić na odnalezienie jej profilu w wyszukiwarce. Sprawdź opcję Edytuj profil w Ustawieniach.",
+    "rateActivityTitle": "Jak podobało Ci się to ćwiczenie?",
+    "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
+    "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub wyślij swoją ocenę bez komentarza.",
+    "rateActivityThanks": "Dziękujemy za Twoją opinię!",
+    "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})"
 }

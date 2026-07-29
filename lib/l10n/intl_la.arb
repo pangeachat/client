@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-27 15:36:09.108397",
+    "@@last_modified": "2026-07-29 08:48:32.485203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Claudere archivum",
     "activityActions": "Actiones activitatis",
     "ongoing": "In progressu",
-    "emptyInviteSearchHint": "Nonne invenis quem quaeris? Fortasse necesse est ut profile suum inquisitioni patefaciat. Reprehendere \"Recensere Profile\" in \"Optionibus\"."
+    "emptyInviteSearchHint": "Nonne invenis quem quaeris? Fortasse necesse est ut profile suum inquisitioni patefaciat. Reprehendere \"Recensere Profile\" in \"Optionibus\".",
+    "rateActivityTitle": "Quomodo hoc opus fuit?",
+    "rateActivityCommentHint": "Adde commentarium (libitum)",
+    "rateActivityCommentRejected": "Commentarium tuum affigi non potuit. Conare verba mutare, aut aestimationem tuam sine commentario submittere.",
+    "rateActivityThanks": "Gratias pro sententia tua!",
+    "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})"
 }

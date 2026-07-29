@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-27 15:35:54.706234",
+    "@@last_modified": "2026-07-29 08:48:25.347438",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9998,5 +9998,10 @@
     "closeArchive": "إغلاق الأرشيف",
     "activityActions": "إجراءات النشاط",
     "ongoing": "جارٍ",
-    "emptyInviteSearchHint": "لا يمكنك العثور على من تبحث عنه؟ قد يحتاجون إلى السماح بالعثور على ملفهم الشخصي في البحث. تحقق من تعديل الملف الشخصي في الإعدادات."
+    "emptyInviteSearchHint": "لا يمكنك العثور على من تبحث عنه؟ قد يحتاجون إلى السماح بالعثور على ملفهم الشخصي في البحث. تحقق من تعديل الملف الشخصي في الإعدادات.",
+    "rateActivityTitle": "كيف كان هذا النشاط؟",
+    "rateActivityCommentHint": "أضف تعليقًا (اختياري)",
+    "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
+    "rateActivityThanks": "شكرًا لملاحظاتك!",
+    "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})"
 }

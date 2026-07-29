@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-27 15:35:55.921389",
+    "@@last_modified": "2026-07-29 08:48:26.542909",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9679,5 +9679,10 @@
     "closeArchive": "Archiv schließen",
     "activityActions": "Aktivitätsaktionen",
     "ongoing": "Laufend",
-    "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen."
+    "emptyInviteSearchHint": "Du findest nicht, wen du suchst? Möglicherweise müssen sie zulassen, dass ihr Profil in der Suche gefunden wird. Überprüfe „Profil bearbeiten“ in den Einstellungen.",
+    "rateActivityTitle": "Wie war diese Aktivität?",
+    "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
+    "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
+    "rateActivityThanks": "Danke für Ihr Feedback!",
+    "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})"
 }

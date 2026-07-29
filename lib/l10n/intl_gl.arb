@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-27 15:35:57.077654",
+    "@@last_modified": "2026-07-29 08:48:28.722713",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,10 @@
     "closeArchive": "Pechar arquivo",
     "activityActions": "Accións de actividade",
     "ongoing": "En curso",
-    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración."
+    "emptyInviteSearchHint": "Non atopas a quen buscas? É posible que teñan que permitir que o seu perfil se atope na busca. Comproba Editar perfil en Configuración.",
+    "rateActivityTitle": "Que tal foi esta actividade?",
+    "rateActivityCommentHint": "Engadir un comentario (opcional)",
+    "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
+    "rateActivityThanks": "Grazas polos teus comentarios!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})"
 }

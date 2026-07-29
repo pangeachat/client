@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-27 15:35:56.308449",
+    "@@last_modified": "2026-07-29 08:48:27.531222",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7887,5 +7887,10 @@
     "closeArchive": "Cerrar archivo",
     "activityActions": "Acciones de actividad",
     "ongoing": "En curso",
-    "emptyInviteSearchHint": "¿No encuentras a quien buscas? Es posible que tengan que permitir que su perfil sea encontrado en la búsqueda. Comprueba Editar perfil en Ajustes."
+    "emptyInviteSearchHint": "¿No encuentras a quien buscas? Es posible que tengan que permitir que su perfil sea encontrado en la búsqueda. Comprueba Editar perfil en Ajustes.",
+    "rateActivityTitle": "¿Qué te pareció esta actividad?",
+    "rateActivityCommentHint": "Añade un comentario (opcional)",
+    "rateActivityCommentRejected": "No se pudo publicar tu comentario. Intenta reformularlo o envía tu calificación sin un comentario.",
+    "rateActivityThanks": "¡Gracias por tus comentarios!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 calificación} other{{count} calificaciones}})"
 }

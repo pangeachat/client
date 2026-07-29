@@ -44,8 +44,10 @@ BATCH = 80
 _THINKING_FLOOR = {"gemini-2.5-pro": 128}
 
 # Bare variable references like {homeserver}, {count} — NOT ICU sub-messages
-# ({var, plural, ...} has a comma; =1{...} has spaces/digits inside).
-VAR_RE = re.compile(r"\{(\w+)\}")
+# ({var, plural, ...} has a comma). ASCII identifiers only: `\w` matches
+# Unicode, so a space-free CJK plural branch like =1{1件の評価} would
+# otherwise read as a placeholder and fail validation.
+VAR_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 # Prompt language names come from the CMS `languages` collection — the cross-service
 # source of truth for language metadata (org language-list.instructions.md). Its

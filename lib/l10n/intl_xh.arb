@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-27 15:36:06.241789",
+    "@@last_modified": "2026-07-29 08:48:40.632590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2042,5 +2042,10 @@
     "closeArchive": "Vala indawo yokugcina",
     "activityActions": "Iintshukumo zomsebenzi",
     "ongoing": "Iyaqhubeka",
-    "emptyInviteSearchHint": "Awumfumani omfunayo? Kusenokwenzeka ukuba kufuneka avumele iprofayile yakhe ukuba ifumaneke ekukhangeleni. Jonga Hlela Iprofayile kuseto."
+    "emptyInviteSearchHint": "Awumfumani omfunayo? Kusenokwenzeka ukuba kufuneka avumele iprofayile yakhe ukuba ifumaneke ekukhangeleni. Jonga Hlela Iprofayile kuseto.",
+    "rateActivityTitle": "Injani le ngxubusho?",
+    "rateActivityCommentHint": "Yongeza uluvo (onganyanzelekanga)",
+    "rateActivityCommentRejected": "Uluvo lwakho alukwazanga ukuposwa. Zama ukulubhala ngolunye uhlobo, okanye ungenise ireyithingi yakho ngaphandle koluvo.",
+    "rateActivityThanks": "Enkosi ngempendulo yakho!",
+    "activityRatingMeterLabel": "{percent}% elungileyo ({count, plural, =1{ireyithingi e-1} other{ii-reyithingi eziyi-{count}}})"
 }
