@@ -78,6 +78,15 @@ abstract class AppConfig {
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
 
+  /// Readable ink on top of [goldByTheme], which is a light fill in both
+  /// brightnesses — so both branches resolve to a dark tone.
+  static Color onGoldByTheme(BuildContext context) {
+    final theme = Theme.of(context);
+    return theme.brightness == Brightness.light
+        ? theme.colorScheme.onSurface
+        : theme.colorScheme.surface;
+  }
+
   static String goldHexByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light
       ? goldHexCode
