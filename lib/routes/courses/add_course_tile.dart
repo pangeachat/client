@@ -28,9 +28,7 @@ class AddCourseTile extends StatelessWidget {
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
-    final label = members != null
-        ? '$title, ${L10n.of(context).countParticipants(members)}'
-        : title;
+    final label = title;
 
     return Material(
       type: MaterialType.transparency,
@@ -98,11 +96,18 @@ class AddCourseTile extends StatelessWidget {
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               if (members != null && !invited)
-                                CourseInfoChip(
-                                  icon: Icons.group,
-                                  text: '$members',
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
+                                Semantics(
+                                  label: L10n.of(
+                                    context,
+                                  ).countParticipants(members),
+                                  child: ExcludeSemantics(
+                                    child: CourseInfoChip(
+                                      icon: Icons.group,
+                                      text: '$members',
+                                      fontSize: 12.0,
+                                      iconSize: 12.0,
+                                    ),
+                                  ),
                                 ),
                               if (courseId != null && !invited)
                                 CourseInfoChips(
