@@ -43,7 +43,7 @@ class ActivitySessionStartView extends StatelessWidget {
   });
 
   String? _archivedRoomName(BuildContext context) {
-    if (!controller.activityRemoved) return null;
+    if (!controller.isArchived) return null;
     return controller.activityRoom?.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
@@ -183,9 +183,11 @@ class ActivitySessionStartView extends StatelessWidget {
                     ),
                   ),
                 )
-              // Confirmed removed with no plan recoverable from room state:
-              // archived body from role/goal state alone.
-              : activity == null && controller.activityRemoved
+              // Confirmed removed, with a session and no plan recoverable from
+              // its room state: archived body from role/goal state alone.
+              // Without a session there is nothing to build it from, so a
+              // removed activity falls through to not-found (#7918).
+              : activity == null && controller.isArchived
               ? _ArchivedSessionFallbackBody(controller)
               : activity == null
               ? Center(

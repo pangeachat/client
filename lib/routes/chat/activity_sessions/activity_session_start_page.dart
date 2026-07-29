@@ -40,11 +40,28 @@ enum SessionState {
   /// The user has confirmed their role.
   confirmedRole,
 
-  /// The backend confirmed the activity no longer exists (404). The page is
-  /// read-only: it renders the plan recovered from legacy room state when one
-  /// exists, else the archived fallback body — never role selection.
+  /// The backend confirmed the activity no longer exists (404) AND there is a
+  /// session to review. The page is read-only: it renders the plan recovered
+  /// from legacy room state when one exists, else the archived fallback body —
+  /// never role selection.
   archived,
 }
+
+/// Whether a confirmed-removed activity renders the read-only archived view
+/// and its "no longer supported" notice.
+///
+/// The removed-activity ladder is scoped to session ROOMS: every rung renders
+/// what the room itself holds — roles, stars, timeline — so a learner or their
+/// teacher can always reopen an old session and review the work done there
+/// (activities.instructions.md, "Removed or unresolvable activities"). Reached
+/// WITHOUT a session, as a bare world-map pin is, there is no such thing to
+/// review: the archived body would render empty and the notice would tell the
+/// learner an activity they never ran is out of date (#7918). That case is a
+/// plain not-found instead.
+bool archivedSessionGate({
+  required bool activityRemoved,
+  required bool hasSessionRoom,
+}) => activityRemoved && hasSessionRoom;
 
 class ActivitySessionStartPage extends StatefulWidget {
   final String activityId;
@@ -324,8 +341,15 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     );
   }
 
+  /// See [archivedSessionGate]. Also read by the view, which picks the
+  /// archived body over the not-found error on the same condition.
+  bool get isArchived => archivedSessionGate(
+    activityRemoved: activityRemoved,
+    hasSessionRoom: widget.roomId != null,
+  );
+
   SessionState get _sessionState {
-    if (activityRemoved) return SessionState.archived;
+    if (isArchived) return SessionState.archived;
 
     final roomExists = widget.roomId != null;
     final userIsCreatingRoom = widget.launch;
