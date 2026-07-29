@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-29 10:04:00.533006",
+    "@@last_modified": "2026-07-29 11:54:25.334174",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Ke kali nei i nā mea ʻē aʻe e hui pū",
     "joinableLabel": "Hiki ke hui pū",
     "inProgressLabel": "Ua hoʻopau ʻia ma mua",
-    "availableLabel": "Hana i ka hana"
+    "availableLabel": "Hana i ka hana",
+    "rateActivityTitle": "Pehea kēia hana?",
+    "rateActivityCommentHint": "Hoʻohui i manaʻo (koho)",
+    "rateActivityCommentRejected": "ʻAʻole hiki ke kau ʻia kāu manaʻo. E hoʻāʻo e hoʻoponopono hou, a i ʻole e waiho i kāu helu me ka manaʻo ʻole.",
+    "rateActivityThanks": "Mahalo no kou manaʻo!",
+    "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})"
 }

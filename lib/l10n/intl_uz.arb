@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-29 10:04:11.235287",
+    "@@last_modified": "2026-07-29 11:54:36.569860",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9702,5 +9702,10 @@
     "ongoingPendingLabel": "Boshqalarning qo'shilishini kuting",
     "joinableLabel": "Qo'shilish mumkin",
     "inProgressLabel": "Avvalroq yakunlangan",
-    "availableLabel": "Faoliyat yaratish"
+    "availableLabel": "Faoliyat yaratish",
+    "rateActivityTitle": "Bu mashg'ulot qanday bo'ldi?",
+    "rateActivityCommentHint": "Izoh qo'shish (ixtiyoriy)",
+    "rateActivityCommentRejected": "Izohingiz joylashtirilmadi. Uni qayta yozib ko'ring yoki izohsiz baholang.",
+    "rateActivityThanks": "Fikringiz uchun rahmat!",
+    "activityRatingMeterLabel": "{percent}% ijobiy ({count, plural, =1{1 baho} other{{count} baho}})"
 }

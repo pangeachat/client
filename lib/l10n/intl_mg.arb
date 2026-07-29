@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-29 10:04:05.915449",
+    "@@last_modified": "2026-07-29 11:54:28.989203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Miandry ny hafa hiditra",
     "joinableLabel": "Azo idirana",
     "inProgressLabel": "Efa vita teo aloha",
-    "availableLabel": "Mamorona asa"
+    "availableLabel": "Mamorona asa",
+    "rateActivityTitle": "Ahoana ity asa ity?",
+    "rateActivityCommentHint": "Ampio fanehoan-kevitra (tsy voatery)",
+    "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
+    "rateActivityThanks": "Misaotra anao tamin'ny fanehoan-kevitrao!",
+    "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})"
 }

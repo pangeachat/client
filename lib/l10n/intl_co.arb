@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-29 10:03:58.013023",
+    "@@last_modified": "2026-07-29 11:54:21.812198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Aspittendu chì l'altri si uniscenu",
     "joinableLabel": "Unibile",
     "inProgressLabel": "Cumpiitu prima",
-    "availableLabel": "Creà attività"
+    "availableLabel": "Creà attività",
+    "rateActivityTitle": "Cumu era sta attività?",
+    "rateActivityCommentHint": "Aghjunghje un cummentu (facultativu)",
+    "rateActivityCommentRejected": "U vostru cummentu ùn hà pussutu esse publicatu. Pruvate à riformulallu, o inviate a vostra valutazione senza cummentu.",
+    "rateActivityThanks": "Grazie per u vostru feedback!",
+    "activityRatingMeterLabel": "{percent}% pusitivu ({count, plural, =1{1 valutazione} other{{count} valutazioni}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-29 10:04:01.538257",
+    "@@last_modified": "2026-07-29 11:54:24.964709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Tos lwm tus tuaj koom",
     "joinableLabel": "Koom tau",
     "inProgressLabel": "Ua tiav lawm",
-    "availableLabel": "Tsim kev ua si"
+    "availableLabel": "Tsim kev ua si",
+    "rateActivityTitle": "Kev ua noj ua haus no zoo li cas?",
+    "rateActivityCommentHint": "Ntxiv lus (yeem)",
+    "rateActivityCommentRejected": "Koj cov lus tsis tuaj yeem tshaj tawm. Sim hloov cov lus, lossis xa koj qhov kev ntsuas yam tsis muaj lus.",
+    "rateActivityThanks": "Ua tsaug rau koj cov lus qhia!",
+    "activityRatingMeterLabel": "{percent}% zoo ({count, plural, =1{1 qhov ntsuas} other{{count} qhov ntsuas}})"
 }

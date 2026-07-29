@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-29 10:03:59.580628",
+    "@@last_modified": "2026-07-29 11:54:22.892882",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10564,5 +10564,10 @@
     "ongoingPendingLabel": "Naghihintay sa iba na sumali",
     "joinableLabel": "Pwedeng salihan",
     "inProgressLabel": "Nakumpleto na",
-    "availableLabel": "Gumawa ng aktibidad"
+    "availableLabel": "Gumawa ng aktibidad",
+    "rateActivityTitle": "Kumusta ang aktibidad na ito?",
+    "rateActivityCommentHint": "Magdagdag ng komento (opsyonal)",
+    "rateActivityCommentRejected": "Hindi maipaskil ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
+    "rateActivityThanks": "Salamat sa iyong feedback!",
+    "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-29 10:04:11.399464",
+    "@@last_modified": "2026-07-29 11:54:38.601893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "باشقىلارنىڭ قاتنىشىشىنى كۈتۈۋاتىدۇ",
     "joinableLabel": "قاتنىشالايدۇ",
     "inProgressLabel": "ئىلگىرى تاماملىنىپ بولغان",
-    "availableLabel": "پائالىيەت قۇرۇش"
+    "availableLabel": "پائالىيەت قۇرۇش",
+    "rateActivityTitle": "بۇ پائالىيەت قانداقراق بولدى؟",
+    "rateActivityCommentHint": "ئىزاھات قوشۇش (ئىختىيارىي)",
+    "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
+    "rateActivityThanks": "پىكىر-تەكلىپىڭىزگە رەھمەت!",
+    "activityRatingMeterLabel": "{percent}% ئىجابىي ({count, plural, =1{1 باھا} other{{count} باھا}})"
 }

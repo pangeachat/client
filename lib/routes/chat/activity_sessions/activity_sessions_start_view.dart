@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -144,6 +145,17 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
+              // Aggregate learner rating (#7194) — top-right per design; only
+              // once the activity has ratings.
+              if (activity?.ratingAverage != null &&
+                  (activity?.ratingCount ?? 0) > 0)
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: ActivityRatingMeter(
+                    average: activity!.ratingAverage!,
+                    count: activity.ratingCount!,
+                  ),
+                ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(

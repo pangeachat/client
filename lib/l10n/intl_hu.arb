@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 10:04:00.987182",
+    "@@last_modified": "2026-07-29 11:54:24.881593",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9801,5 +9801,10 @@
     "ongoingPendingLabel": "Várakozás a többiekre",
     "joinableLabel": "Csatlakozható",
     "inProgressLabel": "Korábban befejezett",
-    "availableLabel": "Tevékenység létrehozása"
+    "availableLabel": "Tevékenység létrehozása",
+    "rateActivityTitle": "Milyen volt ez a tevékenység?",
+    "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
+    "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
+    "rateActivityThanks": "Köszönjük visszajelzésedet!",
+    "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})"
 }

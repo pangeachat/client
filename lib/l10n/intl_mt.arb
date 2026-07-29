@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-29 10:04:06.246959",
+    "@@last_modified": "2026-07-29 11:54:30.259994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Qed tistenna li jingħaqdu oħrajn",
     "joinableLabel": "Tista' tingħaqad",
     "inProgressLabel": "Tlestiet qabel",
-    "availableLabel": "Oħloq attività"
+    "availableLabel": "Oħloq attività",
+    "rateActivityTitle": "Kif kienet din l-attività?",
+    "rateActivityCommentHint": "Żid kumment (mhux obbligatorju)",
+    "rateActivityCommentRejected": "Il-kumment tiegħek ma setax jitpoġġa. Ipprova ifformulah mill-ġdid, jew issottometti l-klassifikazzjoni tiegħek mingħajr kumment.",
+    "rateActivityThanks": "Grazzi tal-feedback tiegħek!",
+    "activityRatingMeterLabel": "{percent}% pożittiv ({count, plural, =1{1 klassifikazzjoni} other{{count} klassifikazzjonijiet}})"
 }

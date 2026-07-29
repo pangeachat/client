@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-29 10:04:12.873302",
+    "@@last_modified": "2026-07-29 11:54:38.972104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Kulindwe abanye ukuthi bajoyine",
     "joinableLabel": "Kuyajoyineka",
     "inProgressLabel": "Kuqedwe ngaphambilini",
-    "availableLabel": "Dala umsebenzi"
+    "availableLabel": "Dala umsebenzi",
+    "rateActivityTitle": "Lunjani lolu hlelo?",
+    "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
+    "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
+    "rateActivityThanks": "Siyabonga ngempendulo yakho!",
+    "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})"
 }

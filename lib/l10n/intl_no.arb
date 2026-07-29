@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-29 10:04:06.620355",
+    "@@last_modified": "2026-07-29 11:54:30.675298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Venter på at andre skal bli med",
     "joinableLabel": "Kan bli med",
     "inProgressLabel": "Tidligere fullført",
-    "availableLabel": "Opprett aktivitet"
+    "availableLabel": "Opprett aktivitet",
+    "rateActivityTitle": "Hvordan var denne aktiviteten?",
+    "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
+    "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
+    "rateActivityThanks": "Takk for tilbakemeldingen din!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})"
 }

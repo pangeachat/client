@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-29 10:04:02.773419",
+    "@@last_modified": "2026-07-29 11:54:27.588090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Басқалардың қосылуын күтуде",
     "joinableLabel": "Қосылуға болады",
     "inProgressLabel": "Бұрын аяқталған",
-    "availableLabel": "Әрекет жасау"
+    "availableLabel": "Әрекет жасау",
+    "rateActivityTitle": "Бұл әрекет қалай болды?",
+    "rateActivityCommentHint": "Пікір қосу (міндетті емес)",
+    "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
+    "rateActivityThanks": "Пікіріңіз үшін рахмет!",
+    "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})"
 }

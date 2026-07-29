@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-29 10:04:03.647197",
+    "@@last_modified": "2026-07-29 11:54:26.129078",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10467,5 +10467,10 @@
     "ongoingPendingLabel": "他の参加者を待っています",
     "joinableLabel": "参加可能",
     "inProgressLabel": "以前に完了しました",
-    "availableLabel": "アクティビティを作成"
+    "availableLabel": "アクティビティを作成",
+    "rateActivityTitle": "このアクティビティはいかがでしたか？",
+    "rateActivityCommentHint": "コメントを追加（任意）",
+    "rateActivityCommentRejected": "コメントを投稿できませんでした。表現を変えるか、コメントなしで評価を送信してください。",
+    "rateActivityThanks": "フィードバックありがとうございます！",
+    "activityRatingMeterLabel": "{percent}% の高評価（{count, plural, =1{1件の評価} other{{count}件の評価}}）"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-29 10:04:02.608346",
+    "@@last_modified": "2026-07-29 11:54:26.301052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Bíð eftir að aðrir gangi til liðs",
     "joinableLabel": "Hægt að taka þátt",
     "inProgressLabel": "Lokið áður",
-    "availableLabel": "Búa til virkni"
+    "availableLabel": "Búa til virkni",
+    "rateActivityTitle": "Hvernig fannst þér þessi æfing?",
+    "rateActivityCommentHint": "Bæta við athugasemd (valfrjálst)",
+    "rateActivityCommentRejected": "Ekki tókst að birta athugasemdina þína. Reyndu að orða hana upp á nýtt, eða sendu inn einkunnina þína án athugasemdar.",
+    "rateActivityThanks": "Takk fyrir álit þitt!",
+    "activityRatingMeterLabel": "{percent}% jákvætt ({count, plural, =1{1 einkunn} other{{count} einkunnir}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-29 10:04:04.414430",
+    "@@last_modified": "2026-07-29 11:54:28.410451",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "ກຳລັງລໍຖ້າຄົນອື່ນເຂົ້າຮ່ວມ",
     "joinableLabel": "ສາມາດເຂົ້າຮ່ວມໄດ້",
     "inProgressLabel": "ສຳເລັດແລ້ວກ່ອນໜ້ານີ້",
-    "availableLabel": "ສ້າງກິດຈະກຳ"
+    "availableLabel": "ສ້າງກິດຈະກຳ",
+    "rateActivityTitle": "ກິດຈະກຳນີ້ເປັນແນວໃດ?",
+    "rateActivityCommentHint": "ເພີ່ມຄຳເຫັນ (ທາງເລືອກ)",
+    "rateActivityCommentRejected": "ບໍ່ສາມາດໂພສຄຳເຫັນຂອງທ່ານໄດ້. ລອງປ່ຽນຄຳເວົ້າໃໝ່, ຫຼືສົ່ງການໃຫ້ຄະແນນຂອງທ່ານໂດຍບໍ່ມີຄຳເຫັນ.",
+    "rateActivityThanks": "ຂອບໃຈສຳລັບຄຳຕິຊົມຂອງທ່ານ!",
+    "activityRatingMeterLabel": "{percent}% ຖືກໃຈ ({count, plural, =1{1 ການໃຫ້ຄະແນນ} other{{count} ການໃຫ້ຄະແນນ}})"
 }

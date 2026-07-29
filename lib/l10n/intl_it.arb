@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:01.918175",
+    "@@last_modified": "2026-07-29 11:54:25.885793",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9771,5 +9771,10 @@
     "ongoingPendingLabel": "In attesa che altri si uniscano",
     "joinableLabel": "Partecipabile",
     "inProgressLabel": "Completato in precedenza",
-    "availableLabel": "Crea attività"
+    "availableLabel": "Crea attività",
+    "rateActivityTitle": "Com'è andata questa attività?",
+    "rateActivityCommentHint": "Aggiungi un commento (facoltativo)",
+    "rateActivityCommentRejected": "Impossibile pubblicare il tuo commento. Prova a riformularlo o invia la tua valutazione senza un commento.",
+    "rateActivityThanks": "Grazie per il tuo feedback!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valutazione} other{{count} valutazioni}})"
 }

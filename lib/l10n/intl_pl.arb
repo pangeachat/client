@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-29 10:04:06.982301",
+    "@@last_modified": "2026-07-29 11:54:31.746766",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9783,5 +9783,10 @@
     "ongoingPendingLabel": "Czekam, aż inni dołączą",
     "joinableLabel": "Dołączalne",
     "inProgressLabel": "Wcześniej ukończone",
-    "availableLabel": "Utwórz aktywność"
+    "availableLabel": "Utwórz aktywność",
+    "rateActivityTitle": "Jak oceniasz to ćwiczenie?",
+    "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
+    "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
+    "rateActivityThanks": "Dziękujemy za Twoją opinię!",
+    "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})"
 }

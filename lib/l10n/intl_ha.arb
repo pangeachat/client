@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-29 10:04:00.938313",
+    "@@last_modified": "2026-07-29 11:54:24.151976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Ana jiran wasu su shiga",
     "joinableLabel": "Mai shiga",
     "inProgressLabel": "An kammala a baya",
-    "availableLabel": "Ƙirƙiri aiki"
+    "availableLabel": "Ƙirƙiri aiki",
+    "rateActivityTitle": "Yaya wannan aikin ya kasance?",
+    "rateActivityCommentHint": "Ƙara sharhi (na zaɓi)",
+    "rateActivityCommentRejected": "Ba a iya wallafa sharhinka ba. Gwada sake tsarawa, ko aika ƙimar ka ba tare da sharhi ba.",
+    "rateActivityThanks": "Godiya da ra'ayinka!",
+    "activityRatingMeterLabel": "{percent}% mai kyau ({count, plural, =1{ƙima 1} other{ƙididdiga {count}}})"
 }

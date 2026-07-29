@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-29 10:03:59.412401",
+    "@@last_modified": "2026-07-29 11:54:23.330910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Wachtsje op oaren om mei te dwaan",
     "joinableLabel": "Meidwaanber",
     "inProgressLabel": "Earder foltôge",
-    "availableLabel": "Aktiviteit oanmeitsje"
+    "availableLabel": "Aktiviteit oanmeitsje",
+    "rateActivityTitle": "Hoe wie dizze aktiviteit?",
+    "rateActivityCommentHint": "Foegje in opmerking ta (opsjoneel)",
+    "rateActivityCommentRejected": "Jo opmerking koe net pleatst wurde. Besykje it oars te formulearjen, of stjoer jo beoardieling sûnder opmerking yn.",
+    "rateActivityThanks": "Tank foar jo feedback!",
+    "activityRatingMeterLabel": "{percent}% posityf ({count, plural, =1{1 beoardieling} other{{count} beoardielingen}})"
 }

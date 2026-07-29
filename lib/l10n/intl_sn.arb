@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-29 10:04:10.166937",
+    "@@last_modified": "2026-07-29 11:54:34.054551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Kwakumirirwa vamwe kuti vabatane",
     "joinableLabel": "Inobatika",
     "inProgressLabel": "Yakapedzwa kare",
-    "availableLabel": "Gadzira chiitiko"
+    "availableLabel": "Gadzira chiitiko",
+    "rateActivityTitle": "Chiitiko ichi chaive sei?",
+    "rateActivityCommentHint": "Wedzera chirevo (sarudzo)",
+    "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
+    "rateActivityThanks": "Ndatenda nemhinduro yako!",
+    "activityRatingMeterLabel": "{percent}% yakanaka ({count, plural, =1{1 chiyero} other{{count} zviero}})"
 }

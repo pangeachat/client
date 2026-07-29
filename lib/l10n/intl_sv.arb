@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:09.787077",
+    "@@last_modified": "2026-07-29 11:54:35.213995",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10216,5 +10216,10 @@
     "ongoingPendingLabel": "Väntar på att andra ska ansluta",
     "joinableLabel": "Gå med",
     "inProgressLabel": "Tidigare slutförd",
-    "availableLabel": "Skapa aktivitet"
+    "availableLabel": "Skapa aktivitet",
+    "rateActivityTitle": "Hur var den här aktiviteten?",
+    "rateActivityCommentHint": "Lägg till en kommentar (valfritt)",
+    "rateActivityCommentRejected": "Din kommentar kunde inte publiceras. Försök att omformulera den, eller skicka in ditt betyg utan en kommentar.",
+    "rateActivityThanks": "Tack för din feedback!",
+    "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})"
 }

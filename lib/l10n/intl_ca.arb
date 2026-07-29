@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:03:58.683101",
+    "@@last_modified": "2026-07-29 11:54:21.602771",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9825,5 +9825,10 @@
     "ongoingPendingLabel": "Esperant que s'uneixin els altres",
     "joinableLabel": "Unible",
     "inProgressLabel": "Completat anteriorment",
-    "availableLabel": "Crear activitat"
+    "availableLabel": "Crear activitat",
+    "rateActivityTitle": "Què tal aquesta activitat?",
+    "rateActivityCommentHint": "Afegeix un comentari (opcional)",
+    "rateActivityCommentRejected": "No s'ha pogut publicar el teu comentari. Prova de reformular-lo o envia la teva valoració sense comentari.",
+    "rateActivityThanks": "Gràcies pels teus comentaris!",
+    "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})"
 }

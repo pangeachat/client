@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-29 10:04:08.242883",
+    "@@last_modified": "2026-07-29 11:54:32.545888",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10615,5 +10615,10 @@
     "ongoingPendingLabel": "À espera que outros se juntem",
     "joinableLabel": "Aderível",
     "inProgressLabel": "Concluído anteriormente",
-    "availableLabel": "Criar atividade"
+    "availableLabel": "Criar atividade",
+    "rateActivityTitle": "Como foi esta atividade?",
+    "rateActivityCommentHint": "Adicionar um comentário (opcional)",
+    "rateActivityCommentRejected": "O seu comentário não pôde ser publicado. Tente reformulá-lo ou envie a sua avaliação sem um comentário.",
+    "rateActivityThanks": "Obrigado pelo seu feedback!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})"
 }

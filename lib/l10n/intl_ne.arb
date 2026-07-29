@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-29 10:04:06.559262",
+    "@@last_modified": "2026-07-29 11:54:30.680563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "अरू सामेल हुनको लागि पर्खँदै",
     "joinableLabel": "सामेल हुन योग्य",
     "inProgressLabel": "पहिले नै पूरा भयो",
-    "availableLabel": "गतिविधि सिर्जना गर्नुहोस्"
+    "availableLabel": "गतिविधि सिर्जना गर्नुहोस्",
+    "rateActivityTitle": "यो गतिविधि कस्तो लाग्यो?",
+    "rateActivityCommentHint": "टिप्पणी थप्नुहोस् (ऐच्छिक)",
+    "rateActivityCommentRejected": "तपाईंको टिप्पणी पोस्ट गर्न सकिएन। यसलाई पुन: शब्दबद्ध गर्ने प्रयास गर्नुहोस्, वा टिप्पणी बिना आफ्नो मूल्याङ्कन पेश गर्नुहोस्।",
+    "rateActivityThanks": "तपाईंको प्रतिक्रियाको लागि धन्यवाद!",
+    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{१ मूल्याङ्कन} other{{count} मूल्याङ्कनहरू}})"
 }

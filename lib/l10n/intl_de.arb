@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-29 10:03:58.739173",
+    "@@last_modified": "2026-07-29 11:54:21.248057",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9685,5 +9685,10 @@
     "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
     "joinableLabel": "Beitretbar",
     "inProgressLabel": "Zuvor abgeschlossen",
-    "availableLabel": "Aktivität erstellen"
+    "availableLabel": "Aktivität erstellen",
+    "rateActivityTitle": "Wie war diese Aktivität?",
+    "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
+    "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
+    "rateActivityThanks": "Danke für Ihr Feedback!",
+    "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})"
 }

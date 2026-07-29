@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-29 10:04:11.481089",
+    "@@last_modified": "2026-07-29 11:54:34.567899",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Ngantosan nu sanés ngagabung",
     "joinableLabel": "Bisa ngagabung",
     "inProgressLabel": "Saméméhna réngsé",
-    "availableLabel": "Jieun kagiatan"
+    "availableLabel": "Jieun kagiatan",
+    "rateActivityTitle": "Kumaha kagiatan ieu?",
+    "rateActivityCommentHint": "Tambihkeun koméntar (opsional)",
+    "rateActivityCommentRejected": "Koméntar anjeun teu tiasa dipasang. Cobi robih kecapna, atanapi kirimkeun peunteun anjeun tanpa koméntar.",
+    "rateActivityThanks": "Hatur nuhun kana tanggapan anjeun!",
+    "activityRatingMeterLabel": "{percent}% positip ({count, plural, =1{1 peunteun} other{{count} peunteun}})"
 }

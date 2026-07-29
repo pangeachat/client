@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:03.439746",
+    "@@last_modified": "2026-07-29 11:54:27.214899",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9891,5 +9891,10 @@
     "ongoingPendingLabel": "다른 사용자의 참여를 기다리는 중",
     "joinableLabel": "참여 가능",
     "inProgressLabel": "이전에 완료됨",
-    "availableLabel": "활동 만들기"
+    "availableLabel": "활동 만들기",
+    "rateActivityTitle": "이 활동은 어떠셨나요?",
+    "rateActivityCommentHint": "댓글 추가 (선택 사항)",
+    "rateActivityCommentRejected": "댓글을 게시할 수 없습니다. 다시 작성하거나 댓글 없이 평가를 제출해 주세요.",
+    "rateActivityThanks": "피드백 감사합니다!",
+    "activityRatingMeterLabel": "{percent}% 긍정적 ({count, plural, =1{1개 평가} other{{count}개 평가}})"
 }

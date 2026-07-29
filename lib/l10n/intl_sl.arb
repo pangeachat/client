@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-29 10:04:09.048029",
+    "@@last_modified": "2026-07-29 11:54:33.225780",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10649,5 +10649,10 @@
     "ongoingPendingLabel": "Čakam, da se pridružijo drugi",
     "joinableLabel": "Pridružljivo",
     "inProgressLabel": "Prej dokončano",
-    "availableLabel": "Ustvari dejavnost"
+    "availableLabel": "Ustvari dejavnost",
+    "rateActivityTitle": "Kako je bila ta dejavnost?",
+    "rateActivityCommentHint": "Dodaj komentar (neobvezno)",
+    "rateActivityCommentRejected": "Vašega komentarja ni bilo mogoče objaviti. Poskusite ga preoblikovati ali oddajte svojo oceno brez komentarja.",
+    "rateActivityThanks": "Hvala za vaše povratne informacije!",
+    "activityRatingMeterLabel": "{percent}% pozitivnih ({count, plural, =1{1 ocena} other{{count} ocen}})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-29 10:04:05.047480",
+    "@@last_modified": "2026-07-29 11:54:29.193461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Се чекаат други да се приклучат",
     "joinableLabel": "Приклучи се",
     "inProgressLabel": "Претходно завршено",
-    "availableLabel": "Креирај активност"
+    "availableLabel": "Креирај активност",
+    "rateActivityTitle": "Како беше оваа активност?",
+    "rateActivityCommentHint": "Додајте коментар (изборно)",
+    "rateActivityCommentRejected": "Вашиот коментар не можеше да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
+    "rateActivityThanks": "Ви благодариме за повратните информации!",
+    "activityRatingMeterLabel": "{percent}% позитивни ({count, plural, =1{1 оцена} other{{count} оцени}})"
 }

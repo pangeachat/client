@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-29 10:03:58.195944",
+    "@@last_modified": "2026-07-29 11:54:21.363567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2048,5 +2048,10 @@
     "ongoingPendingLabel": "Yn aros i eraill ymuno",
     "joinableLabel": "Yn agored i ymuno",
     "inProgressLabel": "Wedi'i gwblhau'n flaenorol",
-    "availableLabel": "Creu gweithgaredd"
+    "availableLabel": "Creu gweithgaredd",
+    "rateActivityTitle": "Sut oedd y gweithgaredd hwn?",
+    "rateActivityCommentHint": "Ychwanegu sylw (dewisol)",
+    "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
+    "rateActivityThanks": "Diolch am eich adborth!",
+    "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})"
 }
