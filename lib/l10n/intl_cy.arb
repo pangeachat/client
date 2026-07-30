@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-29 12:08:16.955955",
+    "@@last_modified": "2026-07-30 15:16:46.117505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1698,7 +1698,6 @@
     "voice": "Llais",
     "youLeftTheChat": "🚪 Fe wnaethoch chi adael y sgwrs",
     "webDownloadPermissionMessage": "Os yw eich porwr yn blocio lawrlwythiadau, galluogwch lawrlwythiadau ar gyfer y wefan hon.",
-    "exitPractice": "Ni fydd cynnydd eich sesiwn ymarfer yn cael ei gadw.",
     "practiceGrammar": "Ymarfer gramadeg",
     "notEnoughToPractice": "Anfonwch fwy o negeseuon i ddatgloi ymarfer",
     "constructUseCorGCDesc": "Ymarfer categori gramadeg cywir",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
     "rateActivityThanks": "Diolch am eich adborth!",
     "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})",
-    "newActivityBadge": "NEWYDD"
+    "newActivityBadge": "NEWYDD",
+    "exitVocabPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer geirfa gyfredol ei gadw.",
+    "exitGrammarPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer gramadeg gyfredol ei gadw."
 }

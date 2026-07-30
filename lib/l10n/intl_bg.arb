@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-29 12:08:16.340893",
+    "@@last_modified": "2026-07-30 15:16:45.229231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1698,7 +1698,6 @@
     "voice": "Глас",
     "youLeftTheChat": "🚪 Напуснахте чата",
     "webDownloadPermissionMessage": "Ако браузърът ви блокира изтеглянията, моля, разрешете изтеглянията за този сайт.",
-    "exitPractice": "Напредъкът ви в практическата сесия няма да бъде запазен.",
     "practiceGrammar": "Практикувайте граматика",
     "notEnoughToPractice": "Изпратете още съобщения, за да отключите практиката",
     "constructUseCorGCDesc": "Практика на правилна граматическа категория",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
     "rateActivityThanks": "Благодарим за обратната връзка!",
     "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})",
-    "newActivityBadge": "НОВО"
+    "newActivityBadge": "НОВО",
+    "exitVocabPracticeSession": "Напредъкът ви в текущата тренировка за лексика няма да бъде запазен.",
+    "exitGrammarPracticeSession": "Напредъкът ви в текущата тренировка за граматика няма да бъде запазен."
 }

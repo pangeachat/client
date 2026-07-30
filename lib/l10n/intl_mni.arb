@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-29 12:08:20.865740",
+    "@@last_modified": "2026-07-30 15:16:51.092678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1698,7 +1698,6 @@
     "voice": "খোনজেল",
     "youLeftTheChat": "🚪 নখোয়না চ্যাট অদু থাদোকখ্রে",
     "webDownloadPermissionMessage": "যদি নখোয়গী ব্রাউজারনা ডাউনলোডশিং থিংলবদি, অসিগুম্বা সাইট অসিগীদমক ডাউনলোডশিং অন তৌবীয়ু.",
-    "exitPractice": "নখোয়গী প্রেকটিস সেশনগী প্রোগ্রেস অদু সেভ তৌরোই.",
     "practiceGrammar": "গ্রামার প্রেকটিস তৌবীয়ু",
     "notEnoughToPractice": "প্রেকটিস হাংনবা মেসেজ কয়া থাবীয়ু",
     "constructUseCorGCDesc": "চপ চাবা গ্রামার কেটাগরি প্রেকটিস",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "ꯅꯍꯥꯛꯀꯤ ꯀꯃꯦꯟꯇ ꯑꯗꯨ ꯄꯣꯁ꯭ꯠ ꯇꯧꯕ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯥꯏꯗꯣꯛꯄ ꯍꯣꯠꯅꯧ, ꯅꯠꯠꯔꯒ ꯀꯃꯦꯟꯇ ꯂꯩꯇꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯇꯤꯡ ꯑꯗꯨ ꯁꯕꯃꯤꯠ ꯇꯧ꯫",
     "rateActivityThanks": "ꯅꯍꯥꯛꯀꯤ ꯐꯤꯗꯕꯦꯛꯀꯤꯗꯃꯛ ꯊꯥꯒꯠꯆꯔꯤ!",
     "activityRatingMeterLabel": "{percent}% ꯄꯣꯖꯤꯇꯤꯕ ({count, plural, =1{1 ꯔꯦꯇꯤꯡ} other{{count} ꯔꯦꯇꯤꯡꯁ}})",
-    "newActivityBadge": "ꯊꯧꯔꯥꯡ ꯑꯃꯥ"
+    "newActivityBadge": "ꯊꯧꯔꯥꯡ ꯑꯃꯥ",
+    "exitVocabPracticeSession": "నంగ్గి కరంన్తగి వోకాబులరీ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి.",
+    "exitGrammarPracticeSession": "నంగ్గి కరంన్తగి గ్రామర్ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-29 12:08:22.580569",
+    "@@last_modified": "2026-07-30 15:16:52.242872",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -8881,15 +8881,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогресс в сессии практики не будет сохранен.",
     "practiceGrammar": "Практика грамматики",
     "notEnoughToPractice": "Отправьте больше сообщений, чтобы разблокировать практику",
     "constructUseCorGCDesc": "Практика правильной грамматики",
     "constructUseIncGCDesc": "Практика неправильной грамматики",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10673,7 @@
     "rateActivityCommentRejected": "Ваш комментарий не удалось опубликовать. Попробуйте перефразировать его или отправьте оценку без комментария.",
     "rateActivityThanks": "Спасибо за ваш отзыв!",
     "activityRatingMeterLabel": "{percent}% положительных ({count, plural, =1{1 оценка} other{{count} оценок}})",
-    "newActivityBadge": "НОВОЕ"
+    "newActivityBadge": "НОВОЕ",
+    "exitVocabPracticeSession": "Прогресс текущей сессии по практике словарного запаса не будет сохранен.",
+    "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен."
 }

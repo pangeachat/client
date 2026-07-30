@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-29 12:08:22.194248",
+    "@@last_modified": "2026-07-30 15:16:51.849135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1698,7 +1698,6 @@
     "voice": "ਆਵਾਜ਼",
     "youLeftTheChat": "🚪 ਤੁਸੀਂ ਚੈਟ ਛੱਡ ਦਿੱਤੀ",
     "webDownloadPermissionMessage": "ਜੇਕਰ ਤੁਹਾਡਾ ਬ੍ਰਾਊਜ਼ਰ ਡਾਊਨਲੋਡਾਂ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਸਾਈਟ ਲਈ ਡਾਊਨਲੋਡਾਂ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ।",
-    "exitPractice": "ਤੁਹਾਡੇ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾਵੇਗਾ।",
     "practiceGrammar": "ਵਿਆਕਰਣ ਦਾ ਅਭਿਆਸ ਕਰੋ",
     "notEnoughToPractice": "ਅਭਿਆਸ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਹੋਰ ਸੁਨੇਹੇ ਭੇਜੋ",
     "constructUseCorGCDesc": "ਸਹੀ ਵਿਆਕਰਣ ਸ਼੍ਰੇਣੀ ਦਾ ਅਭਿਆਸ",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਪੋਸਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬਿਨਾਂ ਟਿੱਪਣੀ ਦੇ ਆਪਣੀ ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰੋ।",
     "rateActivityThanks": "ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਲਈ ਧੰਨਵਾਦ!",
     "activityRatingMeterLabel": "{percent}% ਸਕਾਰਾਤਮਕ ({count, plural, =1{1 ਰੇਟਿੰਗ} other{{count} ਰੇਟਿੰਗਾਂ}})",
-    "newActivityBadge": "ਨਵਾਂ"
+    "newActivityBadge": "ਨਵਾਂ",
+    "exitVocabPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਸ਼ਬਦਾਵਲੀ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
+    "exitGrammarPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਵਿਆਕਰਨ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।"
 }

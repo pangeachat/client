@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-29 12:08:20.975001",
+    "@@last_modified": "2026-07-30 15:16:51.095383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1698,7 +1698,6 @@
     "voice": "Vuċi",
     "youLeftTheChat": "🚪 Ħriġt miċ-chat",
     "webDownloadPermissionMessage": "Jekk il-browser tiegħek jimblokka t-tniżżil, jekk jogħġbok ippermetti t-tniżżil għal dan is-sit.",
-    "exitPractice": "Il-progress tas-sessjoni ta' prattika tiegħek mhux se jiġi ssejvjat.",
     "practiceGrammar": "Ipprattika l-grammatika",
     "notEnoughToPractice": "Ibgħat aktar messaġġi biex tiftaħ il-prattika",
     "constructUseCorGCDesc": "Prattika korretta tal-kategorija tal-grammatika",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Il-kumment tiegħek ma setax jitpoġġa. Ipprova ifformulah mill-ġdid, jew issottometti l-klassifikazzjoni tiegħek mingħajr kumment.",
     "rateActivityThanks": "Grazzi tal-feedback tiegħek!",
     "activityRatingMeterLabel": "{percent}% pożittiv ({count, plural, =1{1 klassifikazzjoni} other{{count} klassifikazzjonijiet}})",
-    "newActivityBadge": "ĠDID"
+    "newActivityBadge": "ĠDID",
+    "exitVocabPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-vokabularju ma jiġix salvat.",
+    "exitGrammarPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-grammatika ma jiġix salvat."
 }

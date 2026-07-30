@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-29 12:08:18.354567",
+    "@@last_modified": "2026-07-30 15:16:47.890325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1698,7 +1698,6 @@
     "voice": "Lub suab",
     "youLeftTheChat": "🚪 Koj tawm hauv kev sib tham",
     "webDownloadPermissionMessage": "Yog tias koj lub browser thaiv kev rub tawm, thov qhib kev rub tawm rau lub xaib no.",
-    "exitPractice": "Koj qhov kev xyaum yuav tsis raug cawm.",
     "practiceGrammar": "Xyaum sau ntawv",
     "notEnoughToPractice": "Xa lus ntxiv kom qhib kev xyaum",
     "constructUseCorGCDesc": "Kev xyaum sau ntawv raug",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Koj cov lus tsis tuaj yeem tshaj tawm. Sim hloov cov lus, lossis xa koj qhov kev ntsuas yam tsis muaj lus.",
     "rateActivityThanks": "Ua tsaug rau koj cov lus qhia!",
     "activityRatingMeterLabel": "{percent}% zoo ({count, plural, =1{1 qhov ntsuas} other{{count} qhov ntsuas}})",
-    "newActivityBadge": "Tshiab"
+    "newActivityBadge": "Tshiab",
+    "exitVocabPracticeSession": "Qhov koj tab tom kawm lus tshiab yuav tsis raug cawm.",
+    "exitGrammarPracticeSession": "Qhov koj tab tom kawm kev sau ntawv yuav tsis raug cawm."
 }

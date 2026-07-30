@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-29 12:08:23.705121",
+    "@@last_modified": "2026-07-30 15:16:53.691053",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8702,15 +8702,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "మీ ప్రాక్టీస్ సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "practiceGrammar": "వ్యాకరణాన్ని అభ్యాసం చేయండి",
     "notEnoughToPractice": "ప్రాక్టీస్‌ను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి",
     "constructUseCorGCDesc": "సరైన వ్యాకరణ శ్రేణి ప్రాక్టీస్",
     "constructUseIncGCDesc": "తప్పు వ్యాకరణ శ్రేణి ప్రాక్టీస్",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10660,5 +10655,7 @@
     "rateActivityCommentRejected": "మీ వ్యాఖ్య పోస్ట్ చేయబడలేదు. దయచేసి దాన్ని తిరిగి వ్రాయడానికి ప్రయత్నించండి లేదా వ్యాఖ్య లేకుండా మీ రేటింగ్‌ను సమర్పించండి.",
     "rateActivityThanks": "మీ అభిప్రాయానికి ధన్యవాదాలు!",
     "activityRatingMeterLabel": "{percent}% సానుకూలం ({count, plural, =1{1 రేటింగ్} other{{count} రేటింగ్‌లు}})",
-    "newActivityBadge": "కొత్త"
+    "newActivityBadge": "కొత్త",
+    "exitVocabPracticeSession": "మీ ప్రస్తుత పదజాల అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
+    "exitGrammarPracticeSession": "మీ ప్రస్తుత వ్యాకరణ అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు."
 }

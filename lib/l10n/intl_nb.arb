@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:21.282162",
+    "@@last_modified": "2026-07-30 15:16:51.079083",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7982,15 +7982,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
     "practiceGrammar": "Øv på grammatikk",
     "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
     "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
     "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9761,5 +9756,7 @@
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
     "rateActivityThanks": "Takk for tilbakemeldingen din!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
+    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:25.387954",
+    "@@last_modified": "2026-07-30 15:16:54.709484",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7847,15 +7847,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "您的練習進度將不會被保存。",
     "practiceGrammar": "練習文法",
     "notEnoughToPractice": "發送更多訊息以解鎖練習",
     "constructUseCorGCDesc": "正確文法類別練習",
     "constructUseIncGCDesc": "不正確文法類別練習",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9810,5 +9805,7 @@
     "rateActivityCommentRejected": "您的評論無法發佈。請嘗試重新措辭，或不帶評論提交您的評分。",
     "rateActivityThanks": "感謝您的回饋！",
     "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 評分} other{{count} 評分}}）",
-    "newActivityBadge": "新活動"
+    "newActivityBadge": "新活動",
+    "exitVocabPracticeSession": "您目前的詞彙練習進度將不會被儲存。",
+    "exitGrammarPracticeSession": "您目前的文法練習進度將不會被儲存。"
 }

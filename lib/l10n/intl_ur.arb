@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-29 12:08:24.249168",
+    "@@last_modified": "2026-07-30 15:16:54.198730",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1698,7 +1698,6 @@
     "voice": "آواز",
     "youLeftTheChat": "🚪 آپ نے چیٹ چھوڑ دی",
     "webDownloadPermissionMessage": "اگر آپ کا براؤزر ڈاؤن لوڈز کو روکتا ہے، تو براہ کرم اس سائٹ کے لیے ڈاؤن لوڈز کو فعال کریں۔",
-    "exitPractice": "آپ کی پریکٹس سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
     "practiceGrammar": "گرائمر کی مشق کریں",
     "notEnoughToPractice": "مشق کو غیر مقفل کرنے کے لیے مزید پیغامات بھیجیں",
     "constructUseCorGCDesc": "درست گرائمر کیٹیگری کی مشق",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "آپ کا تبصرہ پوسٹ نہیں ہو سکا۔ اسے دوبارہ لکھنے کی کوشش کریں، یا تبصرے کے بغیر اپنی درجہ بندی جمع کروائیں۔",
     "rateActivityThanks": "آپ کے تاثرات کا شکریہ!",
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجہ بندی} other{{count} درجہ بندیاں}})",
-    "newActivityBadge": "نیا"
+    "newActivityBadge": "نیا",
+    "exitVocabPracticeSession": "آپ کے موجودہ الفاظ کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
+    "exitGrammarPracticeSession": "آپ کے موجودہ گرامر کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔"
 }

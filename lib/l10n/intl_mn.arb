@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-29 12:08:21.053900",
+    "@@last_modified": "2026-07-30 15:16:50.822112",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1698,7 +1698,6 @@
     "voice": "Дуу хоолой",
     "youLeftTheChat": "🚪 Та чатаас гарлаа",
     "webDownloadPermissionMessage": "Хэрэв таны хөтөч татан авалтыг хааж байвал, энэ сайтад татан авалтыг идэвхжүүлнэ үү.",
-    "exitPractice": "Таны дасгалын явц хадгалагдахгүй.",
     "practiceGrammar": "Дүрэм дасгал хийх",
     "notEnoughToPractice": "Дасгал хийх боломжийг нээхийн тулд илүү олон мессеж илгээнэ үү",
     "constructUseCorGCDesc": "Зөв дүрмийн ангиллын дасгал",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
     "rateActivityThanks": "Таны санал хүсэлтэд баярлалаа!",
     "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})",
-    "newActivityBadge": "ШИНЭ"
+    "newActivityBadge": "ШИНЭ",
+    "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
+    "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй."
 }

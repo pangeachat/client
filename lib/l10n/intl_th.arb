@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-29 12:08:24.562031",
+    "@@last_modified": "2026-07-30 15:16:53.730040",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8378,15 +8378,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ความก้าวหน้าของการฝึกฝนของคุณจะไม่ถูกบันทึก",
     "practiceGrammar": "ฝึกไวยากรณ์",
     "notEnoughToPractice": "ส่งข้อความเพิ่มเติมเพื่อปลดล็อกการฝึกฝน",
     "constructUseCorGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ถูกต้อง",
     "constructUseIncGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ไม่ถูกต้อง",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10336,5 +10331,7 @@
     "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
     "rateActivityThanks": "ขอบคุณสำหรับความคิดเห็นของคุณ!",
     "activityRatingMeterLabel": "{percent}% เป็นบวก ({count, plural, =1{1 การให้คะแนน} other{{count} การให้คะแนน}})",
-    "newActivityBadge": "ใหม่"
+    "newActivityBadge": "ใหม่",
+    "exitVocabPracticeSession": "ความคืบหน้าของเซสชันฝึกคำศัพท์ปัจจุบันของคุณจะไม่ถูกบันทึก",
+    "exitGrammarPracticeSession": "ความคืบหน้าของเซสชันฝึกไวยากรณ์ปัจจุบันของคุณจะไม่ถูกบันทึก"
 }

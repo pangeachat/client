@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-29 12:08:19.175115",
+    "@@last_modified": "2026-07-30 15:16:48.184538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1698,7 +1698,6 @@
     "voice": "Vwa",
     "youLeftTheChat": "🚪 Ou kite chat la",
     "webDownloadPermissionMessage": "Si navigatè ou a bloke telechajman, tanpri pèmèt telechajman pou sit sa a.",
-    "exitPractice": "Pwogrè sesyon pratik ou a p ap sove.",
     "practiceGrammar": "Pratike gramè",
     "notEnoughToPractice": "Voye plis mesaj pou debloke pratik",
     "constructUseCorGCDesc": "Pratike kategori gramè kòrèk",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab poste. Eseye reformule li, oswa soumèt evalyasyon ou san yon kòmantè.",
     "rateActivityThanks": "Mèsi pou fidbak ou!",
     "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})",
-    "newActivityBadge": "NOUVO"
+    "newActivityBadge": "NOUVO",
+    "exitVocabPracticeSession": "Pwogrè sesyon pratik vokabilè ou ye kounye a p ap sove.",
+    "exitGrammarPracticeSession": "Pwogrè sesyon pratik gramè ou ye kounye a p ap sove."
 }

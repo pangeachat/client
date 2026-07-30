@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-29 12:08:18.663878",
+    "@@last_modified": "2026-07-30 15:16:47.837267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1698,7 +1698,6 @@
     "voice": "Murya",
     "youLeftTheChat": "🚪 Ka bar hirar",
     "webDownloadPermissionMessage": "Idan burauzarka ta toshe saukewa, don Allah ka ba da izinin saukewa ga wannan shafin.",
-    "exitPractice": "Ba za a adana ci gaban aikinka ba.",
     "practiceGrammar": "Aikin nahawu",
     "notEnoughToPractice": "Aika ƙarin saƙonni don buɗe aiki",
     "constructUseCorGCDesc": "Aikin rukunin nahawu daidai",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Ba a iya wallafa sharhinka ba. Gwada sake tsarawa, ko aika ƙimar ka ba tare da sharhi ba.",
     "rateActivityThanks": "Godiya da ra'ayinka!",
     "activityRatingMeterLabel": "{percent}% mai kyau ({count, plural, =1{ƙima 1} other{ƙididdiga {count}}})",
-    "newActivityBadge": "SABO"
+    "newActivityBadge": "SABO",
+    "exitVocabPracticeSession": "Ba za a adana ci gaban zaman koyon kalmomin da kake yi yanzu ba.",
+    "exitGrammarPracticeSession": "Ba za a adana ci gaban zaman koyon nahawun da kake yi yanzu ba."
 }

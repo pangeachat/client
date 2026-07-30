@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-29 12:08:20.139390",
+    "@@last_modified": "2026-07-30 15:16:49.923164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1698,7 +1698,6 @@
     "voice": "Stëmm",
     "youLeftTheChat": "🚪 Dir hutt de Chat verlooss",
     "webDownloadPermissionMessage": "Wann Äre Browser Downloads blockéiert, erlaabt w.e.g. Downloads fir dëse Site.",
-    "exitPractice": "Äre Fortschrëtt an der Übungssessioun gëtt net gespäichert.",
     "practiceGrammar": "Grammaire üben",
     "notEnoughToPractice": "Schéckt méi Messagen fir d'Praxis opzemaachen",
     "constructUseCorGCDesc": "Korrekt Grammaire Kategorie Praxis",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Äre Kommentar konnt net gepost ginn. Probéiert en ëmzeschreiwen, oder schéckt Är Bewäertung ouni Kommentar of.",
     "rateActivityThanks": "Merci fir Äre Feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewäertung} other{{count} Bewäertungen}})",
-    "newActivityBadge": "NEI"
+    "newActivityBadge": "NEI",
+    "exitVocabPracticeSession": "Däi Fortschrëtt an der aktueller Vokabelübungssessioun gëtt net gespäichert.",
+    "exitGrammarPracticeSession": "Däi Fortschrëtt an der aktueller Grammatikübungssessioun gëtt net gespäichert."
 }

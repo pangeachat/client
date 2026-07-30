@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-29 12:08:23.393906",
+    "@@last_modified": "2026-07-30 15:16:52.943446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1698,7 +1698,6 @@
     "voice": "Cod",
     "youLeftTheChat": "🚪 Waad ka baxday sheekada",
     "webDownloadPermissionMessage": "Haddii biraawsarkaagu xannibo soo dejinta, fadlan awood u sii soo dejinta boggan.",
-    "exitPractice": "Horumarkaaga kulanka tababarka lama keydin doono.",
     "practiceGrammar": "Ku tababar naxwaha",
     "notEnoughToPractice": "Dir farriimo badan si aad u furto tababarka",
     "constructUseCorGCDesc": "Tababarka qaybta naxwaha ee saxda ah",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Faalladaada lama soo dhejin karin. Isku day inaad dib u habayso, ama soo gudbi qiimayntaada faallo la'aan.",
     "rateActivityThanks": "Waad ku mahadsan tahay jawaab celintaada!",
     "activityRatingMeterLabel": "{percent}% mid wanaagsan ({count, plural, =1{1 qiimayn} other{{count} qiimayn}})",
-    "newActivityBadge": "CUSUB"
+    "newActivityBadge": "CUSUB",
+    "exitVocabPracticeSession": "Horumarkaaga fadhiga ku celcelinta erayada hadda lama kaydin doono.",
+    "exitGrammarPracticeSession": "Horumarkaaga fadhiga ku celcelinta naxwaha hadda lama kaydin doono."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-29 12:08:24.323661",
+    "@@last_modified": "2026-07-30 15:16:53.701444",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8047,15 +8047,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.",
     "practiceGrammar": "Dil bilgisi pratiği yap",
     "notEnoughToPractice": "Pratik yapmak için daha fazla mesaj gönderin",
     "constructUseCorGCDesc": "Doğru dil bilgisi kategorisi pratiği",
     "constructUseIncGCDesc": "Yanlış dil bilgisi kategorisi pratiği",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10005,5 +10000,7 @@
     "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
     "rateActivityThanks": "Geri bildiriminiz için teşekkürler!",
     "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})",
-    "newActivityBadge": "YENİ"
+    "newActivityBadge": "YENİ",
+    "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
+    "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek."
 }

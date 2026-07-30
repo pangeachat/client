@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-29 12:08:16.316537",
+    "@@last_modified": "2026-07-30 15:16:45.358123",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш практычны сеанс не будзе захаваны.",
     "practiceGrammar": "Практыкаваць граматыку",
     "notEnoughToPractice": "Адпраўце больш паведамленняў, каб разблакаваць практыку",
     "constructUseCorGCDesc": "Практыка ў катэгорыі правільнай граматыкі",
     "constructUseIncGCDesc": "Практыка ў катэгорыі няправільнай граматыкі",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9718,5 +9713,7 @@
     "rateActivityCommentRejected": "Ваш каментарый не быў апублікаваны. Паспрабуйце перафразаваць яго або адправіць ацэнку без каментарыя.",
     "rateActivityThanks": "Дзякуй за ваш водгук!",
     "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнак}})",
-    "newActivityBadge": "НОВАЕ"
+    "newActivityBadge": "НОВАЕ",
+    "exitVocabPracticeSession": "Ваш бягучы прагрэс у практыцы слоўнікавага запасу не будзе захаваны.",
+    "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-29 12:08:18.064123",
+    "@@last_modified": "2026-07-30 15:16:47.153900",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "O progreso da túa sesión de práctica non se gardará.",
     "practiceGrammar": "Practicar gramática",
     "notEnoughToPractice": "Envía máis mensaxes para desbloquear a práctica",
     "constructUseCorGCDesc": "Práctica da categoría de gramática correcta",
     "constructUseIncGCDesc": "Práctica da categoría de gramática incorrecta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9704,5 +9699,7 @@
     "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
     "rateActivityThanks": "Grazas polos teus comentarios!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de vocabulario.",
+    "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática."
 }

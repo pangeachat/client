@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-29 12:08:26.026062",
+    "@@last_modified": "2026-07-30 15:16:55.579731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1698,7 +1698,6 @@
     "voice": "Izwi",
     "youLeftTheChat": "🚪 Uphumile engxoxweni",
     "webDownloadPermissionMessage": "Uma isiphequluli sakho sivimba ukulanda, sicela uvumele ukulanda kule sayithi.",
-    "exitPractice": "Inqubekelaphambili yakho yokuzijwayeza ngeke ilondolozwe.",
     "practiceGrammar": "Zijwayeze uhlelo lolimi",
     "notEnoughToPractice": "Thumela imilayezo eminingi ukuze uvule ukuzijwayeza",
     "constructUseCorGCDesc": "Ukuzijwayeza kwesigaba sohlelo lolimi olulungile",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
     "rateActivityThanks": "Siyabonga ngempendulo yakho!",
     "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})",
-    "newActivityBadge": "OKUSHA"
+    "newActivityBadge": "OKUSHA",
+    "exitVocabPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza amagama ngeke ilondolozwe.",
+    "exitGrammarPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza uhlelo lolimi ngeke ilondolozwe."
 }

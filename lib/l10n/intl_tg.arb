@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-29 12:08:23.769745",
+    "@@last_modified": "2026-07-30 15:16:53.752637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1698,7 +1698,6 @@
     "voice": "Овоз",
     "youLeftTheChat": "🚪 Шумо чатро тарк кардед",
     "webDownloadPermissionMessage": "Агар браузери шумо зеркашиҳоро маҳкам кунад, лутфан зеркашиҳоро барои ин сайт фаъол созед.",
-    "exitPractice": "Пешрафти ҷаласаи машқи шумо захира карда намешавад.",
     "practiceGrammar": "Грамматикаро машқ кунед",
     "notEnoughToPractice": "Барои кушодани машқ паёмҳои бештар фиристед",
     "constructUseCorGCDesc": "Машқи категорияи грамматикии дуруст",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Шарҳи шумо нашр нашуд. Кӯшиш кунед, ки онро аз нав нависед ё баҳои худро бе шарҳ пешниҳод кунед.",
     "rateActivityThanks": "Ташаккур барои фикру мулоҳизаи шумо!",
     "activityRatingMeterLabel": "{percent}% мусбат ({count, plural, =1{1 баҳо} other{{count} баҳо}})",
-    "newActivityBadge": "НАВ"
+    "newActivityBadge": "НАВ",
+    "exitVocabPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи луғати шумо захира карда намешавад.",
+    "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад."
 }

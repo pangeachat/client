@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-29 12:08:17.762686",
+    "@@last_modified": "2026-07-30 15:16:46.871039",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7914,15 +7914,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Harjoitussession edistystäsi ei tallenneta.",
     "practiceGrammar": "Harjoittele kielioppia",
     "notEnoughToPractice": "Lähetä lisää viestejä avataksesi harjoituksen",
     "constructUseCorGCDesc": "Oikean kielioppikategorian harjoittelu",
     "constructUseIncGCDesc": "Väärän kielioppikategorian harjoittelu",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9741,5 +9736,7 @@
     "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
     "rateActivityThanks": "Kiitos palautteestasi!",
     "activityRatingMeterLabel": "{percent}% positiivisia ({count, plural, =1{1 arvio} other{{count} arviota}})",
-    "newActivityBadge": "UUSI"
+    "newActivityBadge": "UUSI",
+    "exitVocabPracticeSession": "Nykyisen sanastoharjoittelun edistymistä ei tallenneta.",
+    "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-29 12:08:18.824989",
+    "@@last_modified": "2026-07-30 15:16:48.593290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1698,7 +1698,6 @@
     "voice": "Ձայն",
     "youLeftTheChat": "🚪 Դուք լքեցիք զրույցը",
     "webDownloadPermissionMessage": "Եթե ձեր բրաուզերը արգելափակում է ներբեռնումները, խնդրում ենք թույլատրել ներբեռնումներն այս կայքի համար։",
-    "exitPractice": "Ձեր պրակտիկայի առաջընթացը չի պահպանվի։",
     "practiceGrammar": "Քերականության պրակտիկա",
     "notEnoughToPractice": "Ուղարկեք ավելի շատ հաղորդագրություններ՝ պրակտիկան բացելու համար",
     "constructUseCorGCDesc": "Ճիշտ քերականական կատեգորիայի պրակտիկա",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Ձեր մեկնաբանությունը չհաջողվեց հրապարակել։ Փորձեք վերաձևակերպել այն կամ ուղարկեք Ձեր գնահատականն առանց մեկնաբանության։",
     "rateActivityThanks": "Շնորհակալություն Ձեր կարծիքի համար։",
     "activityRatingMeterLabel": "{percent}% դրական ({count, plural, =1{1 գնահատական} other{{count} գնահատական}})",
-    "newActivityBadge": "ՆՈՐ"
+    "newActivityBadge": "ՆՈՐ",
+    "exitVocabPracticeSession": "Բառապաշարի մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։",
+    "exitGrammarPracticeSession": "Քերականության մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։"
 }

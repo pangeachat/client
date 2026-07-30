@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-29 12:08:17.036057",
+    "@@last_modified": "2026-07-30 15:16:46.301369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1698,7 +1698,6 @@
     "voice": "Tingog",
     "youLeftTheChat": "🚪 Mibiya ka sa chat",
     "webDownloadPermissionMessage": "Kung gibabagan sa imong browser ang mga pag-download, palihug i-enable ang mga pag-download alang niini nga site.",
-    "exitPractice": "Ang imong pag-uswag sa sesyon sa pagpraktis dili ma-save.",
     "practiceGrammar": "Pagpraktis sa gramatika",
     "notEnoughToPractice": "Pagpadala og dugang mga mensahe aron maablihan ang pagpraktis",
     "constructUseCorGCDesc": "Husto nga pagpraktis sa kategorya sa gramatika",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Dili ma-post ang imong komento. Sulayi pag-usab ang pag-phrase niini, o isumite ang imong rating nga walay komento.",
     "rateActivityThanks": "Salamat sa imong feedback!",
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
-    "newActivityBadge": "BAG-O"
+    "newActivityBadge": "BAG-O",
+    "exitVocabPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa bokabularyo dili maluwas.",
+    "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas."
 }

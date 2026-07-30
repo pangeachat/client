@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-29 12:08:21.617470",
+    "@@last_modified": "2026-07-30 15:16:52.097080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1698,7 +1698,6 @@
     "voice": "غږ",
     "youLeftTheChat": "🚪 تاسو له چټ څخه ووتل",
     "webDownloadPermissionMessage": "که ستاسو براوزر ډاونلوډونه بندوي، مهرباني وکړئ د دې سایټ لپاره ډاونلوډونه فعال کړئ.",
-    "exitPractice": "ستاسو د تمرین سیشن پرمختګ به خوندي نشي.",
     "practiceGrammar": "د ګرامر تمرین",
     "notEnoughToPractice": "د تمرین خلاصولو لپاره نور پیغامونه واستوئ",
     "constructUseCorGCDesc": "د ګرامر کټګورۍ سم تمرین",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
     "rateActivityThanks": "ستاسو د نظر لپاره مننه!",
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بندۍ}})",
-    "newActivityBadge": "نوی"
+    "newActivityBadge": "نوی",
+    "exitVocabPracticeSession": "ستاسو د لغتونو د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي.",
+    "exitGrammarPracticeSession": "ستاسو د ګرامر د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي."
 }

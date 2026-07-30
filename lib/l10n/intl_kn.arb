@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-29 12:08:19.395801",
+    "@@last_modified": "2026-07-30 15:16:49.369889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1698,7 +1698,6 @@
     "voice": "ಧ್ವನಿ",
     "youLeftTheChat": "🚪 ನೀವು ಚಾಟ್ ತೊರೆದಿದ್ದೀರಿ",
     "webDownloadPermissionMessage": "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸಿದರೆ, ದಯವಿಟ್ಟು ಈ ಸೈಟ್‌ಗಾಗಿ ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.",
-    "exitPractice": "ನಿಮ್ಮ ಅಭ್ಯಾಸದ ಅವಧಿಯ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
     "practiceGrammar": "ವ್ಯಾಕರಣವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ",
     "notEnoughToPractice": "ಅಭ್ಯಾಸವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಹೆಚ್ಚಿನ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಿ",
     "constructUseCorGCDesc": "ಸರಿಯಾದ ವ್ಯಾಕರಣ ವರ್ಗ ಅಭ್ಯಾಸ",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಪೋಸ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಅದನ್ನು ಮರುರೂಪಿಸಲು ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಕಾಮೆಂಟ್ ಇಲ್ಲದೆ ನಿಮ್ಮ ರೇಟಿಂಗ್ ಅನ್ನು ಸಲ್ಲಿಸಿ.",
     "rateActivityThanks": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಗೆ ಧನ್ಯವಾದಗಳು!",
     "activityRatingMeterLabel": "{percent}% ಸಕಾರಾತ್ಮಕ ({count, plural, =1{1 ರೇಟಿಂಗ್} other{{count} ರೇಟಿಂಗ್‌ಗಳು}})",
-    "newActivityBadge": "ಹೊಸತು"
+    "newActivityBadge": "ಹೊಸತು",
+    "exitVocabPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಶಬ್ದಕೋಶ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "exitGrammarPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ವ್ಯಾಕರಣ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ."
 }

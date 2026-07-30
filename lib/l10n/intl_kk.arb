@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-29 12:08:19.855120",
+    "@@last_modified": "2026-07-30 15:16:49.187617",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1698,7 +1698,6 @@
     "voice": "Дауыс",
     "youLeftTheChat": "🚪 Сіз чаттан шықтыңыз",
     "webDownloadPermissionMessage": "Егер браузеріңіз жүктеулерді бұғаттаса, осы сайт үшін жүктеулерді қосыңыз.",
-    "exitPractice": "Жаттығу сессиясының барысы сақталмайды.",
     "practiceGrammar": "Грамматиканы жаттықтыру",
     "notEnoughToPractice": "Жаттығуды ашу үшін көбірек хабарлама жіберіңіз",
     "constructUseCorGCDesc": "Дұрыс грамматикалық категория жаттығуы",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
     "rateActivityThanks": "Пікіріңіз үшін рахмет!",
     "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})",
-    "newActivityBadge": "ЖАҢА"
+    "newActivityBadge": "ЖАҢА",
+    "exitVocabPracticeSession": "Сіздің ағымдағы сөздік қорын жаттығу сессиясының үлгерімі сақталмайды.",
+    "exitGrammarPracticeSession": "Сіздің ағымдағы грамматикалық жаттығу сессиясының үлгерімі сақталмайды."
 }

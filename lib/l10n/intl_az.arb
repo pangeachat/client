@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-29 12:08:16.251970",
+    "@@last_modified": "2026-07-30 15:16:45.467338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1698,7 +1698,6 @@
     "voice": "Səs",
     "youLeftTheChat": "🚪 Çatdan çıxdınız",
     "webDownloadPermissionMessage": "Əgər brauzeriniz endirmələri bloklayırsa, lütfən, bu sayt üçün endirmələrə icazə verin.",
-    "exitPractice": "Məşq sessiyanızın gedişatı yadda saxlanılmayacaq.",
     "practiceGrammar": "Qrammatikanı məşq et",
     "notEnoughToPractice": "Məşqi aktivləşdirmək üçün daha çox mesaj göndərin",
     "constructUseCorGCDesc": "Düzgün qrammatik kateqoriya məşqi",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
     "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
     "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
-    "newActivityBadge": "YENİ"
+    "newActivityBadge": "YENİ",
+    "exitVocabPracticeSession": "Cari lüğət təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
+    "exitGrammarPracticeSession": "Cari qrammatika təcrübə sessiyanızın gedişatı yadda saxlanmayacaq."
 }

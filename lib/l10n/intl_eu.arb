@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-29 12:08:17.314079",
+    "@@last_modified": "2026-07-30 15:16:46.982878",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
     "practiceGrammar": "Gramatika praktikatu",
     "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
     "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
     "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9704,5 +9699,7 @@
     "rateActivityCommentRejected": "Ezin izan da zure iruzkina argitaratu. Saiatu berriro idazten, edo bidali zure balorazioa iruzkinik gabe.",
     "rateActivityThanks": "Eskerrik asko zure iritziagatik!",
     "activityRatingMeterLabel": "%{percent} positibo ({count, plural, =1{balorazio 1} other{{count} balorazio}})",
-    "newActivityBadge": "BERRIA"
+    "newActivityBadge": "BERRIA",
+    "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
+    "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko."
 }

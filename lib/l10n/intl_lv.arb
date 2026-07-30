@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-29 12:08:20.470226",
+    "@@last_modified": "2026-07-30 15:16:50.039435",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Jūsu prakses sesijas progress netiks saglabāts.",
     "practiceGrammar": "Praktizēt gramatiku",
     "notEnoughToPractice": "Sūtiet vairāk ziņojumu, lai atbloķētu praksi",
     "constructUseCorGCDesc": "Pareizas gramatikas kategorijas prakse",
     "constructUseIncGCDesc": "Nepareizas gramatikas kategorijas prakse",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9704,5 +9699,7 @@
     "rateActivityCommentRejected": "Jūsu komentāru nevarēja publicēt. Mēģiniet to pārformulēt vai iesniedziet savu vērtējumu bez komentāra.",
     "rateActivityThanks": "Paldies par jūsu atsauksmēm!",
     "activityRatingMeterLabel": "{percent}% pozitīvi ({count, plural, =1{1 vērtējums} other{{count} vērtējumi}})",
-    "newActivityBadge": "JAUNS"
+    "newActivityBadge": "JAUNS",
+    "exitVocabPracticeSession": "Jūsu pašreizējās vārdu krājuma prakses sesijas progress netiks saglabāts.",
+    "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts."
 }

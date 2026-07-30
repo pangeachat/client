@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:25.603218",
+    "@@last_modified": "2026-07-30 15:16:53.659320",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7848,15 +7848,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "உங்கள் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
     "practiceGrammar": "வியாசத்தை பயிற்சி செய்யவும்",
     "notEnoughToPractice": "பயிற்சியை திறக்க மேலும் செய்திகளை அனுப்பவும்",
     "constructUseCorGCDesc": "சரியான வியாச வகை பயிற்சி",
     "constructUseIncGCDesc": "தவறான வியாச வகை பயிற்சி",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9796,5 +9791,7 @@
     "rateActivityCommentRejected": "உங்கள் கருத்தைப் பதிவிட முடியவில்லை. அதை வேறு வார்த்தைகளில் கூற முயற்சிக்கவும் அல்லது கருத்து இல்லாமல் உங்கள் மதிப்பீட்டைச் சமர்ப்பிக்கவும்.",
     "rateActivityThanks": "உங்கள் கருத்துகளுக்கு நன்றி!",
     "activityRatingMeterLabel": "{percent}% நேர்மறை ({count, plural, =1{1 மதிப்பீடு} other{{count} மதிப்பீடுகள்}})",
-    "newActivityBadge": "புதியது"
+    "newActivityBadge": "புதியது",
+    "exitVocabPracticeSession": "தற்போதைய உங்கள் சொற்களஞ்சியப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
+    "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது."
 }

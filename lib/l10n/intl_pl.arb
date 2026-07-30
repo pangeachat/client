@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-29 12:08:22.092752",
+    "@@last_modified": "2026-07-30 15:16:51.852939",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7840,15 +7840,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Postęp Twojej sesji ćwiczeń nie zostanie zapisany.",
     "practiceGrammar": "Ćwicz gramatykę",
     "notEnoughToPractice": "Wyślij więcej wiadomości, aby odblokować ćwiczenia",
     "constructUseCorGCDesc": "Ćwiczenie poprawnej kategorii gramatycznej",
     "constructUseIncGCDesc": "Ćwiczenie niepoprawnej kategorii gramatycznej",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9789,5 +9784,7 @@
     "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
     "rateActivityThanks": "Dziękujemy za Twoją opinię!",
     "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})",
-    "newActivityBadge": "NOWOŚĆ"
+    "newActivityBadge": "NOWOŚĆ",
+    "exitVocabPracticeSession": "Postępy w bieżącej sesji ćwiczenia słownictwa nie zostaną zapisane.",
+    "exitGrammarPracticeSession": "Postępy w bieżącej sesji ćwiczenia gramatyki nie zostaną zapisane."
 }

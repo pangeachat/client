@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-07-29 12:08:21.896450",
+    "@@last_modified": "2026-07-30 15:16:49.003952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1698,7 +1698,6 @@
     "voice": "Swara",
     "youLeftTheChat": "🚪 Sampeyan ninggalake obrolan",
     "webDownloadPermissionMessage": "Yen browser sampeyan mblokir unduhan, mangga aktifake unduhan kanggo situs iki.",
-    "exitPractice": "Kemajuan sesi latihan sampeyan ora bakal disimpen.",
     "practiceGrammar": "Latihan tata basa",
     "notEnoughToPractice": "Kirim pesen liyane kanggo mbukak kunci latihan",
     "constructUseCorGCDesc": "Latihan kategori tata basa sing bener",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Komentarmu ora bisa dikirim. Coba ganti tembung, utawa kirim ratingmu tanpa komentar.",
     "rateActivityThanks": "Matur nuwun kanggo tanggapanmu!",
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 rating} other{{count} rating}})",
-    "newActivityBadge": "ANYAR"
+    "newActivityBadge": "ANYAR",
+    "exitVocabPracticeSession": "Kemajuan sesi gladhen kosakata saiki ora bakal disimpen.",
+    "exitGrammarPracticeSession": "Kemajuan sesi gladhen tata basa saiki ora bakal disimpen."
 }

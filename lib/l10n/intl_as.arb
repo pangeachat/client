@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-07-29 12:08:17.158328",
+    "@@last_modified": "2026-07-30 15:16:45.479152",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1698,7 +1698,6 @@
     "voice": "কণ্ঠ",
     "youLeftTheChat": "🚪 আপুনি চেট এৰিলে",
     "webDownloadPermissionMessage": "যদি আপোনাৰ ব্ৰাউজাৰে ডাউনল'ড ব্লক কৰে, অনুগ্ৰহ কৰি এই ছাইটৰ বাবে ডাউনল'ড সক্ষম কৰক।",
-    "exitPractice": "আপোনাৰ অনুশীলন ছেচনৰ অগ্ৰগতি ছেভ নহ'ব।",
     "practiceGrammar": "ব্যাকৰণ অনুশীলন কৰক",
     "notEnoughToPractice": "অনুশীলন আনলক কৰিবলৈ আৰু বাৰ্তা পঠাওক",
     "constructUseCorGCDesc": "শুদ্ধ ব্যাকৰণ শ্ৰেণীৰ অনুশীলন",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "আপোনাৰ মন্তব্য পোষ্ট কৰিব পৰা নগ'ল। ইয়াক পুনৰ লিখিবলৈ চেষ্টা কৰক, অথবা মন্তব্য অবিহনে আপোনাৰ ৰেটিং দাখিল কৰক।",
     "rateActivityThanks": "আপোনাৰ মতামতৰ বাবে ধন্যবাদ!",
     "activityRatingMeterLabel": "{percent}% ধনাত্মক ({count, plural, =1{1 ৰেটিং} other{{count} ৰেটিং}})",
-    "newActivityBadge": "নতুন"
+    "newActivityBadge": "নতুন",
+    "exitVocabPracticeSession": "আপোনাৰ বৰ্তমানৰ শব্দভাণ্ডাৰ অনুশীলনৰ অগ্ৰগতি সংৰক্ষণ কৰা নহ'ব।",
+    "exitGrammarPracticeSession": "আপোনাৰ বৰ্তমানৰ ব্যাকৰণ অনুশীলনৰ অগ্ৰগতি সংৰক্ষণ কৰা নহ'ব।"
 }

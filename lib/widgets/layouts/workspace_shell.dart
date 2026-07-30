@@ -679,6 +679,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 ),
               ),
         cavityKey: cavityKey,
+        // The course scope (`?c=`): a course's height is remembered while this
+        // holds its id and forgotten when it leaves (World / a different
+        // course). Opening a chat or activity from the course keeps it, so the
+        // course reopens where it was left (#7332).
+        cavityContextId: activeSpaceId,
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).

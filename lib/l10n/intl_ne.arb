@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-29 12:08:21.112178",
+    "@@last_modified": "2026-07-30 15:16:51.216951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1698,7 +1698,6 @@
     "voice": "आवाज",
     "youLeftTheChat": "🚪 तपाईंले च्याट छोड्नुभयो",
     "webDownloadPermissionMessage": "यदि तपाईंको ब्राउजरले डाउनलोडहरू रोक्छ भने, कृपया यस साइटका लागि डाउनलोडहरू सक्षम गर्नुहोस्।",
-    "exitPractice": "तपाईंको अभ्यास सत्रको प्रगति बचत गरिने छैन।",
     "practiceGrammar": "व्याकरण अभ्यास गर्नुहोस्",
     "notEnoughToPractice": "अभ्यास अनलक गर्न थप सन्देशहरू पठाउनुहोस्",
     "constructUseCorGCDesc": "सही व्याकरण श्रेणी अभ्यास",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "तपाईंको टिप्पणी पोस्ट गर्न सकिएन। यसलाई पुन: शब्दबद्ध गर्ने प्रयास गर्नुहोस्, वा टिप्पणी बिना आफ्नो मूल्याङ्कन पेश गर्नुहोस्।",
     "rateActivityThanks": "तपाईंको प्रतिक्रियाको लागि धन्यवाद!",
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{१ मूल्याङ्कन} other{{count} मूल्याङ्कनहरू}})",
-    "newActivityBadge": "नयाँ"
+    "newActivityBadge": "नयाँ",
+    "exitVocabPracticeSession": "तपाईंको हालको शब्दावली अभ्यास सत्रको प्रगति बचत गरिने छैन।",
+    "exitGrammarPracticeSession": "तपाईंको हालको व्याकरण अभ्यास सत्रको प्रगति बचत गरिने छैन।"
 }

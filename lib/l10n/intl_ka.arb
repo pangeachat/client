@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-29 12:08:19.198827",
+    "@@last_modified": "2026-07-30 15:16:49.056605",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8652,15 +8652,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "თქვენი პრაქტიკის სესიის პროგრესი არ დაიშლება.",
     "practiceGrammar": "პრაქტიკა გრამატიკა",
     "notEnoughToPractice": "პრაქტიკის გასახსნელად მეტი შეტყობინება გამოაგზავნეთ",
     "constructUseCorGCDesc": "სწორი გრამატიკული კატეგორიის პრაქტიკა",
     "constructUseIncGCDesc": "არასწორი გრამატიკული კატეგორიის პრაქტიკა",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10610,5 +10605,7 @@
     "rateActivityCommentRejected": "თქვენი კომენტარის გამოქვეყნება ვერ მოხერხდა. სცადეთ მისი გადაფორმება, ან გამოაქვეყნეთ თქვენი შეფასება კომენტარის გარეშე.",
     "rateActivityThanks": "გმადლობთ გამოხმაურებისთვის!",
     "activityRatingMeterLabel": "{percent}% დადებითი ({count, plural, =1{1 შეფასება} other{{count} შეფასება}})",
-    "newActivityBadge": "ახალი"
+    "newActivityBadge": "ახალი",
+    "exitVocabPracticeSession": "თქვენი მიმდინარე ლექსიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
+    "exitGrammarPracticeSession": "თქვენი მიმდინარე გრამატიკის სავარჯიშო სესიის პროგრესი არ შეინახება."
 }

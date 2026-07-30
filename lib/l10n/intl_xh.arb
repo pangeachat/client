@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-29 12:08:24.760675",
+    "@@last_modified": "2026-07-30 15:16:54.615864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1698,7 +1698,6 @@
     "voice": "Ilizwi",
     "youLeftTheChat": "🚪 Uyishiyile incoko",
     "webDownloadPermissionMessage": "Ukuba isikhangeli sakho siyayivimba imithwalo, nceda uvule imithwalo kule sayithi.",
-    "exitPractice": "Inqubekela phambili yeseshoni yakho yoqheliso ayizukugcinwa.",
     "practiceGrammar": "Qhelisa igrama",
     "notEnoughToPractice": "Thumela imiyalezo emininzi ukuvula uqheliso",
     "constructUseCorGCDesc": "Uqheliso oluchanekileyo lodidi lwegrama",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Uluvo lwakho alukwazanga ukuthunyelwa. Zama ukulubhala ngokutsha, okanye ungenise ireyithingi yakho ngaphandle koluvo.",
     "rateActivityThanks": "Enkosi ngempendulo yakho!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 ireyithingi} other{{count} iireyithingi}})",
-    "newActivityBadge": "ENTSHA"
+    "newActivityBadge": "ENTSHA",
+    "exitVocabPracticeSession": "Inkqubela yakho yangoku yeseshoni yokuziqhelanisa nesigama ayizukugcinwa.",
+    "exitGrammarPracticeSession": "Inkqubela yakho yangoku yeseshoni yokuziqhelanisa negrama ayizukugcinwa."
 }

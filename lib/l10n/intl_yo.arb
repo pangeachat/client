@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-29 12:08:25.223257",
+    "@@last_modified": "2026-07-30 15:16:54.970457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1698,7 +1698,6 @@
     "voice": "Ohùn",
     "youLeftTheChat": "🚪 O fi iwiregbe silẹ",
     "webDownloadPermissionMessage": "Ti ẹrọ aṣawakiri rẹ ba dina awọn igbasilẹ, jọwọ mu awọn igbasilẹ ṣiṣẹ fun aaye yii.",
-    "exitPractice": "Ilọsiwaju igba adaṣe rẹ kii yoo wa ni fipamọ.",
     "practiceGrammar": "Ṣe adaṣe girama",
     "notEnoughToPractice": "Firanṣẹ awọn ifiranṣẹ diẹ sii lati ṣii adaṣe",
     "constructUseCorGCDesc": "Adaṣe ẹka girama to tọ",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "A kò lè fi àlàyé rẹ sílẹ̀. Gbìyànjú láti tún un ṣe, tàbí fi ìwọ̀n rẹ sílẹ̀ láìsí àlàyé.",
     "rateActivityThanks": "O ṣeun fún èsì rẹ!",
     "activityRatingMeterLabel": "{percent}% rere ({count, plural, =1{ìwọ̀n 1} other{ìwọ̀n {count}}})",
-    "newActivityBadge": "TITUN"
+    "newActivityBadge": "TITUN",
+    "exitVocabPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ fóńká rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
+    "exitGrammarPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ gírámà rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́."
 }

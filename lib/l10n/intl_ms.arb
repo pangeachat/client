@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-29 12:08:21.255720",
+    "@@last_modified": "2026-07-30 15:16:50.594748",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1698,7 +1698,6 @@
     "voice": "Suara",
     "youLeftTheChat": "🚪 Anda meninggalkan sembang",
     "webDownloadPermissionMessage": "Jika pelayar anda menyekat muat turun, sila benarkan muat turun untuk tapak ini.",
-    "exitPractice": "Kemajuan sesi latihan anda tidak akan disimpan.",
     "practiceGrammar": "Latih tatabahasa",
     "notEnoughToPractice": "Hantar lebih banyak mesej untuk membuka kunci latihan",
     "constructUseCorGCDesc": "Latihan kategori tatabahasa yang betul",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
     "rateActivityThanks": "Terima kasih atas maklum balas anda!",
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
-    "newActivityBadge": "BAHARU"
+    "newActivityBadge": "BAHARU",
+    "exitVocabPracticeSession": "Kemajuan sesi latihan kosa kata anda sekarang tidak akan disimpan.",
+    "exitGrammarPracticeSession": "Kemajuan sesi latihan tatabahasa anda sekarang tidak akan disimpan."
 }

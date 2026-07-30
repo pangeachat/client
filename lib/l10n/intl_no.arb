@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-29 12:08:21.541690",
+    "@@last_modified": "2026-07-30 15:16:51.401610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1698,7 +1698,6 @@
     "voice": "Stemme",
     "youLeftTheChat": "🚪 Du forlot chatten",
     "webDownloadPermissionMessage": "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.",
-    "exitPractice": "Fremdriften din i økten blir ikke lagret.",
     "practiceGrammar": "Øv på grammatikk",
     "notEnoughToPractice": "Send flere meldinger for å låse opp øvelse",
     "constructUseCorGCDesc": "Øvelse på riktig grammatikkkategori",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
     "rateActivityThanks": "Takk for tilbakemeldingen din!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Fremdriften din i denne ordforrådsøkten blir ikke lagret.",
+    "exitGrammarPracticeSession": "Fremdriften din i denne grammatikkøkten blir ikke lagret."
 }

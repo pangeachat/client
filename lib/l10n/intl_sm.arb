@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-29 12:08:22.697186",
+    "@@last_modified": "2026-07-30 15:16:53.307128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1698,7 +1698,6 @@
     "voice": "Leo",
     "youLeftTheChat": "🚪 Na e tuua le talanoaga",
     "webDownloadPermissionMessage": "Afai e poloka e lau suʻesuʻega le laiga, faʻamolemole faʻataga le laiga mo lenei saite.",
-    "exitPractice": "O le a le faʻasaoina lau alualu i luma o le faʻataʻitaʻiga.",
     "practiceGrammar": "Faʻataʻitaʻi le kalama",
     "notEnoughToPractice": "Auina atu nisi feʻau e tatala ai le faʻataʻitaʻiga",
     "constructUseCorGCDesc": "Faʻataʻitaʻiga vaega kalama saʻo",
@@ -2054,5 +2053,7 @@
     "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aleleia, pe lafo lau fua faatatau e aunoa ma se fa'amatalaga.",
     "rateActivityThanks": "Fa'afetai mo lau tali mai!",
     "activityRatingMeterLabel": "{percent}% lelei ({count, plural, =1{1 fua faatatau} other{{count} fua faatatau}})",
-    "newActivityBadge": "FOU"
+    "newActivityBadge": "FOU",
+    "exitVocabPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i upu o lo'o iai nei o le a le fa'asaoina.",
+    "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina."
 }

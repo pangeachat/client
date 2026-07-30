@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-29 12:08:19.044353",
+    "@@last_modified": "2026-07-30 15:16:48.766989",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8515,15 +8515,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "あなたの練習セッションの進捗は保存されません。",
     "practiceGrammar": "文法を練習する",
     "notEnoughToPractice": "練習を解除するにはもっとメッセージを送信してください",
     "constructUseCorGCDesc": "正しい文法カテゴリの練習",
     "constructUseIncGCDesc": "間違った文法カテゴリの練習",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10473,5 +10468,7 @@
     "rateActivityCommentRejected": "コメントを投稿できませんでした。表現を変えるか、コメントなしで評価を送信してください。",
     "rateActivityThanks": "フィードバックありがとうございます！",
     "activityRatingMeterLabel": "{percent}% の高評価（{count, plural, =1{1件の評価} other{{count}件の評価}}）",
-    "newActivityBadge": "NEW"
+    "newActivityBadge": "NEW",
+    "exitVocabPracticeSession": "現在の語彙練習セッションの進捗は保存されません。",
+    "exitGrammarPracticeSession": "現在の文法練習セッションの進捗は保存されません。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-29 12:08:16.872461",
+    "@@last_modified": "2026-07-30 15:16:45.965747",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8254,15 +8254,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pokrok vaší cvičební relace nebude uložen.",
     "practiceGrammar": "Cvičit gramatiku",
     "notEnoughToPractice": "Odešlete více zpráv, abyste odemkli cvičení",
     "constructUseCorGCDesc": "Cvičení správné gramatické kategorie",
     "constructUseIncGCDesc": "Cvičení nesprávné gramatické kategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10198,5 +10193,7 @@
     "rateActivityCommentRejected": "Váš komentář nemohl být zveřejněn. Zkuste ho přeformulovat, nebo odešlete hodnocení bez komentáře.",
     "rateActivityThanks": "Děkujeme za vaši zpětnou vazbu!",
     "activityRatingMeterLabel": "{percent}% pozitivních ({count, plural, =1{1 hodnocení} few{{count} hodnocení} other{{count} hodnocení}})",
-    "newActivityBadge": "NOVÉ"
+    "newActivityBadge": "NOVÉ",
+    "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
+    "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen."
 }
