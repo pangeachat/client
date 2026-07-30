@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:17.364779",
+    "@@last_modified": "2026-07-30 15:16:46.815252",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9787,5 +9787,7 @@
     "rateActivityCommentRejected": "نظر شما ارسال نشد. لطفاً آن را بازنویسی کنید یا امتیاز خود را بدون نظر ثبت کنید.",
     "rateActivityThanks": "از بازخورد شما متشکریم!",
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{۱ امتیاز} other{{count} امتیاز}})",
-    "newActivityBadge": "جدید"
+    "newActivityBadge": "جدید",
+    "exitVocabPracticeSession": "پیشرفت جلسه تمرین واژگان فعلی شما ذخیره نخواهد شد.",
+    "exitGrammarPracticeSession": "پیشرفت جلسه تمرین گرامر فعلی شما ذخیره نخواهد شد."
 }

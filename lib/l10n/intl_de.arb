@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-29 12:08:16.831858",
+    "@@last_modified": "2026-07-30 15:16:46.001390",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9686,5 +9686,7 @@
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
     "rateActivityThanks": "Danke für Ihr Feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})",
-    "newActivityBadge": "NEU"
+    "newActivityBadge": "NEU",
+    "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
+    "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert."
 }

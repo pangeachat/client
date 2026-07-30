@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:19.530368",
+    "@@last_modified": "2026-07-30 15:16:48.622039",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9772,5 +9772,7 @@
     "rateActivityCommentRejected": "Impossibile pubblicare il tuo commento. Prova a riformularlo o invia la tua valutazione senza un commento.",
     "rateActivityThanks": "Grazie per il tuo feedback!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valutazione} other{{count} valutazioni}})",
-    "newActivityBadge": "NOVITÀ"
+    "newActivityBadge": "NOVITÀ",
+    "exitVocabPracticeSession": "I progressi della tua attuale sessione di pratica del vocabolario non verranno salvati.",
+    "exitGrammarPracticeSession": "I progressi della tua attuale sessione di pratica della grammatica non verranno salvati."
 }

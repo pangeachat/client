@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-29 12:08:25.029671",
+    "@@last_modified": "2026-07-30 15:16:54.244187",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9703,5 +9703,7 @@
     "rateActivityCommentRejected": "Izohingiz joylashtirilmadi. Uni qayta yozib ko'ring yoki izohsiz baholang.",
     "rateActivityThanks": "Fikringiz uchun rahmat!",
     "activityRatingMeterLabel": "{percent}% ijobiy ({count, plural, =1{1 baho} other{{count} baho}})",
-    "newActivityBadge": "YANGI"
+    "newActivityBadge": "YANGI",
+    "exitVocabPracticeSession": "Joriy lugʻat mashgʻuloti jarayoni saqlanmaydi.",
+    "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi."
 }

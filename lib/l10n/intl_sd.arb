@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-29 12:08:22.085948",
+    "@@last_modified": "2026-07-30 15:16:52.616895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "توهان جو تبصرو پوسٽ نه ٿي سگهيو. ان کي ٻيهر لکڻ جي ڪوشش ڪريو، يا تبصري کان سواءِ پنهنجي درجه بندي جمع ڪرايو.",
     "rateActivityThanks": "توهان جي راءِ لاءِ مهرباني!",
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بنديون}})",
-    "newActivityBadge": "نئون"
+    "newActivityBadge": "نئون",
+    "exitVocabPracticeSession": "توهان جي موجوده لفظن جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
+    "exitGrammarPracticeSession": "توهان جي موجوده گرامر جي مشق سيشن جي ترقي محفوظ نه ٿيندي."
 }

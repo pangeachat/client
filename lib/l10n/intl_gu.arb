@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-29 12:08:18.076917",
+    "@@last_modified": "2026-07-30 15:16:47.507703",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "તમારી ટિપ્પણી પોસ્ટ થઈ શકી નથી. તેને ફરીથી લખવાનો પ્રયાસ કરો અથવા ટિપ્પણી વિના તમારું રેટિંગ સબમિટ કરો.",
     "rateActivityThanks": "તમારા પ્રતિભાવ બદલ આભાર!",
     "activityRatingMeterLabel": "{percent}% સકારાત્મક ({count, plural, =1{1 રેટિંગ} other{{count} રેટિંગ્સ}})",
-    "newActivityBadge": "નવું"
+    "newActivityBadge": "નવું",
+    "exitVocabPracticeSession": "તમારી વર્તમાન શબ્દભંડોળ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં.",
+    "exitGrammarPracticeSession": "તમારી વર્તમાન વ્યાકરણ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં."
 }

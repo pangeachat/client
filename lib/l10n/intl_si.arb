@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-29 12:08:22.901049",
+    "@@last_modified": "2026-07-30 15:16:52.800816",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "ඔබගේ අදහස පළ කිරීමට නොහැකි විය. එය නැවත සකස් කිරීමට උත්සාහ කරන්න, නැතහොත් අදහසක් නොමැතිව ඔබගේ ශ්‍රේණිගත කිරීම ඉදිරිපත් කරන්න.",
     "rateActivityThanks": "ඔබගේ ප්‍රතිචාරයට ස්තූතියි!",
     "activityRatingMeterLabel": "{percent}% ධනාත්මක ({count, plural, =1{1 ශ්‍රේණිගත කිරීම} other{{count} ශ්‍රේණිගත කිරීම්}})",
-    "newActivityBadge": "නව"
+    "newActivityBadge": "නව",
+    "exitVocabPracticeSession": "ඔබගේ වත්මන් වචන මාලා පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත.",
+    "exitGrammarPracticeSession": "ඔබගේ වත්මන් ව්‍යාකරණ පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:27.862136",
+    "@@last_modified": "2026-07-30 15:16:52.986757",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10654,5 +10654,7 @@
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",
     "rateActivityThanks": "Hvala na povratnim informacijama!",
     "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocena} other{{count} ocena}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredak vaše trenutne sesije vežbanja rečnika neće biti sačuvan.",
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vežbanja gramatike neće biti sačuvan."
 }

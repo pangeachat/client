@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-29 12:08:16.201306",
+    "@@last_modified": "2026-07-30 15:16:45.247308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
     "rateActivityThanks": "ለአስተያየትዎ እናመሰግናለን!",
     "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
-    "newActivityBadge": "አዲስ"
+    "newActivityBadge": "አዲስ",
+    "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
+    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።"
 }

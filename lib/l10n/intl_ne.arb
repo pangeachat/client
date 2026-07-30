@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-29 12:08:21.112178",
+    "@@last_modified": "2026-07-30 15:16:51.216951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "तपाईंको टिप्पणी पोस्ट गर्न सकिएन। यसलाई पुन: शब्दबद्ध गर्ने प्रयास गर्नुहोस्, वा टिप्पणी बिना आफ्नो मूल्याङ्कन पेश गर्नुहोस्।",
     "rateActivityThanks": "तपाईंको प्रतिक्रियाको लागि धन्यवाद!",
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{१ मूल्याङ्कन} other{{count} मूल्याङ्कनहरू}})",
-    "newActivityBadge": "नयाँ"
+    "newActivityBadge": "नयाँ",
+    "exitVocabPracticeSession": "तपाईंको हालको शब्दावली अभ्यास सत्रको प्रगति बचत गरिने छैन।",
+    "exitGrammarPracticeSession": "तपाईंको हालको व्याकरण अभ्यास सत्रको प्रगति बचत गरिने छैन।"
 }
