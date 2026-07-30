@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -212,55 +213,62 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     if (!mounted) return;
     // Already satisfied from the map's discovery cache — no server round-trip.
     if (!_summariesLoading) return;
-    final Set<String> roomIds = {};
-    if (widget.roomId != null) {
-      roomIds.add(widget.roomId!);
-    }
+    final client = Matrix.of(context).client;
 
     // This activity's session rooms across ALL the learner's joined courses —
     // not just a course in scope, since a bare map pin carries no course
-    // context. Shared with the world-map pin discovery so both surface the same
-    // sessions. See world-map.instructions.md ("Discovering joinable sessions").
-    final client = Matrix.of(context).client;
-    // Sessions the learner is invited to (possibly outside any shared course):
-    // in the room list, but only a preview carries accurate seats, and without
-    // this a green invited pin dead-ends at a joinless start page (#7488).
-    roomIds.addAll(
-      client.rooms
+    // context. Discovered server-side by the space-scoped
+    // activity_session_previews module: one batched read of the joined course
+    // spaces returns previews for only this activity's session rooms, complete
+    // regardless of how many rooms a course holds (#7982). See
+    // world-map.instructions.md ("Discovering joinable sessions").
+    final courseSpaceIds = client.joinedCourseSpaces.map((r) => r.id).toList();
+
+    // Rooms the module can't see: the deep-linked room itself, and sessions the
+    // learner is invited to (possibly outside any shared course) — in the room
+    // list, but only a preview carries accurate seats, and without this a green
+    // invited pin dead-ends at a joinless start page (#7488). These keep the
+    // per-room room_preview read.
+    final Set<String> extraRoomIds = {
+      ?widget.roomId,
+      ...client.rooms
           .where(
             (r) =>
                 r.membership == Membership.invite &&
                 r.activityId == widget.activityId,
           )
           .map((r) => r.id),
-    );
-    roomIds.addAll(
-      await client.courseActivitySessionRoomIds(activityId: widget.activityId),
-    );
-    if (!mounted) return;
+    };
 
-    if (roomIds.isEmpty) {
+    if (courseSpaceIds.isEmpty && extraRoomIds.isEmpty) {
       if (mounted) setState(() => _summariesLoading = false);
       return;
     }
     try {
-      final roomSummariesResponse = await Matrix.of(context).client
-          .loadRoomSummaries(
-            roomIds.toList(),
-            l1Code: MatrixState.pangeaController.userController.userL1Code,
-          )
-          .timeout(const Duration(seconds: 30));
+      final l1Code = MatrixState.pangeaController.userController.userL1Code;
+      final results = await Future.wait([
+        courseSpaceIds.isNotEmpty
+            ? client.loadActivitySessionPreviews(
+                courseSpaceIds,
+                activityId: widget.activityId,
+                l1Code: l1Code,
+              )
+            : Future.value(<String, RoomSummaryResponse>{}),
+        extraRoomIds.isNotEmpty
+            ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
+            : Future.value(<String, RoomSummaryResponse>{}),
+      ]).timeout(const Duration(seconds: 30));
       if (!mounted) return;
       setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel(
-          roomSummariesResponse,
-          activityId: widget.activityId,
-        );
+        _roomSummariesModel = ActivitySessionSummariesModel({
+          ...results[0],
+          ...results[1],
+        }, activityId: widget.activityId);
         _summariesLoading = false;
       });
     } catch (e, s) {
       // Summaries are non-essential (member counts / role availability); a slow
-      // or stalled /room_preview must not block or fail the activity render, so
+      // or stalled preview read must not block or fail the activity render, so
       // degrade to the empty model initialized in initState (#7085, #7159).
       ErrorHandler.logError(
         e: e,
