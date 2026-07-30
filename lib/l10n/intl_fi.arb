@@ -7914,15 +7914,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Harjoitussession edistystäsi ei tallenneta.",
     "practiceGrammar": "Harjoittele kielioppia",
     "notEnoughToPractice": "Lähetä lisää viestejä avataksesi harjoituksen",
     "constructUseCorGCDesc": "Oikean kielioppikategorian harjoittelu",
     "constructUseIncGCDesc": "Väärän kielioppikategorian harjoittelu",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

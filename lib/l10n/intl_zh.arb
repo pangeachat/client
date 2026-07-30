@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "您的练习会话进度将不会被保存。",
     "practiceGrammar": "练习语法",
     "notEnoughToPractice": "发送更多消息以解锁练习",
     "constructUseCorGCDesc": "正确语法类别练习",
     "constructUseIncGCDesc": "错误语法类别练习",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

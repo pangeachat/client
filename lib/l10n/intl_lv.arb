@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Jūsu prakses sesijas progress netiks saglabāts.",
     "practiceGrammar": "Praktizēt gramatiku",
     "notEnoughToPractice": "Sūtiet vairāk ziņojumu, lai atbloķētu praksi",
     "constructUseCorGCDesc": "Pareizas gramatikas kategorijas prakse",
     "constructUseIncGCDesc": "Nepareizas gramatikas kategorijas prakse",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

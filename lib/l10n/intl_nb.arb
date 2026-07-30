@@ -7982,15 +7982,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
     "practiceGrammar": "Øv på grammatikk",
     "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
     "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
     "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

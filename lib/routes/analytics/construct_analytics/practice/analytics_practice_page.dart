@@ -270,6 +270,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> endSession() async {
     final ended = await EndPracticeSessionDialog.confirmAndEnd(
       context,
+      type: widget.type,
       useRootNavigator: false,
     );
     if (ended && mounted) widget.close();

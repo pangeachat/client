@@ -7939,15 +7939,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "연습 세션 진행 상황이 저장되지 않습니다.",
     "practiceGrammar": "문법 연습",
     "notEnoughToPractice": "연습을 잠금 해제하려면 더 많은 메시지를 보내세요.",
     "constructUseCorGCDesc": "올바른 문법 카테고리 연습",
     "constructUseIncGCDesc": "잘못된 문법 카테고리 연습",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -8701,15 +8701,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Vaš napredak u vežbanju neće biti sačuvan.",
     "practiceGrammar": "Vežbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vežbanje",
     "constructUseCorGCDesc": "Vežbanje ispravne gramatike",
     "constructUseIncGCDesc": "Vežbanje nepravilne gramatike",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

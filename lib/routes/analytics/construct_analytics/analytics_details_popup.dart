@@ -426,7 +426,10 @@ class _PracticeButton extends StatelessWidget {
   Future<void> _startPractice(BuildContext context) async {
     final holder = PracticeSessionHolder.instance;
     if (holder.hasUnfinishedSession && holder.liveType != view) {
-      final ended = await EndPracticeSessionDialog.confirmAndEnd(context);
+      final ended = await EndPracticeSessionDialog.confirmAndEnd(
+        context,
+        type: holder.liveType!,
+      );
       if (!ended) return;
     }
 

@@ -8688,15 +8688,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
     "practiceGrammar": "Exersează gramatică",
     "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
     "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
     "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -8881,15 +8881,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогресс в сессии практики не будет сохранен.",
     "practiceGrammar": "Практика грамматики",
     "notEnoughToPractice": "Отправьте больше сообщений, чтобы разблокировать практику",
     "constructUseCorGCDesc": "Практика правильной грамматики",
     "constructUseIncGCDesc": "Практика неправильной грамматики",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

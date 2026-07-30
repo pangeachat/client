@@ -7839,15 +7839,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "پیشرفت جلسه تمرین شما ذخیره نخواهد شد.",
     "practiceGrammar": "تمرین گرامر",
     "notEnoughToPractice": "پیام‌های بیشتری ارسال کنید تا تمرین را باز کنید",
     "constructUseCorGCDesc": "تمرین دسته گرامر صحیح",
     "constructUseIncGCDesc": "تمرین دسته گرامر نادرست",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

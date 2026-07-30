@@ -5012,15 +5012,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Tiến trình phiên thực hành của bạn sẽ không được lưu.",
     "practiceGrammar": "Thực hành ngữ pháp",
     "notEnoughToPractice": "Gửi thêm tin nhắn để mở khóa thực hành",
     "constructUseCorGCDesc": "Thực hành thể loại ngữ pháp đúng",
     "constructUseIncGCDesc": "Thực hành thể loại ngữ pháp sai",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

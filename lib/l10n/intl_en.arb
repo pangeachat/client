@@ -4275,7 +4275,6 @@
     "voice": "Voice",
     "youLeftTheChat": "🚪 You left the chat",
     "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
-    "exitPractice": "Your practice session progress won't be saved.",
     "endPractice": "End practice",
     "practiceGrammar": "Practice grammar",
     "notEnoughToPractice": "Send more messages to unlock practice",
@@ -4805,5 +4804,7 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
-    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
+    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
+    "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
+    "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved."
 }

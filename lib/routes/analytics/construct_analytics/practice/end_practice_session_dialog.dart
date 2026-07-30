@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:flutter/material.dart';
 
 /// The one confirm-then-discard prompt for the held practice session. Ending
 /// throws away in-progress work, so both paths that end one — the panel's End
@@ -15,6 +17,7 @@ class EndPracticeSessionDialog {
   /// its own nested [Navigator].
   static Future<bool> confirmAndEnd(
     BuildContext context, {
+    required ConstructTypeEnum type,
     bool useRootNavigator = true,
   }) async {
     final l10n = L10n.of(context);
@@ -24,7 +27,7 @@ class EndPracticeSessionDialog {
       title: l10n.areYouSure,
       okLabel: l10n.yes,
       cancelLabel: l10n.cancel,
-      message: l10n.exitPractice,
+      message: type.practiceExitMessage(l10n),
     );
 
     if (result != OkCancelResult.ok) return false;

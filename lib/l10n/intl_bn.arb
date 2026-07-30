@@ -8374,15 +8374,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "আপনার অনুশীলন সেশনের অগ্রগতি সংরক্ষিত হবে না।",
     "practiceGrammar": "ব্যাকরণ অনুশীলন করুন",
     "notEnoughToPractice": "অনুশীলন আনলক করতে আরও বার্তা পাঠান",
     "constructUseCorGCDesc": "সঠিক ব্যাকরণ বিভাগ অনুশীলন",
     "constructUseIncGCDesc": "ভুল ব্যাকরণ বিভাগ অনুশীলন",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

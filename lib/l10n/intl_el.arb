@@ -8627,15 +8627,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Η πρόοδος της συνεδρίας πρακτικής σας δεν θα αποθηκευτεί.",
     "practiceGrammar": "Πρακτική γραμματικής",
     "notEnoughToPractice": "Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε την πρακτική",
     "constructUseCorGCDesc": "Πρακτική κατηγορίας σωστής γραμματικής",
     "constructUseIncGCDesc": "Πρακτική κατηγορίας λανθαστής γραμματικής",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

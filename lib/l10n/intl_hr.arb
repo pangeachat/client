@@ -8182,15 +8182,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
     "practiceGrammar": "Vježbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
     "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
     "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

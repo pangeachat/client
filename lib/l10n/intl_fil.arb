@@ -8607,15 +8607,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Hindi mase-save ang iyong progreso sa sesyon ng pagsasanay.",
     "practiceGrammar": "Magsanay ng gramatika",
     "notEnoughToPractice": "Magpadala ng higit pang mga mensahe upang i-unlock ang pagsasanay",
     "constructUseCorGCDesc": "Pagsasanay sa tamang kategorya ng gramatika",
     "constructUseIncGCDesc": "Pagsasanay sa maling kategorya ng gramatika",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

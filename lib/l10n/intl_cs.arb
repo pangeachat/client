@@ -8254,15 +8254,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pokrok vaší cvičební relace nebude uložen.",
     "practiceGrammar": "Cvičit gramatiku",
     "notEnoughToPractice": "Odešlete více zpráv, abyste odemkli cvičení",
     "constructUseCorGCDesc": "Cvičení správné gramatické kategorie",
     "constructUseIncGCDesc": "Cvičení nesprávné gramatické kategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

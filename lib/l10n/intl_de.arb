@@ -7947,15 +7947,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ihr Fortschritt in der Übungssitzung wird nicht gespeichert.",
     "practiceGrammar": "Grammatik üben",
     "notEnoughToPractice": "Senden Sie mehr Nachrichten, um die Übung freizuschalten",
     "constructUseCorGCDesc": "Übung der korrekten Grammatikkategorie",
     "constructUseIncGCDesc": "Übung der inkorrekten Grammatikkategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
