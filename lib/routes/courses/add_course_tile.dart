@@ -125,6 +125,7 @@ class AddCourseTile extends StatelessWidget {
                               if (courseId != null && !invited)
                                 CourseInfoChips(
                                   courseId,
+                                  courseRoomId: content.courseRoomId,
                                   fontSize: 12.0,
                                   iconSize: 12.0,
                                 ),
