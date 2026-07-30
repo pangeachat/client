@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 12:08:18.639659",
+    "@@last_modified": "2026-07-30 15:16:48.203826",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9802,5 +9802,7 @@
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
     "rateActivityThanks": "Köszönjük visszajelzésedet!",
     "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})",
-    "newActivityBadge": "ÚJ"
+    "newActivityBadge": "ÚJ",
+    "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-29 12:08:22.691196",
+    "@@last_modified": "2026-07-30 15:16:52.992793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
     "rateActivityThanks": "Ndatenda nemhinduro yako!",
     "activityRatingMeterLabel": "{percent}% yakanaka ({count, plural, =1{1 chiyero} other{{count} zviero}})",
-    "newActivityBadge": "CHITSVA"
+    "newActivityBadge": "CHITSVA",
+    "exitVocabPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira mazwi hakuzochengetedzwe.",
+    "exitGrammarPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira girama hakuzochengetedzwe."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-29 12:08:20.996186",
+    "@@last_modified": "2026-07-30 15:16:50.441343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "നിങ്ങളുടെ അഭിപ്രായം പോസ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി മാറ്റിയെഴുതുക, അല്ലെങ്കിൽ അഭിപ്രായമില്ലാതെ നിങ്ങളുടെ റേറ്റിംഗ് സമർപ്പിക്കുക.",
     "rateActivityThanks": "നിങ്ങളുടെ പ്രതികരണത്തിന് നന്ദി!",
     "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})",
-    "newActivityBadge": "പുതിയത്"
+    "newActivityBadge": "പുതിയത്",
+    "exitVocabPracticeSession": "നിങ്ങളുടെ നിലവിലെ പദസമ്പത്ത് പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
+    "exitGrammarPracticeSession": "നിങ്ങളുടെ നിലവിലെ വ്യാകരണ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല."
 }

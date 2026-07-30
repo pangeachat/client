@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:17.342059",
+    "@@last_modified": "2026-07-30 15:16:46.293286",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10650,5 +10650,7 @@
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
     "rateActivityThanks": "Dankon pro via reagoj!",
     "activityRatingMeterLabel": "{percent}% pozitiva ({count, plural, =1{1 takso} other{{count} taksoj}})",
-    "newActivityBadge": "NOVA"
+    "newActivityBadge": "NOVA",
+    "exitVocabPracticeSession": "Via nuna progreso en la vortopraktika sesio ne estos konservita.",
+    "exitGrammarPracticeSession": "Via nuna progreso en la gramatikpraktika sesio ne estos konservita."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-29 12:08:24.389924",
+    "@@last_modified": "2026-07-30 15:16:54.466653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
     "rateActivityThanks": "پىكىر-تەكلىپىڭىزگە رەھمەت!",
     "activityRatingMeterLabel": "{percent}% ئىجابىي ({count, plural, =1{1 باھا} other{{count} باھا}})",
-    "newActivityBadge": "يېڭى"
+    "newActivityBadge": "يېڭى",
+    "exitVocabPracticeSession": "ھازىرقى سۆزلۈك مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
+    "exitGrammarPracticeSession": "ھازىرقى گرامماتىكا مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ."
 }

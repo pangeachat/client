@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:21.282162",
+    "@@last_modified": "2026-07-30 15:16:51.079083",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,7 @@
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
     "rateActivityThanks": "Takk for tilbakemeldingen din!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
+    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret."
 }

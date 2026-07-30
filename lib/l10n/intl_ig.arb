@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-29 12:08:18.904202",
+    "@@last_modified": "2026-07-30 15:16:48.825502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Enweghị ike izipu okwu gị. Gbalịa ịgbanwe ya, ma ọ bụ ziga ọkwa gị na-enweghị okwu.",
     "rateActivityThanks": "Daalụ maka nzaghachi gị!",
     "activityRatingMeterLabel": "{percent}% dị mma ({count, plural, =1{1 ọkwa} other{{count} ọkwa}})",
-    "newActivityBadge": "ỌHỤRỤ"
+    "newActivityBadge": "ỌHỤRỤ",
+    "exitVocabPracticeSession": "Ọganihu gị na nnọkọ omume okwu gị ugbu a agaghị echekwa.",
+    "exitGrammarPracticeSession": "Ọganihu gị na nnọkọ omume ụtọasụsụ gị ugbu a agaghị echekwa."
 }

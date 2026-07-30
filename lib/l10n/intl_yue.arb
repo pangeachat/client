@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-29 12:08:25.438295",
+    "@@last_modified": "2026-07-30 15:16:54.451391",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10662,5 +10662,7 @@
     "rateActivityCommentRejected": "無法發佈你的評論。請嘗試重新措辭，或不帶評論提交你的評分。",
     "rateActivityThanks": "感謝你的意見！",
     "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 個評分} other{{count} 個評分}}）",
-    "newActivityBadge": "新"
+    "newActivityBadge": "新",
+    "exitVocabPracticeSession": "你目前嘅詞彙練習進度將唔會被儲存。",
+    "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。"
 }

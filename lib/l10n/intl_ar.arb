@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-29 12:08:16.869712",
+    "@@last_modified": "2026-07-30 15:16:45.230250",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,7 @@
     "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
     "rateActivityThanks": "شكرًا لملاحظاتك!",
     "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})",
-    "newActivityBadge": "جديد"
+    "newActivityBadge": "جديد",
+    "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
+    "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية."
 }

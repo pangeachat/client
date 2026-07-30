@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:18.963652",
+    "@@last_modified": "2026-07-30 15:16:48.309147",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9772,5 +9772,7 @@
     "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
     "rateActivityThanks": "Terima kasih atas masukan Anda!",
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
-    "newActivityBadge": "BARU"
+    "newActivityBadge": "BARU",
+    "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
+    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan."
 }

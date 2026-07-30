@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-29 12:08:23.495602",
+    "@@last_modified": "2026-07-30 15:16:53.241779",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Koméntar anjeun teu tiasa dipasang. Cobi robih kecapna, atanapi kirimkeun peunteun anjeun tanpa koméntar.",
     "rateActivityThanks": "Hatur nuhun kana tanggapan anjeun!",
     "activityRatingMeterLabel": "{percent}% positip ({count, plural, =1{1 peunteun} other{{count} peunteun}})",
-    "newActivityBadge": "ANYAR"
+    "newActivityBadge": "ANYAR",
+    "exitVocabPracticeSession": "Kamajuan sési latihan kosakata anjeun ayeuna moal disimpen.",
+    "exitGrammarPracticeSession": "Kamajuan sési latihan tata basa anjeun ayeuna moal disimpen."
 }

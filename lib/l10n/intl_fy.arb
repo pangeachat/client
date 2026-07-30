@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-29 12:08:18.466318",
+    "@@last_modified": "2026-07-30 15:16:47.281640",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Jo opmerking koe net pleatst wurde. Besykje it oars te formulearjen, of stjoer jo beoardieling sûnder opmerking yn.",
     "rateActivityThanks": "Tank foar jo feedback!",
     "activityRatingMeterLabel": "{percent}% posityf ({count, plural, =1{1 beoardieling} other{{count} beoardielingen}})",
-    "newActivityBadge": "NIJ"
+    "newActivityBadge": "NIJ",
+    "exitVocabPracticeSession": "De foarútgong fan jo hjoeddeistige wurdskat-oefensesje wurdt net bewarre.",
+    "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre."
 }

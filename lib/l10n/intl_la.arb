@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-29 12:08:20.057941",
+    "@@last_modified": "2026-07-30 15:16:49.604473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Commentarium tuum affigi non potuit. Conare verba mutare, aut aestimationem tuam sine commentario submittere.",
     "rateActivityThanks": "Gratias pro sententia tua!",
     "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})",
-    "newActivityBadge": "NOVUM"
+    "newActivityBadge": "NOVUM",
+    "exitVocabPracticeSession": "Progressus sessionis praesentis exercitationis vocabulorum non servabitur.",
+    "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur."
 }

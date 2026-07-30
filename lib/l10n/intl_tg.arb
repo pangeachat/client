@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-29 12:08:23.769745",
+    "@@last_modified": "2026-07-30 15:16:53.752637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Шарҳи шумо нашр нашуд. Кӯшиш кунед, ки онро аз нав нависед ё баҳои худро бе шарҳ пешниҳод кунед.",
     "rateActivityThanks": "Ташаккур барои фикру мулоҳизаи шумо!",
     "activityRatingMeterLabel": "{percent}% мусбат ({count, plural, =1{1 баҳо} other{{count} баҳо}})",
-    "newActivityBadge": "НАВ"
+    "newActivityBadge": "НАВ",
+    "exitVocabPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи луғати шумо захира карда намешавад.",
+    "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-29 12:08:24.056169",
+    "@@last_modified": "2026-07-30 15:16:53.509176",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Maoni yako hayakuweza kuchapishwa. Jaribu kuyarekebisha, au wasilisha ukadiriaji wako bila maoni.",
     "rateActivityThanks": "Asante kwa maoni yako!",
     "activityRatingMeterLabel": "{percent}% chanya ({count, plural, =1{ukadiriaji 1} other{ukadiriaji {count}}})",
-    "newActivityBadge": "MPYA"
+    "newActivityBadge": "MPYA",
+    "exitVocabPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya msamiati hayatahifadhiwa.",
+    "exitGrammarPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya sarufi hayatahifadhiwa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-29 12:08:23.095204",
+    "@@last_modified": "2026-07-30 15:16:53.394532",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Maikutlo a hao ha a kgone ho romelwa. Leka ho a ngola botjha, kapa o romelle tekanyetso ya hao ntle le maikutlo.",
     "rateActivityThanks": "Re leboha maikutlo a hao!",
     "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditekanyetso tse {count}}})",
-    "newActivityBadge": "E NCHA"
+    "newActivityBadge": "E NCHA",
+    "exitVocabPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa mantsoe a macha e ke ke ea bolokoa.",
+    "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-29 12:08:20.552497",
+    "@@last_modified": "2026-07-30 15:16:50.418355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "Вашиот коментар не можеше да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
     "rateActivityThanks": "Ви благодариме за повратните информации!",
     "activityRatingMeterLabel": "{percent}% позитивни ({count, plural, =1{1 оцена} other{{count} оцени}})",
-    "newActivityBadge": "НОВО"
+    "newActivityBadge": "НОВО",
+    "exitVocabPracticeSession": "Напредокот од тековната сесија за вежбање вокабулар нема да биде зачуван.",
+    "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван."
 }

@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-29 12:08:17.430631",
+    "@@last_modified": "2026-07-30 15:16:45.951726",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10625,5 +10625,7 @@
     "rateActivityCommentRejected": "Din kommentar kunne ikke slås op. Prøv at omformulere den, eller send din vurdering uden en kommentar.",
     "rateActivityThanks": "Tak for din feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Dine fremskridt i den nuværende ordforrådsøvelse gemmes ikke.",
+    "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke."
 }

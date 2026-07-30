@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:25.582003",
+    "@@last_modified": "2026-07-30 15:16:51.687293",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9699,5 +9699,7 @@
     "rateActivityCommentRejected": "Não foi possível postar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado(a) pelo seu feedback!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será salvo.",
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será salvo."
 }

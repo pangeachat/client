@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-29 12:08:26.696865",
+    "@@last_modified": "2026-07-30 15:16:54.042505",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9699,5 +9699,7 @@
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
     "rateActivityThanks": "Дякуємо за ваш відгук!",
     "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
-    "newActivityBadge": "НОВЕ"
+    "newActivityBadge": "НОВЕ",
+    "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
+    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-29 12:08:20.044738",
+    "@@last_modified": "2026-07-30 15:16:49.965385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2053,5 +2053,7 @@
     "rateActivityCommentRejected": "ບໍ່ສາມາດໂພສຄຳເຫັນຂອງທ່ານໄດ້. ລອງປ່ຽນຄຳເວົ້າໃໝ່, ຫຼືສົ່ງການໃຫ້ຄະແນນຂອງທ່ານໂດຍບໍ່ມີຄຳເຫັນ.",
     "rateActivityThanks": "ຂອບໃຈສຳລັບຄຳຕິຊົມຂອງທ່ານ!",
     "activityRatingMeterLabel": "{percent}% ຖືກໃຈ ({count, plural, =1{1 ການໃຫ້ຄະແນນ} other{{count} ການໃຫ້ຄະແນນ}})",
-    "newActivityBadge": "ໃໝ່"
+    "newActivityBadge": "ໃໝ່",
+    "exitVocabPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກຄຳສັບໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
+    "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ."
 }

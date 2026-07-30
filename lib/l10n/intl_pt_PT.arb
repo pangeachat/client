@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-29 12:08:22.131349",
+    "@@last_modified": "2026-07-30 15:16:51.835983",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10616,5 +10616,7 @@
     "rateActivityCommentRejected": "O seu comentário não pôde ser publicado. Tente reformulá-lo ou envie a sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado pelo seu feedback!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será guardado.",
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será guardado."
 }
