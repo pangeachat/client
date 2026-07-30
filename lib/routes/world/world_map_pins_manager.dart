@@ -15,6 +15,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
@@ -197,19 +198,22 @@ class WorldMapPinsManager {
   /// Discover open sessions the learner is not yet in — BOTH reads of
   /// world-map.instructions.md ("Discovering joinable sessions"):
   ///
-  ///  * **coursemate sessions** — for each joined course space, enumerate its
-  ///    activity-session children from the **server-side** space hierarchy;
-  ///    these are not in `client.rooms`, so the hierarchy is the only way the
-  ///    map sees them;
+  ///  * **coursemate sessions** — one batched read of the joined course spaces
+  ///    against the space-scoped activity_session_previews module, which
+  ///    returns previews for only their activity-session children, complete
+  ///    regardless of how many rooms a course holds (#7982); these rooms are
+  ///    not in `client.rooms`, so the server is the only way the map sees them;
   ///  * **invited sessions** — session rooms the learner was invited to
   ///    (any course, or none): they ARE in `client.rooms`, but the invite's
   ///    stripped state carries no `pangea.activity_roles`, so seats read from
-  ///    local state are phantoms (#7488) — only a preview is accurate.
+  ///    local state are phantoms (#7488) — only a preview is accurate. The
+  ///    space-scoped module can't see them, so they keep the per-room
+  ///    room_preview read.
   ///
-  /// Each candidate is room_preview'd and emits a joinable fact while it is
-  /// live, unfinished, and has a free seat. Best-effort, networked, and
-  /// throttled — triggered off sync ticks AND camera settles (panning to a new
-  /// viewport should rank against current live facts, not wait for a sync).
+  /// A previewed candidate emits a joinable fact while it is live, unfinished,
+  /// and has a free seat. Best-effort, networked, and throttled — triggered off
+  /// sync ticks AND camera settles (panning to a new viewport should rank
+  /// against current live facts, not wait for a sync).
   Future<void> discoverCoursemateSessions(Client client) async {
     if (_discovering) return;
     final invitedSessionIds = client.invitedActivitySessionRoomIds;
@@ -220,19 +224,61 @@ class WorldMapPinsManager {
     _discovering = true;
     _lastDiscoveryMs = nowMs;
     try {
-      // Session rooms across the learner's joined courses, from the server
-      // hierarchy (shared with the activity start page's join list). Rooms the
-      // learner is already in flow through the client.rooms path, so drop those.
-      final candidateIds = <String>{...invitedSessionIds};
-      for (final id in await client.courseActivitySessionRoomIds()) {
-        final existing = client.getRoomById(id);
-        if (existing != null && existing.membership == Membership.join) {
-          continue;
-        }
-        candidateIds.add(id);
-      }
+      final courseSpaceIds = client.joinedCourseRooms.map((r) => r.id).toList();
+      // The two reads fail independently — a module error must not cost this
+      // cycle's invited previews (nor vice versa). A FAILED course read leaves
+      // [courseSessions] null so the clear branch below is skipped: only a
+      // successful read that finds nothing may drop last-known facts.
+      Map<String, RoomSummaryResponse>? courseSessions;
+      Map<String, RoomSummaryResponse> invitedPreviews = const {};
+      await Future.wait([
+        () async {
+          if (courseSpaceIds.isEmpty) {
+            courseSessions = const {};
+            return;
+          }
+          try {
+            courseSessions = await client.loadActivitySessionPreviews(
+              courseSpaceIds,
+              l1Code: null,
+            );
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              m: 'activity_session_previews read failed',
+              data: const {},
+            );
+          }
+        }(),
+        () async {
+          if (invitedSessionIds.isEmpty) return;
+          try {
+            invitedPreviews = await client.loadRoomSummaries(
+              invitedSessionIds.toList(),
+              l1Code: null,
+            );
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              m: 'invited-session preview read failed',
+              data: const {},
+            );
+          }
+        }(),
+      ]);
+      // Rooms the learner is already in flow through the client.rooms path, so
+      // drop those from the module's course-wide result.
+      final summaries = <String, RoomSummaryResponse>{
+        for (final entry in (courseSessions ?? const {}).entries)
+          if (client.getRoomById(entry.key)?.membership != Membership.join)
+            entry.key: entry.value,
+        ...invitedPreviews,
+      };
 
-      if (candidateIds.isEmpty) {
+      if (summaries.isEmpty) {
+        if (courseSessions == null) return; // failed read — keep stale facts
         if (_discoveredSessionFacts.isNotEmpty) {
           _discoveredSessionFacts = const [];
         }
@@ -245,10 +291,6 @@ class WorldMapPinsManager {
       // A session is surfaced as joinable while it is live and not finished.
       // Precise open-seat filtering (the activity's total roles live on the CMS
       // plan, which the preview does not carry for v3) is a later refinement.
-      final summaries = await client.loadRoomSummaries(
-        candidateIds.toList(),
-        l1Code: null,
-      );
       // Group every previewed session by activity id so the activity start page
       // can reuse this fetch instead of round-tripping again (it applies its own
       // open-to-join filter). See DiscoveredSessionsCache.

@@ -5,7 +5,7 @@ on:
   merge_group:
   # Native builds (APK, iOS) run here on merge, not on every PR push. This also
   # warms the default-branch cache scope that PR web builds restore the Rust
-  # target/debug from. See ci-caching.instructions.md.
+  # target/debug from. See ci.instructions.md.
   push:
     branches:
       - main
@@ -90,7 +90,7 @@ jobs:
     environment: staging
     runs-on: ubuntu-latest
     # Native build: runs on merge to main, not on every PR push. See
-    # ci-caching.instructions.md. If this is a required status check, drop it
+    # ci.instructions.md. If this is a required status check, drop it
     # from branch protection first, or PRs will wait on a check that never runs.
     if: github.event_name == 'push'
     steps:
@@ -155,7 +155,7 @@ jobs:
     environment: staging
     runs-on: macos-15
     # Native build: runs on merge to main, not on every PR push. See
-    # ci-caching.instructions.md. If this is a required status check, drop it
+    # ci.instructions.md. If this is a required status check, drop it
     # from branch protection first, or PRs will wait on a check that never runs.
     if: github.event_name == 'push'
     steps:
