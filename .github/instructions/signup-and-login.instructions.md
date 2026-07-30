@@ -87,9 +87,11 @@ Slides are fetched at runtime from the bucket named in [`AppConfig`](../../lib/c
 
 `https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com`
 
-Files are named `Carousel_<number>_<crop>_<version>.png`. The number runs 1 to 6, the crop is `ratio4x5` for the narrow layout or `ratio2x1_NoPadding` for the wide one, and the version marks the design generation — currently `V5`. Twelve files make a full set.
+Files are named `Carousel_<number>_<crop>_<version>.png`. The number runs 1 to 6, the crop is `ratio4x5` for the narrow layout or `ratio2x1` for the wide one, and the version marks the design generation — currently `V5`. Twelve files make a full set.
 
-The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous artwork stays retrievable if a slide has to be rolled back or compared.
+The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous artwork stays retrievable if a slide has to be rolled back or compared. It also makes the files safe to cache forever, since a new generation never reuses an old name.
+
+**Spell the crop and version tokens identically across a whole set.** Bucket keys are case-sensitive and the app builds each filename from one rule, so a set uploaded half as `_V5` and half as `_v5`, or half as `ratio2x1` and half as `ratio2x1_NoPadding`, cannot be addressed at all. The half that does not match the rule returns a not-found and falls back to the Pangea logo, which reads as a loading failure rather than a naming mistake.
 
 **Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older artwork. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
 
@@ -97,14 +99,16 @@ The version suffix means a new set is added alongside the one it replaces rather
 
 A slide is two things kept in separate places: **artwork in the bucket, headline in the code.** Carousel slides are images uploaded to AWS S3. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw freely.
 
-| # | Headline in code today | V5 headline | Artwork |
+| # | Headline in code today | V5 headline | V5 artwork |
 |---|---|---|---|
-| 1 | Learn a language while texting your friends! | none — carried in the artwork | `Carousel_1_ratio4x5_V5.png`, `Carousel_1_ratio2x1_NoPadding_V5.png` |
-| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | `Carousel_2_…` |
-| 3 | Join international learning communities, or start your own! | Conversation from Day One | `Carousel_3_…` |
-| 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | `Carousel_4_…` |
-| 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | `Carousel_5_…` |
-| 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | `Carousel_6_…` |
+| 1 | Learn a language while texting your friends! | none — carried in the artwork | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio2x1_v5.png) |
+| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio2x1_v5.png) |
+| 3 | Join international learning communities, or start your own! | Conversation from Day One | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio2x1_v5.png) |
+| 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio2x1_v5.png) |
+| 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio2x1_v5.png) |
+| 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio2x1_v5.png) |
+
+The V5 set is 800 x 1000 narrow and 1200 x 600 wide. Both land at roughly twice their on-screen size, which is what keeps the product UI inside the artwork legible rather than soft — the complaint that opened [#7415](https://github.com/pangeachat/client/issues/7415).
 
 Slide number in the filename is the position in this table, so artwork and headline stay paired by number alone. Reordering the carousel therefore means renaming files as well as reordering the strings — cheaper to change what a slide says than where it sits.
 
