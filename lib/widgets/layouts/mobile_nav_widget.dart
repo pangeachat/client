@@ -67,6 +67,18 @@ class MobileNavWidget extends StatefulWidget {
   /// own default rather than inheriting the previous key's height.
   final String? cavityKey;
 
+  /// The active COURSE context (`?c=` / `activeSpaceId`), or null when the
+  /// workspace isn't course-scoped. This is what says a course is still "open":
+  /// a chat or an activity opened from a course keeps the same context (only the
+  /// cavity — hence [cavityKey] — swaps), and even closing the course card keeps
+  /// it; the context leaves a course only via World or choosing another course
+  /// (routing.instructions.md — "scope is reset only by the World control or by
+  /// choosing a different course, never by closing a panel"). A course's
+  /// remembered height is forgotten exactly when the context leaves it, so
+  /// sub-navigation preserves it (#7332) while a genuinely fresh course open
+  /// starts at peek (#7609). See [didUpdateWidget].
+  final String? cavityContextId;
+
   /// True for a course card (opens at a small peek by default); false for a
   /// section (opens at half by default).
   final bool cavityDefaultsToPeek;
@@ -136,6 +148,7 @@ class MobileNavWidget extends StatefulWidget {
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
     this.cavityKey,
+    this.cavityContextId,
     this.cavityDefaultsToPeek = false,
     required this.maxHeightFraction,
     this.preferredCavityHeightPx,
@@ -156,11 +169,12 @@ class MobileNavWidget extends StatefulWidget {
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
   /// `MobileCourseSheet._expandedBySheet` (#7332), generalized to any section
-  /// or course key and to three rest states instead of two. A course (peek) key
-  /// is dropped on a genuine close so the course reopens at its peek default
-  /// (#7609; [didUpdateWidget]); a chat covering the course only disposes the
-  /// widget, so that height survives here to be restored on return (#7332).
-  /// Section keys persist for the session (#7510).
+  /// or course key and to three rest states instead of two. A course entry is
+  /// dropped when the course CONTEXT leaves it (World / a different course), so a
+  /// fresh course open starts at peek (#7609; [didUpdateWidget]) while opening a
+  /// chat or activity from the course — or a chat that only disposes this widget
+  /// — keeps the context and restores the height on return (#7332). Section keys
+  /// persist for the session (#7510).
   static final Map<String, NavCavityHeight> _heightByKey = {};
 
   @visibleForTesting
@@ -229,19 +243,20 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final keyChanged =
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
-    // Forget a course's height on a GENUINE close — the X, or navigating the
-    // course away (to World, another course, or a section). Those keep the nav
-    // widget MOUNTED and empty/swap the cavity (this callback fires), so the
-    // course's next open falls back to the peek default — the deterministic
-    // entry state (#7609). A chat merely covering the course DISPOSES the widget
-    // instead (no didUpdateWidget runs), so that height survives in the static
-    // map and is restored on return (#7332). Gated to peek cavities: section
-    // sheets keep their memory across close/reopen (#7510). Keyed off the OLD
-    // widget — it identifies the cavity that is leaving.
-    if ((closedNow || keyChanged) &&
-        oldWidget.cavityDefaultsToPeek &&
-        oldWidget.cavityKey != null) {
-      MobileNavWidget._heightByKey.remove(oldWidget.cavityKey);
+    // Forget a course's remembered height exactly when the course CONTEXT leaves
+    // it — i.e. World or choosing a different course, the only two things that
+    // reset scope (routing.instructions.md). That is the deterministic fresh
+    // open (#7609). Everything that keeps the context — opening a chat or an
+    // activity from the course, or even closing the course card — is still the
+    // same course "open", so its height is preserved (#7332). Keyed by the OLD
+    // context (== the leaving course's [cavityKey]); a chat covering the course
+    // instead DISPOSES the widget with the context unchanged, so nothing is
+    // cleared and the height is restored on return.
+    final contextLeft =
+        oldWidget.cavityContextId != null &&
+        oldWidget.cavityContextId != widget.cavityContextId;
+    if (contextLeft) {
+      MobileNavWidget._heightByKey.remove(oldWidget.cavityContextId);
     }
 
     if (closedNow) {

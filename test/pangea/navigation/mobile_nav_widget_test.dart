@@ -23,6 +23,7 @@ void main() {
     AppSection activeSection = AppSection.world,
     Widget? cavityChild,
     String? cavityKey,
+    String? cavityContextId,
     bool cavityDefaultsToPeek = false,
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
@@ -50,6 +51,7 @@ void main() {
             onSectionTap: onSectionTap ?? (_) {},
             cavityChild: cavityChild,
             cavityKey: cavityKey,
+            cavityContextId: cavityContextId,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
             maxHeightFraction: maxHeightFraction,
             preferredCavityHeightPx: preferredCavityHeightPx,
@@ -237,6 +239,7 @@ void main() {
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         final peek = cavityHeightOf(tester);
@@ -249,14 +252,55 @@ void main() {
 
         // A chat opening over the course DISPOSES the nav widget (the shell
         // drops it under a full-screen focus); closing the chat mounts it fresh.
-        // The course token never left the URL — it was only covered — so it must
-        // reopen at the height the learner left it, not the peek (#7332).
+        // The course context (`?c=`) never left — the course was only covered —
+        // so it must reopen at the height the learner left it, not peek (#7332).
         await unmountNav(tester);
         await pumpNav(
           tester,
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
+      },
+    );
+
+    testWidgets(
+      'a course keeps its height across opening and closing an activity (#7332)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        final expanded = cavityHeightOf(tester);
+        expect(expanded, greaterThan(peek));
+
+        // Open an activity from the course: it rides the SAME cavity (the key
+        // swaps course->activity) but keeps the course context, so it must NOT
+        // forget the course's height. Then close the activity back to the card.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Activity plan'),
+          cavityKey: 'activity-x',
+          cavityContextId: 'course-a',
+        );
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
@@ -271,13 +315,15 @@ void main() {
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         final peek = cavityHeightOf(tester);
 
-        // Expand to full, then CLOSE the course in place — its token is dropped
-        // (the X / navigating away), so the still-mounted widget rebuilds with no
-        // cavity. Unlike a covering chat, this forgets the height (#7609).
+        // Expand to full, then LEAVE the course context — World clears `?c=`
+        // (the only thing besides picking another course that resets scope).
+        // That, unlike a covering chat or an in-course activity, forgets the
+        // height (#7609).
         await tester.tap(find.text('Course card'));
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), greaterThan(peek));
@@ -290,6 +336,7 @@ void main() {
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         expect(cavityHeightOf(tester), closeTo(peek, 1.0));
