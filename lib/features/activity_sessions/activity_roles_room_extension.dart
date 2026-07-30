@@ -144,13 +144,13 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 
-  /// Loaded membership of [userId] straight from room state — not
-  /// [getParticipants], whose default filter drops leave/ban members, which
-  /// would erase exactly the evidence [roleHolderVacated] needs.
-  String? _membershipOf(String userId) => getState(
-    EventTypes.RoomMember,
-    userId,
-  )?.content.tryGet<String>('membership');
+  /// Loaded membership of [userId] via [getParticipants] with the full
+  /// membership filter — the DEFAULT filter drops leave/ban members, which is
+  /// exactly the evidence [roleHolderVacated] needs. Null when the member
+  /// event isn't loaded (lazy loading), which counts as still occupied.
+  String? _membershipOf(String userId) => getParticipants(
+    Membership.values,
+  ).firstWhereOrNull((u) => u.id == userId)?.membership.name;
 
   Map<String, ActivityRoleModel>? get assignedRoles {
     final roles = activityRoles?.roles;
