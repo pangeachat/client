@@ -15,12 +15,12 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/end_practice_session_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
 
@@ -268,19 +268,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// The header's explicit End control: confirm, discard the session, close
   /// the panel. The X never calls this — leaving is silent.
   Future<void> endSession() async {
-    final l10n = L10n.of(context);
-    final result = await showOkCancelAlertDialog(
+    final ended = await EndPracticeSessionDialog.confirmAndEnd(
+      context,
       useRootNavigator: false,
-      context: context,
-      title: l10n.areYouSure,
-      okLabel: l10n.yes,
-      cancelLabel: l10n.cancel,
-      message: l10n.exitPractice,
     );
-    if (result != OkCancelResult.ok) return;
-
-    PracticeSessionHolder.instance.end();
-    if (mounted) widget.close();
+    if (ended && mounted) widget.close();
   }
 
   Future<void> _continueSession() async {

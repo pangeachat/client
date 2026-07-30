@@ -28,6 +28,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/analytics_downlo
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/morph_analytics_list_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/end_practice_session_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_view.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -425,16 +426,8 @@ class _PracticeButton extends StatelessWidget {
   Future<void> _startPractice(BuildContext context) async {
     final holder = PracticeSessionHolder.instance;
     if (holder.hasUnfinishedSession && holder.liveType != view) {
-      final l10n = L10n.of(context);
-      final result = await showOkCancelAlertDialog(
-        context: context,
-        title: l10n.areYouSure,
-        okLabel: l10n.yes,
-        cancelLabel: l10n.cancel,
-        message: l10n.exitPractice,
-      );
-      if (result != OkCancelResult.ok) return;
-      holder.end();
+      final ended = await EndPracticeSessionDialog.confirmAndEnd(context);
+      if (!ended) return;
     }
 
     if (!context.mounted) return;
