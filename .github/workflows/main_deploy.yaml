@@ -30,11 +30,15 @@ jobs:
       - run: rm ./assets/vodozemac/.gitignore
       - run: flutter pub get
       - name: Build Release Web
+        # --build-number overrides the `+N` in pubspec.yaml for this build only
+        # (nothing is committed back), so the version shown in-app identifies the
+        # deploy rather than the last hand-edited pubspec. The semantic version
+        # still comes from pubspec. See ci.instructions.md.
         run: |
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps --build-number=${{ github.run_number }}
 
       - name: Version Material Icons font
         run: |
