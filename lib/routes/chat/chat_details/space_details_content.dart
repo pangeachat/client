@@ -511,6 +511,7 @@ class SpaceDetailsContent extends StatelessWidget {
                                   ),
                                   child: CourseInfoChips(
                                     room.coursePlan!.uuid,
+                                    courseRoomId: room.id,
                                     fontSize: 12.0,
                                     iconSize: 12.0,
                                   ),

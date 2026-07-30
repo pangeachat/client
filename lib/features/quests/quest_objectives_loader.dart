@@ -15,7 +15,10 @@ typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 /// An activity-less objective would otherwise show a header over a fixed-height
 /// activity-card row that is all empty space, so it is dropped (#7114). Null
 /// (still loading / no data) maps to an empty list.
-@visibleForTesting
+///
+/// The single home of "which Missions does the learner actually see": the
+/// course panel's list and the "N modules" chip both count through it, so a
+/// hidden Mission can never be listed by one and counted by the other (#7976).
 List<QuestObjectiveGroup> objectiveGroupsWithActivities(
   List<QuestObjectiveGroup>? groups,
 ) => (groups ?? const <QuestObjectiveGroup>[])

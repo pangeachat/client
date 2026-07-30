@@ -1,4 +1,6 @@
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 /// A v3 Quest, read from the CMS `quest-plans` collection: an ordered sequence
 /// of Learning Objectives (Missions) a learner advances through.
@@ -29,6 +31,16 @@ class QuestPlan {
 
   List<String> get learningObjectiveIds =>
       sequence.map((step) => step.objective.id).toList();
+
+  /// Display forms of the quest's two header fields, mirroring
+  /// `CoursePlanModel.targetLanguageDisplay` and `CoursePlanModel.cefrLevel` —
+  /// the same chips render off either model, so they must read identically.
+  String get targetLanguageDisplay =>
+      PLanguageStore.byLangCode(targetLanguage)?.langCode.toUpperCase() ??
+      targetLanguage.toUpperCase();
+
+  LanguageLevelTypeEnum get cefrLevel =>
+      LanguageLevelTypeEnum.fromString(targetCefr);
 
   factory QuestPlan.fromJson(Map<String, dynamic> json) {
     final res = (json['res'] as Map?)?.cast<String, dynamic>() ?? const {};
