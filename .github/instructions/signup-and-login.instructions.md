@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/home/**"
-description: "Design for the pre-authentication experience — the intro carousel over the map backdrop, its responsive layout and spacing, and the choice between signup and login."
+description: "Design for the pre-authentication experience — the intro carousel over the map backdrop, its responsive layout and type, the slide assets, and the choice between signup and login."
 ---
 
 # Signup and Login
@@ -59,13 +59,33 @@ On wide windows the carousel takes twice the vertical space of the button area b
 
 ### Slide text
 
-Each headline is localized text drawn over the artwork rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files. In the narrow layout the headline sits at the top of the slide, above the device mockup, so it is read before the image and stays clear of the buttons.
+Each headline is localized text drawn over the artwork rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files. The headline sits at the top of the slide, above the device mockup, so it is read before the image and stays clear of the buttons.
 
-Over a busy map, legibility comes from a scrim or outline behind the text rather than from darkening the type, so the same treatment survives a change of background artwork. Headlines do not scale with the operating system's text-size setting, because the strip reserved for them is fixed and overflowing text would collide with the artwork and the buttons.
+| Property | Value |
+|---|---|
+| Typeface | Roboto |
+| Weight | Semi-bold |
+| Size | 24 |
+| Alignment | Centred, held to a single line |
+| Position | Top of the slide, 16 below its edge |
 
-### Slide images
+The same size and weight apply in both layouts. A headline that changes weight with window shape reads as a different voice for the same sentence, which is why the narrow and wide columns of the tables above differ on position but not on type.
 
-Slides are fetched at runtime from the assets bucket named in [`AppConfig`](../../lib/config/app_config.dart), by a filename encoding the slide number and the crop, so each layout loads only the crop it needs.
+Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. The outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
+
+Headlines do not scale with the operating system's text-size setting, because the strip reserved for them is fixed and overflowing text would collide with the artwork and the buttons. This is a deliberate accessibility trade-off, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
+
+### Image assets
+
+Slides are fetched at runtime from the bucket named in [`AppConfig`](../../lib/config/app_config.dart):
+
+`https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com`
+
+Files are named `Carousel_<number>_<crop>_<version>.png`. The number runs 1 to 6, the crop is `ratio4x5` for the narrow layout or `ratio2x1_NoPadding` for the wide one, and the version marks the design generation — currently `V5`. Twelve files make a full set.
+
+The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous artwork stays retrievable if a slide has to be rolled back or compared.
+
+**Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older artwork. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
 
 Hosting the slides remotely rather than bundling them means the feature story can be refreshed without an app release — which matters because the slides show real product UI, and that UI keeps changing. The cost is a live dependency: a stale or unreachable bucket reaches every user at once, so a failed image falls back to the Pangea logo rather than a broken-image box.
 
@@ -78,10 +98,11 @@ Colour comes from the Material 3 scheme built in [`FluffyThemes`](../../lib/conf
 | Element | Scheme role | Why |
 |---|---|---|
 | Get started | `primaryContainer` on `onPrimaryContainer` | Filled and highest contrast — the path most visitors should take |
-| Login to my account | `surface` on `onSurface`, 40%| Present as CTA button quieter. Button color as 40% opacity rather than no color, because it need to be readable when overlay complex map background  |
+| Login to my account | `surface` on `onSurface` | Present on every slide but quieter. Tinted rather than plain, because an untinted button on a pale map reads as a floating rectangle with no edge |
 | Active dot | `primary` | Matches the brand accent so position is readable at a glance |
 | Remaining dots | `outlineVariant` | Visible enough to count, quiet enough not to compete with the buttons |
-| Headline | `onSurface` | Carried over the map by a scrim, not by a darker colour |
+| Headline | `onPrimaryContainer` | The darkest tone of the brand hue, so the type holds against the map without introducing a colour outside the scheme |
+| Headline outline | `surface` | Tracks the background rather than a fixed white, so the outline still separates the type when the theme flips to dark |
 
 Both buttons share the corner radius defined in `AppConfig`, so they read as one control group rather than two unrelated shapes. The dots are fully rounded and cross-fade between the two roles when the slide changes, so the transition is visible without being animated distraction.
 
@@ -89,7 +110,9 @@ Both buttons share the corner radius defined in `AppConfig`, so they read as one
 
 [Signup and Login](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=14378-43729)
 
-The comps cover the narrow layout only, mobile-first. The wide layout follows the rules in the tables above, which stand as its specification until a comp exists.
+The comps cover the narrow layout only. The wide layout follows the rules in the tables above, which stand as its specification until a comp exists.
+
+The headline in the comps is drawn in a lighter purple than the role chosen above. Where the two disagree, the role wins — it keeps the screen inside one derived palette, and it follows the theme into dark mode on its own.
 
 ## Choosing a method
 
