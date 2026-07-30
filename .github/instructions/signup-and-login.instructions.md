@@ -25,6 +25,10 @@ The screen sits on the world map rather than on a flat surface colour, so the fi
 
 The backdrop also carries the leftover space on wide windows. Because a slide is capped rather than stretched, there is always area around it, and that area reads as part of the product instead of as an empty margin.
 
+There are **two backdrop files, not one** — [`world_map_background.png`](../../assets/pangea/world_map_background.png) for light and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) for dark — and both ship on every platform, mobile included. The screen picks one by theme brightness. A single light image would glare behind dark-mode UI, and it would defeat the headline outline described under Slide text, which takes the surface colour on the assumption that the backdrop moves with the theme.
+
+Unlike the slides, these two are bundled with the app rather than fetched. They do not change when features change, so the tradeoff runs the other way: the backdrop is worth pinning to the release to get an instant, offline-safe first screen, and it keeps signed-out visitors from spending tile requests on decoration.
+
 ### Layout and responsiveness
 
 The screen chooses between two layouts from the window's **shape**, not the device: when height divided by width is greater than 1.75 it uses the narrow layout. A tall phone and a narrowed desktop browser therefore get the same treatment, which is what someone resizing a window expects. This is deliberately not the app-wide column breakpoint in [`FluffyThemes`](../../lib/config/themes.dart), which switches on width alone — that rule decides how many panes fit side by side, a question this single-column screen does not ask.
@@ -87,6 +91,25 @@ The version suffix means a new set is added alongside the one it replaces rather
 
 **Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older artwork. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
 
+### Slide inventory
+
+A slide is two things kept in separate places: **artwork in the bucket, headline in the code.** Artwork is swapped by uploading a file. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw freely.
+
+| # | Headline | String key | Artwork |
+|---|---|---|---|
+| 1 | Learn a language while texting your friends! | `learnLanguageWhileTexting` | `Carousel_1_ratio4x5_V5.png`, `Carousel_1_ratio2x1_NoPadding_V5.png` |
+| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | `writeAndSpeakWorryFree` | `Carousel_2_…` |
+| 3 | Join international learning communities, or start your own! | `joinLearningCommunities` | `Carousel_3_…` |
+| 4 | Play conversation games with the bot, classmates, and new friends! | `playConversationGames` | `Carousel_4_…` |
+| 5 | Jump into conversation from Day One with AI writing tools! | `jumpIntoConversation` | `Carousel_5_…` |
+| 6 | Play practice games personalized to your vocabulary and grammar needs! | `playPersonalizedGames` | `Carousel_6_…` |
+
+Slide number in the filename is the position in this table, so artwork and headline stay paired by number alone. Reordering the carousel therefore means renaming files as well as reordering the strings — cheaper to change what a slide says than where it sits.
+
+The headlines above are the strings in the code today. The V5 comps rewrite all six into much shorter lines, which is a copy change, not an art change, and carries the release and translation cost described above. See Design refer in Figma.
+
+For how a headline is set and how it behaves as the window changes, see Slide text and Layout and responsiveness.
+
 Hosting the slides remotely rather than bundling them means the feature story can be refreshed without an app release — which matters because the slides show real product UI, and that UI keeps changing. The cost is a live dependency: a stale or unreachable bucket reaches every user at once, so a failed image falls back to the Pangea logo rather than a broken-image box.
 
 ## Buttons, dots and colour
@@ -113,6 +136,8 @@ Both buttons share the corner radius defined in `AppConfig`, so they read as one
 The comps cover the narrow layout only. The wide layout follows the rules in the tables above, which stand as its specification until a comp exists.
 
 The headline in the comps is drawn in a lighter purple than the role chosen above. Where the two disagree, the role wins — it keeps the screen inside one derived palette, and it follows the theme into dark mode on its own.
+
+The comps also shorten all six headlines. Those are the intended wording; the strings listed under Slide inventory are what the code says today.
 
 ## Choosing a method
 
