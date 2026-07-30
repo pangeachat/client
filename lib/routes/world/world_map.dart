@@ -24,7 +24,6 @@ import 'package:fluffychat/routes/world/world_map_dismissals.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -190,11 +189,15 @@ class WorldMapController extends State<WorldMap>
 
     _cefrLevelSubscription?.cancel();
     _cefrLevelSubscription = user.settingsUpdateStream.stream.listen((update) {
-      if (!_filterState.filter.cefrFilter.contains(
-        update.userSettings.cefrLevel,
-      )) {
-        _setCefrLevel(update.userSettings.cefrLevel);
-      }
+      // settingsUpdateStream fires on any settings change; only re-seat the
+      // level default when the learner's CEFR actually moved — so unrelated
+      // updates don't clobber a manual level choice or an "All levels" selection.
+      final newLevel = update.userSettings.cefrLevel;
+      final currentDefault = _filterState.filter.defaultCefr;
+      final currentDefaultLevel = currentDefault.isEmpty
+          ? null
+          : currentDefault.first;
+      if (currentDefaultLevel != newLevel) _setDefaultCefrLevel(newLevel);
     });
   }
 
@@ -353,16 +356,22 @@ class WorldMapController extends State<WorldMap>
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
-  /// completion filter, and free-text query. World only; a course shows its set.
+  /// party-size and status filters, and free-text query. World only; a course
+  /// shows its set.
   List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins((c) {
     if (!isWorld) return true;
-
-    final status = _pinsManager.activityCompletionStatus(c.activityId);
-    return _filterState.include(c, status ?? MapCompletionFilter.notStarted);
+    return _filterState.include(c, _pinsManager.displayStateOf(c));
   });
 
   int? activityStarsEarned(String activityId) =>
       _pinsManager.activityStarsEarned(activityId);
+
+  /// The activity's resolved display state / star tier — delegated to the pins
+  /// manager so the view and the Status filter read one source (reuse).
+  ActivityPinState displayStateOf(QuestActivityCard c) =>
+      _pinsManager.displayStateOf(c);
+  ActivityStarLevel starLevelOf(QuestActivityCard c) =>
+      _pinsManager.starLevelOf(c);
 
   /// Activity ids the learner has earned at least one star in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
@@ -526,9 +535,9 @@ class WorldMapController extends State<WorldMap>
     try {
       await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
-        l2: _filterState.filter.l2Only
-            ? _filterState.filter.l2?.langCodeShort
-            : null,
+        // Language is fixed by the learner's settings, not a map filter, so the
+        // working set is always narrowed to their L2 (world-map.instructions.md).
+        l2: _filterState.filter.l2?.langCodeShort,
         l1: user.userL1?.langCodeShort,
       );
     } finally {
@@ -543,30 +552,24 @@ class WorldMapController extends State<WorldMap>
     loadWorldPins();
   }
 
-  void _setCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
-      setState(() => _filterState.setCefrLevel(cefrLevel));
+  /// A settings-driven CEFR change: reset the personalized default (and the
+  /// current level) to exactly the new CEFR level.
+  void _setDefaultCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
+      setState(() => _filterState.setDefaultCefrLevel(cefrLevel));
 
-  void toggleL2() {
-    setState(() => _filterState.toggleL2());
-    loadWorldPins(); // L2 changes the working set → re-fetch
-  }
+  // The three map filter pills. All are client-side refinements over the loaded
+  // set (level is applied client-side per the Scale boundary; party/status read
+  // the pin's own facts), so each is a pure setState — no working-set re-fetch.
+  void setCefrLevel(LanguageLevelTypeEnum? level) =>
+      setState(() => _filterState.setCefrLevel(level));
 
-  void toggleCefr(LanguageLevelTypeEnum level) =>
-      setState(() => _filterState.toggleCefr(level));
+  void setPartySize(MapPartySize? size) =>
+      setState(() => _filterState.setPartySize(size));
 
-  void toggleCompletion(MapCompletionFilter c) =>
-      setState(() => _filterState.toggleCompletion(c));
+  void setStatus(ActivityPinState? status) =>
+      setState(() => _filterState.setStatus(status));
 
-  void resetFilters({bool l2Only = true}) {
-    final toggleL2Only = _filterState.filter.l2Only != l2Only;
-    setState(() {
-      _filterState.resetFilters(l2Only: l2Only);
-    });
-
-    if (toggleL2Only) {
-      loadWorldPins(); // L2 narrowed again → re-fetch
-    }
-  }
+  void resetFilters() => setState(() => _filterState.resetFilters());
 
   /// The minimal screen translation that brings [card] fully inside [safe]: zero
   /// on an axis where it already fits, otherwise just enough to clear the
