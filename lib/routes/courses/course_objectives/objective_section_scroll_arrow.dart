@@ -33,10 +33,10 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
     // accessibility layer is active, pointer events are dispatched through the
     // semantics DOM tree rather than the render tree, so the arrow needs its own
     // tappable semantics node that sits on top of the activity cards beneath it.
-    // The caller paints the arrows after the card ListView, which is what puts
-    // this node above the cards (#7803). Do NOT wrap this in an AbsorbPointer /
-    // IgnorePointer: those strip this node's semantics and reintroduce the
-    // click-through.
+    // The caller drops the card semantics underneath (a sibling BlockSemantics)
+    // so the cards can't intercept the tap (#7803). Do NOT wrap this in an
+    // AbsorbPointer / IgnorePointer: those strip this node's semantics and
+    // reintroduce the click-through.
     return Semantics(
       button: true,
       label: direction.label(L10n.of(context)),
