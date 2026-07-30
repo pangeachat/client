@@ -260,10 +260,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
       ]).timeout(const Duration(seconds: 30));
       if (!mounted) return;
       setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel(
-          {...results[0], ...results[1]},
-          activityId: widget.activityId,
-        );
+        _roomSummariesModel = ActivitySessionSummariesModel({
+          ...results[0],
+          ...results[1],
+        }, activityId: widget.activityId);
         _summariesLoading = false;
       });
     } catch (e, s) {

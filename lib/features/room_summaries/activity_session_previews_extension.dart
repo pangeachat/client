@@ -26,10 +26,7 @@ extension ActivitySessionPreviewsApi on Api {
   }) async {
     final requestUri = Uri(
       path: '/_synapse/client/pangea/v1/activity_session_previews',
-      queryParameters: {
-        'rooms': spaceIds.join(","),
-        'activity': ?activityId,
-      },
+      queryParameters: {'rooms': spaceIds.join(","), 'activity': ?activityId},
     );
     final request = Request('GET', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';
