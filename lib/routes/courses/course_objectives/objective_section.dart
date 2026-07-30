@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -231,108 +230,113 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                         ref.plan.req.numberOfParticipants <= available;
                     return MouseRegion(
                       cursor: SystemMouseCursors.click,
-                      child: Listener(
-                        behavior: HitTestBehavior.opaque,
-                        onPointerDown: (_) => Logs().w('CARD $i'),
-                        child: GestureDetector(
-                          // In a preview (no room), open the activity as a standalone
-                          // world object (`/<activityId>`). In a joined course, open it
-                          // as the focused detail over the map: DROP the `left=course`
-                          // card (so it isn't left blank beside the activity) but KEEP
-                          // the `?m=course:` filter. That surviving course scope is what
-                          // marks this plan as the card's child: its close is a back-arrow
-                          // that reopens the card (a pin-opened plan drops the scope and so
-                          // closes with an X). The map stays course-scoped and zooms to
-                          // this activity (`mapFocusFor` → `ActivityFocus`). See
-                          // routing.instructions.md.
-                          onTap: () => widget.onTap(ref),
-                          child: Stack(
-                            // The card's state banner peeks past its top-left
-                            // corner, so this wrapping Stack must not clip it.
-                            clipBehavior: Clip.hardEdge,
-                            children: [
-                              Opacity(
-                                opacity: canStart ? 1.0 : 0.5,
-                                child: ActivitySuggestionCard(
-                                  activity: ref.plan,
-                                  width: _cardWidth,
-                                  height: _cardHeight,
-                                  fontSize: _isColumnMode ? 16.0 : 12.0,
-                                  fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                                  iconSize: _isColumnMode ? 12.0 : 8.0,
-                                  starsEarned: starsEarned,
-                                  pinState: complete ? null : liveState.state,
-                                  openSessions: liveState.openSessions,
+                      child: GestureDetector(
+                        // In a preview (no room), open the activity as a standalone
+                        // world object (`/<activityId>`). In a joined course, open it
+                        // as the focused detail over the map: DROP the `left=course`
+                        // card (so it isn't left blank beside the activity) but KEEP
+                        // the `?m=course:` filter. That surviving course scope is what
+                        // marks this plan as the card's child: its close is a back-arrow
+                        // that reopens the card (a pin-opened plan drops the scope and so
+                        // closes with an X). The map stays course-scoped and zooms to
+                        // this activity (`mapFocusFor` → `ActivityFocus`). See
+                        // routing.instructions.md.
+                        onTap: () => widget.onTap(ref),
+                        child: Stack(
+                          // The card's state banner peeks past its top-left
+                          // corner, so this wrapping Stack must not clip it.
+                          clipBehavior: Clip.hardEdge,
+                          children: [
+                            Opacity(
+                              opacity: canStart ? 1.0 : 0.5,
+                              child: ActivitySuggestionCard(
+                                activity: ref.plan,
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                fontSize: _isColumnMode ? 16.0 : 12.0,
+                                fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                                iconSize: _isColumnMode ? 12.0 : 8.0,
+                                starsEarned: starsEarned,
+                                pinState: complete ? null : liveState.state,
+                                openSessions: liveState.openSessions,
+                              ),
+                            ),
+                            if (complete)
+                              Container(
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: theme.colorScheme.surface.withAlpha(
+                                    180,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    'assets/pangea/check.svg',
+                                    width: 48.0,
+                                    height: 48.0,
+                                  ),
                                 ),
                               ),
-                              if (complete)
-                                Container(
-                                  width: _cardWidth,
-                                  height: _cardHeight,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    color: theme.colorScheme.surface.withAlpha(
-                                      180,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      'assets/pangea/check.svg',
-                                      width: 48.0,
-                                      height: 48.0,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
+                          ],
                         ),
                       ),
                     );
                   },
                 ),
               ),
+              // Drop the card semantics beneath the arrows so a tap on an arrow
+              // can't fall through to a card on Flutter web (#7803). A single
+              // blocker painted after the ListView but before the arrows keeps
+              // the two arrows from clobbering each other's semantics: a
+              // per-arrow BlockSemantics would also drop the sibling arrow
+              // painted before it, routing its taps to the wrong arrow.
+              ListenableBuilder(
+                listenable: Listenable.merge([
+                  _showBackArrowNotifier,
+                  _showForwardArrowNotifier,
+                ]),
+                builder: (context, _) {
+                  final blocking =
+                      _showBackArrowNotifier.value ||
+                      _showForwardArrowNotifier.value;
+                  return blocking
+                      ? const BlockSemantics()
+                      : const SizedBox.shrink();
+                },
+              ),
+              // The scroll arrows overlay the ends of the ListView. Only mount
+              // the arrow that is currently usable — a hidden-but-present arrow
+              // (IgnorePointer / opacity 0) still leaves a semantics node at the
+              // edge that, on Flutter web, lets a tap fall through to the card
+              // beneath it.
               Positioned(
                 left: 0,
                 top: 0,
                 bottom: 0,
-                child: ValueListenableBuilder(
+                child: ValueListenableBuilder<bool>(
                   valueListenable: _showBackArrowNotifier,
-                  builder: (context, showArrow, _) => BlockSemantics(
-                    blocking: showArrow,
-                    child: IgnorePointer(
-                      ignoring: !showArrow,
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 150),
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.back,
                           onTap: () => _scrollByArrow(ArrowDirection.back),
-                        ),
-                      ),
-                    ),
-                  ),
+                        )
+                      : const SizedBox.shrink(),
                 ),
               ),
               Positioned(
                 right: 0,
                 top: 0,
                 bottom: 0,
-                child: ValueListenableBuilder(
+                child: ValueListenableBuilder<bool>(
                   valueListenable: _showForwardArrowNotifier,
-                  builder: (context, showArrow, _) => BlockSemantics(
-                    blocking: showArrow,
-                    child: IgnorePointer(
-                      ignoring: !showArrow,
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 150),
-                        opacity: showArrow ? 1 : 0,
-                        child: ObjectiveSectionScrollArrow(
+                  builder: (context, showArrow, _) => showArrow
+                      ? ObjectiveSectionScrollArrow(
                           direction: ArrowDirection.forward,
                           onTap: () => _scrollByArrow(ArrowDirection.forward),
-                        ),
-                      ),
-                    ),
-                  ),
+                        )
+                      : const SizedBox.shrink(),
                 ),
               ),
             ],

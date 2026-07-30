@@ -55,7 +55,10 @@ class SpaceDetailsContent extends StatelessWidget {
   const SpaceDetailsContent(this.controller, this.room, {super.key});
 
   SpaceSettingsTabs tab(BuildContext context) {
-    final defaultTab = SpaceSettingsTabs.chat;
+    // Course Plan is the default tab: it's where a course's activities live,
+    // so a bare `course` token (opened fresh, or reopened by an activity's
+    // back-arrow, #7933) lands there rather than on Chat.
+    final defaultTab = SpaceSettingsTabs.course;
     final activeTab = controller.widget.activeTab;
     if (activeTab != null) {
       return activeTab;
@@ -189,7 +192,12 @@ class SpaceDetailsContent extends StatelessWidget {
             final resp = await showFutureLoadingDialog(
               context: context,
               future: () async {
-                final outline = await QuestRepo.outline(room.coursePlan!.uuid);
+                final outline = await QuestRepo.outline(
+                  room.coursePlan!.uuid,
+                  // Course-admin read from inside the space: include the
+                  // owner's private activities so the star cap counts them.
+                  courseRoomId: room.id,
+                );
                 return outline.result?.groups
                     .map(
                       (g) => g.activities.fold(
@@ -503,6 +511,7 @@ class SpaceDetailsContent extends StatelessWidget {
                                   ),
                                   child: CourseInfoChips(
                                     room.coursePlan!.uuid,
+                                    courseRoomId: room.id,
                                     fontSize: 12.0,
                                     iconSize: 12.0,
                                   ),

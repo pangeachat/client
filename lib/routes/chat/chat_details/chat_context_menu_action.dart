@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -40,6 +41,37 @@ extension on ChatContextAction {
       default:
         return false;
     }
+  }
+}
+
+extension RoomUnreadContextActions on Room {
+  /// Whether the chat list is currently showing an unread indicator for this
+  /// room — the same predicate `UnreadBubble` draws from. Note this is wider
+  /// than [markedUnread] (the explicit `m.marked_unread` flag): a room with
+  /// real unread messages, or a muted room with new ones, is unread without
+  /// that flag ever being set.
+  bool get showsUnreadIndicator => isUnread || hasNewMessages;
+
+  /// Clears the unread indicator: sends a read receipt (what actually drops
+  /// `notificationCount`, and with it the badge count) and clears the explicit
+  /// unread flag. [markUnread] alone does **not** set a read marker, so on its
+  /// own it leaves the count untouched.
+  ///
+  /// Receipt targeting is delegated to the timeline, which picks the newest
+  /// *synced* event. That skips an unsent local echo — whose id is a
+  /// transaction id the server would reject a receipt for — and still marks
+  /// the confirmed messages beneath it read. Same path the chat view takes on
+  /// open.
+  Future<void> clearUnread() async {
+    final timeline = await getTimeline();
+    try {
+      await timeline.setReadMarker(
+        public: AppSettings.sendPublicReadReceipts.value,
+      );
+    } finally {
+      timeline.cancelSubscriptions();
+    }
+    if (markedUnread) await markUnread(false);
   }
 }
 
@@ -148,12 +180,14 @@ void chatContextMenuAction(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                room.markedUnread
+                room.showsUnreadIndicator
                     ? Icons.mark_as_unread
                     : Icons.mark_as_unread_outlined,
               ),
               const SizedBox(width: 12),
-              Text(room.markedUnread ? l10n.markAsRead : l10n.markAsUnread),
+              Text(
+                room.showsUnreadIndicator ? l10n.markAsRead : l10n.markAsUnread,
+              ),
             ],
           ),
         ),
@@ -240,9 +274,12 @@ void chatContextMenuAction(
       );
       return;
     case ChatContextAction.markUnread:
+      // Re-read the predicate rather than reusing the value the menu was built
+      // from — a message can arrive while the menu is open.
+      final markRead = room.showsUnreadIndicator;
       await showFutureLoadingDialog(
         context: context,
-        future: () => room.markUnread(!room.markedUnread),
+        future: () => markRead ? room.clearUnread() : room.markUnread(true),
       );
       return;
     case ChatContextAction.mute:

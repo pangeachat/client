@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
@@ -522,8 +523,13 @@ class ChatView extends StatelessWidget {
                         )
                       else if (controller.room.activityPlan != null &&
                           controller.room.showActivityChatUI &&
-                          !controller.room.isActiveInActivity)
+                          !controller.room.isActiveInActivity) ...[
+                        // Post-play rating prompt (#7194) — pinned above the
+                        // finished-status bar; manages its own visibility
+                        // (finished role, not yet rated, not dismissed).
+                        ActivityRatingCard(room: controller.room),
                         ActivityFinishedStatusMessage(controller: controller),
+                      ],
                       // Pangea#
                     ],
                   ),

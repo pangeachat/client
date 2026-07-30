@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-27 15:35:57.536423",
+    "@@last_modified": "2026-07-29 12:08:18.076917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "આર્કાઇવ બંધ કરો",
     "activityActions": "પ્રવૃત્તિ ક્રિયાઓ",
     "ongoing": "ચાલુ",
-    "emptyInviteSearchHint": "તમે જેને શોધી રહ્યા છો તે મળતું નથી? તેમને તેમની પ્રોફાઇલ શોધમાં મળવાની મંજૂરી આપવાની જરૂર પડી શકે છે. સેટિંગ્સમાં પ્રોફાઇલ સંપાદિત કરો તપાસો."
+    "emptyInviteSearchHint": "તમે જેને શોધી રહ્યા છો તે મળતું નથી? તેમને તેમની પ્રોફાઇલ શોધમાં મળવાની મંજૂરી આપવાની જરૂર પડી શકે છે. સેટિંગ્સમાં પ્રોફાઇલ સંપાદિત કરો તપાસો.",
+    "activityPreviewLabel": "પ્રવૃત્તિ પૂર્વાવલોકન: ",
+    "participantRowLabel": "{total} સહભાગીઓમાંથી {joined} જોડાયા છે",
+    "ongoingPendingLabel": "અન્ય લોકોના જોડાવાની રાહ જોવાઈ રહી છે",
+    "joinableLabel": "જોડાવા યોગ્ય",
+    "inProgressLabel": "અગાઉ પૂર્ણ થયેલ",
+    "availableLabel": "પ્રવૃત્તિ બનાવો",
+    "rateActivityTitle": "આ પ્રવૃત્તિ કેવી હતી?",
+    "rateActivityCommentHint": "ટિપ્પણી ઉમેરો (વૈકલ્પિક)",
+    "rateActivityCommentRejected": "તમારી ટિપ્પણી પોસ્ટ થઈ શકી નથી. તેને ફરીથી લખવાનો પ્રયાસ કરો અથવા ટિપ્પણી વિના તમારું રેટિંગ સબમિટ કરો.",
+    "rateActivityThanks": "તમારા પ્રતિભાવ બદલ આભાર!",
+    "activityRatingMeterLabel": "{percent}% સકારાત્મક ({count, plural, =1{1 રેટિંગ} other{{count} રેટિંગ્સ}})",
+    "newActivityBadge": "નવું"
 }

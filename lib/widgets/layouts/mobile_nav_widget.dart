@@ -67,6 +67,18 @@ class MobileNavWidget extends StatefulWidget {
   /// own default rather than inheriting the previous key's height.
   final String? cavityKey;
 
+  /// The active COURSE context (`?c=` / `activeSpaceId`), or null when the
+  /// workspace isn't course-scoped. This is what says a course is still "open":
+  /// a chat or an activity opened from a course keeps the same context (only the
+  /// cavity — hence [cavityKey] — swaps), and even closing the course card keeps
+  /// it; the context leaves a course only via World or choosing another course
+  /// (routing.instructions.md — "scope is reset only by the World control or by
+  /// choosing a different course, never by closing a panel"). A course's
+  /// remembered height is forgotten exactly when the context leaves it, so
+  /// sub-navigation preserves it (#7332) while a genuinely fresh course open
+  /// starts at peek (#7609). See [didUpdateWidget].
+  final String? cavityContextId;
+
   /// True for a course card (opens at a small peek by default); false for a
   /// section (opens at half by default).
   final bool cavityDefaultsToPeek;
@@ -116,6 +128,15 @@ class MobileNavWidget extends StatefulWidget {
   /// the finger moves.
   final ValueChanged<bool>? onCavityFullChanged;
 
+  /// The keyboard's overlap BEYOND the bottom safe area, computed by the shell
+  /// (which reads `viewInsets` above its Scaffold — a resizing Scaffold hides it
+  /// from the body — and nets out the home-indicator inset the SafeArea stops
+  /// reserving once the keyboard covers it). Trimmed from the cavity —
+  /// INSTANTLY, not through the rest-height animation — so the top holds its
+  /// position the whole time the keyboard opens: no jump-then-readjust, and no
+  /// settle a few pt low (#7754). Zero when no keyboard is up.
+  final double keyboardInset;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -127,6 +148,7 @@ class MobileNavWidget extends StatefulWidget {
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
     this.cavityKey,
+    this.cavityContextId,
     this.cavityDefaultsToPeek = false,
     required this.maxHeightFraction,
     this.preferredCavityHeightPx,
@@ -134,6 +156,7 @@ class MobileNavWidget extends StatefulWidget {
     this.onDismissed,
     this.mapStaysLive = false,
     this.onCavityFullChanged,
+    this.keyboardInset = 0.0,
     super.key,
   });
 
@@ -146,7 +169,12 @@ class MobileNavWidget extends StatefulWidget {
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
   /// `MobileCourseSheet._expandedBySheet` (#7332), generalized to any section
-  /// or course key and to three rest states instead of two.
+  /// or course key and to three rest states instead of two. A course entry is
+  /// dropped when the course CONTEXT leaves it (World / a different course), so a
+  /// fresh course open starts at peek (#7609; [didUpdateWidget]) while opening a
+  /// chat or activity from the course — or a chat that only disposes this widget
+  /// — keeps the context and restores the height on return (#7332). Section keys
+  /// persist for the session (#7510).
   static final Map<String, NavCavityHeight> _heightByKey = {};
 
   @visibleForTesting
@@ -158,6 +186,11 @@ class MobileNavWidget extends StatefulWidget {
 
 class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _railHeight = MobileNavWidget.railRowHeight;
+
+  /// Anchors the cavity's outer sizing box — the box whose height is the
+  /// animated rest height MINUS the (instant) keyboard trim. Tests read its
+  /// rendered height to assert the keyboard behaviour (#7754).
+  static const Key _cavityBoxKey = ValueKey('navCavityBox');
 
   /// The collapsed peek height for a course sheet (the only cavity that peeks).
   /// Sized to the course card's compact header — the drag handle plus the
@@ -210,6 +243,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final keyChanged =
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
+    // Forget a course's remembered height exactly when the course CONTEXT leaves
+    // it — i.e. World or choosing a different course, the only two things that
+    // reset scope (routing.instructions.md). That is the deterministic fresh
+    // open (#7609). Everything that keeps the context — opening a chat or an
+    // activity from the course, or even closing the course card — is still the
+    // same course "open", so its height is preserved (#7332). Keyed by the OLD
+    // context (== the leaving course's [cavityKey]); a chat covering the course
+    // instead DISPOSES the widget with the context unchanged, so nothing is
+    // cleared and the height is restored on return.
+    final contextLeft =
+        oldWidget.cavityContextId != null &&
+        oldWidget.cavityContextId != widget.cavityContextId;
+    if (contextLeft) {
+      MobileNavWidget._heightByKey.remove(oldWidget.cavityContextId);
+    }
+
     if (closedNow) {
       setState(() {
         _restState = null;
@@ -233,10 +282,13 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   };
 
   NavCavityHeight _restoreHeight() {
-    // A peek cavity (course card) always opens at its default peek — a
-    // deterministic entry state, not the height it was left at (#7609). The
-    // height memory exists for SECTION sheets (#7510) and stays theirs.
-    if (widget.cavityDefaultsToPeek) return _defaultHeight();
+    // Restore the height this cavity was left at. For a course (peek) cavity this
+    // is what bridges a chat opening over it and closing: the widget is DISPOSED
+    // then freshly mounted, and the static [_heightByKey] is the only survivor,
+    // so the course reopens at the size the learner left it (#7332). A genuine
+    // close FORGETS the entry ([didUpdateWidget]), so a fresh open with no stored
+    // height falls back to the peek default — the deterministic entry state
+    // (#7609). Section sheets read the same memory (#7510).
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -247,17 +299,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
-    // A peek cavity never reads the memory ([_restoreHeight]) — it always
-    // reopens at peek (#7609) — so don't write it either.
-    if (widget.cavityDefaultsToPeek) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
     // preference: collapsed renders 0px there (no handle left to grab), so
     // persisting it would make every reopen arrive already-dismissed and
     // stuck (#7510). The sheet still collapses now; the memory just keeps
-    // the last real height for the reopen.
-    if (height == NavCavityHeight.collapsed) return;
+    // the last real height for the reopen. A peek cavity's collapsed IS a
+    // visible, draggable rest height (the 128px peek), so it is remembered
+    // like any other — dragging a course down to peek and returning from a
+    // chat must restore the peek, not a stale expanded height (#7332).
+    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
+      return;
+    }
     MobileNavWidget._heightByKey[key] = height;
   }
 
@@ -434,7 +488,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final maxHeightPx = screenHeight * widget.maxHeightFraction;
     _lastMaxHeightPx = maxHeightPx;
 
-    final cavityHeightPx = widget.cavityChild == null
+    // The cavity's rest/drag height, WITHOUT the keyboard. This is the value
+    // that animates on section snaps. The keyboard trim is applied separately,
+    // instantly, in the builder below (#7754) — see [_cavityBox].
+    final baseCavityPx = widget.cavityChild == null
         ? 0.0
         : (maxHeightPx * _currentFraction).clamp(0.0, maxHeightPx);
 
@@ -494,32 +551,55 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (widget.cavityChild != null)
-                          AnimatedContainer(
+                          // Only `baseCavityPx` (the rest/drag height) drives
+                          // the tween, so section snaps still animate. The
+                          // keyboard inset is subtracted from the ANIMATED
+                          // value inside the builder with a plain SizedBox —
+                          // instant, in lockstep with the Scaffold's keyboard
+                          // lift — so the widget's top never jumps up and
+                          // readjusts when the keyboard opens (#7754).
+                          TweenAnimationBuilder<double>(
                             duration: _animationDuration,
                             curve: Curves.easeOut,
-                            height: cavityHeightPx,
-                            child: cavityHeightPx <= 0
-                                ? null
-                                : ClipRect(
-                                    child: _NavCavity(
-                                      onHandleTap: _toggleHandle,
-                                      // At peek, a tap anywhere on the sheet
-                                      // (not claimed by an inner button)
-                                      // expands to full — the peek is an
-                                      // entry point, not a surface to
-                                      // interact with (#7609).
-                                      onBodyTap:
-                                          widget.cavityDefaultsToPeek &&
-                                              _restState ==
-                                                  NavCavityHeight.collapsed
-                                          ? () => _openAt(NavCavityHeight.full)
-                                          : null,
-                                      onDragStart: _onDragStart,
-                                      onDragUpdate: _onDragUpdate,
-                                      onDragEnd: _onDragEnd,
-                                      child: widget.cavityChild!,
-                                    ),
-                                  ),
+                            tween: Tween<double>(end: baseCavityPx),
+                            child: _NavCavity(
+                              onHandleTap: _toggleHandle,
+                              // At peek, a tap anywhere on the sheet (not
+                              // claimed by an inner button) expands to full —
+                              // the peek is an entry point, not a surface to
+                              // interact with (#7609).
+                              onBodyTap:
+                                  widget.cavityDefaultsToPeek &&
+                                      _restState == NavCavityHeight.collapsed
+                                  ? () => _openAt(NavCavityHeight.full)
+                                  : null,
+                              onDragStart: _onDragStart,
+                              onDragUpdate: _onDragUpdate,
+                              onDragEnd: _onDragEnd,
+                              child: widget.cavityChild!,
+                            ),
+                            builder: (context, animatedHeight, child) {
+                              final visible =
+                                  (animatedHeight - widget.keyboardInset).clamp(
+                                    0.0,
+                                    animatedHeight,
+                                  );
+                              // Drop the content the instant the cavity is
+                              // TARGETED shut (baseCavityPx), not when the
+                              // ANIMATED height reaches 0 — otherwise a
+                              // collapsing sheet squeezes its content into a
+                              // few pixels mid-animation and the inner
+                              // RenderFlex overflows.
+                              final showContent =
+                                  baseCavityPx > 0 && visible > 0;
+                              return SizedBox(
+                                key: _cavityBoxKey,
+                                height: visible,
+                                child: showContent
+                                    ? ClipRect(child: child)
+                                    : null,
+                              );
+                            },
                           ),
                         SizedBox(
                           height: _railHeight,
@@ -639,6 +719,20 @@ class _CourseShortcutButton extends StatelessWidget {
       child: Semantics(
         // Announce the active-course state — the border alone is visual-only.
         selected: selected,
+        // `container: true` forces the shortcut into its OWN standalone
+        // semantics node instead of merging its tap + selected state up into
+        // the rail's "Navigation options" node. The other three rail items are
+        // IconButtons, which already stand alone; this custom InkWell did not,
+        // so on Flutter web with the accessibility layer active (Firefox, and
+        // release web builds generally) its tap dispatched to the merged rail
+        // node and fell through to the live map behind — the course could be
+        // collapsed but never re-expanded by tapping the shortcut (#7944; the
+        // sibling web-semantics tap loss of #7927 / #7803). `label` gives the
+        // now-standalone node its accessible name (the course), which it
+        // previously borrowed from the merged rail node.
+        container: true,
+        button: true,
+        label: label,
         child: InkWell(
           borderRadius: BorderRadius.circular(99),
           onTap: onTap,
@@ -715,7 +809,24 @@ class _NavCavity extends StatelessWidget {
         // Grab handle: drag to resize, tap to toggle half/full. Exposed to
         // assistive tech as a single named button that runs the toggle (the
         // drag is pointer-only) — mirrors `MobileCourseSheet`'s handle (#7128).
+        //
+        // `container: true` forces the handle into its OWN semantics node
+        // instead of merging into the cavity's node. It matters because the
+        // enclosing cavity GestureDetector carries the vertical-drag (scroll)
+        // actions but, for a non-peek cavity (the activity plan), NO tap of its
+        // own (`onBodyTap` is null unless it's a course at peek). Without this,
+        // the handle's tap action merged INTO that scrollable node, producing a
+        // single node that was both scrollable and tappable. On Flutter web
+        // with the accessibility layer active, pointer events dispatch through
+        // the semantics DOM, and a scrollable node does not reliably deliver a
+        // tap — so clicking the handle did nothing (only manual dragging
+        // worked), but only on browsers/OSes that turn the a11y layer on
+        // (#7927; the sibling web-semantics fall-through of #7803). A course at
+        // peek was unaffected only because its cavity node had its own
+        // `onBodyTap`, which kept the handle a separate child node. Forcing the
+        // container makes the handle that separate button in every cavity.
         Semantics(
+          container: true,
           button: true,
           label: l10n.resizeCoursePanel,
           onTap: onHandleTap,

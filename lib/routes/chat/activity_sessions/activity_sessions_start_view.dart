@@ -13,6 +13,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -42,7 +43,7 @@ class ActivitySessionStartView extends StatelessWidget {
   });
 
   String? _archivedRoomName(BuildContext context) {
-    if (!controller.activityRemoved) return null;
+    if (!controller.isArchived) return null;
     return controller.activityRoom?.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
@@ -144,6 +145,16 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
+              // Rating indicator (#7194/#7993) — top-right per design: a NEW
+              // pill until the activity has ratings, then the aggregate meter.
+              if (activity != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: ActivityRatingMeter(
+                    average: activity.ratingAverage,
+                    count: activity.ratingCount,
+                  ),
+                ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
@@ -172,9 +183,11 @@ class ActivitySessionStartView extends StatelessWidget {
                     ),
                   ),
                 )
-              // Confirmed removed with no plan recoverable from room state:
-              // archived body from role/goal state alone.
-              : activity == null && controller.activityRemoved
+              // Confirmed removed, with a session and no plan recoverable from
+              // its room state: archived body from role/goal state alone.
+              // Without a session there is nothing to build it from, so a
+              // removed activity falls through to not-found (#7918).
+              : activity == null && controller.isArchived
               ? _ArchivedSessionFallbackBody(controller)
               : activity == null
               ? Center(

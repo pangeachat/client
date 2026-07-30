@@ -327,6 +327,17 @@ void main() {
       ]);
     });
 
+    test('closing a link-opened activity lands on the bare world', () {
+      // The shape a shared `/<uuid>` link folds to: an activity token, no
+      // course context. Closing must yield the plain world — any surviving
+      // activity token (or a re-navigation to the original link, #7821) is
+      // what made the activity uncloseable.
+      final open = u('/?left=activity:act-1');
+      final closed = WorkspaceNav.dropActivityOverlay(open);
+      expect(closed, '/');
+      expect(parseOpenPanels(u(closed)).left, isEmpty);
+    });
+
     test('dropActivityOverlay keeps the context; reopenCourseCard reseats the '
         'card', () {
       final open = u('/?c=!s&left=activity:act-1.r!sess');

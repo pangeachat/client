@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:55.489466",
+    "@@last_modified": "2026-07-29 12:08:16.801074",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9819,5 +9819,17 @@
     "closeArchive": "Tanca l'arxiu",
     "activityActions": "Accions d'activitat",
     "ongoing": "En curs",
-    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració."
+    "emptyInviteSearchHint": "No trobes qui busques? Potser han d'activar la visibilitat del seu perfil a la cerca. Revisa Edita el perfil a Configuració.",
+    "activityPreviewLabel": "Previsualització de l'activitat: ",
+    "participantRowLabel": "{joined} de {total} participants s'han unit",
+    "ongoingPendingLabel": "Esperant que s'uneixin els altres",
+    "joinableLabel": "Unible",
+    "inProgressLabel": "Completat anteriorment",
+    "availableLabel": "Crear activitat",
+    "rateActivityTitle": "Què tal aquesta activitat?",
+    "rateActivityCommentHint": "Afegeix un comentari (opcional)",
+    "rateActivityCommentRejected": "No s'ha pogut publicar el teu comentari. Prova de reformular-lo o envia la teva valoració sense comentari.",
+    "rateActivityThanks": "Gràcies pels teus comentaris!",
+    "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})",
+    "newActivityBadge": "NOU"
 }

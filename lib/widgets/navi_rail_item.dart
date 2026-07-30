@@ -39,7 +39,6 @@ class NaviRailItem extends StatelessWidget {
     final height = naviRailWidth - (isColumnMode ? 16.0 : 12.0);
 
     final icon = isSelected ? selectedIcon ?? this.icon : this.icon;
-    final unreadBadgeFilter = this.unreadBadgeFilter;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,

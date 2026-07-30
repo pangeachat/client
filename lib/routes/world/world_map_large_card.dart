@@ -196,14 +196,12 @@ class WorldMapLargeCard extends StatelessWidget {
         ? WorldMapSelection.darken(state.accent)
         : state.accent;
 
-    final cardButton = GestureDetector(
-      onTap: onTap,
-      // #Pangea: announce the card as a single "Activity: <title>" button so the
-      // screen reader gets context and the title is not double-read (#7185).
-      child: Semantics(
-        label: L10n.of(context).activityLabel((plan?.title ?? card.title)),
-        container: true,
-        button: true,
+    final cardButton = Semantics(
+      label:
+          "${L10n.of(context).activityLabel(plan?.title ?? card.title)}, ${state.label(L10n.of(context))}",
+      container: true,
+      child: GestureDetector(
+        onTap: onTap,
         // The glow rides on the card body's own rounded rect (no gap, no border):
         // the caret directly below sits within its downward bleed, so card and
         // tail glow as one shape (#7349).
@@ -443,32 +441,41 @@ class _ParticipantRow extends StatelessWidget {
     final theme = Theme.of(context);
     // Shrink-wrap so a card with few roles doesn't stretch to the full width —
     // the card sizes to this row (world-map Figma, size variety).
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 18, color: accent),
-        const SizedBox(width: 8),
-        for (final p in participants.take(4)) ...[
-          Avatar(mxContent: p.avatar, name: p.name, size: 28),
-          const SizedBox(width: 4),
-        ],
-        // An open seat, matching the activity-lobby's open-role look
-        // (ActivityParticipantIndicator) — a person-icon avatar on the
-        // primary container, scaled to this row's 28px avatars — rather than a
-        // bespoke glyph, so the two surfaces read the same.
-        for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
-          CircleAvatar(
-            radius: 14,
-            backgroundColor: theme.colorScheme.primaryContainer,
-            child: Icon(
-              Icons.person,
-              size: 16,
-              color: theme.colorScheme.onPrimaryContainer,
-            ),
-          ),
-          const SizedBox(width: 4),
-        ],
-      ],
+    return Semantics(
+      label: L10n.of(context).participantRowLabel(
+        participants.length,
+        participants.length + openSlots,
+      ),
+      container: true,
+      child: ExcludeSemantics(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 18, color: accent),
+            const SizedBox(width: 8),
+            for (final p in participants.take(4)) ...[
+              Avatar(mxContent: p.avatar, name: p.name, size: 28),
+              const SizedBox(width: 4),
+            ],
+            // An open seat, matching the activity-lobby's open-role look
+            // (ActivityParticipantIndicator) — a person-icon avatar on the
+            // primary container, scaled to this row's 28px avatars — rather than a
+            // bespoke glyph, so the two surfaces read the same.
+            for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
+              CircleAvatar(
+                radius: 14,
+                backgroundColor: theme.colorScheme.primaryContainer,
+                child: Icon(
+                  Icons.person,
+                  size: 16,
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
+              ),
+              const SizedBox(width: 4),
+            ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -506,32 +513,39 @@ class _OngoingActiveBody extends StatelessWidget {
       spacing: 8.0,
       children: [
         if (preview != null)
-          Row(
-            children: [
-              Avatar(
-                mxContent: sender?.avatarUrl,
-                name: sender?.calcDisplayname(),
-                size: 24,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  preview,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 12),
+          Semantics(
+            label: L10n.of(context).activityPreviewLabel,
+            container: true,
+            child: Row(
+              children: [
+                Avatar(
+                  mxContent: sender?.avatarUrl,
+                  name: sender?.calcDisplayname(),
+                  size: 24,
                 ),
-              ),
-            ],
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    preview,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+              ],
+            ),
           ),
         // Fixed height prevents the card from jumping when `plan` hydrates and
         // the total goes from 0 → actual goal count.
-        SizedBox(
-          height: 16,
-          child: ActivityStarRow(
-            total: starsTotal,
-            earned: starsEarned.clamp(0, starsTotal),
-            condensed: starsTotal > 12,
+        Semantics(
+          container: true,
+          child: SizedBox(
+            height: 16,
+            child: ActivityStarRow(
+              total: starsTotal,
+              earned: starsEarned.clamp(0, starsTotal),
+              condensed: starsTotal > 12,
+            ),
           ),
         ),
       ],

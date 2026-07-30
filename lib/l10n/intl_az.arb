@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-27 15:35:54.872248",
+    "@@last_modified": "2026-07-29 12:08:16.251970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Arxivi bağla",
     "activityActions": "Fəaliyyət hərəkətləri",
     "ongoing": "Davam edir",
-    "emptyInviteSearchHint": "Axtardığınız şəxsi tapa bilmirsiniz? Ola bilsin ki, onlar profilinin axtarışda tapılmasına icazə verməlidirlər. Parametrlərdə Profili Redaktə Et bölməsini yoxlayın."
+    "emptyInviteSearchHint": "Axtardığınız şəxsi tapa bilmirsiniz? Ola bilsin ki, onlar profilinin axtarışda tapılmasına icazə verməlidirlər. Parametrlərdə Profili Redaktə Et bölməsini yoxlayın.",
+    "activityPreviewLabel": "Fəaliyyətə baxış: ",
+    "participantRowLabel": "{total} iştirakçıdan {joined} nəfər qoşulub",
+    "ongoingPendingLabel": "Başqalarının qoşulması gözlənilir",
+    "joinableLabel": "Qoşula bilər",
+    "inProgressLabel": "Əvvəllər tamamlanıb",
+    "availableLabel": "Fəaliyyət yarat",
+    "rateActivityTitle": "Bu fəaliyyət necə idi?",
+    "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
+    "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
+    "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
+    "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
+    "newActivityBadge": "YENİ"
 }

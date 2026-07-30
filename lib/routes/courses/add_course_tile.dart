@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class AddCourseTile extends StatelessWidget {
   final AddCourseTileContent content;
@@ -23,10 +23,17 @@ class AddCourseTile extends StatelessWidget {
     final theme = Theme.of(context);
     final courseId = content.courseId;
     final members = content.members;
+    final invited = content.invited ?? false;
+    final unreadCoursePingEvent = content.unreadCoursePingEvent;
+    final courseChildrenIds = content.courseChildrenIds;
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
-    final label = members != null
+    // An invited course hides its member/level chips, so the participant count
+    // would announce detail that isn't on screen — lead with the state instead.
+    final label = invited
+        ? '$title, ${L10n.of(context).invited}'
+        : members != null
         ? '$title, ${L10n.of(context).countParticipants(members)}'
         : title;
 
@@ -53,21 +60,13 @@ class AddCourseTile extends StatelessWidget {
                 Row(
                   spacing: 12.0,
                   children: [
-                    ExcludeSemantics(
-                      child: SizedBox(
-                        width: 48.0,
-                        height: 48.0,
-                        child: ImageByUrl(
-                          imageUrl: content.imageUrl,
-                          width: 48.0,
-                          borderRadius: BorderRadius.circular(10.0),
-                          replacement: Avatar(
-                            name: title,
-                            borderRadius: BorderRadius.circular(10.0),
-                            size: 48.0,
-                          ),
-                        ),
-                      ),
+                    CourseAvatar(
+                      avatar: content.imageUrl,
+                      displayname: title,
+                      size: 48.0,
+                      unreadCoursePingEvent: unreadCoursePingEvent,
+                      courseChildrenIds: courseChildrenIds,
+                      invite: invited,
                     ),
                     Expanded(
                       child: Column(
@@ -103,16 +102,30 @@ class AddCourseTile extends StatelessWidget {
                             runSpacing: 8.0,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              if (members != null)
+                              if (invited)
+                                CourseInfoChip(
+                                  icon: Icons.mail,
+                                  text: L10n.of(context).invited,
+                                  fontSize: 12.0,
+                                  iconSize: 12.0,
+                                  highlightColor: AppConfig.goldByTheme(
+                                    context,
+                                  ),
+                                  foregroundColor: AppConfig.onGoldByTheme(
+                                    context,
+                                  ),
+                                ),
+                              if (members != null && !invited)
                                 CourseInfoChip(
                                   icon: Icons.group,
                                   text: '$members',
                                   fontSize: 12.0,
                                   iconSize: 12.0,
                                 ),
-                              if (courseId != null)
+                              if (courseId != null && !invited)
                                 CourseInfoChips(
                                   courseId,
+                                  courseRoomId: content.courseRoomId,
                                   fontSize: 12.0,
                                   iconSize: 12.0,
                                 ),

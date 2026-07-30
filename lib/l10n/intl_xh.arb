@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-27 15:36:06.241789",
+    "@@last_modified": "2026-07-29 12:08:24.760675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Vala indawo yokugcina",
     "activityActions": "Iintshukumo zomsebenzi",
     "ongoing": "Iyaqhubeka",
-    "emptyInviteSearchHint": "Awumfumani omfunayo? Kusenokwenzeka ukuba kufuneka avumele iprofayile yakhe ukuba ifumaneke ekukhangeleni. Jonga Hlela Iprofayile kuseto."
+    "emptyInviteSearchHint": "Awumfumani omfunayo? Kusenokwenzeka ukuba kufuneka avumele iprofayile yakhe ukuba ifumaneke ekukhangeleni. Jonga Hlela Iprofayile kuseto.",
+    "activityPreviewLabel": "Umboniso wangaphambili womsebenzi: ",
+    "participantRowLabel": "{joined} kubathathi-nxaxheba abali-{total} bajoyine",
+    "ongoingPendingLabel": "Kulindwe abanye ukuba bajoyine",
+    "joinableLabel": "Iyakwazi ukujoyinwa",
+    "inProgressLabel": "Kugqitywe ngaphambili",
+    "availableLabel": "Yenza umsebenzi",
+    "rateActivityTitle": "Injani le ngxubusho?",
+    "rateActivityCommentHint": "Yongeza uluvo (onganyanzelekanga)",
+    "rateActivityCommentRejected": "Uluvo lwakho alukwazanga ukuthunyelwa. Zama ukulubhala ngokutsha, okanye ungenise ireyithingi yakho ngaphandle koluvo.",
+    "rateActivityThanks": "Enkosi ngempendulo yakho!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 ireyithingi} other{{count} iireyithingi}})",
+    "newActivityBadge": "ENTSHA"
 }

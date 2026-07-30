@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-27 15:36:02.798287",
+    "@@last_modified": "2026-07-29 12:08:21.617470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2042,5 +2042,17 @@
     "closeArchive": "آرشيف بندول",
     "activityActions": "د فعالیت کړنې",
     "ongoing": "روان",
-    "emptyInviteSearchHint": "هغه څوک نه شئ موندلی چې تاسو یې په لټه کې یاست؟ دوی ممکن اړتیا ولري چې خپل پروفایل په لټون کې وموندل شي. په ترتیباتو کې د پروفایل سمون وګورئ."
+    "emptyInviteSearchHint": "هغه څوک نه شئ موندلی چې تاسو یې په لټه کې یاست؟ دوی ممکن اړتیا ولري چې خپل پروفایل په لټون کې وموندل شي. په ترتیباتو کې د پروفایل سمون وګورئ.",
+    "activityPreviewLabel": "د فعالیت مخکتنه: ",
+    "participantRowLabel": "د {total} ګډون کوونکو څخه {joined} شامل شوي",
+    "ongoingPendingLabel": "د نورو د شاملیدو په تمه",
+    "joinableLabel": "د ګډون وړ",
+    "inProgressLabel": "پخوا بشپړ شوی",
+    "availableLabel": "فعالیت جوړ کړئ",
+    "rateActivityTitle": "دا فعالیت څنګه و؟",
+    "rateActivityCommentHint": "یو نظر اضافه کړئ (اختیاري)",
+    "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
+    "rateActivityThanks": "ستاسو د نظر لپاره مننه!",
+    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بندۍ}})",
+    "newActivityBadge": "نوی"
 }

@@ -19,7 +19,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -258,6 +258,20 @@ class WorkspaceShell extends StatelessWidget {
                             state: state,
                             layout: l,
                             screenPadding: MediaQuery.viewPaddingOf(context),
+                            // Only the keyboard's overlap BEYOND the bottom safe
+                            // area (home indicator) should trim the cavity: once
+                            // the keyboard covers that strip, the SafeArea stops
+                            // reserving it and the bottom-anchored nav layer
+                            // already drops by that much. Trimming by the raw
+                            // inset would double-count it and settle the cavity
+                            // top ~34pt low. Read above the Scaffold, where
+                            // `viewInsets` is still intact (#7754).
+                            keyboardInset:
+                                (MediaQuery.viewInsetsOf(context).bottom -
+                                        MediaQuery.viewPaddingOf(
+                                          context,
+                                        ).bottom)
+                                    .clamp(0.0, double.infinity),
                           ),
                         ),
 
@@ -399,10 +413,15 @@ class _MobileNavLayer extends StatefulWidget {
   final GoRouterState state;
   final _ShellLayout layout;
   final EdgeInsets screenPadding;
+
+  /// Keyboard height, read above the Scaffold and forwarded to
+  /// [MobileNavWidget] (see its `keyboardInset`). #7754.
+  final double keyboardInset;
   const _MobileNavLayer({
     required this.state,
     required this.layout,
     required this.screenPadding,
+    required this.keyboardInset,
   });
 
   @override
@@ -558,7 +577,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = joinedCourses(client, l10n).length;
+      final courseCount = client.sortedCourses(l10n).length;
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
           (courseCount == 0
@@ -660,6 +679,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                 ),
               ),
         cavityKey: cavityKey,
+        // The course scope (`?c=`): a course's height is remembered while this
+        // holds its id and forgotten when it leaves (World / a different
+        // course). Opening a chat or activity from the course keeps it, so the
+        // course reopens where it was left (#7332).
+        cavityContextId: activeSpaceId,
         // A course card opens at peek (the map leads); sections and the
         // activity plan open at half (the plan keeps its pin visible above —
         // the Google Maps UX).
@@ -688,6 +712,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
+        keyboardInset: widget.keyboardInset,
       ),
     );
   }

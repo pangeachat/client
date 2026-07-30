@@ -86,6 +86,7 @@ class ChatDetailsController extends State<ChatDetails>
     _objectivesProvider.loadOutline(
       _questId,
       pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+      courseRoomId: widget.roomId,
     );
     _loadSummaries();
 
@@ -107,6 +108,7 @@ class ChatDetailsController extends State<ChatDetails>
       _objectivesProvider.loadOutline(
         _questId,
         pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
+        courseRoomId: widget.roomId,
       );
       _loadSummaries();
     }

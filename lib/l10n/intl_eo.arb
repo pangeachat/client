@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-27 15:35:55.925614",
+    "@@last_modified": "2026-07-29 12:08:17.342059",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10643,5 +10643,17 @@
     "closeArchive": "Fermi arkivon",
     "activityActions": "Agadoj",
     "ongoing": "Daŭranta",
-    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj."
+    "emptyInviteSearchHint": "Ĉu vi ne trovas tiun, kiun vi serĉas? Eble ili devas permesi, ke ilia profilo estu trovebla en serĉo. Kontrolu Redakti Profilon en Agordoj.",
+    "activityPreviewLabel": "Antaŭvido de agado: ",
+    "participantRowLabel": "{joined} el {total} partoprenantoj aliĝis",
+    "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
+    "joinableLabel": "Aliĝebla",
+    "inProgressLabel": "Antaŭe kompletigita",
+    "availableLabel": "Krei agadon",
+    "rateActivityTitle": "Kiel estis ĉi tiu agado?",
+    "rateActivityCommentHint": "Aldonu komenton (nedeviga)",
+    "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
+    "rateActivityThanks": "Dankon pro via reagoj!",
+    "activityRatingMeterLabel": "{percent}% pozitiva ({count, plural, =1{1 takso} other{{count} taksoj}})",
+    "newActivityBadge": "NOVA"
 }

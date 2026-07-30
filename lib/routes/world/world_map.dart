@@ -485,6 +485,10 @@ class WorldMapController extends State<WorldMap>
             mapContext.coursePlanId,
             pinnedActivitiesByObjective:
                 courseRoom?.teacherMode.pinnedActivitiesByObjective,
+            // Joined-member reads may include the quest owner's private
+            // activities (membership-verified server-side); not joined →
+            // null → public rows only.
+            courseRoomId: courseRoom?.id,
           );
 
           if (!mounted) return;

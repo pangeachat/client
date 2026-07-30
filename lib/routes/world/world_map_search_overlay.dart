@@ -89,116 +89,119 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
       label: l10n.searchActivitiesLabel,
       container: true,
       child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            PangeaSearchBar(
-              controller: _controller,
-              onChanged: widget.updateQuery,
-              labelText: l10n.mapSearchHint,
-              suffixIcon: searching
-                  ? IconButton(
-                      icon: const Icon(Icons.close),
-                      tooltip: l10n.clearSearch,
-                      onPressed: () => widget.updateQuery(''),
-                    )
-                  : null,
-            ),
-            const SizedBox(height: 8),
-            Semantics(
-              label: l10n.activityFilterButtonsLabel,
-              container: true,
-              child: WorldMapFilterBar(
-                filter: widget.filter,
-                onSetLevel: widget.setCefrLevel,
-                onSetPartySize: widget.setPartySize,
-                onSetStatus: widget.setStatus,
-                onReset: widget.onReset,
+        child: FocusTraversalGroup(
+          policy: OrderedTraversalPolicy(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              PangeaSearchBar(
+                controller: _controller,
+                onChanged: widget.updateQuery,
+                labelText: l10n.mapSearchHint,
+                suffixIcon: searching
+                    ? IconButton(
+                        icon: const Icon(Icons.close),
+                        tooltip: l10n.clearSearch,
+                        onPressed: () => widget.updateQuery(''),
+                      )
+                    : null,
               ),
-            ),
-            if (searching) ...[
               const SizedBox(height: 8),
-              Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(12),
-                color: theme.colorScheme.surface,
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 320),
-                  child: widget.results.isEmpty
-                      ? Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            l10n.mapSearchNoResults,
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                        )
-                      : Semantics(
-                          label: l10n.filteredActivitiesLabel,
-                          container: true,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            itemCount: widget.results.length > _maxResults
-                                ? _maxResults
-                                : widget.results.length,
-                            itemBuilder: (context, i) {
-                              final card = widget.results[i];
-                              return ListTile(
-                                dense: true,
-                                leading: const Icon(Icons.star, size: 18),
-                                title: Text(
-                                  card.title,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                subtitle: Text(
-                                  [card.l2, card.cefr]
-                                      .where((s) => s != null && s.isNotEmpty)
-                                      .join(' · '),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                onTap: () => widget.onResultTap(card),
-                              );
-                            },
-                          ),
-                        ),
+              Semantics(
+                label: l10n.activityFilterButtonsLabel,
+                container: true,
+                child: WorldMapFilterBar(
+                  filter: widget.filter,
+                  onSetLevel: widget.setCefrLevel,
+                  onSetPartySize: widget.setPartySize,
+                  onSetStatus: widget.setStatus,
+                  onReset: widget.onReset,
                 ),
               ),
-            ] else if (widget.emptyInView) ...[
-              const SizedBox(height: 8),
-              Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(12),
-                color: theme.colorScheme.surface,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        l10n.mapEmptyInView,
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 8),
-                      // Language is fixed by settings, so the only in-app widen
-                      // lever is broadening the level band to All levels (zoom
-                      // out is the other, via the map controls). Offered only
-                      // when a level filter is actually narrowing the view.
-                      if (widget.filter.cefrFilter.isNotEmpty)
-                        FilledButton.tonalIcon(
-                          icon: const Icon(Icons.filter_alt_off, size: 16),
-                          label: Text(l10n.widenSearch),
-                          onPressed: widget.onWidenSearch,
-                        ),
-                    ],
+              if (searching) ...[
+                const SizedBox(height: 8),
+                Material(
+                  elevation: 4,
+                  borderRadius: BorderRadius.circular(12),
+                  color: theme.colorScheme.surface,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 320),
+                    child: widget.results.isEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Text(
+                              l10n.mapSearchNoResults,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          )
+                        : Semantics(
+                            label: l10n.filteredActivitiesLabel,
+                            container: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              itemCount: widget.results.length > _maxResults
+                                  ? _maxResults
+                                  : widget.results.length,
+                              itemBuilder: (context, i) {
+                                final card = widget.results[i];
+                                return ListTile(
+                                  dense: true,
+                                  leading: const Icon(Icons.star, size: 18),
+                                  title: Text(
+                                    card.title,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  subtitle: Text(
+                                    [card.l2, card.cefr]
+                                        .where((s) => s != null && s.isNotEmpty)
+                                        .join(' · '),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  onTap: () => widget.onResultTap(card),
+                                );
+                              },
+                            ),
+                          ),
                   ),
                 ),
-              ),
+              ] else if (widget.emptyInView) ...[
+                const SizedBox(height: 8),
+                Material(
+                  elevation: 4,
+                  borderRadius: BorderRadius.circular(12),
+                  color: theme.colorScheme.surface,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          l10n.mapEmptyInView,
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        const SizedBox(height: 8),
+                        // Language is fixed by settings, so the only in-app widen
+                        // lever is broadening the level band to All levels (zoom
+                        // out is the other, via the map controls). Offered only
+                        // when a level filter is actually narrowing the view.
+                        if (widget.filter.cefrFilter.isNotEmpty)
+                          FilledButton.tonalIcon(
+                            icon: const Icon(Icons.filter_alt_off, size: 16),
+                            label: Text(l10n.widenSearch),
+                            onPressed: widget.onWidenSearch,
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-27 15:35:58.738450",
+    "@@last_modified": "2026-07-29 12:08:18.824989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2042,5 +2042,17 @@
     "closeArchive": "Փակել արխիվը",
     "activityActions": "Գործողություններ",
     "ongoing": "Ընթացիկ",
-    "emptyInviteSearchHint": "Չե՞ք գտնում նրան, ում փնտրում եք։ Հնարավոր է՝ նրանք պետք է թույլ տան, որ իրենց պրոֆիլը հայտնվի որոնման մեջ։ Ստուգեք «Խմբագրել պրոֆիլը» բաժինը Կարգավորումներում։"
+    "emptyInviteSearchHint": "Չե՞ք գտնում նրան, ում փնտրում եք։ Հնարավոր է՝ նրանք պետք է թույլ տան, որ իրենց պրոֆիլը հայտնվի որոնման մեջ։ Ստուգեք «Խմբագրել պրոֆիլը» բաժինը Կարգավորումներում։",
+    "activityPreviewLabel": "Գործունեության նախադիտում. ",
+    "participantRowLabel": "{total} մասնակիցներից {joined}-ը միացել է",
+    "ongoingPendingLabel": "Սպասում ենք մյուսների միանալուն",
+    "joinableLabel": "Միանալու հնարավորություն կա",
+    "inProgressLabel": "Նախկինում ավարտված",
+    "availableLabel": "Ստեղծել գործունեություն",
+    "rateActivityTitle": "Ինչպե՞ս անցավ այս ակտիվությունը։",
+    "rateActivityCommentHint": "Ավելացնել մեկնաբանություն (ըստ ցանկության)",
+    "rateActivityCommentRejected": "Ձեր մեկնաբանությունը չհաջողվեց հրապարակել։ Փորձեք վերաձևակերպել այն կամ ուղարկեք Ձեր գնահատականն առանց մեկնաբանության։",
+    "rateActivityThanks": "Շնորհակալություն Ձեր կարծիքի համար։",
+    "activityRatingMeterLabel": "{percent}% դրական ({count, plural, =1{1 գնահատական} other{{count} գնահատական}})",
+    "newActivityBadge": "ՆՈՐ"
 }

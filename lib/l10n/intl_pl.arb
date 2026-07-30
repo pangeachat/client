@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-27 15:36:02.245116",
+    "@@last_modified": "2026-07-29 12:08:22.092752",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9777,5 +9777,17 @@
     "closeArchive": "Zamknij archiwum",
     "activityActions": "Działania aktywności",
     "ongoing": "W toku",
-    "emptyInviteSearchHint": "Nie możesz znaleźć osoby, której szukasz? Być może musi ona zezwolić na odnalezienie jej profilu w wyszukiwarce. Sprawdź opcję Edytuj profil w Ustawieniach."
+    "emptyInviteSearchHint": "Nie możesz znaleźć osoby, której szukasz? Być może musi ona zezwolić na odnalezienie jej profilu w wyszukiwarce. Sprawdź opcję Edytuj profil w Ustawieniach.",
+    "activityPreviewLabel": "Podgląd aktywności: ",
+    "participantRowLabel": "{joined} z {total} uczestników dołączyło",
+    "ongoingPendingLabel": "Czekam, aż inni dołączą",
+    "joinableLabel": "Dołączalne",
+    "inProgressLabel": "Wcześniej ukończone",
+    "availableLabel": "Utwórz aktywność",
+    "rateActivityTitle": "Jak oceniasz to ćwiczenie?",
+    "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
+    "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
+    "rateActivityThanks": "Dziękujemy za Twoją opinię!",
+    "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})",
+    "newActivityBadge": "NOWOŚĆ"
 }
