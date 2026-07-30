@@ -156,7 +156,11 @@ class MobileNavWidget extends StatefulWidget {
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
   /// `MobileCourseSheet._expandedBySheet` (#7332), generalized to any section
-  /// or course key and to three rest states instead of two.
+  /// or course key and to three rest states instead of two. A course (peek) key
+  /// is dropped on a genuine close so the course reopens at its peek default
+  /// (#7609; [didUpdateWidget]); a chat covering the course only disposes the
+  /// widget, so that height survives here to be restored on return (#7332).
+  /// Section keys persist for the session (#7510).
   static final Map<String, NavCavityHeight> _heightByKey = {};
 
   @visibleForTesting
@@ -225,6 +229,21 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final keyChanged =
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
+    // Forget a course's height on a GENUINE close — the X, or navigating the
+    // course away (to World, another course, or a section). Those keep the nav
+    // widget MOUNTED and empty/swap the cavity (this callback fires), so the
+    // course's next open falls back to the peek default — the deterministic
+    // entry state (#7609). A chat merely covering the course DISPOSES the widget
+    // instead (no didUpdateWidget runs), so that height survives in the static
+    // map and is restored on return (#7332). Gated to peek cavities: section
+    // sheets keep their memory across close/reopen (#7510). Keyed off the OLD
+    // widget — it identifies the cavity that is leaving.
+    if ((closedNow || keyChanged) &&
+        oldWidget.cavityDefaultsToPeek &&
+        oldWidget.cavityKey != null) {
+      MobileNavWidget._heightByKey.remove(oldWidget.cavityKey);
+    }
+
     if (closedNow) {
       setState(() {
         _restState = null;
@@ -248,10 +267,13 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   };
 
   NavCavityHeight _restoreHeight() {
-    // A peek cavity (course card) always opens at its default peek — a
-    // deterministic entry state, not the height it was left at (#7609). The
-    // height memory exists for SECTION sheets (#7510) and stays theirs.
-    if (widget.cavityDefaultsToPeek) return _defaultHeight();
+    // Restore the height this cavity was left at. For a course (peek) cavity this
+    // is what bridges a chat opening over it and closing: the widget is DISPOSED
+    // then freshly mounted, and the static [_heightByKey] is the only survivor,
+    // so the course reopens at the size the learner left it (#7332). A genuine
+    // close FORGETS the entry ([didUpdateWidget]), so a fresh open with no stored
+    // height falls back to the peek default — the deterministic entry state
+    // (#7609). Section sheets read the same memory (#7510).
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -262,17 +284,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
-    // A peek cavity never reads the memory ([_restoreHeight]) — it always
-    // reopens at peek (#7609) — so don't write it either.
-    if (widget.cavityDefaultsToPeek) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
     // preference: collapsed renders 0px there (no handle left to grab), so
     // persisting it would make every reopen arrive already-dismissed and
     // stuck (#7510). The sheet still collapses now; the memory just keeps
-    // the last real height for the reopen.
-    if (height == NavCavityHeight.collapsed) return;
+    // the last real height for the reopen. A peek cavity's collapsed IS a
+    // visible, draggable rest height (the 128px peek), so it is remembered
+    // like any other — dragging a course down to peek and returning from a
+    // chat must restore the peek, not a stale expanded height (#7332).
+    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
+      return;
+    }
     MobileNavWidget._heightByKey[key] = height;
   }
 

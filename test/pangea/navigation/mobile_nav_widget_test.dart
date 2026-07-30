@@ -230,7 +230,7 @@ void main() {
     });
 
     testWidgets(
-      'a course cavity reopens at peek, not the height it was left at (#7609)',
+      'a course covered by a chat and reopened restores its height (#7332)',
       (tester) async {
         await pumpNav(
           tester,
@@ -241,14 +241,50 @@ void main() {
         );
         final peek = cavityHeightOf(tester);
 
-        // Expand to full (tap-the-body, #7609), then leave.
+        // Expand to full (tap-the-body, #7609).
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        final expanded = cavityHeightOf(tester);
+        expect(expanded, greaterThan(peek));
+
+        // A chat opening over the course DISPOSES the nav widget (the shell
+        // drops it under a full-screen focus); closing the chat mounts it fresh.
+        // The course token never left the URL — it was only covered — so it must
+        // reopen at the height the learner left it, not the peek (#7332).
+        await unmountNav(tester);
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
+      },
+    );
+
+    testWidgets(
+      'a course genuinely closed reopens at peek, not its last height (#7609)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        // Expand to full, then CLOSE the course in place — its token is dropped
+        // (the X / navigating away), so the still-mounted widget rebuilds with no
+        // cavity. Unlike a covering chat, this forgets the height (#7609).
         await tester.tap(find.text('Course card'));
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), greaterThan(peek));
-        await unmountNav(tester);
+        await pumpNav(tester, activeSection: AppSection.world);
 
-        // Reopening the same course arrives at the default peek — a
-        // deterministic entry state; the height memory is section sheets'.
+        // Reopening the same course arrives at the default peek — the
+        // deterministic entry state; the expanded height was forgotten on close.
         await pumpNav(
           tester,
           activeSection: AppSection.courses,
