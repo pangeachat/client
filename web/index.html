@@ -230,25 +230,39 @@
   </script>
 
   <!-- #Pangea -->
-  <!-- Android "Get the app" banner. There is deliberately NO automatic
-       store/scheme bounce anywhere: modern mobile browsers block
-       JS-initiated custom-scheme navigations without a user tap (and can
-       swallow the queued store redirect with them), so the old
-       `pangea://` + timer pattern failed silently (#7830). Instead, install
-       prompts are tappable: iOS gets the native Smart App Banner (the meta
-       in <head>); Android gets this small dismissible bar on BARE-ROOT
-       visits only — a deep path is an inbound link and the web app is its
-       documented fallback (joining-courses.instructions.md). -->
+  <!-- Android "Open in app" banner. There is deliberately NO automatic
+       store/scheme bounce from the page: browsers block JS navigations to
+       app schemes (including intent://) without a user tap, so the old
+       `pangea://` + timer pattern failed silently (#7830). The automatic
+       leg is OS-level Android App Links instead (AndroidManifest, #8031):
+       links tapped OUTSIDE the browser open the installed app directly.
+       This bar covers browser landings: the tap is an intent:// URL that
+       opens the installed app at the current route and falls back to the
+       Play Store natively in Chromium browsers; non-Chromium (Firefox)
+       gets a plain Play Store link. Shown on every path — the tap carries
+       the route, so a deep link no longer costs its payload
+       (joining-courses.instructions.md, Deep Linking). iOS gets the native
+       Smart App Banner (the meta in <head>). -->
   <script>
     (function () {
       const ua = navigator.userAgent || '';
       if (!/android/i.test(ua)) return;
-      if (window.location.pathname !== '/') return;
       const KEY = 'pangea-play-banner-dismissed-at';
       try {
         const dismissedAt = parseInt(localStorage.getItem(KEY) || '0', 10);
         if (Date.now() - dismissedAt < 14 * 24 * 3600 * 1000) return;
       } catch (e) { /* storage unavailable: just show the banner */ }
+
+      const playUrl =
+        'https://play.google.com/store/apps/details?id=com.talktolearn.chat';
+      // intent:// is a Chromium-ism; Firefox et al get the store link.
+      const isChromium = /chrome\/\d/i.test(ua);
+      const href = isChromium
+        ? 'intent://' + window.location.host + window.location.pathname +
+          window.location.search + '#Intent;scheme=https;' +
+          'package=com.talktolearn.chat;S.browser_fallback_url=' +
+          encodeURIComponent(playUrl) + ';end'
+        : playUrl;
 
       const bar = document.createElement('div');
       bar.setAttribute('style',
@@ -258,11 +272,11 @@
         'box-shadow:0 1px 4px rgba(0,0,0,.3);');
       bar.innerHTML =
         '<span style="flex:1">Pangea Chat is better in the app</span>' +
-        '<a href="https://play.google.com/store/apps/details?id=com.talktolearn.chat"' +
-        ' style="background:#7761d6;color:#fff;text-decoration:none;' +
-        'padding:8px 14px;border-radius:20px;font-weight:600">Get the app</a>' +
+        '<a style="background:#7761d6;color:#fff;text-decoration:none;' +
+        'padding:8px 14px;border-radius:20px;font-weight:600">Open in app</a>' +
         '<button aria-label="Dismiss" style="background:none;border:none;' +
         'color:#fff;font-size:18px;padding:4px 8px;cursor:pointer">×</button>';
+      bar.querySelector('a').setAttribute('href', href);
       bar.querySelector('button').addEventListener('click', function () {
         try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
         bar.remove();
