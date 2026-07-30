@@ -99,6 +99,31 @@ ActivityStarLevel? starLevelForCard(
   return starLevelFor(allRoles.where(roleDone).toSet(), allRoles);
 }
 
+/// Whether one of the learner's rooms proves they have **finished** an
+/// activity — the per-room gate behind
+/// [WorldMapClientExtension.hasAnyFinishedActivitySession], and so behind the
+/// `multi_person_first_map` new-learner condition (#7999).
+///
+/// Membership join, not invite: an unaccepted invite is not a prior activity
+/// (an invited room's stripped state carries no role assignments at all).
+///
+/// Finished means the learner's OWN role in the session is finished — they
+/// ended it, whether or not they collected every star. [ownRoleArchived] is
+/// checked too because "Continue" ([Room.continueActivity]) clears
+/// `finished_at` to reopen a done session, while the auto-save's `archived_at`
+/// stays: the archive is the durable record that they did finish it once, so
+/// reopening a finished activity can't drop them back to new-learner and
+/// re-sink every 3+ role pin.
+bool countsAsFinishedActivitySession({
+  required String? activityId,
+  required Membership membership,
+  required bool ownRoleFinished,
+  required bool ownRoleArchived,
+}) =>
+    activityId != null &&
+    membership == Membership.join &&
+    (ownRoleFinished || ownRoleArchived);
+
 extension WorldMapClientExtension on Client {
   /// The learner's completed role-ids per activity across their joined sessions,
   /// built in ONE pass over `rooms` — the precomputed source for [starLevelFor]
@@ -226,14 +251,20 @@ extension WorldMapClientExtension on Client {
   /// and the activity start page share one definition.
   List<Room> get joinedCourseRooms => joinedCourseSpaces;
 
-  /// True once the learner is in **any** activity-session room — i.e. they have
-  /// started, joined, or finished at least one activity (every such path leaves
-  /// them a member of a `p.activity.session:<id>` room). Its negation, "no first
-  /// activity yet," is the new-learner condition for the multi-person
-  /// deprioritize (#7435). Cheap: one pass over `client.rooms`.
-  /// Membership join, not invite: an unaccepted invite is not a prior activity.
-  bool get hasAnyActivitySession =>
-      rooms.any((r) => r.activityId != null && r.membership == Membership.join);
+  /// True once the learner has **finished** at least one activity. Its negation,
+  /// "no finished activity yet," is the new-learner condition for the
+  /// multi-person deprioritize (#7435, narrowed by #7999 — the term used to
+  /// clear on merely *being in* a session room, so a learner who opened one
+  /// activity and went back to exploring immediately saw unstartable 3+ role
+  /// pins). Cheap: one pass over `client.rooms`.
+  bool get hasAnyFinishedActivitySession => rooms.any(
+    (r) => countsAsFinishedActivitySession(
+      activityId: r.activityId,
+      membership: r.membership,
+      ownRoleFinished: r.hasCompletedRole,
+      ownRoleArchived: r.hasArchivedActivity,
+    ),
+  );
 
   Map<String, MapCompletionFilter> get activityCompletionStatuses {
     final facts = <ActivityCompletionFacts>[];

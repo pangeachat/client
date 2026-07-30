@@ -260,10 +260,11 @@ const double kOngoingActiveWeight = 2.4;
 const double kOngoingPendingWeight = 1.6;
 
 /// True when this pin should take the `multi_person_first_map` penalty: the
-/// learner has no prior activity ([isNewLearner]), the activity needs **3+ roles**
-/// (unstartable solo — the bot fills exactly one), and it is **not** itself a live
-/// session (a joinable/ongoing 3+ session has humans present, so the rationale
-/// does not apply). See world-map.instructions.md (#7435).
+/// learner has not finished an activity yet ([isNewLearner] — #7999), the
+/// activity needs **3+ roles** (unstartable solo — the bot fills exactly one),
+/// and it is **not** itself a live session (a joinable/ongoing 3+ session has
+/// humans present, so the rationale does not apply). See
+/// world-map.instructions.md (#7435).
 bool isMultiPersonFirstMap({
   required int? roleCount,
   required bool isNewLearner,
