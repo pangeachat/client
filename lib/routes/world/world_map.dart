@@ -368,11 +368,14 @@ class WorldMapController extends State<WorldMap>
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
-  /// The learner has **no first activity yet** (never started, joined, or
-  /// finished one) — the condition under which the ranking deprioritizes 3+ role
-  /// activities (#7435). Cheap read over `client.rooms`, once per (debounced)
-  /// re-rank. Null client → false (no penalty).
-  bool get isNewLearner => _client?.hasAnyActivitySession == false;
+  /// The learner has **no finished activity yet** — the condition under which
+  /// the ranking deprioritizes 3+ role activities (#7435). Starting or joining
+  /// one is deliberately not enough (#7999): a learner who opens an activity and
+  /// goes back to exploring the map hasn't yet learned what activities are, and
+  /// would otherwise be shown 3+ role pins they can't fill. Cheap read over
+  /// `client.rooms`, once per (debounced) re-rank. Null client → false (no
+  /// penalty).
+  bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
   void _onPlanHydrate() {
     // A plan landing from CMS fires no room sync, so the sync-driven recompute
