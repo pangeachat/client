@@ -38,13 +38,15 @@ The screen chooses between two layouts from the window's **shape**, not the devi
 | | Narrow (ratio above 1.75) | Wide (ratio 1.75 or below) |
 |---|---|---|
 | Slide crop | Tall | Wide, without padding |
-| Slide width | Full window width | Capped at 600 |
+| Slide width | Full window width | Capped at 840 |
 | Slide height | Width times 1.25 | Two thirds of the space below the header |
 | Brand header | None — the first slide carries the name | Pangea logo at 48 beside the wordmark |
 | Headline | Over the artwork | Below the artwork |
 | Fallback logo when an image fails | 128 | 256 |
 
 One slide is always full-bleed across the carousel; slides never peek in from the edges, so a partly visible neighbour cannot be mistaken for content.
+
+The wide cap of 840 is chosen rather than inherited. It matches the point at which [`FluffyThemes`](../../lib/config/themes.dart) considers a window wide enough for side-by-side panes, so the screen changes character at the same width as the rest of the app. The narrower `MaxWidthBody` default described in [layout.instructions.md](layout.instructions.md) is not used here: that value is a reading measure, sized so a line of prose stays comfortable to read, and a slide is artwork rather than text.
 
 Spacing below is in logical pixels, as currently built. The three stacked gaps of 24 between carousel, dots and buttons are what keep the dots reading as a group with the carousel rather than with the buttons.
 
@@ -93,6 +95,8 @@ The version suffix means a new set is added alongside the one it replaces rather
 
 **Spell the crop and version tokens identically across a whole set.** Bucket keys are case-sensitive and the app builds each filename from one rule, so a set uploaded half as `_V5` and half as `_v5`, or half as `ratio2x1` and half as `ratio2x1_NoPadding`, cannot be addressed at all. The half that does not match the rule returns a not-found and falls back to the Pangea logo, which reads as a loading failure rather than a naming mistake.
 
+The client composes the older `ratio2x1_NoPadding` name and no version token at all, so it does not yet request the files described here. That switch is tracked as part of [#7415](https://github.com/pangeachat/client/issues/7415) and completes with it.
+
 **Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older artwork. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
 
 ### Slide inventory
@@ -101,12 +105,12 @@ A slide is two things kept in separate places: **artwork in the bucket, headline
 
 | # | Headline in code today | V5 headline | V5 artwork |
 |---|---|---|---|
-| 1 | Learn a language while texting your friends! | none — carried in the artwork | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio2x1_v5.png) |
-| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio2x1_v5.png) |
-| 3 | Join international learning communities, or start your own! | Conversation from Day One | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio2x1_v5.png) |
-| 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio2x1_v5.png) |
-| 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio2x1_v5.png) |
-| 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio2x1_v5.png) |
+| 1 | Learn a language while texting your friends! | none — carried in the artwork | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio2x1_V5.png) |
+| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio2x1_V5.png) |
+| 3 | Join international learning communities, or start your own! | Conversation from Day One | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio2x1_V5.png) |
+| 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio2x1_V5.png) |
+| 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio2x1_V5.png) |
+| 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio2x1_V5.png) |
 
 The V5 set is 800 x 1000 narrow and 1200 x 600 wide. Both land at roughly twice their on-screen size, which is what keeps the product UI inside the artwork legible rather than soft — the complaint that opened [#7415](https://github.com/pangeachat/client/issues/7415).
 
