@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/home/**"
-description: "Design for the pre-authentication experience — the intro carousel over the map backdrop, its responsive layout and type, the slide assets, and the choice between signup and login."
+description: "Design for the pre-authentication experience — the intro carousel, its narrow-only map backdrop, responsive layout and type, the slide assets, and the choice between signup and login."
 ---
 
 # Signup and Login
@@ -21,13 +21,15 @@ See also: [returning-user-detection.instructions.md](returning-user-detection.in
 
 ### Map backdrop
 
-The screen sits on the world map rather than on a flat surface colour, so the first thing a new user sees is the surface they will land on after onboarding. The backdrop is a static image rather than a live tile: this screen has no session, and spending tile requests on decoration would draw down the budget described in [world-map-tiles.instructions.md](world-map-tiles.instructions.md) for people who have not signed up yet.
+**The map backdrop belongs to the narrow layout only.** There, the screen sits on the world map rather than a flat surface colour, so the first thing a new user sees is the surface they will land on after onboarding. The wide layout keeps the plain surface background it uses today: the wide crop already carries its own full-bleed artwork, and a map behind it would compete rather than frame.
 
-The backdrop also carries the leftover space on wide windows. Because a slide is capped rather than stretched, there is always area around it, and that area reads as part of the product instead of as an empty margin.
+One consequence to keep in view: the wide layout's empty margin is therefore still empty. Because a slide is capped rather than stretched, there is always area around it on a broad window, and the backdrop is not what fills it. Anything done about that has to come from the cap or the crop, not from this image.
 
-There are **two backdrop files, not one** — [`world_map_background.png`](../../assets/pangea/world_map_background.png) for light and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) for dark — and both ship on every platform, mobile included. The screen picks one by theme brightness. A single light image would glare behind dark-mode UI, and it would defeat the headline outline described under Slide text, which takes the surface colour on the assumption that the backdrop moves with the theme.
+The backdrop is a static image rather than a live tile. This screen has no session, and spending tile requests on decoration would draw down the budget described in [world-map-tiles.instructions.md](world-map-tiles.instructions.md) for people who have not signed up yet.
 
-Unlike the slides, these two are bundled with the app rather than fetched. They do not change when features change, so the tradeoff runs the other way: the backdrop is worth pinning to the release to get an instant, offline-safe first screen, and it keeps signed-out visitors from spending tile requests on decoration.
+There are **two backdrop files, not one** — [`world_map_background.png`](../../assets/pangea/world_map_background.png) for light and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) for dark — and the narrow layout picks one by theme brightness. A single light image would glare behind dark-mode UI, and it would defeat the headline outline described under Slide text, which takes the surface colour on the assumption that the backdrop moves with the theme.
+
+Unlike the slides, both are bundled with the app rather than fetched. They do not change when features change, so the tradeoff runs the other way: the backdrop is worth pinning to the release to get an instant, offline-safe first screen, and it keeps signed-out visitors from spending tile requests on decoration.
 
 ### Layout and responsiveness
 
@@ -75,7 +77,7 @@ Each headline is localized text drawn over the artwork rather than baked into it
 
 The same size and weight apply in both layouts. A headline that changes weight with window shape reads as a different voice for the same sentence, which is why the narrow and wide columns of the tables above differ on position but not on type.
 
-Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. The outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
+Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. In the narrow layout the outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
 
 Headlines do not scale with the operating system's text-size setting, because the strip reserved for them is fixed and overflowing text would collide with the artwork and the buttons. This is a deliberate accessibility trade-off, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
 
@@ -93,20 +95,20 @@ The version suffix means a new set is added alongside the one it replaces rather
 
 ### Slide inventory
 
-A slide is two things kept in separate places: **artwork in the bucket, headline in the code.** Artwork is swapped by uploading a file. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw freely.
+A slide is two things kept in separate places: **artwork in the bucket, headline in the code.** Carousel slides are images uploaded to AWS S3. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw freely.
 
-| # | Headline | String key | Artwork |
+| # | Headline in code today | V5 headline | Artwork |
 |---|---|---|---|
-| 1 | Learn a language while texting your friends! | `learnLanguageWhileTexting` | `Carousel_1_ratio4x5_V5.png`, `Carousel_1_ratio2x1_NoPadding_V5.png` |
-| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | `writeAndSpeakWorryFree` | `Carousel_2_…` |
-| 3 | Join international learning communities, or start your own! | `joinLearningCommunities` | `Carousel_3_…` |
-| 4 | Play conversation games with the bot, classmates, and new friends! | `playConversationGames` | `Carousel_4_…` |
-| 5 | Jump into conversation from Day One with AI writing tools! | `jumpIntoConversation` | `Carousel_5_…` |
-| 6 | Play practice games personalized to your vocabulary and grammar needs! | `playPersonalizedGames` | `Carousel_6_…` |
+| 1 | Learn a language while texting your friends! | none — carried in the artwork | `Carousel_1_ratio4x5_V5.png`, `Carousel_1_ratio2x1_NoPadding_V5.png` |
+| 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | `Carousel_2_…` |
+| 3 | Join international learning communities, or start your own! | Conversation from Day One | `Carousel_3_…` |
+| 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | `Carousel_4_…` |
+| 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | `Carousel_5_…` |
+| 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | `Carousel_6_…` |
 
 Slide number in the filename is the position in this table, so artwork and headline stay paired by number alone. Reordering the carousel therefore means renaming files as well as reordering the strings — cheaper to change what a slide says than where it sits.
 
-The headlines above are the strings in the code today. The V5 comps rewrite all six into much shorter lines, which is a copy change, not an art change, and carries the release and translation cost described above. See Design refer in Figma.
+Two things the V5 column changes beyond wording. **Slide 1 has no headline at all** — it opens on the brand line set inside the artwork, so the layout must allow an empty headline rather than assume six. And **slides 3 and 4 swap subjects** against the current order, so the pairing above is the mapping to build to, not a rename of the existing strings. Both are copy and ordering changes rather than art changes, and both carry the release and translation cost described above.
 
 For how a headline is set and how it behaves as the window changes, see Slide text and Layout and responsiveness.
 
@@ -137,7 +139,7 @@ The comps cover the narrow layout only. The wide layout follows the rules in the
 
 The headline in the comps is drawn in a lighter purple than the role chosen above. Where the two disagree, the role wins — it keeps the screen inside one derived palette, and it follows the theme into dark mode on its own.
 
-The comps also shorten all six headlines. Those are the intended wording; the strings listed under Slide inventory are what the code says today.
+The comps also rewrite the headlines — shorter on slides 2 to 6, and absent on slide 1. Those are the intended wording; the strings listed under Slide inventory are what the code says today.
 
 ## Choosing a method
 
