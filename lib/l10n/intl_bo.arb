@@ -7089,15 +7089,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ndae bɔkɔɔ a wopɛ no, wo nsɛm a wopɛ sɛ woyɛ no bɛyɛ a, ɛrenyɛ.",
     "practiceGrammar": "Bɔ mmara",
     "notEnoughToPractice": "Sɛ wopɛ sɛ woyɛ bɔ mmara a, fa nsɛm pii to mu",
     "constructUseCorGCDesc": "Nokware mmara kategorie bɔ mmara",
     "constructUseIncGCDesc": "Nnokwa mmara kategorie bɔ mmara",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

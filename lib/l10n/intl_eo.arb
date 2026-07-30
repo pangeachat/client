@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Via praktika sesio progreso ne estos konservita.",
     "practiceGrammar": "Praktiku gramatikon",
     "notEnoughToPractice": "Sendu pli da mesaĝoj por malŝlosi praktikon",
     "constructUseCorGCDesc": "Praktiko de ĝusta gramatika kategorio",
     "constructUseIncGCDesc": "Praktiko de malĝusta gramatika kategorio",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -7840,15 +7840,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Postęp Twojej sesji ćwiczeń nie zostanie zapisany.",
     "practiceGrammar": "Ćwicz gramatykę",
     "notEnoughToPractice": "Wyślij więcej wiadomości, aby odblokować ćwiczenia",
     "constructUseCorGCDesc": "Ćwiczenie poprawnej kategorii gramatycznej",
     "constructUseIncGCDesc": "Ćwiczenie niepoprawnej kategorii gramatycznej",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Uw voortgang in de oefensessie wordt niet opgeslagen.",
     "practiceGrammar": "Oefen grammatica",
     "notEnoughToPractice": "Stuur meer berichten om de oefening te ontgrendelen",
     "constructUseCorGCDesc": "Oefening in de juiste grammaticacategorie",
     "constructUseIncGCDesc": "Oefening in de onjuiste grammaticacategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

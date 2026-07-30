@@ -7933,15 +7933,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh.",
     "practiceGrammar": "Cleachtaigh gramadach",
     "notEnoughToPractice": "Seol níos mó teachtaireachtaí chun cleachtadh a dhíghlasáil",
     "constructUseCorGCDesc": "Cleachtadh catagóir gramadaí ceart",
     "constructUseIncGCDesc": "Cleachtadh catagóir gramadaí mícheart",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

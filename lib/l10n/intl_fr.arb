@@ -8116,15 +8116,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Les progrès de votre session de pratique ne seront pas enregistrés.",
     "practiceGrammar": "Pratiquer la grammaire",
     "notEnoughToPractice": "Envoyez plus de messages pour débloquer la pratique",
     "constructUseCorGCDesc": "Pratique de la catégorie de grammaire correcte",
     "constructUseIncGCDesc": "Pratique de la catégorie de grammaire incorrecte",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

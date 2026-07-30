@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "O progreso da túa sesión de práctica non se gardará.",
     "practiceGrammar": "Practicar gramática",
     "notEnoughToPractice": "Envía máis mensaxes para desbloquear a práctica",
     "constructUseCorGCDesc": "Práctica da categoría de gramática correcta",
     "constructUseIncGCDesc": "Práctica da categoría de gramática incorrecta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Napredek vaše seje vadbe ne bo shranjen.",
     "practiceGrammar": "Vadite slovnico",
     "notEnoughToPractice": "Pošljite več sporočil, da odklenete vadbo",
     "constructUseCorGCDesc": "Vadba pravilne slovnice",
     "constructUseIncGCDesc": "Vadba nepravilne slovnice",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

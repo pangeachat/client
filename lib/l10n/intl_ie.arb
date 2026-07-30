@@ -8378,15 +8378,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Tua progressio sessionis exercitationis non servabitur.",
     "practiceGrammar": "Exercitia grammatica",
     "notEnoughToPractice": "Mitte plura nuntia ad exercitium aperiendum",
     "constructUseCorGCDesc": "Correcta grammaticae categoriae exercitium",
     "constructUseIncGCDesc": "Incorrecta grammaticae categoriae exercitium",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

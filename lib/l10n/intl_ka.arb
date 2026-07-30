@@ -8652,15 +8652,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "თქვენი პრაქტიკის სესიის პროგრესი არ დაიშლება.",
     "practiceGrammar": "პრაქტიკა გრამატიკა",
     "notEnoughToPractice": "პრაქტიკის გასახსნელად მეტი შეტყობინება გამოაგზავნეთ",
     "constructUseCorGCDesc": "სწორი გრამატიკული კატეგორიის პრაქტიკა",
     "constructUseIncGCDesc": "არასწორი გრამატიკული კატეგორიის პრაქტიკა",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

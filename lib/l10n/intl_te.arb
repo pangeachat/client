@@ -8702,15 +8702,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "మీ ప్రాక్టీస్ సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "practiceGrammar": "వ్యాకరణాన్ని అభ్యాసం చేయండి",
     "notEnoughToPractice": "ప్రాక్టీస్‌ను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి",
     "constructUseCorGCDesc": "సరైన వ్యాకరణ శ్రేణి ప్రాక్టీస్",
     "constructUseIncGCDesc": "తప్పు వ్యాకరణ శ్రేణి ప్రాక్టీస్",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

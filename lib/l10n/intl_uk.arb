@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогрес у сесії практики не буде збережено.",
     "practiceGrammar": "Практика граматики",
     "notEnoughToPractice": "Надішліть більше повідомлень, щоб розблокувати практику",
     "constructUseCorGCDesc": "Практика правильної граматичної категорії",
     "constructUseIncGCDesc": "Практика неправильної граматичної категорії",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

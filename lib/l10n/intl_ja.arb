@@ -8515,15 +8515,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "あなたの練習セッションの進捗は保存されません。",
     "practiceGrammar": "文法を練習する",
     "notEnoughToPractice": "練習を解除するにはもっとメッセージを送信してください",
     "constructUseCorGCDesc": "正しい文法カテゴリの練習",
     "constructUseIncGCDesc": "間違った文法カテゴリの練習",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

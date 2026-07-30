@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
     "practiceGrammar": "Gramatika praktikatu",
     "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
     "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
     "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

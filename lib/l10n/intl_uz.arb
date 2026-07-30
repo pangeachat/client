@@ -3864,7 +3864,6 @@
     "voice": "Ovoz",
     "youLeftTheChat": "🚪 Siz chatdan chiqdingiz",
     "webDownloadPermissionMessage": "Agar brauzeringiz yuklab olishlarni bloklasa, iltimos, bu sayt uchun yuklab olishlarni yoqing.",
-    "exitPractice": "Amaliyot sessiyangizning rivojlanishi saqlanmaydi.",
     "practiceGrammar": "Grammatika amaliyoti",
     "notEnoughToPractice": "Amaliy qilish uchun ko'proq xabar yuboring",
     "constructUseCorGCDesc": "To'g'ri grammatikaga oid amaliyot",
@@ -8008,10 +8007,6 @@
         "placeholders": {}
     },
     "@webDownloadPermissionMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@exitPractice": {
         "type": "String",
         "placeholders": {}
     },

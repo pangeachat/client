@@ -8666,15 +8666,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
     "practiceGrammar": "אימון דקדוק",
     "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
     "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
     "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

@@ -7873,15 +7873,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "El teu progrés de la sessió de pràctica no es desarà.",
     "practiceGrammar": "Practica gramàtica",
     "notEnoughToPractice": "Envia més missatges per desbloquejar la pràctica",
     "constructUseCorGCDesc": "Pràctica de la categoria de gramàtica correcta",
     "constructUseIncGCDesc": "Pràctica de la categoria de gramàtica incorrecta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

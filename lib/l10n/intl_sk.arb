@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pokrok vo vašej cvičebnej relácii nebude uložený.",
     "practiceGrammar": "Cvičiť gramatiku",
     "notEnoughToPractice": "Odošlite viac správ na odomknutie cvičenia",
     "constructUseCorGCDesc": "Cvičenie správnej gramatickej kategórie",
     "constructUseIncGCDesc": "Cvičenie nesprávnej gramatickej kategórie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

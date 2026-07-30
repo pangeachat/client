@@ -8672,15 +8672,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Din praksis session fremskridt vil ikke blive gemt.",
     "practiceGrammar": "Øv grammatik",
     "notEnoughToPractice": "Send flere beskeder for at låse op for praksis",
     "constructUseCorGCDesc": "Korrekt grammatik kategori praksis",
     "constructUseIncGCDesc": "Ukorrrekt grammatik kategori praksis",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

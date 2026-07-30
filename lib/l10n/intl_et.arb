@@ -7937,15 +7937,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Teie harjut seansi edusamme ei salvestata.",
     "practiceGrammar": "Harjuta grammatikat",
     "notEnoughToPractice": "Saada rohkem sõnumeid, et harjutust avada",
     "constructUseCorGCDesc": "Õige grammatika kategooria harjutus",
     "constructUseIncGCDesc": "Vale grammatika kategooria harjutus",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

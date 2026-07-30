@@ -8047,15 +8047,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.",
     "practiceGrammar": "Dil bilgisi pratiği yap",
     "notEnoughToPractice": "Pratik yapmak için daha fazla mesaj gönderin",
     "constructUseCorGCDesc": "Doğru dil bilgisi kategorisi pratiği",
     "constructUseIncGCDesc": "Yanlış dil bilgisi kategorisi pratiği",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

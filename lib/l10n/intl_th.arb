@@ -8378,15 +8378,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ความก้าวหน้าของการฝึกฝนของคุณจะไม่ถูกบันทึก",
     "practiceGrammar": "ฝึกไวยากรณ์",
     "notEnoughToPractice": "ส่งข้อความเพิ่มเติมเพื่อปลดล็อกการฝึกฝน",
     "constructUseCorGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ถูกต้อง",
     "constructUseIncGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ไม่ถูกต้อง",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

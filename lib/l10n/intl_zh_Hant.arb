@@ -7847,15 +7847,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "您的練習進度將不會被保存。",
     "practiceGrammar": "練習文法",
     "notEnoughToPractice": "發送更多訊息以解鎖練習",
     "constructUseCorGCDesc": "正確文法類別練習",
     "constructUseIncGCDesc": "不正確文法類別練習",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

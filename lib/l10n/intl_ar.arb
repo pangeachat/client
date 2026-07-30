@@ -8056,15 +8056,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "لن يتم حفظ تقدم جلسة التدريب الخاصة بك.",
     "practiceGrammar": "تدرب على القواعد",
     "notEnoughToPractice": "أرسل المزيد من الرسائل لفتح التدريب",
     "constructUseCorGCDesc": "تدريب على فئة القواعد الصحيحة",
     "constructUseIncGCDesc": "تدريب على فئة القواعد غير الصحيحة",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}

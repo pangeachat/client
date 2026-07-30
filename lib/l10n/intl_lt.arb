@@ -8527,15 +8527,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Jūsų praktikos sesijos pažanga nebus išsaugota.",
     "practiceGrammar": "Praktikuoti gramatiką",
     "notEnoughToPractice": "Siųskite daugiau žinučių, kad atrakintumėte praktiką",
     "constructUseCorGCDesc": "Teisingos gramatikos kategorijos praktika",
     "constructUseIncGCDesc": "Neteisingos gramatikos kategorijos praktika",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
