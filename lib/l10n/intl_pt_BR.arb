@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:07.396971",
+    "@@last_modified": "2026-07-29 12:08:25.582003",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9698,5 +9698,11 @@
     "ongoingPendingLabel": "Aguardando outros entrarem",
     "joinableLabel": "Entrar",
     "inProgressLabel": "Concluído anteriormente",
-    "availableLabel": "Criar atividade"
+    "availableLabel": "Criar atividade",
+    "rateActivityTitle": "O que você achou desta atividade?",
+    "rateActivityCommentHint": "Adicione um comentário (opcional)",
+    "rateActivityCommentRejected": "Não foi possível postar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
+    "rateActivityThanks": "Obrigado(a) pelo seu feedback!",
+    "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
+    "newActivityBadge": "NOVO"
 }

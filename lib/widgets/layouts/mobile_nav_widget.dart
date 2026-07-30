@@ -680,6 +680,20 @@ class _CourseShortcutButton extends StatelessWidget {
       child: Semantics(
         // Announce the active-course state — the border alone is visual-only.
         selected: selected,
+        // `container: true` forces the shortcut into its OWN standalone
+        // semantics node instead of merging its tap + selected state up into
+        // the rail's "Navigation options" node. The other three rail items are
+        // IconButtons, which already stand alone; this custom InkWell did not,
+        // so on Flutter web with the accessibility layer active (Firefox, and
+        // release web builds generally) its tap dispatched to the merged rail
+        // node and fell through to the live map behind — the course could be
+        // collapsed but never re-expanded by tapping the shortcut (#7944; the
+        // sibling web-semantics tap loss of #7927 / #7803). `label` gives the
+        // now-standalone node its accessible name (the course), which it
+        // previously borrowed from the merged rail node.
+        container: true,
+        button: true,
+        label: label,
         child: InkWell(
           borderRadius: BorderRadius.circular(99),
           onTap: onTap,

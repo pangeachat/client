@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-29 10:04:00.724310",
+    "@@last_modified": "2026-07-29 12:08:18.258009",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10134,5 +10134,11 @@
     "ongoingPendingLabel": "Čekanje da se drugi pridruže",
     "joinableLabel": "Pridruživo",
     "inProgressLabel": "Prethodno dovršeno",
-    "availableLabel": "Stvori aktivnost"
+    "availableLabel": "Stvori aktivnost",
+    "rateActivityTitle": "Kako je bilo u ovoj aktivnosti?",
+    "rateActivityCommentHint": "Dodajte komentar (opcionalno)",
+    "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulirati ili pošaljite svoju ocjenu bez komentara.",
+    "rateActivityThanks": "Hvala na povratnim informacijama!",
+    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
+    "newActivityBadge": "NOVO"
 }

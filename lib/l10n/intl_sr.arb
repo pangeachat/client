@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:04:09.305107",
+    "@@last_modified": "2026-07-29 12:08:27.862136",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10653,5 +10653,11 @@
     "ongoingPendingLabel": "Čekanje da se drugi pridruže",
     "joinableLabel": "Moguće pridruživanje",
     "inProgressLabel": "Prethodno završeno",
-    "availableLabel": "Kreiraj aktivnost"
+    "availableLabel": "Kreiraj aktivnost",
+    "rateActivityTitle": "Kako vam se svidela ova aktivnost?",
+    "rateActivityCommentHint": "Dodajte komentar (opciono)",
+    "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",
+    "rateActivityThanks": "Hvala na povratnim informacijama!",
+    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocena} other{{count} ocena}})",
+    "newActivityBadge": "NOVO"
 }

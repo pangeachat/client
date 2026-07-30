@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-29 10:03:57.238377",
+    "@@last_modified": "2026-07-29 12:08:16.869712",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10004,5 +10004,11 @@
     "ongoingPendingLabel": "في انتظار انضمام الآخرين",
     "joinableLabel": "قابل للانضمام",
     "inProgressLabel": "اكتمل سابقًا",
-    "availableLabel": "إنشاء نشاط"
+    "availableLabel": "إنشاء نشاط",
+    "rateActivityTitle": "كيف كان هذا النشاط؟",
+    "rateActivityCommentHint": "أضف تعليقًا (اختياري)",
+    "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
+    "rateActivityThanks": "شكرًا لملاحظاتك!",
+    "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})",
+    "newActivityBadge": "جديد"
 }

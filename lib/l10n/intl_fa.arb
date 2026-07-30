@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 10:03:58.866902",
+    "@@last_modified": "2026-07-29 12:08:17.364779",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9786,5 +9786,11 @@
     "ongoingPendingLabel": "در انتظار پیوستن دیگران",
     "joinableLabel": "قابل پیوستن",
     "inProgressLabel": "قبلاً تکمیل شده",
-    "availableLabel": "ایجاد فعالیت"
+    "availableLabel": "ایجاد فعالیت",
+    "rateActivityTitle": "این فعالیت چطور بود؟",
+    "rateActivityCommentHint": "افزودن نظر (اختیاری)",
+    "rateActivityCommentRejected": "نظر شما ارسال نشد. لطفاً آن را بازنویسی کنید یا امتیاز خود را بدون نظر ثبت کنید.",
+    "rateActivityThanks": "از بازخورد شما متشکریم!",
+    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{۱ امتیاز} other{{count} امتیاز}})",
+    "newActivityBadge": "جدید"
 }

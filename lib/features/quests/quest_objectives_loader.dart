@@ -15,7 +15,10 @@ typedef QuestLoader = ValueNotifier<AsyncState<QuestOutline>>;
 /// An activity-less objective would otherwise show a header over a fixed-height
 /// activity-card row that is all empty space, so it is dropped (#7114). Null
 /// (still loading / no data) maps to an empty list.
-@visibleForTesting
+///
+/// The single home of "which Missions does the learner actually see": the
+/// course panel's list and the "N modules" chip both count through it, so a
+/// hidden Mission can never be listed by one and counted by the other (#7976).
 List<QuestObjectiveGroup> objectiveGroupsWithActivities(
   List<QuestObjectiveGroup>? groups,
 ) => (groups ?? const <QuestObjectiveGroup>[])
@@ -95,9 +98,13 @@ class QuestObjectivesLoader {
   /// (room.teacherMode) — passed by callers with a joined course room in hand;
   /// null (previews, no room) means unrestricted, the fail-open default.
   /// Applied as a pure copy so the shared quest-outline cache is untouched.
+  /// [courseRoomId] (same callers) lets the outline include the quest owner's
+  /// private activities — membership is verified server-side, so passing it
+  /// for a non-member is harmless.
   Future<void> loadOutline(
     String? questId, {
     Map<String, List<String>>? pinnedActivitiesByObjective,
+    String? courseRoomId,
   }) async {
     if (_disposed) return;
 
@@ -118,7 +125,10 @@ class QuestObjectivesLoader {
     }
 
     _updateQuest(AsyncLoading(), loadGen);
-    final outlineResult = await QuestRepo.outline(questId);
+    final outlineResult = await QuestRepo.outline(
+      questId,
+      courseRoomId: courseRoomId,
+    );
     final outline = outlineResult.result?.restrictedTo(
       pinnedActivitiesByObjective,
     );

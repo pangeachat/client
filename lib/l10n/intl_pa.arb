@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-29 10:04:07.274808",
+    "@@last_modified": "2026-07-29 12:08:22.194248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "ਦੂਜਿਆਂ ਦੇ ਸ਼ਾਮਲ ਹੋਣ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ",
     "joinableLabel": "ਸ਼ਾਮਲ ਹੋਣ ਯੋਗ",
     "inProgressLabel": "ਪਹਿਲਾਂ ਪੂਰਾ ਕੀਤਾ ਗਿਆ",
-    "availableLabel": "ਗਤੀਵਿਧੀ ਬਣਾਓ"
+    "availableLabel": "ਗਤੀਵਿਧੀ ਬਣਾਓ",
+    "rateActivityTitle": "ਇਹ ਗਤੀਵਿਧੀ ਕਿਹੋ ਜਿਹੀ ਸੀ?",
+    "rateActivityCommentHint": "ਇੱਕ ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ (ਵਿਕਲਪਿਕ)",
+    "rateActivityCommentRejected": "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਪੋਸਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬਿਨਾਂ ਟਿੱਪਣੀ ਦੇ ਆਪਣੀ ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰੋ।",
+    "rateActivityThanks": "ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਲਈ ਧੰਨਵਾਦ!",
+    "activityRatingMeterLabel": "{percent}% ਸਕਾਰਾਤਮਕ ({count, plural, =1{1 ਰੇਟਿੰਗ} other{{count} ਰੇਟਿੰਗਾਂ}})",
+    "newActivityBadge": "ਨਵਾਂ"
 }

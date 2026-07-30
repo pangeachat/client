@@ -9,6 +9,8 @@ import 'package:fluffychat/features/activity_sessions/activity_feedback_response
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/activity_sessions/activity_rating_request.dart';
+import 'package:fluffychat/features/activity_sessions/activity_rating_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -336,6 +338,42 @@ void main() {
       assert(res.statusCode == 200);
       final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
       ActivityFeedbackResponse.fromJson(json);
+    });
+
+    test("Activity rate endpoint test", () async {
+      // Rating needs a real activity in the target environment for the
+      // server's owner (self-rating) check. mock=true skips only the live
+      // moderation call; the ledger/aggregate writes still happen (upsert —
+      // reruns just overwrite this test user's opinion).
+      final activityId = EndpointTestEnv.testActivityId;
+      if (activityId == null) {
+        markTestSkipped('Set TEST_ACTIVITY_ID to a course-plan-activity id');
+        return;
+      }
+
+      final Map<String, dynamic> request = ActivityRatingRequest(
+        activityId: activityId,
+        rating: ActivityRatingValue.up,
+        comment: "test",
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(accessToken: authToken);
+      try {
+        final Response res = await req.post(
+          url: "$choreoApi/v2/activity/rate",
+          body: request,
+        );
+
+        // Ensure mock response is valid and compatible with response model
+        assert(res.statusCode == 200);
+        final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+        ActivityRatingResponse.fromJson(json);
+      } on Response catch (res) {
+        // 403 = the env's test user owns TEST_ACTIVITY_ID; the contract's
+        // self-rating branch — still a valid round-trip.
+        assert(res.statusCode == 403);
+      }
     });
 
     test("Token feedback endpoint test", () async {

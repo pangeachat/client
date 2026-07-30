@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-29 10:04:04.298196",
+    "@@last_modified": "2026-07-29 12:08:20.564350",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10479,5 +10479,11 @@
     "ongoingPendingLabel": "Laukiama, kol prisijungs kiti",
     "joinableLabel": "Galima prisijungti",
     "inProgressLabel": "Anksčiau baigta",
-    "availableLabel": "Sukurti veiklą"
+    "availableLabel": "Sukurti veiklą",
+    "rateActivityTitle": "Kaip sekėsi atlikti šią užduotį?",
+    "rateActivityCommentHint": "Pridėti komentarą (neprivaloma)",
+    "rateActivityCommentRejected": "Jūsų komentaro nepavyko paskelbti. Pabandykite jį perrašyti arba pateikite įvertinimą be komentaro.",
+    "rateActivityThanks": "Ačiū už atsiliepimą!",
+    "activityRatingMeterLabel": "{percent}% teigiamų ({count, plural, =1{1 įvertinimas} other{{count} įvertinimai}})",
+    "newActivityBadge": "NAUJAS"
 }

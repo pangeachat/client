@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-29 10:04:03.851906",
+    "@@last_modified": "2026-07-29 12:08:20.081361",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "چاوەڕێی ئەوانی تر دەکەین بۆ بەشداریکردن",
     "joinableLabel": "بەشداریکردن",
     "inProgressLabel": "پێشتر تەواوکراوە",
-    "availableLabel": "چالاکی دروست بکە"
+    "availableLabel": "چالاکی دروست بکە",
+    "rateActivityTitle": "ئەم چالاکییە چۆن بوو؟",
+    "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆت)",
+    "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
+    "rateActivityThanks": "سوپاس بۆ فیدباکەکەت!",
+    "activityRatingMeterLabel": "{percent}% ئەرێنی ({count, plural, =1{1 هەڵسەنگاندن} other{{count} هەڵسەنگاندن}})",
+    "newActivityBadge": "نوێ"
 }

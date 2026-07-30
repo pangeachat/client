@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-29 10:03:56.494301",
+    "@@last_modified": "2026-07-29 12:08:16.340893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Изчакване на други да се присъединят",
     "joinableLabel": "Може да се присъедините",
     "inProgressLabel": "Предишно завършени",
-    "availableLabel": "Създаване на дейност"
+    "availableLabel": "Създаване на дейност",
+    "rateActivityTitle": "Как беше това занимание?",
+    "rateActivityCommentHint": "Добавете коментар (по избор)",
+    "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
+    "rateActivityThanks": "Благодарим за обратната връзка!",
+    "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})",
+    "newActivityBadge": "НОВО"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-29 10:04:05.635466",
+    "@@last_modified": "2026-07-29 12:08:20.960268",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "E tatari ana kia uru mai ētahi atu",
     "joinableLabel": "Ka taea te uru atu",
     "inProgressLabel": "Kua oti i mua",
-    "availableLabel": "Waihanga mahi"
+    "availableLabel": "Waihanga mahi",
+    "rateActivityTitle": "Pēhea tēnei mahi?",
+    "rateActivityCommentHint": "Tāpirihia he kōrero (kōwhiringa)",
+    "rateActivityCommentRejected": "Kāore i taea te tuku i tō kōrero. Whakamātauria te whakahou, te tuku rānei i tō whakatauranga me te kore he kōrero.",
+    "rateActivityThanks": "Ngā mihi mō tō urupare!",
+    "activityRatingMeterLabel": "{percent}% pai ({count, plural, =1{1 whakatauranga} other{{count} whakatauranga}})",
+    "newActivityBadge": "HOU"
 }

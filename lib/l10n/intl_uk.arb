@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-29 10:04:11.170093",
+    "@@last_modified": "2026-07-29 12:08:26.696865",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9698,5 +9698,11 @@
     "ongoingPendingLabel": "Очікування на приєднання інших",
     "joinableLabel": "Можна приєднатися",
     "inProgressLabel": "Раніше завершено",
-    "availableLabel": "Створити активність"
+    "availableLabel": "Створити активність",
+    "rateActivityTitle": "Як вам ця вправа?",
+    "rateActivityCommentHint": "Додати коментар (необов’язково)",
+    "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
+    "rateActivityThanks": "Дякуємо за ваш відгук!",
+    "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
+    "newActivityBadge": "НОВЕ"
 }

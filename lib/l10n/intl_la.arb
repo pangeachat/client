@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-29 10:04:03.662389",
+    "@@last_modified": "2026-07-29 12:08:20.057941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "Alios exspectans ut adveniant",
     "joinableLabel": "Adhaerendum",
     "inProgressLabel": "Antehac perfecta",
-    "availableLabel": "Crea actionem"
+    "availableLabel": "Crea actionem",
+    "rateActivityTitle": "Quomodo hoc opus fuit?",
+    "rateActivityCommentHint": "Adde commentarium (libitum)",
+    "rateActivityCommentRejected": "Commentarium tuum affigi non potuit. Conare verba mutare, aut aestimationem tuam sine commentario submittere.",
+    "rateActivityThanks": "Gratias pro sententia tua!",
+    "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})",
+    "newActivityBadge": "NOVUM"
 }

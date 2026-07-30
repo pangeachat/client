@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-29 10:04:01.852361",
+    "@@last_modified": "2026-07-29 12:08:18.676684",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10330,5 +10330,11 @@
     "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
     "joinableLabel": "Inscneasta",
     "inProgressLabel": "Críochnaithe roimhe seo",
-    "availableLabel": "Cruthaigh gníomhaíocht"
+    "availableLabel": "Cruthaigh gníomhaíocht",
+    "rateActivityTitle": "Conas a bhí an ghníomhaíocht seo?",
+    "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
+    "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
+    "rateActivityThanks": "Go raibh maith agat as do chuid aiseolais!",
+    "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátálacha}})",
+    "newActivityBadge": "NUA"
 }

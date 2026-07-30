@@ -52,6 +52,13 @@ class ActivityPlanModel {
   final Map<String, ActivityRole>? _roles;
   final bool isDeprecatedModel;
 
+  /// Aggregate learner rating served with the v2 fetch: up-fraction 0..1 and
+  /// rater count. Null when the read path doesn't carry it (legacy embedded
+  /// plans, room-state round-trips) — display surfaces also hide the meter
+  /// while [ratingCount] is 0.
+  final double? ratingAverage;
+  final int? ratingCount;
+
   ActivityPlanModel({
     required this.req,
     required this.title,
@@ -71,6 +78,8 @@ class ActivityPlanModel {
     this.endAt,
     this.duration,
     this.isDeprecatedModel = false,
+    this.ratingAverage,
+    this.ratingCount,
   }) : description = (description == null || description.isEmpty)
            ? learningObjective
            : description,
@@ -97,6 +106,8 @@ class ActivityPlanModel {
         endAt: endAt,
         duration: duration,
         isDeprecatedModel: isDeprecatedModel,
+        ratingAverage: ratingAverage,
+        ratingCount: ratingCount,
       );
 
   List<String> get placeholderImages => [

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-29 10:04:08.828711",
+    "@@last_modified": "2026-07-29 12:08:21.617470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "د نورو د شاملیدو په تمه",
     "joinableLabel": "د ګډون وړ",
     "inProgressLabel": "پخوا بشپړ شوی",
-    "availableLabel": "فعالیت جوړ کړئ"
+    "availableLabel": "فعالیت جوړ کړئ",
+    "rateActivityTitle": "دا فعالیت څنګه و؟",
+    "rateActivityCommentHint": "یو نظر اضافه کړئ (اختیاري)",
+    "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
+    "rateActivityThanks": "ستاسو د نظر لپاره مننه!",
+    "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بندۍ}})",
+    "newActivityBadge": "نوی"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-29 10:04:00.121215",
+    "@@last_modified": "2026-07-29 12:08:18.076917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "અન્ય લોકોના જોડાવાની રાહ જોવાઈ રહી છે",
     "joinableLabel": "જોડાવા યોગ્ય",
     "inProgressLabel": "અગાઉ પૂર્ણ થયેલ",
-    "availableLabel": "પ્રવૃત્તિ બનાવો"
+    "availableLabel": "પ્રવૃત્તિ બનાવો",
+    "rateActivityTitle": "આ પ્રવૃત્તિ કેવી હતી?",
+    "rateActivityCommentHint": "ટિપ્પણી ઉમેરો (વૈકલ્પિક)",
+    "rateActivityCommentRejected": "તમારી ટિપ્પણી પોસ્ટ થઈ શકી નથી. તેને ફરીથી લખવાનો પ્રયાસ કરો અથવા ટિપ્પણી વિના તમારું રેટિંગ સબમિટ કરો.",
+    "rateActivityThanks": "તમારા પ્રતિભાવ બદલ આભાર!",
+    "activityRatingMeterLabel": "{percent}% સકારાત્મક ({count, plural, =1{1 રેટિંગ} other{{count} રેટિંગ્સ}})",
+    "newActivityBadge": "નવું"
 }

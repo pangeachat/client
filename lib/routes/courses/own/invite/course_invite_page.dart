@@ -227,6 +227,9 @@ class CourseInvitePageController extends State<CourseInvitePage>
                             ),
                             CourseInfoChips(
                               widget.courseId,
+                              courseRoomId: Matrix.of(
+                                context,
+                              ).client.getRoomByCourseId(widget.courseId)?.id,
                               fontSize: 12.0,
                               iconSize: 12.0,
                             ),

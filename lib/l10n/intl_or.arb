@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-29 10:04:07.731154",
+    "@@last_modified": "2026-07-29 12:08:21.585248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2048,5 +2048,11 @@
     "ongoingPendingLabel": "ଅନ୍ୟମାନଙ୍କ ଯୋଗଦାନକୁ ଅପେକ୍ଷା କରାଯାଇଛି",
     "joinableLabel": "ଯୋଗଦାନଯୋଗ୍ୟ",
     "inProgressLabel": "ପୂର୍ବରୁ ସମାପ୍ତ ହୋଇଛି",
-    "availableLabel": "କାର୍ଯ୍ୟକଳାପ ତିଆରି କରନ୍ତୁ"
+    "availableLabel": "କାର୍ଯ୍ୟକଳାପ ତିଆରି କରନ୍ତୁ",
+    "rateActivityTitle": "ଏହି କାର୍ଯ୍ୟକଳାପଟି କିପରି ଥିଲା?",
+    "rateActivityCommentHint": "ଏକ ମନ୍ତବ୍ୟ ଯୋଗ କରନ୍ତୁ (ବୈକଳ୍ପିକ)",
+    "rateActivityCommentRejected": "ଆପଣଙ୍କ ମନ୍ତବ୍ୟ ପୋଷ୍ଟ ହୋଇପାରିଲା ନାହିଁ। ଏହାକୁ ଅନ୍ୟ ଶବ୍ଦରେ ଲେଖିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ମନ୍ତବ୍ୟ ବିନା ଆପଣଙ୍କ ମୂଲ୍ୟାଙ୍କନ ଦାଖଲ କରନ୍ତୁ।",
+    "rateActivityThanks": "ଆପଣଙ୍କ ମତାମତ ପାଇଁ ଧନ୍ୟବାଦ!",
+    "activityRatingMeterLabel": "{percent}% ସକାରାତ୍ମକ ({count, plural, =1{1 ମୂଲ୍ୟାଙ୍କନ} other{{count} ମୂଲ୍ୟାଙ୍କନ}})",
+    "newActivityBadge": "ନୂଆ"
 }
