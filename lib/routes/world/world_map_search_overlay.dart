@@ -28,8 +28,9 @@ class WorldMapSearchOverlay extends StatefulWidget {
 
   final Function(String) updateQuery;
 
-  /// The three filter pills: set the Level ceiling (null = All levels), Party
-  /// size (null = All players), or Status (null = All statuses).
+  /// The three filter pills: set the Level to exactly one CEFR level (null =
+  /// All levels), Party size (null = All players), or Status (null = All
+  /// statuses).
   final ValueChanged<LanguageLevelTypeEnum?> setCefrLevel;
   final ValueChanged<MapPartySize?> setPartySize;
   final ValueChanged<ActivityPinState?> setStatus;

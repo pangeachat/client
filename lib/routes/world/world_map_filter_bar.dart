@@ -16,8 +16,9 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 class WorldMapFilterBar extends StatelessWidget {
   final WorldMapFilter filter;
 
-  /// Set the Level ceiling (null = All levels), Party size (null = All players),
-  /// or Status (null = All statuses); [onReset] restores every pill at once.
+  /// Set the Level to exactly one CEFR level (null = All levels), Party size
+  /// (null = All players), or Status (null = All statuses); [onReset] restores
+  /// every pill at once.
   final ValueChanged<LanguageLevelTypeEnum?> onSetLevel;
   final ValueChanged<MapPartySize?> onSetPartySize;
   final ValueChanged<ActivityPinState?> onSetStatus;
