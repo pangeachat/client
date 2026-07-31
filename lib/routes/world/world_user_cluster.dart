@@ -464,12 +464,17 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
 
 /// The gold level shield overhanging the powerups pill (opens the level tab).
 /// Public so [WorldAnalyticsBar] can place it at the bar's left end.
-class ClusterLevelMedal extends StatelessWidget {
+///
+/// Unlike the trackers, the medal shows hover and the open Level panel in
+/// **its own gold** ([AppConfig.goldHighlightByTheme]) rather than behind
+/// itself: the trackers' circular wash sat gold-on-gold under a solid gold
+/// shield and read as a stray circle instead of feedback (#8067).
+class ClusterLevelMedal extends StatefulWidget {
   final int level;
   final VoidCallback onTap;
 
-  /// Whether the Level analytics tab is open — then the medal wears the same
-  /// persistent highlight the trackers use (#7977).
+  /// Whether the Level analytics tab is open — then the shield stays in its
+  /// deepened gold, the sticky counterpart of hover (#7977, #8067).
   final bool selected;
 
   const ClusterLevelMedal({
@@ -480,32 +485,40 @@ class ClusterLevelMedal extends StatelessWidget {
   });
 
   @override
+  State<ClusterLevelMedal> createState() => _ClusterLevelMedalState();
+}
+
+class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final label = '${L10n.of(context).level} $level';
+    final label = '${L10n.of(context).level} ${widget.level}';
+    final lit = _hovered || widget.selected;
     return Tooltip(
       message: label,
       // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
       excludeFromSemantics: true,
       child: InkWell(
-        onTap: onTap,
-        hoverColor: AppConfig.goldByTheme(context).withAlpha(50),
+        onTap: widget.onTap,
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        // No circular wash behind the shield — the shield's own gold carries
+        // hover (#8067). The focus highlight is left alone: keyboard users
+        // still get a visible ring.
+        hoverColor: Colors.transparent,
         borderRadius: BorderRadius.circular(100.0),
         child: Semantics(
           button: true,
           label: label,
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
-          onTap: onTap,
-          child: Ink(
-            decoration: selected
-                ? BoxDecoration(
-                    color: AppConfig.goldByTheme(context).withAlpha(50),
-                    borderRadius: BorderRadius.circular(100.0),
-                  )
-                : null,
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: LevelRibbon(height: 44, level: level),
+          onTap: widget.onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: LevelRibbon(
+              height: 44,
+              level: widget.level,
+              color: lit ? AppConfig.goldHighlightByTheme(context) : null,
             ),
           ),
         ),

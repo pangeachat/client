@@ -76,8 +76,6 @@ abstract class AppConfig {
   static const int overlayAnimationDuration = 250;
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
-  static const String goldHexCode = "#fdbf01";
-  static const String goldLightHexCode = "#fedf49";
 
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
@@ -91,10 +89,27 @@ abstract class AppConfig {
         : theme.colorScheme.surface;
   }
 
-  static String goldHexByTheme(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.light
-      ? goldHexCode
-      : goldLightHexCode;
+  /// The gold a **level badge** wears while hovered, or while the Level panel
+  /// it opens is showing: [goldByTheme] deepened by [_goldHighlightDepth].
+  ///
+  /// The cluster's trackers show those two states with a translucent gold wash
+  /// behind them, but the level badge is itself a solid gold mark — a wash
+  /// behind it is gold on gold and reads as nothing, and a wash *around* it is
+  /// a circle the design doesn't want. So the mark's own gold shifts instead
+  /// (#8067), on both the web cluster's shield medal and the mobile bar's hex
+  /// badge.
+  ///
+  /// Deepened toward black rather than down the HSL lightness axis: the dark
+  /// theme's [goldLight] sits near the top of that axis, where dropping
+  /// lightness mostly saturates the yellow and barely darkens it — the state
+  /// has to read as the same shift in both brightnesses.
+  static Color goldHighlightByTheme(BuildContext context) =>
+      Color.lerp(goldByTheme(context), Colors.black, _goldHighlightDepth)!;
+
+  /// How far [goldHighlightByTheme] pulls the gold toward black — enough to
+  /// read as a state change at a glance, not so far that the badge's black
+  /// level number loses contrast (both themes stay above 8:1).
+  static const double _goldHighlightDepth = 0.2;
 
   // The "powerups" gold palette for the right-nav cluster (Figma
   // AvatarLangFlags). See the cluster section of routing.instructions.md.

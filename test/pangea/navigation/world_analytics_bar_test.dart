@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -219,8 +220,22 @@ void main() {
       matching: trackerHighlights,
     );
 
-    /// The badge's wash, painted in the ring reserved around the hexagon.
-    final levelHighlight = find.ancestor(
+    /// The badge's lit state is its own gold, not a wash behind or around it
+    /// (#8067) — so read the color it is actually painted with.
+    Color badgeFill(WidgetTester tester) =>
+        (tester
+                    .widget<CustomPaint>(
+                      find.descendant(
+                        of: find.byType(HexLevelBadge),
+                        matching: find.byType(CustomPaint),
+                      ),
+                    )
+                    .painter!
+                as HexBadgePainter)
+            .fill;
+
+    /// No decorated box may wrap the badge: the circular wash #8067 removed.
+    final levelWash = find.ancestor(
       of: find.byType(HexLevelBadge),
       matching: find.byWidgetPredicate(
         (w) => w is Container && w.decoration != null,
@@ -233,7 +248,10 @@ void main() {
       await pumpBar(tester, viewModel: MockUserClusterViewModel());
 
       expect(trackerHighlights, findsNothing);
-      expect(levelHighlight, findsNothing);
+      expect(
+        badgeFill(tester),
+        AppConfig.goldByTheme(tester.element(find.byType(Scaffold))),
+      );
     });
 
     for (final (tab, name) in [
@@ -251,10 +269,13 @@ void main() {
         );
 
         expect(trackerHighlight(tab), findsOneWidget);
-        // Exactly one control wears the wash — no sibling tracker, and not
-        // the badge.
+        // Exactly one control wears the wash — no sibling tracker, and the
+        // badge keeps its default gold.
         expect(trackerHighlights, findsOneWidget);
-        expect(levelHighlight, findsNothing);
+        expect(
+          badgeFill(tester),
+          AppConfig.goldByTheme(tester.element(find.byType(Scaffold))),
+        );
       });
     }
 
@@ -267,24 +288,18 @@ void main() {
         selectedTab: ProgressIndicatorEnum.level,
       );
 
-      expect(levelHighlight, findsOneWidget);
       expect(trackerHighlights, findsNothing);
-
-      // The same gold wash the trackers use, so the two read as one state.
-      final decoration =
-          tester.widget<Container>(levelHighlight).decoration! as BoxDecoration;
+      // The badge's own gold deepens — no wash of any kind around it (#8067).
       expect(
-        decoration.color,
-        AppConfig.goldByTheme(
-          tester.element(find.byType(Scaffold)),
-        ).withAlpha(50),
+        badgeFill(tester),
+        AppConfig.goldHighlightByTheme(tester.element(find.byType(Scaffold))),
       );
+      expect(levelWash, findsNothing);
     });
 
     testWidgets('lighting the badge moves nothing', (tester) async {
-      // The highlight paints in a ring the badge reserves either way — if it
-      // were added only when selected, opening the Level page would shove the
-      // badge (and the pill it overhangs) sideways.
+      // Lighting is a pure color change, so opening the Level page must not
+      // shove the badge (or the pill it overhangs) sideways.
       await pumpBar(tester, viewModel: MockUserClusterViewModel());
       final unlit = tester.getRect(find.byType(HexLevelBadge));
 
@@ -294,6 +309,28 @@ void main() {
         selectedTab: ProgressIndicatorEnum.level,
       );
       expect(tester.getRect(find.byType(HexLevelBadge)), unlit);
+    });
+
+    testWidgets('hovering the badge deepens its gold, without a wash', (
+      tester,
+    ) async {
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
+      final context = tester.element(find.byType(Scaffold));
+      expect(badgeFill(tester), AppConfig.goldByTheme(context));
+
+      final pointer = TestPointer(1, PointerDeviceKind.mouse);
+      await tester.sendEventToBinding(
+        pointer.hover(tester.getCenter(find.byType(HexLevelBadge))),
+      );
+      await tester.pump();
+
+      expect(badgeFill(tester), AppConfig.goldHighlightByTheme(context));
+      expect(levelWash, findsNothing);
+
+      // And it goes back when the pointer leaves.
+      await tester.sendEventToBinding(pointer.hover(Offset.zero));
+      await tester.pump();
+      expect(badgeFill(tester), AppConfig.goldByTheme(context));
     });
   });
 

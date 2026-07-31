@@ -184,17 +184,11 @@ class _PowerupsRow extends StatelessWidget {
   static const double _pillVerticalPadding = 2.0;
   static const double _pillRightPadding = 14.0;
 
-  /// Ring of space kept around the hex badge so its open-panel highlight has
-  /// somewhere to paint (the badge itself is solid gold, so a wash *under* it
-  /// only reads in the margin). Reserved whether or not the Level tab is open,
-  /// so selecting it never nudges the badge.
-  static const double _badgeHighlightPadding = 6.0;
-
-  /// How far the badge unit sticks out past the pill's left edge (the Figma
-  /// overhang): half the hex, plus the highlight ring around it, so the
-  /// hexagon still lands centered on the pill's edge.
-  static final double _hexBadgeOverhang =
-      _badgeWidth / 2 + _badgeHighlightPadding;
+  /// Half the hex badge's width — how far it sticks out past the pill's
+  /// left edge (the Figma overhang). No ring is reserved around it: the badge
+  /// shows the open Level panel in its own gold, not in a wash beside it
+  /// (#8067).
+  static final double _hexBadgeOverhang = _badgeWidth / 2;
 
   // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
   // defaults, per the Figma bar frame.
@@ -319,33 +313,23 @@ class _PowerupsRow extends StatelessWidget {
                       left: 0,
                       child: Material(
                         type: MaterialType.transparency,
-                        // Open-panel highlight, the badge's version of the
-                        // trackers' sticky wash (#7977, #8062): the same gold
-                        // wash on the same stadium geometry, but painted in the
-                        // reserved ring AROUND the hexagon — washing the badge
-                        // itself would be gold on gold. Outside the
-                        // celebration so the pulse keeps wrapping the bare
-                        // badge, and the padding is unconditional so the
-                        // highlight only ever adds color, never layout.
-                        child: Container(
-                          padding: const EdgeInsets.all(_badgeHighlightPadding),
-                          decoration: selectedTab == ProgressIndicatorEnum.level
-                              ? BoxDecoration(
-                                  color: AppConfig.goldByTheme(
-                                    context,
-                                  ).withAlpha(50),
-                                  borderRadius: BorderRadius.circular(100),
-                                )
-                              : null,
-                          child: LevelUpBadgeCelebration(
-                            levelUpdates: viewModel.levelUpdates,
-                            child: HexLevelBadge(
-                              level: level,
-                              onTap: () => viewModel.openLevel(context),
-                              width: _badgeWidth,
-                              height: _badgeHeight,
-                              fontSize: _badgeFontSize,
-                            ),
+                        // Open-panel highlight (#7977, #8062): the badge wears
+                        // its own deepened gold, the same treatment as hover
+                        // and as the web cluster's shield — a wash under a
+                        // solid gold hexagon is gold on gold, and one around it
+                        // is the circle #8067 removes. Purely a color change,
+                        // so lighting it never moves the badge or the pill it
+                        // overhangs.
+                        child: LevelUpBadgeCelebration(
+                          levelUpdates: viewModel.levelUpdates,
+                          child: HexLevelBadge(
+                            level: level,
+                            selected:
+                                selectedTab == ProgressIndicatorEnum.level,
+                            onTap: () => viewModel.openLevel(context),
+                            width: _badgeWidth,
+                            height: _badgeHeight,
+                            fontSize: _badgeFontSize,
                           ),
                         ),
                       ),
