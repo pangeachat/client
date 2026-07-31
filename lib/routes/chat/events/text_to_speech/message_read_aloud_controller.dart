@@ -68,6 +68,7 @@ class MessageReadAloudController {
       .isToolEnabled(ToolSetting.autoReadAloudMessages);
 
   void _onSync(SyncUpdate update) {
+    if (!_isEnabled) return;
     final timeline = currentTimeline();
     final matrixEvents = update.rooms?.join?[room.id]?.timeline?.events;
     if (timeline == null || matrixEvents == null) return;

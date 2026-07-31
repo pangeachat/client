@@ -30,6 +30,6 @@ Playback holds a single waiting slot: while a message is being read, at most one
 Read-aloud shares the single TtsController with word-level playback, so only one utterance plays anywhere in the app — tapping a word interrupts read-aloud.
 
 ## When it stops
-- The chat closes. Audio stops immediately.
+- The chat closes or loses focus. Audio stops immediately.
 - A message is selected. Read-aloud does not start while a message is selected, and selecting one stops playback in progress. The selected message has the learner's attention and its own audio controls.
 - The learner starts drafting. Playback stops and any waiting message is dropped rather than held for later. Read-aloud stays suppressed while the input bar holds text, resuming once the draft is sent or cleared — composing a reply is the moment an interruption costs the most.

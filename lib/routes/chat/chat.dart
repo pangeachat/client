@@ -933,7 +933,8 @@ class ChatController extends State<ChatPageWithRoom>
     readAloudController = MessageReadAloudController(
       room: room,
       currentTimeline: () => timeline,
-      isSuppressed: () => selectMode || sendController.text.isNotEmpty,
+      isSuppressed: () =>
+          selectMode || sendController.text.isNotEmpty || !isFocused,
     );
     readAloudController.start();
     sendController.addListener(onInputBarChanged);
