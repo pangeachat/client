@@ -5,14 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
+import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
+import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'mock_user_cluster_view_model.dart';
 
 /// Coverage for the world_v2 single-column analytics NAV BAR
@@ -80,9 +84,14 @@ void main() {
   Future<void> pumpBar(
     WidgetTester tester, {
     required UserClusterViewModel viewModel,
+    ProgressIndicatorEnum? selectedTab,
   }) => pumpShellMounted(
     tester,
-    WorldAnalyticsBarInternal(flagBuilder: flagStandIn, viewModel: viewModel),
+    WorldAnalyticsBarInternal(
+      flagBuilder: flagStandIn,
+      viewModel: viewModel,
+      selectedTab: selectedTab,
+    ),
   );
 
   setUpAll(() {
@@ -191,6 +200,100 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text(chipText), findsNothing);
       await controller.close();
+    });
+  });
+
+  /// The open-panel highlight: the bar is the single-column rendering of the
+  /// web cluster, so whichever analytics page is open is lit here too — all
+  /// four controls, the level badge included (#7977, #8062).
+  group('full bar — open-panel highlight', () {
+    /// The trackers' sticky wash: the only decorated [Ink] in the bar.
+    final trackerHighlights = find.byWidgetPredicate(
+      (w) => w is Ink && w.decoration != null,
+    );
+
+    Finder trackerHighlight(ProgressIndicatorEnum indicator) => find.descendant(
+      of: find.byWidgetPredicate(
+        (w) => w is ClusterTrackerButton && w.indicator == indicator,
+      ),
+      matching: trackerHighlights,
+    );
+
+    /// The badge's wash, painted in the ring reserved around the hexagon.
+    final levelHighlight = find.ancestor(
+      of: find.byType(HexLevelBadge),
+      matching: find.byWidgetPredicate(
+        (w) => w is Container && w.decoration != null,
+      ),
+    );
+
+    testWidgets('nothing is lit while no analytics panel is open', (
+      tester,
+    ) async {
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
+
+      expect(trackerHighlights, findsNothing);
+      expect(levelHighlight, findsNothing);
+    });
+
+    for (final (tab, name) in [
+      (ProgressIndicatorEnum.stars, 'stars'),
+      (ProgressIndicatorEnum.morphsUsed, 'grammar'),
+      (ProgressIndicatorEnum.wordsUsed, 'vocab'),
+    ]) {
+      testWidgets('the $name tracker alone is lit for its open panel', (
+        tester,
+      ) async {
+        await pumpBar(
+          tester,
+          viewModel: MockUserClusterViewModel(),
+          selectedTab: tab,
+        );
+
+        expect(trackerHighlight(tab), findsOneWidget);
+        // Exactly one control wears the wash — no sibling tracker, and not
+        // the badge.
+        expect(trackerHighlights, findsOneWidget);
+        expect(levelHighlight, findsNothing);
+      });
+    }
+
+    testWidgets('the level badge alone is lit for the open Level page', (
+      tester,
+    ) async {
+      await pumpBar(
+        tester,
+        viewModel: MockUserClusterViewModel(),
+        selectedTab: ProgressIndicatorEnum.level,
+      );
+
+      expect(levelHighlight, findsOneWidget);
+      expect(trackerHighlights, findsNothing);
+
+      // The same gold wash the trackers use, so the two read as one state.
+      final decoration =
+          tester.widget<Container>(levelHighlight).decoration! as BoxDecoration;
+      expect(
+        decoration.color,
+        AppConfig.goldByTheme(
+          tester.element(find.byType(Scaffold)),
+        ).withAlpha(50),
+      );
+    });
+
+    testWidgets('lighting the badge moves nothing', (tester) async {
+      // The highlight paints in a ring the badge reserves either way — if it
+      // were added only when selected, opening the Level page would shove the
+      // badge (and the pill it overhangs) sideways.
+      await pumpBar(tester, viewModel: MockUserClusterViewModel());
+      final unlit = tester.getRect(find.byType(HexLevelBadge));
+
+      await pumpBar(
+        tester,
+        viewModel: MockUserClusterViewModel(),
+        selectedTab: ProgressIndicatorEnum.level,
+      );
+      expect(tester.getRect(find.byType(HexLevelBadge)), unlit);
     });
   });
 
