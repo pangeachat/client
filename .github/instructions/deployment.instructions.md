@@ -24,6 +24,20 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
 
+## Versioning
+
+The semantic version in `pubspec.yaml` is bumped by hand. (The build number after the `+` is stamped automatically per platform at build time — see [ci.instructions.md](ci.instructions.md).)
+
+**Which level to bump.** The levels are defined by what they let you do to the fleet, because major and minor are the only two that can wall a user out: the client raises a mandatory-update wall when the force-upgrade floor's major *or* minor exceeds the running client's. Patch never can. Raising that floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
+
+- **Major** — a release you intend to eventually force the whole fleet onto: a protocol or stored-data break, or a cutover that ends coexistence with the previous line.
+- **Minor** — a release you may later want to force: a notable feature, or a migration users must land on before old clients become a liability.
+- **Patch** — the default, and right for most work including most feature work. Never used to retire a fleet.
+
+Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch.
+
+**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must bump `+N` regardless, because the release workflow tags from the full version string and silently fails on a tag that already exists.
+
 ## Environment Config (`.env`)
 
 The root `.env` is the **single config source** on every platform. There is no tracked `assets/.env`; don't reintroduce one — a second copy is what previously let web silently ignore the root file.
@@ -52,7 +66,7 @@ When a bug must be fixed on production before the next full sync from `main`:
 1. **Branch from `production`** — not `main`. The branches may have diverged enough that code from `main` doesn't compile or behaves differently on `production`.
 2. **Assess cherry-pick feasibility** — If the fix already exists on `main`, try `git cherry-pick`. If `production` has diverged (e.g., a refactor changed the surrounding code), the cherry-pick may apply as a no-op or conflict. In that case, manually port the fix to be compatible with production's codebase.
 3. **PR to `production`** — open a PR targeting `production`, not `main`.
-4. **Bump the version** in `pubspec.yaml` — the release workflow tags from this version. If the tag already exists, the workflow fails silently. Always increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
+4. **Bump the version** in `pubspec.yaml` — see [Versioning](#versioning). A hotfix is a patch: increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
 5. **Push triggers deploy** — merging the PR (or pushing directly) to `production` triggers [`release.yaml`](../../.github/workflows/release.yaml).
 6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR, a separate PR, or the next sync merge). Otherwise the fix regresses on the next production sync.
 
