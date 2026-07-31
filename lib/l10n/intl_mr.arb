@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-30 15:16:50.727078",
+    "@@last_modified": "2026-07-31 10:55:40.253527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्ज}})",
     "newActivityBadge": "नवीन",
     "exitVocabPracticeSession": "तुमच्या सध्याच्या शब्दसंग्रह सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
-    "exitGrammarPracticeSession": "तुमच्या सध्याच्या व्याकरण सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही."
+    "exitGrammarPracticeSession": "तुमच्या सध्याच्या व्याकरण सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
+    "autoReadAloudMessagesToolName": "सर्व प्राप्त संदेश आपोआप मोठ्याने वाचा",
+    "autoReadAloudMessagesDescription": "जेव्हा एखादा संदेश प्राप्त होतो, तेव्हा ऐकण्याच्या सरावासाठी संदेश मोठ्याने वाचण्यासाठी डिव्हाइस व्हॉइसचा वापर केला जाईल."
 }

@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-30 15:16:50.110131",
+    "@@last_modified": "2026-07-31 10:55:39.216312",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10472,5 +10472,7 @@
     "activityRatingMeterLabel": "{percent}% teigiamų ({count, plural, =1{1 įvertinimas} other{{count} įvertinimai}})",
     "newActivityBadge": "NAUJAS",
     "exitVocabPracticeSession": "Dabartinė žodyno praktikos sesijos eiga nebus išsaugota.",
-    "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota."
+    "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota.",
+    "autoReadAloudMessagesToolName": "Automatiškai perskaityti visus gautus pranešimus",
+    "autoReadAloudMessagesDescription": "Kai gaunamas pranešimas, įrenginio balsas bus naudojamas pranešimui perskaityti, kad būtų galima praktikuotis klausytis."
 }

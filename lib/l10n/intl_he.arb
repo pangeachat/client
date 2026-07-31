@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:47.689176",
+    "@@last_modified": "2026-07-31 10:55:35.848644",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10611,5 +10611,7 @@
     "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})",
     "newActivityBadge": "חדש",
     "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
-    "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר."
+    "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
+    "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
+    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-30 15:16:54.480153",
+    "@@last_modified": "2026-07-31 10:55:45.458062",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9691,5 +9691,7 @@
     "activityRatingMeterLabel": "{percent}% 好评（{count, plural, =1{1 条评分} other{{count} 条评分}}）",
     "newActivityBadge": "新",
     "exitVocabPracticeSession": "您当前词汇练习的进度将不会被保存。",
-    "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。"
+    "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。",
+    "autoReadAloudMessagesToolName": "自动朗读所有收到的消息",
+    "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。"
 }

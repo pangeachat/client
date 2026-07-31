@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-30 15:16:50.418355",
+    "@@last_modified": "2026-07-31 10:55:39.809505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% позитивни ({count, plural, =1{1 оцена} other{{count} оцени}})",
     "newActivityBadge": "НОВО",
     "exitVocabPracticeSession": "Напредокот од тековната сесија за вежбање вокабулар нема да биде зачуван.",
-    "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван."
+    "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван.",
+    "autoReadAloudMessagesToolName": "Автоматско читање на сите примени пораки",
+    "autoReadAloudMessagesDescription": "Кога ќе се прими порака, гласот на уредот ќе се користи за читање на пораката на глас за вежбање слушање."
 }

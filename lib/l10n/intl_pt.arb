@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:51.810354",
+    "@@last_modified": "2026-07-31 10:55:41.515408",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10641,5 +10641,7 @@
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será salvo.",
-    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será salvo."
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será salvo.",
+    "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas em voz alta",
+    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta."
 }

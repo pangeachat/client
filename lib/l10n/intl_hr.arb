@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-30 15:16:47.946921",
+    "@@last_modified": "2026-07-31 10:55:36.583173",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10127,5 +10127,7 @@
     "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
-    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen."
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
+    "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
+    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
 }

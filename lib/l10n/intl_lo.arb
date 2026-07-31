@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-30 15:16:49.965385",
+    "@@last_modified": "2026-07-31 10:55:39.004274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ຖືກໃຈ ({count, plural, =1{1 ການໃຫ້ຄະແນນ} other{{count} ການໃຫ້ຄະແນນ}})",
     "newActivityBadge": "ໃໝ່",
     "exitVocabPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກຄຳສັບໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
-    "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ."
+    "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
+    "autoReadAloudMessagesToolName": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບທັງໝົດໂດຍອັດຕະໂນມັດ",
+    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ."
 }

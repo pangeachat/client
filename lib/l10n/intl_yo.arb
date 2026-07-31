@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-30 15:16:54.970457",
+    "@@last_modified": "2026-07-31 10:55:46.334239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% rere ({count, plural, =1{ìwọ̀n 1} other{ìwọ̀n {count}}})",
     "newActivityBadge": "TITUN",
     "exitVocabPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ fóńká rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
-    "exitGrammarPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ gírámà rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́."
+    "exitGrammarPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ gírámà rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
+    "autoReadAloudMessagesToolName": "Fúnra rẹ̀ ka gbogbo àwọn ìránṣẹ́ tí a gbà jáde",
+    "autoReadAloudMessagesDescription": "Nígbà tí a bá gba ìránṣẹ́ kan, ohùn ẹ̀rọ yóò ṣee lò láti ka ìránṣẹ́ náà jáde fún ìdánilẹ́kọ̀ọ́ gbígbọ́."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-30 15:16:47.775292",
+    "@@last_modified": "2026-07-31 10:55:35.540926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})",
     "newActivityBadge": "HOU",
     "exitVocabPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa huaʻōlelo o kēia manawa.",
-    "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa."
+    "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa.",
+    "autoReadAloudMessagesToolName": "Heluhelu a leo nui i nā leka i loaʻa a pau",
+    "autoReadAloudMessagesDescription": "Ke loaʻa mai kahi leka, e hoʻohana ʻia ka leo o ka hāmeʻa e heluhelu leo nui i ka leka no ka hoʻomaʻamaʻa hoʻolohe."
 }

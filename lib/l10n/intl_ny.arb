@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-30 15:16:51.826763",
+    "@@last_modified": "2026-07-31 10:55:41.924287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% yabwino ({count, plural, =1{1 ndemanga} other{{count} ndemanga}})",
     "newActivityBadge": "CHATSWOPANO",
     "exitVocabPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa mawu sikudzasungidwa.",
-    "exitGrammarPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa galamala sikudzasungidwa."
+    "exitGrammarPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa galamala sikudzasungidwa.",
+    "autoReadAloudMessagesToolName": "Werengani mauthenga onse olandiridwa okha",
+    "autoReadAloudMessagesDescription": "Mukalandira uthenga, mawu a chipangizo adzagwiritsidwa ntchito kuwerenga uthenga mokweza kuti muphunzire kumvetsera."
 }

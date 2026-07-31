@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-30 15:16:49.604473",
+    "@@last_modified": "2026-07-31 10:55:38.682495",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})",
     "newActivityBadge": "NOVUM",
     "exitVocabPracticeSession": "Progressus sessionis praesentis exercitationis vocabulorum non servabitur.",
-    "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur."
+    "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur.",
+    "autoReadAloudMessagesToolName": "Sponte legere nuntios acceptos",
+    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi."
 }

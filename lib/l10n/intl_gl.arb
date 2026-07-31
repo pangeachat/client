@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-30 15:16:47.153900",
+    "@@last_modified": "2026-07-31 10:55:35.544113",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9691,5 +9691,7 @@
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valoración} other{{count} valoracións}})",
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de vocabulario.",
-    "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática."
+    "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática.",
+    "autoReadAloudMessagesToolName": "Ler en voz alta automaticamente todas as mensaxes recibidas",
+    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita."
 }

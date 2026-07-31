@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-30 15:16:54.829482",
+    "@@last_modified": "2026-07-31 10:55:46.009064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% פּאָזיטיוו ({count, plural, =1{1 רייטינג} other{{count} רייטינגען}})",
     "newActivityBadge": "נײַ",
     "exitVocabPracticeSession": "דיין איצטיקער וואָקאַבולאַר פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
-    "exitGrammarPracticeSession": "דיין איצטיקער גראַמאַטיק פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן."
+    "exitGrammarPracticeSession": "דיין איצטיקער גראַמאַטיק פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
+    "autoReadAloudMessagesToolName": "לייענען אויס אויטאָמאַטיש אַלע באַקומענע מעסעדזשעס",
+    "autoReadAloudMessagesDescription": "ווען אַ מעסעדזש ווערט באַקומען, וועט די שטימע פונעם מיטל ווערן גענוצט צו לייענען דעם מעסעדזש אויס פֿאַר הערן-פּראַקטיק."
 }

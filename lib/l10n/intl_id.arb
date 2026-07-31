@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:48.309147",
+    "@@last_modified": "2026-07-31 10:55:36.292592",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9764,5 +9764,7 @@
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
     "newActivityBadge": "BARU",
     "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
-    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan."
+    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan.",
+    "autoReadAloudMessagesToolName": "Otomatis membaca semua pesan yang diterima",
+    "autoReadAloudMessagesDescription": "Saat pesan diterima, suara perangkat akan digunakan untuk membaca pesan dengan lantang untuk latihan mendengarkan."
 }

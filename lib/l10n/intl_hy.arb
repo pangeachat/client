@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-30 15:16:48.593290",
+    "@@last_modified": "2026-07-31 10:55:36.773241",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% դրական ({count, plural, =1{1 գնահատական} other{{count} գնահատական}})",
     "newActivityBadge": "ՆՈՐ",
     "exitVocabPracticeSession": "Բառապաշարի մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։",
-    "exitGrammarPracticeSession": "Քերականության մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։"
+    "exitGrammarPracticeSession": "Քերականության մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։",
+    "autoReadAloudMessagesToolName": "Ավտոմատ կարդալ բոլոր ստացված հաղորդագրությունները",
+    "autoReadAloudMessagesDescription": "Հաղորդագրություն ստանալիս սարքի ձայնը կօգտագործվի հաղորդագրությունը բարձրաձայն կարդալու համար՝ ունկնդրման պրակտիկայի համար։"
 }

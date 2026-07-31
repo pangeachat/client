@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-30 15:16:53.394532",
+    "@@last_modified": "2026-07-31 10:55:44.308585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditekanyetso tse {count}}})",
     "newActivityBadge": "E NCHA",
     "exitVocabPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa mantsoe a macha e ke ke ea bolokoa.",
-    "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa."
+    "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa.",
+    "autoReadAloudMessagesToolName": "Bala melaetsa yohle e amohetsweng ka boyona",
+    "autoReadAloudMessagesDescription": "Ha molaetsa o amohetswe, lentswe la sesebediswa le tla sebediswa ho bala molaetsa ka lentswe le phahameng bakeng sa tloaelo ya ho mamela."
 }

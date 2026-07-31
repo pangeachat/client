@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-30 15:16:50.039435",
+    "@@last_modified": "2026-07-31 10:55:39.358530",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9691,5 +9691,7 @@
     "activityRatingMeterLabel": "{percent}% pozitīvi ({count, plural, =1{1 vērtējums} other{{count} vērtējumi}})",
     "newActivityBadge": "JAUNS",
     "exitVocabPracticeSession": "Jūsu pašreizējās vārdu krājuma prakses sesijas progress netiks saglabāts.",
-    "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts."
+    "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts.",
+    "autoReadAloudMessagesToolName": "Automātiski nolasīt visas saņemtās ziņas",
+    "autoReadAloudMessagesDescription": "Kad tiek saņemta ziņa, ierīces balss tiks izmantota, lai nolasītu ziņu skaļi klausīšanās prakses nolūkos."
 }

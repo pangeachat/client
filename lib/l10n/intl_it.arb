@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:48.622039",
+    "@@last_modified": "2026-07-31 10:55:37.429638",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9764,5 +9764,7 @@
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 valutazione} other{{count} valutazioni}})",
     "newActivityBadge": "NOVITÀ",
     "exitVocabPracticeSession": "I progressi della tua attuale sessione di pratica del vocabolario non verranno salvati.",
-    "exitGrammarPracticeSession": "I progressi della tua attuale sessione di pratica della grammatica non verranno salvati."
+    "exitGrammarPracticeSession": "I progressi della tua attuale sessione di pratica della grammatica non verranno salvati.",
+    "autoReadAloudMessagesToolName": "Leggi automaticamente tutti i messaggi ricevuti",
+    "autoReadAloudMessagesDescription": "Quando un messaggio viene ricevuto, la voce del dispositivo verrà utilizzata per leggere il messaggio ad alta voce per la pratica dell'ascolto."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:51.079083",
+    "@@last_modified": "2026-07-31 10:55:40.734081",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9748,5 +9748,7 @@
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
-    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret."
+    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret.",
+    "autoReadAloudMessagesToolName": "Les automatisk opp alle mottatte meldinger",
+    "autoReadAloudMessagesDescription": "Når en melding mottas, vil enhetens stemme bli brukt til å lese meldingen høyt for lytteøvelse."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-30 15:16:52.992793",
+    "@@last_modified": "2026-07-31 10:55:43.358551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% yakanaka ({count, plural, =1{1 chiyero} other{{count} zviero}})",
     "newActivityBadge": "CHITSVA",
     "exitVocabPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira mazwi hakuzochengetedzwe.",
-    "exitGrammarPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira girama hakuzochengetedzwe."
+    "exitGrammarPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira girama hakuzochengetedzwe.",
+    "autoReadAloudMessagesToolName": "Verenga mameseji ese anogamuchirwa wega",
+    "autoReadAloudMessagesDescription": "Kana meseji yagamuchirwa, izwi remudziyo richashandiswa kuverenga meseji zvinonzwika kuti udzidzire kuteerera."
 }

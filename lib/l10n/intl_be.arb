@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-30 15:16:45.358123",
+    "@@last_modified": "2026-07-31 10:55:33.246755",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9705,5 +9705,7 @@
     "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнак}})",
     "newActivityBadge": "НОВАЕ",
     "exitVocabPracticeSession": "Ваш бягучы прагрэс у практыцы слоўнікавага запасу не будзе захаваны.",
-    "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны."
+    "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны.",
+    "autoReadAloudMessagesToolName": "Аўтаматычна чытаць услых усе атрыманыя паведамленні",
+    "autoReadAloudMessagesDescription": "Калі паведамленне атрымана, голас прылады будзе выкарыстаны для чытання паведамлення ўслых для практыкі праслухоўвання."
 }

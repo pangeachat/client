@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-30 15:16:46.301369",
+    "@@last_modified": "2026-07-31 10:55:33.261121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
     "newActivityBadge": "BAG-O",
     "exitVocabPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa bokabularyo dili maluwas.",
-    "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas."
+    "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas.",
+    "autoReadAloudMessagesToolName": "Awtomatikong basahon og kusog ang tanang nadawat nga mensahe",
+    "autoReadAloudMessagesDescription": "Kung makadawat og mensahe, ang tingog sa device gamiton aron basahon og kusog ang mensahe para sa praktis sa pagpaminaw."
 }

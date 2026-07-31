@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-30 15:16:46.021253",
+    "@@last_modified": "2026-07-31 10:55:33.867164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% pusitivu ({count, plural, =1{1 valutazione} other{{count} valutazioni}})",
     "newActivityBadge": "NOVU",
     "exitVocabPracticeSession": "U prugressu di a vostra sessione di pratica di vucabulariu ùn serà micca salvatu.",
-    "exitGrammarPracticeSession": "U prugressu di a vostra sessione di pratica di grammatica ùn serà micca salvatu."
+    "exitGrammarPracticeSession": "U prugressu di a vostra sessione di pratica di grammatica ùn serà micca salvatu.",
+    "autoReadAloudMessagesToolName": "Leghje à voce alta in autumàticu tutti i messagi ricevuti",
+    "autoReadAloudMessagesDescription": "Quandu un messagiu hè ricevutu, a voce di u dispusitivu serà aduprata per leghje u messagiu à voce alta per a pratica d'ascoltu."
 }

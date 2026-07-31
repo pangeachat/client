@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:49.202077",
+    "@@last_modified": "2026-07-31 10:55:38.545888",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9884,5 +9884,7 @@
     "activityRatingMeterLabel": "{percent}% 긍정적 ({count, plural, =1{1개 평가} other{{count}개 평가}})",
     "newActivityBadge": "새로운 활동",
     "exitVocabPracticeSession": "현재 어휘 연습 세션 진행 상황은 저장되지 않습니다.",
-    "exitGrammarPracticeSession": "현재 문법 연습 세션 진행 상황은 저장되지 않습니다."
+    "exitGrammarPracticeSession": "현재 문법 연습 세션 진행 상황은 저장되지 않습니다.",
+    "autoReadAloudMessagesToolName": "수신 메시지 자동 소리 내어 읽기",
+    "autoReadAloudMessagesDescription": "메시지를 받으면 기기 음성으로 메시지를 소리 내어 읽어 듣기 연습을 할 수 있습니다."
 }

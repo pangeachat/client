@@ -2928,7 +2928,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-30 15:16:45.599664",
+    "@@last_modified": "2026-07-31 10:55:33.123059",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9302,5 +9302,7 @@
     "activityRatingMeterLabel": "{percent}% གུས་པོ་ ({count, plural, =1{དཔྱད་མཆན་ 1} other{དཔྱད་མཆན་ {count}}})",
     "newActivityBadge": "གསར་པ།",
     "exitVocabPracticeSession": "ཁྱེད་ཀྱི་ད་ལྟའི་ཚིག་གི་སྦྱོང་བརྡར་གྱི་ཡར་རྒྱས་ཉར་ཚགས་བྱེད་མི་ཐུབ།",
-    "exitGrammarPracticeSession": "ཁྱེད་ཀྱི་ད་ལྟའི་བརྡ་སྤྲོད་སྦྱོང་བརྡར་གྱི་ཡར་རྒྱས་ཉར་ཚགས་བྱེད་མི་ཐུབ།"
+    "exitGrammarPracticeSession": "ཁྱེད་ཀྱི་ད་ལྟའི་བརྡ་སྤྲོད་སྦྱོང་བརྡར་གྱི་ཡར་རྒྱས་ཉར་ཚགས་བྱེད་མི་ཐུབ།",
+    "autoReadAloudMessagesToolName": "འབྱོར་བའི་འཕྲིན་ཡིག་ཚང་མ་རང་འགུལ་ངང་སྐད་མཐོན་པོས་ཀློག་པ།",
+    "autoReadAloudMessagesDescription": "འཕྲིན་ཡིག་ཅིག་འབྱོར་སྐབས། སྒྲ་དབྱངས་ཉན་པའི་སྦྱོང་བརྡར་ཆེད་དུ་སྒྲིག་ཆས་ཀྱི་སྐད་སྒྲ་བེད་སྤྱོད་བྱས་ནས་འཕྲིན་ཡིག་དེ་སྐད་མཐོན་པོས་ཀློག་ངེས།"
 }

@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-30 15:16:47.285877",
+    "@@last_modified": "2026-07-31 10:55:34.921643",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9702,5 +9702,7 @@
     "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})",
     "newActivityBadge": "NUA",
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
-    "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha."
+    "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
+    "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
+    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta."
 }

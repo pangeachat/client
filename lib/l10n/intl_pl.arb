@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-30 15:16:51.852939",
+    "@@last_modified": "2026-07-31 10:55:41.769696",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9776,5 +9776,7 @@
     "activityRatingMeterLabel": "{percent}% pozytywnych ({count, plural, =1{1 ocena} other{{count} ocen}})",
     "newActivityBadge": "NOWOŚĆ",
     "exitVocabPracticeSession": "Postępy w bieżącej sesji ćwiczenia słownictwa nie zostaną zapisane.",
-    "exitGrammarPracticeSession": "Postępy w bieżącej sesji ćwiczenia gramatyki nie zostaną zapisane."
+    "exitGrammarPracticeSession": "Postępy w bieżącej sesji ćwiczenia gramatyki nie zostaną zapisane.",
+    "autoReadAloudMessagesToolName": "Automatyczne odczytywanie wszystkich otrzymanych wiadomości",
+    "autoReadAloudMessagesDescription": "Po otrzymaniu wiadomości, głos urządzenia zostanie użyty do odczytania jej na głos w celu ćwiczenia słuchania."
 }

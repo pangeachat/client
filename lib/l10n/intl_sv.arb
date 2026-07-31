@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:53.431403",
+    "@@last_modified": "2026-07-31 10:55:43.596611",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10209,5 +10209,7 @@
     "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})",
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Dina framsteg i den nuvarande ordövningssessionen sparas inte.",
-    "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte."
+    "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte.",
+    "autoReadAloudMessagesToolName": "Läs automatiskt upp alla mottagna meddelanden",
+    "autoReadAloudMessagesDescription": "När ett meddelande tas emot kommer enhetens röst att användas för att läsa upp meddelandet för lyssningsövning."
 }

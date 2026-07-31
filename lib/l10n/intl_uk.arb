@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-30 15:16:54.042505",
+    "@@last_modified": "2026-07-31 10:55:44.785371",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9691,5 +9691,7 @@
     "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
     "newActivityBadge": "НОВЕ",
     "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
-    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено."
+    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
+    "autoReadAloudMessagesToolName": "Автоматично читати вголос усі отримані повідомлення",
+    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання."
 }

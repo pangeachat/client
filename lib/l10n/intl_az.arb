@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-30 15:16:45.467338",
+    "@@last_modified": "2026-07-31 10:55:32.004791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
     "newActivityBadge": "YENİ",
     "exitVocabPracticeSession": "Cari lüğət təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
-    "exitGrammarPracticeSession": "Cari qrammatika təcrübə sessiyanızın gedişatı yadda saxlanmayacaq."
+    "exitGrammarPracticeSession": "Cari qrammatika təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
+    "autoReadAloudMessagesToolName": "Bütün qəbul edilmiş mesajları avtomatik oxu",
+    "autoReadAloudMessagesDescription": "Mesaj qəbul edildikdə, dinləmə təcrübəsi üçün cihaz səsi mesajı ucadan oxumaq üçün istifadə ediləcək."
 }

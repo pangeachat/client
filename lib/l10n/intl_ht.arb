@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-30 15:16:48.184538",
+    "@@last_modified": "2026-07-31 10:55:36.895482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% pozitif ({count, plural, =1{1 evalyasyon} other{{count} evalyasyon}})",
     "newActivityBadge": "NOUVO",
     "exitVocabPracticeSession": "Pwogrè sesyon pratik vokabilè ou ye kounye a p ap sove.",
-    "exitGrammarPracticeSession": "Pwogrè sesyon pratik gramè ou ye kounye a p ap sove."
+    "exitGrammarPracticeSession": "Pwogrè sesyon pratik gramè ou ye kounye a p ap sove.",
+    "autoReadAloudMessagesToolName": "Li tout mesaj yo awotvwa otomatikman",
+    "autoReadAloudMessagesDescription": "Lè w resevwa yon mesaj, vwa aparèy la ap li mesaj la awotvwa pou w ka pratike koute."
 }

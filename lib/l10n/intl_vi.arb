@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:54.186712",
+    "@@last_modified": "2026-07-31 10:55:45.434279",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6957,5 +6957,7 @@
     "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})",
     "newActivityBadge": "MỚI",
     "exitVocabPracticeSession": "Tiến độ phiên luyện từ vựng hiện tại của bạn sẽ không được lưu.",
-    "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu."
+    "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
+    "autoReadAloudMessagesToolName": "Tự động đọc to tất cả tin nhắn đã nhận",
+    "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe."
 }

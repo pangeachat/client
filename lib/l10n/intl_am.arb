@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-30 15:16:45.247308",
+    "@@last_modified": "2026-07-31 10:55:32.251723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
     "newActivityBadge": "አዲስ",
     "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
-    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።"
+    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
+    "autoReadAloudMessagesToolName": "ሁሉንም የተቀበሉ መልዕክቶችን በራስ-ሰር ጮክ ብሎ ያንብቡ",
+    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።"
 }

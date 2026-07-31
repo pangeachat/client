@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-30 15:16:53.752637",
+    "@@last_modified": "2026-07-31 10:55:45.295170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% мусбат ({count, plural, =1{1 баҳо} other{{count} баҳо}})",
     "newActivityBadge": "НАВ",
     "exitVocabPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи луғати шумо захира карда намешавад.",
-    "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад."
+    "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад.",
+    "autoReadAloudMessagesToolName": "Ҳамаи паёмҳои қабулшударо ба таври худкор бо овози баланд хонед",
+    "autoReadAloudMessagesDescription": "Ҳангоми қабули паём, овози дастгоҳ барои хондани паём бо овози баланд барои машқи гӯш кардан истифода мешавад."
 }

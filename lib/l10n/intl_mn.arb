@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-30 15:16:50.822112",
+    "@@last_modified": "2026-07-31 10:55:39.970521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})",
     "newActivityBadge": "ШИНЭ",
     "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
-    "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй."
+    "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй.",
+    "autoReadAloudMessagesToolName": "Ирсэн бүх мессежийг автоматаар чангаар унших",
+    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ."
 }

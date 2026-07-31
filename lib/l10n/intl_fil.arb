@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-30 15:16:46.996835",
+    "@@last_modified": "2026-07-31 10:55:34.491056",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10557,5 +10557,7 @@
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
     "newActivityBadge": "BAGO",
     "exitVocabPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng bokabularyo.",
-    "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika."
+    "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika.",
+    "autoReadAloudMessagesToolName": "Awtomatikong basahin nang malakas ang lahat ng natanggap na mensahe",
+    "autoReadAloudMessagesDescription": "Kapag nakatanggap ng mensahe, gagamitin ang boses ng device para basahin nang malakas ang mensahe para sa pagsasanay sa pakikinig."
 }

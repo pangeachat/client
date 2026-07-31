@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-30 15:16:45.230250",
+    "@@last_modified": "2026-07-31 10:55:31.732195",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9997,5 +9997,7 @@
     "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})",
     "newActivityBadge": "جديد",
     "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
-    "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية."
+    "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
+    "autoReadAloudMessagesToolName": "قراءة جميع الرسائل المستلمة تلقائيًا بصوت عالٍ",
+    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع."
 }

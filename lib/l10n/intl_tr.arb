@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-30 15:16:53.701444",
+    "@@last_modified": "2026-07-31 10:55:44.641023",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9992,5 +9992,7 @@
     "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})",
     "newActivityBadge": "YENİ",
     "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
-    "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek."
+    "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
+    "autoReadAloudMessagesToolName": "Alınan tüm mesajları otomatik olarak sesli oku",
+    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır."
 }

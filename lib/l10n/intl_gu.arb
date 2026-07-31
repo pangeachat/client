@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-30 15:16:47.507703",
+    "@@last_modified": "2026-07-31 10:55:35.358349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% સકારાત્મક ({count, plural, =1{1 રેટિંગ} other{{count} રેટિંગ્સ}})",
     "newActivityBadge": "નવું",
     "exitVocabPracticeSession": "તમારી વર્તમાન શબ્દભંડોળ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં.",
-    "exitGrammarPracticeSession": "તમારી વર્તમાન વ્યાકરણ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં."
+    "exitGrammarPracticeSession": "તમારી વર્તમાન વ્યાકરણ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં.",
+    "autoReadAloudMessagesToolName": "આપમેળે પ્રાપ્ત થયેલા બધા સંદેશાઓ મોટેથી વાંચો",
+    "autoReadAloudMessagesDescription": "જ્યારે કોઈ સંદેશ પ્રાપ્ત થાય છે, ત્યારે સાંભળવાની પ્રેક્ટિસ માટે ડિવાઇસનો અવાજ સંદેશ મોટેથી વાંચવા માટે ઉપયોગમાં લેવાશે."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-07-30 15:16:54.615864",
+    "@@last_modified": "2026-07-31 10:55:45.719708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 ireyithingi} other{{count} iireyithingi}})",
     "newActivityBadge": "ENTSHA",
     "exitVocabPracticeSession": "Inkqubela yakho yangoku yeseshoni yokuziqhelanisa nesigama ayizukugcinwa.",
-    "exitGrammarPracticeSession": "Inkqubela yakho yangoku yeseshoni yokuziqhelanisa negrama ayizukugcinwa."
+    "exitGrammarPracticeSession": "Inkqubela yakho yangoku yeseshoni yokuziqhelanisa negrama ayizukugcinwa.",
+    "autoReadAloudMessagesToolName": "Funda ngokuzenzekelayo zonke izigidimi ezifunyenweyo",
+    "autoReadAloudMessagesDescription": "Xa kufunyenwe umyalezo, ilizwi lesixhobo liya kusetyenziswa ukufunda umyalezo ngokuvakalayo ukuze kuqheliswe ukuphulaphula."
 }

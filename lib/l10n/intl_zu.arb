@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-30 15:16:55.579731",
+    "@@last_modified": "2026-07-31 10:55:47.150192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% omuhle ({count, plural, =1{isilinganiso esi-1} other{izilinganiso eziyi-{count}}})",
     "newActivityBadge": "OKUSHA",
     "exitVocabPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza amagama ngeke ilondolozwe.",
-    "exitGrammarPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza uhlelo lolimi ngeke ilondolozwe."
+    "exitGrammarPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza uhlelo lolimi ngeke ilondolozwe.",
+    "autoReadAloudMessagesToolName": "Funda ngokuzenzakalelayo yonke imilayezo etholiwe",
+    "autoReadAloudMessagesDescription": "Uma kutholwa umlayezo, izwi ledivayisi lizosetshenziswa ukufunda umlayezo ukuze kuzilolwe ukulalela."
 }

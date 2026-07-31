@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-30 15:16:50.351339",
+    "@@last_modified": "2026-07-31 10:55:40.637761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% pai ({count, plural, =1{1 whakatauranga} other{{count} whakatauranga}})",
     "newActivityBadge": "HOU",
     "exitVocabPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau kupu o nāianei.",
-    "exitGrammarPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau wetereo o nāianei."
+    "exitGrammarPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau wetereo o nāianei.",
+    "autoReadAloudMessagesToolName": "Pānui aunoa i ngā karere katoa ka tae mai",
+    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo."
 }

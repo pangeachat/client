@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-30 15:16:51.849135",
+    "@@last_modified": "2026-07-31 10:55:42.571344",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ਸਕਾਰਾਤਮਕ ({count, plural, =1{1 ਰੇਟਿੰਗ} other{{count} ਰੇਟਿੰਗਾਂ}})",
     "newActivityBadge": "ਨਵਾਂ",
     "exitVocabPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਸ਼ਬਦਾਵਲੀ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
-    "exitGrammarPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਵਿਆਕਰਨ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।"
+    "exitGrammarPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਵਿਆਕਰਨ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
+    "autoReadAloudMessagesToolName": "ਪ੍ਰਾਪਤ ਹੋਏ ਸਾਰੇ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ",
+    "autoReadAloudMessagesDescription": "ਜਦੋਂ ਕੋਈ ਸੁਨੇਹਾ ਪ੍ਰਾਪਤ ਹੁੰਦਾ ਹੈ, ਤਾਂ ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਲਈ ਸੁਨੇਹੇ ਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਲਈ ਡਿਵਾਈਸ ਦੀ ਆਵਾਜ਼ ਦੀ ਵਰਤੋਂ ਕੀਤੀ ਜਾਵੇਗੀ।"
 }

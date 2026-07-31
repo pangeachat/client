@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-30 15:16:54.198730",
+    "@@last_modified": "2026-07-31 10:55:46.036308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجہ بندی} other{{count} درجہ بندیاں}})",
     "newActivityBadge": "نیا",
     "exitVocabPracticeSession": "آپ کے موجودہ الفاظ کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
-    "exitGrammarPracticeSession": "آپ کے موجودہ گرامر کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔"
+    "exitGrammarPracticeSession": "آپ کے موجودہ گرامر کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
+    "autoReadAloudMessagesToolName": "تمام موصولہ پیغامات خود بخود بلند آواز میں پڑھیں",
+    "autoReadAloudMessagesDescription": "جب کوئی پیغام موصول ہوتا ہے، تو سننے کی مشق کے لیے پیغام کو بلند آواز میں پڑھنے کے لیے ڈیوائس کی آواز کا استعمال کیا جائے گا۔"
 }

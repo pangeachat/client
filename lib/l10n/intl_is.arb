@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-30 15:16:48.802527",
+    "@@last_modified": "2026-07-31 10:55:37.613949",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% jákvætt ({count, plural, =1{1 einkunn} other{{count} einkunnir}})",
     "newActivityBadge": "NÝTT",
     "exitVocabPracticeSession": "Framvinda núverandi orðaforðaæfingar verður ekki vistuð.",
-    "exitGrammarPracticeSession": "Framvinda núverandi málfræðiæfingar verður ekki vistuð."
+    "exitGrammarPracticeSession": "Framvinda núverandi málfræðiæfingar verður ekki vistuð.",
+    "autoReadAloudMessagesToolName": "Lesa sjálfkrafa upp alla móttekna skilaboð",
+    "autoReadAloudMessagesDescription": "Þegar skilaboð berast verður rödd tækisins notuð til að lesa skilaboðin upphátt til að æfa hlustun."
 }

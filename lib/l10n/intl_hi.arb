@@ -3104,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-30 15:16:47.558731",
+    "@@last_modified": "2026-07-31 10:55:38.257454",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10323,5 +10323,7 @@
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग}})",
     "newActivityBadge": "नया",
     "exitVocabPracticeSession": "आपकी मौजूदा शब्दावली अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
-    "exitGrammarPracticeSession": "आपकी मौजूदा व्याकरण अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।"
+    "exitGrammarPracticeSession": "आपकी मौजूदा व्याकरण अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
+    "autoReadAloudMessagesToolName": "सभी प्राप्त संदेशों को अपने आप ज़ोर से पढ़ें",
+    "autoReadAloudMessagesDescription": "जब कोई संदेश प्राप्त होता है, तो सुनने के अभ्यास के लिए डिवाइस की आवाज़ का उपयोग करके संदेश को ज़ोर से पढ़ा जाएगा।"
 }

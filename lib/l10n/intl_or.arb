@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-30 15:16:52.088356",
+    "@@last_modified": "2026-07-31 10:55:42.335948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2053,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ସକାରାତ୍ମକ ({count, plural, =1{1 ମୂଲ୍ୟାଙ୍କନ} other{{count} ମୂଲ୍ୟାଙ୍କନ}})",
     "newActivityBadge": "ନୂଆ",
     "exitVocabPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ଶବ୍ଦାବଳୀ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
-    "exitGrammarPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ବ୍ୟାକରଣ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।"
+    "exitGrammarPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ବ୍ୟାକରଣ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
+    "autoReadAloudMessagesToolName": "ପ୍ରାପ୍ତ ସମସ୍ତ ବାର୍ତ୍ତା ସ୍ୱୟଂଚାଳିତ ଭାବରେ ପଢ଼ନ୍ତୁ",
+    "autoReadAloudMessagesDescription": "ଯେତେବେଳେ ଏକ ବାର୍ତ୍ତା ଗ୍ରହଣ କରାଯାଏ, ଶୁଣିବା ଅଭ୍ୟାସ ପାଇଁ ବାର୍ତ୍ତାକୁ ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ପାଇଁ ଡିଭାଇସ୍ ଭଏସ୍ ବ୍ୟବହାର କରାଯିବ।"
 }
