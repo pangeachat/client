@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-30 15:16:47.281640",
+    "@@last_modified": "2026-07-31 10:55:35.166603",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direkt Berjocht",
     "notificationRuleDMDescription": "Stjoert de brûker in notifikaasje oer berjochten yn direkte berjochtkeamers.",
     "enableEmailNotifications": "E-mailnotifikaasjes ynskeakelje",
-    "selectAudioMessagesOnPlayToolName": "Audioberjochten automatysk markearje",
-    "selectAudioMessagesOnPlayDescription": "Audioberjochten automatysk markearje as se ôfspile wurde",
     "learningAnalytics": "Learanalytics",
     "alreadySpeak": "Ik praat al...",
     "welcomeBackLogin": "Wolkom werom! Jo hawwe jo earder oanmeld mei {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% posityf ({count, plural, =1{1 beoardieling} other{{count} beoardielingen}})",
     "newActivityBadge": "NIJ",
     "exitVocabPracticeSession": "De foarútgong fan jo hjoeddeistige wurdskat-oefensesje wurdt net bewarre.",
-    "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre."
+    "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre.",
+    "autoReadAloudMessagesToolName": "Lês alle ûntfongen berjochten automatysk foar",
+    "autoReadAloudMessagesDescription": "As in berjocht ûntfongen wurdt, sil de stim fan it apparaat brûkt wurde om it berjocht foar te lêzen foar harkpraktyk."
 }

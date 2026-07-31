@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-07-30 15:16:51.401610",
+    "@@last_modified": "2026-07-31 10:55:41.479121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direktemelding",
     "notificationRuleDMDescription": "Varsler brukeren om meldinger i direktemeldingsrom.",
     "enableEmailNotifications": "Aktiver e-postvarsler",
-    "selectAudioMessagesOnPlayToolName": "Fremhev lydmeldinger automatisk",
-    "selectAudioMessagesOnPlayDescription": "Fremhev lydmeldinger automatisk når de spilles av",
     "learningAnalytics": "Læringsanalyse",
     "alreadySpeak": "Jeg snakker allerede...",
     "welcomeBackLogin": "Velkommen tilbake! Du logget inn tidligere med {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Fremdriften din i denne ordforrådsøkten blir ikke lagret.",
-    "exitGrammarPracticeSession": "Fremdriften din i denne grammatikkøkten blir ikke lagret."
+    "exitGrammarPracticeSession": "Fremdriften din i denne grammatikkøkten blir ikke lagret.",
+    "autoReadAloudMessagesToolName": "Les automatisk opp alle mottatte meldinger",
+    "autoReadAloudMessagesDescription": "Når en melding mottas, vil enhetens stemme bli brukt til å lese meldingen høyt for lytteøvelse."
 }

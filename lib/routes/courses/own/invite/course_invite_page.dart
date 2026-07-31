@@ -394,7 +394,12 @@ class CourseInvitePageController extends State<CourseInvitePage>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Icons.upload_file),
-                          Text(L10n.of(context).inviteYourFriends),
+                          Flexible(
+                            child: Text(
+                              L10n.of(context).inviteYourFriends,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -422,7 +427,14 @@ class CourseInvitePageController extends State<CourseInvitePage>
                       child: Row(
                         spacing: 8.0,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text(L10n.of(context).playWithAI)],
+                        children: [
+                          Flexible(
+                            child: Text(
+                              L10n.of(context).playWithAI,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

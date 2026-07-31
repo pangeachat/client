@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-30 15:16:47.775292",
+    "@@last_modified": "2026-07-31 10:55:35.540926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Leka Kikoʻī",
     "notificationRuleDMDescription": "Hoʻomaopopo i ka mea hoʻohana no nā leka ma nā lumi leka kikoʻī.",
     "enableEmailNotifications": "Hoʻā i nā leka hoʻomaopopo leka uila",
-    "selectAudioMessagesOnPlayToolName": "Hoʻokāʻoi ʻakomi i nā leka leo",
-    "selectAudioMessagesOnPlayDescription": "Hoʻokāʻoi ʻakomi i nā leka leo ke hoʻokani ʻia",
     "learningAnalytics": "Kaʻanalike aʻo",
     "alreadySpeak": "ʻŌlelo mua wau i ka ʻōlelo...",
     "welcomeBackLogin": "Aloha hou! Ua komo mua ʻoe me {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})",
     "newActivityBadge": "HOU",
     "exitVocabPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa huaʻōlelo o kēia manawa.",
-    "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa."
+    "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa.",
+    "autoReadAloudMessagesToolName": "Heluhelu a leo nui i nā leka i loaʻa a pau",
+    "autoReadAloudMessagesDescription": "Ke loaʻa mai kahi leka, e hoʻohana ʻia ka leo o ka hāmeʻa e heluhelu leo nui i ka leka no ka hoʻomaʻamaʻa hoʻolohe."
 }

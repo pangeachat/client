@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:54.709484",
+    "@@last_modified": "2026-07-31 10:55:46.096496",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8448,16 +8448,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "自動突出顯示音訊消息",
-    "selectAudioMessagesOnPlayDescription": "播放時自動突出顯示音訊消息",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "學習分析",
     "@learningAnalytics": {
         "type": "String",
@@ -9807,5 +9797,7 @@
     "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 評分} other{{count} 評分}}）",
     "newActivityBadge": "新活動",
     "exitVocabPracticeSession": "您目前的詞彙練習進度將不會被儲存。",
-    "exitGrammarPracticeSession": "您目前的文法練習進度將不會被儲存。"
+    "exitGrammarPracticeSession": "您目前的文法練習進度將不會被儲存。",
+    "autoReadAloudMessagesToolName": "自動朗讀所有收到的訊息",
+    "autoReadAloudMessagesDescription": "收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。"
 }

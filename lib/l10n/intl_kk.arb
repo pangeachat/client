@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-30 15:16:49.187617",
+    "@@last_modified": "2026-07-31 10:55:38.045818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Тікелей хабарлама",
     "notificationRuleDMDescription": "Пайдаланушыға тікелей хабарлама бөлмелеріндегі хабарламалар туралы хабарлайды.",
     "enableEmailNotifications": "Электрондық пошта хабарландыруларын қосу",
-    "selectAudioMessagesOnPlayToolName": "Аудио хабарламаларды автоматты түрде бөлектеу",
-    "selectAudioMessagesOnPlayDescription": "Ойнатылған кезде аудио хабарламаларды автоматты түрде бөлектеу",
     "learningAnalytics": "Оқу аналитикасы",
     "alreadySpeak": "Мен қазірдің өзінде сөйлеймін...",
     "welcomeBackLogin": "Қайта қош келдіңіз! Сіз бұрын {platform} арқылы кірдіңіз.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баға} other{{count} баға}})",
     "newActivityBadge": "ЖАҢА",
     "exitVocabPracticeSession": "Сіздің ағымдағы сөздік қорын жаттығу сессиясының үлгерімі сақталмайды.",
-    "exitGrammarPracticeSession": "Сіздің ағымдағы грамматикалық жаттығу сессиясының үлгерімі сақталмайды."
+    "exitGrammarPracticeSession": "Сіздің ағымдағы грамматикалық жаттығу сессиясының үлгерімі сақталмайды.",
+    "autoReadAloudMessagesToolName": "Барлық алынған хабарламаларды автоматты түрде дауыстап оқу",
+    "autoReadAloudMessagesDescription": "Хабарлама алынған кезде, тыңдау тәжірибесі үшін құрылғы дауысы хабарламаны дауыстап оқу үшін пайдаланылады."
 }

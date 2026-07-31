@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-30 15:16:53.307128",
+    "@@last_modified": "2026-07-31 10:55:43.208617",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Feʻau Tuusaʻo",
     "notificationRuleDMDescription": "Faʻailoa le tagata faʻaoga e uiga i feʻau i potu feʻau tuusaʻo.",
     "enableEmailNotifications": "Faʻataga faʻasilasilaga imeli",
-    "selectAudioMessagesOnPlayToolName": "Faʻailoga otometi feʻau leo",
-    "selectAudioMessagesOnPlayDescription": "Faʻailoga otometi feʻau leo pe a taina",
     "learningAnalytics": "Suʻesuʻega aʻoaʻoga",
     "alreadySpeak": "Ua uma ona ou tautala...",
     "welcomeBackLogin": "Faʻafeiloaʻi mai! Na e saini muamua i totonu ma le {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% lelei ({count, plural, =1{1 fua faatatau} other{{count} fua faatatau}})",
     "newActivityBadge": "FOU",
     "exitVocabPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i upu o lo'o iai nei o le a le fa'asaoina.",
-    "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina."
+    "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina.",
+    "autoReadAloudMessagesToolName": "Faitau otometi ma le leo tele feʻau uma na maua",
+    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo."
 }

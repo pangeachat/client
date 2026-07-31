@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-30 15:16:48.203826",
+    "@@last_modified": "2026-07-31 10:55:36.496632",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -8445,16 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
-    "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Tanulási analitika",
     "@learningAnalytics": {
         "type": "String",
@@ -9804,5 +9794,7 @@
     "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})",
     "newActivityBadge": "ÚJ",
     "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
-    "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve."
+    "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "autoReadAloudMessagesToolName": "Összes beérkező üzenet automatikus felolvasása",
+    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz."
 }

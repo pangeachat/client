@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-30 15:16:52.088356",
+    "@@last_modified": "2026-07-31 10:55:42.335948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "ସିଧାସଳଖ ବାର୍ତ୍ତା",
     "notificationRuleDMDescription": "ସିଧାସଳଖ ବାର୍ତ୍ତା ରୁମରେ ଥିବା ବାର୍ତ୍ତାଗୁଡ଼ିକ ବିଷୟରେ ଉପଭୋକ୍ତାଙ୍କୁ ସୂଚିତ କରେ।",
     "enableEmailNotifications": "ଇମେଲ୍ ନୋଟିଫିକେସନ୍ ସକ୍ଷମ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayToolName": "ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂ-ହାଇଲାଇଟ୍ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayDescription": "ପ୍ଲେ ହେବା ସମୟରେ ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ହାଇଲାଇଟ୍ କରନ୍ତୁ",
     "learningAnalytics": "ଶିକ୍ଷଣ ବିଶ୍ଳେଷଣ",
     "alreadySpeak": "ମୁଁ ପୂର୍ବରୁ କହୁଛି...",
     "welcomeBackLogin": "ପୁନର୍ବାର ସ୍ୱାଗତ! ଆପଣ ପୂର୍ବରୁ {platform} ସହିତ ସାଇନ୍ ଇନ୍ କରିଥିଲେ।",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ସକାରାତ୍ମକ ({count, plural, =1{1 ମୂଲ୍ୟାଙ୍କନ} other{{count} ମୂଲ୍ୟାଙ୍କନ}})",
     "newActivityBadge": "ନୂଆ",
     "exitVocabPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ଶବ୍ଦାବଳୀ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
-    "exitGrammarPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ବ୍ୟାକରଣ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।"
+    "exitGrammarPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ବ୍ୟାକରଣ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
+    "autoReadAloudMessagesToolName": "ପ୍ରାପ୍ତ ସମସ୍ତ ବାର୍ତ୍ତା ସ୍ୱୟଂଚାଳିତ ଭାବରେ ପଢ଼ନ୍ତୁ",
+    "autoReadAloudMessagesDescription": "ଯେତେବେଳେ ଏକ ବାର୍ତ୍ତା ଗ୍ରହଣ କରାଯାଏ, ଶୁଣିବା ଅଭ୍ୟାସ ପାଇଁ ବାର୍ତ୍ତାକୁ ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ପାଇଁ ଡିଭାଇସ୍ ଭଏସ୍ ବ୍ୟବହାର କରାଯିବ।"
 }

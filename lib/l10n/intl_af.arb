@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-30 15:16:45.093961",
+    "@@last_modified": "2026-07-31 10:55:32.572675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direkte Boodskap",
     "notificationRuleDMDescription": "Stel die gebruiker in kennis van boodskappe in direkte boodskapkletse.",
     "enableEmailNotifications": "Aktiveer e-poskennisgewings",
-    "selectAudioMessagesOnPlayToolName": "Merk oudioboodskappe outomaties",
-    "selectAudioMessagesOnPlayDescription": "Merk oudioboodskappe outomaties wanneer dit gespeel word",
     "learningAnalytics": "Leeranalise",
     "alreadySpeak": "Ek praat reeds...",
     "welcomeBackLogin": "Welkom terug! Jy het voorheen met {platform} aangemeld.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 gradering} other{{count} graderings}})",
     "newActivityBadge": "NUUT",
     "exitVocabPracticeSession": "Jou huidige woordeskat-oefensessie se vordering sal nie gestoor word nie.",
-    "exitGrammarPracticeSession": "Jou huidige grammatika-oefensessie se vordering sal nie gestoor word nie."
+    "exitGrammarPracticeSession": "Jou huidige grammatika-oefensessie se vordering sal nie gestoor word nie.",
+    "autoReadAloudMessagesToolName": "Lees outomaties alle ontvangde boodskappe hardop voor",
+    "autoReadAloudMessagesDescription": "Wanneer 'n boodskap ontvang word, sal die toestelstem gebruik word om die boodskap hardop voor te lees vir luisteroefening."
 }

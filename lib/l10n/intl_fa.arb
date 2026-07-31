@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:46.815252",
+    "@@last_modified": "2026-07-31 10:55:34.469913",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -8430,16 +8430,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "به‌طور خودکار پیام‌های صوتی را هایلایت کنید",
-    "selectAudioMessagesOnPlayDescription": "به‌طور خودکار پیام‌های صوتی را هنگام پخش هایلایت کنید",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "تحلیل یادگیری",
     "@learningAnalytics": {
         "type": "String",
@@ -9789,5 +9779,7 @@
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{۱ امتیاز} other{{count} امتیاز}})",
     "newActivityBadge": "جدید",
     "exitVocabPracticeSession": "پیشرفت جلسه تمرین واژگان فعلی شما ذخیره نخواهد شد.",
-    "exitGrammarPracticeSession": "پیشرفت جلسه تمرین گرامر فعلی شما ذخیره نخواهد شد."
+    "exitGrammarPracticeSession": "پیشرفت جلسه تمرین گرامر فعلی شما ذخیره نخواهد شد.",
+    "autoReadAloudMessagesToolName": "خواندن خودکار تمام پیام‌های دریافتی",
+    "autoReadAloudMessagesDescription": "هنگام دریافت پیام، صدای دستگاه برای تمرین شنیداری، پیام را با صدای بلند می‌خواند."
 }

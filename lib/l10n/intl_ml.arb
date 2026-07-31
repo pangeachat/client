@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-30 15:16:50.441343",
+    "@@last_modified": "2026-07-31 10:55:39.483292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "നേരിട്ടുള്ള സന്ദേശം",
     "notificationRuleDMDescription": "നേരിട്ടുള്ള സന്ദേശ റൂമുകളിലെ സന്ദേശങ്ങളെക്കുറിച്ച് ഉപയോക്താവിനെ അറിയിക്കുന്നു.",
     "enableEmailNotifications": "ഇമെയിൽ അറിയിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കുക",
-    "selectAudioMessagesOnPlayToolName": "ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
-    "selectAudioMessagesOnPlayDescription": "പ്ലേ ചെയ്യുമ്പോൾ ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
     "learningAnalytics": "പഠന വിശകലനം",
     "alreadySpeak": "ഞാൻ ഇതിനകം സംസാരിക്കുന്നു...",
     "welcomeBackLogin": "തിരികെ സ്വാഗതം! നിങ്ങൾ മുമ്പ് {platform} ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്തിരുന്നു.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})",
     "newActivityBadge": "പുതിയത്",
     "exitVocabPracticeSession": "നിങ്ങളുടെ നിലവിലെ പദസമ്പത്ത് പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
-    "exitGrammarPracticeSession": "നിങ്ങളുടെ നിലവിലെ വ്യാകരണ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല."
+    "exitGrammarPracticeSession": "നിങ്ങളുടെ നിലവിലെ വ്യാകരണ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
+    "autoReadAloudMessagesToolName": "ലഭിച്ച എല്ലാ സന്ദേശങ്ങളും സ്വയമേവ വായിക്കുക",
+    "autoReadAloudMessagesDescription": "ഒരു സന്ദേശം ലഭിക്കുമ്പോൾ, കേൾവി പരിശീലനത്തിനായി സന്ദേശം വായിക്കാൻ ഉപകരണത്തിന്റെ ശബ്ദം ഉപയോഗിക്കും."
 }

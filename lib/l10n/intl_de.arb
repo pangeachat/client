@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-30 15:16:46.001390",
+    "@@last_modified": "2026-07-31 10:55:33.472603",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8329,16 +8329,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Audio-Nachrichten automatisch hervorheben",
-    "selectAudioMessagesOnPlayDescription": "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Lernanalytik",
     "@learningAnalytics": {
         "type": "String",
@@ -9688,5 +9678,7 @@
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})",
     "newActivityBadge": "NEU",
     "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
-    "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert."
+    "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert.",
+    "autoReadAloudMessagesToolName": "Alle empfangenen Nachrichten automatisch vorlesen",
+    "autoReadAloudMessagesDescription": "Wenn eine Nachricht empfangen wird, liest die Gerätestimme die Nachricht zur Hörübung vor."
 }

@@ -658,11 +658,19 @@ abstract class WorkspaceNav {
   /// analytics-family panel so the two don't clutter the right column together
   /// (#7109). See `routing.instructions.md`.
   /// [closeSections] mirrors [setRight]'s flag for single-column callers.
+  ///
+  /// [seatMenu] false opens the page ALONE — for a shortcut that jumps straight
+  /// to one page rather than drilling in from the menu (the cluster's language
+  /// flag → learning settings, #7961): the learner asked for that one page, so
+  /// seating a menu they didn't open puts a second panel on screen and turns
+  /// the page's narrow-screen close into a back arrow. An already-open menu is
+  /// still kept — the flag declines to seat one, it never closes one.
   static String openSettings(
     Uri current, {
     String? page,
     String? planId,
     bool closeSections = false,
+    bool seatMenu = true,
   }) {
     final String next;
     if (page == null || page.isEmpty) {
@@ -685,7 +693,7 @@ abstract class WorkspaceNav {
                   !t.type.isAnalyticsPanel,
             )
             .toList();
-        if (!result.any((t) => t.type == PanelTypesEnum.settings)) {
+        if (seatMenu && !result.any((t) => t.type == PanelTypesEnum.settings)) {
           result.insert(0, const SettingsPanelToken());
         }
         result.add(detail);
