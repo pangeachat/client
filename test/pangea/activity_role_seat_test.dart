@@ -66,6 +66,43 @@ void main() {
     });
   });
 
+  group('hasUnresolvedSeatEvidence', () {
+    final roles = {
+      'bot-role': role('bot-role', '@bot:server'),
+      'human-role': role('human-role', '@human:server'),
+    };
+
+    test('no member events loaded — the initial-load state that left large '
+        'cards deciding pending-vs-active without the facts (#8045)', () {
+      expect(hasUnresolvedSeatEvidence(roles, (_) => null), isTrue);
+    });
+
+    test('one unloaded holder is enough to distrust the seat count', () {
+      expect(
+        hasUnresolvedSeatEvidence(
+          roles,
+          (id) => id == '@human:server' ? 'join' : null,
+        ),
+        isTrue,
+      );
+    });
+
+    test('every holder resolved — nothing to refill', () {
+      expect(
+        hasUnresolvedSeatEvidence(
+          roles,
+          (id) => id == '@human:server' ? 'join' : 'leave',
+        ),
+        isFalse,
+      );
+    });
+
+    test('a room with no activity-role state has no seats to resolve', () {
+      expect(hasUnresolvedSeatEvidence(null, (_) => null), isFalse);
+      expect(hasUnresolvedSeatEvidence({}, (_) => null), isFalse);
+    });
+  });
+
   group('guardSeatClaim', () {
     test('claiming a seat whose holder is absent from loaded members throws '
         '— the overwrite hole: updateRole keys by id, so an allowed claim '

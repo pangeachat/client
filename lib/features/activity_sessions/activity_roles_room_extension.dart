@@ -60,6 +60,22 @@ Map<String, ActivityRoleModel> filterAssignedRoles(
   roles.entries.where((r) => !roleHolderVacated(membershipOf(r.value.userId))),
 );
 
+/// Whether [roles]' seat count is resting on the [roleHolderVacated] fallback
+/// instead of on evidence: at least one holder has no LOADED `m.room.member`
+/// event ([membershipOf] returns null), so its seat counts as occupied only
+/// because nothing proves otherwise.
+///
+/// Member events never ride the SDK's preloaded-state path — they live in
+/// their own store and come back into room state only through
+/// [Room.requestParticipants] — so this is true for every session room the
+/// learner hasn't opened this app session. The world map uses it to pick the
+/// rooms worth a member refill before trusting their seats (#8045).
+@visibleForTesting
+bool hasUnresolvedSeatEvidence(
+  Map<String, ActivityRoleModel>? roles,
+  String? Function(String userId) membershipOf,
+) => roles != null && roles.values.any((r) => membershipOf(r.userId) == null);
+
 /// Claim guard for [ActivityRolesRoomExtension.joinActivity], keyed by role
 /// ID: `updateRole` overwrites by id, so the guard must match on the same key
 /// (the old name-based check on the membership-filtered map let a claim on an
@@ -157,6 +173,13 @@ extension ActivityRolesRoomExtension on Room {
     if (roles == null) return null;
     return filterAssignedRoles(roles, _membershipOf);
   }
+
+  /// True when this session's seat math is resting on unloaded member state —
+  /// see [hasUnresolvedSeatEvidence]. Cheap: reads the loaded member list, never
+  /// fetches. It flags the room for the world map's member-refill sweep
+  /// (`WorldMapPinsManager.loadSessionParticipants`).
+  bool get hasUnresolvedSeats =>
+      hasUnresolvedSeatEvidence(activityRoles?.roles, _membershipOf);
 
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;

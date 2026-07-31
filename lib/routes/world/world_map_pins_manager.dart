@@ -4,6 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -24,6 +26,27 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+/// The pure rule behind [WorldMapPinsManager.loadSessionParticipants]'s room
+/// selection (#8045).
+///
+/// A room never filled ([everFilled] false) earns a refill while its seats are
+/// still resting on unloaded membership ([hasUnresolvedSeats]) — the startup
+/// case, where no `m.room.member` event has been read back into room state at
+/// all. A room already filled earns one only when its joined-member count has
+/// *moved* ([filledAtJoinedCount] vs [joinedCount]): sync merges the room
+/// summary even for the partial rooms whose member events it skips, so a moved
+/// count is real evidence that someone joined or left since. Comparing against
+/// the count at fill time — rather than asking whether the loaded list looks
+/// complete — is what keeps this loop-free: a room whose count the server
+/// reports inconsistently re-qualifies once and then never again.
+@visibleForTesting
+bool needsParticipantRefill({
+  required bool everFilled,
+  required int? filledAtJoinedCount,
+  required int? joinedCount,
+  required bool hasUnresolvedSeats,
+}) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
 
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
@@ -90,6 +113,28 @@ class WorldMapPinsManager {
   /// (the learner is not a member). Folded into [Client.deriveActivitySignals] as
   /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
   List<ActivitySessionFacts> _discoveredSessionFacts = const [];
+
+  /// Room id → the joined-member count its member list was last filled at, so
+  /// [loadSessionParticipants] sweeps a room once rather than on every sync
+  /// tick. A *changed* count re-qualifies it: sync merges the room summary even
+  /// for the partial rooms whose member events it skips, so a count that no
+  /// longer matches means someone joined or left since the fill. An unchanged
+  /// count never re-triggers, so a room the server reports inconsistently can't
+  /// put the sweep in a loop.
+  final Map<String, int?> _participantsLoadedAtCount = {};
+
+  /// Guards against overlapping member-refill sweeps.
+  bool _loadingParticipants = false;
+
+  /// Epoch ms of the last member-refill sweep. A filled room is skipped by
+  /// [_participantsLoadedAtCount], so this only paces retries of rooms the
+  /// sweep failed to fill and the drain of a long backlog.
+  int _lastParticipantLoadMs = 0;
+
+  /// Rooms filled per sweep. Most fills resolve from the local database with no
+  /// network at all, but a learner with a long activity history shouldn't do
+  /// them all at once; the sync listener drains the remainder.
+  static const int _participantLoadBatch = 25;
 
   /// Course members available to fill activity roles in the currently
   /// course-scoped map (the start page's invite math via
@@ -193,6 +238,85 @@ class WorldMapPinsManager {
       pingedActivityIds: pinged,
       extraFacts: _discoveredSessionFacts,
     );
+  }
+
+  /// Whether [room] earns a member refill this sweep — the Matrix-reading shell
+  /// over [needsParticipantRefill].
+  bool _needsParticipantRefill(Room room) => needsParticipantRefill(
+    everFilled: _participantsLoadedAtCount.containsKey(room.id),
+    filledAtJoinedCount: _participantsLoadedAtCount[room.id],
+    joinedCount: room.summary.mJoinedMemberCount,
+    hasUnresolvedSeats: room.hasUnresolvedSeats,
+  );
+
+  /// Refill the member lists behind the map's seat math and participant rows.
+  ///
+  /// `m.room.member` events never ride the SDK's preloaded-state path (they
+  /// live in their own store and return to room state only through
+  /// [Room.requestParticipants]), so at startup `Room.getParticipants()` is
+  /// empty for every session room the learner hasn't opened this session. That
+  /// left large cards rendering on guesses (#8045): the avatar row read empty,
+  /// and [Room.assignedRoles] scored every seat on the "unknown membership =
+  /// still occupied" fallback ([roleHolderVacated]) rather than on evidence —
+  /// so the pending/active split and the seat row were both decided without the
+  /// facts they are supposed to read.
+  ///
+  /// Cheap by construction: [Room.requestParticipants] refills from the local
+  /// database first and reaches the network only when that is still short of
+  /// the room's summary counts, and a room is swept once until its member count
+  /// moves ([_needsParticipantRefill]). Returns true when it filled anything,
+  /// so the caller re-derives signals.
+  Future<bool> loadSessionParticipants(Client client) async {
+    if (_loadingParticipants) return false;
+    final nowMs = DateTime.now().millisecondsSinceEpoch;
+    if (nowMs - _lastParticipantLoadMs < 3000) return false;
+
+    final pending = client.rooms
+        .where(
+          (r) =>
+              r.membership == Membership.join &&
+              r.activityId != null &&
+              // A finished session produces no live pin state and renders no
+              // participant row, so its seats never reach the screen.
+              !r.hasCompletedRole &&
+              _needsParticipantRefill(r),
+        )
+        .take(_participantLoadBatch)
+        .toList();
+    if (pending.isEmpty) return false;
+
+    _loadingParticipants = true;
+    _lastParticipantLoadMs = nowMs;
+    var filled = false;
+    try {
+      for (final room in pending) {
+        try {
+          // `cache: true` is load-bearing: it defaults to `encrypted`, and
+          // without it the SDK returns the members without writing them into
+          // room state — leaving `getParticipants()`, which the seat math and
+          // the avatar row actually read, exactly as empty as before.
+          await room.requestParticipants(const [
+            Membership.join,
+            Membership.invite,
+            Membership.knock,
+          ], false, true);
+          _participantsLoadedAtCount[room.id] = room.summary.mJoinedMemberCount;
+          filled = true;
+        } catch (e, s) {
+          // A room that won't load its members keeps the fallback seats it
+          // already had; the throttle above paces the retry.
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            m: 'session participant refill failed',
+            data: {'roomId': room.id},
+          );
+        }
+      }
+    } finally {
+      _loadingParticipants = false;
+    }
+    return filled;
   }
 
   /// Discover open sessions the learner is not yet in — BOTH reads of
