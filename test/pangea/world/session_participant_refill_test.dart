@@ -64,17 +64,20 @@ void main() {
       );
     });
 
-    test('a count that only becomes known after the fill re-qualifies once', () {
-      expect(
-        needsParticipantRefill(
-          everFilled: true,
-          filledAtJoinedCount: null,
-          joinedCount: 3,
-          hasUnresolvedSeats: false,
-        ),
-        isTrue,
-      );
-    });
+    test(
+      'a count that only becomes known after the fill re-qualifies once',
+      () {
+        expect(
+          needsParticipantRefill(
+            everFilled: true,
+            filledAtJoinedCount: null,
+            joinedCount: 3,
+            hasUnresolvedSeats: false,
+          ),
+          isTrue,
+        );
+      },
+    );
 
     test('a count that stays unknown never re-qualifies', () {
       expect(

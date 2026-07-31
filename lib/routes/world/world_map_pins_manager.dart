@@ -295,11 +295,11 @@ class WorldMapPinsManager {
           // without it the SDK returns the members without writing them into
           // room state — leaving `getParticipants()`, which the seat math and
           // the avatar row actually read, exactly as empty as before.
-          await room.requestParticipants(const [
-            Membership.join,
-            Membership.invite,
-            Membership.knock,
-          ], false, true);
+          await room.requestParticipants(
+            const [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          );
           _participantsLoadedAtCount[room.id] = room.summary.mJoinedMemberCount;
           filled = true;
         } catch (e, s) {
