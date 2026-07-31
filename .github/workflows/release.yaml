@@ -52,10 +52,17 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install nodejs -y
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-        with:
-          cache-base: main
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - run: flutter pub get
+      # See the note in main_deploy.yaml — same cache, same key scheme.
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - name: Update Website files
@@ -139,8 +146,6 @@ jobs:
           rm -rf fonts/NotoEmoji
           yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-        with:
-          cache-base: main
       - run: flutter pub get
       - name: Prepare Android Release Build
         env:
@@ -191,8 +196,6 @@ jobs:
           git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
           ./flutter/bin/flutter doctor
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-        with:
-          cache-base: main
       - run: ./flutter/bin/flutter pub get
       - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
       - name: Create archive
